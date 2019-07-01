@@ -31,12 +31,14 @@ Gets the values of the parameters used at the blob auditing tests
 #>
 function Get-SqlBlobAuditingTestEnvironmentParameters ($testSuffix)
 {
+	$subscriptionId = (Get-AzContext).Subscription.Id
 	return @{ rgname = "blob-audit-cmdlet-test-rg" + $testSuffix;
 			  serverName = "blob-audit-cmdlet-server" + $testSuffix;
 			  databaseName = "blob-audit-cmdlet-db" + $testSuffix;
 			  storageAccount = "blobaudit" + $testSuffix
 			  eventHubNamespace = "audit-cmdlet-event-hub-ns" + $testSuffix
 			  workspaceName = "audit-cmdlet-workspace" +$testSuffix
+			  storageAccountResourceId = "/subscriptions/" + $subscriptionId + "/resourceGroups/" + "blob-audit-cmdlet-test-rg" + $testSuffix + "/providers/Microsoft.Storage/storageAccounts/" + "blobaudit" + $testSuffix
 		}
 }
 
@@ -204,7 +206,7 @@ function Create-BasicManagedTestEnvironmentWithParams ($params, $location)
 	$vnetName = "cl_initial"
 	$subnetName = "Cool"
 	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName
-	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName }).Id
+	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
 	$credentials = Get-ServerCredential
  	$licenseType = "BasePrice"
   	$storageSizeInGB = 32
@@ -214,7 +216,7 @@ function Create-BasicManagedTestEnvironmentWithParams ($params, $location)
 
 	$managedInstance = New-AzureRmSqlInstance -ResourceGroupName $params.rgname -Name $params.serverName `
  			-Location $location -AdministratorCredential $credentials -SubnetId $subnetId `
-  			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName
+  			-Vcore $vCore -SkuName $skuName
 
 	New-AzureRmSqlInstanceDatabase -ResourceGroupName $params.rgname -InstanceName $params.serverName -Name $params.databaseName -Collation $collation
 }
@@ -305,14 +307,15 @@ Gets the values of the parameters used in the Server Key Vault Key tests
 #>
 function Get-SqlServerKeyVaultKeyTestEnvironmentParameters ()
 {
+	# Create a key vault with soft delete.configured
 	return @{ rgName = Get-ResourceGroupName;
 			  serverName = Get-ServerName;
 			  databaseName = Get-DatabaseName;
-			  keyId = "https://akvtdekeyvault.vault.azure.net/keys/key1/51c2fab9ff3c4a17aab4cd51b932b106";
-			  serverKeyName = "akvtdekeyvault_key1_51c2fab9ff3c4a17aab4cd51b932b106";
-			  vaultName = "akvtdekeyvault";
+			  keyId = "https://akvtdekeyvaultcl.vault.azure.net/keys/key1/738a177a3b0d45e98d366fdf738840e8";
+			  serverKeyName = "akvtdekeyvaultcl_key1_738a177a3b0d45e98d366fdf738840e8";
+			  vaultName = "akvtdekeyvaultcl";
 			  keyName = "key1"
-			  location = "southeastasia";
+			  location = "westcentralus";
 			  }
 }
 
@@ -330,15 +333,40 @@ function Create-ServerKeyVaultKeyTestEnvironment ($params)
 	<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 	$serverPassword = "t357ingP@s5w0rd!"
 	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
-	$server = New-AzSqlServer -ResourceGroupName  $rg.ResourceGroupName -ServerName $params.serverName -Location $params.location -ServerVersion "12.0" -SqlAdministratorCredentials $credentials
+	$server = New-AzSqlServer -ResourceGroupName  $rg.ResourceGroupName -ServerName $params.serverName -Location $params.location -ServerVersion "12.0" -SqlAdministratorCredentials $credentials -AssignIdentity
 	Assert-AreEqual $server.ServerName $params.serverName
 
 	# Create database
 	$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $params.databaseName
 	Assert-AreEqual $db.DatabaseName $params.databaseName
 
+	#Set permissions on key Vault
+	Set-AzKeyVaultAccessPolicy -VaultName $params.vaultName -ObjectId $server.Identity.PrincipalId -PermissionsToKeys get, list, wrapKey, unwrapKey
+
 	# Return the created resource group
 	return $rg
+}
+
+
+<#
+.SYNOPSIS
+Creates test managed instance
+#>
+function Get-ManagedInstanceForTdeTest ($params)
+{
+	# Setup
+	$rg = Create-ResourceGroupForTest
+	$vnetName = "cl_initial"
+	$subnetName = "Cool"
+	
+	# Setup VNET 
+	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
+	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
+	
+	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
+	Set-AzKeyVaultAccessPolicy -VaultName $params.vaultName -ObjectId $managedInstance.Identity.PrincipalId -PermissionsToKeys get, list, wrapKey, unwrapKey
+
+	return $managedInstance
 }
 
 <#
@@ -700,14 +728,12 @@ function Create-ManagedInstanceForTest ($resourceGroup, $subnetId)
 {
 	$managedInstanceName = Get-ManagedInstanceName
 	$credentials = Get-ServerCredential
- 	$licenseType = "BasePrice"
-  	$storageSizeInGB = 32
  	$vCore = 16
  	$skuName = "GP_Gen4"
 
 	$managedInstance = New-AzSqlInstance -ResourceGroupName $resourceGroup.ResourceGroupName -Name $managedInstanceName `
  			-Location $resourceGroup.Location -AdministratorCredential $credentials -SubnetId $subnetId `
-  			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName
+  			-Vcore $vCore -SkuName $skuName -AssignIdentity
 
 	return $managedInstance
 }
@@ -715,6 +741,11 @@ function Create-ManagedInstanceForTest ($resourceGroup, $subnetId)
 <#
 	.SYNOPSIS
 	Create a virtual network
+
+	If resource group $resourceGroupName does not exist, then please create it before running the test.
+	We deliberately do not create it, because if we did then ResourceGroupCleaner (inside MockContext) would delete it
+	at the end of the test, which prevents us from reusing the subnet and therefore massively slows down
+	managed instance scenario tests.
 #>
 function CreateAndGetVirtualNetworkForManagedInstance ($vnetName, $subnetName, $location = "westcentralus", $resourceGroupName = "cl_one")
 {

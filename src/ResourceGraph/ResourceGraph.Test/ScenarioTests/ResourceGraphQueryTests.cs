@@ -57,5 +57,12 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Test.ScenarioTests
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Search-AzureRmGraph-QueryError");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SubscriptionQueryError()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Search-AzureRmGraph-SubscriptionQueryError");
+        }
     }
 }

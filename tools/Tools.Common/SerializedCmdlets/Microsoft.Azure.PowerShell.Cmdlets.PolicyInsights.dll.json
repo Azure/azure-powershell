@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models",
             "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyEvent",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyEvent, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyEvent, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AdditionalProperties": "System.Collections.Generic.IDictionary`2[System.String,System.Object]",
               "IsCompliant": "System.Nullable`1[System.Boolean]",
@@ -2473,7 +2473,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models",
             "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyState",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyState, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyState, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "PolicyEvaluationDetails": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyEvaluationDetails",
               "AdditionalProperties": "System.Collections.Generic.IDictionary`2[System.String,System.Object]",
@@ -5184,7 +5184,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models",
             "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyStateSummary",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyStateSummary, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyStateSummary, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Results": "Microsoft.Azure.Commands.PolicyInsights.Models.SummaryResults",
               "PolicyAssignments": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyAssignmentSummary]"
@@ -6987,7 +6987,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation",
             "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediation, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediation, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Deployments": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeployment[]",
               "DeploymentSummary": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeploymentSummary",
@@ -8152,7 +8152,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation",
             "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediation, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediation, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Deployments": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeployment[]",
               "DeploymentSummary": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeploymentSummary",
@@ -8670,7 +8670,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation",
                   "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediation",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediation, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediation, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Deployments": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeployment[]",
                     "DeploymentSummary": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeploymentSummary",
@@ -8986,7 +8986,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation",
             "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediation, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediation, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Deployments": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeployment[]",
               "DeploymentSummary": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeploymentSummary",
@@ -9921,7 +9921,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation",
             "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediation, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediation, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Deployments": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeployment[]",
               "DeploymentSummary": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeploymentSummary",
@@ -10373,7 +10373,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation",
                   "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediation",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediation, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediation, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Deployments": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeployment[]",
                     "DeploymentSummary": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeploymentSummary",
@@ -11029,7 +11029,7 @@
     "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyEvaluationDetails": {
       "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models",
       "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyEvaluationDetails",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyEvaluationDetails, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyEvaluationDetails, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "IfNotExistsDetails": "Microsoft.Azure.Commands.PolicyInsights.Models.IfNotExistsEvaluationDetails",
         "EvaluatedExpressions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.PolicyInsights.Models.ExpressionEvaluationDetails]"
@@ -11079,7 +11079,7 @@
     "Microsoft.Azure.Commands.PolicyInsights.Models.IfNotExistsEvaluationDetails": {
       "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models",
       "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.IfNotExistsEvaluationDetails",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.IfNotExistsEvaluationDetails, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.IfNotExistsEvaluationDetails, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "TotalResources": "System.Nullable`1[System.Int32]",
         "ResourceId": "System.String"
@@ -11141,7 +11141,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.PolicyInsights.Models.ExpressionEvaluationDetails]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.PolicyInsights.Models.ExpressionEvaluationDetails]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.PolicyInsights.Models.ExpressionEvaluationDetails, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.PolicyInsights.Models.ExpressionEvaluationDetails, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -11153,7 +11153,7 @@
     "Microsoft.Azure.Commands.PolicyInsights.Models.ExpressionEvaluationDetails": {
       "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models",
       "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.ExpressionEvaluationDetails",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.ExpressionEvaluationDetails, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.ExpressionEvaluationDetails, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Result": "System.String",
         "Expression": "System.String",
@@ -11207,7 +11207,7 @@
     "Microsoft.Azure.Commands.PolicyInsights.Models.SummaryResults": {
       "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models",
       "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.SummaryResults",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.SummaryResults, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.SummaryResults, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "NonCompliantResources": "System.Nullable`1[System.Int32]",
         "NonCompliantPolicies": "System.Nullable`1[System.Int32]"
@@ -11257,7 +11257,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyAssignmentSummary]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyAssignmentSummary]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyAssignmentSummary, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyAssignmentSummary, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -11269,7 +11269,7 @@
     "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyAssignmentSummary": {
       "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models",
       "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyAssignmentSummary",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyAssignmentSummary, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyAssignmentSummary, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Results": "Microsoft.Azure.Commands.PolicyInsights.Models.SummaryResults",
         "PolicyDefinitions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyDefinitionSummary]",
@@ -11321,7 +11321,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyDefinitionSummary]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyDefinitionSummary]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyDefinitionSummary, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyDefinitionSummary, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -11333,7 +11333,7 @@
     "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyDefinitionSummary": {
       "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models",
       "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyDefinitionSummary",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyDefinitionSummary, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.PolicyDefinitionSummary, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Results": "Microsoft.Azure.Commands.PolicyInsights.Models.SummaryResults",
         "PolicyDefinitionId": "System.String",
@@ -11385,7 +11385,7 @@
     "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeployment[]": {
       "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation",
       "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeployment[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeployment[], Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeployment[], Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeployment",
       "GenericTypeArguments": [],
@@ -11395,7 +11395,7 @@
     "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeployment": {
       "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation",
       "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeployment",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeployment, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeployment, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Error": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSErrorDefinition",
         "CreatedOn": "System.Nullable`1[System.DateTime]",
@@ -11450,7 +11450,7 @@
     "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSErrorDefinition": {
       "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation",
       "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSErrorDefinition",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSErrorDefinition, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSErrorDefinition, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Details": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSErrorDefinition]",
         "AdditionalInfo": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSTypedErrorInfo]",
@@ -11503,7 +11503,7 @@
     "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSErrorDefinition]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSErrorDefinition]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSErrorDefinition, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSErrorDefinition, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -11515,7 +11515,7 @@
     "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSTypedErrorInfo]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSTypedErrorInfo]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSTypedErrorInfo, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSTypedErrorInfo, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -11527,7 +11527,7 @@
     "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSTypedErrorInfo": {
       "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation",
       "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSTypedErrorInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSTypedErrorInfo, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSTypedErrorInfo, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Info": "System.Object",
         "Type": "System.String"
@@ -11577,7 +11577,7 @@
     "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeploymentSummary": {
       "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation",
       "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeploymentSummary",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeploymentSummary, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationDeploymentSummary, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "TotalDeployments": "System.Int32",
         "SuccessfulDeployments": "System.Int32",
@@ -11628,7 +11628,7 @@
     "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationFilter": {
       "Namespace": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation",
       "Name": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationFilter",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationFilter, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PolicyInsights.Models.Remediation.PSRemediationFilter, Microsoft.Azure.PowerShell.Cmdlets.PolicyInsights, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Locations": "System.Collections.Generic.IEnumerable`1[System.String]"
       },

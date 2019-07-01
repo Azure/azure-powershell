@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=0.8.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SyncGroupName": "System.String",
               "StorageSyncServiceName": "System.String",
@@ -113,7 +113,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=0.8.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Location": "System.String",
@@ -371,7 +371,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
                   "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=0.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Location": "System.String",
@@ -677,7 +677,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=0.8.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SyncGroupName": "System.String",
               "StorageSyncServiceName": "System.String",
@@ -776,7 +776,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=0.8.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Location": "System.String",
@@ -1034,7 +1034,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
                   "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=0.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Location": "System.String",
@@ -1359,7 +1359,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=0.8.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SyncGroupName": "System.String",
               "StorageSyncServiceName": "System.String",
@@ -1586,7 +1586,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
                   "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=0.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "SyncGroupName": "System.String",
                     "StorageSyncServiceName": "System.String",
@@ -2221,7 +2221,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=0.8.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Location": "System.String",
@@ -2569,7 +2569,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=0.8.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Location": "System.String",
@@ -2956,7 +2956,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=0.8.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Location": "System.String",
@@ -3162,7 +3162,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
                   "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=0.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Location": "System.String",
@@ -3770,7 +3770,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSRegisteredServer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSRegisteredServer, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=0.8.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSRegisteredServer, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ServerManagementErrorCode": "System.Nullable`1[System.Int32]",
               "StorageSyncServiceName": "System.String",
@@ -3886,7 +3886,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=0.8.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Location": "System.String",
@@ -4144,7 +4144,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
                   "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=0.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Location": "System.String",
@@ -4450,7 +4450,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSRegisteredServer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSRegisteredServer, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=0.8.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSRegisteredServer, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ServerManagementErrorCode": "System.Nullable`1[System.Int32]",
               "StorageSyncServiceName": "System.String",
@@ -4566,7 +4566,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=0.8.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Location": "System.String",
@@ -4820,7 +4820,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
                   "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=0.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Location": "System.String",
@@ -5139,7 +5139,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSRegisteredServer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSRegisteredServer, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=0.8.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSRegisteredServer, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ServerManagementErrorCode": "System.Nullable`1[System.Int32]",
               "StorageSyncServiceName": "System.String",
@@ -5383,7 +5383,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
                   "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSRegisteredServer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSRegisteredServer, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=0.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSRegisteredServer, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ServerManagementErrorCode": "System.Nullable`1[System.Int32]",
                     "StorageSyncServiceName": "System.String",
@@ -6094,7 +6094,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=0.8.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Location": "System.String",
@@ -6348,7 +6348,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
                   "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=0.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Location": "System.String",
@@ -6648,22 +6648,26 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=0.8.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SyncStatus": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpointHealth",
-              "VolumeFreeSpacePercent": "System.Nullable`1[System.Int32]",
               "TierFilesOlderThanDays": "System.Nullable`1[System.Int32]",
-              "SyncGroupName": "System.String",
-              "StorageSyncServiceName": "System.String",
-              "ServerLocalPath": "System.String",
-              "ServerResourceId": "System.String",
-              "ServerEndpointName": "System.String",
-              "ProvisioningState": "System.String",
-              "LastWorkflowId": "System.String",
-              "LastOperationName": "System.String",
-              "FriendlyName": "System.String",
-              "CloudTiering": "System.String",
+              "VolumeFreeSpacePercent": "System.Nullable`1[System.Int32]",
               "ResourceId": "System.String",
+              "OfflineDataTransferStorageAccountTenantId": "System.String",
+              "OfflineDataTransferStorageAccountResourceId": "System.String",
+              "OfflineDataTransferShareName": "System.String",
+              "OfflineDataTransfer": "System.String",
+              "CloudTiering": "System.String",
+              "SyncGroupName": "System.String",
+              "FriendlyName": "System.String",
+              "LastOperationName": "System.String",
+              "LastWorkflowId": "System.String",
+              "ProvisioningState": "System.String",
+              "ServerEndpointName": "System.String",
+              "ServerResourceId": "System.String",
+              "ServerLocalPath": "System.String",
+              "StorageSyncServiceName": "System.String",
               "ResourceGroupName": "System.String",
               "Type": "System.String"
             },
@@ -6774,7 +6778,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=0.8.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SyncGroupName": "System.String",
               "StorageSyncServiceName": "System.String",
@@ -7057,7 +7061,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
                   "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=0.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "SyncGroupName": "System.String",
                     "StorageSyncServiceName": "System.String",
@@ -7479,22 +7483,26 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=0.8.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SyncStatus": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpointHealth",
-              "VolumeFreeSpacePercent": "System.Nullable`1[System.Int32]",
               "TierFilesOlderThanDays": "System.Nullable`1[System.Int32]",
-              "SyncGroupName": "System.String",
-              "StorageSyncServiceName": "System.String",
-              "ServerLocalPath": "System.String",
-              "ServerResourceId": "System.String",
-              "ServerEndpointName": "System.String",
-              "ProvisioningState": "System.String",
-              "LastWorkflowId": "System.String",
-              "LastOperationName": "System.String",
-              "FriendlyName": "System.String",
-              "CloudTiering": "System.String",
+              "VolumeFreeSpacePercent": "System.Nullable`1[System.Int32]",
               "ResourceId": "System.String",
+              "OfflineDataTransferStorageAccountTenantId": "System.String",
+              "OfflineDataTransferStorageAccountResourceId": "System.String",
+              "OfflineDataTransferShareName": "System.String",
+              "OfflineDataTransfer": "System.String",
+              "CloudTiering": "System.String",
+              "SyncGroupName": "System.String",
+              "FriendlyName": "System.String",
+              "LastOperationName": "System.String",
+              "LastWorkflowId": "System.String",
+              "ProvisioningState": "System.String",
+              "ServerEndpointName": "System.String",
+              "ServerResourceId": "System.String",
+              "ServerLocalPath": "System.String",
+              "StorageSyncServiceName": "System.String",
               "ResourceGroupName": "System.String",
               "Type": "System.String"
             },
@@ -8063,22 +8071,26 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
                   "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=0.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "SyncStatus": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpointHealth",
-                    "VolumeFreeSpacePercent": "System.Nullable`1[System.Int32]",
                     "TierFilesOlderThanDays": "System.Nullable`1[System.Int32]",
-                    "SyncGroupName": "System.String",
-                    "StorageSyncServiceName": "System.String",
-                    "ServerLocalPath": "System.String",
-                    "ServerResourceId": "System.String",
-                    "ServerEndpointName": "System.String",
-                    "ProvisioningState": "System.String",
-                    "LastWorkflowId": "System.String",
-                    "LastOperationName": "System.String",
-                    "FriendlyName": "System.String",
-                    "CloudTiering": "System.String",
+                    "VolumeFreeSpacePercent": "System.Nullable`1[System.Int32]",
                     "ResourceId": "System.String",
+                    "OfflineDataTransferStorageAccountTenantId": "System.String",
+                    "OfflineDataTransferStorageAccountResourceId": "System.String",
+                    "OfflineDataTransferShareName": "System.String",
+                    "OfflineDataTransfer": "System.String",
+                    "CloudTiering": "System.String",
+                    "SyncGroupName": "System.String",
+                    "FriendlyName": "System.String",
+                    "LastOperationName": "System.String",
+                    "LastWorkflowId": "System.String",
+                    "ProvisioningState": "System.String",
+                    "ServerEndpointName": "System.String",
+                    "ServerResourceId": "System.String",
+                    "ServerLocalPath": "System.String",
+                    "StorageSyncServiceName": "System.String",
                     "ResourceGroupName": "System.String",
                     "Type": "System.String"
                   },
@@ -8423,22 +8435,26 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=0.8.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SyncStatus": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpointHealth",
-              "VolumeFreeSpacePercent": "System.Nullable`1[System.Int32]",
               "TierFilesOlderThanDays": "System.Nullable`1[System.Int32]",
-              "SyncGroupName": "System.String",
-              "StorageSyncServiceName": "System.String",
-              "ServerLocalPath": "System.String",
-              "ServerResourceId": "System.String",
-              "ServerEndpointName": "System.String",
-              "ProvisioningState": "System.String",
-              "LastWorkflowId": "System.String",
-              "LastOperationName": "System.String",
-              "FriendlyName": "System.String",
-              "CloudTiering": "System.String",
+              "VolumeFreeSpacePercent": "System.Nullable`1[System.Int32]",
               "ResourceId": "System.String",
+              "OfflineDataTransferStorageAccountTenantId": "System.String",
+              "OfflineDataTransferStorageAccountResourceId": "System.String",
+              "OfflineDataTransferShareName": "System.String",
+              "OfflineDataTransfer": "System.String",
+              "CloudTiering": "System.String",
+              "SyncGroupName": "System.String",
+              "FriendlyName": "System.String",
+              "LastOperationName": "System.String",
+              "LastWorkflowId": "System.String",
+              "ProvisioningState": "System.String",
+              "ServerEndpointName": "System.String",
+              "ServerResourceId": "System.String",
+              "ServerLocalPath": "System.String",
+              "StorageSyncServiceName": "System.String",
               "ResourceGroupName": "System.String",
               "Type": "System.String"
             },
@@ -8549,7 +8565,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=0.8.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SyncGroupName": "System.String",
               "StorageSyncServiceName": "System.String",
@@ -9176,7 +9192,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
                   "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=0.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "SyncGroupName": "System.String",
                     "StorageSyncServiceName": "System.String",
@@ -10090,22 +10106,26 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=0.8.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SyncStatus": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpointHealth",
-              "VolumeFreeSpacePercent": "System.Nullable`1[System.Int32]",
               "TierFilesOlderThanDays": "System.Nullable`1[System.Int32]",
-              "SyncGroupName": "System.String",
-              "StorageSyncServiceName": "System.String",
-              "ServerLocalPath": "System.String",
-              "ServerResourceId": "System.String",
-              "ServerEndpointName": "System.String",
-              "ProvisioningState": "System.String",
-              "LastWorkflowId": "System.String",
-              "LastOperationName": "System.String",
-              "FriendlyName": "System.String",
-              "CloudTiering": "System.String",
+              "VolumeFreeSpacePercent": "System.Nullable`1[System.Int32]",
               "ResourceId": "System.String",
+              "OfflineDataTransferStorageAccountTenantId": "System.String",
+              "OfflineDataTransferStorageAccountResourceId": "System.String",
+              "OfflineDataTransferShareName": "System.String",
+              "OfflineDataTransfer": "System.String",
+              "CloudTiering": "System.String",
+              "SyncGroupName": "System.String",
+              "FriendlyName": "System.String",
+              "LastOperationName": "System.String",
+              "LastWorkflowId": "System.String",
+              "ProvisioningState": "System.String",
+              "ServerEndpointName": "System.String",
+              "ServerResourceId": "System.String",
+              "ServerLocalPath": "System.String",
+              "StorageSyncServiceName": "System.String",
               "ResourceGroupName": "System.String",
               "Type": "System.String"
             },
@@ -10342,22 +10362,26 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
                   "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=0.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "SyncStatus": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpointHealth",
-                    "VolumeFreeSpacePercent": "System.Nullable`1[System.Int32]",
                     "TierFilesOlderThanDays": "System.Nullable`1[System.Int32]",
-                    "SyncGroupName": "System.String",
-                    "StorageSyncServiceName": "System.String",
-                    "ServerLocalPath": "System.String",
-                    "ServerResourceId": "System.String",
-                    "ServerEndpointName": "System.String",
-                    "ProvisioningState": "System.String",
-                    "LastWorkflowId": "System.String",
-                    "LastOperationName": "System.String",
-                    "FriendlyName": "System.String",
-                    "CloudTiering": "System.String",
+                    "VolumeFreeSpacePercent": "System.Nullable`1[System.Int32]",
                     "ResourceId": "System.String",
+                    "OfflineDataTransferStorageAccountTenantId": "System.String",
+                    "OfflineDataTransferStorageAccountResourceId": "System.String",
+                    "OfflineDataTransferShareName": "System.String",
+                    "OfflineDataTransfer": "System.String",
+                    "CloudTiering": "System.String",
+                    "SyncGroupName": "System.String",
+                    "FriendlyName": "System.String",
+                    "LastOperationName": "System.String",
+                    "LastWorkflowId": "System.String",
+                    "ProvisioningState": "System.String",
+                    "ServerEndpointName": "System.String",
+                    "ServerResourceId": "System.String",
+                    "ServerLocalPath": "System.String",
+                    "StorageSyncServiceName": "System.String",
                     "ResourceGroupName": "System.String",
                     "Type": "System.String"
                   },
@@ -11008,22 +11032,26 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=0.8.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SyncStatus": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpointHealth",
-              "VolumeFreeSpacePercent": "System.Nullable`1[System.Int32]",
               "TierFilesOlderThanDays": "System.Nullable`1[System.Int32]",
-              "SyncGroupName": "System.String",
-              "StorageSyncServiceName": "System.String",
-              "ServerLocalPath": "System.String",
-              "ServerResourceId": "System.String",
-              "ServerEndpointName": "System.String",
-              "ProvisioningState": "System.String",
-              "LastWorkflowId": "System.String",
-              "LastOperationName": "System.String",
-              "FriendlyName": "System.String",
-              "CloudTiering": "System.String",
+              "VolumeFreeSpacePercent": "System.Nullable`1[System.Int32]",
               "ResourceId": "System.String",
+              "OfflineDataTransferStorageAccountTenantId": "System.String",
+              "OfflineDataTransferStorageAccountResourceId": "System.String",
+              "OfflineDataTransferShareName": "System.String",
+              "OfflineDataTransfer": "System.String",
+              "CloudTiering": "System.String",
+              "SyncGroupName": "System.String",
+              "FriendlyName": "System.String",
+              "LastOperationName": "System.String",
+              "LastWorkflowId": "System.String",
+              "ProvisioningState": "System.String",
+              "ServerEndpointName": "System.String",
+              "ServerResourceId": "System.String",
+              "ServerLocalPath": "System.String",
+              "StorageSyncServiceName": "System.String",
               "ResourceGroupName": "System.String",
               "Type": "System.String"
             },
@@ -11172,22 +11200,26 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=0.8.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SyncStatus": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpointHealth",
-              "VolumeFreeSpacePercent": "System.Nullable`1[System.Int32]",
               "TierFilesOlderThanDays": "System.Nullable`1[System.Int32]",
-              "SyncGroupName": "System.String",
-              "StorageSyncServiceName": "System.String",
-              "ServerLocalPath": "System.String",
-              "ServerResourceId": "System.String",
-              "ServerEndpointName": "System.String",
-              "ProvisioningState": "System.String",
-              "LastWorkflowId": "System.String",
-              "LastOperationName": "System.String",
-              "FriendlyName": "System.String",
-              "CloudTiering": "System.String",
+              "VolumeFreeSpacePercent": "System.Nullable`1[System.Int32]",
               "ResourceId": "System.String",
+              "OfflineDataTransferStorageAccountTenantId": "System.String",
+              "OfflineDataTransferStorageAccountResourceId": "System.String",
+              "OfflineDataTransferShareName": "System.String",
+              "OfflineDataTransfer": "System.String",
+              "CloudTiering": "System.String",
+              "SyncGroupName": "System.String",
+              "FriendlyName": "System.String",
+              "LastOperationName": "System.String",
+              "LastWorkflowId": "System.String",
+              "ProvisioningState": "System.String",
+              "ServerEndpointName": "System.String",
+              "ServerResourceId": "System.String",
+              "ServerLocalPath": "System.String",
+              "StorageSyncServiceName": "System.String",
               "ResourceGroupName": "System.String",
               "Type": "System.String"
             },
@@ -11834,22 +11866,26 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
                   "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=0.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "SyncStatus": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpointHealth",
-                    "VolumeFreeSpacePercent": "System.Nullable`1[System.Int32]",
                     "TierFilesOlderThanDays": "System.Nullable`1[System.Int32]",
-                    "SyncGroupName": "System.String",
-                    "StorageSyncServiceName": "System.String",
-                    "ServerLocalPath": "System.String",
-                    "ServerResourceId": "System.String",
-                    "ServerEndpointName": "System.String",
-                    "ProvisioningState": "System.String",
-                    "LastWorkflowId": "System.String",
-                    "LastOperationName": "System.String",
-                    "FriendlyName": "System.String",
-                    "CloudTiering": "System.String",
+                    "VolumeFreeSpacePercent": "System.Nullable`1[System.Int32]",
                     "ResourceId": "System.String",
+                    "OfflineDataTransferStorageAccountTenantId": "System.String",
+                    "OfflineDataTransferStorageAccountResourceId": "System.String",
+                    "OfflineDataTransferShareName": "System.String",
+                    "OfflineDataTransfer": "System.String",
+                    "CloudTiering": "System.String",
+                    "SyncGroupName": "System.String",
+                    "FriendlyName": "System.String",
+                    "LastOperationName": "System.String",
+                    "LastWorkflowId": "System.String",
+                    "ProvisioningState": "System.String",
+                    "ServerEndpointName": "System.String",
+                    "ServerResourceId": "System.String",
+                    "ServerLocalPath": "System.String",
+                    "StorageSyncServiceName": "System.String",
                     "ResourceGroupName": "System.String",
                     "Type": "System.String"
                   },
@@ -12250,7 +12286,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSCloudEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSCloudEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=0.8.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSCloudEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BackupEnabled": "System.Nullable`1[System.Boolean]",
               "SyncGroupName": "System.String",
@@ -12375,7 +12411,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=0.8.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SyncGroupName": "System.String",
               "StorageSyncServiceName": "System.String",
@@ -12658,7 +12694,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
                   "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=0.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "SyncGroupName": "System.String",
                     "StorageSyncServiceName": "System.String",
@@ -12965,7 +13001,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSCloudEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSCloudEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=0.8.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSCloudEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BackupEnabled": "System.Nullable`1[System.Boolean]",
               "SyncGroupName": "System.String",
@@ -13090,7 +13126,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=0.8.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SyncGroupName": "System.String",
               "StorageSyncServiceName": "System.String",
@@ -13545,7 +13581,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
                   "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=0.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "SyncGroupName": "System.String",
                     "StorageSyncServiceName": "System.String",
@@ -14165,7 +14201,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSCloudEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSCloudEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=0.8.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSCloudEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BackupEnabled": "System.Nullable`1[System.Boolean]",
               "SyncGroupName": "System.String",
@@ -14416,7 +14452,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
                   "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSCloudEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSCloudEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=0.8.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSCloudEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BackupEnabled": "System.Nullable`1[System.Boolean]",
                     "SyncGroupName": "System.String",
@@ -15081,7 +15117,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Evaluation.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Evaluation.Models.PSStorageSyncValidation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Evaluation.Models.PSStorageSyncValidation, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=0.8.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Evaluation.Models.PSStorageSyncValidation, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -15809,7 +15845,7 @@
     "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpointHealth": {
       "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
       "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpointHealth",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpointHealth, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=0.8.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpointHealth, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "UploadActivity": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncActivityStatus",
         "DownloadActivity": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncActivityStatus",
@@ -15862,7 +15898,7 @@
     "Microsoft.Azure.Commands.StorageSync.Models.PSSyncActivityStatus": {
       "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
       "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncActivityStatus",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncActivityStatus, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=0.8.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncActivityStatus, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Timestamp": "System.Nullable`1[System.DateTime]",
         "PerItemErrorCount": "System.Nullable`1[System.Int64]",
@@ -15945,7 +15981,7 @@
     "Microsoft.Azure.Commands.StorageSync.Models.PSSyncSessionStatus": {
       "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
       "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncSessionStatus",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncSessionStatus, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=0.8.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncSessionStatus, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "LastSyncTimestamp": "System.Nullable`1[System.DateTime]",
         "LastSyncSuccessTimestamp": "System.Nullable`1[System.DateTime]",

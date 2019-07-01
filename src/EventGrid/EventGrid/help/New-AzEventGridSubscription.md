@@ -17,8 +17,9 @@ Creates a new Azure Event Grid Event Subscription to a topic, Azure resource, Az
 New-AzEventGridSubscription [-EventSubscriptionName] <String> [-Endpoint] <String>
  [[-ResourceGroupName] <String>] [[-EndpointType] <String>] [[-SubjectBeginsWith] <String>]
  [[-SubjectEndsWith] <String>] [-SubjectCaseSensitive] [[-IncludedEventType] <String[]>] [[-Label] <String[]>]
- [-EventTtl <Int32>] [-MaxDeliveryAttempt <Int32>] [-DeadLetterEndpoint <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EventTtl <Int32>] [-MaxDeliveryAttempt <Int32>] [-DeadLetterEndpoint <String>] [-ExpirationDate <DateTime>]
+ [-AdvancedFilter <Hashtable[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdEventSubscriptionParameterSet
@@ -26,8 +27,9 @@ New-AzEventGridSubscription [-EventSubscriptionName] <String> [-Endpoint] <Strin
 New-AzEventGridSubscription [-ResourceId] <String> [-EventSubscriptionName] <String> [-Endpoint] <String>
  [[-EndpointType] <String>] [[-SubjectBeginsWith] <String>] [[-SubjectEndsWith] <String>]
  [-SubjectCaseSensitive] [[-IncludedEventType] <String[]>] [[-Label] <String[]>] [-EventTtl <Int32>]
- [-MaxDeliveryAttempt <Int32>] [-DeadLetterEndpoint <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-MaxDeliveryAttempt <Int32>] [-DeadLetterEndpoint <String>] [-ExpirationDate <DateTime>]
+ [-AdvancedFilter <Hashtable[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### EventSubscriptionCustomTopicInputObjectParameterSet
@@ -35,8 +37,29 @@ New-AzEventGridSubscription [-ResourceId] <String> [-EventSubscriptionName] <Str
 New-AzEventGridSubscription [-InputObject] <PSTopic> [-EventSubscriptionName] <String> [-Endpoint] <String>
  [[-EndpointType] <String>] [[-SubjectBeginsWith] <String>] [[-SubjectEndsWith] <String>]
  [-SubjectCaseSensitive] [[-IncludedEventType] <String[]>] [[-Label] <String[]>] [-EventTtl <Int32>]
- [-MaxDeliveryAttempt <Int32>] [-DeadLetterEndpoint <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-MaxDeliveryAttempt <Int32>] [-DeadLetterEndpoint <String>] [-ExpirationDate <DateTime>]
+ [-AdvancedFilter <Hashtable[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### EventSubscriptionDomainInputObjectParameterSet
+```
+New-AzEventGridSubscription [-DomainInputObject] <PSDomain> [-EventSubscriptionName] <String>
+ [-Endpoint] <String> [[-EndpointType] <String>] [[-SubjectBeginsWith] <String>] [[-SubjectEndsWith] <String>]
+ [-SubjectCaseSensitive] [[-IncludedEventType] <String[]>] [[-Label] <String[]>] [-EventTtl <Int32>]
+ [-MaxDeliveryAttempt <Int32>] [-DeadLetterEndpoint <String>] [-ExpirationDate <DateTime>]
+ [-AdvancedFilter <Hashtable[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### EventSubscriptionDomainTopicInputObjectParameterSet
+```
+New-AzEventGridSubscription [-DomainTopicInputObject] <PSDomainTopic> [-EventSubscriptionName] <String>
+ [-Endpoint] <String> [[-EndpointType] <String>] [[-SubjectBeginsWith] <String>] [[-SubjectEndsWith] <String>]
+ [-SubjectCaseSensitive] [[-IncludedEventType] <String[]>] [[-Label] <String[]>] [-EventTtl <Int32>]
+ [-MaxDeliveryAttempt <Int32>] [-DeadLetterEndpoint <String>] [-ExpirationDate <DateTime>]
+ [-AdvancedFilter <Hashtable[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CustomTopicEventSubscriptionParameterSet
@@ -44,7 +67,28 @@ New-AzEventGridSubscription [-InputObject] <PSTopic> [-EventSubscriptionName] <S
 New-AzEventGridSubscription [-EventSubscriptionName] <String> [-Endpoint] <String>
  [-ResourceGroupName] <String> [-TopicName] <String> [[-EndpointType] <String>] [[-SubjectBeginsWith] <String>]
  [[-SubjectEndsWith] <String>] [-SubjectCaseSensitive] [[-IncludedEventType] <String[]>] [[-Label] <String[]>]
- [-EventTtl <Int32>] [-MaxDeliveryAttempt <Int32>] [-DeadLetterEndpoint <String>]
+ [-EventTtl <Int32>] [-MaxDeliveryAttempt <Int32>] [-DeadLetterEndpoint <String>] [-ExpirationDate <DateTime>]
+ [-AdvancedFilter <Hashtable[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### DomainEventSubscriptionParameterSet
+```
+New-AzEventGridSubscription [-EventSubscriptionName] <String> [-Endpoint] <String>
+ [-ResourceGroupName] <String> [-DomainName] <String> [[-EndpointType] <String>]
+ [[-SubjectBeginsWith] <String>] [[-SubjectEndsWith] <String>] [-SubjectCaseSensitive]
+ [[-IncludedEventType] <String[]>] [[-Label] <String[]>] [-EventTtl <Int32>] [-MaxDeliveryAttempt <Int32>]
+ [-DeadLetterEndpoint <String>] [-ExpirationDate <DateTime>] [-AdvancedFilter <Hashtable[]>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DomainTopicEventSubscriptionParameterSet
+```
+New-AzEventGridSubscription [-EventSubscriptionName] <String> [-Endpoint] <String>
+ [-ResourceGroupName] <String> [-DomainName] <String> -DomainTopicName <String> [[-EndpointType] <String>]
+ [[-SubjectBeginsWith] <String>] [[-SubjectEndsWith] <String>] [-SubjectCaseSensitive]
+ [[-IncludedEventType] <String[]>] [[-Label] <String[]>] [-EventTtl <Int32>] [-MaxDeliveryAttempt <Int32>]
+ [-DeadLetterEndpoint <String>] [-ExpirationDate <DateTime>] [-AdvancedFilter <Hashtable[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -58,28 +102,28 @@ To create an event subscription to a supported Azure resource, specify the full 
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 PS C:\> New-AzEventGridSubscription -ResourceGroup MyResourceGroup -TopicName Topic1 -Endpoint https://requestb.in/19qlscd1 -EventSubscriptionName EventSubscription1
 ```
 
 Creates a new event subscription \`EventSubscription1\` to an Azure Event Grid topic \`Topic1\` in resource group \`MyResourceGroupName\` with the webhook destination endpoint https://requestb.in/19qlscd1. This event subscription uses default filters.
 
 ### Example 2
-```
+```powershell
 PS C:\> New-AzEventGridSubscription -ResourceGroup MyResourceGroupName -Endpoint https://requestb.in/19qlscd1 -EventSubscriptionName EventSubscription1
 ```
 
 Creates a new event subscription \`EventSubscription1\` to a resource group \`MyResourceGroupName\` with the webhook destination endpoint https://requestb.in/19qlscd1. This event subscription uses default filters.
 
 ### Example 3
-```
+```powershell
 PS C:\> New-AzEventGridSubscription -Endpoint https://requestb.in/19qlscd1 -EventSubscriptionName EventSubscription1
 ```
 
 Creates a new event subscription \`EventSubscription1\` to the currently selected Azure subscription with the webhook destination endpoint https://requestb.in/19qlscd1. This event subscription uses default filters.
 
 ### Example 4
-```
+```powershell
 PS C:\> $includedEventTypes = "Microsoft.Resources.ResourceWriteFailure", "Microsoft.Resources.ResourceWriteSuccess"
 PS C:\> $labels = "Finance", "HR"
 PS C:\> New-AzEventGridSubscription -Endpoint https://requestb.in/19qlscd1 -EventSubscriptionName EventSubscription1 -SubjectBeginsWith "TestPrefix" -SubjectEndsWith "TestSuffix" -IncludedEventType $includedEventTypes -Label $labels
@@ -88,27 +132,42 @@ PS C:\> New-AzEventGridSubscription -Endpoint https://requestb.in/19qlscd1 -Even
 Creates a new event subscription \`EventSubscription1\` to the currently selected Azure subscription with the webhook destination endpoint https://requestb.in/19qlscd1. This event subscription specifies the additional filters for event types and subject, and only events matching those filters will be delivered to the destination endpoint.
 
 ### Example 5
-```
+```powershell
 PS C:\> New-AzEventGridSubscription -EventSubscriptionName EventSubscription1 -EndpointType "eventhub" -Endpoint "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.EventHub/namespaces/ContosoNamespace/eventhubs/EH1"
 ```
 
 Creates a new event subscription \`EventSubscription1\` to the currently selected Azure subscription with the specified event hub as the destination for events. This event subscription uses default filters.
 
 ### Example 6
-```
+```powershell
 PS C:\> New-AzEventGridSubscription -ResourceId "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.EventHub/namespaces/ContosoNamespace" -Endpoint https://requestb.in/19qlscd1 -EventSubscriptionName EventSubscription1
 ```
 
-Creates a new event subscription \`EventSubscription1\` to an EventHub namespace with the specified webhhok destination endpoint https://requestb.in/19qlscd1. This event subscription uses default filters.
+Creates a new event subscription \`EventSubscription1\` to an EventHub namespace with the specified webhook destination endpoint https://requestb.in/19qlscd1. This event subscription uses default filters.
 
 ## PARAMETERS
+
+### -AdvancedFilter
+Advanced filter that specifies an array of multiple Hashtable values that are used for the attribute-based filtering. Each Hashtable value has the following keys-value info: Operation, Key and Value or Values. Operator can be one of the following values: NumberIn, NumberNotIn, NumberLessThan, NumberGreaterThan, NumberLessThanOrEquals, NumberGreaterThanOrEquals, BoolEquals, StringIn, StringNotIn, StringBeginsWith, StringEndsWith or StringContains. Key represents the payload property where the advanced filtering policies are applied. Finally, Value or Values represent the value or set of values to be matched. This can be a single value of the corresponding type or an array of values. As an example of the advanced filter parameters: $AdvancedFilters=@($AdvFilter1, $AdvFilter2) where $AdvFilter1=@{operator="NumberIn"; key="Data.Key1"; Values=@(1,2)} and $AdvFilter2=@{operator="StringBringsWith"; key="Subject"; Values=@("SubjectPrefix1","SubjectPrefix2")}
+
+```yaml
+Type: System.Collections.Hashtable[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DeadLetterEndpoint
 The endpoint used for storing undelivered events. Specify the Azure resource ID of a Storage blob container. For example: /subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/Microsoft.Storage/storageAccounts/[StorageAccountName]/blobServices/default/containers/[ContainerName].
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet
+Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet, DomainEventSubscriptionParameterSet, DomainTopicEventSubscriptionParameterSet
 Aliases:
 
 Required: False
@@ -120,7 +179,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet
+Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet, EventSubscriptionDomainInputObjectParameterSet, EventSubscriptionDomainTopicInputObjectParameterSet
 Aliases:
 
 Required: False
@@ -145,14 +204,74 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DomainInputObject
+EventGrid Domain object.
+
+```yaml
+Type: Microsoft.Azure.Commands.EventGrid.Models.PSDomain
+Parameter Sets: EventSubscriptionDomainInputObjectParameterSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -DomainName
+The name of the Event Grid domain to which the event subscription should be created.
+
+```yaml
+Type: System.String
+Parameter Sets: DomainEventSubscriptionParameterSet, DomainTopicEventSubscriptionParameterSet
+Aliases:
+
+Required: True
+Position: 3
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DomainTopicInputObject
+EventGrid Domain Topic object.
+
+```yaml
+Type: Microsoft.Azure.Commands.EventGrid.Models.PSDomainTopic
+Parameter Sets: EventSubscriptionDomainTopicInputObjectParameterSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -DomainTopicName
+The name of the domain topic to which the event subscription should be created.
+
+```yaml
+Type: System.String
+Parameter Sets: DomainTopicEventSubscriptionParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Endpoint
 Event subscription destination endpoint.
-This can be a webhook URL, or the Azure resource ID of an EventHub, storage queue or hybridconnection. For example, the resource ID for a hybrid connection takes the following form: /subscriptions/[Azure Subscription ID]/resourceGroups/[ResourceGroupName]/providers/Microsoft.Relay/namespaces/[NamespaceName]/hybridConnections/[HybridConnectionName]. It is expected that the destination endpoint to be created and available for use before executing any Event Grid cmdlets.
+This can be a webhook URL, or the Azure resource ID of an EventHub, storage queue, hybridconnection or servicebusqueue. For example, the resource ID for a hybrid connection takes the following form: /subscriptions/[Azure Subscription ID]/resourceGroups/[ResourceGroupName]/providers/Microsoft.Relay/namespaces/[NamespaceName]/hybridConnections/[HybridConnectionName]. It is expected that the destination endpoint to be created and available for use before executing any Event Grid cmdlets.
 
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet
+Parameter Sets: ResourceGroupNameParameterSet, CustomTopicEventSubscriptionParameterSet, DomainEventSubscriptionParameterSet, DomainTopicEventSubscriptionParameterSet
 Aliases:
 
 Required: True
@@ -164,7 +283,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet
+Parameter Sets: ResourceIdEventSubscriptionParameterSet, EventSubscriptionCustomTopicInputObjectParameterSet, EventSubscriptionDomainInputObjectParameterSet, EventSubscriptionDomainTopicInputObjectParameterSet
 Aliases:
 
 Required: True
@@ -176,14 +295,13 @@ Accept wildcard characters: False
 
 ### -EndpointType
 Endpoint Type.
-This can be webhook, eventhub, storagequeue, or hybridconnection. Default value is webhook.
-
+This can be webhook, eventhub, storagequeue, hybridconnection or servicebusqueue. Default value is webhook.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet
+Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet, DomainEventSubscriptionParameterSet, DomainTopicEventSubscriptionParameterSet
 Aliases:
-Accepted values: webhook, eventhub, storagequeue, hybridconnection
+Accepted values: webhook, eventhub, storagequeue, hybridconnection, servicebusqueue
 
 Required: False
 Position: 4
@@ -194,9 +312,9 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet
+Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet, EventSubscriptionDomainInputObjectParameterSet, EventSubscriptionDomainTopicInputObjectParameterSet
 Aliases:
-Accepted values: webhook, eventhub, storagequeue, hybridconnection
+Accepted values: webhook, eventhub, storagequeue, hybridconnection, servicebusqueue
 
 Required: False
 Position: 4
@@ -210,7 +328,7 @@ The name of the event subscription
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet
+Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet, DomainEventSubscriptionParameterSet, DomainTopicEventSubscriptionParameterSet
 Aliases:
 
 Required: True
@@ -222,7 +340,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet
+Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet, EventSubscriptionDomainInputObjectParameterSet, EventSubscriptionDomainTopicInputObjectParameterSet
 Aliases:
 
 Required: True
@@ -237,7 +355,7 @@ The time in minutes for the event delivery. This value must be between 1 and 144
 
 ```yaml
 Type: System.Int32
-Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet
+Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet, DomainEventSubscriptionParameterSet, DomainTopicEventSubscriptionParameterSet
 Aliases:
 
 Required: False
@@ -249,7 +367,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Int32
-Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet
+Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet, EventSubscriptionDomainInputObjectParameterSet, EventSubscriptionDomainTopicInputObjectParameterSet
 Aliases:
 
 Required: False
@@ -259,12 +377,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ExpirationDate
+Determines the expiration DateTime for the event subscription after which event subscription will retire.
+
+```yaml
+Type: System.DateTime
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -IncludedEventType
 Filter that specifies a list of event types to include.If not specified, all event types will be included.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet
+Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet, DomainEventSubscriptionParameterSet, DomainTopicEventSubscriptionParameterSet
 Aliases:
 
 Required: False
@@ -276,7 +409,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String[]
-Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet
+Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet, EventSubscriptionDomainInputObjectParameterSet, EventSubscriptionDomainTopicInputObjectParameterSet
 Aliases:
 
 Required: False
@@ -306,7 +439,7 @@ Labels for the event subscription
 
 ```yaml
 Type: System.String[]
-Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet
+Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet, DomainEventSubscriptionParameterSet, DomainTopicEventSubscriptionParameterSet
 Aliases:
 
 Required: False
@@ -318,7 +451,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String[]
-Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet
+Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet, EventSubscriptionDomainInputObjectParameterSet, EventSubscriptionDomainTopicInputObjectParameterSet
 Aliases:
 
 Required: False
@@ -333,7 +466,7 @@ The maximum number of attempts to deliver the event. This value must be between 
 
 ```yaml
 Type: System.Int32
-Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet
+Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet, DomainEventSubscriptionParameterSet, DomainTopicEventSubscriptionParameterSet
 Aliases:
 
 Required: False
@@ -345,7 +478,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Int32
-Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet
+Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet, EventSubscriptionDomainInputObjectParameterSet, EventSubscriptionDomainTopicInputObjectParameterSet
 Aliases:
 
 Required: False
@@ -372,7 +505,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: CustomTopicEventSubscriptionParameterSet
+Parameter Sets: CustomTopicEventSubscriptionParameterSet, DomainEventSubscriptionParameterSet, DomainTopicEventSubscriptionParameterSet
 Aliases: ResourceGroup
 
 Required: True
@@ -403,7 +536,7 @@ If not specified, events with all subject prefixes will be included.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet
+Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet, DomainEventSubscriptionParameterSet, DomainTopicEventSubscriptionParameterSet
 Aliases:
 
 Required: False
@@ -415,7 +548,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet
+Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet, EventSubscriptionDomainInputObjectParameterSet, EventSubscriptionDomainTopicInputObjectParameterSet
 Aliases:
 
 Required: False
@@ -447,7 +580,7 @@ If not specified, events with all subject suffixes will be included.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet
+Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet, DomainEventSubscriptionParameterSet, DomainTopicEventSubscriptionParameterSet
 Aliases:
 
 Required: False
@@ -459,7 +592,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet
+Parameter Sets: EventSubscriptionCustomTopicInputObjectParameterSet, EventSubscriptionDomainInputObjectParameterSet, EventSubscriptionDomainTopicInputObjectParameterSet
 Aliases:
 
 Required: False
@@ -524,7 +657,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.EventGrid.Models.PSTopic
 
+### Microsoft.Azure.Commands.EventGrid.Models.PSDomain
+
+### Microsoft.Azure.Commands.EventGrid.Models.PSDomainTopic
+
 ### System.String[]
+
+### System.Int32
 
 ## OUTPUTS
 
