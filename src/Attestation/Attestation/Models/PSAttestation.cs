@@ -12,15 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Attestation.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Collections;
-using Microsoft.Azure.Management.Internal.Resources.Utilities;
-using ResourceManagement = Microsoft.Azure.Management.Internal.Resources.Models;
 
 namespace Microsoft.Azure.Commands.Attestation.Models
 {

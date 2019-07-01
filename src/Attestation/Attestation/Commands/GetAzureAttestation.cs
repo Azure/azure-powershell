@@ -13,15 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Attestation.Models;
-using Microsoft.Azure.Commands.Attestation.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using System;
-using System.Collections;
 using System.Management.Automation;
-using System.Runtime.InteropServices.ComTypes;
-using System.Collections.Generic;
-using System.Text;
 using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Attestation
