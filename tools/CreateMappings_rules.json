@@ -141,7 +141,7 @@
     { "regex":  "ManagementPartner", "alias":  "Management Partner"  },
     { "regex": "DevSpaces", "group": "DevSpaces", "alias": "DevSpaces" },
     { "regex": "SignalR", "alias": "SignalR" },
-    { "regex": "Search", "alias": "Search" },
+    { "regex": "AzSearch", "alias": "Search" },
     { "regex": "ResourceGraph", "alias": "ResourceGraph" },
     { "regex": "Security", "alias": "Security" },
     { "regex": "Kusto", "alias": "Kusto" },
@@ -152,5 +152,7 @@
     { "regex": "DeploymentManager", "alias": "Deployment Manager" },
     { "regex": "Peering", "group": "Peering", "alias": "Peering" },
     { "regex": "PeerAsn", "group": "Peering", "alias": "Peer Asn" },
-    { "regex": "NetAppFiles", "alias": "NetApp Files" }
+    { "regex": "NetAppFiles", "alias": "NetApp Files" },
+    { "regex": "Attestation", "alias": "Attestation" },
+    { "regex": "ManagedServices", "group": "Managed Services", "alias": "Managed Services" }
 ]

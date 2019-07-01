@@ -19,6 +19,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
@@ -63,7 +65,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         /// <summary>
         /// Gets or sets the file system locations.
         /// </summary>
-        public FileSystemLocations fileSystemLocations { get; set; }
+        [JsonProperty(PropertyName = "fileSystemLocations")]
+        public FileSystemLocations FileSystemLocations { get; set; }
 
         #endregion
     }
@@ -78,12 +81,14 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         /// <summary>
         /// Gets or sets the linux file type log paths.
         /// </summary>
-        public string[] linuxFileTypeLogPaths { get; set; }
+        [JsonProperty(PropertyName = "linuxFileTypeLogPaths")]
+        public string[] LinuxFileTypeLogPaths { get; set; }
 
         /// <summary>
         /// Gets or sets the windows file type log paths.
         /// </summary>
-        public string[] windowsFileTypeLogPaths { get; set; }
+        [JsonProperty(PropertyName = "windowsFileTypeLogPaths")]
+        public string[] WindowsFileTypeLogPaths { get; set; }
 
         #endregion
     }
@@ -98,7 +103,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         /// <summary>
         /// Gets or sets the regex delimiter.
         /// </summary>
-        public RegexDelimiter regexDelimiter { get; set; }
+        [JsonProperty(PropertyName = "regexDelimiter")]
+        public RegexDelimiter RegexDelimiter { get; set; }
 
         #endregion
     }
@@ -113,17 +119,20 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         /// <summary>
         /// Gets or sets the match index.
         /// </summary>
-        public int matchIndex { get; set; }
+        [JsonProperty(PropertyName = "matchIndex")]
+        public int MatchIndex { get; set; }
 
         /// <summary>
         /// Gets or sets the numberd group.
         /// </summary>
-        public string numberdGroup { get; set; }
+        [JsonProperty(PropertyName = "numberdGroup")]
+        public string NumberdGroup { get; set; }
 
         /// <summary>
         /// Gets or sets the pattern.
         /// </summary>
-        public string pattern { get; set; }
+        [JsonProperty(PropertyName = "pattern")]
+        public string Pattern { get; set; }
 
         #endregion
     }
@@ -138,12 +147,14 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         /// <summary>
         /// Gets or sets the location.
         /// </summary>
-        public Location location { get; set; }
+        [JsonProperty(PropertyName = "location")]
+        public Location Location { get; set; }
 
         /// <summary>
         /// Gets or sets the record delimiter.
         /// </summary>
-        public RecordDelimiter recordDelimiter { get; set; }
+        [JsonProperty(PropertyName = "recordDelimiter")]
+        public RecordDelimiter RecordDelimiter { get; set; }
 
         #endregion
     }
@@ -158,12 +169,28 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         /// <summary>
         /// Gets or sets the join string regex.
         /// </summary>
-        public string joinStringRegex { get; set; }
+        [JsonProperty("joinStringRegex")]
+        public string JoinStringRegex { get; set; }
+
+        /// <summary>
+        /// Gets or sets the regex string.
+        /// </summary>
+        [JsonIgnore]
+        public string Regex { get; set; }
 
         /// <summary>
         /// Gets or sets the regex.
         /// </summary>
-        public string regex { get; set; }
+        [CmdletParameterBreakingChange(nameof(Regex), OldParamaterType = typeof(string), NewParameterTypeName = nameof(RegexDelimiter))]
+        [JsonConverter(typeof(RegexDelimiterJsonConverter))]
+        [JsonProperty("regex")]
+        public RegexDelimiter[] RegexDelimiters { get; set; }
+
+        ///<summary>
+        /// Gets or sets the FormatString
+        /// </summary>
+        [JsonProperty("formatString")]
+        public string FormatString { get; set; }
 
         #endregion
     }
@@ -178,7 +205,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         /// <summary>
         /// Gets or sets the date time extraction.
         /// </summary>
-        public DateTimeExtraction dateTimeExtraction { get; set; }
+        [JsonProperty(PropertyName = "dateTimeExtraction")]
+        public DateTimeExtraction DateTimeExtraction { get; set; }
 
         #endregion
     }
@@ -193,18 +221,44 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         /// <summary>
         /// Gets or sets the extraction name.
         /// </summary>
-        public string extractionName { get; set; }
+        [JsonProperty(PropertyName = "extractionName")]
+        public string ExtractionName { get; set; }
 
         /// <summary>
         /// Gets or sets the extraction properties.
         /// </summary>
-        public ExtractionProperties extractionProperties { get; set; }
+        [JsonProperty(PropertyName = "extractionProperties")]
+        public ExtractionProperties ExtractionProperties { get; set; }
 
         /// <summary>
         /// Gets or sets the extraction type.
         /// </summary>
-        public string extractionType { get; set; }
+        [JsonProperty(PropertyName = "extractionType")]
+        public string ExtractionType { get; set; }
 
         #endregion
+    }
+
+    // This converter allows backward compatibility
+    public class RegexDelimiterJsonConverter : JsonConverter
+    {
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        {
+            switch (reader.TokenType)
+            {
+                case JsonToken.StartArray:
+                    JToken token = JToken.Load(reader);
+                    return token.ToObject<RegexDelimiter[]>();
+                case JsonToken.String:
+                    // Satisfy case in which user uses the old regex property in input
+                    return new[] {new RegexDelimiter {MatchIndex = 0, Pattern = (string) reader.Value}};
+                default:
+                    throw new JsonSerializationException();
+            }
+        }
+
+        public override bool CanWrite => false;
+        public override bool CanConvert(Type objectType) => throw new NotImplementedException();
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) => throw new NotImplementedException();
     }
 }

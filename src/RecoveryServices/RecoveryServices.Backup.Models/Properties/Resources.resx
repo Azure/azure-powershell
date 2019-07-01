@@ -568,4 +568,7 @@ Please contact Microsoft for further assistance.</value>
   <data name="InstantRPRetentionDaysException" xml:space="preserve">
     <value>For SnapshotRetentionRangeInDays, the minimum value is 1 and maximum is 5. For weekly backup policies, the only allowed value is 5. Please set the value accordingly</value>
   </data>
+  <data name="RetentionDurationCountInDaysInvalidException" xml:space="preserve">
+    <value>RetentionDuration in Days should be from 7 - 9999</value>
+  </data>
 </root>

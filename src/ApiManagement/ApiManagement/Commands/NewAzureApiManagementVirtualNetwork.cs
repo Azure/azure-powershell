@@ -17,8 +17,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
     using Microsoft.Azure.Commands.ApiManagement.Models;
     using ResourceManager.Common;
-    using ResourceManager.Common.ArgumentCompleters;
-    using System;
     using System.Management.Automation;
 
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementVirtualNetwork"), OutputType(typeof(PsApiManagementVirtualNetwork))]

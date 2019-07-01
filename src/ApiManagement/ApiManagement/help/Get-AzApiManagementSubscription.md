@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: 227EF8A2-E04A-4F6B-B66E-E77F1276A7E4
@@ -25,6 +25,12 @@ Get-AzApiManagementSubscription -Context <PsApiManagementContext> [-Subscription
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### GetByProductIdAndUser
+```
+Get-AzApiManagementSubscription -Context <PsApiManagementContext> -UserId <String> -ProductId <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ### GetByUserId
 ```
 Get-AzApiManagementSubscription -Context <PsApiManagementContext> [-UserId <String>]
@@ -37,6 +43,12 @@ Get-AzApiManagementSubscription -Context <PsApiManagementContext> [-ProductId <S
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### GetByScope
+```
+Get-AzApiManagementSubscription -Context <PsApiManagementContext> -Scope <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **Get-AzApiManagementSubscription** cmdlet gets a specified subscription, or all subscriptions, if no subscription is specified.
 
@@ -44,7 +56,7 @@ The **Get-AzApiManagementSubscription** cmdlet gets a specified subscription, or
 
 ### Example 1: Get all subscriptions
 ```
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-East-US" -ServiceName "contoso"
 PS C:\>Get-AzApiManagementSubscription -Context $apimContext
 ```
 
@@ -52,7 +64,7 @@ This command gets all subscriptions.
 
 ### Example 2: Get a subscription with a specified ID
 ```
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-East-US" -ServiceName "contoso"
 PS C:\>Get-AzApiManagementSubscription -Context $apimContext -SubscriptionId "0123456789"
 ```
 
@@ -60,7 +72,7 @@ This command gets a subscription by ID.
 
 ### Example 3: Get all subscriptions for a user
 ```
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-East-US" -ServiceName "contoso"
 PS C:\>Get-AzApiManagementSubscription -Context $apimContext -UserId "777"
 ```
 
@@ -68,11 +80,67 @@ This command gets a user's subscriptions.
 
 ### Example 4: Get all subscriptions for a product
 ```
-PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-East-US" -ServiceName "contoso"
 PS C:\>Get-AzApiManagementSubscription -Context $apimContext -ProductId "999"
 ```
 
 This command gets all subscriptions for the product.
+
+### Example 5: Get all subscriptions for a Scope
+```
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-East-US" -ServiceName "contoso"
+PS C:\>Get-AzApiManagementSubscription -Context $apimContext -Scope "/apis"
+
+SubscriptionId    : allApScope
+UserId            :
+OwnerId           :
+ProductId         :
+Scope             : /subscriptions/subid/resourceGroups/Api-Default-East-US/providers/Microsoft.ApiManagement/service/contoso/apis
+Name              : All Api Scope
+State             : Active
+CreatedDate       : 6/18/2019 5:53:49 PM
+StartDate         :
+ExpirationDate    :
+EndDate           :
+NotificationDate  :
+PrimaryKey        : 5e48532634114fe999a6979ce0d63a64
+SecondaryKey      : 0a8efaf85a664aa0a412241015c7c8f6
+StateComment      :
+AllowTracing      : False
+Id                : /subscriptions/subid/resourceGroups/Api-Default-East-US/providers/Microsoft.ApiManagement/service/contoso/subscriptions/allApScope
+ResourceGroupName : Api-Default-East-US
+ServiceName       : contoso
+```
+
+This command gets all subscriptions which are configured for global api scope
+
+### Example 5: Get all subscriptions for a product and user scope
+```
+PS C:\>$apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-East-US" -ServiceName "contoso"
+PS C:\>Get-AzApiManagementSubscription -Context $apimContext -ProductId 59b872f28a82740f547e6270 -UserId 1
+
+SubscriptionId    : 59b872f38a82741750c8da56
+UserId            : 1
+OwnerId           : /subscriptions/subid/resourceGroups/Api-Default-East-US/providers/Microsoft.ApiManagement/service/contoso/users/1
+ProductId         : 59b872f28a82740f547e6270
+Scope             : /subscriptions/subid/resourceGroups/Api-Default-East-US/providers/Microsoft.ApiManagement/service/contoso/products/59b872f28a82740f547e6270
+Name              :
+State             : Active
+CreatedDate       : 9/12/2017 11:51:15 PM
+StartDate         : 9/12/2017 12:00:00 AM
+ExpirationDate    :
+EndDate           :
+NotificationDate  :
+PrimaryKey        : 7e64ef904b194706835febf87f729bb0
+SecondaryKey      : 0354fccef73e43feb82e5c5da17674d5
+StateComment      :
+AllowTracing      : True
+Id                : /subscriptions/subid/resourceGroups/Api-Default-East-US/providers/Microsoft.ApiManagement/service/contoso/subscriptions/59b872f38a82741750c8da56
+ResourceGroupName : Api-Default-East-US
+ServiceName       : contoso
+```
+
+This command gets all subscriptions which are configured for global api scope
 
 ## PARAMETERS
 
@@ -87,7 +155,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
@@ -112,10 +180,37 @@ If specified, this cmdlet finds all subscriptions by the product identifier.
 
 ```yaml
 Type: System.String
+Parameter Sets: GetByProductIdAndUser
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
 Parameter Sets: GetByProductId
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Scope
+Scope identifier. The Scope of the Subscription, whether it is Api Scope /apis/{apiId} or Product Scope /products/{productId} or Global API Scope /apis or Global scope /.
+
+```yaml
+Type: System.String
+Parameter Sets: GetByApiId
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -144,6 +239,18 @@ If specified, this cmdlet finds all subscriptions by the user identifier.
 
 ```yaml
 Type: System.String
+Parameter Sets: GetByProductIdAndUser
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
 Parameter Sets: GetByUserId
 Aliases:
 
@@ -155,7 +262,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

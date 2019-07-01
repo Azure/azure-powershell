@@ -64,6 +64,14 @@ PS C:\>Get-AzStorageContainer container* | Get-AzStorageBlobContent -Blob "cbox.
 
 This example uses the asterisk wildcard character and the pipeline to find and download blob content.
 
+### Example 4: Get a blob object and save it in a variable, then download blob content with the blob object
+```
+PS C:\>$blob = Get-AzStorageBlob -Container containername -Blob blobname 
+PS C:\>Get-AzStorageBlobContent -CloudBlob $blob.ICloudBlob -Destination "C:\test"
+```
+
+This example first get a blob object and save it in a variable, then download blob content with the blob object. 
+
 ## PARAMETERS
 
 ### -AsJob
@@ -119,7 +127,7 @@ If this cmdlet does not receive a successful response before the interval elapse
 ```yaml
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases:
+Aliases: ClientTimeoutPerRequestInSeconds
 
 Required: False
 Position: Named
@@ -165,7 +173,6 @@ Specifies the maximum concurrent network calls.
 You can use this parameter to limit the concurrency to throttle local CPU and bandwidth usage by specifying the maximum number of concurrent network calls.
 The specified value is an absolute count and is not multiplied by the core count.
 This parameter can help reduce network connection problems in low bandwidth environments, such as 100 kilobits per second.
-The default value is 10.
 The default value is 10.
 
 ```yaml
@@ -263,7 +270,7 @@ If the specified interval elapses before the service processes the request, the 
 ```yaml
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases:
+Aliases: ServerTimeoutPerRequestInSeconds
 
 Required: False
 Position: Named

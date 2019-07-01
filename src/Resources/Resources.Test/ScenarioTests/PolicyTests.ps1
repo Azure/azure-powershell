@@ -559,6 +559,18 @@ function Test-PolicyAssignmentWithParameters
     Assert-AreEqual $array[0] $expected.Properties.Parameters.listOfAllowedLocations.Value[0]
     Assert-AreEqual $array[1] $expected.Properties.Parameters.listOfAllowedLocations.Value[1]
 
+	# update parameters
+    # this is validation for https://github.com/Azure/azure-powershell/issues/6055
+    $actual = Set-AzPolicyAssignment -Name testPAWP -Scope $rg.ResourceId -PolicyParameter '{ "listOfAllowedLocations": { "value": [ "something", "something else" ] } }'
+    $expected = Get-AzPolicyAssignment -Name testPAWP -Scope $rg.ResourceId
+    Assert-AreEqual $expected.Name $actual.Name
+    Assert-AreEqual Microsoft.Authorization/policyAssignments $actual.ResourceType
+    Assert-AreEqual $expected.PolicyAssignmentId $actual.PolicyAssignmentId
+    Assert-AreEqual $expected.Properties.PolicyDefinitionId $policy.PolicyDefinitionId
+    Assert-AreEqual $expected.Properties.Scope $rg.ResourceId
+    Assert-AreEqual "something" $expected.Properties.Parameters.listOfAllowedLocations.Value[0]
+    Assert-AreEqual "something else" $expected.Properties.Parameters.listOfAllowedLocations.Value[1]
+
     # delete the policy assignment
     $remove = Remove-AzPolicyAssignment -Name testPAWP -Scope $rg.ResourceId
     Assert-AreEqual True $remove
@@ -628,6 +640,20 @@ function Test-PolicyAssignmentWithParameters
     Assert-NotNull $expected.Properties.Metadata
     Assert-AreEqual 'Value1' $expected.Properties.Metadata.Meta1
     Assert-AreEqual 'Value22' $expected.Properties.Metadata.Meta2.Meta22
+
+	# update parameters
+	# this is validation for https://msazure.visualstudio.com/One/_workitems/edit/4421756
+    $array2 = @("West2 US2", "West2 US22")
+    $param2 = @{"listOfAllowedLocations"=$array2}
+    $actual = Set-AzPolicyAssignment -Name testPAWP -Scope $rg.ResourceId -PolicyParameterObject $param2
+    $expected = Get-AzPolicyAssignment -Name testPAWP -Scope $rg.ResourceId
+    Assert-AreEqual $expected.Name $actual.Name
+    Assert-AreEqual Microsoft.Authorization/policyAssignments $actual.ResourceType
+    Assert-AreEqual $expected.PolicyAssignmentId $actual.PolicyAssignmentId
+    Assert-AreEqual $expected.Properties.PolicyDefinitionId $policy.PolicyDefinitionId
+    Assert-AreEqual $expected.Properties.Scope $rg.ResourceId
+    Assert-AreEqual $array2[0] $expected.Properties.Parameters.listOfAllowedLocations.Value[0]
+    Assert-AreEqual $array2[1] $expected.Properties.Parameters.listOfAllowedLocations.Value[1]
 
     # clean up
     $remove = Remove-AzPolicyAssignment -Name testPAWP -Scope $rg.ResourceId
@@ -872,6 +898,7 @@ $somePolicyDefinition = 'somePolicyDefinition'
 $somePolicySetDefinition = 'somePolicySetDefinition'
 $somePolicyParameter = 'somePolicyParameter'
 $someParameterObject = @{'parm1'='a'; 'parm2'='b' }
+$someDisplayName = "Some display name"
 
 # exception strings
 $parameterSetError = 'Parameter set cannot be resolved using the specified named parameters.'
@@ -881,13 +908,13 @@ $policyAssignmentNotFound = 'PolicyAssignmentNotFound : '
 $policySetDefinitionNotFound = 'PolicySetDefinitionNotFound : '
 $policyDefinitionNotFound = 'PolicyDefinitionNotFound : '
 $invalidRequestContent = 'InvalidRequestContent : The request content was invalid and could not be deserialized: '
-$missingSubscription = 'MissingSubscription : The request did not have a provided subscription. All requests must have an associated subscription Id.'
+$missingSubscription = 'MissingSubscription : The request did not have a subscription or a valid tenant level resource provider.'
 $undefinedPolicyParameter = 'UndefinedPolicyParameter : The policy assignment'
 $invalidPolicyRule = 'InvalidPolicyRule : Failed to parse policy rule: '
 $authorizationFailed = 'AuthorizationFailed : '
 $allSwitchNotSupported = 'The -IncludeDescendent switch is not supported for management group scopes.'
 $httpMethodNotSupported = "HttpMethodNotSupported : The http method 'DELETE' is not supported for a resource collection."
-
+$parameterNullOrEmpty = '. The argument is null or empty. Provide an argument that is not null or empty, and then try the command again.'
 <#
 .SYNOPSIS
 Tests Get-AzPolicyAssignment parameter combinations
@@ -982,7 +1009,7 @@ function Test-RemovePolicyAssignmentParameters
     Assert-ThrowsContains { Remove-AzPolicyAssignment } $missingParameters
 
     # validate parameter combinations starting with -Name
-    Assert-ThrowsContains { New-AzPolicyAssignment -Name $someName } $missingParameters
+    Assert-ThrowsContains { Remove-AzPolicyAssignment -Name $someName } $missingParameters
     $ok = Remove-AzPolicyAssignment -Name $someName -Scope $goodScope
     Assert-AreEqual True $ok
     Assert-ThrowsContains { Remove-AzPolicyAssignment -Name $someName -Id $someId } $parameterSetError
@@ -1006,23 +1033,98 @@ function Test-SetPolicyAssignmentParameters
     $subscriptionId = (Get-AzContext).Subscription.Id
     $goodScope = "/subscriptions/$subscriptionId"
     $goodId = "$goodScope/providers/Microsoft.Authorization/policyAssignments/$someName"
-    $goodObject = Get-AzPolicyAssignment | ?{ $_.Name -like '*test*' -or $_.Properties.Description -like '*test*' } | select -First 1
+    $someParameters = '{ "someKindaParameter": { "value": [ "Mmmm", "Doh!" ] } }'
+	$someLocation = 'west us'
+	$someNotScope = 'not scope'
 
     # validate with no parameters
     Assert-ThrowsContains { Set-AzPolicyAssignment } $missingParameters
 
     # validate parameter combinations starting with -Name
-    Assert-ThrowsContains { New-AzPolicyAssignment -Name $someName } $missingParameters
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName } $missingParameters
     Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $goodScope } $policyAssignmentNotFound
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -NotScope $someNotScope } $missingParameters
     Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Id $someId } $parameterSetError
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -DisplayName $someDisplayName } $missingParameters
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Description $description } $missingParameters
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Metadata $metadata } $missingParameters
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -PolicyParameterObject $someParameterObject } $missingParameters
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -PolicyParameter $someParameters } $missingParameters
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -AssignIdentity } $missingParameters
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Location $someLocation } $missingParameters
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope } $missingSubscription
     Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -Id $someId } $parameterSetError
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -DisplayName $someDisplayName } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -Description $description } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -Metadata $metadata } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -PolicyParameterObject $someParameterObject } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -PolicyParameter $someParameters } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -AssignIdentity } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -Location $someLocation } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -Id $someId } $parameterSetError
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -Description $description } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -Metadata $metadata } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -PolicyParameterObject $someParameterObject } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -PolicyParameter $someParameters } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -AssignIdentity } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -Location $someLocation } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -Description $description } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -Metadata $metadata } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -PolicyParameterObject $someParameterObject } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -PolicyParameter $someParameters } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -AssignIdentity } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -Location $someLocation } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -PolicyParameterObject $someParameterObject } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -PolicyParameter $someParameters } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -AssignIdentity } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Location $someLocation } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -PolicyParameterObject $someParameterObject } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -PolicyParameter $someParameters } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -AssignIdentity } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -Location $someLocation } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -PolicyParameterObject $someParameterObject -PolicyParameter $someParameters } $parameterSetError
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -PolicyParameterObject $someParameterObject -AssignIdentity } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -PolicyParameterObject $someParameterObject -Location $someLocation } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Name $someName -Scope $someScope -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -PolicyParameterObject $someParameterObject -AssignIdentity -Location $someLocation } $missingSubscription
 
-    # validate remaining parameter combinations starting with -Scope
-    Assert-ThrowsContains { Set-AzPolicyAssignment -Scope $someScope } $missingParameters
-    Assert-ThrowsContains { Set-AzPolicyAssignment -Scope $someScope -Id $someId } $parameterSetError
-
-    # validate remaining parameter combinations starting with -Id
+	#validation parameter combinations starting with -Id
     Assert-ThrowsContains { Set-AzPolicyAssignment -Id $goodId } $policyAssignmentNotFound
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -DisplayName $someDisplayName } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -Description $description } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -Metadata $metadata } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -PolicyParameterObject $someParameterObject } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -PolicyParameter $someParameters } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -AssignIdentity } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -Location $someLocation } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -Description $description } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -Metadata $metadata } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -PolicyParameterObject $someParameterObject } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -PolicyParameter $someParameters } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -AssignIdentity } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -Location $someLocation } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -Description $description } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -Metadata $metadata } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -PolicyParameterObject $someParameterObject } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -PolicyParameter $someParameters } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -AssignIdentity } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -Location $someLocation } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -PolicyParameterObject $someParameterObject } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -PolicyParameter $someParameters } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -AssignIdentity } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Location $someLocation } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -PolicyParameterObject $someParameterObject } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -PolicyParameter $someParameters } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -AssignIdentity } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -Location $someLocation } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -PolicyParameterObject $someParameterObject -PolicyParameter $someParameters } $parameterSetError
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -PolicyParameterObject $someParameterObject -AssignIdentity } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -PolicyParameterObject $someParameterObject -Location $someLocation } $missingSubscription
+    Assert-ThrowsContains { Set-AzPolicyAssignment -Id $someId -NotScope $someNotScope -DisplayName $someDisplayName -Description $description -Metadata $metadata -PolicyParameterObject $someParameterObject -AssignIdentity -Location $someLocation } $missingSubscription
 }
 
 <#
