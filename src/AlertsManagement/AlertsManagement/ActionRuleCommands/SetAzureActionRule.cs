@@ -264,7 +264,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                  HelpMessage = "Reccurent values, if applicable." +
                     "In case of Weekly - 1,3,5 \n" +
                     "In case of Monthly - 16,24,28 \n")]
-        public List<int?> ReccurentValues { get; set; }
+        public List<int?> ReccurentValue { get; set; }
 
         /// <summary>
         /// Action rule simplified format : Action Group Id
@@ -323,9 +323,9 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                             endTime: SuppressionEndTime.Split(' ')[1]
                             );
 
-                        if (ReccurentValues.Count > 0)
+                        if (ReccurentValue.Count > 0)
                         {
-                            config.Schedule.RecurrenceValues = ReccurentValues;
+                            config.Schedule.RecurrenceValues = ReccurentValue;
                         }
                     }
 

@@ -131,8 +131,10 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// </summary>
         [Parameter(Mandatory = false,
                    ParameterSetName = AlertsListByFilterParameterSet,
-                   HelpMessage = "Include context (custom payload) of alert")]
-        [PSArgumentCompleter("true", "false")]
+                   HelpMessage = "Include context (custom payload) of alert - true/false")]
+        [Parameter(Mandatory = false,
+                   ParameterSetName = AlertByIdParameterSet,
+                   HelpMessage = "Include context (custom payload) of alert - true/false")]
         public bool IncludeContext { get; set; }
 
         /// <summary>
@@ -140,8 +142,10 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// </summary>
         [Parameter(Mandatory = false,
                    ParameterSetName = AlertsListByFilterParameterSet,
-                   HelpMessage = "Include EgressConfig")]
-        [PSArgumentCompleter("true", "false")]
+                   HelpMessage = "Include EgressConfig - true/false")]
+        [Parameter(Mandatory = false,
+                   ParameterSetName = AlertByIdParameterSet,
+                   HelpMessage = "Include EgressConfig - true/false")]
         public bool IncludeEgressConfig { get; set; }
 
         /// <summary>

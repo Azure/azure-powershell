@@ -53,7 +53,7 @@ Set-AzActionRule -ResourceGroupName <String> -Name <String> [-Description <Strin
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzActionRule -ResourceGroupName "test-rg" -Name "Test-AR" -ScopeType "ResourceGroup" -Scope "/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab","/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/Test-VMs" -SeverityCondition "Equals:Sev0,Sev1" -MonitorCondition "NotEquals:Resolved" -Description "Test description" -Status "Enabled" -ActionRuleType "Suppression" -ReccurenceType "Weekly" -SuppressionStartTime "06/26/2018 06:00:00" -SuppressionEndTime "07/27/2018 06:00:00" -ReccurentValues 1,4,6
+PS C:\> Set-AzActionRule -ResourceGroupName "test-rg" -Name "Test-AR" -ScopeType "ResourceGroup" -Scope "/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab","/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/Test-VMs" -SeverityCondition "Equals:Sev0,Sev1" -MonitorCondition "NotEquals:Resolved" -Description "Test description" -Status "Enabled" -ActionRuleType "Suppression" -ReccurenceType "Weekly" -SuppressionStartTime "06/26/2018 06:00:00" -SuppressionEndTime "07/27/2018 06:00:00" -ReccurentValue 1,4,6
 ```
 
 This cmdlet creates an action rule for supression.
@@ -267,8 +267,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ReccurentValues
-Reccurent values, if applicable.In case of Weekly - \[Saturday,Sunday\]
+### -ReccurentValue
+Reccurent values, if applicable.In case of Weekly - \[1,2\]
 In case of Monthly - \[1,3,5,30\]
 
 ```yaml
