@@ -13,8 +13,9 @@ Creates a new Azure NetApp Files (ANF) account.
 ## SYNTAX
 
 ```
-New-AzNetAppFilesAccount -ResourceGroupName <String> -Location <String> [-Tag <Hashtable>] -Name <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzNetAppFilesAccount -ResourceGroupName <String> -Location <String> -Name <String>
+ [-ActiveDirectories <PSNetAppFilesActiveDirectory[]>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,6 +40,21 @@ ProvisioningState : Succeeded
 This command creates the new ANF account "MyAnfAccount".
 
 ## PARAMETERS
+
+### -ActiveDirectories
+A hashtable array which represents the active directories
+
+```yaml
+Type: PSNetAppFilesActiveDirectory[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.

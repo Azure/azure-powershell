@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Newtonsoft.Json.Linq;
     using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
     using System;
+    using System.Collections;
     using System.IO;
     using System.Linq;
     using System.Management.Automation;
@@ -54,6 +55,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected const string PolicyParameterStringParameterSet = "PolicyParameterStringParameterSet";
         protected const string PolicySetParameterObjectParameterSet = "PolicySetParameterObjectParameterSet";
         protected const string PolicySetParameterStringParameterSet = "PolicySetParameterStringParameterSet";
+        protected const string PolicyParameterNameObjectParameterSet = "PolicyParameterNameObjectParameterSet";
+        protected const string PolicyParameterNameStringParameterSet = "PolicyParameterNameStringParameterSet";
+        protected const string PolicyParameterIdObjectParameterSet = "PolicyParameterIdObjectParameterSet";
+        protected const string PolicyParameterIdStringParameterSet = "PolicyParameterIdStringParameterSet";
 
         /// <summary>
         /// Converts the resource object to specified resource type object.
@@ -252,6 +257,39 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     apiVersion: apiVersion,
                     cancellationToken: this.CancellationToken.Value)
                 .ConfigureAwait(continueOnCapturedContext: false);
+        }
+
+        /// <summary>
+        /// Resolve given input parameters into JSON parameter object for put
+        /// </summary>
+        /// <param name="policyParameter"></param>
+        /// <param name="policyParameterObject"></param>
+        /// <returns></returns>
+        protected JObject GetParameters(string policyParameter, Hashtable policyParameterObject)
+        {
+            // Load parameters from local file or literal
+            if (policyParameter != null)
+            {
+                string policyParameterFilePath = this.TryResolvePath(policyParameter);
+                return FileUtilities.DataStore.FileExists(policyParameterFilePath)
+                    ? JObject.Parse(FileUtilities.DataStore.ReadFileAsText(policyParameterFilePath))
+                    : JObject.Parse(policyParameter);
+            }
+
+            // Load from PS object
+            if (policyParameterObject != null)
+            {
+                return policyParameterObject.ToJObjectWithValue();
+            }
+
+            // Load dynamic parameters
+            var parameters = PowerShellUtilities.GetUsedDynamicParameters(AsJobDynamicParameters, MyInvocation);
+            if (parameters.Count() > 0)
+            {
+                return MyInvocation.BoundParameters.ToJObjectWithValue(parameters.Select(p => p.Name));
+            }
+
+            return null;
         }
     }
 }
