@@ -60,17 +60,15 @@ namespace Microsoft.Azure.Commands.AlertsManagement.OutputModels
         /// Initializes a new instance of the PSSmartGroupDetails class.
         /// </summary>
         /// <param name="inputDictionary">The input IDictionary</param>
-        public PSSmartGroupDetails(IList<SmartGroupAggregatedProperty> resources, IList<SmartGroupAggregatedProperty> resourceTypes,
-            IList<SmartGroupAggregatedProperty> resourceGroups, IList<SmartGroupAggregatedProperty> monitorServices, IList<SmartGroupAggregatedProperty> monitorConditions,
-            IList<SmartGroupAggregatedProperty> alertSeverities, IList<SmartGroupAggregatedProperty> alertStates)
+        public PSSmartGroupDetails(SmartGroup smartGroup)
         {
-            this.Resources = resources;
-            this.ResourceTypes = resourceTypes;
-            this.ResourceGroups = resourceGroups;
-            this.MonitorConditions = monitorConditions;
-            this.MonitorServices = monitorServices;
-            this.AlertSeverities = alertSeverities;
-            this.AlertStates = alertStates;
+            this.Resources = smartGroup.Resources;
+            this.ResourceTypes = smartGroup.ResourceTypes;
+            this.ResourceGroups = smartGroup.ResourceGroups;
+            this.MonitorConditions = smartGroup.MonitorConditions;
+            this.MonitorServices = smartGroup.MonitorServices;
+            this.AlertSeverities = smartGroup.AlertSeverities;
+            this.AlertStates = smartGroup.AlertStates;
         }
 
         /// <summary>
