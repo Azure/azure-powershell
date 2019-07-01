@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.1.2
 * Updating the output of get activity runs, get pipeline runs, and get trigger runs ADF cmdlets to support Select-Object pipe.
 
 ## Version 1.1.1
