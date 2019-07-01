@@ -48,6 +48,7 @@ namespace Microsoft.Azure.Commands.Attestation
         [Parameter(
             Position = 0,
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = ResourceGroupParameterSet,
             HelpMessage = "Specifies the name of the ResourceID associated with the attestation being queried")]
         [ResourceGroupCompleter()]
