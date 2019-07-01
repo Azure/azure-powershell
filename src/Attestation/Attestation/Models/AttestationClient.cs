@@ -13,20 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Management.Automation;
-using System.Net;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Attestation;
-using PSAttestationProperties = Microsoft.Azure.Commands.Attestation.Properties;
 using Microsoft.Azure.Management.Attestation.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Rest.Azure;
-using Microsoft.Azure.Commands.Attestation.Models;
-using Newtonsoft.Json;
-using ErrorResponse = Microsoft.Azure.Management.Monitor.Version2018_09_01.Models.ErrorResponse;
 
 namespace Microsoft.Azure.Commands.Attestation.Models
 {

@@ -15,12 +15,7 @@
 using Microsoft.Azure.Commands.Attestation.Models;
 using Microsoft.Azure.Commands.Attestation.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Rest.Azure;
-using System;
-using System.Collections;
 using System.Management.Automation;
-using System.Runtime.InteropServices.ComTypes;
-using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Attestation
 {

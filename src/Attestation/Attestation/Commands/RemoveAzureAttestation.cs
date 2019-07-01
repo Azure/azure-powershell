@@ -13,12 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Attestation.Models;
-using Microsoft.Azure.Commands.Attestation.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using System;
-using Microsoft.Rest.Azure;
-using System.Globalization;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Attestation
