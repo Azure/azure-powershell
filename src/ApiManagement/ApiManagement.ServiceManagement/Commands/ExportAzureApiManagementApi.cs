@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "Specification format (Wadl, Swagger or Wsdl). This parameter is required.")]
+            HelpMessage = "Specification format (Wadl, Swagger, Wsdl or OpenApi). This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public PsApiManagementApiFormat SpecificationFormat { get; set; }
 

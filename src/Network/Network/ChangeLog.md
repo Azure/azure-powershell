@@ -18,9 +18,65 @@
         - Additional information about change #1
 --->
 ## Upcoming Release
+
+## Version 1.11.0
+* Added `RoutingPreference` to public ip tags
+* Improve examples for `Get-AzNetworkServiceTag` reference documentation
+
+## Version 1.10.0
+* Add support for Virtual Network Gateway Resource
+    - New cmdlets
+        - Get-AzVirtualNetworkGatewayVpnClientConnectionHealth
+* Add AvailablePrivateEndpointType
+    - New cmdlets 
+        - Get-AzAvailablePrivateEndpointType
+* Add PrivatePrivateLinkService
+    - New cmdlets 
+        - Get-AzPrivateLinkService 
+        - New-AzPrivateLinkService
+        - Remove-AzPrivateLinkService
+        - New-AzPrivateLinkServiceIpConfig
+        - Set-AzPrivateEndpointConnection
+* Add PrivateEndpoint
+    - New cmdlets
+        - Get-AzPrivateEndpoint
+        - New-AzPrivateEndpoint
+        - Remove-AzPrivateEndpoint
+        - New-AzPrivateLinkServiceConnection
+* Updated below commands for feature: UseLocalAzureIpAddress flag on VpnConnection
+    - Updated New-AzVpnConnection: Added optional parameter -UseLocalAzureIpAddress to indicate that local azure ip address should be used as source address while initiating connection.
+    - Updated Set-AzVpnConnection: Added optional parameter -UseLocalAzureIpAddress to indicate that local azure ip address should be used as source address while initiating connection.
+* Added readonly field PeeredConnections in ExpressRoute peering.
+* Added readonly field GlobalReachEnabled in ExpressRoute.
+* Added breaking change attribute to call out deprecation of AllowGlobalReach field in ExpressRouteCircuit model
+* Fixed Issue 8756 Error using TargetListenerID with AzApplicationGatewayRedirectConfiguration cmdlets
+* Fixed bug in New-AzApplicationGatewayPathRuleConfig that prevented the rewrite ruleset from being set.
+* Fixed displaying of VirtualNetworkTaps in NetworkInterfaceIpConfiguration
+* Fixed Cortex Get cmdlets for list all part
+* Fixed VirtualHub reference creation for ExpressRouteGateways, VpnGateway
+* Added support for Availability Zones in AzureFirewall and NatGateway
+* Added cmdlet Get-AzNetworkServiceTag
+* Add support for multiple public IP addresses for Azure Firewall
+    - Updated New-AzFirewall cmdlet:
+        - Added parameter -PublicIpAddress which accepts one or more Public IP Address objects
+        - Added parameter -VirtualNetwork which accepts a Virtual Network object
+        - Added methods AddPublicIpAddress and RemovePublicIpAddress on firewall object - these accept a Public IP Address object as input
+        - Deprecated parameters -PublicIpName and -VirtualNetworkName 
+* Updated below commands for feature: Set VpnClient AAD authentication options to Virtual network gateway resource. 
+    - Updated New-AzVirtualNetworkGateway: Added optional parameters AadTenantUri,AadAudienceId,AadIssuerUri to set VpnClient AAD authentication options on Gateway.
+    - Updated Set-AzVirtualNetworkGateway: Added optional parameter AadTenantUri,AadAudienceId,AadIssuerUri to set VpnClient AAD authentication options on Gateway.
+    - Updated Set-AzVirtualNetworkGateway: Added optional switch parameter RemoveAadAuthentication to remove VpnClient AAD authentication options from Gateway.
+
+## Version 1.9.0
+* Update ResourceId and InputObject for Nat Gateway
+    - Add alias for ResourceId and InputObject
+* Removed WAF RuleSetVersion validation
+
+## Version 1.8.1
 * Add DisableBgpRoutePropagation flag to Effective Route Table output
     - Updated cmdlet:
         - Get-AzEffectiveRouteTable
+* Fix double dash in New-AzApplicationGatewayTrustedRootCertificate documentation
 
 ## Version 1.8.0
 * Add support for Nat Gateway Resource

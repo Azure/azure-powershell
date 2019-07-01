@@ -23,7 +23,7 @@ using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 {
-    [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssDiskEncryption",SupportsShouldProcess = true)]
+    [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssDiskEncryption", SupportsShouldProcess = true)]
     [OutputType(typeof(PSVirtualMachineScaleSet))]
     public class RemoveAzureVmssDiskEncryptionCommand : VirtualMachineScaleSetExtensionBaseCmdlet
     {

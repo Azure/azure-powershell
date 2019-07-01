@@ -102,6 +102,16 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// The cloud tiering off
         /// </summary>
         public const string CloudTieringOff = "off";
+
+        /// <summary>
+        /// The Offline Data Transfer on
+        /// </summary>
+        public const string OfflineDataTransferOn = "on";
+        /// <summary>
+        /// The Offline Data Transfer off
+        /// </summary>
+        public const string OfflineDataTransferOff = "off";
+
         /// <summary>
         /// The afs agent registry key
         /// </summary>

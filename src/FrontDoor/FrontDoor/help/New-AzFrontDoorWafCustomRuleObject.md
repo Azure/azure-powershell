@@ -5,7 +5,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/az.frontdoor/
 schema: 2.0.0
 ---
 
-# New-AzFrontDoorCustomRuleObject
+# New-AzFrontDoorWafCustomRuleObject
 
 ## SYNOPSIS
 Create CustomRule Object for WAF policy creation

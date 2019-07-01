@@ -15,7 +15,7 @@ This command uses certificates that you provide or system generated self-signed 
 ### ByDefaultArmTemplate (Default)
 ```
 New-AzServiceFabricCluster [-ResourceGroupName] <String> [-CertificateOutputFolder <String>]
- [-CertificatePassword <SecureString>] [-KeyVaultResouceGroupName <String>] [-KeyVaultName <String>]
+ [-CertificatePassword <SecureString>] [-KeyVaultResourceGroupName <String>] [-KeyVaultName <String>]
  -Location <String> [-Name <String>] [-VmUserName <String>] [-ClusterSize <Int32>]
  [-CertificateSubjectName <String>] -VmPassword <SecureString> [-OS <OperatingSystem>] [-VmSku <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -32,7 +32,7 @@ New-AzServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <String> 
 ### ByNewPfxAndVaultName
 ```
 New-AzServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <String> -ParameterFile <String>
- [-CertificateOutputFolder <String>] [-CertificatePassword <SecureString>] [-KeyVaultResouceGroupName <String>]
+ [-CertificateOutputFolder <String>] [-CertificatePassword <SecureString>] [-KeyVaultResourceGroupName <String>]
  [-KeyVaultName <String>] [-CertificateSubjectName <String>] [-VmPassword <SecureString>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -41,7 +41,7 @@ New-AzServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <String> 
 ```
 New-AzServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <String> -ParameterFile <String>
  -CertificateFile <String> [-CertificatePassword <SecureString>] [-SecondaryCertificateFile <String>]
- [-SecondaryCertificatePassword <SecureString>] [-KeyVaultResouceGroupName <String>] [-KeyVaultName <String>]
+ [-SecondaryCertificatePassword <SecureString>] [-KeyVaultResourceGroupName <String>] [-KeyVaultName <String>]
  [-CertificateCommonName <String>] [-CertificateIssuerThumbprint <String>] [-VmPassword <SecureString>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -92,7 +92,7 @@ $pfxfolder="~\Documents"
 $templateParmfile="C:\service-fabric-secure-nsg-cluster-65-node-3-nodetype\azuredeploytest.parameters.json"
 $templateFile="C:\service-fabric-secure-nsg-cluster-65-node-3-nodetype\azuredeploy.json"
 
-New-AzServiceFabricCluster -ResourceGroupName $RGname -TemplateFile $templateFile -ParameterFile $templateParmfile -CertificateOutputFolder $pfxfolder -CertificatePassword $pass -KeyVaultResouceGroupName $keyVaultRG  -KeyVaultName $keyVault -CertificateSubjectName $subname
+New-AzServiceFabricCluster -ResourceGroupName $RGname -TemplateFile $templateFile -ParameterFile $templateParmfile -CertificateOutputFolder $pfxfolder -CertificatePassword $pass -KeyVaultResourceGroupName $keyVaultRG  -KeyVaultName $keyVault -CertificateSubjectName $subname
 ```
 
 This command creates a new cluster using a custom template. Specify a different resource group name for the key vault and have the system upload a new certificate to it
@@ -107,7 +107,7 @@ $pfxsourcefile="c:\Mycertificates\my2017Prodcert.pfx"
 $templateParmfile="~\Documents\GitHub\azure-quickstart-templates-parms\service-fabric-secure-nsg-cluster-65-node-3-nodetype\azuredeploytest.parameters.json"
 $templateFile="~\GitHub\azure-quickstart-templates\service-fabric-secure-nsg-cluster-65-node-3-nodetype\azuredeploy.json"
 
-New-AzServiceFabricCluster -ResourceGroupName $RGname -TemplateFile $templateFile -ParameterFile $templateParmfile -CertificateFile $pfxsourcefile -CertificatePassword $pass -KeyVaultResouceGroupName $keyVaultRG -KeyVaultName $keyVault
+New-AzServiceFabricCluster -ResourceGroupName $RGname -TemplateFile $templateFile -ParameterFile $templateParmfile -CertificateFile $pfxsourcefile -CertificatePassword $pass -KeyVaultResourceGroupName $keyVaultRG -KeyVaultName $keyVault
 ```
 
 This command will let you bring your own Certificate and custom template and create a new cluster.
@@ -249,7 +249,7 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -KeyVaultResouceGroupName
+### -KeyVaultResourceGroupName
 Azure key vault resource group name. If not given, it will be defaulted to resource group name.
 
 ```yaml
