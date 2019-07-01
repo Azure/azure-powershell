@@ -19,6 +19,17 @@
 -->
 ## Upcoming Release
 
+## Version 1.2.0
+
+* Fix for issue https://github.com/Azure/azure-powershell/issues/8671
+    - **Get-AzApiManagementSubscription** 
+        - Added support for querying subscriptions by User and Product
+        - Added support for querying using Scope "/", "/apis", "/apis/echo-api"
+
+* Fix for issue https://github.com/Azure/azure-powershell/issues/9307 and https://github.com/Azure/azure-powershell/issues/8432
+    - **Import-AzApiManagementApi**
+        - Added support for specifiying `ApiVersion` and `ApiVersionSetId` when importing Apis
+
 ## Version 1.1.0
 
 * Created new Cmdlets for managing diagnostics at the global and API Scope

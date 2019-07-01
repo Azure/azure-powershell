@@ -12,62 +12,46 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Blueprint.Common;
 using Microsoft.Azure.Management.Blueprint.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Azure.Commands.Blueprint.Common;
 
 namespace Microsoft.Azure.Commands.Blueprint.Models
 {
     public class PSPublishedBlueprint : PSBlueprintBase
     {
-        public string Scope { get; set; }
-        public string DefinitionLocationId { get; set; }
-        public string BlueprintName { get; set; }
+        public string Version { get; set; }
         public string ChangeNotes { get; set; }
 
         /// <summary>
         /// Create a PSPublishedBlueprint object from a PublishedBlueprint.
         /// </summary>
         /// <param name="model"></param>
-        /// <param name="managementGroupName">Name of the management group the blueprint belongs to.</param>
+        /// <param name="scope">Subscription or management group the blueprint belongs to.</param>
         /// <returns>A new PSPublishedBlueprint object</returns>
         internal static PSPublishedBlueprint FromPublishedBlueprintModel(PublishedBlueprint model, string scope)
         {
             var psBlueprint = new PSPublishedBlueprint
             {
                 Id = model.Id,
-                Name = model.Name,
+                Name = model.BlueprintName,
                 Scope = scope,
-                DefinitionLocationId = Utils.GetDefinitionLocationId(scope),
                 DisplayName = model.DisplayName,
                 Description = model.Description,
                 Status = new PSBlueprintStatus(),
                 TargetScope = PSBlueprintTargetScope.Unknown,
                 Parameters = new Dictionary<string, PSParameterDefinition>(),
                 ResourceGroups = new Dictionary<string, PSResourceGroupDefinition>(),
-                BlueprintName = model.BlueprintName,
+                Version = model.Name, // Name is the version in PublishedBlueprint object.
                 ChangeNotes = model.ChangeNotes
             };
+            
+            psBlueprint.Status.TimeCreated = model.Status.TimeCreated;
+            
+            psBlueprint.Status.LastModified = model.Status.LastModified;
 
-            if (DateTime.TryParse(model.Status.TimeCreated, out DateTime timeCreated))
-            {
-                psBlueprint.Status.TimeCreated = timeCreated;
-            }
-            else
-            {
-                psBlueprint.Status.TimeCreated = null;
-            }
-
-            if (DateTime.TryParse(model.Status.LastModified, out DateTime lastModified))
-            {
-                psBlueprint.Status.LastModified = lastModified;
-            }
-            else
-            {
-                psBlueprint.Status.LastModified = null;
-            }
 
             if (Enum.TryParse(model.TargetScope, true, out PSBlueprintTargetScope targetScope))
             {
@@ -104,6 +88,15 @@ namespace Microsoft.Azure.Commands.Blueprint.Models
                                                     StrongType = item.Value.StrongType,
                                                     DependsOn = item.Value.DependsOn.ToList()
                                                 });
+            }
+            
+            if (psBlueprint.Scope.StartsWith("/subscriptions"))
+            {
+                psBlueprint.SubscriptionId = Utils.GetDefinitionLocationId(scope);
+            }
+            else
+            {
+                psBlueprint.ManagementGroupId = Utils.GetDefinitionLocationId(scope);
             }
 
             return psBlueprint;

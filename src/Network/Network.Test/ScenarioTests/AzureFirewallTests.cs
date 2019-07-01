@@ -37,6 +37,22 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallCRUDWithZones()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallCRUDWithZones");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallPIPAndVNETObjectTypeParams()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallPIPAndVNETObjectTypeParams");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
         public void TestAzureFirewallAllocateAndDeallocate()
         {
             TestRunner.RunTestScript("Test-AzureFirewallAllocateAndDeallocate");
