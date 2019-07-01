@@ -19,5 +19,11 @@
 -->
 ## Upcoming Release
 
+## Version 0.1.1
+* Add new cmdlets:
+    - `Set-AzNetAppFilesAccount`
+    - `Update-AzNetAppFilesAccount`
+* Bug fixes
+
 ## Version 0.1.0
 * Preview of `Az.NetAppFiles` module
