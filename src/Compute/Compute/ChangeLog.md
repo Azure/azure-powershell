@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.4.0
 * Add HyperVGeneration parameter to New-AzImageConfig
 
 ## Version 2.3.0
