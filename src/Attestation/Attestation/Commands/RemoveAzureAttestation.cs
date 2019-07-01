@@ -80,8 +80,6 @@ namespace Microsoft.Azure.Commands.Attestation
         [ValidateNotNullOrEmpty()]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
-        public SwitchParameter AsJob { get; set; }
 
         [Parameter(Mandatory = false,
             HelpMessage = "This Cmdlet does not return an object by default. If this switch is specified, it returns true if successful.")]
@@ -102,7 +100,7 @@ namespace Microsoft.Azure.Commands.Attestation
                 ResourceGroupName = resourceIdentifier.ResourceGroupName;
             }
 
-            if (ShouldProcess(Name))
+            if (ShouldProcess(Name, "RemoveAttestation"))
             {
                 AttestationClient.DeleteAttestation(Name, ResourceGroupName);
 
