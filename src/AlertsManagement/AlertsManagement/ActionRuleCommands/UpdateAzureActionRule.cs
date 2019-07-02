@@ -32,7 +32,6 @@ namespace Microsoft.Azure.Commands.AlertsManagement
 
         private const string ByInputObjectParameterSet = "ByInputObject";
         private const string ByResourceIdParameterSet = "ByResourceId";
-        private const string ByNameJsonPatchParameterSet = "ByNameJsonPatch";
         private const string ByNameSimplifiedPatchParameterSet = "ByNameSimplifiedPatch";
 
         #endregion
@@ -54,7 +53,6 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// <summary>
         /// Gets or sets the action rule name
         /// </summary>
-        [Parameter(ParameterSetName = ByNameJsonPatchParameterSet, Mandatory = true, HelpMessage = "Action rule name")]
         [Parameter(ParameterSetName = ByNameSimplifiedPatchParameterSet, Mandatory = true, HelpMessage = "Action rule name")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -62,18 +60,10 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// <summary>
         /// Gets or sets the resource group name
         /// </summary>
-        [Parameter(ParameterSetName = ByNameJsonPatchParameterSet, Mandatory = true, HelpMessage = "Action rule name")]
         [Parameter(ParameterSetName = ByNameSimplifiedPatchParameterSet, Mandatory = true, HelpMessage = "Action rule name")]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
-
-        /// <summary>
-        /// Gets or sets patch object
-        /// </summary>
-        [Parameter(ParameterSetName = ByNameJsonPatchParameterSet, Mandatory = true, HelpMessage = "Action rule patch object in JSON format")]
-        [ValidateNotNullOrEmpty]
-        public string ActionRulePatch { get; set; }
 
         /// <summary>
         /// Gets or sets simplified property of patch object : status
@@ -103,15 +93,6 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                 PSActionRule updatedActionRule = new PSActionRule();
                 switch (ParameterSetName)
                 {
-                    case ByNameJsonPatchParameterSet:
-                        PatchObject patchObject = JsonConvert.DeserializeObject<PatchObject>(ActionRulePatch);
-                        updatedActionRule = new PSActionRule(this.AlertsManagementClient.ActionRules.UpdateWithHttpMessagesAsync(
-                            resourceGroupName: ResourceGroupName,
-                            actionRuleName: Name,
-                            actionRulePatch: patchObject
-                            ).Result.Body);
-                        break;
-
                     case ByNameSimplifiedPatchParameterSet:
                         updatedActionRule = new PSActionRule(this.AlertsManagementClient.ActionRules.UpdateWithHttpMessagesAsync(
                             resourceGroupName: ResourceGroupName,
