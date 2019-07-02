@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.DataBox;
+using Microsoft.Azure.Management.DataBox.Models;
 using Microsoft.Rest;
 
 namespace Microsoft.Azure.Commands.DataBox.Common
@@ -46,7 +47,6 @@ namespace Microsoft.Azure.Commands.DataBox.Common
         {
             get
             {
-                
                 return _dataBoxManagementClient ??
                        (_dataBoxManagementClient =
                            AzureSession.Instance.ClientFactory.CreateArmClient<DataBoxManagementClient>(DefaultProfile.DefaultContext,

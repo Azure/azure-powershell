@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.DataBox.Common
                     ResourceGroupName,
                     Name,
                     Reason);
-
+               
                 WriteObject("Successfully Cancelled the Databox Job");
             }
             else
