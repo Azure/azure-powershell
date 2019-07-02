@@ -21,6 +21,7 @@
 
 ## Version 1.4.2
 * Fix for get-policy command for IaaSVMs
+* Fixes regarding 'Set-AzRecoveryServicesVaultContext' deprecation
 
 ## Version 1.4.1
 * IaaSVM policy minimum retention in days changed to 7 from 1
