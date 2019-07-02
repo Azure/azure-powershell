@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Update common code to latest version of ClientRuntime
+* Update common code to use latest version of ClientRuntime
 
 ## Version 1.6.0
 * Add support for profile cmdlets
