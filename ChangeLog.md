@@ -53,7 +53,7 @@
     - Handful of doc and example updates for Policy cmdlets
 
 #### Az.ServiceBus
-* Fix for issue #4938 - New-AzureRmServiceBusQueue returns BadRequest when setting MaxSizeInMegabytes
+* Fix for issue #4938 - New-AzServiceBusQueue returns BadRequest when setting MaxSizeInMegabytes
 
 #### Az.Sql
 * Add Instance Failover Group cmdlets from preview release to public release
@@ -182,7 +182,7 @@
     - Updated Set-AzVirtualNetworkGateway: Added optional switch parameter RemoveAadAuthentication to remove VpnClient AAD authentication options from Gateway.
 
 #### Az.OperationalInsights
-* Enable **pergb2018** pricing tier in 'New-AzureRmOperationalInsightsWorkspace' command
+* Enable **pergb2018** pricing tier in 'New-AzOperationalInsightsWorkspace' command
 
 #### Az.Resources
 * Support for additional Template Export options
@@ -382,7 +382,7 @@
 * Fix double dash in New-AzApplicationGatewayTrustedRootCertificate documentation
 
 #### Az.Resources
-* Add new cmdlet Get-AzureRmDenyAssignment for retrieving deny assignments
+* Add new cmdlet Get-AzDenyAssignment for retrieving deny assignments
 
 #### Az.Sql
 * Rename Advanced Threat Protection cmdlets to Advanced Data Security and enable Vulnerability Assessment by default
@@ -875,7 +875,7 @@ General availability for Az.RecoveryServices module.
 #### Az.Resources
 * Fix tagging for resource groups
     - More information here: https://github.com/Azure/azure-powershell/issues/8166
-* Fix issue where `Get-AzureRmRoleAssignment` doesn't respect -ErrorAction
+* Fix issue where `Get-AzRoleAssignment` doesn't respect -ErrorAction
     - More information here: https://github.com/Azure/azure-powershell/issues/8235
 
 #### Az.Sql
@@ -952,7 +952,7 @@ General availability for Az.RecoveryServices module.
 #### Az.Resources
 * Fix incorrect examples in 'New-AzADAppCredential' and 'New-AzADSpCredential' reference documentation
 * Fix issue where path for '-TemplateFile' parameter was not being resolved before executing resource group deployment cmdlets
-* Az.Resources: Correct documentation for New-AzureRmPolicyDefinition -Mode default value
+* Az.Resources: Correct documentation for New-AzPolicyDefinition -Mode default value
 * Az.Resources: Fix for issue https://github.com/Azure/azure-powershell/issues/7522
 * Az.Resources: Fix for issue https://github.com/Azure/azure-powershell/issues/5747
 * Fix formatting issue with 'PSResourceGroupDeployment' object
@@ -1008,15 +1008,15 @@ General availability for Az.RecoveryServices module.
 #### Az.EventGrid
 * Updated to use the 2019-01-01 API version.
 * Update the following cmdlets to support new scenario in 2019-01-01 API version
-    - New-AzureRmEventGridSubscription: Add new optional parameters for specifying:
+    - New-AzEventGridSubscription: Add new optional parameters for specifying:
         - Event Time-To-Live,
         - Maximum number of delivery attempts for the events,
         - Dead letter endpoint.
-    - Update-AzureRmEventGridSubscription: Add new optional parameters for specifying:
+    - Update-AzEventGridSubscription: Add new optional parameters for specifying:
         - Event Time-To-Live,
         - Maximum number of delivery attempts for the events,
         - Dead letter endpoint.
-* Add new enum values (namely, storageQueue and hybridConnection) for EndpointType option in New-AzureRmEventGridSubscription and Update-AzureRmEventGridSubscription cmdlets.
+* Add new enum values (namely, storageQueue and hybridConnection) for EndpointType option in New-AzEventGridSubscription and Update-AzEventGridSubscription cmdlets.
 * Show warning message if creating or updating the event subscription is expected to entail manual action from user.
 
 #### Az.IotHub
