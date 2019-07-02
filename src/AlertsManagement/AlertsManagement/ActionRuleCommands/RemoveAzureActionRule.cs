@@ -94,7 +94,6 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                     }
                     break;
                 
-                // TODO: Feedback on the correct way to handle InputObject Parameter
                 case ByInputObjectParameterSet:
                     if (ShouldProcess(
                     target: string.Format("Remove the action rule: {0}", InputObject.Id),
