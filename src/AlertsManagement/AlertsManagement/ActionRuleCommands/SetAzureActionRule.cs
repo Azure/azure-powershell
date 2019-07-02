@@ -22,7 +22,7 @@ using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.AlertsManagement
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ActionRule", DefaultParameterSetName = BySimplifiedFormatSuppressionActionRuleParameterSet,
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ActionRule", DefaultParameterSetName = BySimplifiedFormatDiagnosticsActionRuleParameterSet,
         SupportsShouldProcess = true)]
     [OutputType(typeof(PSActionRule))]
     public class SetAzureActionRule : AlertsManagementBaseCmdlet

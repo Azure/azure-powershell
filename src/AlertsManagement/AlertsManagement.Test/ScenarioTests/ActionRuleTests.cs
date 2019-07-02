@@ -50,5 +50,12 @@ namespace Microsoft.Azure.Commands.AlertsManagement.Test.ScenarioTests
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateUpdateAndDeleteActionGroupRule");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateUpdateAndDeleteDiagnosticsRule()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-CreateUpdateAndDeleteDiagnosticsRule");
+        }
     }
 }
