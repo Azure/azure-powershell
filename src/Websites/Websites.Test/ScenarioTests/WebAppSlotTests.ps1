@@ -131,37 +131,31 @@ function Test-StartStopRestartWebAppSlot
 		$slot = $slot | Stop-AzWebAppSlot
 
 		Assert-AreEqual "Stopped" $slot.State
-		#$ping = PingWebApp $slot
 
 		# Start web app
 		$slot = $slot | Start-AzWebAppSlot
 
 		Assert-AreEqual "Running" $slot.State
-		#$ping = PingWebApp $slot
 
 		# Stop web app
 		$slot = Stop-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname
 
 		Assert-AreEqual "Stopped" $slot.State
-		#$ping = PingWebApp $slot
 
 		# Start web app
 		$slot = Start-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname
 
 		Assert-AreEqual "Running" $slot.State
-		#$ping = PingWebApp $slot
 
 		# Retart web app
 		$slot = Restart-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname
 
 		Assert-AreEqual "Running" $slot.State
-		#$ping = PingWebApp $slot
 
 		# Restart web app
 		$slot = $slot | Restart-AzWebAppSlot
 
 		Assert-AreEqual "Running" $slot.State
-		#$ping = PingWebApp $slot
 	}
 	finally
 	{
