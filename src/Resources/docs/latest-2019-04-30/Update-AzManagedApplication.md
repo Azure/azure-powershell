@@ -23,7 +23,7 @@ Update-AzManagedApplication -Id <String> [-Parameter <IApplication>] [-DefaultPr
 ```
 Update-AzManagedApplication -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Kind <String>
  -ManagedResourceGroupId <String> -PlanName <String> -PlanProduct <String> -PlanPublisher <String>
- -PlanVersion <String> -SkuName <String> [-Parameter <IApplication>] [-DefinitionId <String>]
+ -PlanVersion <String> -SkuName <String> [-Parameter <IApplication>] [-ApplicationDefinitionId <String>]
  [-IdentityType <ResourceIdentityType>] [-Location <String>] [-ManagedBy <String>]
  [-PlanPromotionCode <String>] [-ProvisioningState <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>]
  [-SkuModel <String>] [-SkuSize <String>] [-SkuTier <String>] [-Tag <IResourceTags>]
@@ -40,7 +40,7 @@ Update-AzManagedApplication -Name <String> -ResourceGroupName <String> -Subscrip
 ```
 Update-AzManagedApplication -Id <String> -Kind <String> -ManagedResourceGroupId <String> -PlanName <String>
  -PlanProduct <String> -PlanPublisher <String> -PlanVersion <String> -SkuName <String>
- [-Parameter <IApplication>] [-DefinitionId <String>] [-IdentityType <ResourceIdentityType>]
+ [-Parameter <IApplication>] [-ApplicationDefinitionId <String>] [-IdentityType <ResourceIdentityType>]
  [-Location <String>] [-ManagedBy <String>] [-PlanPromotionCode <String>] [-ProvisioningState <String>]
  [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuModel <String>] [-SkuSize <String>] [-SkuTier <String>]
  [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -50,7 +50,7 @@ Update-AzManagedApplication -Id <String> -Kind <String> -ManagedResourceGroupId 
 ```
 Update-AzManagedApplication -InputObject <IResourcesIdentity> -Kind <String> -ManagedResourceGroupId <String>
  -PlanName <String> -PlanProduct <String> -PlanPublisher <String> -PlanVersion <String> -SkuName <String>
- [-Parameter <IApplication>] [-DefinitionId <String>] [-IdentityType <ResourceIdentityType>]
+ [-Parameter <IApplication>] [-ApplicationDefinitionId <String>] [-IdentityType <ResourceIdentityType>]
  [-Location <String>] [-ManagedBy <String>] [-PlanPromotionCode <String>] [-ProvisioningState <String>]
  [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuModel <String>] [-SkuSize <String>] [-SkuTier <String>]
  [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -60,7 +60,7 @@ Update-AzManagedApplication -InputObject <IResourcesIdentity> -Kind <String> -Ma
 ```
 Update-AzManagedApplication -InputObject <IResourcesIdentity> -Kind <String> -ManagedResourceGroupId <String>
  -PlanName <String> -PlanProduct <String> -PlanPublisher <String> -PlanVersion <String> -SkuName <String>
- [-Parameter <IApplication>] [-DefinitionId <String>] [-IdentityType <ResourceIdentityType>]
+ [-Parameter <IApplication>] [-ApplicationDefinitionId <String>] [-IdentityType <ResourceIdentityType>]
  [-Location <String>] [-ManagedBy <String>] [-PlanPromotionCode <String>] [-ProvisioningState <String>]
  [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuModel <String>] [-SkuSize <String>] [-SkuTier <String>]
  [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -104,13 +104,13 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+### -ApplicationDefinitionId
+The fully qualified path of managed application definition Id.
 
 ```yaml
-Type: System.Management.Automation.PSObject
-Parameter Sets: (All)
-Aliases: AzureRMContext, AzureCredential
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded1, UpdateViaIdentityExpanded
+Aliases:
 
 Required: False
 Position: Named
@@ -120,13 +120,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -DefinitionId
-The fully qualified path of managed application definition Id.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateViaIdentityExpanded1, UpdateViaIdentityExpanded
-Aliases: ApplicationDefinitionId
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named

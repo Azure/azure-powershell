@@ -30,6 +30,12 @@ Remove-AzDeployment -Name <String> -SubscriptionId <String> -ResourceGroupName <
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### DeleteById
+```
+Remove-AzDeployment -SubscriptionId <String> -Id <String> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### DeleteViaIdentity1
 ```
 Remove-AzDeployment -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob]
@@ -98,6 +104,22 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Id
+The ID of the resource group.
+
+```yaml
+Type: System.String
+Parameter Sets: DeleteById
+Aliases: ResourceId
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -175,7 +197,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, Delete1
+Parameter Sets: Delete, Delete1, DeleteById
 Aliases:
 
 Required: True

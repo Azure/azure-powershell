@@ -19,11 +19,32 @@ Restore-AzDeletedWebApp -Name <String> -ResourceGroupName <String> -Subscription
  [<CommonParameters>]
 ```
 
+### RestoreSlot
+```
+Restore-AzDeletedWebApp -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Slot <String>
+ [-PassThru] [-RestoreRequest <IDeletedAppRestoreRequest>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### RestoreExpandedSlot
+```
+Restore-AzDeletedWebApp -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Slot <String>
+ [-PassThru] [-DeletedSiteId <String>] [-Kind <String>] [-RecoverConfiguration] [-SnapshotTime <String>]
+ [-UseDrSecondary] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### RestoreExpanded
 ```
 Restore-AzDeletedWebApp -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-PassThru]
  [-DeletedSiteId <String>] [-Kind <String>] [-RecoverConfiguration] [-SnapshotTime <String>] [-UseDrSecondary]
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### RestoreViaIdentityExpandedSlot
+```
+Restore-AzDeletedWebApp -InputObject <IWebSiteIdentity> [-PassThru] [-DeletedSiteId <String>] [-Kind <String>]
+ [-RecoverConfiguration] [-SnapshotTime <String>] [-UseDrSecondary] [-DefaultProfile <PSObject>] [-AsJob]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### RestoreViaIdentityExpanded
@@ -103,7 +124,7 @@ Example:/subscriptions/{subId}/providers/Microsoft.Web/deletedSites/{deletedSite
 
 ```yaml
 Type: System.String
-Parameter Sets: RestoreExpanded, RestoreViaIdentityExpanded
+Parameter Sets: RestoreExpandedSlot, RestoreExpanded, RestoreViaIdentityExpandedSlot, RestoreViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -119,7 +140,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
-Parameter Sets: RestoreViaIdentityExpanded, RestoreViaIdentity
+Parameter Sets: RestoreViaIdentityExpandedSlot, RestoreViaIdentityExpanded, RestoreViaIdentity
 Aliases:
 
 Required: True
@@ -135,7 +156,7 @@ Kind of resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: RestoreExpanded, RestoreViaIdentityExpanded
+Parameter Sets: RestoreExpandedSlot, RestoreExpanded, RestoreViaIdentityExpandedSlot, RestoreViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -151,8 +172,8 @@ Name of web app.
 
 ```yaml
 Type: System.String
-Parameter Sets: Restore, RestoreExpanded
-Aliases:
+Parameter Sets: Restore, RestoreSlot, RestoreExpandedSlot, RestoreExpanded
+Aliases: TargetName
 
 Required: True
 Position: Named
@@ -183,7 +204,7 @@ If true, deleted site configuration, in addition to content, will be restored.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: RestoreExpanded, RestoreViaIdentityExpanded
+Parameter Sets: RestoreExpandedSlot, RestoreExpanded, RestoreViaIdentityExpandedSlot, RestoreViaIdentityExpanded
 Aliases: RestoreContentOnly
 
 Required: False
@@ -199,8 +220,8 @@ Name of the resource group to which the resource belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Restore, RestoreExpanded
-Aliases:
+Parameter Sets: Restore, RestoreSlot, RestoreExpandedSlot, RestoreExpanded
+Aliases: TargetResourceGroupName
 
 Required: True
 Position: Named
@@ -215,7 +236,7 @@ Details about restoring a deleted app.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IDeletedAppRestoreRequest
-Parameter Sets: Restore, RestoreViaIdentity
+Parameter Sets: Restore, RestoreSlot, RestoreViaIdentity
 Aliases:
 
 Required: False
@@ -226,13 +247,30 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Slot
+Name of web app slot.
+If not specified then will default to production slot.
+
+```yaml
+Type: System.String
+Parameter Sets: RestoreSlot, RestoreExpandedSlot
+Aliases: TargetSlot
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -SnapshotTime
 Point in time to restore the deleted app from, formatted as a DateTime string.
 If unspecified, default value is the time that the app was deleted.
 
 ```yaml
 Type: System.String
-Parameter Sets: RestoreExpanded, RestoreViaIdentityExpanded
+Parameter Sets: RestoreExpandedSlot, RestoreExpanded, RestoreViaIdentityExpandedSlot, RestoreViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -250,7 +288,7 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: Restore, RestoreExpanded
+Parameter Sets: Restore, RestoreSlot, RestoreExpandedSlot, RestoreExpanded
 Aliases:
 
 Required: True
@@ -266,7 +304,7 @@ If true, the snapshot is retrieved from DRSecondary endpoint.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: RestoreExpanded, RestoreViaIdentityExpanded
+Parameter Sets: RestoreExpandedSlot, RestoreExpanded, RestoreViaIdentityExpandedSlot, RestoreViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -315,9 +353,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IDeletedAppRestoreRequest
-
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IDeletedAppRestoreRequest
 
 ## OUTPUTS
 

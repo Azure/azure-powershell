@@ -806,7 +806,7 @@ directive:
 # Set correct variants for PUT and PATCH verbs
   - where:
       verb: New
-      variant: ^CreateViaIdentityExpanded\d?$|^CreateViaIdentity\d?$
+      variant: ^CreateViaIdentityExpanded\d?$|^CreateViaIdentity\d?$|^Create\d?$
     remove: true
   - where:
       verb: Set

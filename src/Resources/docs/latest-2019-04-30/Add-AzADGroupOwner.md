@@ -24,6 +24,12 @@ Add-AzADGroupOwner -ObjectId <String> -TenantId <String> -Url <String> [-PassThr
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### AddByComponents
+```
+Add-AzADGroupOwner -TenantId <String> -GroupObjectId <String> -MemberObjectId <String[]> [-PassThru]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### AddViaIdentityExpanded
 ```
 Add-AzADGroupOwner -InputObject <IResourcesIdentity> -Url <String> [-PassThru] [-Properties <Hashtable>]
@@ -77,6 +83,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -GroupObjectId
+The object ID of the group to which to add the owner.
+
+```yaml
+Type: System.String
+Parameter Sets: AddByComponents
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -InputObject
 Identity Parameter
 
@@ -89,6 +111,22 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -MemberObjectId
+The object ID of the member(s) to make owner of the group.
+
+```yaml
+Type: System.String[]
+Parameter Sets: AddByComponents
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -162,7 +200,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Add, AddExpanded
+Parameter Sets: Add, AddExpanded, AddByComponents
 Aliases:
 
 Required: True

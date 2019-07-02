@@ -12,9 +12,16 @@ Gets the names of app settings and connection strings that stick to the slot (no
 
 ## SYNTAX
 
+### List (Default)
 ```
-Get-AzWebAppSlotConfigurationName -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzWebAppSlotConfigurationName -SubscriptionId <String[]> -Name <String> -ResourceGroupName <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ListByWebApp
+```
+Get-AzWebAppSlotConfigurationName -SubscriptionId <String[]> -WebApp <ISite> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,7 +70,7 @@ Name of the app.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List
 Aliases:
 
 Required: True
@@ -79,7 +86,7 @@ Name of the resource group to which the resource belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List
 Aliases:
 
 Required: True
@@ -98,6 +105,22 @@ This is a GUID-formatted string (e.g.
 ```yaml
 Type: System.String[]
 Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -WebApp
+The object representation of the web app or slot.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISite
+Parameter Sets: ListByWebApp
 Aliases:
 
 Required: True

@@ -32,6 +32,34 @@ Get-AzPolicyAssignment -InputObject <IResourcesIdentity> [-DefaultProfile <PSObj
 Get-AzPolicyAssignment -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### ListByPolicyDefinition
+```
+Get-AzPolicyAssignment -ParentResourcePath <String> -ResourceGroupName <String> -ResourceName <String>
+ -ResourceProviderNamespace <String> -ResourceType <String> -SubscriptionId <String[]>
+ -PolicyDefinitionId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ListByPolicyDefinition2
+```
+Get-AzPolicyAssignment -ParentResourcePath <String> -ResourceGroupName <String> -ResourceName <String>
+ -ResourceProviderNamespace <String> -ResourceType <String> -SubscriptionId <String[]>
+ -PolicyDefinitionId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ListWithDescendents
+```
+Get-AzPolicyAssignment -ParentResourcePath <String> -ResourceGroupName <String> -ResourceName <String>
+ -ResourceProviderNamespace <String> -ResourceType <String> -SubscriptionId <String[]> -IncludeDescendent
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ListWithDescendents2
+```
+Get-AzPolicyAssignment -ParentResourcePath <String> -ResourceGroupName <String> -ResourceName <String>
+ -ResourceProviderNamespace <String> -ResourceType <String> -SubscriptionId <String[]> -IncludeDescendent
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### List2
 ```
 Get-AzPolicyAssignment -ParentResourcePath <String> -ResourceGroupName <String> -ResourceName <String>
@@ -46,10 +74,34 @@ Get-AzPolicyAssignment -ParentResourcePath <String> -ResourceGroupName <String> 
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### ListByPolicyDefinition1
+```
+Get-AzPolicyAssignment -ResourceGroupName <String> -SubscriptionId <String[]> -PolicyDefinitionId <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ListWithDescendents1
+```
+Get-AzPolicyAssignment -ResourceGroupName <String> -SubscriptionId <String[]> -IncludeDescendent
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### List1
 ```
 Get-AzPolicyAssignment -ResourceGroupName <String> -SubscriptionId <String[]> [-Filter <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ListByPolicyDefinition3
+```
+Get-AzPolicyAssignment -SubscriptionId <String[]> -PolicyDefinitionId <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### ListWithDescendents3
+```
+Get-AzPolicyAssignment -SubscriptionId <String[]> -IncludeDescendent [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### List3
@@ -134,6 +186,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -IncludeDescendent
+Indicates that the list of returned policy assignments should include all assignments related to the given scope, including those from ancestor scopes and those from descendent scopes.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ListWithDescendents, ListWithDescendents2, ListWithDescendents1, ListWithDescendents3
+Aliases:
+
+Required: True
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -InputObject
 Identity Parameter
 
@@ -172,7 +240,23 @@ Use empty string if there is none.
 
 ```yaml
 Type: System.String
-Parameter Sets: List2, List
+Parameter Sets: ListByPolicyDefinition, ListByPolicyDefinition2, ListWithDescendents, ListWithDescendents2, List2, List
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -PolicyDefinitionId
+Limits the list of returned policy assignments to those assigning the policy definition identified by this fully qualified ID.
+
+```yaml
+Type: System.String
+Parameter Sets: ListByPolicyDefinition, ListByPolicyDefinition2, ListByPolicyDefinition1, ListByPolicyDefinition3
 Aliases:
 
 Required: True
@@ -188,7 +272,7 @@ The name of the resource group containing the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: List2, List, List1
+Parameter Sets: ListByPolicyDefinition, ListByPolicyDefinition2, ListWithDescendents, ListWithDescendents2, List2, List, ListByPolicyDefinition1, ListWithDescendents1, List1
 Aliases:
 
 Required: True
@@ -204,7 +288,7 @@ The name of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: List2, List
+Parameter Sets: ListByPolicyDefinition, ListByPolicyDefinition2, ListWithDescendents, ListWithDescendents2, List2, List
 Aliases:
 
 Required: True
@@ -221,7 +305,7 @@ For example, the namespace of a virtual machine is Microsoft.Compute (from Micro
 
 ```yaml
 Type: System.String
-Parameter Sets: List2, List
+Parameter Sets: ListByPolicyDefinition, ListByPolicyDefinition2, ListWithDescendents, ListWithDescendents2, List2, List
 Aliases:
 
 Required: True
@@ -238,7 +322,7 @@ For example the type name of a web app is 'sites' (from Microsoft.Web/sites).
 
 ```yaml
 Type: System.String
-Parameter Sets: List2, List
+Parameter Sets: ListByPolicyDefinition, ListByPolicyDefinition2, ListWithDescendents, ListWithDescendents2, List2, List
 Aliases:
 
 Required: True
@@ -271,7 +355,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List2, List, List1, List3
+Parameter Sets: ListByPolicyDefinition, ListByPolicyDefinition2, ListWithDescendents, ListWithDescendents2, List2, List, ListByPolicyDefinition1, ListWithDescendents1, List1, ListByPolicyDefinition3, ListWithDescendents3, List3
 Aliases:
 
 Required: True

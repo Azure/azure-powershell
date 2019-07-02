@@ -19,14 +19,25 @@ Get-AzResource -ResourceId <String> [-DefaultProfile <PSObject>] [<CommonParamet
 
 ### Get
 ```
-Get-AzResource -Name <String> -ParentResourcePath <String> -ProviderNamespace <String>
- -ResourceGroupName <String> -ResourceType <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzResource -Name <String> -ParentResourcePath <String> -ProviderNamespace <String> -ResourceType <String>
+ -SubscriptionId <String[]> [-ResourceGroupName <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetByTagNameAndValue
+```
+Get-AzResource -SubscriptionId <String[]> -TagName <String> [-ResourceGroupName <String>] [-Expand <String>]
+ [-Top <Int32>] [-TagValue <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetByTag
+```
+Get-AzResource -SubscriptionId <String[]> -Tag <Hashtable> [-ResourceGroupName <String>] [-Expand <String>]
+ [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List
 ```
-Get-AzResource -ResourceGroupName <String> -SubscriptionId <String[]> [-Expand <String>] [-Filter <String>]
+Get-AzResource -SubscriptionId <String[]> [-ResourceGroupName <String>] [-Expand <String>] [-Filter <String>]
  [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -94,7 +105,7 @@ For example, to expand both properties, use $expand=changedTime,createdTime
 
 ```yaml
 Type: System.String
-Parameter Sets: List, List1
+Parameter Sets: GetByTagNameAndValue, GetByTag, List, List1
 Aliases:
 
 Required: False
@@ -197,7 +208,7 @@ The resource group with the resources to get.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, GetByTagNameAndValue, GetByTag, List
 Aliases:
 
 Required: True
@@ -246,7 +257,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1
+Parameter Sets: Get, GetByTagNameAndValue, GetByTag, List, List1
 Aliases:
 
 Required: True
@@ -257,13 +268,62 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Tag
+The tag hashtable to filter resources by.
+The single key-value pair should be the tag name and value, respectively, to filter by.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: GetByTag
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -TagName
+The tag name to filter resources by.
+
+```yaml
+Type: System.String
+Parameter Sets: GetByTagNameAndValue
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -TagValue
+The tag value to filter resources by.
+
+```yaml
+Type: System.String
+Parameter Sets: GetByTagNameAndValue
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Top
 The number of results to return.
-If null is passed, returns all resource groups.
+If null is passed, returns all resources.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: List, List1
+Parameter Sets: GetByTagNameAndValue, GetByTag, List, List1
 Aliases:
 
 Required: False

@@ -137,7 +137,7 @@ Dynamic: False
 
 ### -Slot
 Name of the deployment slot.
-If a slot is not specified, the API gets hostname bindings for the production slot.
+If a slot is not specified, the API the named binding for the production slot.
 
 ```yaml
 Type: System.String

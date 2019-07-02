@@ -20,6 +20,12 @@ New-AzTag -Name <String> -SubscriptionId <String> [-DefaultProfile <PSObject>] [
  [<CommonParameters>]
 ```
 
+### CreateWithValue
+```
+New-AzTag -Name <String> -SubscriptionId <String> -Value <String> [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
 ### CreateViaIdentity
 ```
 New-AzTag -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
@@ -86,11 +92,11 @@ Dynamic: False
 ```
 
 ### -Name
-The name of the tag to create.
+The name of the tag.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create
+Parameter Sets: Create, CreateWithValue
 Aliases: TagName
 
 Required: True
@@ -106,7 +112,23 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create
+Parameter Sets: Create, CreateWithValue
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Value
+The value of the tag to create.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateWithValue
 Aliases:
 
 Required: True

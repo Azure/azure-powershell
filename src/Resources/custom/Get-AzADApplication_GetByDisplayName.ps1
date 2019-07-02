@@ -3,54 +3,52 @@ function Get-AzADApplication_GetByDisplayName {
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Profile("latest-2019-04-30")]
     [CmdletBinding(PositionalBinding = $false)]
     param(
-        [Parameter(Mandatory)]
+        [Parameter(Mandatory, HelpMessage="The tenant ID.")]
         [System.String]
-        # The tenant ID.
         ${TenantId},
 
-        [Parameter(Mandatory)]
+        [Parameter(Mandatory, HelpMessage="The display name of the application.")]
         [System.String]
-        # The display name of the application.
         ${DisplayName},
 
-        [Parameter()]
+        [Parameter(HelpMessage='The credentials, account, tenant, and subscription used for communication with Azure.')]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.Category('Azure')]
         [System.Management.Automation.PSObject]
-        # The credentials, account, tenant, and subscription used for communication with Azure.
         ${DefaultProfile},
 
-        [Parameter(DontShow)]
+        [Parameter(DontShow, HelpMessage='Wait for .NET debugger to attach')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
-        # Wait for .NET debugger to attach
         ${Break},
 
-        [Parameter(DontShow)]
+        [Parameter(DontShow, HelpMessage='SendAsync Pipeline Steps to be appended to the front of the pipeline')]
         [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.Category('Runtime')]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.Runtime.SendAsyncStep[]]
-        # SendAsync Pipeline Steps to be appended to the front of the pipeline
         ${HttpPipelineAppend},
 
-        [Parameter(DontShow)]
+        [Parameter(DontShow, HelpMessage='SendAsync Pipeline Steps to be prepended to the front of the pipeline')]
         [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.Category('Runtime')]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.Runtime.SendAsyncStep[]]
-        # SendAsync Pipeline Steps to be prepended to the front of the pipeline
         ${HttpPipelinePrepend},
 
-        [Parameter(DontShow)]
+        [Parameter(DontShow, HelpMessage='The URI for the proxy server to use')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.Category('Runtime')]
         [System.Uri]
-        # The URI for the proxy server to use
         ${Proxy},
 
-        [Parameter(DontShow)]
+        [Parameter(DontShow, HelpMessage='Credentials for a proxy server to use for the remote call')]
         [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.Category('Runtime')]
         [System.Management.Automation.PSCredential]
-        # Credentials for a proxy server to use for the remote call
         ${ProxyCredential},
 
-        [Parameter(DontShow)]
+        [Parameter(DontShow, HelpMessage='Use the default credentials for the proxy')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
-        # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
     )
 

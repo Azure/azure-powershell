@@ -136,7 +136,7 @@ Dynamic: False
 
 ### -Slot
 Name of the deployment slot.
-If a slot is not specified, the API will get the premier add-ons for the production slot.
+If a slot is not specified, the API will get the named add-on for the production slot.
 
 ```yaml
 Type: System.String

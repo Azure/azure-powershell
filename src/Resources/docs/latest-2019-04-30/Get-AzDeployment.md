@@ -29,6 +29,11 @@ Get-AzDeployment -Name <String> -SubscriptionId <String[]> -ResourceGroupName <S
 Get-AzDeployment -Name <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetById
+```
+Get-AzDeployment -SubscriptionId <String[]> -Id <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### List1
 ```
 Get-AzDeployment -SubscriptionId <String[]> -ResourceGroupName <String> [-Filter <String>] [-Top <Int32>]
@@ -103,6 +108,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Id
+The ID of the deployment.
+
+```yaml
+Type: System.String
+Parameter Sets: GetById
+Aliases: ResourceId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -InputObject
 Identity Parameter
 
@@ -157,7 +178,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get1, Get, List1
+Parameter Sets: List, Get1, Get, GetById, List1
 Aliases:
 
 Required: True

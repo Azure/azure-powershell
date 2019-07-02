@@ -50,7 +50,7 @@ Test-AzWebSiteGlobalDomainRegistrationDomainPurchaseInformation -SubscriptionId 
  [-CreatedTime <DateTime>] [-DomainNotRenewableReason <String[]>] [-ExpirationTime <DateTime>] [-Id <String>]
  [-Kind <String>] [-LastRenewedTime <DateTime>] [-ManagedHostName <IHostName[]>] [-Name <String>]
  [-NameServer <String[]>] [-Privacy] [-PropertiesName <String>] [-ProvisioningState <ProvisioningState>]
- [-ReadyForDnsRecordManagement] [-RegistrationStatu <DomainStatus>] [-Tag <IResourceTags>] [-Type <String>]
+ [-ReadyForDnsRecordManagement] [-RegistrationStatus <DomainStatus>] [-Tag <IResourceTags>] [-Type <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -85,7 +85,7 @@ Test-AzWebSiteGlobalDomainRegistrationDomainPurchaseInformation -InputObject <IW
  [-CreatedTime <DateTime>] [-DomainNotRenewableReason <String[]>] [-ExpirationTime <DateTime>] [-Id <String>]
  [-Kind <String>] [-LastRenewedTime <DateTime>] [-ManagedHostName <IHostName[]>] [-Name <String>]
  [-NameServer <String[]>] [-Privacy] [-PropertiesName <String>] [-ProvisioningState <ProvisioningState>]
- [-ReadyForDnsRecordManagement] [-RegistrationStatu <DomainStatus>] [-Tag <IResourceTags>] [-Type <String>]
+ [-ReadyForDnsRecordManagement] [-RegistrationStatus <DomainStatus>] [-Tag <IResourceTags>] [-Type <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -1359,7 +1359,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -RegistrationStatu
+### -RegistrationStatus
 Domain registration status
 
 ```yaml
@@ -1463,9 +1463,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.IDomainRegistrationInput
-
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.IDomainRegistrationInput
 
 ## OUTPUTS
 

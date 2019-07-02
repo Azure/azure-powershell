@@ -14,32 +14,18 @@ Creates a new Hybrid Connection using a Service Bus relay.
 
 ### Update (Default)
 ```
-Set-AzWebAppHybridConnection -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-RelayName <String>] [-ConnectionEnvelope <IHybridConnection>]
+Set-AzWebAppHybridConnection -Name <String> -NamespaceName <String> -RelayName <String>
+ -ResourceGroupName <String> -SubscriptionId <String> [-ConnectionEnvelope <IHybridConnection>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
 ```
-Set-AzWebAppHybridConnection -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-RelayName <String>] [-Hostname <String>] [-Kind <String>] [-Port <Int32>]
+Set-AzWebAppHybridConnection -Name <String> -NamespaceName <String> -RelayName <String>
+ -ResourceGroupName <String> -SubscriptionId <String> [-Hostname <String>] [-Kind <String>] [-Port <Int32>]
  [-PropertiesRelayName <String>] [-RelayArmUri <String>] [-SendKeyName <String>] [-SendKeyValue <String>]
  [-ServiceBusNamespace <String>] [-ServiceBusSuffix <String>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Set-AzWebAppHybridConnection -InputObject <IWebSiteIdentity> [-RelayName <String>] [-Hostname <String>]
- [-Kind <String>] [-Port <Int32>] [-RelayArmUri <String>] [-SendKeyName <String>] [-SendKeyValue <String>]
- [-ServiceBusNamespace <String>] [-ServiceBusSuffix <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Set-AzWebAppHybridConnection -InputObject <IWebSiteIdentity> [-ConnectionEnvelope <IHybridConnection>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,7 +59,7 @@ This is used to configure a Hybrid Connection.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160301.IHybridConnection
-Parameter Sets: Update, UpdateViaIdentity
+Parameter Sets: Update
 Aliases:
 
 Required: False
@@ -105,7 +91,7 @@ The hostname of the endpoint.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -116,28 +102,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
-Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Kind
 Kind of resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -153,7 +123,7 @@ The name of the web app.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -169,7 +139,7 @@ The namespace for this hybrid connection.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -185,7 +155,7 @@ The port of the endpoint.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -217,7 +187,7 @@ The ARM URI to the Service Bus relay.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -229,11 +199,11 @@ Dynamic: False
 ```
 
 ### -RelayName
-The name of the Service Bus relay.
+The relay name for this hybrid connection.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -249,7 +219,7 @@ Name of the resource group to which the resource belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -266,7 +236,7 @@ This is used to authenticate to Service Bus.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -284,7 +254,7 @@ In ARM this key will not be returnednormally, use the POST /listKeys API instead
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -300,7 +270,7 @@ The name of the Service Bus namespace.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -317,7 +287,7 @@ By default this is .servicebus.windows.net
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -335,7 +305,7 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -385,8 +355,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160301.IHybridConnection
-
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
 
 ## OUTPUTS
 

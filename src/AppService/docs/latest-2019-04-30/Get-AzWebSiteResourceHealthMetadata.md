@@ -118,7 +118,7 @@ Dynamic: False
 ```
 
 ### -Name
-Name of web app.
+Name of web app
 
 ```yaml
 Type: System.String

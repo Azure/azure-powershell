@@ -18,6 +18,12 @@ Remove-AzTag -Name <String> -SubscriptionId <String> [-PassThru] [-DefaultProfil
  [-WhatIf] [<CommonParameters>]
 ```
 
+### DeleteValue
+```
+Remove-AzTag -Name <String> -SubscriptionId <String> -Value <String> [-PassThru] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### DeleteViaIdentity
 ```
 Remove-AzTag -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
@@ -86,7 +92,7 @@ The name of the tag.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteValue
 Aliases: TagName
 
 Required: True
@@ -118,7 +124,23 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, DeleteValue
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Value
+The value of the tag to delete.
+
+```yaml
+Type: System.String
+Parameter Sets: DeleteValue
 Aliases:
 
 Required: True

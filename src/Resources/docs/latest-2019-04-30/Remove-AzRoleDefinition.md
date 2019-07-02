@@ -18,6 +18,12 @@ Remove-AzRoleDefinition -Id <String> -Scope <String> [-DefaultProfile <PSObject>
  [<CommonParameters>]
 ```
 
+### DeleteByName
+```
+Remove-AzRoleDefinition -Scope <String> -Name <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ### DeleteViaIdentity1
 ```
 Remove-AzRoleDefinition -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
@@ -97,12 +103,28 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Name
+The name of the role definition.
+
+```yaml
+Type: System.String
+Parameter Sets: DeleteByName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Scope
 The scope of the role definition.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete1
+Parameter Sets: Delete1, DeleteByName
 Aliases:
 
 Required: True

@@ -12,9 +12,22 @@ Gets the Git/FTP publishing credentials of an app.
 
 ## SYNTAX
 
+### List (Default)
 ```
-Get-AzWebAppPublishingCredentials -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzWebAppPublishingCredentials -SubscriptionId <String[]> -Name <String> -ResourceGroupName <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ListSlot
+```
+Get-AzWebAppPublishingCredentials -SubscriptionId <String[]> -Name <String> -ResourceGroupName <String>
+ -Slot <String> [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ListBySiteObject
+```
+Get-AzWebAppPublishingCredentials -SubscriptionId <String[]> -SiteObject <ISite> [-DefaultProfile <PSObject>]
+ [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -79,7 +92,7 @@ Name of the app.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List, ListSlot
 Aliases:
 
 Required: True
@@ -95,7 +108,40 @@ Name of the resource group to which the resource belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List, ListSlot
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -SiteObject
+The object representation of the web app or slot.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISite
+Parameter Sets: ListBySiteObject
+Aliases: WebApp, WebAppSlot
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Slot
+Name of the deployment slot.
+If a slot is not specified, the API will get the publishing credentials for the production slot.
+
+```yaml
+Type: System.String
+Parameter Sets: ListSlot
 Aliases:
 
 Required: True
@@ -169,6 +215,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### Get-AzWebAppContainerContinuousDeploymentUrl
+
+### Get-AzWebAppPublishingCredentialsSlot
 
 ## RELATED LINKS
 

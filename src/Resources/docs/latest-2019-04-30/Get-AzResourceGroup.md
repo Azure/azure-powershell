@@ -24,6 +24,23 @@ Get-AzResourceGroup -Name <String> -SubscriptionId <String[]> [-DefaultProfile <
  [<CommonParameters>]
 ```
 
+### GetByTagNameAndValue
+```
+Get-AzResourceGroup -SubscriptionId <String[]> -TagName <String> [-Top <Int32>] [-TagValue <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetByTag
+```
+Get-AzResourceGroup -SubscriptionId <String[]> -Tag <Hashtable> [-Top <Int32>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetById
+```
+Get-AzResourceGroup -SubscriptionId <String[]> -Id <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### GetViaIdentity
 ```
 Get-AzResourceGroup -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -88,6 +105,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Id
+The ID of the resource group.
+
+```yaml
+Type: System.String
+Parameter Sets: GetById
+Aliases: ResourceId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -InputObject
 Identity Parameter
 
@@ -126,10 +159,59 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get
+Parameter Sets: List, Get, GetByTagNameAndValue, GetByTag, GetById
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Tag
+The tag hashtable to filter resource groups by.
+The single key-value pair should be the tag name and value, respectively, to filter by.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: GetByTag
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -TagName
+The tag name to filter resource groups by.
+
+```yaml
+Type: System.String
+Parameter Sets: GetByTagNameAndValue
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -TagValue
+The tag value to filter resource groups by.
+
+```yaml
+Type: System.String
+Parameter Sets: GetByTagNameAndValue
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -143,7 +225,7 @@ If null is passed, returns all resource groups.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: List
+Parameter Sets: List, GetByTagNameAndValue, GetByTag
 Aliases:
 
 Required: False

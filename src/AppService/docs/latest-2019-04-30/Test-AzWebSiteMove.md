@@ -14,9 +14,9 @@ Validate whether a resource can be moved.
 
 ### Validate (Default)
 ```
-Test-AzWebSiteMove -ResourceGroupName <String> -SubscriptionId <String> [-PassThru]
- [-ResourceEnvelope <ICsmMoveResourceEnvelope>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Test-AzWebSiteMove -ResourceGroupName <String> -SubscriptionId <String>
+ [-MoveResourceEnvelope <ICsmMoveResourceEnvelope>] [-PassThru] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### ValidateExpanded
@@ -33,8 +33,8 @@ Test-AzWebSiteMove -InputObject <IWebSiteIdentity> [-PassThru] [-Resource <Strin
 
 ### ValidateViaIdentity
 ```
-Test-AzWebSiteMove -InputObject <IWebSiteIdentity> [-PassThru] [-ResourceEnvelope <ICsmMoveResourceEnvelope>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-AzWebSiteMove -InputObject <IWebSiteIdentity> [-MoveResourceEnvelope <ICsmMoveResourceEnvelope>]
+ [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -94,6 +94,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -MoveResourceEnvelope
+Object with a list of the resources that need to be moved and the resource group they should be moved to.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ICsmMoveResourceEnvelope
+Parameter Sets: Validate, ValidateViaIdentity
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -PassThru
 When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
 
@@ -122,22 +138,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -ResourceEnvelope
-Object with a list of the resources that need to be moved and the resource group they should be moved to.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ICsmMoveResourceEnvelope
-Parameter Sets: Validate, ValidateViaIdentity
-Aliases: MoveResourceEnvelope
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -230,9 +230,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ICsmMoveResourceEnvelope
-
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ICsmMoveResourceEnvelope
 
 ## OUTPUTS
 

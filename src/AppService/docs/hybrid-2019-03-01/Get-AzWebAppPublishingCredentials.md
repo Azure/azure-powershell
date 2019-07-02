@@ -12,9 +12,16 @@ Gets the Git/FTP publishing credentials of an app.
 
 ## SYNTAX
 
+### List (Default)
 ```
 Get-AzWebAppPublishingCredentials -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ListSlot
+```
+Get-AzWebAppPublishingCredentials -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+ -Slot <String> [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -106,6 +113,23 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Slot
+Name of the deployment slot.
+If a slot is not specified, the API will get the publishing credentials for the production slot.
+
+```yaml
+Type: System.String
+Parameter Sets: ListSlot
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -SubscriptionId
 Your Azure subscription ID.
 This is a GUID-formatted string (e.g.
@@ -169,6 +193,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### Get-AzWebAppContainerContinuousDeploymentUrl
+
+### Get-AzWebAppPublishingCredentialsSlot
 
 ## RELATED LINKS
 

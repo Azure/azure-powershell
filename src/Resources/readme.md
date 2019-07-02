@@ -249,13 +249,16 @@ directive:
     set:
       subject: ResourceProvider
   - where:
-      verb: Get
-      subject: ProviderFeature
+      subject: ProviderFeature|ResourceProvider
       parameter-name: ResourceProviderNamespace
     set:
       alias: ProviderNamespace
   - where:
       subject: TagValue
+    hide: true
+  - where:
+      verb: Set
+      subject: Tag
     hide: true
   - where:
       verb: Get
@@ -308,5 +311,55 @@ directive:
   - where:
       verb: Get
       subject: Tenant
+    hide: true
+  - where:
+      subject: ResourceMoveResource
+    set:
+      subject: ResourceMove
+  - where:
+      subject: PolicyDefinition
+      parameter-name: ManagementGroupId
+    set:
+      parameter-name: ManagementGroupName
+  - where:
+      subject: PolicySetDefinition
+      parameter-name: ManagementGroupId
+    set:
+      parameter-name: ManagementGroupName
+  - where:
+      subject: PolicyDefinitionBuilt
+    hide: true
+  - where:
+      subject: PolicySetDefinitionBuilt
+    hide: true
+  - where:
+      parameter-name: UpnOrObjectId
+    set:
+      alias: ['UserPrincipalName', 'Upn', 'ObjectId']
+  - where:
+      verb: Update
+      subject: ADUser
+      parameter-name: UpnOrObjectId
+    clear-alias: true
+    set:
+      alias: ['Upn', 'ObjectId']
+  - where:
+      verb: Update
+      subject: ADUser
+      parameter-name: AccountEnabled
+    set:
+      parameter-name: EnableAccount
+  - where:
+      verb: Get
+      subject: ADGroupOwner
+    hide: true
+  - where:
+      verb: Get|Remove
+      subject: ADDeletedApplication.*
+    hide: true
+  - where:
+      verb: New
+      subject: RoleDefinition
+      variant: ^Create1$|^CreateExpanded1$
     hide: true
 ```

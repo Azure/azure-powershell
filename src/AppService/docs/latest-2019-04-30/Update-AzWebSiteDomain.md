@@ -47,7 +47,7 @@ Update-AzWebSiteDomain -Name <String> -ResourceGroupName <String> -SubscriptionI
  [-ContactTechAddressMailingAddress2 <String>] [-ContactTechFax <String>] [-ContactTechJobTitle <String>]
  [-ContactTechNameMiddle <String>] [-ContactTechOrganization <String>] [-DnsType <DnsType>]
  [-DnsZoneId <String>] [-Kind <String>] [-Privacy] [-ProvisioningState <ProvisioningState>]
- [-RegistrationStatu <DomainStatus>] [-TargetDnsType <DnsType>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-RegistrationStatus <DomainStatus>] [-TargetDnsType <DnsType>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -80,7 +80,7 @@ Update-AzWebSiteDomain -InputObject <IWebSiteIdentity> -ContactAdminAddressMaili
  [-ContactTechAddressMailingAddress2 <String>] [-ContactTechFax <String>] [-ContactTechJobTitle <String>]
  [-ContactTechNameMiddle <String>] [-ContactTechOrganization <String>] [-DnsType <DnsType>]
  [-DnsZoneId <String>] [-Kind <String>] [-Privacy] [-ProvisioningState <ProvisioningState>]
- [-RegistrationStatu <DomainStatus>] [-TargetDnsType <DnsType>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-RegistrationStatus <DomainStatus>] [-TargetDnsType <DnsType>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -1240,7 +1240,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -RegistrationStatu
+### -RegistrationStatus
 Domain registration status.
 
 ```yaml
@@ -1344,9 +1344,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150401.IDomainPatchResource
-
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150401.IDomainPatchResource
 
 ## OUTPUTS
 

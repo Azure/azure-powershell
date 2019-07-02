@@ -12,15 +12,9 @@ Creates or updates a role definition.
 
 ## SYNTAX
 
-### Create1 (Default)
+### CreateExpanded (Default)
 ```
-New-AzRoleDefinition -Id <String> -Scope <String> [-RoleDefinition <IRoleDefinition>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded1
-```
-New-AzRoleDefinition -Id <String> -Scope <String> [-AssignableScope <String[]>] [-Description <String>]
+New-AzRoleDefinition -Scope <String> [-AssignableScope <String[]>] [-Description <String>]
  [-Permission <IPermission[]>] [-RoleName <String>] [-RoleType <String>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -36,6 +30,12 @@ New-AzRoleDefinition -InputObject <IResourcesIdentity> [-AssignableScope <String
 ```
 New-AzRoleDefinition -InputObject <IResourcesIdentity> [-RoleDefinition <IRoleDefinition>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create
+```
+New-AzRoleDefinition -Scope <String> [-RoleDefinition <IRoleDefinition>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -68,7 +68,7 @@ Role definition assignable scopes.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -100,26 +100,10 @@ The role definition description.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Id
-The ID of the role definition.
-
-```yaml
-Type: System.String
-Parameter Sets: Create1, CreateExpanded1
-Aliases: RoleDefinitionId
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -148,7 +132,7 @@ Role definition permissions.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api201801Preview.IPermission[]
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -164,7 +148,7 @@ Role definition.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api201801Preview.IRoleDefinition
-Parameter Sets: Create1, CreateViaIdentity1
+Parameter Sets: CreateViaIdentity1, Create
 Aliases: Role
 
 Required: False
@@ -180,7 +164,7 @@ The role name.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -196,7 +180,7 @@ The role type.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -212,7 +196,7 @@ The scope of the role definition.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -261,9 +245,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api201801Preview.IRoleDefinition
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api201801Preview.IRoleDefinition
 
 ## OUTPUTS
 

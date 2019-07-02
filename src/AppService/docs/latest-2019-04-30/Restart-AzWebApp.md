@@ -18,6 +18,13 @@ Restart-AzWebApp -Name <String> -ResourceGroupName <String> -SubscriptionId <Str
  [-Synchronou] [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### RestartSlot
+```
+Restart-AzWebApp -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Slot <String>
+ [-SoftRestart] [-Synchronou] [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ### RestartViaIdentity
 ```
 Restart-AzWebApp -InputObject <IWebSiteIdentity> [-SoftRestart] [-Synchronou] [-PassThru]
@@ -86,7 +93,7 @@ Name of the app.
 
 ```yaml
 Type: System.String
-Parameter Sets: Restart
+Parameter Sets: Restart, RestartSlot
 Aliases:
 
 Required: True
@@ -118,7 +125,24 @@ Name of the resource group to which the resource belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Restart
+Parameter Sets: Restart, RestartSlot
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Slot
+Name of the deployment slot.
+If a slot is not specified, the API will restart the production slot.
+
+```yaml
+Type: System.String
+Parameter Sets: RestartSlot
 Aliases:
 
 Required: True
@@ -153,7 +177,7 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: Restart
+Parameter Sets: Restart, RestartSlot
 Aliases:
 
 Required: True
@@ -226,6 +250,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## ALIASES
+
+### Restart-AzWebAppSlot
 
 ## RELATED LINKS
 

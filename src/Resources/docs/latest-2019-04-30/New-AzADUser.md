@@ -21,17 +21,17 @@ New-AzADUser -TenantId <String> [-Parameter <IUserCreateParameters>] [-DefaultPr
 ### CreateExpanded
 ```
 New-AzADUser -TenantId <String> -AccountEnabled -DisplayName <String> -MailNickname <String>
- -PasswordProfilePassword <String> -PrincipalName <String> [-GivenName <String>] [-ImmutableId <String>]
- [-Mail <String>] [-PasswordProfileForceChangePasswordNextLogin] [-Surname <String>] [-Type <UserType>]
- [-UsageLocation <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -PasswordProfilePassword <String> -UserPrincipalName <String> [-GivenName <String>] [-ImmutableId <String>]
+ [-Mail <String>] [-PasswordProfileForceChangePasswordNextLogin] [-Surname <String>] [-UsageLocation <String>]
+ [-UserType <UserType>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzADUser -InputObject <IResourcesIdentity> -AccountEnabled -DisplayName <String> -MailNickname <String>
- -PasswordProfilePassword <String> -PrincipalName <String> [-GivenName <String>] [-ImmutableId <String>]
- [-Mail <String>] [-PasswordProfileForceChangePasswordNextLogin] [-Surname <String>] [-Type <UserType>]
- [-UsageLocation <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -PasswordProfilePassword <String> -UserPrincipalName <String> [-GivenName <String>] [-ImmutableId <String>]
+ [-Mail <String>] [-PasswordProfileForceChangePasswordNextLogin] [-Surname <String>] [-UsageLocation <String>]
+ [-UserType <UserType>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -242,23 +242,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -PrincipalName
-The user principal name (someuser@contoso.com).
-It must contain one of the verified domains for the tenant.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases: UserPrincipalName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Surname
 The user's surname (family name or last name).
 
@@ -291,13 +274,15 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Type
-A string value that can be used to classify user types in your directory, such as 'Member' and 'Guest'.
+### -UsageLocation
+A two letter country code (ISO standard 3166).
+Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries.
+Examples include: "US", "JP", and "GB".
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Support.UserType
+Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases: UserType
+Aliases:
 
 Required: False
 Position: Named
@@ -307,13 +292,28 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -UsageLocation
-A two letter country code (ISO standard 3166).
-Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries.
-Examples include: "US", "JP", and "GB".
+### -UserPrincipalName
+The user principal name (someuser@contoso.com).
+It must contain one of the verified domains for the tenant.
 
 ```yaml
 Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -UserType
+A string value that can be used to classify user types in your directory, such as 'Member' and 'Guest'.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Support.UserType
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 

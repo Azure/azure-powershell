@@ -87,7 +87,7 @@ The namespace of the resource provider to unregister.
 ```yaml
 Type: System.String
 Parameter Sets: Unregister
-Aliases:
+Aliases: ProviderNamespace
 
 Required: True
 Position: Named

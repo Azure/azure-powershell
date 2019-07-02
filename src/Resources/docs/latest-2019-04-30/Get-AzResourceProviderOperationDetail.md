@@ -64,7 +64,7 @@ Resource identity.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: ProviderNamespace
 
 Required: True
 Position: Named

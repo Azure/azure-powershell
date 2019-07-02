@@ -18,10 +18,46 @@ Add-AzADGroupMember -GroupObjectId <String> -TenantId <String> [-Parameter <IGro
  [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### AddMemberIdToGroupId
+```
+Add-AzADGroupMember -GroupObjectId <String> -TenantId <String> -MemberObjectId <String[]> [-PassThru]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### AddMemberUpnToGroupId
+```
+Add-AzADGroupMember -GroupObjectId <String> -TenantId <String> -MemberUserPrincipalName <String[]> [-PassThru]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### AddExpanded
 ```
 Add-AzADGroupMember -GroupObjectId <String> -TenantId <String> -Url <String> [-PassThru]
  [-Properties <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### AddMemberIdToGroupObject
+```
+Add-AzADGroupMember -TenantId <String> -MemberObjectId <String[]> -GroupObject <IAdGroup> [-PassThru]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### AddMemberUpnToGroupObject
+```
+Add-AzADGroupMember -TenantId <String> -MemberUserPrincipalName <String[]> -GroupObject <IAdGroup> [-PassThru]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### AddMemberIdToGroupDisplayName
+```
+Add-AzADGroupMember -TenantId <String> -MemberObjectId <String[]> -GroupDisplayName <String> [-PassThru]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### AddMemberUpnToGroupDisplayName
+```
+Add-AzADGroupMember -TenantId <String> -MemberUserPrincipalName <String[]> -GroupDisplayName <String>
+ [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### AddViaIdentityExpanded
@@ -77,12 +113,44 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -GroupObjectId
-The object ID of the group to which to add the member.
+### -GroupDisplayName
+The display name of the group to add the member(s) to.
 
 ```yaml
 Type: System.String
-Parameter Sets: Add, AddExpanded
+Parameter Sets: AddMemberIdToGroupDisplayName, AddMemberUpnToGroupDisplayName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -GroupObject
+The object representation of the group to add the member(s) to.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IAdGroup
+Parameter Sets: AddMemberIdToGroupObject, AddMemberUpnToGroupObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -GroupObjectId
+The object ID of the group to add the member(s) to.
+
+```yaml
+Type: System.String
+Parameter Sets: Add, AddMemberIdToGroupId, AddMemberUpnToGroupId, AddExpanded
 Aliases:
 
 Required: True
@@ -105,6 +173,38 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -MemberObjectId
+The object ID of the member(s) to add to the group.
+
+```yaml
+Type: System.String[]
+Parameter Sets: AddMemberIdToGroupId, AddMemberIdToGroupObject, AddMemberIdToGroupDisplayName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -MemberUserPrincipalName
+The user principal name (UPN) of the member(s) to add to the group.
+
+```yaml
+Type: System.String[]
+Parameter Sets: AddMemberUpnToGroupId, AddMemberUpnToGroupObject, AddMemberUpnToGroupDisplayName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -162,7 +262,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Add, AddExpanded
+Parameter Sets: Add, AddMemberIdToGroupId, AddMemberUpnToGroupId, AddExpanded, AddMemberIdToGroupObject, AddMemberUpnToGroupObject, AddMemberIdToGroupDisplayName, AddMemberUpnToGroupDisplayName
 Aliases:
 
 Required: True

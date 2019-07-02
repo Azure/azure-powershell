@@ -23,7 +23,7 @@ Restore-AzWebAppFromBackupBlob -Name <String> -ResourceGroupName <String> -Subsc
 Restore-AzWebAppFromBackupBlob -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Overwrite
  -StorageAccountUrl <String> [-PassThru] [-AdjustConnectionString] [-AppServicePlan <String>]
  [-BlobName <String>] [-Database <IDatabaseBackupSetting[]>] [-HostingEnvironment <String>]
- [-IgnoreConflictingHostName] [-IgnoreDatabas] [-Kind <String>] [-OperationType <BackupRestoreOperationType>]
+ [-IgnoreConflictingHostName] [-IgnoreDatabase] [-Kind <String>] [-OperationType <BackupRestoreOperationType>]
  [-SiteName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Restore-AzWebAppFromBackupBlob -Name <String> -ResourceGroupName <String> -Subsc
 Restore-AzWebAppFromBackupBlob -InputObject <IWebSiteIdentity> -Overwrite -StorageAccountUrl <String>
  [-PassThru] [-AdjustConnectionString] [-AppServicePlan <String>] [-BlobName <String>]
  [-Database <IDatabaseBackupSetting[]>] [-HostingEnvironment <String>] [-IgnoreConflictingHostName]
- [-IgnoreDatabas] [-Kind <String>] [-OperationType <BackupRestoreOperationType>] [-SiteName <String>]
+ [-IgnoreDatabase] [-Kind <String>] [-OperationType <BackupRestoreOperationType>] [-SiteName <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -198,7 +198,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IgnoreDatabas
+### -IgnoreDatabase
 Ignore the databases and only restore the site content
 
 ```yaml
@@ -431,9 +431,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IRestoreRequest
-
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IRestoreRequest
 
 ## OUTPUTS
 

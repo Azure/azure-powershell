@@ -414,7 +414,7 @@ Dynamic: False
 ```
 
 ### -Name
-Resource Name
+The connection name.
 
 ```yaml
 Type: System.String
@@ -629,9 +629,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801Preview.IConnection
-
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801Preview.IConnection
 
 ## OUTPUTS
 

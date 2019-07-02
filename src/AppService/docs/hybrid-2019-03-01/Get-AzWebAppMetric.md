@@ -12,9 +12,16 @@ Gets performance metrics of an app (or deployment slot, if specified).
 
 ## SYNTAX
 
+### List (Default)
 ```
 Get-AzWebAppMetric -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]> [-Detail]
  [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ListSlot
+```
+Get-AzWebAppMetric -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]> -Slot <String>
+ [-Detail] [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -124,6 +131,23 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Slot
+Name of the deployment slot.
+If a slot is not specified, the API will get metrics of the production slot.
+
+```yaml
+Type: System.String
+Parameter Sets: ListSlot
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -SubscriptionId
 Your Azure subscription ID.
 This is a GUID-formatted string (e.g.
@@ -154,6 +178,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### Get-AzWebAppMetrics
+
+### Get-AzWebAppSlotMetric
+
+### Get-AzWebAppSlotMetrics
 
 ## RELATED LINKS
 

@@ -32,9 +32,6 @@ Gets a policy assignment.
 ### [Get-AzPolicyDefinition](Get-AzPolicyDefinition.md)
 Gets the policy definition.
 
-### [Get-AzPolicyDefinitionBuilt](Get-AzPolicyDefinitionBuilt.md)
-Gets the built in policy definition.
-
 ### [Get-AzProviderOperationsMetadata](Get-AzProviderOperationsMetadata.md)
 Gets provider operations metadata for the specified resource provider.
 
@@ -82,6 +79,9 @@ Deletes a policy assignment.
 
 ### [Remove-AzPolicyDefinition](Remove-AzPolicyDefinition.md)
 Deletes a policy definition.
+
+### [Remove-AzPolicySetDefinition](Remove-AzPolicySetDefinition.md)
+
 
 ### [Remove-AzRoleAssignment](Remove-AzRoleAssignment.md)
 Deletes a role assignment.

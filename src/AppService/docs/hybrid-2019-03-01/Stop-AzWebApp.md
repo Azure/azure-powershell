@@ -18,6 +18,12 @@ Stop-AzWebApp -Name <String> -ResourceGroupName <String> -SubscriptionId <String
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### StopSlot
+```
+Stop-AzWebApp -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Slot <String> [-PassThru]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### StopViaIdentity
 ```
 Stop-AzWebApp -InputObject <IWebSiteIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
@@ -86,7 +92,7 @@ Name of the app.
 
 ```yaml
 Type: System.String
-Parameter Sets: Stop
+Parameter Sets: Stop, StopSlot
 Aliases:
 
 Required: True
@@ -118,7 +124,24 @@ Name of the resource group to which the resource belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Stop
+Parameter Sets: Stop, StopSlot
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Slot
+Name of the deployment slot.
+If a slot is not specified, the API will stop the production slot.
+
+```yaml
+Type: System.String
+Parameter Sets: StopSlot
 Aliases:
 
 Required: True
@@ -136,7 +159,7 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: Stop
+Parameter Sets: Stop, StopSlot
 Aliases:
 
 Required: True
@@ -192,6 +215,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## ALIASES
+
+### Stop-AzWebAppSlot
 
 ## RELATED LINKS
 

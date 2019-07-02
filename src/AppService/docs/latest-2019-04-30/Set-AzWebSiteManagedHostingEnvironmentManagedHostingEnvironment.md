@@ -14,38 +14,19 @@ Create or update a managed hosting environment.
 
 ### Update (Default)
 ```
-Set-AzWebSiteManagedHostingEnvironmentManagedHostingEnvironment -ResourceGroupName <String> [-Name <String>]
- [-SubscriptionId <String>] [-ManagedHostingEnvironmentEnvelope <IHostingEnvironment>] [-PassThru]
+Set-AzWebSiteManagedHostingEnvironmentManagedHostingEnvironment -Name <String> -ResourceGroupName <String>
+ -SubscriptionId <String> [-ManagedHostingEnvironmentEnvelope <IHostingEnvironment>] [-PassThru]
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Set-AzWebSiteManagedHostingEnvironmentManagedHostingEnvironment -InputObject <IWebSiteIdentity>
- -Location <String> -Status <HostingEnvironmentStatus> [-Name <String>] [-SubscriptionId <String>] [-PassThru]
- [-AllowedMultiSize <String>] [-AllowedWorkerSize <String>] [-ApiManagementAccountId <String>]
- [-ClusterSetting <INameValuePair[]>] [-DatabaseEdition <String>] [-DatabaseServiceObjective <String>]
- [-DnsSuffix <String>] [-EnvironmentCapacity <IStampCapacity[]>] [-EnvironmentIsHealthy]
- [-EnvironmentStatu <String>] [-Id <String>] [-InternalLoadBalancingMode <InternalLoadBalancingMode>]
- [-IpsslAddressCount <Int32>] [-Kind <String>] [-LastAction <String>] [-LastActionResult <String>]
- [-MaximumNumberOfMachine <Int32>] [-MultiRoleCount <Int32>] [-MultiSize <String>]
- [-NetworkAccessControlList <INetworkAccessControlEntry[]>] [-PropertiesLocation <String>]
- [-PropertiesName <String>] [-ProvisioningState <ProvisioningState>] [-ResourceGroup <String>] [-Suspended]
- [-Tag <IResourceTags>] [-Type <String>] [-UpgradeDomain <Int32>] [-VipMapping <IVirtualIPMapping[]>]
- [-VirtualNetworkId <String>] [-VirtualNetworkName <String>] [-VirtualNetworkSubnet <String>]
- [-VirtualNetworkType <String>] [-VnetName <String>] [-VnetResourceGroupName <String>]
- [-VnetSubnetName <String>] [-WorkerPool <IWorkerPool[]>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
 ```
-Set-AzWebSiteManagedHostingEnvironmentManagedHostingEnvironment -ResourceGroupName <String> -Location <String>
- -Status <HostingEnvironmentStatus> [-Name <String>] [-SubscriptionId <String>] [-PassThru]
+Set-AzWebSiteManagedHostingEnvironmentManagedHostingEnvironment -Name <String> -ResourceGroupName <String>
+ -SubscriptionId <String> -Location <String> -Status <HostingEnvironmentStatus> [-PassThru]
  [-AllowedMultiSize <String>] [-AllowedWorkerSize <String>] [-ApiManagementAccountId <String>]
  [-ClusterSetting <INameValuePair[]>] [-DatabaseEdition <String>] [-DatabaseServiceObjective <String>]
  [-DnsSuffix <String>] [-EnvironmentCapacity <IStampCapacity[]>] [-EnvironmentIsHealthy]
- [-EnvironmentStatu <String>] [-Id <String>] [-InternalLoadBalancingMode <InternalLoadBalancingMode>]
+ [-EnvironmentStatus <String>] [-Id <String>] [-InternalLoadBalancingMode <InternalLoadBalancingMode>]
  [-IpsslAddressCount <Int32>] [-Kind <String>] [-LastAction <String>] [-LastActionResult <String>]
  [-MaximumNumberOfMachine <Int32>] [-MultiRoleCount <Int32>] [-MultiSize <String>] [-Name1 <String>]
  [-NetworkAccessControlList <INetworkAccessControlEntry[]>] [-PropertiesLocation <String>]
@@ -55,13 +36,6 @@ Set-AzWebSiteManagedHostingEnvironmentManagedHostingEnvironment -ResourceGroupNa
  [-VirtualNetworkSubnet <String>] [-VirtualNetworkType <String>] [-VnetName <String>]
  [-VnetResourceGroupName <String>] [-VnetSubnetName <String>] [-WorkerPool <IWorkerPool[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Set-AzWebSiteManagedHostingEnvironmentManagedHostingEnvironment -InputObject <IWebSiteIdentity>
- [-ManagedHostingEnvironmentEnvelope <IHostingEnvironment>] [-PassThru] [-DefaultProfile <PSObject>] [-AsJob]
- [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -94,7 +68,7 @@ List of comma separated strings describing which VM sizes are allowed for front-
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -110,7 +84,7 @@ List of comma separated strings describing which VM sizes are allowed for worker
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -126,7 +100,7 @@ Api Management Account associated with this Hosting Environment
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -158,7 +132,7 @@ Custom settings for changing the behavior of the hosting environment
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.INameValuePair[]
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -175,7 +149,7 @@ Edition of the metadata database for the hostingEnvironment (App Service Environ
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -192,7 +166,7 @@ Service objective of the metadata database for the hostingEnvironment (App Servi
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -224,7 +198,7 @@ DNS suffix of the hostingEnvironment (App Service Environment)
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -240,7 +214,7 @@ Current total, used, and available worker capacities
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.IStampCapacity[]
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -256,7 +230,7 @@ True/false indicating whether the hostingEnvironment (App Service Environment) i
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -267,12 +241,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -EnvironmentStatu
+### -EnvironmentStatus
 Detailed message about with results of the last check of the hostingEnvironment (App Service Environment)
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -288,7 +262,7 @@ Resource Id
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -299,28 +273,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
-Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -InternalLoadBalancingMode
 Specifies which endpoints to serve internally in the hostingEnvironment's (App Service Environment) VNET
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.InternalLoadBalancingMode
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -336,7 +294,7 @@ Number of IP SSL addresses reserved for this hostingEnvironment (App Service Env
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -352,7 +310,7 @@ Kind of resource
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -368,7 +326,7 @@ Last deployment action on this hostingEnvironment (App Service Environment)
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -384,7 +342,7 @@ Result of the last deployment action on this hostingEnvironment (App Service Env
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -400,7 +358,7 @@ Resource Location
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -416,7 +374,7 @@ Description of an hostingEnvironment (App Service Environment)
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.IHostingEnvironment
-Parameter Sets: Update, UpdateViaIdentity
+Parameter Sets: Update
 Aliases:
 
 Required: False
@@ -432,7 +390,7 @@ Maximum number of VMs in this hostingEnvironment (App Service Environment)
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -448,7 +406,7 @@ Number of front-end instances
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -465,7 +423,7 @@ Front-end VM size, e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -477,11 +435,11 @@ Dynamic: False
 ```
 
 ### -Name
-Resource Name
+Name of managed hosting environment
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -513,7 +471,7 @@ Access control list for controlling traffic to the hostingEnvironment (App Servi
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.INetworkAccessControlEntry[]
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -546,7 +504,7 @@ Location of the hostingEnvironment (App Service Environment), e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -562,7 +520,7 @@ Name of the hostingEnvironment (App Service Environment)
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -594,7 +552,7 @@ Provisioning state of the hostingEnvironment (App Service Environment)
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.ProvisioningState
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -610,7 +568,7 @@ Resource group of the hostingEnvironment (App Service Environment)
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -626,7 +584,7 @@ Name of resource group
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -642,7 +600,7 @@ Current status of the hostingEnvironment (App Service Environment)
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.HostingEnvironmentStatus
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -654,11 +612,13 @@ Dynamic: False
 ```
 
 ### -SubscriptionId
-Subscription of the hostingEnvironment (App Service Environment)
+Your Azure subscription ID.
+This is a GUID-formatted string (e.g.
+00000000-0000-0000-0000-000000000000).
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -676,7 +636,7 @@ when the management endpoint is no longer available (most likely because NSG blo
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -692,7 +652,7 @@ Resource tags
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801Preview.IResourceTags
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -708,7 +668,7 @@ Resource type
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -724,7 +684,7 @@ Number of upgrade domains of this hostingEnvironment (App Service Environment)
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -740,7 +700,7 @@ Description of IP SSL mapping for this hostingEnvironment (App Service Environme
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.IVirtualIPMapping[]
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -756,7 +716,7 @@ Resource id of the virtual network
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -772,7 +732,7 @@ Name of the virtual network (read-only)
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -788,7 +748,7 @@ Subnet within the virtual network
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -804,7 +764,7 @@ Resource type of the virtual network (read-only)
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -820,7 +780,7 @@ Name of the hostingEnvironment's (App Service Environment) virtual network
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -836,7 +796,7 @@ Resource group of the hostingEnvironment's (App Service Environment) virtual net
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -852,7 +812,7 @@ Subnet of the hostingEnvironment's (App Service Environment) virtual network
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -868,7 +828,7 @@ Description of worker pools with worker size ids, VM sizes, and number of worker
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.IWorkerPool[]
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -918,8 +878,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.IHostingEnvironment
-
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
 
 ## OUTPUTS
 
