@@ -99,24 +99,24 @@
 #### Az.EventGrid
 * Updated to use the 2019-06-01 API version.
 * New cmdlets:
-    - New-AzureRmEventGridDomain
+    - New-AzEventGridDomain
         - Creates a new Azure Event Grid Domain.
-    - Get-AzureRmEventGridDomain
+    - Get-AzEventGridDomain
         - Gets the details of an Event Grid Domain, or gets a list of all Event Grid Domains in the current Azure subscription.
-    - Remove-AzureRmEventGridDomain
+    - Remove-AzEventGridDomain
         - Removes an Azure Event Grid Domain.
-    - New-AzureRmEventGridDomainKey
+    - New-AzEventGridDomainKey
         - Regenerates the shared access key for an Azure Event Grid Domain.
-    - Get-AzureRmEventGridDomainKey
+    - Get-AzEventGridDomainKey
         - Gets the shared access keys used to publish events to an Event Grid Domain.
-    - New-AzureRmEventGridDomainTopic:
+    - New-AzEventGridDomainTopic:
         - Creates a new Azure Event Grid Domain Topic.
-    - Get-AzureRmEventGridDomainTopic
+    - Get-AzEventGridDomainTopic
         - Gets the details of an Event Grid Domain Topic, or gets a list of all Event Grid Domain Topics under specific Event Grid Domain in the current Azure
-    - Remove-AzureRmEventGridDomainTopic:
+    - Remove-AzEventGridDomainTopic:
         - Removes an existing Azure Event Grid Domain Topic.
 * Updated cmdlets:
-    - New-AzureRmEventGridSubscription/Update-AzureRmEventGridSubscription:
+    - New-AzEventGridSubscription/Update-AzEventGridSubscription:
         - Add new mandatory parameters to support piping for the new Event Grid Domain and Event Grid Domain Topic to allow creating new event subscription under these resources.
         - Add new mandatory parameters for specifying the new Event Grid Domain name and/or Event Grid Domain Topic name to allow creating new event subscription under these resources.
         - Add new Parameter sets for domains and domain topics to allow reusing existing parameters (e.g., EndPointType, SubjectBeginsWith, etc).
@@ -127,7 +127,7 @@
         - Disallow usage of 'All' in -IncludedEventType option and replace it with
     - Get-AzEventGridTopic, Get-AzEventGridDomain, Get-AzEventGridDomainTopic, Get-AzEventGridSubscription:
         - Add new optional parameters (Top, ODataQuery and NextLink) to support results pagination and filtering.
-    - Remove-AzureRmEventGridSubscription
+    - Remove-AzEventGridSubscription
         - Add new mandatory parameters to support piping for Event Grid Domain and Event Grid Domain Topic to allow removing existing event subscription under these resources.
         - Add new mandatory parameters for specifying the Event Grid Domain name and/or Event Grid Domain Topic name to allow removing existing event subscription under these resources.
 
