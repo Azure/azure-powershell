@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix missing examples for Set-AzSqlDatabaseSecondary cmdlet
 
 ## Version 1.13.0
 * Add Instance Failover Group cmdlets from preview release to public release
