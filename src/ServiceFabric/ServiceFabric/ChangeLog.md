@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.1.1
+* Fix add certificate ByExistingKeyVault getting the wrong thumbprint in some cases
+
 ## Version 1.1.0
 * Fix typo in error message for `Update-AzServiceFabricReliability`
 

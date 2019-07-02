@@ -18,6 +18,26 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.5.0
+* Change 2 parameters "-IndexDocument" and "-ErrorDocument404Path" from required to optional  in cmdlet:
+    -  Enable-AzStorageStaticWebsite
+* Update help of Get-AzStorageBlobContent by add an example
+* Show more error information when cmdlet failed with StorageException 
+* Support create or update Storage account with Azure Files AAD DS Authentication
+    -  New-AzStorageAccount
+    -  Set-AzStorageAccount
+* Support list or close file handles of a file share, file directory or a file
+    - Get-AzStorageFileHandle
+    - Close-AzStorageFileHandle
+
+## Version 1.4.0
+* Support Kind FileStorage and SkuName Premium_ZRS when create Storage account
+    - New-AzStorageAccount
+* Clarified description of blob immutability cmdlet
+    -  Remove-AzRmStorageContainerImmutabilityPolicy
+
+## Version 1.3.2
 * Support new SkuName StandardGZRS, StandardRAGZRS when create/update Storage account
     - New-AzStorageAccount
     - Set-AzStorageAccount

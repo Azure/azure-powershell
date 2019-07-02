@@ -160,6 +160,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Use local azure ip address as source ip for this connection.")]
+        public SwitchParameter UseLocalAzureIpAddress { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -215,6 +220,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 Name = this.Name,
                 EnableBgp = this.EnableBgp.IsPresent,
+                UseLocalAzureIpAddress = this.UseLocalAzureIpAddress.IsPresent
             };
 
             //// Resolve the VpnSite reference

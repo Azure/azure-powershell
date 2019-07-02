@@ -18,8 +18,8 @@ Modifies a Storage account.
 Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-SkuName <String>]
  [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>] [-Tag <Hashtable>]
  [-EnableHttpsTrafficOnly <Boolean>] [-StorageEncryption] [-AssignIdentity]
- [-NetworkRuleSet <PSNetworkRuleSet>] [-EnableAzureFilesAadIntegrationForSMB <Boolean>] [-UpgradeToStorageV2]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NetworkRuleSet <PSNetworkRuleSet>] [-UpgradeToStorageV2] [-EnableAzureActiveDirectoryDomainServicesForFile <Boolean>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### KeyvaultEncryption
@@ -27,9 +27,9 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
 Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-SkuName <String>]
  [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>] [-Tag <Hashtable>]
  [-EnableHttpsTrafficOnly <Boolean>] [-KeyvaultEncryption] -KeyName <String> -KeyVersion <String>
- -KeyVaultUri <String> [-AssignIdentity] [-NetworkRuleSet <PSNetworkRuleSet>]
- [-EnableAzureFilesAadIntegrationForSMB <Boolean>] [-UpgradeToStorageV2] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -KeyVaultUri <String> [-AssignIdentity] [-NetworkRuleSet <PSNetworkRuleSet>] [-UpgradeToStorageV2]
+ [-EnableAzureActiveDirectoryDomainServicesForFile <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -114,6 +114,13 @@ PS C:\> Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "
 
 The command upgrade a Storage account with Kind "Storage" or "BlobStorage" to "StorageV2" kind Storage account.
 
+### Example 10: Update a Storage account by enable Azure Files AAD DS Authentication.
+```
+PS C:\> Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -EnableAzureActiveDirectoryDomainServicesForFile $true
+```
+
+The command update a Storage account by enable Azure Files AAD DS Authentication.
+
 ## PARAMETERS
 
 ### -AccessTier
@@ -189,6 +196,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableAzureActiveDirectoryDomainServicesForFile
+Enable Azure Files Azure Active Directory Domain Service Authentication for the storage account.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
