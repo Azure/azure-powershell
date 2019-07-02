@@ -84,6 +84,7 @@ Enable HTTPS for a custom domain "frontendpointname1-custom-xyz" that is part of
 
 ### Example 2: Enable HTTPS for a custom domain with FrontDoorName and ResourceGroupName using own certificate in Key Vault.
 ```powershell
+PS C:\> $vaultId = (Get-AzKeyVault -VaultName $vaultName).ResourceId
 PS C:\> Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName "resourcegroup1" -FrontDoorName "frontdoor1" -FrontendEndpointName "frontendpointname1-custom-xyz" -Vault $vaultId -secretName $secretName -SecretVersion $secretVersion
 
 
