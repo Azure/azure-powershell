@@ -207,7 +207,7 @@ function Test-SetAzureStorageAccount
         $kind = 'Storage'
 
         New-AzResourceGroup -Name $rgname -Location $loc;
-        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind -EnableHttpsTrafficOnly $true -EnableAzureFilesAadIntegrationForSMB $true -EnableHierarchicalNamespace $true;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind -EnableHttpsTrafficOnly $true  -EnableHierarchicalNamespace $true;
 
         Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
         Assert-AreEqual $stoname $sto.StorageAccountName;
@@ -215,7 +215,6 @@ function Test-SetAzureStorageAccount
         Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
         Assert-AreEqual $kind $sto.Kind;
         Assert-AreEqual $true $sto.EnableHttpsTrafficOnly;
-        Assert-AreEqual $true $sto.EnableAzureFilesAadIntegrationForSMB;
         Assert-AreEqual $true $sto.EnableHierarchicalNamespace;
         
         $stos = Get-AzStorageAccount -ResourceGroupName $rgname;
@@ -224,15 +223,13 @@ function Test-SetAzureStorageAccount
         Assert-AreEqual $loc.ToLower().Replace(" ", "") $stos[0].Location;
         Assert-AreEqual $kind $sto.Kind;
         Assert-AreEqual $true $sto.EnableHttpsTrafficOnly;
-        Assert-AreEqual $true $sto.EnableAzureFilesAadIntegrationForSMB;
         Assert-AreEqual $true $sto.EnableHierarchicalNamespace;
 
         $stotype = 'Standard_LRS';
         # TODO: Still need to do retry for Set-, even after Get- returns it.
-        Retry-IfException { Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Type $stotype -EnableHttpsTrafficOnly $false -EnableAzureFilesAadIntegrationForSMB $false }
+        Retry-IfException { Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Type $stotype -EnableHttpsTrafficOnly $false }
         $stotype = 'Standard_RAGRS';
         $sto = Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Type $stotype;
-        Assert-AreEqual $false $sto.EnableAzureFilesAadIntegrationForSMB;
         Assert-AreEqual $true $sto.EnableHierarchicalNamespace;
 
         $sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname;
@@ -241,7 +238,6 @@ function Test-SetAzureStorageAccount
         Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
         Assert-AreEqual $kind $sto.Kind;
         Assert-AreEqual $false $sto.EnableHttpsTrafficOnly;
-        Assert-AreEqual $false $sto.EnableAzureFilesAadIntegrationForSMB;
         Assert-AreEqual $true $sto.EnableHierarchicalNamespace;
 
         Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;

@@ -150,24 +150,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
 
         [Parameter(
-        Mandatory = false,
-        HelpMessage = "Enable Azure Files AAD Integration for the Storage account.")]
-        [ValidateNotNullOrEmpty]
-        [Alias(EnableFilesAadIntegrationAlias)]
-        public bool EnableAzureFilesAadIntegrationForSMB
-        {
-            get
-            {
-                return enableAzureFilesAadIntegrationForSMB.Value;
-            }
-            set
-            {
-                enableAzureFilesAadIntegrationForSMB = value;
-            }
-        }
-        private bool? enableAzureFilesAadIntegrationForSMB = null;
-
-        [Parameter(
             Mandatory = false,
             HelpMessage = "Enable HierarchicalNamespace for the Storage account.")]
         [ValidateNotNullOrEmpty]
@@ -255,10 +237,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
             if (NetworkRuleSet != null)
             {
                 createParameters.NetworkRuleSet = PSNetworkRuleSet.ParseStorageNetworkRule(NetworkRuleSet);
-            }
-            if (enableAzureFilesAadIntegrationForSMB != null)
-            {
-                createParameters.EnableAzureFilesAadIntegration = enableAzureFilesAadIntegrationForSMB;
             }
             if (enableHierarchicalNamespace != null)
             {

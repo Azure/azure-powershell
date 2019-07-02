@@ -171,21 +171,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableAzureFilesAadIntegrationForSMB
-Enable Azure Files AAD Integration for the Storage account.
-
-```yaml
-Type: System.Boolean
-Parameter Sets: (All)
-Aliases: EnableFilesAADIntegration
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -EnableHierarchicalNamespace
 Indicates whether or not the Storage account enables Hierarchical Namespace.
 
