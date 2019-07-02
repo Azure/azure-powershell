@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.dll-Help.xml
 Module Name: Az.RecoveryServices
 ms.assetid: 368DD95E-EA25-4FC4-8171-CB7348FE480C
@@ -23,9 +23,7 @@ Set-AzRecoveryServicesVaultContext -Vault <ARSVault> [-DefaultProfile <IAzureCon
 
 The **Set-AzRecoveryServicesVaultContext** cmdlet sets the vault context for Azure Site Recovery services.
 
-> [!WARNING]
-> The cmdlet is being deprecated. There will be no replacement for it.
-> The change is expected to take effect from the version released in the fall 2019. Please use **-VaultID** parameter in all Recovery Services commands going forward.
+Warning: This cmdlet is being deprecated in a future breaking change release. There will be no replacement for it. Please use the -VaultId parameter in all Recovery Services commands going forward.
 
 ## EXAMPLES
 
