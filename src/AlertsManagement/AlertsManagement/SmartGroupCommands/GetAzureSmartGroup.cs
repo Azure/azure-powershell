@@ -71,17 +71,6 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         [PSArgumentCompleter("1h", "1d", "7d", "30d")]
         public string TimeRange { get; set; }
 
-        /// <summary>
-        /// Include details of smart group
-        /// </summary>
-        [Parameter(Mandatory = false,
-                   ParameterSetName = SmartGroupsListByFilterParameterSet,
-                   HelpMessage = "Includes aggregated details of alerts in smart group like resource, severity, state, monitor condition etc.")]
-        [Parameter(Mandatory = false,
-                   ParameterSetName = SmartGroupByIdParameterSet,
-                   HelpMessage = "Includes aggregated details of alerts in smart group like resource, severity, state, monitor condition etc.")]
-        public bool IncludeSmartGroupDetail { get; set; }
-
         #endregion
 
         protected override void ProcessRecordInternal()
