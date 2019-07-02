@@ -15,14 +15,14 @@ Query a snapshot of the most recent connection states.
 ### Query (Default)
 ```
 Get-AzNetworkWatcherConnectionMonitorState -ConnectionMonitorName <String> -NetworkWatcherName <String>
- -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### QueryViaIdentity
 ```
 Get-AzNetworkWatcherConnectionMonitorState -InputObject <INetworkIdentity> [-DefaultProfile <PSObject>]
- [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -130,6 +130,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -ResourceGroupName
 The name of the resource group containing Network Watcher.
 
@@ -210,6 +226,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### Get-AzNetworkWatcherConnectionMonitorReport
+
+## NOTES
 
 ## RELATED LINKS
 

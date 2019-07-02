@@ -16,7 +16,7 @@ The Set VpnclientIpsecParameters operation sets the vpnclient ipsec policy for P
 ```
 Set-AzVnetGatewayVpnClientIPsecParameter -ResourceGroupName <String> -SubscriptionId <String>
  -VnetGatewayName <String> [-VpnclientIPsecParam <IVpnClientIPsecParameters>] [-DefaultProfile <PSObject>]
- [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### SetExpanded
@@ -25,7 +25,7 @@ Set-AzVnetGatewayVpnClientIPsecParameter -ResourceGroupName <String> -Subscripti
  -VnetGatewayName <String> -DhGroup <DhGroup> -IPsecEncryption <IpsecEncryption>
  -IPsecIntegrity <IpsecIntegrity> -IkeEncryption <IkeEncryption> -IkeIntegrity <IkeIntegrity>
  -PfsGroup <PfsGroup> -SaDataSizeKilobyte <Int32> -SaLifeTimeSecond <Int32> [-DefaultProfile <PSObject>]
- [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -165,6 +165,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -PfsGroup
 The Pfs Group used in IKE Phase 2 for new child SA.
 
@@ -264,6 +280,7 @@ Dynamic: False
 
 ### -VpnclientIPsecParam
 An IPSec parameters for a virtual network gateway P2S connection.
+To construct, see NOTES section for VPNCLIENTIPSECPARAM properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVpnClientIPsecParameters
@@ -327,6 +344,21 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Set-AzVpnClientIpsecParameter
 
 ### Set-AzVirtualNetworkGatewayVpnClientIPsecParameter
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### VPNCLIENTIPSECPARAM <IVpnClientIPsecParameters>: An IPSec parameters for a virtual network gateway P2S connection.
+  - `DhGroup <DhGroup>`: The DH Group used in IKE Phase 1 for initial SA.
+  - `IkeEncryption <IkeEncryption>`: The IKE encryption algorithm (IKE phase 2).
+  - `IkeIntegrity <IkeIntegrity>`: The IKE integrity algorithm (IKE phase 2).
+  - `IpsecEncryption <IpsecEncryption>`: The IPSec encryption algorithm (IKE phase 1).
+  - `IpsecIntegrity <IpsecIntegrity>`: The IPSec integrity algorithm (IKE phase 1).
+  - `PfsGroup <PfsGroup>`: The Pfs Group used in IKE Phase 2 for new child SA.
+  - `SaDataSizeKilobyte <Int32>`: The IPSec Security Association (also called Quick Mode or Phase 2 SA) payload size in KB for P2S client..
+  - `SaLifeTimeSecond <Int32>`: The IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime in seconds for P2S client.
 
 ## RELATED LINKS
 

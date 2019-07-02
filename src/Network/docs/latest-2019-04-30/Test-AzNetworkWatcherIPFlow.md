@@ -15,8 +15,8 @@ Verify IP flow from the specified VM to a location given the currently configure
 ### Verify (Default)
 ```
 Test-AzNetworkWatcherIPFlow -NetworkWatcherName <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <IVerificationIPFlowParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-Parameter <IVerificationIPFlowParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### VerifyExpanded
@@ -24,21 +24,21 @@ Test-AzNetworkWatcherIPFlow -NetworkWatcherName <String> -ResourceGroupName <Str
 Test-AzNetworkWatcherIPFlow -NetworkWatcherName <String> -ResourceGroupName <String> -SubscriptionId <String>
  -Direction <Direction> -LocalIPAddress <String> -LocalPort <String> -Protocol <IPFlowProtocol>
  -RemoteIPAddress <String> -RemotePort <String> -TargetResourceId <String> [-TargetNicResourceId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### VerifyViaIdentityExpanded
 ```
 Test-AzNetworkWatcherIPFlow -InputObject <INetworkIdentity> -Direction <Direction> -LocalIPAddress <String>
  -LocalPort <String> -Protocol <IPFlowProtocol> -RemoteIPAddress <String> -RemotePort <String>
- -TargetResourceId <String> [-TargetNicResourceId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -TargetResourceId <String> [-TargetNicResourceId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### VerifyViaIdentity
 ```
 Test-AzNetworkWatcherIPFlow -InputObject <INetworkIdentity> [-Parameter <IVerificationIPFlowParameters>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -181,8 +181,25 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Parameter
 Parameters that define the IP flow to be verified.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVerificationIPFlowParameters
@@ -362,6 +379,21 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVerificationIPFlowResult
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <IVerificationIPFlowParameters>: Parameters that define the IP flow to be verified.
+  - `Direction <Direction>`: The direction of the packet represented as a 5-tuple.
+  - `LocalIPAddress <String>`: The local IP address. Acceptable values are valid IPv4 addresses.
+  - `LocalPort <String>`: The local port. Acceptable values are a single integer in the range (0-65535). Support for * for the source port, which depends on the direction.
+  - `Protocol <IPFlowProtocol>`: Protocol to be verified on.
+  - `RemoteIPAddress <String>`: The remote IP address. Acceptable values are valid IPv4 addresses.
+  - `RemotePort <String>`: The remote port. Acceptable values are a single integer in the range (0-65535). Support for * for the source port, which depends on the direction.
+  - `TargetResourceId <String>`: The ID of the target resource to perform next-hop on.
+  - `[TargetNicResourceId <String>]`: The NIC ID. (If VM has multiple NICs and IP forwarding is enabled on any of them, then this parameter must be specified. Otherwise optional).
 
 ## RELATED LINKS
 

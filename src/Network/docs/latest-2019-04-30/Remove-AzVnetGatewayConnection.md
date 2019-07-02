@@ -15,13 +15,13 @@ Deletes the specified virtual network Gateway connection.
 ### Delete (Default)
 ```
 Remove-AzVnetGatewayConnection -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-PassThru]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzVnetGatewayConnection -InputObject <INetworkIdentity> [-PassThru] [-DefaultProfile <PSObject>]
- [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -108,6 +108,22 @@ Aliases: VirtualNetworkGatewayConnectionName
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -209,6 +225,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### Remove-AzVirtualNetworkGatewayConnection
+
+## NOTES
 
 ## RELATED LINKS
 

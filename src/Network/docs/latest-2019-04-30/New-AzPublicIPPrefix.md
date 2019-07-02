@@ -15,7 +15,7 @@ Creates or updates a static or dynamic public IP prefix.
 ### Create (Default)
 ```
 New-AzPublicIPPrefix -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <IPublicIPPrefix>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [-Parameter <IPublicIPPrefix>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -25,7 +25,7 @@ New-AzPublicIPPrefix -Name <String> -ResourceGroupName <String> -SubscriptionId 
  [-IPPrefix <String>] [-IPTag <IIPTag[]>] [-Id <String>] [-Location <String>] [-PrefixLength <Int32>]
  [-ProvisioningState <String>] [-PublicIPAddress <IReferencedPublicIPAddress[]>]
  [-PublicIPAddressVersion <IPVersion>] [-ResourceGuid <String>] [-SkuName <PublicIPPrefixSkuName>]
- [-Tag <IResourceTags>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [-Tag <Hashtable>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -34,14 +34,14 @@ New-AzPublicIPPrefix -Name <String> -ResourceGroupName <String> -SubscriptionId 
 New-AzPublicIPPrefix -InputObject <INetworkIdentity> [-Etag <String>] [-IPPrefix <String>] [-IPTag <IIPTag[]>]
  [-Id <String>] [-Location <String>] [-PrefixLength <Int32>] [-ProvisioningState <String>]
  [-PublicIPAddress <IReferencedPublicIPAddress[]>] [-PublicIPAddressVersion <IPVersion>]
- [-ResourceGuid <String>] [-SkuName <PublicIPPrefixSkuName>] [-Tag <IResourceTags>] [-Zone <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ResourceGuid <String>] [-SkuName <PublicIPPrefixSkuName>] [-Tag <Hashtable>] [-Zone <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
 New-AzPublicIPPrefix -InputObject <INetworkIdentity> [-Parameter <IPublicIPPrefix>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -167,6 +167,7 @@ Dynamic: False
 
 ### -IPTag
 The list of tags associated with the public IP prefix.
+To construct, see NOTES section for IPTAG properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IIPTag[]
@@ -213,8 +214,25 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Parameter
 Public IP prefix resource.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IPublicIPPrefix
@@ -264,6 +282,7 @@ Dynamic: False
 
 ### -PublicIPAddress
 The list of all referenced PublicIPAddresses
+To construct, see NOTES section for PUBLICIPADDRESS properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IReferencedPublicIPAddress[]
@@ -363,7 +382,7 @@ Dynamic: False
 Resource tags.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceTags
+Type: System.Collections.Hashtable
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -438,6 +457,33 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IPublicIPPrefix
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### IPTAG <IIPTag[]>: The list of tags associated with the public IP prefix.
+  - `[Tag <String>]`: Gets or sets value of the IpTag associated with the public IP. Example SQL, Storage etc
+  - `[Type <String>]`: Gets or sets the ipTag type: Example FirstPartyUsage.
+
+#### PARAMETER <IPublicIPPrefix>: Public IP prefix resource.
+  - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+  - `[IPPrefix <String>]`: The allocated Prefix
+  - `[IPTag <IIPTag[]>]`: The list of tags associated with the public IP prefix.
+    - `[Tag <String>]`: Gets or sets value of the IpTag associated with the public IP. Example SQL, Storage etc
+    - `[Type <String>]`: Gets or sets the ipTag type: Example FirstPartyUsage.
+  - `[PrefixLength <Int32?>]`: The Length of the Public IP Prefix.
+  - `[ProvisioningState <String>]`: The provisioning state of the Public IP prefix resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+  - `[PublicIPAddress <IReferencedPublicIPAddress[]>]`: The list of all referenced PublicIPAddresses
+    - `[Id <String>]`: The PublicIPAddress Reference
+  - `[PublicIPAddressVersion <IPVersion?>]`: The public IP address version.
+  - `[ResourceGuid <String>]`: The resource GUID property of the public IP prefix resource.
+  - `[SkuName <PublicIPPrefixSkuName?>]`: Name of a public IP prefix SKU.
+  - `[Zone <String[]>]`: A list of availability zones denoting the IP allocated for the resource needs to come from.
+
+#### PUBLICIPADDRESS <IReferencedPublicIPAddress[]>: The list of all referenced PublicIPAddresses
+  - `[Id <String>]`: The PublicIPAddress Reference
 
 ## RELATED LINKS
 

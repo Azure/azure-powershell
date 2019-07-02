@@ -114,6 +114,7 @@ Dynamic: False
 
 ### -Parameter
 Parameters that define the representation of topology.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ITopologyParameters
@@ -256,6 +257,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ITopology
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <ITopologyParameters>: Parameters that define the representation of topology.
+  - `[TargetResourceGroupName <String>]`: The name of the target resource group to perform topology on.
+  - `[TargetSubnetId <String>]`: Resource ID.
+  - `[TargetVirtualNetworkId <String>]`: Resource ID.
 
 ## RELATED LINKS
 

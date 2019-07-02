@@ -166,5 +166,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Get-AzVirtualNetworkPeering
 
+## NOTES
+
 ## RELATED LINKS
 

@@ -104,5 +104,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Get-AzVirtualNetworkAvailableEndpointService
 
+## NOTES
+
 ## RELATED LINKS
 

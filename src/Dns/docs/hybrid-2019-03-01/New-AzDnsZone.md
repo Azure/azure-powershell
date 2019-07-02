@@ -15,27 +15,28 @@ Does not modify DNS records within the zone.
 
 ### Create (Default)
 ```
-New-AzDnsZone -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-Parameter <IZone>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzDnsZone -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-IfMatch <String>]
+ [-IfNoneMatch <String>] [-Parameter <IZone>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateExpanded
 ```
 New-AzDnsZone -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Location <String>
- [-Etag <String>] [-Tag <ITrackedResourceTags>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-IfMatch <String>] [-IfNoneMatch <String>] [-Etag <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzDnsZone -InputObject <IDnsIdentity> -Location <String> [-Etag <String>] [-Tag <ITrackedResourceTags>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzDnsZone -InputObject <IDnsIdentity> -Location <String> [-IfMatch <String>] [-IfNoneMatch <String>]
+ [-Etag <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
-New-AzDnsZone -InputObject <IDnsIdentity> [-Parameter <IZone>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzDnsZone -InputObject <IDnsIdentity> [-IfMatch <String>] [-IfNoneMatch <String>] [-Parameter <IZone>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -96,6 +97,41 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -IfMatch
+The etag of the DNS zone.
+Omit this value to always overwrite the current zone.
+Specify the last-seen etag value to prevent accidentally overwriting any concurrent changes.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -IfNoneMatch
+Set to '*' to allow a new DNS zone to be created, but to prevent updating an existing zone.
+Other values will be ignored.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -InputObject
 Identity Parameter
 
@@ -146,6 +182,7 @@ Dynamic: False
 
 ### -Parameter
 Describes a DNS zone.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20160401.IZone
@@ -197,7 +234,7 @@ Dynamic: False
 Resource tags.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api10.ITrackedResourceTags
+Type: System.Collections.Hashtable
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -247,15 +284,23 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20160401.IZone
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20160401.IZone
 
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20160401.IZone
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <IZone>: Describes a DNS zone.
+  - `[Etag <String>]`: The etag of the zone.
 
 ## RELATED LINKS
 

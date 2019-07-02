@@ -15,28 +15,29 @@ Create or updates a route table in a specified resource group.
 ### Create1 (Default)
 ```
 New-AzRouteTable -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <IRouteTable>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Parameter <IRouteTable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateExpanded1
 ```
 New-AzRouteTable -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-DisableBgpRoutePropagation] [-Etag <String>] [-Id <String>] [-Location <String>]
- [-ProvisioningState <String>] [-Route <IRoute[]>] [-Tag <IResourceTags>] [-DefaultProfile <PSObject>]
- [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ProvisioningState <String>] [-Route <IRoute[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded1
 ```
 New-AzRouteTable -InputObject <INetworkIdentity> [-DisableBgpRoutePropagation] [-Etag <String>] [-Id <String>]
- [-Location <String>] [-ProvisioningState <String>] [-Route <IRoute[]>] [-Tag <IResourceTags>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Location <String>] [-ProvisioningState <String>] [-Route <IRoute[]>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity1
 ```
 New-AzRouteTable -InputObject <INetworkIdentity> [-Parameter <IRouteTable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -193,8 +194,25 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Parameter
 Route table resource.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRouteTable
@@ -244,6 +262,7 @@ Dynamic: False
 
 ### -Route
 Collection of routes contained within a route table.
+To construct, see NOTES section for ROUTE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRoute[]
@@ -279,7 +298,7 @@ Dynamic: False
 Resource tags.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceTags
+Type: System.Collections.Hashtable
 Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
@@ -338,6 +357,31 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRouteTable
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <IRouteTable>: Route table resource.
+  - `[DisableBgpRoutePropagation <Boolean?>]`: Gets or sets whether to disable the routes learned by BGP on that route table. True means disable.
+  - `[Etag <String>]`: Gets a unique read-only string that changes whenever the resource is updated.
+  - `[ProvisioningState <String>]`: The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+  - `[Route <IRoute[]>]`: Collection of routes contained within a route table.
+    - `NextHopType <RouteNextHopType>`: The type of Azure hop the packet should be sent to.
+    - `[AddressPrefix <String>]`: The destination CIDR to which the route applies.
+    - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+    - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
+    - `[NextHopIPAddress <String>]`: The IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is VirtualAppliance.
+    - `[ProvisioningState <String>]`: The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+
+#### ROUTE <IRoute[]>: Collection of routes contained within a route table.
+  - `NextHopType <RouteNextHopType>`: The type of Azure hop the packet should be sent to.
+  - `[AddressPrefix <String>]`: The destination CIDR to which the route applies.
+  - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+  - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
+  - `[NextHopIPAddress <String>]`: The IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is VirtualAppliance.
+  - `[ProvisioningState <String>]`: The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
 
 ## RELATED LINKS
 

@@ -15,27 +15,16 @@ Does not modify DNS records within the zone.
 
 ### Update (Default)
 ```
-Set-AzDnsZone -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-Parameter <IZone>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzDnsZone -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-IfMatch <String>]
+ [-IfNoneMatch <String>] [-Parameter <IZone>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateExpanded
 ```
 Set-AzDnsZone -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Location <String>
- [-Etag <String>] [-Tag <ITrackedResourceTags>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Set-AzDnsZone -InputObject <IDnsIdentity> -Location <String> [-Etag <String>] [-Tag <ITrackedResourceTags>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Set-AzDnsZone -InputObject <IDnsIdentity> [-Parameter <IZone>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-IfMatch <String>] [-IfNoneMatch <String>] [-Etag <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -85,7 +74,7 @@ The etag of the zone.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -96,18 +85,37 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
+### -IfMatch
+The etag of the DNS zone.
+Omit this value to always overwrite the current zone.
+Specify the last-seen etag value to prevent accidentally overwriting any concurrent changes.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentity
-Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -IfNoneMatch
+Set to '*' to allow a new DNS zone to be created, but to prevent updating an existing zone.
+Other values will be ignored.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -117,7 +125,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -133,7 +141,7 @@ The name of the DNS zone (without a terminating dot).
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases: ZoneName
 
 Required: True
@@ -146,10 +154,11 @@ Dynamic: False
 
 ### -Parameter
 Describes a DNS zone.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20160401.IZone
-Parameter Sets: Update, UpdateViaIdentity
+Parameter Sets: Update
 Aliases:
 
 Required: False
@@ -166,7 +175,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -182,7 +191,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -197,8 +206,8 @@ Dynamic: False
 Resource tags.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api10.ITrackedResourceTags
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Type: System.Collections.Hashtable
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -249,13 +258,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20160401.IZone
 
-### Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20160401.IZone
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <IZone>: Describes a DNS zone.
+  - `[Etag <String>]`: The etag of the zone.
 
 ## RELATED LINKS
 

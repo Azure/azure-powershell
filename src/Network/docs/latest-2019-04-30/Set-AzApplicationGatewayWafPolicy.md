@@ -24,8 +24,8 @@ Set-AzApplicationGatewayWafPolicy -PolicyName <String> -ResourceGroupName <Strin
 Set-AzApplicationGatewayWafPolicy -PolicyName <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-CustomRule <IWebApplicationFirewallCustomRule[]>] [-Etag <String>] [-Id <String>] [-Location <String>]
  [-PolicySettingEnabledState <WebApplicationFirewallEnabledState>]
- [-PolicySettingMode <WebApplicationFirewallMode>] [-Tag <IResourceTags>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PolicySettingMode <WebApplicationFirewallMode>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,6 +55,7 @@ PS C:\> {{ Add code here }}
 
 ### -CustomRule
 Describes custom rules inside the policy
+To construct, see NOTES section for CUSTOMRULE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IWebApplicationFirewallCustomRule[]
@@ -135,6 +136,7 @@ Dynamic: False
 
 ### -Parameter
 Defines web application firewall policy.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IWebApplicationFirewallPolicy
@@ -234,7 +236,7 @@ Dynamic: False
 Resource tags.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceTags
+Type: System.Collections.Hashtable
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -291,6 +293,43 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IWebApplicationFirewallPolicy
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### CUSTOMRULE <IWebApplicationFirewallCustomRule[]>: Describes custom rules inside the policy
+  - `Action <WebApplicationFirewallAction>`: Type of Actions
+  - `MatchCondition <IMatchCondition[]>`: List of match conditions
+    - `MatchValue <String[]>`: Match value
+    - `MatchVariable <IMatchVariable[]>`: List of match variables
+      - `VariableName <WebApplicationFirewallMatchVariable>`: Match Variable
+      - `[Selector <String>]`: Describes field of the matchVariable collection
+    - `Operator <WebApplicationFirewallOperator>`: Describes operator to be matched
+    - `[NegationConditon <Boolean?>]`: Describes if this is negate condition or not
+    - `[Transform <WebApplicationFirewallTransform[]>]`: List of transforms
+  - `Priority <Int32>`: Describes priority of the rule. Rules with a lower value will be evaluated before rules with a higher value
+  - `RuleType <WebApplicationFirewallRuleType>`: Describes type of rule
+  - `[Name <String>]`: Gets name of the resource that is unique within a policy. This name can be used to access the resource.
+
+#### PARAMETER <IWebApplicationFirewallPolicy>: Defines web application firewall policy.
+  - `[CustomRule <IWebApplicationFirewallCustomRule[]>]`: Describes custom rules inside the policy
+    - `Action <WebApplicationFirewallAction>`: Type of Actions
+    - `MatchCondition <IMatchCondition[]>`: List of match conditions
+      - `MatchValue <String[]>`: Match value
+      - `MatchVariable <IMatchVariable[]>`: List of match variables
+        - `VariableName <WebApplicationFirewallMatchVariable>`: Match Variable
+        - `[Selector <String>]`: Describes field of the matchVariable collection
+      - `Operator <WebApplicationFirewallOperator>`: Describes operator to be matched
+      - `[NegationConditon <Boolean?>]`: Describes if this is negate condition or not
+      - `[Transform <WebApplicationFirewallTransform[]>]`: List of transforms
+    - `Priority <Int32>`: Describes priority of the rule. Rules with a lower value will be evaluated before rules with a higher value
+    - `RuleType <WebApplicationFirewallRuleType>`: Describes type of rule
+    - `[Name <String>]`: Gets name of the resource that is unique within a policy. This name can be used to access the resource.
+  - `[Etag <String>]`: Gets a unique read-only string that changes whenever the resource is updated.
+  - `[PolicySettingEnabledState <WebApplicationFirewallEnabledState?>]`: Describes if the policy is in enabled state or disabled state
+  - `[PolicySettingMode <WebApplicationFirewallMode?>]`: Describes if it is in detection mode  or prevention mode at policy level
 
 ## RELATED LINKS
 

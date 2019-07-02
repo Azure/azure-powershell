@@ -15,33 +15,33 @@ Creates a virtual wan p2s vpn gateway if it doesn't exist else updates the exist
 ### Create (Default)
 ```
 New-AzP2SVpnGateway -GatewayName <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-P2SVpnGatewayParameter <IP2SVpnGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-P2SVpnGatewayParameter <IP2SVpnGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpanded
 ```
 New-AzP2SVpnGateway -GatewayName <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-CustomRouteAddressPrefix <String[]>] [-Id <String>] [-Location <String>]
- [-P2SVpnServerConfigurationId <String>] [-Tag <IResourceTags>] [-VirtualHubId <String>]
+ [-P2SVpnServerConfigurationId <String>] [-Tag <Hashtable>] [-VirtualHubId <String>]
  [-VpnClientAddressPoolAddressPrefix <String[]>] [-VpnClientConnectionHealthAllocatedIPAddress <String[]>]
  [-VpnClientConnectionHealthVpnClientConnectionsCount <Int32>] [-VpnGatewayScaleUnit <Int32>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzP2SVpnGateway -InputObject <INetworkIdentity> [-CustomRouteAddressPrefix <String[]>] [-Id <String>]
- [-Location <String>] [-P2SVpnServerConfigurationId <String>] [-Tag <IResourceTags>] [-VirtualHubId <String>]
+ [-Location <String>] [-P2SVpnServerConfigurationId <String>] [-Tag <Hashtable>] [-VirtualHubId <String>]
  [-VpnClientAddressPoolAddressPrefix <String[]>] [-VpnClientConnectionHealthAllocatedIPAddress <String[]>]
  [-VpnClientConnectionHealthVpnClientConnectionsCount <Int32>] [-VpnGatewayScaleUnit <Int32>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
 New-AzP2SVpnGateway -InputObject <INetworkIdentity> [-P2SVpnGatewayParameter <IP2SVpnGateway>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -181,8 +181,25 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -P2SVpnGatewayParameter
 P2SVpnGateway Resource.
+To construct, see NOTES section for P2SVPNGATEWAYPARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IP2SVpnGateway
@@ -250,7 +267,7 @@ Dynamic: False
 Resource tags.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceTags
+Type: System.Collections.Hashtable
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -389,6 +406,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IP2SVpnGateway
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### P2SVPNGATEWAYPARAMETER <IP2SVpnGateway>: P2SVpnGateway Resource.
+  - `[CustomRouteAddressPrefix <String[]>]`: A list of address blocks reserved for this virtual network in CIDR notation.
+  - `[P2SVpnServerConfigurationId <String>]`: Resource ID.
+  - `[VirtualHubId <String>]`: Resource ID.
+  - `[VpnClientAddressPoolAddressPrefix <String[]>]`: A list of address blocks reserved for this virtual network in CIDR notation.
+  - `[VpnClientConnectionHealthAllocatedIPAddress <String[]>]`: List of allocated ip addresses to the connected p2s vpn clients.
+  - `[VpnClientConnectionHealthVpnClientConnectionsCount <Int32?>]`: The total of p2s vpn clients connected at this time to this P2SVpnGateway.
+  - `[VpnGatewayScaleUnit <Int32?>]`: The scale unit for this p2s vpn gateway.
 
 ## RELATED LINKS
 

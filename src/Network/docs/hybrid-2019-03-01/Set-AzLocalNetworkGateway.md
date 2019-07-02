@@ -15,7 +15,7 @@ Creates or updates a local network gateway in the specified resource group.
 ### Update1 (Default)
 ```
 Set-AzLocalNetworkGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <ILocalNetworkGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [-Parameter <ILocalNetworkGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -24,8 +24,8 @@ Set-AzLocalNetworkGateway -Name <String> -ResourceGroupName <String> -Subscripti
 Set-AzLocalNetworkGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-AddressPrefix <String[]>] [-BgpSettingAsn <Int64>] [-BgpSettingBgpPeeringAddress <String>]
  [-BgpSettingPeerWeight <Int32>] [-Etag <String>] [-GatewayIPAddress <String>] [-Id <String>]
- [-Location <String>] [-ResourceGuid <String>] [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Location <String>] [-ResourceGuid <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -229,8 +229,25 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Parameter
 A common class for general resource information
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ILocalNetworkGateway
@@ -298,7 +315,7 @@ Dynamic: False
 Resource tags.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceTags
+Type: System.Collections.Hashtable
 Parameter Sets: UpdateExpanded1
 Aliases:
 
@@ -355,6 +372,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ILocalNetworkGateway
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <ILocalNetworkGateway>: A common class for general resource information
+  - `[BgpSettingAsn <Int64?>]`: The BGP speaker's ASN.
+  - `[BgpSettingBgpPeeringAddress <String>]`: The BGP peering address and BGP identifier of this BGP speaker.
+  - `[BgpSettingPeerWeight <Int32?>]`: The weight added to routes learned from this BGP speaker.
+  - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+  - `[GatewayIPAddress <String>]`: IP address of local network gateway.
+  - `[LocalNetworkAddressSpaceAddressPrefix <String[]>]`: A list of address blocks reserved for this virtual network in CIDR notation.
+  - `[ResourceGuid <String>]`: The resource GUID property of the LocalNetworkGateway resource.
 
 ## RELATED LINKS
 

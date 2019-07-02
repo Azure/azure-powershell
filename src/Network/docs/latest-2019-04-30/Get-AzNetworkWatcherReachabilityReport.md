@@ -16,7 +16,7 @@ Gets the relative latency score for internet service providers from a specified 
 ```
 Get-AzNetworkWatcherReachabilityReport -NetworkWatcherName <String> -ResourceGroupName <String>
  -SubscriptionId <String[]> [-Parameter <IAzureReachabilityReportParameters>] [-DefaultProfile <PSObject>]
- [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GetExpanded
@@ -24,22 +24,22 @@ Get-AzNetworkWatcherReachabilityReport -NetworkWatcherName <String> -ResourceGro
 Get-AzNetworkWatcherReachabilityReport -NetworkWatcherName <String> -ResourceGroupName <String>
  -SubscriptionId <String[]> -EndTime <DateTime> -ProviderCountry <String> -StartTime <DateTime>
  [-Location <String[]>] [-Provider <String[]>] [-ProviderCity <String>] [-ProviderState <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GetViaIdentityExpanded
 ```
 Get-AzNetworkWatcherReachabilityReport -InputObject <INetworkIdentity> -EndTime <DateTime>
  -ProviderCountry <String> -StartTime <DateTime> [-Location <String[]>] [-Provider <String[]>]
- [-ProviderCity <String>] [-ProviderState <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-ProviderCity <String>] [-ProviderState <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzNetworkWatcherReachabilityReport -InputObject <INetworkIdentity>
- [-Parameter <IAzureReachabilityReportParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-Parameter <IAzureReachabilityReportParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -163,8 +163,25 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Parameter
 Geographic and time constraints for Azure reachability report.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IAzureReachabilityReportParameters
@@ -339,6 +356,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IAzureReachabilityReport
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <IAzureReachabilityReportParameters>: Geographic and time constraints for Azure reachability report.
+  - `EndTime <DateTime>`: The end time for the Azure reachability report.
+  - `ProviderLocationCountry <String>`: The name of the country.
+  - `StartTime <DateTime>`: The start time for the Azure reachability report.
+  - `[AzureLocation <String[]>]`: Optional Azure regions to scope the query to.
+  - `[Provider <String[]>]`: List of Internet service providers.
+  - `[ProviderLocationCity <String>]`: The name of the city or town.
+  - `[ProviderLocationState <String>]`: The name of the state.
 
 ## RELATED LINKS
 

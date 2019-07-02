@@ -16,13 +16,14 @@ The profile needs to be generated first using generateVpnProfile.
 ### Get (Default)
 ```
 Get-AzVnetGatewayVpnProfilePackageUrl -ResourceGroupName <String> -SubscriptionId <String[]>
- -VnetGatewayName <String> [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -VnetGatewayName <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzVnetGatewayVpnProfilePackageUrl -InputObject <INetworkIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -95,6 +96,22 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -195,6 +212,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### Get-AzVirtualNetworkGatewayVpnProfilePackageUrl
+
+## NOTES
 
 ## RELATED LINKS
 

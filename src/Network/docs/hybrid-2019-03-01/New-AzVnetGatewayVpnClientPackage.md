@@ -15,7 +15,7 @@ Generates VPN client package for P2S client of the virtual network gateway in th
 ### Generatevpnclientpackage1 (Default)
 ```
 New-AzVnetGatewayVpnClientPackage -ResourceGroupName <String> -SubscriptionId <String>
- -VnetGatewayName <String> [-Parameter <IVpnClientParameters>] [-DefaultProfile <PSObject>] [-AsJob]
+ -VnetGatewayName <String> [-Parameter <IVpnClientParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ New-AzVnetGatewayVpnClientPackage -ResourceGroupName <String> -SubscriptionId <S
 New-AzVnetGatewayVpnClientPackage -ResourceGroupName <String> -SubscriptionId <String>
  -VnetGatewayName <String> [-AuthenticationMethod <AuthenticationMethod>] [-ClientRootCertificate <String[]>]
  [-ProcessorArchitecture <ProcessorArchitecture>] [-RadiusServerAuthCertificate <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GeneratevpnclientpackageViaIdentityExpanded1
@@ -32,13 +32,13 @@ New-AzVnetGatewayVpnClientPackage -ResourceGroupName <String> -SubscriptionId <S
 New-AzVnetGatewayVpnClientPackage -InputObject <INetworkIdentity>
  [-AuthenticationMethod <AuthenticationMethod>] [-ClientRootCertificate <String[]>]
  [-ProcessorArchitecture <ProcessorArchitecture>] [-RadiusServerAuthCertificate <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GeneratevpnclientpackageViaIdentity1
 ```
 New-AzVnetGatewayVpnClientPackage -InputObject <INetworkIdentity> [-Parameter <IVpnClientParameters>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -147,8 +147,25 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Parameter
 Vpn Client Parameters for package generation
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVpnClientParameters
@@ -297,6 +314,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Get-AzVpnClientPackage
 
 ### New-AzVirtualNetworkGatewayVpnClientPackage
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <IVpnClientParameters>: Vpn Client Parameters for package generation
+  - `[AuthenticationMethod <AuthenticationMethod?>]`: VPN client authentication method.
+  - `[ClientRootCertificate <String[]>]`: A list of client root certificates public certificate data encoded as Base-64 strings. Optional parameter for external radius based authentication with EAPTLS.
+  - `[ProcessorArchitecture <ProcessorArchitecture?>]`: VPN client Processor Architecture. Possible values are: 'AMD64' and 'X86'.
+  - `[RadiusServerAuthCertificate <String>]`: The public certificate data for the radius server authentication certificate as a Base-64 encoded string. Required only if external radius authentication has been configured with EAPTLS authentication.
 
 ## RELATED LINKS
 

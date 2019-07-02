@@ -15,14 +15,14 @@ The GetBgpPeerStatus operation retrieves the status of all BGP peers.
 ### Get (Default)
 ```
 Get-AzVnetGatewayBgpPeerStatus -ResourceGroupName <String> -SubscriptionId <String[]>
- -VnetGatewayName <String> [-Peer <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -VnetGatewayName <String> [-Peer <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzVnetGatewayBgpPeerStatus -InputObject <INetworkIdentity> [-Peer <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -94,6 +94,22 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -210,6 +226,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### Get-AzVirtualNetworkGatewayBgpPeerStatus
+
+## NOTES
 
 ## RELATED LINKS
 

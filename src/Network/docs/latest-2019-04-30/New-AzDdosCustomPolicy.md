@@ -15,28 +15,28 @@ Creates or updates a DDoS custom policy.
 ### Create (Default)
 ```
 New-AzDdosCustomPolicy -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <IDdosCustomPolicy>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [-Parameter <IDdosCustomPolicy>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### CreateExpanded
 ```
 New-AzDdosCustomPolicy -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-Id <String>]
- [-Location <String>] [-ProtocolCustomSetting <IProtocolCustomSettingsFormat[]>] [-Tag <IResourceTags>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Location <String>] [-ProtocolCustomSetting <IProtocolCustomSettingsFormat[]>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzDdosCustomPolicy -InputObject <INetworkIdentity> [-Id <String>] [-Location <String>]
- [-ProtocolCustomSetting <IProtocolCustomSettingsFormat[]>] [-Tag <IResourceTags>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ProtocolCustomSetting <IProtocolCustomSettingsFormat[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
 New-AzDdosCustomPolicy -InputObject <INetworkIdentity> [-Parameter <IDdosCustomPolicy>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -160,8 +160,25 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Parameter
 A DDoS custom policy in a resource group.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IDdosCustomPolicy
@@ -178,6 +195,7 @@ Dynamic: False
 
 ### -ProtocolCustomSetting
 The protocol-specific DDoS policy customization parameters.
+To construct, see NOTES section for PROTOCOLCUSTOMSETTING properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IProtocolCustomSettingsFormat[]
@@ -229,7 +247,7 @@ Dynamic: False
 Resource tags.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceTags
+Type: System.Collections.Hashtable
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -288,6 +306,24 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IDdosCustomPolicy
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <IDdosCustomPolicy>: A DDoS custom policy in a resource group.
+  - `[ProtocolCustomSetting <IProtocolCustomSettingsFormat[]>]`: The protocol-specific DDoS policy customization parameters.
+    - `[Protocol <DdosCustomPolicyProtocol?>]`: The protocol for which the DDoS protection policy is being customized.
+    - `[SourceRateOverride <String>]`: The customized DDoS protection source rate.
+    - `[TriggerRateOverride <String>]`: The customized DDoS protection trigger rate.
+    - `[TriggerSensitivityOverride <DdosCustomPolicyTriggerSensitivityOverride?>]`: The customized DDoS protection trigger rate sensitivity degrees. High: Trigger rate set with most sensitivity w.r.t. normal traffic. Default: Trigger rate set with moderate sensitivity w.r.t. normal traffic. Low: Trigger rate set with less sensitivity w.r.t. normal traffic. Relaxed: Trigger rate set with least sensitivity w.r.t. normal traffic.
+
+#### PROTOCOLCUSTOMSETTING <IProtocolCustomSettingsFormat[]>: The protocol-specific DDoS policy customization parameters.
+  - `[Protocol <DdosCustomPolicyProtocol?>]`: The protocol for which the DDoS protection policy is being customized.
+  - `[SourceRateOverride <String>]`: The customized DDoS protection source rate.
+  - `[TriggerRateOverride <String>]`: The customized DDoS protection trigger rate.
+  - `[TriggerSensitivityOverride <DdosCustomPolicyTriggerSensitivityOverride?>]`: The customized DDoS protection trigger rate sensitivity degrees. High: Trigger rate set with most sensitivity w.r.t. normal traffic. Default: Trigger rate set with moderate sensitivity w.r.t. normal traffic. Low: Trigger rate set with less sensitivity w.r.t. normal traffic. Relaxed: Trigger rate set with least sensitivity w.r.t. normal traffic.
 
 ## RELATED LINKS
 

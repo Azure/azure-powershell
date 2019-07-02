@@ -15,14 +15,14 @@ The Put VirtualNetworkGatewayConnectionSharedKey operation sets the virtual netw
 ### Set (Default)
 ```
 Set-AzVnetGatewayConnectionSharedKey -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <IConnectionSharedKey>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [-Parameter <IConnectionSharedKey>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### SetExpanded
 ```
 Set-AzVnetGatewayConnectionSharedKey -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -Value <String> [-Id <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ -Value <String> [-Id <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -115,8 +115,25 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Parameter
 Response for GetConnectionSharedKey API service call
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IConnectionSharedKey
@@ -227,6 +244,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### Set-AzVirtualNetworkGatewayConnectionSharedKey
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <IConnectionSharedKey>: Response for GetConnectionSharedKey API service call
+  - `Value <String>`: The virtual network connection shared key value.
 
 ## RELATED LINKS
 

@@ -15,7 +15,8 @@ Creates or updates a subnet in the specified virtual network.
 ### Create (Default)
 ```
 New-AzVnetSubnet -ResourceGroupName <String> -SubscriptionId <String> -VnetName <String> [-Name <String>]
- [-SubnetParameter <ISubnet>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubnetParameter <ISubnet>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -24,14 +25,14 @@ New-AzVnetSubnet -InputObject <INetworkIdentity> [-Name <String>] [-AddressPrefi
  [-DefaultSecurityRule <ISecurityRule[]>] [-Delegation <IDelegation[]>] [-DisableBgpRoutePropagation]
  [-Etag <String>] [-Id <String>] [-NatGatewayId <String>] [-NetworkSecurityGroupEtag <String>]
  [-NetworkSecurityGroupId <String>] [-NetworkSecurityGroupLocation <String>]
- [-NetworkSecurityGroupPropertiesProvisioningState <String>] [-NetworkSecurityGroupTag <IResourceTags>]
+ [-NetworkSecurityGroupPropertiesProvisioningState <String>] [-NetworkSecurityGroupTag <Hashtable>]
  [-PropertiesAddressPrefixes <String[]>] [-ProvisioningState <String>] [-ResourceGuid <String>]
  [-ResourceNavigationLink <IResourceNavigationLink[]>] [-Route <IRoute[]>] [-RouteTableEtag <String>]
  [-RouteTableId <String>] [-RouteTableLocation <String>] [-RouteTablePropertiesProvisioningState <String>]
- [-RouteTableTag <IResourceTags>] [-SecurityRule <ISecurityRule[]>]
+ [-RouteTableTag <Hashtable>] [-SecurityRule <ISecurityRule[]>]
  [-ServiceAssociationLink <IServiceAssociationLink[]>] [-ServiceEndpoint <IServiceEndpointPropertiesFormat[]>]
- [-ServiceEndpointPolicy <IServiceEndpointPolicy[]>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-ServiceEndpointPolicy <IServiceEndpointPolicy[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpanded
@@ -41,19 +42,19 @@ New-AzVnetSubnet -ResourceGroupName <String> -SubscriptionId <String> -VnetName 
  [-Delegation <IDelegation[]>] [-DisableBgpRoutePropagation] [-Etag <String>] [-Id <String>]
  [-NatGatewayId <String>] [-NetworkSecurityGroupEtag <String>] [-NetworkSecurityGroupId <String>]
  [-NetworkSecurityGroupLocation <String>] [-NetworkSecurityGroupPropertiesProvisioningState <String>]
- [-NetworkSecurityGroupTag <IResourceTags>] [-PropertiesAddressPrefixes <String[]>]
- [-ProvisioningState <String>] [-ResourceGuid <String>] [-ResourceNavigationLink <IResourceNavigationLink[]>]
- [-Route <IRoute[]>] [-RouteTableEtag <String>] [-RouteTableId <String>] [-RouteTableLocation <String>]
- [-RouteTablePropertiesProvisioningState <String>] [-RouteTableTag <IResourceTags>]
+ [-NetworkSecurityGroupTag <Hashtable>] [-PropertiesAddressPrefixes <String[]>] [-ProvisioningState <String>]
+ [-ResourceGuid <String>] [-ResourceNavigationLink <IResourceNavigationLink[]>] [-Route <IRoute[]>]
+ [-RouteTableEtag <String>] [-RouteTableId <String>] [-RouteTableLocation <String>]
+ [-RouteTablePropertiesProvisioningState <String>] [-RouteTableTag <Hashtable>]
  [-SecurityRule <ISecurityRule[]>] [-ServiceAssociationLink <IServiceAssociationLink[]>]
  [-ServiceEndpoint <IServiceEndpointPropertiesFormat[]>] [-ServiceEndpointPolicy <IServiceEndpointPolicy[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
 New-AzVnetSubnet -InputObject <INetworkIdentity> [-SubnetParameter <ISubnet>] [-DefaultProfile <PSObject>]
- [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -131,6 +132,7 @@ Dynamic: False
 
 ### -DefaultSecurityRule
 The default security rules of network security group.
+To construct, see NOTES section for DEFAULTSECURITYRULE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ISecurityRule[]
@@ -147,6 +149,7 @@ Dynamic: False
 
 ### -Delegation
 Gets an array of references to the delegations on the subnet.
+To construct, see NOTES section for DELEGATION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IDelegation[]
@@ -327,13 +330,29 @@ Dynamic: False
 Resource tags.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceTags
+Type: System.Collections.Hashtable
 Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -405,6 +424,7 @@ Dynamic: False
 
 ### -ResourceNavigationLink
 Gets an array of references to the external resources using subnet.
+To construct, see NOTES section for RESOURCENAVIGATIONLINK properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceNavigationLink[]
@@ -421,6 +441,7 @@ Dynamic: False
 
 ### -Route
 Collection of routes contained within a route table.
+To construct, see NOTES section for ROUTE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRoute[]
@@ -504,7 +525,7 @@ Dynamic: False
 Resource tags.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceTags
+Type: System.Collections.Hashtable
 Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
 Aliases:
 
@@ -518,6 +539,7 @@ Dynamic: False
 
 ### -SecurityRule
 A collection of security rules of the network security group.
+To construct, see NOTES section for SECURITYRULE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ISecurityRule[]
@@ -534,6 +556,7 @@ Dynamic: False
 
 ### -ServiceAssociationLink
 Gets an array of references to services injecting into this subnet.
+To construct, see NOTES section for SERVICEASSOCIATIONLINK properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IServiceAssociationLink[]
@@ -550,6 +573,7 @@ Dynamic: False
 
 ### -ServiceEndpoint
 An array of service endpoints.
+To construct, see NOTES section for SERVICEENDPOINT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IServiceEndpointPropertiesFormat[]
@@ -566,6 +590,7 @@ Dynamic: False
 
 ### -ServiceEndpointPolicy
 An array of service endpoint policies.
+To construct, see NOTES section for SERVICEENDPOINTPOLICY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IServiceEndpointPolicy[]
@@ -598,6 +623,7 @@ Dynamic: False
 
 ### -SubnetParameter
 Subnet in a virtual network resource.
+To construct, see NOTES section for SUBNETPARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ISubnet
@@ -694,6 +720,161 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### New-AzVirtualNetworkSubnet
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### DEFAULTSECURITYRULE <ISecurityRule[]>: The default security rules of network security group.
+  - `Access <SecurityRuleAccess>`: The network traffic is allowed or denied.
+  - `Direction <SecurityRuleDirection>`: The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic.
+  - `Protocol <SecurityRuleProtocol>`: Network protocol this rule applies to. Possible values are 'Tcp', 'Udp', 'Icmp', 'Esp', and '*'.
+  - `[Description <String>]`: A description for this rule. Restricted to 140 chars.
+  - `[DestinationAddressPrefix <String>]`: The destination address prefix. CIDR or destination IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used.
+  - `[DestinationApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: The application security group specified as destination.
+  - `[DestinationPortRange <String>]`: The destination port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
+  - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+  - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
+  - `[Priority <Int32?>]`: The priority of the rule. The value can be between 100 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
+  - `[PropertiesDestinationAddressPrefixes <String[]>]`: The destination address prefixes. CIDR or destination IP ranges.
+  - `[PropertiesDestinationPortRanges <String[]>]`: The destination port ranges.
+  - `[PropertiesSourceAddressPrefixes <String[]>]`: The CIDR or source IP ranges.
+  - `[PropertiesSourcePortRanges <String[]>]`: The source port ranges.
+  - `[ProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+  - `[SourceAddressPrefix <String>]`: The CIDR or source IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used. If this is an ingress rule, specifies where network traffic originates from. 
+  - `[SourceApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: The application security group specified as source.
+  - `[SourcePortRange <String>]`: The source port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
+
+#### DELEGATION <IDelegation[]>: Gets an array of references to the delegations on the subnet.
+  - `[Action <String[]>]`: Describes the actions permitted to the service upon delegation
+  - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+  - `[Name <String>]`: The name of the resource that is unique within a subnet. This name can be used to access the resource.
+  - `[ServiceName <String>]`: The name of the service to whom the subnet should be delegated (e.g. Microsoft.Sql/servers)
+
+#### RESOURCENAVIGATIONLINK <IResourceNavigationLink[]>: Gets an array of references to the external resources using subnet.
+  - `[Link <String>]`: Link to the external resource
+  - `[LinkedResourceType <String>]`: Resource type of the linked resource.
+  - `[Name <String>]`: Name of the resource that is unique within a resource group. This name can be used to access the resource.
+
+#### ROUTE <IRoute[]>: Collection of routes contained within a route table.
+  - `NextHopType <RouteNextHopType>`: The type of Azure hop the packet should be sent to.
+  - `[AddressPrefix <String>]`: The destination CIDR to which the route applies.
+  - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+  - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
+  - `[NextHopIPAddress <String>]`: The IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is VirtualAppliance.
+  - `[ProvisioningState <String>]`: The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+
+#### SECURITYRULE <ISecurityRule[]>: A collection of security rules of the network security group.
+  - `Access <SecurityRuleAccess>`: The network traffic is allowed or denied.
+  - `Direction <SecurityRuleDirection>`: The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic.
+  - `Protocol <SecurityRuleProtocol>`: Network protocol this rule applies to. Possible values are 'Tcp', 'Udp', 'Icmp', 'Esp', and '*'.
+  - `[Description <String>]`: A description for this rule. Restricted to 140 chars.
+  - `[DestinationAddressPrefix <String>]`: The destination address prefix. CIDR or destination IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used.
+  - `[DestinationApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: The application security group specified as destination.
+  - `[DestinationPortRange <String>]`: The destination port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
+  - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+  - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
+  - `[Priority <Int32?>]`: The priority of the rule. The value can be between 100 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
+  - `[PropertiesDestinationAddressPrefixes <String[]>]`: The destination address prefixes. CIDR or destination IP ranges.
+  - `[PropertiesDestinationPortRanges <String[]>]`: The destination port ranges.
+  - `[PropertiesSourceAddressPrefixes <String[]>]`: The CIDR or source IP ranges.
+  - `[PropertiesSourcePortRanges <String[]>]`: The source port ranges.
+  - `[ProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+  - `[SourceAddressPrefix <String>]`: The CIDR or source IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used. If this is an ingress rule, specifies where network traffic originates from. 
+  - `[SourceApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: The application security group specified as source.
+  - `[SourcePortRange <String>]`: The source port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
+
+#### SERVICEASSOCIATIONLINK <IServiceAssociationLink[]>: Gets an array of references to services injecting into this subnet.
+  - `[Link <String>]`: Link to the external resource.
+  - `[LinkedResourceType <String>]`: Resource type of the linked resource.
+  - `[Name <String>]`: Name of the resource that is unique within a resource group. This name can be used to access the resource.
+
+#### SERVICEENDPOINT <IServiceEndpointPropertiesFormat[]>: An array of service endpoints.
+  - `[Location <String[]>]`: A list of locations.
+  - `[ProvisioningState <String>]`: The provisioning state of the resource.
+  - `[Service <String>]`: The type of the endpoint service.
+
+#### SERVICEENDPOINTPOLICY <IServiceEndpointPolicy[]>: An array of service endpoint policies.
+  - `[Definition <IServiceEndpointPolicyDefinition[]>]`: A collection of service endpoint policy definitions of the service endpoint policy.
+    - `[Description <String>]`: A description for this rule. Restricted to 140 chars.
+    - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+    - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
+    - `[Service <String>]`: Service endpoint name.
+    - `[ServiceResource <String[]>]`: A list of service resources.
+  - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+
+#### SUBNETPARAMETER <ISubnet>: Subnet in a virtual network resource.
+  - `[AddressPrefix <String>]`: The address prefix for the subnet.
+  - `[DefaultSecurityRule <ISecurityRule[]>]`: The default security rules of network security group.
+    - `Access <SecurityRuleAccess>`: The network traffic is allowed or denied.
+    - `Direction <SecurityRuleDirection>`: The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic.
+    - `Protocol <SecurityRuleProtocol>`: Network protocol this rule applies to. Possible values are 'Tcp', 'Udp', 'Icmp', 'Esp', and '*'.
+    - `[Description <String>]`: A description for this rule. Restricted to 140 chars.
+    - `[DestinationAddressPrefix <String>]`: The destination address prefix. CIDR or destination IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used.
+    - `[DestinationApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: The application security group specified as destination.
+    - `[DestinationPortRange <String>]`: The destination port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
+    - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+    - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
+    - `[Priority <Int32?>]`: The priority of the rule. The value can be between 100 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
+    - `[PropertiesDestinationAddressPrefixes <String[]>]`: The destination address prefixes. CIDR or destination IP ranges.
+    - `[PropertiesDestinationPortRanges <String[]>]`: The destination port ranges.
+    - `[PropertiesSourceAddressPrefixes <String[]>]`: The CIDR or source IP ranges.
+    - `[PropertiesSourcePortRanges <String[]>]`: The source port ranges.
+    - `[ProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+    - `[SourceAddressPrefix <String>]`: The CIDR or source IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used. If this is an ingress rule, specifies where network traffic originates from. 
+    - `[SourceApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: The application security group specified as source.
+    - `[SourcePortRange <String>]`: The source port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
+  - `[Delegation <IDelegation[]>]`: Gets an array of references to the delegations on the subnet.
+    - `[Action <String[]>]`: Describes the actions permitted to the service upon delegation
+    - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+    - `[Name <String>]`: The name of the resource that is unique within a subnet. This name can be used to access the resource.
+    - `[ServiceName <String>]`: The name of the service to whom the subnet should be delegated (e.g. Microsoft.Sql/servers)
+  - `[DisableBgpRoutePropagation <Boolean?>]`: Gets or sets whether to disable the routes learned by BGP on that route table. True means disable.
+  - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+  - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
+  - `[NatGatewayId <String>]`: Resource ID.
+  - `[NetworkSecurityGroupEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
+  - `[NetworkSecurityGroupId <String>]`: Resource ID.
+  - `[NetworkSecurityGroupLocation <String>]`: Resource location.
+  - `[NetworkSecurityGroupPropertiesProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+  - `[NetworkSecurityGroupTag <IResourceTags>]`: Resource tags.
+  - `[PropertiesAddressPrefixes <String[]>]`: List of  address prefixes for the subnet.
+  - `[ProvisioningState <String>]`: The provisioning state of the resource.
+  - `[ResourceGuid <String>]`: The resource GUID property of the network security group resource.
+  - `[ResourceNavigationLink <IResourceNavigationLink[]>]`: Gets an array of references to the external resources using subnet.
+    - `[Link <String>]`: Link to the external resource
+    - `[LinkedResourceType <String>]`: Resource type of the linked resource.
+    - `[Name <String>]`: Name of the resource that is unique within a resource group. This name can be used to access the resource.
+  - `[Route <IRoute[]>]`: Collection of routes contained within a route table.
+    - `NextHopType <RouteNextHopType>`: The type of Azure hop the packet should be sent to.
+    - `[AddressPrefix <String>]`: The destination CIDR to which the route applies.
+    - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+    - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
+    - `[NextHopIPAddress <String>]`: The IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is VirtualAppliance.
+    - `[ProvisioningState <String>]`: The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+  - `[RouteTableEtag <String>]`: Gets a unique read-only string that changes whenever the resource is updated.
+  - `[RouteTableId <String>]`: Resource ID.
+  - `[RouteTableLocation <String>]`: Resource location.
+  - `[RouteTablePropertiesProvisioningState <String>]`: The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+  - `[RouteTableTag <IResourceTags>]`: Resource tags.
+  - `[SecurityRule <ISecurityRule[]>]`: A collection of security rules of the network security group.
+  - `[ServiceAssociationLink <IServiceAssociationLink[]>]`: Gets an array of references to services injecting into this subnet.
+    - `[Link <String>]`: Link to the external resource.
+    - `[LinkedResourceType <String>]`: Resource type of the linked resource.
+    - `[Name <String>]`: Name of the resource that is unique within a resource group. This name can be used to access the resource.
+  - `[ServiceEndpoint <IServiceEndpointPropertiesFormat[]>]`: An array of service endpoints.
+    - `[Location <String[]>]`: A list of locations.
+    - `[ProvisioningState <String>]`: The provisioning state of the resource.
+    - `[Service <String>]`: The type of the endpoint service.
+  - `[ServiceEndpointPolicy <IServiceEndpointPolicy[]>]`: An array of service endpoint policies.
+    - `[Definition <IServiceEndpointPolicyDefinition[]>]`: A collection of service endpoint policy definitions of the service endpoint policy.
+      - `[Description <String>]`: A description for this rule. Restricted to 140 chars.
+      - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+      - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
+      - `[Service <String>]`: Service endpoint name.
+      - `[ServiceResource <String[]>]`: A list of service resources.
+    - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
 
 ## RELATED LINKS
 

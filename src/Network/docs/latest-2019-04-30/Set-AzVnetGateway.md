@@ -15,7 +15,7 @@ Creates or updates a virtual network gateway in the specified resource group.
 ### Update (Default)
 ```
 Set-AzVnetGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <IVirtualNetworkGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [-Parameter <IVirtualNetworkGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -26,14 +26,14 @@ Set-AzVnetGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <St
  [-CustomRouteAddressPrefix <String[]>] [-EnableBgp] [-Etag <String>] [-GatewayDefaultSiteId <String>]
  [-GatewayType <VirtualNetworkGatewayType>] [-IPConfiguration <IVirtualNetworkGatewayIPConfiguration[]>]
  [-Id <String>] [-Location <String>] [-ResourceGuid <String>] [-SkuCapacity <Int32>]
- [-SkuName <VirtualNetworkGatewaySkuName>] [-SkuTier <VirtualNetworkGatewaySkuTier>] [-Tag <IResourceTags>]
+ [-SkuName <VirtualNetworkGatewaySkuName>] [-SkuTier <VirtualNetworkGatewaySkuTier>] [-Tag <Hashtable>]
  [-VpnClientAddressPoolAddressPrefix <String[]>] [-VpnClientConfigurationRadiusServerAddress <String>]
  [-VpnClientConfigurationRadiusServerSecret <String>]
  [-VpnClientConfigurationVpnClientIPsecPolicy <IIpsecPolicy[]>]
  [-VpnClientConfigurationVpnClientProtocol <VpnClientProtocol[]>]
  [-VpnClientConfigurationVpnClientRevokedCertificate <IVpnClientRevokedCertificate[]>]
  [-VpnClientConfigurationVpnClientRootCertificate <IVpnClientRootCertificate[]>] [-VpnType <VpnType>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -256,6 +256,7 @@ Dynamic: False
 
 ### -IPConfiguration
 IP configurations for virtual network gateway.
+To construct, see NOTES section for IPCONFIGURATION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVirtualNetworkGatewayIPConfiguration[]
@@ -302,8 +303,25 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Parameter
 A common class for general resource information
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVirtualNetworkGateway
@@ -419,7 +437,7 @@ Dynamic: False
 Resource tags.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceTags
+Type: System.Collections.Hashtable
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -481,6 +499,7 @@ Dynamic: False
 
 ### -VpnClientConfigurationVpnClientIPsecPolicy
 VpnClientIpsecPolicies for virtual network gateway P2S client.
+To construct, see NOTES section for VPNCLIENTCONFIGURATIONVPNCLIENTIPSECPOLICY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IIpsecPolicy[]
@@ -513,6 +532,7 @@ Dynamic: False
 
 ### -VpnClientConfigurationVpnClientRevokedCertificate
 VpnClientRevokedCertificate for Virtual network gateway.
+To construct, see NOTES section for VPNCLIENTCONFIGURATIONVPNCLIENTREVOKEDCERTIFICATE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVpnClientRevokedCertificate[]
@@ -529,6 +549,7 @@ Dynamic: False
 
 ### -VpnClientConfigurationVpnClientRootCertificate
 VpnClientRootCertificate for virtual network gateway.
+To construct, see NOTES section for VPNCLIENTCONFIGURATIONVPNCLIENTROOTCERTIFICATE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVpnClientRootCertificate[]
@@ -607,6 +628,81 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### Set-AzVirtualNetworkGateway
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### IPCONFIGURATION <IVirtualNetworkGatewayIPConfiguration[]>: IP configurations for virtual network gateway.
+  - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+  - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
+  - `[PrivateIPAllocationMethod <IPAllocationMethod?>]`: The private IP address allocation method.
+  - `[PublicIPAddressId <String>]`: Resource ID.
+  - `[SubnetId <String>]`: Resource ID.
+
+#### PARAMETER <IVirtualNetworkGateway>: A common class for general resource information
+  - `[Active <Boolean?>]`: ActiveActive flag
+  - `[BgpSettingAsn <Int64?>]`: The BGP speaker's ASN.
+  - `[BgpSettingBgpPeeringAddress <String>]`: The BGP peering address and BGP identifier of this BGP speaker.
+  - `[BgpSettingPeerWeight <Int32?>]`: The weight added to routes learned from this BGP speaker.
+  - `[CustomRouteAddressPrefix <String[]>]`: A list of address blocks reserved for this virtual network in CIDR notation.
+  - `[EnableBgp <Boolean?>]`: Whether BGP is enabled for this virtual network gateway or not.
+  - `[Etag <String>]`: Gets a unique read-only string that changes whenever the resource is updated.
+  - `[GatewayDefaultSiteId <String>]`: Resource ID.
+  - `[GatewayType <VirtualNetworkGatewayType?>]`: The type of this virtual network gateway. Possible values are: 'Vpn' and 'ExpressRoute'.
+  - `[IPConfiguration <IVirtualNetworkGatewayIPConfiguration[]>]`: IP configurations for virtual network gateway.
+    - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+    - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
+    - `[PrivateIPAllocationMethod <IPAllocationMethod?>]`: The private IP address allocation method.
+    - `[PublicIPAddressId <String>]`: Resource ID.
+    - `[SubnetId <String>]`: Resource ID.
+  - `[ResourceGuid <String>]`: The resource GUID property of the VirtualNetworkGateway resource.
+  - `[SkuCapacity <Int32?>]`: The capacity.
+  - `[SkuName <VirtualNetworkGatewaySkuName?>]`: Gateway SKU name.
+  - `[SkuTier <VirtualNetworkGatewaySkuTier?>]`: Gateway SKU tier.
+  - `[VpnClientAddressPoolAddressPrefix <String[]>]`: A list of address blocks reserved for this virtual network in CIDR notation.
+  - `[VpnClientConfigurationRadiusServerAddress <String>]`: The radius server address property of the VirtualNetworkGateway resource for vpn client connection.
+  - `[VpnClientConfigurationRadiusServerSecret <String>]`: The radius secret property of the VirtualNetworkGateway resource for vpn client connection.
+  - `[VpnClientConfigurationVpnClientIpsecPolicy <IIpsecPolicy[]>]`: VpnClientIpsecPolicies for virtual network gateway P2S client.
+    - `DhGroup <DhGroup>`: The DH Group used in IKE Phase 1 for initial SA.
+    - `IkeEncryption <IkeEncryption>`: The IKE encryption algorithm (IKE phase 2).
+    - `IkeIntegrity <IkeIntegrity>`: The IKE integrity algorithm (IKE phase 2).
+    - `IpsecEncryption <IpsecEncryption>`: The IPSec encryption algorithm (IKE phase 1).
+    - `IpsecIntegrity <IpsecIntegrity>`: The IPSec integrity algorithm (IKE phase 1).
+    - `PfsGroup <PfsGroup>`: The Pfs Group used in IKE Phase 2 for new child SA.
+    - `SaDataSizeKilobyte <Int32>`: The IPSec Security Association (also called Quick Mode or Phase 2 SA) payload size in KB for a site to site VPN tunnel.
+    - `SaLifeTimeSecond <Int32>`: The IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime in seconds for a site to site VPN tunnel.
+  - `[VpnClientConfigurationVpnClientProtocol <VpnClientProtocol[]>]`: VpnClientProtocols for Virtual network gateway.
+  - `[VpnClientConfigurationVpnClientRevokedCertificate <IVpnClientRevokedCertificate[]>]`: VpnClientRevokedCertificate for Virtual network gateway.
+    - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+    - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
+    - `[Thumbprint <String>]`: The revoked VPN client certificate thumbprint.
+  - `[VpnClientConfigurationVpnClientRootCertificate <IVpnClientRootCertificate[]>]`: VpnClientRootCertificate for virtual network gateway.
+    - `PublicCertData <String>`: The certificate public data.
+    - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+    - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
+  - `[VpnType <VpnType?>]`: The type of this virtual network gateway. Possible values are: 'PolicyBased' and 'RouteBased'.
+
+#### VPNCLIENTCONFIGURATIONVPNCLIENTIPSECPOLICY <IIpsecPolicy[]>: VpnClientIpsecPolicies for virtual network gateway P2S client.
+  - `DhGroup <DhGroup>`: The DH Group used in IKE Phase 1 for initial SA.
+  - `IkeEncryption <IkeEncryption>`: The IKE encryption algorithm (IKE phase 2).
+  - `IkeIntegrity <IkeIntegrity>`: The IKE integrity algorithm (IKE phase 2).
+  - `IpsecEncryption <IpsecEncryption>`: The IPSec encryption algorithm (IKE phase 1).
+  - `IpsecIntegrity <IpsecIntegrity>`: The IPSec integrity algorithm (IKE phase 1).
+  - `PfsGroup <PfsGroup>`: The Pfs Group used in IKE Phase 2 for new child SA.
+  - `SaDataSizeKilobyte <Int32>`: The IPSec Security Association (also called Quick Mode or Phase 2 SA) payload size in KB for a site to site VPN tunnel.
+  - `SaLifeTimeSecond <Int32>`: The IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime in seconds for a site to site VPN tunnel.
+
+#### VPNCLIENTCONFIGURATIONVPNCLIENTREVOKEDCERTIFICATE <IVpnClientRevokedCertificate[]>: VpnClientRevokedCertificate for Virtual network gateway.
+  - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+  - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
+  - `[Thumbprint <String>]`: The revoked VPN client certificate thumbprint.
+
+#### VPNCLIENTCONFIGURATIONVPNCLIENTROOTCERTIFICATE <IVpnClientRootCertificate[]>: VpnClientRootCertificate for virtual network gateway.
+  - `PublicCertData <String>`: The certificate public data.
+  - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+  - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
 
 ## RELATED LINKS
 

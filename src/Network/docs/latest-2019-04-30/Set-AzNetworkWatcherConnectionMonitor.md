@@ -15,8 +15,8 @@ Create or update a connection monitor.
 ### Update (Default)
 ```
 Set-AzNetworkWatcherConnectionMonitor -Name <String> -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-Parameter <IConnectionMonitor>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -SubscriptionId <String> [-Parameter <IConnectionMonitor>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
@@ -24,8 +24,8 @@ Set-AzNetworkWatcherConnectionMonitor -Name <String> -NetworkWatcherName <String
 Set-AzNetworkWatcherConnectionMonitor -Name <String> -NetworkWatcherName <String> -ResourceGroupName <String>
  -SubscriptionId <String> -SourceResourceId <String> [-AutoStart] [-DestinationAddress <String>]
  [-DestinationPort <Int32>] [-DestinationResourceId <String>] [-Location <String>]
- [-MonitoringIntervalInSeconds <Int32>] [-SourcePort <Int32>] [-Tag <IConnectionMonitorTags>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-MonitoringIntervalInSeconds <Int32>] [-SourcePort <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -213,8 +213,25 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Parameter
 Parameters that define the operation to create a connection monitor.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IConnectionMonitor
@@ -298,7 +315,7 @@ Dynamic: False
 Connection monitor tags.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IConnectionMonitorTags
+Type: System.Collections.Hashtable
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -355,6 +372,23 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IConnectionMonitorResult
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <IConnectionMonitor>: Parameters that define the operation to create a connection monitor.
+  - `SourceResourceId <String>`: The ID of the resource used as the source by connection monitor.
+  - `[AutoStart <Boolean?>]`: Determines if the connection monitor will start automatically once created.
+  - `[DestinationAddress <String>]`: Address of the connection monitor destination (IP or domain name).
+  - `[DestinationPort <Int32?>]`: The destination port used by connection monitor.
+  - `[DestinationResourceId <String>]`: The ID of the resource used as the destination by connection monitor.
+  - `[Location <String>]`: Connection monitor location.
+  - `[MonitoringIntervalInSecond <Int32?>]`: Monitoring interval in seconds.
+  - `[SourcePort <Int32?>]`: The source port used by connection monitor.
+  - `[Tag <IConnectionMonitorTags>]`: Connection monitor tags.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
 

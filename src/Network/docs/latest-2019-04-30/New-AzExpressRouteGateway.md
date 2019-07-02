@@ -15,29 +15,30 @@ Creates or updates a ExpressRoute gateway in a specified resource group.
 ### Create (Default)
 ```
 New-AzExpressRouteGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-PutExpressRouteGatewayParameter <IExpressRouteGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-PutExpressRouteGatewayParameter <IExpressRouteGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpanded
 ```
 New-AzExpressRouteGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-BoundMax <Int32>] [-BoundMin <Int32>] [-Id <String>] [-Location <String>] [-Tag <IResourceTags>]
- [-VirtualHubId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-BoundMax <Int32>] [-BoundMin <Int32>] [-Id <String>] [-Location <String>] [-Tag <Hashtable>]
+ [-VirtualHubId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzExpressRouteGateway -InputObject <INetworkIdentity> [-BoundMax <Int32>] [-BoundMin <Int32>]
- [-Id <String>] [-Location <String>] [-Tag <IResourceTags>] [-VirtualHubId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Id <String>] [-Location <String>] [-Tag <Hashtable>] [-VirtualHubId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
 New-AzExpressRouteGateway -InputObject <INetworkIdentity>
- [-PutExpressRouteGatewayParameter <IExpressRouteGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-PutExpressRouteGatewayParameter <IExpressRouteGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -193,8 +194,25 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -PutExpressRouteGatewayParameter
 ExpressRoute gateway resource.
+To construct, see NOTES section for PUTEXPRESSROUTEGATEWAYPARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRouteGateway
@@ -246,7 +264,7 @@ Dynamic: False
 Resource tags.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceTags
+Type: System.Collections.Hashtable
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -322,6 +340,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRouteGateway
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PUTEXPRESSROUTEGATEWAYPARAMETER <IExpressRouteGateway>: ExpressRoute gateway resource.
+  - `[BoundMax <Int32?>]`: Maximum number of scale units deployed for ExpressRoute gateway.
+  - `[BoundMin <Int32?>]`: Minimum number of scale units deployed for ExpressRoute gateway.
+  - `[VirtualHubId <String>]`: The resource URI for the Virtual Hub where the ExpressRoute gateway is or will be deployed. The Virtual Hub resource and the ExpressRoute gateway resource reside in the same subscription.
 
 ## RELATED LINKS
 

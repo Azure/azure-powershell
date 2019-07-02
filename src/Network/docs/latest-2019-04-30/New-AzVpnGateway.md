@@ -15,7 +15,7 @@ Creates a virtual wan vpn gateway if it doesn't exist else updates the existing 
 ### Create (Default)
 ```
 New-AzVpnGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-VpnGatewayParameter <IVpnGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [-VpnGatewayParameter <IVpnGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -23,8 +23,8 @@ New-AzVpnGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <Str
 ```
 New-AzVpnGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-BgpSettingAsn <Int64>]
  [-BgpSettingBgpPeeringAddress <String>] [-BgpSettingPeerWeight <Int32>] [-Connection <IVpnConnection[]>]
- [-Id <String>] [-Location <String>] [-Tag <IResourceTags>] [-VirtualHubId <String>]
- [-VpnGatewayScaleUnit <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [-Id <String>] [-Location <String>] [-Tag <Hashtable>] [-VirtualHubId <String>]
+ [-VpnGatewayScaleUnit <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -32,15 +32,15 @@ New-AzVpnGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <Str
 ```
 New-AzVpnGateway -InputObject <INetworkIdentity> [-BgpSettingAsn <Int64>]
  [-BgpSettingBgpPeeringAddress <String>] [-BgpSettingPeerWeight <Int32>] [-Connection <IVpnConnection[]>]
- [-Id <String>] [-Location <String>] [-Tag <IResourceTags>] [-VirtualHubId <String>]
- [-VpnGatewayScaleUnit <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [-Id <String>] [-Location <String>] [-Tag <Hashtable>] [-VirtualHubId <String>]
+ [-VpnGatewayScaleUnit <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
 New-AzVpnGateway -InputObject <INetworkIdentity> [-VpnGatewayParameter <IVpnGateway>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -134,6 +134,7 @@ Dynamic: False
 
 ### -Connection
 List of all vpn connections to the gateway.
+To construct, see NOTES section for CONNECTION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVpnConnection[]
@@ -228,6 +229,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -ResourceGroupName
 The resource group name of the VpnGateway.
 
@@ -265,7 +282,7 @@ Dynamic: False
 Resource tags.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceTags
+Type: System.Collections.Hashtable
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -295,6 +312,7 @@ Dynamic: False
 
 ### -VpnGatewayParameter
 VpnGateway Resource.
+To construct, see NOTES section for VPNGATEWAYPARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVpnGateway
@@ -372,6 +390,59 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVpnGateway
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### CONNECTION <IVpnConnection[]>: List of all vpn connections to the gateway.
+  - `[ConnectionBandwidth <Int32?>]`: Expected bandwidth in MBPS.
+  - `[EnableBgp <Boolean?>]`: EnableBgp flag
+  - `[EnableInternetSecurity <Boolean?>]`: Enable internet security
+  - `[EnableRateLimiting <Boolean?>]`: EnableBgp flag
+  - `[IpsecPolicy <IIpsecPolicy[]>]`: The IPSec Policies to be considered by this connection.
+    - `DhGroup <DhGroup>`: The DH Group used in IKE Phase 1 for initial SA.
+    - `IkeEncryption <IkeEncryption>`: The IKE encryption algorithm (IKE phase 2).
+    - `IkeIntegrity <IkeIntegrity>`: The IKE integrity algorithm (IKE phase 2).
+    - `IpsecEncryption <IpsecEncryption>`: The IPSec encryption algorithm (IKE phase 1).
+    - `IpsecIntegrity <IpsecIntegrity>`: The IPSec integrity algorithm (IKE phase 1).
+    - `PfsGroup <PfsGroup>`: The Pfs Group used in IKE Phase 2 for new child SA.
+    - `SaDataSizeKilobyte <Int32>`: The IPSec Security Association (also called Quick Mode or Phase 2 SA) payload size in KB for a site to site VPN tunnel.
+    - `SaLifeTimeSecond <Int32>`: The IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime in seconds for a site to site VPN tunnel.
+  - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
+  - `[ProtocolType <VirtualNetworkGatewayConnectionProtocol?>]`: Connection protocol used for this connection
+  - `[RemoteVpnSiteId <String>]`: Resource ID.
+  - `[RoutingWeight <Int32?>]`: Routing weight for vpn connection.
+  - `[SharedKey <String>]`: SharedKey for the vpn connection.
+  - `[UseLocalAzureIPAddress <Boolean?>]`: Use local azure ip to initiate connection
+
+#### VPNGATEWAYPARAMETER <IVpnGateway>: VpnGateway Resource.
+  - `[BgpSettingAsn <Int64?>]`: The BGP speaker's ASN.
+  - `[BgpSettingBgpPeeringAddress <String>]`: The BGP peering address and BGP identifier of this BGP speaker.
+  - `[BgpSettingPeerWeight <Int32?>]`: The weight added to routes learned from this BGP speaker.
+  - `[Connection <IVpnConnection[]>]`: List of all vpn connections to the gateway.
+    - `[ConnectionBandwidth <Int32?>]`: Expected bandwidth in MBPS.
+    - `[EnableBgp <Boolean?>]`: EnableBgp flag
+    - `[EnableInternetSecurity <Boolean?>]`: Enable internet security
+    - `[EnableRateLimiting <Boolean?>]`: EnableBgp flag
+    - `[IpsecPolicy <IIpsecPolicy[]>]`: The IPSec Policies to be considered by this connection.
+      - `DhGroup <DhGroup>`: The DH Group used in IKE Phase 1 for initial SA.
+      - `IkeEncryption <IkeEncryption>`: The IKE encryption algorithm (IKE phase 2).
+      - `IkeIntegrity <IkeIntegrity>`: The IKE integrity algorithm (IKE phase 2).
+      - `IpsecEncryption <IpsecEncryption>`: The IPSec encryption algorithm (IKE phase 1).
+      - `IpsecIntegrity <IpsecIntegrity>`: The IPSec integrity algorithm (IKE phase 1).
+      - `PfsGroup <PfsGroup>`: The Pfs Group used in IKE Phase 2 for new child SA.
+      - `SaDataSizeKilobyte <Int32>`: The IPSec Security Association (also called Quick Mode or Phase 2 SA) payload size in KB for a site to site VPN tunnel.
+      - `SaLifeTimeSecond <Int32>`: The IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime in seconds for a site to site VPN tunnel.
+    - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
+    - `[ProtocolType <VirtualNetworkGatewayConnectionProtocol?>]`: Connection protocol used for this connection
+    - `[RemoteVpnSiteId <String>]`: Resource ID.
+    - `[RoutingWeight <Int32?>]`: Routing weight for vpn connection.
+    - `[SharedKey <String>]`: SharedKey for the vpn connection.
+    - `[UseLocalAzureIPAddress <Boolean?>]`: Use local azure ip to initiate connection
+  - `[ScaleUnit <Int32?>]`: The scale unit for this vpn gateway.
+  - `[VirtualHubId <String>]`: Resource ID.
 
 ## RELATED LINKS
 

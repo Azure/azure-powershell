@@ -15,28 +15,29 @@ Gives the sas-url to download the configurations for vpn-sites in a resource gro
 ### Download (Default)
 ```
 Get-AzVpnSiteConfiguration -ResourceGroupName <String> -SubscriptionId <String[]> -VirtualWanName <String>
- [-PassThru] [-Request <IGetVpnSitesConfigurationRequest>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-PassThru] [-Request <IGetVpnSitesConfigurationRequest>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DownloadExpanded
 ```
 Get-AzVpnSiteConfiguration -ResourceGroupName <String> -SubscriptionId <String[]> -VirtualWanName <String>
- -OutputBlobSasUrl <String> [-PassThru] [-VpnSite <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -OutputBlobSasUrl <String> [-PassThru] [-VpnSite <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DownloadViaIdentityExpanded
 ```
 Get-AzVpnSiteConfiguration -InputObject <INetworkIdentity> -OutputBlobSasUrl <String> [-PassThru]
- [-VpnSite <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-VpnSite <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### DownloadViaIdentity
 ```
 Get-AzVpnSiteConfiguration -InputObject <INetworkIdentity> [-PassThru]
- [-Request <IGetVpnSitesConfigurationRequest>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-Request <IGetVpnSitesConfigurationRequest>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -112,6 +113,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -OutputBlobSasUrl
 The sas-url to download the configurations for vpn-sites
 
@@ -146,6 +163,7 @@ Dynamic: False
 
 ### -Request
 List of Vpn-Sites
+To construct, see NOTES section for REQUEST properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IGetVpnSitesConfigurationRequest
@@ -272,6 +290,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### REQUEST <IGetVpnSitesConfigurationRequest>: List of Vpn-Sites
+  - `OutputBlobSasUrl <String>`: The sas-url to download the configurations for vpn-sites
+  - `[VpnSite <String[]>]`: List of resource-ids of the vpn-sites for which config is to be downloaded.
 
 ## RELATED LINKS
 

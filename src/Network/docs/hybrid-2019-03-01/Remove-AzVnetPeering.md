@@ -15,13 +15,13 @@ Deletes the specified virtual network peering.
 ### Delete1 (Default)
 ```
 Remove-AzVnetPeering -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -VnetName <String>
- [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity1
 ```
 Remove-AzVnetPeering -InputObject <INetworkIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -108,6 +108,22 @@ Aliases: VirtualNetworkPeeringName
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -225,6 +241,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### Remove-AzVirtualNetworkPeering
+
+## NOTES
 
 ## RELATED LINKS
 

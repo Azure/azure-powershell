@@ -16,7 +16,7 @@ Creates a vpn connection to a scalable vpn gateway if it doesn't exist else upda
 ```
 New-AzVpnConnection -ConnectionName <String> -GatewayName <String> -ResourceGroupName <String>
  -SubscriptionId <String> [-VpnConnectionParameter <IVpnConnection>] [-DefaultProfile <PSObject>] [-AsJob]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpanded
@@ -26,7 +26,7 @@ New-AzVpnConnection -ConnectionName <String> -GatewayName <String> -ResourceGrou
  [-EnableRateLimiting] [-IPsecPolicy <IIpsecPolicy[]>] [-Id <String>] [-Name <String>]
  [-RemoteVpnSiteId <String>] [-RoutingWeight <Int32>] [-SharedKey <String>] [-UseLocalAzureIPAddress]
  [-VpnConnectionProtocolType <VirtualNetworkGatewayConnectionProtocol>] [-DefaultProfile <PSObject>] [-AsJob]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -35,13 +35,13 @@ New-AzVpnConnection -InputObject <INetworkIdentity> [-ConnectionBandwidth <Int32
  [-EnableInternetSecurity] [-EnableRateLimiting] [-IPsecPolicy <IIpsecPolicy[]>] [-Id <String>]
  [-Name <String>] [-RemoteVpnSiteId <String>] [-RoutingWeight <Int32>] [-SharedKey <String>]
  [-UseLocalAzureIPAddress] [-VpnConnectionProtocolType <VirtualNetworkGatewayConnectionProtocol>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
 New-AzVpnConnection -InputObject <INetworkIdentity> [-VpnConnectionParameter <IVpnConnection>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -231,6 +231,7 @@ Dynamic: False
 
 ### -IPsecPolicy
 The IPSec Policies to be considered by this connection.
+To construct, see NOTES section for IPSECPOLICY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IIpsecPolicy[]
@@ -257,6 +258,22 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -361,6 +378,7 @@ Dynamic: False
 
 ### -VpnConnectionParameter
 VpnConnection Resource.
+To construct, see NOTES section for VPNCONNECTIONPARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVpnConnection
@@ -438,6 +456,42 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVpnConnection
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### IPSECPOLICY <IIpsecPolicy[]>: The IPSec Policies to be considered by this connection.
+  - `DhGroup <DhGroup>`: The DH Group used in IKE Phase 1 for initial SA.
+  - `IkeEncryption <IkeEncryption>`: The IKE encryption algorithm (IKE phase 2).
+  - `IkeIntegrity <IkeIntegrity>`: The IKE integrity algorithm (IKE phase 2).
+  - `IpsecEncryption <IpsecEncryption>`: The IPSec encryption algorithm (IKE phase 1).
+  - `IpsecIntegrity <IpsecIntegrity>`: The IPSec integrity algorithm (IKE phase 1).
+  - `PfsGroup <PfsGroup>`: The Pfs Group used in IKE Phase 2 for new child SA.
+  - `SaDataSizeKilobyte <Int32>`: The IPSec Security Association (also called Quick Mode or Phase 2 SA) payload size in KB for a site to site VPN tunnel.
+  - `SaLifeTimeSecond <Int32>`: The IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime in seconds for a site to site VPN tunnel.
+
+#### VPNCONNECTIONPARAMETER <IVpnConnection>: VpnConnection Resource.
+  - `[ConnectionBandwidth <Int32?>]`: Expected bandwidth in MBPS.
+  - `[EnableBgp <Boolean?>]`: EnableBgp flag
+  - `[EnableInternetSecurity <Boolean?>]`: Enable internet security
+  - `[EnableRateLimiting <Boolean?>]`: EnableBgp flag
+  - `[IpsecPolicy <IIpsecPolicy[]>]`: The IPSec Policies to be considered by this connection.
+    - `DhGroup <DhGroup>`: The DH Group used in IKE Phase 1 for initial SA.
+    - `IkeEncryption <IkeEncryption>`: The IKE encryption algorithm (IKE phase 2).
+    - `IkeIntegrity <IkeIntegrity>`: The IKE integrity algorithm (IKE phase 2).
+    - `IpsecEncryption <IpsecEncryption>`: The IPSec encryption algorithm (IKE phase 1).
+    - `IpsecIntegrity <IpsecIntegrity>`: The IPSec integrity algorithm (IKE phase 1).
+    - `PfsGroup <PfsGroup>`: The Pfs Group used in IKE Phase 2 for new child SA.
+    - `SaDataSizeKilobyte <Int32>`: The IPSec Security Association (also called Quick Mode or Phase 2 SA) payload size in KB for a site to site VPN tunnel.
+    - `SaLifeTimeSecond <Int32>`: The IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime in seconds for a site to site VPN tunnel.
+  - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
+  - `[ProtocolType <VirtualNetworkGatewayConnectionProtocol?>]`: Connection protocol used for this connection
+  - `[RemoteVpnSiteId <String>]`: Resource ID.
+  - `[RoutingWeight <Int32?>]`: Routing weight for vpn connection.
+  - `[SharedKey <String>]`: SharedKey for the vpn connection.
+  - `[UseLocalAzureIPAddress <Boolean?>]`: Use local azure ip to initiate connection
 
 ## RELATED LINKS
 

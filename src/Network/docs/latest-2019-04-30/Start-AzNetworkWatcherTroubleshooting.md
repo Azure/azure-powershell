@@ -16,28 +16,28 @@ Initiate troubleshooting on a specified resource
 ```
 Start-AzNetworkWatcherTroubleshooting -NetworkWatcherName <String> -ResourceGroupName <String>
  -SubscriptionId <String> [-Parameter <ITroubleshootingParameters>] [-DefaultProfile <PSObject>] [-AsJob]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GetExpanded
 ```
 Start-AzNetworkWatcherTroubleshooting -NetworkWatcherName <String> -ResourceGroupName <String>
  -SubscriptionId <String> -StorageId <String> -StoragePath <String> -TargetResourceId <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GetViaIdentityExpanded
 ```
 Start-AzNetworkWatcherTroubleshooting -InputObject <INetworkIdentity> -StorageId <String>
- -StoragePath <String> -TargetResourceId <String> [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -StoragePath <String> -TargetResourceId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Start-AzNetworkWatcherTroubleshooting -InputObject <INetworkIdentity>
- [-Parameter <ITroubleshootingParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-Parameter <ITroubleshootingParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -129,8 +129,25 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Parameter
 Parameters that define the resource to troubleshoot.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ITroubleshootingParameters
@@ -275,6 +292,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### Start-AzNetworkWatcherResourceTroubleshooting
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <ITroubleshootingParameters>: Parameters that define the resource to troubleshoot.
+  - `StorageId <String>`: The ID for the storage account to save the troubleshoot result.
+  - `StoragePath <String>`: The path to the blob to save the troubleshoot result in.
+  - `TargetResourceId <String>`: The target resource to troubleshoot.
 
 ## RELATED LINKS
 

@@ -15,30 +15,17 @@ Does not modify DNS records within the zone.
 
 ### Update1 (Default)
 ```
-Set-AzDnsZone -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-Parameter <IZone>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzDnsZone -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-IfMatch <String>]
+ [-IfNoneMatch <String>] [-Parameter <IZone>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateExpanded1
 ```
-Set-AzDnsZone -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-Etag <String>]
- [-Location <String>] [-RegistrationVirtualNetwork <ISubResource[]>]
- [-ResolutionVirtualNetwork <ISubResource[]>] [-Tag <IResourceTags>] [-ZoneType <ZoneType>]
+Set-AzDnsZone -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-IfMatch <String>]
+ [-IfNoneMatch <String>] [-Etag <String>] [-Location <String>] [-RegistrationVirtualNetwork <ISubResource[]>]
+ [-ResolutionVirtualNetwork <ISubResource[]>] [-Tag <Hashtable>] [-ZoneType <ZoneType>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded1
-```
-Set-AzDnsZone -InputObject <IDnsIdentity> [-Etag <String>] [-Location <String>]
- [-RegistrationVirtualNetwork <ISubResource[]>] [-ResolutionVirtualNetwork <ISubResource[]>]
- [-Tag <IResourceTags>] [-ZoneType <ZoneType>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateViaIdentity1
-```
-Set-AzDnsZone -InputObject <IDnsIdentity> [-Parameter <IZone>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -88,7 +75,7 @@ The etag of the zone.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -99,18 +86,37 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
+### -IfMatch
+The etag of the DNS zone.
+Omit this value to always overwrite the current zone.
+Specify the last-seen etag value to prevent accidentally overwriting any concurrent changes.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentity
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateViaIdentity1
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -IfNoneMatch
+Set to '*' to allow a new DNS zone to be created, but to prevent updating an existing zone.
+Other values will be ignored.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -120,7 +126,7 @@ Resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -136,7 +142,7 @@ The name of the DNS zone (without a terminating dot).
 
 ```yaml
 Type: System.String
-Parameter Sets: Update1, UpdateExpanded1
+Parameter Sets: (All)
 Aliases: ZoneName
 
 Required: True
@@ -149,10 +155,11 @@ Dynamic: False
 
 ### -Parameter
 Describes a DNS zone.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20180501.IZone
-Parameter Sets: Update1, UpdateViaIdentity1
+Parameter Sets: Update1
 Aliases:
 
 Required: False
@@ -166,10 +173,11 @@ Dynamic: False
 ### -RegistrationVirtualNetwork
 A list of references to virtual networks that register hostnames in this DNS zone.
 This is a only when ZoneType is Private.
+To construct, see NOTES section for REGISTRATIONVIRTUALNETWORK properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20180301Preview.ISubResource[]
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -183,10 +191,11 @@ Dynamic: False
 ### -ResolutionVirtualNetwork
 A list of references to virtual networks that resolve records in this DNS zone.
 This is a only when ZoneType is Private.
+To construct, see NOTES section for RESOLUTIONVIRTUALNETWORK properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20180301Preview.ISubResource[]
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -202,7 +211,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update1, UpdateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -218,7 +227,7 @@ Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azu
 
 ```yaml
 Type: System.String
-Parameter Sets: Update1, UpdateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -233,8 +242,8 @@ Dynamic: False
 Resource tags.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20180501.IResourceTags
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Type: System.Collections.Hashtable
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -250,7 +259,7 @@ The type of this DNS zone (Public or Private).
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.ZoneType
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -301,13 +310,29 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20180501.IZone
 
-### Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20180501.IZone
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <IZone>: Describes a DNS zone.
+  - `[Etag <String>]`: The etag of the zone.
+  - `[RegistrationVirtualNetwork <ISubResource[]>]`: A list of references to virtual networks that register hostnames in this DNS zone. This is a only when ZoneType is Private.
+    - `[Id <String>]`: Resource Id.
+  - `[ResolutionVirtualNetwork <ISubResource[]>]`: A list of references to virtual networks that resolve records in this DNS zone. This is a only when ZoneType is Private.
+  - `[ZoneType <ZoneType?>]`: The type of this DNS zone (Public or Private).
+
+#### REGISTRATIONVIRTUALNETWORK <ISubResource[]>: A list of references to virtual networks that register hostnames in this DNS zone. This is a only when ZoneType is Private.
+  - `[Id <String>]`: Resource Id.
+
+#### RESOLUTIONVIRTUALNETWORK <ISubResource[]>: A list of references to virtual networks that resolve records in this DNS zone. This is a only when ZoneType is Private.
+  - `[Id <String>]`: Resource Id.
 
 ## RELATED LINKS
 
