@@ -52,7 +52,6 @@ namespace Microsoft.Azure.Commands.DataBox.Common
 
         public override void ExecuteCmdlet()
         {
-            
             if (Name != null && string.IsNullOrWhiteSpace(Name))
             {
                 throw new PSArgumentNullException("Name");
