@@ -9,6 +9,7 @@ schema: 2.0.0
 # Set-AzRecoveryServicesVaultContext
 
 ## SYNOPSIS
+
 Sets vault context.
 
 ## SYNTAX
@@ -19,13 +20,20 @@ Set-AzRecoveryServicesVaultContext -Vault <ARSVault> [-DefaultProfile <IAzureCon
 ```
 
 ## DESCRIPTION
+
 The **Set-AzRecoveryServicesVaultContext** cmdlet sets the vault context for Azure Site Recovery services.
+
+> [!WARNING]
+> The cmdlet is being deprecated. There will be no replacement for it.
+> The change is expected to take effect from the version released in the fall 2019. Please use **-VaultID** parameter in all Recovery Services commands going forward.
 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Set-AzRecoveryServicesVaultContext -Vault $vault
+
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+Set-AzRecoveryServicesVaultContext -Vault $vault
 ```
 
 Sets vault context.
@@ -33,6 +41,7 @@ Sets vault context.
 ## PARAMETERS
 
 ### -DefaultProfile
+
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
@@ -48,6 +57,7 @@ Accept wildcard characters: False
 ```
 
 ### -Vault
+
 Specifies the name of the vault.
 The vault must be an **AzureRmRecoveryServicesVault** object.
 
@@ -63,8 +73,9 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+### -CommonParameters
+
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
