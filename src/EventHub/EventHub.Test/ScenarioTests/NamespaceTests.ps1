@@ -27,6 +27,13 @@ function NamespaceAuthTests
 	$namespaceNameKafka = getAssetName "Eh-NamespaceKafka-"
 	$authRuleName =  getAssetName "Eventhub-Namespace-AuthorizationRule"
     
+
+	$StartTime = Get-Date
+	$EndTime = $StartTime.AddHours(2.0)
+	#New-AzEventHubAuthorizationRuleSASToken -ResourceId /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/v-ajnavtest/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace1-1375/AuthorizationRules/RootManageSharedAccessKey -KeyType Primary -ExpiryTime $EndTime -StartTime $StartTime
+	New-AzEventHubAuthorizationRuleSASToken -ResourceId /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/v-ajnavtest/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace1-1375/eventhubs/testingsastoken/authorizationRules/BaseAuthorizationRule -KeyType Primary -ExpiryTime $EndTime -StartTime $StartTime
+	
+
     Write-Debug " Create resource group"
     Write-Debug "ResourceGroup name : $resourceGroupName"
     New-AzResourceGroup -Name $resourceGroupName -Location $location -Force
@@ -125,11 +132,15 @@ function NamespaceAuthTests
     Write-Debug "Get namespace authorizationRules connectionStrings"
     $namespaceListKeys = Get-AzEventHubKey -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $authRuleName
 
-    Assert-True {$namespaceListKeys.PrimaryConnectionString.Contains($updatedAuthRule.PrimaryKey)}
-    Assert-True {$namespaceListKeys.SecondaryConnectionString.Contains($updatedAuthRule.SecondaryKey)}
+    Assert-True {$namespaceListKeys.PrimaryConnectionString -like "*$($updatedAuthRule.PrimaryKey)*"}
+    Assert-True {$namespaceListKeys.SecondaryConnectionString -like "*$($updatedAuthRule.SecondaryKey)*"}
 
 	Write-Debug "Regenrate Authorizationrules Keys"
 	$policyKey = "PrimaryKey"
+
+	$StartTime = Get-Date
+	$EndTime = $StartTime.AddHours(2.0)
+	$SasToken = New-AzEventHubAuthorizationRuleSASToken -ResourceId $updatedAuthRule.Id  -KeyType Primary -ExpiryTime $EndTime -StartTime $StartTime	
 
 	$namespaceRegenerateKeysDefault = New-AzEventHubKey -ResourceGroup $resourceGroupName -Namespace $namespaceName  -Name $authRuleName -RegenerateKey $policyKey
 	Assert-True {$namespaceRegenerateKeysDefault.PrimaryKey -ne $namespaceListKeys.PrimaryKey}
@@ -141,8 +152,7 @@ function NamespaceAuthTests
 
 	$namespaceRegenerateKeys1 = New-AzEventHubKey -ResourceGroup $resourceGroupName -Namespace $namespaceName  -Name $authRuleName -RegenerateKey $policyKey1 -KeyValue $namespaceListKeys.PrimaryKey
 	Assert-AreEqual $namespaceRegenerateKeys1.SecondaryKey $namespaceListKeys.PrimaryKey
-
-
+	
 	$namespaceRegenerateKeys1 = New-AzEventHubKey -ResourceGroup $resourceGroupName -Namespace $namespaceName  -Name $authRuleName -RegenerateKey $policyKey1
 	Assert-True {$namespaceRegenerateKeys1.SecondaryKey -ne $namespaceListKeys.PrimaryKey}
 

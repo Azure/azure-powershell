@@ -36,11 +36,11 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
             EventHubsController.NewInstance.RunPsTest(_logger, "NamespaceTests");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Fails in NetStandard, investigation needed: $namespaceListKeys.PrimaryConnectionString.Contains($updatedAuthRule.PrimaryKey)")]
-#else
+//#if NETSTANDARD
+//        [Fact(Skip = "Fails in NetStandard, investigation needed: $namespaceListKeys.PrimaryConnectionString.Contains($updatedAuthRule.PrimaryKey)")]
+//#else
         [Fact]
-#endif
+//#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NamespaceAuthorizationRulesCRUD()
         {
