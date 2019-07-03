@@ -73,8 +73,16 @@ namespace Microsoft.Azure.Commands.DataBox.Common
         [ValidateSet("DataBoxDisk","Databox","DataBoxHeavy")]
         public string DataBoxType;
 
+        [Parameter(Mandatory = false)]
+        public int ExpectedDataSizeInTeraBytes;
+
         public override void ExecuteCmdlet()
         {
+            if(DataBoxType == "DataBoxDisk" && ExpectedDataSizeInTeraBytes.Equals(0))
+            {
+                throw new PSArgumentNullException("ExpectedDataSizeInTeraBytes");
+            }
+
             ShippingAddress shippingAddress = new ShippingAddress()
             {
                 AddressType = this.AddressType,
@@ -118,7 +126,7 @@ namespace Microsoft.Azure.Commands.DataBox.Common
             switch (DataBoxType)
             {
                 case "DataBoxDisk":
-                    diskDetails = new DataBoxDiskJobDetails(contactDetails, shippingAddress, destinationAccountDetails);
+                    diskDetails = new DataBoxDiskJobDetails(contactDetails, shippingAddress, destinationAccountDetails, expectedDataSizeInTeraBytes: ExpectedDataSizeInTeraBytes);
                     sku.Name = SkuName.DataBoxDisk;
                     newJobResource = new JobResource(Location, sku, details: diskDetails);
                     break;
