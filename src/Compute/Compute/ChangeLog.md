@@ -22,6 +22,7 @@
 
 ## Version 2.4.0
 * Add HyperVGeneration parameter to New-AzImageConfig
+* Use the extension type instead of the name when disabling vmss disk encryption
 
 ## Version 2.3.0
 * New-AzVm and New-AzVmss simple parameter sets now accept the `ProximityPlacementGroup` parameter.
