@@ -516,9 +516,13 @@ namespace Microsoft.Azure.Commands.KeyVault
                     || !string.IsNullOrWhiteSpace(this.EmailAddress))
                 {
                     var objId = this.ObjectId;
-                    if (!this.BypassObjectIdValidation.IsPresent)
+                    if (!this.BypassObjectIdValidation.IsPresent && ActiveDirectoryClient != null)
                     {
                         objId = GetObjectId(this.ObjectId, this.UserPrincipalName, this.EmailAddress, this.ServicePrincipalName);
+                    }
+                    else if (ActiveDirectoryClient == null && objId == null)
+                    {
+                        throw new Exception(Resources.ActiveDirectoryClientNull);
                     }
 
                     if (ApplicationId.HasValue && ApplicationId.Value == Guid.Empty)

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.LogicApp.dll-Help.xml
 Module Name: Az.LogicApp
 ms.assetid: 7EF87BE5-FB10-4E5D-A12F-7F50EE6DAD57
@@ -150,7 +150,7 @@ This cmdlet supports Xslt as a map type.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Xslt
+Accepted values: Xslt, Xslt20, Xslt30, Liquid
 
 Required: False
 Position: Named

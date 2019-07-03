@@ -132,4 +132,3 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
     }
 }
-

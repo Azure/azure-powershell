@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: Az.CognitiveServices
 Module Guid: 66c566b4-950c-4a2b-9f3b-199d92f0df1a
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.cognitiveservices
@@ -17,7 +17,7 @@ Gets an account.
 ### [Get-AzCognitiveServicesAccountKey](Get-AzCognitiveServicesAccountKey.md)
 Gets the API keys for an account.
 
-### [Get-AzCognitiveServicesAccountSkus](Get-AzCognitiveServicesAccountSkus.md)
+### [Get-AzCognitiveServicesAccountSku](Get-AzCognitiveServicesAccountSku.md)
 Gets the available SKUs for an account.
 
 ### [Get-AzCognitiveServicesAccountType](Get-AzCognitiveServicesAccountType.md)

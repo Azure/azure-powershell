@@ -31,7 +31,7 @@ An IP configuration contains the subnet in which an application gateway is deplo
 
 ## EXAMPLES
 
-### Example 1: Set the goal state of an IP configuration
+### Example 1: Update an IP configuration for an application gateway
 ```
 PS C:\>$VNet = Get-AzVirtualNetwork -Name "VNet01" -ResourceGroupName "ResourceGroup01"
 PS C:\> $Subnet = Get-AzVirtualNetworkSubnetConfig -Name "Subnet01" -VirtualNetwork $VNet 

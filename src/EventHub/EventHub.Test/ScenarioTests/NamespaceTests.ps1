@@ -40,9 +40,13 @@ function NamespaceAuthTests
     Write-Debug " Create new Eventhub namespace"
     Write-Debug "Namespace name : $namespaceName"	
     $result = New-AzEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName -Location $location
+	Assert-AreEqual $result.ResourceGroup $resourceGroupName "Namespace create : ResourceGroup name matches"
+	Assert-AreEqual $result.ResourceGroupName $resourceGroupName "Namespace create : ResourceGroupName name matches"
     
 	Write-Debug " Get the created namespace within the resource group"
     $createdNamespace = Get-AzEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName
+	Assert-AreEqual $createdNamespace.ResourceGroup $resourceGroupName "Namespace get : ResourceGroup name matches"
+	Assert-AreEqual $createdNamespace.ResourceGroupName $resourceGroupName "Namespace get : ResourceGroupName name matches"
     
 	#Assert
     Assert-AreEqual $createdNamespace.Name $namespaceName "Namespace created earlier is not found."
@@ -188,16 +192,20 @@ function NamespaceTests
     $resultkafka = New-AzEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceNameKafka -Location $locationKafka -EnableKafka
 	Assert-AreEqual $resultkafka.Name $namespaceNameKafka "Namespace created earlier is not found."
 	Assert-True {$resultkafka.KafkaEnabled}
-     
+    
     Write-Debug " Create new eventHub namespace"
     Write-Debug "NamespaceName : $namespaceName" 
     $result = New-AzEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName -Location $location -SkuName "Standard" -SkuCapacity "1" -EnableAutoInflate -MaximumThroughputUnits 10
+	Assert-AreEqual $result.ResourceGroup $resourceGroupName "Namespace create : ResourceGroup name matches"
+	Assert-AreEqual $result.ResourceGroupName $resourceGroupName "Namespace create : ResourceGroupName name matches"
 	
 	# Assert 
 	Assert-AreEqual $result.ProvisioningState "Succeeded"
 
     Write-Debug "Get the created namespace within the resource group"
     $createdNamespace = Get-AzEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName
+	Assert-AreEqual $createdNamespace.ResourceGroup $resourceGroupName "Namespace get : ResourceGroup name matches"
+	Assert-AreEqual $createdNamespace.ResourceGroupName $resourceGroupName "Namespace get: ResourceGroupName name matches"
 
     Assert-AreEqual $createdNamespace.Name $namespaceName "Namespace created earlier is not found."	  
     

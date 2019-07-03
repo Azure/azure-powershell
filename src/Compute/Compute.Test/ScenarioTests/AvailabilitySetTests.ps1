@@ -40,6 +40,9 @@ function Test-AvailabilitySet
             $avsetname = $asetName + $i;
             New-AzAvailabilitySet -ResourceGroupName $rgname -Name $avsetname -Location $loc -PlatformUpdateDomainCount $nonDefaultUD -PlatformFaultDomainCount $nonDefaultFD -Sku 'Classic' -Tag @{"a"="b"};
         }
+        
+        $wildcardRgQuery = ($rgname -replace ".$") + "*"
+        $wildcardNameQuery = ($asetName -replace ".$") + "*"
 
         $asets = Get-AzAvailabilitySet;
         Assert-NotNull $asets;
@@ -48,17 +51,40 @@ function Test-AvailabilitySet
         $asets = Get-AzAvailabilitySet -ResourceGroupName $rgname;
         Assert-NotNull $asets;
         Assert-AreEqual $asetName $asets[0].Name;
+        
+        $asets = Get-AzAvailabilitySet -ResourceGroupName $wildcardRgQuery;
+        Assert-NotNull $asets;
+        Assert-AreEqual $asetName $asets[0].Name;
+        
+        $asets = Get-AzAvailabilitySet -Name $wildcardNameQuery;
+        Assert-NotNull $asets;
+        Assert-AreEqual $asetName $asets[0].Name;
+        
+        $asets = Get-AzAvailabilitySet -Name $asetName;
+        Assert-NotNull $asets;
+        Assert-AreEqual $asetName $asets[0].Name;
+        
+        $asets = Get-AzAvailabilitySet -ResourceGroupName $wildcardRgQuery -Name $asetName;
+        Assert-NotNull $asets;
+        Assert-AreEqual $asetName $asets[0].Name;
+        
+        $asets = Get-AzAvailabilitySet -ResourceGroupName $wildcardRgQuery -Name $wildcardNameQuery;
+        Assert-NotNull $asets;
+        Assert-AreEqual $asetName $asets[0].Name;
+        
+        $asets = Get-AzAvailabilitySet -ResourceGroupName $rgname -Name $wildcardNameQuery;
+        Assert-NotNull $asets;
+        Assert-AreEqual $asetName $asets[0].Name;
 
         $aset = Get-AzAvailabilitySet -ResourceGroupName $rgname -Name $asetName;
         Assert-NotNull $aset;
         Assert-AreEqual $aset.Name $asetName;
         Assert-AreEqual $nonDefaultUD $aset.PlatformUpdateDomainCount;
         Assert-AreEqual $nonDefaultFD $aset.PlatformFaultDomainCount;
-        Assert-False {$aset.Managed};
         Assert-AreEqual 'Classic' $aset.Sku;
         Assert-AreEqual "b" $aset.Tags["a"];
 
-        $job = $aset | Update-AzAvailabilitySet -Managed -AsJob;
+        $job = $aset | Update-AzAvailabilitySet -Sku 'Aligned' -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
         $aset = Get-AzAvailabilitySet -ResourceGroupName $rgname -Name $asetName;

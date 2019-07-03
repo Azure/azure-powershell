@@ -46,6 +46,9 @@ function Test-VirtualNetworkeExpressRouteGatewayConnectionCRUD
         Assert-AreEqual "3" $expected.RoutingWeight
         Assert-AreEqual $False $expected.ExpressRouteGatewayBypass
 
+        $list = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -Name "*"
+        Assert-True { $list.Count -ge 0 }
+
 		#get routes 
 		Get-AzExpressRouteCircuitARPTable -ResourceGroupName $rgname -ExpressRouteCircuitName $circuit.Name -PeeringType AzurePrivatePeering -DevicePath Primary
 
@@ -386,11 +389,12 @@ function Test-VirtualNetworkGatewayConnectionCRUD
       $expected.RoutingWeight = "4"
       $expected.SharedKey = "xyz"
 
-      $actual = Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $expected -Force
+	  # Set/Update VirtualNetworkGatewayConnection Tags
+      $actual = Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $expected -Tag @{ testtagKey="SomeTagKey"; testtagValue="SomeKeyValue" } -Force
       $expected = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName    
-      Assert-AreEqual "4" $expected.RoutingWeight      
-      #Assert-AreEqual "xyz" $expected.SharedKey     
-    
+      Assert-AreEqual 2 $expected.Tag.Count
+	  Assert-AreEqual $true $expected.Tag.Contains("testtagKey")
+      
       # Delete VirtualNetworkGatewayConnection
       $delete = Remove-AzVirtualNetworkGatewayConnection -ResourceGroupName $actual.ResourceGroupName -name $vnetConnectionName -PassThru -Force
       Assert-AreEqual true $delete

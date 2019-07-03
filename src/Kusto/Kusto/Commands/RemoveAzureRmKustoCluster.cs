@@ -14,7 +14,6 @@
 
 using System;
 using System.Management.Automation;
-using System.Security.Permissions;
 using Microsoft.Azure.Commands.Kusto.Models;
 using Microsoft.Azure.Commands.Kusto.Properties;
 using Microsoft.Azure.Commands.Kusto.Utilities;

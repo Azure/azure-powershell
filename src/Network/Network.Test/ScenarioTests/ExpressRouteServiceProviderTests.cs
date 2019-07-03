@@ -12,21 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.Azure.Commands.Network.Test.ScenarioTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Commands.Network.Test.ScenarioTests
 {
-    public class ExpressRouteServiceProviderTests : Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class ExpressRouteServiceProviderTests : NetworkTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
         public ExpressRouteServiceProviderTests(ITestOutputHelper output)
+            : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
@@ -34,7 +31,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.pgtm)]
         public void TestExpressRouteServiceProviderList()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ExpressRouteServiceProviderList");
+            TestRunner.RunTestScript("Test-ExpressRouteServiceProviderList");
         }
     }
 }

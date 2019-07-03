@@ -14,16 +14,39 @@
 
 namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces
 {
+    /// <summary>
+    /// Interface INamespaceInfo
+    /// </summary>
     public interface INamespaceInfo
     {
+        /// <summary>
+        /// Gets the path.
+        /// </summary>
+        /// <value>The path.</value>
         string Path { get; }
 
+        /// <summary>
+        /// Gets the number of files.
+        /// </summary>
+        /// <value>The number of files.</value>
         long NumberOfFiles { get; }
 
+        /// <summary>
+        /// Gets the number of directories.
+        /// </summary>
+        /// <value>The number of directories.</value>
         long NumberOfDirectories { get; }
 
+        /// <summary>
+        /// Gets the total file size in bytes.
+        /// </summary>
+        /// <value>The total file size in bytes.</value>
         long TotalFileSizeInBytes { get; }
 
+        /// <summary>
+        /// Gets a value indicating whether this instance is complete.
+        /// </summary>
+        /// <value><c>true</c> if this instance is complete; otherwise, <c>false</c>.</value>
         bool IsComplete { get; }
     }
 }

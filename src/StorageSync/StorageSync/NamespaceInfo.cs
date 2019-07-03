@@ -16,16 +16,41 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
 {
     using Interfaces;
 
+    /// <summary>
+    /// Class NamespaceInfo.
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces.INamespaceInfo" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces.INamespaceInfo" />
     public class NamespaceInfo : INamespaceInfo
     {
+        /// <summary>
+        /// Gets the path.
+        /// </summary>
+        /// <value>The path.</value>
         public string Path { get; set; }
 
+        /// <summary>
+        /// Gets the number of files.
+        /// </summary>
+        /// <value>The number of files.</value>
         public long NumberOfFiles { get; set; }
 
+        /// <summary>
+        /// Gets the number of directories.
+        /// </summary>
+        /// <value>The number of directories.</value>
         public long NumberOfDirectories { get; set; }
 
+        /// <summary>
+        /// Gets the total file size in bytes.
+        /// </summary>
+        /// <value>The total file size in bytes.</value>
         public long TotalFileSizeInBytes { get; set; }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether this instance is complete.
+        /// </summary>
+        /// <value><c>true</c> if this instance is complete; otherwise, <c>false</c>.</value>
         public bool IsComplete { get; set; }
     }
 }

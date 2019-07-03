@@ -77,6 +77,9 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
                     case ServerTypeEnum.MongoDb:
                         this.connCmdlet = new MongoDbConnectionInfoCmdlet(this.MyInvocation);
                         break;
+                    case ServerTypeEnum.SQLMI:
+                        this.connCmdlet = new MiSqlConnectionInfoCmdlet(this.MyInvocation);
+                        break;
                     default:
                         throw new PSArgumentException();
                 }

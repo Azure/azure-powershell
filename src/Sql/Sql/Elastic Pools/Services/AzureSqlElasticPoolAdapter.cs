@@ -25,6 +25,7 @@ using System.Linq;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System.Globalization;
+using Microsoft.Azure.Commands.Sql.Common;
 
 namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
 {
@@ -420,17 +421,11 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         public static string GetPoolSkuName(string tier)
         {
             if (string.IsNullOrWhiteSpace(tier))
-                return null;
-
-            switch (tier.ToLowerInvariant())
             {
-                case "generalpurpose":
-                    return "GP";
-                case "businesscritical":
-                    return "BC";
-                default:
-                    return string.Format("{0}Pool", tier);
+                return null;
             }
+
+            return SqlSkuUtils.GetVcoreSkuPrefix(tier) ?? string.Format("{0}Pool", tier);
         }
     }
 }

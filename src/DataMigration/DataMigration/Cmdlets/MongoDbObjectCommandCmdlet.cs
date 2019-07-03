@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.DataMigration.Models;
 using Microsoft.Azure.Management.DataMigration.Models;
 using System.Management.Automation;
 
@@ -25,13 +26,13 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
         private readonly string ObjectName = "ObjectName";
         private readonly string Immediate = "Immediate";
 
-        private readonly string commandName;
+        private readonly CommandTypeEnum commandType;
         private string objectNameParameterValue;
         private bool immediateParameterValue;
 
-        public MongoDbObjectCommandCmdlet(InvocationInfo myInvocation, string commandName) : base(myInvocation)
+        public MongoDbObjectCommandCmdlet(InvocationInfo myInvocation, CommandTypeEnum commandType) : base(myInvocation)
         {
-            this.commandName = commandName;
+            this.commandType = commandType;
         }
 
         public override void CustomInit()
@@ -42,17 +43,17 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 
         private CommandProperties _constructInputCommandObject(string objectName, bool immediate)
         {
-            switch(commandName)
+            switch(commandType)
             {
-                case "restart":
+                case CommandTypeEnum.RestartMongoDB:
                     return new MongoDbRestartCommand() { Input = new MongoDbCommandInput() { ObjectName = objectName } };
-                case "finish":
+                case CommandTypeEnum.FinishMongoDB:
                     return new MongoDbFinishCommand() { Input = new MongoDbFinishCommandInput() { Immediate = immediate, ObjectName = objectName } };
-                case "cancel":
+                case CommandTypeEnum.CancelMongoDB:
                     return new MongoDbCancelCommand() { Input = new MongoDbCommandInput() { ObjectName = objectName } };
             }
 
-            throw new PSInvalidOperationException($"{commandName} is not a valid operation on the task");
+            throw new PSInvalidOperationException($"{commandType} is not a valid operation on the task");
         }
 
         public override CommandProperties ProcessCommandCmdlet()

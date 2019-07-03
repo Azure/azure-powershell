@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzVpnConnection
 
 ## SYNOPSIS
-Updates a VpnConnection object to a goal state.
+Updates a VPN connection.
 
 ## SYNTAX
 
@@ -16,26 +16,27 @@ Updates a VpnConnection object to a goal state.
 ```
 Update-AzVpnConnection -ResourceGroupName <String> -ParentResourceName <String> -Name <String>
  [-SharedKey <SecureString>] [-ConnectionBandwidthInMbps <UInt32>] [-IpSecPolicy <PSIpsecPolicy>]
- [-EnableBgp <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-EnableBgp <Boolean>] [-UseLocalAzureIpAddress <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByVpnConnectionResourceId
 ```
 Update-AzVpnConnection -ResourceId <String> [-SharedKey <SecureString>] [-ConnectionBandwidthInMbps <UInt32>]
- [-IpSecPolicy <PSIpsecPolicy>] [-EnableBgp <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-IpSecPolicy <PSIpsecPolicy>] [-EnableBgp <Boolean>] [-UseLocalAzureIpAddress <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVpnConnectionObject
 ```
 Update-AzVpnConnection -InputObject <PSVpnConnection> [-SharedKey <SecureString>]
- [-ConnectionBandwidthInMbps <UInt32>] [-IpSecPolicy <PSIpsecPolicy>] [-EnableBgp <Boolean>] [-AsJob]
+ [-ConnectionBandwidthInMbps <UInt32>] [-IpSecPolicy <PSIpsecPolicy>] [-EnableBgp <Boolean>] [-UseLocalAzureIpAddress <Boolean>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a IPSec connection that connects a VpnGateway to a remote customer branch represented in RM as a VpnSite.
+The **Update-AzVpnConnection** cmdlet updates a VPN connection.  
+VPN connection creates an IPsec connection that connects a VPN gateway to a remote customer branch represented in Azure as a VPN site.
 
 ## EXAMPLES
 
@@ -64,6 +65,7 @@ IngressBytesTransferred   : 0
 IpsecPolicies             : {Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy}
 ConnectionBandwidth       : 20
 EnableBgp                 : False
+UseLocalAzureIpAddress    : False
 ProvisioningState         : testConnection
 Name                      : ps9709
 Etag                      : W/"4580a2e2-2fab-4cff-88eb-92013a76b5a8"
@@ -102,6 +104,7 @@ IngressBytesTransferred   : 0
 IpsecPolicies             : {Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy}
 ConnectionBandwidth       : 20
 EnableBgp                 : False
+UseLocalAzureIpAddress    : False
 ProvisioningState         : testConnection
 Name                      : ps9709
 Etag                      : W/"4580a2e2-2fab-4cff-88eb-92013a76b5a8"
@@ -272,6 +275,21 @@ The shared key required to set this connection up.
 
 ```yaml
 Type: System.Security.SecureString
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UseLocalAzureIpAddress
+Use local azure ip address as source address while initiating connection.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 

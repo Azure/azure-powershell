@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
 Module Name: Az.Websites
 online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/restore-azdeletedwebapp
@@ -16,14 +16,14 @@ Restores a deleted web app to a new or existing web app.
 ```
 Restore-AzDeletedWebApp [-ResourceGroupName] <String> [-Name] <String> [[-Slot] <String>]
  [-TargetResourceGroupName <String>] [-TargetName <String>] [-TargetSlot <String>]
- [-TargetAppServicePlanName <String>] [-RestoreContentOnly] [-Force] [-AsJob]
+ [-TargetAppServicePlanName <String>] [-RestoreContentOnly] [-UseDisasterRecovery] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FromDeletedApp
 ```
 Restore-AzDeletedWebApp [-TargetResourceGroupName <String>] [-TargetName <String>] [-TargetSlot <String>]
- [-TargetAppServicePlanName <String>] [-RestoreContentOnly] [-Force] [-AsJob]
+ [-TargetAppServicePlanName <String>] [-RestoreContentOnly] [-UseDisasterRecovery] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-InputObject] <PSAzureDeletedWebApp> [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -219,6 +219,21 @@ The name of the new Azure Web App slot.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UseDisasterRecovery
+Use to recover a deleted app from a scale unit that is offline.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 

@@ -45,6 +45,15 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         protected const string PointInTimeCrossInstanceRestoreFromResourceIdParameterSet =
             "PointInTimeCrossInstanceRestoreInstanceDatabaseFromAzureResourceId";
 
+        private const string GeoRestoreFromGeoBackupSetNameFromGeoBackupObjectParameterSet = 
+            "GeoRestoreFromGeoBackupSetNameFromGeoBackupObjectParameter";
+
+        private const string GeoRestoreFromGeoBackupSetNameFromResourceIdParameterSet = 
+            "GeoRestoreFromGeoBackupSetNameFromResourceIdParameter";
+
+        private const string GeoRestoreFromGeoBackupSetNameFromNameAndResourceGroupParameterSet = 
+            "GeoRestoreFromGeoBackupSetNameFromNameAndResourceGroupParameter";
+        
         /// <summary>
         /// Gets or sets flag indicating a restore from a point-in-time backup.
         /// </summary>
@@ -74,6 +83,23 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             HelpMessage = "Restore from a point-in-time backup.")]
         public SwitchParameter FromPointInTimeBackup { get; set; }
 
+        /// <summary>
+        /// Gets or sets flag indicating a geo-restore (recover) request
+        /// </summary>
+        [Parameter(
+            ParameterSetName = GeoRestoreFromGeoBackupSetNameFromGeoBackupObjectParameterSet,
+            Mandatory = true,
+            HelpMessage = "Restore from a geo backup.")]
+        [Parameter(
+            ParameterSetName = GeoRestoreFromGeoBackupSetNameFromResourceIdParameterSet,
+            Mandatory = true,
+            HelpMessage = "Restore from a geo backup.")]
+        [Parameter(
+            ParameterSetName = GeoRestoreFromGeoBackupSetNameFromNameAndResourceGroupParameterSet,
+            Mandatory = true,
+            HelpMessage = "Restore from a geo backup.")]
+        public SwitchParameter FromGeoBackup { get; set; }
+
         /// <summary> 
         /// Gets or sets the instance database name to restore
         /// </summary>
@@ -82,6 +108,10 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             Position = 0,
             HelpMessage = "The instance database name to restore.")]
         [Parameter(ParameterSetName = PointInTimeCrossInstanceRestoreFromNameAndResourceGroupParameterSet,
+            Mandatory = true,
+            Position = 0,
+            HelpMessage = "The instance database name to restore.")]
+        [Parameter(ParameterSetName = GeoRestoreFromGeoBackupSetNameFromNameAndResourceGroupParameterSet,
             Mandatory = true,
             Position = 0,
             HelpMessage = "The instance database name to restore.")]
@@ -100,6 +130,10 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             Mandatory = true,
             Position = 1,
             HelpMessage = "The name of the instance.")]
+        [Parameter(ParameterSetName = GeoRestoreFromGeoBackupSetNameFromNameAndResourceGroupParameterSet,
+            Mandatory = true,
+            Position = 1,
+            HelpMessage = "The name of the instance.")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public override string InstanceName { get; set; }
@@ -112,6 +146,10 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             Position = 2,
             HelpMessage = "The name of the resource group.")]
         [Parameter(ParameterSetName = PointInTimeCrossInstanceRestoreFromNameAndResourceGroupParameterSet,
+            Mandatory = true,
+            Position = 2,
+            HelpMessage = "The name of the resource group.")]
+        [Parameter(ParameterSetName = GeoRestoreFromGeoBackupSetNameFromNameAndResourceGroupParameterSet,
             Mandatory = true,
             Position = 2,
             HelpMessage = "The name of the resource group.")]
@@ -137,6 +175,18 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         public AzureSqlManagedDatabaseModel InputObject { get; set; }
 
         /// <summary>
+        /// Instance database object to remove
+        /// </summary>
+        [Parameter(ParameterSetName = GeoRestoreFromGeoBackupSetNameFromGeoBackupObjectParameterSet,
+            Mandatory = true,
+            Position = 0,
+            ValueFromPipeline = true,
+            HelpMessage = "The recoverable instance database object to restore")]
+        [ValidateNotNullOrEmpty]
+        [Alias("RecoverableInstanceDatabase")]
+        public AzureSqlRecoverableManagedDatabaseModel GeoBackupObject { get; set; }
+
+        /// <summary>
         /// Gets or sets the resource id of the instance database to remove
         /// </summary>
         [Parameter(ParameterSetName = PointInTimeSameInstanceRestoreFromResourceIdParameterSet,
@@ -149,13 +199,41 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             Position = 0,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource id of instance database object to restore")]
+        [Parameter(ParameterSetName = GeoRestoreFromGeoBackupSetNameFromResourceIdParameterSet,
+            Mandatory = true,
+            HelpMessage = "The resource id of instance database object to restore")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the point in time to restore the instance database to
         /// </summary>
-        [Parameter(Mandatory = true,
+        /// <summary>
+        /// Gets or sets flag indicating a restore from a point-in-time backup.
+        /// </summary>
+        [Parameter(
+            ParameterSetName = PointInTimeSameInstanceRestoreFromNameAndResourceGroupParameterSet,
+            Mandatory = true,
+            HelpMessage = "The point in time to restore the database to.")]
+        [Parameter(
+            ParameterSetName = PointInTimeSameInstanceRestoreFromInputObjectParameterSet,
+            Mandatory = true,
+            HelpMessage = "The point in time to restore the database to.")]
+        [Parameter(
+            ParameterSetName = PointInTimeSameInstanceRestoreFromResourceIdParameterSet,
+            Mandatory = true,
+            HelpMessage = "The point in time to restore the database to.")]
+        [Parameter(
+            ParameterSetName = PointInTimeCrossInstanceRestoreFromNameAndResourceGroupParameterSet,
+            Mandatory = true,
+            HelpMessage = "The point in time to restore the database to.")]
+        [Parameter(
+            ParameterSetName = PointInTimeCrossInstanceRestoreFromInputObjectParameterSet,
+            Mandatory = true,
+            HelpMessage = "The point in time to restore the database to.")]
+        [Parameter(
+            ParameterSetName = PointInTimeCrossInstanceRestoreFromResourceIdParameterSet,
+            Mandatory = true,
             HelpMessage = "The point in time to restore the database to.")]
         public DateTime PointInTime { get; set; }
 
@@ -178,6 +256,15 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         [Parameter(ParameterSetName = PointInTimeCrossInstanceRestoreFromInputObjectParameterSet,
             Mandatory = true,
             HelpMessage = "The name of the target instance to restore to. If not specified, the target instance is the same as the source instance.")]
+        [Parameter(ParameterSetName = GeoRestoreFromGeoBackupSetNameFromResourceIdParameterSet,
+            Mandatory = true,
+            HelpMessage = "The name of the target instance to restore to.")]
+        [Parameter(ParameterSetName = GeoRestoreFromGeoBackupSetNameFromGeoBackupObjectParameterSet,
+            Mandatory = true,
+            HelpMessage = "The name of the target instance to restore to.")]
+        [Parameter(ParameterSetName = GeoRestoreFromGeoBackupSetNameFromNameAndResourceGroupParameterSet,
+            Mandatory = true,
+            HelpMessage = "The name of the target instance to restore to.")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
         public string TargetInstanceName { get; set; }
 
@@ -193,6 +280,15 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         [Parameter(ParameterSetName = PointInTimeCrossInstanceRestoreFromInputObjectParameterSet,
             Mandatory = true,
             HelpMessage = "The name of the target resource group to restore to. If not specified, the target resource group is the same as the source resource group.")]
+        [Parameter(ParameterSetName = GeoRestoreFromGeoBackupSetNameFromResourceIdParameterSet,
+            Mandatory = true,
+            HelpMessage = "The name of the target resource group to restore to.")]
+        [Parameter(ParameterSetName = GeoRestoreFromGeoBackupSetNameFromGeoBackupObjectParameterSet,
+            Mandatory = true,
+            HelpMessage = "The name of the target resource group to restore to.")]
+        [Parameter(ParameterSetName = GeoRestoreFromGeoBackupSetNameFromNameAndResourceGroupParameterSet,
+            Mandatory = true,
+            HelpMessage = "the name of the target resource group to restore to.")]
         [ResourceGroupCompleter]
         public string TargetResourceGroupName { get; set; }
 
@@ -210,8 +306,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         {
             AzureSqlManagedDatabaseModel model;
             DateTime restorePointInTime = DateTime.MinValue;
-            string location = ModelAdapter.GetManagedInstanceLocation(ResourceGroupName, InstanceName);
-
+        
             if (string.Equals(this.ParameterSetName, PointInTimeSameInstanceRestoreFromInputObjectParameterSet, System.StringComparison.OrdinalIgnoreCase) ||
                 string.Equals(this.ParameterSetName, PointInTimeCrossInstanceRestoreFromInputObjectParameterSet, System.StringComparison.OrdinalIgnoreCase))
             {
@@ -228,6 +323,20 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
                 InstanceName = resourceInfo.ParentResource.Split(new[] { '/' })[1];
                 Name = resourceInfo.ResourceName;
             }
+            else if (string.Equals(this.ParameterSetName, GeoRestoreFromGeoBackupSetNameFromGeoBackupObjectParameterSet, System.StringComparison.OrdinalIgnoreCase))
+            {
+                ResourceGroupName = GeoBackupObject.ResourceGroupName;
+
+                InstanceName = GeoBackupObject.ManagedInstanceName;
+                Name = GeoBackupObject.Name;
+                ResourceId = GeoBackupObject.RecoverableDatabaseId;
+            }
+
+            if(string.Equals(this.ParameterSetName, GeoRestoreFromGeoBackupSetNameFromNameAndResourceGroupParameterSet, System.StringComparison.OrdinalIgnoreCase))
+            {
+                ResourceId = "/subscriptions/" + ModelAdapter.Context.Subscription.Id + "/resourceGroups/" + ResourceGroupName + "/providers/Microsoft.Sql/managedInstances/"
+                    + InstanceName + "/recoverableDatabases/" +Name;
+            }
 
             if (String.IsNullOrEmpty(TargetInstanceName))
             {
@@ -238,10 +347,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             {
                 TargetResourceGroupName = ResourceGroupName;
             }
-
+          
             model = new AzureSqlManagedDatabaseModel()
             {
-                Location = location,
                 ResourceGroupName = TargetResourceGroupName,
                 ManagedInstanceName = TargetInstanceName,
                 Name = TargetInstanceDatabaseName,
@@ -249,7 +357,27 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
                 RestorePointInTime = PointInTime
             };
 
-            string sourceManagedDatabaseId = ModelAdapter.GetManagedDatabaseResourceId(ResourceGroupName, InstanceName, Name);
+            if (ParameterSetName.Equals(GeoRestoreFromGeoBackupSetNameFromNameAndResourceGroupParameterSet, StringComparison.InvariantCultureIgnoreCase)
+                || ParameterSetName.Equals(GeoRestoreFromGeoBackupSetNameFromGeoBackupObjectParameterSet, StringComparison.InvariantCultureIgnoreCase)
+                || ParameterSetName.Equals(GeoRestoreFromGeoBackupSetNameFromResourceIdParameterSet, StringComparison.InvariantCultureIgnoreCase))
+            {
+                model.CreateMode = "Recovery";
+                model.RecoverableDatabaseId = ResourceId;
+              
+            }
+
+            string sourceManagedDatabaseId;
+            if (model.CreateMode.Equals("Recovery"))
+            {
+                sourceManagedDatabaseId = ResourceId;
+                model.Location = ModelAdapter.GetManagedInstanceLocation(TargetResourceGroupName, TargetInstanceName);
+            }
+            else
+            {
+                sourceManagedDatabaseId = ModelAdapter.GetManagedDatabaseResourceId(ResourceGroupName, InstanceName, Name);
+                model.Location = ModelAdapter.GetManagedInstanceLocation(ResourceGroupName, InstanceName);
+            }
+
 
             return ModelAdapter.RestoreManagedDatabase(sourceManagedDatabaseId, model);
         }

@@ -70,6 +70,15 @@ function Test-PublicIpPrefixCRUD
         $list = Get-AzPublicIpPrefix
         Assert-NotNull $list
 
+        $list = Get-AzPublicIpPrefix -ResourceGroupName "*"
+        Assert-True { $list.Count -ge 0 }
+
+        $list = Get-AzPublicIpPrefix -Name "*"
+        Assert-True { $list.Count -ge 0 }
+
+        $list = Get-AzPublicIpPrefix -ResourceGroupName "*" -Name "*"
+        Assert-True { $list.Count -ge 0 }
+
         $expected.Tag = @{ testtag = "testvalSet" }
 
         $job = Set-AzPublicIpPrefix -PublicIpPrefix $expected -AsJob

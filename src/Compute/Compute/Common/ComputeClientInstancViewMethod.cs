@@ -29,6 +29,23 @@ namespace Microsoft.Azure.Commands.Compute.Common
             return result;
         }
 
+        public static AzureOperationResponse<VirtualMachineExtensionsListResult> ListWithInstanceView(this IVirtualMachineExtensionsOperations iVmExtensionOperations,
+           string rgName, string vmName)
+        {
+            string expand = "instanceView";
+            var result = iVmExtensionOperations.ListWithHttpMessagesAsync(rgName, vmName, expand).GetAwaiter().GetResult();
+
+            foreach (var vmExtension in result.Body.Value)
+            {
+                if (vmExtension.InstanceView == null)
+                {
+                    vmExtension.InstanceView = iVmExtensionOperations.GetWithInstanceView(rgName, vmName, vmExtension.Name).Body.InstanceView;
+                }
+            }
+
+            return result;
+        }
+
         public static AzureOperationResponse<VirtualMachine> GetWithInstanceView(this IVirtualMachinesOperations iVmExtensionOperations,
             string rgName, string vmName)
         {

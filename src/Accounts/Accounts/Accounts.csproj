@@ -13,11 +13,13 @@
   <ItemGroup>
     <PreLoadAssemblies Include="$(RepoSrc)lib\Newtonsoft.Json.10.dll" />
     <PreLoadAssemblies Include="$(RepoSrc)lib\System.Buffers.dll" />
-    <PreLoadAssemblies Include="$(RepoSrc)lib\System.Reflection.DispatchProxy.dll" />
-    <PreLoadAssemblies Include="$(RepoSrc)lib\System.ServiceModel.Primitives.dll" />
-    <PreLoadAssemblies Include="$(RepoSrc)lib\System.Security.Permissions.dll" />
-    <PreLoadAssemblies Include="$(RepoSrc)lib\System.Private.ServiceModel.dll" />
     <PreLoadAssemblies Include="$(RepoSrc)lib\System.Net.Http.WinHttpHandler.dll" />
+    <PreLoadAssemblies Include="$(RepoSrc)lib\System.Private.ServiceModel.dll" />
+    <PreLoadAssemblies Include="$(RepoSrc)lib\System.Reflection.DispatchProxy.dll" />
+    <PreLoadAssemblies Include="$(RepoSrc)lib\System.Security.AccessControl.dll" />
+    <PreLoadAssemblies Include="$(RepoSrc)lib\System.Security.Permissions.dll" />
+    <PreLoadAssemblies Include="$(RepoSrc)lib\System.Security.Principal.Windows.dll" />
+    <PreLoadAssemblies Include="$(RepoSrc)lib\System.ServiceModel.Primitives.dll" />
     <PreLoadAssemblies Include="$(RepoSrc)lib\Microsoft.IdentityModel.Clients.ActiveDirectory\NetFx\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
     <PreLoadAssemblies Include="$(RepoSrc)lib\Microsoft.IdentityModel.Clients.ActiveDirectory\NetFx\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll" />
     <NetCoreAssemblies Include="$(RepoSrc)lib\Microsoft.IdentityModel.Clients.ActiveDirectory\NetCore\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
@@ -50,6 +52,21 @@
   <ItemGroup>
     <ProjectReference Include="..\Authentication.ResourceManager\Authentication.ResourceManager.csproj" />
     <ProjectReference Include="..\Authentication\Authentication.csproj" />  
+  </ItemGroup>
+   
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+   
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

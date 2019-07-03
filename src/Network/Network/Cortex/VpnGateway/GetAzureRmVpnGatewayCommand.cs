@@ -27,11 +27,12 @@ namespace Microsoft.Azure.Commands.Network
     public class GetAzureRmVpnGatewayCommand : VpnGatewayBaseCmdlet
     {
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ParameterSetName = "ListByResourceGroupName",
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string ResourceGroupName { get; set; }
 
         [Alias("ResourceName", "VpnGatewayName")]
@@ -41,13 +42,14 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The resource name.")]
         [ResourceNameCompleter("Microsoft.Network/vpnGateways", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string Name { get; set; }
 
         public override void Execute()
         {
             base.Execute();
 
-            if (ParameterSetName.Equals("ListByResourceGroupName") && !string.IsNullOrEmpty(this.Name))
+            if (ShouldGetByName(ResourceGroupName, Name))
             {
                 var vpnGateway = this.GetVpnGateway(this.ResourceGroupName, this.Name);
                 WriteObject(vpnGateway);
@@ -55,7 +57,7 @@ namespace Microsoft.Azure.Commands.Network
             else
             {
                 //// ResourceName has not been specified - List all gateways
-                WriteObject(this.ListVpnGateways(this.ResourceGroupName), true);
+                WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, this.ListVpnGateways(this.ResourceGroupName)), true);
             }
         }
     }

@@ -27,7 +27,7 @@ param (
 
 try {
     $srcPath = "$PSScriptRoot\..\..\src"
-    $projectList = @('Profile', 'Compute', 'Resources', 'Storage', 'Websites', 'Network', 'Sql')
+    $projectList = @('Accounts', 'Compute', 'Resources', 'Storage', 'Websites', 'Network', 'Sql')
     $testResourcesDir = "$PSScriptRoot\TestResources"
     $packagingDir = "$PSScriptRoot\Package"
     $helperModuleName = 'Smoke.Helper'
@@ -52,25 +52,24 @@ try {
         Path = "$testResourcesDir\RunbookTemplate.ps1"
     }
 
-    $signedModuleList = @('AzureRM.Automation', 'AzureRM.Compute','AzureRM.Resources', 'AzureRM.Storage', 'AzureRM.Websites', 'AzureRM.Network', 'AzureRM.Sql')
-    # Profile is required to be uploaded first. Storage is required second (for AzureRm.Storage). Then, the rest of the order doesn't matter.
+    $signedModuleList = @('Az.Automation', 'Az.Compute','Az.Resources', 'Az.Storage', 'Az.Websites', 'Az.Network', 'Az.Sql')
+    # Accounts is required to be uploaded first. Then, the rest of the order doesn't matter.
     # Note: These are lists so that the addition operation is handled properly.
     $signedModules = @{
-        Profile = @('AzureRM.Profile');
-        Storage = @('Azure.Storage');
+        Accounts = @('Az.Accounts');
     }
     # https://stackoverflow.com/a/38685717/294804
-    $signedModules.Other = $signedModuleList | Where-Object { ($signedModules.Profile + $signedModules.Storage) -inotcontains $_ }
+    $signedModules.Other = $signedModuleList | Where-Object { ($signedModules.Accounts) -inotcontains $_ }
 
-    Import-Module AzureRm.Profile
-    Import-Module AzureRm.Storage
-    Import-Module AzureRm.Automation
+    Import-Module Az.Accounts
+    Import-Module Az.Storage
+    Import-Module Az.Automation
 
     # TODO: Allow this to be provided. For now, use a hard-coded service principal.
     # Login as the service principal
     $password = ConvertTo-SecureString -String $spPassword -AsPlainText -Force
     $creds = New-Object -TypeName 'System.Management.Automation.PSCredential' -ArgumentList '512d9f44-dacc-4a72-8bab-3ff8362d14b7', $password
-    Login-AzureRmAccount -Credential $creds -ServicePrincipal -TenantId 72f988bf-86f1-41af-91ab-2d7cd011db47 -Subscription 'Azure SDK Infrastructure'
+    Login-AzAccount -Credential $creds -ServicePrincipal -TenantId 72f988bf-86f1-41af-91ab-2d7cd011db47 -Subscription 'Azure SDK Infrastructure' -ErrorAction Stop
 
     if($createPackages) {
         Write-Verbose '=== Create Packages ========================'
@@ -92,6 +91,9 @@ try {
 
     if($uploadPackages) {
         Write-Verbose '=== Upload Modules ========================'
+        Remove-HelperModulesFromAutomationAccount `
+            -automation $automation `
+            -moduleNames $helperModuleName, $testModuleName
         Upload-Modules `
             -automation $automation `
             -storage $storage `

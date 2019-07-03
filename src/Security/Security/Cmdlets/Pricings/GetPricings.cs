@@ -12,24 +12,18 @@
 // limitations under the License.
 // ------------------------------------
 
+using System.Management.Automation;
 using Commands.Security;
 using Microsoft.Azure.Commands.Security.Common;
 using Microsoft.Azure.Commands.Security.Models.Pricings;
 using Microsoft.Azure.Commands.SecurityCenter.Common;
-using Microsoft.Rest.Azure;
-using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Security.Cmdlets.Pricings
 {
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityPricing", DefaultParameterSetName = ParameterSetNames.SubscriptionScope), OutputType(typeof(PSSecurityPricing))]
     public class GetPricings : SecurityCenterCmdletBase
     {
-        [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceGroupName)]
-        [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupScope, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceGroupName)]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceName)]
         [Parameter(ParameterSetName = ParameterSetNames.SubscriptionLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceName)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -46,29 +40,12 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Pricings
                     var pricings = SecurityCenterClient.Pricings.ListWithHttpMessagesAsync().GetAwaiter().GetResult().Body;
                     WriteObject(pricings.ConvertToPSType(), enumerateCollection: true);
                     break;
-                case ParameterSetNames.ResourceGroupScope:
-                    pricings = SecurityCenterClient.Pricings.ListByResourceGroupWithHttpMessagesAsync(ResourceGroupName).GetAwaiter().GetResult().Body;
-                    WriteObject(pricings.ConvertToPSType(), enumerateCollection: true);
-                    break;
                 case ParameterSetNames.SubscriptionLevelResource:
-                    var pricing = SecurityCenterClient.Pricings.GetSubscriptionPricingWithHttpMessagesAsync(Name).GetAwaiter().GetResult().Body;
-                    WriteObject(pricing.ConvertToPSType(), enumerateCollection: false);
-                    break;
-                case ParameterSetNames.ResourceGroupLevelResource:
-                    pricing = SecurityCenterClient.Pricings.GetResourceGroupPricingWithHttpMessagesAsync(ResourceGroupName, Name).GetAwaiter().GetResult().Body;
+                    var pricing = SecurityCenterClient.Pricings.GetWithHttpMessagesAsync(Name).GetAwaiter().GetResult().Body;
                     WriteObject(pricing.ConvertToPSType(), enumerateCollection: false);
                     break;
                 case ParameterSetNames.ResourceId:
-                    var rg = AzureIdUtilities.GetResourceGroup(ResourceId);
-
-                    if (string.IsNullOrEmpty(rg))
-                    {
-                        pricing = SecurityCenterClient.Pricings.GetSubscriptionPricingWithHttpMessagesAsync(AzureIdUtilities.GetResourceName(ResourceId)).GetAwaiter().GetResult().Body;
-                    }
-                    else
-                    {
-                        pricing = SecurityCenterClient.Pricings.GetResourceGroupPricingWithHttpMessagesAsync(rg, AzureIdUtilities.GetResourceName(ResourceId)).GetAwaiter().GetResult().Body;
-                    }
+                    pricing = SecurityCenterClient.Pricings.GetWithHttpMessagesAsync(AzureIdUtilities.GetResourceName(ResourceId)).GetAwaiter().GetResult().Body;
 
                     WriteObject(pricing.ConvertToPSType(), enumerateCollection: false);
                     break;

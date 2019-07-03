@@ -14,8 +14,17 @@
 
 namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces
 {
+    /// <summary>
+    /// Interface IFileInfo
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces.INamedObjectInfo" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces.INamedObjectInfo" />
     public interface IFileInfo : INamedObjectInfo
     {
+        /// <summary>
+        /// Gets the length.
+        /// </summary>
+        /// <value>The length.</value>
         long Length { get; }
     }
 }

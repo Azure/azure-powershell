@@ -141,7 +141,15 @@ namespace Microsoft.Azure.Commands.Dns
                     if (result != null)
                     {
                         WriteVerbose(ProjectResources.Success);
-                        WriteVerbose(string.Format(ProjectResources.Success_NewRecordSet, this.Name, zoneName, this.RecordType));
+                        if (DnsRecords != null && DnsRecords.Length != 0)
+                        {
+                            WriteVerbose(string.Format(ProjectResources.Success_NewRecordSetHasRecords, this.Name, zoneName, this.RecordType));
+                        }
+                        else
+                        {
+                            WriteVerbose(string.Format(ProjectResources.Success_NewRecordSet, this.Name, zoneName, this.RecordType));
+                        }
+
                         WriteVerbose(string.Format(ProjectResources.Success_RecordSetFqdn, this.Name, zoneName, this.RecordType));
                     }
 

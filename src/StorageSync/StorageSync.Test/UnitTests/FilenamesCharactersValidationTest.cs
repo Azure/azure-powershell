@@ -22,10 +22,19 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
     using Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
+    /// <summary>
+    /// Class FilenamesCharactersValidationTest.
+    /// </summary>
     public class FilenamesCharactersValidationTest
     {
+        /// <summary>
+        /// The configuration
+        /// </summary>
         IConfiguration _configuration = new Configuration();
 
+        /// <summary>
+        /// Defines the test method ItReturnsErrorOnDirectoryWithInvalidCodePoint.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ItReturnsErrorOnDirectoryWithInvalidCodePoint()
@@ -47,6 +56,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             Assert.StrictEqual<Result>(Result.Fail, validationResult.Result);
         }
 
+        /// <summary>
+        /// Defines the test method ItReturnsErrorOnFileWithInvalidCodePoint.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ItReturnsErrorOnFileWithInvalidCodePoint()
@@ -68,6 +80,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             Assert.StrictEqual<Result>(Result.Fail, validationResult.Result);
         }
 
+        /// <summary>
+        /// Defines the test method ItReturnsErrorWhenCodePointIsInBoundsOfRange.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ItReturnsErrorWhenCodePointIsInBoundsOfRange()
@@ -97,6 +112,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             Assert.True(validationResult.Positions[1] == 8, $"Unexpected position of second error");
         }
 
+        /// <summary>
+        /// Defines the test method ItReturnsErrorWhenCodePointIsInMiddleOfRange.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ItReturnsErrorWhenCodePointIsInMiddleOfRange()
@@ -126,6 +144,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             Assert.True(validationResult.Positions[0] == 4, $"Unexpected position of first error");
         }
 
+        /// <summary>
+        /// Defines the test method TestWithRealConfigReturnsSuccessForValidSurrogateCodePoint.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestWithRealConfigReturnsSuccessForValidSurrogateCodePoint()
@@ -141,6 +162,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
         }
 
 
+        /// <summary>
+        /// Defines the test method TestWithRealConfigReturnsErrorForInvalidCodePoint.
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestWithRealConfigReturnsErrorForInvalidCodePoint()

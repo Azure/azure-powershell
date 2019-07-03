@@ -1,0 +1,575 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/amits-test/providers/Microsoft.Compute/virtualMachines/amits-winser6/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments?api-version=2018-11-20",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjVlNDc0OGMtZjY5YS00NjdjLTg3NDktZTJmOWM4Y2QzZGIwL3Jlc291cmNlR3JvdXBzL2FtaXRzLXRlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy9hbWl0cy13aW5zZXI2L3Byb3ZpZGVycy9NaWNyb3NvZnQuR3Vlc3RDb25maWd1cmF0aW9uL2d1ZXN0Q29uZmlndXJhdGlvbkFzc2lnbm1lbnRzP2FwaS12ZXJzaW9uPTIwMTgtMTEtMjA=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "69c54941-862d-45be-b60d-9699fa31aa8a"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27129.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.GuestConfiguration.GuestConfigurationClient/1.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11984"
+        ],
+        "x-ms-request-id": [
+          "dd0e69ec-92e4-4877-a9ef-d6cb67d0ac21"
+        ],
+        "x-ms-correlation-request-id": [
+          "dd0e69ec-92e4-4877-a9ef-d6cb67d0ac21"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190222T181821Z:dd0e69ec-92e4-4877-a9ef-d6cb67d0ac21"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 22 Feb 2019 18:18:20 GMT"
+        ],
+        "Content-Length": [
+          "1253"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"location\": \"centraluseuap\",\r\n      \"id\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/amits-test/providers/Microsoft.Compute/virtualMachines/amits-winser6/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/AuditWindowsService\",\r\n      \"name\": \"AuditWindowsService\",\r\n      \"properties\": {\r\n        \"complianceStatus\": \"NonCompliant\",\r\n        \"assignmentHash\": \"FCE48C2D50C34F88FC258BB3F59B4727676A31FE20B474074C48DC87A7874B11.E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855\",\r\n        \"latestReportId\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/amits-test/providers/Microsoft.Compute/virtualMachines/amits-winser6/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/AuditWindowsService/reports/87042979-66fe-4e24-b610-f9f9f1b01dcd\",\r\n        \"lastComplianceStatusChecked\": \"2019-02-22T18:04:29Z\",\r\n        \"context\": null,\r\n        \"guestConfiguration\": {\r\n          \"kind\": null,\r\n          \"name\": \"AuditWindowsService\",\r\n          \"version\": \"1.2.1.0\",\r\n          \"contentUri\": \"https://github.com/Microsoft/PowerShell-DSC-for-Linux/raw/amits/custompolicy/MyCustomPolicy4/AuditWindowsService.zip\",\r\n          \"contentHash\": \"FCE48C2D50C34F88FC258BB3F59B4727676A31FE20B474074C48DC87A7874B11\",\r\n          \"contentType\": null,\r\n          \"configurationParameter\": [],\r\n          \"configurationSetting\": null\r\n        },\r\n        \"provisioningState\": null\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Authorization/policySetDefinitions/8174929b-2752-46af-9167-89d2d6780439?api-version=2018-05-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lTZXREZWZpbml0aW9ucy84MTc0OTI5Yi0yNzUyLTQ2YWYtOTE2Ny04OWQyZDY3ODA0Mzk/YXBpLXZlcnNpb249MjAxOC0wNS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "21d270df-e23f-42c2-bf57-6a69935384d0"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27129.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Internal.ResourceManager.Version2018.05.01.PolicyClient/1.1.16"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "westus2:cd6a7183-2901-477c-8dbd-5cd0a3743af4"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "ecf3d524-b18c-4e92-b81f-19ff4c2318d2"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190222T181821Z:ecf3d524-b18c-4e92-b81f-19ff4c2318d2"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 22 Feb 2019 18:18:21 GMT"
+        ],
+        "Content-Length": [
+          "145"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"PolicySetDefinitionNotFound\",\r\n    \"message\": \"The policy set definition '8174929b-2752-46af-9167-89d2d6780439' could not be found.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/providers/Microsoft.Authorization/policySetDefinitions/8174929b-2752-46af-9167-89d2d6780439?api-version=2018-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjVlNDc0OGMtZjY5YS00NjdjLTg3NDktZTJmOWM4Y2QzZGIwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lTZXREZWZpbml0aW9ucy84MTc0OTI5Yi0yNzUyLTQ2YWYtOTE2Ny04OWQyZDY3ODA0Mzk/YXBpLXZlcnNpb249MjAxOC0wNS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b0bd522c-deb0-4643-bfc8-73ea02ddd062"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27129.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Internal.ResourceManager.Version2018.05.01.PolicyClient/1.1.16"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "westus2:6af90111-f7d5-4eaf-a43c-bc6f744506a1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "2209b5df-3acc-44fc-ab62-a68486ac6532"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190222T181821Z:2209b5df-3acc-44fc-ab62-a68486ac6532"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 22 Feb 2019 18:18:21 GMT"
+        ],
+        "Content-Length": [
+          "1043"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"\\\"[Initiative] Monitor Windows Service.\\\"\",\r\n    \"policyType\": \"Custom\",\r\n    \"description\": \"Policy to monitor Windows Service.\",\r\n    \"metadata\": {\r\n      \"category\": \"Guest Configuration\",\r\n      \"createdBy\": \"cf38f268-bf7b-4d70-ad46-c7e6bea34eaa\",\r\n      \"createdOn\": \"2019-02-15T21:16:22.5647356Z\",\r\n      \"updatedBy\": null,\r\n      \"updatedOn\": null\r\n    },\r\n    \"policyDefinitions\": [\r\n      {\r\n        \"policyDefinitionReferenceId\": \"Deploy_AuditWindowsService\",\r\n        \"policyDefinitionId\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/providers/Microsoft.Authorization/policyDefinitions/2bb772f0-1b53-4011-a902-2c93f6055827\"\r\n      },\r\n      {\r\n        \"policyDefinitionReferenceId\": \"Audit_AuditWindowsService\",\r\n        \"policyDefinitionId\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/providers/Microsoft.Authorization/policyDefinitions/499efe15-07d3-4ef1-b9a9-4209fcb55260\"\r\n      }\r\n    ]\r\n  },\r\n  \"id\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/providers/Microsoft.Authorization/policySetDefinitions/8174929b-2752-46af-9167-89d2d6780439\",\r\n  \"type\": \"Microsoft.Authorization/policySetDefinitions\",\r\n  \"name\": \"8174929b-2752-46af-9167-89d2d6780439\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Authorization/policyDefinitions/2bb772f0-1b53-4011-a902-2c93f6055827?api-version=2018-05-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lEZWZpbml0aW9ucy8yYmI3NzJmMC0xYjUzLTQwMTEtYTkwMi0yYzkzZjYwNTU4Mjc/YXBpLXZlcnNpb249MjAxOC0wNS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "2147e680-3d01-417b-b764-10339db04bcc"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27129.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Internal.ResourceManager.Version2018.05.01.PolicyClient/1.1.16"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "westus2:699260b4-09ed-461f-ad59-4f3cb0f654f5"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "30832003-26f5-4070-b144-267977127a1f"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190222T181821Z:30832003-26f5-4070-b144-267977127a1f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 22 Feb 2019 18:18:21 GMT"
+        ],
+        "Content-Length": [
+          "138"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"PolicyDefinitionNotFound\",\r\n    \"message\": \"The policy definition '2bb772f0-1b53-4011-a902-2c93f6055827' could not be found.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/providers/Microsoft.Authorization/policyDefinitions/2bb772f0-1b53-4011-a902-2c93f6055827?api-version=2018-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjVlNDc0OGMtZjY5YS00NjdjLTg3NDktZTJmOWM4Y2QzZGIwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lEZWZpbml0aW9ucy8yYmI3NzJmMC0xYjUzLTQwMTEtYTkwMi0yYzkzZjYwNTU4Mjc/YXBpLXZlcnNpb249MjAxOC0wNS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "88f9dfa6-64c7-49da-8292-7ef585e2c921"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27129.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Internal.ResourceManager.Version2018.05.01.PolicyClient/1.1.16"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "westus2:d631c894-3437-4cd6-8d10-a48c9f6c8ee6"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "ddaa7690-cf39-4351-b385-c08e9c5c5bc7"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190222T181821Z:ddaa7690-cf39-4351-b385-c08e9c5c5bc7"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 22 Feb 2019 18:18:21 GMT"
+        ],
+        "Content-Length": [
+          "4376"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"\\\"[Deploy] Monitor Windows Service.\\\"\",\r\n    \"policyType\": \"Custom\",\r\n    \"mode\": \"All\",\r\n    \"description\": \"Policy to monitor Windows Service.\",\r\n    \"metadata\": {\r\n      \"category\": \"Guest Configuration\",\r\n      \"requiredProviders\": [\r\n        \"Microsoft.GuestConfiguration\"\r\n      ],\r\n      \"createdBy\": \"cf38f268-bf7b-4d70-ad46-c7e6bea34eaa\",\r\n      \"createdOn\": \"2019-02-15T21:16:20.2675284Z\",\r\n      \"updatedBy\": null,\r\n      \"updatedOn\": null\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"allOf\": [\r\n          {\r\n            \"field\": \"type\",\r\n            \"equals\": \"Microsoft.Compute/virtualMachines\"\r\n          },\r\n          {\r\n            \"anyOf\": [\r\n              {\r\n                \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                \"in\": [\r\n                  \"MicrosoftDynamicsAX\",\r\n                  \"MicrosoftWindowsDesktop\",\r\n                  \"MicrosoftVisualStudio\",\r\n                  \"incredibuild\",\r\n                  \"MicrosoftWindowsServerHPCPack\",\r\n                  \"esri\"\r\n                ]\r\n              },\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"MicrosoftWindowsServer\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageSKU\",\r\n                    \"notLike\": \"2008*\"\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"MicrosoftSQLServer\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageSKU\",\r\n                    \"notEquals\": \"SQL2008R2SP3-WS2008R2SP1\"\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"microsoft-dsvm\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageOffer\",\r\n                    \"equals\": \"dsvm-windows\"\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"microsoft-ads\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageOffer\",\r\n                    \"in\": [\r\n                      \"standard-data-science-vm\",\r\n                      \"windows-data-science-vm\"\r\n                    ]\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"batch\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageOffer\",\r\n                    \"equals\": \"rendering-windows2016\"\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"center-for-internet-security-inc\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageOffer\",\r\n                    \"like\": \"cis-windows-server-201*\"\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"pivotal\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageOffer\",\r\n                    \"like\": \"bosh-windows-server*\"\r\n                  }\r\n                ]\r\n              },\r\n              {\r\n                \"allOf\": [\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imagePublisher\",\r\n                    \"equals\": \"cloud-infrastructure-services\"\r\n                  },\r\n                  {\r\n                    \"field\": \"Microsoft.Compute/imageOffer\",\r\n                    \"like\": \"ad*\"\r\n                  }\r\n                ]\r\n              }\r\n            ]\r\n          }\r\n        ]\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"deployIfNotExists\",\r\n        \"details\": {\r\n          \"type\": \"Microsoft.GuestConfiguration/guestConfigurationAssignments\",\r\n          \"name\": \"AuditWindowsService\",\r\n          \"roleDefinitionIds\": [\r\n            \"/providers/microsoft.authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c\"\r\n          ],\r\n          \"deployment\": {\r\n            \"properties\": {\r\n              \"mode\": \"incremental\",\r\n              \"parameters\": {\r\n                \"vmName\": {\r\n                  \"value\": \"[field('name')]\"\r\n                },\r\n                \"location\": {\r\n                  \"value\": \"[field('location')]\"\r\n                },\r\n                \"configurationName\": {\r\n                  \"value\": \"AuditWindowsService\"\r\n                },\r\n                \"contentUri\": {\r\n                  \"value\": \"https://github.com/Microsoft/PowerShell-DSC-for-Linux/raw/amits/custompolicy/MyCustomPolicy4/AuditWindowsService.zip\"\r\n                },\r\n                \"contentHash\": {\r\n                  \"value\": \"FCE48C2D50C34F88FC258BB3F59B4727676A31FE20B474074C48DC87A7874B11\"\r\n                }\r\n              },\r\n              \"template\": {\r\n                \"$schema\": \"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#\",\r\n                \"contentVersion\": \"1.0.0.0\",\r\n                \"parameters\": {\r\n                  \"vmName\": {\r\n                    \"type\": \"string\"\r\n                  },\r\n                  \"location\": {\r\n                    \"type\": \"string\"\r\n                  },\r\n                  \"configurationName\": {\r\n                    \"type\": \"string\"\r\n                  },\r\n                  \"contentUri\": {\r\n                    \"type\": \"string\"\r\n                  },\r\n                  \"contentHash\": {\r\n                    \"type\": \"string\"\r\n                  }\r\n                },\r\n                \"resources\": [\r\n                  {\r\n                    \"apiVersion\": \"2018-11-20\",\r\n                    \"type\": \"Microsoft.Compute/virtualMachines/providers/guestConfigurationAssignments\",\r\n                    \"name\": \"[concat(parameters('vmName'), '/Microsoft.GuestConfiguration/', parameters('configurationName'))]\",\r\n                    \"location\": \"[parameters('location')]\",\r\n                    \"properties\": {\r\n                      \"guestConfiguration\": {\r\n                        \"name\": \"[parameters('configurationName')]\",\r\n                        \"contentUri\": \"[parameters('contentUri')]\",\r\n                        \"contentHash\": \"[parameters('contentHash')]\",\r\n                        \"version\": \"1.2.1.0\"\r\n                      }\r\n                    }\r\n                  },\r\n                  {\r\n                    \"apiVersion\": \"2017-03-30\",\r\n                    \"type\": \"Microsoft.Compute/virtualMachines\",\r\n                    \"identity\": {\r\n                      \"type\": \"SystemAssigned\"\r\n                    },\r\n                    \"name\": \"[parameters('vmName')]\",\r\n                    \"location\": \"[parameters('location')]\"\r\n                  },\r\n                  {\r\n                    \"apiVersion\": \"2015-05-01-preview\",\r\n                    \"name\": \"[concat(parameters('vmName'), '/AzurePolicyforWindows')]\",\r\n                    \"type\": \"Microsoft.Compute/virtualMachines/extensions\",\r\n                    \"location\": \"[parameters('location')]\",\r\n                    \"properties\": {\r\n                      \"publisher\": \"Microsoft.GuestConfiguration\",\r\n                      \"type\": \"ConfigurationforWindows\",\r\n                      \"typeHandlerVersion\": \"1.1\",\r\n                      \"autoUpgradeMinorVersion\": true,\r\n                      \"settings\": {},\r\n                      \"protectedSettings\": {}\r\n                    },\r\n                    \"dependsOn\": [\r\n                      \"[concat('Microsoft.Compute/virtualMachines/',parameters('vmName'),'/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/',parameters('configurationName'))]\"\r\n                    ]\r\n                  }\r\n                ]\r\n              }\r\n            }\r\n          }\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/providers/Microsoft.Authorization/policyDefinitions/2bb772f0-1b53-4011-a902-2c93f6055827\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"2bb772f0-1b53-4011-a902-2c93f6055827\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Authorization/policyDefinitions/499efe15-07d3-4ef1-b9a9-4209fcb55260?api-version=2018-05-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lEZWZpbml0aW9ucy80OTllZmUxNS0wN2QzLTRlZjEtYjlhOS00MjA5ZmNiNTUyNjA/YXBpLXZlcnNpb249MjAxOC0wNS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7b47b686-0257-45aa-820e-3f66f745e5ef"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27129.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Internal.ResourceManager.Version2018.05.01.PolicyClient/1.1.16"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "westus2:8f3f692d-4790-4ced-8f4b-a249f9606274"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11997"
+        ],
+        "x-ms-correlation-request-id": [
+          "20c23e86-562c-4e51-9079-4c9b36730e54"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190222T181821Z:20c23e86-562c-4e51-9079-4c9b36730e54"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 22 Feb 2019 18:18:21 GMT"
+        ],
+        "Content-Length": [
+          "138"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"PolicyDefinitionNotFound\",\r\n    \"message\": \"The policy definition '499efe15-07d3-4ef1-b9a9-4209fcb55260' could not be found.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/providers/Microsoft.Authorization/policyDefinitions/499efe15-07d3-4ef1-b9a9-4209fcb55260?api-version=2018-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjVlNDc0OGMtZjY5YS00NjdjLTg3NDktZTJmOWM4Y2QzZGIwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lEZWZpbml0aW9ucy80OTllZmUxNS0wN2QzLTRlZjEtYjlhOS00MjA5ZmNiNTUyNjA/YXBpLXZlcnNpb249MjAxOC0wNS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "2817ee4e-2873-49c2-8585-d9eab10cb367"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27129.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Internal.ResourceManager.Version2018.05.01.PolicyClient/1.1.16"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "westus2:3079133c-93f4-40e2-9070-9eb66a3a67b7"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-correlation-request-id": [
+          "29c4582b-e3ec-4aa5-ac69-2c5b7bfa81c8"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190222T181821Z:29c4582b-e3ec-4aa5-ac69-2c5b7bfa81c8"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 22 Feb 2019 18:18:21 GMT"
+        ],
+        "Content-Length": [
+          "878"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"\\\"[Audit] Monitor Windows Service.\\\"\",\r\n    \"policyType\": \"Custom\",\r\n    \"mode\": \"All\",\r\n    \"description\": \"Policy to monitor Windows Service.\",\r\n    \"metadata\": {\r\n      \"category\": \"Guest Configuration\",\r\n      \"createdBy\": \"cf38f268-bf7b-4d70-ad46-c7e6bea34eaa\",\r\n      \"createdOn\": \"2019-02-15T21:16:18.936531Z\",\r\n      \"updatedBy\": null,\r\n      \"updatedOn\": null\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"allOf\": [\r\n          {\r\n            \"field\": \"type\",\r\n            \"equals\": \"Microsoft.GuestConfiguration/guestConfigurationAssignments\"\r\n          },\r\n          {\r\n            \"field\": \"name\",\r\n            \"equals\": \"AuditWindowsService\"\r\n          },\r\n          {\r\n            \"field\": \"Microsoft.GuestConfiguration/guestConfigurationAssignments/complianceStatus\",\r\n            \"notEquals\": \"Compliant\"\r\n          }\r\n        ]\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"audit\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/providers/Microsoft.Authorization/policyDefinitions/499efe15-07d3-4ef1-b9a9-4209fcb55260\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"499efe15-07d3-4ef1-b9a9-4209fcb55260\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/amits-test/providers/Microsoft.Compute/virtualMachines/amits-winser6/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/AuditWindowsService/reports/87042979-66fe-4e24-b610-f9f9f1b01dcd?api-version=2018-11-20",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjVlNDc0OGMtZjY5YS00NjdjLTg3NDktZTJmOWM4Y2QzZGIwL3Jlc291cmNlR3JvdXBzL2FtaXRzLXRlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy9hbWl0cy13aW5zZXI2L3Byb3ZpZGVycy9NaWNyb3NvZnQuR3Vlc3RDb25maWd1cmF0aW9uL2d1ZXN0Q29uZmlndXJhdGlvbkFzc2lnbm1lbnRzL0F1ZGl0V2luZG93c1NlcnZpY2UvcmVwb3J0cy84NzA0Mjk3OS02NmZlLTRlMjQtYjYxMC1mOWY5ZjFiMDFkY2Q/YXBpLXZlcnNpb249MjAxOC0xMS0yMA==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "100c7658-5e1a-4325-b358-3b2c4005793e"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27129.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.GuestConfiguration.GuestConfigurationClient/1.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11983"
+        ],
+        "x-ms-request-id": [
+          "72311608-2fa2-4188-ad25-ff3817e8ef6c"
+        ],
+        "x-ms-correlation-request-id": [
+          "72311608-2fa2-4188-ad25-ff3817e8ef6c"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190222T181822Z:72311608-2fa2-4188-ad25-ff3817e8ef6c"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 22 Feb 2019 18:18:21 GMT"
+        ],
+        "Content-Length": [
+          "1484"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/amits-test/providers/Microsoft.Compute/virtualMachines/amits-winser6/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/AuditWindowsService/reports/87042979-66fe-4e24-b610-f9f9f1b01dcd\",\r\n  \"name\": \"87042979-66fe-4e24-b610-f9f9f1b01dcd\",\r\n  \"properties\": {\r\n    \"complianceStatus\": \"NonCompliant\",\r\n    \"assignment\": {\r\n      \"name\": \"AuditWindowsService\",\r\n      \"configuration\": {\r\n        \"name\": \"AuditWindowsService\",\r\n        \"version\": \"1.2.1.0\"\r\n      }\r\n    },\r\n    \"reportId\": \"87042979-66fe-4e24-b610-f9f9f1b01dcd\",\r\n    \"vm\": {\r\n      \"id\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/amits-test/providers/Microsoft.Compute/virtualMachines/amits-winser6\",\r\n      \"uuid\": \"2a71dc82-653c-4368-9067-1d56eeb5110d\"\r\n    },\r\n    \"details\": {\r\n      \"complianceStatus\": \"NonCompliant\",\r\n      \"startTime\": \"2019-02-22T18:04:28Z\",\r\n      \"endTime\": \"2019-02-22T18:04:29Z\",\r\n      \"jobId\": \"87042979-66fe-4e24-b610-f9f9f1b01dcd\",\r\n      \"resources\": [\r\n        {\r\n          \"complianceStatus\": \"NonCompliant\",\r\n          \"reasons\": [],\r\n          \"properties\": {\r\n            \"BuiltInAccount\": null,\r\n            \"ConfigurationName\": \"foo\",\r\n            \"Credential\": null,\r\n            \"Dependencies\": null,\r\n            \"DependsOn\": null,\r\n            \"Description\": null,\r\n            \"DesktopInteract\": null,\r\n            \"DisplayName\": null,\r\n            \"Ensure\": \"Absent\",\r\n            \"ModuleName\": \"GuestConfiguration\",\r\n            \"ModuleVersion\": \"1.0.0.0\",\r\n            \"Name\": \"foo\",\r\n            \"Path\": null,\r\n            \"PsDscRunAsCredential\": null,\r\n            \"ResourceId\": \"[Service]s\",\r\n            \"SourceInfo\": null,\r\n            \"StartupTimeout\": null,\r\n            \"StartupType\": null,\r\n            \"State\": null,\r\n            \"TerminateTimeout\": null\r\n          }\r\n        }\r\n      ],\r\n      \"operationType\": \"Consistency\"\r\n    },\r\n    \"startTime\": \"2019-02-22T18:04:28Z\",\r\n    \"endTime\": \"2019-02-22T18:04:29Z\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/amits-test/providers/Microsoft.Compute/virtualMachines/amits-winser6/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/AuditWindowsService/reports/87042979-66fe-4e24-b610-f9f9f1b01dcd?api-version=2018-11-20",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjVlNDc0OGMtZjY5YS00NjdjLTg3NDktZTJmOWM4Y2QzZGIwL3Jlc291cmNlR3JvdXBzL2FtaXRzLXRlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy9hbWl0cy13aW5zZXI2L3Byb3ZpZGVycy9NaWNyb3NvZnQuR3Vlc3RDb25maWd1cmF0aW9uL2d1ZXN0Q29uZmlndXJhdGlvbkFzc2lnbm1lbnRzL0F1ZGl0V2luZG93c1NlcnZpY2UvcmVwb3J0cy84NzA0Mjk3OS02NmZlLTRlMjQtYjYxMC1mOWY5ZjFiMDFkY2Q/YXBpLXZlcnNpb249MjAxOC0xMS0yMA==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "16d9a586-5281-4bce-a71f-d5b86c1d068f"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27129.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.GuestConfiguration.GuestConfigurationClient/1.1.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11982"
+        ],
+        "x-ms-request-id": [
+          "fcb291db-afa0-470f-8c06-0f3bf188d4c2"
+        ],
+        "x-ms-correlation-request-id": [
+          "fcb291db-afa0-470f-8c06-0f3bf188d4c2"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190222T181822Z:fcb291db-afa0-470f-8c06-0f3bf188d4c2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 22 Feb 2019 18:18:21 GMT"
+        ],
+        "Content-Length": [
+          "1484"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/amits-test/providers/Microsoft.Compute/virtualMachines/amits-winser6/providers/Microsoft.GuestConfiguration/guestConfigurationAssignments/AuditWindowsService/reports/87042979-66fe-4e24-b610-f9f9f1b01dcd\",\r\n  \"name\": \"87042979-66fe-4e24-b610-f9f9f1b01dcd\",\r\n  \"properties\": {\r\n    \"complianceStatus\": \"NonCompliant\",\r\n    \"assignment\": {\r\n      \"name\": \"AuditWindowsService\",\r\n      \"configuration\": {\r\n        \"name\": \"AuditWindowsService\",\r\n        \"version\": \"1.2.1.0\"\r\n      }\r\n    },\r\n    \"reportId\": \"87042979-66fe-4e24-b610-f9f9f1b01dcd\",\r\n    \"vm\": {\r\n      \"id\": \"/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/resourceGroups/amits-test/providers/Microsoft.Compute/virtualMachines/amits-winser6\",\r\n      \"uuid\": \"2a71dc82-653c-4368-9067-1d56eeb5110d\"\r\n    },\r\n    \"details\": {\r\n      \"complianceStatus\": \"NonCompliant\",\r\n      \"startTime\": \"2019-02-22T18:04:28Z\",\r\n      \"endTime\": \"2019-02-22T18:04:29Z\",\r\n      \"jobId\": \"87042979-66fe-4e24-b610-f9f9f1b01dcd\",\r\n      \"resources\": [\r\n        {\r\n          \"complianceStatus\": \"NonCompliant\",\r\n          \"reasons\": [],\r\n          \"properties\": {\r\n            \"BuiltInAccount\": null,\r\n            \"ConfigurationName\": \"foo\",\r\n            \"Credential\": null,\r\n            \"Dependencies\": null,\r\n            \"DependsOn\": null,\r\n            \"Description\": null,\r\n            \"DesktopInteract\": null,\r\n            \"DisplayName\": null,\r\n            \"Ensure\": \"Absent\",\r\n            \"ModuleName\": \"GuestConfiguration\",\r\n            \"ModuleVersion\": \"1.0.0.0\",\r\n            \"Name\": \"foo\",\r\n            \"Path\": null,\r\n            \"PsDscRunAsCredential\": null,\r\n            \"ResourceId\": \"[Service]s\",\r\n            \"SourceInfo\": null,\r\n            \"StartupTimeout\": null,\r\n            \"StartupType\": null,\r\n            \"State\": null,\r\n            \"TerminateTimeout\": null\r\n          }\r\n        }\r\n      ],\r\n      \"operationType\": \"Consistency\"\r\n    },\r\n    \"startTime\": \"2019-02-22T18:04:28Z\",\r\n    \"endTime\": \"2019-02-22T18:04:29Z\"\r\n  }\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "b5e4748c-f69a-467c-8749-e2f9c8cd3db0"
+  }
+}

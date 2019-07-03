@@ -37,11 +37,11 @@ namespace Microsoft.Azure.ServiceManagement.Common.Models
 
         public List<string> traceOutputArray = new List<string>();
 
-        private void Write(string message, params object[] arguments)
+        private void Write(string message)
         {
             try
             {
-                traceOutputArray.Add(string.Format(message, arguments));
+                traceOutputArray.Add(message);
             }
             catch { }
         }

@@ -53,6 +53,15 @@ function Test-PublicIpAddressCRUD
       Assert-AreEqual "Dynamic" $list[0].PublicIpAllocationMethod
       Assert-AreEqual "Succeeded" $list[0].ProvisioningState
       Assert-AreEqual $domainNameLabel $list[0].DnsSettings.DomainNameLabel
+
+      $list = Get-AzPublicIpAddress -ResourceGroupName "*"
+      Assert-True { $list.Count -ge 0 }
+
+      $list = Get-AzPublicIpAddress -Name "*"
+      Assert-True { $list.Count -ge 0 }
+
+      $list = Get-AzPublicIpAddress -ResourceGroupName "*" -Name "*"
+      Assert-True { $list.Count -ge 0 }
       
       # delete
       $job = Remove-AzPublicIpAddress -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force -AsJob
@@ -301,6 +310,12 @@ function Test-PublicIpAddressCRUD-IpTag
 
       Assert-AreEqual $IpTag.IpTagType "FirstPartyUsage"
       Assert-AreEqual $IpTag.Tag "/Sql"
+
+	  # Routing Preference behind feature flag testing to ensure value is valid
+	  $IpTag2 = New-AzPublicIpTag -IpTagType "RoutingPreference" -Tag "/Internet"
+
+      Assert-AreEqual $IpTag2.IpTagType "RoutingPreference"
+      Assert-AreEqual $IpTag2.Tag "/Internet"
 
       # Create publicIpAddres
       $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel -IpTag $IpTag

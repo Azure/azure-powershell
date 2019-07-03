@@ -17,12 +17,27 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces
     using System.Collections.ObjectModel;
     using System.Management.Automation;
 
+    /// <summary>
+    /// Interface IPowershellCommandRunner
+    /// </summary>
     public interface IPowershellCommandRunner
     {
+        /// <summary>
+        /// Invokes this instance.
+        /// </summary>
+        /// <returns>Collection&lt;PSObject&gt;.</returns>
         Collection<PSObject> Invoke();
 
+        /// <summary>
+        /// Adds the script.
+        /// </summary>
+        /// <param name="value">The value.</param>
         void AddScript(string value);
 
+        /// <summary>
+        /// Errorses this instance.
+        /// </summary>
+        /// <returns>PSDataCollection&lt;ErrorRecord&gt;.</returns>
         PSDataCollection<ErrorRecord> Errors();
     }
 }

@@ -47,7 +47,7 @@ the current account.
 
 ### Example 2: Get all subscriptions for a specific tenant
 ```
-PS C:\>Get-AzSubscription -TenantId "xxxx-xxxx-xxxx-xxxx"
+PS C:\>Get-AzSubscription -TenantId "aaaa-aaaa-aaaa-aaaa"
 
 Name                               Id                      TenantId                        State
 ----                               --                      --------                        -----

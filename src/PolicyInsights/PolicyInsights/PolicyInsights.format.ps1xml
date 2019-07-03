@@ -449,10 +449,148 @@
                 </ItemSelectionCondition>
               </ListItem>
               <ListItem>
+                <PropertyName>ComplianceState</PropertyName>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    $_.ComplianceState -ne $null -and $_.ComplianceState -ne &quot;&quot;
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+              </ListItem>
+              <ListItem>
+                <PropertyName>PolicyEvaluationDetails</PropertyName>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    $_.PolicyEvaluationDetails -ne $null -and $_.PolicyEvaluationDetails.Count -ne 0
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+              </ListItem>
+              <ListItem>
                 <PropertyName>AdditionalProperties</PropertyName>
                 <ItemSelectionCondition>
                   <ScriptBlock>
                     $_.AdditionalProperties -ne $null -and $_.AdditionalProperties.Count -ne 0
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.PolicyInsights.Models.PolicyEvaluationDetails</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.PolicyInsights.Models.PolicyEvaluationDetails</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <PropertyName>EvaluatedExpressions</PropertyName>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    $_.EvaluatedExpressions -ne $null -and $_.EvaluatedExpressions.Count -ne 0
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+              </ListItem>
+              <ListItem>
+                <PropertyName>IfNotExistsDetails</PropertyName>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    $_.IfNotExistsDetails -ne $null
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.PolicyInsights.Models.ExpressionEvaluationDetails</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.PolicyInsights.Models.ExpressionEvaluationDetails</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <PropertyName>Result</PropertyName>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    $_.Result -ne $null -and $_.Result -ne &quot;&quot;
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Expression</PropertyName>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    $_.Expression -ne $null -and $_.Expression -ne &quot;&quot;
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Path</PropertyName>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    $_.Path -ne $null -and $_.Path -ne &quot;&quot;
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+              </ListItem>
+              <ListItem>
+                <PropertyName>ExpressionValue</PropertyName>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    $_.ExpressionValue -ne $null
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+              </ListItem>
+              <ListItem>
+                <PropertyName>TargetValue</PropertyName>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    $_.TargetValue -ne $null
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Operator</PropertyName>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    $_.Operator -ne $null -and $_.Operator -ne &quot;&quot;
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.PolicyInsights.Models.IfNotExistsEvaluationDetails</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.PolicyInsights.Models.IfNotExistsEvaluationDetails</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <PropertyName>ResourceId</PropertyName>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    $_.ResourceId -ne $null -and $_.ResourceId -ne &quot;&quot;
+                  </ScriptBlock>
+                </ItemSelectionCondition>
+              </ListItem>
+              <ListItem>
+                <PropertyName>TotalResources</PropertyName>
+                <ItemSelectionCondition>
+                  <ScriptBlock>
+                    $_.TotalResources -ne $null
                   </ScriptBlock>
                 </ItemSelectionCondition>
               </ListItem>

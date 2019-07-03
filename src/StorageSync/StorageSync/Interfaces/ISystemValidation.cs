@@ -14,8 +14,16 @@
 
 namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces
 {
+    /// <summary>
+    /// Interface ISystemValidation
+    /// </summary>
     public interface ISystemValidation
     {
+        /// <summary>
+        /// Validates the using.
+        /// </summary>
+        /// <param name="commandRunner">The command runner.</param>
+        /// <returns>IValidationResult.</returns>
         IValidationResult ValidateUsing(IPowershellCommandRunner commandRunner);
     }
 }

@@ -1855,7 +1855,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
         }
 
-        public IEnumerable<PSDeletedKeyVaultManagedStorageSasDefinitionIdentityItem> GetDeletedManagedStorageSasDefinitions(KeyVaultObjectFilterOptions options)
+        public IEnumerable<PSDeletedKeyVaultManagedStorageSasDefinitionIdentityItem> GetDeletedManagedStorageSasDefinitions(KeyVaultStorageSasDefinitiontFilterOptions options)
         {
             if (options == null)
                 throw new ArgumentNullException(nameof(options));
@@ -1863,7 +1863,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             if (string.IsNullOrEmpty(options.VaultName))
                 throw new ArgumentException(KeyVaultProperties.Resources.InvalidVaultName);
 
-            if (String.IsNullOrWhiteSpace(options.Name))
+            if (String.IsNullOrWhiteSpace(options.AccountName))
                 throw new ArgumentNullException(KeyVaultProperties.Resources.InvalidManagedStorageAccountName);
 
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(options.VaultName);
@@ -1873,7 +1873,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 IPage<DeletedSasDefinitionItem> result;
 
                 if (string.IsNullOrEmpty(options.NextLink))
-                    result = this.keyVaultClient.GetDeletedSasDefinitionsAsync(vaultAddress, options.Name).GetAwaiter().GetResult();
+                    result = this.keyVaultClient.GetDeletedSasDefinitionsAsync(vaultAddress, options.AccountName).GetAwaiter().GetResult();
                 else
                     result = this.keyVaultClient.GetDeletedSasDefinitionsNextAsync(options.NextLink).GetAwaiter().GetResult();
 

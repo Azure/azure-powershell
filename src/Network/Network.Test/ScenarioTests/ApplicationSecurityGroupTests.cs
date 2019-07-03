@@ -12,23 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.Azure.Commands.Network.Test.ScenarioTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Commands.Network.Test.ScenarioTests
 {
-    public class ApplicationSecurityGroupTests : RMTestBase
+    public class ApplicationSecurityGroupTests : NetworkTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
         public ApplicationSecurityGroupTests(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
@@ -36,7 +30,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestApplicationSecurityGroupCRUD()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ApplicationSecurityGroupCRUD"));
+            TestRunner.RunTestScript(string.Format("Test-ApplicationSecurityGroupCRUD"));
         }
 
         [Fact]
@@ -44,7 +38,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestApplicationSecurityGroupCollections()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ApplicationSecurityGroupCollections"));
+            TestRunner.RunTestScript(string.Format("Test-ApplicationSecurityGroupCollections"));
         }
 
         [Fact]
@@ -52,8 +46,8 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestApplicationSecurityGroupInNewSecurityRule()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ApplicationSecurityGroupInNewSecurityRule"));
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ApplicationSecurityGroupInNewSecurityRule -useIds $True"));
+            TestRunner.RunTestScript(string.Format("Test-ApplicationSecurityGroupInNewSecurityRule"));
+            TestRunner.RunTestScript(string.Format("Test-ApplicationSecurityGroupInNewSecurityRule -useIds $True"));
         }
 
         [Fact]
@@ -61,8 +55,8 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestApplicationSecurityGroupInAddedSecurityRule()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ApplicationSecurityGroupInAddedSecurityRule"));
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ApplicationSecurityGroupInAddedSecurityRule -useIds $True"));
+            TestRunner.RunTestScript(string.Format("Test-ApplicationSecurityGroupInAddedSecurityRule"));
+            TestRunner.RunTestScript(string.Format("Test-ApplicationSecurityGroupInAddedSecurityRule -useIds $True"));
         }
 
         [Fact]
@@ -70,8 +64,8 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestApplicationSecurityGroupInSetSecurityRule()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ApplicationSecurityGroupInSetSecurityRule"));
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ApplicationSecurityGroupInSetSecurityRule -useIds $True"));
+            TestRunner.RunTestScript(string.Format("Test-ApplicationSecurityGroupInSetSecurityRule"));
+            TestRunner.RunTestScript(string.Format("Test-ApplicationSecurityGroupInSetSecurityRule -useIds $True"));
         }
 
         [Fact]
@@ -79,7 +73,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestApplicationSecurityGroupInNewNetworkInterface()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ApplicationSecurityGroupInNewNetworkInterface"));
+            TestRunner.RunTestScript(string.Format("Test-ApplicationSecurityGroupInNewNetworkInterface"));
         }
 
         [Fact]
@@ -87,8 +81,8 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestApplicationSecurityGroupInNewNetworkInterfaceIpConfig()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ApplicationSecurityGroupInNewNetworkInterfaceIpConfig"));
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ApplicationSecurityGroupInNewNetworkInterfaceIpConfig -useIds $True"));
+            TestRunner.RunTestScript(string.Format("Test-ApplicationSecurityGroupInNewNetworkInterfaceIpConfig"));
+            TestRunner.RunTestScript(string.Format("Test-ApplicationSecurityGroupInNewNetworkInterfaceIpConfig -useIds $True"));
         }
 
         [Fact]
@@ -96,8 +90,8 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestApplicationSecurityGroupInAddedNetworkInterfaceIpConfig()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ApplicationSecurityGroupInAddedNetworkInterfaceIpConfig"));
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ApplicationSecurityGroupInAddedNetworkInterfaceIpConfig -useIds $True"));
+            TestRunner.RunTestScript(string.Format("Test-ApplicationSecurityGroupInAddedNetworkInterfaceIpConfig"));
+            TestRunner.RunTestScript(string.Format("Test-ApplicationSecurityGroupInAddedNetworkInterfaceIpConfig -useIds $True"));
         }
     }
 }

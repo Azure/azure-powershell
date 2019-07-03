@@ -1,9 +1,10 @@
+
 <!--
     Please leave this section at the top of the change log.
 
-    Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
+    Changes for the upcoming release should go under the section titled "Upcoming Release", and should adhere to the following format:
 
-    ## Current Release
+    ## Upcoming Release
     * Overview of change #1
         - Additional information about change #1
     * Overview of change #2
@@ -17,14 +18,19 @@
     * Overview of change #1
         - Additional information about change #1
 -->
-
 ## Upcoming Release
 
+## Version 1.0.0
+* GA release of Az.Advisor
+
+## Version 0.1.1
+* Updated utils to be extensible for future changes
+
 ## Version 0.1.0
-*Added new cmdlets for Advisor Recommendation
+* Added new cmdlets for Advisor Recommendation
     - Get-AzAdvisorRecommendation
     - Enable-AzAdvisorRecommendation
     - Disable-AzAdvisorRecommendation
-*Added new cmdlets for Advisor Configuration
+* Added new cmdlets for Advisor Configuration
     - Get-AzAdvisorConfiguration
     - Set-AzAdvisorConfiguration

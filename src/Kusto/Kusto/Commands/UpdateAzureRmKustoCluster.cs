@@ -11,9 +11,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-using System;
 using System.Management.Automation;
-using System.Security.Permissions;
 using Microsoft.Azure.Commands.Kusto.Models;
 using Microsoft.Azure.Commands.Kusto.Properties;
 using Microsoft.Azure.Commands.Kusto.Utilities;
@@ -22,7 +20,6 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Kusto.Commands
 {
-
     [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KustoCluster", DefaultParameterSetName = CmdletParametersSet, SupportsShouldProcess = true),
      OutputType(typeof(PSKustoCluster))]
     public class UpdateAzureRmKustoCluster : KustoCmdletBase
@@ -57,10 +54,15 @@ namespace Microsoft.Azure.Commands.Kusto.Commands
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "The instance number of the VM.")]
+        public int? Capacity { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Name of the Tier used to create the cluster")]
         [PSArgumentCompleter("Standard")]
         public string Tier { get; set; }
-        
+
         [Parameter(
             ParameterSetName = ResourceIdParameterSet,
             Mandatory = true,
@@ -82,10 +84,11 @@ namespace Microsoft.Azure.Commands.Kusto.Commands
         public override void ExecuteCmdlet()
         {
             string clusterName = Name;
+            int? capacity = null;
             string resourceGroupName = ResourceGroupName;
             string location = null;
             string skuName = null;
-            
+
             if (!string.IsNullOrEmpty(ResourceId))
             {
                 KustoUtils.GetResourceGroupNameAndClusterNameFromClusterId(ResourceId, out resourceGroupName, out clusterName);
@@ -106,7 +109,8 @@ namespace Microsoft.Azure.Commands.Kusto.Commands
                     }
 
                     location = cluster.Location;
-                    skuName = string.IsNullOrEmpty(SkuName) ? cluster.Sku: SkuName;
+                    skuName = string.IsNullOrEmpty(SkuName) ? cluster.Sku : SkuName;
+                    capacity = Capacity ?? cluster.Capacity;
                 }
                 catch (CloudException ex)
                 {
@@ -118,8 +122,9 @@ namespace Microsoft.Azure.Commands.Kusto.Commands
                     else if (ex.Body != null && !string.IsNullOrEmpty(ex.Body.Code) &&
                              ex.Body.Code == "ResourceGroupNotFound" || ex.Message.Contains("ResourceGroupNotFound"))
                     {
-                        // resource group not found, let create throw error don't throw from here
+                        throw new CloudException(string.Format(Resources.ResourceGroupNotExist, resourceGroupName));
                     }
+                    
                     else
                     {
                         // all other exceptions should be thrown
@@ -127,7 +132,7 @@ namespace Microsoft.Azure.Commands.Kusto.Commands
                     }
                 }
 
-                var updatedCluster = KustoClient.CreateOrUpdateCluster(resourceGroupName, clusterName, location, skuName);
+                var updatedCluster = KustoClient.CreateOrUpdateCluster(resourceGroupName, clusterName, location, skuName, capacity);
                 WriteObject(updatedCluster);
             }
         }

@@ -9,7 +9,7 @@ schema: 2.0.0
 # Set-AzLoadBalancerProbeConfig
 
 ## SYNOPSIS
-Sets the goal state for a probe configuration.
+Updates a probe configuration for a load balancer.
 
 ## SYNTAX
 
@@ -20,7 +20,7 @@ Set-AzLoadBalancerProbeConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Pr
 ```
 
 ## DESCRIPTION
-The **Set-AzLoadBalancerProbeConfig** cmdlet sets the goal state for a probe configuration.
+The **Set-AzLoadBalancerProbeConfig** cmdlet updates a probe configuration for a load balancer.
 
 ## EXAMPLES
 
@@ -70,7 +70,7 @@ Accept wildcard characters: False
 
 ### -LoadBalancer
 Specifies a load balancer.
-This cmdlet sets the goal state for a probe configuration for the load balancer that this parameter specifies.
+This cmdlet updates a probe configuration for the load balancer that this parameter specifies.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSLoadBalancer

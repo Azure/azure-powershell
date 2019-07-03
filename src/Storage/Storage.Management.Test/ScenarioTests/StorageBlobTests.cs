@@ -51,5 +51,12 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-StorageBlobContainerImmutabilityPolicy");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestStorageBlobServiceProperties()
+        {
+            TestController.NewInstance.RunPsTest(_logger, "Test-StorageBlobServiceProperties");
+        }        
     }
 }

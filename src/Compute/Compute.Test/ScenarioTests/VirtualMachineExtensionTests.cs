@@ -47,6 +47,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineCustomScriptExtensionPiping()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineCustomScriptExtensionPiping");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineCustomScriptExtensionWrongStorage()
         {
             TestRunner.RunTestScript("Test-VirtualMachineCustomScriptExtensionWrongStorage");
@@ -80,12 +87,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             TestRunner.RunTestScript("Test-AzureDiskEncryptionExtension");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Updated Storage, needs re-recorded")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureDiskEncryptionExtensionSinglePass()
         {
@@ -97,19 +99,14 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Trait(Category.RunType, Category.DesktopOnly)]
 #else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+#endif
         public void TestAzureDiskEncryptionExtensionSinglePassRemove()
         {
             TestRunner.RunTestScript("Test-AzureDiskEncryptionExtensionSinglePassRemove");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Updated Storage, needs re-recorded")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureDiskEncryptionExtensionSinglePassDisableAndRemove()
         {

@@ -16,7 +16,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
     using Microsoft.Azure.Commands.ApiManagement.Models;
     using ResourceManager.Common.ArgumentCompleters;
-    using System;
     using System.Collections.Generic;
     using System.Management.Automation;
 
@@ -62,15 +61,14 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "The tier of the Azure API Management service. Valid values are Developer, Basic, Standard and Premium . Default value is Developer")]
-        [ValidateSet("Developer", "Basic", "Standard", "Premium"), PSDefaultValue(Value = "Developer")]
+            HelpMessage = "The tier of the Azure API Management service. Valid values are Developer, Consumption, Basic, Standard and Premium . Default value is Developer")]
+        [ValidateSet("Developer", "Basic", "Standard", "Premium", "Consumption"), PSDefaultValue(Value = "Developer")]
         public PsApiManagementSku? Sku { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "Sku capacity of the Azure API Management service. Default value is 1.")]
-        [ValidateRange(1, 10), PSDefaultValue(Value = 1)]
+            HelpMessage = "Sku capacity of the Azure API Management service. This parameter is optional.")]        
         public int? Capacity { get; set; }
 
         [Parameter(
@@ -113,9 +111,21 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             HelpMessage = "Certificates issued by Internal CA to be installed on the service. Default value is $null.")]
         public PsApiManagementSystemCertificate[] SystemCertificateConfiguration { get; set; }
 
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "The Ssl Setting of the ApiManagement Service. Default value is $null")]
+        public PsApiManagementSslSetting SslSetting { get; set; }
+
         [Parameter(Mandatory = false,
-            HelpMessage = "Generate and assign an Azure Active Directory Identity for this server for use with key management services like Azure KeyVault.")]
+            HelpMessage = "Generate and assign an Azure Active Directory Identity for this service for use with key management services like Azure KeyVault.")]
         public SwitchParameter AssignIdentity { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "Flag only meant to be used for Consumption SKU ApiManagement Service. " +
+            "This enforces a client certificate to be presented on each request to the gateway." +
+            " This also enables the ability to authenticate the certificate in the policy on the gateway.")]
+        public SwitchParameter EnableClientCertificate { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -126,13 +136,15 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                     Organization,
                     AdminEmail,
                     Tag,
+                    EnableClientCertificate.IsPresent,
                     Sku ?? PsApiManagementSku.Developer,
-                    Capacity ?? 1,
+                    Capacity,
                     VpnType,
                     VirtualNetwork,
                     AdditionalRegions,
                     CustomHostnameConfiguration,
                     SystemCertificateConfiguration,
+                    SslSetting,
                     AssignIdentity.IsPresent);
 
             this.WriteObject(apiManagementService);

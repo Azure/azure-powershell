@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
                 RetentionInDays = (uint)threatDetectionPolicy.RetentionDays,
             };
 
-            ModelizeDisabledAlerts(serverThreatDetectionPolicyModel, threatDetectionPolicy.DisabledAlerts.ToArray());
+            serverThreatDetectionPolicyModel.ExcludedDetectionTypes = threatDetectionPolicy.DisabledAlerts.Where(alert => !string.IsNullOrEmpty(alert)).ToArray() ?? new string[] { };
             serverThreatDetectionPolicyModel.ResourceGroupName = resourceGroup;
             serverThreatDetectionPolicyModel.ServerName = serverName;
 
@@ -131,8 +131,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
                 EmailAdmins = threatDetectionPolicy.EmailAccountAdmins == null ? false : threatDetectionPolicy.EmailAccountAdmins.Value,
                 RetentionInDays = (uint)threatDetectionPolicy.RetentionDays,
             };
-
-            ModelizeDisabledAlerts(managedInstanceThreatDetectionPolicyModel, threatDetectionPolicy.DisabledAlerts.ToArray());
+            managedInstanceThreatDetectionPolicyModel.ExcludedDetectionTypes = threatDetectionPolicy.DisabledAlerts.Where(alert => !string.IsNullOrEmpty(alert)).ToArray() ?? new string[] { };
             managedInstanceThreatDetectionPolicyModel.ResourceGroupName = resourceGroup;
             managedInstanceThreatDetectionPolicyModel.ServerName = managedInstanceName;
 
@@ -150,7 +149,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
             model.NotificationRecipientsEmails = threatDetectionProperties.EmailAddresses;
             model.EmailAdmins = ModelizeThreatDetectionEmailAdmins(threatDetectionProperties.EmailAccountAdmins);
             ModelizeStorageAccount(model, threatDetectionProperties.StorageEndpoint);
-            ModelizeDisabledAlerts(model, threatDetectionProperties.DisabledAlerts.Split(';'));
+            model.ExcludedDetectionTypes = threatDetectionProperties.DisabledAlerts.Split(';').Where(alert => !string.IsNullOrEmpty(alert)).ToArray() ?? new string[] { };
             model.RetentionInDays = (uint)threatDetectionProperties.RetentionDays;
             return model;
         }
@@ -188,29 +187,6 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
             }
 
             return emailAccountAdminsState.Equals(ThreatDetectionStateType.Enabled.ToString(), StringComparison.InvariantCulture);
-        }
-
-        /// <summary>
-        /// Updates the given model with all the disabled alerts information
-        /// </summary>
-        private static void ModelizeDisabledAlerts(BaseThreatDetectionPolicyModel model, string[] disabledAlerts)
-        {
-            disabledAlerts = disabledAlerts.Where(alert => !string.IsNullOrEmpty(alert)).ToArray();
-
-            Func<string, DetectionType> toDetectionType = (s) =>
-            {
-                DetectionType value;
-                Enum.TryParse(s.Trim(), true, out value);
-                return value;
-            };
-            if (disabledAlerts == null)
-            {
-                model.ExcludedDetectionTypes = new DetectionType[] {};
-            }
-            else
-            {
-                model.ExcludedDetectionTypes = disabledAlerts.Select(toDetectionType).ToArray();
-            }        
         }
 
         /// <summary>
@@ -272,7 +248,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
                     throw new Exception(Properties.Resources.InvalidDetectionTypeList);
                 }  
             }
-            return model.ExcludedDetectionTypes.Select(t => t.ToString()).ToArray();
+            return model.ExcludedDetectionTypes;
         }
 
         /// <summary>

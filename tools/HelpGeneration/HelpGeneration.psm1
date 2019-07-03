@@ -1,5 +1,5 @@
 ﻿#Requires -Modules platyPS
-function Generate-MarkdownHelp
+function New-AzMarkdownHelp
 {
     [CmdletBinding()]
     Param
@@ -22,7 +22,7 @@ function Generate-MarkdownHelp
     New-Item -Path $NewHelpFolderPath -ItemType Directory -Force | Out-Null
     Copy-Item -Path "$HelpFolderPath\*" -Destination $NewHelpFolderPath
     Update-MarkdownHelpModule -Path $NewHelpFolderPath -RefreshModulePage -AlphabeticParamsOrder | Out-Null
-    $errors = Compare-MarkdownHelp $HelpFolderPath $NewHelpFolderPath
+    $errors = Compare-AzMarkdownHelp $HelpFolderPath $NewHelpFolderPath
     if ($errors.Length -gt 0)
     {
         $errorMessage = @()
@@ -35,7 +35,7 @@ function Generate-MarkdownHelp
     Remove-Item $NewHelpFolderPath -Recurse
 }
 
-function Compare-MarkdownHelp
+function Compare-AzMarkdownHelp
 {
     [CmdletBinding()]
     Param
@@ -74,7 +74,7 @@ function Compare-MarkdownHelp
     return $errors
 }
 
-function Validate-MarkdownHelp
+function Test-AzMarkdownHelp
 {
     [CmdletBinding()]
     Param(
@@ -266,7 +266,7 @@ function Validate-MarkdownHelp
     }
 }
 
-function Generate-MamlHelp
+function New-AzMamlHelp
 {
     [CmdletBinding()]
     Param
@@ -284,10 +284,10 @@ function Generate-MamlHelp
     $MAML = $dir | Where { $_.FullName -like "*.dll-Help.xml*" }
 
     # Modify the MAML (add spaces between examples)
-    $MAML | foreach { Modify-MamlHelp $HelpFolder $_ }
+    $MAML | foreach { Edit-AzMamlHelp $HelpFolder $_ }
 }
 
-function Modify-MamlHelp
+function Edit-AzMamlHelp
 {
     [CmdletBinding()]
     Param

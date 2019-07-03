@@ -16,7 +16,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table
 {
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.WindowsAzure.Storage.Table;
+    using Microsoft.Azure.Cosmos.Table;
     using System;
     using System.Collections.Generic;
     /// <summary>
@@ -51,7 +51,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table
         {
             get
             {
-                return (TableRequestOptions)GetRequestOptions(StorageServiceType.Table);
+                return (TableRequestOptions)GetTableRequestOptions();
             }
         }
 

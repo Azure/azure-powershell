@@ -17,19 +17,37 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
     using Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces;
     using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations;
     using Xunit;
-    
+
+    /// <summary>
+    /// Class AssertExtension.
+    /// </summary>
     static class AssertExtension
     {
+        /// <summary>
+        /// Validations the result is error.
+        /// </summary>
+        /// <param name="validationResult">The validation result.</param>
+        /// <param name="message">The message.</param>
         public static void ValidationResultIsError(IValidationResult validationResult, string message)
         {
             Assert.StrictEqual<Result>(Result.Fail, validationResult.Result);
         }
 
+        /// <summary>
+        /// Validations the result type is.
+        /// </summary>
+        /// <param name="validationResult">The validation result.</param>
+        /// <param name="message">The message.</param>
         public static void ValidationResultTypeIs(IValidationResult validationResult, string message)
         {
             Assert.StrictEqual<Result>(Result.Fail, validationResult.Result);
         }
 
+        /// <summary>
+        /// Validations the result is success.
+        /// </summary>
+        /// <param name="validationResult">The validation result.</param>
+        /// <param name="message">The message.</param>
         internal static void ValidationResultIsSuccess(IValidationResult validationResult, string message)
         {
             Assert.StrictEqual<Result>(Result.Success, validationResult.Result);

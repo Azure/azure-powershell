@@ -1,12 +1,15 @@
 # To version all modules in Az (standard release), run the following command: .\RunVersionController.ps1 -Release "December 2017"
 # To version a single module (one-off release), run the following command: .\RunVersionController.ps1 -ModuleName "Az.Compute"
-[CmdletBinding()]
+[CmdletBinding(DefaultParameterSetName="ReleaseAz")]
 Param(
     [Parameter(ParameterSetName='ReleaseAz', Mandatory = $true)]
     [string]$Release,
 
     [Parameter(ParameterSetName='ReleaseSingleModule', Mandatory = $true)]
-    [string]$ModuleName
+    [string]$ModuleName,
+
+    [Parameter()]
+    [string]$GalleryName = "PSGallery"
 )
 
 enum PSVersion
@@ -152,7 +155,7 @@ if (!(Test-Path "C:/Program Files/PowerShell/Modules/PowerShellGet"))
 {
     try
     {
-        Save-Module -Name PowerShellGet -Repository PSGallery -Path "C:/Program Files/PowerShell/Modules" -ErrorAction Stop
+        Save-Module -Name PowerShellGet -Repository $GalleryName -Path "C:/Program Files/PowerShell/Modules" -ErrorAction Stop
     }
     catch
     {
@@ -164,27 +167,27 @@ switch ($PSCmdlet.ParameterSetName)
 {
     "ReleaseSingleModule"
     {
-        dotnet $PSScriptRoot/../artifacts/VersionController.Netcore.dll $PSScriptRoot/../artifacts/Exceptions $ModuleName
+        dotnet $PSScriptRoot/../artifacts/VersionController/VersionController.Netcore.dll $PSScriptRoot/../artifacts/VersionController/Exceptions $ModuleName
     }
 
     "ReleaseAz"
     {
         try
         {
-            Install-Module Az -Repository PSGallery
+            Install-Module Az -Repository $GalleryName -Force -AllowClobber
         }
         catch
         {
             throw "Please rerun in Administrator mode."
         }
 
-        dotnet $PSScriptRoot/../artifacts/VersionController.Netcore.dll
+        dotnet $PSScriptRoot/../artifacts/VersionController/VersionController.Netcore.dll
 
         Write-Host "Getting local Az information..." -ForegroundColor Yellow
         $localAz = Test-ModuleManifest -Path "$PSScriptRoot\Az\Az.psd1"
 
         Write-Host "Getting gallery Az information..." -ForegroundColor Yellow
-        $galleryAz = Find-Module -Name Az -Repository PSGallery
+        $galleryAz = Find-Module -Name Az -Repository $GalleryName
 
         $versionBump = [PSVersion]::NONE
         $updatedModules = @()

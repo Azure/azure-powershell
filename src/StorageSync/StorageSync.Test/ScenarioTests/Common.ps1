@@ -119,6 +119,24 @@ function Get-RandomItemName
 
 <#
 .SYNOPSIS
+Gets valid resource group name
+#>
+function Get-ResourceGroupName
+{
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
+Gets valid resource name
+#>
+function Get-ResourceName($prefix)
+{
+    return $prefix + (getAssetName)
+}
+
+<#
+.SYNOPSIS
 Gets valid resource name for compute test
 #>
 function Get-StorageManagementTestResourceName
@@ -156,26 +174,77 @@ function Get-StorageManagementTestResourceName
 .SYNOPSIS
 Gets the default location for a provider
 #>
-function Get-ProviderLocation($provider)
+function Get-StorageSyncLocation($provider)
 {
-	Get-Location "Microsoft.Storage" "storageAccounts" "West US"
+    $defaultLocation = "Central US EUAP"
+    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+    {
+        $namespace = $provider.Split("/")[0]
+        if($provider.Contains("/"))
+        {
+            $type = $provider.Substring($namespace.Length + 1)
+            $location = Get-AzResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}
+
+            if ($location -eq $null)
+            {
+                return $defaultLocation
+            } else
+            {
+                return $location.Locations[0].ToLower() -replace '\s',''
+            }
+        }
+
+        return $defaultLocation
+    }
+
+    return $defaultLocation
 }
 
 <#
 .SYNOPSIS
-Gets the Canary location for a provider
+Gets the default location for a resource group
 #>
-function Get-ProviderLocation_Canary($provider)
+function Get-ResourceGroupLocation()
 {
-    "eastus2euap"
+    return Get-Location -providerNamespace "Microsoft.Resources"  -resourceType "resourceGroups" -preferredLocation "West US"
 }
-
 
 <#
 .SYNOPSIS
-Gets the Stage location for a provider
+Normalize Location
 #>
-function Get-ProviderLocation_Stage($provider)
+function Normalize-Location($location)
 {
-    "eastus2(stage)"
+    if(-not [string]::IsNullOrEmpty($location))
+    {
+        return $location.ToLower().Replace(" ", "") 
+    }
+
+    return $location
+}
+
+<#
+.SYNOPSIS
+is running live in target environment
+#>
+function IsLive
+{
+    return [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback
+}
+
+<#
+.SYNOPSIS
+Create Azure file share if recording else return given azure file share name.
+#>
+function Ensure-AzureFileShareName
+{
+    if(IsLive)
+    {
+        $azureFileShare = New-AzureStorageShare -Name $azureFileShareName -Context $context
+        return $azureFileShare.Name
+    }
+    else 
+    {
+        return $azureFileShareName
+    }
 }

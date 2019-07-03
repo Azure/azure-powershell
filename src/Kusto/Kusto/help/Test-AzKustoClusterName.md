@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Kusto.dll-Help.xml
 Module Name: Az.Kusto
 online version: https://docs.microsoft.com/en-us/powershell/module/az.kusto/test-azkustoclustername
@@ -34,7 +34,6 @@ False 					mykustocluster 	    Name 'mykustocluster' with type Engine is already
 
 The above command returns whether or not a Kusto cluster named "mykustocluster" exists in the "Central US" region.
 
-
 ### Example 2 - Check the availability of a Kusto cluster name which is not in use
 
 ```
@@ -43,12 +42,9 @@ PS C:\> Test-AzKustoClusterName -Location 'Central US' -Name mykustocluster
 NameAvailable 		Name         			    Message
 ------------- 			----         				    -------
  True 					mykustocluster
-	
 ```
 
 The above command returns whether or not a Kusto cluster named "mykustocluster" exists in the "Central US" region.
-
-
 
 ## PARAMETERS
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzNetworkInterfaceTapConfig
 
 ## SYNOPSIS
-Sets the goal state of a Tap Configuration
+Updates a tap configuration for a network interface.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Set-AzNetworkInterfaceTapConfig -NetworkInterfaceTapConfig <PSNetworkInterfaceTa
 ```
 
 ## DESCRIPTION
-The **Set-AzNetworkInterfaceTapConfig** sets the goal state for an Azure network interface.
+The **Set-AzNetworkInterfaceTapConfig** updates a tap configuration for a network interface.
 
 ## EXAMPLES
 

@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public List<PSVpnGateway> ListVpnGateways(string resourceGroupName)
         {
-            var vpnGateways = string.IsNullOrWhiteSpace(resourceGroupName) ?
+            var vpnGateways = ShouldListBySubscription(resourceGroupName, null) ?
                 this.VpnGatewayClient.List() :                                              //// List by sub id
                 this.VpnGatewayClient.ListByResourceGroup(resourceGroupName);               //// List by RG name
 
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Network
                 foreach (MNM.VpnGateway gateway in vpnGateways)
                 {
                     PSVpnGateway gatewayToReturn = ToPsVpnGateway(gateway);
-                    gatewayToReturn.ResourceGroupName = resourceGroupName;
+                    gatewayToReturn.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(gateway.Id);
                     gatewaysToReturn.Add(gatewayToReturn);
                 }
             }

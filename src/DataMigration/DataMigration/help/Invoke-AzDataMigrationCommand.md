@@ -25,7 +25,7 @@ The Invoke-AzDataMigrationCommand cmdlet creates a new command task to be run on
 
 ### Example 1
 ```
-PS C:\> $command = Invoke-AzDataMigrationCommand -CommandType Complete -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName -TaskName $taskName -DatabaseName $output.DatabaseName
+PS C:\> $command = Invoke-AzDataMigrationCommand -CommandType CompleteSqlDBSync -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName -TaskName $taskName -DatabaseName $output.DatabaseName
 ```
 
 The above examples uses the Invoke-AzDataMigrationCommand cmdlet to create a command for an existing service, project, and task
@@ -33,12 +33,13 @@ The above examples uses the Invoke-AzDataMigrationCommand cmdlet to create a com
 ## PARAMETERS
 
 ### -CommandType
-Command Type, possible values: Complete, Cancel, Restart, Finish
+Command Type.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.Commands.DataMigration.Models.CommandTypeEnum
 Parameter Sets: (All)
 Aliases:
+Accepted values: CompleteSqlDBSync, CancelMongoDB, RestartMongoDB, FinishMongoDB, CompleteSqlMiSync
 
 Required: True
 Position: Named

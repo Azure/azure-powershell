@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
             if (string.IsNullOrEmpty(this.AgreementContent))
             {
                 this.AgreementContent =
-                    CmdletHelper.GetContentFromFile(this.TryResolvePath(this.AgreementContentFilePath));
+                    CmdletHelper.GetStringContentFromFile(this.TryResolvePath(this.AgreementContentFilePath));
             }
 
             this.WriteObject(

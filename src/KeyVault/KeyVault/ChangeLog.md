@@ -19,6 +19,16 @@
 -->
 ## Upcoming Release
 
+## Version 1.2.0
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+* Fix documentation for wildcards
+
+## Version 1.1.0
+* Added wildcard support to KeyVault cmdlets
+
+## Version 1.0.2
+* Fix tagging on Set-AzKeyVaultSecret
+
 ## Version 1.0.1
 * Update incorrect online help URLs
 

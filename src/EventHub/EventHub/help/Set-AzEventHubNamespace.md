@@ -34,14 +34,48 @@ The Set-AzEventHubNamespace cmdlet updates the properties of the specified Event
 
 ### Example 1
 ```
-PS C:\> Set-AzEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -Location "WestUS" -State Created
+PS C:\> Set-AzEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -Location "WestUS" -Tag @{Tag1='TagValue1'; Tag2='TagValue2'}
+
+Name                   : MyNamespaceName
+Id                     : /subscriptions/{subscriptionId}/resourceGroups/Default-EventHub-WestCentralUS/providers/Microsoft.EventHub/namespaces/MyNamespaceName
+ResourceGroupName      : Default-EventHub-WestCentralUS
+Location               : West US
+Sku                    : Name : Standard , Capacity : 1 , Tier : Standard
+Tags                   : {Tag2, TagValue2, Tag1, TagValue1}
+ProvisioningState      : Succeeded
+Status                 : Active
+CreatedAt              : 5/24/2019 12:47:27 AM
+UpdatedAt              : 5/24/2019 12:48:14 AM
+ServiceBusEndpoint     : #########
+Enabled                : True
+KafkaEnabled           : True
+IsAutoInflateEnabled   : True
+MaximumThroughputUnits : 10
+
 ```
 
-Updates the state of namespace \`MyNamespaceName\` to Created .
+Updates the Tags for namespace \`MyNamespaceName\` to Created .
 
 ### Example 2
 ```
 PS C:\> Set-AzEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -Location "WestUS" -State Created -EnableAutoInflate -MaximumThroughputUnits 10
+
+Name                   : MyNamespaceName
+Id                     : /subscriptions/{subscriptionId}/resourceGroups/Default-EventHub-WestCentralUS/providers/Microsoft.EventHub/namespaces/MyNamespaceName
+ResourceGroup          : Default-EventHub-WestCentralUS
+ResourceGroupName      : Default-EventHub-WestCentralUS
+Location               : West US
+Sku                    : Name : Standard , Capacity : 1 , Tier : Standard
+Tags                   :
+ProvisioningState      : Succeeded
+Status                 : Active
+CreatedAt              : 5/24/2019 12:47:27 AM
+UpdatedAt              : 5/24/2019 12:48:14 AM
+ServiceBusEndpoint     : #########
+Enabled                : True
+KafkaEnabled           : True
+IsAutoInflateEnabled   : True
+MaximumThroughputUnits : 10
 ```
 
 Updates the state of namespace \`MyNamespaceName\` with AutoInflate = enabled and MaximumThroughputUnits = 10

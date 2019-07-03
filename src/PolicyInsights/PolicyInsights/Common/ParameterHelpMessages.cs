@@ -30,13 +30,14 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Common
         public const string PolicyAssignmentName = "Policy assignment name.";
         public const string PolicyAssignmentId = "Policy assignment ID. E.g. '/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyAssignments/{assignmentName}'.";
         public const string PolicyDefinitionReferenceId = "Gets the policy definition reference ID of the individual definition that is being remediated. Required when the policy assignment assigns a policy set definition.";
-        public const string Top = "Maximum number of records to return.";
+        public const string Top = "Maximum number of records to return. If not provided, the maximum number of records returned is determined by the Azure Policy service (currently 1000).";
         public const string OrderBy = "Ordering expression using OData notation. One or more comma-separated column names with an optional 'desc' (the default) or 'asc'.";
         public const string Select = "Select expression using OData notation. One or more comma-separated column names. Limits the columns on each record to just those requested.";
         public const string From = "ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, defaults to 'To' parameter value minus 1 day.";
         public const string To = "ISO 8601 formatted timestamp specifying the end time of the interval to query. When not specified, defaults to time of request.";
         public const string Filter = "Filter expression using OData notation.";
         public const string Apply = "Apply expression for aggregations using OData notation.";
+        public const string Expand = "Expand expression using OData notation.";
         public const string All = "Within the specified time interval, get all policy states instead of the latest only.";
         public const string RemediationObject = "The Remediation object.";
         public const string LocationFilter = "The resource locations that should be included in the remediation. Resources that don't reside in these locations will not be remediated.";

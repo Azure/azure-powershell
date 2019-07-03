@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
             Position = 2,
             HelpMessage = "The sync agent name.")]
         [Alias("SyncAgentName")]
+        [SupportsWildcards]
         public string Name { get; set; }
 
         /// <summary>
@@ -41,7 +42,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         {
             ICollection<AzureSqlSyncAgentModel> results;
 
-            if (MyInvocation.BoundParameters.ContainsKey("Name"))
+            if (MyInvocation.BoundParameters.ContainsKey("Name") && !WildcardPattern.ContainsWildcardCharacters(Name))
             {
                 results = new List<AzureSqlSyncAgentModel>();
                 results.Add(ModelAdapter.GetSyncAgent(this.ResourceGroupName, this.ServerName, this.Name));
@@ -50,7 +51,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
             {
                 results = ModelAdapter.ListSyncAgents(this.ResourceGroupName, this.ServerName);
             }
-            return results;
+            return SubResourceWildcardFilter(Name, results);
         }
 
         /// <summary>

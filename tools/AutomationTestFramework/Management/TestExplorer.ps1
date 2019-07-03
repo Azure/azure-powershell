@@ -14,27 +14,28 @@
 function Get-TestFolders([string] $srcPath, [string[]] $projectList) {
     # Paths to their scenario tests that do not follow the standard folder hierarchy
     $specialPaths = @{
-        'AzureBatch'        = 'Batch.Test\ScenarioTests';
-        'Storage'           = 'Management.Storage.Test\ScenarioTests';
-        'TrafficManager'    = 'TrafficManager2.Test\ScenarioTests';
-        'KeyVault'          = 'KeyVault.Test\Scripts';
-        'Profile'           = 'Profile.Test'
+        #'Batch'             = 'Batch.Test\ScenarioTests';
+        'Storage'           = 'Storage.Management.Test\ScenarioTests';
+        #'TrafficManager'    = 'TrafficManager2.Test\ScenarioTests';
+        #'KeyVault'          = 'KeyVault.Test\Scripts';
+        'Accounts'           = 'Accounts.Test'
     }
 
-    $resourceManagerPath = Join-Path $srcPath 'ResourceManager'
+    $resourceManagerPath = $srcPath
     $resourceManagerFolders = Get-ChildItem -Path $resourceManagerPath -ErrorAction Stop
     $testFolderPairs = New-Object System.Collections.ArrayList
     foreach ($folder in $resourceManagerFolders) {
-        if (-not ($projectList.Contains($folder.Name))) { 
+        $folderName = $folder.Name
+        if (-not ($projectList.Contains($folderName))) { 
             continue
         }
 
-        $testFolderPathPrefix = "$resourceManagerPath\$folder\Commands."
-        $testFolderPathSuffix = "$folder.Test\ScenarioTests"
-        if ($specialPaths.ContainsKey($folder.Name)) {
+        $testFolderPathPrefix = "$resourceManagerPath\$folderName"
+        $testFolderPathSuffix = "$folderName.Test\ScenarioTests"
+        if ($specialPaths.ContainsKey($folderName)) {
             $testFolderPathSuffix = $specialPaths.Get_Item($folder.Name)
         }
-        $testFolderPath = "$testFolderPathPrefix$testFolderPathSuffix"
+        $testFolderPath = Join-Path $testFolderPathPrefix $testFolderPathSuffix
 
         if (Test-Path $testFolderPath) {
             $null = $testFolderPairs.Add(@{Name = $folder.Name; Path = $testFolderPath})

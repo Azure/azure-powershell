@@ -64,7 +64,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights
             PSDataSourceKinds.LinuxPerformanceObject,
             PSDataSourceKinds.LinuxSyslog,
             PSDataSourceKinds.WindowsEvent,
-            PSDataSourceKinds.WindowsPerformanceCounter)]
+            PSDataSourceKinds.WindowsPerformanceCounter,
+            PSDataSourceKinds.ApplicationInsights)]
         [ValidateNotNullOrEmpty]
         public string Kind { get; set; }
 

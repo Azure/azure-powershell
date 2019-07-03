@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
                 return JArray.FromObject(tmpList.ToArray());
             }
 
-            return new JValue(value.ToString());
+            return new JValue(value);
         }
 
         /// <summary>

@@ -61,13 +61,13 @@ namespace Microsoft.Azure.Commands.Sql.Test.Utilities
             PropertyInfo property = cmdlet.GetProperty(parameterName);
             Assert.NotNull(property);
 
-            object[] attributes = property.GetCustomAttributes(typeof(ParameterAttribute), true);
-            Assert.Single(attributes);
-            ParameterAttribute paramAttr = attributes[0] as ParameterAttribute;
-            Assert.NotNull(paramAttr);
-            Assert.Equal(isMandatory, paramAttr.Mandatory);
-            Assert.Equal(valueFromPipelineByName, paramAttr.ValueFromPipelineByPropertyName);
-            Assert.NotNull(paramAttr.HelpMessage);
+            foreach (ParameterAttribute paramAttr in property.GetCustomAttributes(typeof(ParameterAttribute), true))
+            {
+                Assert.NotNull(paramAttr);
+                Assert.Equal(isMandatory, paramAttr.Mandatory);
+                Assert.Equal(valueFromPipelineByName, paramAttr.ValueFromPipelineByPropertyName);
+                Assert.NotNull(paramAttr.HelpMessage);
+            }
         }
 
         /// <summary>

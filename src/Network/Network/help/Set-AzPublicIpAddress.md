@@ -9,7 +9,7 @@ schema: 2.0.0
 # Set-AzPublicIpAddress
 
 ## SYNOPSIS
-Sets the goal state for a public IP address.
+Updates a public IP address.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Set-AzPublicIpAddress -PublicIpAddress <PSPublicIpAddress> [-AsJob] [-DefaultPro
 ```
 
 ## DESCRIPTION
-The **Set-AzPublicIpAddress** cmdlet sets the goal state for a public IP address.
+The **Set-AzPublicIpAddress** cmdlet updates a public IP address.
 
 ## EXAMPLES
 
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 ```
 
 ### -PublicIpAddress
-Specifies a **PublicIpAddress** object that represents the goal state to which the public IP address should be set.
+Specifies a public IP address object representing the state to which the public IP address should be set.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSPublicIpAddress

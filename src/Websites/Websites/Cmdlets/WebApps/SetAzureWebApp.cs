@@ -136,11 +136,13 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             SiteConfig siteConfig = null;
             Site site = null;
             string location = null;
+            IDictionary<string, string> tags = null;
             switch (ParameterSetName)
             {
                 case ParameterSet1Name:
                     WebApp = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, null));
                     location = WebApp.Location;
+                    tags = WebApp.Tags;
                     var parameters = new HashSet<string>(MyInvocation.BoundParameters.Keys, StringComparer.OrdinalIgnoreCase);
                     if (parameters.Any(p => CmdletHelpers.SiteConfigParameters.Contains(p)))
                     {
@@ -235,6 +237,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                         site = new Site
                         {
                             Location = location,
+                            Tags = tags,
                             ServerFarmId = WebApp.ServerFarmId,
                             Identity = parameters.Contains("AssignIdentity") ? AssignIdentity ? new ManagedServiceIdentity("SystemAssigned", null, null) : new ManagedServiceIdentity("None", null, null) : WebApp.Identity,
                             HttpsOnly = parameters.Contains("HttpsOnly") ? HttpsOnly : WebApp.HttpsOnly
@@ -285,7 +288,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                                                         StringComparer.OrdinalIgnoreCase));
 
                     CmdletHelpers.TryParseAppServicePlanMetadataFromResourceId(WebApp.ServerFarmId, out rg, out servicePlanName);
-                    WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, null, servicePlanName);
+                    // AzureStorage path is not a part of the back end siteObject, but if the PSSite Object is given as an input, we will some value for this
+                    WebApp.AzureStoragePath = null;
+                    WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, null, servicePlanName, WebApp);
                     WebsitesClient.AddCustomHostNames(ResourceGroupName, location, Name, WebApp.HostNames.ToArray());
                     break;
             }
