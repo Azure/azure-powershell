@@ -54,13 +54,13 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Utilities
                 {
                     return ToPsObjects(array.ToList());
                 }
-
-                throw new ArgumentOutOfRangeException("Result format is not supported");
             }
             catch (Exception ex)
             {
-                throw new ArgumentOutOfRangeException(ex.Message);
+                throw new ArgumentOutOfRangeException(ex.Message, ex);
             }
+
+            throw new ArgumentOutOfRangeException("Result format is not supported");
         }
 
         #region Helpers

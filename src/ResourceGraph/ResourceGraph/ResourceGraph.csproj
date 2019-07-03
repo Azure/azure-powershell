@@ -14,8 +14,4 @@
     <PackageReference Include="Microsoft.Azure.Management.ResourceGraph" Version="2.0.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Update="Microsoft.Rest.ClientRuntime" Version="2.3.20" />
-  </ItemGroup>
-
 </Project>
