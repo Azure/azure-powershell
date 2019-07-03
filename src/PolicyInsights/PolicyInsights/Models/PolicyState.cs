@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Models
                 return;
             }
 
-            this.AdditionalProperties = policyState.AdditionalProperties;
+            this.AdditionalProperties = policyState.AdditionalProperties ?? new Dictionary<string, object>();
             this.AdditionalProperties.Remove("@odata.id");
 
             this.Timestamp = policyState.Timestamp;

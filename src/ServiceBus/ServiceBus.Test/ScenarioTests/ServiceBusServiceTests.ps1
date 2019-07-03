@@ -94,6 +94,16 @@ function ServiceBusNameSpaceAuthTests
     $createdNamespace = Get-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName
     Assert-AreEqual $createdNamespace.Name $namespaceName
 
+	Write-Debug "Create a Namespace Authorization Rule"    
+    Write-Debug "Auth Rule name : $authRuleName"
+    $result = New-AzServiceBusAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleName -Rights @("Listen","Send")
+	
+    Assert-AreEqual $authRuleName $result.Name
+    Assert-AreEqual 2 $result.Rights.Count
+    Assert-True { $result.Rights -Contains "Listen" }
+    Assert-True { $result.Rights -Contains "Send" }
+
+
     Write-Debug "Create a Namespace Authorization Rule"    
     Write-Debug "Auth Rule name : $authRuleName"
     $result = New-AzServiceBusAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleName -Rights @("Listen","Send")
@@ -170,8 +180,8 @@ function ServiceBusNameSpaceAuthTests
     Write-Debug "Get namespace authorizationRules connectionStrings"
     $namespaceListKeys = Get-AzServiceBusKey -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleName
 
-    Assert-True {$namespaceListKeys.PrimaryConnectionString.Contains($updatedAuthRule.PrimaryKey)}
-    Assert-True {$namespaceListKeys.SecondaryConnectionString.Contains($updatedAuthRule.SecondaryKey)}
+    Assert-True {$namespaceListKeys.PrimaryConnectionString -like "*$($updatedAuthRule.PrimaryKey)*"}
+    Assert-True {$namespaceListKeys.SecondaryConnectionString -like "*$($updatedAuthRule.SecondaryKey)*"}
 	
 	$policyKey = "PrimaryKey"
 

@@ -16,6 +16,7 @@ using System.Collections;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.NetAppFiles.Common;
+using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
 
@@ -97,11 +98,22 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
         public string CreationToken { get; set; }
 
         [Parameter(
+            ParameterSetName = FieldsParameterSet,
+            Mandatory = true,
+            HelpMessage = "The service level of the ANF volume")]
+        [Parameter(
+            ParameterSetName = ParentObjectParameterSet,
             Mandatory = true,
             HelpMessage = "The service level of the ANF volume")]
         [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter("Standard", "Premium", "Extreme")]
+        [PSArgumentCompleter("Standard", "Premium", "Ultra")]
         public string ServiceLevel { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "A hashtable array which represents the export policy")]
+        [ValidateNotNullOrEmpty]
+        public PSNetAppFilesVolumeExportPolicy ExportPolicy { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -136,13 +148,14 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 CreationToken = CreationToken,
                 SubnetId = SubnetId,
                 Location = Location,
+                ExportPolicy = (ExportPolicy != null) ? ModelExtensions.ConvertExportPolicyFromPs(ExportPolicy) : null,
                 Tags = Tag
             };
 
-            if (ShouldProcess(Name, "Create the new volume"))
+            if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
             {
                 var anfVolume = AzureNetAppFilesManagementClient.Volumes.CreateOrUpdate(volumeBody, ResourceGroupName, AccountName, PoolName, Name);
-                WriteObject(anfVolume);
+                WriteObject(anfVolume.ToPsNetAppFilesVolume());
             }
         }
     }

@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.1.1
+* Fix Assembly Loading bug in PowerShell core
+
 ## Version 1.1.0
 * Fix bug for not passing OFflineDataTransferProxy to SDK
 

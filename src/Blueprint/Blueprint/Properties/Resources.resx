@@ -153,6 +153,12 @@
   <data name="DeleteAssignmentShouldProcessString" xml:space="preserve">
     <value>Delete blueprint assignment '{0}'</value>
   </data>
+  <data name="DeleteBlueprintFolderContentsContinueMessage" xml:space="preserve">
+    <value>Deleting folder contents.</value>
+  </data>
+  <data name="DeleteBlueprintFolderContentsProcessString" xml:space="preserve">
+    <value>Folder '{0}' already exists. This operation will replace contents of the folder with specified blueprint and its artifacts. Would you like to continue?</value>
+  </data>
   <data name="OverwriteExistingOutputFileContinueMessage" xml:space="preserve">
     <value>Overwriting the output file.</value>
   </data>

@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The account object containing the pool to return",
-            ParameterSetName = ObjectParameterSet)]
+            ParameterSetName = ParentObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         public PSNetAppFilesAccount AccountObject { get; set; }
 
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
                 AccountName = parentResource.Substring(parentResource.LastIndexOf('/') + 1);
                 Name = resourceIdentifier.ResourceName;
             }
-            else if (ParameterSetName == ObjectParameterSet)
+            else if (ParameterSetName == ParentObjectParameterSet)
             {
                 ResourceGroupName = AccountObject.ResourceGroupName;
                 AccountName = AccountObject.Name;
@@ -94,8 +94,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
             }
             else
             {
-                var anfPool = AzureNetAppFilesManagementClient.Pools.List(ResourceGroupName, AccountName).Select(e => e.ToPsNetAppFilesPool());
-                WriteObject(anfPool, true);
+                var anfPools = AzureNetAppFilesManagementClient.Pools.List(ResourceGroupName, AccountName).Select(e => e.ToPsNetAppFilesPool());
+                WriteObject(anfPools, true);
             }
         }
     }
