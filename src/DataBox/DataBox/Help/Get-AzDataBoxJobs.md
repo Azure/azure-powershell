@@ -15,20 +15,24 @@ Gets information about DataBox Jobs
 ### ListParameterSet (Default)
 ```
 Get-AzDataBoxJobs [-ResourceGroupName <String>] [-Completed] [-CompletedWithErrors] [-Cancelled] [-Aborted]
-[<CommonParameters>]
+ [-Detatiled] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByNameParameterSet
 ```
-Get-AzDataBoxJobs -ResourceGroupName <String> -Name <String>
+Get-AzDataBoxJobs -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
+```
+
+### GetByResourceIdParameterSet
+```
+Get-AzDataBoxJobs -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **Get-AzDataBoxJobs** cmdlet gets information about databox jobs in an Azure subscription.
 If you specify the Resource Group, this cmdlet gets all the databox jobs under that resource group. If you specify the Name of the job along with the resource group name, this cmdlet gets information about that specific databox job.
 If you do not specify anything other than subscription id, this cmdlet gets information about all of the databox jobs under that subscription.
-
 
 ## EXAMPLES
 
@@ -45,7 +49,7 @@ PS C:\> {{ Add example code here }}
 {{ Fill Aborted Description }}
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ListParameterSet
 Aliases:
 
@@ -60,7 +64,7 @@ Accept wildcard characters: False
 {{ Fill Cancelled Description }}
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ListParameterSet
 Aliases:
 
@@ -75,7 +79,7 @@ Accept wildcard characters: False
 {{ Fill Completed Description }}
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ListParameterSet
 Aliases:
 
@@ -90,7 +94,7 @@ Accept wildcard characters: False
 {{ Fill CompletedWithErrors Description }}
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ListParameterSet
 Aliases:
 
@@ -105,7 +109,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -120,7 +124,7 @@ Accept wildcard characters: False
 {{ Fill Detatiled Description }}
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ListParameterSet
 Aliases:
 
@@ -135,7 +139,7 @@ Accept wildcard characters: False
 {{ Fill Name Description }}
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByNameParameterSet
 Aliases:
 
@@ -150,7 +154,7 @@ Accept wildcard characters: False
 {{ Fill ResourceGroupName Description }}
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ListParameterSet
 Aliases:
 
@@ -162,7 +166,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByNameParameterSet
 Aliases:
 
@@ -177,7 +181,7 @@ Accept wildcard characters: False
 {{ Fill ResourceId Description }}
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByResourceIdParameterSet
 Aliases:
 
