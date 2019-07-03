@@ -16,6 +16,7 @@ using System.Management.Automation;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.EventHub.Models;
+using System;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands
 {
@@ -79,6 +80,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
                     {
                         WriteObject(Client.CreateOrUpdateEventHubAuthorizationRules(ResourceGroupName, Namespace, EventHub, Name, sasRule));
                     }
+                
             }
             catch (Management.EventHub.Models.ErrorResponseException ex)
             {
