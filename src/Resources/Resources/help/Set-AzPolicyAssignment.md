@@ -20,11 +20,40 @@ Set-AzPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-D
  [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### PolicyParameterNameObjectParameterSet
+```
+Set-AzPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-DisplayName <String>]
+ [-Description <String>] [-Metadata <String>] -PolicyParameterObject <Hashtable> [-AssignIdentity]
+ [-Location <String>] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### PolicyParameterNameStringParameterSet
+```
+Set-AzPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-DisplayName <String>]
+ [-Description <String>] [-Metadata <String>] -PolicyParameter <String> [-AssignIdentity] [-Location <String>]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ### IdParameterSet
 ```
 Set-AzPolicyAssignment [-NotScope <String[]>] -Id <String> [-DisplayName <String>] [-Description <String>]
  [-Metadata <String>] [-AssignIdentity] [-Location <String>] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### PolicyParameterIdObjectParameterSet
+```
+Set-AzPolicyAssignment [-NotScope <String[]>] -Id <String> [-DisplayName <String>] [-Description <String>]
+ [-Metadata <String>] -PolicyParameterObject <Hashtable> [-AssignIdentity] [-Location <String>]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### PolicyParameterIdStringParameterSet
+```
+Set-AzPolicyAssignment [-NotScope <String[]>] -Id <String> [-DisplayName <String>] [-Description <String>]
+ [-Metadata <String>] -PolicyParameter <String> [-AssignIdentity] [-Location <String>] [-ApiVersion <String>]
+ [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,6 +84,42 @@ PS C:\> Set-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -AssignIdentity 
 The first command gets the policy assignment named PolicyAssignment from the current subscription by using the Get-AzPolicyAssignment cmdlet.
 The command stores that object in the $PolicyAssignment variable.
 The final command assigns a managed identity to the policy assignment.
+
+### Example 3: Update policy assignment parameters with new policy parameter object
+```
+PS C:\> $Locations = Get-AzLocation | where {($_.displayname -like 'france*') -or ($_.displayname -like 'uk*')}
+PS C:\> $AllowedLocations = @{'listOfAllowedLocations'=($Locations.location)}
+PS C:\> $PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment'
+PS C:\> Set-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -PolicyParameterObject $AllowedLocations
+```
+
+The first and second commands create an object containing all Azure regions whose names start with "france" or "uk".
+The second command stores that object in the $AllowedLocations variable.
+The third command gets the policy assignment named 'PolicyAssignment'
+The command stores that object in the $PolicyAssignment variable.
+The final command updates the parameter values on the policy assignment named PolicyAssignment.
+
+### Example 4: Update policy assignment parameters with policy parameter file
+Create a file called _AllowedLocations.json_ in the local working directory with the following content.
+
+```
+{
+    "listOfAllowedLocations":  {
+      "value": [
+        "uksouth",
+        "ukwest",
+        "francecentral",
+        "francesouth"
+      ]
+    }
+}
+```
+
+```
+PS C:\> Set-AzPolicyAssignment -Name 'PolicyAssignment' -PolicyParameter .\AllowedLocations.json
+```
+
+The command updates the policy assignment named 'PolicyAssignment' using the policy parameter file AllowedLocations.json from the local working directory.
 
 ## PARAMETERS
 
@@ -139,7 +204,7 @@ Specifies the fully qualified resource ID for the policy assignment that this cm
 
 ```yaml
 Type: System.String
-Parameter Sets: IdParameterSet
+Parameter Sets: IdParameterSet, PolicyParameterIdObjectParameterSet, PolicyParameterIdStringParameterSet
 Aliases: ResourceId
 
 Required: True
@@ -184,7 +249,7 @@ Specifies the name of the policy assignment that this cmdlet modifies.
 
 ```yaml
 Type: System.String
-Parameter Sets: NameParameterSet
+Parameter Sets: NameParameterSet, PolicyParameterNameObjectParameterSet, PolicyParameterNameStringParameterSet
 Aliases:
 
 Required: True
@@ -209,6 +274,36 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -PolicyParameter
+The new policy parameters file path or string for the policy assignment.
+
+```yaml
+Type: System.String
+Parameter Sets: PolicyParameterNameStringParameterSet, PolicyParameterIdStringParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PolicyParameterObject
+The new policy parameters object for the policy assignment.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: PolicyParameterNameObjectParameterSet, PolicyParameterIdObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Pre
 Indicates that this cmdlet considers pre-release API versions when it automatically determines which version to use.
 
@@ -229,7 +324,7 @@ Specifies the scope at which the policy is applied.
 
 ```yaml
 Type: System.String
-Parameter Sets: NameParameterSet
+Parameter Sets: NameParameterSet, PolicyParameterNameObjectParameterSet, PolicyParameterNameStringParameterSet
 Aliases:
 
 Required: True
@@ -240,7 +335,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

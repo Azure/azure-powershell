@@ -12,14 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
-
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
-    using Microsoft.WindowsAzure.Commands.Common;
     using Newtonsoft.Json.Linq;
     using Policy;
     using System.Collections;
@@ -37,6 +34,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// Gets or sets the policy assignment name parameter.
         /// </summary>
         [Parameter(ParameterSetName = PolicyCmdletBase.NameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicyAssignmentNameHelp)]
+        [Parameter(ParameterSetName = PolicyCmdletBase.PolicyParameterNameObjectParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicyAssignmentPolicyParameterObjectHelp)]
+        [Parameter(ParameterSetName = PolicyCmdletBase.PolicyParameterNameStringParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicyParameterHelp)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -44,6 +43,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// Gets or sets the policy assignment scope parameter.
         /// </summary>
         [Parameter(ParameterSetName = PolicyCmdletBase.NameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicyAssignmentScopeHelp)]
+        [Parameter(ParameterSetName = PolicyCmdletBase.PolicyParameterNameObjectParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicyAssignmentPolicyParameterObjectHelp)]
+        [Parameter(ParameterSetName = PolicyCmdletBase.PolicyParameterNameStringParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicyParameterHelp)]
         [ValidateNotNullOrEmpty]
         public string Scope { get; set; }
 
@@ -59,6 +60,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         [Alias("ResourceId")]
         [Parameter(ParameterSetName = PolicyCmdletBase.IdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicyAssignmentIdHelp)]
+        [Parameter(ParameterSetName = PolicyCmdletBase.PolicyParameterIdObjectParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicyAssignmentPolicyParameterObjectHelp)]
+        [Parameter(ParameterSetName = PolicyCmdletBase.PolicyParameterIdStringParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicyParameterHelp)]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
@@ -82,6 +85,21 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicyAssignmentMetadataHelp)]
         [ValidateNotNullOrEmpty]
         public string Metadata { get; set; }
+
+        /// <summary>
+        /// Gets or sets the policy assignment policy parameter object.
+        /// </summary>
+        [Parameter(ParameterSetName = PolicyCmdletBase.PolicyParameterNameObjectParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = PolicyHelpStrings.SetPolicyAssignmentPolicyParameterObjectHelp)]
+        [Parameter(ParameterSetName = PolicyCmdletBase.PolicyParameterIdObjectParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = PolicyHelpStrings.SetPolicyAssignmentPolicyParameterObjectHelp)]
+        public Hashtable PolicyParameterObject { get; set; }
+
+        /// <summary>
+        /// Gets or sets the policy assignment policy parameter file path or policy parameter string.
+        /// </summary>
+        [Parameter(ParameterSetName = PolicyCmdletBase.PolicyParameterNameStringParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicyParameterHelp)]
+        [Parameter(ParameterSetName = PolicyCmdletBase.PolicyParameterIdStringParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.SetPolicyParameterHelp)]
+        [ValidateNotNullOrEmpty]
+        public string PolicyParameter { get; set; }
 
         /// <summary>
         /// Gets or sets a flag indicating whether a system assigned identity should be added to the policy assignment.
@@ -149,7 +167,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     NotScopes = this.NotScope ?? resource.Properties["NotScopes"]?.ToString().Split(','),
                     PolicyDefinitionId = resource.Properties["policyDefinitionId"].ToString(),
                     Metadata = string.IsNullOrEmpty(this.Metadata) ? null : JObject.Parse(metaDataJson),
-                    Parameters = (JObject)resource.Properties["parameters"]
+                    Parameters = this.GetParameters(this.PolicyParameter, this.PolicyParameterObject) ?? (JObject)resource.Properties["parameters"]
                 }
             };
 

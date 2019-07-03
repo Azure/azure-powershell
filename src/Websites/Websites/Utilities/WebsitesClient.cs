@@ -24,6 +24,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Net;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace Microsoft.Azure.Commands.WebApps.Utilities
@@ -780,8 +781,20 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             }
         }
 
-        public IList<DeletedSite> GetDeletedSites()
+        public IList<DeletedSite> GetDeletedSitesFromLocations(IEnumerable<string> locations)
         {
+            List<Task<IPage<DeletedSite>>> tasks = new List<Task<IPage<DeletedSite>>>();
+            foreach (string location in locations)
+            {
+                tasks.Add(WrappedWebsitesClient.DeletedWebApps.ListByLocationAsync(location));
+            }
+
+            List<DeletedSite> deletedSites = new List<DeletedSite>();
+            foreach(var task in tasks)
+            {
+                deletedSites.AddRange(task.Result);
+            }
+
             return WrappedWebsitesClient.DeletedWebApps().List().ToList();
         }
 
