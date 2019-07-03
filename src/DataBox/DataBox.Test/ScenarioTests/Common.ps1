@@ -71,6 +71,8 @@ function TestSetup-CreateResourceGroup
     return $resourceGroup
 }
 
+
+
 <#
 .SYNOPSIS
 Asserts if two tags are equal
@@ -132,3 +134,4 @@ function SleepInRecordMode ([int]$SleepIntervalInSec)
         Wait-Seconds $SleepIntervalInSec 
     }
 }
+
