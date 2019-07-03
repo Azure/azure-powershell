@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.7.3
 * Improving logic of getting subscriptions for query to ARG
 * Updated package Microsoft.Azure.Management.ResourceGraph to version 2.0
 

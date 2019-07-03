@@ -23,7 +23,7 @@ Get-AzNetAppFilesPool -ResourceGroupName <String> -AccountName <String> [-Name <
 Get-AzNetAppFilesPool -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ByObjectParameterSet
+### ByParentObjectParameterSet
 ```
 Get-AzNetAppFilesPool -AccountObject <PSNetAppFilesAccount> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
@@ -75,7 +75,7 @@ The account object containing the pool to return
 
 ```yaml
 Type: PSNetAppFilesAccount
-Parameter Sets: ByObjectParameterSet
+Parameter Sets: ByParentObjectParameterSet
 Aliases:
 
 Required: True

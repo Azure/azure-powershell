@@ -18,10 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-    - Fix help text for Get-AzPolicyState -Top parameter
-    - Add client-side paging support for Get-AzPolicyAlias
-    - Add new parameters for Set-AzPolicyAssignment, -PolicyParameters and -PolicyParametersObject
-    - Handful of doc and example updates for Policy cmdlets
+- Remove missing cmdlet referenced in `New-AzResourceGroupDeployment` documentation
+
+## Version 1.6.0
+- Fix help text for Get-AzPolicyState -Top parameter
+- Add client-side paging support for Get-AzPolicyAlias
+- Add new parameters for Set-AzPolicyAssignment, -PolicyParameters and -PolicyParametersObject
+- Handful of doc and example updates for Policy cmdlets
 
 ## Version 1.5.0
 * Support for additional Template Export options
