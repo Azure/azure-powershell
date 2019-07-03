@@ -19,6 +19,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+Added new cmmdlet added for generating SAS token : New-AzServiceBusAuthorizationRuleSASToken
 
 ## Version 1.2.0
 * Fix for issue #9182 - Get-AzServiceBusNamespace returns ResourceGroup instead of ResourceGroupName
