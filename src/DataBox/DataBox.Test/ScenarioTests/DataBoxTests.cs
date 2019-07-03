@@ -41,5 +41,74 @@ namespace Microsoft.Azure.Commands.DataBox.Test
             RunPowerShellTest(_logger, "Test-GetNonExistingDataBoxJob");
         }
 
+#if NETSTANDARD
+        [Fact]//(Skip = "Management library needs NetCore republish")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact]
+#endif
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateDataBoxJob()
+        {
+
+            RunPowerShellTest(_logger, "Test-CreateDataBoxJob");
+        }
+
+#if NETSTANDARD
+        [Fact]//(Skip = "Management library needs NetCore republish")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact]
+#endif
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestStopDataBoxJob()
+        {
+
+            RunPowerShellTest(_logger, "Test-StopDataBoxJob");
+        }
+
+#if NETSTANDARD
+        [Fact]//(Skip = "Management library needs NetCore republish")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact]
+#endif
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveDataBoxJob()
+        {
+
+            RunPowerShellTest(_logger, "Test-RemoveDataBoxJob");
+        }
+
+#if NETSTANDARD
+        [Fact]//(Skip = "Management library needs NetCore republish")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact]
+#endif
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAmbiguousAddress()
+        {
+
+            RunPowerShellTest(_logger, "Test-JobResourceObjectAmbiguousAddress");
+        }
+
+#if NETSTANDARD
+        [Fact]//(Skip = "Management library needs NetCore republish")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact]
+#endif
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestInvalidAddress()
+        {
+
+            RunPowerShellTest(_logger, "Test-JobResourceObjectInvalidAddress");
+        }
+
     }
+
+
+
 }
+
