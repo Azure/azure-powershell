@@ -217,8 +217,8 @@ function EventHubsAuthTests
 	Write-Debug "Get Eventhub authorizationRules connectionStrings"
 	$namespaceListKeys = Get-AzEventHubKey -ResourceGroup $resourceGroupName -Namespace $namespaceName -EventHub $eventHubName -Name $authRuleName
 
-	Assert-True {$namespaceListKeys.PrimaryConnectionString.Contains($updatedAuthRule.PrimaryKey)}
-	Assert-True {$namespaceListKeys.SecondaryConnectionString.Contains($updatedAuthRule.SecondaryKey)}
+	Assert-True {$namespaceListKeys.PrimaryConnectionString -like "*$($updatedAuthRule.PrimaryKey)*"}
+	Assert-True {$namespaceListKeys.SecondaryConnectionString -like "*$($updatedAuthRule.SecondaryKey)*"}
 	
 	# Regentrate the Keys 
 	$policyKey = "PrimaryKey"
