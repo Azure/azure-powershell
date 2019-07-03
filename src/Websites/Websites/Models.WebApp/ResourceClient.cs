@@ -132,6 +132,19 @@ namespace Microsoft.Azure.Commands.WebApps.Models
             return ResourceManagementClient.Resources.List(query).FirstOrDefault();
         }
 
+        /// <summary>
+        /// Gets all locations of deleted sites resource
+        /// </summary>
+        public IEnumerable<string> GetDeletedSitesLocations()
+        {
+            Provider webProvider = ResourceManagementClient.Providers.Get("Microsoft.Web");
+            ProviderResourceType resType = webProvider.ResourceTypes.First((rt) =>
+            {
+                return string.Equals(rt.ResourceType, "deletedSites", StringComparison.InvariantCultureIgnoreCase);
+            });
+            return resType.Locations;
+        }
+
         public DeploymentExtended ProvisionDeploymentStatus(string resourceGroup, string deploymentName, Deployment deployment)
         {
             operations = new List<DeploymentOperation>();
