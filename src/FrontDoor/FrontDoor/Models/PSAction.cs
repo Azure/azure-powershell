@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Models
     {
         Allow,
         Block,
-        Log
+        Log,
+        Redirect
     }
 }

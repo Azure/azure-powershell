@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 IntegrationAccount = string.IsNullOrEmpty(this.IntegrationAccountId)
                     ? null
                     : new ResourceReference(this.IntegrationAccountId),
-                State = (WorkflowState)Enum.Parse(typeof(WorkflowState), this.State)
+                State = this.State
             }), true);
         }
     }

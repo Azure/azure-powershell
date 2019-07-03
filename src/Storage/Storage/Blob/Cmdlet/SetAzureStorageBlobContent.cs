@@ -16,8 +16,8 @@
 using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Blob;
+using Microsoft.Azure.Storage;
+using Microsoft.Azure.Storage.Blob;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -25,7 +25,9 @@ using System.Globalization;
 using System.IO;
 using System.Management.Automation;
 using System.Threading.Tasks;
-using StorageBlob = Microsoft.WindowsAzure.Storage.Blob;
+using StorageBlob = Microsoft.Azure.Storage.Blob;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 {
@@ -67,11 +69,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         private const string AppendBlobType = "Append";
 
         [Alias("FullName")]
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = "file Path",
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = "file Path.",
             ValueFromPipelineByPropertyName = true, ParameterSetName = ManualParameterSet)]
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = "file Path",
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = "file Path.",
             ParameterSetName = ContainerParameterSet)]
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = "file Path",
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = "file Path.",
             ParameterSetName = BlobParameterSet)]
         public string File
         {
@@ -169,7 +171,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         private PremiumPageBlobTier? pageBlobTier = null;
 
         private BlobUploadRequestQueue UploadRequests = new BlobUploadRequestQueue();
-
+        
         /// <summary>
         /// Initializes a new instance of the SetAzureBlobContentCommand class.
         /// </summary>
@@ -262,9 +264,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 throw new ArgumentException(Resources.FileNameCannotEmpty);
             }
 
-            String filePath = Path.Combine(CurrentPath(), fileName);
-
-            return filePath;
+            return fileName;
         }
 
         /// <summary>
@@ -316,6 +316,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 
         protected override void EndProcessing()
         {
+            if (!AsJob.IsPresent)
+            {
+                DoEndProcessing();
+            }
+        }
+
+        protected override void DoEndProcessing()
+        {
             while (!UploadRequests.IsEmpty())
             {
                 Tuple<string, StorageBlob.CloudBlob> uploadRequest = UploadRequests.DequeueRequest();
@@ -324,7 +332,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 RunTask(taskGenerator);
             }
 
-            base.EndProcessing();
+            base.DoEndProcessing();
         }
 
         //only support the common blob properties for block blob and page blob
@@ -486,12 +494,39 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             }
         }
 
+        protected override void BeginProcessing()
+        {
+            if (!AsJob.IsPresent)
+            {
+                DoBeginProcessing();
+            }
+        }
+
+        protected override void ProcessRecord()
+        {
+            try
+            {
+                ResolvedFileName = this.GetUnresolvedProviderPathFromPSPath(string.IsNullOrWhiteSpace(this.FileName) ? "." : this.FileName);
+                Validate.ValidateInternetConnection();
+                InitChannelCurrentSubscription();
+                this.ExecuteSynchronouslyOrAsJob();
+            }
+            catch (Exception ex) when (!IsTerminatingError(ex))
+            {
+                WriteExceptionError(ex);
+            }
+        }
+
         /// <summary>
         /// execute command
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            FileName = ResolveUserPath(FileName);
+            if (AsJob.IsPresent)
+            {
+                DoBeginProcessing();
+            }
+
             ValidateBlobTier(string.Equals(blobType, PageBlobType, StringComparison.InvariantCultureIgnoreCase)? StorageBlob.BlobType.PageBlob : StorageBlob.BlobType.Unspecified, 
                 pageBlobTier);
 
@@ -513,7 +548,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 case ContainerParameterSet:
                     if (ShouldProcess(BlobName, VerbsCommon.Set))
                     {
-                        SetAzureBlobContent(FileName, BlobName);
+                        SetAzureBlobContent(ResolvedFileName, BlobName);
                         containerName = CloudBlobContainer.Name;
                         UploadRequests.SetDestinationContainer(Channel, containerName);
                     }
@@ -523,7 +558,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 case BlobParameterSet:
                     if (ShouldProcess(CloudBlob.Name, VerbsCommon.Set))
                     {
-                        SetAzureBlobContent(FileName, CloudBlob.Name);
+                        SetAzureBlobContent(ResolvedFileName, CloudBlob.Name);
                         containerName = CloudBlob.Container.Name;
                         UploadRequests.SetDestinationContainer(Channel, containerName);
                     }
@@ -534,12 +569,17 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 default:
                     if (ShouldProcess(BlobName, VerbsCommon.Set))
                     {
-                        SetAzureBlobContent(FileName, BlobName);
+                        SetAzureBlobContent(ResolvedFileName, BlobName);
                         containerName = ContainerName;
                         UploadRequests.SetDestinationContainer(Channel, containerName);
                     }
 
                     break;
+            }
+
+            if (AsJob.IsPresent)
+            {
+                DoEndProcessing();
             }
         }
     }

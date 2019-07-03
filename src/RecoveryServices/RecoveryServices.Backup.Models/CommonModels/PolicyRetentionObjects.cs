@@ -38,21 +38,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public override void Validate()
         {
             base.Validate();
-
-            int weeklyLimit = PolicyConstants.MaxAllowedRetentionDurationCountWeeklySql;
-            int monthlyLimit = PolicyConstants.MaxAllowedRetentionDurationCountMonthlySql;
-            int yearlyLimit = PolicyConstants.MaxAllowedRetentionDurationCountYearlySql;
-
-            if ((RetentionDurationType == RetentionDurationType.Days) ||
-                (RetentionDurationType == RetentionDurationType.Weeks &&
-                    (RetentionCount <= 0 || RetentionCount > weeklyLimit)) ||
-                (RetentionDurationType == RetentionDurationType.Months &&
-                    (RetentionCount <= 0 || RetentionCount > monthlyLimit)) ||
-                (RetentionDurationType == RetentionDurationType.Years &&
-                    (RetentionCount <= 0 || RetentionCount > yearlyLimit)))
-            {
-                throw new ArgumentException(Resources.AllowedSqlRetentionRange);
-            }
         }
     }
 
@@ -185,6 +170,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         }
     }
 
+    public class SQLRetentionPolicy : RetentionPolicyBase
+    {
+        /// <summary>
+        /// Full backup retention policy object
+        /// </summary>
+        public LongTermRetentionPolicy FullBackupRetentionPolicy { get; set; }
+
+        /// <summary>
+        /// Differential backup retention policy object
+        /// </summary>
+        public SimpleRetentionPolicy DifferentialBackupRetentionPolicy { get; set; }
+
+        /// <summary>
+        /// Log backup retention policy object
+        /// </summary>
+        public SimpleRetentionPolicy LogBackupRetentionPolicy { get; set; }
+
+        public SQLRetentionPolicy()
+        {
+        }
+    }
+
     /// <summary>
     /// Base class for retention schedule.
     /// </summary>
@@ -222,9 +229,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         // no extra fields
         public override void Validate()
         {
-            if (DurationCountInDays <= 0 || DurationCountInDays > PolicyConstants.MaxAllowedRetentionDurationCount)
+            if (DurationCountInDays < 7 || DurationCountInDays > PolicyConstants.MaxAllowedRetentionDurationCount)
             {
-                throw new ArgumentException(Resources.RetentionDurationCountInvalidException);
+                throw new ArgumentException(Resources.RetentionDurationCountInDaysInvalidException);
             }
 
             base.Validate();

@@ -29,7 +29,6 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
     /// </summary>
     public abstract class DataMigrationCmdlet : AzureRMCmdlet
     {
-        protected const string ServiceSkuName = "PP1"; // Hardcoded SKU name. This has to be changed later.
         protected DmsClient _dmsClient;
 
         protected const string ResourceGroupParameterSet = "ResourceGroupParameterSet";

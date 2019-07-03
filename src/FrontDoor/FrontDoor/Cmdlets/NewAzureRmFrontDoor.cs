@@ -89,6 +89,12 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         [Parameter(Mandatory = false, HelpMessage = "Enabled state of the Front Door load balancer. Default value is Enabled")]
         public PSEnabledState EnabledState { get; set; }
 
+        /// <summary>
+        /// Whether to enforce certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Whether to disable certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.")]
+        public SwitchParameter DisableCertificateNameCheck { get; set; }
+
         public override void ExecuteCmdlet()
         {
             var existingProfile = FrontDoorManagementClient.FrontDoors.ListByResourceGroup(ResourceGroupName)
@@ -112,7 +118,9 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                     healthProbeSettings: HealthProbeSetting?.Select(x => x.ToSdkHealthProbeSetting()).ToList(),
                     backendPools: BackendPool?.Select(x => x.ToSdkBackendPool()).ToList(),
                     frontendEndpoints: FrontendEndpoint?.Select(x => x.ToSdkFrontendEndpoints()).ToList(),
-                    enabledState: !this.IsParameterBound(c => c.EnabledState)? "Enabled" : EnabledState.ToString()
+                    enabledState: !this.IsParameterBound(c => c.EnabledState)? "Enabled" : EnabledState.ToString(),
+                    backendPoolsSettings : new Management.FrontDoor.Models.BackendPoolsSettings(
+                        DisableCertificateNameCheck ? PSEnforceCertificateNameCheck.Disabled.ToString() : PSEnforceCertificateNameCheck.Enabled.ToString())
                     );
             updateParameters.ToPSFrontDoor().ValidateFrontDoor(ResourceGroupName, this.DefaultContext.Subscription.Id);
             if (ShouldProcess(Resources.FrontDoorTarget, string.Format(Resources.CreateFrontDoor, Name)))

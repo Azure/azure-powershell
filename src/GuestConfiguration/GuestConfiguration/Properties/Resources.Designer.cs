@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.GuestConfiguration {
+namespace Microsoft.Azure.Commands.GuestConfiguration.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.GuestConfiguration {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.GuestConfiguration.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.GuestConfiguration.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -124,6 +124,15 @@ namespace Microsoft.Azure.Commands.GuestConfiguration {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Policy definition with name - {0} does not comply with GuestConfiguration policy category. No reports will be fetched for this definition..
+        /// </summary>
+        internal static string InvalidPolicyDefinition {
+            get {
+                return ResourceManager.GetString("InvalidPolicyDefinition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid report Id {0}..
         /// </summary>
         internal static string InvalidReportId {
@@ -133,7 +142,7 @@ namespace Microsoft.Azure.Commands.GuestConfiguration {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid resource group name {0} or VM name {1}. Please check whether the resource group and VM exist in subscription..
+        ///   Looks up a localized string similar to Invalid resource group name {0} or VM name {1}. Please check whether the resource group and VM exist in subscription. Use Select-AzContext to select a context with a different subscription..
         /// </summary>
         internal static string InvalidRGOrVMName {
             get {

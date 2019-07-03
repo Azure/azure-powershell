@@ -94,7 +94,8 @@ function Test-Image
 
         # Create Image using the VM's OS disk and data disks.
         $imageName = 'image' + $rgname;
-        $imageConfig = New-AzImageConfig -Location $loc;
+        $tags = @{test1 = "testval1"; test2 = "testval2" };
+        $imageConfig = New-AzImageConfig -Location $loc -Tag $tags -HyperVGeneration "V1";
         Set-AzImageOsDisk -Image $imageConfig -OsType 'Windows' -OsState 'Generalized' -BlobUri $osDiskVhdUri;
         $imageConfig = Add-AzImageDataDisk -Image $imageConfig -Lun 1 -BlobUri $dataDiskVhdUri1;
         $imageConfig = Add-AzImageDataDisk -Image $imageConfig -Lun 2 -BlobUri $dataDiskVhdUri2;
@@ -112,15 +113,74 @@ function Test-Image
         Assert-NotNull $createdImage.Id;
         Assert-AreEqual $imageName $createdImage.Name;
         Assert-AreEqual 2 $createdImage.StorageProfile.DataDisks.Count;
-        
+
         Assert-AreEqual "Succeeded" $createdImage.ProvisioningState;
         Assert-AreEqual $osDiskVhdUri $createdImage.StorageProfile.OsDisk.BlobUri;
         Assert-AreEqual $dataDiskVhdUri1 $createdImage.StorageProfile.DataDisks[0].BlobUri;
         Assert-AreEqual $dataDiskVhdUri2 $createdImage.StorageProfile.DataDisks[1].BlobUri;
 
+        Assert-True {$createdImage.Tags.ContainsKey("test1") }
+        Assert-AreEqual "testval1" $createdImage.Tags["test1"]
+        Assert-True {$createdImage.Tags.ContainsKey("test2") }
+        Assert-AreEqual "testval2" $createdImage.Tags["test2"]
+
         # List and Delete Image
+        $wildcardRgQuery = ($rgname -replace ".$") + "*"
+        $wildcardNameQuery = ($imageName -replace ".$") + "*"
+        
+        $images = Get-AzImage;
+        Assert-True { $images.Count -ge 1 };
+        
+        $images = Get-AzImage -ResourceGroupName $wildcardRgQuery;
+        Assert-AreEqual 1 $images.Count;
+        Assert-AreEqual $rgname $images[0].ResourceGroupName;
+
         $images = Get-AzImage -ResourceGroupName $rgname;
         Assert-AreEqual 1 $images.Count;
+        Assert-AreEqual $rgname $images[0].ResourceGroupName;
+        
+        $images = Get-AzImage -Name $wildcardNameQuery;
+        Assert-AreEqual 1 $images.Count;
+        Assert-AreEqual $rgname $images[0].ResourceGroupName;
+        Assert-AreEqual $imageName $images[0].Name;
+        
+        $images = Get-AzImage -Name $imageName;
+        Assert-AreEqual 1 $images.Count;
+        Assert-AreEqual $rgname $images[0].ResourceGroupName;
+        Assert-AreEqual $imageName $images[0].Name;
+        
+        $images = Get-AzImage -ResourceGroupName $wildcardRgQuery -Name $wildcardNameQuery;
+        Assert-AreEqual 1 $images.Count;
+        Assert-AreEqual $rgname $images[0].ResourceGroupName;
+        Assert-AreEqual $imageName $images[0].Name;
+        
+        $images = Get-AzImage -ResourceGroupName $rgname -Name $wildcardNameQuery;
+        Assert-AreEqual 1 $images.Count;
+        Assert-AreEqual $rgname $images[0].ResourceGroupName;
+        Assert-AreEqual $imageName $images[0].Name;
+        
+        $images = Get-AzImage -ResourceGroupName $wildcardRgQuery -Name $imageName;
+        Assert-AreEqual 1 $images.Count;
+        Assert-AreEqual $rgname $images[0].ResourceGroupName;
+        Assert-AreEqual $imageName $images[0].Name;
+        
+        $image = Get-AzImage -ResourceGroupName $rgname -Name $imageName;
+        Assert-AreEqual $rgname $image.ResourceGroupName;
+        Assert-AreEqual $imageName $image.Name;
+        Assert-AreEqual "V1" $image.HyperVGeneration;
+
+        # Update Image Tag
+        $image | Update-AzImage -Tag @{test1 = "testval3"; test2 = "testval4"};
+        Update-AzImage -ResourceGroupName $rgname -ImageName $imageName -Tag @{test1 = "testval3"; test2 = "testval4"};
+        Update-AzImage -Image $image -Tag @{test1 = "testval3"; test2 = "testval4"};
+        Update-AzImage -ResourceId $image.Id -Tag @{test1 = "testval3"; test2 = "testval4"};
+
+        $image = Get-AzImage -ResourceGroupName $rgname -ImageName $imageName;
+        Assert-True {$image.Tags.ContainsKey("test1") }
+        Assert-AreEqual "testval3" $image.Tags["test1"]
+        Assert-True {$image.Tags.ContainsKey("test2") }
+        Assert-AreEqual "testval4" $image.Tags["test2"]
+        Assert-AreEqual "V1" $image.HyperVGeneration;
 
         $job = Remove-AzImage -ResourceGroupName $rgname -ImageName $imageName -Force -AsJob;
         $result = $job | Wait-Job;
@@ -196,7 +256,7 @@ function Test-ImageCapture
         $p = Add-AzVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 2 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
         $p = Add-AzVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 3 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
         $p = Remove-AzVMDataDisk -VM $p -Name 'testDataDisk3';
-        
+
         # OS & Image
         $user = "Foo12";
         $password = $PLACEHOLDER;

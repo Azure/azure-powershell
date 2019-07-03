@@ -142,6 +142,13 @@ function Test-VirtualMachineExtension
         Assert-NotNull $ext.Statuses;
         Assert-NotNull $ext.SubStatuses;
 
+        $ext = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vmname
+        Assert-True { $ext.Count -ge 1 }
+        Assert-Null $ext[0].Statuses
+
+        $ext = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vmname -Status
+        Assert-NotNull $ext.Statuses
+
         # Remove Extension
         $ext | Remove-AzVMExtension -Force;
     }
@@ -468,6 +475,72 @@ function Test-VirtualMachineCustomScriptExtension
         Assert-NotNull $vm1.Extensions[1].Settings;
 
         # *** TODO: The removal call did not return. 12/12/2014
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+function Test-VirtualMachineCustomScriptExtensionPiping
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        # Common
+        $loc = Get-ComputeVMLocation;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $vmname = 'vm' + $rgname;
+        $user = "Foo12";
+        $password = $PLACEHOLDER;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        [string]$domainNameLabel = "$vmname-$vmname".tolower();
+        $vmobject = New-AzVm -Name $vmname -ResourceGroupName $rgname -Credential $cred -DomainNameLabel $domainNameLabel;
+
+        $csename = "myCustomExtension";
+        $fileUri = "https://raw.githubusercontent.com/neilpeterson/nepeters-azure-templates/master/windows-custom-script-simple/support-scripts/Create-File.ps1";
+        $runname = "Create-File.ps1";
+
+        # Parameter set interactive
+        Set-AzVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmname -Name $csename `
+            -Location $loc -FileUri $fileUri -Run $runname;
+        $cseobject = Get-AzVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmname -Name $csename;
+
+        Assert-NotNull $cseobject;
+        Assert-Match $runname $cseobject.CommandToExecute;
+
+        # Parameter set InputObject
+        $argument = "-NonInteractive";
+        $cseobject | Set-AzVMCustomScriptExtension -Argument $argument;
+        $cseobject = Get-AzVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmname -Name $csename;
+
+        Assert-NotNull $cseobject;
+        Assert-Match $runname $cseobject.CommandToExecute;
+        Assert-Match $argument $cseobject.CommandToExecute;
+
+        # Parameter set ResourceId
+        Set-AzVMCustomScriptExtension -ResourceId $cseobject.Id -Location $loc `
+            -FileUri $fileUri -Run $runname;
+        $cseobject = Get-AzVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmname -Name $csename;
+
+        Assert-NotNull $cseobject;
+        Assert-Match $runname $cseobject.CommandToExecute;
+        Assert-NotMatch $argument $cseobject.CommandToExecute;
+
+
+        # Parameter set TopLevelResourceObject
+        $vmobject | Set-AzVMCustomScriptExtension -Name $csename -Location $loc `
+            -FileUri $fileUri -Run $runname -Argument $argument;
+        $cseobject = Get-AzVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmname -Name $csename;
+
+        Assert-NotNull $cseobject;
+        Assert-Match $runname $cseobject.CommandToExecute;
+        Assert-Match $argument $cseobject.CommandToExecute;
     }
     finally
     {

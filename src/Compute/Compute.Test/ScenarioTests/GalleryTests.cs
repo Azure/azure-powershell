@@ -30,5 +30,19 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-Gallery");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGalleryCrossTenant()
+        {
+            TestRunner.RunTestScript("Test-GalleryCrossTenant");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GalleryImageVersion()
+        {
+            TestRunner.RunTestScript("Test-GalleryImageVersion");
+        }
     }
 }

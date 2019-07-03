@@ -33,9 +33,56 @@ The **Get-AzVirtualNetwork** cmdlet gets one or more virtual networks n a resour
 ### 1: Retrieve a virtual network
 ```
 Get-AzVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResourceGroup
+
+Name                   : MyVirtualNetwork1
+ResourceGroupName      : TestResourceGroup
+Location               : eastus
+Id                     : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestResourceGroup
+                         /providers/Microsoft.Network/virtualNetworks/MyVirtualNetwork1
+Etag                   : W/"00000000-0000-0000-0000-000000000000"
+ResourceGuid           : 00000000-0000-0000-0000-000000000000
+ProvisioningState      : Succeeded
+Tags                   :
+AddressSpace           : {
+                           "AddressPrefixes": [
+                             "xx.x.x.x/x"
+                           ]
+                         }
+DhcpOptions            : {}
+Subnets                : []
+VirtualNetworkPeerings : []
+EnableDdosProtection   : false
+DdosProtectionPlan     : null
 ```
 
 This command gets the virtual network named MyVirtualNetwork in the resource group TestResourceGroup
+
+### 2: List virtual networks using filter
+```
+Get-AzVirtualNetwork -Name MyVirtualNetwork*
+
+Name                   : MyVirtualNetwork1
+ResourceGroupName      : TestResourceGroup
+Location               : eastus
+Id                     : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestResourceGroup
+                         /providers/Microsoft.Network/virtualNetworks/MyVirtualNetwork1
+Etag                   : W/"00000000-0000-0000-0000-000000000000"
+ResourceGuid           : 00000000-0000-0000-0000-000000000000
+ProvisioningState      : Succeeded
+Tags                   :
+AddressSpace           : {
+                           "AddressPrefixes": [
+                             "xx.x.x.x/x"
+                           ]
+                         }
+DhcpOptions            : {}
+Subnets                : []
+VirtualNetworkPeerings : []
+EnableDdosProtection   : false
+DdosProtectionPlan     : null
+```
+
+This command gets all virtual networks that start with "MyVirtualNetwork".
 
 ## PARAMETERS
 
@@ -79,7 +126,7 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ```yaml
@@ -91,7 +138,7 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -ResourceGroupName
@@ -106,7 +153,7 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ```yaml
@@ -118,11 +165,11 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

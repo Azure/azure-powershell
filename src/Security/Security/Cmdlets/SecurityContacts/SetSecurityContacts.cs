@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.SecurityContacts
 
             if (ShouldProcess(Name, VerbsCommon.Set))
             {
-                var contact = new SecurityContact(Email, phone, alertNotification, alertAdmin);
+                var contact = new SecurityContact(email: Email, phone: phone, alertNotifications: alertNotification, alertsToAdmins: alertAdmin);
                 var sc = SecurityCenterClient.SecurityContacts.CreateWithHttpMessagesAsync(Name, contact).GetAwaiter().GetResult().Body;
 
                 WriteObject(sc.ConvertToPSType(), enumerateCollection: true); 

@@ -33,7 +33,33 @@ Gets a name of the resource group testing.
 function Get-RG-Name
 {
 	return getAssetname
-	#return "KustoPSClientTest"
+}
+
+<#
+.SYNOPSIS
+Gets an instance number of a machines in a cluster.
+#>
+function Get-Cluster-Default-Capacity
+{
+	return 2
+}
+
+<#
+.SYNOPSIS
+Gets an instance number of a machines in a cluster.
+#>
+function Get-Cluster-Capacity
+{
+	return 5
+}
+
+<#
+.SYNOPSIS
+Gets an instance number of a machines in a cluster.
+#>
+function Get-Cluster-Updated-Capacity
+{
+	return 10
 }
 
 <#

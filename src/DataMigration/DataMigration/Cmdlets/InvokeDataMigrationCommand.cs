@@ -30,9 +30,23 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
         [Parameter(
           Mandatory = true,
           HelpMessage = "Command Type.")]
-        [PSArgumentCompleter("Complete")]
         [ValidateNotNullOrEmpty]
-        public string CommandType { get; set; }
+        public CommandTypeEnum CommandType
+        {
+            get
+            {
+                return commandType;
+            }
+            set
+            {
+                commandType = value;
+                commandTypeSet = true;
+            }
+        }
+
+        private CommandTypeEnum commandType;
+
+        private bool commandTypeSet;
 
         [Parameter(
             Mandatory = true,
@@ -68,20 +82,35 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 
         public object GetDynamicParameters()
         {
-            // make sure the commands are relate to the project type, so read project to ensure right method to invoke.
-            Project resp = this.DataMigrationClient.Projects.Get(ResourceGroupName, ServiceName, ProjectName);            
             RuntimeDefinedParameterDictionary dynamicParams = null;
-            string cmd = string.IsNullOrWhiteSpace(CommandType) ? " " : CommandType.ToLowerInvariant();
-            if (resp.SourcePlatform.ToLowerInvariant() == "mongodb")
+
+            if (commandTypeSet)
             {
-                commandCmdlet = new MongoDbObjectCommandCmdlet(this.MyInvocation, cmd);
-            }
-            else
-            {
-                commandCmdlet = new CompleteCommandCmdlet(this.MyInvocation);
+                CommandTypeEnum type = CommandType;
+                switch (type)
+                {
+                    case CommandTypeEnum.CompleteSqlDBSync:
+                        commandCmdlet = new CompleteCommandCmdlet(this.MyInvocation);
+                        break;
+                    case CommandTypeEnum.CancelMongoDB:
+                        commandCmdlet = new MongoDbObjectCommandCmdlet(this.MyInvocation, CommandTypeEnum.CancelMongoDB);
+                        break;
+                    case CommandTypeEnum.RestartMongoDB:
+                        commandCmdlet = new MongoDbObjectCommandCmdlet(this.MyInvocation, CommandTypeEnum.RestartMongoDB);
+                        break;
+                    case CommandTypeEnum.FinishMongoDB:
+                        commandCmdlet = new MongoDbObjectCommandCmdlet(this.MyInvocation, CommandTypeEnum.FinishMongoDB);
+                        break;
+                    case CommandTypeEnum.CompleteSqlMiSync:
+                        commandCmdlet = new CompleteMiSyncCommandCmdlet(this.MyInvocation);
+                        break;
+                    default:
+                        throw new PSArgumentException();
+                }
+
+                dynamicParams = commandCmdlet.RuntimeDefinedParams;
             }
 
-            dynamicParams = commandCmdlet.RuntimeDefinedParams;
             return dynamicParams;
         }
 

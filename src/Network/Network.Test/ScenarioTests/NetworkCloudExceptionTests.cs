@@ -12,21 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.Azure.Commands.Network.Test.ScenarioTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Commands.Network.Test.ScenarioTests
 {
-    public class NetworkCloudExceptionTests : Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class NetworkCloudExceptionTests : NetworkTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
         public NetworkCloudExceptionTests(ITestOutputHelper output)
+            : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
@@ -34,7 +31,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestNotFound()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-NotFound");
+            TestRunner.RunTestScript("Test-NotFound");
         }
 
         [Fact]
@@ -42,7 +39,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestInvalidName()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-InvalidName");
+            TestRunner.RunTestScript("Test-InvalidName");
         }
 
         [Fact]
@@ -50,7 +47,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestDuplicateResource()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-DuplicateResource");
+            TestRunner.RunTestScript("Test-DuplicateResource");
         }
 
         [Fact]
@@ -58,7 +55,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestIntersectAddressSpace()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-IntersectAddressSpace");
+            TestRunner.RunTestScript("Test-IntersectAddressSpace");
         }
     }
 }

@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 {
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Handlers;
+    using Microsoft.Rest;
     using System.Collections.Generic;
     using System.Linq;
     using System.Net.Http;
@@ -27,9 +28,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
     public abstract class HttpClientHelper
     {
         /// <summary>
-        /// The subscription cloud credentials.
+        /// The service client credentials.
         /// </summary>
-        private readonly SubscriptionCloudCredentials credentials;
+        private readonly ServiceClientCredentials credentials;
 
         /// <summary>
         /// The header values.
@@ -44,9 +45,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// <summary>
         /// Initializes a new instance of the <see cref="HttpClientHelper"/> class.
         /// </summary>
-        /// <param name="credentials">The subscription cloud credentials.</param>
+        /// <param name="credentials">The service client credentials.</param>
         /// <param name="headerValues">The header values.</param>
-        protected HttpClientHelper(SubscriptionCloudCredentials credentials, IEnumerable<ProductInfoHeaderValue> headerValues, Dictionary<string, string> cmdletHeaderValues)
+        protected HttpClientHelper(ServiceClientCredentials credentials, IEnumerable<ProductInfoHeaderValue> headerValues, Dictionary<string, string> cmdletHeaderValues)
         {
             this.credentials = credentials;
             this.headerValues = headerValues;

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/set-azpolicysetdefinition
@@ -56,6 +56,22 @@ PS C:\> Set-AzPolicySetDefinition -Id $PolicySetDefinition.ResourceId -Descripti
 The first command gets a policy set definition by using the Get-AzPolicySetDefinition cmdlet.
 The command stores that object in the $PolicySetDefinition variable.
 The second command updates the description of the policy set definition identified by the **ResourceId** property of $PolicySetDefinition.
+
+### Example 2: Update the metadata of a policy set definition
+```
+PS C:\> Set-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"Virtual Machine"}'
+
+
+Name                  : VMPolicySetDefinition
+ResourceId            : /subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/policySetDefinitions/VMPolicySetDefinition
+ResourceName          : VMPolicySetDefinition
+ResourceType          : Microsoft.Authorization/policySetDefinitions
+SubscriptionId        : 11111111-1111-1111-1111-111111111111
+Properties            : @{displayName=VMPolicySetDefinition; policyType=Custom; metadata=; parameters=; policyDefinitions=System.Object[]}
+PolicySetDefinitionId : /subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/policySetDefinitions/VMPolicySetDefinition
+```
+
+This command updates the metadata of a policy set definition named VMPolicySetDefinition to indicate its category is "Virtual Machine".
 
 ## PARAMETERS
 
@@ -198,7 +214,7 @@ Accept wildcard characters: False
 ```
 
 ### -PolicyDefinition
-The policy set definition. This can either be a path to a file name containing the policy definitions, or the policy set definition as string.
+The policy definitions. This can either be a path to a file name containing the policy definitions, or the policy definitions as string.
 
 ```yaml
 Type: System.String
@@ -273,7 +289,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

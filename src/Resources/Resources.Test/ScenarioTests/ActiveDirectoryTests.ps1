@@ -658,21 +658,25 @@ function Test-NewADServicePrincipalWithCustomScope
 
 <#
 .SYNOPSIS
-Tests Creating and deleting application using Password Credentials.
+Tests Creating and deleting application using App Credentials.
 #>
-function Test-CreateDeleteAppPasswordCredentials
+function Test-CreateDeleteAppCredentials
 {
     # Setup
-    $displayName = getAssetName
+	$getAssetName = ConvertTo-SecureString "test" -AsPlainText -Force
+    $displayName = "test"
     $identifierUri = "http://" + $displayName
-    $password = getAssetName
+    $password = $getAssetName
+	$keyId1 = "316af45c-83ff-42a5-a1d1-8fe9b2de3ac1"
+	$keyId2 = "9b7fda23-cb39-4504-8aa6-3570c4239620"
+	$keyId3 = "4141b479-4ca0-4919-8451-7e155de6aa0f"
 
     # Test - Add application with a password cred
     $application = New-AzADApplication -DisplayName $displayName -IdentifierUris $identifierUri -Password $password
 
     # Assert
     Assert-NotNull $application
-
+	Try {
     # Get Application by ObjectId
     $app1 =  Get-AzADApplication -ObjectId $application.ObjectId
     Assert-NotNull $app1
@@ -685,7 +689,7 @@ function Test-CreateDeleteAppPasswordCredentials
     # Add 1 more password credential to the same app
     $start = (Get-Date).ToUniversalTime()
     $end = $start.AddYears(1)
-    $cred = New-AzADAppCredential -ObjectId $application.ObjectId -Password $password -StartDate $start -EndDate $end
+    $cred = New-AzADAppCredentialWithId -ObjectId $application.ObjectId -Password $password -StartDate $start -EndDate $end -KeyId $keyId1
     Assert-NotNull $cred
 
     # Get credential should fetch 2 credentials
@@ -694,24 +698,61 @@ function Test-CreateDeleteAppPasswordCredentials
     Assert-AreEqual $cred2.Count 2
     $credCount = $cred2 | where {$_.KeyId -in $cred1.KeyId, $cred.KeyId}
     Assert-AreEqual $credCount.Count 2
+	$cred2 = $cred
+
+	# Add 1 key credential to the same app
+	$certPath = Join-Path $ResourcesPath "certificate.pfx"
+	$cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2($certPath)
+
+	$binCert = $cert.GetRawCertData()
+	$credValue = [System.Convert]::ToBase64String($binCert)
+	$start = (Get-Date).ToUniversalTime()
+	$end = $start.AddDays(1)
+	$cred = New-AzADAppCredentialWithId -ObjectId $application.ObjectId -CertValue $credValue -StartDate $start -EndDate $end -KeyId $keyId2
+    Assert-NotNull $cred
+
+    # Get credential should fetch 3 credentials
+    $cred3 = Get-AzADAppCredential -ObjectId $application.ObjectId
+    Assert-NotNull $cred3
+    Assert-AreEqual $cred3.Count 3
+    $credCount = $cred3 | where {$_.KeyId -in $cred1.KeyId, $cred2.KeyId, $cred.KeyId}
+    Assert-AreEqual $credCount.Count 3
+	$cred3 = $cred
+
+	# Add 1 more key credential to the same app
+	$binCert = $cert.GetRawCertData()
+	$credValue = [System.Convert]::ToBase64String($binCert)
+	$start = (Get-Date).ToUniversalTime()
+	$end = $start.AddDays(1)
+	$cred = New-AzADAppCredentialWithId -ObjectId $application.ObjectId -CertValue $credValue -StartDate $start -EndDate $end -KeyId $keyId3
+    Assert-NotNull $cred
+
+    # Get credential should fetch 4 credentials
+    $cred4 = Get-AzADAppCredential -ObjectId $application.ObjectId
+    Assert-NotNull $cred4
+    Assert-AreEqual $cred4.Count 4
+    $credCount = $cred4 | where {$_.KeyId -in $cred1.KeyId, $cred2.KeyId, $cred3.KeyId, $cred.KeyId}
+    Assert-AreEqual $credCount.Count 4
 
     # Remove cred by KeyId
     Remove-AzADAppCredential -ApplicationId $application.ApplicationId -KeyId $cred.KeyId -Force
-    $cred3 = Get-AzADAppCredential -ApplicationId $application.ApplicationId
-    Assert-NotNull $cred3
-    Assert-AreEqual $cred3.Count 1
-    Assert-AreEqual $cred3[0].KeyId $cred1.KeyId
+    $cred5 = Get-AzADAppCredential -ApplicationId $application.ApplicationId
+    Assert-NotNull $cred5
+    Assert-AreEqual $cred5.Count 3
+    Assert-AreEqual $cred5[2].KeyId $cred1.KeyId
 
     # Remove All creds
-    Remove-AzADAppCredential -ObjectId $application.ObjectId -All -Force
-    $cred3 = Get-AzADAppCredential -ObjectId $application.ObjectId
-    Assert-Null $cred3
-
+    Remove-AzADAppCredential -ObjectId $application.ObjectId -Force
+    $cred5 = Get-AzADAppCredential -ObjectId $application.ObjectId
+    Assert-Null $cred5                     
+	 
     $newApplication = Get-AzADApplication -DisplayNameStartWith "PowershellTestingApp"
     Assert-Throws { New-AzADAppCredential -ApplicationId $newApplication.ApplicationId -Password "Somedummypwd"}
-
-    # Remove App
-    Remove-AzADApplication -ObjectId $application.ObjectId -Force
+	}
+	Finally{
+		# Remove App
+		Remove-AzADApplication -ObjectId $application.ObjectId -Force
+	}
 }
 
 
@@ -719,14 +760,21 @@ function Test-CreateDeleteAppPasswordCredentials
 .SYNOPSIS
 Tests Creating and deleting application using Service Principal Credentials.
 #>
-function Test-CreateDeleteSpPasswordCredentials
+function Test-CreateDeleteSpCredentials
 {
-    # Setup
-    $displayName = getAssetName
-    $password = getAssetName
+	param([string]$applicationId)
 
-    # Test - Add SP with a password cred
-    $servicePrincipal = New-AzADServicePrincipal -DisplayName $displayName  -Password $password
+    # Setup
+	$getAssetName = ConvertTo-SecureString "test" -AsPlainText -Force
+    $displayName = "test"
+    $identifierUri = "http://" + $displayName
+	$password = $getAssetName
+	$keyId1 = "316af45c-83ff-42a5-a1d1-8fe9b2de3ac1"
+	$keyId2 = "9b7fda23-cb39-4504-8aa6-3570c4239620"
+	$keyId3 = "4141b479-4ca0-4919-8451-7e155de6aa0f"
+
+    # Test - Add SP
+    $servicePrincipal = New-AzADServicePrincipal -DisplayName $displayName -ApplicationId $applicationId
 
     # Assert
     Assert-NotNull $servicePrincipal
@@ -742,10 +790,10 @@ function Test-CreateDeleteSpPasswordCredentials
     Assert-NotNull $cred1
     Assert-AreEqual $cred1.Count 1
 
-    # Add 1 more passowrd credential to the same app
+    # Add 1 more password credential to the same app
     $start = (Get-Date).ToUniversalTime()
     $end = $start.AddYears(1)
-    $cred = New-AzADSpCredential -ObjectId $servicePrincipal.Id -Password $password -StartDate $start -EndDate $end
+    $cred = New-AzADSpCredentialWithId -ObjectId $servicePrincipal.Id -StartDate $start -EndDate $end -KeyId $keyId1
     Assert-NotNull $cred
 
     # Get credential should fetch 2 credentials
@@ -754,23 +802,58 @@ function Test-CreateDeleteSpPasswordCredentials
     Assert-AreEqual $cred2.Count 2
     $credCount = $cred2 | where {$_.KeyId -in $cred1.KeyId, $cred.KeyId}
     Assert-AreEqual $credCount.Count 2
+	$cred2 = $cred
+
+	# Add 1 key credential to the same app
+	$certPath = Join-Path $ResourcesPath "certificate.pfx"
+	$cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2($certPath)
+
+	$binCert = $cert.GetRawCertData()
+	$credValue = [System.Convert]::ToBase64String($binCert)
+	$start = (Get-Date).ToUniversalTime()
+	$end = $start.AddDays(1)
+	$cred = New-AzADSpCredentialWithId -ObjectId $servicePrincipal.Id -CertValue $credValue -StartDate $start -EndDate $end -KeyId $keyId2
+    Assert-NotNull $cred
+
+    # Get credential should fetch 3 credentials
+    $cred3 = Get-AzADSpCredential -ObjectId $servicePrincipal.Id
+    Assert-NotNull $cred3
+    Assert-AreEqual $cred3.Count 3
+    $credCount = $cred3 | where {$_.KeyId -in $cred1.KeyId, $cred2.KeyId, $cred.KeyId}
+    Assert-AreEqual $credCount.Count 3
+	$cred3 = $cred
+
+	# Add 1 more key credential to the same app
+	$binCert = $cert.GetRawCertData()
+	$credValue = [System.Convert]::ToBase64String($binCert)
+	$start = (Get-Date).ToUniversalTime()
+	$end = $start.AddDays(1)
+	$cred = New-AzADSpCredentialWithId -ObjectId $servicePrincipal.Id -CertValue $credValue -StartDate $start -EndDate $end -KeyId $keyId3
+    Assert-NotNull $cred
+
+    # Get credential should fetch 4 credentials
+    $cred4 = Get-AzADSpCredential -ObjectId $servicePrincipal.Id
+    Assert-NotNull $cred4
+    Assert-AreEqual $cred4.Count 4
+    $credCount = $cred4 | where {$_.KeyId -in $cred1.KeyId, $cred2.KeyId, $cred3.KeyId, $cred.KeyId}
+    Assert-AreEqual $credCount.Count 4
+
 
     # Remove cred by KeyId
     Remove-AzADSpCredential -ServicePrincipalName $servicePrincipal.ServicePrincipalNames[0] -KeyId $cred.KeyId -Force
-    $cred3 = Get-AzADSpCredential -ServicePrincipalName $servicePrincipal.ServicePrincipalNames[0]
-    Assert-NotNull $cred3
-    Assert-AreEqual $cred3.Count 1
-    Assert-AreEqual $cred3[0].KeyId $cred1.KeyId
+    $cred5 = Get-AzADSpCredential -ServicePrincipalName $servicePrincipal.ServicePrincipalNames[0]
+    Assert-NotNull $cred5
+    Assert-AreEqual $cred5.Count 3
+    Assert-AreEqual $cred5[2].KeyId $cred1.KeyId
 
     # Remove All creds
-    Remove-AzADSpCredential -ObjectId $servicePrincipal.Id -All -Force
-    $cred3 = Get-AzADSpCredential -ObjectId $servicePrincipal.Id
-    Assert-Null $cred3
+    Remove-AzADSpCredential -ObjectId $servicePrincipal.Id -Force
+    $cred5 = Get-AzADSpCredential -ObjectId $servicePrincipal.Id
+    Assert-Null $cred5
     }
     Finally
     {
-      # Remove App
-      $app =  Get-AzADApplication -ApplicationId $servicePrincipal.ApplicationId
-      Remove-AzADApplication -ObjectId $app.ObjectId -Force
+		# Remove Service Principal
+		Remove-AzADServicePrincipal -ObjectId $servicePrincipal.Id -Force
     }
 }

@@ -13,58 +13,16 @@
 
 <#
 .SYNOPSIS
-Gets valid resource group name
+Creates a resource group to use in tests
 #>
-function Get-ResourceGroupName
+function CurrentApiVersion 
 {
-    return getAssetName
+	return "2018-07-01-preview"
 }
 
-<#
-.SYNOPSIS
-Gets valid resource name
-#>
-function Get-ResourceName
+function SampleMetadata
 {
-    return getAssetName
-}
-
-<#
-.SYNOPSIS
-Gets the default location for a provider
-#>
-function Get-ProviderLocation($provider)
-{
-	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
-	{
-		$namespace = $provider.Split("/")[0]  
-		if($provider.Contains("/"))  
-		{  
-			$type = $provider.Substring($namespace.Length + 1)  
-			$location = Get-AzResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}  
-  
-			if ($location -eq $null) 
-			{  
-				return "West US"  
-			} else 
-			{  
-				return $location.Locations[0]
-			}  
-		}
-		
-		return "West US"
-	}
-
-	return "WestUS"
-}
-
-<#
-.SYNOPSIS
-Gets the default test location name.
-#>
-function Get-LocationName()
-{
-	return 'brazilsouth'
+	return @{ "key1" = "value1"; "key2" = "value2"; "key3" = "value3"; }
 }
 
 <#
@@ -73,53 +31,20 @@ Creates a resource group to use in tests
 #>
 function TestSetup-CreateResourceGroup
 {
-    $resourceGroupName = getAssetName
-	$rglocation = Get-ProviderLocation "North Europe"
-    $resourceGroup = New-AzResourceGroup -Name $resourceGroupName -location $rglocation -Force
-	
+    $resourceGroupName = "RG-" + (getAssetname)
+	$location = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
+    $resourceGroup = New-AzResourceGroup -Name $resourceGroupName -location $location
+
 	return $resourceGroup
 }
-
-<#
-.SYNOPSIS
-Creates named resource group to use in tests
-#>
-function TestSetup-CreateNamedResourceGroup([string]$resourceGroupName)
-{
-	$location = Get-LocationName
-    $resourceGroup = New-AzResourceGroup -Name $resourceGroupName -location $location -Force
-	
-	return $resourceGroup
-}
-
-<#
-.SYNOPSIS
-Creates an App Service Plan
-#>
-function TestSetup-CreateAppServicePlan ([string]$resourceGroupName, [string]$AppServicePlan)
-{	
-	if(Test-Path Env:AZURE_TEST_MODE)
-	{
-		$AZURE_TEST_MODE = Get-ChildItem Env:AZURE_TEST_MODE
-		if($AZURE_TEST_MODE.Value.ToLowerInvariant() -eq 'record')
-		{
-			$PropertiesObject = @{}
-			$Sku = @{Name='S1'; Tier='Standard'; Size='S1'; Family='S'; Capacity=1}
-			$Plan = New-AzResource -Name $AppServicePlan -Location "West US" -ResourceGroupName $resourceGroupName -ResourceType "Microsoft.Web/serverfarms" -ApiVersion 2015-08-01 -SkuObject $Sku -PropertyObject $PropertiesObject -Force	
-			return $Plan
-		}
-	}
-	return $null	
-}
-
 
 <#
 .SYNOPSIS
 Creates a new Integration account
 #>
 function TestSetup-CreateIntegrationAccount ([string]$resourceGroupName, [string]$integrationAccountName)
-{		
-	$location = Get-LocationName
+{
+	$location = Get-Location "Microsoft.Logic" "integrationAccounts" "West US"
 	$integrationAccount = New-AzIntegrationAccount -ResourceGroupName $resourceGroupName -IntegrationAccountName $integrationAccountName -Location $location -Sku "Standard"
 	return $integrationAccount
 }
@@ -129,15 +54,13 @@ function TestSetup-CreateIntegrationAccount ([string]$resourceGroupName, [string
 Creates a new workflow
 #>
 function TestSetup-CreateWorkflow ([string]$resourceGroupName, [string]$workflowName, [string]$AppServicePlan)
-{		
-	$rglocation = Get-ProviderLocation "North Europe"
+{
+	$location = Get-Location "Microsoft.Logic" "workflows" "West US"
     $resourceGroup = New-AzResourceGroup -Name $resourceGroupName -location $rglocation -Force
-
-	TestSetup-CreateAppServicePlan $resourceGroupName $AppServicePlan
 
 	$definitionFilePath = Join-Path "Resources" "TestSimpleWorkflowDefinition.json"
 	$parameterFilePath = Join-Path "Resources" "TestSimpleWorkflowParameter.json"
-	$workflow = $resourceGroup | New-AzLogicApp -Name $workflowName -Location $WORKFLOW_LOCATION -DefinitionFilePath $definitionFilePath -ParameterFilePath $parameterFilePath
+	$workflow = $resourceGroup | New-AzLogicApp -Name $workflowName -Location $location -DefinitionFilePath $definitionFilePath -ParameterFilePath $parameterFilePath
     return $workflow
 }
 
@@ -149,7 +72,7 @@ function SleepInRecordMode ([int]$SleepIntervalInMillisec)
 {
 	$mode = $env:AZURE_TEST_MODE
 	if ( $mode -ne $null -and $mode.ToUpperInvariant() -eq "RECORD")
-	{	
+	{
 		Sleep -Milliseconds $SleepIntervalInMillisec 
-	}		
+	}
 }

@@ -74,6 +74,8 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The end date till which password or key is valid. Default value is one year after the start date.")]
         public DateTime EndDate { get; set; }
 
+        public Guid KeyId { get; set; } = default(Guid);
+
         public NewAzureADAppCredentialCommand()
         {
             DateTime currentTime = DateTime.UtcNow;
@@ -84,7 +86,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         {
             ExecutionBlock(() =>
             {
-                if (!this.IsParameterBound(c => c.EndDate))
+                if (this.EndDate == null)
                 {
                     WriteVerbose(Resources.Properties.Resources.DefaultEndDateUsed);
                     EndDate = StartDate.AddYears(1);
@@ -111,7 +113,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     {
                         EndDate = EndDate,
                         StartDate = StartDate,
-                        KeyId = Guid.NewGuid().ToString(),
+                        KeyId = KeyId == default(Guid) ? Guid.NewGuid().ToString() : KeyId.ToString(),
                         Value = decodedPassword
                     };
                     if (ShouldProcess(target: ObjectId, action: string.Format("Adding a new password to application with objectId {0}", ObjectId)))
@@ -119,14 +121,14 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                         WriteObject(ActiveDirectoryClient.CreateAppPasswordCredential(ObjectId, passwordCredential));
                     }
                 }
-                else if (this.IsParameterBound(c => c.CertValue))
+                else if (CertValue != null)
                 {
                     // Create object for key credential
                     var keyCredential = new KeyCredential()
                     {
                         EndDate = EndDate,
                         StartDate = StartDate,
-                        KeyId = Guid.NewGuid().ToString(),
+                        KeyId = KeyId == default(Guid) ? Guid.NewGuid().ToString() : KeyId.ToString(),
                         Value = CertValue,
                         Type = "AsymmetricX509Cert",
                         Usage = "Verify"
@@ -138,7 +140,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 }
                 else
                 {
-                    throw new InvalidOperationException("No valid keyCredential or passowrdCredential to update!!");
+                    throw new InvalidOperationException("No valid keyCredential or passwordCredential to update!!");
                 }
             });
         }

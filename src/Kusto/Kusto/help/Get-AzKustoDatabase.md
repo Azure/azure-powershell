@@ -43,7 +43,6 @@ PS C:\> Get-AzKustoDatabase -ResourceGroupName testrg -ClusterName mykustocluste
 Name                   : mykustocluster/mykustodatabase1
 SoftDeletePeriodInDays : 3650
 HotCachePeriodInDays   : 31
-Etag                   : "v4.0"
 Statistic              : Microsoft.Azure.Management.Kusto.Models.DatabaseStatistics
 Id                     : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testrg/providers/Microsoft.Kusto/Clusters/mykustocluster/Databases/mykustodatabase1
 Location               : Central US
@@ -52,7 +51,6 @@ Type                   : Microsoft.Kusto/Clusters/Databases
 Name                   : mykustocluster/mykustodatabase2
 SoftDeletePeriodInDays : 3650
 HotCachePeriodInDays   : 31
-Etag                   : "v4.0"
 Statistic              : Microsoft.Azure.Management.Kusto.Models.DatabaseStatistics
 Id                     : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testrg/providers/Microsoft.Kusto/Clusters/mykustocluster/Databases/mykustodatabase2
 Location               : Central US
@@ -68,7 +66,6 @@ PS C:\> Get-AzKustoCluster -ResourceGroupName testrg -Name mykustocluster | Get-
 Name                   : mykustocluster/mykustodatabase1
 SoftDeletePeriodInDays : 3650
 HotCachePeriodInDays   : 31
-Etag                   : "v4.0"
 Statistic              : Microsoft.Azure.Management.Kusto.Models.DatabaseStatistics
 Id                     : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testrg/providers/Microsoft.Kusto/Clusters/mykustocluster/Databases/mykustodatabase1
 Location               : Central US
@@ -77,7 +74,6 @@ Type                   : Microsoft.Kusto/Clusters/Databases
 Name                   : mykustocluster/mykustodatabase2
 SoftDeletePeriodInDays : 3650
 HotCachePeriodInDays   : 31
-Etag                   : "v4.0"
 Statistic              : Microsoft.Azure.Management.Kusto.Models.DatabaseStatistics
 Id                     : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testrg/providers/Microsoft.Kusto/Clusters/mykustocluster/Databases/mykustodatabase2
 Location               : Central US
@@ -94,7 +90,6 @@ PS C:\> Get-AzKustoDatabase -ResourceGroupName testrg -ClusterName mykustocluste
 Name                   : mykustocluster/mykustodatabase
 SoftDeletePeriodInDays : 3650
 HotCachePeriodInDays   : 31
-Etag                   : "v4.0"
 Statistic              : Microsoft.Azure.Management.Kusto.Models.DatabaseStatistics
 Id                     : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testrg/providers/Microsoft.Kusto/Clusters/mykustocluster/Databases/mykustodatabase
 Location               : Central US

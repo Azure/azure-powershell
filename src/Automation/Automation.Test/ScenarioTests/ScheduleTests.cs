@@ -12,25 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
+
 namespace Commands.Automation.Test
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using Microsoft.Azure.Commands.Automation.Test;
-    using Microsoft.Azure.ServiceManagement.Common.Models;
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Xunit;
-    public class ScheduleTests : AutomationScenarioTestsBase
+    public class ScheduleTests : AutomationTestRunner
     {
-        public XunitTracingInterceptor logger;
-
         public ScheduleTests(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
         {
-            logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(logger);
         }
 
         [Fact]
@@ -40,7 +31,7 @@ namespace Commands.Automation.Test
         [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestE2ESchedules()
         {
-            RunPowerShellTest(logger, "Test-E2ESchedules");
+            TestRunner.RunTestScript("Test-E2ESchedules");
         }
     }
 }

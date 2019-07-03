@@ -37,41 +37,19 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetIAReceivedIcnWithoutAgreementType()
+        public void TestGetReceivedIcn()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetIntegrationAccountReceivedIcn-NoAgreementType");
-        }
-
-        /// <summary>
-        /// Test Get-AzIntegrationAccountReceivedIcn command to get the integration account generated interchange control number.
-        /// </summary>
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetIntegrationAccountReceivedIcn()
-        {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetIntegrationAccountReceivedIcn");
-        }
-
-        /// <summary>
-        /// Test Remove-AzIntegrationAccountReceivedIcn command to update the integration account generated interchange control number.
-        /// </summary>
-        /// <remarks>The test method name is abbreviated to avoid running into legacy path length limit inside the underlying http mock recorder.</remarks>
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemoveIntegrationAccountReceivedIcn()
-        {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-RemoveIntegrationAccountReceivedIcn");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetReceivedIcn");
         }
 
         /// <summary>
         /// Test Set-AzIntegrationAccountReceivedIcn command to update the integration account generated interchange control number.
         /// </summary>
-        /// <remarks>The test method name is abbreviated to avoid running into legacy path length limit inside the underlying http mock recorder.</remarks>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestUpdateIntegrationAccountReceivedIcn()
+        public void TestUpdateReceivedIcn()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-UpdateIntegrationAccountReceivedIcn");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-UpdateReceivedIcn");
         }
     }
 }

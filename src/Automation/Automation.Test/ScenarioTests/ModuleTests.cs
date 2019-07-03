@@ -12,21 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
+
 namespace Commands.Automation.Test
 {
-    using Microsoft.Azure.Commands.Automation.Test;
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Microsoft.Azure.ServiceManagement.Common.Models;
-    using Xunit;
-
-    public class ModuleTests : AutomationScenarioTestsBase
+    public class ModuleTests : AutomationTestRunner
     {
-        public XunitTracingInterceptor logger;
-
         public ModuleTests(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
         {
-            logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(logger);
         }
 
         [Fact]
@@ -34,7 +29,7 @@ namespace Commands.Automation.Test
         [Trait(Category.Service, Category.Automation)]
         public void GetAllModules()
         {
-            RunPowerShellTest(logger, "Test-GetAllModules");
+            TestRunner.RunTestScript("Test-GetAllModules");
         }
 
         [Fact]
@@ -42,7 +37,7 @@ namespace Commands.Automation.Test
         [Trait(Category.Service, Category.Automation)]
         public void GetModuleByName()
         {
-            RunPowerShellTest(logger, "Test-GetModuleByName");
+            TestRunner.RunTestScript("Test-GetModuleByName");
         }
 
         [Fact]
@@ -50,7 +45,7 @@ namespace Commands.Automation.Test
         [Trait(Category.Service, Category.Automation)]
         public void NewModule()
         {
-            RunPowerShellTest(logger, "Test-NewModule");
+            TestRunner.RunTestScript("Test-NewModule");
         }
 
         [Fact]
@@ -58,7 +53,7 @@ namespace Commands.Automation.Test
         [Trait(Category.Service, Category.Automation)]
         public void ImportModule()
         {
-            RunPowerShellTest(logger, "Test-ImportModule");
+            TestRunner.RunTestScript("Test-ImportModule");
         }
 
         [Fact]
@@ -66,7 +61,7 @@ namespace Commands.Automation.Test
         [Trait(Category.Service, Category.Automation)]
         public void SetModule()
         {
-            RunPowerShellTest(logger, "Test-SetModule");
+            TestRunner.RunTestScript("Test-SetModule");
         }
 
         [Fact]
@@ -74,7 +69,7 @@ namespace Commands.Automation.Test
         [Trait(Category.Service, Category.Automation)]
         public void RemoveModule()
         {
-            RunPowerShellTest(logger, "Test-RemoveModule");
+            TestRunner.RunTestScript("Test-RemoveModule");
         }
     }
 }

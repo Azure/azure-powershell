@@ -38,6 +38,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             {
                 Location = Location,
                 TemplateFile = TemplateUri ?? this.TryResolvePath(TemplateFile),
+                TemplateObject = TemplateObject,
                 TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
                 ParameterUri = TemplateParameterUri
             };

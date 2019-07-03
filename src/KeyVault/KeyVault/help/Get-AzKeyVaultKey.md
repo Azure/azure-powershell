@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 ms.assetid: 2BE34AE1-06FA-4F66-8FDB-CED22C2E0978
@@ -215,6 +215,37 @@ Tags                 :
 This command gets the key test3 that has been previously deleted, but not purged, in the key vault named Contoso.
 This command will return metadata such as the deletion date, and the scheduled purging date of this deleted key.
 
+### Example 7: Get all the keys in a key vault using filtering
+```powershell
+PS C:\> Get-AzKeyVaultKey -VaultName 'contoso' -KeyName "test*"
+
+Vault Name     : contoso
+Name           : test1
+Version        :
+Id             : https://contoso.vault.azure.net:443/keys/test1
+Enabled        : True
+Expires        : 11/24/2018 6:08:13 PM
+Not Before     : 5/24/2018 5:58:13 PM
+Created        : 5/24/2018 6:08:13 PM
+Updated        : 5/24/2018 6:08:13 PM
+Purge Disabled : False
+Tags           :
+
+Vault Name     : contoso
+Name           : test2
+Version        :
+Id             : https://contoso.vault.azure.net:443/keys/test2
+Enabled        : True
+Expires        : 11/24/2018 6:09:44 PM
+Not Before     : 5/24/2018 5:59:44 PM
+Created        : 5/24/2018 6:09:44 PM
+Updated        : 5/24/2018 6:09:44 PM
+Purge Disabled : False
+Tags           :
+```
+
+This command gets all the keys in the key vault named Contoso that start with "test".
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -292,7 +323,7 @@ Required: False
 Position: 1
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ```yaml
@@ -304,7 +335,7 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -ResourceId
@@ -355,7 +386,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

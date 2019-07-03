@@ -24,19 +24,6 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Model
     public enum ThreatDetectionStateType { Enabled, Disabled, New };
 
     /// <summary>
-    /// The possible disable alert types
-    /// </summary> 
-    public enum DetectionType
-    {
-        Sql_Injection,
-        Sql_Injection_Vulnerability,
-        Access_Anomaly,
-        Data_Exfiltration,
-        Unsafe_Action,
-        None
-    };
-
-    /// <summary>
     /// A class representing a database auditing policy
     /// </summary>
     public class BaseThreatDetectionPolicyModel
@@ -74,7 +61,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Model
         /// <summary>
         /// Gets or sets the detection types to filter 
         /// </summary>
-        public DetectionType[] ExcludedDetectionTypes { get; internal set; }
+        public string[] ExcludedDetectionTypes { get; internal set; }
 
         /// <summary>
         /// Gets or sets the retention days
@@ -84,7 +71,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Model
         /// <summary>
         /// In cases where the user decided to use the shortcut NONE, this method sets the value of the ExcludedDetectionType property to reflect the correct values.
         /// </summary>
-        public static DetectionType[] ProcessExcludedDetectionTypes(DetectionType[] excludedDetectionTypes)
+        public static string[] ProcessExcludedDetectionTypes(string[] excludedDetectionTypes)
         {
             if (excludedDetectionTypes == null || excludedDetectionTypes.Length == 0)
             {
@@ -95,7 +82,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Model
             {
                 if (excludedDetectionTypes[0] == DetectionType.None)
                 {
-                    return new DetectionType[] { };
+                    return new string[] { };
                 }
             }
             else

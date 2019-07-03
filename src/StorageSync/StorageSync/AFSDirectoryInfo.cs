@@ -19,27 +19,50 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
     using System.Collections.Generic;
     using System.Linq;
 
+    /// <summary>
+    /// Class AfsDirectoryInfo.
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Evaluation.AfsNamedObjectInfo" />
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces.IDirectoryInfo" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Evaluation.AfsNamedObjectInfo" />
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces.IDirectoryInfo" />
     class AfsDirectoryInfo : AfsNamedObjectInfo, IDirectoryInfo
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AfsDirectoryInfo" /> class.
+        /// </summary>
+        /// <param name="path">The path.</param>
         public AfsDirectoryInfo(string path) : base(path)
         {
         }
 
+        /// <summary>
+        /// Enumerates the directories.
+        /// </summary>
+        /// <returns>IEnumerable&lt;IDirectoryInfo&gt;.</returns>
         public IEnumerable<IDirectoryInfo> EnumerateDirectories()
         {
-            List<string> subDirectories = ListFiles.GetDirectories(ListFiles.EnsureUncPrefixPresent(this.FullName));
-            return subDirectories.Select(subDirectoryName => new AfsDirectoryInfo(Combine(this.FullName, subDirectoryName)));
+            List<string> subDirectories = ListFiles.GetDirectories(ListFiles.EnsureUncPrefixPresent(FullName));
+            return subDirectories.Select(subDirectoryName => new AfsDirectoryInfo(Combine(FullName, subDirectoryName)));
         }
 
+        /// <summary>
+        /// Enumerates the files.
+        /// </summary>
+        /// <returns>IEnumerable&lt;IFileInfo&gt;.</returns>
         public IEnumerable<IFileInfo> EnumerateFiles()
         {
-            List<Tuple<string, long>> subDirectories = ListFiles.GetFiles(ListFiles.EnsureUncPrefixPresent(this.FullName));
-            return subDirectories.Select(tuple => new AfsFileInfo(Combine(this.FullName, tuple.Item1), tuple.Item2));
+            List<Tuple<string, long>> subDirectories = ListFiles.GetFiles(ListFiles.EnsureUncPrefixPresent(FullName));
+            return subDirectories.Select(tuple => new AfsFileInfo(Combine(FullName, tuple.Item1), tuple.Item2));
         }
 
+        /// <summary>
+        /// Existses this instance.
+        /// </summary>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool Exists()
         {
-            return System.IO.Directory.Exists(this.FullName);
+            return System.IO.Directory.Exists(FullName);
         }
     }
 }

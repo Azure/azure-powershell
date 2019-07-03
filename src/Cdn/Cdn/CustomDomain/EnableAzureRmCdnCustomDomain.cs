@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,9 +21,11 @@ using Microsoft.Azure.Management.Cdn;
 using System.Linq;
 using Microsoft.Azure.Commands.Cdn.Models.Endpoint;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Cdn.CustomDomain
 {
+    [CmdletDeprecation(ReplacementCmdletName = "Enable-AzCdnCustomDomainHttps")]
     [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CdnCustomDomain", DefaultParameterSetName = FieldsParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class EnableAzureRmCdnCustomDomain : AzureCdnCmdletBase
     {

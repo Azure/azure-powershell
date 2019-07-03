@@ -12,17 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Models
 {
     public class PSPolicy : PSTrackedResource
     {
-        public PSMode? PolicyMode { get; set; }
+        public string PolicyMode { get; set; }
 
         public PSEnabledState? PolicyEnabledState { get; set; }
+
+        public string RedirectUrl { get; set; }
+
+        public ushort? CustomBlockResponseStatusCode { get; set; }
+
+        public string CustomBlockResponseBody { get; set; }
 
         public List<PSCustomRule> CustomRules { get; set; }
 

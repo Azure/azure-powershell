@@ -39,20 +39,6 @@ namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetResourceGroupLevelResource()
-        {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmSecurityPricing-ResourceGroupLevelResource");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetResourceGroupScope()
-        {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmSecurityPricing-ResourceGroupScope");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetSubscriptionLevelResource()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmSecurityPricing-SubscriptionLevelResource");
@@ -70,13 +56,6 @@ namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
         public void SetSubscriptionLevelResource()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzureRmSecurityPricing-SubscriptionLevelResource");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void SetResourceGroupLevelResource()
-        {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Set-AzureRmSecurityPricing-ResourceGroupLevelResource");
         }
     }
 }

@@ -110,9 +110,9 @@ function Test-ExpressRouteCircuitStageCRUD
       # set
       $circuit.AllowClassicOperations = $false
       $circuit = Set-AzExpressRouteCircuit -ExpressRouteCircuit $circuit
-	  
-	  		$actual = Get-AzExpressRouteCircuitStats -ResourceGroupName $rgname -ExpressRouteCircuitName $circuit.Name 
-			Assert-AreEqual $actual.PrimaryBytesIn 0
+
+      $actual = Get-AzExpressRouteCircuitStats -ResourceGroupName $rgname -ExpressRouteCircuitName $circuit.Name 
+      Assert-AreEqual $actual.PrimaryBytesIn 0
 
 	  #move
 	  $job = Move-AzExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname -Location $location -ServiceKey $circuit.ServiceKey -Force -AsJob
@@ -123,10 +123,19 @@ function Test-ExpressRouteCircuitStageCRUD
 	  $job | Wait-Job
 	  $delete = $job | Receive-Job
       Assert-AreEqual true $delete
-		      
+
+      # Check that the circuit was deleted
       $list = Get-AzExpressRouteCircuit -ResourceGroupName $rgname
-      Assert-AreEqual 0 @($list).Count
-      
+      Assert-Null ($list | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $circuitName });
+
+      $list = Get-AzExpressRouteCircuit -ResourceGroupName "*"
+      Assert-Null ($list | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $circuitName });
+
+      $list = Get-AzExpressRouteCircuit -Name "*"
+      Assert-Null ($list | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $circuitName });
+
+      $list = Get-AzExpressRouteCircuit -ResourceGroupName "*" -Name "*"
+      Assert-Null ($list | Where-Object { $_.ResourceGroupName -eq $rgname -and $_.Name -eq $circuitName });
     }
     finally
     {
@@ -621,6 +630,9 @@ function Test-ExpressRouteCircuitConnectionCRUD
 		#Get Express Route Circuit Resource
 		$initckt = Get-AzExpressRouteCircuit -Name $initCircuitName -ResourceGroupName $rgname
 
+		#Verify Global reach enabled readonly flag
+		Assert-AreEqual $true $initckt.GlobalReachEnabled
+
         $connection = Get-AzureRmExpressRouteCircuitConnectionConfig -Name $connectionName -ExpressRouteCircuit $initckt
 		Assert-AreEqual $connectionName $connection.Name
 		Assert-AreEqual "Succeeded" $connection.ProvisioningState
@@ -629,6 +641,19 @@ function Test-ExpressRouteCircuitConnectionCRUD
         $connections = Get-AzureRmExpressRouteCircuitConnectionConfig -ExpressRouteCircuit $initckt
         Assert-NotNull $connections
         Assert-AreEqual 1 $connections.Count
+
+		$initckt = Get-AzExpressRouteCircuit -Name $initCircuitName -ResourceGroupName $rgname
+		$peerckt = Get-AzExpressRouteCircuit -Name $peerCircuitName -ResourceGroupName $rgname
+
+		#Verify Global reach enabled readonly flag in peer circuit
+		Assert-AreEqual $true $peerckt.GlobalReachEnabled
+
+		#Verify Peer Circuit Connection fields
+		Assert-AreEqual 1 $peerckt.Peerings[0].PeeredConnections.Count
+		Assert-AreEqual $initckt.ServiceKey $peerckt.Peerings[0].PeeredConnections[0].Name
+		Assert-AreEqual $connectionName $peerckt.Peerings[0].PeeredConnections[0].ConnectionName
+		Assert-AreEqual "Succeeded" $peerckt.Peerings[0].PeeredConnections[0].ProvisioningState
+		Assert-AreEqual "Connected" $peerckt.Peerings[0].PeeredConnections[0].CircuitConnectionStatus
 
 		#Delete the circuit connection Resource
 		Remove-AzExpressRouteCircuitConnectionConfig -Name $connectionName -ExpressRouteCircuit $initckt
@@ -640,8 +665,20 @@ function Test-ExpressRouteCircuitConnectionCRUD
 		$initckt = Get-AzExpressRouteCircuit -Name $initCircuitName -ResourceGroupName $rgname
 		$initckt
 
+		#Verify Global reach enabled readonly flag
+		Assert-AreEqual $false $initckt.GlobalReachEnabled
+
 		#Verify Circuit Connection does not exist
 		Assert-AreEqual 0 $initckt.Peerings[0].Connections.Count
+
+		#Get peer Express Route Circuit Resource
+		$peerckt = Get-AzExpressRouteCircuit -Name $peerCircuitName -ResourceGroupName $rgname
+
+		#Verify Global reach enabled readonly flag in peer circuit
+		Assert-AreEqual $false $peerckt.GlobalReachEnabled
+
+		#Verify peer Circuit Connection does not exist
+		Assert-AreEqual 0 $peerckt.Peerings[0].PeeredConnections.Count
 
         Remove-AzureRmExpressRouteCircuitPeeringConfig -ExpressRouteCircuit $initckt -Name AzurePrivatePeering
         $initckt = Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $initckt
@@ -718,5 +755,30 @@ function Test-ExpressRouteCircuitPeeringWithRouteFilter
     {
         # Cleanup
         Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests Local ExpressRouteCircuits. Ensures we can only create Local circuits on Direct ports.
+#>
+function Test-ExpressRouteLocalCircuit
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $circuitName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $location = Get-ProviderLocation "Microsoft.Network/expressRouteCircuits" "Brazil South"
+
+    try 
+    {
+      # Create the resource group
+      $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation
+      Assert-ThrowsContains { New-AzExpressRouteCircuit -Name $circuitName -Location $location -ResourceGroupName $rgname -SkuTier Local -SkuFamily MeteredData -ServiceProviderName "equinix" -PeeringLocation "Silicon Valley" -BandwidthInMbps 500 } "not allowed on"
+    }
+    finally
+    {
+    # Cleanup
+      Clean-ResourceGroup $rgname
     }
 }

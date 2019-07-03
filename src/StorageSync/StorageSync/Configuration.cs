@@ -24,35 +24,96 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
     using System.Runtime.Serialization;
     using System.Runtime.Serialization.Json;
 
+    /// <summary>
+    /// Class Configuration.
+    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces.IConfiguration" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces.IConfiguration" />
     public class Configuration : IConfiguration
     {
+        /// <summary>
+        /// Class ValidationsConfiguration.
+        /// </summary>
         [DataContract]
         public class ValidationsConfiguration
         {
+            /// <summary>
+            /// The valid filesystems
+            /// </summary>
             [DataMember] public List<string> ValidFilesystems;
+            /// <summary>
+            /// The valid os versions
+            /// </summary>
             [DataMember] public List<string> ValidOSVersions;
+            /// <summary>
+            /// The valid os skus
+            /// </summary>
             [DataMember] public List<uint> ValidOSSkus;
+            /// <summary>
+            /// The invalid filenames
+            /// </summary>
             [DataMember] public List<string> InvalidFilenames;
+            /// <summary>
+            /// The whitelist of code point ranges
+            /// </summary>
             [DataMember] public List<CodePointRange> WhitelistOfCodePointRanges;
+            /// <summary>
+            /// The blacklist of code points
+            /// </summary>
             [DataMember] public List<int> BlacklistOfCodePoints;
+            /// <summary>
+            /// The maximum filename length
+            /// </summary>
             [DataMember] public int MaximumFilenameLength;
+            /// <summary>
+            /// The maximum file size in bytes
+            /// </summary>
             [DataMember] public long MaximumFileSizeInBytes;
+            /// <summary>
+            /// The maximum path length
+            /// </summary>
             [DataMember] public int MaximumPathLength;
+            /// <summary>
+            /// The maximum tree depth
+            /// </summary>
             [DataMember] public int MaximumTreeDepth;
+            /// <summary>
+            /// The maximum dataset size in bytes
+            /// </summary>
             [DataMember] public long MaximumDatasetSizeInBytes;
 
         }
 
+        /// <summary>
+        /// Class CodePointRange.
+        /// </summary>
         [DataContract]
         public class CodePointRange
         {
             // TODO: validate that Start & End are < and that they are only set on the constructor.
+            /// <summary>
+            /// Gets or sets the start.
+            /// </summary>
+            /// <value>The start.</value>
             [DataMember]
             public int Start { get; set; }
+            /// <summary>
+            /// Gets or sets the end.
+            /// </summary>
+            /// <value>The end.</value>
             [DataMember]
             public int End { get; set; }
+            /// <summary>
+            /// Gets or sets the description.
+            /// </summary>
+            /// <value>The description.</value>
             public string Description { get; set; }
 
+            /// <summary>
+            /// Includeses the specified code point.
+            /// </summary>
+            /// <param name="codePoint">The code point.</param>
+            /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
             public bool Includes(int codePoint)
             {
                 return codePoint >= Start && codePoint <= End;
@@ -60,9 +121,18 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
 
         }
 
+        /// <summary>
+        /// The validations configuration
+        /// </summary>
         private readonly ValidationsConfiguration _validationsConfiguration;
+        /// <summary>
+        /// The configuration filename
+        /// </summary>
         private static readonly string ConfigFilename = "Config.json";
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Configuration" /> class.
+        /// </summary>
         public Configuration()
         {
             var assembly = Assembly.GetExecutingAssembly();
@@ -72,11 +142,15 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
             using (Stream configStream = assembly.GetManifestResourceStream(resourceName))
             {
                 DataContractJsonSerializer validationsConfigurationJsonSerializer = new DataContractJsonSerializer(typeof(ValidationsConfiguration));
-                this._validationsConfiguration =
+                _validationsConfiguration =
                     (ValidationsConfiguration)validationsConfigurationJsonSerializer.ReadObject(configStream);
             }
 		}
 
+        /// <summary>
+        /// Executings the assembly path.
+        /// </summary>
+        /// <returns>System.String.</returns>
         private string ExecutingAssemblyPath()
         {
             Assembly assembly = Assembly.GetExecutingAssembly();
@@ -88,59 +162,103 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
             return path;
         }
 
+        /// <summary>
+        /// Valids the filesystems.
+        /// </summary>
+        /// <returns>IEnumerable&lt;System.String&gt;.</returns>
         public IEnumerable<string> ValidFilesystems()
         {
-            return this._validationsConfiguration.ValidFilesystems;
+            return _validationsConfiguration.ValidFilesystems;
         }
 
+        /// <summary>
+        /// Valids the os versions.
+        /// </summary>
+        /// <returns>IEnumerable&lt;System.String&gt;.</returns>
         public IEnumerable<string> ValidOsVersions()
         {
-            return this._validationsConfiguration.ValidOSVersions;
+            return _validationsConfiguration.ValidOSVersions;
         }
 
+        /// <summary>
+        /// Valids the os sku.
+        /// </summary>
+        /// <returns>IEnumerable&lt;System.UInt32&gt;.</returns>
         public IEnumerable<uint> ValidOsSKU()
         {
-            return this._validationsConfiguration.ValidOSSkus;
+            return _validationsConfiguration.ValidOSSkus;
         }
 
+        /// <summary>
+        /// Invalids the file names.
+        /// </summary>
+        /// <returns>IEnumerable&lt;System.String&gt;.</returns>
         public IEnumerable<string> InvalidFileNames()
         {
-            return this._validationsConfiguration.InvalidFilenames;
+            return _validationsConfiguration.InvalidFilenames;
         }
 
+        /// <summary>
+        /// Whitelists the of code point ranges.
+        /// </summary>
+        /// <returns>IEnumerable&lt;Configuration.CodePointRange&gt;.</returns>
         public IEnumerable<CodePointRange> WhitelistOfCodePointRanges()
         {
-            return this._validationsConfiguration.WhitelistOfCodePointRanges;
+            return _validationsConfiguration.WhitelistOfCodePointRanges;
         }
 
+        /// <summary>
+        /// Blacklists the of code points.
+        /// </summary>
+        /// <returns>IEnumerable&lt;System.Int32&gt;.</returns>
         public IEnumerable<int> BlacklistOfCodePoints()
         {
-            return this._validationsConfiguration.BlacklistOfCodePoints;
+            return _validationsConfiguration.BlacklistOfCodePoints;
         }
 
+        /// <summary>
+        /// Maximums the length of the filename.
+        /// </summary>
+        /// <returns>System.Int32.</returns>
         public int MaximumFilenameLength()
         {
-            return this._validationsConfiguration.MaximumFilenameLength;
+            return _validationsConfiguration.MaximumFilenameLength;
         }
 
+        /// <summary>
+        /// Maximums the file size in bytes.
+        /// </summary>
+        /// <returns>System.Int64.</returns>
         public long MaximumFileSizeInBytes()
         {
-            return this._validationsConfiguration.MaximumFileSizeInBytes;
+            return _validationsConfiguration.MaximumFileSizeInBytes;
         }
 
+        /// <summary>
+        /// Maximums the length of the path.
+        /// </summary>
+        /// <returns>System.Int32.</returns>
         public int MaximumPathLength()
         {
-            return this._validationsConfiguration.MaximumPathLength;
+            return _validationsConfiguration.MaximumPathLength;
         }
 
+        /// <summary>
+        /// Maximums the tree depth.
+        /// </summary>
+        /// <returns>System.Int32.</returns>
         public int MaximumTreeDepth()
         {
-            return this._validationsConfiguration.MaximumTreeDepth;
+            return _validationsConfiguration.MaximumTreeDepth;
         }
 
+        /// <summary>
+        /// Maximums the dataset size in bytes.
+        /// </summary>
+        /// <returns>System.Int64.</returns>
         public long MaximumDatasetSizeInBytes()
         {
-            return this._validationsConfiguration.MaximumDatasetSizeInBytes;
+            return _validationsConfiguration.MaximumDatasetSizeInBytes;
         }
     }
 }

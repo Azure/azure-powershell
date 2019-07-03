@@ -22,6 +22,7 @@ using System.Security;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
@@ -107,7 +108,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
                 SubnetId = model.SubnetId,
                 VCores = model.VCores,
                 Identity = model.Identity,
-                Collation = model.Collation
+                Collation = model.Collation,
+                PublicDataEndpointEnabled = model.PublicDataEndpointEnabled,
+                ProxyOverride = model.ProxyOverride,
+                TimezoneId = model.TimezoneId,
+                DnsZonePartner = model.DnsZonePartner,
             });
 
             return CreateManagedInstanceModelFromResponse(resp);
@@ -129,7 +134,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
                 LicenseType = model.LicenseType,
                 StorageSizeInGB = model.StorageSizeInGB,
                 SubnetId = model.SubnetId,
-                VCores = model.VCores
+                VCores = model.VCores,
+                PublicDataEndpointEnabled = model.PublicDataEndpointEnabled,
+                ProxyOverride = model.ProxyOverride
             });
 
             return CreateManagedInstanceModelFromResponse(resp);
@@ -174,6 +181,10 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
             managedInstance.VCores = resp.VCores;
             managedInstance.StorageSizeInGB = resp.StorageSizeInGB;
             managedInstance.Collation = resp.Collation;
+            managedInstance.PublicDataEndpointEnabled = resp.PublicDataEndpointEnabled;
+            managedInstance.ProxyOverride = resp.ProxyOverride;
+            managedInstance.TimezoneId = resp.TimezoneId;
+            managedInstance.DnsZone = resp.DnsZone;
 
             Management.Internal.Resources.Models.Sku sku = new Management.Internal.Resources.Models.Sku();
             sku.Name = resp.Sku.Name;
@@ -182,6 +193,24 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
             managedInstance.Sku = sku;
 
             return managedInstance;
+        }
+
+        /// <summary>
+        /// Get instance sku name based on edition
+        ///    Edition              | SkuName
+        ///    GeneralPurpose       | GP
+        ///    BusinessCritical     | BC
+        /// </summary>
+        /// <param name="tier">Azure Sql database edition</param>
+        /// <returns>The sku name</returns>
+        public static string GetInstanceSkuPrefix(string tier)
+        {
+            if (string.IsNullOrWhiteSpace(tier))
+            {
+                return null;
+            }
+
+            return SqlSkuUtils.GetVcoreSkuPrefix(tier) ?? "Unknown";
         }
     }
 }

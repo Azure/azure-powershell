@@ -19,6 +19,16 @@
 -->
 ## Upcoming Release
 
+## Version 1.1.1
+* Only display Bing disclaimer for Bing Search Services.
+* Improve error when create account failed.
+
+## Version 1.1.0
+* Updated cmdlets with plural nouns to singular, and deprecated plural names.
+
+## Version 1.0.1
+* Added CustomSubdomainName as a new optional parameter for New-AzCognitiveServicesAccount which is used to specify subdomain for the resource.
+
 ## Version 1.0.0
 * General availability of `Az.CognitiveServices` module
 * Add completers for SkuName and Typem available on New-AzureRmCognitiveServicesAccount operation.

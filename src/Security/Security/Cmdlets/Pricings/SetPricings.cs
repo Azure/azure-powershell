@@ -19,22 +19,17 @@ using Microsoft.Azure.Commands.Security.Models.Pricings;
 using Microsoft.Azure.Commands.SecurityCenter.Common;
 using Microsoft.Azure.Management.Security.Models;
 using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Security.Cmdlets.Pricings
 {
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SecurityPricing", DefaultParameterSetName = ParameterSetNames.SubscriptionLevelResource, SupportsShouldProcess = true), OutputType(typeof(PSSecurityPricing))]
     public class SetPricings : SecurityCenterCmdletBase
     {
-        [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceGroupName)]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceName)]
         [Parameter(ParameterSetName = ParameterSetNames.SubscriptionLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.ResourceName)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.PricingTier)]
         [Parameter(ParameterSetName = ParameterSetNames.SubscriptionLevelResource, Mandatory = true, HelpMessage = ParameterHelpMessages.PricingTier)]
         [ValidateNotNullOrEmpty]
         public string PricingTier { get; set; }
@@ -45,19 +40,16 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Pricings
 
         public override void ExecuteCmdlet()
         {
-            var rg = ResourceGroupName;
             var name = Name;
             var tier = PricingTier;
 
             switch (ParameterSetName)
             {
                 case ParameterSetNames.SubscriptionLevelResource:
-                case ParameterSetNames.ResourceGroupLevelResource:
                     break;
                 case ParameterSetNames.InputObject:
                     name = InputObject.Name;
                     tier = InputObject.PricingTier;
-                    rg = AzureIdUtilities.GetResourceGroup(InputObject.Id);
                     break;
                 default:
                     throw new PSInvalidOperationException();
@@ -65,16 +57,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Pricings
 
             if (ShouldProcess(name, VerbsCommon.Set))
             {
-                Pricing pricing;
-
-                if (string.IsNullOrEmpty(rg))
-                {
-                    pricing = SecurityCenterClient.Pricings.UpdateSubscriptionPricingWithHttpMessagesAsync(name, tier).GetAwaiter().GetResult().Body;
-                }
-                else
-                {
-                    pricing = SecurityCenterClient.Pricings.CreateOrUpdateResourceGroupPricingWithHttpMessagesAsync(rg, name, tier).GetAwaiter().GetResult().Body;
-                }
+                var pricing = SecurityCenterClient.Pricings.UpdateWithHttpMessagesAsync(name, tier).GetAwaiter().GetResult().Body;
 
                 WriteObject(pricing.ConvertToPSType(), enumerateCollection: false); 
             }

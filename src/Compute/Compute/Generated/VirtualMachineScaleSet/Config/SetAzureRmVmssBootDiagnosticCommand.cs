@@ -19,13 +19,14 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using Microsoft.Azure.Commands.Compute.Automation.Models;
-using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -62,7 +63,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         private void Run()
         {
-            if (this.MyInvocation.BoundParameters.ContainsKey("Enabled"))
+            if (this.IsParameterBound(c => c.Enabled))
             {
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
@@ -82,7 +83,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.DiagnosticsProfile.BootDiagnostics.Enabled = this.Enabled;
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("StorageUri"))
+            if (this.IsParameterBound(c => c.StorageUri))
             {
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)

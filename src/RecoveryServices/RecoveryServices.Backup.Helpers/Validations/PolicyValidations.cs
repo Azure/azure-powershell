@@ -118,6 +118,111 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             }
         }
 
+        public static void ValidateLongTermRetentionPolicyWithSimpleRetentionPolicy(
+            SQLRetentionPolicy ltrPolicy,
+            SQLSchedulePolicy schPolicy)
+        {
+            // for daily schedule, daily retention policy is required
+            if (schPolicy.FullBackupSchedulePolicy.ScheduleRunFrequency == ScheduleRunType.Daily &&
+               (ltrPolicy.FullBackupRetentionPolicy.DailySchedule == null ||
+               ltrPolicy.FullBackupRetentionPolicy.IsDailyScheduleEnabled == false))
+            {
+                throw new ArgumentException(Resources.DailyRetentionScheduleNullException);
+            }
+
+            // for weekly schedule, daily retention policy should be NULL
+            // AND weekly retention policy is required
+            if (schPolicy.FullBackupSchedulePolicy.ScheduleRunFrequency == ScheduleRunType.Weekly &&
+               (ltrPolicy.FullBackupRetentionPolicy.IsDailyScheduleEnabled != false ||
+               ltrPolicy.FullBackupRetentionPolicy.WeeklySchedule == null ||
+               (ltrPolicy.FullBackupRetentionPolicy.IsWeeklyScheduleEnabled == false)))
+            {
+                throw new ArgumentException(Resources.WeeklyRetentionScheduleNullException);
+            }
+
+            // validate daily retention schedule with schPolicy
+            if (ltrPolicy.FullBackupRetentionPolicy.DailySchedule != null &&
+                ltrPolicy.FullBackupRetentionPolicy.IsDailyScheduleEnabled == true)
+            {
+                ValidateRetentionAndBackupTimes(schPolicy.FullBackupSchedulePolicy.ScheduleRunTimes,
+                    ltrPolicy.FullBackupRetentionPolicy.DailySchedule.RetentionTimes);
+            }
+
+            // validate weekly retention schedule with schPolicy
+            if (ltrPolicy.FullBackupRetentionPolicy.WeeklySchedule != null &&
+                ltrPolicy.FullBackupRetentionPolicy.IsWeeklyScheduleEnabled == true)
+            {
+                ValidateRetentionAndBackupTimes(schPolicy.FullBackupSchedulePolicy.ScheduleRunTimes,
+                    ltrPolicy.FullBackupRetentionPolicy.WeeklySchedule.RetentionTimes);
+
+                if (schPolicy.FullBackupSchedulePolicy.ScheduleRunFrequency == ScheduleRunType.Weekly)
+                {
+                    // count of daysOfWeek should match for weekly schedule
+                    if (ltrPolicy.FullBackupRetentionPolicy.WeeklySchedule.DaysOfTheWeek.Count !=
+                        schPolicy.FullBackupSchedulePolicy.ScheduleRunDays.Count)
+                    {
+                        throw new ArgumentException(Resources.DaysofTheWeekInWeeklyRetentionException);
+                    }
+
+                    // validate days of week
+                    ValidateRetentionAndScheduleDaysOfWeek(schPolicy.FullBackupSchedulePolicy.ScheduleRunDays,
+                        ltrPolicy.FullBackupRetentionPolicy.WeeklySchedule.DaysOfTheWeek);
+                }
+            }
+
+            // validate monthly retention schedule with schPolicy
+            if (ltrPolicy.FullBackupRetentionPolicy.MonthlySchedule != null &&
+                ltrPolicy.FullBackupRetentionPolicy.IsMonthlyScheduleEnabled == true)
+            {
+                ValidateRetentionAndBackupTimes(schPolicy.FullBackupSchedulePolicy.ScheduleRunTimes,
+                    ltrPolicy.FullBackupRetentionPolicy.MonthlySchedule.RetentionTimes);
+
+                // if backupSchedule is weekly, then user cannot choose 'Daily Retention format' 
+                if (schPolicy.FullBackupSchedulePolicy.ScheduleRunFrequency == ScheduleRunType.Weekly &&
+                    ltrPolicy.FullBackupRetentionPolicy.MonthlySchedule.RetentionScheduleFormatType
+                        == RetentionScheduleFormat.Daily)
+                {
+                    throw new ArgumentException(Resources.MonthlyYearlyInvalidDailyRetentionFormatTypeException);
+                }
+
+                // for monthly and weeklyFormat, validate days of week
+                if (ltrPolicy.FullBackupRetentionPolicy.MonthlySchedule.RetentionScheduleFormatType
+                        == RetentionScheduleFormat.Weekly &&
+                   schPolicy.FullBackupSchedulePolicy.ScheduleRunFrequency == ScheduleRunType.Weekly)
+                {
+                    ValidateRetentionAndScheduleDaysOfWeek(schPolicy.FullBackupSchedulePolicy.ScheduleRunDays,
+                                                           ltrPolicy.FullBackupRetentionPolicy.MonthlySchedule.
+                                                           RetentionScheduleWeekly.DaysOfTheWeek);
+                }
+            }
+
+            // validate yearly retention schedule with schPolicy
+            if (ltrPolicy.FullBackupRetentionPolicy.YearlySchedule != null &&
+                ltrPolicy.FullBackupRetentionPolicy.IsYearlyScheduleEnabled == true)
+            {
+                ValidateRetentionAndBackupTimes(schPolicy.FullBackupSchedulePolicy.ScheduleRunTimes,
+                    ltrPolicy.FullBackupRetentionPolicy.YearlySchedule.RetentionTimes);
+
+                // if backupSchedule is weekly, then user cannot choose 'Daily Retention format' 
+                if (schPolicy.FullBackupSchedulePolicy.ScheduleRunFrequency == ScheduleRunType.Weekly &&
+                    ltrPolicy.FullBackupRetentionPolicy.YearlySchedule.RetentionScheduleFormatType
+                        == RetentionScheduleFormat.Daily)
+                {
+                    throw new ArgumentException(Resources.MonthlyYearlyInvalidDailyRetentionFormatTypeException);
+                }
+
+                // for yearly and weeklyFormat, validate days of week                 
+                if (ltrPolicy.FullBackupRetentionPolicy.YearlySchedule.RetentionScheduleFormatType
+                        == RetentionScheduleFormat.Weekly &&
+                    schPolicy.FullBackupSchedulePolicy.ScheduleRunFrequency == ScheduleRunType.Weekly)
+                {
+                    ValidateRetentionAndScheduleDaysOfWeek(schPolicy.FullBackupSchedulePolicy.ScheduleRunDays,
+                                                           ltrPolicy.FullBackupRetentionPolicy.YearlySchedule.
+                                                           RetentionScheduleWeekly.DaysOfTheWeek);
+                }
+            }
+        }
+
         #region private
 
         private static void ValidateRetentionAndBackupTimes(List<DateTime> schPolicyTimes, List<DateTime> retPolicyTimes)

@@ -12,23 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.Azure.Commands.Network.Test.ScenarioTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Commands.Network.Test.ScenarioTests
 {
-    public class DdosProtectionPlanTests : RMTestBase
+    public class DdosProtectionPlanTests : NetworkTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
         public DdosProtectionPlanTests(Xunit.Abstractions.ITestOutputHelper output)
+            : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
@@ -36,7 +30,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestDdosProtectionPlanCrud()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-DdosProtectionPlanCRUD"));
+            TestRunner.RunTestScript(string.Format("Test-DdosProtectionPlanCRUD"));
         }
 
         [Fact]
@@ -44,7 +38,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestDdosProtectionPlanCrudWithVirtualNetwork()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-DdosProtectionPlanCRUDWithVirtualNetwork"));
+            TestRunner.RunTestScript(string.Format("Test-DdosProtectionPlanCRUDWithVirtualNetwork"));
         }
 
         [Fact]
@@ -52,7 +46,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestDdosProtectionPlanCollections()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-DdosProtectionPlanCollections"));
+            TestRunner.RunTestScript(string.Format("Test-DdosProtectionPlanCollections"));
         }
     }
 }

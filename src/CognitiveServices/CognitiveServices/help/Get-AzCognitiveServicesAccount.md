@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices.dll-Help.xml
 Module Name: Az.CognitiveServices
 ms.assetid: 11D5BFDF-5E5D-46B2-9F9B-A0524EFA1B42

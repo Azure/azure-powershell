@@ -1,29 +1,64 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-resources-eus/providers/Microsoft.Automation/automationAccounts/mo-aaa-eus2/softwareUpdateConfigurationRuns?api-version=2017-05-15-preview&$filter=properties%2FosType%20eq%20'Windows'%20and%20properties%2Fstatus%20eq%20'Failed'%20and%20properties%2FstartTime%20ge%202018-05-22T23:40:00.0000000Z",
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-resources-eus/providers/Microsoft.Automation/automationAccounts/mo-aaa-eus2/softwareUpdateConfigurationRuns?api-version=2017-05-15-preview&$filter=properties%2FosType%20eq%20%27Windows%27%20and%20properties%2Fstatus%20eq%20%27Failed%27%20and%20properties%2FstartTime%20ge%202018-05-22T23%3A40%3A00.0000000Z",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL21vLXJlc291cmNlcy1ldXMvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRvbWF0aW9uL2F1dG9tYXRpb25BY2NvdW50cy9tby1hYWEtZXVzMi9zb2Z0d2FyZVVwZGF0ZUNvbmZpZ3VyYXRpb25SdW5zP2FwaS12ZXJzaW9uPTIwMTctMDUtMTUtcHJldmlldyYkZmlsdGVyPXByb3BlcnRpZXMlMkZvc1R5cGUlMjBlcSUyMCUyN1dpbmRvd3MlMjclMjBhbmQlMjBwcm9wZXJ0aWVzJTJGc3RhdHVzJTIwZXElMjAlMjdGYWlsZWQlMjclMjBhbmQlMjBwcm9wZXJ0aWVzJTJGc3RhcnRUaW1lJTIwZ2UlMjAyMDE4LTA1LTIyVDIzJTNBNDAlM0EwMC4wMDAwMDAwWg==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "eb655c8b-6f99-467b-9337-f6e868528662"
+          "1e300f74-41c8-456f-b26e-0cf1dd40a90a"
         ],
-        "accept-language": [
+        "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2650.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.Automation.AutomationClient/3.0.2.0"
+          "FxVersion/4.6.27129.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.17763.",
+          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.0.0"
         ],
         "x-ms-activity-id": [
-          "f79b1534-fb3e-47f0-946d-37c9db2379ba"
+          "92ae32a5-0c53-400a-9fcf-844eb30eb198"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": []\r\n}",
       "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "92ae32a5-0c53-400a-9fcf-844eb30eb198"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "71548950-5770-457a-92af-72dd4288cdd6"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20190203T215555Z:71548950-5770-457a-92af-72dd4288cdd6"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sun, 03 Feb 2019 21:55:55 GMT"
+        ],
         "Content-Length": [
           "12"
         ],
@@ -32,44 +67,9 @@
         ],
         "Expires": [
           "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "f79b1534-fb3e-47f0-946d-37c9db2379ba"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14958"
-        ],
-        "x-ms-correlation-request-id": [
-          "350cdb2b-f665-4cba-8c3b-5745a9a54826"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20180524T082747Z:350cdb2b-f665-4cba-8c3b-5745a9a54826"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Thu, 24 May 2018 08:27:46 GMT"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.5"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
         ]
       },
+      "ResponseBody": "{\r\n  \"value\": []\r\n}",
       "StatusCode": 200
     }
   ],

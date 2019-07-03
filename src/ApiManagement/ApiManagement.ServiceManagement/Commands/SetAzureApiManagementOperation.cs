@@ -14,17 +14,19 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using System;
     using System.Management.Automation;
     using Management.ApiManagement.Models;
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
 
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementOperation")]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementOperation", SupportsShouldProcess = true)]
     [OutputType(typeof(PsApiManagementOperation))]
     public class SetAzureApiManagementOperation : AzureApiManagementCmdletBase
     {
         [Parameter(
             ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = true,
             Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
         [ValidateNotNullOrEmpty]
@@ -115,12 +117,15 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 apiId = ApiId.ApiRevisionIdentifier(ApiRevision);
             }
 
-            Client.OperationSet(Context, ApiId, OperationId, Name, Method, UrlTemplate, Description, TemplateParameters, Request, Responses);
-
-            if (PassThru.IsPresent)
+            if (ShouldProcess(OperationId, Resources.SetOperation))
             {
-                var api = Client.OperationById(Context, ApiId, OperationId);
-                WriteObject(api);
+                Client.OperationSet(Context, ApiId, OperationId, Name, Method, UrlTemplate, Description, TemplateParameters, Request, Responses);
+
+                if (PassThru.IsPresent)
+                {
+                    var api = Client.OperationById(Context, ApiId, OperationId);
+                    WriteObject(api);
+                }
             }
         }
     }

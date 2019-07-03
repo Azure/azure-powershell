@@ -19,5 +19,15 @@
 -->
 ## Upcoming Release
 
+## Version 1.1.0
+* Using ServiceClient in dataplane cmdlets and removing the original authentication logic
+* Making Add-AzureASAccount a wrapper of Connect-AzAccount to avoid a breaking change
+
+## Version 1.0.2
+* Deprecated AddAzureASAccount cmdlet
+
+## Version 1.0.1
+* Release with updated Authentication dependency
+
 ## Version 1.0.0
 * General availability of `Az.AnalysisServices` module

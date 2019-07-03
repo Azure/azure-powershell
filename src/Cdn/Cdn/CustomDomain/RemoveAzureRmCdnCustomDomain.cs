@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Cdn.CustomDomain
 
             if (existingCustomDomain == null)
             {
-                throw new PSArgumentException(string.Format(Resources.Error_DeleteNonExistingCustomDomain,
+                throw new PSArgumentException(string.Format(Resources.Error_NonExistingCustomDomain,
                     CustomDomainName,
                     EndpointName,
                     ProfileName,

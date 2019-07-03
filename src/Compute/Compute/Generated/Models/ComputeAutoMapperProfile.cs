@@ -77,6 +77,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<FROM.Image, TO.PSImageList>();
                 cfg.CreateMap<TO.PSImageList, TO.PSImage>();
                 cfg.CreateMap<TO.PSImage, TO.PSImageList>();
+                cfg.CreateMap<FROM.ProximityPlacementGroup, TO.PSProximityPlacementGroupList>();
+                cfg.CreateMap<TO.PSProximityPlacementGroupList, TO.PSProximityPlacementGroup>();
+                cfg.CreateMap<TO.PSProximityPlacementGroup, TO.PSProximityPlacementGroupList>();
                 cfg.CreateMap<FROM.Snapshot, TO.PSSnapshotList>();
                 cfg.CreateMap<TO.PSSnapshotList, TO.PSSnapshot>();
                 cfg.CreateMap<TO.PSSnapshot, TO.PSSnapshotList>();
@@ -101,10 +104,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<TO.PSDiskUpdate, FROM.DiskUpdate>();
                 cfg.CreateMap<FROM.Snapshot, FROM.SnapshotUpdate>();
                 cfg.CreateMap<FROM.SnapshotUpdate, FROM.Snapshot>();
-                cfg.CreateMap<FROM.DiskSku, FROM.SnapshotSku>()
-                    .ForMember(c => c.Name, o => o.MapFrom(r => r.Name.ToString()));
-                cfg.CreateMap<FROM.SnapshotSku, FROM.DiskSku>()
-                    .ForMember(c => c.Name, o => o.MapFrom(r => r.Name.ToString()));
                 cfg.CreateMap<FROM.SnapshotUpdate, TO.PSSnapshotUpdate>();
                 cfg.CreateMap<TO.PSSnapshotUpdate, FROM.SnapshotUpdate>();
                 cfg.CreateMap<FROM.ContainerService, TO.PSContainerService>();
@@ -125,6 +124,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<TO.PSImage, FROM.Image>();
                 cfg.CreateMap<FROM.LogAnalyticsOperationResult, TO.PSLogAnalyticsOperationResult>();
                 cfg.CreateMap<TO.PSLogAnalyticsOperationResult, FROM.LogAnalyticsOperationResult>();
+                cfg.CreateMap<FROM.ProximityPlacementGroup, TO.PSProximityPlacementGroup>();
+                cfg.CreateMap<TO.PSProximityPlacementGroup, FROM.ProximityPlacementGroup>();
                 cfg.CreateMap<FROM.ResourceSku, TO.PSResourceSku>();
                 cfg.CreateMap<TO.PSResourceSku, FROM.ResourceSku>();
                 cfg.CreateMap<FROM.Snapshot, TO.PSSnapshot>();
