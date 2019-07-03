@@ -49,6 +49,10 @@ namespace Microsoft.Azure.Commands.DataBox.Common
                
                 WriteObject("Successfully Cancelled the Databox Job");
             }
+            else if(jobResource.Status == StageName.Cancelled)
+            {
+                WriteObject("This Databox Job is already Cancelled");
+            }
             else
             {
                 WriteObject("This Databox Job cannot be Cancelled");

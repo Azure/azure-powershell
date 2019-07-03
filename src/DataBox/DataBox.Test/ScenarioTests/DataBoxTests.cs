@@ -61,6 +61,19 @@ namespace Microsoft.Azure.Commands.DataBox.Test
         [Fact]
 #endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateAlreadyExistingDataBoxJob()
+        {
+
+            RunPowerShellTest(_logger, "Test-CreateAlreadyExistingDataBoxJob");
+        }
+
+#if NETSTANDARD
+        [Fact]//(Skip = "Management library needs NetCore republish")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact]
+#endif
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStopDataBoxJob()
         {
 
