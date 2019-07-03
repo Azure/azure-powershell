@@ -69,6 +69,33 @@ function Test-CreateDataBoxJob
 
 <#
 .SYNOPSIS
+Create an already existing databox job and check for the exception.
+Creates a new job. Again tries to create it and gets an exception.
+Finally removes the job.
+#>
+function Test-CreateAlreadyExistingDataBoxJob
+{
+    $dfname = Get-DataBoxJobName
+    $rgname = Get-ResourceGroupName
+	$rglocation = Get-ProviderLocation ResourceManagement
+    $jobResource = Create-JobResourceObject
+    
+    New-AzResourceGroup -Name $rgname -Location $rglocation -Force
+
+    try
+    {
+        New-AzDataBoxJob -ResourceGroupName $rgname -Name $dfname -JobResource $jobResource
+        Assert-ThrowsContains {New-AzDataBoxJob -ResourceGroupName $rgname -Name $dfname -JobResource $jobResource} "order already exists with the same name"
+    }
+    finally
+    {
+        Stop-AzDataBoxJob -ResourceGroupName $rgname -Name $dfname -Reason "Random"
+		Remove-AzDataBoxJob -ResourceGroupName $rgname -Name $dfname -Reason "Random"
+    }
+}
+
+<#
+.SYNOPSIS
 Test Cancelling a Databox Job. Creates a new job and then cancels it. Then get the job and check the 
 status of the fetched job.
 #>
