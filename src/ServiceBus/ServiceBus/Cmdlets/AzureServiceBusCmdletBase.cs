@@ -115,6 +115,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string AliasAuthRuleObj = "AuthRuleObj";
         protected const string AliasSubscriptionName = "SubscriptionName";
         protected const string AliasSubscriptionObj = "SubscriptionObj";
+        protected const string AliasAuthorizationRuleId = "AuthorizationRuleId";
 
         protected const string ServicebusSubscriptionVerb = "AzureRmServiceBusSubscription";
 
