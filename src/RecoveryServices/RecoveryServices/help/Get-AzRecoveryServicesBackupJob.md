@@ -35,9 +35,7 @@ Warning: **Set-AzRecoveryServicesVaultContext** cmdlet is being deprecated in a 
 $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
 $Joblist = Get-AzRecoveryServicesBackupJob -Status InProgress -VaultId $vault.ID
 $Joblist[0]
-```
 
-```Output
 WorkloadName     Operation            Status               StartTime                 EndTime
 ------------     ---------            ------               ---------                 -------
 V2VM             Backup               InProgress           4/23/2016 5:00:30 PM      1/1/2001 12:00:00
@@ -70,9 +68,7 @@ While ( $Job.Status -ne Completed ) {
     $Job = Get-AzRecoveryServicesBackupJob -Job $Job -VaultId $vault.ID
 }
 Write-Host -Object "Done!"
-```
 
-```Output
 Waiting for completion... 
 Waiting for completion... 
 Waiting for completion... 
