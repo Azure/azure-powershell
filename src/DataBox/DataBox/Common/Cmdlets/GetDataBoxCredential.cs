@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.DataBox.Common
         private const string GetByNameParameterSet = "GetByNameParameterSet";
         private const string GetByResourceIdParameterSet = "GetByResourceIdParameterSet";
 
-        [Parameter(Mandatory = true, ParameterSetName = GetByNameParameterSet)]
+        [Parameter(Mandatory = true, ParameterSetName = GetByNameParameterSet )]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
@@ -28,7 +28,8 @@ namespace Microsoft.Azure.Commands.DataBox.Common
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = GetByResourceIdParameterSet)]
+        [Parameter(Mandatory = true, ParameterSetName = GetByResourceIdParameterSet, ValueFromPipelineByPropertyName = true)]
+        [Alias("Id")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -75,6 +76,7 @@ namespace Microsoft.Azure.Commands.DataBox.Common
             //    }
             //}
             //PSObject output = new PSObject(Credentials);
+            
             WriteObject(result);
         }
     }
