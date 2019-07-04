@@ -293,7 +293,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// <summary>
         /// Action rule simplified format : Action Group Id
         /// </summary>
-        [Parameter(Mandatory = false,
+        [Parameter(Mandatory = true,
                 ParameterSetName = BySimplifiedFormatActionGroupActionRuleParameterSet,
                 HelpMessage = "Action Group Id which is to be notified.")]
         public string ActionGroupId { get; set; }
