@@ -12,7 +12,7 @@ using System.Threading;
 
 namespace Microsoft.Azure.Commands.DataBox.Common
 {
-    [Cmdlet(VerbsLifecycle.Stop , ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataBoxJob"), OutputType(typeof(String))]
+    [Cmdlet(VerbsLifecycle.Stop , ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataBoxJob", SupportsShouldProcess = true), OutputType(typeof(String))]
     public class StopDataBoxJob : AzureDataBoxCmdletBase
     {
 
@@ -41,11 +41,15 @@ namespace Microsoft.Azure.Commands.DataBox.Common
                 //CancellationReason cancellationReason = new CancellationReason(Reason);
 
                 // Initiate to cancel job
-                JobsOperationsExtensions.Cancel(
-                    DataBoxManagementClient.Jobs,
-                    ResourceGroupName,
-                    Name,
-                    Reason);
+                if (ShouldProcess(this.Name))
+                {
+                    JobsOperationsExtensions.Cancel(
+                        DataBoxManagementClient.Jobs,
+                        ResourceGroupName,
+                        Name,
+                        Reason);
+                }
+                
                
                 WriteObject("Successfully Cancelled the Databox Job");
             }
