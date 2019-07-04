@@ -5,6 +5,7 @@ using System.Text;
 using System.Linq;
 using Microsoft.Azure.Commands.DataBox.Common;
 using Microsoft.Azure.Management.DataBox.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models;
 using Microsoft.Azure.Management.DataBox;
 using Microsoft.Rest.Azure;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -12,7 +13,7 @@ using System.Threading;
 
 namespace Microsoft.Azure.Commands.DataBox.Common
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataBoxJob", DefaultParameterSetName = ListParameterSet), OutputType(typeof(JobResource))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataBoxJob", DefaultParameterSetName = ListParameterSet), OutputType(typeof(PSDataBoxJob))]
     public class GetDataBoxJob : AzureDataBoxCmdletBase
     {
         private const string ListParameterSet = "ListParameterSet";
@@ -63,19 +64,20 @@ namespace Microsoft.Azure.Commands.DataBox.Common
 
             if (!string.IsNullOrEmpty(this.Name))
             {
-                List<JobResource> result = new List<JobResource>();
-                result.Add(JobsOperationsExtensions.Get(
+                List<PSDataBoxJob> result = new List<PSDataBoxJob>();
+                result.Add(new PSDataBoxJob(JobsOperationsExtensions.Get(
                                 this.DataBoxManagementClient.Jobs,
                                 this.ResourceGroupName,
                                 this.Name,
-                                "details"));
-                WriteObject(result);
+                                "details")));
+                WriteObject(result,true);
                
             }
             else if (!string.IsNullOrEmpty(this.ResourceGroupName))
             {
                 IPage<JobResource> jobPageList = null;
                 List<JobResource> result = new List<JobResource>();
+                List<PSDataBoxJob> finalResult = new List<PSDataBoxJob>();
                 
                 do
                 {
@@ -113,16 +115,22 @@ namespace Microsoft.Azure.Commands.DataBox.Common
                     }
 
                 } while (!(string.IsNullOrEmpty(jobPageList.NextPageLink)));
-                WriteObject(result, true);
+                foreach(var job in result)
+                {
+                    finalResult.Add(new PSDataBoxJob(job));
+                }
+                WriteObject(finalResult, true);
             }
             else
             {
 
                  IPage<JobResource> jobPageList = null;
                  List<JobResource> result = new List<JobResource>();
+                 List<PSDataBoxJob> finalResult = new List<PSDataBoxJob>();
 
-                 do
-                 {
+
+                do
+                {
                      // Lists all the jobs available under the subscription.
                      if (jobPageList == null)
                      {
@@ -156,7 +164,11 @@ namespace Microsoft.Azure.Commands.DataBox.Common
 
                 } while (!(string.IsNullOrEmpty(jobPageList.NextPageLink)));
 
-                WriteObject(result, true);
+                foreach (var job in result)
+                {
+                    finalResult.Add(new PSDataBoxJob(job));
+                }
+                WriteObject(finalResult, true);
             }
         }
     }

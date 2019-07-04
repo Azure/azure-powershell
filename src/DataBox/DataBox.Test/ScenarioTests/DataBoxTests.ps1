@@ -49,21 +49,21 @@ function Test-CreateDataBoxJob
     $dfname = Get-DataBoxJobName
     $rgname = Get-ResourceGroupName
 	$rglocation = Get-ProviderLocation ResourceManagement
-    $jobResource = Create-JobResourceObject
+    
     
     New-AzResourceGroup -Name $rgname -Location $rglocation -Force
 
     try
     {
-        $actual = New-AzDataBoxJob -ResourceGroupName $rgname -Name $dfname -JobResource $jobResource
-        $expected = Get-AzDataBoxJobs -ResourceGroupName $rgname -Name $dfname
+        $actual = New-AzDataBoxJob -Location 'WestUS' -StreetAddress1 '16 TOWNSEND ST' -PostalCode 94107 -City 'San Francisco' -StateOrProvinceCode 'CA' -CountryCode 'US' -EmailId 't-irali@microsoft.com' -PhoneNumber 1234567891 -ContactName 'Irfan' -StorageAccountResourceId "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/smoketest/providers/Microsoft.Storage/storageAccounts/wuspodsmoketest"  -DataBoxType DataBox -ResourceGroupName $rgname -Name $dfname -ErrorAction Ignore
+        $expected = Get-AzDataBoxJob -ResourceGroupName $rgname -Name $dfname
 
         Assert-AreEqual $expected.Id $actual.Id
     }
     finally
     {
         Stop-AzDataBoxJob -ResourceGroupName $rgname -Name $dfname -Reason "Random"
-		Remove-AzDataBoxJob -ResourceGroupName $rgname -Name $dfname -Reason "Random"
+		Remove-AzDataBoxJob -ResourceGroupName $rgname -Name $dfname 
     }
 }
 
