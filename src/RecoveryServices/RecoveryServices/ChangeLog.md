@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update 'Get-AzRecoveryServicesBackupJob.md'
 
 ## Version 1.4.2
 * Fix for get-policy command for IaaSVMs
