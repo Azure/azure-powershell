@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.DataBox.Common
             };
 
             List<string> emailList;
-            emailList = EmailIds.Split(new char[';'], StringSplitOptions.RemoveEmptyEntries).ToList();
+            emailList = EmailId.Split(new char[';'], StringSplitOptions.RemoveEmptyEntries).ToList();
 
             ContactDetails contactDetails = new ContactDetails()
             {
