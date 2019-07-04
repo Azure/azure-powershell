@@ -65,7 +65,7 @@ RequiredAssemblies = '.\Microsoft.Azure.Management.DataBox.dll'
 # TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-# FormatsToProcess = @()
+FormatsToProcess = '.\Microsoft.Azure.PowerShell.Cmdlets.DataBox.generated.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @('.\Microsoft.Azure.PowerShell.Cmdlets.DataBox.dll')
