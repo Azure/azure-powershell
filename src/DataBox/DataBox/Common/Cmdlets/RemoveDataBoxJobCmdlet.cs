@@ -26,10 +26,6 @@ namespace Microsoft.Azure.Commands.DataBox.Common
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "Reason For Cancellation")]
-        [ValidateNotNullOrEmpty]
-        public string Reason { get; set; }
-
 
         public override void ExecuteCmdlet()
         {

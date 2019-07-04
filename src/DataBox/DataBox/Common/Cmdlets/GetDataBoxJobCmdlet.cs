@@ -47,8 +47,6 @@ namespace Microsoft.Azure.Commands.DataBox.Common
         [Parameter(Mandatory = false, ParameterSetName = ListParameterSet)]
         public SwitchParameter Aborted { get; set; } = false;
 
-        [Parameter(Mandatory = false, ParameterSetName = ListParameterSet)]
-        public SwitchParameter Detatiled { get; set; } = false;
 
         public override void ExecuteCmdlet()
         {
