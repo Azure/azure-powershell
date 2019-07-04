@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.DataBox.Common
 
         [Parameter(Mandatory = true,
             HelpMessage = "Input a semicolon(;) seperated string of email ids. Eg : \"abc@outlook.com;xyz@outlook.com\"")]
-        public string EmailIds;
+        public string EmailId;
 
         [Parameter(Mandatory = true)]
         public string PhoneNumber;
