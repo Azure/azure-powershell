@@ -112,7 +112,8 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
             ValueFromPipelineByPropertyName = false,
             HelpMessage = HelpMessages.CloudEndpointNameParameter)]
         [ValidateNotNullOrEmpty]
-        public string CloudEndpointName { get; set; }
+        [Alias(StorageSyncAliases.CloudEndpointNameAlias)]
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the resource identifier.
@@ -152,7 +153,7 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
            ValueFromPipeline = true,
            HelpMessage = HelpMessages.CloudEndpointObjectParameter)]
         [Alias(StorageSyncAliases.CloudEndpointAlias)]
-        public PSServerEndpoint InputObject { get; set; }
+        public PSCloudEndpoint InputObject { get; set; }
 
         /// <summary>
         /// Gets or sets the directory path to detect changes.
@@ -229,7 +230,7 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
         /// Gets the target.
         /// </summary>
         /// <value>The target.</value>
-        protected override string Target => CloudEndpointName;
+        protected override string Target => Name;
 
         /// <summary>
         /// Gets the action message.
@@ -261,14 +262,14 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
                 }
                 else if (this.IsParameterBound(c => c.InputObject))
                 {
-                    resourceName = InputObject.ServerEndpointName;
+                    resourceName = InputObject.CloudEndpointName;
                     resourceGroupName = InputObject.ResourceGroupName;
                     parentResourceName = InputObject.SyncGroupName;
                     storageSyncServiceName = InputObject.StorageSyncServiceName;
                 }
                 else
                 {
-                    resourceName = CloudEndpointName;
+                    resourceName = Name;
                     resourceGroupName = ResourceGroupName;
                     parentResourceName = SyncGroupName;
                     storageSyncServiceName = StorageSyncServiceName;
