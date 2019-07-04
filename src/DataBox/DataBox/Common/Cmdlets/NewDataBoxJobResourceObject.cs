@@ -6,6 +6,7 @@ using System.Linq;
 using Microsoft.Azure.Commands.DataBox.Common;
 using Microsoft.Azure.Management.DataBox.Models;
 using Microsoft.Azure.Management.DataBox;
+using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Threading;
@@ -22,7 +23,7 @@ namespace Microsoft.Azure.Commands.DataBox.Common
 
         [Parameter(Mandatory = false)]
         //[Valida(AddressType.Commercial, AddressType.None)]
-        public AddressType AddressType = AddressType.None;
+        public AddressType AddressType = AddressType.None; 
 
         [Parameter(Mandatory = false)]
         public string CompanyName;
@@ -58,16 +59,19 @@ namespace Microsoft.Azure.Commands.DataBox.Common
         [Parameter(Mandatory = true)]
         public string ContactName;
 
-        [Parameter(Mandatory = true)]
-        [ValidateSet("Microsoft.Storage","Microsoft.ClassicStorage")]
-        public string StorageAccountProviderType;
+        //[Parameter(Mandatory = true)]
+        //[ValidateSet("Microsoft.Storage","Microsoft.ClassicStorage")]
+        //public string StorageAccountProviderType;
 
-        [Parameter(Mandatory = true,
-            HelpMessage ="Storage account's resource group name")]
-        public string StorageAccountResourceGroupName;
+        //[Parameter(Mandatory = true,
+        //    HelpMessage ="Storage account's resource group name")]
+        //public string StorageAccountResourceGroupName;
+
+        //[Parameter(Mandatory = true)]
+        //public string StorageAccountName;
 
         [Parameter(Mandatory = true)]
-        public string StorageAccountName;
+        public PSStorageAccount[] StorageAccount;
 
         [Parameter(Mandatory = true)]
         [ValidateSet("DataBoxDisk","Databox","DataBoxHeavy")]
@@ -107,12 +111,17 @@ namespace Microsoft.Azure.Commands.DataBox.Common
             };
 
             List<DestinationAccountDetails> destinationAccountDetails = new List<DestinationAccountDetails>();
-            destinationAccountDetails.Add(
+
+            foreach(var storageAccount in StorageAccount)
+            {
+                destinationAccountDetails.Add(
                 new DestinationAccountDetails(
                     string.Concat("/subscriptions/", DataBoxManagementClient.SubscriptionId.ToLower(),
-                        "/resourceGroups/", StorageAccountResourceGroupName.ToLower(),
-                        "/providers/", StorageAccountProviderType.ToLower(),
-                        "/storageAccounts/", StorageAccountName.ToLower())));
+                        "/resourceGroups/", storageAccount.ResourceGroupName.ToLower(),
+                        "/providers/Microsoft.", storageAccount.Kind.ToLower(),
+                        "/storageAccounts/", storageAccount.StorageAccountName.ToLower())));
+            }
+            
 
 
             DataBoxDiskJobDetails diskDetails;

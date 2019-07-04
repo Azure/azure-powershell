@@ -12,11 +12,11 @@ using System.Threading;
 
 namespace Microsoft.Azure.Commands.DataBox.Common
 {
-    [Cmdlet(VerbsLifecycle.Stop , "AzDataBoxJob"), OutputType(typeof(String))]
-    public class StopDataBoxJob : AzureDataBoxCmdletBase
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataBoxJob"), OutputType(typeof(String))]
+    public class RemoveDataBoxJob : AzureDataBoxCmdletBase
     {
 
-       
+
         [Parameter(Mandatory = true)]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
@@ -36,26 +36,20 @@ namespace Microsoft.Azure.Commands.DataBox.Common
             // Gets information about the specified job.
             JobResource jobResource = JobsOperationsExtensions.Get(DataBoxManagementClient.Jobs, ResourceGroupName, Name, "details");
 
-            if (jobResource.IsCancellable != null && (bool)jobResource.IsCancellable)
+            if (jobResource.Status == StageName.Cancelled || jobResource.Status == StageName.Completed || jobResource.Status == StageName.CompletedWithErrors)
             {
-                //CancellationReason cancellationReason = new CancellationReason(Reason);
+                // Initiate to delete job
+                JobsOperationsExtensions.Delete(
+                  DataBoxManagementClient.Jobs,
+                  ResourceGroupName,
+                  Name);
 
-                // Initiate to cancel job
-                JobsOperationsExtensions.Cancel(
-                    DataBoxManagementClient.Jobs,
-                    ResourceGroupName,
-                    Name,
-                    Reason);
-               
-                WriteObject("Successfully Cancelled the Databox Job");
-            }
-            else if(jobResource.Status == StageName.Cancelled)
-            {
-                WriteObject("This Databox Job is already Cancelled");
+                WriteObject("Successfully Deleted the Databox Job");
+
             }
             else
             {
-                WriteObject("This Databox Job cannot be Cancelled");
+                WriteObject("This Databox Job cannot be Deleted");
             }
         }
 

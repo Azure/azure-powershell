@@ -12,8 +12,8 @@ using System.Threading;
 
 namespace Microsoft.Azure.Commands.DataBox.Common
 {
-    [Cmdlet(VerbsCommon.Get, "AzDataBoxJobs", DefaultParameterSetName = ListParameterSet), OutputType(typeof(JobResource))]
-    public class GetDataBoxJobs : AzureDataBoxCmdletBase
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataBoxJob", DefaultParameterSetName = ListParameterSet), OutputType(typeof(JobResource))]
+    public class GetDataBoxJob : AzureDataBoxCmdletBase
     {
         private const string ListParameterSet = "ListParameterSet";
         private const string GetByNameParameterSet = "GetByNameParameterSet";
@@ -52,6 +52,12 @@ namespace Microsoft.Azure.Commands.DataBox.Common
 
         public override void ExecuteCmdlet()
         {
+            if (this.ParameterSetName.Equals("GetByResourceIdParameterSet"))
+            {
+                this.ResourceGroupName = ResourceIdHandler.GetResourceGroupName(ResourceId);
+                this.Name = ResourceIdHandler.GetResourceName(ResourceId);
+            }
+
             if (Name != null && string.IsNullOrWhiteSpace(Name))
             {
                 throw new PSArgumentNullException("Name");

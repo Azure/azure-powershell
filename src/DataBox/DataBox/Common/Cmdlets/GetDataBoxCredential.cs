@@ -12,25 +12,34 @@ using System.Threading;
 
 namespace Microsoft.Azure.Commands.DataBox.Common
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataBoxCredential"), OutputType(typeof(IEnumerable<UnencryptedCredentials>))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataBoxCredential" , DefaultParameterSetName = GetByNameParameterSet), OutputType(typeof(IEnumerable<UnencryptedCredentials>))]
     public class GetDataBoxCredential : AzureDataBoxCmdletBase
     {
-        
-        
 
-        [Parameter(Mandatory = true)]
+        private const string GetByNameParameterSet = "GetByNameParameterSet";
+        private const string GetByResourceIdParameterSet = "GetByResourceIdParameterSet";
+
+        [Parameter(Mandatory = true, ParameterSetName = GetByNameParameterSet)]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true)]
+        [Parameter(Mandatory = true, ParameterSetName = GetByNameParameterSet)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(Mandatory = true, ParameterSetName = GetByResourceIdParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            
-            
+
+            if (this.ParameterSetName.Equals("GetByResourceIdParameterSet"))
+            {
+                this.ResourceGroupName = ResourceIdHandler.GetResourceGroupName(ResourceId);
+                this.Name = ResourceIdHandler.GetResourceName(ResourceId);
+            }
 
             if (Name != null && string.IsNullOrWhiteSpace(Name))
             {
