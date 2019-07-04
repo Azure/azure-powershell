@@ -13,7 +13,7 @@ using System.Threading;
 
 namespace Microsoft.Azure.Commands.DataBox.Common
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataBoxJob"), OutputType(typeof(String))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataBoxJob" , SupportsShouldProcess = true), OutputType(typeof(String))]
     public class NewDataBoxJob : AzureDataBoxCmdletBase
     {
 
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Commands.DataBox.Common
 
             List<DestinationAccountDetails> destinationAccountDetails = new List<DestinationAccountDetails>();
 
-            foreach (var storageAccount in StorageAccount)
+            foreach (var storageAccount in StorageAccountResourceId)
             {
                 destinationAccountDetails.Add(
                 new DestinationAccountDetails(storageAccount));
@@ -203,13 +203,17 @@ namespace Microsoft.Azure.Commands.DataBox.Common
                 throw new PSNotSupportedException("The Shipping Address is not Valid.");
             }
 
-            JobResource finalJobResource = JobsOperationsExtensions.Create(
+            if (ShouldProcess(this.Name))
+            {
+                JobResource finalJobResource = JobsOperationsExtensions.Create(
                             DataBoxManagementClient.Jobs,
                             ResourceGroupName,
                             Name,
                             newJobResource);
 
-            WriteObject(finalJobResource);
+                WriteObject(finalJobResource);
+            }
+            
         }
 
 

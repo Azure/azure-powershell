@@ -12,7 +12,7 @@ using System.Threading;
 
 namespace Microsoft.Azure.Commands.DataBox.Common
 {
-    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataBoxJob"), OutputType(typeof(String))]
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataBoxJob", SupportsShouldProcess = true), OutputType(typeof(String))]
     public class RemoveDataBoxJob : AzureDataBoxCmdletBase
     {
 
@@ -35,12 +35,16 @@ namespace Microsoft.Azure.Commands.DataBox.Common
             if (jobResource.Status == StageName.Cancelled || jobResource.Status == StageName.Completed || jobResource.Status == StageName.CompletedWithErrors)
             {
                 // Initiate to delete job
-                JobsOperationsExtensions.Delete(
-                  DataBoxManagementClient.Jobs,
-                  ResourceGroupName,
-                  Name);
+                if (ShouldProcess(this.Name))
+                {
+                    JobsOperationsExtensions.Delete(
+                        DataBoxManagementClient.Jobs,
+                        ResourceGroupName,
+                        Name);
 
-                WriteObject("Successfully Deleted the Databox Job");
+                    WriteObject("Successfully Deleted the Databox Job");
+                }
+                
 
             }
             else
