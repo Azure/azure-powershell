@@ -4,10 +4,10 @@
       "RequestUri": "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/providers/Microsoft.DataBox/locations/WestUS/validateAddress?api-version=2018-01-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDViNWRkMWMtNzkzZC00MWRlLWJlOWYtNmY5ZWQxNDJmNjk1L3Byb3ZpZGVycy9NaWNyb3NvZnQuRGF0YUJveC9sb2NhdGlvbnMvV2VzdFVTL3ZhbGlkYXRlQWRkcmVzcz9hcGktdmVyc2lvbj0yMDE4LTAxLTAx",
       "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"shippingAddress\": {\r\n    \"streetAddress1\": \"Blah Blah\",\r\n    \"city\": \"San Francisco\",\r\n    \"stateOrProvince\": \"CA\",\r\n    \"country\": \"US\",\r\n    \"postalCode\": \"94107\",\r\n    \"addressType\": \"None\"\r\n  },\r\n  \"deviceType\": \"DataBox\"\r\n}",
+      "RequestBody": "{\r\n  \"shippingAddress\": {\r\n    \"streetAddress1\": \"blah blah\",\r\n    \"city\": \"San Francisco\",\r\n    \"stateOrProvince\": \"CA\",\r\n    \"country\": \"US\",\r\n    \"postalCode\": \"94107\",\r\n    \"addressType\": \"None\"\r\n  },\r\n  \"deviceType\": \"DataBox\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "49387ab5-f34d-466c-8d7e-d8e33030551e"
+          "247d33ff-e038-4688-a7e2-47ee2daaa668"
         ],
         "Accept-Language": [
           "en-US"
@@ -36,31 +36,31 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "a3f1a1dd-8031-4bab-80db-61d02f5aa006"
+          "440eb0aa-3045-40f9-8614-db3268e070bb"
         ],
         "x-ms-client-request-id": [
-          "49387ab5-f34d-466c-8d7e-d8e33030551e"
+          "247d33ff-e038-4688-a7e2-47ee2daaa668"
         ],
         "X-Powered-By": [
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
+          "1199"
         ],
         "x-ms-correlation-request-id": [
-          "7f1188d1-80f5-4707-a645-cf8ea8a803e6"
+          "0daabd7c-cd9b-440c-8e0f-78678e09b079"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20190703T043437Z:7f1188d1-80f5-4707-a645-cf8ea8a803e6"
+          "SOUTHINDIA:20190705T062447Z:0daabd7c-cd9b-440c-8e0f-78678e09b079"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Wed, 03 Jul 2019 04:34:37 GMT"
+          "Fri, 05 Jul 2019 06:24:46 GMT"
         ],
         "Content-Length": [
-          "63"
+          "105"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -69,7 +69,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"validationStatus\": \"Invalid\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"validationStatus\": \"Invalid\",\r\n    \"validationType\": \"ValidateAddress\"\r\n  }\r\n}",
       "StatusCode": 200
     }
   ],

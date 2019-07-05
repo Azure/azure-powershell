@@ -7,7 +7,7 @@
       "RequestBody": "{\r\n  \"shippingAddress\": {\r\n    \"streetAddress1\": \"16 TOWNSEND ST11\",\r\n    \"city\": \"San Francisco\",\r\n    \"stateOrProvince\": \"CA\",\r\n    \"country\": \"US\",\r\n    \"postalCode\": \"94107\",\r\n    \"addressType\": \"None\"\r\n  },\r\n  \"deviceType\": \"DataBox\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "62c5b8fe-d785-414e-b192-9cff769e4bcb"
+          "67e89ff8-bde3-4b71-9d32-6b8aada6720b"
         ],
         "Accept-Language": [
           "en-US"
@@ -36,10 +36,10 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "8b975cbf-1f6b-464d-bf10-051e4a511a62"
+          "c5b7b461-06dc-4a01-92d9-fe88bc019437"
         ],
         "x-ms-client-request-id": [
-          "62c5b8fe-d785-414e-b192-9cff769e4bcb"
+          "67e89ff8-bde3-4b71-9d32-6b8aada6720b"
         ],
         "X-Powered-By": [
           "ASP.NET"
@@ -48,19 +48,19 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "037df5ab-f6be-405d-aa41-cb4d87f34597"
+          "afa5549b-33d9-4130-8f79-166584f0f5a4"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20190703T043251Z:037df5ab-f6be-405d-aa41-cb4d87f34597"
+          "SOUTHINDIA:20190705T062443Z:afa5549b-33d9-4130-8f79-166584f0f5a4"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Wed, 03 Jul 2019 04:32:51 GMT"
+          "Fri, 05 Jul 2019 06:24:42 GMT"
         ],
         "Content-Length": [
-          "384"
+          "426"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -69,7 +69,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"validationStatus\": \"Ambiguous\",\r\n    \"alternateAddresses\": [\r\n      {\r\n        \"streetAddress1\": \"16 TOWNSEND ST\",\r\n        \"streetAddress2\": \"\",\r\n        \"streetAddress3\": \"\",\r\n        \"city\": \"SAN FRANCISCO\",\r\n        \"stateOrProvince\": \"CA\",\r\n        \"country\": \"US\",\r\n        \"postalCode\": \"94107\",\r\n        \"addressType\": \"None\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"validationStatus\": \"Ambiguous\",\r\n    \"alternateAddresses\": [\r\n      {\r\n        \"streetAddress1\": \"16 TOWNSEND ST\",\r\n        \"streetAddress2\": \"\",\r\n        \"streetAddress3\": \"\",\r\n        \"city\": \"SAN FRANCISCO\",\r\n        \"stateOrProvince\": \"CA\",\r\n        \"country\": \"US\",\r\n        \"postalCode\": \"94107\",\r\n        \"addressType\": \"None\"\r\n      }\r\n    ],\r\n    \"validationType\": \"ValidateAddress\"\r\n  }\r\n}",
       "StatusCode": 200
     }
   ],
