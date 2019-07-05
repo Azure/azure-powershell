@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDataBoxJob
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a new databox job using the specified parameters
 
 ## SYNTAX
 
@@ -22,21 +22,26 @@ New-AzDataBoxJob -ResourceGroupName <String> -Name <String> [-DefaultProfile <IA
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzDataBoxJob** cmdlet is used to create a new databox job by specifying the details required for the creation of the job.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzDataBoxJob -Location 'WestUS' -StreetAddress1 '16 TOWNSEND ST' -PostalCode 94107 -City 'San Francisco' -StateOrProvinceCode 'CA' -CountryCode 'US' -EmailId 'abc@outlook.com' -PhoneNumber 1234567891 -ContactName 'John' -StorageAccount $s1 -DataBoxType DataBox -ResourceGroupName IrfansRG -Name OrderTest
+
+jobResource.Name jobResource.Sku.Name jobResource.Status jobResource.StartTime jobResource.Location ResourceGroup
+---------------- -------------------- ------------------ --------------------- -------------------- -------------
+OrderTest       DataBox              DeviceOrdered      05-07-2019 05:25:30   westus               IrfansRG
+
 ```
 
-{{ Add example description here }}
+The cmdlet takes all the required parameters and some optional parameters to create the databox job.
 
 ## PARAMETERS
 
 ### -AddressType
-{{ Fill AddressType Description }}
+Type of Address. Available values : AddressType.None (default), AddressType.Residential, AddressType.Commercial
 
 ```yaml
 Type: Microsoft.Azure.Management.DataBox.Models.AddressType
@@ -52,7 +57,7 @@ Accept wildcard characters: False
 ```
 
 ### -City
-{{ Fill City Description }}
+Name of the City. Ex : San Francisco
 
 ```yaml
 Type: System.String
@@ -67,7 +72,7 @@ Accept wildcard characters: False
 ```
 
 ### -CompanyName
-{{ Fill CompanyName Description }}
+Name of the company
 
 ```yaml
 Type: System.String
@@ -82,7 +87,7 @@ Accept wildcard characters: False
 ```
 
 ### -ContactName
-{{ Fill ContactName Description }}
+Contact Name
 
 ```yaml
 Type: System.String
@@ -97,7 +102,7 @@ Accept wildcard characters: False
 ```
 
 ### -CountryCode
-{{ Fill CountryCode Description }}
+Country Code. Ex: US
 
 ```yaml
 Type: System.String
@@ -112,7 +117,7 @@ Accept wildcard characters: False
 ```
 
 ### -DataBoxType
-{{ Fill DataBoxType Description }}
+Sku type of Databox.  Available values : DataBoxDisk, Databox, DataBoxHeavy
 
 ```yaml
 Type: System.String
@@ -143,7 +148,7 @@ Accept wildcard characters: False
 ```
 
 ### -EmailId
-{{ Fill EmailId Description }}
+List of EmailIds can be provided. Atleast one is mandatory
 
 ```yaml
 Type: System.String[]
@@ -158,7 +163,7 @@ Accept wildcard characters: False
 ```
 
 ### -ExpectedDataSizeInTeraBytes
-{{ Fill ExpectedDataSizeInTeraBytes Description }}
+For DataBoxDisk order, specifying the expected data in terabytes is mandatory.
 
 ```yaml
 Type: System.Int32
@@ -173,7 +178,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-{{ Fill Location Description }}
+Location of the subscription
 
 ```yaml
 Type: System.String
@@ -188,7 +193,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-{{ Fill Name Description }}
+Name of the databox job to be created
 
 ```yaml
 Type: System.String
@@ -203,7 +208,7 @@ Accept wildcard characters: False
 ```
 
 ### -PhoneNumber
-{{ Fill PhoneNumber Description }}
+Contact Number 
 
 ```yaml
 Type: System.String
@@ -218,7 +223,7 @@ Accept wildcard characters: False
 ```
 
 ### -PostalCode
-{{ Fill PostalCode Description }}
+Postal Code
 
 ```yaml
 Type: System.String
@@ -233,7 +238,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-{{ Fill ResourceGroupName Description }}
+Resource Group Name under which the databox job has to be created.
 
 ```yaml
 Type: System.String
@@ -263,7 +268,7 @@ Accept wildcard characters: False
 ```
 
 ### -StorageAccountResourceId
-{{ Fill StorageAccountResourceId Description }}
+List of Resource Ids of Storage Accounts. Atleast one is mandatory.
 
 ```yaml
 Type: System.String[]
@@ -278,7 +283,7 @@ Accept wildcard characters: False
 ```
 
 ### -StreetAddress1
-{{ Fill StreetAddress1 Description }}
+Street Address
 
 ```yaml
 Type: System.String
@@ -293,7 +298,7 @@ Accept wildcard characters: False
 ```
 
 ### -StreetAddress2
-{{ Fill StreetAddress2 Description }}
+Additional Street Address
 
 ```yaml
 Type: System.String
@@ -308,7 +313,7 @@ Accept wildcard characters: False
 ```
 
 ### -StreetAddress3
-{{ Fill StreetAddress3 Description }}
+Additional Street Address
 
 ```yaml
 Type: System.String
@@ -361,7 +366,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.PSDataBoxJob
 
 ## NOTES
 

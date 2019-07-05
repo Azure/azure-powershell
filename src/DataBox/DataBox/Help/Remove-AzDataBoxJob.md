@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzDataBoxJob
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Deletes the databox job
 
 ## SYNTAX
 
@@ -25,16 +25,27 @@ Remove-AzDataBoxJob -ResourceId <String> [-DefaultProfile <IAzureContextContaine
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Remove-AzDataBoxJob** cmdlet is used to delete a finished databox job from the list od databox jobs.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzDataBoxJob -ResourceGroupName irfansrg -name test
+
+Successfully Deleted the Databox Job
 ```
 
-{{ Add example description here }}
+Deletes the specified databox job
+
+### Example 2
+```powershell
+PS C:\> Remove-AzDataBoxJob -ResourceId "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/IrfansRG/providers/Microsoft.DataBox/jobs/Test"
+
+Successfully Deleted the Databox Job
+```
+
+Deletes the specified databox job
 
 ## PARAMETERS
 
@@ -54,7 +65,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-{{ Fill Name Description }}
+Databox Job Name
 
 ```yaml
 Type: System.String
@@ -69,7 +80,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-{{ Fill ResourceGroupName Description }}
+Databox Job Resource Group Name
 
 ```yaml
 Type: System.String
@@ -84,7 +95,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-{{ Fill ResourceId Description }}
+Databox Job Resource Id
 
 ```yaml
 Type: System.String

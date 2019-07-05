@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzDataBoxCredential
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets the databox credentials of a specific job
 
 ## SYNTAX
 
@@ -24,16 +24,35 @@ Get-AzDataBoxCredential -ResourceId <String> [-DefaultProfile <IAzureContextCont
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzDataBoxCredential** cmdlet gets the credentials of the databox of a specific job. 
+The internal properties of the returned credentials object will be different for different Sku types.
+
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzDataBoxCredential -ResourceGroupName bvttoolrg6 -Name TJ-636646322037905056
+
+JobName               JobSecrets
+-------               ----------
+TJ-636646322037905056 Microsoft.Azure.Management.DataBox.Models.DataboxJobSecrets
+
 ```
 
-{{ Add example description here }}
+This retuns the JobSecrets of the specified job
+
+### Example 2
+```powershell
+PS C:\> Get-AzDataBoxCredential -ResourceId "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/bvttoolrg6/providers/Microsoft.DataBox/jobs/TJ-636646322037905056"
+
+JobName               JobSecrets
+-------               ----------
+TJ-636646322037905056 Microsoft.Azure.Management.DataBox.Models.DataboxJobSecrets
+
+```
+
+This retuns the JobSecrets of the specified job
 
 ## PARAMETERS
 
@@ -53,7 +72,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-{{ Fill Name Description }}
+Databox Job Name
 
 ```yaml
 Type: System.String
@@ -68,7 +87,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-{{ Fill ResourceGroupName Description }}
+Databox Job Resource Group Name
 
 ```yaml
 Type: System.String
@@ -83,7 +102,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-{{ Fill ResourceId Description }}
+Databox Job Resource Id
 
 ```yaml
 Type: System.String
