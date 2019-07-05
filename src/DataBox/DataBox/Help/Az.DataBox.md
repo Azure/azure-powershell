@@ -11,6 +11,15 @@ Locale: {{ Update Locale }}
 {{ Fill in the Description }}
 
 ## Az.DataBox Cmdlets
-### [Get-AzDataBoxJobs](Get-AzDataBoxJobs.md)
-Gets information about DataBox Jobs
+### [Get-AzDataBoxCredential](Get-AzDataBoxCredential.md)
+{{ Fill in the Synopsis }}
+
+### [New-AzDataBoxJob](New-AzDataBoxJob.md)
+{{ Fill in the Synopsis }}
+
+### [Remove-AzDataBoxJob](Remove-AzDataBoxJob.md)
+{{ Fill in the Synopsis }}
+
+### [Stop-AzDataBoxJob](Stop-AzDataBoxJob.md)
+{{ Fill in the Synopsis }}
 

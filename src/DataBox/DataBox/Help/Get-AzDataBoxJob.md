@@ -5,28 +5,28 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-AzDataBoxJobs
+# Get-AzDataBoxJob
 
 ## SYNOPSIS
-Gets information about DataBox Jobs
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ### ListParameterSet (Default)
 ```
-Get-AzDataBoxJobs [-ResourceGroupName <String>] [-Completed] [-CompletedWithErrors] [-Cancelled] [-Aborted]
- [-Detatiled] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzDataBoxJob [-ResourceGroupName <String>] [-Completed] [-CompletedWithErrors] [-Cancelled] [-Aborted]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByNameParameterSet
 ```
-Get-AzDataBoxJobs -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzDataBoxJob -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### GetByResourceIdParameterSet
 ```
-Get-AzDataBoxJobs -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzDataBoxJob -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,7 +49,7 @@ PS C:\> {{ Add example code here }}
 {{ Fill Aborted Description }}
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: ListParameterSet
 Aliases:
 
@@ -64,7 +64,7 @@ Accept wildcard characters: False
 {{ Fill Cancelled Description }}
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: ListParameterSet
 Aliases:
 
@@ -79,7 +79,7 @@ Accept wildcard characters: False
 {{ Fill Completed Description }}
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: ListParameterSet
 Aliases:
 
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 {{ Fill CompletedWithErrors Description }}
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: ListParameterSet
 Aliases:
 
@@ -109,24 +109,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Detatiled
-{{ Fill Detatiled Description }}
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ListParameterSet
-Aliases:
 
 Required: False
 Position: Named
@@ -139,7 +124,7 @@ Accept wildcard characters: False
 {{ Fill Name Description }}
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: GetByNameParameterSet
 Aliases:
 
@@ -154,7 +139,7 @@ Accept wildcard characters: False
 {{ Fill ResourceGroupName Description }}
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ListParameterSet
 Aliases:
 
@@ -166,7 +151,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: GetByNameParameterSet
 Aliases:
 
@@ -181,7 +166,7 @@ Accept wildcard characters: False
 {{ Fill ResourceId Description }}
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: GetByResourceIdParameterSet
 Aliases:
 
@@ -201,7 +186,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.DataBox.Models.JobResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.PSDataBoxJob
 
 ## NOTES
 
