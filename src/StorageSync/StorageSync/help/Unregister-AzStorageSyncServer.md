@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.StorageSync.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.StorageSync.dll-Help.xml
 Module Name: Az.StorageSync
 online version: https://docs.microsoft.com/en-us/powershell/module/Az.storagesync/unregister-Azstoragesyncserver
 schema: 2.0.0
@@ -8,11 +8,18 @@ schema: 2.0.0
 # Unregister-AzStorageSyncServer
 
 ## SYNOPSIS
-Warning: Unregistering a server will result in cascading deletes of all server endpoints on this server. This command will unregister a server it's the storage sync service.
+Warning: Unregistering a server will result in cascading deletes of all server endpoints on this server. This command will unregister a server from it's storage sync service.
 
 ## SYNTAX
 
-### InputObjectParameterSet (Default)
+### StringParameterSet (Default)
+```
+Unregister-AzStorageSyncServer [-ResourceGroupName] <String> [-StorageSyncServiceName] <String>
+ [-ServerId] <Guid> [-Force] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### InputObjectParameterSet
 ```
 Unregister-AzStorageSyncServer [-InputObject] <PSRegisteredServer> [-Force] [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -22,13 +29,6 @@ Unregister-AzStorageSyncServer [-InputObject] <PSRegisteredServer> [-Force] [-Pa
 ```
 Unregister-AzStorageSyncServer [-ResourceId] <String> [-Force] [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### StringParameterSet
-```
-Unregister-AzStorageSyncServer [-ResourceGroupName] <String> [-StorageSyncServiceName] <String>
- [-ServerId] <Guid> [-Force] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,7 +50,7 @@ This command will unregister the server, causing cascading deletes of all server
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -65,9 +65,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -80,7 +80,7 @@ Accept wildcard characters: False
 Supply -Force to skip confirmation of this command.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -95,7 +95,7 @@ Accept wildcard characters: False
 RegisteredServer Input Object, normally passed through the pipeline.
 
 ```yaml
-Type: Microsoft.Azure.Commands.StorageSync.Models.PSRegisteredServer
+Type: PSRegisteredServer
 Parameter Sets: InputObjectParameterSet
 Aliases:
 
@@ -110,7 +110,7 @@ Accept wildcard characters: False
 {{Fill PassThru Description}}
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -125,7 +125,7 @@ Accept wildcard characters: False
 Resource Group Name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: StringParameterSet
 Aliases:
 
@@ -140,7 +140,7 @@ Accept wildcard characters: False
 RegisteredServer Resource Id
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ResourceIdParameterSet
 Aliases:
 
@@ -155,7 +155,7 @@ Accept wildcard characters: False
 Name of the RegisteredServer.
 
 ```yaml
-Type: System.Guid
+Type: Guid
 Parameter Sets: StringParameterSet
 Aliases: RegisteredServerName
 
@@ -170,7 +170,7 @@ Accept wildcard characters: False
 Name of the StorageSyncService.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: StringParameterSet
 Aliases: ParentName
 
@@ -185,7 +185,7 @@ Accept wildcard characters: False
 Prompts for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -200,7 +200,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

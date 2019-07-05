@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.StorageSync.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.StorageSync.dll-Help.xml
 Module Name: Az.StorageSync
 online version: https://docs.microsoft.com/en-us/powershell/module/Az.storagesync/invoke-Azstoragesyncfilerecall
 schema: 2.0.0
@@ -12,23 +12,23 @@ This command recalls all tiered files back to local disk.
 
 ## SYNTAX
 
-### ObjectParameterSet (Default)
-```
-Invoke-AzStorageSyncFileRecall [-InputObject] <PSServerEndpoint> [-Pattern <String>] [-RecallPath <String>]
- [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### StringParameterSet
+### StringParameterSet (Default)
 ```
 Invoke-AzStorageSyncFileRecall [-ResourceGroupName] <String> [-StorageSyncServiceName] <String>
  [-SyncGroupName] <String> [-Name] <String> [-Pattern <String>] [-RecallPath <String>] [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
 Invoke-AzStorageSyncFileRecall [-ResourceId] <String> [-Pattern <String>] [-RecallPath <String>] [-PassThru]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ObjectParameterSet
+```
+Invoke-AzStorageSyncFileRecall [-InputObject] <PSServerEndpoint> [-Pattern <String>] [-RecallPath <String>]
+ [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,7 +49,7 @@ This command recursively recalls all tiered files located under the root path of
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -64,9 +64,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -79,9 +79,9 @@ Accept wildcard characters: False
 SyncGroup Object, normally passed through the parameter.
 
 ```yaml
-Type: Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint
+Type: PSServerEndpoint
 Parameter Sets: ObjectParameterSet
-Aliases: RegisteredServer
+Aliases: ServerEndpoint
 
 Required: True
 Position: 0
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 Name of the ServerEndpoint.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: StringParameterSet
 Aliases: ServerEndpointName
 
@@ -109,7 +109,7 @@ Accept wildcard characters: False
 {{Fill PassThru Description}}
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -124,7 +124,7 @@ Accept wildcard characters: False
 Pattern of the file name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -139,7 +139,7 @@ Accept wildcard characters: False
 Recall path which need to be recalled.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -154,7 +154,7 @@ Accept wildcard characters: False
 Resource Group Name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: StringParameterSet
 Aliases:
 
@@ -169,7 +169,7 @@ Accept wildcard characters: False
 ServerEndpoint Resource Id
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ResourceIdParameterSet
 Aliases:
 
@@ -184,7 +184,7 @@ Accept wildcard characters: False
 Name of the StorageSyncService.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: StringParameterSet
 Aliases: ParentName
 
@@ -199,12 +199,42 @@ Accept wildcard characters: False
 Name of the SyncGroup.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: StringParameterSet
 Aliases:
 
 Required: True
 Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

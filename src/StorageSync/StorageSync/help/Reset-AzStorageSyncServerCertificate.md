@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.StorageSync.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.StorageSync.dll-Help.xml
 Module Name: Az.StorageSync
 online version: https://docs.microsoft.com/en-us/powershell/module/Az.storagesync/reset-Azstoragesyncservercertificate
 schema: 2.0.0
@@ -12,16 +12,16 @@ Use for troubleshooting only. This command will roll the storage sync server cer
 
 ## SYNTAX
 
-### ObjectParameterSet (Default)
-```
-Reset-AzStorageSyncServerCertificate [-ParentObject] <PSStorageSyncService> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### StringParameterSet
+### StringParameterSet (Default)
 ```
 Reset-AzStorageSyncServerCertificate [-ResourceGroupName] <String> [-StorageSyncServiceName] <String>
  [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ObjectParameterSet
+```
+Reset-AzStorageSyncServerCertificate [-ParentObject] <PSStorageSyncService> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ParentStringParameterSet
@@ -48,9 +48,9 @@ This command will roll the local server certificate and inform the corresponding
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 StorageSyncService Object, normally passed through the parameter.
 
 ```yaml
-Type: Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService
+Type: PSStorageSyncService
 Parameter Sets: ObjectParameterSet
 Aliases: StorageSyncService
 
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 StorageSyncService Parent Resource Id
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ParentStringParameterSet
 Aliases: StorageSyncServiceId
 
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 {{Fill PassThru Description}}
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 Resource Group Name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: StringParameterSet
 Aliases:
 
@@ -123,7 +123,7 @@ Accept wildcard characters: False
 Name of the StorageSyncService.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: StringParameterSet
 Aliases: ParentName
 
@@ -138,7 +138,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -153,7 +153,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

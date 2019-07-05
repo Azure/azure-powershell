@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.StorageSync.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.StorageSync.dll-Help.xml
 Module Name: Az.StorageSync
 online version: https://docs.microsoft.com/en-us/powershell/module/Az.storagesync/get-Azstoragesyncservice
 schema: 2.0.0
@@ -42,9 +42,9 @@ This command lists all storage sync service resources within a given resource gr
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -57,7 +57,7 @@ Accept wildcard characters: False
 Name of the storage sync service.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: StringParameterSet
 Aliases: StorageSyncServiceName
 
@@ -72,7 +72,7 @@ Accept wildcard characters: False
 Resource Group Name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ParentStringParameterSet
 Aliases:
 
@@ -84,7 +84,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: StringParameterSet
 Aliases:
 

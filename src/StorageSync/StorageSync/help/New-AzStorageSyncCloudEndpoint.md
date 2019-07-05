@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.StorageSync.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.StorageSync.dll-Help.xml
 Module Name: Az.StorageSync
 online version: https://docs.microsoft.com/en-us/powershell/module/Az.storagesync/new-Azstoragesynccloudendpoint
 schema: 2.0.0
@@ -12,19 +12,19 @@ This command creates an Azure File Sync cloud endpoint in a sync group.
 
 ## SYNTAX
 
-### ObjectParameterSet (Default)
-```
-New-AzStorageSyncCloudEndpoint [-ParentObject] <PSSyncGroup> -Name <String> -StorageAccountResourceId <String>
- -AzureFileShareName <String> [-StorageAccountTenantId <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### StringParameterSet
+### StringParameterSet (Default)
 ```
 New-AzStorageSyncCloudEndpoint [-ResourceGroupName] <String> [-StorageSyncServiceName] <String>
  [-SyncGroupName] <String> -Name <String> -StorageAccountResourceId <String> -AzureFileShareName <String>
  [-StorageAccountTenantId <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### ObjectParameterSet
+```
+New-AzStorageSyncCloudEndpoint [-ParentObject] <PSSyncGroup> -Name <String> -StorageAccountResourceId <String>
+ -AzureFileShareName <String> [-StorageAccountTenantId <String>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ParentStringParameterSet
@@ -52,7 +52,7 @@ A cloud endpoint is an integral member of a sync group, this is an example of cr
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -63,13 +63,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AzureFileShareName
+Storage Account Share Name (Azure file share name)
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: StorageAccountShareName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -82,7 +97,7 @@ Accept wildcard characters: False
 Name of the cloud endpoint. When created through the Azure portal, Name is set to the name of the Azure file share it references.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: CloudEndpointName
 
@@ -97,7 +112,7 @@ Accept wildcard characters: False
 SyncGroup Object, normally passed through the parameter.
 
 ```yaml
-Type: Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup
+Type: PSSyncGroup
 Parameter Sets: ObjectParameterSet
 Aliases: SyncGroup
 
@@ -112,7 +127,7 @@ Accept wildcard characters: False
 SyncGroup Parent Resource Id
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ParentStringParameterSet
 Aliases: SyncGroupId
 
@@ -127,7 +142,7 @@ Accept wildcard characters: False
 Resource Group Name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: StringParameterSet
 Aliases:
 
@@ -142,22 +157,7 @@ Accept wildcard characters: False
 Storage Account Resource Id
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AzureFileShareName
-Storage Account Share Name (Azure file share name)
-
-```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -172,7 +172,7 @@ Accept wildcard characters: False
 Storage Account Tenant Id (Company Directory Id)
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -187,7 +187,7 @@ Accept wildcard characters: False
 Name of the StorageSyncService.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: StringParameterSet
 Aliases: ParentName
 
@@ -202,7 +202,7 @@ Accept wildcard characters: False
 Name of the SyncGroup.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: StringParameterSet
 Aliases:
 
@@ -217,7 +217,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -232,7 +232,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

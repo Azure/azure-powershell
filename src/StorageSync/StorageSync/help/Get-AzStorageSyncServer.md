@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.StorageSync.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.StorageSync.dll-Help.xml
 Module Name: Az.StorageSync
 online version: https://docs.microsoft.com/en-us/powershell/module/Az.storagesync/get-Azstoragesyncserver
 schema: 2.0.0
@@ -12,15 +12,15 @@ This command lists all servers registered to a given storage sync service.
 
 ## SYNTAX
 
-### ObjectParameterSet (Default)
+### StringParameterSet (Default)
 ```
-Get-AzStorageSyncServer [-ParentObject] <PSStorageSyncService> [-ServerId <Guid>]
+Get-AzStorageSyncServer [-ResourceGroupName] <String> [-StorageSyncServiceName] <String> [-ServerId <Guid>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### StringParameterSet
+### ObjectParameterSet
 ```
-Get-AzStorageSyncServer [-ResourceGroupName] <String> [-StorageSyncServiceName] <String> [-ServerId <Guid>]
+Get-AzStorageSyncServer [-ParentObject] <PSStorageSyncService> [-ServerId <Guid>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -48,9 +48,9 @@ This command gets all servers registered to a specific storage sync service.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 StorageSyncService Object, normally passed through the parameter.
 
 ```yaml
-Type: Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService
+Type: PSStorageSyncService
 Parameter Sets: ObjectParameterSet
 Aliases: StorageSyncService
 
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 StorageSyncService Object, normally passed through the parameter.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ParentStringParameterSet
 Aliases: StorageSyncServiceId
 
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 Resource Group Name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: StringParameterSet
 Aliases:
 
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 Name of the RegisteredServer.
 
 ```yaml
-Type: System.Guid
+Type: Guid
 Parameter Sets: (All)
 Aliases: RegisteredServerName
 
@@ -123,7 +123,7 @@ Accept wildcard characters: False
 Name of the StorageSyncService.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: StringParameterSet
 Aliases: ParentName
 

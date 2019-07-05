@@ -15,14 +15,14 @@ This command can be used to manually initiate the detection of namespaces change
 ### StringAndDirectoryParameterSet (Default)
 ```
 Invoke-AzStorageSyncChangeDetection [-ResourceGroupName] <String> [-StorageSyncServiceName] <String>
- [-SyncGroupName] <String> -CloudEndpointName <String> -DirectoryPath <String> [-Recursive] [-PassThru]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SyncGroupName] <String> -Name <String> -DirectoryPath <String> [-Recursive] [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### StringAndPathParameterSet
 ```
 Invoke-AzStorageSyncChangeDetection [-ResourceGroupName] <String> [-StorageSyncServiceName] <String>
- [-SyncGroupName] <String> -CloudEndpointName <String> -Path <String[]> [-PassThru] [-AsJob]
+ [-SyncGroupName] <String> -Name <String> -Path <String[]> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -40,13 +40,13 @@ Invoke-AzStorageSyncChangeDetection [-ResourceId] <String> -Path <String[]> [-Pa
 
 ### ObjectAndDirectoryParameterSet
 ```
-Invoke-AzStorageSyncChangeDetection [-InputObject] <PSServerEndpoint> -DirectoryPath <String> [-Recursive]
+Invoke-AzStorageSyncChangeDetection [-InputObject] <PSCloudEndpoint> -DirectoryPath <String> [-Recursive]
  [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ObjectAndPathParameterSet
 ```
-Invoke-AzStorageSyncChangeDetection [-InputObject] <PSServerEndpoint> -Path <String[]> [-PassThru] [-AsJob]
+Invoke-AzStorageSyncChangeDetection [-InputObject] <PSCloudEndpoint> -Path <String[]> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -94,21 +94,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CloudEndpointName
-Name of the CloudEndpoint.
-
-```yaml
-Type: String
-Parameter Sets: StringAndDirectoryParameterSet, StringAndPathParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -143,7 +128,7 @@ Accept wildcard characters: False
 CloudEndpoint Object, normally passed through the parameter.
 
 ```yaml
-Type: PSServerEndpoint
+Type: PSCloudEndpoint
 Parameter Sets: ObjectAndDirectoryParameterSet, ObjectAndPathParameterSet
 Aliases: CloudEndpoint
 
@@ -151,6 +136,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the CloudEndpoint.
+
+```yaml
+Type: String
+Parameter Sets: StringAndDirectoryParameterSet, StringAndPathParameterSet
+Aliases: CloudEndpointName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
