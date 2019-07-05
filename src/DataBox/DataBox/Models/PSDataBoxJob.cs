@@ -9,12 +9,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models
 {
     public class PSDataBoxJob
     {
-        [Ps1Xml(Label = "jobResource.Name", Target = ViewControl.Table, ScriptBlock = "$_.jobResource.Name")]
-        [Ps1Xml(Label = "jobResource.Sku.Name", Target = ViewControl.Table, ScriptBlock = "$_.jobResource.Sku.Name")]
-        [Ps1Xml(Label = "jobResource.Status", Target = ViewControl.Table, ScriptBlock = "$_.jobResource.Status")]
-        [Ps1Xml(Label = "jobResource.StartTime", Target = ViewControl.Table, ScriptBlock = "$_.jobResource.StartTime")]
-        [Ps1Xml(Label = "jobResource.Location", Target = ViewControl.Table, ScriptBlock = "$_.jobResource.Location")]
-        public JobResource jobResource;
+        [Ps1Xml(Label = "JobResource.Name", Target = ViewControl.Table, ScriptBlock = "$_.JobResource.Name")]
+        [Ps1Xml(Label = "JobResource.Sku.Name", Target = ViewControl.Table, ScriptBlock = "$_.JobResource.Sku.Name")]
+        [Ps1Xml(Label = "JobResource.Status", Target = ViewControl.Table, ScriptBlock = "$_.JobResource.Status")]
+        [Ps1Xml(Label = "JobResource.StartTime", Target = ViewControl.Table, ScriptBlock = "$_.JobResource.StartTime")]
+        [Ps1Xml(Label = "JobResource.Location", Target = ViewControl.Table, ScriptBlock = "$_.JobResource.Location")]
+        public JobResource JobResource;
 
         [Ps1Xml(Label = "ResourceGroup", Target = ViewControl.Table)]
         public string ResourceGroup;
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models
 
         public PSDataBoxJob()
         {
-            jobResource = new JobResource();
+            JobResource = new JobResource();
         }
         
         public PSDataBoxJob(JobResource jobResource)
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models
                 throw new ArgumentNullException("jobResource");
             }
 
-            this.jobResource = jobResource;
+            this.JobResource = jobResource;
             this.ResourceGroup = ResourceIdHandler.GetResourceGroupName(jobResource.Id);
             this.Id = jobResource.Id;
         }

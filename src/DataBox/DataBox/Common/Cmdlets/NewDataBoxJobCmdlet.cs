@@ -23,7 +23,6 @@ namespace Microsoft.Azure.Commands.DataBox.Common
         public string Location;
 
         [Parameter(Mandatory = false)]
-        //[Valida(AddressType.Commercial, AddressType.None)]
         public AddressType AddressType = AddressType.None;
 
         [Parameter(Mandatory = false)]
@@ -50,9 +49,8 @@ namespace Microsoft.Azure.Commands.DataBox.Common
         [Parameter(Mandatory = true)]
         public string CountryCode;
 
-        [Parameter(Mandatory = true,
-            HelpMessage = "Input a semicolon(;) seperated string of email ids. Eg : \"abc@outlook.com;xyz@outlook.com\"")]
-        public string EmailId;
+        [Parameter(Mandatory = true)]
+        public string[] EmailId;
 
         [Parameter(Mandatory = true)]
         public string PhoneNumber;
@@ -116,13 +114,12 @@ namespace Microsoft.Azure.Commands.DataBox.Common
                 PostalCode = this.PostalCode
             };
 
-            List<string> emailList;
-            emailList = EmailId.Split(new char[';'], StringSplitOptions.RemoveEmptyEntries).ToList();
+            
 
             ContactDetails contactDetails = new ContactDetails()
             {
                 Phone = this.PhoneNumber,
-                EmailList = emailList,
+                EmailList = EmailId,
                 ContactName = this.ContactName
             };
 
