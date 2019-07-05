@@ -28,7 +28,8 @@ namespace Microsoft.Azure.Commands.DataBox.Common
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = GetByResourceIdParameterSet)]
+        [Parameter(Mandatory = true, ParameterSetName = GetByResourceIdParameterSet, ValueFromPipelineByPropertyName = true)]
+        [Alias("Id")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
