@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzDataBoxJob
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets information about Databox Jobs
 
 ## SYNTAX
 
@@ -38,15 +38,67 @@ If you do not specify anything other than subscription id, this cmdlet gets info
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzDataBoxJob
+
+jobResource.Name        jobResource.Sku.Name jobResource.Status  jobResource.StartTime jobResource.Location ResourceGroup
+----------------        -------------------- ------------------  --------------------- -------------------- -------------
+testtip2                DataBox              Cancelled           10-09-2018 06:34:53   westus               bvttoolrg6
+cleanboxraghav          DataBox              Aborted             04-12-2018 16:07:41   westus               forraghav
+cleanboxraghav-Clone    DataBox              Cancelled           25-04-2019 11:31:36   westus               forraghav
+cleanup-bhaskar2        DataBox              Aborted             15-01-2019 01:11:03   westus               forraghav
+.
+.
+.
+
 ```
 
-{{ Add example description here }}
+Get-AzDataBoxJob without any parameter fetches all the databox jobs under the subscription
+
+### Example 2
+```powershell
+PS C:\> Get-AzDataBoxJob -ResourceGroupName "forraghav"
+
+jobResource.Name        jobResource.Sku.Name jobResource.Status  jobResource.StartTime jobResource.Location ResourceGroup
+----------------        -------------------- ------------------  --------------------- -------------------- -------------
+cleanboxraghav          DataBox              Aborted             04-12-2018 16:07:41   westus               forraghav
+cleanboxraghav-Clone    DataBox              Cancelled           25-04-2019 11:31:36   westus               forraghav
+cleanup-bhaskar2        DataBox              Aborted             15-01-2019 01:11:03   westus               forraghav
+.
+.
+.
+
+```
+
+Get-AzDataBoxJob with ResourceGroupName parameter fetches all the databox jobs under the specified resource group
+
+### Example 3
+```powershell
+PS C:\> Get-AzDataBoxJob -ResourceGroupName "forraghav" -Name "cleanboxraghav"
+
+jobResource.Name        jobResource.Sku.Name jobResource.Status  jobResource.StartTime jobResource.Location ResourceGroup
+----------------        -------------------- ------------------  --------------------- -------------------- -------------
+cleanboxraghav          DataBox              Aborted             04-12-2018 16:07:41   westus               forraghav
+
+```
+
+Get-AzDataBoxJob with ResourceGroupName and Name specified will fetch that specific databox job
+
+### Example 4
+```powershell
+PS C:\> Get-AzDataBoxJob -ResourceId "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/forraghav/providers/Microsoft.DataBox/jobs/cleanboxraghav"
+
+jobResource.Name        jobResource.Sku.Name jobResource.Status  jobResource.StartTime jobResource.Location ResourceGroup
+----------------        -------------------- ------------------  --------------------- -------------------- -------------
+cleanboxraghav          DataBox              Aborted             04-12-2018 16:07:41   westus               forraghav
+
+```
+
+Get-AzDataBoxJob with ResourceId specified will fetch that specific databox job
 
 ## PARAMETERS
 
 ### -Aborted
-{{ Fill Aborted Description }}
+Switch Parameter to fetch Aborted jobs
 
 ```yaml
 Type: SwitchParameter
@@ -61,7 +113,7 @@ Accept wildcard characters: False
 ```
 
 ### -Cancelled
-{{ Fill Cancelled Description }}
+Switch Parameter to fetch Cancelled jobs
 
 ```yaml
 Type: SwitchParameter
@@ -76,7 +128,7 @@ Accept wildcard characters: False
 ```
 
 ### -Completed
-{{ Fill Completed Description }}
+Switch Parameter to fetch Completed jobs
 
 ```yaml
 Type: SwitchParameter
@@ -91,7 +143,7 @@ Accept wildcard characters: False
 ```
 
 ### -CompletedWithErrors
-{{ Fill CompletedWithErrors Description }}
+Switch Parameter to fetch jobs that completed with errors
 
 ```yaml
 Type: SwitchParameter
@@ -121,7 +173,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-{{ Fill Name Description }}
+Databox Job Name
 
 ```yaml
 Type: String
@@ -136,7 +188,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-{{ Fill ResourceGroupName Description }}
+Databox Job Resource Group Name
 
 ```yaml
 Type: String
@@ -163,7 +215,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-{{ Fill ResourceId Description }}
+Databox Job Resource Id
 
 ```yaml
 Type: String

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Stop-AzDataBoxJob
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Cancels an ongoing databox job if the job is in cancellable state.
 
 ## SYNTAX
 
@@ -25,16 +25,27 @@ Stop-AzDataBoxJob -Reason <String> -ResourceId <String> [-DefaultProfile <IAzure
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Stop-AzDataBoxJob** cmdlet is used to cancel a databox job.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Stop-AzDataBoxJob -ResourceGroupName "irfansrg" -name "test" -Reason "Enter your reason"
+
+Successfully Cancelled the Databox Job
 ```
 
-{{ Add example description here }}
+Cancels the specified databox job
+
+### Example 2
+```powershell
+PS C:\> Stop-AzDataBoxJob -ResourceId "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/IrfansRG/providers/Microsoft.DataBox/jobs/Test"
+
+Successfully Cancelled the Databox Job
+```
+
+Cancels the specified databox job
 
 ## PARAMETERS
 
@@ -54,7 +65,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-{{ Fill Name Description }}
+Databox Job Name
 
 ```yaml
 Type: System.String
@@ -84,7 +95,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-{{ Fill ResourceGroupName Description }}
+Databox Job Resource Group Name
 
 ```yaml
 Type: System.String
@@ -99,7 +110,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-{{ Fill ResourceId Description }}
+Databox Resource Id
 
 ```yaml
 Type: System.String
