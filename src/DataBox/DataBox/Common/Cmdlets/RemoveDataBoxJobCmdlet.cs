@@ -12,23 +12,34 @@ using System.Threading;
 
 namespace Microsoft.Azure.Commands.DataBox.Common
 {
-    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataBoxJob", SupportsShouldProcess = true), OutputType(typeof(String))]
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataBoxJob", SupportsShouldProcess = true , DefaultParameterSetName = GetByNameParameterSet), OutputType(typeof(String))]
     public class RemoveDataBoxJob : AzureDataBoxCmdletBase
     {
 
+        private const string GetByNameParameterSet = "GetByNameParameterSet";
+        private const string GetByResourceIdParameterSet = "GetByResourceIdParameterSet";
 
-        [Parameter(Mandatory = true)]
+        [Parameter(Mandatory = true, ParameterSetName = GetByNameParameterSet)]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true)]
+        [Parameter(Mandatory = true, ParameterSetName = GetByNameParameterSet)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
+        [Parameter(Mandatory = true, ParameterSetName = GetByResourceIdParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
 
 
         public override void ExecuteCmdlet()
         {
+            if (this.ParameterSetName.Equals(GetByResourceIdParameterSet))
+            {
+                this.ResourceGroupName = ResourceIdHandler.GetResourceGroupName(ResourceId);
+                this.Name = ResourceIdHandler.GetResourceName(ResourceId);
+            }
             // Gets information about the specified job.
             JobResource jobResource = JobsOperationsExtensions.Get(DataBoxManagementClient.Jobs, ResourceGroupName, Name, "details");
 
