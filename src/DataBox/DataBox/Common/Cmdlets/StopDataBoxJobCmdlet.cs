@@ -19,12 +19,12 @@ namespace Microsoft.Azure.Commands.DataBox.Common
         private const string GetByNameParameterSet = "GetByNameParameterSet";
         private const string GetByResourceIdParameterSet = "GetByResourceIdParameterSet";
 
-        [Parameter(Mandatory = true)]
+        [Parameter(Mandatory = true, ParameterSetName = GetByNameParameterSet)]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true)]
+        [Parameter(Mandatory = true, ParameterSetName = GetByNameParameterSet)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

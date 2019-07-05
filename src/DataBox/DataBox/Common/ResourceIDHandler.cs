@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Commands.DataBox.Common
             var splits = resourceId.Split(new[] { '/' });
             for(int i = 0;i<splits.Length; i++)
             {
-                if (splits[i].Equals("resourceGroups"))
+                if (splits[i].Equals("resourceGroups", StringComparison.CurrentCultureIgnoreCase))
                 {
                     return splits[i + 1];
                 }
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.DataBox.Common
             var splits = resourceId.Split(new[] { '/' });
             for (int i = 0; i < splits.Length; i++)
             {
-                if (splits[i].Equals("providers"))
+                if (splits[i].Equals("providers", StringComparison.CurrentCultureIgnoreCase))
                 {
                     return splits[i + 3];
                 }
