@@ -4,7 +4,6 @@ using System.Management.Automation;
 using System.Text;
 using System.Linq;
 using Microsoft.Azure.Commands.DataBox.Common;
-using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Azure.Management.DataBox.Models;
 using Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models;
 using Microsoft.Azure.Management.DataBox;
@@ -58,17 +57,6 @@ namespace Microsoft.Azure.Commands.DataBox.Common
         [Parameter(Mandatory = true)]
         public string ContactName;
 
-        //[Parameter(Mandatory = true)]
-        //[ValidateSet("Microsoft.Storage","Microsoft.ClassicStorage")]
-        //public string StorageAccountProviderType;
-
-        //[Parameter(Mandatory = true,
-        //    HelpMessage ="Storage account's resource group name")]
-        //public string StorageAccountResourceGroupName;
-
-        //[Parameter(Mandatory = true)]
-        //public string StorageAccountName;
-
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [Alias("Id")]
         public String[] StorageAccountResourceId;
@@ -88,10 +76,6 @@ namespace Microsoft.Azure.Commands.DataBox.Common
         [Parameter(Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
-
-        //[Parameter(Mandatory = true, HelpMessage = "Job Resource Object")]
-        //[ValidateNotNullOrEmpty]
-        //public JobResource JobResource { get; set; }
 
 
         public override void ExecuteCmdlet()
@@ -137,7 +121,6 @@ namespace Microsoft.Azure.Commands.DataBox.Common
             DataBoxJobDetails databoxDetails;
             DataBoxHeavyJobDetails heavyDetails;
 
-            //JobDetails jobDetails = new JobDetails(contactDetails, shippingAddress, destinationAccountDetails);
             JobResource newJobResource = new JobResource();
 
             Sku sku = new Sku();

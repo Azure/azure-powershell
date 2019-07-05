@@ -16,9 +16,6 @@
 
 
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.PowerShell.Cmdlets.Storage.Management">
-      <HintPath>..\..\..\artifacts\Debug\Az.Storage\Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory">
       <HintPath>..\..\..\artifacts\Debug\Az.Accounts\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
     </Reference>
