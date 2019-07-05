@@ -6,6 +6,7 @@ using System.Linq;
 using Microsoft.Azure.Commands.DataBox.Common;
 using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Azure.Management.DataBox.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models;
 using Microsoft.Azure.Management.DataBox;
 using Microsoft.Rest.Azure;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -13,12 +14,12 @@ using System.Threading;
 
 namespace Microsoft.Azure.Commands.DataBox.Common
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataBoxJob" , SupportsShouldProcess = true), OutputType(typeof(String))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataBoxJob" , SupportsShouldProcess = true), OutputType(typeof(PSDataBoxJob))]
     public class NewDataBoxJob : AzureDataBoxCmdletBase
     {
 
         [Parameter(Mandatory = true)]
-        [ValidateSet("West Europe", "West Central US", "WestUS")]
+        //[ValidateSet("West Europe", "West Central US", "WestUS")]
         public string Location;
 
         [Parameter(Mandatory = false)]
@@ -70,7 +71,8 @@ namespace Microsoft.Azure.Commands.DataBox.Common
         //[Parameter(Mandatory = true)]
         //public string StorageAccountName;
 
-        [Parameter(Mandatory = true)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
+        [Alias("Id")]
         public String[] StorageAccountResourceId;
 
         [Parameter(Mandatory = true)]
@@ -211,7 +213,7 @@ namespace Microsoft.Azure.Commands.DataBox.Common
                             Name,
                             newJobResource);
 
-                WriteObject(finalJobResource);
+                WriteObject(new PSDataBoxJob(finalJobResource));
             }
             
         }
