@@ -163,7 +163,6 @@ namespace Microsoft.Azure.Commands.DataBox.Common
 
                 } while (!(string.IsNullOrEmpty(jobPageList.NextPageLink)));
 
-                int i = 1;
                 foreach (var job in result)
                 {
                     finalResult.Add(new PSDataBoxJob(job));
