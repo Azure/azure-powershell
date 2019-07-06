@@ -225,12 +225,11 @@ namespace Microsoft.Azure.Commands.Batch.Utils
         /// </summary>
         internal static void PoolInformationSyncCollections(PSPoolInformation poolInfo)
         {
-            if (poolInfo != null)
+            if (poolInfo != null && poolInfo.AutoPoolSpecification != null)
             {
-                if (poolInfo.AutoPoolSpecification != null)
-                {
-                    AutoPoolSpecificationSyncCollections(poolInfo.AutoPoolSpecification);
-                }
+                
+               AutoPoolSpecificationSyncCollections(poolInfo.AutoPoolSpecification);
+                
             }
         }
 
@@ -239,12 +238,10 @@ namespace Microsoft.Azure.Commands.Batch.Utils
         /// </summary>
         internal static void AutoPoolSpecificationSyncCollections(PSAutoPoolSpecification spec)
         {
-            if (spec != null)
+            if (spec != null && spec.PoolSpecification != null)
             {
-                if (spec.PoolSpecification != null)
-                {
-                    PoolSpecificationSyncCollections(spec.PoolSpecification);
-                }
+               
+                PoolSpecificationSyncCollections(spec.PoolSpecification);
             }
         }
 
