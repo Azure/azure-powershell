@@ -355,19 +355,24 @@ function Create-StorageContext
     }
 
     $result = $null
-    if (gcm New-AzStorageContext -ErrorAction SilentlyContinue)
+
+    if(IsLive)
     {
-        Write-Verbose "Using New-AzStorageContext cmdlet"
-        $result = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey -Protocol https -Endpoint core.windows.net
+        if (gcm New-AzStorageContext -ErrorAction SilentlyContinue)
+        {
+            Write-Verbose "Using New-AzStorageContext cmdlet"
+            $result = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey -Protocol https -Endpoint core.windows.net
+        }
+        elseif (gcm New-AzureStorageContext -ErrorAction SilentlyContinue)
+        {
+            Write-Verbose "Using New-AzureStorageContext cmdlet"
+            $result = New-AzureStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey -Protocol https -Endpoint core.windows.net
+        }
+        else 
+        {
+            throw "Neither New-AzStorageContext nor New-AzureStorageContext cmdlet is available"
+        }
     }
-    elseif (gcm New-AzureStorageContext -ErrorAction SilentlyContinue)
-    {
-        Write-Verbose "Using New-AzureStorageContext cmdlet"
-        $result = New-AzureStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey -Protocol https -Endpoint core.windows.net
-    }
-    else 
-    {
-        throw "Neither New-AzStorageContext nor New-AzureStorageContext cmdlet is available"
-    }
+    
     return $result
 }
