@@ -542,22 +542,22 @@ namespace PSModelGenerator
             {
                 Type argType = t.GetGenericArguments()[0];
 
-                string str = string.Format("IList<{0}>", GetPropertyType(argType));
-                return str;
+                return string.Format("IList<{0}>", GetPropertyType(argType));
+           
             }
             else if (t.IsGenericType && t.GetGenericTypeDefinition() == typeof(IReadOnlyList<>))
             {
                 Type argType = t.GetGenericArguments()[0];
 
-                string str = string.Format("IReadOnlyList<{0}>", GetPropertyType(argType));
-                return str;
+                return string.Format("IReadOnlyList<{0}>", GetPropertyType(argType));
+             
             }
             else if (t.IsGenericType && t.GetGenericTypeDefinition() == typeof(IEnumerable<>))
             {
                 Type argType = t.GetGenericArguments()[0];
 
-                string str = string.Format("IEnumerable<{0}>", GetPropertyType(argType));
-                return str;
+                return string.Format("IEnumerable<{0}>", GetPropertyType(argType));
+           
             }
             else if (OMtoPSClassMappings.ContainsKey(t.FullName))
             {
