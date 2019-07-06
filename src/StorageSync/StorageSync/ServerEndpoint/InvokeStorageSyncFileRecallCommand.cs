@@ -22,6 +22,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.StorageSync;
 using Microsoft.Azure.Management.StorageSync.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
 using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 
@@ -115,7 +116,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
            Mandatory = true,
            ValueFromPipeline = true,
            HelpMessage = HelpMessages.ServerEndpointObjectParameter)]
-        [Alias(StorageSyncAliases.ServerEndpointAlias)]
+        [CmdletParameterBreakingChange("InputObject", ChangeDescription = "Alias RegisteredServer is invalid and preserved for compatibility. Alias ServerEndpoint should be used instead")]
+        [Alias(StorageSyncAliases.RegisteredServerAlias, StorageSyncAliases.ServerEndpointAlias)]
         public PSServerEndpoint InputObject { get; set; }
 
         /// <summary>
