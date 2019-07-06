@@ -43,16 +43,20 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Pricings
             var name = Name;
             var tier = PricingTier;
 
-            switch (ParameterSetName)
+
+            if(ParameterSetName == ParameterSetNames.InputObject)
             {
                 case ParameterSetNames.SubscriptionLevelResource:
                     break;
-                case ParameterSetNames.InputObject:
-                    name = InputObject.Name;
-                    tier = InputObject.PricingTier;
-                    break;
-                default:
-                    throw new PSInvalidOperationException();
+            
+                name = InputObject.Name;
+                tier = InputObject.PricingTier;
+
+                    
+            }
+            else if (ParameterSetName != ParameterSetNames.SubscriptionLevelResource)
+            {
+                throw new PSInvalidOperationException();
             }
 
             if (ShouldProcess(name, VerbsCommon.Set))
