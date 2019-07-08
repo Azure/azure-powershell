@@ -115,7 +115,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         private IEnumerable<Provider> GetAllProviders()
         {
-            return this.ResourceManagerSdkClient.ResourceManagementClient.Providers.List(expand: "resourceTypes/aliases");
+            var returnList = new List<Provider>();
+            var tempResult = this.ResourceManagerSdkClient.ResourceManagementClient.Providers.List(expand: "resourceTypes/aliases");
+            returnList.AddRange(tempResult);
+
+            while (!string.IsNullOrWhiteSpace(tempResult.NextPageLink))
+            {
+                tempResult = this.ResourceManagerSdkClient.ResourceManagementClient.Providers.ListNext(tempResult.NextPageLink);
+                returnList.AddRange(tempResult);
+            }
+
+            return returnList;
         }
 
         private IEnumerable<Provider> GetMatchingProviders(IEnumerable<Provider> input, string namespaceMatch, string resourceTypeMatch)

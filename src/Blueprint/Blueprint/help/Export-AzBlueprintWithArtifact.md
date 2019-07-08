@@ -18,7 +18,7 @@ Export-AzBlueprintWithArtifact -Blueprint <PSBlueprintBase> -OutputPath <String>
 ```
 
 ## DESCRIPTION
-Export a blueprint definition with its artifacts and save to disk.
+Export a blueprint definition with its artifacts and save to disk. This cmdlet exports the latest version(draft or published) of the blueprint.
 
 ## EXAMPLES
 

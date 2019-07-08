@@ -36,7 +36,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests
             ServiceBusController.NewInstance.RunPsTest(_logger, "ServiceBusTopicTests");
         }
 
-
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ServiceBusTopicAuth_CURD()
