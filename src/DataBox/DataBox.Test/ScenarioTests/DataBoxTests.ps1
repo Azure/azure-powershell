@@ -12,18 +12,6 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-<#
-.SYNOPSIS
-Positive test. Get an existing databox job.
-#>
-function Test-GetExistingDataBoxJob
-{	
-    $dfname = "OrderTest7"
-    $rgname = "IrfansRG"
-    $result = Get-AzDataBoxJob -ResourceGroupName $rgname -Name $dfname
-    # Test
-    Assert-AreEqual $dfname $result.JobResource.Name
-}
 
 <#
 .SYNOPSIS
@@ -41,10 +29,15 @@ function Test-GetNonExistingDataBoxJob
     Assert-ThrowsContains { Get-AzDataBoxJob -ResourceGroupName $rgname -Name $dfname } "not found"    
 }
 
+<#
+The location is hard coded because the cmdlet needs an address. Without hard coding the location and the 
+address, the cmdlet cannot be run and hence cannot be tested.
+#>
 function Create-Job {
 	$dfname = $args[0]
 	$rgname = $args[1]
-	$a = New-AzDataBoxJob -Location 'WestUS' -StreetAddress1 '16 TOWNSEND ST' -PostalCode 94107 -City 'San Francisco' -StateOrProvinceCode 'CA' -CountryCode 'US' -EmailId 't-irali@microsoft.com' -PhoneNumber 1234567891 -ContactName 'Irfan' -StorageAccountResourceId "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/smoketest/providers/Microsoft.Storage/storageAccounts/wuspodsmoketest"  -DataBoxType DataBox -ResourceGroupName $rgname -Name $dfname -ErrorAction Ignore
+	$storagergid = $args[2]
+	$a = New-AzDataBoxJob -Location 'WestUS' -StreetAddress1 '16 TOWNSEND ST' -PostalCode 94107 -City 'San Francisco' -StateOrProvinceCode 'CA' -CountryCode 'US' -EmailId 'abc@outlook.com' -PhoneNumber 1234567891 -ContactName 'Random' -StorageAccountResourceId $storagergid  -DataBoxType DataBox -ResourceGroupName $rgname -Name $dfname -ErrorAction Ignore
 	return $a
 }
 <#
@@ -61,10 +54,12 @@ function Test-CreateDataBoxJob
     
     New-AzResourceGroup -Name $rgname -Location $rglocation -Force
 
+	$storageaccountname = Get-StorageAccountName
+	$storageaccount = New-AzStorageAccount -ResourceGroupName $rgname -Name $storageaccountname  -Location $rglocation 
+
     try
     {
-       # $actual = New-AzDataBoxJob -Location 'WestUS' -StreetAddress1 '16 TOWNSEND ST' -PostalCode 94107 -City 'San Francisco' -StateOrProvinceCode 'CA' -CountryCode 'US' -EmailId 't-irali@microsoft.com' -PhoneNumber 1234567891 -ContactName 'Irfan' -StorageAccountResourceId "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/smoketest/providers/Microsoft.Storage/storageAccounts/wuspodsmoketest"  -DataBoxType DataBox -ResourceGroupName $rgname -Name $dfname -ErrorAction Ignore
-        $actual = Create-Job $dfname $rgname
+        $actual = Create-Job $dfname $rgname $storageaccount.Id
 		$expected = Get-AzDataBoxJob -ResourceGroupName $rgname -Name $dfname
 
         Assert-AreEqual $expected.Id $actual.Id
@@ -73,6 +68,7 @@ function Test-CreateDataBoxJob
     {
         Stop-AzDataBoxJob -ResourceGroupName $rgname -Name $dfname -Reason "Random"
 		Remove-AzDataBoxJob -ResourceGroupName $rgname -Name $dfname 
+		Remove-AzStorageAccount -ResourceGroupName $rgname -Name $storageaccountname 
     }
 }
 
@@ -90,16 +86,20 @@ function Test-CreateAlreadyExistingDataBoxJob
     
     New-AzResourceGroup -Name $rgname -Location $rglocation -Force
 
+	$storageaccountname = Get-StorageAccountName
+	$storageaccount = New-AzStorageAccount -ResourceGroupName $rgname -Name $storageaccountname -Location $rglocation 
+
     try
     {
-        Create-Job $dfname $rgname
-        Assert-ThrowsContains {New-AzDataBoxJob -Location 'WestUS' -StreetAddress1 '16 TOWNSEND ST' -PostalCode 94107 -City 'San Francisco' -StateOrProvinceCode 'CA' -CountryCode 'US' -EmailId 't-irali@microsoft.com' -PhoneNumber 1234567891 -ContactName 'Irfan' -StorageAccountResourceId "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/smoketest/providers/Microsoft.Storage/storageAccounts/wuspodsmoketest"  -DataBoxType DataBox -ResourceGroupName $rgname -Name $dfname 
+        Create-Job $dfname $rgname $storageaccount.Id
+        Assert-ThrowsContains {New-AzDataBoxJob -Location 'WestUS' -StreetAddress1 '16 TOWNSEND ST' -PostalCode 94107 -City 'San Francisco' -StateOrProvinceCode 'CA' -CountryCode 'US' -EmailId 'abc@outlook.com' -PhoneNumber 1234567891 -ContactName 'Random' -StorageAccountResourceId $storageaccount.Id  -DataBoxType DataBox -ResourceGroupName $rgname -Name $dfname 
 		} "order already exists with the same name"
     }
     finally
     {
         Stop-AzDataBoxJob -ResourceGroupName $rgname -Name $dfname -Reason "Random"
 		Remove-AzDataBoxJob -ResourceGroupName $rgname -Name $dfname 
+		Remove-AzStorageAccount -ResourceGroupName $rgname -Name $storageaccountname 
     }
 }
 
@@ -116,10 +116,13 @@ function Test-StopDataBoxJob
     
     
     New-AzResourceGroup -Name $rgname -Location $rglocation -Force
+	
+	$storageaccountname = Get-StorageAccountName
+	$storageaccount = New-AzStorageAccount -ResourceGroupName $rgname -Name $storageaccountname -Location $rglocation 
 
     try
     {
-        Create-Job $dfname $rgname
+        Create-Job $dfname $rgname $storageaccount.Id
 		Stop-AzDataBoxJob -ResourceGroupName $rgname -Name $dfname -Reason "Random"
         $expected = Get-AzDataBoxJob -ResourceGroupName $rgname -Name $dfname
 
@@ -129,13 +132,15 @@ function Test-StopDataBoxJob
     {
 
 		Remove-AzDataBoxJob -ResourceGroupName $rgname -Name $dfname 
+		Remove-AzStorageAccount -ResourceGroupName $rgname -Name $storageaccountname 
+
     }
 }
 
 <#
 .SYNOPSIS
 Test Removing a Databox Job. Creates a new job, cancels it and then removes it. Then get the job and check for the 
-exception to contain "not found"
+exception to contain "Could not find"
 #>
 function Test-RemoveDataBoxJob
 {
@@ -144,12 +149,14 @@ function Test-RemoveDataBoxJob
 	$rglocation = Get-ProviderLocation ResourceManagement
     
     
-    #New-AzResourceGroup -Name $rgname -Location $rglocation -Force
-	$rgname = "IrfansRG"
+    New-AzResourceGroup -Name $rgname -Location $rglocation -Force
+	
+	$storageaccountname = Get-StorageAccountName
+	$storageaccount = New-AzStorageAccount -ResourceGroupName $rgname -Name $storageaccountname -Location $rglocation
 
     try
     {
-        Create-Job $dfname $rgname
+        Create-Job $dfname $rgname $storageaccount.Id
 		Stop-AzDataBoxJob -ResourceGroupName $rgname -Name $dfname -Reason "Random"
 		Remove-AzDataBoxJob -ResourceGroupName $rgname -Name $dfname 
 
@@ -157,6 +164,7 @@ function Test-RemoveDataBoxJob
     }
 	finally
 	{
+		Remove-AzStorageAccount -ResourceGroupName $rgname -Name $storageaccountname 
 	}
 }
 
@@ -172,12 +180,14 @@ function Test-RemoveAlreadyRemovedDataBoxJob
 	$rglocation = Get-ProviderLocation ResourceManagement
     
     
-    #New-AzResourceGroup -Name $rgname -Location $rglocation -Force
-	$rgname = "IrfansRG"
+    New-AzResourceGroup -Name $rgname -Location $rglocation -Force
+	
+	$storageaccountname = Get-StorageAccountName
+	$storageaccount = New-AzStorageAccount -ResourceGroupName $rgname -Name $storageaccountname -Location $rglocation
 
     try
     {
-        Create-Job $dfname $rgname
+        Create-Job $dfname $rgname $storageaccount.Id
 		Stop-AzDataBoxJob -ResourceGroupName $rgname -Name $dfname -Reason "Random"
 		Remove-AzDataBoxJob -ResourceGroupName $rgname -Name $dfname 
 
@@ -185,29 +195,32 @@ function Test-RemoveAlreadyRemovedDataBoxJob
     }
 	finally
 	{
+		Remove-AzStorageAccount -ResourceGroupName $rgname -Name $storageaccountname 
 	}
 }
 
 <#
 .SYNOPSIS
-Ambiguous Shipping Address when passed to the cmdlet to create a Job Resource Object must give an error
+Ambiguous Shipping Address when passed to the cmdlet to create a Job Resource Object must give an error.
+The Location and Address is hard coded because the cmdlet requires an ambiguous address to run the test.
 #>
 function Test-JobResourceObjectAmbiguousAddress
 {
     
-	Assert-ThrowsContains {New-AzDataBoxJob -Location 'WestUS' -StreetAddress1 '16 TOWNSEND ST11' -PostalCode 94107 -City 'San Francisco' -StateOrProvinceCode 'CA' -CountryCode 'US' -EmailId 't-irali@microsoft.com' -PhoneNumber 1234567891 -ContactName 'Irfan' -StorageAccountResourceId "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/smoketest/providers/Microsoft.Storage/storageAccounts/wuspodsmoketest"  -DataBoxType DataBox -ResourceGroupName "IrfansRG" -Name "Test" 
+	Assert-ThrowsContains {New-AzDataBoxJob -Location 'WestUS' -StreetAddress1 '16 TOWNSEND ST11' -PostalCode 94107 -City 'San Francisco' -StateOrProvinceCode 'CA' -CountryCode 'US' -EmailId 'abc@outlook.com' -PhoneNumber 1234567891 -ContactName 'Random' -StorageAccountResourceId "random"  -DataBoxType DataBox -ResourceGroupName "Random" -Name "Random" 
     } "ambiguous"
  
 }
 
 <#
 .SYNOPSIS
-Ambiguous Shipping Address when passed to the cmdlet to create a Job Resource Object must give an error
+Ambiguous Shipping Address when passed to the cmdlet to create a Job Resource Object must give an error.
+The Location and Address is hard coded because the cmdlet requires an invalid address to run the test.
 #>
 function Test-JobResourceObjectInvalidAddress
 {
     
-	Assert-ThrowsContains {New-AzDataBoxJob -Location 'WestUS' -StreetAddress1 'blah blah' -PostalCode 94107 -City 'San Francisco' -StateOrProvinceCode 'CA' -CountryCode 'US' -EmailId 't-irali@microsoft.com' -PhoneNumber 1234567891 -ContactName 'Irfan' -StorageAccountResourceId "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/smoketest/providers/Microsoft.Storage/storageAccounts/wuspodsmoketest"  -DataBoxType DataBox -ResourceGroupName "IrfansRG" -Name "Test" 
+	Assert-ThrowsContains {New-AzDataBoxJob -Location 'WestUS' -StreetAddress1 'blah blah' -PostalCode 94107 -City 'San Francisco' -StateOrProvinceCode 'CA' -CountryCode 'US' -EmailId 'abc@outlook.com' -PhoneNumber 1234567891 -ContactName 'Random' -StorageAccountResourceId "Random"  -DataBoxType DataBox -ResourceGroupName "Random" -Name "Random" 
 	} "not Valid"
  
 }

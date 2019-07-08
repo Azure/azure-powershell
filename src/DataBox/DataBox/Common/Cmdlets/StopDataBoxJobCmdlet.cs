@@ -49,8 +49,6 @@ namespace Microsoft.Azure.Commands.DataBox.Common
 
             if (jobResource.IsCancellable != null && (bool)jobResource.IsCancellable)
             {
-                //CancellationReason cancellationReason = new CancellationReason(Reason);
-
                 // Initiate to cancel job
                 if (ShouldProcess(this.Name))
                 {

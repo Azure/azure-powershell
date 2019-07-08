@@ -32,6 +32,15 @@ function Get-DataBoxJobName
 
 <#
 .SYNOPSIS
+Gets valid storage account name
+#>
+function Get-StorageAccountName
+{
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
 Gets the default location for a provider
 #>
 function Get-ProviderLocation($provider)

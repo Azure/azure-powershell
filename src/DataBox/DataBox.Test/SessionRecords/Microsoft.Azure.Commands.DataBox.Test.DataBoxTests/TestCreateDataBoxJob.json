@@ -1,13 +1,13 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourcegroups/ps4071?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDViNWRkMWMtNzkzZC00MWRlLWJlOWYtNmY5ZWQxNDJmNjk1L3Jlc291cmNlZ3JvdXBzL3BzNDA3MT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourcegroups/ps4320?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDViNWRkMWMtNzkzZC00MWRlLWJlOWYtNmY5ZWQxNDJmNjk1L3Jlc291cmNlZ3JvdXBzL3BzNDMyMD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"West US\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d13cbd79-2bcf-4be8-8e75-a73e13352bc0"
+          "fb209f5c-ebfe-49a9-915f-758cc4bc4edf"
         ],
         "Accept-Language": [
           "en-US"
@@ -33,16 +33,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1196"
         ],
         "x-ms-request-id": [
-          "0a54276e-e8db-47d8-ade3-44f5f1ea7055"
+          "06dd83b7-35a6-437a-abea-5d10bb9ded6f"
         ],
         "x-ms-correlation-request-id": [
-          "0a54276e-e8db-47d8-ade3-44f5f1ea7055"
+          "06dd83b7-35a6-437a-abea-5d10bb9ded6f"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20190705T061847Z:0a54276e-e8db-47d8-ade3-44f5f1ea7055"
+          "SOUTHINDIA:20190708T070714Z:06dd83b7-35a6-437a-abea-5d10bb9ded6f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -51,7 +51,7 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 05 Jul 2019 06:18:46 GMT"
+          "Mon, 08 Jul 2019 07:07:13 GMT"
         ],
         "Content-Length": [
           "165"
@@ -63,8 +63,140 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/ps4071\",\r\n  \"name\": \"ps4071\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/ps4320\",\r\n  \"name\": \"ps4320\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/ps4320/providers/Microsoft.Storage/storageAccounts/ps7928?api-version=2017-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDViNWRkMWMtNzkzZC00MWRlLWJlOWYtNmY5ZWQxNDJmNjk1L3Jlc291cmNlR3JvdXBzL3BzNDMyMC9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3BzNzkyOD9hcGktdmVyc2lvbj0yMDE3LTEwLTAx",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard_LRS\"\r\n  },\r\n  \"kind\": \"Storage\",\r\n  \"location\": \"West US\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "bd89142e-8998-4353-9048-c7f50696655a"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27617.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Storage.Version2017.10.01.StorageManagementClient/1.2.1"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "97"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/providers/Microsoft.Storage/locations/westus/asyncoperations/5ba46615-3936-4939-90ea-bf093fe04fd1?monitor=true&api-version=2017-10-01"
+        ],
+        "Retry-After": [
+          "17"
+        ],
+        "x-ms-request-id": [
+          "5ba46615-3936-4939-90ea-bf093fe04fd1"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "7f21887b-033a-43dc-8dbc-50c2260a7860"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20190708T070718Z:7f21887b-033a-43dc-8dbc-50c2260a7860"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 08 Jul 2019 07:07:17 GMT"
+        ],
+        "Content-Type": [
+          "text/plain; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/providers/Microsoft.Storage/locations/westus/asyncoperations/5ba46615-3936-4939-90ea-bf093fe04fd1?monitor=true&api-version=2017-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDViNWRkMWMtNzkzZC00MWRlLWJlOWYtNmY5ZWQxNDJmNjk1L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZS9sb2NhdGlvbnMvd2VzdHVzL2FzeW5jb3BlcmF0aW9ucy81YmE0NjYxNS0zOTM2LTQ5MzktOTBlYS1iZjA5M2ZlMDRmZDE/bW9uaXRvcj10cnVlJmFwaS12ZXJzaW9uPTIwMTctMTAtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.27617.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Storage.Version2017.10.01.StorageManagementClient/1.2.1"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "234c2f81-ba5b-4da2-8765-d0ccc537ab5e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "f2c0d66e-03a8-4177-ab69-9ff5b4ac3b3b"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20190708T070735Z:f2c0d66e-03a8-4177-ab69-9ff5b4ac3b3b"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 08 Jul 2019 07:07:34 GMT"
+        ],
+        "Content-Length": [
+          "992"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard_LRS\",\r\n    \"tier\": \"Standard\"\r\n  },\r\n  \"kind\": \"Storage\",\r\n  \"id\": \"/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/ps4320/providers/Microsoft.Storage/storageAccounts/ps7928\",\r\n  \"name\": \"ps7928\",\r\n  \"type\": \"Microsoft.Storage/storageAccounts\",\r\n  \"location\": \"westus\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"networkAcls\": {\r\n      \"bypass\": \"AzureServices\",\r\n      \"virtualNetworkRules\": [],\r\n      \"ipRules\": [],\r\n      \"defaultAction\": \"Allow\"\r\n    },\r\n    \"supportsHttpsTrafficOnly\": false,\r\n    \"encryption\": {\r\n      \"services\": {\r\n        \"file\": {\r\n          \"enabled\": true,\r\n          \"lastEnabledTime\": \"2019-07-08T07:07:17.7968825Z\"\r\n        },\r\n        \"blob\": {\r\n          \"enabled\": true,\r\n          \"lastEnabledTime\": \"2019-07-08T07:07:17.7968825Z\"\r\n        }\r\n      },\r\n      \"keySource\": \"Microsoft.Storage\"\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"creationTime\": \"2019-07-08T07:07:17.703153Z\",\r\n    \"primaryEndpoints\": {\r\n      \"blob\": \"https://ps7928.blob.core.windows.net/\",\r\n      \"queue\": \"https://ps7928.queue.core.windows.net/\",\r\n      \"table\": \"https://ps7928.table.core.windows.net/\",\r\n      \"file\": \"https://ps7928.file.core.windows.net/\"\r\n    },\r\n    \"primaryLocation\": \"westus\",\r\n    \"statusOfPrimary\": \"available\"\r\n  }\r\n}",
+      "StatusCode": 200
     },
     {
       "RequestUri": "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/providers/Microsoft.DataBox/locations/WestUS/validateAddress?api-version=2018-01-01",
@@ -73,7 +205,7 @@
       "RequestBody": "{\r\n  \"shippingAddress\": {\r\n    \"streetAddress1\": \"16 TOWNSEND ST\",\r\n    \"city\": \"San Francisco\",\r\n    \"stateOrProvince\": \"CA\",\r\n    \"country\": \"US\",\r\n    \"postalCode\": \"94107\",\r\n    \"addressType\": \"None\"\r\n  },\r\n  \"deviceType\": \"DataBox\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b23cec44-9a1c-449b-a41b-dbf5936adb72"
+          "cc149589-ea6a-46d4-8e8b-b6ce5c939cd4"
         ],
         "Accept-Language": [
           "en-US"
@@ -102,28 +234,28 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "dece22f0-3342-4423-a9fd-e7b577c9a174"
+          "ae3ff392-eda2-484c-8db2-7343857d6d17"
         ],
         "x-ms-client-request-id": [
-          "b23cec44-9a1c-449b-a41b-dbf5936adb72"
+          "cc149589-ea6a-46d4-8e8b-b6ce5c939cd4"
         ],
         "X-Powered-By": [
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1197"
+          "1199"
         ],
         "x-ms-correlation-request-id": [
-          "464943c6-9aa6-4e96-97d4-d6404f6c06be"
+          "8c6ae9aa-7fc5-41b4-b917-6adb17f67983"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20190705T061850Z:464943c6-9aa6-4e96-97d4-d6404f6c06be"
+          "SOUTHINDIA:20190708T070737Z:8c6ae9aa-7fc5-41b4-b917-6adb17f67983"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Fri, 05 Jul 2019 06:18:49 GMT"
+          "Mon, 08 Jul 2019 07:07:37 GMT"
         ],
         "Content-Length": [
           "422"
@@ -139,13 +271,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/ps4071/providers/Microsoft.DataBox/jobs/ps3335?api-version=2018-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDViNWRkMWMtNzkzZC00MWRlLWJlOWYtNmY5ZWQxNDJmNjk1L3Jlc291cmNlR3JvdXBzL3BzNDA3MS9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFCb3gvam9icy9wczMzMzU/YXBpLXZlcnNpb249MjAxOC0wMS0wMQ==",
+      "RequestUri": "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/ps4320/providers/Microsoft.DataBox/jobs/ps7770?api-version=2018-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDViNWRkMWMtNzkzZC00MWRlLWJlOWYtNmY5ZWQxNDJmNjk1L3Jlc291cmNlR3JvdXBzL3BzNDMyMC9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFCb3gvam9icy9wczc3NzA/YXBpLXZlcnNpb249MjAxOC0wMS0wMQ==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"details\": {\r\n      \"jobDetailsType\": \"DataBox\",\r\n      \"contactDetails\": {\r\n        \"contactName\": \"Irfan\",\r\n        \"phone\": \"1234567891\",\r\n        \"emailList\": [\r\n          \"t-irali@microsoft.com\"\r\n        ]\r\n      },\r\n      \"shippingAddress\": {\r\n        \"streetAddress1\": \"16 TOWNSEND ST\",\r\n        \"city\": \"San Francisco\",\r\n        \"stateOrProvince\": \"CA\",\r\n        \"country\": \"US\",\r\n        \"postalCode\": \"94107\",\r\n        \"addressType\": \"None\"\r\n      },\r\n      \"destinationAccountDetails\": [\r\n        {\r\n          \"accountId\": \"/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/smoketest/providers/Microsoft.Storage/storageAccounts/wuspodsmoketest\"\r\n        }\r\n      ]\r\n    }\r\n  },\r\n  \"location\": \"WestUS\",\r\n  \"sku\": {\r\n    \"name\": \"DataBox\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"details\": {\r\n      \"jobDetailsType\": \"DataBox\",\r\n      \"contactDetails\": {\r\n        \"contactName\": \"Random\",\r\n        \"phone\": \"1234567891\",\r\n        \"emailList\": [\r\n          \"abc@outlook.com\"\r\n        ]\r\n      },\r\n      \"shippingAddress\": {\r\n        \"streetAddress1\": \"16 TOWNSEND ST\",\r\n        \"city\": \"San Francisco\",\r\n        \"stateOrProvince\": \"CA\",\r\n        \"country\": \"US\",\r\n        \"postalCode\": \"94107\",\r\n        \"addressType\": \"None\"\r\n      },\r\n      \"destinationAccountDetails\": [\r\n        {\r\n          \"accountId\": \"/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/ps4320/providers/Microsoft.Storage/storageAccounts/ps7928\"\r\n        }\r\n      ]\r\n    }\r\n  },\r\n  \"location\": \"WestUS\",\r\n  \"sku\": {\r\n    \"name\": \"DataBox\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "3562a0e7-7ffc-48b6-ba70-c4ad4edf0d84"
+          "0448b16e-8f7e-4b8f-a554-7a308c820fb6"
         ],
         "Accept-Language": [
           "en-US"
@@ -160,7 +292,7 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "799"
+          "782"
         ]
       },
       "ResponseHeaders": {
@@ -171,7 +303,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/providers/Microsoft.DataBox/locations/WestUS/operationResults/9eb8e14f-68eb-4a56-aa2e-07a509ac6b7f?api-version=2018-01-01"
+          "https://management.azure.com/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/providers/Microsoft.DataBox/locations/WestUS/operationResults/6f4476b6-8451-4b0a-af82-766b33457ce6?api-version=2018-01-01"
         ],
         "Retry-After": [
           "10"
@@ -180,28 +312,28 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "ab99aad4-e638-446e-8794-882808ed5a48"
+          "6257c0cc-c0ce-4284-8af1-f7f2b06c9be3"
         ],
         "x-ms-client-request-id": [
-          "3562a0e7-7ffc-48b6-ba70-c4ad4edf0d84"
+          "0448b16e-8f7e-4b8f-a554-7a308c820fb6"
         ],
         "X-Powered-By": [
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
+          "1199"
         ],
         "x-ms-correlation-request-id": [
-          "fd14f7f1-27d1-49e8-9fce-34275c53db51"
+          "8bfc8a4c-8549-48de-b1d1-ec6e7daf09c3"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20190705T061853Z:fd14f7f1-27d1-49e8-9fce-34275c53db51"
+          "SOUTHINDIA:20190708T070741Z:8bfc8a4c-8549-48de-b1d1-ec6e7daf09c3"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Fri, 05 Jul 2019 06:18:52 GMT"
+          "Mon, 08 Jul 2019 07:07:40 GMT"
         ],
         "Expires": [
           "-1"
@@ -214,8 +346,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/providers/Microsoft.DataBox/locations/WestUS/operationResults/9eb8e14f-68eb-4a56-aa2e-07a509ac6b7f?api-version=2018-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDViNWRkMWMtNzkzZC00MWRlLWJlOWYtNmY5ZWQxNDJmNjk1L3Byb3ZpZGVycy9NaWNyb3NvZnQuRGF0YUJveC9sb2NhdGlvbnMvV2VzdFVTL29wZXJhdGlvblJlc3VsdHMvOWViOGUxNGYtNjhlYi00YTU2LWFhMmUtMDdhNTA5YWM2YjdmP2FwaS12ZXJzaW9uPTIwMTgtMDEtMDE=",
+      "RequestUri": "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/providers/Microsoft.DataBox/locations/WestUS/operationResults/6f4476b6-8451-4b0a-af82-766b33457ce6?api-version=2018-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDViNWRkMWMtNzkzZC00MWRlLWJlOWYtNmY5ZWQxNDJmNjk1L3Byb3ZpZGVycy9NaWNyb3NvZnQuRGF0YUJveC9sb2NhdGlvbnMvV2VzdFVTL29wZXJhdGlvblJlc3VsdHMvNmY0NDc2YjYtODQ1MS00YjBhLWFmODItNzY2YjMzNDU3Y2U2P2FwaS12ZXJzaW9uPTIwMTgtMDEtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -234,7 +366,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/ps4071/providers/Microsoft.DataBox/jobs/ps3335?api-version=2018-01-01"
+          "https://management.azure.com/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/ps4320/providers/Microsoft.DataBox/jobs/ps7770?api-version=2018-01-01"
         ],
         "Retry-After": [
           "10"
@@ -243,28 +375,28 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "5c2e4b03-0dc3-490a-b5a1-38f46ef610f0"
+          "3200e30c-d753-4c17-9d27-fdafd81650f6"
         ],
         "x-ms-client-request-id": [
-          "cacf0725-cdc1-44c8-ac2f-e2aa770f8cb3"
+          "ef17a60e-9ab1-4d10-93f2-b545516e6f6f"
         ],
         "X-Powered-By": [
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11990"
+          "11999"
         ],
         "x-ms-correlation-request-id": [
-          "d6bef6a7-126e-4191-b4d7-dc4fdfb22e42"
+          "97afd731-a6f7-4a9e-9247-223668d1b99c"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20190705T061904Z:d6bef6a7-126e-4191-b4d7-dc4fdfb22e42"
+          "SOUTHINDIA:20190708T070751Z:97afd731-a6f7-4a9e-9247-223668d1b99c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Fri, 05 Jul 2019 06:19:03 GMT"
+          "Mon, 08 Jul 2019 07:07:50 GMT"
         ],
         "Expires": [
           "-1"
@@ -277,8 +409,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/ps4071/providers/Microsoft.DataBox/jobs/ps3335?api-version=2018-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDViNWRkMWMtNzkzZC00MWRlLWJlOWYtNmY5ZWQxNDJmNjk1L3Jlc291cmNlR3JvdXBzL3BzNDA3MS9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFCb3gvam9icy9wczMzMzU/YXBpLXZlcnNpb249MjAxOC0wMS0wMQ==",
+      "RequestUri": "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/ps4320/providers/Microsoft.DataBox/jobs/ps7770?api-version=2018-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDViNWRkMWMtNzkzZC00MWRlLWJlOWYtNmY5ZWQxNDJmNjk1L3Jlc291cmNlR3JvdXBzL3BzNDMyMC9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFCb3gvam9icy9wczc3NzA/YXBpLXZlcnNpb249MjAxOC0wMS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -300,28 +432,28 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "70c626fd-da34-4a1f-85d6-8a696f5bbdd1"
+          "71c4049c-6aad-416d-990e-7f6711ce19ea"
         ],
         "x-ms-client-request-id": [
-          "58925969-02cf-4953-9765-859a1a3154d1"
+          "d011abff-6880-47a7-bba4-0e2c8e658dfe"
         ],
         "X-Powered-By": [
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11989"
+          "11998"
         ],
         "x-ms-correlation-request-id": [
-          "0abb011c-0d99-4f26-9d6d-047d32fedd44"
+          "e10748ed-68d8-4fa6-9481-685ae60b2050"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20190705T061914Z:0abb011c-0d99-4f26-9d6d-047d32fedd44"
+          "SOUTHINDIA:20190708T070801Z:e10748ed-68d8-4fa6-9481-685ae60b2050"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Fri, 05 Jul 2019 06:19:14 GMT"
+          "Mon, 08 Jul 2019 07:08:01 GMT"
         ],
         "Content-Length": [
           "474"
@@ -333,17 +465,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"isCancellable\": true,\r\n    \"isDeletable\": false,\r\n    \"isShippingAddressEditable\": true,\r\n    \"status\": \"DeviceOrdered\",\r\n    \"startTime\": \"2019-07-05T11:48:53.4480653+05:30\"\r\n  },\r\n  \"location\": \"westus\",\r\n  \"tags\": {},\r\n  \"sku\": {\r\n    \"name\": \"DataBox\"\r\n  },\r\n  \"name\": \"ps3335\",\r\n  \"id\": \"/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/ps4071/providers/Microsoft.DataBox/jobs/ps3335\",\r\n  \"type\": \"Microsoft.DataBox/jobs\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"isCancellable\": true,\r\n    \"isDeletable\": false,\r\n    \"isShippingAddressEditable\": true,\r\n    \"status\": \"DeviceOrdered\",\r\n    \"startTime\": \"2019-07-08T12:37:41.0017464+05:30\"\r\n  },\r\n  \"location\": \"westus\",\r\n  \"tags\": {},\r\n  \"sku\": {\r\n    \"name\": \"DataBox\"\r\n  },\r\n  \"name\": \"ps7770\",\r\n  \"id\": \"/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/ps4320/providers/Microsoft.DataBox/jobs/ps7770\",\r\n  \"type\": \"Microsoft.DataBox/jobs\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/ps4071/providers/Microsoft.DataBox/jobs/ps3335?api-version=2018-01-01&$expand=details",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDViNWRkMWMtNzkzZC00MWRlLWJlOWYtNmY5ZWQxNDJmNjk1L3Jlc291cmNlR3JvdXBzL3BzNDA3MS9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFCb3gvam9icy9wczMzMzU/YXBpLXZlcnNpb249MjAxOC0wMS0wMSYkZXhwYW5kPWRldGFpbHM=",
+      "RequestUri": "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/ps4320/providers/Microsoft.DataBox/jobs/ps7770?api-version=2018-01-01&$expand=details",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDViNWRkMWMtNzkzZC00MWRlLWJlOWYtNmY5ZWQxNDJmNjk1L3Jlc291cmNlR3JvdXBzL3BzNDMyMC9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFCb3gvam9icy9wczc3NzA/YXBpLXZlcnNpb249MjAxOC0wMS0wMSYkZXhwYW5kPWRldGFpbHM=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "52799046-62fd-4e01-bba7-0c94bf8a5220"
+          "ad4ed2f0-650c-4afa-b370-e2cfa4c44bc8"
         ],
         "Accept-Language": [
           "en-US"
@@ -366,31 +498,31 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "3491ade4-16b9-4f81-838d-bb89687a4c5b"
+          "47133e9d-034a-4345-b219-12f52d045df2"
         ],
         "x-ms-client-request-id": [
-          "52799046-62fd-4e01-bba7-0c94bf8a5220"
+          "ad4ed2f0-650c-4afa-b370-e2cfa4c44bc8"
         ],
         "X-Powered-By": [
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11988"
+          "11997"
         ],
         "x-ms-correlation-request-id": [
-          "a1044224-4af0-4b2f-ab15-e7fd8f5bc697"
+          "bb165de5-978c-44e8-9299-cd44b549c3d2"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20190705T061914Z:a1044224-4af0-4b2f-ab15-e7fd8f5bc697"
+          "SOUTHINDIA:20190708T070802Z:bb165de5-978c-44e8-9299-cd44b549c3d2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Fri, 05 Jul 2019 06:19:14 GMT"
+          "Mon, 08 Jul 2019 07:08:01 GMT"
         ],
         "Content-Length": [
-          "3571"
+          "3542"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -399,17 +531,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"isCancellable\": true,\r\n    \"isDeletable\": false,\r\n    \"isShippingAddressEditable\": true,\r\n    \"status\": \"DeviceOrdered\",\r\n    \"startTime\": \"2019-07-05T11:48:53.4480653+05:30\",\r\n    \"details\": {\r\n      \"copyProgress\": [],\r\n      \"jobStages\": [\r\n        {\r\n          \"stageName\": \"DeviceOrdered\",\r\n          \"displayName\": \"Ordered\",\r\n          \"stageStatus\": \"Succeeded\",\r\n          \"stageTime\": \"2019-07-05T11:48:54.5703682+05:30\"\r\n        },\r\n        {\r\n          \"stageName\": \"DevicePrepared\",\r\n          \"displayName\": \"Processed\",\r\n          \"stageStatus\": \"None\"\r\n        },\r\n        {\r\n          \"stageName\": \"Dispatched\",\r\n          \"displayName\": \"Dispatched\",\r\n          \"stageStatus\": \"None\"\r\n        },\r\n        {\r\n          \"stageName\": \"Delivered\",\r\n          \"displayName\": \"Delivered\",\r\n          \"stageStatus\": \"None\"\r\n        },\r\n        {\r\n          \"stageName\": \"PickedUp\",\r\n          \"displayName\": \"Picked up\",\r\n          \"stageStatus\": \"None\"\r\n        },\r\n        {\r\n          \"stageName\": \"AtAzureDC\",\r\n          \"displayName\": \"Received\",\r\n          \"stageStatus\": \"None\"\r\n        },\r\n        {\r\n          \"stageName\": \"DataCopy\",\r\n          \"displayName\": \"Data copy in progress\",\r\n          \"stageStatus\": \"None\"\r\n        },\r\n        {\r\n          \"stageName\": \"Completed\",\r\n          \"displayName\": \"Completed\",\r\n          \"stageStatus\": \"None\"\r\n        }\r\n      ],\r\n      \"contactDetails\": {\r\n        \"contactName\": \"Irfan\",\r\n        \"phone\": \"1234567891\",\r\n        \"emailList\": [\r\n          \"t-irali@microsoft.com\"\r\n        ],\r\n        \"notificationPreference\": [\r\n          {\r\n            \"stageName\": \"DevicePrepared\",\r\n            \"sendNotification\": true\r\n          },\r\n          {\r\n            \"stageName\": \"Dispatched\",\r\n            \"sendNotification\": true\r\n          },\r\n          {\r\n            \"stageName\": \"Delivered\",\r\n            \"sendNotification\": true\r\n          },\r\n          {\r\n            \"stageName\": \"PickedUp\",\r\n            \"sendNotification\": true\r\n          },\r\n          {\r\n            \"stageName\": \"AtAzureDC\",\r\n            \"sendNotification\": true\r\n          },\r\n          {\r\n            \"stageName\": \"DataCopy\",\r\n            \"sendNotification\": true\r\n          }\r\n        ]\r\n      },\r\n      \"shippingAddress\": {\r\n        \"streetAddress1\": \"16 TOWNSEND ST\",\r\n        \"city\": \"San Francisco\",\r\n        \"stateOrProvince\": \"CA\",\r\n        \"country\": \"US\",\r\n        \"postalCode\": \"94107\",\r\n        \"addressType\": \"None\"\r\n      },\r\n      \"deliveryPackage\": {\r\n        \"carrierName\": \"\",\r\n        \"trackingId\": \"\",\r\n        \"trackingUrl\": \"\"\r\n      },\r\n      \"returnPackage\": {\r\n        \"carrierName\": \"\",\r\n        \"trackingId\": \"\",\r\n        \"trackingUrl\": \"\"\r\n      },\r\n      \"destinationAccountDetails\": [\r\n        {\r\n          \"storageAccountId\": \"/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/smoketest/providers/Microsoft.Storage/storageAccounts/wuspodsmoketest\",\r\n          \"dataDestinationType\": \"StorageAccount\",\r\n          \"accountId\": \"/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/smoketest/providers/Microsoft.Storage/storageAccounts/wuspodsmoketest\"\r\n        }\r\n      ],\r\n      \"errorDetails\": [],\r\n      \"jobDetailsType\": \"DataBox\",\r\n      \"copyLogDetails\": []\r\n    }\r\n  },\r\n  \"location\": \"westus\",\r\n  \"tags\": {},\r\n  \"sku\": {\r\n    \"name\": \"DataBox\"\r\n  },\r\n  \"name\": \"ps3335\",\r\n  \"id\": \"/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/ps4071/providers/Microsoft.DataBox/jobs/ps3335\",\r\n  \"type\": \"Microsoft.DataBox/jobs\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"isCancellable\": true,\r\n    \"isDeletable\": false,\r\n    \"isShippingAddressEditable\": true,\r\n    \"status\": \"DeviceOrdered\",\r\n    \"startTime\": \"2019-07-08T12:37:41.0017464+05:30\",\r\n    \"details\": {\r\n      \"copyProgress\": [],\r\n      \"jobStages\": [\r\n        {\r\n          \"stageName\": \"DeviceOrdered\",\r\n          \"displayName\": \"Ordered\",\r\n          \"stageStatus\": \"Succeeded\",\r\n          \"stageTime\": \"2019-07-08T12:37:42.6885826+05:30\"\r\n        },\r\n        {\r\n          \"stageName\": \"DevicePrepared\",\r\n          \"displayName\": \"Processed\",\r\n          \"stageStatus\": \"None\"\r\n        },\r\n        {\r\n          \"stageName\": \"Dispatched\",\r\n          \"displayName\": \"Dispatched\",\r\n          \"stageStatus\": \"None\"\r\n        },\r\n        {\r\n          \"stageName\": \"Delivered\",\r\n          \"displayName\": \"Delivered\",\r\n          \"stageStatus\": \"None\"\r\n        },\r\n        {\r\n          \"stageName\": \"PickedUp\",\r\n          \"displayName\": \"Picked up\",\r\n          \"stageStatus\": \"None\"\r\n        },\r\n        {\r\n          \"stageName\": \"AtAzureDC\",\r\n          \"displayName\": \"Received\",\r\n          \"stageStatus\": \"None\"\r\n        },\r\n        {\r\n          \"stageName\": \"DataCopy\",\r\n          \"displayName\": \"Data copy in progress\",\r\n          \"stageStatus\": \"None\"\r\n        },\r\n        {\r\n          \"stageName\": \"Completed\",\r\n          \"displayName\": \"Completed\",\r\n          \"stageStatus\": \"None\"\r\n        }\r\n      ],\r\n      \"contactDetails\": {\r\n        \"contactName\": \"Random\",\r\n        \"phone\": \"1234567891\",\r\n        \"emailList\": [\r\n          \"abc@outlook.com\"\r\n        ],\r\n        \"notificationPreference\": [\r\n          {\r\n            \"stageName\": \"DevicePrepared\",\r\n            \"sendNotification\": true\r\n          },\r\n          {\r\n            \"stageName\": \"Dispatched\",\r\n            \"sendNotification\": true\r\n          },\r\n          {\r\n            \"stageName\": \"Delivered\",\r\n            \"sendNotification\": true\r\n          },\r\n          {\r\n            \"stageName\": \"PickedUp\",\r\n            \"sendNotification\": true\r\n          },\r\n          {\r\n            \"stageName\": \"AtAzureDC\",\r\n            \"sendNotification\": true\r\n          },\r\n          {\r\n            \"stageName\": \"DataCopy\",\r\n            \"sendNotification\": true\r\n          }\r\n        ]\r\n      },\r\n      \"shippingAddress\": {\r\n        \"streetAddress1\": \"16 TOWNSEND ST\",\r\n        \"city\": \"San Francisco\",\r\n        \"stateOrProvince\": \"CA\",\r\n        \"country\": \"US\",\r\n        \"postalCode\": \"94107\",\r\n        \"addressType\": \"None\"\r\n      },\r\n      \"deliveryPackage\": {\r\n        \"carrierName\": \"\",\r\n        \"trackingId\": \"\",\r\n        \"trackingUrl\": \"\"\r\n      },\r\n      \"returnPackage\": {\r\n        \"carrierName\": \"\",\r\n        \"trackingId\": \"\",\r\n        \"trackingUrl\": \"\"\r\n      },\r\n      \"destinationAccountDetails\": [\r\n        {\r\n          \"storageAccountId\": \"/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/ps4320/providers/Microsoft.Storage/storageAccounts/ps7928\",\r\n          \"dataDestinationType\": \"StorageAccount\",\r\n          \"accountId\": \"/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/ps4320/providers/Microsoft.Storage/storageAccounts/ps7928\"\r\n        }\r\n      ],\r\n      \"errorDetails\": [],\r\n      \"jobDetailsType\": \"DataBox\",\r\n      \"copyLogDetails\": []\r\n    }\r\n  },\r\n  \"location\": \"westus\",\r\n  \"tags\": {},\r\n  \"sku\": {\r\n    \"name\": \"DataBox\"\r\n  },\r\n  \"name\": \"ps7770\",\r\n  \"id\": \"/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/ps4320/providers/Microsoft.DataBox/jobs/ps7770\",\r\n  \"type\": \"Microsoft.DataBox/jobs\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/ps4071/providers/Microsoft.DataBox/jobs/ps3335?api-version=2018-01-01&$expand=details",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDViNWRkMWMtNzkzZC00MWRlLWJlOWYtNmY5ZWQxNDJmNjk1L3Jlc291cmNlR3JvdXBzL3BzNDA3MS9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFCb3gvam9icy9wczMzMzU/YXBpLXZlcnNpb249MjAxOC0wMS0wMSYkZXhwYW5kPWRldGFpbHM=",
+      "RequestUri": "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/ps4320/providers/Microsoft.DataBox/jobs/ps7770?api-version=2018-01-01&$expand=details",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDViNWRkMWMtNzkzZC00MWRlLWJlOWYtNmY5ZWQxNDJmNjk1L3Jlc291cmNlR3JvdXBzL3BzNDMyMC9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFCb3gvam9icy9wczc3NzA/YXBpLXZlcnNpb249MjAxOC0wMS0wMSYkZXhwYW5kPWRldGFpbHM=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "36a146fe-4a07-4b94-b457-20d3e7788e02"
+          "af108bf2-d186-452f-8ffc-08bf85dd6647"
         ],
         "Accept-Language": [
           "en-US"
@@ -432,31 +564,31 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "f0ac7bbc-6b7f-4e2d-bdd8-7a087e009951"
+          "98c7ec10-afe4-4a35-a3e0-b6a1e86fe0dd"
         ],
         "x-ms-client-request-id": [
-          "36a146fe-4a07-4b94-b457-20d3e7788e02"
+          "af108bf2-d186-452f-8ffc-08bf85dd6647"
         ],
         "X-Powered-By": [
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11987"
+          "11996"
         ],
         "x-ms-correlation-request-id": [
-          "33dd0d55-d5c8-4fd9-82ca-4f0955389115"
+          "70991e76-5355-4898-85bd-b4464089729a"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20190705T061915Z:33dd0d55-d5c8-4fd9-82ca-4f0955389115"
+          "SOUTHINDIA:20190708T070802Z:70991e76-5355-4898-85bd-b4464089729a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Fri, 05 Jul 2019 06:19:15 GMT"
+          "Mon, 08 Jul 2019 07:08:01 GMT"
         ],
         "Content-Length": [
-          "3571"
+          "3542"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -465,17 +597,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"isCancellable\": true,\r\n    \"isDeletable\": false,\r\n    \"isShippingAddressEditable\": true,\r\n    \"status\": \"DeviceOrdered\",\r\n    \"startTime\": \"2019-07-05T11:48:53.4480653+05:30\",\r\n    \"details\": {\r\n      \"copyProgress\": [],\r\n      \"jobStages\": [\r\n        {\r\n          \"stageName\": \"DeviceOrdered\",\r\n          \"displayName\": \"Ordered\",\r\n          \"stageStatus\": \"Succeeded\",\r\n          \"stageTime\": \"2019-07-05T11:48:54.5703682+05:30\"\r\n        },\r\n        {\r\n          \"stageName\": \"DevicePrepared\",\r\n          \"displayName\": \"Processed\",\r\n          \"stageStatus\": \"None\"\r\n        },\r\n        {\r\n          \"stageName\": \"Dispatched\",\r\n          \"displayName\": \"Dispatched\",\r\n          \"stageStatus\": \"None\"\r\n        },\r\n        {\r\n          \"stageName\": \"Delivered\",\r\n          \"displayName\": \"Delivered\",\r\n          \"stageStatus\": \"None\"\r\n        },\r\n        {\r\n          \"stageName\": \"PickedUp\",\r\n          \"displayName\": \"Picked up\",\r\n          \"stageStatus\": \"None\"\r\n        },\r\n        {\r\n          \"stageName\": \"AtAzureDC\",\r\n          \"displayName\": \"Received\",\r\n          \"stageStatus\": \"None\"\r\n        },\r\n        {\r\n          \"stageName\": \"DataCopy\",\r\n          \"displayName\": \"Data copy in progress\",\r\n          \"stageStatus\": \"None\"\r\n        },\r\n        {\r\n          \"stageName\": \"Completed\",\r\n          \"displayName\": \"Completed\",\r\n          \"stageStatus\": \"None\"\r\n        }\r\n      ],\r\n      \"contactDetails\": {\r\n        \"contactName\": \"Irfan\",\r\n        \"phone\": \"1234567891\",\r\n        \"emailList\": [\r\n          \"t-irali@microsoft.com\"\r\n        ],\r\n        \"notificationPreference\": [\r\n          {\r\n            \"stageName\": \"DevicePrepared\",\r\n            \"sendNotification\": true\r\n          },\r\n          {\r\n            \"stageName\": \"Dispatched\",\r\n            \"sendNotification\": true\r\n          },\r\n          {\r\n            \"stageName\": \"Delivered\",\r\n            \"sendNotification\": true\r\n          },\r\n          {\r\n            \"stageName\": \"PickedUp\",\r\n            \"sendNotification\": true\r\n          },\r\n          {\r\n            \"stageName\": \"AtAzureDC\",\r\n            \"sendNotification\": true\r\n          },\r\n          {\r\n            \"stageName\": \"DataCopy\",\r\n            \"sendNotification\": true\r\n          }\r\n        ]\r\n      },\r\n      \"shippingAddress\": {\r\n        \"streetAddress1\": \"16 TOWNSEND ST\",\r\n        \"city\": \"San Francisco\",\r\n        \"stateOrProvince\": \"CA\",\r\n        \"country\": \"US\",\r\n        \"postalCode\": \"94107\",\r\n        \"addressType\": \"None\"\r\n      },\r\n      \"deliveryPackage\": {\r\n        \"carrierName\": \"\",\r\n        \"trackingId\": \"\",\r\n        \"trackingUrl\": \"\"\r\n      },\r\n      \"returnPackage\": {\r\n        \"carrierName\": \"\",\r\n        \"trackingId\": \"\",\r\n        \"trackingUrl\": \"\"\r\n      },\r\n      \"destinationAccountDetails\": [\r\n        {\r\n          \"storageAccountId\": \"/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/smoketest/providers/Microsoft.Storage/storageAccounts/wuspodsmoketest\",\r\n          \"dataDestinationType\": \"StorageAccount\",\r\n          \"accountId\": \"/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/smoketest/providers/Microsoft.Storage/storageAccounts/wuspodsmoketest\"\r\n        }\r\n      ],\r\n      \"errorDetails\": [],\r\n      \"jobDetailsType\": \"DataBox\",\r\n      \"copyLogDetails\": []\r\n    }\r\n  },\r\n  \"location\": \"westus\",\r\n  \"tags\": {},\r\n  \"sku\": {\r\n    \"name\": \"DataBox\"\r\n  },\r\n  \"name\": \"ps3335\",\r\n  \"id\": \"/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/ps4071/providers/Microsoft.DataBox/jobs/ps3335\",\r\n  \"type\": \"Microsoft.DataBox/jobs\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"isCancellable\": true,\r\n    \"isDeletable\": false,\r\n    \"isShippingAddressEditable\": true,\r\n    \"status\": \"DeviceOrdered\",\r\n    \"startTime\": \"2019-07-08T12:37:41.0017464+05:30\",\r\n    \"details\": {\r\n      \"copyProgress\": [],\r\n      \"jobStages\": [\r\n        {\r\n          \"stageName\": \"DeviceOrdered\",\r\n          \"displayName\": \"Ordered\",\r\n          \"stageStatus\": \"Succeeded\",\r\n          \"stageTime\": \"2019-07-08T12:37:42.6885826+05:30\"\r\n        },\r\n        {\r\n          \"stageName\": \"DevicePrepared\",\r\n          \"displayName\": \"Processed\",\r\n          \"stageStatus\": \"None\"\r\n        },\r\n        {\r\n          \"stageName\": \"Dispatched\",\r\n          \"displayName\": \"Dispatched\",\r\n          \"stageStatus\": \"None\"\r\n        },\r\n        {\r\n          \"stageName\": \"Delivered\",\r\n          \"displayName\": \"Delivered\",\r\n          \"stageStatus\": \"None\"\r\n        },\r\n        {\r\n          \"stageName\": \"PickedUp\",\r\n          \"displayName\": \"Picked up\",\r\n          \"stageStatus\": \"None\"\r\n        },\r\n        {\r\n          \"stageName\": \"AtAzureDC\",\r\n          \"displayName\": \"Received\",\r\n          \"stageStatus\": \"None\"\r\n        },\r\n        {\r\n          \"stageName\": \"DataCopy\",\r\n          \"displayName\": \"Data copy in progress\",\r\n          \"stageStatus\": \"None\"\r\n        },\r\n        {\r\n          \"stageName\": \"Completed\",\r\n          \"displayName\": \"Completed\",\r\n          \"stageStatus\": \"None\"\r\n        }\r\n      ],\r\n      \"contactDetails\": {\r\n        \"contactName\": \"Random\",\r\n        \"phone\": \"1234567891\",\r\n        \"emailList\": [\r\n          \"abc@outlook.com\"\r\n        ],\r\n        \"notificationPreference\": [\r\n          {\r\n            \"stageName\": \"DevicePrepared\",\r\n            \"sendNotification\": true\r\n          },\r\n          {\r\n            \"stageName\": \"Dispatched\",\r\n            \"sendNotification\": true\r\n          },\r\n          {\r\n            \"stageName\": \"Delivered\",\r\n            \"sendNotification\": true\r\n          },\r\n          {\r\n            \"stageName\": \"PickedUp\",\r\n            \"sendNotification\": true\r\n          },\r\n          {\r\n            \"stageName\": \"AtAzureDC\",\r\n            \"sendNotification\": true\r\n          },\r\n          {\r\n            \"stageName\": \"DataCopy\",\r\n            \"sendNotification\": true\r\n          }\r\n        ]\r\n      },\r\n      \"shippingAddress\": {\r\n        \"streetAddress1\": \"16 TOWNSEND ST\",\r\n        \"city\": \"San Francisco\",\r\n        \"stateOrProvince\": \"CA\",\r\n        \"country\": \"US\",\r\n        \"postalCode\": \"94107\",\r\n        \"addressType\": \"None\"\r\n      },\r\n      \"deliveryPackage\": {\r\n        \"carrierName\": \"\",\r\n        \"trackingId\": \"\",\r\n        \"trackingUrl\": \"\"\r\n      },\r\n      \"returnPackage\": {\r\n        \"carrierName\": \"\",\r\n        \"trackingId\": \"\",\r\n        \"trackingUrl\": \"\"\r\n      },\r\n      \"destinationAccountDetails\": [\r\n        {\r\n          \"storageAccountId\": \"/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/ps4320/providers/Microsoft.Storage/storageAccounts/ps7928\",\r\n          \"dataDestinationType\": \"StorageAccount\",\r\n          \"accountId\": \"/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/ps4320/providers/Microsoft.Storage/storageAccounts/ps7928\"\r\n        }\r\n      ],\r\n      \"errorDetails\": [],\r\n      \"jobDetailsType\": \"DataBox\",\r\n      \"copyLogDetails\": []\r\n    }\r\n  },\r\n  \"location\": \"westus\",\r\n  \"tags\": {},\r\n  \"sku\": {\r\n    \"name\": \"DataBox\"\r\n  },\r\n  \"name\": \"ps7770\",\r\n  \"id\": \"/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/ps4320/providers/Microsoft.DataBox/jobs/ps7770\",\r\n  \"type\": \"Microsoft.DataBox/jobs\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/ps4071/providers/Microsoft.DataBox/jobs/ps3335?api-version=2018-01-01&$expand=details",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDViNWRkMWMtNzkzZC00MWRlLWJlOWYtNmY5ZWQxNDJmNjk1L3Jlc291cmNlR3JvdXBzL3BzNDA3MS9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFCb3gvam9icy9wczMzMzU/YXBpLXZlcnNpb249MjAxOC0wMS0wMSYkZXhwYW5kPWRldGFpbHM=",
+      "RequestUri": "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/ps4320/providers/Microsoft.DataBox/jobs/ps7770?api-version=2018-01-01&$expand=details",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDViNWRkMWMtNzkzZC00MWRlLWJlOWYtNmY5ZWQxNDJmNjk1L3Jlc291cmNlR3JvdXBzL3BzNDMyMC9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFCb3gvam9icy9wczc3NzA/YXBpLXZlcnNpb249MjAxOC0wMS0wMSYkZXhwYW5kPWRldGFpbHM=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "242d2288-6af6-4db0-81d9-d87c13c6725b"
+          "cd97a8a6-63db-440d-b0c3-a32dca7b8064"
         ],
         "Accept-Language": [
           "en-US"
@@ -498,31 +630,31 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "aa136729-9627-46b4-8564-3faf8f237c11"
+          "bbd6b4b8-6437-40fe-b9f8-a1170df64a96"
         ],
         "x-ms-client-request-id": [
-          "242d2288-6af6-4db0-81d9-d87c13c6725b"
+          "cd97a8a6-63db-440d-b0c3-a32dca7b8064"
         ],
         "X-Powered-By": [
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11986"
+          "11995"
         ],
         "x-ms-correlation-request-id": [
-          "9e286817-95b0-44f8-b7cc-0eba89e1a32d"
+          "2029c5e6-65a0-4c54-b0b4-6063c9ba47e4"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20190705T061916Z:9e286817-95b0-44f8-b7cc-0eba89e1a32d"
+          "SOUTHINDIA:20190708T070803Z:2029c5e6-65a0-4c54-b0b4-6063c9ba47e4"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Fri, 05 Jul 2019 06:19:16 GMT"
+          "Mon, 08 Jul 2019 07:08:02 GMT"
         ],
         "Content-Length": [
-          "3230"
+          "3180"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -531,17 +663,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"isCancellable\": false,\r\n    \"isDeletable\": true,\r\n    \"isShippingAddressEditable\": false,\r\n    \"status\": \"Cancelled\",\r\n    \"startTime\": \"2019-07-05T11:48:53.4480653+05:30\",\r\n    \"details\": {\r\n      \"copyProgress\": [\r\n        {\r\n          \"storageAccountName\": \"wuspodsmoketest\",\r\n          \"dataDestinationType\": \"StorageAccount\",\r\n          \"accountId\": \"/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/smoketest/providers/Microsoft.Storage/storageAccounts/wuspodsmoketest\",\r\n          \"bytesSentToCloud\": 0,\r\n          \"totalBytesToProcess\": 0\r\n        }\r\n      ],\r\n      \"jobStages\": [\r\n        {\r\n          \"stageName\": \"DeviceOrdered\",\r\n          \"displayName\": \"Ordered\",\r\n          \"stageStatus\": \"Succeeded\",\r\n          \"stageTime\": \"2019-07-05T11:48:54.5703682+05:30\"\r\n        },\r\n        {\r\n          \"stageName\": \"Cancelled\",\r\n          \"displayName\": \"Canceled\",\r\n          \"stageStatus\": \"Succeeded\",\r\n          \"stageTime\": \"2019-07-05T11:49:15.3669833+05:30\"\r\n        }\r\n      ],\r\n      \"contactDetails\": {\r\n        \"contactName\": \"Irfan\",\r\n        \"phone\": \"1234567891\",\r\n        \"emailList\": [\r\n          \"t-irali@microsoft.com\"\r\n        ],\r\n        \"notificationPreference\": [\r\n          {\r\n            \"stageName\": \"DevicePrepared\",\r\n            \"sendNotification\": true\r\n          },\r\n          {\r\n            \"stageName\": \"Dispatched\",\r\n            \"sendNotification\": true\r\n          },\r\n          {\r\n            \"stageName\": \"Delivered\",\r\n            \"sendNotification\": true\r\n          },\r\n          {\r\n            \"stageName\": \"PickedUp\",\r\n            \"sendNotification\": true\r\n          },\r\n          {\r\n            \"stageName\": \"AtAzureDC\",\r\n            \"sendNotification\": true\r\n          },\r\n          {\r\n            \"stageName\": \"DataCopy\",\r\n            \"sendNotification\": true\r\n          }\r\n        ]\r\n      },\r\n      \"shippingAddress\": {\r\n        \"streetAddress1\": \"16 TOWNSEND ST\",\r\n        \"city\": \"San Francisco\",\r\n        \"stateOrProvince\": \"CA\",\r\n        \"country\": \"US\",\r\n        \"postalCode\": \"94107\",\r\n        \"addressType\": \"None\"\r\n      },\r\n      \"deliveryPackage\": {\r\n        \"carrierName\": \"\",\r\n        \"trackingId\": \"\",\r\n        \"trackingUrl\": \"\"\r\n      },\r\n      \"returnPackage\": {\r\n        \"carrierName\": \"\",\r\n        \"trackingId\": \"\",\r\n        \"trackingUrl\": \"\"\r\n      },\r\n      \"destinationAccountDetails\": [\r\n        {\r\n          \"storageAccountId\": \"/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/smoketest/providers/Microsoft.Storage/storageAccounts/wuspodsmoketest\",\r\n          \"dataDestinationType\": \"StorageAccount\",\r\n          \"accountId\": \"/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/smoketest/providers/Microsoft.Storage/storageAccounts/wuspodsmoketest\"\r\n        }\r\n      ],\r\n      \"errorDetails\": [],\r\n      \"jobDetailsType\": \"DataBox\",\r\n      \"copyLogDetails\": []\r\n    },\r\n    \"cancellationReason\": \"Random\"\r\n  },\r\n  \"location\": \"westus\",\r\n  \"tags\": {},\r\n  \"sku\": {\r\n    \"name\": \"DataBox\"\r\n  },\r\n  \"name\": \"ps3335\",\r\n  \"id\": \"/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/ps4071/providers/Microsoft.DataBox/jobs/ps3335\",\r\n  \"type\": \"Microsoft.DataBox/jobs\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"isCancellable\": false,\r\n    \"isDeletable\": true,\r\n    \"isShippingAddressEditable\": false,\r\n    \"status\": \"Cancelled\",\r\n    \"startTime\": \"2019-07-08T12:37:41.0017464+05:30\",\r\n    \"details\": {\r\n      \"copyProgress\": [\r\n        {\r\n          \"storageAccountName\": \"ps7928\",\r\n          \"dataDestinationType\": \"StorageAccount\",\r\n          \"accountId\": \"/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/ps4320/providers/Microsoft.Storage/storageAccounts/ps7928\",\r\n          \"bytesSentToCloud\": 0,\r\n          \"totalBytesToProcess\": 0\r\n        }\r\n      ],\r\n      \"jobStages\": [\r\n        {\r\n          \"stageName\": \"DeviceOrdered\",\r\n          \"displayName\": \"Ordered\",\r\n          \"stageStatus\": \"Succeeded\",\r\n          \"stageTime\": \"2019-07-08T12:37:42.6885826+05:30\"\r\n        },\r\n        {\r\n          \"stageName\": \"Cancelled\",\r\n          \"displayName\": \"Canceled\",\r\n          \"stageStatus\": \"Succeeded\",\r\n          \"stageTime\": \"2019-07-08T12:38:02.9691376+05:30\"\r\n        }\r\n      ],\r\n      \"contactDetails\": {\r\n        \"contactName\": \"Random\",\r\n        \"phone\": \"1234567891\",\r\n        \"emailList\": [\r\n          \"abc@outlook.com\"\r\n        ],\r\n        \"notificationPreference\": [\r\n          {\r\n            \"stageName\": \"DevicePrepared\",\r\n            \"sendNotification\": true\r\n          },\r\n          {\r\n            \"stageName\": \"Dispatched\",\r\n            \"sendNotification\": true\r\n          },\r\n          {\r\n            \"stageName\": \"Delivered\",\r\n            \"sendNotification\": true\r\n          },\r\n          {\r\n            \"stageName\": \"PickedUp\",\r\n            \"sendNotification\": true\r\n          },\r\n          {\r\n            \"stageName\": \"AtAzureDC\",\r\n            \"sendNotification\": true\r\n          },\r\n          {\r\n            \"stageName\": \"DataCopy\",\r\n            \"sendNotification\": true\r\n          }\r\n        ]\r\n      },\r\n      \"shippingAddress\": {\r\n        \"streetAddress1\": \"16 TOWNSEND ST\",\r\n        \"city\": \"San Francisco\",\r\n        \"stateOrProvince\": \"CA\",\r\n        \"country\": \"US\",\r\n        \"postalCode\": \"94107\",\r\n        \"addressType\": \"None\"\r\n      },\r\n      \"deliveryPackage\": {\r\n        \"carrierName\": \"\",\r\n        \"trackingId\": \"\",\r\n        \"trackingUrl\": \"\"\r\n      },\r\n      \"returnPackage\": {\r\n        \"carrierName\": \"\",\r\n        \"trackingId\": \"\",\r\n        \"trackingUrl\": \"\"\r\n      },\r\n      \"destinationAccountDetails\": [\r\n        {\r\n          \"storageAccountId\": \"/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/ps4320/providers/Microsoft.Storage/storageAccounts/ps7928\",\r\n          \"dataDestinationType\": \"StorageAccount\",\r\n          \"accountId\": \"/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/ps4320/providers/Microsoft.Storage/storageAccounts/ps7928\"\r\n        }\r\n      ],\r\n      \"errorDetails\": [],\r\n      \"jobDetailsType\": \"DataBox\",\r\n      \"copyLogDetails\": []\r\n    },\r\n    \"cancellationReason\": \"Random\"\r\n  },\r\n  \"location\": \"westus\",\r\n  \"tags\": {},\r\n  \"sku\": {\r\n    \"name\": \"DataBox\"\r\n  },\r\n  \"name\": \"ps7770\",\r\n  \"id\": \"/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/ps4320/providers/Microsoft.DataBox/jobs/ps7770\",\r\n  \"type\": \"Microsoft.DataBox/jobs\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/ps4071/providers/Microsoft.DataBox/jobs/ps3335/cancel?api-version=2018-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDViNWRkMWMtNzkzZC00MWRlLWJlOWYtNmY5ZWQxNDJmNjk1L3Jlc291cmNlR3JvdXBzL3BzNDA3MS9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFCb3gvam9icy9wczMzMzUvY2FuY2VsP2FwaS12ZXJzaW9uPTIwMTgtMDEtMDE=",
+      "RequestUri": "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/ps4320/providers/Microsoft.DataBox/jobs/ps7770/cancel?api-version=2018-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDViNWRkMWMtNzkzZC00MWRlLWJlOWYtNmY5ZWQxNDJmNjk1L3Jlc291cmNlR3JvdXBzL3BzNDMyMC9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFCb3gvam9icy9wczc3NzAvY2FuY2VsP2FwaS12ZXJzaW9uPTIwMTgtMDEtMDE=",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"reason\": \"Random\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "57ad1af9-73f3-4758-ba14-9dd80c0ce1b6"
+          "fdac57d4-849e-4ed4-8426-19d64b69a8f4"
         ],
         "Accept-Language": [
           "en-US"
@@ -570,28 +702,28 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "662f8b39-cb93-4791-868a-af4faac4c6e8"
+          "c4a9de68-99fb-428d-94e4-367e50efab51"
         ],
         "x-ms-client-request-id": [
-          "57ad1af9-73f3-4758-ba14-9dd80c0ce1b6"
+          "fdac57d4-849e-4ed4-8426-19d64b69a8f4"
         ],
         "X-Powered-By": [
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1196"
+          "1198"
         ],
         "x-ms-correlation-request-id": [
-          "c62af363-e83d-4bcf-84f5-3e16455ba9a2"
+          "12b6e928-c72f-4f19-89de-a43823bd1fb4"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20190705T061915Z:c62af363-e83d-4bcf-84f5-3e16455ba9a2"
+          "SOUTHINDIA:20190708T070803Z:12b6e928-c72f-4f19-89de-a43823bd1fb4"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Fri, 05 Jul 2019 06:19:15 GMT"
+          "Mon, 08 Jul 2019 07:08:02 GMT"
         ],
         "Expires": [
           "-1"
@@ -601,13 +733,13 @@
       "StatusCode": 204
     },
     {
-      "RequestUri": "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/ps4071/providers/Microsoft.DataBox/jobs/ps3335?api-version=2018-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDViNWRkMWMtNzkzZC00MWRlLWJlOWYtNmY5ZWQxNDJmNjk1L3Jlc291cmNlR3JvdXBzL3BzNDA3MS9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFCb3gvam9icy9wczMzMzU/YXBpLXZlcnNpb249MjAxOC0wMS0wMQ==",
+      "RequestUri": "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/ps4320/providers/Microsoft.DataBox/jobs/ps7770?api-version=2018-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDViNWRkMWMtNzkzZC00MWRlLWJlOWYtNmY5ZWQxNDJmNjk1L3Jlc291cmNlR3JvdXBzL3BzNDMyMC9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFCb3gvam9icy9wczc3NzA/YXBpLXZlcnNpb249MjAxOC0wMS0wMQ==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "6fe74016-8968-4ee1-93e6-633a4c69f528"
+          "9f486617-acdd-4ba1-81ea-e016898439d4"
         ],
         "Accept-Language": [
           "en-US"
@@ -627,7 +759,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/providers/Microsoft.DataBox/locations/westus/operationResults/9eb8e14f-68eb-4a56-aa2e-07a509ac6b7f-deleteorder?api-version=2018-01-01"
+          "https://management.azure.com/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/providers/Microsoft.DataBox/locations/westus/operationResults/6f4476b6-8451-4b0a-af82-766b33457ce6-deleteorder?api-version=2018-01-01"
         ],
         "Retry-After": [
           "10"
@@ -636,10 +768,10 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "03d284c5-9152-4912-af4e-ee73c780937e"
+          "8757b035-3825-4922-8b3a-3bb67ed22a84"
         ],
         "x-ms-client-request-id": [
-          "6fe74016-8968-4ee1-93e6-633a4c69f528"
+          "9f486617-acdd-4ba1-81ea-e016898439d4"
         ],
         "X-Powered-By": [
           "ASP.NET"
@@ -648,16 +780,16 @@
           "14998"
         ],
         "x-ms-correlation-request-id": [
-          "34b0a196-3937-453a-bef7-a9d8f7056192"
+          "ac92e7a1-be91-4d0a-a755-7f649b84d778"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20190705T061916Z:34b0a196-3937-453a-bef7-a9d8f7056192"
+          "SOUTHINDIA:20190708T070804Z:ac92e7a1-be91-4d0a-a755-7f649b84d778"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Fri, 05 Jul 2019 06:19:16 GMT"
+          "Mon, 08 Jul 2019 07:08:03 GMT"
         ],
         "Expires": [
           "-1"
@@ -670,8 +802,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/providers/Microsoft.DataBox/locations/westus/operationResults/9eb8e14f-68eb-4a56-aa2e-07a509ac6b7f-deleteorder?api-version=2018-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDViNWRkMWMtNzkzZC00MWRlLWJlOWYtNmY5ZWQxNDJmNjk1L3Byb3ZpZGVycy9NaWNyb3NvZnQuRGF0YUJveC9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvblJlc3VsdHMvOWViOGUxNGYtNjhlYi00YTU2LWFhMmUtMDdhNTA5YWM2YjdmLWRlbGV0ZW9yZGVyP2FwaS12ZXJzaW9uPTIwMTgtMDEtMDE=",
+      "RequestUri": "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/providers/Microsoft.DataBox/locations/westus/operationResults/6f4476b6-8451-4b0a-af82-766b33457ce6-deleteorder?api-version=2018-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDViNWRkMWMtNzkzZC00MWRlLWJlOWYtNmY5ZWQxNDJmNjk1L3Byb3ZpZGVycy9NaWNyb3NvZnQuRGF0YUJveC9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvblJlc3VsdHMvNmY0NDc2YjYtODQ1MS00YjBhLWFmODItNzY2YjMzNDU3Y2U2LWRlbGV0ZW9yZGVyP2FwaS12ZXJzaW9uPTIwMTgtMDEtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -690,7 +822,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/providers/Microsoft.DataBox/locations/westus/operationResults/9eb8e14f-68eb-4a56-aa2e-07a509ac6b7f-deleteorder?api-version=2018-01-01"
+          "https://management.azure.com/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/providers/Microsoft.DataBox/locations/westus/operationResults/6f4476b6-8451-4b0a-af82-766b33457ce6-deleteorder?api-version=2018-01-01"
         ],
         "Retry-After": [
           "10"
@@ -699,28 +831,28 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "1bb388c7-1a65-41c9-96ac-6e6b791bc6ef"
+          "0a0cc369-62d2-4cf8-a339-19160956b10e"
         ],
         "x-ms-client-request-id": [
-          "d1ebb15c-ab13-4cd8-9d65-27f4a4a995a7"
+          "bc7f2219-3778-4836-bbbd-0abb6f6f9727"
         ],
         "X-Powered-By": [
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11985"
+          "11994"
         ],
         "x-ms-correlation-request-id": [
-          "77b6c13e-7287-45f3-a28d-8731237072c7"
+          "4b4615a8-83ac-41f9-93b9-7f218807948c"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20190705T061927Z:77b6c13e-7287-45f3-a28d-8731237072c7"
+          "SOUTHINDIA:20190708T070814Z:4b4615a8-83ac-41f9-93b9-7f218807948c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Fri, 05 Jul 2019 06:19:26 GMT"
+          "Mon, 08 Jul 2019 07:08:14 GMT"
         ],
         "Expires": [
           "-1"
@@ -733,8 +865,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/providers/Microsoft.DataBox/locations/westus/operationResults/9eb8e14f-68eb-4a56-aa2e-07a509ac6b7f-deleteorder?api-version=2018-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDViNWRkMWMtNzkzZC00MWRlLWJlOWYtNmY5ZWQxNDJmNjk1L3Byb3ZpZGVycy9NaWNyb3NvZnQuRGF0YUJveC9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvblJlc3VsdHMvOWViOGUxNGYtNjhlYi00YTU2LWFhMmUtMDdhNTA5YWM2YjdmLWRlbGV0ZW9yZGVyP2FwaS12ZXJzaW9uPTIwMTgtMDEtMDE=",
+      "RequestUri": "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/providers/Microsoft.DataBox/locations/westus/operationResults/6f4476b6-8451-4b0a-af82-766b33457ce6-deleteorder?api-version=2018-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDViNWRkMWMtNzkzZC00MWRlLWJlOWYtNmY5ZWQxNDJmNjk1L3Byb3ZpZGVycy9NaWNyb3NvZnQuRGF0YUJveC9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvblJlc3VsdHMvNmY0NDc2YjYtODQ1MS00YjBhLWFmODItNzY2YjMzNDU3Y2U2LWRlbGV0ZW9yZGVyP2FwaS12ZXJzaW9uPTIwMTgtMDEtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -753,7 +885,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/providers/Microsoft.DataBox/locations/westus/operationResults/9eb8e14f-68eb-4a56-aa2e-07a509ac6b7f-deleteorder?api-version=2018-01-01"
+          "https://management.azure.com/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/providers/Microsoft.DataBox/locations/westus/operationResults/6f4476b6-8451-4b0a-af82-766b33457ce6-deleteorder?api-version=2018-01-01"
         ],
         "Retry-After": [
           "10"
@@ -762,28 +894,28 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "6b1f2c31-460f-4134-b438-7b5a3a80d123"
+          "8c1542fa-406c-4f80-b91a-90d66ee49cd1"
         ],
         "x-ms-client-request-id": [
-          "4d993e96-9c61-4a00-aa9a-89bce457670d"
+          "6b99c295-8994-45c0-98f6-d153ff3b0817"
         ],
         "X-Powered-By": [
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11984"
+          "11993"
         ],
         "x-ms-correlation-request-id": [
-          "b33fe6a1-78a4-4819-9a70-4194c5a8c9e6"
+          "1f8eb7ba-2a74-426b-96d6-f9e094142aec"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20190705T061937Z:b33fe6a1-78a4-4819-9a70-4194c5a8c9e6"
+          "SOUTHINDIA:20190708T070825Z:1f8eb7ba-2a74-426b-96d6-f9e094142aec"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Fri, 05 Jul 2019 06:19:37 GMT"
+          "Mon, 08 Jul 2019 07:08:24 GMT"
         ],
         "Expires": [
           "-1"
@@ -796,8 +928,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/providers/Microsoft.DataBox/locations/westus/operationResults/9eb8e14f-68eb-4a56-aa2e-07a509ac6b7f-deleteorder?api-version=2018-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDViNWRkMWMtNzkzZC00MWRlLWJlOWYtNmY5ZWQxNDJmNjk1L3Byb3ZpZGVycy9NaWNyb3NvZnQuRGF0YUJveC9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvblJlc3VsdHMvOWViOGUxNGYtNjhlYi00YTU2LWFhMmUtMDdhNTA5YWM2YjdmLWRlbGV0ZW9yZGVyP2FwaS12ZXJzaW9uPTIwMTgtMDEtMDE=",
+      "RequestUri": "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/providers/Microsoft.DataBox/locations/westus/operationResults/6f4476b6-8451-4b0a-af82-766b33457ce6-deleteorder?api-version=2018-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDViNWRkMWMtNzkzZC00MWRlLWJlOWYtNmY5ZWQxNDJmNjk1L3Byb3ZpZGVycy9NaWNyb3NvZnQuRGF0YUJveC9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvblJlc3VsdHMvNmY0NDc2YjYtODQ1MS00YjBhLWFmODItNzY2YjMzNDU3Y2U2LWRlbGV0ZW9yZGVyP2FwaS12ZXJzaW9uPTIwMTgtMDEtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -816,7 +948,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/providers/Microsoft.DataBox/locations/westus/operationResults/9eb8e14f-68eb-4a56-aa2e-07a509ac6b7f-deleteorder?api-version=2018-01-01"
+          "https://management.azure.com/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/providers/Microsoft.DataBox/locations/westus/operationResults/6f4476b6-8451-4b0a-af82-766b33457ce6-deleteorder?api-version=2018-01-01"
         ],
         "Retry-After": [
           "10"
@@ -825,28 +957,28 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "6035690e-84ba-44b7-a5d7-cc87690131e0"
+          "503ed613-8df5-4050-ba1f-eb9a75f78e1d"
         ],
         "x-ms-client-request-id": [
-          "a16a0db3-6066-4221-bc45-87ab852e7e2d"
+          "d0dcc2b3-8ca6-4966-978a-1ffb44b05f58"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11983"
+          "11992"
         ],
         "X-Powered-By": [
           "ASP.NET"
         ],
         "x-ms-correlation-request-id": [
-          "7542076a-9f6d-4577-b65f-1ec9c295158e"
+          "cba46731-20e4-40a0-9ead-59073fe3c51e"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20190705T061947Z:7542076a-9f6d-4577-b65f-1ec9c295158e"
+          "SOUTHINDIA:20190708T070835Z:cba46731-20e4-40a0-9ead-59073fe3c51e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Fri, 05 Jul 2019 06:19:47 GMT"
+          "Mon, 08 Jul 2019 07:08:34 GMT"
         ],
         "Expires": [
           "-1"
@@ -859,8 +991,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/providers/Microsoft.DataBox/locations/westus/operationResults/9eb8e14f-68eb-4a56-aa2e-07a509ac6b7f-deleteorder?api-version=2018-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDViNWRkMWMtNzkzZC00MWRlLWJlOWYtNmY5ZWQxNDJmNjk1L3Byb3ZpZGVycy9NaWNyb3NvZnQuRGF0YUJveC9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvblJlc3VsdHMvOWViOGUxNGYtNjhlYi00YTU2LWFhMmUtMDdhNTA5YWM2YjdmLWRlbGV0ZW9yZGVyP2FwaS12ZXJzaW9uPTIwMTgtMDEtMDE=",
+      "RequestUri": "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/providers/Microsoft.DataBox/locations/westus/operationResults/6f4476b6-8451-4b0a-af82-766b33457ce6-deleteorder?api-version=2018-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDViNWRkMWMtNzkzZC00MWRlLWJlOWYtNmY5ZWQxNDJmNjk1L3Byb3ZpZGVycy9NaWNyb3NvZnQuRGF0YUJveC9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvblJlc3VsdHMvNmY0NDc2YjYtODQ1MS00YjBhLWFmODItNzY2YjMzNDU3Y2U2LWRlbGV0ZW9yZGVyP2FwaS12ZXJzaW9uPTIwMTgtMDEtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -879,7 +1011,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/providers/Microsoft.DataBox/locations/westus/operationResults/9eb8e14f-68eb-4a56-aa2e-07a509ac6b7f-deleteorder?api-version=2018-01-01"
+          "https://management.azure.com/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/providers/Microsoft.DataBox/locations/westus/operationResults/6f4476b6-8451-4b0a-af82-766b33457ce6-deleteorder?api-version=2018-01-01"
         ],
         "Retry-After": [
           "10"
@@ -888,28 +1020,28 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "51bb048a-e37e-4697-920b-c294a4e5d9df"
+          "ed7acde9-05c5-466b-bf80-58c10a0428e0"
         ],
         "x-ms-client-request-id": [
-          "6349ea5a-db84-47f0-9dc9-bcdd4faba78b"
+          "f1ce0a84-a75b-4e40-8474-564147855745"
         ],
         "X-Powered-By": [
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11982"
+          "11991"
         ],
         "x-ms-correlation-request-id": [
-          "b5c9b876-ada8-44e1-bb4a-d740741b1577"
+          "120c90b4-b5da-494a-bb68-544076ef570a"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20190705T061959Z:b5c9b876-ada8-44e1-bb4a-d740741b1577"
+          "SOUTHINDIA:20190708T070846Z:120c90b4-b5da-494a-bb68-544076ef570a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Fri, 05 Jul 2019 06:19:58 GMT"
+          "Mon, 08 Jul 2019 07:08:45 GMT"
         ],
         "Expires": [
           "-1"
@@ -922,8 +1054,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/providers/Microsoft.DataBox/locations/westus/operationResults/9eb8e14f-68eb-4a56-aa2e-07a509ac6b7f-deleteorder?api-version=2018-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDViNWRkMWMtNzkzZC00MWRlLWJlOWYtNmY5ZWQxNDJmNjk1L3Byb3ZpZGVycy9NaWNyb3NvZnQuRGF0YUJveC9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvblJlc3VsdHMvOWViOGUxNGYtNjhlYi00YTU2LWFhMmUtMDdhNTA5YWM2YjdmLWRlbGV0ZW9yZGVyP2FwaS12ZXJzaW9uPTIwMTgtMDEtMDE=",
+      "RequestUri": "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/providers/Microsoft.DataBox/locations/westus/operationResults/6f4476b6-8451-4b0a-af82-766b33457ce6-deleteorder?api-version=2018-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDViNWRkMWMtNzkzZC00MWRlLWJlOWYtNmY5ZWQxNDJmNjk1L3Byb3ZpZGVycy9NaWNyb3NvZnQuRGF0YUJveC9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvblJlc3VsdHMvNmY0NDc2YjYtODQ1MS00YjBhLWFmODItNzY2YjMzNDU3Y2U2LWRlbGV0ZW9yZGVyP2FwaS12ZXJzaW9uPTIwMTgtMDEtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -942,7 +1074,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/providers/Microsoft.DataBox/locations/westus/operationResults/9eb8e14f-68eb-4a56-aa2e-07a509ac6b7f-deleteorder?api-version=2018-01-01"
+          "https://management.azure.com/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/providers/Microsoft.DataBox/locations/westus/operationResults/6f4476b6-8451-4b0a-af82-766b33457ce6-deleteorder?api-version=2018-01-01"
         ],
         "Retry-After": [
           "10"
@@ -951,28 +1083,28 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "67ff3403-ee23-4010-b8b5-298b403c2fe3"
+          "24c9c427-7df7-4d3a-b461-ec8c7f9bd6bb"
         ],
         "x-ms-client-request-id": [
-          "6e187cb0-5973-4232-a247-9c7845bb2322"
+          "20001d1f-a5a1-4e1b-b3b9-380b51dd52eb"
         ],
         "X-Powered-By": [
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11981"
+          "11990"
         ],
         "x-ms-correlation-request-id": [
-          "e4271f63-12ec-4bd9-8e8b-d396e0e571ce"
+          "f529ea81-585e-496c-b95a-e9de551bb73a"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20190705T062009Z:e4271f63-12ec-4bd9-8e8b-d396e0e571ce"
+          "SOUTHINDIA:20190708T070856Z:f529ea81-585e-496c-b95a-e9de551bb73a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Fri, 05 Jul 2019 06:20:09 GMT"
+          "Mon, 08 Jul 2019 07:08:57 GMT"
         ],
         "Expires": [
           "-1"
@@ -985,71 +1117,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/providers/Microsoft.DataBox/locations/westus/operationResults/9eb8e14f-68eb-4a56-aa2e-07a509ac6b7f-deleteorder?api-version=2018-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDViNWRkMWMtNzkzZC00MWRlLWJlOWYtNmY5ZWQxNDJmNjk1L3Byb3ZpZGVycy9NaWNyb3NvZnQuRGF0YUJveC9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvblJlc3VsdHMvOWViOGUxNGYtNjhlYi00YTU2LWFhMmUtMDdhNTA5YWM2YjdmLWRlbGV0ZW9yZGVyP2FwaS12ZXJzaW9uPTIwMTgtMDEtMDE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.27617.04",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Management.DataBox.DataBoxManagementClient/1.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/providers/Microsoft.DataBox/locations/westus/operationResults/9eb8e14f-68eb-4a56-aa2e-07a509ac6b7f-deleteorder?api-version=2018-01-01"
-        ],
-        "Retry-After": [
-          "10"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "x-ms-request-id": [
-          "32532fb9-435c-4e1e-bbdd-609665977142"
-        ],
-        "x-ms-client-request-id": [
-          "485e2703-6f9f-492f-b331-d808bf57f776"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11980"
-        ],
-        "x-ms-correlation-request-id": [
-          "85174199-bf45-4b18-ab65-a6a00a6a1470"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHINDIA:20190705T062019Z:85174199-bf45-4b18-ab65-a6a00a6a1470"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Date": [
-          "Fri, 05 Jul 2019 06:20:19 GMT"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "0"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/providers/Microsoft.DataBox/locations/westus/operationResults/9eb8e14f-68eb-4a56-aa2e-07a509ac6b7f-deleteorder?api-version=2018-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDViNWRkMWMtNzkzZC00MWRlLWJlOWYtNmY5ZWQxNDJmNjk1L3Byb3ZpZGVycy9NaWNyb3NvZnQuRGF0YUJveC9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvblJlc3VsdHMvOWViOGUxNGYtNjhlYi00YTU2LWFhMmUtMDdhNTA5YWM2YjdmLWRlbGV0ZW9yZGVyP2FwaS12ZXJzaW9uPTIwMTgtMDEtMDE=",
+      "RequestUri": "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/providers/Microsoft.DataBox/locations/westus/operationResults/6f4476b6-8451-4b0a-af82-766b33457ce6-deleteorder?api-version=2018-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDViNWRkMWMtNzkzZC00MWRlLWJlOWYtNmY5ZWQxNDJmNjk1L3Byb3ZpZGVycy9NaWNyb3NvZnQuRGF0YUJveC9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvblJlc3VsdHMvNmY0NDc2YjYtODQ1MS00YjBhLWFmODItNzY2YjMzNDU3Y2U2LWRlbGV0ZW9yZGVyP2FwaS12ZXJzaW9uPTIwMTgtMDEtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1071,28 +1140,28 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "f2182aa1-b54d-4dcb-a5e7-0bd37fc4ef45"
+          "19b4768c-d1f8-45a4-86c6-29fe1cce9326"
         ],
         "x-ms-client-request-id": [
-          "2e0263fd-e7b1-4953-ac1e-8772e828f9e0"
+          "2d2eca0a-5d8d-4e40-9737-b8fdae3680cb"
         ],
         "X-Powered-By": [
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11979"
+          "11989"
         ],
         "x-ms-correlation-request-id": [
-          "784045a9-59ed-47eb-83bd-1a7c0394e247"
+          "a6212bd2-56d0-47c4-99bf-c709ab68f9c8"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20190705T062030Z:784045a9-59ed-47eb-83bd-1a7c0394e247"
+          "SOUTHINDIA:20190708T070907Z:a6212bd2-56d0-47c4-99bf-c709ab68f9c8"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Fri, 05 Jul 2019 06:20:29 GMT"
+          "Mon, 08 Jul 2019 07:09:07 GMT"
         ],
         "Expires": [
           "-1"
@@ -1102,8 +1171,8 @@
       "StatusCode": 204
     },
     {
-      "RequestUri": "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/providers/Microsoft.DataBox/locations/westus/operationResults/9eb8e14f-68eb-4a56-aa2e-07a509ac6b7f-deleteorder?api-version=2018-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDViNWRkMWMtNzkzZC00MWRlLWJlOWYtNmY5ZWQxNDJmNjk1L3Byb3ZpZGVycy9NaWNyb3NvZnQuRGF0YUJveC9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvblJlc3VsdHMvOWViOGUxNGYtNjhlYi00YTU2LWFhMmUtMDdhNTA5YWM2YjdmLWRlbGV0ZW9yZGVyP2FwaS12ZXJzaW9uPTIwMTgtMDEtMDE=",
+      "RequestUri": "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/providers/Microsoft.DataBox/locations/westus/operationResults/6f4476b6-8451-4b0a-af82-766b33457ce6-deleteorder?api-version=2018-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDViNWRkMWMtNzkzZC00MWRlLWJlOWYtNmY5ZWQxNDJmNjk1L3Byb3ZpZGVycy9NaWNyb3NvZnQuRGF0YUJveC9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvblJlc3VsdHMvNmY0NDc2YjYtODQ1MS00YjBhLWFmODItNzY2YjMzNDU3Y2U2LWRlbGV0ZW9yZGVyP2FwaS12ZXJzaW9uPTIwMTgtMDEtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1125,28 +1194,28 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "ce1d792a-348f-426c-a17b-f81c62a32439"
+          "1503b641-7136-4b2a-bc6f-cd9bcd7cf464"
         ],
         "x-ms-client-request-id": [
-          "1f945b7d-b494-483e-9dc2-8ad7092908d1"
+          "4e75cd8d-e1fc-440a-a905-6a4b43efaff9"
         ],
         "X-Powered-By": [
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11978"
+          "11988"
         ],
         "x-ms-correlation-request-id": [
-          "3b634783-8b30-4415-a6df-f60807f3894b"
+          "a7c9814c-6ada-4f93-b603-d55c94d90da2"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20190705T062030Z:3b634783-8b30-4415-a6df-f60807f3894b"
+          "SOUTHINDIA:20190708T070907Z:a7c9814c-6ada-4f93-b603-d55c94d90da2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Fri, 05 Jul 2019 06:20:30 GMT"
+          "Mon, 08 Jul 2019 07:09:07 GMT"
         ],
         "Expires": [
           "-1"
@@ -1154,12 +1223,76 @@
       },
       "ResponseBody": "",
       "StatusCode": 204
+    },
+    {
+      "RequestUri": "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/ps4320/providers/Microsoft.Storage/storageAccounts/ps7928?api-version=2017-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDViNWRkMWMtNzkzZC00MWRlLWJlOWYtNmY5ZWQxNDJmNjk1L3Jlc291cmNlR3JvdXBzL3BzNDMyMC9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2Uvc3RvcmFnZUFjY291bnRzL3BzNzkyOD9hcGktdmVyc2lvbj0yMDE3LTEwLTAx",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "34ff0428-8be0-408f-90f8-034a30a18ee4"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27617.04",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Storage.Version2017.10.01.StorageManagementClient/1.2.1"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "d0166297-520b-436a-9311-286f79f83c3d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-correlation-request-id": [
+          "34cf86bb-c17d-4d1f-a981-0033859a6e0c"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20190708T070911Z:34cf86bb-c17d-4d1f-a981-0033859a6e0c"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Mon, 08 Jul 2019 07:09:11 GMT"
+        ],
+        "Content-Type": [
+          "text/plain; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
     }
   ],
   "Names": {
     "Test-CreateDataBoxJob": [
-      "ps3335",
-      "ps4071"
+      "ps7770",
+      "ps4320",
+      "ps7928"
     ]
   },
   "Variables": {

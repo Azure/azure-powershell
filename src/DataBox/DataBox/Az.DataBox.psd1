@@ -35,7 +35,7 @@ Description = 'Microsoft Azure PowerShell - DataBox service cmdlets for Azure Re
 For more information on DataBox, please visit the following: https://docs.microsoft.com/azure/databox/'
 
 # Minimum version of the PowerShell engine required by this module
-PowerShellVersion = '5.0'
+PowerShellVersion = '6.0'
 
 # Name of the PowerShell host required by this module
 # PowerShellHostName = ''

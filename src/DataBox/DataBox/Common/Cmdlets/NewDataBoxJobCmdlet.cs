@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Commands.DataBox.Common
     {
 
         [Parameter(Mandatory = true)]
-        //[ValidateSet("West Europe", "West Central US", "WestUS")]
         public string Location;
 
         [Parameter(Mandatory = false)]

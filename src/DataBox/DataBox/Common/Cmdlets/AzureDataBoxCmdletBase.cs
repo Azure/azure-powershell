@@ -24,7 +24,7 @@ using Microsoft.Rest;
 namespace Microsoft.Azure.Commands.DataBox.Common
 {
     /// <summary>
-    /// Base class of Azure Cdn Cmdlet.
+    /// Base class of Azure Databox Cmdlet.
     /// </summary>
     public class AzureDataBoxCmdletBase : AzureRMCmdlet
     {
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.DataBox.Common
 
 
         /// <summary>
-        /// Gets or sets the Cdn management client.
+        /// Gets or sets the Databox management client.
         /// </summary>
         public DataBoxManagementClient DataBoxManagementClient
         {
