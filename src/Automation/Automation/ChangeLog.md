@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.3.0
+* Fixed Set-AzAutomationConnectionFieldValue cmdlet bug to handle string value.
+
 ## Version 1.2.2
 * Updated Get-AzAutomationJobOutputRecord to handle JSON and Text record values.
     - Fix for issue https://github.com/Azure/azure-powershell/issues/7977

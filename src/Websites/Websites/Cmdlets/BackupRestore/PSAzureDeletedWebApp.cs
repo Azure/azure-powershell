@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.WebSites.Models;
 using System;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
@@ -22,6 +23,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
         public string SubscriptionId { get; set; }
 
+        public string Location { get; set; }
+
         public string ResourceGroupName { get; set; }
 
         public string Name { get; set; }
@@ -29,5 +32,16 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         public string Slot { get; set; }
 
         public DateTime DeletionTime { get; set; }
+
+        public PSAzureDeletedWebApp(DeletedSite ds, string subscriptionId)
+        {
+            DeletedSiteId = ds.DeletedSiteId.Value;
+            DeletionTime = DateTime.Parse(ds.DeletedTimestamp, System.Globalization.CultureInfo.InvariantCulture);
+            SubscriptionId = subscriptionId;
+            Location = ds.GeoRegionName;
+            ResourceGroupName = ds.ResourceGroup;
+            Name = ds.DeletedSiteName;
+            Slot = ds.Slot;
+        }
     }
 }

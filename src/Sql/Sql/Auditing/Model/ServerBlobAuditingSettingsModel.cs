@@ -121,8 +121,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
         {
             if (AuditState == AuditStateType.Enabled && string.IsNullOrEmpty(StorageAccountName))
             {
-                throw new PSArgumentException("Storage acount name is not provided",
-                    DefinitionsCommon.StorageAccountNameParameterName);
+                throw DefinitionsCommon.StorageAccountNameParameterException;
             }
         }
 
@@ -151,7 +150,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
 
             if (DiagnosticsEnablingAuditCategory != null && DiagnosticsEnablingAuditCategory.Count > 1)
             {
-                throw new Exception(DefinitionsCommon.MultipleDiagnosticsErrorMessage);
+                throw DefinitionsCommon.MultipleDiagnosticsException;
             }
 
             DiagnosticSettingsResource currentSettings = DiagnosticsEnablingAuditCategory?.FirstOrDefault();
@@ -186,11 +185,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
                     this) == false)
             {
                 throw DefinitionsCommon.CreateDiagnosticSettingsException;
-            }
-
-            if (IsGlobalAuditEnabled && IsAzureMonitorTargetEnabled == true)
-            {
-                return;
             }
 
             try
@@ -236,7 +230,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
 
         private void ChangeWhenDiagnosticSettingsExist(SqlAuditAdapter adapter, DiagnosticSettingsResource settings)
         {
-            if (IsAnotherCategoryEnabled(settings))
+            if (SqlAuditAdapter.IsAnotherCategoryEnabled(settings))
             {
                 ChangeWhenMultipleCategoriesAreEnabled(adapter, settings);
             }
@@ -248,7 +242,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
 
         private void ChangeWhenMultipleCategoriesAreEnabled(SqlAuditAdapter adapter, DiagnosticSettingsResource settings)
         {
-            if (DisableAuditCategory(adapter, settings) == false)
+            if (adapter.DisableAuditCategory(this, settings) == false)
             {
                 throw DefinitionsCommon.UpdateDiagnosticSettingsException;
             }
@@ -281,14 +275,13 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
             {
                 try
                 {
-                    EnableAuditCategory(adapter, settings);
+                    adapter.EnableAuditCategory(this, settings);
                 }
                 catch (Exception) { }
 
                 throw;
 
             }
-
         }
 
         private void EnableWhenOnlyAuditCategoryIsEnabled(SqlAuditAdapter adapter, DiagnosticSettingsResource settings,
@@ -300,11 +293,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
             if (adapter.UpdateDiagnosticSettings(settings, this) == false)
             {
                 throw DefinitionsCommon.UpdateDiagnosticSettingsException;
-            }
-
-            if (IsGlobalAuditEnabled && IsAzureMonitorTargetEnabled == true)
-            {
-                return;
             }
 
             try
@@ -382,34 +370,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
             {
                 DisableWhenOnlyAuditCategoryIsEnabled(adapter, settings, oldEventHubName, oldEventHubAuthorizationRuleId, oldWorkspaceId);
             }
-        }
-
-        private bool SetAuditCategoryState(SqlAuditAdapter adapter, DiagnosticSettingsResource settings, bool isEenabled)
-        {
-            var log = settings?.Logs?.FirstOrDefault(l => string.Equals(l.Category, DefinitionsCommon.SQLSecurityAuditCategory));
-            if (log != null)
-            {
-                log.Enabled = isEenabled;
-            }
-
-            return adapter.UpdateDiagnosticSettings(settings, this);
-        }
-
-        private bool EnableAuditCategory(SqlAuditAdapter adapter, DiagnosticSettingsResource settings)
-        {
-            return SetAuditCategoryState(adapter, settings, true);
-        }
-
-        private bool DisableAuditCategory(SqlAuditAdapter adapter, DiagnosticSettingsResource settings)
-        {
-            return SetAuditCategoryState(adapter, settings, false);
-        }
-
-        private bool IsAnotherCategoryEnabled(DiagnosticSettingsResource settings)
-        {
-            return settings.Logs.FirstOrDefault(l => l.Enabled &&
-                !string.Equals(l.Category, DefinitionsCommon.SQLSecurityAuditCategory)) != null ||
-                settings.Metrics.FirstOrDefault(m => m.Enabled) != null;
         }
     }
 }

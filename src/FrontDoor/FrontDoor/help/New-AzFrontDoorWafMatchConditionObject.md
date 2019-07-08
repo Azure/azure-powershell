@@ -13,9 +13,9 @@ Create MatchCondition Object for WAF policy creation
 ## SYNTAX
 
 ```
-New-AzFrontDoorWafMatchConditionObject -MatchVariable <String> -OperatorProperty <String> [-MatchValue <String[]>]
- [-Selector <String>] [-NegateCondition <Boolean>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+New-AzFrontDoorWafMatchConditionObject -MatchVariable <String> -OperatorProperty <String>
+ [-MatchValue <String[]>] [-Selector <String>] [-NegateCondition <Boolean>] [-Transform <String[]>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,9 +28,19 @@ Create MatchCondition Object for WAF policy creation
 PS C:\> New-AzFrontDoorWafMatchConditionObject -MatchVariable RequestHeader -OperatorProperty Contains -Selector "User-Agent" -MatchValue "Windows"
 
 
-MatchVariable OperatorProperty MatchValue Selector   NegateCondition
-------------- ---------------- ---------- --------   ---------------
-RequestHeader         Contains {Windows}  User-Agent           False
+MatchVariable OperatorProperty MatchValue Selector   NegateCondition Transform
+------------- ---------------- ---------- --------   --------------- ---------
+RequestHeader Contains         {Windows}  User-Agent           False
+```
+
+### Example 2
+```powershell
+PS C:\> New-AzFrontDoorWafMatchConditionObject -MatchVariable RequestHeader -OperatorProperty Contains -Selector "User-Agent" -MatchValue "WINDOWS" -Transform Uppercase
+
+
+MatchVariable OperatorProperty MatchValue Selector   NegateCondition Transform
+------------- ---------------- ---------- --------   --------------- ---------
+RequestHeader Contains         {WINDOWS}  User-Agent           False {Uppercase}
 ```
 
 Create a MatchCondition object
@@ -101,7 +111,7 @@ Accept wildcard characters: False
 
 ### -OperatorProperty
 Describes operator to be matched.
-Possible values include: 'Any', 'IPMatch', 'GeoMatch', 'Equal', 'Contains', 'LessThan', 'GreaterThan', 'LessThanOrEqual', 'GreaterThanOrEqual', 'BeginsWith', 'EndsWith''
+Possible values include: 'Any', 'IPMatch', 'GeoMatch', 'Equal', 'Contains', 'LessThan', 'GreaterThan', 'LessThanOrEqual', 'GreaterThanOrEqual', 'BeginsWith', 'EndsWith', 'RegEx'
 
 ```yaml
 Type: System.String
@@ -120,6 +130,21 @@ Name of selector in RequestHeader or RequestBody to be matched
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Transform
+Transforms to apply. Possible values include: 'Lowercase', 'Uppercase', 'Trim', 'UrlDecode', 'UrlEncode', 'RemoveNulls'.
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
