@@ -46,8 +46,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     string resourceGroupName = this.ResourceGroupName;
                     string snapshotName = this.SnapshotName;
                     var grantAccessData = new GrantAccessData();
-                    grantAccessData.DurationInSeconds = this.DurationInSecond;
                     grantAccessData.Access = this.Access;
+                    grantAccessData.DurationInSeconds = this.DurationInSecond;
 
                     var result = SnapshotsClient.GrantAccess(resourceGroupName, snapshotName, grantAccessData);
                     var psObject = new PSAccessUri();

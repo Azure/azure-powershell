@@ -906,7 +906,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             string wsdlEndpointName,
             PsApiManagementApiType? apiType,
             PsApiManagementSchema[] protocols,
-            string serviceUrl)
+            string serviceUrl,
+            string apiVersionSetId,
+            string apiVersion)
         {
             string contentFormat = GetContentFormatForApiImport(true, specificationFormat, wsdlServiceName, wsdlEndpointName, true);
 
@@ -947,6 +949,16 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 };
             }
 
+            if (!string.IsNullOrWhiteSpace(apiVersionSetId))
+            {
+                apiCreateOrUpdateParams.ApiVersionSetId = Utils.GetApiVersionIdFullPath(apiVersionSetId);
+            }
+
+            if (!string.IsNullOrWhiteSpace(apiVersion))
+            {
+                apiCreateOrUpdateParams.ApiVersion = apiVersion;
+            }
+
             Client.Api.CreateOrUpdate(
                 context.ResourceGroupName,
                 context.ServiceName,
@@ -964,7 +976,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             string wsdlEndpointName,
             PsApiManagementApiType? apiType,
             PsApiManagementSchema[] protocols,
-            string serviceUrl)
+            string serviceUrl,
+            string apiVersionSetId,
+            string apiVersion)
         {
             string contentFormat = GetContentFormatForApiImport(false, specificationFormat, wsdlServiceName, wsdlEndpointName, true);
 
@@ -995,6 +1009,16 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                     WsdlServiceName = wsdlServiceName,
                     WsdlEndpointName = wsdlEndpointName
                 };
+            }
+
+            if (!string.IsNullOrWhiteSpace(apiVersionSetId))
+            {
+                createOrUpdateContract.ApiVersionSetId = Utils.GetApiVersionIdFullPath(apiVersionSetId);
+            }
+
+            if (!string.IsNullOrWhiteSpace(apiVersion))
+            {
+                createOrUpdateContract.ApiVersion = apiVersion;
             }
 
             Client.Api.CreateOrUpdate(
@@ -1747,6 +1771,30 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
         {
             var results = ListPagedAndMap<PsApiManagementSubscription, SubscriptionContract>(
                 () => Client.UserSubscription.List(context.ResourceGroupName, context.ServiceName, userId, null),
+                nextLink => Client.UserSubscription.ListNext(nextLink));
+
+            return results;
+        }
+
+        public IList<PsApiManagementSubscription> SubscriptionByScope(PsApiManagementContext context, string scope)
+        {
+            var query = new Rest.Azure.OData.ODataQuery<SubscriptionContract>();
+            query.Filter = string.Format("properties/scope eq '{0}'", scope);            
+
+            var results = ListPagedAndMap<PsApiManagementSubscription, SubscriptionContract>(
+                () => Client.Subscription.List(context.ResourceGroupName, context.ServiceName, query),
+                nextLink => Client.UserSubscription.ListNext(nextLink));
+
+            return results;
+        }
+
+        public IList<PsApiManagementSubscription> SubscriptionByProductAndUser(PsApiManagementContext context, string productId, string userId)
+        {
+            var query = new Rest.Azure.OData.ODataQuery<SubscriptionContract>();
+            query.Filter = string.Format("properties/scope eq '/products/{0}' and properties/ownerId eq '{1}'", productId, userId);
+
+            var results = ListPagedAndMap<PsApiManagementSubscription, SubscriptionContract>(
+                () => Client.Subscription.List(context.ResourceGroupName, context.ServiceName, query),
                 nextLink => Client.UserSubscription.ListNext(nextLink));
 
             return results;
