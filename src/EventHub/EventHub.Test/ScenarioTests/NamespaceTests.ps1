@@ -60,7 +60,7 @@ function NamespaceAuthTests
 
     Write-Debug "Create a Namespace Authorization Rule"    
     Write-Debug "Auth Rule name : $authRuleName"
-    $result = New-AzEventHubAuthorizationRule -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $authRuleName -Rights @("Listen","Send")																																	  
+    $result = New-AzEventHubAuthorizationRule -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $authRuleName -Rights @("Listen", "Send")																																	  
 
     Assert-AreEqual $authRuleName $result.Name
     Assert-AreEqual 2 $result.Rights.Count

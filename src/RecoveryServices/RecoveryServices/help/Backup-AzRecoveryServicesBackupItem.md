@@ -28,9 +28,9 @@ Set the vault context by using the Set-AzRecoveryServicesVaultContext cmdlet bef
 
 ### Example 1: Start a backup for a Backup item
 ```
-PS C:\> $NamedContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVM -Status Registered -Name "pstestv2vm1" 
+PS C:\> $NamedContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVM -Status Registered -FriendlyName "pstestv2vm1" 
 PS C:\> $Item = Get-AzRecoveryServicesBackupItem -Container $NamedContainer -WorkloadType AzureVM 
-PS C:\> $Job = Backup-AzRecoveryServicesItem -Item $Item
+PS C:\> $Job = Backup-AzRecoveryServicesBackupItem -Item $Item
 Operation        Status               StartTime            EndTime                   JOBID                           
 ------------     ---------            ------               ---------                 -------                                         
 pstestv2vm1      Backup               InProgress           4/23/2016 5:00:30 PM      cf4b3ef5-2fac-4c8e-a215-d2eba4124f27

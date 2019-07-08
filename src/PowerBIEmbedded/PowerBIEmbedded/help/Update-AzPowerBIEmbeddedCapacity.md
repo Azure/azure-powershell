@@ -41,25 +41,25 @@ The Update-AzPowerBIEmbeddedCapacity cmdlet modifies an instance of PowerBI Embe
 
 ### Example 1
 ```
-PS C:\> Update-AzPowerBIEmbeddedCapacity -Name "testcapacity" -Tag @{"key1" = "value1";"key2" = "value2"} -Administrator "testuser1@contoso.com, testuser2@contoso.com" -PassThru
+PS C:\> Update-AzPowerBIEmbeddedCapacity -Name "testcapacity" -Tag @{"key1" = "value1";"key2" = "value2"} -Administrator "testuser1@contoso.com", "testuser2@contoso.com", "9035a021-a96f-43ea-acbf-864227c2abbb@45119f4f-c71b-4420-b6ec-60e503450098" -PassThru
 Type                   : Microsoft.PowerBIDedicated/capacities
 Id                     : /subscriptions/78e47976-.../resourceGroups/testRG/providers/Microsoft.PowerBIDedicated/capacities/testcapacity
 ResourceGroup          : testRG
 Name                   : testcapacity
 Location               : West Central US
 State                  : Succeeded
-Administrator          : {testuser1@contoso.com, testuser2@contoso.com}
+Administrator          : {testuser1@contoso.com, testuser2@contoso.com, 9035a021-a96f-43ea-acbf-864227c2abbb@45119f4f-c71b-4420-b6ec-60e503450098}
 Sku                    : A1
 Tier                   : PBIE_Azure
 Tag                    : {[key1, value1], [key2, value2]}
 ```
 
-Modifies the capacity named testcapacity in resourcegroup testgroup to set the tags as key1:value1 and key2:value2 and administrator to testuser1@contoso.com
+Modifies the capacity named testcapacity in resourcegroup testgroup to set the tags as key1:value1 and key2:value2 and administrator to testuser1@contoso.com , testuser2@contoso.com and the service principal: 9035a021-a96f-43ea-acbf-864227c2abbb@45119f4f-c71b-4420-b6ec-60e503450098
 
 ## PARAMETERS
 
 ### -Administrator
-A comma separated capacity names to set as administrator on the capacity
+A comma separated names to set as administrators on the capacity. For service principal: <service principal object id>@<tenant id>
 
 ```yaml
 Type: System.String[]

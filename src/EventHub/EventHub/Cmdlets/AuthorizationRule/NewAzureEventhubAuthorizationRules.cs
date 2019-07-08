@@ -60,6 +60,12 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
             PSSharedAccessAuthorizationRuleAttributes sasRule = new PSSharedAccessAuthorizationRuleAttributes();
             sasRule.Rights = new List<string>();
 
+            if (Array.Exists(Rights, element => element == "Manage") && !Array.Exists(Rights, element => element == "Listen") || !Array.Exists(Rights, element => element == "Send"))
+            {
+                Exception exManage = new Exception("Assigning 'Manage' to rights requires ‘Listen and ‘Send' to be included with. e.g. @(\"Manage\",\"Listen\",\"Send\")");
+                throw exManage;
+            }
+
             foreach (string right in Rights)
             {
                 sasRule.Rights.Add(right);
@@ -85,6 +91,10 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
             catch (Management.EventHub.Models.ErrorResponseException ex)
             {
                 WriteError(Eventhub.EventHubsClient.WriteErrorforBadrequest(ex));
+            }
+            catch (Exception ex)
+            {
+                WriteError(new ErrorRecord(ex, ex.Message, ErrorCategory.OpenError, ex));
             }
         }
     }

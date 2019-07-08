@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.1.2
 * Bug fix in IP Prefix validation to allow 0/30 for DirectConnection
 * Bug fix to handle error messages from ARM and ERM
 * Added Verbose comments for debugging
