@@ -71,6 +71,9 @@ Creates a new export devices job.
 ### [New-AzIotHubImportDevice](New-AzIotHubImportDevice.md)
 Creates a new import devices job.
 
+### [New-AzIotHubKey](New-AzIotHubKey.md)
+Generate an Azure IoT Hub key.
+
 ### [Remove-AzIotHub](Remove-AzIotHub.md)
 Deletes an IotHub.
 

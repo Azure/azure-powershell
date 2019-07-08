@@ -394,13 +394,9 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
         {
             var certificateResources = resourceClient.ResourceManagementClient.FilterResources(new FilterResourcesOptions
             {
+                ResourceGroup = resourceGroupName,
                 ResourceType = "Microsoft.Web/Certificates"
             }).ToArray();
-
-            if (!string.IsNullOrEmpty(resourceGroupName))
-            {
-                certificateResources = certificateResources.Where(c => string.Equals(c.ResourceGroupName, resourceGroupName, StringComparison.OrdinalIgnoreCase)).ToArray();
-            }
 
             var certificates =
                 certificateResources.Select(

@@ -95,7 +95,7 @@ function Test-Image
         # Create Image using the VM's OS disk and data disks.
         $imageName = 'image' + $rgname;
         $tags = @{test1 = "testval1"; test2 = "testval2" };
-        $imageConfig = New-AzImageConfig -Location $loc -Tag $tags;
+        $imageConfig = New-AzImageConfig -Location $loc -Tag $tags -HyperVGeneration "V1";
         Set-AzImageOsDisk -Image $imageConfig -OsType 'Windows' -OsState 'Generalized' -BlobUri $osDiskVhdUri;
         $imageConfig = Add-AzImageDataDisk -Image $imageConfig -Lun 1 -BlobUri $dataDiskVhdUri1;
         $imageConfig = Add-AzImageDataDisk -Image $imageConfig -Lun 2 -BlobUri $dataDiskVhdUri2;
@@ -164,21 +164,23 @@ function Test-Image
         Assert-AreEqual $rgname $images[0].ResourceGroupName;
         Assert-AreEqual $imageName $images[0].Name;
         
-        $images = Get-AzImage -ResourceGroupName $rgname -Name $imageName;
-        Assert-AreEqual $rgname $images.ResourceGroupName;
-        Assert-AreEqual $imageName $images.Name;
+        $image = Get-AzImage -ResourceGroupName $rgname -Name $imageName;
+        Assert-AreEqual $rgname $image.ResourceGroupName;
+        Assert-AreEqual $imageName $image.Name;
+        Assert-AreEqual "V1" $image.HyperVGeneration;
 
         # Update Image Tag
-        $images[0] | Update-AzImage -Tag @{test1 = "testval3"; test2 = "testval4"};
+        $image | Update-AzImage -Tag @{test1 = "testval3"; test2 = "testval4"};
         Update-AzImage -ResourceGroupName $rgname -ImageName $imageName -Tag @{test1 = "testval3"; test2 = "testval4"};
-        Update-AzImage -Image $images[0] -Tag @{test1 = "testval3"; test2 = "testval4"};
-        Update-AzImage -ResourceId $images[0].Id -Tag @{test1 = "testval3"; test2 = "testval4"};
+        Update-AzImage -Image $image -Tag @{test1 = "testval3"; test2 = "testval4"};
+        Update-AzImage -ResourceId $image.Id -Tag @{test1 = "testval3"; test2 = "testval4"};
 
         $image = Get-AzImage -ResourceGroupName $rgname -ImageName $imageName;
         Assert-True {$image.Tags.ContainsKey("test1") }
         Assert-AreEqual "testval3" $image.Tags["test1"]
         Assert-True {$image.Tags.ContainsKey("test2") }
         Assert-AreEqual "testval4" $image.Tags["test2"]
+        Assert-AreEqual "V1" $image.HyperVGeneration;
 
         $job = Remove-AzImage -ResourceGroupName $rgname -ImageName $imageName -Force -AsJob;
         $result = $job | Wait-Job;

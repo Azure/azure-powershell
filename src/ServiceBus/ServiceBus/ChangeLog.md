@@ -19,6 +19,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* added verification and error message for authorizationrules rights if only 'Manage' is assigned
+
+## Version 1.2.1
 * Fix for issue #4938 - New-AzureRmServiceBusQueue returns BadRequest when setting MaxSizeInMegabytes
 
 ## Version 1.2.0
