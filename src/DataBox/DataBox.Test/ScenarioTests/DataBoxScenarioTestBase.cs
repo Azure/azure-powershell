@@ -24,6 +24,7 @@ using System.IO;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using ResourceManagementClient = Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient;
+using StorageManagementClient = Microsoft.Azure.Management.Storage.Version2017_10_01.StorageManagementClient;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 
 namespace Microsoft.Azure.Commands.DataBox.Test
@@ -41,8 +42,9 @@ namespace Microsoft.Azure.Commands.DataBox.Test
         {
             var dataPipelineManagementClient = GetDataPipelineManagementClient(context);
             var resourceManagementClient = GetResourceManagementClient(context);
+            var storageManagementClient = GetStorageManagementClient(context);
 
-            _helper.SetupManagementClients(dataPipelineManagementClient, resourceManagementClient);
+            _helper.SetupManagementClients(dataPipelineManagementClient, resourceManagementClient, storageManagementClient);
         }
 
         protected void RunPowerShellTest(XunitTracingInterceptor logger, params string[] scripts)
@@ -56,6 +58,7 @@ namespace Microsoft.Azure.Commands.DataBox.Test
             var d = new Dictionary<string, string>
             {
                 {"Microsoft.Resources", null},
+                {"Microsoft.Storage", null },
                 {"Microsoft.Features", null},
                 {"Microsoft.Authorization", null}
             };
@@ -76,7 +79,7 @@ namespace Microsoft.Azure.Commands.DataBox.Test
                     "ScenarioTests\\" + GetType().Name + ".ps1",
                     _helper.RMProfileModule,
                     _helper.GetRMModulePath("Az.DataBox.psd1"),
-                    "AzureRM.Resources.ps1");
+                    "AzureRM.Resources.ps1", "AzureRM.Storage.ps1");
 
                 _helper.RunPowerShellTest(scripts);
             }
@@ -85,13 +88,18 @@ namespace Microsoft.Azure.Commands.DataBox.Test
         protected DataBoxManagementClient GetDataPipelineManagementClient(MockContext context)
         {
             var testEnv = TestEnvironmentFactory.GetTestEnvironment();
-            testEnv.SubscriptionId = "05b5dd1c-793d-41de-be9f-6f9ed142f695";
+            //testEnv.SubscriptionId = "05b5dd1c-793d-41de-be9f-6f9ed142f695";
             return context.GetServiceClient<DataBoxManagementClient>(testEnv);
         }
 
         protected ResourceManagementClient GetResourceManagementClient(MockContext context)
         {
             return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        protected StorageManagementClient GetStorageManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }

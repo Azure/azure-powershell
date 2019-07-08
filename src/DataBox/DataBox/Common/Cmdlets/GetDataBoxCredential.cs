@@ -47,36 +47,8 @@ namespace Microsoft.Azure.Commands.DataBox.Common
                 throw new PSArgumentNullException("Name");
             }
 
-            //string sku = JobsOperationsExtensions.Get(DataBoxManagementClient.Jobs, ResourceGroupName, Name, "details").Sku.Name.ToString();
-
             IEnumerable<UnencryptedCredentials> result = DataBoxManagementClient.Jobs.ListCredentials(ResourceGroupName, Name);
 
-            //if (sku.Equals("DataBoxDisk"))
-            //{
-            //    DataBoxDiskJobSecrets secrets = result.ToList()[0].JobSecrets as DataBoxDiskJobSecrets;
-            //    foreach (var obj in secrets.DiskSecrets)
-            //    {
-            //        Credentials.Add(new DataBoxCredentials(obj.DiskSerialNumber, obj.BitLockerKey));
-            //    }
-            //}
-            //else if (sku.Equals("DataBox"))
-            //{
-            //    DataboxJobSecrets secrets = result.ToList()[0].JobSecrets as DataboxJobSecrets;
-            //    foreach (var obj in secrets.PodSecrets)
-            //    {
-            //        Credentials.Add(new DataBoxCredentials(obj.DeviceSerialNumber, obj.DevicePassword));
-            //    }
-            //}
-            //else
-            //{
-            //    DataBoxHeavyJobSecrets secrets = result.ToList()[0].JobSecrets as DataBoxHeavyJobSecrets;
-            //    foreach (var obj in secrets.CabinetPodSecrets)
-            //    {
-            //        Credentials.Add(new DataBoxCredentials(obj.DeviceSerialNumber, obj.DevicePassword));
-            //    }
-            //}
-            //PSObject output = new PSObject(Credentials);
-            
             WriteObject(result);
         }
     }

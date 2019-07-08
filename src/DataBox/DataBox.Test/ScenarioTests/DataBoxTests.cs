@@ -28,21 +28,9 @@ namespace Microsoft.Azure.Commands.DataBox.Test
             XunitTracingInterceptor.AddToContext(_logger);
         }
 
+
 #if NETSTANDARD
-        [Fact]//(Skip = "Management library needs NetCore republish")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetExistingDataBoxJob()
-        {
-
-            RunPowerShellTest(_logger, "Test-GetExistingDataBoxJob");
-        }
-
-#if NETSTANDARD
-        [Fact]//(Skip = "Management library needs NetCore republish")]
         [Trait(Category.RunType, Category.DesktopOnly)]
 #else
         [Fact]
@@ -55,7 +43,7 @@ namespace Microsoft.Azure.Commands.DataBox.Test
         }
 
 #if NETSTANDARD
-        [Fact]//(Skip = "Management library needs NetCore republish")]
+        [Fact]
         [Trait(Category.RunType, Category.DesktopOnly)]
 #else
         [Fact]
@@ -68,7 +56,7 @@ namespace Microsoft.Azure.Commands.DataBox.Test
         }
 
 #if NETSTANDARD
-        [Fact]//(Skip = "Management library needs NetCore republish")]
+        [Fact]
         [Trait(Category.RunType, Category.DesktopOnly)]
 #else
         [Fact]
@@ -81,7 +69,7 @@ namespace Microsoft.Azure.Commands.DataBox.Test
         }
 
 #if NETSTANDARD
-        [Fact]//(Skip = "Management library needs NetCore republish")]
+        [Fact]
         [Trait(Category.RunType, Category.DesktopOnly)]
 #else
         [Fact]
@@ -94,7 +82,7 @@ namespace Microsoft.Azure.Commands.DataBox.Test
         }
 
 #if NETSTANDARD
-        [Fact]//(Skip = "Management library needs NetCore republish")]
+        [Fact]
         [Trait(Category.RunType, Category.DesktopOnly)]
 #else
         [Fact]
@@ -107,7 +95,7 @@ namespace Microsoft.Azure.Commands.DataBox.Test
         }
 
 #if NETSTANDARD
-        [Fact]//(Skip = "Management library needs NetCore republish")]
+        [Fact]
         [Trait(Category.RunType, Category.DesktopOnly)]
 #else
         [Fact]
@@ -120,7 +108,7 @@ namespace Microsoft.Azure.Commands.DataBox.Test
         }
 
 #if NETSTANDARD
-        [Fact]//(Skip = "Management library needs NetCore republish")]
+        [Fact]
         [Trait(Category.RunType, Category.DesktopOnly)]
 #else
         [Fact]
@@ -133,7 +121,7 @@ namespace Microsoft.Azure.Commands.DataBox.Test
         }
 
 #if NETSTANDARD
-        [Fact]//(Skip = "Management library needs NetCore republish")]
+        [Fact]
         [Trait(Category.RunType, Category.DesktopOnly)]
 #else
         [Fact]

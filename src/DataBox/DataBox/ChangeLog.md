@@ -19,17 +19,17 @@
 -->
 
 ## Upcoming Release
-* Updated cmdlets to support rulesEngine feature based on API version 2019-04-15.
+* General Availability of `Az.Databox` Module
+* Added cmdlet `Get-AzDataBoxJob`
+	- This cmdlet fetches the databox job/jobs of the user based on the filters applied like resource group name etc.
+* Added cmdlet `Get-AzDataBoxCredential`
+	- This cmdlet fetches the databox credentials of the specified databox job.
+* Added cmdlet `Stop-AzDataBoxJob`
+	- This cmdlet is used to cancel an ongoing databox job.
+* Added cmdlet `Remove-AzDataBoxJob`
+	- This cmdlet is used to delete a finished(completed/cancelled/aborted) databox job.
+* Added cmdlet `New-AzDataBoxJob`
+	- This cmdlet is used to create a new databox job.
 
-## Version 1.2.0
-* Updated cmdlets with plural nouns to singular, and deprecated plural names.
 
-## Version 1.1.0
-* Added new Powershell cmdlets for Enable/Disable Custom Domain Https and deprecated the old ones
-
-## Version 1.0.1
-* Update incorrect online help URLs
-
-## Version 1.0.0
-* General availability of `Az.Cdn` module
 

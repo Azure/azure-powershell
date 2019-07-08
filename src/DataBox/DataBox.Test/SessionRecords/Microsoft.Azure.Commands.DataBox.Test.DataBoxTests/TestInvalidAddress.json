@@ -7,7 +7,7 @@
       "RequestBody": "{\r\n  \"shippingAddress\": {\r\n    \"streetAddress1\": \"blah blah\",\r\n    \"city\": \"San Francisco\",\r\n    \"stateOrProvince\": \"CA\",\r\n    \"country\": \"US\",\r\n    \"postalCode\": \"94107\",\r\n    \"addressType\": \"None\"\r\n  },\r\n  \"deviceType\": \"DataBox\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "247d33ff-e038-4688-a7e2-47ee2daaa668"
+          "29acdd4d-9bb5-42b5-9ddf-8fea24cd72d3"
         ],
         "Accept-Language": [
           "en-US"
@@ -36,10 +36,10 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "440eb0aa-3045-40f9-8614-db3268e070bb"
+          "bc4fad5f-3bee-46ab-9414-26ca8107af33"
         ],
         "x-ms-client-request-id": [
-          "247d33ff-e038-4688-a7e2-47ee2daaa668"
+          "29acdd4d-9bb5-42b5-9ddf-8fea24cd72d3"
         ],
         "X-Powered-By": [
           "ASP.NET"
@@ -48,16 +48,16 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "0daabd7c-cd9b-440c-8e0f-78678e09b079"
+          "eed780a8-8c0f-425b-9977-bedbe231c1cf"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20190705T062447Z:0daabd7c-cd9b-440c-8e0f-78678e09b079"
+          "SOUTHINDIA:20190708T070144Z:eed780a8-8c0f-425b-9977-bedbe231c1cf"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Fri, 05 Jul 2019 06:24:46 GMT"
+          "Mon, 08 Jul 2019 07:01:44 GMT"
         ],
         "Content-Length": [
           "105"
