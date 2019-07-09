@@ -33,7 +33,6 @@ PS C:\> New-AzDataBoxJob -Location 'WestUS' -StreetAddress1 '16 TOWNSEND ST' -Po
 jobResource.Name jobResource.Sku.Name jobResource.Status jobResource.StartTime jobResource.Location ResourceGroup
 ---------------- -------------------- ------------------ --------------------- -------------------- -------------
 OrderTest       DataBox              DeviceOrdered      05-07-2019 05:25:30   westus               IrfansRG
-
 ```
 
 The cmdlet takes all the required parameters and some optional parameters to create the databox job.
@@ -362,7 +361,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### System.String[]
 
 ## OUTPUTS
 
