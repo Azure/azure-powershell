@@ -5,6 +5,7 @@ using System.Text;
 using System.Linq;
 using Microsoft.Azure.Commands.DataBox.Common;
 using Microsoft.Azure.Management.DataBox.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models;
 using Microsoft.Azure.Management.DataBox;
 using Microsoft.Rest.Azure;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -18,6 +19,7 @@ namespace Microsoft.Azure.Commands.DataBox.Common
 
         private const string GetByNameParameterSet = "GetByNameParameterSet";
         private const string GetByResourceIdParameterSet = "GetByResourceIdParameterSet";
+        private const string GetByInputObjectParameterSet = "GetByInputObjectParameterSet";
 
         [Parameter(Mandatory = true, ParameterSetName = GetByNameParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -33,6 +35,9 @@ namespace Microsoft.Azure.Commands.DataBox.Common
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
+        [Parameter(Mandatory = true, ParameterSetName = GetByInputObjectParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public PSDataBoxJob InputObject { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -41,6 +46,13 @@ namespace Microsoft.Azure.Commands.DataBox.Common
                 this.ResourceGroupName = ResourceIdHandler.GetResourceGroupName(ResourceId);
                 this.Name = ResourceIdHandler.GetResourceName(ResourceId);
             }
+
+            if (this.ParameterSetName.Equals(GetByInputObjectParameterSet))
+            {
+                this.ResourceGroupName = InputObject.ResourceGroup;
+                this.Name = InputObject.JobResource.Name;
+            }
+
             // Gets information about the specified job.
             JobResource jobResource = JobsOperationsExtensions.Get(DataBoxManagementClient.Jobs, ResourceGroupName, Name, "details");
 
