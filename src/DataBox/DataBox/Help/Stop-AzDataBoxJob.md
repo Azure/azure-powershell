@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataBox.dll-Help.xml
 Module Name: Az.DataBox
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.databox/stop-azdataboxjob
 schema: 2.0.0
 ---
 

@@ -1,9 +1,9 @@
 ---
 Module Name: Az.DataBox
 Module Guid: '39B6B3E6-A15E-48BA-BE20-FE0D441D92B4'
-Download Help Link: {{ Update Download Link }}
-Help Version: {{ Update Help Version }}
-Locale: {{ Update Locale }}
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.databox
+Help Version: 1.0.0.0
+Locale: en-US
 ---
 
 # Az.DataBox Module
@@ -11,7 +11,7 @@ Locale: {{ Update Locale }}
 Module to Create, Cancel, Delete and Fetch Databox Jobs
 
 ## Az.DataBox Cmdlets
-### [Get-AzDataBoxJob](Get-AzDataBoxCredential.md)
+### [Get-AzDataBoxJob](Get-AzDataBoxJob.md)
 Gets the databox job/jobs.
 
 ### [Get-AzDataBoxCredential](Get-AzDataBoxCredential.md)
