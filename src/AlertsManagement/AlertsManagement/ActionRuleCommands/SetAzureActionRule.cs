@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Rest.Azure;
@@ -288,7 +289,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                  HelpMessage = "Reccurent values, if applicable." +
                     "In case of Weekly - 1,3,5 \n" +
                     "In case of Monthly - 16,24,28 \n")]
-        public List<int?> ReccurentValue { get; set; }
+        public int[] ReccurentValue { get; set; }
 
         /// <summary>
         /// Action rule simplified format : Action Group Id
@@ -347,9 +348,9 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                             endTime: SuppressionEndTime.Split(' ')[1]
                             );
 
-                        if (ReccurentValue.Count > 0)
+                        if (ReccurentValue.Length > 0)
                         {
-                            config.Schedule.RecurrenceValues = ReccurentValue;
+                            //config.Schedule.RecurrenceValues = new List<int?>(ReccurentValue.ToList<int?>());
                         }
                     }
 
@@ -394,7 +395,6 @@ namespace Microsoft.Azure.Commands.AlertsManagement
 
                     break;
                 case ByInputObjectParameterSet:
-                    // TODO: Implement from InputObject
                     break;
             }
 

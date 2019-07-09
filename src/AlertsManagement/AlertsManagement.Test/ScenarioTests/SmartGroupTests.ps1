@@ -18,7 +18,9 @@ Test Smart Group change state
 #>
 function Test-SmartGroupChangeState
 {
-	$smartGroupId = "f52ed8ac-fe87-4234-8134-782825645204"
+	# Get latest smart group
+	$smartGroups = Get-AzSmartGroup -TimeRange 1h
+	$smartGroupId = $smartGroups[0].Id
 
 	$oldSmartGroup = Get-AzSmartGroup -SmartGroupId $smartGroupId
 	$newState = "Acknowledged"

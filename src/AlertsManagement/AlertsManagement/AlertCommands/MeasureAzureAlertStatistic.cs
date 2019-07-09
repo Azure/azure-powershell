@@ -140,10 +140,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                 includeSmartGroupsCount: IncludeSmartGroupsCount
                 ).Result.Body);
 
-            // TODO: How to directly call overriden ToString() functions for custom output classes
-            // Defined PSAggregatedCounts in PSSummary
-            WriteObject(summary);
-            WriteObject(summary.AggregatedCounts.ToString());
+            WriteObject(summary.ToString());
         }
     }
 }

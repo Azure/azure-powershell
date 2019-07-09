@@ -29,7 +29,6 @@ namespace Microsoft.Azure.Commands.AlertsManagement
     public abstract class AlertsManagementBaseCmdlet : AzureRMCmdlet
     {
         #region Client Declaration
-        // TODO: Uncomment once SDK is published
         private IAlertsManagementClient alertsManagementClient;
 
         /// <summary>
