@@ -189,7 +189,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: NetworkProfile, AsJob
 
 Required: True
 Position: Named

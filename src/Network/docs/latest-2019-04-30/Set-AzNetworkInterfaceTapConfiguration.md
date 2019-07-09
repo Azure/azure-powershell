@@ -172,7 +172,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: NetworkInterfaceTapConfig
 
 Required: True
 Position: Named

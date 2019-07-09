@@ -151,7 +151,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: Stop
-Aliases: VirtualNetworkGateway
+Aliases: ApplicationGateway
 
 Required: True
 Position: Named

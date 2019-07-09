@@ -15,7 +15,7 @@ The Set VpnclientIpsecParameters operation sets the vpnclient ipsec policy for P
 ### Set (Default)
 ```
 Set-AzVnetGatewayVpnClientIPsecParameter -ResourceGroupName <String> -SubscriptionId <String>
- -VnetGatewayName <String> [-VpnclientIPsecParam <IVpnClientIPsecParameters>] [-DefaultProfile <PSObject>]
+ -VnetGatewayName <String> [-VpnClientIPsecParameter <IVpnClientIPsecParameters>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -203,7 +203,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: InputObject
 
 Required: True
 Position: Named
@@ -278,9 +278,9 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VpnclientIPsecParam
+### -VpnClientIPsecParameter
 An IPSec parameters for a virtual network gateway P2S connection.
-To construct, see NOTES section for VPNCLIENTIPSECPARAM properties and create a hash table.
+To construct, see NOTES section for VPNCLIENTIPSECPARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVpnClientIPsecParameters
@@ -350,7 +350,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### VPNCLIENTIPSECPARAM <IVpnClientIPsecParameters>: An IPSec parameters for a virtual network gateway P2S connection.
+#### VPNCLIENTIPSECPARAMETER <IVpnClientIPsecParameters>: An IPSec parameters for a virtual network gateway P2S connection.
   - `DhGroup <DhGroup>`: The DH Group used in IKE Phase 1 for initial SA.
   - `IkeEncryption <IkeEncryption>`: The IKE encryption algorithm (IKE phase 2).
   - `IkeIntegrity <IkeIntegrity>`: The IKE integrity algorithm (IKE phase 2).

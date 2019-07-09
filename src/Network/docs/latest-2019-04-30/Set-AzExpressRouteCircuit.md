@@ -324,7 +324,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: ExpressRouteCircuit
 
 Required: True
 Position: Named

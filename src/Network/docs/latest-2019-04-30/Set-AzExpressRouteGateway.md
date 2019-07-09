@@ -21,8 +21,8 @@ Set-AzExpressRouteGateway -Name <String> -ResourceGroupName <String> -Subscripti
 
 ### UpdateExpanded
 ```
-Set-AzExpressRouteGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-BoundMax <Int32>] [-BoundMin <Int32>] [-Id <String>] [-Location <String>] [-Tag <Hashtable>]
+Set-AzExpressRouteGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-Id <String>]
+ [-Location <String>] [-MaximumScaleUnits <Int32>] [-MinimumScaleUnits <Int32>] [-Tag <Hashtable>]
  [-VirtualHubId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -63,38 +63,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -BoundMax
-Maximum number of scale units deployed for ExpressRoute gateway.
-
-```yaml
-Type: System.Int32
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -BoundMin
-Minimum number of scale units deployed for ExpressRoute gateway.
-
-```yaml
-Type: System.Int32
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -143,6 +111,38 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -MaximumScaleUnits
+Maximum number of scale units deployed for ExpressRoute gateway.
+
+```yaml
+Type: System.Int32
+Parameter Sets: UpdateExpanded
+Aliases: MaxScaleUnits
+
+Required: False
+Position: Named
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -MinimumScaleUnits
+Minimum number of scale units deployed for ExpressRoute gateway.
+
+```yaml
+Type: System.Int32
+Parameter Sets: UpdateExpanded
+Aliases: MinScaleUnits
+
+Required: False
+Position: Named
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -203,7 +203,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: InputObject
 
 Required: True
 Position: Named

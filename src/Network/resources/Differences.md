@@ -98,39 +98,11 @@
     - BgpAsn
     - BgpPeeringAddress
     - BgpPeeringWeight
-- Set-AzApplicationGateway
-    - ApplicationGateway
-- Set-AzExpressRouteCircuit
-    - ExpressRouteCircuit
-- Set-AzExpressRouteConnection
-    - InputObject
-- Set-AzExpressRouteGateway
-    - InputObject
-    - MinScaleUnits
-    - MaxScaleUnits
-- Set-AzExpressRoutePort
-    - ExpressRoutePort
-- Set-AzFirewall
-    - AzureFirewall
-- Set-AzLoadBalancer
-    - LoadBalancer
 - Set-AzLocalNetworkGateway
     - LocalNetworkGateway
     - Asn
     - BgpPeeringAddress
     - PeerWeight
-- Set-AzNetworkInterface
-    - NetworkInterface
-- Set-AzNetworkInterfaceTapConfiguration
-    - NetworkInterfaceTapConfig
-- Set-AzNetworkProfile
-    - NetworkProfile
-    - AsJob
-- Set-AzNetworkSecurityGroup
-    - NetworkSecurityGroup
-- Set-AzNetworkWatcherConnectionMonitor
-    - InputObject
-    - ConfigureOnly
 - Set-AzNetworkWatcherFlowLogConfiguration
     - EnableFlowLog
     - StorageAccountId
@@ -142,14 +114,6 @@
     - WorkspaceLocation
     - Workspace
     - TrafficAnalyticsInterval
-- Set-AzPublicIPAddress
-    - PublicIpAddress
-- Set-AzPublicIPPrefix
-    - PublicIpPrefix
-- Set-AzRouteFilter
-    - RouteFilter
-- Set-AzRouteTable
-    - RouteTable
 - Set-AzVnetGateway
     - VirtualNetworkGateway
     - GatewaySku
@@ -169,15 +133,6 @@
     - VirtualNetworkGatewayConnection
     - UsePolicyBasedTrafficSelectors
     - IpsecPolicies
-- Set-AzVnetGatewayVpnClientIPsecParameter
-    - VpnClientIPsecParameter
-    - InputObject
-- Set-AzVnetPeering
-    - VirtualNetworkPeering
-- Start-AzApplicationGateway
-    - ApplicationGateway
-- Stop-AzApplicationGateway
-    - ApplicationGateway
 - Test-AzNetworkWatcherConnectivity
     - SourceId
     - DestinationId
@@ -322,14 +277,34 @@
 - Remove-AzVpnSite
 - Reset-AzVnetGateway
 - Reset-AzVnetGatewayConnectionSharedKey
+- Set-AzApplicationGateway
+- Set-AzExpressRouteCircuit
+- Set-AzExpressRouteConnection
 - Set-AzExpressRouteCrossConnection
+- Set-AzExpressRouteGateway
+- Set-AzExpressRoutePort
+- Set-AzFirewall
+- Set-AzLoadBalancer
+- Set-AzNetworkInterface
+- Set-AzNetworkInterfaceTapConfiguration
+- Set-AzNetworkProfile
+- Set-AzNetworkSecurityGroup
+- Set-AzNetworkWatcherConnectionMonitor
+- Set-AzPublicIPAddress
+- Set-AzPublicIPPrefix
+- Set-AzRouteFilter
+- Set-AzRouteTable
 - Set-AzServiceEndpointPolicy
 - Set-AzServiceEndpointPolicyDefinition
 - Set-AzVnet
 - Set-AzVnetGatewayConnectionSharedKey
+- Set-AzVnetGatewayVpnClientIPsecParameter
+- Set-AzVnetPeering
 - Set-AzVnetTap
+- Start-AzApplicationGateway
 - Start-AzNetworkWatcherConnectionMonitor
 - Start-AzNetworkWatcherTroubleshooting
+- Stop-AzApplicationGateway
 - Stop-AzNetworkWatcherConnectionMonitor
 - Stop-AzNetworkWatcherPacketCapture
 - Test-AzDnsNameAvailability

@@ -1049,6 +1049,12 @@ directive:
       parameter-name: ResourceGroupName
     set:
       alias: NetworkSecurityGroup
+  - where: # REMOVE BEFORE RELEASE: Conflicts in hybrid profile with next directive
+      verb: Set
+      subject: PublicIPAddress
+      parameter-name: PublicIPAddress
+    set:
+      parameter-name: PublicIPAddressParameter
   - where: # REMOVE BEFORE RELEASE: In-memory object parameter
       verb: Set
       subject: PublicIPAddress

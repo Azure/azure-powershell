@@ -252,7 +252,7 @@ The name of the resource group containing Network Watcher.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: ConfigureOnly, InputObject
 
 Required: True
 Position: Named
