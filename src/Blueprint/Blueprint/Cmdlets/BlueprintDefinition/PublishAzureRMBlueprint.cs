@@ -52,7 +52,8 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                 try
                 {
                     // parameters property is placeholder here, backend strips this information and publishes the latest master. It is needed in the payload since swagger calls it required.
-                    var publishedBlueprintObjForChangeNotes =  new PublishedBlueprint(ChangeNotes, parameters: new Dictionary<string, ParameterDefinition>()); 
+                    var publishedBlueprintObjForChangeNotes = new PublishedBlueprint(
+                        parameters: new Dictionary<string, ParameterDefinition>(), changeNotes: ChangeNotes);
 
                     WriteObject(BlueprintClient.CreatePublishedBlueprint(Blueprint.Scope, Blueprint.Name, Version, publishedBlueprintObjForChangeNotes));
                 }
