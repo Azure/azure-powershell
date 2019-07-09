@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.DataBox.Common
             if (jobResource.IsCancellable != null && (bool)jobResource.IsCancellable)
             {
                 // Initiate to cancel job
-                if (ShouldProcess(this.Name))
+                if (ShouldProcess(this.Name, string.Format("Cancelling Databox job '{0}' in resource group {0}", this.Name, this.ResourceGroupName)))
                 {
                     JobsOperationsExtensions.Cancel(
                         DataBoxManagementClient.Jobs,
