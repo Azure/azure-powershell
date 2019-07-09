@@ -10,10 +10,6 @@
     <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)</RootNamespace>
   </PropertyGroup>
 
-  <PropertyGroup>
-    <NoWarn>NU1605</NoWarn>
-  </PropertyGroup>
-  
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.StorageSync" Version="3.1.0" />
     <PackageReference Include="Microsoft.Win32.Registry" Version="4.5.0" />
