@@ -279,12 +279,12 @@ function Create-StorageShare
         }
 
         $azureFileShare = $null
-        if (gcm New-AzStorageShare)
+        if (gcm New-AzStorageShare -ErrorAction SilentlyContinue)
         {
             Write-Verbose "Using New-AzStorageShare cmdlet to create share: $($Name) in storage account: $($Context.StorageAccountName)"
             $azureFileShare = New-AzStorageShare -Name $Name -Context $Context
         }
-        elseif (gcm New-AzureStorageShare)
+        elseif (gcm New-AzureStorageShare -ErrorAction SilentlyContinue)
         {
             Write-Verbose "Using New-AzureStorageShare cmdlet to create share: $($Name) in storage account: $($Context.StorageAccountName)"
             $azureFileShare = New-AzureStorageShare -Name $Name -Context $Context            
@@ -322,12 +322,12 @@ function Remove-StorageShare
         }
 
         $result = $null
-        if (gcm Remove-AzStorageShare)
+        if (gcm Remove-AzStorageShare -ErrorAction SilentlyContinue)
         {
             Write-Verbose "Using Remove-AzStorageShare cmdlet"
             $result = Remove-AzStorageShare -Name $Name -Context $Context -Force
         }
-        elseif (gcm Remove-AzureStorageShare)
+        elseif (gcm Remove-AzureStorageShare -ErrorAction SilentlyContinue)
         {
             Write-Verbose "Using Remove-AzureStorageShare cmdlet"
             $result = Remove-AzureStorageShare -Name $Name -Context $Context -Force
@@ -355,19 +355,24 @@ function Create-StorageContext
     }
 
     $result = $null
-    if (gcm New-AzStorageContext)
+
+    if(IsLive)
     {
-        Write-Verbose "Using New-AzStorageContext cmdlet"
-        $result = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey -Protocol https -Endpoint core.windows.net
+        if (gcm New-AzStorageContext -ErrorAction SilentlyContinue)
+        {
+            Write-Verbose "Using New-AzStorageContext cmdlet"
+            $result = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey -Protocol https -Endpoint core.windows.net
+        }
+        elseif (gcm New-AzureStorageContext -ErrorAction SilentlyContinue)
+        {
+            Write-Verbose "Using New-AzureStorageContext cmdlet"
+            $result = New-AzureStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey -Protocol https -Endpoint core.windows.net
+        }
+        else 
+        {
+            throw "Neither New-AzStorageContext nor New-AzureStorageContext cmdlet is available"
+        }
     }
-    elseif (gcm New-AzureStorageContext)
-    {
-        Write-Verbose "Using New-AzureStorageContext cmdlet"
-        $result = New-AzureStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey -Protocol https -Endpoint core.windows.net
-    }
-    else 
-    {
-        throw "Neither New-AzStorageContext nor New-AzureStorageContext cmdlet is available"
-    }
+    
     return $result
 }
