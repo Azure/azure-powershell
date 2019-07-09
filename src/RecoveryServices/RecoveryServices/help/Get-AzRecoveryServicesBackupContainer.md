@@ -24,17 +24,15 @@ Get-AzRecoveryServicesBackupContainer [-ContainerType] <ContainerType> [[-Backup
 
 The **Get-AzRecoveryServicesBackupContainer** cmdlet gets a backup container.
 A Backup container encapsulates data sources that are modelled as backup items.
-Set the vault context by using the **Set-AzRecoveryServicesVaultContext** cmdlet before you use the current cmdlet.
-
-Warning: **Set-AzRecoveryServicesVaultContext** cmdlet is being deprecated in a future breaking change release. There will be no replacement for it. Please use the -VaultId parameter instead.
+Set the vault context by using the -VaultId parameter.
 
 ## EXAMPLES
 
 ### Example 1: Get a specific container
 
 ```powershell
-$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
-Get-AzRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered" -Name "V2VM" -VaultId $vault.ID
+PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+PS C:\> Get-AzRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered" -Name "V2VM" -VaultId $vault.ID
 ```
 
 This command gets the container named V2VM of type AzureVM.
@@ -42,8 +40,8 @@ This command gets the container named V2VM of type AzureVM.
 ### Example 2: Get all containers of a specific type
 
 ```powershell
-$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
-Get-AzRecoveryServicesBackupContainer -ContainerType Windows -BackupManagementType MARS -VaultId $vault.ID
+PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+PS C:\> Get-AzRecoveryServicesBackupContainer -ContainerType Windows -BackupManagementType MARS -VaultId $vault.ID
 ```
 
 This command gets all Windows containers that are protected by Azure Backup agent.
