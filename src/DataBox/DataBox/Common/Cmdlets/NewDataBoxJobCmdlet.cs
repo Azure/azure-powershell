@@ -6,10 +6,13 @@ using System.Linq;
 using Microsoft.Azure.Commands.DataBox.Common;
 using Microsoft.Azure.Management.DataBox.Models;
 using Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.DataBox.Resources;
 using Microsoft.Azure.Management.DataBox;
+using System.Reflection;
 using Microsoft.Rest.Azure;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Threading;
+using Resource = Microsoft.Azure.PowerShell.Cmdlets.DataBox.Resources.Resource;
 
 namespace Microsoft.Azure.Commands.DataBox.Common
 {
@@ -144,15 +147,15 @@ namespace Microsoft.Azure.Commands.DataBox.Common
             if (addressValidationResult.ValidationStatus != AddressValidationStatus.Valid)
             {
                 
-                WriteVerbose("Address validation status: " + addressValidationResult.ValidationStatus);
+                WriteVerbose("Address validation status: " + addressValidationResult.ValidationStatus + "\n");
 
                 //print alternate address
                 if (addressValidationResult.ValidationStatus == AddressValidationStatus.Ambiguous)
                 {
-                    WriteVerbose("\nSUPPORT ADDRESSES: ");
+                    WriteVerbose("SUPPORT ADDRESSES: \n\n");
                     foreach (ShippingAddress address in addressValidationResult.AlternateAddresses)
                     {
-                        WriteVerbose("\nAddress type: " + address.AddressType);
+                        WriteVerbose("Address type: " + address.AddressType + "\n");
                         if (!(string.IsNullOrEmpty(address.CompanyName)))
                             WriteVerbose("Company name: " + address.CompanyName);
                         if (!(string.IsNullOrEmpty(address.StreetAddress1)))
@@ -173,9 +176,9 @@ namespace Microsoft.Azure.Commands.DataBox.Common
                             WriteVerbose("Zip extended code: " + address.ZipExtendedCode);
                         WriteVerbose("\n\n");
                     }
-                    throw new PSNotSupportedException("\nThe Shipping Address is ambiguous. Please select any address from the ones provided above.");
+                    throw new PSNotSupportedException(Resource.ResourceManager.GetString("AmbiguousAddressMessage"));
                 }
-                throw new PSNotSupportedException("The Shipping Address is not Valid.");
+                throw new PSNotSupportedException(Resource.ResourceManager.GetString("InvalidAddressMessage"));
             }
 
             if (ShouldProcess(this.Name, string.Format("Creating Databox job '{0}' in resource group {0}", this.Name, this.ResourceGroupName)))
