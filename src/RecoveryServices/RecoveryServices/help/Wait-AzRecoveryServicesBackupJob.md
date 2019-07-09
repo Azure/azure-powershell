@@ -25,18 +25,16 @@ The **Wait-AzRecoveryServicesBackupJob** cmdlet waits for an Azure Backup job to
 Backup jobs can take a long time.
 If you run a backup job as part of a script, you may want to force the script to wait for job to finish before it continues to other tasks.
 A script that includes this cmdlet can be simpler than one that polls the Backup service for the job status.
-Set the vault context by using the **Set-AzRecoveryServicesVaultContext** cmdlet before you use the current cmdlet.
-
-Warning: **Set-AzRecoveryServicesVaultContext** cmdlet is being deprecated in a future breaking change release. There will be no replacement for it. Please use the -VaultId parameter instead.
+Set the vault context by using the -VaultId parameter.
 
 ## EXAMPLES
 
 ### Example 1: Wait for a job to finish
 
 ```powershell
-$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
-$Jobs = Get-AzRecoveryServicesBackupJob -Status InProgress -VaultId $vault.ID
-Wait-AzRecoveryServicesBackupJob -Job $Jobs[0] -VaultId $vault.ID -Timeout 3600
+PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+PS C:\> $Jobs = Get-AzRecoveryServicesBackupJob -Status InProgress -VaultId $vault.ID
+PS C:\> Wait-AzRecoveryServicesBackupJob -Job $Jobs[0] -VaultId $vault.ID -Timeout 3600
 ```
 
 This script polls the first job that is currently in progress until the job has completed or timeout period of 1 hour expired.
