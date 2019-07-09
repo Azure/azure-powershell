@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Resources;
+using System.Reflection;
 using System.Collections.Generic;
 using System.Text;
+using Resource = Microsoft.Azure.PowerShell.Cmdlets.DataBox.Resources.Resource;
 
 namespace Microsoft.Azure.Commands.DataBox.Common
 {
@@ -16,7 +19,7 @@ namespace Microsoft.Azure.Commands.DataBox.Common
                     return splits[i + 1];
                 }
             }
-            throw new Exception("Invalid Resource Id");
+            throw new Exception(Resource.ResourceManager.GetString("InvalidResourceId"));
         }
 
         public static string GetResourceName(string resourceId)
@@ -29,7 +32,7 @@ namespace Microsoft.Azure.Commands.DataBox.Common
                     return splits[i + 3];
                 }
             }
-            throw new Exception("Invalid Resource Id");
+            throw new Exception(Resource.ResourceManager.GetString("InvalidResourceId"));
         }
     }
 }
