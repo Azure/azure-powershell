@@ -49,6 +49,8 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         #region Cmdlet Overrides
         public override void ExecuteCmdlet()
         {
+            RegisterBlueprintRp(SubscriptionId ?? DefaultContext.Subscription.Id);
+
             string scope = this.IsParameterBound(c => c.ManagementGroupId) 
                 ? Utils.GetScopeForManagementGroup(ManagementGroupId) 
                 : Utils.GetScopeForSubscription(SubscriptionId ?? DefaultContext.Subscription.Id);
