@@ -150,34 +150,35 @@ namespace Microsoft.Azure.Commands.DataBox.Common
 
             if (addressValidationResult.ValidationStatus != AddressValidationStatus.Valid)
             {
-                Console.WriteLine("Address validation status: {0}", addressValidationResult.ValidationStatus);
+                
+                WriteVerbose("Address validation status: " + addressValidationResult.ValidationStatus);
 
                 //print alternate address
                 if (addressValidationResult.ValidationStatus == AddressValidationStatus.Ambiguous)
                 {
-                    Console.WriteLine("\nSUPPORT ADDRESSES: ");
+                    WriteVerbose("\nSUPPORT ADDRESSES: ");
                     foreach (ShippingAddress address in addressValidationResult.AlternateAddresses)
                     {
-                        Console.WriteLine("\nAddress type: {0}", address.AddressType);
+                        WriteVerbose("\nAddress type: " + address.AddressType);
                         if (!(string.IsNullOrEmpty(address.CompanyName)))
-                            Console.WriteLine("Company name: {0}", address.CompanyName);
+                            WriteVerbose("Company name: " + address.CompanyName);
                         if (!(string.IsNullOrEmpty(address.StreetAddress1)))
-                            Console.WriteLine("Street address1: {0}", address.StreetAddress1);
+                            WriteVerbose("Street address1: " + address.StreetAddress1);
                         if (!(string.IsNullOrEmpty(address.StreetAddress2)))
-                            Console.WriteLine("Street address2: {0}", address.StreetAddress2);
+                            WriteVerbose("Street address2: " + address.StreetAddress2);
                         if (!(string.IsNullOrEmpty(address.StreetAddress3)))
-                            Console.WriteLine("Street address3: {0}", address.StreetAddress3);
+                            WriteVerbose("Street address3: " + address.StreetAddress3);
                         if (!(string.IsNullOrEmpty(address.City)))
-                            Console.WriteLine("City: {0}", address.City);
+                            WriteVerbose("City: " + address.City);
                         if (!(string.IsNullOrEmpty(address.StateOrProvince)))
-                            Console.WriteLine("State/Province: {0}", address.StateOrProvince);
+                            WriteVerbose("State/Province: " + address.StateOrProvince);
                         if (!(string.IsNullOrEmpty(address.Country)))
-                            Console.WriteLine("Country: {0}", address.Country);
+                            WriteVerbose("Country: " + address.Country);
                         if (!(string.IsNullOrEmpty(address.PostalCode)))
-                            Console.WriteLine("Postal code: {0}", address.PostalCode);
+                            WriteVerbose("Postal code: " + address.PostalCode);
                         if (!(string.IsNullOrEmpty(address.ZipExtendedCode)))
-                            Console.WriteLine("Zip extended code: {0}", address.ZipExtendedCode);
-                        Console.WriteLine("\n\n");
+                            WriteVerbose("Zip extended code: " + address.ZipExtendedCode);
+                        WriteVerbose("\n\n");
                     }
                     throw new PSNotSupportedException("\nThe Shipping Address is ambiguous. Please select any address from the ones provided above.");
                 }

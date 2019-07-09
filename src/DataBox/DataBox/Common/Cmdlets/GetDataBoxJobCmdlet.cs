@@ -56,11 +56,6 @@ namespace Microsoft.Azure.Commands.DataBox.Common
                 this.Name = ResourceIdHandler.GetResourceName(ResourceId);
             }
 
-            if (Name != null && string.IsNullOrWhiteSpace(Name))
-            {
-                throw new PSArgumentNullException("Name");
-            }
-
             if (!string.IsNullOrEmpty(this.Name))
             {
                 List<PSDataBoxJob> result = new List<PSDataBoxJob>();
