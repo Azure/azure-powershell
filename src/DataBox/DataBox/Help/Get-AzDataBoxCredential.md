@@ -27,7 +27,6 @@ Get-AzDataBoxCredential -ResourceId <String> [-DefaultProfile <IAzureContextCont
 The **Get-AzDataBoxCredential** cmdlet gets the credentials of the databox of a specific job. 
 The internal properties of the returned credentials object will be different for different Sku types.
 
-
 ## EXAMPLES
 
 ### Example 1
@@ -37,7 +36,6 @@ PS C:\> Get-AzDataBoxCredential -ResourceGroupName bvttoolrg6 -Name TJ-636646322
 JobName               JobSecrets
 -------               ----------
 TJ-636646322037905056 Microsoft.Azure.Management.DataBox.Models.DataboxJobSecrets
-
 ```
 
 This retuns the JobSecrets of the specified job
@@ -49,7 +47,6 @@ PS C:\> Get-AzDataBoxCredential -ResourceId "/subscriptions/fa68082f-8ff7-4a25-9
 JobName               JobSecrets
 -------               ----------
 TJ-636646322037905056 Microsoft.Azure.Management.DataBox.Models.DataboxJobSecrets
-
 ```
 
 This retuns the JobSecrets of the specified job
@@ -121,7 +118,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### System.String
 
 ## OUTPUTS
 

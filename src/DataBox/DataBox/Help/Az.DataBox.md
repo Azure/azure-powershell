@@ -11,18 +11,18 @@ Locale: en-US
 Module to Create, Cancel, Delete and Fetch Databox Jobs
 
 ## Az.DataBox Cmdlets
-### [Get-AzDataBoxJob](Get-AzDataBoxJob.md)
-Gets the databox job/jobs.
-
 ### [Get-AzDataBoxCredential](Get-AzDataBoxCredential.md)
-Gets the credentials of the databox of a specified job.
+Gets the databox credentials of a specific job
+
+### [Get-AzDataBoxJob](Get-AzDataBoxJob.md)
+Gets information about Databox Jobs
 
 ### [New-AzDataBoxJob](New-AzDataBoxJob.md)
-Creates a new databox job
+Creates a new databox job using the specified parameters
 
 ### [Remove-AzDataBoxJob](Remove-AzDataBoxJob.md)
-Deletes a finished databox job.
+Deletes the databox job
 
 ### [Stop-AzDataBoxJob](Stop-AzDataBoxJob.md)
-Cancels an ongoing databox job.
+Cancels an ongoing databox job if the job is in cancellable state.
 

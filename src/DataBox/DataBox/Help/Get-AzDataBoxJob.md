@@ -14,7 +14,7 @@ Gets information about Databox Jobs
 
 ### ListParameterSet (Default)
 ```
-Get-AzDataBoxJob [-ResourceGroupName <String>] [-Completed] [-CompletedWithErrors] [-Cancelled] [-Aborted]
+Get-AzDataBoxJob [-ResourceGroupName <String>] [-Completed] [-CompletedWithError] [-Cancelled] [-Aborted]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -49,7 +49,6 @@ cleanup-bhaskar2        DataBox              Aborted             15-01-2019 01:1
 .
 .
 .
-
 ```
 
 Get-AzDataBoxJob without any parameter fetches all the databox jobs under the subscription
@@ -66,7 +65,6 @@ cleanup-bhaskar2        DataBox              Aborted             15-01-2019 01:1
 .
 .
 .
-
 ```
 
 Get-AzDataBoxJob with ResourceGroupName parameter fetches all the databox jobs under the specified resource group
@@ -78,7 +76,6 @@ PS C:\> Get-AzDataBoxJob -ResourceGroupName "forraghav" -Name "cleanboxraghav"
 jobResource.Name        jobResource.Sku.Name jobResource.Status  jobResource.StartTime jobResource.Location ResourceGroup
 ----------------        -------------------- ------------------  --------------------- -------------------- -------------
 cleanboxraghav          DataBox              Aborted             04-12-2018 16:07:41   westus               forraghav
-
 ```
 
 Get-AzDataBoxJob with ResourceGroupName and Name specified will fetch that specific databox job
@@ -90,7 +87,6 @@ PS C:\> Get-AzDataBoxJob -ResourceId "/subscriptions/05b5dd1c-793d-41de-be9f-6f9
 jobResource.Name        jobResource.Sku.Name jobResource.Status  jobResource.StartTime jobResource.Location ResourceGroup
 ----------------        -------------------- ------------------  --------------------- -------------------- -------------
 cleanboxraghav          DataBox              Aborted             04-12-2018 16:07:41   westus               forraghav
-
 ```
 
 Get-AzDataBoxJob with ResourceId specified will fetch that specific databox job
@@ -101,7 +97,7 @@ Get-AzDataBoxJob with ResourceId specified will fetch that specific databox job
 Switch Parameter to fetch Aborted jobs
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ListParameterSet
 Aliases:
 
@@ -116,7 +112,7 @@ Accept wildcard characters: False
 Switch Parameter to fetch Cancelled jobs
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ListParameterSet
 Aliases:
 
@@ -131,7 +127,7 @@ Accept wildcard characters: False
 Switch Parameter to fetch Completed jobs
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ListParameterSet
 Aliases:
 
@@ -142,11 +138,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CompletedWithErrors
-Switch Parameter to fetch jobs that completed with errors
+### -CompletedWithError
+Switch Parameter to fetch jobs completed with errors
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ListParameterSet
 Aliases:
 
@@ -161,7 +157,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -176,7 +172,7 @@ Accept wildcard characters: False
 Databox Job Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByNameParameterSet
 Aliases:
 
@@ -191,7 +187,7 @@ Accept wildcard characters: False
 Databox Job Resource Group Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ListParameterSet
 Aliases:
 
@@ -203,7 +199,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByNameParameterSet
 Aliases:
 
@@ -218,7 +214,7 @@ Accept wildcard characters: False
 Databox Job Resource Id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByResourceIdParameterSet
 Aliases:
 
