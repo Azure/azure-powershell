@@ -35,7 +35,6 @@ namespace Microsoft.Azure.Commands.DataBox.Common
 
         public override void ExecuteCmdlet()
         {
-
             if (this.ParameterSetName.Equals("GetByResourceIdParameterSet"))
             {
                 this.ResourceGroupName = ResourceIdHandler.GetResourceGroupName(ResourceId);
@@ -48,9 +47,7 @@ namespace Microsoft.Azure.Commands.DataBox.Common
             }
 
             IEnumerable<UnencryptedCredentials> result = DataBoxManagementClient.Jobs.ListCredentials(ResourceGroupName, Name);
-
             WriteObject(result);
         }
     }
-
 }

@@ -13,7 +13,7 @@ using System.Threading;
 
 namespace Microsoft.Azure.Commands.DataBox.Common
 {
-    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataBoxJob", SupportsShouldProcess = true , DefaultParameterSetName = GetByNameParameterSet), OutputType(typeof(String))]
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataBoxJob", SupportsShouldProcess = true , DefaultParameterSetName = GetByNameParameterSet), OutputType(typeof(void))]
     public class RemoveDataBoxJob : AzureDataBoxCmdletBase
     {
 
@@ -38,6 +38,9 @@ namespace Microsoft.Azure.Commands.DataBox.Common
         [Parameter(Mandatory = true, ParameterSetName = GetByInputObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         public PSDataBoxJob InputObject { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru;
 
         public override void ExecuteCmdlet()
         {
@@ -66,19 +69,10 @@ namespace Microsoft.Azure.Commands.DataBox.Common
                         ResourceGroupName,
                         Name);
 
-                    WriteObject("Successfully Deleted the Databox Job");
+                    if (PassThru)
+                        WriteObject(true);
                 }
-                
-
-            }
-            else
-            {
-                WriteObject("This Databox Job cannot be Deleted");
             }
         }
-
-
     }
-
-
 }

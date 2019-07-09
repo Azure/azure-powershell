@@ -76,7 +76,6 @@ namespace Microsoft.Azure.Commands.DataBox.Common
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-
         public override void ExecuteCmdlet()
         {
             if (DataBoxType == "DataBoxDisk" && ExpectedDataSizeInTeraBytes.Equals(0))
@@ -97,8 +96,6 @@ namespace Microsoft.Azure.Commands.DataBox.Common
                 PostalCode = this.PostalCode
             };
 
-            
-
             ContactDetails contactDetails = new ContactDetails()
             {
                 Phone = this.PhoneNumber,
@@ -113,9 +110,7 @@ namespace Microsoft.Azure.Commands.DataBox.Common
                 destinationAccountDetails.Add(
                 new DestinationAccountDetails(storageAccount));
             }
-
-
-
+            
             DataBoxDiskJobDetails diskDetails;
             DataBoxJobDetails databoxDetails;
             DataBoxHeavyJobDetails heavyDetails;
@@ -142,12 +137,10 @@ namespace Microsoft.Azure.Commands.DataBox.Common
                     break;
                 default: break;
             }
-
-
+            
             AddressValidationOutput addressValidationResult = ServiceOperationsExtensions.ValidateAddressMethod(
                 DataBoxManagementClient.Service, Location, shippingAddress, newJobResource.Sku.Name);
-
-
+            
             if (addressValidationResult.ValidationStatus != AddressValidationStatus.Valid)
             {
                 
@@ -194,12 +187,7 @@ namespace Microsoft.Azure.Commands.DataBox.Common
                             newJobResource);
 
                 WriteObject(new PSDataBoxJob(finalJobResource));
-            }
-            
+            }   
         }
-
-
     }
-
-
 }

@@ -13,7 +13,7 @@ using System.Threading;
 
 namespace Microsoft.Azure.Commands.DataBox.Common
 {
-    [Cmdlet(VerbsLifecycle.Stop , ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataBoxJob", SupportsShouldProcess = true, DefaultParameterSetName = GetByNameParameterSet), OutputType(typeof(String))]
+    [Cmdlet(VerbsLifecycle.Stop , ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataBoxJob", SupportsShouldProcess = true, DefaultParameterSetName = GetByNameParameterSet), OutputType(typeof(void))]
     public class StopDataBoxJob : AzureDataBoxCmdletBase
     {
 
@@ -43,6 +43,9 @@ namespace Microsoft.Azure.Commands.DataBox.Common
         [ValidateNotNullOrEmpty]
         public PSDataBoxJob InputObject { get; set; }
 
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru;
+
         public override void ExecuteCmdlet()
         {
             if (this.ParameterSetName.Equals(GetByResourceIdParameterSet))
@@ -71,22 +74,10 @@ namespace Microsoft.Azure.Commands.DataBox.Common
                         Name,
                         Reason);
                 }
-                
-               
-                WriteObject("Successfully Cancelled the Databox Job");
-            }
-            else if(jobResource.Status == StageName.Cancelled)
-            {
-                WriteObject("This Databox Job is already Cancelled");
-            }
-            else
-            {
-                WriteObject("This Databox Job cannot be Cancelled");
-            }
+
+                if (PassThru)
+                    WriteObject(true);
+            } 
         }
-
-
     }
-
-
 }
