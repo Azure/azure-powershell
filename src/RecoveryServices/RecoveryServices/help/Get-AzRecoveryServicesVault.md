@@ -28,7 +28,7 @@ The **Get-AzRecoveryServicesVault** cmdlet gets a list of Recovery Services vaul
 ### Example 1
 
 ```powershell
-Get-AzRecoveryServicesVault
+PS C:\> Get-AzRecoveryServicesVault
 ```
 
 Get the list of vault in selected subscription.
@@ -36,7 +36,7 @@ Get the list of vault in selected subscription.
 ### Example 2
 
 ```powershell
-Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup"
+PS C:\> Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup"
 ```
 
 Get the list of vault in resource group in selected subscription.
@@ -44,7 +44,7 @@ Get the list of vault in resource group in selected subscription.
 ### Example 3
 
 ```powershell
-Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+PS C:\> Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
 ```
 
 Get the vault in resource group with given name.
