@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.0.0'
+ModuleVersion = '0.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -109,7 +109,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Updated cmdlets with plural nouns to singular, and deprecated plural names.'
+        ReleaseNotes = 'Initial release of Azure DataBox cmdlets'
 
         # Prerelease string of this module
         # Prerelease = ''
