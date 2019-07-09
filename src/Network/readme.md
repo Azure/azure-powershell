@@ -330,6 +330,11 @@ directive:
       subject: ApplicationGatewayWafPolicy
     set:
       alias: Get-AzApplicationGatewayFirewallPolicy
+  - where:
+      subject: ^ApplicationGateway(.*)
+      parameter-name: ^WebApplicationFirewall(.*)
+    set:
+      parameter-name: Waf$1
 
 # LoadBalancer
   - where:
@@ -1091,6 +1096,91 @@ directive:
       parameter-name: ResourceGroupName
     set:
       alias: VirtualNetworkPeering
+  - where: # REMOVE BEFORE RELEASE: In-memory object parameter, UserAssignedIdentityId is used with Identity
+      verb: New
+      subject: ApplicationGateway
+      parameter-name: ResourceGroupName
+    set:
+      alias:
+        - Sku
+        - SslPolicy
+        - WebApplicationFirewallConfiguration
+        - FirewallPolicy
+        - AutoscaleConfiguration
+        - UserAssignedIdentityId
+        - Identity
+  - where:
+      verb: New
+      subject: ApplicationGateway
+      parameter-name: GatewayIPConfiguration
+    set:
+      alias: GatewayIPConfigurations
+  - where:
+      verb: New
+      subject: ApplicationGateway
+      parameter-name: SslCertificate
+    set:
+      alias: SslCertificates
+  - where:
+      verb: New
+      subject: ApplicationGateway
+      parameter-name: AuthenticationCertificate
+    set:
+      alias: AuthenticationCertificates
+  - where:
+      verb: New
+      subject: ApplicationGateway
+      parameter-name: FrontendIPConfiguration
+    set:
+      alias: FrontendIPConfigurations
+  - where:
+      verb: New
+      subject: ApplicationGateway
+      parameter-name: FrontendPort
+    set:
+      alias: FrontendPorts
+  - where:
+      verb: New
+      subject: ApplicationGateway
+      parameter-name: Probe
+    set:
+      alias: Probes
+  - where:
+      verb: New
+      subject: ApplicationGateway
+      parameter-name: BackendAddressPool
+    set:
+      alias: BackendAddressPools
+  - where:
+      verb: New
+      subject: ApplicationGateway
+      parameter-name: HttpListener
+    set:
+      alias: HttpListeners
+  - where:
+      verb: New
+      subject: ApplicationGateway
+      parameter-name: UrlPathMap
+    set:
+      alias: UrlPathMaps
+  - where:
+      verb: New
+      subject: ApplicationGateway
+      parameter-name: RequestRoutingRule
+    set:
+      alias: RequestRoutingRules
+  - where:
+      verb: New
+      subject: ApplicationGateway
+      parameter-name: RedirectConfiguration
+    set:
+      alias: RedirectConfigurations
+  - where:
+      verb: New
+      subject: ApplicationGateway
+      parameter-name: IdentityUserAssignedIdentity
+    set:
+      parameter-name: UserAssignedIdentity
 
 # Other Fixes
   - where:
