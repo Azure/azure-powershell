@@ -29,12 +29,7 @@ namespace Microsoft.Azure.Commands.DataBox.Test
         }
 
 
-#if NETSTANDARD
         [Fact]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
-        [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetNonExistingDataBoxJob()
         {
@@ -42,12 +37,7 @@ namespace Microsoft.Azure.Commands.DataBox.Test
             RunPowerShellTest(_logger, "Test-GetNonExistingDataBoxJob");
         }
 
-#if NETSTANDARD
         [Fact]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
-        [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateDataBoxJob()
         {
@@ -55,12 +45,7 @@ namespace Microsoft.Azure.Commands.DataBox.Test
             RunPowerShellTest(_logger, "Test-CreateDataBoxJob");
         }
 
-#if NETSTANDARD
         [Fact]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
-        [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateAlreadyExistingDataBoxJob()
         {
@@ -68,12 +53,7 @@ namespace Microsoft.Azure.Commands.DataBox.Test
             RunPowerShellTest(_logger, "Test-CreateAlreadyExistingDataBoxJob");
         }
 
-#if NETSTANDARD
         [Fact]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
-        [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStopDataBoxJob()
         {
@@ -81,12 +61,7 @@ namespace Microsoft.Azure.Commands.DataBox.Test
             RunPowerShellTest(_logger, "Test-StopDataBoxJob");
         }
 
-#if NETSTANDARD
         [Fact]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
-        [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveDataBoxJob()
         {
@@ -94,12 +69,7 @@ namespace Microsoft.Azure.Commands.DataBox.Test
             RunPowerShellTest(_logger, "Test-RemoveDataBoxJob");
         }
 
-#if NETSTANDARD
         [Fact]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
-        [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAlreadyRemovedDataBoxJob()
         {
@@ -107,12 +77,7 @@ namespace Microsoft.Azure.Commands.DataBox.Test
             RunPowerShellTest(_logger, "Test-RemoveAlreadyRemovedDataBoxJob");
         }
 
-#if NETSTANDARD
         [Fact]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
-        [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAmbiguousAddress()
         {
@@ -120,12 +85,7 @@ namespace Microsoft.Azure.Commands.DataBox.Test
             RunPowerShellTest(_logger, "Test-JobResourceObjectAmbiguousAddress");
         }
 
-#if NETSTANDARD
         [Fact]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
-        [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestInvalidAddress()
         {
