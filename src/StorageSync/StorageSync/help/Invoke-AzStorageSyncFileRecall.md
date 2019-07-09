@@ -49,7 +49,7 @@ This command recursively recalls all tiered files located under the root path of
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -64,7 +64,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -79,9 +79,9 @@ Accept wildcard characters: False
 SyncGroup Object, normally passed through the parameter.
 
 ```yaml
-Type: PSServerEndpoint
+Type: Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint
 Parameter Sets: ObjectParameterSet
-Aliases: ServerEndpoint
+Aliases: RegisteredServer, ServerEndpoint
 
 Required: True
 Position: 0
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 Name of the ServerEndpoint.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: StringParameterSet
 Aliases: ServerEndpointName
 
@@ -109,7 +109,7 @@ Accept wildcard characters: False
 {{Fill PassThru Description}}
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -124,7 +124,7 @@ Accept wildcard characters: False
 Pattern of the file name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -139,7 +139,7 @@ Accept wildcard characters: False
 Recall path which need to be recalled.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -154,7 +154,7 @@ Accept wildcard characters: False
 Resource Group Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: StringParameterSet
 Aliases:
 
@@ -169,7 +169,7 @@ Accept wildcard characters: False
 ServerEndpoint Resource Id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
 Aliases:
 
@@ -184,7 +184,7 @@ Accept wildcard characters: False
 Name of the StorageSyncService.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: StringParameterSet
 Aliases: ParentName
 
@@ -199,7 +199,7 @@ Accept wildcard characters: False
 Name of the SyncGroup.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: StringParameterSet
 Aliases:
 
@@ -214,7 +214,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -229,7 +229,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
