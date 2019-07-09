@@ -784,7 +784,7 @@ function Test-WindowsContainerCanIssueWebAppPSSession
 			$resultError = ($Error[0] -like "*$($messageDNS)*") -or ($Error[0] -like "*$($messageUnavailable)*") -or ($Error[0] -like "*$($messageNotSupportedInPSCore604)*")
 			Write-Debug "Expected Message 1: $messageDNS"
 			Write-Debug "Expected Message 2: $messageUnavailable"
-			Write-Debug "Expected Message 2: $messageNotSupportedInPSCore604"
+			Write-Debug "Expected Message 3: $messageNotSupportedInPSCore604"
 		}
 		
 		Write-Debug "Error: $Error[0]"
