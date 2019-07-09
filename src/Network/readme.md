@@ -898,7 +898,7 @@ directive:
     set:
       alias: SecurityRules
   - where: # REMOVE BEFORE RELEASE: This is the opposite of AutoStart
-      verb: New
+      verb: ^New$|^Set$
       subject: NetworkWatcherConnectionMonitor
       parameter-name: ResourceGroupName
     set:
@@ -978,7 +978,113 @@ directive:
       subject: ApplicationGateway
       parameter-name: ResourceGroupName
     set:
-      alias: VirtualNetworkGateway
+      alias: ApplicationGateway
+  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
+      verb: Set
+      subject: ExpressRouteCircuit
+      parameter-name: ResourceGroupName
+    set:
+      alias: ExpressRouteCircuit
+  - where: # REMOVE BEFORE RELEASE: InputObject removed for all Set cmdlets
+      verb: Set
+      subject: ^ExpressRouteConnection$|^ExpressRouteGateway$|^NetworkWatcherConnectionMonitor$|^VnetGatewayVpnClientIPsecParameter$
+      parameter-name: ResourceGroupName
+    set:
+      alias: InputObject
+  - where:
+      verb: Set
+      subject: ExpressRouteGateway
+      parameter-name: BoundMin
+    set:
+      parameter-name: MinimumScaleUnits
+      alias: MinScaleUnits
+  - where:
+      verb: Set
+      subject: ExpressRouteGateway
+      parameter-name: BoundMax
+    set:
+      parameter-name: MaximumScaleUnits
+      alias: MaxScaleUnits
+  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
+      verb: Set
+      subject: ExpressRoutePort
+      parameter-name: ResourceGroupName
+    set:
+      alias: ExpressRoutePort
+  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
+      verb: Set
+      subject: Firewall
+      parameter-name: ResourceGroupName
+    set:
+      alias: AzureFirewall
+  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
+      verb: Set
+      subject: LoadBalancer
+      parameter-name: ResourceGroupName
+    set:
+      alias: LoadBalancer
+  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
+      verb: Set
+      subject: NetworkInterface
+      parameter-name: ResourceGroupName
+    set:
+      alias: NetworkInterface
+  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
+      verb: Set
+      subject: NetworkInterfaceTapConfiguration
+      parameter-name: ResourceGroupName
+    set:
+      alias: NetworkInterfaceTapConfig
+  - where: # REMOVE BEFORE RELEASE: In-memory object parameter and AsJob on non-long-running operation
+      verb: Set
+      subject: NetworkProfile
+      parameter-name: ResourceGroupName
+    set:
+      alias:
+        - NetworkProfile
+        - AsJob
+  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
+      verb: Set
+      subject: NetworkSecurityGroup
+      parameter-name: ResourceGroupName
+    set:
+      alias: NetworkSecurityGroup
+  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
+      verb: Set
+      subject: PublicIPAddress
+      parameter-name: ResourceGroupName
+    set:
+      alias: PublicIpAddress
+  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
+      verb: Set
+      subject: PublicIPPrefix
+      parameter-name: ResourceGroupName
+    set:
+      alias: PublicIpPrefix
+  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
+      verb: Set
+      subject: RouteFilter
+      parameter-name: ResourceGroupName
+    set:
+      alias: RouteFilter
+  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
+      verb: Set
+      subject: RouteTable
+      parameter-name: ResourceGroupName
+    set:
+      alias: RouteTable
+  - where:
+      verb: Set
+      subject: VnetGatewayVpnClientIPsecParameter
+      parameter-name: VpnclientIPsecParam
+    set:
+      parameter-name: VpnClientIPsecParameter
+  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
+      verb: Set
+      subject: VnetPeering
+      parameter-name: ResourceGroupName
+    set:
+      alias: VirtualNetworkPeering
 
 # Other Fixes
   - where:
