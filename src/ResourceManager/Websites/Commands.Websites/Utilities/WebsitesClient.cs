@@ -311,8 +311,15 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
 
         public void RunWebAppContainerPSSessionScript(PSCmdlet cmdlet, string resourceGroupName, string webSiteName, string slotName = null, bool newPSSession = false)
         {
-            Version psCurrentVersion = GetPsVersion(cmdlet);
-            Version psCore = new Version(6, 0);
+            Version psCurrentVersion = GetPsVersion(cmdlet);            
+            Version psCore = new Version(6, 0, 4);
+
+            if (psCurrentVersion.CompareTo(psCore) == 0)
+            {
+                WriteError(Properties.Resources.EnterContainerPSSessionNotSupportedInPSCore604);
+
+                return;
+            }
 
             if (psCurrentVersion.CompareTo(psCore) < 0)
             {
