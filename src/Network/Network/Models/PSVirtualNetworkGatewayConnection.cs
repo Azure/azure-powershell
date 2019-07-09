@@ -61,6 +61,9 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public bool ExpressRouteGatewayBypass { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string ConnectionProtocol { get; set; }
+
         [JsonIgnore]
         public string VirtualNetworkGateway1Text
         {
