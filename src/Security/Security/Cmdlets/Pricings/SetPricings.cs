@@ -43,15 +43,10 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Pricings
             var name = Name;
             var tier = PricingTier;
 
-
             if(ParameterSetName == ParameterSetNames.InputObject)
             {
-                case ParameterSetNames.SubscriptionLevelResource:
-                    break;
-            
                 name = InputObject.Name;
                 tier = InputObject.PricingTier;
-
                     
             }
             else if (ParameterSetName != ParameterSetNames.SubscriptionLevelResource)
