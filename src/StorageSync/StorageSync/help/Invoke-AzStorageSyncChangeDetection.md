@@ -83,7 +83,7 @@ Keep in mind that this command can detect up to 10,000 changes before it is auto
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -98,7 +98,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -113,7 +113,7 @@ Accept wildcard characters: False
 Directory where change detection will be performed.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: StringAndDirectoryParameterSet, ResourceIdAndDirectoryParameterSet, ObjectAndDirectoryParameterSet
 Aliases:
 
@@ -128,7 +128,7 @@ Accept wildcard characters: False
 CloudEndpoint Object, normally passed through the parameter.
 
 ```yaml
-Type: PSCloudEndpoint
+Type: Microsoft.Azure.Commands.StorageSync.Models.PSCloudEndpoint
 Parameter Sets: ObjectAndDirectoryParameterSet, ObjectAndPathParameterSet
 Aliases: CloudEndpoint
 
@@ -143,7 +143,7 @@ Accept wildcard characters: False
 Name of the CloudEndpoint.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: StringAndDirectoryParameterSet, StringAndPathParameterSet
 Aliases: CloudEndpointName
 
@@ -158,7 +158,7 @@ Accept wildcard characters: False
 {{Fill PassThru Description}}
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -173,7 +173,7 @@ Accept wildcard characters: False
 Path where change detection will be performed.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: StringAndPathParameterSet, ResourceIdAndPathParameterSet, ObjectAndPathParameterSet
 Aliases:
 
@@ -188,7 +188,7 @@ Accept wildcard characters: False
 Indication whether directory change detection is recursive.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: StringAndDirectoryParameterSet, ResourceIdAndDirectoryParameterSet, ObjectAndDirectoryParameterSet
 Aliases:
 
@@ -203,7 +203,7 @@ Accept wildcard characters: False
 Resource Group Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: StringAndDirectoryParameterSet, StringAndPathParameterSet
 Aliases:
 
@@ -218,7 +218,7 @@ Accept wildcard characters: False
 CloudEndpoint Resource Id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdAndDirectoryParameterSet, ResourceIdAndPathParameterSet
 Aliases: CloudEndpointId
 
@@ -233,7 +233,7 @@ Accept wildcard characters: False
 Name of the StorageSyncService.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: StringAndDirectoryParameterSet, StringAndPathParameterSet
 Aliases: ParentName
 
@@ -248,7 +248,7 @@ Accept wildcard characters: False
 Name of the SyncGroup.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: StringAndDirectoryParameterSet, StringAndPathParameterSet
 Aliases:
 
@@ -263,7 +263,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -279,7 +279,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
