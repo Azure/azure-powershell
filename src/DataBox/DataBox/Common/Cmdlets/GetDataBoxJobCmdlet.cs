@@ -20,7 +20,6 @@ namespace Microsoft.Azure.Commands.DataBox.Common
         private const string GetByNameParameterSet = "GetByNameParameterSet";
         private const string GetByResourceIdParameterSet = "GetByResourceIdParameterSet";
 
-
         [Parameter(Mandatory = false, ParameterSetName = ListParameterSet)]
         [Parameter(Mandatory = true, ParameterSetName = GetByNameParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -46,7 +45,6 @@ namespace Microsoft.Azure.Commands.DataBox.Common
 
         [Parameter(Mandatory = false, ParameterSetName = ListParameterSet)]
         public SwitchParameter Aborted { get; set; } = false;
-
 
         public override void ExecuteCmdlet()
         {
@@ -89,7 +87,6 @@ namespace Microsoft.Azure.Commands.DataBox.Common
                                         jobPageList.NextPageLink);
                     }
 
-                    
                     if (Completed || Cancelled || Aborted || CompletedWithErrors)
                     {
                         foreach (var job in jobPageList)
@@ -109,6 +106,7 @@ namespace Microsoft.Azure.Commands.DataBox.Common
                     }
 
                 } while (!(string.IsNullOrEmpty(jobPageList.NextPageLink)));
+
                 foreach(var job in result)
                 {
                     finalResult.Add(new PSDataBoxJob(job));
@@ -121,7 +119,6 @@ namespace Microsoft.Azure.Commands.DataBox.Common
                  IPage<JobResource> jobPageList = null;
                  List<JobResource> result = new List<JobResource>();
                  List<PSDataBoxJob> finalResult = new List<PSDataBoxJob>();
-
 
                 do
                 {
@@ -166,6 +163,4 @@ namespace Microsoft.Azure.Commands.DataBox.Common
             }
         }
     }
-
-
 }
