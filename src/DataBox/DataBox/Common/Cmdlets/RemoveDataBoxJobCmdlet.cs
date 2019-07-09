@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.DataBox.Common
             if (jobResource.Status == StageName.Cancelled || jobResource.Status == StageName.Completed || jobResource.Status == StageName.CompletedWithErrors)
             {
                 // Initiate to delete job
-                if (ShouldProcess(this.Name))
+                if (ShouldProcess(this.Name, string.Format("Deleting Databox job '{0}' in resource group {0}", this.Name, this.ResourceGroupName)))
                 {
                     JobsOperationsExtensions.Delete(
                         DataBoxManagementClient.Jobs,

@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Commands.DataBox.Common
                 throw new PSNotSupportedException("The Shipping Address is not Valid.");
             }
 
-            if (ShouldProcess(this.Name))
+            if (ShouldProcess(this.Name, string.Format("Creating Databox job '{0}' in resource group {0}", this.Name, this.ResourceGroupName)))
             {
                 JobResource finalJobResource = JobsOperationsExtensions.Create(
                             DataBoxManagementClient.Jobs,
