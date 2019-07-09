@@ -293,23 +293,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -OutboundNatRule
-The outbound NAT rules.
-To construct, see NOTES section for OUTBOUNDNATRULE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IOutboundNatRule[]
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Parameter
 LoadBalancer resource
 To construct, see NOTES section for PARAMETER properties and create a hash table.
@@ -482,11 +465,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ILoadBalancer
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ILoadBalancer
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ILoadBalancer
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ILoadBalancer
 
 ## ALIASES
 

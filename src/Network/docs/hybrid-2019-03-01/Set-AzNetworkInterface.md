@@ -620,11 +620,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterface
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkInterface
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterface
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkInterface
 
 ## ALIASES
 

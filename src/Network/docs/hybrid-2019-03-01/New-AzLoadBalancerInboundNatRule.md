@@ -498,7 +498,6 @@ Dynamic: False
 ### -PrivateIPAddressVersion
 Available from Api-Version 2016-03-30 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6.
 Default is taken as IPv4.
-Possible values are: 'IPv4' and 'IPv6'.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.IPVersion
@@ -514,8 +513,7 @@ Dynamic: False
 ```
 
 ### -PrivateIPAllocationMethod
-Defines how a private IP address is assigned.
-Possible values are: 'Static' and 'Dynamic'.
+The private IP address allocation method.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.IPAllocationMethod
@@ -531,8 +529,7 @@ Dynamic: False
 ```
 
 ### -Protocol
-The transport protocol for the endpoint.
-Possible values are 'Udp' or 'Tcp' or 'All'.
+The reference to the transport protocol used by the load balancing rule.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.TransportProtocol
@@ -671,11 +668,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IInboundNatRule
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IInboundNatRule
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IInboundNatRule
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IInboundNatRule
 
 ## ALIASES
 

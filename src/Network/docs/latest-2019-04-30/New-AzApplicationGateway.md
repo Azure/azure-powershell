@@ -22,20 +22,19 @@ New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Subscriptio
 ### CreateExpanded
 ```
 New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -AutoscaleConfigurationMinCapacity <Int32> -WebApplicationFirewallConfigurationEnabled
- -WebApplicationFirewallConfigurationFirewallMode <ApplicationGatewayFirewallMode>
- -WebApplicationFirewallConfigurationRuleSetType <String>
- -WebApplicationFirewallConfigurationRuleSetVersion <String>
+ -AutoscaleConfigurationMinCapacity <Int32> -WafConfigurationEnabled
+ -WafConfigurationFirewallMode <ApplicationGatewayFirewallMode> -WafConfigurationRuleSetType <String>
+ -WafConfigurationRuleSetVersion <String>
  [-AuthenticationCertificate <IApplicationGatewayAuthenticationCertificate[]>]
  [-AutoscaleConfigurationMaxCapacity <Int32>] [-BackendAddressPool <IApplicationGatewayBackendAddressPool[]>]
  [-BackendHttpSettingsCollection <IApplicationGatewayBackendHttpSettings[]>]
- [-CustomErrorConfiguration <IApplicationGatewayCustomError[]>] [-EnableFIP] [-EnableHttp2] [-Etag <String>]
+ [-CustomErrorConfiguration <IApplicationGatewayCustomError[]>] [-EnableFIPs] [-EnableHttp2] [-Etag <String>]
  [-FirewallPolicyId <String>] [-FrontendIPConfiguration <IApplicationGatewayFrontendIPConfiguration[]>]
  [-FrontendPort <IApplicationGatewayFrontendPort[]>]
  [-GatewayIPConfiguration <IApplicationGatewayIPConfiguration[]>]
  [-HttpListener <IApplicationGatewayHttpListener[]>] [-Id <String>] [-IdentityType <ResourceIdentityType>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-Location <String>] [-Probe <IApplicationGatewayProbe[]>]
- [-ProvisioningState <String>] [-RedirectConfiguration <IApplicationGatewayRedirectConfiguration[]>]
+ [-Location <String>] [-Probe <IApplicationGatewayProbe[]>] [-ProvisioningState <String>]
+ [-RedirectConfiguration <IApplicationGatewayRedirectConfiguration[]>]
  [-RequestRoutingRule <IApplicationGatewayRequestRoutingRule[]>] [-ResourceGuid <String>]
  [-RewriteRuleSet <IApplicationGatewayRewriteRuleSet[]>] [-SkuCapacity <Int32>]
  [-SkuName <ApplicationGatewaySkuName>] [-SkuTier <ApplicationGatewayTier>]
@@ -45,33 +44,29 @@ New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Subscriptio
  [-SslPolicyMinProtocolVersion <ApplicationGatewaySslProtocol>]
  [-SslPolicyName <ApplicationGatewaySslPolicyName>] [-SslPolicyType <ApplicationGatewaySslPolicyType>]
  [-Tag <Hashtable>] [-TrustedRootCertificate <IApplicationGatewayTrustedRootCertificate[]>]
- [-UrlPathMap <IApplicationGatewayUrlPathMap[]>]
- [-WebApplicationFirewallConfigurationDisabledRuleGroup <IApplicationGatewayFirewallDisabledRuleGroup[]>]
- [-WebApplicationFirewallConfigurationExclusion <IApplicationGatewayFirewallExclusion[]>]
- [-WebApplicationFirewallConfigurationFileUploadLimitInMb <Int32>]
- [-WebApplicationFirewallConfigurationMaxRequestBodySize <Int32>]
- [-WebApplicationFirewallConfigurationMaxRequestBodySizeInKb <Int32>]
- [-WebApplicationFirewallConfigurationRequestBodyCheck] [-Zone <String[]>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-UrlPathMap <IApplicationGatewayUrlPathMap[]>] [-UserAssignedIdentity <Hashtable>]
+ [-WafConfigurationDisabledRuleGroup <IApplicationGatewayFirewallDisabledRuleGroup[]>]
+ [-WafConfigurationExclusion <IApplicationGatewayFirewallExclusion[]>]
+ [-WafConfigurationFileUploadLimitInMb <Int32>] [-WafConfigurationMaxRequestBodySize <Int32>]
+ [-WafConfigurationMaxRequestBodySizeInKb <Int32>] [-WafConfigurationRequestBodyCheck] [-Zone <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzApplicationGateway -InputObject <INetworkIdentity> -AutoscaleConfigurationMinCapacity <Int32>
- -WebApplicationFirewallConfigurationEnabled
- -WebApplicationFirewallConfigurationFirewallMode <ApplicationGatewayFirewallMode>
- -WebApplicationFirewallConfigurationRuleSetType <String>
- -WebApplicationFirewallConfigurationRuleSetVersion <String>
+ -WafConfigurationEnabled -WafConfigurationFirewallMode <ApplicationGatewayFirewallMode>
+ -WafConfigurationRuleSetType <String> -WafConfigurationRuleSetVersion <String>
  [-AuthenticationCertificate <IApplicationGatewayAuthenticationCertificate[]>]
  [-AutoscaleConfigurationMaxCapacity <Int32>] [-BackendAddressPool <IApplicationGatewayBackendAddressPool[]>]
  [-BackendHttpSettingsCollection <IApplicationGatewayBackendHttpSettings[]>]
- [-CustomErrorConfiguration <IApplicationGatewayCustomError[]>] [-EnableFIP] [-EnableHttp2] [-Etag <String>]
+ [-CustomErrorConfiguration <IApplicationGatewayCustomError[]>] [-EnableFIPs] [-EnableHttp2] [-Etag <String>]
  [-FirewallPolicyId <String>] [-FrontendIPConfiguration <IApplicationGatewayFrontendIPConfiguration[]>]
  [-FrontendPort <IApplicationGatewayFrontendPort[]>]
  [-GatewayIPConfiguration <IApplicationGatewayIPConfiguration[]>]
  [-HttpListener <IApplicationGatewayHttpListener[]>] [-Id <String>] [-IdentityType <ResourceIdentityType>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-Location <String>] [-Probe <IApplicationGatewayProbe[]>]
- [-ProvisioningState <String>] [-RedirectConfiguration <IApplicationGatewayRedirectConfiguration[]>]
+ [-Location <String>] [-Probe <IApplicationGatewayProbe[]>] [-ProvisioningState <String>]
+ [-RedirectConfiguration <IApplicationGatewayRedirectConfiguration[]>]
  [-RequestRoutingRule <IApplicationGatewayRequestRoutingRule[]>] [-ResourceGuid <String>]
  [-RewriteRuleSet <IApplicationGatewayRewriteRuleSet[]>] [-SkuCapacity <Int32>]
  [-SkuName <ApplicationGatewaySkuName>] [-SkuTier <ApplicationGatewayTier>]
@@ -81,14 +76,12 @@ New-AzApplicationGateway -InputObject <INetworkIdentity> -AutoscaleConfiguration
  [-SslPolicyMinProtocolVersion <ApplicationGatewaySslProtocol>]
  [-SslPolicyName <ApplicationGatewaySslPolicyName>] [-SslPolicyType <ApplicationGatewaySslPolicyType>]
  [-Tag <Hashtable>] [-TrustedRootCertificate <IApplicationGatewayTrustedRootCertificate[]>]
- [-UrlPathMap <IApplicationGatewayUrlPathMap[]>]
- [-WebApplicationFirewallConfigurationDisabledRuleGroup <IApplicationGatewayFirewallDisabledRuleGroup[]>]
- [-WebApplicationFirewallConfigurationExclusion <IApplicationGatewayFirewallExclusion[]>]
- [-WebApplicationFirewallConfigurationFileUploadLimitInMb <Int32>]
- [-WebApplicationFirewallConfigurationMaxRequestBodySize <Int32>]
- [-WebApplicationFirewallConfigurationMaxRequestBodySizeInKb <Int32>]
- [-WebApplicationFirewallConfigurationRequestBodyCheck] [-Zone <String[]>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-UrlPathMap <IApplicationGatewayUrlPathMap[]>] [-UserAssignedIdentity <Hashtable>]
+ [-WafConfigurationDisabledRuleGroup <IApplicationGatewayFirewallDisabledRuleGroup[]>]
+ [-WafConfigurationExclusion <IApplicationGatewayFirewallExclusion[]>]
+ [-WafConfigurationFileUploadLimitInMb <Int32>] [-WafConfigurationMaxRequestBodySize <Int32>]
+ [-WafConfigurationMaxRequestBodySizeInKb <Int32>] [-WafConfigurationRequestBodyCheck] [-Zone <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -146,7 +139,7 @@ To construct, see NOTES section for AUTHENTICATIONCERTIFICATE properties and cre
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IApplicationGatewayAuthenticationCertificate[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Aliases: AuthenticationCertificates
 
 Required: False
 Position: Named
@@ -196,7 +189,7 @@ To construct, see NOTES section for BACKENDADDRESSPOOL properties and create a h
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IApplicationGatewayBackendAddressPool[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Aliases: BackendAddressPools
 
 Required: False
 Position: Named
@@ -257,7 +250,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -EnableFIP
+### -EnableFIPs
 Whether FIPS is enabled on the application gateway resource.
 
 ```yaml
@@ -329,7 +322,7 @@ To construct, see NOTES section for FRONTENDIPCONFIGURATION properties and creat
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IApplicationGatewayFrontendIPConfiguration[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Aliases: FrontendIPConfigurations
 
 Required: False
 Position: Named
@@ -347,7 +340,7 @@ To construct, see NOTES section for FRONTENDPORT properties and create a hash ta
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IApplicationGatewayFrontendPort[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Aliases: FrontendPorts
 
 Required: False
 Position: Named
@@ -365,7 +358,7 @@ To construct, see NOTES section for GATEWAYIPCONFIGURATION properties and create
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IApplicationGatewayIPConfiguration[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Aliases: GatewayIPConfigurations
 
 Required: False
 Position: Named
@@ -383,7 +376,7 @@ To construct, see NOTES section for HTTPLISTENER properties and create a hash ta
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IApplicationGatewayHttpListener[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Aliases: HttpListeners
 
 Required: False
 Position: Named
@@ -416,23 +409,6 @@ The type 'None' will remove any identities from the virtual machine.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.ResourceIdentityType
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -IdentityUserAssignedIdentity
-The list of user identities associated with resource.
-The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-
-```yaml
-Type: System.Collections.Hashtable
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -532,7 +508,7 @@ To construct, see NOTES section for PROBE properties and create a hash table.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IApplicationGatewayProbe[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Aliases: Probes
 
 Required: False
 Position: Named
@@ -567,7 +543,7 @@ To construct, see NOTES section for REDIRECTCONFIGURATION properties and create 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IApplicationGatewayRedirectConfiguration[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Aliases: RedirectConfigurations
 
 Required: False
 Position: Named
@@ -584,7 +560,7 @@ To construct, see NOTES section for REQUESTROUTINGRULE properties and create a h
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IApplicationGatewayRequestRoutingRule[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Aliases: RequestRoutingRules
 
 Required: False
 Position: Named
@@ -600,7 +576,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: Create, CreateExpanded
-Aliases:
+Aliases: Sku, SslPolicy, WebApplicationFirewallConfiguration, FirewallPolicy, AutoscaleConfiguration, UserAssignedIdentityId, Identity
 
 Required: True
 Position: Named
@@ -699,7 +675,7 @@ To construct, see NOTES section for SSLCERTIFICATE properties and create a hash 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IApplicationGatewaySslCertificate[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Aliases: SslCertificates
 
 Required: False
 Position: Named
@@ -848,6 +824,23 @@ To construct, see NOTES section for URLPATHMAP properties and create a hash tabl
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IApplicationGatewayUrlPathMap[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases: UrlPathMaps
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -UserAssignedIdentity
+The list of user identities associated with resource.
+The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -858,9 +851,9 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -WebApplicationFirewallConfigurationDisabledRuleGroup
+### -WafConfigurationDisabledRuleGroup
 The disabled rule groups.
-To construct, see NOTES section for WEBAPPLICATIONFIREWALLCONFIGURATIONDISABLEDRULEGROUP properties and create a hash table.
+To construct, see NOTES section for WAFCONFIGURATIONDISABLEDRULEGROUP properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IApplicationGatewayFirewallDisabledRuleGroup[]
@@ -875,7 +868,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -WebApplicationFirewallConfigurationEnabled
+### -WafConfigurationEnabled
 Whether the web application firewall is enabled or not.
 
 ```yaml
@@ -891,9 +884,9 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -WebApplicationFirewallConfigurationExclusion
+### -WafConfigurationExclusion
 The exclusion list.
-To construct, see NOTES section for WEBAPPLICATIONFIREWALLCONFIGURATIONEXCLUSION properties and create a hash table.
+To construct, see NOTES section for WAFCONFIGURATIONEXCLUSION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IApplicationGatewayFirewallExclusion[]
@@ -908,7 +901,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -WebApplicationFirewallConfigurationFileUploadLimitInMb
+### -WafConfigurationFileUploadLimitInMb
 Maximum file upload size in Mb for WAF.
 
 ```yaml
@@ -924,7 +917,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -WebApplicationFirewallConfigurationFirewallMode
+### -WafConfigurationFirewallMode
 Web application firewall mode.
 
 ```yaml
@@ -940,7 +933,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -WebApplicationFirewallConfigurationMaxRequestBodySize
+### -WafConfigurationMaxRequestBodySize
 Maximum request body size for WAF.
 
 ```yaml
@@ -956,7 +949,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -WebApplicationFirewallConfigurationMaxRequestBodySizeInKb
+### -WafConfigurationMaxRequestBodySizeInKb
 Maximum request body size in Kb for WAF.
 
 ```yaml
@@ -972,7 +965,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -WebApplicationFirewallConfigurationRequestBodyCheck
+### -WafConfigurationRequestBodyCheck
 Whether allow WAF to check request Body.
 
 ```yaml
@@ -988,7 +981,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -WebApplicationFirewallConfigurationRuleSetType
+### -WafConfigurationRuleSetType
 The type of the web application firewall rule set.
 Possible values are: 'OWASP'.
 
@@ -1005,7 +998,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -WebApplicationFirewallConfigurationRuleSetVersion
+### -WafConfigurationRuleSetVersion
 The version of the rule set type.
 
 ```yaml
@@ -1495,7 +1488,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[CustomErrorConfiguration <IApplicationGatewayCustomError[]>]`: Custom error configurations of the application gateway resource.
     - `[CustomErrorPageUrl <String>]`: Error page URL of the application gateway customer error.
     - `[StatusCode <ApplicationGatewayCustomErrorStatusCode?>]`: Status code of the application gateway customer error.
-  - `[EnableFip <Boolean?>]`: Whether FIPS is enabled on the application gateway resource.
+  - `[EnableFips <Boolean?>]`: Whether FIPS is enabled on the application gateway resource.
   - `[EnableHttp2 <Boolean?>]`: Whether HTTP2 is enabled on the application gateway resource.
   - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
   - `[FirewallPolicyId <String>]`: Resource ID.
@@ -1742,11 +1735,11 @@ To create the parameters described below, construct a hash table containing the 
   - `[ProvisioningState <String>]`: Provisioning state of the backend http settings resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
   - `[Type <String>]`: Type of the resource.
 
-#### WEBAPPLICATIONFIREWALLCONFIGURATIONDISABLEDRULEGROUP <IApplicationGatewayFirewallDisabledRuleGroup[]>: The disabled rule groups.
+#### WAFCONFIGURATIONDISABLEDRULEGROUP <IApplicationGatewayFirewallDisabledRuleGroup[]>: The disabled rule groups.
   - `RuleGroupName <String>`: The name of the rule group that will be disabled.
   - `[Rule <Int32[]>]`: The list of rules that will be disabled. If null, all rules of the rule group will be disabled.
 
-#### WEBAPPLICATIONFIREWALLCONFIGURATIONEXCLUSION <IApplicationGatewayFirewallExclusion[]>: The exclusion list.
+#### WAFCONFIGURATIONEXCLUSION <IApplicationGatewayFirewallExclusion[]>: The exclusion list.
   - `MatchVariable <String>`: The variable to be excluded.
   - `Selector <String>`: When matchVariable is a collection, operator used to specify which elements in the collection this exclusion applies to.
   - `SelectorMatchOperator <String>`: When matchVariable is a collection, operate on the selector to specify which elements in the collection this exclusion applies to.

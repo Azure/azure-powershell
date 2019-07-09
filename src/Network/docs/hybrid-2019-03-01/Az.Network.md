@@ -15,7 +15,7 @@ Microsoft Azure PowerShell: Network cmdlets
 Get the specified default network security rule.
 
 ### [Get-AzExpressRouteCircuitRouteTable](Get-AzExpressRouteCircuitRouteTable.md)
-Gets the currently advertised routes table associated with the express route circuit in a resource group.
+The ListRoutesTable from ExpressRouteCircuit operation retrieves the currently advertised routes table associated with the ExpressRouteCircuits in a resource group.
 
 ### [Get-AzLoadBalancer](Get-AzLoadBalancer.md)
 Gets the specified load balancer.

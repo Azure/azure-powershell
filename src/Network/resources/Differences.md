@@ -1,25 +1,5 @@
 ## Incorrect Cmdlets
 
-- New-AzApplicationGateway
-    - Sku
-    - SslPolicy
-    - GatewayIPConfigurations
-    - SslCertificates
-    - AuthenticationCertificates
-    - FrontendIPConfigurations
-    - FrontendPorts
-    - Probes
-    - BackendAddressPools
-    - HttpListeners
-    - UrlPathMaps
-    - RequestRoutingRules
-    - RedirectConfigurations
-    - WebApplicationFirewallConfiguration
-    - FirewallPolicy
-    - AutoscaleConfiguration
-    - EnableFIPS
-    - UserAssignedIdentityId
-    - Identity
 - New-AzExpressRouteCircuit
     - ServiceProviderName
     - PeeringLocation
@@ -218,6 +198,7 @@
 - Get-AzVpnConnection
 - Get-AzVpnGateway
 - Get-AzVpnSite
+- New-AzApplicationGateway
 - New-AzApplicationSecurityGroup
 - New-AzDdosProtectionPlan
 - New-AzExpressRouteCircuitAuthorization

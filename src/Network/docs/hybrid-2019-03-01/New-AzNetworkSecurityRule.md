@@ -79,7 +79,6 @@ PS C:\> {{ Add code here }}
 
 ### -Access
 The network traffic is allowed or denied.
-Possible values are: 'Allow' and 'Deny'.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.SecurityRuleAccess
@@ -199,7 +198,6 @@ Dynamic: False
 ### -Direction
 The direction of the rule.
 The direction specifies if rule will be evaluated on incoming or outgoing traffic.
-Possible values are: 'Inbound' and 'Outbound'.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.SecurityRuleDirection
@@ -396,7 +394,7 @@ Dynamic: False
 
 ### -Protocol
 Network protocol this rule applies to.
-Possible values are 'Tcp', 'Udp', and '*'.
+Possible values are 'Tcp', 'Udp', 'Icmp', 'Esp', and '*'.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.SecurityRuleProtocol
@@ -587,11 +585,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ISecurityRule
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ISecurityRule
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ISecurityRule
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ISecurityRule
 
 ## ALIASES
 

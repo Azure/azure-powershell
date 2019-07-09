@@ -163,8 +163,7 @@ Dynamic: False
 ```
 
 ### -ConnectionStatus
-Virtual network Gateway connection status.
-Possible values are 'Unknown', 'Connecting', 'Connected' and 'NotConnected'.
+Virtual Network Gateway connection status.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.VirtualNetworkGatewayConnectionStatus
@@ -181,7 +180,6 @@ Dynamic: False
 
 ### -ConnectionType
 Gateway connection type.
-Possible values are: 'IPsec','Vnet2Vnet','ExpressRoute', and 'VPNClient.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.VirtualNetworkGatewayConnectionType
@@ -673,11 +671,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVirtualNetworkGatewayConnection
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVirtualNetworkGatewayConnection
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVirtualNetworkGatewayConnection
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVirtualNetworkGatewayConnection
 
 ## ALIASES
 
