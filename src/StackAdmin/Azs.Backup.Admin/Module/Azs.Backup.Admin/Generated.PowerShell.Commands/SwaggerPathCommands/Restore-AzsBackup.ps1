@@ -64,7 +64,7 @@ function Restore-AzsBackup {
         [Parameter(Mandatory = $false, ParameterSetName = 'Backups_Restore')]
         [Parameter(Mandatory = $false, ParameterSetName = 'ResourceId')]
         [System.String]
-        $RoleName = "-",
+        $RoleName = "",
 
         [Parameter(Mandatory = $true, ParameterSetName = 'Backups_Restore')]
         [Parameter(Mandatory = $true, ParameterSetName = 'ResourceId')]
