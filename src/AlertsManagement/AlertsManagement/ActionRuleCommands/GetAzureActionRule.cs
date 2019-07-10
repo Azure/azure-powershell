@@ -96,9 +96,6 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                    ParameterSetName = ListActionRulesParameterSet,
                    HelpMessage = "Filter on Resource type of the target resource of alert.")]
         [Parameter(Mandatory = false,
-                   ParameterSetName = ListActionRulesByTargetResourceIdParameterSet,
-                   HelpMessage = "Filter on Resource type of the target resource of alert.")]
-        [Parameter(Mandatory = false,
                    ParameterSetName = ListActionRulesByTargetResourceGroupParameterSet,
                    HelpMessage = "Filter on Resource type of the target resource of alert.")]
         [ResourceTypeCompleter]
