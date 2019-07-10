@@ -1,0 +1,749 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.AzureStack.Management.KeyVault.Admin</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.AzureStack.Management.KeyVault.Admin.IKeyVaultAdminClient">
+            <summary>
+            KeyVault Admin Client
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.KeyVault.Admin.IKeyVaultAdminClient.BaseUri">
+            <summary>
+            The base URI of the service.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.KeyVault.Admin.IKeyVaultAdminClient.SerializationSettings">
+            <summary>
+            Gets or sets json serialization settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.KeyVault.Admin.IKeyVaultAdminClient.DeserializationSettings">
+            <summary>
+            Gets or sets json deserialization settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.KeyVault.Admin.IKeyVaultAdminClient.Credentials">
+            <summary>
+            Credentials needed for the client to connect to Azure.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.KeyVault.Admin.IKeyVaultAdminClient.SubscriptionId">
+            <summary>
+            Subscription credentials which uniquely identify Microsoft Azure
+            subscription.The subscription ID forms part of the URI for every
+            service call.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.KeyVault.Admin.IKeyVaultAdminClient.ApiVersion">
+            <summary>
+            Client Api Version.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.KeyVault.Admin.IKeyVaultAdminClient.AcceptLanguage">
+            <summary>
+            Gets or sets the preferred language for the response.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.KeyVault.Admin.IKeyVaultAdminClient.LongRunningOperationRetryTimeout">
+            <summary>
+            Gets or sets the retry timeout in seconds for Long Running
+            Operations. Default value is 30.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.KeyVault.Admin.IKeyVaultAdminClient.GenerateClientRequestId">
+            <summary>
+            When set to true a unique x-ms-client-request-id value is generated
+            and included in each request. Default is true.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.KeyVault.Admin.IKeyVaultAdminClient.Operations">
+            <summary>
+            Gets the IOperations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.KeyVault.Admin.IKeyVaultAdminClient.Quotas">
+            <summary>
+            Gets the IQuotasOperations.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.KeyVault.Admin.IOperations">
+            <summary>
+            Operations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.KeyVault.Admin.IOperations.ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get the list of support rest operations.
+            </summary>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.KeyVault.Admin.IOperations.ListNextWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get the list of support rest operations.
+            </summary>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.KeyVault.Admin.IQuotasOperations">
+            <summary>
+            QuotasOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.KeyVault.Admin.IQuotasOperations.ListWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get a list of all quota objects for KeyVault at a location.
+            </summary>
+            <param name='location'>
+            The location of the quota.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.KeyVault.Admin.KeyVaultAdminClient">
+            <summary>
+            KeyVault Admin Client
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.KeyVault.Admin.KeyVaultAdminClient.BaseUri">
+            <summary>
+            The base URI of the service.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.KeyVault.Admin.KeyVaultAdminClient.SerializationSettings">
+            <summary>
+            Gets or sets json serialization settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.KeyVault.Admin.KeyVaultAdminClient.DeserializationSettings">
+            <summary>
+            Gets or sets json deserialization settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.KeyVault.Admin.KeyVaultAdminClient.Credentials">
+            <summary>
+            Credentials needed for the client to connect to Azure.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.KeyVault.Admin.KeyVaultAdminClient.SubscriptionId">
+            <summary>
+            Subscription credentials which uniquely identify Microsoft Azure
+            subscription.The subscription ID forms part of the URI for every service
+            call.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.KeyVault.Admin.KeyVaultAdminClient.ApiVersion">
+            <summary>
+            Client Api Version.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.KeyVault.Admin.KeyVaultAdminClient.AcceptLanguage">
+            <summary>
+            Gets or sets the preferred language for the response.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.KeyVault.Admin.KeyVaultAdminClient.LongRunningOperationRetryTimeout">
+            <summary>
+            Gets or sets the retry timeout in seconds for Long Running Operations.
+            Default value is 30.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.KeyVault.Admin.KeyVaultAdminClient.GenerateClientRequestId">
+            <summary>
+            When set to true a unique x-ms-client-request-id value is generated and
+            included in each request. Default is true.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.KeyVault.Admin.KeyVaultAdminClient.Operations">
+            <summary>
+            Gets the IOperations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.KeyVault.Admin.KeyVaultAdminClient.Quotas">
+            <summary>
+            Gets the IQuotasOperations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.KeyVault.Admin.KeyVaultAdminClient.#ctor(System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the KeyVaultAdminClient class.
+            </summary>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.KeyVault.Admin.KeyVaultAdminClient.#ctor(System.Net.Http.HttpClientHandler,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the KeyVaultAdminClient class.
+            </summary>
+            <param name='rootHandler'>
+            Optional. The http client handler used to handle http transport.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.KeyVault.Admin.KeyVaultAdminClient.#ctor(System.Uri,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the KeyVaultAdminClient class.
+            </summary>
+            <param name='baseUri'>
+            Optional. The base URI of the service.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.KeyVault.Admin.KeyVaultAdminClient.#ctor(System.Uri,System.Net.Http.HttpClientHandler,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the KeyVaultAdminClient class.
+            </summary>
+            <param name='baseUri'>
+            Optional. The base URI of the service.
+            </param>
+            <param name='rootHandler'>
+            Optional. The http client handler used to handle http transport.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.KeyVault.Admin.KeyVaultAdminClient.#ctor(Microsoft.Rest.ServiceClientCredentials,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the KeyVaultAdminClient class.
+            </summary>
+            <param name='credentials'>
+            Required. Credentials needed for the client to connect to Azure.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.KeyVault.Admin.KeyVaultAdminClient.#ctor(Microsoft.Rest.ServiceClientCredentials,System.Net.Http.HttpClientHandler,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the KeyVaultAdminClient class.
+            </summary>
+            <param name='credentials'>
+            Required. Credentials needed for the client to connect to Azure.
+            </param>
+            <param name='rootHandler'>
+            Optional. The http client handler used to handle http transport.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.KeyVault.Admin.KeyVaultAdminClient.#ctor(System.Uri,Microsoft.Rest.ServiceClientCredentials,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the KeyVaultAdminClient class.
+            </summary>
+            <param name='baseUri'>
+            Optional. The base URI of the service.
+            </param>
+            <param name='credentials'>
+            Required. Credentials needed for the client to connect to Azure.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.KeyVault.Admin.KeyVaultAdminClient.#ctor(System.Uri,Microsoft.Rest.ServiceClientCredentials,System.Net.Http.HttpClientHandler,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the KeyVaultAdminClient class.
+            </summary>
+            <param name='baseUri'>
+            Optional. The base URI of the service.
+            </param>
+            <param name='credentials'>
+            Required. Credentials needed for the client to connect to Azure.
+            </param>
+            <param name='rootHandler'>
+            Optional. The http client handler used to handle http transport.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.KeyVault.Admin.KeyVaultAdminClient.Initialize">
+            <summary>
+            Initializes client properties.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.KeyVault.Admin.Models.Display">
+            <summary>
+            Contains the localized display information for this particular
+            operation / action.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.KeyVault.Admin.Models.Display.#ctor">
+            <summary>
+            Initializes a new instance of the Display class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.KeyVault.Admin.Models.Display.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the Display class.
+            </summary>
+            <param name="provider">The localized friendly form of the resource
+            provider name; it is expected to also include the publisher/company
+            responsible. It should use Title Casing and begin with "Microsoft"
+            for 1st party services. e.g. "Microsoft Monitoring Insights" or
+            "Microsoft Compute."</param>
+            <param name="resource">The localized friendly form of the resource
+            type related to this action/operation; it should match the public
+            documentation for the resource provider.</param>
+            <param name="operation">The localized friendly name for the
+            operation, as it should be shown to the user.</param>
+            <param name="description">The localized friendly description for
+            the operation, as it should be shown to the user. It should be
+            thorough, yet concise � it will be used in tool tips and detailed
+            views.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.KeyVault.Admin.Models.Display.Provider">
+            <summary>
+            Gets or sets the localized friendly form of the resource provider
+            name; it is expected to also include the publisher/company
+            responsible. It should use Title Casing and begin with "Microsoft"
+            for 1st party services. e.g. "Microsoft Monitoring Insights" or
+            "Microsoft Compute."
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.KeyVault.Admin.Models.Display.Resource">
+            <summary>
+            Gets or sets the localized friendly form of the resource type
+            related to this action/operation; it should match the public
+            documentation for the resource provider.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.KeyVault.Admin.Models.Display.Operation">
+            <summary>
+            Gets or sets the localized friendly name for the operation, as it
+            should be shown to the user.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.KeyVault.Admin.Models.Display.Description">
+            <summary>
+            Gets or sets the localized friendly description for the operation,
+            as it should be shown to the user. It should be thorough, yet
+            concise � it will be used in tool tips and detailed views.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.KeyVault.Admin.Models.Operation">
+            <summary>
+            Describes the supported rest operation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.KeyVault.Admin.Models.Operation.#ctor">
+            <summary>
+            Initializes a new instance of the Operation class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.KeyVault.Admin.Models.Operation.#ctor(System.String,Microsoft.AzureStack.Management.KeyVault.Admin.Models.Display)">
+            <summary>
+            Initializes a new instance of the Operation class.
+            </summary>
+            <param name="name">The name of the operation being performed on
+            this particular object. It should match the action name that
+            appears in RBAC / the event service.</param>
+            <param name="display">Contains the localized display information
+            for this particular operation / action.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.KeyVault.Admin.Models.Operation.Name">
+            <summary>
+            Gets or sets the name of the operation being performed on this
+            particular object. It should match the action name that appears in
+            RBAC / the event service.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.KeyVault.Admin.Models.Operation.Display">
+            <summary>
+            Gets or sets contains the localized display information for this
+            particular operation / action.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.KeyVault.Admin.Models.Page`1">
+            <summary>
+            Defines a page in Azure responses.
+            </summary>
+            <typeparam name="T">Type of the page content items</typeparam>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.KeyVault.Admin.Models.Page`1.NextPageLink">
+            <summary>
+            Gets the link to the next page.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.KeyVault.Admin.Models.Page`1.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>A an enumerator that can be used to iterate through the collection.</returns>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.KeyVault.Admin.Models.Page`1.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>A an enumerator that can be used to iterate through the collection.</returns>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.KeyVault.Admin.Models.Page1`1">
+            <summary>
+            Defines a page in Azure responses.
+            </summary>
+            <typeparam name="T">Type of the page content items</typeparam>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.KeyVault.Admin.Models.Page1`1.NextPageLink">
+            <summary>
+            Gets the link to the next page.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.KeyVault.Admin.Models.Page1`1.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>A an enumerator that can be used to iterate through the collection.</returns>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.KeyVault.Admin.Models.Page1`1.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>A an enumerator that can be used to iterate through the collection.</returns>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.KeyVault.Admin.Models.Quota">
+            <summary>
+            KeyVault Quota.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.KeyVault.Admin.Models.Quota.#ctor">
+            <summary>
+            Initializes a new instance of the Quota class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.KeyVault.Admin.Models.Quota.#ctor(System.String,System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Object)">
+            <summary>
+            Initializes a new instance of the Quota class.
+            </summary>
+            <param name="id">URI of the resource.</param>
+            <param name="name">Name of the resource.</param>
+            <param name="type">Type of resource.</param>
+            <param name="location">Location where resource is location.</param>
+            <param name="tags">List of key value pairs.</param>
+            <param name="properties">Properties for keyvault quotas.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.KeyVault.Admin.Models.Quota.Properties">
+            <summary>
+            Gets or sets properties for keyvault quotas.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.KeyVault.Admin.Models.Resource">
+            <summary>
+            Base Resource Object
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.KeyVault.Admin.Models.Resource.#ctor">
+            <summary>
+            Initializes a new instance of the Resource class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.KeyVault.Admin.Models.Resource.#ctor(System.String,System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Initializes a new instance of the Resource class.
+            </summary>
+            <param name="id">URI of the resource.</param>
+            <param name="name">Name of the resource.</param>
+            <param name="type">Type of resource.</param>
+            <param name="location">Location where resource is location.</param>
+            <param name="tags">List of key value pairs.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.KeyVault.Admin.Models.Resource.Id">
+            <summary>
+            Gets URI of the resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.KeyVault.Admin.Models.Resource.Name">
+            <summary>
+            Gets name of the resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.KeyVault.Admin.Models.Resource.Type">
+            <summary>
+            Gets type of resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.KeyVault.Admin.Models.Resource.Location">
+            <summary>
+            Gets location where resource is location.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.KeyVault.Admin.Models.Resource.Tags">
+            <summary>
+            Gets list of key value pairs.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.KeyVault.Admin.Operations">
+            <summary>
+            Operations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.KeyVault.Admin.Operations.#ctor(Microsoft.AzureStack.Management.KeyVault.Admin.KeyVaultAdminClient)">
+            <summary>
+            Initializes a new instance of the Operations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.KeyVault.Admin.Operations.Client">
+            <summary>
+            Gets a reference to the KeyVaultAdminClient
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.KeyVault.Admin.Operations.ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get the list of support rest operations.
+            </summary>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.KeyVault.Admin.Operations.ListNextWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get the list of support rest operations.
+            </summary>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.KeyVault.Admin.OperationsExtensions">
+            <summary>
+            Extension methods for Operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.KeyVault.Admin.OperationsExtensions.List(Microsoft.AzureStack.Management.KeyVault.Admin.IOperations)">
+            <summary>
+            Get the list of support rest operations.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.KeyVault.Admin.OperationsExtensions.ListAsync(Microsoft.AzureStack.Management.KeyVault.Admin.IOperations,System.Threading.CancellationToken)">
+            <summary>
+            Get the list of support rest operations.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.KeyVault.Admin.OperationsExtensions.ListNext(Microsoft.AzureStack.Management.KeyVault.Admin.IOperations,System.String)">
+            <summary>
+            Get the list of support rest operations.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.KeyVault.Admin.OperationsExtensions.ListNextAsync(Microsoft.AzureStack.Management.KeyVault.Admin.IOperations,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Get the list of support rest operations.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.KeyVault.Admin.QuotasOperations">
+            <summary>
+            QuotasOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.KeyVault.Admin.QuotasOperations.#ctor(Microsoft.AzureStack.Management.KeyVault.Admin.KeyVaultAdminClient)">
+            <summary>
+            Initializes a new instance of the QuotasOperations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.KeyVault.Admin.QuotasOperations.Client">
+            <summary>
+            Gets a reference to the KeyVaultAdminClient
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.KeyVault.Admin.QuotasOperations.ListWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get a list of all quota objects for KeyVault at a location.
+            </summary>
+            <param name='location'>
+            The location of the quota.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.KeyVault.Admin.QuotasOperationsExtensions">
+            <summary>
+            Extension methods for QuotasOperations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.KeyVault.Admin.QuotasOperationsExtensions.List(Microsoft.AzureStack.Management.KeyVault.Admin.IQuotasOperations,System.String)">
+            <summary>
+            Get a list of all quota objects for KeyVault at a location.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='location'>
+            The location of the quota.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.KeyVault.Admin.QuotasOperationsExtensions.ListAsync(Microsoft.AzureStack.Management.KeyVault.Admin.IQuotasOperations,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Get a list of all quota objects for KeyVault at a location.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='location'>
+            The location of the quota.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+    </members>
+</doc>

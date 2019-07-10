@@ -1,0 +1,2360 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.AzureStack.Management.AzureBridge.Admin</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.AzureStack.Management.AzureBridge.Admin.ActivationsOperations">
+            <summary>
+            ActivationsOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.ActivationsOperations.#ctor(Microsoft.AzureStack.Management.AzureBridge.Admin.AzureBridgeAdminClient)">
+            <summary>
+            Initializes a new instance of the ActivationsOperations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.ActivationsOperations.Client">
+            <summary>
+            Gets a reference to the AzureBridgeAdminClient
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.ActivationsOperations.ListWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns the list of activations.
+            </summary>
+            <param name='resourceGroup'>
+            The resource group the resource is located under.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.ActivationsOperations.GetWithHttpMessagesAsync(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns activation name.
+            </summary>
+            <param name='resourceGroup'>
+            The resource group the resource is located under.
+            </param>
+            <param name='activationName'>
+            Name of the activation.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.ActivationsOperations.CreateOrUpdateWithHttpMessagesAsync(System.String,System.String,Microsoft.AzureStack.Management.AzureBridge.Admin.Models.Activation,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Create a new activation.
+            </summary>
+            <param name='resourceGroup'>
+            The resource group the resource is located under.
+            </param>
+            <param name='activationName'>
+            Name of the activation.
+            </param>
+            <param name='activation'>
+            new activation.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.ActivationsOperations.DeleteWithHttpMessagesAsync(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Delete an activation.
+            </summary>
+            <param name='resourceGroup'>
+            The resource group the resource is located under.
+            </param>
+            <param name='activationName'>
+            Name of the activation.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.ActivationsOperations.ListNextWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns the list of activations.
+            </summary>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.AzureBridge.Admin.ActivationsOperationsExtensions">
+            <summary>
+            Extension methods for ActivationsOperations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.ActivationsOperationsExtensions.List(Microsoft.AzureStack.Management.AzureBridge.Admin.IActivationsOperations,System.String)">
+            <summary>
+            Returns the list of activations.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroup'>
+            The resource group the resource is located under.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.ActivationsOperationsExtensions.ListAsync(Microsoft.AzureStack.Management.AzureBridge.Admin.IActivationsOperations,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Returns the list of activations.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroup'>
+            The resource group the resource is located under.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.ActivationsOperationsExtensions.Get(Microsoft.AzureStack.Management.AzureBridge.Admin.IActivationsOperations,System.String,System.String)">
+            <summary>
+            Returns activation name.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroup'>
+            The resource group the resource is located under.
+            </param>
+            <param name='activationName'>
+            Name of the activation.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.ActivationsOperationsExtensions.GetAsync(Microsoft.AzureStack.Management.AzureBridge.Admin.IActivationsOperations,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Returns activation name.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroup'>
+            The resource group the resource is located under.
+            </param>
+            <param name='activationName'>
+            Name of the activation.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.ActivationsOperationsExtensions.CreateOrUpdate(Microsoft.AzureStack.Management.AzureBridge.Admin.IActivationsOperations,System.String,System.String,Microsoft.AzureStack.Management.AzureBridge.Admin.Models.Activation)">
+            <summary>
+            Create a new activation.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroup'>
+            The resource group the resource is located under.
+            </param>
+            <param name='activationName'>
+            Name of the activation.
+            </param>
+            <param name='activation'>
+            new activation.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.ActivationsOperationsExtensions.CreateOrUpdateAsync(Microsoft.AzureStack.Management.AzureBridge.Admin.IActivationsOperations,System.String,System.String,Microsoft.AzureStack.Management.AzureBridge.Admin.Models.Activation,System.Threading.CancellationToken)">
+            <summary>
+            Create a new activation.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroup'>
+            The resource group the resource is located under.
+            </param>
+            <param name='activationName'>
+            Name of the activation.
+            </param>
+            <param name='activation'>
+            new activation.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.ActivationsOperationsExtensions.Delete(Microsoft.AzureStack.Management.AzureBridge.Admin.IActivationsOperations,System.String,System.String)">
+            <summary>
+            Delete an activation.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroup'>
+            The resource group the resource is located under.
+            </param>
+            <param name='activationName'>
+            Name of the activation.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.ActivationsOperationsExtensions.DeleteAsync(Microsoft.AzureStack.Management.AzureBridge.Admin.IActivationsOperations,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Delete an activation.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroup'>
+            The resource group the resource is located under.
+            </param>
+            <param name='activationName'>
+            Name of the activation.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.ActivationsOperationsExtensions.ListNext(Microsoft.AzureStack.Management.AzureBridge.Admin.IActivationsOperations,System.String)">
+            <summary>
+            Returns the list of activations.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.ActivationsOperationsExtensions.ListNextAsync(Microsoft.AzureStack.Management.AzureBridge.Admin.IActivationsOperations,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Returns the list of activations.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.AzureBridge.Admin.AzureBridgeAdminClient">
+            <summary>
+            AzureBridge Admin Client
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.AzureBridgeAdminClient.BaseUri">
+            <summary>
+            The base URI of the service.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.AzureBridgeAdminClient.SerializationSettings">
+            <summary>
+            Gets or sets json serialization settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.AzureBridgeAdminClient.DeserializationSettings">
+            <summary>
+            Gets or sets json deserialization settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.AzureBridgeAdminClient.Credentials">
+            <summary>
+            Credentials needed for the client to connect to Azure.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.AzureBridgeAdminClient.SubscriptionId">
+            <summary>
+            Subscription credentials which uniquely identify Microsoft Azure
+            subscription.The subscription ID forms part of the URI for every service
+            call.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.AzureBridgeAdminClient.ApiVersion">
+            <summary>
+            Client Api Version.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.AzureBridgeAdminClient.AcceptLanguage">
+            <summary>
+            Gets or sets the preferred language for the response.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.AzureBridgeAdminClient.LongRunningOperationRetryTimeout">
+            <summary>
+            Gets or sets the retry timeout in seconds for Long Running Operations.
+            Default value is 30.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.AzureBridgeAdminClient.GenerateClientRequestId">
+            <summary>
+            When set to true a unique x-ms-client-request-id value is generated and
+            included in each request. Default is true.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.AzureBridgeAdminClient.DownloadedProducts">
+            <summary>
+            Gets the IDownloadedProductsOperations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.AzureBridgeAdminClient.Products">
+            <summary>
+            Gets the IProductsOperations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.AzureBridgeAdminClient.Activations">
+            <summary>
+            Gets the IActivationsOperations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.AzureBridgeAdminClient.#ctor(System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the AzureBridgeAdminClient class.
+            </summary>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.AzureBridgeAdminClient.#ctor(System.Net.Http.HttpClientHandler,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the AzureBridgeAdminClient class.
+            </summary>
+            <param name='rootHandler'>
+            Optional. The http client handler used to handle http transport.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.AzureBridgeAdminClient.#ctor(System.Uri,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the AzureBridgeAdminClient class.
+            </summary>
+            <param name='baseUri'>
+            Optional. The base URI of the service.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.AzureBridgeAdminClient.#ctor(System.Uri,System.Net.Http.HttpClientHandler,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the AzureBridgeAdminClient class.
+            </summary>
+            <param name='baseUri'>
+            Optional. The base URI of the service.
+            </param>
+            <param name='rootHandler'>
+            Optional. The http client handler used to handle http transport.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.AzureBridgeAdminClient.#ctor(Microsoft.Rest.ServiceClientCredentials,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the AzureBridgeAdminClient class.
+            </summary>
+            <param name='credentials'>
+            Required. Credentials needed for the client to connect to Azure.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.AzureBridgeAdminClient.#ctor(Microsoft.Rest.ServiceClientCredentials,System.Net.Http.HttpClientHandler,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the AzureBridgeAdminClient class.
+            </summary>
+            <param name='credentials'>
+            Required. Credentials needed for the client to connect to Azure.
+            </param>
+            <param name='rootHandler'>
+            Optional. The http client handler used to handle http transport.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.AzureBridgeAdminClient.#ctor(System.Uri,Microsoft.Rest.ServiceClientCredentials,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the AzureBridgeAdminClient class.
+            </summary>
+            <param name='baseUri'>
+            Optional. The base URI of the service.
+            </param>
+            <param name='credentials'>
+            Required. Credentials needed for the client to connect to Azure.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.AzureBridgeAdminClient.#ctor(System.Uri,Microsoft.Rest.ServiceClientCredentials,System.Net.Http.HttpClientHandler,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the AzureBridgeAdminClient class.
+            </summary>
+            <param name='baseUri'>
+            Optional. The base URI of the service.
+            </param>
+            <param name='credentials'>
+            Required. Credentials needed for the client to connect to Azure.
+            </param>
+            <param name='rootHandler'>
+            Optional. The http client handler used to handle http transport.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.AzureBridgeAdminClient.Initialize">
+            <summary>
+            Initializes client properties.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.AzureBridge.Admin.DownloadedProductsOperations">
+            <summary>
+            DownloadedProductsOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.DownloadedProductsOperations.#ctor(Microsoft.AzureStack.Management.AzureBridge.Admin.AzureBridgeAdminClient)">
+            <summary>
+            Initializes a new instance of the DownloadedProductsOperations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.DownloadedProductsOperations.Client">
+            <summary>
+            Gets a reference to the AzureBridgeAdminClient
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.DownloadedProductsOperations.ListWithHttpMessagesAsync(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get a list of downloaded products.
+            </summary>
+            <param name='resourceGroup'>
+            The resource group the resource is located under.
+            </param>
+            <param name='activationName'>
+            Name of the activation.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.DownloadedProductsOperations.GetWithHttpMessagesAsync(System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get a downloaded product.
+            </summary>
+            <param name='resourceGroup'>
+            The resource group the resource is located under.
+            </param>
+            <param name='activationName'>
+            Name of the activation.
+            </param>
+            <param name='productName'>
+            Name of the product.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.DownloadedProductsOperations.DeleteWithHttpMessagesAsync(System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Delete a downloaded product.
+            </summary>
+            <param name='resourceGroup'>
+            The resource group the resource is located under.
+            </param>
+            <param name='activationName'>
+            Name of the activation.
+            </param>
+            <param name='productName'>
+            Name of the product.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.DownloadedProductsOperations.BeginDeleteWithHttpMessagesAsync(System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Delete a downloaded product.
+            </summary>
+            <param name='resourceGroup'>
+            The resource group the resource is located under.
+            </param>
+            <param name='activationName'>
+            Name of the activation.
+            </param>
+            <param name='productName'>
+            Name of the product.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.DownloadedProductsOperations.ListNextWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get a list of downloaded products.
+            </summary>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.AzureBridge.Admin.DownloadedProductsOperationsExtensions">
+            <summary>
+            Extension methods for DownloadedProductsOperations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.DownloadedProductsOperationsExtensions.List(Microsoft.AzureStack.Management.AzureBridge.Admin.IDownloadedProductsOperations,System.String,System.String)">
+            <summary>
+            Get a list of downloaded products.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroup'>
+            The resource group the resource is located under.
+            </param>
+            <param name='activationName'>
+            Name of the activation.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.DownloadedProductsOperationsExtensions.ListAsync(Microsoft.AzureStack.Management.AzureBridge.Admin.IDownloadedProductsOperations,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Get a list of downloaded products.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroup'>
+            The resource group the resource is located under.
+            </param>
+            <param name='activationName'>
+            Name of the activation.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.DownloadedProductsOperationsExtensions.Get(Microsoft.AzureStack.Management.AzureBridge.Admin.IDownloadedProductsOperations,System.String,System.String,System.String)">
+            <summary>
+            Get a downloaded product.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroup'>
+            The resource group the resource is located under.
+            </param>
+            <param name='activationName'>
+            Name of the activation.
+            </param>
+            <param name='productName'>
+            Name of the product.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.DownloadedProductsOperationsExtensions.GetAsync(Microsoft.AzureStack.Management.AzureBridge.Admin.IDownloadedProductsOperations,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Get a downloaded product.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroup'>
+            The resource group the resource is located under.
+            </param>
+            <param name='activationName'>
+            Name of the activation.
+            </param>
+            <param name='productName'>
+            Name of the product.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.DownloadedProductsOperationsExtensions.Delete(Microsoft.AzureStack.Management.AzureBridge.Admin.IDownloadedProductsOperations,System.String,System.String,System.String)">
+            <summary>
+            Delete a downloaded product.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroup'>
+            The resource group the resource is located under.
+            </param>
+            <param name='activationName'>
+            Name of the activation.
+            </param>
+            <param name='productName'>
+            Name of the product.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.DownloadedProductsOperationsExtensions.DeleteAsync(Microsoft.AzureStack.Management.AzureBridge.Admin.IDownloadedProductsOperations,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Delete a downloaded product.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroup'>
+            The resource group the resource is located under.
+            </param>
+            <param name='activationName'>
+            Name of the activation.
+            </param>
+            <param name='productName'>
+            Name of the product.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.DownloadedProductsOperationsExtensions.BeginDelete(Microsoft.AzureStack.Management.AzureBridge.Admin.IDownloadedProductsOperations,System.String,System.String,System.String)">
+            <summary>
+            Delete a downloaded product.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroup'>
+            The resource group the resource is located under.
+            </param>
+            <param name='activationName'>
+            Name of the activation.
+            </param>
+            <param name='productName'>
+            Name of the product.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.DownloadedProductsOperationsExtensions.BeginDeleteAsync(Microsoft.AzureStack.Management.AzureBridge.Admin.IDownloadedProductsOperations,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Delete a downloaded product.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroup'>
+            The resource group the resource is located under.
+            </param>
+            <param name='activationName'>
+            Name of the activation.
+            </param>
+            <param name='productName'>
+            Name of the product.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.DownloadedProductsOperationsExtensions.ListNext(Microsoft.AzureStack.Management.AzureBridge.Admin.IDownloadedProductsOperations,System.String)">
+            <summary>
+            Get a list of downloaded products.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.DownloadedProductsOperationsExtensions.ListNextAsync(Microsoft.AzureStack.Management.AzureBridge.Admin.IDownloadedProductsOperations,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Get a list of downloaded products.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.AzureBridge.Admin.IActivationsOperations">
+            <summary>
+            ActivationsOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.IActivationsOperations.ListWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns the list of activations.
+            </summary>
+            <param name='resourceGroup'>
+            The resource group the resource is located under.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.IActivationsOperations.GetWithHttpMessagesAsync(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns activation name.
+            </summary>
+            <param name='resourceGroup'>
+            The resource group the resource is located under.
+            </param>
+            <param name='activationName'>
+            Name of the activation.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.IActivationsOperations.CreateOrUpdateWithHttpMessagesAsync(System.String,System.String,Microsoft.AzureStack.Management.AzureBridge.Admin.Models.Activation,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Create a new activation.
+            </summary>
+            <param name='resourceGroup'>
+            The resource group the resource is located under.
+            </param>
+            <param name='activationName'>
+            Name of the activation.
+            </param>
+            <param name='activation'>
+            new activation.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.IActivationsOperations.DeleteWithHttpMessagesAsync(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Delete an activation.
+            </summary>
+            <param name='resourceGroup'>
+            The resource group the resource is located under.
+            </param>
+            <param name='activationName'>
+            Name of the activation.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.IActivationsOperations.ListNextWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns the list of activations.
+            </summary>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.AzureBridge.Admin.IAzureBridgeAdminClient">
+            <summary>
+            AzureBridge Admin Client
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.IAzureBridgeAdminClient.BaseUri">
+            <summary>
+            The base URI of the service.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.IAzureBridgeAdminClient.SerializationSettings">
+            <summary>
+            Gets or sets json serialization settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.IAzureBridgeAdminClient.DeserializationSettings">
+            <summary>
+            Gets or sets json deserialization settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.IAzureBridgeAdminClient.Credentials">
+            <summary>
+            Credentials needed for the client to connect to Azure.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.IAzureBridgeAdminClient.SubscriptionId">
+            <summary>
+            Subscription credentials which uniquely identify Microsoft Azure
+            subscription.The subscription ID forms part of the URI for every
+            service call.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.IAzureBridgeAdminClient.ApiVersion">
+            <summary>
+            Client Api Version.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.IAzureBridgeAdminClient.AcceptLanguage">
+            <summary>
+            Gets or sets the preferred language for the response.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.IAzureBridgeAdminClient.LongRunningOperationRetryTimeout">
+            <summary>
+            Gets or sets the retry timeout in seconds for Long Running
+            Operations. Default value is 30.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.IAzureBridgeAdminClient.GenerateClientRequestId">
+            <summary>
+            When set to true a unique x-ms-client-request-id value is generated
+            and included in each request. Default is true.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.IAzureBridgeAdminClient.DownloadedProducts">
+            <summary>
+            Gets the IDownloadedProductsOperations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.IAzureBridgeAdminClient.Products">
+            <summary>
+            Gets the IProductsOperations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.IAzureBridgeAdminClient.Activations">
+            <summary>
+            Gets the IActivationsOperations.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.AzureBridge.Admin.IDownloadedProductsOperations">
+            <summary>
+            DownloadedProductsOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.IDownloadedProductsOperations.ListWithHttpMessagesAsync(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get a list of downloaded products.
+            </summary>
+            <param name='resourceGroup'>
+            The resource group the resource is located under.
+            </param>
+            <param name='activationName'>
+            Name of the activation.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.IDownloadedProductsOperations.GetWithHttpMessagesAsync(System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get a downloaded product.
+            </summary>
+            <param name='resourceGroup'>
+            The resource group the resource is located under.
+            </param>
+            <param name='activationName'>
+            Name of the activation.
+            </param>
+            <param name='productName'>
+            Name of the product.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.IDownloadedProductsOperations.DeleteWithHttpMessagesAsync(System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Delete a downloaded product.
+            </summary>
+            <param name='resourceGroup'>
+            The resource group the resource is located under.
+            </param>
+            <param name='activationName'>
+            Name of the activation.
+            </param>
+            <param name='productName'>
+            Name of the product.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.IDownloadedProductsOperations.BeginDeleteWithHttpMessagesAsync(System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Delete a downloaded product.
+            </summary>
+            <param name='resourceGroup'>
+            The resource group the resource is located under.
+            </param>
+            <param name='activationName'>
+            Name of the activation.
+            </param>
+            <param name='productName'>
+            Name of the product.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.IDownloadedProductsOperations.ListNextWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get a list of downloaded products.
+            </summary>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.AzureBridge.Admin.IProductsOperations">
+            <summary>
+            ProductsOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.IProductsOperations.ListWithHttpMessagesAsync(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Return product name.
+            </summary>
+            <param name='resourceGroup'>
+            The resource group the resource is located under.
+            </param>
+            <param name='activationName'>
+            Name of the activation.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.IProductsOperations.GetWithHttpMessagesAsync(System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Return product name.
+            </summary>
+            <param name='resourceGroup'>
+            The resource group the resource is located under.
+            </param>
+            <param name='activationName'>
+            Name of the activation.
+            </param>
+            <param name='productName'>
+            Name of the product.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.IProductsOperations.DownloadWithHttpMessagesAsync(System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Downloads a product from azure marketplace.
+            </summary>
+            <param name='resourceGroup'>
+            The resource group the resource is located under.
+            </param>
+            <param name='activationName'>
+            Name of the activation.
+            </param>
+            <param name='productName'>
+            Name of the product.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.IProductsOperations.BeginDownloadWithHttpMessagesAsync(System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Downloads a product from azure marketplace.
+            </summary>
+            <param name='resourceGroup'>
+            The resource group the resource is located under.
+            </param>
+            <param name='activationName'>
+            Name of the activation.
+            </param>
+            <param name='productName'>
+            Name of the product.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.IProductsOperations.ListNextWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Return product name.
+            </summary>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.Activation">
+            <summary>
+            Holds properties related to activation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.Activation.#ctor">
+            <summary>
+            Initializes a new instance of the Activation class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.Activation.#ctor(System.String,System.String,System.String,System.String,System.Nullable{System.Boolean},System.Nullable{System.Boolean})">
+            <summary>
+            Initializes a new instance of the Activation class.
+            </summary>
+            <param name="displayName">Name displayed for the product.</param>
+            <param name="azureRegistrationResourceIdentifier">Azure
+            registration resource identifier.</param>
+            <param name="provisioningState">Provisioning state of the resource.
+            Possible values include: 'Stopped', 'Starting', 'Running',
+            'Stopping', 'Succeeded', 'Downloading'</param>
+            <param name="expiration">The activation expiration.</param>
+            <param name="marketplaceSyndicationEnabled">Value indicating
+            whether the marketplace syndication feature is enabled.</param>
+            <param name="usageReportingEnabled">Value indicating whether the
+            usage reporting feature is enabled.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.Activation.DisplayName">
+            <summary>
+            Gets or sets name displayed for the product.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.Activation.AzureRegistrationResourceIdentifier">
+            <summary>
+            Gets or sets azure registration resource identifier.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.Activation.ProvisioningState">
+            <summary>
+            Gets or sets provisioning state of the resource. Possible values
+            include: 'Stopped', 'Starting', 'Running', 'Stopping', 'Succeeded',
+            'Downloading'
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.Activation.Expiration">
+            <summary>
+            Gets or sets the activation expiration.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.Activation.MarketplaceSyndicationEnabled">
+            <summary>
+            Gets or sets value indicating whether the marketplace syndication
+            feature is enabled.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.Activation.UsageReportingEnabled">
+            <summary>
+            Gets or sets value indicating whether the usage reporting feature
+            is enabled.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ActivationResource">
+            <summary>
+            Published activation resource.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ActivationResource.#ctor">
+            <summary>
+            Initializes a new instance of the ActivationResource class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ActivationResource.#ctor(System.String,System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String,System.String,System.String,System.Nullable{System.Boolean},System.Nullable{System.Boolean})">
+            <summary>
+            Initializes a new instance of the ActivationResource class.
+            </summary>
+            <param name="id">URI of the resource.</param>
+            <param name="name">Name of the resource.</param>
+            <param name="type">Type of resource.</param>
+            <param name="location">Location of the resource</param>
+            <param name="tags">List of key value pairs.</param>
+            <param name="displayName">Name displayed for the product.</param>
+            <param name="azureRegistrationResourceIdentifier">Azure
+            registration resource identifier.</param>
+            <param name="provisioningState">Provisioning state of the resource.
+            Possible values include: 'Stopped', 'Starting', 'Running',
+            'Stopping', 'Succeeded', 'Downloading'</param>
+            <param name="expiration">The activation expiration.</param>
+            <param name="marketplaceSyndicationEnabled">Value indicating
+            whether the marketplace syndication feature is enabled.</param>
+            <param name="usageReportingEnabled">Value indicating whether the
+            usage reporting feature is enabled.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ActivationResource.DisplayName">
+            <summary>
+            Gets or sets name displayed for the product.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ActivationResource.AzureRegistrationResourceIdentifier">
+            <summary>
+            Gets or sets azure registration resource identifier.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ActivationResource.ProvisioningState">
+            <summary>
+            Gets or sets provisioning state of the resource. Possible values
+            include: 'Stopped', 'Starting', 'Running', 'Stopping', 'Succeeded',
+            'Downloading'
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ActivationResource.Expiration">
+            <summary>
+            Gets or sets the activation expiration.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ActivationResource.MarketplaceSyndicationEnabled">
+            <summary>
+            Gets or sets value indicating whether the marketplace syndication
+            feature is enabled.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ActivationResource.UsageReportingEnabled">
+            <summary>
+            Gets or sets value indicating whether the usage reporting feature
+            is enabled.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.DownloadedProductResource">
+            <summary>
+            Downloaded product resource.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.DownloadedProductResource.#ctor">
+            <summary>
+            Initializes a new instance of the DownloadedProductResource class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.DownloadedProductResource.#ctor(System.String,System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,Microsoft.AzureStack.Management.AzureBridge.Admin.Models.GalleryIcons,System.Nullable{System.Int64},System.String,Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductProperties,System.String,System.Collections.Generic.IList{Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductLink},System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the DownloadedProductResource class.
+            </summary>
+            <param name="id">URI of the resource.</param>
+            <param name="name">Name of the resource.</param>
+            <param name="type">Type of resource.</param>
+            <param name="location">Location of the resource</param>
+            <param name="tags">List of key value pairs.</param>
+            <param name="displayName">Name displayed for the product.</param>
+            <param name="description">Description of the product.</param>
+            <param name="publisherDisplayName">Name of publisher.</param>
+            <param name="publisherIdentifier">Publisher identifier.</param>
+            <param name="offer">Offer name.</param>
+            <param name="offerVersion">Offer version.</param>
+            <param name="sku">Product SKU.</param>
+            <param name="billingPartNumber">Billing part number.</param>
+            <param name="galleryItemIdentity">Gallery item identity.</param>
+            <param name="iconUris">Information about gallery icons.</param>
+            <param name="payloadLength">Size in bytes.</param>
+            <param name="productKind">The kind. E.g.
+            VirtualMachineProductProperties.ProductKind or WebApp,
+            SolutionTemplate.</param>
+            <param name="productProperties">the product properties. At the
+            moment only VirtualMachineProductProperties is allowed.</param>
+            <param name="vmExtensionType">Extension type of the VM.</param>
+            <param name="links">Gallery item identity.</param>
+            <param name="legalTerms">Legal terms for the product.</param>
+            <param name="privacyPolicy">Privacy policy of the product.</param>
+            <param name="provisioningState">Provisioning state of the resource.
+            Possible values include: 'Stopped', 'Starting', 'Running',
+            'Stopping', 'Succeeded', 'Downloading'</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.DownloadedProductResource.DisplayName">
+            <summary>
+            Gets or sets name displayed for the product.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.DownloadedProductResource.Description">
+            <summary>
+            Gets or sets description of the product.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.DownloadedProductResource.PublisherDisplayName">
+            <summary>
+            Gets or sets name of publisher.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.DownloadedProductResource.PublisherIdentifier">
+            <summary>
+            Gets or sets publisher identifier.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.DownloadedProductResource.Offer">
+            <summary>
+            Gets or sets offer name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.DownloadedProductResource.OfferVersion">
+            <summary>
+            Gets or sets offer version.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.DownloadedProductResource.Sku">
+            <summary>
+            Gets or sets product SKU.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.DownloadedProductResource.BillingPartNumber">
+            <summary>
+            Gets or sets billing part number.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.DownloadedProductResource.GalleryItemIdentity">
+            <summary>
+            Gets or sets gallery item identity.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.DownloadedProductResource.IconUris">
+            <summary>
+            Gets or sets information about gallery icons.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.DownloadedProductResource.PayloadLength">
+            <summary>
+            Gets or sets size in bytes.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.DownloadedProductResource.ProductKind">
+            <summary>
+            Gets or sets the kind. E.g.
+            VirtualMachineProductProperties.ProductKind or WebApp,
+            SolutionTemplate.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.DownloadedProductResource.ProductProperties">
+            <summary>
+            Gets or sets the product properties. At the moment only
+            VirtualMachineProductProperties is allowed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.DownloadedProductResource.VmExtensionType">
+            <summary>
+            Gets or sets extension type of the VM.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.DownloadedProductResource.Links">
+            <summary>
+            Gets or sets gallery item identity.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.DownloadedProductResource.LegalTerms">
+            <summary>
+            Gets or sets legal terms for the product.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.DownloadedProductResource.PrivacyPolicy">
+            <summary>
+            Gets or sets privacy policy of the product.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.DownloadedProductResource.ProvisioningState">
+            <summary>
+            Gets or sets provisioning state of the resource. Possible values
+            include: 'Stopped', 'Starting', 'Running', 'Stopping', 'Succeeded',
+            'Downloading'
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.GalleryIcons">
+            <summary>
+            Icons for the gallery items.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.GalleryIcons.#ctor">
+            <summary>
+            Initializes a new instance of the GalleryIcons class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.GalleryIcons.#ctor(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the GalleryIcons class.
+            </summary>
+            <param name="hero">The hero (815x290) icon relative path.</param>
+            <param name="large">The large (115x115) icon relative path.</param>
+            <param name="wide">The wide (255x115) icon relative path.</param>
+            <param name="medium">The medium (90x90) icon relative path.</param>
+            <param name="small">The small (40x40) icon relative path.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.GalleryIcons.Hero">
+            <summary>
+            Gets or sets the hero (815x290) icon relative path.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.GalleryIcons.Large">
+            <summary>
+            Gets or sets the large (115x115) icon relative path.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.GalleryIcons.Wide">
+            <summary>
+            Gets or sets the wide (255x115) icon relative path.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.GalleryIcons.Medium">
+            <summary>
+            Gets or sets the medium (90x90) icon relative path.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.GalleryIcons.Small">
+            <summary>
+            Gets or sets the small (40x40) icon relative path.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.Page`1">
+            <summary>
+            Defines a page in Azure responses.
+            </summary>
+            <typeparam name="T">Type of the page content items</typeparam>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.Page`1.NextPageLink">
+            <summary>
+            Gets the link to the next page.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.Page`1.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>A an enumerator that can be used to iterate through the collection.</returns>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.Page`1.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>A an enumerator that can be used to iterate through the collection.</returns>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductBase">
+            <summary>
+            Base object for all product classes.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductBase.#ctor">
+            <summary>
+            Initializes a new instance of the ProductBase class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductBase.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,Microsoft.AzureStack.Management.AzureBridge.Admin.Models.GalleryIcons,System.Nullable{System.Int64},System.String,Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductProperties)">
+            <summary>
+            Initializes a new instance of the ProductBase class.
+            </summary>
+            <param name="displayName">Name displayed for the product.</param>
+            <param name="description">Description of the product.</param>
+            <param name="publisherDisplayName">Name of publisher.</param>
+            <param name="publisherIdentifier">Publisher identifier.</param>
+            <param name="offer">Offer name.</param>
+            <param name="offerVersion">Offer version.</param>
+            <param name="sku">Product SKU.</param>
+            <param name="billingPartNumber">Billing part number.</param>
+            <param name="galleryItemIdentity">Gallery item identity.</param>
+            <param name="iconUris">Information about gallery icons.</param>
+            <param name="payloadLength">Size in bytes.</param>
+            <param name="productKind">The kind. E.g.
+            VirtualMachineProductProperties.ProductKind or WebApp,
+            SolutionTemplate.</param>
+            <param name="productProperties">the product properties. At the
+            moment only VirtualMachineProductProperties is allowed.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductBase.DisplayName">
+            <summary>
+            Gets or sets name displayed for the product.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductBase.Description">
+            <summary>
+            Gets or sets description of the product.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductBase.PublisherDisplayName">
+            <summary>
+            Gets or sets name of publisher.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductBase.PublisherIdentifier">
+            <summary>
+            Gets or sets publisher identifier.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductBase.Offer">
+            <summary>
+            Gets or sets offer name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductBase.OfferVersion">
+            <summary>
+            Gets or sets offer version.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductBase.Sku">
+            <summary>
+            Gets or sets product SKU.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductBase.BillingPartNumber">
+            <summary>
+            Gets or sets billing part number.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductBase.GalleryItemIdentity">
+            <summary>
+            Gets or sets gallery item identity.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductBase.IconUris">
+            <summary>
+            Gets or sets information about gallery icons.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductBase.PayloadLength">
+            <summary>
+            Gets or sets size in bytes.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductBase.ProductKind">
+            <summary>
+            Gets or sets the kind. E.g.
+            VirtualMachineProductProperties.ProductKind or WebApp,
+            SolutionTemplate.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductBase.ProductProperties">
+            <summary>
+            Gets or sets the product properties. At the moment only
+            VirtualMachineProductProperties is allowed.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductLink">
+            <summary>
+            Link to a product.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductLink.#ctor">
+            <summary>
+            Initializes a new instance of the ProductLink class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductLink.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the ProductLink class.
+            </summary>
+            <param name="displayName">Displayed name of product.</param>
+            <param name="uri">URI to product.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductLink.DisplayName">
+            <summary>
+            Gets or sets displayed name of product.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductLink.Uri">
+            <summary>
+            Gets or sets URI to product.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductProperties">
+            <summary>
+            Additional properties of the product
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductProperties.#ctor">
+            <summary>
+            Initializes a new instance of the ProductProperties class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductProperties.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the ProductProperties class.
+            </summary>
+            <param name="version">The version of the product</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductProperties.Version">
+            <summary>
+            Gets or sets the version of the product
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductResource">
+            <summary>
+            Product resource.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductResource.#ctor">
+            <summary>
+            Initializes a new instance of the ProductResource class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductResource.#ctor(System.String,System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,Microsoft.AzureStack.Management.AzureBridge.Admin.Models.GalleryIcons,System.Nullable{System.Int64},System.String,Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductProperties,System.String,System.Collections.Generic.IList{Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductLink},System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the ProductResource class.
+            </summary>
+            <param name="id">URI of the resource.</param>
+            <param name="name">Name of the resource.</param>
+            <param name="type">Type of resource.</param>
+            <param name="location">Location of the resource</param>
+            <param name="tags">List of key value pairs.</param>
+            <param name="displayName">Name displayed for the product.</param>
+            <param name="description">Description of the product.</param>
+            <param name="publisherDisplayName">Name of publisher.</param>
+            <param name="publisherIdentifier">Publisher identifier.</param>
+            <param name="offer">Offer name.</param>
+            <param name="offerVersion">Offer version.</param>
+            <param name="sku">Product SKU.</param>
+            <param name="billingPartNumber">Billing part number.</param>
+            <param name="galleryItemIdentity">Gallery item identity.</param>
+            <param name="iconUris">Information about gallery icons.</param>
+            <param name="payloadLength">Size in bytes.</param>
+            <param name="productKind">The kind. E.g.
+            VirtualMachineProductProperties.ProductKind or WebApp,
+            SolutionTemplate.</param>
+            <param name="productProperties">the product properties. At the
+            moment only VirtualMachineProductProperties is allowed.</param>
+            <param name="vmExtensionType">Extension type of the VM.</param>
+            <param name="links">Gallery item identity.</param>
+            <param name="legalTerms">Legal terms for the product.</param>
+            <param name="privacyPolicy">Privacy policy of the product.</param>
+            <param name="provisioningState">Provisioning state of the resource.
+            Possible values include: 'Stopped', 'Starting', 'Running',
+            'Stopping', 'Succeeded', 'Downloading'</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductResource.DisplayName">
+            <summary>
+            Gets or sets name displayed for the product.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductResource.Description">
+            <summary>
+            Gets or sets description of the product.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductResource.PublisherDisplayName">
+            <summary>
+            Gets or sets name of publisher.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductResource.PublisherIdentifier">
+            <summary>
+            Gets or sets publisher identifier.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductResource.Offer">
+            <summary>
+            Gets or sets offer name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductResource.OfferVersion">
+            <summary>
+            Gets or sets offer version.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductResource.Sku">
+            <summary>
+            Gets or sets product SKU.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductResource.BillingPartNumber">
+            <summary>
+            Gets or sets billing part number.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductResource.GalleryItemIdentity">
+            <summary>
+            Gets or sets gallery item identity.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductResource.IconUris">
+            <summary>
+            Gets or sets information about gallery icons.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductResource.PayloadLength">
+            <summary>
+            Gets or sets size in bytes.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductResource.ProductKind">
+            <summary>
+            Gets or sets the kind. E.g.
+            VirtualMachineProductProperties.ProductKind or WebApp,
+            SolutionTemplate.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductResource.ProductProperties">
+            <summary>
+            Gets or sets the product properties. At the moment only
+            VirtualMachineProductProperties is allowed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductResource.VmExtensionType">
+            <summary>
+            Gets or sets extension type of the VM.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductResource.Links">
+            <summary>
+            Gets or sets gallery item identity.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductResource.LegalTerms">
+            <summary>
+            Gets or sets legal terms for the product.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductResource.PrivacyPolicy">
+            <summary>
+            Gets or sets privacy policy of the product.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProductResource.ProvisioningState">
+            <summary>
+            Gets or sets provisioning state of the resource. Possible values
+            include: 'Stopped', 'Starting', 'Running', 'Stopping', 'Succeeded',
+            'Downloading'
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.ProvisioningState">
+            <summary>
+            Defines values for ProvisioningState.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.Resource">
+            <summary>
+            Base Resource Object
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.Resource.#ctor">
+            <summary>
+            Initializes a new instance of the Resource class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.Resource.#ctor(System.String,System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Initializes a new instance of the Resource class.
+            </summary>
+            <param name="id">URI of the resource.</param>
+            <param name="name">Name of the resource.</param>
+            <param name="type">Type of resource.</param>
+            <param name="location">Location of the resource</param>
+            <param name="tags">List of key value pairs.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.Resource.Id">
+            <summary>
+            Gets URI of the resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.Resource.Name">
+            <summary>
+            Gets name of the resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.Resource.Type">
+            <summary>
+            Gets type of resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.Resource.Location">
+            <summary>
+            Gets location of the resource
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.Models.Resource.Tags">
+            <summary>
+            Gets list of key value pairs.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.AzureBridge.Admin.ProductsOperations">
+            <summary>
+            ProductsOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.ProductsOperations.#ctor(Microsoft.AzureStack.Management.AzureBridge.Admin.AzureBridgeAdminClient)">
+            <summary>
+            Initializes a new instance of the ProductsOperations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.AzureBridge.Admin.ProductsOperations.Client">
+            <summary>
+            Gets a reference to the AzureBridgeAdminClient
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.ProductsOperations.ListWithHttpMessagesAsync(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Return product name.
+            </summary>
+            <param name='resourceGroup'>
+            The resource group the resource is located under.
+            </param>
+            <param name='activationName'>
+            Name of the activation.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.ProductsOperations.GetWithHttpMessagesAsync(System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Return product name.
+            </summary>
+            <param name='resourceGroup'>
+            The resource group the resource is located under.
+            </param>
+            <param name='activationName'>
+            Name of the activation.
+            </param>
+            <param name='productName'>
+            Name of the product.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.ProductsOperations.DownloadWithHttpMessagesAsync(System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Downloads a product from azure marketplace.
+            </summary>
+            <param name='resourceGroup'>
+            The resource group the resource is located under.
+            </param>
+            <param name='activationName'>
+            Name of the activation.
+            </param>
+            <param name='productName'>
+            Name of the product.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.ProductsOperations.BeginDownloadWithHttpMessagesAsync(System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Downloads a product from azure marketplace.
+            </summary>
+            <param name='resourceGroup'>
+            The resource group the resource is located under.
+            </param>
+            <param name='activationName'>
+            Name of the activation.
+            </param>
+            <param name='productName'>
+            Name of the product.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.ProductsOperations.ListNextWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Return product name.
+            </summary>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.AzureBridge.Admin.ProductsOperationsExtensions">
+            <summary>
+            Extension methods for ProductsOperations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.ProductsOperationsExtensions.List(Microsoft.AzureStack.Management.AzureBridge.Admin.IProductsOperations,System.String,System.String)">
+            <summary>
+            Return product name.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroup'>
+            The resource group the resource is located under.
+            </param>
+            <param name='activationName'>
+            Name of the activation.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.ProductsOperationsExtensions.ListAsync(Microsoft.AzureStack.Management.AzureBridge.Admin.IProductsOperations,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Return product name.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroup'>
+            The resource group the resource is located under.
+            </param>
+            <param name='activationName'>
+            Name of the activation.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.ProductsOperationsExtensions.Get(Microsoft.AzureStack.Management.AzureBridge.Admin.IProductsOperations,System.String,System.String,System.String)">
+            <summary>
+            Return product name.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroup'>
+            The resource group the resource is located under.
+            </param>
+            <param name='activationName'>
+            Name of the activation.
+            </param>
+            <param name='productName'>
+            Name of the product.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.ProductsOperationsExtensions.GetAsync(Microsoft.AzureStack.Management.AzureBridge.Admin.IProductsOperations,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Return product name.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroup'>
+            The resource group the resource is located under.
+            </param>
+            <param name='activationName'>
+            Name of the activation.
+            </param>
+            <param name='productName'>
+            Name of the product.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.ProductsOperationsExtensions.Download(Microsoft.AzureStack.Management.AzureBridge.Admin.IProductsOperations,System.String,System.String,System.String)">
+            <summary>
+            Downloads a product from azure marketplace.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroup'>
+            The resource group the resource is located under.
+            </param>
+            <param name='activationName'>
+            Name of the activation.
+            </param>
+            <param name='productName'>
+            Name of the product.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.ProductsOperationsExtensions.DownloadAsync(Microsoft.AzureStack.Management.AzureBridge.Admin.IProductsOperations,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Downloads a product from azure marketplace.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroup'>
+            The resource group the resource is located under.
+            </param>
+            <param name='activationName'>
+            Name of the activation.
+            </param>
+            <param name='productName'>
+            Name of the product.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.ProductsOperationsExtensions.BeginDownload(Microsoft.AzureStack.Management.AzureBridge.Admin.IProductsOperations,System.String,System.String,System.String)">
+            <summary>
+            Downloads a product from azure marketplace.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroup'>
+            The resource group the resource is located under.
+            </param>
+            <param name='activationName'>
+            Name of the activation.
+            </param>
+            <param name='productName'>
+            Name of the product.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.ProductsOperationsExtensions.BeginDownloadAsync(Microsoft.AzureStack.Management.AzureBridge.Admin.IProductsOperations,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Downloads a product from azure marketplace.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroup'>
+            The resource group the resource is located under.
+            </param>
+            <param name='activationName'>
+            Name of the activation.
+            </param>
+            <param name='productName'>
+            Name of the product.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.ProductsOperationsExtensions.ListNext(Microsoft.AzureStack.Management.AzureBridge.Admin.IProductsOperations,System.String)">
+            <summary>
+            Return product name.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.AzureBridge.Admin.ProductsOperationsExtensions.ListNextAsync(Microsoft.AzureStack.Management.AzureBridge.Admin.IProductsOperations,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Return product name.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+    </members>
+</doc>
