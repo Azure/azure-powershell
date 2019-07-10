@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 - Remove missing cmdlet referenced in `New-AzResourceGroupDeployment` documentation
+- Fix for aliases missing from output of Get-AzPolicyAlias
 
 ## Version 1.6.0
 - Fix help text for Get-AzPolicyState -Top parameter
