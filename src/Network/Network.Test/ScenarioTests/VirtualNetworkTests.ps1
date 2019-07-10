@@ -201,6 +201,50 @@ function Test-subnetCRUD
 
 <#
 .SYNOPSIS
+Tests creating Initialize Subnet Policies on virtualNetwork w/ delegated service name.
+.DESCRIPTION
+SmokeTest
+#>
+function Test-InitializeSubnetPolicy
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $vnetName = Get-ResourceName
+    $subnetName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/virtualNetworks"
+    $location = Get-ProviderLocation $resourceTypeParent
+    $serviceName = "Microsoft.Databricks/workspaces"
+    
+    try 
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
+
+        # Create the Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+        New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+        
+        # Initialize subnet for delegated service
+        $vnet | Initialize-AzVirtualNetworkSubnetPolicy -Name $subnetName -ServiceName $serviceName
+        
+        # Get VirtualNetwork
+        $vnetExpected = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+
+        Assert-AreEqual 1 @($vnetExpected.Subnets).Count
+        Assert-AreEqual 1 @($vnetExpected.Subnets[0].Delegations).Count
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+
+<#
+.SYNOPSIS
 Tests creating new virtualNetwork w/ delegated subnets.
 .DESCRIPTION
 SmokeTest
