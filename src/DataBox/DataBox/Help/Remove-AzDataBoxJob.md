@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataBox.dll-Help.xml
 Module Name: Az.DataBox
 online version: https://docs.microsoft.com/en-us/powershell/module/az.databox/remove-azdataboxjob
