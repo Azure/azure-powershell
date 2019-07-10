@@ -19,6 +19,10 @@
 -->
 ## Current Release
 
+## Version 0.3.2
+* Support single role restore for Azures stack infrastructure backup
+    * Add parameter `RoleName` to cmdlet `Restore-AzsBackup`
+
 ## Version 0.3.1
 * Module dependencies updated
     * AzureRM.Resources module updated to 6.4.3

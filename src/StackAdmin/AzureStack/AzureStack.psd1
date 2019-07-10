@@ -54,7 +54,7 @@
     RequiredModules        = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.8.3'; },
         @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '6.4.3'; },
         @{ModuleName = 'Azs.AzureBridge.Admin'; RequiredVersion = '0.2.2'; },
-        @{ModuleName = 'Azs.Backup.Admin'; RequiredVersion = '0.3.1'; },
+        @{ModuleName = 'Azs.Backup.Admin'; RequiredVersion = '0.3.2'; },
         @{ModuleName = 'Azs.Commerce.Admin'; RequiredVersion = '0.2.2'; },
         @{ModuleName = 'Azs.Compute.Admin'; RequiredVersion = '0.2.3'; },
         @{ModuleName = 'Azs.Fabric.Admin'; RequiredVersion = '0.4.1'; },
