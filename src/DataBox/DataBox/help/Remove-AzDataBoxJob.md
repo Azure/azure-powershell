@@ -48,7 +48,7 @@ Deletes the specified databox job
 ```powershell
 PS C:\> Remove-AzDataBoxJob -ResourceId "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/IrfansRG/providers/Microsoft.DataBox/jobs/Test"
 
-Successfully Deleted the Databox Job 
+Successfully Deleted the Databox Job
 ```
 
 Deletes the specified databox job
