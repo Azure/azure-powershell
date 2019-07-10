@@ -19,12 +19,16 @@
 -->
 ## Upcoming Release
 * Fix an error in help document of `Remove-AzTag`.
+* Fix for aliases missing from output of Get-AzPolicyAlias
+* Update resource client to new version that retrieves providers and aliases at tenant level
+* Fix the bug that the output of some sub-resource is empty when using `Get-AzResource`.
+* Update Get-AzPolicyAlias to retrieve aliases at tenant level
+* Update -Policy parameter of New-AzPolicyDefinition and Set-AzPolicyDefinition to allow full policy object
 
 ## Version 1.9.0
 * Update references in .psd1 to use relative path
 * Fix an issue where template deployment fails to read a template parameter if its name conflicts with some built-in parameter name.
 * Updated policy cmdlets to use new api version 2019-09-01 that introduces grouping support within policy set definitions.
-* Fix the bug that the output of some sub-resource is empty when using `Get-AzResource`.
 
 ## Version 1.8.0
 - Updated policy cmdlets to use new api version 2019-06-01 that has new EnforcementMode property in policy assignment.
