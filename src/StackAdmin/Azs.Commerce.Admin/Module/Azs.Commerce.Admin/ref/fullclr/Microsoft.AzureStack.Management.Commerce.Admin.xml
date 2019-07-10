@@ -1,0 +1,962 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.AzureStack.Management.Commerce.Admin</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.AzureStack.Management.Commerce.Admin.CommerceAdminClient">
+            <summary>
+            Commerce Admin Client
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Commerce.Admin.CommerceAdminClient.BaseUri">
+            <summary>
+            The base URI of the service.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Commerce.Admin.CommerceAdminClient.SerializationSettings">
+            <summary>
+            Gets or sets json serialization settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Commerce.Admin.CommerceAdminClient.DeserializationSettings">
+            <summary>
+            Gets or sets json deserialization settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Commerce.Admin.CommerceAdminClient.Credentials">
+            <summary>
+            Credentials needed for the client to connect to Azure.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Commerce.Admin.CommerceAdminClient.SubscriptionId">
+            <summary>
+            Subscription credentials which uniquely identify Microsoft Azure
+            subscription.The subscription ID forms part of the URI for every service
+            call.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Commerce.Admin.CommerceAdminClient.ApiVersion">
+            <summary>
+            Client API Version.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Commerce.Admin.CommerceAdminClient.AcceptLanguage">
+            <summary>
+            Gets or sets the preferred language for the response.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Commerce.Admin.CommerceAdminClient.LongRunningOperationRetryTimeout">
+            <summary>
+            Gets or sets the retry timeout in seconds for Long Running Operations.
+            Default value is 30.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Commerce.Admin.CommerceAdminClient.GenerateClientRequestId">
+            <summary>
+            When set to true a unique x-ms-client-request-id value is generated and
+            included in each request. Default is true.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Commerce.Admin.CommerceAdminClient.Operations">
+            <summary>
+            Gets the IOperations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Commerce.Admin.CommerceAdminClient.SubscriberUsageAggregates">
+            <summary>
+            Gets the ISubscriberUsageAggregatesOperations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Commerce.Admin.CommerceAdminClient.#ctor(System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the CommerceAdminClient class.
+            </summary>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Commerce.Admin.CommerceAdminClient.#ctor(System.Net.Http.HttpClientHandler,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the CommerceAdminClient class.
+            </summary>
+            <param name='rootHandler'>
+            Optional. The http client handler used to handle http transport.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Commerce.Admin.CommerceAdminClient.#ctor(System.Uri,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the CommerceAdminClient class.
+            </summary>
+            <param name='baseUri'>
+            Optional. The base URI of the service.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Commerce.Admin.CommerceAdminClient.#ctor(System.Uri,System.Net.Http.HttpClientHandler,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the CommerceAdminClient class.
+            </summary>
+            <param name='baseUri'>
+            Optional. The base URI of the service.
+            </param>
+            <param name='rootHandler'>
+            Optional. The http client handler used to handle http transport.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Commerce.Admin.CommerceAdminClient.#ctor(Microsoft.Rest.ServiceClientCredentials,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the CommerceAdminClient class.
+            </summary>
+            <param name='credentials'>
+            Required. Credentials needed for the client to connect to Azure.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Commerce.Admin.CommerceAdminClient.#ctor(Microsoft.Rest.ServiceClientCredentials,System.Net.Http.HttpClientHandler,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the CommerceAdminClient class.
+            </summary>
+            <param name='credentials'>
+            Required. Credentials needed for the client to connect to Azure.
+            </param>
+            <param name='rootHandler'>
+            Optional. The http client handler used to handle http transport.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Commerce.Admin.CommerceAdminClient.#ctor(System.Uri,Microsoft.Rest.ServiceClientCredentials,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the CommerceAdminClient class.
+            </summary>
+            <param name='baseUri'>
+            Optional. The base URI of the service.
+            </param>
+            <param name='credentials'>
+            Required. Credentials needed for the client to connect to Azure.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Commerce.Admin.CommerceAdminClient.#ctor(System.Uri,Microsoft.Rest.ServiceClientCredentials,System.Net.Http.HttpClientHandler,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the CommerceAdminClient class.
+            </summary>
+            <param name='baseUri'>
+            Optional. The base URI of the service.
+            </param>
+            <param name='credentials'>
+            Required. Credentials needed for the client to connect to Azure.
+            </param>
+            <param name='rootHandler'>
+            Optional. The http client handler used to handle http transport.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Commerce.Admin.CommerceAdminClient.Initialize">
+            <summary>
+            Initializes client properties.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Commerce.Admin.CommerceAdminClient.UpdateEncryptionWithHttpMessagesAsync(System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Update the encryption.
+            </summary>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Commerce.Admin.CommerceAdminClientExtensions">
+            <summary>
+            Extension methods for CommerceAdminClient.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Commerce.Admin.CommerceAdminClientExtensions.UpdateEncryption(Microsoft.AzureStack.Management.Commerce.Admin.ICommerceAdminClient)">
+            <summary>
+            Update the encryption.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Commerce.Admin.CommerceAdminClientExtensions.UpdateEncryptionAsync(Microsoft.AzureStack.Management.Commerce.Admin.ICommerceAdminClient,System.Threading.CancellationToken)">
+            <summary>
+            Update the encryption.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Commerce.Admin.ICommerceAdminClient">
+            <summary>
+            Commerce Admin Client
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Commerce.Admin.ICommerceAdminClient.BaseUri">
+            <summary>
+            The base URI of the service.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Commerce.Admin.ICommerceAdminClient.SerializationSettings">
+            <summary>
+            Gets or sets json serialization settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Commerce.Admin.ICommerceAdminClient.DeserializationSettings">
+            <summary>
+            Gets or sets json deserialization settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Commerce.Admin.ICommerceAdminClient.Credentials">
+            <summary>
+            Credentials needed for the client to connect to Azure.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Commerce.Admin.ICommerceAdminClient.SubscriptionId">
+            <summary>
+            Subscription credentials which uniquely identify Microsoft Azure
+            subscription.The subscription ID forms part of the URI for every
+            service call.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Commerce.Admin.ICommerceAdminClient.ApiVersion">
+            <summary>
+            Client API Version.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Commerce.Admin.ICommerceAdminClient.AcceptLanguage">
+            <summary>
+            Gets or sets the preferred language for the response.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Commerce.Admin.ICommerceAdminClient.LongRunningOperationRetryTimeout">
+            <summary>
+            Gets or sets the retry timeout in seconds for Long Running
+            Operations. Default value is 30.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Commerce.Admin.ICommerceAdminClient.GenerateClientRequestId">
+            <summary>
+            When set to true a unique x-ms-client-request-id value is generated
+            and included in each request. Default is true.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Commerce.Admin.ICommerceAdminClient.Operations">
+            <summary>
+            Gets the IOperations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Commerce.Admin.ICommerceAdminClient.SubscriberUsageAggregates">
+            <summary>
+            Gets the ISubscriberUsageAggregatesOperations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Commerce.Admin.ICommerceAdminClient.UpdateEncryptionWithHttpMessagesAsync(System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Update the encryption.
+            </summary>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Commerce.Admin.IOperations">
+            <summary>
+            Operations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Commerce.Admin.IOperations.ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns the list of supported REST operations.
+            </summary>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Commerce.Admin.IOperations.ListNextWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns the list of supported REST operations.
+            </summary>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Commerce.Admin.ISubscriberUsageAggregatesOperations">
+            <summary>
+            SubscriberUsageAggregatesOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Commerce.Admin.ISubscriberUsageAggregatesOperations.ListWithHttpMessagesAsync(System.DateTime,System.DateTime,System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Gets a collection of SubscriberUsageAggregates, which are
+            UsageAggregates from users.
+            </summary>
+            <param name='reportedStartTime'>
+            The reported start time (inclusive).
+            </param>
+            <param name='reportedEndTime'>
+            The reported end time (exclusive).
+            </param>
+            <param name='aggregationGranularity'>
+            The aggregation granularity.
+            </param>
+            <param name='subscriberId'>
+            The tenant subscription identifier.
+            </param>
+            <param name='continuationToken'>
+            The continuation token.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Commerce.Admin.ISubscriberUsageAggregatesOperations.ListNextWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Gets a collection of SubscriberUsageAggregates, which are
+            UsageAggregates from users.
+            </summary>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Commerce.Admin.Models.Display">
+            <summary>
+            Contains the localized display information for this particular
+            operation / action.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Commerce.Admin.Models.Display.#ctor">
+            <summary>
+            Initializes a new instance of the Display class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Commerce.Admin.Models.Display.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the Display class.
+            </summary>
+            <param name="provider">The localized, friendly version of the
+            resource provider name. The provider name is expected to include
+            the name of the publisher or company responsible. The provider name
+            format should use title case and begin with "Microsoft" for
+            first-party services. For example, the provider name may
+            be"Microsoft Monitoring Insights" or "Microsoft Compute".</param>
+            <param name="resource">The localized, friendly version of the
+            resource type related to this action or operation; the resource
+            type should match the public documentation for the resource
+            provider.</param>
+            <param name="operation">The localized, friendly name for the
+            operation. Use the name as it will be displayed to the
+            user.</param>
+            <param name="description">The localized, friendly description for
+            the operation. The description will be displayed to the user. It
+            should be thorough and concise for used in both tooltips and
+            detailed views.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Commerce.Admin.Models.Display.Provider">
+            <summary>
+            Gets or sets the localized, friendly version of the resource
+            provider name. The provider name is expected to include the name of
+            the publisher or company responsible. The provider name format
+            should use title case and begin with "Microsoft" for first-party
+            services. For example, the provider name may be"Microsoft
+            Monitoring Insights" or "Microsoft Compute".
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Commerce.Admin.Models.Display.Resource">
+            <summary>
+            Gets or sets the localized, friendly version of the resource type
+            related to this action or operation; the resource type should match
+            the public documentation for the resource provider.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Commerce.Admin.Models.Display.Operation">
+            <summary>
+            Gets or sets the localized, friendly name for the operation. Use
+            the name as it will be displayed to the user.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Commerce.Admin.Models.Display.Description">
+            <summary>
+            Gets or sets the localized, friendly description for the operation.
+            The description will be displayed to the user. It should be
+            thorough and concise for used in both tooltips and detailed views.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Commerce.Admin.Models.Operation">
+            <summary>
+            Describes the supported REST operation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Commerce.Admin.Models.Operation.#ctor">
+            <summary>
+            Initializes a new instance of the Operation class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Commerce.Admin.Models.Operation.#ctor(System.String,Microsoft.AzureStack.Management.Commerce.Admin.Models.Display)">
+            <summary>
+            Initializes a new instance of the Operation class.
+            </summary>
+            <param name="name">The name of the operation performed on the
+            object. The name should match the action name that appears in RBAC
+            or the event service.</param>
+            <param name="display">Contains the localized display information
+            for this particular operation or action.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Commerce.Admin.Models.Operation.Name">
+            <summary>
+            Gets or sets the name of the operation performed on the object. The
+            name should match the action name that appears in RBAC or the event
+            service.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Commerce.Admin.Models.Operation.Display">
+            <summary>
+            Gets or sets contains the localized display information for this
+            particular operation or action.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Commerce.Admin.Models.Page`1">
+            <summary>
+            Defines a page in Azure responses.
+            </summary>
+            <typeparam name="T">Type of the page content items</typeparam>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Commerce.Admin.Models.Page`1.NextPageLink">
+            <summary>
+            Gets the link to the next page.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Commerce.Admin.Models.Page`1.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>A an enumerator that can be used to iterate through the collection.</returns>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Commerce.Admin.Models.Page`1.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>A an enumerator that can be used to iterate through the collection.</returns>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Commerce.Admin.Models.Resource">
+            <summary>
+            Base Resource Object
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Commerce.Admin.Models.Resource.#ctor">
+            <summary>
+            Initializes a new instance of the Resource class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Commerce.Admin.Models.Resource.#ctor(System.String,System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Initializes a new instance of the Resource class.
+            </summary>
+            <param name="id">URI of the resource.</param>
+            <param name="name">Name of the resource.</param>
+            <param name="type">Type of resource.</param>
+            <param name="location">Location where resource is location.</param>
+            <param name="tags">List of key-value pairs.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Commerce.Admin.Models.Resource.Id">
+            <summary>
+            Gets URI of the resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Commerce.Admin.Models.Resource.Name">
+            <summary>
+            Gets name of the resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Commerce.Admin.Models.Resource.Type">
+            <summary>
+            Gets type of resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Commerce.Admin.Models.Resource.Location">
+            <summary>
+            Gets location where resource is location.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Commerce.Admin.Models.Resource.Tags">
+            <summary>
+            Gets list of key-value pairs.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Commerce.Admin.Models.UsageAggregate">
+            <summary>
+            Aggregate usage values for resource.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Commerce.Admin.Models.UsageAggregate.#ctor">
+            <summary>
+            Initializes a new instance of the UsageAggregate class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Commerce.Admin.Models.UsageAggregate.#ctor(System.String,System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the UsageAggregate class.
+            </summary>
+            <param name="id">URI of the resource.</param>
+            <param name="name">Name of the resource.</param>
+            <param name="type">Type of resource.</param>
+            <param name="location">Location where resource is location.</param>
+            <param name="tags">List of key-value pairs.</param>
+            <param name="subscriptionId">Subscription ID of tenant using
+            plan.</param>
+            <param name="usageStartTime">UTC start time for the usage category
+            to which this usage aggregate belongs.</param>
+            <param name="usageEndTime">UTC end time for the usage category to
+            which this usage aggregate belongs.</param>
+            <param name="instanceData">Key-value pairs of instance details
+            represented as a string.</param>
+            <param name="quantity">The amount of the resource consumption that
+            occurred in this time frame.</param>
+            <param name="meterId">Unique ID for the resource that was consumed,
+            for example, the Resource ID.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Commerce.Admin.Models.UsageAggregate.SubscriptionId">
+            <summary>
+            Gets or sets subscription ID of tenant using plan.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Commerce.Admin.Models.UsageAggregate.UsageStartTime">
+            <summary>
+            Gets or sets UTC start time for the usage category to which this
+            usage aggregate belongs.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Commerce.Admin.Models.UsageAggregate.UsageEndTime">
+            <summary>
+            Gets or sets UTC end time for the usage category to which this
+            usage aggregate belongs.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Commerce.Admin.Models.UsageAggregate.InstanceData">
+            <summary>
+            Gets or sets key-value pairs of instance details represented as a
+            string.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Commerce.Admin.Models.UsageAggregate.Quantity">
+            <summary>
+            Gets or sets the amount of the resource consumption that occurred
+            in this time frame.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Commerce.Admin.Models.UsageAggregate.MeterId">
+            <summary>
+            Gets or sets unique ID for the resource that was consumed, for
+            example, the Resource ID.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Commerce.Admin.Operations">
+            <summary>
+            Operations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Commerce.Admin.Operations.#ctor(Microsoft.AzureStack.Management.Commerce.Admin.CommerceAdminClient)">
+            <summary>
+            Initializes a new instance of the Operations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Commerce.Admin.Operations.Client">
+            <summary>
+            Gets a reference to the CommerceAdminClient
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Commerce.Admin.Operations.ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns the list of supported REST operations.
+            </summary>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Commerce.Admin.Operations.ListNextWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Returns the list of supported REST operations.
+            </summary>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Commerce.Admin.OperationsExtensions">
+            <summary>
+            Extension methods for Operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Commerce.Admin.OperationsExtensions.List(Microsoft.AzureStack.Management.Commerce.Admin.IOperations)">
+            <summary>
+            Returns the list of supported REST operations.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Commerce.Admin.OperationsExtensions.ListAsync(Microsoft.AzureStack.Management.Commerce.Admin.IOperations,System.Threading.CancellationToken)">
+            <summary>
+            Returns the list of supported REST operations.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Commerce.Admin.OperationsExtensions.ListNext(Microsoft.AzureStack.Management.Commerce.Admin.IOperations,System.String)">
+            <summary>
+            Returns the list of supported REST operations.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Commerce.Admin.OperationsExtensions.ListNextAsync(Microsoft.AzureStack.Management.Commerce.Admin.IOperations,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Returns the list of supported REST operations.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Commerce.Admin.SubscriberUsageAggregatesOperations">
+            <summary>
+            SubscriberUsageAggregatesOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Commerce.Admin.SubscriberUsageAggregatesOperations.#ctor(Microsoft.AzureStack.Management.Commerce.Admin.CommerceAdminClient)">
+            <summary>
+            Initializes a new instance of the SubscriberUsageAggregatesOperations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Commerce.Admin.SubscriberUsageAggregatesOperations.Client">
+            <summary>
+            Gets a reference to the CommerceAdminClient
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Commerce.Admin.SubscriberUsageAggregatesOperations.ListWithHttpMessagesAsync(System.DateTime,System.DateTime,System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Gets a collection of SubscriberUsageAggregates, which are UsageAggregates
+            from users.
+            </summary>
+            <param name='reportedStartTime'>
+            The reported start time (inclusive).
+            </param>
+            <param name='reportedEndTime'>
+            The reported end time (exclusive).
+            </param>
+            <param name='aggregationGranularity'>
+            The aggregation granularity.
+            </param>
+            <param name='subscriberId'>
+            The tenant subscription identifier.
+            </param>
+            <param name='continuationToken'>
+            The continuation token.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Commerce.Admin.SubscriberUsageAggregatesOperations.ListNextWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Gets a collection of SubscriberUsageAggregates, which are UsageAggregates
+            from users.
+            </summary>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Commerce.Admin.SubscriberUsageAggregatesOperationsExtensions">
+            <summary>
+            Extension methods for SubscriberUsageAggregatesOperations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Commerce.Admin.SubscriberUsageAggregatesOperationsExtensions.List(Microsoft.AzureStack.Management.Commerce.Admin.ISubscriberUsageAggregatesOperations,System.DateTime,System.DateTime,System.String,System.String,System.String)">
+            <summary>
+            Gets a collection of SubscriberUsageAggregates, which are UsageAggregates
+            from users.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='reportedStartTime'>
+            The reported start time (inclusive).
+            </param>
+            <param name='reportedEndTime'>
+            The reported end time (exclusive).
+            </param>
+            <param name='aggregationGranularity'>
+            The aggregation granularity.
+            </param>
+            <param name='subscriberId'>
+            The tenant subscription identifier.
+            </param>
+            <param name='continuationToken'>
+            The continuation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Commerce.Admin.SubscriberUsageAggregatesOperationsExtensions.ListAsync(Microsoft.AzureStack.Management.Commerce.Admin.ISubscriberUsageAggregatesOperations,System.DateTime,System.DateTime,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets a collection of SubscriberUsageAggregates, which are UsageAggregates
+            from users.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='reportedStartTime'>
+            The reported start time (inclusive).
+            </param>
+            <param name='reportedEndTime'>
+            The reported end time (exclusive).
+            </param>
+            <param name='aggregationGranularity'>
+            The aggregation granularity.
+            </param>
+            <param name='subscriberId'>
+            The tenant subscription identifier.
+            </param>
+            <param name='continuationToken'>
+            The continuation token.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Commerce.Admin.SubscriberUsageAggregatesOperationsExtensions.ListNext(Microsoft.AzureStack.Management.Commerce.Admin.ISubscriberUsageAggregatesOperations,System.String)">
+            <summary>
+            Gets a collection of SubscriberUsageAggregates, which are UsageAggregates
+            from users.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Commerce.Admin.SubscriberUsageAggregatesOperationsExtensions.ListNextAsync(Microsoft.AzureStack.Management.Commerce.Admin.ISubscriberUsageAggregatesOperations,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets a collection of SubscriberUsageAggregates, which are UsageAggregates
+            from users.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+    </members>
+</doc>

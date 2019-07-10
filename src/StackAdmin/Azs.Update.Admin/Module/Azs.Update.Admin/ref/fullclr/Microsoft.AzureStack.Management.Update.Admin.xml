@@ -1,0 +1,1757 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.AzureStack.Management.Update.Admin</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.AzureStack.Management.Update.Admin.IUpdateAdminClient">
+            <summary>
+            Update Admin Client
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.IUpdateAdminClient.BaseUri">
+            <summary>
+            The base URI of the service.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.IUpdateAdminClient.SerializationSettings">
+            <summary>
+            Gets or sets json serialization settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.IUpdateAdminClient.DeserializationSettings">
+            <summary>
+            Gets or sets json deserialization settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.IUpdateAdminClient.Credentials">
+            <summary>
+            Credentials needed for the client to connect to Azure.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.IUpdateAdminClient.ApiVersion">
+            <summary>
+            Client API Version.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.IUpdateAdminClient.SubscriptionId">
+            <summary>
+            Subscription credentials which uniquely identify Microsoft Azure
+            subscription.  The subscription ID forms part of the URI for every
+            service call.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.IUpdateAdminClient.AcceptLanguage">
+            <summary>
+            Gets or sets the preferred language for the response.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.IUpdateAdminClient.LongRunningOperationRetryTimeout">
+            <summary>
+            Gets or sets the retry timeout in seconds for Long Running
+            Operations. Default value is 30.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.IUpdateAdminClient.GenerateClientRequestId">
+            <summary>
+            When set to true a unique x-ms-client-request-id value is generated
+            and included in each request. Default is true.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.IUpdateAdminClient.Updates">
+            <summary>
+            Gets the IUpdatesOperations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.IUpdateAdminClient.UpdateLocations">
+            <summary>
+            Gets the IUpdateLocationsOperations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.IUpdateAdminClient.UpdateRuns">
+            <summary>
+            Gets the IUpdateRunsOperations.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Update.Admin.IUpdateLocationsOperations">
+            <summary>
+            UpdateLocationsOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.IUpdateLocationsOperations.ListWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get the list of update locations.
+            </summary>
+            <param name='resourceGroupName'>
+            Resource group name.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.IUpdateLocationsOperations.GetWithHttpMessagesAsync(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get an update location based on name.
+            </summary>
+            <param name='resourceGroupName'>
+            Resource group name.
+            </param>
+            <param name='updateLocation'>
+            The name of the update location.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Update.Admin.IUpdateRunsOperations">
+            <summary>
+            UpdateRunsOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.IUpdateRunsOperations.ListWithHttpMessagesAsync(System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get the list of update runs.
+            </summary>
+            <param name='resourceGroupName'>
+            Resource group name.
+            </param>
+            <param name='updateLocation'>
+            The name of the update location.
+            </param>
+            <param name='updateName'>
+            Name of the update.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.IUpdateRunsOperations.GetWithHttpMessagesAsync(System.String,System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get the list of update locations
+            </summary>
+            <param name='resourceGroupName'>
+            Resource group name.
+            </param>
+            <param name='updateLocation'>
+            The name of the update location.
+            </param>
+            <param name='updateName'>
+            Name of the update.
+            </param>
+            <param name='runName'>
+            Update run identifier.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.IUpdateRunsOperations.RerunWithHttpMessagesAsync(System.String,System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Resume a failed update.
+            </summary>
+            <param name='resourceGroupName'>
+            Resource group name.
+            </param>
+            <param name='updateLocation'>
+            The name of the update location.
+            </param>
+            <param name='updateName'>
+            Name of the update.
+            </param>
+            <param name='runName'>
+            Update run identifier.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.IUpdateRunsOperations.ListNextWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get the list of update runs.
+            </summary>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Update.Admin.IUpdatesOperations">
+            <summary>
+            UpdatesOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.IUpdatesOperations.ListWithHttpMessagesAsync(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get the list of update locations
+            </summary>
+            <param name='resourceGroupName'>
+            Resource group name.
+            </param>
+            <param name='updateLocation'>
+            The name of the update location.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.IUpdatesOperations.GetWithHttpMessagesAsync(System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get a specific update at an update location.
+            </summary>
+            <param name='resourceGroupName'>
+            Resource group name.
+            </param>
+            <param name='updateLocation'>
+            The name of the update location.
+            </param>
+            <param name='updateName'>
+            Name of the update.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.IUpdatesOperations.ApplyWithHttpMessagesAsync(System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Apply a specific update at an update location.
+            </summary>
+            <param name='resourceGroupName'>
+            Resource group name.
+            </param>
+            <param name='updateLocation'>
+            The name of the update location.
+            </param>
+            <param name='updateName'>
+            Name of the update.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.IUpdatesOperations.BeginApplyWithHttpMessagesAsync(System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Apply a specific update at an update location.
+            </summary>
+            <param name='resourceGroupName'>
+            Resource group name.
+            </param>
+            <param name='updateLocation'>
+            The name of the update location.
+            </param>
+            <param name='updateName'>
+            Name of the update.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.IUpdatesOperations.ListNextWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get the list of update locations
+            </summary>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Update.Admin.Models.PackageType">
+            <summary>
+            Defines values for PackageType.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Update.Admin.Models.Page`1">
+            <summary>
+            Defines a page in Azure responses.
+            </summary>
+            <typeparam name="T">Type of the page content items</typeparam>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.Models.Page`1.NextPageLink">
+            <summary>
+            Gets the link to the next page.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.Models.Page`1.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>A an enumerator that can be used to iterate through the collection.</returns>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.Models.Page`1.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>A an enumerator that can be used to iterate through the collection.</returns>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Update.Admin.Models.Page1`1">
+            <summary>
+            Defines a page in Azure responses.
+            </summary>
+            <typeparam name="T">Type of the page content items</typeparam>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.Models.Page1`1.NextPageLink">
+            <summary>
+            Gets the link to the next page.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.Models.Page1`1.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>A an enumerator that can be used to iterate through the collection.</returns>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.Models.Page1`1.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>A an enumerator that can be used to iterate through the collection.</returns>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Update.Admin.Models.RegionUpdateState">
+            <summary>
+            Defines values for RegionUpdateState.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Update.Admin.Models.Resource">
+            <summary>
+            Base Resource Object
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.Models.Resource.#ctor">
+            <summary>
+            Initializes a new instance of the Resource class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.Models.Resource.#ctor(System.String,System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Initializes a new instance of the Resource class.
+            </summary>
+            <param name="id">URI of the resource.</param>
+            <param name="name">Name of the resource.</param>
+            <param name="type">Type of resource.</param>
+            <param name="location">Region location of resource.</param>
+            <param name="tags">List of key-value pairs.</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.Models.Resource.Id">
+            <summary>
+            Gets URI of the resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.Models.Resource.Name">
+            <summary>
+            Gets name of the resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.Models.Resource.Type">
+            <summary>
+            Gets type of resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.Models.Resource.Location">
+            <summary>
+            Gets or sets region location of resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.Models.Resource.Tags">
+            <summary>
+            Gets or sets list of key-value pairs.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Update.Admin.Models.Step">
+            <summary>
+            Inforamtion about each step of the update process.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.Models.Step.#ctor">
+            <summary>
+            Initializes a new instance of the Step class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.Models.Step.#ctor(System.String,System.String,System.String,System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Collections.Generic.IList{Microsoft.AzureStack.Management.Update.Admin.Models.Step})">
+            <summary>
+            Initializes a new instance of the Step class.
+            </summary>
+            <param name="name">Name of the step.</param>
+            <param name="description">Description of the step.</param>
+            <param name="errorMessage">Error message, if any.</param>
+            <param name="status">State of the step.</param>
+            <param name="startTimeUtc">Time at which this step started
+            executing</param>
+            <param name="endTimeUtc">Time at which this step stopped
+            executing</param>
+            <param name="steps">Inner steps</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.Models.Step.Name">
+            <summary>
+            Gets or sets name of the step.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.Models.Step.Description">
+            <summary>
+            Gets or sets description of the step.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.Models.Step.ErrorMessage">
+            <summary>
+            Gets or sets error message, if any.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.Models.Step.Status">
+            <summary>
+            Gets or sets state of the step.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.Models.Step.StartTimeUtc">
+            <summary>
+            Gets or sets time at which this step started executing
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.Models.Step.EndTimeUtc">
+            <summary>
+            Gets or sets time at which this step stopped executing
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.Models.Step.Steps">
+            <summary>
+            Gets or sets inner steps
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Update.Admin.Models.Update">
+            <summary>
+            Information pertaining to an update.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.Models.Update.#ctor">
+            <summary>
+            Initializes a new instance of the Update class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.Models.Update.#ctor(System.String,System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.String,System.String,System.String,System.String,System.String,System.Nullable{System.Int64},System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the Update class.
+            </summary>
+            <param name="id">URI of the resource.</param>
+            <param name="name">Name of the resource.</param>
+            <param name="type">Type of resource.</param>
+            <param name="location">Region location of resource.</param>
+            <param name="tags">List of key-value pairs.</param>
+            <param name="dateAvailable">Date uploaded by provider.</param>
+            <param name="installedDate">Date update was installed.</param>
+            <param name="description">Description of the update.</param>
+            <param name="state">Current state of the update. Possible values
+            include: 'HasPrerequisite', 'Obsolete', 'Ready',
+            'NotApplicableBecauseAnotherUpdateIsInProgress', 'Installed',
+            'Failed', 'Installing'</param>
+            <param name="kbLink">Link to the KB article about the
+            update.</param>
+            <param name="minVersionRequired">The minimum version required to
+            install.</param>
+            <param name="packagePath">Path to the update package.</param>
+            <param name="packageSizeInMb">Size of update package.</param>
+            <param name="updateName">Name of the update.</param>
+            <param name="version">Version of the update.</param>
+            <param name="updateOemFile">OEM version of the update.</param>
+            <param name="publisher">Publisher of the update.</param>
+            <param name="packageType">Describes the components that will be
+            updated. Possible values include: 'Microsoft', 'Oem',
+            'Combined'</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.Models.Update.DateAvailable">
+            <summary>
+            Gets or sets date uploaded by provider.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.Models.Update.InstalledDate">
+            <summary>
+            Gets or sets date update was installed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.Models.Update.Description">
+            <summary>
+            Gets or sets description of the update.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.Models.Update.State">
+            <summary>
+            Gets or sets current state of the update. Possible values include:
+            'HasPrerequisite', 'Obsolete', 'Ready',
+            'NotApplicableBecauseAnotherUpdateIsInProgress', 'Installed',
+            'Failed', 'Installing'
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.Models.Update.KbLink">
+            <summary>
+            Gets or sets link to the KB article about the update.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.Models.Update.MinVersionRequired">
+            <summary>
+            Gets or sets the minimum version required to install.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.Models.Update.PackagePath">
+            <summary>
+            Gets or sets path to the update package.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.Models.Update.PackageSizeInMb">
+            <summary>
+            Gets or sets size of update package.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.Models.Update.UpdateName">
+            <summary>
+            Gets or sets name of the update.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.Models.Update.Version">
+            <summary>
+            Gets or sets version of the update.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.Models.Update.UpdateOemFile">
+            <summary>
+            Gets or sets OEM version of the update.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.Models.Update.Publisher">
+            <summary>
+            Gets or sets publisher of the update.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.Models.Update.PackageType">
+            <summary>
+            Gets or sets describes the components that will be updated.
+            Possible values include: 'Microsoft', 'Oem', 'Combined'
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Update.Admin.Models.UpdateLocation">
+            <summary>
+            Information related to a location's update status.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.Models.UpdateLocation.#ctor">
+            <summary>
+            Initializes a new instance of the UpdateLocation class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.Models.UpdateLocation.#ctor(System.String,System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String,System.Nullable{System.DateTime},System.String)">
+            <summary>
+            Initializes a new instance of the UpdateLocation class.
+            </summary>
+            <param name="id">URI of the resource.</param>
+            <param name="name">Name of the resource.</param>
+            <param name="type">Type of resource.</param>
+            <param name="location">Region location of resource.</param>
+            <param name="tags">List of key-value pairs.</param>
+            <param name="currentVersion">Current version of your AzureStack
+            deployment.</param>
+            <param name="currentOemVersion">Current OEM version of your
+            AzureStack deployment.</param>
+            <param name="lastUpdated">Date of last update.</param>
+            <param name="state">State with respect to the update. Possible
+            values include: 'Unknown', 'AppliedSuccessfully',
+            'AppliedUpdateAvailableSuccessfully', 'UpdateInProgress',
+            'UpdateFailed'</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.Models.UpdateLocation.CurrentVersion">
+            <summary>
+            Gets or sets current version of your AzureStack deployment.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.Models.UpdateLocation.CurrentOemVersion">
+            <summary>
+            Gets or sets current OEM version of your AzureStack deployment.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.Models.UpdateLocation.LastUpdated">
+            <summary>
+            Gets or sets date of last update.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.Models.UpdateLocation.State">
+            <summary>
+            Gets or sets state with respect to the update. Possible values
+            include: 'Unknown', 'AppliedSuccessfully',
+            'AppliedUpdateAvailableSuccessfully', 'UpdateInProgress',
+            'UpdateFailed'
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Update.Admin.Models.UpdateRun">
+            <summary>
+            Representation of a update run resource.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.Models.UpdateRun.#ctor">
+            <summary>
+            Initializes a new instance of the UpdateRun class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.Models.UpdateRun.#ctor(System.String,System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.String},Microsoft.AzureStack.Management.Update.Admin.Models.Step,System.Nullable{System.DateTime},System.String,System.String)">
+            <summary>
+            Initializes a new instance of the UpdateRun class.
+            </summary>
+            <param name="id">URI of the resource.</param>
+            <param name="name">Name of the resource.</param>
+            <param name="type">Type of resource.</param>
+            <param name="location">Region location of resource.</param>
+            <param name="tags">List of key-value pairs.</param>
+            <param name="progress">Current progress of the update run.</param>
+            <param name="timeStarted">Update start time.</param>
+            <param name="duration">Duration of the update.</param>
+            <param name="state">State of the update run. Possible values
+            include: 'Unknown', 'Succeeded', 'InProgress', 'Failed'</param>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.Models.UpdateRun.Progress">
+            <summary>
+            Gets or sets current progress of the update run.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.Models.UpdateRun.TimeStarted">
+            <summary>
+            Gets or sets update start time.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.Models.UpdateRun.Duration">
+            <summary>
+            Gets or sets duration of the update.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.Models.UpdateRun.State">
+            <summary>
+            Gets or sets state of the update run. Possible values include:
+            'Unknown', 'Succeeded', 'InProgress', 'Failed'
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Update.Admin.Models.UpdateRunState">
+            <summary>
+            Defines values for UpdateRunState.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Update.Admin.Models.UpdateState">
+            <summary>
+            Defines values for UpdateState.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Update.Admin.UpdateAdminClient">
+            <summary>
+            Update Admin Client
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.UpdateAdminClient.BaseUri">
+            <summary>
+            The base URI of the service.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.UpdateAdminClient.SerializationSettings">
+            <summary>
+            Gets or sets json serialization settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.UpdateAdminClient.DeserializationSettings">
+            <summary>
+            Gets or sets json deserialization settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.UpdateAdminClient.Credentials">
+            <summary>
+            Credentials needed for the client to connect to Azure.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.UpdateAdminClient.ApiVersion">
+            <summary>
+            Client API Version.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.UpdateAdminClient.SubscriptionId">
+            <summary>
+            Subscription credentials which uniquely identify Microsoft Azure
+            subscription.  The subscription ID forms part of the URI for every service
+            call.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.UpdateAdminClient.AcceptLanguage">
+            <summary>
+            Gets or sets the preferred language for the response.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.UpdateAdminClient.LongRunningOperationRetryTimeout">
+            <summary>
+            Gets or sets the retry timeout in seconds for Long Running Operations.
+            Default value is 30.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.UpdateAdminClient.GenerateClientRequestId">
+            <summary>
+            When set to true a unique x-ms-client-request-id value is generated and
+            included in each request. Default is true.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.UpdateAdminClient.Updates">
+            <summary>
+            Gets the IUpdatesOperations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.UpdateAdminClient.UpdateLocations">
+            <summary>
+            Gets the IUpdateLocationsOperations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.UpdateAdminClient.UpdateRuns">
+            <summary>
+            Gets the IUpdateRunsOperations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.UpdateAdminClient.#ctor(System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the UpdateAdminClient class.
+            </summary>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.UpdateAdminClient.#ctor(System.Net.Http.HttpClientHandler,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the UpdateAdminClient class.
+            </summary>
+            <param name='rootHandler'>
+            Optional. The http client handler used to handle http transport.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.UpdateAdminClient.#ctor(System.Uri,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the UpdateAdminClient class.
+            </summary>
+            <param name='baseUri'>
+            Optional. The base URI of the service.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.UpdateAdminClient.#ctor(System.Uri,System.Net.Http.HttpClientHandler,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the UpdateAdminClient class.
+            </summary>
+            <param name='baseUri'>
+            Optional. The base URI of the service.
+            </param>
+            <param name='rootHandler'>
+            Optional. The http client handler used to handle http transport.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.UpdateAdminClient.#ctor(Microsoft.Rest.ServiceClientCredentials,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the UpdateAdminClient class.
+            </summary>
+            <param name='credentials'>
+            Required. Credentials needed for the client to connect to Azure.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.UpdateAdminClient.#ctor(Microsoft.Rest.ServiceClientCredentials,System.Net.Http.HttpClientHandler,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the UpdateAdminClient class.
+            </summary>
+            <param name='credentials'>
+            Required. Credentials needed for the client to connect to Azure.
+            </param>
+            <param name='rootHandler'>
+            Optional. The http client handler used to handle http transport.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.UpdateAdminClient.#ctor(System.Uri,Microsoft.Rest.ServiceClientCredentials,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the UpdateAdminClient class.
+            </summary>
+            <param name='baseUri'>
+            Optional. The base URI of the service.
+            </param>
+            <param name='credentials'>
+            Required. Credentials needed for the client to connect to Azure.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.UpdateAdminClient.#ctor(System.Uri,Microsoft.Rest.ServiceClientCredentials,System.Net.Http.HttpClientHandler,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Initializes a new instance of the UpdateAdminClient class.
+            </summary>
+            <param name='baseUri'>
+            Optional. The base URI of the service.
+            </param>
+            <param name='credentials'>
+            Required. Credentials needed for the client to connect to Azure.
+            </param>
+            <param name='rootHandler'>
+            Optional. The http client handler used to handle http transport.
+            </param>
+            <param name='handlers'>
+            Optional. The delegating handlers to add to the http client pipeline.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.UpdateAdminClient.Initialize">
+            <summary>
+            Initializes client properties.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Update.Admin.UpdateLocationsOperations">
+            <summary>
+            UpdateLocationsOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.UpdateLocationsOperations.#ctor(Microsoft.AzureStack.Management.Update.Admin.UpdateAdminClient)">
+            <summary>
+            Initializes a new instance of the UpdateLocationsOperations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.UpdateLocationsOperations.Client">
+            <summary>
+            Gets a reference to the UpdateAdminClient
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.UpdateLocationsOperations.ListWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get the list of update locations.
+            </summary>
+            <param name='resourceGroupName'>
+            Resource group name.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.UpdateLocationsOperations.GetWithHttpMessagesAsync(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get an update location based on name.
+            </summary>
+            <param name='resourceGroupName'>
+            Resource group name.
+            </param>
+            <param name='updateLocation'>
+            The name of the update location.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Update.Admin.UpdateLocationsOperationsExtensions">
+            <summary>
+            Extension methods for UpdateLocationsOperations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.UpdateLocationsOperationsExtensions.List(Microsoft.AzureStack.Management.Update.Admin.IUpdateLocationsOperations,System.String)">
+            <summary>
+            Get the list of update locations.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroupName'>
+            Resource group name.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.UpdateLocationsOperationsExtensions.ListAsync(Microsoft.AzureStack.Management.Update.Admin.IUpdateLocationsOperations,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Get the list of update locations.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroupName'>
+            Resource group name.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.UpdateLocationsOperationsExtensions.Get(Microsoft.AzureStack.Management.Update.Admin.IUpdateLocationsOperations,System.String,System.String)">
+            <summary>
+            Get an update location based on name.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroupName'>
+            Resource group name.
+            </param>
+            <param name='updateLocation'>
+            The name of the update location.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.UpdateLocationsOperationsExtensions.GetAsync(Microsoft.AzureStack.Management.Update.Admin.IUpdateLocationsOperations,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Get an update location based on name.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroupName'>
+            Resource group name.
+            </param>
+            <param name='updateLocation'>
+            The name of the update location.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Update.Admin.UpdateRunsOperations">
+            <summary>
+            UpdateRunsOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.UpdateRunsOperations.#ctor(Microsoft.AzureStack.Management.Update.Admin.UpdateAdminClient)">
+            <summary>
+            Initializes a new instance of the UpdateRunsOperations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.UpdateRunsOperations.Client">
+            <summary>
+            Gets a reference to the UpdateAdminClient
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.UpdateRunsOperations.ListWithHttpMessagesAsync(System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get the list of update runs.
+            </summary>
+            <param name='resourceGroupName'>
+            Resource group name.
+            </param>
+            <param name='updateLocation'>
+            The name of the update location.
+            </param>
+            <param name='updateName'>
+            Name of the update.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.UpdateRunsOperations.GetWithHttpMessagesAsync(System.String,System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get the list of update locations
+            </summary>
+            <param name='resourceGroupName'>
+            Resource group name.
+            </param>
+            <param name='updateLocation'>
+            The name of the update location.
+            </param>
+            <param name='updateName'>
+            Name of the update.
+            </param>
+            <param name='runName'>
+            Update run identifier.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.UpdateRunsOperations.RerunWithHttpMessagesAsync(System.String,System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Resume a failed update.
+            </summary>
+            <param name='resourceGroupName'>
+            Resource group name.
+            </param>
+            <param name='updateLocation'>
+            The name of the update location.
+            </param>
+            <param name='updateName'>
+            Name of the update.
+            </param>
+            <param name='runName'>
+            Update run identifier.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.UpdateRunsOperations.ListNextWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get the list of update runs.
+            </summary>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Update.Admin.UpdateRunsOperationsExtensions">
+            <summary>
+            Extension methods for UpdateRunsOperations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.UpdateRunsOperationsExtensions.List(Microsoft.AzureStack.Management.Update.Admin.IUpdateRunsOperations,System.String,System.String,System.String)">
+            <summary>
+            Get the list of update runs.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroupName'>
+            Resource group name.
+            </param>
+            <param name='updateLocation'>
+            The name of the update location.
+            </param>
+            <param name='updateName'>
+            Name of the update.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.UpdateRunsOperationsExtensions.ListAsync(Microsoft.AzureStack.Management.Update.Admin.IUpdateRunsOperations,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Get the list of update runs.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroupName'>
+            Resource group name.
+            </param>
+            <param name='updateLocation'>
+            The name of the update location.
+            </param>
+            <param name='updateName'>
+            Name of the update.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.UpdateRunsOperationsExtensions.Get(Microsoft.AzureStack.Management.Update.Admin.IUpdateRunsOperations,System.String,System.String,System.String,System.String)">
+            <summary>
+            Get the list of update locations
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroupName'>
+            Resource group name.
+            </param>
+            <param name='updateLocation'>
+            The name of the update location.
+            </param>
+            <param name='updateName'>
+            Name of the update.
+            </param>
+            <param name='runName'>
+            Update run identifier.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.UpdateRunsOperationsExtensions.GetAsync(Microsoft.AzureStack.Management.Update.Admin.IUpdateRunsOperations,System.String,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Get the list of update locations
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroupName'>
+            Resource group name.
+            </param>
+            <param name='updateLocation'>
+            The name of the update location.
+            </param>
+            <param name='updateName'>
+            Name of the update.
+            </param>
+            <param name='runName'>
+            Update run identifier.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.UpdateRunsOperationsExtensions.Rerun(Microsoft.AzureStack.Management.Update.Admin.IUpdateRunsOperations,System.String,System.String,System.String,System.String)">
+            <summary>
+            Resume a failed update.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroupName'>
+            Resource group name.
+            </param>
+            <param name='updateLocation'>
+            The name of the update location.
+            </param>
+            <param name='updateName'>
+            Name of the update.
+            </param>
+            <param name='runName'>
+            Update run identifier.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.UpdateRunsOperationsExtensions.RerunAsync(Microsoft.AzureStack.Management.Update.Admin.IUpdateRunsOperations,System.String,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Resume a failed update.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroupName'>
+            Resource group name.
+            </param>
+            <param name='updateLocation'>
+            The name of the update location.
+            </param>
+            <param name='updateName'>
+            Name of the update.
+            </param>
+            <param name='runName'>
+            Update run identifier.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.UpdateRunsOperationsExtensions.ListNext(Microsoft.AzureStack.Management.Update.Admin.IUpdateRunsOperations,System.String)">
+            <summary>
+            Get the list of update runs.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.UpdateRunsOperationsExtensions.ListNextAsync(Microsoft.AzureStack.Management.Update.Admin.IUpdateRunsOperations,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Get the list of update runs.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Update.Admin.UpdatesOperations">
+            <summary>
+            UpdatesOperations operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.UpdatesOperations.#ctor(Microsoft.AzureStack.Management.Update.Admin.UpdateAdminClient)">
+            <summary>
+            Initializes a new instance of the UpdatesOperations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+        </member>
+        <member name="P:Microsoft.AzureStack.Management.Update.Admin.UpdatesOperations.Client">
+            <summary>
+            Gets a reference to the UpdateAdminClient
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.UpdatesOperations.ListWithHttpMessagesAsync(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get the list of update locations
+            </summary>
+            <param name='resourceGroupName'>
+            Resource group name.
+            </param>
+            <param name='updateLocation'>
+            The name of the update location.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.UpdatesOperations.GetWithHttpMessagesAsync(System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get a specific update at an update location.
+            </summary>
+            <param name='resourceGroupName'>
+            Resource group name.
+            </param>
+            <param name='updateLocation'>
+            The name of the update location.
+            </param>
+            <param name='updateName'>
+            Name of the update.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.UpdatesOperations.ApplyWithHttpMessagesAsync(System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Apply a specific update at an update location.
+            </summary>
+            <param name='resourceGroupName'>
+            Resource group name.
+            </param>
+            <param name='updateLocation'>
+            The name of the update location.
+            </param>
+            <param name='updateName'>
+            Name of the update.
+            </param>
+            <param name='customHeaders'>
+            The headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.UpdatesOperations.BeginApplyWithHttpMessagesAsync(System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Apply a specific update at an update location.
+            </summary>
+            <param name='resourceGroupName'>
+            Resource group name.
+            </param>
+            <param name='updateLocation'>
+            The name of the update location.
+            </param>
+            <param name='updateName'>
+            Name of the update.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.UpdatesOperations.ListNextWithHttpMessagesAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Get the list of update locations
+            </summary>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='customHeaders'>
+            Headers that will be added to request.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+            <exception cref="T:Microsoft.Rest.Azure.CloudException">
+            Thrown when the operation returned an invalid status code
+            </exception>
+            <exception cref="T:Microsoft.Rest.SerializationException">
+            Thrown when unable to deserialize the response
+            </exception>
+            <exception cref="T:Microsoft.Rest.ValidationException">
+            Thrown when a required parameter is null
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            Thrown when a required parameter is null
+            </exception>
+            <return>
+            A response object containing the response body and response headers.
+            </return>
+        </member>
+        <member name="T:Microsoft.AzureStack.Management.Update.Admin.UpdatesOperationsExtensions">
+            <summary>
+            Extension methods for UpdatesOperations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.UpdatesOperationsExtensions.List(Microsoft.AzureStack.Management.Update.Admin.IUpdatesOperations,System.String,System.String)">
+            <summary>
+            Get the list of update locations
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroupName'>
+            Resource group name.
+            </param>
+            <param name='updateLocation'>
+            The name of the update location.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.UpdatesOperationsExtensions.ListAsync(Microsoft.AzureStack.Management.Update.Admin.IUpdatesOperations,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Get the list of update locations
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroupName'>
+            Resource group name.
+            </param>
+            <param name='updateLocation'>
+            The name of the update location.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.UpdatesOperationsExtensions.Get(Microsoft.AzureStack.Management.Update.Admin.IUpdatesOperations,System.String,System.String,System.String)">
+            <summary>
+            Get a specific update at an update location.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroupName'>
+            Resource group name.
+            </param>
+            <param name='updateLocation'>
+            The name of the update location.
+            </param>
+            <param name='updateName'>
+            Name of the update.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.UpdatesOperationsExtensions.GetAsync(Microsoft.AzureStack.Management.Update.Admin.IUpdatesOperations,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Get a specific update at an update location.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroupName'>
+            Resource group name.
+            </param>
+            <param name='updateLocation'>
+            The name of the update location.
+            </param>
+            <param name='updateName'>
+            Name of the update.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.UpdatesOperationsExtensions.Apply(Microsoft.AzureStack.Management.Update.Admin.IUpdatesOperations,System.String,System.String,System.String)">
+            <summary>
+            Apply a specific update at an update location.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroupName'>
+            Resource group name.
+            </param>
+            <param name='updateLocation'>
+            The name of the update location.
+            </param>
+            <param name='updateName'>
+            Name of the update.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.UpdatesOperationsExtensions.ApplyAsync(Microsoft.AzureStack.Management.Update.Admin.IUpdatesOperations,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Apply a specific update at an update location.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroupName'>
+            Resource group name.
+            </param>
+            <param name='updateLocation'>
+            The name of the update location.
+            </param>
+            <param name='updateName'>
+            Name of the update.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.UpdatesOperationsExtensions.BeginApply(Microsoft.AzureStack.Management.Update.Admin.IUpdatesOperations,System.String,System.String,System.String)">
+            <summary>
+            Apply a specific update at an update location.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroupName'>
+            Resource group name.
+            </param>
+            <param name='updateLocation'>
+            The name of the update location.
+            </param>
+            <param name='updateName'>
+            Name of the update.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.UpdatesOperationsExtensions.BeginApplyAsync(Microsoft.AzureStack.Management.Update.Admin.IUpdatesOperations,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Apply a specific update at an update location.
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='resourceGroupName'>
+            Resource group name.
+            </param>
+            <param name='updateLocation'>
+            The name of the update location.
+            </param>
+            <param name='updateName'>
+            Name of the update.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.UpdatesOperationsExtensions.ListNext(Microsoft.AzureStack.Management.Update.Admin.IUpdatesOperations,System.String)">
+            <summary>
+            Get the list of update locations
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+        </member>
+        <member name="M:Microsoft.AzureStack.Management.Update.Admin.UpdatesOperationsExtensions.ListNextAsync(Microsoft.AzureStack.Management.Update.Admin.IUpdatesOperations,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Get the list of update locations
+            </summary>
+            <param name='operations'>
+            The operations group for this extension method.
+            </param>
+            <param name='nextPageLink'>
+            The NextLink from the previous successful call to List operation.
+            </param>
+            <param name='cancellationToken'>
+            The cancellation token.
+            </param>
+        </member>
+    </members>
+</doc>

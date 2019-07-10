@@ -1,0 +1,1447 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Rest.ClientRuntime.Azure</name>
+    </assembly>
+    <members>
+        <member name="M:Microsoft.Rest.Azure.AzureClientExtensions.GetLongRunningOperationResultAsync``1(Microsoft.Rest.Azure.IAzureClient,Microsoft.Rest.Azure.AzureOperationResponse{``0},System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Gets operation result for long running operations.
+            </summary>
+            <typeparam name="TBody">Type of the resource body</typeparam>
+            <param name="client">IAzureClient</param>
+            <param name="response">Response from the begin operation</param>
+            <param name="customHeaders">Headers that will be added to request</param>
+            <param name="cancellationToken">Cancellation token</param>
+            <returns>Response with created resource</returns>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.AzureClientExtensions.GetLongRunningOperationResultAsync``2(Microsoft.Rest.Azure.IAzureClient,Microsoft.Rest.Azure.AzureOperationResponse{``0,``1},System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Gets operation result for long running operations.
+            </summary>
+            <typeparam name="TBody">Type of the resource body</typeparam>
+            <typeparam name="THeader">Type of the resource header</typeparam>
+            <param name="client">IAzureClient</param>
+            <param name="response">Response from the begin operation</param>
+            <param name="customHeaders">Headers that will be added to request</param>
+            <param name="cancellationToken">Cancellation token</param>
+            <returns>Response with created resource</returns>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.AzureClientExtensions.GetLongRunningOperationResultAsync(Microsoft.Rest.Azure.IAzureClient,Microsoft.Rest.Azure.AzureOperationResponse,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Gets operation result for long running operations.
+            </summary>
+            <param name="client">IAzureClient</param>
+            <param name="response">Response from the begin operation</param>
+            <param name="customHeaders">Headers that will be added to request</param>
+            <param name="cancellationToken">Cancellation token</param>
+            <returns>Operation response</returns>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.AzureClientExtensions.GetLongRunningOperationResultAsync``1(Microsoft.Rest.Azure.IAzureClient,Microsoft.Rest.Azure.AzureOperationHeaderResponse{``0},System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Gets operation result for long running operations.
+            </summary>
+            <typeparam name="THeader">Type of the resource headers</typeparam>
+            <param name="client">IAzureClient</param>
+            <param name="response">Response from the begin operation</param>
+            <param name="customHeaders">Headers that will be added to request</param>
+            <param name="cancellationToken">Cancellation token</param>
+            <returns>Operation response</returns>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.AzureClientExtensions.GetPutOrPatchOperationResultAsync``1(Microsoft.Rest.Azure.IAzureClient,Microsoft.Rest.Azure.AzureOperationResponse{``0},System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Gets operation result for PUT and PATCH operations. (Deprecated, please use GetLongRunningOperationResultAsync)
+            </summary>
+            <typeparam name="TBody">Type of the resource body</typeparam>
+            <param name="client">IAzureClient</param>
+            <param name="response">Response from the begin operation</param>
+            <param name="customHeaders">Headers that will be added to request</param>
+            <param name="cancellationToken">Cancellation token</param>
+            <returns>Response with created resource</returns>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.AzureClientExtensions.GetPutOrPatchOperationResultAsync``2(Microsoft.Rest.Azure.IAzureClient,Microsoft.Rest.Azure.AzureOperationResponse{``0,``1},System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Gets operation result for PUT and PATCH operations. (Deprecated, please use GetLongRunningOperationResultAsync)
+            </summary>
+            <typeparam name="TBody">Type of the resource body</typeparam>
+            <typeparam name="THeader">Type of the resource header</typeparam>
+            <param name="client">IAzureClient</param>
+            <param name="response">Response from the begin operation</param>
+            <param name="customHeaders">Headers that will be added to request</param>
+            <param name="cancellationToken">Cancellation token</param>
+            <returns>Response with created resource</returns>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.AzureClientExtensions.GetPutOrPatchOperationResultAsync(Microsoft.Rest.Azure.IAzureClient,Microsoft.Rest.Azure.AzureOperationResponse,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Gets operation result for PUT and PATCH operations. (Deprecated, please use GetLongRunningOperationResultAsync)
+            </summary>
+            <param name="client">IAzureClient</param>
+            <param name="response">Response from the begin operation</param>
+            <param name="customHeaders">Headers that will be added to request</param>
+            <param name="cancellationToken">Cancellation token</param>
+            <returns>Operation response</returns>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.AzureClientExtensions.GetPostOrDeleteOperationResultAsync``1(Microsoft.Rest.Azure.IAzureClient,Microsoft.Rest.Azure.AzureOperationResponse{``0},System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Gets operation result for DELETE and POST operations. (Deprecated, please use GetLongRunningOperationResultAsync)
+            </summary>
+            <typeparam name="TBody">Type of the resource body</typeparam>
+            <param name="client">IAzureClient</param>
+            <param name="response">Response from the begin operation</param>
+            <param name="customHeaders">Headers that will be added to request</param>
+            <param name="cancellationToken">Cancellation token</param>
+            <returns>Operation response</returns>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.AzureClientExtensions.GetPostOrDeleteOperationResultAsync``1(Microsoft.Rest.Azure.IAzureClient,Microsoft.Rest.Azure.AzureOperationHeaderResponse{``0},System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Gets operation result for DELETE and POST operations. (Deprecated, please use GetLongRunningOperationResultAsync)
+            </summary>
+            <typeparam name="THeader">Type of the resource headers</typeparam>
+            <param name="client">IAzureClient</param>
+            <param name="response">Response from the begin operation</param>
+            <param name="customHeaders">Headers that will be added to request</param>
+            <param name="cancellationToken">Cancellation token</param>
+            <returns>Operation response</returns>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.AzureClientExtensions.GetPostOrDeleteOperationResultAsync``2(Microsoft.Rest.Azure.IAzureClient,Microsoft.Rest.Azure.AzureOperationResponse{``0,``1},System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Gets operation result for DELETE and POST operations. (Deprecated, please use GetLongRunningOperationResultAsync)
+            </summary>
+            <typeparam name="TBody">Type of the resource body</typeparam>
+            <typeparam name="THeader">Type of the resource header</typeparam>
+            <param name="client">IAzureClient</param>
+            <param name="response">Response from the begin operation</param>
+            <param name="customHeaders">Headers that will be added to request</param>
+            <param name="cancellationToken">Cancellation token</param>
+            <returns>Operation response</returns>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.AzureClientExtensions.GetPostOrDeleteOperationResultAsync(Microsoft.Rest.Azure.IAzureClient,Microsoft.Rest.Azure.AzureOperationResponse,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Gets operation result for DELETE and POST operations. (Deprecated, please use GetLongRunningOperationResultAsync)
+            </summary>
+            <param name="client">IAzureClient</param>
+            <param name="response">Response from the begin operation</param>
+            <param name="customHeaders">Headers that will be added to request</param>
+            <param name="cancellationToken">Cancellation token</param>
+            <returns>Operation response</returns>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.AzureClientExtensions.GetAsync``2(Microsoft.Rest.Azure.IAzureClient,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Gets a resource from the specified URL.
+            </summary>
+            <param name="client">IAzureClient</param>
+            <param name="operationUrl">URL of the resource.</param>
+            <param name="customHeaders">Headers that will be added to request</param>
+            <param name="cancellationToken">Cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.AzureClientExtensions.GetRawAsync(Microsoft.Rest.Azure.IAzureClient,System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Gets a resource from the specified URL.
+            </summary>
+            <param name="client">IAzureClient</param>
+            <param name="operationUrl">URL of the resource.</param>
+            <param name="customHeaders">Headers that will be added to request</param>
+            <param name="cancellationToken">Cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.AzureClientExtensions.UpdateStateFromLocationHeader``2(Microsoft.Rest.Azure.IAzureClient,Microsoft.Rest.Azure.PollingState{``0,``1},System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken,System.Net.Http.HttpMethod)">
+            <summary>
+            Updates PollingState from Location header.
+            </summary>
+            <typeparam name="TBody">Type of the resource body.</typeparam>
+            <typeparam name="THeader">Type of the resource header.</typeparam>
+            <param name="client">IAzureClient</param>
+            <param name="pollingState">Current polling state.</param>
+            <param name="customHeaders">Headers that will be added to request</param>
+            <param name="cancellationToken">Cancellation token</param>
+            <param name="initialRequestMethod">Http method of the initial long running operation request</param>
+            <returns>Task.</returns>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.AzureClientExtensions.UpdateStateFromGetResourceOperation``2(Microsoft.Rest.Azure.IAzureClient,Microsoft.Rest.Azure.PollingState{``0,``1},System.Uri,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken,System.Net.Http.HttpMethod)">
+            <summary>
+            Updates PollingState from GET operations.
+            </summary>
+            <typeparam name="TBody">Type of the resource body.</typeparam>
+            <typeparam name="THeader">Type of the resource header.</typeparam>
+            <param name="client">IAzureClient</param>
+            <param name="pollingState">Current polling state.</param>
+            <param name="getOperationUri">Uri for the get operation</param>
+            <param name="customHeaders">Headers that will be added to request</param>
+            <param name="cancellationToken">Cancellation token</param>
+            <returns>Task.</returns>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.AzureClientExtensions.UpdateStateFromAzureAsyncOperationHeader``2(Microsoft.Rest.Azure.IAzureClient,Microsoft.Rest.Azure.PollingState{``0,``1},System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken,System.Net.Http.HttpMethod)">
+            <summary>
+            Updates PollingState from Azure-AsyncOperation header.
+            </summary>
+            <typeparam name="TBody">Type of the resource body.</typeparam>
+            <typeparam name="THeader">Type of the resource header.</typeparam>
+            <param name="client">IAzureClient</param>
+            <param name="pollingState">Current polling state.</param>
+            <param name="customHeaders">Headers that will be added to request</param>
+            <param name="cancellationToken">Cancellation token</param>
+            <returns>Task.</returns>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.AzureClientExtensions.GetUpdatedPollingStatus``2(Microsoft.Rest.Azure.AzureAsyncOperation,Microsoft.Rest.Azure.AzureOperationResponse{Newtonsoft.Json.Linq.JObject,Newtonsoft.Json.Linq.JObject},Microsoft.Rest.Azure.PollingState{``0,``1},System.String,System.Net.Http.HttpMethod)">
+            <summary>
+            The primary purpose for this function is to get status and if there is any error
+            Update error information to pollingState.Error and pollingState.Exception
+            
+            We have on a very high level two cases
+            1) Regardless what kind of LRO operation it is (AzureAsync, locaiton header) either we get error or we dont
+            2) If we get error object, this function expects that information in the form of AzureAsyncOperation model type
+            3) We get status and error information from AzureAsyncOperation modele and update PollingState accordingly.
+            3) If AzureAsyncOperation is null, we assume there was no error retruned in the response
+            4) And we get the status from provisioningState and update pollingState accordinly
+            </summary>
+            <typeparam name="TBody"></typeparam>
+            <typeparam name="THeader"></typeparam>
+            <param name="asyncOperation"></param>
+            <param name="azureResponse"></param>
+            <param name="pollState"></param>
+            <param name="responseContent"></param>
+            <param name="initialRequestMethod"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Rest.Azure.ClientRequestTrackingHandler">
+            <summary>
+            Enables adding a correlation id to messages so that messages that are part of a long-running
+            operation can be grouped together
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.Azure.ClientRequestTrackingHandler.TrackingId">
+            <summary>
+            The tracking ID for the operation
+            </summary>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.ClientRequestTrackingHandler.#ctor(System.String)">
+            <summary>
+            Creates a request tracking handler with the specified tracking ID
+            </summary>
+            <param name="trackingId">The tracking correlation ID to be added to each http message</param>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.ClientRequestTrackingHandler.ProcessRequest(System.Net.Http.HttpRequestMessage,System.Threading.CancellationToken)">
+            <summary>
+            Adds the tracking ID for this operation to the outgoing request header
+            </summary>
+            <param name="request">The http request message</param>
+            <param name="cancellationToken">A token that allows canceling the http operation</param>
+            <returns>The outgoing http request message with the tracking ID header added</returns>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.ClientRequestTrackingHandler.ProcessResponse(System.Net.Http.HttpResponseMessage,System.Threading.CancellationToken)">
+            <summary>
+            Adds the tracking ID for this operation to the incoming response header
+            </summary>
+            <param name="response">The http response message</param>
+            <param name="cancellationToken">A token that allows canceling the http operation</param>
+            <returns>The incoming http response message with the tracking ID header added</returns>
+        </member>
+        <member name="T:Microsoft.Rest.Azure.CloudErrorJsonConverter">
+            <summary>
+            JsonConverter that provides custom deserialization for CloudError objects.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.CloudErrorJsonConverter.CanConvert(System.Type)">
+            <summary>
+            Returns true if the object being serialized is a CloudError.
+            </summary>
+            <param name="objectType">The type of the object to check.</param>
+            <returns>True if the object being serialized is a CloudError. False otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.CloudErrorJsonConverter.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+            Deserializes an object from a JSON string and flattens out Error property.
+            </summary>
+            <param name="reader">The JSON reader.</param>
+            <param name="objectType">The type of the object.</param>
+            <param name="existingValue">The existing value.</param>
+            <param name="serializer">The JSON serializer.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.CloudErrorJsonConverter.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+            Serializes an object into a JSON string adding Properties. 
+            </summary>
+            <param name="writer">The JSON writer.</param>
+            <param name="value">The value to serialize.</param>
+            <param name="serializer">The JSON serializer.</param>
+        </member>
+        <member name="T:Microsoft.Rest.Azure.CloudException">
+            <summary>
+            An exception generated from an http response returned from a Microsoft Azure service
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.Azure.CloudException.Request">
+            <summary>
+            Gets information about the associated HTTP request.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.Azure.CloudException.Response">
+            <summary>
+            Gets information about the associated HTTP response.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.Azure.CloudException.Body">
+            <summary>
+            Gets or sets the response object.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.Azure.CloudException.RequestId">
+            <summary>
+            Gets or sets the value that uniquely identifies a request 
+            made against the service.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.CloudException.#ctor">
+            <summary>
+            Initializes a new instance of the CloudException class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.CloudException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the CloudException class given exception message.
+            </summary>
+            <param name="message">A message describing the error.</param>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.CloudException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the CloudException class caused by another exception.
+            </summary>
+            <param name="message">A description of the error.</param>
+            <param name="innerException">The exception which caused the current exception.</param>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.CloudException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the CloudException class.
+            </summary>
+            <param name="info">Serialization info.</param>
+            <param name="context">Streaming context.</param>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.CloudException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Sets SerializationInfo with information about the exception.
+            </summary>
+            <param name="info">Serialization infor.</param>
+            <param name="context">Streaming context</param>
+        </member>
+        <member name="T:Microsoft.Rest.Azure.AzureAsyncOperation">
+            <summary>
+            The response body contains the status of the specified
+            asynchronous operation, indicating whether it has succeeded, is in
+            progress, or has failed. Note that this status is distinct from the
+            HTTP status code returned for the Get Operation Status operation
+            itself.  If the asynchronous operation succeeded, the response body
+            includes the HTTP status code for the successful request.  If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Rest.Azure.AzureAsyncOperation.DefaultDelay">
+            <summary>
+            Default delay in seconds for long running operations.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Rest.Azure.AzureAsyncOperation.SuccessStatus">
+            <summary>
+            Successful status for long running operations.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Rest.Azure.AzureAsyncOperation.InProgressStatus">
+            <summary>
+            In progress status for long running operations.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Rest.Azure.AzureAsyncOperation.FailedStatus">
+            <summary>
+            Failed status for long running operations.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Rest.Azure.AzureAsyncOperation.CanceledStatus">
+            <summary>
+            Canceled status for long running operations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.Azure.AzureAsyncOperation.FailedStatuses">
+            <summary>
+            Failed terminal statuses for long running operations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.Azure.AzureAsyncOperation.TerminalStatuses">
+            <summary>
+            Terminal statuses for long running operations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.Azure.AzureAsyncOperation.Status">
+            <summary>
+            The status of the asynchronous request.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.Azure.AzureAsyncOperation.Error">
+            <summary>
+            If the asynchronous operation failed, the response body includes
+            the HTTP status code for the failed request, and also includes
+            error information regarding the failure.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.Azure.AzureAsyncOperation.RetryAfter">
+            <summary>
+            Gets or sets the delay in seconds that should be used when checking 
+            for the status of the operation.  
+            </summary>
+        </member>
+        <member name="T:Microsoft.Rest.Azure.IAzureOperationResponse">
+            <summary>
+            A standard service response including request ID.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.Azure.IAzureOperationResponse.RequestId">
+            <summary>
+            Gets or sets the value that uniquely identifies a request 
+            made against the service.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Rest.Azure.AzureOperationResponse">
+            <summary>
+            A standard service response including request ID.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.Azure.AzureOperationResponse.RequestId">
+            <summary>
+            Gets or sets the value that uniquely identifies a request 
+            made against the service.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Rest.Azure.AzureOperationResponse`1">
+            <summary>
+            A standard service response including request ID.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.Azure.AzureOperationResponse`1.RequestId">
+            <summary>
+            Gets or sets the value that uniquely identifies a request 
+            made against the service.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.Azure.AzureOperationHeaderResponse`1.RequestId">
+            <summary>
+            Gets or sets the value that uniquely identifies a request 
+            made against the service.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Rest.Azure.AzureOperationResponse`2">
+            <summary>
+            A standard service response including request ID.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.Azure.AzureOperationResponse`2.RequestId">
+            <summary>
+            Gets or sets the value that uniquely identifies a request 
+            made against the service.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Rest.Azure.CloudError">
+            <summary>
+            Provides additional information about an http error response
+            </summary>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.CloudError.#ctor">
+            <summary>
+            Initializes a new instance of CloudError.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.Azure.CloudError.Code">
+            <summary>
+            The error code parsed from the body of the http error response
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.Azure.CloudError.Message">
+            <summary>
+            The error message parsed from the body of the http error response
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.Azure.CloudError.Target">
+            <summary>
+            Gets or sets the target of the error.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.Azure.CloudError.Details">
+            <summary>
+            Gets or sets details for the error.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.Azure.CloudError.AdditionalInfo">
+            <summary>
+            Gets or sets additional error info.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Rest.Azure.IAzureClient">
+            <summary>
+            Interface for all Microsoft Azure clients.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.Azure.IAzureClient.Credentials">
+            <summary>
+            Gets Azure subscription credentials.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.Azure.IAzureClient.HttpClient">
+            <summary>
+            Gets the HttpClient used for making HTTP requests.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.Azure.IAzureClient.LongRunningOperationRetryTimeout">
+            <summary>
+            Gets or sets the retry timeout for Long Running Operations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.Azure.IAzureClient.SerializationSettings">
+            <summary>
+            Gets json serialization settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.Azure.IAzureClient.DeserializationSettings">
+            <summary>
+            Gets json deserialization settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.Azure.IAzureClient.GenerateClientRequestId">
+            <summary>
+            When set to true a unique x-ms-client-request-id value
+            is generated and included in each request. Default is true.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Rest.Azure.IPage`1">
+            <summary>
+            Defines a page interface in Azure responses.
+            </summary>
+            <typeparam name="T">Type of the page content items</typeparam>
+        </member>
+        <member name="P:Microsoft.Rest.Azure.IPage`1.NextPageLink">
+            <summary>
+            Gets the link to the next page.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Rest.Azure.IResource">
+            <summary>
+            Defines Azure resource.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.JsonSerializerExtensions.WithoutConverter(Newtonsoft.Json.JsonSerializer,Newtonsoft.Json.JsonConverter)">
+            <summary>
+            Gets a JsonSerializer without specified converter.
+            </summary>
+            <param name="serializer">JsonSerializer</param>
+            <param name="converterToExclude">Converter to exclude from serializer.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Rest.Azure.OData.FilterString">
+            <summary>
+            Handles OData filter generation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.OData.FilterString.Generate``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            Generates an OData filter from a specified Linq expression. Skips null parameters.
+            </summary>
+            <typeparam name="T">Filter type.</typeparam>
+            <param name="filter">Entity to use for filter generation.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.OData.FilterString.Generate``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Boolean)">
+            <summary>
+            Generates an OData filter from a specified Linq expression.
+            </summary>
+            <typeparam name="T">Filter type.</typeparam>
+            <param name="filter">Entity to use for filter generation.</param>
+            <param name="skipNullFilterParameters">Value indicating whether null values should be skipped.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Rest.Azure.OData.ODataMethodAttribute">
+            <summary>
+            Annotates OData methods.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.Azure.OData.ODataMethodAttribute.MethodName">
+            <summary>
+            Gets or sets serialized name.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.OData.ODataMethodAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of ODataMethodAttribute with name.
+            </summary>
+            <param name="methodName">Serialized method name</param>
+        </member>
+        <member name="T:Microsoft.Rest.Azure.OData.ODataQuery`1">
+            <summary>
+            Handles OData query generation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.OData.ODataQuery`1.#ctor">
+            <summary>
+            Initializes a new instance of empty ODataQuery.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.OData.ODataQuery`1.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of ODataQuery with filter.
+            </summary>
+            <param name="odataExpression">OData expression.</param>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.OData.ODataQuery`1.#ctor(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Initializes a new instance of ODataQuery with filter.
+            </summary>
+            <param name="filter">Filter expression.</param>
+        </member>
+        <member name="P:Microsoft.Rest.Azure.OData.ODataQuery`1.Filter">
+            <summary>
+            Gets or sets query $filter expression.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.Azure.OData.ODataQuery`1.OrderBy">
+            <summary>
+            Gets or sets query $orderby expression.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.Azure.OData.ODataQuery`1.Expand">
+            <summary>
+            Gets or sets query $expand expression.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.Azure.OData.ODataQuery`1.Top">
+            <summary>
+            Gets or sets query $top value.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.Azure.OData.ODataQuery`1.Skip">
+            <summary>
+            Gets or sets query $skip value.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.Azure.OData.ODataQuery`1.SkipNullFilterParameters">
+            <summary>
+            Indicates whether null values in the Filter should be skipped. Default value is True.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.OData.ODataQuery`1.SetFilter(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Sets Filter from an expression.
+            </summary>
+            <param name="filter">Filter expression.</param>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.OData.ODataQuery`1.op_Implicit(System.String)~Microsoft.Rest.Azure.OData.ODataQuery{`0}">
+            <summary>
+            Implicit operator that creates an ODataQuery from a string filter.
+            </summary>
+            <param name="filter">Filter expression</param>
+            <returns>ODataQuery</returns>
+        </member>
+        <member name="T:Microsoft.Rest.Azure.OData.UrlExpressionVisitor">
+            <summary>
+            Expression visitor class that generates OData style $filter parameter.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.OData.UrlExpressionVisitor.#ctor(System.Linq.Expressions.Expression)">
+            <summary>
+            Initializes a new instance of UrlExpressionVisitor. Skips null parameters.
+            </summary>
+            <param name="baseExpression">Base expression.</param>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.OData.UrlExpressionVisitor.#ctor(System.Linq.Expressions.Expression,System.Boolean)">
+            <summary>
+            Initializes a new instance of UrlExpressionVisitor.
+            </summary>
+            <param name="baseExpression">Base expression.</param>
+            <param name="skipNullFilterParameters">Value indicating whether null values should be skipped.</param>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.OData.UrlExpressionVisitor.VisitBinary(System.Linq.Expressions.BinaryExpression)">
+            <summary>
+            Visits binary expression (e.g. ==, &amp;&amp;, >, etc).
+            </summary>
+            <param name="node">Node to visit.</param>
+            <returns>Original node.</returns>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.OData.UrlExpressionVisitor.VisitUnary(System.Linq.Expressions.UnaryExpression)">
+            <summary>
+            Visits unary expression (e.g. !foo).
+            </summary>
+            <param name="node">Node to visit.</param>
+            <returns>Original node.</returns>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.OData.UrlExpressionVisitor.VisitConditional(System.Linq.Expressions.ConditionalExpression)">
+            <summary>
+            Visits conditional expression (e.g. foo == true ? bar : fee). Throws NotSupportedException.
+            </summary>
+            <param name="node">Node to visit.</param>
+            <returns>Throws NotSupportedException.</returns>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.OData.UrlExpressionVisitor.VisitNew(System.Linq.Expressions.NewExpression)">
+            <summary>
+            Visits new object expression (e.g. new DateTime()).
+            </summary>
+            <param name="node">Node to visit.</param>
+            <returns>Original node.</returns>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.OData.UrlExpressionVisitor.VisitConstant(System.Linq.Expressions.ConstantExpression)">
+            <summary>
+            Visits constants (e.g. 'a' or 123).
+            </summary>
+            <param name="node">Node to visit.</param>
+            <returns>Original node.</returns>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.OData.UrlExpressionVisitor.VisitMember(System.Linq.Expressions.MemberExpression)">
+            <summary>
+            Visits object members (e.g. p.Foo or dateTime.Hour).
+            </summary>
+            <param name="node">Node to visit.</param>
+            <returns>Original node.</returns>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.OData.UrlExpressionVisitor.PrintProperty(System.Reflection.PropertyInfo)">
+            <summary>
+            Visits object property.
+            </summary>
+            <param name="property">Property to print.</param>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.OData.UrlExpressionVisitor.VisitMethodCall(System.Linq.Expressions.MethodCallExpression)">
+            <summary>
+            Visits method calls including Contains, StartsWith, and EndWith. 
+            Methods that are not supported will throw an exception.
+            </summary>
+            <param name="node">Node to visit.</param>
+            <returns>Original node.</returns>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.OData.UrlExpressionVisitor.CloseUnaryBooleanOperator(System.Linq.Expressions.ExpressionType)">
+            <summary>
+            Appends 'eq true' to Boolean unary operators.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.OData.UrlExpressionVisitor.PrintConstant(System.Object)">
+            <summary>
+            Helper method to print constant.
+            </summary>
+            <param name="val">Object to print.</param>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.OData.UrlExpressionVisitor.GetPropertyName(System.Reflection.PropertyInfo)">
+            <summary>
+            Helper method to generate property name.
+            </summary>
+            <param name="propertyInfo">Property to examine.</param>
+            <returns>Property name or value specified in the FilterParameterAttribute.</returns>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.OData.UrlExpressionVisitor.ToString">
+            <summary>
+            Returns string representation of the current expression.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.OData.UrlExpressionVisitor.GetODataOperatorName(System.Linq.Expressions.ExpressionType)">
+            <summary>
+            Returns OData representation of the the ExpressionType. 
+            </summary>
+            <param name="exprType">Expression type.</param>
+            <returns>OData representation of the the ExpressionType.</returns>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.OData.UrlExpressionVisitor.ShouldBuildExpression(System.Linq.Expressions.MemberExpression)">
+            <summary>
+            Returns true if base expression matches _baseExpression
+            </summary>
+            <param name="expression"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Rest.Azure.PollingState`2">
+            <summary>
+            Defines long running operation polling state.
+            </summary>
+            <typeparam name="TBody">Type of resource body.</typeparam>
+            <typeparam name="THeader">Type of resource header.</typeparam>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.PollingState`2.#ctor(Microsoft.Rest.HttpOperationResponse{`0,`1},System.Nullable{System.Int32})">
+            <summary>
+            Initializes an instance of PollingState.
+            </summary>
+            <param name="response">First operation response.</param>
+            <param name="retryTimeout">Default timeout.</param>
+        </member>
+        <member name="P:Microsoft.Rest.Azure.PollingState`2.Status">
+            <summary>
+            Gets or sets polling status.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.Azure.PollingState`2.AzureAsyncOperationHeaderLink">
+            <summary>
+            Gets or sets the latest value captured from Azure-AsyncOperation header.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.Azure.PollingState`2.LocationHeaderLink">
+            <summary>
+            Gets or sets the latest value captured from Location header.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.Azure.PollingState`2.Response">
+            <summary>
+            Gets or sets last operation response. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.Azure.PollingState`2.Request">
+            <summary>
+            Gets or sets last operation request.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.Azure.PollingState`2.Error">
+            <summary>
+            Gets or sets cloud error.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.Azure.PollingState`2.Resource">
+            <summary>
+            Gets or sets resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.Azure.PollingState`2.ResourceHeaders">
+            <summary>
+            Gets or sets resource header.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.Azure.PollingState`2.LROTimeoutSetByClient">
+            <summary>
+            This timeout is set by client during client construction
+            This is useful to detect if we are running in test/playback mode
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.Azure.PollingState`2.DelayInMilliseconds">
+            <summary>
+            Gets long running operation delay in milliseconds.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.Azure.PollingState`2.DelayBetweenPolling">
+            <summary>
+            Long running operation polling delay
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.Azure.PollingState`2.RetryAfterInSeconds">
+            <summary>
+            Initially this is initialized with LongRunningOperationRetryTimeout value
+            Verify min/max allowed value according to ARM spec (especially minimum value for throttling at ARM level)
+            We want this to be int value and not int? because this value will always have a default non-zero/non-null value
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.Azure.PollingState`2.IsRunningUnderPlaybackMode">
+            <summary>
+            Test hook to determine if running under Playback mode (test mode)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.Azure.PollingState`2.CloudException">
+            <summary>
+            Gets CloudException from current instance.  
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.Azure.PollingState`2.AzureOperationResponse">
+            <summary>
+            Gets AzureOperationResponse from current instance. 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Rest.Azure.ResourceJsonConverter">
+            <summary>
+            JsonConverter that provides custom serialization for resource-based objects.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.ResourceJsonConverter.CanConvert(System.Type)">
+            <summary>
+            Returns true if the object being serialized is assignable from the Resource type. False otherwise.
+            </summary>
+            <param name="objectType">The type of the object to check.</param>
+            <returns>True if the object being serialized is assignable from the base type. False otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.ResourceJsonConverter.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+            Deserializes an object from a JSON string and flattens out Properties.
+            </summary>
+            <param name="reader">The JSON reader.</param>
+            <param name="objectType">The type of the object.</param>
+            <param name="existingValue">The existing value.</param>
+            <param name="serializer">The JSON serializer.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.ResourceJsonConverter.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+            Serializes an object into a JSON string adding Properties. 
+            </summary>
+            <param name="writer">The JSON writer.</param>
+            <param name="value">The value to serialize.</param>
+            <param name="serializer">The JSON serializer.</param>
+        </member>
+        <member name="M:Microsoft.Rest.Azure.ResourceJsonConverter.GetSerializerWithoutCurrentConverter(Newtonsoft.Json.JsonSerializer)">
+            <summary>
+            Gets a JsonSerializer without current converter.
+            </summary>
+            <param name="serializer">JsonSerializer</param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Rest.ClientRuntime.Azure.CommonModels.AdditionalErrorInfo">
+            <summary>
+            This class represents additional info Resource Providers pass when an error occurs
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.ClientRuntime.Azure.CommonModels.AdditionalErrorInfo.Type">
+            <summary>
+            Type of error occured (e.g. PolicyViolation, SecurityViolation)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.ClientRuntime.Azure.CommonModels.AdditionalErrorInfo.Info">
+            <summary>
+            Additional information of the type of error that occured
+            </summary>
+        </member>
+        <member name="T:Microsoft.Rest.ClientRuntime.Azure.LRO.AzureLRO`2">
+            <summary>
+            Base class for driving Azure LRO operation
+            </summary>
+            <typeparam name="TResourceBody"></typeparam>
+            <typeparam name="TRequestHeaders"></typeparam>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.LRO.AzureLRO`2.#ctor(Microsoft.Rest.Azure.IAzureClient,Microsoft.Rest.Azure.AzureOperationResponse{`0,`1},System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Constructor for creating Azure LRO
+            LRO starts after the first response is returned to Azure ClientRuntime.
+            This will validate the initial response for missing data.
+            </summary>
+            <param name="client"></param>
+            <param name="initialResponse"></param>
+            <param name="customHeaders"></param>
+            <param name="cancellationToken"></param>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.LRO.AzureLRO`2.BeginLROAsync">
+            <summary>
+            Begin polling
+            This will drive the entire LRO process of polling and checking for error during LRO
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.LRO.AzureLRO`2.GetLROResults">
+            <summary>
+            Return results from LRO operation
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.LRO.AzureLRO`2.CheckFinalErrors">
+            <summary>
+            Check for errors at the end of LRO operation
+            Last chance to check any final errors
+            </summary>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.LRO.AzureLRO`2.ValidateInitialResponse">
+            <summary>
+            Does basic validation on initial response from RP, prior to start LRO process
+            </summary>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.LRO.AzureLRO`2.InitializeAsyncHeadersToUse">
+            <summary>
+            Initialize pollingUrl to use depending upon the headers passed back from RP
+            This function will be called after each response received during LRO
+            Each REST verb will override for specific requirements
+            </summary>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.LRO.AzureLRO`2.StartPollingAsync">
+            <summary>
+            Performs polling
+            Workflow:
+            Depends on an internal structure CurrentPollingState for driving the LRO operation
+            1) Depending upon the initial response status (starts/exits polling)
+            2) Reson for making Poll function part of CurrentPollingState because there can be scenario we might have to enabled to serialize polling state (user can save and drive polling operation)
+            3) Update polling state after each polling iteration
+            4) Check for errors on each reponse we recieve during LRO
+            5) Initialize polling URL to use based on the headers received in each polling response
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.LRO.AzureLRO`2.UpdatePollingState">
+            <summary>
+            Updates polling state strcture
+            </summary>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.LRO.AzureLRO`2.IsCheckingProvisioningStateApplicable">
+            <summary>
+            Each verb will override to define if checking provisioning state is applicable
+            </summary>
+            <returns>true: if it's applicable, false: if not applicable</returns>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.LRO.AzureLRO`2.PostPollingAsync">
+            <summary>
+            Each verb will override depending upon the requirements
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.LRO.AzureLRO`2.CheckForErrors">
+            <summary>
+            Check for error codition during LRO
+            Each verb can participate in deciding if certain response results in error
+            </summary>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.LRO.AzureLRO`2.GetValidAbsoluteUri(System.String,System.Boolean)">
+            <summary>
+            Validate passed URL
+            </summary>
+            <param name="url">Url to be validated</param>
+            <param name="throwForInvalidUri">True: throws expception, False: does not throw exception</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.LRO.AzureLRO`2.GetAzureAsyncResponseState">
+            <summary>
+            Get Valid status
+            There are cases where there is an error sent from the service and in that case, the status should be one of the valid FailedStatuses
+            But there are cases where there is a customized error sent by service and they do not fall under Failed/Success statuses, in that case we fall back on response status
+            
+            e.g. The response status is OK, but the error body has the status as "TestFailed" (which do not fall under valid failed status, so we fall back to OK)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.LRO.AzureLRO`2.IsAzureAsyncOperationResponseStateValid">
+            <summary>
+            This function determines if you are running your polling under Azure-Async header or if the response status falls under terminal/failed status
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.LRO.AzureLRO`2.IsUriEqual(System.String,System.String)">
+            <summary>
+            Check URI for equality including differences in trailing slash and compare case insensitive 
+            </summary>
+            <param name="leftUrl">Url</param>
+            <param name="rightUrl">Url to compare against</param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Rest.ClientRuntime.Azure.LRO.IRestLRO">
+            <summary>
+            Base interface for LRO operations
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.ClientRuntime.Azure.LRO.IRestLRO.RESTOperationVerb">
+            <summary>
+            REST Verb
+            </summary>
+        </member>
+        <member name="T:Microsoft.Rest.ClientRuntime.Azure.LRO.IAzureLRO`2">
+            <summary>
+            Base interface for Azure LRO operation classes
+            </summary>
+            <typeparam name="TResourceBody"></typeparam>
+            <typeparam name="TRequestHeaders"></typeparam>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.LRO.IAzureLRO`2.BeginLROAsync">
+            <summary>
+            Function that will begin the LRO operation
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.LRO.IAzureLRO`2.GetLROResults">
+            <summary>
+            Returns LRO operation result
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:Microsoft.Rest.ClientRuntime.Azure.LRO.LROPollState`2.IgnoreOperationErrorStatusCallBack">
+            <summary>
+            Ability for operatoins to participate in Error Status checking during polling
+            This provides ability for certain operations to continue with legacy behavior
+            </summary>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.LRO.LROPollState`2.GetRawAsync(System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Gets a resource from the specified URL.
+            </summary>
+            <param name="customHeaders">Headers that will be added to request</param>
+            <param name="cancellationToken">Cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.LRO.LROPollState`2.ParseContent(System.String)">
+            <summary>
+            Currently the only way to parse non application/json content type is to try to parse and convert non application/json
+            to application/json
+            </summary>
+            <param name="responseContent"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.LRO.LROPollState`2.CheckErrorStatusAndThrowAsync(System.Net.Http.HttpRequestMessage,System.Net.Http.HttpResponseMessage)">
+            <summary>
+            Check for status.
+            Throw if error status.
+            </summary>
+            <param name="request">HttpRequsest</param>
+            <param name="response">HttpResponse</param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Rest.ClientRuntime.Azure.LRO.DeleteLro`2">
+            <summary>
+            DELETE Azure LRO Operation
+            </summary>
+            <typeparam name="TResourceBody"></typeparam>
+            <typeparam name="TRequestHeaders"></typeparam>
+        </member>
+        <member name="P:Microsoft.Rest.ClientRuntime.Azure.LRO.DeleteLro`2.RESTOperationVerb">
+            <summary>
+            REST Operation Verb
+            </summary>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.LRO.DeleteLro`2.#ctor(Microsoft.Rest.Azure.IAzureClient,Microsoft.Rest.Azure.AzureOperationResponse{`0,`1},System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Initializes DELETE LRO Operation
+            </summary>
+            <param name="client"></param>
+            <param name="response"></param>
+            <param name="customHeaders"></param>
+            <param name="cancellationToken"></param>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.LRO.DeleteLro`2.InitializeAsyncHeadersToUse">
+            <summary>
+            For DELETE
+            In absence of Async-operation, fall back on location header
+            
+            If both (Async-Operation, LocationHeader) provided, we will use Async-Operation for driving LRO
+            Will perform final GET on the provided LocationHeader to get calculation results.
+            
+            If first response status code is 201 and location header is not provided, we throw
+            
+            if first response status code is 202, we prefer Async-operation, else we will use Location header
+            </summary>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.LRO.DeleteLro`2.IsCheckingProvisioningStateApplicable">
+            <summary>
+            Is checking provisioning state applicable for DELTE during LRO operation
+            If response code is 200/204 (regardless of header and first response code)
+            
+            This does not mean that for 200/204 the response WILL have provisioning state
+            This function only says to check provisioning state that is all.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.LRO.DeleteLro`2.PostPollingAsync">
+            <summary>
+            If Azure Async-Operation URL is being used to poll and if the final response or any response returned Location header
+            We assume a final GET has to be done on provided location header
+            
+            This funciton allows to make any tweaks to the final GET if applicable
+            In this case, using Location header to do the final GET
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.LRO.DeleteLro`2.IgnoreResponseStatus(System.Net.Http.HttpResponseMessage)">
+            <summary>
+            Flag if NotFound status should be ignored during DELETE polling
+            Enable legacy behavior for certain RPs that are sending resource URI as part of location
+            </summary>
+            <param name="response"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Rest.ClientRuntime.Azure.LRO.PATCHLro`2">
+            <summary>
+            PATCH Azure LRO operation
+            </summary>
+            <typeparam name="TResourceBody"></typeparam>
+            <typeparam name="TRequestHeaders"></typeparam>
+        </member>
+        <member name="P:Microsoft.Rest.ClientRuntime.Azure.LRO.PATCHLro`2.RESTOperationVerb">
+            <summary>
+            REST Operation Verb
+            </summary>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.LRO.PATCHLro`2.#ctor(Microsoft.Rest.Azure.IAzureClient,Microsoft.Rest.Azure.AzureOperationResponse{`0,`1},System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Initializes PATCH LRO Operation
+            </summary>
+            <param name="client"></param>
+            <param name="response"></param>
+            <param name="customHeaders"></param>
+            <param name="cancellationToken"></param>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.LRO.PATCHLro`2.InitializeAsyncHeadersToUse">
+            <summary>
+            Initialize which URL to use for polling
+            
+            First responose status code 201
+            Either we use Async-operatino header for polling
+            Or fall back on original URL to poll
+            
+            First response status code 202
+            We prefer Async-operation
+            or we will fall back on location header
+            
+            At the end of the polling we will use the original URL to do the final GET
+            </summary>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.LRO.PATCHLro`2.IsCheckingProvisioningStateApplicable">
+            <summary>
+            Function to check if checking provisioning state is applicable during polling
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.LRO.PATCHLro`2.PostPollingAsync">
+            <summary>
+            Function that allows you to make tweaks before finishing LRO operation and return back to the client
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Rest.ClientRuntime.Azure.LRO.POSTLro`2">
+            <summary>
+            POST Azure LRO operation
+            </summary>
+            <typeparam name="TResourceBody"></typeparam>
+            <typeparam name="TRequestHeaders"></typeparam>
+        </member>
+        <member name="P:Microsoft.Rest.ClientRuntime.Azure.LRO.POSTLro`2.RESTOperationVerb">
+            <summary>
+            REST Operation Verb
+            </summary>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.LRO.POSTLro`2.#ctor(Microsoft.Rest.Azure.IAzureClient,Microsoft.Rest.Azure.AzureOperationResponse{`0,`1},System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Initializes POST LRO Operation
+            </summary>
+            <param name="client"></param>
+            <param name="response"></param>
+            <param name="customHeaders"></param>
+            <param name="cancellationToken"></param>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.LRO.POSTLro`2.InitializeAsyncHeadersToUse">
+            <summary>
+            First response status is 201
+            Location header is required and we will throw if not provided
+            
+            First response status is 202
+            We prefer Async-Operation, if not provided we will fall back on Location header
+            
+            If we get both headers, we will use Location header to do the final GET at the end of the LRO operation
+            </summary>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.LRO.POSTLro`2.IsCheckingProvisioningStateApplicable">
+            <summary>
+            Check if Provisioning state needs to be checked
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.LRO.POSTLro`2.PostPollingAsync">
+            <summary>
+            Function that allows you to make tweaks before finishing LRO operation and return back to the client
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Rest.ClientRuntime.Azure.LRO.PutLRO`2">
+            <summary>
+            PUT Azure Lro operation
+            </summary>
+            <typeparam name="TResourceBody"></typeparam>
+            <typeparam name="TRequestHeaders"></typeparam>
+        </member>
+        <member name="P:Microsoft.Rest.ClientRuntime.Azure.LRO.PutLRO`2.RESTOperationVerb">
+            <summary>
+            REST Operation Verb
+            </summary>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.LRO.PutLRO`2.#ctor(Microsoft.Rest.Azure.IAzureClient,Microsoft.Rest.Azure.AzureOperationResponse{`0,`1},System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Initializes PUT LRO Operation
+            </summary>
+            <param name="client"></param>
+            <param name="response"></param>
+            <param name="customHeaders"></param>
+            <param name="cancellationToken"></param>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.LRO.PutLRO`2.IsCheckingProvisioningStateApplicable">
+            <summary>
+            Check if Provisioning state needs to be checked
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.LRO.PutLRO`2.PostPollingAsync">
+            <summary>
+            Function that allows you to make tweaks before finishing LRO operation and return back to the client
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.LRO.PutLRO`2.InitializeAsyncHeadersToUse">
+            <summary>
+            Initialize with the right URI to use for polling LRO opertion
+            Depending upon the return status code and the header provided, we initialize PollingUrlToUse with the right URI
+            Also verify if the right headers are provided, if not throw validation exception
+            </summary>
+        </member>
+        <member name="T:Microsoft.Rest.ClientRuntime.Azure.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.ClientRuntime.Azure.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.ClientRuntime.Azure.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.ClientRuntime.Azure.Properties.Resources.ArgumentCannotBeEmpty">
+             <summary>
+               Looks up a localized string similar to Value cannot be empty.
+            Parameter name: {0}.
+             </summary>
+        </member>
+        <member name="P:Microsoft.Rest.ClientRuntime.Azure.Properties.Resources.ArgumentCannotBeGreaterThanBaseline">
+            <summary>
+              Looks up a localized string similar to The specified argument {0} cannot be greater than its ceiling value of {1}..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.ClientRuntime.Azure.Properties.Resources.ArgumentCannotBeNegative">
+            <summary>
+              Looks up a localized string similar to The specified argument {0} cannot be initialized with a negative value..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.ClientRuntime.Azure.Properties.Resources.AuthenticationValidationFailed">
+            <summary>
+              Looks up a localized string similar to Authentication with Azure Active Directory Failed using clientId: {0}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.ClientRuntime.Azure.Properties.Resources.BodyDeserializationError">
+            <summary>
+              Looks up a localized string similar to Unable to deserilize body &apos;{0}&apos;.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.ClientRuntime.Azure.Properties.Resources.CertificateCloudCredentials_InitializeServiceClient_NoWebRequestHandler">
+            <summary>
+              Looks up a localized string similar to {0} requires a {1} in its HTTP pipeline to work with client certificates..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.ClientRuntime.Azure.Properties.Resources.ConfigurationHelper_CreateCouldNotConvertException">
+            <summary>
+              Looks up a localized string similar to Failed to convert parameter {0} value &apos;{1}&apos; to type {2}..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.ClientRuntime.Azure.Properties.Resources.ConfigurationHelper_CreateFromSettings_CreateSettingsFailedException">
+            <summary>
+              Looks up a localized string similar to {3}  Failed to create {0} from connection settings {1} = &quot;{2}&quot;..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.ClientRuntime.Azure.Properties.Resources.ConfigurationHelper_CreateFromSettings_NoConnectionSettingsFound">
+            <summary>
+              Looks up a localized string similar to No connection settings found for type {0}.  Enable tracing for more information..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.ClientRuntime.Azure.Properties.Resources.ConfigurationHelper_GetCredentials_NotFound">
+            <summary>
+              Looks up a localized string similar to No credentials of type &apos;{0}&apos; could be initialized from the provided settings..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.ClientRuntime.Azure.Properties.Resources.ConfigurationHelper_GetParameter_NotFound">
+            <summary>
+              Looks up a localized string similar to Parameter {0} is required..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.ClientRuntime.Azure.Properties.Resources.CouldNotConvertToCertificateType">
+            <summary>
+              Looks up a localized string similar to Failed to convert parameter {0} value &apos;{1}&apos; to type {2}..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.ClientRuntime.Azure.Properties.Resources.DefaultRetryStrategyMappingNotFound">
+            <summary>
+              Looks up a localized string similar to Default retry strategy for technology {0}, named &apos;{1}&apos;, is not defined..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.ClientRuntime.Azure.Properties.Resources.DefaultRetryStrategyNotFound">
+            <summary>
+              Looks up a localized string similar to Default retry strategy for technology {0} was not not defined, and there is no overall default strategy..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.ClientRuntime.Azure.Properties.Resources.ErrorCreatingAuthenticationContext">
+            <summary>
+              Looks up a localized string similar to Authentication error while configuring active directory: &apos;{0}&apos;..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.ClientRuntime.Azure.Properties.Resources.ExceptionRetryHandlerMissing">
+            <summary>
+              Looks up a localized string similar to Retry handler is not present in the HttpClient handler stack..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.ClientRuntime.Azure.Properties.Resources.ExceptionRetryManagerAlreadySet">
+            <summary>
+              Looks up a localized string similar to The RetryManager is already set..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.ClientRuntime.Azure.Properties.Resources.ExceptionRetryManagerNotSet">
+            <summary>
+              Looks up a localized string similar to The default RetryManager has not been set. Set it by invoking the RetryManager.SetDefault static method, or if you are using declarative configuration, you can invoke the RetryPolicyFactory.CreateDefault() method to automatically create the retry manager from the configuration file..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.ClientRuntime.Azure.Properties.Resources.HeaderAndStatusCode">
+            <summary>
+              Looks up a localized string similar to In long running operation &apos;{0}&apos; header requires initial response status code to be &apos;{1}&apos;.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.ClientRuntime.Azure.Properties.Resources.InValidUri">
+            <summary>
+              Looks up a localized string similar to Provided URI &apos;{0}&apos; is not a valid URI..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.ClientRuntime.Azure.Properties.Resources.LongRunningOperationFailed">
+            <summary>
+              Looks up a localized string similar to Long running operation failed with status &apos;{0}&apos;..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.ClientRuntime.Azure.Properties.Resources.LROOperationFailedAdditionalInfo">
+            <summary>
+              Looks up a localized string similar to Long running operation failed with status &apos;{0}&apos;. Additional Info:&apos;{1}&apos;.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.ClientRuntime.Azure.Properties.Resources.NoBody">
+            <summary>
+              Looks up a localized string similar to The response from long running operation does not contain a body..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.ClientRuntime.Azure.Properties.Resources.NoHeader">
+            <summary>
+              Looks up a localized string similar to Location header is missing from long running operation..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.ClientRuntime.Azure.Properties.Resources.NoProvisioningState">
+            <summary>
+              Looks up a localized string similar to Provisioning state is missing from long running operation..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.ClientRuntime.Azure.Properties.Resources.ResponseStatusCodeError">
+            <summary>
+              Looks up a localized string similar to Response status code indicates server error: {0} ({1})..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.ClientRuntime.Azure.Properties.Resources.RetryLimitExceeded">
+            <summary>
+              Looks up a localized string similar to The action has exceeded its defined retry limit..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.ClientRuntime.Azure.Properties.Resources.RetryStrategyNotFound">
+            <summary>
+              Looks up a localized string similar to The retry strategy with name &apos;{0}&apos; cannot be found..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.ClientRuntime.Azure.Properties.Resources.StringCannotBeEmpty">
+            <summary>
+              Looks up a localized string similar to The specified string argument {0} must not be empty..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.ClientRuntime.Azure.Properties.Resources.TaskCannotBeNull">
+            <summary>
+              Looks up a localized string similar to The specified argument &apos;{0}&apos; cannot return a null task when invoked..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.ClientRuntime.Azure.Properties.Resources.TaskMustBeScheduled">
+            <summary>
+              Looks up a localized string similar to The specified argument &apos;{0}&apos; must return a scheduled task (also known as &quot;hot&quot; task) when invoked..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Rest.ClientRuntime.Azure.Properties.Resources.UnexpectedPollingStatus">
+            <summary>
+              Looks up a localized string similar to Unexpected polling status code from long running operation &apos;{0}&apos; for method &apos;{1}&apos;..
+            </summary>
+        </member>
+    </members>
+</doc>
