@@ -1181,6 +1181,38 @@ directive:
       parameter-name: IdentityUserAssignedIdentity
     set:
       parameter-name: UserAssignedIdentity
+  - where:
+      verb: New
+      subject: ExpressRouteCircuit
+      parameter-name: ServiceProviderPropertyBandwidthInMbps
+    set:
+      parameter-name: ServiceProviderBandwidthInMbps
+      alias: BandwidthInMbps
+  - where:
+      verb: New
+      subject: ExpressRouteCircuit
+      parameter-name: ServiceProviderPropertyPeeringLocation
+    set:
+      parameter-name: ServiceProviderPeeringLocation
+      alias: PeeringLocation
+  - where:
+      verb: New
+      subject: ExpressRouteCircuit
+      parameter-name: ServiceProviderPropertyServiceProviderName
+    set:
+      parameter-name: ServiceProviderName
+  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
+      verb: New
+      subject: ExpressRouteCircuit
+      parameter-name: ResourceGroupName
+    set:
+      alias: ExpressRoutePort
+  - where:
+      verb: New
+      subject: ExpressRouteCircuit
+      parameter-name: AllowClassicOperation
+    set:
+      parameter-name: AllowClassicOperations
 
 # Other Fixes
   - where:
