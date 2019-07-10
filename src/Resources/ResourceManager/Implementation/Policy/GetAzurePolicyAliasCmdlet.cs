@@ -18,7 +18,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
-
+    using Microsoft.Azure.Commands.Common.Authentication;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
     using Microsoft.Azure.Commands.ResourceManager.Common;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.ResourceManager;
@@ -30,6 +32,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     [Cmdlet(VerbsCommon.Get, AzureRMConstants.AzureRMPrefix + "PolicyAlias"), OutputType(typeof(PsResourceProviderAlias))]
     public class GetAzurePolicyAlias : ResourceManagerCmdletBase
     {
+        // odata string for provider query to expand aliases
+        private const string ExpandAliases = "$expand=resourceTypes/aliases";
+
         /// <summary>
         /// Gets or sets the provider namespace match string
         /// </summary>
@@ -116,13 +121,23 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private IEnumerable<Provider> GetAllProviders()
         {
             var returnList = new List<Provider>();
-            var tempResult = this.ResourceManagerSdkClient.ResourceManagementClient.Providers.List(expand: "resourceTypes/aliases");
-            returnList.AddRange(tempResult);
-
-            while (!string.IsNullOrWhiteSpace(tempResult.NextPageLink))
+            var endpoint = new Uri($"{this.ResourceManagerSdkClient.ResourceManagementClient.BaseUri}/providers");
+            var credentials =  AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(DefaultContext);
+            var cmdletHeaders = new Dictionary<string, string>
             {
-                tempResult = this.ResourceManagerSdkClient.ResourceManagementClient.Providers.ListNext(tempResult.NextPageLink);
-                returnList.AddRange(tempResult);
+                {"ParameterSetName", this.ParameterSetName },
+                {"CommandName", this.CommandRuntime.ToString() }
+            };
+
+            var helper = HttpClientHelperFactory.Instance.CreateHttpClientHelper(credentials, AzureSession.Instance.ClientFactory.UserAgents, cmdletHeaders);
+            var restClient = new RestClients.ResourceManagerRestRestClient(endpoint, helper);
+            var tempResult = restClient.ListObjectColleciton<Provider>("/providers", "1", CancellationToken.Value, ExpandAliases).Result;
+            returnList.AddRange(tempResult.Value);
+
+            while (!string.IsNullOrWhiteSpace(tempResult.NextLink))
+            {
+                tempResult = restClient.ListObjectColleciton<Provider>(tempResult.NextLink, "1", CancellationToken.Value, ExpandAliases).Result;
+                returnList.AddRange(tempResult.Value);
             }
 
             return returnList;
