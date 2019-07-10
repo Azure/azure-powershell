@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
 {
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ActionRule", DefaultParameterSetName = ByNameParameterSet, 
         SupportsShouldProcess = true)]
-    [OutputType(typeof(string))]
+    [OutputType(typeof(bool))]
     public class RemoveAzureActionRule : AlertsManagementBaseCmdlet
     {
         private const string ByInputObjectParameterSet = "ByInputObject";
@@ -69,6 +69,14 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                     HelpMessage = "The action rule resource")]
         public PSActionRule InputObject { get; set; }
 
+        /// <summary>
+        /// Gets or sets the PassThru switch parameter to force return an object when removing
+        /// </summary>
+        [Parameter(Mandatory = false,
+                    HelpMessage = "PassThru returns an object representing the item with which you are working."+
+                    " By default, this cmdlet does not generate any output.")]
+        public SwitchParameter PassThru;
+
         #endregion
 
         protected override void ProcessRecordInternal()
@@ -88,9 +96,9 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                             .Result.Body;
                     }
 
-                    if ((bool)isDeleted)
+                    if (PassThru.IsPresent)
                     {
-                        WriteObject(string.Format("Successfully deleted the action rule: {0}", ResourceId));
+                        WriteObject(isDeleted);
                     }
                     break;
                 
@@ -106,10 +114,11 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                             .Result.Body;
                     }
 
-                    if ((bool)isDeleted)
+                    if (PassThru.IsPresent)
                     {
-                        WriteObject(string.Format("Successfully deleted the action rule: {0}", Name));
+                        WriteObject(isDeleted);
                     }
+
                     break;
                 
                 case ByNameParameterSet:
@@ -123,16 +132,11 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                             .Result.Body;
                     }
 
-                    if ((bool)isDeleted)
+                    if (PassThru.IsPresent)
                     {
-                        WriteObject(string.Format("Successfully deleted the action rule: {0}", Name));
+                        WriteObject(isDeleted);
                     }
                     break;
-            }
-
-            if (!(bool)isDeleted)
-            {
-                WriteObject(string.Format("Couldn't delete the action rule. Please retry!"));
             }
         }
     }

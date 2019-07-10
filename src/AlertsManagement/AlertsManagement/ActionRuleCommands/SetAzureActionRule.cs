@@ -304,101 +304,106 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         protected override void ProcessRecordInternal()
         {
             PSActionRule actionRule = new PSActionRule();
-            switch (ParameterSetName)
+            if (ShouldProcess(
+                target: string.Format("Create new Action Rule"),
+                action: "Create the action rule"))
             {
-                case BySimplifiedFormatActionGroupActionRuleParameterSet:
-                    if (ActionRuleType != "ActionGroup")
-                    {
-                        throw new PSInvalidOperationException("Incorrect Action Rule Type for given set of parameters. +" +
-                            "Use ActionGroup type for this parameter set.");
-                    }
-
-                    // Create Action Rule
-                    ActionRule actionGroupAR = new ActionRule(
-                        location: "Global",
-                        tags: new Dictionary<string, string>(),
-                        properties: new ActionGroup(
-                            scope: ParseScope(),
-                            conditions: ParseConditions(),
-                            actionGroupId: ActionGroupId,
-                            description: Description,
-                            status: Status
-                        )
-                    );
-
-                    actionRule = new PSActionRule(this.AlertsManagementClient.ActionRules.CreateUpdateWithHttpMessagesAsync(
-                        resourceGroupName: ResourceGroupName, actionRuleName: Name, actionRule: actionGroupAR).Result.Body);
-                    break;
-
-                case BySimplifiedFormatSuppressionActionRuleParameterSet:
-
-                    if (ActionRuleType != "Suppression")
-                    {
-                        throw new PSInvalidOperationException("Incorrect Action Rule Type for given set of parameters. +" +
-                            "Use Suppression type for this parameter set.");
-                    }
-
-                    SuppressionConfig config = new SuppressionConfig(recurrenceType: ReccurenceType);
-                    if (ReccurenceType != "Always")
-                    {
-                        config.Schedule = new SuppressionSchedule(
-                            startDate: SuppressionStartTime.Split(' ')[0],
-                            endDate: SuppressionEndTime.Split(' ')[0],
-                            startTime: SuppressionStartTime.Split(' ')[1],
-                            endTime: SuppressionEndTime.Split(' ')[1]
-                            );
-
-                        if (ReccurentValue.Length > 0)
+                switch (ParameterSetName)
+                {
+                    case BySimplifiedFormatActionGroupActionRuleParameterSet:
+                        if (ActionRuleType != "ActionGroup")
                         {
-                            //config.Schedule.RecurrenceValues = new List<int?>(ReccurentValue.ToList<int?>());
+                            throw new PSInvalidOperationException("Incorrect Action Rule Type for given set of parameters. +" +
+                                "Use ActionGroup type for this parameter set.");
                         }
-                    }
 
-                    // Create Action Rule
-                    ActionRule suppressionAR = new ActionRule(
-                        location: "Global",
-                        tags: new Dictionary<string, string>(),
-                        properties: new Suppression(
-                            scope: ParseScope(),
-                            conditions: ParseConditions(),
-                            description: Description,
-                            status: Status,
-                            suppressionConfig: config
-                        )
-                    );
+                        // Create Action Rule
+                        ActionRule actionGroupAR = new ActionRule(
+                            location: "Global",
+                            tags: new Dictionary<string, string>(),
+                            properties: new ActionGroup(
+                                scope: ParseScope(),
+                                conditions: ParseConditions(),
+                                actionGroupId: ActionGroupId,
+                                description: Description,
+                                status: Status
+                            )
+                        );
 
-                    actionRule = new PSActionRule(this.AlertsManagementClient.ActionRules.CreateUpdateWithHttpMessagesAsync(
-                        resourceGroupName: ResourceGroupName, actionRuleName: Name, actionRule: suppressionAR).Result.Body);
-                    break;
+                        actionRule = new PSActionRule(this.AlertsManagementClient.ActionRules.CreateUpdateWithHttpMessagesAsync(
+                            resourceGroupName: ResourceGroupName, actionRuleName: Name, actionRule: actionGroupAR).Result.Body);
+                        break;
 
-                case BySimplifiedFormatDiagnosticsActionRuleParameterSet:
-                    if (ActionRuleType != "Diagnostics")
-                    {
-                        throw new PSInvalidOperationException("Incorrect Action Rule Type for given set of parameters. +" +
-                            "Use Diagnostics type for this parameter set.");
-                    }
+                    case BySimplifiedFormatSuppressionActionRuleParameterSet:
 
-                    // Create Action Rule
-                    ActionRule diagnosticsAR = new ActionRule(
-                        location: "Global",
-                        tags: new Dictionary<string, string>(),
-                        properties: new Diagnostics(
-                            scope: ParseScope(),
-                            conditions: ParseConditions(),
-                            description: Description,
-                            status: Status
-                        )
-                    );
+                        if (ActionRuleType != "Suppression")
+                        {
+                            throw new PSInvalidOperationException("Incorrect Action Rule Type for given set of parameters. +" +
+                                "Use Suppression type for this parameter set.");
+                        }
 
-                    actionRule = new PSActionRule(this.AlertsManagementClient.ActionRules.CreateUpdateWithHttpMessagesAsync(
-                        resourceGroupName: ResourceGroupName, actionRuleName: Name, actionRule: diagnosticsAR).Result.Body);
+                        SuppressionConfig config = new SuppressionConfig(recurrenceType: ReccurenceType);
+                        if (ReccurenceType != "Always")
+                        {
+                            config.Schedule = new SuppressionSchedule(
+                                startDate: SuppressionStartTime.Split(' ')[0],
+                                endDate: SuppressionEndTime.Split(' ')[0],
+                                startTime: SuppressionStartTime.Split(' ')[1],
+                                endTime: SuppressionEndTime.Split(' ')[1]
+                                );
 
-                    break;
-                case ByInputObjectParameterSet:
-                    break;
+                            if (ReccurentValue.Length > 0)
+                            {
+                                config.Schedule.RecurrenceValues = ReccurentValue.OfType<int?>().ToList();
+                            }
+                        }
+
+                        // Create Action Rule
+                        ActionRule suppressionAR = new ActionRule(
+                            location: "Global",
+                            tags: new Dictionary<string, string>(),
+                            properties: new Suppression(
+                                scope: ParseScope(),
+                                conditions: ParseConditions(),
+                                description: Description,
+                                status: Status,
+                                suppressionConfig: config
+                            )
+                        );
+
+                        actionRule = new PSActionRule(this.AlertsManagementClient.ActionRules.CreateUpdateWithHttpMessagesAsync(
+                            resourceGroupName: ResourceGroupName, actionRuleName: Name, actionRule: suppressionAR).Result.Body);
+                        break;
+
+                    case BySimplifiedFormatDiagnosticsActionRuleParameterSet:
+                        if (ActionRuleType != "Diagnostics")
+                        {
+                            throw new PSInvalidOperationException("Incorrect Action Rule Type for given set of parameters. +" +
+                                "Use Diagnostics type for this parameter set.");
+                        }
+
+                        // Create Action Rule
+                        ActionRule diagnosticsAR = new ActionRule(
+                            location: "Global",
+                            tags: new Dictionary<string, string>(),
+                            properties: new Diagnostics(
+                                scope: ParseScope(),
+                                conditions: ParseConditions(),
+                                description: Description,
+                                status: Status
+                            )
+                        );
+
+                        actionRule = new PSActionRule(this.AlertsManagementClient.ActionRules.CreateUpdateWithHttpMessagesAsync(
+                            resourceGroupName: ResourceGroupName, actionRuleName: Name, actionRule: diagnosticsAR).Result.Body);
+
+                        break;
+                    case ByInputObjectParameterSet:
+                        break;
+                }
+
+                WriteObject(sendToPipeline: actionRule);
             }
-
-            WriteObject(sendToPipeline: actionRule);
         }
 
         private Conditions ParseConditions()

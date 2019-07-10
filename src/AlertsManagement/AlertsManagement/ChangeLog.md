@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 
-## Version 1.0.0
+## Version 0.1.0
 * Preview of `Az.AlertsManagement` module
 * Powershell Cmdlets for Alerts Management Resource Provider to manage alerts, action rules and smart groups.
 
