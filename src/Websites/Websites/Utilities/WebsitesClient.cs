@@ -312,20 +312,10 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
 
         public void RunWebAppContainerPSSessionScript(PSCmdlet cmdlet, string resourceGroupName, string webSiteName, string slotName = null, bool newPSSession = false)
         {
-            List<Version> compatibleVersions = GetPsCompatibleVersions(cmdlet);
+            string operatingSystem = GetPsOperatingSystem(cmdlet);
 
-            Version psCore = new Version(6, 0, 4);
-
-            if (compatibleVersions.Contains(psCore))
+            if (operatingSystem.Contains("windows"))
             {
-                WriteError(Properties.Resources.EnterContainerPSSessionNotSupportedInPSCore604);
-
-                return;
-            }
-
-            if (compatibleVersions.Where(v => v.CompareTo(psCore) < 0).Count() > 1)
-            {
-                // Running on PowerShell 5.1. Assume Windows.
 
                 // Validate if WSMAN Basic Authentication is enabled
                 bool isBasicAuthEnabled = ExecuteScriptAndGetVariableAsBool(cmdlet, "${0} = (Get-Item WSMAN:\\LocalHost\\Client\\Auth\\Basic -ErrorAction SilentlyContinue).Value", false);
@@ -398,6 +388,15 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             }
 
             return versionResults;
+        }
+
+        private string GetPsOperatingSystem (PSCmdlet cmdlet)
+        {
+            string psOperatingSystem = "none";
+
+            psOperatingSystem = ExecuteScriptAndGetVariable(cmdlet, "${0} = $PSVersionTable.OS", "none");
+
+            return psOperatingSystem;
         }
 
         private bool ExecuteScriptAndGetVariableAsBool(PSCmdlet cmdlet, string scriptFormatString, bool defaultValue)
