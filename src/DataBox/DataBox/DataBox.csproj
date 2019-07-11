@@ -12,12 +12,9 @@
 
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.DataBox" Version="1.0.0" />
-	
-  </ItemGroup>
-
-
-  <ItemGroup>
+    <Reference Include="Microsoft.Azure.Management.DataBox">
+      <HintPath>C:\Users\t-irali\Downloads\Microsoft.Azure.Management.DataBox.1.0.0\lib\net452\Microsoft.Azure.Management.DataBox.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory">
       <HintPath>..\..\..\artifacts\Debug\Az.Accounts\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
     </Reference>
