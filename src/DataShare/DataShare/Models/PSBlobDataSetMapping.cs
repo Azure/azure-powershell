@@ -15,7 +15,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models
 {
     /// <inheritdoc />
-    public class PSBlobDataSetMapping : PSDataSetMapping
+    public class PSBlobDataSetMapping : PSDataShareDataSetMapping
     {
         public string ContainerName { get; set; }
         public string FilePath { get; set; }

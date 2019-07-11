@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.DataShare.DataSetMapping
     /// Defines Get-AzDataShareDataSetMapping cmdlets.
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataShareDataSetMapping", DefaultParameterSetName = ParameterSetNames.FieldsParameterSet),
-     OutputType(typeof(PSDataSetMapping))]
+     OutputType(typeof(PSDataShareDataSetMapping))]
     public class GetAzDataShareDataSetMapping : AzureDataShareCmdletBase
     {
         /// <summary>
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Commands.DataShare.DataSetMapping
                     nextPageLink = datasetMappings.NextPageLink;
                 } while (nextPageLink != null);
 
-                IEnumerable<PSDataSetMapping> datasetsInShareSubscription = dataSetMappingList.Select(dataSetMapping => dataSetMapping.ToPsObject());
+                IEnumerable<PSDataShareDataSetMapping> datasetsInShareSubscription = dataSetMappingList.Select(dataSetMapping => dataSetMapping.ToPsObject());
                 this.WriteObject(datasetsInShareSubscription, true);
             }
         }

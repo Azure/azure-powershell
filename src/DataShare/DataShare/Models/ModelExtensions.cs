@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Commands.DataShare.Helpers
             }
         }
 
-        public static PSDataSetMapping ToPsObject(this DataSetMapping dataSetMapping)
+        public static PSDataShareDataSetMapping ToPsObject(this DataSetMapping dataSetMapping)
         {
             switch (dataSetMapping)
             {

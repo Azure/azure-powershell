@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.DataShare.DataSetMapping
             ValueFromPipeline = true,
             HelpMessage = "The azure data set mapping object")]
         [ValidateNotNullOrEmpty]
-        public PSDataSetMapping DataSetMapping { get; set; }
+        public PSDataShareDataSetMapping InputObject { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -133,13 +133,13 @@ namespace Microsoft.Azure.Commands.DataShare.DataSetMapping
 
             if (this.ParameterSetName.Equals(ParameterSetNames.ObjectParameterSet, StringComparison.OrdinalIgnoreCase))
             {
-                if (this.DataSetMapping == null)
+                if (this.InputObject == null)
                 {
                     throw new PSArgumentNullException(
                         string.Format(CultureInfo.InvariantCulture, Resources.ResourceArgumentInvalid));
                 }
 
-                resourceId = this.DataSetMapping.Id;
+                resourceId = this.InputObject.Id;
             }
 
             if (!string.IsNullOrEmpty(resourceId))

@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.DataShare.Account
             ValueFromPipeline = true,
             HelpMessage = "The azure data share account object.")]
         [ValidateNotNullOrEmpty]
-        public PSDataShareAccount Account { get; set; }
+        public PSDataShareAccount InputObject { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -110,13 +110,13 @@ namespace Microsoft.Azure.Commands.DataShare.Account
 
             if (this.ParameterSetName.Equals(ParameterSetNames.ObjectParameterSet, StringComparison.OrdinalIgnoreCase))
             {
-                if (this.Account == null)
+                if (this.InputObject == null)
                 {
                     throw new PSArgumentNullException(
                         string.Format(CultureInfo.InvariantCulture, Resources.ResourceArgumentInvalid));
                 }
 
-                resourceId = this.Account.Id;
+                resourceId = this.InputObject.Id;
             }
 
             if (!string.IsNullOrEmpty(resourceId))

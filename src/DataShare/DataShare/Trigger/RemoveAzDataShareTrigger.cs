@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.DataShare.Trigger
             HelpMessage = "Azure data share trigger object")]
         [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
-        public PSDataShareTrigger Trigger { get; set; }
+        public PSDataShareTrigger InputObject { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Commands.DataShare.Trigger
 
             if (this.ParameterSetName.Equals(ParameterSetNames.ObjectParameterSet, StringComparison.OrdinalIgnoreCase))
             {
-                resourceId = this.Trigger.Id;
+                resourceId = this.InputObject.Id;
             }
 
             if (resourceId != null)

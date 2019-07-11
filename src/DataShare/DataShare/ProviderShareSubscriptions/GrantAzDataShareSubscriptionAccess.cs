@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.DataShare.ProviderShareSubscription
 
         public override void ExecuteCmdlet()
         {
-            if (this.ShouldProcess(this.ShareSubscriptionId, "Grant"))
+            if (this.ShouldProcess(this.ShareSubscriptionId, "Grant access to source share"))
             {
                 if (this.ParameterSetName.Equals(ParameterSetNames.ResourceIdParameterSet))
                 {

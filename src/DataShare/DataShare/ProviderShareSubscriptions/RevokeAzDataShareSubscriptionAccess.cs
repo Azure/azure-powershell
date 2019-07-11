@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.DataShare.ProviderShareSubscription
 
         public override void ExecuteCmdlet()
         {
-            if (this.ShouldProcess(this.ShareSubscriptionId, "Revoke"))
+            if (this.ShouldProcess(this.ShareSubscriptionId, "Revoke access to source share"))
             {
                 if (this.ParameterSetName.Equals(ParameterSetNames.ResourceIdParameterSet))
                 {

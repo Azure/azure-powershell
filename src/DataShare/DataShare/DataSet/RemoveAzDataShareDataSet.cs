@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.DataShare.DataSet
             ValueFromPipeline = true,
             HelpMessage = "The azure data set object.")]
         [ValidateNotNullOrEmpty]
-        public PSDataShareDataSet DataSet { get; set; }
+        public PSDataShareDataSet InputObject { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -129,13 +129,13 @@ namespace Microsoft.Azure.Commands.DataShare.DataSet
 
             if (this.ParameterSetName.Equals(ParameterSetNames.ObjectParameterSet, StringComparison.OrdinalIgnoreCase))
             {
-                if (this.DataSet == null)
+                if (this.InputObject == null)
                 {
                     throw new PSArgumentNullException(
                         string.Format(CultureInfo.InvariantCulture, Resources.ResourceArgumentInvalid));
                 }
 
-                resourceId = this.DataSet.Id;
+                resourceId = this.InputObject.Id;
             }
 
             if (!string.IsNullOrEmpty(resourceId))
