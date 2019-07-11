@@ -409,7 +409,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
         }
 
         private string ExecuteScriptAndGetVariable(PSCmdlet cmdlet,  string scriptFormatString, string defaultValue)
-        {            
+        {
             string outputVariable = "outputVariable";
             cmdlet.ExecuteScript<object>(string.Format(scriptFormatString, outputVariable));
             var output = cmdlet.GetVariableValue(outputVariable, defaultValue);
