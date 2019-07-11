@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.DataShare.Synchronization
          ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataShareSubscriptionSynchronization",
          DefaultParameterSetName = ParameterSetNames.FieldsParameterSet,
          SupportsShouldProcess = true),
-     OutputType(typeof(PSShareSubscriptionSynchronization))]
+     OutputType(typeof(PSDataShareSubscriptionSynchronization))]
     public class StartAzDataShareSynchronization : AzureDataShareCmdletBase
     {
 

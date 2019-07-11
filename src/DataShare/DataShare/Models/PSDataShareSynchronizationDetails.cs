@@ -14,13 +14,22 @@
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models
 {
-    using Microsoft.Azure.Commands.DataShare.Models;
+    using System;
+    using System.Collections;
 
-    /// <inheritdoc />
-    public class PSSourceDataSet : PSResource
+    public class PSDataShareSynchronizationDetails
     {
         public string DataSetId { get; set; }
-        public string DataSetName { get; set; }
         public string DataSetType { get; set; }
+        public DateTime? EndTime { get; set; }
+        public DateTime? StartTime { get; set; }
+        public string Status { get; set; }
+        public int? DurationMs { get; set; }
+        public long? FilesRead { get; set; }
+        public long? FilesWritten { get; set; }
+        public long? SizeRead { get; set; }
+        public long? SizeWritten { get; set; }
+        public string Name { get; set; }
+        public string Message { get; set; }
     }
 }

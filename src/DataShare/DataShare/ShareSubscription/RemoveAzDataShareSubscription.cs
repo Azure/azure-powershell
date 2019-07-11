@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.DataShare.ShareSubscription
             ValueFromPipeline = true,
             HelpMessage = "Azure data share subscription object")]
         [ValidateNotNullOrEmpty]
-        public PSShareSubscription ShareSubscription { get; set; }
+        public PSDataShareSubscription ShareSubscription { get; set; }
 
         [Parameter(
             Mandatory = false,

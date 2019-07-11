@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.DataShare.Share
     /// Defines Get-AzureDataShare cmdlets.
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataShare", DefaultParameterSetName = ParameterSetNames.FieldsParameterSet),
-     OutputType(typeof(PSShare))]
+     OutputType(typeof(PSDataShare))]
     public class GetAzDataShare : AzureDataShareCmdletBase
     {
         /// <summary>
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.DataShare.Share
                         nextPageLink = shares.NextPageLink;
                     } while (nextPageLink != null);
 
-                    IEnumerable<PSShare> sharesInAccount = shareList.Select(share => share.ToPsObject());
+                    IEnumerable<PSDataShare> sharesInAccount = shareList.Select(share => share.ToPsObject());
                     this.WriteObject(sharesInAccount, true);
 
                 }               

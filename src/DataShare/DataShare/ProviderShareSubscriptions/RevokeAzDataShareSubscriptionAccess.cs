@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.DataShare.ProviderShareSubscription
     /// Defines Revoke-AzDataShareSubscriptionAccess cmdlets.
     /// </summary>
     [Cmdlet("Revoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataShareSubscriptionAccess", DefaultParameterSetName = ParameterSetNames.FieldsParameterSet, SupportsShouldProcess = true),
-     OutputType(typeof(PSProviderShareSubscription))]
+     OutputType(typeof(PSDataShareProviderShareSubscription))]
     public class RevokeAzDataShareSubscriptionAccess : AzureDataShareCmdletBase
     {
 

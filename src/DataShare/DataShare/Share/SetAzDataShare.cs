@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.DataShare.Share
     /// Defines Set-AzDataShare cmdlet.
     /// </summary>
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataShare", DefaultParameterSetName = ParameterSetNames.FieldsParameterSet),
-     OutputType(typeof(PSShare))]
+     OutputType(typeof(PSDataShare))]
     public class SetAzDataShare : AzureDataShareCmdletBase
     {
         /// <summary>
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.DataShare.Share
             ValueFromPipeline = true,
             HelpMessage = "Azure data share object")]
         [ValidateNotNullOrEmpty]
-        public PSShare Share { get; set; }
+        public PSDataShare Share { get; set; }
 
         /// <summary>
         /// Description of the Data Share

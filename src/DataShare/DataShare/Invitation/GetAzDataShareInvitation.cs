@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.DataShare.Invitation
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataShareInvitation",
          DefaultParameterSetName = ParameterSetNames.FieldsParameterSet),
-     OutputType(typeof(PSShare))]
+     OutputType(typeof(PSDataShare))]
     public class GetAzDataShareInvitation : AzureDataShareCmdletBase
     {
 
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Commands.DataShare.Invitation
                     nextPageLink = invitations.NextPageLink;
                 } while (nextPageLink != null);
 
-                IEnumerable<PSInvitation> invitationsInShare = invitationList.Select(invitation => invitation.ToPsObject());
+                IEnumerable<PSDataShareInvitation> invitationsInShare = invitationList.Select(invitation => invitation.ToPsObject());
                 this.WriteObject(invitationsInShare, true);
             }
         }

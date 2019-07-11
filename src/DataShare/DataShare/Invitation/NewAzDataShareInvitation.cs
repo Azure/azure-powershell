@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.DataShare.Invitation
          ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataShareInvitation",
          DefaultParameterSetName = ParameterSetNames.FieldsParameterSet,
          SupportsShouldProcess = true),
-     OutputType(typeof(PSInvitation))]
+     OutputType(typeof(PSDataShareInvitation))]
     public class NewAzDataShareInvitation : AzureDataShareCmdletBase
     {
         /// <summary>

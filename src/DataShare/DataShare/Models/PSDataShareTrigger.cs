@@ -14,14 +14,23 @@
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models
 {
+    using System;
     using Microsoft.Azure.Commands.DataShare.Models;
 
-    /// <inheritdoc />
-    public class PSDataSet : PSResource
+    public class PSDataShareTrigger : PSResource
     {
-        public string DataSetId { get; set; }
-        public string ResourceGroup { get; set; }
-        public string SubscriptionId { get; set; }
-        public string StorageAccount { get; set; }
+        public DateTime? CreatedAt { get; set; }
+
+        public string CreatedBy { get; set; }
+
+        public PSProvisioningState ProvisioningState { get; set; }
+
+        public string RecurrenceInterval { get; set; }
+
+        public string SynchronizationMode { get; set; }
+
+        public DateTime? SynchronizationTime { get; set; }
+
+        public string TriggerStatus { get; set; }
     }
 }

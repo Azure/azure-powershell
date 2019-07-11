@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.DataShare.Share
             ValueFromPipeline = true,
             HelpMessage = "Azure data share object")]
         [ValidateNotNullOrEmpty]
-        public PSShare Share { get; set; }
+        public PSDataShare Share { get; set; }
 
         [Parameter(
             Mandatory = false,

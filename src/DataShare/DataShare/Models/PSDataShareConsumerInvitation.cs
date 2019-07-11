@@ -15,21 +15,21 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models
 {
     using System;
-    using System.Collections;
+    using Microsoft.Azure.Commands.DataShare.Models;
 
-    public class PSSynchronizationDetails
+    /// <inheritdoc />
+    public class PSDataShareConsumerInvitation : PSResource
     {
-        public string DataSetId { get; set; }
-        public string DataSetType { get; set; }
-        public DateTime? EndTime { get; set; }
-        public DateTime? StartTime { get; set; }
-        public string Status { get; set; }
-        public int? DurationMs { get; set; }
-        public long? FilesRead { get; set; }
-        public long? FilesWritten { get; set; }
-        public long? SizeRead { get; set; }
-        public long? SizeWritten { get; set; }
-        public string Name { get; set; }
-        public string Message { get; set; }
+        public int? DataSetCount { get; set; }
+        public string InvitationId { get; set; }
+        public string InvitationStatus { get; set; }
+        public string Location { get; set; }
+        public DateTime? RespondedAt { get; set; }
+        public string Sender { get; set; }
+        public string SenderCompanyName { get; set; }
+        public DateTime? SentAt { get; set; }
+        public string ShareName { get; set; }
+        public string Description { get; set; }
+        public string Terms { get; set; }
     }
 }

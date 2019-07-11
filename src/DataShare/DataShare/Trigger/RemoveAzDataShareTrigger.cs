@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.DataShare.Trigger
             HelpMessage = "Azure data share trigger object")]
         [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
-        public PSTrigger Trigger { get; set; }
+        public PSDataShareTrigger Trigger { get; set; }
 
         [Parameter(
             Mandatory = false,

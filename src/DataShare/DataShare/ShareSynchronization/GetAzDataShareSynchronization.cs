@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.DataShare.ShareSynchronization
     [Cmdlet("Get",
          ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataShareSynchronization",
          DefaultParameterSetName = ParameterSetNames.FieldsParameterSet),
-     OutputType(typeof(PSShareSynchronization))]
+     OutputType(typeof(PSDataShareSynchronization))]
     public class GetAzDataShareSynchronization : AzureDataShareCmdletBase
     {
         /// <summary>
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.DataShare.ShareSynchronization
                 nextPageLink = shareSynchronizations.NextPageLink;
             } while (nextPageLink != null);
 
-            IEnumerable<PSShareSynchronization> synchronizationsInShare = shareSynchronizationsList.Select(shareSynchronization => shareSynchronization.ToPsObject());
+            IEnumerable<PSDataShareSynchronization> synchronizationsInShare = shareSynchronizationsList.Select(shareSynchronization => shareSynchronization.ToPsObject());
             this.WriteObject(synchronizationsInShare, true);
         }
     }

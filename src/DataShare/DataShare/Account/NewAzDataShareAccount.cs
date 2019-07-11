@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.DataShare.Account
         /// The location in which to create the azure data share account.
         /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "The location in which to create the data share account.")]
-        [LocationCompleter("Microsoft.DataShare/accounts")]
+        [LocationCompleter(ResourceTypes.Account)]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

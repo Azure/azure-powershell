@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.DataShare.DataSet
             ValueFromPipeline = true,
             HelpMessage = "The azure data set object.")]
         [ValidateNotNullOrEmpty]
-        public PSDataSet DataSet { get; set; }
+        public PSDataShareDataSet DataSet { get; set; }
 
         [Parameter(
             Mandatory = false,
