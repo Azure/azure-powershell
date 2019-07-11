@@ -414,7 +414,7 @@ Sets the image reference properties on a disk object.
 Sets the key encryption key properties on a disk object.
 
 ### [Set-AzDiskUpdateDiskEncryptionKey](Set-AzDiskUpdateDiskEncryptionKey.md)
-Sets the disk encryption key properties on on a disk update object.
+Sets the disk encryption key properties on a disk update object.
 
 ### [Set-AzDiskUpdateKeyEncryptionKey](Set-AzDiskUpdateKeyEncryptionKey.md)
 Sets the key encryption key properties on a disk update object.
