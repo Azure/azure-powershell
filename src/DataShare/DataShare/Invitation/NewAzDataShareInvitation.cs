@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.DataShare.Invitation
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models;
     using System.Management.Automation;
+    using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Extensions;
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Properties;
 
     /// <summary>
@@ -74,6 +75,7 @@ namespace Microsoft.Azure.Commands.DataShare.Invitation
             HelpMessage = "Azure data share name",
             ParameterSetName = ParameterSetNames.InvitationTenantParameterSet)]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter(ResourceTypes.Share, "ResourceGroupName", "AccountName")]
         public string ShareName { get; set; }
 
         /// <summary>

@@ -96,6 +96,7 @@ namespace Microsoft.Azure.Commands.DataShare.DataSet
             HelpMessage = "Azure data share name",
             ParameterSetName = ParameterSetNames.AdlsGen1DataSetParameterSet)]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter(ResourceTypes.Share, "ResourceGroupName", "AccountName")]
         public string ShareName { get; set; }
 
         /// <summary>
