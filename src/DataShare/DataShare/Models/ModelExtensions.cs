@@ -59,11 +59,11 @@ namespace Microsoft.Azure.Commands.DataShare.Helpers
             };
         }
 
-        public static PSAccount ToPsObject(this Account account)
+        public static PSDataShareAccount ToPsObject(this Account account)
         {
             Debug.Assert(account.ProvisioningState != null, "account.ProvisioningState != null");
 
-            return new PSAccount
+            return new PSDataShareAccount
             {
                 Id = account.Id,
                 Name = account.Name,

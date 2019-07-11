@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.DataShare.DataSetMapping
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using System.Management.Automation;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+    using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Extensions;
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models;
 
     /// <summary>
@@ -96,6 +97,7 @@ namespace Microsoft.Azure.Commands.DataShare.DataSetMapping
             HelpMessage = "Azure data set mapping name",
             ParameterSetName = ParameterSetNames.AdlsGen2DataSetParameterSet)]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter(ResourceTypes.DataSetMapping, "ResourceGroupName", "AccountName", "ShareSubscriptionName")]
         public string Name { get; set; }
 
         /// <summary>
@@ -194,7 +196,7 @@ namespace Microsoft.Azure.Commands.DataShare.DataSetMapping
                 ParameterSetNames.BlobDataSetParameterSet,
                 StringComparison.OrdinalIgnoreCase))
             {
-                if (this.ShouldProcess(this.Name, VerbsCommon.New))
+                if (this.ShouldProcess(this.Name, "Create"))
                 {
                     if (this.FilePath != null)
                     {
@@ -265,7 +267,7 @@ namespace Microsoft.Azure.Commands.DataShare.DataSetMapping
                 StringComparison.OrdinalIgnoreCase))
             {
 
-                if (this.ShouldProcess(this.Name, VerbsCommon.New))
+                if (this.ShouldProcess(this.Name, "Create"))
                 {
                     if (this.FilePath != null)
                     {

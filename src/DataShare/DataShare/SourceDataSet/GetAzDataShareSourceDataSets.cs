@@ -31,7 +31,8 @@ namespace Microsoft.Azure.Commands.DataShare.SourceDataSet
     /// <summary>
     /// Defines Get-AzureDataShareSourceDataSets cmdlet.
     /// </summary>
-    [Cmdlet("Get",
+    [Cmdlet(
+         "Get",
          ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataShareSourceDataSets",
          DefaultParameterSetName = ParameterSetNames.FieldsParameterSet),
      OutputType(typeof(PSSourceDataSet))]
@@ -102,24 +103,26 @@ namespace Microsoft.Azure.Commands.DataShare.SourceDataSet
                 do
                 {
                     IPage<ConsumerSourceDataSet> sourceDataSets = string.IsNullOrEmpty(nextPageLink)
-                        ? this.DataShareManagementClient.ConsumerSourceDataSets.ListByShareSubscription(this.ResourceGroupName, this.AccountName, this.ShareSubscriptionName)
-                        : this.DataShareManagementClient.ConsumerSourceDataSets.ListByShareSubscriptionNext(nextPageLink);
+                        ? this.DataShareManagementClient.ConsumerSourceDataSets.ListByShareSubscription(
+                            this.ResourceGroupName,
+                            this.AccountName,
+                            this.ShareSubscriptionName)
+                        : this.DataShareManagementClient.ConsumerSourceDataSets.ListByShareSubscriptionNext(
+                            nextPageLink);
 
                     consumerSourceDataSetList.AddRange(sourceDataSets.AsEnumerable());
                     nextPageLink = sourceDataSets.NextPageLink;
                 } while (nextPageLink != null);
 
-                IEnumerable<PSSourceDataSet> dataSetsInShareSubscription = consumerSourceDataSetList.Select(dataSet => dataSet.ToPsObject());
+                IEnumerable<PSSourceDataSet> dataSetsInShareSubscription =
+                    consumerSourceDataSetList.Select(dataSet => dataSet.ToPsObject());
                 this.WriteObject(dataSetsInShareSubscription, true);
 
             }
-            catch (DataShareErrorException ex)
+            catch (DataShareErrorException ex) when (ex.Response.StatusCode.Equals(HttpStatusCode.NotFound))
             {
-                if (ex.Response.StatusCode.Equals(HttpStatusCode.NotFound))
-                {
-                    throw new PSArgumentException(
-                        $"Source DataSets not found for {this.ShareSubscriptionName}");
-                }
+                throw new PSArgumentException(
+                    $"Source DataSets not found for {this.ShareSubscriptionName}");
             }
         }
     }

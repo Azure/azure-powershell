@@ -140,13 +140,10 @@ namespace Microsoft.Azure.Commands.DataShare.Synchronization
                 this.WriteObject(synchronizationDetailsInShare, true);
 
             }
-            catch (DataShareErrorException ex)
+            catch (DataShareErrorException ex) when (ex.Response.StatusCode.Equals(HttpStatusCode.NotFound))
             {
-                if (ex.Response.StatusCode.Equals(HttpStatusCode.NotFound))
-                {
-                    throw new PSArgumentException(
-                        $"ShareSynchronizationDetails {this.ShareName} not found");
-                }
+                throw new PSArgumentException(
+                    $"ShareSynchronizationDetails {this.ShareName} not found");
             }
         }
     }

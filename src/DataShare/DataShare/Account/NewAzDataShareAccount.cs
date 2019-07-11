@@ -21,7 +21,9 @@ namespace Microsoft.Azure.Commands.DataShare.Account
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.DataShare;
     using Microsoft.Azure.Management.DataShare.Models;
+    using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Extensions;
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models;
+    using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Properties;
 
     /// <summary>
     /// Defines the New-DataShareAccount cmdlet.
@@ -30,7 +32,7 @@ namespace Microsoft.Azure.Commands.DataShare.Account
          "New",
          ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataShareAccount",
          DefaultParameterSetName = ParameterSetNames.FieldsParameterSet,
-         SupportsShouldProcess = true), OutputType(typeof(PSAccount))]
+         SupportsShouldProcess = true), OutputType(typeof(PSDataShareAccount))]
     public class NewAzDataShareAccount : AzureDataShareCmdletBase
     {
         /// <summary>
@@ -48,6 +50,7 @@ namespace Microsoft.Azure.Commands.DataShare.Account
         /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "Azure data share account name.")]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter(ResourceTypes.Account, "ResourceGroupName")]
         public string Name { get; set; }
 
         /// <summary>
@@ -66,17 +69,20 @@ namespace Microsoft.Azure.Commands.DataShare.Account
             HelpMessage = "The tags to associate with the azure data share account.")]
         public Hashtable Tag { get; set; }
 
+        [Parameter]
+        public SwitchParameter AsJob { get; set; }
+
         public override void ExecuteCmdlet()
         {
             this.ConfirmAction(
-                this.MyInvocation.InvocationName,
+                string.Format(Resources.ResourceCreateConfirmation, this.Name),
                 this.Name,
                 this.NewAccount);
         }
 
         private void NewAccount()
         {
-            if (this.ShouldProcess(this.Name, VerbsCommon.New))
+            if (this.ShouldProcess(this.Name, "Create"))
             {
                 Account dataShareAccount = this.DataShareManagementClient.Accounts.Create(
                     this.ResourceGroupName,

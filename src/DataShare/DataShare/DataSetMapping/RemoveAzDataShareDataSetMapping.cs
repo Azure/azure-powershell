@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.DataShare.DataSetMapping
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models;
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Properties;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Extensions;
 
     /// <summary>
     /// Defines Remove-AzDataShareDataSetMapping cmdlets.
@@ -78,6 +79,11 @@ namespace Microsoft.Azure.Commands.DataShare.DataSetMapping
             HelpMessage = "Azure data set mapping name",
             ParameterSetName = ParameterSetNames.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter(
+            ResourceTypes.DataSetMapping,
+            "ResourceGroupName",
+            "AccountName",
+            "ShareSubscriptionName")]
         public string Name { get; set; }
 
         /// <summary>
@@ -88,7 +94,7 @@ namespace Microsoft.Azure.Commands.DataShare.DataSetMapping
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource id of the azure data set mapping",
             ParameterSetName = ParameterSetNames.ResourceIdParameterSet)]
-        [ResourceGroupCompleter()]
+        [ResourceIdCompleter(ResourceTypes.DataSetMapping)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -114,46 +120,45 @@ namespace Microsoft.Azure.Commands.DataShare.DataSetMapping
 
         public override void ExecuteCmdlet()
         {
-            if (this.ShouldProcess(this.Name, VerbsCommon.Remove))
+            string resourceId = null;
+
+            if (this.ParameterSetName.Equals(
+                ParameterSetNames.ResourceIdParameterSet,
+                StringComparison.OrdinalIgnoreCase))
             {
-                string resourceId = null;
-
-                if (this.ParameterSetName.Equals(ParameterSetNames.ResourceIdParameterSet, StringComparison.OrdinalIgnoreCase))
-                {
-                    resourceId = this.ResourceId;
-                }
-
-                if (this.ParameterSetName.Equals(ParameterSetNames.ObjectParameterSet, StringComparison.OrdinalIgnoreCase))
-                {
-                    if (this.DataSetMapping == null)
-                    {
-                        throw new PSArgumentNullException(
-                            string.Format(CultureInfo.InvariantCulture, Resources.DataShareArgumentInvalid));
-                    }
-
-                    resourceId = this.DataSetMapping.Id;
-                }
-
-                if (!string.IsNullOrEmpty(resourceId))
-                {
-                    var parseResourceId = new ResourceIdentifier(resourceId);
-                    this.ResourceGroupName = parseResourceId.ResourceGroupName;
-                    this.AccountName = parseResourceId.GetAccountName();
-                    this.ShareSubscriptionName = parseResourceId.GetShareSubscriptionName();
-                    this.Name = parseResourceId.GetDataSetMappingName();
-                }
-
-                this.ConfirmAction(
-                    this.Force,
-                    this.Name,
-                    this.MyInvocation.InvocationName,
-                    this.Name,
-                    () => this.DataShareManagementClient.DataSetMappings.Delete(
-                        this.ResourceGroupName,
-                        this.AccountName,
-                        this.ShareSubscriptionName,
-                        this.Name));
+                resourceId = this.ResourceId;
             }
+
+            if (this.ParameterSetName.Equals(ParameterSetNames.ObjectParameterSet, StringComparison.OrdinalIgnoreCase))
+            {
+                if (this.DataSetMapping == null)
+                {
+                    throw new PSArgumentNullException(
+                        string.Format(CultureInfo.InvariantCulture, Resources.ResourceArgumentInvalid));
+                }
+
+                resourceId = this.DataSetMapping.Id;
+            }
+
+            if (!string.IsNullOrEmpty(resourceId))
+            {
+                var parseResourceId = new ResourceIdentifier(resourceId);
+                this.ResourceGroupName = parseResourceId.ResourceGroupName;
+                this.AccountName = parseResourceId.GetAccountName();
+                this.ShareSubscriptionName = parseResourceId.GetShareSubscriptionName();
+                this.Name = parseResourceId.GetDataSetMappingName();
+            }
+
+            this.ConfirmAction(
+                this.Force,
+                string.Format(Resources.ResourceRemovalConfirmation, this.Name),
+                string.Format(Resources.ResourceRemovedMessage, this.Name),
+                this.Name,
+                () => this.DataShareManagementClient.DataSetMappings.Delete(
+                    this.ResourceGroupName,
+                    this.AccountName,
+                    this.ShareSubscriptionName,
+                    this.Name));
 
             if (this.PassThru)
             {

@@ -117,7 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="DataShareAccountArgumentInvalid" xml:space="preserve">
-    <value>The data share account object provided is invalid. Use Get-AzDataShareAccount to retrieve a specific data share account object, or use New-AzDataShareAccount to create a new data factory object.</value>
+  <data name="ResourceArgumentInvalid" xml:space="preserve">
+    <value>The resource object provided is invalid. Use Get to retrieve a specific resource, or use New to create a new resource.</value>
+  </data>
+  <data name="ResourceCreateConfirmation" xml:space="preserve">
+    <value>Are you sure you want to create resource '{0}'?</value>
+  </data>
+  <data name="ResourceCreateMessage" xml:space="preserve">
+    <value>Creating resource '{0}'</value>
+  </data>
+  <data name="ResourceRemovalConfirmation" xml:space="preserve">
+    <value>Are you sure you want to remove resource '{0}'? </value>
+  </data>
+  <data name="ResourceRemovedMessage" xml:space="preserve">
+    <value>Removing resource '{0}'</value>
   </data>
 </root>

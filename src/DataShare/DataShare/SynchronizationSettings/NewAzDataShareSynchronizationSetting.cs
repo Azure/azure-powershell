@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.DataShare.SynchronizationSetting
     using Microsoft.Azure.Management.DataShare;
     using Microsoft.Azure.Management.DataShare.Models;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+    using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Extensions;
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models;
  
     /// <summary>
@@ -75,6 +76,7 @@ namespace Microsoft.Azure.Commands.DataShare.SynchronizationSetting
             HelpMessage = "Synchronization setting name",
             ParameterSetName = ParameterSetNames.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter(ResourceTypes.SynchronizationSetting, "ResourceGroupName", "AccountName", "ShareName")]
         public string Name { get; set; }
 
         /// <summary>
@@ -102,7 +104,7 @@ namespace Microsoft.Azure.Commands.DataShare.SynchronizationSetting
 
         public override void ExecuteCmdlet()
         {
-            if (this.ShouldProcess(this.Name, VerbsCommon.New))
+            if (this.ShouldProcess(this.Name, "Create"))
             {
                 var setting = new ScheduledSynchronizationSetting(
                     recurrenceInterval: this.RecurrenceInterval,

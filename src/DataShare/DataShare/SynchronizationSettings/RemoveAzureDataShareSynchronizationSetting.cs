@@ -26,11 +26,13 @@ namespace Microsoft.Azure.Commands.DataShare.SynchronizationSetting
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Properties;
     using System.Globalization;
     using Microsoft.Azure.Commands.ResourceManager.Common;
+    using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Extensions;
 
     /// <summary>
     /// Defines the Remove-AzDataShareSynchronizationSetting cmdlet.
     /// </summary>
-    [Cmdlet("Remove",
+    [Cmdlet(
+         "Remove",
          ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataShareSynchronizationSetting",
          DefaultParameterSetName = ParameterSetNames.FieldsParameterSet,
          SupportsShouldProcess = true),
@@ -80,6 +82,7 @@ namespace Microsoft.Azure.Commands.DataShare.SynchronizationSetting
             HelpMessage = "Synchronization setting name",
             ParameterSetName = ParameterSetNames.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter(ResourceTypes.SynchronizationSetting, "ResourceGroupName", "AccountName", "ShareName")]
         public string Name { get; set; }
 
         /// <summary>
@@ -90,7 +93,7 @@ namespace Microsoft.Azure.Commands.DataShare.SynchronizationSetting
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource id of the synchronization setting",
             ParameterSetName = ParameterSetNames.ResourceIdParameterSet)]
-        [ResourceGroupCompleter()]
+        [ResourceIdCompleter(ResourceTypes.SynchronizationSetting)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -121,7 +124,9 @@ namespace Microsoft.Azure.Commands.DataShare.SynchronizationSetting
         {
             string resourceId = null;
 
-            if (ParameterSetNames.ResourceIdParameterSet.Equals(this.ParameterSetName, StringComparison.OrdinalIgnoreCase))
+            if (ParameterSetNames.ResourceIdParameterSet.Equals(
+                this.ParameterSetName,
+                StringComparison.OrdinalIgnoreCase))
             {
                 resourceId = this.ResourceId;
             }
@@ -131,7 +136,7 @@ namespace Microsoft.Azure.Commands.DataShare.SynchronizationSetting
                 if (this.SynchronizationSetting == null)
                 {
                     throw new PSArgumentNullException(
-                        string.Format(CultureInfo.InvariantCulture, Resources.DataShareAccountArgumentInvalid));
+                        string.Format(CultureInfo.InvariantCulture, Resources.ResourceArgumentInvalid));
                 }
 
                 resourceId = this.SynchronizationSetting.Id;
@@ -146,18 +151,20 @@ namespace Microsoft.Azure.Commands.DataShare.SynchronizationSetting
                 this.Name = parsedResoureceIdentifier.GetSynchronizationSettingName();
             }
 
-            if (this.ShouldProcess(this.AccountName, VerbsCommon.Remove))
-            {
-                var func = this.AsJob
-                    ? (Func<string, string, string, string, OperationResponse>) DataShareManagementClient.SynchronizationSettings.BeginDelete
-                    : (Func<string, string, string, string, OperationResponse>) this.DataShareManagementClient.SynchronizationSettings.Delete;
-                void Action() => func(this.ResourceGroupName, this.AccountName, this.ShareName, this.Name);
-                this.ConfirmAction(this.Force, this.AccountName, this.MyInvocation.InvocationName, this.AccountName, Action);
+            var func = (Func<string, string, string, string, OperationResponse>)this.DataShareManagementClient
+                .SynchronizationSettings.Delete;
 
-                if (this.PassThru)
-                {
-                    this.WriteObject(true);
-                }
+            void Action() => func(this.ResourceGroupName, this.AccountName, this.ShareName, this.Name);
+            this.ConfirmAction(
+                this.Force,
+                string.Format(Resources.ResourceRemovalConfirmation, this.Name),
+                string.Format(Resources.ResourceRemovedMessage, this.Name),
+                this.Name,
+                Action);
+
+            if (this.PassThru)
+            {
+                this.WriteObject(true);
             }
         }
     }

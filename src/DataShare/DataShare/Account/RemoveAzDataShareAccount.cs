@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Commands.DataShare.Account
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models;
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Properties;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Extensions;
 
     /// <summary>
     /// Defines Remove-AzDataShareAccount cmdlets.
@@ -58,6 +59,7 @@ namespace Microsoft.Azure.Commands.DataShare.Account
             ParameterSetName = ParameterSetNames.FieldsParameterSet,
             HelpMessage = "Azure data share account name.")]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter(ResourceTypes.Account, "ResourceGroupName")]
         public string Name { get; set; }
 
         /// <summary>
@@ -68,7 +70,7 @@ namespace Microsoft.Azure.Commands.DataShare.Account
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource id of the azure data share account.",
             ParameterSetName = ParameterSetNames.ResourceIdParameterSet)]
-        [ResourceGroupCompleter()]
+        [ResourceIdCompleter(ResourceTypes.Account)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -81,7 +83,7 @@ namespace Microsoft.Azure.Commands.DataShare.Account
             ValueFromPipeline = true,
             HelpMessage = "The azure data share account object.")]
         [ValidateNotNullOrEmpty]
-        public PSAccount Account { get; set; }
+        public PSDataShareAccount Account { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -99,8 +101,10 @@ namespace Microsoft.Azure.Commands.DataShare.Account
         {
             string resourceId = null;
 
-            if (this.ParameterSetName.Equals(ParameterSetNames.ResourceIdParameterSet, StringComparison.OrdinalIgnoreCase))
-            { 
+            if (this.ParameterSetName.Equals(
+                ParameterSetNames.ResourceIdParameterSet,
+                StringComparison.OrdinalIgnoreCase))
+            {
                 resourceId = this.ResourceId;
             }
 
@@ -108,7 +112,8 @@ namespace Microsoft.Azure.Commands.DataShare.Account
             {
                 if (this.Account == null)
                 {
-                    throw new PSArgumentNullException(string.Format(CultureInfo.InvariantCulture, Resources.DataShareAccountArgumentInvalid));
+                    throw new PSArgumentNullException(
+                        string.Format(CultureInfo.InvariantCulture, Resources.ResourceArgumentInvalid));
                 }
 
                 resourceId = this.Account.Id;
@@ -121,33 +126,16 @@ namespace Microsoft.Azure.Commands.DataShare.Account
                 this.Name = parsedResourceId.GetAccountName();
             }
 
-            if (this.ShouldProcess(this.Name, VerbsCommon.Remove))
-            {
-                if (this.AsJob)
-                {
-                    this.ConfirmAction(
-                        this.Force,
-                        this.Name,
-                        this.MyInvocation.InvocationName,
-                        this.Name,
-                        () => this.DataShareManagementClient.Accounts.BeginDelete(
-                            this.ResourceGroupName,
-                            this.Name));
-                }
-                else
-                {
-                    this.ConfirmAction(
-                        this.Force,
-                        this.Name,
-                        this.MyInvocation.InvocationName,
-                        this.Name,
-                        () => this.DataShareManagementClient.Accounts.Delete(this.ResourceGroupName, this.Name));
-                }
+            this.ConfirmAction(
+                this.Force,
+                string.Format(Resources.ResourceRemovalConfirmation, this.Name),
+                string.Format(Resources.ResourceRemovedMessage, this.Name),
+                this.Name,
+                () => this.DataShareManagementClient.Accounts.Delete(this.ResourceGroupName, this.Name));
 
-                if (this.PassThru)
-                {
-                    this.WriteObject(true);
-                }
+            if (this.PassThru)
+            {
+                this.WriteObject(true);
             }
         }
     }

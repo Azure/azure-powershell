@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.DataShare.ProviderShareSubscription
     using Microsoft.Azure.Management.DataShare;
     using Microsoft.Azure.Management.DataShare.Models;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+    using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Extensions;
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models;
 
     /// <summary>
@@ -91,9 +92,12 @@ namespace Microsoft.Azure.Commands.DataShare.ProviderShareSubscription
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource id of the azure data share",
             ParameterSetName = ParameterSetNames.ResourceIdParameterSet)]
-        [ResourceGroupCompleter()]
+        [ResourceIdCompleter(ResourceTypes.ShareSubscription)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
+
+        [Parameter]
+        public SwitchParameter AsJob { get; set; }
 
         public override void ExecuteCmdlet()
         {

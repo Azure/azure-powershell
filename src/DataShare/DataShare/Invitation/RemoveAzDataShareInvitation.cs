@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.DataShare.Invitation
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models;
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Properties;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Extensions;
 
     /// <summary>
     /// Defines Remove-AzDataShareInvitation cmdlets.
@@ -88,10 +89,10 @@ namespace Microsoft.Azure.Commands.DataShare.Invitation
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource id of the azure data share invitation",
             ParameterSetName = ParameterSetNames.ResourceIdParameterSet)]
-        [ResourceGroupCompleter()]
+        [ResourceIdCompleter(ResourceTypes.Invitation)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
-        
+
         /// <summary>
         /// Azure data share invitation object.
         /// </summary>
@@ -114,46 +115,45 @@ namespace Microsoft.Azure.Commands.DataShare.Invitation
 
         public override void ExecuteCmdlet()
         {
-            if (this.ShouldProcess(this.Name, VerbsCommon.Remove))
+            string resourceId = null;
+
+            if (this.ParameterSetName.Equals(
+                ParameterSetNames.ResourceIdParameterSet,
+                StringComparison.OrdinalIgnoreCase))
             {
-                string resourceId = null;
-
-                if (this.ParameterSetName.Equals(ParameterSetNames.ResourceIdParameterSet, StringComparison.OrdinalIgnoreCase))
-                {
-                    resourceId = this.ResourceId;
-                }
-
-                if (this.ParameterSetName.Equals(ParameterSetNames.ObjectParameterSet, StringComparison.OrdinalIgnoreCase))
-                {
-                    if (this.Invitation == null)
-                    {
-                        throw new PSArgumentNullException(
-                            string.Format(CultureInfo.InvariantCulture, Resources.DataShareArgumentInvalid));
-                    }
-
-                    resourceId = this.Invitation.Id;
-                }
-
-                if (!string.IsNullOrEmpty(resourceId))
-                {
-                    var parseResourceId = new ResourceIdentifier(resourceId);
-                    this.ResourceGroupName = parseResourceId.ResourceGroupName;
-                    this.AccountName = parseResourceId.GetAccountName();
-                    this.ShareName = parseResourceId.GetShareName();
-                    this.Name = parseResourceId.GetInvitationName();
-                }
-
-                this.ConfirmAction(
-                    this.Force,
-                    this.Name,
-                    this.MyInvocation.InvocationName,
-                    this.Name,
-                    () => this.DataShareManagementClient.Invitations.Delete(
-                        this.ResourceGroupName,
-                        this.AccountName,
-                        this.ShareName,
-                        this.Name));
+                resourceId = this.ResourceId;
             }
+
+            if (this.ParameterSetName.Equals(ParameterSetNames.ObjectParameterSet, StringComparison.OrdinalIgnoreCase))
+            {
+                if (this.Invitation == null)
+                {
+                    throw new PSArgumentNullException(
+                        string.Format(CultureInfo.InvariantCulture, Resources.ResourceArgumentInvalid));
+                }
+
+                resourceId = this.Invitation.Id;
+            }
+
+            if (!string.IsNullOrEmpty(resourceId))
+            {
+                var parseResourceId = new ResourceIdentifier(resourceId);
+                this.ResourceGroupName = parseResourceId.ResourceGroupName;
+                this.AccountName = parseResourceId.GetAccountName();
+                this.ShareName = parseResourceId.GetShareName();
+                this.Name = parseResourceId.GetInvitationName();
+            }
+
+            this.ConfirmAction(
+                this.Force,
+                string.Format(Resources.ResourceRemovalConfirmation, this.Name),
+                string.Format(Resources.ResourceRemovedMessage, this.Name),
+                this.Name,
+                () => this.DataShareManagementClient.Invitations.Delete(
+                    this.ResourceGroupName,
+                    this.AccountName,
+                    this.ShareName,
+                    this.Name));
 
             if (this.PassThru)
             {

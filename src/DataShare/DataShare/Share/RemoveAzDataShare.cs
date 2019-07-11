@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 namespace Microsoft.Azure.Commands.DataShare.Share
-{  
+{
     using System;
     using System.Management.Automation;
     using System.Globalization;
@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.DataShare.Share
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models;
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Properties;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Extensions;
 
     /// <summary>
     /// Defines Remove-AzDataShare cmdlet.
@@ -67,6 +68,7 @@ namespace Microsoft.Azure.Commands.DataShare.Share
             ParameterSetName = ParameterSetNames.FieldsParameterSet,
             HelpMessage = "Azure data share name")]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter(ResourceTypes.Share, "ResourceGroupName", "AccountName")]
         public string Name { get; set; }
 
         /// <summary>
@@ -77,7 +79,7 @@ namespace Microsoft.Azure.Commands.DataShare.Share
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource id of the Azure data share",
             ParameterSetName = ParameterSetNames.ResourceIdParameterSet)]
-        [ResourceGroupCompleter()]
+        [ResourceIdCompleter(ResourceTypes.Share)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -106,59 +108,45 @@ namespace Microsoft.Azure.Commands.DataShare.Share
 
         public override void ExecuteCmdlet()
         {
-            if (this.ShouldProcess(this.Name, VerbsCommon.Remove))
+            string resourceId = null;
+
+            if (this.ParameterSetName.Equals(
+                ParameterSetNames.ResourceIdParameterSet,
+                StringComparison.OrdinalIgnoreCase))
             {
-                string resourceId = null;
-
-                if (this.ParameterSetName.Equals(ParameterSetNames.ResourceIdParameterSet, StringComparison.OrdinalIgnoreCase))
-                {
-                    resourceId = this.ResourceId;
-                }
-
-                if (this.ParameterSetName.Equals(ParameterSetNames.ObjectParameterSet, StringComparison.OrdinalIgnoreCase))
-                {
-                    if (this.Share == null)
-                    {
-                        throw new PSArgumentNullException(
-                            string.Format(CultureInfo.InvariantCulture, Resources.DataShareArgumentInvalid));
-                    }
-
-                    resourceId = this.Share.Id;
-                }
-
-                if (!string.IsNullOrEmpty(resourceId))
-                {
-                    var parseResourceId = new ResourceIdentifier(resourceId);
-                    this.ResourceGroupName = parseResourceId.ResourceGroupName;
-                    this.AccountName = parseResourceId.GetAccountName();
-                    this.Name = parseResourceId.GetShareName();
-                }
-
-                if (this.AsJob)
-                {
-                    this.ConfirmAction(
-                        this.Force,
-                        this.Name,
-                        this.MyInvocation.InvocationName,
-                        this.Name,
-                        () => this.DataShareManagementClient.Shares.BeginDelete(
-                            this.ResourceGroupName,
-                            this.AccountName,
-                            this.Name));
-                }
-                else
-                {
-                    this.ConfirmAction(
-                        this.Force,
-                        this.Name,
-                        this.MyInvocation.InvocationName,
-                        this.Name,
-                        () => this.DataShareManagementClient.Shares.Delete(
-                            this.ResourceGroupName,
-                            this.AccountName,
-                            this.Name));
-                }
+                resourceId = this.ResourceId;
             }
+
+            if (this.ParameterSetName.Equals(
+                ParameterSetNames.ObjectParameterSet,
+                StringComparison.OrdinalIgnoreCase))
+            {
+                if (this.Share == null)
+                {
+                    throw new PSArgumentNullException(
+                        string.Format(CultureInfo.InvariantCulture, Resources.ResourceArgumentInvalid));
+                }
+
+                resourceId = this.Share.Id;
+            }
+
+            if (!string.IsNullOrEmpty(resourceId))
+            {
+                var parseResourceId = new ResourceIdentifier(resourceId);
+                this.ResourceGroupName = parseResourceId.ResourceGroupName;
+                this.AccountName = parseResourceId.GetAccountName();
+                this.Name = parseResourceId.GetShareName();
+            }
+
+            this.ConfirmAction(
+                this.Force,
+                string.Format(Resources.ResourceRemovalConfirmation, this.Name),
+                string.Format(Resources.ResourceRemovedMessage, this.Name),
+                this.Name,
+                () => this.DataShareManagementClient.Shares.Delete(
+                    this.ResourceGroupName,
+                    this.AccountName,
+                    this.Name));
 
             if (this.PassThru)
             {

@@ -25,18 +25,20 @@ namespace Microsoft.Azure.Commands.DataShare.Account
     using Microsoft.Azure.Management.DataShare;
     using Microsoft.Azure.Management.DataShare.Models;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+    using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Extensions;
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models;
     using Microsoft.Rest.Azure;
 
     /// <summary>
     /// Defines the Get-AzDataShareAccount cmdlet.
     /// </summary>
-    [Cmdlet("Get",
+    [Cmdlet(
+         "Get",
          ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataShareAccount",
          DefaultParameterSetName = ParameterSetNames.FieldsParameterSet,
          SupportsPaging = true),
-     OutputType(typeof(PSAccount))]
-    
+     OutputType(typeof(PSDataShareAccount))]
+
     public class GetAzDataShareAccount : AzureDataShareCmdletBase
     {
         /// <summary>
@@ -59,9 +61,10 @@ namespace Microsoft.Azure.Commands.DataShare.Account
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure data share account name.",
             ParameterSetName = ParameterSetNames.FieldsParameterSet)]
+        [ResourceNameCompleter(ResourceTypes.Account, "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
-        
+
         /// <summary>
         /// The resourceId of the azure data share account.
         /// </summary>
@@ -70,7 +73,7 @@ namespace Microsoft.Azure.Commands.DataShare.Account
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource id of the azure data share account.",
             ParameterSetName = ParameterSetNames.ResourceIdParameterSet)]
-        [ResourceGroupCompleter()]
+        [ResourceIdCompleter(ResourceTypes.Account)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -101,7 +104,7 @@ namespace Microsoft.Azure.Commands.DataShare.Account
                 } while (nextPageLink != null);
 
                 // List by subscription.
-                IEnumerable<PSAccount> accountsInSubscription = accountList.Select(account => account.ToPsObject());
+                IEnumerable<PSDataShareAccount> accountsInSubscription = accountList.Select(account => account.ToPsObject());
                 this.WriteObject(accountsInSubscription, true);
             }
             else if (this.Name == null && this.ResourceGroupName != null)
@@ -120,7 +123,7 @@ namespace Microsoft.Azure.Commands.DataShare.Account
                     nextPageLink = accounts.NextPageLink;
                 } while (nextPageLink != null);
 
-                IEnumerable<PSAccount> accountsInResourceGroup = accountList.Select(account => account.ToPsObject());
+                IEnumerable<PSDataShareAccount> accountsInResourceGroup = accountList.Select(account => account.ToPsObject());
                 this.WriteObject(accountsInResourceGroup, true);
             }
             else
@@ -131,16 +134,13 @@ namespace Microsoft.Azure.Commands.DataShare.Account
                     var account = this.DataShareManagementClient.Accounts.Get(this.ResourceGroupName, this.Name);
                     this.WriteObject(account.ToPsObject());
                 }
-                catch (DataShareErrorException ex)
+                catch (DataShareErrorException ex) when (ex.Response.StatusCode.Equals(HttpStatusCode.NotFound))
                 {
-                    if (ex.Response.StatusCode.Equals(HttpStatusCode.NotFound))
-                    {
-                        throw new PSArgumentException(
-                            string.Format(
-                                "Account not found",
-                                this.Name,
-                                this.ResourceGroupName));
-                    }
+                    throw new PSArgumentException(
+                        string.Format(
+                            "Account not found",
+                            this.Name,
+                            this.ResourceGroupName));
                 }
             }
         }

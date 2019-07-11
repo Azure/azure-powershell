@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.DataShare.Invitation
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models;
     using System.Management.Automation;
+    using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Properties;
 
     /// <summary>
     /// Defines the New-DataShareInvitation cmdlet.
@@ -124,7 +125,7 @@ namespace Microsoft.Azure.Commands.DataShare.Invitation
             if (this.ParameterSetName.Equals(ParameterSetNames.InvitationEmailParameterSet, StringComparison.OrdinalIgnoreCase))
             {
                 this.ConfirmAction(
-                    this.MyInvocation.InvocationName,
+                    string.Format(Resources.ResourceCreateConfirmation, this.Name),
                     this.Name,
                     this.NewEmailInvitation);
             }
@@ -132,7 +133,7 @@ namespace Microsoft.Azure.Commands.DataShare.Invitation
             if (this.ParameterSetName.Equals(ParameterSetNames.InvitationTenantParameterSet, StringComparison.OrdinalIgnoreCase))
             {
                 this.ConfirmAction(
-                    this.MyInvocation.InvocationName,
+                    string.Format(Resources.ResourceCreateConfirmation, this.Name),
                     this.Name,
                     this.NewObjectIdInvitation);
             }
@@ -140,7 +141,7 @@ namespace Microsoft.Azure.Commands.DataShare.Invitation
 
         private void NewEmailInvitation()
         {
-            if (this.ShouldProcess(this.Name, VerbsCommon.New))
+            if (this.ShouldProcess(this.Name, "Create"))
             {
                 Invitation newInvitation = this.DataShareManagementClient.Invitations.Create(
                     this.ResourceGroupName,
@@ -158,7 +159,7 @@ namespace Microsoft.Azure.Commands.DataShare.Invitation
 
         private void NewObjectIdInvitation()
         {
-            if (this.ShouldProcess(this.Name, VerbsCommon.New))
+            if (this.ShouldProcess(this.Name, "Create"))
             {
                 Invitation newInvitation = this.DataShareManagementClient.Invitations.Create(
                     this.ResourceGroupName,

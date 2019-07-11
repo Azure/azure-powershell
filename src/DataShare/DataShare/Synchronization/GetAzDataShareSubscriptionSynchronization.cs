@@ -31,7 +31,8 @@ namespace Microsoft.Azure.Commands.DataShare.Synchronization
     /// <summary>
     /// Defines Get-AzDataShareSubscriptionSynchronization cmdlet.
     /// </summary>
-    [Cmdlet("Get",
+    [Cmdlet(
+         "Get",
          ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataShareSubscriptionSynchronization",
          DefaultParameterSetName = ParameterSetNames.FieldsParameterSet),
      OutputType(typeof(PSShareSubscriptionSynchronization))]
@@ -95,32 +96,35 @@ namespace Microsoft.Azure.Commands.DataShare.Synchronization
             }
 
             string nextPageLink = null;
-            List<ShareSubscriptionSynchronization> shareSubscriptionSynchronizationsList = new List<ShareSubscriptionSynchronization>();
+            List<ShareSubscriptionSynchronization> shareSubscriptionSynchronizationsList =
+                new List<ShareSubscriptionSynchronization>();
 
             try
             {
                 do
                 {
-                    IPage<ShareSubscriptionSynchronization> shareSubscriptionSynchronizations = string.IsNullOrEmpty(nextPageLink)
-                        ? this.DataShareManagementClient.ShareSubscriptions.ListSynchronizations(this.ResourceGroupName, this.AccountName, this.ShareSubscriptionName)
-                        : this.DataShareManagementClient.ShareSubscriptions.ListSynchronizationsNext(nextPageLink);
+                    IPage<ShareSubscriptionSynchronization> shareSubscriptionSynchronizations =
+                        string.IsNullOrEmpty(nextPageLink)
+                            ? this.DataShareManagementClient.ShareSubscriptions.ListSynchronizations(
+                                this.ResourceGroupName,
+                                this.AccountName,
+                                this.ShareSubscriptionName)
+                            : this.DataShareManagementClient.ShareSubscriptions.ListSynchronizationsNext(nextPageLink);
 
                     shareSubscriptionSynchronizationsList.AddRange(shareSubscriptionSynchronizations.AsEnumerable());
                     nextPageLink = shareSubscriptionSynchronizations.NextPageLink;
                 } while (nextPageLink != null);
 
-                IEnumerable<PSShareSubscriptionSynchronization> synchronizationsInShareSubscription = shareSubscriptionSynchronizationsList.Select(shareSubscriptionSynchronization => shareSubscriptionSynchronization.ToPsObject());
+                IEnumerable<PSShareSubscriptionSynchronization> synchronizationsInShareSubscription =
+                    shareSubscriptionSynchronizationsList.Select(
+                        shareSubscriptionSynchronization => shareSubscriptionSynchronization.ToPsObject());
                 this.WriteObject(synchronizationsInShareSubscription, true);
             }
-            catch (DataShareErrorException ex)
+            catch (DataShareErrorException ex) when (ex.Response.StatusCode.Equals(HttpStatusCode.NotFound))
             {
-                if (ex.Response.StatusCode.Equals(HttpStatusCode.NotFound))
-                {
-                    throw new PSArgumentException(
-                        $"Synchronization not found for {this.ShareSubscriptionName}");
-                }
+                throw new PSArgumentException(
+                    $"Synchronization not found for {this.ShareSubscriptionName}");
             }
-            
         }
     }
 }
