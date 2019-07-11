@@ -14,13 +14,13 @@ Get the specified default network security rule.
 
 ### List1 (Default)
 ```
-Get-AzDefaultSecurityRule -NetworkSecurityGroupName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDefaultSecurityRule -NsgName <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get1
 ```
-Get-AzDefaultSecurityRule -Name <String> -NetworkSecurityGroupName <String> -ResourceGroupName <String>
+Get-AzDefaultSecurityRule -Name <String> -NsgName <String> -ResourceGroupName <String>
  -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -102,13 +102,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -NetworkSecurityGroupName
+### -NsgName
 The name of the network security group.
 
 ```yaml
 Type: System.String
 Parameter Sets: List1, Get1
-Aliases:
+Aliases: NetworkSecurityGroupName
 
 Required: True
 Position: Named
@@ -160,7 +160,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ISecurityRule
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ISecurityRule
 
 ## ALIASES
 

@@ -255,6 +255,23 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -IPConfigurationPropertiesProvisioningState
+Gets the provisioning state of the public IP resource.
+Possible values are: 'Updating', 'Deleting', and 'Failed'.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Location
 Resource location.
 
@@ -320,6 +337,39 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -PrivateIPAddress
+The private IP address of the IP configuration.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -PrivateIPAllocationMethod
+The private IP allocation method.
+Possible values are 'Static' and 'Dynamic'.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.IPAllocationMethod
+Parameter Sets: UpdateExpanded1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -ProvisioningState
 The provisioning state of the PublicIP resource.
 Possible values are: 'Updating', 'Deleting', and 'Failed'.
@@ -337,8 +387,26 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -PublicIPAddressParameter
+The reference of the public IP resource.
+To construct, see NOTES section for PUBLICIPADDRESSPARAMETER properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IPublicIPAddress
+Parameter Sets: UpdateExpanded1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -PublicIPAddressVersion
 The public IP address version.
+Possible values are: 'IPv4' and 'IPv6'.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.IPVersion
@@ -354,7 +422,8 @@ Dynamic: False
 ```
 
 ### -PublicIPAllocationMethod
-The public IP address allocation method.
+The public IP allocation method.
+Possible values are: 'Static' and 'Dynamic'.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.IPAllocationMethod
@@ -406,6 +475,23 @@ Name of a public IP address SKU.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.PublicIPAddressSkuName
+Parameter Sets: UpdateExpanded1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Subnet
+The reference of the subnet resource.
+To construct, see NOTES section for SUBNET properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ISubnet
 Parameter Sets: UpdateExpanded1
 Aliases:
 
@@ -504,11 +590,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IPublicIPAddress
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IPublicIPAddress
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IPublicIPAddress
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IPublicIPAddress
 
 ## ALIASES
 

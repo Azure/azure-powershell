@@ -1,38 +1,5 @@
 ## Incorrect Cmdlets
 
-- New-AzExpressRouteCircuit
-    - ServiceProviderName
-    - PeeringLocation
-    - BandwidthInMbps
-    - ExpressRoutePort
-    - AllowClassicOperations
-- New-AzExpressRouteGateway
-    - MinScaleUnits
-    - MaxScaleUnits
-    - VirtualHub
-    - VirtualHubName
-- New-AzLocalNetworkGateway
-    - AddressPrefix
-    - Asn
-    - BgpPeeringAddress
-    - PeerWeight
-- New-AzNetworkInterface
-    - SubnetId
-    - PublicIpAddressId
-    - PublicIpAddress
-    - NetworkSecurityGroup
-    - LoadBalancerBackendAddressPoolId
-    - LoadBalancerBackendAddressPool
-    - LoadBalancerInboundNatRuleId
-    - LoadBalancerInboundNatRule
-    - ApplicationGatewayBackendAddressPoolId
-    - ApplicationGatewayBackendAddressPool
-    - ApplicationSecurityGroupId
-    - ApplicationSecurityGroup
-    - PrivateIpAddress
-    - IpConfigurationName
-    - DnsServer
-    - InternalDnsNameLabel
 - New-AzNetworkWatcherPacketCapture
     - TargetVirtualMachineId
     - StorageAccountId
@@ -154,11 +121,10 @@
 - Get-AzLoadBalancer
 - Get-AzLocalNetworkGateway
 - Get-AzNetworkInterface
-- Get-AzNetworkInterfaceEffectiveNetworkSecurityGroup
+- Get-AzNetworkInterfaceEffectiveNsg
 - Get-AzNetworkInterfaceEffectiveRouteTable
 - Get-AzNetworkInterfaceTapConfiguration
 - Get-AzNetworkProfile
-- Get-AzNetworkSecurityGroup
 - Get-AzNetworkUsage
 - Get-AzNetworkWatcher
 - Get-AzNetworkWatcherAvailableProvider
@@ -171,6 +137,7 @@
 - Get-AzNetworkWatcherReachabilityReport
 - Get-AzNetworkWatcherTopology
 - Get-AzNetworkWatcherTroubleshootingResult
+- Get-AzNsg
 - Get-AzPublicIPAddress
 - Get-AzPublicIPPrefix
 - Get-AzRouteFilter
@@ -201,15 +168,19 @@
 - New-AzApplicationGateway
 - New-AzApplicationSecurityGroup
 - New-AzDdosProtectionPlan
+- New-AzExpressRouteCircuit
 - New-AzExpressRouteCircuitAuthorization
 - New-AzExpressRouteConnection
+- New-AzExpressRouteGateway
 - New-AzExpressRoutePort
 - New-AzFirewall
 - New-AzLoadBalancer
+- New-AzLocalNetworkGateway
+- New-AzNetworkInterface
 - New-AzNetworkProfile
-- New-AzNetworkSecurityGroup
 - New-AzNetworkWatcher
 - New-AzNetworkWatcherConnectionMonitor
+- New-AzNsg
 - New-AzPublicIPPrefix
 - New-AzRouteFilter
 - New-AzRouteTable
@@ -236,10 +207,10 @@
 - Remove-AzNetworkInterface
 - Remove-AzNetworkInterfaceTapConfiguration
 - Remove-AzNetworkProfile
-- Remove-AzNetworkSecurityGroup
 - Remove-AzNetworkWatcher
 - Remove-AzNetworkWatcherConnectionMonitor
 - Remove-AzNetworkWatcherPacketCapture
+- Remove-AzNsg
 - Remove-AzPublicIPAddress
 - Remove-AzPublicIPPrefix
 - Remove-AzRouteFilter
@@ -269,8 +240,8 @@
 - Set-AzNetworkInterface
 - Set-AzNetworkInterfaceTapConfiguration
 - Set-AzNetworkProfile
-- Set-AzNetworkSecurityGroup
 - Set-AzNetworkWatcherConnectionMonitor
+- Set-AzNsg
 - Set-AzPublicIPAddress
 - Set-AzPublicIPPrefix
 - Set-AzRouteFilter

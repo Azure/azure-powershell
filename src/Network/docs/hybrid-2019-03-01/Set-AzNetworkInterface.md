@@ -27,11 +27,11 @@ Set-AzNetworkInterface -Name <String> -ResourceGroupName <String> -SubscriptionI
  [-DnsSettingInternalDomainNameSuffix <String>] [-DnsSettingInternalFqdn <String>]
  [-EnableAcceleratedNetworking] [-EnableIPForwarding] [-Etag <String>]
  [-IPConfiguration <INetworkInterfaceIPConfiguration[]>] [-Id <String>] [-Location <String>]
- [-MacAddress <String>] [-NetworkSecurityGroupEtag <String>] [-NetworkSecurityGroupId <String>]
- [-NetworkSecurityGroupLocation <String>] [-NetworkSecurityGroupPropertiesProvisioningState <String>]
- [-NetworkSecurityGroupPropertiesResourceGuid <String>] [-NetworkSecurityGroupTag <Hashtable>] [-Primary]
- [-ProvisioningState <String>] [-ResourceGuid <String>] [-SecurityRule <ISecurityRule[]>] [-Tag <Hashtable>]
- [-VMId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-MacAddress <String>] [-NsgEtag <String>] [-NsgId <String>] [-NsgLocation <String>]
+ [-NsgPropertiesProvisioningState <String>] [-NsgPropertiesResourceGuid <String>] [-NsgTag <Hashtable>]
+ [-Primary] [-ProvisioningState <String>] [-ResourceGuid <String>] [-SecurityRule <ISecurityRule[]>]
+ [-Tag <Hashtable>] [-VMId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -321,103 +321,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -NetworkSecurityGroupEtag
-A unique read-only string that changes whenever the resource is updated.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -NetworkSecurityGroupId
-Resource ID.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -NetworkSecurityGroupLocation
-Resource location.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -NetworkSecurityGroupPropertiesProvisioningState
-The provisioning state of the public IP resource.
-Possible values are: 'Updating', 'Deleting', and 'Failed'.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -NetworkSecurityGroupPropertiesResourceGuid
-The resource GUID property of the network security group resource.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -NetworkSecurityGroupTag
-Resource tags.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -NoWait
 Run the command asynchronously
 
@@ -429,6 +332,103 @@ Aliases:
 Required: False
 Position: Named
 Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NsgEtag
+A unique read-only string that changes whenever the resource is updated.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded1
+Aliases: NetworkSecurityGroupEtag
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NsgId
+Resource ID.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded1
+Aliases: NetworkSecurityGroupId
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NsgLocation
+Resource location.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded1
+Aliases: NetworkSecurityGroupLocation
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NsgPropertiesProvisioningState
+The provisioning state of the public IP resource.
+Possible values are: 'Updating', 'Deleting', and 'Failed'.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded1
+Aliases: NetworkSecurityGroupPropertiesProvisioningState
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NsgPropertiesResourceGuid
+The resource GUID property of the network security group resource.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded1
+Aliases: NetworkSecurityGroupPropertiesResourceGuid
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NsgTag
+Resource tags.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: UpdateExpanded1
+Aliases: NetworkSecurityGroupTag
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -620,11 +620,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkInterface
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterface
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkInterface
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterface
 
 ## ALIASES
 

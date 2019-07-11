@@ -14,14 +14,14 @@ Creates or updates a security rule in the specified network security group.
 
 ### Update (Default)
 ```
-Set-AzNetworkSecurityRule -Name <String> -NetworkSecurityGroupName <String> -ResourceGroupName <String>
+Set-AzNetworkSecurityRule -Name <String> -NsgName <String> -ResourceGroupName <String>
  -SubscriptionId <String> [-SecurityRuleParameter <ISecurityRule>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
 ```
-Set-AzNetworkSecurityRule -Name <String> -NetworkSecurityGroupName <String> -ResourceGroupName <String>
+Set-AzNetworkSecurityRule -Name <String> -NsgName <String> -ResourceGroupName <String>
  -SubscriptionId <String> -SecurityRuleName <String> -Access <SecurityRuleAccess>
  -Direction <SecurityRuleDirection> -Protocol <SecurityRuleProtocol> [-Description <String>]
  [-DestinationAddressPrefix <String>] [-DestinationApplicationSecurityGroup <IApplicationSecurityGroup[]>]
@@ -241,22 +241,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -NetworkSecurityGroupName
-The name of the network security group.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -NoWait
 Run the command asynchronously
 
@@ -268,6 +252,22 @@ Aliases:
 Required: False
 Position: Named
 Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NsgName
+The name of the network security group.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: NetworkSecurityGroupName
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

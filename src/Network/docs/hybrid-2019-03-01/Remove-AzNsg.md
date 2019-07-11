@@ -1,27 +1,27 @@
 ---
 external help file:
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-aznetworksecuritygroup
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-aznsg
 schema: 2.0.0
 ---
 
-# Remove-AzNetworkSecurityGroup
+# Remove-AzNsg
 
 ## SYNOPSIS
 Deletes the specified network security group.
 
 ## SYNTAX
 
-### Delete (Default)
+### Delete1 (Default)
 ```
-Remove-AzNetworkSecurityGroup -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-PassThru]
+Remove-AzNsg -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-PassThru]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### DeleteViaIdentity1
 ```
-Remove-AzNetworkSecurityGroup -InputObject <INetworkIdentity> [-PassThru] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzNsg -InputObject <INetworkIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -86,7 +86,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: DeleteViaIdentity1
 Aliases:
 
 Required: True
@@ -102,7 +102,7 @@ The name of the network security group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete1
 Aliases: NetworkSecurityGroupName
 
 Required: True
@@ -150,7 +150,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete1
 Aliases:
 
 Required: True
@@ -167,7 +167,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete1
 Aliases:
 
 Required: True
@@ -223,6 +223,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## ALIASES
+
+### Remove-AzNetworkSecurityGroup
 
 ## NOTES
 

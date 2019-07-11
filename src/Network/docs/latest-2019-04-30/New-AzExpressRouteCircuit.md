@@ -22,12 +22,11 @@ New-AzExpressRouteCircuit -Name <String> -ResourceGroupName <String> -Subscripti
 ### CreateExpanded
 ```
 New-AzExpressRouteCircuit -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-AllowClassicOperation] [-Authorization <IExpressRouteCircuitAuthorization[]>] [-BandwidthInGbps <Single>]
+ [-AllowClassicOperations] [-Authorization <IExpressRouteCircuitAuthorization[]>] [-BandwidthInGbps <Single>]
  [-CircuitProvisioningState <String>] [-ExpressRoutePortId <String>] [-GatewayManagerEtag <String>]
  [-GlobalReachEnabled] [-Id <String>] [-Location <String>] [-Peering <IExpressRouteCircuitPeering[]>]
- [-ProvisioningState <String>] [-ServiceKey <String>] [-ServiceProviderNote <String>]
- [-ServiceProviderPropertyBandwidthInMbps <Int32>] [-ServiceProviderPropertyPeeringLocation <String>]
- [-ServiceProviderPropertyServiceProviderName <String>]
+ [-ProvisioningState <String>] [-ServiceKey <String>] [-ServiceProviderBandwidthInMbps <Int32>]
+ [-ServiceProviderName <String>] [-ServiceProviderNote <String>] [-ServiceProviderPeeringLocation <String>]
  [-ServiceProviderProvisioningState <ServiceProviderProvisioningState>]
  [-SkuFamily <ExpressRouteCircuitSkuFamily>] [-SkuName <String>] [-SkuTier <ExpressRouteCircuitSkuTier>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -35,13 +34,12 @@ New-AzExpressRouteCircuit -Name <String> -ResourceGroupName <String> -Subscripti
 
 ### CreateViaIdentityExpanded
 ```
-New-AzExpressRouteCircuit -InputObject <INetworkIdentity> [-AllowClassicOperation]
+New-AzExpressRouteCircuit -InputObject <INetworkIdentity> [-AllowClassicOperations]
  [-Authorization <IExpressRouteCircuitAuthorization[]>] [-BandwidthInGbps <Single>]
  [-CircuitProvisioningState <String>] [-ExpressRoutePortId <String>] [-GatewayManagerEtag <String>]
  [-GlobalReachEnabled] [-Id <String>] [-Location <String>] [-Peering <IExpressRouteCircuitPeering[]>]
- [-ProvisioningState <String>] [-ServiceKey <String>] [-ServiceProviderNote <String>]
- [-ServiceProviderPropertyBandwidthInMbps <Int32>] [-ServiceProviderPropertyPeeringLocation <String>]
- [-ServiceProviderPropertyServiceProviderName <String>]
+ [-ProvisioningState <String>] [-ServiceKey <String>] [-ServiceProviderBandwidthInMbps <Int32>]
+ [-ServiceProviderName <String>] [-ServiceProviderNote <String>] [-ServiceProviderPeeringLocation <String>]
  [-ServiceProviderProvisioningState <ServiceProviderProvisioningState>]
  [-SkuFamily <ExpressRouteCircuitSkuFamily>] [-SkuName <String>] [-SkuTier <ExpressRouteCircuitSkuTier>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -78,7 +76,7 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -AllowClassicOperation
+### -AllowClassicOperations
 Allow classic operations
 
 ```yaml
@@ -360,7 +358,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: Create, CreateExpanded
-Aliases:
+Aliases: ExpressRoutePort
 
 Required: True
 Position: Named
@@ -372,6 +370,38 @@ Dynamic: False
 
 ### -ServiceKey
 The ServiceKey.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ServiceProviderBandwidthInMbps
+The BandwidthInMbps.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases: BandwidthInMbps
+
+Required: False
+Position: Named
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ServiceProviderName
+The serviceProviderName.
 
 ```yaml
 Type: System.String
@@ -402,45 +432,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ServiceProviderPropertyBandwidthInMbps
-The BandwidthInMbps.
-
-```yaml
-Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -ServiceProviderPropertyPeeringLocation
+### -ServiceProviderPeeringLocation
 The peering location.
 
 ```yaml
 Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -ServiceProviderPropertyServiceProviderName
-The serviceProviderName.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Aliases: PeeringLocation
 
 Required: False
 Position: Named

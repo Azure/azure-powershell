@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzExpressRouteCircuitRouteTable
 
 ## SYNOPSIS
-The ListRoutesTable from ExpressRouteCircuit operation retrieves the currently advertised routes table associated with the ExpressRouteCircuits in a resource group.
+Gets the currently advertised routes table associated with the express route circuit in a resource group.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Get-AzExpressRouteCircuitRouteTable -CircuitName <String> -DevicePath <String> -
 ```
 
 ## DESCRIPTION
-The ListRoutesTable from ExpressRouteCircuit operation retrieves the currently advertised routes table associated with the ExpressRouteCircuits in a resource group.
+Gets the currently advertised routes table associated with the express route circuit in a resource group.
 
 ## EXAMPLES
 
@@ -60,7 +60,7 @@ Dynamic: False
 ```
 
 ### -CircuitName
-The name of the circuit.
+The name of the express route circuit.
 
 ```yaml
 Type: System.String
@@ -211,8 +211,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20150501Preview.IExpressRouteCircuitRoutesTable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitsRoutesTableListResult
 

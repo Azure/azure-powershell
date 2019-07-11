@@ -22,19 +22,17 @@ New-AzLocalNetworkGateway -Name <String> -ResourceGroupName <String> -Subscripti
 ### CreateExpanded1
 ```
 New-AzLocalNetworkGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-BgpSettingAsn <Int64>] [-BgpSettingBgpPeeringAddress <String>] [-BgpSettingPeerWeight <Int32>]
- [-Etag <String>] [-GatewayIPAddress <String>] [-Id <String>]
- [-LocalNetworkAddressSpaceAddressPrefix <String[]>] [-Location <String>] [-ResourceGuid <String>]
+ [-AddressPrefix <String[]>] [-BgpAsn <Int64>] [-BgpPeerWeight <Int32>] [-BgpPeeringAddress <String>]
+ [-Etag <String>] [-GatewayIPAddress <String>] [-Id <String>] [-Location <String>] [-ResourceGuid <String>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded1
 ```
-New-AzLocalNetworkGateway -InputObject <INetworkIdentity> [-BgpSettingAsn <Int64>]
- [-BgpSettingBgpPeeringAddress <String>] [-BgpSettingPeerWeight <Int32>] [-Etag <String>]
- [-GatewayIPAddress <String>] [-Id <String>] [-LocalNetworkAddressSpaceAddressPrefix <String[]>]
- [-Location <String>] [-ResourceGuid <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzLocalNetworkGateway -InputObject <INetworkIdentity> [-AddressPrefix <String[]>] [-BgpAsn <Int64>]
+ [-BgpPeerWeight <Int32>] [-BgpPeeringAddress <String>] [-Etag <String>] [-GatewayIPAddress <String>]
+ [-Id <String>] [-Location <String>] [-ResourceGuid <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity1
@@ -68,6 +66,22 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
+### -AddressPrefix
+A list of address blocks reserved for this virtual network in CIDR notation.
+
+```yaml
+Type: System.String[]
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -AsJob
 Run the command as a job
 
@@ -84,13 +98,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -BgpSettingAsn
+### -BgpAsn
 The BGP speaker's ASN.
 
 ```yaml
 Type: System.Int64
 Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
-Aliases:
+Aliases: Asn
 
 Required: False
 Position: Named
@@ -100,7 +114,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -BgpSettingBgpPeeringAddress
+### -BgpPeeringAddress
 The BGP peering address and BGP identifier of this BGP speaker.
 
 ```yaml
@@ -116,13 +130,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -BgpSettingPeerWeight
+### -BgpPeerWeight
 The weight added to routes learned from this BGP speaker.
 
 ```yaml
 Type: System.Int32
 Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
-Aliases:
+Aliases: PeerWeight
 
 Required: False
 Position: Named
@@ -208,22 +222,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -LocalNetworkAddressSpaceAddressPrefix
-A list of address blocks reserved for this virtual network in CIDR notation.
-
-```yaml
-Type: System.String[]
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```

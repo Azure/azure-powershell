@@ -21,17 +21,17 @@ New-AzExpressRouteGateway -Name <String> -ResourceGroupName <String> -Subscripti
 
 ### CreateExpanded
 ```
-New-AzExpressRouteGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-BoundMax <Int32>] [-BoundMin <Int32>] [-Id <String>] [-Location <String>] [-Tag <Hashtable>]
+New-AzExpressRouteGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-Id <String>]
+ [-Location <String>] [-MaximumScaleUnits <Int32>] [-MinimumScaleUnits <Int32>] [-Tag <Hashtable>]
  [-VirtualHubId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzExpressRouteGateway -InputObject <INetworkIdentity> [-BoundMax <Int32>] [-BoundMin <Int32>]
- [-Id <String>] [-Location <String>] [-Tag <Hashtable>] [-VirtualHubId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzExpressRouteGateway -InputObject <INetworkIdentity> [-Id <String>] [-Location <String>]
+ [-MaximumScaleUnits <Int32>] [-MinimumScaleUnits <Int32>] [-Tag <Hashtable>] [-VirtualHubId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -77,38 +77,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -BoundMax
-Maximum number of scale units deployed for ExpressRoute gateway.
-
-```yaml
-Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -BoundMin
-Minimum number of scale units deployed for ExpressRoute gateway.
-
-```yaml
-Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -178,6 +146,38 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -MaximumScaleUnits
+Maximum number of scale units deployed for ExpressRoute gateway.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases: MaxScaleUnits
+
+Required: False
+Position: Named
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -MinimumScaleUnits
+Minimum number of scale units deployed for ExpressRoute gateway.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases: MinScaleUnits
+
+Required: False
+Position: Named
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Name
 The name of the ExpressRoute gateway.
 
@@ -233,7 +233,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: Create, CreateExpanded
-Aliases:
+Aliases: VirtualHub, VirtualHubName
 
 Required: True
 Position: Named

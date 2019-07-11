@@ -14,14 +14,14 @@ Creates or updates a security rule in the specified network security group.
 
 ### Update1 (Default)
 ```
-Set-AzNetworkSecurityRule -Name <String> -NetworkSecurityGroupName <String> -ResourceGroupName <String>
+Set-AzNetworkSecurityRule -Name <String> -NsgName <String> -ResourceGroupName <String>
  -SubscriptionId <String> [-SecurityRuleParameter <ISecurityRule>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded1
 ```
-Set-AzNetworkSecurityRule -Name <String> -NetworkSecurityGroupName <String> -ResourceGroupName <String>
+Set-AzNetworkSecurityRule -Name <String> -NsgName <String> -ResourceGroupName <String>
  -SubscriptionId <String> -SecurityRuleName <String> -Access <SecurityRuleAccess>
  -Direction <SecurityRuleDirection> -Protocol <SecurityRuleProtocol> [-Description <String>]
  [-DestinationAddressPrefix <String>] [-DestinationApplicationSecurityGroup <IApplicationSecurityGroup[]>]
@@ -60,6 +60,7 @@ PS C:\> {{ Add code here }}
 
 ### -Access
 The network traffic is allowed or denied.
+Possible values are: 'Allow' and 'Deny'.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.SecurityRuleAccess
@@ -179,6 +180,7 @@ Dynamic: False
 ### -Direction
 The direction of the rule.
 The direction specifies if rule will be evaluated on incoming or outgoing traffic.
+Possible values are: 'Inbound' and 'Outbound'.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.SecurityRuleDirection
@@ -241,22 +243,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -NetworkSecurityGroupName
-The name of the network security group.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -NoWait
 Run the command asynchronously
 
@@ -268,6 +254,22 @@ Aliases:
 Required: False
 Position: Named
 Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NsgName
+The name of the network security group.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: NetworkSecurityGroupName
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -359,7 +361,7 @@ Dynamic: False
 
 ### -Protocol
 Network protocol this rule applies to.
-Possible values are 'Tcp', 'Udp', 'Icmp', 'Esp', and '*'.
+Possible values are 'Tcp', 'Udp', and '*'.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.SecurityRuleProtocol
@@ -548,11 +550,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ISecurityRule
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ISecurityRule
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ISecurityRule
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ISecurityRule
 
 ## ALIASES
 

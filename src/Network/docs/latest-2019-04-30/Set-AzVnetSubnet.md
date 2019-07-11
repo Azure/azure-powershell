@@ -24,11 +24,10 @@ Set-AzVnetSubnet -Name <String> -ResourceGroupName <String> -SubscriptionId <Str
 Set-AzVnetSubnet -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -VnetName <String>
  -SubnetName <String> [-AddressPrefix <String>] [-DefaultSecurityRule <ISecurityRule[]>]
  [-Delegation <IDelegation[]>] [-DisableBgpRoutePropagation] [-Etag <String>] [-Id <String>]
- [-NatGatewayId <String>] [-NetworkSecurityGroupEtag <String>] [-NetworkSecurityGroupId <String>]
- [-NetworkSecurityGroupLocation <String>] [-NetworkSecurityGroupPropertiesProvisioningState <String>]
- [-NetworkSecurityGroupTag <Hashtable>] [-PropertiesAddressPrefixes <String[]>] [-ProvisioningState <String>]
- [-ResourceGuid <String>] [-ResourceNavigationLink <IResourceNavigationLink[]>] [-Route <IRoute[]>]
- [-RouteTableEtag <String>] [-RouteTableId <String>] [-RouteTableLocation <String>]
+ [-NatGatewayId <String>] [-NsgEtag <String>] [-NsgId <String>] [-NsgLocation <String>]
+ [-NsgPropertiesProvisioningState <String>] [-NsgTag <Hashtable>] [-PropertiesAddressPrefixes <String[]>]
+ [-ProvisioningState <String>] [-ResourceGuid <String>] [-ResourceNavigationLink <IResourceNavigationLink[]>]
+ [-Route <IRoute[]>] [-RouteTableEtag <String>] [-RouteTableId <String>] [-RouteTableLocation <String>]
  [-RouteTablePropertiesProvisioningState <String>] [-RouteTableTag <Hashtable>]
  [-SecurityRule <ISecurityRule[]>] [-ServiceAssociationLink <IServiceAssociationLink[]>]
  [-ServiceEndpoint <IServiceEndpointPropertiesFormat[]>] [-ServiceEndpointPolicy <IServiceEndpointPolicy[]>]
@@ -223,87 +222,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -NetworkSecurityGroupEtag
-A unique read-only string that changes whenever the resource is updated.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -NetworkSecurityGroupId
-Resource ID.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -NetworkSecurityGroupLocation
-Resource location.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -NetworkSecurityGroupPropertiesProvisioningState
-The provisioning state of the public IP resource.
-Possible values are: 'Updating', 'Deleting', and 'Failed'.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -NetworkSecurityGroupTag
-Resource tags.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -NoWait
 Run the command asynchronously
 
@@ -315,6 +233,87 @@ Aliases:
 Required: False
 Position: Named
 Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NsgEtag
+A unique read-only string that changes whenever the resource is updated.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases: NetworkSecurityGroupEtag
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NsgId
+Resource ID.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases: NetworkSecurityGroupId
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NsgLocation
+Resource location.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases: NetworkSecurityGroupLocation
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NsgPropertiesProvisioningState
+The provisioning state of the public IP resource.
+Possible values are: 'Updating', 'Deleting', and 'Failed'.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases: NetworkSecurityGroupPropertiesProvisioningState
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NsgTag
+Resource tags.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: UpdateExpanded
+Aliases: NetworkSecurityGroupTag
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

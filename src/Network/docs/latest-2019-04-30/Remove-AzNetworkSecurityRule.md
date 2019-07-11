@@ -14,7 +14,7 @@ Deletes the specified network security rule.
 
 ### Delete (Default)
 ```
-Remove-AzNetworkSecurityRule -Name <String> -NetworkSecurityGroupName <String> -ResourceGroupName <String>
+Remove-AzNetworkSecurityRule -Name <String> -NsgName <String> -ResourceGroupName <String>
  -SubscriptionId <String> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -114,22 +114,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -NetworkSecurityGroupName
-The name of the network security group.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -NoWait
 Run the command asynchronously
 
@@ -141,6 +125,22 @@ Aliases:
 Required: False
 Position: Named
 Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NsgName
+The name of the network security group.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases: NetworkSecurityGroupName
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

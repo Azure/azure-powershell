@@ -166,7 +166,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IRouteTable
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRouteTable
 
 ## ALIASES
 

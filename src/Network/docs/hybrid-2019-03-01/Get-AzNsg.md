@@ -1,38 +1,38 @@
 ---
 external help file:
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-aznetworksecuritygroup
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-aznsg
 schema: 2.0.0
 ---
 
-# Get-AzNetworkSecurityGroup
+# Get-AzNsg
 
 ## SYNOPSIS
 Gets the specified network security group.
 
 ## SYNTAX
 
-### List (Default)
+### List2 (Default)
 ```
-Get-AzNetworkSecurityGroup -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzNetworkSecurityGroup -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- [-ExpandResource <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzNsg -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List1
+### Get1
 ```
-Get-AzNetworkSecurityGroup -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
+Get-AzNsg -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]> [-ExpandResource <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List3
+```
+Get-AzNsg -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### GetViaIdentity1
 ```
-Get-AzNetworkSecurityGroup -InputObject <INetworkIdentity> [-ExpandResource <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzNsg -InputObject <INetworkIdentity> [-ExpandResource <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -81,7 +81,7 @@ Expands referenced resources.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentity
+Parameter Sets: Get1, GetViaIdentity1
 Aliases:
 
 Required: False
@@ -97,7 +97,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: GetViaIdentity1
 Aliases:
 
 Required: True
@@ -113,7 +113,7 @@ The name of the network security group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get1
 Aliases: NetworkSecurityGroupName
 
 Required: True
@@ -129,7 +129,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List1
+Parameter Sets: Get1, List3
 Aliases:
 
 Required: True
@@ -146,7 +146,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get, List1
+Parameter Sets: List2, Get1, List3
 Aliases:
 
 Required: True
@@ -166,9 +166,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkSecurityGroup
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkSecurityGroup
 
 ## ALIASES
+
+### Get-AzNetworkSecurityGroup
 
 ## NOTES
 

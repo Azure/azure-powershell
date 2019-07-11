@@ -1,27 +1,27 @@
 ---
 external help file:
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-aznetworksecuritygroup
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-aznsg
 schema: 2.0.0
 ---
 
-# Set-AzNetworkSecurityGroup
+# Set-AzNsg
 
 ## SYNOPSIS
 Creates or updates a network security group in the specified resource group.
 
 ## SYNTAX
 
-### Update (Default)
+### Update1 (Default)
 ```
-Set-AzNetworkSecurityGroup -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Set-AzNsg -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-Parameter <INetworkSecurityGroup>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### UpdateExpanded
+### UpdateExpanded1
 ```
-Set-AzNetworkSecurityGroup -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Set-AzNsg -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-DefaultSecurityRule <ISecurityRule[]>] [-Etag <String>] [-Id <String>] [-Location <String>]
  [-ProvisioningState <String>] [-ResourceGuid <String>] [-SecurityRule <ISecurityRule[]>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -89,8 +89,8 @@ The default security rules of network security group.
 To construct, see NOTES section for DEFAULTSECURITYRULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ISecurityRule[]
-Parameter Sets: UpdateExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ISecurityRule[]
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -106,7 +106,7 @@ A unique read-only string that changes whenever the resource is updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -122,7 +122,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -138,7 +138,7 @@ Resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -186,8 +186,8 @@ NetworkSecurityGroup resource.
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkSecurityGroup
-Parameter Sets: Update
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkSecurityGroup
+Parameter Sets: Update1
 Aliases:
 
 Required: False
@@ -204,7 +204,7 @@ Possible values are: 'Updating', 'Deleting', and 'Failed'.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -236,7 +236,7 @@ The resource GUID property of the network security group resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -252,8 +252,8 @@ A collection of security rules of the network security group.
 To construct, see NOTES section for SECURITYRULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ISecurityRule[]
-Parameter Sets: UpdateExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ISecurityRule[]
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -286,7 +286,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -335,13 +335,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkSecurityGroup
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkSecurityGroup
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkSecurityGroup
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkSecurityGroup
 
 ## ALIASES
+
+### Set-AzNetworkSecurityGroup
 
 ## NOTES
 
@@ -349,9 +351,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 #### DEFAULTSECURITYRULE <ISecurityRule[]>: The default security rules of network security group.
-  - `Access <SecurityRuleAccess>`: The network traffic is allowed or denied.
-  - `Direction <SecurityRuleDirection>`: The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic.
-  - `Protocol <SecurityRuleProtocol>`: Network protocol this rule applies to. Possible values are 'Tcp', 'Udp', 'Icmp', 'Esp', and '*'.
+  - `Access <SecurityRuleAccess>`: The network traffic is allowed or denied. Possible values are: 'Allow' and 'Deny'.
+  - `Direction <SecurityRuleDirection>`: The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic. Possible values are: 'Inbound' and 'Outbound'.
+  - `Protocol <SecurityRuleProtocol>`: Network protocol this rule applies to. Possible values are 'Tcp', 'Udp', and '*'.
   - `[Description <String>]`: A description for this rule. Restricted to 140 chars.
   - `[DestinationAddressPrefix <String>]`: The destination address prefix. CIDR or destination IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used.
   - `[DestinationApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: The application security group specified as destination.
@@ -370,9 +372,9 @@ To create the parameters described below, construct a hash table containing the 
 
 #### PARAMETER <INetworkSecurityGroup>: NetworkSecurityGroup resource.
   - `[DefaultSecurityRule <ISecurityRule[]>]`: The default security rules of network security group.
-    - `Access <SecurityRuleAccess>`: The network traffic is allowed or denied.
-    - `Direction <SecurityRuleDirection>`: The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic.
-    - `Protocol <SecurityRuleProtocol>`: Network protocol this rule applies to. Possible values are 'Tcp', 'Udp', 'Icmp', 'Esp', and '*'.
+    - `Access <SecurityRuleAccess>`: The network traffic is allowed or denied. Possible values are: 'Allow' and 'Deny'.
+    - `Direction <SecurityRuleDirection>`: The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic. Possible values are: 'Inbound' and 'Outbound'.
+    - `Protocol <SecurityRuleProtocol>`: Network protocol this rule applies to. Possible values are 'Tcp', 'Udp', and '*'.
     - `[Description <String>]`: A description for this rule. Restricted to 140 chars.
     - `[DestinationAddressPrefix <String>]`: The destination address prefix. CIDR or destination IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used.
     - `[DestinationApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: The application security group specified as destination.
@@ -394,9 +396,9 @@ To create the parameters described below, construct a hash table containing the 
   - `[SecurityRule <ISecurityRule[]>]`: A collection of security rules of the network security group.
 
 #### SECURITYRULE <ISecurityRule[]>: A collection of security rules of the network security group.
-  - `Access <SecurityRuleAccess>`: The network traffic is allowed or denied.
-  - `Direction <SecurityRuleDirection>`: The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic.
-  - `Protocol <SecurityRuleProtocol>`: Network protocol this rule applies to. Possible values are 'Tcp', 'Udp', 'Icmp', 'Esp', and '*'.
+  - `Access <SecurityRuleAccess>`: The network traffic is allowed or denied. Possible values are: 'Allow' and 'Deny'.
+  - `Direction <SecurityRuleDirection>`: The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic. Possible values are: 'Inbound' and 'Outbound'.
+  - `Protocol <SecurityRuleProtocol>`: Network protocol this rule applies to. Possible values are 'Tcp', 'Udp', and '*'.
   - `[Description <String>]`: A description for this rule. Restricted to 140 chars.
   - `[DestinationAddressPrefix <String>]`: The destination address prefix. CIDR or destination IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used.
   - `[DestinationApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: The application security group specified as destination.

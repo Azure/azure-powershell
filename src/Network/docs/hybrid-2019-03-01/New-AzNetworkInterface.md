@@ -22,28 +22,24 @@ New-AzNetworkInterface -Name <String> -ResourceGroupName <String> -SubscriptionI
 ### CreateExpanded1
 ```
 New-AzNetworkInterface -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-DefaultSecurityRule <ISecurityRule[]>] [-DnsSettingAppliedDnsServer <String[]>]
- [-DnsSettingDnsServer <String[]>] [-DnsSettingInternalDnsNameLabel <String>]
- [-DnsSettingInternalDomainNameSuffix <String>] [-DnsSettingInternalFqdn <String>]
+ [-AppliedDnsServer <String[]>] [-DefaultSecurityRule <ISecurityRule[]>] [-DnsServer <String[]>]
  [-EnableAcceleratedNetworking] [-EnableIPForwarding] [-Etag <String>]
- [-IPConfiguration <INetworkInterfaceIPConfiguration[]>] [-Id <String>] [-Location <String>]
- [-MacAddress <String>] [-NetworkSecurityGroupEtag <String>] [-NetworkSecurityGroupId <String>]
- [-NetworkSecurityGroupLocation <String>] [-NetworkSecurityGroupPropertiesProvisioningState <String>]
- [-NetworkSecurityGroupPropertiesResourceGuid <String>] [-NetworkSecurityGroupTag <Hashtable>] [-Primary]
- [-ProvisioningState <String>] [-ResourceGuid <String>] [-SecurityRule <ISecurityRule[]>] [-Tag <Hashtable>]
- [-VMId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-IPConfiguration <INetworkInterfaceIPConfiguration[]>] [-Id <String>] [-InternalDnsNameLabel <String>]
+ [-InternalDomainNameSuffix <String>] [-InternalFqdn <String>] [-Location <String>] [-MacAddress <String>]
+ [-NsgEtag <String>] [-NsgId <String>] [-NsgLocation <String>] [-NsgProvisioningState <String>]
+ [-NsgResourceGuid <String>] [-NsgTag <Hashtable>] [-Primary] [-ProvisioningState <String>]
+ [-ResourceGuid <String>] [-SecurityRule <ISecurityRule[]>] [-Tag <Hashtable>] [-VMId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded1
 ```
-New-AzNetworkInterface -InputObject <INetworkIdentity> [-DefaultSecurityRule <ISecurityRule[]>]
- [-DnsSettingAppliedDnsServer <String[]>] [-DnsSettingDnsServer <String[]>]
- [-DnsSettingInternalDnsNameLabel <String>] [-DnsSettingInternalDomainNameSuffix <String>]
- [-DnsSettingInternalFqdn <String>] [-EnableAcceleratedNetworking] [-EnableIPForwarding] [-Etag <String>]
- [-IPConfiguration <INetworkInterfaceIPConfiguration[]>] [-Id <String>] [-Location <String>]
- [-MacAddress <String>] [-NetworkSecurityGroupEtag <String>] [-NetworkSecurityGroupId <String>]
- [-NetworkSecurityGroupLocation <String>] [-NetworkSecurityGroupPropertiesProvisioningState <String>]
- [-NetworkSecurityGroupPropertiesResourceGuid <String>] [-NetworkSecurityGroupTag <Hashtable>] [-Primary]
+New-AzNetworkInterface -InputObject <INetworkIdentity> [-AppliedDnsServer <String[]>]
+ [-DefaultSecurityRule <ISecurityRule[]>] [-DnsServer <String[]>] [-EnableAcceleratedNetworking]
+ [-EnableIPForwarding] [-Etag <String>] [-IPConfiguration <INetworkInterfaceIPConfiguration[]>] [-Id <String>]
+ [-InternalDnsNameLabel <String>] [-InternalDomainNameSuffix <String>] [-InternalFqdn <String>]
+ [-Location <String>] [-MacAddress <String>] [-NsgEtag <String>] [-NsgId <String>] [-NsgLocation <String>]
+ [-NsgProvisioningState <String>] [-NsgResourceGuid <String>] [-NsgTag <Hashtable>] [-Primary]
  [-ProvisioningState <String>] [-ResourceGuid <String>] [-SecurityRule <ISecurityRule[]>] [-Tag <Hashtable>]
  [-VMId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -78,6 +74,23 @@ PS C:\> {{ Add code here }}
 {{ Add description here }}
 
 ## PARAMETERS
+
+### -AppliedDnsServer
+If the VM that uses this NIC is part of an Availability Set, then this list will have the union of all DNS servers from all NICs that are part of the Availability Set.
+This property is what is configured on each of those VMs.
+
+```yaml
+Type: System.String[]
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
 
 ### -AsJob
 Run the command as a job
@@ -128,79 +141,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -DnsSettingAppliedDnsServer
-If the VM that uses this NIC is part of an Availability Set, then this list will have the union of all DNS servers from all NICs that are part of the Availability Set.
-This property is what is configured on each of those VMs.
-
-```yaml
-Type: System.String[]
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -DnsSettingDnsServer
+### -DnsServer
 List of DNS servers IP addresses.
 Use 'AzureProvidedDNS' to switch to azure provided DNS resolution.
 'AzureProvidedDNS' value cannot be combined with other IPs, it must be the only value in dnsServers collection.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -DnsSettingInternalDnsNameLabel
-Relative DNS name for this NIC used for internal communications between VMs in the same virtual network.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -DnsSettingInternalDomainNameSuffix
-Even if internalDnsNameLabel is not specified, a DNS entry is created for the primary NIC of the VM.
-This DNS name can be constructed by concatenating the VM name with the value of internalDomainNameSuffix.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -DnsSettingInternalFqdn
-Fully qualified DNS name supporting internal communications between VMs in the same virtual network.
-
-```yaml
-Type: System.String
 Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
@@ -292,6 +239,55 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -InternalDnsNameLabel
+Relative DNS name for this NIC used for internal communications between VMs in the same virtual network.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -InternalDomainNameSuffix
+Even if internalDnsNameLabel is not specified, a DNS entry is created for the primary NIC of the VM.
+This DNS name can be constructed by concatenating the VM name with the value of internalDomainNameSuffix.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -InternalFqdn
+Fully qualified DNS name supporting internal communications between VMs in the same virtual network.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -IPConfiguration
 A list of IPConfigurations of the network interface.
 To construct, see NOTES section for IPCONFIGURATION properties and create a hash table.
@@ -357,103 +353,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -NetworkSecurityGroupEtag
-A unique read-only string that changes whenever the resource is updated.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -NetworkSecurityGroupId
-Resource ID.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -NetworkSecurityGroupLocation
-Resource location.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -NetworkSecurityGroupPropertiesProvisioningState
-The provisioning state of the public IP resource.
-Possible values are: 'Updating', 'Deleting', and 'Failed'.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -NetworkSecurityGroupPropertiesResourceGuid
-The resource GUID property of the network security group resource.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -NetworkSecurityGroupTag
-Resource tags.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -NoWait
 Run the command asynchronously
 
@@ -465,6 +364,103 @@ Aliases:
 Required: False
 Position: Named
 Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NsgEtag
+A unique read-only string that changes whenever the resource is updated.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Aliases: NetworkSecurityGroupEtag
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NsgId
+Resource ID.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Aliases: NetworkSecurityGroupId
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NsgLocation
+Resource location.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Aliases: NetworkSecurityGroupLocation
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NsgProvisioningState
+The provisioning state of the public IP resource.
+Possible values are: 'Updating', 'Deleting', and 'Failed'.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Aliases: NetworkSecurityGroupProvisioningState
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NsgResourceGuid
+The resource GUID property of the network security group resource.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Aliases: NetworkSecurityGroupResourceGuid
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NsgTag
+Resource tags.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Aliases: NetworkSecurityGroupTag
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -526,7 +522,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: Create1, CreateExpanded1
-Aliases:
+Aliases: SubnetId, PublicIpAddressId, PublicIpAddress, LoadBalancerBackendAddressPoolId, LoadBalancerBackendAddressPool, LoadBalancerInboundNatRuleId, LoadBalancerInboundNatRule, ApplicationGatewayBackendAddressPoolId, ApplicationGatewayBackendAddressPool, ApplicationSecurityGroupId, ApplicationSecurityGroup, PrivateIpAddress, IpConfigurationName, NetworkSecurityGroup
 
 Required: True
 Position: Named
@@ -658,11 +654,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkInterface
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterface
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkInterface
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterface
 
 ## ALIASES
 

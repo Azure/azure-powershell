@@ -132,8 +132,7 @@ Dynamic: False
 ```
 
 ### -EnableDdosProtection
-Indicates if DDoS protection is enabled for all the protected resources in the virtual network.
-It requires a DDoS protection plan associated with the resource.
+Indicates if DDoS protection is enabled for all the protected resources in a Virtual Network.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -149,7 +148,7 @@ Dynamic: False
 ```
 
 ### -EnableVMProtection
-Indicates if VM protection is enabled for all the subnets in the virtual network.
+Indicates if Vm protection is enabled for all the subnets in a Virtual Network.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -433,11 +432,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVirtualNetwork
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVirtualNetwork
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVirtualNetwork
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVirtualNetwork
 
 ## ALIASES
 

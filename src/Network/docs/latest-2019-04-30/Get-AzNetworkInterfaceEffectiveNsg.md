@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-aznetworkinterfaceeffectivenetworksecuritygroup
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-aznetworkinterfaceeffectivensg
 schema: 2.0.0
 ---
 
-# Get-AzNetworkInterfaceEffectiveNetworkSecurityGroup
+# Get-AzNetworkInterfaceEffectiveNsg
 
 ## SYNOPSIS
 Gets all network security groups applied to a network interface.
@@ -13,7 +13,7 @@ Gets all network security groups applied to a network interface.
 ## SYNTAX
 
 ```
-Get-AzNetworkInterfaceEffectiveNetworkSecurityGroup -NetworkInterfaceName <String> -ResourceGroupName <String>
+Get-AzNetworkInterfaceEffectiveNsg -NetworkInterfaceName <String> -ResourceGroupName <String>
  -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -185,6 +185,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### Get-AzEffectiveNetworkSecurityGroup
+
+### Get-AzNetworkInterfaceEffectiveNetworkSecurityGroup
 
 ## NOTES
 

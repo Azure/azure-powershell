@@ -14,9 +14,9 @@ Creates or updates a security rule in the specified network security group.
 
 ### Create (Default)
 ```
-New-AzNetworkSecurityRule -NetworkSecurityGroupName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-Name <String>] [-SecurityRuleParameter <ISecurityRule>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzNetworkSecurityRule -NsgName <String> -ResourceGroupName <String> -SubscriptionId <String>
+ [-Name <String>] [-SecurityRuleParameter <ISecurityRule>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -34,9 +34,9 @@ New-AzNetworkSecurityRule -InputObject <INetworkIdentity> -Access <SecurityRuleA
 
 ### CreateExpanded
 ```
-New-AzNetworkSecurityRule -NetworkSecurityGroupName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -SecurityRuleName <String> -Access <SecurityRuleAccess>
- -Direction <SecurityRuleDirection> -Protocol <SecurityRuleProtocol> [-Name <String>] [-Description <String>]
+New-AzNetworkSecurityRule -NsgName <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -SecurityRuleName <String> -Access <SecurityRuleAccess> -Direction <SecurityRuleDirection>
+ -Protocol <SecurityRuleProtocol> [-Name <String>] [-Description <String>]
  [-DestinationAddressPrefix <String>] [-DestinationApplicationSecurityGroup <IApplicationSecurityGroup[]>]
  [-DestinationPortRange <String>] [-Etag <String>] [-Id <String>] [-Priority <Int32>]
  [-PropertiesDestinationAddressPrefixes <String[]>] [-PropertiesDestinationPortRanges <String[]>]
@@ -276,22 +276,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -NetworkSecurityGroupName
-The name of the network security group.
-
-```yaml
-Type: System.String
-Parameter Sets: Create, CreateExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -NoWait
 Run the command asynchronously
 
@@ -303,6 +287,22 @@ Aliases:
 Required: False
 Position: Named
 Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NsgName
+The name of the network security group.
+
+```yaml
+Type: System.String
+Parameter Sets: Create, CreateExpanded
+Aliases: NetworkSecurityGroupName
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
