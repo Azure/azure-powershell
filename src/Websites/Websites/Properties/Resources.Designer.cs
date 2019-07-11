@@ -88,6 +88,15 @@ namespace Microsoft.Azure.Commands.WebApps.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Remote Powershell sessions into Windows Containers on App Service from Powershell 6.0.4 is not supported..
+        /// </summary>
+        internal static string EnterContainerPSSessionNotSupportedInPSCore604 {
+            get {
+                return ResourceManager.GetString("EnterContainerPSSessionNotSupportedInPSCore604", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to WSMAN Basic authentication is not enabled. Run the following command and try again: &quot;Set-Item WSMAN:\LocalHost\Client\Auth\Basic -Value $true&quot;.
         /// </summary>
         internal static string EnterCotnainerPSSessionBasicAuthWarning {

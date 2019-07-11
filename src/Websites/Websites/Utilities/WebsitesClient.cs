@@ -312,10 +312,18 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
 
         public void RunWebAppContainerPSSessionScript(PSCmdlet cmdlet, string resourceGroupName, string webSiteName, string slotName = null, bool newPSSession = false)
         {
-            Version psCurrentVersion = GetPsVersion(cmdlet);
-            Version psCore = new Version(6, 0);
+            List<Version> compatibleVersions = GetPsCompatibleVersions(cmdlet);
 
-            if (psCurrentVersion.CompareTo(psCore) < 0)
+            Version psCore = new Version(6, 0, 4);
+
+            if (compatibleVersions.Contains(psCore))
+            {
+                WriteError(Properties.Resources.EnterContainerPSSessionNotSupportedInPSCore604);
+
+                return;
+            }
+
+            if (compatibleVersions.Where(v => v.CompareTo(psCore) < 0).Count() > 1)
             {
                 // Running on PowerShell 5.1. Assume Windows.
 
@@ -374,6 +382,24 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             return psEnvironmentVersion;
         }
 
+        private List<Version> GetPsCompatibleVersions(PSCmdlet cmdlet)
+        {
+            object psVersionsTable = ExecuteScriptAndGetVariable(cmdlet, "${0} = $PSVersionTable.PSCompatibleVersions");
+
+            List<Version> versionResults = new List<Version>();
+
+            if (psVersionsTable != null 
+                && psVersionsTable is Version[] versions)
+            {
+                foreach (var version in versions)
+                {
+                    versionResults.Add(version);
+                }
+            }
+
+            return versionResults;
+        }
+
         private bool ExecuteScriptAndGetVariableAsBool(PSCmdlet cmdlet, string scriptFormatString, bool defaultValue)
         {
             string scriptResult = ExecuteScriptAndGetVariable(cmdlet, scriptFormatString, bool.FalseString);
@@ -383,11 +409,19 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
         }
 
         private string ExecuteScriptAndGetVariable(PSCmdlet cmdlet,  string scriptFormatString, string defaultValue)
-        {
+        {            
             string outputVariable = "outputVariable";
             cmdlet.ExecuteScript<object>(string.Format(scriptFormatString, outputVariable));
             var output = cmdlet.GetVariableValue(outputVariable, defaultValue);
             return output.ToString();
+        }
+
+        private object ExecuteScriptAndGetVariable(PSCmdlet cmdlet, string scriptFormatString)
+        {
+            string outputVariable = "outputVariable";
+            List<object> cmdletResults = cmdlet.ExecuteScript<object>(string.Format(scriptFormatString, outputVariable));
+            var output = cmdlet.GetVariableValue(outputVariable);
+            return output;
         }
 
         public IEnumerable<ResourceMetric> GetWebAppUsageMetrics(string resourceGroupName, 
