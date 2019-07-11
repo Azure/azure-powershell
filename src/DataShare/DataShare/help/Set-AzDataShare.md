@@ -7,7 +7,7 @@ schema: 2.0.0
 # Set-AzDataShare
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Updates an existing data share
 
 ## SYNTAX
 
@@ -30,16 +30,24 @@ Set-AzDataShare -Share <PSShare> [-Description <String>] [-TermsOfUse <String>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Set-AzDataShare** cmdlet updates a data share that exists within a specified azure data share account.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Set-AzDataShare -ResourceGroupName "ADS" -AccountName "WikiAdsAccount" -Name "AdsShare" -Description "Updated description" -TermsOfUse "Updated terms"
+Name                : AdsShare
+Id                  : /subscriptions/f3ead1ff-d0ab-4cf4-9a5a-86f1661d4685/resourceGroups/ADS/providers/Microsoft.DataShare/accounts/WikiAdsAccount/shares/AdsShare
+Type                : Microsoft.DataShare/shares
+CreatedAt           : 6/11/2019 12:00:00 AM
+CreatedBy           : Contoso ADS
+ShareKind           : CopyBased
+Description         : Updated description
+ProvisioningState   : Succeeded
+Terms               : Updated terms
 ```
-
-{{ Add example description here }}
+This command updates an existing data share named AdsShare
 
 ## PARAMETERS
 
