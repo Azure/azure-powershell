@@ -142,7 +142,7 @@ Accept wildcard characters: False
 ```
 
 ### -Path
-The path of the deleted deleted file or folder in trash.
+The path of the deleted file or folder in trash.
 
 ```yaml
 Type: System.String
