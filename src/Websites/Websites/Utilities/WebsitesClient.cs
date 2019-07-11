@@ -363,32 +363,6 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             cmdlet.ExecuteScript<object>(string.Format("Clear-Variable {0}*", webAppContainerPSSessionVarPrefix)); //Clearing session variable
         }
 
-        private Version GetPsVersion(PSCmdlet cmdlet)
-        {
-            string psVersionVariable = ExecuteScriptAndGetVariable(cmdlet, "${0} = $PSVersionTable.PSVersion", string.Empty);
-            Version psEnvironmentVersion = new Version(5, 1);
-            Version.TryParse(psVersionVariable, out psEnvironmentVersion);
-            return psEnvironmentVersion;
-        }
-
-        private List<Version> GetPsCompatibleVersions(PSCmdlet cmdlet)
-        {
-            object psVersionsTable = ExecuteScriptAndGetVariable(cmdlet, "${0} = $PSVersionTable.PSCompatibleVersions");
-
-            List<Version> versionResults = new List<Version>();
-
-            if (psVersionsTable != null 
-                && psVersionsTable is Version[] versions)
-            {
-                foreach (var version in versions)
-                {
-                    versionResults.Add(version);
-                }
-            }
-
-            return versionResults;
-        }
-
         private string GetPsOperatingSystem (PSCmdlet cmdlet)
         {
             string psOperatingSystem = "none";
