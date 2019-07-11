@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Sql.LegacySdk.Models
         
         /// <summary>
         /// Optional. Gets or sets the collation of the Azure Sql Database
-        /// being created.  You cannot change change the collation of an
+        /// being created.  You cannot change the collation of an
         /// existing Azure Sql Database.
         /// </summary>
         public string Collation
