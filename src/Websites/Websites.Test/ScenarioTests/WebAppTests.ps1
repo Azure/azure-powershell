@@ -687,10 +687,13 @@ function Test-WindowsContainerCanIssueWebAppPSSession
 		# to connect (for example: invalid Trusted Hosts, Basic Auth not enabled) this command will issue a Warning instructing the user
 		# to fix WSMAN settings. It will not attempt to run EnterPsSession.
 		#
-		# If the current version is 6.0 (PowerShell Core) this command will not attempt to validate WSMAN settings and 
-		# just try to run EnterPsSession. EnterPsSession is available in Cloud Shell
+		# If the current PsVersion is 6.0.4 this command will throw an error since remote
+		# Powershell sessions into Windows Containers on App Service from Powershell 6.0.4 is not supported.
 		#
-		# We need an real Windows Container app running to fully validate the returned PsSession object, which is not 
+		# If the current PsVersion is newer than 6.0.4 (PowerShell Core) this command will not attempt to validate WSMAN settings and 
+		# just try to run EnterPsSession. EnterPsSession using WinRM is available in Cloud Shell
+		#
+		# We need a real Windows Container app running to fully validate the returned PsSession object, which is not 
 		# possible in 'Playback' mode.
 		#
 		# This assert at least verifies that the EnterPsSession command is attempted and that the behavior is the expected in
@@ -707,12 +710,16 @@ function Test-WindowsContainerCanIssueWebAppPSSession
 		}
 		else
 		{
-			# Two possible messages in Playback mode since the site will not exist.
+			# Three possible messages in Playback mode since the site will not exist.
 			$messageDNS = "Connecting to remote server $wname.azurewebsites.net failed with the following error message : The WinRM client cannot process the request because the server name cannot be resolved"
 			$messageUnavailable = "Connecting to remote server $wname.azurewebsites.net failed with the following error message : The WinRM client sent a request to an HTTP server and got a response saying the requested HTTP URL was not available."
-			$resultError = ($Error[0] -like "*$($messageDNS)*") -or ($Error[0] -like "*$($messageUnavailable)*")
+			$messageNotSupportedInPSCore604 = "Remote Powershell sessions into Windows Containers on App Service from Powershell 6.0.4 is not supported."
+			
+			$resultError = ($Error[0] -like "*$($messageDNS)*") -or ($Error[0] -like "*$($messageUnavailable)*") -or ($Error[0] -like "*$($messageNotSupportedInPSCore604)*")
+			
 			Write-Debug "Expected Message 1: $messageDNS"
 			Write-Debug "Expected Message 2: $messageUnavailable"
+			Write-Debug "Expected Message 3: $messageNotSupportedInPSCore604"
 		}
 		
 		Write-Debug "Error: $Error[0]"
