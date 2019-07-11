@@ -21,7 +21,7 @@ function Test-AccountCrud
     $AccountName = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
 	$tags = @{"tag1" = "value1"; "tag2" = "value2"}
-    $AccountLocation = "WEST US 2"
+    $AccountLocation = Get-Location "Microsoft.DataShare" "accounts" "WEST US"
     $createdAccount = New-AzDataShareAccount -Name $AccountName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $AccountLocation -Tag $tags
 
     Assert-NotNull $createdAccount
