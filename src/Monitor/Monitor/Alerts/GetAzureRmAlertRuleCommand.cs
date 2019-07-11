@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
                 // Retrieve all the AlertRules for a ResourceGroup
                 IEnumerable<AlertRuleResource> result = this.MonitorManagementClient.AlertRules.ListByResourceGroupAsync(resourceGroupName: this.ResourceGroupName).Result;
 
-                // The filter on targetResourceId is not supported by the servers, not specified in in Swagger, nor supported by the SDK.
+                // The filter on targetResourceId is not supported by the servers, not specified in Swagger, nor supported by the SDK.
                 // This is added to maintain support in PowerShell
                 if (!string.IsNullOrWhiteSpace(this.TargetResourceId))
                 {
