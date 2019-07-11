@@ -966,7 +966,7 @@ directive:
       alias: VpnConnection
   - where: # Uses VirtualHub.Name/VirtualHubName to do a Get call to get the resource ID for VirtualHubId. Decide if this kind of logic needs to be implemented??
       verb: New
-      subject: VpnGateway
+      subject: ^VpnGateway$|^ExpressRouteGateway$
       parameter-name: ResourceGroupName
     set:
       alias:
@@ -997,14 +997,14 @@ directive:
     set:
       alias: InputObject
   - where:
-      verb: Set
+      verb: ^Set$|^New$
       subject: ExpressRouteGateway
       parameter-name: BoundMin
     set:
       parameter-name: MinimumScaleUnits
       alias: MinScaleUnits
   - where:
-      verb: Set
+      verb: ^Set$|^New$
       subject: ExpressRouteGateway
       parameter-name: BoundMax
     set:
@@ -1213,6 +1213,98 @@ directive:
       parameter-name: AllowClassicOperation
     set:
       parameter-name: AllowClassicOperations
+  - where:
+      verb: New
+      subject: LocalNetworkGateway
+      parameter-name: LocalNetworkAddressSpaceAddressPrefix
+    set:
+      parameter-name: AddressPrefix
+  - where:
+      verb: New
+      subject: LocalNetworkGateway
+      parameter-name: BgpSettingAsn
+    set:
+      parameter-name: BgpAsn
+      alias: Asn
+  - where:
+      verb: New
+      subject: LocalNetworkGateway
+      parameter-name: BgpSettingBgpPeeringAddress
+    set:
+      parameter-name: BgpPeeringAddress
+  - where:
+      verb: New
+      subject: LocalNetworkGateway
+      parameter-name: BgpSettingPeerWeight
+    set:
+      parameter-name: BgpPeerWeight
+      alias: PeerWeight
+  - where: # REMOVE BEFORE RELEASE: This is used instead of an in-memory object
+      verb: New
+      subject: NetworkInterface
+      parameter-name: ResourceGroupName
+    set:
+      alias: SubnetId
+  - where: # REMOVE BEFORE RELEASE: These parameters were expanded from the IPConfiguration object
+      verb: New
+      subject: NetworkInterface
+      parameter-name: ResourceGroupName
+    set:
+      alias:
+        - PublicIpAddressId
+        - PublicIpAddress
+        - LoadBalancerBackendAddressPoolId
+        - LoadBalancerBackendAddressPool
+        - LoadBalancerInboundNatRuleId
+        - LoadBalancerInboundNatRule
+        - ApplicationGatewayBackendAddressPoolId
+        - ApplicationGatewayBackendAddressPool
+        - ApplicationSecurityGroupId
+        - ApplicationSecurityGroup
+        - PrivateIpAddress
+        - IpConfigurationName
+  - where: # REMOVE BEFORE RELEASE: This is expanded into separate parameters
+      verb: New
+      subject: NetworkInterface
+      parameter-name: ResourceGroupName
+    set:
+      alias: NetworkSecurityGroup
+  - where:
+      verb: New
+      subject: NetworkInterface
+      parameter-name: NetworkSecurityGroupPropertiesProvisioningState
+    set:
+      parameter-name: NetworkSecurityGroupProvisioningState
+  - where:
+      verb: New
+      subject: NetworkInterface
+      parameter-name: NetworkSecurityGroupPropertiesResourceGuid
+    set:
+      parameter-name: NetworkSecurityGroupResourceGuid
+  - where:
+      verb: New
+      subject: NetworkInterface
+      parameter-name: ^DnsSetting(.*)
+    set:
+      parameter-name: $1
+
+# Network Security Group
+  - where:
+      subject: (.*)NetworkSecurityGroup(.*)
+    set:
+      alias: ${verb}-Az${subject-prefix}${subject}
+  - where:
+      parameter-name: (.*)NetworkSecurityGroup(.*)
+    set:
+      alias: $1NetworkSecurityGroup$2
+  - where:
+      subject: (.*)NetworkSecurityGroup(.*)
+    set:
+      subject: $1Nsg$2
+  - where:
+      parameter-name: (.*)NetworkSecurityGroup(.*)
+    set:
+      parameter-name: $1Nsg$2
 
 # Other Fixes
   - where:
