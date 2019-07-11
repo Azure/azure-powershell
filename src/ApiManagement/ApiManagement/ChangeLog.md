@@ -28,7 +28,7 @@
 
 * Fix for issue https://github.com/Azure/azure-powershell/issues/9307 and https://github.com/Azure/azure-powershell/issues/8432
     - **Import-AzApiManagementApi**
-        - Added support for specifiying `ApiVersion` and `ApiVersionSetId` when importing Apis
+        - Added support for specifying `ApiVersion` and `ApiVersionSetId` when importing Apis
 
 ## Version 1.1.0
 

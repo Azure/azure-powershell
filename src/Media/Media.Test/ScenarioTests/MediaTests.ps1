@@ -36,7 +36,7 @@ function Test-Media
   $availability = Get-AzMediaServiceNameAvailability -AccountName $accountName
   Assert-AreEqual $true $availability.nameAvailable
 
-  <# Create a media service with specifiying the primary storage account only #>
+  <# Create a media service with specifying the primary storage account only #>
   $accountName = "med" + $rgname
   $tags = @{"tag1" = "value1"; "tag2" = "value2"}
   $storageAccount1 = GetStorageAccount -ResourceGroupName $rgname -Name $storageAccountName1
