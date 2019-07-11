@@ -36,7 +36,7 @@ using SystemNet = System.Net;
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
     /// <summary>
-    /// This class implements implements methods for IaasVm backup provider
+    /// This class implements methods for IaasVm backup provider
     /// </summary>
     public class IaasVmPsBackupProvider : IPsBackupProvider
     {

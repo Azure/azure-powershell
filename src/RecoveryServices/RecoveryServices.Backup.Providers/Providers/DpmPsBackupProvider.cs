@@ -25,7 +25,7 @@ using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Mo
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
     /// <summary>
-    /// This class implements implements methods for DPM backup provider
+    /// This class implements methods for DPM backup provider
     /// </summary>
     public class DpmPsBackupProvider : IPsBackupProvider
     {

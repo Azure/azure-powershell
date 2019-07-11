@@ -26,7 +26,7 @@ using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Mo
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
     /// <summary>
-    /// This class implements implements methods for MAB backup provider
+    /// This class implements methods for MAB backup provider
     /// </summary>
     public class MabPsBackupProvider : IPsBackupProvider
     {

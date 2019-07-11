@@ -28,7 +28,7 @@ using SystemNet = System.Net;
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
     /// <summary>
-    /// This class implements implements methods for Azure Workload Provider Helper
+    /// This class implements methods for Azure Workload Provider Helper
     /// </summary>
     public class AzureWorkloadProviderHelper
     {
