@@ -81,6 +81,7 @@ namespace Microsoft.Azure.Commands.DataShare.DataSetMapping
             HelpMessage = "Azure data share subscription name",
             ParameterSetName = ParameterSetNames.AdlsGen2DataSetParameterSet)]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter(ResourceTypes.Share, "ResourceGroupName", "AccountName")]
         public string ShareSubscriptionName { get; set; }
 
         /// <summary>
