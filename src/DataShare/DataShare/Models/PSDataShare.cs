@@ -14,17 +14,17 @@
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models
 {
-    using Microsoft.Azure.Commands.DataShare.Models;
     using System;
+    using Microsoft.Azure.Commands.DataShare.Models;
 
-    public class PSInvitation : PSResource
+    /// <inheritdoc />
+    public class PSDataShare : PSResource
     {
-        public string InvitationId { get; set; }
-        public string InvitationStatus { get; set; }
-        public string Sender { get; set; }
-        public DateTime? SentAt { get; set; }
-        public string TargetEmail { get; set; }
-        public string TargetObjectId { get; set; }
-        public string TargetTenantId { get; set; }
+        public DateTime? CreatedAt { get; set; }
+        public string CreatedBy { get; set; }
+        public string ShareKind { get; set; }
+        public string Description { get; set; }
+        public PSProvisioningState ProvisioningState { get; set; }
+        public string Terms { get; set; }
     }
 }

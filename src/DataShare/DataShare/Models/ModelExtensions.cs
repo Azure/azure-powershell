@@ -42,9 +42,9 @@ namespace Microsoft.Azure.Commands.DataShare.Helpers
             };
         }
 
-        public static PSSynchronizationSetting ToPsObject(this ScheduledSynchronizationSetting setting)
+        public static PSDataShareSynchronizationSetting ToPsObject(this ScheduledSynchronizationSetting setting)
         {
-            return new PSSynchronizationSetting
+            return new PSDataShareSynchronizationSetting
             {
                 Id = setting.Id,
                 Name = setting.Name,
@@ -79,9 +79,9 @@ namespace Microsoft.Azure.Commands.DataShare.Helpers
             };
         }
 
-        public static PSShare ToPsObject(this Share share)
+        public static PSDataShare ToPsObject(this Share share)
         {
-            return new PSShare
+            return new PSDataShare
             {
                 Id = share.Id,
                 Name = share.Name,
@@ -97,9 +97,9 @@ namespace Microsoft.Azure.Commands.DataShare.Helpers
             };
         }
 
-        public static PSInvitation ToPsObject(this Invitation invitation)
+        public static PSDataShareInvitation ToPsObject(this Invitation invitation)
         {
-            return new PSInvitation
+            return new PSDataShareInvitation
             {
                 Id = invitation.Id,
                 Name = invitation.Name,
@@ -114,9 +114,9 @@ namespace Microsoft.Azure.Commands.DataShare.Helpers
             };
         }
 
-        public static PSShareSubscription ToPsObject(this ShareSubscription shareSubscription)
+        public static PSDataShareSubscription ToPsObject(this ShareSubscription shareSubscription)
         {
-            return new PSShareSubscription
+            return new PSDataShareSubscription
             {
                 Id = shareSubscription.Id,
                 Name = shareSubscription.Name,
@@ -137,9 +137,9 @@ namespace Microsoft.Azure.Commands.DataShare.Helpers
             };
         }
 
-        public static PSConsumerInvitation ToPsObject(this ConsumerInvitation consumerInvitation)
+        public static PSDataShareConsumerInvitation ToPsObject(this ConsumerInvitation consumerInvitation)
         {
-            return new PSConsumerInvitation
+            return new PSDataShareConsumerInvitation
             {
                 Id = consumerInvitation.Id,
                 Name = consumerInvitation.Name,
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Commands.DataShare.Helpers
             };
         }
 
-        public static PSDataSet ToPsObject(this DataSet dataSet)
+        public static PSDataShareDataSet ToPsObject(this DataSet dataSet)
         {
             switch (dataSet)
             {
@@ -427,9 +427,9 @@ namespace Microsoft.Azure.Commands.DataShare.Helpers
             };
         }
 
-        public static PSProviderShareSubscription ToPsObject(this ProviderShareSubscription providerShareSubscription)
+        public static PSDataShareProviderShareSubscription ToPsObject(this ProviderShareSubscription providerShareSubscription)
         {
-            return new PSProviderShareSubscription
+            return new PSDataShareProviderShareSubscription
             {
                 Id = providerShareSubscription.Id,
                 Name = providerShareSubscription.Name,
@@ -444,11 +444,11 @@ namespace Microsoft.Azure.Commands.DataShare.Helpers
             };
         }
 
-        public static PSTrigger ToPsObject(this ScheduledTrigger trigger)
+        public static PSDataShareTrigger ToPsObject(this ScheduledTrigger trigger)
         {
             var parsedResourceId = new ResourceIdentifier(trigger.Id);
 
-            return new PSTrigger
+            return new PSDataShareTrigger
             {
                 Id = trigger.Id,
                 Name = trigger.Name,
@@ -465,9 +465,9 @@ namespace Microsoft.Azure.Commands.DataShare.Helpers
             };
         }
 
-        public static PSShareSubscriptionSynchronization ToPsObject(this ShareSubscriptionSynchronization sync)
+        public static PSDataShareSubscriptionSynchronization ToPsObject(this ShareSubscriptionSynchronization sync)
         {
-            return new PSShareSubscriptionSynchronization
+            return new PSDataShareSubscriptionSynchronization
             {
                 durationMs = sync.DurationMs,
                 startTime = sync.StartTime,
@@ -478,9 +478,9 @@ namespace Microsoft.Azure.Commands.DataShare.Helpers
             };
         }
 
-        public static PSShareSynchronization ToPsObject(this ShareSynchronization shareSynchronization)
+        public static PSDataShareSynchronization ToPsObject(this ShareSynchronization shareSynchronization)
         {
-            return new PSShareSynchronization
+            return new PSDataShareSynchronization
             {
                 Company = shareSynchronization.Company,
                 DurationMs = shareSynchronization.DurationMs,
@@ -492,9 +492,9 @@ namespace Microsoft.Azure.Commands.DataShare.Helpers
             };
         }
 
-        public static PSSynchronizationDetails ToPsObject(this SynchronizationDetails synchronizationDetails)
+        public static PSDataShareSynchronizationDetails ToPsObject(this SynchronizationDetails synchronizationDetails)
         {
-            return new PSSynchronizationDetails
+            return new PSDataShareSynchronizationDetails
             {
                 Name = synchronizationDetails.Name,
                 DataSetId = synchronizationDetails.DataSetId,
@@ -511,9 +511,9 @@ namespace Microsoft.Azure.Commands.DataShare.Helpers
             };
         }
 
-        public static PSSourceDataSet ToPsObject(this ConsumerSourceDataSet sourceDataSet)
+        public static PSDataShareSourceDataSet ToPsObject(this ConsumerSourceDataSet sourceDataSet)
         {
-            return new PSSourceDataSet
+            return new PSDataShareSourceDataSet
             {
                 Name = sourceDataSet.Name,
                 Id = sourceDataSet.Id,

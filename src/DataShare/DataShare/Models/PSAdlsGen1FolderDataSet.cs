@@ -15,7 +15,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models
 {
     /// <inheritdoc />
-    public class PSAdlsGen1FolderDataSet : PSDataSet
+    public class PSAdlsGen1FolderDataSet : PSDataShareDataSet
     {
         public string FolderPath { get; set; }
     }

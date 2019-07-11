@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.DataShare.Invitation
             ValueFromPipeline = true,
             HelpMessage = "Azure data share invitation object")]
         [ValidateNotNullOrEmpty]
-        public PSInvitation Invitation { get; set; }
+        public PSDataShareInvitation Invitation { get; set; }
 
         [Parameter(
             Mandatory = false,

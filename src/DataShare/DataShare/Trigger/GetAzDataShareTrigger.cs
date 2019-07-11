@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.DataShare.Trigger
     /// Defines the Get-AzDataShareTrigger cmdlet.
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataShareTrigger", DefaultParameterSetName = ParameterSetNames.FieldsParameterSet),
-     OutputType(typeof(PSTrigger))]
+     OutputType(typeof(PSDataShareTrigger))]
     public class GetAzDataShareTrigger : AzureDataShareCmdletBase
     {
         /// <summary>

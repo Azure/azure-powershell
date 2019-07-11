@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.DataShare.SynchronizationSetting
     [Cmdlet("Get",
             ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataShareSynchronizationSetting",
             DefaultParameterSetName = ParameterSetNames.FieldsParameterSet),
-            OutputType(typeof(PSSynchronizationSetting))]
+            OutputType(typeof(PSDataShareSynchronizationSetting))]
     public class GetAzDataShareSynchronizationSetting : AzureDataShareCmdletBase
     {
 

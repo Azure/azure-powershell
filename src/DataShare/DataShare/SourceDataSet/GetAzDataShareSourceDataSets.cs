@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.DataShare.SourceDataSet
          "Get",
          ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataShareSourceDataSets",
          DefaultParameterSetName = ParameterSetNames.FieldsParameterSet),
-     OutputType(typeof(PSSourceDataSet))]
+     OutputType(typeof(PSDataShareSourceDataSet))]
     public class GetAzDataShareSourceDataSets : AzureDataShareCmdletBase
     {
         /// <summary>
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.DataShare.SourceDataSet
                     nextPageLink = sourceDataSets.NextPageLink;
                 } while (nextPageLink != null);
 
-                IEnumerable<PSSourceDataSet> dataSetsInShareSubscription =
+                IEnumerable<PSDataShareSourceDataSet> dataSetsInShareSubscription =
                     consumerSourceDataSetList.Select(dataSet => dataSet.ToPsObject());
                 this.WriteObject(dataSetsInShareSubscription, true);
 

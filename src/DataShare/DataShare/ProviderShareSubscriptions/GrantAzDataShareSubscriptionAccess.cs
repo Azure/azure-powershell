@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.DataShare.ProviderShareSubscription
     /// </summary>
     [Cmdlet("Grant", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataShareSubscriptionAccess", DefaultParameterSetName = ParameterSetNames.FieldsParameterSet,
          SupportsShouldProcess = true),
-     OutputType(typeof(PSProviderShareSubscription))]
+     OutputType(typeof(PSDataShareProviderShareSubscription))]
     public class GrantAzDataShareSubscriptionAccess : AzureDataShareCmdletBase
     {
         /// <summary>

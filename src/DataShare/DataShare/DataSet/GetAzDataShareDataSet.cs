@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.DataShare.DataSet
     /// Defines Get-AzDataShareSet cmdlets.
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataShareDataSet", DefaultParameterSetName = ParameterSetNames.FieldsParameterSet),
-     OutputType(typeof(PSDataSet))]
+     OutputType(typeof(PSDataShareDataSet))]
     public class GetAzDataShareDataSet : AzureDataShareCmdletBase
     {
         /// <summary>
@@ -115,7 +115,6 @@ namespace Microsoft.Azure.Commands.DataShare.DataSet
                         this.ShareName,
                         this.Name);
 
-
                     this.WriteObject(dataSet.ToPsObject());
                 }
                 catch (DataShareErrorException ex) when (ex.Response.StatusCode.Equals(HttpStatusCode.NotFound))
@@ -139,7 +138,7 @@ namespace Microsoft.Azure.Commands.DataShare.DataSet
                     nextPageLink = dataSets.NextPageLink;
                 } while (nextPageLink != null);
 
-                IEnumerable<PSDataSet> datasetsInShare = dataSetList.Select(dataSet => dataSet.ToPsObject());
+                IEnumerable<PSDataShareDataSet> datasetsInShare = dataSetList.Select(dataSet => dataSet.ToPsObject());
                 this.WriteObject(datasetsInShare, true);
             }
         }

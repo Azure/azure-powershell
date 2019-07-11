@@ -15,7 +15,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models
 {
     /// <inheritdoc />
-    public class PSBlobFolderDataSet : PSDataSet
+    public class PSBlobFolderDataSet : PSDataShareDataSet
     {
         public string ContainerName { get; set; }
         public string Prefix { get; set; }

@@ -14,37 +14,17 @@
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models
 {
-    using Microsoft.Azure.Commands.DataShare.Models;
     using System;
+    using Microsoft.Azure.Commands.DataShare.Models;
 
-    /// <summary>
-    /// Azure Data Share Synchronization Settings
-    /// </summary>
-    public class PSSynchronizationSetting : PSResource
+    public class PSDataShareProviderShareSubscription : PSResource
     {
-        /// <summary>
-        /// The time between scheduled synchronizations
-        /// </summary>
-        public string RecurrenceInterval { get; set; }
-
-        /// <summary>
-        /// The start time for the first synchronization
-        /// </summary>
-        public DateTime? SynchronizationTime { get; set; }
-
-        /// <summary>
-        /// The provisioning state for this synchronization setting
-        /// </summary>
-        public PSProvisioningState ProvisioningState { get; set; }
-
-        /// <summary>
-        /// The date-time the settings were created
-        /// </summary>
+        public string Company { get; set; }
         public DateTime? CreatedAt { get; set; }
-
-        /// <summary>
-        /// The person that created the settings
-        /// </summary>
         public string CreatedBy { get; set; }
+        public DateTime? SharedAt { get; set; }
+        public string SharedBy { get; set; }
+        public string ShareSubscriptionObjectId { get; set; }
+        public string ShareSubscriptionStatus { get; set; }
     }
 }

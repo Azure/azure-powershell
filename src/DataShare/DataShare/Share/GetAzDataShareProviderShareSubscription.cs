@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.DataShare.Share
     [Cmdlet(
          "Get",
          Commands.ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataShareProviderShareSubscription", DefaultParameterSetName = ParameterSetNames.FieldsParameterSet),
-     OutputType(typeof(PSProviderShareSubscription))]
+     OutputType(typeof(PSDataShareProviderShareSubscription))]
     public class GetAzDataShareProviderShareSubscription : AzureDataShareCmdletBase
     {
         /// <summary>
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Commands.DataShare.Share
                     nextPageLink = providerShareSubscriptionPage.NextPageLink;
                 } while (nextPageLink != null);
 
-                IEnumerable<PSProviderShareSubscription> providerShareSubscriptions = providerShareSubscriptionList.Select(
+                IEnumerable<PSDataShareProviderShareSubscription> providerShareSubscriptions = providerShareSubscriptionList.Select(
                     providerShareSubscription => providerShareSubscription.ToPsObject());
                 this.WriteObject(providerShareSubscriptions.ToArray(), true);
             }

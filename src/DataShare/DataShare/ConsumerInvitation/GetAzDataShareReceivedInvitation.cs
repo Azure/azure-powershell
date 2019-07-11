@@ -20,8 +20,10 @@ namespace Microsoft.Azure.Commands.DataShare.ConsumerInvitation
     using System.Net;
     using Microsoft.Azure.Commands.DataShare.Common;
     using Microsoft.Azure.Commands.DataShare.Helpers;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.DataShare;
     using Microsoft.Azure.Management.DataShare.Models;
+    using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Extensions;
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models;
     using Microsoft.Rest.Azure;
 
@@ -31,7 +33,7 @@ namespace Microsoft.Azure.Commands.DataShare.ConsumerInvitation
     [Cmdlet("Get",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataShareReceivedInvitation",
         DefaultParameterSetName = ParameterSetNames.FieldsParameterSet),
-     OutputType(typeof(PSShare))]
+     OutputType(typeof(PSDataShare))]
     public class GetAzDataShareReceivedInvitation : AzureDataShareCmdletBase
     {
         /// <summary>
@@ -43,6 +45,7 @@ namespace Microsoft.Azure.Commands.DataShare.ConsumerInvitation
             HelpMessage = "Azure data share invitation location.",
             ParameterSetName = ParameterSetNames.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
+        [LocationCompleter(ResourceTypes.Invitation)]
         public string Location { get; set; }
 
         /// <summary>
@@ -89,7 +92,7 @@ namespace Microsoft.Azure.Commands.DataShare.ConsumerInvitation
 
                 } while (nextPageLink != null);
 
-                IEnumerable<PSConsumerInvitation> consumerInvitations = invitationList.Select(invitation => invitation.ToPsObject());
+                IEnumerable<PSDataShareConsumerInvitation> consumerInvitations = invitationList.Select(invitation => invitation.ToPsObject());
                 this.WriteObject(consumerInvitations, true);
             }
         }

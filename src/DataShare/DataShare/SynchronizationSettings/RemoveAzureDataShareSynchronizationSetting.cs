@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.DataShare.SynchronizationSetting
             ValueFromPipeline = true,
             HelpMessage = "The Azure Data Share Account.")]
         [ValidateNotNullOrEmpty]
-        public PSSynchronizationSetting SynchronizationSetting { get; set; }
+        public PSDataShareSynchronizationSetting SynchronizationSetting { get; set; }
 
         public override void ExecuteCmdlet()
         {

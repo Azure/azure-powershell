@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.DataShare.Share
     /// <summary>
     /// Defines the New-DataShare cmdlet.
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataShare", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSetNames.FieldsParameterSet), OutputType(typeof(PSShare))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataShare", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSetNames.FieldsParameterSet), OutputType(typeof(PSDataShare))]
     public class NewAzDataShare : AzureDataShareCmdletBase
     {
         /// <summary>

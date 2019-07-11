@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.DataShare.Trigger
          "New",
          ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataShareTrigger",
          SupportsShouldProcess = true,
-         DefaultParameterSetName = ParameterSetNames.FieldsParameterSet), OutputType(typeof(PSInvitation))]
+         DefaultParameterSetName = ParameterSetNames.FieldsParameterSet), OutputType(typeof(PSDataShareInvitation))]
     public class NewAzDataShareTrigger : AzureDataShareCmdletBase
     {
         /// <summary>
