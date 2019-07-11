@@ -60,6 +60,7 @@ namespace Microsoft.Azure.Commands.DataShare.SynchronizationSetting
             ParameterSetName = ParameterSetNames.FieldsParameterSet,
             HelpMessage = "Azure Data Share Account name")]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter(ResourceTypes.Account, "ResourceGroupName")]
         public string AccountName { get; set; }
 
         /// <summary>

@@ -65,6 +65,7 @@ namespace Microsoft.Azure.Commands.DataShare.DataSetMapping
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure data share account name",
             ParameterSetName = ParameterSetNames.AdlsGen2DataSetParameterSet)]
+        [ResourceNameCompleter(ResourceTypes.Account, "ResourceGroupName")]
         public string AccountName { get; set; }
 
         /// <summary>
