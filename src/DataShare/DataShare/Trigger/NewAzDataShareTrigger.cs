@@ -103,24 +103,13 @@ namespace Microsoft.Azure.Commands.DataShare.Trigger
         [ValidateNotNullOrEmpty]
         public DateTime SynchronizationTime { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Return object (if specified).")]
-        public SwitchParameter PassThru { get; set; }
-
-        [Parameter()]
-        public SwitchParameter Force { get; set; }
-
         [Parameter]
         public SwitchParameter AsJob { get; set; }
 
         public override void ExecuteCmdlet()
         {
             this.ConfirmAction(
-                this.Force,
                 string.Format(Resources.ResourceCreateConfirmation, this.Name),
-                this.MyInvocation.InvocationName,
                 this.Name,
                 this.CreateNewTrigger);
         }

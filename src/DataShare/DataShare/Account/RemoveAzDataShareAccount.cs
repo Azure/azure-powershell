@@ -91,9 +91,6 @@ namespace Microsoft.Azure.Commands.DataShare.Account
             HelpMessage = "Return object (if specified).")]
         public SwitchParameter PassThru { get; set; }
 
-        [Parameter()]
-        public SwitchParameter Force { get; set; }
-
         [Parameter]
         public SwitchParameter AsJob { get; set; }
 
@@ -110,12 +107,6 @@ namespace Microsoft.Azure.Commands.DataShare.Account
 
             if (this.ParameterSetName.Equals(ParameterSetNames.ObjectParameterSet, StringComparison.OrdinalIgnoreCase))
             {
-                if (this.InputObject == null)
-                {
-                    throw new PSArgumentNullException(
-                        string.Format(CultureInfo.InvariantCulture, Resources.ResourceArgumentInvalid));
-                }
-
                 resourceId = this.InputObject.Id;
             }
 
@@ -127,9 +118,7 @@ namespace Microsoft.Azure.Commands.DataShare.Account
             }
 
             this.ConfirmAction(
-                this.Force,
                 string.Format(Resources.ResourceRemovalConfirmation, this.Name),
-                string.Format(Resources.ResourceRemovedMessage, this.Name),
                 this.Name,
                 () => this.DataShareManagementClient.Accounts.Delete(this.ResourceGroupName, this.Name));
 

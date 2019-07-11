@@ -24,13 +24,16 @@ namespace Microsoft.Azure.Commands.DataShare.SynchronizationSetting
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Extensions;
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models;
- 
+
     /// <summary>
     /// Defines the New-AzDataShareSynchronizationSetting cmdlet.
     /// </summary>
-    [Cmdlet("New",
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataShareSynchronizationSetting", DefaultParameterSetName = ParameterSetNames.FieldsParameterSet),
-        OutputType(typeof(PSDataShareSynchronizationSetting))]
+    [Cmdlet(
+         "New",
+         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataShareSynchronizationSetting",
+         DefaultParameterSetName = ParameterSetNames.FieldsParameterSet,
+         SupportsShouldProcess = true),
+     OutputType(typeof(PSDataShareSynchronizationSetting))]
     public class NewAzDataShareSynchronizationSetting : AzureDataShareCmdletBase
     {
         /// <summary>

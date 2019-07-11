@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.DataShare.SynchronizationSetting
          ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataShareSynchronizationSetting",
          DefaultParameterSetName = ParameterSetNames.FieldsParameterSet,
          SupportsShouldProcess = true),
-     OutputType(typeof(Boolean))]
+     OutputType(typeof(bool))]
     public class RemoveAzureDataShareSynchronizationSetting : AzureDataShareCmdletBase
     {
         /// <summary>
@@ -109,18 +109,15 @@ namespace Microsoft.Azure.Commands.DataShare.SynchronizationSetting
         public SwitchParameter PassThru { get; set; }
 
         [Parameter]
-        public SwitchParameter Force { get; set; }
-
-        [Parameter]
         public SwitchParameter AsJob { get; set; }
 
         [Parameter(
             Mandatory = true,
             ParameterSetName = ParameterSetNames.ObjectParameterSet,
             ValueFromPipeline = true,
-            HelpMessage = "The Azure Data Share Account.")]
+            HelpMessage = "The Azure Data Share Synchronization setting.")]
         [ValidateNotNullOrEmpty]
-        public PSDataShareSynchronizationSetting SynchronizationSetting { get; set; }
+        public PSDataShareSynchronizationSetting InputObject { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -135,22 +132,16 @@ namespace Microsoft.Azure.Commands.DataShare.SynchronizationSetting
 
             if (ParameterSetNames.ObjectParameterSet.Equals(this.ParameterSetName, StringComparison.OrdinalIgnoreCase))
             {
-                if (this.SynchronizationSetting == null)
-                {
-                    throw new PSArgumentNullException(
-                        string.Format(CultureInfo.InvariantCulture, Resources.ResourceArgumentInvalid));
-                }
-
-                resourceId = this.SynchronizationSetting.Id;
+                resourceId = this.InputObject.Id;
             }
 
             if (!string.IsNullOrEmpty(resourceId))
             {
-                var parsedResoureceIdentifier = new ResourceIdentifier(resourceId);
-                this.ResourceGroupName = parsedResoureceIdentifier.ResourceGroupName;
-                this.AccountName = parsedResoureceIdentifier.GetAccountName();
-                this.ShareName = parsedResoureceIdentifier.GetShareName();
-                this.Name = parsedResoureceIdentifier.GetSynchronizationSettingName();
+                var parsedResourceIdentifier = new ResourceIdentifier(resourceId);
+                this.ResourceGroupName = parsedResourceIdentifier.ResourceGroupName;
+                this.AccountName = parsedResourceIdentifier.GetAccountName();
+                this.ShareName = parsedResourceIdentifier.GetShareName();
+                this.Name = parsedResourceIdentifier.GetSynchronizationSettingName();
             }
 
             var func = (Func<string, string, string, string, OperationResponse>)this.DataShareManagementClient
@@ -158,9 +149,7 @@ namespace Microsoft.Azure.Commands.DataShare.SynchronizationSetting
 
             void Action() => func(this.ResourceGroupName, this.AccountName, this.ShareName, this.Name);
             this.ConfirmAction(
-                this.Force,
                 string.Format(Resources.ResourceRemovalConfirmation, this.Name),
-                string.Format(Resources.ResourceRemovedMessage, this.Name),
                 this.Name,
                 Action);
 

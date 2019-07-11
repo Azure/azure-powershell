@@ -102,9 +102,6 @@ namespace Microsoft.Azure.Commands.DataShare.Synchronization
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
-        [Parameter()]
-        public SwitchParameter Force { get; set; }
-
         [Parameter]
         public SwitchParameter AsJob { get; set; }
 
@@ -113,9 +110,7 @@ namespace Microsoft.Azure.Commands.DataShare.Synchronization
             this.SetParametersIfNeeded();
 
             this.ConfirmAction(
-                this.Force,
                 "Stop synchronization",
-                this.MyInvocation.InvocationName,
                 this.ShareSubscriptionName,
                 this.StopSynchronization);
         }
