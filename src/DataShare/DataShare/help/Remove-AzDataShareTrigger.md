@@ -1,0 +1,245 @@
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.DataShare.dll-Help.xml
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datashare/remove-azdatasharetrigger
+schema: 2.0.0
+---
+
+# Remove-AzDataShareTrigger
+
+## SYNOPSIS
+removes a trigger
+
+## SYNTAX
+
+### ByFieldsParameterSet (Default)
+```
+Remove-AzDataShareTrigger -ResourceGroupName <String> -AccountName <String> [-ShareSubscriptionName <String>]
+ -Name <String> [-PassThru] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+```
+
+### ByResourceIdParameterSet
+```
+Remove-AzDataShareTrigger -ResourceId <String> [-PassThru] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+```
+
+### ByObjectParameterSet
+```
+Remove-AzDataShareTrigger -Trigger <PSTrigger> [-PassThru] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+```
+
+## DESCRIPTION
+The **Remove-AzDataShareTrigger** cmdlet removes a datashare trigger
+
+## EXAMPLES
+
+### Example 1
+```
+PS C:\> Remove-AzDataShareTrigger -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareSubscriptionName "AdsShareSubscription" -Name "AdsTrigger"
+
+Are you sure you want to remove trigger "AdsTrigger"? 
+[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
+```
+
+This commands removes a trigger named AdsTrigger from share subscription AdsShareSubscription. 
+
+## PARAMETERS
+
+### -AccountName
+Azure data share account name
+
+```yaml
+Type: String
+Parameter Sets: ByFieldsParameterSet
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -AsJob
+{{Fill AsJob Description}}
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Force
+{{Fill Force Description}}
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Azure data share trigger name
+
+```yaml
+Type: String
+Parameter Sets: ByFieldsParameterSet
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Return object (if specified).
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The resource group name of the azure data share account
+
+```yaml
+Type: String
+Parameter Sets: ByFieldsParameterSet
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+The resource id of azure data share trigger
+
+```yaml
+Type: String
+Parameter Sets: ByResourceIdParameterSet
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ShareSubscriptionName
+Azure data share subscription name
+
+```yaml
+Type: String
+Parameter Sets: ByFieldsParameterSet
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Trigger
+Azure data share trigger object
+
+```yaml
+Type: PSTrigger
+Parameter Sets: ByObjectParameterSet
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+## INPUTS
+
+### System.String
+Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSTrigger
+System.Management.Automation.SwitchParameter
+
+
+## OUTPUTS
+
+### System.Boolean
+
+
+## NOTES
+
+## RELATED LINKS
+

@@ -1,0 +1,155 @@
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.DataShare.dll-Help.xml
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datashare/grant-azdatasharesubscriptionaccess
+schema: 2.0.0
+---
+
+# Grant-AzDataShareSubscriptionAccess
+
+## SYNOPSIS
+Grants a revoked share subscription access to source share
+
+## SYNTAX
+
+### ByFieldsParameterSet (Default)
+```
+Grant-AzDataShareSubscriptionAccess -ResourceGroupName <String> -AccountName <String> [-ShareName <String>]
+ -ShareSubscriptionId <String> [-DefaultProfile <IAzureContextContainer>]
+```
+
+### ByResourceIdParameterSet
+```
+Grant-AzDataShareSubscriptionAccess -ShareSubscriptionId <String> -ResourceId <String>
+ [-DefaultProfile <IAzureContextContainer>]
+```
+
+## DESCRIPTION
+The **Grant-AzDataShareSubscriptionAccess** cmdlet grants a share subscription access to source share
+
+## EXAMPLES
+
+### Example 1
+```
+PS C:\> Grant-AzDataShareSubscriptionAccess -ResourceGroupName "ADS" -AccountName "WikiAdsAccount" -ShareName "AdsShare" -ShareSubscriptionId 8ee6e6fd-b4a1-49a4-bb66-f187f38e0e12
+
+Company                   : ADS
+CreatedAt                 : 6/15/2019 1:02:28 AM
+CreatedBy                 : abc@microsoft.com
+SharedAt                  : 6/15/2019 12:08:48 AM
+SharedBy                  : abc@microsoft.com
+ShareSubscriptionObjectId : 8ee6e6fd-b4a1-49a4-bb66-f187f38e0e12
+ShareSubscriptionStatus   : Active
+Id                        : /subscriptions/1834da9b-787a-44f6-ae81-60707ab8c957/resourceGroups/ADS/providers/Microsoft.DataShare/accounts/WikiAdsAccount/shares/AdsShare/shareSubscriptions/8ee6e6fd-b4a1-49a4-bb66-f187f38e0e12
+Name                      : AdsShare
+Type                      : Microsoft.DataShare/ShareSubscriptions
+
+```
+
+Grants access to share subscription identified by id 8ee6e6fd-b4a1-49a4-bb66-f187f38e0e12
+
+## PARAMETERS
+
+### -AccountName
+Azure data share account name
+
+```yaml
+Type: String
+Parameter Sets: ByFieldsParameterSet
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The resource group name of the azure data share account
+
+```yaml
+Type: String
+Parameter Sets: ByFieldsParameterSet
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+The resource id of the azure data share
+
+```yaml
+Type: String
+Parameter Sets: ByResourceIdParameterSet
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ShareName
+Azure data share name
+
+```yaml
+Type: String
+Parameter Sets: ByFieldsParameterSet
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ShareSubscriptionId
+The share subscription id of the provider share subscription
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+## INPUTS
+
+### System.String
+
+
+## OUTPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSProviderShareSubscription
+
+
+## NOTES
+
+## RELATED LINKS
+
