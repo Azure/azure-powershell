@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzDataShareSubscriptionSynchronization
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets information about synchronization runs in share subscription.
 
 ## SYNTAX
 
@@ -23,16 +23,24 @@ Get-AzDataShareSubscriptionSynchronization -ResourceId <String> [-DefaultProfile
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzDataShareSubscriptionSynchronization** cmdlet provides informaiton about all synchronization runs in a share subscription under a data share account on the consumer.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzDataShareSubscriptionSynchronization -ResourceGroupName "ADS" -AccountName "WikiAds"  -ShareSubscriptionName "AdsShareSubscription"
+
+durationMs        : 83660
+endTime           : 7/10/2019 9:01:23 AM
+message           :
+startTime         : 7/10/2019 9:00:04 AM
+status            : Succeeded
+synchronizationId : b087e1a5-9144-4e1d-86d1-2a4adcf551d4
+
 ```
 
-{{ Add example description here }}
+This command provides information about all the synchronization runs for a share subscription AdsShareSubscription under data share account WikiAds.
 
 ## PARAMETERS
 

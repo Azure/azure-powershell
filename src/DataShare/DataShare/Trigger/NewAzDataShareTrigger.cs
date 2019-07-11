@@ -135,10 +135,7 @@ namespace Microsoft.Azure.Commands.DataShare.Trigger
                 this.Name,
                 triggerModel) as ScheduledTrigger;
 
-            if (this.PassThru)
-            {
-                this.WriteObject(trigger.ToPsObject());
-            }
+            this.WriteObject(trigger.ToPsObject());
         }
     }
 }

@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzDataShareSubscription
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates a new share subscription.
 
 ## SYNTAX
 
@@ -17,16 +17,30 @@ New-AzDataShareSubscription -ResourceGroupName <String> -AccountName <String> -N
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **New-AzDataShareSubscription** cmdlet creates a share subscription in specified data share account and invitation id.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzDataShareSubscription -ResourceGroupName "ADS" -AccountName "WikiAds" -Name "AdsShareSubscription" -InvitationId "167e06ff-567f-4bc7-be0c-645a6de710f3"
+CreatedAt               : 6/30/2019 12:42:12 AM
+CreatedBy               : adstest@microsoft.com
+InvitationId            : 167e06ff-567f-4bc7-be0c-645a6de710f3
+ProvisioningState       : Succeeded
+ShareName               : AdsShare
+ShareSender             : adsprovider@microsoft.com
+ShareSenderCompanyName  : ADS Company
+ShareDescription        : Test description  
+ShareTerms              : Test terms of use
+ShareSubscriptionStatus : Active
+ShareKind               : CopyBased
+Id                      : /subscriptions/1834da9b-787a-44f6-ae81-60707ab8c957/resourceGroups/ADS/providers/Microsoft.DataShare/accounts/WikiAds/shareSubscriptions/AdsShareSubscription
+Name                    : AdsShareSubscription
+Type                    : Microsoft.DataShare/ShareSubscriptions
 ```
 
-{{ Add example description here }}
+This commands creates a new share subscription AdsShareSubscription for invitaionId under data share account WikiAds.
 
 ## PARAMETERS
 

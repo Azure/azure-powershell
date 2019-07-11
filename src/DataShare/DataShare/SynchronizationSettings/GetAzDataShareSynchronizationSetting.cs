@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Commands.DataShare.SynchronizationSetting
     using System.Net;
     using Microsoft.Azure.Commands.DataShare.Common;
     using Microsoft.Azure.Commands.DataShare.Helpers;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.DataShare;
     using Microsoft.Azure.Management.DataShare.Models;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
@@ -44,6 +45,7 @@ namespace Microsoft.Azure.Commands.DataShare.SynchronizationSetting
             HelpMessage = "Resource group name of azure data share account",
             ParameterSetName = ParameterSetNames.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
+        [ResourceGroupCompleter()]
         public string ResourceGroupName { get; set; }
 
         /// <summary>

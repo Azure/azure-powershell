@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzDataShareSynchronizationDetails
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets information about synchronization details for a share.
 
 ## SYNTAX
 
@@ -24,16 +24,30 @@ Get-AzDataShareSynchronizationDetails -SynchronizationId <String> -ResourceId <S
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzDataShareSynchronizationDetails** cmdlet provides details of the synchronization initiated for a share.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzDataShareSynchronizationDetails -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareName "AdsShare" -SynchronizationId "02a17faa-4498-45ee-a884-162180af9251"
+
+DataSetId    : d2411889-5357-4ca8-8d65-9363e46ef2ed
+DataSetType  : BlobFolder
+EndTime      : 7/8/2019 10:24:27 PM
+StartTime    : 7/8/2019 10:23:09 PM
+Status       : Succeeded
+DurationMs   : 78870
+FilesRead    : 1
+FilesWritten : 1
+SizeRead     : 2779935
+SizeWritten  : 2779935
+Name         : 16d5161b-2b3f-4d90-b074-13ad7121bcc7
+Message      :
+
 ```
 
-{{ Add example description here }}
+This command provides information about the synchronization details of all the data sets corresponding to the provided synchronization id.
 
 ## PARAMETERS
 

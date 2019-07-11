@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzDataShareInvitation
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates an invitation for share.
 
 ## SYNTAX
 
@@ -30,16 +30,26 @@ New-AzDataShareInvitation -ResourceGroupName <String> -AccountName <String> -Sha
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **New-AzDataShareInvitation** cmdlet sends an invitation to the target consumer with information about the provider share. 
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzDataShareInvitation -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareName "AdsShare" -Name "AdsInvitation" -TargetEmail "adstest@microsoft.com"
+InvitationId     : 167e06ff-567f-4bc7-be0c-645a6de710f3
+InvitationStatus : Pending
+Sender           : adsprovider@microsoft.com
+SentAt           : 7/8/2019 10:47:10 PM
+TargetEmail      : adstest@microsoft.com
+TargetObjectId   :
+TargetTenantId   :
+Id               : /subscriptions/1834da9b-787a-44f6-ae81-60707ab8c957/resourceGroups/ADS/        providers/Microsoft.DataShare/accounts/WikiAds/shares/AdsShare/invitations/AdsInvitation
+Name             : AdsInvitation
+Type             : Microsoft.DataShare/Invitations
 ```
 
-{{ Add example description here }}
+This command creates an invitation AdsInvitation for share AdsShare and sends it to target email adstest@micosoft.com.
 
 ## PARAMETERS
 

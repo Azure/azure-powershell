@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzDataShareTrigger
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets information about a trigger in share subscription.
 
 ## SYNTAX
 
@@ -23,16 +23,28 @@ Get-AzDataShareTrigger -ResourceId <String> [-DefaultProfile <IAzureContextConta
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzDataShareTrigger** cmdlet gets information about trigger for share subscription under data share account.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzDataShareTrigger -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareSubscriptionName "AdsShareSubscription" -Name "AdsTrigger"
+
+CreatedAt           : 7/10/2019 12:16:34 AM
+CreatedBy           : Ads test
+ProvisioningState   : Succeeded
+RecurrenceInterval  : Day
+SynchronizationMode : Incremental
+SynchronizationTime : 7/9/2019 9:00:00 AM
+TriggerStatus       : Active
+Id                  : /subscriptions/1834da9b-787a-44f6-ae81-60707ab8c957/resourceGroups/ADS/providers/Microsoft.DataShare/accounts/WikiAds/shareSubscriptions/AdsShareSubscription/triggers/AdsTrigger
+Name                : AdsTrigger
+Type                : Microsoft.DataShare/Triggers
+
 ```
 
-{{ Add example description here }}
+This command gets information about trigger AdsTrigger for share subscription AdsShareSubscription under data share account WikiAds.
 
 ## PARAMETERS
 

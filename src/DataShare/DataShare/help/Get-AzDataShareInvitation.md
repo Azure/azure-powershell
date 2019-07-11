@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzDataShareInvitation
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets information invitation of data share.
 
 ## SYNTAX
 
@@ -23,16 +23,27 @@ Get-AzDataShareInvitation -ResourceId <String> [-DefaultProfile <IAzureContextCo
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzDataShareInvitation** cmdlet gets information on invitations added in data share. If you specify the name of the invitation, this cmdlet gets information about the invitation. If you do not specify a name, this cmdlet gets information about all the invitations in a share.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzDataShareInvitation -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareName "AdsShare" -Name "AdsInvitation"
+
+InvitationId     : 167e06ff-567f-4bc7-be0c-645a6de710f3
+InvitationStatus : Pending
+Sender           : adsprovider@microsoft.com
+SentAt           : 7/8/2019 10:47:10 PM
+TargetEmail      : adstest@microsoft.com
+TargetObjectId   :
+TargetTenantId   :
+Id               : /subscriptions/1834da9b-787a-44f6-ae81-60707ab8c957/resourceGroups/ADS/providers/Microsoft.DataShare/accounts/WikiAds/shares/AdsShare/invitations/AdsInvitation
+Name             : AdsInvitation
+Type             : Microsoft.DataShare/Invitations
 ```
 
-{{ Add example description here }}
+This commands provides information about invitation AdsInvitation present in data share AdsShare.
 
 ## PARAMETERS
 

@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzDataShareSynchronizationSetting
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets information about synchronization setting on a share.
 
 ## SYNTAX
 
@@ -23,16 +23,27 @@ Get-AzDataShareSynchronizationSetting -ResourceId <String> [-DefaultProfile <IAz
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzDataShareSynchronizationSetting** cmdlet provides information about synchronization enabled on a share. 
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzDataShareSynchronizationSetting -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareName "AdsShare" -Name "ShareSynchronization"
+
+RecurrenceInterval  : Day
+SynchronizationTime : 7/9/2019 9:00:00 AM
+ProvisioningState   : Succeeded
+CreatedAt           : 7/10/2019 12:01:08 AM
+CreatedBy           : ADS Test
+Id                  : /subscriptions/1834da9b-787a-44f6-ae81-60707ab8c957/resourceGroups/ADS/providers/Microsoft.
+                      DataShare/accounts/WikiAds/shares/AdShare/synchronizationSettings/ShareSynchronization
+Name                : ShareSynchronization
+Type                : Microsoft.DataShare/SynchronizationSettings
+
 ```
 
-{{ Add example description here }}
+This command provides information about synchronization ShareSynchronization enabled on share AdsShare under data share account WikiAds.
 
 ## PARAMETERS
 

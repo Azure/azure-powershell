@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzDataShareDataSet
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Adds data sets to azure data share.
 
 ## SYNTAX
 
@@ -38,16 +38,24 @@ New-AzDataShareDataSet -ResourceGroupName <String> -AccountName <String> -ShareN
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **New-AzDataShareDataSet** cmdlet add data sets in azure data share of data share account. You can add data sets of type Blob, ADLS Gen2 and ADLS Gen1.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzDataShareDataSet -ResourceroupName "ADS" -AccountName "WikiAds" -ShareName "AdsShare" -Name "AdsDataSet" -StorageAccountResourceId "/subscriptions/271cc6ec-e5fe-4813-83bd-8f3b04973e38/resourceGroups/ADS/providers/Microsoft.Storage/storageAccounts/AdsStorage" -Container "AdsContainer"
+ContainerName  : AdsContainer
+DataSetId      : d2411889-5357-4ca8-8d65-9363e46ef2ed
+ResourceGroup  : ADS
+SubscriptionId : 1834da9b-787a-44f6-ae81-60707ab8c957
+StorageAccount : AdsStorage
+Id             : /subscriptions/1834da9b-787a-44f6-ae81-60707ab8c957/resourceGroups/ADS/providers/Microsoft.DataShare/accounts/shelltest/shares/share4/dataSets/AdsDataSet
+Name           : AdsDataSet
+Type           : Microsoft.DataShare/DataSets
 ```
 
-{{ Add example description here }}
+This command adds a dataset named AdsDataSet of type blob container to azure data share AdsShare.
 
 ## PARAMETERS
 

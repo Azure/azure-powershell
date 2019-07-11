@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzDataShareSubscription
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets information about share subscription in data share account.
 
 ## SYNTAX
 
@@ -23,16 +23,32 @@ Get-AzDataShareSubscription -ResourceId <String> [-DefaultProfile <IAzureContext
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzDataShareSubscription** cmdlet provides information about share subscription in a data share account. If share subscription name is provided, the cmdlet gives information about the particular share subscription. Otherwise, the cmdlet provides a list of share subscriptions in the data share account.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzDataShareSubscription -ResourceGroupName "ADS" -AccountName "WikiAds" -Name "AdsShareSubscription"
+
+CreatedAt               : 7/9/2019 12:32:53 AM
+CreatedBy               : adstest@microsoft.com
+InvitationId            : 0c14f5b6-0e22-49ab-8043-d6edad51db13
+ProvisioningState       : Succeeded
+ShareName               : AdsShare
+ShareSender             : adsprovider@microsoft.com
+ShareSenderCompanyName  : ADS Test
+ShareDescription        : Ads description
+ShareTerms              : Ads terms of use
+ShareSubscriptionStatus : Active
+ShareKind               : CopyBased
+Id                      : /subscriptions/1834da9b-787a-44f6-ae81-60707ab8c957/resourceGroups/ADS/providers/Microsoft.DataShare/accounts/WikiAds/shareSubscriptions/AdsShareSubscription
+Name                    : AdsShareSubscription
+Type                    : Microsoft.DataShare/ShareSubscriptions
+
 ```
 
-{{ Add example description here }}
+This command provides information about share subscription AdsShareSubscription in data share account WikiAds.
 
 ## PARAMETERS
 

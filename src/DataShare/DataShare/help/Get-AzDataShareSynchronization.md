@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzDataShareSynchronization
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets information about synchronization setting for a share.
 
 ## SYNTAX
 
@@ -23,16 +23,25 @@ Get-AzDataShareSynchronization -ResourceId <String> [-DefaultProfile <IAzureCont
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzDataShareSynchronization** cmdlet provides information about all the synchronization setting present in a share under a data share account.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzDataShareSynchronization -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareName "AdsShare"
+
+Company           : ADS Test
+DurationMs        : 107013
+EndTime           : 7/8/2019 11:53:18 PM
+Message           :
+StartTime         : 7/8/2019 11:51:34 PM
+Status            : Succeeded
+SynchronizationId : e6dc7080-6589-4628-8b50-8fc31b460089
+
 ```
 
-{{ Add example description here }}
+This commands provides information about all synchronization settings present in share AdsShare in data share account WikiAds.
 
 ## PARAMETERS
 
