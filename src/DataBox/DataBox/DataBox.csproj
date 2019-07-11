@@ -4,6 +4,8 @@
     <PsModuleName>DataBox</PsModuleName>
     <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.DataBox</AssemblyName>
     <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.DataBox</RootNamespace>
+    <SignAssembly>false</SignAssembly>
+    <DelaySign>true</DelaySign>
   </PropertyGroup>
 
   <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
