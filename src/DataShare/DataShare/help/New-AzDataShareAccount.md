@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzDataShareAccount
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates a azure data share account.
 
 ## SYNTAX
 
@@ -153,7 +153,7 @@ Accept wildcard characters: False
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSAccount
+### Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareAccount
 
 
 ## NOTES

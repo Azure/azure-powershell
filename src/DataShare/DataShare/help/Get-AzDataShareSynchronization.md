@@ -127,7 +127,7 @@ Accept wildcard characters: False
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSShareSynchronization
+### Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSynchronization
 
 
 ## NOTES

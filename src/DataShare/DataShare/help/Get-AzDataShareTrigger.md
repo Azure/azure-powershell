@@ -145,7 +145,7 @@ Accept wildcard characters: False
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSTrigger
+### Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareTrigger
 
 
 ## NOTES

@@ -126,7 +126,7 @@ Accept wildcard characters: False
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSSourceDataSet
+### Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSourceDataSet
 
 
 ## NOTES

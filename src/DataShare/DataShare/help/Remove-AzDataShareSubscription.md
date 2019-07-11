@@ -25,7 +25,7 @@ Remove-AzDataShareSubscription -ResourceId <String> [-PassThru] [-Force] [-AsJob
 
 ### ByObjectParameterSet
 ```
-Remove-AzDataShareSubscription -ShareSubscription <PSShareSubscription> [-PassThru] [-Force] [-AsJob]
+Remove-AzDataShareSubscription -ShareSubscription <PSDataShareSubscription> [-PassThru] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
 ```
 
@@ -169,7 +169,7 @@ Accept wildcard characters: False
 Azure data share subscription object
 
 ```yaml
-Type: PSShareSubscription
+Type: PSDataShareSubscription
 Parameter Sets: ByObjectParameterSet
 Aliases: 
 
@@ -214,7 +214,7 @@ Accept wildcard characters: False
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSShareSubscription
+Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSubscription
 System.Management.Automation.SwitchParameter
 
 
