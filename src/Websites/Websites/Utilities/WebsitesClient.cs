@@ -316,7 +316,6 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
 
             if (operatingSystem.Contains("windows"))
             {
-
                 // Validate if WSMAN Basic Authentication is enabled
                 bool isBasicAuthEnabled = ExecuteScriptAndGetVariableAsBool(cmdlet, "${0} = (Get-Item WSMAN:\\LocalHost\\Client\\Auth\\Basic -ErrorAction SilentlyContinue).Value", false);
 
