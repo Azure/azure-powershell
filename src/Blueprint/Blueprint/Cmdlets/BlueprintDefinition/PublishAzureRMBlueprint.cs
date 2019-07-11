@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         [Parameter(ParameterSetName = ParameterSetNames.PublishBlueprint, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ChangeNotes)]
         [ValidateLength(0,500)]
         [ValidateNotNullOrEmpty]
-        public string ChangeNotes { get; set; }
+        public string ChangeNote { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.PublishBlueprint, Mandatory = true, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.BlueprintObject)]
         [ValidateNotNullOrEmpty]
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                 {
                     // parameters property is placeholder here, backend strips this information and publishes the latest master. It is needed in the payload since swagger calls it required.
                     var publishedBlueprintObjForChangeNotes = new PublishedBlueprint(
-                        parameters: new Dictionary<string, ParameterDefinition>(), changeNotes: ChangeNotes);
+                        parameters: new Dictionary<string, ParameterDefinition>(), changeNotes: ChangeNote);
 
                     WriteObject(BlueprintClient.CreatePublishedBlueprint(Blueprint.Scope, Blueprint.Name, Version, publishedBlueprintObjForChangeNotes));
                 }
