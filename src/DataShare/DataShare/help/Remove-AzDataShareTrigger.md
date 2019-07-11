@@ -25,7 +25,7 @@ Remove-AzDataShareTrigger -ResourceId <String> [-PassThru] [-Force] [-AsJob]
 
 ### ByObjectParameterSet
 ```
-Remove-AzDataShareTrigger -Trigger <PSTrigger> [-PassThru] [-Force] [-AsJob]
+Remove-AzDataShareTrigger -Trigger <PSDataShareTrigger> [-PassThru] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
 ```
 
@@ -185,7 +185,7 @@ Accept wildcard characters: False
 Azure data share trigger object
 
 ```yaml
-Type: PSTrigger
+Type: PSDataShareTrigger
 Parameter Sets: ByObjectParameterSet
 Aliases: 
 
@@ -230,7 +230,7 @@ Accept wildcard characters: False
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSTrigger
+Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareTrigger
 System.Management.Automation.SwitchParameter
 
 

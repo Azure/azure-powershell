@@ -26,7 +26,7 @@ Remove-AzDataShareSynchronizationSetting -ResourceId <String> [-PassThru] [-Forc
 ### ByObjectParameterSet
 ```
 Remove-AzDataShareSynchronizationSetting [-PassThru] [-Force] [-AsJob]
- -SynchronizationSetting <PSSynchronizationSetting> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ -SynchronizationSetting <PSDataShareSynchronizationSetting> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm]
 ```
 
@@ -186,7 +186,7 @@ Accept wildcard characters: False
 The Azure Data Share Account.
 
 ```yaml
-Type: PSSynchronizationSetting
+Type: PSDataShareSynchronizationSetting
 Parameter Sets: ByObjectParameterSet
 Aliases: 
 
@@ -232,7 +232,7 @@ Accept wildcard characters: False
 
 ### System.String
 System.Management.Automation.SwitchParameter
-Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSSynchronizationSetting
+Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSynchronizationSetting
 
 
 ## OUTPUTS

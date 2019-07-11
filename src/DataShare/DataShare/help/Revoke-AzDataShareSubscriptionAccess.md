@@ -146,7 +146,7 @@ Accept wildcard characters: False
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSProviderShareSubscription
+### Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareProviderShareSubscription
 
 
 ## NOTES

@@ -256,7 +256,7 @@ Accept wildcard characters: False
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataSetMapping
+### Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareDataSetMapping
 
 
 ## NOTES

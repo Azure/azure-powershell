@@ -211,7 +211,7 @@ Accept wildcard characters: False
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSInvitation
+### Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareInvitation
 
 
 ## NOTES

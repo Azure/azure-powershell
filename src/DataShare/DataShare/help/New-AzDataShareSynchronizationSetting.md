@@ -152,7 +152,7 @@ System.DateTime
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSSynchronizationSetting
+### Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSynchronizationSetting
 
 
 ## NOTES

@@ -167,7 +167,7 @@ Accept wildcard characters: False
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSAccount
+### Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareAccount
 
 
 ## NOTES

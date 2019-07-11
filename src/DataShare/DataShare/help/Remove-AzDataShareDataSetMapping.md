@@ -26,7 +26,7 @@ Remove-AzDataShareDataSetMapping -ResourceId <String> [-PassThru] [-Force]
 
 ### ByObjectParameterSet
 ```
-Remove-AzDataShareDataSetMapping -DataSetMapping <PSDataSetMapping> [-PassThru] [-Force]
+Remove-AzDataShareDataSetMapping -DataSetMapping <PSDataShareDataSetMapping> [-PassThru] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
 ```
 
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 The azure data set mapping object
 
 ```yaml
-Type: PSDataSetMapping
+Type: PSDataShareDataSetMapping
 Parameter Sets: ByObjectParameterSet
 Aliases: 
 
@@ -215,7 +215,7 @@ Accept wildcard characters: False
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataSetMapping
+Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareDataSetMapping
 System.Management.Automation.SwitchParameter
 
 

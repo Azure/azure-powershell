@@ -25,7 +25,7 @@ Remove-AzDataShareAccount -ResourceId <String> [-PassThru] [-Force] [-AsJob]
 
 ### ByObjectParameterSet
 ```
-Remove-AzDataShareAccount -Account <PSAccount> [-PassThru] [-Force] [-AsJob]
+Remove-AzDataShareAccount -Account <PSDataShareAccount> [-PassThru] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
 ```
 
@@ -52,7 +52,7 @@ This command returns a value of $True.
 The azure data share account object.
 
 ```yaml
-Type: PSAccount
+Type: PSDataShareAccount
 Parameter Sets: ByObjectParameterSet
 Aliases: 
 
@@ -202,7 +202,7 @@ Accept wildcard characters: False
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSAccount
+Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareAccount
 System.Management.Automation.SwitchParameter
 
 

@@ -98,7 +98,7 @@ Accept wildcard characters: False
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSShare
+### Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShare
 
 
 ## NOTES

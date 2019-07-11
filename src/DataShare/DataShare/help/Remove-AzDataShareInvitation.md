@@ -25,7 +25,7 @@ Remove-AzDataShareInvitation -ResourceId <String> [-PassThru] [-Force]
 
 ### ByObjectParameterSet
 ```
-Remove-AzDataShareInvitation -Invitation <PSInvitation> [-PassThru] [-Force]
+Remove-AzDataShareInvitation -Invitation <PSDataShareInvitation> [-PassThru] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
 ```
 
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 Azure data share invitation object
 
 ```yaml
-Type: PSInvitation
+Type: PSDataShareInvitation
 Parameter Sets: ByObjectParameterSet
 Aliases: 
 
@@ -214,7 +214,7 @@ Accept wildcard characters: False
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSInvitation
+Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareInvitation
 System.Management.Automation.SwitchParameter
 
 
