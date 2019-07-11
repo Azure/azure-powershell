@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.DataShare.Synchronization
          DefaultParameterSetName = ParameterSetNames.FieldsParameterSet,
          SupportsShouldProcess = true),
      OutputType(typeof(PSDataShareSubscriptionSynchronization))]
-    public class StopAzDataShareSynchronization : AzureDataShareCmdletBase
+    public class StopAzDataShareSubscriptionSynchronization : AzureDataShareCmdletBase
     {
         /// <summary>
         /// The resource group name of the azure data share account.

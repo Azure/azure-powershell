@@ -469,12 +469,12 @@ namespace Microsoft.Azure.Commands.DataShare.Helpers
         {
             return new PSDataShareSubscriptionSynchronization
             {
-                durationMs = sync.DurationMs,
-                startTime = sync.StartTime,
-                endTime = sync.EndTime,
-                message = sync.Message,
-                status = sync.Status,
-                synchronizationId = sync.SynchronizationId
+                DurationMs = sync.DurationMs,
+                StartTime = sync.StartTime,
+                EndTime = sync.EndTime,
+                Message = sync.Message,
+                Status = sync.Status,
+                SynchronizationId = sync.SynchronizationId
             };
         }
 
