@@ -101,10 +101,7 @@ namespace Microsoft.Azure.Commands.DataShare.ShareSubscription
             HelpMessage = "Return object (if specified).")]
         public SwitchParameter PassThru { get; set; }
 
-        [Parameter()]
-        public SwitchParameter Force { get; set; }
-
-        [Parameter]
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
         public override void ExecuteCmdlet()
@@ -122,12 +119,6 @@ namespace Microsoft.Azure.Commands.DataShare.ShareSubscription
                 ParameterSetNames.ObjectParameterSet,
                 StringComparison.OrdinalIgnoreCase))
             {
-                if (this.InputObject == null)
-                {
-                    throw new PSArgumentNullException(
-                        string.Format(CultureInfo.InvariantCulture, Resources.ResourceArgumentInvalid));
-                }
-
                 resourceId = this.InputObject.Id;
             }
 
@@ -140,9 +131,7 @@ namespace Microsoft.Azure.Commands.DataShare.ShareSubscription
             }
 
             this.ConfirmAction(
-                this.Force,
                 string.Format(Resources.ResourceRemovalConfirmation, this.Name),
-                string.Format(Resources.ResourceRemovedMessage, this.Name),
                 this.Name,
                 () => this.DataShareManagementClient.ShareSubscriptions.Delete(
                     this.ResourceGroupName,

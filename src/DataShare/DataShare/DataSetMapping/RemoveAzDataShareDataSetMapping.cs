@@ -117,9 +117,6 @@ namespace Microsoft.Azure.Commands.DataShare.DataSetMapping
             HelpMessage = "Return object (if specified).")]
         public SwitchParameter PassThru { get; set; }
 
-        [Parameter()]
-        public SwitchParameter Force { get; set; }
-
         public override void ExecuteCmdlet()
         {
             string resourceId = null;
@@ -133,12 +130,6 @@ namespace Microsoft.Azure.Commands.DataShare.DataSetMapping
 
             if (this.ParameterSetName.Equals(ParameterSetNames.ObjectParameterSet, StringComparison.OrdinalIgnoreCase))
             {
-                if (this.InputObject == null)
-                {
-                    throw new PSArgumentNullException(
-                        string.Format(CultureInfo.InvariantCulture, Resources.ResourceArgumentInvalid));
-                }
-
                 resourceId = this.InputObject.Id;
             }
 
@@ -152,9 +143,7 @@ namespace Microsoft.Azure.Commands.DataShare.DataSetMapping
             }
 
             this.ConfirmAction(
-                this.Force,
                 string.Format(Resources.ResourceRemovalConfirmation, this.Name),
-                string.Format(Resources.ResourceRemovedMessage, this.Name),
                 this.Name,
                 () => this.DataShareManagementClient.DataSetMappings.Delete(
                     this.ResourceGroupName,

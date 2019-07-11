@@ -113,9 +113,6 @@ namespace Microsoft.Azure.Commands.DataShare.Trigger
             HelpMessage = "Return object (if specified).")]
         public SwitchParameter PassThru { get; set; }
 
-        [Parameter()]
-        public SwitchParameter Force { get; set; }
-
         [Parameter]
         public SwitchParameter AsJob { get; set; }
 
@@ -123,9 +120,7 @@ namespace Microsoft.Azure.Commands.DataShare.Trigger
         {
             this.SetParametersIfNeeded();
             this.ConfirmAction(
-                this.Force,
                 string.Format(Resources.ResourceRemovalConfirmation, this.Name),
-                string.Format(Resources.ResourceRemovedMessage, this.Name),
                 this.Name,
                 this.RemoveTrigger);
 
