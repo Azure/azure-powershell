@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Commands.DataShare.Share
     using Microsoft.Azure.Management.DataShare;
     using Microsoft.Azure.Management.DataShare.Models;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+    using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Extensions;
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Properties;
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models;
 
@@ -65,6 +66,7 @@ namespace Microsoft.Azure.Commands.DataShare.Share
             HelpMessage = "Azure data share name",
             ParameterSetName = ParameterSetNames.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter(ResourceTypes.Share, "ResourceGroupName", "AccountName")]
         public string Name { get; set; }
 
         /// <summary>
@@ -75,7 +77,7 @@ namespace Microsoft.Azure.Commands.DataShare.Share
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource id of the azure data share",
             ParameterSetName = ParameterSetNames.ResourceIdParameterSet)]
-        [ResourceGroupCompleter()]
+        [ResourceIdCompleter(ResourceTypes.Share)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -106,7 +108,9 @@ namespace Microsoft.Azure.Commands.DataShare.Share
         {
             string resourceId = null;
 
-            if (this.ParameterSetName.Equals(ParameterSetNames.ResourceIdParameterSet, StringComparison.OrdinalIgnoreCase))
+            if (this.ParameterSetName.Equals(
+                ParameterSetNames.ResourceIdParameterSet,
+                StringComparison.OrdinalIgnoreCase))
             {
                 resourceId = this.ResourceId;
             }
@@ -116,8 +120,9 @@ namespace Microsoft.Azure.Commands.DataShare.Share
                 if (this.Name == null)
                 {
                     throw new PSArgumentNullException(
-                        string.Format(CultureInfo.InvariantCulture, Resources.DataShareArgumentInvalid));
+                        string.Format(CultureInfo.InvariantCulture, Resources.ResourceArgumentInvalid));
                 }
+
                 resourceId = this.Share.Id;
             }
 
@@ -138,32 +143,27 @@ namespace Microsoft.Azure.Commands.DataShare.Share
                     this.AccountName,
                     this.Name);
             }
-            catch (DataShareErrorException ex)
+            catch (DataShareErrorException ex) when (ex.Response.StatusCode.Equals(HttpStatusCode.NotFound))
             {
-                if (ex.Response.StatusCode.Equals(HttpStatusCode.NotFound))
-                {
-                    throw new PSArgumentException(
-                        string.Format(
-                            $"Share {this.Name} not found"));
-                }
+                throw new PSArgumentException(
+                    string.Format(
+                        $"Share {this.Name} not found"));
             }
 
-            if (this.ShouldProcess(this.Name, VerbsCommon.Set))
+            if (this.Description != null || this.TermsOfUse != null)
             {
-                if (this.Description !=null || this.TermsOfUse != null)
-                {
-                    this.ConfirmAction(
-                        this.MyInvocation.InvocationName,
-                        this.Name,
-                        () => this.UpdateShare(existingShare));
-                    
-                }
-                else
-                {
-                    this.WriteObject(existingShare.ToPsObject());
-                }
-            }           
+                this.ConfirmAction(
+                    "Update resource",
+                    this.Name,
+                    () => this.UpdateShare(existingShare));
+
+            }
+            else
+            {
+                this.WriteObject(existingShare.ToPsObject());
+            }
         }
+
 
         private void UpdateShare(Share existingShare)
         {

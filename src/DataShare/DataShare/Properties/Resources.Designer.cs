@@ -61,22 +61,47 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataShare.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The data share account object provided is invalid. Use Get-AzDataShareAccount to retrieve a specific data share account object, or use New-AzDataShareAccount to create a new data share account object..
+        ///   Looks up a localized string similar to The resource object provided is invalid. Use Get to retrieve a specific resource, or use New to create a new resource..
         /// </summary>
-        internal static string DataShareAccountArgumentInvalid {
+        internal static string ResourceArgumentInvalid {
             get {
-                return ResourceManager.GetString("DataShareAccountArgumentInvalid", resourceCulture);
+                return ResourceManager.GetString("ResourceArgumentInvalid", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to The data share object provided is invalid. Use Get-AzDataShare to retrieve a specific data share object, or use New-AzDataShare to create a new data share object..
+        ///   Looks up a localized string similar to Are you sure you want to create resource &apos;{0}&apos;?.
         /// </summary>
-        internal static string DataShareArgumentInvalid
-        {
-            get
-            {
-                return ResourceManager.GetString("DataShareArgumentInvalid", resourceCulture);
+        internal static string ResourceCreateConfirmation {
+            get {
+                return ResourceManager.GetString("ResourceCreateConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating resource &apos;{0}&apos;.
+        /// </summary>
+        internal static string ResourceCreateMessage {
+            get {
+                return ResourceManager.GetString("ResourceCreateMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove resource &apos;{0}&apos;? .
+        /// </summary>
+        internal static string ResourceRemovalConfirmation {
+            get {
+                return ResourceManager.GetString("ResourceRemovalConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing resource &apos;{0}&apos;.
+        /// </summary>
+        internal static string ResourceRemovedMessage {
+            get {
+                return ResourceManager.GetString("ResourceRemovedMessage", resourceCulture);
             }
         }
     }

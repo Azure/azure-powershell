@@ -55,13 +55,5 @@ namespace Microsoft.Azure.Commands.DataShare.Common
                        new Dictionary<string, List<string>> { { "UserAgent", new List<string> { "PowerShell" } } });
             set => this.defaultRequestHeaders = value;
         }
-
-        public void ConfirmAction(bool force, string actionMessage, Action action)
-        {
-            if (force || this.ShouldContinue(actionMessage, ""))
-            {
-                action();
-            }
-        }
     }
 }

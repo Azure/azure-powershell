@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models
     using Microsoft.Azure.Commands.DataShare.Models;
 
     /// <inheritdoc />
-    public class PSAccount : PSResource
+    public class PSDataShareAccount : PSResource
     {
         public DateTime? CreatedAt { get; set; }
         public string CreatedBy { get; set; }

@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.DataShare.Trigger
     using Microsoft.Azure.Management.DataShare;
     using Microsoft.Azure.Management.DataShare.Models;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+    using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Extensions;
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models;
     using Microsoft.Rest.Azure;
 
@@ -77,6 +78,7 @@ namespace Microsoft.Azure.Commands.DataShare.Trigger
             HelpMessage = "Azure data share trigger name",
             ParameterSetName = ParameterSetNames.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter(ResourceTypes.Trigger, "ResourceGroupName", "AccountName", "ShareSubscriptionName")]
         public string Name { get; set; }
 
         /// <summary>
@@ -87,7 +89,7 @@ namespace Microsoft.Azure.Commands.DataShare.Trigger
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource id of the trigger",
             ParameterSetName = ParameterSetNames.ResourceIdParameterSet)]
-        [ResourceGroupCompleter()]
+        [ResourceIdCompleter(ResourceTypes.Trigger)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -113,12 +115,9 @@ namespace Microsoft.Azure.Commands.DataShare.Trigger
                         triggerName: this.Name) as ScheduledTrigger;
                     this.WriteObject(trigger.ToPsObject());
                 }
-                catch (DataShareErrorException ex)
+                catch (DataShareErrorException ex) when (ex.Response.StatusCode.Equals(HttpStatusCode.NotFound))
                 {
-                    if (ex.Response.StatusCode.Equals(HttpStatusCode.NotFound))
-                    {
-                        throw new PSArgumentException($"Trigger {this.Name} not found.");
-                    }
+                    throw new PSArgumentException($"Trigger {this.Name} not found.");
                 }
             } else
             {

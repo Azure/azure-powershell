@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.DataShare.SynchronizationSetting
     using Microsoft.Azure.Management.DataShare;
     using Microsoft.Azure.Management.DataShare.Models;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+    using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Extensions;
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models;
 
     /// <summary>
@@ -78,6 +79,7 @@ namespace Microsoft.Azure.Commands.DataShare.SynchronizationSetting
             HelpMessage = "Name for Synchronization Setting",
             ParameterSetName = ParameterSetNames.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter(ResourceTypes.SynchronizationSetting, "ResourceGroupName", "AccountName", "ShareName")]
         public string Name { get; set; }
 
         /// <summary>
@@ -88,6 +90,7 @@ namespace Microsoft.Azure.Commands.DataShare.SynchronizationSetting
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource id of the azure data share synchronization setting",
             ParameterSetName = ParameterSetNames.ResourceIdParameterSet)]
+        [ResourceIdCompleter(ResourceTypes.SynchronizationSetting)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 

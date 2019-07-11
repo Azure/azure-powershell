@@ -22,17 +22,24 @@ namespace Microsoft.Azure.Commands.DataShare.Trigger
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models;
     using System.Management.Automation;
+    using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Properties;
 
     /// <summary>
     /// Defines the New-DataShareTrigger cmdlet.
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataShareTrigger", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSetNames.FieldsParameterSet), OutputType(typeof(PSInvitation))]
+    [Cmdlet(
+         "New",
+         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataShareTrigger",
+         SupportsShouldProcess = true,
+         DefaultParameterSetName = ParameterSetNames.FieldsParameterSet), OutputType(typeof(PSInvitation))]
     public class NewAzDataShareTrigger : AzureDataShareCmdletBase
     {
         /// <summary>
         /// The resource group name of the azure data share account.
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter(
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name of the azure data share account",
             ParameterSetName = ParameterSetNames.FieldsParameterSet)]
@@ -42,7 +49,8 @@ namespace Microsoft.Azure.Commands.DataShare.Trigger
         /// <summary>
         /// Name of azure data share account.
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter(
+            Mandatory = true,
             HelpMessage = "Azure data share account name",
             ParameterSetName = ParameterSetNames.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -51,7 +59,8 @@ namespace Microsoft.Azure.Commands.DataShare.Trigger
         /// <summary>
         /// Name of the azure data share subscription.
         /// </summary>
-        [Parameter(Mandatory = false,
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Azure data share subscription name",
             ParameterSetName = ParameterSetNames.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -60,13 +69,15 @@ namespace Microsoft.Azure.Commands.DataShare.Trigger
         /// <summary>
         /// Name of the azure data share trigger.
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter(
+            Mandatory = true,
             HelpMessage = "Azure data share trigger name",
             ParameterSetName = ParameterSetNames.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter(ResourceTypes.Trigger, "ResourceGroupName", "AccountName", "ShareSubscriptionName")]
         public string Name { get; set; }
 
-        
+
         /// <summary>
         /// Interval at which to synchronize the data share.
         /// </summary>
@@ -104,29 +115,26 @@ namespace Microsoft.Azure.Commands.DataShare.Trigger
 
         public override void ExecuteCmdlet()
         {
-            if (this.ShouldProcess(this.Name, VerbsCommon.New))
-            {
-                this.ConfirmAction(
-                    this.Force, 
-                    this.Name, 
-                    this.MyInvocation.InvocationName, 
-                    this.Name, 
-                    this.CreateNewTrigger);
-            }
+            this.ConfirmAction(
+                this.Force,
+                string.Format(Resources.ResourceCreateConfirmation, this.Name),
+                this.MyInvocation.InvocationName,
+                this.Name,
+                this.CreateNewTrigger);
         }
 
         private void CreateNewTrigger()
         {
-      
-            var triggerModel = new ScheduledTrigger{
+
+            var triggerModel = new ScheduledTrigger
+            {
                 RecurrenceInterval = this.RecurrenceInterval,
                 SynchronizationTime = this.SynchronizationTime,
                 SynchronizationMode = SynchronizationMode.Incremental
             };
 
-            var createFunc = this.AsJob
-                ? (Func<string, string, string, string, Trigger, Trigger>)this.DataShareManagementClient.Triggers.BeginCreate
-                : (Func<string, string, string, string, Trigger, Trigger>) this.DataShareManagementClient.Triggers.Create;
+            var createFunc =
+                (Func<string, string, string, string, Trigger, Trigger>)this.DataShareManagementClient.Triggers.Create;
 
             var trigger = createFunc(
                 this.ResourceGroupName,

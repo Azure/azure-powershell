@@ -23,6 +23,8 @@ namespace Microsoft.Azure.Commands.DataShare.Trigger
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.DataShare.Models;
+    using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Properties;
 
     /// <summary>
     /// Defines Remove-DataShareTrigger cmdlet.
@@ -61,7 +63,8 @@ namespace Microsoft.Azure.Commands.DataShare.Trigger
         /// <summary>
         /// Name of the azure data share subscription.
         /// </summary>
-        [Parameter(Mandatory = false,
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Azure data share subscription name",
             ParameterSetName = ParameterSetNames.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -70,10 +73,12 @@ namespace Microsoft.Azure.Commands.DataShare.Trigger
         /// <summary>
         /// Name of the azure data share trigger.
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter(
+            Mandatory = true,
             HelpMessage = "Azure data share trigger name",
             ParameterSetName = ParameterSetNames.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter(ResourceTypes.Trigger, "ResourceGroupName", "AccountName", "ShareSubscriptionName")]
         public string Name { get; set; }
 
         /// <summary>
@@ -84,7 +89,7 @@ namespace Microsoft.Azure.Commands.DataShare.Trigger
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource id of azure data share trigger",
             ParameterSetName = ParameterSetNames.ResourceIdParameterSet)]
-        [ResourceGroupCompleter()]
+        [ResourceIdCompleter(ResourceTypes.Trigger)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -115,32 +120,34 @@ namespace Microsoft.Azure.Commands.DataShare.Trigger
         public override void ExecuteCmdlet()
         {
             this.SetParametersIfNeeded();
-            if (this.ShouldProcess(this.Name, VerbsCommon.Remove))
+            this.ConfirmAction(
+                this.Force,
+                string.Format(Resources.ResourceRemovalConfirmation, this.Name),
+                string.Format(Resources.ResourceRemovedMessage, this.Name),
+                this.Name,
+                this.RemoveTrigger);
+
+            if (this.PassThru)
             {
-                this.ConfirmAction(
-                    this.Force,
-                    this.Name,
-                    this.MyInvocation.InvocationName,
-                    this.Name,
-                    this.RemoveTrigger);
-                if (this.PassThru)
-                {
-                    this.WriteObject(true);
-                }
+                this.WriteObject(true);
             }
         }
 
         private void SetParametersIfNeeded()
         {
             string resourceId = null;
-            if (this.ParameterSetName.Equals(ParameterSetNames.ResourceIdParameterSet, StringComparison.OrdinalIgnoreCase))
+            if (this.ParameterSetName.Equals(
+                ParameterSetNames.ResourceIdParameterSet,
+                StringComparison.OrdinalIgnoreCase))
             {
                 resourceId = this.ResourceId;
             }
+
             if (this.ParameterSetName.Equals(ParameterSetNames.ObjectParameterSet, StringComparison.OrdinalIgnoreCase))
             {
                 resourceId = this.Trigger.Id;
             }
+
             if (resourceId != null)
             {
                 var parsedResourceId = new ResourceIdentifier(resourceId);
@@ -153,9 +160,8 @@ namespace Microsoft.Azure.Commands.DataShare.Trigger
 
         private void RemoveTrigger()
         {
-            var removeFunc = this.AsJob
-                ? (Func<string, string, string, string, OperationResponse>)this.DataShareManagementClient.Triggers.BeginDelete
-                : (Func<string, string, string, string, OperationResponse>)this.DataShareManagementClient.Triggers.Delete;
+            var removeFunc =
+                (Func<string, string, string, string, OperationResponse>)this.DataShareManagementClient.Triggers.Delete;
             removeFunc(this.ResourceGroupName, this.AccountName, this.ShareSubscriptionName, this.Name);
         }
     }

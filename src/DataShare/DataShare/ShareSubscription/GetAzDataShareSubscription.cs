@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Commands.DataShare.ShareSubscription
     using Microsoft.Azure.Management.DataShare;
     using Microsoft.Azure.Management.DataShare.Models;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+    using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Extensions;
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models;
     using Microsoft.Rest.Azure;
 
@@ -69,6 +70,7 @@ namespace Microsoft.Azure.Commands.DataShare.ShareSubscription
             HelpMessage = "Azure data share subscription name",
             ParameterSetName = ParameterSetNames.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter(ResourceTypes.ShareSubscription, "ResourceGroupName", "AccountName")]
         public string Name { get; set; }
 
         /// <summary>
@@ -79,7 +81,7 @@ namespace Microsoft.Azure.Commands.DataShare.ShareSubscription
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource id of the azure data share subscription",
             ParameterSetName = ParameterSetNames.ResourceIdParameterSet)]
-        [ResourceGroupCompleter()]
+        [ResourceIdCompleter(ResourceTypes.ShareSubscription)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -106,13 +108,10 @@ namespace Microsoft.Azure.Commands.DataShare.ShareSubscription
 
                         this.WriteObject(shareSubscription.ToPsObject());
                     }
-                    catch (DataShareErrorException ex)
+                    catch (DataShareErrorException ex) when (ex.Response.StatusCode.Equals(HttpStatusCode.NotFound))
                     {
-                        if (ex.Response.StatusCode.Equals(HttpStatusCode.NotFound))
-                        {
-                            throw new PSArgumentException(
-                                $"ShareSubscription {this.Name} not found");
-                        }
+                        throw new PSArgumentException(
+                            $"ShareSubscription {this.Name} not found");
                     }
                 }
                 else

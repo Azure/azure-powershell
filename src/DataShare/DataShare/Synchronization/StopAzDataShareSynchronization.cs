@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.DataShare.Synchronization
     using Microsoft.Azure.Management.DataShare;
     using Microsoft.Azure.Management.DataShare.Models;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+    using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Extensions;
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models;
 
     /// <summary>
@@ -95,7 +96,7 @@ namespace Microsoft.Azure.Commands.DataShare.Synchronization
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource id of the azure share subscription",
             ParameterSetName = ParameterSetNames.ResourceIdParameterSet)]
-        [ResourceGroupCompleter()]
+        [ResourceIdCompleter(ResourceTypes.ShareSubscription)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -108,24 +109,22 @@ namespace Microsoft.Azure.Commands.DataShare.Synchronization
         public override void ExecuteCmdlet()
         {
             this.SetParametersIfNeeded();
-            if (this.ShouldProcess(this.ShareSubscriptionName, "Stop"))
-            {
-                this.ConfirmAction(
-                    this.Force,
-                    this.ShareSubscriptionName,
-                    this.MyInvocation.InvocationName,
-                    this.ShareSubscriptionName,
-                    this.StopSynchronization);
-            }
+
+            this.ConfirmAction(
+                this.Force,
+                "Stop synchronization",
+                this.MyInvocation.InvocationName,
+                this.ShareSubscriptionName,
+                this.StopSynchronization);
         }
 
         private void StopSynchronization()
         {
-            var endFunc = this.AsJob
-                ? (Func<string, string, string, ShareSubscriptionSynchronization, ShareSubscriptionSynchronization>)this.DataShareManagementClient
-                    .ShareSubscriptions.BeginCancelSynchronization
-                : (Func<string, string, string, ShareSubscriptionSynchronization, ShareSubscriptionSynchronization>)this.DataShareManagementClient
+            var endFunc =
+                (Func<string, string, string, ShareSubscriptionSynchronization, ShareSubscriptionSynchronization>)this
+                    .DataShareManagementClient
                     .ShareSubscriptions.CancelSynchronization;
+
             var shareSubscriptionSynchronization = new ShareSubscriptionSynchronization
             {
                 SynchronizationId = this.SynchronizationId

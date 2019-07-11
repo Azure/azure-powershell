@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Commands.DataShare.DataSet
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models;
     using System.Management.Automation;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+    using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Extensions;
 
     /// <summary>
     /// Defines the New-DataShareDataSet cmdlet.
@@ -116,6 +117,7 @@ namespace Microsoft.Azure.Commands.DataShare.DataSet
             HelpMessage = "Azure data set name",
             ParameterSetName = ParameterSetNames.AdlsGen1DataSetParameterSet)]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter(ResourceTypes.DataSet, "ResourceGroupName", "AccountName", "ShareName")]
         public string Name { get; set; }
 
         /// <summary>
@@ -225,7 +227,7 @@ namespace Microsoft.Azure.Commands.DataShare.DataSet
                 ParameterSetNames.BlobDataSetParameterSet,
                 StringComparison.OrdinalIgnoreCase))
             {
-                if (this.ShouldProcess(this.Name, VerbsCommon.New))
+                if (this.ShouldProcess(this.Name, "Create"))
                 {
                     if (this.FilePath != null)
                     {
@@ -293,7 +295,7 @@ namespace Microsoft.Azure.Commands.DataShare.DataSet
                 StringComparison.OrdinalIgnoreCase))
             {
 
-                if (this.ShouldProcess(this.Name, VerbsCommon.New))
+                if (this.ShouldProcess(this.Name, "Create"))
                 {
                     if (this.FilePath != null)
                     {
@@ -361,7 +363,7 @@ namespace Microsoft.Azure.Commands.DataShare.DataSet
                 StringComparison.OrdinalIgnoreCase))
             {
                 storageAccountName = parsedStorageResourceId.GetAccountName();
-                if (this.ShouldProcess(this.Name, VerbsCommon.New))
+                if (this.ShouldProcess(this.Name, "Create"))
                 {
                     if (this.FileName != null)
                     {

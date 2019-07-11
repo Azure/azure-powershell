@@ -67,13 +67,10 @@ namespace Microsoft.Azure.Commands.DataShare.ConsumerInvitation
 
                     this.WriteObject(ConsumerInvitation.ToPsObject());
                 }
-                catch (DataShareErrorException ex)
+                catch (DataShareErrorException ex) when (ex.Response.StatusCode.Equals(HttpStatusCode.NotFound))
                 {
-                    if (ex.Response.StatusCode.Equals(HttpStatusCode.NotFound))
-                    {
-                        throw new PSArgumentException(
-                            $"ConsumerInvitation {this.InvitationId} not found");
-                    }
+                    throw new PSArgumentException(
+                        $"ConsumerInvitation {this.InvitationId} not found");
                 }
             }
             else

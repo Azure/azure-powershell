@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Commands.DataShare.DataSet
     using Microsoft.Azure.Management.DataShare;
     using Microsoft.Azure.Management.DataShare.Models;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+    using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Extensions;
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models;
     using Microsoft.Rest.Azure;
 
@@ -78,6 +79,7 @@ namespace Microsoft.Azure.Commands.DataShare.DataSet
             HelpMessage = "Azure data set name.",
             ParameterSetName = ParameterSetNames.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter(ResourceTypes.DataSet, "ResourceGroupName", "AccountName", "ShareName")]
         public string Name { get; set; }
 
         /// <summary>
@@ -88,7 +90,7 @@ namespace Microsoft.Azure.Commands.DataShare.DataSet
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource id of the azure data set.",
             ParameterSetName = ParameterSetNames.ResourceIdParameterSet)]
-        [ResourceGroupCompleter()]
+        [ResourceIdCompleter(ResourceTypes.DataSet)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -116,13 +118,10 @@ namespace Microsoft.Azure.Commands.DataShare.DataSet
 
                     this.WriteObject(dataSet.ToPsObject());
                 }
-                catch (DataShareErrorException ex)
+                catch (DataShareErrorException ex) when (ex.Response.StatusCode.Equals(HttpStatusCode.NotFound))
                 {
-                    if (ex.Response.StatusCode.Equals(HttpStatusCode.NotFound))
-                    {
-                        throw new PSArgumentException(
-                            $"DataSet {this.Name} not found");
-                    }
+                    throw new PSArgumentException(
+                        $"DataSet {this.Name} not found");
                 }
             }
             else

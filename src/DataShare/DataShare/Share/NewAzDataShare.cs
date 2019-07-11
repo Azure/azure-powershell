@@ -21,6 +21,8 @@ namespace Microsoft.Azure.Commands.DataShare.Share
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models;
     using System.Management.Automation;
+    using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Properties;
 
     /// <summary>
     /// Defines the New-DataShare cmdlet.
@@ -57,6 +59,7 @@ namespace Microsoft.Azure.Commands.DataShare.Share
             ParameterSetName = ParameterSetNames.FieldsParameterSet,
             HelpMessage = "Azure data share name")]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter(ResourceTypes.Share, "ResourceGroupName", "AccountName")]
         public string Name { get; set; }
 
         /// <summary>
@@ -91,14 +94,14 @@ namespace Microsoft.Azure.Commands.DataShare.Share
         public override void ExecuteCmdlet()
         {
             this.ConfirmAction(
-                this.MyInvocation.InvocationName,
+                string.Format(Resources.ResourceCreateConfirmation, this.Name),
                 this.Name,
                 this.NewShare);
         }
 
         private void NewShare()
         {
-            if (this.ShouldProcess(this.Name, VerbsCommon.New))
+            if (this.ShouldProcess(this.Name, "Create"))
             {
                 Share dataShare = this.DataShareManagementClient.Shares.Create(
                     this.ResourceGroupName,

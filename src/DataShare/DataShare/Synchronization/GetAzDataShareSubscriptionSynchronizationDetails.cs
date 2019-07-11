@@ -118,14 +118,15 @@ namespace Microsoft.Azure.Commands.DataShare.Synchronization
                     new List<SynchronizationDetails>();
                 do
                 {
-                    IPage<SynchronizationDetails> shareSubscriptionSynchronizationDetails = string.IsNullOrEmpty(nextPageLink)
-                        ? this.DataShareManagementClient.ShareSubscriptions.ListSynchronizationDetails(
-                            this.ResourceGroupName,
-                            this.AccountName,
-                            this.ShareSubscriptionName,
-                            new ShareSubscriptionSynchronization() { SynchronizationId = this.SynchronizationId })
-                        : this.DataShareManagementClient.ShareSubscriptions
-                            .ListSynchronizationDetailsNext(nextPageLink);
+                    IPage<SynchronizationDetails> shareSubscriptionSynchronizationDetails =
+                        string.IsNullOrEmpty(nextPageLink)
+                            ? this.DataShareManagementClient.ShareSubscriptions.ListSynchronizationDetails(
+                                this.ResourceGroupName,
+                                this.AccountName,
+                                this.ShareSubscriptionName,
+                                new ShareSubscriptionSynchronization() { SynchronizationId = this.SynchronizationId })
+                            : this.DataShareManagementClient.ShareSubscriptions
+                                .ListSynchronizationDetailsNext(nextPageLink);
 
                     shareSubscriptionSynchronizationDetailsList.AddRange(
                         shareSubscriptionSynchronizationDetails.AsEnumerable());
@@ -135,18 +136,16 @@ namespace Microsoft.Azure.Commands.DataShare.Synchronization
 
                 IEnumerable<PSSynchronizationDetails> synchronizationDetailsInShareSubscription =
                     shareSubscriptionSynchronizationDetailsList.Select(
-                        shareSubscriptionSynchronizationDetails => shareSubscriptionSynchronizationDetails.ToPsObject());
+                        shareSubscriptionSynchronizationDetails =>
+                            shareSubscriptionSynchronizationDetails.ToPsObject());
 
                 this.WriteObject(synchronizationDetailsInShareSubscription, true);
 
             }
-            catch (DataShareErrorException ex)
+            catch (DataShareErrorException ex) when (ex.Response.StatusCode.Equals(HttpStatusCode.NotFound))
             {
-                if (ex.Response.StatusCode.Equals(HttpStatusCode.NotFound))
-                {
-                    throw new PSArgumentException(
-                        $"ShareSubscriptionSynchronizationDetails {this.ShareSubscriptionName} not found");
-                }
+                throw new PSArgumentException(
+                    $"ShareSubscriptionSynchronizationDetails {this.ShareSubscriptionName} not found");
             }
         }
     }
