@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.DataShare.DataSetMapping
          "New",
          ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataShareDataSetMapping",
          DefaultParameterSetName = ParameterSetNames.FieldsParameterSet,
-         SupportsShouldProcess = true), OutputType(typeof(PSDataSetMapping))]
+         SupportsShouldProcess = true), OutputType(typeof(PSDataShareDataSetMapping))]
     public class NewAzDataShareDataSetMapping : AzureDataShareCmdletBase
     {
         /// <summary>

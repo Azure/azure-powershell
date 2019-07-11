@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.DataShare.Share
             ValueFromPipeline = true,
             HelpMessage = "Azure data share object")]
         [ValidateNotNullOrEmpty]
-        public PSDataShare Share { get; set; }
+        public PSDataShare InputObject { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -122,13 +122,13 @@ namespace Microsoft.Azure.Commands.DataShare.Share
                 ParameterSetNames.ObjectParameterSet,
                 StringComparison.OrdinalIgnoreCase))
             {
-                if (this.Share == null)
+                if (this.InputObject == null)
                 {
                     throw new PSArgumentNullException(
                         string.Format(CultureInfo.InvariantCulture, Resources.ResourceArgumentInvalid));
                 }
 
-                resourceId = this.Share.Id;
+                resourceId = this.InputObject.Id;
             }
 
             if (!string.IsNullOrEmpty(resourceId))

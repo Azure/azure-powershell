@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.DataShare.ShareSubscription
             ValueFromPipeline = true,
             HelpMessage = "Azure data share subscription object")]
         [ValidateNotNullOrEmpty]
-        public PSDataShareSubscription ShareSubscription { get; set; }
+        public PSDataShareSubscription InputObject { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -122,13 +122,13 @@ namespace Microsoft.Azure.Commands.DataShare.ShareSubscription
                 ParameterSetNames.ObjectParameterSet,
                 StringComparison.OrdinalIgnoreCase))
             {
-                if (this.ShareSubscription == null)
+                if (this.InputObject == null)
                 {
                     throw new PSArgumentNullException(
                         string.Format(CultureInfo.InvariantCulture, Resources.ResourceArgumentInvalid));
                 }
 
-                resourceId = this.ShareSubscription.Id;
+                resourceId = this.InputObject.Id;
             }
 
             if (!string.IsNullOrEmpty(resourceId))

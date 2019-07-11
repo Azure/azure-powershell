@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.DataShare.Invitation
             ValueFromPipeline = true,
             HelpMessage = "Azure data share invitation object")]
         [ValidateNotNullOrEmpty]
-        public PSDataShareInvitation Invitation { get; set; }
+        public PSDataShareInvitation InputObject { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -128,13 +128,13 @@ namespace Microsoft.Azure.Commands.DataShare.Invitation
 
             if (this.ParameterSetName.Equals(ParameterSetNames.ObjectParameterSet, StringComparison.OrdinalIgnoreCase))
             {
-                if (this.Invitation == null)
+                if (this.InputObject == null)
                 {
                     throw new PSArgumentNullException(
                         string.Format(CultureInfo.InvariantCulture, Resources.ResourceArgumentInvalid));
                 }
 
-                resourceId = this.Invitation.Id;
+                resourceId = this.InputObject.Id;
             }
 
             if (!string.IsNullOrEmpty(resourceId))

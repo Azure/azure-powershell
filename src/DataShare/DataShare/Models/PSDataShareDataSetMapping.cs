@@ -17,7 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models
     using Microsoft.Azure.Commands.DataShare.Models;
 
     /// <inheritdoc />
-    public class PSDataSetMapping : PSResource
+    public class PSDataShareDataSetMapping : PSResource
     {
         public string DataSetId { get; set; }
         public string ResourceGroup { get; set; }
