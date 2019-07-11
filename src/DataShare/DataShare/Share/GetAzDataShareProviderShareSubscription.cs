@@ -1,9 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.DataShare.Share
+namespace Microsoft.Azure.Commands.DataShare.Share
 {
+    using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
     using System.Net;
@@ -17,23 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataShare.Share
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models;
     using Microsoft.Rest.Azure;
 
+    /// <summary>
+    /// Defines Get-AzDataShareProviderShareSubscription cmdlet.
+    /// </summary>
     [Cmdlet(
          "Get",
          Commands.ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataShareProviderShareSubscription", DefaultParameterSetName = ParameterSetNames.FieldsParameterSet),
      OutputType(typeof(PSProviderShareSubscription))]
     public class GetAzDataShareProviderShareSubscription : AzureDataShareCmdletBase
     {
-        /// <summary>
-        /// The Data Share account name of the share.
-        /// </summary>
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Azure DataShare Account name.",
-            ParameterSetName = ParameterSetNames.FieldsParameterSet)]
-        [ValidateNotNullOrEmpty]
-        public string AccountName { get; set; }
-
         /// <summary>
         /// The resource group name of the account.
         /// </summary>
@@ -47,6 +50,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataShare.Share
         public string ResourceGroupName { get; set; }
 
         /// <summary>
+        /// The Data Share account name of the share.
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Azure DataShare Account name.",
+            ParameterSetName = ParameterSetNames.FieldsParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string AccountName { get; set; }
+
+        /// <summary>
         /// The name of share in account
         /// </summary>
         [Parameter(
@@ -56,18 +70,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataShare.Share
             ParameterSetName = ParameterSetNames.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ShareName { get; set; }
-
-        /// <summary>
-        /// The resourceId of the azure data share.
-        /// </summary>
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource id of the share",
-            ParameterSetName = ParameterSetNames.ResourceIdParameterSet)]
-        [ResourceGroupCompleter()]
-        [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
 
         /// <summary>
         /// The share subscription id of the provider share subscription.
@@ -82,9 +84,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataShare.Share
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The share subscription id of the provider share subscription",
             ParameterSetName = ParameterSetNames.ResourceIdParameterSet)]
-        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ShareSubscriptionId { get; set; }
+
+        /// <summary>
+        /// The resourceId of the azure data share.
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource id of the share",
+            ParameterSetName = ParameterSetNames.ResourceIdParameterSet)]
+        [ResourceGroupCompleter()]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
 
         public override void ExecuteCmdlet()
         {

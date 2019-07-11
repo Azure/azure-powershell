@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzDataShareSubscriptionSynchronizationDetails
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets information about synchonization details for share subscription.
 
 ## SYNTAX
 
@@ -24,16 +24,30 @@ Get-AzDataShareSubscriptionSynchronizationDetails -SynchronizationId <String> -R
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzDataShareSubscriptionSynchronizationDetails** cmdlet provides details of the synchronization initiated for a share subscription.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzDataShareSubscriptionSynchronizationDetails -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareSubscriptionName "AdsShareSubscription" -SynchronizationId "a6ee5c8d-0ce0-485e-b2f2-966b187dc6c7"
+
+DataSetId    : d2411889-5357-4ca8-8d65-9363e46ef2ed
+DataSetType  : BlobFolder
+EndTime      : 7/8/2019 10:24:27 PM
+StartTime    : 7/8/2019 10:23:09 PM
+Status       : Succeeded
+DurationMs   : 78870
+FilesRead    : 1
+FilesWritten : 1
+SizeRead     : 2779935
+SizeWritten  : 2779935
+Name         : 16d5161b-2b3f-4d90-b074-13ad7121bcc7
+Message      :
+
 ```
 
-{{ Add example description here }}
+This command provides information about synchronization initiated for share subscription AdsShareSubscription under data share account WikiAds.
 
 ## PARAMETERS
 

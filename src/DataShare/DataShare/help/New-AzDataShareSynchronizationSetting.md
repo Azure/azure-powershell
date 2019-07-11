@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzDataShareSynchronizationSetting
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates Synchronization setting for a share.
 
 ## SYNTAX
 
@@ -18,16 +18,24 @@ New-AzDataShareSynchronizationSetting -ResourceGroupName <String> -AccountName <
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **New-AzDataShareSynchronizationSetting** creates a synchronization setting for share in share account for a recurrence interval of either daily or hourly at a particular time.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\>  New-AzDataShareSynchronizationSetting -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareName "AdsShare" -Name "ShareSynchronization" -RecurrenceInterval "Day" -SynchronizationTime 9:00
+RecurrenceInterval  : Day
+SynchronizationTime : 7/9/2019 9:00:00 AM
+ProvisioningState   : Succeeded
+CreatedAt           : 7/10/2019 12:01:08 AM
+CreatedBy           : Ads Company
+Id                  : /subscriptions/1834da9b-787a-44f6-ae81-60707ab8c957/resourceGroups/ADS/providers/Microsoft.DataShare/accounts/WikiAds/shares/AdsShare/synchronizationSettings/ShareSynchronization
+Name                : ShareSynchronization
+Type                : Microsoft.DataShare/SynchronizationSettings
 ```
 
-{{ Add example description here }}
+This commands creates a synchronization setting on Daily recurrence interval at 9:00 am for share AdsShare in data share account WikiAds.
 
 ## PARAMETERS
 

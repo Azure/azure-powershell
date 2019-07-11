@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzDataShareDataSetMapping
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates data set mapping for share subscription.
 
 ## SYNTAX
 
@@ -31,16 +31,25 @@ New-AzDataShareDataSetMapping -ResourceGroupName <String> -AccountName <String> 
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **New-AzDataShareDataSetMapping** cmdlet creates a data set mapping between the source data sets and sink storage account in share subscription.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzDataShareDataSetMapping -ResourceGroupName "ADS" -AccoutName "WikiAdsAccount" -ShareSubscriptionName "AdsShareSubscription" -Name "AdsDataSetMapping" -StorageAccountResourceId "/subscriptions/271cc6ec-e5fe-4813-83bd-8f3b04973e38/resourceGroups/ADS/providers/Microsoft.Storage/storageAccounts/AdsStorage" -Container "AdsContainer"
+ContainerName        : AdsContainer
+DataSetId            : 372899d4-5e67-4c85-bc60-21168b484424
+ResourceGroup        : ADS
+SubscriptionId       : 4834da9b-787a-44f6-ae81-60707ab8c957
+StorageAccount       : AdsStorage
+DataSetMappingStatus : Ok
+Id                   : /subscriptions/4834da9b-787a-44f6-ae81-60707ab8c957/resourceGroups/ADS/providers/Microsoft.DataShare/accounts/WikiAdsAccount/shareSubscriptions/AdsShareSubscription/dataSetMappings/AdsDataSetMapping
+Name                 : AdsDataSetMapping
+Type                 : Microsoft.DataShare/DataSetMappings
 ```
 
-{{ Add example description here }}
+This command creates a data set mapping AdsDataSetMapping to storage account AdsStorage for share subscription AdsShareSubscription in data share account WikiAdsAccount.
 
 ## PARAMETERS
 

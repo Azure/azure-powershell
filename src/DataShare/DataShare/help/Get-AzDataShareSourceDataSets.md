@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzDataShareSourceDataSets
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets information about source data sets in share subscription.
 
 ## SYNTAX
 
@@ -23,13 +23,21 @@ Get-AzDataShareSourceDataSets -ShareSubscriptionResourceId <String> [-DefaultPro
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzDataShareSourceDataSets** cmdlet provides information about the source data sets in the share subscription. 
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzDataShareSourceDataSets -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareSubscriptionName "AdsShareSubscription"
+
+DataSetId   : 63116d3f-515a-47a2-9b18-d981b16a9d21
+DataSetName : filesystem1
+DataSetType : Blob
+Id          : /subscriptions/1834da9b-787a-44f6-ae81-60707ab8c957/resourceGroups/ADS/providers/Microsoft.DataShare/accounts/WikiAds/shareSubscriptions/AdsShareSubscription/consumerSourceDataSets/AdsDataSets
+Name        : AdsDataSets
+Type        : Microsoft.DataShare/ConsumerSourceDataSet
+
 ```
 
 {{ Add example description here }}

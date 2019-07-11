@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzDataShareDataSet
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets information about Data Sets in Azure data share.
 
 ## SYNTAX
 
@@ -23,16 +23,24 @@ Get-AzDataShareDataSet -ResourceId <String> [-DefaultProfile <IAzureContextConta
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzDataShareDataSet** cmdlet gets information about data sets added in a share in an Azure data share account. If you specify the name of data set, this cmdlet gets information about the data set. If you do not specify a name, this cmdlet gets information about all the data sets in a share.I
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzDataShareDataSet -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareName "AdsShare" -Name "AdsDataSet"
+ContainerName  : AdsContainer
+DataSetId      : d2411889-5357-4ca8-8d65-9363e46ef2ed
+ResourceGroup  : ADS
+SubscriptionId : 1834da9b-787a-44f6-ae81-60707ab8c957
+StorageAccount : AdsStorage
+Id             : /subscriptions/1834da9b-787a-44f6-ae81-60707ab8c957/resourceGroups/ADS/providers/Microsoft.DataShare/accounts/shelltest/shares/share4/dataSets/AdsDataSet
+Name           : AdsDataSet
+Type           : Microsoft.DataShare/DataSets
 ```
 
-{{ Add example description here }}
+This command displays information about data set AdsDataSet in share AdsShare in Azure data share account WikiAdsAccount and resource group ADS.
 
 ## PARAMETERS
 

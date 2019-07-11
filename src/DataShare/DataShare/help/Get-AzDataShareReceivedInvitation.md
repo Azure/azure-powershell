@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzDataShareReceivedInvitation
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets information about consumer invitations.
 
 ## SYNTAX
 
@@ -17,16 +17,32 @@ Get-AzDataShareReceivedInvitation [-Location <String>] [-InvitationId <String>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzDataShareReceivedInvitation** cmdlet provides information about all the invitations that the consumer has receieved. If you provide location or invitation id, this cmdlet provides information about invitation in particular location or having invitation id. Otherwise, it provides a list of invitations sent to the consumer.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzDataShareReceivedInvitation -location "westus"
+
+DataSetCount      : 3
+InvitationId      : 167e06ff-567f-4bc7-be0c-645a6de710f3
+InvitationStatus  : Pending
+Location          : westus
+RespondedAt       :
+Sender            : adsprovider@microsoft.com
+SenderCompanyName : ADS Test
+SentAt            : 7/8/2019 10:47:10 PM
+ShareName         : AdsShare
+Description       : Some description
+Terms             : Some terms of use
+Id                : /providers/Microsoft.DataShare/consumerInvitations/167e06ff-567f-4bc7-be0c-645a6de710f3
+Name              : AdsInvitation
+Type              : Microsoft.DataShare/consumerInvitations
+
 ```
 
-{{ Add example description here }}
+This commant provides information about consumer invitations.
 
 ## PARAMETERS
 

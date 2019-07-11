@@ -7,7 +7,7 @@ schema: 2.0.0
 # New-AzDataShareTrigger
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates a trigger for share subscription.
 
 ## SYNTAX
 
@@ -18,16 +18,26 @@ New-AzDataShareTrigger -ResourceGroupName <String> -AccountName <String> [-Share
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **New-AzDataShareTrigger** cmdlet creates a trigger for share subscription for the specified recurrence interval and synchronization time under azure data share account.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzDataShareTrigger -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareSubscriptionName "AdsShareSubscription" -Name "AdsTrigger" -RecurrenceInterval "Day" -SynchronizationTime "9:00"
+CreatedAt           : 7/10/2019 12:16:34 AM
+CreatedBy           : Ads test
+ProvisioningState   : Succeeded
+RecurrenceInterval  : Day
+SynchronizationMode : Incremental
+SynchronizationTime : 7/9/2019 9:00:00 AM
+TriggerStatus       : Active
+Id                  : /subscriptions/1834da9b-787a-44f6-ae81-60707ab8c957/resourceGroups/ADS/providers/Microsoft.DataShare/accounts/WikiAds/shareSubscriptions/AdsShareSubscription/triggers/AdsTrigger
+Name                : AdsTrigger
+Type                : Microsoft.DataShare/Triggers
 ```
 
-{{ Add example description here }}
+This command creates a new trigger AdsTrigger for share subscription AdsShareSubscription with a daily recurrence interval of 9 am.
 
 ## PARAMETERS
 
