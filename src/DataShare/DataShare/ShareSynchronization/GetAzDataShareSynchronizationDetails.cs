@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Commands.DataShare.Synchronization
     using Microsoft.Azure.Management.DataShare;
     using Microsoft.Azure.Management.DataShare.Models;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+    using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Extensions;
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models;
     using Microsoft.Rest.Azure;
 
@@ -59,6 +60,7 @@ namespace Microsoft.Azure.Commands.DataShare.Synchronization
             HelpMessage = "Azure data share account name",
             ParameterSetName = ParameterSetNames.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter(ResourceTypes.Account, "ResourceGroupName")]
         public string AccountName { get; set; }
 
         /// <summary>
