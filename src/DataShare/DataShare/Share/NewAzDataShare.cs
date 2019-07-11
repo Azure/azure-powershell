@@ -64,17 +64,6 @@ namespace Microsoft.Azure.Commands.DataShare.Share
         public string Name { get; set; }
 
         /// <summary>
-        /// Share kind of data share
-        /// </summary>
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = ParameterSetNames.FieldsParameterSet,
-            HelpMessage = "Share kind of azure data share")]
-        [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter("CopyBased")]
-        public string ShareKind { get; set; }
-
-        /// <summary>
         /// Description of the azure data share.
         /// </summary>
         [Parameter(Mandatory = false,
@@ -110,7 +99,7 @@ namespace Microsoft.Azure.Commands.DataShare.Share
                     this.Name,
                     new Share()
                     {
-                        ShareKind = this.ShareKind,
+                        ShareKind = ShareKind.CopyBased,
                         Description = this.Description,
                         Terms = this.TermsOfUse
                     });

@@ -18,11 +18,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models
 
     public class PSDataShareSubscriptionSynchronization
     {
-        public int? durationMs { get; set; }
-        public DateTime? endTime { get; set; }
-        public string message { get; set; }
-        public DateTime? startTime { get; set; }
-        public string status { get; set; }
-        public string synchronizationId { get; set; }
+        public int? DurationMs { get; set; }
+        public DateTime? EndTime { get; set; }
+        public string Message { get; set; }
+        public DateTime? StartTime { get; set; }
+        public string Status { get; set; }
+        public string SynchronizationId { get; set; }
     }
 }

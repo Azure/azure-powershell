@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.DataShare.ProviderShareSubscription
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource id of the azure data share",
             ParameterSetName = ParameterSetNames.ResourceIdParameterSet)]
-        [ResourceGroupCompleter()]
+        [ResourceIdCompleter(ResourceTypes.Share)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 

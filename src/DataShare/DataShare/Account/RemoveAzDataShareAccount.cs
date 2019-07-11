@@ -92,6 +92,9 @@ namespace Microsoft.Azure.Commands.DataShare.Account
         public SwitchParameter PassThru { get; set; }
 
         [Parameter]
+        public SwitchParameter Force { get; set; }
+
+        [Parameter]
         public SwitchParameter AsJob { get; set; }
 
         public override void ExecuteCmdlet()
@@ -118,7 +121,9 @@ namespace Microsoft.Azure.Commands.DataShare.Account
             }
 
             this.ConfirmAction(
+                this.Force,
                 string.Format(Resources.ResourceRemovalConfirmation, this.Name),
+                string.Format(Resources.ResourceRemovedMessage, this.Name),
                 this.Name,
                 () => this.DataShareManagementClient.Accounts.Delete(this.ResourceGroupName, this.Name));
 
