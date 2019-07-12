@@ -237,7 +237,7 @@ Create a gallery image definition.
 Create a gallery image version.
 
 ### [New-AzImage](New-AzImage.md)
-Creats an image.
+Creates an image.
 
 ### [New-AzImageConfig](New-AzImageConfig.md)
 Creates a configurable image object.
