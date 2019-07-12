@@ -85,7 +85,7 @@ Accept wildcard characters: False
 ```
 
 ### -PostMigrationName
-Post Migration Name for Standrad Namespace in Migration
+Post Migration Name for Standard Namespace in Migration
 
 ```yaml
 Type: System.String
