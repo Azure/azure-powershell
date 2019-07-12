@@ -470,7 +470,7 @@ Breaking changes in the cmdlet : Get-SomeObjectB
 [Cmdlet(VerbsCommon.Get, "SomeObjectA"), OutputType(typeof(Foo))]
 public class GetSomeObjectA : AzureRMCmdlet
 {
-        [CmdletParameterBreakingChange("Param1", IsBecomingMandatory=truec)]
+        [CmdletParameterBreakingChange("Param1", IsBecomingMandatory=true)]
         [Parameter(Mandatory = false)]
         public String Param1;
     protected override void BeginProcessing()
