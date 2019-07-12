@@ -154,7 +154,7 @@ Accept wildcard characters: False
 ```
 
 ### -PublicIpAddressId
-Specifes the ID of the public IP address in which to add a front-end IP configuration.
+Specifies the ID of the public IP address in which to add a front-end IP configuration.
 
 ```yaml
 Type: System.String
