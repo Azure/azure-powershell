@@ -324,7 +324,7 @@ function Test-NewAzureRmCognitiveServicesAccountWithCustomDomain
 
 <#
 .SYNOPSIS
-Test New-AzCognitiveServicesAccountKey
+Test New-AzCognitiveServicesAccount
 #>
 function Test-NewAzureRmCognitiveServicesAccountWithVnet
 {
@@ -335,15 +335,18 @@ function Test-NewAzureRmCognitiveServicesAccountWithVnet
     {
         # Test
         $accountname = 'csa' + $rgname;
+        $vnetname = 'vnet' + $rgname;
         $skuname = 'S2';
         $accounttype = 'TextAnalytics';
         $loc = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West Central US";
 
         New-AzResourceGroup -Name $rgname -Location $loc;
 
+		$vnet = CreateAndGetVirtualNetwork $rgname $vnetname
+
 		$networkRuleSet = [Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet]::New()
 		$networkRuleSet.AddIpRule("200.0.0.0")
-		$networkRuleSet.AddVirtualNetworkRule("/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/control-plane-unit-test/providers/Microsoft.Network/virtualNetworks/vnet-unit-test/subnets/default")
+		$networkRuleSet.AddVirtualNetworkRule($vnet.Subnets[0].Id)
 
         $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -CustomSubdomainName $accountname -Force -NetworkRuleSet $networkRuleSet;
         Assert-NotNull $createdAccount;
@@ -402,6 +405,7 @@ function Test-SetAzureRmCognitiveServicesAccountWithVnet
     {
         # Test
         $accountname = 'csa' + $rgname;
+        $vnetname = 'vnet' + $rgname;
         $skuname = 'S0';
         $accounttype = 'Face';
         $loc = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "Central US EUAP";
@@ -411,9 +415,11 @@ function Test-SetAzureRmCognitiveServicesAccountWithVnet
         $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -CustomSubdomainName $accountname -Force;
         Assert-NotNull $createdAccount;
 
+		$vnet = CreateAndGetVirtualNetwork $rgname $vnetname
+
 		$networkRuleSet = [Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet]::New()
 		$networkRuleSet.AddIpRule("200.0.0.0")
-		$networkRuleSet.AddVirtualNetworkRule("/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/control-plane-unit-test/providers/Microsoft.Network/virtualNetworks/vnet-unit-test/subnets/default")
+		$networkRuleSet.AddVirtualNetworkRule($vnet.Subnets[0].Id)
 
 		$changedAccount = Set-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -NetworkRuleSet $networkRuleSet -Force;
 		Assert-NotNull $changedAccount;
@@ -442,6 +448,7 @@ function Test-NetworkRuleSet
     {
         # Test
         $accountname = 'csa' + $rgname;
+        $vnetname = 'vnet' + $rgname;
         $skuname = 'S0';
         $accounttype = 'Face';
         $loc = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "Central US EUAP";
@@ -451,8 +458,10 @@ function Test-NetworkRuleSet
         $createdAccount = New-AzCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -CustomSubdomainName $accountname -Force;
         Assert-NotNull $createdAccount;
 
-		$vnetid = "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/control-plane-unit-test/providers/Microsoft.Network/virtualNetworks/vnet-unit-test/subnets/default"
-		$vnetid2 = "/subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/control-plane-unit-test/providers/Microsoft.Network/virtualNetworks/vnet-unit-test/subnets/subnet"
+		$vnet = CreateAndGetVirtualNetwork $rgname $vnetname
+
+		$vnetid = $vnet.Subnets[0].Id
+		$vnetid2 = $vnet.Subnets[1].Id
 
 		$ruleSet = Get-AzCognitiveServicesAccountNetworkRuleSet -ResourceGroupName $rgname -Name $accountname
 		Assert-Null $ruleSet
@@ -783,4 +792,20 @@ function Test-GetUsages
         # Cleanup
         Clean-ResourceGroup $rgname
     }
+}
+
+<#
+.SYNOPSIS
+Create a virtual network
+#>
+function CreateAndGetVirtualNetwork ($resourceGroupName, $vnetName, $location = "centraluseuap")
+{
+
+	$subnet1 = New-AzVirtualNetworkSubnetConfig -Name "default" -AddressPrefix "200.0.0.0/24"
+	$subnet2 = New-AzVirtualNetworkSubnetConfig -Name "subnet" -AddressPrefix "200.0.1.0/24"
+	$vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName -Location $location -AddressPrefix "200.0.0.0/16" -Subnet $subnet1,$subnet2
+
+	$getVnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName
+
+	return $getVnet
 }
