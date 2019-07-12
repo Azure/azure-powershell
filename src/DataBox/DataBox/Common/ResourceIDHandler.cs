@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.DataBox.Common
                     return splits[i + 1];
                 }
             }
-            throw new Exception(Resource.ResourceManager.GetString("InvalidResourceId"));
+            throw new Exception(Resource.InvalidResourceId);
         }
 
         public static string GetResourceName(string resourceId)
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.DataBox.Common
                     return splits[i + 3];
                 }
             }
-            throw new Exception(Resource.ResourceManager.GetString("InvalidResourceId"));
+            throw new Exception(Resource.InvalidResourceId);
         }
     }
 }

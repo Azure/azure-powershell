@@ -61,6 +61,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &quot;Address type: &quot;.
+        /// </summary>
+        internal static string AddressType {
+            get {
+                return ResourceManager.GetString("AddressType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;Address Validation Status: &quot;.
+        /// </summary>
+        internal static string AddressValidationStatus {
+            get {
+                return ResourceManager.GetString("AddressValidationStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &quot;The Shipping Address is ambiguous. Please select any address from the ones provided above.&quot;.
         /// </summary>
         internal static string AmbiguousAddressMessage {
@@ -70,7 +88,70 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The Shipping Address is not Valid..
+        ///   Looks up a localized string similar to &quot;Cancelling Databox job &quot;.
+        /// </summary>
+        internal static string CancellingDataboxJob {
+            get {
+                return ResourceManager.GetString("CancellingDataboxJob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;City: &quot;.
+        /// </summary>
+        internal static string City {
+            get {
+                return ResourceManager.GetString("City", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;Company name: &quot;.
+        /// </summary>
+        internal static string CompanyName {
+            get {
+                return ResourceManager.GetString("CompanyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;Country: &quot;.
+        /// </summary>
+        internal static string Country {
+            get {
+                return ResourceManager.GetString("Country", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;Creating Databox job &quot;.
+        /// </summary>
+        internal static string CreatingDataboxJob {
+            get {
+                return ResourceManager.GetString("CreatingDataboxJob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;Deletign Databox job &quot;.
+        /// </summary>
+        internal static string DeletingDataboxJob {
+            get {
+                return ResourceManager.GetString("DeletingDataboxJob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;in resource group &quot;.
+        /// </summary>
+        internal static string InResourceGroup {
+            get {
+                return ResourceManager.GetString("InResourceGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;The Shipping Address is not Valid.&quot;.
         /// </summary>
         internal static string InvalidAddressMessage {
             get {
@@ -84,6 +165,69 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Resources {
         internal static string InvalidResourceId {
             get {
                 return ResourceManager.GetString("InvalidResourceId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;Postal code: &quot;.
+        /// </summary>
+        internal static string PostalCode {
+            get {
+                return ResourceManager.GetString("PostalCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;State/Province: &quot;.
+        /// </summary>
+        internal static string StateOrProvince {
+            get {
+                return ResourceManager.GetString("StateOrProvince", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;Street address 1: &quot; .
+        /// </summary>
+        internal static string StreetAddress1 {
+            get {
+                return ResourceManager.GetString("StreetAddress1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;Street address 2: &quot;.
+        /// </summary>
+        internal static string StreetAddress2 {
+            get {
+                return ResourceManager.GetString("StreetAddress2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;Street address 3: &quot;.
+        /// </summary>
+        internal static string StreetAddress3 {
+            get {
+                return ResourceManager.GetString("StreetAddress3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;SUPPORT ADDRESSES: &quot;.
+        /// </summary>
+        internal static string SupportAddresses {
+            get {
+                return ResourceManager.GetString("SupportAddresses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;Zip extended code: &quot;.
+        /// </summary>
+        internal static string ZipExtendedCode {
+            get {
+                return ResourceManager.GetString("ZipExtendedCode", resourceCulture);
             }
         }
     }
