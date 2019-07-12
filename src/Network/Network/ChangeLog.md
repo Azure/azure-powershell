@@ -23,6 +23,7 @@
         - Add-AzNetworkSecurityRuleConfig
         - New-AzNetworkSecurityRuleConfig
         - Set-AzNetworkSecurityRuleConfig
+* Add ConnectionProtocolType (Ikev1/Ikev2) as a configurable parameter for New-AzVirtualNetworkGatewayConnection
 
 ## Version 1.11.0
 * Added `RoutingPreference` to public ip tags
