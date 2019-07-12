@@ -1,13 +1,13 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataShare.dll-Help.xml
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datashare/new-azdatashareaccount
 schema: 2.0.0
 ---
 
 # New-AzDataShareAccount
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates new data share account
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ New-AzDataShareAccount -ResourceGroupName <String> -Name <String> -Location <Str
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+**New-AzDataShareAccount** cmdlet creates a datashare account in the specified Azure resource group.
 
 ## EXAMPLES
 
@@ -34,8 +34,7 @@ Type              : Microsoft.DataShare/accounts
 Id                : /subscriptions/4834da9b-787a-44f6-ae81-60707ab8c957/resourceGroups/ADS/providers/Microsoft.DataShare/accounts/WikiADS
 ```
 
-{{ Add example description here }}
-
+Creates an account named "WikiADS" in resource group "ADS"
 ## PARAMETERS
 
 ### -AsJob
