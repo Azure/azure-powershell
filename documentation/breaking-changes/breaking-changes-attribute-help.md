@@ -202,7 +202,7 @@ The cmdlet is being deprecated. There will be no replacement for it.
 ```
 
 ## CmdletOutputBreakingChangeAttribute
-This attribute is used to call out the breakigng changes with the output of a cmdlet. A few examples are :
+This attribute is used to call out the breaking changes with the output of a cmdlet. A few examples are :
  - The type of the output is changing
  - The Output type is being deprecated
  - Some internal properties in the putput type are being deprecated
@@ -330,7 +330,7 @@ Breaking changes in the cmdlet : Get-SomeObjectD
 ```
 
 ## CmdletParameterBreakingChangeAttribute
-This attribute is used to call out the breakigng changes relating to a parameter of a cmdlet. A few examples are :
+This attribute is used to call out the breaking changes relating to a parameter of a cmdlet. A few examples are :
  - A parameter is being deprecated
  - A parameter is being replaced
  - A parameter is becoming mandatory
