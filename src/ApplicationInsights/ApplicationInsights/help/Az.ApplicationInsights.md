@@ -45,5 +45,5 @@ Update a continuous export configuration in an application insights resource
 Set daily data volume cap for an application insights resource
 
 ### [Set-AzApplicationInsightsPricingPlan](Set-AzApplicationInsightsPricingPlan.md)
-Set pricing plan and daily data volume information for an applicaiton insights resource
+Set pricing plan and daily data volume information for an application insights resource
 

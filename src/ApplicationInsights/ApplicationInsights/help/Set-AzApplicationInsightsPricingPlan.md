@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzApplicationInsightsPricingPlan
 
 ## SYNOPSIS
-Set pricing plan and daily data volume information for an applicaiton insights resource
+Set pricing plan and daily data volume information for an application insights resource
 
 ## SYNTAX
 
@@ -34,11 +34,11 @@ Set-AzApplicationInsightsPricingPlan [-ResourceId] <String> [-PricingPlan <Strin
 ```
 
 ## DESCRIPTION
-Set pricing plan and daily data volume information for an applicaiton insights resource
+Set pricing plan and daily data volume information for an application insights resource
 
 ## EXAMPLES
 
-### Example 1 Set pricing plan and daily data volume information for an applicaiton insights resource
+### Example 1 Set pricing plan and daily data volume information for an application insights resource
 ```
 PS C:\> Set-AzApplicationInsightsDailyCap -ResourceGroupName "testgroup" -Name "test" -PricingPlan "Basic" -DailyCapGB 400
 
