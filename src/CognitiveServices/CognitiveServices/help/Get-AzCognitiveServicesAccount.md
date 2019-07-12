@@ -26,8 +26,8 @@ Get-AzCognitiveServicesAccount [-ResourceGroupName] <String> [-Name] <String>
 ```
 
 ## DESCRIPTION
-The **Get-AzCognitiveServicesAccount** cmdlet gets the provisioned Cognitive Services accounts in the resource group specified by the *ResoureGroupName* parameter.
-If you do not specify the *ResoureGroupName* parameter, this cmdlet gets all Cognitive Services accounts for the current subscription.
+The **Get-AzCognitiveServicesAccount** cmdlet gets the provisioned Cognitive Services accounts in the resource group specified by the *ResourceGroupName* parameter.
+If you do not specify the *ResourceGroupName* parameter, this cmdlet gets all Cognitive Services accounts for the current subscription.
 
 ## EXAMPLES
 
