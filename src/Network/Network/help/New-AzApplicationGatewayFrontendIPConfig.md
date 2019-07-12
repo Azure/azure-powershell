@@ -26,7 +26,7 @@ New-AzApplicationGatewayFrontendIPConfig -Name <String> [-PrivateIPAddress <Stri
 ```
 
 ## DESCRIPTION
-The **New-AzApplicationGatewayFrontendIPConfig** cmdlet creates a front-end IP configuraton for an Azure application gateway.
+The **New-AzApplicationGatewayFrontendIPConfig** cmdlet creates a front-end IP configuration for an Azure application gateway.
 An application gateway supports two types of front-end IP configuration: 
 - Public IP addresses 
  -- Private IP addresses using internal load balancing (ILB).
