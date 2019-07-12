@@ -195,7 +195,7 @@ Starts a trigger in a data factory.
 Stops a managed dedicated integration runtime.
 
 ### [Stop-AzDataFactoryV2PipelineRun](Stop-AzDataFactoryV2PipelineRun.md)
-Stops a pieline run in a data factory.
+Stops a pipeline run in a data factory.
 
 ### [Stop-AzDataFactoryV2Trigger](Stop-AzDataFactoryV2Trigger.md)
 Stops a trigger in a data factory.
