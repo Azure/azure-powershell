@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.NetworkruleSet
         [Alias(AliasNamespaceName)]
         public string Name { get; set; }       
 
-        [Parameter(Mandatory = false, ParameterSetName = NetwrokruleSetPropertiesParameterSet,   HelpMessage = "Default Action for NetwrokeuleSet")]
+        [Parameter(Mandatory = false, ParameterSetName = NetwrokruleSetPropertiesParameterSet,   HelpMessage = "Default Action for NetworkRuleSet")]
         [PSArgumentCompleter("Allow", "Deny")]
         [PSDefaultValue(Value ="Deny")]
         public string DefaultAction { get; set; }

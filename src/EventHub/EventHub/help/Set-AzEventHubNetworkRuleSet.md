@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzEventHubNetworkRuleSet
 
 ## SYNOPSIS
-Update the NetwrokruleSet of the given Namepsace in the current Azure subscription.
+Update the NetworkruleSet of the given Namepsace in the current Azure subscription.
 
 ## SYNTAX
 
@@ -33,7 +33,7 @@ Set-AzEventHubNetworkRuleSet [-ResourceGroupName] <String> [-Name] <String> [-Re
 ```
 
 ## DESCRIPTION
-Update the NetwrokruleSet of the given Namepsace in the current Azure subscription.
+Update the NetworkruleSet of the given Namepsace in the current Azure subscription.
 
 ## EXAMPLES
 
@@ -86,7 +86,7 @@ Update the NetworkRuleSet using -ResourceId of the other namespace.
 ## PARAMETERS
 
 ### -DefaultAction
-Default Action for NetwrokeuleSet
+Default Action for NetworkRuleSet
 
 ```yaml
 Type: System.String

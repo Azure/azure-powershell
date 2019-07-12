@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzServiceBusNetworkRuleSet
 
 ## SYNOPSIS
-Update the NetwrokruleSet of the given Namepsace in the current Azure subscription.
+Update the NetworkruleSet of the given Namepsace in the current Azure subscription.
 
 ## SYNTAX
 
@@ -87,7 +87,7 @@ Update the NetworkRuleSet using -ResourceId of the other namespace.
 ## PARAMETERS
 
 ### -DefaultAction
-Default Action for NetwrokeuleSet
+Default Action for NetworkRuleSet
 
 ```yaml
 Type: System.String
