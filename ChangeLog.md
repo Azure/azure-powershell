@@ -35,7 +35,6 @@
 #### Az.Network
 * Added 'RoutingPreference' to public ip tags
 * Improve examples for 'Get-AzNetworkServiceTag' reference documentation
-* Add ConnectionProtocolType (Ikev1/Ikev2) as a configurable parameter for New-AzVirtualNetworkGatewayConnection
 
 #### Az.PolicyInsights
 * Fix null reference issue in Get-AzPolicyState
