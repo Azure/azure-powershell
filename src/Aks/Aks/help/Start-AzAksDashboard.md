@@ -58,7 +58,7 @@ Accept wildcard characters: False
 ```
 
 ### -DisableBrowser
-Do not pop open a browser after establising the kubectl port-forward.
+Do not pop open a browser after establishing the kubectl port-forward.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
