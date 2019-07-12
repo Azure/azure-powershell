@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Cmdlets
                     // get all gcrp assignments first
                     gcrpAssignments = GetAllGCRPAssignments(ResourceGroupName, VMName);
 
-                    gcPolicyAssignmentReports = GetPolicyStatusesDetailedByInitiativeId(ResourceGroupName, VMName, InitiativeId, false, gcrpAssignments);
+                    gcPolicyAssignmentReports = GetPolicyStatusesDetailedByInitiativeId(ResourceGroupName, VMName, InitiativeId, gcrpAssignments);
 
                     if (gcPolicyAssignmentReports == null || gcPolicyAssignmentReports.Count() > 0)
                     {
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Cmdlets
                     // get all gcrp assignments first
                     gcrpAssignments = GetAllGCRPAssignments(ResourceGroupName, VMName);
 
-                    gcPolicyAssignmentReports = GetPolicyStatusesDetailed(ResourceGroupName, VMName, gcrpAssignments, false);
+                    gcPolicyAssignmentReports = GetPolicyStatusesDetailed(ResourceGroupName, VMName, gcrpAssignments);
                     if (gcPolicyAssignmentReports == null || gcPolicyAssignmentReports.Count() > 0)
                     {
                         WriteObject(gcPolicyAssignmentReports, true);
