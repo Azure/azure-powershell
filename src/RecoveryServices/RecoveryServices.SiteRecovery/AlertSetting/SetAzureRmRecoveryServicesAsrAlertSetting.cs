@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string[] CustomEmailAddress { get; set; }
 
         /// <summary>
-        ///     Gets or sets mail language of alert /notifcation to user(supported culture codes from microsoft). 
+        ///     Gets or sets mail language of alert /notification to user(supported culture codes from microsoft). 
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.Set, Mandatory = false)]
         [Parameter(ParameterSetName = ASRParameterSets.DisableEmailToSubcriptionOwner)]

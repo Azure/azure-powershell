@@ -141,7 +141,7 @@ Accept wildcard characters: False
 ```
 
 ### -LocaleID
-Email language of alert /notifcation to user(supported culture codes from microsoft). 
+Email language of alert /notification to user(supported culture codes from microsoft). 
 
 ```yaml
 Type: System.String
