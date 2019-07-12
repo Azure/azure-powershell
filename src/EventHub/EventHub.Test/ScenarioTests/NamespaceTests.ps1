@@ -30,7 +30,6 @@ function NamespaceAuthTests
 
 	$StartTime = Get-Date
 	$EndTime = $StartTime.AddHours(2.0)
-	#New-AzEventHubAuthorizationRuleSASToken -ResourceId /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/v-ajnavtest/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace1-1375/AuthorizationRules/RootManageSharedAccessKey -KeyType Primary -ExpiryTime $EndTime -StartTime $StartTime
 	New-AzEventHubAuthorizationRuleSASToken -ResourceId /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/v-ajnavtest/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace1-1375/eventhubs/testingsastoken/authorizationRules/BaseAuthorizationRule -KeyType Primary -ExpiryTime $EndTime -StartTime $StartTime
 	
 
