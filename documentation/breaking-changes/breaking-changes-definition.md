@@ -6,9 +6,9 @@ Breaking changes in cmdlets are defined as follows:
 
 # Cmdlets
 - Removing a cmdlet
-  - Use the breaking change attribute ["CmdletDeprecationAttribute"](./breaking-changes-attribute-help.md#cmdletdeprecationattribute), more specificallly the ["cmdlet deprecation without replacement"](./breaking-changes-attribute-help.md#when-there-is-no-replacement-cmdlet) option
+  - Use the breaking change attribute ["CmdletDeprecationAttribute"](./breaking-changes-attribute-help.md#cmdletdeprecationattribute), more specifically the ["cmdlet deprecation without replacement"](./breaking-changes-attribute-help.md#when-there-is-no-replacement-cmdlet) option
 - Changing a cmdlet name without an alias to the original name
-  - Use the breaking change attribute ["CmdletDeprecationAttribute"](./breaking-changes-attribute-help.md#cmdletdeprecationattribute), more specificallly the ["cmdlet deprecation with replacement"](./breaking-changes-attribute-help.md#when-there-is-a-replacement-cmdlet) option
+  - Use the breaking change attribute ["CmdletDeprecationAttribute"](./breaking-changes-attribute-help.md#cmdletdeprecationattribute), more specifically the ["cmdlet deprecation with replacement"](./breaking-changes-attribute-help.md#when-there-is-a-replacement-cmdlet) option
 - Removing or changing a cmdlet alias
   - Use the generic breaking change attribute ["GenericBreakingChangeAttribute"](./breaking-changes-attribute-help.md#genericbreakingchangeattribute) with a [simple message](./breaking-changes-attribute-help.md#with-a-simple-message) calling out the alias that is being deprecated
 - Removing a cmdlet attribute option (`SupportShouldProcess`, `SupportsPaging`)
