@@ -120,7 +120,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Service Bus Migratio - Standard Namespace Resource Id
+Service Bus Migration - Standard Namespace Resource Id
 
 ```yaml
 Type: System.String
