@@ -441,7 +441,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} will be a mandatory paramter from next release..
+        ///   Looks up a localized string similar to {0} will be a mandatory parameter from next release..
         /// </summary>
         internal static string MandatoryParamFromNextRelease {
             get {

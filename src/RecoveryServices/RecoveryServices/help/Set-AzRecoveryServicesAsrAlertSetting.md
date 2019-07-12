@@ -126,7 +126,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnableEmailSubscriptionOwner
-Switch paramter specifies enable notification to subscription owner.
+Switch parameter specifies enable notification to subscription owner.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

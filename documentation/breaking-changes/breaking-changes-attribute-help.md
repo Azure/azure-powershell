@@ -1,6 +1,6 @@
 # Breaking Changes Attribute Help
 
-Below is description of the various types of Breaking Change Attributes (custom attributes) that can be used to decorate the cmdlet or its paramters to call out various [types of breaking changes](https://github.com/praries880/azure-powershell/blob/breakingchangeattribute/documentation/breaking-changes/breaking-changes-definition.md).
+Below is description of the various types of Breaking Change Attributes (custom attributes) that can be used to decorate the cmdlet or its parameters to call out various [types of breaking changes](https://github.com/praries880/azure-powershell/blob/breakingchangeattribute/documentation/breaking-changes/breaking-changes-definition.md).
 
 ## The different types of attributes
 
