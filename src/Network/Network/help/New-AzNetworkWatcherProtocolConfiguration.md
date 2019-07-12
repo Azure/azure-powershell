@@ -108,7 +108,7 @@ Accept wildcard characters: False
 ```
 
 ### -Protocol
-Procotol type
+Protocol type
 
 ```yaml
 Type: System.String
