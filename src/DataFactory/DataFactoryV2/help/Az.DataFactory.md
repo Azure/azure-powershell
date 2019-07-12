@@ -60,7 +60,7 @@ Gets keys for a self-hosted integration runtime.
 Gets metric data for an integration runtime. 
 
 ### [Get-AzDataFactoryV2IntegrationRuntimeNode](Get-AzDataFactoryV2IntegrationRuntimeNode.md)
-Gets an integration runtime node infomation.
+Gets an integration runtime node information.
 
 ### [Get-AzDataFactoryV2LinkedService](Get-AzDataFactoryV2LinkedService.md)
 Gets information about linked services in Data Factory.
