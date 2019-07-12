@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
             Errors = new List<ResourceManagementErrorWithDetails>();
             RequiredProviders = new List<Provider>();
 
-            
+
             if (validationResult.Error != null)
             {
                 Errors.Add(validationResult.Error);

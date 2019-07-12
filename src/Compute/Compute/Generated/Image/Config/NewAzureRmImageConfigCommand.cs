@@ -19,14 +19,15 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using Microsoft.Azure.Commands.Compute.Automation.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -62,6 +63,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+        [PSArgumentCompleter("V1", "V2")]
+        public string HyperVGeneration { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
         public ImageDataDisk[] DataDisk { get; set; }
 
         [Parameter(
@@ -84,7 +91,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             // StorageProfile
             ImageStorageProfile vStorageProfile = null;
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("SourceVirtualMachineId"))
+            if (this.IsParameterBound(c => c.SourceVirtualMachineId))
             {
                 if (vSourceVirtualMachine == null)
                 {
@@ -93,7 +100,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vSourceVirtualMachine.Id = this.SourceVirtualMachineId;
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("OsDisk"))
+            if (this.IsParameterBound(c => c.OsDisk))
             {
                 if (vStorageProfile == null)
                 {
@@ -102,7 +109,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vStorageProfile.OsDisk = this.OsDisk;
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("DataDisk"))
+            if (this.IsParameterBound(c => c.DataDisk))
             {
                 if (vStorageProfile == null)
                 {
@@ -119,8 +126,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var vImage = new PSImage
             {
-                Location = this.MyInvocation.BoundParameters.ContainsKey("Location") ? this.Location : null,
-                Tags = this.MyInvocation.BoundParameters.ContainsKey("Tag") ? this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value) : null,
+                HyperVGeneration = this.IsParameterBound(c => c.HyperVGeneration) ? this.HyperVGeneration : "V1",
+                Location = this.IsParameterBound(c => c.Location) ? this.Location : null,
+                Tags = this.IsParameterBound(c => c.Tag) ? this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value) : null,
                 SourceVirtualMachine = vSourceVirtualMachine,
                 StorageProfile = vStorageProfile,
             };

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/set-azvmssdiskencryptionextension
@@ -22,9 +22,9 @@ Set-AzVmssDiskEncryptionExtension [-ResourceGroupName] <String> [-VMScaleSetName
 ```
 
 ## DESCRIPTION
-The **Set-AzVmssDiskEncryptionExtension** cmdlet enables encryption on a VM scale set.
-This cmdlet enables encryption by installing the disk encryption extension on the VM scale set.
-If no *Name* parameter is specified, an extension with the default name AzureDiskEncryption for virtual machines that run the Windows operating system or AzureDiskEncryptionForLinux for Linux virtual machines are installed.
+The **Set-AzVmssDiskEncryptionExtension** cmdlet enables encryption on a VM scale set. This cmdlet enables encryption by installing the disk encryption extension on the VM scale set.
+
+The *VolumeType* parameter is required when encrypting Linux virtual machines, and must be set to "Data". It can be omitted when encrypting Windows virtual machines.
 
 ## EXAMPLES
 
@@ -36,10 +36,27 @@ $VaultName= "MyKeyVault"
 $KeyVault = Get-AzKeyVault -VaultName $VaultName -ResourceGroupName $RGName
 $DiskEncryptionKeyVaultUrl = $KeyVault.VaultUri
 $KeyVaultResourceId = $KeyVault.ResourceId
+
 PS C:\> Set-AzVmssDiskEncryptionExtension -ResourceGroupName $RGName -VMScaleSetName $VmssName -DiskEncryptionKeyVaultUrl $DiskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId
 ```
 
-This command enables encryption on all disks of all VMs in the VM scale set.
+This command enables encryption on all disks of all Windows VMs in a VM scale set.
+
+### Example 2
+```
+$RGName = "MyResourceGroup"
+$VmssName = "MyTestVmss"
+$VaultName= "MyKeyVault"
+$KeyVault = Get-AzKeyVault -VaultName $VaultName -ResourceGroupName $RGName
+$DiskEncryptionKeyVaultUrl = $KeyVault.VaultUri
+$KeyVaultResourceId = $KeyVault.ResourceId
+$VolumeType = "Data"
+
+PS C:\> Set-AzVmssDiskEncryptionExtension -ResourceGroupName $RGName -VMScaleSetName $VmssName -DiskEncryptionKeyVaultUrl $DiskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId
+ -VolumeType $volumeType
+```
+
+This command enables encryption on the data disks of all Linux VMs in a VM scale set.
 
 ## PARAMETERS
 
@@ -257,7 +274,7 @@ Accept wildcard characters: False
 ```
 
 ### -VolumeType
-Type of the volume (OS or Data) to perform encryption operation
+Type of the volume (OS or Data) on which to perform encryption operation. This parameter is required when encrypting Linux virtual machines, and must be set to a vlue supported by the Linux distribution. This parameter can be omitted when encrypting Windows virtual machines.
 
 ```yaml
 Type: System.String
@@ -304,7 +321,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

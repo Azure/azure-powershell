@@ -29,7 +29,6 @@ namespace Microsoft.Azure.Commands.WebApps.Models.WebApp
             workerTierName: other.WorkerTierName,
             status: other.Status,
             subscription: other.Subscription,
-            adminSiteName: other.AdminSiteName,
             hostingEnvironmentProfile: other.HostingEnvironmentProfile,
             maximumNumberOfWorkers: other.MaximumNumberOfWorkers,
             geoRegion: other.GeoRegion,
@@ -49,5 +48,7 @@ namespace Microsoft.Azure.Commands.WebApps.Models.WebApp
         {
 
         }
+
+        public string AdminSiteName { get; set; }
     }
 }

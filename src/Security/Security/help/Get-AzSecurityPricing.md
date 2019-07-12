@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
 online version: https://docs.microsoft.com/en-us/powershell/module/az.security/Get-AzSecurityPricing
@@ -15,18 +15,6 @@ Gets the pricing tier data for Azure Security Center for a scope.
 ### SubscriptionScope (Default)
 ```
 Get-AzSecurityPricing [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ResourceGroupLevelResource
-```
-Get-AzSecurityPricing -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### ResourceGroupScope
-```
-Get-AzSecurityPricing -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
 ```
 
 ### SubscriptionLevelResource
@@ -89,22 +77,7 @@ Resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceGroupLevelResource, SubscriptionLevelResource
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Resource group name.
-
-```yaml
-Type: System.String
-Parameter Sets: ResourceGroupLevelResource, ResourceGroupScope
+Parameter Sets: SubscriptionLevelResource
 Aliases:
 
 Required: True

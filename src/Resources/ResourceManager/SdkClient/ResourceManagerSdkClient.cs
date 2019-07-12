@@ -39,6 +39,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 using Microsoft.Azure.Commands.ResourceManager.Common.Paging;
 using System.Management.Automation;
+using Microsoft.Rest;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 {
@@ -465,11 +466,42 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
         private TemplateValidationInfo CheckBasicDeploymentErrors(string resourceGroup, string deploymentName, Deployment deployment)
         {
-            DeploymentValidateResult validationResult = resourceGroup != null
-                ? ResourceManagementClient.Deployments.Validate(resourceGroup, deploymentName, deployment)
-                : ResourceManagementClient.Deployments.ValidateAtSubscriptionScope(deploymentName, deployment);
+            try
+            {
+                DeploymentValidateResult validationResult = resourceGroup != null
+                    ? ResourceManagementClient.Deployments.Validate(resourceGroup, deploymentName, deployment)
+                    : ResourceManagementClient.Deployments.ValidateAtSubscriptionScope(deploymentName, deployment);
 
-            return new TemplateValidationInfo(validationResult);
+                return new TemplateValidationInfo(validationResult);
+            }
+            catch (Exception ex)
+            {
+                var error = HandleError(ex).FirstOrDefault();
+                return new TemplateValidationInfo(new DeploymentValidateResult(error));
+            }
+        }
+
+        private List<ResourceManagementErrorWithDetails> HandleError(Exception ex)
+        {
+            if (ex == null)
+            {
+                return null;
+            }
+
+            ResourceManagementErrorWithDetails error = null;
+            var innerException = HandleError(ex.InnerException);
+            if (ex is CloudException)
+            {
+                var cloudEx = ex as CloudException;
+                error = new ResourceManagementErrorWithDetails(cloudEx.Body?.Code, cloudEx.Body?.Message, cloudEx.Body?.Target, innerException);
+            }
+            else
+            {
+                error = new ResourceManagementErrorWithDetails(null, ex.Message, null, innerException);
+            }
+
+            return new List<ResourceManagementErrorWithDetails> { error };
+
         }
 
         private IPage<DeploymentOperation> ListDeploymentOperations(string resourceGroupName, string deploymentName)
@@ -1071,7 +1103,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         public virtual List<PSResourceManagerError> ValidateDeployment(PSDeploymentCmdletParameters parameters, DeploymentMode deploymentMode)
         {
             Deployment deployment = CreateBasicDeployment(parameters, deploymentMode, null);
-            TemplateValidationInfo validationInfo = CheckBasicDeploymentErrors(parameters.ResourceGroupName, Guid.NewGuid().ToString(), deployment);
+            var deploymentName = GenerateDeploymentName(parameters);
+            TemplateValidationInfo validationInfo = CheckBasicDeploymentErrors(parameters.ResourceGroupName, deploymentName, deployment);
 
             if (validationInfo.Errors.Count == 0)
             {
@@ -1104,14 +1137,37 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
         public virtual PSResource GetById(string resourceId, string apiVersion)
         {
-            PSResource result = null;
+            var providers = new List<Provider>();
             var resourceIdentifier = new ResourceIdentifier(resourceId);
-            var providers = ResourceManagementClient.Providers.List();
+            var providerNamespace = ResourceIdentifier.GetProviderFromResourceType(resourceIdentifier.ResourceType);
+            if (!string.IsNullOrEmpty(providerNamespace))
+            {
+                var result = ResourceManagementClient.Providers.Get(providerNamespace);
+                if (result != null)
+                {
+                    providers.Add(result);
+                }
+            }
+
+            if (!providers.Any())
+            {
+                var result = ResourceManagementClient.Providers.List();
+                if (result != null)
+                {
+                    result.ForEach(p => providers.Add(p));
+                    while (!string.IsNullOrEmpty(result.NextPageLink))
+                    {
+                        result = ResourceManagementClient.Providers.ListNext(result.NextPageLink);
+                        result.ForEach(p => providers.Add(p));
+                    }
+                }
+            }
+
             foreach (var provider in providers)
             {
                 var resourceType = provider.ResourceTypes
-                                            .Where(t => string.Equals(string.Format("{0}/{1}", provider.NamespaceProperty, t.ResourceType), resourceIdentifier.ResourceType, StringComparison.OrdinalIgnoreCase))
-                                            .FirstOrDefault();
+                                           .Where(t => string.Equals(string.Format("{0}/{1}", provider.NamespaceProperty, t.ResourceType), resourceIdentifier.ResourceType, StringComparison.OrdinalIgnoreCase))
+                                           .FirstOrDefault();
                 if (resourceType != null)
                 {
                     apiVersion = resourceType.ApiVersions.Contains(apiVersion) ? apiVersion : resourceType.ApiVersions.FirstOrDefault();
@@ -1122,7 +1178,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 }
             }
 
-            return result;
+            return null;
         }
     }
 }

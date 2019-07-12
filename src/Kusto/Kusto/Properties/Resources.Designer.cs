@@ -149,6 +149,15 @@ namespace Microsoft.Azure.Commands.Kusto.Properties {
                 return ResourceManager.GetString("KustoClusterNotExist", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot perform the requested operation because the specified cluster &apos;{0}&apos; exists in region {1}..
+        /// </summary>
+        public static string KustoClusterExistsRegion {
+            get {
+                return ResourceManager.GetString("KustoClusterExistsRegion", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to Cannot perform the requested operation because the specified cluster &apos;{0}&apos; exists in region {1}..

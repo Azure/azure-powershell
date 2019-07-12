@@ -24,6 +24,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Net;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace Microsoft.Azure.Commands.WebApps.Utilities
@@ -102,6 +103,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             {
                 ServerFarmId = appServicePlan,
                 Location = location,
+                Tags = siteEnvelope?.Tags
             };
 
             if (siteEnvelope!=null)
@@ -734,17 +736,33 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             }
         }
 
-        public IList<Snapshot> GetSiteSnapshots(string resourceGroupName, string webSiteName, string slotName)
+        public IList<Snapshot> GetSiteSnapshots(string resourceGroupName, string webSiteName, string slotName, bool useDrSecondary)
         {
             string qualifiedSiteName;
             bool useSlot = CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName);
             if (useSlot)
             {
-                return WrappedWebsitesClient.WebApps.ListSnapshotsSlot(resourceGroupName, webSiteName, slotName).ToList();
+                if (useDrSecondary)
+                {
+                    return WrappedWebsitesClient.WebApps.ListSnapshotsFromDRSecondarySlot(resourceGroupName, webSiteName, slotName).ToList();
+
+                }
+                else
+                {
+                    return WrappedWebsitesClient.WebApps.ListSnapshotsSlot(resourceGroupName, webSiteName, slotName).ToList();
+                }
             }
             else
             {
-                return WrappedWebsitesClient.WebApps.ListSnapshots(resourceGroupName, webSiteName).ToList();
+                if (useDrSecondary)
+                {
+                    return WrappedWebsitesClient.WebApps.ListSnapshotsFromDRSecondary(resourceGroupName, webSiteName).ToList();
+
+                }
+                else
+                {
+                    return WrappedWebsitesClient.WebApps.ListSnapshots(resourceGroupName, webSiteName).ToList();
+                }
             }
         }
 
@@ -763,8 +781,20 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             }
         }
 
-        public IList<DeletedSite> GetDeletedSites()
+        public IList<DeletedSite> GetDeletedSitesFromLocations(IEnumerable<string> locations)
         {
+            List<Task<IPage<DeletedSite>>> tasks = new List<Task<IPage<DeletedSite>>>();
+            foreach (string location in locations)
+            {
+                tasks.Add(WrappedWebsitesClient.DeletedWebApps.ListByLocationAsync(location));
+            }
+
+            List<DeletedSite> deletedSites = new List<DeletedSite>();
+            foreach(var task in tasks)
+            {
+                deletedSites.AddRange(task.Result);
+            }
+
             return WrappedWebsitesClient.DeletedWebApps().List().ToList();
         }
 
@@ -806,6 +836,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             string qualifiedSiteName;
 
             var shouldUseDeploymentSlot = CmdletHelpers.ShouldUseDeploymentSlot(webAppName, slotName, out qualifiedSiteName);
+            var webapp = GetWebApp(resourceGroupName, webAppName, slotName);
 
             var webappWithNewSslBinding = new Site
             {
@@ -816,11 +847,9 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                     ToUpdate = true,
                     SslState = sslState
                 }},
-                Location = location
+                Location = location,
+                Tags = webapp?.Tags
             };
-
-            var webapp = GetWebApp(resourceGroupName, webAppName, slotName);
-            webappWithNewSslBinding.Tags = webapp?.Tags;
 
             if (shouldUseDeploymentSlot)
             {

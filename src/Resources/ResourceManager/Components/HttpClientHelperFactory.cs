@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 {
+    using Microsoft.Rest;
     using System.Collections.Generic;
     using System.Net.Http.Headers;
 
@@ -47,7 +48,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// </summary>
         /// <param name="credentials">The credentials.</param>
         /// <param name="headerValues">The headers.</param>
-        public virtual HttpClientHelper CreateHttpClientHelper(SubscriptionCloudCredentials credentials, IEnumerable<ProductInfoHeaderValue> headerValues, Dictionary<string, string> cmdletHeaderValues)
+        public virtual HttpClientHelper CreateHttpClientHelper(ServiceClientCredentials credentials, IEnumerable<ProductInfoHeaderValue> headerValues, Dictionary<string, string> cmdletHeaderValues)
         {
             return new HttpClientHelperImpl(credentials: credentials, headerValues: headerValues, cmdletHeaderValues: cmdletHeaderValues);
         }
@@ -62,7 +63,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
             /// </summary>
             /// <param name="credentials">The credentials.</param>
             /// <param name="headerValues">The headers.</param>
-            public HttpClientHelperImpl(SubscriptionCloudCredentials credentials, IEnumerable<ProductInfoHeaderValue> headerValues, Dictionary<string, string> cmdletHeaderValues)
+            public HttpClientHelperImpl(ServiceClientCredentials credentials, IEnumerable<ProductInfoHeaderValue> headerValues, Dictionary<string, string> cmdletHeaderValues)
                 : base(credentials: credentials, headerValues: headerValues, cmdletHeaderValues: cmdletHeaderValues)
             {
             }

@@ -83,6 +83,7 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = "SetByLocation")]
         [ResourceNameCompleter("Microsoft.Network/networkWatchers/connectionMonitors", "ResourceGroupName", "NetworkWatcherName")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string Name { get; set; }
 
         public override void Execute()

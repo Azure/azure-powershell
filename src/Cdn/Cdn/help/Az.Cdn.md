@@ -29,7 +29,7 @@ Enables custom HTTPS.
 ### [Get-AzCdnCustomDomain](Get-AzCdnCustomDomain.md)
 Gets a CDN custom domain.
 
-### [Get-AzCdnEdgeNodes](Get-AzCdnEdgeNodes.md)
+### [Get-AzCdnEdgeNode](Get-AzCdnEdgeNode.md)
 Gets Azure CDN edgenodes.
 
 ### [Get-AzCdnEndpoint](Get-AzCdnEndpoint.md)
@@ -61,6 +61,18 @@ Gets the resource usage for a susbscription.
 
 ### [New-AzCdnCustomDomain](New-AzCdnCustomDomain.md)
 Creates a custom domain for a CDN endpoint.
+
+### [New-AzCdnDeliveryPolicy](New-AzCdnDeliveryPolicy.md)
+Creates a deliveryPolicy for a CDN endpoint.
+
+### [New-AzCdnDeliveryRule](New-AzCdnDeliveryRule.md)
+Creates a deliveryRule for deliveryPolicy creation.
+
+### [New-AzCdnDeliveryRuleAction](New-AzCdnDeliveryRuleAction.md)
+Creates a deliveryRuleAction for deliveryRule creation.
+
+### [New-AzCdnDeliveryRuleCondition](New-AzCdnDeliveryRuleCondition.md)
+Creates a deliveryRuleCondition for deliveryRule creation.
 
 ### [New-AzCdnEndpoint](New-AzCdnEndpoint.md)
 Creates a CDN endpoint.

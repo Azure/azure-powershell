@@ -521,7 +521,7 @@
   </data>
   <data name="DestinationBlobTypeNotMatch" xml:space="preserve">
     <value>User specified blob type does not match the blob type of the existing destination blob.</value>
-  </data>    
+  </data>
   <data name="StopCopyOperationCancelled" xml:space="preserve">
     <value>The stop copy operation on blob '{0}' in container '{1}' is cancelled.</value>
     <comment>0 for blob name, 1 for container name.</comment>
@@ -733,5 +733,8 @@ Failed: {2}.</value>
   </data>
   <data name="StartTimeParameterConflict" xml:space="preserve">
     <value>Parameter -StartTime and -NoStartTime are mutually exclusive</value>
+  </data>
+  <data name="ContextCannotBeNull" xml:space="preserve">
+    <value>Context cannot be null.  Please log in using Connect-AzAccount.</value>
   </data>
 </root>

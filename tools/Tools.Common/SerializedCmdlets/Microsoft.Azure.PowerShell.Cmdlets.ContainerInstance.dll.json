@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerInstance.Models",
             "Name": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Identity": "Microsoft.Azure.Management.ContainerInstance.Models.ContainerGroupIdentity",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -522,7 +522,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerInstance.Models",
             "Name": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Identity": "Microsoft.Azure.Management.ContainerInstance.Models.ContainerGroupIdentity",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -839,7 +839,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ContainerInstance.Models",
                   "Name": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Identity": "Microsoft.Azure.Management.ContainerInstance.Models.ContainerGroupIdentity",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -1238,7 +1238,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerInstance.Models",
             "Name": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Identity": "Microsoft.Azure.Management.ContainerInstance.Models.ContainerGroupIdentity",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -4546,7 +4546,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerInstance.Models",
             "Name": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Identity": "Microsoft.Azure.Management.ContainerInstance.Models.ContainerGroupIdentity",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -4663,7 +4663,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerInstance.Models",
             "Name": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Identity": "Microsoft.Azure.Management.ContainerInstance.Models.ContainerGroupIdentity",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -4934,7 +4934,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ContainerInstance.Models",
                   "Name": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Identity": "Microsoft.Azure.Management.ContainerInstance.Models.ContainerGroupIdentity",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -5667,7 +5667,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerInstance.Models.PSContainer]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerInstance.Models.PSContainer]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ContainerInstance.Models.PSContainer, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ContainerInstance.Models.PSContainer, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -5679,7 +5679,7 @@
     "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainer": {
       "Namespace": "Microsoft.Azure.Commands.ContainerInstance.Models",
       "Name": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainer",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainer, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainer, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "CurrentState": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerState",
         "PreviousState": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerState",
@@ -5746,7 +5746,7 @@
     "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerState": {
       "Namespace": "Microsoft.Azure.Commands.ContainerInstance.Models",
       "Name": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerState",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerState, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerState, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "StartTime": "System.Nullable`1[System.DateTime]",
         "FinishTime": "System.Nullable`1[System.DateTime]",
@@ -5828,7 +5828,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerInstance.Models.PSEvent]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerInstance.Models.PSEvent]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ContainerInstance.Models.PSEvent, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ContainerInstance.Models.PSEvent, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -5840,7 +5840,7 @@
     "Microsoft.Azure.Commands.ContainerInstance.Models.PSEvent": {
       "Namespace": "Microsoft.Azure.Commands.ContainerInstance.Models",
       "Name": "Microsoft.Azure.Commands.ContainerInstance.Models.PSEvent",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSEvent, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSEvent, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "FirstTimestamp": "System.Nullable`1[System.DateTime]",
         "LastTimestamp": "System.Nullable`1[System.DateTime]",
@@ -6028,7 +6028,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerInstance.Models.PSPort]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerInstance.Models.PSPort]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ContainerInstance.Models.PSPort, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ContainerInstance.Models.PSPort, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -6040,7 +6040,7 @@
     "Microsoft.Azure.Commands.ContainerInstance.Models.PSPort": {
       "Namespace": "Microsoft.Azure.Commands.ContainerInstance.Models",
       "Name": "Microsoft.Azure.Commands.ContainerInstance.Models.PSPort",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSPort, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSPort, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "PortProperty": "System.Int32",
         "Protocol": "System.String"
@@ -6415,7 +6415,7 @@
     "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup": {
       "Namespace": "Microsoft.Azure.Commands.ContainerInstance.Models",
       "Name": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Identity": "Microsoft.Azure.Management.ContainerInstance.Models.ContainerGroupIdentity",
         "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",

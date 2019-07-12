@@ -17,7 +17,7 @@ Adds an authentication certificate to an application gateway.
 ### [Add-AzApplicationGatewayBackendAddressPool](Add-AzApplicationGatewayBackendAddressPool.md)
 Adds a back-end address pool to an application gateway.
 
-### [Add-AzApplicationGatewayBackendHttpSettings](Add-AzApplicationGatewayBackendHttpSettings.md)
+### [Add-AzApplicationGatewayBackendHttpSetting](Add-AzApplicationGatewayBackendHttpSetting.md)
 Adds back-end HTTP settings to an application gateway.
 
 ### [Add-AzApplicationGatewayCustomError](Add-AzApplicationGatewayCustomError.md)
@@ -137,14 +137,14 @@ Gets an authentication certificate for an application gateway.
 ### [Get-AzApplicationGatewayAutoscaleConfiguration](Get-AzApplicationGatewayAutoscaleConfiguration.md)
 Gets the Autoscale Configuration of the Application Gateway.
 
-### [Get-AzApplicationGatewayAvailableSslOptions](Get-AzApplicationGatewayAvailableSslOptions.md)
+### [Get-AzApplicationGatewayAvailableServerVariableAndHeader](Get-AzApplicationGatewayAvailableServerVariableAndHeader.md)
+Get the supported server variables and available request and response headers.
+
+### [Get-AzApplicationGatewayAvailableSslOption](Get-AzApplicationGatewayAvailableSslOption.md)
 Gets all available ssl options for ssl policy for Application Gateway.
 
-### [Get-AzApplicationGatewayAvailableWafRuleSets](Get-AzApplicationGatewayAvailableWafRuleSets.md)
+### [Get-AzApplicationGatewayAvailableWafRuleSet](Get-AzApplicationGatewayAvailableWafRuleSet.md)
 Gets all available web application firewall rule sets.
-
-### [Get-AzApplicationGatewayAvailableServerVariableAndHeader](Get-AzApplicationGatewayAvailableServerVariableAndHeader.md)
-Gets all available server variables, request and response headers.
 
 ### [Get-AzApplicationGatewayBackendAddressPool](Get-AzApplicationGatewayBackendAddressPool.md)
 Gets a back-end address pool for an application gateway.
@@ -152,7 +152,7 @@ Gets a back-end address pool for an application gateway.
 ### [Get-AzApplicationGatewayBackendHealth](Get-AzApplicationGatewayBackendHealth.md)
 Gets application gateway backend health.
 
-### [Get-AzApplicationGatewayBackendHttpSettings](Get-AzApplicationGatewayBackendHttpSettings.md)
+### [Get-AzApplicationGatewayBackendHttpSetting](Get-AzApplicationGatewayBackendHttpSetting.md)
 Gets the back-end HTTP settings of an application gateway.
 
 ### [Get-AzApplicationGatewayConnectionDraining](Get-AzApplicationGatewayConnectionDraining.md)
@@ -160,6 +160,9 @@ Gets the connection draining configuration of a back-end HTTP settings object.
 
 ### [Get-AzApplicationGatewayCustomError](Get-AzApplicationGatewayCustomError.md)
 Gets custom error(s) from an application gateway.
+
+### [Get-AzApplicationGatewayFirewallPolicy](Get-AzApplicationGatewayFirewallPolicy.md)
+Gets an application gateway firewall policy.
 
 ### [Get-AzApplicationGatewayFrontendIPConfig](Get-AzApplicationGatewayFrontendIPConfig.md)
 Gets the front-end IP configuration of an application gateway.
@@ -215,6 +218,9 @@ Gets the WAF configuration of an application gateway.
 ### [Get-AzApplicationSecurityGroup](Get-AzApplicationSecurityGroup.md)
 Gets an application security group.
 
+### [Get-AzAvailablePrivateEndpointType](Get-AzAvailablePrivateEndpointType.md)
+Return available private end point types in the location
+
 ### [Get-AzAvailableServiceDelegation](Get-AzAvailableServiceDelegation.md)
 Get available service delegations in the region.
 
@@ -254,7 +260,7 @@ Gets a route table from an ExpressRoute circuit.
 ### [Get-AzExpressRouteCircuitRouteTableSummary](Get-AzExpressRouteCircuitRouteTableSummary.md)
 Gets a route table summary of an ExpressRoute circuit.
 
-### [Get-AzExpressRouteCircuitStats](Get-AzExpressRouteCircuitStats.md)
+### [Get-AzExpressRouteCircuitStat](Get-AzExpressRouteCircuitStat.md)
 Gets usage statistics of an ExpressRoute circuit.
 
 ### [Get-AzExpressRouteConnection](Get-AzExpressRouteConnection.md)
@@ -296,9 +302,6 @@ Gets a Azure Firewall.
 ### [Get-AzFirewallFqdnTag](Get-AzFirewallFqdnTag.md)
 Gets the available Azure Firewall Fqdn Tags.
 
-### [Get-AzInterfaceEndpoint](Get-AzInterfaceEndpoint.md)
-The Get-AzInterfaceEndpoint cmdlet gets a Interface Endpoint.
-
 ### [Get-AzLoadBalancer](Get-AzLoadBalancer.md)
 Gets a load balancer.
 
@@ -326,6 +329,9 @@ Gets the rule configuration for a load balancer.
 ### [Get-AzLocalNetworkGateway](Get-AzLocalNetworkGateway.md)
 Gets a Local Network Gateway
 
+### [Get-AzNatGateway](Get-AzNatGateway.md)
+Gets a Nat Gateway resource in a resource group by name or NatGateway Id  or all Nat Gateway resources in a resource group.
+
 ### [Get-AzNetworkInterface](Get-AzNetworkInterface.md)
 Gets a network interface.
 
@@ -343,6 +349,9 @@ Gets a network security group.
 
 ### [Get-AzNetworkSecurityRuleConfig](Get-AzNetworkSecurityRuleConfig.md)
 Get a network security rule configuration for a network security group.
+
+### [Get-AzNetworkServiceTag](Get-AzNetworkServiceTag.md)
+Gets the list of service tag information resources.
 
 ### [Get-AzNetworkUsage](Get-AzNetworkUsage.md)
 Lists network usages for a subscription
@@ -379,6 +388,12 @@ Gets a network level view of resources and their relationships in a resource gro
 
 ### [Get-AzNetworkWatcherTroubleshootingResult](Get-AzNetworkWatcherTroubleshootingResult.md)
 Gets the troubleshooting result from the previously run or currently running troubleshooting operation.
+
+### [Get-AzPrivateEndpoint](Get-AzPrivateEndpoint.md)
+Get a private endpoint
+
+### [Get-AzPrivateLinkService](Get-AzPrivateLinkService.md)
+Gets private link service
 
 ### [Get-AzPublicIpAddress](Get-AzPublicIpAddress.md)
 Gets a public IP address.
@@ -452,6 +467,9 @@ Gets a virtual network tap
 ### [Get-AzVirtualNetworkUsageList](Get-AzVirtualNetworkUsageList.md)
 Gets virtual network current usage.
 
+### [Get-AzVirtualNetworkGatewayVpnClientConnectionHealth](Get-AzVirtualNetworkGatewayVpnClientConnectionHealth.md)
+Gets virtual network vpn client connection health for per vpn client connection.
+
 ### [Get-AzVirtualWan](Get-AzVirtualWan.md)
 Gets a Virtual WAN or all Virtual WANs in a resource group or subscription.
 
@@ -503,8 +521,8 @@ Creates a Autoscale Configuration for the Application Gateway.
 ### [New-AzApplicationGatewayBackendAddressPool](New-AzApplicationGatewayBackendAddressPool.md)
 Creates a back-end address pool for an application gateway.
 
-### [New-AzApplicationGatewayBackendHttpSettings](New-AzApplicationGatewayBackendHttpSettings.md)
-Creates back-end HTTP settings for an application gateway.
+### [New-AzApplicationGatewayBackendHttpSetting](New-AzApplicationGatewayBackendHttpSetting.md)
+Creates back-end HTTP setting for an application gateway.
 
 ### [New-AzApplicationGatewayConnectionDraining](New-AzApplicationGatewayConnectionDraining.md)
 Creates a new connection draining configuration for back-end HTTP settings.
@@ -512,11 +530,23 @@ Creates a new connection draining configuration for back-end HTTP settings.
 ### [New-AzApplicationGatewayCustomError](New-AzApplicationGatewayCustomError.md)
 Creates a custom error with http status code and custom error page url 
 
+### [New-AzApplicationGatewayFirewallCondition](New-AzApplicationGatewayFirewallCondition.md)
+Creates a match condition for custom rule
+
+### [New-AzApplicationGatewayFirewallCustomRule](New-AzApplicationGatewayFirewallCustomRule.md)
+Creates a new custom rule for the application gateway firewall policy.
+
 ### [New-AzApplicationGatewayFirewallDisabledRuleGroupConfig](New-AzApplicationGatewayFirewallDisabledRuleGroupConfig.md)
 Creates a new disabled rule group configuration.
 
 ### [New-AzApplicationGatewayFirewallExclusionConfig](New-AzApplicationGatewayFirewallExclusionConfig.md)
 Creates a new exclusion rule list for application gateway waf
+
+### [New-AzApplicationGatewayFirewallMatchVariable](New-AzApplicationGatewayFirewallMatchVariable.md)
+Creates a match variable for firewall condition.
+
+### [New-AzApplicationGatewayFirewallPolicy](New-AzApplicationGatewayFirewallPolicy.md)
+Creates a application gateway firewall policy.
 
 ### [New-AzApplicationGatewayFrontendIPConfig](New-AzApplicationGatewayFrontendIPConfig.md)
 Creates a front-end IP configuration for an application gateway.
@@ -553,6 +583,9 @@ Creates a rewrite rule for an application gateway.
 
 ### [New-AzApplicationGatewayRewriteRuleActionSet](New-AzApplicationGatewayRewriteRuleActionSet.md)
 Creates a rewrite rule actionset for an application gateway.
+
+### [New-AzApplicationGatewayRewriteRuleCondition](New-AzApplicationGatewayRewriteRuleCondition.md)
+Adds a condition to the RewriteRule for an application gateway.
 
 ### [New-AzApplicationGatewayRewriteRuleHeaderConfiguration](New-AzApplicationGatewayRewriteRuleHeaderConfiguration.md)
 Creates a rewrite rule header configuration for an application gateway.
@@ -662,6 +695,9 @@ Creates a rule configuration for a load balancer.
 ### [New-AzLocalNetworkGateway](New-AzLocalNetworkGateway.md)
 Creates a Local Network Gateway
 
+### [New-AzNatGateway](New-AzNatGateway.md)
+Create new Nat Gateway resource with properties Public Ip Address/Public Ip Prefix, IdleTimeoutInMinutes and Sku.
+
 ### [New-AzNetworkInterface](New-AzNetworkInterface.md)
 Creates a network interface.
 
@@ -695,6 +731,18 @@ Creates a new protocol configuration object.
 
 ### [New-AzPacketCaptureFilterConfig](New-AzPacketCaptureFilterConfig.md)
 Creates a new packet capture filter object.
+
+### [New-AzPrivateEndpoint](New-AzPrivateEndpoint.md)
+Creates a private endpoint.
+
+### [New-AzPrivateLinkService](New-AzPrivateLinkService.md)
+Creates a private link service
+
+### [New-AzPrivateLinkServiceConnection](New-AzPrivateLinkServiceConnection.md)
+Creates a private link service connection configuration.
+
+### [New-AzPrivateLinkServiceIpConfig](New-AzPrivateLinkServiceIpConfig.md)
+Create a private link service ip configuration.
 
 ### [New-AzPublicIpAddress](New-AzPublicIpAddress.md)
 Creates a public IP address.
@@ -793,7 +841,7 @@ Removes Autoscale Configuration from an application gateway.
 ### [Remove-AzApplicationGatewayBackendAddressPool](Remove-AzApplicationGatewayBackendAddressPool.md)
 Removes a back-end address pool from an application gateway.
 
-### [Remove-AzApplicationGatewayBackendHttpSettings](Remove-AzApplicationGatewayBackendHttpSettings.md)
+### [Remove-AzApplicationGatewayBackendHttpSetting](Remove-AzApplicationGatewayBackendHttpSetting.md)
 Removes back-end HTTP settings from an application gateway.
 
 ### [Remove-AzApplicationGatewayConnectionDraining](Remove-AzApplicationGatewayConnectionDraining.md)
@@ -801,6 +849,9 @@ Removes the connection draining configuration of a back-end HTTP settings object
 
 ### [Remove-AzApplicationGatewayCustomError](Remove-AzApplicationGatewayCustomError.md)
 Removes a custom error from an application gateway.
+
+### [Remove-AzApplicationGatewayFirewallPolicy](Remove-AzApplicationGatewayFirewallPolicy.md)
+Removes an application gateway firewall policy.
 
 ### [Remove-AzApplicationGatewayFrontendIPConfig](Remove-AzApplicationGatewayFrontendIPConfig.md)
 Removes a front-end IP configuration from an application gateway.
@@ -907,6 +958,9 @@ Removes a rule configuration for a load balancer.
 ### [Remove-AzLocalNetworkGateway](Remove-AzLocalNetworkGateway.md)
 Deletes a Local Network Gateway
 
+### [Remove-AzNatGateway](Remove-AzNatGateway.md)
+Remove Nat Gateway resource.
+
 ### [Remove-AzNetworkInterface](Remove-AzNetworkInterface.md)
 Removes a network interface.
 
@@ -933,6 +987,12 @@ Remove connection monitor.
 
 ### [Remove-AzNetworkWatcherPacketCapture](Remove-AzNetworkWatcherPacketCapture.md)
 Removes a packet capture resource.
+
+### [Remove-AzPrivateEndpoint](Remove-AzPrivateEndpoint.md)
+Removes a private endpoint.
+
+### [Remove-AzPrivateLinkService](Remove-AzPrivateLinkService.md)
+Removes a private link service
 
 ### [Remove-AzPublicIpAddress](Remove-AzPublicIpAddress.md)
 Removes a public IP address.
@@ -1030,7 +1090,7 @@ Updates Autoscale Configuration of an application gateway.
 ### [Set-AzApplicationGatewayBackendAddressPool](Set-AzApplicationGatewayBackendAddressPool.md)
 Updates a back-end address pool for an application gateway.
 
-### [Set-AzApplicationGatewayBackendHttpSettings](Set-AzApplicationGatewayBackendHttpSettings.md)
+### [Set-AzApplicationGatewayBackendHttpSetting](Set-AzApplicationGatewayBackendHttpSetting.md)
 Updates back-end HTTP settings for an application gateway.
 
 ### [Set-AzApplicationGatewayConnectionDraining](Set-AzApplicationGatewayConnectionDraining.md)
@@ -1038,6 +1098,9 @@ Modifies the connection draining configuration of a back-end HTTP settings objec
 
 ### [Set-AzApplicationGatewayCustomError](Set-AzApplicationGatewayCustomError.md)
 Updates a custom error in an application gateway.
+
+### [Set-AzApplicationGatewayFirewallPolicy](Set-AzApplicationGatewayFirewallPolicy.md)
+Updates an application gateway firewall policy.
 
 ### [Set-AzApplicationGatewayFrontendIPConfig](Set-AzApplicationGatewayFrontendIPConfig.md)
 Modifies a front-end IP address configuration.
@@ -1132,6 +1195,9 @@ Updates a rule configuration for a load balancer.
 ### [Set-AzLocalNetworkGateway](Set-AzLocalNetworkGateway.md)
 Modifies a local network gateway.
 
+### [Set-AzNatGateway](Set-AzNatGateway.md)
+Update Nat Gateway Resource with Public Ip Address, Public Ip Prefix and IdleTimeoutInMinutes.
+
 ### [Set-AzNetworkInterface](Set-AzNetworkInterface.md)
 Updates a network interface.
 
@@ -1155,6 +1221,9 @@ Configures flow logging for a target resource.
 
 ### [Set-AzNetworkWatcherConnectionMonitor](Set-AzNetworkWatcherConnectionMonitor.md)
 Update a connection monitor.
+
+### [Set-AzPrivateEndpointConnection](Set-AzPrivateEndpointConnection.md)
+Updates a private endpoint connection state on private link service.
 
 ### [Set-AzPublicIpAddress](Set-AzPublicIpAddress.md)
 Updates a public IP address.

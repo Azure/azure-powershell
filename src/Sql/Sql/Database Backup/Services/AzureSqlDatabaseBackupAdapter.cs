@@ -24,6 +24,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Services
 {
@@ -363,7 +364,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
             bool? onlyLatestPerDatabase,
             string databaseState)
         {
-            if (!string.IsNullOrWhiteSpace(backupName))
+            if (!string.IsNullOrWhiteSpace(backupName) && !WildcardPattern.ContainsWildcardCharacters(backupName))
             {
                 return new List<AzureSqlDatabaseLongTermRetentionBackupModel>()
                 {

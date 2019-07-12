@@ -222,9 +222,8 @@ Package
 launchSettings.json
 /src/StackAdmin/AzureRM/AzureRM.psm1
 /src/StackAdmin/AzureStack/AzureStack.psm1
+/CsprojMappings.json
 /ModuleMappings.json
-/SolutionMappings.json
-/TestMappings.json
 /tools/Modules/tmp
 /tools/Az/Az.psm1
 /Azure.PowerShell.sln

@@ -43,30 +43,30 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [ValidateNotNullOrEmpty]
         public string Slot { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The location of the deleted app.")]
+        [ValidateNotNullOrEmpty]
+        public string Location { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            IEnumerable<PSAzureDeletedWebApp> deletedSites = WebsitesClient.GetDeletedSites()
-                .Where(ds => ds.DeletedSiteId.HasValue)
-                .Select(ds =>
-                new PSAzureDeletedWebApp()
-                {
-                    DeletedSiteId = ds.DeletedSiteId.Value,
-                    DeletionTime = DateTime.Parse(ds.DeletedTimestamp, System.Globalization.CultureInfo.InvariantCulture),
-                    SubscriptionId = DefaultContext.Subscription.Id,
-                    ResourceGroupName = ds.ResourceGroup,
-                    Name = ds.DeletedSiteName,
-                    Slot = ds.Slot
-                }
-            );
 
-            // Filter out deleted sites older than 30 days.
-            // They can't be restored and eventually will not be returned by the GetDeletedSites API.
-            deletedSites = deletedSites.Where(ds => ds.DeletionTime >= DateTime.UtcNow.AddDays(-30)).OrderBy(ds => ds.DeletionTime);
+            IEnumerable<string> locations;
+            if (string.IsNullOrEmpty(Location))
+            {
+                locations = ResourcesClient.GetDeletedSitesLocations();
+            }
+            else
+            {
+                locations = new List<string> { Location };
+            }
+
+            IEnumerable<PSAzureDeletedWebApp> deletedSites = WebsitesClient.GetDeletedSitesFromLocations(locations)
+                .Where(ds => ds.DeletedSiteId.HasValue)
+                .Select(ds => new PSAzureDeletedWebApp(ds, DefaultContext.Subscription.Id));
 
             if (!string.IsNullOrEmpty(ResourceGroupName))
             {
-
                 deletedSites = deletedSites.Where(ds => string.Equals(ResourceGroupName, ds.ResourceGroupName, StringComparison.InvariantCultureIgnoreCase));
             }
             if (!string.IsNullOrEmpty(Name))

@@ -2,8 +2,8 @@
   "Cmdlets": [
     {
       "VerbName": "Get",
-      "NounName": "AzMediaServiceKeys",
-      "Name": "Get-AzMediaServiceKeys",
+      "NounName": "AzMediaServiceKey",
+      "Name": "Get-AzMediaServiceKey",
       "ClassName": "Microsoft.Azure.Commands.Media.ServiceKey.GetAzureRmMediaServiceKeys",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Media.Models",
             "Name": "Microsoft.Azure.Commands.Media.Models.PSServiceKeys",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSServiceKeys, Microsoft.Azure.PowerShell.Cmdlets.Media, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSServiceKeys, Microsoft.Azure.PowerShell.Cmdlets.Media, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "PrimaryAuthEndpoint": "System.String",
               "SecondaryAuthEndpoint": "System.String",
@@ -235,7 +235,9 @@
           ]
         }
       ],
-      "AliasList": []
+      "AliasList": [
+        "Get-AzMediaServiceKeys"
+      ]
     },
     {
       "VerbName": "Set",
@@ -251,7 +253,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Media.Models",
             "Name": "Microsoft.Azure.Commands.Media.Models.PSServiceKey",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSServiceKey, Microsoft.Azure.PowerShell.Cmdlets.Media, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSServiceKey, Microsoft.Azure.PowerShell.Cmdlets.Media, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Key": "System.String",
               "KeyType": "System.String"
@@ -685,8 +687,8 @@
     },
     {
       "VerbName": "Sync",
-      "NounName": "AzMediaServiceStorageKeys",
-      "Name": "Sync-AzMediaServiceStorageKeys",
+      "NounName": "AzMediaServiceStorageKey",
+      "Name": "Sync-AzMediaServiceStorageKey",
       "ClassName": "Microsoft.Azure.Commands.Media.ServiceKey.SyncAzureRmMediaServiceStorageKeys",
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
@@ -926,7 +928,9 @@
           ]
         }
       ],
-      "AliasList": []
+      "AliasList": [
+        "Sync-AzMediaServiceStorageKeys"
+      ]
     },
     {
       "VerbName": "Get",
@@ -942,7 +946,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Media.Models",
             "Name": "Microsoft.Azure.Commands.Media.Models.PSMediaService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSMediaService, Microsoft.Azure.PowerShell.Cmdlets.Media, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSMediaService, Microsoft.Azure.PowerShell.Cmdlets.Media, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ApiEndpoints": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Media.Models.PSApiEndpoint]",
               "StorageAccounts": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Media.Models.PSStorageAccount]",
@@ -1294,7 +1298,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Media.Models",
             "Name": "Microsoft.Azure.Commands.Media.Models.PSCheckNameAvailabilityOutput",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSCheckNameAvailabilityOutput, Microsoft.Azure.PowerShell.Cmdlets.Media, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSCheckNameAvailabilityOutput, Microsoft.Azure.PowerShell.Cmdlets.Media, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "NameAvailable": "System.Boolean",
               "Reason": "System.String",
@@ -1439,7 +1443,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Media.Models",
             "Name": "Microsoft.Azure.Commands.Media.Models.PSMediaService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSMediaService, Microsoft.Azure.PowerShell.Cmdlets.Media, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSMediaService, Microsoft.Azure.PowerShell.Cmdlets.Media, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ApiEndpoints": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Media.Models.PSApiEndpoint]",
               "StorageAccounts": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Media.Models.PSStorageAccount]",
@@ -1576,7 +1580,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Media.Models",
             "Name": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount[], Microsoft.Azure.PowerShell.Cmdlets.Media, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount[], Microsoft.Azure.PowerShell.Cmdlets.Media, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount",
             "GenericTypeArguments": [],
@@ -1895,7 +1899,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Media.Models",
                   "Name": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount[], Microsoft.Azure.PowerShell.Cmdlets.Media, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount[], Microsoft.Azure.PowerShell.Cmdlets.Media, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount",
                   "GenericTypeArguments": [],
@@ -2062,7 +2066,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Media.Models",
             "Name": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount, Microsoft.Azure.PowerShell.Cmdlets.Media, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount, Microsoft.Azure.PowerShell.Cmdlets.Media, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsPrimary": "System.Nullable`1[System.Boolean]",
               "Id": "System.String",
@@ -2266,7 +2270,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -2374,7 +2378,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2449,7 +2453,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Media.Models",
             "Name": "Microsoft.Azure.Commands.Media.Models.PSMediaService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSMediaService, Microsoft.Azure.PowerShell.Cmdlets.Media, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSMediaService, Microsoft.Azure.PowerShell.Cmdlets.Media, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ApiEndpoints": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Media.Models.PSApiEndpoint]",
               "StorageAccounts": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Media.Models.PSStorageAccount]",
@@ -2566,7 +2570,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Media.Models",
             "Name": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount[], Microsoft.Azure.PowerShell.Cmdlets.Media, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount[], Microsoft.Azure.PowerShell.Cmdlets.Media, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount",
             "GenericTypeArguments": [],
@@ -2698,7 +2702,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Media.Models",
                   "Name": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount[], Microsoft.Azure.PowerShell.Cmdlets.Media, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount[], Microsoft.Azure.PowerShell.Cmdlets.Media, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount",
                   "GenericTypeArguments": [],
@@ -3114,7 +3118,7 @@
     "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Media.Models.PSApiEndpoint]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Media.Models.PSApiEndpoint]",
-      "AssemblyQualifiedName": "System.Collections.Generic.ICollection`1[[Microsoft.Azure.Commands.Media.Models.PSApiEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Media, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.ICollection`1[[Microsoft.Azure.Commands.Media.Models.PSApiEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Media, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -3126,7 +3130,7 @@
     "Microsoft.Azure.Commands.Media.Models.PSApiEndpoint": {
       "Namespace": "Microsoft.Azure.Commands.Media.Models",
       "Name": "Microsoft.Azure.Commands.Media.Models.PSApiEndpoint",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSApiEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Media, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSApiEndpoint, Microsoft.Azure.PowerShell.Cmdlets.Media, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Endpoint": "System.String",
         "MajorVersion": "System.String"
@@ -3171,7 +3175,7 @@
     "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Media.Models.PSStorageAccount]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.ICollection`1[Microsoft.Azure.Commands.Media.Models.PSStorageAccount]",
-      "AssemblyQualifiedName": "System.Collections.Generic.ICollection`1[[Microsoft.Azure.Commands.Media.Models.PSStorageAccount, Microsoft.Azure.PowerShell.Cmdlets.Media, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.ICollection`1[[Microsoft.Azure.Commands.Media.Models.PSStorageAccount, Microsoft.Azure.PowerShell.Cmdlets.Media, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -3183,7 +3187,7 @@
     "Microsoft.Azure.Commands.Media.Models.PSStorageAccount": {
       "Namespace": "Microsoft.Azure.Commands.Media.Models",
       "Name": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount, Microsoft.Azure.PowerShell.Cmdlets.Media, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Media.Models.PSStorageAccount, Microsoft.Azure.PowerShell.Cmdlets.Media, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "IsPrimary": "System.Nullable`1[System.Boolean]",
         "Id": "System.String",

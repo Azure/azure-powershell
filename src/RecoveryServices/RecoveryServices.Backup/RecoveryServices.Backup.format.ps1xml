@@ -616,7 +616,7 @@
             <Width>40</Width>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>IsProtected</Label>
+            <Label>IsAutoProtected</Label>
             <Width>20</Width>
           </TableColumnHeader>
         </TableHeaders>
@@ -636,7 +636,7 @@
                 <PropertyName>ServerName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>ProtectionState</PropertyName>
+                <PropertyName>IsAutoProtected</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -667,7 +667,7 @@
             <Width>20</Width>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>LatestRecoveryPoint</Label>
+            <Label>LastBackupTime</Label>
             <Width>20</Width>
           </TableColumnHeader>
         </TableHeaders>
@@ -687,7 +687,7 @@
                 <PropertyName>ProtectionStatus</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>LatestRecoveryPoint</PropertyName>
+                <PropertyName>LastBackupTime</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

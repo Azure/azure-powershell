@@ -80,7 +80,9 @@ function Test-NewDeploymentFromTemplateObject
 
         $path = (Get-Item ".\").FullName
         $file = Join-Path $path "sampleDeploymentTemplate.json"
-        $templateObject = ConvertFrom-Json ([System.IO.File]::ReadAllText($file)) -AsHashtable
+        $json = ConvertFrom-Json ([System.IO.File]::ReadAllText($file))
+        $templateObject = @{}
+        $json.PSObject.Properties | % { $templateObject[$_.Name] = $_.Value }
         $deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateObject $templateObject -TemplateParameterFile sampleDeploymentTemplateParams.json
 
         # Assert
@@ -93,6 +95,39 @@ function Test-NewDeploymentFromTemplateObject
 	}
 
 	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+function Test-TestResourceGroupDeploymentErrors
+{
+    # Catch exception when resource group doesn't exist
+    $rgname = "unknownresourcegroup"
+    $deploymentName = Get-ResourceName
+    $result = Test-AzResourceGroupDeploymentWithName -DeploymentName $deploymentName -ResourceGroupName $rgname -TemplateFile sampleDeploymentTemplate.json -TemplateParameterFile sampleDeploymentTemplateParams.json
+    Write-Debug "$result"
+    Assert-NotNull $result
+    Assert-AreEqual "ResourceGroupNotFound" $result.Code
+    Assert-AreEqual "Resource group '$rgname' could not be found." $result.Message
+
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $rglocation = "West US 2"
+
+    try
+    {
+        # Test
+        # Catch exception when parameter template is missing
+        New-AzResourceGroup -Name $rgname -Location $rglocation
+        $result = Test-AzResourceGroupDeploymentWithName -DeploymentName $deploymentName -ResourceGroupName $rgname -TemplateFile sampleDeploymentTemplate.json -SkipTemplateParameterPrompt
+        Assert-NotNull $result
+        Assert-AreEqual "InvalidTemplate" $result.Code
+        Assert-StartsWith "Deployment template validation failed" $result.Message
+    }
+    finally
     {
         # Cleanup
         Clean-ResourceGroup $rgname

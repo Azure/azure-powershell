@@ -43,7 +43,7 @@ function Test-ZoneCrud
 	Assert-AreEqual $createdZone.NumberOfRecordSets $retrievedZone.NumberOfRecordSets
 	Assert-Null $retrievedZone.Type
 
-	$updatedZone = Update-AzPrivateDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Tag @{tag1="value1";tag2="value2"}
+	$updatedZone = Set-AzPrivateDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Tag @{tag1="value1";tag2="value2"}
 
 	Assert-NotNull $updatedZone
 	Assert-NotNull $updatedZone.Etag
@@ -90,7 +90,7 @@ function Test-ZoneCrudTrimsDot
 	Assert-NotNull $retrievedZone
 	Assert-AreEqual $zoneName $retrievedZone.Name
 
-	$updatedZone = Update-AzPrivateDnsZone -Name $zoneNameWithDot -ResourceGroupName $resourceGroup.ResourceGroupName -Tag @{tag1="value1";tag2="value2"}
+	$updatedZone = Set-AzPrivateDnsZone -Name $zoneNameWithDot -ResourceGroupName $resourceGroup.ResourceGroupName -Tag @{tag1="value1";tag2="value2"}
 
 	Assert-NotNull $updatedZone
 	Assert-AreEqual $zoneName $updatedZone.Name
@@ -120,7 +120,7 @@ function Test-ZoneCrudWithPiping
 	Assert-NotNull $createdZone.ResourceGroupName
 	Assert-AreEqual 1 $createdZone.Tags.Count
 
-	$updatedZone = Get-AzPrivateDnsZone -Name $zoneName -ResourceGroupName $resourceGroupName | Update-AzPrivateDnsZone -Tag $null
+	$updatedZone = Get-AzPrivateDnsZone -Name $zoneName -ResourceGroupName $resourceGroupName | Set-AzPrivateDnsZone -Tag $null
 
 	Assert-NotNull $updatedZone
 	Assert-NotNull $updatedZone.Etag
@@ -154,7 +154,7 @@ function Test-ZoneCrudWithPipingTrimsDot
 	$zoneObjectWithDot.Name = $zoneNameWithDot
 	$zoneObjectWithDot.ResourceGroupName = $resourceGroupName
 
-	$updatedZone = $zoneObjectWithDot | Update-AzPrivateDnsZone -Overwrite
+	$updatedZone = $zoneObjectWithDot | Set-AzPrivateDnsZone -Overwrite
 
 	Assert-NotNull $updatedZone
 	Assert-AreEqual $zoneName $updatedZone.Name
@@ -189,6 +189,26 @@ function Test-ZoneNewAlreadyExists
 
 <#
 .SYNOPSIS
+Test zone creation with .local suffix.
+#>
+function Test-ZoneNewWithLocalSuffix
+{
+	$zoneName = Get-RandomZoneName
+	$zoneName = $zoneName + ".local"
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$resourceGroupName = $resourceGroup.ResourceGroupName
+	$createdZone = New-AzPrivateDnsZone -Name $zoneName -ResourceGroupName $resourceGroupName -WarningVariable warnings
+
+	Assert-NotNull $createdZone
+	$message = "Please be aware that DNS names ending with .local are reserved for use with multicast DNS and may not work as expected with some operating systems. For details refer to your operating systems documentation."
+	Assert-AreEqual $message $warnings
+
+	$createdZone | Remove-AzPrivateDnsZone -PassThru -Confirm:$false
+	Remove-AzResourceGroup -Name $resourceGroupName -Force
+}
+
+<#
+.SYNOPSIS
 Test zone update when etags mismatch
 #>
 function Test-ZoneSetEtagMismatch
@@ -202,9 +222,9 @@ function Test-ZoneSetEtagMismatch
 
 	$resourceGroupName = $createdZone.ResourceGroupName
 	$message = [System.String]::Format("*The Zone {0} has been modified (etag mismatch)*", $zoneName);
-	Assert-ThrowsLike { $createdZone | Update-AzPrivateDnsZone } $message
+	Assert-ThrowsLike { $createdZone | Set-AzPrivateDnsZone } $message
 
-	$updatedZone = $createdZone | Update-AzPrivateDnsZone -Overwrite
+	$updatedZone = $createdZone | Set-AzPrivateDnsZone -Overwrite
 
 	Assert-AreNotEqual "gibberish" $updatedZone.Etag
 	Assert-AreNotEqual $createdZone.Etag $updatedZone.Etag
@@ -221,7 +241,7 @@ function Test-ZoneSetUsingResourceId
 {
 	$zoneName = Get-RandomZoneName
     $resourceGroup = TestSetup-CreateResourceGroup
-	$updatedZone = New-AzPrivateDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Tag @{tag1="value1"} | Update-AzPrivateDnsZone -Tag @{tag1="value1";tag2="value2"}
+	$updatedZone = New-AzPrivateDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Tag @{tag1="value1"} | Set-AzPrivateDnsZone -Tag @{tag1="value1";tag2="value2"}
 	
 	Assert-NotNull $updatedZone
 	Assert-NotNull $updatedZone.Etag
@@ -255,7 +275,7 @@ function Test-ZoneSetNotFound
 	$zoneName = Get-RandomZoneName
     $resourceGroup = TestSetup-CreateResourceGroup
 
-	Assert-ThrowsLike { Update-AzPrivateDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName }  "*was not found*";
+	Assert-ThrowsLike { Set-AzPrivateDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName }  "*was not found*";
 	Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
 

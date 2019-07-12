@@ -1,4 +1,4 @@
-<<!--
+<!--
     Please leave this section at the top of the change log.
 
     Changes for the upcoming release should go under the section titled "Upcoming Release", and should adhere to the following format:
@@ -18,6 +18,19 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Adding Invoke-AzStorageSyncChangeDetection cmdlet.
+
+## Version 1.1.1
+* Fix Assembly Loading bug in PowerShell core
+
+## Version 1.1.0
+* Fix bug for not passing OFflineDataTransferProxy to SDK
+
+## Version 1.0.0
+* Replace Graph method for ensuring Service Principal in CloudEndpoint provisioning.
+
+## Version 0.8.1
+* Support for tracking upload and download sync activity in parallel
 
 ## Version 0.8.0
 * Update all cmdlets required to manage StorageSync ARM resources.

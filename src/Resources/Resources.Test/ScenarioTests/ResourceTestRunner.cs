@@ -57,16 +57,12 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 .WithMockContextAction(() =>
                 {
                     var credentials = HttpMockServer.Mode != HttpRecorderMode.Playback
-                        ? new Func<SubscriptionCloudCredentialsAdapter>(() =>
+                        ? new Func<ServiceClientCredentials>(() =>
                             {
                                 var testEnvironment = TestEnvironmentFactory.GetTestEnvironment();
-                                return new SubscriptionCloudCredentialsAdapter(
-                                    testEnvironment.TokenInfo[TokenAudience.Management],
-                                    testEnvironment.SubscriptionId);
+                                return testEnvironment.TokenInfo[TokenAudience.Management];
                             })()
-                        : new SubscriptionCloudCredentialsAdapter(
-                            new TokenCredentials("foo"),
-                            Guid.Empty.ToString());
+                        : new TokenCredentials("foo");
 
                     HttpClientHelperFactory.Instance = new TestHttpClientHelperFactory(credentials);
                 })
@@ -79,15 +75,15 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
     internal class TestHttpClientHelperFactory : HttpClientHelperFactory
     {
         /// <summary>
-        /// The subscription cloud credentials.
+        /// The service client credentials.
         /// </summary>
-        private readonly SubscriptionCloudCredentials credential;
+        private readonly ServiceClientCredentials credential;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ResourcesController.TestHttpClientHelperFactory"/> class.
         /// </summary>
         /// <param name="credentials"></param>
-        public TestHttpClientHelperFactory(SubscriptionCloudCredentials credentials)
+        public TestHttpClientHelperFactory(ServiceClientCredentials credentials)
         {
             credential = credentials;
         }
@@ -97,7 +93,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         /// </summary>
         /// <param name="credentials">The credentials.</param>
         /// <param name="headerValues">The headers.</param>
-        public override HttpClientHelper CreateHttpClientHelper(SubscriptionCloudCredentials credentials, IEnumerable<ProductInfoHeaderValue> headerValues, Dictionary<string, string> cmdletHeaderValues)
+        public override HttpClientHelper CreateHttpClientHelper(ServiceClientCredentials credentials, IEnumerable<ProductInfoHeaderValue> headerValues, Dictionary<string, string> cmdletHeaderValues)
         {
             return new TestHttpClientHelperFactory.HttpClientHelperImpl(credentials: credential, headerValues: headerValues, cmdletHeaderValues: cmdletHeaderValues);
         }
@@ -112,7 +108,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             /// </summary>
             /// <param name="credentials">The credentials.</param>
             /// <param name="headerValues">The headers.</param>
-            public HttpClientHelperImpl(SubscriptionCloudCredentials credentials, IEnumerable<ProductInfoHeaderValue> headerValues, Dictionary<string, string> cmdletHeaderValues)
+            public HttpClientHelperImpl(ServiceClientCredentials credentials, IEnumerable<ProductInfoHeaderValue> headerValues, Dictionary<string, string> cmdletHeaderValues)
                 : base(credentials: credentials, headerValues: headerValues, cmdletHeaderValues: cmdletHeaderValues)
             {
             }
@@ -125,25 +121,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             {
                 return base.CreateHttpClient(HttpMockServer.CreateInstance().AsArray().Concat(primaryHandlers).ToArray());
             }
-        }
-    }
-
-    //https://gist.github.com/markcowl/4d907da7ce40f2e424e8d0625887b82e
-    internal class SubscriptionCloudCredentialsAdapter : SubscriptionCloudCredentials
-    {
-        private readonly ServiceClientCredentials _wrappedCreds;
-
-        public SubscriptionCloudCredentialsAdapter(ServiceClientCredentials credentials, string subscriptionId)
-        {
-            _wrappedCreds = credentials;
-            SubscriptionId = subscriptionId;
-        }
-
-        public override string SubscriptionId { get; }
-
-        public override Task ProcessHttpRequestAsync(HttpRequestMessage request, CancellationToken cancellationToken)
-        {
-            return _wrappedCreds.ProcessHttpRequestAsync(request, cancellationToken);
         }
     }
 

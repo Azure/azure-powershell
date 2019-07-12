@@ -691,7 +691,7 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Runbook file already exists. Specify the force switch switch overwrite. Runbook file name: {0}.
+        ///   Looks up a localized string similar to Runbook file already exists. Specify the force switch to overwrite. Runbook file name: {0}.
         /// </summary>
         internal static string RunbookFileAlreadyExists {
             get {
@@ -799,11 +799,20 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Software update configuration has no target computers..
+        ///   Looks up a localized string similar to Software update configuration has no target computers or dynamic group queries specified..
         /// </summary>
         internal static string SoftwareUpdateConfigurationHasNoTargetComputers {
             get {
                 return ResourceManager.GetString("SoftwareUpdateConfigurationHasNoTargetComputers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Tag format is invalid. Valid Tag format is hashtable with string key and value of String or array of string..
+        /// </summary>
+        internal static string SoftwareUpdateConfigurationInvalidTagFormat {
+            get {
+                return ResourceManager.GetString("SoftwareUpdateConfigurationInvalidTagFormat", resourceCulture);
             }
         }
         

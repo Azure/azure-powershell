@@ -19,8 +19,8 @@ using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Auth;
+using Microsoft.Azure.Storage;
+using Microsoft.Azure.Storage.Auth;
 using System;
 using System.Globalization;
 using System.Linq;
@@ -385,6 +385,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         /// <returns>the token</returns>
         private IAccessToken CreateOAuthToken()
         {
+            if (DefaultContext == null || DefaultContext.Account == null)
+            {
+                throw new InvalidOperationException(Resources.ContextCannotBeNull);
+            }
+
             IAccessToken accessToken = AzureSession.Instance.AuthenticationFactory.Authenticate(
                DefaultContext.Account,
                EnsureStorageOAuthAudienceSet(DefaultContext.Environment),

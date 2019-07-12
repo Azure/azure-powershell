@@ -562,7 +562,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("ILRTargetLocationInvalid", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to For SnapshotRetentionRangeInDays, the minimum value is 1 and maximum is 5. For weekly backup policies, the only allowed value is 5. Please set the value accordingly.
+        /// </summary>
+        public static string InstantRPRetentionDaysException
+        {
+            get {
+                return ResourceManager.GetString("InstantRPRetentionDaysException", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Azure VM name can not be null or empty.
         /// </summary>
@@ -983,7 +993,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to disable protection for the container &apos;{0}&apos;.
+        ///   Looks up a localized string similar to Are you sure you want to register the container &apos;{0}&apos;.
         /// </summary>
         public static string RegisterContainerWarning
         {
@@ -1072,7 +1082,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("RestoreOperation", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to RetentionDuration in Days should be from 7 - 9999.
+        /// </summary>
+        public static string RetentionDurationCountInDaysInvalidException {
+            get {
+                return ResourceManager.GetString("RetentionDurationCountInDaysInvalidException", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to RetentionDuration in Days/Weeks/Months/Years should be from 1 - 9999.
         /// </summary>

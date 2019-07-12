@@ -112,7 +112,8 @@ function Test-Gallery
     try
     {
         # Common
-        $loc = "southcentralus";
+        [string]$loc = Get-ComputeVMLocation;
+        $loc = $loc.Replace(' ', '');
         New-AzResourceGroup -Name $rgname -Location $loc -Force;        
         $description1 = "Original Description";
         $description2 = "Updated Description";
@@ -195,7 +196,7 @@ function Test-Gallery
                                           -PurchasePlanPublisher $purchasePlanPublisher;
                                           
         $wildcardNameQuery = ($galleryImageName -replace ".$") + "*"
-		$galleryImageDefinitionList = Get-AzGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $galleryName -Name $wildcardNameQuery;
+        $galleryImageDefinitionList = Get-AzGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $galleryName -Name $wildcardNameQuery;
         $definition = $galleryImageDefinitionList | ? {$_.Name -eq $galleryImageName};
         Verify-GalleryImageDefinition $definition $rgname $galleryImageName $loc $description1 `
                                       $eula $privacyStatementUri $releaseNoteUri `
@@ -333,6 +334,231 @@ function Test-Gallery
         Verify-GalleryImageVersion $version $rgname $galleryImageVersionName $loc `
                                    $image.Id 1 $endOfLifeDate $targetRegions;
         $output = $version | Out-String;
+
+        $version | Remove-AzGalleryImageVersion -Force;
+        $definition | Remove-AzGalleryImageDefinition -Force;
+        $gallery | Remove-AzGallery -Force;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Testing creating VM with a shared gallery image from a different subscription.
+#>
+function Test-GalleryCrossTenant
+{
+    # Setup
+    # In order to record this test, please use another subscription to create a gallery image and share the image to the test subscription.  And then set the gallery image id here.
+    $imageId = "/subscriptions/97f78232-382b-46a7-8a72-964d692c4f3f/resourceGroups/xwRg/providers/Microsoft.Compute/galleries/galleryForCirrus/images/xwGalleryImageForCirrusWindows/versions/1.0.0";
+
+    $rgname = Get-ComputeTestResourceName;
+
+    try
+    {
+        # Common
+        $loc = Get-ComputeVMLocation;
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # Create a VM first
+        $vmsize = 'Standard_D2_v2';
+        $vmname = 'vm' + $rgname;
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+
+        # NRP
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
+        $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $nicId = $nic.Id;
+        $p = Add-AzVMNetworkInterface -VM $p -Id $nicId -Primary;
+
+        # OS & Image
+        $user = "Foo12";
+        $password = $PLACEHOLDER;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $computerName = 'test';
+        $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
+
+        $p = Set-AzVMSourceImage -VM $p -Id $imageId;
+
+        # Virtual Machine
+        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p;
+
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
+        Assert-AreEqual $imageId $vm.StorageProfile.ImageReference.Id;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Testing gallery image version commands
+#>
+function Test-GalleryImageVersion
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $galleryName = 'gallery' + $rgname;
+    $galleryImageName = 'galleryimage' + $rgname;
+    $galleryImageVersionName = 'imageversion' + $rgname;
+
+    try
+    {
+        # Common
+        [string]$loc = Get-ComputeVMLocation;
+        $loc = $loc.Replace(' ', '');
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        $description1 = "Original Description";
+
+        # Gallery
+        New-AzGallery -ResourceGroupName $rgname -Name $galleryName -Description $description1 -Location $loc;
+                
+        $gallery = Get-AzGallery -ResourceGroupName $rgname -Name $galleryName;
+        Verify-Gallery $gallery $rgname $galleryName $loc $description1;
+        $output = $gallery | Out-String;
+
+        # Gallery Image Definition
+        $publisherName = "galleryPublisher20180927";
+        $offerName = "galleryOffer20180927";
+        $skuName = "gallerySku20180927";
+        $eula = "eula";
+        $privacyStatementUri = "https://www.microsoft.com";
+        $releaseNoteUri = "https://www.microsoft.com";
+        $disallowedDiskTypes = "Premium_LRS";
+        $endOfLifeDate = [DateTime]::ParseExact('12 07 2025 18 02', 'HH mm yyyy dd MM', $null);
+        $minMemory = 1;
+        $maxMemory = 100;
+        $minVCPU = 2;
+        $maxVCPU = 32;
+        $purchasePlanName = "purchasePlanName";
+        $purchasePlanProduct = "purchasePlanProduct";
+        $purchasePlanPublisher = "";
+        $osState = "Generalized";
+        $osType = "Linux";
+
+        New-AzGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $galleryName -Name $galleryImageName `
+                                          -Location $loc -Publisher $publisherName -Offer $offerName -Sku $skuName `
+                                          -OsState $osState -OsType $osType `
+                                          -Description $description1 -Eula $eula `
+                                          -PrivacyStatementUri $privacyStatementUri -ReleaseNoteUri $releaseNoteUri `
+                                          -DisallowedDiskType $disallowedDiskTypes -EndOfLifeDate $endOfLifeDate `
+                                          -MinimumMemory $minMemory -MaximumMemory $maxMemory `
+                                          -MinimumVCPU $minVCPU -MaximumVCPU $maxVCPU `
+                                          -PurchasePlanName $purchasePlanName `
+                                          -PurchasePlanProduct $purchasePlanProduct `
+                                          -PurchasePlanPublisher $purchasePlanPublisher;
+
+        $definition = Get-AzGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $galleryName -Name $galleryImageName;
+        $output = $definition | Out-String;
+        Verify-GalleryImageDefinition $definition $rgname $galleryImageName $loc $description1 `
+                                      $eula $privacyStatementUri $releaseNoteUri `
+                                      $osType $osState $endOfLifeDate `
+                                      $publisherName $offerName $skuName `
+                                      $minVCPU $maxVCPU $minMemory $maxMemory `
+                                      $disallowedDiskTypes `
+                                      $purchasePlanName $purchasePlanPublisher $purchasePlanProduct;
+
+        # Gallery Image Version
+        $galleryImageVersionName = "1.0.0";
+        
+        # Create a VM first
+        $vmsize = 'Standard_A4';
+        $vmname = 'vm' + $rgname;
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
+        Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
+
+        # NRP
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
+        $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+
+        # Adding the same Nic but not set it Primary
+        $p = Add-AzVMNetworkInterface -VM $p -Id $nic.Id -Primary;
+
+        # Storage Account (SA)
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_LRS';
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        $stoaccount = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname;
+
+        $osDiskName = 'osDisk';
+        $osDiskCaching = 'ReadWrite';
+        $osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/os.vhd";
+        $dataDiskVhdUri1 = "https://$stoname.blob.core.windows.net/test/data1.vhd";
+        $dataDiskVhdUri2 = "https://$stoname.blob.core.windows.net/test/data2.vhd";
+
+        $p = Set-AzVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
+
+        $p = Add-AzVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
+        $p = Add-AzVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 2 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
+
+        # OS & Image
+        $user = "Foo12";
+        $password = $PLACEHOLDER;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $computerName = 'test';
+        $vhdContainer = "https://$stoname.blob.core.windows.net/test";
+
+        # $p.StorageProfile.OSDisk = $null;
+        $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
+
+        $imgRef = Get-DefaultCRPImage -loc $loc;
+        $p = ($imgRef | Set-AzVMSourceImage -VM $p);
+
+        # Virtual Machine
+        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p;
+
+        # Create Image using the VM's OS disk and data disks.
+        $imageName = 'image' + $rgname;
+        $imageConfig = New-AzImageConfig -Location $loc;
+        Set-AzImageOsDisk -Image $imageConfig -OsType 'Windows' -OsState 'Generalized' -BlobUri $osDiskVhdUri;
+        $imageConfig = Add-AzImageDataDisk -Image $imageConfig -Lun 1 -BlobUri $dataDiskVhdUri1;
+        $imageConfig = Add-AzImageDataDisk -Image $imageConfig -Lun 2 -BlobUri $dataDiskVhdUri2;
+
+        $image = New-AzImage -Image $imageConfig -ImageName $imageName -ResourceGroupName $rgname
+        $targetRegions = @(@{Name='South Central US';ReplicaCount=1;StorageAccountType='Standard_LRS'},@{Name='East US';ReplicaCount=2},@{Name='Central US'});        
+        $tag = @{test1 = "testval1"; test2 = "testval2" };
+
+        New-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
+                                       -GalleryImageDefinitionName $galleryImageName -Name $galleryImageVersionName `
+                                       -Location $loc -SourceImageId $image.Id -ReplicaCount 1 `
+                                       -PublishingProfileEndOfLifeDate $endOfLifeDate `
+                                       -StorageAccountType Standard_LRS `
+                                       -TargetRegion $targetRegions;
+
+        $version = Get-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
+                                                  -GalleryImageDefinitionName $galleryImageName -Name $galleryImageVersionName;
+        Verify-GalleryImageVersion $version $rgname $galleryImageVersionName $loc `
+                                   $image.Id 1 $endOfLifeDate $targetRegions;
+
+        Update-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
+                                          -GalleryImageDefinitionName $galleryImageName -Name $galleryImageVersionName `
+                                          -Tag $tag;
+
+        $version = Get-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
+                                                  -GalleryImageDefinitionName $galleryImageName -Name $galleryImageVersionName;
+        Verify-GalleryImageVersion $version $rgname $galleryImageVersionName $loc `
+                                   $image.Id 1 $endOfLifeDate $targetRegions;
 
         $version | Remove-AzGalleryImageVersion -Force;
         $definition | Remove-AzGalleryImageDefinition -Force;

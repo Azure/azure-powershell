@@ -20,8 +20,8 @@ function Test-AdvancedDataSecurityPolicyManagedInstanceTest
 {
 	# Setup
 	$testSuffix = getAssetName
-	Create-AdvancedThreatProtectionManagedInstanceTestEnvironment $testSuffix
-	$params = Get-SqlAdvancedThreatProtectionManagedInstanceTestEnvironmentParameters $testSuffix
+	Create-AdvancedDataSecurityManagedInstanceTestEnvironment $testSuffix
+	$params = Get-SqlAdvancedDataSecurityManagedInstanceTestEnvironmentParameters $testSuffix
 
 	try
 	{
@@ -34,7 +34,7 @@ function Test-AdvancedDataSecurityPolicyManagedInstanceTest
 		Assert-False { $policy.IsEnabled }
 
 		# Enabled Advanced Threat Protection Policy
-		Enable-AzSqlInstanceAdvancedDataSecurity -ResourceGroupName $params.rgname -InstanceName $params.serverName 
+		Enable-AzSqlInstanceAdvancedDataSecurity -ResourceGroupName $params.rgname -InstanceName $params.serverName -DoNotConfigureVulnerabilityAssessment
 		$policy = Get-AzSqlInstanceAdvancedDataSecurityPolicy -ResourceGroupName $params.rgname -InstanceName $params.serverName 
 				
 		# Validate the policy
@@ -50,11 +50,31 @@ function Test-AdvancedDataSecurityPolicyManagedInstanceTest
 		Assert-AreEqual $params.rgname $policy.ResourceGroupName
 		Assert-AreEqual $params.serverName $policy.ManagedInstanceName
 		Assert-False { $policy.IsEnabled }
+
+		# Check enabling ADS with VA
+		Disable-AzSqlInstanceAdvancedDataSecurity -ResourceGroupName $params.rgname -InstanceName $params.serverName 
+		Enable-AzSqlInstanceAdvancedDataSecurity -ResourceGroupName $params.rgname -InstanceName $params.serverName -DeploymentName "EnableVA_sql-ads-cmdlet-test-srv1"
+
+		# Validate the ADS policy
+		$policy = Get-AzSqlInstanceAdvancedDataSecurityPolicy -ResourceGroupName $params.rgname -InstanceName $params.serverName 
+		Assert-AreEqual $params.rgname $policy.ResourceGroupName
+		Assert-AreEqual $params.serverName $policy.ManagedInstanceName
+		Assert-True { $policy.IsEnabled }
+
+		# Validate the VA policy
+		$settings = Get-AzSqlInstanceVulnerabilityAssessmentSettings -ResourceGroupName $params.rgname -InstanceName $params.serverName 
+		Assert-AreEqual $params.rgname $settings.ResourceGroupName
+		Assert-AreEqual $params.serverName $settings.InstanceName
+		Assert-AreEqual "vulnerability-assessment" $settings.ScanResultsContainerName
+		Assert-AreNotEqual "" $settings.StorageAccountName	
+		Assert-AreEqual Weekly $settings.RecurringScansInterval
+		Assert-AreEqual $true $settings.EmailAdmins
+		Assert-AreEqualArray @() $settings.NotificationEmail
 	}
 	finally
 	{
 		# Cleanup
-		Remove-AdvancedThreatProtectionManagedInstanceTestEnvironment $testSuffix
+		Remove-AdvancedDataSecurityManagedInstanceTestEnvironment $testSuffix
 	}
 }
 
@@ -62,9 +82,9 @@ function Test-AdvancedDataSecurityPolicyManagedInstanceTest
 .SYNOPSIS
 Creates the test environment needed to perform the tests
 #>
-function Create-AdvancedThreatProtectionManagedInstanceTestEnvironment ($testSuffix, $location = "West Central US")
+function Create-AdvancedDataSecurityManagedInstanceTestEnvironment ($testSuffix, $location = "West Central US")
 {
-	$params = Get-SqlAdvancedThreatProtectionManagedInstanceTestEnvironmentParameters $testSuffix
+	$params = Get-SqlAdvancedDataSecurityManagedInstanceTestEnvironmentParameters $testSuffix
 	Create-BasicManagedTestEnvironmentWithParams $params $location
 }
 
@@ -72,7 +92,7 @@ function Create-AdvancedThreatProtectionManagedInstanceTestEnvironment ($testSuf
 .SYNOPSIS
 Gets the values of the parameters used at the tests
 #>
-function Get-SqlAdvancedThreatProtectionManagedInstanceTestEnvironmentParameters ($testSuffix)
+function Get-SqlAdvancedDataSecurityManagedInstanceTestEnvironmentParameters ($testSuffix)
 {
 	return @{ rgname = "sql-atp-cmdlet-test-rg" +$testSuffix;
 			  serverName = "sql-atp-cmdlet-server" +$testSuffix;
@@ -84,8 +104,8 @@ function Get-SqlAdvancedThreatProtectionManagedInstanceTestEnvironmentParameters
 .SYNOPSIS
 Removes the test environment that was needed to perform the tests
 #>
-function Remove-AdvancedThreatProtectionManagedInstanceTestEnvironment ($testSuffix)
+function Remove-AdvancedDataSecurityManagedInstanceTestEnvironment ($testSuffix)
 {
-	$params = Get-SqlAdvancedThreatProtectionManagedInstanceTestEnvironmentParameters $testSuffix
+	$params = Get-SqlAdvancedDataSecurityManagedInstanceTestEnvironmentParameters $testSuffix
 	Remove-AzureRmResourceGroup -Name $params.rgname -Force
 }

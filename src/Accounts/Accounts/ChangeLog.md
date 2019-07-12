@@ -18,6 +18,28 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update common code to use latest version of ClientRuntime
+
+## Version 1.6.0
+* Add support for profile cmdlets
+* Add support for environments and data planes in generated cmdlets
+* Update common packages to include new PolicyInsights library * Fix bug where incorrect endpoint was being used in some cases for data plane cmdlets in Windows PowerShell
+
+## Version 1.5.3
+* Fix bug with incorrect URL being used in some cases for Functions calls
+    - More information here: https://github.com/Azure/azure-powershell/issues/8983
+* Fix Issue with aliases from AzureRM to Az cmdlets
+  - Set-AzureRmVMBootDiagnostics -> Set-AzVMBootDiagnostic
+  - Export-AzureRMLogAnalyticThrottledRequests -> Export-AzLogAnalyticThrottledRequest
+
+## Version 1.5.2
+* Update Authentication Library to fix ADFS issues with username/password auth
+
+## Version 1.5.1
+* Update Uninstall-AzureRm to correctly delete modules in Mac
+
+## Version 1.5.0
+* Updated Add-AzEnvironment and Set-AzEnvironment to accept parameter AzureAnalysisServicesEndpointResourceId
 
 ## Version 1.4.0
 * Add 'Register-AzModule' command to support AutoRest generated cmdlets

@@ -19,6 +19,17 @@
 -->
 
 ## Upcoming Release
+* Updated ADF .Net SDK version to 4.0.0
+
+## Version 1.1.2
+* Updating the output of get activity runs, get pipeline runs, and get trigger runs ADF cmdlets to support Select-Object pipe.
+
+## Version 1.1.1
+* Add SsisProperties if NodeCount not null for managed integration runtime.
+
+## Version 1.1.0
+* Updated ADF .Net SDK version to 3.0.2
+* Updated Set-AzDataFactoryV2 cmdlet with extra parameters for RepoConfiguration related settings.
 
 ## Version 1.0.2
 * Updated ADF .Net SDK version to 3.0.1

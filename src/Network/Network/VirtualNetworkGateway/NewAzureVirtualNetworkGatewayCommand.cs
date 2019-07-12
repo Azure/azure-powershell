@@ -41,6 +41,11 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
+            ParameterSetName = VirtualNetworkGatewayParameterSets.AadAuthenticationConfiguration,
+            HelpMessage = "The resource name.")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.Default,
             HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
@@ -50,6 +55,11 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.RadiusServerConfiguration,
+            HelpMessage = "The resource group name.")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = VirtualNetworkGatewayParameterSets.AadAuthenticationConfiguration,
             HelpMessage = "The resource group name.")]
         [Parameter(
             Mandatory = true,
@@ -64,6 +74,11 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.RadiusServerConfiguration,
+            HelpMessage = "location.")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = VirtualNetworkGatewayParameterSets.AadAuthenticationConfiguration,
             HelpMessage = "location.")]
         [Parameter(
             Mandatory = true,
@@ -214,6 +229,37 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public SecureString RadiusServerSecret { get; set; }
 
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = VirtualNetworkGatewayParameterSets.AadAuthenticationConfiguration,
+            HelpMessage = "P2S AAD authentication option:AadTenantUri.")]
+        [ValidateNotNullOrEmpty]
+        public string AadTenantUri { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = VirtualNetworkGatewayParameterSets.AadAuthenticationConfiguration,
+            HelpMessage = "P2S AAD authentication option:AadAudienceId.")]
+        [ValidateNotNullOrEmpty]
+        public string AadAudienceId { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = VirtualNetworkGatewayParameterSets.AadAuthenticationConfiguration,
+            HelpMessage = "P2S AAD authentication option:AadIssuerUri.")]
+        [ValidateNotNullOrEmpty]
+        public string AadIssuerUri { get; set; }
+
+        [Parameter(
+                    Mandatory = false,
+                    ValueFromPipelineByPropertyName = true,
+                    HelpMessage = "Custom routes AddressPool specified by customer")]
+        [ValidateNotNullOrEmpty]
+        public string[] CustomRoute { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -312,7 +358,8 @@ namespace Microsoft.Azure.Commands.Network
                 this.VpnClientRootCertificates != null ||
                 this.VpnClientRevokedCertificates != null ||
                 this.RadiusServerAddress != null ||
-                (this.VpnClientIpsecPolicy != null && this.VpnClientIpsecPolicy.Length != 0))
+                (this.VpnClientIpsecPolicy != null && this.VpnClientIpsecPolicy.Length != 0) ||
+                this.AadTenantUri != null)
             {
                 vnetGateway.VpnClientConfiguration = new PSVpnClientConfiguration();
 
@@ -359,6 +406,26 @@ namespace Microsoft.Azure.Commands.Network
                     vnetGateway.VpnClientConfiguration.RadiusServerAddress = this.RadiusServerAddress;
                     vnetGateway.VpnClientConfiguration.RadiusServerSecret = SecureStringExtensions.ConvertToString(this.RadiusServerSecret);
                 }
+                
+                if (this.AadTenantUri != null)
+                {
+                    if (this.AadIssuerUri == null || this.AadAudienceId == null)
+                    {
+                        throw new ArgumentException("AadTenantUri, AadIssuerUri and AadAudienceId must be specified if AAD authentication is being configured for P2S.");
+                    }
+
+                    if (vnetGateway.VpnClientConfiguration.VpnClientProtocols.Count() == 1 && 
+                        vnetGateway.VpnClientConfiguration.VpnClientProtocols.First().Equals(MNM.VpnClientProtocol.OpenVPN))
+                    {
+                        vnetGateway.VpnClientConfiguration.AadTenant = this.AadTenantUri;
+                        vnetGateway.VpnClientConfiguration.AadIssuer = this.AadIssuerUri;
+                        vnetGateway.VpnClientConfiguration.AadAudience = this.AadAudienceId;
+                    }
+                    else
+                    {
+                        throw new ArgumentException("Virtual Network Gateway VpnClientProtocol should be :" + MNM.VpnClientProtocol.OpenVPN + " when P2S AAD authentication is being configured.");
+                    }
+                }
             }
             else
             {
@@ -383,6 +450,16 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     throw new ArgumentException("PeerWeight must be a positive integer");
                 }
+            }
+
+            if (this.CustomRoute != null && this.CustomRoute.Any())
+            {
+                vnetGateway.CustomRoutes = new PSAddressSpace();
+                vnetGateway.CustomRoutes.AddressPrefixes = this.CustomRoute?.ToList();
+            }
+            else
+            {
+                vnetGateway.CustomRoutes = null;
             }
 
             // Map to the sdk object

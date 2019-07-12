@@ -527,6 +527,11 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 }
 
                 integrationRuntime.ComputeProperties.NumberOfNodes = NodeCount;
+
+                if (integrationRuntime.SsisProperties == null)
+                {
+                    integrationRuntime.SsisProperties = new IntegrationRuntimeSsisProperties();
+                }
             }
 
             if (MaxParallelExecutionsPerNode.HasValue)

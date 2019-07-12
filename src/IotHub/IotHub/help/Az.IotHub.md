@@ -65,11 +65,14 @@ Gets all valid skus that this IotHub can transition to.
 ### [New-AzIotHub](New-AzIotHub.md)
 Creates a new IotHub.
 
-### [New-AzIotHubExportDevices](New-AzIotHubExportDevices.md)
+### [New-AzIotHubExportDevice](New-AzIotHubExportDevice.md)
 Creates a new export devices job.
 
-### [New-AzIotHubImportDevices](New-AzIotHubImportDevices.md)
+### [New-AzIotHubImportDevice](New-AzIotHubImportDevice.md)
 Creates a new import devices job.
+
+### [New-AzIotHubKey](New-AzIotHubKey.md)
+Generate an Azure IoT Hub key.
 
 ### [Remove-AzIotHub](Remove-AzIotHub.md)
 Deletes an IotHub.

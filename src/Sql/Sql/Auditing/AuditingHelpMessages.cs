@@ -1,4 +1,18 @@
-﻿namespace Microsoft.Azure.Commands.Sql.Auditing
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+namespace Microsoft.Azure.Commands.Sql.Auditing
 {
     public static class AuditingHelpMessages
     {
@@ -14,9 +28,17 @@
 
         public const string StateHelpMessage = "The state of the policy.";
 
+        public const string BlobStorageTargetState = "Indicates whether blob storage is a destination for audit records.";
+
+        public const string EventHubTargetState = "Indicates whether event hub is a destination for audit records.";
+
+        public const string LogAnalyticsTargetState = "Indicates whether log analytics is a destination for audit records.";
+
         public const string AuditStorageAccountNameHelpMessage = "The name of the storage account.";
 
         public const string AuditStorageAccountSubscriptionIdHelpMessage = "The storage account subscription id";
+
+        public const string AuditStorageAccountResourceIdHelpMessage = "The storage account resource id";
 
         public const string StorageKeyTypeHelpMessage = "Specifies which of the storage access keys to use.";
 

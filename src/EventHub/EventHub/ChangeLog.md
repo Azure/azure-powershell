@@ -18,6 +18,14 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* added verification and error message for authorizationrules rights if only 'Manage' is assigned
+
+## Version 1.2.0
+* Fix for #9231 - Get-AzEventHubNamespace does not return tags
+* Fix for #9230 - Get-AzEventHubNamespace returns ResourceGroup instead of ResourceGroupName
+
+## Version 1.1.0
+* Added new cmdlets for NetworkRuleSet of Namespace 
 
 ## Version 1.0.1
 * Added new boolean property SkipEmptyArchives to Skip Empty Archives in CaptureDescription class of Eventhub 

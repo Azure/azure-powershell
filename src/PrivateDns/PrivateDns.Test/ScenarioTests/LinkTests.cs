@@ -53,7 +53,14 @@ namespace Microsoft.Azure.Commands.PrivateDns.Test.ScenarioTests
         {
             PrivateDnsTestsBase.NewInstance.RunPowerShellTest(Logger, "Test-LinkAlreadyExistsCreateThrow");
         }
-        
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateLinkWithVirtualNetworkObject()
+        {
+            PrivateDnsTestsBase.NewInstance.RunPowerShellTest(Logger, "Test-CreateLinkWithVirtualNetworkObject");
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateLinkRegistrationStatusWithPiping()
