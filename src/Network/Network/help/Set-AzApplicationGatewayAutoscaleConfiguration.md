@@ -66,7 +66,7 @@ Accept wildcard characters: False
 ```
 
 ### -MaxCapacity
-Maximum capcity for application gateway.
+Maximum capacity for application gateway.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 ```
 
 ### -MinCapacity
-Minimum capcity for application gateway.
+Minimum capacity for application gateway.
 
 ```yaml
 Type: System.Int32
