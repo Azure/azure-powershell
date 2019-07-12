@@ -434,7 +434,7 @@ function Assert-Match
 
 ###################
 #
-# Verify that the actual string does not matche the regular expression
+# Verify that the actual string does not match the regular expression
 #
 #    param [string] $regex	 : The regular expression
 #    param [string] $actual	 : The actual string
