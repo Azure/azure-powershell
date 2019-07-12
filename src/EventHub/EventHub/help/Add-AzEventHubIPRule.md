@@ -8,7 +8,7 @@ schema: 2.0.0
 # Add-AzEventHubIPRule
 
 ## SYNOPSIS
-Add a single IPrule to the NetworkRuleSet of the given Namespace
+Add a single IP rule to the NetworkRuleSet of the given Namespace
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ Add-AzEventHubIPRule [-ResourceGroupName] <String> [-Name] <String>
 ```
 
 ## DESCRIPTION
-Add a single IPrule to the NetworkRuleSet of the given Namespace
+Add a single IP rule to the NetworkRuleSet of the given Namespace
 
 ## EXAMPLES
 

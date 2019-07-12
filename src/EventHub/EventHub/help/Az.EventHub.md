@@ -12,7 +12,7 @@ This topic displays help for the Azure Event Hub PowerShell resource manager cmd
 
 ## Az.EventHub Cmdlets
 ### [Add-AzEventHubIPRule](Add-AzEventHubIPRule.md)
-Add a single IPrule to the NetworkRuleSet of the given Namespace
+Add a single IP rule to the NetworkRuleSet of the given Namespace
 
 ### [Add-AzEventHubVirtualNetworkRule](Add-AzEventHubVirtualNetworkRule.md)
 Add a single VirtualNetworkRule to NetworkRuleSet for the given Namespace
@@ -60,7 +60,7 @@ Creates a new primary or secondary key for the specified Event Hubs authorizatio
 Creates an Event Hubs namespace.
 
 ### [Remove-AzEventHubIPRule](Remove-AzEventHubIPRule.md)
-Remove a single IPrule to the NetworkRuleSet of the given Namespace
+Remove a single IP rule to the NetworkRuleSet of the given Namespace
 
 ### [Remove-AzEventHub](Remove-AzEventHub.md)
 Removes the specified Event Hub.
