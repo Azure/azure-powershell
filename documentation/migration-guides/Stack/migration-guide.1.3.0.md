@@ -24,7 +24,7 @@ AzureRm.AzureStackStorage module is replaced with Azs.Storage.Admin module
 
 - ```Get-AzureStackToken``` is deprecated. If there is a need to get token, please use the Microsoft.IdentityModel.Clients.ActiveDirectory.dll directly.
 
-- The cmdlets ```*-AzsReourceProviderManifest``` and ```*-AzsUsageConnection``` are deprecated
+- The cmdlets ```*-AzsResourceProviderManifest``` and ```*-AzsUsageConnection``` are deprecated
 For any of these usages, template based resource creation is preferred.  For deletion of these resources, deleting the whole resource group is preferred. If needed, you can also use generic cmdlet *-AzureRmResource
 
 **Parameter Changes**<br>
@@ -78,7 +78,7 @@ Affected cmdlets
 - Get-AzsTableServiceMetricDefinition
 - Start-AzsReclaimStorageCapacity
 
- ```ResourceId``` parameter can be used for cmdlets that require ```Name``` . The ReourceId is same as the Id of the resource object that is returned from the Get-* cmdlets. The parameter also has an alias ```Id```. 
+ ```ResourceId``` parameter can be used for cmdlets that require ```Name``` . The ResourceId is same as the Id of the resource object that is returned from the Get-* cmdlets. The parameter also has an alias ```Id```. 
 
 Affected cmdlets<br>
 - Get-AzsStorageQuota
