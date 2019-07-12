@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
     /// <summary>
     /// 'New-AzEventHubAuthorizationRuleSASToken' Cmdlet creates a new AuthorizationRule
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubAuthorizationRuleSASToken", DefaultParameterSetName = NamespaceAuthoRuleParameterSet, SupportsShouldProcess = true), OutputType(typeof(string))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubAuthorizationRuleSASToken", DefaultParameterSetName = NamespaceAuthoRuleParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSSharedAccessSignatureAttributes))]
     public class NewAzureAuthorizationRuleSASToken : AzureEventHubsCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "ARM ResourceId of the Authoraization Rule")]
@@ -95,7 +95,8 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
                 HMACSHA256 hmac = new HMACSHA256(System.Text.Encoding.UTF8.GetBytes(sakey));
                 var signature = Convert.ToBase64String(hmac.ComputeHash(Encoding.UTF8.GetBytes(stringToSign)));
                 string sasToken = String.Format(CultureInfo.InvariantCulture, "SharedAccessSignature sr={0}&sig={1}&se={2}&skn={3}", HttpUtility.UrlEncode(resourceUri), HttpUtility.UrlEncode(signature), ExpiryTime, KeyType);
-                WriteObject(sasToken, true);
+                PSSharedAccessSignatureAttributes psSastoken = new PSSharedAccessSignatureAttributes(sasToken);
+                WriteObject(psSastoken, true);
 
             }
             catch (Management.EventHub.Models.ErrorResponseException ex)
