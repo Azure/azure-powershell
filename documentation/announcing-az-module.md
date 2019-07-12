@@ -187,7 +187,7 @@ If you need to have both modules installed:
   ```
 
 ##### Interactive Usage
-You cannot load Az and AzureRM modules in the same PowerShell session, but they can be used in seperate sessions as follows
+You cannot load Az and AzureRM modules in the same PowerShell session, but they can be used in separate sessions as follows
   - In AzureRM session:  ```Import-Module AzureRM```
   - In Az session:  Begin the session with ```Enable-AzureRmAlias```, which will prevent inadvertently loading AzureRM modules.  Alternately, you can use cmdlets with Az noun prefix, and avoid using cmdlets with Azure or AzureRm noun
 
