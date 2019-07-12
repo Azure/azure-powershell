@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
             HelpMessage = "Path to output file. Can be a Local path or Adl Path. By default"+
-                          " it is local. If SaveToAdl is pecified then it is an ADL path in the same account")]
+                          " it is local. If SaveToAdl is specified then it is an ADL path in the same account")]
         [ValidateNotNullOrEmpty]
         public string OutputPath { get; set; }
 

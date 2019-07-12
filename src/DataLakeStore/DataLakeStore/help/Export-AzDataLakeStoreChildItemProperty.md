@@ -183,7 +183,7 @@ Accept wildcard characters: False
 ```
 
 ### -OutputPath
-Path to output file. Can be a Local path or Adl Path. By default it is local. If SaveToAdl is pecified then it is an ADL path in the same account
+Path to output file. Can be a Local path or Adl Path. By default it is local. If SaveToAdl is specified then it is an ADL path in the same account
 
 ```yaml
 Type: System.String
