@@ -206,7 +206,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     updateParameters.VolumeFreeSpacePercent = InputObject.VolumeFreeSpacePercent;
                     updateParameters.TierFilesOlderThanDays = InputObject.TierFilesOlderThanDays;
                     updateParameters.OfflineDataTransfer = InputObject.OfflineDataTransfer;
-
                 }
                 else
                 {
@@ -225,13 +224,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                         parentResourceName = SyncGroupName;
                         storageSyncServiceName = StorageSyncServiceName;
                     }
-
-                    updateParameters = new ServerEndpointUpdateParameters()
-                    {
-                        VolumeFreeSpacePercent = VolumeFreeSpacePercent,
-                        TierFilesOlderThanDays = TierFilesOlderThanDays,
-                        OfflineDataTransfer = OfflineDataTransfer.ToBool() ? StorageSyncConstants.OfflineDataTransferOn : StorageSyncConstants.OfflineDataTransferOff
-                    };
                 }
 
                 if (this.IsParameterBound(c => c.CloudTiering))
