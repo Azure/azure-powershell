@@ -14,12 +14,13 @@ Gets information about source data sets in share subscription.
 ### ByFieldsParameterSet (Default)
 ```
 Get-AzDataShareSourceDataSets -ResourceGroupName <String> -AccountName <String> -ShareSubscriptionName <String>
- [-DefaultProfile <IAzureContextContainer>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
 Get-AzDataShareSourceDataSets -ShareSubscriptionResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,7 +38,6 @@ DataSetType : Blob
 Id          : /subscriptions/1834da9b-787a-44f6-ae81-60707ab8c957/resourceGroups/ADS/providers/Microsoft.DataShare/accounts/WikiAds/shareSubscriptions/AdsShareSubscription/consumerSourceDataSets/AdsDataSets
 Name        : AdsDataSets
 Type        : Microsoft.DataShare/ConsumerSourceDataSet
-
 ```
 
 {{ Add example description here }}
@@ -119,15 +119,16 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSourceDataSet
-
 
 ## NOTES
 

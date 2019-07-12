@@ -14,12 +14,13 @@ Gets information about synchronization runs in share subscription.
 ### ByFieldsParameterSet (Default)
 ```
 Get-AzDataShareSubscriptionSynchronization -ResourceGroupName <String> -AccountName <String>
- -ShareSubscriptionName <String> [-DefaultProfile <IAzureContextContainer>]
+ -ShareSubscriptionName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
 Get-AzDataShareSubscriptionSynchronization -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,7 +38,6 @@ message           :
 startTime         : 7/10/2019 9:00:04 AM
 status            : Succeeded
 synchronizationId : b087e1a5-9144-4e1d-86d1-2a4adcf551d4
-
 ```
 
 This command provides information about all the synchronization runs for a share subscription AdsShareSubscription under data share account WikiAds.
@@ -119,15 +119,16 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSubscriptionSynchronization
-
 
 ## NOTES
 

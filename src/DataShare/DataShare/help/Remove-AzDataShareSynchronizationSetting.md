@@ -15,19 +15,20 @@ removes a synchronization setting
 ```
 Remove-AzDataShareSynchronizationSetting -ResourceGroupName <String> -AccountName <String> -ShareName <String>
  -Name <String> [-PassThru] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
 Remove-AzDataShareSynchronizationSetting -ResourceId <String> [-PassThru] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
 Remove-AzDataShareSynchronizationSetting [-PassThru] [-Force] [-AsJob]
- -SynchronizationSetting <PSDataShareSynchronizationSetting> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm]
+ -SynchronizationSetting <PSSynchronizationSetting> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -186,7 +187,7 @@ Accept wildcard characters: False
 The Azure Data Share Account.
 
 ```yaml
-Type: PSDataShareSynchronizationSetting
+Type: PSSynchronizationSetting
 Parameter Sets: ByObjectParameterSet
 Aliases: 
 
@@ -228,17 +229,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
 System.Management.Automation.SwitchParameter
 Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSynchronizationSetting
 
-
 ## OUTPUTS
 
 ### System.Boolean
-
 
 ## NOTES
 

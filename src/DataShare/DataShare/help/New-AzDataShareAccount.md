@@ -1,19 +1,19 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataShare.dll-Help.xml
-online version: https://docs.microsoft.com/en-us/powershell/module/az.datashare/new-azdatashareaccount
+online version: 
 schema: 2.0.0
 ---
 
 # New-AzDataShareAccount
 
 ## SYNOPSIS
-Creates a azure data share account.
+{{Fill in the Synopsis}}
 
 ## SYNTAX
 
 ```
 New-AzDataShareAccount -ResourceGroupName <String> -Name <String> -Location <String> [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
 ```
 
 ## DESCRIPTION
@@ -23,8 +23,7 @@ New-AzDataShareAccount -ResourceGroupName <String> -Name <String> -Location <Str
 
 ### Example 1
 ```
-PS C:\> ```
-PS C:\>New-AzDataShareAccount -ResourceGroupName "ADS" -Name "WikiADS" -Location "WestUS"
+PS C:\> New-AzDataShareAccount -ResourceGroupName "ADS" -Name "WikiADS" -Location "WestUS"
 DataShareAccountName   : WikiADS
 ResourceGroupName : ADS
 Location          : WestUS
@@ -35,10 +34,24 @@ Type              : Microsoft.DataShare/accounts
 Id                : /subscriptions/4834da9b-787a-44f6-ae81-60707ab8c957/resourceGroups/ADS/providers/Microsoft.DataShare/accounts/WikiADS
 ```
 
- This command creates a datashare account named WikiADS in the resource group named ADS in the WestUS location.
-
+{{ Add example description here }}
 
 ## PARAMETERS
+
+### -AsJob
+{{Fill AsJob Description}}
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.

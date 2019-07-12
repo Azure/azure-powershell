@@ -14,12 +14,12 @@ Gets information about a trigger in share subscription.
 ### ByFieldsParameterSet (Default)
 ```
 Get-AzDataShareTrigger -ResourceGroupName <String> -AccountName <String> -ShareSubscriptionName <String>
- [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
-Get-AzDataShareTrigger -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzDataShareTrigger -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,7 +41,6 @@ TriggerStatus       : Active
 Id                  : /subscriptions/1834da9b-787a-44f6-ae81-60707ab8c957/resourceGroups/ADS/providers/Microsoft.DataShare/accounts/WikiAds/shareSubscriptions/AdsShareSubscription/triggers/AdsTrigger
 Name                : AdsTrigger
 Type                : Microsoft.DataShare/Triggers
-
 ```
 
 This command gets information about trigger AdsTrigger for share subscription AdsShareSubscription under data share account WikiAds.
@@ -138,15 +137,16 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareTrigger
-
 
 ## NOTES
 
