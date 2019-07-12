@@ -683,12 +683,12 @@ function Test-WindowsContainerCanIssueWebAppPSSession
 
 		# Validating that the client can at least issue the EnterPsSession command.
 		# This will validate that this cmdlet will run succesfully in Cloud Shell.
-		# If the current OPerating System is Windows and the current WSMAN settings will not allow the user
+		# If the current Operating System is Windows and the current WSMAN settings will not allow the user
 		# to connect (for example: invalid Trusted Hosts, Basic Auth not enabled) this command will issue a Warning instructing the user
 		# to fix WSMAN settings. It will not attempt to run EnterPsSession.
 		#
 		# If the current is not Windows, this command will not attempt to validate WSMAN settings and 
-		# just try to run EnterPsSession. EnterPsSession using WinRM is available in Cloud Shell
+		# just try to run EnterPsSession if the current PsCore version is 6.1.0.0 or subsequent. EnterPsSession using WinRM is available in Cloud Shell
 		#
 		# We need a real Windows Container app running to fully validate the returned PsSession object, which is not 
 		# possible in 'Playback' mode.
@@ -706,18 +706,21 @@ function Test-WindowsContainerCanIssueWebAppPSSession
 		}
 		else
 		{
-			# Three possible messages in Playback mode since the site will not exist.
+			# Four possible messages in Playback mode..
 			$messageDNS = "Connecting to remote server $wname.azurewebsites.net failed with the following error message : The WinRM client cannot process the request because the server name cannot be resolved"
 			$messageUnavailable = "Connecting to remote server $wname.azurewebsites.net failed with the following error message : The WinRM client sent a request to an HTTP server and got a response saying the requested HTTP URL was not available."
 			$messageWSMANNotConfigured = "Your current WSMAN Trusted Hosts settings will prevent you from connecting to your Container Web App";
+			$messagePsVersionNotSupported = "Remote Powershell sessions into Windows Containers on App Service from this version of PowerShell is not supported.";
 
 			$resultError = ($Error[0] -like "*$($messageDNS)*") -or 
 				($Error[0] -like "*$($messageUnavailable)*") -or 
-				($Error[0] -like "*$($messageWSMANNotConfigured)*")
+				($Error[0] -like "*$($messageWSMANNotConfigured)*") -or
+				($Error[0] -like "*$($messagePsVersionNotSupported)*")
 			
 			Write-Debug "Expected Message 1: $messageDNS"
 			Write-Debug "Expected Message 2: $messageUnavailable"
 			Write-Debug "Expected Message 3: $messageWSMANNotConfigured"
+			Write-Debug "Expected Message 4: $messagePsVersionNotSupported"
 		}
 		
 		Write-Debug "Error: $Error[0]"

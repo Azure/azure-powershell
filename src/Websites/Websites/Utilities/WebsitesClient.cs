@@ -314,6 +314,26 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
         {
             string operatingSystem = GetPsOperatingSystem(cmdlet);
 
+            if (!operatingSystem.Contains("windows"))
+            {
+                // If OS is not Windows, check if Ps supports 6.1.0 which is the first version to depend on NetCoreApp 2.1
+
+                List<Version> compatibleVersions = GetPsCompatibleVersions(cmdlet);
+
+                Version minimumVersion = new Version(6, 1, 0, 0);
+
+                // if there are no compatible versions subsequent to the minimum versions, we don't continue because the command will fail
+                if (compatibleVersions.Where(v => v.CompareTo(minimumVersion) >= 0).Count() > 0)
+                {
+                    WriteError(Properties.Resources.EnterContainerPSSessionPSCoreVersionNotSupported);
+
+                    return;
+                }
+
+            }            
+
+
+            // For Windows, we validate WSMAN trusted hosts settings
             if (operatingSystem.Contains("windows"))
             {
                 // Validate if WSMAN Basic Authentication is enabled
@@ -370,6 +390,24 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             psOperatingSystem = ExecuteScriptAndGetVariable(cmdlet, "${0} = $PSVersionTable.OS", "none");
 
             return psOperatingSystem;
+        }
+
+        private List<Version> GetPsCompatibleVersions(PSCmdlet cmdlet)
+        {
+            object psVersionsTable = ExecuteScriptAndGetVariable(cmdlet, "${0} = $PSVersionTable.PSCompatibleVersions");
+
+            List<Version> versionResults = new List<Version>();
+
+            if (psVersionsTable != null
+                && psVersionsTable is Version[] versions)
+            {
+                foreach (var version in versions)
+                {
+                    versionResults.Add(version);
+                }
+            }
+
+            return versionResults;
         }
 
         private bool ExecuteScriptAndGetVariableAsBool(PSCmdlet cmdlet, string scriptFormatString, bool defaultValue)
