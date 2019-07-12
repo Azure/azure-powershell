@@ -32,7 +32,7 @@ This document describes the changes between the 6.x versions of AzureRM and Az v
 
 ## General breaking changes
 ### Cmdlet Noun Prefix Changes
-In AzureRM, cmdlets used either 'AzureRM' or 'Azure' as a noun prefix.  Az simplifies and normalizes cmndlet names, so that all cmdlets use 'Az' as their cmdlet noun prefix. 
+In AzureRM, cmdlets used either 'AzureRM' or 'Azure' as a noun prefix.  Az simplifies and normalizes cmdlet names, so that all cmdlets use 'Az' as their cmdlet noun prefix. 
 For example:
 ```powershell
 Get-AzureRmVM
