@@ -293,7 +293,9 @@ namespace Microsoft.Azure.Commands.AlertsManagement
             switch (ParameterSetName)
             {
                 case AlertsListByFilterParameterSet:
-                    var alertsList = this.AlertsManagementClient.Alerts.GetAllWithHttpMessagesAsync(
+                    List<Alert> resultList = new List<Alert>();
+                    IPage<Alert> pageResult = new Page<Alert>();
+                    pageResult = this.AlertsManagementClient.Alerts.GetAllWithHttpMessagesAsync(
                         targetResource: TargetResourceId,
                         targetResourceType: TargetResourceType,
                         targetResourceGroup: TargetResourceGroup,
@@ -314,17 +316,46 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                         ).Result.Body;
 
                     // Deal with paging in response
-                    var resultList = alertsList.ToList();
-                    var nextPageLink = alertsList.NextPageLink;
-                    while (!string.IsNullOrEmpty(nextPageLink))
+                    ulong first = MyInvocation.BoundParameters.ContainsKey("First") ? this.PagingParameters.First : ulong.MaxValue;
+                    ulong skip = MyInvocation.BoundParameters.ContainsKey("Skip") ? this.PagingParameters.Skip : 0;
+
+                    // Any items before this count should be return
+                    ulong lastCount = MyInvocation.BoundParameters.ContainsKey("First") ? skip + first : ulong.MaxValue;
+                    ulong currentCount = 0;
+                    var nextPageLink = pageResult.NextPageLink;
+
+                    do
                     {
-                        var pageResult = this.AlertsManagementClient.Alerts.GetAllNextWithHttpMessagesAsync(nextPageLink);
-                        foreach (var pageItem in pageResult.Result.Body)
+                        List<Alert> tempList = pageResult.ToList();
+                        if (currentCount + (ulong)tempList.Count - 1 < skip)
                         {
-                            resultList.Add(pageItem);
+                            // skip the whole chunk if they are all in skip
+                            currentCount += (ulong)tempList.Count;
                         }
-                        nextPageLink = pageResult.Result.Body.NextPageLink;
-                    }
+                        else
+                        {
+                            foreach (Alert currentAlert in tempList)
+                            {
+                                // not return "skip" count of items in the begin, and only return "first" count of items after that.
+                                if (currentCount >= skip && currentCount < lastCount)
+                                {
+                                    resultList.Add(currentAlert);
+                                }
+                                currentCount++;
+                                if (currentCount >= lastCount)
+                                {
+                                    break;
+                                }
+                            }
+                        }
+
+                        if (!string.IsNullOrEmpty(nextPageLink))
+                        {
+                            pageResult = this.AlertsManagementClient.Alerts.GetAllNextWithHttpMessagesAsync(nextPageLink).Result.Body;
+                            nextPageLink = pageResult.NextPageLink;
+                        }
+
+                    } while (!string.IsNullOrEmpty(nextPageLink) && currentCount < lastCount);
 
                     WriteObject(resultList.Select((r) => new PSAlert(r)), enumerateCollection: true);
                     break;

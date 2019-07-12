@@ -205,11 +205,13 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                 case ListActionRulesParameterSet:
                 case ListActionRulesByTargetResourceIdParameterSet:
                 case ListActionRulesByTargetResourceGroupParameterSet:
-                    IPage<ActionRule> actionRuleList = new Page<ActionRule>();
+                    IPage<ActionRule> pageResult = new Page<ActionRule>();
                     List<ActionRule> resultList = new List<ActionRule>();
+                    bool listByResourceGroup = false;
+
                     if (string.IsNullOrWhiteSpace(ResourceGroupName))
                     {
-                        actionRuleList = this.AlertsManagementClient.ActionRules.ListBySubscriptionWithHttpMessagesAsync(
+                        pageResult = this.AlertsManagementClient.ActionRules.ListBySubscriptionWithHttpMessagesAsync(
                             targetResource: TargetResourceId,
                             targetResourceType: TargetResourceType,
                             targetResourceGroup: TargetResourceGroup,
@@ -222,22 +224,11 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                             name: Name
                         ).Result.Body;
 
-                        // Deal with paging in response
-                        resultList = actionRuleList.ToList();
-                        var nextPageLink = actionRuleList.NextPageLink;
-                        while (!string.IsNullOrEmpty(nextPageLink))
-                        {
-                            var pageResult = this.AlertsManagementClient.ActionRules.ListBySubscriptionNextWithHttpMessagesAsync(nextPageLink);
-                            foreach (var pageItem in pageResult.Result.Body)
-                            {
-                                resultList.Add(pageItem);
-                            }
-                            nextPageLink = pageResult.Result.Body.NextPageLink;
-                        }
+                        listByResourceGroup = false;
                     }
                     else
                     {
-                         actionRuleList = this.AlertsManagementClient.ActionRules.ListByResourceGroupWithHttpMessagesAsync(
+                        pageResult = this.AlertsManagementClient.ActionRules.ListByResourceGroupWithHttpMessagesAsync(
                             resourceGroupName: ResourceGroupName,
                             targetResource: TargetResourceId,
                             targetResourceType: TargetResourceType,
@@ -251,24 +242,58 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                             name: Name
                         ).Result.Body;
 
-                        // Deal with paging in response
-                        resultList = actionRuleList.ToList();
-                        var nextPageLink = actionRuleList.NextPageLink;
-                        while (!string.IsNullOrEmpty(nextPageLink))
-                        {
-                            var pageResult = this.AlertsManagementClient.ActionRules.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink);
-                            foreach (var pageItem in pageResult.Result.Body)
-                            {
-                                resultList.Add(pageItem);
-                            }
-                            nextPageLink = pageResult.Result.Body.NextPageLink;
-                        }
+                        listByResourceGroup = true;
                     }
 
-                    foreach (var result in resultList)
+                    // Deal with paging in response
+                    ulong first = MyInvocation.BoundParameters.ContainsKey("First") ? this.PagingParameters.First : ulong.MaxValue;
+                    ulong skip = MyInvocation.BoundParameters.ContainsKey("Skip") ? this.PagingParameters.Skip : 0;
+
+                    // Any items before this count should be return
+                    ulong lastCount = MyInvocation.BoundParameters.ContainsKey("First") ? skip + first : ulong.MaxValue;
+                    ulong currentCount = 0;
+                    var nextPageLink = pageResult.NextPageLink;
+
+                    do
                     {
-                        WriteObject(result.Properties.GetType());
-                    }
+                        List<ActionRule> tempList = pageResult.ToList();
+                        if (currentCount + (ulong)tempList.Count - 1 < skip)
+                        {
+                            // skip the whole chunk if they are all in skip
+                            currentCount += (ulong)tempList.Count;
+                        }
+                        else
+                        {
+                            foreach (ActionRule currentActionRule in tempList)
+                            {
+                                // not return "skip" count of items in the begin, and only return "first" count of items after that.
+                                if (currentCount >= skip && currentCount < lastCount)
+                                {
+                                    resultList.Add(currentActionRule);
+                                }
+                                currentCount++;
+                                if (currentCount >= lastCount)
+                                {
+                                    break;
+                                }
+                            }
+                        }
+
+                        if (!string.IsNullOrEmpty(nextPageLink))
+                        {
+                            if (listByResourceGroup)
+                            {
+                                pageResult = this.AlertsManagementClient.ActionRules.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink).Result.Body;
+                            }
+                            else
+                            {
+                                pageResult = this.AlertsManagementClient.ActionRules.ListBySubscriptionNextWithHttpMessagesAsync(nextPageLink).Result.Body;
+                            }
+                            nextPageLink = pageResult.NextPageLink;
+                        }
+
+                    } while (!string.IsNullOrEmpty(nextPageLink) && currentCount < lastCount);
+
                     WriteObject(resultList.Select((r) => new PSActionRule(r)), enumerateCollection: true);
                     break;
 
