@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement.dll-Help.xml
 Module Name: Az.AlertsManagement
-online version: https://docs.microsoft.com/en-us/powershell/module/az.alertsmanagement/get-azalerthistory
+online version: https://docs.microsoft.com/en-us/powershell/module/az.alertsmanagement/get-azalertobjecthistory
 schema: 2.0.0
 ---
 
-# Get-AzAlertHistory
+# Get-AzAlertObjectHistory
 
 ## SYNOPSIS
 Gets Alert History information
@@ -13,17 +13,17 @@ Gets Alert History information
 ## SYNTAX
 
 ```
-Get-AzAlertHistory -AlertId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzAlertObjectHistory -AlertId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-**Get-AzAlertHistory** cmdlet gets history of alert.
+**Get-AzAlertObjectHistory** cmdlet gets history of alert.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzAlertHistory -AlertId "afbf1b3a-0a6c-4f19-9c9b-644ccd7b1529"
+PS C:\> Get-AzAlertObjectHistory -AlertId "afbf1b3a-0a6c-4f19-9c9b-644ccd7b1529"
 ```
 
 Gets alert history details. 

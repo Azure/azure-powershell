@@ -17,7 +17,7 @@ Gets the summary of alerts grouped by some properties.
 ### [Get-AzAlert](Get-AzAlert.md)
 Gets list of alerts filtered on various parameters.
 
-### [Get-AzAlertHistory](Get-AzAlertHistory.md)
+### [Get-AzAlertObjectHistory](Get-AzAlertObjectHistory.md)
 Gets history of alert - keeps track of monitor condition and state modifications.
 
 ### [Update-AzAlertState](Update-AzAlertState.md)
