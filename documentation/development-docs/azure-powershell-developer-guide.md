@@ -105,7 +105,7 @@ msbuild build.proj /t:GenerateHelp
 
 ## Running Static Analysis
 
-To keep consistency across our modules, we've implemented a static analysis system. This verifies various aspects (depdencies, breaking changes, etc.) for your module. Run this command to execute static analysis validation for the built modules:
+To keep consistency across our modules, we've implemented a static analysis system. This verifies various aspects (dependencies, breaking changes, etc.) for your module. Run this command to execute static analysis validation for the built modules:
 
 ```
 msbuild build.proj /t:StaticAnalysis
