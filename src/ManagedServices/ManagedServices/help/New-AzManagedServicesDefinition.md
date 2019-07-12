@@ -207,7 +207,7 @@ Accept wildcard characters: False
 ```
 
 ### -RoleDefinitionId
-The Managed Service Providers's Role Identifier.
+The Managed Service Provider's Role Identifier.
 
 ```yaml
 Type: System.String
