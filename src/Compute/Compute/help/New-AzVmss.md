@@ -303,7 +303,7 @@ Accept wildcard characters: False
 ```
 
 ### -FrontendPoolName
-The name of the frontend address pool to usein the Scale Set load balancer.  If no value is supplied, a new Frontend Address Pool will be created, with the same name as the scale set.
+The name of the frontend address pool to use in the Scale Set load balancer.  If no value is supplied, a new Frontend Address Pool will be created, with the same name as the scale set.
 
 ```yaml
 Type: System.String
