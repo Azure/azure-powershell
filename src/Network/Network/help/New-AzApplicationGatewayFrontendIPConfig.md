@@ -148,7 +148,7 @@ Accept wildcard characters: False
 ### -Subnet
 Specifies the subnet object which this cmdlet associates with the front-end IP address of the application gateway.
 If you specify this parameter, it implies that the gateway uses a private IP address.
-If the *PrivateIPAddresss* parameter is specified, it should belong to the subnet specified by this parameter.
+If the *PrivateIPAddress* parameter is specified, it should belong to the subnet specified by this parameter.
 If *PrivateIPAddress* is not specified, one of the IP addresses from this subnet is dynamically picked up as the front-end IP address of the application gateway.
 
 ```yaml

@@ -188,7 +188,7 @@ Accept wildcard characters: False
 ### -SubnetId
 Specifies the subnet ID which this cmdlet adds as the front-end IP configuration.
 Passing subnet implies private IP.
-If the *PrivateIPAddresss* parameter is specified, it should belong to this subnet.
+If the *PrivateIPAddress* parameter is specified, it should belong to this subnet.
 Otherwise, one of the IP from this subnet is dynamically picked up as the front-end IP of the application gateway.
 
 ```yaml
