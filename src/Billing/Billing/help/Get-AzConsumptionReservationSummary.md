@@ -18,7 +18,7 @@ Get-AzConsumptionReservationSummary -Grain <String> -ReservationOrderId <String>
 ```
 
 ## DESCRIPTION
-The **Get-AzConsumptionReservationSummay** cmdlet gets reservation summaries for daily or monthly grain.
+The **Get-AzConsumptionReservationSummary** cmdlet gets reservation summaries for daily or monthly grain.
 
 ## EXAMPLES
 
