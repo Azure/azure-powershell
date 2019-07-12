@@ -327,7 +327,7 @@ For more information about these role-based access changes, see [aka.ms/hdi-conf
 
 
 
-- The default service behavior when creating a storage account withous specifying a Kind has changed.  In previous versions, when a storage account was created with no `Kind` specified, the Storage account Kind of `Storage` was used, in the new version `StorageV2` is the default `Kind` value. If you need to create a V1 Storage account with Kind 'Storage', add parameter '-Kind Storage'
+- The default service behavior when creating a storage account without specifying a Kind has changed.  In previous versions, when a storage account was created with no `Kind` specified, the Storage account Kind of `Storage` was used, in the new version `StorageV2` is the default `Kind` value. If you need to create a V1 Storage account with Kind 'Storage', add parameter '-Kind Storage'
   #### Example : Create a storage Account (Default Kind change)  
   Before:
   ```powershell
