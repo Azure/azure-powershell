@@ -78,24 +78,55 @@ namespace Microsoft.Azure.Commands.AlertsManagement
             switch (ParameterSetName)
             {
                 case SmartGroupsListByFilterParameterSet:
-                    var smartGroupsList = this.AlertsManagementClient.SmartGroups.GetAllWithHttpMessagesAsync(
+                    IPage<SmartGroup> pageResult = new Page<SmartGroup>();
+                    List<SmartGroup> resultList = new List<SmartGroup>();
+                    pageResult = this.AlertsManagementClient.SmartGroups.GetAllWithHttpMessagesAsync(
                         sortBy: SortBy,
                         sortOrder: SortOrder,
                         timeRange: TimeRange
                         ).Result.Body;
 
                     // Deal with paging in response
-                    var resultList = smartGroupsList.ToList();
-                    var nextPageLink = smartGroupsList.NextPageLink;
-                    while (!string.IsNullOrEmpty(nextPageLink))
+                    ulong first = MyInvocation.BoundParameters.ContainsKey("First") ? this.PagingParameters.First : ulong.MaxValue;
+                    ulong skip = MyInvocation.BoundParameters.ContainsKey("Skip") ? this.PagingParameters.Skip : 0;
+
+                    // Any items before this count should be return
+                    ulong lastCount = MyInvocation.BoundParameters.ContainsKey("First") ? skip + first : ulong.MaxValue;
+                    ulong currentCount = 0;
+                    var nextPageLink = pageResult.NextPageLink;
+
+                    do
                     {
-                        var pageResult = this.AlertsManagementClient.SmartGroups.GetAllNextWithHttpMessagesAsync(nextPageLink);
-                        foreach (var pageItem in pageResult.Result.Body)
+                        List<SmartGroup> tempList = pageResult.ToList();
+                        if (currentCount + (ulong)tempList.Count - 1 < skip)
                         {
-                            resultList.Add(pageItem);
+                            // skip the whole chunk if they are all in skip
+                            currentCount += (ulong)tempList.Count;
                         }
-                        nextPageLink = pageResult.Result.Body.NextPageLink;
-                    }
+                        else
+                        {
+                            foreach (SmartGroup currentSmartGroup in tempList)
+                            {
+                                // not return "skip" count of items in the begin, and only return "first" count of items after that.
+                                if (currentCount >= skip && currentCount < lastCount)
+                                {
+                                    resultList.Add(currentSmartGroup);
+                                }
+                                currentCount++;
+                                if (currentCount >= lastCount)
+                                {
+                                    break;
+                                }
+                            }
+                        }
+
+                        if (!string.IsNullOrEmpty(nextPageLink))
+                        {
+                            pageResult = this.AlertsManagementClient.SmartGroups.GetAllNextWithHttpMessagesAsync(nextPageLink).Result.Body;
+                            nextPageLink = pageResult.NextPageLink;
+                        }
+
+                    } while (!string.IsNullOrEmpty(nextPageLink) && currentCount < lastCount);
 
                     WriteObject(resultList.Select((r) => new PSSmartGroup(r)), enumerateCollection: true);
                     break;
