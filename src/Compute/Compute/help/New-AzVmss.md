@@ -393,7 +393,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProximityPlacementGroup
-The name or resource id of the Proximity Placment Group to use with this Scale Set.
+The name or resource id of the Proximity Placement Group to use with this Scale Set.
 
 ```yaml
 Type: System.String
