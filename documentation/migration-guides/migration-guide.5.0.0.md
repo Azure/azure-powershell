@@ -694,7 +694,7 @@ $topic = Get-AzureRmServiceBusTopic <parameters>
 ```powershell
 # Old
 # The $subscription has EntityAvailabilityStatus, EnableSubscriptionPartitioning, IsAnonymousAccessible, IsExpress, Location and FilteringMessagesBeforePublishing properties
-$subscription = Get-AzureRmServiceBussubscription <parameters>
+$subscription = Get-AzureRmServiceBusSubscription <parameters>
 $subscription.EntityAvailabilityStatus
 $subscription.EnableSubscriptionPartitioning
 $subscription.IsAnonymousAccessible
@@ -704,5 +704,5 @@ $subscription.Location
 
 # New
 # The call remains the same, but the returned values Topic object will not have the EntityAvailabilityStatus, EnableBatchedOperations, IsAnonymousAccessible and SupportOrdering properties    
-$subscription = Get-AzureRmServiceBussubscription <parameters>
+$subscription = Get-AzureRmServiceBusSubscription <parameters>
 ```
