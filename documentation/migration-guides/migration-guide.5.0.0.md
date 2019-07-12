@@ -583,7 +583,7 @@ Set-AzureRmADUser [other required parameters] -Password $SecureStringVariable
 - The 'Remove-AzureRmServiceBusTopicAuthorizationRule' cmdlet has been removed. Please use the 'Remove-AzureRmServiceBusAuthorizationRule' cmdlet.
 
 ### **Set-AzureRmServiceBusTopicAuthorizationRule**
-- The 'Set-AzureRmServiceBusTopicAuthorizationRule' cmdlet has been removed. Please use the 'Set-AzureRmServiceBusAuthorizationRule'cmdlet.
+- The 'Set-AzureRmServiceBusTopicAuthorizationRule' cmdlet has been removed. Please use the 'Set-AzureRmServiceBusAuthorizationRule' cmdlet.
 
 ### **New-AzureRmServiceBusNamespaceKey**
 - The 'New-AzureRmServiceBusNamespaceKey' cmdlet has been removed. Please use the 'New-AzureRmServiceBusKey' cmdlet.
