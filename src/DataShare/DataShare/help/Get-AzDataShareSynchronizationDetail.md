@@ -1,46 +1,52 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataShare.dll-Help.xml
-online version: https://docs.microsoft.com/en-us/powershell/module/az.datashare/get-azdatasharesourcedatasets
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datashare/get-azdatasharesynchronizationdetail
 schema: 2.0.0
 ---
 
-# Get-AzDataShareSourceDataSets
+# Get-AzDataShareSynchronizationDetail
 
 ## SYNOPSIS
-Gets information about source data sets in share subscription.
+Gets information about synchronization details for a share.
 
 ## SYNTAX
 
 ### ByFieldsParameterSet (Default)
 ```
-Get-AzDataShareSourceDataSets -ResourceGroupName <String> -AccountName <String> -ShareSubscriptionName <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzDataShareSynchronizationDetails -ResourceGroupName <String> -AccountName <String> -ShareName <String>
+ -SynchronizationId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
-Get-AzDataShareSourceDataSets -ShareSubscriptionResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzDataShareSynchronizationDetails -SynchronizationId <String> -ResourceId <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzDataShareSourceDataSets** cmdlet provides information about the source data sets in the share subscription. 
+The **Get-AzDataShareSynchronizationDetail** cmdlet provides details of the synchronization initiated for a share.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Get-AzDataShareSourceDataSets -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareSubscriptionName "AdsShareSubscription"
+PS C:\> Get-AzDataShareSynchronizationDetail -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareName "AdsShare" -SynchronizationId "02a17faa-4498-45ee-a884-162180af9251"
 
-DataSetId   : 63116d3f-515a-47a2-9b18-d981b16a9d21
-DataSetName : filesystem1
-DataSetType : Blob
-Id          : /subscriptions/1834da9b-787a-44f6-ae81-60707ab8c957/resourceGroups/ADS/providers/Microsoft.DataShare/accounts/WikiAds/shareSubscriptions/AdsShareSubscription/consumerSourceDataSets/AdsDataSets
-Name        : AdsDataSets
-Type        : Microsoft.DataShare/ConsumerSourceDataSet
+DataSetId    : d2411889-5357-4ca8-8d65-9363e46ef2ed
+DataSetType  : BlobFolder
+EndTime      : 7/8/2019 10:24:27 PM
+StartTime    : 7/8/2019 10:23:09 PM
+Status       : Succeeded
+DurationMs   : 78870
+FilesRead    : 1
+FilesWritten : 1
+SizeRead     : 2779935
+SizeWritten  : 2779935
+Name         : 16d5161b-2b3f-4d90-b074-13ad7121bcc7
+Message      :
 ```
 
-{{ Add example description here }}
+This command provides information about the synchronization details of all the data sets corresponding to the provided synchronization id.
 
 ## PARAMETERS
 
@@ -89,8 +95,23 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ShareSubscriptionName
-Azure data share subscription name
+### -ResourceId
+Azure data share resource id
+
+```yaml
+Type: String
+Parameter Sets: ByResourceIdParameterSet
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ShareName
+Azure data share name
 
 ```yaml
 Type: String
@@ -104,12 +125,12 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ShareSubscriptionResourceId
-Azure data share subscription resource id
+### -SynchronizationId
+Synchronization id of share synchronization
 
 ```yaml
 Type: String
-Parameter Sets: ByResourceIdParameterSet
+Parameter Sets: (All)
 Aliases: 
 
 Required: True
@@ -128,7 +149,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSourceDataSet
+### Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSynchronizationDetail
 
 ## NOTES
 

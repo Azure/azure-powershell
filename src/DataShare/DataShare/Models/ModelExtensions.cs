@@ -492,9 +492,9 @@ namespace Microsoft.Azure.Commands.DataShare.Helpers
             };
         }
 
-        public static PSDataShareSynchronizationDetails ToPsObject(this SynchronizationDetails synchronizationDetails)
+        public static PSDataShareSynchronizationDetail ToPsObject(this SynchronizationDetails synchronizationDetails)
         {
-            return new PSDataShareSynchronizationDetails
+            return new PSDataShareSynchronizationDetail
             {
                 Name = synchronizationDetails.Name,
                 DataSetId = synchronizationDetails.DataSetId,

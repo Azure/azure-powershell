@@ -17,7 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models
     using System;
     using System.Collections;
 
-    public class PSDataShareSynchronizationDetails
+    public class PSDataShareSynchronizationDetail
     {
         public string DataSetId { get; set; }
         public string DataSetType { get; set; }

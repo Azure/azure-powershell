@@ -31,7 +31,7 @@ function Test-SynchronizationSettingCrud
 	Assert-AreEqual $SynchronizationTime $gottenSetting.SynchronizationTime
 	Assert-AreEqual $Name $gottenSetting.Name
 
-	$removed = Remove-AzDataShareSynchronizationSetting -ResourceGroupName $resourceGroup -AccountName $AccountName -ShareName $ShareName -Name $Name -PassThru -Force
+	$removed = Remove-AzDataShareSynchronizationSetting -ResourceGroupName $resourceGroup -AccountName $AccountName -ShareName $ShareName -Name $Name -PassThru
 
 	Assert-True { $removed }
 
@@ -42,7 +42,7 @@ function Test-SynchronizationSettingCrud
 	Assert-AreEqual $SynchronizationTime $gottenSetting.SynchronizationTime
 	Assert-AreEqual $Name $gottenSetting.Name
 
-	$removed = Remove-AzDataShareSynchronizationSetting -ResourceId $gottenSetting.id -PassThru -Force
+	$removed = Remove-AzDataShareSynchronizationSetting -ResourceId $gottenSetting.id -PassThru
 
 	Assert-True { $removed }
 

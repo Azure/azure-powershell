@@ -34,10 +34,10 @@ namespace Microsoft.Azure.Commands.DataShare.SourceDataSet
     /// </summary>
     [Cmdlet(
          "Get",
-         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataShareSourceDataSets",
+         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataShareSourceDataSet",
          DefaultParameterSetName = ParameterSetNames.FieldsParameterSet),
      OutputType(typeof(PSDataShareSourceDataSet))]
-    public class GetAzDataShareSourceDataSets : AzureDataShareCmdletBase
+    public class GetAzDataShareSourceDataSet : AzureDataShareCmdletBase
     {
         /// <summary>
         /// The resource group name of the azure data share account.

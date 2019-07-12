@@ -28,10 +28,10 @@ function Test-ShareSubscriptionCrud
 	Assert-AreEqual "Succeeded" $retrievedShareSubscription.ProvisioningState
 	Assert-AreEqual "Active" $retrievedShareSubscription.ShareSubscriptionStatus
 
-	$removed = Remove-AzDataShareSubscription -AccountName $AccountName -ResourceGroupName $resourceGroup -Name $ShareSubscriptionName -PassThru -Force
+	$removed = Remove-AzDataShareSubscription -AccountName $AccountName -ResourceGroupName $resourceGroup -Name $ShareSubscriptionName -PassThru
 
 	Assert-True { $removed }
     Assert-ThrowsContains { Get-AzDataShareSubscription -AccountName $AccountName -ResourceGroupName $resourceGroup -Name $ShareSubscriptionName } "ShareSubscription sdktestingsharesub1 not found"
 
-    Remove-AzResourceGroup -Name $resourceGroup -Force
+    Remove-AzResourceGroup -Name $resourceGroup
 }
