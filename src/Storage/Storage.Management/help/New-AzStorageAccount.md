@@ -17,7 +17,7 @@ Creates a Storage account.
 New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <String> [-Location] <String>
  [-Kind <String>] [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>]
  [-Tag <Hashtable>] [-EnableHttpsTrafficOnly <Boolean>] [-AssignIdentity] [-NetworkRuleSet <PSNetworkRuleSet>]
- [-EnableAzureFilesAadIntegrationForSMB <Boolean>] [-EnableHierarchicalNamespace <Boolean>] [-AsJob]
+ [-EnableHierarchicalNamespace <Boolean>] [-EnableAzureActiveDirectoryDomainServicesForFile <Boolean>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -65,6 +65,13 @@ PS C:\>New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "m
 ```
 
 This command creates a Storage account with Hierarchical Namespace enabled.
+
+### Example 6: Create a Storage account with Azure Files AAD DS Authentication.
+```
+PS C:\>New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -Location "eastus2euap" -SkuName "Standard_LRS" -Kind StorageV2  -EnableAzureActiveDirectoryDomainServicesForFile $true
+```
+
+This command creates a Storage account with Azure Files AAD DS Authentication.
 
 ## PARAMETERS
 
@@ -149,13 +156,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableAzureFilesAadIntegrationForSMB
-Enable Azure Files AAD Integration for the Storage account.
+### -EnableAzureActiveDirectoryDomainServicesForFile
+Enable Azure Files Azure Active Directory Domain Service Authentication for the storage account.
 
 ```yaml
 Type: System.Boolean
 Parameter Sets: (All)
-Aliases: EnableFilesAADIntegration
+Aliases:
 
 Required: False
 Position: Named

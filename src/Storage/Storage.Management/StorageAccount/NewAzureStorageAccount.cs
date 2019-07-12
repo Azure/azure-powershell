@@ -150,24 +150,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
 
         [Parameter(
-        Mandatory = false,
-        HelpMessage = "Enable Azure Files AAD Integration for the Storage account.")]
-        [ValidateNotNullOrEmpty]
-        [Alias(EnableFilesAadIntegrationAlias)]
-        public bool EnableAzureFilesAadIntegrationForSMB
-        {
-            get
-            {
-                return enableAzureFilesAadIntegrationForSMB.Value;
-            }
-            set
-            {
-                enableAzureFilesAadIntegrationForSMB = value;
-            }
-        }
-        private bool? enableAzureFilesAadIntegrationForSMB = null;
-
-        [Parameter(
             Mandatory = false,
             HelpMessage = "Enable HierarchicalNamespace for the Storage account.")]
         [ValidateNotNullOrEmpty]
@@ -183,6 +165,23 @@ namespace Microsoft.Azure.Commands.Management.Storage
             }
         }
         private bool? enableHierarchicalNamespace = null;
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Enable Azure Files Azure Active Directory Domain Service Authentication for the storage account.")]
+        [ValidateNotNullOrEmpty]
+        public bool EnableAzureActiveDirectoryDomainServicesForFile
+        {
+            get
+            {
+                return enableAzureActiveDirectoryDomainServicesForFile.Value;
+            }
+            set
+            {
+                enableAzureActiveDirectoryDomainServicesForFile = value;
+            }
+        }
+        private bool? enableAzureActiveDirectoryDomainServicesForFile = null;
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -239,13 +238,21 @@ namespace Microsoft.Azure.Commands.Management.Storage
             {
                 createParameters.NetworkRuleSet = PSNetworkRuleSet.ParseStorageNetworkRule(NetworkRuleSet);
             }
-            if (enableAzureFilesAadIntegrationForSMB != null)
-            {
-                createParameters.EnableAzureFilesAadIntegration = enableAzureFilesAadIntegrationForSMB;
-            }
             if (enableHierarchicalNamespace != null)
             {
                 createParameters.IsHnsEnabled = enableHierarchicalNamespace;
+            }
+            if (enableAzureActiveDirectoryDomainServicesForFile !=null)
+            {
+                createParameters.AzureFilesIdentityBasedAuthentication = new AzureFilesIdentityBasedAuthentication();
+                if (enableAzureActiveDirectoryDomainServicesForFile.Value)
+                {
+                    createParameters.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions = DirectoryServiceOptions.AADDS;
+                }
+                else
+                {
+                    createParameters.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions = DirectoryServiceOptions.None;
+                }
             }
 
             var createAccountResponse = this.StorageClient.StorageAccounts.Create(

@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Network
                 foreach (MNM.VpnGateway gateway in vpnGateways)
                 {
                     PSVpnGateway gatewayToReturn = ToPsVpnGateway(gateway);
-                    gatewayToReturn.ResourceGroupName = resourceGroupName;
+                    gatewayToReturn.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(gateway.Id);
                     gatewaysToReturn.Add(gatewayToReturn);
                 }
             }

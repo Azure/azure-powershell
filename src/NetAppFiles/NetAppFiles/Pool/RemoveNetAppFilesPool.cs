@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
                 AccountName = AccountObject.Name;
             }
 
-            if (ShouldProcess(Name, "Remove the pool"))
+            if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.RemoveResourceMessage, ResourceGroupName)))
             {
                 AzureNetAppFilesManagementClient.Pools.Delete(ResourceGroupName, AccountName, Name);
                 success = true;
