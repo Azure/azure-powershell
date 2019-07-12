@@ -186,7 +186,7 @@ Accept wildcard characters: False
 ```
 
 ### -HyperVToAzure
-Switch parameter indicating that the specfied policy is used to replicate Hyper-V virtual machines to Azure.
+Switch parameter indicating that the specified policy is used to replicate Hyper-V virtual machines to Azure.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -377,7 +377,7 @@ Accept wildcard characters: False
 ```
 
 ### -VmmToVmm
-Switch parameter indicating that the specfied policy is used to replicate VMM managed Hyper-V virtual machines between two Hyper-V sites.
+Switch parameter indicating that the specified policy is used to replicate VMM managed Hyper-V virtual machines between two Hyper-V sites.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -392,7 +392,7 @@ Accept wildcard characters: False
 ```
 
 ### -VMwareToAzure
-Switch parameter indicating that the specfied policy is used to replicate VMware virtual machines to Azure.
+Switch parameter indicating that the specified policy is used to replicate VMware virtual machines to Azure.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
