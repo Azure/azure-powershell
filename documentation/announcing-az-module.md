@@ -29,7 +29,7 @@ Az is a new module, and reorganizing and simplifying cmdlet names involves break
 | **December 2018** | Az 1.0 Release |
 | **January 2019** | New Authentication mechanisms for Windows PowerShell
 |  | - Username + password authentication
-|  | - Web broswer control authentication |
+|  | - Web browser control authentication |
 
  
 
