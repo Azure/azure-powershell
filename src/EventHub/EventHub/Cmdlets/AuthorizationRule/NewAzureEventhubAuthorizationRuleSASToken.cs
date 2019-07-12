@@ -33,13 +33,12 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "ARM ResourceId of the Authoraization Rule")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
-        [Alias(AliasAuthorizationRuleId)]
-        public string ResourceId { get; set; }
+        [Alias(AliasResourceId)]
+        public string AuthorizationRuleId { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = NamespaceAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Key Type")]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("Primary", "Secondary")]
-        [ValidateSet("Primary", "Secondary", IgnoreCase = true)]
         public string KeyType { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = NamespaceAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Expiry Time")]
@@ -54,7 +53,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         {
             try
             {
-                LocalResourceIdentifier identifier = new LocalResourceIdentifier(ResourceId);
+                LocalResourceIdentifier identifier = new LocalResourceIdentifier(AuthorizationRuleId);
                 string resourceUri = string.Empty, strPolicyName = string.Empty, sakey = string.Empty;
 
                 PSListKeysAttributes listkeys;

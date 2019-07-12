@@ -12,9 +12,9 @@ Generates a SAS tolen for Azure eventhub authorization rule of namespace/eventhu
 
 ## SYNTAX
 
-```
-New-AzEventHubAuthorizationRuleSASToken [-ResourceId] <String> [-KeyType] <String> [-ExpiryTime] <DateTime>
- [-StartTime <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzEventHubAuthorizationRuleSASToken [-AuthorizationRuleId] <String> [-KeyType] <String>
+ [-ExpiryTime] <DateTime> [-StartTime <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,7 +26,7 @@ The New-AzEventHubAuthorizationRuleSASToken cmdlet generates a Shared Access Sig
 ```powershell
 PS C:\> $StartTime = Get-Date
 PS C:\> $EndTime = $StartTime.AddHours(2.0)
-PS C:\> $SasToken = New-AzEventHubAuthorizationRuleSASToken -ResourceId $updatedAuthRule.Id  -KeyType Primary -ExpiryTime $EndTime -StartTime $StartTime
+PS C:\> $SasToken = New-AzEventHubAuthorizationRuleSASToken -AuthorizationRuleId $updatedAuthRule.Id  -KeyType Primary -ExpiryTime $EndTime -StartTime $StartTime
 ```
 
 Generate SAS token for the given authorixation rule for Namespace with start and expiry time..
@@ -35,12 +35,27 @@ Generate SAS token for the given authorixation rule for Namespace with start and
 ```powershell
 PS C:\> $StartTime = Get-Date
 PS C:\> $EndTime = $StartTime.AddHours(2.0)
-PS C:\> $SasToken = New-AzEventHubAuthorizationRuleSASToken -ResourceId $updatedAuthRule.Id  -KeyType Primary -ExpiryTime $EndTime
+PS C:\> $SasToken = New-AzEventHubAuthorizationRuleSASToken -AuthorizationRuleId $updatedAuthRule.Id  -KeyType Primary -ExpiryTime $EndTime
 ```
 
 Generate SAS token for the given authorixation rule for Namespace with expiry time.
 
 ## PARAMETERS
+
+### -AuthorizationRuleId
+ARM ResourceId of the Authoraization Rule
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: ResourceId
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -79,25 +94,9 @@ Key Type
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Primary, Secondary
 
 Required: True
 Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceId
-ARM ResourceId of the Authoraization Rule
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: AuthorizationRuleId
-
-Required: True
-Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -161,7 +160,7 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## OUTPUTS
 
-### System.String
+### Microsoft.Azure.Commands.EventHub.Models.PSSharedAccessSignatureAttributes
 
 ## NOTES
 
