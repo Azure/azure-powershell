@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.Compute
                 }
                 else
                 {
-                    WriteDebugWithTimestamp("[Stop-AureRmVMJob]: ShouldMethod returned false");
+                    WriteDebugWithTimestamp("[Stop-AzVMJob]: ShouldMethod returned false");
                 }
             });
         }
