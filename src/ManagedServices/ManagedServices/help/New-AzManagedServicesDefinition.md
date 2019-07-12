@@ -102,7 +102,7 @@ Accept wildcard characters: False
 ```
 
 ### -ManagedByTenantId
-The Managedby Tenant Identifier.
+The ManagedBy Tenant Identifier.
 
 ```yaml
 Type: System.String
@@ -177,7 +177,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrincipalId
-The Managedby Principal Identifier.
+The ManagedBy Principal Identifier.
 
 ```yaml
 Type: System.String
