@@ -205,7 +205,7 @@ The cmdlet is being deprecated. There will be no replacement for it.
 This attribute is used to call out the breaking changes with the output of a cmdlet. A few examples are :
  - The type of the output is changing
  - The Output type is being deprecated
- - Some internal properties in the putput type are being deprecated
+ - Some internal properties in the output type are being deprecated
  - New properties are being introduced to the output type
 
 Note :
