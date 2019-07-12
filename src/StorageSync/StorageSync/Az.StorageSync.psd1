@@ -84,7 +84,8 @@ CmdletsToExport = 'Invoke-AzStorageSyncCompatibilityCheck',
                'Remove-AzStorageSyncServerEndpoint', 
                'Set-AzStorageSyncServerEndpoint', 'Invoke-AzStorageSyncFileRecall', 
                'Register-AzStorageSyncServer', 'Unregister-AzStorageSyncServer', 
-               'Get-AzStorageSyncServer', 'Reset-AzStorageSyncServerCertificate'
+               'Get-AzStorageSyncServer', 'Reset-AzStorageSyncServerCertificate',
+               'Invoke-AzStorageSyncChangeDetection'
 
 # Variables to export from this module
 # VariablesToExport = @()
