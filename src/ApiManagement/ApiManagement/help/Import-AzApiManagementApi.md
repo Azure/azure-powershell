@@ -274,7 +274,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServiceUrl
-A URL of the web service exposing the API. This URL will be used by Azure API Management only, and will not be made public. This parameter is optional. If provided it will override the ServiceUrl specificed in the Specifications document.
+A URL of the web service exposing the API. This URL will be used by Azure API Management only, and will not be made public. This parameter is optional. If provided it will override the ServiceUrl specified in the Specifications document.
 
 ```yaml
 Type: System.String
