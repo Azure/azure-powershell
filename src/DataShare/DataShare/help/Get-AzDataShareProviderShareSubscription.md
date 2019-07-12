@@ -94,7 +94,9 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The resource id of the share```yaml
+The resource id of the share
+
+```yaml
 Type: String
 Parameter Sets: ByResourceIdParameterSet
 Aliases: 
