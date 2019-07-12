@@ -160,7 +160,7 @@ Configures the chef-client service for unattended execution. The node platform s
 Allowed options: 'none','service' and 'task'.
 none - Currently prevents the chef-client service from being configured as a service.
 service - Configures the chef-client to run automatically in the background as a service.
-task - Configures the chef-client to run automatically in the background as a secheduled task.
+task - Configures the chef-client to run automatically in the background as a scheduled task.
 
 ```yaml
 Type: System.String
