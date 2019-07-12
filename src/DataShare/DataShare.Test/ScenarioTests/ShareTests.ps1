@@ -15,7 +15,7 @@ function Test-ShareCrud
     $description = "Test Share"
     $terms = "Test terms"
     $shareKind = "CopyBased"
-    $createdShare = New-AzDataShare -AccountName $AccountName -ResourceGroupName $resourceGroup -Name $ShareName -ShareKind $shareKind -Description $description -Terms $terms
+    $createdShare = New-AzDataShare -AccountName $AccountName -ResourceGroupName $resourceGroup -Name $ShareName -Description $description -Terms $terms
 
     Assert-NotNull $createdShare
     Assert-AreEqual $ShareName $createdShare.Name
@@ -40,10 +40,10 @@ function Test-ShareCrud
     Assert-AreEqual $newTerms $updateShare.Terms
     Assert-AreEqual "Succeeded" $updateShare.ProvisioningState
 
-    $removed = Remove-AzDataShare -AccountName $AccountName -ResourceGroupName $resourceGroup -Name $ShareName -PassThru -Force
+    $removed = Remove-AzDataShare -AccountName $AccountName -ResourceGroupName $resourceGroup -Name $ShareName -PassThru
 
     Assert-True { $removed }
     Assert-ThrowsContains { Get-AzDataShare -AccountName $AccountName -ResourceGroupName $resourceGroup -Name $ShareName } "Share sdktestingshare1 not found"
 
-    Remove-AzResourceGroup -Name $resourceGroup -Force   
+    Remove-AzResourceGroup -Name $resourceGroup   
 }

@@ -34,10 +34,10 @@ namespace Microsoft.Azure.Commands.DataShare.Synchronization
     /// </summary>
     [Cmdlet(
          "Get",
-         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataShareSynchronizationDetails",
+         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataShareSynchronizationDetail",
          DefaultParameterSetName = ParameterSetNames.FieldsParameterSet),
-     OutputType(typeof(PSDataShareSynchronizationDetails))]
-    public class GetAzDataShareSynchronizationDetails : AzureDataShareCmdletBase
+     OutputType(typeof(PSDataShareSynchronizationDetail))]
+    public class GetAzDataShareSynchronizationDetail : AzureDataShareCmdletBase
     {
         /// <summary>
         /// The resource group name of the azure data share account.
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Commands.DataShare.Synchronization
 
                 } while (nextPageLink != null);
 
-                IEnumerable<PSDataShareSynchronizationDetails> synchronizationDetailsInShare =
+                IEnumerable<PSDataShareSynchronizationDetail> synchronizationDetailsInShare =
                     shareSynchronizationDetailsList.Select(
                         shareSynchronizationDetails => shareSynchronizationDetails.ToPsObject());
 

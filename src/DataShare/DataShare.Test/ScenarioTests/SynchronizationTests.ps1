@@ -28,13 +28,13 @@ function Test-SynchronizationStart
 
 	$syncStatus = "Succeeded"
 
-	$sync = Start-AzDataShareSubscriptionSynchronization -ResourceGroupName $resourceGroup -AccountName $AccountName -ShareSubscriptionName $ShareName -SynchronizationMode $Mode -Force
+	$sync = Start-AzDataShareSubscriptionSynchronization -ResourceGroupName $resourceGroup -AccountName $AccountName -ShareSubscriptionName $ShareName -SynchronizationMode $Mode
 	Assert-NotNull $sync
 	Assert-AreEqual $sync.startTime $endAndStartTime
 	Assert-AreEqual $sync.endTime $endAndStartTime
 	Assert-AreEqual $sync.status $syncStatus
 
-	$sync = Start-AzDataShareSubscriptionSynchronization -ResourceId $ResourceId -SynchronizationMode $Mode -Force
+	$sync = Start-AzDataShareSubscriptionSynchronization -ResourceId $ResourceId -SynchronizationMode $Mode
 	Assert-NotNull $sync
 	Assert-AreEqual $sync.startTime $endAndStartTime
 	Assert-AreEqual $sync.endTime $endAndStartTime
@@ -48,14 +48,14 @@ function Test-SynchronizationCancel
     $ShareName = getAssetName
 	$SynchronizationId = "20a43c32-81d2-4a03-a878-9c2c389e7ea8"
 
-	$sync = Stop-AzDataShareSubscriptionSynchronization -ResourceGroupName $resourceGroup -AccountName $AccountName -ShareSubscriptionName $ShareName -SynchronizationId $SynchronizationId -Force
+	$sync = Stop-AzDataShareSubscriptionSynchronization -ResourceGroupName $resourceGroup -AccountName $AccountName -ShareSubscriptionName $ShareName -SynchronizationId $SynchronizationId
 
 	Assert-NotNull $sync
 	Assert-AreEqual $sync.status "Succeeded"
 	
 	$ResourceId = "/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/sdktestingadsrg4712/providers/Microsoft.DataShare/accounts/sdktestingshareaccount9776/shareSubscriptions/sdktestingshare1"
 	
-	$sync = Stop-AzDataShareSubscriptionSynchronization -ResourceId $ResourceId -SynchronizationId $SynchronizationId -Force
+	$sync = Stop-AzDataShareSubscriptionSynchronization -ResourceId $ResourceId -SynchronizationId $SynchronizationId
 	Assert-NotNull $sync
 	Assert-AreEqual $sync.status "Succeeded"	
 }

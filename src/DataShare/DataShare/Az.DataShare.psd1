@@ -104,10 +104,10 @@ CmdletsToExport = 'New-AzDataShareAccount',
 	'Get-AzDataShareDataSetMapping',
 	'Remove-AzDataShareDataSetMapping',
 	'Get-AzDataShareSubscriptionSynchronization',
-	'Get-AzDataShareSubscriptionSynchronizationDetails',
+	'Get-AzDataShareSubscriptionSynchronizationDetail',
 	'Get-AzDataShareSynchronization',
-	'Get-AzDataShareSynchronizationDetails',
-	'Get-AzDataShareSourceDataSets'
+	'Get-AzDataShareSynchronizationDetail',
+	'Get-AzDataShareSourceDataSet'
 
 # Variables to export from this module
 # VariablesToExport = @()

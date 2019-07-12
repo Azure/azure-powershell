@@ -27,10 +27,10 @@ function Test-InvitationCrud
     Assert-AreEqual $InvitationName $retrievedInvitation.Name
     Assert-AreEqual "Pending" $retrievedInvitation.InvitationStatus
 
-    $removed = Remove-AzDataShareInvitation -AccountName $AccountName -ResourceGroupName $resourceGroup -ShareName $ShareName -Name $InvitationName -PassThru -Force
+    $removed = Remove-AzDataShareInvitation -AccountName $AccountName -ResourceGroupName $resourceGroup -ShareName $ShareName -Name $InvitationName -PassThru
 
     Assert-True { $removed }
     Assert-ThrowsContains { Get-AzDataShareInvitation -AccountName $AccountName -ResourceGroupName $resourceGroup -ShareName $ShareName -Name $InvitationName} "Invitation sdktestinginvitation not found"
 
-    Remove-AzResourceGroup -Name $resourceGroup -Force   
+    Remove-AzResourceGroup -Name $resourceGroup
 }

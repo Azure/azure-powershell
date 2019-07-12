@@ -1,36 +1,37 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataShare.dll-Help.xml
-online version: https://docs.microsoft.com/en-us/powershell/module/az.datashare/get-azdatasharesynchronizationdetails
+online version: https://docs.microsoft.com/en-us/powershell/module/az.datashare/get-azdatasharesubscriptionsynchronizationdetail
 schema: 2.0.0
 ---
 
-# Get-AzDataShareSynchronizationDetails
+# Get-AzDataShareSubscriptionSynchronizationDetail
 
 ## SYNOPSIS
-Gets information about synchronization details for a share.
+Gets information about synchonization details for share subscription.
 
 ## SYNTAX
 
 ### ByFieldsParameterSet (Default)
 ```
-Get-AzDataShareSynchronizationDetails -ResourceGroupName <String> -AccountName <String> -ShareName <String>
- -SynchronizationId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzDataShareSubscriptionSynchronizationDetail -ResourceGroupName <String> -AccountName <String>
+ -ShareSubscriptionName <String> -SynchronizationId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
-Get-AzDataShareSynchronizationDetails -SynchronizationId <String> -ResourceId <String>
+Get-AzDataShareSubscriptionSynchronizationDetail -SynchronizationId <String> -ResourceId <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzDataShareSynchronizationDetails** cmdlet provides details of the synchronization initiated for a share.
+The **Get-AzDataShareSubscriptionSynchronizationDetail** cmdlet provides details of the synchronization initiated for a share subscription.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Get-AzDataShareSynchronizationDetails -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareName "AdsShare" -SynchronizationId "02a17faa-4498-45ee-a884-162180af9251"
+PS C:\> Get-AzDataShareSubscriptionSynchronizationDetail -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareSubscriptionName "AdsShareSubscription" -SynchronizationId "a6ee5c8d-0ce0-485e-b2f2-966b187dc6c7"
 
 DataSetId    : d2411889-5357-4ca8-8d65-9363e46ef2ed
 DataSetType  : BlobFolder
@@ -46,7 +47,7 @@ Name         : 16d5161b-2b3f-4d90-b074-13ad7121bcc7
 Message      :
 ```
 
-This command provides information about the synchronization details of all the data sets corresponding to the provided synchronization id.
+This command provides information about synchronization initiated for share subscription AdsShareSubscription under data share account WikiAds.
 
 ## PARAMETERS
 
@@ -96,7 +97,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Azure data share resource id
+Azure data share subscription resource id
 
 ```yaml
 Type: String
@@ -110,8 +111,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ShareName
-Azure data share name
+### -ShareSubscriptionName
+Azure data share subscription name
 
 ```yaml
 Type: String
@@ -126,7 +127,7 @@ Accept wildcard characters: False
 ```
 
 ### -SynchronizationId
-Synchronization id of share synchronization
+Synchronization id of share subscription synchronization
 
 ```yaml
 Type: String
@@ -149,7 +150,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSSynchronizationDetails
+### Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSynchronizationDetail
 
 ## NOTES
 

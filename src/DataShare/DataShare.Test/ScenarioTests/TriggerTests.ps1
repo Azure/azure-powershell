@@ -26,7 +26,7 @@ function Test-TriggerCrud
 	$RecurrenceInterval = "hour"
     $SynchronizationTime = "06/19/2019 22:53:33"
 
-	$newTrigger = New-AzDataShareTrigger -ResourceGroupName $ResourceGroupName -AccountName $AccountName -ShareSubscriptionName $SubName -RecurrenceInterval $RecurrenceInterval -SynchronizationTime $SynchronizationTime -Name $TriggerName -Force -PassThru
+	$newTrigger = New-AzDataShareTrigger -ResourceGroupName $ResourceGroupName -AccountName $AccountName -ShareSubscriptionName $SubName -RecurrenceInterval $RecurrenceInterval -SynchronizationTime $SynchronizationTime -Name $TriggerName
 
 	Assert-NotNull $newTrigger
 	Assert-AreEqual $newTrigger.Name $TriggerName
@@ -50,6 +50,6 @@ function Test-TriggerCrud
 	Assert-AreEqual $newTrigger.Name $TriggerName
 	Assert-AreEqual $newTrigger.ProvisioningState "Succeeded"
 
-	$removedTrigger = Remove-AzDataShareTrigger -Trigger $gottenTrigger -Force -PassThru
+	$removedTrigger = Remove-AzDataShareTrigger -InputObject $gottenTrigger
 
 }

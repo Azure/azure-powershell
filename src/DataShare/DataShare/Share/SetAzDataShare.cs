@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.DataShare.Share
     /// <summary>
     /// Defines Set-AzDataShare cmdlet.
     /// </summary>
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataShare", DefaultParameterSetName = ParameterSetNames.FieldsParameterSet),
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataShare", DefaultParameterSetName = ParameterSetNames.FieldsParameterSet, SupportsShouldProcess = true),
      OutputType(typeof(PSDataShare))]
     public class SetAzDataShare : AzureDataShareCmdletBase
     {
