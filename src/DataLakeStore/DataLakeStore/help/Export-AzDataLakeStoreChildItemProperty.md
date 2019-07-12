@@ -8,7 +8,7 @@ schema: 2.0.0
 # Export-AzDataLakeStoreChildItemProperty
 
 ## SYNOPSIS
-Exports the properties (Disk usage and Acl) for the entire tree from the specified path to a ouput path
+Exports the properties (Disk usage and Acl) for the entire tree from the specified path to a output path
 
 ## SYNTAX
 
@@ -57,7 +57,7 @@ PS C:\> Set-AzDataLakeStoreItemAcl -Account ContosoADL -Path /a -Acl $newFullAcl
 PS C:\> Export-AzDataLakeStoreChildItemProperty -Account ContosoADL -Path /a -OutputPath "C:\Users\contoso\Desktop\DumpFile.txt" -GetAcl -HideConsistentAcl -IncludeFile
 ```
 
-Get the ACL usage for all subdirectories and files under /a. IncludeFile ensures the usage is reported for files also. HideconsistentAcl in this case will show the Acl of /a, not it's children since all of the children has same acl as /a. This flag skips the acl ouput of subtree if all it's acls are same as the root.
+Get the ACL usage for all subdirectories and files under /a. IncludeFile ensures the usage is reported for files also. HideconsistentAcl in this case will show the Acl of /a, not it's children since all of the children has same acl as /a. This flag skips the acl output of subtree if all it's acls are same as the root.
 
 ## PARAMETERS
 
