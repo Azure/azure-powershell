@@ -626,7 +626,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 }
                 nextLink = response.NextPageLink;
                 
-                return response.Select(dscNode => new Model.DscNode(resourceGroupName, automationAccountName, dscNode));
+                return response.Where(dscNode => dscNode.DscNodeName == nodeConfigurationName)
+                               .Select(dscNode => new Model.DscNode(resourceGroupName, automationAccountName, dscNode));
             }
         }
 
