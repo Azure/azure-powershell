@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Profile.Context
         [ValidateNotNullOrEmpty]
         public PSAzureContext InputObject { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Remove context even if it is the defualt")]
+        [Parameter(Mandatory = false, HelpMessage = "Remove context even if it is the default")]
         public SwitchParameter Force { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Return the removed context")]
