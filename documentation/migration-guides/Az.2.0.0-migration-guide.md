@@ -241,7 +241,7 @@ This document describes the changes between the 1.0.0 and 2.0.0 versions of Az
   ```
 - Cmdlet `Export-AzLogAnalyticThrottledRequest` removed alias to `Export-AzLogAnalyticThrottledRequests`
   #### Before
-  Using deprectaed alias
+  Using deprecated alias
   ```powershell
   Export-AzLogAnalyticThrottledRequests
   ```
