@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzApplicationInsightsContinuousExport
 
 ## SYNOPSIS
-Update a continuous export configuration in an applciation insights resource
+Update a continuous export configuration in an application insights resource
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ Set-AzApplicationInsightsContinuousExport [-ResourceId] <String> -ExportId <Stri
 ```
 
 ## DESCRIPTION
-Update a continuous export configuration in an applciation insights resource
+Update a continuous export configuration in an application insights resource
 
 ## EXAMPLES
 
