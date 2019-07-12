@@ -22,6 +22,7 @@
 * Update 'Get-AzRecoveryServicesBackupContainer.md'
 * Update 'Get-AzRecoveryServicesVault.md'
 * Update 'Wait-AzRecoveryServicesBackupJob.md'
+* Updated service call for Unregistering container for Azure File Share
 
 ## Version 1.4.2
 * Fix for get-policy command for IaaSVMs
