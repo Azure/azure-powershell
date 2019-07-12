@@ -1,6 +1,6 @@
 # Troubleshooting Module Loading With Azure PowerShell
 
-## Potential Incompatibilies
+## Potential Incompatibilities
 
 Azure PowerShell consists of multiple modules, each of which has a dependency on specific version of the central authentication module 'Az.Accounts'. If all versions of Azure PowerShell modules are kept up to date, and all are installed to the same scope, there should never be any incompatibility issues.
 
