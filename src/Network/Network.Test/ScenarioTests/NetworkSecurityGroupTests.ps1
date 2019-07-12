@@ -36,7 +36,7 @@ function Test-NetworkSecurityGroupCRUD
         
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         
         # Create NetworkSecurityGroup
         $job = New-AzNetworkSecurityGroup -name $nsgName -ResourceGroupName $rgname -Location $location -AsJob
