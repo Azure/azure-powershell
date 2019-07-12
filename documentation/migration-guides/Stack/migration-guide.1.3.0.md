@@ -40,7 +40,7 @@ Properties field of the objects Plan, Offer, Subscription have been removed and 
 
 **Force Parameter** <br>
 
-Remove-* cmdlets will ask for confirmation before doing the remove action. Please use -Force to avoid the confirmation. The following are the affected cmldets
+Remove-* cmdlets will ask for confirmation before doing the remove action. Please use -Force to avoid the confirmation. The following are the affected cmdlets
 - Remove-AzsOffer
 - Remove-AzsPlan
 - Remove-AzsUserSubscription
