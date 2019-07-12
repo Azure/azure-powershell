@@ -8,7 +8,7 @@ _Note_: for the below examples, the string "TopLevelResource" would be replaced 
 
 In PowerShell, cmdlets pipe objects between one another; cmdlets should return objects, not text (strings).
 
-For example, in Azure PowerShell, you can remove all of your current environments with the following pipeline scenairo:
+For example, in Azure PowerShell, you can remove all of your current environments with the following pipeline scenario:
 
 ```powershell
 Get-AzEnvironment | Remove-AzEnviornment
