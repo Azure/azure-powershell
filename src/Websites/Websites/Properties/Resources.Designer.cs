@@ -88,11 +88,11 @@ namespace Microsoft.Azure.Commands.WebApps.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remote Powershell sessions into Windows Containers on App Service from Powershell 6.0.4 is not supported..
+        ///   Looks up a localized string similar to Remote Powershell sessions into Windows Containers on App Service from this version of PowerShell is not supported..
         /// </summary>
-        internal static string EnterContainerPSSessionNotSupportedInPSCore604 {
+        internal static string EnterContainerPSSessionPSCoreVersionNotSupported {
             get {
-                return ResourceManager.GetString("EnterContainerPSSessionNotSupportedInPSCore604", resourceCulture);
+                return ResourceManager.GetString("EnterContainerPSSessionPSCoreVersionNotSupported", resourceCulture);
             }
         }
         
