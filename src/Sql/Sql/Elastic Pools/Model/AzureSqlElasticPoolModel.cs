@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Model
         public double? DatabaseCapacityMax { get; set; }
 
         /// <summary>
-        /// Gets or sets the the sku family of the elastic pool
+        /// Gets or sets the sku family of the elastic pool
         /// </summary>
         public string Family { get; set; }
 

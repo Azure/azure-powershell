@@ -36,7 +36,7 @@ New-AzVmss [[-ResourceGroupName] <String>] [-VMScaleSetName] <String> [-AsJob] [
 
 ## DESCRIPTION
 The **New-AzVmss** cmdlet creates a Virtual Machine Scale Set (VMSS) in Azure.
-Use the simple parameter set (`SimpleParameterSet`) to quickly create a pre-set VMSS and associated resources. Use the default parameter set (`DefaultParameter`) for more advanced scenarios when you need to precisely configure each component of the the VMSS and each associated resource before creation.
+Use the simple parameter set (`SimpleParameterSet`) to quickly create a pre-set VMSS and associated resources. Use the default parameter set (`DefaultParameter`) for more advanced scenarios when you need to precisely configure each component of the VMSS and each associated resource before creation.
 
 ## EXAMPLES
 

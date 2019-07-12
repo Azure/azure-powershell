@@ -30,7 +30,7 @@ From the [_Strongly Encouraged Development Guidelines_](https://docs.microsoft.c
 
 If your cmdlet is performing a **PATCH** operation (_i.e._, a partial replacement on the server), then the cmdlet should use the verb `Update`.
 
-If your cmdlet is performing a **PUT** operation (_i.e._, a full replacement on the server), the the cmdlet should use the verb `Set`.
+If your cmdlet is performing a **PUT** operation (_i.e._, a full replacement on the server), the cmdlet should use the verb `Set`.
 
 #### Cmdlet Alias
 
