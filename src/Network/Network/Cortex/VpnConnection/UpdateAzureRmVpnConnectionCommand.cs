@@ -86,12 +86,12 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The bandwith that needs to be handled by this connection in mbps.")]
+            HelpMessage = "The bandwidth that needs to be handled by this connection in mbps.")]
         public uint ConnectionBandwidthInMbps { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The bandwith that needs to be handled by this connection in mbps.")]
+            HelpMessage = "The bandwidth that needs to be handled by this connection in mbps.")]
         public PSIpsecPolicy IpSecPolicy { get; set; }
 
         [Parameter(
