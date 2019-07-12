@@ -102,7 +102,7 @@ Invokes GEO DR failover and reconfigure the alias to point to the secondary name
 Updates the specified Event Hubs namespace.
 
 ### [Set-AzEventHubNetworkRuleSet](Set-AzEventHubNetworkRuleSet.md)
-Update the NetworkruleSet of the given Namepsace in the current Azure subscription.
+Update the NetworkruleSet of the given Namespace in the current Azure subscription.
 
 ### [Test-AzEventHubName](Test-AzEventHubName.md)
 Checks the Availability of the given NameSpace Name or Alias (DR Configuration Name)

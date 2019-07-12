@@ -73,7 +73,7 @@ Type                : Microsoft.EventHub/Namespaces/NetworkRuleSet
 IpRules             : 
 VirtualNetworkRules : 
 
-Deletes the NetworkRuleSet using ResourceId of the Namepsace
+Deletes the NetworkRuleSet using ResourceId of the Namespace
 
 
 ## PARAMETERS
