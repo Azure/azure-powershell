@@ -147,41 +147,41 @@ namespace Microsoft.Azure.Commands.DataBox.Common
             if (addressValidationResult.ValidationStatus != AddressValidationStatus.Valid)
             {
                 
-                WriteVerbose("Address validation status: " + addressValidationResult.ValidationStatus + "\n");
+                WriteVerbose(Resource.AddressValidationStatus + addressValidationResult.ValidationStatus + "\n");
 
                 //print alternate address
                 if (addressValidationResult.ValidationStatus == AddressValidationStatus.Ambiguous)
                 {
-                    WriteVerbose("SUPPORT ADDRESSES: \n\n");
+                    WriteVerbose(Resource.SupportAddresses + "\n\n");
                     foreach (ShippingAddress address in addressValidationResult.AlternateAddresses)
                     {
-                        WriteVerbose("Address type: " + address.AddressType + "\n");
+                        WriteVerbose(Resource.AddressType + address.AddressType + "\n");
                         if (!(string.IsNullOrEmpty(address.CompanyName)))
-                            WriteVerbose("Company name: " + address.CompanyName);
+                            WriteVerbose(Resource.CompanyName + address.CompanyName);
                         if (!(string.IsNullOrEmpty(address.StreetAddress1)))
-                            WriteVerbose("Street address1: " + address.StreetAddress1);
+                            WriteVerbose(Resource.StreetAddress1 + address.StreetAddress1);
                         if (!(string.IsNullOrEmpty(address.StreetAddress2)))
-                            WriteVerbose("Street address2: " + address.StreetAddress2);
+                            WriteVerbose(Resource.StreetAddress2 + address.StreetAddress2);
                         if (!(string.IsNullOrEmpty(address.StreetAddress3)))
-                            WriteVerbose("Street address3: " + address.StreetAddress3);
+                            WriteVerbose(Resource.StreetAddress3 + address.StreetAddress3);
                         if (!(string.IsNullOrEmpty(address.City)))
-                            WriteVerbose("City: " + address.City);
+                            WriteVerbose(Resource.City + address.City);
                         if (!(string.IsNullOrEmpty(address.StateOrProvince)))
-                            WriteVerbose("State/Province: " + address.StateOrProvince);
+                            WriteVerbose(Resource.StateOrProvince + address.StateOrProvince);
                         if (!(string.IsNullOrEmpty(address.Country)))
-                            WriteVerbose("Country: " + address.Country);
+                            WriteVerbose(Resource.Country + address.Country);
                         if (!(string.IsNullOrEmpty(address.PostalCode)))
-                            WriteVerbose("Postal code: " + address.PostalCode);
+                            WriteVerbose(Resource.PostalCode + address.PostalCode);
                         if (!(string.IsNullOrEmpty(address.ZipExtendedCode)))
-                            WriteVerbose("Zip extended code: " + address.ZipExtendedCode);
+                            WriteVerbose(Resource.ZipExtendedCode + address.ZipExtendedCode);
                         WriteVerbose("\n\n");
                     }
-                    throw new PSNotSupportedException(Resource.ResourceManager.GetString("AmbiguousAddressMessage"));
+                    throw new PSNotSupportedException(Resource.AmbiguousAddressMessage);
                 }
-                throw new PSNotSupportedException(Resource.ResourceManager.GetString("InvalidAddressMessage"));
+                throw new PSNotSupportedException(Resource.InvalidAddressMessage);
             }
 
-            if (ShouldProcess(this.Name, string.Format("Creating Databox job '{0}' in resource group {0}", this.Name, this.ResourceGroupName)))
+            if (ShouldProcess(this.Name, string.Format(Resource.CreatingDataboxJob + this.Name + Resource.InResourceGroup + this.ResourceGroupName)))
             {
                 JobResource finalJobResource = JobsOperationsExtensions.Create(
                             DataBoxManagementClient.Jobs,

@@ -10,6 +10,7 @@ using Microsoft.Azure.Management.DataBox;
 using Microsoft.Rest.Azure;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Threading;
+using Resource = Microsoft.Azure.PowerShell.Cmdlets.DataBox.Resources.Resource;
 
 namespace Microsoft.Azure.Commands.DataBox.Common
 {
@@ -62,7 +63,7 @@ namespace Microsoft.Azure.Commands.DataBox.Common
             if (jobResource.Status == StageName.Cancelled || jobResource.Status == StageName.Completed || jobResource.Status == StageName.CompletedWithErrors)
             {
                 // Initiate to delete job
-                if (ShouldProcess(this.Name, string.Format("Deleting Databox job '{0}' in resource group {0}", this.Name, this.ResourceGroupName)))
+                if (ShouldProcess(this.Name, string.Format(Resource.DeletingDataboxJob + this.Name + Resource.InResourceGroup + this.ResourceGroupName)))
                 {
                     JobsOperationsExtensions.Delete(
                         DataBoxManagementClient.Jobs,
