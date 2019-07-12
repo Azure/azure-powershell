@@ -105,7 +105,7 @@ function Update-StorageSyncHelp
 
         $PathToHelpFolder = Join-Path (Get-RepositoryRootDirectory) "src\StorageSync\StorageSync\help"
         Write-Verbose "Updating help: $PathToHelpFolder"
-        $status = Update-MarkdownHelpModule -Path $PathToHelpFolder -RefreshModulePage -AlphabeticParamsOrder
+        $status = Update-MarkdownHelpModule -Path $PathToHelpFolder -RefreshModulePage -AlphabeticParamsOrder -UseFullTypeName
     }
     finally
     {
@@ -133,8 +133,9 @@ function Generate-StorageSyncMaml
 
         $script = Join-Path (Get-RepositoryRootDirectory) "tools\GenerateHelp.ps1"
         
-        Write-Verbose "Executing command: ValidateMarkdownHelp"
+        Write-Verbose "Executing command: ValidateMarkdownHelp @ . $script -ValidateMarkdownHelp -BuildConfig $BuildConfig -FilteredModules $null"
         $result = . $script -ValidateMarkdownHelp -BuildConfig $BuildConfig -FilteredModules $null
+        Write-Verbose "Command ValidateMarkdownHelp result: $result"
 
         if (! $WhatIf)
         {
@@ -144,6 +145,7 @@ function Generate-StorageSyncMaml
     } 
     catch {
         Write-Warning "Use Parse-StorageSyncHelpAnalysisResults to see validation results"
+        Write-Warning $_.Exception.ToString()
         throw $_
     }
     finally
