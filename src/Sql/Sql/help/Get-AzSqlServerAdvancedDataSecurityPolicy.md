@@ -18,7 +18,7 @@ Get-AzSqlServerAdvancedDataSecurityPolicy [-InputObject <AzureSqlServerModel>] -
 ```
 
 ## DESCRIPTION
-The **Get-AzSqlServerAdvancedDataSecurityPolicy** cmdlet retrives the Advanced Data Security policy of a server.
+The **Get-AzSqlServerAdvancedDataSecurityPolicy** cmdlet retrieves the Advanced Data Security policy of a server.
 
 ## EXAMPLES
 
