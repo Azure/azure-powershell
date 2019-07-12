@@ -16,6 +16,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
     public static class AzureRMConstants
     {
-        public const string AzurePrefix = "AzV2";
+        public const string AzurePrefix = "Az";
     }
 }

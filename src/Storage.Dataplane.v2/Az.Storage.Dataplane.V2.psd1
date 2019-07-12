@@ -84,77 +84,15 @@ NestedModules = @('.\Microsoft.Azure.PowerShell.Cmdlets.Storage.Dataplane.V2.dll
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzV2StorageTable', 
-               'New-AzV2StorageTableSASToken', 
-               'New-AzV2StorageTableStoredAccessPolicy', 'New-AzV2StorageTable', 
-               'Remove-AzV2StorageTableStoredAccessPolicy', 'Remove-AzV2StorageTable', 
-               'Get-AzV2StorageTableStoredAccessPolicy', 
-               'Set-AzV2StorageTableStoredAccessPolicy', 'Get-AzV2StorageQueue', 
-               'New-AzV2StorageQueue', 'Remove-AzV2StorageQueue', 
-               'Get-AzV2StorageQueueStoredAccessPolicy', 
-               'New-AzV2StorageQueueSASToken', 
-               'New-AzV2StorageQueueStoredAccessPolicy', 
-               'Remove-AzV2StorageQueueStoredAccessPolicy', 
-               'Set-AzV2StorageQueueStoredAccessPolicy', 'Get-AzV2StorageFile', 
-               'Get-AzV2StorageFileContent', 'Get-AzV2StorageFileCopyState', 
-               'Get-AzV2StorageShare', 'Get-AzV2StorageShareStoredAccessPolicy', 
-               'New-AzV2StorageDirectory', 'New-AzV2StorageFileSASToken', 
-               'New-AzV2StorageShare', 'New-AzV2StorageShareSASToken', 
-               'New-AzV2StorageShareStoredAccessPolicy', 'Remove-AzV2StorageDirectory', 
-               'Remove-AzV2StorageFile', 'Remove-AzV2StorageShare', 
-               'Remove-AzV2StorageShareStoredAccessPolicy', 
-               'Set-AzV2StorageFileContent', 'Set-AzV2StorageShareQuota', 
-               'Set-AzV2StorageShareStoredAccessPolicy', 'Start-AzV2StorageFileCopy', 
-               'Stop-AzV2StorageFileCopy', 'New-AzV2StorageAccountSASToken', 
-               'Set-AzV2StorageCORSRule', 'Get-AzV2StorageCORSRule', 
-               'Get-AzV2StorageServiceLoggingProperty', 
-               'Get-AzV2StorageServiceMetricsProperty', 'Remove-AzV2StorageCORSRule', 
-               'Set-AzV2StorageServiceLoggingProperty', 
-               'Set-AzV2StorageServiceMetricsProperty', 'New-AzV2StorageContext', 
-               'Set-AzV2StorageContainerAcl', 'Remove-AzV2StorageBlob', 
-               'Set-AzV2StorageBlobContent', 'Get-AzV2StorageBlob', 
-               'Get-AzV2StorageBlobContent', 'Get-AzV2StorageBlobCopyState', 
-               'Get-AzV2StorageContainer', 
-               'Get-AzV2StorageContainerStoredAccessPolicy', 
-               'New-AzV2StorageBlobSASToken', 'New-AzV2StorageContainer', 
-               'New-AzV2StorageContainerSASToken', 
-               'New-AzV2StorageContainerStoredAccessPolicy', 
-               'Remove-AzV2StorageContainer', 
-               'Remove-AzV2StorageContainerStoredAccessPolicy', 
-               'Set-AzV2StorageContainerStoredAccessPolicy', 
-               'Start-AzV2StorageBlobCopy', 'Start-AzV2StorageBlobIncrementalCopy', 
-               'Stop-AzV2StorageBlobCopy', 'Update-AzV2StorageServiceProperty', 
-               'Get-AzV2StorageServiceProperty', 
-               'Enable-AzV2StorageDeleteRetentionPolicy', 
-               'Disable-AzV2StorageDeleteRetentionPolicy', 
-               'Enable-AzV2StorageStaticWebsite', 'Disable-AzV2StorageStaticWebsite', 
-               'Get-AzV2RmStorageContainer', 'Update-AzV2RmStorageContainer', 
-               'New-AzV2RmStorageContainer', 'Remove-AzV2RmStorageContainer', 
-               'Add-AzV2RmStorageContainerLegalHold', 
-               'Remove-AzV2RmStorageContainerLegalHold', 
-               'Set-AzV2RmStorageContainerImmutabilityPolicy', 
-               'Get-AzV2RmStorageContainerImmutabilityPolicy', 
-               'Remove-AzV2RmStorageContainerImmutabilityPolicy', 
-               'Lock-AzV2RmStorageContainerImmutabilityPolicy', 
-               'Set-AzV2StorageAccountManagementPolicy', 
-               'Get-AzV2StorageAccountManagementPolicy', 
-               'Remove-AzV2StorageAccountManagementPolicy', 
-               'New-AzV2StorageAccountManagementPolicyFilter', 
-               'New-AzV2StorageAccountManagementPolicyRule', 
-               'Add-AzV2StorageAccountManagementPolicyAction', 
-               'Update-AzV2StorageBlobServiceProperty', 
-               'Get-AzV2StorageBlobServiceProperty', 
-               'Enable-AzV2StorageBlobDeleteRetentionPolicy', 
-               'Disable-AzV2StorageBlobDeleteRetentionPolicy', 
-               'Get-AzV2StorageFileHandle','Close-AzV2StorageFileHandle'
+CmdletsToExport = '*'
 
 # Variables to export from this module
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'Get-AzV2StorageContainerAcl', 'Start-CopyAzureStorageBlob', 
-               'Stop-CopyAzureStorageBlob', 'Enable-AzV2StorageSoftDelete', 
-               'Disable-AzV2StorageSoftDelete'
+AliasesToExport = 'Get-AzStorageContainerAcl', 'Start-CopyAzureStorageBlob', 
+               'Stop-CopyAzureStorageBlob', 'Enable-AzStorageSoftDelete', 
+               'Disable-AzStorageSoftDelete'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
