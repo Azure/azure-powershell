@@ -26,7 +26,7 @@ Breaking changes in cmdlets are defined as follows:
 - Breaking change in parameter type
   - Use the parameter breaking change attribute ["CmdletParameterBreakingChangeAttribute"](./breaking-changes-attribute-help.md#cmdletparameterbreakingchangeattribute) as [described here](./breaking-changes-attribute-help.md#a-parameter-is-changing-its-type) to call out a parameter name change.
 - Adding a required parameter to an existing parameter set (adding new parameter sets or adding additional optional parameters is not a breaking change)
-  - An existing parameter becomes mandatry :
+  - An existing parameter becomes mandatory :
     - Use the parameter breaking change attribute ["CmdletParameterBreakingChangeAttribute"](./breaking-changes-attribute-help.md#cmdletparameterbreakingchangeattribute) as [described here](./breaking-changes-attribute-help.md#a-parameter-is-becoming-mandatory) to call out a parameter becoming mandatory.
   - Adding a new mandatory parameter to a parameter set:
       - Use the generic breaking change attribute ["GenericBreakingChangeAttribute"](./breaking-changes-attribute-help.md#genericbreakingchangeattribute) with a [custom message](./breaking-changes-attribute-help.md#with-a-simple-message) calling out the new mandatiry parameter that is going to be added to the parameter set.
