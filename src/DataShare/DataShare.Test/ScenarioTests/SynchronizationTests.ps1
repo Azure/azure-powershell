@@ -81,7 +81,7 @@ function Test-ListShareSubscriptionSynchronizationDetailsCrud
     $ShareSubscripitonName = getAssetName
 	$SynchronizationId = "02a17faa-4498-45ee-a884-162180af9251"
 
-	$listSyncDetails = Get-AzDataShareSubscriptionSynchronizationDetails -ResourceGroupName $resourceGroup -AccountName $AccountName -ShareSubscriptionName $ShareSubscripitonName -SynchronizationId $SynchronizationId
+	$listSyncDetails = Get-AzDataShareSubscriptionSynchronizationDetail -ResourceGroupName $resourceGroup -AccountName $AccountName -ShareSubscriptionName $ShareSubscripitonName -SynchronizationId $SynchronizationId
 
 	Assert-NotNull $listSyncDetails
 	Assert-AreEqual $listSyncDetails[0].status "Succeeded"
@@ -110,7 +110,7 @@ function Test-ListShareSynchronizationDetailsCrud
     $ShareName = getAssetName
 	$SynchronizationId = "02a17faa-4498-45ee-a884-162180af9251"
 
-	$listSyncDetails = Get-AzDataShareSynchronizationDetails -ResourceGroupName $resourceGroup -AccountName $AccountName -ShareName $ShareName -SynchronizationId $SynchronizationId
+	$listSyncDetails = Get-AzDataShareSynchronizationDetail -ResourceGroupName $resourceGroup -AccountName $AccountName -ShareName $ShareName -SynchronizationId $SynchronizationId
 
 	Assert-NotNull $listSyncDetails
 	Assert-AreEqual $listSyncDetails[0].status "Succeeded"
