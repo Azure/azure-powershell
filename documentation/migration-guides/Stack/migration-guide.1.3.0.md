@@ -55,7 +55,7 @@ The parameters ```SkipCertificateValidation``` and ```DefaultProfile``` have bee
 
 The parameters ```TimeGrain```, ```StartTimeInUtc```, ```EndTimInUtc```, ```MetricNames```, ```DetailedOutput```  have been removed for Get-Azs*Metric Cmdlets, please replace with Where-Object and Select-Object.
 
-The pareamters ```MetricNames```, ```DetailedOutput```  have been removed for Get-Azs*MetricDefinition Cmdlets, please replace with Where-Object and Select-Object
+The parameters ```MetricNames```, ```DetailedOutput```  have been removed for Get-Azs*MetricDefinition Cmdlets, please replace with Where-Object and Select-Object
 
 **New Parameters**
 - The parameter ```ResourceGroupName``` is now an optional for all cmdlets.
