@@ -26,6 +26,9 @@ This command lists all server endpoints within a given sync group.
 ### [Get-AzStorageSyncService](Get-AzStorageSyncService.md)
 This command lists all storage sync services within a given scope of subscription/resource group.
 
+### [Invoke-AzStorageSyncChangeDetection](Invoke-AzStorageSyncChangeDetection.md)
+This command can be used to manually initiate the detection of namespaces changes. It can be targeted to the entire share, subfolder or set of files. A maximum of 10,000 changes can be detected. If the scope of changes is known to you, limit the execution of this command to parts of the namespace, so change detection can finish quickly and within a 10,000 changes limit.
+
 ### [Invoke-AzStorageSyncCompatibilityCheck](Invoke-AzStorageSyncCompatibilityCheck.md)
 Checks for potential compatibility issues between your system and Azure File Sync.
 
@@ -67,3 +70,4 @@ This command allows for changes on the adjustable parameters of a server endpoin
 
 ### [Unregister-AzStorageSyncServer](Unregister-AzStorageSyncServer.md)
 Warning: Unregistering a server will result in cascading deletes of all server endpoints on this server. This command will unregister a server from it's storage sync service.
+

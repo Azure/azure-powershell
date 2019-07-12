@@ -32,8 +32,8 @@ Get guest configuration policy report by Vm name scope for custom policy
 #>
 function Get-AzVMGuestPolicyStatus-VmNameScope_Custom
 {
-	$rgName = "amits-test"
-	$vmName = "amits-winser6"
+	$rgName = "aashishCustomrole7ux"
+	$vmName = "aashishCustomrole7ux"
 
     $reports = Get-AzVMGuestPolicyStatus -ResourceGroupName $rgName -VMName $vmName
 	Assert-NotNull $reports
@@ -61,9 +61,9 @@ Get guest configuration custom policy report by Initiative id scope
 #>
 function Get-AzVMGuestPolicyStatus-InitiativeIdScope_Custom
 {
-	$rgName = "amits-test"
-	$vmName = "amits-winser6"
-	$initiativeId = "/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/providers/Microsoft.Authorization/policySetDefinitions/8174929b-2752-46af-9167-89d2d6780439"
+	$rgName = "aashishCustomrole7ux"
+	$vmName = "aashishCustomrole7ux"
+	$initiativeId = "/subscriptions/b5e4748c-f69a-467c-8749-e2f9c8cd3db0/providers/Microsoft.Authorization/policySetDefinitions/60062d3c-3282-4a3d-9bc4-3557dded22ca"
 
     $reports = Get-AzVMGuestPolicyStatus -ResourceGroupName $rgName -VMName $vmName -InitiativeId $initiativeId
 	Assert-NotNull $reports
@@ -91,9 +91,9 @@ Get guest configuration custom policy report by Initiative name scope
 #>
 function Get-AzVMGuestPolicyStatus-InitiativeNameScope_Custom
 {
-	$rgName = "amits-test"
-	$vmName = "amits-winser6"
-	$initiativeName = "8174929b-2752-46af-9167-89d2d6780439"
+	$rgName = "aashishCustomrole7ux"
+	$vmName = "aashishCustomrole7ux"
+	$initiativeName = "60062d3c-3282-4a3d-9bc4-3557dded22ca"
 
     $reports = Get-AzVMGuestPolicyStatus -ResourceGroupName $rgName -VMName $vmName -InitiativeName $initiativeName
 	Assert-NotNull $reports
@@ -125,9 +125,9 @@ Get guest configuration custom policy by ReportId scope
 #>
 function Get-AzVMGuestPolicyStatus-ReportIdScope_Custom
 {
-	$rgName = "amits-test"
-	$vmName = "amits-winser6"
-	$initiativeName = "8174929b-2752-46af-9167-89d2d6780439"
+	$rgName = "aashishCustomrole7ux"
+	$vmName = "aashishCustomrole7ux"
+	$initiativeName = "60062d3c-3282-4a3d-9bc4-3557dded22ca"
 	$reports = Get-AzVMGuestPolicyStatus -ResourceGroupName $rgName -VMName $vmName -InitiativeName $initiativeName
 	Assert-NotNull $reports
 	Assert-True { $reports.Count -gt 0 }
