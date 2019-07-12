@@ -13,30 +13,20 @@ To update other fields use the CreateOrUpdate method.
 
 ## SYNTAX
 
-### Update (Default)
+### UpdateExpanded (Default)
 ```
-Update-AzLogProfile -Name <String> -SubscriptionId <String> [-LogProfilesResource <ILogProfileResourcePatch>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
-```
-Update-AzLogProfile -Name <String> -SubscriptionId <String> -Category <String[]> -Location <String[]>
- -RetentionPolicyDay <Int32> -RetentionPolicyEnabled [-ServiceBusRuleId <String>] [-StorageAccountId <String>]
- [-Tag <ILogProfileResourcePatchTags>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzLogProfile -Name <String> -SubscriptionId <String> [-Category <String[]>] [-Location <String[]>]
+ [-RetentionPolicyEnabled] [-RetentionPolicyInDays <Int32>] [-ServiceBusRuleId <String>]
+ [-StorageAccountId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzLogProfile -InputObject <IMonitorIdentity> -Category <String[]> -Location <String[]>
- -RetentionPolicyDay <Int32> -RetentionPolicyEnabled [-ServiceBusRuleId <String>] [-StorageAccountId <String>]
- [-Tag <ILogProfileResourcePatchTags>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzLogProfile -InputObject <IMonitorIdentity> [-LogProfilesResource <ILogProfileResourcePatch>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzLogProfile -InputObject <IMonitorIdentity> [-Category <String[]>] [-Location <String[]>]
+ [-RetentionPolicyEnabled] [-RetentionPolicyInDays <Int32>] [-ServiceBusRuleId <String>]
+ [-StorageAccountId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -72,10 +62,10 @@ Some values are: 'Write', 'Delete', and/or 'Action.'
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -104,7 +94,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.IMonitorIdentity
-Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -121,29 +111,13 @@ It is a comma separated list of valid ARM locations including the 'global' locat
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -LogProfilesResource
-The log profile resource for patch operations.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20160301.ILogProfileResourcePatch
-Parameter Sets: Update, UpdateViaIdentity
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -153,7 +127,7 @@ The name of the log profile.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases: LogProfileName
 
 Required: True
@@ -164,34 +138,34 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -RetentionPolicyDay
-the number of days for the retention in days.
-A value of 0 will retain the events indefinitely.
-
-```yaml
-Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -RetentionPolicyEnabled
 a value indicating whether the retention policy is enabled.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -RetentionPolicyInDays
+the number of days for the retention in days.
+A value of 0 will retain the events indefinitely.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -203,7 +177,7 @@ The rule ID is of the format: '{service bus resource ID}/authorizationrules/{key
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -219,7 +193,7 @@ the resource id of the storage account to which you would like to send the Activ
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -235,7 +209,7 @@ The Azure subscription Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -250,8 +224,8 @@ Dynamic: False
 Resource tags
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20160301.ILogProfileResourcePatchTags
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -302,13 +276,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.IMonitorIdentity
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20160301.ILogProfileResourcePatch
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20160301.ILogProfileResource
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

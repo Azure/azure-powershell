@@ -7,6 +7,9 @@
         * `StartTime`, `EndTime`, `Status`, `Caller`, `CorrelationId`, `ResourceProvider`, `ResourceGroupName`
     - [ ] Implement `-MaxRecord`
 * `Get-AzTenantActivityLog`
+    - [ ] Replace `-Filter` with the other parameters:
+        * `StartTime`, `EndTime`, `Status`, `Caller`, `CorrelationId`, `ResourceProvider`, `ResourceGroupName`
+    - [ ] Implement `-MaxRecord`
 
 
 ### ActivityLogAlert
@@ -36,7 +39,6 @@
     * Obs: This is not similar to the original `New-AzActionGroup` which is used only for `ActivityLogAlerts`
     - [ ] Apply the same changes made to `Set-AzActionGroup`
 * `Update-AzActionGroup`
-    - [ ] Remove this cmdlet because only updates TAG
 * `Enable-AzActionGroupReceiver`
     - [ ] (?) Decide if keep or hide this cmdlet: it only changes the status from disable to enable for SMS and Email receivers of a given action group
 

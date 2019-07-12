@@ -17,16 +17,16 @@ Retrieve an alert rule definition.
 Get-AzMetricAlert -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### Get
+```
+Get-AzMetricAlert -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### List1
 ```
 Get-AzMetricAlert -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzMetricAlert -ResourceGroupName <String> -RuleName <String> -SubscriptionId <String[]>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -91,23 +91,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
-
-```yaml
-Type: System.String
-Parameter Sets: List1, Get
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -RuleName
+### -Name
 The name of the rule.
 
 ```yaml
@@ -123,12 +107,28 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -ResourceGroupName
+The name of the resource group.
+
+```yaml
+Type: System.String
+Parameter Sets: Get, List1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -SubscriptionId
 The Azure subscription Id.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, List1, Get
+Parameter Sets: List, Get, List1
 Aliases:
 
 Required: True
@@ -153,6 +153,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### Get-AzMetricAlertRuleV2
+
+## NOTES
 
 ## RELATED LINKS
 

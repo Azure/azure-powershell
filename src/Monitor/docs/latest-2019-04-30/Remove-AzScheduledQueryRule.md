@@ -14,13 +14,13 @@ Deletes a Log Search rule
 
 ### Delete (Default)
 ```
-Remove-AzScheduledQueryRule -ResourceGroupName <String> -RuleName <String> -SubscriptionId <String>
- [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzScheduledQueryRule -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzScheduledQueryRule -InputObject <IMonitorIdentity> [-PassThru] [-DefaultProfile <PSObject>]
+Remove-AzScheduledQueryRule -InputObject <IMonitorIdentity> [-DefaultProfile <PSObject>] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -81,8 +81,24 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Name
+The name of the rule.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -PassThru
-When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -99,22 +115,6 @@ Dynamic: False
 
 ### -ResourceGroupName
 The name of the resource group.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -RuleName
-The name of the rule.
 
 ```yaml
 Type: System.String
@@ -190,6 +190,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

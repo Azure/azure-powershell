@@ -1,48 +1,31 @@
 ---
 external help file:
 Module Name: Az.Monitor
-online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/enable-azactiongroupreceiver
+online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/enable-azactivitylogalert
 schema: 2.0.0
 ---
 
-# Enable-AzActionGroupReceiver
+# Enable-AzActivityLogAlert
 
 ## SYNOPSIS
-Enable a receiver in an action group.
-This changes the receiver's status from Disabled to Enabled.
-This operation is only supported for Email or SMS receivers.
+Enable an existing ActivityLogAlert.
 
 ## SYNTAX
 
 ### Enable (Default)
 ```
-Enable-AzActionGroupReceiver -ActionGroupName <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-EnableRequest <IEnableRequest>] [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### EnableExpanded
-```
-Enable-AzActionGroupReceiver -ActionGroupName <String> -ResourceGroupName <String> -SubscriptionId <String>
- -ReceiverName <String> [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### EnableViaIdentityExpanded
-```
-Enable-AzActionGroupReceiver -InputObject <IMonitorIdentity> -ReceiverName <String> [-PassThru]
+Enable-AzActivityLogAlert -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### EnableViaIdentity
 ```
-Enable-AzActionGroupReceiver -InputObject <IMonitorIdentity> [-EnableRequest <IEnableRequest>] [-PassThru]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Enable-AzActivityLogAlert -InputObject <IMonitorIdentity> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Enable a receiver in an action group.
-This changes the receiver's status from Disabled to Enabled.
-This operation is only supported for Email or SMS receivers.
+Enable an existing ActivityLogAlert.
 
 ## EXAMPLES
 
@@ -66,22 +49,6 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -ActionGroupName
-The name of the action group.
-
-```yaml
-Type: System.String
-Parameter Sets: Enable, EnableExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -98,28 +65,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -EnableRequest
-Describes a receiver that should be resubscribed.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20190301.IEnableRequest
-Parameter Sets: Enable, EnableViaIdentity
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -InputObject
 Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.IMonitorIdentity
-Parameter Sets: EnableViaIdentityExpanded, EnableViaIdentity
+Parameter Sets: EnableViaIdentity
 Aliases:
 
 Required: True
@@ -130,29 +81,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -PassThru
-When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -ReceiverName
-The name of the receiver to resubscribe.
+### -Name
+The name of the activity log alert.
 
 ```yaml
 Type: System.String
-Parameter Sets: EnableExpanded, EnableViaIdentityExpanded
-Aliases:
+Parameter Sets: Enable
+Aliases: ActivityLogAlertName
 
 Required: True
 Position: Named
@@ -167,7 +102,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Enable, EnableExpanded
+Parameter Sets: Enable
 Aliases:
 
 Required: True
@@ -183,7 +118,7 @@ The Azure subscription Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: Enable, EnableExpanded
+Parameter Sets: Enable
 Aliases:
 
 Required: True
@@ -234,13 +169,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.IMonitorIdentity
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20190301.IEnableRequest
-
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20170401.IActivityLogAlertResource
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

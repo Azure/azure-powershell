@@ -12,16 +12,16 @@ schema: 2.0.0
 
 ## SYNTAX
 
-### Calculate (Default)
+### CalculateExpanded (Default)
 ```
-Invoke-AzCalculateMetricBaseline -ResourceUri <String> [-TimeSeriesInformation <ITimeSeriesInformation>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzCalculateMetricBaseline -ResourceId <String> -Sensitivity <String[]> -Value <Double[]>
+ [-Timestamp <DateTime[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CalculateExpanded
+### Calculate
 ```
-Invoke-AzCalculateMetricBaseline -ResourceUri <String> -Sensitivity <String[]> -Value <Double[]>
- [-Timestamp <DateTime[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzCalculateMetricBaseline -ResourceId <String> -TimeSeriesInformation <ITimeSeriesInformation>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CalculateViaIdentityExpanded
@@ -33,7 +33,7 @@ Invoke-AzCalculateMetricBaseline -InputObject <IMonitorIdentity> -Sensitivity <S
 ### CalculateViaIdentity
 ```
 Invoke-AzCalculateMetricBaseline -InputObject <IMonitorIdentity>
- [-TimeSeriesInformation <ITimeSeriesInformation>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ -TimeSeriesInformation <ITimeSeriesInformation> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -94,14 +94,14 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ResourceUri
+### -ResourceId
 The identifier of the resource.
 It has the following structure: subscriptions/{subscriptionName}/resourceGroups/{resourceGroupName}/providers/{providerName}/{resourceName}.
 For example: subscriptions/b368ca2f-e298-46b7-b0ab-012281956afa/resourceGroups/vms/providers/Microsoft.Compute/virtualMachines/vm1
 
 ```yaml
 Type: System.String
-Parameter Sets: Calculate, CalculateExpanded
+Parameter Sets: CalculateExpanded, Calculate
 Aliases:
 
 Required: True
@@ -130,13 +130,14 @@ Dynamic: False
 
 ### -TimeSeriesInformation
 The time series info needed for calculating the baseline.
+To construct, see NOTES section for TIMESERIESINFORMATION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20171101Preview.ITimeSeriesInformation
 Parameter Sets: Calculate, CalculateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -223,6 +224,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20171101Preview.ICalculateBaselineResponse
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### TIMESERIESINFORMATION <ITimeSeriesInformation>: The time series info needed for calculating the baseline.
+  - `Sensitivity <String[]>`: the list of sensitivities for calculating the baseline.
+  - `Value <Double[]>`: The metric values to calculate the baseline.
+  - `[Timestamp <DateTime[]>]`: the array of timestamps of the baselines.
 
 ## RELATED LINKS
 

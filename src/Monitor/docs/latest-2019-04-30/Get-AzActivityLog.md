@@ -12,9 +12,34 @@ Provides the list of records from the activity logs.
 
 ## SYNTAX
 
+### List (Default)
 ```
-Get-AzActivityLog -SubscriptionId <String[]> [-Filter <String>] [-Select <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzActivityLog -SubscriptionId <String[]> [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>]
+ [-Caller <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### CorrelationId
+```
+Get-AzActivityLog -SubscriptionId <String[]> -CorrelationId <String> [-StartTime <DateTime>]
+ [-EndTime <DateTime>] [-Status <String>] [-Caller <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ResourceProvider
+```
+Get-AzActivityLog -SubscriptionId <String[]> -ResourceProvider <String> [-StartTime <DateTime>]
+ [-EndTime <DateTime>] [-Status <String>] [-Caller <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ResourceGroupName
+```
+Get-AzActivityLog -SubscriptionId <String[]> -ResourceGroupName <String> [-StartTime <DateTime>]
+ [-EndTime <DateTime>] [-Status <String>] [-Caller <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ResourceId
+```
+Get-AzActivityLog -SubscriptionId <String[]> -ResourceId <String> [-StartTime <DateTime>]
+ [-EndTime <DateTime>] [-Status <String>] [-Caller <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,6 +67,38 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
+### -Caller
+The Caller of the events to fetch
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -CorrelationId
+The Correlation ID
+
+```yaml
+Type: System.String
+Parameter Sets: CorrelationId
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -58,11 +115,11 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Filter
-Reduces the set of data collected.<br>The **$filter** argument is very restricted and allows only the following patterns.<br>- *List events for a resource group*: $filter=eventTimestamp ge '2014-07-16T04:36:37.6407898Z' and eventTimestamp le '2014-07-20T04:36:37.6407898Z' and resourceGroupName eq 'resourceGroupName'.<br>- *List events for resource*: $filter=eventTimestamp ge '2014-07-16T04:36:37.6407898Z' and eventTimestamp le '2014-07-20T04:36:37.6407898Z' and resourceUri eq 'resourceURI'.<br>- *List events for a subscription in a time range*: $filter=eventTimestamp ge '2014-07-16T04:36:37.6407898Z' and eventTimestamp le '2014-07-20T04:36:37.6407898Z'.<br>- *List events for a resource provider*: $filter=eventTimestamp ge '2014-07-16T04:36:37.6407898Z' and eventTimestamp le '2014-07-20T04:36:37.6407898Z' and resourceProvider eq 'resourceProviderName'.<br>- *List events for a correlation Id*: $filter=eventTimestamp ge '2014-07-16T04:36:37.6407898Z' and eventTimestamp le '2014-07-20T04:36:37.6407898Z' and correlationId eq 'correlationID'.<br><br>**NOTE**: No other syntax is allowed.
+### -EndTime
+The end time filter for the events
 
 ```yaml
-Type: System.String
+Type: System.DateTime
 Parameter Sets: (All)
 Aliases:
 
@@ -74,9 +131,72 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Select
-Used to fetch events with only the given properties.<br>The **$select** argument is a comma separated list of property names to be returned.
-Possible values are: *authorization*, *claims*, *correlationId*, *description*, *eventDataId*, *eventName*, *eventTimestamp*, *httpRequest*, *level*, *operationId*, *operationName*, *properties*, *resourceGroupName*, *resourceProviderName*, *resourceId*, *status*, *submissionTimestamp*, *subStatus*, *subscriptionId*
+### -ResourceGroupName
+The Resource group name
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceGroupName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ResourceId
+The Resource ID
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceId
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ResourceProvider
+The Resource Provider name
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceProvider
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -StartTime
+The start time filter for the events
+
+```yaml
+Type: System.DateTime
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Status
+The Status of the events to fetch
 
 ```yaml
 Type: System.String
@@ -119,6 +239,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### Get-AzLog
+
+## NOTES
 
 ## RELATED LINKS
 

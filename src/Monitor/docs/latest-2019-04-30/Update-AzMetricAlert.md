@@ -12,35 +12,22 @@ Update an metric alert definition.
 
 ## SYNTAX
 
-### Update (Default)
+### UpdateExpanded (Default)
 ```
-Update-AzMetricAlert -ResourceGroupName <String> -RuleName <String> -SubscriptionId <String>
- [-Parameter <IMetricAlertResourcePatch>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateExpanded
-```
-Update-AzMetricAlert -ResourceGroupName <String> -RuleName <String> -SubscriptionId <String>
- -CriterionOdataType <Odatatype> -Description <String> -Enabled -EvaluationFrequency <TimeSpan>
- -Severity <Int32> -WindowSize <TimeSpan> [-Action <IMetricAlertAction[]>] [-AutoMitigate] [-Scope <String[]>]
- [-Tag <IMetricAlertResourcePatchTags>] [-TargetResourceRegion <String>] [-TargetResourceType <String>]
+Update-AzMetricAlert -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ [-Action <IMetricAlertAction[]>] [-AutoMitigate] [-CriterionOdataType <Odatatype>] [-Description <String>]
+ [-Enabled] [-EvaluationFrequency <TimeSpan>] [-Scope <String[]>] [-Severity <Int32>] [-Tag <Hashtable>]
+ [-TargetResourceRegion <String>] [-TargetResourceType <String>] [-WindowSize <TimeSpan>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzMetricAlert -InputObject <IMonitorIdentity> -CriterionOdataType <Odatatype> -Description <String>
- -Enabled -EvaluationFrequency <TimeSpan> -Severity <Int32> -WindowSize <TimeSpan>
- [-Action <IMetricAlertAction[]>] [-AutoMitigate] [-Scope <String[]>] [-Tag <IMetricAlertResourcePatchTags>]
- [-TargetResourceRegion <String>] [-TargetResourceType <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzMetricAlert -InputObject <IMonitorIdentity> [-Parameter <IMetricAlertResourcePatch>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzMetricAlert -InputObject <IMonitorIdentity> [-Action <IMetricAlertAction[]>] [-AutoMitigate]
+ [-CriterionOdataType <Odatatype>] [-Description <String>] [-Enabled] [-EvaluationFrequency <TimeSpan>]
+ [-Scope <String[]>] [-Severity <Int32>] [-Tag <Hashtable>] [-TargetResourceRegion <String>]
+ [-TargetResourceType <String>] [-WindowSize <TimeSpan>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -70,10 +57,11 @@ PS C:\> {{ Add code here }}
 
 ### -Action
 the array of actions that are performed when the alert rule becomes active, and when an alert condition is resolved.
+To construct, see NOTES section for ACTION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20180301.IMetricAlertAction[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -89,7 +77,7 @@ the flag that indicates whether the alert should be auto resolved or not.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -105,10 +93,10 @@ specifies the type of the alert criteria.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Support.Odatatype
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -137,10 +125,10 @@ the description of the metric alert that will be included in the alert email.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -153,10 +141,10 @@ the flag that indicates whether the metric alert is enabled.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: False
 Accept pipeline input: False
@@ -169,10 +157,10 @@ how often the metric alert is evaluated represented in ISO 8601 duration format.
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -185,7 +173,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.IMonitorIdentity
-Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -196,28 +184,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Parameter
-The metric alert resource for patch operations.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20180301.IMetricAlertResourcePatch
-Parameter Sets: Update, UpdateViaIdentity
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -ResourceGroupName
-The name of the resource group.
+### -Name
+The name of the rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -228,12 +200,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -RuleName
-The name of the rule.
+### -ResourceGroupName
+The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -249,7 +221,7 @@ the list of resource id's that this metric alert is scoped to.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -265,10 +237,10 @@ Alert severity {0, 1, 2, 3, 4}
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: 0
 Accept pipeline input: False
@@ -281,7 +253,7 @@ The Azure subscription Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -296,8 +268,8 @@ Dynamic: False
 Resource tags
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20180301.IMetricAlertResourcePatchTags
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -314,7 +286,7 @@ Mandatory for MultipleResourceMultipleMetricCriteria.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -331,7 +303,7 @@ Mandatory for MultipleResourceMultipleMetricCriteria.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -347,10 +319,10 @@ the period of time (in ISO 8601 duration format) that is used to monitor alert a
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -398,13 +370,21 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.IMonitorIdentity
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20180301.IMetricAlertResourcePatch
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20180301.IMetricAlertResource
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### ACTION <IMetricAlertAction[]>: the array of actions that are performed when the alert rule becomes active, and when an alert condition is resolved.
+  - `[ActionGroupId <String>]`: the id of the action group to use.
+  - `[WebhookProperty <IMetricAlertActionWebhookProperties>]`: The properties of a webhook object.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
 

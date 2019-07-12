@@ -1,48 +1,31 @@
 ---
 external help file:
 Module Name: Az.Monitor
-online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/update-azactivitylogalert
+online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/disable-azactivitylogalert
 schema: 2.0.0
 ---
 
-# Update-AzActivityLogAlert
+# Disable-AzActivityLogAlert
 
 ## SYNOPSIS
-Updates an existing ActivityLogAlertResource's tags.
-To update other fields use the CreateOrUpdate method.
+Disable an existing ActivityLogAlert
 
 ## SYNTAX
 
-### Update (Default)
+### Disable (Default)
 ```
-Update-AzActivityLogAlert -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-ActivityLogAlertPatch <IActivityLogAlertPatchBody>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateExpanded
-```
-Update-AzActivityLogAlert -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-Enabled]
- [-Tag <IActivityLogAlertPatchBodyTags>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Update-AzActivityLogAlert -InputObject <IMonitorIdentity> [-Enabled] [-Tag <IActivityLogAlertPatchBodyTags>]
+Disable-AzActivityLogAlert -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentity
+### DisableViaIdentity
 ```
-Update-AzActivityLogAlert -InputObject <IMonitorIdentity>
- [-ActivityLogAlertPatch <IActivityLogAlertPatchBody>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+Disable-AzActivityLogAlert -InputObject <IMonitorIdentity> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates an existing ActivityLogAlertResource's tags.
-To update other fields use the CreateOrUpdate method.
+Disable an existing ActivityLogAlert
 
 ## EXAMPLES
 
@@ -66,22 +49,6 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -ActivityLogAlertPatch
-An activity log alert object for the body of patch operations.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20170401.IActivityLogAlertPatchBody
-Parameter Sets: Update, UpdateViaIdentity
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -98,29 +65,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Enabled
-Indicates whether this activity log alert is enabled.
-If an activity log alert is not enabled, then none of its actions will be activated.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -InputObject
 Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.IMonitorIdentity
-Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
+Parameter Sets: DisableViaIdentity
 Aliases:
 
 Required: True
@@ -136,7 +86,7 @@ The name of the activity log alert.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: Disable
 Aliases: ActivityLogAlertName
 
 Required: True
@@ -152,7 +102,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: Disable
 Aliases:
 
 Required: True
@@ -168,26 +118,10 @@ The Azure subscription Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: Disable
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Tag
-Resource tags
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20170401.IActivityLogAlertPatchBodyTags
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -235,13 +169,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.IMonitorIdentity
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20170401.IActivityLogAlertPatchBody
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20170401.IActivityLogAlertResource
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

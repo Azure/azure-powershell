@@ -23,17 +23,17 @@ param(
     # The Azure subscription Id.
     ${SubscriptionId},
 
-    [Parameter(HelpMessage='Reduces the set of data collected. The **$filter** argument is very restricted and allows only the following patterns. - *List events for a resource group*: $filter=eventTimestamp ge ''2014-07-16T04:36:37.6407898Z'' and eventTimestamp le ''2014-07-20T04:36:37.6407898Z'' and resourceGroupName eq ''resourceGroupName''. - *List events for resource*: $filter=eventTimestamp ge ''2014-07-16T04:36:37.6407898Z'' and eventTimestamp le ''2014-07-20T04:36:37.6407898Z'' and resourceUri eq ''resourceURI''. - *List events for a subscription in a time range*: $filter=eventTimestamp ge ''2014-07-16T04:36:37.6407898Z'' and eventTimestamp le ''2014-07-20T04:36:37.6407898Z''. - *List events for a resource provider*: $filter=eventTimestamp ge ''2014-07-16T04:36:37.6407898Z'' and eventTimestamp le ''2014-07-20T04:36:37.6407898Z'' and resourceProvider eq ''resourceProviderName''. - *List events for a correlation Id*: $filter=eventTimestamp ge ''2014-07-16T04:36:37.6407898Z'' and eventTimestamp le ''2014-07-20T04:36:37.6407898Z'' and correlationId eq ''correlationID''.  **NOTE**: No other syntax is allowed.')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Query')]
-    [System.String]
-    # Reduces the set of data collected.<br>The **$filter** argument is very restricted and allows only the following patterns.<br>- *List events for a resource group*: $filter=eventTimestamp ge '2014-07-16T04:36:37.6407898Z' and eventTimestamp le '2014-07-20T04:36:37.6407898Z' and resourceGroupName eq 'resourceGroupName'.<br>- *List events for resource*: $filter=eventTimestamp ge '2014-07-16T04:36:37.6407898Z' and eventTimestamp le '2014-07-20T04:36:37.6407898Z' and resourceUri eq 'resourceURI'.<br>- *List events for a subscription in a time range*: $filter=eventTimestamp ge '2014-07-16T04:36:37.6407898Z' and eventTimestamp le '2014-07-20T04:36:37.6407898Z'.<br>- *List events for a resource provider*: $filter=eventTimestamp ge '2014-07-16T04:36:37.6407898Z' and eventTimestamp le '2014-07-20T04:36:37.6407898Z' and resourceProvider eq 'resourceProviderName'.<br>- *List events for a correlation Id*: $filter=eventTimestamp ge '2014-07-16T04:36:37.6407898Z' and eventTimestamp le '2014-07-20T04:36:37.6407898Z' and correlationId eq 'correlationID'.<br><br>**NOTE**: No other syntax is allowed.
-    ${Filter},
+    #[Parameter(HelpMessage='Reduces the set of data collected. The **$filter** argument is very restricted and allows only the following patterns. - *List events for a resource group*: $filter=eventTimestamp ge ''2014-07-16T04:36:37.6407898Z'' and eventTimestamp le ''2014-07-20T04:36:37.6407898Z'' and resourceGroupName eq ''resourceGroupName''. - *List events for resource*: $filter=eventTimestamp ge ''2014-07-16T04:36:37.6407898Z'' and eventTimestamp le ''2014-07-20T04:36:37.6407898Z'' and resourceUri eq ''resourceURI''. - *List events for a subscription in a time range*: $filter=eventTimestamp ge ''2014-07-16T04:36:37.6407898Z'' and eventTimestamp le ''2014-07-20T04:36:37.6407898Z''. - *List events for a resource provider*: $filter=eventTimestamp ge ''2014-07-16T04:36:37.6407898Z'' and eventTimestamp le ''2014-07-20T04:36:37.6407898Z'' and resourceProvider eq ''resourceProviderName''. - *List events for a correlation Id*: $filter=eventTimestamp ge ''2014-07-16T04:36:37.6407898Z'' and eventTimestamp le ''2014-07-20T04:36:37.6407898Z'' and correlationId eq ''correlationID''.  **NOTE**: No other syntax is allowed.')]
+    #[Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Query')]
+    #[System.String]
+    ## Reduces the set of data collected.<br>The **$filter** argument is very restricted and allows only the following patterns.<br>- *List events for a resource group*: $filter=eventTimestamp ge '2014-07-16T04:36:37.6407898Z' and eventTimestamp le '2014-07-20T04:36:37.6407898Z' and resourceGroupName eq 'resourceGroupName'.<br>- *List events for resource*: $filter=eventTimestamp ge '2014-07-16T04:36:37.6407898Z' and eventTimestamp le '2014-07-20T04:36:37.6407898Z' and resourceUri eq 'resourceURI'.<br>- *List events for a subscription in a time range*: $filter=eventTimestamp ge '2014-07-16T04:36:37.6407898Z' and eventTimestamp le '2014-07-20T04:36:37.6407898Z'.<br>- *List events for a resource provider*: $filter=eventTimestamp ge '2014-07-16T04:36:37.6407898Z' and eventTimestamp le '2014-07-20T04:36:37.6407898Z' and resourceProvider eq 'resourceProviderName'.<br>- *List events for a correlation Id*: $filter=eventTimestamp ge '2014-07-16T04:36:37.6407898Z' and eventTimestamp le '2014-07-20T04:36:37.6407898Z' and correlationId eq 'correlationID'.<br><br>**NOTE**: No other syntax is allowed.
+    #${Filter},
 
-    [Parameter(HelpMessage='Used to fetch events with only the given properties. The **$select** argument is a comma separated list of property names to be returned. Possible values are: *authorization*, *claims*, *correlationId*, *description*, *eventDataId*, *eventName*, *eventTimestamp*, *httpRequest*, *level*, *operationId*, *operationName*, *properties*, *resourceGroupName*, *resourceProviderName*, *resourceId*, *status*, *submissionTimestamp*, *subStatus*, *subscriptionId*')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Query')]
-    [System.String]
-    # Used to fetch events with only the given properties.<br>The **$select** argument is a comma separated list of property names to be returned. Possible values are: *authorization*, *claims*, *correlationId*, *description*, *eventDataId*, *eventName*, *eventTimestamp*, *httpRequest*, *level*, *operationId*, *operationName*, *properties*, *resourceGroupName*, *resourceProviderName*, *resourceId*, *status*, *submissionTimestamp*, *subStatus*, *subscriptionId*
-    ${Select},
+    #[Parameter(HelpMessage='Used to fetch events with only the given properties. The **$select** argument is a comma separated list of property names to be returned. Possible values are: *authorization*, *claims*, *correlationId*, *description*, *eventDataId*, *eventName*, *eventTimestamp*, *httpRequest*, *level*, *operationId*, *operationName*, *properties*, *resourceGroupName*, *resourceProviderName*, *resourceId*, *status*, *submissionTimestamp*, *subStatus*, *subscriptionId*')]
+    #[Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Query')]
+    #[System.String]
+    ## Used to fetch events with only the given properties.<br>The **$select** argument is a comma separated list of property names to be returned. Possible values are: *authorization*, *claims*, *correlationId*, *description*, *eventDataId*, *eventName*, *eventTimestamp*, *httpRequest*, *level*, *operationId*, *operationName*, *properties*, *resourceGroupName*, *resourceProviderName*, *resourceId*, *status*, *submissionTimestamp*, *subStatus*, *subscriptionId*
+    #${Select},
 
     [Parameter(HelpMessage='The credentials, account, tenant, and subscription used for communication with Azure.')]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -80,11 +80,66 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
+    ${ProxyUseDefaultCredentials},
+
+    [Parameter(HelpMessage = "The start time filter for the events")]
+    [ValidateNotNull()]
+    [System.DateTime]
+    ${StartTime},
+
+    [Parameter(HelpMessage = "The end time filter for the events")]
+    [ValidateNotNull()]
+    [System.DateTime]
+    ${EndTime},
+
+    [Parameter(HelpMessage='The Status of the events to fetch')]
+    [ValidateNotNull()]
+    [System.String]
+    ${Status},
+
+    [Parameter(HelpMessage = "The Caller of the events to fetch")]
+    [ValidateNotNull()]
+    [System.String]
+    ${Caller},
+
+    [Parameter(ParameterSetName = "CorrelationId", Mandatory, HelpMessage = "The Correlation ID")]
+    [ValidateNotNull()]
+    [System.String]
+    ${CorrelationId},
+
+    [Parameter(ParameterSetName = "ResourceProvider", Mandatory, HelpMessage = "The Resource Provider name")]
+    [ValidateNotNull()]
+    [System.String]
+    ${ResourceProvider},
+
+    [Parameter(ParameterSetName = "ResourceGroupName", Mandatory, HelpMessage = "The Resource group name")]
+    [ValidateNotNull()]
+    [System.String]
+    ${ResourceGroupName},
+
+    [Parameter(ParameterSetName = "ResourceId", Mandatory, HelpMessage = "The Resource ID")]
+    [ValidateNotNull()]
+    [System.String]
+    ${ResourceId}
+)    
 
 process {
+    $filter = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Cmdlets.LogFilterHelper]::GetFilterParameter($PSBoundParameters)
+    
+    $null = $PSBoundParameters.Remove("StartTime")
+    $null = $PSBoundParameters.Remove("EndTime")
+    $null = $PSBoundParameters.Remove("Status")
+    $null = $PSBoundParameters.Remove("Caller")
+    $null = $PSBoundParameters.Remove("CorrelationId")
+    $null = $PSBoundParameters.Remove("ResourceProvider")
+    $null = $PSBoundParameters.Remove("ResourceGroupName")
+    $null = $PSBoundParameters.Remove("ResourceId")
 
+    $null = $PSBoundParameters.Add("Filter", $filter)
+
+    $filter
+
+    #Az.Monitor.internal\Get-AzActivityLog @PSBoundParameters
 }
 
 }

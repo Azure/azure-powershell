@@ -14,12 +14,12 @@ Gets the active diagnostic settings for the specified resource.
 
 ### List (Default)
 ```
-Get-AzDiagnosticSetting -ResourceUri <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDiagnosticSetting -ResourceId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzDiagnosticSetting -Name <String> -ResourceUri <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDiagnosticSetting -Name <String> -ResourceId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -100,7 +100,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ResourceUri
+### -ResourceId
 The identifier of the resource.
 
 ```yaml
@@ -128,6 +128,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20170501Preview.IDiagnosticSettingsResource
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

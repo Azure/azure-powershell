@@ -12,15 +12,8 @@ Creates or updates diagnostic settings for the specified resource.
 
 ## SYNTAX
 
-### Update (Default)
 ```
-Set-AzDiagnosticSetting -Name <String> -ResourceUri <String> [-Parameter <IDiagnosticSettingsResource>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
-```
-Set-AzDiagnosticSetting -Name <String> -ResourceUri <String> [-EventHubAuthorizationRuleId <String>]
+Set-AzDiagnosticSetting -Name <String> -ResourceId <String> [-EventHubAuthorizationRuleId <String>]
  [-EventHubName <String>] [-Log <ILogSettings[]>] [-Metric <IMetricSettings[]>] [-ServiceBusRuleId <String>]
  [-StorageAccountId <String>] [-WorkspaceId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -72,7 +65,7 @@ The resource Id for the event hub authorization rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -89,7 +82,7 @@ If none is specified, the default event hub will be selected.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -102,10 +95,11 @@ Dynamic: False
 
 ### -Log
 the list of logs settings.
+To construct, see NOTES section for LOG properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20170501Preview.ILogSettings[]
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -118,10 +112,11 @@ Dynamic: False
 
 ### -Metric
 the list of metric settings.
+To construct, see NOTES section for METRIC properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20170501Preview.IMetricSettings[]
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -148,23 +143,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Parameter
-The diagnostic setting resource.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20170501Preview.IDiagnosticSettingsResource
-Parameter Sets: Update
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -ResourceUri
+### -ResourceId
 The identifier of the resource.
 
 ```yaml
@@ -186,7 +165,7 @@ This is here to maintain backwards compatibility.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -202,7 +181,7 @@ The resource ID of the storage account to which you would like to send Diagnosti
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -219,7 +198,7 @@ Example: /subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insi
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -268,13 +247,29 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20170501Preview.IDiagnosticSettingsResource
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20170501Preview.IDiagnosticSettingsResource
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### LOG <ILogSettings[]>: the list of logs settings.
+  - `Enabled <Boolean>`: a value indicating whether this log is enabled.
+  - `RetentionPolicyDay <Int32>`: the number of days for the retention in days. A value of 0 will retain the events indefinitely.
+  - `RetentionPolicyEnabled <Boolean>`: a value indicating whether the retention policy is enabled.
+  - `[Category <String>]`: Name of a Diagnostic Log category for a resource type this setting is applied to. To obtain the list of Diagnostic Log categories for a resource, first perform a GET diagnostic settings operation.
+
+#### METRIC <IMetricSettings[]>: the list of metric settings.
+  - `Enabled <Boolean>`: a value indicating whether this category is enabled.
+  - `RetentionPolicyDay <Int32>`: the number of days for the retention in days. A value of 0 will retain the events indefinitely.
+  - `RetentionPolicyEnabled <Boolean>`: a value indicating whether the retention policy is enabled.
+  - `[Category <String>]`: Name of a Diagnostic Metric category for a resource type this setting is applied to. To obtain the list of Diagnostic metric categories for a resource, first perform a GET diagnostic settings operation.
+  - `[TimeGrain <TimeSpan?>]`: the timegrain of the metric in ISO8601 format.
 
 ## RELATED LINKS
 

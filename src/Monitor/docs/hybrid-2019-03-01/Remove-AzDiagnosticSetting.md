@@ -14,13 +14,13 @@ Deletes existing diagnostic settings for the specified resource.
 
 ### Delete (Default)
 ```
-Remove-AzDiagnosticSetting -Name <String> -ResourceUri <String> [-PassThru] [-DefaultProfile <PSObject>]
+Remove-AzDiagnosticSetting -Name <String> -ResourceId <String> [-DefaultProfile <PSObject>] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzDiagnosticSetting -InputObject <IMonitorIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-Confirm]
+Remove-AzDiagnosticSetting -InputObject <IMonitorIdentity> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -98,7 +98,7 @@ Dynamic: False
 ```
 
 ### -PassThru
-When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -113,7 +113,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ResourceUri
+### -ResourceId
 The identifier of the resource.
 
 ```yaml
@@ -174,6 +174,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

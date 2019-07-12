@@ -18,15 +18,15 @@ Get-AzScheduledQueryRule -SubscriptionId <String[]> [-Filter <String>] [-Default
  [<CommonParameters>]
 ```
 
-### List1
+### Get
 ```
-Get-AzScheduledQueryRule -ResourceGroupName <String> -SubscriptionId <String[]> [-Filter <String>]
+Get-AzScheduledQueryRule -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### Get
+### List1
 ```
-Get-AzScheduledQueryRule -ResourceGroupName <String> -RuleName <String> -SubscriptionId <String[]>
+Get-AzScheduledQueryRule -ResourceGroupName <String> -SubscriptionId <String[]> [-Filter <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -109,23 +109,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
-
-```yaml
-Type: System.String
-Parameter Sets: List1, Get
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -RuleName
+### -Name
 The name of the rule.
 
 ```yaml
@@ -141,12 +125,28 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -ResourceGroupName
+The name of the resource group.
+
+```yaml
+Type: System.String
+Parameter Sets: Get, List1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -SubscriptionId
 The Azure subscription Id.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, List1, Get
+Parameter Sets: List, Get, List1
 Aliases:
 
 Required: True
@@ -169,6 +169,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20180416.ILogSearchRuleResource
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

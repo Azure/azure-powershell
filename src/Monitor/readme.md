@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the Monitor service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.4.0 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.6.0 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -57,6 +57,20 @@ module-version: 0.0.1
 title: Monitor
 
 directive:
+  # Set correct variants for PUT and PATCH verbs
+  - where:
+      verb: New
+      variant: ^CreateViaIdentityExpanded\d?$|^CreateViaIdentity\d?$|^Create\d?$
+    remove: true
+  - where:
+      verb: Set
+      variant: ^Update\d?$|^UpdateViaIdentity\d?$
+    remove: true
+  - where:
+      verb: Update
+      variant: ^Update\d?$|^UpdateViaIdentity\d?$
+    remove: true
+  # Renaming fix
   - where:
       enum-name: ComparisonOperationType|^Operator$
       enum-value-name: Equals
@@ -68,6 +82,10 @@ directive:
       parameter-name: ConditionAllOf
     set:
       parameter-name: Condition
+  - where:
+      verb: Update
+      subject: ActivityLogAlert
+    hide: true
   # Log
   - where:
       verb: Get
@@ -77,47 +95,162 @@ directive:
   # MetricAlert
   - where:
       verb: Get
-      subject: ^MetricAlert$
+      subject: MetricAlert
     set:
       alias: Get-AzMetricAlertRuleV2
   - where:
       verb: New
-      subject: ^MetricAlert$
+      subject: MetricAlert
     set:
       alias: Add-AzMetricAlertRuleV2
   - where:
       verb: Remove
-      subject: ^MetricAlert$
+      subject: MetricAlert
     set:
       alias: Remove-AzMetricAlertRuleV2
+  - where:
+      verb: Set
+      subject: MetricAlert
+    hide: true
+  - where:
+      subject: MetricAlert
+      parameter-name: RuleName
+    set:
+      parameter-name: Name
   #- where:
-  #    subject: ^MetricAlertsStatu$|^MetricAlertStatus$
+  #    subject: MetricAlert
+  #    parameter-name: CriterionOdataType
   #  set:
-  #    subject: MetricAlertStatus
+  #    parameter-name: Condition
   # AlertRule
   - where:
       verb: New
       subject: ^AlertRule$
     set:
       alias: Add-AzMetricAlertRule
+  - where:
+      subject: AlertRule
+      parameter-name: Name
+    set:
+      parameter-name: PropertiesName
+  - where:
+      subject: AlertRule
+      parameter-name: RuleName
+    set:
+      parameter-name: Name
+  - where:
+      verb: New|Update
+      subject: AlertRule
+    hide: true
+  - where:
+      verb: Set
+      subject: AlertRule
+    hide: true
   # LogProfile
   - where:
       verb: Set
       subject: ^LogProfile$
     set:
       alias: Add-AzLogProfile
+  - where:
+      subject: LogProfile
+      parameter-name: RetentionPolicyDay
+    set:
+      parameter-name: RetentionPolicyInDays
+  - where:
+      verb: Set
+      subject: LogProfile
+    hide: true
+  - where:
+      verb: New
+      subject: LogProfile
+    hide: true
   # Autoscale
   - where:
       verb: Set
       subject: ^AutoscaleSetting$
     set:
       alias: Add-AzAutoscaleSetting
+  - where:
+      subject: AutoscaleSetting
+      parameter-name: Profile
+    set:
+      alias: AutoscaleProfile
+  - where:
+      subject: AutoscaleSetting
+      parameter-name: TargetResourceUri
+    set:
+      parameter-name: TargetResourceId
+  - where:
+      verb: Set
+      subject: AutoscaleSetting
+    hide: true
   # Fix Help Generation Bug
   - where:
       verb: Update
       subject: ^AutoscaleSetting$
       parameter-name: ^Name$
     clear-alias: true
-    
-
+  # ActivityLog
+  - where:
+      verb: Get
+      subject: ^ActivityLog$
+    hide: true
+  - where:
+      verb: Get
+      subject: TenantActivityLog
+    hide: true
+  # ActionGroup
+  - where:
+      subject: ActionGroup
+      parameter-name: GroupShortName
+    set:
+      parameter-name: ShortName
+  - where:
+      verb: Enable
+      subject: ActionGroupReceiver
+    hide: true
+  # Metric
+  - where:
+      subject: Metric
+      parameter-name: Interval
+    set:
+      alias: TimeGrain
+  - where:
+      subject: Metric.*
+      parameter-name: ResourceUri
+    set:
+      parameter-name: ResourceId
+  #- where:
+  #    verb: Get
+  #    subject: Metric
+  #  hide: true
+  - where:
+      verb: New
+      subject: Metric
+    hide: true
+  - where:
+      verb: Get
+      subject: MetricDefinition
+    hide: true
+  # ScheduledQuery
+  - where:
+      subject: ScheduledQueryRule
+      parameter-name: RuleName
+    set:
+      parameter-name: Name
+  - where:
+      verb: New|Set|Update
+      subject: ScheduledQueryRule
+    hide: true
+  # DiagnosticSetting
+  - where:
+      subject: DiagnosticSetting
+      parameter-name: ResourceUri
+    set:
+      parameter-name: ResourceId
+  - where:
+      verb: New
+      subject: DiagnosticSetting
+    hide: true
 ```

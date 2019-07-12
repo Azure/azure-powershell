@@ -17,16 +17,22 @@ Gets an alert rule
 Get-AzAlertRule -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### Get
+```
+Get-AzAlertRule -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ByTargetId
+```
+Get-AzAlertRule -ResourceGroupName <String> -SubscriptionId <String[]> -TargetResourceId <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### List
 ```
 Get-AzAlertRule -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzAlertRule -ResourceGroupName <String> -RuleName <String> -SubscriptionId <String[]>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -91,23 +97,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
-
-```yaml
-Type: System.String
-Parameter Sets: List, Get
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -RuleName
+### -Name
 The name of the rule.
 
 ```yaml
@@ -123,12 +113,44 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -ResourceGroupName
+The name of the resource group.
+
+```yaml
+Type: System.String
+Parameter Sets: Get, ByTargetId, List
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -SubscriptionId
 The Azure subscription Id.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List1, List, Get
+Parameter Sets: List1, Get, ByTargetId, List
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -TargetResourceId
+The alert rule target resource id
+
+```yaml
+Type: System.String
+Parameter Sets: ByTargetId
 Aliases:
 
 Required: True
@@ -151,6 +173,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20160301.IAlertRuleResource
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

@@ -13,7 +13,7 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-Get-AzMetric -ResourceUri <String> [-Aggregation <String>] [-Filter <String>] [-Interval <TimeSpan>]
+Get-AzMetric -ResourceId <String> [-Aggregation <String>] [-Filter <String>] [-Interval <TimeSpan>]
  [-Metricname <String>] [-Metricnamespace <String>] [-Orderby <String>] [-ResultType <ResultType>]
  [-Timespan <String>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -98,7 +98,7 @@ timegrain) of the query.
 ```yaml
 Type: System.TimeSpan
 Parameter Sets: (All)
-Aliases:
+Aliases: TimeGrain
 
 Required: False
 Position: Named
@@ -158,7 +158,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ResourceUri
+### -ResourceId
 The identifier of the resource.
 
 ```yaml
@@ -237,6 +237,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api201801.IResponse
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

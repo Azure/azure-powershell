@@ -14,7 +14,7 @@ schema: 2.0.0
 
 ### Get (Default)
 ```
-Get-AzMetricBaseline -MetricName <String> -ResourceUri <String> [-Aggregation <String>] [-Interval <TimeSpan>]
+Get-AzMetricBaseline -MetricName <String> -ResourceId <String> [-Aggregation <String>] [-Interval <TimeSpan>]
  [-ResultType <ResultType>] [-Sensitivity <String>] [-Timespan <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
@@ -132,7 +132,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ResourceUri
+### -ResourceId
 The identifier of the resource.
 It has the following structure: subscriptions/{subscriptionName}/resourceGroups/{resourceGroupName}/providers/{providerName}/{resourceName}.
 For example: subscriptions/b368ca2f-e298-46b7-b0ab-012281956afa/resourceGroups/vms/providers/Microsoft.Compute/virtualMachines/vm1
@@ -212,6 +212,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20171101Preview.IBaselineResponse
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 
