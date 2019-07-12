@@ -36,7 +36,7 @@ Remove an application insights resource
 Remove an application insights api key for an application insights resource
 
 ### [Remove-AzApplicationInsightsContinuousExport](Remove-AzApplicationInsightsContinuousExport.md)
-Remove a cotinuous export configuration in an application insights resource
+Remove a continuous export configuration in an application insights resource
 
 ### [Set-AzApplicationInsightsContinuousExport](Set-AzApplicationInsightsContinuousExport.md)
 Update a continuous export configuration in an applciation insights resource
