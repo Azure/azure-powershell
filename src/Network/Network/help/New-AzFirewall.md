@@ -18,17 +18,30 @@ Creates a new Firewall in a resource group.
 New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String>
  [-ApplicationRuleCollection <PSAzureFirewallApplicationRuleCollection[]>]
  [-NatRuleCollection <PSAzureFirewallNatRuleCollection[]>]
- [-NetworkRuleCollection <PSAzureFirewallNetworkRuleCollection[]>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NetworkRuleCollection <PSAzureFirewallNetworkRuleCollection[]>] [-Zone <String[]>] [-ThreatIntelMode <String>]
+ [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### IpConfigurationParameterValues
+### OldIpConfigurationParameterValues
 ```
 New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String> -VirtualNetworkName <String>
  -PublicIpName <String> [-ApplicationRuleCollection <PSAzureFirewallApplicationRuleCollection[]>]
  [-NatRuleCollection <PSAzureFirewallNatRuleCollection[]>]
- [-NetworkRuleCollection <PSAzureFirewallNetworkRuleCollection[]>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NetworkRuleCollection <PSAzureFirewallNetworkRuleCollection[]>] [-Zone <String[]>] [-ThreatIntelMode <String>]
+ [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### IpConfigurationParameterValues
+```
+New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String> -VirtualNetwork <PSVirtualNetwork>
+ -PublicIpAddress <PSPublicIpAddress[]>
+ [-ApplicationRuleCollection <PSAzureFirewallApplicationRuleCollection[]>]
+ [-NatRuleCollection <PSAzureFirewallNatRuleCollection[]>]
+ [-NetworkRuleCollection <PSAzureFirewallNetworkRuleCollection[]>] [-ThreatIntelMode <String>]
+ [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,7 +54,7 @@ The **New-AzFirewall** cmdlet creates an Azure Firewall.
 $rgName = "resourceGroupName"
 $vnet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name "vnet"
 $pip = Get-AzPublicIpAddress -ResourceGroupName $rgName -Name "publicIpName"
-New-AzFirewall -Name "azFw" -ResourceGroupName $rgName -Location centralus -VirtualNetworkName $vnet.Name -PublicIpName $pip.Name
+New-AzFirewall -Name "azFw" -ResourceGroupName $rgName -Location centralus -VirtualNetwork $vnet -PublicIpAddress $pip
 ```
 
 This example creates a Firewall attached to virtual network "vnet" in the same resource group as the firewall.
@@ -56,7 +69,7 @@ $pip = Get-AzPublicIpAddress -ResourceGroupName $rgName -Name "publicIpName"
 
 $rule = New-AzFirewallApplicationRule -Name R1 -Protocol "https:443" -TargetFqdn "*" 
 $ruleCollection = New-AzFirewallApplicationRuleCollection -Name RC1 -Priority 100 -Rule $rule -ActionType "Allow"
-New-AzFirewall -Name "azFw" -ResourceGroupName $rgName -Location centralus -VirtualNetworkName $vnet.Name -PublicIpName $pip.Name -ApplicationRuleCollection $ruleCollection
+New-AzFirewall -Name "azFw" -ResourceGroupName $rgName -Location centralus -VirtualNetwork $vnet -PublicIpAddress $pip -ApplicationRuleCollection $ruleCollection
 ```
 
 This example creates a Firewall which allows all HTTPS traffic on port 443.
@@ -77,7 +90,7 @@ Threat Intel is turned off in this example.
 $rgName = "resourceGroupName"
 $vnet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name "vnet"
 $pip = Get-AzPublicIpAddress -ResourceGroupName $rgName -Name "publicIpName"
-New-AzFirewall -Name "azFw" -ResourceGroupName $rgName -Location centralus -VirtualNetworkName $vnet.Name -PublicIpName $pip.Name -ThreatIntelMode Alert
+New-AzFirewall -Name "azFw" -ResourceGroupName $rgName -Location centralus -VirtualNetwork $vnet -PublicIpAddress $pip -ThreatIntelMode Alert
 ```
 
 This example creates a Firewall which blocks all traffic (default behavior) and has Threat Intel running in Alert mode.
@@ -91,11 +104,32 @@ $pip = Get-AzPublicIpAddress -ResourceGroupName $rgName -Name "publicIpName"
 
 $rule = New-AzFirewallApplicationRule -Name R1 -Protocol "http:8080" -TargetFqdn "*" 
 $ruleCollection = New-AzFirewallApplicationRuleCollection -Name RC1 -Priority 100 -Rule $rule -ActionType "Allow"
-New-AzFirewall -Name "azFw" -ResourceGroupName $rgName -Location centralus -VirtualNetworkName $vnet.Name -PublicIpName $pip.Name -ApplicationRuleCollection $ruleCollection -ThreatIntelMode Deny
+New-AzFirewall -Name "azFw" -ResourceGroupName $rgName -Location centralus -VirtualNetwork $vnet -PublicIpAddress $pip -ApplicationRuleCollection $ruleCollection -ThreatIntelMode Deny
 ```
 
 This example creates a Firewall which allows all HTTP traffic on port 8080 unless it is considered malicious by Threat Intel.
 When running in Deny mode, unlike Alert, traffic considered malicious by Threat Intel is not just logged, but also blocked.
+
+### 6:  Create a Firewall with no rules and with availability zones
+```
+$rgName = "resourceGroupName"
+$vnet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name "vnet"
+$pip = Get-AzPublicIpAddress -ResourceGroupName $rgName -Name "publicIpName"
+New-AzFirewall -Name "azFw" -ResourceGroupName $rgName -Location centralus -VirtualNetworkName $vnet.Name -PublicIpName $pip.Name -Zone 1,2,3
+```
+
+This example creates a Firewall with all available availability zones.
+
+### 7: Create a Firewall with two or more Public IP Addresses
+```
+$rgName = "resourceGroupName"
+$vnet = Get-AzVirtualNetwork -Name "vnet" -ResourceGroupName $rgName
+$pip1 = New-AzPublicIpAddress -Name "AzFwPublicIp1" -ResourceGroupName "rg" -Sku "Standard" -Location "centralus" -AllocationMethod Static
+$pip2 = New-AzPublicIpAddress -Name "AzFwPublicIp2" -ResourceGroupName "rg" -Sku "Standard" -Location "centralus" -AllocationMethod Static
+New-AzFirewall -Name "azFw" -ResourceGroupName $rgName -Location centralus -VirtualNetwork $vnet -PublicIpAddress @($pip1, $pip2)
+```
+
+This example creates a Firewall attached to virtual network "vnet" with two public IP addresses.
 
 ## PARAMETERS
 
@@ -219,12 +253,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -PublicIpAddress
+One or more Public IP Addresses. The Public IP addresses must use Standard SKU and must belong to the same resource group as the Firewall.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSPublicIpAddress[]
+Parameter Sets: IpConfigurationParameterValues
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -PublicIpName
 Public Ip Name. The Public IP must use Standard SKU and must belong to the same resource group as the Firewall.
 
 ```yaml
 Type: System.String
-Parameter Sets: IpConfigurationParameterValues
+Parameter Sets: OldIpConfigurationParameterValues
 Aliases:
 
 Required: True
@@ -246,6 +295,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Zone
+A list of availability zones denoting where the firewall needs to come from.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -273,6 +337,7 @@ Specifies the operation mode for Threat Intelligence. Default mode is Alert, not
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+Accepted values: Alert, Deny, Off
 
 Required: False
 Position: Named
@@ -281,12 +346,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -VirtualNetwork
+Virtual Network
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork
+Parameter Sets: IpConfigurationParameterValues
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -VirtualNetworkName
 Specifies the name of the virtual network for which the Firewall will be deployed. Virtual network and Firewall must belong to the same resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: IpConfigurationParameterValues
+Parameter Sets: OldIpConfigurationParameterValues
 Aliases:
 
 Required: True
@@ -333,6 +413,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+
+### Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork
+
+### Microsoft.Azure.Commands.Network.Models.PSPublicIpAddress[]
 
 ### Microsoft.Azure.Commands.Network.Models.PSAzureFirewallApplicationRuleCollection[]
 

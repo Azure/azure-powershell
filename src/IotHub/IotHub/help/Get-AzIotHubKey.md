@@ -12,9 +12,16 @@ Gets an IotHub Key.
 
 ## SYNTAX
 
+### ResourceSet (Default)
 ```
 Get-AzIotHubKey [-ResourceGroupName] <String> [-Name] <String> [[-KeyName] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ResourceIdSet
+```
+Get-AzIotHubKey [-HubId] <String> [[-KeyName] <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,6 +61,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -HubId
+IotHub Resource Id
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceIdSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -KeyName
 Name of the Key
 
@@ -63,7 +85,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -74,7 +96,7 @@ Name of the IoT hub.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ResourceSet
 Aliases:
 
 Required: True
@@ -89,7 +111,7 @@ Resource Group Name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ResourceSet
 Aliases:
 
 Required: True

@@ -20,6 +20,9 @@ Adds an action to the input ManagementPolicy Action Group object, or creates a M
 ### [Add-AzStorageAccountNetworkRule](Add-AzStorageAccountNetworkRule.md)
  Add IpRules or VirtualNetworkRules to the NetworkRule property of a Storage account
 
+### [Close-AzStorageFileHandle](Close-AzStorageFileHandle.md)
+Closes file handles of a file share, a file directory or a file.
+
 ### [Disable-AzStorageBlobDeleteRetentionPolicy](Disable-AzStorageBlobDeleteRetentionPolicy.md)
 Disable delete retention policy for the Azure Storage Blob service.
 
@@ -88,6 +91,9 @@ Downloads the contents of a file.
 
 ### [Get-AzStorageFileCopyState](Get-AzStorageFileCopyState.md)
 Gets the state of a copy operation.
+
+### [Get-AzStorageFileHandle](Get-AzStorageFileHandle.md)
+Lists file handles of a file share, a file directory or a file.
 
 ### [Get-AzStorageQueue](Get-AzStorageQueue.md)
 Lists storage queues.

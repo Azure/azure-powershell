@@ -637,6 +637,13 @@ namespace Microsoft.Azure.Commands.Network
                 // MNM to CNM 
                 cfg.CreateMap<MNM.ExpressRouteCircuitConnection, CNM.PSExpressRouteCircuitConnection>();
 
+                // Peer Express Route Circuit Connection 
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSPeerExpressRouteCircuitConnection, MNM.PeerExpressRouteCircuitConnection>();
+
+                // MNM to CNM 
+                cfg.CreateMap<MNM.PeerExpressRouteCircuitConnection, CNM.PSPeerExpressRouteCircuitConnection>();
+
                 // ExpressRouteServiceProvider
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSExpressRouteServiceProvider, MNM.ExpressRouteServiceProvider>();
@@ -704,6 +711,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSBgpSettings, MNM.BgpSettings>();
                 cfg.CreateMap<CNM.PSBGPPeerStatus, MNM.BgpPeerStatus>();
                 cfg.CreateMap<CNM.PSGatewayRoute, MNM.GatewayRoute>();
+                cfg.CreateMap<CNM.PSVpnClientConnectionHealthDetail, MNM.VpnClientConnectionHealthDetail>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.VirtualNetworkGateway, CNM.PSVirtualNetworkGateway>();
@@ -723,6 +731,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.BgpSettings, CNM.PSBgpSettings>();
                 cfg.CreateMap<MNM.BgpPeerStatus, CNM.PSBGPPeerStatus>();
                 cfg.CreateMap<MNM.GatewayRoute, CNM.PSGatewayRoute>();
+                cfg.CreateMap<MNM.VpnClientConnectionHealthDetail, CNM.PSVpnClientConnectionHealthDetail>();
 
                 // Application Gateways
                 // CNM to MNM
@@ -969,25 +978,30 @@ namespace Microsoft.Azure.Commands.Network
                 // MNM to CNM
                 cfg.CreateMap<MNM.AzureFirewallFqdnTag, CNM.PSAzureFirewallFqdnTag>();
 
-                // Interface endpoint
-                // CNM to MNM
-                cfg.CreateMap<CNM.PSInterfaceEndpoint, MNM.InterfaceEndpoint>();
-
-                // MNM to CNM
-                cfg.CreateMap<MNM.InterfaceEndpoint, CNM.PSInterfaceEndpoint>();
-
-                // CNM to MNM
-                cfg.CreateMap<CNM.PSEndpointService, MNM.EndpointService>();
-
-                // MNM to CNM
-                cfg.CreateMap<MNM.EndpointService, CNM.PSEndpointService>();
-
                 // Virtual Network Tap
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSVirtualNetworkTap, MNM.VirtualNetworkTap>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.VirtualNetworkTap, CNM.PSVirtualNetworkTap>();
+
+                cfg.CreateMap<CNM.PSPrivateEndpoint, MNM.PrivateEndpoint>();
+                cfg.CreateMap<MNM.PrivateEndpoint, CNM.PSPrivateEndpoint>();
+
+                cfg.CreateMap<CNM.PSPrivateLinkServiceConnection, MNM.PrivateLinkServiceConnection>();
+                cfg.CreateMap<MNM.PrivateLinkServiceConnection, CNM.PSPrivateLinkServiceConnection>();
+
+                cfg.CreateMap<CNM.PSPrivateLinkServiceConnectionState, MNM.PrivateLinkServiceConnectionState>();
+                cfg.CreateMap<MNM.PrivateLinkServiceConnectionState, CNM.PSPrivateLinkServiceConnectionState>();
+
+                cfg.CreateMap<CNM.PSPrivateLinkService, MNM.PrivateLinkService>();
+                cfg.CreateMap<MNM.PrivateLinkService, CNM.PSPrivateLinkService>();
+
+                cfg.CreateMap<CNM.PSPrivateEndpointConnection, MNM.PrivateEndpointConnection>();
+                cfg.CreateMap<MNM.PrivateEndpointConnection, CNM.PSPrivateEndpointConnection>();
+
+                cfg.CreateMap<CNM.PSAvailablePrivateEndpointType, MNM.AvailablePrivateEndpointType>();
+                cfg.CreateMap<MNM.AvailablePrivateEndpointType, CNM.PSAvailablePrivateEndpointType>();
             });
 
             _mapper = config.CreateMapper();
