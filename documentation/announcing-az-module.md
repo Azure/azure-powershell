@@ -25,7 +25,7 @@ Az is a new module, and reorganizing and simplifying cmdlet names involves break
 | Date | Feature |
 -------|----------
 | **August 2018** | Initial Release |
-| **November 2018** | Functional arity with AzureRM |
+| **November 2018** | Functional parity with AzureRM |
 | **December 2018** | Az 1.0 Release |
 | **January 2019** | New Authentication mechanisms for Windows PowerShell
 |  | - Username + password authentication
