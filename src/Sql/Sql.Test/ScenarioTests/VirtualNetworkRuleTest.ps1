@@ -59,7 +59,7 @@ function Test-CreateAndUpdateVirtualNetworkRule
 	}
 	finally
 	{
-		# Clean the enviroment
+		# Clean the environment
 		Remove-AzSqlServerVirtualNetworkRule -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -VirtualNetworkRuleName $virtualNetworkRuleName
 		Remove-ResourceGroupForTest $rg
 	}
@@ -112,7 +112,7 @@ function Test-GetVirtualNetworkRule
 	}
 	finally
 	{
-		# Clean the enviroment
+		# Clean the environment
 		Remove-AzSqlServerVirtualNetworkRule -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -VirtualNetworkRuleName $virtualNetworkRuleName1
 		Remove-AzSqlServerVirtualNetworkRule -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -VirtualNetworkRuleName $virtualNetworkRuleName2
 		Remove-ResourceGroupForTest $rg
