@@ -9,6 +9,13 @@ To view examples, please use the -Online parameter with Get-Help or navigate to:
 Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20180201.IImmutabilityPolicy
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20180201.IImmutabilityPolicy
+.Notes
+COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+PARAMETER <IImmutabilityPolicy>: The ImmutabilityPolicy property of a blob container, including Id, resource name, resource type, Etag.
+  ImmutabilityPeriodSinceCreationInDay <Int32>: The immutability period for the blobs in the container since the policy creation, in days.
+  [ETag <String>]: MISSING DESCRIPTION 03
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.storage/set-azrmstoragecontainerimmutabilitypolicy
 #>
@@ -20,42 +27,50 @@ function Set-AzRmStorageContainerImmutabilityPolicy {
     param(
         [Parameter(Mandatory, HelpMessage='The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(SerializedName='accountName', Required, PossibleTypes=([System.String]), Description='The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.')]
         [System.String]
         # The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
         ${AccountName},
 
         [Parameter(Mandatory, HelpMessage='The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(SerializedName='containerName', Required, PossibleTypes=([System.String]), Description='The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.')]
         [System.String]
         # The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
         ${ContainerName},
 
         [Parameter(Mandatory, HelpMessage='The name of the resource group within the user''s subscription. The name is case insensitive.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(SerializedName='resourceGroupName', Required, PossibleTypes=([System.String]), Description='The name of the resource group within the user''s subscription. The name is case insensitive.')]
         [System.String]
         # The name of the resource group within the user's subscription. The name is case insensitive.
         ${ResourceGroupName},
 
         [Parameter(Mandatory, HelpMessage='The ID of the target subscription.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(SerializedName='subscriptionId', Required, PossibleTypes=([System.String]), Description='The ID of the target subscription.')]
         [System.String]
         # The ID of the target subscription.
         ${SubscriptionId},
 
         [Parameter(HelpMessage='The entity state (ETag) version of the immutability policy to update. A value of "*" can be used to apply the operation only if the immutability policy already exists. If omitted, this operation will always be applied.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Header')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(SerializedName='If-Match', PossibleTypes=([System.String]), Description='The entity state (ETag) version of the immutability policy to update. A value of "*" can be used to apply the operation only if the immutability policy already exists. If omitted, this operation will always be applied.')]
         [System.String]
         # The entity state (ETag) version of the immutability policy to update. A value of "*" can be used to apply the operation only if the immutability policy already exists. If omitted, this operation will always be applied.
         ${IfMatch},
 
-        [Parameter(ParameterSetName='Update', ValueFromPipeline, HelpMessage='The ImmutabilityPolicy property of a blob container, including Id, resource name, resource type, Etag.')]
+        [Parameter(ParameterSetName='Update', ValueFromPipeline, HelpMessage='The ImmutabilityPolicy property of a blob container, including Id, resource name, resource type, Etag. To construct, see NOTES section for PARAMETER properties and create a hash table.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(SerializedName='parameters', PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20180201.IImmutabilityPolicy]), Description='The ImmutabilityPolicy property of a blob container, including Id, resource name, resource type, Etag.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20180201.IImmutabilityPolicy]
         # The ImmutabilityPolicy property of a blob container, including Id, resource name, resource type, Etag.
+        # To construct, see NOTES section for PARAMETER properties and create a hash table.
         ${Parameter},
 
         [Parameter(ParameterSetName='UpdateExpanded', Mandatory, HelpMessage='The immutability period for the blobs in the container since the policy creation, in days.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(SerializedName='body', Required, PossibleTypes=([System.Int32]), Description='The immutability period for the blobs in the container since the policy creation, in days.')]
         [System.Int32]
         # The immutability period for the blobs in the container since the policy creation, in days.
         ${ImmutabilityPeriod},

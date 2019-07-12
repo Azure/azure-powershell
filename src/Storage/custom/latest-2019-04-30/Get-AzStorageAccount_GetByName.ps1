@@ -2,7 +2,6 @@ function Get-AzStorageAccount_GetByName {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20190401.IStorageAccount')]
     [CmdletBinding(PositionalBinding=$false)]
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Profile('latest-2019-04-30')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Storage.Description('Lists all the storage accounts available under the subscription. Note that storage keys are not returned; use the ListKeys operation for this.')]
     param(
         [Parameter(Mandatory, HelpMessage='The ID of the target subscription.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Path')]

@@ -74,7 +74,7 @@ function New-AzStorageAccount {
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         # A boolean indicating whether or not the service encrypts the data as it is stored.
-        ${BlobEnabled},
+        ${EncryptBlobService},
     
         [Parameter(ParameterSetName='CreateExpandedStorageEncryption', Mandatory, HelpMessage='Gets or sets the custom domain name assigned to the storage account. Name is the CNAME source.')]
         [Parameter(ParameterSetName='CreateExpandedKeyVaultEncryption', Mandatory, HelpMessage='Gets or sets the custom domain name assigned to the storage account. Name is the CNAME source.')]
@@ -128,7 +128,7 @@ function New-AzStorageAccount {
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         # A boolean indicating whether or not the service encrypts the data as it is stored.
-        ${FileEnabled},
+        ${EncryptFileService},
     
         [Parameter(ParameterSetName='CreateExpandedStorageEncryption', HelpMessage='Account HierarchicalNamespace enabled if sets to true.')]
         [Parameter(ParameterSetName='CreateExpandedKeyVaultEncryption', HelpMessage='Account HierarchicalNamespace enabled if sets to true.')]
@@ -224,7 +224,7 @@ function New-AzStorageAccount {
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         # A boolean indicating whether or not the service encrypts the data as it is stored.
-        ${QueueEnabled},
+        ${EncryptQueueService},
     
         [Parameter(ParameterSetName='CreateExpandedStorageEncryption', HelpMessage='Indicates the type of storage account.')]
         [Parameter(ParameterSetName='CreateExpandedKeyVaultEncryption', HelpMessage='Indicates the type of storage account.')]
@@ -262,7 +262,7 @@ function New-AzStorageAccount {
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         # A boolean indicating whether or not the service encrypts the data as it is stored.
-        ${TableEnabled},
+        ${EncryptTableService},
     
         [Parameter(ParameterSetName='CreateExpandedStorageEncryption', HelpMessage='Gets or sets a list of key value pairs that describe the resource. These tags can be used for viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key with a length no greater than 128 characters and a value with a length no greater than 256 characters.')]
         [Parameter(ParameterSetName='CreateExpandedKeyVaultEncryption', HelpMessage='Gets or sets a list of key value pairs that describe the resource. These tags can be used for viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key with a length no greater than 128 characters and a value with a length no greater than 256 characters.')]

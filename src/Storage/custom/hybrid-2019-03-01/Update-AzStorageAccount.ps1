@@ -84,7 +84,7 @@ function Update-AzStorageAccount {
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         # A boolean indicating whether or not the service encrypts the data as it is stored.
-        ${BlobEnabled},
+        ${EncryptBlobService},
     
         [Parameter(ParameterSetName='UpdateExpanded', Mandatory, HelpMessage='Gets or sets the custom domain name assigned to the storage account. Name is the CNAME source.')]
         [Parameter(ParameterSetName='UpdateExpandedStorageEncryption', Mandatory, HelpMessage='Gets or sets the custom domain name assigned to the storage account. Name is the CNAME source.')]
@@ -140,7 +140,7 @@ function Update-AzStorageAccount {
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         # A boolean indicating whether or not the service encrypts the data as it is stored.
-        ${FileEnabled},
+        ${EncryptFileService},
 
 
         [Parameter(ParameterSetName='UpdateExpandedKeyVaultEncryption', HelpMessage='The name of KeyVault key.')]
@@ -231,7 +231,7 @@ function Update-AzStorageAccount {
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         # A boolean indicating whether or not the service encrypts the data as it is stored.
-        ${QueueEnabled},
+        ${EncryptQueueService},
     
         [Parameter(ParameterSetName='UpdateExpanded', HelpMessage='Indicates the type of storage account.')]
         [Parameter(ParameterSetName='UpdateExpandedStorageEncryption', HelpMessage='Indicates the type of storage account.')]
@@ -277,7 +277,7 @@ function Update-AzStorageAccount {
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         # A boolean indicating whether or not the service encrypts the data as it is stored.
-        ${TableEnabled},
+        ${EncryptTableService},
     
         [Parameter(ParameterSetName='UpdateExpanded', HelpMessage='Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater in length than 128 characters and a value no greater in length than 256 characters.')]
         [Parameter(ParameterSetName='UpdateExpandedStorageEncryption', HelpMessage='Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater in length than 128 characters and a value no greater in length than 256 characters.')]

@@ -115,6 +115,26 @@ directive:
     set:
       parameter-name: NetworkRuleSet$1
   - where:
+      subject: StorageAccount
+      parameter-name: BlobEnabled
+    set:
+      parameter-name: EncryptBlobService
+  - where:
+      subject: StorageAccount
+      parameter-name: FileEnabled
+    set:
+      parameter-name: EncryptFileService
+  - where:
+      subject: StorageAccount
+      parameter-name: QueueEnabled
+    set:
+      parameter-name: EncryptQueueService
+  - where:
+      subject: StorageAccount
+      parameter-name: TableEnabled
+    set:
+      parameter-name: EncryptTableService
+  - where:
       verb: Set
       subject: ^StorageAccount$
     set:

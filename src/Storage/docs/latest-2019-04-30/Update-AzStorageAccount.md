@@ -23,44 +23,44 @@ The location and name of the storage account cannot be changed after creation.
 ```
 Update-AzStorageAccount -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  -CustomDomainName <String> -NetworkRuleSetDefaultAction <DefaultAction> -SkuName <SkuName> [-AssignIdentity]
- [-AccessTier <AccessTier>] [-BlobEnabled] [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly]
- [-NoEncryption] [-FileEnabled] [-Kind <Kind>] [-NetworkRuleSetBypass <Bypass>]
+ [-AccessTier <AccessTier>] [-EncryptBlobService] [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly]
+ [-NoEncryption] [-EncryptFileService] [-Kind <Kind>] [-NetworkRuleSetBypass <Bypass>]
  [-NetworkRuleSetIPRule <IIPRule[]>] [-NetworkRuleSetVirtualNetworkRule <IVirtualNetworkRule[]>]
- [-QueueEnabled] [-SkuKind <Kind>] [-SkuRestriction <IRestriction[]>] [-TableEnabled] [-Tag <Hashtable>]
- [-UseSubDomain] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-EncryptQueueService] [-SkuKind <Kind>] [-SkuRestriction <IRestriction[]>] [-EncryptTableService]
+ [-Tag <Hashtable>] [-UseSubDomain] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded1StorageEncryption
 ```
 Update-AzStorageAccount -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  -CustomDomainName <String> -NetworkRuleSetDefaultAction <DefaultAction> -SkuName <SkuName> [-AssignIdentity]
- [-AccessTier <AccessTier>] [-BlobEnabled] [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly]
- [-FileEnabled] [-Kind <Kind>] [-NetworkRuleSetBypass <Bypass>] [-NetworkRuleSetIPRule <IIPRule[]>]
- [-NetworkRuleSetVirtualNetworkRule <IVirtualNetworkRule[]>] [-QueueEnabled] [-SkuKind <Kind>]
- [-SkuRestriction <IRestriction[]>] [-TableEnabled] [-Tag <Hashtable>] [-UseSubDomain] [-StorageEncryption]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AccessTier <AccessTier>] [-EncryptBlobService] [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly]
+ [-EncryptFileService] [-Kind <Kind>] [-NetworkRuleSetBypass <Bypass>] [-NetworkRuleSetIPRule <IIPRule[]>]
+ [-NetworkRuleSetVirtualNetworkRule <IVirtualNetworkRule[]>] [-EncryptQueueService] [-SkuKind <Kind>]
+ [-SkuRestriction <IRestriction[]>] [-EncryptTableService] [-Tag <Hashtable>] [-UseSubDomain]
+ [-StorageEncryption] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded1KeyVaultEncryption
 ```
 Update-AzStorageAccount -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  -CustomDomainName <String> -NetworkRuleSetDefaultAction <DefaultAction> -SkuName <SkuName> [-AssignIdentity]
- [-AccessTier <AccessTier>] [-BlobEnabled] [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly]
- [-FileEnabled] [-Kind <Kind>] [-NetworkRuleSetBypass <Bypass>] [-NetworkRuleSetIPRule <IIPRule[]>]
- [-NetworkRuleSetVirtualNetworkRule <IVirtualNetworkRule[]>] [-QueueEnabled] [-SkuKind <Kind>]
- [-SkuRestriction <IRestriction[]>] [-TableEnabled] [-Tag <Hashtable>] [-UseSubDomain] [-KeyVaultEncryption]
- [-KeyName <String>] [-KeyVaultUri <String>] [-KeyVersion <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-AccessTier <AccessTier>] [-EncryptBlobService] [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly]
+ [-EncryptFileService] [-Kind <Kind>] [-NetworkRuleSetBypass <Bypass>] [-NetworkRuleSetIPRule <IIPRule[]>]
+ [-NetworkRuleSetVirtualNetworkRule <IVirtualNetworkRule[]>] [-EncryptQueueService] [-SkuKind <Kind>]
+ [-SkuRestriction <IRestriction[]>] [-EncryptTableService] [-Tag <Hashtable>] [-UseSubDomain]
+ [-KeyVaultEncryption] [-KeyName <String>] [-KeyVaultUri <String>] [-KeyVersion <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded1
 ```
 Update-AzStorageAccount -InputObject <IStorageIdentity> -CustomDomainName <String>
  -NetworkRuleSetDefaultAction <DefaultAction> -SkuName <SkuName> [-AssignIdentity] [-AccessTier <AccessTier>]
- [-BlobEnabled] [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly] [-NoEncryption] [-FileEnabled]
- [-Kind <Kind>] [-NetworkRuleSetBypass <Bypass>] [-NetworkRuleSetIPRule <IIPRule[]>]
- [-NetworkRuleSetVirtualNetworkRule <IVirtualNetworkRule[]>] [-QueueEnabled] [-SkuKind <Kind>]
- [-SkuRestriction <IRestriction[]>] [-TableEnabled] [-Tag <Hashtable>] [-UseSubDomain]
+ [-EncryptBlobService] [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly] [-NoEncryption]
+ [-EncryptFileService] [-Kind <Kind>] [-NetworkRuleSetBypass <Bypass>] [-NetworkRuleSetIPRule <IIPRule[]>]
+ [-NetworkRuleSetVirtualNetworkRule <IVirtualNetworkRule[]>] [-EncryptQueueService] [-SkuKind <Kind>]
+ [-SkuRestriction <IRestriction[]>] [-EncryptTableService] [-Tag <Hashtable>] [-UseSubDomain]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -68,23 +68,23 @@ Update-AzStorageAccount -InputObject <IStorageIdentity> -CustomDomainName <Strin
 ```
 Update-AzStorageAccount -InputObject <IStorageIdentity> -CustomDomainName <String>
  -NetworkRuleSetDefaultAction <DefaultAction> -SkuName <SkuName> [-AssignIdentity] [-AccessTier <AccessTier>]
- [-BlobEnabled] [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly] [-FileEnabled] [-Kind <Kind>]
- [-NetworkRuleSetBypass <Bypass>] [-NetworkRuleSetIPRule <IIPRule[]>]
- [-NetworkRuleSetVirtualNetworkRule <IVirtualNetworkRule[]>] [-QueueEnabled] [-SkuKind <Kind>]
- [-SkuRestriction <IRestriction[]>] [-TableEnabled] [-Tag <Hashtable>] [-UseSubDomain] [-StorageEncryption]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-EncryptBlobService] [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly] [-EncryptFileService]
+ [-Kind <Kind>] [-NetworkRuleSetBypass <Bypass>] [-NetworkRuleSetIPRule <IIPRule[]>]
+ [-NetworkRuleSetVirtualNetworkRule <IVirtualNetworkRule[]>] [-EncryptQueueService] [-SkuKind <Kind>]
+ [-SkuRestriction <IRestriction[]>] [-EncryptTableService] [-Tag <Hashtable>] [-UseSubDomain]
+ [-StorageEncryption] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded1KeyVaultEncryption
 ```
 Update-AzStorageAccount -InputObject <IStorageIdentity> -CustomDomainName <String>
  -NetworkRuleSetDefaultAction <DefaultAction> -SkuName <SkuName> [-AssignIdentity] [-AccessTier <AccessTier>]
- [-BlobEnabled] [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly] [-FileEnabled] [-Kind <Kind>]
- [-NetworkRuleSetBypass <Bypass>] [-NetworkRuleSetIPRule <IIPRule[]>]
- [-NetworkRuleSetVirtualNetworkRule <IVirtualNetworkRule[]>] [-QueueEnabled] [-SkuKind <Kind>]
- [-SkuRestriction <IRestriction[]>] [-TableEnabled] [-Tag <Hashtable>] [-UseSubDomain] [-KeyVaultEncryption]
- [-KeyName <String>] [-KeyVaultUri <String>] [-KeyVersion <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-EncryptBlobService] [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly] [-EncryptFileService]
+ [-Kind <Kind>] [-NetworkRuleSetBypass <Bypass>] [-NetworkRuleSetIPRule <IIPRule[]>]
+ [-NetworkRuleSetVirtualNetworkRule <IVirtualNetworkRule[]>] [-EncryptQueueService] [-SkuKind <Kind>]
+ [-SkuRestriction <IRestriction[]>] [-EncryptTableService] [-Tag <Hashtable>] [-UseSubDomain]
+ [-KeyVaultEncryption] [-KeyName <String>] [-KeyVaultUri <String>] [-KeyVersion <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -138,22 +138,6 @@ Dynamic: False
 
 ### -AssignIdentity
 Specify IdentityType as 'SystemAssigned'
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -BlobEnabled
-A boolean indicating whether or not the service encrypts the data as it is stored.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -233,7 +217,55 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -FileEnabled
+### -EncryptBlobService
+A boolean indicating whether or not the service encrypts the data as it is stored.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -EncryptFileService
+A boolean indicating whether or not the service encrypts the data as it is stored.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -EncryptQueueService
+A boolean indicating whether or not the service encrypts the data as it is stored.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -EncryptTableService
 A boolean indicating whether or not the service encrypts the data as it is stored.
 
 ```yaml
@@ -445,22 +477,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -QueueEnabled
-A boolean indicating whether or not the service encrypts the data as it is stored.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -ResourceGroupName
 The name of the resource group within the user's subscription.
 The name is case insensitive.
@@ -556,22 +572,6 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -TableEnabled
-A boolean indicating whether or not the service encrypts the data as it is stored.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
