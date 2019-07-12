@@ -314,11 +314,18 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
         {
             string operatingSystem = GetPsOperatingSystem(cmdlet);
 
-            if (!operatingSystem.Contains("windows"))
+            WriteVerbose("Operating System: {0}", operatingSystem);
+
+            if (operatingSystem.IndexOf("windows", StringComparison.InvariantCultureIgnoreCase) == 0)
             {
                 // If OS is not Windows, check if Ps supports 6.1.0 which is the first version to depend on NetCoreApp 2.1
 
                 List<Version> compatibleVersions = GetPsCompatibleVersions(cmdlet);
+
+                foreach (Version version in compatibleVersions)
+                {
+                    WriteVerbose("Compatible version: {0}", version.ToString());
+                }
 
                 Version minimumVersion = new Version(6, 1, 0, 0);
 
@@ -330,8 +337,13 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                     return;
                 }
 
-            }            
+            }
 
+            int i = 0;
+
+
+            //HACK: Temporarlity force an exception to validate verbose traces
+            int j = 1 / i;
 
             // For Windows, we validate WSMAN trusted hosts settings
             if (operatingSystem.Contains("windows"))
@@ -364,6 +376,8 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                     return;
                 }
             }
+
+
 
             Site site = GetWebApp(resourceGroupName, webSiteName, slotName);
             User user = GetPublishingCredentials(resourceGroupName, webSiteName, slotName);
