@@ -27,10 +27,10 @@ The **Set-AzVMAccessExtension** cmdlet adds the Virtual Machine Access (VMAccess
 
 ### Example 1: Add a VMAccess extension
 ```
-PS C:\> Set-AzVMAccessExtension -ResourceGroupName "ResrouceGroup11" -Location "Central US" -VMName "VirtualMachine07" -Name "ContosoTest" -TypeHandlerVersion "2.0" -UserName "PFuller" -Password "Password"
+PS C:\> Set-AzVMAccessExtension -ResourceGroupName "ResourceGroup11" -Location "Central US" -VMName "VirtualMachine07" -Name "ContosoTest" -TypeHandlerVersion "2.0" -UserName "PFuller" -Password "Password"
 ```
 
-This command adds a VMAccess extension for the virtual machine named VirtualMachine07 in ResrouceGroup11.
+This command adds a VMAccess extension for the virtual machine named VirtualMachine07 in ResourceGroup11.
 The command specifies the name and type handler version for VMAccess.
 
 ## PARAMETERS
