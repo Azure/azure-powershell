@@ -18,7 +18,7 @@ Used to Convert Legacy Peering resources to Azure Resource Management (ARM) Reso
 Gets PeerAsn object from ARM.
 
 ### [Get-AzPeering](Get-AzPeering.md)
-Gets the Peering Resources for a subsription
+Gets the Peering Resources for a subscription
 
 ### [Get-AzPeeringLocation](Get-AzPeeringLocation.md)
 Gets the Peering locations offered by Microsoft
