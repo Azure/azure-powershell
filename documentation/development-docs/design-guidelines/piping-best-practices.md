@@ -11,7 +11,7 @@ In PowerShell, cmdlets pipe objects between one another; cmdlets should return o
 For example, in Azure PowerShell, you can remove all of your current environments with the following pipeline scenario:
 
 ```powershell
-Get-AzEnvironment | Remove-AzEnviornment
+Get-AzEnvironment | Remove-AzEnvironment
 ```
 
 The cmdlet `Get-AzEnvironment` will return a set of `Environment` objects, and those objects will be individually piped to the `Remove-AzEnvironment` cmdlet, where they will be removed.
