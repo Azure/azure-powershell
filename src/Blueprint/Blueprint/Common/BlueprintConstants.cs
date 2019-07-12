@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             public const string ArtifactPolicyDefinitionId = "Definition Id of the policy definition.";
             public const string ArtifactPolicyDefinitionParameter = "Hashtable of parameters to pass to the policy definition artifact.";
             public const string ArtifactRoleDefinitionId = "List of role definition";
-            public const string ArtifactRoleDefinitionPrincipalId = "List of role definition pricipal ids.";
+            public const string ArtifactRoleDefinitionPrincipalId = "List of role definition principal ids.";
             public const string ArtifactTemplateFile = "Location of the ARM template file on disk.";
             public const string ArtifactTemplateParameterFile = "Location of the ARM template parameter file on disk.";
             public const string ArtifactFile = "Location of the artifact file in JSON format on disk.";

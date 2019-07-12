@@ -285,7 +285,7 @@ Accept wildcard characters: False
 ```
 
 ### -RoleDefinitionPrincipalId
-List of role definition pricipal ids.
+List of role definition principal ids.
 
 ```yaml
 Type: String[]
