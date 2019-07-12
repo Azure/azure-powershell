@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             public const string UserAssignedIdentity = "User assigned identity(MSI) to deploy the artifacts.";
             public const string SecureString = "Secure string parameter for KeyVault resource id, name and version.";
             public const string ArtifactName = "Name of the artifact";
-            public const string ArtifactType = "Type of the artifact. There are 3 tpes supported: RoleAssignmentArtifact, PolicyAssignmentArtifact, TemplateArtifact.";
+            public const string ArtifactType = "Type of the artifact. There are 3 types supported: RoleAssignmentArtifact, PolicyAssignmentArtifact, TemplateArtifact.";
             public const string ArtifactDescription = "Description of the artifact.";
             public const string ArtifactDependsOn = "List of the names of artifacts that needs to be created before current artifact is created.";
             public const string ArtifactPolicyDefinitionId = "Definition Id of the policy definition.";
