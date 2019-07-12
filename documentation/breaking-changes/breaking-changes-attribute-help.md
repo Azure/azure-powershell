@@ -25,7 +25,7 @@ All of the attributes have the following common traits:
 #### Constructor arguments
 - Each attribute has two additional constructors that take the following params in addition to the ones the attribute mentions:
   - The "deprecatedByVersion" is the version number the breaking change is going to be done in.
-  - The "changeInEffectByDate" is the date the breaking change is goind to go in effet on. The string formati is "mm/dd/yyyy", as an example : "02/25/2018"
+  - The "changeInEffectByDate" is the date the breaking change is going to go in effet on. The string formati is "mm/dd/yyyy", as an example : "02/25/2018"
 #### Properties by name
 - Each attribute accepts the following properties by name (all of them are optional) :
   - "ChangeDescription" : This is a free form text field that can be used to describe the breaking change.
