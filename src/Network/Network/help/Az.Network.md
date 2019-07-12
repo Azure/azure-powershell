@@ -811,7 +811,7 @@ This command allows the users to create the Vpn profile package based on pre-con
 This command allows the users to create the Vpn ipsec parameters object specifying one or all values such as IpsecEncryption,IpsecIntegrity,IkeEncryption,IkeIntegrity,DhGroup,PfsGroup to set on the existing VPN gateway.
 
 ### [New-AzVpnClientIpsecPolicy](New-AzVpnClientIpsecPolicy.md)
-This command allows the users to create the Vpn ipsec policy object specifying one or all values such as IpsecEncryption,IpsecIntegrity,IkeEncryption,IkeIntegrity,DhGroup,PfsGroup to set on the VPN gateway. This command let output object is used to set vpn ipsec policy for both new / exisitng gateway.
+This command allows the users to create the Vpn ipsec policy object specifying one or all values such as IpsecEncryption,IpsecIntegrity,IkeEncryption,IkeIntegrity,DhGroup,PfsGroup to set on the VPN gateway. This command let output object is used to set vpn ipsec policy for both new / existing gateway.
 
 ### [New-AzVpnClientRevokedCertificate](New-AzVpnClientRevokedCertificate.md)
 Creates a new VPN client-revocation certificate.
