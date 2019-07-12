@@ -181,7 +181,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The VpnConenction object to update.
+The VpnConnection object to update.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSVpnConnection
@@ -256,7 +256,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The resource id of the VpnConenction object to delete.
+The resource id of the VpnConnection object to delete.
 
 ```yaml
 Type: System.String
