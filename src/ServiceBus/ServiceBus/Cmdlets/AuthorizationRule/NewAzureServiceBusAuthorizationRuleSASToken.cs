@@ -27,19 +27,18 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
     /// <summary>
     /// 'New-AzEventHubAuthorizationRuleSASToken' Cmdlet creates a new AuthorizationRule
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusAuthorizationRuleSASToken", DefaultParameterSetName = NamespaceAuthoRuleParameterSet, SupportsShouldProcess = true), OutputType(typeof(string))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusAuthorizationRuleSASToken", DefaultParameterSetName = NamespaceAuthoRuleParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSSharedAccessSignatureAttributes))]
     public class NewAzureAuthorizationRuleSASToken : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "ARM ResourceId of the Authoraization Rule")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
-        [Alias(AliasAuthorizationRuleId)]
-        public string ResourceId { get; set; }
+        [Alias(AliasResourceId)]
+        public string AuthorizationRuleId{ get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = NamespaceAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Key Type")]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("Primary", "Secondary")]
-        [ValidateSet("Primary", "Secondary", IgnoreCase = true)]
         public string KeyType { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = NamespaceAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Expiry Time")]
@@ -54,15 +53,15 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         {
             try
             {
-                LocalResourceIdentifier identifier = new LocalResourceIdentifier(ResourceId);
+                LocalResourceIdentifier identifier = new LocalResourceIdentifier(AuthorizationRuleId);
                 string resourceUri = string.Empty, strPolicyName = string.Empty, sakey = string.Empty;
 
                 PSListKeysAttributes listkeys;
-                if (identifier.ParentResource1 != null && ResourceId.Contains("topics"))
+                if (identifier.ParentResource1 != null && AuthorizationRuleId.Contains("topics"))
                 {                   
                     listkeys =  Client.GetTopicKey(identifier.ResourceGroupName, identifier.ParentResource, identifier.ParentResource1, identifier.ResourceName);
                 }
-                else if (identifier.ParentResource1 != null && ResourceId.Contains("queues"))
+                else if (identifier.ParentResource1 != null && AuthorizationRuleId.Contains("queues"))
                     {
                         listkeys = Client.GetQueueKey(identifier.ResourceGroupName, identifier.ParentResource, identifier.ParentResource1, identifier.ResourceName);
                     }
@@ -99,7 +98,8 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
                 HMACSHA256 hmac = new HMACSHA256(System.Text.Encoding.UTF8.GetBytes(sakey));
                 var signature = Convert.ToBase64String(hmac.ComputeHash(Encoding.UTF8.GetBytes(stringToSign)));
                 string sasToken = String.Format(CultureInfo.InvariantCulture, "SharedAccessSignature sr={0}&sig={1}&se={2}&skn={3}", HttpUtility.UrlEncode(resourceUri), HttpUtility.UrlEncode(signature), ExpiryTime, KeyType);
-                WriteObject(sasToken, true);
+                PSSharedAccessSignatureAttributes psSastoken = new PSSharedAccessSignatureAttributes(sasToken);
+                WriteObject(psSastoken, true);
 
             }
             catch (Management.ServiceBus.Models.ErrorResponseException ex)
