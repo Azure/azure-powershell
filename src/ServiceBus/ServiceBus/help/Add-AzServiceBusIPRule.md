@@ -41,7 +41,7 @@ Type                : Microsoft.ServiceBus/Namespaces/NetworkRuleSet
 IpRules             : {11.22.33.44, Allow}
 VirtualNetworkRules : 
 
-add the IPRule with IpMask "11.22.33.44" and Action Allow fro the given namesapce.
+add the IPRule with IpMask "11.22.33.44" and Action Allow fro the given namespace.
 
 ### Example 2
 ```powershell
@@ -54,7 +54,7 @@ Type                : Microsoft.ServiceBus/Namespaces/NetworkRuleSet
 IpRules             : {11.22.33.44, Allow}
 VirtualNetworkRules : 
 
-add the IPRule with IpMask "11.22.33.44" and Action Allow fro the given namesapce.
+add the IPRule with IpMask "11.22.33.44" and Action Allow fro the given namespace.
 
 ## PARAMETERS
 

@@ -47,7 +47,7 @@ IpRules             :
 VirtualNetworkRules : 
 
 
-Deletes the NetwrokRuleSet for the Given "Eventhub-Namespace1-1375" namesapce 
+Deletes the NetwrokRuleSet for the Given "Eventhub-Namespace1-1375" namespace 
 
 ### Example 2
 ```powershell

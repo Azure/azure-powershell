@@ -47,7 +47,7 @@ Type                : Microsoft.ServiceBus/Namespaces/NetworkRuleSet
 IpRules             : 
 VirtualNetworkRules : 
 
-Deletes the NetwrokRuleSet for the Given "ServiceBus-Namespace1-1375" namesapce 
+Deletes the NetwrokRuleSet for the Given "ServiceBus-Namespace1-1375" namespace 
 
 ### Example 2
 ```powershell
