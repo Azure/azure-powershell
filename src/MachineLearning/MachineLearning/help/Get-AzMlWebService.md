@@ -71,7 +71,7 @@ Accept wildcard characters: False
 ```
 
 ### -Region
-The name of regio
+The name of region
 
 ```yaml
 Type: System.String
