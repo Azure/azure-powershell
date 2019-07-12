@@ -12,6 +12,7 @@ Generates a SAS tolen for Azure eventhub authorization rule of namespace/eventhu
 
 ## SYNTAX
 
+```
 New-AzEventHubAuthorizationRuleSASToken [-AuthorizationRuleId] <String> [-KeyType] <String>
  [-ExpiryTime] <DateTime> [-StartTime <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
