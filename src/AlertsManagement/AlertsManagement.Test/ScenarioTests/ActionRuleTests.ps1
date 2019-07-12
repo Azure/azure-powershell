@@ -30,7 +30,7 @@ function Test-CreateUpdateAndDeleteSuppressionRule
 	$resourceGroupName = "ActionRules-Powershell-Test"
 	$actionRuleName = "ScenarioTest-Suppression-ActionRule"
 
-	$createdActionRule = Set-AzActionRule -ResourceGroupName $resourceGroupName -Name $actionRuleName -ScopeType "ResourceGroup" -Scope "/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab,/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/Test-VMs" -SeverityCondition "Equals:Sev0,Sev1" -MonitorCondition "NotEquals:Resolved" -Description "Test description" -Status "Enabled" -ActionRuleType "Suppression" -ReccurenceType "Weekly" -SuppressionStartTime "06/26/2018 06:00:00" -SuppressionEndTime "07/27/2018 06:00:00" -ReccurentValue 1,4,6
+	$createdActionRule = Set-AzActionRule -ResourceGroupName $resourceGroupName -Name $actionRuleName -ScopeType "ResourceGroup" -Scope "/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab","/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/Test-VMs" -SeverityCondition "Equals:Sev0,Sev1" -MonitorCondition "NotEquals:Resolved" -Description "Test description" -Status "Enabled" -ActionRuleType "Suppression" -ReccurenceType "Weekly" -SuppressionStartTime "06/26/2018 06:00:00" -SuppressionEndTime "07/27/2018 06:00:00" -ReccurentValue 1,4,6
 
 	Assert-NotNull $createdActionRule 
 
@@ -41,7 +41,6 @@ function Test-CreateUpdateAndDeleteSuppressionRule
 
 	# Delete Action Rule
 	$isDeleted = Remove-AzActionRule -ResourceGroupName $resourceGroupName -Name $actionRuleName
-	Assert-NotNull $isDeleted
 }
 
 function Test-CreateUpdateAndDeleteActionGroupRule
@@ -49,7 +48,7 @@ function Test-CreateUpdateAndDeleteActionGroupRule
 	$resourceGroupName = "ActionRules-Powershell-Test"
 	$actionRuleName = "ScenarioTest-ActionGroup-ActionRule"
 
-	$createdActionRule = Set-AzActionRule -ResourceGroupName $resourceGroupName -Name $actionRuleName -ScopeType "ResourceGroup" -Scope "/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab,/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/Test-VMs" -SeverityCondition "Equals:Sev0,Sev1" -MonitorCondition "NotEquals:Resolved" -Description "Test description" -Status "Enabled" -ActionRuleType "ActionGroup" -ActionGroupId "/subscriptions/1e3ff1c0-771a-4119-a03b-be82a51e232d/resourceGroups/alertscorrelationrg/providers/Microsoft.insights/actiongroups/testAG"
+	$createdActionRule = Set-AzActionRule -ResourceGroupName $resourceGroupName -Name $actionRuleName -ScopeType "ResourceGroup" -Scope "/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab","/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/Test-VMs" -SeverityCondition "Equals:Sev0,Sev1" -MonitorCondition "NotEquals:Resolved" -Description "Test description" -Status "Enabled" -ActionRuleType "ActionGroup" -ActionGroupId "/subscriptions/1e3ff1c0-771a-4119-a03b-be82a51e232d/resourceGroups/alertscorrelationrg/providers/Microsoft.insights/actiongroups/testAG"
 
 	Assert-NotNull $createdActionRule 
 
@@ -60,7 +59,6 @@ function Test-CreateUpdateAndDeleteActionGroupRule
 
 	# Delete Action Rule
 	$isDeleted = Remove-AzActionRule -ResourceGroupName $resourceGroupName -Name $actionRuleName
-	Assert-NotNull $isDeleted
 }
 
 function Test-CreateUpdateAndDeleteDiagnosticsRule
@@ -79,5 +77,4 @@ function Test-CreateUpdateAndDeleteDiagnosticsRule
 
 	# Delete Action Rule
 	$isDeleted = Remove-AzActionRule -ResourceGroupName $resourceGroupName -Name $actionRuleName
-	Assert-NotNull $isDeleted
 }
