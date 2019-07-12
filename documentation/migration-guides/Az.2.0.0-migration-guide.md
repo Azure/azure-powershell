@@ -237,7 +237,7 @@ This document describes the changes between the 1.0.0 and 2.0.0 versions of Az
   ```
   #### After
   ```powershell
-  Set-AzVMBootDIagnostic
+  Set-AzVMBootDiagnostic
   ```
 - Cmdlet `Export-AzLogAnalyticThrottledRequest` removed alias to `Export-AzLogAnalyticThrottledRequests`
   #### Before
