@@ -18,6 +18,11 @@
         - Additional information about change #1
 --->
 ## Upcoming Release
+* Enable ICMP protocol for network security rule configurations
+    - Updated cmdlets
+        - Add-AzNetworkSecurityRuleConfig
+        - New-AzNetworkSecurityRuleConfig
+        - Set-AzNetworkSecurityRuleConfig
 
 ## Version 1.11.0
 * Added `RoutingPreference` to public ip tags
