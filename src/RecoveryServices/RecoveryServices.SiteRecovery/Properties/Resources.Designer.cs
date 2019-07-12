@@ -414,7 +414,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unsupported vault object is passed. Please pass Claasic or ARM vault object..
+        ///   Looks up a localized string similar to Unsupported vault object is passed. Please pass Classic or ARM vault object..
         /// </summary>
         internal static string InvalidVaultObject {
             get {
