@@ -31,7 +31,7 @@ Set-AzEventHubGeoDRConfigurationFailOver [-ResourceId] <String> [-PassThru]
 ```
 
 ## DESCRIPTION
-The **Set-AzEventHubGeoDRConfigurationFailOver** cmdlet envokes GEO DR failover and reconfigure the alias to point to the secondary namespace
+The **Set-AzEventHubGeoDRConfigurationFailOver** cmdlet invokes GEO DR failover and reconfigure the alias to point to the secondary namespace
 
 ## EXAMPLES
 
