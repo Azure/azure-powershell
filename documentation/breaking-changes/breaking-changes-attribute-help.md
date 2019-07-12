@@ -279,7 +279,7 @@ Breaking changes in the cmdlet : Get-SomeObjectB
     'Prop1' 'Prop2'
 ```
 
-#### A few new properties are bing added to the output type
+#### A few new properties are being added to the output type
 ```cs
 [CmdletOutputBreakingChange(typeof(Foo), NewOutputProperties = new String[] {"Prop1", "Prop2"})]
 [Cmdlet(VerbsCommon.Get, "SomeObjectC"), OutputType(typeof(Foo))]

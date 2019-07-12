@@ -52,7 +52,7 @@ Breaking changes in cmdlets are defined as follows:
       - Use the parameter breaking change attribute ["CmdletParameterBreakingChangeAttribute"](./breaking-changes-attribute-help.md#cmdletparameterbreakingchangeattribute) as [described here](./breaking-changes-attribute-help.md#generic-change-in-a-parameter) to call out the change.
 - Adding additional required properties
   - In the output type
-      - Use the cmdlet output type breaking change attribute ["CmdletOutputBreakingChangeAttribute"](./breaking-changes-attribute-help.md#cmdletoutputbreakingchangeattribute) [as follows](./breaking-changes-attribute-help.md#a-few-new-properties-are-bing-added-to-the-output-type) to call out derecated properties. 
+      - Use the cmdlet output type breaking change attribute ["CmdletOutputBreakingChangeAttribute"](./breaking-changes-attribute-help.md#cmdletoutputbreakingchangeattribute) [as follows](./breaking-changes-attribute-help.md#a-few-new-properties-are-being-added-to-the-output-type) to call out derecated properties. 
   - In a parameter
       - Use the parameter breaking change attribute ["CmdletParameterBreakingChangeAttribute"](./breaking-changes-attribute-help.md#cmdletparameterbreakingchangeattribute) as [described here](./breaking-changes-attribute-help.md#generic-change-in-a-parameter) to call out the change.
 - Adding required parameters, changing parameter names, or parameter types for methods or constructors
