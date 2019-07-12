@@ -582,7 +582,7 @@ Creates a request routing rule for an application gateway.
 Creates a rewrite rule for an application gateway.
 
 ### [New-AzApplicationGatewayRewriteRuleActionSet](New-AzApplicationGatewayRewriteRuleActionSet.md)
-Creates a rewrite rule actionset for an application gateway.
+Creates a rewrite rule action set for an application gateway.
 
 ### [New-AzApplicationGatewayRewriteRuleCondition](New-AzApplicationGatewayRewriteRuleCondition.md)
 Adds a condition to the RewriteRule for an application gateway.
