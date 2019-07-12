@@ -34,7 +34,7 @@ Users who specify the `-Confirm` parameter on the command prompt will automatica
 
 Users can specify the `-WhatIf` parameter to see all the `ShouldProcess` prompts that would occur during execution of a cmdlet, without actually making any changes.
 
-Some cmdlets required additional confirmation. For example, if a cmdlet would destroy existing resources in some circumstances, the cmdlet might detect that condition and prompt the user to verify before continuing. Overwriting an existing resource during resource creation, overwriting a file when downloading data, deleting a resource that is currently in use, or deleting a container that contains additional resources are all example of this pattern. To implement additional confirmation, and allow scripts to opt out of additional prompts, the above pattern is enhanced with calles to `ShouldContinue()` and the `Force` parameter:
+Some cmdlets required additional confirmation. For example, if a cmdlet would destroy existing resources in some circumstances, the cmdlet might detect that condition and prompt the user to verify before continuing. Overwriting an existing resource during resource creation, overwriting a file when downloading data, deleting a resource that is currently in use, or deleting a container that contains additional resources are all example of this pattern. To implement additional confirmation, and allow scripts to opt out of additional prompts, the above pattern is enhanced with calls to `ShouldContinue()` and the `Force` parameter:
 
 ```cs
 if (ShouldProcess(target, actionMessage))
