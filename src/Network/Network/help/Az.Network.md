@@ -721,7 +721,7 @@ Creates a connection monitor.
 
 ### [New-AzNetworkWatcherNetworkConfigurationDiagnosticProfile](New-AzNetworkWatcherNetworkConfigurationDiagnosticProfile.md)
 Creates a new network configuration diagnostic profile object. 
-This object is used to restrict the network confiuration during a diagnostic session using the specified criteria.
+This object is used to restrict the network configuration during a diagnostic session using the specified criteria.
 
 ### [New-AzNetworkWatcherPacketCapture](New-AzNetworkWatcherPacketCapture.md)
 Creates a new packet capture resource and starts a packet capture session on a VM.
