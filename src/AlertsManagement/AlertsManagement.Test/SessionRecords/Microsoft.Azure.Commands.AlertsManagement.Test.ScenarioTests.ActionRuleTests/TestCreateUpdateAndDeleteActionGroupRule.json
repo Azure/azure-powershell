@@ -7,7 +7,7 @@
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"type\": \"ActionGroup\",\r\n    \"actionGroupId\": \"/subscriptions/1e3ff1c0-771a-4119-a03b-be82a51e232d/resourceGroups/alertscorrelationrg/providers/Microsoft.insights/actiongroups/testAG\",\r\n    \"scope\": {\r\n      \"scopeType\": \"ResourceGroup\",\r\n      \"values\": [\r\n        \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab\",\r\n        \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/Test-VMs\"\r\n      ]\r\n    },\r\n    \"conditions\": {\r\n      \"severity\": {\r\n        \"operator\": \"Equals\",\r\n        \"values\": [\r\n          \"Sev0\",\r\n          \"Sev1\"\r\n        ]\r\n      },\r\n      \"monitorCondition\": {\r\n        \"operator\": \"NotEquals\",\r\n        \"values\": [\r\n          \"Resolved\"\r\n        ]\r\n      }\r\n    },\r\n    \"description\": \"Test description\",\r\n    \"status\": \"Enabled\"\r\n  },\r\n  \"location\": \"Global\",\r\n  \"tags\": {}\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "0393a6eb-de5f-4454-8893-53d855cd82bc"
+          "c1f61fac-f687-4be4-9590-0a973e5bd0c3"
         ],
         "Accept-Language": [
           "en-US"
@@ -15,8 +15,8 @@
         "User-Agent": [
           "FxVersion/4.6.27414.06",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.AlertsManagement.AlertsManagementClient/27.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.AlertsManagement.AlertsManagementClient/0.9.1.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -33,7 +33,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "089c3dd9-fe3c-4a28-83dd-1d66e0909282"
+          "5cffd53d-b856-4554-ad4a-79114e890c92"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -42,16 +42,16 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1197"
         ],
         "x-ms-correlation-request-id": [
-          "fa1b9c40-aae2-4dc0-860e-5bb4cfec54be"
+          "aa204e2c-e187-402c-8f33-57ca83a31af2"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20190626T131926Z:fa1b9c40-aae2-4dc0-860e-5bb4cfec54be"
+          "SOUTHINDIA:20190712T142019Z:aa204e2c-e187-402c-8f33-57ca83a31af2"
         ],
         "Date": [
-          "Wed, 26 Jun 2019 13:19:26 GMT"
+          "Fri, 12 Jul 2019 14:20:19 GMT"
         ],
         "Content-Length": [
           "1022"
@@ -63,7 +63,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"conditions\": {\r\n      \"severity\": {\r\n        \"operator\": \"Equals\",\r\n        \"values\": [\r\n          \"Sev0\",\r\n          \"Sev1\"\r\n        ]\r\n      },\r\n      \"monitorCondition\": {\r\n        \"operator\": \"NotEquals\",\r\n        \"values\": [\r\n          \"Resolved\"\r\n        ]\r\n      }\r\n    },\r\n    \"status\": \"Enabled\",\r\n    \"type\": \"ActionGroup\",\r\n    \"scope\": {\r\n      \"scopeType\": \"ResourceGroup\",\r\n      \"values\": [\r\n        \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab\",\r\n        \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/Test-VMs\"\r\n      ]\r\n    },\r\n    \"description\": \"Test description\",\r\n    \"createdAt\": \"2019-06-26T13:19:25.5183944Z\",\r\n    \"createdBy\": \"User\",\r\n    \"lastModifiedAt\": \"2019-06-26T13:19:25.5183944Z\",\r\n    \"lastModifiedBy\": \"User\",\r\n    \"actionGroupId\": \"/subscriptions/1e3ff1c0-771a-4119-a03b-be82a51e232d/resourceGroups/alertscorrelationrg/providers/Microsoft.insights/actiongroups/testAG\"\r\n  },\r\n  \"location\": \"Global\",\r\n  \"id\": \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/ActionRules-Powershell-Test/providers/Microsoft.AlertsManagement/actionRules/ScenarioTest-ActionGroup-ActionRule\",\r\n  \"type\": \"Microsoft.AlertsManagement/actionRules\",\r\n  \"name\": \"ScenarioTest-ActionGroup-ActionRule\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"conditions\": {\r\n      \"severity\": {\r\n        \"operator\": \"Equals\",\r\n        \"values\": [\r\n          \"Sev0\",\r\n          \"Sev1\"\r\n        ]\r\n      },\r\n      \"monitorCondition\": {\r\n        \"operator\": \"NotEquals\",\r\n        \"values\": [\r\n          \"Resolved\"\r\n        ]\r\n      }\r\n    },\r\n    \"status\": \"Enabled\",\r\n    \"type\": \"ActionGroup\",\r\n    \"scope\": {\r\n      \"scopeType\": \"ResourceGroup\",\r\n      \"values\": [\r\n        \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab\",\r\n        \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/Test-VMs\"\r\n      ]\r\n    },\r\n    \"description\": \"Test description\",\r\n    \"createdAt\": \"2019-07-12T14:20:18.3542901Z\",\r\n    \"createdBy\": \"User\",\r\n    \"lastModifiedAt\": \"2019-07-12T14:20:18.3542901Z\",\r\n    \"lastModifiedBy\": \"User\",\r\n    \"actionGroupId\": \"/subscriptions/1e3ff1c0-771a-4119-a03b-be82a51e232d/resourceGroups/alertscorrelationrg/providers/Microsoft.insights/actiongroups/testAG\"\r\n  },\r\n  \"location\": \"Global\",\r\n  \"id\": \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/ActionRules-Powershell-Test/providers/Microsoft.AlertsManagement/actionRules/ScenarioTest-ActionGroup-ActionRule\",\r\n  \"type\": \"Microsoft.AlertsManagement/actionRules\",\r\n  \"name\": \"ScenarioTest-ActionGroup-ActionRule\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -73,7 +73,7 @@
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"status\": \"Disabled\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e14b718d-98bc-4638-b572-929a3fd462f8"
+          "b8541352-0728-4c01-949e-fac2e881dcc2"
         ],
         "Accept-Language": [
           "en-US"
@@ -81,8 +81,8 @@
         "User-Agent": [
           "FxVersion/4.6.27414.06",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.AlertsManagement.AlertsManagementClient/27.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.AlertsManagement.AlertsManagementClient/0.9.1.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -99,7 +99,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "23ec0849-a465-4789-a486-6f6d3bcc2bed"
+          "8e12e6fc-3407-4407-9067-dc882c206894"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -108,16 +108,16 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
+          "1196"
         ],
         "x-ms-correlation-request-id": [
-          "de163cf0-f8dd-4c04-9fb7-6141ff6127ed"
+          "776429fd-b741-499a-aa86-23d61607e4e1"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20190626T131929Z:de163cf0-f8dd-4c04-9fb7-6141ff6127ed"
+          "SOUTHINDIA:20190712T142020Z:776429fd-b741-499a-aa86-23d61607e4e1"
         ],
         "Date": [
-          "Wed, 26 Jun 2019 13:19:28 GMT"
+          "Fri, 12 Jul 2019 14:20:20 GMT"
         ],
         "Content-Length": [
           "1023"
@@ -129,7 +129,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"conditions\": {\r\n      \"severity\": {\r\n        \"operator\": \"Equals\",\r\n        \"values\": [\r\n          \"Sev0\",\r\n          \"Sev1\"\r\n        ]\r\n      },\r\n      \"monitorCondition\": {\r\n        \"operator\": \"NotEquals\",\r\n        \"values\": [\r\n          \"Resolved\"\r\n        ]\r\n      }\r\n    },\r\n    \"status\": \"Disabled\",\r\n    \"type\": \"ActionGroup\",\r\n    \"scope\": {\r\n      \"scopeType\": \"ResourceGroup\",\r\n      \"values\": [\r\n        \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab\",\r\n        \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/Test-VMs\"\r\n      ]\r\n    },\r\n    \"description\": \"Test description\",\r\n    \"createdAt\": \"2019-06-26T13:19:25.5183944Z\",\r\n    \"createdBy\": \"User\",\r\n    \"lastModifiedAt\": \"2019-06-26T13:19:28.6827582Z\",\r\n    \"lastModifiedBy\": \"User\",\r\n    \"actionGroupId\": \"/subscriptions/1e3ff1c0-771a-4119-a03b-be82a51e232d/resourceGroups/alertscorrelationrg/providers/Microsoft.insights/actiongroups/testAG\"\r\n  },\r\n  \"location\": \"Global\",\r\n  \"id\": \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/ActionRules-Powershell-Test/providers/Microsoft.AlertsManagement/actionRules/ScenarioTest-ActionGroup-ActionRule\",\r\n  \"type\": \"Microsoft.AlertsManagement/actionRules\",\r\n  \"name\": \"ScenarioTest-ActionGroup-ActionRule\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"conditions\": {\r\n      \"severity\": {\r\n        \"operator\": \"Equals\",\r\n        \"values\": [\r\n          \"Sev0\",\r\n          \"Sev1\"\r\n        ]\r\n      },\r\n      \"monitorCondition\": {\r\n        \"operator\": \"NotEquals\",\r\n        \"values\": [\r\n          \"Resolved\"\r\n        ]\r\n      }\r\n    },\r\n    \"status\": \"Disabled\",\r\n    \"type\": \"ActionGroup\",\r\n    \"scope\": {\r\n      \"scopeType\": \"ResourceGroup\",\r\n      \"values\": [\r\n        \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab\",\r\n        \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/Test-VMs\"\r\n      ]\r\n    },\r\n    \"description\": \"Test description\",\r\n    \"createdAt\": \"2019-07-12T14:20:18.3542901Z\",\r\n    \"createdBy\": \"User\",\r\n    \"lastModifiedAt\": \"2019-07-12T14:20:20.4987724Z\",\r\n    \"lastModifiedBy\": \"User\",\r\n    \"actionGroupId\": \"/subscriptions/1e3ff1c0-771a-4119-a03b-be82a51e232d/resourceGroups/alertscorrelationrg/providers/Microsoft.insights/actiongroups/testAG\"\r\n  },\r\n  \"location\": \"Global\",\r\n  \"id\": \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/ActionRules-Powershell-Test/providers/Microsoft.AlertsManagement/actionRules/ScenarioTest-ActionGroup-ActionRule\",\r\n  \"type\": \"Microsoft.AlertsManagement/actionRules\",\r\n  \"name\": \"ScenarioTest-ActionGroup-ActionRule\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -139,7 +139,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "f690b1fd-eba9-4510-ae54-0aa55cb71a99"
+          "a01e84c6-dd74-4c47-8ce5-834daaf20a8a"
         ],
         "Accept-Language": [
           "en-US"
@@ -147,8 +147,8 @@
         "User-Agent": [
           "FxVersion/4.6.27414.06",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.AlertsManagement.AlertsManagementClient/27.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.AlertsManagement.AlertsManagementClient/0.9.1.0"
         ]
       },
       "ResponseHeaders": {
@@ -159,7 +159,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "efdabfd1-de41-4963-adfa-17fb147c0f2f"
+          "1a774daa-cfe7-4d1e-97f8-4f3a34f1f3e8"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -168,16 +168,16 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14999"
+          "14998"
         ],
         "x-ms-correlation-request-id": [
-          "8f32599d-b1f3-4c33-a30c-27683b6bbb92"
+          "e9066bb3-172e-4d7b-b858-4c09c167d391"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20190626T131931Z:8f32599d-b1f3-4c33-a30c-27683b6bbb92"
+          "SOUTHINDIA:20190712T142023Z:e9066bb3-172e-4d7b-b858-4c09c167d391"
         ],
         "Date": [
-          "Wed, 26 Jun 2019 13:19:31 GMT"
+          "Fri, 12 Jul 2019 14:20:23 GMT"
         ],
         "Content-Length": [
           "4"

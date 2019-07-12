@@ -265,6 +265,10 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                         }
                     }
 
+                    foreach (var result in resultList)
+                    {
+                        WriteObject(result.Properties.GetType());
+                    }
                     WriteObject(resultList.Select((r) => new PSActionRule(r)), enumerateCollection: true);
                     break;
 

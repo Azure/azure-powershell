@@ -15,6 +15,7 @@
 using Newtonsoft.Json;
 using Microsoft.Azure.Management.AlertsManagement.Models;
 using System.Text;
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
 namespace Microsoft.Azure.Commands.AlertsManagement.OutputModels
 {
@@ -37,21 +38,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement.OutputModels
 
         public int? TotalSmartGroups { get; }
 
+        [Ps1Xml(Label = "Summary", Target = ViewControl.List, ScriptBlock = "$_.AggregatedCounts.ToString()")]
         public PSAggregatedCounts AggregatedCounts { get; }
-
-        public override string ToString()
-        {
-            var output = new StringBuilder();
-            output.AppendLine();
-            output.Append(string.Format("GroupBy           : {0}", GroupBy));
-            output.AppendLine();
-            output.Append(string.Format("TotalAlerts       : {0}", TotalAlerts));
-            output.AppendLine();
-            output.Append(string.Format("TotalSmartGroups  : {0}", TotalSmartGroups));
-            output.AppendLine();
-            output.Append(string.Format("Summarization     : {0}", AggregatedCounts.ToString()));
-            output.AppendLine();
-            return output.ToString();
-        }
     }
 }

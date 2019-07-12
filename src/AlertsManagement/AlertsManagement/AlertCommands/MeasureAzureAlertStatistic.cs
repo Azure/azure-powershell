@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                 includeSmartGroupsCount: IncludeSmartGroupsCount
                 ).Result.Body);
 
-            WriteObject(summary.ToString());
+            WriteObject(summary);
         }
     }
 }

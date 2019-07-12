@@ -21,9 +21,9 @@ using Microsoft.Azure.Management.AlertsManagement.Models;
 
 namespace Microsoft.Azure.Commands.AlertsManagement
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AlertHistory", DefaultParameterSetName = ByIdParameterSet)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AlertObjectHistory", DefaultParameterSetName = ByIdParameterSet)]
     [OutputType(typeof(PSAlertModification))]
-    public class GetAzureAlertHistory : AlertsManagementBaseCmdlet
+    public class GetAzureAlertObjectHistory : AlertsManagementBaseCmdlet
     {
         #region Parameter sets
         private const string ByInputObjectParameterSet = "ByInputObject";
