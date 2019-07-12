@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Fix missing examples for Set-AzSqlDatabaseSecondary cmdlet
+* Fix set Vulnerability Assessment recurring scans without providing any email addresses
 
 ## Version 1.13.0
 * Add Instance Failover Group cmdlets from preview release to public release
