@@ -11,7 +11,7 @@ Below is description of the various types of Breaking Change Attributes (custom 
 
 ## Common aspects and properties
 ### GenericBreakingChangeAttribute
-The base attribute which provides the core functionality is called "GenericBreakingChange" All the remaining attrbutes derive from it and provide functionality that makes sense for the scenarios they handle.
+The base attribute which provides the core functionality is called "GenericBreakingChange" All the remaining attributes derive from it and provide functionality that makes sense for the scenarios they handle.
 
 The generic attribute is the most free form of them all and can be used to call out breaking changes that do not fall into the more specialized categories.
 
