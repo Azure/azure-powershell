@@ -216,9 +216,9 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             return PSBlueprint.FromBlueprintModel(blueprintManagementClient.Blueprints.CreateOrUpdate(scope, name, bp), scope);
         }
 
-        public PSPublishedBlueprint CreatePublishedBlueprint(string scope, string name, string version)
+        public PSPublishedBlueprint CreatePublishedBlueprint(string scope, string name, string version, PublishedBlueprint publishedBP)
         {
-            return PSPublishedBlueprint.FromPublishedBlueprintModel(blueprintManagementClient.PublishedBlueprints.Create(scope, name, version), scope);
+            return PSPublishedBlueprint.FromPublishedBlueprintModel(blueprintManagementClient.PublishedBlueprints.Create(scope, name, version, publishedBP), scope);
         }
 
 
