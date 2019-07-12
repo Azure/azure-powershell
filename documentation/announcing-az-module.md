@@ -139,7 +139,7 @@ For scripts that import modules directly, or use ```#Requires``` statements to s
 | AzureRM.Media | Az.Media |
 | AzureRM.Network | Az.Network |
 | AzureRM.NotificationHubs | Az.NotificationHubs |
-| AzureRM.OperationalInsights | Az.OperationalIsights |
+| AzureRM.OperationalInsights | Az.OperationalInsights |
 | AzureRM.PolicyInsights | Az.PolicyInsights |
 | AzureRM.PowerBIEmbedded | Az.PowerBIEmbedded* |
 | **AzureRM.Profile** | **Az.Accounts** |
