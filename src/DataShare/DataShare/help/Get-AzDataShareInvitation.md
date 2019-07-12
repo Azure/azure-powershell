@@ -14,12 +14,12 @@ Gets information invitation of data share.
 ### ByFieldsParameterSet (Default)
 ```
 Get-AzDataShareInvitation -ResourceGroupName <String> -AccountName <String> -ShareName <String>
- [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
-Get-AzDataShareInvitation -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzDataShareInvitation -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -137,15 +137,16 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShare
-
 
 ## NOTES
 

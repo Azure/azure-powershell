@@ -14,12 +14,13 @@ Gets information about dataset mappings in share subscription
 ### ByFieldsParameterSet (Default)
 ```
 Get-AzDataShareDataSetMapping -ResourceGroupName <String> -AccountName <String> -ShareSubscriptionName <String>
- [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
 Get-AzDataShareDataSetMapping -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,7 +42,6 @@ DataSetMappingStatus : Ok
 Id                   : /subscriptions/4834da9b-787a-44f6-ae81-60707ab8c957/resourceGroups/ADS/providers/Microsoft.DataShare/accounts/WikiAdsAccount/shareSubscriptions/WikiADS/dataSetMappings/dsm
 Name                 : dsm
 Type                 : Microsoft.DataShare/DataSetMappings
-
 ```
 
  This command displays information about all dataset mappings in the share subscription.
@@ -138,15 +138,16 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareDataSetMapping
-
 
 ## NOTES
 

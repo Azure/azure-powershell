@@ -13,7 +13,7 @@ Gets information about consumer invitations.
 
 ```
 Get-AzDataShareReceivedInvitation [-Location <String>] [-InvitationId <String>]
- [-DefaultProfile <IAzureContextContainer>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,7 +39,6 @@ Terms             : Some terms of use
 Id                : /providers/Microsoft.DataShare/consumerInvitations/167e06ff-567f-4bc7-be0c-645a6de710f3
 Name              : AdsInvitation
 Type              : Microsoft.DataShare/consumerInvitations
-
 ```
 
 This commant provides information about consumer invitations.
@@ -91,15 +90,16 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShare
-
 
 ## NOTES
 

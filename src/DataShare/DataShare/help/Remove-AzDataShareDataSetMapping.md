@@ -15,19 +15,19 @@ Removes a dataset mapping
 ```
 Remove-AzDataShareDataSetMapping -ResourceGroupName <String> -AccountName <String>
  -ShareSubscriptionName <String> -Name <String> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
 Remove-AzDataShareDataSetMapping -ResourceId <String> [-PassThru] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Remove-AzDataShareDataSetMapping -DataSetMapping <PSDataShareDataSetMapping> [-PassThru] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Remove-AzDataShareDataSetMapping -DataSetMapping <PSDataSetMapping> [-PassThru] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 The azure data set mapping object
 
 ```yaml
-Type: PSDataShareDataSetMapping
+Type: PSDataSetMapping
 Parameter Sets: ByObjectParameterSet
 Aliases: 
 
@@ -212,17 +212,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
 Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareDataSetMapping
 System.Management.Automation.SwitchParameter
 
-
 ## OUTPUTS
 
 ### System.Boolean
-
 
 ## NOTES
 

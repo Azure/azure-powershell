@@ -14,19 +14,19 @@ Removes a data share.
 ### ByFieldsParameterSet (Default)
 ```
 Remove-AzDataShare -ResourceGroupName <String> -AccountName <String> -Name <String> [-PassThru] [-Force]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
 Remove-AzDataShare -ResourceId <String> [-PassThru] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Remove-AzDataShare -Share <PSDataShare> [-PassThru] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm]
+Remove-AzDataShare -Share <PSShare> [-PassThru] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -169,7 +169,7 @@ Accept wildcard characters: False
 Azure data share object
 
 ```yaml
-Type: PSDataShare
+Type: PSShare
 Parameter Sets: ByObjectParameterSet
 Aliases: 
 
@@ -211,17 +211,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
 Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShare
 System.Management.Automation.SwitchParameter
 
-
 ## OUTPUTS
 
 ### System.Boolean
-
 
 ## NOTES
 

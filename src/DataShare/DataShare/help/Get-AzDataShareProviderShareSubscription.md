@@ -11,9 +11,16 @@ Gets information about consumer share subscriptions on provider side.
 
 ## SYNTAX
 
+### ByFieldsParameterSet (Default)
 ```
-Get-AzDataShareProviderShareSubscription -AccountName <String> -ResourceGroupName <String> -ShareName <String>
- [-ShareSubscriptionId <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzDataShareProviderShareSubscription -ResourceGroupName <String> -AccountName <String> -ShareName <String>
+ [-ShareSubscriptionId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByResourceIdParameterSet
+```
+Get-AzDataShareProviderShareSubscription [-ShareSubscriptionId <String>] -ResourceId <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,7 +53,7 @@ Azure DataShare Account name.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByFieldsParameterSet
 Aliases: 
 
 Required: True
@@ -76,7 +83,20 @@ The resource group of the Azure DataShare Account.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByFieldsParameterSet
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+The resource id of the share```yaml
+Type: String
+Parameter Sets: ByResourceIdParameterSet
 Aliases: 
 
 Required: True
@@ -91,7 +111,7 @@ Azure DataShare name.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByFieldsParameterSet
 Aliases: 
 
 Required: True
@@ -116,15 +136,16 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareProviderShareSubscription
-
 
 ## NOTES
 

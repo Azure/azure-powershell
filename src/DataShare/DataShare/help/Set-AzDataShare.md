@@ -14,19 +14,19 @@ Updates an existing data share
 ### ByFieldsParameterSet (Default)
 ```
 Set-AzDataShare -ResourceGroupName <String> -AccountName <String> -Name <String> [-Description <String>]
- [-TermsOfUse <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-TermsOfUse <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
 Set-AzDataShare -ResourceId <String> [-Description <String>] [-TermsOfUse <String>]
- [-DefaultProfile <IAzureContextContainer>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
 Set-AzDataShare -Share <PSShare> [-Description <String>] [-TermsOfUse <String>]
- [-DefaultProfile <IAzureContextContainer>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,6 +47,7 @@ Description         : Updated description
 ProvisioningState   : Succeeded
 Terms               : Updated terms
 ```
+
 This command updates an existing data share named AdsShare
 
 ## PARAMETERS
@@ -171,16 +172,17 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
 Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSShare
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSShare
-
 
 ## NOTES
 

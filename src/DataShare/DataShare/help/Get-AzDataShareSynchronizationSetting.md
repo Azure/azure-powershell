@@ -14,12 +14,13 @@ Gets information about synchronization setting on a share.
 ### ByFieldsParameterSet (Default)
 ```
 Get-AzDataShareSynchronizationSetting -ResourceGroupName <String> -AccountName <String> -ShareName <String>
- [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
 Get-AzDataShareSynchronizationSetting -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,7 +41,6 @@ Id                  : /subscriptions/1834da9b-787a-44f6-ae81-60707ab8c957/resour
                       DataShare/accounts/WikiAds/shares/AdShare/synchronizationSettings/ShareSynchronization
 Name                : ShareSynchronization
 Type                : Microsoft.DataShare/SynchronizationSettings
-
 ```
 
 This command provides information about synchronization ShareSynchronization enabled on share AdsShare under data share account WikiAds.
@@ -137,15 +137,16 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareSynchronizationSetting
-
 
 ## NOTES
 

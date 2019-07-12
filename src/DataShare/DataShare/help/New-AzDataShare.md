@@ -14,6 +14,7 @@ Creates a azure data share.
 ```
 New-AzDataShare -ResourceGroupName <String> -AccountName <String> -Name <String> -ShareKind <String>
  [-Description <String>] [-TermsOfUse <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,6 +35,7 @@ Description         : Example of description
 ProvisioningState   : Succeeded
 Terms               : This should not be shared
 ```
+
 This command creates a data share named AdsShare of kind CopyBased in data share account WikiAdsAccount under resource group ADS with description and terms of use.
 
 ## PARAMETERS
@@ -174,15 +176,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShare
-
 
 ## NOTES
 

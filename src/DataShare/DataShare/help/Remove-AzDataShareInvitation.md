@@ -15,18 +15,19 @@ removes an invitation
 ```
 Remove-AzDataShareInvitation -ResourceGroupName <String> -AccountName <String> -ShareName <String>
  -Name <String> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
 Remove-AzDataShareInvitation -ResourceId <String> [-PassThru] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Remove-AzDataShareInvitation -Invitation <PSDataShareInvitation> [-PassThru] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Remove-AzDataShareInvitation -Invitation <PSInvitation> [-PassThru] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -94,7 +95,7 @@ Accept wildcard characters: False
 Azure data share invitation object
 
 ```yaml
-Type: PSDataShareInvitation
+Type: PSInvitation
 Parameter Sets: ByObjectParameterSet
 Aliases: 
 
@@ -211,17 +212,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
 Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareInvitation
 System.Management.Automation.SwitchParameter
 
-
 ## OUTPUTS
 
 ### System.Boolean
-
 
 ## NOTES
 

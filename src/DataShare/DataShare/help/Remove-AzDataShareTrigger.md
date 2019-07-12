@@ -15,18 +15,19 @@ removes a trigger
 ```
 Remove-AzDataShareTrigger -ResourceGroupName <String> -AccountName <String> [-ShareSubscriptionName <String>]
  -Name <String> [-PassThru] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
 Remove-AzDataShareTrigger -ResourceId <String> [-PassThru] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Remove-AzDataShareTrigger -Trigger <PSDataShareTrigger> [-PassThru] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Remove-AzDataShareTrigger -Trigger <PSTrigger> [-PassThru] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -185,7 +186,7 @@ Accept wildcard characters: False
 Azure data share trigger object
 
 ```yaml
-Type: PSDataShareTrigger
+Type: PSTrigger
 Parameter Sets: ByObjectParameterSet
 Aliases: 
 
@@ -227,17 +228,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
 Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareTrigger
 System.Management.Automation.SwitchParameter
 
-
 ## OUTPUTS
 
 ### System.Boolean
-
 
 ## NOTES
 

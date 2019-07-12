@@ -15,12 +15,13 @@ Gets information about DataShare Accounts
 ```
 Get-AzDataShareAccount [-ResourceGroupName <String>] [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount] [-Skip <UInt64>] [-First <UInt64>]
+ [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
 Get-AzDataShareAccount -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
- [-Skip <UInt64>] [-First <UInt64>]
+ [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,7 +52,7 @@ Type                    : Microsoft.DataShare/accounts
 Id                      : /subscriptions/4834da9b-787a-44f6-ae81-60707ab8c957/resourceGroups/ADS/providers/Microsoft.DataShare/accounts/WikiADS
 ```
 
- This command displays information about all datashare accounts in the Azure subscription.
+This command displays information about all datashare accounts in the Azure subscription.
 
 ## PARAMETERS
 
@@ -160,15 +161,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models.PSDataShareAccount
-
 
 ## NOTES
 
