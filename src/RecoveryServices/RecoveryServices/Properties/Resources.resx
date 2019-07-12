@@ -132,7 +132,7 @@
     <value>Resource Group is not associated with the selected Subscription</value>
   </data>
   <data name="InvalidResource" xml:space="preserve">
-    <value>Resource is not associted with the selected Resource group</value>
+    <value>Resource is not associated with the selected Resource group</value>
   </data>
   <data name="InvalidXml" xml:space="preserve">
     <value>XML is malformed or file is empty, exception details: {0}</value>

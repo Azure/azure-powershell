@@ -378,7 +378,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Resource is not associted with the selected Resource group.
+        ///   Looks up a localized string similar to Resource is not associated with the selected Resource group.
         /// </summary>
         internal static string InvalidResource {
             get {
