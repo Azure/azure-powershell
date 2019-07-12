@@ -191,7 +191,7 @@ Timeseries	:
 					Average		: 967
 ```
 
-This command gets summarized output for the PageViews metric with specified dimesion filter and aggregation type.
+This command gets summarized output for the PageViews metric with specified dimension filter and aggregation type.
 
 ## PARAMETERS
 
