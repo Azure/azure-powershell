@@ -48,7 +48,7 @@ function Assert-Throws
     }
   }
 
-  throw "No exception occured";
+  throw "No exception occurred";
 }
 
 ######################
@@ -86,7 +86,7 @@ function Assert-ThrowsContains
     }
   }
 
-  throw "No exception occured";
+  throw "No exception occurred";
 }
 
 <#

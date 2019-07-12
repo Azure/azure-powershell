@@ -793,7 +793,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Network disruption occured, retrying..
+        ///   Looks up a localized string similar to Network disruption occurred, retrying..
         /// </summary>
         internal static string PSSyncOutputEventsRetryingAfterANetworkDisruption {
             get {
