@@ -29,7 +29,7 @@ All of the attributes have the following common traits:
 #### Properties by name
 - Each attribute accepts the following properties by name (all of them are optional) :
   - "ChangeDescription" : This is a free form text field that can be used to describe the breaking change.
-  - Usage changes (you cant have one or the other, you need to speciffy both for the usage message to be generated) :
+  - Usage changes (you cant have one or the other, you need to specify both for the usage message to be generated) :
     - "OldWay" : The way to call the cmdlet before the breaking change takes effect
     - "NewWay" : If there is a workaround to the breaking change, or if the same functionality can be achieved in another manner
 
