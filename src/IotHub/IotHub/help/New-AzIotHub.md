@@ -20,7 +20,7 @@ New-AzIotHub -ResourceGroupName <String> -Name <String> -SkuName <PSIotHubSku> -
 
 ## DESCRIPTION
 Creates a new IotHub.
-You can create the IotHub with either the default properties or specify the input proerties.
+You can create the IotHub with either the default properties or specify the input properties.
 
 ## EXAMPLES
 
