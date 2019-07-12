@@ -510,7 +510,7 @@ Accept wildcard characters: False
 ```
 
 ### -SystemAssignedIdentity
-If the parameter is present then the VM(s) in the scale set is(are) assingned a managed system identity that is auto generated.
+If the parameter is present then the VM(s) in the scale set is(are) assigned a managed system identity that is auto generated.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
