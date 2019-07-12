@@ -30,7 +30,7 @@ By default, `ShouldProcess` interacts with the cmdlet `ConfirmImpact` and the us
 
 PowerShell has several tools that allow users to explore and control what happens during execution of cmdlets, and this change in implementation allows them to use these tools.
 
-Users who specify the `-Confirm` parameter on the command prompt will automatically be prompted for **any** call to `ShouldProcess`, and can decide whether to continue processing. Users can increase or decrease their `$ConfirmPreference` level to decide which kinds of changes will be confirmed automaticlaly without user interaction.
+Users who specify the `-Confirm` parameter on the command prompt will automatically be prompted for **any** call to `ShouldProcess`, and can decide whether to continue processing. Users can increase or decrease their `$ConfirmPreference` level to decide which kinds of changes will be confirmed automatically without user interaction.
 
 Users can specify the `-WhatIf` parameter to see all the `ShouldProcess` prompts that would occur during exeuction of a cmdlet, without actually making any changes.
 
