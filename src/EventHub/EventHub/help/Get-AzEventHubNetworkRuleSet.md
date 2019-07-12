@@ -40,7 +40,7 @@ Gets the details of an Event Hubs NetworkruleSet of namespace in the current Azu
 PS C:\> Get-AzEventHubNetworkRuleSet -ResourceGroupName  v-ajnavtest -Namespace Eventhub-Namespace1-1375
 ```
 
-Get the details of Event Hubs NetworkruleSet of namespace using ResourceGroup and Namesape parameters. 
+Get the details of Event Hubs NetworkruleSet of namespace using ResourceGroup and Namespace parameters. 
 
 ### Example 2
 ```powershell

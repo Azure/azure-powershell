@@ -46,7 +46,7 @@ Type                : Microsoft.ServiceBus/Namespaces/NetworkRuleSet
 IpRules             : {1.1.1.1, Allow}
 VirtualNetworkRules : {/subscriptions/subscriptionId/resourcegroups/v-ajnavtest/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/default, False}
 
-Get the details of Event Hubs NetworkruleSet of namespace using ResourceGroup and Namesape parameters. 
+Get the details of Event Hubs NetworkruleSet of namespace using ResourceGroup and Namespace parameters. 
 
 ### Example 2
 ```powershell
