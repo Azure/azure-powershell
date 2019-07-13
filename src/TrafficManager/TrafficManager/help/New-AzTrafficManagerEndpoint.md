@@ -43,7 +43,7 @@ This command creates an external endpoint named contoso in the profile named Con
 PS C:\>New-AzTrafficManagerEndpoint -EndpointStatus Enabled -Name "contoso" -ProfileName "ContosoProfile" -ResourceGroupName "ResourceGroup11" -Type AzureEndpoints -Priority 1 -TargetResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Default-Web-CentralUS/providers/Microsoft.Web/sites/contoso-web-app" -Weight 10
 ```
 
-This command creates an Azure endpoint named contoso in the profile named ContosoProfile in resource group ResouceGroup11.
+This command creates an Azure endpoint named contoso in the profile named ContosoProfile in resource group ResourceGroup11.
 The Azure endpoint points to the Azure Web App whose Azure Resource Manager ID is given by the URI path in *TargetResourceId*.
 The command does not specify the *EndpointLocation* parameter because the Web App resource supplies the location.
 
