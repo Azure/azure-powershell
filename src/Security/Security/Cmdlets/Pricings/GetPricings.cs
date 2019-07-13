@@ -46,7 +46,6 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.Pricings
                     break;
                 case ParameterSetNames.ResourceId:
                     pricing = SecurityCenterClient.Pricings.GetWithHttpMessagesAsync(AzureIdUtilities.GetResourceName(ResourceId)).GetAwaiter().GetResult().Body;
-
                     WriteObject(pricing.ConvertToPSType(), enumerateCollection: false);
                     break;
                 default:
