@@ -106,20 +106,20 @@ namespace Microsoft.Azure.Commands.Compute
                 //#################################################
                 //# Check if VM exists
                 //#################################################
-                this._Helper.WriteHost("VM Existance check for {0} ...", false, this.VMName);
+                this._Helper.WriteHost("VM Existence check for {0} ...", false, this.VMName);
                 var selectedVM = this.ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName);
                 var selectedVMStatus = this.ComputeClient.ComputeManagementClient.VirtualMachines.GetWithInstanceView(this.ResourceGroupName, this.VMName).Body.InstanceView;
 
 
                 if (selectedVM == null)
                 {
-                    rootResult.PartialResults.Add(new AEMTestResult("VM Existance check for {0}", false, this.VMName));
+                    rootResult.PartialResults.Add(new AEMTestResult("VM Existence check for {0}", false, this.VMName));
                     this._Helper.WriteHost("NOT OK ", ConsoleColor.Red);
                     return;
                 }
                 else
                 {
-                    rootResult.PartialResults.Add(new AEMTestResult("VM Existance check for {0}", true, this.VMName));
+                    rootResult.PartialResults.Add(new AEMTestResult("VM Existence check for {0}", true, this.VMName));
                     this._Helper.WriteHost("OK ", ConsoleColor.Green);
 
                 }
