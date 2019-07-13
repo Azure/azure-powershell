@@ -314,6 +314,8 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
         {
             string operatingSystem = GetPsOperatingSystem(cmdlet);
 
+            Version minimumVersion = new Version(6, 1, 0, 0);
+
             WriteVerbose("Operating System: {0}", operatingSystem);
 
             if (operatingSystem.IndexOf("windows", StringComparison.InvariantCultureIgnoreCase) == 0)
@@ -327,8 +329,6 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                     WriteVerbose("Compatible version: {0}", version.ToString());
                 }
 
-                Version minimumVersion = new Version(6, 1, 0, 0);
-
                 // if there are no compatible versions subsequent to the minimum versions, we don't continue because the command will fail
                 if (compatibleVersions.Where(v => v.CompareTo(minimumVersion) > 0).Count() > 0)
                 {
@@ -339,14 +339,8 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
 
             }
 
-            int i = 0;
-
-
-            //HACK: Temporarlity force an exception to validate verbose traces
-            int j = 1 / i;
-
             // For Windows, we validate WSMAN trusted hosts settings
-            if (operatingSystem.Contains("windows"))
+            if (operatingSystem.IndexOf("windows", StringComparison.InvariantCultureIgnoreCase) != 0)
             {
                 // Validate if WSMAN Basic Authentication is enabled
                 bool isBasicAuthEnabled = ExecuteScriptAndGetVariableAsBool(cmdlet, "${0} = (Get-Item WSMAN:\\LocalHost\\Client\\Auth\\Basic -ErrorAction SilentlyContinue).Value", false);
@@ -366,7 +360,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
 
                 if (trustedHostsScriptResult.Split(',').Where(h=>expression.IsMatch(h)).Count() < 1)
                 {
-                    WriteWarning(string.Format(Properties.Resources.EnterContainerPSSessionFormatForTrustedHostsWarning, string.IsNullOrWhiteSpace(trustedHostsScriptResult) ? defaultTrustedHostsScriptResult: trustedHostsScriptResult) + 
+                    WriteError(string.Format(Properties.Resources.EnterContainerPSSessionFormatForTrustedHostsWarning, string.IsNullOrWhiteSpace(trustedHostsScriptResult) ? defaultTrustedHostsScriptResult: trustedHostsScriptResult) + 
                         Environment.NewLine +
                         Environment.NewLine +
                         string.Format(@Properties.Resources.EnterContainerPSSessionFormatForTrustedHostsSuggestion,
@@ -399,9 +393,9 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
 
         private string GetPsOperatingSystem (PSCmdlet cmdlet)
         {
-            string psOperatingSystem = "none";
+            string psOperatingSystem = "windows";
 
-            psOperatingSystem = ExecuteScriptAndGetVariable(cmdlet, "${0} = $PSVersionTable.OS", "none");
+            psOperatingSystem = ExecuteScriptAndGetVariable(cmdlet, "${0} = $PSVersionTable.OS", "windows");
 
             return psOperatingSystem;
         }
