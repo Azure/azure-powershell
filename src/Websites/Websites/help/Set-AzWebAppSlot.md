@@ -50,7 +50,7 @@ The **Set-AzWebApp** cmdlet sets an Azure Web App Slot.
 PS C:\> Set-AzWebAppSlot -ResourceGroupName "Default-Web-WestUS" -Name "ContosoWebApp" -Slot "Slot001" -AppServicePlan "ContosoPlan"
 ```
 
-This command changes the appservice plan associated with the Slot001, on the Webapp ContosoWebApp associated with the resource group Default-Web-WestUS. Use the link to learm more about changing the appservice plan and constraints associated with it.
+This command changes the appservice plan associated with the Slot001, on the Webapp ContosoWebApp associated with the resource group Default-Web-WestUS. Use the link to learn more about changing the appservice plan and constraints associated with it.
 https://docs.microsoft.com/en-us/azure/app-service/app-service-plan-manage#move-an-app-to-another-app-service-plan
 
 ### Example 2
