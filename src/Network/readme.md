@@ -1339,4 +1339,82 @@ directive:
       parameter-name: ^(.*)VIP(.*)$
     set:
       parameter-name: $1Vip$2
+
+# More fixes
+  - where:
+      verb: New
+      subject: NetworkWatcherPacketCapture
+      parameter-name: Target
+    set:
+      parameter-name: TargetResourceId
+      alias: TargetVirtualMachineId
+  - where:
+      verb: New
+      subject: NetworkWatcherPacketCapture
+      parameter-name: StorageLocationFilePath
+    set:
+      parameter-name: StorageFilePath
+      alias: LocalFilePath
+  - where:
+      verb: New
+      subject: NetworkWatcherPacketCapture
+      parameter-name: StorageLocationStorageId
+    set:
+      parameter-name: StorageAccountId
+  - where:
+      verb: New
+      subject: NetworkWatcherPacketCapture
+      parameter-name: StorageLocationStoragePath
+    set:
+      parameter-name: StoragePathUri
+      alias: StoragePath
+  - where:
+      verb: New
+      subject: PublicIPAddress
+      parameter-name: ^PublicIP(.*)
+    set:
+      parameter-name: $1
+  - where:
+      verb: New
+      subject: PublicIPAddress
+      parameter-name: AddressVersion
+    set:
+      parameter-name: IpAddressVersion
+  - where:
+      verb: New
+      subject: PublicIPAddress
+      parameter-name: DdosSettingProtectionCoverage
+    set:
+      parameter-name: DdosProtectionCoverage
+  - where:
+      verb: New
+      subject: PublicIPAddress
+      parameter-name: ^DnsSetting(.*)
+    set:
+      parameter-name: $1
+  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
+      verb: New
+      subject: PublicIPAddress
+      parameter-name: ResourceGroupName
+    set:
+      alias: PublicIpPrefix
+  - where:
+      verb: New
+      subject: VirtualHub
+      parameter-name: RouteTableRoute
+    set:
+      parameter-name: Route
+      alias: RouteTable
+  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
+      verb: New
+      subject: VirtualHub
+      parameter-name: ResourceGroupName
+    set:
+      alias: VirtualWan
+  - where:
+      verb: New
+      subject: VirtualHub
+      parameter-name: VnetConnection
+    set:
+      alias: HubVnetConnection
 ```
