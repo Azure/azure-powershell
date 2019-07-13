@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
                     // Satisfy case in which user uses the old regex property in input
                     return new[] {new RegexDelimiter {MatchIndex = 0, Pattern = (string) reader.Value}};
                 case JsonToken.Null:
-                    return new[] {new RegexDelimiter {MatchIndex = 0, Pattern = null}};
+                    return null;
                 default:
                     throw new JsonSerializationException();
             }
