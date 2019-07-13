@@ -225,12 +225,9 @@ namespace Microsoft.Azure.Commands.Batch.Utils
         /// </summary>
         internal static void PoolInformationSyncCollections(PSPoolInformation poolInfo)
         {
-            if (poolInfo != null)
+            if (poolInfo != null && poolInfo.AutoPoolSpecification != null)
             {
-                if (poolInfo.AutoPoolSpecification != null)
-                {
-                    AutoPoolSpecificationSyncCollections(poolInfo.AutoPoolSpecification);
-                }
+                AutoPoolSpecificationSyncCollections(poolInfo.AutoPoolSpecification);
             }
         }
 
@@ -239,12 +236,9 @@ namespace Microsoft.Azure.Commands.Batch.Utils
         /// </summary>
         internal static void AutoPoolSpecificationSyncCollections(PSAutoPoolSpecification spec)
         {
-            if (spec != null)
+            if (spec != null && spec.PoolSpecification != null)
             {
-                if (spec.PoolSpecification != null)
-                {
-                    PoolSpecificationSyncCollections(spec.PoolSpecification);
-                }
+                PoolSpecificationSyncCollections(spec.PoolSpecification);
             }
         }
 
@@ -418,8 +412,8 @@ namespace Microsoft.Azure.Commands.Batch.Utils
                     exitConditions.ExitCodeRanges,
                     (e) =>
                     {
-                            ExitCodeRangeMapping exitCodeRangeMapping = new ExitCodeRangeMapping(e.Start, e.End, e.omObject.ExitOptions);
-                            return exitCodeRangeMapping;
+                        ExitCodeRangeMapping exitCodeRangeMapping = new ExitCodeRangeMapping(e.Start, e.End, e.omObject.ExitOptions);
+                        return exitCodeRangeMapping;
                     });
                 exitConditions.omObject.ExitCodes = CreateSyncedList(exitConditions.ExitCodes,
                     (e) =>

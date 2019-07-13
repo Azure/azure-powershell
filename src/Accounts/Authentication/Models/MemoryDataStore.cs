@@ -214,12 +214,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             HashSet<string> files = new HashSet<string>();
             foreach (var key in VirtualStore.Keys.ToArray())
             {
-                if (key.StartsWith(sourceDirName) && VirtualStore[key] != FolderKey)
+                if (key.StartsWith(sourceDirName) && VirtualStore[key] != FolderKey && !files.Contains(key))
                 {
-                    if (!files.Contains(key))
-                    {
-                        files.Add(key);
-                    }
+
+                    files.Add(key);
+
                 }
             }
             return files.ToArray();
@@ -230,12 +229,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             HashSet<string> files = new HashSet<string>();
             foreach (var key in VirtualStore.Keys.ToArray())
             {
-                if (key.StartsWith(startDirectory) && VirtualStore[key] != FolderKey && Regex.IsMatch(key, WildcardToRegex(filePattern), RegexOptions.IgnoreCase))
+                if (key.StartsWith(startDirectory) && VirtualStore[key] != FolderKey && Regex.IsMatch(key, WildcardToRegex(filePattern), RegexOptions.IgnoreCase) && !files.Contains(key))
                 {
-                    if (!files.Contains(key))
-                    {
-                        files.Add(key);
-                    }
+                    files.Add(key);
                 }
             }
             return files.ToArray();

@@ -21,7 +21,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.AnalysisServices
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AnalysisServicesServer"),OutputType(typeof(AzureAnalysisServicesServer))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AnalysisServicesServer"), OutputType(typeof(AzureAnalysisServicesServer))]
     [Alias("Get-" + ResourceManager.Common.AzureRMConstants.AzurePrefix + "As")]
     public class GetAzureAnalysisServicesServer : AnalysisServicesCmdletBase
     {
@@ -39,17 +39,17 @@ namespace Microsoft.Azure.Commands.AnalysisServices
 
         public override void ExecuteCmdlet()
         {
-            if (!string.IsNullOrEmpty(Name))
-            {
-                // Get for single server
-                var server = AnalysisServicesClient.GetServer(ResourceGroupName, Name);
-                WriteObject(AzureAnalysisServicesServer.FromAnalysisServicesServer(server));
-            }
-            else
+            if (string.IsNullOrEmpty(Name))
             {
                 // List all servers in given resource group if avaliable otherwise all servers in the subscription
                 var list = AnalysisServicesClient.ListServers(ResourceGroupName);
                 WriteObject(AzureAnalysisServicesServer.FromAnalysisServicesServerCollection(list), true);
+            }
+            else
+            {
+                // Get for single server
+                var server = AnalysisServicesClient.GetServer(ResourceGroupName, Name);
+                WriteObject(AzureAnalysisServicesServer.FromAnalysisServicesServer(server));
             }
         }
     }

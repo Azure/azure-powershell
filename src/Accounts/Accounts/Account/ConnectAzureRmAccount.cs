@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Profile
     /// <summary>
     /// Cmdlet to log into an environment and download the subscriptions
     /// </summary>
-    [Cmdlet("Connect", AzureRMConstants.AzureRMPrefix + "Account", DefaultParameterSetName = "UserWithSubscriptionId", SupportsShouldProcess=true)]
+    [Cmdlet("Connect", AzureRMConstants.AzureRMPrefix + "Account", DefaultParameterSetName = "UserWithSubscriptionId", SupportsShouldProcess = true)]
     [Alias("Login-AzAccount", "Login-AzureRmAccount", "Add-" + AzureRMConstants.AzureRMPrefix + "Account")]
     [OutputType(typeof(PSAzureProfile))]
     public class ConnectAzureRmAccountCommand : AzureContextModificationCmdlet, IModuleAssemblyInitializer
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Profile
         public const string UserParameterSet = "UserWithSubscriptionId";
         public const string UserWithCredentialParameterSet = "UserWithCredential";
         public const string ServicePrincipalParameterSet = "ServicePrincipalWithSubscriptionId";
-        public const string ServicePrincipalCertificateParameterSet= "ServicePrincipalCertificateWithSubscriptionId";
+        public const string ServicePrincipalCertificateParameterSet = "ServicePrincipalCertificateWithSubscriptionId";
         public const string AccessTokenParameterSet = "AccessTokenWithSubscriptionId";
         public const string ManagedServiceParameterSet = "ManagedServiceLogin";
         public const string MSIEndpointVariable = "MSI_ENDPOINT";
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.Profile
         [ValidateNotNullOrEmpty]
         public string AccountId { get; set; }
 
-        [Parameter(ParameterSetName = ManagedServiceParameterSet, Mandatory =true, HelpMessage = "Login using managed service identity in the current environment.")]
+        [Parameter(ParameterSetName = ManagedServiceParameterSet, Mandatory = true, HelpMessage = "Login using managed service identity in the current environment.")]
         [Alias("MSI", "ManagedService")]
         public SwitchParameter Identity { get; set; }
 
@@ -241,8 +241,8 @@ namespace Microsoft.Azure.Commands.Profile
                         ? builder.Uri.ToString()
                         : envUri;
 
-                    if (!this.IsBound(nameof(ManagedServiceHostName)) && !string.IsNullOrWhiteSpace(envUri) 
-                        && !this.IsBound(nameof(ManagedServiceSecret)) && !string.IsNullOrWhiteSpace(envSecret))
+                    if (!(this.IsBound(nameof(ManagedServiceHostName)) || string.IsNullOrWhiteSpace(envUri)
+                       || this.IsBound(nameof(ManagedServiceSecret)) || string.IsNullOrWhiteSpace(envSecret)))
                     {
                         // set flag indicating this is AppService Managed Identity ad hoc mode
                         azureAccount.SetProperty(AuthenticationFactory.AppServiceManagedIdentityFlag, "the value not used");
@@ -369,33 +369,33 @@ namespace Microsoft.Azure.Commands.Profile
             try
             {
 #endif
-                AzureSessionInitializer.InitializeAzureSession();
+            AzureSessionInitializer.InitializeAzureSession();
 #if DEBUG
                 if (!TestMockSupport.RunningMocked)
                 {
 #endif
-                    AzureSession.Instance.DataStore = new DiskDataStore();
+            AzureSession.Instance.DataStore = new DiskDataStore();
 #if DEBUG
                 }
 #endif
 
-                var autoSaveEnabled = AzureSession.Instance.ARMContextSaveMode == ContextSaveMode.CurrentUser;
-                var autosaveVariable = System.Environment.GetEnvironmentVariable(AzureProfileConstants.AzureAutosaveVariable);
-                bool localAutosave;
-                if(bool.TryParse(autosaveVariable, out localAutosave))
-                {
-                    autoSaveEnabled = localAutosave;
-                }
+            var autoSaveEnabled = AzureSession.Instance.ARMContextSaveMode == ContextSaveMode.CurrentUser;
+            var autosaveVariable = System.Environment.GetEnvironmentVariable(AzureProfileConstants.AzureAutosaveVariable);
+            bool localAutosave;
+            if (bool.TryParse(autosaveVariable, out localAutosave))
+            {
+                autoSaveEnabled = localAutosave;
+            }
 
-                InitializeProfileProvider(autoSaveEnabled);
-                IServicePrincipalKeyStore keyStore =
-// TODO: Remove IfDef
+            InitializeProfileProvider(autoSaveEnabled);
+            IServicePrincipalKeyStore keyStore =
+                    // TODO: Remove IfDef
 #if NETSTANDARD
                     new AzureRmServicePrincipalKeyStore(AzureRmProfileProvider.Instance.Profile);
 #else
                     new AzureRmServicePrincipalKeyStore();
 #endif
-                AzureSession.Instance.RegisterComponent(ServicePrincipalKeyStore.Name, () => keyStore);
+            AzureSession.Instance.RegisterComponent(ServicePrincipalKeyStore.Name, () => keyStore);
 #if DEBUG
             }
             catch (Exception) when (TestMockSupport.RunningMocked)

@@ -113,18 +113,16 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Cmdle
         protected override IEnumerable<AzureSqlServerDisasterRecoveryConfigurationModel> PersistChanges(
             IEnumerable<AzureSqlServerDisasterRecoveryConfigurationModel> entity)
         {
-            switch (ParameterSetName)
+            if (ParameterSetName == ByFailoverParams)
             {
-                case ByFailoverParams:
-                    ModelAdapter.FailoverServerDisasterRecoveryConfiguration(this.ResourceGroupName,
-                        this.ServerName, entity.First(), AllowDataLoss.IsPresent);
-                    break;
-                default:
-                    // Warning user that no options were provided so no action can be taken.
-                    WriteWarning(Resources.SetDisasterRecoveryConfigurationNoOptionProvided);
-                    break;
+                ModelAdapter.FailoverServerDisasterRecoveryConfiguration(this.ResourceGroupName,
+                    this.ServerName, entity.First(), AllowDataLoss.IsPresent);
             }
-
+            else
+            {
+                // Warning user that no options were provided so no action can be taken.
+                WriteWarning(Resources.SetDisasterRecoveryConfigurationNoOptionProvided);
+            }
             return entity;
         }
     }
