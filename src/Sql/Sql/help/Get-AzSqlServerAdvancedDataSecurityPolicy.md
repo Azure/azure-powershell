@@ -24,7 +24,7 @@ The **Get-AzSqlServerAdvancedDataSecurityPolicy** cmdlet retrieves the Advanced 
 
 ### Example 1 - Gets server Advanced Data Security
 ```powershell
-PS C:\>  Get-AzSqlServerAdvancedDataSecuritynPolicy `
+PS C:\>  Get-AzSqlServerAdvancedDataSecurityPolicy `
             -ResourceGroupName "ResourceGroup01" `
             -ServerName "Server01" 
 
