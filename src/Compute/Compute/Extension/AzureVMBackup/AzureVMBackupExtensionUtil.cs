@@ -284,23 +284,21 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
             Dictionary<string, string> snapshotQuery = new Dictionary<string, string>();
             snapshotQuery.Add(backupExtensionMetadataName, snapshotTag);
             snapshotQuery.Add(backupExtensionIdentityMetadataName, taskId);
-            int i = 0;
-            for (; i < loopingTimes; i++)
+            for (int i = 0; i < loopingTimes; i++)
             {
                 List<CloudPageBlob> snapshotsFound = this.FindSnapshot(virtualMachineExtensionBaseCmdlet.DefaultProfile.DefaultContext, blobSASUris.pageBlobUri, blobSASUris.storageCredentialsFactory, snapshotQuery);
                 if (snapshotsFound.Count == vmPageBlobUris.Count)
                 {
-                    break;
+                    return;
                 }
                 else
                 {
                     Thread.Sleep(timePeriod);
                 }
             }
-            if (i == loopingTimes)
-            {
-                throw new AzureVMBackupException(AzureVMBackupErrorCodes.TimeOut, "snapshot not created, or not found in time.");
-            }
+            //Exceeded number of looping times, throw an exception
+            throw new AzureVMBackupException(AzureVMBackupErrorCodes.TimeOut, "snapshot not created, or not found in time.");
+
         }
     }
 }

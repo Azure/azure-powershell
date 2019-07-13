@@ -300,7 +300,7 @@ namespace Common.Authentication.Test
             finally
             {
                 job.StateChanged -= this.HandleStateChange;
-               foreach (var message in job.Debug)
+                foreach (var message in job.Debug)
                 {
                     xunitLogger.Information(message?.Message);
                 }
@@ -325,7 +325,7 @@ namespace Common.Authentication.Test
             public string Property { get { return "PropertyValue"; } }
         }
 
-        [Cmdlet(VerbsDiagnostic.Test, "AzureJob",ConfirmImpact =ConfirmImpact.High)]
+        [Cmdlet(VerbsDiagnostic.Test, "AzureJob", ConfirmImpact = ConfirmImpact.High)]
         public class AzureStreamTestCmdlet : AzurePSCmdlet
         {
             public IList<ErrorRecord> Error { get; set; } = new List<ErrorRecord>();
@@ -362,17 +362,14 @@ namespace Common.Authentication.Test
 
             public override void ExecuteCmdlet()
             {
-                if (!CallShouldProcess || ShouldProcess("target", "action"))
+                if ((!CallShouldProcess || ShouldProcess("target", "action")) && (!CallShouldContinue || ShouldContinue("query", "caption")))
                 {
-                    if (!CallShouldContinue || ShouldContinue("query", "caption"))
-                    {
-                        WriteValues(Verbose, WriteVerbose);
-                        WriteValues(Warning, WriteWarning);
-                        WriteValues(Progress, WriteProgress);
-                        WriteValues(Debug, WriteDebug);
-                        WriteValues(Output, WriteObject);
-                        WriteValues(Error, WriteError);
-                    }
+                    WriteValues(Verbose, WriteVerbose);
+                    WriteValues(Warning, WriteWarning);
+                    WriteValues(Progress, WriteProgress);
+                    WriteValues(Debug, WriteDebug);
+                    WriteValues(Output, WriteObject);
+                    WriteValues(Error, WriteError);
                 }
 
                 if (Wait)
