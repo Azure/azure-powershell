@@ -55,7 +55,7 @@ This command creates a sync group for an Azure SQL Database. "schema.json" is a 
 ## PARAMETERS
 
 ### -ConflictResolutionPolicy
-The policy of resolving confliction between hub and member database in the sync group.
+The policy of resolving conflicts between hub and member database in the sync group.
 
 ```yaml
 Type: System.String
