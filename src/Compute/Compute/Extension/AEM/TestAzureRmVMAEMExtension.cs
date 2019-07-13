@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Compute
                 Mandatory = false,
                 Position = 3,
                 ValueFromPipelineByPropertyName = false,
-                HelpMessage = "Time that should be waited for the Strorage Metrics or Diagnostics data to be available in minutes. Default is 15 minutes")]
+                HelpMessage = "Time that should be waited for the Storage Metrics or Diagnostics data to be available in minutes. Default is 15 minutes")]
         public int WaitTimeInMinutes { get; set; }
 
         [Parameter(
