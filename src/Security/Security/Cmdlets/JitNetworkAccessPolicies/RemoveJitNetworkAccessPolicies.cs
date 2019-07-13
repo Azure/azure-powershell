@@ -62,7 +62,6 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.JitNetworkAccessPolicies
                     break;
                 case ParameterSetNames.ResourceId:
                     location = AzureIdUtilities.GetResourceLocation(ResourceId); ;
-
                     name = AzureIdUtilities.GetResourceName(ResourceId);
                     rg = AzureIdUtilities.GetResourceGroup(ResourceId);
                     break;
