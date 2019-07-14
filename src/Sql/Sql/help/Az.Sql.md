@@ -119,6 +119,9 @@ Gets a geo-redundant backup of a database.
 ### [Get-AzSqlDatabaseGeoBackupPolicy](Get-AzSqlDatabaseGeoBackupPolicy.md)
 Gets a database geo backup policy.
 
+### [Get-AzSqlDatabaseInstanceFailoverGroup](Get-AzSqlDatabaseInstanceFailoverGroup.md)
+Gets or lists Azure SQL Database Instance Failover Groups.
+
 ### [Get-AzSqlDatabaseImportExportStatus](Get-AzSqlDatabaseImportExportStatus.md)
 Gets the details of an import or export of an Azure SQL Database.
 
@@ -324,6 +327,9 @@ Exports an Azure SQL Database as a .bacpac file to a storage account.
 ### [New-AzSqlDatabaseFailoverGroup](New-AzSqlDatabaseFailoverGroup.md)
 This command creates a new Azure SQL Database Failover Group.
 
+### [New-AzSqlDatabaseInstanceFailoverGroup](New-AzSqlDatabaseInstanceFailoverGroup.md)
+This command creates a new Azure SQL Database Instance Failover Group.
+
 ### [New-AzSqlDatabaseImport](New-AzSqlDatabaseImport.md)
 Imports a .bacpac file and create a new database on the server.
 
@@ -383,6 +389,9 @@ Removes a data masking rule from a database.
 
 ### [Remove-AzSqlDatabaseFailoverGroup](Remove-AzSqlDatabaseFailoverGroup.md)
 Removes an Azure SQL Database Failover Group.
+
+### [Remove-AzSqlDatabaseInstanceFailoverGroup](Remove-AzSqlDatabaseInstanceFailoverGroup.md)
+Removes an Azure SQL Database Instance Failover Group.
 
 ### [Remove-AzSqlDatabaseFromFailoverGroup](Remove-AzSqlDatabaseFromFailoverGroup.md)
 Removes one or more databases from an Azure SQL Database Failover Group.
@@ -489,6 +498,9 @@ Sets the properties of a data masking rule for a database.
 ### [Set-AzSqlDatabaseFailoverGroup](Set-AzSqlDatabaseFailoverGroup.md)
 Modifies the configuration of an Azure SQL Database Failover Group.
 
+### [Set-AzSqlDatabaseInstanceFailoverGroup](Set-AzSqlDatabaseInstanceFailoverGroup.md)
+Modifies the configuration of an Azure SQL Database Instance Failover Group.
+
 ### [Set-AzSqlDatabaseGeoBackupPolicy](Set-AzSqlDatabaseGeoBackupPolicy.md)
 Sets a database geo backup policy.
 
@@ -593,6 +605,9 @@ Suspends a SQL Data Warehouse database.
 
 ### [Switch-AzSqlDatabaseFailoverGroup](Switch-AzSqlDatabaseFailoverGroup.md)
 Executes a failover of an Azure SQL Database Failover Group.
+
+### [Switch-AzSqlDatabaseInstanceFailoverGroup](Switch-AzSqlDatabaseInstanceFailoverGroup.md)
+Executes a failover of an Azure SQL Database Instance Failover Group.
 
 ### [Update-AzSqlDatabaseAdvancedThreatProtectionSettings](Update-AzSqlDatabaseAdvancedThreatProtectionSettings.md)
 Sets a advanced threat protection settings on a database.
