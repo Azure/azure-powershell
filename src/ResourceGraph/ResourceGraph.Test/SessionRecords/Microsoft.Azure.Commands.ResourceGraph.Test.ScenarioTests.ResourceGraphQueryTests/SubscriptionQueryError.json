@@ -21,41 +21,53 @@
       },
       "ResponseBody": "{\"value\": [{\"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000\", \"subscriptionId\": \"00000000-0000-0000-0000-000000000000\", \"displayName\": \"Test Subscription\", \"state\": \"Enabled\", \"authorizationSource\": \"RoleBased\"}]}",
       "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-user-quota-resets-after": [
+          "00:00:05"
+        ],
+        "x-ms-user-quota-remaining": [
+          "13"
+        ],
+        "x-ms-ratelimit-remaining-tenant-resource-requests": [
+          "13"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "e27e652e-d30b-4e49-bbd3-a58a3f430d42"
+        ],
+        "x-ms-correlation-request-id": [
+          "e27e652e-d30b-4e49-bbd3-a58a3f430d42"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20190710T225645Z:e27e652e-d30b-4e49-bbd3-a58a3f430d42"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 10 Jul 2019 22:56:45 GMT"
+        ],
         "Content-Length": [
-          "987"
+          "4542"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-tenant-reads": [
-          "11999"
-        ],
-        "x-ms-request-id": [
-          "dc5b4ea5-4059-44fa-9d49-5c48f46224f4"
-        ],
-        "x-ms-correlation-request-id": [
-          "dc5b4ea5-4059-44fa-9d49-5c48f46224f4"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20180926T232942Z:dc5b4ea5-4059-44fa-9d49-5c48f46224f4"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 26 Sep 2018 23:29:41 GMT"
         ]
       },
       "StatusCode": 200

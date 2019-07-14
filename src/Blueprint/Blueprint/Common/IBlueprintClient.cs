@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
 
         PSBlueprint CreateOrUpdateBlueprint(string scope, string name, BlueprintModel bp);
 
-        PSPublishedBlueprint CreatePublishedBlueprint(string scope, string name, string version);
+        PSPublishedBlueprint CreatePublishedBlueprint(string scope, string name, string version, PublishedBlueprint publishedBp);
 
         PSArtifact CreateArtifact(string scope, string blueprintName, string artifactName, Artifact artifact);
 

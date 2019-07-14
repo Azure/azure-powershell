@@ -9,6 +9,7 @@ schema: 2.0.0
 # Get-AzRecoveryServicesBackupContainer
 
 ## SYNOPSIS
+
 Gets Backup containers.
 
 ## SYNTAX
@@ -20,32 +21,39 @@ Get-AzRecoveryServicesBackupContainer [-ContainerType] <ContainerType> [[-Backup
 ```
 
 ## DESCRIPTION
+
 The **Get-AzRecoveryServicesBackupContainer** cmdlet gets a backup container.
 A Backup container encapsulates data sources that are modelled as backup items.
-Set the vault context by using the Set-AzRecoveryServicesVaultContext cmdlet before you use the current cmdlet.
+Set the vault context by using the -VaultId parameter.
 
 ## EXAMPLES
 
 ### Example 1: Get a specific container
-```
-PS C:\>Get-AzRecoveryServicesContainer -ContainerType "AzureVM" -Status "Registered" -Name "V2VM";
+
+```powershell
+PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+PS C:\> Get-AzRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered" -Name "V2VM" -VaultId $vault.ID
 ```
 
 This command gets the container named V2VM of type AzureVM.
 
 ### Example 2: Get all containers of a specific type
-```
-PS C:\>Get-AzRecoveryServicesBackupContainer -ContainerType Windows -BackupManagementType MARS
+
+```powershell
+PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+PS C:\> Get-AzRecoveryServicesBackupContainer -ContainerType Windows -BackupManagementType MARS -VaultId $vault.ID
 ```
 
 This command gets all Windows containers that are protected by Azure Backup agent.
-The *BackupManagementType* parameter is only required for Windows containers.
+The **BackupManagementType** parameter is only required for Windows containers.
 
 ## PARAMETERS
 
 ### -BackupManagementType
+
 Specifies the backup management type.
 The acceptable values for this parameter are:
+
 - AzureVM
 - MARS
 - AzureSQL
@@ -67,18 +75,21 @@ Accept wildcard characters: False
 ```
 
 ### -ContainerType
+
 Specifies the backup container type.
 The acceptable values for this parameter are:
-- AzureVM 
+
+- AzureVM
 - Windows
 - AzureSQL
 - AzureStorage
+- AzureVMAppContainer
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType
 Parameter Sets: (All)
 Aliases:
-Accepted values: AzureVM, Windows, AzureSQL, AzureStorage, AzureWorkload
+Accepted values: AzureVM, Windows, AzureSQL, AzureStorage, AzureVMAppContainer
 
 Required: True
 Position: 1
@@ -88,6 +99,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
+
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
@@ -103,6 +115,7 @@ Accept wildcard characters: False
 ```
 
 ### -FriendlyName
+
 Specifies the friendly name of the container to get.
 
 ```yaml
@@ -118,6 +131,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
+
 Specifies the name of the resource group.
 This parameter is for Azure virtual machines only.
 
@@ -134,8 +148,10 @@ Accept wildcard characters: False
 ```
 
 ### -Status
+
 Specifies the container registration status.
 The acceptable values for this parameter are:
+
 - Registered
 
 ```yaml
@@ -152,6 +168,7 @@ Accept wildcard characters: False
 ```
 
 ### -VaultId
+
 ARM ID of the Recovery Services Vault.
 
 ```yaml
@@ -166,8 +183,9 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+### -CommonParameters
+
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -186,4 +204,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzRecoveryServicesBackupManagementServer](./Get-AzRecoveryServicesBackupManagementServer.md)
 
 [Unregister-AzRecoveryServicesBackupContainer](./Unregister-AzRecoveryServicesBackupContainer.md)
-

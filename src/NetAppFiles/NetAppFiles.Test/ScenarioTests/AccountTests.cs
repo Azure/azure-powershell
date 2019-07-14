@@ -36,6 +36,13 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAccountActiveDirectory()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AccountActiveDirectory");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAccountPipelines()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-AccountPipelines");

@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             foreach (var key in parametersHashtable.Keys)
             {
                 var kvp = parametersHashtable[key];
-                var value = kvp["value"].ToString();
+                var value = kvp["value"];
                 var paramValue = new ParameterValue(value);
                 parameters.Add(key, paramValue);
             }

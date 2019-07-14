@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Common
     /// Return runtime services for generated cmdlets
     /// </summary>
     [OutputType(typeof(VTable))]
-    [Cmdlet(VerbsLifecycle.Register, @"AzModule", SupportsShouldProcess =true)]
+    [Cmdlet(VerbsLifecycle.Register, @"AzModule", SupportsShouldProcess = true)]
     public class RegisterAzModule : PSCmdlet
     {
         protected override void ProcessRecord()
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Common
                     ArgumentCompleter = ContextAdapter.Instance.CompleteArgument,
 
                     // Gets the selected Azure profile from the context
-                    ProfileName = ContextAdapter.Instance.GetSelectedProfile()
+                    ProfileName = ContextAdapter.Instance.SelectedProfile
                 });
             }
             catch (Exception exception)

@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix typo in resource string 
+
+## Version 1.3.0
 * Fixed Set-AzAutomationConnectionFieldValue cmdlet bug to handle string value.
 
 ## Version 1.2.2

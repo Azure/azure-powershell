@@ -44,6 +44,9 @@ Creates a new Event Hub.
 ### [New-AzEventHubAuthorizationRule](New-AzEventHubAuthorizationRule.md)
 Creates a new Event Hubs authorization rule for namespace or eventhub.
 
+### [New-AzEventHubAuthorizationRuleSASToken](New-AzEventHubAuthorizationRuleSASToken.md)
+Generates a SAS tolen for Azure eventhub authorization rule of namespace/eventhub. 
+
 ### [New-AzEventHubConsumerGroup](New-AzEventHubConsumerGroup.md)
 Creates a new consumer group for the specified Event Hub.
 
