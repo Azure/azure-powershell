@@ -76,7 +76,6 @@ namespace Microsoft.Azure.Commands.DataShare.Trigger
             HelpMessage = "Azure data share trigger name",
             ParameterSetName = ParameterSetNames.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
-        [ResourceNameCompleter(ResourceTypes.Trigger, "ResourceGroupName", "AccountName", "ShareSubscriptionName")]
         public string Name { get; set; }
 
 
