@@ -73,22 +73,15 @@ namespace Microsoft.Azure.Commands.DataShare.Account
 
         public override void ExecuteCmdlet()
         {
-            this.ConfirmAction(
-                string.Format(Resources.ResourceCreateConfirmation, this.Name),
-                this.Name,
-                this.NewAccount);
-        }
-
-        private void NewAccount()
-        {
-            if (this.ShouldProcess(this.Name, "Create"))
+            if (this.ShouldProcess(this.Name, $"Creating data share account '{this.Name}'."))
             {
                 Account dataShareAccount = this.DataShareManagementClient.Accounts.Create(
                     this.ResourceGroupName,
                     this.Name,
                     new Account()
                     {
-                        Location = this.Location, Tags = this.Tag?.ToDictionaryTags(),
+                        Location = this.Location,
+                        Tags = this.Tag?.ToDictionaryTags(),
                         Identity = new Identity
                         {
                             Type = "SystemAssigned"

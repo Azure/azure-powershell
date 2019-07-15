@@ -83,6 +83,7 @@ namespace Microsoft.Azure.Commands.DataShare.Invitation
             HelpMessage = "Azure data share invitation name",
             ParameterSetName = ParameterSetNames.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter(ResourceTypes.Invitation, "ResourceGroupName", "AccountName","ShareName")]
         public string Name { get; set; }
 
         /// <summary>

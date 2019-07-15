@@ -229,7 +229,7 @@ namespace Microsoft.Azure.Commands.DataShare.DataSet
                 ParameterSetNames.BlobDataSetParameterSet,
                 StringComparison.OrdinalIgnoreCase))
             {
-                if (this.ShouldProcess(this.Name, "Create"))
+                if (this.ShouldProcess(this.Name, $"Creating data set '{this.Name}'"))
                 {
                     if (this.FilePath != null)
                     {
@@ -297,7 +297,7 @@ namespace Microsoft.Azure.Commands.DataShare.DataSet
                 StringComparison.OrdinalIgnoreCase))
             {
 
-                if (this.ShouldProcess(this.Name, "Create"))
+                if (this.ShouldProcess(this.Name, $"Creating data set '{this.Name}'"))
                 {
                     if (this.FilePath != null)
                     {
@@ -365,7 +365,7 @@ namespace Microsoft.Azure.Commands.DataShare.DataSet
                 StringComparison.OrdinalIgnoreCase))
             {
                 storageAccountName = parsedStorageResourceId.GetAccountName();
-                if (this.ShouldProcess(this.Name, "Create"))
+                if (this.ShouldProcess(this.Name, $"Creating data set '{this.Name}'"))
                 {
                     if (this.FileName != null)
                     {
