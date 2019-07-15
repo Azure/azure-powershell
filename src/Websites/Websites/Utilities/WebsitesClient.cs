@@ -360,7 +360,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
 
                 if (trustedHostsScriptResult.Split(',').Where(h=>expression.IsMatch(h)).Count() < 1)
                 {
-                    WriteError(string.Format(Properties.Resources.EnterContainerPSSessionFormatForTrustedHostsWarning, string.IsNullOrWhiteSpace(trustedHostsScriptResult) ? defaultTrustedHostsScriptResult: trustedHostsScriptResult) + 
+                    WriteWarning(string.Format(Properties.Resources.EnterContainerPSSessionFormatForTrustedHostsWarning, string.IsNullOrWhiteSpace(trustedHostsScriptResult) ? defaultTrustedHostsScriptResult: trustedHostsScriptResult) + 
                         Environment.NewLine +
                         Environment.NewLine +
                         string.Format(@Properties.Resources.EnterContainerPSSessionFormatForTrustedHostsSuggestion,
