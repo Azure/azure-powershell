@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.DataShare.Share
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The share subscription id of the provider share subscription",
-            ParameterSetName = ParameterSetNames.ResourceIdParameterSet)]
+            ParameterSetName = ParameterSetNames.ProviderShareSubscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ShareSubscriptionId { get; set; }
 
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.DataShare.Share
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource id of the share",
-            ParameterSetName = ParameterSetNames.ResourceIdParameterSet)]
+            ParameterSetName = ParameterSetNames.ProviderShareSubscriptionParameterSet)]
         [ResourceIdCompleter(ResourceTypes.Share)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }

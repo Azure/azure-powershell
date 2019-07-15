@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.DataShare.SynchronizationSetting
 
         public override void ExecuteCmdlet()
         {
-            if (this.ShouldProcess(this.Name, "Create"))
+            if (this.ShouldProcess(this.Name, $"Creating share synchronization '{this.Name}'"))
             {
                 var setting = new ScheduledSynchronizationSetting(
                     recurrenceInterval: this.RecurrenceInterval,

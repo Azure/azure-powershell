@@ -82,15 +82,7 @@ namespace Microsoft.Azure.Commands.DataShare.Share
 
         public override void ExecuteCmdlet()
         {
-            this.ConfirmAction(
-                string.Format(Resources.ResourceCreateConfirmation, this.Name),
-                this.Name,
-                this.NewShare);
-        }
-
-        private void NewShare()
-        {
-            if (this.ShouldProcess(this.Name, "Create"))
+            if (this.ShouldProcess(this.Name, $"Creating data share '{this.Name}'"))
             {
                 Share dataShare = this.DataShareManagementClient.Shares.Create(
                     this.ResourceGroupName,
