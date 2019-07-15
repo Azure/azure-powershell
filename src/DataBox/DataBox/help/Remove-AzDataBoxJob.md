@@ -31,7 +31,7 @@ Remove-AzDataBoxJob -InputObject <PSDataBoxJob> [-DefaultProfile <IAzureContextC
 ```
 
 ## DESCRIPTION
-The **Remove-AzDataBoxJob** cmdlet is used to delete a finished databox job from the list od databox jobs.
+The **Remove-AzDataBoxJob** cmdlet is used to delete a finished databox job from the list of databox jobs.
 
 ## EXAMPLES
 
