@@ -79,6 +79,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &apos;{0}&apos; is not a valid Id..
+        /// </summary>
+        internal static string InvalidId {
+            get {
+                return ResourceManager.GetString("InvalidId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;{0}&apos; is not a valid ResourceId..
+        /// </summary>
+        internal static string InvalidResourceId {
+            get {
+                return ResourceManager.GetString("InvalidResourceId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remove action rule.
         /// </summary>
         internal static string RemoveActionRule_Action {

@@ -15,6 +15,7 @@
 using System;
 using Newtonsoft.Json;
 using Microsoft.Azure.Management.AlertsManagement.Models;
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
 namespace Microsoft.Azure.Commands.AlertsManagement.OutputModels
 {
@@ -43,6 +44,21 @@ namespace Microsoft.Azure.Commands.AlertsManagement.OutputModels
             LastModifiedBy = rule.Properties.LastModifiedBy;
             Scope = JsonConvert.SerializeObject(rule.Properties.Scope);
             Conditions = JsonConvert.SerializeObject(rule.Properties.Conditions);
+            ActionRuleType = rule.Properties.GetType().Name;
+
+            switch (ActionRuleType)
+            {
+                case "Suppression":
+                    Suppression suppression = (Suppression)rule.Properties;
+                    SuppressionConfig = new PSSuppressionConfig(suppression.SuppressionConfig);
+                    break;
+                case "ActionGroup":
+                    ActionGroup actionGroup = (ActionGroup)rule.Properties;
+                    ActionGroupId = actionGroup.ActionGroupId;
+                    break;
+                case "Diagnostics":
+                    break;
+            }
         }
 
         public string Id { get; }
@@ -64,5 +80,17 @@ namespace Microsoft.Azure.Commands.AlertsManagement.OutputModels
         public DateTime? LastModifiedAt { get; }
 
         public string LastModifiedBy { get; }
+
+        public string ActionRuleType { get; }
+
+        public string ActionGroupId { get; }
+
+        [Ps1Xml(Label = "RecurrenceType", Target = ViewControl.List, ScriptBlock = "$_.SuppressionConfig.RecurrenceType")]
+        [Ps1Xml(Label = "StartDate", Target = ViewControl.List, ScriptBlock = "$_.SuppressionConfig.StartDate")]
+        [Ps1Xml(Label = "StartTime", Target = ViewControl.List, ScriptBlock = "$_.SuppressionConfig.StartTime")]
+        [Ps1Xml(Label = "EndDate", Target = ViewControl.List, ScriptBlock = "$_.SuppressionConfig.EndDate")]
+        [Ps1Xml(Label = "EndTime", Target = ViewControl.List, ScriptBlock = "$_.SuppressionConfig.EndTime")]
+        [Ps1Xml(Label = "RecurrenceValues", Target = ViewControl.List, ScriptBlock = "$_.SuppressionConfig.RecurrenceValues.ToString()")]
+        public PSSuppressionConfig SuppressionConfig { get; }
     }
 }

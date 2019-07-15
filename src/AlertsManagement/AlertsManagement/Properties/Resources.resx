@@ -123,6 +123,12 @@
   <data name="IncorrectActionRuleType_Exception" xml:space="preserve">
     <value>Incorrect Action Rule Type for given set of parameters. Use '{0}' type for this parameter set.</value>
   </data>
+  <data name="InvalidId" xml:space="preserve">
+    <value>'{0}' is not a valid Id.</value>
+  </data>
+  <data name="InvalidResourceId" xml:space="preserve">
+    <value>'{0}' is not a valid ResourceId.</value>
+  </data>
   <data name="RemoveActionRule_Action" xml:space="preserve">
     <value>Remove action rule</value>
   </data>
