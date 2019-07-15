@@ -39,6 +39,14 @@ namespace Microsoft.Azure.Commands.DataBox.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetCredentialForNewlyCreatedJob()
+        {
+
+            RunPowerShellTest(_logger, "Test-GetCredentialForNewlyCreatedJob");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateDataBoxJob()
         {
 

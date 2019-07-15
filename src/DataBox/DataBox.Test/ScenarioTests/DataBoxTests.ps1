@@ -30,8 +30,41 @@ function Test-GetNonExistingDataBoxJob
 }
 
 <#
+.SYNOPSIS
+Nagative test. Get the credentials of a newly created job. Newly created job doesnot have its credentials generated. 
+NOTE : Use a subscription id having West US location to run the test successfully.
+#>
+function Test-GetCredentialForNewlyCreatedJob
+{	
+    $dfname = Get-DataBoxJobName
+    $rgname = Get-ResourceGroupName
+	$rglocation = 'WestUS'
+    
+    
+    New-AzResourceGroup -Name $rgname -Location $rglocation -Force
+
+	$storageaccountname = Get-StorageAccountName
+	$storageaccount = New-AzStorageAccount -ResourceGroupName $rgname -Name $storageaccountname  -Location $rglocation 
+
+    try
+    {
+        $a = Create-Job $dfname $rgname $storageaccount.Id
+		
+		Assert-ThrowsContains {Get-AzDataBoxCredential -ResourceId $a.Id} "Secrets are not yet generated"
+
+    }
+    finally
+    {
+        Stop-AzDataBoxJob -ResourceGroupName $rgname -Name $dfname -Reason "Random"
+		Remove-AzDataBoxJob -ResourceGroupName $rgname -Name $dfname 
+		Remove-AzStorageAccount -ResourceGroupName $rgname -Name $storageaccountname 
+    }    
+}
+
+<#
 The location is hard coded because the cmdlet needs an address. Without hard coding the location and the 
 address, the cmdlet cannot be run and hence cannot be tested.
+NOTE : Use a subscription id having West US location to run the test successfully.
 #>
 function Create-Job {
 	$dfname = $args[0]
@@ -44,12 +77,13 @@ function Create-Job {
 .SYNOPSIS
 Create a databox job and then do a Get to compare the result are identical.
 The databox job will be cancelled and removed when the test finishes.
+NOTE : Use a subscription id having West US location to run the test successfully.
 #>
 function Test-CreateDataBoxJob
 {
     $dfname = Get-DataBoxJobName
     $rgname = Get-ResourceGroupName
-	$rglocation = Get-ProviderLocation ResourceManagement
+	$rglocation = 'WestUS'
     
     
     New-AzResourceGroup -Name $rgname -Location $rglocation -Force
@@ -77,12 +111,13 @@ function Test-CreateDataBoxJob
 Create an already existing databox job and check for the exception.
 Creates a new job. Again tries to create it and gets an exception.
 Finally removes the job.
+NOTE : Use a subscription id having West US location to run the test successfully.
 #>
 function Test-CreateAlreadyExistingDataBoxJob
 {
     $dfname = Get-DataBoxJobName
     $rgname = Get-ResourceGroupName
-	$rglocation = Get-ProviderLocation ResourceManagement
+	$rglocation = 'WestUS'
     
     New-AzResourceGroup -Name $rgname -Location $rglocation -Force
 
