@@ -706,21 +706,28 @@ function Test-WindowsContainerCanIssueWebAppPSSession
 		}
 		else
 		{
-			# Four possible messages in Playback mode..
+			# Three possible error messages in Playback mode.
 			$messageDNS = "Connecting to remote server $wname.azurewebsites.net failed with the following error message : The WinRM client cannot process the request because the server name cannot be resolved"
 			$messageUnavailable = "Connecting to remote server $wname.azurewebsites.net failed with the following error message : The WinRM client sent a request to an HTTP server and got a response saying the requested HTTP URL was not available."
-			$messageWSMANNotConfigured = "Your current WSMAN Trusted Hosts settings will prevent you from connecting to your Container Web App";
 			$messagePsVersionNotSupported = "Remote Powershell sessions into Windows Containers on App Service from this version of PowerShell is not supported.";
+
+			# One possible warning message in Playback mode.
+			$messageWSMANNotConfigured = "Your current WSMAN Trusted Hosts settings will prevent you from connecting to your Container Web App";
 
 			$resultError = ($Error[0] -like "*$($messageDNS)*") -or 
 				($Error[0] -like "*$($messageUnavailable)*") -or 
 				($Error[0] -like "*$($messageWSMANNotConfigured)*") -or
 				($Error[0] -like "*$($messagePsVersionNotSupported)*")
 			
-			Write-Debug "Expected Message 1: $messageDNS"
-			Write-Debug "Expected Message 2: $messageUnavailable"
-			Write-Debug "Expected Message 3: $messageWSMANNotConfigured"
-			Write-Debug "Expected Message 4: $messagePsVersionNotSupported"
+			$resultWarning = ($wv[0] -like "*$($messageWSMANNotConfigured)*")
+
+			Write-Debug "Expected error message 1: $messageDNS"
+			Write-Debug "Expected error message 2: $messageUnavailable"
+			Write-Debug "Expected error message 3: $messagePsVersionNotSupported"
+			
+			Write-Debug "Expected Warning message 1: $messageWSMANNotConfigured"
+
+
 		}
 		
 		Write-Debug "Error: $Error[0]"
@@ -737,12 +744,12 @@ function Test-WindowsContainerCanIssueWebAppPSSession
 		}
 
 		
-		If(!$resultError)
+		If(!$resultError -or !$resultWarning)
 		{
 			Write-Output "expected error $($message), actual error $($Error[0])"
 			Write-Output "Warnings: $wv"
 		}
-		Assert-True {$resultError}
+		Assert-True {$resultError -or $resultWarning}
  	}
 	finally
 	{
