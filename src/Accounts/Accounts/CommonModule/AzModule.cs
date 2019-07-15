@@ -19,10 +19,10 @@ using System.Management.Automation;
 using System.Net.Http;
 using System.Collections.Generic;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Commands.Common;
 using System.Linq;
 using System.Collections.Concurrent;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Profile.CommonModule;
 
 namespace Microsoft.Azure.Commands.Common
 {
@@ -36,21 +36,32 @@ namespace Microsoft.Azure.Commands.Common
     /// </summary>
     public class AzModule : IDisposable
     {
+        IEventStore _deferredEvents;
         ICommandRuntime _runtime;
-        IDictionary<string, AzurePSQoSEvent> _telemetryEvents;
-        TelemetryProvider _metricHelper;
+        TelemetryProvider _telemetry;
         AdalLogger _logger;
-        ConcurrentQueue<string> _debugMessages;
-        ConcurrentQueue<string> _warningMessages;
-        public AzModule(ICommandRuntime runtime)
+        internal static readonly string[] ClientHeaders = {"x-ms-client-request-id", "client-request-id", "x-ms-request-id", "request-id" };
+        public AzModule(ICommandRuntime runtime, IEventStore eventHandler)
         {
             _runtime = runtime;
-            _telemetryEvents = new Dictionary<string, AzurePSQoSEvent>(StringComparer.OrdinalIgnoreCase);
-            _warningMessages = new ConcurrentQueue<string>();
-            _debugMessages = new ConcurrentQueue<string>();
-            _logger = new AdalLogger((message) => _debugMessages.CheckAndEnqueue(message));
-            _metricHelper = TelemetryProvider.Create((message) => _warningMessages.CheckAndEnqueue(message), (message) => _debugMessages.CheckAndEnqueue(message));
+            _deferredEvents = eventHandler;
+            _logger = new AdalLogger(_deferredEvents.GetDebugLogger());
+            _telemetry = TelemetryProvider.Create(
+                _deferredEvents.GetWarningLogger(), _deferredEvents.GetDebugLogger()); 
         }
+
+        public AzModule(ICommandRuntime runtime) : this(runtime, new EventStore())
+        {
+        }
+
+        public AzModule(ICommandRuntime runtime, IEventStore store, TelemetryProvider provider)
+        {
+            _deferredEvents = store;
+            _runtime = runtime;
+            _logger = new AdalLogger(_deferredEvents.GetDebugLogger()); ;
+            _telemetry = provider;
+        }
+
 
         /// <summary>
         /// Called when the module is loading. Allows adding HTTP pipeline steps that will always be present.
@@ -81,97 +92,117 @@ namespace Microsoft.Azure.Commands.Common
         public async Task EventListener(string id, CancellationToken cancellationToken, GetEventData getEventData, SignalDelegate signal, InvocationInfo invocationInfo, string parameterSetName, string correlationId, string processRecordId, System.Exception exception)
         {
             /// Drain the queue of ADAL events whenever an event is fired
-            DrainMessages(signal, cancellationToken);
+            DrainDeferredEvents(signal, cancellationToken);
             switch (id)
             {
                 case Events.BeforeCall:
-                    {
-                        var data = EventDataConverter.ConvertFrom(getEventData()); // also, we manually use our TypeConverter to return an appropriate type
-                        var request = data?.RequestMessage as HttpRequestMessage;
-                        if (request != null)
-                        {
-                            AzurePSQoSEvent qos;
-                            if (_telemetryEvents.TryGetValue(processRecordId, out qos))
-                            {
-                                IEnumerable<string> headers;
-                                if (request.Headers != null && request.Headers.TryGetValues("x-ms-client-request-id", out headers))
-                                {
-                                    qos.ClientRequestId = headers.FirstOrDefault();
-                                    await signal(Events.Debug, cancellationToken, 
-                                        () => EventHelper.CreateLogEvent($"[{id}]: Amending QosEvent for command '{qos.CommandName}': {qos.ToString()}"));
-                                }
-                            }
-
-                            /// Print formatted request message
-                            await signal(Events.Debug, cancellationToken, 
-                                () => EventHelper.CreateLogEvent(GeneralUtilities.GetLog(request)));
-                        }
-                    }
-
+                    await OnBeforeCall(id, cancellationToken, getEventData, signal, processRecordId);
                     break;
                 case Events.CmdletProcessRecordAsyncStart:
-                    {
-                        var qos = CreateQosEvent(invocationInfo, parameterSetName, correlationId);
-                        await signal(Events.Debug, cancellationToken, 
-                            () => EventHelper.CreateLogEvent($"[{id}]: Created new QosEvent for command '{qos.CommandName}': {qos.ToString()}"));
-                        _telemetryEvents.Add(processRecordId, qos);
-                    }
+                    await OnProcessRecordAsyncStart(id, cancellationToken, getEventData, signal, processRecordId, invocationInfo, parameterSetName, correlationId);
                     break;
                 case Events.CmdletProcessRecordAsyncEnd:
-                    {
-                        AzurePSQoSEvent qos;
-                        if (_telemetryEvents.TryGetValue(processRecordId, out qos))
-                        {
-                            qos.IsSuccess = qos.Exception == null;
-                            await signal(Events.Debug, cancellationToken, 
-                                () => EventHelper.CreateLogEvent($"[{id}]: Sending new QosEvent for command '{qos.CommandName}': {qos.ToString()}"));
-                            _metricHelper.LogEvent(qos);
-                            _telemetryEvents.Remove(processRecordId);
-                        }
-                    }
+                    await OnProcessRecordAsyncEnd(id, cancellationToken, getEventData, signal, processRecordId);
                     break;
                 case Events.CmdletException:
-                    {
-                        var data = EventDataConverter.ConvertFrom(getEventData());
-                        await signal(Events.Debug, cancellationToken, 
-                            () => EventHelper.CreateLogEvent($"[{id}]: Received Exception with message '{data?.Message}'"));
-                        AzurePSQoSEvent qos;
-                        if (_telemetryEvents.TryGetValue(processRecordId, out qos))
-                        {
-                            await signal(Events.Debug, cancellationToken, 
-                                () => EventHelper.CreateLogEvent($"[{id}]: Sending new QosEvent for command '{qos.CommandName}': {qos.ToString()}"));
-                            qos.IsSuccess = false;
-                            qos.Exception = exception;
-                            _metricHelper.LogEvent(qos);
-                            _telemetryEvents.Remove(processRecordId);
-                        }
-                    }
-
+                    await OnCmdletException(id, cancellationToken, getEventData, signal, processRecordId, exception);
                     break;
                 case Events.ResponseCreated:
-                    {
-                        var data = EventDataConverter.ConvertFrom(getEventData());
-                        var response = data?.ResponseMessage as HttpResponseMessage;
-                        if (response != null)
-                        {
-                            AzurePSQoSEvent qos;
-                            if (_telemetryEvents.TryGetValue(processRecordId, out qos))
-                            {
-                                qos.ClientRequestId = response?.Headers?.GetValues("x-ms-request-id").FirstOrDefault();
-                            }
-
-                            /// Print formatted response message
-                            await signal(Events.Debug, cancellationToken, 
-                                () => EventHelper.CreateLogEvent(GeneralUtilities.GetLog(response)));
-                        }
-                    }
-
+                    await OnResponseCreated(id, cancellationToken, getEventData, signal, processRecordId);
                     break;
                 default:
                     getEventData.Print(signal, cancellationToken, Events.Information, id);
                     break;
             }
         }
+
+        internal async Task OnResponseCreated(string id, CancellationToken cancellationToken, GetEventData getEventData, SignalDelegate signal, string processRecordId)
+        {
+            var data = EventDataConverter.ConvertFrom(getEventData());
+            var response = data?.ResponseMessage as HttpResponseMessage;
+            if (response != null)
+            {
+                AzurePSQoSEvent qos;
+                if (_telemetry.TryGetValue(processRecordId, out qos) && null != response?.Headers)
+                {
+                    IEnumerable<string> headerValues;
+                    foreach (var headerName in ClientHeaders)
+                    {
+                        if (response.Headers.TryGetValues(headerName, out headerValues) && headerValues.Any())
+                        {
+                            qos.ClientRequestId = headerValues.First();
+                            break;
+                        }
+                    }
+                }
+
+                /// Print formatted response message
+                await signal(Events.Debug, cancellationToken,
+                    () => EventHelper.CreateLogEvent(GeneralUtilities.GetLog(response)));
+            }
+        }
+
+        internal async Task OnCmdletException(string id, CancellationToken cancellationToken, GetEventData getEventData, SignalDelegate signal, string processRecordId, Exception exception)
+        {
+            var data = EventDataConverter.ConvertFrom(getEventData());
+            await signal(Events.Debug, cancellationToken,
+                () => EventHelper.CreateLogEvent($"[{id}]: Received Exception with message '{data?.Message}'"));
+            AzurePSQoSEvent qos;
+            if (_telemetry.TryGetValue(processRecordId, out qos))
+            {
+                await signal(Events.Debug, cancellationToken,
+                    () => EventHelper.CreateLogEvent($"[{id}]: Sending new QosEvent for command '{qos.CommandName}': {qos.ToString()}"));
+                qos.IsSuccess = false;
+                qos.Exception = exception;
+                _telemetry.LogEvent(processRecordId);
+            }
+        }
+
+        internal async Task OnProcessRecordAsyncStart(string id, CancellationToken cancellationToken, GetEventData getEventData, SignalDelegate signal, string processRecordId, InvocationInfo invocationInfo, string parameterSetName, string correlationId)
+        {
+            var qos = _telemetry.CreateQosEvent(invocationInfo, parameterSetName, correlationId, processRecordId);
+            await signal(Events.Debug, cancellationToken,
+                () => EventHelper.CreateLogEvent($"[{id}]: Created new QosEvent for command '{qos?.CommandName}': {qos?.ToString()}"));
+        }
+
+        internal async Task OnProcessRecordAsyncEnd(string id, CancellationToken cancellationToken, GetEventData getEventData, SignalDelegate signal, string processRecordId)
+        {
+            AzurePSQoSEvent qos;
+            if (_telemetry.TryGetValue(processRecordId, out qos))
+            {
+                qos.IsSuccess = qos.Exception == null;
+                await signal(Events.Debug, cancellationToken,
+                    () => EventHelper.CreateLogEvent($"[{id}]: Sending new QosEvent for command '{qos.CommandName}': {qos.ToString()}"));
+                _telemetry.LogEvent(processRecordId);
+            }
+        }
+
+        internal async Task OnBeforeCall(string id, CancellationToken cancellationToken, GetEventData getEventData, SignalDelegate signal, string processRecordId)
+        {
+            var data = EventDataConverter.ConvertFrom(getEventData()); // also, we manually use our TypeConverter to return an appropriate type
+            var request = data?.RequestMessage as HttpRequestMessage;
+            if (request != null)
+            {
+                AzurePSQoSEvent qos;
+                IEnumerable<string> headerValues;
+                if (_telemetry.TryGetValue(processRecordId, out qos))
+                {
+                    foreach (var headerName in ClientHeaders)
+                    {
+                        if (request.Headers.TryGetValues(headerName, out headerValues) && headerValues.Any())
+                        {
+                            qos.ClientRequestId = headerValues.First();
+                            break;
+                        }
+                    }
+                }
+
+                /// Print formatted request message
+                await signal(Events.Debug, cancellationToken,
+                    () => EventHelper.CreateLogEvent(GeneralUtilities.GetLog(request)));
+            }
+        }
+
 
         /// <summary>
         /// Free resources associated with this instance
@@ -182,69 +213,31 @@ namespace Microsoft.Azure.Commands.Common
         }
 
         /// <summary>
-        /// Free resources associated with this instance - allows customization in inheriting types
+        /// Free resources associated with this instance - allows customization in extending types
         /// </summary>
         /// <param name="disposing">True if the data should be disposed - differentiates from IDisposable call</param>
         public virtual void Dispose(bool disposing)
         {
             if (disposing)
             {
-                if (_telemetryEvents != null)
-                {
-                    _telemetryEvents.Clear();
-                    _telemetryEvents = null;
-                }
-
-                if (_logger != null)
-                {
-                    _logger.Dispose();
-                    _logger = null;
-                }
-
-                if (_warningMessages != null)
-                {
-                    string message;
-                    while (_warningMessages.TryDequeue(out message)) ;
-                    _warningMessages = null;
-                }
-
-                if (_debugMessages != null)
-                {
-                    string message;
-                    while (_debugMessages.TryDequeue(out message)) ;
-                    _debugMessages = null;
-                }
+                _telemetry?.Flush();
+                _telemetry?.Dispose();
+                _telemetry = null;
+                _logger?.Dispose();
+                _logger = null;
+                _deferredEvents?.Dispose();
+                _deferredEvents = null;
             }
         }
 
-        private AzurePSQoSEvent CreateQosEvent(InvocationInfo invocationInfo, string parameterSetName, string correlationId)
+
+        private async void DrainDeferredEvents(SignalDelegate signal, CancellationToken token)
         {
-            return new AzurePSQoSEvent
+            EventData data;
+            while (_deferredEvents.TryGetEvent(out data) && !token.IsCancellationRequested)
             {
-                CommandName = invocationInfo.MyCommand.Name,
-                ModuleName = invocationInfo.MyCommand.ModuleName,
-                ModuleVersion = invocationInfo.MyCommand.Module.Version.ToString(),
-                Parameters = string.Join(",", invocationInfo?.BoundParameters?.Keys?.ToArray()),
-                SessionId = correlationId,
-                ParameterSetName = parameterSetName,
-                InvocationName = invocationInfo.InvocationName,
-                InputFromPipeline = invocationInfo.PipelineLength > 0,
-            };
-        }
-
-        private async void DrainMessages(SignalDelegate signal, CancellationToken token)
-        {
-            string message;
-            while (_warningMessages.TryDequeue(out message) && !token.IsCancellationRequested)
-            {
-                await signal(Events.Warning, token, () => EventHelper.CreateLogEvent(message));
+                await signal(data.Id, token, () => data);
             }
-
-            while (_debugMessages.TryDequeue(out message) && !token.IsCancellationRequested)
-            {
-                await signal(Events.Debug, token, () => EventHelper.CreateLogEvent(message));
-            }
-
         }
     }
 

@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Direct": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringPropertiesDirect",
               "Exchange": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringPropertiesExchange",
@@ -306,7 +306,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Direct": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringPropertiesDirect",
               "Exchange": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringPropertiesExchange",
@@ -728,7 +728,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringLocation",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringLocation, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringLocation, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Direct": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringLocationPropertiesDirect",
               "Exchange": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringLocationPropertiesExchange",
@@ -1169,7 +1169,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Direct": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringPropertiesDirect",
               "Exchange": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringPropertiesExchange",
@@ -1287,7 +1287,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Direct": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringPropertiesDirect",
               "Exchange": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringPropertiesExchange",
@@ -1476,7 +1476,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection[], Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection[], Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection",
             "GenericTypeArguments": [],
@@ -1494,7 +1494,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection[], Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection[], Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection",
             "GenericTypeArguments": [],
@@ -1605,7 +1605,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Direct": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringPropertiesDirect",
                     "Exchange": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringPropertiesExchange",
@@ -1988,7 +1988,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection[], Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection[], Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection",
                   "GenericTypeArguments": [],
@@ -2200,7 +2200,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection[], Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection[], Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection",
                   "GenericTypeArguments": [],
@@ -2439,7 +2439,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Direct": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringPropertiesDirect",
               "Exchange": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringPropertiesExchange",
@@ -2557,7 +2557,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Direct": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringPropertiesDirect",
               "Exchange": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringPropertiesExchange",
@@ -2748,7 +2748,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection[], Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection[], Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection",
             "GenericTypeArguments": [],
@@ -2766,7 +2766,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection[], Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection[], Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection",
             "GenericTypeArguments": [],
@@ -2823,7 +2823,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Direct": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringPropertiesDirect",
                     "Exchange": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringPropertiesExchange",
@@ -2972,7 +2972,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection[], Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection[], Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection",
                   "GenericTypeArguments": [],
@@ -3040,7 +3040,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Direct": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringPropertiesDirect",
                     "Exchange": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringPropertiesExchange",
@@ -3163,7 +3163,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection[], Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection[], Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection",
                   "GenericTypeArguments": [],
@@ -3281,7 +3281,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection[], Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection[], Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection",
                   "GenericTypeArguments": [],
@@ -3373,7 +3373,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection[], Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection[], Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection",
                   "GenericTypeArguments": [],
@@ -3515,7 +3515,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection[], Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection[], Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection",
                   "GenericTypeArguments": [],
@@ -3631,7 +3631,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection[], Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection[], Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection",
                   "GenericTypeArguments": [],
@@ -3750,7 +3750,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeerAsn",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeerAsn, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeerAsn, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "PeerContactInfo": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSContactInfo",
               "PeerAsnProperty": "System.Nullable`1[System.Int32]",
@@ -4019,7 +4019,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeerAsn",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeerAsn, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeerAsn, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "PeerContactInfo": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSContactInfo",
               "PeerAsnProperty": "System.Nullable`1[System.Int32]",
@@ -4473,7 +4473,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeerAsn",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeerAsn, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeerAsn, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "PeerContactInfo": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSContactInfo",
               "PeerAsnProperty": "System.Nullable`1[System.Int32]",
@@ -4676,7 +4676,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeerAsn",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeerAsn, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeerAsn, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "PeerContactInfo": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSContactInfo",
                     "PeerAsnProperty": "System.Nullable`1[System.Int32]",
@@ -5153,7 +5153,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeerAsn",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeerAsn, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeerAsn, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "PeerContactInfo": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSContactInfo",
               "PeerAsnProperty": "System.Nullable`1[System.Int32]",
@@ -5246,7 +5246,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeerAsn",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeerAsn, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeerAsn, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "PeerContactInfo": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSContactInfo",
               "PeerAsnProperty": "System.Nullable`1[System.Int32]",
@@ -5449,7 +5449,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeerAsn",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeerAsn, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeerAsn, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "PeerContactInfo": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSContactInfo",
                     "PeerAsnProperty": "System.Nullable`1[System.Int32]",
@@ -5878,7 +5878,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BgpSession": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSBgpSession",
               "PeeringDBFacilityId": "System.Nullable`1[System.Int32]",
@@ -6637,7 +6637,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BgpSession": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSBgpSession",
               "PeeringDBFacilityId": "System.Nullable`1[System.Int32]",
@@ -6710,7 +6710,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BgpSession": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSBgpSession",
               "PeeringDBFacilityId": "System.Nullable`1[System.Int32]",
@@ -6915,7 +6915,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BgpSession": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSBgpSession",
                     "PeeringDBFacilityId": "System.Nullable`1[System.Int32]",
@@ -7087,7 +7087,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BgpSession": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSBgpSession",
                     "PeeringDBFacilityId": "System.Nullable`1[System.Int32]",
@@ -7259,7 +7259,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BgpSession": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSBgpSession",
                     "PeeringDBFacilityId": "System.Nullable`1[System.Int32]",
@@ -7456,7 +7456,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BgpSession": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSBgpSession",
               "BandwidthInMbps": "System.Nullable`1[System.Int32]",
@@ -8323,7 +8323,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BgpSession": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSBgpSession",
               "BandwidthInMbps": "System.Nullable`1[System.Int32]",
@@ -8406,7 +8406,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BgpSession": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSBgpSession",
               "BandwidthInMbps": "System.Nullable`1[System.Int32]",
@@ -8641,7 +8641,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BgpSession": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSBgpSession",
                     "BandwidthInMbps": "System.Nullable`1[System.Int32]",
@@ -8823,7 +8823,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BgpSession": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSBgpSession",
                     "BandwidthInMbps": "System.Nullable`1[System.Int32]",
@@ -9005,7 +9005,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BgpSession": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSBgpSession",
                     "BandwidthInMbps": "System.Nullable`1[System.Int32]",
@@ -9163,7 +9163,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BgpSession": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSBgpSession",
                     "BandwidthInMbps": "System.Nullable`1[System.Int32]",
@@ -9501,7 +9501,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringPropertiesDirect": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringPropertiesDirect",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringPropertiesDirect, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringPropertiesDirect, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "PeerAsn": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSSubResource",
         "Connections": "System.Collections.Generic.IList`1[Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection]",
@@ -9565,7 +9565,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSSubResource": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSSubResource",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSSubResource, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSSubResource, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Id": "System.String"
       },
@@ -9629,7 +9629,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -9641,7 +9641,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "BgpSession": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSBgpSession",
         "BandwidthInMbps": "System.Nullable`1[System.Int32]",
@@ -9715,7 +9715,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSBgpSession": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSBgpSession",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSBgpSession, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSBgpSession, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "MaxPrefixesAdvertisedV4": "System.Nullable`1[System.Int32]",
         "MaxPrefixesAdvertisedV6": "System.Nullable`1[System.Int32]",
@@ -9843,7 +9843,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringPropertiesExchange": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringPropertiesExchange",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringPropertiesExchange, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringPropertiesExchange, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "PeerAsn": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSSubResource",
         "Connections": "System.Collections.Generic.IList`1[Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection]"
@@ -9902,7 +9902,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -9914,7 +9914,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "BgpSession": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSBgpSession",
         "PeeringDBFacilityId": "System.Nullable`1[System.Int32]",
@@ -9978,7 +9978,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringSku": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringSku",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringSku, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringSku, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Name": "System.String",
         "Tier": "System.String",
@@ -10237,7 +10237,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringLocationPropertiesDirect": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringLocationPropertiesDirect",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringLocationPropertiesDirect, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringLocationPropertiesDirect, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "PeeringFacilities": "System.Collections.Generic.IList`1[Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectPeeringFacility]",
         "BandwidthOffers": "System.Collections.Generic.IList`1[Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringBandwidthOffer]"
@@ -10296,7 +10296,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectPeeringFacility]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectPeeringFacility]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectPeeringFacility, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectPeeringFacility, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -10308,7 +10308,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectPeeringFacility": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectPeeringFacility",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectPeeringFacility, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectPeeringFacility, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "PeeringDBFacilityId": "System.Nullable`1[System.Int32]",
         "Address": "System.String",
@@ -10372,7 +10372,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringBandwidthOffer]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringBandwidthOffer]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringBandwidthOffer, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringBandwidthOffer, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -10384,7 +10384,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringBandwidthOffer": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringBandwidthOffer",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringBandwidthOffer, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringBandwidthOffer, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ValueInMbps": "System.Nullable`1[System.Int32]",
         "OfferName": "System.String"
@@ -10443,7 +10443,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringLocationPropertiesExchange": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringLocationPropertiesExchange",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringLocationPropertiesExchange, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringLocationPropertiesExchange, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "PeeringFacilities": "System.Collections.Generic.IList`1[Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangePeeringFacility]"
       },
@@ -10497,7 +10497,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangePeeringFacility]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangePeeringFacility]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangePeeringFacility, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangePeeringFacility, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -10509,7 +10509,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangePeeringFacility": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangePeeringFacility",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangePeeringFacility, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangePeeringFacility, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "BandwidthInMbps": "System.Nullable`1[System.Int32]",
         "PeeringDBFacilityId": "System.Nullable`1[System.Int32]",
@@ -10598,7 +10598,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSContactInfo": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSContactInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSContactInfo, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSContactInfo, Microsoft.Azure.PowerShell.Cmdlets.Peering, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Emails": "System.Collections.Generic.IList`1[System.String]",
         "Phone": "System.Collections.Generic.IList`1[System.String]"

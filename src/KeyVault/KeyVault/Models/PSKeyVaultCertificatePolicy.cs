@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
     {
         public string SecretContentType { get; set; }
         public string Kty { get; set; }
-        public int? KeySize { get; internal set; }
+        public int? KeySize { get; set; }
         public bool? Exportable { get; set; }
         public bool? ReuseKeyOnRenewal { get; set; }
         public string SubjectName { get; set; }
@@ -45,10 +45,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         public PSKeyVaultCertificatePolicy()
         {
-            // At this time, KV Certificate only support these options
-            // and the service requires these values to be passed when
-            // any key properties are present.
-            KeySize = 2048;
         }
 
         internal CertificatePolicy ToCertificatePolicy()
