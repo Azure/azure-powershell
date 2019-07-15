@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.AlertsManagement.OutputModels;
 using Microsoft.Azure.Management.AlertsManagement.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement.Properties;
 
 namespace Microsoft.Azure.Commands.AlertsManagement
 {
@@ -86,8 +87,8 @@ namespace Microsoft.Azure.Commands.AlertsManagement
             {
                 case ByResourceIdParameterSet:
                     if (ShouldProcess(
-                       target: string.Format("Remove the action rule: {0}", ResourceId),
-                       action: "Remove the action rule"))
+                        target: string.Format(Resources.Target, this.ResourceId),
+                        action: Resources.RemoveActionRule_Action))
                     {
                         var extractedInfo = CommonUtils.ExtractFromActionRuleResourceId(ResourceId);
                         isDeleted = this.AlertsManagementClient.ActionRules.DeleteWithHttpMessagesAsync(
@@ -104,8 +105,8 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                 
                 case ByInputObjectParameterSet:
                     if (ShouldProcess(
-                    target: string.Format("Remove the action rule: {0}", InputObject.Id),
-                    action: "Remove an action rule"))
+                        target: string.Format(Resources.Target, this.InputObject.Id),
+                        action: Resources.RemoveActionRule_Action))
                     {
                         var extractedInfo = CommonUtils.ExtractFromActionRuleResourceId(InputObject.Id);
                         isDeleted = this.AlertsManagementClient.ActionRules.DeleteWithHttpMessagesAsync(
@@ -123,8 +124,8 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                 
                 case ByNameParameterSet:
                     if (ShouldProcess(
-                       target: string.Format("Remove the action rule: {0} from resource group: {1}", this.Name, this.ResourceGroupName),
-                       action: "Remove an action rule"))
+                       target: string.Format(Resources.TargetWithRG, this.Name, this.ResourceGroupName),
+                       action: Resources.RemoveActionRule_Action))
                     {
                         isDeleted = this.AlertsManagementClient.ActionRules.DeleteWithHttpMessagesAsync(
                             resourceGroupName: ResourceGroupName,
