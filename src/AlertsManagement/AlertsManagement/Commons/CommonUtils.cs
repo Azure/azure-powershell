@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
+using Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement.Properties;
 
 namespace Microsoft.Azure.Commands.AlertsManagement
 {
@@ -36,7 +37,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
             }
             else
             {
-                throw new PSArgumentException(string.Format("{0} is not a valid Id.", resourceId));
+                throw new PSArgumentException(string.Format(Resources.InvalidId, resourceId));
             }
         }
 
@@ -57,7 +58,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
             }
             else
             {
-                throw new PSArgumentException(string.Format("{0} is not a valid ResourceId.", resourceId));
+                throw new PSArgumentException(string.Format(Resources.InvalidResourceId, resourceId));
             }
         }
     }
