@@ -58,7 +58,7 @@ Check if `Face` is a valid Type name, the name will be returned if it is a valid
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -73,7 +73,7 @@ Accept wildcard characters: False
 Cognitive Services Account Location.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetAccountTypes
 Aliases:
 
@@ -88,7 +88,7 @@ Accept wildcard characters: False
 Cognitive Services Account Type Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetAccountTypeWithName
 Aliases: CognitiveServicesAccountTypeName, AccountTypeName, KindName
 

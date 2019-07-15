@@ -86,7 +86,7 @@ NextResetTime : 0001-01-01T00:00:00Z
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -101,7 +101,7 @@ Accept wildcard characters: False
 Cognitive Services Account Object.
 
 ```yaml
-Type: PSCognitiveServicesAccount
+Type: Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount
 Parameter Sets: InputObjectParameterSet
 Aliases:
 
@@ -116,7 +116,7 @@ Accept wildcard characters: False
 Cognitive Services Account Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceNameParameterSet
 Aliases: CognitiveServicesAccountName, AccountName
 
@@ -131,7 +131,7 @@ Accept wildcard characters: False
 Resource Group Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceNameParameterSet
 Aliases:
 
@@ -146,7 +146,7 @@ Accept wildcard characters: False
 Cognitive Services Account Resource ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
 Aliases:
 
