@@ -14,9 +14,12 @@
 
 using Microsoft.Azure.Commands.Blueprint.Models;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using System.Text.RegularExpressions;
 using Microsoft.Azure.Commands.Blueprint.Common;
+using Microsoft.Azure.Management.Blueprint.Models;
 using Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties;
 using static Microsoft.Azure.Commands.Blueprint.Common.BlueprintConstants;
 
@@ -31,10 +34,10 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         [ValidateNotNullOrEmpty]
         public string Version { get; set; }
 
-        // To-Do: ChangeNotes will be added in the next SDK release
-        /* [Parameter(ParameterSetName = ParameterSetNames.PublishBlueprint, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "To-Do")]
+        [Parameter(ParameterSetName = ParameterSetNames.PublishBlueprint, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ChangeNotes)]
+        [ValidateLength(0,500)]
         [ValidateNotNullOrEmpty]
-        public string ChangeNotes { get; set; }*/
+        public string ChangeNote { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.PublishBlueprint, Mandatory = true, ValueFromPipeline = true, HelpMessage = ParameterHelpMessages.BlueprintObject)]
         [ValidateNotNullOrEmpty]
@@ -48,7 +51,11 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
             {
                 try
                 {
-                    WriteObject(BlueprintClient.CreatePublishedBlueprint(Blueprint.Scope, Blueprint.Name, Version));
+                    // parameters property is placeholder here, backend strips this information and publishes the latest master. It is needed in the payload since swagger calls it required.
+                    var publishedBlueprintObjForChangeNotes = new PublishedBlueprint(
+                        parameters: new Dictionary<string, ParameterDefinition>(), changeNotes: ChangeNote);
+
+                    WriteObject(BlueprintClient.CreatePublishedBlueprint(Blueprint.Scope, Blueprint.Name, Version, publishedBlueprintObjForChangeNotes));
                 }
                 catch (Exception ex)
                 {

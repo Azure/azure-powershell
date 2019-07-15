@@ -17,6 +17,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
+using Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01.Models;
 using Microsoft.Azure.Management.NetApp;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Account
@@ -83,7 +84,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
                 Name = InputObject.Name;
             }
 
-            if (ShouldProcess(Name, "Remove the account"))
+            if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.RemoveResourceMessage, ResourceGroupName)))
             {
                 AzureNetAppFilesManagementClient.Accounts.Delete(ResourceGroupName, Name);
                 success = true;

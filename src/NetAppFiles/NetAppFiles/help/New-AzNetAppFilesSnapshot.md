@@ -15,7 +15,7 @@ Creates a new Azure NetApp Files (ANF) snapshot.
 ### ByFieldsParameterSet (Default)
 ```
 New-AzNetAppFilesSnapshot -ResourceGroupName <String> -Location <String> -AccountName <String>
- -PoolName <String> -VolumeName <String> -Name <String> -FileSystemId <String> [-Tag <Hashtable>]
+ -PoolName <String> -VolumeName <String> -Name <String> [-FileSystemId <String>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -89,7 +89,7 @@ Type: String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

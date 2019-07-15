@@ -9,6 +9,7 @@ schema: 2.0.0
 # Get-AzRecoveryServicesBackupJob
 
 ## SYNOPSIS
+
 Gets Backup jobs.
 
 ## SYNTAX
@@ -20,26 +21,34 @@ Get-AzRecoveryServicesBackupJob [[-Status] <JobStatus>] [[-Operation] <JobOperat
 ```
 
 ## DESCRIPTION
+
 The **Get-AzRecoveryServicesBackupJob** cmdlet gets Azure Backup jobs for a specific vault.
-Set the vault context by using the Set-AzRecoveryServicesVaultContext cmdlet before you use the current cmdlet.
+Set the vault context by using the **Set-AzRecoveryServicesVaultContext** cmdlet before you use the current cmdlet.
+
+Warning: **Set-AzRecoveryServicesVaultContext** cmdlet is being deprecated in a future breaking change release. There will be no replacement for it. Please use the -VaultId parameter instead.
 
 ## EXAMPLES
 
 ### Example 1: Get all in-progress jobs
-```
-PS C:\>$Joblist = Get-AzRecoveryservicesBackupJob -Status Inprogress
-PS C:\> $Joblist[0]
-WorkloadName     Operation            Status               StartTime                 EndTime                                             
-------------     ---------            ------               ---------                 -------                                             
+
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+$Joblist = Get-AzRecoveryServicesBackupJob -Status InProgress -VaultId $vault.ID
+$Joblist[0]
+
+WorkloadName     Operation            Status               StartTime                 EndTime
+------------     ---------            ------               ---------                 -------
 V2VM             Backup               InProgress           4/23/2016 5:00:30 PM      1/1/2001 12:00:00
 ```
 
-The first command gets status of an in-progress job as an array, and then stores it in the $Joblist variable.
+The first command gets status of an in-progress jobs as an array, and then stores it in the $Joblist variable.
 The second command displays the first item in the $Joblist array.
 
 ### Example 2: Get all failed jobs in the last 7 days
-```
-PS C:\>Get-AzRecoveryServicesBackupJob -From (Get-Date).AddDays(-7).ToUniversalTime() -Status Failed
+
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+Get-AzRecoveryServicesBackupJob -From (Get-Date).AddDays(-7).ToUniversalTime() -Status Failed -VaultId $vault.ID
 ```
 
 This command gets failed jobs from the last week in the vault.
@@ -48,28 +57,32 @@ The command does not specify a value for the *To* parameter.
 Therefore, it uses the default value of the current time.
 
 ### Example 3: Get an in-progress job and wait for completion
-```
-PS C:\> 
-$Jobs = Get-AzRecoveryServicesBackupJob -Status InProgress
+
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+$Jobs = Get-AzRecoveryServicesBackupJob -Status InProgress -VaultId $vault.ID
 $Job = $Jobs[0]
-    while ( $Job.Status -ne Completed )
-    {
-       Write-Host "Waiting for completion..."
-       Start-Sleep -Seconds 10
-       $job = Get-AzBackAzureRmRecoveryServicesBackupJob  -Job $Job
-    }
-    Write-Host "Done!"
-    Waiting for completion... 
-    Waiting for completion... 
-    Waiting for completion... 
-    Done!
+While ( $Job.Status -ne Completed ) {
+    Write-Host -Object "Waiting for completion..."
+    Start-Sleep -Seconds 10
+    $Job = Get-AzRecoveryServicesBackupJob -Job $Job -VaultId $vault.ID
+}
+Write-Host -Object "Done!"
+
+Waiting for completion... 
+Waiting for completion... 
+Waiting for completion... 
+Done!
 ```
 
 This script polls the first job that is currently in progress until the job has completed.
 
+Note: You can use **Wait-AzRecoveryServicesBackupJob** cmdlet to wait for an Azure Backup job to finish instead of While loop.
+
 ## PARAMETERS
 
 ### -BackupManagementType
+
 Specifies the Backup management type.
 Currently, only AzureVM, AzureStorage is supported.
 
@@ -87,6 +100,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
+
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
@@ -102,8 +116,9 @@ Accept wildcard characters: False
 ```
 
 ### -From
+
 Specifies the start, as a **DateTime** object, of a time range for the jobs that this cmdlet gets.
-To obtain a **DateTime** object, use the Get-Date cmdlet.
+To obtain a **DateTime** object, use the **Get-Date** cmdlet.
 For more information about **DateTime** objects, type `Get-Help Get-Date`.
 Use UTC format for dates.
 
@@ -120,7 +135,8 @@ Accept wildcard characters: False
 ```
 
 ### -Job
-Specifies the name of the Backup job to get.
+
+Specifies the job to get.
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase
@@ -135,9 +151,9 @@ Accept wildcard characters: False
 ```
 
 ### -JobId
+
 Specifies the ID of a job that this cmdlet gets.
-The ID is the InstanceId property of an **AzureRmRecoveryServicesBackupJob** object.
-To obtain an **AzureRmRecoveryServicesBackupJob** object, use Get-AzRecoveryServicesBackupJob.
+The ID is the JobId property of an **Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase** object.
 
 ```yaml
 Type: System.String
@@ -152,15 +168,15 @@ Accept wildcard characters: False
 ```
 
 ### -Operation
+
 Specifies an operation of the jobs that this cmdlet gets.
 The acceptable values for this parameter are:
+
 - Backup
 - ConfigureBackup
 - DeleteBackupData
-- Register
+- DisableBackup
 - Restore
-- UnProtect
-- Unregister
 
 ```yaml
 Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobOperation]
@@ -176,8 +192,10 @@ Accept wildcard characters: False
 ```
 
 ### -Status
+
 Specifies a status of the jobs that this cmdlet gets.
 The acceptable values for this parameter are:
+
 - InProgress
 - Failed
 - Cancelled
@@ -199,9 +217,10 @@ Accept wildcard characters: False
 ```
 
 ### -To
+
 Specifies the end, as a **DateTime** object, of a time range for the jobs that this cmdlet gets.
 The default value is the current system time.
-If you specify this parameter, you must also specify the *From* parameter.
+If you specify this parameter, you must also specify the **-From** parameter.
 Use UTC format for dates.
 
 ```yaml
@@ -217,6 +236,7 @@ Accept wildcard characters: False
 ```
 
 ### -VaultId
+
 ARM ID of the Recovery Services Vault.
 
 ```yaml
@@ -231,8 +251,9 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+### -CommonParameters
+
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -246,10 +267,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzRecoveryServicesBackupJobDetails](./Get-AzRecoveryServicesBackupJobDetails.md)
+[Get-AzRecoveryServicesBackupJobDetail](./Get-AzRecoveryServicesBackupJobDetail.md)
 
 [Stop-AzRecoveryServicesBackupJob](./Stop-AzRecoveryServicesBackupJob.md)
 
 [Wait-AzRecoveryServicesBackupJob](./Wait-AzRecoveryServicesBackupJob.md)
-
-
