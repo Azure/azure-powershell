@@ -318,7 +318,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
 
             WriteVerbose("Operating System: {0}", operatingSystem);
 
-            if (operatingSystem.IndexOf("windows", StringComparison.InvariantCultureIgnoreCase) == 0)
+            if (operatingSystem.IndexOf("windows", StringComparison.InvariantCultureIgnoreCase) == -1)
             {
                 // If OS is not Windows, check if Ps supports 6.1.0 which is the first version to depend on NetCoreApp 2.1
 
@@ -340,7 +340,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             }
 
             // For Windows, we validate WSMAN trusted hosts settings
-            if (operatingSystem.IndexOf("windows", StringComparison.InvariantCultureIgnoreCase) != 0)
+            if (operatingSystem.IndexOf("windows", StringComparison.InvariantCultureIgnoreCase) > 0)
             {
                 // Validate if WSMAN Basic Authentication is enabled
                 bool isBasicAuthEnabled = ExecuteScriptAndGetVariableAsBool(cmdlet, "${0} = (Get-Item WSMAN:\\LocalHost\\Client\\Auth\\Basic -ErrorAction SilentlyContinue).Value", false);
