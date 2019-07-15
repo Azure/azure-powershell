@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
         [Parameter(Mandatory = false, HelpMessage = "The integration account map type.")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet("Xslt", "Xslt20", "Xslt30", "Liquid", IgnoreCase = true)]
+        [PSArgumentCompleter("Xslt", "Xslt20", "Xslt30", "Liquid")]
         public string MapType { get; set; }
 
         #endregion Input Parameters
