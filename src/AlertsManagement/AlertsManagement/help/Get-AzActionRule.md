@@ -12,6 +12,14 @@ Get Action Rules Information
 
 ## SYNTAX
 
+### ListActionRules (Default)
+```
+Get-AzActionRule [-Name <String>] [-ResourceGroupName <String>] [-TargetResourceType <String>]
+ [-MonitorService <String>] [-Severity <String>] [-ImpactedScope <String>] [-AlertRuleId <String>]
+ [-Description <String>] [-ActionGroup <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
 ### ResourceId
 ```
 Get-AzActionRule -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -23,11 +31,19 @@ Get-AzActionRule -Name <String> -ResourceGroupName <String> [-DefaultProfile <IA
  [<CommonParameters>]
 ```
 
-### ListActionRules
+### ListActionRulesByTargetResourceId
 ```
-Get-AzActionRule [-Name <String>] [-ResourceGroupName <String>] [-TargetResource <String>]
- [-TargetResourceType <String>] [-TargetResourceGroup <String>] [-MonitorService <String>] [-Severity <String>]
- [-ImpactedScope <String>] [-AlertRuleId <String>] [-Description <String>] [-ActionGroup <String>]
+Get-AzActionRule [-Name <String>] [-ResourceGroupName <String>] [-TargetResourceId <String>]
+ [-MonitorService <String>] [-Severity <String>] [-ImpactedScope <String>] [-AlertRuleId <String>]
+ [-Description <String>] [-ActionGroup <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### ListActionRulesByTargetResourceGroup
+```
+Get-AzActionRule [-Name <String>] [-ResourceGroupName <String>] [-TargetResourceType <String>]
+ [-TargetResourceGroup <String>] [-MonitorService <String>] [-Severity <String>] [-ImpactedScope <String>]
+ [-AlertRuleId <String>] [-Description <String>] [-ActionGroup <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -56,8 +72,8 @@ Get the action rule with name Test-Action-Rule in test-rg resource group.
 Action group
 
 ```yaml
-Type: String
-Parameter Sets: ListActionRules
+Type: System.String
+Parameter Sets: ListActionRules, ListActionRulesByTargetResourceId, ListActionRulesByTargetResourceGroup
 Aliases:
 
 Required: False
@@ -71,8 +87,8 @@ Accept wildcard characters: False
 Filter on Alert Rule Id
 
 ```yaml
-Type: String
-Parameter Sets: ListActionRules
+Type: System.String
+Parameter Sets: ListActionRules, ListActionRulesByTargetResourceId, ListActionRulesByTargetResourceGroup
 Aliases:
 
 Required: False
@@ -86,7 +102,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -101,8 +117,8 @@ Accept wildcard characters: False
 Filter all the alerts having the Smart Group Id
 
 ```yaml
-Type: String
-Parameter Sets: ListActionRules
+Type: System.String
+Parameter Sets: ListActionRules, ListActionRulesByTargetResourceId, ListActionRulesByTargetResourceGroup
 Aliases:
 
 Required: False
@@ -116,8 +132,8 @@ Accept wildcard characters: False
 Filter on Impacted scope
 
 ```yaml
-Type: String
-Parameter Sets: ListActionRules
+Type: System.String
+Parameter Sets: ListActionRules, ListActionRulesByTargetResourceId, ListActionRulesByTargetResourceGroup
 Aliases:
 
 Required: False
@@ -131,8 +147,8 @@ Accept wildcard characters: False
 Filter on Moniter Service
 
 ```yaml
-Type: String
-Parameter Sets: ListActionRules
+Type: System.String
+Parameter Sets: ListActionRules, ListActionRulesByTargetResourceId, ListActionRulesByTargetResourceGroup
 Aliases:
 
 Required: False
@@ -146,11 +162,11 @@ Accept wildcard characters: False
 Name of action rule.
 
 ```yaml
-Type: String
-Parameter Sets: ActionRuleByName
+Type: System.String
+Parameter Sets: ListActionRules, ListActionRulesByTargetResourceId, ListActionRulesByTargetResourceGroup
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -158,11 +174,11 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
-Parameter Sets: ListActionRules
+Type: System.String
+Parameter Sets: ActionRuleByName
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -173,7 +189,19 @@ Accept wildcard characters: False
 Resource Group Name in which action rule resides.
 
 ```yaml
-Type: String
+Type: System.String
+Parameter Sets: ListActionRules, ListActionRulesByTargetResourceId, ListActionRulesByTargetResourceGroup
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
 Parameter Sets: ActionRuleByName
 Aliases:
 
@@ -184,23 +212,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-```yaml
-Type: String
-Parameter Sets: ListActionRules
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceId
 Get Action rule by resoure id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceId
 Aliases:
 
@@ -215,23 +231,8 @@ Accept wildcard characters: False
 Filter on Severity of alert
 
 ```yaml
-Type: String
-Parameter Sets: ListActionRules
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TargetResource
-Filter on Resource Id of the target resource of alert.
-
-```yaml
-Type: String
-Parameter Sets: ListActionRules
+Type: System.String
+Parameter Sets: ListActionRules, ListActionRulesByTargetResourceId, ListActionRulesByTargetResourceGroup
 Aliases:
 
 Required: False
@@ -245,8 +246,23 @@ Accept wildcard characters: False
 Filter on Resource group name of the target resource of alert.
 
 ```yaml
-Type: String
-Parameter Sets: ListActionRules
+Type: System.String
+Parameter Sets: ListActionRulesByTargetResourceGroup
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetResourceId
+Filter on Resource Id of the target resource of alert.
+
+```yaml
+Type: System.String
+Parameter Sets: ListActionRulesByTargetResourceId
 Aliases:
 
 Required: False
@@ -260,8 +276,8 @@ Accept wildcard characters: False
 Filter on Resource type of the target resource of alert.
 
 ```yaml
-Type: String
-Parameter Sets: ListActionRules
+Type: System.String
+Parameter Sets: ListActionRules, ListActionRulesByTargetResourceGroup
 Aliases:
 
 Required: False

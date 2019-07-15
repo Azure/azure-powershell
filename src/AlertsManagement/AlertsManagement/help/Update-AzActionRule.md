@@ -12,27 +12,21 @@ Updates action rule properties.
 
 ## SYNTAX
 
+### ByNameSimplifiedPatch (Default)
+```
+Update-AzActionRule -Name <String> -ResourceGroupName <String> [-Status <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### ByResourceId
 ```
-Update-AzActionRule -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzActionRule -ResourceId <String> [-Status <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Update-AzActionRule -InputObject <PSActionRule> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### ByNameJsonPatch
-```
-Update-AzActionRule -Name <String> -ResourceGroupName <String> -ActionRulePatch <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByNameSimplifiedPatch
-```
-Update-AzActionRule -Name <String> -ResourceGroupName <String> [-Status <String>] [-Tag <Hashtable>]
+Update-AzActionRule -InputObject <PSActionRule> [-Status <String>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -49,21 +43,6 @@ PS C:\> Update-AzActionRule -ResourceGroupName "test-rg" -Name "Test-ActionRule"
 This cmdlet disables the action rule. 
 
 ## PARAMETERS
-
-### -ActionRulePatch
-Action rule patch object in JSON format
-
-```yaml
-Type: System.String
-Parameter Sets: ByNameJsonPatch
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -100,7 +79,7 @@ Action rule name
 
 ```yaml
 Type: System.String
-Parameter Sets: ByNameJsonPatch, ByNameSimplifiedPatch
+Parameter Sets: ByNameSimplifiedPatch
 Aliases:
 
 Required: True
@@ -115,7 +94,7 @@ Action rule name
 
 ```yaml
 Type: System.String
-Parameter Sets: ByNameJsonPatch, ByNameSimplifiedPatch
+Parameter Sets: ByNameSimplifiedPatch
 Aliases:
 
 Required: True
@@ -145,7 +124,7 @@ Action rule status
 
 ```yaml
 Type: System.String
-Parameter Sets: ByNameSimplifiedPatch
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -160,7 +139,7 @@ Action rule tags
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: ByNameSimplifiedPatch
+Parameter Sets: (All)
 Aliases:
 
 Required: False
