@@ -20,6 +20,7 @@ using Microsoft.Rest.Azure;
 using Microsoft.Azure.Commands.AlertsManagement.OutputModels;
 using Microsoft.Azure.Management.AlertsManagement.Models;
 using Newtonsoft.Json;
+using Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement.Properties;
 
 namespace Microsoft.Azure.Commands.AlertsManagement
 {
@@ -305,16 +306,15 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         {
             PSActionRule actionRule = new PSActionRule();
             if (ShouldProcess(
-                target: string.Format("Create new Action Rule"),
-                action: "Create the action rule"))
+                target: string.Format(Resources.TargetWithRG, this.Name, this.ResourceGroupName),
+                action: Resources.CreateOrUpdateActionRule_Action))
             {
                 switch (ParameterSetName)
                 {
                     case BySimplifiedFormatActionGroupActionRuleParameterSet:
                         if (ActionRuleType != "ActionGroup")
                         {
-                            throw new PSInvalidOperationException("Incorrect Action Rule Type for given set of parameters. +" +
-                                "Use ActionGroup type for this parameter set.");
+                            throw new PSInvalidOperationException(string.Format(Resources.IncorrectActionRuleType_Exception, "ActionGroup"));
                         }
 
                         // Create Action Rule
@@ -338,8 +338,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
 
                         if (ActionRuleType != "Suppression")
                         {
-                            throw new PSInvalidOperationException("Incorrect Action Rule Type for given set of parameters. +" +
-                                "Use Suppression type for this parameter set.");
+                            throw new PSInvalidOperationException(string.Format(Resources.IncorrectActionRuleType_Exception, "Suppression"));
                         }
 
                         SuppressionConfig config = new SuppressionConfig(recurrenceType: ReccurenceType);
@@ -378,8 +377,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                     case BySimplifiedFormatDiagnosticsActionRuleParameterSet:
                         if (ActionRuleType != "Diagnostics")
                         {
-                            throw new PSInvalidOperationException("Incorrect Action Rule Type for given set of parameters. +" +
-                                "Use Diagnostics type for this parameter set.");
+                            throw new PSInvalidOperationException(string.Format(Resources.IncorrectActionRuleType_Exception, "Diagnostics"));
                         }
 
                         // Create Action Rule

@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.AlertsManagement.OutputModels;
 using Microsoft.Azure.Management.AlertsManagement.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement.Properties;
 
 namespace Microsoft.Azure.Commands.AlertsManagement
 {
@@ -70,8 +71,8 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         protected override void ProcessRecordInternal()
         {
             if (ShouldProcess(
-                       target: string.Format("Update alert state to {0}", State),
-                       action: "Update Alert state"))
+                target: string.Format(Resources.Target, string.IsNullOrWhiteSpace(AlertId) ? InputObject.Id : AlertId),
+                action: Resources.UpdateAlertState_Action))
             {
                 string id = AlertId;
                 switch (ParameterSetName)

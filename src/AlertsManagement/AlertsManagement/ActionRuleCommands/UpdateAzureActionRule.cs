@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.AlertsManagement.OutputModels;
 using Microsoft.Azure.Management.AlertsManagement.Models;
 using Newtonsoft.Json;
 using System.Collections;
+using Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement.Properties;
 
 namespace Microsoft.Azure.Commands.AlertsManagement
 {
@@ -85,26 +86,31 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         #endregion
 
         protected override void ProcessRecordInternal()
-        {
-            if (ShouldProcess(
-                       target: string.Format("Update Action rule (status/tags)"),
-                       action: "Update Action rule"))
+        {      
+            PSActionRule updatedActionRule = new PSActionRule();
+            switch (ParameterSetName)
             {
-                PSActionRule updatedActionRule = new PSActionRule();
-                switch (ParameterSetName)
-                {
-                    case ByNameSimplifiedPatchParameterSet:
+                case ByNameSimplifiedPatchParameterSet:
+                    if (ShouldProcess(
+                        target: string.Format(Resources.TargetWithRG, this.Name, this.ResourceGroupName),
+                        action: Resources.CreateOrUpdateActionRule_Action))
+                    {
                         updatedActionRule = new PSActionRule(this.AlertsManagementClient.ActionRules.UpdateWithHttpMessagesAsync(
-                            resourceGroupName: ResourceGroupName,
-                            actionRuleName: Name,
-                            actionRulePatch: new PatchObject(
-                                    status: Status,
-                                    tags: Tag
-                                )
-                            ).Result.Body);
-                        break;
+                        resourceGroupName: ResourceGroupName,
+                        actionRuleName: Name,
+                        actionRulePatch: new PatchObject(
+                                status: Status,
+                                tags: Tag
+                            )
+                        ).Result.Body);
+                    }
+                    break;
 
-                    case ByInputObjectParameterSet:
+                case ByInputObjectParameterSet:
+                    if (ShouldProcess(
+                        target: string.Format(Resources.Target, this.InputObject.Id),
+                        action: Resources.CreateOrUpdateActionRule_Action))
+                    {
                         var extractedInfo = CommonUtils.ExtractFromActionRuleResourceId(InputObject.Id);
                         updatedActionRule = new PSActionRule(this.AlertsManagementClient.ActionRules.UpdateWithHttpMessagesAsync(
                             resourceGroupName: extractedInfo.ResourceGroupName,
@@ -114,10 +120,15 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                                     tags: Tag
                                 )
                             ).Result.Body);
-                        break;
+                    }
+                    break;
 
-                    case ByResourceIdParameterSet:
-                        var info = CommonUtils.ExtractFromActionRuleResourceId(InputObject.Id);
+                case ByResourceIdParameterSet:
+                    if (ShouldProcess(
+                        target: string.Format(Resources.Target, this.ResourceId),
+                        action: Resources.CreateOrUpdateActionRule_Action))
+                    {
+                        var info = CommonUtils.ExtractFromActionRuleResourceId(ResourceId);
                         updatedActionRule = new PSActionRule(this.AlertsManagementClient.ActionRules.UpdateWithHttpMessagesAsync(
                             resourceGroupName: info.ResourceGroupName,
                             actionRuleName: info.Resource,
@@ -126,11 +137,11 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                                     tags: Tag
                                 )
                             ).Result.Body);
-                        break;
-                }
-
-                WriteObject(sendToPipeline: updatedActionRule);
+                    }
+                    break;
             }
+
+            WriteObject(sendToPipeline: updatedActionRule);
         }
     }
 }

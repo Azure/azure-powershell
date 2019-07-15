@@ -18,12 +18,6 @@ Set-AzActionRule -InputObject <PSActionRule> [-DefaultProfile <IAzureContextCont
  [<CommonParameters>]
 ```
 
-### ByJsonFormatActionRule
-```
-Set-AzActionRule -ResourceGroupName <String> -Name <String> -ActionRule <String> -ActionRuleType <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### BySimplifiedFormatActionGroupActionRule
 ```
 Set-AzActionRule -ResourceGroupName <String> -Name <String> [-Description <String>] -Status <String>
@@ -46,6 +40,16 @@ Set-AzActionRule -ResourceGroupName <String> -Name <String> [-Description <Strin
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### BySimplifiedFormatDiagnosticsActionRule
+```
+Set-AzActionRule -ResourceGroupName <String> -Name <String> [-Description <String>] -Status <String>
+ -ScopeType <String> -Scope <System.Collections.Generic.List`1[System.String]> [-SeverityCondition <String>]
+ [-MonitorServiceCondition <String>] [-MonitorCondition <String>] [-TargetResourceTypeCondition <String>]
+ [-AlertRuleIdCondition <String>] [-DescriptionCondition <String>] [-AlertContextCondition <String>]
+ -ActionRuleType <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 **Set-AzActionRule** creates or updates an action rule.
 
@@ -64,6 +68,13 @@ PS C:\> Set-AzActionRule -ResourceGroupName "test-rg" -Name "Test-AR" -ScopeType
 ```
 
 This cmdlet creates an action rule for action group.
+
+### Example 3
+```powershell
+PS C:\> Set-AzActionRule -ResourceGroupName "test-rg" -Name "Test-AR" -ScopeType "ResourceGroup" -Scope "/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab","/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/Test-VMs" -SeverityCondition "Equals:Sev0,Sev1" -MonitorCondition "NotEquals:Resolved" -Description "Test description" -Status "Enabled" -ActionRuleType "Diagnostics"
+```
+
+This cmdlet creates an action rule for diagnostics settings.
 
 ## PARAMETERS
 
