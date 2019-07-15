@@ -34,7 +34,7 @@ function Test-Azure {
     )
     $defaults = [System.IO.Path]::GetDirectoryName($PSScriptRoot)
     Start-Job -ScriptBlock {
-        $ARMRoot = "$($using:PSScriptRoot)\..\..\src\Package\$BuildConfig\ResourceManager\AzureResourceManager"
+        $ARMRoot = "$($using:PSScriptRoot)\..\..\src\Package\$($using:BuildConfig)\ResourceManager\AzureResourceManager"
         Import-Module "$ARMRoot\AzureRM.Profile\AzureRM.Profile.psd1;"
         Import-Module "$ARMRoot\AzureRM.Resources\AzureRM.Resources.psd1";
         Set-Location $using:defaults;
