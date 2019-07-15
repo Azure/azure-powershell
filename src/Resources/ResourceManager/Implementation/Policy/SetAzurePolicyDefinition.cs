@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Newtonsoft.Json.Linq;
     using Policy;
     using System;
@@ -84,6 +85,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// Gets or sets the policy definition mode parameter.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.NewPolicyDefinitionModeHelp)]
+        [PSArgumentCompleter(PolicyDefinitionMode.All, PolicyDefinitionMode.Indexed)]
         [ValidateNotNullOrEmpty]
         public string Mode { get; set; }
 
