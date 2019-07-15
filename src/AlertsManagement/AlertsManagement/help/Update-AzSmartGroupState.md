@@ -12,8 +12,15 @@ Updates smart group state
 
 ## SYNTAX
 
+### BySmartGroupId (Default)
 ```
 Update-AzSmartGroupState -SmartGroupId <String> -State <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByInputObject
+```
+Update-AzSmartGroupState -State <String> -InputObject <PSSmartGroup> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -46,12 +53,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Input object from pipeline.
+
+```yaml
+Type: Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup
+Parameter Sets: ByInputObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SmartGroupId
 Unique Identifier of Smart Group / ResourceId of smart group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: BySmartGroupId
 Aliases: ResourceId
 
 Required: True

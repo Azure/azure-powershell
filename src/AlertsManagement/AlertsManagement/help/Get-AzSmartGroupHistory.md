@@ -12,8 +12,15 @@ Gets smart group history
 
 ## SYNTAX
 
+### BySmartGroupId (Default)
 ```
 Get-AzSmartGroupHistory -SmartGroupId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByInputObject
+```
+Get-AzSmartGroupHistory -InputObject <PSSmartGroup> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,12 +52,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Input object from pipeline.
+
+```yaml
+Type: Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup
+Parameter Sets: ByInputObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -SmartGroupId
 Unique Identifier of SmartGroup / ResourceId of alert.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: BySmartGroupId
 Aliases: ResourceId
 
 Required: True

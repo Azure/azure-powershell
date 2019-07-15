@@ -12,8 +12,15 @@ Updates alert state
 
 ## SYNTAX
 
+### ByAlertId (Default)
 ```
 Update-AzAlertState -AlertId <String> -State <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### ByInputObject
+```
+Update-AzAlertState -State <String> -InputObject <PSAlert> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -36,7 +43,7 @@ Unique Identifier of Alert / ResourceId of alert.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByAlertId
 Aliases: ResourceId
 
 Required: True
@@ -58,6 +65,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Input object from pipeline.
+
+```yaml
+Type: Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlert
+Parameter Sets: ByInputObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

@@ -12,8 +12,15 @@ Gets Alert History information
 
 ## SYNTAX
 
+### ByAlertId (Default)
 ```
 Get-AzAlertObjectHistory -AlertId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByInputObject
+```
+Get-AzAlertObjectHistory -InputObject <PSSmartGroup> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,7 +42,7 @@ Unique Identifier of Alert / ResourceId of alert.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByAlertId
 Aliases: ResourceId
 
 Required: True
@@ -57,6 +64,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Input object from pipeline.
+
+```yaml
+Type: Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup
+Parameter Sets: ByInputObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

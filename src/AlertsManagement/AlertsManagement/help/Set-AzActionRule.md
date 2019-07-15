@@ -12,6 +12,15 @@ Create or update an action rule.
 
 ## SYNTAX
 
+### BySimplifiedFormatDiagnosticsActionRule (Default)
+```
+Set-AzActionRule -ResourceGroupName <String> -Name <String> [-Description <String>] -Status <String>
+ -ScopeType <String> -Scope <System.Collections.Generic.List`1[System.String]> [-SeverityCondition <String>]
+ [-MonitorServiceCondition <String>] [-MonitorCondition <String>] [-TargetResourceTypeCondition <String>]
+ [-AlertRuleIdCondition <String>] [-DescriptionCondition <String>] [-AlertContextCondition <String>]
+ -ActionRuleType <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### ByInputObject
 ```
 Set-AzActionRule -InputObject <PSActionRule> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
@@ -24,7 +33,7 @@ Set-AzActionRule -ResourceGroupName <String> -Name <String> [-Description <Strin
  -ScopeType <String> -Scope <System.Collections.Generic.List`1[System.String]> [-SeverityCondition <String>]
  [-MonitorServiceCondition <String>] [-MonitorCondition <String>] [-TargetResourceTypeCondition <String>]
  [-AlertRuleIdCondition <String>] [-DescriptionCondition <String>] [-AlertContextCondition <String>]
- -ActionRuleType <String> [-ActionGroupId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ -ActionRuleType <String> -ActionGroupId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -35,19 +44,8 @@ Set-AzActionRule -ResourceGroupName <String> -Name <String> [-Description <Strin
  [-MonitorServiceCondition <String>] [-MonitorCondition <String>] [-TargetResourceTypeCondition <String>]
  [-AlertRuleIdCondition <String>] [-DescriptionCondition <String>] [-AlertContextCondition <String>]
  -ActionRuleType <String> -ReccurenceType <String> [-SuppressionStartTime <String>]
- [-SuppressionEndTime <String>]
- [-ReccurentValues <System.Collections.Generic.List`1[System.Nullable`1[System.Int32]]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### BySimplifiedFormatDiagnosticsActionRule
-```
-Set-AzActionRule -ResourceGroupName <String> -Name <String> [-Description <String>] -Status <String>
- -ScopeType <String> -Scope <System.Collections.Generic.List`1[System.String]> [-SeverityCondition <String>]
- [-MonitorServiceCondition <String>] [-MonitorCondition <String>] [-TargetResourceTypeCondition <String>]
- [-AlertRuleIdCondition <String>] [-DescriptionCondition <String>] [-AlertContextCondition <String>]
- -ActionRuleType <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-SuppressionEndTime <String>] [-ReccurentValue <Int32[]>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -86,21 +84,6 @@ Type: System.String
 Parameter Sets: BySimplifiedFormatActionGroupActionRule
 Aliases:
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ActionRule
-Action rule Json format
-
-```yaml
-Type: System.String
-Parameter Sets: ByJsonFormatActionRule
-Aliases:
-
 Required: True
 Position: Named
 Default value: None
@@ -113,7 +96,7 @@ Action rule Json format
 
 ```yaml
 Type: System.String
-Parameter Sets: ByJsonFormatActionRule, BySimplifiedFormatActionGroupActionRule, BySimplifiedFormatSuppressionActionRule
+Parameter Sets: BySimplifiedFormatDiagnosticsActionRule, BySimplifiedFormatActionGroupActionRule, BySimplifiedFormatSuppressionActionRule
 Aliases:
 
 Required: True
@@ -129,7 +112,7 @@ Contains:smartgroups
 
 ```yaml
 Type: System.String
-Parameter Sets: BySimplifiedFormatActionGroupActionRule, BySimplifiedFormatSuppressionActionRule
+Parameter Sets: BySimplifiedFormatDiagnosticsActionRule, BySimplifiedFormatActionGroupActionRule, BySimplifiedFormatSuppressionActionRule
 Aliases:
 
 Required: False
@@ -145,7 +128,7 @@ Equals:/subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/abvarm
 
 ```yaml
 Type: System.String
-Parameter Sets: BySimplifiedFormatActionGroupActionRule, BySimplifiedFormatSuppressionActionRule
+Parameter Sets: BySimplifiedFormatDiagnosticsActionRule, BySimplifiedFormatActionGroupActionRule, BySimplifiedFormatSuppressionActionRule
 Aliases:
 
 Required: False
@@ -175,7 +158,7 @@ Description of Action Rule
 
 ```yaml
 Type: System.String
-Parameter Sets: BySimplifiedFormatActionGroupActionRule, BySimplifiedFormatSuppressionActionRule
+Parameter Sets: BySimplifiedFormatDiagnosticsActionRule, BySimplifiedFormatActionGroupActionRule, BySimplifiedFormatSuppressionActionRule
 Aliases:
 
 Required: False
@@ -191,7 +174,7 @@ Contains:Test Alert
 
 ```yaml
 Type: System.String
-Parameter Sets: BySimplifiedFormatActionGroupActionRule, BySimplifiedFormatSuppressionActionRule
+Parameter Sets: BySimplifiedFormatDiagnosticsActionRule, BySimplifiedFormatActionGroupActionRule, BySimplifiedFormatSuppressionActionRule
 Aliases:
 
 Required: False
@@ -222,7 +205,7 @@ NotEquals:Resolved
 
 ```yaml
 Type: System.String
-Parameter Sets: BySimplifiedFormatActionGroupActionRule, BySimplifiedFormatSuppressionActionRule
+Parameter Sets: BySimplifiedFormatDiagnosticsActionRule, BySimplifiedFormatActionGroupActionRule, BySimplifiedFormatSuppressionActionRule
 Aliases:
 
 Required: False
@@ -238,7 +221,7 @@ Equals:Platform,Log Analytics
 
 ```yaml
 Type: System.String
-Parameter Sets: BySimplifiedFormatActionGroupActionRule, BySimplifiedFormatSuppressionActionRule
+Parameter Sets: BySimplifiedFormatDiagnosticsActionRule, BySimplifiedFormatActionGroupActionRule, BySimplifiedFormatSuppressionActionRule
 Aliases:
 
 Required: False
@@ -253,7 +236,7 @@ Action rule Name
 
 ```yaml
 Type: System.String
-Parameter Sets: ByJsonFormatActionRule, BySimplifiedFormatActionGroupActionRule, BySimplifiedFormatSuppressionActionRule
+Parameter Sets: BySimplifiedFormatDiagnosticsActionRule, BySimplifiedFormatActionGroupActionRule, BySimplifiedFormatSuppressionActionRule
 Aliases: ResourceId
 
 Required: True
@@ -283,7 +266,7 @@ Reccurent values, if applicable.In case of Weekly - \[1,2\]
 In case of Monthly - \[1,3,5,30\]
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.Nullable`1[System.Int32]]
+Type: System.Int32[]
 Parameter Sets: BySimplifiedFormatSuppressionActionRule
 Aliases:
 
@@ -299,7 +282,7 @@ Resource Group Name
 
 ```yaml
 Type: System.String
-Parameter Sets: ByJsonFormatActionRule, BySimplifiedFormatActionGroupActionRule, BySimplifiedFormatSuppressionActionRule
+Parameter Sets: BySimplifiedFormatDiagnosticsActionRule, BySimplifiedFormatActionGroupActionRule, BySimplifiedFormatSuppressionActionRule
 Aliases:
 
 Required: True
@@ -314,7 +297,7 @@ Comma separated list of values
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: BySimplifiedFormatActionGroupActionRule, BySimplifiedFormatSuppressionActionRule
+Parameter Sets: BySimplifiedFormatDiagnosticsActionRule, BySimplifiedFormatActionGroupActionRule, BySimplifiedFormatSuppressionActionRule
 Aliases:
 
 Required: True
@@ -329,7 +312,7 @@ Scope Type
 
 ```yaml
 Type: System.String
-Parameter Sets: BySimplifiedFormatActionGroupActionRule, BySimplifiedFormatSuppressionActionRule
+Parameter Sets: BySimplifiedFormatDiagnosticsActionRule, BySimplifiedFormatActionGroupActionRule, BySimplifiedFormatSuppressionActionRule
 Aliases:
 
 Required: True
@@ -345,7 +328,7 @@ Equals:Sev0,Sev1
 
 ```yaml
 Type: System.String
-Parameter Sets: BySimplifiedFormatActionGroupActionRule, BySimplifiedFormatSuppressionActionRule
+Parameter Sets: BySimplifiedFormatDiagnosticsActionRule, BySimplifiedFormatActionGroupActionRule, BySimplifiedFormatSuppressionActionRule
 Aliases:
 
 Required: False
@@ -360,7 +343,7 @@ Status of Action Rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: BySimplifiedFormatActionGroupActionRule, BySimplifiedFormatSuppressionActionRule
+Parameter Sets: BySimplifiedFormatDiagnosticsActionRule, BySimplifiedFormatActionGroupActionRule, BySimplifiedFormatSuppressionActionRule
 Aliases:
 
 Required: True
@@ -410,7 +393,7 @@ Contains:Virtual Machines,Storage Account
 
 ```yaml
 Type: System.String
-Parameter Sets: BySimplifiedFormatActionGroupActionRule, BySimplifiedFormatSuppressionActionRule
+Parameter Sets: BySimplifiedFormatDiagnosticsActionRule, BySimplifiedFormatActionGroupActionRule, BySimplifiedFormatSuppressionActionRule
 Aliases:
 
 Required: False

@@ -11,35 +11,36 @@ Locale: en-US
 Manages alerts, smart groups and action rule configuration for Alerts Management Platform.
 
 ## Az.AlertsManagement Cmdlets
-### [Measure-AzAlertStatistic](Measure-AzAlertStatistic.md)
-Gets the summary of alerts grouped by some properties.
+### [Get-AzActionRule](Get-AzActionRule.md)
+Get Action Rules Information
 
 ### [Get-AzAlert](Get-AzAlert.md)
-Gets list of alerts filtered on various parameters.
+Get Alerts Information
 
 ### [Get-AzAlertObjectHistory](Get-AzAlertObjectHistory.md)
-Gets history of alert - keeps track of monitor condition and state modifications.
-
-### [Update-AzAlertState](Update-AzAlertState.md)
-Updates the state of alert.
+Gets Alert History information
 
 ### [Get-AzSmartGroup](Get-AzSmartGroup.md)
-Gets list of smart group filtered on various parameters.
+Gets Smart Groups information
 
 ### [Get-AzSmartGroupHistory](Get-AzSmartGroupHistory.md)
-Gets history of smart group - keeps track of monitor condition and state modifications.
+Gets smart group history
 
-### [Update-AzSmartGroupState](Update-AzSmartGroupState.md)
-Updates the state of smart group.
-
-### [Get-AzActionRule](Get-AzActionRule.md)
-Gets list of action rule filtered on various parameters.
-
-### [Set-AzActionRule](Set-AzActionRule.md)
-Creates or updates action rule.
-
-### [Update-AzActionRule](Update-AzActionRule.md)
-Updates the status and tags associated with action rule.
+### [Measure-AzAlertStatistic](Measure-AzAlertStatistic.md)
+Gets Alert Summary Information
 
 ### [Remove-AzActionRule](Remove-AzActionRule.md)
-Deletes action rule.
+Deletes a action group
+
+### [Set-AzActionRule](Set-AzActionRule.md)
+Create or update an action rule.
+
+### [Update-AzActionRule](Update-AzActionRule.md)
+Updates action rule properties.
+
+### [Update-AzAlertState](Update-AzAlertState.md)
+Updates alert state
+
+### [Update-AzSmartGroupState](Update-AzSmartGroupState.md)
+Updates smart group state
+
