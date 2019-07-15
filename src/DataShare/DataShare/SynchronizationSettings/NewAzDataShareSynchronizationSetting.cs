@@ -81,7 +81,6 @@ namespace Microsoft.Azure.Commands.DataShare.SynchronizationSetting
             HelpMessage = "Synchronization setting name",
             ParameterSetName = ParameterSetNames.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
-        [ResourceNameCompleter(ResourceTypes.SynchronizationSetting, "ResourceGroupName", "AccountName", "ShareName")]
         public string Name { get; set; }
 
         /// <summary>

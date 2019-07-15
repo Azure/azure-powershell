@@ -60,7 +60,6 @@ namespace Microsoft.Azure.Commands.DataShare.ShareSubscription
             ParameterSetName = ParameterSetNames.FieldsParameterSet, 
             HelpMessage = "Azure data share subscription name")]
         [ValidateNotNullOrEmpty]
-        [ResourceNameCompleter(ResourceTypes.ShareSubscription, "ResourceGroupName", "AccountName")]
         public string Name { get; set; }
 
         /// <summary>

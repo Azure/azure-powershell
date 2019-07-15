@@ -50,7 +50,6 @@ namespace Microsoft.Azure.Commands.DataShare.Account
         /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "Azure data share account name.")]
         [ValidateNotNullOrEmpty]
-        [ResourceNameCompleter(ResourceTypes.Account, "ResourceGroupName")]
         public string Name { get; set; }
 
         /// <summary>

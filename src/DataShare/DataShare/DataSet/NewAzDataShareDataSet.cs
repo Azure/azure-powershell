@@ -119,7 +119,6 @@ namespace Microsoft.Azure.Commands.DataShare.DataSet
             HelpMessage = "Azure data set name",
             ParameterSetName = ParameterSetNames.AdlsGen1DataSetParameterSet)]
         [ValidateNotNullOrEmpty]
-        [ResourceNameCompleter(ResourceTypes.DataSet, "ResourceGroupName", "AccountName", "ShareName")]
         public string Name { get; set; }
 
         /// <summary>
@@ -141,6 +140,7 @@ namespace Microsoft.Azure.Commands.DataShare.DataSet
             HelpMessage = "Azure storage account resourceId",
             ParameterSetName = ParameterSetNames.AdlsGen1DataSetParameterSet)]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter(ResourceTypes.StorageAccount, "ResourceGroupName")]
         public string StorageAccountResourceId { get; set; }
 
         /// <summary>
