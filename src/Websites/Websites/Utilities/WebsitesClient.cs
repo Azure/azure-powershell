@@ -330,7 +330,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 }
 
                 // if there are no compatible versions subsequent to the minimum versions, we don't continue because the command will fail
-                if (compatibleVersions.Where(v => v.CompareTo(minimumVersion) > 0).Count() > 0)
+                if (compatibleVersions.Where(v => v.CompareTo(minimumVersion) > 0).Count() == 0)
                 {
                     WriteError(Properties.Resources.EnterContainerPSSessionPSCoreVersionNotSupported);
 
