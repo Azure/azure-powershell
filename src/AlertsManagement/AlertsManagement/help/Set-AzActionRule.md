@@ -15,7 +15,7 @@ Create or update an action rule.
 ### BySimplifiedFormatDiagnosticsActionRule (Default)
 ```
 Set-AzActionRule -ResourceGroupName <String> -Name <String> [-Description <String>] -Status <String>
- -ScopeType <String> -Scope <System.Collections.Generic.List`1[System.String]> [-SeverityCondition <String>]
+ -Scope <System.Collections.Generic.List`1[System.String]> [-SeverityCondition <String>]
  [-MonitorServiceCondition <String>] [-MonitorCondition <String>] [-TargetResourceTypeCondition <String>]
  [-AlertRuleIdCondition <String>] [-DescriptionCondition <String>] [-AlertContextCondition <String>]
  -ActionRuleType <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -30,7 +30,7 @@ Set-AzActionRule -InputObject <PSActionRule> [-DefaultProfile <IAzureContextCont
 ### BySimplifiedFormatActionGroupActionRule
 ```
 Set-AzActionRule -ResourceGroupName <String> -Name <String> [-Description <String>] -Status <String>
- -ScopeType <String> -Scope <System.Collections.Generic.List`1[System.String]> [-SeverityCondition <String>]
+ -Scope <System.Collections.Generic.List`1[System.String]> [-SeverityCondition <String>]
  [-MonitorServiceCondition <String>] [-MonitorCondition <String>] [-TargetResourceTypeCondition <String>]
  [-AlertRuleIdCondition <String>] [-DescriptionCondition <String>] [-AlertContextCondition <String>]
  -ActionRuleType <String> -ActionGroupId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
@@ -40,7 +40,7 @@ Set-AzActionRule -ResourceGroupName <String> -Name <String> [-Description <Strin
 ### BySimplifiedFormatSuppressionActionRule
 ```
 Set-AzActionRule -ResourceGroupName <String> -Name <String> [-Description <String>] -Status <String>
- -ScopeType <String> -Scope <System.Collections.Generic.List`1[System.String]> [-SeverityCondition <String>]
+ -Scope <System.Collections.Generic.List`1[System.String]> [-SeverityCondition <String>]
  [-MonitorServiceCondition <String>] [-MonitorCondition <String>] [-TargetResourceTypeCondition <String>]
  [-AlertRuleIdCondition <String>] [-DescriptionCondition <String>] [-AlertContextCondition <String>]
  -ActionRuleType <String> -ReccurenceType <String> [-SuppressionStartTime <String>]
@@ -55,21 +55,21 @@ Set-AzActionRule -ResourceGroupName <String> -Name <String> [-Description <Strin
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzActionRule -ResourceGroupName "test-rg" -Name "Test-AR" -ScopeType "ResourceGroup" -Scope "/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab","/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/Test-VMs" -SeverityCondition "Equals:Sev0,Sev1" -MonitorCondition "NotEquals:Resolved" -Description "Test description" -Status "Enabled" -ActionRuleType "Suppression" -ReccurenceType "Weekly" -SuppressionStartTime "06/26/2018 06:00:00" -SuppressionEndTime "07/27/2018 06:00:00" -ReccurentValue 1,4,6
+PS C:\> Set-AzActionRule -ResourceGroupName "test-rg" -Name "Test-AR" -Scope "/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab","/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/Test-VMs" -SeverityCondition "Equals:Sev0,Sev1" -MonitorCondition "NotEquals:Resolved" -Description "Test description" -Status "Enabled" -ActionRuleType "Suppression" -ReccurenceType "Weekly" -SuppressionStartTime "06/26/2018 06:00:00" -SuppressionEndTime "07/27/2018 06:00:00" -ReccurentValue 1,4,6
 ```
 
 This cmdlet creates an action rule for supression.
 
 ### Example 2
 ```powershell
-PS C:\> Set-AzActionRule -ResourceGroupName "test-rg" -Name "Test-AR" -ScopeType "ResourceGroup" -Scope "/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab","/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/Test-VMs" -SeverityCondition "Equals:Sev0,Sev1" -MonitorCondition "NotEquals:Resolved" -Description "Test description" -Status "Enabled" -ActionRuleType "ActionGroup" -ActionGroupId "/subscriptions/1e3ff1c0-771a-4119-a03b-be82a51e232d/resourceGroups/alertscorrelationrg/providers/Microsoft.insights/actiongroups/testAG"
+PS C:\> Set-AzActionRule -ResourceGroupName "test-rg" -Name "Test-AR" -Scope "/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab","/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/Test-VMs" -SeverityCondition "Equals:Sev0,Sev1" -MonitorCondition "NotEquals:Resolved" -Description "Test description" -Status "Enabled" -ActionRuleType "ActionGroup" -ActionGroupId "/subscriptions/1e3ff1c0-771a-4119-a03b-be82a51e232d/resourceGroups/alertscorrelationrg/providers/Microsoft.insights/actiongroups/testAG"
 ```
 
 This cmdlet creates an action rule for action group.
 
 ### Example 3
 ```powershell
-PS C:\> Set-AzActionRule -ResourceGroupName "test-rg" -Name "Test-AR" -ScopeType "ResourceGroup" -Scope "/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab","/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/Test-VMs" -SeverityCondition "Equals:Sev0,Sev1" -MonitorCondition "NotEquals:Resolved" -Description "Test description" -Status "Enabled" -ActionRuleType "Diagnostics"
+PS C:\> Set-AzActionRule -ResourceGroupName "test-rg" -Name "Test-AR" -Scope "/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab","/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/Test-VMs" -SeverityCondition "Equals:Sev0,Sev1" -MonitorCondition "NotEquals:Resolved" -Description "Test description" -Status "Enabled" -ActionRuleType "Diagnostics"
 ```
 
 This cmdlet creates an action rule for diagnostics settings.
@@ -297,21 +297,6 @@ Comma separated list of values
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: BySimplifiedFormatDiagnosticsActionRule, BySimplifiedFormatActionGroupActionRule, BySimplifiedFormatSuppressionActionRule
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ScopeType
-Scope Type
-
-```yaml
-Type: System.String
 Parameter Sets: BySimplifiedFormatDiagnosticsActionRule, BySimplifiedFormatActionGroupActionRule, BySimplifiedFormatSuppressionActionRule
 Aliases:
 
