@@ -22,8 +22,8 @@ Set-AzDnsZone -Name <String> -ResourceGroupName <String> -SubscriptionId <String
 
 ### UpdateExpanded1
 ```
-Set-AzDnsZone -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-IfMatch <String>]
- [-IfNoneMatch <String>] [-Etag <String>] [-Location <String>] [-RegistrationVirtualNetwork <ISubResource[]>]
+Set-AzDnsZone -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Location <String>
+ [-IfMatch <String>] [-IfNoneMatch <String>] [-Etag <String>] [-RegistrationVirtualNetwork <ISubResource[]>]
  [-ResolutionVirtualNetwork <ISubResource[]>] [-Tag <Hashtable>] [-ZoneType <ZoneType>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -129,7 +129,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded1
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

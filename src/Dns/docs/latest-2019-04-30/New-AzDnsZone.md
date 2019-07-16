@@ -22,18 +22,18 @@ New-AzDnsZone -Name <String> -ResourceGroupName <String> -SubscriptionId <String
 
 ### CreateExpanded1
 ```
-New-AzDnsZone -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-IfMatch <String>]
- [-IfNoneMatch <String>] [-Etag <String>] [-Location <String>] [-RegistrationVirtualNetwork <ISubResource[]>]
+New-AzDnsZone -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Location <String>
+ [-IfMatch <String>] [-IfNoneMatch <String>] [-Etag <String>] [-RegistrationVirtualNetwork <ISubResource[]>]
  [-ResolutionVirtualNetwork <ISubResource[]>] [-Tag <Hashtable>] [-ZoneType <ZoneType>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded1
 ```
-New-AzDnsZone -InputObject <IDnsIdentity> [-IfMatch <String>] [-IfNoneMatch <String>] [-Etag <String>]
- [-Location <String>] [-RegistrationVirtualNetwork <ISubResource[]>]
- [-ResolutionVirtualNetwork <ISubResource[]>] [-Tag <Hashtable>] [-ZoneType <ZoneType>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzDnsZone -InputObject <IDnsIdentity> -Location <String> [-IfMatch <String>] [-IfNoneMatch <String>]
+ [-Etag <String>] [-RegistrationVirtualNetwork <ISubResource[]>] [-ResolutionVirtualNetwork <ISubResource[]>]
+ [-Tag <Hashtable>] [-ZoneType <ZoneType>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentity1
@@ -159,7 +159,7 @@ Type: System.String
 Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
