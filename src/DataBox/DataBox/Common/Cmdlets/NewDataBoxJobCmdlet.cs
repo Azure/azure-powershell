@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.DataBox.Common
         public String[] StorageAccountResourceId;
 
         [Parameter(Mandatory = true)]
-        [ValidateSet("DataBoxDisk", "Databox", "DataBoxHeavy")]
+        [ValidateSet("DataBoxDisk", "DataBox", "DataBoxHeavy")]
         public string DataBoxType;
 
         [Parameter(Mandatory = false)]
