@@ -7,7 +7,7 @@
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"type\": \"Suppression\",\r\n    \"suppressionConfig\": {\r\n      \"recurrenceType\": \"Weekly\",\r\n      \"schedule\": {\r\n        \"startDate\": \"06/26/2018\",\r\n        \"endDate\": \"07/27/2018\",\r\n        \"startTime\": \"06:00:00\",\r\n        \"endTime\": \"06:00:00\",\r\n        \"recurrenceValues\": [\r\n          1,\r\n          4,\r\n          6\r\n        ]\r\n      }\r\n    },\r\n    \"scope\": {\r\n      \"scopeType\": \"ResourceGroup\",\r\n      \"values\": [\r\n        \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab\",\r\n        \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/Test-VMs\"\r\n      ]\r\n    },\r\n    \"conditions\": {\r\n      \"severity\": {\r\n        \"operator\": \"Equals\",\r\n        \"values\": [\r\n          \"Sev0\",\r\n          \"Sev1\"\r\n        ]\r\n      },\r\n      \"monitorCondition\": {\r\n        \"operator\": \"NotEquals\",\r\n        \"values\": [\r\n          \"Resolved\"\r\n        ]\r\n      }\r\n    },\r\n    \"description\": \"Test description\",\r\n    \"status\": \"Enabled\"\r\n  },\r\n  \"location\": \"Global\",\r\n  \"tags\": {}\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d08ff21e-edce-49ca-aa20-b21b1ee72fd2"
+          "17feb138-fc88-46bc-a197-e198c4b94043"
         ],
         "Accept-Language": [
           "en-US"
@@ -33,7 +33,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "c46f6450-7f19-43d5-8676-5d187ea28757"
+          "2d950fda-3471-4cbe-b73b-c129d3892ee1"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -45,16 +45,16 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "c8ed25bc-62b6-481b-9430-3b61d5f70ca4"
+          "17622ddc-fcfe-44ad-be00-9f52b8e642f8"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20190712T142030Z:c8ed25bc-62b6-481b-9430-3b61d5f70ca4"
+          "SOUTHINDIA:20190716T145408Z:17622ddc-fcfe-44ad-be00-9f52b8e642f8"
         ],
         "Date": [
-          "Fri, 12 Jul 2019 14:20:30 GMT"
+          "Tue, 16 Jul 2019 14:54:08 GMT"
         ],
         "Content-Length": [
-          "1048"
+          "1062"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -63,7 +63,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"conditions\": {\r\n      \"severity\": {\r\n        \"operator\": \"Equals\",\r\n        \"values\": [\r\n          \"Sev0\",\r\n          \"Sev1\"\r\n        ]\r\n      },\r\n      \"monitorCondition\": {\r\n        \"operator\": \"NotEquals\",\r\n        \"values\": [\r\n          \"Resolved\"\r\n        ]\r\n      }\r\n    },\r\n    \"status\": \"Enabled\",\r\n    \"type\": \"Suppression\",\r\n    \"scope\": {\r\n      \"scopeType\": \"ResourceGroup\",\r\n      \"values\": [\r\n        \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab\",\r\n        \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/Test-VMs\"\r\n      ]\r\n    },\r\n    \"suppressionConfig\": {\r\n      \"recurrenceType\": \"Weekly\",\r\n      \"schedule\": {\r\n        \"startDate\": \"06/26/2018\",\r\n        \"endDate\": \"07/27/2018\",\r\n        \"startTime\": \"06:00:00\",\r\n        \"endTime\": \"06:00:00\",\r\n        \"recurrenceValues\": [\r\n          1,\r\n          4,\r\n          6\r\n        ]\r\n      }\r\n    },\r\n    \"description\": \"Test description\",\r\n    \"createdAt\": \"2019-07-12T14:20:29.6267816Z\",\r\n    \"createdBy\": \"User\",\r\n    \"lastModifiedAt\": \"2019-07-12T14:20:29.6267816Z\",\r\n    \"lastModifiedBy\": \"User\"\r\n  },\r\n  \"location\": \"Global\",\r\n  \"id\": \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/ActionRules-Powershell-Test/providers/Microsoft.AlertsManagement/actionRules/ScenarioTest-Suppression-ActionRule\",\r\n  \"type\": \"Microsoft.AlertsManagement/actionRules\",\r\n  \"name\": \"ScenarioTest-Suppression-ActionRule\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"conditions\": {\r\n      \"severity\": {\r\n        \"operator\": \"Equals\",\r\n        \"values\": [\r\n          \"Sev0\",\r\n          \"Sev1\"\r\n        ]\r\n      },\r\n      \"monitorCondition\": {\r\n        \"operator\": \"NotEquals\",\r\n        \"values\": [\r\n          \"Resolved\"\r\n        ]\r\n      }\r\n    },\r\n    \"status\": \"Enabled\",\r\n    \"type\": \"Suppression\",\r\n    \"scope\": {\r\n      \"scopeType\": \"ResourceGroup\",\r\n      \"values\": [\r\n        \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab\",\r\n        \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/Test-VMs\"\r\n      ]\r\n    },\r\n    \"suppressionConfig\": {\r\n      \"recurrenceType\": \"Weekly\",\r\n      \"schedule\": {\r\n        \"startDate\": \"06/26/2018\",\r\n        \"endDate\": \"07/27/2018\",\r\n        \"startTime\": \"06:00:00\",\r\n        \"endTime\": \"06:00:00\",\r\n        \"recurrenceValues\": [\r\n          1,\r\n          4,\r\n          6\r\n        ]\r\n      }\r\n    },\r\n    \"description\": \"Test description\",\r\n    \"createdAt\": \"2019-07-15T07:14:14.092738Z\",\r\n    \"createdBy\": \"mahja@microsoft.com\",\r\n    \"lastModifiedAt\": \"2019-07-16T14:54:08.2514375Z\",\r\n    \"lastModifiedBy\": \"User\"\r\n  },\r\n  \"location\": \"Global\",\r\n  \"id\": \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/ActionRules-Powershell-Test/providers/Microsoft.AlertsManagement/actionRules/ScenarioTest-Suppression-ActionRule\",\r\n  \"type\": \"Microsoft.AlertsManagement/actionRules\",\r\n  \"name\": \"ScenarioTest-Suppression-ActionRule\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -73,7 +73,7 @@
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"status\": \"Disabled\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "5f11cc3b-cfb2-43fc-8649-dc07de5988c7"
+          "d823e6d7-d58a-4965-a98c-c5c67fc47cf1"
         ],
         "Accept-Language": [
           "en-US"
@@ -99,7 +99,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "f5953d20-c0ba-4241-9190-3b2d79934659"
+          "7b82665d-4246-4002-9ac7-248a87c5ebc6"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -111,16 +111,16 @@
           "1198"
         ],
         "x-ms-correlation-request-id": [
-          "96b59204-72b0-4f6b-8a64-f8d772b7ccb6"
+          "f3e874ca-f9c2-4cee-8441-c3b485f79011"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20190712T142031Z:96b59204-72b0-4f6b-8a64-f8d772b7ccb6"
+          "SOUTHINDIA:20190716T145410Z:f3e874ca-f9c2-4cee-8441-c3b485f79011"
         ],
         "Date": [
-          "Fri, 12 Jul 2019 14:20:31 GMT"
+          "Tue, 16 Jul 2019 14:54:09 GMT"
         ],
         "Content-Length": [
-          "1049"
+          "1063"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -129,7 +129,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"conditions\": {\r\n      \"severity\": {\r\n        \"operator\": \"Equals\",\r\n        \"values\": [\r\n          \"Sev0\",\r\n          \"Sev1\"\r\n        ]\r\n      },\r\n      \"monitorCondition\": {\r\n        \"operator\": \"NotEquals\",\r\n        \"values\": [\r\n          \"Resolved\"\r\n        ]\r\n      }\r\n    },\r\n    \"status\": \"Disabled\",\r\n    \"type\": \"Suppression\",\r\n    \"scope\": {\r\n      \"scopeType\": \"ResourceGroup\",\r\n      \"values\": [\r\n        \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab\",\r\n        \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/Test-VMs\"\r\n      ]\r\n    },\r\n    \"suppressionConfig\": {\r\n      \"recurrenceType\": \"Weekly\",\r\n      \"schedule\": {\r\n        \"startDate\": \"06/26/2018\",\r\n        \"endDate\": \"07/27/2018\",\r\n        \"startTime\": \"06:00:00\",\r\n        \"endTime\": \"06:00:00\",\r\n        \"recurrenceValues\": [\r\n          1,\r\n          4,\r\n          6\r\n        ]\r\n      }\r\n    },\r\n    \"description\": \"Test description\",\r\n    \"createdAt\": \"2019-07-12T14:20:29.6267816Z\",\r\n    \"createdBy\": \"User\",\r\n    \"lastModifiedAt\": \"2019-07-12T14:20:31.5175561Z\",\r\n    \"lastModifiedBy\": \"User\"\r\n  },\r\n  \"location\": \"Global\",\r\n  \"id\": \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/ActionRules-Powershell-Test/providers/Microsoft.AlertsManagement/actionRules/ScenarioTest-Suppression-ActionRule\",\r\n  \"type\": \"Microsoft.AlertsManagement/actionRules\",\r\n  \"name\": \"ScenarioTest-Suppression-ActionRule\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"conditions\": {\r\n      \"severity\": {\r\n        \"operator\": \"Equals\",\r\n        \"values\": [\r\n          \"Sev0\",\r\n          \"Sev1\"\r\n        ]\r\n      },\r\n      \"monitorCondition\": {\r\n        \"operator\": \"NotEquals\",\r\n        \"values\": [\r\n          \"Resolved\"\r\n        ]\r\n      }\r\n    },\r\n    \"status\": \"Disabled\",\r\n    \"type\": \"Suppression\",\r\n    \"scope\": {\r\n      \"scopeType\": \"ResourceGroup\",\r\n      \"values\": [\r\n        \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab\",\r\n        \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/Test-VMs\"\r\n      ]\r\n    },\r\n    \"suppressionConfig\": {\r\n      \"recurrenceType\": \"Weekly\",\r\n      \"schedule\": {\r\n        \"startDate\": \"06/26/2018\",\r\n        \"endDate\": \"07/27/2018\",\r\n        \"startTime\": \"06:00:00\",\r\n        \"endTime\": \"06:00:00\",\r\n        \"recurrenceValues\": [\r\n          1,\r\n          4,\r\n          6\r\n        ]\r\n      }\r\n    },\r\n    \"description\": \"Test description\",\r\n    \"createdAt\": \"2019-07-15T07:14:14.092738Z\",\r\n    \"createdBy\": \"mahja@microsoft.com\",\r\n    \"lastModifiedAt\": \"2019-07-16T14:54:09.3295846Z\",\r\n    \"lastModifiedBy\": \"User\"\r\n  },\r\n  \"location\": \"Global\",\r\n  \"id\": \"/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/ActionRules-Powershell-Test/providers/Microsoft.AlertsManagement/actionRules/ScenarioTest-Suppression-ActionRule\",\r\n  \"type\": \"Microsoft.AlertsManagement/actionRules\",\r\n  \"name\": \"ScenarioTest-Suppression-ActionRule\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -139,7 +139,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a9da4a3d-c552-41f8-a0f7-7c44e0907894"
+          "20c7c6bd-8881-49ce-80c4-67319e867c24"
         ],
         "Accept-Language": [
           "en-US"
@@ -159,7 +159,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "a76eeaf8-ac97-4b41-bf52-c6a66371812a"
+          "1a990b98-68d8-4b93-83e1-ab9792072784"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -171,13 +171,13 @@
           "14999"
         ],
         "x-ms-correlation-request-id": [
-          "08966233-f89c-48d5-bbc4-9ec869087bda"
+          "c03b4d50-f2d3-4a6f-88a2-2353b338b299"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20190712T142035Z:08966233-f89c-48d5-bbc4-9ec869087bda"
+          "SOUTHINDIA:20190716T145415Z:c03b4d50-f2d3-4a6f-88a2-2353b338b299"
         ],
         "Date": [
-          "Fri, 12 Jul 2019 14:20:34 GMT"
+          "Tue, 16 Jul 2019 14:54:14 GMT"
         ],
         "Content-Length": [
           "4"

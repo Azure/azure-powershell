@@ -105,72 +105,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            string code = null;
-            HttpStatusCode? statusCode = null;
-            string reasonPhrase = null;
-            string message = null;
-            string exName = null;
-
-            try
-            {
-                this.ProcessRecordInternal();
-            }
-            catch (AggregateException ex)
-            {
-                // Process the exception to be as informative as possible to the user
-                var exTemp = ex.Flatten().InnerException ?? ex;
-                exName = exTemp.GetType().Name;
-                message = exTemp.Message;
-
-                if (exTemp is RestException)
-                {
-                    // Extract relevant information for CloudExceptions and throw
-                    var cloudException = exTemp as CloudException;
-                    if (cloudException != null)
-                    {
-                        message = cloudException.Body.Message;
-                        code = cloudException.Body.Code;
-                        statusCode = cloudException.Response.StatusCode;
-                        reasonPhrase = cloudException.Response.ReasonPhrase;
-                        throw cloudException;
-                    }
-                    else
-                    {                        
-                        // New model to report errors (from Swagger Spec)
-                        var errorResponse = exTemp as ErrorResponseException;
-                        if (errorResponse != null)
-                        {
-                            statusCode = errorResponse.Response.StatusCode;
-                            reasonPhrase = errorResponse.Response.ReasonPhrase;
-                        }
-                        else
-                        {
-                            message = exTemp.ToString();
-                        }
-
-                        throw errorResponse;
-                    }
-                }
-
-                throw exTemp;
-            }
-            catch (Exception ex)
-            {
-                //Deals with any generic exception
-                exName = ex.GetType().Name;
-                message = ex.ToString();
-
-                throw new PSInvalidOperationException(
-                    string.Format(
-                        CultureInfo.InvariantCulture,
-                        "Exception type: {0}, Message: {1}, Code: {2}, Status code:{3}, Reason phrase: {4}",
-                        exName,
-                        string.IsNullOrWhiteSpace(message) ? "Null/Empty" : message,
-                        code ?? "Null",
-                        statusCode.HasValue ? statusCode.Value.ToString() : "Null",
-                        reasonPhrase ?? "Null"),
-                    ex);
-            }
+            this.ProcessRecordInternal();
         }
     }
 }
