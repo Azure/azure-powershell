@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.DataShare.ProviderShareSubscription
         {
             if (this.ShouldProcess(this.ShareSubscriptionId, "Grant access to source share"))
             {
-                if (this.ParameterSetName.Equals(ParameterSetNames.ResourceIdParameterSet))
+                if (this.ParameterSetName.Equals(ParameterSetNames.ProviderShareSubscriptionIdParameterSet))
                 {
                     var parsedResourceId = new ResourceIdentifier(this.ResourceId);
                     this.AccountName = parsedResourceId.GetAccountName();
