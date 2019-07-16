@@ -23,16 +23,17 @@ Test-AzNetworkWatcherIPFlow -NetworkWatcherName <String> -ResourceGroupName <Str
 ```
 Test-AzNetworkWatcherIPFlow -NetworkWatcherName <String> -ResourceGroupName <String> -SubscriptionId <String>
  -Direction <Direction> -LocalIPAddress <String> -LocalPort <String> -Protocol <IPFlowProtocol>
- -RemoteIPAddress <String> -RemotePort <String> -TargetResourceId <String> [-TargetNicResourceId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -RemoteIPAddress <String> -RemotePort <String> -TargetResourceId <String>
+ [-NetworkInterfaceResourceId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### VerifyViaIdentityExpanded
 ```
 Test-AzNetworkWatcherIPFlow -InputObject <INetworkIdentity> -Direction <Direction> -LocalIPAddress <String>
  -LocalPort <String> -Protocol <IPFlowProtocol> -RemoteIPAddress <String> -RemotePort <String>
- -TargetResourceId <String> [-TargetNicResourceId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -TargetResourceId <String> [-NetworkInterfaceResourceId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### VerifyViaIdentity
@@ -158,6 +159,24 @@ Parameter Sets: VerifyExpanded, VerifyViaIdentityExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NetworkInterfaceResourceId
+The NIC ID.
+(If VM has multiple NICs and IP forwarding is enabled on any of them, then this parameter must be specified.
+Otherwise optional).
+
+```yaml
+Type: System.String
+Parameter Sets: VerifyExpanded, VerifyViaIdentityExpanded
+Aliases: TargetNetworkInterfaceId
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -298,31 +317,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -TargetNicResourceId
-The NIC ID.
-(If VM has multiple NICs and IP forwarding is enabled on any of them, then this parameter must be specified.
-Otherwise optional).
-
-```yaml
-Type: System.String
-Parameter Sets: VerifyExpanded, VerifyViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -TargetResourceId
 The ID of the target resource to perform next-hop on.
 
 ```yaml
 Type: System.String
 Parameter Sets: VerifyExpanded, VerifyViaIdentityExpanded
-Aliases:
+Aliases: TargetVirtualMachineId
 
 Required: True
 Position: Named

@@ -21,22 +21,20 @@ New-AzVpnSite -Name <String> -ResourceGroupName <String> -SubscriptionId <String
 
 ### CreateExpanded
 ```
-New-AzVpnSite -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-AddressSpaceAddressPrefix <String[]>] [-BgpPropertyAsn <Int64>] [-BgpPropertyBgpPeeringAddress <String>]
- [-BgpPropertyPeerWeight <Int32>] [-DevicePropertyDeviceModel <String>] [-DevicePropertyDeviceVendor <String>]
- [-DevicePropertyLinkSpeedInMbps <Int32>] [-IPAddress <String>] [-Id <String>] [-IsSecuritySite]
+New-AzVpnSite -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-AddressPrefix <String[]>]
+ [-BgpAsn <Int64>] [-BgpPeerWeight <Int32>] [-BgpPeeringAddress <String>] [-DeviceModel <String>]
+ [-DeviceVendor <String>] [-IPAddress <String>] [-Id <String>] [-IsSecuritySite] [-LinkSpeedInMbps <Int32>]
  [-Location <String>] [-SiteKey <String>] [-Tag <Hashtable>] [-VirtualWanId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzVpnSite -InputObject <INetworkIdentity> [-AddressSpaceAddressPrefix <String[]>]
- [-BgpPropertyAsn <Int64>] [-BgpPropertyBgpPeeringAddress <String>] [-BgpPropertyPeerWeight <Int32>]
- [-DevicePropertyDeviceModel <String>] [-DevicePropertyDeviceVendor <String>]
- [-DevicePropertyLinkSpeedInMbps <Int32>] [-IPAddress <String>] [-Id <String>] [-IsSecuritySite]
- [-Location <String>] [-SiteKey <String>] [-Tag <Hashtable>] [-VirtualWanId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzVpnSite -InputObject <INetworkIdentity> [-AddressPrefix <String[]>] [-BgpAsn <Int64>]
+ [-BgpPeerWeight <Int32>] [-BgpPeeringAddress <String>] [-DeviceModel <String>] [-DeviceVendor <String>]
+ [-IPAddress <String>] [-Id <String>] [-IsSecuritySite] [-LinkSpeedInMbps <Int32>] [-Location <String>]
+ [-SiteKey <String>] [-Tag <Hashtable>] [-VirtualWanId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -70,13 +68,13 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -AddressSpaceAddressPrefix
+### -AddressPrefix
 A list of address blocks reserved for this virtual network in CIDR notation.
 
 ```yaml
 Type: System.String[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Aliases: AddressSpace
 
 Required: False
 Position: Named
@@ -102,13 +100,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -BgpPropertyAsn
+### -BgpAsn
 The BGP speaker's ASN.
 
 ```yaml
 Type: System.Int64
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Aliases: Asn
 
 Required: False
 Position: Named
@@ -118,7 +116,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -BgpPropertyBgpPeeringAddress
+### -BgpPeeringAddress
 The BGP peering address and BGP identifier of this BGP speaker.
 
 ```yaml
@@ -134,13 +132,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -BgpPropertyPeerWeight
+### -BgpPeerWeight
 The weight added to routes learned from this BGP speaker.
 
 ```yaml
 Type: System.Int32
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Aliases: PeerWeight, BgpPeeringWeight
 
 Required: False
 Position: Named
@@ -166,7 +164,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -DevicePropertyDeviceModel
+### -DeviceModel
 Model of the device.
 
 ```yaml
@@ -182,7 +180,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -DevicePropertyDeviceVendor
+### -DeviceVendor
 Name of the device Vendor.
 
 ```yaml
@@ -193,22 +191,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -DevicePropertyLinkSpeedInMbps
-Link speed.
-
-```yaml
-Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -278,6 +260,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -LinkSpeedInMbps
+Link speed.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Location
 Resource location.
 
@@ -332,7 +330,7 @@ The resource group name of the VpnSite.
 ```yaml
 Type: System.String
 Parameter Sets: Create, CreateExpanded
-Aliases:
+Aliases: VirtualWan, VirtualWanName, VirtualWanResourceGroupName
 
 Required: True
 Position: Named

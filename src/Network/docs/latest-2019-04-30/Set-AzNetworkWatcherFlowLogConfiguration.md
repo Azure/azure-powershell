@@ -22,13 +22,10 @@ Set-AzNetworkWatcherFlowLogConfiguration -NetworkWatcherName <String> -ResourceG
 ### SetExpanded
 ```
 Set-AzNetworkWatcherFlowLogConfiguration -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -Enabled -NetworkWatcherFlowAnalyticConfigurationEnabled
- -NetworkWatcherFlowAnalyticConfigurationWorkspaceId <String>
- -NetworkWatcherFlowAnalyticConfigurationWorkspaceRegion <String>
- -NetworkWatcherFlowAnalyticConfigurationWorkspaceResourceId <String> -StorageId <String>
- -TargetResourceId <String> [-FormatType <FlowLogFormatType>] [-FormatVersion <Int32>]
- [-NetworkWatcherFlowAnalyticConfigurationTrafficAnalyticsInterval <Int32>] [-RetentionPolicyDay <Int32>]
- [-RetentionPolicyEnabled] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ -SubscriptionId <String> -EnableFlowLog -EnableTrafficAnalytics -StorageAccountId <String>
+ -TargetResourceId <String> -WorkspaceGuid <String> -WorkspaceLocation <String> -WorkspaceResourceId <String>
+ [-EnableRetention] [-FormatType <FlowLogFormatType>] [-FormatVersion <Int32>] [-RetentionInDays <Int32>]
+ [-TrafficAnalyticsInterval <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -89,8 +86,40 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Enabled
+### -EnableFlowLog
 Flag to enable/disable flow logging.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: SetExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -EnableRetention
+Flag to enable/disable retention.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: SetExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -EnableTrafficAnalytics
+Flag to enable/disable traffic analytics.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -132,86 +161,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -NetworkWatcherFlowAnalyticConfigurationEnabled
-Flag to enable/disable traffic analytics.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: SetExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -NetworkWatcherFlowAnalyticConfigurationTrafficAnalyticsInterval
-The interval in minutes which would decide how frequently TA service should do flow analytics
-
-```yaml
-Type: System.Int32
-Parameter Sets: SetExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -NetworkWatcherFlowAnalyticConfigurationWorkspaceId
-The resource guid of the attached workspace
-
-```yaml
-Type: System.String
-Parameter Sets: SetExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -NetworkWatcherFlowAnalyticConfigurationWorkspaceRegion
-The location of the attached workspace
-
-```yaml
-Type: System.String
-Parameter Sets: SetExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -NetworkWatcherFlowAnalyticConfigurationWorkspaceResourceId
-Resource Id of the attached workspace
-
-```yaml
-Type: System.String
-Parameter Sets: SetExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -272,7 +221,7 @@ The name of the network watcher resource group.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: Location
+Aliases: Location, Workspace
 
 Required: True
 Position: Named
@@ -282,7 +231,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -RetentionPolicyDay
+### -RetentionInDays
 Number of days to retain flow log records.
 
 ```yaml
@@ -298,23 +247,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -RetentionPolicyEnabled
-Flag to enable/disable retention.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: SetExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -StorageId
+### -StorageAccountId
 ID of the storage account which is used to store the flow log.
 
 ```yaml
@@ -349,6 +282,70 @@ Dynamic: False
 
 ### -TargetResourceId
 The ID of the resource to configure for flow log and traffic analytics (optional) .
+
+```yaml
+Type: System.String
+Parameter Sets: SetExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -TrafficAnalyticsInterval
+The interval in minutes which would decide how frequently TA service should do flow analytics
+
+```yaml
+Type: System.Int32
+Parameter Sets: SetExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -WorkspaceGuid
+The resource guid of the attached workspace
+
+```yaml
+Type: System.String
+Parameter Sets: SetExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -WorkspaceLocation
+The location of the attached workspace
+
+```yaml
+Type: System.String
+Parameter Sets: SetExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -WorkspaceResourceId
+Resource Id of the attached workspace
 
 ```yaml
 Type: System.String

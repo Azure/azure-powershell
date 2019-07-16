@@ -139,7 +139,7 @@ The ID of the resource to which a connection attempt will be made.
 ```yaml
 Type: System.String
 Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
-Aliases:
+Aliases: DestinationId
 
 Required: False
 Position: Named
@@ -269,7 +269,7 @@ Network protocol.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.Protocol
 Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
-Aliases:
+Aliases: ProtocolConfiguration
 
 Required: False
 Position: Named
@@ -317,7 +317,7 @@ The ID of the resource from which a connectivity check will be initiated.
 ```yaml
 Type: System.String
 Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
-Aliases:
+Aliases: SourceId
 
 Required: True
 Position: Named

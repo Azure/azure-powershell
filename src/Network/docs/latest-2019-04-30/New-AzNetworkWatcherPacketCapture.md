@@ -22,17 +22,17 @@ New-AzNetworkWatcherPacketCapture -Name <String> -NetworkWatcherName <String> -R
 ### CreateExpanded
 ```
 New-AzNetworkWatcherPacketCapture -Name <String> -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -Target <String> [-BytesToCapturePerPacket <Int32>]
- [-Filter <IPacketCaptureFilter[]>] [-StorageLocationFilePath <String>] [-StorageLocationStorageId <String>]
- [-StorageLocationStoragePath <String>] [-TimeLimitInSeconds <Int32>] [-TotalBytesPerSession <Int32>]
+ -SubscriptionId <String> -TargetResourceId <String> [-BytesToCapturePerPacket <Int32>]
+ [-Filter <IPacketCaptureFilter[]>] [-StorageAccountId <String>] [-StorageFilePath <String>]
+ [-StoragePathUri <String>] [-TimeLimitInSeconds <Int32>] [-TotalBytesPerSession <Int32>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzNetworkWatcherPacketCapture -InputObject <INetworkIdentity> -Target <String>
- [-BytesToCapturePerPacket <Int32>] [-Filter <IPacketCaptureFilter[]>] [-StorageLocationFilePath <String>]
- [-StorageLocationStorageId <String>] [-StorageLocationStoragePath <String>] [-TimeLimitInSeconds <Int32>]
+New-AzNetworkWatcherPacketCapture -InputObject <INetworkIdentity> -TargetResourceId <String>
+ [-BytesToCapturePerPacket <Int32>] [-Filter <IPacketCaptureFilter[]>] [-StorageAccountId <String>]
+ [-StorageFilePath <String>] [-StoragePathUri <String>] [-TimeLimitInSeconds <Int32>]
  [-TotalBytesPerSession <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -230,26 +230,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -StorageLocationFilePath
-A valid local path on the targeting VM.
-Must include the name of the capture file (*.cap).
-For linux virtual machine it must start with /var/captures.
-Required if no storage ID is provided, otherwise optional.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -StorageLocationStorageId
+### -StorageAccountId
 The ID of the storage account to save the packet capture session.
 Required if no local file path is provided.
 
@@ -266,14 +247,33 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -StorageLocationStoragePath
+### -StorageFilePath
+A valid local path on the targeting VM.
+Must include the name of the capture file (*.cap).
+For linux virtual machine it must start with /var/captures.
+Required if no storage ID is provided, otherwise optional.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases: LocalFilePath
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -StoragePathUri
 The URI of the storage path to save the packet capture.
 Must be a well-formed URI describing the location to save the packet capture.
 
 ```yaml
 Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Aliases: StoragePath
 
 Required: False
 Position: Named
@@ -300,13 +300,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Target
+### -TargetResourceId
 The ID of the targeted resource, only VM is currently supported.
 
 ```yaml
 Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Aliases: TargetVirtualMachineId
 
 Required: True
 Position: Named

@@ -22,28 +22,27 @@ New-AzPublicIPAddress -Name <String> -ResourceGroupName <String> -SubscriptionId
 ### CreateExpanded1
 ```
 New-AzPublicIPAddress -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-DnsSettingDomainNameLabel <String>] [-DnsSettingFqdn <String>] [-DnsSettingReverseFqdn <String>]
- [-Etag <String>] [-IPAddress <String>] [-IPConfigurationEtag <String>] [-IPConfigurationId <String>]
- [-IPConfigurationName <String>] [-IPConfigurationPropertiesProvisioningState <String>] [-Id <String>]
- [-IdleTimeoutInMinutes <Int32>] [-Location <String>] [-PrivateIPAddress <String>]
- [-PrivateIPAllocationMethod <IPAllocationMethod>] [-ProvisioningState <String>]
- [-PublicIPAddress <IPublicIPAddress>] [-PublicIPAddressVersion <IPVersion>]
- [-PublicIPAllocationMethod <IPAllocationMethod>] [-ResourceGuid <String>] [-SkuName <PublicIPAddressSkuName>]
- [-Subnet <ISubnet>] [-Tag <Hashtable>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Address <IPublicIPAddress>] [-AllocationMethod <IPAllocationMethod>] [-DomainNameLabel <String>]
+ [-Etag <String>] [-Fqdn <String>] [-IPAddress <String>] [-IPConfigurationEtag <String>]
+ [-IPConfigurationId <String>] [-IPConfigurationName <String>]
+ [-IPConfigurationPropertiesProvisioningState <String>] [-Id <String>] [-IdleTimeoutInMinutes <Int32>]
+ [-IpAddressVersion <IPVersion>] [-Location <String>] [-PrivateIPAddress <String>]
+ [-PrivateIPAllocationMethod <IPAllocationMethod>] [-ProvisioningState <String>] [-ResourceGuid <String>]
+ [-ReverseFqdn <String>] [-SkuName <PublicIPAddressSkuName>] [-Subnet <ISubnet>] [-Tag <Hashtable>]
+ [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded1
 ```
-New-AzPublicIPAddress -InputObject <INetworkIdentity> [-DnsSettingDomainNameLabel <String>]
- [-DnsSettingFqdn <String>] [-DnsSettingReverseFqdn <String>] [-Etag <String>] [-IPAddress <String>]
- [-IPConfigurationEtag <String>] [-IPConfigurationId <String>] [-IPConfigurationName <String>]
- [-IPConfigurationPropertiesProvisioningState <String>] [-Id <String>] [-IdleTimeoutInMinutes <Int32>]
- [-Location <String>] [-PrivateIPAddress <String>] [-PrivateIPAllocationMethod <IPAllocationMethod>]
- [-ProvisioningState <String>] [-PublicIPAddress <IPublicIPAddress>] [-PublicIPAddressVersion <IPVersion>]
- [-PublicIPAllocationMethod <IPAllocationMethod>] [-ResourceGuid <String>] [-SkuName <PublicIPAddressSkuName>]
- [-Subnet <ISubnet>] [-Tag <Hashtable>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzPublicIPAddress -InputObject <INetworkIdentity> [-Address <IPublicIPAddress>]
+ [-AllocationMethod <IPAllocationMethod>] [-DomainNameLabel <String>] [-Etag <String>] [-Fqdn <String>]
+ [-IPAddress <String>] [-IPConfigurationEtag <String>] [-IPConfigurationId <String>]
+ [-IPConfigurationName <String>] [-IPConfigurationPropertiesProvisioningState <String>] [-Id <String>]
+ [-IdleTimeoutInMinutes <Int32>] [-IpAddressVersion <IPVersion>] [-Location <String>]
+ [-PrivateIPAddress <String>] [-PrivateIPAllocationMethod <IPAllocationMethod>] [-ProvisioningState <String>]
+ [-ResourceGuid <String>] [-ReverseFqdn <String>] [-SkuName <PublicIPAddressSkuName>] [-Subnet <ISubnet>]
+ [-Tag <Hashtable>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentity1
@@ -77,6 +76,40 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
+### -Address
+The reference of the public IP resource.
+To construct, see NOTES section for ADDRESS properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IPublicIPAddress
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -AllocationMethod
+The public IP allocation method.
+Possible values are: 'Static' and 'Dynamic'.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.IPAllocationMethod
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -AsJob
 Run the command as a job
 
@@ -109,7 +142,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -DnsSettingDomainNameLabel
+### -DomainNameLabel
 Gets or sets the Domain name label.The concatenation of the domain name label and the regionalized DNS zone make up the fully qualified domain name associated with the public IP address.
 If a domain name label is specified, an A DNS record is created for the public IP in the Microsoft Azure DNS system.
 
@@ -126,43 +159,25 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -DnsSettingFqdn
-Gets the FQDN, Fully qualified domain name of the A DNS record associated with the public IP.
-This is the concatenation of the domainNameLabel and the regionalized DNS zone.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -DnsSettingReverseFqdn
-Gets or Sets the Reverse FQDN.
-A user-visible, fully qualified domain name that resolves to this public IP address.
-If the reverseFqdn is specified, then a PTR DNS record is created pointing from the IP address in the in-addr.arpa domain to the reverse FQDN.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Etag
 A unique read-only string that changes whenever the resource is updated.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Fqdn
+Gets the FQDN, Fully qualified domain name of the A DNS record associated with the public IP.
+This is the concatenation of the domainNameLabel and the regionalized DNS zone.
 
 ```yaml
 Type: System.String
@@ -230,6 +245,23 @@ The IP address associated with the public IP address resource.
 
 ```yaml
 Type: System.String
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -IpAddressVersion
+The public IP address version.
+Possible values are: 'IPv4' and 'IPv6'.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.IPVersion
 Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
@@ -422,64 +454,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -PublicIPAddress
-The reference of the public IP resource.
-To construct, see NOTES section for PUBLICIPADDRESS properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IPublicIPAddress
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -PublicIPAddressVersion
-The public IP address version.
-Possible values are: 'IPv4' and 'IPv6'.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.IPVersion
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -PublicIPAllocationMethod
-The public IP allocation method.
-Possible values are: 'Static' and 'Dynamic'.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.IPAllocationMethod
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 
 ```yaml
 Type: System.String
 Parameter Sets: Create1, CreateExpanded1
-Aliases:
+Aliases: PublicIpPrefix
 
 Required: True
 Position: Named
@@ -491,6 +472,24 @@ Dynamic: False
 
 ### -ResourceGuid
 The resource GUID property of the public IP resource.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ReverseFqdn
+Gets or Sets the Reverse FQDN.
+A user-visible, fully qualified domain name that resolves to this public IP address.
+If the reverseFqdn is specified, then a PTR DNS record is created pointing from the IP address in the in-addr.arpa domain to the reverse FQDN.
 
 ```yaml
 Type: System.String
@@ -640,7 +639,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### PARAMETER <IPublicIPAddress>: Public IP address resource.
+#### ADDRESS <IPublicIPAddress>: The reference of the public IP resource.
   - `[DnsSettingDomainNameLabel <String>]`: Gets or sets the Domain name label.The concatenation of the domain name label and the regionalized DNS zone make up the fully qualified domain name associated with the public IP address. If a domain name label is specified, an A DNS record is created for the public IP in the Microsoft Azure DNS system.
   - `[DnsSettingFqdn <String>]`: Gets the FQDN, Fully qualified domain name of the A DNS record associated with the public IP. This is the concatenation of the domainNameLabel and the regionalized DNS zone.
   - `[DnsSettingReverseFqdn <String>]`: Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name that resolves to this public IP address. If the reverseFqdn is specified, then a PTR DNS record is created pointing from the IP address in the in-addr.arpa domain to the reverse FQDN. 
@@ -713,7 +712,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Version <IPVersion?>]`: The public IP address version. Possible values are: 'IPv4' and 'IPv6'.
   - `[Zone <String[]>]`: A list of availability zones denoting the IP allocated for the resource needs to come from.
 
-#### PUBLICIPADDRESS <IPublicIPAddress>: The reference of the public IP resource.
+#### PARAMETER <IPublicIPAddress>: Public IP address resource.
   - `[DnsSettingDomainNameLabel <String>]`: Gets or sets the Domain name label.The concatenation of the domain name label and the regionalized DNS zone make up the fully qualified domain name associated with the public IP address. If a domain name label is specified, an A DNS record is created for the public IP in the Microsoft Azure DNS system.
   - `[DnsSettingFqdn <String>]`: Gets the FQDN, Fully qualified domain name of the A DNS record associated with the public IP. This is the concatenation of the domainNameLabel and the regionalized DNS zone.
   - `[DnsSettingReverseFqdn <String>]`: Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name that resolves to this public IP address. If the reverseFqdn is specified, then a PTR DNS record is created pointing from the IP address in the in-addr.arpa domain to the reverse FQDN. 

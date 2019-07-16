@@ -23,7 +23,7 @@ New-AzVirtualHub -Name <String> -ResourceGroupName <String> -SubscriptionId <Str
 ```
 New-AzVirtualHub -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-AddressPrefix <String>]
  [-ExpressRouteGatewayId <String>] [-Id <String>] [-Location <String>] [-P2SVpnGatewayId <String>]
- [-RouteTableRoute <IVirtualHubRoute[]>] [-Tag <Hashtable>] [-VirtualWanId <String>]
+ [-Route <IVirtualHubRoute[]>] [-Tag <Hashtable>] [-VirtualWanId <String>]
  [-VnetConnection <IHubVirtualNetworkConnection[]>] [-VpnGatewayId <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -31,7 +31,7 @@ New-AzVirtualHub -Name <String> -ResourceGroupName <String> -SubscriptionId <Str
 ### CreateViaIdentityExpanded
 ```
 New-AzVirtualHub -InputObject <INetworkIdentity> [-AddressPrefix <String>] [-ExpressRouteGatewayId <String>]
- [-Id <String>] [-Location <String>] [-P2SVpnGatewayId <String>] [-RouteTableRoute <IVirtualHubRoute[]>]
+ [-Id <String>] [-Location <String>] [-P2SVpnGatewayId <String>] [-Route <IVirtualHubRoute[]>]
  [-Tag <Hashtable>] [-VirtualWanId <String>] [-VnetConnection <IHubVirtualNetworkConnection[]>]
  [-VpnGatewayId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -234,7 +234,7 @@ The resource group name of the VirtualHub.
 ```yaml
 Type: System.String
 Parameter Sets: Create, CreateExpanded
-Aliases:
+Aliases: VirtualWan
 
 Required: True
 Position: Named
@@ -244,14 +244,14 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -RouteTableRoute
+### -Route
 List of all routes.
-To construct, see NOTES section for ROUTETABLEROUTE properties and create a hash table.
+To construct, see NOTES section for ROUTE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVirtualHubRoute[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Aliases: RouteTable
 
 Required: False
 Position: Named
@@ -334,7 +334,7 @@ To construct, see NOTES section for VNETCONNECTION properties and create a hash 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IHubVirtualNetworkConnection[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases: VirtualNetworkConnection
+Aliases: VirtualNetworkConnection, HubVnetConnection
 
 Required: False
 Position: Named
@@ -413,7 +413,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### ROUTETABLEROUTE <IVirtualHubRoute[]>: List of all routes.
+#### ROUTE <IVirtualHubRoute[]>: List of all routes.
   - `[AddressPrefix <String[]>]`: List of all addressPrefixes.
   - `[NextHopIPAddress <String>]`: NextHop ip address.
 

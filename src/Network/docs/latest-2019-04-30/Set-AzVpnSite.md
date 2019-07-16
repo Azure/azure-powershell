@@ -22,8 +22,8 @@ Set-AzVpnSite -Name <String> -ResourceGroupName <String> -SubscriptionId <String
 ### UpdateExpanded
 ```
 Set-AzVpnSite -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-AddressSpaceAddressPrefix <String[]>] [-BgpPropertyAsn <Int64>] [-BgpPropertyBgpPeeringAddress <String>]
- [-BgpPropertyPeerWeight <Int32>] [-DevicePropertyDeviceModel <String>] [-DevicePropertyDeviceVendor <String>]
+ [-AddressSpaceAddressPrefix <String[]>] [-BgpAsn <Int64>] [-BgpPeerWeight <Int32>]
+ [-BgpPeeringAddress <String>] [-DevicePropertyDeviceModel <String>] [-DevicePropertyDeviceVendor <String>]
  [-DevicePropertyLinkSpeedInMbps <Int32>] [-IPAddress <String>] [-Id <String>] [-IsSecuritySite]
  [-Location <String>] [-SiteKey <String>] [-Tag <Hashtable>] [-VirtualWanId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -86,13 +86,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -BgpPropertyAsn
+### -BgpAsn
 The BGP speaker's ASN.
 
 ```yaml
 Type: System.Int64
 Parameter Sets: UpdateExpanded
-Aliases:
+Aliases: Asn
 
 Required: False
 Position: Named
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -BgpPropertyBgpPeeringAddress
+### -BgpPeeringAddress
 The BGP peering address and BGP identifier of this BGP speaker.
 
 ```yaml
@@ -118,13 +118,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -BgpPropertyPeerWeight
+### -BgpPeerWeight
 The weight added to routes learned from this BGP speaker.
 
 ```yaml
 Type: System.Int32
 Parameter Sets: UpdateExpanded
-Aliases:
+Aliases: PeerWeight, BgpPeeringWeight
 
 Required: False
 Position: Named

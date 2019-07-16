@@ -136,7 +136,7 @@ The weight added to routes learned from this BGP speaker.
 ```yaml
 Type: System.Int32
 Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
-Aliases: PeerWeight
+Aliases: PeerWeight, BgpPeeringWeight
 
 Required: False
 Position: Named

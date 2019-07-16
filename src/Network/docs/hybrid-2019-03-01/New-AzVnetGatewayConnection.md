@@ -26,11 +26,11 @@ New-AzVnetGatewayConnection -Name <String> -ResourceGroupName <String> -Subscrip
  [-AuthorizationKey <String>] [-BgpSettingAsn <Int64>] [-BgpSettingBgpPeeringAddress <String>]
  [-BgpSettingPeerWeight <Int32>] [-ConnectionStatus <VirtualNetworkGatewayConnectionStatus>] [-EnableBgp]
  [-Etag <String>] [-GatewayIPAddress <String>] [-IPsecPolicy <IIpsecPolicy[]>] [-Id <String>]
- [-LocalNetworkAddressSpaceAddressPrefix <String[]>] [-LocalNetworkGateway2Etag <String>]
+ [-LocalNetworkAddressPrefix <String[]>] [-LocalNetworkGateway2Etag <String>]
  [-LocalNetworkGateway2Id <String>] [-LocalNetworkGateway2Location <String>]
  [-LocalNetworkGateway2PropertiesResourceGuid <String>] [-LocalNetworkGateway2Tag <Hashtable>]
  [-Location <String>] [-PeerId <String>] [-ResourceGuid <String>] [-RoutingWeight <Int32>]
- [-SharedKey <String>] [-Tag <Hashtable>] [-UsePolicyBasedTrafficSelector]
+ [-SharedKey <String>] [-Tag <Hashtable>] [-UsePolicyBasedTrafficSelectors]
  [-VnetGateway2 <IVirtualNetworkGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -42,11 +42,11 @@ New-AzVnetGatewayConnection -InputObject <INetworkIdentity>
  [-AuthorizationKey <String>] [-BgpSettingAsn <Int64>] [-BgpSettingBgpPeeringAddress <String>]
  [-BgpSettingPeerWeight <Int32>] [-ConnectionStatus <VirtualNetworkGatewayConnectionStatus>] [-EnableBgp]
  [-Etag <String>] [-GatewayIPAddress <String>] [-IPsecPolicy <IIpsecPolicy[]>] [-Id <String>]
- [-LocalNetworkAddressSpaceAddressPrefix <String[]>] [-LocalNetworkGateway2Etag <String>]
+ [-LocalNetworkAddressPrefix <String[]>] [-LocalNetworkGateway2Etag <String>]
  [-LocalNetworkGateway2Id <String>] [-LocalNetworkGateway2Location <String>]
  [-LocalNetworkGateway2PropertiesResourceGuid <String>] [-LocalNetworkGateway2Tag <Hashtable>]
  [-Location <String>] [-PeerId <String>] [-ResourceGuid <String>] [-RoutingWeight <Int32>]
- [-SharedKey <String>] [-Tag <Hashtable>] [-UsePolicyBasedTrafficSelector]
+ [-SharedKey <String>] [-Tag <Hashtable>] [-UsePolicyBasedTrafficSelectors]
  [-VnetGateway2 <IVirtualNetworkGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -299,7 +299,7 @@ To construct, see NOTES section for IPSECPOLICY properties and create a hash tab
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IIpsecPolicy[]
 Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
-Aliases:
+Aliases: IpsecPolicies
 
 Required: False
 Position: Named
@@ -309,7 +309,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -LocalNetworkAddressSpaceAddressPrefix
+### -LocalNetworkAddressPrefix
 A list of address blocks reserved for this virtual network in CIDR notation.
 
 ```yaml
@@ -492,7 +492,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: Create1, CreateExpanded1
-Aliases:
+Aliases: LocalNetworkGateway2, Peer
 
 Required: True
 Position: Named
@@ -583,7 +583,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -UsePolicyBasedTrafficSelector
+### -UsePolicyBasedTrafficSelectors
 Enable policy-based traffic selectors.
 
 ```yaml

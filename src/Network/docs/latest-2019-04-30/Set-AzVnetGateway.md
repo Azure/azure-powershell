@@ -21,19 +21,17 @@ Set-AzVnetGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <St
 
 ### UpdateExpanded
 ```
-Set-AzVnetGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-Active]
- [-BgpSettingAsn <Int64>] [-BgpSettingBgpPeeringAddress <String>] [-BgpSettingPeerWeight <Int32>]
- [-CustomRouteAddressPrefix <String[]>] [-EnableBgp] [-Etag <String>] [-GatewayDefaultSiteId <String>]
+Set-AzVnetGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-BgpAsn <Int64>]
+ [-BgpPeerWeight <Int32>] [-BgpPeeringAddress <String>] [-CustomRouteAddressPrefix <String[]>]
+ [-EnableActiveActive] [-EnableBgp] [-Etag <String>] [-GatewayDefaultSiteId <String>]
  [-GatewayType <VirtualNetworkGatewayType>] [-IPConfiguration <IVirtualNetworkGatewayIPConfiguration[]>]
  [-Id <String>] [-Location <String>] [-ResourceGuid <String>] [-SkuCapacity <Int32>]
  [-SkuName <VirtualNetworkGatewaySkuName>] [-SkuTier <VirtualNetworkGatewaySkuTier>] [-Tag <Hashtable>]
- [-VpnClientAddressPoolAddressPrefix <String[]>] [-VpnClientConfigurationRadiusServerAddress <String>]
- [-VpnClientConfigurationRadiusServerSecret <String>]
- [-VpnClientConfigurationVpnClientIPsecPolicy <IIpsecPolicy[]>]
- [-VpnClientConfigurationVpnClientProtocol <VpnClientProtocol[]>]
- [-VpnClientConfigurationVpnClientRevokedCertificate <IVpnClientRevokedCertificate[]>]
- [-VpnClientConfigurationVpnClientRootCertificate <IVpnClientRootCertificate[]>] [-VpnType <VpnType>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-VpnClientAddressPrefix <String[]>] [-VpnClientIPsecPolicy <IIpsecPolicy[]>]
+ [-VpnClientProtocol <VpnClientProtocol[]>] [-VpnClientRadiusServerAddress <String>]
+ [-VpnClientRadiusServerSecret <String>] [-VpnClientRevokedCertificate <IVpnClientRevokedCertificate[]>]
+ [-VpnClientRootCertificate <IVpnClientRootCertificate[]>] [-VpnType <VpnType>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -61,22 +59,6 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -Active
-ActiveActive flag
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -AsJob
 Run the command as a job
 
@@ -93,13 +75,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -BgpSettingAsn
+### -BgpAsn
 The BGP speaker's ASN.
 
 ```yaml
 Type: System.Int64
 Parameter Sets: UpdateExpanded
-Aliases:
+Aliases: Asn
 
 Required: False
 Position: Named
@@ -109,7 +91,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -BgpSettingBgpPeeringAddress
+### -BgpPeeringAddress
 The BGP peering address and BGP identifier of this BGP speaker.
 
 ```yaml
@@ -125,13 +107,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -BgpSettingPeerWeight
+### -BgpPeerWeight
 The weight added to routes learned from this BGP speaker.
 
 ```yaml
 Type: System.Int32
 Parameter Sets: UpdateExpanded
-Aliases:
+Aliases: PeerWeight, BgpPeeringWeight
 
 Required: False
 Position: Named
@@ -168,6 +150,22 @@ Aliases: AzureRMContext, AzureCredential
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -EnableActiveActive
+ActiveActive flag
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UpdateExpanded
+Aliases: EnableActiveActiveFeature
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -342,7 +340,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: GatewaySku, GatewayDefaultSite, VirtualNetworkGateway, DisableActiveActiveFeature
 
 Required: True
 Position: Named
@@ -449,13 +447,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VpnClientAddressPoolAddressPrefix
+### -VpnClientAddressPrefix
 A list of address blocks reserved for this virtual network in CIDR notation.
 
 ```yaml
 Type: System.String[]
 Parameter Sets: UpdateExpanded
-Aliases:
+Aliases: VpnClientAddressPool
 
 Required: False
 Position: Named
@@ -465,41 +463,9 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VpnClientConfigurationRadiusServerAddress
-The radius server address property of the VirtualNetworkGateway resource for vpn client connection.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -VpnClientConfigurationRadiusServerSecret
-The radius secret property of the VirtualNetworkGateway resource for vpn client connection.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -VpnClientConfigurationVpnClientIPsecPolicy
+### -VpnClientIPsecPolicy
 VpnClientIpsecPolicies for virtual network gateway P2S client.
-To construct, see NOTES section for VPNCLIENTCONFIGURATIONVPNCLIENTIPSECPOLICY properties and create a hash table.
+To construct, see NOTES section for VPNCLIENTIPSECPOLICY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IIpsecPolicy[]
@@ -514,7 +480,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VpnClientConfigurationVpnClientProtocol
+### -VpnClientProtocol
 VpnClientProtocols for Virtual network gateway.
 
 ```yaml
@@ -530,14 +496,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VpnClientConfigurationVpnClientRevokedCertificate
-VpnClientRevokedCertificate for Virtual network gateway.
-To construct, see NOTES section for VPNCLIENTCONFIGURATIONVPNCLIENTREVOKEDCERTIFICATE properties and create a hash table.
+### -VpnClientRadiusServerAddress
+The radius server address property of the VirtualNetworkGateway resource for vpn client connection.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVpnClientRevokedCertificate[]
+Type: System.String
 Parameter Sets: UpdateExpanded
-Aliases:
+Aliases: RadiusServerAddress
 
 Required: False
 Position: Named
@@ -547,14 +512,47 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VpnClientConfigurationVpnClientRootCertificate
+### -VpnClientRadiusServerSecret
+The radius secret property of the VirtualNetworkGateway resource for vpn client connection.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases: RadiusServerSecret
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -VpnClientRevokedCertificate
+VpnClientRevokedCertificate for Virtual network gateway.
+To construct, see NOTES section for VPNCLIENTREVOKEDCERTIFICATE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVpnClientRevokedCertificate[]
+Parameter Sets: UpdateExpanded
+Aliases: VpnClientRevokedCertificates
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -VpnClientRootCertificate
 VpnClientRootCertificate for virtual network gateway.
-To construct, see NOTES section for VPNCLIENTCONFIGURATIONVPNCLIENTROOTCERTIFICATE properties and create a hash table.
+To construct, see NOTES section for VPNCLIENTROOTCERTIFICATE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVpnClientRootCertificate[]
 Parameter Sets: UpdateExpanded
-Aliases:
+Aliases: VpnClientRootCertificates
 
 Required: False
 Position: Named
@@ -684,7 +682,7 @@ To create the parameters described below, construct a hash table containing the 
     - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
   - `[VpnType <VpnType?>]`: The type of this virtual network gateway. Possible values are: 'PolicyBased' and 'RouteBased'.
 
-#### VPNCLIENTCONFIGURATIONVPNCLIENTIPSECPOLICY <IIpsecPolicy[]>: VpnClientIpsecPolicies for virtual network gateway P2S client.
+#### VPNCLIENTIPSECPOLICY <IIpsecPolicy[]>: VpnClientIpsecPolicies for virtual network gateway P2S client.
   - `DhGroup <DhGroup>`: The DH Group used in IKE Phase 1 for initial SA.
   - `IkeEncryption <IkeEncryption>`: The IKE encryption algorithm (IKE phase 2).
   - `IkeIntegrity <IkeIntegrity>`: The IKE integrity algorithm (IKE phase 2).
@@ -694,12 +692,12 @@ To create the parameters described below, construct a hash table containing the 
   - `SaDataSizeKilobyte <Int32>`: The IPSec Security Association (also called Quick Mode or Phase 2 SA) payload size in KB for a site to site VPN tunnel.
   - `SaLifeTimeSecond <Int32>`: The IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime in seconds for a site to site VPN tunnel.
 
-#### VPNCLIENTCONFIGURATIONVPNCLIENTREVOKEDCERTIFICATE <IVpnClientRevokedCertificate[]>: VpnClientRevokedCertificate for Virtual network gateway.
+#### VPNCLIENTREVOKEDCERTIFICATE <IVpnClientRevokedCertificate[]>: VpnClientRevokedCertificate for Virtual network gateway.
   - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
   - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
   - `[Thumbprint <String>]`: The revoked VPN client certificate thumbprint.
 
-#### VPNCLIENTCONFIGURATIONVPNCLIENTROOTCERTIFICATE <IVpnClientRootCertificate[]>: VpnClientRootCertificate for virtual network gateway.
+#### VPNCLIENTROOTCERTIFICATE <IVpnClientRootCertificate[]>: VpnClientRootCertificate for virtual network gateway.
   - `PublicCertData <String>`: The certificate public data.
   - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
   - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.

@@ -1598,4 +1598,35 @@ directive:
       parameter-name: ResourceGroupName
     set:
       alias: Workspace
+  - where:
+      verb: Test
+      subject: NetworkWatcherConnectivity
+      parameter-name: SourceResourceId
+    set:
+      alias: SourceId
+  - where:
+      verb: Test
+      subject: NetworkWatcherConnectivity
+      parameter-name: DestinationResourceId
+    set:
+      alias: DestinationId
+  - where:
+      verb: Test
+      subject: NetworkWatcherConnectivity
+      parameter-name: Protocol
+    set:
+      alias: ProtocolConfiguration
+  - where:
+      verb: Test
+      subject: NetworkWatcherIPFlow
+      parameter-name: TargetResourceId
+    set:
+      alias: TargetVirtualMachineId
+  - where:
+      verb: Test
+      subject: NetworkWatcherIPFlow
+      parameter-name: TargetNicResourceId
+    set:
+      parameter-name: NetworkInterfaceResourceId
+      alias: TargetNetworkInterfaceId
 ```

@@ -1,92 +1,5 @@
 ## Incorrect Cmdlets
 
-- New-AzNetworkWatcherPacketCapture
-    - TargetVirtualMachineId
-    - StorageAccountId
-    - StoragePath
-    - LocalFilePath
-- New-AzPublicIPAddress
-    - AllocationMethod
-    - IpAddressVersion
-    - DomainNameLabel
-    - PublicIpPrefix
-    - ReverseFqdn
-- New-AzVirtualHub
-    - VirtualWan
-    - HubVnetConnection
-    - RouteTable
-- New-AzVnetGateway
-    - IpConfigurations
-    - EnableActiveActiveFeature
-    - GatewaySku
-    - GatewayDefaultSite
-    - VpnClientAddressPool
-    - VpnClientProtocol
-    - VpnClientRootCertificates
-    - VpnClientRevokedCertificates
-    - VpnClientIpsecPolicy
-    - Asn
-    - PeerWeight
-    - RadiusServerAddress
-    - RadiusServerSecret
-- New-AzVnetGatewayConnection
-    - LocalNetworkGateway2
-    - Peer
-    - UsePolicyBasedTrafficSelectors
-    - IpsecPolicies
-- New-AzVpnSite
-    - VirtualWanResourceGroupName
-    - VirtualWanName
-    - VirtualWan
-    - AddressSpace
-    - DeviceModel
-    - DeviceVendor
-    - LinkSpeedInMbps
-    - BgpAsn
-    - BgpPeeringAddress
-    - BgpPeeringWeight
-- Set-AzLocalNetworkGateway
-    - LocalNetworkGateway
-    - Asn
-    - BgpPeeringAddress
-    - PeerWeight
-- Set-AzNetworkWatcherFlowLogConfiguration
-    - EnableFlowLog
-    - StorageAccountId
-    - EnableRetention
-    - RetentionInDays
-    - EnableTrafficAnalytics
-    - WorkspaceResourceId
-    - WorkspaceGUID
-    - WorkspaceLocation
-    - Workspace
-    - TrafficAnalyticsInterval
-- Set-AzVnetGateway
-    - VirtualNetworkGateway
-    - GatewaySku
-    - GatewayDefaultSite
-    - VpnClientAddressPool
-    - VpnClientProtocol
-    - VpnClientRootCertificates
-    - VpnClientRevokedCertificates
-    - VpnClientIpsecPolicy
-    - Asn
-    - PeerWeight
-    - EnableActiveActiveFeature
-    - DisableActiveActiveFeature
-    - RadiusServerAddress
-    - RadiusServerSecret
-- Set-AzVnetGatewayConnection
-    - VirtualNetworkGatewayConnection
-    - UsePolicyBasedTrafficSelectors
-    - IpsecPolicies
-- Test-AzNetworkWatcherConnectivity
-    - SourceId
-    - DestinationId
-    - ProtocolConfiguration
-- Test-AzNetworkWatcherIPFlow
-    - TargetVirtualMachineId
-    - TargetNetworkInterfaceId
 
 ## Correct Cmdlets
 
@@ -180,18 +93,24 @@
 - New-AzNetworkProfile
 - New-AzNetworkWatcher
 - New-AzNetworkWatcherConnectionMonitor
+- New-AzNetworkWatcherPacketCapture
 - New-AzNsg
+- New-AzPublicIPAddress
 - New-AzPublicIPPrefix
 - New-AzRouteFilter
 - New-AzRouteTable
 - New-AzServiceEndpointPolicy
 - New-AzServiceEndpointPolicyDefinition
+- New-AzVirtualHub
 - New-AzVirtualWan
 - New-AzVnet
+- New-AzVnetGateway
+- New-AzVnetGatewayConnection
 - New-AzVnetGatewayVpnClientPackage
 - New-AzVnetTap
 - New-AzVpnConnection
 - New-AzVpnGateway
+- New-AzVpnSite
 - Remove-AzApplicationGateway
 - Remove-AzApplicationSecurityGroup
 - Remove-AzDdosProtectionPlan
@@ -237,10 +156,12 @@
 - Set-AzExpressRoutePort
 - Set-AzFirewall
 - Set-AzLoadBalancer
+- Set-AzLocalNetworkGateway
 - Set-AzNetworkInterface
 - Set-AzNetworkInterfaceTapConfiguration
 - Set-AzNetworkProfile
 - Set-AzNetworkWatcherConnectionMonitor
+- Set-AzNetworkWatcherFlowLogConfiguration
 - Set-AzNsg
 - Set-AzPublicIPAddress
 - Set-AzPublicIPPrefix
@@ -249,6 +170,8 @@
 - Set-AzServiceEndpointPolicy
 - Set-AzServiceEndpointPolicyDefinition
 - Set-AzVnet
+- Set-AzVnetGateway
+- Set-AzVnetGatewayConnection
 - Set-AzVnetGatewayConnectionSharedKey
 - Set-AzVnetGatewayVpnClientIPsecParameter
 - Set-AzVnetPeering
@@ -261,6 +184,8 @@
 - Stop-AzNetworkWatcherPacketCapture
 - Test-AzDnsNameAvailability
 - Test-AzDummy
+- Test-AzNetworkWatcherConnectivity
+- Test-AzNetworkWatcherIPFlow
 - Test-AzVnetIPAddressAvailability
 
 ## New Cmdlets
