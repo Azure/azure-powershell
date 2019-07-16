@@ -14,7 +14,7 @@ using Resource = Microsoft.Azure.PowerShell.Cmdlets.DataBox.Resources.Resource;
 
 namespace Microsoft.Azure.Commands.DataBox.Common
 {
-    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataBoxJob", SupportsShouldProcess = true , DefaultParameterSetName = GetByNameParameterSet), OutputType(typeof(void))]
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataBoxJob", SupportsShouldProcess = true, DefaultParameterSetName = GetByNameParameterSet), OutputType(typeof(void))]
     public class RemoveDataBoxJob : AzureDataBoxCmdletBase
     {
 
@@ -57,23 +57,20 @@ namespace Microsoft.Azure.Commands.DataBox.Common
                 this.Name = InputObject.JobResource.Name;
             }
 
-            // Gets information about the specified job.
-            JobResource jobResource = JobsOperationsExtensions.Get(DataBoxManagementClient.Jobs, ResourceGroupName, Name, "details");
 
-            if (jobResource.Status == StageName.Cancelled || jobResource.Status == StageName.Completed || jobResource.Status == StageName.CompletedWithErrors)
+
+            // Initiate to delete job
+            if (ShouldProcess(this.Name, string.Format(Resource.DeletingDataboxJob + this.Name + Resource.InResourceGroup + this.ResourceGroupName)))
             {
-                // Initiate to delete job
-                if (ShouldProcess(this.Name, string.Format(Resource.DeletingDataboxJob + this.Name + Resource.InResourceGroup + this.ResourceGroupName)))
-                {
-                    JobsOperationsExtensions.Delete(
-                        DataBoxManagementClient.Jobs,
-                        ResourceGroupName,
-                        Name);
+                JobsOperationsExtensions.Delete(
+                    DataBoxManagementClient.Jobs,
+                    ResourceGroupName,
+                    Name);
 
-                    if (PassThru)
-                        WriteObject(true);
-                }
+                if (PassThru)
+                    WriteObject(true);
             }
+
         }
     }
 }

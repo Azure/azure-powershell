@@ -203,36 +203,6 @@ function Test-RemoveDataBoxJob
 	}
 }
 
-<#
-.SYNOPSIS
-Test Removing an already removed Databox Job. Creates a new job, cancels it and then removes it. Then again tries to remove the job and check for the 
-exception 
-#>
-function Test-RemoveAlreadyRemovedDataBoxJob
-{
-    $dfname = Get-DataBoxJobName
-    $rgname = Get-ResourceGroupName
-	$rglocation = Get-ProviderLocation ResourceManagement
-    
-    
-    New-AzResourceGroup -Name $rgname -Location $rglocation -Force
-	
-	$storageaccountname = Get-StorageAccountName
-	$storageaccount = New-AzStorageAccount -ResourceGroupName $rgname -Name $storageaccountname -Location $rglocation
-
-    try
-    {
-        Create-Job $dfname $rgname $storageaccount.Id
-		Stop-AzDataBoxJob -ResourceGroupName $rgname -Name $dfname -Reason "Random"
-		Remove-AzDataBoxJob -ResourceGroupName $rgname -Name $dfname 
-
-        Assert-ThrowsContains { Remove-AzDataBoxJob -ResourceGroupName $rgname -Name $dfname  } "Could not find" 
-    }
-	finally
-	{
-		Remove-AzStorageAccount -ResourceGroupName $rgname -Name $storageaccountname 
-	}
-}
 
 <#
 .SYNOPSIS
