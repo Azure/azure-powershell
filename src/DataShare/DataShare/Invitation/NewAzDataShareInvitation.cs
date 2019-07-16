@@ -127,55 +127,39 @@ namespace Microsoft.Azure.Commands.DataShare.Invitation
         {
             if (this.ParameterSetName.Equals(ParameterSetNames.InvitationEmailParameterSet, StringComparison.OrdinalIgnoreCase))
             {
-                this.ConfirmAction(
-                    string.Format(Resources.ResourceCreateConfirmation, this.Name),
-                    this.Name,
-                    this.NewEmailInvitation);
+                if (this.ShouldProcess(this.Name, "Creating invitation"))
+                {
+                    Invitation newInvitation = this.DataShareManagementClient.Invitations.Create(
+                        this.ResourceGroupName,
+                        this.AccountName,
+                        this.ShareName,
+                        this.Name,
+                        new Invitation()
+                        {
+                            TargetEmail = this.TargetEmail
+                        });
+
+                    this.WriteObject(newInvitation.ToPsObject());
+                }
             }
 
             if (this.ParameterSetName.Equals(ParameterSetNames.InvitationTenantParameterSet, StringComparison.OrdinalIgnoreCase))
             {
-                this.ConfirmAction(
-                    string.Format(Resources.ResourceCreateConfirmation, this.Name),
-                    this.Name,
-                    this.NewObjectIdInvitation);
-            }
-        }
+                if (this.ShouldProcess(this.Name, "Creating invitation"))
+                {
+                    Invitation newInvitation = this.DataShareManagementClient.Invitations.Create(
+                        this.ResourceGroupName,
+                        this.AccountName,
+                        this.ShareName,
+                        this.Name,
+                        new Invitation()
+                        {
+                            TargetObjectId = this.TargetObjectId,
+                            TargetActiveDirectoryId = this.TargetTenantId
+                        });
 
-        private void NewEmailInvitation()
-        {
-            if (this.ShouldProcess(this.Name, "Create"))
-            {
-                Invitation newInvitation = this.DataShareManagementClient.Invitations.Create(
-                    this.ResourceGroupName,
-                    this.AccountName,
-                    this.ShareName,
-                    this.Name,
-                    new Invitation()
-                    {
-                        TargetEmail = this.TargetEmail
-                    });
-
-                this.WriteObject(newInvitation.ToPsObject());
-            }
-        }
-
-        private void NewObjectIdInvitation()
-        {
-            if (this.ShouldProcess(this.Name, "Create"))
-            {
-                Invitation newInvitation = this.DataShareManagementClient.Invitations.Create(
-                    this.ResourceGroupName,
-                    this.AccountName,
-                    this.ShareName,
-                    this.Name,
-                    new Invitation()
-                    {
-                        TargetObjectId = this.TargetObjectId,
-                        TargetActiveDirectoryId = this.TargetTenantId
-                    });
-
-                this.WriteObject(newInvitation.ToPsObject());
+                    this.WriteObject(newInvitation.ToPsObject());
+                }
             }
         }
     }

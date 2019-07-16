@@ -60,7 +60,6 @@ namespace Microsoft.Azure.Commands.DataShare.ShareSubscription
             ParameterSetName = ParameterSetNames.FieldsParameterSet, 
             HelpMessage = "Azure data share subscription name")]
         [ValidateNotNullOrEmpty]
-        [ResourceNameCompleter(ResourceTypes.ShareSubscription, "ResourceGroupName", "AccountName")]
         public string Name { get; set; }
 
         /// <summary>
@@ -75,15 +74,7 @@ namespace Microsoft.Azure.Commands.DataShare.ShareSubscription
 
         public override void ExecuteCmdlet()
         {
-            this.ConfirmAction(
-                string.Format(Resources.ResourceCreateConfirmation, this.Name),
-                this.Name,
-                this.NewShareSubscription);
-        }
-
-        private void NewShareSubscription()
-        {
-            if (this.ShouldProcess(this.Name, "Create"))
+            if (this.ShouldProcess(this.Name, "Creating share subscription"))
             {
                 ShareSubscription shareSubscription = this.DataShareManagementClient.ShareSubscriptions.Create(
                     this.ResourceGroupName,
