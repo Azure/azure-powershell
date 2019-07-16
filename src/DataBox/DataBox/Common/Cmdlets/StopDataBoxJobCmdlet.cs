@@ -80,10 +80,6 @@ namespace Microsoft.Azure.Commands.DataBox.Common
                 if (PassThru)
                     WriteObject(true);
             } 
-            else
-            {
-                throw new Exception(Resource.JobCannotBeCancelled);
-            }
         }
     }
 }
