@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Commands.DataShare.DataSetMapping
                 ParameterSetNames.BlobDataSetParameterSet,
                 StringComparison.OrdinalIgnoreCase))
             {
-                if (this.ShouldProcess(this.Name, $"Creating data set mapping '{this.Name}'"))
+                if (this.ShouldProcess(this.Name, "Creating data set mapping"))
                 {
                     if (this.FilePath != null)
                     {
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Commands.DataShare.DataSetMapping
                 StringComparison.OrdinalIgnoreCase))
             {
 
-                if (this.ShouldProcess(this.Name, $"Creating data set mapping '{this.Name}'"))
+                if (this.ShouldProcess(this.Name, "Creating data set mapping"))
                 {
                     if (this.FilePath != null)
                     {
