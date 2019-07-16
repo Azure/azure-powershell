@@ -60,7 +60,6 @@ namespace Microsoft.Azure.Commands.DataShare.Share
             ParameterSetName = ParameterSetNames.FieldsParameterSet,
             HelpMessage = "Azure data share name")]
         [ValidateNotNullOrEmpty]
-        [ResourceNameCompleter(ResourceTypes.Share, "ResourceGroupName", "AccountName")]
         public string Name { get; set; }
 
         /// <summary>
@@ -83,15 +82,7 @@ namespace Microsoft.Azure.Commands.DataShare.Share
 
         public override void ExecuteCmdlet()
         {
-            this.ConfirmAction(
-                string.Format(Resources.ResourceCreateConfirmation, this.Name),
-                this.Name,
-                this.NewShare);
-        }
-
-        private void NewShare()
-        {
-            if (this.ShouldProcess(this.Name, "Create"))
+            if (this.ShouldProcess(this.Name, "Creating data share"))
             {
                 Share dataShare = this.DataShareManagementClient.Shares.Create(
                     this.ResourceGroupName,

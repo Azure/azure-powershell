@@ -10,5 +10,6 @@
         public const string ShareSubscription = "Microsoft.DataShare/sharesubscriptions";
         public const string SynchronizationSetting = "Microsoft.DataShare/synchronizationSettings";
         public const string Trigger = "Microsoft.DataShare/triggers";
+        public const string StorageAccount = "Microsoft.Storage/storageAccounts";
     }
 }
