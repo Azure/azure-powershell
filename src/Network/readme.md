@@ -1215,24 +1215,26 @@ directive:
       parameter-name: AddressPrefix
   - where:
       verb: ^New$|^Set$
-      subject: ^LocalNetworkGateway$|^VnetGateway$
-      parameter-name: BgpSettingAsn
+      subject: ^LocalNetworkGateway$|^VnetGateway$|^VpnSite$
+      parameter-name: ^BgpSettingAsn$|^BgpPropertyAsn$
     set:
       parameter-name: BgpAsn
       alias: Asn
   - where:
       verb: ^New$|^Set$
-      subject: ^LocalNetworkGateway$|^VnetGateway$
-      parameter-name: BgpSettingBgpPeeringAddress
+      subject: ^LocalNetworkGateway$|^VnetGateway$|^VpnSite$
+      parameter-name: ^BgpSettingBgpPeeringAddress$|^BgpPropertyBgpPeeringAddress$
     set:
       parameter-name: BgpPeeringAddress
   - where:
       verb: ^New$|^Set$
-      subject: ^LocalNetworkGateway$|^VnetGateway$
-      parameter-name: BgpSettingPeerWeight
+      subject: ^LocalNetworkGateway$|^VnetGateway$|^VpnSite$
+      parameter-name: ^BgpSettingPeerWeight$|^BgpPropertyPeerWeight$
     set:
       parameter-name: BgpPeerWeight
-      alias: PeerWeight
+      alias:
+        - PeerWeight
+        - BgpPeeringWeight
   - where: # REMOVE BEFORE RELEASE: This is used instead of an in-memory object
       verb: New
       subject: NetworkInterface
@@ -1476,5 +1478,124 @@ directive:
       subject: VnetGateway
       parameter-name: VpnClientAddressPoolAddressPrefix
     set:
+      parameter-name: VpnClientAddressPrefix
       alias: VpnClientAddressPool
+  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
+      verb: ^New$|^Set$
+      subject: VnetGatewayConnection
+      parameter-name: ResourceGroupName
+    set:
+      alias: LocalNetworkGateway2
+  - where:
+      verb: ^New$|^Set$
+      subject: VnetGatewayConnection
+      parameter-name: LocalNetworkAddressSpaceAddressPrefix
+    set:
+      parameter-name: LocalNetworkAddressPrefix
+  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
+      verb: Set
+      subject: VnetGatewayConnection
+      parameter-name: ResourceGroupName
+    set:
+      alias: VirtualNetworkGatewayConnection
+  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
+      verb: New
+      subject: VnetGatewayConnection
+      parameter-name: ResourceGroupName
+    set:
+      alias: Peer
+  - where:
+      verb: ^New$|^Set$
+      subject: VnetGatewayConnection
+      parameter-name: UsePolicyBasedTrafficSelector
+    set:
+      parameter-name: UsePolicyBasedTrafficSelectors
+  - where:
+      verb: ^New$|^Set$
+      subject: VnetGatewayConnection
+      parameter-name: IPsecPolicy
+    set:
+      alias: IpsecPolicies
+  - where:
+      verb: New
+      subject: VpnSite
+      parameter-name: ^DeviceProperty(.*)$
+    set:
+      parameter-name: $1
+  - where:
+      verb: New
+      subject: VpnSite
+      parameter-name: AddressSpaceAddressPrefix
+    set:
+      parameter-name: AddressPrefix
+      alias: AddressSpace
+  - where: # REMOVE BEFORE RELEASE: In-memory object parameter and Id alternative
+      verb: New
+      subject: VpnSite
+      parameter-name: ResourceGroupName
+    set:
+      alias:
+        - VirtualWan
+        - VirtualWanName
+        - VirtualWanResourceGroupName
+  - where:
+      verb: Set
+      subject: NetworkWatcherFlowLogConfiguration
+      parameter-name: Enabled
+    set:
+      parameter-name: EnableFlowLog
+  - where:
+      verb: Set
+      subject: NetworkWatcherFlowLogConfiguration
+      parameter-name: NetworkWatcherFlowAnalyticConfigurationEnabled
+    set:
+      parameter-name: EnableTrafficAnalytics
+  - where:
+      verb: Set
+      subject: NetworkWatcherFlowLogConfiguration
+      parameter-name: RetentionPolicyEnabled
+    set:
+      parameter-name: EnableRetention
+  - where:
+      verb: Set
+      subject: NetworkWatcherFlowLogConfiguration
+      parameter-name: StorageId
+    set:
+      parameter-name: StorageAccountId
+  - where:
+      verb: Set
+      subject: NetworkWatcherFlowLogConfiguration
+      parameter-name: RetentionPolicyDay
+    set:
+      parameter-name: RetentionInDays
+  - where:
+      verb: Set
+      subject: NetworkWatcherFlowLogConfiguration
+      parameter-name: NetworkWatcherFlowAnalyticConfigurationWorkspaceId
+    set:
+      parameter-name: WorkspaceGuid
+  - where:
+      verb: Set
+      subject: NetworkWatcherFlowLogConfiguration
+      parameter-name: NetworkWatcherFlowAnalyticConfigurationWorkspaceRegion
+    set:
+      parameter-name: WorkspaceLocation
+  - where:
+      verb: Set
+      subject: NetworkWatcherFlowLogConfiguration
+      parameter-name: NetworkWatcherFlowAnalyticConfigurationWorkspaceResourceId
+    set:
+      parameter-name: WorkspaceResourceId
+  - where:
+      verb: Set
+      subject: NetworkWatcherFlowLogConfiguration
+      parameter-name: NetworkWatcherFlowAnalyticConfigurationTrafficAnalyticsInterval
+    set:
+      parameter-name: TrafficAnalyticsInterval
+  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
+      verb: Set
+      subject: NetworkWatcherFlowLogConfiguration
+      parameter-name: ResourceGroupName
+    set:
+      alias: Workspace
 ```
