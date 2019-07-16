@@ -926,12 +926,6 @@ directive:
       parameter-name: DhcpOptionDnsServer
     set:
       parameter-name: DnsServer
-  - where:
-      verb: Set
-      subject: LocalNetworkGateway
-      parameter-name: LocalNetworkAddressSpaceAddressPrefix
-    set:
-      parameter-name: AddressPrefix
   - where: # REMOVE BEFORE RELEASE: These parameters are expanded into their properties as separate parameters
       verb: New
       subject: VnetTap
@@ -1214,27 +1208,27 @@ directive:
     set:
       parameter-name: AllowClassicOperations
   - where:
-      verb: New
+      verb: ^New$|^Set$
       subject: LocalNetworkGateway
       parameter-name: LocalNetworkAddressSpaceAddressPrefix
     set:
       parameter-name: AddressPrefix
   - where:
-      verb: New
-      subject: LocalNetworkGateway
+      verb: ^New$|^Set$
+      subject: ^LocalNetworkGateway$|^VnetGateway$
       parameter-name: BgpSettingAsn
     set:
       parameter-name: BgpAsn
       alias: Asn
   - where:
-      verb: New
-      subject: LocalNetworkGateway
+      verb: ^New$|^Set$
+      subject: ^LocalNetworkGateway$|^VnetGateway$
       parameter-name: BgpSettingBgpPeeringAddress
     set:
       parameter-name: BgpPeeringAddress
   - where:
-      verb: New
-      subject: LocalNetworkGateway
+      verb: ^New$|^Set$
+      subject: ^LocalNetworkGateway$|^VnetGateway$
       parameter-name: BgpSettingPeerWeight
     set:
       parameter-name: BgpPeerWeight
@@ -1417,4 +1411,70 @@ directive:
       parameter-name: VnetConnection
     set:
       alias: HubVnetConnection
+  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
+      verb: Set
+      subject: LocalNetworkGateway
+      parameter-name: ResourceGroupName
+    set:
+      alias: LocalNetworkGateway
+  - where:
+      verb: New
+      subject: VnetGateway
+      parameter-name: IPConfiguration
+    set:
+      alias: IpConfigurations
+  - where:
+      verb: ^New$|^Set$
+      subject: VnetGateway
+      parameter-name: Active
+    set:
+      parameter-name: EnableActiveActive
+      alias: EnableActiveActiveFeature
+  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
+      verb: ^New$|^Set$
+      subject: VnetGateway
+      parameter-name: ResourceGroupName
+    set:
+      alias:
+        - GatewaySku
+        - GatewayDefaultSite
+  - where: # REMOVE BEFORE RELEASE: In-memory object parameter, switch for opposite of EnableActiveActive
+      verb: Set
+      subject: VnetGateway
+      parameter-name: ResourceGroupName
+    set:
+      alias:
+        - VirtualNetworkGateway
+        - DisableActiveActiveFeature
+  - where:
+      verb: ^New$|^Set$
+      subject: VnetGateway
+      parameter-name: ^VpnClientConfigurationVpnClient(.*)$
+    set:
+      parameter-name: VpnClient$1
+  - where:
+      verb: ^New$|^Set$
+      subject: VnetGateway
+      parameter-name: ^VpnClientConfiguration(.*)$
+    set:
+      parameter-name: VpnClient$1
+      alias: $1
+  - where:
+      verb: ^New$|^Set$
+      subject: VnetGateway
+      parameter-name: VpnClientRootCertificate
+    set:
+      alias: VpnClientRootCertificates
+  - where:
+      verb: ^New$|^Set$
+      subject: VnetGateway
+      parameter-name: VpnClientRevokedCertificate
+    set:
+      alias: VpnClientRevokedCertificates
+  - where:
+      verb: ^New$|^Set$
+      subject: VnetGateway
+      parameter-name: VpnClientAddressPoolAddressPrefix
+    set:
+      alias: VpnClientAddressPool
 ```
