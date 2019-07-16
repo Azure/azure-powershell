@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.DataShare.Invitation
         {
             if (this.ParameterSetName.Equals(ParameterSetNames.InvitationEmailParameterSet, StringComparison.OrdinalIgnoreCase))
             {
-                if (this.ShouldProcess(this.Name, $"Creating invitation '{this.Name}'"))
+                if (this.ShouldProcess(this.Name, "Creating invitation"))
                 {
                     Invitation newInvitation = this.DataShareManagementClient.Invitations.Create(
                         this.ResourceGroupName,
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Commands.DataShare.Invitation
 
             if (this.ParameterSetName.Equals(ParameterSetNames.InvitationTenantParameterSet, StringComparison.OrdinalIgnoreCase))
             {
-                if (this.ShouldProcess(this.Name, $"Creating invitation '{this.Name}'"))
+                if (this.ShouldProcess(this.Name, "Creating invitation"))
                 {
                     Invitation newInvitation = this.DataShareManagementClient.Invitations.Create(
                         this.ResourceGroupName,

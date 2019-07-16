@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.DataShare.ShareSubscription
 
         public override void ExecuteCmdlet()
         {
-            if (this.ShouldProcess(this.Name, $"Creating share subscription '{this.Name}'"))
+            if (this.ShouldProcess(this.Name, "Creating share subscription"))
             {
                 ShareSubscription shareSubscription = this.DataShareManagementClient.ShareSubscriptions.Create(
                     this.ResourceGroupName,

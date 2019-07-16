@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.DataShare.Account
 
         public override void ExecuteCmdlet()
         {
-            if (this.ShouldProcess(this.Name, $"Creating data share account '{this.Name}'."))
+            if (this.ShouldProcess(this.Name, "Creating data share account"))
             {
                 Account dataShareAccount = this.DataShareManagementClient.Accounts.Create(
                     this.ResourceGroupName,
