@@ -80,6 +80,7 @@ namespace Microsoft.Azure.Commands.DataShare.Invitation
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = ParameterSetNames.FieldsParameterSet,
             HelpMessage = "Azure data share invitation name")]
+        [ResourceNameCompleter(ResourceTypes.Invitation, "ResourceGroupName", "AccountName", "ShareName")]
         public string Name { get; set; }
 
 
