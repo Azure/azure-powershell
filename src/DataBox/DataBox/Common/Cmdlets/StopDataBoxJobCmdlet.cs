@@ -15,7 +15,7 @@ using Resource = Microsoft.Azure.PowerShell.Cmdlets.DataBox.Resources.Resource;
 
 namespace Microsoft.Azure.Commands.DataBox.Common
 {
-    [Cmdlet(VerbsLifecycle.Stop , ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataBoxJob", SupportsShouldProcess = true, DefaultParameterSetName = GetByNameParameterSet), OutputType(typeof(void))]
+    [Cmdlet(VerbsLifecycle.Stop, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataBoxJob", SupportsShouldProcess = true, DefaultParameterSetName = GetByNameParameterSet), OutputType(typeof(void))]
     public class StopDataBoxJob : AzureDataBoxCmdletBase
     {
 
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.DataBox.Common
         [ValidateNotNullOrEmpty]
         public string Reason { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = GetByResourceIdParameterSet,  ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = true, ParameterSetName = GetByResourceIdParameterSet, ValueFromPipelineByPropertyName = true)]
         [Alias("Id")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
@@ -65,21 +65,19 @@ namespace Microsoft.Azure.Commands.DataBox.Common
             // Gets information about the specified job.
             JobResource jobResource = JobsOperationsExtensions.Get(DataBoxManagementClient.Jobs, ResourceGroupName, Name, "details");
 
-            if (jobResource.IsCancellable != null && (bool)jobResource.IsCancellable)
+            // Initiate to cancel job
+            if (ShouldProcess(this.Name, string.Format(Resource.CancellingDataboxJob + this.Name + Resource.InResourceGroup + this.ResourceGroupName)))
             {
-                // Initiate to cancel job
-                if (ShouldProcess(this.Name, string.Format(Resource.CancellingDataboxJob + this.Name + Resource.InResourceGroup + this.ResourceGroupName)))
-                {
-                    JobsOperationsExtensions.Cancel(
-                        DataBoxManagementClient.Jobs,
-                        ResourceGroupName,
-                        Name,
-                        Reason);
-                }
+                JobsOperationsExtensions.Cancel(
+                    DataBoxManagementClient.Jobs,
+                    ResourceGroupName,
+                    Name,
+                    Reason);
+            }
 
-                if (PassThru)
-                    WriteObject(true);
-            } 
+            if (PassThru)
+                WriteObject(true);
+
         }
     }
 }
