@@ -169,6 +169,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &quot;This job cannot be cancelled&quot;.
+        /// </summary>
+        internal static string JobCannotBeCancelled {
+            get {
+                return ResourceManager.GetString("JobCannotBeCancelled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;This job cannot be deleted&quot;.
+        /// </summary>
+        internal static string JobCannotBeDeleted {
+            get {
+                return ResourceManager.GetString("JobCannotBeDeleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &quot;Postal code: &quot;.
         /// </summary>
         internal static string PostalCode {
