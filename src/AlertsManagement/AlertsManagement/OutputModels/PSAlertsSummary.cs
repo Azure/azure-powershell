@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement.OutputModels
 
         public int? TotalSmartGroups { get; }
 
-        [Ps1Xml(Label = "Summary", Target = ViewControl.List, ScriptBlock = "$_.AggregatedCounts.ToString()")]
+        [Ps1Xml(Label = "Summary", Target = ViewControl.All, ScriptBlock = "$_.AggregatedCounts.ToString()")]
         public PSAggregatedCounts AggregatedCounts { get; }
     }
 }
