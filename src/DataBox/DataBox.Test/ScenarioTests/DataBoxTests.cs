@@ -79,14 +79,6 @@ namespace Microsoft.Azure.Commands.DataBox.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemoveAlreadyRemovedDataBoxJob()
-        {
-
-            RunPowerShellTest(_logger, "Test-RemoveAlreadyRemovedDataBoxJob");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAmbiguousAddress()
         {
 

@@ -62,8 +62,6 @@ namespace Microsoft.Azure.Commands.DataBox.Common
                 this.Name = InputObject.JobResource.Name;
             }
 
-            // Gets information about the specified job.
-            JobResource jobResource = JobsOperationsExtensions.Get(DataBoxManagementClient.Jobs, ResourceGroupName, Name, "details");
 
             // Initiate to cancel job
             if (ShouldProcess(this.Name, string.Format(Resource.CancellingDataboxJob + this.Name + Resource.InResourceGroup + this.ResourceGroupName)))
