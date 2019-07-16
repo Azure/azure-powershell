@@ -573,7 +573,7 @@ directive:
       property-name: PauseTimeBetweenBatches
   - where: 
       model-name: GalleryImageVersion
-      property-name: ^PublishingProfile(.*)$
+      property-name: ^PublishingProfile(.+)$
     set:
       property-name: $1
   - where: 
