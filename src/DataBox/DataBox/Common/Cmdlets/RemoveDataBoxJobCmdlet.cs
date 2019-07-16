@@ -74,6 +74,10 @@ namespace Microsoft.Azure.Commands.DataBox.Common
                         WriteObject(true);
                 }
             }
+            else
+            {
+                throw new Exception("This job cannot be cancelled");
+            }
         }
     }
 }
