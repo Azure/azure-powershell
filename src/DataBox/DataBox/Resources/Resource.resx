@@ -153,6 +153,12 @@
   <data name="InvalidResourceId" xml:space="preserve">
     <value>"Invalid Resource Id"</value>
   </data>
+  <data name="JobCannotBeCancelled" xml:space="preserve">
+    <value>"This job cannot be cancelled"</value>
+  </data>
+  <data name="JobCannotBeDeleted" xml:space="preserve">
+    <value>"This job cannot be deleted"</value>
+  </data>
   <data name="PostalCode" xml:space="preserve">
     <value>"Postal code: "</value>
   </data>

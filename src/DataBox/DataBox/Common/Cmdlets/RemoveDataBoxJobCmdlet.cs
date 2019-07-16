@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.DataBox.Common
             }
             else
             {
-                throw new Exception("This job cannot be cancelled");
+                throw new Exception(Resource.JobCannotBeDeleted);
             }
         }
     }
