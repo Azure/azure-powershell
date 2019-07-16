@@ -70,6 +70,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Scope cannot be empty..
+        /// </summary>
+        internal static string EmptyScopeType_Exception {
+            get {
+                return ResourceManager.GetString("EmptyScopeType_Exception", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Incorrect Action Rule Type for given set of parameters. Use &apos;{0}&apos; type for this parameter set..
         /// </summary>
         internal static string IncorrectActionRuleType_Exception {
@@ -93,6 +102,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement.Properties {
         internal static string InvalidResourceId {
             get {
                 return ResourceManager.GetString("InvalidResourceId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scope is neither Resource or ResourceGroup type..
+        /// </summary>
+        internal static string InvalidScopeType_Exception {
+            get {
+                return ResourceManager.GetString("InvalidScopeType_Exception", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scope can either be list of Resource or ResourceGroup exclusively..
+        /// </summary>
+        internal static string MixedScopeType_Exception {
+            get {
+                return ResourceManager.GetString("MixedScopeType_Exception", resourceCulture);
             }
         }
         

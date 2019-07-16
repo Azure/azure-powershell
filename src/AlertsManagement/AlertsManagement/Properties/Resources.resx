@@ -120,6 +120,9 @@
   <data name="CreateOrUpdateActionRule_Action" xml:space="preserve">
     <value>Create or Update Action Rule</value>
   </data>
+  <data name="EmptyScopeType_Exception" xml:space="preserve">
+    <value>Scope cannot be empty.</value>
+  </data>
   <data name="IncorrectActionRuleType_Exception" xml:space="preserve">
     <value>Incorrect Action Rule Type for given set of parameters. Use '{0}' type for this parameter set.</value>
   </data>
@@ -128,6 +131,12 @@
   </data>
   <data name="InvalidResourceId" xml:space="preserve">
     <value>'{0}' is not a valid ResourceId.</value>
+  </data>
+  <data name="InvalidScopeType_Exception" xml:space="preserve">
+    <value>Scope is neither Resource or ResourceGroup type.</value>
+  </data>
+  <data name="MixedScopeType_Exception" xml:space="preserve">
+    <value>Scope can either be list of Resource or ResourceGroup exclusively.</value>
   </data>
   <data name="RemoveActionRule_Action" xml:space="preserve">
     <value>Remove action rule</value>

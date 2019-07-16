@@ -111,22 +111,6 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         public string Status { get; set; }
 
         /// <summary>
-        /// Action rule simplified format : Scope Type
-        /// </summary>
-        [Parameter(Mandatory = true,
-                ParameterSetName = BySimplifiedFormatActionGroupActionRuleParameterSet,
-                HelpMessage = "Scope Type")]
-        [Parameter(Mandatory = true,
-                ParameterSetName = BySimplifiedFormatSuppressionActionRuleParameterSet,
-                HelpMessage = "Scope Type")]
-        [Parameter(Mandatory = true,
-                ParameterSetName = BySimplifiedFormatDiagnosticsActionRuleParameterSet,
-                HelpMessage = "Scope Type")]
-        [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter("Resource", "ResourceGroup")]
-        public string ScopeType { get; set; }
-
-        /// <summary>
         /// Action rule simplified format : List of values
         /// </summary>
         [Parameter(Mandatory = true,
@@ -534,10 +518,52 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         private Scope ParseScope()
         {
             Scope scope = new Scope(
-                scopeType: ScopeType,
+                scopeType: DetermineScopeType(Scope),
                 values: Scope
             );
             return scope;
+        }
+
+        private string DetermineScopeType(List<string> scopeValues)
+        {
+            if (scopeValues == null || scopeValues?.Count == 0)
+            {
+                throw new PSInvalidOperationException(string.Format(Resources.EmptyScopeType_Exception));
+            }
+            else
+            {
+                // Identify the first scope value
+                string scopeType = DetermineScopeType(scopeValues[0]);
+
+                // Check that rest of the values are of same type
+                foreach (string value in scopeValues)
+                {
+                    string current = DetermineScopeType(value);
+                    if (current != scopeType)
+                    {
+                        throw new PSInvalidOperationException(string.Format(Resources.MixedScopeType_Exception));
+                    }
+                }
+                return scopeType;
+            }
+        }
+
+        private string DetermineScopeType(string value)
+        {
+            string[] tokens = value.Split('/');
+
+            if (tokens.Length == 5)
+            {
+                return ScopeType.ResourceGroup;
+            }
+            else if (tokens.Length >= 9)
+            {
+                return ScopeType.ResourceGroup;
+            }
+            else
+            {
+                throw new PSInvalidOperationException(string.Format(Resources.InvalidScopeType_Exception));
+            }
         }
     }
 }
