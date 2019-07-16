@@ -81,7 +81,6 @@ namespace Microsoft.Azure.Commands.DataShare.SynchronizationSetting
             HelpMessage = "Synchronization setting name",
             ParameterSetName = ParameterSetNames.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
-        [ResourceNameCompleter(ResourceTypes.SynchronizationSetting, "ResourceGroupName", "AccountName", "ShareName")]
         public string Name { get; set; }
 
         /// <summary>
@@ -109,7 +108,7 @@ namespace Microsoft.Azure.Commands.DataShare.SynchronizationSetting
 
         public override void ExecuteCmdlet()
         {
-            if (this.ShouldProcess(this.Name, "Create"))
+            if (this.ShouldProcess(this.Name, $"Creating share synchronization '{this.Name}'"))
             {
                 var setting = new ScheduledSynchronizationSetting(
                     recurrenceInterval: this.RecurrenceInterval,
