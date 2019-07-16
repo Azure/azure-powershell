@@ -74,10 +74,6 @@ namespace Microsoft.Azure.Commands.DataBox.Common
                         WriteObject(true);
                 }
             }
-            else
-            {
-                throw new Exception(Resource.JobCannotBeDeleted);
-            }
         }
     }
 }
