@@ -347,13 +347,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 #### LINK <IExpressRouteLink[]>: The set of physical links of the ExpressRoutePort resource
+  - `[Id <String>]`: Resource ID.
   - `[AdminState <ExpressRouteLinkAdminState?>]`: Administrative state of the physical port
   - `[Name <String>]`: Name of child port resource that is unique among child port resources of the parent.
 
 #### PARAMETER <IExpressRoutePort>: ExpressRoutePort resource definition.
+  - `[Id <String>]`: Resource ID.
+  - `[Location <String>]`: Resource location.
+  - `[Tag <IResourceTags>]`: Resource tags.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
   - `[BandwidthInGbps <Int32?>]`: Bandwidth of procured ports in Gbps
   - `[Encapsulation <ExpressRoutePortsEncapsulation?>]`: Encapsulation method on physical ports.
   - `[Link <IExpressRouteLink[]>]`: The set of physical links of the ExpressRoutePort resource
+    - `[Id <String>]`: Resource ID.
     - `[AdminState <ExpressRouteLinkAdminState?>]`: Administrative state of the physical port
     - `[Name <String>]`: Name of child port resource that is unique among child port resources of the parent.
   - `[PeeringLocation <String>]`: The name of the peering location that the ExpressRoutePort is mapped to physically.

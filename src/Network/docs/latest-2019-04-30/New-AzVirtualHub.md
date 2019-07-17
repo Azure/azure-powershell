@@ -418,6 +418,10 @@ To create the parameters described below, construct a hash table containing the 
   - `[NextHopIPAddress <String>]`: NextHop ip address.
 
 #### VIRTUALHUBPARAMETER <IVirtualHub>: VirtualHub Resource.
+  - `[Id <String>]`: Resource ID.
+  - `[Location <String>]`: Resource location.
+  - `[Tag <IResourceTags>]`: Resource tags.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
   - `[AddressPrefix <String>]`: Address-prefix for this VirtualHub.
   - `[ExpressRouteGatewayId <String>]`: Resource ID.
   - `[P2SVpnGatewayId <String>]`: Resource ID.
@@ -425,6 +429,7 @@ To create the parameters described below, construct a hash table containing the 
     - `[AddressPrefix <String[]>]`: List of all addressPrefixes.
     - `[NextHopIPAddress <String>]`: NextHop ip address.
   - `[VirtualNetworkConnection <IHubVirtualNetworkConnection[]>]`: List of all vnet connections with this VirtualHub.
+    - `[Id <String>]`: Resource ID.
     - `[AllowHubToRemoteVnetTransit <Boolean?>]`: VirtualHub to RemoteVnet transit to enabled or not.
     - `[AllowRemoteVnetToUseHubVnetGateway <Boolean?>]`: Allow RemoteVnet to use Virtual Hub's gateways.
     - `[EnableInternetSecurity <Boolean?>]`: Enable internet security
@@ -434,6 +439,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[VpnGatewayId <String>]`: Resource ID.
 
 #### VNETCONNECTION <IHubVirtualNetworkConnection[]>: List of all vnet connections with this VirtualHub.
+  - `[Id <String>]`: Resource ID.
   - `[AllowHubToRemoteVnetTransit <Boolean?>]`: VirtualHub to RemoteVnet transit to enabled or not.
   - `[AllowRemoteVnetToUseHubVnetGateway <Boolean?>]`: Allow RemoteVnet to use Virtual Hub's gateways.
   - `[EnableInternetSecurity <Boolean?>]`: Enable internet security

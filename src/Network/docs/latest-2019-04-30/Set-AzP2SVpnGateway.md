@@ -380,6 +380,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 #### P2SVPNGATEWAYPARAMETER <IP2SVpnGateway>: P2SVpnGateway Resource.
+  - `[Id <String>]`: Resource ID.
+  - `[Location <String>]`: Resource location.
+  - `[Tag <IResourceTags>]`: Resource tags.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
   - `[CustomRouteAddressPrefix <String[]>]`: A list of address blocks reserved for this virtual network in CIDR notation.
   - `[P2SVpnServerConfigurationId <String>]`: Resource ID.
   - `[VirtualHubId <String>]`: Resource ID.

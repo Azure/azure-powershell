@@ -364,11 +364,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 #### PARAMETER <IRouteTable>: Route table resource.
+  - `[Id <String>]`: Resource ID.
+  - `[Location <String>]`: Resource location.
+  - `[Tag <IResourceTags>]`: Resource tags.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
   - `[DisableBgpRoutePropagation <Boolean?>]`: Gets or sets whether to disable the routes learned by BGP on that route table. True means disable.
   - `[Etag <String>]`: Gets a unique read-only string that changes whenever the resource is updated.
   - `[ProvisioningState <String>]`: The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
   - `[Route <IRoute[]>]`: Collection of routes contained within a route table.
     - `NextHopType <RouteNextHopType>`: The type of Azure hop the packet should be sent to.
+    - `[Id <String>]`: Resource ID.
     - `[AddressPrefix <String>]`: The destination CIDR to which the route applies.
     - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
     - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
@@ -377,6 +382,7 @@ To create the parameters described below, construct a hash table containing the 
 
 #### ROUTE <IRoute[]>: Collection of routes contained within a route table.
   - `NextHopType <RouteNextHopType>`: The type of Azure hop the packet should be sent to.
+  - `[Id <String>]`: Resource ID.
   - `[AddressPrefix <String>]`: The destination CIDR to which the route applies.
   - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
   - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.

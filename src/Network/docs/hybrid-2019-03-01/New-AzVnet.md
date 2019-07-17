@@ -448,12 +448,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 #### PARAMETER <IVirtualNetwork>: Virtual Network resource.
+  - `[Id <String>]`: Resource ID.
+  - `[Location <String>]`: Resource location.
+  - `[Tag <IResourceTags>]`: Resource tags.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
   - `[AddressSpaceAddressPrefix <String[]>]`: A list of address blocks reserved for this virtual network in CIDR notation.
   - `[DhcpOptionDnsServer <String[]>]`: The list of DNS servers IP addresses.
   - `[EnableDdosProtection <Boolean?>]`: Indicates if DDoS protection is enabled for all the protected resources in a Virtual Network.
   - `[EnableVMProtection <Boolean?>]`: Indicates if Vm protection is enabled for all the subnets in a Virtual Network.
   - `[Etag <String>]`: Gets a unique read-only string that changes whenever the resource is updated.
   - `[Peering <IVirtualNetworkPeering[]>]`: A list of peerings in a Virtual Network.
+    - `[Id <String>]`: Resource ID.
     - `[AllowForwardedTraffic <Boolean?>]`: Whether the forwarded traffic from the VMs in the local virtual network will be allowed/disallowed in remote virtual network.
     - `[AllowGatewayTransit <Boolean?>]`: If gateway links can be used in remote virtual networking to link to this virtual network.
     - `[AllowVirtualNetworkAccess <Boolean?>]`: Whether the VMs in the local virtual network space would be able to access the VMs in remote virtual network space.
@@ -467,14 +472,19 @@ To create the parameters described below, construct a hash table containing the 
   - `[ProvisioningState <String>]`: The provisioning state of the PublicIP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
   - `[ResourceGuid <String>]`: The resourceGuid property of the Virtual Network resource.
   - `[Subnet <ISubnet[]>]`: A list of subnets in a Virtual Network.
+    - `[Id <String>]`: Resource ID.
     - `[AddressPrefix <String>]`: The address prefix for the subnet.
     - `[DefaultSecurityRule <ISecurityRule[]>]`: The default security rules of network security group.
       - `Access <SecurityRuleAccess>`: The network traffic is allowed or denied. Possible values are: 'Allow' and 'Deny'.
       - `Direction <SecurityRuleDirection>`: The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic. Possible values are: 'Inbound' and 'Outbound'.
       - `Protocol <SecurityRuleProtocol>`: Network protocol this rule applies to. Possible values are 'Tcp', 'Udp', and '*'.
+      - `[Id <String>]`: Resource ID.
       - `[Description <String>]`: A description for this rule. Restricted to 140 chars.
       - `[DestinationAddressPrefix <String>]`: The destination address prefix. CIDR or destination IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used.
       - `[DestinationApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: The application security group specified as destination.
+        - `[Id <String>]`: Resource ID.
+        - `[Location <String>]`: Resource location.
+        - `[Tag <IResourceTags>]`: Resource tags.
       - `[DestinationPortRange <String>]`: The destination port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
       - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
       - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
@@ -498,11 +508,13 @@ To create the parameters described below, construct a hash table containing the 
     - `[ProvisioningState <String>]`: The provisioning state of the resource.
     - `[ResourceGuid <String>]`: The resource GUID property of the network security group resource.
     - `[ResourceNavigationLink <IResourceNavigationLink[]>]`: Gets an array of references to the external resources using subnet.
+      - `[Id <String>]`: Resource ID.
       - `[Link <String>]`: Link to the external resource
       - `[LinkedResourceType <String>]`: Resource type of the linked resource.
       - `[Name <String>]`: Name of the resource that is unique within a resource group. This name can be used to access the resource.
     - `[Route <IRoute[]>]`: Collection of routes contained within a route table.
       - `NextHopType <RouteNextHopType>`: The type of Azure hop the packet should be sent to.
+      - `[Id <String>]`: Resource ID.
       - `[AddressPrefix <String>]`: The destination CIDR to which the route applies.
       - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
       - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
@@ -520,14 +532,20 @@ To create the parameters described below, construct a hash table containing the 
       - `[Service <String>]`: The type of the endpoint service.
 
 #### SUBNET <ISubnet[]>: A list of subnets in a Virtual Network.
+  - `[Id <String>]`: Resource ID.
   - `[AddressPrefix <String>]`: The address prefix for the subnet.
   - `[DefaultSecurityRule <ISecurityRule[]>]`: The default security rules of network security group.
     - `Access <SecurityRuleAccess>`: The network traffic is allowed or denied. Possible values are: 'Allow' and 'Deny'.
     - `Direction <SecurityRuleDirection>`: The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic. Possible values are: 'Inbound' and 'Outbound'.
     - `Protocol <SecurityRuleProtocol>`: Network protocol this rule applies to. Possible values are 'Tcp', 'Udp', and '*'.
+    - `[Id <String>]`: Resource ID.
     - `[Description <String>]`: A description for this rule. Restricted to 140 chars.
     - `[DestinationAddressPrefix <String>]`: The destination address prefix. CIDR or destination IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used.
     - `[DestinationApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: The application security group specified as destination.
+      - `[Id <String>]`: Resource ID.
+      - `[Location <String>]`: Resource location.
+      - `[Tag <IResourceTags>]`: Resource tags.
+        - `[(Any) <String>]`: This indicates any property can be added to this object.
     - `[DestinationPortRange <String>]`: The destination port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
     - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
     - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
@@ -551,11 +569,13 @@ To create the parameters described below, construct a hash table containing the 
   - `[ProvisioningState <String>]`: The provisioning state of the resource.
   - `[ResourceGuid <String>]`: The resource GUID property of the network security group resource.
   - `[ResourceNavigationLink <IResourceNavigationLink[]>]`: Gets an array of references to the external resources using subnet.
+    - `[Id <String>]`: Resource ID.
     - `[Link <String>]`: Link to the external resource
     - `[LinkedResourceType <String>]`: Resource type of the linked resource.
     - `[Name <String>]`: Name of the resource that is unique within a resource group. This name can be used to access the resource.
   - `[Route <IRoute[]>]`: Collection of routes contained within a route table.
     - `NextHopType <RouteNextHopType>`: The type of Azure hop the packet should be sent to.
+    - `[Id <String>]`: Resource ID.
     - `[AddressPrefix <String>]`: The destination CIDR to which the route applies.
     - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
     - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
@@ -573,6 +593,7 @@ To create the parameters described below, construct a hash table containing the 
     - `[Service <String>]`: The type of the endpoint service.
 
 #### VNETPEERING <IVirtualNetworkPeering[]>: A list of peerings in a Virtual Network.
+  - `[Id <String>]`: Resource ID.
   - `[AllowForwardedTraffic <Boolean?>]`: Whether the forwarded traffic from the VMs in the local virtual network will be allowed/disallowed in remote virtual network.
   - `[AllowGatewayTransit <Boolean?>]`: If gateway links can be used in remote virtual networking to link to this virtual network.
   - `[AllowVirtualNetworkAccess <Boolean?>]`: Whether the VMs in the local virtual network space would be able to access the VMs in remote virtual network space.

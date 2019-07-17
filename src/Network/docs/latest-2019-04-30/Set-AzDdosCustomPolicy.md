@@ -282,6 +282,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 #### PARAMETER <IDdosCustomPolicy>: A DDoS custom policy in a resource group.
+  - `[Id <String>]`: Resource ID.
+  - `[Location <String>]`: Resource location.
+  - `[Tag <IResourceTags>]`: Resource tags.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
   - `[ProtocolCustomSetting <IProtocolCustomSettingsFormat[]>]`: The protocol-specific DDoS policy customization parameters.
     - `[Protocol <DdosCustomPolicyProtocol?>]`: The protocol for which the DDoS protection policy is being customized.
     - `[SourceRateOverride <String>]`: The customized DDoS protection source rate.

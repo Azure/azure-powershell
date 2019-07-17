@@ -316,6 +316,7 @@ To create the parameters described below, construct a hash table containing the 
 
 #### PUTEXPRESSROUTECONNECTIONPARAMETER <IExpressRouteConnection>: ExpressRouteConnection resource.
   - `Name <String>`: The name of the resource.
+  - `[Id <String>]`: Resource ID.
   - `[AuthorizationKey <String>]`: Authorization key to establish the connection.
   - `[ExpressRouteCircuitPeeringId <String>]`: The ID of the ExpressRoute circuit peering.
   - `[RoutingWeight <Int32?>]`: The routing weight associated to the connection.

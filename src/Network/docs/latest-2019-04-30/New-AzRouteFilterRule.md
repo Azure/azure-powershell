@@ -349,6 +349,7 @@ To create the parameters described below, construct a hash table containing the 
 #### ROUTEFILTERRULEPARAMETER <IRouteFilterRule>: Route Filter Rule Resource
   - `Access <Access>`: The access type of the rule.
   - `Community <String[]>`: The collection for bgp community values to filter on. e.g. ['12076:5010','12076:5020']
+  - `[Id <String>]`: Resource ID.
   - `[Location <String>]`: Resource location.
   - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
 

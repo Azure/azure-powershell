@@ -468,6 +468,10 @@ To create the parameters described below, construct a hash table containing the 
   - `[Type <String>]`: Gets or sets the ipTag type: Example FirstPartyUsage.
 
 #### PARAMETER <IPublicIPPrefix>: Public IP prefix resource.
+  - `[Id <String>]`: Resource ID.
+  - `[Location <String>]`: Resource location.
+  - `[Tag <IResourceTags>]`: Resource tags.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
   - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
   - `[IPPrefix <String>]`: The allocated Prefix
   - `[IPTag <IIPTag[]>]`: The list of tags associated with the public IP prefix.

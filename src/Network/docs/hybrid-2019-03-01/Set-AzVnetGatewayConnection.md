@@ -661,6 +661,9 @@ To create the parameters described below, construct a hash table containing the 
 #### PARAMETER <IVirtualNetworkGatewayConnection>: A common class for general resource information
   - `ConnectionType <VirtualNetworkGatewayConnectionType>`: Gateway connection type. Possible values are: 'IPsec','Vnet2Vnet','ExpressRoute', and 'VPNClient.
   - `VirtualNetworkGateway1 <IVirtualNetworkGateway>`: The reference to virtual network gateway resource.
+    - `[Id <String>]`: Resource ID.
+    - `[Location <String>]`: Resource location.
+    - `[Tag <IResourceTags>]`: Resource tags.
     - `[Active <Boolean?>]`: ActiveActive flag
     - `[BgpSettingAsn <Int64?>]`: The BGP speaker's ASN.
     - `[BgpSettingBgpPeeringAddress <String>]`: The BGP peering address and BGP identifier of this BGP speaker.
@@ -670,6 +673,7 @@ To create the parameters described below, construct a hash table containing the 
     - `[GatewayDefaultSiteId <String>]`: Resource ID.
     - `[GatewayType <VirtualNetworkGatewayType?>]`: The type of this virtual network gateway. Possible values are: 'Vpn' and 'ExpressRoute'.
     - `[IPConfiguration <IVirtualNetworkGatewayIPConfiguration[]>]`: IP configurations for virtual network gateway.
+      - `[Id <String>]`: Resource ID.
       - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
       - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
       - `[PrivateIPAllocationMethod <IPAllocationMethod?>]`: The private IP address allocation method.
@@ -684,14 +688,20 @@ To create the parameters described below, construct a hash table containing the 
     - `[VpnClientConfigurationRadiusServerSecret <String>]`: The radius secret property of the VirtualNetworkGateway resource for vpn client connection.
     - `[VpnClientConfigurationVpnClientProtocol <VpnClientProtocol[]>]`: VpnClientProtocols for Virtual network gateway.
     - `[VpnClientConfigurationVpnClientRevokedCertificate <IVpnClientRevokedCertificate[]>]`: VpnClientRevokedCertificate for Virtual network gateway.
+      - `[Id <String>]`: Resource ID.
       - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
       - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
       - `[Thumbprint <String>]`: The revoked VPN client certificate thumbprint.
     - `[VpnClientConfigurationVpnClientRootCertificate <IVpnClientRootCertificate[]>]`: VpnClientRootCertificate for virtual network gateway.
       - `PublicCertData <String>`: The certificate public data.
+      - `[Id <String>]`: Resource ID.
       - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
       - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
     - `[VpnType <VpnType?>]`: The type of this virtual network gateway. Possible values are: 'PolicyBased' and 'RouteBased'.
+  - `[Id <String>]`: Resource ID.
+  - `[Location <String>]`: Resource location.
+  - `[Tag <IResourceTags>]`: Resource tags.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
   - `[AuthorizationKey <String>]`: The authorizationKey.
   - `[BgpSettingAsn <Int64?>]`: The BGP speaker's ASN.
   - `[BgpSettingBgpPeeringAddress <String>]`: The BGP peering address and BGP identifier of this BGP speaker.
@@ -715,7 +725,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[LocalNetworkGateway2Location <String>]`: Resource location.
   - `[LocalNetworkGateway2PropertiesResourceGuid <String>]`: The resource GUID property of the LocalNetworkGateway resource.
   - `[LocalNetworkGateway2Tag <IResourceTags>]`: Resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
   - `[PeerId <String>]`: Resource ID.
   - `[ResourceGuid <String>]`: The resource GUID property of the VirtualNetworkGatewayConnection resource.
   - `[RoutingWeight <Int32?>]`: The routing weight.
@@ -724,6 +733,10 @@ To create the parameters described below, construct a hash table containing the 
   - `[VirtualNetworkGateway2 <IVirtualNetworkGateway>]`: The reference to virtual network gateway resource.
 
 #### VNETGATEWAY1 <IVirtualNetworkGateway>: The reference to virtual network gateway resource.
+  - `[Id <String>]`: Resource ID.
+  - `[Location <String>]`: Resource location.
+  - `[Tag <IResourceTags>]`: Resource tags.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
   - `[Active <Boolean?>]`: ActiveActive flag
   - `[BgpSettingAsn <Int64?>]`: The BGP speaker's ASN.
   - `[BgpSettingBgpPeeringAddress <String>]`: The BGP peering address and BGP identifier of this BGP speaker.
@@ -733,6 +746,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[GatewayDefaultSiteId <String>]`: Resource ID.
   - `[GatewayType <VirtualNetworkGatewayType?>]`: The type of this virtual network gateway. Possible values are: 'Vpn' and 'ExpressRoute'.
   - `[IPConfiguration <IVirtualNetworkGatewayIPConfiguration[]>]`: IP configurations for virtual network gateway.
+    - `[Id <String>]`: Resource ID.
     - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
     - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
     - `[PrivateIPAllocationMethod <IPAllocationMethod?>]`: The private IP address allocation method.
@@ -747,16 +761,22 @@ To create the parameters described below, construct a hash table containing the 
   - `[VpnClientConfigurationRadiusServerSecret <String>]`: The radius secret property of the VirtualNetworkGateway resource for vpn client connection.
   - `[VpnClientConfigurationVpnClientProtocol <VpnClientProtocol[]>]`: VpnClientProtocols for Virtual network gateway.
   - `[VpnClientConfigurationVpnClientRevokedCertificate <IVpnClientRevokedCertificate[]>]`: VpnClientRevokedCertificate for Virtual network gateway.
+    - `[Id <String>]`: Resource ID.
     - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
     - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
     - `[Thumbprint <String>]`: The revoked VPN client certificate thumbprint.
   - `[VpnClientConfigurationVpnClientRootCertificate <IVpnClientRootCertificate[]>]`: VpnClientRootCertificate for virtual network gateway.
     - `PublicCertData <String>`: The certificate public data.
+    - `[Id <String>]`: Resource ID.
     - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
     - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
   - `[VpnType <VpnType?>]`: The type of this virtual network gateway. Possible values are: 'PolicyBased' and 'RouteBased'.
 
 #### VNETGATEWAY2 <IVirtualNetworkGateway>: The reference to virtual network gateway resource.
+  - `[Id <String>]`: Resource ID.
+  - `[Location <String>]`: Resource location.
+  - `[Tag <IResourceTags>]`: Resource tags.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
   - `[Active <Boolean?>]`: ActiveActive flag
   - `[BgpSettingAsn <Int64?>]`: The BGP speaker's ASN.
   - `[BgpSettingBgpPeeringAddress <String>]`: The BGP peering address and BGP identifier of this BGP speaker.
@@ -766,6 +786,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[GatewayDefaultSiteId <String>]`: Resource ID.
   - `[GatewayType <VirtualNetworkGatewayType?>]`: The type of this virtual network gateway. Possible values are: 'Vpn' and 'ExpressRoute'.
   - `[IPConfiguration <IVirtualNetworkGatewayIPConfiguration[]>]`: IP configurations for virtual network gateway.
+    - `[Id <String>]`: Resource ID.
     - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
     - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
     - `[PrivateIPAllocationMethod <IPAllocationMethod?>]`: The private IP address allocation method.
@@ -780,11 +801,13 @@ To create the parameters described below, construct a hash table containing the 
   - `[VpnClientConfigurationRadiusServerSecret <String>]`: The radius secret property of the VirtualNetworkGateway resource for vpn client connection.
   - `[VpnClientConfigurationVpnClientProtocol <VpnClientProtocol[]>]`: VpnClientProtocols for Virtual network gateway.
   - `[VpnClientConfigurationVpnClientRevokedCertificate <IVpnClientRevokedCertificate[]>]`: VpnClientRevokedCertificate for Virtual network gateway.
+    - `[Id <String>]`: Resource ID.
     - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
     - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
     - `[Thumbprint <String>]`: The revoked VPN client certificate thumbprint.
   - `[VpnClientConfigurationVpnClientRootCertificate <IVpnClientRootCertificate[]>]`: VpnClientRootCertificate for virtual network gateway.
     - `PublicCertData <String>`: The certificate public data.
+    - `[Id <String>]`: Resource ID.
     - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
     - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
   - `[VpnType <VpnType?>]`: The type of this virtual network gateway. Possible values are: 'PolicyBased' and 'RouteBased'.

@@ -319,6 +319,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 #### AUTHORIZATIONPARAMETER <IExpressRouteCircuitAuthorization>: Authorization in an ExpressRouteCircuit resource.
+  - `[Id <String>]`: Resource ID.
   - `[AuthorizationKey <String>]`: The authorization key.
   - `[AuthorizationUseStatus <AuthorizationUseStatus?>]`: AuthorizationUseStatus. Possible values are: 'Available' and 'InUse'.
   - `[Name <String>]`: Gets name of the resource that is unique within a resource group. This name can be used to access the resource.

@@ -604,6 +604,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 #### PARAMETER <IPublicIPAddress>: Public IP address resource.
+  - `[Id <String>]`: Resource ID.
+  - `[Location <String>]`: Resource location.
+  - `[Tag <IResourceTags>]`: Resource tags.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
   - `[DnsSettingDomainNameLabel <String>]`: Gets or sets the Domain name label.The concatenation of the domain name label and the regionalized DNS zone make up the fully qualified domain name associated with the public IP address. If a domain name label is specified, an A DNS record is created for the public IP in the Microsoft Azure DNS system.
   - `[DnsSettingFqdn <String>]`: Gets the FQDN, Fully qualified domain name of the A DNS record associated with the public IP. This is the concatenation of the domainNameLabel and the regionalized DNS zone.
   - `[DnsSettingReverseFqdn <String>]`: Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name that resolves to this public IP address. If the reverseFqdn is specified, then a PTR DNS record is created pointing from the IP address in the in-addr.arpa domain to the reverse FQDN. 
@@ -622,14 +626,19 @@ To create the parameters described below, construct a hash table containing the 
   - `[ResourceGuid <String>]`: The resource GUID property of the public IP resource.
   - `[SkuName <PublicIPAddressSkuName?>]`: Name of a public IP address SKU.
   - `[Subnet <ISubnet>]`: The reference of the subnet resource.
+    - `[Id <String>]`: Resource ID.
     - `[AddressPrefix <String>]`: The address prefix for the subnet.
     - `[DefaultSecurityRule <ISecurityRule[]>]`: The default security rules of network security group.
       - `Access <SecurityRuleAccess>`: The network traffic is allowed or denied. Possible values are: 'Allow' and 'Deny'.
       - `Direction <SecurityRuleDirection>`: The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic. Possible values are: 'Inbound' and 'Outbound'.
       - `Protocol <SecurityRuleProtocol>`: Network protocol this rule applies to. Possible values are 'Tcp', 'Udp', and '*'.
+      - `[Id <String>]`: Resource ID.
       - `[Description <String>]`: A description for this rule. Restricted to 140 chars.
       - `[DestinationAddressPrefix <String>]`: The destination address prefix. CIDR or destination IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used.
       - `[DestinationApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: The application security group specified as destination.
+        - `[Id <String>]`: Resource ID.
+        - `[Location <String>]`: Resource location.
+        - `[Tag <IResourceTags>]`: Resource tags.
       - `[DestinationPortRange <String>]`: The destination port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
       - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
       - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
@@ -653,11 +662,13 @@ To create the parameters described below, construct a hash table containing the 
     - `[ProvisioningState <String>]`: The provisioning state of the resource.
     - `[ResourceGuid <String>]`: The resource GUID property of the network security group resource.
     - `[ResourceNavigationLink <IResourceNavigationLink[]>]`: Gets an array of references to the external resources using subnet.
+      - `[Id <String>]`: Resource ID.
       - `[Link <String>]`: Link to the external resource
       - `[LinkedResourceType <String>]`: Resource type of the linked resource.
       - `[Name <String>]`: Name of the resource that is unique within a resource group. This name can be used to access the resource.
     - `[Route <IRoute[]>]`: Collection of routes contained within a route table.
       - `NextHopType <RouteNextHopType>`: The type of Azure hop the packet should be sent to.
+      - `[Id <String>]`: Resource ID.
       - `[AddressPrefix <String>]`: The destination CIDR to which the route applies.
       - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
       - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
@@ -677,6 +688,10 @@ To create the parameters described below, construct a hash table containing the 
   - `[Zone <String[]>]`: A list of availability zones denoting the IP allocated for the resource needs to come from.
 
 #### PUBLICIPADDRESSPARAMETER <IPublicIPAddress>: The reference of the public IP resource.
+  - `[Id <String>]`: Resource ID.
+  - `[Location <String>]`: Resource location.
+  - `[Tag <IResourceTags>]`: Resource tags.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
   - `[DnsSettingDomainNameLabel <String>]`: Gets or sets the Domain name label.The concatenation of the domain name label and the regionalized DNS zone make up the fully qualified domain name associated with the public IP address. If a domain name label is specified, an A DNS record is created for the public IP in the Microsoft Azure DNS system.
   - `[DnsSettingFqdn <String>]`: Gets the FQDN, Fully qualified domain name of the A DNS record associated with the public IP. This is the concatenation of the domainNameLabel and the regionalized DNS zone.
   - `[DnsSettingReverseFqdn <String>]`: Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name that resolves to this public IP address. If the reverseFqdn is specified, then a PTR DNS record is created pointing from the IP address in the in-addr.arpa domain to the reverse FQDN. 
@@ -695,14 +710,19 @@ To create the parameters described below, construct a hash table containing the 
   - `[ResourceGuid <String>]`: The resource GUID property of the public IP resource.
   - `[SkuName <PublicIPAddressSkuName?>]`: Name of a public IP address SKU.
   - `[Subnet <ISubnet>]`: The reference of the subnet resource.
+    - `[Id <String>]`: Resource ID.
     - `[AddressPrefix <String>]`: The address prefix for the subnet.
     - `[DefaultSecurityRule <ISecurityRule[]>]`: The default security rules of network security group.
       - `Access <SecurityRuleAccess>`: The network traffic is allowed or denied. Possible values are: 'Allow' and 'Deny'.
       - `Direction <SecurityRuleDirection>`: The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic. Possible values are: 'Inbound' and 'Outbound'.
       - `Protocol <SecurityRuleProtocol>`: Network protocol this rule applies to. Possible values are 'Tcp', 'Udp', and '*'.
+      - `[Id <String>]`: Resource ID.
       - `[Description <String>]`: A description for this rule. Restricted to 140 chars.
       - `[DestinationAddressPrefix <String>]`: The destination address prefix. CIDR or destination IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used.
       - `[DestinationApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: The application security group specified as destination.
+        - `[Id <String>]`: Resource ID.
+        - `[Location <String>]`: Resource location.
+        - `[Tag <IResourceTags>]`: Resource tags.
       - `[DestinationPortRange <String>]`: The destination port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
       - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
       - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
@@ -726,11 +746,13 @@ To create the parameters described below, construct a hash table containing the 
     - `[ProvisioningState <String>]`: The provisioning state of the resource.
     - `[ResourceGuid <String>]`: The resource GUID property of the network security group resource.
     - `[ResourceNavigationLink <IResourceNavigationLink[]>]`: Gets an array of references to the external resources using subnet.
+      - `[Id <String>]`: Resource ID.
       - `[Link <String>]`: Link to the external resource
       - `[LinkedResourceType <String>]`: Resource type of the linked resource.
       - `[Name <String>]`: Name of the resource that is unique within a resource group. This name can be used to access the resource.
     - `[Route <IRoute[]>]`: Collection of routes contained within a route table.
       - `NextHopType <RouteNextHopType>`: The type of Azure hop the packet should be sent to.
+      - `[Id <String>]`: Resource ID.
       - `[AddressPrefix <String>]`: The destination CIDR to which the route applies.
       - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
       - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
@@ -750,14 +772,20 @@ To create the parameters described below, construct a hash table containing the 
   - `[Zone <String[]>]`: A list of availability zones denoting the IP allocated for the resource needs to come from.
 
 #### SUBNET <ISubnet>: The reference of the subnet resource.
+  - `[Id <String>]`: Resource ID.
   - `[AddressPrefix <String>]`: The address prefix for the subnet.
   - `[DefaultSecurityRule <ISecurityRule[]>]`: The default security rules of network security group.
     - `Access <SecurityRuleAccess>`: The network traffic is allowed or denied. Possible values are: 'Allow' and 'Deny'.
     - `Direction <SecurityRuleDirection>`: The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic. Possible values are: 'Inbound' and 'Outbound'.
     - `Protocol <SecurityRuleProtocol>`: Network protocol this rule applies to. Possible values are 'Tcp', 'Udp', and '*'.
+    - `[Id <String>]`: Resource ID.
     - `[Description <String>]`: A description for this rule. Restricted to 140 chars.
     - `[DestinationAddressPrefix <String>]`: The destination address prefix. CIDR or destination IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used.
     - `[DestinationApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: The application security group specified as destination.
+      - `[Id <String>]`: Resource ID.
+      - `[Location <String>]`: Resource location.
+      - `[Tag <IResourceTags>]`: Resource tags.
+        - `[(Any) <String>]`: This indicates any property can be added to this object.
     - `[DestinationPortRange <String>]`: The destination port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
     - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
     - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
@@ -781,11 +809,13 @@ To create the parameters described below, construct a hash table containing the 
   - `[ProvisioningState <String>]`: The provisioning state of the resource.
   - `[ResourceGuid <String>]`: The resource GUID property of the network security group resource.
   - `[ResourceNavigationLink <IResourceNavigationLink[]>]`: Gets an array of references to the external resources using subnet.
+    - `[Id <String>]`: Resource ID.
     - `[Link <String>]`: Link to the external resource
     - `[LinkedResourceType <String>]`: Resource type of the linked resource.
     - `[Name <String>]`: Name of the resource that is unique within a resource group. This name can be used to access the resource.
   - `[Route <IRoute[]>]`: Collection of routes contained within a route table.
     - `NextHopType <RouteNextHopType>`: The type of Azure hop the packet should be sent to.
+    - `[Id <String>]`: Resource ID.
     - `[AddressPrefix <String>]`: The destination CIDR to which the route applies.
     - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
     - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.

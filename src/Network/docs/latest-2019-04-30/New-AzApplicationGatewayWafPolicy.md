@@ -347,6 +347,10 @@ To create the parameters described below, construct a hash table containing the 
   - `[Name <String>]`: Gets name of the resource that is unique within a policy. This name can be used to access the resource.
 
 #### PARAMETER <IWebApplicationFirewallPolicy>: Defines web application firewall policy.
+  - `[Id <String>]`: Resource ID.
+  - `[Location <String>]`: Resource location.
+  - `[Tag <IResourceTags>]`: Resource tags.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
   - `[CustomRule <IWebApplicationFirewallCustomRule[]>]`: Describes custom rules inside the policy
     - `Action <WebApplicationFirewallAction>`: Type of Actions
     - `MatchCondition <IMatchCondition[]>`: List of match conditions

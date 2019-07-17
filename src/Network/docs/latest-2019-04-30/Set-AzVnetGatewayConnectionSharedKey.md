@@ -252,6 +252,7 @@ To create the parameters described below, construct a hash table containing the 
 
 #### PARAMETER <IConnectionSharedKey>: Response for GetConnectionSharedKey API service call
   - `Value <String>`: The virtual network connection shared key value.
+  - `[Id <String>]`: Resource ID.
 
 ## RELATED LINKS
 

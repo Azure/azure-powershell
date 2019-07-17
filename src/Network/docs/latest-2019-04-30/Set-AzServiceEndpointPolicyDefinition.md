@@ -332,6 +332,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 #### SERVICEENDPOINTPOLICYDEFINITION <IServiceEndpointPolicyDefinition>: Service Endpoint policy definitions.
+  - `[Id <String>]`: Resource ID.
   - `[Description <String>]`: A description for this rule. Restricted to 140 chars.
   - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
   - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.

@@ -754,11 +754,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 #### PEERING <IExpressRouteCircuitPeering[]>: A collection of references to express route circuit peerings.
+  - `[Id <String>]`: Resource ID.
   - `[AdvertisedCommunity <String[]>]`: The communities of bgp peering. Specified for microsoft peering
   - `[AdvertisedPublicPrefix <String[]>]`: The reference of AdvertisedPublicPrefixes.
   - `[AdvertisedPublicPrefixesState <ExpressRouteCircuitPeeringAdvertisedPublicPrefixState?>]`: AdvertisedPublicPrefixState of the Peering resource. Possible values are 'NotConfigured', 'Configuring', 'Configured', and 'ValidationNeeded'.
   - `[AzureAsn <Int32?>]`: The Azure ASN.
   - `[Connection <IExpressRouteCircuitConnection[]>]`: The list of circuit connections associated with Azure Private Peering for this circuit.
+    - `[Id <String>]`: Resource ID.
     - `[AddressPrefix <String>]`: /29 IP address space to carve out Customer addresses for tunnels.
     - `[AuthorizationKey <String>]`: The authorization key.
     - `[ExpressRouteCircuitPeeringId <String>]`: Resource ID.
@@ -779,6 +781,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Ipv6PeeringConfigRouteFilterPropertiesRule <IRouteFilterRule[]>]`: Collection of RouteFilterRules contained within a route filter.
     - `Access <Access>`: The access type of the rule.
     - `Community <String[]>`: The collection for bgp community values to filter on. e.g. ['12076:5010','12076:5020']
+    - `[Id <String>]`: Resource ID.
     - `[Location <String>]`: Resource location.
     - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
   - `[Ipv6PeeringConfigRouteFilterTag <IResourceTags>]`: Resource tags.
@@ -810,6 +813,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[VlanId <Int32?>]`: The VLAN ID.
 
 #### PEERINGPARAMETER <IExpressRouteCrossConnectionPeering>: Peering in an ExpressRoute Cross Connection resource.
+  - `[Id <String>]`: Resource ID.
   - `[AdvertisedCommunity <String[]>]`: The communities of bgp peering. Specified for microsoft peering
   - `[AdvertisedPublicPrefix <String[]>]`: The reference of AdvertisedPublicPrefixes.
   - `[AdvertisedPublicPrefixesState <ExpressRouteCircuitPeeringAdvertisedPublicPrefixState?>]`: AdvertisedPublicPrefixState of the Peering resource. Possible values are 'NotConfigured', 'Configuring', 'Configured', and 'ValidationNeeded'.
@@ -829,11 +833,13 @@ To create the parameters described below, construct a hash table containing the 
   - `[Name <String>]`: Gets name of the resource that is unique within a resource group. This name can be used to access the resource.
   - `[PeerAsn <Int64?>]`: The peer ASN.
   - `[Peering <IExpressRouteCircuitPeering[]>]`: A collection of references to express route circuit peerings.
+    - `[Id <String>]`: Resource ID.
     - `[AdvertisedCommunity <String[]>]`: The communities of bgp peering. Specified for microsoft peering
     - `[AdvertisedPublicPrefix <String[]>]`: The reference of AdvertisedPublicPrefixes.
     - `[AdvertisedPublicPrefixesState <ExpressRouteCircuitPeeringAdvertisedPublicPrefixState?>]`: AdvertisedPublicPrefixState of the Peering resource. Possible values are 'NotConfigured', 'Configuring', 'Configured', and 'ValidationNeeded'.
     - `[AzureAsn <Int32?>]`: The Azure ASN.
     - `[Connection <IExpressRouteCircuitConnection[]>]`: The list of circuit connections associated with Azure Private Peering for this circuit.
+      - `[Id <String>]`: Resource ID.
       - `[AddressPrefix <String>]`: /29 IP address space to carve out Customer addresses for tunnels.
       - `[AuthorizationKey <String>]`: The authorization key.
       - `[ExpressRouteCircuitPeeringId <String>]`: Resource ID.
@@ -854,6 +860,7 @@ To create the parameters described below, construct a hash table containing the 
     - `[Ipv6PeeringConfigRouteFilterPropertiesRule <IRouteFilterRule[]>]`: Collection of RouteFilterRules contained within a route filter.
       - `Access <Access>`: The access type of the rule.
       - `Community <String[]>`: The collection for bgp community values to filter on. e.g. ['12076:5010','12076:5020']
+      - `[Id <String>]`: Resource ID.
       - `[Location <String>]`: Resource location.
       - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
     - `[Ipv6PeeringConfigRouteFilterTag <IResourceTags>]`: Resource tags.
@@ -898,6 +905,7 @@ To create the parameters described below, construct a hash table containing the 
 #### RULE <IRouteFilterRule[]>: Collection of RouteFilterRules contained within a route filter.
   - `Access <Access>`: The access type of the rule.
   - `Community <String[]>`: The collection for bgp community values to filter on. e.g. ['12076:5010','12076:5020']
+  - `[Id <String>]`: Resource ID.
   - `[Location <String>]`: Resource location.
   - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
 

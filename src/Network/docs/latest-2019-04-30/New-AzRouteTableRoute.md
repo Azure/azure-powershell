@@ -381,6 +381,7 @@ To create the parameters described below, construct a hash table containing the 
 
 #### ROUTEPARAMETER <IRoute>: Route resource
   - `NextHopType <RouteNextHopType>`: The type of Azure hop the packet should be sent to.
+  - `[Id <String>]`: Resource ID.
   - `[AddressPrefix <String>]`: The destination CIDR to which the route applies.
   - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
   - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.

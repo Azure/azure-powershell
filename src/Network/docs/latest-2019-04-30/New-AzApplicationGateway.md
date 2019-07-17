@@ -1084,6 +1084,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 #### AUTHENTICATIONCERTIFICATE <IApplicationGatewayAuthenticationCertificate[]>: Authentication certificates of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
+  - `[Id <String>]`: Resource ID.
   - `[Data <String>]`: Certificate public data.
   - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
   - `[Name <String>]`: Name of the authentication certificate that is unique within an Application Gateway.
@@ -1091,19 +1092,27 @@ To create the parameters described below, construct a hash table containing the 
   - `[Type <String>]`: Type of the resource.
 
 #### BACKENDADDRESSPOOL <IApplicationGatewayBackendAddressPool[]>: Backend address pool of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
+  - `[Id <String>]`: Resource ID.
   - `[BackendAddress <IApplicationGatewayBackendAddress[]>]`: Backend addresses
     - `[Fqdn <String>]`: Fully qualified domain name (FQDN).
     - `[IPAddress <String>]`: IP address
   - `[BackendIPConfiguration <INetworkInterfaceIPConfiguration[]>]`: Collection of references to IPs defined in network interfaces.
+    - `[Id <String>]`: Resource ID.
     - `[ApplicationGatewayBackendAddressPool <IApplicationGatewayBackendAddressPool[]>]`: The reference of ApplicationGatewayBackendAddressPool resource.
     - `[ApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: Application security groups in which the IP configuration is included.
+      - `[Id <String>]`: Resource ID.
+      - `[Location <String>]`: Resource location.
+      - `[Tag <IResourceTags>]`: Resource tags.
+        - `[(Any) <String>]`: This indicates any property can be added to this object.
     - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
     - `[LoadBalancerBackendAddressPool <IBackendAddressPool[]>]`: The reference of LoadBalancerBackendAddressPool resource.
+      - `[Id <String>]`: Resource ID.
       - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
       - `[Name <String>]`: Gets name of the resource that is unique within a resource group. This name can be used to access the resource.
       - `[OutboundRuleId <String>]`: Resource ID.
       - `[ProvisioningState <String>]`: Get provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
     - `[LoadBalancerInboundNatRule <IInboundNatRule[]>]`: A list of references of LoadBalancerInboundNatRules.
+      - `[Id <String>]`: Resource ID.
       - `[ApplicationGatewayBackendAddressPool <IApplicationGatewayBackendAddressPool[]>]`: The reference of ApplicationGatewayBackendAddressPool resource.
       - `[ApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: Application security groups in which the IP configuration is included.
       - `[BackendIPConfigurationEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
@@ -1127,6 +1136,9 @@ To create the parameters described below, construct a hash table containing the 
       - `[Protocol <TransportProtocol?>]`: The reference to the transport protocol used by the load balancing rule.
       - `[ProvisioningState <String>]`: Gets the provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
       - `[PublicIPAddress <IPublicIPAddress>]`: Public IP address bound to the IP configuration.
+        - `[Id <String>]`: Resource ID.
+        - `[Location <String>]`: Resource location.
+        - `[Tag <IResourceTags>]`: Resource tags.
         - `[DdosCustomPolicyId <String>]`: Resource ID.
         - `[DdosSettingProtectionCoverage <DdosSettingsProtectionCoverage?>]`: The DDoS protection policy customizability of the public IP. Only standard coverage will have the ability to be customized.
         - `[DnsSettingDomainNameLabel <String>]`: Gets or sets the Domain name label.The concatenation of the domain name label and the regionalized DNS zone make up the fully qualified domain name associated with the public IP address. If a domain name label is specified, an A DNS record is created for the public IP in the Microsoft Azure DNS system.
@@ -1143,11 +1155,13 @@ To create the parameters described below, construct a hash table containing the 
           - `[ProvisioningState <String>]`: Gets the provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
           - `[PublicIPAddress <IPublicIPAddress>]`: The reference of the public IP resource.
           - `[Subnet <ISubnet>]`: The reference of the subnet resource.
+            - `[Id <String>]`: Resource ID.
             - `[AddressPrefix <String>]`: The address prefix for the subnet.
             - `[DefaultSecurityRule <ISecurityRule[]>]`: The default security rules of network security group.
               - `Access <SecurityRuleAccess>`: The network traffic is allowed or denied.
               - `Direction <SecurityRuleDirection>`: The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic.
               - `Protocol <SecurityRuleProtocol>`: Network protocol this rule applies to. Possible values are 'Tcp', 'Udp', 'Icmp', 'Esp', and '*'.
+              - `[Id <String>]`: Resource ID.
               - `[Description <String>]`: A description for this rule. Restricted to 140 chars.
               - `[DestinationAddressPrefix <String>]`: The destination address prefix. CIDR or destination IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used.
               - `[DestinationApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: The application security group specified as destination.
@@ -1164,6 +1178,7 @@ To create the parameters described below, construct a hash table containing the 
               - `[SourceApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: The application security group specified as source.
               - `[SourcePortRange <String>]`: The source port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
             - `[Delegation <IDelegation[]>]`: Gets an array of references to the delegations on the subnet.
+              - `[Id <String>]`: Resource ID.
               - `[Action <String[]>]`: Describes the actions permitted to the service upon delegation
               - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
               - `[Name <String>]`: The name of the resource that is unique within a subnet. This name can be used to access the resource.
@@ -1181,11 +1196,13 @@ To create the parameters described below, construct a hash table containing the 
             - `[ProvisioningState <String>]`: The provisioning state of the resource.
             - `[ResourceGuid <String>]`: The resource GUID property of the network security group resource.
             - `[ResourceNavigationLink <IResourceNavigationLink[]>]`: Gets an array of references to the external resources using subnet.
+              - `[Id <String>]`: Resource ID.
               - `[Link <String>]`: Link to the external resource
               - `[LinkedResourceType <String>]`: Resource type of the linked resource.
               - `[Name <String>]`: Name of the resource that is unique within a resource group. This name can be used to access the resource.
             - `[Route <IRoute[]>]`: Collection of routes contained within a route table.
               - `NextHopType <RouteNextHopType>`: The type of Azure hop the packet should be sent to.
+              - `[Id <String>]`: Resource ID.
               - `[AddressPrefix <String>]`: The destination CIDR to which the route applies.
               - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
               - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
@@ -1198,6 +1215,7 @@ To create the parameters described below, construct a hash table containing the 
             - `[RouteTableTag <IResourceTags>]`: Resource tags.
             - `[SecurityRule <ISecurityRule[]>]`: A collection of security rules of the network security group.
             - `[ServiceAssociationLink <IServiceAssociationLink[]>]`: Gets an array of references to services injecting into this subnet.
+              - `[Id <String>]`: Resource ID.
               - `[Link <String>]`: Link to the external resource.
               - `[LinkedResourceType <String>]`: Resource type of the linked resource.
               - `[Name <String>]`: Name of the resource that is unique within a resource group. This name can be used to access the resource.
@@ -1206,7 +1224,11 @@ To create the parameters described below, construct a hash table containing the 
               - `[ProvisioningState <String>]`: The provisioning state of the resource.
               - `[Service <String>]`: The type of the endpoint service.
             - `[ServiceEndpointPolicy <IServiceEndpointPolicy[]>]`: An array of service endpoint policies.
+              - `[Id <String>]`: Resource ID.
+              - `[Location <String>]`: Resource location.
+              - `[Tag <IResourceTags>]`: Resource tags.
               - `[Definition <IServiceEndpointPolicyDefinition[]>]`: A collection of service endpoint policy definitions of the service endpoint policy.
+                - `[Id <String>]`: Resource ID.
                 - `[Description <String>]`: A description for this rule. Restricted to 140 chars.
                 - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
                 - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
@@ -1243,6 +1265,7 @@ To create the parameters described below, construct a hash table containing the 
 #### BACKENDHTTPSETTINGSCOLLECTION <IApplicationGatewayBackendHttpSettings[]>: Backend http settings of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
   - `ConnectionDrainingDrainTimeoutInSec <Int32>`: The number of seconds connection draining is active. Acceptable values are from 1 second to 3600 seconds.
   - `ConnectionDrainingEnabled <Boolean>`: Whether connection draining is enabled or not.
+  - `[Id <String>]`: Resource ID.
   - `[AffinityCookieName <String>]`: Cookie name to use for the affinity cookie.
   - `[AuthenticationCertificate <ISubResource[]>]`: Array of references to application gateway authentication certificates.
     - `[Id <String>]`: Resource ID.
@@ -1266,6 +1289,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[StatusCode <ApplicationGatewayCustomErrorStatusCode?>]`: Status code of the application gateway customer error.
 
 #### FRONTENDIPCONFIGURATION <IApplicationGatewayFrontendIPConfiguration[]>: Frontend IP addresses of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
+  - `[Id <String>]`: Resource ID.
   - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
   - `[Name <String>]`: Name of the frontend IP configuration that is unique within an Application Gateway.
   - `[PrivateIPAddress <String>]`: PrivateIPAddress of the network interface IP Configuration.
@@ -1276,6 +1300,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Type <String>]`: Type of the resource.
 
 #### FRONTENDPORT <IApplicationGatewayFrontendPort[]>: Frontend ports of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
+  - `[Id <String>]`: Resource ID.
   - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
   - `[Name <String>]`: Name of the frontend port that is unique within an Application Gateway
   - `[Port <Int32?>]`: Frontend port
@@ -1283,6 +1308,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Type <String>]`: Type of the resource.
 
 #### GATEWAYIPCONFIGURATION <IApplicationGatewayIPConfiguration[]>: Subnets of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
+  - `[Id <String>]`: Resource ID.
   - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
   - `[Name <String>]`: Name of the IP configuration that is unique within an Application Gateway.
   - `[ProvisioningState <String>]`: Provisioning state of the application gateway subnet resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
@@ -1290,6 +1316,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Type <String>]`: Type of the resource.
 
 #### HTTPLISTENER <IApplicationGatewayHttpListener[]>: Http listeners of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
+  - `[Id <String>]`: Resource ID.
   - `[CustomErrorConfiguration <IApplicationGatewayCustomError[]>]`: Custom error configurations of the HTTP listener.
     - `[CustomErrorPageUrl <String>]`: Error page URL of the application gateway customer error.
     - `[StatusCode <ApplicationGatewayCustomErrorStatusCode?>]`: Status code of the application gateway customer error.
@@ -1310,7 +1337,12 @@ To create the parameters described below, construct a hash table containing the 
   - `WebApplicationFirewallConfigurationFirewallMode <ApplicationGatewayFirewallMode>`: Web application firewall mode.
   - `WebApplicationFirewallConfigurationRuleSetType <String>`: The type of the web application firewall rule set. Possible values are: 'OWASP'.
   - `WebApplicationFirewallConfigurationRuleSetVersion <String>`: The version of the rule set type.
+  - `[Id <String>]`: Resource ID.
+  - `[Location <String>]`: Resource location.
+  - `[Tag <IResourceTags>]`: Resource tags.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
   - `[AuthenticationCertificate <IApplicationGatewayAuthenticationCertificate[]>]`: Authentication certificates of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
+    - `[Id <String>]`: Resource ID.
     - `[Data <String>]`: Certificate public data.
     - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
     - `[Name <String>]`: Name of the authentication certificate that is unique within an Application Gateway.
@@ -1318,19 +1350,26 @@ To create the parameters described below, construct a hash table containing the 
     - `[Type <String>]`: Type of the resource.
   - `[AutoscaleConfigurationMaxCapacity <Int32?>]`: Upper bound on number of Application Gateway capacity
   - `[BackendAddressPool <IApplicationGatewayBackendAddressPool[]>]`: Backend address pool of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
+    - `[Id <String>]`: Resource ID.
     - `[BackendAddress <IApplicationGatewayBackendAddress[]>]`: Backend addresses
       - `[Fqdn <String>]`: Fully qualified domain name (FQDN).
       - `[IPAddress <String>]`: IP address
     - `[BackendIPConfiguration <INetworkInterfaceIPConfiguration[]>]`: Collection of references to IPs defined in network interfaces.
+      - `[Id <String>]`: Resource ID.
       - `[ApplicationGatewayBackendAddressPool <IApplicationGatewayBackendAddressPool[]>]`: The reference of ApplicationGatewayBackendAddressPool resource.
       - `[ApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: Application security groups in which the IP configuration is included.
+        - `[Id <String>]`: Resource ID.
+        - `[Location <String>]`: Resource location.
+        - `[Tag <IResourceTags>]`: Resource tags.
       - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
       - `[LoadBalancerBackendAddressPool <IBackendAddressPool[]>]`: The reference of LoadBalancerBackendAddressPool resource.
+        - `[Id <String>]`: Resource ID.
         - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
         - `[Name <String>]`: Gets name of the resource that is unique within a resource group. This name can be used to access the resource.
         - `[OutboundRuleId <String>]`: Resource ID.
         - `[ProvisioningState <String>]`: Get provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
       - `[LoadBalancerInboundNatRule <IInboundNatRule[]>]`: A list of references of LoadBalancerInboundNatRules.
+        - `[Id <String>]`: Resource ID.
         - `[ApplicationGatewayBackendAddressPool <IApplicationGatewayBackendAddressPool[]>]`: The reference of ApplicationGatewayBackendAddressPool resource.
         - `[ApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: Application security groups in which the IP configuration is included.
         - `[BackendIPConfigurationEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
@@ -1354,6 +1393,9 @@ To create the parameters described below, construct a hash table containing the 
         - `[Protocol <TransportProtocol?>]`: The reference to the transport protocol used by the load balancing rule.
         - `[ProvisioningState <String>]`: Gets the provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
         - `[PublicIPAddress <IPublicIPAddress>]`: Public IP address bound to the IP configuration.
+          - `[Id <String>]`: Resource ID.
+          - `[Location <String>]`: Resource location.
+          - `[Tag <IResourceTags>]`: Resource tags.
           - `[DdosCustomPolicyId <String>]`: Resource ID.
           - `[DdosSettingProtectionCoverage <DdosSettingsProtectionCoverage?>]`: The DDoS protection policy customizability of the public IP. Only standard coverage will have the ability to be customized.
           - `[DnsSettingDomainNameLabel <String>]`: Gets or sets the Domain name label.The concatenation of the domain name label and the regionalized DNS zone make up the fully qualified domain name associated with the public IP address. If a domain name label is specified, an A DNS record is created for the public IP in the Microsoft Azure DNS system.
@@ -1370,11 +1412,13 @@ To create the parameters described below, construct a hash table containing the 
             - `[ProvisioningState <String>]`: Gets the provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
             - `[PublicIPAddress <IPublicIPAddress>]`: The reference of the public IP resource.
             - `[Subnet <ISubnet>]`: The reference of the subnet resource.
+              - `[Id <String>]`: Resource ID.
               - `[AddressPrefix <String>]`: The address prefix for the subnet.
               - `[DefaultSecurityRule <ISecurityRule[]>]`: The default security rules of network security group.
                 - `Access <SecurityRuleAccess>`: The network traffic is allowed or denied.
                 - `Direction <SecurityRuleDirection>`: The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic.
                 - `Protocol <SecurityRuleProtocol>`: Network protocol this rule applies to. Possible values are 'Tcp', 'Udp', 'Icmp', 'Esp', and '*'.
+                - `[Id <String>]`: Resource ID.
                 - `[Description <String>]`: A description for this rule. Restricted to 140 chars.
                 - `[DestinationAddressPrefix <String>]`: The destination address prefix. CIDR or destination IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used.
                 - `[DestinationApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: The application security group specified as destination.
@@ -1391,6 +1435,7 @@ To create the parameters described below, construct a hash table containing the 
                 - `[SourceApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: The application security group specified as source.
                 - `[SourcePortRange <String>]`: The source port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
               - `[Delegation <IDelegation[]>]`: Gets an array of references to the delegations on the subnet.
+                - `[Id <String>]`: Resource ID.
                 - `[Action <String[]>]`: Describes the actions permitted to the service upon delegation
                 - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
                 - `[Name <String>]`: The name of the resource that is unique within a subnet. This name can be used to access the resource.
@@ -1408,11 +1453,13 @@ To create the parameters described below, construct a hash table containing the 
               - `[ProvisioningState <String>]`: The provisioning state of the resource.
               - `[ResourceGuid <String>]`: The resource GUID property of the network security group resource.
               - `[ResourceNavigationLink <IResourceNavigationLink[]>]`: Gets an array of references to the external resources using subnet.
+                - `[Id <String>]`: Resource ID.
                 - `[Link <String>]`: Link to the external resource
                 - `[LinkedResourceType <String>]`: Resource type of the linked resource.
                 - `[Name <String>]`: Name of the resource that is unique within a resource group. This name can be used to access the resource.
               - `[Route <IRoute[]>]`: Collection of routes contained within a route table.
                 - `NextHopType <RouteNextHopType>`: The type of Azure hop the packet should be sent to.
+                - `[Id <String>]`: Resource ID.
                 - `[AddressPrefix <String>]`: The destination CIDR to which the route applies.
                 - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
                 - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
@@ -1425,6 +1472,7 @@ To create the parameters described below, construct a hash table containing the 
               - `[RouteTableTag <IResourceTags>]`: Resource tags.
               - `[SecurityRule <ISecurityRule[]>]`: A collection of security rules of the network security group.
               - `[ServiceAssociationLink <IServiceAssociationLink[]>]`: Gets an array of references to services injecting into this subnet.
+                - `[Id <String>]`: Resource ID.
                 - `[Link <String>]`: Link to the external resource.
                 - `[LinkedResourceType <String>]`: Resource type of the linked resource.
                 - `[Name <String>]`: Name of the resource that is unique within a resource group. This name can be used to access the resource.
@@ -1433,7 +1481,11 @@ To create the parameters described below, construct a hash table containing the 
                 - `[ProvisioningState <String>]`: The provisioning state of the resource.
                 - `[Service <String>]`: The type of the endpoint service.
               - `[ServiceEndpointPolicy <IServiceEndpointPolicy[]>]`: An array of service endpoint policies.
+                - `[Id <String>]`: Resource ID.
+                - `[Location <String>]`: Resource location.
+                - `[Tag <IResourceTags>]`: Resource tags.
                 - `[Definition <IServiceEndpointPolicyDefinition[]>]`: A collection of service endpoint policy definitions of the service endpoint policy.
+                  - `[Id <String>]`: Resource ID.
                   - `[Description <String>]`: A description for this rule. Restricted to 140 chars.
                   - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
                   - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
@@ -1469,6 +1521,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[BackendHttpSettingsCollection <IApplicationGatewayBackendHttpSettings[]>]`: Backend http settings of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
     - `ConnectionDrainingDrainTimeoutInSec <Int32>`: The number of seconds connection draining is active. Acceptable values are from 1 second to 3600 seconds.
     - `ConnectionDrainingEnabled <Boolean>`: Whether connection draining is enabled or not.
+    - `[Id <String>]`: Resource ID.
     - `[AffinityCookieName <String>]`: Cookie name to use for the affinity cookie.
     - `[AuthenticationCertificate <ISubResource[]>]`: Array of references to application gateway authentication certificates.
     - `[CookieBasedAffinity <ApplicationGatewayCookieBasedAffinity?>]`: Cookie based affinity.
@@ -1493,6 +1546,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
   - `[FirewallPolicyId <String>]`: Resource ID.
   - `[FrontendIPConfiguration <IApplicationGatewayFrontendIPConfiguration[]>]`: Frontend IP addresses of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
+    - `[Id <String>]`: Resource ID.
     - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
     - `[Name <String>]`: Name of the frontend IP configuration that is unique within an Application Gateway.
     - `[PrivateIPAddress <String>]`: PrivateIPAddress of the network interface IP Configuration.
@@ -1502,18 +1556,21 @@ To create the parameters described below, construct a hash table containing the 
     - `[SubnetId <String>]`: Resource ID.
     - `[Type <String>]`: Type of the resource.
   - `[FrontendPort <IApplicationGatewayFrontendPort[]>]`: Frontend ports of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
+    - `[Id <String>]`: Resource ID.
     - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
     - `[Name <String>]`: Name of the frontend port that is unique within an Application Gateway
     - `[Port <Int32?>]`: Frontend port
     - `[ProvisioningState <String>]`: Provisioning state of the frontend port resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
     - `[Type <String>]`: Type of the resource.
   - `[GatewayIPConfiguration <IApplicationGatewayIPConfiguration[]>]`: Subnets of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
+    - `[Id <String>]`: Resource ID.
     - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
     - `[Name <String>]`: Name of the IP configuration that is unique within an Application Gateway.
     - `[ProvisioningState <String>]`: Provisioning state of the application gateway subnet resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
     - `[SubnetId <String>]`: Resource ID.
     - `[Type <String>]`: Type of the resource.
   - `[HttpListener <IApplicationGatewayHttpListener[]>]`: Http listeners of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
+    - `[Id <String>]`: Resource ID.
     - `[CustomErrorConfiguration <IApplicationGatewayCustomError[]>]`: Custom error configurations of the HTTP listener.
     - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
     - `[FrontendIPConfigurationId <String>]`: Resource ID.
@@ -1529,6 +1586,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[IdentityUserAssignedIdentity <IManagedServiceIdentityUserAssignedIdentities>]`: The list of user identities associated with resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
     - `[(Any) <IComponentsSchemasManagedserviceidentityPropertiesUserassignedidentitiesAdditionalproperties>]`: This indicates any property can be added to this object.
   - `[Probe <IApplicationGatewayProbe[]>]`: Probes of the application gateway resource.
+    - `[Id <String>]`: Resource ID.
     - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
     - `[Host <String>]`: Host name to send the probe to.
     - `[Interval <Int32?>]`: The probing interval in seconds. This is the time interval between two consecutive probes. Acceptable values are from 1 second to 86400 seconds.
@@ -1545,6 +1603,7 @@ To create the parameters described below, construct a hash table containing the 
     - `[UnhealthyThreshold <Int32?>]`: The probe retry count. Backend server is marked down after consecutive probe failure count reaches UnhealthyThreshold. Acceptable values are from 1 second to 20.
   - `[ProvisioningState <String>]`: Provisioning state of the application gateway resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
   - `[RedirectConfiguration <IApplicationGatewayRedirectConfiguration[]>]`: Redirect configurations of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
+    - `[Id <String>]`: Resource ID.
     - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
     - `[IncludePath <Boolean?>]`: Include path in the redirected url.
     - `[IncludeQueryString <Boolean?>]`: Include query string in the redirected url.
@@ -1557,6 +1616,7 @@ To create the parameters described below, construct a hash table containing the 
     - `[Type <String>]`: Type of the resource.
     - `[UrlPathMap <ISubResource[]>]`: Url path maps specifying default redirect configuration.
   - `[RequestRoutingRule <IApplicationGatewayRequestRoutingRule[]>]`: Request routing rules of the application gateway resource.
+    - `[Id <String>]`: Resource ID.
     - `[BackendAddressPoolId <String>]`: Resource ID.
     - `[BackendHttpSettingId <String>]`: Resource ID.
     - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
@@ -1570,6 +1630,7 @@ To create the parameters described below, construct a hash table containing the 
     - `[UrlPathMapId <String>]`: Resource ID.
   - `[ResourceGuid <String>]`: Resource GUID property of the application gateway resource.
   - `[RewriteRuleSet <IApplicationGatewayRewriteRuleSet[]>]`: Rewrite rules for the application gateway resource.
+    - `[Id <String>]`: Resource ID.
     - `[Name <String>]`: Name of the rewrite rule set that is unique within an Application Gateway.
     - `[RewriteRule <IApplicationGatewayRewriteRule[]>]`: Rewrite rules in the rewrite rule set.
       - `[ActionSetRequestHeaderConfiguration <IApplicationGatewayHeaderConfiguration[]>]`: Request Header Actions in the Action Set
@@ -1587,6 +1648,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[SkuName <ApplicationGatewaySkuName?>]`: Name of an application gateway SKU.
   - `[SkuTier <ApplicationGatewayTier?>]`: Tier of an application gateway.
   - `[SslCertificate <IApplicationGatewaySslCertificate[]>]`: SSL certificates of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
+    - `[Id <String>]`: Resource ID.
     - `[Data <String>]`: Base-64 encoded pfx certificate. Only applicable in PUT Request.
     - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
     - `[KeyVaultSecretId <String>]`: Secret Id of (base-64 encoded unencrypted pfx) 'Secret' or 'Certificate' object stored in KeyVault.
@@ -1601,6 +1663,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[SslPolicyName <ApplicationGatewaySslPolicyName?>]`: Name of Ssl predefined policy
   - `[SslPolicyType <ApplicationGatewaySslPolicyType?>]`: Type of Ssl Policy
   - `[TrustedRootCertificate <IApplicationGatewayTrustedRootCertificate[]>]`: Trusted Root certificates of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
+    - `[Id <String>]`: Resource ID.
     - `[Data <String>]`: Certificate public data.
     - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
     - `[KeyVaultSecretId <String>]`: Secret Id of (base-64 encoded unencrypted pfx) 'Secret' or 'Certificate' object stored in KeyVault.
@@ -1608,6 +1671,7 @@ To create the parameters described below, construct a hash table containing the 
     - `[ProvisioningState <String>]`: Provisioning state of the trusted root certificate resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
     - `[Type <String>]`: Type of the resource.
   - `[UrlPathMap <IApplicationGatewayUrlPathMap[]>]`: URL path map of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
+    - `[Id <String>]`: Resource ID.
     - `[DefaultBackendAddressPoolId <String>]`: Resource ID.
     - `[DefaultBackendHttpSettingId <String>]`: Resource ID.
     - `[DefaultRedirectConfigurationId <String>]`: Resource ID.
@@ -1615,6 +1679,7 @@ To create the parameters described below, construct a hash table containing the 
     - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
     - `[Name <String>]`: Name of the URL path map that is unique within an Application Gateway.
     - `[PathRule <IApplicationGatewayPathRule[]>]`: Path rule of URL path map resource.
+      - `[Id <String>]`: Resource ID.
       - `[BackendAddressPoolId <String>]`: Resource ID.
       - `[BackendHttpSettingId <String>]`: Resource ID.
       - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
@@ -1640,6 +1705,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Zone <String[]>]`: A list of availability zones denoting where the resource needs to come from.
 
 #### PROBE <IApplicationGatewayProbe[]>: Probes of the application gateway resource.
+  - `[Id <String>]`: Resource ID.
   - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
   - `[Host <String>]`: Host name to send the probe to.
   - `[Interval <Int32?>]`: The probing interval in seconds. This is the time interval between two consecutive probes. Acceptable values are from 1 second to 86400 seconds.
@@ -1656,6 +1722,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[UnhealthyThreshold <Int32?>]`: The probe retry count. Backend server is marked down after consecutive probe failure count reaches UnhealthyThreshold. Acceptable values are from 1 second to 20.
 
 #### REDIRECTCONFIGURATION <IApplicationGatewayRedirectConfiguration[]>: Redirect configurations of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
+  - `[Id <String>]`: Resource ID.
   - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
   - `[IncludePath <Boolean?>]`: Include path in the redirected url.
   - `[IncludeQueryString <Boolean?>]`: Include query string in the redirected url.
@@ -1670,6 +1737,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[UrlPathMap <ISubResource[]>]`: Url path maps specifying default redirect configuration.
 
 #### REQUESTROUTINGRULE <IApplicationGatewayRequestRoutingRule[]>: Request routing rules of the application gateway resource.
+  - `[Id <String>]`: Resource ID.
   - `[BackendAddressPoolId <String>]`: Resource ID.
   - `[BackendHttpSettingId <String>]`: Resource ID.
   - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
@@ -1683,6 +1751,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[UrlPathMapId <String>]`: Resource ID.
 
 #### REWRITERULESET <IApplicationGatewayRewriteRuleSet[]>: Rewrite rules for the application gateway resource.
+  - `[Id <String>]`: Resource ID.
   - `[Name <String>]`: Name of the rewrite rule set that is unique within an Application Gateway.
   - `[RewriteRule <IApplicationGatewayRewriteRule[]>]`: Rewrite rules in the rewrite rule set.
     - `[ActionSetRequestHeaderConfiguration <IApplicationGatewayHeaderConfiguration[]>]`: Request Header Actions in the Action Set
@@ -1698,6 +1767,7 @@ To create the parameters described below, construct a hash table containing the 
     - `[RuleSequence <Int32?>]`: Rule Sequence of the rewrite rule that determines the order of execution of a particular rule in a RewriteRuleSet.
 
 #### SSLCERTIFICATE <IApplicationGatewaySslCertificate[]>: SSL certificates of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
+  - `[Id <String>]`: Resource ID.
   - `[Data <String>]`: Base-64 encoded pfx certificate. Only applicable in PUT Request.
   - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
   - `[KeyVaultSecretId <String>]`: Secret Id of (base-64 encoded unencrypted pfx) 'Secret' or 'Certificate' object stored in KeyVault.
@@ -1708,6 +1778,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Type <String>]`: Type of the resource.
 
 #### TRUSTEDROOTCERTIFICATE <IApplicationGatewayTrustedRootCertificate[]>: Trusted Root certificates of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
+  - `[Id <String>]`: Resource ID.
   - `[Data <String>]`: Certificate public data.
   - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
   - `[KeyVaultSecretId <String>]`: Secret Id of (base-64 encoded unencrypted pfx) 'Secret' or 'Certificate' object stored in KeyVault.
@@ -1716,6 +1787,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Type <String>]`: Type of the resource.
 
 #### URLPATHMAP <IApplicationGatewayUrlPathMap[]>: URL path map of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
+  - `[Id <String>]`: Resource ID.
   - `[DefaultBackendAddressPoolId <String>]`: Resource ID.
   - `[DefaultBackendHttpSettingId <String>]`: Resource ID.
   - `[DefaultRedirectConfigurationId <String>]`: Resource ID.
@@ -1723,6 +1795,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
   - `[Name <String>]`: Name of the URL path map that is unique within an Application Gateway.
   - `[PathRule <IApplicationGatewayPathRule[]>]`: Path rule of URL path map resource.
+    - `[Id <String>]`: Resource ID.
     - `[BackendAddressPoolId <String>]`: Resource ID.
     - `[BackendHttpSettingId <String>]`: Resource ID.
     - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.

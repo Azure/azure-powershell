@@ -440,6 +440,7 @@ To create the parameters described below, construct a hash table containing the 
   - `SaLifeTimeSecond <Int32>`: The IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime in seconds for a site to site VPN tunnel.
 
 #### VPNCONNECTIONPARAMETER <IVpnConnection>: VpnConnection Resource.
+  - `[Id <String>]`: Resource ID.
   - `[ConnectionBandwidth <Int32?>]`: Expected bandwidth in MBPS.
   - `[EnableBgp <Boolean?>]`: EnableBgp flag
   - `[EnableInternetSecurity <Boolean?>]`: Enable internet security

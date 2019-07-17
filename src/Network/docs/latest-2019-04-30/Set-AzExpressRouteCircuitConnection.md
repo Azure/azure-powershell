@@ -349,6 +349,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 #### EXPRESSROUTECIRCUITCONNECTIONPARAMETER <IExpressRouteCircuitConnection>: Express Route Circuit Connection in an ExpressRouteCircuitPeering resource.
+  - `[Id <String>]`: Resource ID.
   - `[AddressPrefix <String>]`: /29 IP address space to carve out Customer addresses for tunnels.
   - `[AuthorizationKey <String>]`: The authorization key.
   - `[ExpressRouteCircuitPeeringId <String>]`: Resource ID.
