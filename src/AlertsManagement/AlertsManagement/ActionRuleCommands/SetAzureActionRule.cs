@@ -405,19 +405,19 @@ namespace Microsoft.Azure.Commands.AlertsManagement
 
                             case "Suppression":
                                 PSSuppressionActionRule suppressionInputObject = (PSSuppressionActionRule)InputObject;
-                                SuppressionConfig configFromInputObject = new SuppressionConfig(recurrenceType: suppressionInputObject.SuppressionConfig.RecurrenceType);
-                                if (suppressionInputObject.SuppressionConfig.RecurrenceType != "Always")
+                                SuppressionConfig configFromInputObject = new SuppressionConfig(recurrenceType: suppressionInputObject.RecurrenceType);
+                                if (suppressionInputObject.RecurrenceType != "Always")
                                 {
                                     configFromInputObject.Schedule = new SuppressionSchedule(
-                                        startDate: suppressionInputObject.SuppressionConfig.StartDate,
-                                        endDate: suppressionInputObject.SuppressionConfig.EndDate,
-                                        startTime: suppressionInputObject.SuppressionConfig.StartTime,
-                                        endTime: suppressionInputObject.SuppressionConfig.EndTime
+                                        startDate: suppressionInputObject.StartDate,
+                                        endDate: suppressionInputObject.EndDate,
+                                        startTime: suppressionInputObject.StartTime,
+                                        endTime: suppressionInputObject.EndTime
                                         );
 
                                     if (ReccurentValue.Length > 0)
                                     {
-                                        configFromInputObject.Schedule.RecurrenceValues = suppressionInputObject.SuppressionConfig.RecurrenceValues;
+                                        configFromInputObject.Schedule.RecurrenceValues = suppressionInputObject.RecurrenceValues;
                                     }
                                 }
 

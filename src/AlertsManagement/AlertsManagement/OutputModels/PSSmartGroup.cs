@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using Microsoft.Azure.Management.AlertsManagement.Models;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
@@ -29,6 +30,13 @@ namespace Microsoft.Azure.Commands.AlertsManagement.OutputModels
             Severity = smartGroup.Severity;
             LastModifiedTime = smartGroup.LastModifiedDateTime;
             LastModifiedUserName = smartGroup.LastModifiedUserName;
+            Resources = smartGroup.Resources;
+            ResourceGroups = smartGroup.ResourceGroups;
+            ResourceTypes = smartGroup.ResourceTypes;
+            MonitorConditions = smartGroup.MonitorConditions;
+            MonitorServices = smartGroup.MonitorServices;
+            AlertSeverities = smartGroup.AlertSeverities;
+            AlertStates = smartGroup.AlertStates;
         }
 
         [Ps1Xml(Label = "Id", Target = ViewControl.Table, ScriptBlock = "$_.Id.Split('/')[6]")]
@@ -50,6 +58,39 @@ namespace Microsoft.Azure.Commands.AlertsManagement.OutputModels
 
         public string LastModifiedUserName { get; }
 
-        public PSSmartGroupDetails Details { get; }
+        /// <summary>
+        /// Gets the resources
+        /// </summary>
+        public IList<SmartGroupAggregatedProperty> Resources { get; set; }
+
+        /// <summary>
+        /// Gets the resource types
+        /// </summary>
+        public IList<SmartGroupAggregatedProperty> ResourceTypes { get; set; }
+
+        /// <summary>
+        /// Gets the resource types
+        /// </summary>
+        public IList<SmartGroupAggregatedProperty> ResourceGroups { get; set; }
+
+        /// <summary>
+        /// Gets the resource types
+        /// </summary>
+        public IList<SmartGroupAggregatedProperty> MonitorServices { get; set; }
+
+        /// <summary>
+        /// Gets the resource types
+        /// </summary>
+        public IList<SmartGroupAggregatedProperty> MonitorConditions { get; set; }
+
+        /// <summary>
+        /// Gets the resource types
+        /// </summary>
+        public IList<SmartGroupAggregatedProperty> AlertSeverities { get; set; }
+
+        /// <summary>
+        /// Gets the resource types
+        /// </summary>
+        public IList<SmartGroupAggregatedProperty> AlertStates { get; set; }
     }
 }

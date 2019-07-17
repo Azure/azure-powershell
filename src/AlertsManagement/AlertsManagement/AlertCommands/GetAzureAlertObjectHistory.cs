@@ -66,7 +66,8 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                     break;
             }
 
-            PSAlertModification history = new PSAlertModification(this.AlertsManagementClient.Alerts.GetHistoryWithHttpMessagesAsync(id).Result.Body);
+            var test = this.AlertsManagementClient.Alerts.GetHistoryWithHttpMessagesAsync(id).Result.Body;
+            PSAlertModification history = new PSAlertModification(test);
             WriteObject(sendToPipeline: history.Items, enumerateCollection: true);
         }
     }

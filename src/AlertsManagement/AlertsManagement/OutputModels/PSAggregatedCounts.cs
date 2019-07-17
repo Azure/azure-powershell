@@ -46,7 +46,6 @@ namespace Microsoft.Azure.Commands.AlertsManagement.OutputModels
             {
                 foreach (var item in this.Content)
                 {
-                    output.AppendLine();
                     output.Append(string.Format("{0} - {1}", item.Name, item.Count));
 
                     if (!string.IsNullOrWhiteSpace(item.Groupedby))
@@ -61,6 +60,8 @@ namespace Microsoft.Azure.Commands.AlertsManagement.OutputModels
 
                         output.AppendLine();
                     }
+
+                    output.AppendLine();
                 }
             }
 
