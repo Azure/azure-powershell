@@ -23,7 +23,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsData.Initialize, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkSubnetPolicy", SupportsShouldProcess = true, DefaultParameterSetName = "DefaultParameterSet"), OutputType(typeof(PSSubnet))]
+    [Cmdlet(VerbsData.Initialize, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkSubnetPolicy", SupportsShouldProcess = true, DefaultParameterSetName = "SetByResourceId"), OutputType(typeof(PSSubnet))]
     public class InitializeAzureVirtualNetworkSubnetPolicyCommand : VirtualNetworkBaseCmdlet
     {
 
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Network
 
             if (this.IsParameterBound(c => c.ResourceId) || !string.IsNullOrWhiteSpace(this.ResourceId))
             {
-                var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
+                var resourceIdentifier = new ResourceIdentifier(this.ResourceId.Trim('"'));
                 var resourceGroupName = resourceIdentifier.ResourceGroupName;
                 var virtualNetworkName = resourceIdentifier.ResourceName;
                 this.VirtualNetwork = GetVirtualNetwork(resourceGroupName, virtualNetworkName);

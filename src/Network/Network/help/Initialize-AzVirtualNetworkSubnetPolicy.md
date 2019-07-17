@@ -13,15 +13,15 @@ Gives permissions to a delegated service to apply or modify network policies on 
 
 ## SYNTAX
 
-### DefaultParameterSet (Default)
+### SetByResourceId (Default)
 ```
-Initialize-AzVirtualNetworkSubnetPolicy -Name <String> -ServiceName <String> -VirtualNetwork <PSVirtualNetwork>
+Initialize-AzVirtualNetworkSubnetPolicy -Name <String> -ServiceName <String> -ResourceId <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### SetByResourceId
+### DefaultParameterSet
 ```
-Initialize-AzVirtualNetworkSubnetPolicy -Name <String> -ServiceName <String> -ResourceId <String>
+Initialize-AzVirtualNetworkSubnetPolicy -Name <String> -ServiceName <String> -VirtualNetwork <PSVirtualNetwork>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -37,6 +37,18 @@ $serviceNames = Get-AzAvailableServiceDelegation -Location "westus" | ForEach-Ob
 $virtualNetwork = Get-AzVirtualNetwork -ResourceGroupName $resourceGroupName -Name $virtualNetworkName
 
 Initialize-AzVirtualNetworkSubnetPolicy -Name $subnetName -VirtualNetwork $virtualNetwork -ServiceName $serviceNames[0]
+```
+
+### Example 2: Initialize the subnet with network policies for first delegated service using resourceId
+```
+$serviceNames = Get-AzAvailableServiceDelegation -Location "westus" | ForEach-Object {Write-Output $_.ServiceName}
+
+Initialize-AzVirtualNetworkSubnetPolicy -Name $subnetName -ResourceId $resourceId -ServiceName $serviceNames[0]
+```
+
+### Example 3: Initialize the subnet with network policies for first delegated using piping
+```
+Get-AzVirtualNetwork -ResourceGroupName $rgName -Name $vNetName | Initialize-AzVirtualNetworkSubnetPolicy -Name $subnetName -ServiceName Microsoft.Databricks/workspaces
 ```
 
 ## PARAMETERS
