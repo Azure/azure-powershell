@@ -45,20 +45,6 @@ namespace Microsoft.Azure.Commands.AlertsManagement.OutputModels
             Scope = JsonConvert.SerializeObject(rule.Properties.Scope);
             Conditions = JsonConvert.SerializeObject(rule.Properties.Conditions);
             ActionRuleType = rule.Properties.GetType().Name;
-
-            switch (ActionRuleType)
-            {
-                case "Suppression":
-                    Suppression suppression = (Suppression)rule.Properties;
-                    SuppressionConfig = new PSSuppressionConfig(suppression.SuppressionConfig);
-                    break;
-                case "ActionGroup":
-                    ActionGroup actionGroup = (ActionGroup)rule.Properties;
-                    ActionGroupId = actionGroup.ActionGroupId;
-                    break;
-                case "Diagnostics":
-                    break;
-            }
         }
 
         public string Id { get; }
@@ -82,15 +68,5 @@ namespace Microsoft.Azure.Commands.AlertsManagement.OutputModels
         public string LastModifiedBy { get; }
 
         public string ActionRuleType { get; }
-
-        public string ActionGroupId { get; }
-
-        [Ps1Xml(Label = "RecurrenceType", Target = ViewControl.All, ScriptBlock = "$_.SuppressionConfig.RecurrenceType")]
-        [Ps1Xml(Label = "StartDate", Target = ViewControl.All, ScriptBlock = "$_.SuppressionConfig.StartDate")]
-        [Ps1Xml(Label = "StartTime", Target = ViewControl.All, ScriptBlock = "$_.SuppressionConfig.StartTime")]
-        [Ps1Xml(Label = "EndDate", Target = ViewControl.All, ScriptBlock = "$_.SuppressionConfig.EndDate")]
-        [Ps1Xml(Label = "EndTime", Target = ViewControl.All, ScriptBlock = "$_.SuppressionConfig.EndTime")]
-        [Ps1Xml(Label = "RecurrenceValues", Target = ViewControl.All, ScriptBlock = "$_.SuppressionConfig.RecurrenceValues.ToString()")]
-        public PSSuppressionConfig SuppressionConfig { get; }
     }
 }

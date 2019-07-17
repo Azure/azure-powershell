@@ -294,19 +294,36 @@ namespace Microsoft.Azure.Commands.AlertsManagement
 
                     } while (!string.IsNullOrEmpty(nextPageLink) && currentCount < lastCount);
 
-                    WriteObject(resultList.Select((r) => new PSActionRule(r)), enumerateCollection: true);
+                    WriteObject(resultList.Select((r) => TransformOutput(r)), enumerateCollection: true);
                     break;
 
                 case ActionRuleByNameParameterSet:
-                    PSActionRule rulebyName = new PSActionRule(this.AlertsManagementClient.ActionRules.GetByNameWithHttpMessagesAsync(ResourceGroupName, Name).Result.Body);
-                    WriteObject(sendToPipeline: rulebyName);
+                    var rulebyName = this.AlertsManagementClient.ActionRules.GetByNameWithHttpMessagesAsync(ResourceGroupName, Name).Result.Body;
+                    WriteObject(sendToPipeline: TransformOutput(rulebyName));
                     break;
 
                 case ResourceIdParameterSet:
                     ExtractedInfo info = CommonUtils.ExtractFromActionRuleResourceId(ResourceId);
-                    PSActionRule ruleById = new PSActionRule(this.AlertsManagementClient.ActionRules.GetByNameWithHttpMessagesAsync(info.ResourceGroupName, info.Resource).Result.Body);
-                    WriteObject(sendToPipeline: ruleById);
+                    var ruleById = this.AlertsManagementClient.ActionRules.GetByNameWithHttpMessagesAsync(info.ResourceGroupName, info.Resource).Result.Body;
+                    WriteObject(sendToPipeline: TransformOutput(ruleById));
                     break;
+            }
+        }
+
+        private PSActionRule TransformOutput(ActionRule input)
+        {
+            string actionRuleType = input.Properties.GetType().Name;
+
+            switch (actionRuleType)
+            {
+                case "Suppression":
+                    return new PSSuppressionActionRule(input);
+                case "ActionGroup":
+                    return new PSActionGroupActionRule(input);
+                case "Diagnostics":
+                    return new PSDiagnosticsActionRule(input);
+                default:
+                    return new PSActionRule(input);
             }
         }
     }
