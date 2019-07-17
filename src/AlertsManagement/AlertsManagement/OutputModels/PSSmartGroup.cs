@@ -14,6 +14,7 @@
 
 using System;
 using Microsoft.Azure.Management.AlertsManagement.Models;
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
 namespace Microsoft.Azure.Commands.AlertsManagement.OutputModels
 {
@@ -30,18 +31,25 @@ namespace Microsoft.Azure.Commands.AlertsManagement.OutputModels
             LastModifiedUserName = smartGroup.LastModifiedUserName;
         }
 
+        [Ps1Xml(Label = "Id", Target = ViewControl.Table, ScriptBlock = "$_.Id.Split('/')[6]")]
         public string Id { get; }
 
+        [Ps1Xml(Label = "Name", Target = ViewControl.Table)]
         public string Name { get; }
 
+        [Ps1Xml(Label = "State", Target = ViewControl.Table)]
         public string State { get; }
 
+        [Ps1Xml(Label = "Severity", Target = ViewControl.Table)]
         public string Severity { get; }
 
+        [Ps1Xml(Label = "AlertsCount", Target = ViewControl.Table)]
         public int? AlertsCount { get; }
 
         public DateTime? LastModifiedTime { get; }
 
         public string LastModifiedUserName { get; }
+
+        public PSSmartGroupDetails Details { get; }
     }
 }

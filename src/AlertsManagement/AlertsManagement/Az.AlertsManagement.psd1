@@ -30,7 +30,7 @@ CompanyName = 'Microsoft Corporation'
 Copyright = 'Microsoft Corporation. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description =  'Microsoft Azure PowerShell - AlertsManagement service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.'
+Description =  'Microsoft Azure PowerShell - AlertsManagement service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.
 
 For more information on AlertsManagement, please visit the following:  https://docs.microsoft.com/azure/alertsmanagement/'
 

@@ -49,10 +49,12 @@ namespace Microsoft.Azure.Commands.AlertsManagement.OutputModels
 
         public string Id { get; }
 
+        [Ps1Xml(Label = "Name", Target = ViewControl.Table)]
         public string Name { get; }
 
         public string Description { get; }
 
+        [Ps1Xml(Label = "Status", Target = ViewControl.Table)]
         public string Status { get; set; }
 
         public string Scope { get; }
@@ -63,10 +65,13 @@ namespace Microsoft.Azure.Commands.AlertsManagement.OutputModels
 
         public string CreatedBy { get; }
 
+        [Ps1Xml(Label = "LastModifiedAt", Target = ViewControl.Table)]
         public DateTime? LastModifiedAt { get; }
 
+        [Ps1Xml(Label = "LastModifiedBy", Target = ViewControl.Table)]
         public string LastModifiedBy { get; }
 
+        [Ps1Xml(Label = "Type", Target = ViewControl.Table)]
         public string ActionRuleType { get; }
     }
 }

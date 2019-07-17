@@ -32,13 +32,16 @@ namespace Microsoft.Azure.Commands.AlertsManagement.OutputModels
             AggregatedCounts = new PSAggregatedCounts(summary.Properties.Values);
         }
 
+        [Ps1Xml(Label = "TotalSmartGroups", Target = ViewControl.List)]
         public string GroupBy { get; }
 
+        [Ps1Xml(Label = "TotalSmartGroups", Target = ViewControl.List)]
         public int? TotalAlerts { get; }
 
+        [Ps1Xml(Label = "TotalSmartGroups", Target = ViewControl.List)]
         public int? TotalSmartGroups { get; }
 
-        [Ps1Xml(Label = "Summary", Target = ViewControl.All, ScriptBlock = "$_.AggregatedCounts.ToString()")]
+        [Ps1Xml(Label = "Summary", Target = ViewControl.List, ScriptBlock = "$_.AggregatedCounts.ToString()")]
         public PSAggregatedCounts AggregatedCounts { get; }
     }
 }
