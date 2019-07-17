@@ -20,14 +20,14 @@ New-AzADGroup -TenantId <String> [-Parameter <IGroupCreateParameters>] [-Default
 
 ### CreateExpanded
 ```
-New-AzADGroup -TenantId <String> -DisplayName <String> -MailNickname <String> [-Properties <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzADGroup -TenantId <String> -DisplayName <String> -MailNickname <String>
+ [-AdditionalProperties <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzADGroup -InputObject <IResourcesIdentity> -DisplayName <String> -MailNickname <String>
- [-Properties <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AdditionalProperties <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -60,6 +60,22 @@ PS C:\> {{ Add code here }}
 {{ Add description here }}
 
 ## PARAMETERS
+
+### -AdditionalProperties
+Additional Parameters
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -127,6 +143,7 @@ Dynamic: False
 
 ### -Parameter
 Request parameters for creating a new group.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IGroupCreateParameters
@@ -137,22 +154,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Properties
-Additional Parameters
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -211,15 +212,26 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IGroupCreateParameters
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IGroupCreateParameters
 
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IAdGroup
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <IGroupCreateParameters>: Request parameters for creating a new group.
+  - `[(Any) <Object>]`: This indicates any property can be added to this object.
+  - `DisplayName <String>`: Group display name
+  - `MailEnabled <Boolean>`: Whether the group is mail-enabled. Must be false. This is because only pure security groups can be created using the Graph API.
+  - `MailNickname <String>`: Mail nickname
 
 ## RELATED LINKS
 

@@ -120,8 +120,7 @@ Dynamic: False
 ```
 
 ### -Id
-The fully qualified deny assignment ID.
-For example, use the format, /subscriptions/{guid}/providers/Microsoft.Authorization/denyAssignments/{denyAssignmentId} for subscription level deny assignments, or /providers/Microsoft.Authorization/denyAssignments/{denyAssignmentId} for tenant level deny assignments.
+The ID of the deny assignment to get.
 
 ```yaml
 Type: System.String
@@ -233,7 +232,7 @@ Dynamic: False
 ```
 
 ### -Scope
-The scope of the deny assignments.
+The scope of the deny assignment.
 
 ```yaml
 Type: System.String
@@ -276,6 +275,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180701Preview.IDenyAssignment
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

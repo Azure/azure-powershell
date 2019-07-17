@@ -23,20 +23,20 @@ Update-AzResourceGroup -SubscriptionId <String> [-Name <String>] [-Parameter <IR
 ### UpdateViaIdentityExpanded
 ```
 Update-AzResourceGroup -InputObject <IResourcesIdentity> [-Name <String>] [-ManagedBy <String>]
- [-Tag <IResourceGroupPatchableTags>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
 ```
 Update-AzResourceGroup -SubscriptionId <String> -ResourceGroupName <String> [-Name <String>]
- [-ManagedBy <String>] [-Tag <IResourceGroupPatchableTags>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [-ManagedBy <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### UpdateById
 ```
-Update-AzResourceGroup -SubscriptionId <String> -Id <String> [-ManagedBy <String>]
- [-Tag <IResourceGroupPatchableTags>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzResourceGroup -SubscriptionId <String> -Id <String> [-ManagedBy <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
@@ -137,7 +137,8 @@ Dynamic: False
 ```
 
 ### -Name
-The name of the resource group.
+The name of the resource group to update.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -154,6 +155,7 @@ Dynamic: False
 
 ### -Parameter
 Resource group information.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IResourceGroupPatchable
@@ -205,7 +207,7 @@ Dynamic: False
 The tags attached to the resource group.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IResourceGroupPatchableTags
+Type: System.Collections.Hashtable
 Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded, UpdateById
 Aliases:
 
@@ -255,15 +257,26 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IResourceGroupPatchable
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IResourceGroupPatchable
 
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IResourceGroup
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <IResourceGroupPatchable>: Resource group information.
+  - `[ManagedBy <String>]`: The ID of the resource that manages this resource group.
+  - `[Name <String>]`: The name of the resource group.
+  - `[Tag <IResourceGroupPatchableTags>]`: The tags attached to the resource group.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
 

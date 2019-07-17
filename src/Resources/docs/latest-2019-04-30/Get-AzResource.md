@@ -117,13 +117,9 @@ Dynamic: False
 ```
 
 ### -Filter
-The filter to apply on the operation.
-The properties you can use for eq (equals) or ne (not equals) are: location, resourceType, name, resourceGroup, identity, identity/principalId, plan, plan/publisher, plan/product, plan/name, plan/version, and plan/promotionCode.
-For example, to filter by a resource type, use: $filter=resourceType eq 'Microsoft.Network/virtualNetworks'  You can use substringof(value, property) in the filter.
-The properties you can use for substring are: name and resourceGroup.
-For example, to get all resources with 'demo' anywhere in the name, use: $filter=substringof('demo', name)  You can link more than one substringof together by adding and/or operators.
-You can filter by tag names and values.
-For example, to filter for a tag name and value, use $filter=tagName eq 'tag1' and tagValue eq 'Value1'  You can use some properties together when filtering.
+The filter to apply on the operation.<br><br>The properties you can use for eq (equals) or ne (not equals) are: location, resourceType, name, resourceGroup, identity, identity/principalId, plan, plan/publisher, plan/product, plan/name, plan/version, and plan/promotionCode.<br><br>For example, to filter by a resource type, use: $filter=resourceType eq 'Microsoft.Network/virtualNetworks'<br><br>You can use substringof(value, property) in the filter.
+The properties you can use for substring are: name and resourceGroup.<br><br>For example, to get all resources with 'demo' anywhere in the name, use: $filter=substringof('demo', name)<br><br>You can link more than one substringof together by adding and/or operators.<br><br>You can filter by tag names and values.
+For example, to filter for a tag name and value, use $filter=tagName eq 'tag1' and tagValue eq 'Value1'<br><br>You can use some properties together when filtering.
 The combinations you can use are: substringof and/or resourceType, plan and plan/publisher and plan/name, identity and identity/principalId.
 
 ```yaml
@@ -204,7 +200,8 @@ Dynamic: False
 ```
 
 ### -ResourceGroupName
-The resource group with the resources to get.
+The name of the resource group containing the resource to get.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -346,6 +343,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IGenericResource
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

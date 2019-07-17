@@ -83,6 +83,7 @@ Dynamic: False
 
 ### -Parameter
 The resource link.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20160901.IResourceLink
@@ -176,6 +177,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20160901.IResourceLink
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <IResourceLink>: The resource link.
+  - `TargetId <String>`: The fully qualified ID of the target resource in the link.
+  - `[Note <String>]`: Notes about the resource link.
 
 ## RELATED LINKS
 

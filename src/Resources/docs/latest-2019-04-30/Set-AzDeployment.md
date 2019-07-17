@@ -15,7 +15,7 @@ You can provide the template and parameters directly in the request or link to J
 ### Update (Default)
 ```
 Set-AzDeployment -Name <String> -SubscriptionId <String> [-Parameter <IDeployment>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded1
@@ -25,13 +25,14 @@ Set-AzDeployment -Name <String> -SubscriptionId <String> -ResourceGroupName <Str
  [-DebugSettingDetailLevel <String>] [-Location <String>] [-OnErrorDeploymentName <String>]
  [-OnErrorDeploymentType <OnErrorDeploymentType>] [-ParameterLinkContentVersion <String>]
  [-Template <IDeploymentPropertiesTemplate>] [-TemplateLinkContentVersion <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update1
 ```
 Set-AzDeployment -Name <String> -SubscriptionId <String> -ResourceGroupName <String>
- [-Parameter <IDeployment>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Parameter <IDeployment>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateExpanded
@@ -40,7 +41,7 @@ Set-AzDeployment -Name <String> -SubscriptionId <String> -Mode <DeploymentMode> 
  -TemplateLinkUri <String> [-Parameter <IDeployment>] [-DebugSettingDetailLevel <String>] [-Location <String>]
  [-OnErrorDeploymentName <String>] [-OnErrorDeploymentType <OnErrorDeploymentType>]
  [-ParameterLinkContentVersion <String>] [-Template <IDeploymentPropertiesTemplate>]
- [-TemplateLinkContentVersion <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [-TemplateLinkContentVersion <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -173,6 +174,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -OnErrorDeploymentName
 The deployment to be used on error case.
 
@@ -208,6 +225,7 @@ Dynamic: False
 
 ### -Parameter
 Deployment operation parameters.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IDeployment
@@ -386,6 +404,24 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### Set-AzResourceGroupDeployment
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <IDeployment>: Deployment operation parameters.
+  - `Mode <DeploymentMode>`: The mode that is used to deploy resources. This value can be either Incremental or Complete. In Incremental mode, resources are deployed without deleting existing resources that are not included in the template. In Complete mode, resources are deployed and existing resources in the resource group that are not included in the template are deleted. Be careful when using Complete mode as you may unintentionally delete resources.
+  - `ParameterLinkUri <String>`: The URI of the parameters file.
+  - `TemplateLinkUri <String>`: The URI of the template to deploy.
+  - `[DebugSettingDetailLevel <String>]`: Specifies the type of information to log for debugging. The permitted values are none, requestContent, responseContent, or both requestContent and responseContent separated by a comma. The default is none. When setting this value, carefully consider the type of information you are passing in during deployment. By logging information about the request or response, you could potentially expose sensitive data that is retrieved through the deployment operations.
+  - `[Location <String>]`: The location to store the deployment data.
+  - `[OnErrorDeploymentName <String>]`: The deployment to be used on error case.
+  - `[OnErrorDeploymentType <OnErrorDeploymentType?>]`: The deployment on error behavior type. Possible values are LastSuccessful and SpecificDeployment.
+  - `[Parameter <IDeploymentPropertiesParameters>]`: Name and value pairs that define the deployment parameters for the template. You use this element when you want to provide the parameter values directly in the request rather than link to an existing parameter file. Use either the parametersLink property or the parameters property, but not both. It can be a JObject or a well formed JSON string.
+  - `[ParameterLinkContentVersion <String>]`: If included, must match the ContentVersion in the template.
+  - `[Template <IDeploymentPropertiesTemplate>]`: The template content. You use this element when you want to pass the template syntax directly in the request rather than link to an existing template. It can be a JObject or well-formed JSON string. Use either the templateLink property or the template property, but not both.
+  - `[TemplateLinkContentVersion <String>]`: If included, must match the ContentVersion in the template.
 
 ## RELATED LINKS
 

@@ -153,8 +153,6 @@ Dynamic: False
 
 ### -Filter
 The filter to apply on the operation.
-Valid values for $filter are: 'atScope()' or 'policyDefinitionId eq '{value}''.
-If $filter is not provided, no filtering is performed.
 
 ```yaml
 Type: System.String
@@ -236,7 +234,6 @@ Dynamic: False
 
 ### -ParentResourcePath
 The parent resource path.
-Use empty string if there is none.
 
 ```yaml
 Type: System.String
@@ -317,8 +314,7 @@ Dynamic: False
 ```
 
 ### -ResourceType
-The resource type name.
-For example the type name of a web app is 'sites' (from Microsoft.Web/sites).
+The resource type.
 
 ```yaml
 Type: System.String
@@ -380,6 +376,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20151101.IPolicyAssignment
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

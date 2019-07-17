@@ -24,13 +24,13 @@ Get-AzResourceLink -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>
 
 ### List
 ```
-Get-AzResourceLink -SubscriptionId <String[]> [-Filter <String>] [-DefaultProfile <PSObject>]
+Get-AzResourceLink -SubscriptionId <String[]> [-FilterById <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzResourceLink -Scope <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzResourceLink -Scope <String> [-FilterByScope <Filter>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -74,7 +74,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Filter
+### -FilterById
 The filter to apply on the list resource links operation.
 The supported filter for list resource links is targetId.
 For example, $filter=targetId eq {value}
@@ -82,7 +82,24 @@ For example, $filter=targetId eq {value}
 ```yaml
 Type: System.String
 Parameter Sets: List
-Aliases: ODataQuery
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -FilterByScope
+The filter to apply when getting resource links.
+To get links only at the specified scope (not below the scope), use Filter.atScope().
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Support.Filter
+Parameter Sets: List1
+Aliases:
 
 Required: False
 Position: Named
@@ -170,6 +187,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20160901.IResourceLink
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

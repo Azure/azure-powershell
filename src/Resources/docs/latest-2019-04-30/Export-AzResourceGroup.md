@@ -112,6 +112,7 @@ Dynamic: False
 
 ### -Parameter
 Export resource group template request parameters.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IExportTemplateRequest
@@ -214,9 +215,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IExportTemplateRequest
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IExportTemplateRequest
 
 ## OUTPUTS
 
@@ -225,6 +226,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### Export-AzResourceGroupTemplate
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <IExportTemplateRequest>: Export resource group template request parameters.
+  - `[Option <String>]`: The export template options. Supported values include 'IncludeParameterDefaultValue', 'IncludeComments' or 'IncludeParameterDefaultValue, IncludeComments
+  - `[Resource <String[]>]`: The IDs of the resources. The only supported string currently is '*' (all resources). Future updates will support exporting specific resources.
 
 ## RELATED LINKS
 

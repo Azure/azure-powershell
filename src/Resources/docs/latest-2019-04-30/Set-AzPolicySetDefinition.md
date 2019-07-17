@@ -186,7 +186,8 @@ Dynamic: False
 ```
 
 ### -Parameter
-The policy set definition parameters that can be used in policy definition references.
+The policy set definition.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IPolicySetDefinition
@@ -203,6 +204,7 @@ Dynamic: False
 
 ### -PolicyDefinition
 An array of policy definition references.
+To construct, see NOTES section for POLICYDEFINITION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IPolicyDefinitionReference[]
@@ -288,11 +290,32 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IPolicySetDefinition
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IPolicySetDefinition
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <IPolicySetDefinition>: The policy set definition.
+  - `PolicyDefinition <IPolicyDefinitionReference[]>`: An array of policy definition references.
+    - `[Parameter <IPolicyDefinitionReferenceParameters>]`: Required if a parameter is used in policy rule.
+    - `[PolicyDefinitionId <String>]`: The ID of the policy definition or policy set definition.
+  - `[Description <String>]`: The policy set definition description.
+  - `[DisplayName <String>]`: The display name of the policy set definition.
+  - `[Metadata <IPolicySetDefinitionPropertiesMetadata>]`: The policy set definition metadata.
+  - `[Parameter <IPolicySetDefinitionPropertiesParameters>]`: The policy set definition parameters that can be used in policy definition references.
+  - `[PolicyType <PolicyType?>]`: The type of policy definition. Possible values are NotSpecified, BuiltIn, and Custom.
+
+#### POLICYDEFINITION <IPolicyDefinitionReference[]>: An array of policy definition references.
+  - `[Parameter <IPolicyDefinitionReferenceParameters>]`: Required if a parameter is used in policy rule.
+  - `[PolicyDefinitionId <String>]`: The ID of the policy definition or policy set definition.
 
 ## RELATED LINKS
 

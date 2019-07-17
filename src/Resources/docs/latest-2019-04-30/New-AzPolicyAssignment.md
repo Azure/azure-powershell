@@ -264,6 +264,7 @@ Dynamic: False
 
 ### -Parameter
 The policy assignment.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IPolicyAssignment
@@ -311,7 +312,8 @@ Dynamic: False
 ```
 
 ### -Scope
-The scope for the policy assignment.
+The scope of the policy assignment.
+Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
 
 ```yaml
 Type: System.String
@@ -398,15 +400,33 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IPolicyAssignment
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IPolicyAssignment
 
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IPolicyAssignment
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <IPolicyAssignment>: The policy assignment.
+  - `SkuName <String>`: The name of the policy sku. Possible values are A0 and A1.
+  - `[Description <String>]`: This message will be part of response in case of policy violation.
+  - `[DisplayName <String>]`: The display name of the policy assignment.
+  - `[IdentityType <ResourceIdentityType?>]`: The identity type.
+  - `[Location <String>]`: The location of the policy assignment. Only required when utilizing managed identity.
+  - `[Metadata <IPolicyAssignmentPropertiesMetadata>]`: The policy assignment metadata.
+  - `[NotScope <String[]>]`: The policy's excluded scopes.
+  - `[Parameter <IPolicyAssignmentPropertiesParameters>]`: Required if a parameter is used in policy rule.
+  - `[PolicyDefinitionId <String>]`: The ID of the policy definition or policy set definition being assigned.
+  - `[Scope <String>]`: The scope for the policy assignment.
+  - `[SkuTier <String>]`: The policy sku tier. Possible values are Free and Standard.
 
 ## RELATED LINKS
 

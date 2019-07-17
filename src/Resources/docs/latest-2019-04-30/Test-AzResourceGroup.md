@@ -145,5 +145,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Test-AzResourceGroupExistence
 
+## NOTES
+
 ## RELATED LINKS
 

@@ -21,16 +21,16 @@ Get-AzADObject -TenantId <String> [-Parameter <IGetObjectsParameters>] [-Default
 
 ### GetExpanded
 ```
-Get-AzADObject -TenantId <String> [-IncludeDirectoryObjectReference] [-ObjectId <String[]>]
- [-Properties <Hashtable>] [-Type <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+Get-AzADObject -TenantId <String> [-AdditionalProperties <Hashtable>] [-IncludeDirectoryObjectReference]
+ [-ObjectId <String[]>] [-Type <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentityExpanded
 ```
-Get-AzADObject -InputObject <IResourcesIdentity> [-IncludeDirectoryObjectReference] [-ObjectId <String[]>]
- [-Properties <Hashtable>] [-Type <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Get-AzADObject -InputObject <IResourcesIdentity> [-AdditionalProperties <Hashtable>]
+ [-IncludeDirectoryObjectReference] [-ObjectId <String[]>] [-Type <String[]>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -64,6 +64,22 @@ PS C:\> {{ Add code here }}
 {{ Add description here }}
 
 ## PARAMETERS
+
+### -AdditionalProperties
+Additional Parameters
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: GetExpanded, GetViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -131,6 +147,7 @@ Dynamic: False
 
 ### -Parameter
 Request parameters for the GetObjectsByObjectIds API.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IGetObjectsParameters
@@ -141,22 +158,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Properties
-Additional Parameters
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: GetExpanded, GetViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -231,15 +232,26 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IGetObjectsParameters
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IGetObjectsParameters
 
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IDirectoryObject
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <IGetObjectsParameters>: Request parameters for the GetObjectsByObjectIds API.
+  - `[(Any) <Object>]`: This indicates any property can be added to this object.
+  - `[IncludeDirectoryObjectReference <Boolean?>]`: If true, also searches for object IDs in the partner tenant.
+  - `[ObjectId <String[]>]`: The requested object IDs.
+  - `[Type <String[]>]`: The requested object types.
 
 ## RELATED LINKS
 
