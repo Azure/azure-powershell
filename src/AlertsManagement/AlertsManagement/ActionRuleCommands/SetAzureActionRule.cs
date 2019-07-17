@@ -288,7 +288,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
 
         protected override void ProcessRecordInternal()
         {
-            PSActionRule actionRule = new PSActionRule();
+            ActionRule result = new ActionRule();
             if (ShouldProcess(
                 target: string.Format(Resources.TargetWithRG, this.Name, this.ResourceGroupName),
                 action: Resources.CreateOrUpdateActionRule_Action))
@@ -314,8 +314,8 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                             )
                         );
 
-                        actionRule = new PSActionRule(this.AlertsManagementClient.ActionRules.CreateUpdateWithHttpMessagesAsync(
-                            resourceGroupName: ResourceGroupName, actionRuleName: Name, actionRule: actionGroupAR).Result.Body);
+                        result = this.AlertsManagementClient.ActionRules.CreateUpdateWithHttpMessagesAsync(
+                            resourceGroupName: ResourceGroupName, actionRuleName: Name, actionRule: actionGroupAR).Result.Body;
                         break;
 
                     case BySimplifiedFormatSuppressionActionRuleParameterSet:
@@ -354,8 +354,8 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                             )
                         );
 
-                        actionRule = new PSActionRule(this.AlertsManagementClient.ActionRules.CreateUpdateWithHttpMessagesAsync(
-                            resourceGroupName: ResourceGroupName, actionRuleName: Name, actionRule: suppressionAR).Result.Body);
+                        result = this.AlertsManagementClient.ActionRules.CreateUpdateWithHttpMessagesAsync(
+                            resourceGroupName: ResourceGroupName, actionRuleName: Name, actionRule: suppressionAR).Result.Body;
                         break;
 
                     case BySimplifiedFormatDiagnosticsActionRuleParameterSet:
@@ -376,8 +376,8 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                             )
                         );
 
-                        actionRule = new PSActionRule(this.AlertsManagementClient.ActionRules.CreateUpdateWithHttpMessagesAsync(
-                            resourceGroupName: ResourceGroupName, actionRuleName: Name, actionRule: diagnosticsAR).Result.Body);
+                        result = this.AlertsManagementClient.ActionRules.CreateUpdateWithHttpMessagesAsync(
+                            resourceGroupName: ResourceGroupName, actionRuleName: Name, actionRule: diagnosticsAR).Result.Body;
 
                         break;
                     case ByInputObjectParameterSet:
@@ -386,36 +386,38 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                         {
                             case "ActionGroup":
                                 // Create Action Rule
+                                PSActionGroupActionRule actionGroupInputObject = (PSActionGroupActionRule)InputObject;
                                 ActionRule actionGroupARFromInputObject = new ActionRule(
                                     location: "Global",
                                     tags: new Dictionary<string, string>(),
                                     properties: new ActionGroup(
-                                        scope: JsonConvert.DeserializeObject<Scope>(InputObject.Scope),
-                                        conditions: JsonConvert.DeserializeObject<Conditions>(InputObject.Conditions),
-                                        actionGroupId: InputObject.ActionGroupId,
-                                        description: InputObject.Description,
-                                        status: InputObject.Status
+                                        scope: JsonConvert.DeserializeObject<Scope>(actionGroupInputObject.Scope),
+                                        conditions: JsonConvert.DeserializeObject<Conditions>(actionGroupInputObject.Conditions),
+                                        actionGroupId: actionGroupInputObject.ActionGroupId,
+                                        description: actionGroupInputObject.Description,
+                                        status: actionGroupInputObject.Status
                                     )
                                 );
 
-                                actionRule = new PSActionRule(this.AlertsManagementClient.ActionRules.CreateUpdateWithHttpMessagesAsync(
-                                    resourceGroupName: info.ResourceGroupName, actionRuleName: info.Resource, actionRule: actionGroupARFromInputObject).Result.Body);
+                                result = this.AlertsManagementClient.ActionRules.CreateUpdateWithHttpMessagesAsync(
+                                    resourceGroupName: info.ResourceGroupName, actionRuleName: info.Resource, actionRule: actionGroupARFromInputObject).Result.Body;
                                 break;
 
                             case "Suppression":
-                                SuppressionConfig configFromInputObject = new SuppressionConfig(recurrenceType: InputObject.SuppressionConfig.RecurrenceType);
-                                if (InputObject.SuppressionConfig.RecurrenceType != "Always")
+                                PSSuppressionActionRule suppressionInputObject = (PSSuppressionActionRule)InputObject;
+                                SuppressionConfig configFromInputObject = new SuppressionConfig(recurrenceType: suppressionInputObject.SuppressionConfig.RecurrenceType);
+                                if (suppressionInputObject.SuppressionConfig.RecurrenceType != "Always")
                                 {
                                     configFromInputObject.Schedule = new SuppressionSchedule(
-                                        startDate: InputObject.SuppressionConfig.StartDate,
-                                        endDate: InputObject.SuppressionConfig.EndDate,
-                                        startTime: InputObject.SuppressionConfig.StartTime,
-                                        endTime: InputObject.SuppressionConfig.EndTime
+                                        startDate: suppressionInputObject.SuppressionConfig.StartDate,
+                                        endDate: suppressionInputObject.SuppressionConfig.EndDate,
+                                        startTime: suppressionInputObject.SuppressionConfig.StartTime,
+                                        endTime: suppressionInputObject.SuppressionConfig.EndTime
                                         );
 
                                     if (ReccurentValue.Length > 0)
                                     {
-                                        configFromInputObject.Schedule.RecurrenceValues = InputObject.SuppressionConfig.RecurrenceValues;
+                                        configFromInputObject.Schedule.RecurrenceValues = suppressionInputObject.SuppressionConfig.RecurrenceValues;
                                     }
                                 }
 
@@ -424,39 +426,40 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                                     location: "Global",
                                     tags: new Dictionary<string, string>(),
                                     properties: new Suppression(
-                                        scope: JsonConvert.DeserializeObject<Scope>(InputObject.Scope),
-                                        conditions: JsonConvert.DeserializeObject<Conditions>(InputObject.Conditions),
-                                        description: InputObject.Description,
-                                        status: InputObject.Status,
+                                        scope: JsonConvert.DeserializeObject<Scope>(suppressionInputObject.Scope),
+                                        conditions: JsonConvert.DeserializeObject<Conditions>(suppressionInputObject.Conditions),
+                                        description: suppressionInputObject.Description,
+                                        status: suppressionInputObject.Status,
                                         suppressionConfig: configFromInputObject
                                     )
                                 );
 
-                                actionRule = new PSActionRule(this.AlertsManagementClient.ActionRules.CreateUpdateWithHttpMessagesAsync(
-                                    resourceGroupName: info.ResourceGroupName, actionRuleName: info.Resource, actionRule: suppressionARFromInputObject).Result.Body);
+                                result = this.AlertsManagementClient.ActionRules.CreateUpdateWithHttpMessagesAsync(
+                                    resourceGroupName: info.ResourceGroupName, actionRuleName: info.Resource, actionRule: suppressionARFromInputObject).Result.Body;
                                 break;
 
                             case "Diagnostics":
                                 // Create Action Rule
+                                PSDiagnosticsActionRule diagnosticsInputObject = (PSDiagnosticsActionRule)InputObject;
                                 ActionRule diagnosticsARFromInputObject = new ActionRule(
                                     location: "Global",
                                     tags: new Dictionary<string, string>(),
                                     properties: new Diagnostics(
-                                        scope: JsonConvert.DeserializeObject<Scope>(InputObject.Scope),
-                                        conditions: JsonConvert.DeserializeObject<Conditions>(InputObject.Conditions),
-                                        description: InputObject.Description,
-                                        status: InputObject.Status
+                                        scope: JsonConvert.DeserializeObject<Scope>(diagnosticsInputObject.Scope),
+                                        conditions: JsonConvert.DeserializeObject<Conditions>(diagnosticsInputObject.Conditions),
+                                        description: diagnosticsInputObject.Description,
+                                        status: diagnosticsInputObject.Status
                                     )
                                 );
 
-                                actionRule = new PSActionRule(this.AlertsManagementClient.ActionRules.CreateUpdateWithHttpMessagesAsync(
-                                    resourceGroupName: info.ResourceGroupName, actionRuleName: info.Resource, actionRule: diagnosticsARFromInputObject).Result.Body);
+                                result = this.AlertsManagementClient.ActionRules.CreateUpdateWithHttpMessagesAsync(
+                                    resourceGroupName: info.ResourceGroupName, actionRuleName: info.Resource, actionRule: diagnosticsARFromInputObject).Result.Body;
                                 break;
                         }
                         break;
                 }
 
-                WriteObject(sendToPipeline: actionRule);
+                WriteObject(sendToPipeline: TransformOutput(result));
             }
         }
 
@@ -563,6 +566,23 @@ namespace Microsoft.Azure.Commands.AlertsManagement
             else
             {
                 throw new PSInvalidOperationException(string.Format(Resources.InvalidScopeType_Exception));
+            }
+        }
+
+        private PSActionRule TransformOutput(ActionRule input)
+        {
+            string actionRuleType = input.Properties.GetType().Name;
+
+            switch (actionRuleType)
+            {
+                case "Suppression":
+                    return new PSSuppressionActionRule(input);
+                case "ActionGroup":
+                    return new PSActionGroupActionRule(input);
+                case "Diagnostics":
+                    return new PSDiagnosticsActionRule(input);
+                default:
+                    return new PSActionRule(input);
             }
         }
     }
