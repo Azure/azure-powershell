@@ -31,7 +31,6 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         private const string ResourceIdParameterSet = "ResourceId";
         private const string ListActionRulesParameterSet = "ListActionRules";
         private const string ListActionRulesByTargetResourceIdParameterSet = "ListActionRulesByTargetResourceId";
-        private const string ListActionRulesByTargetResourceGroupParameterSet = "ListActionRulesByTargetResourceGroup";
         private const string ActionRuleByNameParameterSet = "ActionRuleByName";
 
         #endregion
@@ -59,9 +58,6 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         [Parameter(Mandatory = false,
                    ParameterSetName = ListActionRulesByTargetResourceIdParameterSet,
                    HelpMessage = "Filter on Name of action rule.")]
-        [Parameter(Mandatory = false,
-                   ParameterSetName = ListActionRulesByTargetResourceGroupParameterSet,
-                   HelpMessage = "Filter on Name of action rule.")]
         public string Name { get; set; }
 
         /// <summary>
@@ -75,9 +71,6 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                    HelpMessage = "Filter on Resource Group Name in which action rule resides.")]
         [Parameter(Mandatory = false,
                    ParameterSetName = ListActionRulesByTargetResourceIdParameterSet,
-                   HelpMessage = "Filter on Resource Group Name in which action rule resides.")]
-        [Parameter(Mandatory = false,
-                   ParameterSetName = ListActionRulesByTargetResourceGroupParameterSet,
                    HelpMessage = "Filter on Resource Group Name in which action rule resides.")]
         public string ResourceGroupName { get; set; }
 
@@ -95,9 +88,6 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         [Parameter(Mandatory = false,
                    ParameterSetName = ListActionRulesParameterSet,
                    HelpMessage = "Filter on Resource type of the target resource of alert.")]
-        [Parameter(Mandatory = false,
-                   ParameterSetName = ListActionRulesByTargetResourceGroupParameterSet,
-                   HelpMessage = "Filter on Resource type of the target resource of alert.")]
         [ResourceTypeCompleter]
         public string TargetResourceType { get; set; }
 
@@ -105,7 +95,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// Resource Group Name
         /// </summary>
         [Parameter(Mandatory = false,
-                   ParameterSetName = ListActionRulesByTargetResourceGroupParameterSet,
+                   ParameterSetName = ListActionRulesParameterSet,
                    HelpMessage = "Filter on Resource group name of the target resource of alert.")]
         [ResourceGroupCompleter]
         public string TargetResourceGroup { get; set; }
@@ -119,9 +109,6 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         [Parameter(Mandatory = false,
                    ParameterSetName = ListActionRulesByTargetResourceIdParameterSet,
                    HelpMessage = "Filter on Moniter Service")]
-        [Parameter(Mandatory = false,
-                   ParameterSetName = ListActionRulesByTargetResourceGroupParameterSet,
-                   HelpMessage = "Filter on Moniter Service")]
         [PSArgumentCompleter("Platform", "Log Analytics", "SCOM", "Activity Log")]
         public string MonitorService { get; set; }
 
@@ -130,9 +117,6 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// </summary>
         [Parameter(Mandatory = false,
                    ParameterSetName = ListActionRulesParameterSet,
-                   HelpMessage = "Filter on Severity of alert")]
-        [Parameter(Mandatory = false,
-                   ParameterSetName = ListActionRulesByTargetResourceGroupParameterSet,
                    HelpMessage = "Filter on Severity of alert")]
         [Parameter(Mandatory = false,
                    ParameterSetName = ListActionRulesByTargetResourceIdParameterSet,
@@ -149,9 +133,6 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         [Parameter(Mandatory = false,
                    ParameterSetName = ListActionRulesByTargetResourceIdParameterSet,
                    HelpMessage = "Filter on Impacted scope")]
-        [Parameter(Mandatory = false,
-                   ParameterSetName = ListActionRulesByTargetResourceGroupParameterSet,
-                   HelpMessage = "Filter on Impacted scope")]
         public string ImpactedScope { get; set; }
 
         /// <summary>
@@ -162,9 +143,6 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                    HelpMessage = "Filter on Alert Rule Id")]
         [Parameter(Mandatory = false,
                    ParameterSetName = ListActionRulesByTargetResourceIdParameterSet,
-                   HelpMessage = "Filter on Alert Rule Id")]
-        [Parameter(Mandatory = false,
-                   ParameterSetName = ListActionRulesByTargetResourceGroupParameterSet,
                    HelpMessage = "Filter on Alert Rule Id")]
         public string AlertRuleId { get; set; }
 
@@ -177,9 +155,6 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         [Parameter(Mandatory = false,
                    ParameterSetName = ListActionRulesByTargetResourceIdParameterSet,
                    HelpMessage = "Filter all the alerts having the Smart Group Id")]
-        [Parameter(Mandatory = false,
-                   ParameterSetName = ListActionRulesByTargetResourceGroupParameterSet,
-                   HelpMessage = "Filter all the alerts having the Smart Group Id")]
         public string Description { get; set; }
 
         /// <summary>
@@ -191,9 +166,6 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         [Parameter(Mandatory = false,
                    ParameterSetName = ListActionRulesByTargetResourceIdParameterSet,
                    HelpMessage = "Action group")]
-        [Parameter(Mandatory = false,
-                   ParameterSetName = ListActionRulesByTargetResourceGroupParameterSet,
-                   HelpMessage = "Action group")]
         public string ActionGroup { get; set; }
 
         #endregion
@@ -204,7 +176,6 @@ namespace Microsoft.Azure.Commands.AlertsManagement
             {
                 case ListActionRulesParameterSet:
                 case ListActionRulesByTargetResourceIdParameterSet:
-                case ListActionRulesByTargetResourceGroupParameterSet:
                     IPage<ActionRule> pageResult = new Page<ActionRule>();
                     List<ActionRule> resultList = new List<ActionRule>();
                     bool listByResourceGroup = false;

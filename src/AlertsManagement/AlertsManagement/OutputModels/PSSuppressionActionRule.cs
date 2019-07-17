@@ -16,6 +16,7 @@ using System;
 using Newtonsoft.Json;
 using Microsoft.Azure.Management.AlertsManagement.Models;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.AlertsManagement.OutputModels
 {
@@ -24,13 +25,24 @@ namespace Microsoft.Azure.Commands.AlertsManagement.OutputModels
         public PSSuppressionActionRule(ActionRule rule) : base(rule)
         {
             Suppression suppression = (Suppression)rule.Properties;
-            SuppressionConfig = new PSSuppressionConfig(suppression.SuppressionConfig);
+            RecurrenceType = suppression.SuppressionConfig?.RecurrenceType;
+            StartDate = suppression.SuppressionConfig?.Schedule?.StartDate;
+            EndDate = suppression.SuppressionConfig?.Schedule?.EndDate;
+            StartTime = suppression.SuppressionConfig?.Schedule?.StartTime;
+            EndTime = suppression.SuppressionConfig?.Schedule?.EndTime;
+            RecurrenceValues = suppression.SuppressionConfig?.Schedule?.RecurrenceValues;
         }
 
-        [Ps1Xml(Label = "RecurrenceType", Target = ViewControl.List, ScriptBlock = "$_.SuppressionConfig.RecurrenceType")]
-        [Ps1Xml(Label = "StartDateTime", Target = ViewControl.List, ScriptBlock = "$_.SuppressionConfig.StartDate" + " " + "$_.SuppressionConfig.StartTime")]
-        [Ps1Xml(Label = "EndDateTime", Target = ViewControl.List, ScriptBlock = "$_.SuppressionConfig.EndDate" + " " + "$_.SuppressionConfig.EndTime")]
-        [Ps1Xml(Label = "RecurrenceValues", Target = ViewControl.List, ScriptBlock = "$_.SuppressionConfig.RecurrenceValues.ToString()")]
-        public PSSuppressionConfig SuppressionConfig { get; }
+        public string RecurrenceType { get; }
+
+        public string StartDate { get; set; }
+
+        public string EndDate { get; set; }
+
+        public string StartTime { get; set; }
+
+        public string EndTime { get; set; }
+
+        public IList<int?> RecurrenceValues { get; set; }
     }
 }

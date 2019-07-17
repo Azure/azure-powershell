@@ -30,7 +30,6 @@ namespace Microsoft.Azure.Commands.AlertsManagement
 
         private const string AlertsListByFilterParameterSet = "AlertsListByFilter";
         private const string AlertsListByTargetResourceIdFilterParameterSet = "AlertsListByTargetResourceIdFilter";
-        private const string AlertsListByTargetResourceGroupFilterParameterSet = "AlertsListByTargetResourceGroupFilter";
         private const string AlertByIdParameterSet = "AlertById";
 
         #endregion
@@ -61,12 +60,6 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         [Parameter(Mandatory = false,
                    ParameterSetName = AlertsListByFilterParameterSet,
                    HelpMessage = "Filter on Resource type of the target resource of alert.")]
-        [Parameter(Mandatory = false,
-                   ParameterSetName = AlertsListByTargetResourceGroupFilterParameterSet,
-                   HelpMessage = "Filter on Resource type of the target resource of alert.")]
-        [Parameter(Mandatory = false,
-                   ParameterSetName = AlertsListByTargetResourceIdFilterParameterSet,
-                   HelpMessage = "Filter on Resource type of the target resource of alert.")]
         [ResourceTypeCompleter]
         public string TargetResourceType { get; set; }
 
@@ -74,7 +67,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// Resource Group Name
         /// </summary>
         [Parameter(Mandatory = false,
-                   ParameterSetName = AlertsListByTargetResourceGroupFilterParameterSet,
+                   ParameterSetName = AlertsListByFilterParameterSet,
                    HelpMessage = "Filter on Resource group name of the target resource of alert.")]
         [ResourceGroupCompleter]
         public string TargetResourceGroup { get; set; }
@@ -84,9 +77,6 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// </summary>
         [Parameter(Mandatory = false,
                    ParameterSetName = AlertsListByFilterParameterSet,
-                   HelpMessage = "Filter on Moniter Service")]
-        [Parameter(Mandatory = false,
-                   ParameterSetName = AlertsListByTargetResourceGroupFilterParameterSet,
                    HelpMessage = "Filter on Moniter Service")]
         [Parameter(Mandatory = false,
                    ParameterSetName = AlertsListByTargetResourceIdFilterParameterSet,
@@ -104,9 +94,6 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                    ParameterSetName = AlertsListByFilterParameterSet,
                    HelpMessage = "Filter on Monitor Condition")]
         [Parameter(Mandatory = false,
-                   ParameterSetName = AlertsListByTargetResourceGroupFilterParameterSet,
-                   HelpMessage = "Filter on Monitor Condition")]
-        [Parameter(Mandatory = false,
                    ParameterSetName = AlertsListByTargetResourceIdFilterParameterSet,
                    HelpMessage = "Filter on Monitor Condition")]
         [PSArgumentCompleter("Fired", "Resolved")]
@@ -117,9 +104,6 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// </summary>
         [Parameter(Mandatory = false,
                    ParameterSetName = AlertsListByFilterParameterSet,
-                   HelpMessage = "Filter on Severity of alert")]
-        [Parameter(Mandatory = false,
-                   ParameterSetName = AlertsListByTargetResourceGroupFilterParameterSet,
                    HelpMessage = "Filter on Severity of alert")]
         [Parameter(Mandatory = false,
                    ParameterSetName = AlertsListByTargetResourceIdFilterParameterSet,
@@ -134,9 +118,6 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                    ParameterSetName = AlertsListByFilterParameterSet,
                    HelpMessage = "Filter on State of alert")]
         [Parameter(Mandatory = false,
-                   ParameterSetName = AlertsListByTargetResourceGroupFilterParameterSet,
-                   HelpMessage = "Filter on State of alert")]
-        [Parameter(Mandatory = false,
                    ParameterSetName = AlertsListByTargetResourceIdFilterParameterSet,
                    HelpMessage = "Filter on State of alert")]
         [PSArgumentCompleter("New", "Acknowledged", "Closed")]
@@ -147,9 +128,6 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// </summary>
         [Parameter(Mandatory = false,
                    ParameterSetName = AlertsListByFilterParameterSet,
-                   HelpMessage = "Filter on Alert Rule Id")]
-        [Parameter(Mandatory = false,
-                   ParameterSetName = AlertsListByTargetResourceGroupFilterParameterSet,
                    HelpMessage = "Filter on Alert Rule Id")]
         [Parameter(Mandatory = false,
                    ParameterSetName = AlertsListByTargetResourceIdFilterParameterSet,
@@ -163,9 +141,6 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                    ParameterSetName = AlertsListByFilterParameterSet,
                    HelpMessage = "Filter all the alerts having the Smart Group Id")]
         [Parameter(Mandatory = false,
-                   ParameterSetName = AlertsListByTargetResourceGroupFilterParameterSet,
-                   HelpMessage = "Filter all the alerts having the Smart Group Id")]
-        [Parameter(Mandatory = false,
                    ParameterSetName = AlertsListByTargetResourceIdFilterParameterSet,
                    HelpMessage = "Filter all the alerts having the Smart Group Id")]
         public string SmartGroupId { get; set; }
@@ -175,9 +150,6 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// </summary>
         [Parameter(Mandatory = false,
                    ParameterSetName = AlertsListByFilterParameterSet,
-                   HelpMessage = "Include context (custom payload) of alert - true/false")]
-        [Parameter(Mandatory = false,
-                   ParameterSetName = AlertsListByTargetResourceGroupFilterParameterSet,
                    HelpMessage = "Include context (custom payload) of alert - true/false")]
         [Parameter(Mandatory = false,
                    ParameterSetName = AlertsListByTargetResourceIdFilterParameterSet,
@@ -193,9 +165,6 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         [Parameter(Mandatory = false,
                    ParameterSetName = AlertsListByTargetResourceIdFilterParameterSet,
                    HelpMessage = "Include EgressConfig - true/false")]
-        [Parameter(Mandatory = false,
-                   ParameterSetName = AlertsListByTargetResourceGroupFilterParameterSet,
-                   HelpMessage = "Include EgressConfig - true/false")]
         public bool IncludeEgressConfig { get; set; }
 
         /// <summary>
@@ -203,9 +172,6 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// </summary>
         [Parameter(Mandatory = false,
                    ParameterSetName = AlertsListByFilterParameterSet,
-                   HelpMessage = "Number of alerts to be fetched in a page.")]
-        [Parameter(Mandatory = false,
-                   ParameterSetName = AlertsListByTargetResourceGroupFilterParameterSet,
                    HelpMessage = "Number of alerts to be fetched in a page.")]
         [Parameter(Mandatory = false,
                    ParameterSetName = AlertsListByTargetResourceIdFilterParameterSet,
@@ -217,9 +183,6 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// </summary>
         [Parameter(Mandatory = false,
                    ParameterSetName = AlertsListByFilterParameterSet,
-                   HelpMessage = "Alert property to use while sorting")]
-        [Parameter(Mandatory = false,
-                   ParameterSetName = AlertsListByTargetResourceGroupFilterParameterSet,
                    HelpMessage = "Alert property to use while sorting")]
         [Parameter(Mandatory = false,
                    ParameterSetName = AlertsListByTargetResourceIdFilterParameterSet,
@@ -234,9 +197,6 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                    ParameterSetName = AlertsListByFilterParameterSet,
                    HelpMessage = "Sort Order")]
         [Parameter(Mandatory = false,
-                   ParameterSetName = AlertsListByTargetResourceGroupFilterParameterSet,
-                   HelpMessage = "Sort Order")]
-        [Parameter(Mandatory = false,
                    ParameterSetName = AlertsListByTargetResourceIdFilterParameterSet,
                    HelpMessage = "Sort Order")]
         [PSArgumentCompleter("desc", "asc")]
@@ -247,9 +207,6 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// </summary>
         [Parameter(Mandatory = false,
                    ParameterSetName = AlertsListByFilterParameterSet,
-                   HelpMessage = "Supported time range values – 1h, 1d, 7d, 30d (Default is 1d)")]
-        [Parameter(Mandatory = false,
-                   ParameterSetName = AlertsListByTargetResourceGroupFilterParameterSet,
                    HelpMessage = "Supported time range values – 1h, 1d, 7d, 30d (Default is 1d)")]
         [Parameter(Mandatory = false,
                    ParameterSetName = AlertsListByTargetResourceIdFilterParameterSet,
@@ -264,9 +221,6 @@ namespace Microsoft.Azure.Commands.AlertsManagement
                    ParameterSetName = AlertsListByFilterParameterSet,
                    HelpMessage = "Supported format - <start-time>/<end-time> where time is in ISO-8601 format")]
         [Parameter(Mandatory = false,
-                   ParameterSetName = AlertsListByTargetResourceGroupFilterParameterSet,
-                   HelpMessage = "Supported format - <start-time>/<end-time> where time is in ISO-8601 format")]
-        [Parameter(Mandatory = false,
                    ParameterSetName = AlertsListByTargetResourceIdFilterParameterSet,
                    HelpMessage = "Supported format - <start-time>/<end-time> where time is in ISO-8601 format")]
         public string CustomTimeRange { get; set; }
@@ -276,9 +230,6 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// </summary>
         [Parameter(Mandatory = false,
                    ParameterSetName = AlertsListByFilterParameterSet,
-                   HelpMessage = "Project the required fields out of essentials. Expected input is comma-separated.")]
-        [Parameter(Mandatory = false,
-                   ParameterSetName = AlertsListByTargetResourceGroupFilterParameterSet,
                    HelpMessage = "Project the required fields out of essentials. Expected input is comma-separated.")]
         [Parameter(Mandatory = false,
                    ParameterSetName = AlertsListByTargetResourceIdFilterParameterSet,
@@ -293,6 +244,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
             switch (ParameterSetName)
             {
                 case AlertsListByFilterParameterSet:
+                case AlertsListByTargetResourceIdFilterParameterSet:
                     List<Alert> resultList = new List<Alert>();
                     IPage<Alert> pageResult = new Page<Alert>();
                     pageResult = this.AlertsManagementClient.Alerts.GetAllWithHttpMessagesAsync(
