@@ -14,6 +14,7 @@
 
 using System;
 using Microsoft.Azure.Management.AlertsManagement.Models;
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
 namespace Microsoft.Azure.Commands.AlertsManagement.OutputModels
 {
@@ -44,10 +45,13 @@ namespace Microsoft.Azure.Commands.AlertsManagement.OutputModels
             EgressConfig = alert.Properties.EgressConfig?.ToString();
         }
 
+        [Ps1Xml(Label = "Id", Target = ViewControl.Table, ScriptBlock = "$_.Id.Split('/')[6]")]
         public string Id { get; }
 
+        [Ps1Xml(Label = "Name", Target = ViewControl.Table)]
         public string Name { get; }
 
+        [Ps1Xml(Label = "StartDateTime", Target = ViewControl.Table)]
         public DateTime? StartDateTime { get; }
 
         public string SourceCreatedId { get; }
@@ -56,12 +60,16 @@ namespace Microsoft.Azure.Commands.AlertsManagement.OutputModels
 
         public string TargetResource { get; }
 
+        [Ps1Xml(Label = "MonitorCondition", Target = ViewControl.Table)]
         public string MonitorCondition { get; }
 
+        [Ps1Xml(Label = "Severity", Target = ViewControl.Table)]
         public string Severity { get; }
 
+        [Ps1Xml(Label = "State", Target = ViewControl.Table)]
         public string State { get; }
 
+        [Ps1Xml(Label = "MonitorService", Target = ViewControl.Table)]
         public string MonitorService { get; }
 
         public string SignalType { get; }
