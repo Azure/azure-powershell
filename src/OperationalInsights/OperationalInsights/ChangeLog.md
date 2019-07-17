@@ -18,7 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
+* Fixed custom log null regex handling
+  
 ## Version 1.3.1
 * Fixed CustomLog datasource model returned in Get-AzOperationalInsightsDataSource
 
