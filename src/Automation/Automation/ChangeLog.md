@@ -22,6 +22,7 @@
 
 ## Version 1.3.0
 * Fixed Set-AzAutomationConnectionFieldValue cmdlet bug to handle string value.
+* Added text to description for Register-AzAutomationDscNode to explain cross-sub
 
 ## Version 1.2.2
 * Updated Get-AzAutomationJobOutputRecord to handle JSON and Text record values.

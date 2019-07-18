@@ -18,4 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix typo in `PSAttestation` type with property `AttestUri`
+
+## Version 0.1.0
 * General availability of `Az.Attestation` module
