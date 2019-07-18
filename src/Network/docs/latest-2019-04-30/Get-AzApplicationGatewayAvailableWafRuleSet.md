@@ -88,5 +88,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Get-AzApplicationGatewayAvailableWafRuleSets
 
+## NOTES
+
 ## RELATED LINKS
 

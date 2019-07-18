@@ -15,8 +15,8 @@ Creates or updates a peering in the specified virtual network.
 ### Update (Default)
 ```
 Set-AzVnetPeering -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -VnetName <String>
- [-VnetPeeringParameter <IVirtualNetworkPeering>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-VnetPeeringParameter <IVirtualNetworkPeering>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
@@ -25,7 +25,7 @@ Set-AzVnetPeering -Name <String> -ResourceGroupName <String> -SubscriptionId <St
  -VnetPeeringName <String> [-AllowForwardedTraffic] [-AllowGatewayTransit] [-AllowVnetAccess] [-Etag <String>]
  [-Id <String>] [-PeeringState <VirtualNetworkPeeringState>] [-ProvisioningState <String>]
  [-RemoteAddressSpaceAddressPrefix <String[]>] [-RemoteVnetId <String>] [-UseRemoteGateway]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -181,6 +181,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -PeeringState
 The status of the virtual network peering.
 Possible values are 'Initiated', 'Connected', and 'Disconnected'.
@@ -252,7 +268,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: VirtualNetworkPeering
 
 Required: True
 Position: Named
@@ -332,6 +348,7 @@ Dynamic: False
 
 ### -VnetPeeringParameter
 Peerings in a virtual network resource.
+To construct, see NOTES section for VNETPEERINGPARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVirtualNetworkPeering
@@ -393,6 +410,24 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### Set-AzVirtualNetworkPeering
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### VNETPEERINGPARAMETER <IVirtualNetworkPeering>: Peerings in a virtual network resource.
+  - `[Id <String>]`: Resource ID.
+  - `[AllowForwardedTraffic <Boolean?>]`: Whether the forwarded traffic from the VMs in the local virtual network will be allowed/disallowed in remote virtual network.
+  - `[AllowGatewayTransit <Boolean?>]`: If gateway links can be used in remote virtual networking to link to this virtual network.
+  - `[AllowVirtualNetworkAccess <Boolean?>]`: Whether the VMs in the local virtual network space would be able to access the VMs in remote virtual network space.
+  - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+  - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
+  - `[PeeringState <VirtualNetworkPeeringState?>]`: The status of the virtual network peering. Possible values are 'Initiated', 'Connected', and 'Disconnected'.
+  - `[ProvisioningState <String>]`: The provisioning state of the resource.
+  - `[RemoteAddressSpaceAddressPrefix <String[]>]`: A list of address blocks reserved for this virtual network in CIDR notation.
+  - `[RemoteVirtualNetworkId <String>]`: Resource ID.
+  - `[UseRemoteGateway <Boolean?>]`: If remote gateways can be used on this virtual network. If the flag is set to true, and allowGatewayTransit on remote peering is also true, virtual network will use gateways of remote virtual network for transit. Only one peering can have this flag set to true. This flag cannot be set if virtual network already has a gateway.
 
 ## RELATED LINKS
 

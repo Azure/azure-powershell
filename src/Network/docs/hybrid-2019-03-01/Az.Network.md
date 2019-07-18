@@ -44,7 +44,7 @@ Gets the specified local network gateway in a resource group.
 ### [Get-AzNetworkInterface](Get-AzNetworkInterface.md)
 Gets information about the specified network interface.
 
-### [Get-AzNetworkInterfaceEffectiveNetworkSecurityGroup](Get-AzNetworkInterfaceEffectiveNetworkSecurityGroup.md)
+### [Get-AzNetworkInterfaceEffectiveNsg](Get-AzNetworkInterfaceEffectiveNsg.md)
 Gets all network security groups applied to a network interface.
 
 ### [Get-AzNetworkInterfaceEffectiveRouteTable](Get-AzNetworkInterfaceEffectiveRouteTable.md)
@@ -56,14 +56,14 @@ Gets the specified network interface ip configuration.
 ### [Get-AzNetworkInterfaceLoadBalancer](Get-AzNetworkInterfaceLoadBalancer.md)
 List all load balancers in a network interface.
 
-### [Get-AzNetworkSecurityGroup](Get-AzNetworkSecurityGroup.md)
-Gets the specified network security group.
-
 ### [Get-AzNetworkSecurityRule](Get-AzNetworkSecurityRule.md)
 Get the specified network security rule.
 
 ### [Get-AzNetworkUsage](Get-AzNetworkUsage.md)
 List network usages for a subscription.
+
+### [Get-AzNsg](Get-AzNsg.md)
+Gets the specified network security group.
 
 ### [Get-AzPublicIPAddress](Get-AzPublicIPAddress.md)
 Gets the specified public IP address in a specified resource group.
@@ -129,11 +129,11 @@ Creates or updates a local network gateway in the specified resource group.
 ### [New-AzNetworkInterface](New-AzNetworkInterface.md)
 Creates or updates a network interface.
 
-### [New-AzNetworkSecurityGroup](New-AzNetworkSecurityGroup.md)
-Creates or updates a network security group in the specified resource group.
-
 ### [New-AzNetworkSecurityRule](New-AzNetworkSecurityRule.md)
 Creates or updates a security rule in the specified network security group.
+
+### [New-AzNsg](New-AzNsg.md)
+Creates or updates a network security group in the specified resource group.
 
 ### [New-AzPublicIPAddress](New-AzPublicIPAddress.md)
 Creates or updates a static or dynamic public IP address.
@@ -178,11 +178,11 @@ Deletes the specified local network gateway.
 ### [Remove-AzNetworkInterface](Remove-AzNetworkInterface.md)
 Deletes the specified network interface.
 
-### [Remove-AzNetworkSecurityGroup](Remove-AzNetworkSecurityGroup.md)
-Deletes the specified network security group.
-
 ### [Remove-AzNetworkSecurityRule](Remove-AzNetworkSecurityRule.md)
 Deletes the specified network security rule.
+
+### [Remove-AzNsg](Remove-AzNsg.md)
+Deletes the specified network security group.
 
 ### [Remove-AzPublicIPAddress](Remove-AzPublicIPAddress.md)
 Deletes the specified public IP address.
@@ -226,11 +226,11 @@ Creates or updates a local network gateway in the specified resource group.
 ### [Set-AzNetworkInterface](Set-AzNetworkInterface.md)
 Creates or updates a network interface.
 
-### [Set-AzNetworkSecurityGroup](Set-AzNetworkSecurityGroup.md)
-Creates or updates a network security group in the specified resource group.
-
 ### [Set-AzNetworkSecurityRule](Set-AzNetworkSecurityRule.md)
 Creates or updates a security rule in the specified network security group.
+
+### [Set-AzNsg](Set-AzNsg.md)
+Creates or updates a network security group in the specified resource group.
 
 ### [Set-AzPublicIPAddress](Set-AzPublicIPAddress.md)
 Creates or updates a static or dynamic public IP address.

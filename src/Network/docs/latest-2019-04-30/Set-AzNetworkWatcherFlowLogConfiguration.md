@@ -15,20 +15,18 @@ Configures flow log  and traffic analytics (optional) on a specified resource.
 ### Set (Default)
 ```
 Set-AzNetworkWatcherFlowLogConfiguration -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-Parameter <IFlowLogInformation>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -SubscriptionId <String> [-Parameter <IFlowLogInformation>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### SetExpanded
 ```
 Set-AzNetworkWatcherFlowLogConfiguration -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -Enabled -NetworkWatcherFlowAnalyticConfigurationEnabled
- -NetworkWatcherFlowAnalyticConfigurationWorkspaceId <String>
- -NetworkWatcherFlowAnalyticConfigurationWorkspaceRegion <String>
- -NetworkWatcherFlowAnalyticConfigurationWorkspaceResourceId <String> -StorageId <String>
- -TargetResourceId <String> [-FormatType <FlowLogFormatType>] [-FormatVersion <Int32>]
- [-NetworkWatcherFlowAnalyticConfigurationTrafficAnalyticsInterval <Int32>] [-RetentionPolicyDay <Int32>]
- [-RetentionPolicyEnabled] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -SubscriptionId <String> -EnableFlowLog -EnableTrafficAnalytics -StorageAccountId <String>
+ -TargetResourceId <String> -WorkspaceGuid <String> -WorkspaceLocation <String> -WorkspaceResourceId <String>
+ [-EnableRetention] [-FormatType <FlowLogFormatType>] [-FormatVersion <Int32>] [-RetentionInDays <Int32>]
+ [-TrafficAnalyticsInterval <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -88,8 +86,40 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Enabled
+### -EnableFlowLog
 Flag to enable/disable flow logging.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: SetExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -EnableRetention
+Flag to enable/disable retention.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: SetExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -EnableTrafficAnalytics
+Flag to enable/disable traffic analytics.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -136,86 +166,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -NetworkWatcherFlowAnalyticConfigurationEnabled
-Flag to enable/disable traffic analytics.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: SetExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -NetworkWatcherFlowAnalyticConfigurationTrafficAnalyticsInterval
-The interval in minutes which would decide how frequently TA service should do flow analytics
-
-```yaml
-Type: System.Int32
-Parameter Sets: SetExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -NetworkWatcherFlowAnalyticConfigurationWorkspaceId
-The resource guid of the attached workspace
-
-```yaml
-Type: System.String
-Parameter Sets: SetExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -NetworkWatcherFlowAnalyticConfigurationWorkspaceRegion
-The location of the attached workspace
-
-```yaml
-Type: System.String
-Parameter Sets: SetExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -NetworkWatcherFlowAnalyticConfigurationWorkspaceResourceId
-Resource Id of the attached workspace
-
-```yaml
-Type: System.String
-Parameter Sets: SetExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -NetworkWatcherName
 The name of the network watcher resource.
 
@@ -232,8 +182,25 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Parameter
 Information on the configuration of flow log and traffic analytics (optional) .
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IFlowLogInformation
@@ -254,7 +221,7 @@ The name of the network watcher resource group.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: Location
+Aliases: Location, Workspace
 
 Required: True
 Position: Named
@@ -264,7 +231,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -RetentionPolicyDay
+### -RetentionInDays
 Number of days to retain flow log records.
 
 ```yaml
@@ -280,23 +247,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -RetentionPolicyEnabled
-Flag to enable/disable retention.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: SetExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -StorageId
+### -StorageAccountId
 ID of the storage account which is used to store the flow log.
 
 ```yaml
@@ -331,6 +282,70 @@ Dynamic: False
 
 ### -TargetResourceId
 The ID of the resource to configure for flow log and traffic analytics (optional) .
+
+```yaml
+Type: System.String
+Parameter Sets: SetExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -TrafficAnalyticsInterval
+The interval in minutes which would decide how frequently TA service should do flow analytics
+
+```yaml
+Type: System.Int32
+Parameter Sets: SetExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -WorkspaceGuid
+The resource guid of the attached workspace
+
+```yaml
+Type: System.String
+Parameter Sets: SetExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -WorkspaceLocation
+The location of the attached workspace
+
+```yaml
+Type: System.String
+Parameter Sets: SetExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -WorkspaceResourceId
+Resource Id of the attached workspace
 
 ```yaml
 Type: System.String
@@ -392,6 +407,25 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### Set-AzNetworkWatcherConfigFlowLog
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <IFlowLogInformation>: Information on the configuration of flow log and traffic analytics (optional) .
+  - `Enabled <Boolean>`: Flag to enable/disable flow logging.
+  - `NetworkWatcherFlowAnalyticConfigurationEnabled <Boolean>`: Flag to enable/disable traffic analytics.
+  - `NetworkWatcherFlowAnalyticConfigurationWorkspaceId <String>`: The resource guid of the attached workspace
+  - `NetworkWatcherFlowAnalyticConfigurationWorkspaceRegion <String>`: The location of the attached workspace
+  - `NetworkWatcherFlowAnalyticConfigurationWorkspaceResourceId <String>`: Resource Id of the attached workspace 
+  - `StorageId <String>`: ID of the storage account which is used to store the flow log.
+  - `TargetResourceId <String>`: The ID of the resource to configure for flow log and traffic analytics (optional) .
+  - `[FormatType <FlowLogFormatType?>]`: The file type of flow log.
+  - `[FormatVersion <Int32?>]`: The version (revision) of the flow log.
+  - `[NetworkWatcherFlowAnalyticConfigurationTrafficAnalyticsInterval <Int32?>]`: The interval in minutes which would decide how frequently TA service should do flow analytics
+  - `[RetentionPolicyDay <Int32?>]`: Number of days to retain flow log records.
+  - `[RetentionPolicyEnabled <Boolean?>]`: Flag to enable/disable retention.
 
 ## RELATED LINKS
 

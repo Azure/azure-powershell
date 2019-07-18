@@ -15,14 +15,14 @@ Resets the VPN client shared key of the virtual network gateway in the specified
 ### Reset (Default)
 ```
 Reset-AzVnetGatewayVpnClientSharedKey -ResourceGroupName <String> -SubscriptionId <String>
- -VnetGatewayName <String> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ -VnetGatewayName <String> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### ResetViaIdentity
 ```
 Reset-AzVnetGatewayVpnClientSharedKey -InputObject <INetworkIdentity> [-PassThru] [-DefaultProfile <PSObject>]
- [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -94,6 +94,22 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -210,6 +226,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### Reset-AzVirtualNetworkGatewayVpnClientSharedKey
+
+## NOTES
 
 ## RELATED LINKS
 

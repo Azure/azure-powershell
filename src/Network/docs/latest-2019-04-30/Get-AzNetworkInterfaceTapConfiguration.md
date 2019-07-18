@@ -167,5 +167,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Get-AzNetworkInterfaceTapConfig
 
+## NOTES
+
 ## RELATED LINKS
 

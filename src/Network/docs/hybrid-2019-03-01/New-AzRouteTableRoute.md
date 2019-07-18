@@ -15,15 +15,16 @@ Creates or updates a route in the specified route table.
 ### Create1 (Default)
 ```
 New-AzRouteTableRoute -ResourceGroupName <String> -SubscriptionId <String> -TableName <String>
- [-Name <String>] [-RouteParameter <IRoute>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-Name <String>] [-RouteParameter <IRoute>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded1
 ```
 New-AzRouteTableRoute -InputObject <INetworkIdentity> -NextHopType <RouteNextHopType> [-Name <String>]
  [-AddressPrefix <String>] [-Etag <String>] [-Id <String>] [-NextHopIPAddress <String>]
- [-ProvisioningState <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ProvisioningState <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateExpanded1
@@ -31,13 +32,13 @@ New-AzRouteTableRoute -InputObject <INetworkIdentity> -NextHopType <RouteNextHop
 New-AzRouteTableRoute -ResourceGroupName <String> -SubscriptionId <String> -TableName <String>
  -RouteName <String> -NextHopType <RouteNextHopType> [-Name <String>] [-AddressPrefix <String>]
  [-Etag <String>] [-Id <String>] [-NextHopIPAddress <String>] [-ProvisioningState <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity1
 ```
 New-AzRouteTableRoute -InputObject <INetworkIdentity> [-RouteParameter <IRoute>] [-DefaultProfile <PSObject>]
- [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -210,6 +211,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -ProvisioningState
 The provisioning state of the resource.
 Possible values are: 'Updating', 'Deleting', and 'Failed'.
@@ -261,6 +278,7 @@ Dynamic: False
 
 ### -RouteParameter
 Route resource
+To construct, see NOTES section for ROUTEPARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRoute
@@ -355,6 +373,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRoute
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### ROUTEPARAMETER <IRoute>: Route resource
+  - `NextHopType <RouteNextHopType>`: The type of Azure hop the packet should be sent to.
+  - `[Id <String>]`: Resource ID.
+  - `[AddressPrefix <String>]`: The destination CIDR to which the route applies.
+  - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+  - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
+  - `[NextHopIPAddress <String>]`: The IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is VirtualAppliance.
+  - `[ProvisioningState <String>]`: The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
 
 ## RELATED LINKS
 

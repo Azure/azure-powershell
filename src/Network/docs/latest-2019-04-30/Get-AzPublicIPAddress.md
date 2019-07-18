@@ -258,5 +258,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Get-AzPublicIPAddressVirtualMachineScaleSetVmpublicIPAddress
 
+## NOTES
+
 ## RELATED LINKS
 

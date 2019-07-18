@@ -156,5 +156,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Get-AzApplicationGatewayFirewallPolicy
 
+## NOTES
+
 ## RELATED LINKS
 

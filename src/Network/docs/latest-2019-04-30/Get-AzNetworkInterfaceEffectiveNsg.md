@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-aznetworkinterfaceeffectivenetworksecuritygroup
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-aznetworkinterfaceeffectivensg
 schema: 2.0.0
 ---
 
-# Get-AzNetworkInterfaceEffectiveNetworkSecurityGroup
+# Get-AzNetworkInterfaceEffectiveNsg
 
 ## SYNOPSIS
 Gets all network security groups applied to a network interface.
@@ -13,8 +13,9 @@ Gets all network security groups applied to a network interface.
 ## SYNTAX
 
 ```
-Get-AzNetworkInterfaceEffectiveNetworkSecurityGroup -NetworkInterfaceName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzNetworkInterfaceEffectiveNsg -NetworkInterfaceName <String> -ResourceGroupName <String>
+ -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -85,6 +86,22 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -168,6 +185,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### Get-AzEffectiveNetworkSecurityGroup
+
+### Get-AzNetworkInterfaceEffectiveNetworkSecurityGroup
+
+## NOTES
 
 ## RELATED LINKS
 

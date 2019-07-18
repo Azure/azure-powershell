@@ -169,10 +169,6 @@ directive:
     set:
       parameter-name: ObjectId
   - where:
-      parameter-name: Filter
-    set:
-      alias: ODataQuery
-  - where:
       subject: Resource
       parameter-name: GroupName
     set:
@@ -223,8 +219,21 @@ directive:
   - where:
       verb: Get
       subject: ResourceLink
-      variant: ^List1$
-    remove: true
+      variant: List
+      parameter-name: Filter
+    set:
+      parameter-name: FilterById
+  - where:
+      verb: Get
+      subject: ResourceLink
+      variant: List1
+      parameter-name: Filter
+    set:
+      parameter-name: FilterByScope
+  - where:
+      parameter-name: Filter
+    set:
+      alias: ODataQuery
   - where:
       verb: Test
       subject: ResourceGroupExistence

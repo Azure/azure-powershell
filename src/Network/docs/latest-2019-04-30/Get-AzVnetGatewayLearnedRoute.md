@@ -15,13 +15,13 @@ This operation retrieves a list of routes the virtual network gateway has learne
 ### Get (Default)
 ```
 Get-AzVnetGatewayLearnedRoute -ResourceGroupName <String> -SubscriptionId <String[]> -VnetGatewayName <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzVnetGatewayLearnedRoute -InputObject <INetworkIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Get-AzVnetGatewayLearnedRoute -InputObject <INetworkIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -93,6 +93,22 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -193,6 +209,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### Get-AzVirtualNetworkGatewayLearnedRoute
+
+## NOTES
 
 ## RELATED LINKS
 

@@ -15,7 +15,8 @@ Creates or updates the specified Azure Firewall.
 ### Create (Default)
 ```
 New-AzFirewall -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <IAzureFirewall>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Parameter <IAzureFirewall>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateExpanded
@@ -24,9 +25,9 @@ New-AzFirewall -Name <String> -ResourceGroupName <String> -SubscriptionId <Strin
  [-ApplicationRuleCollection <IAzureFirewallApplicationRuleCollection[]>]
  [-IPConfiguration <IAzureFirewallIPConfiguration[]>] [-Id <String>] [-Location <String>]
  [-NatRuleCollection <IAzureFirewallNatRuleCollection[]>]
- [-NetworkRuleCollection <IAzureFirewallNetworkRuleCollection[]>] [-Tag <IResourceTags>]
- [-ThreatIntelMode <AzureFirewallThreatIntelMode>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-NetworkRuleCollection <IAzureFirewallNetworkRuleCollection[]>] [-Tag <Hashtable>]
+ [-ThreatIntelMode <AzureFirewallThreatIntelMode>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -35,15 +36,15 @@ New-AzFirewall -InputObject <INetworkIdentity>
  [-ApplicationRuleCollection <IAzureFirewallApplicationRuleCollection[]>]
  [-IPConfiguration <IAzureFirewallIPConfiguration[]>] [-Id <String>] [-Location <String>]
  [-NatRuleCollection <IAzureFirewallNatRuleCollection[]>]
- [-NetworkRuleCollection <IAzureFirewallNetworkRuleCollection[]>] [-Tag <IResourceTags>]
- [-ThreatIntelMode <AzureFirewallThreatIntelMode>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-NetworkRuleCollection <IAzureFirewallNetworkRuleCollection[]>] [-Tag <Hashtable>]
+ [-ThreatIntelMode <AzureFirewallThreatIntelMode>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
 New-AzFirewall -InputObject <INetworkIdentity> [-Parameter <IAzureFirewall>] [-DefaultProfile <PSObject>]
- [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,6 +74,7 @@ PS C:\> {{ Add code here }}
 
 ### -ApplicationRuleCollection
 Collection of application rule collections used by Azure Firewall.
+To construct, see NOTES section for APPLICATIONRULECOLLECTION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IAzureFirewallApplicationRuleCollection[]
@@ -153,6 +155,7 @@ Dynamic: False
 
 ### -IPConfiguration
 IP configuration of the Azure Firewall resource.
+To construct, see NOTES section for IPCONFIGURATION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IAzureFirewallIPConfiguration[]
@@ -201,6 +204,7 @@ Dynamic: False
 
 ### -NatRuleCollection
 Collection of NAT rule collections used by Azure Firewall.
+To construct, see NOTES section for NATRULECOLLECTION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IAzureFirewallNatRuleCollection[]
@@ -217,6 +221,7 @@ Dynamic: False
 
 ### -NetworkRuleCollection
 Collection of network rule collections used by Azure Firewall.
+To construct, see NOTES section for NETWORKRULECOLLECTION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IAzureFirewallNetworkRuleCollection[]
@@ -231,8 +236,25 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Parameter
 Azure Firewall resource
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IAzureFirewall
@@ -284,7 +306,7 @@ Dynamic: False
 Resource tags.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceTags
+Type: System.Collections.Hashtable
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -359,6 +381,112 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IAzureFirewall
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### APPLICATIONRULECOLLECTION <IAzureFirewallApplicationRuleCollection[]>: Collection of application rule collections used by Azure Firewall.
+  - `[Id <String>]`: Resource ID.
+  - `[ActionType <AzureFirewallRcActionType?>]`: The type of action.
+  - `[Name <String>]`: Gets name of the resource that is unique within a resource group. This name can be used to access the resource.
+  - `[Priority <Int32?>]`: Priority of the application rule collection resource.
+  - `[Rule <IAzureFirewallApplicationRule[]>]`: Collection of rules used by a application rule collection.
+    - `[Description <String>]`: Description of the rule.
+    - `[FqdnTag <String[]>]`: List of FQDN Tags for this rule.
+    - `[Name <String>]`: Name of the application rule.
+    - `[Protocol <IAzureFirewallApplicationRuleProtocol[]>]`: Array of ApplicationRuleProtocols.
+      - `[Port <Int32?>]`: Port number for the protocol, cannot be greater than 64000. This field is optional.
+      - `[ProtocolType <AzureFirewallApplicationRuleProtocolType?>]`: Protocol type
+    - `[SourceAddress <String[]>]`: List of source IP addresses for this rule.
+    - `[TargetFqdn <String[]>]`: List of FQDNs for this rule.
+
+#### IPCONFIGURATION <IAzureFirewallIPConfiguration[]>: IP configuration of the Azure Firewall resource.
+  - `[Id <String>]`: Resource ID.
+  - `[Name <String>]`: Name of the resource that is unique within a resource group. This name can be used to access the resource.
+  - `[PublicIPAddressId <String>]`: Resource ID.
+  - `[SubnetId <String>]`: Resource ID.
+
+#### NATRULECOLLECTION <IAzureFirewallNatRuleCollection[]>: Collection of NAT rule collections used by Azure Firewall.
+  - `[Id <String>]`: Resource ID.
+  - `[ActionType <AzureFirewallNatRcActionType?>]`: The type of action.
+  - `[Name <String>]`: Gets name of the resource that is unique within a resource group. This name can be used to access the resource.
+  - `[Priority <Int32?>]`: Priority of the NAT rule collection resource.
+  - `[Rule <IAzureFirewallNatRule[]>]`: Collection of rules used by a NAT rule collection.
+    - `[Description <String>]`: Description of the rule.
+    - `[DestinationAddress <String[]>]`: List of destination IP addresses for this rule. Supports IP ranges, prefixes, and service tags.
+    - `[DestinationPort <String[]>]`: List of destination ports.
+    - `[Name <String>]`: Name of the NAT rule.
+    - `[Protocol <AzureFirewallNetworkRuleProtocol[]>]`: Array of AzureFirewallNetworkRuleProtocols applicable to this NAT rule.
+    - `[SourceAddress <String[]>]`: List of source IP addresses for this rule.
+    - `[TranslatedAddress <String>]`: The translated address for this NAT rule.
+    - `[TranslatedPort <String>]`: The translated port for this NAT rule.
+
+#### NETWORKRULECOLLECTION <IAzureFirewallNetworkRuleCollection[]>: Collection of network rule collections used by Azure Firewall.
+  - `[Id <String>]`: Resource ID.
+  - `[ActionType <AzureFirewallRcActionType?>]`: The type of action.
+  - `[Name <String>]`: Gets name of the resource that is unique within a resource group. This name can be used to access the resource.
+  - `[Priority <Int32?>]`: Priority of the network rule collection resource.
+  - `[Rule <IAzureFirewallNetworkRule[]>]`: Collection of rules used by a network rule collection.
+    - `[Description <String>]`: Description of the rule.
+    - `[DestinationAddress <String[]>]`: List of destination IP addresses.
+    - `[DestinationPort <String[]>]`: List of destination ports.
+    - `[Name <String>]`: Name of the network rule.
+    - `[Protocol <AzureFirewallNetworkRuleProtocol[]>]`: Array of AzureFirewallNetworkRuleProtocols.
+    - `[SourceAddress <String[]>]`: List of source IP addresses for this rule.
+
+#### PARAMETER <IAzureFirewall>: Azure Firewall resource
+  - `[Id <String>]`: Resource ID.
+  - `[Location <String>]`: Resource location.
+  - `[Tag <IResourceTags>]`: Resource tags.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
+  - `[ApplicationRuleCollection <IAzureFirewallApplicationRuleCollection[]>]`: Collection of application rule collections used by Azure Firewall.
+    - `[Id <String>]`: Resource ID.
+    - `[ActionType <AzureFirewallRcActionType?>]`: The type of action.
+    - `[Name <String>]`: Gets name of the resource that is unique within a resource group. This name can be used to access the resource.
+    - `[Priority <Int32?>]`: Priority of the application rule collection resource.
+    - `[Rule <IAzureFirewallApplicationRule[]>]`: Collection of rules used by a application rule collection.
+      - `[Description <String>]`: Description of the rule.
+      - `[FqdnTag <String[]>]`: List of FQDN Tags for this rule.
+      - `[Name <String>]`: Name of the application rule.
+      - `[Protocol <IAzureFirewallApplicationRuleProtocol[]>]`: Array of ApplicationRuleProtocols.
+        - `[Port <Int32?>]`: Port number for the protocol, cannot be greater than 64000. This field is optional.
+        - `[ProtocolType <AzureFirewallApplicationRuleProtocolType?>]`: Protocol type
+      - `[SourceAddress <String[]>]`: List of source IP addresses for this rule.
+      - `[TargetFqdn <String[]>]`: List of FQDNs for this rule.
+  - `[IPConfiguration <IAzureFirewallIPConfiguration[]>]`: IP configuration of the Azure Firewall resource.
+    - `[Id <String>]`: Resource ID.
+    - `[Name <String>]`: Name of the resource that is unique within a resource group. This name can be used to access the resource.
+    - `[PublicIPAddressId <String>]`: Resource ID.
+    - `[SubnetId <String>]`: Resource ID.
+  - `[NatRuleCollection <IAzureFirewallNatRuleCollection[]>]`: Collection of NAT rule collections used by Azure Firewall.
+    - `[Id <String>]`: Resource ID.
+    - `[ActionType <AzureFirewallNatRcActionType?>]`: The type of action.
+    - `[Name <String>]`: Gets name of the resource that is unique within a resource group. This name can be used to access the resource.
+    - `[Priority <Int32?>]`: Priority of the NAT rule collection resource.
+    - `[Rule <IAzureFirewallNatRule[]>]`: Collection of rules used by a NAT rule collection.
+      - `[Description <String>]`: Description of the rule.
+      - `[DestinationAddress <String[]>]`: List of destination IP addresses for this rule. Supports IP ranges, prefixes, and service tags.
+      - `[DestinationPort <String[]>]`: List of destination ports.
+      - `[Name <String>]`: Name of the NAT rule.
+      - `[Protocol <AzureFirewallNetworkRuleProtocol[]>]`: Array of AzureFirewallNetworkRuleProtocols applicable to this NAT rule.
+      - `[SourceAddress <String[]>]`: List of source IP addresses for this rule.
+      - `[TranslatedAddress <String>]`: The translated address for this NAT rule.
+      - `[TranslatedPort <String>]`: The translated port for this NAT rule.
+  - `[NetworkRuleCollection <IAzureFirewallNetworkRuleCollection[]>]`: Collection of network rule collections used by Azure Firewall.
+    - `[Id <String>]`: Resource ID.
+    - `[ActionType <AzureFirewallRcActionType?>]`: The type of action.
+    - `[Name <String>]`: Gets name of the resource that is unique within a resource group. This name can be used to access the resource.
+    - `[Priority <Int32?>]`: Priority of the network rule collection resource.
+    - `[Rule <IAzureFirewallNetworkRule[]>]`: Collection of rules used by a network rule collection.
+      - `[Description <String>]`: Description of the rule.
+      - `[DestinationAddress <String[]>]`: List of destination IP addresses.
+      - `[DestinationPort <String[]>]`: List of destination ports.
+      - `[Name <String>]`: Name of the network rule.
+      - `[Protocol <AzureFirewallNetworkRuleProtocol[]>]`: Array of AzureFirewallNetworkRuleProtocols.
+      - `[SourceAddress <String[]>]`: List of source IP addresses for this rule.
+  - `[ThreatIntelMode <AzureFirewallThreatIntelMode?>]`: The operation mode for Threat Intelligence.
 
 ## RELATED LINKS
 

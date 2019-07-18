@@ -95,6 +95,7 @@ Dynamic: False
 
 ### -Parameter
 Represents the properties of the Dns Resource Reference Request.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20180501.IDnsResourceReferenceRequest
@@ -127,6 +128,7 @@ Dynamic: False
 
 ### -TargetResource
 A list of references to azure resources for which referencing dns records need to be queried.
+To construct, see NOTES section for TARGETRESOURCE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20180301Preview.ISubResource[]
@@ -179,15 +181,27 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20180501.IDnsResourceReferenceRequest
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20180501.IDnsResourceReferenceRequest
 
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20180501.IDnsResourceReferenceResultProperties
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <IDnsResourceReferenceRequest>: Represents the properties of the Dns Resource Reference Request.
+  - `[TargetResource <ISubResource[]>]`: A list of references to azure resources for which referencing dns records need to be queried.
+    - `[Id <String>]`: Resource Id.
+
+#### TARGETRESOURCE <ISubResource[]>: A list of references to azure resources for which referencing dns records need to be queried.
+  - `[Id <String>]`: Resource Id.
 
 ## RELATED LINKS
 

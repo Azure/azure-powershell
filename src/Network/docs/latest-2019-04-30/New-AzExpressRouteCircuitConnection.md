@@ -17,7 +17,7 @@ Creates or updates a Express Route Circuit Connection in the specified express r
 New-AzExpressRouteCircuitConnection -CircuitName <String> -ConnectionName <String> -PeeringName <String>
  -ResourceGroupName <String> -SubscriptionId <String>
  [-ExpressRouteCircuitConnectionParameter <IExpressRouteCircuitConnection>] [-DefaultProfile <PSObject>]
- [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpanded
@@ -25,23 +25,23 @@ New-AzExpressRouteCircuitConnection -CircuitName <String> -ConnectionName <Strin
 New-AzExpressRouteCircuitConnection -CircuitName <String> -ConnectionName <String> -PeeringName <String>
  -ResourceGroupName <String> -SubscriptionId <String> [-AddressPrefix <String>] [-AuthorizationKey <String>]
  [-ExpressRouteCircuitPeeringId <String>] [-Id <String>] [-Name <String>]
- [-PeerExpressRouteCircuitPeeringId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-PeerExpressRouteCircuitPeeringId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzExpressRouteCircuitConnection -InputObject <INetworkIdentity> [-AddressPrefix <String>]
  [-AuthorizationKey <String>] [-ExpressRouteCircuitPeeringId <String>] [-Id <String>] [-Name <String>]
- [-PeerExpressRouteCircuitPeeringId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-PeerExpressRouteCircuitPeeringId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
 New-AzExpressRouteCircuitConnection -InputObject <INetworkIdentity>
  [-ExpressRouteCircuitConnectionParameter <IExpressRouteCircuitConnection>] [-DefaultProfile <PSObject>]
- [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -167,6 +167,7 @@ Dynamic: False
 
 ### -ExpressRouteCircuitConnectionParameter
 Express Route Circuit Connection in an ExpressRouteCircuitPeering resource.
+To construct, see NOTES section for EXPRESSROUTECIRCUITCONNECTIONPARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRouteCircuitConnection
@@ -241,6 +242,22 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -358,6 +375,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRouteCircuitConnection
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### EXPRESSROUTECIRCUITCONNECTIONPARAMETER <IExpressRouteCircuitConnection>: Express Route Circuit Connection in an ExpressRouteCircuitPeering resource.
+  - `[Id <String>]`: Resource ID.
+  - `[AddressPrefix <String>]`: /29 IP address space to carve out Customer addresses for tunnels.
+  - `[AuthorizationKey <String>]`: The authorization key.
+  - `[ExpressRouteCircuitPeeringId <String>]`: Resource ID.
+  - `[Name <String>]`: Gets name of the resource that is unique within a resource group. This name can be used to access the resource.
+  - `[PeerExpressRouteCircuitPeeringId <String>]`: Resource ID.
 
 ## RELATED LINKS
 

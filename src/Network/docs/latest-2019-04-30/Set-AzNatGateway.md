@@ -15,7 +15,8 @@ Creates or updates a nat gateway.
 ### Update (Default)
 ```
 Set-AzNatGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <INatGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Parameter <INatGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateExpanded
@@ -23,7 +24,7 @@ Set-AzNatGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <Str
 Set-AzNatGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-Etag <String>]
  [-Id <String>] [-IdleTimeoutInMinutes <Int32>] [-Location <String>] [-ProvisioningState <String>]
  [-PublicIPAddress <ISubResource[]>] [-PublicIPPrefix <ISubResource[]>] [-ResourceGuid <String>]
- [-SkuName <NatGatewaySkuName>] [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
+ [-SkuName <NatGatewaySkuName>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -164,8 +165,25 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Parameter
 Nat Gateway resource.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INatGateway
@@ -199,6 +217,7 @@ Dynamic: False
 
 ### -PublicIPAddress
 An array of public ip addresses associated with the nat gateway resource.
+To construct, see NOTES section for PUBLICIPADDRESS properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ISubResource[]
@@ -215,6 +234,7 @@ Dynamic: False
 
 ### -PublicIPPrefix
 An array of public ip prefixes associated with the nat gateway resource.
+To construct, see NOTES section for PUBLICIPPREFIX properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ISubResource[]
@@ -298,7 +318,7 @@ Dynamic: False
 Resource tags.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceTags
+Type: System.Collections.Hashtable
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -355,6 +375,31 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INatGateway
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <INatGateway>: Nat Gateway resource.
+  - `[Id <String>]`: Resource ID.
+  - `[Location <String>]`: Resource location.
+  - `[Tag <IResourceTags>]`: Resource tags.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
+  - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+  - `[IdleTimeoutInMinute <Int32?>]`: The idle timeout of the nat gateway.
+  - `[ProvisioningState <String>]`: The provisioning state of the NatGateway resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+  - `[PublicIPAddress <ISubResource[]>]`: An array of public ip addresses associated with the nat gateway resource.
+    - `[Id <String>]`: Resource ID.
+  - `[PublicIPPrefix <ISubResource[]>]`: An array of public ip prefixes associated with the nat gateway resource.
+  - `[ResourceGuid <String>]`: The resource GUID property of the nat gateway resource.
+  - `[SkuName <NatGatewaySkuName?>]`: Name of Nat Gateway SKU.
+
+#### PUBLICIPADDRESS <ISubResource[]>: An array of public ip addresses associated with the nat gateway resource.
+  - `[Id <String>]`: Resource ID.
+
+#### PUBLICIPPREFIX <ISubResource[]>: An array of public ip prefixes associated with the nat gateway resource.
+  - `[Id <String>]`: Resource ID.
 
 ## RELATED LINKS
 

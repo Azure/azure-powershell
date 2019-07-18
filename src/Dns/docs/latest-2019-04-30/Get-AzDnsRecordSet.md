@@ -117,7 +117,7 @@ Dynamic: False
 ```
 
 ### -RecordType
-The type of record sets to enumerate.
+The type of DNS record in this record set.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.RecordType
@@ -225,6 +225,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20180501.IRecordSet
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

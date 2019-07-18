@@ -15,13 +15,13 @@ The Get VpnclientIpsecParameters operation retrieves information about the vpncl
 ### Get (Default)
 ```
 Get-AzVnetGatewayVpnClientIPsecParameter -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzVnetGatewayVpnClientIPsecParameter -InputObject <INetworkIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -113,6 +113,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
@@ -195,6 +211,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Get-AzVpnClientIpsecParameter
 
 ### Get-AzVirtualNetworkGatewayVpnClientIPsecParameter
+
+## NOTES
 
 ## RELATED LINKS
 

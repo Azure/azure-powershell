@@ -155,5 +155,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Get-AzVirtualNetworkTap
 
+## NOTES
+
 ## RELATED LINKS
 

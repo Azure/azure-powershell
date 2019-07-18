@@ -15,7 +15,7 @@ Creates or updates the specified ExpressRoutePort resource.
 ### Update (Default)
 ```
 Set-AzExpressRoutePort -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <IExpressRoutePort>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [-Parameter <IExpressRoutePort>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Set-AzExpressRoutePort -Name <String> -ResourceGroupName <String> -SubscriptionI
 Set-AzExpressRoutePort -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-BandwidthInGbps <Int32>] [-Encapsulation <ExpressRoutePortsEncapsulation>] [-Id <String>]
  [-Link <IExpressRouteLink[]>] [-Location <String>] [-PeeringLocation <String>] [-ResourceGuid <String>]
- [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -134,6 +134,7 @@ Dynamic: False
 
 ### -Link
 The set of physical links of the ExpressRoutePort resource
+To construct, see NOTES section for LINK properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRouteLink[]
@@ -180,8 +181,25 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Parameter
 ExpressRoutePort resource definition.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRoutePort
@@ -218,7 +236,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: ExpressRoutePort
 
 Required: True
 Position: Named
@@ -265,7 +283,7 @@ Dynamic: False
 Resource tags.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceTags
+Type: System.Collections.Hashtable
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -322,6 +340,30 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRoutePort
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### LINK <IExpressRouteLink[]>: The set of physical links of the ExpressRoutePort resource
+  - `[Id <String>]`: Resource ID.
+  - `[AdminState <ExpressRouteLinkAdminState?>]`: Administrative state of the physical port
+  - `[Name <String>]`: Name of child port resource that is unique among child port resources of the parent.
+
+#### PARAMETER <IExpressRoutePort>: ExpressRoutePort resource definition.
+  - `[Id <String>]`: Resource ID.
+  - `[Location <String>]`: Resource location.
+  - `[Tag <IResourceTags>]`: Resource tags.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
+  - `[BandwidthInGbps <Int32?>]`: Bandwidth of procured ports in Gbps
+  - `[Encapsulation <ExpressRoutePortsEncapsulation?>]`: Encapsulation method on physical ports.
+  - `[Link <IExpressRouteLink[]>]`: The set of physical links of the ExpressRoutePort resource
+    - `[Id <String>]`: Resource ID.
+    - `[AdminState <ExpressRouteLinkAdminState?>]`: Administrative state of the physical port
+    - `[Name <String>]`: Name of child port resource that is unique among child port resources of the parent.
+  - `[PeeringLocation <String>]`: The name of the peering location that the ExpressRoutePort is mapped to physically.
+  - `[ResourceGuid <String>]`: The resource GUID property of the ExpressRoutePort resource.
 
 ## RELATED LINKS
 

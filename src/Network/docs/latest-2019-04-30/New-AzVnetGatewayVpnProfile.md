@@ -135,6 +135,7 @@ Dynamic: False
 
 ### -Parameter
 Vpn Client Parameters for package generation
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVpnClientParameters
@@ -297,6 +298,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### New-AzVirtualNetworkGatewayVpnProfile
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <IVpnClientParameters>: Vpn Client Parameters for package generation
+  - `[AuthenticationMethod <AuthenticationMethod?>]`: VPN client authentication method.
+  - `[ClientRootCertificate <String[]>]`: A list of client root certificates public certificate data encoded as Base-64 strings. Optional parameter for external radius based authentication with EAPTLS.
+  - `[ProcessorArchitecture <ProcessorArchitecture?>]`: VPN client Processor Architecture. Possible values are: 'AMD64' and 'X86'.
+  - `[RadiusServerAuthCertificate <String>]`: The public certificate data for the radius server authentication certificate as a Base-64 encoded string. Required only if external radius authentication has been configured with EAPTLS authentication.
 
 ## RELATED LINKS
 

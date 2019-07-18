@@ -17,14 +17,14 @@ Creates or updates a service endpoint policy definition in the specified service
 New-AzServiceEndpointPolicyDefinition -ResourceGroupName <String> -ServiceEndpointPolicyName <String>
  -SubscriptionId <String> [-Name <String>]
  [-ServiceEndpointPolicyDefinition <IServiceEndpointPolicyDefinition>] [-DefaultProfile <PSObject>] [-AsJob]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzServiceEndpointPolicyDefinition -InputObject <INetworkIdentity> [-Name <String>] [-Description <String>]
  [-Etag <String>] [-Id <String>] [-Service <String>] [-ServiceResource <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpanded
@@ -32,14 +32,14 @@ New-AzServiceEndpointPolicyDefinition -InputObject <INetworkIdentity> [-Name <St
 New-AzServiceEndpointPolicyDefinition -ResourceGroupName <String> -ServiceEndpointPolicyName <String>
  -SubscriptionId <String> -ServiceEndpointPolicyDefinitionName <String> [-Name <String>]
  [-Description <String>] [-Etag <String>] [-Id <String>] [-Service <String>] [-ServiceResource <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
 New-AzServiceEndpointPolicyDefinition -InputObject <INetworkIdentity>
  [-ServiceEndpointPolicyDefinition <IServiceEndpointPolicyDefinition>] [-DefaultProfile <PSObject>] [-AsJob]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -180,6 +180,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
@@ -214,6 +230,7 @@ Dynamic: False
 
 ### -ServiceEndpointPolicyDefinition
 Service Endpoint policy definitions.
+To construct, see NOTES section for SERVICEENDPOINTPOLICYDEFINITION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IServiceEndpointPolicyDefinition
@@ -340,6 +357,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IServiceEndpointPolicyDefinition
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### SERVICEENDPOINTPOLICYDEFINITION <IServiceEndpointPolicyDefinition>: Service Endpoint policy definitions.
+  - `[Id <String>]`: Resource ID.
+  - `[Description <String>]`: A description for this rule. Restricted to 140 chars.
+  - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+  - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
+  - `[Service <String>]`: Service endpoint name.
+  - `[ServiceResource <String[]>]`: A list of service resources.
 
 ## RELATED LINKS
 

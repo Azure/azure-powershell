@@ -15,24 +15,22 @@ Creates or updates a virtual network gateway in the specified resource group.
 ### Update1 (Default)
 ```
 Set-AzVnetGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <IVirtualNetworkGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [-Parameter <IVirtualNetworkGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### UpdateExpanded1
 ```
-Set-AzVnetGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-Active]
- [-BgpSettingAsn <Int64>] [-BgpSettingBgpPeeringAddress <String>] [-BgpSettingPeerWeight <Int32>] [-EnableBgp]
- [-Etag <String>] [-GatewayDefaultSiteId <String>] [-GatewayType <VirtualNetworkGatewayType>]
+Set-AzVnetGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-BgpAsn <Int64>]
+ [-BgpPeerWeight <Int32>] [-BgpPeeringAddress <String>] [-EnableActiveActive] [-EnableBgp] [-Etag <String>]
+ [-GatewayDefaultSiteId <String>] [-GatewayType <VirtualNetworkGatewayType>]
  [-IPConfiguration <IVirtualNetworkGatewayIPConfiguration[]>] [-Id <String>] [-Location <String>]
  [-ResourceGuid <String>] [-SkuCapacity <Int32>] [-SkuName <VirtualNetworkGatewaySkuName>]
- [-SkuTier <VirtualNetworkGatewaySkuTier>] [-Tag <IResourceTags>]
- [-VpnClientAddressPoolAddressPrefix <String[]>] [-VpnClientConfigurationRadiusServerAddress <String>]
- [-VpnClientConfigurationRadiusServerSecret <String>]
- [-VpnClientConfigurationVpnClientProtocol <VpnClientProtocol[]>]
- [-VpnClientConfigurationVpnClientRevokedCertificate <IVpnClientRevokedCertificate[]>]
- [-VpnClientConfigurationVpnClientRootCertificate <IVpnClientRootCertificate[]>] [-VpnType <VpnType>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SkuTier <VirtualNetworkGatewaySkuTier>] [-Tag <Hashtable>] [-VpnClientAddressPrefix <String[]>]
+ [-VpnClientProtocol <VpnClientProtocol[]>] [-VpnClientRadiusServerAddress <String>]
+ [-VpnClientRadiusServerSecret <String>] [-VpnClientRevokedCertificate <IVpnClientRevokedCertificate[]>]
+ [-VpnClientRootCertificate <IVpnClientRootCertificate[]>] [-VpnType <VpnType>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,22 +58,6 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -Active
-ActiveActive flag
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -AsJob
 Run the command as a job
 
@@ -92,13 +74,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -BgpSettingAsn
+### -BgpAsn
 The BGP speaker's ASN.
 
 ```yaml
 Type: System.Int64
 Parameter Sets: UpdateExpanded1
-Aliases:
+Aliases: Asn
 
 Required: False
 Position: Named
@@ -108,7 +90,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -BgpSettingBgpPeeringAddress
+### -BgpPeeringAddress
 The BGP peering address and BGP identifier of this BGP speaker.
 
 ```yaml
@@ -124,13 +106,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -BgpSettingPeerWeight
+### -BgpPeerWeight
 The weight added to routes learned from this BGP speaker.
 
 ```yaml
 Type: System.Int32
 Parameter Sets: UpdateExpanded1
-Aliases:
+Aliases: PeerWeight, BgpPeeringWeight
 
 Required: False
 Position: Named
@@ -151,6 +133,22 @@ Aliases: AzureRMContext, AzureCredential
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -EnableActiveActive
+ActiveActive flag
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UpdateExpanded1
+Aliases: EnableActiveActiveFeature
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -239,6 +237,7 @@ Dynamic: False
 
 ### -IPConfiguration
 IP configurations for virtual network gateway.
+To construct, see NOTES section for IPCONFIGURATION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVirtualNetworkGatewayIPConfiguration[]
@@ -285,8 +284,25 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Parameter
 A common class for general resource information
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVirtualNetworkGateway
@@ -307,7 +323,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: GatewaySku, GatewayDefaultSite, VirtualNetworkGateway, DisableActiveActiveFeature
 
 Required: True
 Position: Named
@@ -402,7 +418,7 @@ Dynamic: False
 Resource tags.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceTags
+Type: System.Collections.Hashtable
 Parameter Sets: UpdateExpanded1
 Aliases:
 
@@ -414,13 +430,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VpnClientAddressPoolAddressPrefix
+### -VpnClientAddressPrefix
 A list of address blocks reserved for this virtual network in CIDR notation.
 
 ```yaml
 Type: System.String[]
 Parameter Sets: UpdateExpanded1
-Aliases:
+Aliases: VpnClientAddressPool
 
 Required: False
 Position: Named
@@ -430,39 +446,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VpnClientConfigurationRadiusServerAddress
-The radius server address property of the VirtualNetworkGateway resource for vpn client connection.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -VpnClientConfigurationRadiusServerSecret
-The radius secret property of the VirtualNetworkGateway resource for vpn client connection.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -VpnClientConfigurationVpnClientProtocol
+### -VpnClientProtocol
 VpnClientProtocols for Virtual network gateway.
 
 ```yaml
@@ -478,13 +462,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VpnClientConfigurationVpnClientRevokedCertificate
-VpnClientRevokedCertificate for Virtual network gateway.
+### -VpnClientRadiusServerAddress
+The radius server address property of the VirtualNetworkGateway resource for vpn client connection.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVpnClientRevokedCertificate[]
+Type: System.String
 Parameter Sets: UpdateExpanded1
-Aliases:
+Aliases: RadiusServerAddress
 
 Required: False
 Position: Named
@@ -494,13 +478,47 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VpnClientConfigurationVpnClientRootCertificate
+### -VpnClientRadiusServerSecret
+The radius secret property of the VirtualNetworkGateway resource for vpn client connection.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded1
+Aliases: RadiusServerSecret
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -VpnClientRevokedCertificate
+VpnClientRevokedCertificate for Virtual network gateway.
+To construct, see NOTES section for VPNCLIENTREVOKEDCERTIFICATE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVpnClientRevokedCertificate[]
+Parameter Sets: UpdateExpanded1
+Aliases: VpnClientRevokedCertificates
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -VpnClientRootCertificate
 VpnClientRootCertificate for virtual network gateway.
+To construct, see NOTES section for VPNCLIENTROOTCERTIFICATE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVpnClientRootCertificate[]
 Parameter Sets: UpdateExpanded1
-Aliases:
+Aliases: VpnClientRootCertificates
 
 Required: False
 Position: Named
@@ -574,6 +592,71 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### Set-AzVirtualNetworkGateway
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### IPCONFIGURATION <IVirtualNetworkGatewayIPConfiguration[]>: IP configurations for virtual network gateway.
+  - `[Id <String>]`: Resource ID.
+  - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+  - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
+  - `[PrivateIPAllocationMethod <IPAllocationMethod?>]`: The private IP address allocation method.
+  - `[PublicIPAddressId <String>]`: Resource ID.
+  - `[SubnetId <String>]`: Resource ID.
+
+#### PARAMETER <IVirtualNetworkGateway>: A common class for general resource information
+  - `[Id <String>]`: Resource ID.
+  - `[Location <String>]`: Resource location.
+  - `[Tag <IResourceTags>]`: Resource tags.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
+  - `[Active <Boolean?>]`: ActiveActive flag
+  - `[BgpSettingAsn <Int64?>]`: The BGP speaker's ASN.
+  - `[BgpSettingBgpPeeringAddress <String>]`: The BGP peering address and BGP identifier of this BGP speaker.
+  - `[BgpSettingPeerWeight <Int32?>]`: The weight added to routes learned from this BGP speaker.
+  - `[EnableBgp <Boolean?>]`: Whether BGP is enabled for this virtual network gateway or not.
+  - `[Etag <String>]`: Gets a unique read-only string that changes whenever the resource is updated.
+  - `[GatewayDefaultSiteId <String>]`: Resource ID.
+  - `[GatewayType <VirtualNetworkGatewayType?>]`: The type of this virtual network gateway. Possible values are: 'Vpn' and 'ExpressRoute'.
+  - `[IPConfiguration <IVirtualNetworkGatewayIPConfiguration[]>]`: IP configurations for virtual network gateway.
+    - `[Id <String>]`: Resource ID.
+    - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+    - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
+    - `[PrivateIPAllocationMethod <IPAllocationMethod?>]`: The private IP address allocation method.
+    - `[PublicIPAddressId <String>]`: Resource ID.
+    - `[SubnetId <String>]`: Resource ID.
+  - `[ResourceGuid <String>]`: The resource GUID property of the VirtualNetworkGateway resource.
+  - `[SkuCapacity <Int32?>]`: The capacity.
+  - `[SkuName <VirtualNetworkGatewaySkuName?>]`: Gateway SKU name.
+  - `[SkuTier <VirtualNetworkGatewaySkuTier?>]`: Gateway SKU tier.
+  - `[VpnClientAddressPoolAddressPrefix <String[]>]`: A list of address blocks reserved for this virtual network in CIDR notation.
+  - `[VpnClientConfigurationRadiusServerAddress <String>]`: The radius server address property of the VirtualNetworkGateway resource for vpn client connection.
+  - `[VpnClientConfigurationRadiusServerSecret <String>]`: The radius secret property of the VirtualNetworkGateway resource for vpn client connection.
+  - `[VpnClientConfigurationVpnClientProtocol <VpnClientProtocol[]>]`: VpnClientProtocols for Virtual network gateway.
+  - `[VpnClientConfigurationVpnClientRevokedCertificate <IVpnClientRevokedCertificate[]>]`: VpnClientRevokedCertificate for Virtual network gateway.
+    - `[Id <String>]`: Resource ID.
+    - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+    - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
+    - `[Thumbprint <String>]`: The revoked VPN client certificate thumbprint.
+  - `[VpnClientConfigurationVpnClientRootCertificate <IVpnClientRootCertificate[]>]`: VpnClientRootCertificate for virtual network gateway.
+    - `PublicCertData <String>`: The certificate public data.
+    - `[Id <String>]`: Resource ID.
+    - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+    - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
+  - `[VpnType <VpnType?>]`: The type of this virtual network gateway. Possible values are: 'PolicyBased' and 'RouteBased'.
+
+#### VPNCLIENTREVOKEDCERTIFICATE <IVpnClientRevokedCertificate[]>: VpnClientRevokedCertificate for Virtual network gateway.
+  - `[Id <String>]`: Resource ID.
+  - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+  - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
+  - `[Thumbprint <String>]`: The revoked VPN client certificate thumbprint.
+
+#### VPNCLIENTROOTCERTIFICATE <IVpnClientRootCertificate[]>: VpnClientRootCertificate for virtual network gateway.
+  - `PublicCertData <String>`: The certificate public data.
+  - `[Id <String>]`: Resource ID.
+  - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+  - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
 
 ## RELATED LINKS
 

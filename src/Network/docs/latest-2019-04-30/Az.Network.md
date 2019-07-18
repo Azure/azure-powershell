@@ -149,7 +149,7 @@ Gets the specified nat gateway in a specified resource group.
 ### [Get-AzNetworkInterface](Get-AzNetworkInterface.md)
 Gets information about the specified network interface.
 
-### [Get-AzNetworkInterfaceEffectiveNetworkSecurityGroup](Get-AzNetworkInterfaceEffectiveNetworkSecurityGroup.md)
+### [Get-AzNetworkInterfaceEffectiveNsg](Get-AzNetworkInterfaceEffectiveNsg.md)
 Gets all network security groups applied to a network interface.
 
 ### [Get-AzNetworkInterfaceEffectiveRouteTable](Get-AzNetworkInterfaceEffectiveRouteTable.md)
@@ -166,9 +166,6 @@ Get the specified tap configuration on a network interface.
 
 ### [Get-AzNetworkProfile](Get-AzNetworkProfile.md)
 Gets the specified network profile in a specified resource group.
-
-### [Get-AzNetworkSecurityGroup](Get-AzNetworkSecurityGroup.md)
-Gets the specified network security group.
 
 ### [Get-AzNetworkSecurityRule](Get-AzNetworkSecurityRule.md)
 Get the specified network security rule.
@@ -211,6 +208,9 @@ Get the last completed troubleshooting result on a specified resource
 
 ### [Get-AzNetworkWatcherVMSecurityRule](Get-AzNetworkWatcherVMSecurityRule.md)
 Gets the configured and effective security group rules on the specified VM.
+
+### [Get-AzNsg](Get-AzNsg.md)
+Gets the specified network security group.
 
 ### [Get-AzP2SVpnGateway](Get-AzP2SVpnGateway.md)
 Retrieves the details of a virtual wan p2s vpn gateway.
@@ -390,9 +390,6 @@ Creates or updates a Tap configuration in the specified NetworkInterface.
 ### [New-AzNetworkProfile](New-AzNetworkProfile.md)
 Creates or updates a network profile.
 
-### [New-AzNetworkSecurityGroup](New-AzNetworkSecurityGroup.md)
-Creates or updates a network security group in the specified resource group.
-
 ### [New-AzNetworkSecurityRule](New-AzNetworkSecurityRule.md)
 Creates or updates a security rule in the specified network security group.
 
@@ -404,6 +401,9 @@ Create or update a connection monitor.
 
 ### [New-AzNetworkWatcherPacketCapture](New-AzNetworkWatcherPacketCapture.md)
 Create and start a packet capture on the specified VM.
+
+### [New-AzNsg](New-AzNsg.md)
+Creates or updates a network security group in the specified resource group.
 
 ### [New-AzP2SVpnGateway](New-AzP2SVpnGateway.md)
 Creates a virtual wan p2s vpn gateway if it doesn't exist else updates the existing gateway.
@@ -545,9 +545,6 @@ Deletes the specified tap configuration from the NetworkInterface.
 ### [Remove-AzNetworkProfile](Remove-AzNetworkProfile.md)
 Deletes the specified network profile.
 
-### [Remove-AzNetworkSecurityGroup](Remove-AzNetworkSecurityGroup.md)
-Deletes the specified network security group.
-
 ### [Remove-AzNetworkSecurityRule](Remove-AzNetworkSecurityRule.md)
 Deletes the specified network security rule.
 
@@ -559,6 +556,9 @@ Deletes the specified connection monitor.
 
 ### [Remove-AzNetworkWatcherPacketCapture](Remove-AzNetworkWatcherPacketCapture.md)
 Deletes the specified packet capture session.
+
+### [Remove-AzNsg](Remove-AzNsg.md)
+Deletes the specified network security group.
 
 ### [Remove-AzP2SVpnGateway](Remove-AzP2SVpnGateway.md)
 Deletes a virtual wan p2s vpn gateway.
@@ -701,9 +701,6 @@ Creates or updates a Tap configuration in the specified NetworkInterface.
 ### [Set-AzNetworkProfile](Set-AzNetworkProfile.md)
 Creates or updates a network profile.
 
-### [Set-AzNetworkSecurityGroup](Set-AzNetworkSecurityGroup.md)
-Creates or updates a network security group in the specified resource group.
-
 ### [Set-AzNetworkSecurityRule](Set-AzNetworkSecurityRule.md)
 Creates or updates a security rule in the specified network security group.
 
@@ -715,6 +712,9 @@ Create or update a connection monitor.
 
 ### [Set-AzNetworkWatcherFlowLogConfiguration](Set-AzNetworkWatcherFlowLogConfiguration.md)
 Configures flow log  and traffic analytics (optional) on a specified resource.
+
+### [Set-AzNsg](Set-AzNsg.md)
+Creates or updates a network security group in the specified resource group.
 
 ### [Set-AzP2SVpnGateway](Set-AzP2SVpnGateway.md)
 Creates a virtual wan p2s vpn gateway if it doesn't exist else updates the existing gateway.

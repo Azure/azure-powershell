@@ -1,24 +1,31 @@
 ---
 external help file:
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-aznetworkinterfaceeffectivenetworksecuritygroup
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-aznsg
 schema: 2.0.0
 ---
 
-# Get-AzNetworkInterfaceEffectiveNetworkSecurityGroup
+# Remove-AzNsg
 
 ## SYNOPSIS
-Gets all network security groups applied to a network interface.
+Deletes the specified network security group.
 
 ## SYNTAX
 
+### Delete1 (Default)
 ```
-Get-AzNetworkInterfaceEffectiveNetworkSecurityGroup -NetworkInterfaceName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzNsg -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-PassThru]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteViaIdentity1
+```
+Remove-AzNsg -InputObject <INetworkIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets all network security groups applied to a network interface.
+Deletes the specified network security group.
 
 ## EXAMPLES
 
@@ -74,17 +81,65 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -NetworkInterfaceName
-The name of the network interface.
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: DeleteViaIdentity1
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Name
+The name of the network security group.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete1
+Aliases: NetworkSecurityGroupName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -PassThru
+When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -95,7 +150,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Delete1
 Aliases:
 
 Required: True
@@ -111,8 +166,8 @@ The subscription credentials which uniquely identify the Microsoft Azure subscri
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: Delete1
 Aliases:
 
 Required: True
@@ -161,13 +216,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IEffectiveNetworkSecurityGroupListResult
+### System.Boolean
 
 ## ALIASES
 
-### Get-AzEffectiveNetworkSecurityGroup
+### Remove-AzNetworkSecurityGroup
+
+## NOTES
 
 ## RELATED LINKS
 

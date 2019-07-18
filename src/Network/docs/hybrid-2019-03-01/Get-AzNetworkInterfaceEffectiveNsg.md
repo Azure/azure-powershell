@@ -1,44 +1,45 @@
 ---
-external help file: Az.Dns-help.xml
-Module Name: Az.Dns
-online version: https://docs.microsoft.com/en-us/powershell/module/az.dns/remove-azdnszone
+external help file:
+Module Name: Az.Network
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-aznetworkinterfaceeffectivensg
 schema: 2.0.0
 ---
 
-# Remove-AzDnsZone
+# Get-AzNetworkInterfaceEffectiveNsg
 
 ## SYNOPSIS
-Deletes a DNS zone.
-WARNING: All DNS records in the zone will also be deleted.
-This operation cannot be undone.
+Gets all network security groups applied to a network interface.
 
 ## SYNTAX
 
-### DeleteSubscriptionIdViaHost1 (Default)
 ```
-Remove-AzDnsZone -Name <String> -ResourceGroupName <String> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Delete1
-```
-Remove-AzDnsZone -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-PassThru]
- [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzNetworkInterfaceEffectiveNsg -NetworkInterfaceName <String> -ResourceGroupName <String>
+ -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deletes a DNS zone.
-WARNING: All DNS records in the zone will also be deleted.
-This operation cannot be undone.
+Gets all network security groups applied to a network interface.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-{{ Add example description here }}
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -55,6 +56,7 @@ Position: Named
 Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -DefaultProfile
@@ -70,25 +72,27 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
-### -Name
-The name of the DNS zone (without a terminating dot).
+### -NetworkInterfaceName
+The name of the network interface.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: ZoneName
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
-### -PassThru
-When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
+### -NoWait
+Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -100,6 +104,7 @@ Position: Named
 Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -ResourceGroupName
@@ -115,14 +120,16 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -SubscriptionId
-Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.
+The subscription credentials which uniquely identify the Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
-Parameter Sets: Delete1
+Type: System.String[]
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -130,6 +137,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -Confirm
@@ -145,6 +153,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### -WhatIf
@@ -161,6 +170,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Dynamic: False
 ```
 
 ### CommonParameters
@@ -170,10 +180,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IEffectiveNetworkSecurityGroupListResult
+
+## ALIASES
+
+### Get-AzEffectiveNetworkSecurityGroup
+
+### Get-AzNetworkInterfaceEffectiveNetworkSecurityGroup
+
 ## NOTES
 
 ## RELATED LINKS
-
-[https://docs.microsoft.com/en-us/powershell/module/az.dns/remove-azdnszone](https://docs.microsoft.com/en-us/powershell/module/az.dns/remove-azdnszone)
 

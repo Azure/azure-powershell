@@ -21,8 +21,8 @@ Get-AzExpressRouteCircuitArpTable -CircuitName <String> -ResourceGroupName <Stri
 ### List2
 ```
 Get-AzExpressRouteCircuitArpTable -CircuitName <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- -DevicePath <String> -PeeringName <String> [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -DevicePath <String> -PeeringName <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -109,6 +109,22 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: List2
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -208,6 +224,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRouteCircuitsArpTableListResult
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 
