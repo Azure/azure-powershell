@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Commands.ServiceBus.Models;
 using Microsoft.Azure.Management.ServiceBus.Models;
 using System.Management.Automation;
@@ -82,10 +83,19 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
                 {
                     sasRule.Rights = new List<AccessRights?>();
                     if (Rights != null && Rights.Length > 0)
+                    {
+                        if (Array.Exists(Rights, element => element == "Manage") && !Array.Exists(Rights, element => element == "Listen") || !Array.Exists(Rights, element => element == "Send"))
+                        {
+                            Exception exManage = new Exception("Assigning 'Manage' to rights requires ‘Listen and ‘Send' to be included with. e.g. @(\"Manage\",\"Listen\",\"Send\")");
+                            throw exManage;
+                        }
+
                         foreach (string test in Rights)
                         {
                             sasRule.Rights.Add(ParseAccessRights(test));
                         }
+                    }
+                        
                 }
 
                 if (ParameterSetName.Equals(AuthoRuleInputObjectParameterSet))
@@ -144,6 +154,10 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
             catch (ErrorResponseException ex)
             {
                 WriteError(ServiceBusClient.WriteErrorforBadrequest(ex));
+            }
+            catch (Exception ex)
+            {
+                WriteError(new ErrorRecord(ex, ex.Message, ErrorCategory.OpenError, ex));
             }
         }
     }

@@ -47,7 +47,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     string imageName = this.ImageName;
                     Image parameters = new Image();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<PSImage, Image>(this.Image, parameters);
-                    parameters.HyperVGeneration = HyperVGenerationTypes.V1; // temporarily unblock create image until this parameter is added.
 
                     var result = ImagesClient.CreateOrUpdate(resourceGroupName, imageName, parameters);
                     var psObject = new PSImage();

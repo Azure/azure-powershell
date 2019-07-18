@@ -113,7 +113,6 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         public override void ExecuteCmdlet()
         {
             var subscriptions = this.GetSubscriptions().ToList();
-
             if (subscriptions == null || subscriptions.Count == 0)
             {
                 var exception = new ArgumentException("No subscriptions were found to run query. " +
@@ -144,7 +143,8 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                     var requestOptions = new QueryRequestOptions(
                         top: requestTop,
                         skip: requestSkip,
-                        skipToken: requestSkipToken);
+                        skipToken: requestSkipToken,
+                        resultFormat: ResultFormat.ObjectArray);
 
                     var queryExtenstion = (this.Include == IncludeOptionsEnum.DisplayNames && this.QueryExtensionInitizalized()) ?
                         (queryExtensionToIncludeNames + (this.Query.Length != 0 ? "| " : string.Empty)) :
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                     response = this.ResourceGraphClient.ResourcesWithHttpMessagesAsync(request)
                         .Result
                         .Body;
-                    var requestResults = response.Data.ToPsObjects().ToList();
+                    var requestResults = response.Data.ToPsObjects();
                     results.AddRange(requestResults);
                     this.WriteVerbose($"Received results: {requestResults.Count}");
                 }
