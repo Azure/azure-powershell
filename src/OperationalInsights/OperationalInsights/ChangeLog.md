@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated default version for saved searches to be 1. 
 
 ## Version 1.3.1
 * Fixed CustomLog datasource model returned in Get-AzOperationalInsightsDataSource
