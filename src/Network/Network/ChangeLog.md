@@ -18,6 +18,7 @@
         - Additional information about change #1
 --->
 ## Upcoming Release
+* Fixed miscellaneous typos across module
 
 ## Version 1.11.0
 * Added `RoutingPreference` to public ip tags

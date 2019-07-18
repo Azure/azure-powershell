@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Update common code to use latest version of ClientRuntime
+* Fixed miscellaneous typos across module
 
 ## Version 1.6.0
 * Add support for profile cmdlets

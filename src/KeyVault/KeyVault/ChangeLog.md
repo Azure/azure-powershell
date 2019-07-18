@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Added support to specify the KeySize for Certificate Policies
+* Fixed miscellaneous typos across module
 
 ## Version 1.2.0
 * Updated cmdlets with plural nouns to singular, and deprecated plural names.

@@ -19,6 +19,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed miscellaneous typos across module
 
 ## Version 2.4.0
 * Add HyperVGeneration parameter to New-AzImageConfig

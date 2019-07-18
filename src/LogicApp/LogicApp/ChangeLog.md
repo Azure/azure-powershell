@@ -20,6 +20,7 @@
 ## Upcoming Release
 * Fix for Get-AzIntegrationAccountMap to list all map types
 	- Added new MapType parameter for filtering
+* Fixed miscellaneous typos across module
 
 ## Version 1.2.1
 * Fix for ListWorkflows only retrieving the first page of results
