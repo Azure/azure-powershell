@@ -97,6 +97,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &quot;Cancelling Databox Job &quot;.
+        /// </summary>
+        internal static string CancellingDataboxJobWarning {
+            get {
+                return ResourceManager.GetString("CancellingDataboxJobWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &quot;City: &quot;.
         /// </summary>
         internal static string City {
@@ -192,6 +201,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Resources {
         internal static string PostalCode {
             get {
                 return ResourceManager.GetString("PostalCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;Removing Databox Job &quot;.
+        /// </summary>
+        internal static string RemoveDataboxJobWarning {
+            get {
+                return ResourceManager.GetString("RemoveDataboxJobWarning", resourceCulture);
             }
         }
         

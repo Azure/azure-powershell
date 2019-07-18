@@ -129,6 +129,9 @@
   <data name="CancellingDataboxJob" xml:space="preserve">
     <value>"Cancelling Databox job "</value>
   </data>
+  <data name="CancellingDataboxJobWarning" xml:space="preserve">
+    <value>"Cancelling Databox Job "</value>
+  </data>
   <data name="City" xml:space="preserve">
     <value>"City: "</value>
   </data>
@@ -161,6 +164,9 @@
   </data>
   <data name="PostalCode" xml:space="preserve">
     <value>"Postal code: "</value>
+  </data>
+  <data name="RemoveDataboxJobWarning" xml:space="preserve">
+    <value>"Removing Databox Job "</value>
   </data>
   <data name="StateOrProvince" xml:space="preserve">
     <value>"State/Province: "</value>

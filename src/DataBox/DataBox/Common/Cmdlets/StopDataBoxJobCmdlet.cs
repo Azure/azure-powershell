@@ -48,6 +48,9 @@ namespace Microsoft.Azure.Commands.DataBox.Common
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru;
 
+        [Parameter(Mandatory = false)]
+        public SwitchParameter Force;
+
         public override void ExecuteCmdlet()
         {
             if (this.ParameterSetName.Equals(GetByResourceIdParameterSet))
@@ -66,15 +69,20 @@ namespace Microsoft.Azure.Commands.DataBox.Common
             // Initiate to cancel job
             if (ShouldProcess(this.Name, string.Format(Resource.CancellingDataboxJob + this.Name + Resource.InResourceGroup + this.ResourceGroupName)))
             {
-                JobsOperationsExtensions.Cancel(
-                    DataBoxManagementClient.Jobs,
-                    ResourceGroupName,
-                    Name,
-                    Reason);
+                if(this.Force || ShouldContinue(Resource.CancellingDataboxJobWarning + this.Name, ""))
+                {
+                    JobsOperationsExtensions.Cancel(
+                        DataBoxManagementClient.Jobs,
+                        ResourceGroupName,
+                        Name,
+                        Reason);
+
+                    if (PassThru)
+                        WriteObject(true);
+                }
+                
             }
 
-            if (PassThru)
-                WriteObject(true);
 
         }
     }
