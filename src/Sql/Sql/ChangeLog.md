@@ -18,6 +18,20 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix missing examples for Set-AzSqlDatabaseSecondary cmdlet
+* Fix set Vulnerability Assessment recurring scans without providing any email addresses
+* Fix a small typo in a warining message.
+
+## Version 1.13.0
+* Add Instance Failover Group cmdlets from preview release to public release
+* Support Azure SQL Server\Database Auditing with new cmdlets.
+    - Set-AzSqlServerAudit
+    - Get-AzSqlServerAudit
+    - Remove-AzSqlServerAudit
+    - Set-AzSqlDatabaseAudit
+    - Get-AzSqlDatabaseAudit
+    - Remove-AzSqlDatabaseAudit
+* Remove email constraints from Vulnerability Assessment settings
 
 ## Version 1.12.0
 * Fix Advanced Threat Protection storage endpoint suffix

@@ -56,9 +56,10 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         public string Query { get; set; }
 
         [Parameter(Position = 6, Mandatory = false, ValueFromPipelineByPropertyName = true,
-        HelpMessage = "The saved search version.")]
+            HelpMessage = "The saved search version.")]
+        [PSDefaultValue(Help = "1", Value = 1)]
         [ValidateNotNullOrEmpty]
-        public long Version { get; set; }
+        public long Version { get; set; } = 1;
 
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }

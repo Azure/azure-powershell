@@ -47,6 +47,9 @@ Returns a description for the specified Service Bus topic.
 ### [New-AzServiceBusAuthorizationRule](New-AzServiceBusAuthorizationRule.md)
 Creates a new authorization rule for the specified Service Bus given Namespace or Queue or Topic.
 
+### [New-AzServiceBusAuthorizationRuleSASToken](New-AzServiceBusAuthorizationRuleSASToken.md)
+Generates a SAS tolen for Azure serviucebus authorization rule of namespace/queue/topic. 
+
 ### [New-AzServiceBusGeoDRConfiguration](New-AzServiceBusGeoDRConfiguration.md)
 Creates an new Alias(Disaster Recovery configuration)
 

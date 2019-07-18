@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 
+## Version 1.2.0
+
 * Fix for issue https://github.com/Azure/azure-powershell/issues/8671
     - **Get-AzApiManagementSubscription** 
         - Added support for querying subscriptions by User and Product
