@@ -12,11 +12,20 @@ Gets Alert Summary Information
 
 ## SYNTAX
 
+### SummaryTargetResourceIdFilter
 ```
-Measure-AzAlertStatistic -GroupBy <String> [-TargetResourceId <String>] [-TargetResourceType <String>]
- [-TargetResourceGroup <String>] [-MonitorService <String>] [-MonitorCondition <String>] [-Severity <String>]
- [-State <String>] [-AlertRuleId <String>] [-TimeRange <String>] [-CustomTimeRange <String>]
- [-IncludeSmartGroupsCount <Boolean>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Measure-AzAlertStatistic -GroupBy <String> [-TargetResourceId <String>] [-MonitorService <String>]
+ [-MonitorCondition <String>] [-Severity <String>] [-State <String>] [-AlertRuleId <String>]
+ [-TimeRange <String>] [-CustomTimeRange <String>] [-IncludeSmartGroupsCount <Boolean>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### SummaryFilter
+```
+Measure-AzAlertStatistic -GroupBy <String> [-TargetResourceType <String>] [-TargetResourceGroup <String>]
+ [-MonitorService <String>] [-MonitorCondition <String>] [-Severity <String>] [-State <String>]
+ [-AlertRuleId <String>] [-TimeRange <String>] [-CustomTimeRange <String>] [-IncludeSmartGroupsCount <Boolean>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -173,7 +182,7 @@ Filter on Resource group name of the target resource of alert.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SummaryFilter
 Aliases:
 
 Required: False
@@ -188,7 +197,7 @@ Filter on Resource Id of the target resource of alert.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SummaryTargetResourceIdFilter
 Aliases:
 
 Required: False
@@ -203,7 +212,7 @@ Filter on Resource type of the target resource of alert.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SummaryFilter
 Aliases:
 
 Required: False

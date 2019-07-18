@@ -14,10 +14,10 @@ Get Alerts Information
 
 ### AlertsListByFilter (Default)
 ```
-Get-AzAlert [-TargetResourceType <String>] [-MonitorService <String>] [-MonitorCondition <String>]
- [-Severity <String>] [-State <String>] [-AlertRuleId <String>] [-SmartGroupId <String>]
- [-IncludeContext <Boolean>] [-IncludeEgressConfig <Boolean>] [-PageCount <Int32>] [-SortBy <String>]
- [-SortOrder <String>] [-TimeRange <String>] [-CustomTimeRange <String>] [-Select <String>]
+Get-AzAlert [-TargetResourceType <String>] [-TargetResourceGroup <String>] [-MonitorService <String>]
+ [-MonitorCondition <String>] [-Severity <String>] [-State <String>] [-AlertRuleId <String>]
+ [-SmartGroupId <String>] [-IncludeContext <Boolean>] [-IncludeEgressConfig <Boolean>] [-PageCount <Int32>]
+ [-SortBy <String>] [-SortOrder <String>] [-TimeRange <String>] [-CustomTimeRange <String>] [-Select <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -28,19 +28,10 @@ Get-AzAlert -AlertId <String> [-DefaultProfile <IAzureContextContainer>] [<Commo
 
 ### AlertsListByTargetResourceIdFilter
 ```
-Get-AzAlert [-TargetResourceId <String>] [-TargetResourceType <String>] [-MonitorService <String>]
- [-MonitorCondition <String>] [-Severity <String>] [-State <String>] [-AlertRuleId <String>]
- [-SmartGroupId <String>] [-IncludeContext <Boolean>] [-IncludeEgressConfig <Boolean>] [-PageCount <Int32>]
- [-SortBy <String>] [-SortOrder <String>] [-TimeRange <String>] [-CustomTimeRange <String>] [-Select <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### AlertsListByTargetResourceGroupFilter
-```
-Get-AzAlert [-TargetResourceType <String>] [-TargetResourceGroup <String>] [-MonitorService <String>]
- [-MonitorCondition <String>] [-Severity <String>] [-State <String>] [-AlertRuleId <String>]
- [-SmartGroupId <String>] [-IncludeContext <Boolean>] [-IncludeEgressConfig <Boolean>] [-PageCount <Int32>]
- [-SortBy <String>] [-SortOrder <String>] [-TimeRange <String>] [-CustomTimeRange <String>] [-Select <String>]
+Get-AzAlert [-TargetResourceId <String>] [-MonitorService <String>] [-MonitorCondition <String>]
+ [-Severity <String>] [-State <String>] [-AlertRuleId <String>] [-SmartGroupId <String>]
+ [-IncludeContext <Boolean>] [-IncludeEgressConfig <Boolean>] [-PageCount <Int32>] [-SortBy <String>]
+ [-SortOrder <String>] [-TimeRange <String>] [-CustomTimeRange <String>] [-Select <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -85,7 +76,7 @@ Filter on Alert Rule Id
 
 ```yaml
 Type: System.String
-Parameter Sets: AlertsListByFilter, AlertsListByTargetResourceIdFilter, AlertsListByTargetResourceGroupFilter
+Parameter Sets: AlertsListByFilter, AlertsListByTargetResourceIdFilter
 Aliases:
 
 Required: False
@@ -100,7 +91,7 @@ Supported format - \<start-time\>/\<end-time\> where time is in ISO-8601 format
 
 ```yaml
 Type: System.String
-Parameter Sets: AlertsListByFilter, AlertsListByTargetResourceIdFilter, AlertsListByTargetResourceGroupFilter
+Parameter Sets: AlertsListByFilter, AlertsListByTargetResourceIdFilter
 Aliases:
 
 Required: False
@@ -130,7 +121,7 @@ Include context (custom payload) of alert
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: AlertsListByFilter, AlertsListByTargetResourceIdFilter, AlertsListByTargetResourceGroupFilter
+Parameter Sets: AlertsListByFilter, AlertsListByTargetResourceIdFilter
 Aliases:
 
 Required: False
@@ -145,7 +136,7 @@ Include EgressConfig
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: AlertsListByFilter, AlertsListByTargetResourceIdFilter, AlertsListByTargetResourceGroupFilter
+Parameter Sets: AlertsListByFilter, AlertsListByTargetResourceIdFilter
 Aliases:
 
 Required: False
@@ -160,7 +151,7 @@ Filter on Monitor Condition
 
 ```yaml
 Type: System.String
-Parameter Sets: AlertsListByFilter, AlertsListByTargetResourceIdFilter, AlertsListByTargetResourceGroupFilter
+Parameter Sets: AlertsListByFilter, AlertsListByTargetResourceIdFilter
 Aliases:
 
 Required: False
@@ -175,7 +166,7 @@ Filter on Moniter Service
 
 ```yaml
 Type: System.String
-Parameter Sets: AlertsListByFilter, AlertsListByTargetResourceIdFilter, AlertsListByTargetResourceGroupFilter
+Parameter Sets: AlertsListByFilter, AlertsListByTargetResourceIdFilter
 Aliases:
 
 Required: False
@@ -190,7 +181,7 @@ Number of alerts to be fetched in a page.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: AlertsListByFilter, AlertsListByTargetResourceIdFilter, AlertsListByTargetResourceGroupFilter
+Parameter Sets: AlertsListByFilter, AlertsListByTargetResourceIdFilter
 Aliases:
 
 Required: False
@@ -206,7 +197,7 @@ Expected input is comma-separated.
 
 ```yaml
 Type: System.String
-Parameter Sets: AlertsListByFilter, AlertsListByTargetResourceIdFilter, AlertsListByTargetResourceGroupFilter
+Parameter Sets: AlertsListByFilter, AlertsListByTargetResourceIdFilter
 Aliases:
 
 Required: False
@@ -221,7 +212,7 @@ Filter on Severity of alert
 
 ```yaml
 Type: System.String
-Parameter Sets: AlertsListByFilter, AlertsListByTargetResourceIdFilter, AlertsListByTargetResourceGroupFilter
+Parameter Sets: AlertsListByFilter, AlertsListByTargetResourceIdFilter
 Aliases:
 
 Required: False
@@ -236,7 +227,7 @@ Filter all the alerts having the Smart Group Id
 
 ```yaml
 Type: System.String
-Parameter Sets: AlertsListByFilter, AlertsListByTargetResourceIdFilter, AlertsListByTargetResourceGroupFilter
+Parameter Sets: AlertsListByFilter, AlertsListByTargetResourceIdFilter
 Aliases:
 
 Required: False
@@ -251,7 +242,7 @@ Alert property to use while sorting
 
 ```yaml
 Type: System.String
-Parameter Sets: AlertsListByFilter, AlertsListByTargetResourceIdFilter, AlertsListByTargetResourceGroupFilter
+Parameter Sets: AlertsListByFilter, AlertsListByTargetResourceIdFilter
 Aliases:
 
 Required: False
@@ -266,7 +257,7 @@ Sort Order
 
 ```yaml
 Type: System.String
-Parameter Sets: AlertsListByFilter, AlertsListByTargetResourceIdFilter, AlertsListByTargetResourceGroupFilter
+Parameter Sets: AlertsListByFilter, AlertsListByTargetResourceIdFilter
 Aliases:
 
 Required: False
@@ -281,7 +272,7 @@ Filter on State of alert
 
 ```yaml
 Type: System.String
-Parameter Sets: AlertsListByFilter, AlertsListByTargetResourceIdFilter, AlertsListByTargetResourceGroupFilter
+Parameter Sets: AlertsListByFilter, AlertsListByTargetResourceIdFilter
 Aliases:
 
 Required: False
@@ -296,7 +287,7 @@ Filter on Resource group name of the target resource of alert.
 
 ```yaml
 Type: System.String
-Parameter Sets: AlertsListByTargetResourceGroupFilter
+Parameter Sets: AlertsListByFilter
 Aliases:
 
 Required: False
@@ -326,7 +317,7 @@ Filter on Resource type of the target resource of alert.
 
 ```yaml
 Type: System.String
-Parameter Sets: AlertsListByFilter, AlertsListByTargetResourceIdFilter, AlertsListByTargetResourceGroupFilter
+Parameter Sets: AlertsListByFilter
 Aliases:
 
 Required: False
@@ -341,7 +332,7 @@ Supported time range values - 1h, 1d, 7d, 30d (Default is 1d)
 
 ```yaml
 Type: System.String
-Parameter Sets: AlertsListByFilter, AlertsListByTargetResourceIdFilter, AlertsListByTargetResourceGroupFilter
+Parameter Sets: AlertsListByFilter, AlertsListByTargetResourceIdFilter
 Aliases:
 
 Required: False

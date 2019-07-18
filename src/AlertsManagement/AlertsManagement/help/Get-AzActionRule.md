@@ -15,9 +15,9 @@ Get Action Rules Information
 ### ListActionRules (Default)
 ```
 Get-AzActionRule [-Name <String>] [-ResourceGroupName <String>] [-TargetResourceType <String>]
- [-MonitorService <String>] [-Severity <String>] [-ImpactedScope <String>] [-AlertRuleId <String>]
- [-Description <String>] [-ActionGroup <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-TargetResourceGroup <String>] [-MonitorService <String>] [-Severity <String>] [-ImpactedScope <String>]
+ [-AlertRuleId <String>] [-Description <String>] [-ActionGroup <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceId
@@ -37,14 +37,6 @@ Get-AzActionRule [-Name <String>] [-ResourceGroupName <String>] [-TargetResource
  [-MonitorService <String>] [-Severity <String>] [-ImpactedScope <String>] [-AlertRuleId <String>]
  [-Description <String>] [-ActionGroup <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
-```
-
-### ListActionRulesByTargetResourceGroup
-```
-Get-AzActionRule [-Name <String>] [-ResourceGroupName <String>] [-TargetResourceType <String>]
- [-TargetResourceGroup <String>] [-MonitorService <String>] [-Severity <String>] [-ImpactedScope <String>]
- [-AlertRuleId <String>] [-Description <String>] [-ActionGroup <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,7 +65,7 @@ Action group
 
 ```yaml
 Type: System.String
-Parameter Sets: ListActionRules, ListActionRulesByTargetResourceId, ListActionRulesByTargetResourceGroup
+Parameter Sets: ListActionRules, ListActionRulesByTargetResourceId
 Aliases:
 
 Required: False
@@ -88,7 +80,7 @@ Filter on Alert Rule Id
 
 ```yaml
 Type: System.String
-Parameter Sets: ListActionRules, ListActionRulesByTargetResourceId, ListActionRulesByTargetResourceGroup
+Parameter Sets: ListActionRules, ListActionRulesByTargetResourceId
 Aliases:
 
 Required: False
@@ -118,7 +110,7 @@ Filter all the alerts having the Smart Group Id
 
 ```yaml
 Type: System.String
-Parameter Sets: ListActionRules, ListActionRulesByTargetResourceId, ListActionRulesByTargetResourceGroup
+Parameter Sets: ListActionRules, ListActionRulesByTargetResourceId
 Aliases:
 
 Required: False
@@ -133,7 +125,7 @@ Filter on Impacted scope
 
 ```yaml
 Type: System.String
-Parameter Sets: ListActionRules, ListActionRulesByTargetResourceId, ListActionRulesByTargetResourceGroup
+Parameter Sets: ListActionRules, ListActionRulesByTargetResourceId
 Aliases:
 
 Required: False
@@ -148,7 +140,7 @@ Filter on Moniter Service
 
 ```yaml
 Type: System.String
-Parameter Sets: ListActionRules, ListActionRulesByTargetResourceId, ListActionRulesByTargetResourceGroup
+Parameter Sets: ListActionRules, ListActionRulesByTargetResourceId
 Aliases:
 
 Required: False
@@ -163,7 +155,7 @@ Name of action rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListActionRules, ListActionRulesByTargetResourceId, ListActionRulesByTargetResourceGroup
+Parameter Sets: ListActionRules, ListActionRulesByTargetResourceId
 Aliases:
 
 Required: False
@@ -190,7 +182,7 @@ Resource Group Name in which action rule resides.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListActionRules, ListActionRulesByTargetResourceId, ListActionRulesByTargetResourceGroup
+Parameter Sets: ListActionRules, ListActionRulesByTargetResourceId
 Aliases:
 
 Required: False
@@ -232,7 +224,7 @@ Filter on Severity of alert
 
 ```yaml
 Type: System.String
-Parameter Sets: ListActionRules, ListActionRulesByTargetResourceId, ListActionRulesByTargetResourceGroup
+Parameter Sets: ListActionRules, ListActionRulesByTargetResourceId
 Aliases:
 
 Required: False
@@ -247,7 +239,7 @@ Filter on Resource group name of the target resource of alert.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListActionRulesByTargetResourceGroup
+Parameter Sets: ListActionRules
 Aliases:
 
 Required: False
@@ -277,7 +269,7 @@ Filter on Resource type of the target resource of alert.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListActionRules, ListActionRulesByTargetResourceGroup
+Parameter Sets: ListActionRules
 Aliases:
 
 Required: False
