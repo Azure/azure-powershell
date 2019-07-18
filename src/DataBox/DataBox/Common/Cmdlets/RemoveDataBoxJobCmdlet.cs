@@ -43,6 +43,9 @@ namespace Microsoft.Azure.Commands.DataBox.Common
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru;
 
+        [Parameter(Mandatory = false)]
+        public SwitchParameter Force;
+
         public override void ExecuteCmdlet()
         {
             if (this.ParameterSetName.Equals(GetByResourceIdParameterSet))
@@ -62,13 +65,16 @@ namespace Microsoft.Azure.Commands.DataBox.Common
             // Initiate to delete job
             if (ShouldProcess(this.Name, string.Format(Resource.DeletingDataboxJob + this.Name + Resource.InResourceGroup + this.ResourceGroupName)))
             {
-                JobsOperationsExtensions.Delete(
+                if(this.Force || ShouldContinue(string.Format(Resource.RemoveDataboxJobWarning + this.Name), ""))
+                {
+                    JobsOperationsExtensions.Delete(
                     DataBoxManagementClient.Jobs,
                     ResourceGroupName,
                     Name);
 
-                if (PassThru)
-                    WriteObject(true);
+                    if (PassThru)
+                        WriteObject(true);
+                } 
             }
 
         }
