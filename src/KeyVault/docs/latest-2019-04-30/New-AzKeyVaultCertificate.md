@@ -15,29 +15,28 @@ This operation requires the certificates/create permission.
 
 ### Create (Default)
 ```
-New-AzKeyVaultCertificate -Name <String> [-VaultBaseUrl <String>] [-Parameter <ICertificateCreateParameters>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzKeyVaultCertificate -Name <String> [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
+ [-Parameter <ICertificateCreateParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateExpanded
 ```
-New-AzKeyVaultCertificate -Name <String> [-VaultBaseUrl <String>] [-Enabled] [-Expire <DateTime>]
- [-NotBefore <DateTime>] [-Policy <ICertificatePolicy>] [-RecoveryLevel <DeletionRecoveryLevel>]
- [-Tag <ICertificateCreateParametersTags>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzKeyVaultCertificate -Name <String> [-KeyVaultDnsSuffix <String>] [-VaultName <String>] [-Enabled]
+ [-Expire <DateTime>] [-NotBefore <DateTime>] [-Policy <ICertificatePolicy>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzKeyVaultCertificate -InputObject <IKeyVaultIdentity> [-VaultBaseUrl <String>] [-Enabled]
- [-Expire <DateTime>] [-NotBefore <DateTime>] [-Policy <ICertificatePolicy>]
- [-RecoveryLevel <DeletionRecoveryLevel>] [-Tag <ICertificateCreateParametersTags>]
+New-AzKeyVaultCertificate -InputObject <IKeyVaultIdentity> [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
+ [-Enabled] [-Expire <DateTime>] [-NotBefore <DateTime>] [-Policy <ICertificatePolicy>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
-New-AzKeyVaultCertificate -InputObject <IKeyVaultIdentity> [-VaultBaseUrl <String>]
+New-AzKeyVaultCertificate -InputObject <IKeyVaultIdentity> [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
  [-Parameter <ICertificateCreateParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -132,6 +131,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -KeyVaultDnsSuffix
+MISSING DESCRIPTION 06
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Name
 The name of the certificate.
 
@@ -166,6 +181,7 @@ Dynamic: False
 
 ### -Parameter
 The certificate create parameters.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.ICertificateCreateParameters
@@ -182,6 +198,7 @@ Dynamic: False
 
 ### -Policy
 The management policy for the certificate.
+To construct, see NOTES section for POLICY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.ICertificatePolicy
@@ -196,28 +213,11 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -RecoveryLevel
-Reflects the deletion recovery level currently in effect for certificates in the current vault.
-If it contains 'Purgeable', the certificate can be permanently deleted by a privileged user; otherwise, only the system can purge the certificate, at the end of the retention interval.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Support.DeletionRecoveryLevel
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Tag
 Application specific metadata in the form of key-value pairs.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.ICertificateCreateParametersTags
+Type: System.Collections.Hashtable
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -229,7 +229,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VaultBaseUrl
+### -VaultName
 MISSING DESCRIPTION 06
 
 ```yaml
@@ -283,9 +283,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.ICertificateCreateParameters
-
 ### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.ICertificateCreateParameters
 
 ## OUTPUTS
 
@@ -294,6 +294,63 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### Add-AzKeyVaultCertificate
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <ICertificateCreateParameters>: The certificate create parameters.
+  - `[AttributeEnabled <Boolean?>]`: Determines whether the object is enabled.
+  - `[AttributeExpire <DateTime?>]`: Expiry date in UTC.
+  - `[AttributeNotBefore <DateTime?>]`: Not before date in UTC.
+  - `[Policy <ICertificatePolicy>]`: The management policy for the certificate.
+    - `[AttributeEnabled <Boolean?>]`: Determines whether the object is enabled.
+    - `[AttributeExpire <DateTime?>]`: Expiry date in UTC.
+    - `[AttributeNotBefore <DateTime?>]`: Not before date in UTC.
+    - `[IssuerCertificateType <String>]`: Type of certificate to be requested from the issuer provider.
+    - `[IssuerName <String>]`: Name of the referenced issuer object or reserved names; for example, 'Self' or 'Unknown'.
+    - `[KeyPropExportable <Boolean?>]`: Indicates if the private key can be exported.
+    - `[KeyPropKeySize <Int32?>]`: The key size in bits. For example: 2048, 3072, or 4096 for RSA.
+    - `[KeyPropKeyType <String>]`: The key type.
+    - `[KeyPropReuseKey <Boolean?>]`: Indicates if the same key pair will be used on certificate renewal.
+    - `[LifetimeAction <ILifetimeAction[]>]`: Actions that will be performed by Key Vault over the lifetime of a certificate.
+      - `[ActionType <ActionType?>]`: The type of the action.
+      - `[TriggerDaysBeforeExpiry <Int32?>]`: Days before expiry to attempt renewal. Value should be between 1 and validity_in_months multiplied by 27. If validity_in_months is 36, then value should be between 1 and 972 (36 * 27).
+      - `[TriggerLifetimePercentage <Int32?>]`: Percentage of lifetime at which to trigger. Value should be between 1 and 99.
+    - `[SanDnsName <String[]>]`: Domain names.
+    - `[SanEmail <String[]>]`: Email addresses.
+    - `[SanUpn <String[]>]`: User principal names.
+    - `[SecretPropContentType <String>]`: The media type (MIME type).
+    - `[X509PropEku <String[]>]`: The enhanced key usage.
+    - `[X509PropKeyUsage <KeyUsageType[]>]`: List of key usages.
+    - `[X509PropSubject <String>]`: The subject name. Should be a valid X509 distinguished Name.
+    - `[X509PropValidityInMonth <Int32?>]`: The duration that the certificate is valid in months.
+  - `[Tag <ICertificateCreateParametersTags>]`: Application specific metadata in the form of key-value pairs.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
+
+#### POLICY <ICertificatePolicy>: The management policy for the certificate.
+  - `[AttributeEnabled <Boolean?>]`: Determines whether the object is enabled.
+  - `[AttributeExpire <DateTime?>]`: Expiry date in UTC.
+  - `[AttributeNotBefore <DateTime?>]`: Not before date in UTC.
+  - `[IssuerCertificateType <String>]`: Type of certificate to be requested from the issuer provider.
+  - `[IssuerName <String>]`: Name of the referenced issuer object or reserved names; for example, 'Self' or 'Unknown'.
+  - `[KeyPropExportable <Boolean?>]`: Indicates if the private key can be exported.
+  - `[KeyPropKeySize <Int32?>]`: The key size in bits. For example: 2048, 3072, or 4096 for RSA.
+  - `[KeyPropKeyType <String>]`: The key type.
+  - `[KeyPropReuseKey <Boolean?>]`: Indicates if the same key pair will be used on certificate renewal.
+  - `[LifetimeAction <ILifetimeAction[]>]`: Actions that will be performed by Key Vault over the lifetime of a certificate.
+    - `[ActionType <ActionType?>]`: The type of the action.
+    - `[TriggerDaysBeforeExpiry <Int32?>]`: Days before expiry to attempt renewal. Value should be between 1 and validity_in_months multiplied by 27. If validity_in_months is 36, then value should be between 1 and 972 (36 * 27).
+    - `[TriggerLifetimePercentage <Int32?>]`: Percentage of lifetime at which to trigger. Value should be between 1 and 99.
+  - `[SanDnsName <String[]>]`: Domain names.
+  - `[SanEmail <String[]>]`: Email addresses.
+  - `[SanUpn <String[]>]`: User principal names.
+  - `[SecretPropContentType <String>]`: The media type (MIME type).
+  - `[X509PropEku <String[]>]`: The enhanced key usage.
+  - `[X509PropKeyUsage <KeyUsageType[]>]`: List of key usages.
+  - `[X509PropSubject <String>]`: The subject name. Should be a valid X509 distinguished Name.
+  - `[X509PropValidityInMonth <Int32?>]`: The duration that the certificate is valid in months.
 
 ## RELATED LINKS
 

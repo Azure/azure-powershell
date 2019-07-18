@@ -17,6 +17,12 @@ Gets the specified Azure key vault.
 Get-AzKeyVault -SubscriptionId <String[]> [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetDeleted
+```
+Get-AzKeyVault -Name <String> -SubscriptionId <String[]> -Location <String> -InRemovedState
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### Get1
 ```
 Get-AzKeyVault -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
@@ -27,6 +33,11 @@ Get-AzKeyVault -Name <String> -ResourceGroupName <String> -SubscriptionId <Strin
 ```
 Get-AzKeyVault -ResourceGroupName <String> -SubscriptionId <String[]> [-Top <Int32>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ListDeleted
+```
+Get-AzKeyVault -SubscriptionId <String[]> -InRemovedState [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity1
@@ -91,12 +102,44 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -InRemovedState
+Signals that deleted key vaults should be returned.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: GetDeleted, ListDeleted
+Aliases:
+
+Required: True
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Location
+The location of the deleted vault.
+
+```yaml
+Type: System.String
+Parameter Sets: GetDeleted
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Name
 The name of the vault.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get1
+Parameter Sets: GetDeleted, Get1
 Aliases: VaultName
 
 Required: True
@@ -129,7 +172,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List3, Get1, List2
+Parameter Sets: List3, GetDeleted, Get1, List2, ListDeleted
 Aliases:
 
 Required: True
@@ -167,7 +210,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20180214.IVault
 
+### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20180214.IDeletedVault
+
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

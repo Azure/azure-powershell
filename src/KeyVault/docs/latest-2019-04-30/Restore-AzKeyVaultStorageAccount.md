@@ -15,14 +15,15 @@ This operation requires the storage/restore permission.
 
 ### Restore (Default)
 ```
-Restore-AzKeyVaultStorageAccount [-VaultBaseUrl <String>] [-Parameter <IStorageRestoreParameters>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Restore-AzKeyVaultStorageAccount [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
+ [-Parameter <IStorageRestoreParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### RestoreExpanded
 ```
-Restore-AzKeyVaultStorageAccount -StorageBundleBackup <Byte[]> [-VaultBaseUrl <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Restore-AzKeyVaultStorageAccount -StorageBundleBackupInputFile <String> [-KeyVaultDnsSuffix <String>]
+ [-VaultName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,8 +68,25 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -KeyVaultDnsSuffix
+MISSING DESCRIPTION 06
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Parameter
 The secret restore parameters.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api70.IStorageRestoreParameters
@@ -83,11 +101,11 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -StorageBundleBackup
-The backup blob associated with a storage account.
+### -StorageBundleBackupInputFile
+Input File for StorageBundleBackup (The backup blob associated with a storage account.)
 
 ```yaml
-Type: System.Byte[]
+Type: System.String
 Parameter Sets: RestoreExpanded
 Aliases:
 
@@ -99,7 +117,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VaultBaseUrl
+### -VaultName
 MISSING DESCRIPTION 06
 
 ```yaml
@@ -164,6 +182,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Restore-AzKeyVaultManagedStorageAccount
 
 ### Undo-AzKeyVaultManagedStorageAccountRemoval
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <IStorageRestoreParameters>: The secret restore parameters.
+  - `StorageBundleBackup <Byte[]>`: The backup blob associated with a storage account.
 
 ## RELATED LINKS
 

@@ -15,14 +15,14 @@ This operation requires the certificates/setissuers permission.
 
 ### Update (Default)
 ```
-Update-AzKeyVaultCertificateIssuer -IssuerName <String> [-VaultBaseUrl <String>]
+Update-AzKeyVaultCertificateIssuer -IssuerName <String> [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
  [-Parameter <ICertificateIssuerUpdateParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### UpdateExpanded
 ```
-Update-AzKeyVaultCertificateIssuer -IssuerName <String> [-VaultBaseUrl <String>]
+Update-AzKeyVaultCertificateIssuer -IssuerName <String> [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
  [-CredentialsAccountId <String>] [-CredentialsPassword <String>] [-Enabled]
  [-OrgDetailAdminDetail <IAdministratorDetails[]>] [-OrgDetailId <String>] [-Provider <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -30,17 +30,17 @@ Update-AzKeyVaultCertificateIssuer -IssuerName <String> [-VaultBaseUrl <String>]
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzKeyVaultCertificateIssuer -InputObject <IKeyVaultIdentity> [-VaultBaseUrl <String>]
- [-CredentialsAccountId <String>] [-CredentialsPassword <String>] [-Enabled]
+Update-AzKeyVaultCertificateIssuer -InputObject <IKeyVaultIdentity> [-KeyVaultDnsSuffix <String>]
+ [-VaultName <String>] [-CredentialsAccountId <String>] [-CredentialsPassword <String>] [-Enabled]
  [-OrgDetailAdminDetail <IAdministratorDetails[]>] [-OrgDetailId <String>] [-Provider <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
 ```
-Update-AzKeyVaultCertificateIssuer -InputObject <IKeyVaultIdentity> [-VaultBaseUrl <String>]
- [-Parameter <ICertificateIssuerUpdateParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzKeyVaultCertificateIssuer -InputObject <IKeyVaultIdentity> [-KeyVaultDnsSuffix <String>]
+ [-VaultName <String>] [-Parameter <ICertificateIssuerUpdateParameters>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -165,8 +165,25 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -KeyVaultDnsSuffix
+MISSING DESCRIPTION 06
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -OrgDetailAdminDetail
 Details of the organization administrator.
+To construct, see NOTES section for ORGDETAILADMINDETAIL properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IAdministratorDetails[]
@@ -199,6 +216,7 @@ Dynamic: False
 
 ### -Parameter
 The certificate issuer update parameters.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.ICertificateIssuerUpdateParameters
@@ -229,7 +247,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VaultBaseUrl
+### -VaultName
 MISSING DESCRIPTION 06
 
 ```yaml
@@ -283,15 +301,38 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.ICertificateIssuerUpdateParameters
-
 ### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.ICertificateIssuerUpdateParameters
 
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IIssuerBundle
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### ORGDETAILADMINDETAIL <IAdministratorDetails[]>: Details of the organization administrator.
+  - `[EmailAddress <String>]`: Email address.
+  - `[FirstName <String>]`: First name.
+  - `[LastName <String>]`: Last name.
+  - `[Phone <String>]`: Phone number.
+
+#### PARAMETER <ICertificateIssuerUpdateParameters>: The certificate issuer update parameters.
+  - `[AttributeEnabled <Boolean?>]`: Determines whether the issuer is enabled.
+  - `[CredentialsAccountId <String>]`: The user name/account name/account id.
+  - `[CredentialsPassword <String>]`: The password/secret/account key.
+  - `[OrgDetailAdminDetail <IAdministratorDetails[]>]`: Details of the organization administrator.
+    - `[EmailAddress <String>]`: Email address.
+    - `[FirstName <String>]`: First name.
+    - `[LastName <String>]`: Last name.
+    - `[Phone <String>]`: Phone number.
+  - `[OrgDetailId <String>]`: Id of the organization.
+  - `[Provider <String>]`: The issuer provider.
 
 ## RELATED LINKS
 

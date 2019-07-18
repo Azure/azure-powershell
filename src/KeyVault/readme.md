@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the KeyVault service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.4.0 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.6.0 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -51,13 +51,37 @@ require:
   - $(this-folder)/../readme.azure.md
   - $(repo)/specification/keyvault/resource-manager/readme.enable-multi-api.md
   - $(repo)/specification/keyvault/resource-manager/readme.md
-  - $(repo)/specification/keyvault/data-plane/readme.enable-multi-api.md
-  - $(repo)/specification/keyvault/data-plane/readme.md
+  - https://github.com/cormacpayne/azure-rest-api-specs/blob/multiapi-keyvault/specification/keyvault/data-plane/readme.enable-multi-api.md
+  - https://github.com/cormacpayne/azure-rest-api-specs/blob/multiapi-keyvault/specification/keyvault/data-plane/readme.md
 
 title: KeyVault
 module-version: 0.0.1
 
 directive:
+  - where:
+      verb: Clear|Get
+      subject: VaultDeleted
+    hide: true
+  - where:
+      verb: Clear|Get
+      subject: DeletedCertificate
+    hide: true
+  - where:
+      verb: Clear|Get
+      subject: DeletedKey
+    hide: true
+  - where:
+      verb: Clear|Get
+      subject: DeletedSecret
+    hide: true
+  - where:
+      verb: Clear|Get
+      subject: DeletedStorageAccount
+    hide: true
+  - where:
+      verb: Get
+      subject: DeletedStorageDeletedSasDefinition
+    hide: true
   - where:
       verb: New
       subject: Certificate
@@ -285,4 +309,8 @@ directive:
       parameter-name: ResourceId
     set:
       alias: AccountResourceId
+  - where:
+      parameter-name: Maxresult
+    set:
+      parameter-name: MaxResult
 ```

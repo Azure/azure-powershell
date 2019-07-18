@@ -16,27 +16,27 @@ This operation requires the keys/verify permission.
 
 ### Verify (Default)
 ```
-Test-AzKeyVaultKey -Name <String> -Version <String> [-VaultBaseUrl <String>]
+Test-AzKeyVaultKey -Name <String> -Version <String> [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
  [-Parameter <IKeyVerifyParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### VerifyExpanded
 ```
-Test-AzKeyVaultKey -Name <String> -Version <String> -Algorithm <JsonWebKeySignatureAlgorithm> -Digest <Byte[]>
- -Signature <Byte[]> [-VaultBaseUrl <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Test-AzKeyVaultKey -Name <String> -Version <String> -Algorithm <JsonWebKeySignatureAlgorithm>
+ -DigestInputFile <String> -SignatureInputFile <String> [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### VerifyViaIdentityExpanded
 ```
-Test-AzKeyVaultKey -InputObject <IKeyVaultIdentity> -Algorithm <JsonWebKeySignatureAlgorithm> -Digest <Byte[]>
- -Signature <Byte[]> [-VaultBaseUrl <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Test-AzKeyVaultKey -InputObject <IKeyVaultIdentity> -Algorithm <JsonWebKeySignatureAlgorithm>
+ -DigestInputFile <String> -SignatureInputFile <String> [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### VerifyViaIdentity
 ```
-Test-AzKeyVaultKey -InputObject <IKeyVaultIdentity> [-VaultBaseUrl <String>]
+Test-AzKeyVaultKey -InputObject <IKeyVaultIdentity> [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
  [-Parameter <IKeyVerifyParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -100,11 +100,11 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Digest
-The digest used for signing.
+### -DigestInputFile
+Input File for Digest (The digest used for signing.)
 
 ```yaml
-Type: System.Byte[]
+Type: System.String
 Parameter Sets: VerifyExpanded, VerifyViaIdentityExpanded
 Aliases:
 
@@ -132,6 +132,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -KeyVaultDnsSuffix
+MISSING DESCRIPTION 06
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Name
 The name of the key.
 
@@ -150,6 +166,7 @@ Dynamic: False
 
 ### -Parameter
 The key verify parameters.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IKeyVerifyParameters
@@ -164,11 +181,11 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Signature
-The signature to be verified.
+### -SignatureInputFile
+Input File for Signature (The signature to be verified.)
 
 ```yaml
-Type: System.Byte[]
+Type: System.String
 Parameter Sets: VerifyExpanded, VerifyViaIdentityExpanded
 Aliases:
 
@@ -180,7 +197,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VaultBaseUrl
+### -VaultName
 MISSING DESCRIPTION 06
 
 ```yaml
@@ -250,15 +267,25 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IKeyVerifyParameters
-
 ### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IKeyVerifyParameters
 
 ## OUTPUTS
 
 ### System.Management.Automation.SwitchParameter
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <IKeyVerifyParameters>: The key verify parameters.
+  - `Algorithm <JsonWebKeySignatureAlgorithm>`: The signing/verification algorithm. For more information on possible algorithm types, see JsonWebKeySignatureAlgorithm.
+  - `Digest <Byte[]>`: The digest used for signing.
+  - `Signature <Byte[]>`: The signature to be verified.
 
 ## RELATED LINKS
 

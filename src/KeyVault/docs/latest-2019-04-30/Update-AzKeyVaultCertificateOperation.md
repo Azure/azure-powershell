@@ -15,28 +15,30 @@ This operation requires the certificates/update permission.
 
 ### Update (Default)
 ```
-Update-AzKeyVaultCertificateOperation -CertificateName <String> [-VaultBaseUrl <String>]
- [-CertificateOperation <ICertificateOperationUpdateParameter>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-AzKeyVaultCertificateOperation -CertificateName <String> [-KeyVaultDnsSuffix <String>]
+ [-VaultName <String>] [-CertificateOperation <ICertificateOperationUpdateParameter>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
 ```
 Update-AzKeyVaultCertificateOperation -CertificateName <String> -CancellationRequested
- [-VaultBaseUrl <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-KeyVaultDnsSuffix <String>] [-VaultName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzKeyVaultCertificateOperation -InputObject <IKeyVaultIdentity> -CancellationRequested
- [-VaultBaseUrl <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-KeyVaultDnsSuffix <String>] [-VaultName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
 ```
-Update-AzKeyVaultCertificateOperation -InputObject <IKeyVaultIdentity> [-VaultBaseUrl <String>]
- [-CertificateOperation <ICertificateOperationUpdateParameter>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-AzKeyVaultCertificateOperation -InputObject <IKeyVaultIdentity> [-KeyVaultDnsSuffix <String>]
+ [-VaultName <String>] [-CertificateOperation <ICertificateOperationUpdateParameter>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -99,6 +101,7 @@ Dynamic: False
 
 ### -CertificateOperation
 The certificate operation update parameters.
+To construct, see NOTES section for CERTIFICATEOPERATION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.ICertificateOperationUpdateParameter
@@ -145,7 +148,23 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VaultBaseUrl
+### -KeyVaultDnsSuffix
+MISSING DESCRIPTION 06
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -VaultName
 MISSING DESCRIPTION 06
 
 ```yaml
@@ -199,9 +218,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.ICertificateOperationUpdateParameter
-
 ### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.ICertificateOperationUpdateParameter
 
 ## OUTPUTS
 
@@ -210,6 +229,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### Stop-AzKeyVaultCertificateOperation
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### CERTIFICATEOPERATION <ICertificateOperationUpdateParameter>: The certificate operation update parameters.
+  - `CancellationRequested <Boolean>`: Indicates if cancellation was requested on the certificate operation.
 
 ## RELATED LINKS
 

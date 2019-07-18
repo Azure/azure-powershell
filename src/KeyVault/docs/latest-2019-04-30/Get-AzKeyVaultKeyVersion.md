@@ -15,14 +15,14 @@ This operation requires the keys/list permission.
 
 ### Get (Default)
 ```
-Get-AzKeyVaultKeyVersion -KeyName <String> [-VaultBaseUrl <String>] [-Maxresult <Int32>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzKeyVaultKeyVersion -KeyName <String> [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
+ [-MaxResult <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzKeyVaultKeyVersion -InputObject <IKeyVaultIdentity> [-VaultBaseUrl <String>] [-Maxresult <Int32>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzKeyVaultKeyVersion -InputObject <IKeyVaultIdentity> [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
+ [-MaxResult <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -99,7 +99,23 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Maxresult
+### -KeyVaultDnsSuffix
+MISSING DESCRIPTION 06
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -MaxResult
 Maximum number of results to return in a page.
 If not specified the service will return up to 25 results.
 
@@ -116,7 +132,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VaultBaseUrl
+### -VaultName
 MISSING DESCRIPTION 06
 
 ```yaml
@@ -144,6 +160,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IKeyItem
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

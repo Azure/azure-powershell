@@ -14,7 +14,8 @@ This operation requires the certificates/managecontacts permission.
 ## SYNTAX
 
 ```
-Get-AzKeyVaultCertificateContact [-VaultBaseUrl <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzKeyVaultCertificateContact [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,7 +60,23 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VaultBaseUrl
+### -KeyVaultDnsSuffix
+MISSING DESCRIPTION 06
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -VaultName
 MISSING DESCRIPTION 06
 
 ```yaml
@@ -85,6 +102,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IContacts
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

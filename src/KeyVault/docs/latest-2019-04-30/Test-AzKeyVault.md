@@ -128,6 +128,7 @@ Dynamic: False
 
 ### -VaultName
 The parameters used to check the availability of the vault name.
+To construct, see NOTES section for VAULTNAME properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20180214.IVaultCheckNameAvailabilityParameters
@@ -180,15 +181,23 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20180214.IVaultCheckNameAvailabilityParameters
-
 ### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20180214.IVaultCheckNameAvailabilityParameters
 
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20180214.ICheckNameAvailabilityResult
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### VAULTNAME <IVaultCheckNameAvailabilityParameters>: The parameters used to check the availability of the vault name.
+  - `Name <String>`: The vault name.
 
 ## RELATED LINKS
 

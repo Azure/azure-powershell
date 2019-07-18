@@ -13,16 +13,34 @@ This operation requires the certificates/get permission.
 
 ## SYNTAX
 
-### Get (Default)
+### GetDeleted (Default)
 ```
-Get-AzKeyVaultCertificate -Name <String> -Version <String> [-VaultBaseUrl <String>]
+Get-AzKeyVaultCertificate -InRemovedState [-VaultBaseUrl <String>] [-MaxResult <Int32>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzKeyVaultCertificate -InputObject <IKeyVaultIdentity> [-VaultBaseUrl <String>]
+Get-AzKeyVaultCertificate -InputObject <IKeyVaultIdentity> [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzKeyVaultCertificate -Name <String> -Version <String> [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ListVersions
+```
+Get-AzKeyVaultCertificate -Name <String> -IncludeVersions [-VaultBaseUrl <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetDeleted1
+```
+Get-AzKeyVaultCertificate -Name <String> -InRemovedState [-VaultBaseUrl <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,6 +85,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -IncludeVersions
+Signals to include the versions of the certificate in the output.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ListVersions
+Aliases:
+
+Required: True
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -InputObject
 Identity Parameter
 
@@ -83,12 +117,61 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -InRemovedState
+Signals that deleted key vault certificates should be returned.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: GetDeleted, GetDeleted1
+Aliases:
+
+Required: True
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -KeyVaultDnsSuffix
+MISSING DESCRIPTION 06
+
+```yaml
+Type: System.String
+Parameter Sets: GetViaIdentity, Get
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -MaxResult
+Maximum number of results to return in a page.
+If not specified the service will return up to 25 results.
+
+```yaml
+Type: System.Int32
+Parameter Sets: GetDeleted
+Aliases:
+
+Required: False
+Position: Named
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Name
 The name of the certificate in the given vault.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, ListVersions, GetDeleted1
 Aliases: CertificateName
 
 Required: True
@@ -104,7 +187,23 @@ MISSING DESCRIPTION 06
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: GetDeleted, ListVersions, GetDeleted1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -VaultName
+MISSING DESCRIPTION 06
+
+```yaml
+Type: System.String
+Parameter Sets: GetViaIdentity, Get
 Aliases:
 
 Required: False
@@ -142,7 +241,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.ICertificateBundle
 
+### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IDeletedCertificateItem
+
+### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IDeletedCertificateBundle
+
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

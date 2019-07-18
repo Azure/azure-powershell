@@ -15,31 +15,30 @@ This operation requires the certificates/create permission.
 
 ### Merge (Default)
 ```
-Merge-AzKeyVaultCertificate -Name <String> [-VaultBaseUrl <String>] [-Parameter <ICertificateMergeParameters>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Merge-AzKeyVaultCertificate -Name <String> [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
+ [-Parameter <ICertificateMergeParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### MergeExpanded
 ```
-Merge-AzKeyVaultCertificate -Name <String> -X509Certificates <Byte[][]> [-VaultBaseUrl <String>] [-Enabled]
- [-Expire <DateTime>] [-NotBefore <DateTime>] [-RecoveryLevel <DeletionRecoveryLevel>]
- [-Tag <ICertificateMergeParametersTags>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Merge-AzKeyVaultCertificate -Name <String> -X509Certificate <Byte[][]> [-KeyVaultDnsSuffix <String>]
+ [-VaultName <String>] [-Enabled] [-Expire <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### MergeViaIdentityExpanded
 ```
-Merge-AzKeyVaultCertificate -InputObject <IKeyVaultIdentity> -X509Certificates <Byte[][]>
- [-VaultBaseUrl <String>] [-Enabled] [-Expire <DateTime>] [-NotBefore <DateTime>]
- [-RecoveryLevel <DeletionRecoveryLevel>] [-Tag <ICertificateMergeParametersTags>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Merge-AzKeyVaultCertificate -InputObject <IKeyVaultIdentity> -X509Certificate <Byte[][]>
+ [-KeyVaultDnsSuffix <String>] [-VaultName <String>] [-Enabled] [-Expire <DateTime>] [-NotBefore <DateTime>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### MergeViaIdentity
 ```
-Merge-AzKeyVaultCertificate -InputObject <IKeyVaultIdentity> [-VaultBaseUrl <String>]
- [-Parameter <ICertificateMergeParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Merge-AzKeyVaultCertificate -InputObject <IKeyVaultIdentity> [-KeyVaultDnsSuffix <String>]
+ [-VaultName <String>] [-Parameter <ICertificateMergeParameters>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -132,6 +131,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -KeyVaultDnsSuffix
+MISSING DESCRIPTION 06
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Name
 The name of the certificate.
 
@@ -166,6 +181,7 @@ Dynamic: False
 
 ### -Parameter
 The certificate merge parameters
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.ICertificateMergeParameters
@@ -180,28 +196,11 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -RecoveryLevel
-Reflects the deletion recovery level currently in effect for certificates in the current vault.
-If it contains 'Purgeable', the certificate can be permanently deleted by a privileged user; otherwise, only the system can purge the certificate, at the end of the retention interval.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Support.DeletionRecoveryLevel
-Parameter Sets: MergeExpanded, MergeViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Tag
 Application specific metadata in the form of key-value pairs.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.ICertificateMergeParametersTags
+Type: System.Collections.Hashtable
 Parameter Sets: MergeExpanded, MergeViaIdentityExpanded
 Aliases:
 
@@ -213,7 +212,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VaultBaseUrl
+### -VaultName
 MISSING DESCRIPTION 06
 
 ```yaml
@@ -229,7 +228,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -X509Certificates
+### -X509Certificate
 The certificate or the certificate chain to merge.
 
 ```yaml
@@ -283,15 +282,28 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.ICertificateMergeParameters
-
 ### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.ICertificateMergeParameters
 
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.ICertificateBundle
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <ICertificateMergeParameters>: The certificate merge parameters
+  - `X509Certificate <Byte[][]>`: The certificate or the certificate chain to merge.
+  - `[AttributeEnabled <Boolean?>]`: Determines whether the object is enabled.
+  - `[AttributeExpire <DateTime?>]`: Expiry date in UTC.
+  - `[AttributeNotBefore <DateTime?>]`: Not before date in UTC.
+  - `[Tag <ICertificateMergeParametersTags>]`: Application specific metadata in the form of key-value pairs.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
 

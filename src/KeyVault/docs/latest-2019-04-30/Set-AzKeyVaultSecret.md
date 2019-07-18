@@ -16,29 +16,15 @@ This operation requires the secrets/set permission.
 
 ### Set (Default)
 ```
-Set-AzKeyVaultSecret -Name <String> [-VaultBaseUrl <String>] [-Parameter <ISecretSetParameters>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzKeyVaultSecret -Name <String> [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
+ [-Parameter <ISecretSetParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### SetExpanded
 ```
-Set-AzKeyVaultSecret -Name <String> -SecretValue <String> [-VaultBaseUrl <String>] [-ContentType <String>]
- [-Enabled] [-Expire <DateTime>] [-NotBefore <DateTime>] [-RecoveryLevel <DeletionRecoveryLevel>]
- [-Tag <ISecretSetParametersTags>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### SetViaIdentityExpanded
-```
-Set-AzKeyVaultSecret -InputObject <IKeyVaultIdentity> -SecretValue <String> [-VaultBaseUrl <String>]
- [-ContentType <String>] [-Enabled] [-Expire <DateTime>] [-NotBefore <DateTime>]
- [-RecoveryLevel <DeletionRecoveryLevel>] [-Tag <ISecretSetParametersTags>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### SetViaIdentity
-```
-Set-AzKeyVaultSecret -InputObject <IKeyVaultIdentity> [-VaultBaseUrl <String>]
- [-Parameter <ISecretSetParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzKeyVaultSecret -Name <String> -SecretValue <String> [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
+ [-ContentType <String>] [-Enabled] [-Expire <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,7 +59,7 @@ Type of the secret value such as a password.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded, SetViaIdentityExpanded
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: False
@@ -105,7 +91,7 @@ Determines whether the object is enabled.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: SetExpanded, SetViaIdentityExpanded
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: False
@@ -121,7 +107,7 @@ Expiry date in UTC.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: SetExpanded, SetViaIdentityExpanded
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: False
@@ -132,18 +118,18 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
+### -KeyVaultDnsSuffix
+MISSING DESCRIPTION 06
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentity
-Parameter Sets: SetViaIdentityExpanded, SetViaIdentity
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -153,7 +139,7 @@ The name of the secret.
 
 ```yaml
 Type: System.String
-Parameter Sets: Set, SetExpanded
+Parameter Sets: (All)
 Aliases: SecretName
 
 Required: True
@@ -169,7 +155,7 @@ Not before date in UTC.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: SetExpanded, SetViaIdentityExpanded
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: False
@@ -182,10 +168,11 @@ Dynamic: False
 
 ### -Parameter
 The secret set parameters.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.ISecretSetParameters
-Parameter Sets: Set, SetViaIdentity
+Parameter Sets: Set
 Aliases:
 
 Required: False
@@ -196,29 +183,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -RecoveryLevel
-Reflects the deletion recovery level currently in effect for secrets in the current vault.
-If it contains 'Purgeable', the secret can be permanently deleted by a privileged user; otherwise, only the system can purge the secret, at the end of the retention interval.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Support.DeletionRecoveryLevel
-Parameter Sets: SetExpanded, SetViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -SecretValue
 The value of the secret.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded, SetViaIdentityExpanded
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: True
@@ -233,8 +203,8 @@ Dynamic: False
 Application specific metadata in the form of key-value pairs.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.ISecretSetParametersTags
-Parameter Sets: SetExpanded, SetViaIdentityExpanded
+Type: System.Collections.Hashtable
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: False
@@ -245,7 +215,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VaultBaseUrl
+### -VaultName
 MISSING DESCRIPTION 06
 
 ```yaml
@@ -301,13 +271,25 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.ISecretSetParameters
 
-### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.ISecretBundle
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <ISecretSetParameters>: The secret set parameters.
+  - `Value <String>`: The value of the secret.
+  - `[AttributeEnabled <Boolean?>]`: Determines whether the object is enabled.
+  - `[AttributeExpire <DateTime?>]`: Expiry date in UTC.
+  - `[AttributeNotBefore <DateTime?>]`: Not before date in UTC.
+  - `[ContentType <String>]`: Type of the secret value such as a password.
+  - `[Tag <ISecretSetParametersTags>]`: Application specific metadata in the form of key-value pairs.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
 

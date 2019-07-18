@@ -16,27 +16,27 @@ This operation requires the keys/update permission.
 
 ### Update (Default)
 ```
-Update-AzKeyVaultKey -Name <String> -Version <String> [-VaultBaseUrl <String>]
+Update-AzKeyVaultKey -Name <String> -Version <String> [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
  [-Parameter <IKeyUpdateParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
 ```
-Update-AzKeyVaultKey -Name <String> -Version <String> [-VaultBaseUrl <String>] [-Enabled] [-Expire <DateTime>]
- [-NotBefore <DateTime>] [-Op <JsonWebKeyOperation[]>] [-RecoveryLevel <DeletionRecoveryLevel>]
- [-Tag <IKeyUpdateParametersTags>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzKeyVaultKey -Name <String> -Version <String> [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
+ [-Enabled] [-Expire <DateTime>] [-KeyOp <JsonWebKeyOperation[]>] [-NotBefore <DateTime>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzKeyVaultKey -InputObject <IKeyVaultIdentity> [-VaultBaseUrl <String>] [-Enabled] [-Expire <DateTime>]
- [-NotBefore <DateTime>] [-Op <JsonWebKeyOperation[]>] [-RecoveryLevel <DeletionRecoveryLevel>]
- [-Tag <IKeyUpdateParametersTags>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzKeyVaultKey -InputObject <IKeyVaultIdentity> [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
+ [-Enabled] [-Expire <DateTime>] [-KeyOp <JsonWebKeyOperation[]>] [-NotBefore <DateTime>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
 ```
-Update-AzKeyVaultKey -InputObject <IKeyVaultIdentity> [-VaultBaseUrl <String>]
+Update-AzKeyVaultKey -InputObject <IKeyVaultIdentity> [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
  [-Parameter <IKeyUpdateParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -131,6 +131,39 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -KeyOp
+Json web key operations.
+For more information on possible key operations, see JsonWebKeyOperation.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Support.JsonWebKeyOperation[]
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -KeyVaultDnsSuffix
+MISSING DESCRIPTION 06
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Name
 The name of key to update.
 
@@ -163,25 +196,9 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Op
-Json web key operations.
-For more information on possible key operations, see JsonWebKeyOperation.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Support.JsonWebKeyOperation[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases: KeyOp
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Parameter
 The key update parameters.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IKeyUpdateParameters
@@ -196,28 +213,11 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -RecoveryLevel
-Reflects the deletion recovery level currently in effect for keys in the current vault.
-If it contains 'Purgeable' the key can be permanently deleted by a privileged user; otherwise, only the system can purge the key, at the end of the retention interval.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Support.DeletionRecoveryLevel
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Tag
 Application specific metadata in the form of key-value pairs.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IKeyUpdateParametersTags
+Type: System.Collections.Hashtable
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -229,7 +229,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VaultBaseUrl
+### -VaultName
 MISSING DESCRIPTION 06
 
 ```yaml
@@ -299,15 +299,28 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IKeyUpdateParameters
-
 ### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IKeyUpdateParameters
 
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IKeyBundle
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <IKeyUpdateParameters>: The key update parameters.
+  - `[AttributeEnabled <Boolean?>]`: Determines whether the object is enabled.
+  - `[AttributeExpire <DateTime?>]`: Expiry date in UTC.
+  - `[AttributeNotBefore <DateTime?>]`: Not before date in UTC.
+  - `[KeyOp <JsonWebKeyOperation[]>]`: Json web key operations. For more information on possible key operations, see JsonWebKeyOperation.
+  - `[Tag <IKeyUpdateParametersTags>]`: Application specific metadata in the form of key-value pairs.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
 

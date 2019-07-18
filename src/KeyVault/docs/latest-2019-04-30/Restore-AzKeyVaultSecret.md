@@ -15,14 +15,15 @@ This operation requires the secrets/restore permission.
 
 ### Restore (Default)
 ```
-Restore-AzKeyVaultSecret [-VaultBaseUrl <String>] [-Parameter <ISecretRestoreParameters>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Restore-AzKeyVaultSecret [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
+ [-Parameter <ISecretRestoreParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### RestoreExpanded
 ```
-Restore-AzKeyVaultSecret -BundleBackup <Byte[]> [-VaultBaseUrl <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Restore-AzKeyVaultSecret -SecretBundleBackupInputFile <String> [-KeyVaultDnsSuffix <String>]
+ [-VaultName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,22 +52,6 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -BundleBackup
-The backup blob associated with a secret bundle.
-
-```yaml
-Type: System.Byte[]
-Parameter Sets: RestoreExpanded
-Aliases: SecretBundleBackup
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -83,8 +68,25 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -KeyVaultDnsSuffix
+MISSING DESCRIPTION 06
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Parameter
 The secret restore parameters.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.ISecretRestoreParameters
@@ -99,7 +101,23 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VaultBaseUrl
+### -SecretBundleBackupInputFile
+Input File for SecretBundleBackup (The backup blob associated with a secret bundle.)
+
+```yaml
+Type: System.String
+Parameter Sets: RestoreExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -VaultName
 MISSING DESCRIPTION 06
 
 ```yaml
@@ -160,6 +178,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.ISecretBundle
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <ISecretRestoreParameters>: The secret restore parameters.
+  - `SecretBundleBackup <Byte[]>`: The backup blob associated with a secret bundle.
 
 ## RELATED LINKS
 

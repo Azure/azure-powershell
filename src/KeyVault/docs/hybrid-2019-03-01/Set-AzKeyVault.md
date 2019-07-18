@@ -24,23 +24,8 @@ Set-AzKeyVault -Name <String> -ResourceGroupName <String> -SubscriptionId <Strin
 Set-AzKeyVault -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Location <String>
  -SkuName <SkuName> -TenantId <String> [-AccessPolicy <IAccessPolicyEntry[]>] [-CreateMode <CreateMode>]
  [-EnablePurgeProtection] [-EnableSoftDelete] [-EnabledForDeployment] [-EnabledForDiskEncryption]
- [-EnabledForTemplateDeployment] [-Tag <IVaultCreateOrUpdateParametersTags>] [-Uri <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded1
-```
-Set-AzKeyVault -InputObject <IKeyVaultIdentity> -Location <String> -SkuName <SkuName> -TenantId <String>
- [-AccessPolicy <IAccessPolicyEntry[]>] [-CreateMode <CreateMode>] [-EnablePurgeProtection]
- [-EnableSoftDelete] [-EnabledForDeployment] [-EnabledForDiskEncryption] [-EnabledForTemplateDeployment]
- [-Tag <IVaultCreateOrUpdateParametersTags>] [-Uri <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateViaIdentity1
-```
-Set-AzKeyVault -InputObject <IKeyVaultIdentity> [-Parameter <IVaultCreateOrUpdateParameters>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-EnabledForTemplateDeployment] [-Tag <Hashtable>] [-VaultUri <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,10 +58,11 @@ An array of 0 to 16 identities that have access to the key vault.
 All identities in the array must use the same tenant ID as the key vault's tenant ID.
 When `createMode` is set to `recover`, access policies are not required.
 Otherwise, access policies are required.
+To construct, see NOTES section for ACCESSPOLICY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IAccessPolicyEntry[]
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -92,7 +78,7 @@ The vault's create mode to indicate whether the vault need to be recovered or no
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Support.CreateMode
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -124,7 +110,7 @@ Property to specify whether Azure Virtual Machines are permitted to retrieve cer
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -140,7 +126,7 @@ Property to specify whether Azure Disk Encryption is permitted to retrieve secre
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -156,7 +142,7 @@ Property to specify whether Azure Resource Manager is permitted to retrieve secr
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -175,7 +161,7 @@ Enabling this functionality is irreversible - that is, the property does not acc
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -193,7 +179,7 @@ Enabling this functionality is irreversible - that is, the property does not acc
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -204,28 +190,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentity
-Parameter Sets: UpdateViaIdentityExpanded1, UpdateViaIdentity1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Location
 The supported Azure location where the key vault should be created.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: True
@@ -241,7 +211,7 @@ Name of the vault
 
 ```yaml
 Type: System.String
-Parameter Sets: Update1, UpdateExpanded1
+Parameter Sets: (All)
 Aliases: VaultName
 
 Required: True
@@ -254,10 +224,11 @@ Dynamic: False
 
 ### -Parameter
 Parameters for creating or updating a vault
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IVaultCreateOrUpdateParameters
-Parameter Sets: Update1, UpdateViaIdentity1
+Parameter Sets: Update1
 Aliases:
 
 Required: False
@@ -273,7 +244,7 @@ The name of the Resource Group to which the server belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update1, UpdateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -289,7 +260,7 @@ SKU name to specify whether the key vault is a standard vault or a premium vault
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Support.SkuName
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: True
@@ -306,7 +277,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update1, UpdateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -321,8 +292,8 @@ Dynamic: False
 The tags that will be assigned to the key vault.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IVaultCreateOrUpdateParametersTags
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Type: System.Collections.Hashtable
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: False
@@ -338,7 +309,7 @@ The Azure Active Directory tenant ID that should be used for authenticating requ
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
+Parameter Sets: UpdateExpanded1
 Aliases:
 
 Required: True
@@ -349,13 +320,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Uri
+### -VaultUri
 The URI of the vault for performing operations on keys and secrets.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateViaIdentityExpanded1
-Aliases: VaultUri
+Parameter Sets: UpdateExpanded1
+Aliases:
 
 Required: False
 Position: Named
@@ -405,13 +376,47 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IVaultCreateOrUpdateParameters
 
-### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IVault
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### ACCESSPOLICY <IAccessPolicyEntry[]>: An array of 0 to 16 identities that have access to the key vault. All identities in the array must use the same tenant ID as the key vault's tenant ID. When `createMode` is set to `recover`, access policies are not required. Otherwise, access policies are required.
+  - `ObjectId <String>`: The object ID of a user, service principal or security group in the Azure Active Directory tenant for the vault. The object ID must be unique for the list of access policies.
+  - `TenantId <String>`: The Azure Active Directory tenant ID that should be used for authenticating requests to the key vault.
+  - `[ApplicationId <String>]`:  Application ID of the client making request on behalf of a principal
+  - `[PermissionCertificate <CertificatePermissions[]>]`: Permissions to certificates
+  - `[PermissionKey <KeyPermissions[]>]`: Permissions to keys
+  - `[PermissionSecret <SecretPermissions[]>]`: Permissions to secrets
+  - `[PermissionStorage <StoragePermissions[]>]`: Permissions to storage accounts
+
+#### PARAMETER <IVaultCreateOrUpdateParameters>: Parameters for creating or updating a vault
+  - `Location <String>`: The supported Azure location where the key vault should be created.
+  - `SkuName <SkuName>`: SKU name to specify whether the key vault is a standard vault or a premium vault.
+  - `TenantId <String>`: The Azure Active Directory tenant ID that should be used for authenticating requests to the key vault.
+  - `[AccessPolicy <IAccessPolicyEntry[]>]`: An array of 0 to 16 identities that have access to the key vault. All identities in the array must use the same tenant ID as the key vault's tenant ID. When `createMode` is set to `recover`, access policies are not required. Otherwise, access policies are required.
+    - `ObjectId <String>`: The object ID of a user, service principal or security group in the Azure Active Directory tenant for the vault. The object ID must be unique for the list of access policies.
+    - `TenantId <String>`: The Azure Active Directory tenant ID that should be used for authenticating requests to the key vault.
+    - `[ApplicationId <String>]`:  Application ID of the client making request on behalf of a principal
+    - `[PermissionCertificate <CertificatePermissions[]>]`: Permissions to certificates
+    - `[PermissionKey <KeyPermissions[]>]`: Permissions to keys
+    - `[PermissionSecret <SecretPermissions[]>]`: Permissions to secrets
+    - `[PermissionStorage <StoragePermissions[]>]`: Permissions to storage accounts
+  - `[CreateMode <CreateMode?>]`: The vault's create mode to indicate whether the vault need to be recovered or not.
+  - `[EnablePurgeProtection <Boolean?>]`: Property specifying whether protection against purge is enabled for this vault. Setting this property to true activates protection against purge for this vault and its content - only the Key Vault service may initiate a hard, irrecoverable deletion. The setting is effective only if soft delete is also enabled. Enabling this functionality is irreversible - that is, the property does not accept false as its value.
+  - `[EnableSoftDelete <Boolean?>]`: Property specifying whether recoverable deletion is enabled for this key vault. Setting this property to true activates the soft delete feature, whereby vaults or vault entities can be recovered after deletion. Enabling this functionality is irreversible - that is, the property does not accept false as its value.
+  - `[EnabledForDeployment <Boolean?>]`: Property to specify whether Azure Virtual Machines are permitted to retrieve certificates stored as secrets from the key vault.
+  - `[EnabledForDiskEncryption <Boolean?>]`: Property to specify whether Azure Disk Encryption is permitted to retrieve secrets from the vault and unwrap keys.
+  - `[EnabledForTemplateDeployment <Boolean?>]`: Property to specify whether Azure Resource Manager is permitted to retrieve secrets from the key vault.
+  - `[Tag <IVaultCreateOrUpdateParametersTags>]`: The tags that will be assigned to the key vault.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
+  - `[VaultUri <String>]`: The URI of the vault for performing operations on keys and secrets.
 
 ## RELATED LINKS
 

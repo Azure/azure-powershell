@@ -15,28 +15,29 @@ This operation requires the storage/regeneratekey permission.
 
 ### Regenerate (Default)
 ```
-New-AzKeyVaultStorageAccountKey -StorageAccountName <String> [-VaultBaseUrl <String>]
- [-Parameter <IStorageAccountRegenerteKeyParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzKeyVaultStorageAccountKey -StorageAccountName <String> [-KeyVaultDnsSuffix <String>]
+ [-VaultName <String>] [-Parameter <IStorageAccountRegenerteKeyParameters>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### RegenerateExpanded
 ```
-New-AzKeyVaultStorageAccountKey -StorageAccountName <String> -KeyName <String> [-VaultBaseUrl <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzKeyVaultStorageAccountKey -StorageAccountName <String> -KeyName <String> [-KeyVaultDnsSuffix <String>]
+ [-VaultName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### RegenerateViaIdentityExpanded
 ```
-New-AzKeyVaultStorageAccountKey -InputObject <IKeyVaultIdentity> -KeyName <String> [-VaultBaseUrl <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzKeyVaultStorageAccountKey -InputObject <IKeyVaultIdentity> -KeyName <String>
+ [-KeyVaultDnsSuffix <String>] [-VaultName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### RegenerateViaIdentity
 ```
-New-AzKeyVaultStorageAccountKey -InputObject <IKeyVaultIdentity> [-VaultBaseUrl <String>]
- [-Parameter <IStorageAccountRegenerteKeyParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzKeyVaultStorageAccountKey -InputObject <IKeyVaultIdentity> [-KeyVaultDnsSuffix <String>]
+ [-VaultName <String>] [-Parameter <IStorageAccountRegenerteKeyParameters>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -113,8 +114,25 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -KeyVaultDnsSuffix
+MISSING DESCRIPTION 06
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Parameter
 The storage account key regenerate parameters.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IStorageAccountRegenerteKeyParameters
@@ -145,7 +163,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VaultBaseUrl
+### -VaultName
 MISSING DESCRIPTION 06
 
 ```yaml
@@ -199,9 +217,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IStorageAccountRegenerteKeyParameters
-
 ### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IStorageAccountRegenerteKeyParameters
 
 ## OUTPUTS
 
@@ -210,6 +228,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### Update-AzKeyVaultManagedStorageAccountKey
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <IStorageAccountRegenerteKeyParameters>: The storage account key regenerate parameters.
+  - `KeyName <String>`: The storage account key name.
 
 ## RELATED LINKS
 
