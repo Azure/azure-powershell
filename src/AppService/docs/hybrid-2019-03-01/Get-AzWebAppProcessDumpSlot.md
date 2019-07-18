@@ -205,9 +205,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.IO.Stream
+### System.Boolean
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

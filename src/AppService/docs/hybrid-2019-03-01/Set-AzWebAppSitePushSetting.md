@@ -20,9 +20,9 @@ Set-AzWebAppSitePushSetting -Name <String> -ResourceGroupName <String> -Subscrip
 
 ### UpdateExpanded
 ```
-Set-AzWebAppSitePushSetting -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -IsPushEnabled
- [-DynamicTagsJson <String>] [-Kind <String>] [-TagWhitelistJson <String>] [-TagsRequiringAuth <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzWebAppSitePushSetting -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ [-DynamicTagsJson <String>] [-IsPushEnabled] [-Kind <String>] [-TagWhitelistJson <String>]
+ [-TagsRequiringAuth <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -90,7 +90,7 @@ Type: System.Management.Automation.SwitchParameter
 Parameter Sets: UpdateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: False
 Accept pipeline input: False
@@ -132,6 +132,7 @@ Dynamic: False
 
 ### -PushSetting
 Push settings for the App.
+To construct, see NOTES section for PUSHSETTING properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160301.IPushSettings
@@ -258,6 +259,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160301.IPushSettings
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PUSHSETTING <IPushSettings>: Push settings for the App.
+  - `IsPushEnabled <Boolean>`: Gets or sets a flag indicating whether the Push endpoint is enabled.
+  - `[Kind <String>]`: Kind of resource.
+  - `[DynamicTagsJson <String>]`: Gets or sets a JSON string containing a list of dynamic tags that will be evaluated from user claims in the push registration endpoint.
+  - `[TagWhitelistJson <String>]`: Gets or sets a JSON string containing a list of tags that are whitelisted for use by the push registration endpoint.
+  - `[TagsRequiringAuth <String>]`: Gets or sets a JSON string containing a list of tags that require user authentication to be used in the push registration endpoint.         Tags can consist of alphanumeric characters and the following:         '_', '@', '#', '.', ':', '-'.         Validation should be performed at the PushRequestHandler.
 
 ## RELATED LINKS
 

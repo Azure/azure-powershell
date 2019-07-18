@@ -104,7 +104,7 @@ function Get-AzAppServicePlanMetric_ListByFilter {
             }
 
             $FilterStarted = $true
-            $PSBoundParameters.Remove("Metric") | Out-Null
+            $null = $PSBoundParameters.Remove("Metric")
         }
 
         if ($PSBoundParameters.ContainsKey("StartTime"))
@@ -117,7 +117,7 @@ function Get-AzAppServicePlanMetric_ListByFilter {
 
             $Filter += "startTime eq $($StartTime.ToString($Format))"
             $FilterStarted = $true
-            $PSBoundParameters.Remove("StartTime") | Out-Null
+            $null = $PSBoundParameters.Remove("StartTime")
         }
 
         if ($PSBoundParameters.ContainsKey("EndTime"))
@@ -130,7 +130,7 @@ function Get-AzAppServicePlanMetric_ListByFilter {
 
             $Filter += "endTime eq $($EndTime.ToString($Format))"
             $FilterStarted = $true
-            $PSBoundParameters.Remove("EndTime") | Out-Null
+            $null = $PSBoundParameters.Remove("EndTime")
         }
 
         if ($PSBoundParameters.ContainsKey("Granularity"))
@@ -142,10 +142,10 @@ function Get-AzAppServicePlanMetric_ListByFilter {
 
             $Filter += "timeGrain eq duration'$Granularity'"
             $FilterStarted = $true
-            $PSBoundParameters.Remove("Granularity") | Out-Null
+            $null = $PSBoundParameters.Remove("Granularity")
         }
 
-        $PSBoundParameters.Add("Filter", $Filter) | Out-Null
+        $null = $PSBoundParameters.Add("Filter", $Filter)
         Az.WebSites\Get-AzAppServicePlanMetric @PSBoundParameters
     }
 }

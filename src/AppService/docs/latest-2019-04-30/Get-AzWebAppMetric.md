@@ -277,5 +277,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Get-AzWebAppSlotMetrics
 
+## NOTES
+
 ## RELATED LINKS
 

@@ -166,6 +166,7 @@ Dynamic: False
 
 ### -HostNameBinding
 A hostname binding object.
+To construct, see NOTES section for HOSTNAMEBINDING properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.IHostNameBinding
@@ -373,6 +374,22 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.IHostNameBinding
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### HOSTNAMEBINDING <IHostNameBinding>: A hostname binding object.
+  - `[Kind <String>]`: Kind of resource.
+  - `[AzureResourceName <String>]`: Azure resource name.
+  - `[AzureResourceType <AzureResourceType?>]`: Azure resource type.
+  - `[CustomHostNameDnsRecordType <CustomHostNameDnsRecordType?>]`: Custom DNS record type.
+  - `[DomainId <String>]`: Fully qualified ARM domain resource URI.
+  - `[HostNameType <HostNameType?>]`: Hostname type.
+  - `[SiteName <String>]`: App Service app name.
+  - `[SslState <SslState?>]`: SSL type
+  - `[Thumbprint <String>]`: SSL certificate thumbprint
 
 ## RELATED LINKS
 

@@ -21,10 +21,10 @@ Set-AzWebAppCertificate -Name <String> -ResourceGroupName <String> -Subscription
 ### UpdateExpanded
 ```
 Set-AzWebAppCertificate -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Location <String>
- -Password <String> [-HostName <String[]>] [-HostingEnvironmentProfileId <String>] [-KeyVaultId <String>]
- [-KeyVaultSecretName <String>] [-KeyVaultSecretStatus <KeyVaultSecretStatus>] [-Kind <String>]
- [-PfxBlob <Byte[]>] [-ServerFarmId <String>] [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-HostName <String[]>] [-HostingEnvironmentProfileId <String>] [-KeyVaultId <String>]
+ [-KeyVaultSecretName <String>] [-Kind <String>] [-Password <String>] [-PfxBlobInputFile <String>]
+ [-ServerFarmId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,6 +54,7 @@ PS C:\> {{ Add code here }}
 
 ### -CertificateEnvelope
 SSL certificate for an app.
+To construct, see NOTES section for CERTIFICATEENVELOPE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ICertificate
@@ -148,22 +149,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -KeyVaultSecretStatus
-Status of the Key Vault secret.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.KeyVaultSecretStatus
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Kind
 Kind of resource.
 
@@ -220,7 +205,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -228,11 +213,11 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -PfxBlob
-Pfx blob.
+### -PfxBlobInputFile
+Input File for PfxBlob (Pfx blob.)
 
 ```yaml
-Type: System.Byte[]
+Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -298,7 +283,7 @@ Dynamic: False
 Resource tags.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801Preview.IResourceTags
+Type: System.Collections.Hashtable
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -355,6 +340,24 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ICertificate
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### CERTIFICATEENVELOPE <ICertificate>: SSL certificate for an app.
+  - `Location <String>`: Resource Location.
+  - `Password <String>`: Certificate password.
+  - `[Kind <String>]`: Kind of resource.
+  - `[Tag <IResourceTags>]`: Resource tags.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
+  - `[HostName <String[]>]`: Host names the certificate applies to.
+  - `[HostingEnvironmentProfileId <String>]`: Resource ID of the App Service Environment.
+  - `[KeyVaultId <String>]`: Key Vault Csm resource Id.
+  - `[KeyVaultSecretName <String>]`: Key Vault secret name.
+  - `[PfxBlob <Byte[]>]`: Pfx blob.
+  - `[ServerFarmId <String>]`: Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
 
 ## RELATED LINKS
 

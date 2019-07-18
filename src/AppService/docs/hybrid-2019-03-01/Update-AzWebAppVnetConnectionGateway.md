@@ -22,14 +22,14 @@ Update-AzWebAppVnetConnectionGateway -GatewayName <String> -Name <String> -Resou
 ### UpdateExpanded
 ```
 Update-AzWebAppVnetConnectionGateway -GatewayName <String> -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String> -VpnPackageUri <String> [-VnetName <String>] [-Kind <String>]
- [-PropertiesVnetName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -SubscriptionId <String> [-VnetName <String>] [-Kind <String>] [-PropertiesVnetName <String>]
+ [-VpnPackageUri <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzWebAppVnetConnectionGateway -InputObject <IWebSiteIdentity> -VpnPackageUri <String>
- [-VnetName <String>] [-Kind <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzWebAppVnetConnectionGateway -InputObject <IWebSiteIdentity> [-VnetName <String>] [-Kind <String>]
+ [-VpnPackageUri <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
@@ -66,6 +66,7 @@ PS C:\> {{ Add code here }}
 ### -ConnectionEnvelope
 The Virtual Network gateway contract.
 This is used to give the Virtual Network gateway access to the VPN package.
+To construct, see NOTES section for CONNECTIONENVELOPE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160301.IVnetGateway
@@ -235,7 +236,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -290,6 +291,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160301.IVnetGateway
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### CONNECTIONENVELOPE <IVnetGateway>: The Virtual Network gateway contract. This is used to give the Virtual Network gateway access to the VPN package.
+  - `VpnPackageUri <String>`: The URI where the VPN package can be downloaded.
+  - `[Kind <String>]`: Kind of resource.
+  - `[VnetName <String>]`: The Virtual Network name.
 
 ## RELATED LINKS
 

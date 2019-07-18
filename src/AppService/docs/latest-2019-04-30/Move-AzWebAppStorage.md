@@ -16,29 +16,30 @@ Restores a web app.
 ```
 Move-AzWebAppStorage -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  -SubscriptionName <String> [-MigrationOption <IStorageMigrationOptions>] [-DefaultProfile <PSObject>]
- [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### MigrateExpanded
 ```
 Move-AzWebAppStorage -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -SubscriptionName <String> -AzurefilesConnectionString <String> -AzurefilesShare <String>
+ -SubscriptionName <String> [-AzurefilesConnectionString <String>] [-AzurefilesShare <String>]
  [-BlockWriteAccessToSite] [-Kind <String>] [-SwitchSiteAfterMigration] [-DefaultProfile <PSObject>] [-AsJob]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### MigrateViaIdentityExpanded
 ```
 Move-AzWebAppStorage -InputObject <IWebSiteIdentity> -SubscriptionName <String>
- -AzurefilesConnectionString <String> -AzurefilesShare <String> [-BlockWriteAccessToSite] [-Kind <String>]
- [-SwitchSiteAfterMigration] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AzurefilesConnectionString <String>] [-AzurefilesShare <String>] [-BlockWriteAccessToSite] [-Kind <String>]
+ [-SwitchSiteAfterMigration] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### MigrateViaIdentity
 ```
 Move-AzWebAppStorage -InputObject <IWebSiteIdentity> -SubscriptionName <String>
- [-MigrationOption <IStorageMigrationOptions>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-MigrationOption <IStorageMigrationOptions>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -90,7 +91,7 @@ Type: System.String
 Parameter Sets: MigrateExpanded, MigrateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -106,7 +107,7 @@ Type: System.String
 Parameter Sets: MigrateExpanded, MigrateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -180,6 +181,7 @@ Dynamic: False
 
 ### -MigrationOption
 Options for app content migration.
+To construct, see NOTES section for MIGRATIONOPTION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.IStorageMigrationOptions
@@ -205,6 +207,22 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -323,6 +341,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.IStorageMigrationResponse
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### MIGRATIONOPTION <IStorageMigrationOptions>: Options for app content migration.
+  - `AzurefilesConnectionString <String>`: AzureFiles connection string.
+  - `AzurefilesShare <String>`: AzureFiles share.
+  - `[Kind <String>]`: Kind of resource.
+  - `[BlockWriteAccessToSite <Boolean?>]`: <code>true</code> if the app should be read only during copy operation; otherwise, <code>false</code>.
+  - `[SwitchSiteAfterMigration <Boolean?>]`: <code>true</code>if the app should be switched over; otherwise, <code>false</code>.
 
 ## RELATED LINKS
 

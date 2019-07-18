@@ -22,14 +22,14 @@ New-AzWebAppPublicCertificate -Name <String> -PublicCertificateName <String> -Re
 ### CreateExpanded
 ```
 New-AzWebAppPublicCertificate -Name <String> -PublicCertificateName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-Blob <Byte[]>] [-Kind <String>]
+ -SubscriptionId <String> [-BlobInputFile <String>] [-Kind <String>]
  [-PublicCertificateLocation <PublicCertificateLocation>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzWebAppPublicCertificate -InputObject <IWebSiteIdentity> [-Blob <Byte[]>] [-Kind <String>]
+New-AzWebAppPublicCertificate -InputObject <IWebSiteIdentity> [-BlobInputFile <String>] [-Kind <String>]
  [-PublicCertificateLocation <PublicCertificateLocation>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -65,11 +65,11 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -Blob
-Public Certificate byte array
+### -BlobInputFile
+Input File for Blob (Public Certificate byte array)
 
 ```yaml
-Type: System.Byte[]
+Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -147,6 +147,7 @@ Dynamic: False
 
 ### -PublicCertificate
 Public certificate object
+To construct, see NOTES section for PUBLICCERTIFICATE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.IPublicCertificate
@@ -274,6 +275,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.IPublicCertificate
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PUBLICCERTIFICATE <IPublicCertificate>: Public certificate object
+  - `[Kind <String>]`: Kind of resource.
+  - `[Blob <Byte[]>]`: Public Certificate byte array
+  - `[Location <PublicCertificateLocation?>]`: Public Certificate Location
 
 ## RELATED LINKS
 

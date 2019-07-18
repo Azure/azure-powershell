@@ -227,6 +227,7 @@ Dynamic: False
 
 ### -SiteSourceControl
 Source control configuration for an app.
+To construct, see NOTES section for SITESOURCECONTROL properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.ISiteSourceControl
@@ -323,6 +324,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.ISiteSourceControl
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### SITESOURCECONTROL <ISiteSourceControl>: Source control configuration for an app.
+  - `[Kind <String>]`: Kind of resource.
+  - `[Branch <String>]`: Name of branch to use for deployment.
+  - `[DeploymentRollbackEnabled <Boolean?>]`: <code>true</code> to enable deployment rollback; otherwise, <code>false</code>.
+  - `[IsManualIntegration <Boolean?>]`: <code>true</code> to limit to manual integration; <code>false</code> to enable continuous integration (which configures webhooks into online repos like GitHub).
+  - `[IsMercurial <Boolean?>]`: <code>true</code> for a Mercurial repository; <code>false</code> for a Git repository.
+  - `[RepoUrl <String>]`: Repository or source control URL.
 
 ## RELATED LINKS
 

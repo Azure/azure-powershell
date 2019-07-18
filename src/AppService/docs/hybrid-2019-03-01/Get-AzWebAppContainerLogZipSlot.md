@@ -15,13 +15,14 @@ Gets the ZIP archived docker log files for the given site
 ### Get (Default)
 ```
 Get-AzWebAppContainerLogZipSlot -Name <String> -ResourceGroupName <String> -Slot <String>
- -SubscriptionId <String[]> [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -SubscriptionId <String[]> -OutFile <String> [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzWebAppContainerLogZipSlot -InputObject <IWebSiteIdentity> [-PassThru] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzWebAppContainerLogZipSlot -InputObject <IWebSiteIdentity> -OutFile <String> [-PassThru]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -87,6 +88,22 @@ Name of web app.
 ```yaml
 Type: System.String
 Parameter Sets: Get
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -OutFile
+Path to write output file to
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -209,6 +226,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

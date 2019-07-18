@@ -56,9 +56,9 @@ function Get-AzWebAppSlotConfigurationName_ListByWebApp {
 
     process {
         $Tokens = $WebApp.Id.Split("/", [System.StringSplitOptions]::RemoveEmptyEntries)
-        $PSBoundParameters.Add("ResourceGroupName", $Tokens[3]) | Out-Null
-        $PSBoundParameters.Add("Name", $Tokens[7]) | Out-Null
-        $PSBoundParameters.Remove("WebApp") | Out-Null
+        $null = $PSBoundParameters.Add("ResourceGroupName", $Tokens[3])
+        $null = $PSBoundParameters.Add("Name", $Tokens[7])
+        $null = $PSBoundParameters.Remove("WebApp")
         Az.WebSite\Get-AzWebAppSlotConfigurationName @PSBoundParameters
     }
 }

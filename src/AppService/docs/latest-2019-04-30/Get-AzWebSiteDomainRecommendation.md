@@ -100,6 +100,7 @@ Dynamic: False
 
 ### -Parameter
 Domain recommendation search parameters.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IDomainRecommendationSearchParameters
@@ -177,6 +178,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160301.INameIdentifier
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <IDomainRecommendationSearchParameters>: Domain recommendation search parameters.
+  - `[Keyword <String>]`: Keywords to be used for generating domain recommendations.
+  - `[MaxDomainRecommendation <Int32?>]`: Maximum number of recommendations.
 
 ## RELATED LINKS
 

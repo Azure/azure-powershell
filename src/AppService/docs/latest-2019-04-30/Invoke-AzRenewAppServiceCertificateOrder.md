@@ -195,6 +195,7 @@ Dynamic: False
 
 ### -RenewCertificateOrderRequest
 Class representing certificate renew request.
+To construct, see NOTES section for RENEWCERTIFICATEORDERREQUEST properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.IRenewCertificateOrderRequest1
@@ -290,6 +291,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### RENEWCERTIFICATEORDERREQUEST <IRenewCertificateOrderRequest1>: Class representing certificate renew request.
+  - `[Kind <String>]`: Kind of resource.
+  - `[Csr <String>]`: Csr to be used for re-key operation.
+  - `[IsPrivateKeyExternal <Boolean?>]`: Should we change the ASC type (from managed private key to external private key and vice versa).
+  - `[KeySize <Int32?>]`: Certificate Key Size.
 
 ## RELATED LINKS
 

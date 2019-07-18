@@ -220,5 +220,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Reset-AzWebAppSlotPublishingProfile
 
+## NOTES
+
 ## RELATED LINKS
 

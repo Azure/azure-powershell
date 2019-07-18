@@ -127,6 +127,7 @@ Dynamic: False
 
 ### -Request
 Resource name availability request content.
+To construct, see NOTES section for REQUEST properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IResourceNameAvailabilityRequest
@@ -222,6 +223,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IResourceNameAvailability
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### REQUEST <IResourceNameAvailabilityRequest>: Resource name availability request content.
+  - `Name <String>`: Resource name to verify.
+  - `Type <CheckNameResourceTypes>`: Resource type used for verification.
+  - `[IsFqdn <Boolean?>]`: Is fully qualified domain name.
 
 ## RELATED LINKS
 

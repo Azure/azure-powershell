@@ -229,6 +229,7 @@ Dynamic: False
 
 ### -ValidateContainerSettingsRequest
 Container settings validation request context
+To construct, see NOTES section for VALIDATECONTAINERSETTINGSREQUEST properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IValidateContainerSettingsRequest
@@ -290,6 +291,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IPathsSubscriptionsSubscriptionidResourcegroupsResourcegroupnameProvidersMicrosoftWebValidatecontainersettingsPostResponses200ContentApplicationJsonSchema
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### VALIDATECONTAINERSETTINGSREQUEST <IValidateContainerSettingsRequest>: Container settings validation request context
+  - `[BaseUrl <String>]`: Base URL of the container registry
+  - `[Password <String>]`: Password for to access the container registry
+  - `[Platform <String>]`: Platform (windows or linux)
+  - `[Repository <String>]`: Repository name (image name)
+  - `[Tag <String>]`: Image tag
+  - `[Username <String>]`: Username for to access the container registry
 
 ## RELATED LINKS
 

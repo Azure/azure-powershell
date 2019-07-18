@@ -21,22 +21,18 @@ Test-AzAppServiceCertificateOrderPurchaseInformation -SubscriptionId <String>
 
 ### ValidateExpanded
 ```
-Test-AzAppServiceCertificateOrderPurchaseInformation -SubscriptionId <String> -Location <String>
- -ProductType <CertificateProductType> [-PassThru] [-AutoRenew]
- [-Certificate <IAppServiceCertificateOrderPropertiesCertificates>] [-Csr <String>]
- [-DistinguishedName <String>] [-KeySize <Int32>] [-Kind <String>] [-ProvisioningState <ProvisioningState>]
- [-Status <CertificateOrderStatus>] [-Tag <IResourceTags>] [-ValidityInYear <Int32>]
+Test-AzAppServiceCertificateOrderPurchaseInformation -SubscriptionId <String> -Location <String> [-PassThru]
+ [-AutoRenew] [-Certificate <Hashtable>] [-Csr <String>] [-DistinguishedName <String>] [-KeySize <Int32>]
+ [-Kind <String>] [-ProductType <CertificateProductType>] [-Tag <Hashtable>] [-ValidityInYear <Int32>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ValidateViaIdentityExpanded
 ```
 Test-AzAppServiceCertificateOrderPurchaseInformation -InputObject <IWebSiteIdentity> -Location <String>
- -ProductType <CertificateProductType> [-PassThru] [-AutoRenew]
- [-Certificate <IAppServiceCertificateOrderPropertiesCertificates>] [-Csr <String>]
- [-DistinguishedName <String>] [-KeySize <Int32>] [-Kind <String>] [-ProvisioningState <ProvisioningState>]
- [-Status <CertificateOrderStatus>] [-Tag <IResourceTags>] [-ValidityInYear <Int32>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PassThru] [-AutoRenew] [-Certificate <Hashtable>] [-Csr <String>] [-DistinguishedName <String>]
+ [-KeySize <Int32>] [-Kind <String>] [-ProductType <CertificateProductType>] [-Tag <Hashtable>]
+ [-ValidityInYear <Int32>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ValidateViaIdentity
@@ -73,6 +69,7 @@ PS C:\> {{ Add code here }}
 
 ### -AppServiceCertificateOrder
 SSL certificate purchase order.
+To construct, see NOTES section for APPSERVICECERTIFICATEORDER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IAppServiceCertificateOrder
@@ -107,7 +104,7 @@ Dynamic: False
 State of the Key Vault secret.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IAppServiceCertificateOrderPropertiesCertificates
+Type: System.Collections.Hashtable
 Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
 Aliases:
 
@@ -255,38 +252,6 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.CertificateProductType
 Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
 Aliases:
 
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -ProvisioningState
-Status of certificate order.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.ProvisioningState
-Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Status
-Current order status.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.CertificateOrderStatus
-Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
-Aliases:
-
 Required: False
 Position: Named
 Default value: None
@@ -317,7 +282,7 @@ Dynamic: False
 Resource tags.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801Preview.IResourceTags
+Type: System.Collections.Hashtable
 Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
 Aliases:
 
@@ -392,6 +357,25 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### APPSERVICECERTIFICATEORDER <IAppServiceCertificateOrder>: SSL certificate purchase order.
+  - `Location <String>`: Resource Location.
+  - `ProductType <CertificateProductType>`: Certificate product type.
+  - `[Kind <String>]`: Kind of resource.
+  - `[Tag <IResourceTags>]`: Resource tags.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
+  - `[AutoRenew <Boolean?>]`: <code>true</code> if the certificate should be automatically renewed when it expires; otherwise, <code>false</code>.
+  - `[Certificate <IAppServiceCertificateOrderPropertiesCertificates>]`: State of the Key Vault secret.
+    - `[(Any) <IAppServiceCertificate>]`: This indicates any property can be added to this object.
+  - `[Csr <String>]`: Last CSR that was created for this order.
+  - `[DistinguishedName <String>]`: Certificate distinguished name.
+  - `[KeySize <Int32?>]`: Certificate key size.
+  - `[ValidityInYear <Int32?>]`: Duration in years (must be between 1 and 3).
 
 ## RELATED LINKS
 

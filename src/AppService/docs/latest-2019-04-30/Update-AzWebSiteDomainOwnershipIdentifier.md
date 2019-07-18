@@ -98,6 +98,7 @@ Dynamic: False
 
 ### -DomainOwnershipIdentifier
 Domain ownership Identifier.
+To construct, see NOTES section for DOMAINOWNERSHIPIDENTIFIER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150401.IDomainOwnershipIdentifier
@@ -257,6 +258,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150401.IDomainOwnershipIdentifier
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### DOMAINOWNERSHIPIDENTIFIER <IDomainOwnershipIdentifier>: Domain ownership Identifier.
+  - `[Kind <String>]`: Kind of resource.
+  - `[OwnershipId <String>]`: Ownership Id.
 
 ## RELATED LINKS
 

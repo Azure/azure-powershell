@@ -23,9 +23,8 @@ Update-AzAppServicePlan -Name <String> -ResourceGroupName <String> -Subscription
 ```
 Update-AzAppServicePlan -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-FreeOfferExpirationTime <DateTime>] [-HostingEnvironmentProfileId <String>] [-HyperV] [-IsSpot] [-IsXenon]
- [-Kind <String>] [-MaximumElasticWorkerCount <Int32>] [-PerSiteScaling]
- [-ProvisioningState <ProvisioningState>] [-Reserved] [-SpotExpirationTime <DateTime>]
- [-Status <StatusOptions>] [-TargetWorkerCount <Int32>] [-TargetWorkerSizeId <Int32>]
+ [-Kind <String>] [-MaximumElasticWorkerCount <Int32>] [-PerSiteScaling] [-Reserved]
+ [-SpotExpirationTime <DateTime>] [-TargetWorkerCount <Int32>] [-TargetWorkerSizeId <Int32>]
  [-WorkerTierName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -33,10 +32,9 @@ Update-AzAppServicePlan -Name <String> -ResourceGroupName <String> -Subscription
 ```
 Update-AzAppServicePlan -InputObject <IWebSiteIdentity> [-FreeOfferExpirationTime <DateTime>]
  [-HostingEnvironmentProfileId <String>] [-HyperV] [-IsSpot] [-IsXenon] [-Kind <String>]
- [-MaximumElasticWorkerCount <Int32>] [-PerSiteScaling] [-ProvisioningState <ProvisioningState>] [-Reserved]
- [-SpotExpirationTime <DateTime>] [-Status <StatusOptions>] [-TargetWorkerCount <Int32>]
- [-TargetWorkerSizeId <Int32>] [-WorkerTierName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-MaximumElasticWorkerCount <Int32>] [-PerSiteScaling] [-Reserved] [-SpotExpirationTime <DateTime>]
+ [-TargetWorkerCount <Int32>] [-TargetWorkerSizeId <Int32>] [-WorkerTierName <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
@@ -72,6 +70,7 @@ PS C:\> {{ Add code here }}
 
 ### -AppServicePlan
 ARM resource for a app service plan.
+To construct, see NOTES section for APPSERVICEPLAN properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IAppServicePlanPatchResource
@@ -262,22 +261,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ProvisioningState
-Provisioning state of the App Service Environment.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.ProvisioningState
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Reserved
 If Linux app service plan <code>true</code>, <code>false</code> otherwise.
 
@@ -316,22 +299,6 @@ Valid only if it is a spot server farm.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Status
-App Service plan status.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.StatusOptions
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -456,6 +423,26 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IAppServicePlan
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### APPSERVICEPLAN <IAppServicePlanPatchResource>: ARM resource for a app service plan.
+  - `[Kind <String>]`: Kind of resource.
+  - `[FreeOfferExpirationTime <DateTime?>]`: The time when the server farm free offer expires.
+  - `[HostingEnvironmentProfileId <String>]`: Resource ID of the App Service Environment.
+  - `[HyperV <Boolean?>]`: If Hyper-V container app service plan <code>true</code>, <code>false</code> otherwise.
+  - `[IsSpot <Boolean?>]`: If <code>true</code>, this App Service Plan owns spot instances.
+  - `[IsXenon <Boolean?>]`: Obsolete: If Hyper-V container app service plan <code>true</code>, <code>false</code> otherwise.
+  - `[MaximumElasticWorkerCount <Int32?>]`: Maximum number of total workers allowed for this ElasticScaleEnabled App Service Plan
+  - `[PerSiteScaling <Boolean?>]`: If <code>true</code>, apps assigned to this App Service plan can be scaled independently.         If <code>false</code>, apps assigned to this App Service plan will scale to all instances of the plan.
+  - `[Reserved <Boolean?>]`: If Linux app service plan <code>true</code>, <code>false</code> otherwise.
+  - `[SpotExpirationTime <DateTime?>]`: The time when the server farm expires. Valid only if it is a spot server farm.
+  - `[TargetWorkerCount <Int32?>]`: Scaling worker count.
+  - `[TargetWorkerSizeId <Int32?>]`: Scaling worker size ID.
+  - `[WorkerTierName <String>]`: Target worker tier assigned to the App Service plan.
 
 ## RELATED LINKS
 

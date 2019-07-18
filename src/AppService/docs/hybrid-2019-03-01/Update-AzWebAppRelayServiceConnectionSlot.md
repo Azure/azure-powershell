@@ -86,6 +86,7 @@ Dynamic: False
 
 ### -ConnectionEnvelope
 Hybrid Connection for an App Service app.
+To construct, see NOTES section for CONNECTIONENVELOPE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.IRelayServiceConnectionEntity
@@ -374,6 +375,21 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.IRelayServiceConnectionEntity
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### CONNECTIONENVELOPE <IRelayServiceConnectionEntity>: Hybrid Connection for an App Service app.
+  - `[Kind <String>]`: Kind of resource.
+  - `[BiztalkUri <String>]`: 
+  - `[EntityConnectionString <String>]`: 
+  - `[EntityName <String>]`: 
+  - `[Hostname <String>]`: 
+  - `[Port <Int32?>]`: 
+  - `[ResourceConnectionString <String>]`: 
+  - `[ResourceType <String>]`: 
 
 ## RELATED LINKS
 

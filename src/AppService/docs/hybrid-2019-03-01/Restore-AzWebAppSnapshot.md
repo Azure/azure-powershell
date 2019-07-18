@@ -15,54 +15,54 @@ Restores a web app from a snapshot.
 ### Restore (Default)
 ```
 Restore-AzWebAppSnapshot -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-PassThru]
- [-RestoreRequest <ISnapshotRestoreRequest>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-RestoreRequest <ISnapshotRestoreRequest>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### RestoreSlot
 ```
 Restore-AzWebAppSnapshot -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Slot <String>
- [-PassThru] [-RestoreRequest <ISnapshotRestoreRequest>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-PassThru] [-RestoreRequest <ISnapshotRestoreRequest>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### RestoreExpandedSlot
 ```
 Restore-AzWebAppSnapshot -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Slot <String>
- -Overwrite [-PassThru] [-IgnoreConflictingHostName] [-Kind <String>] [-RecoverConfiguration]
+ [-PassThru] [-IgnoreConflictingHostName] [-Kind <String>] [-Overwrite] [-RecoverConfiguration]
  [-RecoverySourceId <String>] [-RecoverySourceLocation <String>] [-SnapshotTime <String>] [-UseDrSecondary]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### RestoreExpanded
 ```
-Restore-AzWebAppSnapshot -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Overwrite
- [-PassThru] [-IgnoreConflictingHostName] [-Kind <String>] [-RecoverConfiguration]
+Restore-AzWebAppSnapshot -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-PassThru]
+ [-IgnoreConflictingHostName] [-Kind <String>] [-Overwrite] [-RecoverConfiguration]
  [-RecoverySourceId <String>] [-RecoverySourceLocation <String>] [-SnapshotTime <String>] [-UseDrSecondary]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### RestoreViaIdentityExpandedSlot
 ```
-Restore-AzWebAppSnapshot -InputObject <IWebSiteIdentity> -Overwrite [-PassThru] [-IgnoreConflictingHostName]
- [-Kind <String>] [-RecoverConfiguration] [-RecoverySourceId <String>] [-RecoverySourceLocation <String>]
- [-SnapshotTime <String>] [-UseDrSecondary] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Restore-AzWebAppSnapshot -InputObject <IWebSiteIdentity> [-PassThru] [-IgnoreConflictingHostName]
+ [-Kind <String>] [-Overwrite] [-RecoverConfiguration] [-RecoverySourceId <String>]
+ [-RecoverySourceLocation <String>] [-SnapshotTime <String>] [-UseDrSecondary] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### RestoreViaIdentityExpanded
 ```
-Restore-AzWebAppSnapshot -InputObject <IWebSiteIdentity> -Overwrite [-PassThru] [-IgnoreConflictingHostName]
- [-Kind <String>] [-RecoverConfiguration] [-RecoverySourceId <String>] [-RecoverySourceLocation <String>]
- [-SnapshotTime <String>] [-UseDrSecondary] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Restore-AzWebAppSnapshot -InputObject <IWebSiteIdentity> [-PassThru] [-IgnoreConflictingHostName]
+ [-Kind <String>] [-Overwrite] [-RecoverConfiguration] [-RecoverySourceId <String>]
+ [-RecoverySourceLocation <String>] [-SnapshotTime <String>] [-UseDrSecondary] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### RestoreViaIdentity
 ```
 Restore-AzWebAppSnapshot -InputObject <IWebSiteIdentity> [-PassThru]
- [-RestoreRequest <ISnapshotRestoreRequest>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-RestoreRequest <ISnapshotRestoreRequest>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -186,6 +186,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Overwrite
 If <code>true</code> the restore operation can overwrite source app; otherwise, <code>false</code>.
 
@@ -194,7 +210,7 @@ Type: System.Management.Automation.SwitchParameter
 Parameter Sets: RestoreExpandedSlot, RestoreExpanded, RestoreViaIdentityExpandedSlot, RestoreViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: False
 Accept pipeline input: False
@@ -286,6 +302,7 @@ Dynamic: False
 
 ### -RestoreRequest
 Details about app recovery operation.
+To construct, see NOTES section for RESTOREREQUEST properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISnapshotRestoreRequest
@@ -416,6 +433,21 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### Restore-AzWebAppSnapshotSlot
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### RESTOREREQUEST <ISnapshotRestoreRequest>: Details about app recovery operation.
+  - `Overwrite <Boolean>`: If <code>true</code> the restore operation can overwrite source app; otherwise, <code>false</code>.
+  - `[Kind <String>]`: Kind of resource.
+  - `[IgnoreConflictingHostName <Boolean?>]`: If true, custom hostname conflicts will be ignored when recovering to a target web app.         This setting is only necessary when RecoverConfiguration is enabled.
+  - `[RecoverConfiguration <Boolean?>]`: If true, site configuration, in addition to content, will be reverted.
+  - `[RecoverySourceId <String>]`: ARM resource ID of the source app.         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName} for production slots and         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName} for other slots.
+  - `[RecoverySourceLocation <String>]`: Geographical location of the source web app, e.g. SouthEastAsia, SouthCentralUS
+  - `[SnapshotTime <String>]`: Point in time in which the app restore should be done, formatted as a DateTime string.
+  - `[UseDrSecondary <Boolean?>]`: If true, the snapshot is retrieved from DRSecondary endpoint.
 
 ## RELATED LINKS
 

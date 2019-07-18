@@ -21,67 +21,65 @@ Update-AzWebSiteDomain -Name <String> -ResourceGroupName <String> -SubscriptionI
 ### UpdateExpanded
 ```
 Update-AzWebSiteDomain -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -ContactAdminAddressMailingAddress1 <String> -ContactAdminAddressMailingCity <String>
- -ContactAdminAddressMailingCountry <String> -ContactAdminAddressMailingPostalCode <String>
- -ContactAdminAddressMailingState <String> -ContactAdminEmail <String> -ContactAdminNameFirst <String>
- -ContactAdminNameLast <String> -ContactAdminPhone <String> -ContactBillingAddressMailingAddress1 <String>
- -ContactBillingAddressMailingCity <String> -ContactBillingAddressMailingCountry <String>
- -ContactBillingAddressMailingPostalCode <String> -ContactBillingAddressMailingState <String>
- -ContactBillingEmail <String> -ContactBillingNameFirst <String> -ContactBillingNameLast <String>
- -ContactBillingPhone <String> -ContactRegistrantAddressMailingAddress1 <String>
- -ContactRegistrantAddressMailingCity <String> -ContactRegistrantAddressMailingCountry <String>
- -ContactRegistrantAddressMailingPostalCode <String> -ContactRegistrantAddressMailingState <String>
- -ContactRegistrantEmail <String> -ContactRegistrantNameFirst <String> -ContactRegistrantNameLast <String>
- -ContactRegistrantPhone <String> -ContactTechAddressMailingAddress1 <String>
- -ContactTechAddressMailingCity <String> -ContactTechAddressMailingCountry <String>
- -ContactTechAddressMailingPostalCode <String> -ContactTechAddressMailingState <String>
- -ContactTechEmail <String> -ContactTechNameFirst <String> -ContactTechNameLast <String>
- -ContactTechPhone <String> [-AuthCode <String>] [-AutoRenew] [-ConsentAgreedAt <DateTime>]
- [-ConsentAgreedBy <String>] [-ConsentAgreementKey <String[]>] [-ContactAdminAddressMailingAddress2 <String>]
- [-ContactAdminFax <String>] [-ContactAdminJobTitle <String>] [-ContactAdminNameMiddle <String>]
- [-ContactAdminOrganization <String>] [-ContactBillingAddressMailingAddress2 <String>]
- [-ContactBillingFax <String>] [-ContactBillingJobTitle <String>] [-ContactBillingNameMiddle <String>]
- [-ContactBillingOrganization <String>] [-ContactRegistrantAddressMailingAddress2 <String>]
- [-ContactRegistrantFax <String>] [-ContactRegistrantJobTitle <String>]
+ [-AuthCode <String>] [-AutoRenew] [-ConsentAgreedAt <DateTime>] [-ConsentAgreedBy <String>]
+ [-ConsentAgreementKey <String[]>] [-ContactAdminAddressMailingAddress1 <String>]
+ [-ContactAdminAddressMailingAddress2 <String>] [-ContactAdminAddressMailingCity <String>]
+ [-ContactAdminAddressMailingCountry <String>] [-ContactAdminAddressMailingPostalCode <String>]
+ [-ContactAdminAddressMailingState <String>] [-ContactAdminEmail <String>] [-ContactAdminFax <String>]
+ [-ContactAdminJobTitle <String>] [-ContactAdminNameFirst <String>] [-ContactAdminNameLast <String>]
+ [-ContactAdminNameMiddle <String>] [-ContactAdminOrganization <String>] [-ContactAdminPhone <String>]
+ [-ContactBillingAddressMailingAddress1 <String>] [-ContactBillingAddressMailingAddress2 <String>]
+ [-ContactBillingAddressMailingCity <String>] [-ContactBillingAddressMailingCountry <String>]
+ [-ContactBillingAddressMailingPostalCode <String>] [-ContactBillingAddressMailingState <String>]
+ [-ContactBillingEmail <String>] [-ContactBillingFax <String>] [-ContactBillingJobTitle <String>]
+ [-ContactBillingNameFirst <String>] [-ContactBillingNameLast <String>] [-ContactBillingNameMiddle <String>]
+ [-ContactBillingOrganization <String>] [-ContactBillingPhone <String>]
+ [-ContactRegistrantAddressMailingAddress1 <String>] [-ContactRegistrantAddressMailingAddress2 <String>]
+ [-ContactRegistrantAddressMailingCity <String>] [-ContactRegistrantAddressMailingCountry <String>]
+ [-ContactRegistrantAddressMailingPostalCode <String>] [-ContactRegistrantAddressMailingState <String>]
+ [-ContactRegistrantEmail <String>] [-ContactRegistrantFax <String>] [-ContactRegistrantJobTitle <String>]
+ [-ContactRegistrantNameFirst <String>] [-ContactRegistrantNameLast <String>]
  [-ContactRegistrantNameMiddle <String>] [-ContactRegistrantOrganization <String>]
- [-ContactTechAddressMailingAddress2 <String>] [-ContactTechFax <String>] [-ContactTechJobTitle <String>]
- [-ContactTechNameMiddle <String>] [-ContactTechOrganization <String>] [-DnsType <DnsType>]
- [-DnsZoneId <String>] [-Kind <String>] [-Privacy] [-ProvisioningState <ProvisioningState>]
- [-RegistrationStatus <DomainStatus>] [-TargetDnsType <DnsType>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-ContactRegistrantPhone <String>] [-ContactTechAddressMailingAddress1 <String>]
+ [-ContactTechAddressMailingAddress2 <String>] [-ContactTechAddressMailingCity <String>]
+ [-ContactTechAddressMailingCountry <String>] [-ContactTechAddressMailingPostalCode <String>]
+ [-ContactTechAddressMailingState <String>] [-ContactTechEmail <String>] [-ContactTechFax <String>]
+ [-ContactTechJobTitle <String>] [-ContactTechNameFirst <String>] [-ContactTechNameLast <String>]
+ [-ContactTechNameMiddle <String>] [-ContactTechOrganization <String>] [-ContactTechPhone <String>]
+ [-DnsType <DnsType>] [-DnsZoneId <String>] [-Kind <String>] [-Privacy] [-TargetDnsType <DnsType>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzWebSiteDomain -InputObject <IWebSiteIdentity> -ContactAdminAddressMailingAddress1 <String>
- -ContactAdminAddressMailingCity <String> -ContactAdminAddressMailingCountry <String>
- -ContactAdminAddressMailingPostalCode <String> -ContactAdminAddressMailingState <String>
- -ContactAdminEmail <String> -ContactAdminNameFirst <String> -ContactAdminNameLast <String>
- -ContactAdminPhone <String> -ContactBillingAddressMailingAddress1 <String>
- -ContactBillingAddressMailingCity <String> -ContactBillingAddressMailingCountry <String>
- -ContactBillingAddressMailingPostalCode <String> -ContactBillingAddressMailingState <String>
- -ContactBillingEmail <String> -ContactBillingNameFirst <String> -ContactBillingNameLast <String>
- -ContactBillingPhone <String> -ContactRegistrantAddressMailingAddress1 <String>
- -ContactRegistrantAddressMailingCity <String> -ContactRegistrantAddressMailingCountry <String>
- -ContactRegistrantAddressMailingPostalCode <String> -ContactRegistrantAddressMailingState <String>
- -ContactRegistrantEmail <String> -ContactRegistrantNameFirst <String> -ContactRegistrantNameLast <String>
- -ContactRegistrantPhone <String> -ContactTechAddressMailingAddress1 <String>
- -ContactTechAddressMailingCity <String> -ContactTechAddressMailingCountry <String>
- -ContactTechAddressMailingPostalCode <String> -ContactTechAddressMailingState <String>
- -ContactTechEmail <String> -ContactTechNameFirst <String> -ContactTechNameLast <String>
- -ContactTechPhone <String> [-AuthCode <String>] [-AutoRenew] [-ConsentAgreedAt <DateTime>]
- [-ConsentAgreedBy <String>] [-ConsentAgreementKey <String[]>] [-ContactAdminAddressMailingAddress2 <String>]
- [-ContactAdminFax <String>] [-ContactAdminJobTitle <String>] [-ContactAdminNameMiddle <String>]
- [-ContactAdminOrganization <String>] [-ContactBillingAddressMailingAddress2 <String>]
- [-ContactBillingFax <String>] [-ContactBillingJobTitle <String>] [-ContactBillingNameMiddle <String>]
- [-ContactBillingOrganization <String>] [-ContactRegistrantAddressMailingAddress2 <String>]
- [-ContactRegistrantFax <String>] [-ContactRegistrantJobTitle <String>]
+Update-AzWebSiteDomain -InputObject <IWebSiteIdentity> [-AuthCode <String>] [-AutoRenew]
+ [-ConsentAgreedAt <DateTime>] [-ConsentAgreedBy <String>] [-ConsentAgreementKey <String[]>]
+ [-ContactAdminAddressMailingAddress1 <String>] [-ContactAdminAddressMailingAddress2 <String>]
+ [-ContactAdminAddressMailingCity <String>] [-ContactAdminAddressMailingCountry <String>]
+ [-ContactAdminAddressMailingPostalCode <String>] [-ContactAdminAddressMailingState <String>]
+ [-ContactAdminEmail <String>] [-ContactAdminFax <String>] [-ContactAdminJobTitle <String>]
+ [-ContactAdminNameFirst <String>] [-ContactAdminNameLast <String>] [-ContactAdminNameMiddle <String>]
+ [-ContactAdminOrganization <String>] [-ContactAdminPhone <String>]
+ [-ContactBillingAddressMailingAddress1 <String>] [-ContactBillingAddressMailingAddress2 <String>]
+ [-ContactBillingAddressMailingCity <String>] [-ContactBillingAddressMailingCountry <String>]
+ [-ContactBillingAddressMailingPostalCode <String>] [-ContactBillingAddressMailingState <String>]
+ [-ContactBillingEmail <String>] [-ContactBillingFax <String>] [-ContactBillingJobTitle <String>]
+ [-ContactBillingNameFirst <String>] [-ContactBillingNameLast <String>] [-ContactBillingNameMiddle <String>]
+ [-ContactBillingOrganization <String>] [-ContactBillingPhone <String>]
+ [-ContactRegistrantAddressMailingAddress1 <String>] [-ContactRegistrantAddressMailingAddress2 <String>]
+ [-ContactRegistrantAddressMailingCity <String>] [-ContactRegistrantAddressMailingCountry <String>]
+ [-ContactRegistrantAddressMailingPostalCode <String>] [-ContactRegistrantAddressMailingState <String>]
+ [-ContactRegistrantEmail <String>] [-ContactRegistrantFax <String>] [-ContactRegistrantJobTitle <String>]
+ [-ContactRegistrantNameFirst <String>] [-ContactRegistrantNameLast <String>]
  [-ContactRegistrantNameMiddle <String>] [-ContactRegistrantOrganization <String>]
- [-ContactTechAddressMailingAddress2 <String>] [-ContactTechFax <String>] [-ContactTechJobTitle <String>]
- [-ContactTechNameMiddle <String>] [-ContactTechOrganization <String>] [-DnsType <DnsType>]
- [-DnsZoneId <String>] [-Kind <String>] [-Privacy] [-ProvisioningState <ProvisioningState>]
- [-RegistrationStatus <DomainStatus>] [-TargetDnsType <DnsType>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-ContactRegistrantPhone <String>] [-ContactTechAddressMailingAddress1 <String>]
+ [-ContactTechAddressMailingAddress2 <String>] [-ContactTechAddressMailingCity <String>]
+ [-ContactTechAddressMailingCountry <String>] [-ContactTechAddressMailingPostalCode <String>]
+ [-ContactTechAddressMailingState <String>] [-ContactTechEmail <String>] [-ContactTechFax <String>]
+ [-ContactTechJobTitle <String>] [-ContactTechNameFirst <String>] [-ContactTechNameLast <String>]
+ [-ContactTechNameMiddle <String>] [-ContactTechOrganization <String>] [-ContactTechPhone <String>]
+ [-DnsType <DnsType>] [-DnsZoneId <String>] [-Kind <String>] [-Privacy] [-TargetDnsType <DnsType>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
@@ -204,7 +202,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -237,7 +235,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -253,7 +251,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -269,7 +267,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -285,7 +283,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -301,7 +299,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -349,7 +347,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -365,7 +363,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -413,7 +411,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -429,7 +427,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -462,7 +460,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -478,7 +476,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -494,7 +492,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -510,7 +508,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -526,7 +524,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -574,7 +572,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -590,7 +588,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -638,7 +636,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -654,7 +652,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -687,7 +685,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -703,7 +701,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -719,7 +717,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -735,7 +733,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -751,7 +749,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -799,7 +797,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -815,7 +813,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -863,7 +861,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -879,7 +877,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -912,7 +910,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -928,7 +926,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -944,7 +942,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -960,7 +958,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -976,7 +974,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -1024,7 +1022,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -1040,7 +1038,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -1088,7 +1086,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -1146,6 +1144,7 @@ Dynamic: False
 
 ### -Domain
 ARM resource for a domain.
+To construct, see NOTES section for DOMAIN properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150401.IDomainPatchResource
@@ -1219,38 +1218,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -ProvisioningState
-Domain provisioning state.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.ProvisioningState
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -RegistrationStatus
-Domain registration status.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.DomainStatus
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -1353,6 +1320,79 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IDomain
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### DOMAIN <IDomainPatchResource>: ARM resource for a domain.
+  - `ContactAdminAddressMailingAddress1 <String>`: First line of an Address.
+  - `ContactAdminAddressMailingCity <String>`: The city for the address.
+  - `ContactAdminAddressMailingCountry <String>`: The country for the address.
+  - `ContactAdminAddressMailingPostalCode <String>`: The postal code for the address.
+  - `ContactAdminAddressMailingState <String>`: The state or province for the address.
+  - `ContactAdminEmail <String>`: Email address.
+  - `ContactAdminNameFirst <String>`: First name.
+  - `ContactAdminNameLast <String>`: Last name.
+  - `ContactAdminPhone <String>`: Phone number.
+  - `ContactBillingAddressMailingAddress1 <String>`: First line of an Address.
+  - `ContactBillingAddressMailingCity <String>`: The city for the address.
+  - `ContactBillingAddressMailingCountry <String>`: The country for the address.
+  - `ContactBillingAddressMailingPostalCode <String>`: The postal code for the address.
+  - `ContactBillingAddressMailingState <String>`: The state or province for the address.
+  - `ContactBillingEmail <String>`: Email address.
+  - `ContactBillingNameFirst <String>`: First name.
+  - `ContactBillingNameLast <String>`: Last name.
+  - `ContactBillingPhone <String>`: Phone number.
+  - `ContactRegistrantAddressMailingAddress1 <String>`: First line of an Address.
+  - `ContactRegistrantAddressMailingCity <String>`: The city for the address.
+  - `ContactRegistrantAddressMailingCountry <String>`: The country for the address.
+  - `ContactRegistrantAddressMailingPostalCode <String>`: The postal code for the address.
+  - `ContactRegistrantAddressMailingState <String>`: The state or province for the address.
+  - `ContactRegistrantEmail <String>`: Email address.
+  - `ContactRegistrantNameFirst <String>`: First name.
+  - `ContactRegistrantNameLast <String>`: Last name.
+  - `ContactRegistrantPhone <String>`: Phone number.
+  - `ContactTechAddressMailingAddress1 <String>`: First line of an Address.
+  - `ContactTechAddressMailingCity <String>`: The city for the address.
+  - `ContactTechAddressMailingCountry <String>`: The country for the address.
+  - `ContactTechAddressMailingPostalCode <String>`: The postal code for the address.
+  - `ContactTechAddressMailingState <String>`: The state or province for the address.
+  - `ContactTechEmail <String>`: Email address.
+  - `ContactTechNameFirst <String>`: First name.
+  - `ContactTechNameLast <String>`: Last name.
+  - `ContactTechPhone <String>`: Phone number.
+  - `[Kind <String>]`: Kind of resource.
+  - `[AuthCode <String>]`: 
+  - `[AutoRenew <Boolean?>]`: <code>true</code> if the domain should be automatically renewed; otherwise, <code>false</code>.
+  - `[ConsentAgreedAt <DateTime?>]`: Timestamp when the agreements were accepted.
+  - `[ConsentAgreedBy <String>]`: Client IP address.
+  - `[ConsentAgreementKey <String[]>]`: List of applicable legal agreement keys. This list can be retrieved using ListLegalAgreements API under <code>TopLevelDomain</code> resource.
+  - `[ContactAdminAddressMailingAddress2 <String>]`: The second line of the Address. Optional.
+  - `[ContactAdminFax <String>]`: Fax number.
+  - `[ContactAdminJobTitle <String>]`: Job title.
+  - `[ContactAdminNameMiddle <String>]`: Middle name.
+  - `[ContactAdminOrganization <String>]`: Organization contact belongs to.
+  - `[ContactBillingAddressMailingAddress2 <String>]`: The second line of the Address. Optional.
+  - `[ContactBillingFax <String>]`: Fax number.
+  - `[ContactBillingJobTitle <String>]`: Job title.
+  - `[ContactBillingNameMiddle <String>]`: Middle name.
+  - `[ContactBillingOrganization <String>]`: Organization contact belongs to.
+  - `[ContactRegistrantAddressMailingAddress2 <String>]`: The second line of the Address. Optional.
+  - `[ContactRegistrantFax <String>]`: Fax number.
+  - `[ContactRegistrantJobTitle <String>]`: Job title.
+  - `[ContactRegistrantNameMiddle <String>]`: Middle name.
+  - `[ContactRegistrantOrganization <String>]`: Organization contact belongs to.
+  - `[ContactTechAddressMailingAddress2 <String>]`: The second line of the Address. Optional.
+  - `[ContactTechFax <String>]`: Fax number.
+  - `[ContactTechJobTitle <String>]`: Job title.
+  - `[ContactTechNameMiddle <String>]`: Middle name.
+  - `[ContactTechOrganization <String>]`: Organization contact belongs to.
+  - `[DnsType <DnsType?>]`: Current DNS type
+  - `[DnsZoneId <String>]`: Azure DNS Zone to use
+  - `[Privacy <Boolean?>]`: <code>true</code> if domain privacy is enabled for this domain; otherwise, <code>false</code>.
+  - `[TargetDnsType <DnsType?>]`: Target DNS type (would be used for migration)
 
 ## RELATED LINKS
 

@@ -276,6 +276,7 @@ Dynamic: False
 
 ### -ValidateRequest
 Resource validation request content.
+To construct, see NOTES section for VALIDATEREQUEST properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160301.IValidateRequest
@@ -337,6 +338,22 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160301.IValidateResponse
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### VALIDATEREQUEST <IValidateRequest>: Resource validation request content.
+  - `Location <String>`: Expected location of the resource.
+  - `Name <String>`: Resource name to verify.
+  - `Type <ValidateResourceTypes>`: Resource type used for verification.
+  - `[Capacity <Int32?>]`: Target capacity of the App Service plan (number of VMs).
+  - `[HostingEnvironment <String>]`: Name of App Service Environment where app or App Service plan should be created.
+  - `[IsSpot <Boolean?>]`: <code>true</code> if App Service plan is for Spot instances; otherwise, <code>false</code>.
+  - `[NeedLinuxWorker <Boolean?>]`: <code>true</code> if App Service plan is for Linux workers; otherwise, <code>false</code>.
+  - `[ServerFarmId <String>]`: ARM resource ID of an App Service plan that would host the app.
+  - `[SkuName <String>]`: Name of the target SKU for the App Service plan.
 
 ## RELATED LINKS
 

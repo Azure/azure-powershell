@@ -22,17 +22,16 @@ Update-AzWebAppCertificate -Name <String> -ResourceGroupName <String> -Subscript
 ### UpdateExpanded
 ```
 Update-AzWebAppCertificate -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -Password <String> [-HostName <String[]>] [-HostingEnvironmentProfileId <String>] [-KeyVaultId <String>]
- [-KeyVaultSecretName <String>] [-KeyVaultSecretStatus <KeyVaultSecretStatus>] [-Kind <String>]
- [-PfxBlob <Byte[]>] [-ServerFarmId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-HostName <String[]>] [-HostingEnvironmentProfileId <String>] [-KeyVaultId <String>]
+ [-KeyVaultSecretName <String>] [-Kind <String>] [-Password <String>] [-PfxBlobInputFile <String>]
+ [-ServerFarmId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzWebAppCertificate -InputObject <IWebSiteIdentity> -Password <String> [-HostName <String[]>]
+Update-AzWebAppCertificate -InputObject <IWebSiteIdentity> [-HostName <String[]>]
  [-HostingEnvironmentProfileId <String>] [-KeyVaultId <String>] [-KeyVaultSecretName <String>]
- [-KeyVaultSecretStatus <KeyVaultSecretStatus>] [-Kind <String>] [-PfxBlob <Byte[]>] [-ServerFarmId <String>]
+ [-Kind <String>] [-Password <String>] [-PfxBlobInputFile <String>] [-ServerFarmId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -69,6 +68,7 @@ PS C:\> {{ Add code here }}
 
 ### -CertificateEnvelope
 ARM resource for a certificate.
+To construct, see NOTES section for CERTIFICATEENVELOPE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ICertificatePatchResource
@@ -179,22 +179,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -KeyVaultSecretStatus
-Status of the Key Vault secret.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.KeyVaultSecretStatus
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Kind
 Kind of resource.
 
@@ -235,7 +219,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -243,11 +227,11 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -PfxBlob
-Pfx blob.
+### -PfxBlobInputFile
+Input File for PfxBlob (Pfx blob.)
 
 ```yaml
-Type: System.Byte[]
+Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -356,6 +340,21 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ICertificate
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### CERTIFICATEENVELOPE <ICertificatePatchResource>: ARM resource for a certificate.
+  - `Password <String>`: Certificate password.
+  - `[Kind <String>]`: Kind of resource.
+  - `[HostName <String[]>]`: Host names the certificate applies to.
+  - `[HostingEnvironmentProfileId <String>]`: Resource ID of the App Service Environment.
+  - `[KeyVaultId <String>]`: Key Vault Csm resource Id.
+  - `[KeyVaultSecretName <String>]`: Key Vault secret name.
+  - `[PfxBlob <Byte[]>]`: Pfx blob.
+  - `[ServerFarmId <String>]`: Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
 
 ## RELATED LINKS
 

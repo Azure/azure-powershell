@@ -24,15 +24,14 @@ Update-AzAppServiceCertificateOrderCertificate -CertificateOrderName <String> -N
 ```
 Update-AzAppServiceCertificateOrderCertificate -CertificateOrderName <String> -Name <String>
  -ResourceGroupName <String> -SubscriptionId <String> [-KeyVaultId <String>] [-KeyVaultSecretName <String>]
- [-Kind <String>] [-ProvisioningState <KeyVaultSecretStatus>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-Kind <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzAppServiceCertificateOrderCertificate -InputObject <IWebSiteIdentity> [-KeyVaultId <String>]
- [-KeyVaultSecretName <String>] [-Kind <String>] [-ProvisioningState <KeyVaultSecretStatus>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-KeyVaultSecretName <String>] [-Kind <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
@@ -117,6 +116,7 @@ Dynamic: False
 
 ### -KeyVaultCertificate
 Key Vault container ARM resource for a certificate that is purchased through Azure.
+To construct, see NOTES section for KEYVAULTCERTIFICATE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.IAppServiceCertificatePatchResource
@@ -188,22 +188,6 @@ Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -ProvisioningState
-Status of the Key Vault secret.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.KeyVaultSecretStatus
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -292,6 +276,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IAppServiceCertificateResource
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### KEYVAULTCERTIFICATE <IAppServiceCertificatePatchResource>: Key Vault container ARM resource for a certificate that is purchased through Azure.
+  - `[Kind <String>]`: Kind of resource.
+  - `[KeyVaultId <String>]`: Key Vault resource Id.
+  - `[KeyVaultSecretName <String>]`: Key Vault secret name.
 
 ## RELATED LINKS
 

@@ -22,19 +22,16 @@ Update-AzAppServiceCertificateOrder -CertificateOrderName <String> -ResourceGrou
 ### UpdateExpanded
 ```
 Update-AzAppServiceCertificateOrder -CertificateOrderName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -ProductType <CertificateProductType> [-AutoRenew]
- [-Certificate <IAppServiceCertificateOrderPatchResourcePropertiesCertificates>] [-Csr <String>]
- [-DistinguishedName <String>] [-KeySize <Int32>] [-Kind <String>] [-ProvisioningState <ProvisioningState>]
- [-Status <CertificateOrderStatus>] [-ValidityInYear <Int32>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -SubscriptionId <String> [-AutoRenew] [-Certificate <Hashtable>] [-Csr <String>]
+ [-DistinguishedName <String>] [-KeySize <Int32>] [-Kind <String>] [-ProductType <CertificateProductType>]
+ [-ValidityInYear <Int32>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzAppServiceCertificateOrder -InputObject <IWebSiteIdentity> -ProductType <CertificateProductType>
- [-AutoRenew] [-Certificate <IAppServiceCertificateOrderPatchResourcePropertiesCertificates>] [-Csr <String>]
- [-DistinguishedName <String>] [-KeySize <Int32>] [-Kind <String>] [-ProvisioningState <ProvisioningState>]
- [-Status <CertificateOrderStatus>] [-ValidityInYear <Int32>] [-DefaultProfile <PSObject>] [-Confirm]
+Update-AzAppServiceCertificateOrder -InputObject <IWebSiteIdentity> [-AutoRenew] [-Certificate <Hashtable>]
+ [-Csr <String>] [-DistinguishedName <String>] [-KeySize <Int32>] [-Kind <String>]
+ [-ProductType <CertificateProductType>] [-ValidityInYear <Int32>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -90,7 +87,7 @@ Dynamic: False
 State of the Key Vault secret.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.IAppServiceCertificateOrderPatchResourcePropertiesCertificates
+Type: System.Collections.Hashtable
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -104,6 +101,7 @@ Dynamic: False
 
 ### -CertificateDistinguishedName
 ARM resource for a certificate order that is purchased through Azure.
+To construct, see NOTES section for CERTIFICATEDISTINGUISHEDNAME properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.IAppServiceCertificateOrderPatchResource
@@ -238,22 +236,6 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.CertificateProductType
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -ProvisioningState
-Status of certificate order.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.ProvisioningState
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
 Required: False
 Position: Named
 Default value: None
@@ -271,22 +253,6 @@ Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Status
-Current order status.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.CertificateOrderStatus
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -375,6 +341,22 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IAppServiceCertificateOrder
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### CERTIFICATEDISTINGUISHEDNAME <IAppServiceCertificateOrderPatchResource>: ARM resource for a certificate order that is purchased through Azure.
+  - `ProductType <CertificateProductType>`: Certificate product type.
+  - `[Kind <String>]`: Kind of resource.
+  - `[AutoRenew <Boolean?>]`: <code>true</code> if the certificate should be automatically renewed when it expires; otherwise, <code>false</code>.
+  - `[Certificate <IAppServiceCertificateOrderPatchResourcePropertiesCertificates>]`: State of the Key Vault secret.
+    - `[(Any) <IAppServiceCertificate>]`: This indicates any property can be added to this object.
+  - `[Csr <String>]`: Last CSR that was created for this order.
+  - `[DistinguishedName <String>]`: Certificate distinguished name.
+  - `[KeySize <Int32?>]`: Certificate key size.
+  - `[ValidityInYear <Int32?>]`: Duration in years (must be between 1 and 3).
 
 ## RELATED LINKS
 

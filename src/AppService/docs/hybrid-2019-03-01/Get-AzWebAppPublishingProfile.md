@@ -15,28 +15,28 @@ Gets the publishing profile for an app (or deployment slot, if specified).
 ### List (Default)
 ```
 Get-AzWebAppPublishingProfile -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- [-PassThru] [-PublishingProfileOption <ICsmPublishingProfileOptions>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -OutFile <String> [-PassThru] [-PublishingProfileOption <ICsmPublishingProfileOptions>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ListExpanded1
 ```
 Get-AzWebAppPublishingProfile -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- -Slot <String> [-PassThru] [-Format <PublishingProfileFormat>] [-IncludeDisasterRecoveryEndpoints]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Slot <String> -OutFile <String> [-PassThru] [-Format <PublishingProfileFormat>]
+ [-IncludeDisasterRecoveryEndpoints] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### List1
 ```
 Get-AzWebAppPublishingProfile -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- -Slot <String> [-PassThru] [-PublishingProfileOption <ICsmPublishingProfileOptions>]
+ -Slot <String> -OutFile <String> [-PassThru] [-PublishingProfileOption <ICsmPublishingProfileOptions>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ListExpanded
 ```
 Get-AzWebAppPublishingProfile -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- [-PassThru] [-Format <PublishingProfileFormat>] [-IncludeDisasterRecoveryEndpoints]
+ -OutFile <String> [-PassThru] [-Format <PublishingProfileFormat>] [-IncludeDisasterRecoveryEndpoints]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -130,6 +130,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -OutFile
+Path to write output file to
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -PassThru
 When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
 
@@ -148,6 +164,7 @@ Dynamic: False
 
 ### -PublishingProfileOption
 Publishing options for requested profile.
+To construct, see NOTES section for PUBLISHINGPROFILEOPTION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ICsmPublishingProfileOptions
@@ -262,6 +279,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Get-AzWebAppPublishingProfile
 
 ### Get-AzWebAppSlotPublishingProfile
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PUBLISHINGPROFILEOPTION <ICsmPublishingProfileOptions>: Publishing options for requested profile.
+  - `[Format <PublishingProfileFormat?>]`: Name of the format. Valid values are:         FileZilla3         WebDeploy -- default         Ftp
+  - `[IncludeDisasterRecoveryEndpoint <Boolean?>]`: Include the DisasterRecover endpoint if true
 
 ## RELATED LINKS
 

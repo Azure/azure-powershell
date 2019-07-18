@@ -16,14 +16,14 @@ Start capturing network packets for the site.
 ```
 Start-AzWebAppNetworkTrace -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-DurationInSecond <Int32>] [-MaxFrameLength <Int32>] [-SasUrl <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### StartViaIdentity
 ```
 Start-AzWebAppNetworkTrace -InputObject <IWebSiteIdentity> [-DurationInSecond <Int32>]
- [-MaxFrameLength <Int32>] [-SasUrl <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-MaxFrameLength <Int32>] [-SasUrl <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -147,6 +147,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -ResourceGroupName
 Name of the resource group to which the resource belongs.
 
@@ -242,6 +258,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.INetworkTrace
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

@@ -15,28 +15,28 @@ Updates the source control configuration of an app.
 ### Create (Default)
 ```
 New-AzWebAppSourceControl -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-SiteSourceControl <ISiteSourceControl>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SiteSourceControl <ISiteSourceControl>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpanded
 ```
 New-AzWebAppSourceControl -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-Branch <String>] [-DeploymentRollbackEnabled] [-IsManualIntegration] [-IsMercurial] [-Kind <String>]
- [-RepoUrl <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-RepoUrl <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzWebAppSourceControl -InputObject <IWebSiteIdentity> [-Branch <String>] [-DeploymentRollbackEnabled]
  [-IsManualIntegration] [-IsMercurial] [-Kind <String>] [-RepoUrl <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
 New-AzWebAppSourceControl -InputObject <IWebSiteIdentity> [-SiteSourceControl <ISiteSourceControl>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -208,6 +208,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -RepoUrl
 Repository or source control URL.
 
@@ -242,6 +258,7 @@ Dynamic: False
 
 ### -SiteSourceControl
 Source control configuration for an app.
+To construct, see NOTES section for SITESOURCECONTROL properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.ISiteSourceControl
@@ -321,6 +338,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.ISiteSourceControl
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### SITESOURCECONTROL <ISiteSourceControl>: Source control configuration for an app.
+  - `[Kind <String>]`: Kind of resource.
+  - `[Branch <String>]`: Name of branch to use for deployment.
+  - `[DeploymentRollbackEnabled <Boolean?>]`: <code>true</code> to enable deployment rollback; otherwise, <code>false</code>.
+  - `[IsManualIntegration <Boolean?>]`: <code>true</code> to limit to manual integration; <code>false</code> to enable continuous integration (which configures webhooks into online repos like GitHub).
+  - `[IsMercurial <Boolean?>]`: <code>true</code> for a Mercurial repository; <code>false</code> for a Git repository.
+  - `[RepoUrl <String>]`: Repository or source control URL.
 
 ## RELATED LINKS
 

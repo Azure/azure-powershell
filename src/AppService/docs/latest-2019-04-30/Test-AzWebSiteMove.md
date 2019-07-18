@@ -96,6 +96,7 @@ Dynamic: False
 
 ### -MoveResourceEnvelope
 Object with a list of the resources that need to be moved and the resource group they should be moved to.
+To construct, see NOTES section for MOVERESOURCEENVELOPE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ICsmMoveResourceEnvelope
@@ -239,6 +240,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### MOVERESOURCEENVELOPE <ICsmMoveResourceEnvelope>: Object with a list of the resources that need to be moved and the resource group they should be moved to.
+  - `[Resource <String[]>]`: 
+  - `[TargetResourceGroup <String>]`: 
 
 ## RELATED LINKS
 

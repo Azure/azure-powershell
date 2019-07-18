@@ -15,13 +15,13 @@ Gets the Git/FTP publishing credentials of an app.
 ### List (Default)
 ```
 Get-AzWebAppPublishingCredentials -SubscriptionId <String[]> -Name <String> -ResourceGroupName <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ListSlot
 ```
 Get-AzWebAppPublishingCredentials -SubscriptionId <String[]> -Name <String> -ResourceGroupName <String>
- -Slot <String> [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Slot <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ListBySiteObject
@@ -98,6 +98,22 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: List, ListSlot
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -217,6 +233,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Get-AzWebAppContainerContinuousDeploymentUrl
 
 ### Get-AzWebAppPublishingCredentialsSlot
+
+## NOTES
 
 ## RELATED LINKS
 

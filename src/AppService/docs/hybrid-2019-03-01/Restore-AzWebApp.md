@@ -15,58 +15,59 @@ Restores a specific backup to another app (or deployment slot, if specified).
 ### Restore (Default)
 ```
 Restore-AzWebApp -BackupId <String> -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-PassThru] [-Request <IRestoreRequest>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [-PassThru] [-Request <IRestoreRequest>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### RestoreSlot
 ```
 Restore-AzWebApp -BackupId <String> -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -Slot <String> [-PassThru] [-Request <IRestoreRequest>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -Slot <String> [-PassThru] [-Request <IRestoreRequest>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### RestoreExpandedSlot
 ```
 Restore-AzWebApp -BackupId <String> -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -Slot <String> -Overwrite -StorageAccountUrl <String> [-PassThru] [-AdjustConnectionString]
- [-AppServicePlan <String>] [-BlobName <String>] [-Database <IDatabaseBackupSetting[]>]
- [-HostingEnvironment <String>] [-IgnoreConflictingHostName] [-IgnoreDatabase] [-Kind <String>]
- [-OperationType <BackupRestoreOperationType>] [-SiteName <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Slot <String> [-PassThru] [-AdjustConnectionString] [-AppServicePlan <String>] [-BlobName <String>]
+ [-Database <IDatabaseBackupSetting[]>] [-HostingEnvironment <String>] [-IgnoreConflictingHostName]
+ [-IgnoreDatabase] [-Kind <String>] [-OperationType <BackupRestoreOperationType>] [-Overwrite]
+ [-SiteName <String>] [-StorageAccountUrl <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### RestoreExpanded
 ```
 Restore-AzWebApp -BackupId <String> -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -Overwrite -StorageAccountUrl <String> [-PassThru] [-AdjustConnectionString] [-AppServicePlan <String>]
- [-BlobName <String>] [-Database <IDatabaseBackupSetting[]>] [-HostingEnvironment <String>]
- [-IgnoreConflictingHostName] [-IgnoreDatabase] [-Kind <String>] [-OperationType <BackupRestoreOperationType>]
- [-SiteName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PassThru] [-AdjustConnectionString] [-AppServicePlan <String>] [-BlobName <String>]
+ [-Database <IDatabaseBackupSetting[]>] [-HostingEnvironment <String>] [-IgnoreConflictingHostName]
+ [-IgnoreDatabase] [-Kind <String>] [-OperationType <BackupRestoreOperationType>] [-Overwrite]
+ [-SiteName <String>] [-StorageAccountUrl <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### RestoreViaIdentityExpandedSlot
 ```
-Restore-AzWebApp -InputObject <IWebSiteIdentity> -Overwrite -StorageAccountUrl <String> [-PassThru]
- [-AdjustConnectionString] [-AppServicePlan <String>] [-BlobName <String>]
- [-Database <IDatabaseBackupSetting[]>] [-HostingEnvironment <String>] [-IgnoreConflictingHostName]
- [-IgnoreDatabase] [-Kind <String>] [-OperationType <BackupRestoreOperationType>] [-SiteName <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+Restore-AzWebApp -InputObject <IWebSiteIdentity> [-PassThru] [-AdjustConnectionString]
+ [-AppServicePlan <String>] [-BlobName <String>] [-Database <IDatabaseBackupSetting[]>]
+ [-HostingEnvironment <String>] [-IgnoreConflictingHostName] [-IgnoreDatabase] [-Kind <String>]
+ [-OperationType <BackupRestoreOperationType>] [-Overwrite] [-SiteName <String>] [-StorageAccountUrl <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### RestoreViaIdentityExpanded
 ```
-Restore-AzWebApp -InputObject <IWebSiteIdentity> -Overwrite -StorageAccountUrl <String> [-PassThru]
- [-AdjustConnectionString] [-AppServicePlan <String>] [-BlobName <String>]
- [-Database <IDatabaseBackupSetting[]>] [-HostingEnvironment <String>] [-IgnoreConflictingHostName]
- [-IgnoreDatabase] [-Kind <String>] [-OperationType <BackupRestoreOperationType>] [-SiteName <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+Restore-AzWebApp -InputObject <IWebSiteIdentity> [-PassThru] [-AdjustConnectionString]
+ [-AppServicePlan <String>] [-BlobName <String>] [-Database <IDatabaseBackupSetting[]>]
+ [-HostingEnvironment <String>] [-IgnoreConflictingHostName] [-IgnoreDatabase] [-Kind <String>]
+ [-OperationType <BackupRestoreOperationType>] [-Overwrite] [-SiteName <String>] [-StorageAccountUrl <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### RestoreViaIdentity
 ```
 Restore-AzWebApp -InputObject <IWebSiteIdentity> [-PassThru] [-Request <IRestoreRequest>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -177,6 +178,7 @@ Dynamic: False
 ### -Database
 Collection of databases which should be restored.
 This list has to match the list of databases included in the backup.
+To construct, see NOTES section for DATABASE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.IDatabaseBackupSetting[]
@@ -305,6 +307,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -OperationType
 Operation type.
 
@@ -330,7 +348,7 @@ Type: System.Management.Automation.SwitchParameter
 Parameter Sets: RestoreExpandedSlot, RestoreExpanded, RestoreViaIdentityExpandedSlot, RestoreViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: False
 Accept pipeline input: False
@@ -356,6 +374,7 @@ Dynamic: False
 
 ### -Request
 Description of a restore request.
+To construct, see NOTES section for REQUEST properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IRestoreRequest
@@ -427,7 +446,7 @@ Type: System.String
 Parameter Sets: RestoreExpandedSlot, RestoreExpanded, RestoreViaIdentityExpandedSlot, RestoreViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -504,6 +523,35 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Restore-AzWebAppBackup
 
 ### Restore-AzWebAppSlot
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### DATABASE <IDatabaseBackupSetting[]>: Collection of databases which should be restored. This list has to match the list of databases included in the backup.
+  - `DatabaseType <DatabaseType>`: Database type (e.g. SqlAzure / MySql).
+  - `[ConnectionString <String>]`: Contains a connection string to a database which is being backed up or restored. If the restore should happen to a new database, the database name inside is the new one.
+  - `[ConnectionStringName <String>]`: Contains a connection string name that is linked to the SiteConfig.ConnectionStrings.         This is used during restore with overwrite connection strings options.
+  - `[Name <String>]`: 
+
+#### REQUEST <IRestoreRequest>: Description of a restore request.
+  - `Overwrite <Boolean>`: <code>true</code> if the restore operation can overwrite target app; otherwise, <code>false</code>. <code>true</code> is needed if trying to restore over an existing app.
+  - `StorageAccountUrl <String>`: SAS URL to the container.
+  - `[Kind <String>]`: Kind of resource.
+  - `[AdjustConnectionString <Boolean?>]`: <code>true</code> if SiteConfig.ConnectionStrings should be set in new app; otherwise, <code>false</code>.
+  - `[AppServicePlan <String>]`: Specify app service plan that will own restored site.
+  - `[BlobName <String>]`: Name of a blob which contains the backup.
+  - `[Database <IDatabaseBackupSetting[]>]`: Collection of databases which should be restored. This list has to match the list of databases included in the backup.
+    - `DatabaseType <DatabaseType>`: Database type (e.g. SqlAzure / MySql).
+    - `[ConnectionString <String>]`: Contains a connection string to a database which is being backed up or restored. If the restore should happen to a new database, the database name inside is the new one.
+    - `[ConnectionStringName <String>]`: Contains a connection string name that is linked to the SiteConfig.ConnectionStrings.         This is used during restore with overwrite connection strings options.
+    - `[Name <String>]`: 
+  - `[HostingEnvironment <String>]`: App Service Environment name, if needed (only when restoring an app to an App Service Environment).
+  - `[IgnoreConflictingHostName <Boolean?>]`: Changes a logic when restoring an app with custom domains. <code>true</code> to remove custom domains automatically. If <code>false</code>, custom domains are added to         the app's object when it is being restored, but that might fail due to conflicts during the operation.
+  - `[IgnoreDatabase <Boolean?>]`: Ignore the databases and only restore the site content
+  - `[OperationType <BackupRestoreOperationType?>]`: Operation type.
+  - `[SiteName <String>]`: Name of an app.
 
 ## RELATED LINKS
 

@@ -178,6 +178,7 @@ Dynamic: False
 
 ### -SlotSwapEntity
 Deployment slot parameters.
+To construct, see NOTES section for SLOTSWAPENTITY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ICsmSlotEntity
@@ -273,6 +274,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### SLOTSWAPENTITY <ICsmSlotEntity>: Deployment slot parameters.
+  - `PreserveVnet <Boolean>`: <code>true</code> to preserve Virtual Network to the slot during swap; otherwise, <code>false</code>.
+  - `TargetSlot <String>`: Destination deployment slot during swap operation.
 
 ## RELATED LINKS
 

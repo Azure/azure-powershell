@@ -113,6 +113,7 @@ Dynamic: False
 
 ### -Parameter
 The required set of inputs to validate a VNET
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160301.IVnetParameters
@@ -240,6 +241,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160301.IVnetValidationFailureDetails
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <IVnetParameters>: The required set of inputs to validate a VNET
+  - `[Kind <String>]`: Kind of resource.
+  - `[VnetName <String>]`: The name of the VNET to be validated
+  - `[VnetResourceGroup <String>]`: The Resource Group of the VNET to be validated
+  - `[VnetSubnetName <String>]`: The subnet name to be validated
 
 ## RELATED LINKS
 

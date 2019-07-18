@@ -70,6 +70,7 @@ PS C:\> {{ Add code here }}
 ### -ConnectionEnvelope
 Hybrid Connection contract.
 This is used to configure a Hybrid Connection.
+To construct, see NOTES section for CONNECTIONENVELOPE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160301.IHybridConnection
@@ -393,6 +394,22 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160301.IHybridConnection
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### CONNECTIONENVELOPE <IHybridConnection>: Hybrid Connection contract. This is used to configure a Hybrid Connection.
+  - `[Kind <String>]`: Kind of resource.
+  - `[Hostname <String>]`: The hostname of the endpoint.
+  - `[Port <Int32?>]`: The port of the endpoint.
+  - `[RelayArmUri <String>]`: The ARM URI to the Service Bus relay.
+  - `[RelayName <String>]`: The name of the Service Bus relay.
+  - `[SendKeyName <String>]`: The name of the Service Bus key which has Send permissions. This is used to authenticate to Service Bus.
+  - `[SendKeyValue <String>]`: The value of the Service Bus key. This is used to authenticate to Service Bus. In ARM this key will not be returned         normally, use the POST /listKeys API instead.
+  - `[ServiceBusNamespace <String>]`: The name of the Service Bus namespace.
+  - `[ServiceBusSuffix <String>]`: The suffix for the service bus endpoint. By default this is .servicebus.windows.net
 
 ## RELATED LINKS
 

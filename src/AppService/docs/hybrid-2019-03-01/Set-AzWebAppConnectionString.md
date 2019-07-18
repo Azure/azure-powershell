@@ -22,8 +22,8 @@ Set-AzWebAppConnectionString -Name <String> -ResourceGroupName <String> -Subscri
 ### UpdateExpanded
 ```
 Set-AzWebAppConnectionString -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Kind <String>] [-Property <IConnectionStringDictionaryProperties>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-Kind <String>] [-Property <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,6 +53,7 @@ PS C:\> {{ Add code here }}
 
 ### -ConnectionString
 String dictionary resource.
+To construct, see NOTES section for CONNECTIONSTRING properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.IConnectionStringDictionary
@@ -119,7 +120,7 @@ Dynamic: False
 Connection strings.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.IConnectionStringDictionaryProperties
+Type: System.Collections.Hashtable
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -210,6 +211,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.IConnectionStringDictionary
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### CONNECTIONSTRING <IConnectionStringDictionary>: String dictionary resource.
+  - `[Kind <String>]`: Kind of resource.
+  - `[Property <IConnectionStringDictionaryProperties>]`: Connection strings.
+    - `[(Any) <IConnStringValueTypePair>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
 

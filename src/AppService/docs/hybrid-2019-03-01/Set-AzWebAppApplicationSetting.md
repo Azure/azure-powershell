@@ -21,7 +21,7 @@ Set-AzWebAppApplicationSetting -Name <String> -ResourceGroupName <String> -Subsc
 ### UpdateExpanded
 ```
 Set-AzWebAppApplicationSetting -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Kind <String>] [-Property <IStringDictionaryProperties>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [-Kind <String>] [-Property <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -52,6 +52,7 @@ PS C:\> {{ Add code here }}
 
 ### -AppSetting
 String dictionary resource.
+To construct, see NOTES section for APPSETTING properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.IStringDictionary
@@ -118,7 +119,7 @@ Dynamic: False
 Settings.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.IStringDictionaryProperties
+Type: System.Collections.Hashtable
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -209,6 +210,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.IStringDictionary
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### APPSETTING <IStringDictionary>: String dictionary resource.
+  - `[Kind <String>]`: Kind of resource.
+  - `[Property <IStringDictionaryProperties>]`: Settings.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
 

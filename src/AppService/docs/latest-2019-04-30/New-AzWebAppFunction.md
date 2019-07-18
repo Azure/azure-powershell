@@ -16,30 +16,30 @@ Create function for web site, or a deployment slot.
 ```
 New-AzWebAppFunction -FunctionName <String> -Name <String> -ResourceGroupName <String>
  -SubscriptionId <String> [-FunctionEnvelope <IFunctionEnvelope>] [-DefaultProfile <PSObject>] [-AsJob]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpanded
 ```
 New-AzWebAppFunction -FunctionName <String> -Name <String> -ResourceGroupName <String>
  -SubscriptionId <String> [-Config <IFunctionEnvelopePropertiesConfig>] [-ConfigHref <String>]
- [-File <IFunctionEnvelopePropertiesFiles>] [-FunctionAppId <String>] [-Href <String>] [-Kind <String>]
- [-ScriptHref <String>] [-ScriptRootPathHref <String>] [-SecretsFileHref <String>] [-TestData <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-File <Hashtable>] [-FunctionAppId <String>] [-Href <String>] [-Kind <String>] [-ScriptHref <String>]
+ [-ScriptRootPathHref <String>] [-SecretsFileHref <String>] [-TestData <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzWebAppFunction -InputObject <IWebSiteIdentity> [-Config <IFunctionEnvelopePropertiesConfig>]
- [-ConfigHref <String>] [-File <IFunctionEnvelopePropertiesFiles>] [-FunctionAppId <String>] [-Href <String>]
- [-Kind <String>] [-ScriptHref <String>] [-ScriptRootPathHref <String>] [-SecretsFileHref <String>]
- [-TestData <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ConfigHref <String>] [-File <Hashtable>] [-FunctionAppId <String>] [-Href <String>] [-Kind <String>]
+ [-ScriptHref <String>] [-ScriptRootPathHref <String>] [-SecretsFileHref <String>] [-TestData <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
 New-AzWebAppFunction -InputObject <IWebSiteIdentity> [-FunctionEnvelope <IFunctionEnvelope>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -135,7 +135,7 @@ Dynamic: False
 File list.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.IFunctionEnvelopePropertiesFiles
+Type: System.Collections.Hashtable
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -165,6 +165,7 @@ Dynamic: False
 
 ### -FunctionEnvelope
 Web Job Information.
+To construct, see NOTES section for FUNCTIONENVELOPE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IFunctionEnvelope
@@ -254,6 +255,22 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -404,6 +421,24 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### FUNCTIONENVELOPE <IFunctionEnvelope>: Web Job Information.
+  - `[Kind <String>]`: Kind of resource.
+  - `[Config <IFunctionEnvelopePropertiesConfig>]`: Config information.
+  - `[ConfigHref <String>]`: Config URI.
+  - `[File <IFunctionEnvelopePropertiesFiles>]`: File list.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
+  - `[FunctionAppId <String>]`: Function App ID.
+  - `[Href <String>]`: Function URI.
+  - `[ScriptHref <String>]`: Script URI.
+  - `[ScriptRootPathHref <String>]`: Script root path URI.
+  - `[SecretsFileHref <String>]`: Secrets file URI.
+  - `[TestData <String>]`: Test data used when testing via the Azure Portal.
 
 ## RELATED LINKS
 

@@ -15,7 +15,7 @@ Creates or updates an App Service Plan.
 ### Update (Default)
 ```
 Set-AzAppServicePlan -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-AppServicePlan <IAppServicePlan>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [-AppServicePlan <IAppServicePlan>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -23,13 +23,13 @@ Set-AzAppServicePlan -Name <String> -ResourceGroupName <String> -SubscriptionId 
 ```
 Set-AzAppServicePlan -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Location <String>
  [-Capacity <Int32>] [-FreeOfferExpirationTime <DateTime>] [-HostingEnvironmentProfileId <String>] [-HyperV]
- [-IsSpot] [-IsXenon] [-Kind <String>] [-MaximumElasticWorkerCount <Int32>] [-PerSiteScaling]
- [-ProvisioningState <ProvisioningState>] [-Reserved] [-SkuCapability <ICapability[]>]
- [-SkuCapacityDefault <Int32>] [-SkuCapacityMaximum <Int32>] [-SkuCapacityMinimum <Int32>]
- [-SkuCapacityScaleType <String>] [-SkuFamily <String>] [-SkuLocation <String[]>] [-SkuName <String>]
- [-SkuSize <String>] [-SkuTier <String>] [-SpotExpirationTime <DateTime>] [-Status <StatusOptions>]
- [-Tag <IResourceTags>] [-TargetWorkerCount <Int32>] [-TargetWorkerSizeId <Int32>] [-WorkerTierName <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-IsSpot] [-IsXenon] [-Kind <String>] [-MaximumElasticWorkerCount <Int32>] [-PerSiteScaling] [-Reserved]
+ [-SkuCapability <ICapability[]>] [-SkuCapacityDefault <Int32>] [-SkuCapacityMaximum <Int32>]
+ [-SkuCapacityMinimum <Int32>] [-SkuCapacityScaleType <String>] [-SkuFamily <String>]
+ [-SkuLocation <String[]>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>]
+ [-SpotExpirationTime <DateTime>] [-Tag <Hashtable>] [-TargetWorkerCount <Int32>]
+ [-TargetWorkerSizeId <Int32>] [-WorkerTierName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,6 +59,7 @@ PS C:\> {{ Add code here }}
 
 ### -AppServicePlan
 App Service plan.
+To construct, see NOTES section for APPSERVICEPLAN properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IAppServicePlan
@@ -265,6 +266,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -PerSiteScaling
 If <code>true</code>, apps assigned to this App Service plan can be scaled independently.If <code>false</code>, apps assigned to this App Service plan will scale to all instances of the plan.
 
@@ -276,22 +293,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -ProvisioningState
-Provisioning state of the App Service Environment.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.ProvisioningState
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -331,6 +332,7 @@ Dynamic: False
 
 ### -SkuCapability
 Capabilities of the SKU, e.g., is traffic manager enabled
+To construct, see NOTES section for SKUCAPABILITY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160301.ICapability[]
@@ -506,22 +508,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Status
-App Service plan status.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.StatusOptions
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -SubscriptionId
 Your Azure subscription ID.
 This is a GUID-formatted string (e.g.
@@ -544,7 +530,7 @@ Dynamic: False
 Resource tags.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801Preview.IResourceTags
+Type: System.Collections.Hashtable
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -649,6 +635,48 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IAppServicePlan
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### APPSERVICEPLAN <IAppServicePlan>: App Service plan.
+  - `Location <String>`: Resource Location.
+  - `[Kind <String>]`: Kind of resource.
+  - `[Tag <IResourceTags>]`: Resource tags.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
+  - `[Capacity <Int32?>]`: Current number of instances assigned to the resource.
+  - `[FreeOfferExpirationTime <DateTime?>]`: The time when the server farm free offer expires.
+  - `[HostingEnvironmentProfileId <String>]`: Resource ID of the App Service Environment.
+  - `[HyperV <Boolean?>]`: If Hyper-V container app service plan <code>true</code>, <code>false</code> otherwise.
+  - `[IsSpot <Boolean?>]`: If <code>true</code>, this App Service Plan owns spot instances.
+  - `[IsXenon <Boolean?>]`: Obsolete: If Hyper-V container app service plan <code>true</code>, <code>false</code> otherwise.
+  - `[MaximumElasticWorkerCount <Int32?>]`: Maximum number of total workers allowed for this ElasticScaleEnabled App Service Plan
+  - `[PerSiteScaling <Boolean?>]`: If <code>true</code>, apps assigned to this App Service plan can be scaled independently.         If <code>false</code>, apps assigned to this App Service plan will scale to all instances of the plan.
+  - `[Reserved <Boolean?>]`: If Linux app service plan <code>true</code>, <code>false</code> otherwise.
+  - `[SkuCapability <ICapability[]>]`: Capabilities of the SKU, e.g., is traffic manager enabled?
+    - `[Name <String>]`: Name of the SKU capability.
+    - `[Reason <String>]`: Reason of the SKU capability.
+    - `[Value <String>]`: Value of the SKU capability.
+  - `[SkuCapacityDefault <Int32?>]`: Default number of workers for this App Service plan SKU.
+  - `[SkuCapacityMaximum <Int32?>]`: Maximum number of workers for this App Service plan SKU.
+  - `[SkuCapacityMinimum <Int32?>]`: Minimum number of workers for this App Service plan SKU.
+  - `[SkuCapacityScaleType <String>]`: Available scale configurations for an App Service plan.
+  - `[SkuFamily <String>]`: Family code of the resource SKU.
+  - `[SkuLocation <String[]>]`: Locations of the SKU.
+  - `[SkuName <String>]`: Name of the resource SKU.
+  - `[SkuSize <String>]`: Size specifier of the resource SKU.
+  - `[SkuTier <String>]`: Service tier of the resource SKU.
+  - `[SpotExpirationTime <DateTime?>]`: The time when the server farm expires. Valid only if it is a spot server farm.
+  - `[TargetWorkerCount <Int32?>]`: Scaling worker count.
+  - `[TargetWorkerSizeId <Int32?>]`: Scaling worker size ID.
+  - `[WorkerTierName <String>]`: Target worker tier assigned to the App Service plan.
+
+#### SKUCAPABILITY <ICapability[]>: Capabilities of the SKU, e.g., is traffic manager enabled
+  - `[Name <String>]`: Name of the SKU capability.
+  - `[Reason <String>]`: Reason of the SKU capability.
+  - `[Value <String>]`: Value of the SKU capability.
 
 ## RELATED LINKS
 

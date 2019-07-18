@@ -30,20 +30,20 @@ Get-AzWebAppBackupStatusSecret -BackupId <String> -Name <String> -ResourceGroupN
 ### ListExpandedSlot
 ```
 Get-AzWebAppBackupStatusSecret -BackupId <String> -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> -Slot <String> -BackupScheduleFrequencyInterval <Int32>
- -BackupScheduleFrequencyUnit <FrequencyUnit> -BackupScheduleKeepAtLeastOneBackup
- -BackupScheduleRetentionPeriodInDay <Int32> -StorageAccountUrl <String> [-BackupName <String>]
- [-BackupScheduleStartTime <DateTime>] [-Database <IDatabaseBackupSetting[]>] [-Enabled] [-Kind <String>]
+ -SubscriptionId <String[]> -Slot <String> [-BackupName <String>] [-BackupScheduleFrequencyInterval <Int32>]
+ [-BackupScheduleFrequencyUnit <FrequencyUnit>] [-BackupScheduleKeepAtLeastOneBackup]
+ [-BackupScheduleRetentionPeriodInDay <Int32>] [-BackupScheduleStartTime <DateTime>]
+ [-Database <IDatabaseBackupSetting[]>] [-Enabled] [-Kind <String>] [-StorageAccountUrl <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ListExpanded
 ```
 Get-AzWebAppBackupStatusSecret -BackupId <String> -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> -BackupScheduleFrequencyInterval <Int32>
- -BackupScheduleFrequencyUnit <FrequencyUnit> -BackupScheduleKeepAtLeastOneBackup
- -BackupScheduleRetentionPeriodInDay <Int32> -StorageAccountUrl <String> [-BackupName <String>]
- [-BackupScheduleStartTime <DateTime>] [-Database <IDatabaseBackupSetting[]>] [-Enabled] [-Kind <String>]
+ -SubscriptionId <String[]> [-BackupName <String>] [-BackupScheduleFrequencyInterval <Int32>]
+ [-BackupScheduleFrequencyUnit <FrequencyUnit>] [-BackupScheduleKeepAtLeastOneBackup]
+ [-BackupScheduleRetentionPeriodInDay <Int32>] [-BackupScheduleStartTime <DateTime>]
+ [-Database <IDatabaseBackupSetting[]>] [-Enabled] [-Kind <String>] [-StorageAccountUrl <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -114,7 +114,7 @@ Type: System.Int32
 Parameter Sets: ListExpandedSlot, ListExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: 0
 Accept pipeline input: False
@@ -131,7 +131,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.FrequencyUnit
 Parameter Sets: ListExpandedSlot, ListExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -147,7 +147,7 @@ Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ListExpandedSlot, ListExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: False
 Accept pipeline input: False
@@ -163,7 +163,7 @@ Type: System.Int32
 Parameter Sets: ListExpandedSlot, ListExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: 0
 Accept pipeline input: False
@@ -189,6 +189,7 @@ Dynamic: False
 
 ### -Database
 Databases included in the backup.
+To construct, see NOTES section for DATABASE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.IDatabaseBackupSetting[]
@@ -269,6 +270,7 @@ Dynamic: False
 
 ### -Request
 Description of a backup which will be performed.
+To construct, see NOTES section for REQUEST properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IBackupRequest
@@ -324,7 +326,7 @@ Type: System.String
 Parameter Sets: ListExpandedSlot, ListExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -397,6 +399,33 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### Get-AzWebAppBackupStatusSecretSlot
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### DATABASE <IDatabaseBackupSetting[]>: Databases included in the backup.
+  - `DatabaseType <DatabaseType>`: Database type (e.g. SqlAzure / MySql).
+  - `[ConnectionString <String>]`: Contains a connection string to a database which is being backed up or restored. If the restore should happen to a new database, the database name inside is the new one.
+  - `[ConnectionStringName <String>]`: Contains a connection string name that is linked to the SiteConfig.ConnectionStrings.         This is used during restore with overwrite connection strings options.
+  - `[Name <String>]`: 
+
+#### REQUEST <IBackupRequest>: Description of a backup which will be performed.
+  - `BackupScheduleFrequencyInterval <Int32>`: How often the backup should be executed (e.g. for weekly backup, this should be set to 7 and FrequencyUnit should be set to Day)
+  - `BackupScheduleFrequencyUnit <FrequencyUnit>`: The unit of time for how often the backup should be executed (e.g. for weekly backup, this should be set to Day and FrequencyInterval should be set to 7)
+  - `BackupScheduleKeepAtLeastOneBackup <Boolean>`: True if the retention policy should always keep at least one backup in the storage account, regardless how old it is; false otherwise.
+  - `BackupScheduleRetentionPeriodInDay <Int32>`: After how many days backups should be deleted.
+  - `StorageAccountUrl <String>`: SAS URL to the container.
+  - `[Kind <String>]`: Kind of resource.
+  - `[BackupName <String>]`: Name of the backup.
+  - `[BackupScheduleStartTime <DateTime?>]`: When the schedule should start working.
+  - `[Database <IDatabaseBackupSetting[]>]`: Databases included in the backup.
+    - `DatabaseType <DatabaseType>`: Database type (e.g. SqlAzure / MySql).
+    - `[ConnectionString <String>]`: Contains a connection string to a database which is being backed up or restored. If the restore should happen to a new database, the database name inside is the new one.
+    - `[ConnectionStringName <String>]`: Contains a connection string name that is linked to the SiteConfig.ConnectionStrings.         This is used during restore with overwrite connection strings options.
+    - `[Name <String>]`: 
+  - `[Enabled <Boolean?>]`: True if the backup schedule is enabled (must be included in that case), false if the backup schedule should be disabled.
 
 ## RELATED LINKS
 

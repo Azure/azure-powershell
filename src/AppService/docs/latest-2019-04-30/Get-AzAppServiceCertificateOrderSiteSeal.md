@@ -161,6 +161,7 @@ Dynamic: False
 
 ### -SiteSealRequest
 Site seal request.
+To construct, see NOTES section for SITESEALREQUEST properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISiteSealRequest
@@ -240,6 +241,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.String
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### SITESEALREQUEST <ISiteSealRequest>: Site seal request.
+  - `[LightTheme <Boolean?>]`: If <code>true</code> use the light color theme for site seal; otherwise, use the default color theme.
+  - `[Locale <String>]`: Locale of site seal.
 
 ## RELATED LINKS
 

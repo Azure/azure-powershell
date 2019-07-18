@@ -52,6 +52,7 @@ PS C:\> {{ Add code here }}
 
 ### -AgreementOption
 Options for retrieving the list of top level domain legal agreements.
+To construct, see NOTES section for AGREEMENTOPTION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ITopLevelDomainAgreementOption
@@ -193,6 +194,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ITldLegalAgreement
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### AGREEMENTOPTION <ITopLevelDomainAgreementOption>: Options for retrieving the list of top level domain legal agreements.
+  - `[ForTransfer <Boolean?>]`: If <code>true</code>, then the list of agreements will include agreements for domain transfer as well; otherwise, <code>false</code>.
+  - `[IncludePrivacy <Boolean?>]`: If <code>true</code>, then the list of agreements will include agreements for domain privacy as well; otherwise, <code>false</code>.
 
 ## RELATED LINKS
 

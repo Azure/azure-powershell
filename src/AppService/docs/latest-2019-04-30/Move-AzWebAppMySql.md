@@ -15,28 +15,28 @@ Migrates a local (in-app) MySql database to a remote MySql database.
 ### Migrate (Default)
 ```
 Move-AzWebAppMySql -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-MigrationRequestEnvelope <IMigrateMySqlRequest>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-MigrationRequestEnvelope <IMigrateMySqlRequest>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### MigrateExpanded
 ```
 Move-AzWebAppMySql -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -ConnectionString <String> -MigrationType <MySqlMigrationType> [-Kind <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ConnectionString <String>] [-Kind <String>] [-MigrationType <MySqlMigrationType>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### MigrateViaIdentityExpanded
 ```
-Move-AzWebAppMySql -InputObject <IWebSiteIdentity> -ConnectionString <String>
- -MigrationType <MySqlMigrationType> [-Kind <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Move-AzWebAppMySql -InputObject <IWebSiteIdentity> [-ConnectionString <String>] [-Kind <String>]
+ [-MigrationType <MySqlMigrationType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### MigrateViaIdentity
 ```
 Move-AzWebAppMySql -InputObject <IWebSiteIdentity> [-MigrationRequestEnvelope <IMigrateMySqlRequest>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -88,7 +88,7 @@ Type: System.String
 Parameter Sets: MigrateExpanded, MigrateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -146,6 +146,7 @@ Dynamic: False
 
 ### -MigrationRequestEnvelope
 MySQL migration request.
+To construct, see NOTES section for MIGRATIONREQUESTENVELOPE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.IMigrateMySqlRequest
@@ -168,7 +169,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.MySqlMigrationType
 Parameter Sets: MigrateExpanded, MigrateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -187,6 +188,22 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -273,6 +290,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IOperation
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### MIGRATIONREQUESTENVELOPE <IMigrateMySqlRequest>: MySQL migration request.
+  - `ConnectionString <String>`: Connection string to the remote MySQL database.
+  - `MigrationType <MySqlMigrationType>`: The type of migration operation to be done
+  - `[Kind <String>]`: Kind of resource.
 
 ## RELATED LINKS
 

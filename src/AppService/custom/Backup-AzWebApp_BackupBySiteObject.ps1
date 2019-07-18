@@ -108,14 +108,14 @@ function Backup-AzWebApp_BackupBySiteObject {
 
     process {
         $Tokens = $SiteObject.Id.Split("/", [System.StringSplitOptions]::RemoveEmptyEntries)
-        $PSBoundParameters.Add("ResourceGroupName", $Tokens[3]) | Out-Null
-        $PSBoundParameters.Add("Name", $Tokens[7]) | Out-Null
+        $null = $PSBoundParameters.Add("ResourceGroupName", $Tokens[3])
+        $null = $PSBoundParameters.Add("Name", $Tokens[7])
         if ($Tokens.Length -eq 10)
         {
-            $PSBoundParameters.Add("Slot", $Tokens[9]) | Out-Null
+            $null = $PSBoundParameters.Add("Slot", $Tokens[9])
         }
 
-        $PSBoundParameters.Remove("SiteObject") | Out-Null
+        $null = $PSBoundParameters.Remove("SiteObject")
         Az.WebSite\Backup-AzWebApp @PSBoundParameters
     }
 }

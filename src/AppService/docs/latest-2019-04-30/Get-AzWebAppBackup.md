@@ -169,5 +169,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Get-AzWebAppBackup
 
+## NOTES
+
 ## RELATED LINKS
 
