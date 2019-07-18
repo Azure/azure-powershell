@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Add Get/Set AzSqlDatabaseBackupShortTermRetentionPolicy
+* Fix for elastic job target execution paging logic
 
 ## Version 1.1.1
 * Update preview with changes from stable
