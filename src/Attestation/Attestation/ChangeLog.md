@@ -17,5 +17,9 @@
     * Overview of change #1
         - Additional information about change #1
 -->
+
+
 ## Upcoming Release
+* Update .Net SDK with newer version
+## Version 0.1.0
 * General availability of `Az.Attestation` module
