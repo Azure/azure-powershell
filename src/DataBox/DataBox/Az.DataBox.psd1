@@ -15,7 +15,7 @@
 ModuleVersion = '0.1.0'
 
 # Supported PSEditions
-CompatiblePSEditions = 'Core'
+CompatiblePSEditions = 'Core', 'Desktop'
 
 # ID used to uniquely identify this module
 GUID = '39B6B3E6-A15E-48BA-BE20-FE0D441D92B4'
@@ -35,7 +35,7 @@ Description = 'Microsoft Azure PowerShell - DataBox service cmdlets for Azure Re
 For more information on DataBox, please visit the following: https://docs.microsoft.com/azure/databox/'
 
 # Minimum version of the PowerShell engine required by this module
-PowerShellVersion = '5.0'
+PowerShellVersion = '5.1'
 
 # Name of the PowerShell host required by this module
 # PowerShellHostName = ''
