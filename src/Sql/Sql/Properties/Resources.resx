@@ -465,4 +465,10 @@
   <data name="VulnerabilityAssessmentTypeNotSupported" xml:space="preserve">
     <value>Requested type is not supported by Vulnerability Assessment.</value>
   </data>
+  <data name="RemoveAzureSqlDatabaseInstanceFailoverGroupDescription" xml:space="preserve">
+    <value>Permanently removing Azure Sql Database Instance Failover Group '{0}' on region '{1}'.</value>
+  </data>
+  <data name="RemoveAzureSqlDatabaseInstanceFailoverGroupWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Azure Sql Database Instance Failover Group '{0}' on region '{1}'?</value>
+  </data>
 </root>

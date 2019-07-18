@@ -394,13 +394,9 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
         {
             var certificateResources = resourceClient.ResourceManagementClient.FilterResources(new FilterResourcesOptions
             {
+                ResourceGroup = resourceGroupName,
                 ResourceType = "Microsoft.Web/Certificates"
             }).ToArray();
-
-            if (!string.IsNullOrEmpty(resourceGroupName))
-            {
-                certificateResources = certificateResources.Where(c => string.Equals(c.ResourceGroupName, resourceGroupName, StringComparison.OrdinalIgnoreCase)).ToArray();
-            }
 
             var certificates =
                 certificateResources.Select(
@@ -435,6 +431,9 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 HandlerMappings = config.HandlerMappings,
                 HttpLoggingEnabled = config.HttpLoggingEnabled,
                 IpSecurityRestrictions = config.IpSecurityRestrictions,
+                ScmIpSecurityRestrictions= config.ScmIpSecurityRestrictions,
+                ScmIpSecurityRestrictionsUseMain = config.ScmIpSecurityRestrictionsUseMain,
+                Http20Enabled = config.Http20Enabled,
                 JavaContainer = config.JavaContainer,
                 JavaContainerVersion = config.JavaContainerVersion,
                 JavaVersion = config.JavaVersion,
@@ -461,7 +460,11 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 VirtualApplications = config.VirtualApplications,
                 VnetName = config.VnetName,
                 WebSocketsEnabled = config.WebSocketsEnabled,
-                WindowsFxVersion = config.WindowsFxVersion
+                WindowsFxVersion = config.WindowsFxVersion,
+                ManagedServiceIdentityId = config.ManagedServiceIdentityId,
+                MinTlsVersion = config.MinTlsVersion,
+                FtpsState = config.FtpsState,
+                ReservedInstanceCount = config.ReservedInstanceCount
             };
         }
 
@@ -512,6 +515,13 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 VnetName = config.VnetName,
                 WebSocketsEnabled = config.WebSocketsEnabled,
                 WindowsFxVersion = config.WindowsFxVersion,
+                ReservedInstanceCount= config.ReservedInstanceCount,
+                ManagedServiceIdentityId = config.ManagedServiceIdentityId,
+                MinTlsVersion = config.MinTlsVersion,
+                FtpsState = config.FtpsState,
+                ScmIpSecurityRestrictions = config.ScmIpSecurityRestrictions,
+                ScmIpSecurityRestrictionsUseMain = config.ScmIpSecurityRestrictionsUseMain,
+                Http20Enabled = config.Http20Enabled
             };
         }
     }

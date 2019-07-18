@@ -45,7 +45,7 @@ Once invoked, $queryResults.Results will contain all of the resulting rows from 
 ### Example 2: Convert $results.Result IEnumberable to an array
 ```
 PS C:\> $queryResults = Invoke-AzOperationalInsightsQuery -WorkspaceId "63613592-b6f7-4c3d-a390-22ba13102111" -Query "union * | take 10"
-PS C:\> $resultsArray = [System.Linq.Enumerable]::ToArray($results.Results)
+PS C:\> $resultsArray = [System.Linq.Enumerable]::ToArray($queryResults.Results)
 ...
 ```
 

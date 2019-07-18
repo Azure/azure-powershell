@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
                 serverName, databaseName, policy).Result.Response.IsSuccessStatusCode;
         }
 
-        public bool SetAuditingPolicy(string resourceGroupName, string serverName,
+        public bool SetExtendedAuditingPolicy(string resourceGroupName, string serverName,
             ExtendedServerBlobAuditingPolicy policy)
         {
             SqlManagementClient client = GetCurrentSqlClient();

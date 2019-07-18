@@ -21,6 +21,18 @@
 * Add support for Virtual Network Subnet Initialization
     - New cmdlets
         - Initialize-AzVirtualNetworkSubnetPolicy
+* Enable ICMP protocol for network security rule configurations
+    - Updated cmdlets
+        - Add-AzNetworkSecurityRuleConfig
+        - New-AzNetworkSecurityRuleConfig
+        - Set-AzNetworkSecurityRuleConfig
+* Add ConnectionProtocolType (Ikev1/Ikev2) as a configurable parameter for New-AzVirtualNetworkGatewayConnection
+
+## Version 1.11.0
+* Added `RoutingPreference` to public ip tags
+* Improve examples for `Get-AzNetworkServiceTag` reference documentation
+
+## Version 1.10.0
 * Add support for Virtual Network Gateway Resource
     - New cmdlets
         - Get-AzVirtualNetworkGatewayVpnClientConnectionHealth

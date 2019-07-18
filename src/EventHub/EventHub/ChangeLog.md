@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* added verification and error message for authorizationrules rights if only 'Manage' is assigned
 
 ## Version 1.2.0
 * Fix for #9231 - Get-AzEventHubNamespace does not return tags
