@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets or sets the target backend address pools for the NIC.
         /// </summary>
         [Parameter]
-        public List<string> RecoveryLBBackendAddressPoolIds { get; set; }
+        public List<string> RecoveryLBBackendAddressPoolId { get; set; }
 
         /// <summary>
         ///     ProcessRecord of the command.
@@ -271,8 +271,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 // NSG, LB and PIP only for A2A provider.
                 if ((!string.IsNullOrEmpty(RecoveryNetworkSecurityGroupId) ||
                     !string.IsNullOrEmpty(RecoveryPublicIPAddressId) ||
-                    RecoveryLBBackendAddressPoolIds != null &&
-                    RecoveryLBBackendAddressPoolIds.Count > 0) &&
+                    RecoveryLBBackendAddressPoolId != null &&
+                    RecoveryLBBackendAddressPoolId.Count > 0) &&
                     !(provider is A2AReplicationDetails))
                 {
                     throw new Exception("Setting RecoveryPublicIPAddressId, " +
@@ -577,7 +577,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                             string.IsNullOrEmpty(this.NicSelectionType)
                                 ? Constants.SelectedByUser : this.NicSelectionType;
                         vMNicInputDetails.RecoveryLBBackendAddressPoolIds =
-                            this.RecoveryLBBackendAddressPoolIds;
+                            this.RecoveryLBBackendAddressPoolId;
                         vMNicInputDetails.RecoveryPublicIpAddressId =
                             this.RecoveryPublicIPAddressId;
                         vMNicInputDetails.RecoveryNetworkSecurityGroupId =
