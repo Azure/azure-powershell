@@ -27,54 +27,78 @@ function Test-GetActionRulesFilteredByParameters
 
 function Test-CreateUpdateAndDeleteSuppressionRule
 {
-	$resourceGroupName = "ActionRules-Powershell-Test"
-	$actionRuleName = "ScenarioTest-Suppression-ActionRule"
+	try
+	{
+		$resourceGroupName = Get-TestResourceGroupName "suppression"
+		$location = Get-ProviderLocation ResourceManagement
+		$actionRuleName = Get-TestActionRuleName "suppression"
 
-	$createdActionRule = Set-AzActionRule -ResourceGroupName $resourceGroupName -Name $actionRuleName -Scope "/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab","/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/Test-VMs" -SeverityCondition "Equals:Sev0,Sev1" -MonitorCondition "NotEquals:Resolved" -Description "Test description" -Status "Enabled" -ActionRuleType "Suppression" -ReccurenceType "Weekly" -SuppressionStartTime "06/26/2018 06:00:00" -SuppressionEndTime "07/27/2018 06:00:00" -ReccurentValue 1,4,6
+		#Create Resource Group
+		New-AzResourceGroup -Name $resourceGroupName -Location $location -Force
 
-	Assert-NotNull $createdActionRule 
+		$createdActionRule = Set-AzActionRule -ResourceGroupName $resourceGroupName -Name $actionRuleName -Scope "/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab","/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/Test-VMs" -SeverityCondition "Equals:Sev0,Sev1" -MonitorCondition "NotEquals:Resolved" -Description "Test description" -Status "Enabled" -ActionRuleType "Suppression" -ReccurenceType "Weekly" -SuppressionStartTime "06/26/2018 06:00:00" -SuppressionEndTime "07/27/2018 06:00:00" -ReccurentValue 1,4,6
 
-	# Update Status of Action Rule
-	$updatedActionRule = Update-AzActionRule -ResourceGroupName $resourceGroupName -Name $actionRuleName -Status "Disabled"
-	Assert-NotNull $updatedActionRule 
-	Assert-AreEqual "Disabled" $updatedActionRule.Status
+		Assert-NotNull $createdActionRule 
 
-	# Delete Action Rule
-	$isDeleted = Remove-AzActionRule -ResourceGroupName $resourceGroupName -Name $actionRuleName
+		# Update Status of Action Rule
+		$updatedActionRule = Update-AzActionRule -ResourceGroupName $resourceGroupName -Name $actionRuleName -Status "Disabled"
+		Assert-NotNull $updatedActionRule 
+		Assert-AreEqual "Disabled" $updatedActionRule.Status
+	}
+	finally
+	{
+		CleanUp $resourceGroupName $actionRuleName
+	}
 }
 
 function Test-CreateUpdateAndDeleteActionGroupRule
 {
-	$resourceGroupName = "ActionRules-Powershell-Test"
-	$actionRuleName = "ScenarioTest-ActionGroup-ActionRule"
+	try
+	{
+		$resourceGroupName = Get-TestResourceGroupName "actiongroup"
+		$location = Get-ProviderLocation ResourceManagement
+		$actionRuleName = Get-TestActionRuleName "actiongroup"
 
-	$createdActionRule = Set-AzActionRule -ResourceGroupName $resourceGroupName -Name $actionRuleName -Scope "/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab","/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/Test-VMs" -SeverityCondition "Equals:Sev0,Sev1" -MonitorCondition "NotEquals:Resolved" -Description "Test description" -Status "Enabled" -ActionRuleType "ActionGroup" -ActionGroupId "/subscriptions/1e3ff1c0-771a-4119-a03b-be82a51e232d/resourceGroups/alertscorrelationrg/providers/Microsoft.insights/actiongroups/testAG"
+		#Create Resource Group
+		New-AzResourceGroup -Name $resourceGroupName -Location $location -Force
 
-	Assert-NotNull $createdActionRule 
+		$createdActionRule = Set-AzActionRule -ResourceGroupName $resourceGroupName -Name $actionRuleName -Scope "/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab","/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/Test-VMs" -SeverityCondition "Equals:Sev0,Sev1" -MonitorCondition "NotEquals:Resolved" -Description "Test description" -Status "Enabled" -ActionRuleType "ActionGroup" -ActionGroupId "/subscriptions/1e3ff1c0-771a-4119-a03b-be82a51e232d/resourceGroups/alertscorrelationrg/providers/Microsoft.insights/actiongroups/testAG"
 
-	# Update Status of Action Rule
-	$updatedActionRule = Update-AzActionRule -ResourceGroupName $resourceGroupName -Name $actionRuleName -Status "Disabled"
-	Assert-NotNull $updatedActionRule 
-	Assert-AreEqual "Disabled" $updatedActionRule.Status
+		Assert-NotNull $createdActionRule 
 
-	# Delete Action Rule
-	$isDeleted = Remove-AzActionRule -ResourceGroupName $resourceGroupName -Name $actionRuleName
+		# Update Status of Action Rule
+		$updatedActionRule = Update-AzActionRule -ResourceGroupName $resourceGroupName -Name $actionRuleName -Status "Disabled"
+		Assert-NotNull $updatedActionRule 
+		Assert-AreEqual "Disabled" $updatedActionRule.Status
+	}
+	finally
+	{
+		CleanUp $resourceGroupName $actionRuleName
+	}
 }
 
 function Test-CreateUpdateAndDeleteDiagnosticsRule
 {
-	$resourceGroupName = "ActionRules-Powershell-Test"
-	$actionRuleName = "ScenarioTest-Diagnostics-ActionRule"
+	try
+	{
+		$resourceGroupName = Get-TestResourceGroupName "diag"
+		$location = Get-ProviderLocation ResourceManagement
+		$actionRuleName = Get-TestActionRuleName "diag"
 
-	$createdActionRule = Set-AzActionRule -ResourceGroupName $resourceGroupName -Name $actionRuleName -Scope "/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab","/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/Test-VMs" -SeverityCondition "Equals:Sev0,Sev1" -MonitorCondition "NotEquals:Resolved" -Description "Test description" -Status "Enabled" -ActionRuleType "Diagnostics"
+		#Create Resource Group
+		New-AzResourceGroup -Name $resourceGroupName -Location $location -Force
 
-	Assert-NotNull $createdActionRule 
+		$createdActionRule = Set-AzActionRule -ResourceGroupName $resourceGroupName -Name $actionRuleName -Scope "/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/alertslab","/subscriptions/dd91de05-d791-4ceb-b6dc-988682dc7d72/resourceGroups/Test-VMs" -SeverityCondition "Equals:Sev0,Sev1" -MonitorCondition "NotEquals:Resolved" -Description "Test description" -Status "Enabled" -ActionRuleType "Diagnostics"
 
-	# Update Status of Action Rule
-	$updatedActionRule = Update-AzActionRule -ResourceGroupName $resourceGroupName -Name $actionRuleName -Status "Disabled"
-	Assert-NotNull $updatedActionRule 
-	Assert-AreEqual "Disabled" $updatedActionRule.Status
+		Assert-NotNull $createdActionRule 
 
-	# Delete Action Rule
-	$isDeleted = Remove-AzActionRule -ResourceGroupName $resourceGroupName -Name $actionRuleName
+		# Update Status of Action Rule
+		$updatedActionRule = Update-AzActionRule -ResourceGroupName $resourceGroupName -Name $actionRuleName -Status "Disabled"
+		Assert-NotNull $updatedActionRule 
+		Assert-AreEqual "Disabled" $updatedActionRule.Status
+	}
+	finally
+	{
+		CleanUp $resourceGroupName $actionRuleName
+	}
 }
