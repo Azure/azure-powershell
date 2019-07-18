@@ -16,8 +16,6 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.DataBox;
-using System;
-using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.DataBox.Common
 {
@@ -27,8 +25,6 @@ namespace Microsoft.Azure.Commands.DataBox.Common
     public class AzureDataBoxCmdletBase : AzureRMCmdlet
     {
         private DataBoxManagementClient _dataBoxManagementClient;
-
-        private Dictionary<string, List<string>> _defaultRequestHeaders;
 
         public const string ObjectParameterSet = "ByObjectParameterSet";
         public const string FieldsParameterSet = "ByFieldsParameterSet";
