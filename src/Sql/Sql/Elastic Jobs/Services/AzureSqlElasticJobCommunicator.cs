@@ -552,12 +552,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
 
             while (targetExecutions.NextPageLink != null)
             {
-                targetExecutions = GetCurrentSqlClient().JobTargetExecutions.ListByJobExecution(
-                    resourceGroupName, serverName, agentName,
-                    jobName, jobExecutionId,
-                    createTimeMin, createTimeMax,
-                    endTimeMin, endTimeMax,
-                    isActive, skip, top);
+                targetExecutions = GetCurrentSqlClient().JobTargetExecutions.ListByJobExecutionNext(targetExecutions.NextPageLink);
                 results.AddRange(targetExecutions);
             }
 
@@ -607,12 +602,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
 
             while (targetExecutionsByStep.NextPageLink != null)
             {
-                targetExecutionsByStep = GetCurrentSqlClient().JobTargetExecutions.ListByStep(
-                    resourceGroupName, serverName, agentName,
-                    jobName, jobExecutionId, stepName,
-                    createTimeMin, createTimeMax,
-                    endTimeMin, endTimeMax,
-                    isActive, skip, top);
+                targetExecutionsByStep = GetCurrentSqlClient().JobTargetExecutions.ListByStepNext(targetExecutionsByStep.NextPageLink);
                 results.AddRange(targetExecutionsByStep);
             }
 
