@@ -136,7 +136,7 @@ Dynamic: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group with the deployments to get.
+The name of the resource group.
 The name is case insensitive.
 
 ```yaml
@@ -199,6 +199,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### Get-AzResourceGroupDeployment
+
+## NOTES
 
 ## RELATED LINKS
 

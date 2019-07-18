@@ -20,18 +20,18 @@ Update-AzADUser -TenantId <String> -UpnOrObjectId <String> [-Parameter <IUserUpd
 
 ### UpdateExpanded
 ```
-Update-AzADUser -TenantId <String> -UpnOrObjectId <String> -PasswordProfilePassword <String> [-PassThru]
- [-DisplayName <String>] [-EnableAccount] [-GivenName <String>] [-ImmutableId <String>]
- [-MailNickname <String>] [-PasswordProfileForceChangePasswordNextLogin] [-Surname <String>]
+Update-AzADUser -TenantId <String> -UpnOrObjectId <String> [-PassThru] [-DisplayName <String>]
+ [-EnableAccount] [-GivenName <String>] [-ImmutableId <String>] [-MailNickname <String>]
+ [-PasswordProfileForceChangePasswordNextLogin] [-PasswordProfilePassword <String>] [-Surname <String>]
  [-UsageLocation <String>] [-UserPrincipalName <String>] [-UserType <UserType>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzADUser -InputObject <IResourcesIdentity> -PasswordProfilePassword <String> [-PassThru]
- [-DisplayName <String>] [-EnableAccount] [-GivenName <String>] [-ImmutableId <String>]
- [-MailNickname <String>] [-PasswordProfileForceChangePasswordNextLogin] [-Surname <String>]
+Update-AzADUser -InputObject <IResourcesIdentity> [-PassThru] [-DisplayName <String>] [-EnableAccount]
+ [-GivenName <String>] [-ImmutableId <String>] [-MailNickname <String>]
+ [-PasswordProfileForceChangePasswordNextLogin] [-PasswordProfilePassword <String>] [-Surname <String>]
  [-UsageLocation <String>] [-UserPrincipalName <String>] [-UserType <UserType>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -182,6 +182,7 @@ Dynamic: False
 
 ### -Parameter
 Request parameters for updating an existing work or school account user.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IUserUpdateParameters
@@ -236,7 +237,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -381,15 +382,34 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IUserUpdateParameters
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IUserUpdateParameters
 
 ## OUTPUTS
 
 ### System.Boolean
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <IUserUpdateParameters>: Request parameters for updating an existing work or school account user.
+  - `[(Any) <Object>]`: This indicates any property can be added to this object.
+  - `PasswordProfilePassword <String>`: Password
+  - `[GivenName <String>]`: The given name for the user.
+  - `[ImmutableId <String>]`: This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account. It is used to associate an on-premises Active Directory user account with their Azure AD user object.
+  - `[Surname <String>]`: The user's surname (family name or last name).
+  - `[UsageLocation <String>]`: A two letter country code (ISO standard 3166). Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. Examples include: "US", "JP", and "GB".
+  - `[UserType <UserType?>]`: A string value that can be used to classify user types in your directory, such as 'Member' and 'Guest'.
+  - `[AccountEnabled <Boolean?>]`: Whether the account is enabled.
+  - `[DisplayName <String>]`: The display name of the user.
+  - `[MailNickname <String>]`: The mail alias for the user.
+  - `[PasswordProfileForceChangePasswordNextLogin <Boolean?>]`: Whether to force a password change on next login.
+  - `[UserPrincipalName <String>]`: The user principal name (someuser@contoso.com). It must contain one of the verified domains for the tenant.
 
 ## RELATED LINKS
 

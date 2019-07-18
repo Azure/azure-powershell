@@ -113,6 +113,7 @@ Dynamic: False
 
 ### -Parameter
 Request parameters for a KeyCredentials update operation
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IKeyCredentialsUpdateParameters
@@ -161,6 +162,7 @@ Dynamic: False
 
 ### -Value
 A collection of KeyCredentials.
+To construct, see NOTES section for VALUE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IKeyCredential[]
@@ -213,15 +215,39 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IKeyCredentialsUpdateParameters
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IKeyCredentialsUpdateParameters
 
 ## OUTPUTS
 
 ### System.Boolean
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <IKeyCredentialsUpdateParameters>: Request parameters for a KeyCredentials update operation
+  - `Value <IKeyCredential[]>`: A collection of KeyCredentials.
+    - `[CustomKeyIdentifier <String>]`: Custom Key Identifier
+    - `[EndDate <DateTime?>]`: End date.
+    - `[KeyId <String>]`: Key ID.
+    - `[StartDate <DateTime?>]`: Start date.
+    - `[Type <String>]`: Type. Acceptable values are 'AsymmetricX509Cert' and 'Symmetric'.
+    - `[Usage <String>]`: Usage. Acceptable values are 'Verify' and 'Sign'.
+    - `[Value <String>]`: Key value.
+
+#### VALUE <IKeyCredential[]>: A collection of KeyCredentials.
+  - `[CustomKeyIdentifier <String>]`: Custom Key Identifier
+  - `[EndDate <DateTime?>]`: End date.
+  - `[KeyId <String>]`: Key ID.
+  - `[StartDate <DateTime?>]`: Start date.
+  - `[Type <String>]`: Type. Acceptable values are 'AsymmetricX509Cert' and 'Symmetric'.
+  - `[Usage <String>]`: Usage. Acceptable values are 'Verify' and 'Sign'.
+  - `[Value <String>]`: Key value.
 
 ## RELATED LINKS
 

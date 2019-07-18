@@ -91,43 +91,43 @@ function Add-AzADGroupMember {
             $Group = Az.Resources\Get-AzADGroup -TenantId $TenantId -DisplayName $GroupDisplayName
             if ($null -ne $Group)
             {
-                $PSBoundParameters.Add("GroupObjectId", $Group.ObjectId) | Out-Null
-                $PSBoundParameters.Remove("GroupDisplayName") | Out-Null
+                $null = $PSBoundParameters.Add("GroupObjectId", $Group.ObjectId)
+                $null = $PSBoundParameters.Remove("GroupDisplayName")
             }
         }
 
         if ($PSBoundParameters.ContainsKey("GroupObject"))
         {
-            $PSBoundParameters.Add("GroupObjectId", $GroupObject.ObjectId) | Out-Null
-            $PSBoundParameters.Remove("GroupObject") | Out-Null
+            $null = $PSBoundParameters.Add("GroupObjectId", $GroupObject.ObjectId)
+            $null = $PSBoundParameters.Remove("GroupObject")
         }
 
         if ($PSBoundParameters.ContainsKey("MemberObjectId"))
         {
             $TempMemberObjectId = $MemberObjectId
-            $PSBoundParameters.Remove("MemberObjectId") | Out-Null
+            $null = $PSBoundParameters.Remove("MemberObjectId")
             $TempMemberObjectId | ForEach-Object {
                 $GraphEndpoint = (Get-AzContext).Environment.GraphEndpointResourceId
                 $Url = '{0}{1}/directoryObjects/{2}' -f $GraphEndpoint, $TenantId, $_
-                $PSBoundParameters.Add("Url", $Url) | Out-Null
+                $null = $PSBoundParameters.Add("Url", $Url)
                 Az.Resources\Add-AzADGroupMember @PSBoundParameters
-                $PSBoundParameters.Remove("Url") | Out-Null
+                $null = $PSBoundParameters.Remove("Url")
             }
         }
 
         if ($PSBoundParameters.ContainsKey("MemberUserPrincipalName"))
         {
             $TempMemberUserPrincipalName = $MemberUserPrincipalName
-            $PSBoundParameters.Remove("MemberUserPrincipalName") | Out-Null
+            $null = $PSBoundParameters.Remove("MemberUserPrincipalName")
             $TempMemberUserPrincipalName | ForEach-Object {
                 $User = Az.Resources\Get-AzADUser -TenantId $TenantId -UpnOrObjectId $_
                 if ($null -ne $User)
                 {
                     $GraphEndpoint = (Get-AzContext).Environment.GraphEndpointResourceId
                     $Url = '{0}{1}/directoryObjects/{2}' -f $GraphEndpoint, $TenantId, $User.ObjectId
-                    $PSBoundParameters.Add("Url", $Url) | Out-Null
+                    $null = $PSBoundParameters.Add("Url", $Url)
                     Az.Resources\Add-AzADGroupMember @PSBoundParameters
-                    $PSBoundParameters.Remove("Url") | Out-Null
+                    $null = $PSBoundParameters.Remove("Url")
                 }
             }
         }

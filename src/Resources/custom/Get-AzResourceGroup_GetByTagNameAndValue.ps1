@@ -70,11 +70,11 @@ function Get-AzResourceGroup_GetByTagNameAndValue {
         if ($PSBoundParameters.ContainsKey("TagValue"))
         {
             $Filter += " and tagValue eq '$TagValue'"
-            $PSBoundParameters.Remove("TagValue") | Out-Null
+            $null = $PSBoundParameters.Remove("TagValue")
         }
 
-        $PSBoundParameters.Add("Filter", $Filter) | Out-Null
-        $PSBoundParameters.Remove("TagName") | Out-Null
+        $null = $PSBoundParameters.Add("Filter", $Filter)
+        $null = $PSBoundParameters.Remove("TagName")
         Az.Resources\Get-AzResourceGroup @PSBoundParameters
     }
 }

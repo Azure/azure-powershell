@@ -21,13 +21,13 @@ Set-AzResourceGroup -SubscriptionId <String> -Name <String> [-Parameter <IResour
 ### UpdateExpanded
 ```
 Set-AzResourceGroup -SubscriptionId <String> -Name <String> -Location <String> [-ManagedBy <String>]
- [-Tag <IResourceGroupTags>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateById
 ```
 Set-AzResourceGroup -SubscriptionId <String> -Id <String> -Location <String> [-ManagedBy <String>]
- [-Tag <IResourceGroupTags>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -140,6 +140,7 @@ Dynamic: False
 
 ### -Parameter
 Resource group information.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IResourceGroup
@@ -174,7 +175,7 @@ Dynamic: False
 The tags attached to the resource group.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IResourceGroupTags
+Type: System.Collections.Hashtable
 Parameter Sets: UpdateExpanded, UpdateById
 Aliases:
 
@@ -231,6 +232,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IResourceGroup
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <IResourceGroup>: Resource group information.
+  - `Location <String>`: The location of the resource group. It cannot be changed after the resource group has been created. It must be one of the supported Azure locations.
+  - `[ManagedBy <String>]`: The ID of the resource that manages this resource group.
+  - `[Tag <IResourceGroupTags>]`: The tags attached to the resource group.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
 

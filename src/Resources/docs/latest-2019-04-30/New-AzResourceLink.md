@@ -20,13 +20,13 @@ New-AzResourceLink -ResourceId <String> [-Parameter <IResourceLink>] [-DefaultPr
 
 ### CreateExpanded
 ```
-New-AzResourceLink -ResourceId <String> -TargetId <String> [-Note <String>] [-DefaultProfile <PSObject>]
+New-AzResourceLink -ResourceId <String> [-Note <String>] [-TargetId <String>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzResourceLink -InputObject <IResourcesIdentity> -TargetId <String> [-Note <String>]
+New-AzResourceLink -InputObject <IResourcesIdentity> [-Note <String>] [-TargetId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -111,6 +111,7 @@ Dynamic: False
 
 ### -Parameter
 The resource link.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20160901.IResourceLink
@@ -151,7 +152,7 @@ Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -197,15 +198,24 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20160901.IResourceLink
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20160901.IResourceLink
 
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20160901.IResourceLink
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <IResourceLink>: The resource link.
+  - `TargetId <String>`: The fully qualified ID of the target resource in the link.
+  - `[Note <String>]`: Notes about the resource link.
 
 ## RELATED LINKS
 

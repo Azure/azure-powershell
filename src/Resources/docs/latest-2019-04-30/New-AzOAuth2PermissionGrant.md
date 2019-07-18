@@ -67,6 +67,7 @@ PS C:\> {{ Add code here }}
 
 ### -Body
 HELP MESSAGE MISSING
+To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IOAuth2PermissionGrant
@@ -312,15 +313,31 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IOAuth2PermissionGrant
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IOAuth2PermissionGrant
 
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IOAuth2PermissionGrant
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### BODY <IOAuth2PermissionGrant>: 
+  - `[ClientId <String>]`: The id of the resource's service principal granted consent to impersonate the user when accessing the resource (represented by the resourceId property).
+  - `[ConsentType <ConsentType?>]`: Indicates if consent was provided by the administrator (on behalf of the organization) or by an individual.
+  - `[ExpiryTime <String>]`: Expiry time for TTL
+  - `[ObjectId <String>]`: The id of the permission grant
+  - `[OdataType <String>]`: Microsoft.DirectoryServices.OAuth2PermissionGrant
+  - `[PrincipalId <String>]`: When consent type is Principal, this property specifies the id of the user that granted consent and applies only for that user.
+  - `[ResourceId <String>]`: Object Id of the resource you want to grant
+  - `[Scope <String>]`: Specifies the value of the scope claim that the resource application should expect in the OAuth 2.0 access token. For example, User.Read
+  - `[StartTime <String>]`: Start time for TTL
 
 ## RELATED LINKS
 

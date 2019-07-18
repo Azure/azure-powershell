@@ -134,7 +134,7 @@ Dynamic: False
 ```
 
 ### -GroupObjectId
-The object ID of the group that the member should be removed from.
+The object ID of the group from which to remove the member.
 
 ```yaml
 Type: System.String
@@ -166,7 +166,7 @@ Dynamic: False
 ```
 
 ### -MemberObjectId
-Member object id.
+Member object id
 
 ```yaml
 Type: System.String
@@ -274,6 +274,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

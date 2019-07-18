@@ -90,21 +90,21 @@ function Remove-AzADGroupMember {
         if ($PSBoundParameters.ContainsKey("MemberUserPrincipalName"))
         {
             $User = Az.Resources\Get-AzADUser -TenantId $TenantId -UserPrincipalName $MemberUserPrincipalName
-            $PSBoundParameters.Add("MemberObjectId", $User.ObjectId) | Out-Null
-            $PSBoundParameters.Remove("MemberUserPrincipalName") | Out-Null
+            $null = $PSBoundParameters.Add("MemberObjectId", $User.ObjectId)
+            $null = $PSBoundParameters.Remove("MemberUserPrincipalName")
         }
 
         if ($PSBoundParameters.ContainsKey("GroupDisplayName"))
         {
             $Group = Az.Resources\Get-AzADGroup -TenantId $TenantId -DisplayName $GroupDisplayName
-            $PSBoundParameters.Add("GroupObjectId", $Group.ObjectId) | Out-Null
-            $PSBoundParameters.Remove("GroupDisplayName") | Out-Null
+            $null = $PSBoundParameters.Add("GroupObjectId", $Group.ObjectId)
+            $null = $PSBoundParameters.Remove("GroupDisplayName")
         }
 
         if ($PSBoundParameters.ContainsKey("GroupObject"))
         {
-            $PSBoundParameters.Add("GroupObjectId", $GroupObject.ObjectId) | Out-Null
-            $PSBoundParameters.Remove("GroupObject") | Out-Null
+            $null = $PSBoundParameters.Add("GroupObjectId", $GroupObject.ObjectId)
+            $null = $PSBoundParameters.Remove("GroupObject")
         }
 
         Az.Resources\Remove-AzADGroupMember @PSBoundParameters

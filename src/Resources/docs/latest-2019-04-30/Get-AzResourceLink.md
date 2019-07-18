@@ -28,11 +28,6 @@ Get-AzResourceLink -SubscriptionId <String[]> [-Filter <String>] [-DefaultProfil
  [<CommonParameters>]
 ```
 
-### List1
-```
-Get-AzResourceLink -Scope <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Gets a resource link with the specified ID.
 
@@ -125,23 +120,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Scope
-The fully qualified ID of the scope for getting the resource links.
-For example, to list resource links at and under a resource group, set the scope to /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myGroup.
-
-```yaml
-Type: System.String
-Parameter Sets: List1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -SubscriptionId
 The ID of the target subscription.
 
@@ -170,6 +148,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20160901.IResourceLink
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

@@ -68,8 +68,8 @@ function Remove-AzADApplication_DeleteByApplicationId {
         $Application = Az.Resources\Get-AzADApplication -TenantId $TenantId -ApplicationId $ApplicationId
         if ($null -ne $Application)
         {
-            $PSBoundParameters.Add("ObjectId", $Application.ObjectId) | Out-Null
-            $PSBoundParameters.Remove("ApplicationId") | Out-Null
+            $null = $PSBoundParameters.Add("ObjectId", $Application.ObjectId)
+            $null = $PSBoundParameters.Remove("ApplicationId")
             Az.Resources\Remove-AzADApplication @PSBoundParameters
         }
     }

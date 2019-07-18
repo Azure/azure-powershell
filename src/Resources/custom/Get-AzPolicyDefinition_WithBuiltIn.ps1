@@ -57,11 +57,11 @@ function Get-AzPolicyDefinition_WithBuiltIn {
     process {
         if ($PSBoundParameters.ContainsKey("Name"))
         {
-            $PSBoundParameters.Add("PolicyDefinitionName", $Name) | Out-Null
-            $PSBoundParameters.Remove("Name") | Out-Null
+            $null = $PSBoundParameters.Add("PolicyDefinitionName", $Name)
+            $null = $PSBoundParameters.Remove("Name")
         }
 
-        $PSBoundParameters.Remove("BuiltIn") | Out-Null
+        $null = $PSBoundParameters.Remove("BuiltIn")
         Az.Resources.internal\Get-AzPolicyDefinitionBuilt @PSBoundParameters
     }
 }

@@ -15,34 +15,35 @@ Creates a new managed application.
 ### Update1 (Default)
 ```
 Set-AzManagedApplication -Id <String> [-Parameter <IApplication>] [-DefaultProfile <PSObject>] [-AsJob]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
 ```
 Set-AzManagedApplication -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Kind <String>
- -ManagedResourceGroupId <String> -PlanName <String> -PlanProduct <String> -PlanPublisher <String>
- -PlanVersion <String> -SkuName <String> [-Parameter <IApplication>] [-ApplicationDefinitionId <String>]
- [-IdentityType <ResourceIdentityType>] [-Location <String>] [-ManagedBy <String>]
- [-PlanPromotionCode <String>] [-ProvisioningState <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>]
- [-SkuModel <String>] [-SkuSize <String>] [-SkuTier <String>] [-Tag <IResourceTags>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ManagedResourceGroupId <String> [-Parameter <IApplication>] [-ApplicationDefinitionId <String>]
+ [-IdentityType <ResourceIdentityType>] [-Location <String>] [-ManagedBy <String>] [-PlanName <String>]
+ [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
+ [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuModel <String>] [-SkuName <String>] [-SkuSize <String>]
+ [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Update
 ```
 Set-AzManagedApplication -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <IApplication>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Parameter <IApplication>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateExpanded1
 ```
-Set-AzManagedApplication -Id <String> -Kind <String> -ManagedResourceGroupId <String> -PlanName <String>
- -PlanProduct <String> -PlanPublisher <String> -PlanVersion <String> -SkuName <String>
+Set-AzManagedApplication -Id <String> -Kind <String> -ManagedResourceGroupId <String>
  [-Parameter <IApplication>] [-ApplicationDefinitionId <String>] [-IdentityType <ResourceIdentityType>]
- [-Location <String>] [-ManagedBy <String>] [-PlanPromotionCode <String>] [-ProvisioningState <String>]
- [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuModel <String>] [-SkuSize <String>] [-SkuTier <String>]
- [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Location <String>] [-ManagedBy <String>] [-PlanName <String>] [-PlanProduct <String>]
+ [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>] [-SkuCapacity <Int32>]
+ [-SkuFamily <String>] [-SkuModel <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -76,7 +77,7 @@ The fully qualified path of managed application definition Id.
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded, UpdateExpanded1
-Aliases:
+Aliases: ManagedApplicationDefinitionId
 
 Required: False
 Position: Named
@@ -232,8 +233,25 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Parameter
 Information about managed application.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180601.IApplication
@@ -256,7 +274,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateExpanded1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -272,7 +290,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateExpanded1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -304,7 +322,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateExpanded1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -314,22 +332,6 @@ Dynamic: False
 
 ### -PlanVersion
 The plan's version.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateExpanded1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -ProvisioningState
-The managed application provisioning state.
 
 ```yaml
 Type: System.String
@@ -417,7 +419,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateExpanded1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -477,7 +479,7 @@ Dynamic: False
 Resource tags
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20160901Preview.IResourceTags
+Type: System.Collections.Hashtable
 Parameter Sets: UpdateExpanded, UpdateExpanded1
 Aliases:
 
@@ -534,6 +536,33 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180601.IApplication
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <IApplication>: Information about managed application.
+  - `SkuName <String>`: The SKU name.
+  - `Kind <String>`: The kind of the managed application. Allowed values are MarketPlace and ServiceCatalog.
+  - `ManagedResourceGroupId <String>`: The managed resource group Id.
+  - `PlanName <String>`: The plan name.
+  - `PlanProduct <String>`: The product code.
+  - `PlanPublisher <String>`: The publisher ID.
+  - `PlanVersion <String>`: The plan's version.
+  - `[IdentityType <ResourceIdentityType?>]`: The identity type.
+  - `[ManagedBy <String>]`: ID of the resource that manages this resource.
+  - `[SkuCapacity <Int32?>]`: The SKU capacity.
+  - `[SkuFamily <String>]`: The SKU family.
+  - `[SkuModel <String>]`: The SKU model.
+  - `[SkuSize <String>]`: The SKU size.
+  - `[SkuTier <String>]`: The SKU tier.
+  - `[Location <String>]`: Resource location
+  - `[Tag <IResourceTags>]`: Resource tags
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
+  - `[DefinitionId <String>]`: The fully qualified path of managed application definition Id.
+  - `[Parameter <IApplicationPropertiesParameters>]`: Name and value pairs that define the managed application parameters. It can be a JObject or a well formed JSON string.
+  - `[PlanPromotionCode <String>]`: The promotion code.
 
 ## RELATED LINKS
 

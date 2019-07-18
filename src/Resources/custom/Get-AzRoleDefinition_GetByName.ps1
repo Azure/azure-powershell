@@ -55,8 +55,8 @@ function Get-AzRoleDefinition_GetByName {
     )
 
     process {
-        $PSBoundParameters.Add("Filter", "roleName eq '$Name'") | Out-Null
-        $PSBoundParameters.Remove("Name") | Out-Null
+        $null = $PSBoundParameters.Add("Filter", "roleName eq '$Name'")
+        $null = $PSBoundParameters.Remove("Name")
         Az.Resources\Get-AzRoleDefinition @PSBoundParameters
     }
 }

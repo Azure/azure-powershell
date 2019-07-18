@@ -60,7 +60,7 @@ function Get-AzADGroupMember_GetByOwner {
     )
 
     process {
-        $PSBoundParameters.Remove("ShowOwner") | Out-Null
+        $null = $PSBoundParameters.Remove("ShowOwner")
         Az.Resources.internal\Get-AzADGroupOwner @PSBoundParameters
     }
 }

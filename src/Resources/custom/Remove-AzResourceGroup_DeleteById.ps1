@@ -1,4 +1,4 @@
-function Remove-AzResourceGroup_DeleteById {
+$null = function Remove-AzResourceGroup_DeleteById {
     [OutputType('System.Boolean')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Profile("latest-2019-04-30")]
     [CmdletBinding(SupportsShouldProcess, PositionalBinding = $false)]
@@ -57,8 +57,8 @@ function Remove-AzResourceGroup_DeleteById {
 
     process {
         $Tokens = $Id.Split("/", [System.StringSplitOptions]::RemoveEmptyEntries)
-        $PSBoundParameters.Add("Name", $Tokens[3]) | Out-Null
-        $PSBoundParameters.Remove("Id") | Out-Null
+        $null = $PSBoundParameters.Add("Name", $Tokens[3])
+        $null = $PSBoundParameters.Remove("Id")
         Az.Resources\Remove-AzResourceGroup @PSBoundParameters
     }
 }

@@ -65,10 +65,10 @@ function Remove-AzTag_DeleteValue {
     )
 
     process {
-        $PSBoundParameters.Add("TagName", $Name) | Out-Null
-        $PSBoundParameters.Add("TagValue", $Value) | Out-Null
-        $PSBoundParameters.Remove("Name") | Out-Null
-        $PSBoundParameters.Remove("Value") | Out-Null
+        $null = $PSBoundParameters.Add("TagName", $Name)
+        $null = $PSBoundParameters.Add("TagValue", $Value)
+        $null = $PSBoundParameters.Remove("Name")
+        $null = $PSBoundParameters.Remove("Value")
         Az.Resources.internal\Remove-AzTagValue @PSBoundParameters
     }
 }

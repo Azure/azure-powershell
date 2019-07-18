@@ -20,14 +20,14 @@ Test-AzADGroupMember -TenantId <String> [-Parameter <ICheckGroupMembershipParame
 
 ### IsExpanded
 ```
-Test-AzADGroupMember -TenantId <String> -GroupId <String> -MemberId <String> [-Properties <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-AzADGroupMember -TenantId <String> -GroupId <String> -MemberId <String>
+ [-AdditionalProperties <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### IsViaIdentityExpanded
 ```
 Test-AzADGroupMember -InputObject <IResourcesIdentity> -GroupId <String> -MemberId <String>
- [-Properties <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AdditionalProperties <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### IsViaIdentity
@@ -60,6 +60,22 @@ PS C:\> {{ Add code here }}
 {{ Add description here }}
 
 ## PARAMETERS
+
+### -AdditionalProperties
+Additional Parameters
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: IsExpanded, IsViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -127,6 +143,7 @@ Dynamic: False
 
 ### -Parameter
 Request parameters for IsMemberOf API call.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.ICheckGroupMembershipParameters
@@ -137,22 +154,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Properties
-Additional Parameters
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: IsExpanded, IsViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -211,15 +212,25 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.ICheckGroupMembershipParameters
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.ICheckGroupMembershipParameters
 
 ## OUTPUTS
 
 ### System.Management.Automation.SwitchParameter
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <ICheckGroupMembershipParameters>: Request parameters for IsMemberOf API call.
+  - `[(Any) <Object>]`: This indicates any property can be added to this object.
+  - `GroupId <String>`: The object ID of the group to check.
+  - `MemberId <String>`: The object ID of the contact, group, user, or service principal to check for membership in the specified group.
 
 ## RELATED LINKS
 

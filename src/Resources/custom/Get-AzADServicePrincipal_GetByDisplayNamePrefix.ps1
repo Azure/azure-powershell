@@ -53,8 +53,8 @@ function Get-AzADServicePrincipal_GetByDisplayNamePrefix {
     )
 
     process {
-        $PSBoundParameters.Add("Filter", "startsWith(displayname, '$DisplayNameBeginsWith')") | Out-Null
-        $PSBoundParameters.Remove("DisplayNameBeginsWith") | Out-Null
+        $null = $PSBoundParameters.Add("Filter", "startsWith(displayname, '$DisplayNameBeginsWith')")
+        $null = $PSBoundParameters.Remove("DisplayNameBeginsWith")
         Az.Resources\Get-AzADServicePrincipal @PSBoundParameters
     }
 }

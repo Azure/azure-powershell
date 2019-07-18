@@ -73,14 +73,14 @@ function Get-AzADUser_GetByFilter {
         {
             $FilterStarted = $true
             $Filter += "displayname eq '$DisplayName'"
-            $PSBoundParameters.Remove("DisplayName") | Out-Null
+            $null = $PSBoundParameters.Remove("DisplayName")
         }
 
         if ($PSBoundParameters.ContainsKey("StartsWith"))
         {
             $FilterStarted = $true
             $Filter += "startsWith(displayName, '$StartsWith')"
-            $PSBoundParameters.Remove("StartsWith") | Out-Null
+            $null = $PSBoundParameters.Remove("StartsWith")
         }
 
         if ($PSBoundParameters.ContainsKey("Mail"))
@@ -92,7 +92,7 @@ function Get-AzADUser_GetByFilter {
 
             $FilterStarted = $true
             $Filter += "mail eq '$Mail'"
-            $PSBoundParameters.Remove("Mail") | Out-Null
+            $null = $PSBoundParameters.Remove("Mail")
         }
 
         if ($PSBoundParameters.ContainsKey("MailNickname"))
@@ -104,10 +104,10 @@ function Get-AzADUser_GetByFilter {
 
             $FilterStarted = $true
             $Filter += "mailNickname eq '$MailNickname'"
-            $PSBoundParameters.Remove("MailNickname") | Out-Null
+            $null = $PSBoundParameters.Remove("MailNickname")
         }
 
-        $PSBoundParameters.Add("Filter", $Filter) | Out-Null
+        $null = $PSBoundParameters.Add("Filter", $Filter)
         Az.Resources\Get-AzADUser @PSBoundParameters
     }
 }

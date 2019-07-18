@@ -119,7 +119,7 @@ Dynamic: False
 ```
 
 ### -LockName
-The name of lock to delete.
+The name of lock.
 
 ```yaml
 Type: System.String
@@ -167,7 +167,7 @@ Dynamic: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group containing the lock.
+The name of the resource group containing the resource with the lock to delete.
 
 ```yaml
 Type: System.String
@@ -232,7 +232,6 @@ Dynamic: False
 
 ### -Scope
 The scope for the lock.
-
 
 ```yaml
 Type: System.String
@@ -308,6 +307,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

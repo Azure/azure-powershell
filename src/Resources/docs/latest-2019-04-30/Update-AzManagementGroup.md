@@ -162,6 +162,7 @@ Dynamic: False
 
 ### -PatchGroupRequest
 Management group patch parameters.
+To construct, see NOTES section for PATCHGROUPREQUEST properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180301Preview.IPatchManagementGroupRequest
@@ -214,15 +215,24 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180301Preview.IPatchManagementGroupRequest
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180301Preview.IPatchManagementGroupRequest
 
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180301Preview.IManagementGroup
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PATCHGROUPREQUEST <IPatchManagementGroupRequest>: Management group patch parameters.
+  - `[DisplayName <String>]`: The friendly name of the management group.
+  - `[ParentId <String>]`: (Optional) The fully qualified ID for the parent management group.  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
 
 ## RELATED LINKS
 

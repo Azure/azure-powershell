@@ -71,7 +71,7 @@ Dynamic: False
 ```
 
 ### -DeploymentName
-The name of the deployment with the operation to get.
+The name of the deployment.
 
 ```yaml
 Type: System.String
@@ -164,6 +164,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### Get-AzResourceGroupDeploymentOperation
+
+## NOTES
 
 ## RELATED LINKS
 

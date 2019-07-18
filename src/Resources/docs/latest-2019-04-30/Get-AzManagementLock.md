@@ -149,7 +149,7 @@ Dynamic: False
 ```
 
 ### -LockName
-The name of the lock to get.
+The name of lock.
 
 ```yaml
 Type: System.String
@@ -165,7 +165,7 @@ Dynamic: False
 ```
 
 ### -ParentResourcePath
-The parent resource identity.
+An extra path parameter needed in some services, like SQL Databases.
 
 ```yaml
 Type: System.String
@@ -181,8 +181,7 @@ Dynamic: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group containing the locked resource.
-The name is case insensitive.
+The name of the resource group.
 
 ```yaml
 Type: System.String
@@ -198,7 +197,7 @@ Dynamic: False
 ```
 
 ### -ResourceName
-The name of the locked resource.
+The name of the resource.
 
 ```yaml
 Type: System.String
@@ -230,7 +229,7 @@ Dynamic: False
 ```
 
 ### -ResourceType
-The resource type of the locked resource.
+The type of the resource.
 
 ```yaml
 Type: System.String
@@ -247,7 +246,6 @@ Dynamic: False
 
 ### -Scope
 The scope for the lock.
-
 
 ```yaml
 Type: System.String
@@ -290,6 +288,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20160901.IManagementLockObject
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

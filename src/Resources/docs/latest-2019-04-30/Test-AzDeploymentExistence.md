@@ -173,5 +173,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Test-AzResourceGroupDeploymentExistence
 
+## NOTES
+
 ## RELATED LINKS
 

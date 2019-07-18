@@ -53,8 +53,8 @@ function Get-AzADApplication_GetByIdentifierUri {
     )
 
     process {
-        $PSBoundParameters.Add("Filter", "identifierUris/any(c: c eq '$IdentifierUri')") | Out-Null
-        $PSBoundParameters.Remove("IdentifierUri") | Out-Null
+        $null = $PSBoundParameters.Add("Filter", "identifierUris/any(c: c eq '$IdentifierUri')")
+        $null = $PSBoundParameters.Remove("IdentifierUri")
         Az.Resources\Get-AzADApplication @PSBoundParameters
     }
 }

@@ -150,7 +150,7 @@ Dynamic: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group containing the resource.
+The name of the resource group that contains policy assignments.
 
 ```yaml
 Type: System.String
@@ -260,6 +260,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20161201.IPolicyAssignment
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

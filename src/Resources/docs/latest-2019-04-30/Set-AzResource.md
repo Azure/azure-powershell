@@ -15,36 +15,36 @@ Creates a resource.
 ### Update1 (Default)
 ```
 Set-AzResource -ResourceId <String> [-Parameter <IGenericResource>] [-DefaultProfile <PSObject>] [-AsJob]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
 ```
 Set-AzResource -Name <String> -ParentResourcePath <String> -ProviderNamespace <String>
- -ResourceGroupName <String> -ResourceType <String> -SubscriptionId <String> -PlanName <String>
- -PlanProduct <String> -PlanPublisher <String> -PlanVersion <String> -SkuName <String>
- [-IdentityType <ResourceIdentityType>] [-IdentityUserAssignedIdentity <IIdentityUserAssignedIdentities>]
- [-Kind <String>] [-Location <String>] [-ManagedBy <String>] [-PlanPromotionCode <String>]
+ -ResourceGroupName <String> -ResourceType <String> -SubscriptionId <String>
+ [-IdentityType <ResourceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Kind <String>]
+ [-Location <String>] [-ManagedBy <String>] [-PlanName <String>] [-PlanProduct <String>]
+ [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
  [-Property <IGenericResourceProperties>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuModel <String>]
- [-SkuSize <String>] [-SkuTier <String>] [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
 ```
 Set-AzResource -Name <String> -ParentResourcePath <String> -ProviderNamespace <String>
  -ResourceGroupName <String> -ResourceType <String> -SubscriptionId <String> [-Parameter <IGenericResource>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded1
 ```
-Set-AzResource -ResourceId <String> -PlanName <String> -PlanProduct <String> -PlanPublisher <String>
- -PlanVersion <String> -SkuName <String> [-IdentityType <ResourceIdentityType>]
- [-IdentityUserAssignedIdentity <IIdentityUserAssignedIdentities>] [-Kind <String>] [-Location <String>]
- [-ManagedBy <String>] [-PlanPromotionCode <String>] [-Property <IGenericResourceProperties>]
- [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuModel <String>] [-SkuSize <String>] [-SkuTier <String>]
- [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzResource -ResourceId <String> [-IdentityType <ResourceIdentityType>]
+ [-IdentityUserAssignedIdentity <Hashtable>] [-Kind <String>] [-Location <String>] [-ManagedBy <String>]
+ [-PlanName <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>]
+ [-PlanVersion <String>] [-Property <IGenericResourceProperties>] [-SkuCapacity <Int32>] [-SkuFamily <String>]
+ [-SkuModel <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -125,7 +125,7 @@ The list of user identities associated with the resource.
 The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IIdentityUserAssignedIdentities
+Type: System.Collections.Hashtable
 Parameter Sets: UpdateExpanded, UpdateExpanded1
 Aliases:
 
@@ -201,8 +201,25 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Parameter
 Resource information.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IGenericResource
@@ -241,7 +258,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateExpanded1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -257,7 +274,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateExpanded1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -289,7 +306,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateExpanded1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -305,7 +322,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateExpanded1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -451,7 +468,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateExpanded1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -511,7 +528,7 @@ Dynamic: False
 Resource tags
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20160901Preview.IResourceTags
+Type: System.Collections.Hashtable
 Parameter Sets: UpdateExpanded, UpdateExpanded1
 Aliases:
 
@@ -568,6 +585,33 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IGenericResource
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <IGenericResource>: Resource information.
+  - `PlanName <String>`: The plan name.
+  - `PlanProduct <String>`: The product code.
+  - `PlanPublisher <String>`: The publisher ID.
+  - `PlanVersion <String>`: The plan's version.
+  - `SkuName <String>`: The SKU name.
+  - `[Location <String>]`: Resource location
+  - `[Tag <IResourceTags>]`: Resource tags
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
+  - `[IdentityType <ResourceIdentityType?>]`: The identity type.
+  - `[IdentityUserAssignedIdentity <IIdentityUserAssignedIdentities>]`: The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+    - `[(Any) <IComponentsSchemasIdentityPropertiesUserassignedidentitiesAdditionalproperties>]`: This indicates any property can be added to this object.
+  - `[Kind <String>]`: The kind of the resource.
+  - `[ManagedBy <String>]`: ID of the resource that manages this resource.
+  - `[PlanPromotionCode <String>]`: The promotion code.
+  - `[Property <IGenericResourceProperties>]`: The resource properties.
+  - `[SkuCapacity <Int32?>]`: The SKU capacity.
+  - `[SkuFamily <String>]`: The SKU family.
+  - `[SkuModel <String>]`: The SKU model.
+  - `[SkuSize <String>]`: The SKU size.
+  - `[SkuTier <String>]`: The SKU tier.
 
 ## RELATED LINKS
 

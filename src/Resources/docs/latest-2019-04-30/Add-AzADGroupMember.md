@@ -33,7 +33,7 @@ Add-AzADGroupMember -GroupObjectId <String> -TenantId <String> -MemberUserPrinci
 ### AddExpanded
 ```
 Add-AzADGroupMember -GroupObjectId <String> -TenantId <String> -Url <String> [-PassThru]
- [-Properties <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AdditionalProperties <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### AddMemberIdToGroupObject
@@ -62,8 +62,8 @@ Add-AzADGroupMember -TenantId <String> -MemberUserPrincipalName <String[]> -Grou
 
 ### AddViaIdentityExpanded
 ```
-Add-AzADGroupMember -InputObject <IResourcesIdentity> -Url <String> [-PassThru] [-Properties <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Add-AzADGroupMember -InputObject <IResourcesIdentity> -Url <String> [-PassThru]
+ [-AdditionalProperties <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### AddViaIdentity
@@ -96,6 +96,22 @@ PS C:\> {{ Add code here }}
 {{ Add description here }}
 
 ## PARAMETERS
+
+### -AdditionalProperties
+Additional Parameters
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: AddExpanded, AddViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -146,7 +162,7 @@ Dynamic: False
 ```
 
 ### -GroupObjectId
-The object ID of the group to add the member(s) to.
+The object ID of the group to which to add the member.
 
 ```yaml
 Type: System.String
@@ -211,6 +227,7 @@ Dynamic: False
 
 ### -Parameter
 Request parameters for adding a member to a group.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IGroupAddMemberParameters
@@ -236,22 +253,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Properties
-Additional Parameters
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: AddExpanded, AddViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -327,15 +328,24 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IGroupAddMemberParameters
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IGroupAddMemberParameters
 
 ## OUTPUTS
 
 ### System.Boolean
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <IGroupAddMemberParameters>: Request parameters for adding a member to a group.
+  - `[(Any) <Object>]`: This indicates any property can be added to this object.
+  - `Url <String>`: A member object URL, such as "https://graph.windows.net/0b1f9851-1bf0-433f-aec3-cb9272f093dc/directoryObjects/f260bbc4-c254-447b-94cf-293b5ec434dd", where "0b1f9851-1bf0-433f-aec3-cb9272f093dc" is the tenantId and "f260bbc4-c254-447b-94cf-293b5ec434dd" is the objectId of the member (user, application, servicePrincipal, group) to be added.
 
 ## RELATED LINKS
 

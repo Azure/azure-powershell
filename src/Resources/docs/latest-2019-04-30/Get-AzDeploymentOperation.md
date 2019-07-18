@@ -36,6 +36,12 @@ Get-AzDeploymentOperation -DeploymentName <String> -OperationId <String> -Subscr
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetByDeploymentObject
+```
+Get-AzDeploymentOperation -SubscriptionId <String[]> -DeploymentObject <IDeploymentExtended> [-Top <Int32>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### GetViaIdentity1
 ```
 Get-AzDeploymentOperation -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -88,11 +94,27 @@ Dynamic: False
 ```
 
 ### -DeploymentName
-The name of the deployment with the operation to get.
+The name of the deployment.
 
 ```yaml
 Type: System.String
 Parameter Sets: List, List1, Get1, Get
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -DeploymentObject
+The object representation of the deployment.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IDeploymentExtended
+Parameter Sets: GetByDeploymentObject
 Aliases:
 
 Required: True
@@ -157,7 +179,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, List1, Get1, Get
+Parameter Sets: List, List1, Get1, Get, GetByDeploymentObject
 Aliases:
 
 Required: True
@@ -173,7 +195,7 @@ The number of results to return.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: List, List1
+Parameter Sets: List, List1, GetByDeploymentObject
 Aliases:
 
 Required: False
@@ -198,6 +220,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### Get-AzResourceGroupDeploymentOperation
+
+## NOTES
 
 ## RELATED LINKS
 

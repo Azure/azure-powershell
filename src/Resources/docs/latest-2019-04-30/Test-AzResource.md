@@ -238,5 +238,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Test-AzResourceExistence
 
+## NOTES
+
 ## RELATED LINKS
 

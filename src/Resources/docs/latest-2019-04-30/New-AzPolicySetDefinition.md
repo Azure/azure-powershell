@@ -20,18 +20,18 @@ New-AzPolicySetDefinition -Name <String> -SubscriptionId <String> [-Parameter <I
 
 ### CreateExpanded1
 ```
-New-AzPolicySetDefinition -Name <String> -ManagementGroupName <String>
- -PolicyDefinition <IPolicyDefinitionReference[]> [-Parameter <IPolicySetDefinition>] [-Description <String>]
- [-DisplayName <String>] [-Metadata <IPolicySetDefinitionPropertiesMetadata>] [-PolicyType <PolicyType>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzPolicySetDefinition -Name <String> -ManagementGroupName <String> [-Parameter <IPolicySetDefinition>]
+ [-Description <String>] [-DisplayName <String>] [-Metadata <IPolicySetDefinitionPropertiesMetadata>]
+ [-PolicyDefinition <IPolicyDefinitionReference[]>] [-PolicyType <PolicyType>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpanded
 ```
-New-AzPolicySetDefinition -Name <String> -SubscriptionId <String>
- -PolicyDefinition <IPolicyDefinitionReference[]> [-Parameter <IPolicySetDefinition>] [-Description <String>]
- [-DisplayName <String>] [-Metadata <IPolicySetDefinitionPropertiesMetadata>] [-PolicyType <PolicyType>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzPolicySetDefinition -Name <String> -SubscriptionId <String> [-Parameter <IPolicySetDefinition>]
+ [-Description <String>] [-DisplayName <String>] [-Metadata <IPolicySetDefinitionPropertiesMetadata>]
+ [-PolicyDefinition <IPolicyDefinitionReference[]>] [-PolicyType <PolicyType>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create1
@@ -42,17 +42,17 @@ New-AzPolicySetDefinition -Name <String> -ManagementGroupName <String> [-Paramet
 
 ### CreateViaIdentityExpanded1
 ```
-New-AzPolicySetDefinition -InputObject <IResourcesIdentity> -PolicyDefinition <IPolicyDefinitionReference[]>
- [-Parameter <IPolicySetDefinition>] [-Description <String>] [-DisplayName <String>]
- [-Metadata <IPolicySetDefinitionPropertiesMetadata>] [-PolicyType <PolicyType>] [-DefaultProfile <PSObject>]
+New-AzPolicySetDefinition -InputObject <IResourcesIdentity> [-Parameter <IPolicySetDefinition>]
+ [-Description <String>] [-DisplayName <String>] [-Metadata <IPolicySetDefinitionPropertiesMetadata>]
+ [-PolicyDefinition <IPolicyDefinitionReference[]>] [-PolicyType <PolicyType>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzPolicySetDefinition -InputObject <IResourcesIdentity> -PolicyDefinition <IPolicyDefinitionReference[]>
- [-Parameter <IPolicySetDefinition>] [-Description <String>] [-DisplayName <String>]
- [-Metadata <IPolicySetDefinitionPropertiesMetadata>] [-PolicyType <PolicyType>] [-DefaultProfile <PSObject>]
+New-AzPolicySetDefinition -InputObject <IResourcesIdentity> [-Parameter <IPolicySetDefinition>]
+ [-Description <String>] [-DisplayName <String>] [-Metadata <IPolicySetDefinitionPropertiesMetadata>]
+ [-PolicyDefinition <IPolicyDefinitionReference[]>] [-PolicyType <PolicyType>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -207,6 +207,7 @@ Dynamic: False
 
 ### -Parameter
 The policy set definition.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IPolicySetDefinition
@@ -223,13 +224,14 @@ Dynamic: False
 
 ### -PolicyDefinition
 An array of policy definition references.
+To construct, see NOTES section for POLICYDEFINITION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IPolicyDefinitionReference[]
 Parameter Sets: CreateExpanded1, CreateExpanded, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -308,15 +310,34 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IPolicySetDefinition
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IPolicySetDefinition
 
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IPolicySetDefinition
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <IPolicySetDefinition>: The policy set definition.
+  - `PolicyDefinition <IPolicyDefinitionReference[]>`: An array of policy definition references.
+    - `[Parameter <IPolicyDefinitionReferenceParameters>]`: Required if a parameter is used in policy rule.
+    - `[PolicyDefinitionId <String>]`: The ID of the policy definition or policy set definition.
+  - `[Description <String>]`: The policy set definition description.
+  - `[DisplayName <String>]`: The display name of the policy set definition.
+  - `[Metadata <IPolicySetDefinitionPropertiesMetadata>]`: The policy set definition metadata.
+  - `[Parameter <IPolicySetDefinitionPropertiesParameters>]`: The policy set definition parameters that can be used in policy definition references.
+  - `[PolicyType <PolicyType?>]`: The type of policy definition. Possible values are NotSpecified, BuiltIn, and Custom.
+
+#### POLICYDEFINITION <IPolicyDefinitionReference[]>: An array of policy definition references.
+  - `[Parameter <IPolicyDefinitionReferenceParameters>]`: Required if a parameter is used in policy rule.
+  - `[PolicyDefinitionId <String>]`: The ID of the policy definition or policy set definition.
 
 ## RELATED LINKS
 

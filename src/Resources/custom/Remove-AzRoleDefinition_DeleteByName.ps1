@@ -58,8 +58,8 @@ function Remove-AzRoleDefinition_DeleteByName {
         $RoleDefinition = Az.Resources\Get-AzRoleDefinition -Scope $Scope -Name $Name
         if ($null -ne $RoleDefinition)
         {
-            $PSBoundParameters.Add("Id", $RoleDefinition.Id) | Out-Null
-            $PSBoundParameters.Remove("Name") | Out-Null
+            $null = $PSBoundParameters.Add("Id", $RoleDefinition.Id)
+            $null = $PSBoundParameters.Remove("Name")
             Az.Resources\Remove-AzRoleDefinition @PSBoundParameters
         }
     }

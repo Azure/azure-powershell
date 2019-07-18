@@ -59,15 +59,15 @@ function Get-AzDeployment_GetById {
         $Tokens = $Id.Split("/", [System.StringSplitOptions]::RemoveEmptyEntries)
         if ($Tokens[2] -eq "resourceGroups")
         {
-            $PSBoundParameters.Add("ResourceGroupName", $Tokens[3]) | Out-Null
-            $PSBoundParameters.Add("Name", $Tokens[7]) | Out-Null
+            $null = $PSBoundParameters.Add("ResourceGroupName", $Tokens[3])
+            $null = $PSBoundParameters.Add("Name", $Tokens[7])
         }
         else
         {
-            $PSBoundParameters.Add("Name", $Tokens[5]) | Out-Null
+            $null = $PSBoundParameters.Add("Name", $Tokens[5])
         }
 
-        $PSBoundParameters.Remove("Id") | Out-Null
+        $null = $PSBoundParameters.Remove("Id")
         Az.Resources\Get-AzDeployment @PSBoundParameters
     }
 }

@@ -360,7 +360,7 @@ Dynamic: False
 ```
 
 ### -Scope
-The scope of the role assignments.
+The scope of the role assignment.
 
 ```yaml
 Type: System.String
@@ -437,6 +437,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180901Preview.IRoleAssignment
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

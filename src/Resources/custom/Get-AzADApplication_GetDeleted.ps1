@@ -61,7 +61,7 @@ function Get-AzADApplication_GetDeleted {
     )
 
     process {
-        $PSBoundParameters.Remove("IncludeDeleted") | Out-Null
+        $null = $PSBoundParameters.Remove("IncludeDeleted")
         Az.Resources.internal\Get-AzADDeletedApplication @PSBoundParameters
     }
 }
