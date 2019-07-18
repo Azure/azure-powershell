@@ -79,7 +79,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &quot;The Shipping Address is ambiguous. Please select any address from the ones provided above.&quot;.
+        ///   Looks up a localized string similar to &quot;The Shipping Address is ambiguous. Please run the cmdlet with &apos;-Verbose&apos; parameter and use any address from the ones provided.&quot;.
         /// </summary>
         internal static string AmbiguousAddressMessage {
             get {

@@ -124,7 +124,7 @@
     <value>"Address Validation Status: "</value>
   </data>
   <data name="AmbiguousAddressMessage" xml:space="preserve">
-    <value>"The Shipping Address is ambiguous. Please select any address from the ones provided above."</value>
+    <value>"The Shipping Address is ambiguous. Please run the cmdlet with '-Verbose' parameter and use any address from the ones provided."</value>
   </data>
   <data name="CancellingDataboxJob" xml:space="preserve">
     <value>"Cancelling Databox job "</value>
