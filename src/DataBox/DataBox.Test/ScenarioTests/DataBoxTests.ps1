@@ -55,8 +55,8 @@ function Test-GetCredentialForNewlyCreatedJob
     }
     finally
     {
-        Stop-AzDataBoxJob -ResourceGroupName $rgname -Name $dfname -Reason "Random"
-		Remove-AzDataBoxJob -ResourceGroupName $rgname -Name $dfname 
+        Stop-AzDataBoxJob -ResourceGroupName $rgname -Name $dfname -Reason "Random" -Force
+		Remove-AzDataBoxJob -ResourceGroupName $rgname -Name $dfname  -Force
 		Remove-AzStorageAccount -ResourceGroupName $rgname -Name $storageaccountname 
     }    
 }
@@ -100,8 +100,8 @@ function Test-CreateDataBoxJob
     }
     finally
     {
-        Stop-AzDataBoxJob -ResourceGroupName $rgname -Name $dfname -Reason "Random"
-		Remove-AzDataBoxJob -ResourceGroupName $rgname -Name $dfname 
+        Stop-AzDataBoxJob -ResourceGroupName $rgname -Name $dfname -Reason "Random" -Force
+		Remove-AzDataBoxJob -ResourceGroupName $rgname -Name $dfname  -Force
 		Remove-AzStorageAccount -ResourceGroupName $rgname -Name $storageaccountname 
     }
 }
@@ -132,8 +132,8 @@ function Test-CreateAlreadyExistingDataBoxJob
     }
     finally
     {
-        Stop-AzDataBoxJob -ResourceGroupName $rgname -Name $dfname -Reason "Random"
-		Remove-AzDataBoxJob -ResourceGroupName $rgname -Name $dfname 
+        Stop-AzDataBoxJob -ResourceGroupName $rgname -Name $dfname -Reason "Random" -Force
+		Remove-AzDataBoxJob -ResourceGroupName $rgname -Name $dfname  -Force
 		Remove-AzStorageAccount -ResourceGroupName $rgname -Name $storageaccountname 
     }
 }
@@ -158,7 +158,7 @@ function Test-StopDataBoxJob
     try
     {
         Create-Job $dfname $rgname $storageaccount.Id
-		Stop-AzDataBoxJob -ResourceGroupName $rgname -Name $dfname -Reason "Random"
+		Stop-AzDataBoxJob -ResourceGroupName $rgname -Name $dfname -Reason "Random" -Force
         $expected = Get-AzDataBoxJob -ResourceGroupName $rgname -Name $dfname
 
         Assert-AreEqual $expected.JobResource.Status "Cancelled"
@@ -166,9 +166,8 @@ function Test-StopDataBoxJob
     finally
     {
 
-		Remove-AzDataBoxJob -ResourceGroupName $rgname -Name $dfname 
+		Remove-AzDataBoxJob -ResourceGroupName $rgname -Name $dfname -Force
 		Remove-AzStorageAccount -ResourceGroupName $rgname -Name $storageaccountname 
-
     }
 }
 
@@ -192,8 +191,8 @@ function Test-RemoveDataBoxJob
     try
     {
         Create-Job $dfname $rgname $storageaccount.Id
-		Stop-AzDataBoxJob -ResourceGroupName $rgname -Name $dfname -Reason "Random"
-		Remove-AzDataBoxJob -ResourceGroupName $rgname -Name $dfname 
+		Stop-AzDataBoxJob -ResourceGroupName $rgname -Name $dfname -Reason "Random" -Force
+		Remove-AzDataBoxJob -ResourceGroupName $rgname -Name $dfname -Force
 
         Assert-ThrowsContains { Get-AzDataBoxJob -ResourceGroupName $rgname -Name $dfname } "Could not find" 
     }
