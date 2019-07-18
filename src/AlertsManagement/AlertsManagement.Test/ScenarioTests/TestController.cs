@@ -25,6 +25,8 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.Azure.Management.AlertsManagement;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 
 namespace Microsoft.Azure.Commands.AlertsManagement.Test.ScenarioTests
 {
@@ -93,7 +95,9 @@ namespace Microsoft.Azure.Commands.AlertsManagement.Test.ScenarioTests
                 _helper.SetupModules(AzureModule.AzureResourceManager,
                     _helper.RMProfileModule,
                     _helper.GetRMModulePath("AzureRM.AlertsManagement.psd1"),
-                    "ScenarioTests\\" + callingClassName + ".ps1");
+                    "ScenarioTests\\Common.ps1",
+                    "ScenarioTests\\" + callingClassName + ".ps1",
+                    "AzureRM.Resources.ps1");
                 try
                 {
                     var psScripts = scriptBuilder?.Invoke();
