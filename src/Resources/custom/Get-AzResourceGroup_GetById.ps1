@@ -57,8 +57,8 @@ function Get-AzResourceGroup_GetById {
 
     process {
         $Tokens = $Id.Split("/", [System.StringSplitOptions]::RemoveEmptyEntries)
-        $PSBoundParameters.Add("Name", $Tokens[3]) | Out-Null
-        $PSBoundParameters.Remove("Id") | Out-Null
+        $null = $PSBoundParameters.Add("Name", $Tokens[3])
+        $null = $PSBoundParameters.Remove("Id")
         Az.Resources\Get-AzResourceGroup @PSBoundParameters
     }
 }

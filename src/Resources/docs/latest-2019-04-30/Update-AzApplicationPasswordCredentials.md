@@ -113,6 +113,7 @@ Dynamic: False
 
 ### -Parameter
 Request parameters for a PasswordCredentials update operation.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IPasswordCredentialsUpdateParameters
@@ -161,6 +162,7 @@ Dynamic: False
 
 ### -Value
 A collection of PasswordCredentials.
+To construct, see NOTES section for VALUE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IPasswordCredential[]
@@ -213,15 +215,35 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IPasswordCredentialsUpdateParameters
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IPasswordCredentialsUpdateParameters
 
 ## OUTPUTS
 
 ### System.Boolean
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <IPasswordCredentialsUpdateParameters>: Request parameters for a PasswordCredentials update operation.
+  - `Value <IPasswordCredential[]>`: A collection of PasswordCredentials.
+    - `[CustomKeyIdentifier <Byte[]>]`: Custom Key Identifier
+    - `[EndDate <DateTime?>]`: End date.
+    - `[KeyId <String>]`: Key ID.
+    - `[StartDate <DateTime?>]`: Start date.
+    - `[Value <String>]`: Key value.
+
+#### VALUE <IPasswordCredential[]>: A collection of PasswordCredentials.
+  - `[CustomKeyIdentifier <Byte[]>]`: Custom Key Identifier
+  - `[EndDate <DateTime?>]`: End date.
+  - `[KeyId <String>]`: Key ID.
+  - `[StartDate <DateTime?>]`: Start date.
+  - `[Value <String>]`: Key value.
 
 ## RELATED LINKS
 

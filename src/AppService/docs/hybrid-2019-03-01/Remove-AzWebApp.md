@@ -252,5 +252,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Remove-AzWebAppSlot
 
+## NOTES
+
 ## RELATED LINKS
 

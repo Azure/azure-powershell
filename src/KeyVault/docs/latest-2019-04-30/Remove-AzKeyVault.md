@@ -18,6 +18,12 @@ Remove-AzKeyVault -Name <String> -ResourceGroupName <String> -SubscriptionId <St
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### Purge
+```
+Remove-AzKeyVault -Name <String> -SubscriptionId <String> -Location <String> -InRemovedState [-PassThru]
+ [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### DeleteViaIdentity
 ```
 Remove-AzKeyVault -InputObject <IKeyVaultIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-Confirm]
@@ -48,6 +54,22 @@ PS C:\> {{ Add code here }}
 {{ Add description here }}
 
 ## PARAMETERS
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: Purge
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -81,12 +103,44 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -InRemovedState
+Signals that the given deleted vault should be purged.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: Purge
+Aliases:
+
+Required: True
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Location
+The location of the soft-deleted vault.
+
+```yaml
+Type: System.String
+Parameter Sets: Purge
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Name
 The name of the vault to delete
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, Purge
 Aliases: VaultName
 
 Required: True
@@ -135,7 +189,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, Purge
 Aliases:
 
 Required: True
@@ -191,6 +245,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

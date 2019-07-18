@@ -23,7 +23,7 @@ Confirm-AzWebSiteConnectionConsentCode -ConnectionName <String> -ResourceGroupNa
 ```
 Confirm-AzWebSiteConnectionConsentCode -ConnectionName <String> -ResourceGroupName <String>
  -SubscriptionId <String> -Location <String> [-Code <String>] [-Id <String>] [-Kind <String>] [-Name <String>]
- [-ObjectId <String>] [-PrincipalType <PrincipalType>] [-Tag <IResourceTags>] [-TenantId <String>]
+ [-ObjectId <String>] [-PrincipalType <PrincipalType>] [-Tag <Hashtable>] [-TenantId <String>]
  [-Type <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -31,8 +31,8 @@ Confirm-AzWebSiteConnectionConsentCode -ConnectionName <String> -ResourceGroupNa
 ```
 Confirm-AzWebSiteConnectionConsentCode -InputObject <IWebSiteIdentity> -Location <String> [-Code <String>]
  [-Id <String>] [-Kind <String>] [-Name <String>] [-ObjectId <String>] [-PrincipalType <PrincipalType>]
- [-Tag <IResourceTags>] [-TenantId <String>] [-Type <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-TenantId <String>] [-Type <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### ConfirmViaIdentity
@@ -100,6 +100,7 @@ Dynamic: False
 
 ### -Content
 Confirm Consent Code Input payload
+To construct, see NOTES section for CONTENT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801Preview.IConfirmConsentCodeInput
@@ -281,7 +282,7 @@ Dynamic: False
 Resource tags
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801Preview.IResourceTags
+Type: System.Collections.Hashtable
 Parameter Sets: ConfirmExpanded, ConfirmViaIdentityExpanded
 Aliases:
 
@@ -372,6 +373,24 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801Preview.IConnection
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### CONTENT <IConfirmConsentCodeInput>: Confirm Consent Code Input payload
+  - `Location <String>`: Resource Location
+  - `[Id <String>]`: Resource Id
+  - `[Kind <String>]`: Kind of resource
+  - `[Name <String>]`: Resource Name
+  - `[Tag <IResourceTags>]`: Resource tags
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
+  - `[Type <String>]`: Resource type
+  - `[Code <String>]`: Code that was returned during consent flow
+  - `[ObjectId <String>]`: AAD object ID. This is userId
+  - `[PrincipalType <PrincipalType?>]`: Principal type
+  - `[TenantId <String>]`: Tenant Id
 
 ## RELATED LINKS
 

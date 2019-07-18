@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the Resources service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.4.0 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.6.0 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -63,6 +63,11 @@ module-version: 0.0.1
 title: Resources
 
 directive:
+  - from: source-file-csharp
+    where: $
+    transform: >
+      $ = $.replace(/result.OdataNextLink/g,'nextLink' );
+      return $.replace( /(^\s*)(if\s*\(\s*nextLink\s*!=\s*null\s*\))/gm, '$1var nextLink = Module.Instance.FixNextLink(responseMessage, result.OdataNextLink);\n$1$2' );
   - where:
       subject: ApplicationDefinition(.*)
     set:
@@ -164,10 +169,6 @@ directive:
     set:
       parameter-name: ObjectId
   - where:
-      parameter-name: Filter
-    set:
-      alias: ODataQuery
-  - where:
       subject: Resource
       parameter-name: GroupName
     set:
@@ -215,6 +216,24 @@ directive:
     set:
       parameter-name: ResourceId
       alias: LinkId
+  - where:
+      verb: Get
+      subject: ResourceLink
+      variant: List
+      parameter-name: Filter
+    set:
+      parameter-name: FilterById
+  - where:
+      verb: Get
+      subject: ResourceLink
+      variant: List1
+      parameter-name: Filter
+    set:
+      parameter-name: FilterByScope
+  - where:
+      parameter-name: Filter
+    set:
+      alias: ODataQuery
   - where:
       verb: Test
       subject: ResourceGroupExistence
@@ -362,4 +381,14 @@ directive:
       subject: RoleDefinition
       variant: ^Create1$|^CreateExpanded1$
     hide: true
+  - where:
+      subject: ManagedApplication
+      parameter-name: ApplicationDefinitionId
+    set:
+      alias: ManagedApplicationDefinitionId
+  - where:
+      subject: ADApplication
+      parameter-name: AvailableToOtherTenant
+    set:
+      parameter-name: AvailableToOtherTenants
 ```

@@ -15,32 +15,32 @@ Create and start a packet capture on the specified VM.
 ### Create (Default)
 ```
 New-AzNetworkWatcherPacketCapture -Name <String> -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-Parameter <IPacketCapture>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -SubscriptionId <String> [-Parameter <IPacketCapture>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpanded
 ```
 New-AzNetworkWatcherPacketCapture -Name <String> -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -Target <String> [-BytesToCapturePerPacket <Int32>]
- [-Filter <IPacketCaptureFilter[]>] [-StorageLocationFilePath <String>] [-StorageLocationStorageId <String>]
- [-StorageLocationStoragePath <String>] [-TimeLimitInSeconds <Int32>] [-TotalBytesPerSession <Int32>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -SubscriptionId <String> -TargetResourceId <String> [-BytesToCapturePerPacket <Int32>]
+ [-Filter <IPacketCaptureFilter[]>] [-StorageAccountId <String>] [-StorageFilePath <String>]
+ [-StoragePathUri <String>] [-TimeLimitInSeconds <Int32>] [-TotalBytesPerSession <Int32>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzNetworkWatcherPacketCapture -InputObject <INetworkIdentity> -Target <String>
- [-BytesToCapturePerPacket <Int32>] [-Filter <IPacketCaptureFilter[]>] [-StorageLocationFilePath <String>]
- [-StorageLocationStorageId <String>] [-StorageLocationStoragePath <String>] [-TimeLimitInSeconds <Int32>]
- [-TotalBytesPerSession <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+New-AzNetworkWatcherPacketCapture -InputObject <INetworkIdentity> -TargetResourceId <String>
+ [-BytesToCapturePerPacket <Int32>] [-Filter <IPacketCaptureFilter[]>] [-StorageAccountId <String>]
+ [-StorageFilePath <String>] [-StoragePathUri <String>] [-TimeLimitInSeconds <Int32>]
+ [-TotalBytesPerSession <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
 New-AzNetworkWatcherPacketCapture -InputObject <INetworkIdentity> [-Parameter <IPacketCapture>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -118,6 +118,7 @@ Dynamic: False
 
 ### -Filter
 A list of packet capture filters.
+To construct, see NOTES section for FILTER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IPacketCaptureFilter[]
@@ -180,8 +181,25 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Parameter
 Parameters that define the create packet capture operation.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IPacketCapture
@@ -212,26 +230,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -StorageLocationFilePath
-A valid local path on the targeting VM.
-Must include the name of the capture file (*.cap).
-For linux virtual machine it must start with /var/captures.
-Required if no storage ID is provided, otherwise optional.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -StorageLocationStorageId
+### -StorageAccountId
 The ID of the storage account to save the packet capture session.
 Required if no local file path is provided.
 
@@ -248,14 +247,33 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -StorageLocationStoragePath
+### -StorageFilePath
+A valid local path on the targeting VM.
+Must include the name of the capture file (*.cap).
+For linux virtual machine it must start with /var/captures.
+Required if no storage ID is provided, otherwise optional.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases: LocalFilePath
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -StoragePathUri
 The URI of the storage path to save the packet capture.
 Must be a well-formed URI describing the location to save the packet capture.
 
 ```yaml
 Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Aliases: StoragePath
 
 Required: False
 Position: Named
@@ -282,13 +300,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Target
+### -TargetResourceId
 The ID of the targeted resource, only VM is currently supported.
 
 ```yaml
 Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Aliases: TargetVirtualMachineId
 
 Required: True
 Position: Named
@@ -377,6 +395,33 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### FILTER <IPacketCaptureFilter[]>: A list of packet capture filters.
+  - `[LocalIPAddress <String>]`: Local IP Address to be filtered on. Notation: "127.0.0.1" for single address entry. "127.0.0.1-127.0.0.255" for range. "127.0.0.1;127.0.0.5"? for multiple entries. Multiple ranges not currently supported. Mixing ranges with multiple entries not currently supported. Default = null.
+  - `[LocalPort <String>]`: Local port to be filtered on. Notation: "80" for single port entry."80-85" for range. "80;443;" for multiple entries. Multiple ranges not currently supported. Mixing ranges with multiple entries not currently supported. Default = null.
+  - `[Protocol <PcProtocol?>]`: Protocol to be filtered on.
+  - `[RemoteIPAddress <String>]`: Local IP Address to be filtered on. Notation: "127.0.0.1" for single address entry. "127.0.0.1-127.0.0.255" for range. "127.0.0.1;127.0.0.5;" for multiple entries. Multiple ranges not currently supported. Mixing ranges with multiple entries not currently supported. Default = null.
+  - `[RemotePort <String>]`: Remote port to be filtered on. Notation: "80" for single port entry."80-85" for range. "80;443;" for multiple entries. Multiple ranges not currently supported. Mixing ranges with multiple entries not currently supported. Default = null.
+
+#### PARAMETER <IPacketCapture>: Parameters that define the create packet capture operation.
+  - `Target <String>`: The ID of the targeted resource, only VM is currently supported.
+  - `[BytesToCapturePerPacket <Int32?>]`: Number of bytes captured per packet, the remaining bytes are truncated.
+  - `[Filter <IPacketCaptureFilter[]>]`: A list of packet capture filters.
+    - `[LocalIPAddress <String>]`: Local IP Address to be filtered on. Notation: "127.0.0.1" for single address entry. "127.0.0.1-127.0.0.255" for range. "127.0.0.1;127.0.0.5"? for multiple entries. Multiple ranges not currently supported. Mixing ranges with multiple entries not currently supported. Default = null.
+    - `[LocalPort <String>]`: Local port to be filtered on. Notation: "80" for single port entry."80-85" for range. "80;443;" for multiple entries. Multiple ranges not currently supported. Mixing ranges with multiple entries not currently supported. Default = null.
+    - `[Protocol <PcProtocol?>]`: Protocol to be filtered on.
+    - `[RemoteIPAddress <String>]`: Local IP Address to be filtered on. Notation: "127.0.0.1" for single address entry. "127.0.0.1-127.0.0.255" for range. "127.0.0.1;127.0.0.5;" for multiple entries. Multiple ranges not currently supported. Mixing ranges with multiple entries not currently supported. Default = null.
+    - `[RemotePort <String>]`: Remote port to be filtered on. Notation: "80" for single port entry."80-85" for range. "80;443;" for multiple entries. Multiple ranges not currently supported. Mixing ranges with multiple entries not currently supported. Default = null.
+  - `[StorageLocationFilePath <String>]`: A valid local path on the targeting VM. Must include the name of the capture file (*.cap). For linux virtual machine it must start with /var/captures. Required if no storage ID is provided, otherwise optional.
+  - `[StorageLocationStorageId <String>]`: The ID of the storage account to save the packet capture session. Required if no local file path is provided.
+  - `[StorageLocationStoragePath <String>]`: The URI of the storage path to save the packet capture. Must be a well-formed URI describing the location to save the packet capture.
+  - `[TimeLimitInSecond <Int32?>]`: Maximum duration of the capture session in seconds.
+  - `[TotalBytesPerSession <Int32?>]`: Maximum size of the capture output.
 
 ## RELATED LINKS
 

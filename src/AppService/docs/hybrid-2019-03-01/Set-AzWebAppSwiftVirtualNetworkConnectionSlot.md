@@ -56,6 +56,7 @@ PS C:\> {{ Add code here }}
 ### -ConnectionEnvelope
 Swift Virtual Network Contract.
 This is used to enable the new Swift way of doing virtual network integration.
+To construct, see NOTES section for CONNECTIONENVELOPE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISwiftVirtualNetwork
@@ -248,6 +249,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISwiftVirtualNetwork
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### CONNECTIONENVELOPE <ISwiftVirtualNetwork>: Swift Virtual Network Contract. This is used to enable the new Swift way of doing virtual network integration.
+  - `[Kind <String>]`: Kind of resource.
+  - `[SubnetResourceId <String>]`: The Virtual Network subnet's resource ID. This is the subnet that this Web App will join. This subnet must have a delegation to Microsoft.Web/serverFarms defined first.
+  - `[SwiftSupported <Boolean?>]`: A flag that specifies if the scale unit this Web App is on supports Swift integration.
 
 ## RELATED LINKS
 

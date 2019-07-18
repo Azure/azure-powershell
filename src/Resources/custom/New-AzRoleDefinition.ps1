@@ -83,7 +83,7 @@ function New-AzRoleDefinition {
 
     process {
         $Id = [System.Guid]::NewGuid().ToString()
-        $PSBoundParameters.Add("Id", $Id) | Out-Null
+        $null = $PSBoundParameters.Add("Id", $Id)
         Az.Resources.internal\New-AzRoleDefinition @PSBoundParameters
     }
 }

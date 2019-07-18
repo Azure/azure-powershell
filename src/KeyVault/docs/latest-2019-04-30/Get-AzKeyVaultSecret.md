@@ -15,19 +15,37 @@ This operation requires the secrets/get permission.
 
 ### Get1 (Default)
 ```
-Get-AzKeyVaultSecret [-VaultBaseUrl <String>] [-Maxresult <Int32>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzKeyVaultSecret -Name <String> -Version <String> [-VaultBaseUrl <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzKeyVaultSecret [-KeyVaultDnsSuffix <String>] [-VaultName <String>] [-MaxResult <Int32>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzKeyVaultSecret -InputObject <IKeyVaultIdentity> [-VaultBaseUrl <String>] [-DefaultProfile <PSObject>]
+Get-AzKeyVaultSecret -InputObject <IKeyVaultIdentity> [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzKeyVaultSecret -Name <String> -Version <String> [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ListVersions
+```
+Get-AzKeyVaultSecret -Name <String> -IncludeVersions [-VaultBaseUrl <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetDeleted
+```
+Get-AzKeyVaultSecret -InRemovedState [-VaultBaseUrl <String>] [-MaxResult <Int32>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetDeleted1
+```
+Get-AzKeyVaultSecret -Name <String> -InRemovedState [-VaultBaseUrl <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -73,6 +91,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -IncludeVersions
+Signals to include versions of the secret in the output.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ListVersions
+Aliases:
+
+Required: True
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -InputObject
 Identity Parameter
 
@@ -89,13 +123,45 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Maxresult
+### -InRemovedState
+Signals that deleted key vault secrets should be returned.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: GetDeleted, GetDeleted1
+Aliases:
+
+Required: True
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -KeyVaultDnsSuffix
+MISSING DESCRIPTION 06
+
+```yaml
+Type: System.String
+Parameter Sets: Get1, GetViaIdentity, Get
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -MaxResult
 Maximum number of results to return in a page.
 If not specified, the service will return up to 25 results.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: Get1
+Parameter Sets: Get1, GetDeleted
 Aliases:
 
 Required: False
@@ -111,7 +177,7 @@ The name of the secret.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, ListVersions, GetDeleted1
 Aliases: SecretName
 
 Required: True
@@ -127,7 +193,23 @@ MISSING DESCRIPTION 06
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ListVersions, GetDeleted, GetDeleted1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -VaultName
+MISSING DESCRIPTION 06
+
+```yaml
+Type: System.String
+Parameter Sets: Get1, GetViaIdentity, Get
 Aliases:
 
 Required: False
@@ -167,7 +249,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.ISecretItem
 
+### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IDeletedSecretItem
+
+### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IDeletedSecretBundle
+
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

@@ -68,8 +68,8 @@ function Remove-AzADApplication_DeleteByDisplayName {
         $Application = Az.Resources\Get-AzADApplication -TenantId $TenantId -DisplayName $DisplayName
         if ($null -ne $Application)
         {
-            $PSBoundParameters.Add("ObjectId", $Application.ObjectId) | Out-Null
-            $PSBoundParameters.Remove("DisplayName") | Out-Null
+            $null = $PSBoundParameters.Add("ObjectId", $Application.ObjectId)
+            $null = $PSBoundParameters.Remove("DisplayName")
             Az.Resources\Remove-AzADApplication @PSBoundParameters
         }
     }

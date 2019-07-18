@@ -150,5 +150,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Get-AzVirtualNetworkGateway
 
+## NOTES
+
 ## RELATED LINKS
 

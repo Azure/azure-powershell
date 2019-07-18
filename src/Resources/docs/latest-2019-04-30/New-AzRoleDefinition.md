@@ -129,6 +129,7 @@ Dynamic: False
 
 ### -Permission
 Role definition permissions.
+To construct, see NOTES section for PERMISSION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api201801Preview.IPermission[]
@@ -145,6 +146,7 @@ Dynamic: False
 
 ### -RoleDefinition
 Role definition.
+To construct, see NOTES section for ROLEDEFINITION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api201801Preview.IRoleDefinition
@@ -254,6 +256,28 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api201801Preview.IRoleDefinition
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PERMISSION <IPermission[]>: Role definition permissions.
+  - `[Action <String[]>]`: Allowed actions.
+  - `[NotAction <String[]>]`: Denied actions.
+  - `[DataAction <String[]>]`: Allowed Data actions.
+  - `[NotDataAction <String[]>]`: Denied Data actions.
+
+#### ROLEDEFINITION <IRoleDefinition>: Role definition.
+  - `[AssignableScope <String[]>]`: Role definition assignable scopes.
+  - `[Description <String>]`: The role definition description.
+  - `[Permission <IPermission[]>]`: Role definition permissions.
+    - `[Action <String[]>]`: Allowed actions.
+    - `[NotAction <String[]>]`: Denied actions.
+    - `[DataAction <String[]>]`: Allowed Data actions.
+    - `[NotDataAction <String[]>]`: Denied Data actions.
+  - `[RoleName <String>]`: The role name.
+  - `[RoleType <String>]`: The role type.
 
 ## RELATED LINKS
 

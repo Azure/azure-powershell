@@ -65,13 +65,13 @@ function Add-AzADGroupOwner_AddByComponents {
 
     process {
         $TempMemberObjectId = $MemberObjectId
-        $PSBoundParameters.Remove("MemberObjectId") | Out-Null
+        $null = $PSBoundParameters.Remove("MemberObjectId")
         $TempMemberObjectId | ForEach-Object {
             $GraphEndpoint = (Get-AzContext).Environment.GraphEndpointResourceId
             $Url = '{0}{1}/directoryObjects/{2}' -f $GraphEndpoint, $TenantId, $_
-            $PSBoundParameters.Add("Url", $Url) | Out-Null
+            $null = $PSBoundParameters.Add("Url", $Url)
             Az.Resources\Add-AzADGroupOwner @PSBoundParameters
-            $PSBoundParameters.Remove("Url") | Out-Null
+            $null = $PSBoundParameters.Remove("Url")
         }
     }
 }

@@ -15,7 +15,7 @@ This operation requires the storage/set permission.
 
 ### Set (Default)
 ```
-Set-AzKeyVaultStorageAccount -Name <String> [-VaultBaseUrl <String>]
+Set-AzKeyVaultStorageAccount -Name <String> [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
  [-Parameter <IStorageAccountCreateParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -23,24 +23,8 @@ Set-AzKeyVaultStorageAccount -Name <String> [-VaultBaseUrl <String>]
 ### SetExpanded
 ```
 Set-AzKeyVaultStorageAccount -Name <String> -ActiveKeyName <String> -AutoRegenerateKey -ResourceId <String>
- [-VaultBaseUrl <String>] [-Enabled] [-RegenerationPeriod <String>]
- [-Tag <IStorageAccountCreateParametersTags>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### SetViaIdentityExpanded
-```
-Set-AzKeyVaultStorageAccount -InputObject <IKeyVaultIdentity> -ActiveKeyName <String> -AutoRegenerateKey
- -ResourceId <String> [-VaultBaseUrl <String>] [-Enabled] [-RegenerationPeriod <String>]
- [-Tag <IStorageAccountCreateParametersTags>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### SetViaIdentity
-```
-Set-AzKeyVaultStorageAccount -InputObject <IKeyVaultIdentity> [-VaultBaseUrl <String>]
- [-Parameter <IStorageAccountCreateParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-KeyVaultDnsSuffix <String>] [-VaultName <String>] [-Enabled] [-RegenerationPeriod <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -74,7 +58,7 @@ Current active storage account key name.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded, SetViaIdentityExpanded
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: True
@@ -90,7 +74,7 @@ whether keyvault should manage the storage account for the user.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: SetExpanded, SetViaIdentityExpanded
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: True
@@ -122,7 +106,7 @@ the enabled state of the object.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: SetExpanded, SetViaIdentityExpanded
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: False
@@ -133,18 +117,18 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
+### -KeyVaultDnsSuffix
+MISSING DESCRIPTION 06
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentity
-Parameter Sets: SetViaIdentityExpanded, SetViaIdentity
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -154,7 +138,7 @@ The name of the storage account.
 
 ```yaml
 Type: System.String
-Parameter Sets: Set, SetExpanded
+Parameter Sets: (All)
 Aliases: StorageAccountName
 
 Required: True
@@ -167,10 +151,11 @@ Dynamic: False
 
 ### -Parameter
 The storage account create parameters.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IStorageAccountCreateParameters
-Parameter Sets: Set, SetViaIdentity
+Parameter Sets: Set
 Aliases:
 
 Required: False
@@ -186,7 +171,7 @@ The key regeneration time duration specified in ISO-8601 format.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded, SetViaIdentityExpanded
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: False
@@ -202,7 +187,7 @@ Storage account resource id.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded, SetViaIdentityExpanded
+Parameter Sets: SetExpanded
 Aliases: AccountResourceId
 
 Required: True
@@ -217,8 +202,8 @@ Dynamic: False
 Application specific metadata in the form of key-value pairs.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IStorageAccountCreateParametersTags
-Parameter Sets: SetExpanded, SetViaIdentityExpanded
+Type: System.Collections.Hashtable
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: False
@@ -229,7 +214,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VaultBaseUrl
+### -VaultName
 MISSING DESCRIPTION 06
 
 ```yaml
@@ -285,8 +270,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IStorageAccountCreateParameters
 
-### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IStorageBundle
@@ -294,6 +277,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### Add-AzKeyVaultManagedStorageAccount
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <IStorageAccountCreateParameters>: The storage account create parameters.
+  - `ActiveKeyName <String>`: Current active storage account key name.
+  - `AutoRegenerateKey <Boolean>`: whether keyvault should manage the storage account for the user.
+  - `ResourceId <String>`: Storage account resource id.
+  - `[AttributeEnabled <Boolean?>]`: the enabled state of the object.
+  - `[RegenerationPeriod <String>]`: The key regeneration time duration specified in ISO-8601 format.
+  - `[Tag <IStorageAccountCreateParametersTags>]`: Application specific metadata in the form of key-value pairs.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
 

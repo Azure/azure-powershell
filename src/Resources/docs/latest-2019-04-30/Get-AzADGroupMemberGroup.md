@@ -20,14 +20,14 @@ Get-AzADGroupMemberGroup -ObjectId <String> -TenantId <String> [-Parameter <IGro
 
 ### GetExpanded
 ```
-Get-AzADGroupMemberGroup -ObjectId <String> -TenantId <String> -SecurityEnabledOnly [-Properties <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzADGroupMemberGroup -ObjectId <String> -TenantId <String> -SecurityEnabledOnly
+ [-AdditionalProperties <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GetViaIdentityExpanded
 ```
-Get-AzADGroupMemberGroup -InputObject <IResourcesIdentity> -SecurityEnabledOnly [-Properties <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzADGroupMemberGroup -InputObject <IResourcesIdentity> -SecurityEnabledOnly
+ [-AdditionalProperties <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -60,6 +60,22 @@ PS C:\> {{ Add code here }}
 {{ Add description here }}
 
 ## PARAMETERS
+
+### -AdditionalProperties
+Additional Parameters
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: GetExpanded, GetViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -111,6 +127,7 @@ Dynamic: False
 
 ### -Parameter
 Request parameters for GetMemberGroups API call.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IGroupGetMemberGroupsParameters
@@ -121,22 +138,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Properties
-Additional Parameters
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: GetExpanded, GetViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -212,15 +213,24 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IGroupGetMemberGroupsParameters
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IGroupGetMemberGroupsParameters
 
 ## OUTPUTS
 
 ### System.String
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <IGroupGetMemberGroupsParameters>: Request parameters for GetMemberGroups API call.
+  - `[(Any) <Object>]`: This indicates any property can be added to this object.
+  - `SecurityEnabledOnly <Boolean>`: If true, only membership in security-enabled groups should be checked. Otherwise, membership in all groups should be checked.
 
 ## RELATED LINKS
 

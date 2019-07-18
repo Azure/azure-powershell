@@ -15,26 +15,26 @@ Does not modify DNS records within the zone.
 
 ### Update (Default)
 ```
-Update-AzDnsZone -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Update-AzDnsZone -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-IfMatch <String>]
  [-Parameter <IZoneUpdate>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
 ```
-Update-AzDnsZone -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-Tag <IZoneUpdateTags>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzDnsZone -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-IfMatch <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzDnsZone -InputObject <IDnsIdentity> [-Tag <IZoneUpdateTags>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-AzDnsZone -InputObject <IDnsIdentity> [-IfMatch <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
 ```
-Update-AzDnsZone -InputObject <IDnsIdentity> [-Parameter <IZoneUpdate>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzDnsZone -InputObject <IDnsIdentity> [-IfMatch <String>] [-Parameter <IZoneUpdate>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -79,6 +79,24 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -IfMatch
+The etag of the DNS zone.
+Omit this value to always overwrite the current zone.
+Specify the last-seen etag value to prevent accidentally overwriting any concurrent changes.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -InputObject
 Identity Parameter
 
@@ -113,6 +131,7 @@ Dynamic: False
 
 ### -Parameter
 Describes a request to update a DNS zone.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20180501.IZoneUpdate
@@ -163,7 +182,7 @@ Dynamic: False
 Resource tags.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20180501.IZoneUpdateTags
+Type: System.Collections.Hashtable
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -213,15 +232,24 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20180501.IZoneUpdate
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20180501.IZoneUpdate
 
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20180501.IZone
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <IZoneUpdate>: Describes a request to update a DNS zone.
+  - `[Tag <IZoneUpdateTags>]`: Resource tags.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
 

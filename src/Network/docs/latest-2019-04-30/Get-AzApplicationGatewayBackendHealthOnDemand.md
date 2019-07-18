@@ -16,7 +16,7 @@ Gets the backend health for given combination of backend pool and http setting o
 ```
 Get-AzApplicationGatewayBackendHealthOnDemand -Name <String> -ResourceGroupName <String>
  -SubscriptionId <String[]> [-ExpandResource <String>] [-ProbeRequest <IApplicationGatewayOnDemandProbe>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DemandExpanded
@@ -25,7 +25,7 @@ Get-AzApplicationGatewayBackendHealthOnDemand -Name <String> -ResourceGroupName 
  -SubscriptionId <String[]> [-ExpandResource <String>] [-BackendHttpSettingName <String>]
  [-BackendPoolName <String>] [-Host <String>] [-MatchBody <String>] [-MatchStatusCode <String[]>]
  [-Path <String>] [-PickHostNameFromBackendHttpSetting] [-Protocol <ApplicationGatewayProtocol>]
- [-Timeout <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Timeout <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DemandViaIdentityExpanded
@@ -33,15 +33,15 @@ Get-AzApplicationGatewayBackendHealthOnDemand -Name <String> -ResourceGroupName 
 Get-AzApplicationGatewayBackendHealthOnDemand -InputObject <INetworkIdentity> [-ExpandResource <String>]
  [-BackendHttpSettingName <String>] [-BackendPoolName <String>] [-Host <String>] [-MatchBody <String>]
  [-MatchStatusCode <String[]>] [-Path <String>] [-PickHostNameFromBackendHttpSetting]
- [-Protocol <ApplicationGatewayProtocol>] [-Timeout <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-Protocol <ApplicationGatewayProtocol>] [-Timeout <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DemandViaIdentity
 ```
 Get-AzApplicationGatewayBackendHealthOnDemand -InputObject <INetworkIdentity> [-ExpandResource <String>]
- [-ProbeRequest <IApplicationGatewayOnDemandProbe>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-ProbeRequest <IApplicationGatewayOnDemandProbe>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -231,6 +231,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Path
 Relative path of probe.
 Valid path starts from '/'.
@@ -268,6 +284,7 @@ Dynamic: False
 
 ### -ProbeRequest
 Details of on demand test probe request
+To construct, see NOTES section for PROBEREQUEST properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IApplicationGatewayOnDemandProbe
@@ -396,6 +413,22 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IApplicationGatewayBackendHealthOnDemand
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PROBEREQUEST <IApplicationGatewayOnDemandProbe>: Details of on demand test probe request
+  - `[BackendHttpSettingName <String>]`: Name of backend http setting of application gateway to be used for test probe
+  - `[BackendPoolName <String>]`: Name of backend pool of application gateway to which probe request will be sent.
+  - `[Host <String>]`: Host name to send the probe to.
+  - `[MatchBody <String>]`: Body that must be contained in the health response. Default value is empty.
+  - `[MatchStatusCode <String[]>]`: Allowed ranges of healthy status codes. Default range of healthy status codes is 200-399.
+  - `[Path <String>]`: Relative path of probe. Valid path starts from '/'. Probe is sent to <Protocol>://<host>:<port><path>
+  - `[PickHostNameFromBackendHttpSetting <Boolean?>]`: Whether the host header should be picked from the backend http settings. Default value is false.
+  - `[Protocol <ApplicationGatewayProtocol?>]`: The protocol used for the probe.
+  - `[Timeout <Int32?>]`: The probe timeout in seconds. Probe marked as failed if valid response is not received with this timeout period. Acceptable values are from 1 second to 86400 seconds.
 
 ## RELATED LINKS
 

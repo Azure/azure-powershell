@@ -122,5 +122,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Get-AzVirtualNetworkUsage
 
+## NOTES
+
 ## RELATED LINKS
 

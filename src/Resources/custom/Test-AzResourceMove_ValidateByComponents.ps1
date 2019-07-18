@@ -86,12 +86,12 @@ function Test-AzResourceMove_ValidateByComponents {
         if ($PSBoundParameters.ContainsKey("TargetSubscriptionId"))
         {
             $DestinationSubscriptionId = $TargetSubscriptionId
-            $PSBoundParameters.Remove("TargetSubscriptionId") | Out-Null
+            $null = $PSBoundParameters.Remove("TargetSubscriptionId")
         }
 
         $TargetResourceGroup = "/subscriptions/{0}/resourceGroups/{1}" -f $DestinationSubscriptionId, $TargetResourceGroupName
-        $PSBoundParameters.Add("TargetResourceGroup", $TargetResourceGroup) | Out-Null
-        $PSBoundParameters.Remove("TargetResourceGroupName") | Out-Null
+        $null = $PSBoundParameters.Add("TargetResourceGroup", $TargetResourceGroup)
+        $null = $PSBoundParameters.Remove("TargetResourceGroupName")
         Az.Resources\Test-AzResourceMove @PSBoundParameters
     }
 }

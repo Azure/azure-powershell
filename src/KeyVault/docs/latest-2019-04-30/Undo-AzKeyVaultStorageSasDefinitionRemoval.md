@@ -17,13 +17,14 @@ This operation requires the storage/recover permission.
 ### Recover (Default)
 ```
 Undo-AzKeyVaultStorageSasDefinitionRemoval -SasDefinitionName <String> -StorageAccountName <String>
- [-VaultBaseUrl <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-KeyVaultDnsSuffix <String>] [-VaultName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### RecoverViaIdentity
 ```
-Undo-AzKeyVaultStorageSasDefinitionRemoval -InputObject <IKeyVaultIdentity> [-VaultBaseUrl <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Undo-AzKeyVaultStorageSasDefinitionRemoval -InputObject <IKeyVaultIdentity> [-KeyVaultDnsSuffix <String>]
+ [-VaultName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -85,6 +86,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -KeyVaultDnsSuffix
+MISSING DESCRIPTION 06
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -SasDefinitionName
 The name of the SAS definition.
 
@@ -117,7 +134,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VaultBaseUrl
+### -VaultName
 MISSING DESCRIPTION 06
 
 ```yaml
@@ -180,6 +197,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### Undo-AzKeyVaultManagedStorageSasDefinitionRemoval
+
+## NOTES
 
 ## RELATED LINKS
 

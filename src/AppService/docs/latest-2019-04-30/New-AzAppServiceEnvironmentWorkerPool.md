@@ -16,7 +16,7 @@ Create or update a worker pool.
 ```
 New-AzAppServiceEnvironmentWorkerPool -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  -WorkerPoolName <String> [-PassThru] [-WorkerPoolEnvelope <IWorkerPoolResource>] [-DefaultProfile <PSObject>]
- [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpanded
@@ -26,8 +26,8 @@ New-AzAppServiceEnvironmentWorkerPool -Name <String> -ResourceGroupName <String>
  [-SkuCapability <ICapability[]>] [-SkuCapacityDefault <Int32>] [-SkuCapacityMaximum <Int32>]
  [-SkuCapacityMinimum <Int32>] [-SkuCapacityScaleType <String>] [-SkuFamily <String>]
  [-SkuLocation <String[]>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>] [-WorkerCount <Int32>]
- [-WorkerSize <String>] [-WorkerSizeId <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-WorkerSize <String>] [-WorkerSizeId <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -37,14 +37,14 @@ New-AzAppServiceEnvironmentWorkerPool -InputObject <IWebSiteIdentity> [-PassThru
  [-SkuCapacityDefault <Int32>] [-SkuCapacityMaximum <Int32>] [-SkuCapacityMinimum <Int32>]
  [-SkuCapacityScaleType <String>] [-SkuFamily <String>] [-SkuLocation <String[]>] [-SkuName <String>]
  [-SkuSize <String>] [-SkuTier <String>] [-WorkerCount <Int32>] [-WorkerSize <String>] [-WorkerSizeId <Int32>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
 New-AzAppServiceEnvironmentWorkerPool -InputObject <IWebSiteIdentity> [-PassThru]
- [-WorkerPoolEnvelope <IWorkerPoolResource>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-WorkerPoolEnvelope <IWorkerPoolResource>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -184,6 +184,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -PassThru
 When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
 
@@ -218,6 +234,7 @@ Dynamic: False
 
 ### -SkuCapability
 Capabilities of the SKU, e.g., is traffic manager enabled
+To construct, see NOTES section for SKUCAPABILITY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160301.ICapability[]
@@ -412,6 +429,7 @@ Dynamic: False
 
 ### -WorkerPoolEnvelope
 Worker pool of an App Service Environment ARM resource.
+To construct, see NOTES section for WORKERPOOLENVELOPE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160901.IWorkerPoolResource
@@ -521,6 +539,37 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160901.IWorkerPoolResource
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### SKUCAPABILITY <ICapability[]>: Capabilities of the SKU, e.g., is traffic manager enabled
+  - `[Name <String>]`: Name of the SKU capability.
+  - `[Reason <String>]`: Reason of the SKU capability.
+  - `[Value <String>]`: Value of the SKU capability.
+
+#### WORKERPOOLENVELOPE <IWorkerPoolResource>: Worker pool of an App Service Environment ARM resource.
+  - `[Kind <String>]`: Kind of resource.
+  - `[Capacity <Int32?>]`: Current number of instances assigned to the resource.
+  - `[ComputeMode <ComputeModeOptions?>]`: Shared or dedicated app hosting.
+  - `[SkuCapability <ICapability[]>]`: Capabilities of the SKU, e.g., is traffic manager enabled?
+    - `[Name <String>]`: Name of the SKU capability.
+    - `[Reason <String>]`: Reason of the SKU capability.
+    - `[Value <String>]`: Value of the SKU capability.
+  - `[SkuCapacityDefault <Int32?>]`: Default number of workers for this App Service plan SKU.
+  - `[SkuCapacityMaximum <Int32?>]`: Maximum number of workers for this App Service plan SKU.
+  - `[SkuCapacityMinimum <Int32?>]`: Minimum number of workers for this App Service plan SKU.
+  - `[SkuCapacityScaleType <String>]`: Available scale configurations for an App Service plan.
+  - `[SkuFamily <String>]`: Family code of the resource SKU.
+  - `[SkuLocation <String[]>]`: Locations of the SKU.
+  - `[SkuName <String>]`: Name of the resource SKU.
+  - `[SkuSize <String>]`: Size specifier of the resource SKU.
+  - `[SkuTier <String>]`: Service tier of the resource SKU.
+  - `[WorkerCount <Int32?>]`: Number of instances in the worker pool.
+  - `[WorkerSize <String>]`: VM size of the worker pool instances.
+  - `[WorkerSizeId <Int32?>]`: Worker size ID for referencing this worker pool.
 
 ## RELATED LINKS
 

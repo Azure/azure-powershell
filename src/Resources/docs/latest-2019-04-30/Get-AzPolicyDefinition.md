@@ -161,7 +161,7 @@ Dynamic: False
 ```
 
 ### -Name
-The name of the built-in policy definition to get.
+The name of the policy definition to get.
 
 ```yaml
 Type: System.String
@@ -204,6 +204,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IPolicyDefinition
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

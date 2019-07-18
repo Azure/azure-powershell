@@ -147,6 +147,7 @@ Dynamic: False
 
 ### -Parameter
 Vpn device configuration script generation parameters
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVpnDeviceScriptParameters
@@ -261,6 +262,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Get-AzVirtualNetworkGatewayConnectionVpnDeviceConfigScript
 
 ### Get-AzVirtualNetworkGatewayVpnDeviceConfigurationScript
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <IVpnDeviceScriptParameters>: Vpn device configuration script generation parameters
+  - `[DeviceFamily <String>]`: The device family for the vpn device.
+  - `[FirmwareVersion <String>]`: The firmware version for the vpn device.
+  - `[Vendor <String>]`: The vendor for the vpn device.
 
 ## RELATED LINKS
 

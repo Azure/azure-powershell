@@ -63,8 +63,8 @@ function Remove-AzADUser_DeleteByDisplayName {
         $User = Az.Resources\Get-AzADUser -TenantId $TenantId -DisplayName $DisplayName
         if ($null -ne $User)
         {
-            $PSBoundParameters.Add("UpnOrObjectId", $User.ObjectId) | Out-Null
-            $PSBoundParameters.Remove("DisplayName") | Out-Null
+            $null = $PSBoundParameters.Add("UpnOrObjectId", $User.ObjectId)
+            $null = $PSBoundParameters.Remove("DisplayName")
             Az.Resources\Remove-AzADUser @PSBoundParameters
         }
     }

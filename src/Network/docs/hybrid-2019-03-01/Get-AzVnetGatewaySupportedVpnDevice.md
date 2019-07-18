@@ -178,5 +178,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Get-AzVirtualNetworkGatewaySupportedVpnDevice
 
+## NOTES
+
 ## RELATED LINKS
 

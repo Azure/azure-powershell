@@ -110,14 +110,14 @@ function Get-AzPolicyAssignment {
     process {
         if ($PSBoundParameters.ContainsKey("IncludeDescendent"))
         {
-            $PSBoundParameters.Add("Filter", "atScope()") | Out-Null
-            $PSBoundParameters.Remove("IncludeDescendent") | Out-Null
+            $null = $PSBoundParameters.Add("Filter", "atScope()")
+            $null = $PSBoundParameters.Remove("IncludeDescendent")
         }
 
         if ($PSBoundParameters.ContainsKey("PolicyDefinitionId"))
         {
-            $PSBoundParameters.Add("Filter", "policyDefinitionId eq '$PolicyDefinitionId'") | Out-Null
-            $PSBoundParameters.Remove("PolicyDefinitionId") | Out-Null
+            $null = $PSBoundParameters.Add("Filter", "policyDefinitionId eq '$PolicyDefinitionId'")
+            $null = $PSBoundParameters.Remove("PolicyDefinitionId")
         }
 
         Az.Resources\Get-AzPolicyAssignment @PSBoundParameters

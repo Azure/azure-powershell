@@ -16,29 +16,29 @@ It requires the keys/create permission.
 
 ### Create (Default)
 ```
-New-AzKeyVaultKey -Name <String> [-VaultBaseUrl <String>] [-Parameter <IKeyCreateParameters>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzKeyVaultKey -Name <String> [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
+ [-Parameter <IKeyCreateParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpanded
 ```
-New-AzKeyVaultKey -Name <String> -Kty <JsonWebKeyType> [-VaultBaseUrl <String>] [-Crv <JsonWebKeyCurveName>]
- [-Enabled] [-Expire <DateTime>] [-NotBefore <DateTime>] [-Op <JsonWebKeyOperation[]>]
- [-RecoveryLevel <DeletionRecoveryLevel>] [-Size <Int32>] [-Tag <IKeyCreateParametersTags>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzKeyVaultKey -Name <String> -Kty <JsonWebKeyType> [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
+ [-Crv <JsonWebKeyCurveName>] [-Enabled] [-Expire <DateTime>] [-KeyOp <JsonWebKeyOperation[]>]
+ [-KeySize <Int32>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzKeyVaultKey -InputObject <IKeyVaultIdentity> -Kty <JsonWebKeyType> [-VaultBaseUrl <String>]
- [-Crv <JsonWebKeyCurveName>] [-Enabled] [-Expire <DateTime>] [-NotBefore <DateTime>]
- [-Op <JsonWebKeyOperation[]>] [-RecoveryLevel <DeletionRecoveryLevel>] [-Size <Int32>]
- [-Tag <IKeyCreateParametersTags>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzKeyVaultKey -InputObject <IKeyVaultIdentity> -Kty <JsonWebKeyType> [-KeyVaultDnsSuffix <String>]
+ [-VaultName <String>] [-Crv <JsonWebKeyCurveName>] [-Enabled] [-Expire <DateTime>]
+ [-KeyOp <JsonWebKeyOperation[]>] [-KeySize <Int32>] [-NotBefore <DateTime>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
-New-AzKeyVaultKey -InputObject <IKeyVaultIdentity> [-VaultBaseUrl <String>]
+New-AzKeyVaultKey -InputObject <IKeyVaultIdentity> [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
  [-Parameter <IKeyCreateParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -150,6 +150,55 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -KeyOp
+HELP MESSAGE MISSING
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Support.JsonWebKeyOperation[]
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -KeySize
+The key size in bits.
+For example: 2048, 3072, or 4096 for RSA.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -KeyVaultDnsSuffix
+MISSING DESCRIPTION 06
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Kty
 The type of key to create.
 For valid values, see JsonWebKeyType.
@@ -200,24 +249,9 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Op
-HELP MESSAGE MISSING
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Support.JsonWebKeyOperation[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases: KeyOp
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Parameter
 The key create parameters.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IKeyCreateParameters
@@ -232,45 +266,11 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -RecoveryLevel
-Reflects the deletion recovery level currently in effect for keys in the current vault.
-If it contains 'Purgeable' the key can be permanently deleted by a privileged user; otherwise, only the system can purge the key, at the end of the retention interval.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Support.DeletionRecoveryLevel
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Size
-The key size in bits.
-For example: 2048, 3072, or 4096 for RSA.
-
-```yaml
-Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases: KeySize
-
-Required: False
-Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Tag
 Application specific metadata in the form of key-value pairs.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IKeyCreateParametersTags
+Type: System.Collections.Hashtable
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -282,7 +282,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VaultBaseUrl
+### -VaultName
 MISSING DESCRIPTION 06
 
 ```yaml
@@ -336,9 +336,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IKeyCreateParameters
-
 ### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IKeyCreateParameters
 
 ## OUTPUTS
 
@@ -347,6 +347,22 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### Add-AzKeyVaultKey
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <IKeyCreateParameters>: The key create parameters.
+  - `Kty <JsonWebKeyType>`: The type of key to create. For valid values, see JsonWebKeyType.
+  - `[AttributeEnabled <Boolean?>]`: Determines whether the object is enabled.
+  - `[AttributeExpire <DateTime?>]`: Expiry date in UTC.
+  - `[AttributeNotBefore <DateTime?>]`: Not before date in UTC.
+  - `[Crv <JsonWebKeyCurveName?>]`: Elliptic curve name. For valid values, see JsonWebKeyCurveName.
+  - `[KeyOp <JsonWebKeyOperation[]>]`: 
+  - `[KeySize <Int32?>]`: The key size in bits. For example: 2048, 3072, or 4096 for RSA.
+  - `[Tag <IKeyCreateParametersTags>]`: Application specific metadata in the form of key-value pairs.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
 

@@ -22,9 +22,9 @@ Set-AzWebAppDiagnosticLogConfigSlot -Name <String> -ResourceGroupName <String> -
 ### UpdateExpanded
 ```
 Set-AzWebAppDiagnosticLogConfigSlot -Name <String> -ResourceGroupName <String> -Slot <String>
- -SubscriptionId <String> -AzureTableStorageSasUrl <String>
- [-ApplicationLogsAzureBlobStorageRetentionInDay <Int32>] [-ApplicationLogsAzureBlobStorageSasUrl <String>]
- [-AzureBlobStorageEnabled] [-AzureBlobStorageLevel <LogLevel>] [-AzureTableStorageLevel <LogLevel>]
+ -SubscriptionId <String> [-ApplicationLogsAzureBlobStorageRetentionInDay <Int32>]
+ [-ApplicationLogsAzureBlobStorageSasUrl <String>] [-AzureBlobStorageEnabled]
+ [-AzureBlobStorageLevel <LogLevel>] [-AzureTableStorageLevel <LogLevel>] [-AzureTableStorageSasUrl <String>]
  [-DetailedErrorMessageEnabled] [-FailedRequestTracingEnabled] [-FileSystemEnabled]
  [-FileSystemLevel <LogLevel>] [-FileSystemRetentionInDay <Int32>] [-FileSystemRetentionInMb <Int32>]
  [-HttpLogsAzureBlobStorageRetentionInDay <Int32>] [-HttpLogsAzureBlobStorageSasUrl <String>] [-Kind <String>]
@@ -144,7 +144,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -346,6 +346,7 @@ Dynamic: False
 
 ### -SiteLogsConfig
 Configuration of App Service site logs.
+To construct, see NOTES section for SITELOGSCONFIG properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.ISiteLogsConfig
@@ -440,6 +441,28 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.ISiteLogsConfig
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### SITELOGSCONFIG <ISiteLogsConfig>: Configuration of App Service site logs.
+  - `AzureTableStorageSasUrl <String>`: SAS URL to an Azure table with add/query/delete permissions.
+  - `[Kind <String>]`: Kind of resource.
+  - `[ApplicationLogsAzureBlobStorageRetentionInDay <Int32?>]`: Retention in days.         Remove blobs older than X days.         0 or lower means no retention.
+  - `[ApplicationLogsAzureBlobStorageSasUrl <String>]`: SAS url to a azure blob container with read/write/list/delete permissions.
+  - `[AzureBlobStorageEnabled <Boolean?>]`: True if configuration is enabled, false if it is disabled and null if configuration is not set.
+  - `[AzureBlobStorageLevel <LogLevel?>]`: Log level.
+  - `[AzureTableStorageLevel <LogLevel?>]`: Log level.
+  - `[DetailedErrorMessageEnabled <Boolean?>]`: True if configuration is enabled, false if it is disabled and null if configuration is not set.
+  - `[FailedRequestTracingEnabled <Boolean?>]`: True if configuration is enabled, false if it is disabled and null if configuration is not set.
+  - `[FileSystemEnabled <Boolean?>]`: True if configuration is enabled, false if it is disabled and null if configuration is not set.
+  - `[FileSystemLevel <LogLevel?>]`: Log level.
+  - `[FileSystemRetentionInDay <Int32?>]`: Retention in days.         Remove files older than X days.         0 or lower means no retention.
+  - `[FileSystemRetentionInMb <Int32?>]`: Maximum size in megabytes that http log files can use.         When reached old log files will be removed to make space for new ones.         Value can range between 25 and 100.
+  - `[HttpLogsAzureBlobStorageRetentionInDay <Int32?>]`: Retention in days.         Remove blobs older than X days.         0 or lower means no retention.
+  - `[HttpLogsAzureBlobStorageSasUrl <String>]`: SAS url to a azure blob container with read/write/list/delete permissions.
 
 ## RELATED LINKS
 

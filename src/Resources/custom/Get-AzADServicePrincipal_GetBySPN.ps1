@@ -54,8 +54,8 @@ function Get-AzADServicePrincipal_GetBySPN {
     )
 
     process {
-        $PSBoundParameters.Add("Filter", "servicePrincipalNames/any(c: c eq '$ServicePrincipalName')") | Out-Null
-        $PSBoundParameters.Remove("ServicePrincipalName") | Out-Null
+        $null = $PSBoundParameters.Add("Filter", "servicePrincipalNames/any(c: c eq '$ServicePrincipalName')")
+        $null = $PSBoundParameters.Remove("ServicePrincipalName")
         Az.Resources\Get-AzADServicePrincipal @PSBoundParameters
     }
 }

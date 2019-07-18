@@ -26,18 +26,6 @@ Set-AzKeyVaultAccessPolicy -OperationKind <AccessPolicyUpdateKind> -ResourceGrou
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
-```
-Set-AzKeyVaultAccessPolicy -InputObject <IKeyVaultIdentity> -AccessPolicy <IAccessPolicyEntry[]>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Set-AzKeyVaultAccessPolicy -InputObject <IKeyVaultIdentity> [-Parameter <IVaultAccessPolicyParameters>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Update access policies in a key vault in the specified subscription.
 
@@ -66,10 +54,11 @@ PS C:\> {{ Add code here }}
 ### -AccessPolicy
 An array of 0 to 16 identities that have access to the key vault.
 All identities in the array must use the same tenant ID as the key vault's tenant ID.
+To construct, see NOTES section for ACCESSPOLICY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IAccessPolicyEntry[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -96,28 +85,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentity
-Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -OperationKind
 Name of the operation
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Support.AccessPolicyUpdateKind
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -130,10 +103,11 @@ Dynamic: False
 
 ### -Parameter
 Parameters for updating the access policy in a vault
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IVaultAccessPolicyParameters
-Parameter Sets: Update, UpdateViaIdentity
+Parameter Sets: Update
 Aliases:
 
 Required: False
@@ -149,7 +123,7 @@ The name of the Resource Group to which the vault belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -166,7 +140,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -182,7 +156,7 @@ Name of the vault
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -233,13 +207,35 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IVaultAccessPolicyParameters
 
-### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IVaultAccessPolicyParameters
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### ACCESSPOLICY <IAccessPolicyEntry[]>: An array of 0 to 16 identities that have access to the key vault. All identities in the array must use the same tenant ID as the key vault's tenant ID.
+  - `ObjectId <String>`: The object ID of a user, service principal or security group in the Azure Active Directory tenant for the vault. The object ID must be unique for the list of access policies.
+  - `TenantId <String>`: The Azure Active Directory tenant ID that should be used for authenticating requests to the key vault.
+  - `[ApplicationId <String>]`:  Application ID of the client making request on behalf of a principal
+  - `[PermissionCertificate <CertificatePermissions[]>]`: Permissions to certificates
+  - `[PermissionKey <KeyPermissions[]>]`: Permissions to keys
+  - `[PermissionSecret <SecretPermissions[]>]`: Permissions to secrets
+  - `[PermissionStorage <StoragePermissions[]>]`: Permissions to storage accounts
+
+#### PARAMETER <IVaultAccessPolicyParameters>: Parameters for updating the access policy in a vault
+  - `AccessPolicy <IAccessPolicyEntry[]>`: An array of 0 to 16 identities that have access to the key vault. All identities in the array must use the same tenant ID as the key vault's tenant ID.
+    - `ObjectId <String>`: The object ID of a user, service principal or security group in the Azure Active Directory tenant for the vault. The object ID must be unique for the list of access policies.
+    - `TenantId <String>`: The Azure Active Directory tenant ID that should be used for authenticating requests to the key vault.
+    - `[ApplicationId <String>]`:  Application ID of the client making request on behalf of a principal
+    - `[PermissionCertificate <CertificatePermissions[]>]`: Permissions to certificates
+    - `[PermissionKey <KeyPermissions[]>]`: Permissions to keys
+    - `[PermissionSecret <SecretPermissions[]>]`: Permissions to secrets
+    - `[PermissionStorage <StoragePermissions[]>]`: Permissions to storage accounts
 
 ## RELATED LINKS
 

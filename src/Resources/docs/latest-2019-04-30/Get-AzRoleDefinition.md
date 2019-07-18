@@ -122,7 +122,8 @@ Dynamic: False
 ```
 
 ### -Id
-The ID of the role definition.
+The fully qualified role definition ID.
+Use the format, /subscriptions/{guid}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId} for subscription level role definitions, or /providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId} for tenant level role definitions.
 
 ```yaml
 Type: System.String
@@ -199,6 +200,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api201801Preview.IRoleDefinition
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

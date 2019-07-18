@@ -63,8 +63,8 @@ function Remove-AzADServicePrincipal_DeleteByApplicationId {
         $ServicePrincipal = Az.Resources\Get-AzADServicePrincipal -TenantId $TenantId -ApplicationId $ApplicationId
         if ($null -ne $ServicePrincipal)
         {
-            $PSBoundParameters.Add("ObjectId", $ServicePrincipal.ObjectId) | Out-Null
-            $PSBoundParameters.Remove("ApplicationId") | Out-Null
+            $null = $PSBoundParameters.Add("ObjectId", $ServicePrincipal.ObjectId)
+            $null = $PSBoundParameters.Remove("ApplicationId")
             Az.Resources\Remove-AzADServicePrincipal @PSBoundParameters
         }
     }

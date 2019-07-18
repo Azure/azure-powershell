@@ -84,8 +84,8 @@ function Get-AzResourceGroup_GetByTag {
             $Filter += "tagValue eq '$TagValue'"
         }
 
-        $PSBoundParameters.Add("Filter", $Filter) | Out-Null
-        $PSBoundParameters.Remove("Tag") | Out-Null
+        $null = $PSBoundParameters.Add("Filter", $Filter)
+        $null = $PSBoundParameters.Remove("Tag")
         Az.Resources\Get-AzResourceGroup @PSBoundParameters
     }
 }

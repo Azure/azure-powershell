@@ -92,7 +92,7 @@ Dynamic: False
 ```
 
 ### -Name
-The name of the tag.
+The name of the tag to create.
 
 ```yaml
 Type: System.String
@@ -184,6 +184,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.ITagDetails
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

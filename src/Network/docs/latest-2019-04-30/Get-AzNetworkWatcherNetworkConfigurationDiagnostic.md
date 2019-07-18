@@ -16,14 +16,14 @@ Get network configuration diagnostic.
 ```
 Get-AzNetworkWatcherNetworkConfigurationDiagnostic -NetworkWatcherName <String> -ResourceGroupName <String>
  -SubscriptionId <String[]> [-Parameter <INetworkConfigurationDiagnosticParameters>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GetExpanded
 ```
 Get-AzNetworkWatcherNetworkConfigurationDiagnostic -NetworkWatcherName <String> -ResourceGroupName <String>
  -SubscriptionId <String[]> -Profile <INetworkConfigurationDiagnosticProfile[]> -TargetResourceId <String>
- [-VerbosityLevel <VerbosityLevel>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [-VerbosityLevel <VerbosityLevel>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -31,15 +31,15 @@ Get-AzNetworkWatcherNetworkConfigurationDiagnostic -NetworkWatcherName <String> 
 ```
 Get-AzNetworkWatcherNetworkConfigurationDiagnostic -InputObject <INetworkIdentity>
  -Profile <INetworkConfigurationDiagnosticProfile[]> -TargetResourceId <String>
- [-VerbosityLevel <VerbosityLevel>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [-VerbosityLevel <VerbosityLevel>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzNetworkWatcherNetworkConfigurationDiagnostic -InputObject <INetworkIdentity>
- [-Parameter <INetworkConfigurationDiagnosticParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-Parameter <INetworkConfigurationDiagnosticParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -131,8 +131,25 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Parameter
 Parameters to get network configuration diagnostic.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkConfigurationDiagnosticParameters
@@ -149,6 +166,7 @@ Dynamic: False
 
 ### -Profile
 List of network configuration diagnostic profiles.
+To construct, see NOTES section for PROFILE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkConfigurationDiagnosticProfile[]
@@ -279,6 +297,28 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### Invoke-AzNetworkWatcherNetworkConfigurationDiagnostic
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <INetworkConfigurationDiagnosticParameters>: Parameters to get network configuration diagnostic.
+  - `Profile <INetworkConfigurationDiagnosticProfile[]>`: List of network configuration diagnostic profiles.
+    - `Destination <String>`: Traffic destination. Accepted values are: '*', IP Address/CIDR, Service Tag.
+    - `DestinationPort <String>`: Traffic destination port. Accepted values are '*', port (for example, 3389) and port range (for example, 80-100).
+    - `Direction <Direction>`: The direction of the traffic.
+    - `Protocol <String>`: Protocol to be verified on. Accepted values are '*', TCP, UDP.
+    - `Source <String>`: Traffic source. Accepted values are '*', IP Address/CIDR, Service Tag.
+  - `TargetResourceId <String>`: The ID of the target resource to perform network configuration diagnostic. Valid options are VM, NetworkInterface, VMSS/NetworkInterface and Application Gateway.
+  - `[VerbosityLevel <VerbosityLevel?>]`: Verbosity level. Accepted values are 'Normal', 'Minimum', 'Full'.
+
+#### PROFILE <INetworkConfigurationDiagnosticProfile[]>: List of network configuration diagnostic profiles.
+  - `Destination <String>`: Traffic destination. Accepted values are: '*', IP Address/CIDR, Service Tag.
+  - `DestinationPort <String>`: Traffic destination port. Accepted values are '*', port (for example, 3389) and port range (for example, 80-100).
+  - `Direction <Direction>`: The direction of the traffic.
+  - `Protocol <String>`: Protocol to be verified on. Accepted values are '*', TCP, UDP.
+  - `Source <String>`: Traffic source. Accepted values are '*', IP Address/CIDR, Service Tag.
 
 ## RELATED LINKS
 

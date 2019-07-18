@@ -15,14 +15,14 @@ This operation requires the certificates/managecontacts permission.
 
 ### Set (Default)
 ```
-Set-AzKeyVaultCertificateContact [-VaultBaseUrl <String>] [-Contact <IContacts>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzKeyVaultCertificateContact [-KeyVaultDnsSuffix <String>] [-VaultName <String>] [-Contact <IContacts>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### SetExpanded
 ```
-Set-AzKeyVaultCertificateContact [-VaultBaseUrl <String>] [-ContactList <IContact[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzKeyVaultCertificateContact [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
+ [-ContactList <IContact[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,6 +53,7 @@ PS C:\> {{ Add code here }}
 
 ### -Contact
 The contacts for the vault certificates.
+To construct, see NOTES section for CONTACT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IContacts
@@ -69,6 +70,7 @@ Dynamic: False
 
 ### -ContactList
 The contact list for the vault certificates.
+To construct, see NOTES section for CONTACTLIST properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IContact[]
@@ -99,7 +101,23 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VaultBaseUrl
+### -KeyVaultDnsSuffix
+MISSING DESCRIPTION 06
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -VaultName
 MISSING DESCRIPTION 06
 
 ```yaml
@@ -162,6 +180,22 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### Add-AzKeyVaultCertificateContact
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### CONTACT <IContacts>: The contacts for the vault certificates.
+  - `[ContactList <IContact[]>]`: The contact list for the vault certificates.
+    - `[EmailAddress <String>]`: Email address.
+    - `[Name <String>]`: Name.
+    - `[Phone <String>]`: Phone number.
+
+#### CONTACTLIST <IContact[]>: The contact list for the vault certificates.
+  - `[EmailAddress <String>]`: Email address.
+  - `[Name <String>]`: Name.
+  - `[Phone <String>]`: Phone number.
 
 ## RELATED LINKS
 

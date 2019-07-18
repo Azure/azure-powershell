@@ -72,8 +72,8 @@ function Set-AzResourceGroup_UpdateById {
 
     process {
         $Tokens = $Id.Split("/", [System.StringSplitOptions]::RemoveEmptyEntries)
-        $PSBoundParameters.Add("Name", $Tokens[3]) | Out-Null
-        $PSBoundParameters.Remove("Id") | Out-Null
+        $null = $PSBoundParameters.Add("Name", $Tokens[3])
+        $null = $PSBoundParameters.Remove("Id")
         Az.Resources\Set-AzResourceGroup @PSBoundParameters
     }
 }

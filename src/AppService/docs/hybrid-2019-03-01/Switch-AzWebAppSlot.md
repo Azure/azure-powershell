@@ -15,53 +15,53 @@ Swaps two deployment slots of an app.
 ### Swap1 (Default)
 ```
 Switch-AzWebAppSlot -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-PassThru]
- [-SlotSwapEntity <ICsmSlotEntity>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [-SlotSwapEntity <ICsmSlotEntity>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### SwapExpanded1
 ```
 Switch-AzWebAppSlot -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -PreserveVnet
- -TargetSlot <String> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ -TargetSlot <String> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### SwapExpanded
 ```
 Switch-AzWebAppSlot -Name <String> -ResourceGroupName <String> -Slot <String> -SubscriptionId <String>
- -PreserveVnet -TargetSlot <String> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -PreserveVnet -TargetSlot <String> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### Swap
 ```
 Switch-AzWebAppSlot -Name <String> -ResourceGroupName <String> -Slot <String> -SubscriptionId <String>
- [-PassThru] [-SlotSwapEntity <ICsmSlotEntity>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-PassThru] [-SlotSwapEntity <ICsmSlotEntity>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### SwapViaIdentityExpanded1
 ```
 Switch-AzWebAppSlot -InputObject <IWebSiteIdentity> -PreserveVnet -TargetSlot <String> [-PassThru]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### SwapViaIdentityExpanded
 ```
 Switch-AzWebAppSlot -InputObject <IWebSiteIdentity> -PreserveVnet -TargetSlot <String> [-PassThru]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### SwapViaIdentity1
 ```
 Switch-AzWebAppSlot -InputObject <IWebSiteIdentity> [-PassThru] [-SlotSwapEntity <ICsmSlotEntity>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### SwapViaIdentity
 ```
 Switch-AzWebAppSlot -InputObject <IWebSiteIdentity> [-PassThru] [-SlotSwapEntity <ICsmSlotEntity>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -153,6 +153,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -PassThru
 When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
 
@@ -220,6 +236,7 @@ Dynamic: False
 
 ### -SlotSwapEntity
 Deployment slot parameters.
+To construct, see NOTES section for SLOTSWAPENTITY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ICsmSlotEntity
@@ -315,6 +332,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### SLOTSWAPENTITY <ICsmSlotEntity>: Deployment slot parameters.
+  - `PreserveVnet <Boolean>`: <code>true</code> to preserve Virtual Network to the slot during swap; otherwise, <code>false</code>.
+  - `TargetSlot <String>`: Destination deployment slot during swap operation.
 
 ## RELATED LINKS
 

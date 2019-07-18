@@ -15,50 +15,50 @@ Restores a deleted web app to this web app.
 ### Restore (Default)
 ```
 Restore-AzDeletedWebApp -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-PassThru]
- [-RestoreRequest <IDeletedAppRestoreRequest>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-RestoreRequest <IDeletedAppRestoreRequest>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### RestoreSlot
 ```
 Restore-AzDeletedWebApp -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Slot <String>
- [-PassThru] [-RestoreRequest <IDeletedAppRestoreRequest>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-PassThru] [-RestoreRequest <IDeletedAppRestoreRequest>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### RestoreExpandedSlot
 ```
 Restore-AzDeletedWebApp -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Slot <String>
  [-PassThru] [-DeletedSiteId <String>] [-Kind <String>] [-RecoverConfiguration] [-SnapshotTime <String>]
- [-UseDrSecondary] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-UseDrSecondary] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### RestoreExpanded
 ```
 Restore-AzDeletedWebApp -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-PassThru]
  [-DeletedSiteId <String>] [-Kind <String>] [-RecoverConfiguration] [-SnapshotTime <String>] [-UseDrSecondary]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### RestoreViaIdentityExpandedSlot
 ```
 Restore-AzDeletedWebApp -InputObject <IWebSiteIdentity> [-PassThru] [-DeletedSiteId <String>] [-Kind <String>]
  [-RecoverConfiguration] [-SnapshotTime <String>] [-UseDrSecondary] [-DefaultProfile <PSObject>] [-AsJob]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### RestoreViaIdentityExpanded
 ```
 Restore-AzDeletedWebApp -InputObject <IWebSiteIdentity> [-PassThru] [-DeletedSiteId <String>] [-Kind <String>]
  [-RecoverConfiguration] [-SnapshotTime <String>] [-UseDrSecondary] [-DefaultProfile <PSObject>] [-AsJob]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### RestoreViaIdentity
 ```
 Restore-AzDeletedWebApp -InputObject <IWebSiteIdentity> [-PassThru]
- [-RestoreRequest <IDeletedAppRestoreRequest>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-RestoreRequest <IDeletedAppRestoreRequest>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -183,6 +183,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -PassThru
 When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
 
@@ -233,6 +249,7 @@ Dynamic: False
 
 ### -RestoreRequest
 Details about restoring a deleted app.
+To construct, see NOTES section for RESTOREREQUEST properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IDeletedAppRestoreRequest
@@ -362,6 +379,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### RESTOREREQUEST <IDeletedAppRestoreRequest>: Details about restoring a deleted app.
+  - `[Kind <String>]`: Kind of resource.
+  - `[DeletedSiteId <String>]`: ARM resource ID of the deleted app. Example:         /subscriptions/{subId}/providers/Microsoft.Web/deletedSites/{deletedSiteId}
+  - `[RecoverConfiguration <Boolean?>]`: If true, deleted site configuration, in addition to content, will be restored.
+  - `[SnapshotTime <String>]`: Point in time to restore the deleted app from, formatted as a DateTime string.         If unspecified, default value is the time that the app was deleted.
+  - `[UseDrSecondary <Boolean?>]`: If true, the snapshot is retrieved from DRSecondary endpoint.
 
 ## RELATED LINKS
 

@@ -14,15 +14,15 @@ Deletes the specified network security rule.
 
 ### Delete1 (Default)
 ```
-Remove-AzNetworkSecurityRule -Name <String> -NetworkSecurityGroupName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+Remove-AzNetworkSecurityRule -Name <String> -NsgName <String> -ResourceGroupName <String>
+ -SubscriptionId <String> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity1
 ```
 Remove-AzNetworkSecurityRule -InputObject <INetworkIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -114,13 +114,29 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -NetworkSecurityGroupName
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NsgName
 The name of the network security group.
 
 ```yaml
 Type: System.String
 Parameter Sets: Delete1
-Aliases:
+Aliases: NetworkSecurityGroupName
 
 Required: True
 Position: Named
@@ -224,6 +240,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

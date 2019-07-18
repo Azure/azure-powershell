@@ -15,13 +15,19 @@ This operation requires the storage/delete permission.
 
 ### Delete (Default)
 ```
-Remove-AzKeyVaultStorageAccount -Name <String> [-VaultBaseUrl <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzKeyVaultStorageAccount -Name <String> [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzKeyVaultStorageAccount -InputObject <IKeyVaultIdentity> [-VaultBaseUrl <String>]
+Remove-AzKeyVaultStorageAccount -InputObject <IKeyVaultIdentity> [-KeyVaultDnsSuffix <String>]
+ [-VaultName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Purge
+```
+Remove-AzKeyVaultStorageAccount -Name <String> -InRemovedState [-VaultBaseUrl <String>] [-PassThru]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -83,12 +89,44 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -InRemovedState
+Signals that the given deleted vault storage account should be purged.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: Purge
+Aliases:
+
+Required: True
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -KeyVaultDnsSuffix
+MISSING DESCRIPTION 06
+
+```yaml
+Type: System.String
+Parameter Sets: Delete, DeleteViaIdentity
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Name
 The name of the storage account.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, Purge
 Aliases: StorageAccountName
 
 Required: True
@@ -99,12 +137,44 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -PassThru
+When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: Purge
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -VaultBaseUrl
 MISSING DESCRIPTION 06
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Purge
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -VaultName
+MISSING DESCRIPTION 06
+
+```yaml
+Type: System.String
+Parameter Sets: Delete, DeleteViaIdentity
 Aliases:
 
 Required: False
@@ -159,9 +229,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IStorageBundle
 
+### System.Boolean
+
 ## ALIASES
 
 ### Remove-AzKeyVaultManagedStorageAccount
+
+## NOTES
 
 ## RELATED LINKS
 

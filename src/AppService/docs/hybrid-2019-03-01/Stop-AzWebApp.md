@@ -218,5 +218,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Stop-AzWebAppSlot
 
+## NOTES
+
 ## RELATED LINKS
 

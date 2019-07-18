@@ -24,7 +24,7 @@ New-AzWebSiteInstanceDeployment -InstanceId <String> -ResourceGroupName <String>
 New-AzWebSiteInstanceDeployment -InputObject <IWebSiteIdentity> -Location <String> [-Id <String>]
  [-Name <String>] [-Active] [-Author <String>] [-AuthorEmail <String>] [-Deployer <String>] [-Detail <String>]
  [-EndTime <DateTime>] [-Kind <String>] [-Message <String>] [-PropertiesId <String>] [-StartTime <DateTime>]
- [-Status <Int32>] [-Tag <IResourceTags>] [-Type <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [-Status <Int32>] [-Tag <Hashtable>] [-Type <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -34,8 +34,7 @@ New-AzWebSiteInstanceDeployment -InstanceId <String> -ResourceGroupName <String>
  -Location <String> [-Id <String>] [-Name <String>] [-Active] [-Author <String>] [-AuthorEmail <String>]
  [-Deployer <String>] [-Detail <String>] [-EndTime <DateTime>] [-Id1 <String>] [-Kind <String>]
  [-Message <String>] [-Name1 <String>] [-PropertiesId <String>] [-StartTime <DateTime>] [-Status <Int32>]
- [-Tag <IResourceTags>] [-Type <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-Tag <Hashtable>] [-Type <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -151,6 +150,7 @@ Dynamic: False
 
 ### -Deployment
 Represents user credentials used for publishing activity
+To construct, see NOTES section for DEPLOYMENT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.IDeployment
@@ -427,7 +427,7 @@ Dynamic: False
 Resource tags
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801Preview.IResourceTags
+Type: System.Collections.Hashtable
 Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
 Aliases:
 
@@ -502,6 +502,30 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.IDeployment
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### DEPLOYMENT <IDeployment>: Represents user credentials used for publishing activity
+  - `Location <String>`: Resource Location
+  - `[Id <String>]`: Resource Id
+  - `[Kind <String>]`: Kind of resource
+  - `[Name <String>]`: Resource Name
+  - `[Tag <IResourceTags>]`: Resource tags
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
+  - `[Type <String>]`: Resource type
+  - `[Active <Boolean?>]`: Active
+  - `[Author <String>]`: Author
+  - `[AuthorEmail <String>]`: AuthorEmail
+  - `[Deployer <String>]`: Deployer
+  - `[Detail <String>]`: Detail
+  - `[EndTime <DateTime?>]`: EndTime
+  - `[Message <String>]`: Message
+  - `[PropertiesId <String>]`: Id
+  - `[StartTime <DateTime?>]`: StartTime
+  - `[Status <Int32?>]`: Status
 
 ## RELATED LINKS
 

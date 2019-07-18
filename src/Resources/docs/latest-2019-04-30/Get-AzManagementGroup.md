@@ -20,14 +20,14 @@ Get-AzManagementGroup [-Skiptoken <String>] [-CacheControl <String>] [-DefaultPr
 
 ### Get
 ```
-Get-AzManagementGroup -GroupId <String> [-Filter <String>] [-Recurse] [-CacheControl <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzManagementGroup -GroupId <String> [-Expand <String>] [-Filter <String>] [-Recurse]
+ [-CacheControl <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzManagementGroup -InputObject <IResourcesIdentity> [-Filter <String>] [-Recurse] [-CacheControl <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzManagementGroup -InputObject <IResourcesIdentity> [-Expand <String>] [-Filter <String>] [-Recurse]
+ [-CacheControl <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -78,6 +78,22 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Expand
+The $expand=children query string parameter allows clients to request inclusion of children in the response payload.
+
+```yaml
+Type: System.String
+Parameter Sets: Get, GetViaIdentity
+Aliases:
 
 Required: False
 Position: Named
@@ -189,6 +205,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180301Preview.IManagementGroupInfo
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

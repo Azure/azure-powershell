@@ -15,31 +15,31 @@ This operation requires the storage/set/update permission.
 
 ### Update (Default)
 ```
-Update-AzKeyVaultStorageAccount -Name <String> [-VaultBaseUrl <String>]
+Update-AzKeyVaultStorageAccount -Name <String> [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
  [-Parameter <IStorageAccountUpdateParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### UpdateExpanded
 ```
-Update-AzKeyVaultStorageAccount -Name <String> [-VaultBaseUrl <String>] [-ActiveKeyName <String>]
- [-AutoRegenerateKey] [-Enabled] [-RegenerationPeriod <String>] [-Tag <IStorageAccountUpdateParametersTags>]
+Update-AzKeyVaultStorageAccount -Name <String> [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
+ [-ActiveKeyName <String>] [-AutoRegenerateKey] [-Enabled] [-RegenerationPeriod <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzKeyVaultStorageAccount -InputObject <IKeyVaultIdentity> [-VaultBaseUrl <String>]
- [-ActiveKeyName <String>] [-AutoRegenerateKey] [-Enabled] [-RegenerationPeriod <String>]
- [-Tag <IStorageAccountUpdateParametersTags>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+Update-AzKeyVaultStorageAccount -InputObject <IKeyVaultIdentity> [-KeyVaultDnsSuffix <String>]
+ [-VaultName <String>] [-ActiveKeyName <String>] [-AutoRegenerateKey] [-Enabled]
+ [-RegenerationPeriod <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
 ```
-Update-AzKeyVaultStorageAccount -InputObject <IKeyVaultIdentity> [-VaultBaseUrl <String>]
- [-Parameter <IStorageAccountUpdateParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzKeyVaultStorageAccount -InputObject <IKeyVaultIdentity> [-KeyVaultDnsSuffix <String>]
+ [-VaultName <String>] [-Parameter <IStorageAccountUpdateParameters>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -148,6 +148,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -KeyVaultDnsSuffix
+MISSING DESCRIPTION 06
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Name
 The name of the storage account.
 
@@ -166,6 +182,7 @@ Dynamic: False
 
 ### -Parameter
 The storage account update parameters.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IStorageAccountUpdateParameters
@@ -200,7 +217,7 @@ Dynamic: False
 Application specific metadata in the form of key-value pairs.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IStorageAccountUpdateParametersTags
+Type: System.Collections.Hashtable
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -212,7 +229,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VaultBaseUrl
+### -VaultName
 MISSING DESCRIPTION 06
 
 ```yaml
@@ -266,9 +283,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IStorageAccountUpdateParameters
-
 ### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IStorageAccountUpdateParameters
 
 ## OUTPUTS
 
@@ -277,6 +294,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### Update-AzKeyVaultManagedStorageAccount
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <IStorageAccountUpdateParameters>: The storage account update parameters.
+  - `[ActiveKeyName <String>]`: The current active storage account key name.
+  - `[AttributeEnabled <Boolean?>]`: the enabled state of the object.
+  - `[AutoRegenerateKey <Boolean?>]`: whether keyvault should manage the storage account for the user.
+  - `[RegenerationPeriod <String>]`: The key regeneration time duration specified in ISO-8601 format.
+  - `[Tag <IStorageAccountUpdateParametersTags>]`: Application specific metadata in the form of key-value pairs.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
 

@@ -35,30 +35,6 @@ This operation requires the secrets/backup permission.
 Requests that a backup of the specified storage account be downloaded to the client.
 This operation requires the storage/backup permission.
 
-### [Clear-AzKeyVaultDeleted](Clear-AzKeyVaultDeleted.md)
-Permanently deletes the specified vault.
-aka Purges the deleted Azure key vault.
-
-### [Clear-AzKeyVaultDeletedCertificate](Clear-AzKeyVaultDeletedCertificate.md)
-The PurgeDeletedCertificate operation performs an irreversible deletion of the specified certificate, without possibility for recovery.
-The operation is not available if the recovery level does not specify 'Purgeable'.
-This operation requires the certificate/purge permission.
-
-### [Clear-AzKeyVaultDeletedKey](Clear-AzKeyVaultDeletedKey.md)
-The Purge Deleted Key operation is applicable for soft-delete enabled vaults.
-While the operation can be invoked on any vault, it will return an error if invoked on a non soft-delete enabled vault.
-This operation requires the keys/purge permission.
-
-### [Clear-AzKeyVaultDeletedSecret](Clear-AzKeyVaultDeletedSecret.md)
-The purge deleted secret operation removes the secret permanently, without the possibility of recovery.
-This operation can only be enabled on a soft-delete enabled vault.
-This operation requires the secrets/purge permission.
-
-### [Clear-AzKeyVaultDeletedStorageAccount](Clear-AzKeyVaultDeletedStorageAccount.md)
-The purge deleted storage account operation removes the secret permanently, without the possibility of recovery.
-This operation can only be performed on a soft-delete enabled vault.
-This operation requires the storage/purge permission.
-
 ### [Get-AzKeyVault](Get-AzKeyVault.md)
 Gets the specified Azure key vault.
 
@@ -85,34 +61,6 @@ This operation requires the certificates/get permission.
 ### [Get-AzKeyVaultCertificateVersion](Get-AzKeyVaultCertificateVersion.md)
 The GetCertificateVersions operation returns the versions of a certificate in the specified key vault.
 This operation requires the certificates/list permission.
-
-### [Get-AzKeyVaultDeleted](Get-AzKeyVaultDeleted.md)
-Gets the deleted Azure key vault.
-
-### [Get-AzKeyVaultDeletedCertificate](Get-AzKeyVaultDeletedCertificate.md)
-The GetDeletedCertificates operation retrieves the certificates in the current vault which are in a deleted state and ready for recovery or purging.
-This operation includes deletion-specific information.
-This operation requires the certificates/get/list permission.
-This operation can only be enabled on soft-delete enabled vaults.
-
-### [Get-AzKeyVaultDeletedKey](Get-AzKeyVaultDeletedKey.md)
-Retrieves a list of the keys in the Key Vault as JSON Web Key structures that contain the public part of a deleted key.
-This operation includes deletion-specific information.
-The Get Deleted Keys operation is applicable for vaults enabled for soft-delete.
-While the operation can be invoked on any vault, it will return an error if invoked on a non soft-delete enabled vault.
-This operation requires the keys/list permission.
-
-### [Get-AzKeyVaultDeletedSecret](Get-AzKeyVaultDeletedSecret.md)
-The Get Deleted Secrets operation returns the secrets that have been deleted for a vault enabled for soft-delete.
-This operation requires the secrets/list permission.
-
-### [Get-AzKeyVaultDeletedStorageAccount](Get-AzKeyVaultDeletedStorageAccount.md)
-The Get Deleted Storage Accounts operation returns the storage accounts that have been deleted for a vault enabled for soft-delete.
-This operation requires the storage/list permission.
-
-### [Get-AzKeyVaultDeletedStorageDeletedSasDefinition](Get-AzKeyVaultDeletedStorageDeletedSasDefinition.md)
-The Get Deleted Sas Definitions operation returns the SAS definitions that have been deleted for a vault enabled for soft-delete.
-This operation requires the storage/listsas permission.
 
 ### [Get-AzKeyVaultKey](Get-AzKeyVaultKey.md)
 The get key operation is applicable to all key types.

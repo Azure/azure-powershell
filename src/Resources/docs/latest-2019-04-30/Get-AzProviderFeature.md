@@ -108,7 +108,7 @@ Dynamic: False
 ```
 
 ### -ResourceProviderNamespace
-The namespace of the resource provider for getting features.
+The resource provider namespace for the feature.
 
 ```yaml
 Type: System.String
@@ -151,6 +151,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20151201.IFeatureResult
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

@@ -16,30 +16,29 @@ Creates or updates a certificate and associates with key vault secret.
 ```
 New-AzAppServiceCertificateOrderCertificate -CertificateOrderName <String> -Name <String>
  -ResourceGroupName <String> -SubscriptionId <String> [-KeyVaultCertificate <IAppServiceCertificateResource>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpanded
 ```
 New-AzAppServiceCertificateOrderCertificate -CertificateOrderName <String> -Name <String>
  -ResourceGroupName <String> -SubscriptionId <String> -Location <String> [-KeyVaultId <String>]
- [-KeyVaultSecretName <String>] [-Kind <String>] [-ProvisioningState <KeyVaultSecretStatus>]
- [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-KeyVaultSecretName <String>] [-Kind <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzAppServiceCertificateOrderCertificate -InputObject <IWebSiteIdentity> -Location <String>
- [-KeyVaultId <String>] [-KeyVaultSecretName <String>] [-Kind <String>]
- [-ProvisioningState <KeyVaultSecretStatus>] [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-KeyVaultId <String>] [-KeyVaultSecretName <String>] [-Kind <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
 New-AzAppServiceCertificateOrderCertificate -InputObject <IWebSiteIdentity>
- [-KeyVaultCertificate <IAppServiceCertificateResource>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-KeyVaultCertificate <IAppServiceCertificateResource>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -133,6 +132,7 @@ Dynamic: False
 
 ### -KeyVaultCertificate
 Key Vault container ARM resource for a certificate that is purchased through Azure.
+To construct, see NOTES section for KEYVAULTCERTIFICATE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IAppServiceCertificateResource
@@ -227,17 +227,17 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ProvisioningState
-Status of the Key Vault secret.
+### -NoWait
+Run the command asynchronously
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.KeyVaultSecretStatus
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -281,7 +281,7 @@ Dynamic: False
 Resource tags.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801Preview.IResourceTags
+Type: System.Collections.Hashtable
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -340,6 +340,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IAppServiceCertificateResource
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### KEYVAULTCERTIFICATE <IAppServiceCertificateResource>: Key Vault container ARM resource for a certificate that is purchased through Azure.
+  - `Location <String>`: Resource Location.
+  - `[Kind <String>]`: Kind of resource.
+  - `[Tag <IResourceTags>]`: Resource tags.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
+  - `[KeyVaultId <String>]`: Key Vault resource Id.
+  - `[KeyVaultSecretName <String>]`: Key Vault secret name.
 
 ## RELATED LINKS
 

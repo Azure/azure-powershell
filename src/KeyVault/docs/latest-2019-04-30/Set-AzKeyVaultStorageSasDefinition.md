@@ -16,30 +16,15 @@ This operation requires the storage/setsas permission.
 ### Set (Default)
 ```
 Set-AzKeyVaultStorageSasDefinition -SasDefinitionName <String> -StorageAccountName <String>
- [-VaultBaseUrl <String>] [-Parameter <ISasDefinitionCreateParameters>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-KeyVaultDnsSuffix <String>] [-VaultName <String>] [-Parameter <ISasDefinitionCreateParameters>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### SetExpanded
 ```
 Set-AzKeyVaultStorageSasDefinition -SasDefinitionName <String> -StorageAccountName <String>
- [-VaultBaseUrl <String>] [-Parameter <ISasDefinitionCreateParameters>] [-Enabled]
- [-Tag <ISasDefinitionCreateParametersTags>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### SetViaIdentityExpanded
-```
-Set-AzKeyVaultStorageSasDefinition -InputObject <IKeyVaultIdentity> [-VaultBaseUrl <String>]
- [-Parameter <ISasDefinitionCreateParameters>] [-Enabled] [-Tag <ISasDefinitionCreateParametersTags>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### SetViaIdentity
-```
-Set-AzKeyVaultStorageSasDefinition -InputObject <IKeyVaultIdentity> [-VaultBaseUrl <String>]
- [-Parameter <ISasDefinitionCreateParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-KeyVaultDnsSuffix <String>] [-VaultName <String>] [-Parameter <ISasDefinitionCreateParameters>] [-Enabled]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -89,7 +74,7 @@ the enabled state of the object.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: SetExpanded, SetViaIdentityExpanded
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: False
@@ -100,24 +85,25 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
+### -KeyVaultDnsSuffix
+MISSING DESCRIPTION 06
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentity
-Parameter Sets: SetViaIdentityExpanded, SetViaIdentity
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
 
 ### -Parameter
 The SAS definition create parameters.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.ISasDefinitionCreateParameters
@@ -137,7 +123,7 @@ The name of the SAS definition.
 
 ```yaml
 Type: System.String
-Parameter Sets: Set, SetExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -153,7 +139,7 @@ The name of the storage account.
 
 ```yaml
 Type: System.String
-Parameter Sets: Set, SetExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -168,8 +154,8 @@ Dynamic: False
 Application specific metadata in the form of key-value pairs.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.ISasDefinitionCreateParametersTags
-Parameter Sets: SetExpanded, SetViaIdentityExpanded
+Type: System.Collections.Hashtable
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: False
@@ -180,7 +166,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VaultBaseUrl
+### -VaultName
 MISSING DESCRIPTION 06
 
 ```yaml
@@ -236,8 +222,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.ISasDefinitionCreateParameters
 
-### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.ISasDefinitionBundle
@@ -245,6 +229,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### Set-AzKeyVaultManagedStorageSasDefinition
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <ISasDefinitionCreateParameters>: The SAS definition create parameters.
+  - `Parameter <ISasDefinitionCreateParameters1>`: Sas definition creation metadata in the form of key-value pairs.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
+  - `[AttributeEnabled <Boolean?>]`: the enabled state of the object.
+  - `[Tag <ISasDefinitionCreateParametersTags>]`: Application specific metadata in the form of key-value pairs.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
 

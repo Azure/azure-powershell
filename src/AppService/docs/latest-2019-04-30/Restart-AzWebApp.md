@@ -253,5 +253,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Restart-AzWebAppSlot
 
+## NOTES
+
 ## RELATED LINKS
 

@@ -21,71 +21,71 @@ Test-AzWebSiteGlobalDomainRegistrationDomainPurchaseInformation -SubscriptionId 
 
 ### ValidateExpanded
 ```
-Test-AzWebSiteGlobalDomainRegistrationDomainPurchaseInformation -SubscriptionId <String>
- -ContactAdminAddressMailingAddress1 <String> -ContactAdminAddressMailingCity <String>
- -ContactAdminAddressMailingCountry <String> -ContactAdminAddressMailingPostalCode <String>
- -ContactAdminAddressMailingState <String> -ContactBillingAddressMailingAddress1 <String>
- -ContactBillingAddressMailingCity <String> -ContactBillingAddressMailingCountry <String>
- -ContactBillingAddressMailingPostalCode <String> -ContactBillingAddressMailingState <String>
- -ContactRegistrantAddressMailingAddress1 <String> -ContactRegistrantAddressMailingCity <String>
- -ContactRegistrantAddressMailingCountry <String> -ContactRegistrantAddressMailingPostalCode <String>
- -ContactRegistrantAddressMailingState <String> -ContactTechAddressMailingAddress1 <String>
- -ContactTechAddressMailingCity <String> -ContactTechAddressMailingCountry <String>
- -ContactTechAddressMailingPostalCode <String> -ContactTechAddressMailingState <String> -Location <String>
+Test-AzWebSiteGlobalDomainRegistrationDomainPurchaseInformation -SubscriptionId <String> -Location <String>
  [-AutoRenew] [-ConsentAgreedAt <DateTime>] [-ConsentAgreedBy <String>] [-ConsentAgreementKey <String[]>]
- [-ContactAdminAddressMailingAddress2 <String>] [-ContactAdminEmail <String>] [-ContactAdminFax <String>]
- [-ContactAdminJobTitle <String>] [-ContactAdminNameFirst <String>] [-ContactAdminNameLast <String>]
- [-ContactAdminNameMiddle <String>] [-ContactAdminOrganization <String>] [-ContactAdminPhone <String>]
- [-ContactBillingAddressMailingAddress2 <String>] [-ContactBillingEmail <String>]
- [-ContactBillingFax <String>] [-ContactBillingJobTitle <String>] [-ContactBillingNameFirst <String>]
- [-ContactBillingNameLast <String>] [-ContactBillingNameMiddle <String>]
+ [-ContactAdminAddressMailingAddress1 <String>] [-ContactAdminAddressMailingAddress2 <String>]
+ [-ContactAdminAddressMailingCity <String>] [-ContactAdminAddressMailingCountry <String>]
+ [-ContactAdminAddressMailingPostalCode <String>] [-ContactAdminAddressMailingState <String>]
+ [-ContactAdminEmail <String>] [-ContactAdminFax <String>] [-ContactAdminJobTitle <String>]
+ [-ContactAdminNameFirst <String>] [-ContactAdminNameLast <String>] [-ContactAdminNameMiddle <String>]
+ [-ContactAdminOrganization <String>] [-ContactAdminPhone <String>]
+ [-ContactBillingAddressMailingAddress1 <String>] [-ContactBillingAddressMailingAddress2 <String>]
+ [-ContactBillingAddressMailingCity <String>] [-ContactBillingAddressMailingCountry <String>]
+ [-ContactBillingAddressMailingPostalCode <String>] [-ContactBillingAddressMailingState <String>]
+ [-ContactBillingEmail <String>] [-ContactBillingFax <String>] [-ContactBillingJobTitle <String>]
+ [-ContactBillingNameFirst <String>] [-ContactBillingNameLast <String>] [-ContactBillingNameMiddle <String>]
  [-ContactBillingOrganization <String>] [-ContactBillingPhone <String>]
- [-ContactRegistrantAddressMailingAddress2 <String>] [-ContactRegistrantEmail <String>]
- [-ContactRegistrantFax <String>] [-ContactRegistrantJobTitle <String>] [-ContactRegistrantNameFirst <String>]
- [-ContactRegistrantNameLast <String>] [-ContactRegistrantNameMiddle <String>]
- [-ContactRegistrantOrganization <String>] [-ContactRegistrantPhone <String>]
- [-ContactTechAddressMailingAddress2 <String>] [-ContactTechEmail <String>] [-ContactTechFax <String>]
+ [-ContactRegistrantAddressMailingAddress1 <String>] [-ContactRegistrantAddressMailingAddress2 <String>]
+ [-ContactRegistrantAddressMailingCity <String>] [-ContactRegistrantAddressMailingCountry <String>]
+ [-ContactRegistrantAddressMailingPostalCode <String>] [-ContactRegistrantAddressMailingState <String>]
+ [-ContactRegistrantEmail <String>] [-ContactRegistrantFax <String>] [-ContactRegistrantJobTitle <String>]
+ [-ContactRegistrantNameFirst <String>] [-ContactRegistrantNameLast <String>]
+ [-ContactRegistrantNameMiddle <String>] [-ContactRegistrantOrganization <String>]
+ [-ContactRegistrantPhone <String>] [-ContactTechAddressMailingAddress1 <String>]
+ [-ContactTechAddressMailingAddress2 <String>] [-ContactTechAddressMailingCity <String>]
+ [-ContactTechAddressMailingCountry <String>] [-ContactTechAddressMailingPostalCode <String>]
+ [-ContactTechAddressMailingState <String>] [-ContactTechEmail <String>] [-ContactTechFax <String>]
  [-ContactTechJobTitle <String>] [-ContactTechNameFirst <String>] [-ContactTechNameLast <String>]
  [-ContactTechNameMiddle <String>] [-ContactTechOrganization <String>] [-ContactTechPhone <String>]
  [-CreatedTime <DateTime>] [-DomainNotRenewableReason <String[]>] [-ExpirationTime <DateTime>] [-Id <String>]
  [-Kind <String>] [-LastRenewedTime <DateTime>] [-ManagedHostName <IHostName[]>] [-Name <String>]
  [-NameServer <String[]>] [-Privacy] [-PropertiesName <String>] [-ProvisioningState <ProvisioningState>]
- [-ReadyForDnsRecordManagement] [-RegistrationStatus <DomainStatus>] [-Tag <IResourceTags>] [-Type <String>]
+ [-ReadyForDnsRecordManagement] [-RegistrationStatus <DomainStatus>] [-Tag <Hashtable>] [-Type <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ValidateViaIdentityExpanded
 ```
 Test-AzWebSiteGlobalDomainRegistrationDomainPurchaseInformation -InputObject <IWebSiteIdentity>
- -ContactAdminAddressMailingAddress1 <String> -ContactAdminAddressMailingCity <String>
- -ContactAdminAddressMailingCountry <String> -ContactAdminAddressMailingPostalCode <String>
- -ContactAdminAddressMailingState <String> -ContactBillingAddressMailingAddress1 <String>
- -ContactBillingAddressMailingCity <String> -ContactBillingAddressMailingCountry <String>
- -ContactBillingAddressMailingPostalCode <String> -ContactBillingAddressMailingState <String>
- -ContactRegistrantAddressMailingAddress1 <String> -ContactRegistrantAddressMailingCity <String>
- -ContactRegistrantAddressMailingCountry <String> -ContactRegistrantAddressMailingPostalCode <String>
- -ContactRegistrantAddressMailingState <String> -ContactTechAddressMailingAddress1 <String>
- -ContactTechAddressMailingCity <String> -ContactTechAddressMailingCountry <String>
- -ContactTechAddressMailingPostalCode <String> -ContactTechAddressMailingState <String> -Location <String>
- [-AutoRenew] [-ConsentAgreedAt <DateTime>] [-ConsentAgreedBy <String>] [-ConsentAgreementKey <String[]>]
- [-ContactAdminAddressMailingAddress2 <String>] [-ContactAdminEmail <String>] [-ContactAdminFax <String>]
+ -Location <String> [-AutoRenew] [-ConsentAgreedAt <DateTime>] [-ConsentAgreedBy <String>]
+ [-ConsentAgreementKey <String[]>] [-ContactAdminAddressMailingAddress1 <String>]
+ [-ContactAdminAddressMailingAddress2 <String>] [-ContactAdminAddressMailingCity <String>]
+ [-ContactAdminAddressMailingCountry <String>] [-ContactAdminAddressMailingPostalCode <String>]
+ [-ContactAdminAddressMailingState <String>] [-ContactAdminEmail <String>] [-ContactAdminFax <String>]
  [-ContactAdminJobTitle <String>] [-ContactAdminNameFirst <String>] [-ContactAdminNameLast <String>]
  [-ContactAdminNameMiddle <String>] [-ContactAdminOrganization <String>] [-ContactAdminPhone <String>]
- [-ContactBillingAddressMailingAddress2 <String>] [-ContactBillingEmail <String>]
- [-ContactBillingFax <String>] [-ContactBillingJobTitle <String>] [-ContactBillingNameFirst <String>]
- [-ContactBillingNameLast <String>] [-ContactBillingNameMiddle <String>]
+ [-ContactBillingAddressMailingAddress1 <String>] [-ContactBillingAddressMailingAddress2 <String>]
+ [-ContactBillingAddressMailingCity <String>] [-ContactBillingAddressMailingCountry <String>]
+ [-ContactBillingAddressMailingPostalCode <String>] [-ContactBillingAddressMailingState <String>]
+ [-ContactBillingEmail <String>] [-ContactBillingFax <String>] [-ContactBillingJobTitle <String>]
+ [-ContactBillingNameFirst <String>] [-ContactBillingNameLast <String>] [-ContactBillingNameMiddle <String>]
  [-ContactBillingOrganization <String>] [-ContactBillingPhone <String>]
- [-ContactRegistrantAddressMailingAddress2 <String>] [-ContactRegistrantEmail <String>]
- [-ContactRegistrantFax <String>] [-ContactRegistrantJobTitle <String>] [-ContactRegistrantNameFirst <String>]
- [-ContactRegistrantNameLast <String>] [-ContactRegistrantNameMiddle <String>]
- [-ContactRegistrantOrganization <String>] [-ContactRegistrantPhone <String>]
- [-ContactTechAddressMailingAddress2 <String>] [-ContactTechEmail <String>] [-ContactTechFax <String>]
+ [-ContactRegistrantAddressMailingAddress1 <String>] [-ContactRegistrantAddressMailingAddress2 <String>]
+ [-ContactRegistrantAddressMailingCity <String>] [-ContactRegistrantAddressMailingCountry <String>]
+ [-ContactRegistrantAddressMailingPostalCode <String>] [-ContactRegistrantAddressMailingState <String>]
+ [-ContactRegistrantEmail <String>] [-ContactRegistrantFax <String>] [-ContactRegistrantJobTitle <String>]
+ [-ContactRegistrantNameFirst <String>] [-ContactRegistrantNameLast <String>]
+ [-ContactRegistrantNameMiddle <String>] [-ContactRegistrantOrganization <String>]
+ [-ContactRegistrantPhone <String>] [-ContactTechAddressMailingAddress1 <String>]
+ [-ContactTechAddressMailingAddress2 <String>] [-ContactTechAddressMailingCity <String>]
+ [-ContactTechAddressMailingCountry <String>] [-ContactTechAddressMailingPostalCode <String>]
+ [-ContactTechAddressMailingState <String>] [-ContactTechEmail <String>] [-ContactTechFax <String>]
  [-ContactTechJobTitle <String>] [-ContactTechNameFirst <String>] [-ContactTechNameLast <String>]
  [-ContactTechNameMiddle <String>] [-ContactTechOrganization <String>] [-ContactTechPhone <String>]
  [-CreatedTime <DateTime>] [-DomainNotRenewableReason <String[]>] [-ExpirationTime <DateTime>] [-Id <String>]
  [-Kind <String>] [-LastRenewedTime <DateTime>] [-ManagedHostName <IHostName[]>] [-Name <String>]
  [-NameServer <String[]>] [-Privacy] [-PropertiesName <String>] [-ProvisioningState <ProvisioningState>]
- [-ReadyForDnsRecordManagement] [-RegistrationStatus <DomainStatus>] [-Tag <IResourceTags>] [-Type <String>]
+ [-ReadyForDnsRecordManagement] [-RegistrationStatus <DomainStatus>] [-Tag <Hashtable>] [-Type <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -194,7 +194,7 @@ Type: System.String
 Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -227,7 +227,7 @@ Type: System.String
 Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -243,7 +243,7 @@ Type: System.String
 Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -259,7 +259,7 @@ Type: System.String
 Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -275,7 +275,7 @@ Type: System.String
 Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -419,7 +419,7 @@ Type: System.String
 Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -452,7 +452,7 @@ Type: System.String
 Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -468,7 +468,7 @@ Type: System.String
 Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -484,7 +484,7 @@ Type: System.String
 Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -500,7 +500,7 @@ Type: System.String
 Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -644,7 +644,7 @@ Type: System.String
 Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -677,7 +677,7 @@ Type: System.String
 Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -693,7 +693,7 @@ Type: System.String
 Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -709,7 +709,7 @@ Type: System.String
 Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -725,7 +725,7 @@ Type: System.String
 Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -869,7 +869,7 @@ Type: System.String
 Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -902,7 +902,7 @@ Type: System.String
 Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -918,7 +918,7 @@ Type: System.String
 Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -934,7 +934,7 @@ Type: System.String
 Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -950,7 +950,7 @@ Type: System.String
 Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -1136,6 +1136,7 @@ Dynamic: False
 
 ### -DomainRegistrationInput
 Domain registration input for validation Api
+To construct, see NOTES section for DOMAINREGISTRATIONINPUT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.IDomainRegistrationInput
@@ -1248,6 +1249,7 @@ Dynamic: False
 
 ### -ManagedHostName
 All hostnames derived from the domain and assigned to Azure resources
+To construct, see NOTES section for MANAGEDHOSTNAME properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150401.IHostName[]
@@ -1397,7 +1399,7 @@ Dynamic: False
 Resource tags
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801Preview.IResourceTags
+Type: System.Collections.Hashtable
 Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
 Aliases:
 
@@ -1472,6 +1474,105 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801Preview.IObject
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### DOMAINREGISTRATIONINPUT <IDomainRegistrationInput>: Domain registration input for validation Api
+  - `Location <String>`: Resource Location
+  - `ContactAdminAddressMailingAddress1 <String>`: First line of an Address.
+  - `ContactAdminAddressMailingCity <String>`: The city for the address.
+  - `ContactAdminAddressMailingCountry <String>`: The country for the address.
+  - `ContactAdminAddressMailingPostalCode <String>`: The postal code for the address.
+  - `ContactAdminAddressMailingState <String>`: The state or province for the address.
+  - `ContactBillingAddressMailingAddress1 <String>`: First line of an Address.
+  - `ContactBillingAddressMailingCity <String>`: The city for the address.
+  - `ContactBillingAddressMailingCountry <String>`: The country for the address.
+  - `ContactBillingAddressMailingPostalCode <String>`: The postal code for the address.
+  - `ContactBillingAddressMailingState <String>`: The state or province for the address.
+  - `ContactRegistrantAddressMailingAddress1 <String>`: First line of an Address.
+  - `ContactRegistrantAddressMailingCity <String>`: The city for the address.
+  - `ContactRegistrantAddressMailingCountry <String>`: The country for the address.
+  - `ContactRegistrantAddressMailingPostalCode <String>`: The postal code for the address.
+  - `ContactRegistrantAddressMailingState <String>`: The state or province for the address.
+  - `ContactTechAddressMailingAddress1 <String>`: First line of an Address.
+  - `ContactTechAddressMailingCity <String>`: The city for the address.
+  - `ContactTechAddressMailingCountry <String>`: The country for the address.
+  - `ContactTechAddressMailingPostalCode <String>`: The postal code for the address.
+  - `ContactTechAddressMailingState <String>`: The state or province for the address.
+  - `[Id <String>]`: Resource Id
+  - `[Kind <String>]`: Kind of resource
+  - `[Name <String>]`: Resource Name
+  - `[Tag <IResourceTags>]`: Resource tags
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
+  - `[Type <String>]`: Resource type
+  - `[AutoRenew <Boolean?>]`: If true then domain will renewed automatically
+  - `[ConsentAgreedAt <DateTime?>]`: Timestamp when the agreements were accepted.
+  - `[ConsentAgreedBy <String>]`: Client IP address.
+  - `[ConsentAgreementKey <String[]>]`: List of applicable legal agreement keys. This list can be retrieved using ListLegalAgreements API under <code>TopLevelDomain</code> resource.
+  - `[ContactAdminAddressMailingAddress2 <String>]`: The second line of the Address. Optional.
+  - `[ContactAdminEmail <String>]`: Email address
+  - `[ContactAdminFax <String>]`: Fax number
+  - `[ContactAdminJobTitle <String>]`: Job title
+  - `[ContactAdminNameFirst <String>]`: First name
+  - `[ContactAdminNameLast <String>]`: Last name
+  - `[ContactAdminNameMiddle <String>]`: Middle name
+  - `[ContactAdminOrganization <String>]`: Organization
+  - `[ContactAdminPhone <String>]`: Phone number
+  - `[ContactBillingAddressMailingAddress2 <String>]`: The second line of the Address. Optional.
+  - `[ContactBillingEmail <String>]`: Email address
+  - `[ContactBillingFax <String>]`: Fax number
+  - `[ContactBillingJobTitle <String>]`: Job title
+  - `[ContactBillingNameFirst <String>]`: First name
+  - `[ContactBillingNameLast <String>]`: Last name
+  - `[ContactBillingNameMiddle <String>]`: Middle name
+  - `[ContactBillingOrganization <String>]`: Organization
+  - `[ContactBillingPhone <String>]`: Phone number
+  - `[ContactRegistrantAddressMailingAddress2 <String>]`: The second line of the Address. Optional.
+  - `[ContactRegistrantEmail <String>]`: Email address
+  - `[ContactRegistrantFax <String>]`: Fax number
+  - `[ContactRegistrantJobTitle <String>]`: Job title
+  - `[ContactRegistrantNameFirst <String>]`: First name
+  - `[ContactRegistrantNameLast <String>]`: Last name
+  - `[ContactRegistrantNameMiddle <String>]`: Middle name
+  - `[ContactRegistrantOrganization <String>]`: Organization
+  - `[ContactRegistrantPhone <String>]`: Phone number
+  - `[ContactTechAddressMailingAddress2 <String>]`: The second line of the Address. Optional.
+  - `[ContactTechEmail <String>]`: Email address
+  - `[ContactTechFax <String>]`: Fax number
+  - `[ContactTechJobTitle <String>]`: Job title
+  - `[ContactTechNameFirst <String>]`: First name
+  - `[ContactTechNameLast <String>]`: Last name
+  - `[ContactTechNameMiddle <String>]`: Middle name
+  - `[ContactTechOrganization <String>]`: Organization
+  - `[ContactTechPhone <String>]`: Phone number
+  - `[CreatedTime <DateTime?>]`: Domain creation timestamp
+  - `[DomainNotRenewableReason <String[]>]`: Reasons why domain is not renewable
+  - `[ExpirationTime <DateTime?>]`: Domain expiration timestamp
+  - `[LastRenewedTime <DateTime?>]`: Timestamp when the domain was renewed last time
+  - `[ManagedHostName <IHostName[]>]`: All hostnames derived from the domain and assigned to Azure resources
+    - `[AzureResourceName <String>]`: Name of the Azure resource the hostname is assigned to. If it is assigned to a Traffic Manager then it will be the Traffic Manager name otherwise it will be the app name.
+    - `[AzureResourceType <AzureResourceType?>]`: Type of the Azure resource the hostname is assigned to.
+    - `[CustomHostNameDnsRecordType <CustomHostNameDnsRecordType?>]`: Type of the DNS record.
+    - `[Name <String>]`: Name of the hostname.
+    - `[SiteName <String[]>]`: List of apps the hostname is assigned to. This list will have more than one app only if the hostname is pointing to a Traffic Manager.
+    - `[Type <HostNameType?>]`: Type of the hostname.
+  - `[NameServer <String[]>]`: Name servers
+  - `[Privacy <Boolean?>]`: If true then domain privacy is enabled for this domain
+  - `[PropertiesName <String>]`: Name of the domain
+  - `[ProvisioningState <ProvisioningState?>]`: Domain provisioning state
+  - `[ReadyForDnsRecordManagement <Boolean?>]`: If true then Azure can assign this domain to Web Apps. This value will be true if domain registration status is active and it is hosted on name servers Azure has programmatic access to
+  - `[RegistrationStatus <DomainStatus?>]`: Domain registration status
+
+#### MANAGEDHOSTNAME <IHostName[]>: All hostnames derived from the domain and assigned to Azure resources
+  - `[AzureResourceName <String>]`: Name of the Azure resource the hostname is assigned to. If it is assigned to a Traffic Manager then it will be the Traffic Manager name otherwise it will be the app name.
+  - `[AzureResourceType <AzureResourceType?>]`: Type of the Azure resource the hostname is assigned to.
+  - `[CustomHostNameDnsRecordType <CustomHostNameDnsRecordType?>]`: Type of the DNS record.
+  - `[Name <String>]`: Name of the hostname.
+  - `[SiteName <String[]>]`: List of apps the hostname is assigned to. This list will have more than one app only if the hostname is pointing to a Traffic Manager.
+  - `[Type <HostNameType?>]`: Type of the hostname.
 
 ## RELATED LINKS
 

@@ -15,32 +15,17 @@ This operation requires the certificates/setissuers permission.
 
 ### Set (Default)
 ```
-Set-AzKeyVaultCertificateIssuer -IssuerName <String> [-VaultBaseUrl <String>]
+Set-AzKeyVaultCertificateIssuer -IssuerName <String> [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
  [-Parameter <ICertificateIssuerSetParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### SetExpanded
 ```
-Set-AzKeyVaultCertificateIssuer -IssuerName <String> -Provider <String> [-VaultBaseUrl <String>]
- [-CredentialsAccountId <String>] [-CredentialsPassword <String>] [-Enabled]
+Set-AzKeyVaultCertificateIssuer -IssuerName <String> -Provider <String> [-KeyVaultDnsSuffix <String>]
+ [-VaultName <String>] [-CredentialsAccountId <String>] [-CredentialsPassword <String>] [-Enabled]
  [-OrgDetailAdminDetail <IAdministratorDetails[]>] [-OrgDetailId <String>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### SetViaIdentityExpanded
-```
-Set-AzKeyVaultCertificateIssuer -InputObject <IKeyVaultIdentity> -Provider <String> [-VaultBaseUrl <String>]
- [-CredentialsAccountId <String>] [-CredentialsPassword <String>] [-Enabled]
- [-OrgDetailAdminDetail <IAdministratorDetails[]>] [-OrgDetailId <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### SetViaIdentity
-```
-Set-AzKeyVaultCertificateIssuer -InputObject <IKeyVaultIdentity> [-VaultBaseUrl <String>]
- [-Parameter <ICertificateIssuerSetParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -74,7 +59,7 @@ The user name/account name/account id.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded, SetViaIdentityExpanded
+Parameter Sets: SetExpanded
 Aliases: AccountId
 
 Required: False
@@ -90,7 +75,7 @@ The password/secret/account key.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded, SetViaIdentityExpanded
+Parameter Sets: SetExpanded
 Aliases: ApiKey
 
 Required: False
@@ -122,7 +107,7 @@ Determines whether the issuer is enabled.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: SetExpanded, SetViaIdentityExpanded
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: False
@@ -133,28 +118,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentity
-Parameter Sets: SetViaIdentityExpanded, SetViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -IssuerName
 The name of the issuer.
 
 ```yaml
 Type: System.String
-Parameter Sets: Set, SetExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -165,12 +134,29 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -KeyVaultDnsSuffix
+MISSING DESCRIPTION 06
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -OrgDetailAdminDetail
 Details of the organization administrator.
+To construct, see NOTES section for ORGDETAILADMINDETAIL properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IAdministratorDetails[]
-Parameter Sets: SetExpanded, SetViaIdentityExpanded
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: False
@@ -186,7 +172,7 @@ Id of the organization.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded, SetViaIdentityExpanded
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: False
@@ -199,10 +185,11 @@ Dynamic: False
 
 ### -Parameter
 The certificate issuer set parameters.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.ICertificateIssuerSetParameters
-Parameter Sets: Set, SetViaIdentity
+Parameter Sets: Set
 Aliases:
 
 Required: False
@@ -218,7 +205,7 @@ The issuer provider.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded, SetViaIdentityExpanded
+Parameter Sets: SetExpanded
 Aliases: IssuerProvider
 
 Required: True
@@ -229,7 +216,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VaultBaseUrl
+### -VaultName
 MISSING DESCRIPTION 06
 
 ```yaml
@@ -285,13 +272,34 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.ICertificateIssuerSetParameters
 
-### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IIssuerBundle
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### ORGDETAILADMINDETAIL <IAdministratorDetails[]>: Details of the organization administrator.
+  - `[EmailAddress <String>]`: Email address.
+  - `[FirstName <String>]`: First name.
+  - `[LastName <String>]`: Last name.
+  - `[Phone <String>]`: Phone number.
+
+#### PARAMETER <ICertificateIssuerSetParameters>: The certificate issuer set parameters.
+  - `Provider <String>`: The issuer provider.
+  - `[AttributeEnabled <Boolean?>]`: Determines whether the issuer is enabled.
+  - `[CredentialsAccountId <String>]`: The user name/account name/account id.
+  - `[CredentialsPassword <String>]`: The password/secret/account key.
+  - `[OrgDetailAdminDetail <IAdministratorDetails[]>]`: Details of the organization administrator.
+    - `[EmailAddress <String>]`: Email address.
+    - `[FirstName <String>]`: First name.
+    - `[LastName <String>]`: Last name.
+    - `[Phone <String>]`: Phone number.
+  - `[OrgDetailId <String>]`: Id of the organization.
 
 ## RELATED LINKS
 

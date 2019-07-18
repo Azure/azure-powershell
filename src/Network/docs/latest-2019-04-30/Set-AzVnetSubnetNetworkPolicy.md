@@ -16,15 +16,15 @@ Prepares a subnet by applying network intent policies.
 ```
 Set-AzVnetSubnetNetworkPolicy -ResourceGroupName <String> -SubnetName <String> -SubscriptionId <String>
  -VnetName <String> [-PassThru] [-PrepareNetworkPoliciesRequestParameter <IPrepareNetworkPoliciesRequest>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### PrepareExpanded
 ```
 Set-AzVnetSubnetNetworkPolicy -ResourceGroupName <String> -SubnetName <String> -SubscriptionId <String>
  -VnetName <String> [-PassThru] [-NetworkIntentPolicyConfiguration <INetworkIntentPolicyConfiguration[]>]
- [-ResourceGroupName1 <String>] [-ServiceName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-ResourceGroupName1 <String>] [-ServiceName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -86,6 +86,7 @@ Dynamic: False
 
 ### -NetworkIntentPolicyConfiguration
 A list of NetworkIntentPolicyConfiguration.
+To construct, see NOTES section for NETWORKINTENTPOLICYCONFIGURATION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkIntentPolicyConfiguration[]
@@ -95,6 +96,22 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -118,6 +135,7 @@ Dynamic: False
 
 ### -PrepareNetworkPoliciesRequestParameter
 Details of PrepareNetworkPolicies for Subnet.
+To construct, see NOTES section for PREPARENETWORKPOLICIESREQUESTPARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IPrepareNetworkPoliciesRequest
@@ -276,6 +294,30 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### Set-AzVirtualNetworkSubnetNetworkPolicy
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### NETWORKINTENTPOLICYCONFIGURATION <INetworkIntentPolicyConfiguration[]>: A list of NetworkIntentPolicyConfiguration.
+  - `[NetworkIntentPolicyName <String>]`: The name of the Network Intent Policy for storing in target subscription.
+  - `[SourceNetworkIntentPolicyEtag <String>]`: Gets a unique read-only string that changes whenever the resource is updated.
+  - `[SourceNetworkIntentPolicyId <String>]`: Resource ID.
+  - `[SourceNetworkIntentPolicyLocation <String>]`: Resource location.
+  - `[SourceNetworkIntentPolicyTag <IResourceTags>]`: Resource tags.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
+
+#### PREPARENETWORKPOLICIESREQUESTPARAMETER <IPrepareNetworkPoliciesRequest>: Details of PrepareNetworkPolicies for Subnet.
+  - `[NetworkIntentPolicyConfiguration <INetworkIntentPolicyConfiguration[]>]`: A list of NetworkIntentPolicyConfiguration.
+    - `[NetworkIntentPolicyName <String>]`: The name of the Network Intent Policy for storing in target subscription.
+    - `[SourceNetworkIntentPolicyEtag <String>]`: Gets a unique read-only string that changes whenever the resource is updated.
+    - `[SourceNetworkIntentPolicyId <String>]`: Resource ID.
+    - `[SourceNetworkIntentPolicyLocation <String>]`: Resource location.
+    - `[SourceNetworkIntentPolicyTag <IResourceTags>]`: Resource tags.
+      - `[(Any) <String>]`: This indicates any property can be added to this object.
+  - `[ResourceGroupName <String>]`: The name of the resource group where the Network Intent Policy will be stored.
+  - `[ServiceName <String>]`: The name of the service for which subnet is being prepared for.
 
 ## RELATED LINKS
 

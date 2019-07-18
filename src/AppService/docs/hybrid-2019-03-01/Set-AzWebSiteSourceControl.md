@@ -132,6 +132,7 @@ Dynamic: False
 
 ### -RequestMessage
 The source control OAuth token.
+To construct, see NOTES section for REQUESTMESSAGE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160301.ISourceControl
@@ -239,6 +240,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160301.ISourceControl
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### REQUESTMESSAGE <ISourceControl>: The source control OAuth token.
+  - `[Kind <String>]`: Kind of resource.
+  - `[ExpirationTime <DateTime?>]`: OAuth token expiration.
+  - `[PropertiesName <String>]`: Name or source control type.
+  - `[RefreshToken <String>]`: OAuth refresh token.
+  - `[Token <String>]`: OAuth access token.
+  - `[TokenSecret <String>]`: OAuth access token secret.
 
 ## RELATED LINKS
 

@@ -15,27 +15,28 @@ This operation requires the keys/sign permission.
 
 ### Sign (Default)
 ```
-Invoke-AzKeyVaultSignKey -KeyName <String> -KeyVersion <String> [-VaultBaseUrl <String>]
- [-Parameter <IKeySignParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzKeyVaultSignKey -KeyName <String> -KeyVersion <String> [-KeyVaultDnsSuffix <String>]
+ [-VaultName <String>] [-Parameter <IKeySignParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### SignExpanded
 ```
 Invoke-AzKeyVaultSignKey -KeyName <String> -KeyVersion <String> -Algorithm <JsonWebKeySignatureAlgorithm>
- -Value <Byte[]> [-VaultBaseUrl <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -InputFile <String> [-KeyVaultDnsSuffix <String>] [-VaultName <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### SignViaIdentityExpanded
 ```
 Invoke-AzKeyVaultSignKey -InputObject <IKeyVaultIdentity> -Algorithm <JsonWebKeySignatureAlgorithm>
- -Value <Byte[]> [-VaultBaseUrl <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -InputFile <String> [-KeyVaultDnsSuffix <String>] [-VaultName <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### SignViaIdentity
 ```
-Invoke-AzKeyVaultSignKey -InputObject <IKeyVaultIdentity> [-VaultBaseUrl <String>]
+Invoke-AzKeyVaultSignKey -InputObject <IKeyVaultIdentity> [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
  [-Parameter <IKeySignParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -98,6 +99,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -InputFile
+Input File for Value (HELP MESSAGE MISSING)
+
+```yaml
+Type: System.String
+Parameter Sets: SignExpanded, SignViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -InputObject
 Identity Parameter
 
@@ -130,6 +147,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -KeyVaultDnsSuffix
+MISSING DESCRIPTION 06
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -KeyVersion
 The version of the key.
 
@@ -148,6 +181,7 @@ Dynamic: False
 
 ### -Parameter
 The key operations parameters.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IKeySignParameters
@@ -162,23 +196,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Value
-HELP MESSAGE MISSING
-
-```yaml
-Type: System.Byte[]
-Parameter Sets: SignExpanded, SignViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -VaultBaseUrl
+### -VaultName
 MISSING DESCRIPTION 06
 
 ```yaml
@@ -232,15 +250,24 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IKeySignParameters
-
 ### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IKeySignParameters
 
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IKeyOperationResult
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <IKeySignParameters>: The key operations parameters.
+  - `Algorithm <JsonWebKeySignatureAlgorithm>`: The signing/verification algorithm identifier. For more information on possible algorithm types, see JsonWebKeySignatureAlgorithm.
+  - `Value <Byte[]>`: 
 
 ## RELATED LINKS
 

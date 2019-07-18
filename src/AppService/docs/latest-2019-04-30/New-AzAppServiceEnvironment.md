@@ -16,43 +16,42 @@ Create or update an App Service Environment.
 ```
 New-AzAppServiceEnvironment -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-HostingEnvironmentEnvelope <IAppServiceEnvironmentResource>] [-PassThru] [-DefaultProfile <PSObject>]
- [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpanded
 ```
 New-AzAppServiceEnvironment -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -Location <String> -PropertiesLocation <String> -PropertiesName <String> -WorkerPool <IWorkerPool[]>
- [-PassThru] [-ApiManagementAccountId <String>] [-ClusterSetting <INameValuePair[]>] [-DnsSuffix <String>]
- [-DynamicCacheEnabled] [-FrontEndScaleFactor <Int32>] [-HasLinuxWorker]
+ -Location <String> [-PassThru] [-ApiManagementAccountId <String>] [-ClusterSetting <INameValuePair[]>]
+ [-DnsSuffix <String>] [-DynamicCacheEnabled] [-FrontEndScaleFactor <Int32>] [-HasLinuxWorker]
  [-InternalLoadBalancingMode <InternalLoadBalancingMode>] [-IpsslAddressCount <Int32>] [-Kind <String>]
  [-MultiRoleCount <Int32>] [-MultiSize <String>] [-NetworkAccessControlList <INetworkAccessControlEntry[]>]
- [-ProvisioningState <ProvisioningState>] [-SslCertKeyVaultId <String>] [-SslCertKeyVaultSecretName <String>]
- [-Status <HostingEnvironmentStatus>] [-Suspended] [-Tag <IResourceTags>] [-UserWhitelistedIPRange <String[]>]
+ [-PropertiesLocation <String>] [-PropertiesName <String>] [-SslCertKeyVaultId <String>]
+ [-SslCertKeyVaultSecretName <String>] [-Suspended] [-Tag <Hashtable>] [-UserWhitelistedIPRange <String[]>]
  [-VirtualNetworkId <String>] [-VirtualNetworkSubnet <String>] [-VnetName <String>]
- [-VnetResourceGroupName <String>] [-VnetSubnetName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-VnetResourceGroupName <String>] [-VnetSubnetName <String>] [-WorkerPool <IWorkerPool[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzAppServiceEnvironment -InputObject <IWebSiteIdentity> -Location <String> -PropertiesLocation <String>
- -PropertiesName <String> -WorkerPool <IWorkerPool[]> [-PassThru] [-ApiManagementAccountId <String>]
- [-ClusterSetting <INameValuePair[]>] [-DnsSuffix <String>] [-DynamicCacheEnabled]
- [-FrontEndScaleFactor <Int32>] [-HasLinuxWorker] [-InternalLoadBalancingMode <InternalLoadBalancingMode>]
- [-IpsslAddressCount <Int32>] [-Kind <String>] [-MultiRoleCount <Int32>] [-MultiSize <String>]
- [-NetworkAccessControlList <INetworkAccessControlEntry[]>] [-ProvisioningState <ProvisioningState>]
- [-SslCertKeyVaultId <String>] [-SslCertKeyVaultSecretName <String>] [-Status <HostingEnvironmentStatus>]
- [-Suspended] [-Tag <IResourceTags>] [-UserWhitelistedIPRange <String[]>] [-VirtualNetworkId <String>]
- [-VirtualNetworkSubnet <String>] [-VnetName <String>] [-VnetResourceGroupName <String>]
- [-VnetSubnetName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzAppServiceEnvironment -InputObject <IWebSiteIdentity> -Location <String> [-PassThru]
+ [-ApiManagementAccountId <String>] [-ClusterSetting <INameValuePair[]>] [-DnsSuffix <String>]
+ [-DynamicCacheEnabled] [-FrontEndScaleFactor <Int32>] [-HasLinuxWorker]
+ [-InternalLoadBalancingMode <InternalLoadBalancingMode>] [-IpsslAddressCount <Int32>] [-Kind <String>]
+ [-MultiRoleCount <Int32>] [-MultiSize <String>] [-NetworkAccessControlList <INetworkAccessControlEntry[]>]
+ [-PropertiesLocation <String>] [-PropertiesName <String>] [-SslCertKeyVaultId <String>]
+ [-SslCertKeyVaultSecretName <String>] [-Suspended] [-Tag <Hashtable>] [-UserWhitelistedIPRange <String[]>]
+ [-VirtualNetworkId <String>] [-VirtualNetworkSubnet <String>] [-VnetName <String>]
+ [-VnetResourceGroupName <String>] [-VnetSubnetName <String>] [-WorkerPool <IWorkerPool[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
 New-AzAppServiceEnvironment -InputObject <IWebSiteIdentity>
  [-HostingEnvironmentEnvelope <IAppServiceEnvironmentResource>] [-PassThru] [-DefaultProfile <PSObject>]
- [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -114,6 +113,7 @@ Dynamic: False
 
 ### -ClusterSetting
 Custom settings for changing the behavior of the App Service Environment.
+To construct, see NOTES section for CLUSTERSETTING properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.INameValuePair[]
@@ -212,6 +212,7 @@ Dynamic: False
 
 ### -HostingEnvironmentEnvelope
 App Service Environment ARM resource.
+To construct, see NOTES section for HOSTINGENVIRONMENTENVELOPE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IAppServiceEnvironmentResource
@@ -357,6 +358,7 @@ Dynamic: False
 
 ### -NetworkAccessControlList
 Access control list for controlling traffic to the App Service Environment.
+To construct, see NOTES section for NETWORKACCESSCONTROLLIST properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.INetworkAccessControlEntry[]
@@ -366,6 +368,22 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -396,7 +414,7 @@ Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -409,22 +427,6 @@ Name of the App Service Environment.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -ProvisioningState
-Provisioning state of the App Service Environment.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.ProvisioningState
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -484,22 +486,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Status
-Current status of the App Service Environment.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.HostingEnvironmentStatus
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -SubscriptionId
 Your Azure subscription ID.
 This is a GUID-formatted string (e.g.
@@ -540,7 +526,7 @@ Dynamic: False
 Resource tags.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801Preview.IResourceTags
+Type: System.Collections.Hashtable
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -650,13 +636,14 @@ Dynamic: False
 
 ### -WorkerPool
 Description of worker pools with worker size IDs, VM sizes, and number of workers in each pool.
+To construct, see NOTES section for WORKERPOOL properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160301.IWorkerPool[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -711,6 +698,66 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IAppServiceEnvironmentResource
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### CLUSTERSETTING <INameValuePair[]>: Custom settings for changing the behavior of the App Service Environment.
+  - `[Name <String>]`: Pair name.
+  - `[Value <String>]`: Pair value.
+
+#### HOSTINGENVIRONMENTENVELOPE <IAppServiceEnvironmentResource>: App Service Environment ARM resource.
+  - `Location <String>`: Resource Location.
+  - `PropertiesLocation <String>`: Location of the App Service Environment, e.g. "West US".
+  - `PropertiesName <String>`: Name of the App Service Environment.
+  - `WorkerPool <IWorkerPool[]>`: Description of worker pools with worker size IDs, VM sizes, and number of workers in each pool.
+    - `[ComputeMode <ComputeModeOptions?>]`: Shared or dedicated app hosting.
+    - `[WorkerCount <Int32?>]`: Number of instances in the worker pool.
+    - `[WorkerSize <String>]`: VM size of the worker pool instances.
+    - `[WorkerSizeId <Int32?>]`: Worker size ID for referencing this worker pool.
+  - `[Kind <String>]`: Kind of resource.
+  - `[Tag <IResourceTags>]`: Resource tags.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
+  - `[ApiManagementAccountId <String>]`: API Management Account associated with the App Service Environment.
+  - `[ClusterSetting <INameValuePair[]>]`: Custom settings for changing the behavior of the App Service Environment.
+    - `[Name <String>]`: Pair name.
+    - `[Value <String>]`: Pair value.
+  - `[DnsSuffix <String>]`: DNS suffix of the App Service Environment.
+  - `[DynamicCacheEnabled <Boolean?>]`: True/false indicating whether the App Service Environment is suspended. The environment can be suspended e.g. when the management endpoint is no longer available         (most likely because NSG blocked the incoming traffic).
+  - `[FrontEndScaleFactor <Int32?>]`: Scale factor for front-ends.
+  - `[HasLinuxWorker <Boolean?>]`: Flag that displays whether an ASE has linux workers or not
+  - `[InternalLoadBalancingMode <InternalLoadBalancingMode?>]`: Specifies which endpoints to serve internally in the Virtual Network for the App Service Environment.
+  - `[IpsslAddressCount <Int32?>]`: Number of IP SSL addresses reserved for the App Service Environment.
+  - `[MultiRoleCount <Int32?>]`: Number of front-end instances.
+  - `[MultiSize <String>]`: Front-end VM size, e.g. "Medium", "Large".
+  - `[NetworkAccessControlList <INetworkAccessControlEntry[]>]`: Access control list for controlling traffic to the App Service Environment.
+    - `[Action <AccessControlEntryAction?>]`: Action object.
+    - `[Description <String>]`: Description of network access control entry.
+    - `[Order <Int32?>]`: Order of precedence.
+    - `[RemoteSubnet <String>]`: Remote subnet.
+  - `[SslCertKeyVaultId <String>]`: Key Vault ID for ILB App Service Environment default SSL certificate
+  - `[SslCertKeyVaultSecretName <String>]`: Key Vault Secret Name for ILB App Service Environment default SSL certificate
+  - `[Suspended <Boolean?>]`: <code>true</code> if the App Service Environment is suspended; otherwise, <code>false</code>. The environment can be suspended, e.g. when the management endpoint is no longer available          (most likely because NSG blocked the incoming traffic).
+  - `[UserWhitelistedIPRange <String[]>]`: User added ip ranges to whitelist on ASE db
+  - `[VirtualNetworkId <String>]`: Resource id of the Virtual Network.
+  - `[VirtualNetworkSubnet <String>]`: Subnet within the Virtual Network.
+  - `[VnetName <String>]`: Name of the Virtual Network for the App Service Environment.
+  - `[VnetResourceGroupName <String>]`: Resource group of the Virtual Network.
+  - `[VnetSubnetName <String>]`: Subnet of the Virtual Network.
+
+#### NETWORKACCESSCONTROLLIST <INetworkAccessControlEntry[]>: Access control list for controlling traffic to the App Service Environment.
+  - `[Action <AccessControlEntryAction?>]`: Action object.
+  - `[Description <String>]`: Description of network access control entry.
+  - `[Order <Int32?>]`: Order of precedence.
+  - `[RemoteSubnet <String>]`: Remote subnet.
+
+#### WORKERPOOL <IWorkerPool[]>: Description of worker pools with worker size IDs, VM sizes, and number of workers in each pool.
+  - `[ComputeMode <ComputeModeOptions?>]`: Shared or dedicated app hosting.
+  - `[WorkerCount <Int32?>]`: Number of instances in the worker pool.
+  - `[WorkerSize <String>]`: VM size of the worker pool instances.
+  - `[WorkerSizeId <Int32?>]`: Worker size ID for referencing this worker pool.
 
 ## RELATED LINKS
 

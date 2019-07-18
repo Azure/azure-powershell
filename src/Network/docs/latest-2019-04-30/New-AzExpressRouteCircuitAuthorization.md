@@ -16,7 +16,7 @@ Creates or updates an authorization in the specified express route circuit.
 ```
 New-AzExpressRouteCircuitAuthorization -AuthorizationName <String> -CircuitName <String>
  -ResourceGroupName <String> -SubscriptionId <String>
- [-AuthorizationParameter <IExpressRouteCircuitAuthorization>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-AuthorizationParameter <IExpressRouteCircuitAuthorization>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -25,20 +25,22 @@ New-AzExpressRouteCircuitAuthorization -AuthorizationName <String> -CircuitName 
 New-AzExpressRouteCircuitAuthorization -AuthorizationName <String> -CircuitName <String>
  -ResourceGroupName <String> -SubscriptionId <String> [-AuthorizationKey <String>]
  [-AuthorizationUseStatus <AuthorizationUseStatus>] [-Id <String>] [-Name <String>]
- [-ProvisioningState <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ProvisioningState <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzExpressRouteCircuitAuthorization -InputObject <INetworkIdentity> [-AuthorizationKey <String>]
  [-AuthorizationUseStatus <AuthorizationUseStatus>] [-Id <String>] [-Name <String>]
- [-ProvisioningState <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ProvisioningState <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
 New-AzExpressRouteCircuitAuthorization -InputObject <INetworkIdentity>
- [-AuthorizationParameter <IExpressRouteCircuitAuthorization>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-AuthorizationParameter <IExpressRouteCircuitAuthorization>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -117,6 +119,7 @@ Dynamic: False
 
 ### -AuthorizationParameter
 Authorization in an ExpressRouteCircuit resource.
+To construct, see NOTES section for AUTHORIZATIONPARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitAuthorization
@@ -229,6 +232,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -ProvisioningState
 Gets the provisioning state of the public IP resource.
 Possible values are: 'Updating', 'Deleting', and 'Failed'.
@@ -326,6 +345,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitAuthorization
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### AUTHORIZATIONPARAMETER <IExpressRouteCircuitAuthorization>: Authorization in an ExpressRouteCircuit resource.
+  - `[Id <String>]`: Resource ID.
+  - `[AuthorizationKey <String>]`: The authorization key.
+  - `[AuthorizationUseStatus <AuthorizationUseStatus?>]`: AuthorizationUseStatus. Possible values are: 'Available' and 'InUse'.
+  - `[Name <String>]`: Gets name of the resource that is unique within a resource group. This name can be used to access the resource.
+  - `[ProvisioningState <String>]`: Gets the provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
 
 ## RELATED LINKS
 

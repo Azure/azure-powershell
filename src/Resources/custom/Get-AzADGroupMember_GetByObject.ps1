@@ -53,8 +53,8 @@ function Get-AzADGroupMember_GetByObject {
     )
 
     process {
-        $PSBoundParameters.Add("ObjectId", $GroupObject.ObjectId) | Out-Null
-        $PSBoundParameters.Remove("GroupObject") | Out-Null
+        $null = $PSBoundParameters.Add("ObjectId", $GroupObject.ObjectId)
+        $null = $PSBoundParameters.Remove("GroupObject")
         Az.Resources\Get-AzADGroupMember @PSBoundParameters
     }
 }

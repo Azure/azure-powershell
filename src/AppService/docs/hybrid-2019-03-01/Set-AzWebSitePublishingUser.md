@@ -20,8 +20,8 @@ Set-AzWebSitePublishingUser [-UserDetail <IUser>] [-DefaultProfile <PSObject>] [
 
 ### UpdateExpanded
 ```
-Set-AzWebSitePublishingUser -PublishingUserName <String> [-Kind <String>] [-PublishingPassword <String>]
- [-PublishingPasswordHash <String>] [-PublishingPasswordHashSalt <String>] [-UserName <String>]
+Set-AzWebSitePublishingUser [-Kind <String>] [-PublishingPassword <String>] [-PublishingPasswordHash <String>]
+ [-PublishingPasswordHashSalt <String>] [-PublishingUserName <String>] [-UserName <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -138,7 +138,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -148,6 +148,7 @@ Dynamic: False
 
 ### -UserDetail
 User credentials used for publishing activity.
+To construct, see NOTES section for USERDETAIL properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160301.IUser
@@ -223,6 +224,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160301.IUser
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### USERDETAIL <IUser>: User credentials used for publishing activity.
+  - `PublishingUserName <String>`: Username used for publishing.
+  - `[Kind <String>]`: Kind of resource.
+  - `[PublishingPassword <String>]`: Password used for publishing.
+  - `[PublishingPasswordHash <String>]`: Password hash used for publishing.
+  - `[PublishingPasswordHashSalt <String>]`: Password hash salt used for publishing.
+  - `[UserName <String>]`: Username
 
 ## RELATED LINKS
 

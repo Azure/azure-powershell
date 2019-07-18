@@ -23,7 +23,7 @@ Update-AzWebAppCertificateCsr -ResourceGroupName <String> -SubscriptionId <Strin
 Update-AzWebAppCertificateCsr -InputObject <IWebSiteIdentity> -Location <String> [-Name <String>]
  [-CsrString <String>] [-DistinguishedName <String>] [-HostingEnvironment <String>] [-Id <String>]
  [-Kind <String>] [-Password <String>] [-PfxBlob <String>] [-PropertiesName <String>]
- [-PublicKeyHash <String>] [-Tag <IResourceTags>] [-Type <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-PublicKeyHash <String>] [-Tag <Hashtable>] [-Type <String>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Update-AzWebAppCertificateCsr -InputObject <IWebSiteIdentity> -Location <String>
 Update-AzWebAppCertificateCsr -ResourceGroupName <String> -SubscriptionId <String> -Location <String>
  [-Name <String>] [-CsrString <String>] [-DistinguishedName <String>] [-HostingEnvironment <String>]
  [-Id <String>] [-Kind <String>] [-Name1 <String>] [-Password <String>] [-PfxBlob <String>]
- [-PropertiesName <String>] [-PublicKeyHash <String>] [-Tag <IResourceTags>] [-Type <String>]
+ [-PropertiesName <String>] [-PublicKeyHash <String>] [-Tag <Hashtable>] [-Type <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -69,6 +69,7 @@ PS C:\> {{ Add code here }}
 
 ### -CsrEnvelope
 Certificate signing request object
+To construct, see NOTES section for CSRENVELOPE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.ICsr
@@ -345,7 +346,7 @@ Dynamic: False
 Resource tags
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801Preview.IResourceTags
+Type: System.Collections.Hashtable
 Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded
 Aliases:
 
@@ -420,6 +421,27 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.ICsr
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### CSRENVELOPE <ICsr>: Certificate signing request object
+  - `Location <String>`: Resource Location
+  - `[Id <String>]`: Resource Id
+  - `[Kind <String>]`: Kind of resource
+  - `[Name <String>]`: Resource Name
+  - `[Tag <IResourceTags>]`: Resource tags
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
+  - `[Type <String>]`: Resource type
+  - `[DistinguishedName <String>]`: Distinguished name of certificate to be created
+  - `[HostingEnvironment <String>]`: Hosting environment
+  - `[Password <String>]`: PFX password
+  - `[PfxBlob <String>]`: PFX certificate of created certificate
+  - `[PropertiesName <String>]`: Name used to locate CSR object
+  - `[PublicKeyHash <String>]`: Hash of the certificates public key
+  - `[String <String>]`: Actual CSR string created
 
 ## RELATED LINKS
 

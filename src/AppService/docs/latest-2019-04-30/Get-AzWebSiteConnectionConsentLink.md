@@ -23,8 +23,8 @@ Get-AzWebSiteConnectionConsentLink -ConnectionName <String> -ResourceGroupName <
 ```
 Get-AzWebSiteConnectionConsentLink -ConnectionName <String> -ResourceGroupName <String>
  -SubscriptionId <String[]> -Location <String> [-Id <String>] [-Kind <String>] [-Name <String>]
- [-Parameter <IConsentLinkInputParameter[]>] [-Tag <IResourceTags>] [-Type <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Parameter <IConsentLinkInputParameter[]>] [-Tag <Hashtable>] [-Type <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -70,6 +70,7 @@ Dynamic: False
 
 ### -Content
 Connection Consent Link payload
+To construct, see NOTES section for CONTENT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801Preview.IConsentLinkInput
@@ -166,6 +167,7 @@ Dynamic: False
 
 ### -Parameter
 Array of links
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801Preview.IConsentLinkInputParameter[]
@@ -218,7 +220,7 @@ Dynamic: False
 Resource tags
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801Preview.IResourceTags
+Type: System.Collections.Hashtable
 Parameter Sets: ListExpanded
 Aliases:
 
@@ -291,6 +293,33 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801Preview.IConsentLink
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### CONTENT <IConsentLinkInput>: Connection Consent Link payload
+  - `Location <String>`: Resource Location
+  - `[Id <String>]`: Resource Id
+  - `[Kind <String>]`: Kind of resource
+  - `[Name <String>]`: Resource Name
+  - `[Tag <IResourceTags>]`: Resource tags
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
+  - `[Type <String>]`: Resource type
+  - `[Parameter <IConsentLinkInputParameter[]>]`: Array of links
+    - `[ObjectId <String>]`: AAD OID (user or group) if the principal type is ActiveDirectory.                     MSA PUID if the principal type is MicrosoftAccount.
+    - `[ParameterName <String>]`: Name of the parameter in the connection provider's oauthSettings
+    - `[PrincipalType <PrincipalType?>]`: Principal type
+    - `[RedirectUrl <String>]`: Name of the parameter in the connection provider's oauthSettings
+    - `[TenantId <String>]`: Tenant Id
+
+#### PARAMETER <IConsentLinkInputParameter[]>: Array of links
+  - `[ObjectId <String>]`: AAD OID (user or group) if the principal type is ActiveDirectory.                     MSA PUID if the principal type is MicrosoftAccount.
+  - `[ParameterName <String>]`: Name of the parameter in the connection provider's oauthSettings
+  - `[PrincipalType <PrincipalType?>]`: Principal type
+  - `[RedirectUrl <String>]`: Name of the parameter in the connection provider's oauthSettings
+  - `[TenantId <String>]`: Tenant Id
 
 ## RELATED LINKS
 

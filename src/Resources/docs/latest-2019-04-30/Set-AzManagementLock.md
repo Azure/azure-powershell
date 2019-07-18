@@ -165,6 +165,7 @@ Dynamic: False
 
 ### -Owner
 The owners of the lock.
+To construct, see NOTES section for OWNER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20160901.IManagementLockOwner[]
@@ -181,6 +182,7 @@ Dynamic: False
 
 ### -Parameter
 The lock information.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20160901.IManagementLockObject
@@ -212,7 +214,7 @@ Dynamic: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group to lock.
+The name of the resource group containing the resource to lock.
 
 ```yaml
 Type: System.String
@@ -353,6 +355,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20160901.IManagementLockObject
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### OWNER <IManagementLockOwner[]>: The owners of the lock.
+  - `[ApplicationId <String>]`: The application ID of the lock owner.
+
+#### PARAMETER <IManagementLockObject>: The lock information.
+  - `Level <LockLevel>`: The level of the lock. Possible values are: NotSpecified, CanNotDelete, ReadOnly. CanNotDelete means authorized users are able to read and modify the resources, but not delete. ReadOnly means authorized users can only read from a resource, but they can't modify or delete it.
+  - `[Note <String>]`: Notes about the lock. Maximum of 512 characters.
+  - `[Owner <IManagementLockOwner[]>]`: The owners of the lock.
+    - `[ApplicationId <String>]`: The application ID of the lock owner.
 
 ## RELATED LINKS
 

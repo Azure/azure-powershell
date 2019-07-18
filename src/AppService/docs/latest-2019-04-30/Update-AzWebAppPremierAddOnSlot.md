@@ -163,6 +163,7 @@ Dynamic: False
 
 ### -PremierAddOn
 ARM resource for a PremierAddOn.
+To construct, see NOTES section for PREMIERADDON properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IPremierAddOnPatchResource
@@ -339,6 +340,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IPremierAddOn
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PREMIERADDON <IPremierAddOnPatchResource>: ARM resource for a PremierAddOn.
+  - `[Kind <String>]`: Kind of resource.
+  - `[MarketplaceOffer <String>]`: Premier add on Marketplace offer.
+  - `[MarketplacePublisher <String>]`: Premier add on Marketplace publisher.
+  - `[Product <String>]`: Premier add on Product.
+  - `[Sku <String>]`: Premier add on SKU.
+  - `[Vendor <String>]`: Premier add on Vendor.
 
 ## RELATED LINKS
 

@@ -15,27 +15,27 @@ Move an App Service Environment to a different VNET.
 ### Change (Default)
 ```
 Rename-AzAppServiceEnvironmentVnet -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-VnetInfo <IVirtualNetworkProfile>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [-VnetInfo <IVirtualNetworkProfile>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### ChangeExpanded
 ```
 Rename-AzAppServiceEnvironmentVnet -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Id <String>] [-Subnet <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [-Id <String>] [-Subnet <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### ChangeViaIdentityExpanded
 ```
 Rename-AzAppServiceEnvironmentVnet -InputObject <IWebSiteIdentity> [-Id <String>] [-Subnet <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ChangeViaIdentity
 ```
 Rename-AzAppServiceEnvironmentVnet -InputObject <IWebSiteIdentity> [-VnetInfo <IVirtualNetworkProfile>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -143,6 +143,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -ResourceGroupName
 Name of the resource group to which the resource belongs.
 
@@ -195,6 +211,7 @@ Dynamic: False
 
 ### -VnetInfo
 Specification for using a Virtual Network.
+To construct, see NOTES section for VNETINFO properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160301.IVirtualNetworkProfile
@@ -256,6 +273,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISite
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### VNETINFO <IVirtualNetworkProfile>: Specification for using a Virtual Network.
+  - `[Id <String>]`: Resource id of the Virtual Network.
+  - `[Subnet <String>]`: Subnet within the Virtual Network.
 
 ## RELATED LINKS
 

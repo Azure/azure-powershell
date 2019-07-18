@@ -65,7 +65,7 @@ function Remove-AzADApplication_HardDelete {
     )
 
     process {
-        $PSBoundParameters.Remove("HardDelete") | Out-Null
+        $null = $PSBoundParameters.Remove("HardDelete")
         Az.Resources.internal\Remove-AzADDeletedApplicationHard @PSBoundParameters
     }
 }

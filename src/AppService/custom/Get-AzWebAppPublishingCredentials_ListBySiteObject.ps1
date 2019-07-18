@@ -61,6 +61,15 @@ function Get-AzWebAppPublishingCredentials_ListBySiteObject {
     )
 
     process {
+        $Tokens = $SiteObject.Id.Split("/", [System.StringSplitOptions]::RemoveEmptyEntries)
+        $null = $PSBoundParameters.Add("ResourceGroupName", $Tokens[3])
+        $null = $PSBoundParameters.Add("Name", $Tokens[7])
+        if ($Tokens.Length -eq 10)
+        {
+            $null = $PSBoundParameters.Add("Slot", $Tokens[9])
+        }
 
+        $null = $PSBoundParameters.Remove("SiteObject")
+        Az.WebSite\Get-AzWebAppPublishingCredentials @PSBoundParameters
     }
 }

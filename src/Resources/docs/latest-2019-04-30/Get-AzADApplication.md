@@ -146,7 +146,7 @@ Dynamic: False
 ```
 
 ### -Filter
-The filter to apply to the operation.
+The filters to apply to the operation.
 
 ```yaml
 Type: System.String
@@ -253,6 +253,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IApplication
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

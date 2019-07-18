@@ -82,6 +82,7 @@ Dynamic: False
 
 ### -ConnectionEnvelope
 Virtual Network information contract.
+To construct, see NOTES section for CONNECTIONENVELOPE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IVnetInfo
@@ -306,6 +307,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IVnetInfo
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### CONNECTIONENVELOPE <IVnetInfo>: Virtual Network information contract.
+  - `[Kind <String>]`: Kind of resource.
+  - `[CertBlob <String>]`: A certificate file (.cer) blob containing the public key of the private key used to authenticate a         Point-To-Site VPN connection.
+  - `[DnsServer <String>]`: DNS servers to be used by this Virtual Network. This should be a comma-separated list of IP addresses.
+  - `[IsSwift <Boolean?>]`: Flag that is used to denote if this is VNET injection
+  - `[VnetResourceId <String>]`: The Virtual Network's resource ID.
 
 ## RELATED LINKS
 

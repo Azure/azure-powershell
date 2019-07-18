@@ -15,7 +15,7 @@ Creates a VirtualHub resource if it doesn't exist else updates the existing Virt
 ### Create (Default)
 ```
 New-AzVirtualHub -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-VirtualHubParameter <IVirtualHub>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [-VirtualHubParameter <IVirtualHub>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -23,23 +23,24 @@ New-AzVirtualHub -Name <String> -ResourceGroupName <String> -SubscriptionId <Str
 ```
 New-AzVirtualHub -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-AddressPrefix <String>]
  [-ExpressRouteGatewayId <String>] [-Id <String>] [-Location <String>] [-P2SVpnGatewayId <String>]
- [-RouteTableRoute <IVirtualHubRoute[]>] [-Tag <IResourceTags>] [-VirtualWanId <String>]
+ [-Route <IVirtualHubRoute[]>] [-Tag <Hashtable>] [-VirtualWanId <String>]
  [-VnetConnection <IHubVirtualNetworkConnection[]>] [-VpnGatewayId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzVirtualHub -InputObject <INetworkIdentity> [-AddressPrefix <String>] [-ExpressRouteGatewayId <String>]
- [-Id <String>] [-Location <String>] [-P2SVpnGatewayId <String>] [-RouteTableRoute <IVirtualHubRoute[]>]
- [-Tag <IResourceTags>] [-VirtualWanId <String>] [-VnetConnection <IHubVirtualNetworkConnection[]>]
- [-VpnGatewayId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Id <String>] [-Location <String>] [-P2SVpnGatewayId <String>] [-Route <IVirtualHubRoute[]>]
+ [-Tag <Hashtable>] [-VirtualWanId <String>] [-VnetConnection <IHubVirtualNetworkConnection[]>]
+ [-VpnGatewayId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
 New-AzVirtualHub -InputObject <INetworkIdentity> [-VirtualHubParameter <IVirtualHub>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -195,6 +196,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -P2SVpnGatewayId
 Resource ID.
 
@@ -217,7 +234,7 @@ The resource group name of the VirtualHub.
 ```yaml
 Type: System.String
 Parameter Sets: Create, CreateExpanded
-Aliases:
+Aliases: VirtualWan
 
 Required: True
 Position: Named
@@ -227,13 +244,14 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -RouteTableRoute
+### -Route
 List of all routes.
+To construct, see NOTES section for ROUTE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVirtualHubRoute[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Aliases: RouteTable
 
 Required: False
 Position: Named
@@ -264,7 +282,7 @@ Dynamic: False
 Resource tags.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceTags
+Type: System.Collections.Hashtable
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -278,6 +296,7 @@ Dynamic: False
 
 ### -VirtualHubParameter
 VirtualHub Resource.
+To construct, see NOTES section for VIRTUALHUBPARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVirtualHub
@@ -310,11 +329,12 @@ Dynamic: False
 
 ### -VnetConnection
 List of all vnet connections with this VirtualHub.
+To construct, see NOTES section for VNETCONNECTION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IHubVirtualNetworkConnection[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases: VirtualNetworkConnection
+Aliases: VirtualNetworkConnection, HubVnetConnection
 
 Required: False
 Position: Named
@@ -387,6 +407,44 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVirtualHub
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### ROUTE <IVirtualHubRoute[]>: List of all routes.
+  - `[AddressPrefix <String[]>]`: List of all addressPrefixes.
+  - `[NextHopIPAddress <String>]`: NextHop ip address.
+
+#### VIRTUALHUBPARAMETER <IVirtualHub>: VirtualHub Resource.
+  - `[Id <String>]`: Resource ID.
+  - `[Location <String>]`: Resource location.
+  - `[Tag <IResourceTags>]`: Resource tags.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
+  - `[AddressPrefix <String>]`: Address-prefix for this VirtualHub.
+  - `[ExpressRouteGatewayId <String>]`: Resource ID.
+  - `[P2SVpnGatewayId <String>]`: Resource ID.
+  - `[RouteTableRoute <IVirtualHubRoute[]>]`: List of all routes.
+    - `[AddressPrefix <String[]>]`: List of all addressPrefixes.
+    - `[NextHopIPAddress <String>]`: NextHop ip address.
+  - `[VirtualNetworkConnection <IHubVirtualNetworkConnection[]>]`: List of all vnet connections with this VirtualHub.
+    - `[Id <String>]`: Resource ID.
+    - `[AllowHubToRemoteVnetTransit <Boolean?>]`: VirtualHub to RemoteVnet transit to enabled or not.
+    - `[AllowRemoteVnetToUseHubVnetGateway <Boolean?>]`: Allow RemoteVnet to use Virtual Hub's gateways.
+    - `[EnableInternetSecurity <Boolean?>]`: Enable internet security
+    - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
+    - `[RemoteVirtualNetworkId <String>]`: Resource ID.
+  - `[VirtualWanId <String>]`: Resource ID.
+  - `[VpnGatewayId <String>]`: Resource ID.
+
+#### VNETCONNECTION <IHubVirtualNetworkConnection[]>: List of all vnet connections with this VirtualHub.
+  - `[Id <String>]`: Resource ID.
+  - `[AllowHubToRemoteVnetTransit <Boolean?>]`: VirtualHub to RemoteVnet transit to enabled or not.
+  - `[AllowRemoteVnetToUseHubVnetGateway <Boolean?>]`: Allow RemoteVnet to use Virtual Hub's gateways.
+  - `[EnableInternetSecurity <Boolean?>]`: Enable internet security
+  - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
+  - `[RemoteVirtualNetworkId <String>]`: Resource ID.
 
 ## RELATED LINKS
 

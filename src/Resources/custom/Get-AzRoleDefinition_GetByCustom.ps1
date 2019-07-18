@@ -55,8 +55,8 @@ function Get-AzRoleDefinition_GetByCustom {
     )
 
     process {
-        $PSBoundParameters.Add("Filter", "type eq 'CustomRole'") | Out-Null
-        $PSBoundParameters.Remove("Custom") | Out-Null
+        $null = $PSBoundParameters.Add("Filter", "type eq 'CustomRole'")
+        $null = $PSBoundParameters.Remove("Custom")
         Az.Resources\Get-AzRoleDefinition @PSBoundParameters
     }
 }

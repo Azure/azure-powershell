@@ -21,7 +21,7 @@ Get-AzWebSiteConnectionKey -ConnectionName <String> -ResourceGroupName <String> 
 ### ListExpanded
 ```
 Get-AzWebSiteConnectionKey -ConnectionName <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- -Location <String> [-Id <String>] [-Kind <String>] [-Name <String>] [-Tag <IResourceTags>] [-Type <String>]
+ -Location <String> [-Id <String>] [-Kind <String>] [-Name <String>] [-Tag <Hashtable>] [-Type <String>]
  [-ValidityTimeSpan <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -68,6 +68,7 @@ Dynamic: False
 
 ### -Content
 List Connection Keys Input payload
+To construct, see NOTES section for CONTENT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801Preview.IListConnectionKeysInput
@@ -200,7 +201,7 @@ Dynamic: False
 Resource tags
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801Preview.IResourceTags
+Type: System.Collections.Hashtable
 Parameter Sets: ListExpanded
 Aliases:
 
@@ -289,6 +290,21 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801Preview.IConnectionSecrets
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### CONTENT <IListConnectionKeysInput>: List Connection Keys Input payload
+  - `Location <String>`: Resource Location
+  - `[Id <String>]`: Resource Id
+  - `[Kind <String>]`: Kind of resource
+  - `[Name <String>]`: Resource Name
+  - `[Tag <IResourceTags>]`: Resource tags
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
+  - `[Type <String>]`: Resource type
+  - `[ValidityTimeSpan <String>]`: time span for how long the keys will be valid
 
 ## RELATED LINKS
 

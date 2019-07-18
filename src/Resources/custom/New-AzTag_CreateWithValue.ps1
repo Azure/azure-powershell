@@ -64,15 +64,15 @@ function New-AzTag_CreateWithValue {
         if (-not $Tags.TagName.Contains($Name))
         {
             $TempValue = $Value
-            $PSBoundParameters.Remove("Value") | Out-Null
-            Az.Resources\New-AzTag $PSBoundParameters | Out-Null
-            $PSBoundParameters.Add("Value", $TempValue)
+            $null = $PSBoundParameters.Remove("Value")
+            $null = Az.Resources\New-AzTag $PSBoundParameters
+            $null = $PSBoundParameters.Add("Value", $TempValue)
         }
 
-        $PSBoundParameters.Add("TagName", $Name) | Out-Null
-        $PSBoundParameters.Add("TagValue", $Value) | Out-Null
-        $PSBoundParameters.Remove("Name") | Out-Null
-        $PSBoundParameters.Remove("Value") | Out-Null
+        $null = $PSBoundParameters.Add("TagName", $Name)
+        $null = $PSBoundParameters.Add("TagValue", $Value)
+        $null = $PSBoundParameters.Remove("Name")
+        $null = $PSBoundParameters.Remove("Value")
         Az.Resources.internal\New-AzTagValue @PSBoundParameters
     }
 }

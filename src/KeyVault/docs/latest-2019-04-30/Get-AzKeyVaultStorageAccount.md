@@ -15,19 +15,31 @@ This operation requires the storage/list permission.
 
 ### Get (Default)
 ```
-Get-AzKeyVaultStorageAccount [-VaultBaseUrl <String>] [-Maxresult <Int32>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### Get1
-```
-Get-AzKeyVaultStorageAccount -Name <String> [-VaultBaseUrl <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzKeyVaultStorageAccount [-KeyVaultDnsSuffix <String>] [-VaultName <String>] [-MaxResult <Int32>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzKeyVaultStorageAccount -InputObject <IKeyVaultIdentity> [-VaultBaseUrl <String>]
+Get-AzKeyVaultStorageAccount -InputObject <IKeyVaultIdentity> [-KeyVaultDnsSuffix <String>]
+ [-VaultName <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get1
+```
+Get-AzKeyVaultStorageAccount -Name <String> [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetDeleted
+```
+Get-AzKeyVaultStorageAccount -InRemovedState [-VaultBaseUrl <String>] [-MaxResult <Int32>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetDeleted1
+```
+Get-AzKeyVaultStorageAccount -Name <String> -InRemovedState [-VaultBaseUrl <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -89,13 +101,45 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Maxresult
+### -InRemovedState
+Signals that deleted key vault storage accounts should be returned.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: GetDeleted, GetDeleted1
+Aliases:
+
+Required: True
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -KeyVaultDnsSuffix
+MISSING DESCRIPTION 06
+
+```yaml
+Type: System.String
+Parameter Sets: Get, GetViaIdentity, Get1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -MaxResult
 Maximum number of results to return in a page.
 If not specified the service will return up to 25 results.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: Get
+Parameter Sets: Get, GetDeleted
 Aliases:
 
 Required: False
@@ -111,7 +155,7 @@ The name of the storage account.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get1
+Parameter Sets: Get1, GetDeleted1
 Aliases: StorageAccountName
 
 Required: True
@@ -127,7 +171,23 @@ MISSING DESCRIPTION 06
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: GetDeleted, GetDeleted1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -VaultName
+MISSING DESCRIPTION 06
+
+```yaml
+Type: System.String
+Parameter Sets: Get, GetViaIdentity, Get1
 Aliases:
 
 Required: False
@@ -151,9 +211,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IStorageBundle
 
+### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api70.IDeletedStorageAccountItem
+
+### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api70.IDeletedStorageBundle
+
 ## ALIASES
 
 ### Get-AzKeyVaultManagedStorageAccount
+
+## NOTES
 
 ## RELATED LINKS
 

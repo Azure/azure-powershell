@@ -132,6 +132,7 @@ Dynamic: False
 
 ### -KeyCredentials
 The collection of key credentials associated with the service principal.
+To construct, see NOTES section for KEYCREDENTIALS properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IKeyCredential[]
@@ -164,6 +165,7 @@ Dynamic: False
 
 ### -Parameter
 Request parameters for update an existing service principal.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IServicePrincipalUpdateParameters
@@ -196,6 +198,7 @@ Dynamic: False
 
 ### -PasswordCredentials
 The collection of password credentials associated with the service principal.
+To construct, see NOTES section for PASSWORDCREDENTIALS properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IPasswordCredential[]
@@ -297,15 +300,56 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IServicePrincipalUpdateParameters
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IServicePrincipalUpdateParameters
 
 ## OUTPUTS
 
 ### System.Boolean
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### KEYCREDENTIALS <IKeyCredential[]>: The collection of key credentials associated with the service principal.
+  - `[CustomKeyIdentifier <String>]`: Custom Key Identifier
+  - `[EndDate <DateTime?>]`: End date.
+  - `[KeyId <String>]`: Key ID.
+  - `[StartDate <DateTime?>]`: Start date.
+  - `[Type <String>]`: Type. Acceptable values are 'AsymmetricX509Cert' and 'Symmetric'.
+  - `[Usage <String>]`: Usage. Acceptable values are 'Verify' and 'Sign'.
+  - `[Value <String>]`: Key value.
+
+#### PARAMETER <IServicePrincipalUpdateParameters>: Request parameters for update an existing service principal.
+  - `[AccountEnabled <String>]`: whether or not the service principal account is enabled
+  - `[AppRoleAssignmentRequired <Boolean?>]`: Specifies whether an AppRoleAssignment to a user or group is required before Azure AD will issue a user or access token to the application.
+  - `[KeyCredentials <IKeyCredential[]>]`: The collection of key credentials associated with the service principal.
+    - `[CustomKeyIdentifier <String>]`: Custom Key Identifier
+    - `[EndDate <DateTime?>]`: End date.
+    - `[KeyId <String>]`: Key ID.
+    - `[StartDate <DateTime?>]`: Start date.
+    - `[Type <String>]`: Type. Acceptable values are 'AsymmetricX509Cert' and 'Symmetric'.
+    - `[Usage <String>]`: Usage. Acceptable values are 'Verify' and 'Sign'.
+    - `[Value <String>]`: Key value.
+  - `[PasswordCredentials <IPasswordCredential[]>]`: The collection of password credentials associated with the service principal.
+    - `[CustomKeyIdentifier <Byte[]>]`: Custom Key Identifier
+    - `[EndDate <DateTime?>]`: End date.
+    - `[KeyId <String>]`: Key ID.
+    - `[StartDate <DateTime?>]`: Start date.
+    - `[Value <String>]`: Key value.
+  - `[ServicePrincipalType <String>]`: the type of the service principal
+  - `[Tag <String[]>]`: Optional list of tags that you can apply to your service principals. Not nullable.
+
+#### PASSWORDCREDENTIALS <IPasswordCredential[]>: The collection of password credentials associated with the service principal.
+  - `[CustomKeyIdentifier <Byte[]>]`: Custom Key Identifier
+  - `[EndDate <DateTime?>]`: End date.
+  - `[KeyId <String>]`: Key ID.
+  - `[StartDate <DateTime?>]`: Start date.
+  - `[Value <String>]`: Key value.
 
 ## RELATED LINKS
 

@@ -23,16 +23,15 @@ Add-AzWebAppPremierAddOnSlot -Name <String> -PremierAddOnName <String> -Resource
 ```
 Add-AzWebAppPremierAddOnSlot -Name <String> -PremierAddOnName <String> -ResourceGroupName <String>
  -Slot <String> -SubscriptionId <String> -Location <String> [-Kind <String>] [-MarketplaceOffer <String>]
- [-MarketplacePublisher <String>] [-Product <String>] [-Sku <String>] [-Tag <IResourceTags>]
- [-Vendor <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-MarketplacePublisher <String>] [-Product <String>] [-Sku <String>] [-Tag <Hashtable>] [-Vendor <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### AddViaIdentityExpanded
 ```
 Add-AzWebAppPremierAddOnSlot -InputObject <IWebSiteIdentity> -Location <String> [-Kind <String>]
  [-MarketplaceOffer <String>] [-MarketplacePublisher <String>] [-Product <String>] [-Sku <String>]
- [-Tag <IResourceTags>] [-Vendor <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-Tag <Hashtable>] [-Vendor <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### AddViaIdentity
@@ -180,6 +179,7 @@ Dynamic: False
 
 ### -PremierAddOn
 Premier add-on.
+To construct, see NOTES section for PREMIERADDON properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IPremierAddOn
@@ -297,7 +297,7 @@ Dynamic: False
 Resource tags.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801Preview.IResourceTags
+Type: System.Collections.Hashtable
 Parameter Sets: AddExpanded, AddViaIdentityExpanded
 Aliases:
 
@@ -372,6 +372,22 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IPremierAddOn
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PREMIERADDON <IPremierAddOn>: Premier add-on.
+  - `Location <String>`: Resource Location.
+  - `[Kind <String>]`: Kind of resource.
+  - `[Tag <IResourceTags>]`: Resource tags.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
+  - `[MarketplaceOffer <String>]`: Premier add on Marketplace offer.
+  - `[MarketplacePublisher <String>]`: Premier add on Marketplace publisher.
+  - `[Product <String>]`: Premier add on Product.
+  - `[Sku <String>]`: Premier add on SKU.
+  - `[Vendor <String>]`: Premier add on Vendor.
 
 ## RELATED LINKS
 

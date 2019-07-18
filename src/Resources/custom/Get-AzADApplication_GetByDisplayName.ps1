@@ -53,8 +53,8 @@ function Get-AzADApplication_GetByDisplayName {
     )
 
     process {
-        $PSBoundParameters.Add("Filter", "displayname eq '$DisplayName'") | Out-Null
-        $PSBoundParameters.Remove("DisplayName") | Out-Null
+        $null = $PSBoundParameters.Add("Filter", "displayname eq '$DisplayName'")
+        $null = $PSBoundParameters.Remove("DisplayName")
         Az.Resources\Get-AzADApplication @PSBoundParameters
     }
 }

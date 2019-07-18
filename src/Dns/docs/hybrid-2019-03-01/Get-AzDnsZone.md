@@ -143,8 +143,8 @@ Dynamic: False
 ```
 
 ### -Top
-The maximum number of DNS zones to return.
-If not specified, returns up to 100 zones.
+The maximum number of record sets to return.
+If not specified, returns up to 100 record sets.
 
 ```yaml
 Type: System.Int32
@@ -171,6 +171,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20160401.IZone
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

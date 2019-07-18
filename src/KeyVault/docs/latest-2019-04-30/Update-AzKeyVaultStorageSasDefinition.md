@@ -16,30 +16,29 @@ This operation requires the storage/setsas permission.
 ### Update (Default)
 ```
 Update-AzKeyVaultStorageSasDefinition -SasDefinitionName <String> -StorageAccountName <String>
- [-VaultBaseUrl <String>] [-Parameter <ISasDefinitionUpdateParameters>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-KeyVaultDnsSuffix <String>] [-VaultName <String>] [-Parameter <ISasDefinitionUpdateParameters>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
 ```
 Update-AzKeyVaultStorageSasDefinition -SasDefinitionName <String> -StorageAccountName <String>
- [-VaultBaseUrl <String>] [-Parameter <ISasDefinitionUpdateParameters>] [-Enabled]
- [-Tag <ISasDefinitionUpdateParametersTags>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-KeyVaultDnsSuffix <String>] [-VaultName <String>] [-Parameter <ISasDefinitionUpdateParameters>] [-Enabled]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzKeyVaultStorageSasDefinition -InputObject <IKeyVaultIdentity> [-VaultBaseUrl <String>]
- [-Parameter <ISasDefinitionUpdateParameters>] [-Enabled] [-Tag <ISasDefinitionUpdateParametersTags>]
+Update-AzKeyVaultStorageSasDefinition -InputObject <IKeyVaultIdentity> [-KeyVaultDnsSuffix <String>]
+ [-VaultName <String>] [-Parameter <ISasDefinitionUpdateParameters>] [-Enabled] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
 ```
-Update-AzKeyVaultStorageSasDefinition -InputObject <IKeyVaultIdentity> [-VaultBaseUrl <String>]
- [-Parameter <ISasDefinitionUpdateParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzKeyVaultStorageSasDefinition -InputObject <IKeyVaultIdentity> [-KeyVaultDnsSuffix <String>]
+ [-VaultName <String>] [-Parameter <ISasDefinitionUpdateParameters>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -116,8 +115,25 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -KeyVaultDnsSuffix
+MISSING DESCRIPTION 06
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Parameter
 The SAS definition update parameters.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.ISasDefinitionUpdateParameters
@@ -168,7 +184,7 @@ Dynamic: False
 Application specific metadata in the form of key-value pairs.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.ISasDefinitionUpdateParametersTags
+Type: System.Collections.Hashtable
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -180,7 +196,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VaultBaseUrl
+### -VaultName
 MISSING DESCRIPTION 06
 
 ```yaml
@@ -234,9 +250,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.ISasDefinitionUpdateParameters
-
 ### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.ISasDefinitionUpdateParameters
 
 ## OUTPUTS
 
@@ -245,6 +261,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### Update-AzKeyVaultManagedStorageSasDefinition
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### PARAMETER <ISasDefinitionUpdateParameters>: The SAS definition update parameters.
+  - `[AttributeEnabled <Boolean?>]`: the enabled state of the object.
+  - `[Parameter <ISasDefinitionUpdateParameters1>]`: Sas definition update metadata in the form of key-value pairs.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
+  - `[Tag <ISasDefinitionUpdateParametersTags>]`: Application specific metadata in the form of key-value pairs.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
 

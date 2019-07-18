@@ -147,6 +147,7 @@ Dynamic: False
 
 ### -Deployment
 User credentials used for publishing activity.
+To construct, see NOTES section for DEPLOYMENT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IDeployment
@@ -386,6 +387,23 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IDeployment
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### DEPLOYMENT <IDeployment>: User credentials used for publishing activity.
+  - `[Kind <String>]`: Kind of resource.
+  - `[Active <Boolean?>]`: True if deployment is currently active, false if completed and null if not started.
+  - `[Author <String>]`: Who authored the deployment.
+  - `[AuthorEmail <String>]`: Author email.
+  - `[Deployer <String>]`: Who performed the deployment.
+  - `[Detail <String>]`: Details on deployment.
+  - `[EndTime <DateTime?>]`: End time.
+  - `[Message <String>]`: Details about deployment status.
+  - `[StartTime <DateTime?>]`: Start time.
+  - `[Status <Int32?>]`: Deployment status.
 
 ## RELATED LINKS
 

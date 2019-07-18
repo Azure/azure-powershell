@@ -22,7 +22,7 @@ Set-AzWebSiteGlobalSubscriptionPublishingCredentials -SubscriptionId <String> [-
 ```
 Set-AzWebSiteGlobalSubscriptionPublishingCredentials -SubscriptionId <String> -Location <String>
  [-Id <String>] [-Kind <String>] [-Name <String>] [-PropertiesName <String>] [-PublishingPassword <String>]
- [-PublishingUserName <String>] [-ScmUri <String>] [-Tag <IResourceTags>] [-Type <String>]
+ [-PublishingUserName <String>] [-ScmUri <String>] [-Tag <Hashtable>] [-Type <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -181,6 +181,7 @@ Dynamic: False
 
 ### -RequestMessage
 Represents user credentials used for publishing activity
+To construct, see NOTES section for REQUESTMESSAGE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.IUser
@@ -233,7 +234,7 @@ Dynamic: False
 Resource tags
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801Preview.IResourceTags
+Type: System.Collections.Hashtable
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -306,6 +307,24 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.IUser
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### REQUESTMESSAGE <IUser>: Represents user credentials used for publishing activity
+  - `Location <String>`: Resource Location
+  - `[Id <String>]`: Resource Id
+  - `[Kind <String>]`: Kind of resource
+  - `[Name <String>]`: Resource Name
+  - `[Tag <IResourceTags>]`: Resource tags
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
+  - `[Type <String>]`: Resource type
+  - `[PropertiesName <String>]`: Username (internal)
+  - `[PublishingPassword <String>]`: Password used for publishing
+  - `[PublishingUserName <String>]`: Username used for publishing
+  - `[ScmUri <String>]`: Service Control Manager URI, including username and password
 
 ## RELATED LINKS
 

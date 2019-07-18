@@ -83,6 +83,7 @@ Dynamic: False
 
 ### -NameIdentifier
 Identifies an object.
+To construct, see NOTES section for NAMEIDENTIFIER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160301.INameIdentifier
@@ -160,6 +161,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160301.IIdentifier
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### NAMEIDENTIFIER <INameIdentifier>: Identifies an object.
+  - `[Name <String>]`: Name of the object.
 
 ## RELATED LINKS
 

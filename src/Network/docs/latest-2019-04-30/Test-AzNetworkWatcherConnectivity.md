@@ -16,7 +16,7 @@ Verifies the possibility of establishing a direct TCP connection from a virtual 
 ```
 Test-AzNetworkWatcherConnectivity -NetworkWatcherName <String> -ResourceGroupName <String>
  -SubscriptionId <String> [-Parameter <IConnectivityParameters>] [-DefaultProfile <PSObject>] [-AsJob]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CheckExpanded
@@ -25,7 +25,8 @@ Test-AzNetworkWatcherConnectivity -NetworkWatcherName <String> -ResourceGroupNam
  -SubscriptionId <String> -SourceResourceId <String> [-DestinationAddress <String>] [-DestinationPort <Int32>]
  [-DestinationResourceId <String>] [-HttpConfigurationHeader <IHttpHeader[]>]
  [-HttpConfigurationMethod <HttpMethod>] [-HttpConfigurationValidStatusCode <Int32[]>] [-Protocol <Protocol>]
- [-SourcePort <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SourcePort <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CheckViaIdentityExpanded
@@ -34,13 +35,13 @@ Test-AzNetworkWatcherConnectivity -InputObject <INetworkIdentity> -SourceResourc
  [-DestinationAddress <String>] [-DestinationPort <Int32>] [-DestinationResourceId <String>]
  [-HttpConfigurationHeader <IHttpHeader[]>] [-HttpConfigurationMethod <HttpMethod>]
  [-HttpConfigurationValidStatusCode <Int32[]>] [-Protocol <Protocol>] [-SourcePort <Int32>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CheckViaIdentity
 ```
 Test-AzNetworkWatcherConnectivity -InputObject <INetworkIdentity> [-Parameter <IConnectivityParameters>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -138,7 +139,7 @@ The ID of the resource to which a connection attempt will be made.
 ```yaml
 Type: System.String
 Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
-Aliases:
+Aliases: DestinationId
 
 Required: False
 Position: Named
@@ -150,6 +151,7 @@ Dynamic: False
 
 ### -HttpConfigurationHeader
 List of HTTP headers.
+To construct, see NOTES section for HTTPCONFIGURATIONHEADER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IHttpHeader[]
@@ -228,8 +230,25 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Parameter
 Parameters that determine how the connectivity check will be performed.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IConnectivityParameters
@@ -250,7 +269,7 @@ Network protocol.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.Protocol
 Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
-Aliases:
+Aliases: ProtocolConfiguration
 
 Required: False
 Position: Named
@@ -298,7 +317,7 @@ The ID of the resource from which a connectivity check will be initiated.
 ```yaml
 Type: System.String
 Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
-Aliases:
+Aliases: SourceId
 
 Required: True
 Position: Named
@@ -372,6 +391,28 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IConnectivityInformation
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### HTTPCONFIGURATIONHEADER <IHttpHeader[]>: List of HTTP headers.
+  - `[Name <String>]`: The name in HTTP header.
+  - `[Value <String>]`: The value in HTTP header.
+
+#### PARAMETER <IConnectivityParameters>: Parameters that determine how the connectivity check will be performed.
+  - `SourceResourceId <String>`: The ID of the resource from which a connectivity check will be initiated.
+  - `[DestinationAddress <String>]`: The IP address or URI the resource to which a connection attempt will be made.
+  - `[DestinationPort <Int32?>]`: Port on which check connectivity will be performed.
+  - `[DestinationResourceId <String>]`: The ID of the resource to which a connection attempt will be made.
+  - `[HttpConfigurationHeader <IHttpHeader[]>]`: List of HTTP headers.
+    - `[Name <String>]`: The name in HTTP header.
+    - `[Value <String>]`: The value in HTTP header.
+  - `[HttpConfigurationMethod <HttpMethod?>]`: HTTP method.
+  - `[HttpConfigurationValidStatusCode <Int32[]>]`: Valid status codes.
+  - `[Protocol <Protocol?>]`: Network protocol.
+  - `[SourcePort <Int32?>]`: The source port from which a connectivity check will be performed.
 
 ## RELATED LINKS
 

@@ -63,8 +63,8 @@ function Remove-AzADGroup_DeleteByDisplayName {
         $Group = Az.Resources\Get-AzADGroup -TenantId $TenantId -DisplayName $DisplayName
         if ($null -ne $Group)
         {
-            $PSBoundParameters.Add("ObjectId", $Group.ObjectId) | Out-Null
-            $PSBoundParameters.Remove("DisplayName") | Out-Null
+            $null = $PSBoundParameters.Add("ObjectId", $Group.ObjectId)
+            $null = $PSBoundParameters.Remove("DisplayName")
             Az.Resources\Remove-AzADGroup @PSBoundParameters
         }
     }

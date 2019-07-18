@@ -16,33 +16,30 @@ Create or update a certificate purchase order.
 ```
 New-AzAppServiceCertificateOrder -CertificateOrderName <String> -ResourceGroupName <String>
  -SubscriptionId <String> [-CertificateDistinguishedName <IAppServiceCertificateOrder>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpanded
 ```
 New-AzAppServiceCertificateOrder -CertificateOrderName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -Location <String> -ProductType <CertificateProductType> [-AutoRenew]
- [-Certificate <IAppServiceCertificateOrderPropertiesCertificates>] [-Csr <String>]
- [-DistinguishedName <String>] [-KeySize <Int32>] [-Kind <String>] [-ProvisioningState <ProvisioningState>]
- [-Status <CertificateOrderStatus>] [-Tag <IResourceTags>] [-ValidityInYear <Int32>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -SubscriptionId <String> -Location <String> [-AutoRenew] [-Certificate <Hashtable>] [-Csr <String>]
+ [-DistinguishedName <String>] [-KeySize <Int32>] [-Kind <String>] [-ProductType <CertificateProductType>]
+ [-Tag <Hashtable>] [-ValidityInYear <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzAppServiceCertificateOrder -InputObject <IWebSiteIdentity> -Location <String>
- -ProductType <CertificateProductType> [-AutoRenew]
- [-Certificate <IAppServiceCertificateOrderPropertiesCertificates>] [-Csr <String>]
- [-DistinguishedName <String>] [-KeySize <Int32>] [-Kind <String>] [-ProvisioningState <ProvisioningState>]
- [-Status <CertificateOrderStatus>] [-Tag <IResourceTags>] [-ValidityInYear <Int32>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzAppServiceCertificateOrder -InputObject <IWebSiteIdentity> -Location <String> [-AutoRenew]
+ [-Certificate <Hashtable>] [-Csr <String>] [-DistinguishedName <String>] [-KeySize <Int32>] [-Kind <String>]
+ [-ProductType <CertificateProductType>] [-Tag <Hashtable>] [-ValidityInYear <Int32>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
 New-AzAppServiceCertificateOrder -InputObject <IWebSiteIdentity>
- [-CertificateDistinguishedName <IAppServiceCertificateOrder>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-CertificateDistinguishedName <IAppServiceCertificateOrder>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -107,7 +104,7 @@ Dynamic: False
 State of the Key Vault secret.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IAppServiceCertificateOrderPropertiesCertificates
+Type: System.Collections.Hashtable
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -121,6 +118,7 @@ Dynamic: False
 
 ### -CertificateDistinguishedName
 SSL certificate purchase order.
+To construct, see NOTES section for CERTIFICATEDISTINGUISHEDNAME properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IAppServiceCertificateOrder
@@ -263,27 +261,27 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ProductType
-Certificate product type.
+### -NoWait
+Run the command asynchronously
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.CertificateProductType
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ProvisioningState
-Status of certificate order.
+### -ProductType
+Certificate product type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.ProvisioningState
+Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.CertificateProductType
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -304,22 +302,6 @@ Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Status
-Current order status.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.CertificateOrderStatus
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -349,7 +331,7 @@ Dynamic: False
 Resource tags.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801Preview.IResourceTags
+Type: System.Collections.Hashtable
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -424,6 +406,25 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IAppServiceCertificateOrder
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### CERTIFICATEDISTINGUISHEDNAME <IAppServiceCertificateOrder>: SSL certificate purchase order.
+  - `Location <String>`: Resource Location.
+  - `ProductType <CertificateProductType>`: Certificate product type.
+  - `[Kind <String>]`: Kind of resource.
+  - `[Tag <IResourceTags>]`: Resource tags.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
+  - `[AutoRenew <Boolean?>]`: <code>true</code> if the certificate should be automatically renewed when it expires; otherwise, <code>false</code>.
+  - `[Certificate <IAppServiceCertificateOrderPropertiesCertificates>]`: State of the Key Vault secret.
+    - `[(Any) <IAppServiceCertificate>]`: This indicates any property can be added to this object.
+  - `[Csr <String>]`: Last CSR that was created for this order.
+  - `[DistinguishedName <String>]`: Certificate distinguished name.
+  - `[KeySize <Int32?>]`: Certificate key size.
+  - `[ValidityInYear <Int32?>]`: Duration in years (must be between 1 and 3).
 
 ## RELATED LINKS
 

@@ -53,6 +53,7 @@ PS C:\> {{ Add code here }}
 
 ### -Access
 Description of the parameters of Private Access for a Web Site.
+To construct, see NOTES section for ACCESS properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IPrivateAccess
@@ -183,6 +184,7 @@ Dynamic: False
 
 ### -VirtualNetwork
 The Virtual Networks (and subnets) allowed to access the site privately.
+To construct, see NOTES section for VIRTUALNETWORK properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IPrivateAccessVirtualNetwork[]
@@ -242,6 +244,30 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IPrivateAccess
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### ACCESS <IPrivateAccess>: Description of the parameters of Private Access for a Web Site.
+  - `[Kind <String>]`: Kind of resource.
+  - `[Enabled <Boolean?>]`: Whether private access is enabled or not.
+  - `[VirtualNetwork <IPrivateAccessVirtualNetwork[]>]`: The Virtual Networks (and subnets) allowed to access the site privately.
+    - `[Key <Int32?>]`: The key (ID) of the Virtual Network.
+    - `[Name <String>]`: The name of the Virtual Network.
+    - `[ResourceId <String>]`: The ARM uri of the Virtual Network
+    - `[Subnet <IPrivateAccessSubnet[]>]`: A List of subnets that access is allowed to on this Virtual Network. An empty array (but not null) is interpreted to mean that all subnets are allowed within this Virtual Network.
+      - `[Key <Int32?>]`: The key (ID) of the subnet.
+      - `[Name <String>]`: The name of the subnet.
+
+#### VIRTUALNETWORK <IPrivateAccessVirtualNetwork[]>: The Virtual Networks (and subnets) allowed to access the site privately.
+  - `[Key <Int32?>]`: The key (ID) of the Virtual Network.
+  - `[Name <String>]`: The name of the Virtual Network.
+  - `[ResourceId <String>]`: The ARM uri of the Virtual Network
+  - `[Subnet <IPrivateAccessSubnet[]>]`: A List of subnets that access is allowed to on this Virtual Network. An empty array (but not null) is interpreted to mean that all subnets are allowed within this Virtual Network.
+    - `[Key <Int32?>]`: The key (ID) of the subnet.
+    - `[Name <String>]`: The name of the subnet.
 
 ## RELATED LINKS
 

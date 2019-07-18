@@ -180,6 +180,7 @@ Dynamic: False
 
 ### -Route
 Virtual Network route contract used to pass routing information for a Virtual Network.
+To construct, see NOTES section for ROUTE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IVnetRoute
@@ -324,6 +325,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IVnetRoute
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### ROUTE <IVnetRoute>: Virtual Network route contract used to pass routing information for a Virtual Network.
+  - `[Kind <String>]`: Kind of resource.
+  - `[EndAddress <String>]`: The ending address for this route. If the start address is specified in CIDR notation, this must be omitted.
+  - `[RouteType <RouteType?>]`: The type of route this is:         DEFAULT - By default, every app has routes to the local address ranges specified by RFC1918         INHERITED - Routes inherited from the real Virtual Network routes         STATIC - Static route set on the app only          These values will be used for syncing an app's routes with those from a Virtual Network.
+  - `[StartAddress <String>]`: The starting address for this route. This may also include a CIDR notation, in which case the end address must not be specified.
 
 ## RELATED LINKS
 

@@ -15,31 +15,30 @@ Invoke the MSDeploy web app extension.
 ### Create (Default)
 ```
 New-AzWebAppMSDeployOperationSlot -Name <String> -ResourceGroupName <String> -Slot <String>
- -SubscriptionId <String> [-MSDeploy <IMSDeploy>] [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -SubscriptionId <String> [-MSDeploy <IMSDeploy>] [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpanded
 ```
 New-AzWebAppMSDeployOperationSlot -Name <String> -ResourceGroupName <String> -Slot <String>
  -SubscriptionId <String> [-PassThru] [-AppOffline] [-ConnectionString <String>] [-DbType <String>]
- [-Kind <String>] [-PackageUri <String>] [-SetParameter <IMSDeployCoreSetParameters>]
- [-SetParametersXmlFileUri <String>] [-SkipAppData] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-Kind <String>] [-PackageUri <String>] [-SetParameter <Hashtable>] [-SetParametersXmlFileUri <String>]
+ [-SkipAppData] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzWebAppMSDeployOperationSlot -InputObject <IWebSiteIdentity> [-PassThru] [-AppOffline]
  [-ConnectionString <String>] [-DbType <String>] [-Kind <String>] [-PackageUri <String>]
- [-SetParameter <IMSDeployCoreSetParameters>] [-SetParametersXmlFileUri <String>] [-SkipAppData]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SetParameter <Hashtable>] [-SetParametersXmlFileUri <String>] [-SkipAppData] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
 New-AzWebAppMSDeployOperationSlot -InputObject <IWebSiteIdentity> [-MSDeploy <IMSDeploy>] [-PassThru]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -181,6 +180,7 @@ Dynamic: False
 
 ### -MSDeploy
 MSDeploy ARM PUT information
+To construct, see NOTES section for MSDEPLOY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.IMSDeploy
@@ -206,6 +206,22 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -264,7 +280,7 @@ MSDeploy Parameters.
 Must not be set if SetParametersXmlFileUri is used.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.IMSDeployCoreSetParameters
+Type: System.Collections.Hashtable
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -391,6 +407,22 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### MSDEPLOY <IMSDeploy>: MSDeploy ARM PUT information
+  - `[Kind <String>]`: Kind of resource.
+  - `[AppOffline <Boolean?>]`: Sets the AppOffline rule while the MSDeploy operation executes.         Setting is <code>false</code> by default.
+  - `[ConnectionString <String>]`: SQL Connection String
+  - `[DbType <String>]`: Database Type
+  - `[PackageUri <String>]`: Package URI
+  - `[SetParameter <IMSDeployCoreSetParameters>]`: MSDeploy Parameters. Must not be set if SetParametersXmlFileUri is used.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
+  - `[SetParametersXmlFileUri <String>]`: URI of MSDeploy Parameters file. Must not be set if SetParameters is used.
+  - `[SkipAppData <Boolean?>]`: Controls whether the MSDeploy operation skips the App_Data directory.         If set to <code>true</code>, the existing App_Data directory on the destination         will not be deleted, and any App_Data directory in the source will be ignored.         Setting is <code>false</code> by default.
 
 ## RELATED LINKS
 

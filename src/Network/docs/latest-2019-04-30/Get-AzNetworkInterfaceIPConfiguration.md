@@ -229,5 +229,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Get-AzNetworkInterfaceVirtualMachineScaleSetIPConfiguration
 
+## NOTES
+
 ## RELATED LINKS
 

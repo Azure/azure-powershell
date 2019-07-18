@@ -53,8 +53,8 @@ function Get-AzADServicePrincipal_GetByApplicationId {
     )
 
     process {
-        $PSBoundParameters.Add("Filter", "appId eq '$ApplicationId'") | Out-Null
-        $PSBoundParameters.Remove("ApplicationId") | Out-Null
+        $null = $PSBoundParameters.Add("Filter", "appId eq '$ApplicationId'")
+        $null = $PSBoundParameters.Remove("ApplicationId")
         Az.Resources\Get-AzADServicePrincipal @PSBoundParameters
     }
 }

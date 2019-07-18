@@ -59,16 +59,16 @@ function Get-AzPolicySetDefinition_GetById {
         $Tokens = $Id.Split("/", [System.StringSplitOptions]::RemoveEmptyEntries)
         if ($Tokens[0] -eq "subscriptions")
         {
-            $PSBoundParameters.Add("SubscriptionId", $Tokens[1]) | Out-Null
-            $PSBoundParameters.Add("Name", $Tokens[5]) | Out-Null
+            $null = $PSBoundParameters.Add("SubscriptionId", $Tokens[1])
+            $null = $PSBoundParameters.Add("Name", $Tokens[5])
         }
         else
         {
-            $PSBoundParameters.Add("ManagementGroupName", $Tokens[3])
-            $PSBoundParameters.Add("Name", $Tokens[7])
+            $null = $PSBoundParameters.Add("ManagementGroupName", $Tokens[3])
+            $null = $PSBoundParameters.Add("Name", $Tokens[7])
         }
 
-        $PSBoundParameters.Remove("Id") | Out-Null
+        $null = $PSBoundParameters.Remove("Id")
         Az.Resources\Get-AzPolicySetDefinition @PSBoundParameters
     }
 }

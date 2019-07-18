@@ -63,8 +63,8 @@ function Remove-AzADServicePrincipal_DeleteByDisplayName {
         $ServicePrincipal = Az.Resources\Get-AzADServicePrincipal -TenantId $TenantId -DisplayName $DisplayName
         if ($null -ne $ServicePrincipal)
         {
-            $PSBoundParameters.Add("ObjectId", $ServicePrincipal.ObjectId) | Out-Null
-            $PSBoundParameters.Remove("DisplayName") | Out-Null
+            $null = $PSBoundParameters.Add("ObjectId", $ServicePrincipal.ObjectId)
+            $null = $PSBoundParameters.Remove("DisplayName")
             Az.Resources\Remove-AzADServicePrincipal @PSBoundParameters
         }
     }
