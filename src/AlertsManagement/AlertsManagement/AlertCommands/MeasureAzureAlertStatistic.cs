@@ -21,16 +21,27 @@ using Microsoft.Azure.Management.AlertsManagement.Models;
 
 namespace Microsoft.Azure.Commands.AlertsManagement
 {
-    [Cmdlet("Measure", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AlertStatistic")]
+    [Cmdlet("Measure", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AlertStatistic", DefaultParameterSetName = SummaryFilterParameterSet)]
     [OutputType(typeof(PSAlertsSummary))]
     public class MeasureAzureAlertStatistic : AlertsManagementBaseCmdlet
     {
+        #region Parameter Sets
+
+        private const string SummaryFilterParameterSet = "SummaryFilter";
+        private const string SummaryTargetResourceIdFilterParameterSet = "SummaryTargetResourceIdFilter";
+
+        #endregion
+
         #region Parameters declarations
 
         /// <summary>
         /// Group by mentioned property of alert
         /// </summary>
         [Parameter(Mandatory = true,
+                   ParameterSetName = SummaryTargetResourceIdFilterParameterSet,
+                   HelpMessage = "Summarize by property")]
+        [Parameter(Mandatory = true,
+                   ParameterSetName = SummaryFilterParameterSet,
                    HelpMessage = "Summarize by property")]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("Severity", "AlertState", "MonitorCondition", "MonitorService", "SignalType", "AlertRule")]
@@ -39,7 +50,8 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// <summary>
         /// Resource Id
         /// </summary>
-        [Parameter(Mandatory = false,
+        [Parameter(Mandatory = true,
+                   ParameterSetName = SummaryTargetResourceIdFilterParameterSet,
                    HelpMessage = "Filter on Resource Id of the target resource of alert.")]
         public string TargetResourceId { get; set; }
 
@@ -47,6 +59,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// Resource Type
         /// </summary>
         [Parameter(Mandatory = false,
+                   ParameterSetName = SummaryFilterParameterSet,
                    HelpMessage = "Filter on Resource type of the target resource of alert.")]
         [ResourceTypeCompleter]
         public string TargetResourceType { get; set; }
@@ -55,6 +68,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// Resource Group Name
         /// </summary>
         [Parameter(Mandatory = false,
+                   ParameterSetName = SummaryFilterParameterSet,
                    HelpMessage = "Filter on Resource group name of the target resource of alert.")]
         [ResourceGroupCompleter]
         public string TargetResourceGroup { get; set; }
@@ -63,14 +77,25 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// Monitor Service
         /// </summary>
         [Parameter(Mandatory = false,
+                   ParameterSetName = SummaryTargetResourceIdFilterParameterSet,
                    HelpMessage = "Filter on Moniter Service")]
-        [PSArgumentCompleter("Platform", "Log Analytics", "SCOM", "Activity Log")]
+        [Parameter(Mandatory = false,
+                   ParameterSetName = SummaryFilterParameterSet,
+                   HelpMessage = "Filter on Moniter Service")]
+        [PSArgumentCompleter("Application Insights", "ActivityLog Administrative", "ActivityLog Security",
+                                "ActivityLog Recommendation", "ActivityLog Policy", "ActivityLog Autoscale",
+                                "Log Analytics", "Nagios", "Platform", "SCOM", "ServiceHealth", "SmartDetector",
+                                "VM Insights", "Zabbix")]
         public string MonitorService { get; set; }
 
         /// <summary>
         /// Monitor Condition
         /// </summary>
         [Parameter(Mandatory = false,
+                   ParameterSetName = SummaryTargetResourceIdFilterParameterSet,
+                   HelpMessage = "Filter on Monitor Condition")]
+        [Parameter(Mandatory = false,
+                   ParameterSetName = SummaryFilterParameterSet,
                    HelpMessage = "Filter on Monitor Condition")]
         [PSArgumentCompleter("Fired", "Resolved")]
         public string MonitorCondition { get; set; }
@@ -79,6 +104,10 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// Severity
         /// </summary>
         [Parameter(Mandatory = false,
+                   ParameterSetName = SummaryTargetResourceIdFilterParameterSet,
+                   HelpMessage = "Filter on Severity of alert")]
+        [Parameter(Mandatory = false,
+                   ParameterSetName = SummaryFilterParameterSet,
                    HelpMessage = "Filter on Severity of alert")]
         [PSArgumentCompleter("Sev0", "Sev1", "Sev2", "Sev3", "Sev4")]
         public string Severity { get; set; }
@@ -87,6 +116,10 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// Alert State
         /// </summary>
         [Parameter(Mandatory = false,
+                   ParameterSetName = SummaryTargetResourceIdFilterParameterSet,
+                   HelpMessage = "Filter on State of alert")]
+        [Parameter(Mandatory = false,
+                   ParameterSetName = SummaryFilterParameterSet,
                    HelpMessage = "Filter on State of alert")]
         [PSArgumentCompleter("New", "Acknowledged", "Closed")]
         public string State { get; set; }
@@ -95,6 +128,10 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// Alert Rule Id
         /// </summary>
         [Parameter(Mandatory = false,
+                   ParameterSetName = SummaryTargetResourceIdFilterParameterSet,
+                   HelpMessage = "Filter on Alert Rule Id")]
+        [Parameter(Mandatory = false,
+                   ParameterSetName = SummaryFilterParameterSet,
                    HelpMessage = "Filter on Alert Rule Id")]
         public string AlertRuleId { get; set; }
 
@@ -102,6 +139,10 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// Time range
         /// </summary>
         [Parameter(Mandatory = false,
+                   ParameterSetName = SummaryTargetResourceIdFilterParameterSet,
+                   HelpMessage = "Supported time range values – 1h, 1d, 7d, 30d (Default is 1d)")]
+        [Parameter(Mandatory = false,
+                   ParameterSetName = SummaryFilterParameterSet,
                    HelpMessage = "Supported time range values – 1h, 1d, 7d, 30d (Default is 1d)")]
         [PSArgumentCompleter("1h", "1d", "7d", "30d")]
         public string TimeRange { get; set; }
@@ -110,6 +151,10 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// Custom time range
         /// </summary>
         [Parameter(Mandatory = false,
+                   ParameterSetName = SummaryTargetResourceIdFilterParameterSet,
+                   HelpMessage = "Supported format - <start-time>/<end-time> where time is in ISO-8601 format")]
+        [Parameter(Mandatory = false,
+                   ParameterSetName = SummaryFilterParameterSet,
                    HelpMessage = "Supported format - <start-time>/<end-time> where time is in ISO-8601 format")]
         public string CustomTimeRange { get; set; }
 
@@ -117,6 +162,10 @@ namespace Microsoft.Azure.Commands.AlertsManagement
         /// Include SmartGroups Count
         /// </summary>
         [Parameter(Mandatory = false,
+                   ParameterSetName = SummaryTargetResourceIdFilterParameterSet,
+                   HelpMessage = "Include SmartGroups Count")]
+        [Parameter(Mandatory = false,
+                   ParameterSetName = SummaryFilterParameterSet,
                    HelpMessage = "Include SmartGroups Count")]
         [PSArgumentCompleter("true", "false")]
         public bool IncludeSmartGroupsCount { get; set; }
@@ -125,22 +174,28 @@ namespace Microsoft.Azure.Commands.AlertsManagement
 
         protected override void ProcessRecordInternal()
         {
-            PSAlertsSummary summary = new PSAlertsSummary(this.AlertsManagementClient.Alerts.GetSummaryWithHttpMessagesAsync(
-                groupby: GroupBy,
-                targetResource: TargetResourceId,
-                targetResourceType: TargetResourceType,
-                targetResourceGroup: TargetResourceGroup,
-                monitorService: MonitorService,
-                monitorCondition: MonitorCondition,
-                severity: Severity,
-                alertState: State,
-                alertRule: AlertRuleId,
-                timeRange: TimeRange,
-                customTimeRange: CustomTimeRange,
-                includeSmartGroupsCount: IncludeSmartGroupsCount
-                ).Result.Body);
+            switch (ParameterSetName)
+            {
+                case SummaryFilterParameterSet:
+                case SummaryTargetResourceIdFilterParameterSet:
+                    PSAlertsSummary summary = new PSAlertsSummary(this.AlertsManagementClient.Alerts.GetSummaryWithHttpMessagesAsync(
+                        groupby: GroupBy,
+                        targetResource: TargetResourceId,
+                        targetResourceType: TargetResourceType,
+                        targetResourceGroup: TargetResourceGroup,
+                        monitorService: MonitorService,
+                        monitorCondition: MonitorCondition,
+                        severity: Severity,
+                        alertState: State,
+                        alertRule: AlertRuleId,
+                        timeRange: TimeRange,
+                        customTimeRange: CustomTimeRange,
+                        includeSmartGroupsCount: IncludeSmartGroupsCount
+                        ).Result.Body);
 
-            WriteObject(summary);
+                    WriteObject(summary);
+                    break;
+            }
         }
     }
 }
