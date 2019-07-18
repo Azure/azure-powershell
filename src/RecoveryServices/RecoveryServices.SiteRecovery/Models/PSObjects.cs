@@ -945,7 +945,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.EnableAcceleratedNetworkingOnRecovery = vMNicDetails.EnableAcceleratedNetworkingOnRecovery;
             this.RecoveryPublicIPAddressId = vMNicDetails.RecoveryPublicIpAddressId;
             this.RecoveryNetworkSecurityGroupId = vMNicDetails.RecoveryNetworkSecurityGroupId;
-            this.RecoveryLBBackendAddressPoolIds =
+            this.RecoveryLBBackendAddressPoolId =
                 vMNicDetails.RecoveryLBBackendAddressPoolIds?.ToList() ?? new List<string>();
         }
 
@@ -1027,7 +1027,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets the target backend address pools for the NIC.
         /// </summary>
-        public List<string> RecoveryLBBackendAddressPoolIds { get; set; }
+        public List<string> RecoveryLBBackendAddressPoolId { get; set; }
     }
 
     /// <summary>
