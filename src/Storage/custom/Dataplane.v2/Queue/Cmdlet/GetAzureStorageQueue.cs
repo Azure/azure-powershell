@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Storage.Queue
     /// list azure queues
     /// </summary>
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Profile("latest-2019-04-30")]
-    [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageQueue", DefaultParameterSetName = NameParameterSet),OutputType(typeof(AzureStorageQueue))]
+    [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageQueue!V2", DefaultParameterSetName = NameParameterSet),OutputType(typeof(AzureStorageQueue))]
     public class GetAzureStorageQueueCommand : StorageQueueBaseCmdlet
     {
         /// <summary>

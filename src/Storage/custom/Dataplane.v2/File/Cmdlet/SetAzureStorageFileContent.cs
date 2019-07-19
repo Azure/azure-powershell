@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Storage.File.Cmdlet
     using LocalConstants = Microsoft.Azure.Commands.Storage.File.Constants;
 
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Profile("latest-2019-04-30")]
-    [Cmdlet("Set", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFileContent", SupportsShouldProcess = true, DefaultParameterSetName = LocalConstants.ShareNameParameterSetName), OutputType(typeof(CloudFile))]
+    [Cmdlet("Set", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFileContent!V2", SupportsShouldProcess = true, DefaultParameterSetName = LocalConstants.ShareNameParameterSetName), OutputType(typeof(CloudFile))]
     public class SetAzureStorageFileContent : StorageFileDataManagementCmdletBase
     {
         [Parameter(

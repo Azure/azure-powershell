@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Storage.Table.Cmdlet
     /// create an new azure table
     /// </summary>
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Profile("latest-2019-04-30")]
-    [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageTable"),OutputType(typeof(AzureStorageTable))]
+    [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageTable!V2"),OutputType(typeof(AzureStorageTable))]
     public class NewAzureStorageTableCommand : StorageCloudTableCmdletBase
     {
         [Alias("N", "Table")]

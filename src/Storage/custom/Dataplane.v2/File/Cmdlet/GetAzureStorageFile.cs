@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Storage.File.Cmdlet
     using System.Net;
 
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Profile("latest-2019-04-30")]
-    [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFile", DefaultParameterSetName = Constants.ShareNameParameterSetName)]
+    [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFile!V2", DefaultParameterSetName = Constants.ShareNameParameterSetName)]
     [OutputType(typeof(CloudFile))]
     public class GetAzureStorageFile : AzureStorageFileCmdletBase
     {

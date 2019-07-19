@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Storage.File.Cmdlet
     /// create a new stored access policy to a specific azure share.
     /// </summary>
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Profile("latest-2019-04-30")]
-    [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageShareStoredAccessPolicy", DefaultParameterSetName = Constants.ShareNameParameterSetName), OutputType(typeof(String))]
+    [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageShareStoredAccessPolicy!V2", DefaultParameterSetName = Constants.ShareNameParameterSetName), OutputType(typeof(String))]
     public class NewAzureStorageShareStoredAccessPolicy : AzureStorageFileCmdletBase
     {
         [Alias("N", "Name")]

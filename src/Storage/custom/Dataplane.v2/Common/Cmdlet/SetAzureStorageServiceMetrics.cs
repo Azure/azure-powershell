@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Storage.Common.Cmdlet
     /// Show azure storage service properties
     /// </summary>
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Profile("latest-2019-04-30")]
-    [Cmdlet("Set", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageServiceMetricsProperty"),OutputType(typeof(MetricsProperties))]
+    [Cmdlet("Set", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageServiceMetricsProperty!V2"),OutputType(typeof(MetricsProperties))]
     public class SetAzureStorageServiceMetricsCommand : StorageCloudBlobCmdletBase
     {
         [Parameter(Mandatory = true, Position = 0, HelpMessage = GetAzureStorageServiceLoggingCommand.ServiceTypeHelpMessage)]

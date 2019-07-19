@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Storage.Common.Cmdlet
     /// Modify Azure Storage service properties
     /// </summary>
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Profile("latest-2019-04-30")]
-    [Cmdlet("Update", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageServiceProperty", SupportsShouldProcess = true), OutputType(typeof(PSSeriviceProperties))]
+    [Cmdlet("Update", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageServiceProperty!V2", SupportsShouldProcess = true), OutputType(typeof(PSSeriviceProperties))]
     public class UpdateAzureStorageServicePropertyCommand : StorageCloudBlobCmdletBase
     {
         [Parameter(Mandatory = true, Position = 0, HelpMessage = GetAzureStorageServiceLoggingCommand.ServiceTypeHelpMessage)]

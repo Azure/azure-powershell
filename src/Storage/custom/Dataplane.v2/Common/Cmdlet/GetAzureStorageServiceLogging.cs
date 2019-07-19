@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Storage.Common.Cmdlet
     /// Show azure storage service properties
     /// </summary>
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Profile("latest-2019-04-30")]
-    [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageServiceLoggingProperty"),OutputType(typeof(LoggingProperties))]
+    [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageServiceLoggingProperty!V2"),OutputType(typeof(LoggingProperties))]
     public class GetAzureStorageServiceLoggingCommand : StorageCloudBlobCmdletBase
     {
         public const string ServiceTypeHelpMessage = "Azure storage service type(Blob, Table, Queue).";

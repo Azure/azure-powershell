@@ -24,7 +24,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
     /// Disable azure storage service StaticWebsite, currently only available on Blob service
     /// </summary>
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Profile("hybrid-2019-03-01")]
-    [Cmdlet("Disable", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageStaticWebsite", SupportsShouldProcess = true), 
+    [Cmdlet("Disable", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageStaticWebsite!V1", SupportsShouldProcess = true), 
         OutputType(typeof(PSStaticWebsiteProperties))]
     public class DisableAzureStorageServiceStaticWebsiteCommand : StorageCloudBlobCmdletBase
     {

@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Storage.File.Cmdlet
     using System.Net;
 
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Profile("latest-2019-04-30")]
-    [Cmdlet("Close", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFileHandle", SupportsShouldProcess = true, DefaultParameterSetName = ShareNameCloseAllParameterSetName)]
+    [Cmdlet("Close", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFileHandle!V2", SupportsShouldProcess = true, DefaultParameterSetName = ShareNameCloseAllParameterSetName)]
     [OutputType(typeof(int))]
     public class CloseAzureStorageFileHandle : AzureStorageFileCmdletBase
     {

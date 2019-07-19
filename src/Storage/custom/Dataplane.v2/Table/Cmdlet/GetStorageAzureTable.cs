@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Storage.Table.Cmdlet
     /// list azure tables
     /// </summary>
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Profile("latest-2019-04-30")]
-    [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageTable", DefaultParameterSetName = NameParameterSet),OutputType(typeof(AzureStorageTable))]
+    [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageTable!V2", DefaultParameterSetName = NameParameterSet),OutputType(typeof(AzureStorageTable))]
     public class GetAzureStorageTableCommand : StorageCloudTableCmdletBase
     {
         /// <summary>

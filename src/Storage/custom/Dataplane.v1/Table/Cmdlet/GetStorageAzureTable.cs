@@ -27,7 +27,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
     /// list azure tables
     /// </summary>
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Profile("hybrid-2019-03-01")]
-    [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageTable", DefaultParameterSetName = NameParameterSet),OutputType(typeof(AzureStorageTable))]
+    [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageTable!V1", DefaultParameterSetName = NameParameterSet),OutputType(typeof(AzureStorageTable))]
     public class GetAzureStorageTableCommand : StorageCloudTableCmdletBase
     {
         /// <summary>

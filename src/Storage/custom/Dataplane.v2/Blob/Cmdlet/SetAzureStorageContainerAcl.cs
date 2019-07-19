@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Storage.Cmdlet
     /// set access level for specified container
     /// </summary>
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Profile("latest-2019-04-30")]
-    [Cmdlet("Set", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageContainerAcl"),OutputType(typeof(AzureStorageContainer))]
+    [Cmdlet("Set", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageContainerAcl!V2"),OutputType(typeof(AzureStorageContainer))]
     public class SetAzureStorageContainerAclCommand : StorageCloudBlobCmdletBase
     {
         [Alias("N", "Container")]
