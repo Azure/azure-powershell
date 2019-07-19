@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Storage.Common
             {
                 if (!NameUtil.IsValidContainerName(containerName))
                 {
-                    throw new ArgumentException(String.Format(Resources.InvalidContainerName, containerName));
+                    throw new ArgumentException(String.Format(ResourceV2.InvalidContainerName, containerName));
                 }
 
                 Container = channel.GetContainerReference(containerName);
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Storage.Common
             absoluteFilePath = Path.GetFullPath(absoluteFilePath);
             if (!string.IsNullOrEmpty(blobName) && Requests.Count > 0)
             {
-                throw new ArgumentException(Resources.BlobNameShouldBeEmptyWhenUploading);
+                throw new ArgumentException(ResourceV2.BlobNameShouldBeEmptyWhenUploading);
             }
             else
             {
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Storage.Common
                 }
                 else
                 {
-                    throw new ArgumentException(String.Format(Resources.FileNotFound, absoluteFilePath));
+                    throw new ArgumentException(String.Format(ResourceV2.FileNotFound, absoluteFilePath));
                 }
             }
 
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.Storage.Common
 
             if (string.IsNullOrEmpty(commonDir))
             {
-                throw new ArgumentException(Resources.InvalidFileName);
+                throw new ArgumentException(ResourceV2.InvalidFileName);
             }
 
             if (!commonDir.EndsWith(Path.DirectorySeparatorChar.ToString()))

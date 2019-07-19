@@ -60,7 +60,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
         {
             if (!NameUtil.IsValidTableName(name))
             {
-                throw new ArgumentException(String.Format(Resources.InvalidTableName, name));
+                throw new ArgumentException(String.Format(ResourceV1.InvalidTableName, name));
             }
 
             TableRequestOptions requestOptions = RequestOptions;
@@ -69,7 +69,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
 
             if (!created)
             {
-                throw new ResourceAlreadyExistException(String.Format(Resources.TableAlreadyExists, name));
+                throw new ResourceAlreadyExistException(String.Format(ResourceV1.TableAlreadyExists, name));
             }
 
             return new AzureStorageTable(table);

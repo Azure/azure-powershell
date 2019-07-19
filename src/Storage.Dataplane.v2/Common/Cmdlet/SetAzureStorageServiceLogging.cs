@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Storage.Common.Cmdlet
                 }
                 else if (RetentionDays < 1 || RetentionDays > 365)
                 {
-                    throw new ArgumentException(string.Format(Resources.InvalidRetentionDay, RetentionDays));
+                    throw new ArgumentException(string.Format(ResourceV2.InvalidRetentionDay, RetentionDays));
                 }
                 else
                 {
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Storage.Common.Cmdlet
                     {
                         if (LoggingOperations.Length > 1)
                         {
-                            throw new ArgumentException(Resources.NoneAndAllOperationShouldBeAlone);
+                            throw new ArgumentException(ResourceV2.NoneAndAllOperationShouldBeAlone);
                         }
                     }
 
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Commands.Storage.Common.Cmdlet
                 }
                 else if (RetentionDays < 1 || RetentionDays > 365)
                 {
-                    throw new ArgumentException(string.Format(Resources.InvalidRetentionDay, RetentionDays));
+                    throw new ArgumentException(string.Format(ResourceV2.InvalidRetentionDay, RetentionDays));
                 }
                 else
                 {
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Commands.Storage.Common.Cmdlet
                     {
                         if (LoggingOperations.Length > 1)
                         {
-                            throw new ArgumentException(Resources.NoneAndAllOperationShouldBeAlone);
+                            throw new ArgumentException(ResourceV2.NoneAndAllOperationShouldBeAlone);
                         }
                     }
 
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Commands.Storage.Common.Cmdlet
                 }
                 catch
                 {
-                    throw new ArgumentException(String.Format(Resources.InvalidEnumName, LoggingOperations));
+                    throw new ArgumentException(String.Format(ResourceV2.InvalidEnumName, LoggingOperations));
                 }
             }
         }
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Commands.Storage.Common.Cmdlet
         {
             if (StorageServiceType.File == ServiceType)
             {
-                throw new PSInvalidOperationException(Resources.FileNotSupportLogging);
+                throw new PSInvalidOperationException(ResourceV2.FileNotSupportLogging);
             }
 
             if (ServiceType != StorageServiceType.Table)

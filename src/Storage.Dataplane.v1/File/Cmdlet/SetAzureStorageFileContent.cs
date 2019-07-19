@@ -77,7 +77,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             FileInfo localFile = new FileInfo(this.GetUnresolvedProviderPathFromPSPath(this.Source));
             if (!localFile.Exists)
             {
-                throw new FileNotFoundException(string.Format(CultureInfo.CurrentCulture, Resources.SourceFileNotFound, this.Source));
+                throw new FileNotFoundException(string.Format(CultureInfo.CurrentCulture, ResourceV1.SourceFileNotFound, this.Source));
             }
 
             // if FIPS policy is enabled, must use native MD5
@@ -98,9 +98,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 {
                     var progressRecord = new ProgressRecord(
                         this.OutputStream.GetProgressId(taskId),
-                        string.Format(CultureInfo.CurrentCulture, Resources.SendAzureFileActivity, localFile.Name,
+                        string.Format(CultureInfo.CurrentCulture, ResourceV1.SendAzureFileActivity, localFile.Name,
                             cloudFileToBeUploaded.GetFullPath(), cloudFileToBeUploaded.Share.Name),
-                        Resources.PrepareUploadingFile);
+                        ResourceV1.PrepareUploadingFile);
 
                     await DataMovementTransferHelper.DoTransfer(() =>
                     this.TransferManager.UploadAsync(
@@ -177,7 +177,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                         e.RequestInformation.HttpStatusCode == (int)HttpStatusCode.BadRequest &&
                         e.RequestInformation.ExtendedErrorInformation == null)
                     {
-                        throw new AzureStorageFileException(ErrorCategory.InvalidArgument, ErrorIdConstants.InvalidResource, Resources.InvalidResource, this);
+                        throw new AzureStorageFileException(ErrorCategory.InvalidArgument, ErrorIdConstants.InvalidResource, ResourceV1.InvalidResource, this);
                     }
 
                     throw;

@@ -72,7 +72,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
 
             if (!NameUtil.IsValidStoredAccessPolicyName(policyName))
             {
-                throw new ArgumentException(String.Format(CultureInfo.CurrentCulture, Resources.InvalidAccessPolicyName, policyName));
+                throw new ArgumentException(String.Format(CultureInfo.CurrentCulture, ResourceV1.InvalidAccessPolicyName, policyName));
             }
 
             //Get existing permissions
@@ -82,7 +82,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
             //Add new policy
             if (tablePermissions.SharedAccessPolicies.Keys.Contains(policyName))
             {
-                throw new ResourceAlreadyExistException(String.Format(CultureInfo.CurrentCulture, Resources.PolicyAlreadyExists, policyName));
+                throw new ResourceAlreadyExistException(String.Format(CultureInfo.CurrentCulture, ResourceV1.PolicyAlreadyExists, policyName));
             }
 
             SharedAccessTablePolicy policy = new SharedAccessTablePolicy();

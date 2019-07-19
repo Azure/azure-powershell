@@ -47,12 +47,12 @@ namespace Microsoft.Azure.Commands.Storage.Common
 
             if (policy.Permissions != SharedAccessBlobPermissions.None)
             {
-                throw new ArgumentException(Resources.SignedPermissionsMustBeOmitted);
+                throw new ArgumentException(ResourceV2.SignedPermissionsMustBeOmitted);
             }
 
             if (policy.SharedAccessExpiryTime.HasValue && sharedAccessPolicy.SharedAccessExpiryTime.HasValue)
             {
-                throw new ArgumentException(Resources.SignedExpiryTimeMustBeOmitted);
+                throw new ArgumentException(ResourceV2.SignedExpiryTimeMustBeOmitted);
             }
 
             return !sharedAccessPolicy.SharedAccessExpiryTime.HasValue;
@@ -84,17 +84,17 @@ namespace Microsoft.Azure.Commands.Storage.Common
 
             if (shouldNoPermission && sharedAccessPolicy.Permissions != SharedAccessFilePermissions.None)
             {
-                throw new InvalidOperationException(Resources.SignedPermissionsMustBeOmitted);
+                throw new InvalidOperationException(ResourceV2.SignedPermissionsMustBeOmitted);
             }
 
             if (shouldNoStartTime && sharedAccessPolicy.SharedAccessStartTime.HasValue)
             {
-                throw new InvalidOperationException(Resources.SignedStartTimeMustBeOmitted);
+                throw new InvalidOperationException(ResourceV2.SignedStartTimeMustBeOmitted);
             }
 
             if (shouldNoExpiryTime && sharedAccessPolicy.SharedAccessExpiryTime.HasValue)
             {
-                throw new InvalidOperationException(Resources.SignedExpiryTimeMustBeOmitted);
+                throw new InvalidOperationException(ResourceV2.SignedExpiryTimeMustBeOmitted);
             }
 
             return !sharedAccessPolicy.SharedAccessExpiryTime.HasValue;
@@ -119,12 +119,12 @@ namespace Microsoft.Azure.Commands.Storage.Common
 
             if (policy.Permissions != SharedAccessQueuePermissions.None)
             {
-                throw new ArgumentException(Resources.SignedPermissionsMustBeOmitted);
+                throw new ArgumentException(ResourceV2.SignedPermissionsMustBeOmitted);
             }
 
             if (policy.SharedAccessExpiryTime.HasValue && sharedAccessPolicy.SharedAccessExpiryTime.HasValue)
             {
-                throw new ArgumentException(Resources.SignedExpiryTimeMustBeOmitted);
+                throw new ArgumentException(ResourceV2.SignedExpiryTimeMustBeOmitted);
             }
 
             return !sharedAccessPolicy.SharedAccessExpiryTime.HasValue;
@@ -149,12 +149,12 @@ namespace Microsoft.Azure.Commands.Storage.Common
 
             if (policy.Permissions != XTable.SharedAccessTablePermissions.None)
             {
-                throw new ArgumentException(Resources.SignedPermissionsMustBeOmitted);
+                throw new ArgumentException(ResourceV2.SignedPermissionsMustBeOmitted);
             }
 
             if (policy.SharedAccessExpiryTime.HasValue && sharedAccessPolicy.SharedAccessExpiryTime.HasValue)
             {
-                throw new ArgumentException(Resources.SignedExpiryTimeMustBeOmitted);
+                throw new ArgumentException(ResourceV2.SignedExpiryTimeMustBeOmitted);
             }
 
             return !sharedAccessPolicy.SharedAccessExpiryTime.HasValue;
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Commands.Storage.Common
                 }
             }
 
-            throw new ArgumentException(string.Format(Resources.InvalidAccessPolicy, policyIdentifier));
+            throw new ArgumentException(string.Format(ResourceV2.InvalidAccessPolicy, policyIdentifier));
         }
 
         public static void SetupAccessPolicyLifeTime(DateTime? startTime, DateTime? expiryTime,
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Commands.Storage.Common
             if (SharedAccessStartTime != null && SharedAccessExpiryTime.HasValue
                 && SharedAccessExpiryTime <= SharedAccessStartTime)
             {
-                throw new ArgumentException(String.Format(Resources.ExpiryTimeGreatThanStartTime,
+                throw new ArgumentException(String.Format(ResourceV2.ExpiryTimeGreatThanStartTime,
                     SharedAccessExpiryTime.ToString(), SharedAccessStartTime.ToString()));
             }
         }

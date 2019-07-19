@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Storage.Blob.Cmdlet
         {
             if (!NameUtil.IsValidContainerName(name))
             {
-                throw new ArgumentException(String.Format(Resources.InvalidContainerName, name));
+                throw new ArgumentException(String.Format(ResourceV2.InvalidContainerName, name));
             }
 
             BlobRequestOptions requestOptions = RequestOptions;
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.Storage.Blob.Cmdlet
 
             if (!created)
             {
-                throw new ResourceAlreadyExistException(String.Format(Resources.ContainerAlreadyExists, name));
+                throw new ResourceAlreadyExistException(String.Format(ResourceV2.ContainerAlreadyExists, name));
             }
 
             WriteCloudContainerObject(taskId, localChannel, container, permissions);

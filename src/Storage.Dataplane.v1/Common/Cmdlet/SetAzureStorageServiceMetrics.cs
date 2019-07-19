@@ -74,7 +74,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
                 }
                 else if (RetentionDays < 1 || RetentionDays > 365)
                 {
-                    throw new ArgumentException(string.Format(Resources.InvalidRetentionDay, RetentionDays));
+                    throw new ArgumentException(string.Format(ResourceV1.InvalidRetentionDay, RetentionDays));
                 }
                 else
                 {
@@ -109,7 +109,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
             }
             catch
             {
-                throw new ArgumentException(String.Format(Resources.InvalidEnumName, MetricsLevel));
+                throw new ArgumentException(String.Format(ResourceV1.InvalidEnumName, MetricsLevel));
             }
         }
 

@@ -192,9 +192,9 @@ namespace Microsoft.Azure.Commands.Storage.File.Cmdlet
 
                     var progressRecord = new ProgressRecord(
                         this.OutputStream.GetProgressId(taskId),
-                        string.Format(CultureInfo.CurrentCulture, Resources.ReceiveAzureFileActivity,
+                        string.Format(CultureInfo.CurrentCulture, ResourceV2.ReceiveAzureFileActivity,
                             fileToBeDownloaded.GetFullPath(), targetFile),
-                        Resources.PrepareDownloadingFile);
+                        ResourceV2.PrepareDownloadingFile);
 
                     await DataMovementTransferHelper.DoTransfer(() =>
                     {

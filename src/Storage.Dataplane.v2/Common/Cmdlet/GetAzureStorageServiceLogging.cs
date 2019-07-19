@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Storage.Common.Cmdlet
         {
             if (StorageServiceType.File == ServiceType)
             {
-                throw new PSInvalidOperationException(Resources.FileNotSupportLogging);
+                throw new PSInvalidOperationException(ResourceV2.FileNotSupportLogging);
             }
 
             if (ServiceType != StorageServiceType.Table)

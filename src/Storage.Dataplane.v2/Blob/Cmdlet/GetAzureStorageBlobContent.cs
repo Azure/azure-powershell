@@ -123,8 +123,8 @@ namespace Microsoft.Azure.Commands.Storage.Blob.Cmdlet
         /// <param name="filePath">Destination file path</param>
         internal virtual async Task DownloadBlob(long taskId, IStorageBlobManagement localChannel, CloudBlob blob, string filePath)
         {
-            string activity = String.Format(Resources.ReceiveAzureBlobActivity, blob.Name, filePath);
-            string status = Resources.PrepareDownloadingBlob;
+            string activity = String.Format(ResourceV2.ReceiveAzureBlobActivity, blob.Name, filePath);
+            string status = ResourceV2.PrepareDownloadingBlob;
             ProgressRecord pr = new ProgressRecord(OutputStream.GetProgressId(taskId), activity, status);
             DataMovementUserData data = new DataMovementUserData()
             {
@@ -162,12 +162,12 @@ namespace Microsoft.Azure.Commands.Storage.Blob.Cmdlet
         {
             if (!NameUtil.IsValidBlobName(blobName))
             {
-                throw new ArgumentException(String.Format(Resources.InvalidBlobName, blobName));
+                throw new ArgumentException(String.Format(ResourceV2.InvalidBlobName, blobName));
             }
 
             if (!NameUtil.IsValidContainerName(containerName))
             {
-                throw new ArgumentException(String.Format(Resources.InvalidContainerName, containerName));
+                throw new ArgumentException(String.Format(ResourceV2.InvalidContainerName, containerName));
             }
 
             CloudBlobContainer container = Channel.GetContainerReference(containerName);
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Commands.Storage.Blob.Cmdlet
         {
             if (!NameUtil.IsValidBlobName(blobName))
             {
-                throw new ArgumentException(String.Format(Resources.InvalidBlobName, blobName));
+                throw new ArgumentException(String.Format(ResourceV2.InvalidBlobName, blobName));
             }
 
             string filePath = GetFullReceiveFilePath(fileName, blobName, null);
@@ -215,7 +215,7 @@ namespace Microsoft.Azure.Commands.Storage.Blob.Cmdlet
         {
             if (null == blob)
             {
-                throw new ArgumentNullException(typeof(CloudBlob).Name, String.Format(Resources.ObjectCannotBeNull, typeof(CloudBlob).Name));
+                throw new ArgumentNullException(typeof(CloudBlob).Name, String.Format(ResourceV2.ObjectCannotBeNull, typeof(CloudBlob).Name));
             }
 
             ValidateBlobType(blob);
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Commands.Storage.Blob.Cmdlet
             //skip download the snapshot except the CloudBlob pipeline
             if (IsSnapshot(blob) && ParameterSetName != BlobParameterSet)
             {
-                WriteWarning(String.Format(Resources.SkipDownloadSnapshot, blob.Name, blob.SnapshotTime));
+                WriteWarning(String.Format(ResourceV2.SkipDownloadSnapshot, blob.Name, blob.SnapshotTime));
                 return;
             }
 
@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Commands.Storage.Blob.Cmdlet
 
             if (!String.IsNullOrEmpty(dirPath) && !Directory.Exists(dirPath))
             {
-                throw new ArgumentException(String.Format(Resources.DirectoryNotExists, dirPath));
+                throw new ArgumentException(String.Format(ResourceV2.DirectoryNotExists, dirPath));
             }
 
             if (string.IsNullOrEmpty(fileName) || Directory.Exists(filePath))
@@ -275,7 +275,7 @@ namespace Microsoft.Azure.Commands.Storage.Blob.Cmdlet
 
             if (!NameUtil.IsValidFileName(fileName))
             {
-                throw new ArgumentException(String.Format(Resources.InvalidFileName, fileName));
+                throw new ArgumentException(String.Format(ResourceV2.InvalidFileName, fileName));
             }
 
             //there is no need to check the read/write permission on the specified file path, the datamovement libraray will do that

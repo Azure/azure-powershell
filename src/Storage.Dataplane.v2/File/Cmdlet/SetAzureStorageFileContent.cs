@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.Storage.File.Cmdlet
             FileInfo localFile = new FileInfo(filePath);
             if (!localFile.Exists)
             {
-                throw new FileNotFoundException(string.Format(CultureInfo.CurrentCulture, Resources.SourceFileNotFound, this.Source));
+                throw new FileNotFoundException(string.Format(CultureInfo.CurrentCulture, ResourceV2.SourceFileNotFound, this.Source));
             }
 
             // if FIPS policy is enabled, must use native MD5
@@ -123,9 +123,9 @@ namespace Microsoft.Azure.Commands.Storage.File.Cmdlet
                 {
                     var progressRecord = new ProgressRecord(
                         this.OutputStream.GetProgressId(taskId),
-                        string.Format(CultureInfo.CurrentCulture, Resources.SendAzureFileActivity, localFile.Name,
+                        string.Format(CultureInfo.CurrentCulture, ResourceV2.SendAzureFileActivity, localFile.Name,
                             cloudFileToBeUploaded.GetFullPath(), cloudFileToBeUploaded.Share.Name),
-                        Resources.PrepareUploadingFile);
+                        ResourceV2.PrepareUploadingFile);
 
                     await DataMovementTransferHelper.DoTransfer(() =>
                     this.TransferManager.UploadAsync(
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Commands.Storage.File.Cmdlet
                         e.RequestInformation.HttpStatusCode == (int)HttpStatusCode.BadRequest &&
                         e.RequestInformation.ExtendedErrorInformation == null)
                     {
-                        throw new AzureStorageFileException(ErrorCategory.InvalidArgument, ErrorIdConstants.InvalidResource, Resources.InvalidResource, this);
+                        throw new AzureStorageFileException(ErrorCategory.InvalidArgument, ErrorIdConstants.InvalidResource, ResourceV2.InvalidResource, this);
                     }
 
                     throw;

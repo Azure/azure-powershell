@@ -84,7 +84,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
         {
             if (!NameUtil.IsValidTableName(name))
             {
-                throw new ArgumentException(String.Format(Resources.InvalidTableName, name));
+                throw new ArgumentException(String.Format(ResourceV1.InvalidTableName, name));
             }
 
             TableRequestOptions requestOptions = RequestOptions;
@@ -92,7 +92,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
 
             if (!Channel.DoesTableExist(table, requestOptions, OperationContext))
             {
-                throw new ResourceNotFoundException(String.Format(Resources.TableNotFound, name));
+                throw new ResourceNotFoundException(String.Format(ResourceV1.TableNotFound, name));
             }
 
             if (force || TableIsEmpty(table) || ShouldContinue(string.Format("Remove table and all content in it: {0}", name), ""))
@@ -119,11 +119,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
 
                 if (success)
                 {
-                    result = String.Format(Resources.RemoveTableSuccessfully, Name);
+                    result = String.Format(ResourceV1.RemoveTableSuccessfully, Name);
                 }
                 else
                 {
-                    result = String.Format(Resources.RemoveTableCancelled, Name);
+                    result = String.Format(ResourceV1.RemoveTableCancelled, Name);
                 }
 
                 WriteVerbose(result);

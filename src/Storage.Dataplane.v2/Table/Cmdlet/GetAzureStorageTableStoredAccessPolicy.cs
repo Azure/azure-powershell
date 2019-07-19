@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Storage.Table.Cmdlet
                 }
                 else
                 {
-                    throw new ResourceNotFoundException(String.Format(CultureInfo.CurrentCulture, Resources.PolicyNotFound, policyName));
+                    throw new ResourceNotFoundException(String.Format(CultureInfo.CurrentCulture, ResourceV2.PolicyNotFound, policyName));
                 }
             }
             else

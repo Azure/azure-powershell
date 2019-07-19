@@ -69,7 +69,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
                 }
                 else
                 {
-                    throw new ResourceNotFoundException(String.Format(CultureInfo.CurrentCulture, Resources.PolicyNotFound, policyName));
+                    throw new ResourceNotFoundException(String.Format(CultureInfo.CurrentCulture, ResourceV1.PolicyNotFound, policyName));
                 }
             }
             else

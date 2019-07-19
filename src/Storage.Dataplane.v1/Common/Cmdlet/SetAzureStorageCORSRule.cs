@@ -83,7 +83,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
                     (string.Equals(InvalidXMLNodeValueError, se.RequestInformation.ErrorCode, StringComparison.OrdinalIgnoreCase) ||
                     string.Equals(InvalidXMLDocError, se.RequestInformation.ErrorCode, StringComparison.OrdinalIgnoreCase)))
                 {
-                    throw new InvalidOperationException(Resources.CORSRuleError);
+                    throw new InvalidOperationException(ResourceV1.CORSRuleError);
                 }
                 else
                 {
@@ -112,7 +112,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
                     }
                     else
                     {
-                        throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, Resources.InvalidHTTPMethod, method));
+                        throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, ResourceV1.InvalidHTTPMethod, method));
                     }
                 }
             }

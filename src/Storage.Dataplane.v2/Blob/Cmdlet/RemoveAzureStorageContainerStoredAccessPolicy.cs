@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Storage.Blob.Cmdlet
             //remove the specified policy
             if (!blobContainerPermissions.SharedAccessPolicies.Keys.Contains(policyName))
             {
-                throw new ResourceNotFoundException(String.Format(CultureInfo.CurrentCulture, Resources.PolicyNotFound, policyName));
+                throw new ResourceNotFoundException(String.Format(CultureInfo.CurrentCulture, ResourceV2.PolicyNotFound, policyName));
             }
 
             if (ShouldProcess(policyName, "Remove policy"))
@@ -100,11 +100,11 @@ namespace Microsoft.Azure.Commands.Storage.Blob.Cmdlet
 
             if (success)
             {
-                result = String.Format(CultureInfo.CurrentCulture, Resources.RemovePolicySuccessfully, Policy);
+                result = String.Format(CultureInfo.CurrentCulture, ResourceV2.RemovePolicySuccessfully, Policy);
             }
             else
             {
-                result = String.Format(CultureInfo.CurrentCulture, Resources.RemovePolicyCancelled, Policy);
+                result = String.Format(CultureInfo.CurrentCulture, ResourceV2.RemovePolicyCancelled, Policy);
             }
 
             WriteVerbose(result);

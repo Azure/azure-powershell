@@ -143,7 +143,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         {
             if (!NameUtil.IsValidContainerName(containerName))
             {
-                throw new ArgumentException(String.Format(Resources.InvalidContainerName, containerName));
+                throw new ArgumentException(String.Format(ResourceV1.InvalidContainerName, containerName));
             }
 
             BlobRequestOptions requestOptions = RequestOptions;
@@ -152,7 +152,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             if (!skipCheckExists && container.ServiceClient.Credentials.IsSharedKey
                 && !await localChannel.DoesContainerExistAsync(container, requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false))
             {
-                throw new ArgumentException(String.Format(Resources.ContainerNotFound, containerName));
+                throw new ArgumentException(String.Format(ResourceV1.ContainerNotFound, containerName));
             }
 
             return container;
@@ -193,14 +193,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
                 if (!NameUtil.IsValidBlobName(blobName))
                 {
-                    throw new ArgumentException(String.Format(Resources.InvalidBlobName, blobName));
+                    throw new ArgumentException(String.Format(ResourceV1.InvalidBlobName, blobName));
                 }
 
                 CloudBlob blob = await localChannel.GetBlobReferenceFromServerAsync(container, blobName, accessCondition, requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
 
                 if (null == blob)
                 {
-                    throw new ResourceNotFoundException(String.Format(Resources.BlobNotFound, blobName, containerName));
+                    throw new ResourceNotFoundException(String.Format(ResourceV1.BlobNotFound, blobName, containerName));
                 }
                 else
                 {

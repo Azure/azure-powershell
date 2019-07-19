@@ -32,13 +32,13 @@ namespace Microsoft.Azure.Commands.Storage.Common
         /// </summary>
         private static string[] sizeFormats =
         {
-            Resources.HumanReadableSizeFormat_Bytes,
-            Resources.HumanReadableSizeFormat_KiloBytes,
-            Resources.HumanReadableSizeFormat_MegaBytes,
-            Resources.HumanReadableSizeFormat_GigaBytes,
-            Resources.HumanReadableSizeFormat_TeraBytes,
-            Resources.HumanReadableSizeFormat_PetaBytes,
-            Resources.HumanReadableSizeFormat_ExaBytes
+            ResourceV2.HumanReadableSizeFormat_Bytes,
+            ResourceV2.HumanReadableSizeFormat_KiloBytes,
+            ResourceV2.HumanReadableSizeFormat_MegaBytes,
+            ResourceV2.HumanReadableSizeFormat_GigaBytes,
+            ResourceV2.HumanReadableSizeFormat_TeraBytes,
+            ResourceV2.HumanReadableSizeFormat_PetaBytes,
+            ResourceV2.HumanReadableSizeFormat_ExaBytes
         };
 
         /// <summary>
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.Storage.Common
                 default:
                     throw new InvalidOperationException(string.Format(
                         CultureInfo.CurrentCulture,
-                        Resources.InvalidBlobType,
+                        ResourceV2.InvalidBlobType,
                         blob.Properties.BlobType,
                         blob.Name));
             }
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Commands.Storage.Common
                 default:
                     throw new ArgumentException(String.Format(
                         CultureInfo.CurrentCulture,
-                        Resources.InvalidBlobType,
+                        ResourceV2.InvalidBlobType,
                         blobType,
                         blobName));
             }
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Commands.Storage.Common
                 default:
                     throw new ArgumentException(String.Format(
                         CultureInfo.CurrentCulture,
-                        Resources.InvalidBlobType,
+                        ResourceV2.InvalidBlobType,
                         blobType,
                         blobUri));
             }

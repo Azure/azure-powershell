@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Storage.Common
             {
                 throw new ArgumentException(String.Format(
                     CultureInfo.CurrentCulture,
-                    Resources.InvalidBlobName,
+                    ResourceV2.InvalidBlobName,
                     name));
             }
         }
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Storage.Common
         {
             if (!NameUtil.IsValidContainerName(name))
             {
-                throw new ArgumentException(String.Format(CultureInfo.CurrentCulture, Resources.InvalidContainerName, name));
+                throw new ArgumentException(String.Format(CultureInfo.CurrentCulture, ResourceV2.InvalidContainerName, name));
             }
         }
 
@@ -300,7 +300,7 @@ namespace Microsoft.Azure.Commands.Storage.Common
                     postfix = fileName.Substring(index);
                 }
 
-                fileName = string.Format(Resources.FileNameFormatForSnapShot, prefix, timeStamp, postfix);
+                fileName = string.Format(ResourceV2.FileNameFormatForSnapShot, prefix, timeStamp, postfix);
             }
 
             return fileName;

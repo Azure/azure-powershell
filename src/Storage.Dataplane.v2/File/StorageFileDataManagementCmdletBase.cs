@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Storage.File
         /// <returns>Returns a value indicating whether to overwrite.</returns>
         protected bool ConfirmOverwrite(object source, object destination)
         {
-            return this.Force || this.OutputStream.ConfirmAsync(string.Format(CultureInfo.CurrentCulture, Resources.OverwriteConfirmation, Util.ConvertToString(destination))).Result;
+            return this.Force || this.OutputStream.ConfirmAsync(string.Format(CultureInfo.CurrentCulture, ResourceV2.OverwriteConfirmation, Util.ConvertToString(destination))).Result;
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Storage.File
         /// <returns>Returns a value indicating whether to overwrite.</returns>
         protected async Task<bool> ConfirmOverwriteAsync(object source, object destination)
         {
-            return this.Force || await this.OutputStream.ConfirmAsync(string.Format(CultureInfo.CurrentCulture, Resources.OverwriteConfirmation, Util.ConvertToString(destination)));
+            return this.Force || await this.OutputStream.ConfirmAsync(string.Format(CultureInfo.CurrentCulture, ResourceV2.OverwriteConfirmation, Util.ConvertToString(destination)));
         }
 
         protected override void BeginProcessing()
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Commands.Storage.File
                 {
                     // Size of the source file might be 0, when it is, directly treat the progress as 100 percent.
                     record.PercentComplete = (totalTransferLength == 0) ? 100 : (int)(transferProgress.BytesTransferred * 100 / totalTransferLength);
-                    record.StatusDescription = string.Format(CultureInfo.CurrentCulture, Resources.FileTransmitStatus, record.PercentComplete);
+                    record.StatusDescription = string.Format(CultureInfo.CurrentCulture, ResourceV2.FileTransmitStatus, record.PercentComplete);
                     this.OutputStream.WriteProgress(record);
                 }
             });

@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Storage.Blob
         /// <returns>True if the opeation is confirmed, otherwise return false</returns>
         protected bool ConfirmOverwrite(object source, object destination)
         {
-            string overwriteMessage = string.Format(CultureInfo.CurrentCulture, Resources.OverwriteConfirmation, Util.ConvertToString(destination));
+            string overwriteMessage = string.Format(CultureInfo.CurrentCulture, ResourceV2.OverwriteConfirmation, Util.ConvertToString(destination));
             return overwrite || OutputStream.ConfirmAsync(overwriteMessage).Result;
         }
 
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Storage.Blob
         /// <returns>True if the opeation is confirmed, otherwise return false</returns>
         protected async Task<bool> ConfirmOverwriteAsync(object source, object destination)
         {
-            string overwriteMessage = string.Format(CultureInfo.CurrentCulture, Resources.OverwriteConfirmation, Util.ConvertToString(destination));
+            string overwriteMessage = string.Format(CultureInfo.CurrentCulture, ResourceV2.OverwriteConfirmation, Util.ConvertToString(destination));
             return overwrite || await OutputStream.ConfirmAsync(overwriteMessage);
         }
 
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.Storage.Blob
         {
             CmdletOperationContext.Init();
             CmdletCancellationToken = _cancellationTokenSource.Token;
-            WriteDebugLog(String.Format(Resources.InitOperationContextLog, GetType().Name, CmdletOperationContext.ClientRequestId));
+            WriteDebugLog(String.Format(ResourceV2.InitOperationContextLog, GetType().Name, CmdletOperationContext.ClientRequestId));
 
             if (_enableMultiThread)
             {
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.Storage.Blob
                     {
                         // Size of the source file might be 0, when it is, directly treat the progress as 100 percent.
                         userData.Record.PercentComplete = 0 == userData.TotalSize ? 100 : (int)(transferProgress.BytesTransferred * 100 / userData.TotalSize);
-                        userData.Record.StatusDescription = string.Format(CultureInfo.CurrentCulture, Resources.FileTransmitStatus, userData.Record.PercentComplete);
+                        userData.Record.StatusDescription = string.Format(CultureInfo.CurrentCulture, ResourceV2.FileTransmitStatus, userData.Record.PercentComplete);
                         this.OutputStream.WriteProgress(userData.Record);
                     }
                 });

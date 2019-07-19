@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Storage.Common.Cmdlet
                         (string.Equals(InvalidXMLNodeValueError, se.RequestInformation.ErrorCode, StringComparison.OrdinalIgnoreCase) ||
                         string.Equals(InvalidXMLDocError, se.RequestInformation.ErrorCode, StringComparison.OrdinalIgnoreCase)))
                     {
-                        throw new InvalidOperationException(Resources.CORSRuleError);
+                        throw new InvalidOperationException(ResourceV2.CORSRuleError);
                     }
                     else
                     {
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.Storage.Common.Cmdlet
                         (string.Equals(InvalidXMLNodeValueError, se.RequestInformation.ErrorCode, StringComparison.OrdinalIgnoreCase) ||
                         string.Equals(InvalidXMLDocError, se.RequestInformation.ErrorCode, StringComparison.OrdinalIgnoreCase)))
                     {
-                        throw new InvalidOperationException(Resources.CORSRuleError);
+                        throw new InvalidOperationException(ResourceV2.CORSRuleError);
                     }
                     else
                     {
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Commands.Storage.Common.Cmdlet
                     }
                     else
                     {
-                        throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, Resources.InvalidHTTPMethod, method));
+                        throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, ResourceV2.InvalidHTTPMethod, method));
                     }
                 }
             }
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Commands.Storage.Common.Cmdlet
                     }
                     else
                     {
-                        throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, Resources.InvalidHTTPMethod, method));
+                        throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, ResourceV2.InvalidHTTPMethod, method));
                     }
                 }
             }

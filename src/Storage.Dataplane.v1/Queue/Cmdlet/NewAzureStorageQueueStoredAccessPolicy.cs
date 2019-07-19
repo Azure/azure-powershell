@@ -71,7 +71,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
 
             if (!NameUtil.IsValidStoredAccessPolicyName(policyName))
             {
-                throw new ArgumentException(String.Format(CultureInfo.CurrentCulture, Resources.InvalidAccessPolicyName, policyName));
+                throw new ArgumentException(String.Format(CultureInfo.CurrentCulture, ResourceV1.InvalidAccessPolicyName, policyName));
             }
 
             //Get existing permissions
@@ -81,7 +81,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
             //Add new policy
             if (queuePermissions.SharedAccessPolicies.Keys.Contains(policyName))
             {
-                throw new ResourceAlreadyExistException(String.Format(CultureInfo.CurrentCulture, Resources.PolicyAlreadyExists, policyName));
+                throw new ResourceAlreadyExistException(String.Format(CultureInfo.CurrentCulture, ResourceV1.PolicyAlreadyExists, policyName));
             }
 
             SharedAccessQueuePolicy policy = new SharedAccessQueuePolicy();

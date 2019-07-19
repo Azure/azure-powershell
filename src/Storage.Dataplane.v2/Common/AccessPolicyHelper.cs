@@ -42,17 +42,17 @@ namespace Microsoft.Azure.Commands.Storage.Common
                 typeof(T) == typeof(SharedAccessBlobPolicy) ||
                 (typeof(T) == typeof(SharedAccessQueuePolicy))))
             {
-                throw new ArgumentException(Resources.InvalidAccessPolicyType);
+                throw new ArgumentException(ResourceV2.InvalidAccessPolicyType);
             }
 
             if (noStartTime && startTime != null)
             {
-                throw new ArgumentException(Resources.StartTimeParameterConflict);
+                throw new ArgumentException(ResourceV2.StartTimeParameterConflict);
             }
 
             if (noExpiryTime && expiryTime != null)
             {
-                throw new ArgumentException(Resources.ExpiryTimeParameterConflict);
+                throw new ArgumentException(ResourceV2.ExpiryTimeParameterConflict);
             }
 
             DateTimeOffset? accessStartTime;
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.Storage.Common
             if (SharedAccessStartTime != null && SharedAccessExpiryTime.HasValue
                 && SharedAccessExpiryTime <= SharedAccessStartTime)
             {
-                throw new ArgumentException(String.Format(CultureInfo.CurrentCulture, Resources.ExpiryTimeGreatThanStartTime,
+                throw new ArgumentException(String.Format(CultureInfo.CurrentCulture, ResourceV2.ExpiryTimeGreatThanStartTime,
                     SharedAccessExpiryTime.ToString(), SharedAccessStartTime.ToString()));
             }
         }
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.Storage.Common
                 }
                 else
                 {
-                    throw new ArgumentException(Resources.InvalidAccessPolicyType);
+                    throw new ArgumentException(ResourceV2.InvalidAccessPolicyType);
                 }
                 return;
             }
@@ -156,12 +156,12 @@ namespace Microsoft.Azure.Commands.Storage.Common
                 }
                 else
                 {
-                    throw new ArgumentException(Resources.InvalidAccessPolicyType);
+                    throw new ArgumentException(ResourceV2.InvalidAccessPolicyType);
                 }
             }
             catch (System.ArgumentOutOfRangeException)
             {
-                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.InvalidAccessPermission, permission));
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, ResourceV2.InvalidAccessPermission, permission));
             }
         }
 
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Commands.Storage.Common
                (typeof(T) == typeof(SharedAccessQueuePolicy)) ||
                (typeof(T) == typeof(SharedAccessFilePolicy))))
             {
-                throw new ArgumentException(Resources.InvalidAccessPolicyType);
+                throw new ArgumentException(ResourceV2.InvalidAccessPolicyType);
             }
 
             return PowerShellUtilities.ConstructPSObject(

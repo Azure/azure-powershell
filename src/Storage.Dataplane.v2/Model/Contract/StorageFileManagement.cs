@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Storage.Model.Contract
                 {
                     if (this.StorageContext.StorageAccount == null)
                     {
-                        throw new ArgumentException(Resources.DefaultStorageCredentialsNotFound);
+                        throw new ArgumentException(ResourceV2.DefaultStorageCredentialsNotFound);
                     }
                     else
                     {

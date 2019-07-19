@@ -394,7 +394,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             {
                 string copyId = await startCopy().ConfigureAwait(false);
 
-                this.OutputStream.WriteVerbose(taskId, String.Format(Resources.CopyDestinationBlobPending, destFile.GetFullPath(), destFile.Share.Name, copyId));
+                this.OutputStream.WriteVerbose(taskId, String.Format(ResourceV1.CopyDestinationBlobPending, destFile.GetFullPath(), destFile.Share.Name, copyId));
                 this.OutputStream.WriteObject(taskId, destFile);
             }
         }

@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Storage.Model.Contract
                 {
                     if (this.StorageContext.StorageAccount == null)
                     {
-                        throw new ArgumentException(Resources.DefaultStorageCredentialsNotFound);
+                        throw new ArgumentException(ResourceV2.DefaultStorageCredentialsNotFound);
                     }
                     else
                     {
@@ -471,7 +471,7 @@ namespace Microsoft.Azure.Commands.Storage.Model.Contract
                         sp.MinuteMetrics = fileServiceProperties.MinuteMetrics;
                         return sp;
                     default:
-                        throw new ArgumentException(Resources.InvalidStorageServiceType, "type");
+                        throw new ArgumentException(ResourceV2.InvalidStorageServiceType, "type");
                 }
             }
             catch (AggregateException e) when (e.InnerException is XSCL.StorageException)
@@ -504,7 +504,7 @@ namespace Microsoft.Azure.Commands.Storage.Model.Contract
                     case StorageServiceType.File:
                         if (null != properties.Logging)
                         {
-                            throw new InvalidOperationException(Resources.FileNotSupportLogging);
+                            throw new InvalidOperationException(ResourceV2.FileNotSupportLogging);
                         }
 
                         FileServiceProperties fileServiceProperties = new FileServiceProperties();
@@ -514,7 +514,7 @@ namespace Microsoft.Azure.Commands.Storage.Model.Contract
                         Task.Run(() => account.CreateCloudFileClient().SetServicePropertiesAsync(fileServiceProperties, (FileRequestOptions)options, operationContext)).Wait();
                         break;
                     default:
-                        throw new ArgumentException(Resources.InvalidStorageServiceType, "type");
+                        throw new ArgumentException(ResourceV2.InvalidStorageServiceType, "type");
                 }
             }
             catch (AggregateException e) when (e.InnerException is XSCL.StorageException)

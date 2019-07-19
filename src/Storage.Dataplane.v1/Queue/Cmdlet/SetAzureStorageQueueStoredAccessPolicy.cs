@@ -81,7 +81,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
             //Set the policy with new value
             if (!queuePermissions.SharedAccessPolicies.Keys.Contains(policyName))
             {
-                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.PolicyNotFound, policyName));
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, ResourceV1.PolicyNotFound, policyName));
             }
 
             SharedAccessQueuePolicy policy = queuePermissions.SharedAccessPolicies[policyName];
@@ -103,12 +103,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
             if (String.IsNullOrEmpty(Queue) || String.IsNullOrEmpty(Policy)) return;
             if (NoStartTime && StartTime != null)
             {
-                throw new ArgumentException(Resources.StartTimeParameterConflict);
+                throw new ArgumentException(ResourceV1.StartTimeParameterConflict);
             }
 
             if (NoExpiryTime && ExpiryTime != null)
             {
-                throw new ArgumentException(Resources.ExpiryTimeParameterConflict);
+                throw new ArgumentException(ResourceV1.ExpiryTimeParameterConflict);
             }
 
             if (ShouldProcess(Policy, "Set"))

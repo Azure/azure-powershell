@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.Storage.Queue
             {
                 if (!NameUtil.IsValidQueueName(name))
                 {
-                    throw new ArgumentException(String.Format(Resources.InvalidQueueName, name));
+                    throw new ArgumentException(String.Format(ResourceV2.InvalidQueueName, name));
                 }
 
                 CloudQueue queue = Channel.GetQueueReference(name);
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.Storage.Queue
                 }
                 else
                 {
-                    throw new ResourceNotFoundException(String.Format(Resources.QueueNotFound, name));
+                    throw new ResourceNotFoundException(String.Format(ResourceV2.QueueNotFound, name));
                 }
             }
         }
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.Storage.Queue
 
             if (!NameUtil.IsValidQueuePrefix(prefix))
             {
-                throw new ArgumentException(String.Format(Resources.InvalidQueueName, prefix));
+                throw new ArgumentException(String.Format(ResourceV2.InvalidQueueName, prefix));
             }
 
             return Channel.ListQueues(prefix, queueListingDetails, requestOptions, OperationContext);

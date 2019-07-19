@@ -129,7 +129,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             {
                 if (!NameUtil.IsValidContainerName(name))
                 {
-                    throw new ArgumentException(String.Format(Resources.InvalidContainerName, name));
+                    throw new ArgumentException(String.Format(ResourceV1.InvalidContainerName, name));
                 }
 
                 CloudBlobContainer container = Channel.GetContainerReference(name);
@@ -142,7 +142,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 }
                 else
                 {
-                    throw new ResourceNotFoundException(String.Format(Resources.ContainerNotFound, name));
+                    throw new ResourceNotFoundException(String.Format(ResourceV1.ContainerNotFound, name));
                 }
             }
         }
@@ -159,7 +159,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
             if (!string.IsNullOrEmpty(prefix) && !NameUtil.IsValidContainerPrefix(prefix))
             {
-                throw new ArgumentException(String.Format(Resources.InvalidContainerName, prefix));
+                throw new ArgumentException(String.Format(ResourceV1.InvalidContainerName, prefix));
             }
 
             int listCount = InternalMaxCount;

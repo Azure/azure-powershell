@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Storage.Cmdlet
         {
             if (!NameUtil.IsValidContainerName(name))
             {
-                throw new ArgumentException(String.Format(Resources.InvalidContainerName, name));
+                throw new ArgumentException(String.Format(ResourceV2.InvalidContainerName, name));
             }
 
             BlobContainerPermissions permissions = new BlobContainerPermissions();
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.Storage.Cmdlet
 
             if (!await localChannel.DoesContainerExistAsync(container, requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false))
             {
-                throw new ResourceNotFoundException(String.Format(Resources.ContainerNotFound, name));
+                throw new ResourceNotFoundException(String.Format(ResourceV2.ContainerNotFound, name));
             }
 
             await localChannel.SetContainerPermissionsAsync(container, permissions, accessCondition, requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false);

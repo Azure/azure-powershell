@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Commands.Storage.Blob.Cmdlet
 
             if (null == blob)
             {
-                throw new ArgumentException(String.Format(Resources.ObjectCannotBeNull, typeof(CloudBlob).Name));
+                throw new ArgumentException(String.Format(ResourceV2.ObjectCannotBeNull, typeof(CloudBlob).Name));
             }
 
             string specifiedCopyId = copyId;
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Commands.Storage.Blob.Cmdlet
 
                 if (blob.CopyState == null || String.IsNullOrEmpty(blob.CopyState.CopyId))
                 {
-                    ArgumentException e = new ArgumentException(String.Format(Resources.CopyTaskNotFound, blob.Name, blob.Container.Name));
+                    ArgumentException e = new ArgumentException(String.Format(ResourceV2.CopyTaskNotFound, blob.Name, blob.Container.Name));
                     OutputStream.WriteError(taskId, e);
                 }
                 else
@@ -217,10 +217,10 @@ namespace Microsoft.Azure.Commands.Storage.Blob.Cmdlet
 
                 if (!Force)
                 {
-                    string confirmation = String.Format(Resources.ConfirmAbortCopyOperation, blob.Name, blob.Container.Name, abortCopyId);
+                    string confirmation = String.Format(ResourceV2.ConfirmAbortCopyOperation, blob.Name, blob.Container.Name, abortCopyId);
                     if (!await OutputStream.ConfirmAsync(confirmation).ConfigureAwait(false))
                     {
-                        string cancelMessage = String.Format(Resources.StopCopyOperationCancelled, blob.Name, blob.Container.Name);
+                        string cancelMessage = String.Format(ResourceV2.StopCopyOperationCancelled, blob.Name, blob.Container.Name);
                         OutputStream.WriteVerbose(taskId, cancelMessage);
                     }
                 }
@@ -231,7 +231,7 @@ namespace Microsoft.Azure.Commands.Storage.Blob.Cmdlet
             }
 
             await localChannel.AbortCopyAsync(blob, abortCopyId, accessCondition, abortRequestOption, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
-            string message = String.Format(Resources.StopCopyBlobSuccessfully, blob.Name, blob.Container.Name);
+            string message = String.Format(ResourceV2.StopCopyBlobSuccessfully, blob.Name, blob.Container.Name);
             OutputStream.WriteObject(taskId, message);
         }
     }

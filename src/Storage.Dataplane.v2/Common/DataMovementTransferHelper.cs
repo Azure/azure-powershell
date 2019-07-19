@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Storage.Common
                 if (record != null)
                 {
                     record.PercentComplete = 100;
-                    record.StatusDescription = Resources.TransmitSuccessfully;
+                    record.StatusDescription = ResourceV2.TransmitSuccessfully;
                     outputStream.WriteProgress(record);
                 }
             }
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Storage.Common
             {
                 if (record != null)
                 {
-                    record.StatusDescription = Resources.TransmitCancelled;
+                    record.StatusDescription = ResourceV2.TransmitCancelled;
                     outputStream.WriteProgress(record);
                 }
             }
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Storage.Common
         {
             if (record != null)
             {
-                record.StatusDescription = string.Format(CultureInfo.CurrentCulture, Resources.TransmitFailed, e.Message);
+                record.StatusDescription = string.Format(CultureInfo.CurrentCulture, ResourceV2.TransmitFailed, e.Message);
                 outputStream.WriteProgress(record);
             }
         }

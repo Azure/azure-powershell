@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.Storage.File.Cmdlet
             long localFailed = Interlocked.Read(ref InternalFailedCount);
             long localFinished = Interlocked.Read(ref InternalFinishedCount);
 
-            string summary = String.Format(Resources.TransmitActiveSummary, localTotal,
+            string summary = String.Format(ResourceV2.TransmitActiveSummary, localTotal,
                 localFailed, localFinished, (localTotal - localFailed - localFinished));
             summaryRecord.StatusDescription = summary;
             WriteProgress(summaryRecord);
@@ -160,9 +160,9 @@ namespace Microsoft.Azure.Commands.Storage.File.Cmdlet
                 progress.PercentComplete = percent;
             }
 
-            string activity = String.Format(Resources.CopyFileStatus, file.CopyState.Status.ToString(), file.GetFullPath(), file.Share.Name, file.CopyState.Source.ToString());
+            string activity = String.Format(ResourceV2.CopyFileStatus, file.CopyState.Status.ToString(), file.GetFullPath(), file.Share.Name, file.CopyState.Source.ToString());
             progress.Activity = activity;
-            string message = String.Format(Resources.CopyPendingStatus, percent, file.CopyState.BytesCopied, file.CopyState.TotalBytes);
+            string message = String.Format(ResourceV2.CopyPendingStatus, percent, file.CopyState.BytesCopied, file.CopyState.TotalBytes);
             progress.StatusDescription = message;
             OutputStream.WriteProgress(progress);
         }
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Commands.Storage.File.Cmdlet
         /// </summary>
         protected async Task MonitorFileCopyStatusAsync(long taskId)
         {
-            ProgressRecord records = new ProgressRecord(OutputStream.GetProgressId(taskId), Resources.CopyFileActivity, Resources.CopyFileActivity);
+            ProgressRecord records = new ProgressRecord(OutputStream.GetProgressId(taskId), ResourceV2.CopyFileActivity, ResourceV2.CopyFileActivity);
             Tuple<long, CloudFile> monitorRequest = null;
             FileRequestOptions requestOptions = RequestOptions;
             AccessCondition accessCondition = null;
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Commands.Storage.File.Cmdlet
 
                     if (file.CopyState == null)
                     {
-                        ArgumentException e = new ArgumentException(String.Format(Resources.FileCopyTaskNotFound, file.SnapshotQualifiedUri.ToString()));
+                        ArgumentException e = new ArgumentException(String.Format(ResourceV2.FileCopyTaskNotFound, file.SnapshotQualifiedUri.ToString()));
                         OutputStream.WriteError(internalTaskId, e);
                         Interlocked.Increment(ref InternalFailedCount);
                         taskDone = true;

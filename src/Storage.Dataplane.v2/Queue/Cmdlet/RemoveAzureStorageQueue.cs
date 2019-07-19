@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.Storage.Queue
         {
             if (!NameUtil.IsValidQueueName(name))
             {
-                throw new ArgumentException(String.Format(Resources.InvalidQueueName, name));
+                throw new ArgumentException(String.Format(ResourceV2.InvalidQueueName, name));
             }
 
             QueueRequestOptions requestOptions = RequestOptions;
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Storage.Queue
 
             if (!Channel.DoesQueueExist(queue, requestOptions, OperationContext))
             {
-                throw new ResourceNotFoundException(String.Format(Resources.QueueNotFound, name));
+                throw new ResourceNotFoundException(String.Format(ResourceV2.QueueNotFound, name));
             }
 
             if (force || ShouldContinue(string.Format("Remove queue and all content in it: {0}", name), ""))
@@ -121,11 +121,11 @@ namespace Microsoft.Azure.Commands.Storage.Queue
 
                 if (success)
                 {
-                    result = String.Format(Resources.RemoveQueueSuccessfully, Name);
+                    result = String.Format(ResourceV2.RemoveQueueSuccessfully, Name);
                 }
                 else
                 {
-                    result = String.Format(Resources.RemoveQueueCancelled, Name);
+                    result = String.Format(ResourceV2.RemoveQueueCancelled, Name);
                 }
 
                 WriteVerbose(result);

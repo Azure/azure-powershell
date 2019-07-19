@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.Storage.File.Cmdlet
 
                 if (file.CopyState == null || string.IsNullOrEmpty(file.CopyState.CopyId))
                 {
-                    ArgumentException e = new ArgumentException(String.Format(Resources.FileCopyTaskNotFound, file.SnapshotQualifiedUri.ToString()));
+                    ArgumentException e = new ArgumentException(String.Format(ResourceV2.FileCopyTaskNotFound, file.SnapshotQualifiedUri.ToString()));
                     OutputStream.WriteError(taskId, e);
                 }
                 else
@@ -110,10 +110,10 @@ namespace Microsoft.Azure.Commands.Storage.File.Cmdlet
 
                 if (!Force)
                 {
-                    string confirmation = String.Format(Resources.ConfirmAbortFileCopyOperation, file.SnapshotQualifiedUri.ToString(), abortCopyId);
+                    string confirmation = String.Format(ResourceV2.ConfirmAbortFileCopyOperation, file.SnapshotQualifiedUri.ToString(), abortCopyId);
                     if (!await OutputStream.ConfirmAsync(confirmation).ConfigureAwait(false))
                     {
-                        string cancelMessage = String.Format(Resources.StopCopyOperationCancelled, file.SnapshotQualifiedUri.ToString());
+                        string cancelMessage = String.Format(ResourceV2.StopCopyOperationCancelled, file.SnapshotQualifiedUri.ToString());
                         OutputStream.WriteVerbose(taskId, cancelMessage);
                     }
                 }
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.Storage.File.Cmdlet
             }
 
             await localChannel.AbortCopyAsync(file, abortCopyId, null, requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
-            string message = String.Format(Resources.StopCopyFileSuccessfully, file.SnapshotQualifiedUri.ToString());
+            string message = String.Format(ResourceV2.StopCopyFileSuccessfully, file.SnapshotQualifiedUri.ToString());
             OutputStream.WriteObject(taskId, message);
         }
     }

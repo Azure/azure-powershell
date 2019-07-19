@@ -46,7 +46,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         {
             if (StorageServiceType.File == ServiceType)
             {
-                throw new PSInvalidOperationException(Resources.FileNotSupportLogging);
+                throw new PSInvalidOperationException(ResourceV1.FileNotSupportLogging);
             }
 
             ServiceProperties serviceProperties = Channel.GetStorageServiceProperties(ServiceType, GetRequestOptions(ServiceType), OperationContext);

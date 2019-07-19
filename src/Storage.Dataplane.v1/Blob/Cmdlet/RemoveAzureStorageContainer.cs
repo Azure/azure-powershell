@@ -73,7 +73,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         {
             if (!NameUtil.IsValidContainerName(name))
             {
-                throw new ArgumentException(String.Format(Resources.InvalidContainerName, name));
+                throw new ArgumentException(String.Format(ResourceV1.InvalidContainerName, name));
             }
 
             BlobRequestOptions requestOptions = RequestOptions;
@@ -83,7 +83,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
             if (!await localChannel.DoesContainerExistAsync(container, requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false))
             {
-                throw new ResourceNotFoundException(String.Format(Resources.ContainerNotFound, name));
+                throw new ResourceNotFoundException(String.Format(ResourceV1.ContainerNotFound, name));
             }
 
             string result = string.Empty;
@@ -92,12 +92,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             if (force || ContainerIsEmpty(container) || OutputStream.ConfirmAsync(String.Format("Remove container and all content in it: {0}", name)).Result)
             {
                 await localChannel.DeleteContainerAsync(container, accessCondition, requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
-                result = String.Format(Resources.RemoveContainerSuccessfully, name);
+                result = String.Format(ResourceV1.RemoveContainerSuccessfully, name);
                 removed = true;
             }
             else
             {
-                result = String.Format(Resources.RemoveContainerCancelled, name);
+                result = String.Format(ResourceV1.RemoveContainerCancelled, name);
             }
 
             OutputStream.WriteVerbose(taskId, result);

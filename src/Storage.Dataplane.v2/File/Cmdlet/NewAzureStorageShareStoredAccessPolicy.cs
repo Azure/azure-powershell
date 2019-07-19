@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Storage.File.Cmdlet
 
             if (!NameUtil.IsValidStoredAccessPolicyName(this.Policy))
             {
-                throw new ArgumentException(String.Format(CultureInfo.CurrentCulture, Resources.InvalidAccessPolicyName, this.Policy));
+                throw new ArgumentException(String.Format(CultureInfo.CurrentCulture, ResourceV2.InvalidAccessPolicyName, this.Policy));
             }
 
             //Get existing permissions
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Storage.File.Cmdlet
             //Add new policy
             if (fileSharePermissions.SharedAccessPolicies.Keys.Contains(this.Policy))
             {
-                throw new ResourceAlreadyExistException(String.Format(CultureInfo.CurrentCulture, Resources.PolicyAlreadyExists, this.Policy));
+                throw new ResourceAlreadyExistException(String.Format(CultureInfo.CurrentCulture, ResourceV2.PolicyAlreadyExists, this.Policy));
             }
 
             SharedAccessFilePolicy policy = new SharedAccessFilePolicy();

@@ -437,14 +437,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
                     if (null == blobReference)
                     {
-                        throw new ResourceNotFoundException(String.Format(Resources.BlobUriNotFound, sourceUri.ToString()));
+                        throw new ResourceNotFoundException(String.Format(ResourceV1.BlobUriNotFound, sourceUri.ToString()));
                     }
 
                     StartCopyBlob(destChannel, blobReference, destContainer, destBlobName);
                 }
                 else
                 {
-                    WriteWarning(String.Format(Resources.StartCopySourceContextMismatch, srcUri, context.BlobEndPoint));
+                    WriteWarning(String.Format(ResourceV1.StartCopySourceContextMismatch, srcUri, context.BlobEndPoint));
                 }
             }
             else
@@ -515,7 +515,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
             if (null == destBlockBlob)
             {
-                throw new InvalidOperationException(Resources.OnlyCopyFromBlockBlobToAzureFile);
+                throw new InvalidOperationException(ResourceV1.OnlyCopyFromBlockBlobToAzureFile);
             }
 
             Func<long, Task> taskGenerator = (taskId) => this.StartCopyFromFile(taskId, destChannel, srcFile, destBlockBlob); ;
@@ -535,7 +535,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                     // Current use error message to decide whether it caused by blob type mismatch,
                     // We should ask xscl to expose an error code for this..
                     // Opened workitem 1487579 to track this.
-                    throw new InvalidOperationException(Resources.DestinationBlobTypeNotMatch);
+                    throw new InvalidOperationException(ResourceV1.DestinationBlobTypeNotMatch);
                 }
                 else
                 {
@@ -579,7 +579,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 {
                     copyId = await destChannel.StartCopyAsync((CloudPageBlob)destBlob, srcUri, pageBlobTier.Value, null, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken).ConfigureAwait(false);
                 }
-                this.OutputStream.WriteVerbose(taskId, String.Format(Resources.CopyDestinationBlobPending, destBlob.Name, destBlob.Container.Name, copyId));
+                this.OutputStream.WriteVerbose(taskId, String.Format(ResourceV1.CopyDestinationBlobPending, destBlob.Name, destBlob.Container.Name, copyId));
                 this.WriteCloudBlobObject(taskId, destChannel, destBlob);
             }
         }
@@ -610,7 +610,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             }
             else
             {
-                throw new ArgumentException(String.Format(Resources.InvalidBlobType, blobType, destBlobName));
+                throw new ArgumentException(String.Format(ResourceV1.InvalidBlobType, blobType, destBlobName));
             }
 
             return destBlob;

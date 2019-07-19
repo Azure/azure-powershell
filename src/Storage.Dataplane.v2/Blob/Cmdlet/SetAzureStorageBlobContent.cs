@@ -199,8 +199,8 @@ namespace Microsoft.Azure.Commands.Storage.Blob
         /// <param name="blob">destination azure blob object</param>
         internal virtual async Task Upload2Blob(long taskId, IStorageBlobManagement localChannel, string filePath, StorageBlob.CloudBlob blob)
         {
-            string activity = String.Format(Resources.SendAzureBlobActivity, filePath, blob.Name, blob.Container.Name);
-            string status = Resources.PrepareUploadingBlob;
+            string activity = String.Format(ResourceV2.SendAzureBlobActivity, filePath, blob.Name, blob.Container.Name);
+            string status = ResourceV2.PrepareUploadingBlob;
             ProgressRecord pr = new ProgressRecord(OutputStream.GetProgressId(taskId), activity, status);
 
             FileInfo fileInfo = new FileInfo(filePath);
@@ -263,7 +263,7 @@ namespace Microsoft.Azure.Commands.Storage.Blob
         {
             if (string.IsNullOrEmpty(fileName))
             {
-                throw new ArgumentException(Resources.FileNameCannotEmpty);
+                throw new ArgumentException(ResourceV2.FileNameCannotEmpty);
             }
 
             return fileName;
@@ -296,14 +296,14 @@ namespace Microsoft.Azure.Commands.Storage.Blob
             {
                 throw new InvalidOperationException(string.Format(
                     CultureInfo.CurrentCulture,
-                    Resources.InvalidBlobType,
+                    ResourceV2.InvalidBlobType,
                     blobType,
                     blobName));
             }
 
             if (!string.IsNullOrEmpty(blobName) && !NameUtil.IsValidBlobName(blobName))
             {
-                throw new ArgumentException(String.Format(Resources.InvalidBlobName, blobName));
+                throw new ArgumentException(String.Format(ResourceV2.InvalidBlobName, blobName));
             }
 
             string filePath = GetFullSendFilePath(fileName);
@@ -312,7 +312,7 @@ namespace Microsoft.Azure.Commands.Storage.Blob
 
             if (!isFile)
             {
-                WriteWarning(String.Format(Resources.CannotSendDirectory, filePath));
+                WriteWarning(String.Format(ResourceV2.CannotSendDirectory, filePath));
             }
         }
 
@@ -365,7 +365,7 @@ namespace Microsoft.Azure.Commands.Storage.Blob
             {
                 if (!validCloudBlobProperties.ContainsKey(entry.Key.ToString()))
                 {
-                    throw new ArgumentException(String.Format(Resources.InvalidBlobProperties, entry.Key.ToString(), entry.Value.ToString()));
+                    throw new ArgumentException(String.Format(ResourceV2.InvalidBlobProperties, entry.Key.ToString(), entry.Value.ToString()));
                 }
             }
         }

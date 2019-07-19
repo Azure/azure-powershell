@@ -103,7 +103,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
             {
                 if (!NameUtil.IsValidTableName(name))
                 {
-                    throw new ArgumentException(String.Format(Resources.InvalidTableName, name));
+                    throw new ArgumentException(String.Format(ResourceV1.InvalidTableName, name));
                 }
 
                 CloudTable table = Channel.GetTableReference(name);
@@ -114,7 +114,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
                 }
                 else
                 {
-                    throw new ResourceNotFoundException(String.Format(Resources.TableNotFound, name));
+                    throw new ResourceNotFoundException(String.Format(ResourceV1.TableNotFound, name));
                 }
             }
         }
@@ -130,7 +130,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
 
             if (!NameUtil.IsValidTablePrefix(prefix))
             {
-                throw new ArgumentException(String.Format(Resources.InvalidTableName, prefix));
+                throw new ArgumentException(String.Format(ResourceV1.InvalidTableName, prefix));
             }
 
             return Channel.ListTables(prefix, reqesutOptions, OperationContext);

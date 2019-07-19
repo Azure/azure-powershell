@@ -425,7 +425,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         {
             if (String.IsNullOrEmpty(storageAccountName))
             {
-                throw new ArgumentException(String.Format(Resources.ObjectCannotBeNull, StorageNouns.StorageAccountName));
+                throw new ArgumentException(String.Format(ResourceV1.ObjectCannotBeNull, StorageNouns.StorageAccountName));
             }
 
             if (string.IsNullOrEmpty(endPoint))
@@ -441,17 +441,17 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
 
             if (useHttps)
             {
-                blobEndpoint = String.Format(Resources.HttpsBlobEndPointFormat, storageAccountName, domain);
-                tableEndpoint = String.Format(Resources.HttpsTableEndPointFormat, storageAccountName, domain);
-                queueEndpoint = String.Format(Resources.HttpsQueueEndPointFormat, storageAccountName, domain);
-                fileEndpoint = String.Format(Resources.HttpsFileEndPointFormat, storageAccountName, domain);
+                blobEndpoint = String.Format(ResourceV1.HttpsBlobEndPointFormat, storageAccountName, domain);
+                tableEndpoint = String.Format(ResourceV1.HttpsTableEndPointFormat, storageAccountName, domain);
+                queueEndpoint = String.Format(ResourceV1.HttpsQueueEndPointFormat, storageAccountName, domain);
+                fileEndpoint = String.Format(ResourceV1.HttpsFileEndPointFormat, storageAccountName, domain);
             }
             else
             {
-                blobEndpoint = String.Format(Resources.HttpBlobEndPointFormat, storageAccountName, domain);
-                tableEndpoint = String.Format(Resources.HttpTableEndPointFormat, storageAccountName, domain);
-                queueEndpoint = String.Format(Resources.HttpQueueEndPointFormat, storageAccountName, domain);
-                fileEndpoint = String.Format(Resources.HttpFileEndPointFormat, storageAccountName, domain);
+                blobEndpoint = String.Format(ResourceV1.HttpBlobEndPointFormat, storageAccountName, domain);
+                tableEndpoint = String.Format(ResourceV1.HttpTableEndPointFormat, storageAccountName, domain);
+                queueEndpoint = String.Format(ResourceV1.HttpQueueEndPointFormat, storageAccountName, domain);
+                fileEndpoint = String.Format(ResourceV1.HttpFileEndPointFormat, storageAccountName, domain);
             }
 
             return new CloudStorageAccount(credential, new Uri(blobEndpoint), new Uri(queueEndpoint), new Uri(tableEndpoint), new Uri(fileEndpoint));
@@ -494,7 +494,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
                     }
                     catch (ArgumentException e)
                     {
-                        throw new ArgumentException(e.Message + " " + string.Format(CultureInfo.CurrentCulture, Resources.ValidEnvironmentName, EnvironmentName.AzureCloud, EnvironmentName.AzureChinaCloud));
+                        throw new ArgumentException(e.Message + " " + string.Format(CultureInfo.CurrentCulture, ResourceV1.ValidEnvironmentName, EnvironmentName.AzureCloud, EnvironmentName.AzureChinaCloud));
                     }
                 }
 
@@ -517,7 +517,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
                 }
             }
 
-            return GetStorageAccountWithEndPoint(credential, storageAccountName, useHttps, Resources.DefaultDomain);
+            return GetStorageAccountWithEndPoint(credential, storageAccountName, useHttps, ResourceV1.DefaultDomain);
         }
 
         /// <summary>
@@ -526,7 +526,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         /// <returns></returns>
         internal string GetDefaultEndPointDomain()
         {
-            return Resources.DefaultStorageEndPointDomain;
+            return ResourceV1.DefaultStorageEndPointDomain;
         }
 
         /// <summary>
@@ -572,7 +572,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
                     account = GetStorageAccountByOAuthFromAzureEnvironment(StorageAccountName, useHttps, environmentName);
                     break;
                 default:
-                    throw new ArgumentException(Resources.DefaultStorageCredentialsNotFound);
+                    throw new ArgumentException(ResourceV1.DefaultStorageCredentialsNotFound);
             }
 
             AzureStorageContext context = new AzureStorageContext(account);

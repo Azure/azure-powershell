@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.Storage
 
             if (null == blob)
             {
-                throw new ResourceNotFoundException(String.Format(Resources.BlobNotFound, blobName, containerName));
+                throw new ResourceNotFoundException(String.Format(ResourceV2.BlobNotFound, blobName, containerName));
             }
 
             return blob;
@@ -128,12 +128,12 @@ namespace Microsoft.Azure.Commands.Storage
         {
             if (null == blob)
             {
-                throw new ArgumentException(String.Format(Resources.ObjectCannotBeNull, typeof(CloudBlob).Name));
+                throw new ArgumentException(String.Format(ResourceV2.ObjectCannotBeNull, typeof(CloudBlob).Name));
             }
 
             if (!NameUtil.IsValidBlobName(blob.Name))
             {
-                throw new ArgumentException(String.Format(Resources.InvalidBlobName, blob.Name));
+                throw new ArgumentException(String.Format(ResourceV2.InvalidBlobName, blob.Name));
             }
 
             ValidatePipelineCloudBlobContainer(blob.Container);
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Commands.Storage
 
             //if (!Channel.DoesBlobExist(blob, requestOptions, OperationContext))
             //{
-            //    throw new ResourceNotFoundException(String.Format(Resources.BlobNotFound, blob.Name, blob.Container.Name));
+            //    throw new ResourceNotFoundException(String.Format(ResourceV2.BlobNotFound, blob.Name, blob.Container.Name));
             //}
         }
 
@@ -153,12 +153,12 @@ namespace Microsoft.Azure.Commands.Storage
         {
             if (null == container)
             {
-                throw new ArgumentException(String.Format(Resources.ObjectCannotBeNull, typeof(CloudBlobContainer).Name));
+                throw new ArgumentException(String.Format(ResourceV2.ObjectCannotBeNull, typeof(CloudBlobContainer).Name));
             }
 
             if (!NameUtil.IsValidContainerName(container.Name))
             {
-                throw new ArgumentException(String.Format(Resources.InvalidContainerName, container.Name));
+                throw new ArgumentException(String.Format(ResourceV2.InvalidContainerName, container.Name));
             }
 
             //BlobRequestOptions requestOptions = RequestOptions;
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Commands.Storage
             //if (container.ServiceClient.Credentials.IsSharedKey 
             //    && !Channel.DoesContainerExist(container, requestOptions, OperationContext))
             //{
-            //    throw new ResourceNotFoundException(String.Format(Resources.ContainerNotFound, container.Name));
+            //    throw new ResourceNotFoundException(String.Format(ResourceV2.ContainerNotFound, container.Name));
             //}
         }
 
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Commands.Storage
             {
                 throw new InvalidOperationException(string.Format(
                     CultureInfo.CurrentCulture,
-                    Resources.InvalidBlobType,
+                    ResourceV2.InvalidBlobType,
                     blob.BlobType,
                     blob.Name));
             }

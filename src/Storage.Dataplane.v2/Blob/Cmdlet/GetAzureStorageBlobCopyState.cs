@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.Storage.Blob.Cmdlet
             long localFailed = Interlocked.Read(ref InternalFailedCount);
             long localFinished = Interlocked.Read(ref InternalFinishedCount);
 
-            string summary = String.Format(Resources.TransmitActiveSummary, localTotal,
+            string summary = String.Format(ResourceV2.TransmitActiveSummary, localTotal,
                 localFailed, localFinished, (localTotal - localFailed - localFinished));
             summaryRecord.StatusDescription = summary;
             WriteProgress(summaryRecord);
@@ -186,9 +186,9 @@ namespace Microsoft.Azure.Commands.Storage.Blob.Cmdlet
                 progress.PercentComplete = percent;
             }
 
-            string activity = String.Format(Resources.CopyBlobStatus, blob.CopyState.Status.ToString(), blob.Name, blob.Container.Name, blob.CopyState.Source.ToString());
+            string activity = String.Format(ResourceV2.CopyBlobStatus, blob.CopyState.Status.ToString(), blob.Name, blob.Container.Name, blob.CopyState.Source.ToString());
             progress.Activity = activity;
-            string message = String.Format(Resources.CopyPendingStatus, percent, blob.CopyState.BytesCopied, blob.CopyState.TotalBytes);
+            string message = String.Format(ResourceV2.CopyPendingStatus, percent, blob.CopyState.BytesCopied, blob.CopyState.TotalBytes);
             progress.StatusDescription = message;
             OutputStream.WriteProgress(progress);
         }
@@ -258,7 +258,7 @@ namespace Microsoft.Azure.Commands.Storage.Blob.Cmdlet
         /// </summary>
         protected async Task MonitorBlobCopyStatusAsync(long taskId)
         {
-            ProgressRecord records = new ProgressRecord(OutputStream.GetProgressId(taskId), Resources.CopyBlobActivity, Resources.CopyBlobActivity);
+            ProgressRecord records = new ProgressRecord(OutputStream.GetProgressId(taskId), ResourceV2.CopyBlobActivity, ResourceV2.CopyBlobActivity);
             Tuple<long, CloudBlob> monitorRequest = null;
             BlobRequestOptions requestOptions = RequestOptions;
             AccessCondition accessCondition = null;
@@ -278,7 +278,7 @@ namespace Microsoft.Azure.Commands.Storage.Blob.Cmdlet
 
                     if (blob.CopyState == null)
                     {
-                        ArgumentException e = new ArgumentException(String.Format(Resources.CopyTaskNotFound, blob.Name, blob.Container.Name));
+                        ArgumentException e = new ArgumentException(String.Format(ResourceV2.CopyTaskNotFound, blob.Name, blob.Container.Name));
                         OutputStream.WriteError(internalTaskId, e);
                         Interlocked.Increment(ref InternalFailedCount);
                         taskDone = true;

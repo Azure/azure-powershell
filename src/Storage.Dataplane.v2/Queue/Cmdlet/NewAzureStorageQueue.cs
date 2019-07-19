@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Storage.Queue
         {
             if (!NameUtil.IsValidQueueName(name))
             {
-                throw new ArgumentException(String.Format(Resources.InvalidQueueName, name));
+                throw new ArgumentException(String.Format(ResourceV2.InvalidQueueName, name));
             }
 
             QueueRequestOptions requestOptions = RequestOptions;
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Storage.Queue
 
             if (!created)
             {
-                throw new ResourceAlreadyExistException(String.Format(Resources.QueueAlreadyExists, name));
+                throw new ResourceAlreadyExistException(String.Format(ResourceV2.QueueAlreadyExists, name));
             }
 
             return new AzureStorageQueue(queue);

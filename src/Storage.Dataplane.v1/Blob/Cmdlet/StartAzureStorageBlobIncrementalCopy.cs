@@ -304,14 +304,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
                     if (null == blobReference)
                     {
-                        throw new ResourceNotFoundException(String.Format(Resources.BlobUriNotFound, sourceUri.ToString()));
+                        throw new ResourceNotFoundException(String.Format(ResourceV1.BlobUriNotFound, sourceUri.ToString()));
                     }
 
                     StartCopyBlob(destChannel, VerifyIncrementalCopySourceBlob(blobReference), destContainer, destBlobName);
                 }
                 else
                 {
-                    WriteWarning(String.Format(Resources.StartCopySourceContextMismatch, srcUri, context.BlobEndPoint));
+                    WriteWarning(String.Format(ResourceV1.StartCopySourceContextMismatch, srcUri, context.BlobEndPoint));
                 }
             }
             else
@@ -361,7 +361,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                     // Current use error message to decide whether it caused by blob type mismatch,
                     // We should ask xscl to expose an error code for this..
                     // Opened workitem 1487579 to track this.
-                    throw new InvalidOperationException(Resources.DestinationBlobTypeNotMatch);
+                    throw new InvalidOperationException(ResourceV1.DestinationBlobTypeNotMatch);
                 }
                 else
                 {
@@ -374,7 +374,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         {
             //Don't need to verify the Dest Exist and warn user for overwrite, since incremental Copy won't overwrite the dest blob, but will create a new snapshot for it.
             string copyId = await destChannel.StartIncrementalCopyAsync(destBlob, new CloudPageBlob(srcUri), null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken).ConfigureAwait(false);
-            this.OutputStream.WriteVerbose(taskId, String.Format(Resources.CopyDestinationBlobPending, destBlob.Name, destBlob.Container.Name, copyId));
+            this.OutputStream.WriteVerbose(taskId, String.Format(ResourceV1.CopyDestinationBlobPending, destBlob.Name, destBlob.Container.Name, copyId));
             this.WriteCloudBlobObject(taskId, destChannel, destBlob);
         }
 

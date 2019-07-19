@@ -94,12 +94,12 @@ namespace Microsoft.Azure.Commands.Storage.File
             isDirectory = PathSeparators.Contains(path.Last());
             if (isFileName && isDirectory)
             {
-                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.FileNameShouldNotEndWithSlash, path));
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, ResourceV2.FileNameShouldNotEndWithSlash, path));
             }
 
             if (path.Length > MaxPathLength)
             {
-                throw new ArgumentOutOfRangeException(string.Format(CultureInfo.CurrentCulture, Resources.PathTooLong, path, MaxPathLength));
+                throw new ArgumentOutOfRangeException(string.Format(CultureInfo.CurrentCulture, ResourceV2.PathTooLong, path, MaxPathLength));
             }
 
             string[] result = path.Split(PathSeparators, StringSplitOptions.RemoveEmptyEntries);
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.Storage.File
                 if (!Regex.Match(fileName, FileNameValidationPattern, RegexOptions.Singleline).Success ||
                     Regex.Match(fileName.ToUpperInvariant(), InvalidFileNamePattern, RegexOptions.Singleline).Success)
                 {
-                    throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.PathInvalid, fileName));
+                    throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, ResourceV2.PathInvalid, fileName));
                 }
             }
 
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Commands.Storage.File
                 }
             }
 
-            throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.ShareNameInvalid, shareName));
+            throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, ResourceV2.ShareNameInvalid, shareName));
         }
     }
 }

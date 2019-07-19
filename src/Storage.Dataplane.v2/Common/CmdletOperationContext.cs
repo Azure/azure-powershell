@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.Storage.Common
         internal static string GenClientRequestID()
         {
             var uniqueId = System.Guid.NewGuid().ToString();
-            return string.Format(Resources.ClientRequestIdFormat, uniqueId);
+            return string.Format(ResourceV2.ClientRequestIdFormat, uniqueId);
         }
 
         /// <summary>
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Storage.Common
                 Interlocked.Increment(ref _startedRemoteCallCounter);
 
                 //https://github.com/Azure/azure-storage-net/issues/658
-                var message = String.Format(Resources.StartRemoteCall,
+                var message = String.Format(ResourceV2.StartRemoteCall,
                     _startedRemoteCallCounter, String.Empty, e.Request.RequestUri.ToString());
 
                 try
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Commands.Storage.Common
                 var elapsedTime = (context.EndTime - context.StartTime).TotalMilliseconds;
 
                 //https://github.com/Azure/azure-storage-net/issues/658
-                var message = String.Format(Resources.FinishRemoteCall,
+                var message = String.Format(ResourceV2.FinishRemoteCall,
                     e.Request.RequestUri.ToString(), String.Empty, String.Empty, e.RequestInformation.ServiceRequestID, elapsedTime);
 
                 try
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Commands.Storage.Common
                 // TODO: Remove IfDef
 
                 //https://github.com/Azure/azure-storage-net/issues/658
-                var message = String.Format(Resources.StartRemoteCall,
+                var message = String.Format(ResourceV2.StartRemoteCall,
                     _startedRemoteCallCounter, String.Empty, e.Request.RequestUri.ToString());
 
                 try
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Commands.Storage.Common
                 var elapsedTime = (context.EndTime - context.StartTime).TotalMilliseconds;
                 // TODO: Remove IfDef
                 //https://github.com/Azure/azure-storage-net/issues/658
-                var message = String.Format(Resources.FinishRemoteCall,
+                var message = String.Format(ResourceV2.FinishRemoteCall,
                     e.Request.RequestUri.ToString(), String.Empty, String.Empty, e.RequestInformation.ServiceRequestID, elapsedTime);
 
                 try

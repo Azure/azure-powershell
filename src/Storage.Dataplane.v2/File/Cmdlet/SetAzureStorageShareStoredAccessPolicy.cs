@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Storage.File.Cmdlet
             //Set the policy with new value
             if (!permissions.SharedAccessPolicies.Keys.Contains(policyName))
             {
-                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.PolicyNotFound, policyName));
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, ResourceV2.PolicyNotFound, policyName));
             }
 
             SharedAccessFilePolicy policy = permissions.SharedAccessPolicies[policyName];
@@ -89,12 +89,12 @@ namespace Microsoft.Azure.Commands.Storage.File.Cmdlet
         {
             if (NoStartTime && StartTime != null)
             {
-                throw new ArgumentException(Resources.StartTimeParameterConflict);
+                throw new ArgumentException(ResourceV2.StartTimeParameterConflict);
             }
 
             if (NoExpiryTime && ExpiryTime != null)
             {
-                throw new ArgumentException(Resources.ExpiryTimeParameterConflict);
+                throw new ArgumentException(ResourceV2.ExpiryTimeParameterConflict);
             }
 
             if (ShouldProcess(Policy, "Set"))

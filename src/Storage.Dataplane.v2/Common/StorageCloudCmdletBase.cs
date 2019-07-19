@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Commands.Storage.Common
                     options = new FileRequestOptions();
                     break;
                 default:
-                    throw new ArgumentException(Resources.InvalidStorageServiceType, "type");
+                    throw new ArgumentException(ResourceV2.InvalidStorageServiceType, "type");
             }
 
             if (ServerTimeoutPerRequest.HasValue)
@@ -287,7 +287,7 @@ namespace Microsoft.Azure.Commands.Storage.Common
 
             if (context != null)
             {
-                WriteDebugLog(String.Format(Resources.UseStorageAccountFromContext, context.StorageAccountName));
+                WriteDebugLog(String.Format(ResourceV2.UseStorageAccountFromContext, context.StorageAccountName));
             }
             else
             {
@@ -400,7 +400,7 @@ namespace Microsoft.Azure.Commands.Storage.Common
                 return null;
             }
 
-            throw new ArgumentOutOfRangeException(string.Format(CultureInfo.CurrentCulture, Resources.InvalidTimeoutValue, timeoutInSeconds));
+            throw new ArgumentOutOfRangeException(string.Format(CultureInfo.CurrentCulture, ResourceV2.InvalidTimeoutValue, timeoutInSeconds));
         }
 
 
@@ -410,7 +410,7 @@ namespace Microsoft.Azure.Commands.Storage.Common
         /// <returns>Cloud storage account</returns>
         private static bool TryGetStorageAccountFromEnvironmentVariable(out string connectionString)
         {
-            connectionString = Environment.GetEnvironmentVariable(Resources.EnvConnectionString);
+            connectionString = Environment.GetEnvironmentVariable(ResourceV2.EnvConnectionString);
 
             return !String.IsNullOrEmpty(connectionString);
         }
@@ -419,10 +419,10 @@ namespace Microsoft.Azure.Commands.Storage.Common
         {
             if (String.IsNullOrEmpty(connectionString))
             {
-                throw new ArgumentException(Resources.DefaultStorageCredentialsNotFound);
+                throw new ArgumentException(ResourceV2.DefaultStorageCredentialsNotFound);
             }
 
-            WriteDebugLog(Resources.GetStorageAccountFromEnvironmentVariable);
+            WriteDebugLog(ResourceV2.GetStorageAccountFromEnvironmentVariable);
 
             try
             {
@@ -430,7 +430,7 @@ namespace Microsoft.Azure.Commands.Storage.Common
             }
             catch
             {
-                WriteVerboseWithTimestamp(Resources.CannotGetStorageAccountFromEnvironmentVariable);
+                WriteVerboseWithTimestamp(ResourceV2.CannotGetStorageAccountFromEnvironmentVariable);
                 throw;
             }
         }
@@ -441,7 +441,7 @@ namespace Microsoft.Azure.Commands.Storage.Common
         /// <param name="e">an exception object</param>
         protected override void WriteExceptionError(Exception e)
         {
-            Debug.Assert(e != null, Resources.ExceptionCannotEmpty);
+            Debug.Assert(e != null, ResourceV2.ExceptionCannotEmpty);
 
             if (e is StorageException)
             {
@@ -487,7 +487,7 @@ namespace Microsoft.Azure.Commands.Storage.Common
         /// <param name="e">exception object</param>
         protected void WriteTerminatingError(Exception e)
         {
-            Debug.Assert(e != null, Resources.ExceptionCannotEmpty);
+            Debug.Assert(e != null, ResourceV2.ExceptionCannotEmpty);
             ThrowTerminatingError(new ErrorRecord(e, e.GetType().Name, GetExceptionErrorCategory(e), null));
         }
 
@@ -539,9 +539,9 @@ namespace Microsoft.Azure.Commands.Storage.Common
             _taskScheduler.OnError += TaskErrorHandler;
 
             const int summaryRecordId = 0;
-            var summary = String.Format(Resources.TransmitActiveSummary, _taskScheduler.TotalTaskCount,
+            var summary = String.Format(ResourceV2.TransmitActiveSummary, _taskScheduler.TotalTaskCount,
                 _taskScheduler.FinishedTaskCount, _taskScheduler.FailedTaskCount, _taskScheduler.ActiveTaskCount);
-            var activity = string.Format(Resources.TransmitActivity, MyInvocation.MyCommand);
+            var activity = string.Format(ResourceV2.TransmitActivity, MyInvocation.MyCommand);
             summaryRecord = new ProgressRecord(summaryRecordId, activity, summary);
             CmdletCancellationToken.Register(() => OutputStream.CancelConfirmRequest());
         }
@@ -575,7 +575,7 @@ namespace Microsoft.Azure.Commands.Storage.Common
 
         protected void WriteTaskSummary()
         {
-            WriteVerbose(String.Format(Resources.TransferSummary, _taskScheduler.TotalTaskCount,
+            WriteVerbose(String.Format(ResourceV2.TransferSummary, _taskScheduler.TotalTaskCount,
                 _taskScheduler.FinishedTaskCount, _taskScheduler.FailedTaskCount, _taskScheduler.ActiveTaskCount));
         }
 
@@ -599,7 +599,7 @@ namespace Microsoft.Azure.Commands.Storage.Common
         /// </summary>
         protected virtual void WriteTransmitSummaryStatus()
         {
-            var summary = String.Format(Resources.TransmitActiveSummary, _taskScheduler.TotalTaskCount,
+            var summary = String.Format(ResourceV2.TransmitActiveSummary, _taskScheduler.TotalTaskCount,
                 _taskScheduler.FinishedTaskCount, _taskScheduler.FailedTaskCount, _taskScheduler.ActiveTaskCount);
             summaryRecord.StatusDescription = summary;
             WriteProgress(summaryRecord);
@@ -612,7 +612,7 @@ namespace Microsoft.Azure.Commands.Storage.Common
         {
             CmdletOperationContext.Init();
             CmdletCancellationToken = _cancellationTokenSource.Token;
-            WriteDebugLog(String.Format(Resources.InitOperationContextLog, GetType().Name, CmdletOperationContext.ClientRequestId));
+            WriteDebugLog(String.Format(ResourceV2.InitOperationContextLog, GetType().Name, CmdletOperationContext.ClientRequestId));
 
             if (_enableMultiThread)
             {
@@ -639,7 +639,7 @@ namespace Microsoft.Azure.Commands.Storage.Common
             }
 
             var timespan = CmdletOperationContext.GetRunningMilliseconds();
-            var message = string.Format(Resources.EndProcessingLog,
+            var message = string.Format(ResourceV2.EndProcessingLog,
                 GetType().Name, CmdletOperationContext.StartedRemoteCallCounter, CmdletOperationContext.FinishedRemoteCallCounter, timespan, CmdletOperationContext.ClientRequestId);
             WriteDebugLog(message);
             base.EndProcessing();

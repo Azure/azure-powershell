@@ -83,7 +83,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             //Set the policy with new value
             if (!blobContainerPermissions.SharedAccessPolicies.Keys.Contains(policyName))
             {
-                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.PolicyNotFound, policyName));
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, ResourceV1.PolicyNotFound, policyName));
             }
 
             SharedAccessBlobPolicy policy = blobContainerPermissions.SharedAccessPolicies[policyName];
@@ -106,12 +106,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             if (String.IsNullOrEmpty(Container) || String.IsNullOrEmpty(Policy)) return;
             if (NoStartTime && StartTime != null)
             {
-                throw new ArgumentException(Resources.StartTimeParameterConflict);
+                throw new ArgumentException(ResourceV1.StartTimeParameterConflict);
             }
 
             if (NoExpiryTime && ExpiryTime != null)
             {
-                throw new ArgumentException(Resources.ExpiryTimeParameterConflict);
+                throw new ArgumentException(ResourceV1.ExpiryTimeParameterConflict);
             }
 
             if (ShouldProcess(Policy, "Set"))

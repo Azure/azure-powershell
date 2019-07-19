@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.Storage.Blob
             {
                 if (deleteSnapshot)
                 {
-                    throw new ArgumentException(String.Format(Resources.CannotDeleteSnapshotForSnapshot, blob.Name, blob.SnapshotTime));
+                    throw new ArgumentException(String.Format(ResourceV2.CannotDeleteSnapshotForSnapshot, blob.Name, blob.SnapshotTime));
                 }
             }
             else
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Commands.Storage.Blob
 
             if (retryDeleteSnapshot)
             {
-                string message = string.Format(Resources.ConfirmRemoveBlobWithSnapshot, blob.Name, blob.Container.Name);
+                string message = string.Format(ResourceV2.ConfirmRemoveBlobWithSnapshot, blob.Name, blob.Container.Name);
 
                 if (await OutputStream.ConfirmAsync(message).ConfigureAwait(false))
                 {
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Commands.Storage.Blob
                 }
                 else
                 {
-                    string result = String.Format(Resources.RemoveBlobCancelled, blob.Name, blob.Container.Name);
+                    string result = String.Format(ResourceV2.RemoveBlobCancelled, blob.Name, blob.Container.Name);
                     OutputStream.WriteVerbose(taskId, result);
                 }
             }
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Commands.Storage.Blob
             await localChannel.DeleteCloudBlobAsync(blob, deleteSnapshotsOption, accessCondition,
                     requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
 
-            string result = String.Format(Resources.RemoveBlobSuccessfully, blob.Name, blob.Container.Name);
+            string result = String.Format(ResourceV2.RemoveBlobSuccessfully, blob.Name, blob.Container.Name);
 
             OutputStream.WriteVerbose(taskId, result);
 
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Commands.Storage.Blob
         {
             if (!NameUtil.IsValidBlobName(blobName))
             {
-                throw new ArgumentException(String.Format(Resources.InvalidBlobName, blobName));
+                throw new ArgumentException(String.Format(ResourceV2.InvalidBlobName, blobName));
             }
 
             ValidatePipelineCloudBlobContainer(container);
@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Commands.Storage.Blob
 
             if (null == blob && container.ServiceClient.Credentials.IsSharedKey)
             {
-                throw new ResourceNotFoundException(String.Format(Resources.BlobNotFound, blobName, container.Name));
+                throw new ResourceNotFoundException(String.Format(ResourceV2.BlobNotFound, blobName, container.Name));
             }
             else
             {

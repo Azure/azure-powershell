@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Commands.Storage.Common
 
             try
             {
-                bool result = ConfirmWriter(string.Empty, tcs.Message, Resources.ConfirmCaption);
+                bool result = ConfirmWriter(string.Empty, tcs.Message, ResourceV2.ConfirmCaption);
                 tcs.SetResult(result);
             }
             catch (Exception e)

@@ -157,12 +157,12 @@ namespace Microsoft.Azure.Commands.Storage.Table.Cmdlet
         {
             if (!string.IsNullOrEmpty(startRowKey) && string.IsNullOrEmpty(startPartitionKey))
             {
-                throw new ArgumentException(Resources.StartpkMustAccomanyStartrk);
+                throw new ArgumentException(ResourceV2.StartpkMustAccomanyStartrk);
             }
 
             if (!string.IsNullOrEmpty(endRowKey) && string.IsNullOrEmpty(endPartitionKey))
             {
-                throw new ArgumentException(Resources.EndpkMustAccomanyEndrk);
+                throw new ArgumentException(ResourceV2.EndpkMustAccomanyEndrk);
             }
         }
 

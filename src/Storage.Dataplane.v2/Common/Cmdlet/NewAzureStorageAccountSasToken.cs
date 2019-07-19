@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Commands.Storage.Common.Cmdlet
                         accountPermission |= SharedAccessAccountPermissions.List;
                         break;
                     default:
-                        throw new ArgumentException(string.Format(Resources.InvalidAccessPermission, op));
+                        throw new ArgumentException(string.Format(ResourceV2.InvalidAccessPermission, op));
                 }
             }
 
