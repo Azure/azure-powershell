@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// The synchronize root
         /// </summary>
         private static readonly object SyncRoot = new object();
-        
+
         /// <summary>
         /// Query extension with subscription names
         /// </summary>
@@ -246,9 +246,8 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
             var subscriptionList = this.DefaultContext.Account.GetSubscriptions(this.DefaultProfile);
             if (subscriptionList != null && subscriptionList.Count != 0)
             {
-                var subIdToNameCache = subscriptionList.ToDictionary(sub => sub.Id, sub => sub.Name);
                 queryExtensionToIncludeNames =
-                    $"extend subscriptionDisplayName=case({string.Join(",", subIdToNameCache.Select(sub => $"subscriptionId=='{sub.Key}', '{sub.Value}'"))},'')";
+                    $"extend subscriptionDisplayName=case({string.Join(",", subscriptionList.Select(sub => $"subscriptionId=='{sub.Id}', '{sub.Name}'"))},'')";
             }
 
             // Query extension with tenant names
@@ -259,15 +258,13 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                 var tenantList = subscriptionsClient.Tenants.List().ToList();
                 if (tenantList != null && tenantList.Count != 0)
                 {
-                    var tenantIdToNameMap = tenantList?.ToDictionary(tenant => tenant.TenantId, tenant => tenant.DisplayName);
-
                     if (queryExtensionToIncludeNames.Length > 0)
                     {
                         queryExtensionToIncludeNames += "| ";
                     }
 
                     queryExtensionToIncludeNames +=
-                        $"extend tenantDisplayName=case({string.Join(",", tenantIdToNameMap.Select(tenant => $"tenantId=='{tenant.Key}', '{tenant.Value}'"))},'')";
+                        $"extend tenantDisplayName=case({string.Join(",", tenantList.Select(tenant => $"tenantId=='{tenant.TenantId}', '{tenant.DisplayName}'"))},'')";
                 }
             }
         }
