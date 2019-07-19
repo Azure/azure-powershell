@@ -217,6 +217,41 @@ function Test-PolicyDefinitionMode
     # clean up
     $remove = Remove-AzPolicyDefinition -SubscriptionId $subscriptionId -Name $policyName -Force
     Assert-AreEqual True $remove
+
+    # test policy with data plane mode
+    # make a policy definition with data plane mode, get it back and validate
+    $expected = New-AzPolicyDefinition -SubscriptionId $subscriptionId -Name $policyName -Policy "$TestOutputRoot\SampleKeyVaultDataPolicyDefinition.json" -Mode 'Microsoft.KeyVault.Data' -Description $description
+    $actual = Get-AzPolicyDefinition -SubscriptionId $subscriptionId -Name $policyName
+    Assert-NotNull $actual
+    Assert-AreEqual $expected.Name $actual.Name
+    Assert-AreEqual $expected.PolicyDefinitionId $actual.PolicyDefinitionId
+    Assert-NotNull($actual.Properties.PolicyRule)
+    Assert-AreEqual 'Microsoft.KeyVault.Data' $actual.Properties.Mode
+    Assert-AreEqual 'Microsoft.KeyVault.Data' $expected.Properties.Mode
+
+    # update the same policy definition without touching mode, get it back and validate
+    $actual = Set-AzPolicyDefinition -SubscriptionId $subscriptionId -Name $policyName -DisplayName testDisplay -Description $updatedDescription -Policy "$TestOutputRoot\SampleKeyVaultDataPolicyDefinition.json" -Metadata $metadata
+    $expected = Get-AzPolicyDefinition -SubscriptionId $subscriptionId -Name $policyName
+    Assert-AreEqual $expected.Properties.DisplayName $actual.Properties.DisplayName
+    Assert-AreEqual $expected.Properties.Description $actual.Properties.Description
+    Assert-NotNull($actual.Properties.Metadata)
+    Assert-AreEqual $metadataValue $actual.Properties.Metadata.$metadataName
+    Assert-AreEqual 'Microsoft.KeyVault.Data' $actual.Properties.Mode
+    Assert-AreEqual 'Microsoft.KeyVault.Data' $expected.Properties.Mode
+
+    # update the same policy definition explicitly providing the same mode, get it back and validate
+    $actual = Set-AzPolicyDefinition -SubscriptionId $subscriptionId -Name $policyName -DisplayName testDisplay -Mode 'Microsoft.KeyVault.Data' -Description $updatedDescription -Policy "$TestOutputRoot\SampleKeyVaultDataPolicyDefinition.json" -Metadata $metadata
+    $expected = Get-AzPolicyDefinition -SubscriptionId $subscriptionId -Name $policyName
+    Assert-AreEqual $expected.Properties.DisplayName $actual.Properties.DisplayName
+    Assert-AreEqual $expected.Properties.Description $actual.Properties.Description
+    Assert-NotNull($actual.Properties.Metadata)
+    Assert-AreEqual $metadataValue $actual.Properties.Metadata.$metadataName
+    Assert-AreEqual 'Microsoft.KeyVault.Data' $actual.Properties.Mode
+    Assert-AreEqual 'Microsoft.KeyVault.Data' $expected.Properties.Mode 
+
+    # clean up
+    $remove = Remove-AzPolicyDefinition -SubscriptionId $subscriptionId -Name $policyName -Force
+    Assert-AreEqual True $remove
 }
 
 <#

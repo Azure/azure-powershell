@@ -39,7 +39,7 @@ function Test-CreateIntegrationAccountMap
 	$integrationAccountLiquidMapName2 = "Liquid2-" + (getAssetname)
 
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName
-	
+
 	$integrationAccountMap1 =  New-AzIntegrationAccountMap -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -MapName $integrationAccountMapName1 -MapDefinition $xslt1MapContent
 	Assert-AreEqual $integrationAccountMapName1 $integrationAccountMap1.Name
 
@@ -69,10 +69,10 @@ function Test-GetIntegrationAccountMap
 {
 	$mapFilePath = Join-Path (Join-Path $TestOutputRoot "Resources") "SampleXslt1Map.xslt"
 	$mapContent = [IO.File]::ReadAllText($mapFilePath)
-	
+
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$integrationAccountName = "IA-" + (getAssetname)
-	
+
 	$integrationAccountMapName = getAssetname
 
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName
@@ -148,23 +148,26 @@ Test Get-AzIntegrationAccountMap command : Paging test
 #>
 function Test-ListIntegrationAccountMap
 {
-	$mapFilePath = Join-Path (Join-Path $TestOutputRoot "Resources") "SampleXslt1Map.xslt"
-	$mapContent = [IO.File]::ReadAllText($mapFilePath)
+	$xsltFilePath = Join-Path (Join-Path $TestOutputRoot "Resources") "SampleXslt1Map.xslt"
+	$liquidFilePath = Join-Path (Join-Path $TestOutputRoot "Resources") "SampleLiquidMap.liquid"
+	$xsltContent = [IO.File]::ReadAllText($xsltFilePath)
+	$liquidContent = [IO.File]::ReadAllText($liquidFilePath)
 
 	$resourceGroup = TestSetup-CreateResourceGroup
 	$integrationAccountName = "IA-" + (getAssetname)
 
 	$integrationAccount = TestSetup-CreateIntegrationAccount $resourceGroup.ResourceGroupName $integrationAccountName
 
-	$val=0
-	while($val -ne 1)
-	{
-		$val++ ;
-		$integrationAccountMapName = "XSLT-$val-" + (getAssetname)
-		New-AzIntegrationAccountMap -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -MapName $integrationAccountMapName -MapDefinition $mapContent
-	}
+	$xsltMapName = "XSLT-" + (getAssetname)
+	$liquidMapName = "Liquid-" + (getAssetname)
+
+	New-AzIntegrationAccountMap -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -MapType "XSLT" -MapName $xsltMapName -MapDefinition $xsltContent
+	New-AzIntegrationAccountMap -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -MapType "Liquid" -MapName $liquidMapName -MapDefinition $liquidContent
 
 	$result =  Get-AzIntegrationAccountMap -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName
+	Assert-True { $result.Count -eq 2 }
+
+	$result =  Get-AzIntegrationAccountMap -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -MapType "Xslt"
 	Assert-True { $result.Count -eq 1 }
 
 	Remove-AzIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -IntegrationAccountName $integrationAccountName -Force
