@@ -14,8 +14,4 @@
     <PackageReference Include="Microsoft.Azure.Management.ResourceGraph" Version="2.0.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\Accounts\Accounts\Accounts.csproj" />
-  </ItemGroup>
-
 </Project>
