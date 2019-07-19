@@ -145,7 +145,7 @@
           "Microsoft.Azure.Management.ResourceGraph.ResourceGraphClient/0.9.0.0"
         ]
       },
-      "ResponseBody": "{\"totalRecords\":1,\"count\":1,\"data\":{\"columns\":[{\"name\":\"subscriptionId\",\"type\":\"string\"},{\"name\":\"tenantId\",\"type\":\"string\"},{\"name\":\"subscriptionDisplayName\",\"type\":\"string\"},{\"name\":\"tenantDisplayName\",\"type\":\"string\"}],\"rows\":[[\"00000000-0000-0000-0000-000000000000\",\"00000000-0000-0000-0000-000000000000\",\"Test Subscription\",\"Test Tenant\"]]},\"facets\":[],\"resultTruncated\":\"false\"}",
+      "ResponseBody": "{\"totalRecords\":1,\"count\":1,\"data\":[{\"subscriptionId\":\"00000000-0000-0000-0000-000000000000\",\"tenantId\":\"00000000-0000-0000-0000-000000000000\",\"subscriptionDisplayName\":\"Test Subscription\",\"tenantDisplayName\":\"Test Tenant\"}],\"facets\":[],\"resultTruncated\":\"false\"}",
       "ResponseHeaders": {
         "Content-Length": [
           "179"

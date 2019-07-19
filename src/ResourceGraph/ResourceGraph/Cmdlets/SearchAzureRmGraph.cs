@@ -14,18 +14,15 @@
 
 namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
 {
+    using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-    using Microsoft.Azure.Commands.Common.Authentication.Models;
     using Microsoft.Azure.Commands.ResourceGraph.Utilities;
-    using Microsoft.Azure.Commands.ResourceManager.Common;
+    using Microsoft.Azure.Internal.Subscriptions.Version2018_06_01;
     using Microsoft.Azure.Management.ResourceGraph.Models;
-    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
-    using System.Net.Http;
-    using System.Net.Http.Headers;
 
     /// <summary>
     /// Search-AzGraph cmdlet
@@ -255,45 +252,23 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
             }
 
             // Query extension with tenant names
-            var tenantList = this.ListTenants();
-            if (tenantList != null && tenantList.Count != 0)
+            using (var subscriptionsClient =
+                AzureSession.Instance.ClientFactory.CreateArmClient<SubscriptionClient>(
+                    this.DefaultContext, AzureEnvironment.Endpoint.ResourceManager))
             {
-                var tenantIdToNameMap = tenantList?.ToDictionary(tenant => tenant["tenantId"], tenant => tenant["displayName"]);
-
-                if (queryExtensionToIncludeNames.Length > 0)
+                var tenantList = subscriptionsClient.Tenants.List().ToList();
+                if (tenantList != null && tenantList.Count != 0)
                 {
-                    queryExtensionToIncludeNames += "| ";
+                    var tenantIdToNameMap = tenantList?.ToDictionary(tenant => tenant.TenantId, tenant => tenant.DisplayName);
+
+                    if (queryExtensionToIncludeNames.Length > 0)
+                    {
+                        queryExtensionToIncludeNames += "| ";
+                    }
+
+                    queryExtensionToIncludeNames +=
+                        $"extend tenantDisplayName=case({string.Join(",", tenantIdToNameMap.Select(tenant => $"tenantId=='{tenant.Key}', '{tenant.Value}'"))},'')";
                 }
-
-                queryExtensionToIncludeNames +=
-                $"extend tenantDisplayName=case({string.Join(",", tenantIdToNameMap.Select(tenant => $"tenantId=='{tenant.Key}', '{tenant.Value}'"))},'')";
-            }
-        }
-
-        /// <summary>
-        /// Gets list of detailed tenants 
-        /// </summary>
-        /// <returns></returns>
-        private IList<IDictionary<string, object>> ListTenants()
-        {
-            try
-            {
-                var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>());
-                var authorizationToken = profileClient.AcquireAccessToken(this.DefaultContext.Tenant.Id).AccessToken;
-                HttpResponseMessage response;
-                using (HttpClient client = new HttpClient())
-                {
-                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(AUX_TOKEN_PREFIX, authorizationToken);
-                    response = client.GetAsync("https://management.azure.com/tenants?api-version=2019-05-10").Result;
-                }
-
-                var tenantContent = response.Content.ReadAsStringAsync().Result;
-                return JsonConvert.DeserializeObject<Dictionary<string, IList<IDictionary<string, object>>>>(tenantContent)["value"];
-            }
-            catch (Exception)
-            {
-                // Ignore exceptions 
-                return null;
             }
         }
     }
