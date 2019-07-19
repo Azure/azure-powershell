@@ -212,20 +212,14 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         public bool TryGetFabricVmExt(IList<VirtualMachineScaleSetExtension> extensions, out VirtualMachineScaleSetExtension sfExtension)
         {
-            var extConfigs = extensions.Where(
-                    e =>e.Type.Equals(
-                       Constants.ServiceFabricWindowsNodeExtName, StringComparison.OrdinalIgnoreCase));
-
-            if (!extConfigs.Any())
+            if (extensions == null)
             {
-                extConfigs = extensions.Where(
-                   e => e.Type.Equals(Constants.ServiceFabricLinuxNodeExtName, StringComparison.OrdinalIgnoreCase));
                 sfExtension = null;
                 return false;
             }
 
-            sfExtension = extConfigs.First();
-            return true;
+            sfExtension = extensions.FirstOrDefault(ext => IsSFExtension(ext));
+            return sfExtension != null;
         }
 
         public string GetClusterIdFromExtension(VirtualMachineScaleSetExtension sfExtension)
@@ -665,6 +659,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 Environment.NewLine);
 
             return message;
+        }
+
+        private bool IsSFExtension(VirtualMachineScaleSetExtension vmssExt)
+        {
+            return vmssExt.Type.Equals(Constants.ServiceFabricWindowsNodeExtName, StringComparison.OrdinalIgnoreCase) ||
+                   vmssExt.Type.Equals(Constants.ServiceFabricLinuxNodeExtName, StringComparison.OrdinalIgnoreCase);
         }
         #endregion
     }
