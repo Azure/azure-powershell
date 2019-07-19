@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix add node type NullReferenceException bug when resource group had other vmss not related to the service fabric cluster. Fixes issue: https://github.com/Azure/azure-powershell/issues/8681
 
 ## Version 1.1.1
 * Fix add certificate ByExistingKeyVault getting the wrong thumbprint in some cases
