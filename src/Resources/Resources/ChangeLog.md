@@ -19,7 +19,8 @@
 -->
 ## Upcoming Release
 - Remove missing cmdlet referenced in `New-AzResourceGroupDeployment` documentation
-- Updated policy cmdlets to use new api version 2019-01-01
+- Update policy cmdlets to use new api version 2019-01-01
+- Add support for new api version 2019-05-10
 
 ## Version 1.6.0
 - Fix help text for Get-AzPolicyState -Top parameter
