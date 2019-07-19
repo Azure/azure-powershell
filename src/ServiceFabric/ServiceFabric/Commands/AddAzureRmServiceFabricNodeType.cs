@@ -623,7 +623,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             var subnetId = ipConfiguration.Subnet.Id;
             var segments = subnetId.Split('/');
             if (!segments[segments.Length - 2].Equals("subnets", StringComparison.OrdinalIgnoreCase) || 
-                !segments[segments.Length - 4].Equals("virtualNetworks", StringComparison.OrdinalIgnoreCase))
+                !segments[segments.Length - 4].Equals("virtualNetworks", StringComparison.OrdinalIgnoreCase) ||
+                !segments[segments.Length - 8].Equals("resourceGroups", StringComparison.OrdinalIgnoreCase))
             {
                 throw new InvalidOperationException(
                     string.Format(
@@ -631,10 +632,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         subnetId));
             }
 
+            var subNetRG = segments[segments.Length - 7];
             var subnetName = segments[segments.Length - 1];
             var virtualNetworkName = segments[segments.Length - 3];
 
-            var subnet = NetworkManagementClient.Subnets.Get(this.ResourceGroupName, virtualNetworkName, subnetName);
+            var subnet = NetworkManagementClient.Subnets.Get(subNetRG, virtualNetworkName, subnetName);
             return subnet.AddressPrefix;
         }
     }
