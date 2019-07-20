@@ -22,11 +22,11 @@ Set-AzNetworkWatcherFlowLogConfiguration -NetworkWatcherName <String> -ResourceG
 ### SetExpanded
 ```
 Set-AzNetworkWatcherFlowLogConfiguration -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -EnableFlowLog -EnableTrafficAnalytics -StorageAccountId <String>
- -TargetResourceId <String> -WorkspaceGuid <String> -WorkspaceLocation <String> -WorkspaceResourceId <String>
- [-EnableRetention] [-FormatType <FlowLogFormatType>] [-FormatVersion <Int32>] [-RetentionInDays <Int32>]
- [-TrafficAnalyticsInterval <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -SubscriptionId <String> -EnableFlowLog -StorageAccountId <String> -TargetResourceId <String>
+ [-EnableRetention] [-EnableTrafficAnalytics] [-FormatType <FlowLogFormatType>] [-FormatVersion <Int32>]
+ [-RetentionInDays <Int32>] [-TrafficAnalyticsInterval <Int32>] [-WorkspaceGuid <String>]
+ [-WorkspaceLocation <String>] [-WorkspaceResourceId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -126,7 +126,7 @@ Type: System.Management.Automation.SwitchParameter
 Parameter Sets: SetExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: False
 Accept pipeline input: False
@@ -320,7 +320,7 @@ Type: System.String
 Parameter Sets: SetExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -336,7 +336,7 @@ Type: System.String
 Parameter Sets: SetExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -352,7 +352,7 @@ Type: System.String
 Parameter Sets: SetExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

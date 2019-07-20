@@ -21,8 +21,8 @@ New-AzRouteTableRoute -ResourceGroupName <String> -SubscriptionId <String> -Tabl
 
 ### CreateViaIdentityExpanded
 ```
-New-AzRouteTableRoute -InputObject <INetworkIdentity> -NextHopType <RouteNextHopType> [-Name <String>]
- [-AddressPrefix <String>] [-Etag <String>] [-Id <String>] [-NextHopIPAddress <String>]
+New-AzRouteTableRoute -InputObject <INetworkIdentity> [-Name <String>] [-AddressPrefix <String>]
+ [-Etag <String>] [-Id <String>] [-NextHopIPAddress <String>] [-NextHopType <RouteNextHopType>]
  [-ProvisioningState <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -30,8 +30,8 @@ New-AzRouteTableRoute -InputObject <INetworkIdentity> -NextHopType <RouteNextHop
 ### CreateExpanded
 ```
 New-AzRouteTableRoute -ResourceGroupName <String> -SubscriptionId <String> -TableName <String>
- -RouteName <String> -NextHopType <RouteNextHopType> [-Name <String>] [-AddressPrefix <String>]
- [-Etag <String>] [-Id <String>] [-NextHopIPAddress <String>] [-ProvisioningState <String>]
+ -RouteName <String> [-Name <String>] [-AddressPrefix <String>] [-Etag <String>] [-Id <String>]
+ [-NextHopIPAddress <String>] [-NextHopType <RouteNextHopType>] [-ProvisioningState <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -203,7 +203,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.RouteNextHopType
 Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -1,37 +1,24 @@
 ---
 external help file:
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-aznetworkwatcherpacketcapture
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azapplicationgatewayavailableinfo
 schema: 2.0.0
 ---
 
-# Get-AzNetworkWatcherPacketCapture
+# Get-AzApplicationGatewayAvailableInfo
 
 ## SYNOPSIS
-Gets a packet capture session by name.
+Lists all available request headers, response headers, or server variables.
 
 ## SYNTAX
 
-### List (Default)
 ```
-Get-AzNetworkWatcherPacketCapture -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzNetworkWatcherPacketCapture -Name <String> -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzNetworkWatcherPacketCapture -InputObject <INetworkIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzApplicationGatewayAvailableInfo -SubscriptionId <String[]> [-IncludeRequestHeaders]
+ [-IncludeResponseHeaders] [-IncludeServerVariables] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets a packet capture session by name.
+Lists all available request headers, response headers, or server variables.
 
 ## EXAMPLES
 
@@ -71,65 +58,49 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
+### -IncludeRequestHeaders
+Includes the available request headers from the application gateway
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
-Parameter Sets: GetViaIdentity
-Aliases:
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: RequestHeader
 
-Required: True
+Required: False
 Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Name
-The name of the packet capture session.
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases: PacketCaptureName
-
-Required: True
-Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -NetworkWatcherName
-The name of the network watcher.
+### -IncludeResponseHeaders
+Includes the available response headers from the application gateway
 
 ```yaml
-Type: System.String
-Parameter Sets: List, Get
-Aliases:
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: ResponseHeader
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
+### -IncludeServerVariables
+Includes the available server variables from the application gateway
 
 ```yaml
-Type: System.String
-Parameter Sets: List, Get
-Aliases: Location, NetworkWatcher
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: ServerVariable
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -141,7 +112,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -157,13 +128,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IPacketCaptureResult
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.ApplicationGatewayAvailableInfo
 
 ## ALIASES
+
+### Get-AzApplicationGatewayAvailableServerVariableAndHeader
 
 ## NOTES
 

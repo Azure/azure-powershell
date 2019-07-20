@@ -14,6 +14,9 @@ Microsoft Azure PowerShell: Network cmdlets
 ### [Get-AzApplicationGateway](Get-AzApplicationGateway.md)
 Gets the specified application gateway.
 
+### [Get-AzApplicationGatewayAvailableInfo](Get-AzApplicationGatewayAvailableInfo.md)
+Lists all available request headers, response headers, or server variables.
+
 ### [Get-AzApplicationGatewayAvailableSslOption](Get-AzApplicationGatewayAvailableSslOption.md)
 Lists available Ssl options for configuring Ssl policy.
 

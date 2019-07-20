@@ -24,13 +24,12 @@ Set-AzVnetGatewayConnection -Name <String> -ResourceGroupName <String> -Subscrip
 Set-AzVnetGatewayConnection -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  -ConnectionType <VirtualNetworkGatewayConnectionType> -VnetGateway1 <IVirtualNetworkGateway>
  [-AuthorizationKey <String>] [-BgpSettingAsn <Int64>] [-BgpSettingBgpPeeringAddress <String>]
- [-BgpSettingPeerWeight <Int32>] [-ConnectionStatus <VirtualNetworkGatewayConnectionStatus>] [-EnableBgp]
- [-Etag <String>] [-GatewayIPAddress <String>] [-IPsecPolicy <IIpsecPolicy[]>] [-Id <String>]
- [-LocalNetworkAddressPrefix <String[]>] [-LocalNetworkGateway2Etag <String>]
- [-LocalNetworkGateway2Id <String>] [-LocalNetworkGateway2Location <String>]
- [-LocalNetworkGateway2PropertiesResourceGuid <String>] [-LocalNetworkGateway2Tag <Hashtable>]
- [-Location <String>] [-PeerId <String>] [-ResourceGuid <String>] [-RoutingWeight <Int32>]
- [-SharedKey <String>] [-Tag <Hashtable>] [-UsePolicyBasedTrafficSelectors]
+ [-BgpSettingPeerWeight <Int32>] [-EnableBgp] [-Etag <String>] [-GatewayIPAddress <String>]
+ [-IPsecPolicy <IIpsecPolicy[]>] [-Id <String>] [-LocalNetworkAddressPrefix <String[]>]
+ [-LocalNetworkGateway2Etag <String>] [-LocalNetworkGateway2Id <String>]
+ [-LocalNetworkGateway2Location <String>] [-LocalNetworkGateway2PropertiesResourceGuid <String>]
+ [-LocalNetworkGateway2Tag <Hashtable>] [-Location <String>] [-PeerId <String>] [-ResourceGuid <String>]
+ [-RoutingWeight <Int32>] [-SharedKey <String>] [-Tag <Hashtable>] [-UsePolicyBasedTrafficSelectors]
  [-VnetGateway2 <IVirtualNetworkGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -135,23 +134,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -ConnectionStatus
-Virtual network Gateway connection status.
-Possible values are 'Unknown', 'Connecting', 'Connected' and 'NotConnected'.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.VirtualNetworkGatewayConnectionStatus
-Parameter Sets: UpdateExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -706,7 +688,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[BgpSettingAsn <Int64?>]`: The BGP speaker's ASN.
   - `[BgpSettingBgpPeeringAddress <String>]`: The BGP peering address and BGP identifier of this BGP speaker.
   - `[BgpSettingPeerWeight <Int32?>]`: The weight added to routes learned from this BGP speaker.
-  - `[ConnectionStatus <VirtualNetworkGatewayConnectionStatus?>]`: Virtual network Gateway connection status. Possible values are 'Unknown', 'Connecting', 'Connected' and 'NotConnected'.
   - `[EnableBgp <Boolean?>]`: EnableBgp flag
   - `[Etag <String>]`: Gets a unique read-only string that changes whenever the resource is updated.
   - `[GatewayIPAddress <String>]`: IP address of local network gateway.

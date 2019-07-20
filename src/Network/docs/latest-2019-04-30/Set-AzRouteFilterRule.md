@@ -22,7 +22,7 @@ Set-AzRouteFilterRule -ResourceGroupName <String> -RouteFilterName <String> -Rul
 ### UpdateExpanded
 ```
 Set-AzRouteFilterRule -ResourceGroupName <String> -RouteFilterName <String> -RuleName <String>
- -SubscriptionId <String> -Access <Access> -Community <String[]> [-Id <String>] [-Location <String>]
+ -SubscriptionId <String> [-Access <Access>] [-Community <String[]>] [-Id <String>] [-Location <String>]
  [-Name <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -59,7 +59,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.Access
 Parameter Sets: UpdateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -93,7 +93,7 @@ Type: System.String[]
 Parameter Sets: UpdateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

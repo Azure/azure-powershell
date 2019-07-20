@@ -22,11 +22,9 @@ Set-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Subscriptio
 ### UpdateExpanded
 ```
 Set-AzApplicationGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -AutoscaleConfigurationMinCapacity <Int32> -WafConfigurationEnabled
- -WafConfigurationFirewallMode <ApplicationGatewayFirewallMode> -WafConfigurationRuleSetType <String>
- -WafConfigurationRuleSetVersion <String>
  [-AuthenticationCertificate <IApplicationGatewayAuthenticationCertificate[]>]
- [-AutoscaleConfigurationMaxCapacity <Int32>] [-BackendAddressPool <IApplicationGatewayBackendAddressPool[]>]
+ [-AutoscaleConfigurationMaxCapacity <Int32>] [-AutoscaleConfigurationMinCapacity <Int32>]
+ [-BackendAddressPool <IApplicationGatewayBackendAddressPool[]>]
  [-BackendHttpSettingsCollection <IApplicationGatewayBackendHttpSettings[]>]
  [-CustomErrorConfiguration <IApplicationGatewayCustomError[]>] [-EnableFIPs] [-EnableHttp2] [-Etag <String>]
  [-FirewallPolicyId <String>] [-FrontendIPConfiguration <IApplicationGatewayFrontendIPConfiguration[]>]
@@ -46,10 +44,13 @@ Set-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Subscriptio
  [-Tag <Hashtable>] [-TrustedRootCertificate <IApplicationGatewayTrustedRootCertificate[]>]
  [-UrlPathMap <IApplicationGatewayUrlPathMap[]>]
  [-WafConfigurationDisabledRuleGroup <IApplicationGatewayFirewallDisabledRuleGroup[]>]
- [-WafConfigurationExclusion <IApplicationGatewayFirewallExclusion[]>]
- [-WafConfigurationFileUploadLimitInMb <Int32>] [-WafConfigurationMaxRequestBodySize <Int32>]
- [-WafConfigurationMaxRequestBodySizeInKb <Int32>] [-WafConfigurationRequestBodyCheck] [-Zone <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WafConfigurationEnabled] [-WafConfigurationExclusion <IApplicationGatewayFirewallExclusion[]>]
+ [-WafConfigurationFileUploadLimitInMb <Int32>]
+ [-WafConfigurationFirewallMode <ApplicationGatewayFirewallMode>]
+ [-WafConfigurationMaxRequestBodySize <Int32>] [-WafConfigurationMaxRequestBodySizeInKb <Int32>]
+ [-WafConfigurationRequestBodyCheck] [-WafConfigurationRuleSetType <String>]
+ [-WafConfigurationRuleSetVersion <String>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -135,7 +136,7 @@ Type: System.Int32
 Parameter Sets: UpdateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: 0
 Accept pipeline input: False
@@ -822,7 +823,7 @@ Type: System.Management.Automation.SwitchParameter
 Parameter Sets: UpdateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: False
 Accept pipeline input: False
@@ -871,7 +872,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.ApplicationGatewayFirew
 Parameter Sets: UpdateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -936,7 +937,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -952,7 +953,7 @@ Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -24,10 +24,9 @@ Set-AzVnetGatewayConnection -Name <String> -ResourceGroupName <String> -Subscrip
 Set-AzVnetGatewayConnection -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  -ConnectionType <VirtualNetworkGatewayConnectionType> -VnetGateway1 <IVirtualNetworkGateway>
  [-AuthorizationKey <String>] [-BgpSettingAsn <Int64>] [-BgpSettingBgpPeeringAddress <String>]
- [-BgpSettingPeerWeight <Int32>] [-ConnectionProtocol <VirtualNetworkGatewayConnectionProtocol>]
- [-ConnectionStatus <VirtualNetworkGatewayConnectionStatus>] [-EnableBgp] [-Etag <String>]
- [-ExpressRouteGatewayBypass] [-GatewayIPAddress <String>] [-IPsecPolicy <IIpsecPolicy[]>] [-Id <String>]
- [-LocalNetworkAddressPrefix <String[]>] [-LocalNetworkGateway2Etag <String>]
+ [-BgpSettingPeerWeight <Int32>] [-ConnectionProtocol <VirtualNetworkGatewayConnectionProtocol>] [-EnableBgp]
+ [-Etag <String>] [-ExpressRouteGatewayBypass] [-GatewayIPAddress <String>] [-IPsecPolicy <IIpsecPolicy[]>]
+ [-Id <String>] [-LocalNetworkAddressPrefix <String[]>] [-LocalNetworkGateway2Etag <String>]
  [-LocalNetworkGateway2Id <String>] [-LocalNetworkGateway2Location <String>]
  [-LocalNetworkGateway2PropertiesResourceGuid <String>] [-LocalNetworkGateway2Tag <Hashtable>]
  [-Location <String>] [-PeerId <String>] [-ResourceGuid <String>] [-RoutingWeight <Int32>]
@@ -146,22 +145,6 @@ Connection protocol used for this connection
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.VirtualNetworkGatewayConnectionProtocol
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -ConnectionStatus
-Virtual Network Gateway connection status.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.VirtualNetworkGatewayConnectionStatus
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -740,7 +723,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[BgpSettingBgpPeeringAddress <String>]`: The BGP peering address and BGP identifier of this BGP speaker.
   - `[BgpSettingPeerWeight <Int32?>]`: The weight added to routes learned from this BGP speaker.
   - `[ConnectionProtocol <VirtualNetworkGatewayConnectionProtocol?>]`: Connection protocol used for this connection
-  - `[ConnectionStatus <VirtualNetworkGatewayConnectionStatus?>]`: Virtual Network Gateway connection status.
   - `[EnableBgp <Boolean?>]`: EnableBgp flag
   - `[Etag <String>]`: Gets a unique read-only string that changes whenever the resource is updated.
   - `[ExpressRouteGatewayBypass <Boolean?>]`: Bypass ExpressRoute Gateway for data forwarding

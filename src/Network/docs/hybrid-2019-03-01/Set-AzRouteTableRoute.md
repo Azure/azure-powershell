@@ -22,9 +22,9 @@ Set-AzRouteTableRoute -Name <String> -ResourceGroupName <String> -SubscriptionId
 ### UpdateExpanded1
 ```
 Set-AzRouteTableRoute -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -TableName <String>
- -RouteName <String> -NextHopType <RouteNextHopType> [-AddressPrefix <String>] [-Etag <String>] [-Id <String>]
- [-NextHopIPAddress <String>] [-ProvisioningState <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -RouteName <String> [-AddressPrefix <String>] [-Etag <String>] [-Id <String>] [-NextHopIPAddress <String>]
+ [-NextHopType <RouteNextHopType>] [-ProvisioningState <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -173,7 +173,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.RouteNextHopType
 Parameter Sets: UpdateExpanded1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

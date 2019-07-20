@@ -22,11 +22,9 @@ New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Subscriptio
 ### CreateExpanded
 ```
 New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -AutoscaleConfigurationMinCapacity <Int32> -WafConfigurationEnabled
- -WafConfigurationFirewallMode <ApplicationGatewayFirewallMode> -WafConfigurationRuleSetType <String>
- -WafConfigurationRuleSetVersion <String>
  [-AuthenticationCertificate <IApplicationGatewayAuthenticationCertificate[]>]
- [-AutoscaleConfigurationMaxCapacity <Int32>] [-BackendAddressPool <IApplicationGatewayBackendAddressPool[]>]
+ [-AutoscaleConfigurationMaxCapacity <Int32>] [-AutoscaleConfigurationMinCapacity <Int32>]
+ [-BackendAddressPool <IApplicationGatewayBackendAddressPool[]>]
  [-BackendHttpSettingsCollection <IApplicationGatewayBackendHttpSettings[]>]
  [-CustomErrorConfiguration <IApplicationGatewayCustomError[]>] [-EnableFIPs] [-EnableHttp2] [-Etag <String>]
  [-FirewallPolicyId <String>] [-FrontendIPConfiguration <IApplicationGatewayFrontendIPConfiguration[]>]
@@ -46,19 +44,21 @@ New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Subscriptio
  [-Tag <Hashtable>] [-TrustedRootCertificate <IApplicationGatewayTrustedRootCertificate[]>]
  [-UrlPathMap <IApplicationGatewayUrlPathMap[]>] [-UserAssignedIdentity <Hashtable>]
  [-WafConfigurationDisabledRuleGroup <IApplicationGatewayFirewallDisabledRuleGroup[]>]
- [-WafConfigurationExclusion <IApplicationGatewayFirewallExclusion[]>]
- [-WafConfigurationFileUploadLimitInMb <Int32>] [-WafConfigurationMaxRequestBodySize <Int32>]
- [-WafConfigurationMaxRequestBodySizeInKb <Int32>] [-WafConfigurationRequestBodyCheck] [-Zone <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WafConfigurationEnabled] [-WafConfigurationExclusion <IApplicationGatewayFirewallExclusion[]>]
+ [-WafConfigurationFileUploadLimitInMb <Int32>]
+ [-WafConfigurationFirewallMode <ApplicationGatewayFirewallMode>]
+ [-WafConfigurationMaxRequestBodySize <Int32>] [-WafConfigurationMaxRequestBodySizeInKb <Int32>]
+ [-WafConfigurationRequestBodyCheck] [-WafConfigurationRuleSetType <String>]
+ [-WafConfigurationRuleSetVersion <String>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzApplicationGateway -InputObject <INetworkIdentity> -AutoscaleConfigurationMinCapacity <Int32>
- -WafConfigurationEnabled -WafConfigurationFirewallMode <ApplicationGatewayFirewallMode>
- -WafConfigurationRuleSetType <String> -WafConfigurationRuleSetVersion <String>
+New-AzApplicationGateway -InputObject <INetworkIdentity>
  [-AuthenticationCertificate <IApplicationGatewayAuthenticationCertificate[]>]
- [-AutoscaleConfigurationMaxCapacity <Int32>] [-BackendAddressPool <IApplicationGatewayBackendAddressPool[]>]
+ [-AutoscaleConfigurationMaxCapacity <Int32>] [-AutoscaleConfigurationMinCapacity <Int32>]
+ [-BackendAddressPool <IApplicationGatewayBackendAddressPool[]>]
  [-BackendHttpSettingsCollection <IApplicationGatewayBackendHttpSettings[]>]
  [-CustomErrorConfiguration <IApplicationGatewayCustomError[]>] [-EnableFIPs] [-EnableHttp2] [-Etag <String>]
  [-FirewallPolicyId <String>] [-FrontendIPConfiguration <IApplicationGatewayFrontendIPConfiguration[]>]
@@ -78,10 +78,13 @@ New-AzApplicationGateway -InputObject <INetworkIdentity> -AutoscaleConfiguration
  [-Tag <Hashtable>] [-TrustedRootCertificate <IApplicationGatewayTrustedRootCertificate[]>]
  [-UrlPathMap <IApplicationGatewayUrlPathMap[]>] [-UserAssignedIdentity <Hashtable>]
  [-WafConfigurationDisabledRuleGroup <IApplicationGatewayFirewallDisabledRuleGroup[]>]
- [-WafConfigurationExclusion <IApplicationGatewayFirewallExclusion[]>]
- [-WafConfigurationFileUploadLimitInMb <Int32>] [-WafConfigurationMaxRequestBodySize <Int32>]
- [-WafConfigurationMaxRequestBodySizeInKb <Int32>] [-WafConfigurationRequestBodyCheck] [-Zone <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WafConfigurationEnabled] [-WafConfigurationExclusion <IApplicationGatewayFirewallExclusion[]>]
+ [-WafConfigurationFileUploadLimitInMb <Int32>]
+ [-WafConfigurationFirewallMode <ApplicationGatewayFirewallMode>]
+ [-WafConfigurationMaxRequestBodySize <Int32>] [-WafConfigurationMaxRequestBodySizeInKb <Int32>]
+ [-WafConfigurationRequestBodyCheck] [-WafConfigurationRuleSetType <String>]
+ [-WafConfigurationRuleSetVersion <String>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -173,7 +176,7 @@ Type: System.Int32
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: 0
 Accept pipeline input: False
@@ -876,7 +879,7 @@ Type: System.Management.Automation.SwitchParameter
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: False
 Accept pipeline input: False
@@ -925,7 +928,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.ApplicationGatewayFirew
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -990,7 +993,7 @@ Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -1006,7 +1009,7 @@ Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

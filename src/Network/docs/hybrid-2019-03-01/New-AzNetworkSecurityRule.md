@@ -21,13 +21,13 @@ New-AzNetworkSecurityRule -NsgName <String> -ResourceGroupName <String> -Subscri
 
 ### CreateViaIdentityExpanded1
 ```
-New-AzNetworkSecurityRule -InputObject <INetworkIdentity> -Access <SecurityRuleAccess>
- -Direction <SecurityRuleDirection> -Protocol <SecurityRuleProtocol> [-Name <String>] [-Description <String>]
- [-DestinationAddressPrefix <String>] [-DestinationApplicationSecurityGroup <IApplicationSecurityGroup[]>]
- [-DestinationPortRange <String>] [-Etag <String>] [-Id <String>] [-Priority <Int32>]
+New-AzNetworkSecurityRule -InputObject <INetworkIdentity> [-Name <String>] [-Access <SecurityRuleAccess>]
+ [-Description <String>] [-DestinationAddressPrefix <String>]
+ [-DestinationApplicationSecurityGroup <IApplicationSecurityGroup[]>] [-DestinationPortRange <String>]
+ [-Direction <SecurityRuleDirection>] [-Etag <String>] [-Id <String>] [-Priority <Int32>]
  [-PropertiesDestinationAddressPrefixes <String[]>] [-PropertiesDestinationPortRanges <String[]>]
  [-PropertiesSourceAddressPrefixes <String[]>] [-PropertiesSourcePortRanges <String[]>]
- [-ProvisioningState <String>] [-SourceAddressPrefix <String>]
+ [-Protocol <SecurityRuleProtocol>] [-ProvisioningState <String>] [-SourceAddressPrefix <String>]
  [-SourceApplicationSecurityGroup <IApplicationSecurityGroup[]>] [-SourcePortRange <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -35,15 +35,15 @@ New-AzNetworkSecurityRule -InputObject <INetworkIdentity> -Access <SecurityRuleA
 ### CreateExpanded1
 ```
 New-AzNetworkSecurityRule -NsgName <String> -ResourceGroupName <String> -SubscriptionId <String>
- -SecurityRuleName <String> -Access <SecurityRuleAccess> -Direction <SecurityRuleDirection>
- -Protocol <SecurityRuleProtocol> [-Name <String>] [-Description <String>]
+ -SecurityRuleName <String> [-Name <String>] [-Access <SecurityRuleAccess>] [-Description <String>]
  [-DestinationAddressPrefix <String>] [-DestinationApplicationSecurityGroup <IApplicationSecurityGroup[]>]
- [-DestinationPortRange <String>] [-Etag <String>] [-Id <String>] [-Priority <Int32>]
- [-PropertiesDestinationAddressPrefixes <String[]>] [-PropertiesDestinationPortRanges <String[]>]
- [-PropertiesSourceAddressPrefixes <String[]>] [-PropertiesSourcePortRanges <String[]>]
- [-ProvisioningState <String>] [-SourceAddressPrefix <String>]
- [-SourceApplicationSecurityGroup <IApplicationSecurityGroup[]>] [-SourcePortRange <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DestinationPortRange <String>] [-Direction <SecurityRuleDirection>] [-Etag <String>] [-Id <String>]
+ [-Priority <Int32>] [-PropertiesDestinationAddressPrefixes <String[]>]
+ [-PropertiesDestinationPortRanges <String[]>] [-PropertiesSourceAddressPrefixes <String[]>]
+ [-PropertiesSourcePortRanges <String[]>] [-Protocol <SecurityRuleProtocol>] [-ProvisioningState <String>]
+ [-SourceAddressPrefix <String>] [-SourceApplicationSecurityGroup <IApplicationSecurityGroup[]>]
+ [-SourcePortRange <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentity1
@@ -86,7 +86,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.SecurityRuleAccess
 Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -207,7 +207,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.SecurityRuleDirection
 Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -404,7 +404,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.SecurityRuleProtocol
 Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

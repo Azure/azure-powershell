@@ -213,17 +213,17 @@ directive:
       subject: ^PacketCapture(.*)
     set:
       subject: NetworkWatcherPacketCapture$1
-  - where:
-      verb: Get
-      subject: NetworkWatcherPacketCaptureStatus
-      variant: Get
-    set:
-      variant: GetStatus
-  - where:
-      verb: Get
-      subject: NetworkWatcherPacketCaptureStatus
-      variant: GetViaIdentity
-    remove: true
+  # - where:
+  #     verb: Get
+  #     subject: NetworkWatcherPacketCaptureStatus
+  #     variant: Get
+  #   set:
+  #     variant: GetStatus
+  # - where:
+  #     verb: Get
+  #     subject: NetworkWatcherPacketCaptureStatus
+  #     variant: GetViaIdentity
+  #   remove: true
   - where:
       verb: Get
       subject: NetworkWatcherPacketCaptureStatus
@@ -231,11 +231,15 @@ directive:
     set:
       parameter-name: Name
       alias: PacketCaptureName
-  - where:
-      verb: Get
-      subject: NetworkWatcherPacketCaptureStatus
-    set:
-      subject: NetworkWatcherPacketCapture
+  # - where:
+  #     verb: Get
+  #     subject: NetworkWatcherPacketCaptureStatus
+  #   hide: true
+  # - where:
+  #     verb: Get
+  #     subject: NetworkWatcherPacketCaptureStatus
+  #   set:
+  #     subject: NetworkWatcherPacketCapture
   - where:
       subject: ^ConnectionMonitor$
     set:
@@ -1629,4 +1633,38 @@ directive:
     set:
       parameter-name: NetworkInterfaceResourceId
       alias: TargetNetworkInterfaceId
+
+# Combine
+  - where:
+      verb: Get
+      subject: ExpressRouteCircuitRouteTable
+      variant: (.*)
+    set:
+      variant: Circuit$1
+  - where:
+      verb: Get
+      subject: ExpressRouteCrossConnectionRouteTable
+      variant: (.*)
+    set:
+      variant: CrossConnection$1
+  - where:
+      verb: Get
+      subject: ExpressRouteCircuitRouteTable
+    set:
+      alias: ${verb}-Az${subject-prefix}${subject}
+  - where:
+      verb: Get
+      subject: ExpressRouteCircuitRouteTable
+    set:
+      subject: ExpressRouteRouteTable
+  - where:
+      verb: Get
+      subject: ExpressRouteCrossConnectionRouteTable
+    set:
+      alias: ${verb}-Az${subject-prefix}${subject}
+  - where:
+      verb: Get
+      subject: ExpressRouteCrossConnectionRouteTable
+    set:
+      subject: ExpressRouteRouteTable
 ```
