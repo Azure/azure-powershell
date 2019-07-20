@@ -16,13 +16,13 @@ This operation cannot be undone.
 ### Delete1 (Default)
 ```
 Remove-AzDnsRecordSet -RecordType <RecordType> -RelativeRecordSetName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -ZoneName <String> [-IfMatch <String>] [-PassThru] [-DefaultProfile <PSObject>]
+ -SubscriptionId <String> -ZoneName <String> [-IfMatch <String>] [-DefaultProfile <PSObject>] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity1
 ```
-Remove-AzDnsRecordSet -InputObject <IDnsIdentity> [-IfMatch <String>] [-PassThru] [-DefaultProfile <PSObject>]
+Remove-AzDnsRecordSet -InputObject <IDnsIdentity> [-IfMatch <String>] [-DefaultProfile <PSObject>] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -103,7 +103,7 @@ Dynamic: False
 ```
 
 ### -PassThru
-When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
