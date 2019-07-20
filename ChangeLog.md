@@ -518,6 +518,7 @@
 
 #### Az.Batch
 * Updated cmdlets with plural nouns to singular, and deprecated plural names.
+* Fixed typo in help message and documentation to capitalize Windows
 
 #### Az.Cdn
 * Updated cmdlets with plural nouns to singular, and deprecated plural names.
