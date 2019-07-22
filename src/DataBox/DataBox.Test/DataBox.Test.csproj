@@ -14,8 +14,4 @@
     <PackageReference Include="Microsoft.Azure.Management.DataBox" Version="1.0.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="SessionRecords\Microsoft.Azure.Commands.DataBox.Test.DataBoxTests\" />
-  </ItemGroup>
-
 </Project>
