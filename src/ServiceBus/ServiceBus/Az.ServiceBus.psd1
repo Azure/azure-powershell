@@ -102,7 +102,7 @@ CmdletsToExport = 'New-AzServiceBusNamespace', 'Get-AzServiceBusNamespace',
                'Add-AzServiceBusVirtualNetworkRule', 
                'Get-AzServiceBusNetworkRuleSet', 
                'Remove-AzServiceBusNetworkRuleSet', 
-               'Set-AzServiceBusNetworkRuleSet'
+               'Set-AzServiceBusNetworkRuleSet', 'New-AzServiceBusAuthorizationRuleSASToken'
 
 # Variables to export from this module
 # VariablesToExport = @()
