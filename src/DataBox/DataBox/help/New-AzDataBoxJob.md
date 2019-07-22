@@ -28,11 +28,12 @@ The **New-AzDataBoxJob** cmdlet is used to create a new databox job by specifyin
 
 ### Example 1
 ```powershell
-PS C:\> New-AzDataBoxJob -Location 'WestUS' -StreetAddress1 '16 TOWNSEND ST' -PostalCode 94107 -City 'San Francisco' -StateOrProvinceCode 'CA' -CountryCode 'US' -EmailId 'abc@outlook.com' -PhoneNumber 1234567891 -ContactName 'John' -StorageAccount $s1 -DataBoxType DataBox -ResourceGroupName IrfansRG -Name OrderTest
+PS C:\> $s1 = <Storage Account Resource Id>
+PS C:\> New-AzDataBoxJob -Location 'WestUS' -StreetAddress1 '16 TOWNSEND ST' -PostalCode 94107 -City 'San Francisco' -StateOrProvinceCode 'CA' -CountryCode 'US' -EmailId 'abc@outlook.com' -PhoneNumber 1234567891 -ContactName 'John' -StorageAccount $s1 -DataBoxType DataBox -ResourceGroupName TestRg -Name OrderTest
 
 jobResource.Name jobResource.Sku.Name jobResource.Status jobResource.StartTime jobResource.Location ResourceGroup
 ---------------- -------------------- ------------------ --------------------- -------------------- -------------
-OrderTest       DataBox              DeviceOrdered      05-07-2019 05:25:30   westus               IrfansRG
+OrderTest       DataBox              DeviceOrdered      05-07-2019 05:25:30   westus               TestRg
 ```
 
 The cmdlet takes all the required parameters and some optional parameters to create the databox job.

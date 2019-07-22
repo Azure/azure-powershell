@@ -124,10 +124,13 @@
     <value>"Address Validation Status: "</value>
   </data>
   <data name="AmbiguousAddressMessage" xml:space="preserve">
-    <value>"The Shipping Address is ambiguous. Please select any address from the ones provided above."</value>
+    <value>"The Shipping Address is ambiguous. Please run the cmdlet with '-Verbose' parameter and use any suggested alternate address."</value>
   </data>
   <data name="CancellingDataboxJob" xml:space="preserve">
     <value>"Cancelling Databox job "</value>
+  </data>
+  <data name="CancellingDataboxJobWarning" xml:space="preserve">
+    <value>"Cancelling Databox Job "</value>
   </data>
   <data name="City" xml:space="preserve">
     <value>"City: "</value>
@@ -161,6 +164,9 @@
   </data>
   <data name="PostalCode" xml:space="preserve">
     <value>"Postal code: "</value>
+  </data>
+  <data name="RemoveDataboxJobWarning" xml:space="preserve">
+    <value>"Removing Databox Job "</value>
   </data>
   <data name="StateOrProvince" xml:space="preserve">
     <value>"State/Province: "</value>
