@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PsModuleName>HealthcareApisFhirService</PsModuleName>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)..\..\Az.Test.props" />
+
+  <PropertyGroup>
+    <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)$(AzTestAssemblySuffix)</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.Azure.Management.HealthcareApis">
+      <HintPath>..\..\..\..\poojaforkhealthcareapis\artifacts\bin\Microsoft.Azure.Management.HealthcareApis\Debug\netstandard2.0\Microsoft.Azure.Management.HealthcareApis.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="SessionRecords\Microsoft.Azure.Commands.HealthcareApisFhirService.Test.ScenarioTests.HealthcareApisFhirServiceTests\TestAzRmHealthcareApisFhirService.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
