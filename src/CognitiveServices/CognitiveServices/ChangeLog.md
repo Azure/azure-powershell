@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Fixed miscellaneous typos across module
+* Added NetworkRuleSet support.
 
 ## Version 1.1.1
 * Only display Bing disclaimer for Bing Search Services.

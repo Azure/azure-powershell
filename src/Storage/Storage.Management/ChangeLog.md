@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Fixed miscellaneous typos across module
+* Update example in reference documentation for `Get-AzStorageAccount` to use correct parameter name
 
 ## Version 1.5.0
 * Change 2 parameters "-IndexDocument" and "-ErrorDocument404Path" from required to optional  in cmdlet:

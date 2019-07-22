@@ -20,6 +20,9 @@
 ## Upcoming Release
 * Fixed miscellaneous typos across module
 
+## Version 0.7.5
+* Use NextLink for return maximum of 1500 security alerts in command Get-AzSecurityAlert
+
 ## Version 0.7.4
 * Deprecate ResourceGroupName parameter in commands: Get-AzSecurityPricing and Set-AzSecurityPricing
 

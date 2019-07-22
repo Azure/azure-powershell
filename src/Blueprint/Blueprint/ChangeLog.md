@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Fixed miscellaneous typos across module
+- Bug fixes and help message improvements
 
 ## Version 0.2.2
 - Add change note support during publishing of a blueprint

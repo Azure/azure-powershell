@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Fixed miscellaneous typos across module
+* Added support for api version 2019-06-01 (GA)
 
 ## Version 0.0.1
 * Initial version of the ManagedServices PowerShell interface
