@@ -14,9 +14,9 @@ Deletes a long term retention backup.
 
 ### RemoveBackupDefault (Default)
 ```
-Remove-AzSqlDatabaseLongTermRetentionBackup [-Location] <String> [-ServerName] <String> [-DatabaseName] <String>
- [-BackupName] <String> [-ResourceGroupName] <String> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzSqlDatabaseLongTermRetentionBackup [-Location] <String> [-ServerName] <String>
+ [-DatabaseName] <String> [-BackupName] <String> [[-ResourceGroupName] <String>] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveBackupByInputObject
@@ -173,7 +173,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -186,6 +186,21 @@ Parameter Sets: RemoveBackupDefault
 Aliases:
 
 Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group.
+
+```yaml
+Type: System.String
+Parameter Sets: RemoveBackupDefault
+Aliases:
+
+Required: False
 Position: 0
 Default value: None
 Accept pipeline input: False
