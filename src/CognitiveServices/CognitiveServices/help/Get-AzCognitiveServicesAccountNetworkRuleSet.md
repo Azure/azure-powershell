@@ -1,44 +1,38 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices.dll-Help.xml
 Module Name: Az.CognitiveServices
-ms.assetid: 73B1EB7E-568E-44E8-993A-91678B7D8AEE
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cognitiveservices/get-azcognitiveservicesaccountkey
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cognitiveservices/get-azcognitiveservicesaccountnetworkruleset
 schema: 2.0.0
 ---
 
-# Get-AzCognitiveServicesAccountKey
+# Get-AzCognitiveServicesAccountNetworkRuleSet
 
 ## SYNOPSIS
-Gets the API keys for an account.
+Get the NetworkRule property of a Cognitive Services account
 
 ## SYNTAX
 
 ```
-Get-AzCognitiveServicesAccountKey [-ResourceGroupName] <String> [-Name] <String>
+Get-AzCognitiveServicesAccountNetworkRuleSet [-ResourceGroupName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzCognitiveServicesAccountKey** cmdlet gets the API keys for a provisioned Cognitive Services account.
-A Cognitive Services account has two API keys: Key1 and Key2.
-The keys enable interaction with the Cognitive Services account endpoint.
-Use New-AzCognitiveServicesAccountKey to regenerate a key.
+The **Get-AzCognitiveServicesAccountNetworkRuleSet** cmdlet gets the NetworkRule property of a Cognitive Services account
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> Get-AzCognitiveServicesAccountKey -ResourceGroupName cognitive-services-resource-group -name myluis
-
-Key1                             Key2
-----                             ----
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+### Example 1: Get NetworkRule property of a specified Cognitive Services account
 ```
+PS C:\> Get-AzCognitiveServicesAccountNetworkRuleSet  -ResourceGroupName "rg1" -Name "myaccount"
+```
+
+This command gets NetworkRule property of a specified Cognitive Services account
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
@@ -53,8 +47,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the account.
-This cmdlet gets the keys for this account.
+Cognitive Services Account Name.
 
 ```yaml
 Type: System.String
@@ -69,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of the resource group the account is assigned to.
+Resource Group Name.
 
 ```yaml
 Type: System.String
@@ -92,12 +85,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccountKeys
+### Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSNetworkRuleSet
 
 ## NOTES
 
 ## RELATED LINKS
-
-[New-AzCognitiveServicesAccountKey](./New-AzCognitiveServicesAccountKey.md)
-
-
