@@ -79,7 +79,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &quot;The Shipping Address is ambiguous. Please select any address from the ones provided above.&quot;.
+        ///   Looks up a localized string similar to &quot;The Shipping Address is ambiguous. Please run the cmdlet with &apos;-Verbose&apos; parameter and use any suggested alternate address.&quot;.
         /// </summary>
         internal static string AmbiguousAddressMessage {
             get {
@@ -93,6 +93,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Resources {
         internal static string CancellingDataboxJob {
             get {
                 return ResourceManager.GetString("CancellingDataboxJob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;Cancelling Databox Job &quot;.
+        /// </summary>
+        internal static string CancellingDataboxJobWarning {
+            get {
+                return ResourceManager.GetString("CancellingDataboxJobWarning", resourceCulture);
             }
         }
         
@@ -192,6 +201,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBox.Resources {
         internal static string PostalCode {
             get {
                 return ResourceManager.GetString("PostalCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;Removing Databox Job &quot;.
+        /// </summary>
+        internal static string RemoveDataboxJobWarning {
+            get {
+                return ResourceManager.GetString("RemoveDataboxJobWarning", resourceCulture);
             }
         }
         

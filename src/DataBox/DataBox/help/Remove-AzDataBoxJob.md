@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataBox.dll-Help.xml
 Module Name: Az.DataBox
 online version: https://docs.microsoft.com/en-us/powershell/module/az.databox/remove-azdataboxjob
@@ -15,18 +15,18 @@ Deletes the databox job
 ### GetByNameParameterSet (Default)
 ```
 Remove-AzDataBoxJob -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### GetByResourceIdParameterSet
 ```
-Remove-AzDataBoxJob -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzDataBoxJob -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-PassThru] [-Force]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### GetByInputObjectParameterSet
 ```
-Remove-AzDataBoxJob -InputObject <PSDataBoxJob> [-DefaultProfile <IAzureContextContainer>] [-PassThru]
+Remove-AzDataBoxJob -InputObject <PSDataBoxJob> [-DefaultProfile <IAzureContextContainer>] [-PassThru] [-Force]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -37,18 +37,27 @@ The **Remove-AzDataBoxJob** cmdlet is used to delete a finished databox job from
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzDataBoxJob -ResourceGroupName irfansrg -name test
+PS C:\> Remove-AzDataBoxJob -ResourceGroupName TestRg -name test 
+Confirm
+"Cancelling Databox Job "test
+[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
 
-Successfully Deleted the Databox Job
 ```
 
 Deletes the specified databox job
 
 ### Example 2
 ```powershell
-PS C:\> Remove-AzDataBoxJob -ResourceId "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/IrfansRG/providers/Microsoft.DataBox/jobs/Test"
+PS C:\> Remove-AzDataBoxJob -ResourceGroupName TestRg -name test -Force
 
-Successfully Deleted the Databox Job
+```
+
+Deletes the specified databox job forcefully without confirmation
+
+### Example 3
+```powershell
+PS C:\> Remove-AzDataBoxJob -ResourceId "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/TestRg/providers/Microsoft.DataBox/jobs/test"
+
 ```
 
 Deletes the specified databox job
@@ -62,6 +71,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Force
+Force remove without confirmation
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
