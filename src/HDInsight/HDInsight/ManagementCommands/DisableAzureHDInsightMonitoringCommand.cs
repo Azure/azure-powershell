@@ -20,20 +20,17 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [CmdletDeprecation(ReplacementCmdletName = "Disable-AzHDInsightMonitoring")]
-    [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightOperationsManagementSuite",SupportsShouldProcess = true)]
-    [Alias("Disable-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightOMS")]
-    [OutputType(typeof(OperationResource))]
-    public class DisableAzureHDInsightOMSCommand : HDInsightCmdletBase
+    [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightMonitoring",SupportsShouldProcess = true)]
+    [OutputType(typeof(bool))]
+    public class DisableAzureHDInsightMonitoringCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
 
         [Parameter(
             Position = 0,
             Mandatory = true,
-            HelpMessage = "Gets or sets the name of the cluster to disable Operations Management Suite(OMS).",
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = true)]
+            HelpMessage = "Gets or sets the name of the cluster to disable monitroing.",
+            ValueFromPipelineByPropertyName = true)]
         [Alias("ClusterName")]
         public string Name { get; set; }
 
@@ -52,10 +49,10 @@ namespace Microsoft.Azure.Commands.HDInsight
                 ResourceGroupName = GetResourceGroupByAccountName(Name);
             }
 
-            if (ShouldProcess("Disable Operations Management Suite"))
+            if (ShouldProcess("Disable Monitoring"))
             {
-                var operationResource = HDInsightManagementClient.DisableOMS(ResourceGroupName, Name);
-                WriteObject(operationResource);
+                HDInsightManagementClient.DisableMonitoring(ResourceGroupName, Name);
+                WriteObject(true);
             }
         }
     }
