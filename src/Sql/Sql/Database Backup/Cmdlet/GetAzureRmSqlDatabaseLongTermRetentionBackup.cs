@@ -174,15 +174,12 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             ParameterSetName = LocationSet,
-            Position = 0,
             HelpMessage = "The name of the resource group.")]
         [Parameter(Mandatory = false,
             ParameterSetName = ServerNameSet,
-            Position = 0,
             HelpMessage = "The name of the resource group.")]
         [Parameter(Mandatory = false,
             ParameterSetName = BackupNameSet,
-            Position = 0,
             HelpMessage = "The name of the resource group.")]
         [ResourceGroupCompleter]
         public override string ResourceGroupName { get; set; }
