@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.2.3
+- Bug fixes and help message improvements
+
 ## Version 0.2.2
 - Add change note support during publishing of a blueprint
 - Update Blueprint SDK version
