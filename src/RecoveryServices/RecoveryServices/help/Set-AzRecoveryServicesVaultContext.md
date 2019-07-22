@@ -30,8 +30,8 @@ Warning: This cmdlet is being deprecated in a future breaking change release. Th
 ### Example 1
 
 ```powershell
-$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
-Set-AzRecoveryServicesVaultContext -Vault $vault
+PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+PS C:\> Set-AzRecoveryServicesVaultContext -Vault $vault
 ```
 
 Sets vault context.
