@@ -21,6 +21,7 @@
 * Fix missing examples for Set-AzSqlDatabaseSecondary cmdlet
 * Fix set Vulnerability Assessment recurring scans without providing any email addresses
 * Fix a small typo in a warining message.
+* Add optional resource group parameter to Get-DatabaseLongTermRetentionBackup and Remove-DatabaseLongTermRetentionBackup cmdlets
 
 ## Version 1.13.0
 * Add Instance Failover Group cmdlets from preview release to public release
