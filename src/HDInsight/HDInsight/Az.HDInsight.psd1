@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '2.0.2'
+ModuleVersion = '3.0.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -88,8 +88,6 @@ CmdletsToExport = 'Get-AzHDInsightJob', 'New-AzHDInsightSqoopJobDefinition',
                'Set-AzHDInsightDefaultStorage', 'Add-AzHDInsightStorage', 
                'Add-AzHDInsightScriptAction', 'Add-AzHDInsightMetastore', 
                'Add-AzHDInsightConfigValue', 'Get-AzHDInsightProperty', 
-               'Revoke-AzHDInsightRdpServicesAccess', 
-               'Grant-AzHDInsightRdpServicesAccess', 
                'Set-AzHDInsightGatewayCredential', 'New-AzHDInsightClusterConfig', 
                'Remove-AzHDInsightCluster', 'Set-AzHDInsightClusterSize', 
                'Get-AzHDInsightPersistedScriptAction', 
@@ -98,17 +96,15 @@ CmdletsToExport = 'Get-AzHDInsightJob', 'New-AzHDInsightSqoopJobDefinition',
                'Set-AzHDInsightPersistedScriptAction', 
                'Submit-AzHDInsightScriptAction', 'Get-AzHDInsightCluster', 
                'New-AzHDInsightCluster', 'Add-AzHDInsightClusterIdentity', 
-               'Enable-AzHDInsightOperationsManagementSuite', 
-               'Disable-AzHDInsightOperationsManagementSuite', 
-               'Get-AzHDInsightOperationsManagementSuite'
+               'Enable-AzHDInsightMonitoring', 
+               'Disable-AzHDInsightMonitoring', 
+               'Get-AzHDInsightMonitoring'
 
 # Variables to export from this module
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'Enable-AzHDInsightOMS', 'Disable-AzHDInsightOMS', 
-               'Add-AzHDInsightConfigValues', 'Get-AzHDInsightOMS', 
-               'Get-AzHDInsightProperties'
+# AliasesToExport = ''
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
@@ -137,7 +133,26 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Call out breaking changes'
+        ReleaseNotes = '* Changed Microsoft.Azure.Management.HDInsight from 2.1.0 to 5.1.0
+* Removed five cmdlets:
+    - Get-AzHDInsightOMS
+    - Enable-AzHDInsightOMS
+    - Disable-AzHDInsightOMS
+    - Grant-AzHDInsightRdpServicesAccess
+    - Revoke-AzHDInsightRdpServicesAccess
+* Added three cmdlets:
+    - Get-AzHDInsightMonitoring to replace Get-AzHDInsightOMS.
+    - Enable-AzHDInsightMonitoring to replace Enable-AzHDInsightOMS.
+    - Disable-AzHDInsightMonitoring to replace Disable-AzHDInsightOMS.
+* Fixed cmdlet Get-AzHDInsightProperties to support get capabilities information from a specific location.
+* Removed parameter sets("Spark1", "Spark2") from Add-AzHDInsightConfigValue.
+* Add examples to the help documents of cmdlet Add-AzHDInsightSecurityProfile.
+* Changed output type of the following cmdlets :
+*  - Changed the output type of Get-AzHDInsightProperties from  CapabilitiesResponse to AzureHDInsightCapabilities.
+*  - Changed the output type of Remove-AzHDInsightCluster from ClusterGetResponse to bool.
+*  - Changed the output type of Set-AzHDInsightGatewaySettings HttpConnectivitySettings to GatewaySettings.
+* Added Scenario Test Framework and added some scenario test cases.'
+* Removed alias 'Add-AzHDInsightConfigValues' and 'Get-AzHDInsightProperties'.
 
         # Prerelease string of this module
         # Prerelease = ''

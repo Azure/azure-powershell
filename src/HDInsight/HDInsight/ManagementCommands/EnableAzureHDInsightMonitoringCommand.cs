@@ -12,30 +12,43 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Commands.HDInsight.Commands;
-using Microsoft.Azure.Commands.HDInsight.Models.Management;
+using Microsoft.Azure.Management.HDInsight.Models;
+using System.Management.Automation;
+using System.IO;
+using System.Reflection;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
-using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [CmdletDeprecation(ReplacementCmdletName = "Get-AzHDInsightMonitoring")]
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightOperationsManagementSuite")]
-    [Alias("Get-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightOMS")]
-    [OutputType(typeof(AzureHDInsightOMS))]
-    public class GetAzureHDInsightOMSCommand : HDInsightCmdletBase
+    [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightMonitoring",SupportsShouldProcess = true)]
+    [OutputType(typeof(bool))]
+    public class EnableAzureHDInsightMonitoringCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
 
         [Parameter(
             Position = 0,
             Mandatory = true,
-            HelpMessage = "Gets or sets the name of the cluster to get the status of Operations Management Suite(OMS).",
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = true)]
+            HelpMessage = "Gets or sets the name of the cluster to enable monitoring.",
+            ValueFromPipelineByPropertyName = true)]
         [Alias("ClusterName")]
         public string Name { get; set; }
+
+        [Parameter(
+            Position = 1,
+            Mandatory = true,
+            HelpMessage = "Gets or sets the ID of the Log Analytics workspace.")]
+        public string WorkspaceId { get; set; }
+
+        [Parameter(
+            Position = 2,
+            Mandatory = true,
+            HelpMessage = "Gets to sets the primary key of the Log Analytics workspace.")]
+        public string PrimaryKey { get; set; }
 
         [Parameter(
             HelpMessage = "Gets or sets the resource group of the cluster.",
@@ -52,8 +65,17 @@ namespace Microsoft.Azure.Commands.HDInsight
                 ResourceGroupName = GetResourceGroupByAccountName(Name);
             }
 
-            var operationResource = HDInsightManagementClient.GetOMS(ResourceGroupName, Name);
-            WriteObject(new AzureHDInsightOMS(operationResource));
+            var monitoringParams = new ClusterMonitoringRequest
+            {
+                WorkspaceId = WorkspaceId,
+                PrimaryKey = PrimaryKey
+            };
+
+            if (ShouldProcess("Enable Monitoring"))
+            {
+                HDInsightManagementClient.EnableMonitoring(ResourceGroupName, Name, monitoringParams);
+                WriteObject(true);
+            }
         }
     }
 }

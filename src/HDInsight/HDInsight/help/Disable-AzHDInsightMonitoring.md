@@ -1,30 +1,30 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
-online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/disable-azhdinsightoperationsmanagementsuite
+online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/disable-azhdinsightmonitoring
 schema: 2.0.0
 ---
 
-# Disable-AzHDInsightOperationsManagementSuite
+# Disable-AzHDInsightMonitoring
 
 ## SYNOPSIS
-Disables Operations Management Suite (OMS) in a HDInsight cluster and relevant logs will stop flowing to the OMS workspace specified during enable.
+Disables monitoring in a HDInsight cluster and relevant logs will stop flowing to the monitoring workspace specified during enable.
 
 ## SYNTAX
 
 ```
-Disable-AzHDInsightOperationsManagementSuite [-Name] <String> [-ResourceGroupName <String>]
+Disable-AzHDInsightMonitoring [-Name] <String> [-ResourceGroupName <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Disable-AzHDInsightOperationsManagementSuite** cmdlet disables Operations Management Suite (OMS) in a Azure HDInsight cluster.
+The **Disable-AzHDInsightMonitoring** cmdlet disables monitoring in a Azure HDInsight cluster.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Disable-AzHDInsightOMS -Name testcluster
+PS C:\> Disable-AzHDInsightMonitoring -Name testcluster
 
 ErrorInfo  :
 
@@ -35,11 +35,11 @@ RequestId  : 1417ad86-d055-48cd-9d68-a5c19a212a3a
 StatusCode : OK
 ```
 
-Operations Management Suite (OMS) will be disabled on the HDInsight cluster and relevant logs will stop flowing to the OMS workspace.
+Monitoring will be disabled on the HDInsight cluster and relevant logs will stop flowing to the monitoring workspace.
 
 ### Example 2
 ```
-PS C:\> Disable-AzHDInsightOMS -Name testcluster -ResourceGroupName testrg
+PS C:\> Disable-AzHDInsightMonitoring -Name testcluster -ResourceGroupName testrg
 
 ErrorInfo  :
 
@@ -50,7 +50,7 @@ RequestId  : 1417ad86-d055-48cd-9d68-a5c19a212a3a
 StatusCode : OK
 ```
 
-Operations Management Suite (OMS) will be disabled on the HDInsight cluster and relevant logs will stop flowing to the OMS workspace.
+Monitoring will be disabled on the HDInsight cluster and relevant logs will stop flowing to the monitoring workspace.
 
 ## PARAMETERS
 
@@ -70,7 +70,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the cluster to disable Operations Management Suite(OMS).
+The name of the cluster to disable Monitoring.
 
 ```yaml
 Type: System.String
@@ -80,7 +80,7 @@ Aliases: ClusterName
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -130,7 +130,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

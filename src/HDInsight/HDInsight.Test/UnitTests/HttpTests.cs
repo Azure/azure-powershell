@@ -54,70 +54,22 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             hdinsightManagementMock.Setup(
                 c =>
                     c.UpdateGatewayCredential(ResourceGroupName, ClusterName,
-                        It.Is<HttpSettingsParameters>(
+                        It.Is<UpdateGatewaySettingsParameters>(
                             param =>
-                                param.HttpUserEnabled && param.HttpUsername == _httpCred.UserName &&
-                                param.HttpPassword == _httpCred.Password.ConvertToString())))
-                .Returns(new OperationResource
-                {
-                    ErrorInfo = null,
-                    StatusCode = HttpStatusCode.OK,
-                    State = AsyncOperationState.Succeeded
-                })
+                                param.IsCredentialEnabled.HasValue && param.UserName == _httpCred.UserName &&
+                                param.Password == _httpCred.Password.ConvertToString())))
                 .Verifiable();
 
-            var gatewayCredential = new HttpConnectivitySettings
-            {
-                HttpPassword = _httpCred.Password.ConvertToString(),
-                HttpUserEnabled = true,
-                HttpUsername = _httpCred.UserName,
-                StatusCode = HttpStatusCode.OK
-            };
+            var gatewaySettings = new GatewaySettings("true", _httpCred.UserName, _httpCred.Password.ConvertToString());
 
             hdinsightManagementMock.Setup(c => c.GetGatewaySettings(ResourceGroupName, ClusterName))
-                .Returns(gatewayCredential)
+                .Returns(gatewaySettings)
                 .Verifiable();
 
             setcmdlet.ExecuteCmdlet();
 
             commandRuntimeMock.VerifyAll();
-            commandRuntimeMock.Verify(f => f.WriteObject(gatewayCredential), Times.Once);
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void CanWriteErrorWhenSetGatewayCredentialFailedSupportsProcess()
-        {
-            var result = new OperationResource
-            {
-                ErrorInfo = new ErrorInfo { Code = "Ambari Failed Code", Message = "GetAmbariUserFailed" },
-                StatusCode = HttpStatusCode.OK,
-                State = AsyncOperationState.Failed
-            };
-
-            commandRuntimeMock.Setup(c => c.ShouldProcess(ClusterName, It.IsAny<string>())).Returns(true);
-
-            hdinsightManagementMock.Setup(
-                c =>
-                    c.UpdateGatewayCredential(ResourceGroupName, ClusterName,
-                        It.Is<HttpSettingsParameters>(
-                            param =>
-                                param.HttpUserEnabled && param.HttpUsername == _httpCred.UserName &&
-                                param.HttpPassword == _httpCred.Password.ConvertToString())))
-                .Returns(result)
-                .Verifiable();
-
-            setcmdlet.ExecuteCmdlet();
-
-            commandRuntimeMock.VerifyAll();
-            commandRuntimeMock.Verify(
-                f =>
-                    f.WriteError(It.Is<ErrorRecord>(
-                        record =>
-                            record.Exception.Message == $"{result.ErrorInfo.Code}: {result.ErrorInfo.Message}" &&
-                            string.IsNullOrEmpty(record.FullyQualifiedErrorId) &&
-                            record.CategoryInfo.Category == ErrorCategory.InvalidArgument)),
-                Times.Once);
+            commandRuntimeMock.Verify(f => f.WriteObject(gatewaySettings), Times.Once);
         }
     }
 }

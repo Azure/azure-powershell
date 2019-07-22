@@ -13,26 +13,30 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.HDInsight.Commands;
+using Microsoft.Azure.Commands.HDInsight.Models.Management;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [CmdletDeprecation("Clusters using Windows Os Type will not be supported in the future, this cmdlet will be deprecated in an upcoming breaking change release with no replacement. Please create a cluster using Linux Os Type instead.")]
-    [Cmdlet("Revoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightRdpServicesAccess"),OutputType(typeof(void))]
-    public class RevokeAzureHDInsightRdpServicesAccessCommand : HDInsightCmdletBase
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightMonitoring")]
+    [OutputType(typeof(AzureHDInsightMonitoring))]
+    public class GetAzureHDInsightMonitoringCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
 
         [Parameter(
             Position = 0,
             Mandatory = true,
-            HelpMessage = "Gets or sets the name of the cluster.")]
-        public string ClusterName { get; set; }
+            HelpMessage = "Gets or sets the name of the cluster to get the status of monitoring.",
+            ValueFromPipelineByPropertyName = true)]
+        [Alias("ClusterName")]
+        public string Name { get; set; }
 
-        [Parameter(HelpMessage = "Gets or sets the name of the resource group.")]
+        [Parameter(
+            HelpMessage = "Gets or sets the resource group of the cluster.",
+            ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
@@ -40,23 +44,13 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         public override void ExecuteCmdlet()
         {
-            var rdpParams = new RDPSettingsParameters
-            {
-                OsProfile = new OsProfile
-                {
-                    WindowsOperatingSystemProfile = new WindowsOperatingSystemProfile
-                    {
-                        RdpSettings = null
-                    }
-                }
-            };
-
             if (ResourceGroupName == null)
             {
-                ResourceGroupName = GetResourceGroupByAccountName(ClusterName);
+                ResourceGroupName = GetResourceGroupByAccountName(Name);
             }
 
-            HDInsightManagementClient.ConfigureRdp(ResourceGroupName, ClusterName, rdpParams);
+            var clusterMonitoringResource = HDInsightManagementClient.GetMonitoring(ResourceGroupName, Name);
+            WriteObject(new AzureHDInsightMonitoring(clusterMonitoringResource));
         }
     }
 }

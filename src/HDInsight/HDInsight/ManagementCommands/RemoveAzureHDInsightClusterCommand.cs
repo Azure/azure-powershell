@@ -20,8 +20,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [CmdletOutputBreakingChange(typeof(ClusterGetResponse))]
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightCluster"),OutputType(typeof(ClusterGetResponse))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightCluster"),OutputType(typeof(bool))]
     public class RemoveAzureHDInsightCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
@@ -45,9 +44,9 @@ namespace Microsoft.Azure.Commands.HDInsight
                 ResourceGroupName = GetResourceGroupByAccountName(ClusterName);
             }
 
-            var result = HDInsightManagementClient.DeleteCluster(ResourceGroupName, ClusterName);
+            HDInsightManagementClient.DeleteCluster(ResourceGroupName, ClusterName);
 
-            WriteObject(result, true);
+            WriteObject(true);
         }
     }
 }
