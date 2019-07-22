@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.HDInsight.Commands;
+using Microsoft.Azure.Commands.HDInsight.Models.Management;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
@@ -20,8 +21,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [GenericBreakingChange("Get-AzHDInsightProperties alias will be removed in an upcoming breaking change release", "2.0.0")]
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightProperty"),OutputType(typeof(CapabilitiesResponse))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightProperty"),OutputType(typeof(AzureHDInsightCapabilities))]
     [Alias("Get-AzHDInsightProperties")]
     public class GetAzureHDInsightPropertiesCommand : HDInsightCmdletBase
     {
@@ -38,9 +38,8 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         public override void ExecuteCmdlet()
         {
-            var result = HDInsightManagementClient.GetCapabilities(Location);
-
-            WriteObject(result);
+            var result = HDInsightManagementClient.GetProperties(Location);
+            WriteObject(new AzureHDInsightCapabilities(result), true);
         }
     }
 }

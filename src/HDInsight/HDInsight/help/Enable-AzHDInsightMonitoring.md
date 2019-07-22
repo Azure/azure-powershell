@@ -1,31 +1,31 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.HDInsight.dll-Help.xml
 Module Name: Az.HDInsight
-online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/enable-azhdinsightoperationsmanagementsuite
+online version: https://docs.microsoft.com/en-us/powershell/module/az.hdinsight/enable-azhdinsightmonitoring
 schema: 2.0.0
 ---
 
-# Enable-AzHDInsightOperationsManagementSuite
+# Enable-AzHDInsightMonitoring
 
 ## SYNOPSIS
-Enables Operations Management Suite (OMS) in a HDInsight cluster and relevant logs will be sent to the OMS workspace specified during enable.
+Enables monitoring in a HDInsight cluster and relevant logs will be sent to the monitoring workspace specified during enable.
 
 ## SYNTAX
 
 ```
-Enable-AzHDInsightOperationsManagementSuite [-Name] <String> [-WorkspaceId] <String> [-PrimaryKey] <String>
+Enable-AzHDInsightMonitoring [-Name] <String> [-WorkspaceId] <String> [-PrimaryKey] <String>
  [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Enable-AzHDInsightOperationsManagementSuite** cmdlet enables Operations Management Suite (OMS) in a Azure HDInsight cluster.
+The **Enable-AzHDInsightMonitoring** cmdlet enables monitoring in a Azure HDInsight cluster.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Enable-AzHDInsightOMS -Name testcluster -WorkspaceId 1d364e89-bb71-4503-aa3d-a23535aea7bd -PrimaryKey <key for workspace 1d364e89-bb71-4503-aa3d-a23535aea7bd>
+PS C:\> Enable-AzHDInsightMonitoring -Name testcluster -WorkspaceId 1d364e89-bb71-4503-aa3d-a23535aea7bd -PrimaryKey <key for workspace 1d364e89-bb71-4503-aa3d-a23535aea7bd>
 
 ErrorInfo  :
 
@@ -36,11 +36,11 @@ RequestId  : 1417ad86-d055-48cd-9d68-a5c19a212a3a
 StatusCode : OK
 ```
 
-Operations Management Suite (OMS) will be enabled on the HDInsight cluster and relevant logs will be sent to the OMS workspace with id 1d364e89-bb71-4503-aa3d-a23535aea7bd
+Monitoring will be enabled on the HDInsight cluster and relevant logs will be sent to the monitoring workspace with id 1d364e89-bb71-4503-aa3d-a23535aea7bd
 
 ### Example 2
 ```
-PS C:\> Enable-AzHDInsightOMS -Name testcluster -ResourceGroupName testrg -WorkspaceId 1d364e89-bb71-4503-aa3d-a23535aea7bd -PrimaryKey <key for workspace 1d364e89-bb71-4503-aa3d-a23535aea7bd>
+PS C:\> Enable-AzHDInsightMonitoring -Name testcluster -ResourceGroupName testrg -WorkspaceId 1d364e89-bb71-4503-aa3d-a23535aea7bd -PrimaryKey <key for workspace 1d364e89-bb71-4503-aa3d-a23535aea7bd>
 
 ErrorInfo  :
 
@@ -51,7 +51,7 @@ RequestId  : 1417ad86-d055-48cd-9d68-a5c19a212a3a
 StatusCode : OK
 ```
 
-Operations Management Suite (OMS) will be enabled on the HDInsight cluster and relevant logs will be sent to the OMS workspace with id 1d364e89-bb71-4503-aa3d-a23535aea7bd
+Monitoring will be enabled on the HDInsight cluster and relevant logs will be sent to the monitoring workspace with id 1d364e89-bb71-4503-aa3d-a23535aea7bd
 
 ## PARAMETERS
 
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the cluster to enable Operations Management Suite(OMS).
+The name of the cluster to enable monitoring.
 
 ```yaml
 Type: System.String
@@ -81,12 +81,12 @@ Aliases: ClusterName
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -PrimaryKey
-The primary key of the Operations Management Suite(OMS) workspace.
+The primary key of the monitoring workspace.
 
 ```yaml
 Type: System.String
@@ -116,7 +116,7 @@ Accept wildcard characters: False
 ```
 
 ### -WorkspaceId
-The id of the Operations Management Suite(OMS) workspace.
+The id of the monitoring workspace.
 
 ```yaml
 Type: System.String
@@ -161,7 +161,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -20,12 +20,11 @@ using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightGatewayCredential", DefaultParameterSetName = SetByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(HttpConnectivitySettings))]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightGatewayCredential", DefaultParameterSetName = SetByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(GatewaySettings))]
     public class SetAzureHDInsightGatewayCredentialCommand : HDInsightCmdletBase
     {
         private const string SetByNameParameterSet = "SetByNameParameterSet";
@@ -99,11 +98,11 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         public override void ExecuteCmdlet()
         {
-            var httpParams = new HttpSettingsParameters
+            var updateGatewaySettingsParameters = new UpdateGatewaySettingsParameters
             {
-                HttpUserEnabled = true,
-                HttpUsername = HttpCredential.UserName,
-                HttpPassword = HttpCredential.Password.ConvertToString()
+                IsCredentialEnabled = true,
+                UserName = HttpCredential.UserName,
+                Password = HttpCredential.Password.ConvertToString()
             };
 
             if (this.IsParameterBound(c => c.ResourceId))
@@ -126,16 +125,8 @@ namespace Microsoft.Azure.Commands.HDInsight
 
             if (ShouldProcess(Name, "set gateway http credential"))
             {
-                var result = HDInsightManagementClient.UpdateGatewayCredential(ResourceGroupName, Name, httpParams);
-
-                if (result.State == AsyncOperationState.Failed)
-                {
-                    WriteError(new ErrorRecord(new Exception($"{result.ErrorInfo?.Code}: {result.ErrorInfo?.Message}"), string.Empty, ErrorCategory.InvalidArgument, null));
-                }
-                else
-                {
-                    WriteObject(HDInsightManagementClient.GetGatewaySettings(ResourceGroupName, Name));
-                }
+                HDInsightManagementClient.UpdateGatewayCredential(ResourceGroupName, Name, updateGatewaySettingsParameters);
+                WriteObject(HDInsightManagementClient.GetGatewaySettings(ResourceGroupName, Name));
             }
         }
     }

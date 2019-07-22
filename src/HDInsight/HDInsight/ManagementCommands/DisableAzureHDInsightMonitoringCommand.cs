@@ -13,25 +13,23 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.HDInsight.Commands;
-using Microsoft.Azure.Commands.HDInsight.Models.Management;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.HDInsight.Models;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightOperationsManagementSuite")]
-    [Alias("Get-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightOMS")]
-    [OutputType(typeof(AzureHDInsightOMS))]
-    public class GetAzureHDInsightOMSCommand : HDInsightCmdletBase
+    [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightMonitoring",SupportsShouldProcess = true)]
+    [OutputType(typeof(bool))]
+    public class DisableAzureHDInsightMonitoringCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
 
         [Parameter(
             Position = 0,
             Mandatory = true,
-            HelpMessage = "Gets or sets the name of the cluster to get the status of Operations Management Suite(OMS).",
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = true)]
+            HelpMessage = "Gets or sets the name of the cluster to disable monitroing.",
+            ValueFromPipelineByPropertyName = true)]
         [Alias("ClusterName")]
         public string Name { get; set; }
 
@@ -50,8 +48,11 @@ namespace Microsoft.Azure.Commands.HDInsight
                 ResourceGroupName = GetResourceGroupByAccountName(Name);
             }
 
-            var operationResource = HDInsightManagementClient.GetOMS(ResourceGroupName, Name);
-            WriteObject(new AzureHDInsightOMS(operationResource));
+            if (ShouldProcess("Disable Monitoring"))
+            {
+                HDInsightManagementClient.DisableMonitoring(ResourceGroupName, Name);
+                WriteObject(true);
+            }
         }
     }
 }

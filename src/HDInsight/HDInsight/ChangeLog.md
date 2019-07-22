@@ -18,6 +18,25 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Changed Microsoft.Azure.Management.HDInsight from 2.1.0 to 5.1.0
+* Removed five cmdlets:
+    - Get-AzHDInsightOMS
+    - Enable-AzHDInsightOMS
+    - Disable-AzHDInsightOMS
+    - Grant-AzHDInsightRdpServicesAccess
+    - Revoke-AzHDInsightRdpServicesAccess
+* Added three cmdlets:
+    - Get-AzHDInsightMonitoring to replace Get-AzHDInsightOMS.
+    - Enable-AzHDInsightMonitoring to replace Enable-AzHDInsightOMS.
+    - Disable-AzHDInsightMonitoring to replace Disable-AzHDInsightOMS.
+* Fixed cmdlet Get-AzHDInsightProperties to support get capabilities information from a specific location.
+* Removed parameter sets("Spark1", "Spark2") from Add-AzHDInsightConfigValue.
+* Add examples to the help documents of cmdlet Add-AzHDInsightSecurityProfile.
+* Changed output type of the following cmdlets:
+*  - Changed the output type of Get-AzHDInsightProperties from  CapabilitiesResponse to AzureHDInsightCapabilities.
+*  - Changed the output type of Remove-AzHDInsightCluster from ClusterGetResponse to bool.
+*  - Changed the output type of Set-AzHDInsightGatewaySettings HttpConnectivitySettings to GatewaySettings.
+* Added some scenario test cases.
 
 ## Version 2.0.1
 * Fixed miscellaneous typos across module

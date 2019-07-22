@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         public void CanGetProperties()
         {
             var features = new string[] { "feature1", "feature2" };
-            var versions = new Dictionary<string, VersionsCapability> { { "key", new VersionsCapability() } };
+            var versions = new Dictionary<string, AzHDInsightVersionsCapability> { { "key", new VersionsCapability() } };
             var vm = new Dictionary<string, VmSizesCapability> { { "key1", new VmSizesCapability() } };
             var regions = new Dictionary<string, RegionsCapability> { { "eastus", new RegionsCapability() } };
             var propertiesResponse = new CapabilitiesResponse
