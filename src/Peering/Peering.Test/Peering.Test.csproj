@@ -19,8 +19,4 @@
     <ProjectReference Include="..\Peering\Peering.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="SessionRecords\Microsoft.Azure.Commands.Peering.Test.ScenarioTests.CreateNewDirectConnectionTests\" />
-  </ItemGroup>
-
 </Project>
