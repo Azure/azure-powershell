@@ -61,6 +61,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataShare.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Granting access to share subscription.
+        /// </summary>
+        internal static string GrantShareSubscriptionAccess {
+            get {
+                return ResourceManager.GetString("GrantShareSubscriptionAccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The resource object provided is invalid. Use Get to retrieve a specific resource, or use New to create a new resource..
         /// </summary>
         internal static string ResourceArgumentInvalid {
@@ -70,7 +79,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataShare.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to create resource &apos;{0}&apos;?.
+        ///   Looks up a localized string similar to Are you sure you want to create this &apos;{0}&apos;.
         /// </summary>
         internal static string ResourceCreateConfirmation {
             get {
@@ -79,7 +88,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataShare.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Creating resource &apos;{0}&apos;.
+        ///   Looks up a localized string similar to Creating &apos;{0}&apos;.
         /// </summary>
         internal static string ResourceCreateMessage {
             get {
@@ -102,6 +111,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataShare.Properties {
         internal static string ResourceRemovedMessage {
             get {
                 return ResourceManager.GetString("ResourceRemovedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Revoking access of share subscription.
+        /// </summary>
+        internal static string RevokeShareSubscriptionAccess {
+            get {
+                return ResourceManager.GetString("RevokeShareSubscriptionAccess", resourceCulture);
             }
         }
     }

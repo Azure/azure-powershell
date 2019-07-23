@@ -44,7 +44,6 @@ namespace Microsoft.Azure.Commands.DataShare.SynchronizationSetting
         /// </summary>
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = ParameterSetNames.FieldsParameterSet,
             HelpMessage = "The resource group name of the azure data share account")]
         [ResourceGroupCompleter()]
@@ -56,7 +55,6 @@ namespace Microsoft.Azure.Commands.DataShare.SynchronizationSetting
         /// </summary>
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = ParameterSetNames.FieldsParameterSet,
             HelpMessage = "Azure Data Share Account name")]
         [ValidateNotNullOrEmpty]
@@ -68,7 +66,6 @@ namespace Microsoft.Azure.Commands.DataShare.SynchronizationSetting
         /// </summary>
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure data share name",
             ParameterSetName = ParameterSetNames.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -80,7 +77,6 @@ namespace Microsoft.Azure.Commands.DataShare.SynchronizationSetting
         /// </summary>
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Synchronization setting name",
             ParameterSetName = ParameterSetNames.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -104,7 +100,6 @@ namespace Microsoft.Azure.Commands.DataShare.SynchronizationSetting
         /// </summary>
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Return object (if specified).")]
         public SwitchParameter PassThru { get; set; }
 

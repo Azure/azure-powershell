@@ -44,7 +44,6 @@ namespace Microsoft.Azure.Commands.DataShare.Synchronization
         /// </summary>
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name of the azure data share account",
             ParameterSetName = ParameterSetNames.FieldsParameterSet)]
         [ResourceGroupCompleter()]
@@ -56,7 +55,6 @@ namespace Microsoft.Azure.Commands.DataShare.Synchronization
         /// </summary>
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure data share account name",
             ParameterSetName = ParameterSetNames.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -68,7 +66,6 @@ namespace Microsoft.Azure.Commands.DataShare.Synchronization
         /// </summary>
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure data share subscription name",
             ParameterSetName = ParameterSetNames.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -83,6 +80,7 @@ namespace Microsoft.Azure.Commands.DataShare.Synchronization
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure data share subscription resource id",
             ParameterSetName = ParameterSetNames.ResourceIdParameterSet)]
+        [ResourceIdCompleter(ResourceTypes.ShareSubscription)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
