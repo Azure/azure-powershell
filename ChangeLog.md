@@ -25,6 +25,7 @@
 
 #### Az.DataFactory
 * Updating the output of get activity runs, get pipeline runs, and get trigger runs ADF cmdlets to support Select-Object pipe.
+* Fix typo to capitalize "Windows" in 'New-AzDataFactoryEncryptValue" documentation
 
 #### Az.EventGrid
 * Fix typo in 'New-AzEventGridSubscription' documentation
