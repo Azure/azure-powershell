@@ -116,13 +116,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             }
         }
 
-        [Fact(Skip = "This is not recordable test")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestLongTermRetentionV2ResourceGroupBased()
-        {
-            RunPowerShellTest("Test-LongTermRetentionV2ResourceGroupBased");
-        }
-
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseGeoBackupPolicy()
