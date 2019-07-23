@@ -113,5 +113,9 @@ directive:
       parameter-name: ImmutabilityPeriodSinceCreationInDay
     set:
       parameter-name: ImmutabilityPeriod
-
+# Update csproj for customizations
+  - from: Az.Storage.csproj
+    where: $
+    transform: >
+        return $.replace('</Project>', '  <Import Project=\"custom\\dataplane.props\" />\n</Project>' );
 ```
