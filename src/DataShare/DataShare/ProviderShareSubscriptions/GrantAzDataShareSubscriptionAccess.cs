@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Commands.DataShare.ProviderShareSubscription
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Extensions;
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models;
+    using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Properties;
 
     /// <summary>
     /// Defines Grant-AzDataShareSubscriptionAccess cmdlets.
@@ -37,7 +38,6 @@ namespace Microsoft.Azure.Commands.DataShare.ProviderShareSubscription
         /// </summary>
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name of the azure data share account",
             ParameterSetName = ParameterSetNames.FieldsParameterSet)]
         [ResourceGroupCompleter()]
@@ -49,7 +49,6 @@ namespace Microsoft.Azure.Commands.DataShare.ProviderShareSubscription
         /// </summary>
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure data share account name",
             ParameterSetName = ParameterSetNames.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -61,7 +60,6 @@ namespace Microsoft.Azure.Commands.DataShare.ProviderShareSubscription
         /// </summary>
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure data share name",
             ParameterSetName = ParameterSetNames.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -73,12 +71,10 @@ namespace Microsoft.Azure.Commands.DataShare.ProviderShareSubscription
         /// </summary>
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The share subscription id of the provider share subscription",
             ParameterSetName = ParameterSetNames.FieldsParameterSet)]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The share subscription id of the provider share subscription",
             ParameterSetName = ParameterSetNames.ProviderShareSubscriptionIdParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -98,7 +94,7 @@ namespace Microsoft.Azure.Commands.DataShare.ProviderShareSubscription
 
         public override void ExecuteCmdlet()
         {
-            if (this.ShouldProcess(this.ShareSubscriptionId, "Grant access to source share"))
+            if (this.ShouldProcess(this.ShareSubscriptionId, Resources.GrantShareSubscriptionAccess))
             {
                 if (this.ParameterSetName.Equals(ParameterSetNames.ProviderShareSubscriptionIdParameterSet))
                 {

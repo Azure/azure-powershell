@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.DataShare.DataSet
     using System.Management.Automation;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Properties;
 
     /// <summary>
     /// Defines the New-DataShareDataSet cmdlet.
@@ -40,17 +41,14 @@ namespace Microsoft.Azure.Commands.DataShare.DataSet
         /// </summary>
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name of the azure data share account",
             ParameterSetName = ParameterSetNames.BlobDataSetParameterSet)]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name of the azure data share account",
             ParameterSetName = ParameterSetNames.AdlsGen2DataSetParameterSet)]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name of the azure data share account",
             ParameterSetName = ParameterSetNames.AdlsGen1DataSetParameterSet)]
         [ResourceGroupCompleter()]
@@ -61,17 +59,14 @@ namespace Microsoft.Azure.Commands.DataShare.DataSet
         /// </summary>
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure data share account name",
             ParameterSetName = ParameterSetNames.BlobDataSetParameterSet)]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure data share account name",
             ParameterSetName = ParameterSetNames.AdlsGen2DataSetParameterSet)]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure data share account name",
             ParameterSetName = ParameterSetNames.AdlsGen1DataSetParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -83,17 +78,14 @@ namespace Microsoft.Azure.Commands.DataShare.DataSet
         /// </summary>
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure data share name",
             ParameterSetName = ParameterSetNames.BlobDataSetParameterSet)]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure data share name",
             ParameterSetName = ParameterSetNames.AdlsGen2DataSetParameterSet)]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure data share name",
             ParameterSetName = ParameterSetNames.AdlsGen1DataSetParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -105,17 +97,14 @@ namespace Microsoft.Azure.Commands.DataShare.DataSet
         /// </summary>
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure data set name",
             ParameterSetName = ParameterSetNames.BlobDataSetParameterSet)]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure data set name",
             ParameterSetName = ParameterSetNames.AdlsGen2DataSetParameterSet)]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure data set name",
             ParameterSetName = ParameterSetNames.AdlsGen1DataSetParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -148,7 +137,6 @@ namespace Microsoft.Azure.Commands.DataShare.DataSet
         /// </summary>
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure storage account container name",
             ParameterSetName = ParameterSetNames.BlobDataSetParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -159,7 +147,6 @@ namespace Microsoft.Azure.Commands.DataShare.DataSet
         /// </summary>
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure ADLS gen2 file system name",
             ParameterSetName = ParameterSetNames.AdlsGen2DataSetParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -170,12 +157,10 @@ namespace Microsoft.Azure.Commands.DataShare.DataSet
         /// </summary>
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure storage file path",
             ParameterSetName = ParameterSetNames.BlobDataSetParameterSet)]
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure storage file path",
             ParameterSetName = ParameterSetNames.AdlsGen2DataSetParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -186,12 +171,10 @@ namespace Microsoft.Azure.Commands.DataShare.DataSet
         /// </summary>
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure storage folder path",
             ParameterSetName = ParameterSetNames.BlobDataSetParameterSet)]
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure storage folder path",
             ParameterSetName = ParameterSetNames.AdlsGen2DataSetParameterSet)]
         public string FolderPath { get; set; }
@@ -201,7 +184,6 @@ namespace Microsoft.Azure.Commands.DataShare.DataSet
         /// </summary>
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure storage ADLS gen1 file name",
             ParameterSetName = ParameterSetNames.AdlsGen1DataSetParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -212,11 +194,12 @@ namespace Microsoft.Azure.Commands.DataShare.DataSet
         /// </summary>
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure storage ADLS gen1 folder path",
             ParameterSetName = ParameterSetNames.AdlsGen1DataSetParameterSet)]
         [ValidateNotNullOrEmpty]
         public string AdlsGen1FolderPath { get; set; }
+
+        private const string ResourceType = "DataSet";
 
         public override void ExecuteCmdlet()
         {
@@ -229,7 +212,7 @@ namespace Microsoft.Azure.Commands.DataShare.DataSet
                 ParameterSetNames.BlobDataSetParameterSet,
                 StringComparison.OrdinalIgnoreCase))
             {
-                if (this.ShouldProcess(this.Name, "Creating data set"))
+                if (this.ShouldProcess(this.Name, string.Format(Resources.ResourceCreateMessage, NewAzDataShareDataSet.ResourceType)))
                 {
                     if (this.FilePath != null)
                     {
@@ -297,7 +280,7 @@ namespace Microsoft.Azure.Commands.DataShare.DataSet
                 StringComparison.OrdinalIgnoreCase))
             {
 
-                if (this.ShouldProcess(this.Name, "Creating data set"))
+                if (this.ShouldProcess(this.Name, string.Format(Resources.ResourceCreateMessage, NewAzDataShareDataSet.ResourceType)))
                 {
                     if (this.FilePath != null)
                     {
@@ -365,7 +348,7 @@ namespace Microsoft.Azure.Commands.DataShare.DataSet
                 StringComparison.OrdinalIgnoreCase))
             {
                 storageAccountName = parsedStorageResourceId.GetAccountName();
-                if (this.ShouldProcess(this.Name, "Creating data set"))
+                if (this.ShouldProcess(this.Name, string.Format(Resources.ResourceCreateMessage, NewAzDataShareDataSet.ResourceType)))
                 {
                     if (this.FileName != null)
                     {
