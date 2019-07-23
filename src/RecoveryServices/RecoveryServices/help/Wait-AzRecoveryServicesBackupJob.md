@@ -9,6 +9,7 @@ schema: 2.0.0
 # Wait-AzRecoveryServicesBackupJob
 
 ## SYNOPSIS
+
 Waits for a Backup job to finish.
 
 ## SYNTAX
@@ -19,37 +20,29 @@ Wait-AzRecoveryServicesBackupJob [-Job] <Object> [[-Timeout] <Int64>] [-VaultId 
 ```
 
 ## DESCRIPTION
+
 The **Wait-AzRecoveryServicesBackupJob** cmdlet waits for an Azure Backup job to finish.
 Backup jobs can take a long time.
 If you run a backup job as part of a script, you may want to force the script to wait for job to finish before it continues to other tasks.
 A script that includes this cmdlet can be simpler than one that polls the Backup service for the job status.
-Set the vault context by using the Set-AzRecoveryServicesVaultContext cmdlet before you use the current cmdlet.
+Set the vault context by using the -VaultId parameter.
 
 ## EXAMPLES
 
 ### Example 1: Wait for a job to finish
-```
-PS C:\>
-$Jobs = Get-AzRecoveryServicesBackupJob -Status InProgress
-    $Job = $Jobs[0]
-    while ( $Job.Status -ne Completed )
-    {
-       Write-Host "Waiting for completion..."
-       Start-Sleep -Seconds 10
-       $Job = Get-AzBackAzureRmRecoveryServicesBackupJob -Job $Job
-    }
-   Write-Host "Done!"
-    Waiting for completion... 
-    Waiting for completion... 
-    Waiting for completion... 
-    Done!
+
+```powershell
+PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+PS C:\> $Jobs = Get-AzRecoveryServicesBackupJob -Status InProgress -VaultId $vault.ID
+PS C:\> Wait-AzRecoveryServicesBackupJob -Job $Jobs[0] -VaultId $vault.ID -Timeout 3600
 ```
 
-This script polls the first job that is currently in progress until the job has completed.
+This script polls the first job that is currently in progress until the job has completed or timeout period of 1 hour expired.
 
 ## PARAMETERS
 
 ### -DefaultProfile
+
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
@@ -65,6 +58,7 @@ Accept wildcard characters: False
 ```
 
 ### -Job
+
 Specifies the job to wait for.
 To obtain a **BackupJob** object, use the Get-AzRecoveryServicesBackupJob cmdlet.
 
@@ -81,6 +75,7 @@ Accept wildcard characters: False
 ```
 
 ### -Timeout
+
 Specifies the maximum time, in seconds, that this cmdlet waits for the job to finish.
 It is recommended to specify a time-out value.
 
@@ -97,6 +92,7 @@ Accept wildcard characters: False
 ```
 
 ### -VaultId
+
 ARM ID of the Recovery Services Vault.
 
 ```yaml
@@ -111,8 +107,9 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+### -CommonParameters
+
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -129,5 +126,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [Get-AzRecoveryServicesBackupJob](./Get-AzRecoveryServicesBackupJob.md)
-
-

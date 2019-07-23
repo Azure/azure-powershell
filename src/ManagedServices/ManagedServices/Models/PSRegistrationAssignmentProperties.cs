@@ -24,7 +24,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models
     {
         public string RegistrationDefinitionId { get; set; }
 
-        public ProvisioningState? ProvisioningState { get; }
+        public string ProvisioningState { get; }
 
         public PSRegistrationAssignmentPropertiesRegistrationDefinition RegistrationDefinition { get; }
 

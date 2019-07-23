@@ -61,9 +61,10 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         public Hashtable Tag { get; set; }
 
         [Parameter(Position = 7, Mandatory = false, ValueFromPipelineByPropertyName = true,
-        HelpMessage = "The saved search version.")]
+            HelpMessage = "The saved search version.")]
+        [PSDefaultValue(Help = "1", Value = 1)]
         [ValidateNotNullOrEmpty]
-        public long Version { get; set; }
+        public long Version { get; set; } = 1;
 
         [Parameter(Position = 8, Mandatory = false, ValueFromPipelineByPropertyName = true,
         HelpMessage = "The ETag of the saved search.")]

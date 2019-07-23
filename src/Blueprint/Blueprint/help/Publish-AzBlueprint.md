@@ -13,7 +13,7 @@ Publish a new version of a blueprint.
 ## SYNTAX
 
 ```
-Publish-AzBlueprint -Version <String> -Blueprint <PSBlueprint> [-DefaultProfile <IAzureContextContainer>]
+Publish-AzBlueprint -Version <String> -ChangeNote <String> -Blueprint <PSBlueprint> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -72,6 +72,9 @@ Accept wildcard characters: False
 
 ### -Version
 Version for the blueprint definition.
+
+### -ChangeNote
+Notes to describe the contents of this blueprint version.
 
 ```yaml
 Type: String

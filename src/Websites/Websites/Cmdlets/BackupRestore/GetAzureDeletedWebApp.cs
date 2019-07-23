@@ -43,26 +43,30 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [ValidateNotNullOrEmpty]
         public string Slot { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The location of the deleted app.")]
+        [ValidateNotNullOrEmpty]
+        public string Location { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            IEnumerable<PSAzureDeletedWebApp> deletedSites = WebsitesClient.GetDeletedSites()
+
+            IEnumerable<string> locations;
+            if (string.IsNullOrEmpty(Location))
+            {
+                locations = ResourcesClient.GetDeletedSitesLocations();
+            }
+            else
+            {
+                locations = new List<string> { Location };
+            }
+
+            IEnumerable<PSAzureDeletedWebApp> deletedSites = WebsitesClient.GetDeletedSitesFromLocations(locations)
                 .Where(ds => ds.DeletedSiteId.HasValue)
-                .Select(ds =>
-                new PSAzureDeletedWebApp()
-                {
-                    DeletedSiteId = ds.DeletedSiteId.Value,
-                    DeletionTime = DateTime.Parse(ds.DeletedTimestamp, System.Globalization.CultureInfo.InvariantCulture),
-                    SubscriptionId = DefaultContext.Subscription.Id,
-                    ResourceGroupName = ds.ResourceGroup,
-                    Name = ds.DeletedSiteName,
-                    Slot = ds.Slot
-                }
-            );
+                .Select(ds => new PSAzureDeletedWebApp(ds, DefaultContext.Subscription.Id));
 
             if (!string.IsNullOrEmpty(ResourceGroupName))
             {
-
                 deletedSites = deletedSites.Where(ds => string.Equals(ResourceGroupName, ds.ResourceGroupName, StringComparison.InvariantCultureIgnoreCase));
             }
             if (!string.IsNullOrEmpty(Name))
