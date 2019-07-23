@@ -33,8 +33,7 @@ namespace Microsoft.Azure.Commands.DataShare.ShareSubscription
         /// <summary>
         /// The resource group name of the azure data share account.
         /// </summary>
-        [Parameter(Mandatory = true, 
-            ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true,
             ParameterSetName = ParameterSetNames.FieldsParameterSet,
             HelpMessage = "The resource group name of the azure data share account")]
         [ResourceGroupCompleter()]
@@ -45,7 +44,6 @@ namespace Microsoft.Azure.Commands.DataShare.ShareSubscription
         /// Name of azure data share account.
         /// </summary>
         [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = ParameterSetNames.FieldsParameterSet,
             HelpMessage = "Azure data share account name")]
         [ValidateNotNullOrEmpty]
@@ -56,7 +54,6 @@ namespace Microsoft.Azure.Commands.DataShare.ShareSubscription
         /// Name of the azure data share subscription.
         /// </summary>
         [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = ParameterSetNames.FieldsParameterSet, 
             HelpMessage = "Azure data share subscription name")]
         [ValidateNotNullOrEmpty]
@@ -66,15 +63,16 @@ namespace Microsoft.Azure.Commands.DataShare.ShareSubscription
         /// InvitationId of invitation.
         /// </summary>
         [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = ParameterSetNames.FieldsParameterSet, 
             HelpMessage = "Azure data share invitationId")]
         [ValidateNotNullOrEmpty]
         public string InvitationId { get; set; }
 
+        private const string ResourceType = "ShareSubscription";
+
         public override void ExecuteCmdlet()
         {
-            if (this.ShouldProcess(this.Name, "Creating share subscription"))
+            if (this.ShouldProcess(this.Name, string.Format(Resources.ResourceCreateMessage, NewAzDataShareSubscription.ResourceType)))
             {
                 ShareSubscription shareSubscription = this.DataShareManagementClient.ShareSubscriptions.Create(
                     this.ResourceGroupName,

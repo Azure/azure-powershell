@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.DataShare.Account
 {
+    using System;
     using System.Collections;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.DataShare.Common;
@@ -40,7 +41,6 @@ namespace Microsoft.Azure.Commands.DataShare.Account
         /// </summary>
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name of the azure data share account will be created in.")]
         [ResourceGroupCompleter()]
         public string ResourceGroupName { get; set; }
@@ -71,9 +71,11 @@ namespace Microsoft.Azure.Commands.DataShare.Account
         [Parameter]
         public SwitchParameter AsJob { get; set; }
 
+        private const string ResourceType = "Data Share Account";
+
         public override void ExecuteCmdlet()
         {
-            if (this.ShouldProcess(this.Name, "Creating data share account"))
+            if (this.ShouldProcess(this.Name, string.Format(Resources.ResourceCreateMessage, NewAzDataShareAccount.ResourceType)))
             {
                 Account dataShareAccount = this.DataShareManagementClient.Accounts.Create(
                     this.ResourceGroupName,
