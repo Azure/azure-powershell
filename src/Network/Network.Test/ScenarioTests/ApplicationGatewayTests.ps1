@@ -638,7 +638,7 @@ function Test-ApplicationGatewayCRUDRewriteRuleSet
 		$certFilePath = $basedir + "/ScenarioTests/Data/ApplicationGatewayAuthCert.cer"
 		$trustedRoot01 = New-AzApplicationGatewayTrustedRootCertificate -Name $trustedRootCertName -CertificateFile $certFilePath
 		$pool = New-AzApplicationGatewayBackendAddressPool -Name $poolName -BackendIPAddresses www.microsoft.com, www.bing.com
-		$probeHttp = New-AzApplicationGatewayProbeConfig -Name $probeHttpName -Protocol Https -HostName "probe.com" -Path "/path/path.htm" -Interval 89 -Timeout 88 -UnhealthyThreshold 8
+		$probeHttp = New-AzApplicationGatewayProbeConfig -Name $probeHttpName -Protocol Https -HostName "probe.com" -Path "/path/path.htm" -Interval 89 -Timeout 88 -UnhealthyThreshold 8 -port 1234
 		$poolSetting01 = New-AzApplicationGatewayBackendHttpSettings -Name $poolSetting01Name -Port 443 -Protocol Https -Probe $probeHttp -CookieBasedAffinity Enabled -PickHostNameFromBackendAddress -TrustedRootCertificate $trustedRoot01
 
 		#Rewrite Rule Set
@@ -753,6 +753,19 @@ function Test-ApplicationGatewayCRUDRewriteRuleSet
 		Assert-AreEqual $sku01.Capacity 3
 		Assert-AreEqual $sku01.Name Standard_v2
 		Assert-AreEqual $sku01.Tier Standard_v2
+
+		# check probe
+		$probe01 = Get-AzApplicationGatewayProbeConfig -ApplicationGateway $getgw01
+		Assert-NotNull $probe01
+		Assert-AreEqual $probe01.Port 1234
+		Assert-AreEqual $probe01.Host "probe.com"
+		Assert-AreEqual $probe01.Path "/path/path.htm"
+		Assert-AreEqual $probe01.Interval 89
+		Assert-AreEqual $probe01.Timeout 88
+		Assert-AreEqual $probe01.UnhealthyThreshold 8
+
+		Assert-ThrowsLike { Set-AzApplicationGatewayProbeConfig -ApplicationGateway $getgw01 -Name "fakeName" -Protocol Https -HostName "probe.com" -Path "/path/path.htm" -Interval 89 -Timeout 88 -UnhealthyThreshold 8 -port 1234} "*does not exist*"
+		Assert-ThrowsLike { Add-AzApplicationGatewayProbeConfig -ApplicationGateway $getgw01 -Name $probeHttpName -Protocol Https -HostName "probe.com" -Path "/path/path.htm" -Interval 89 -Timeout 88 -UnhealthyThreshold 8 -port 1234} "*already exists*"
 
 		# Stop Application Gateway
 		$getgw1 = Stop-AzApplicationGateway -ApplicationGateway $getgw01
