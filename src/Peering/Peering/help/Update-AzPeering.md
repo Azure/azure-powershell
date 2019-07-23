@@ -112,7 +112,7 @@ Sets the Ipv4 Address for an Exchange Peering using ResourceId
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -127,7 +127,7 @@ Accept wildcard characters: False
 Create a new Direct connections using the New-AzDirectPeeringConnectionObject and pipe to this command.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection[]
+Type: PSDirectConnection[]
 Parameter Sets: DefaultDirect, ByResourceIdDirect, Direct
 Aliases:
 
@@ -142,7 +142,7 @@ Accept wildcard characters: False
 Create a new Exchange connection using the New-AzExchangePeeringConnectionObject and pipe to this command.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection[]
+Type: PSExchangeConnection[]
 Parameter Sets: DefaultExchange
 Aliases:
 
@@ -154,7 +154,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection[]
+Type: PSExchangeConnection[]
 Parameter Sets: ByResourceIdExchange, Exchange
 Aliases:
 
@@ -169,7 +169,7 @@ Accept wildcard characters: False
 The Peering object 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering
+Type: PSPeering
 Parameter Sets: DefaultExchange, DefaultDirect
 Aliases:
 
@@ -184,7 +184,7 @@ Accept wildcard characters: False
 The unique name of the PSPeering.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: Direct, Exchange
 Aliases:
 
@@ -199,7 +199,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: Direct, Exchange
 Aliases:
 
@@ -214,7 +214,7 @@ Accept wildcard characters: False
 The resource id string name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByResourceIdDirect, ByResourceIdExchange
 Aliases:
 
@@ -229,7 +229,7 @@ Accept wildcard characters: False
 Enable for use with Microsoft InputObject Service (MPS).
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
+Type: Boolean
 Parameter Sets: DefaultDirect, ByResourceIdDirect, Direct
 Aliases:
 
@@ -244,7 +244,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -260,7 +260,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -272,7 +272,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
