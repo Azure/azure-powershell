@@ -1,28 +1,41 @@
 ---
 external help file:
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azexpressroutecircuitroutetable
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azexpressrouteroutetable
 schema: 2.0.0
 ---
 
-# Get-AzExpressRouteCircuitRouteTable
+# Get-AzExpressRouteRouteTable
 
 ## SYNOPSIS
 The ListRoutesTable from ExpressRouteCircuit operation retrieves the currently advertised routes table associated with the ExpressRouteCircuits in a resource group.
 
 ## SYNTAX
 
-### List1 (Default)
+### CircuitList1Circuit (Default)
 ```
-Get-AzExpressRouteCircuitRouteTable -CircuitName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzExpressRouteRouteTable -ResourceGroupName <String> -SubscriptionId <String[]> -CircuitName <String>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### List3
+### CircuitList3Circuit
 ```
-Get-AzExpressRouteCircuitRouteTable -CircuitName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> -DevicePath <String> -PeeringName <String> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzExpressRouteRouteTable -ResourceGroupName <String> -SubscriptionId <String[]> -CircuitName <String>
+ -DevicePath <String> -PeeringName <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### CircuitList2Circuit
+```
+Get-AzExpressRouteRouteTable -ResourceGroupName <String> -SubscriptionId <String[]> -CircuitName <String>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CrossConnectionListCrossConnection
+```
+Get-AzExpressRouteRouteTable -ResourceGroupName <String> -SubscriptionId <String[]> -DevicePath <String>
+ -PeeringName <String> -CrossConnectionName <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,7 +68,7 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: List3
+Parameter Sets: CircuitList3Circuit, CrossConnectionListCrossConnection
 Aliases:
 
 Required: False
@@ -71,8 +84,24 @@ The name of the circuit.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CircuitList1Circuit, CircuitList3Circuit, CircuitList2Circuit
 Aliases: ExpressRouteCircuitName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -CrossConnectionName
+The name of the ExpressRouteCrossConnection.
+
+```yaml
+Type: System.String
+Parameter Sets: CrossConnectionListCrossConnection
+Aliases:
 
 Required: True
 Position: Named
@@ -103,7 +132,7 @@ The path of the device.
 
 ```yaml
 Type: System.String
-Parameter Sets: List3
+Parameter Sets: CircuitList3Circuit, CrossConnectionListCrossConnection
 Aliases:
 
 Required: True
@@ -119,7 +148,7 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: List3
+Parameter Sets: CircuitList3Circuit, CrossConnectionListCrossConnection
 Aliases:
 
 Required: False
@@ -135,7 +164,7 @@ The name of the peering.
 
 ```yaml
 Type: System.String
-Parameter Sets: List3
+Parameter Sets: CircuitList3Circuit, CrossConnectionListCrossConnection
 Aliases: PeeringType
 
 Required: True
@@ -152,7 +181,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: ExpressRouteCrossConnection
 
 Required: True
 Position: Named
@@ -224,6 +253,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitsRoutesTableListResult
 
 ## ALIASES
+
+### Get-AzExpressRouteCircuitRouteTable
+
+### Get-AzExpressRouteCrossConnectionRouteTable
 
 ## NOTES
 

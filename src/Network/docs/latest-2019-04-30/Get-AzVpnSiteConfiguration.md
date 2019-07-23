@@ -15,29 +15,27 @@ Gives the sas-url to download the configurations for vpn-sites in a resource gro
 ### Download (Default)
 ```
 Get-AzVpnSiteConfiguration -ResourceGroupName <String> -SubscriptionId <String[]> -VirtualWanName <String>
- [-PassThru] [-Request <IGetVpnSitesConfigurationRequest>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Request <IGetVpnSitesConfigurationRequest>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DownloadExpanded
 ```
 Get-AzVpnSiteConfiguration -ResourceGroupName <String> -SubscriptionId <String[]> -VirtualWanName <String>
- -OutputBlobSasUrl <String> [-PassThru] [-VpnSite <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -OutputBlobSasUrl <String> [-VpnSite <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DownloadViaIdentityExpanded
 ```
-Get-AzVpnSiteConfiguration -InputObject <INetworkIdentity> -OutputBlobSasUrl <String> [-PassThru]
- [-VpnSite <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Get-AzVpnSiteConfiguration -InputObject <INetworkIdentity> -OutputBlobSasUrl <String> [-VpnSite <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DownloadViaIdentity
 ```
-Get-AzVpnSiteConfiguration -InputObject <INetworkIdentity> [-PassThru]
- [-Request <IGetVpnSitesConfigurationRequest>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Get-AzVpnSiteConfiguration -InputObject <INetworkIdentity> [-Request <IGetVpnSitesConfigurationRequest>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -146,7 +144,7 @@ Dynamic: False
 ```
 
 ### -PassThru
-When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

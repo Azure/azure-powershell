@@ -14,13 +14,13 @@ Deletes the specified network security group.
 
 ### Delete1 (Default)
 ```
-Remove-AzNsg -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-PassThru]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzNsg -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity1
 ```
-Remove-AzNsg -InputObject <INetworkIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Remove-AzNsg -InputObject <INetworkIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -130,7 +130,7 @@ Dynamic: False
 ```
 
 ### -PassThru
-When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

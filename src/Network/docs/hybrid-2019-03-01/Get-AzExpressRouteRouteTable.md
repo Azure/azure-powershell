@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azexpressroutecircuitroutetable
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azexpressrouteroutetable
 schema: 2.0.0
 ---
 
-# Get-AzExpressRouteCircuitRouteTable
+# Get-AzExpressRouteRouteTable
 
 ## SYNOPSIS
 Gets the currently advertised routes table associated with the express route circuit in a resource group.
@@ -13,7 +13,7 @@ Gets the currently advertised routes table associated with the express route cir
 ## SYNTAX
 
 ```
-Get-AzExpressRouteCircuitRouteTable -CircuitName <String> -DevicePath <String> -PeeringName <String>
+Get-AzExpressRouteRouteTable -CircuitName <String> -DevicePath <String> -PeeringName <String>
  -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -215,6 +215,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitsRoutesTableListResult
 
 ## ALIASES
+
+### Get-AzExpressRouteCircuitRouteTable
 
 ## NOTES
 

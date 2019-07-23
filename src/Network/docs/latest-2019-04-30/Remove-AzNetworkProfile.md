@@ -14,13 +14,13 @@ Deletes the specified network profile.
 
 ### Delete (Default)
 ```
-Remove-AzNetworkProfile -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-PassThru]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzNetworkProfile -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzNetworkProfile -InputObject <INetworkIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-Confirm]
+Remove-AzNetworkProfile -InputObject <INetworkIdentity> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -98,7 +98,7 @@ Dynamic: False
 ```
 
 ### -PassThru
-When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

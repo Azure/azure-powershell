@@ -15,31 +15,30 @@ Generates VPN client package for P2S client of the virtual network gateway in th
 ### Generatevpnclientpackage (Default)
 ```
 New-AzVnetGatewayVpnClientPackage -ResourceGroupName <String> -SubscriptionId <String>
- -VnetGatewayName <String> [-Parameter <IVpnClientParameters>] [-PassThru] [-DefaultProfile <PSObject>]
+ -VnetGatewayName <String> [-Parameter <IVpnClientParameters>] [-DefaultProfile <PSObject>] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GeneratevpnclientpackageExpanded
 ```
 New-AzVnetGatewayVpnClientPackage -ResourceGroupName <String> -SubscriptionId <String>
- -VnetGatewayName <String> [-PassThru] [-AuthenticationMethod <AuthenticationMethod>]
- [-ClientRootCertificate <String[]>] [-ProcessorArchitecture <ProcessorArchitecture>]
- [-RadiusServerAuthCertificate <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -VnetGatewayName <String> [-AuthenticationMethod <AuthenticationMethod>] [-ClientRootCertificate <String[]>]
+ [-ProcessorArchitecture <ProcessorArchitecture>] [-RadiusServerAuthCertificate <String>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GeneratevpnclientpackageViaIdentityExpanded
 ```
-New-AzVnetGatewayVpnClientPackage -InputObject <INetworkIdentity> [-PassThru]
+New-AzVnetGatewayVpnClientPackage -InputObject <INetworkIdentity>
  [-AuthenticationMethod <AuthenticationMethod>] [-ClientRootCertificate <String[]>]
  [-ProcessorArchitecture <ProcessorArchitecture>] [-RadiusServerAuthCertificate <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GeneratevpnclientpackageViaIdentity
 ```
 New-AzVnetGatewayVpnClientPackage -InputObject <INetworkIdentity> [-Parameter <IVpnClientParameters>]
- [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -150,7 +149,7 @@ Dynamic: False
 ```
 
 ### -PassThru
-When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

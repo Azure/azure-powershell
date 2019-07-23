@@ -29,9 +29,6 @@ Lists all available web application firewall rule sets.
 ### [Get-AzApplicationGatewayBackendHealth](Get-AzApplicationGatewayBackendHealth.md)
 Gets the backend health of the specified application gateway in a resource group.
 
-### [Get-AzApplicationGatewayBackendHealthOnDemand](Get-AzApplicationGatewayBackendHealthOnDemand.md)
-Gets the backend health for given combination of backend pool and http setting of the specified application gateway in a resource group.
-
 ### [Get-AzApplicationGatewaySslPredefinedPolicy](Get-AzApplicationGatewaySslPredefinedPolicy.md)
 Gets Ssl predefined policy with the specified policy name.
 
@@ -68,9 +65,6 @@ Gets the specified Express Route Circuit Connection from the specified express r
 ### [Get-AzExpressRouteCircuitPeering](Get-AzExpressRouteCircuitPeering.md)
 Gets the specified peering for the express route circuit.
 
-### [Get-AzExpressRouteCircuitRouteTable](Get-AzExpressRouteCircuitRouteTable.md)
-The ListRoutesTable from ExpressRouteCircuit operation retrieves the currently advertised routes table associated with the ExpressRouteCircuits in a resource group.
-
 ### [Get-AzExpressRouteCircuitRouteTableSummary](Get-AzExpressRouteCircuitRouteTableSummary.md)
 Gets the currently advertised routes table summary associated with the express route circuit in a resource group.
 
@@ -89,9 +83,6 @@ Gets the currently advertised ARP table associated with the express route cross 
 ### [Get-AzExpressRouteCrossConnectionPeering](Get-AzExpressRouteCrossConnectionPeering.md)
 Gets the specified peering for the ExpressRouteCrossConnection.
 
-### [Get-AzExpressRouteCrossConnectionRouteTable](Get-AzExpressRouteCrossConnectionRouteTable.md)
-Gets the currently advertised routes table associated with the express route cross connection in a resource group.
-
 ### [Get-AzExpressRouteCrossConnectionRouteTableSummary](Get-AzExpressRouteCrossConnectionRouteTableSummary.md)
 Gets the route table summary associated with the express route cross connection in a resource group.
 
@@ -106,6 +97,9 @@ Retrieves the requested ExpressRoutePort resource.
 
 ### [Get-AzExpressRoutePortsLocation](Get-AzExpressRoutePortsLocation.md)
 Retrieves a single ExpressRoutePort peering location, including the list of available bandwidths available at said peering location.
+
+### [Get-AzExpressRouteRouteTable](Get-AzExpressRouteRouteTable.md)
+The ListRoutesTable from ExpressRouteCircuit operation retrieves the currently advertised routes table associated with the ExpressRouteCircuits in a resource group.
 
 ### [Get-AzExpressRouteServiceProvider](Get-AzExpressRouteServiceProvider.md)
 Gets all the available express route service providers.
@@ -199,6 +193,9 @@ Gets the next hop from the specified VM.
 
 ### [Get-AzNetworkWatcherPacketCapture](Get-AzNetworkWatcherPacketCapture.md)
 Gets a packet capture session by name.
+
+### [Get-AzNetworkWatcherPacketCaptureStatus](Get-AzNetworkWatcherPacketCaptureStatus.md)
+Query the status of a running packet capture session.
 
 ### [Get-AzNetworkWatcherReachabilityReport](Get-AzNetworkWatcherReachabilityReport.md)
 Gets the relative latency score for internet service providers from a specified location to Azure regions.

@@ -19,6 +19,24 @@ Get-AzApplicationGatewayBackendHealth -Name <String> -ResourceGroupName <String>
  [<CommonParameters>]
 ```
 
+### DemandExpanded
+```
+Get-AzApplicationGatewayBackendHealth -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+ -AsOnDemand [-ExpandResource <String>] [-BackendHttpSettingName <String>] [-BackendPoolName <String>]
+ [-Host <String>] [-MatchBody <String>] [-MatchStatusCode <String[]>] [-Path <String>]
+ [-PickHostNameFromBackendHttpSetting] [-Protocol <ApplicationGatewayProtocol>] [-Timeout <Int32>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DemandViaIdentityExpanded
+```
+Get-AzApplicationGatewayBackendHealth -InputObject <INetworkIdentity> -AsOnDemand [-ExpandResource <String>]
+ [-BackendHttpSettingName <String>] [-BackendPoolName <String>] [-Host <String>] [-MatchBody <String>]
+ [-MatchStatusCode <String[]>] [-Path <String>] [-PickHostNameFromBackendHttpSetting]
+ [-Protocol <ApplicationGatewayProtocol>] [-Timeout <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### BackendViaIdentity
 ```
 Get-AzApplicationGatewayBackendHealth -InputObject <INetworkIdentity> [-ExpandResource <String>]
@@ -66,6 +84,54 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -AsOnDemand
+Gets the backend health via an on demand probe.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: DemandExpanded, DemandViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -BackendHttpSettingName
+Name of backend http setting of application gateway to be used for test probe
+
+```yaml
+Type: System.String
+Parameter Sets: DemandExpanded, DemandViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -BackendPoolName
+Name of backend pool of application gateway to which probe request will be sent.
+
+```yaml
+Type: System.String
+Parameter Sets: DemandExpanded, DemandViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -98,12 +164,28 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Host
+Host name to send the probe to.
+
+```yaml
+Type: System.String
+Parameter Sets: DemandExpanded, DemandViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -InputObject
 Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
-Parameter Sets: BackendViaIdentity
+Parameter Sets: DemandViaIdentityExpanded, BackendViaIdentity
 Aliases:
 
 Required: True
@@ -114,12 +196,46 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -MatchBody
+Body that must be contained in the health response.
+Default value is empty.
+
+```yaml
+Type: System.String
+Parameter Sets: DemandExpanded, DemandViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -MatchStatusCode
+Allowed ranges of healthy status codes.
+Default range of healthy status codes is 200-399.
+
+```yaml
+Type: System.String[]
+Parameter Sets: DemandExpanded, DemandViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Name
 The name of the application gateway.
 
 ```yaml
 Type: System.String
-Parameter Sets: Backend
+Parameter Sets: Backend, DemandExpanded
 Aliases: ApplicationGatewayName
 
 Required: True
@@ -146,12 +262,63 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Path
+Relative path of probe.
+Valid path starts from '/'.
+Probe is sent to <Protocol>://<host>:<port><path>
+
+```yaml
+Type: System.String
+Parameter Sets: DemandExpanded, DemandViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -PickHostNameFromBackendHttpSetting
+Whether the host header should be picked from the backend http settings.
+Default value is false.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: DemandExpanded, DemandViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Protocol
+The protocol used for the probe.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.ApplicationGatewayProtocol
+Parameter Sets: DemandExpanded, DemandViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Backend
+Parameter Sets: Backend, DemandExpanded
 Aliases:
 
 Required: True
@@ -168,12 +335,30 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Backend
+Parameter Sets: Backend, DemandExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Timeout
+The probe timeout in seconds.
+Probe marked as failed if valid response is not received with this timeout period.
+Acceptable values are from 1 second to 86400 seconds.
+
+```yaml
+Type: System.Int32
+Parameter Sets: DemandExpanded, DemandViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

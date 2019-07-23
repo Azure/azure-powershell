@@ -14,14 +14,14 @@ Stops the specified application gateway in a resource group.
 
 ### Stop (Default)
 ```
-Stop-AzApplicationGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-PassThru]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Stop-AzApplicationGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### StopViaIdentity
 ```
-Stop-AzApplicationGateway -InputObject <INetworkIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Stop-AzApplicationGateway -InputObject <INetworkIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -130,7 +130,7 @@ Dynamic: False
 ```
 
 ### -PassThru
-When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

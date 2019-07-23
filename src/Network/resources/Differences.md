@@ -1,9 +1,12 @@
 ## Incorrect Cmdlets
 
+- Get-AzNetworkWatcherPacketCapture
+    - AsJob
 
 ## Correct Cmdlets
 
 - Get-AzApplicationGateway
+- Get-AzApplicationGatewayAvailableInfo
 - Get-AzApplicationGatewayAvailableSslOption
 - Get-AzApplicationGatewayAvailableWafRuleSet
 - Get-AzApplicationGatewayBackendHealth
@@ -15,18 +18,17 @@
 - Get-AzExpressRouteCircuit
 - Get-AzExpressRouteCircuitArpTable
 - Get-AzExpressRouteCircuitAuthorization
-- Get-AzExpressRouteCircuitRouteTable
 - Get-AzExpressRouteCircuitRouteTableSummary
 - Get-AzExpressRouteCircuitStatistic
 - Get-AzExpressRouteConnection
 - Get-AzExpressRouteCrossConnection
 - Get-AzExpressRouteCrossConnectionArpTable
 - Get-AzExpressRouteCrossConnectionPeering
-- Get-AzExpressRouteCrossConnectionRouteTable
 - Get-AzExpressRouteCrossConnectionRouteTableSummary
 - Get-AzExpressRouteGateway
 - Get-AzExpressRoutePort
 - Get-AzExpressRoutePortsLocation
+- Get-AzExpressRouteRouteTable
 - Get-AzExpressRouteServiceProvider
 - Get-AzFirewall
 - Get-AzFirewallFqdnTag
@@ -46,7 +48,6 @@
 - Get-AzNetworkWatcherFlowLogStatus
 - Get-AzNetworkWatcherNetworkConfigurationDiagnostic
 - Get-AzNetworkWatcherNextHop
-- Get-AzNetworkWatcherPacketCapture
 - Get-AzNetworkWatcherReachabilityReport
 - Get-AzNetworkWatcherTopology
 - Get-AzNetworkWatcherTroubleshootingResult
@@ -191,7 +192,6 @@
 ## New Cmdlets
 
 - Get-AzApplicationGatewayAvailableSslPredefinedPolicy
-- Get-AzApplicationGatewayBackendHealthOnDemand
 - Get-AzDdosCustomPolicy
 - Get-AzDefaultSecurityRule
 - Get-AzExpressRouteCircuitConnection
@@ -208,6 +208,7 @@
 - Get-AzNetworkInterfaceIPConfiguration
 - Get-AzNetworkInterfaceLoadBalancer
 - Get-AzNetworkSecurityRule
+- Get-AzNetworkWatcherPacketCaptureStatus
 - Get-AzNetworkWatcherVMSecurityRule
 - Get-AzP2SVpnGateway
 - Get-AzP2SVpnServerConfiguration
@@ -281,7 +282,6 @@
 
 ## Missing Cmdlets
 
-- Get-AzApplicationGatewayAvailableServerVariableAndHeader
 - Get-AzNetworkWatcherSecurityGroupView
 - Update-AzVirtualHub
 - Update-AzVirtualWan

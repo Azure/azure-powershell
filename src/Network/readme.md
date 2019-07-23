@@ -1667,4 +1667,19 @@ directive:
       subject: ExpressRouteCrossConnectionRouteTable
     set:
       subject: ExpressRouteRouteTable
+  - where:
+      verb: Get
+      subject: ApplicationGatewayBackendHealthOnDemand
+    hide: true
+  - where:
+      verb: Get
+      subject: ApplicationGatewayBackendHealthOnDemand
+      variant: ^Demand$|^DemandViaIdentity$
+    remove: true
+  - where: # REMOVE BEFORE RELEASE: Previously, this was combined with NetworkWatcherPacketCaptureStatus, which has AsJob.
+      verb: Get
+      subject: NetworkWatcherPacketCapture
+      parameter-name: ResourceGroupName
+    set:
+      alias: AsJob
 ```

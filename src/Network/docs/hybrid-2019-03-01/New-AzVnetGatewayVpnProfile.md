@@ -16,30 +16,30 @@ Used for IKEV2 and radius based authentication.
 ### Generate1 (Default)
 ```
 New-AzVnetGatewayVpnProfile -ResourceGroupName <String> -SubscriptionId <String> -VnetGatewayName <String>
- [-Parameter <IVpnClientParameters>] [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [-Parameter <IVpnClientParameters>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### GenerateExpanded1
 ```
 New-AzVnetGatewayVpnProfile -ResourceGroupName <String> -SubscriptionId <String> -VnetGatewayName <String>
- [-PassThru] [-AuthenticationMethod <AuthenticationMethod>] [-ClientRootCertificate <String[]>]
+ [-AuthenticationMethod <AuthenticationMethod>] [-ClientRootCertificate <String[]>]
  [-ProcessorArchitecture <ProcessorArchitecture>] [-RadiusServerAuthCertificate <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GenerateViaIdentityExpanded1
 ```
-New-AzVnetGatewayVpnProfile -InputObject <INetworkIdentity> [-PassThru]
- [-AuthenticationMethod <AuthenticationMethod>] [-ClientRootCertificate <String[]>]
- [-ProcessorArchitecture <ProcessorArchitecture>] [-RadiusServerAuthCertificate <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzVnetGatewayVpnProfile -InputObject <INetworkIdentity> [-AuthenticationMethod <AuthenticationMethod>]
+ [-ClientRootCertificate <String[]>] [-ProcessorArchitecture <ProcessorArchitecture>]
+ [-RadiusServerAuthCertificate <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### GenerateViaIdentity1
 ```
-New-AzVnetGatewayVpnProfile -InputObject <INetworkIdentity> [-Parameter <IVpnClientParameters>] [-PassThru]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzVnetGatewayVpnProfile -InputObject <INetworkIdentity> [-Parameter <IVpnClientParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -151,7 +151,7 @@ Dynamic: False
 ```
 
 ### -PassThru
-When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

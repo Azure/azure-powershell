@@ -1,25 +1,32 @@
 ---
 external help file:
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azexpressroutecrossconnectionroutetable
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-aznetworkwatcherpacketcapturestatus
 schema: 2.0.0
 ---
 
-# Get-AzExpressRouteCrossConnectionRouteTable
+# Get-AzNetworkWatcherPacketCaptureStatus
 
 ## SYNOPSIS
-Gets the currently advertised routes table associated with the express route cross connection in a resource group.
+Query the status of a running packet capture session.
 
 ## SYNTAX
 
+### Get (Default)
 ```
-Get-AzExpressRouteCrossConnectionRouteTable -CrossConnectionName <String> -DevicePath <String>
- -PeeringName <String> -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzNetworkWatcherPacketCaptureStatus -Name <String> -NetworkWatcherName <String>
+ -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzNetworkWatcherPacketCaptureStatus -InputObject <INetworkIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets the currently advertised routes table associated with the express route cross connection in a resource group.
+Query the status of a running packet capture session.
 
 ## EXAMPLES
 
@@ -59,22 +66,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -CrossConnectionName
-The name of the ExpressRouteCrossConnection.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -91,12 +82,44 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -DevicePath
-The path of the device.
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Name
+The name given to the packet capture session.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get
+Aliases: PacketCaptureName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NetworkWatcherName
+The name of the Network Watcher resource.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -123,29 +146,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -PeeringName
-The name of the peering.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: PeeringType
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases: ExpressRouteCrossConnection
+Parameter Sets: Get
+Aliases: Location
 
 Required: True
 Position: Named
@@ -161,7 +168,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -210,9 +217,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitsRoutesTableListResult
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IPacketCaptureQueryStatusResult
 
 ## ALIASES
 

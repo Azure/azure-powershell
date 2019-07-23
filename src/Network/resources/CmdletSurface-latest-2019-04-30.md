@@ -1,4 +1,4 @@
-### AzApplicationGateway [Get, New, Remove, Set, Start, Stop]
+### AzApplicationGateway [Get, New, Remove, Set, Start, Stop] `IApplicationGateway, Boolean`
   - SubscriptionId `String[]`
   - Name `String`
   - ResourceGroupName `String`
@@ -53,35 +53,28 @@
   - Zone `String[]`
   - IdentityUserAssignedIdentity `Hashtable`
 
-### AzApplicationGatewayAvailableInfo [Get]
+### AzApplicationGatewayAvailableInfo [Get] `ApplicationGatewayAvailableInfo`
   - SubscriptionId `String[]`
   - IncludeRequestHeaders `SwitchParameter`
   - IncludeResponseHeaders `SwitchParameter`
   - IncludeServerVariables `SwitchParameter`
 
-### AzApplicationGatewayAvailableSslOption [Get]
+### AzApplicationGatewayAvailableSslOption [Get] `IApplicationGatewayAvailableSslOptions`
   - SubscriptionId `String[]`
 
-### AzApplicationGatewayAvailableSslPredefinedPolicy [Get]
+### AzApplicationGatewayAvailableSslPredefinedPolicy [Get] `IApplicationGatewaySslPredefinedPolicy`
   - SubscriptionId `String[]`
 
-### AzApplicationGatewayAvailableWafRuleSet [Get]
+### AzApplicationGatewayAvailableWafRuleSet [Get] `IApplicationGatewayFirewallRuleSet`
   - SubscriptionId `String[]`
 
-### AzApplicationGatewayBackendHealth [Get]
+### AzApplicationGatewayBackendHealth [Get] `IApplicationGatewayBackendHealthPool`
   - Name `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
+  - AsOnDemand `SwitchParameter`
   - InputObject `INetworkIdentity`
   - ExpandResource `String`
-
-### AzApplicationGatewayBackendHealthOnDemand [Get]
-  - Name `String`
-  - ResourceGroupName `String`
-  - SubscriptionId `String[]`
-  - InputObject `INetworkIdentity`
-  - ExpandResource `String`
-  - ProbeRequest `IApplicationGatewayOnDemandProbe`
   - BackendHttpSettingName `String`
   - BackendPoolName `String`
   - Host `String`
@@ -92,12 +85,12 @@
   - Protocol `ApplicationGatewayProtocol`
   - Timeout `Int32`
 
-### AzApplicationGatewaySslPredefinedPolicy [Get]
+### AzApplicationGatewaySslPredefinedPolicy [Get] `IApplicationGatewaySslPredefinedPolicy`
   - Name `String`
   - SubscriptionId `String[]`
   - InputObject `INetworkIdentity`
 
-### AzApplicationGatewayWafPolicy [Get, New, Remove, Set]
+### AzApplicationGatewayWafPolicy [Get, New, Remove, Set] `IWebApplicationFirewallPolicy, Boolean`
   - SubscriptionId `String[]`
   - Name `String`
   - ResourceGroupName `String`
@@ -112,7 +105,7 @@
   - PolicySettingMode `WebApplicationFirewallMode`
   - Tag `Hashtable`
 
-### AzApplicationSecurityGroup [Get, New, Remove, Set]
+### AzApplicationSecurityGroup [Get, New, Remove, Set] `IApplicationSecurityGroup, Boolean`
   - SubscriptionId `String[]`
   - Name `String`
   - ResourceGroupName `String`
@@ -122,10 +115,10 @@
   - Location `String`
   - Tag `Hashtable`
 
-### AzBgpServiceCommunity [Get]
+### AzBgpServiceCommunity [Get] `IBgpServiceCommunity`
   - SubscriptionId `String[]`
 
-### AzDdosCustomPolicy [Get, New, Remove, Set]
+### AzDdosCustomPolicy [Get, New, Remove, Set] `IDdosCustomPolicy, Boolean`
   - Name `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
@@ -136,7 +129,7 @@
   - ProtocolCustomSetting `IProtocolCustomSettingsFormat[]`
   - Tag `Hashtable`
 
-### AzDdosProtectionPlan [Get, New, Remove, Set]
+### AzDdosProtectionPlan [Get, New, Remove, Set] `IDdosProtectionPlan, Boolean`
   - SubscriptionId `String[]`
   - Name `String`
   - ResourceGroupName `String`
@@ -145,24 +138,24 @@
   - Location `String`
   - Tag `Hashtable`
 
-### AzDefaultSecurityRule [Get]
+### AzDefaultSecurityRule [Get] `ISecurityRule`
   - NsgName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
   - Name `String`
   - InputObject `INetworkIdentity`
 
-### AzDnsNameAvailability [Test]
+### AzDnsNameAvailability [Test] `SwitchParameter`
   - Location `String`
   - SubscriptionId `String`
   - InputObject `INetworkIdentity`
   - DomainNameLabel `String`
 
-### AzDummy [Test]
+### AzDummy [Test] `IOperation`
   - Name `String`
   - ApplicationGatewayName `String`
 
-### AzExpressRouteCircuit [Get, New, Remove, Set]
+### AzExpressRouteCircuit [Get, New, Remove, Set] `IExpressRouteCircuit, Boolean`
   - CircuitName `String`
   - SubscriptionId `String[]`
   - Name `String`
@@ -195,14 +188,14 @@
   - ServiceProviderPropertyPeeringLocation `String`
   - ServiceProviderPropertyServiceProviderName `String`
 
-### AzExpressRouteCircuitArpTable [Get]
+### AzExpressRouteCircuitArpTable [Get] `IExpressRouteCircuitArpTable, IExpressRouteCircuitsArpTableListResult`
   - CircuitName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
   - DevicePath `String`
   - PeeringName `String`
 
-### AzExpressRouteCircuitAuthorization [Get, New, Remove, Set]
+### AzExpressRouteCircuitAuthorization [Get, New, Remove, Set] `IExpressRouteCircuitAuthorization, Boolean`
   - CircuitName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
@@ -215,7 +208,7 @@
   - Id `String`
   - ProvisioningState `String`
 
-### AzExpressRouteCircuitConnection [Get, New, Remove, Set]
+### AzExpressRouteCircuitConnection [Get, New, Remove, Set] `IExpressRouteCircuitConnection, Boolean`
   - CircuitName `String`
   - PeeringName `String`
   - ResourceGroupName `String`
@@ -230,7 +223,7 @@
   - Name `String`
   - PeerExpressRouteCircuitPeeringId `String`
 
-### AzExpressRouteCircuitPeering [Get, New, Remove, Set]
+### AzExpressRouteCircuitPeering [Get, New, Remove, Set] `IExpressRouteCircuitPeering, Boolean`
   - CircuitName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
@@ -283,28 +276,21 @@
   - Tag `Hashtable`
   - VlanId `Int32`
 
-### AzExpressRouteCircuitRouteTable [Get]
-  - CircuitName `String`
-  - ResourceGroupName `String`
-  - SubscriptionId `String[]`
-  - DevicePath `String`
-  - PeeringName `String`
-
-### AzExpressRouteCircuitRouteTableSummary [Get]
+### AzExpressRouteCircuitRouteTableSummary [Get] `IExpressRouteCircuitsRoutesTableSummaryListResult`
   - CircuitName `String`
   - DevicePath `String`
   - PeeringName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
 
-### AzExpressRouteCircuitStatistic [Get]
+### AzExpressRouteCircuitStatistic [Get] `IExpressRouteCircuitStats`
   - CircuitName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
   - PeeringName `String`
   - InputObject `INetworkIdentity`
 
-### AzExpressRouteConnection [Get, New, Remove, Set]
+### AzExpressRouteConnection [Get, New, Remove, Set] `IExpressRouteConnection, Boolean`
   - ExpressRouteGatewayName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
@@ -317,7 +303,7 @@
   - Id `String`
   - RoutingWeight `Int32`
 
-### AzExpressRouteCrossConnection [Get, New, Set]
+### AzExpressRouteCrossConnection [Get, New, Set] `IExpressRouteCrossConnection`
   - SubscriptionId `String[]`
   - Name `String`
   - ResourceGroupName `String`
@@ -334,14 +320,14 @@
   - ServiceProviderProvisioningState `ServiceProviderProvisioningState`
   - Tag `Hashtable`
 
-### AzExpressRouteCrossConnectionArpTable [Get]
+### AzExpressRouteCrossConnectionArpTable [Get] `IExpressRouteCircuitsArpTableListResult`
   - CrossConnectionName `String`
   - DevicePath `String`
   - PeeringName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
 
-### AzExpressRouteCrossConnectionPeering [Get, New, Remove, Set]
+### AzExpressRouteCrossConnectionPeering [Get, New, Remove, Set] `IExpressRouteCrossConnectionPeering, Boolean`
   - CrossConnectionName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
@@ -380,21 +366,14 @@
   - State `ExpressRoutePeeringState`
   - VlanId `Int32`
 
-### AzExpressRouteCrossConnectionRouteTable [Get]
+### AzExpressRouteCrossConnectionRouteTableSummary [Get] `IExpressRouteCrossConnectionsRoutesTableSummaryListResult`
   - CrossConnectionName `String`
   - DevicePath `String`
   - PeeringName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
 
-### AzExpressRouteCrossConnectionRouteTableSummary [Get]
-  - CrossConnectionName `String`
-  - DevicePath `String`
-  - PeeringName `String`
-  - ResourceGroupName `String`
-  - SubscriptionId `String[]`
-
-### AzExpressRouteGateway [Get, New, Remove, Set]
+### AzExpressRouteGateway [Get, New, Remove, Set] `IExpressRouteGateway, Boolean`
   - SubscriptionId `String[]`
   - Name `String`
   - ResourceGroupName `String`
@@ -407,14 +386,14 @@
   - Tag `Hashtable`
   - VirtualHubId `String`
 
-### AzExpressRouteLink [Get]
+### AzExpressRouteLink [Get] `IExpressRouteLink`
   - ExpressRoutePortName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
   - LinkName `String`
   - InputObject `INetworkIdentity`
 
-### AzExpressRoutePort [Get, New, Remove, Set]
+### AzExpressRoutePort [Get, New, Remove, Set] `IExpressRoutePort, Boolean`
   - SubscriptionId `String[]`
   - Name `String`
   - ResourceGroupName `String`
@@ -429,15 +408,23 @@
   - ResourceGuid `String`
   - Tag `Hashtable`
 
-### AzExpressRoutePortsLocation [Get]
+### AzExpressRoutePortsLocation [Get] `IExpressRoutePortsLocation`
   - SubscriptionId `String[]`
   - LocationName `String`
   - InputObject `INetworkIdentity`
 
-### AzExpressRouteServiceProvider [Get]
+### AzExpressRouteRouteTable [Get] `IExpressRouteCircuitRoutesTable, IExpressRouteCircuitsRoutesTableListResult`
+  - ResourceGroupName `String`
+  - SubscriptionId `String[]`
+  - CircuitName `String`
+  - DevicePath `String`
+  - PeeringName `String`
+  - CrossConnectionName `String`
+
+### AzExpressRouteServiceProvider [Get] `IExpressRouteServiceProvider`
   - SubscriptionId `String[]`
 
-### AzFirewall [Get, New, Remove, Set]
+### AzFirewall [Get, New, Remove, Set] `IAzureFirewall, Boolean`
   - SubscriptionId `String[]`
   - Name `String`
   - ResourceGroupName `String`
@@ -452,10 +439,10 @@
   - Tag `Hashtable`
   - ThreatIntelMode `AzureFirewallThreatIntelMode`
 
-### AzFirewallFqdnTag [Get]
+### AzFirewallFqdnTag [Get] `IAzureFirewallFqdnTag`
   - SubscriptionId `String[]`
 
-### AzInterfaceEndpoint [Get, New, Remove, Set]
+### AzInterfaceEndpoint [Get, New, Remove, Set] `IInterfaceEndpoint, Boolean`
   - SubscriptionId `String[]`
   - Name `String`
   - ResourceGroupName `String`
@@ -470,7 +457,7 @@
   - Subnet `ISubnet`
   - Tag `Hashtable`
 
-### AzLoadBalancer [Get, New, Remove, Set]
+### AzLoadBalancer [Get, New, Remove, Set] `ILoadBalancer, Boolean`
   - SubscriptionId `String[]`
   - Name `String`
   - ResourceGroupName `String`
@@ -492,21 +479,21 @@
   - SkuName `LoadBalancerSkuName`
   - Tag `Hashtable`
 
-### AzLoadBalancerBackendAddressPool [Get]
+### AzLoadBalancerBackendAddressPool [Get] `IBackendAddressPool`
   - LoadBalancerName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
   - BackendAddressPoolName `String`
   - InputObject `INetworkIdentity`
 
-### AzLoadBalancerFrontendIPConfiguration [Get]
+### AzLoadBalancerFrontendIPConfiguration [Get] `IFrontendIPConfiguration`
   - LoadBalancerName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
   - FrontendIPConfigurationName `String`
   - InputObject `INetworkIdentity`
 
-### AzLoadBalancerInboundNatRule [Get, New, Remove, Set]
+### AzLoadBalancerInboundNatRule [Get, New, Remove, Set] `IInboundNatRule, Boolean`
   - LoadBalancerName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
@@ -541,33 +528,33 @@
   - Subnet `ISubnet`
   - VnetTap `IVirtualNetworkTap[]`
 
-### AzLoadBalancerLoadBalancingRule [Get]
+### AzLoadBalancerLoadBalancingRule [Get] `ILoadBalancingRule`
   - LoadBalancerName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
   - LoadBalancingRuleName `String`
   - InputObject `INetworkIdentity`
 
-### AzLoadBalancerNetworkInterface [Get]
+### AzLoadBalancerNetworkInterface [Get] `INetworkInterface`
   - LoadBalancerName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
 
-### AzLoadBalancerOutboundRule [Get]
+### AzLoadBalancerOutboundRule [Get] `IOutboundRule`
   - LoadBalancerName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
   - OutboundRuleName `String`
   - InputObject `INetworkIdentity`
 
-### AzLoadBalancerProbe [Get]
+### AzLoadBalancerProbe [Get] `IProbe`
   - LoadBalancerName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
   - ProbeName `String`
   - InputObject `INetworkIdentity`
 
-### AzLocalNetworkGateway [Get, New, Remove, Set]
+### AzLocalNetworkGateway [Get, New, Remove, Set] `ILocalNetworkGateway, Boolean`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
   - Name `String`
@@ -584,7 +571,7 @@
   - ResourceGuid `String`
   - Tag `Hashtable`
 
-### AzNatGateway [Get, New, Remove, Set]
+### AzNatGateway [Get, New, Remove, Set] `INatGateway, Boolean`
   - SubscriptionId `String[]`
   - Name `String`
   - ResourceGroupName `String`
@@ -602,7 +589,7 @@
   - SkuName `NatGatewaySkuName`
   - Tag `Hashtable`
 
-### AzNetworkInterface [Get, New, Remove, Set]
+### AzNetworkInterface [Get, New, Remove, Set] `INetworkInterface, Boolean`
   - SubscriptionId `String[]`
   - Name `String`
   - ResourceGroupName `String`
@@ -652,18 +639,18 @@
   - NsgPropertiesProvisioningState `String`
   - NsgPropertiesResourceGuid `String`
 
-### AzNetworkInterfaceEffectiveNsg [Get]
+### AzNetworkInterfaceEffectiveNsg [Get] `IEffectiveNetworkSecurityGroupListResult`
   - NetworkInterfaceName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
 
-### AzNetworkInterfaceEffectiveRouteTable [Get]
+### AzNetworkInterfaceEffectiveRouteTable [Get] `IEffectiveRouteListResult`
   - NetworkInterfaceName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
   - InputObject `INetworkIdentity`
 
-### AzNetworkInterfaceIPConfiguration [Get]
+### AzNetworkInterfaceIPConfiguration [Get] `INetworkInterfaceIPConfiguration`
   - NetworkInterfaceName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
@@ -673,12 +660,12 @@
   - InputObject `INetworkIdentity`
   - Expand `String`
 
-### AzNetworkInterfaceLoadBalancer [Get]
+### AzNetworkInterfaceLoadBalancer [Get] `ILoadBalancer`
   - NetworkInterfaceName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
 
-### AzNetworkInterfaceTapConfiguration [Get, New, Remove, Set]
+### AzNetworkInterfaceTapConfiguration [Get, New, Remove, Set] `INetworkInterfaceTapConfiguration, Boolean`
   - NetworkInterfaceName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
@@ -690,7 +677,7 @@
   - Id `String`
   - VnetTap `IVirtualNetworkTap`
 
-### AzNetworkProfile [Get, New, Remove, Set]
+### AzNetworkProfile [Get, New, Remove, Set] `INetworkProfile, Boolean`
   - SubscriptionId `String[]`
   - Name `String`
   - ResourceGroupName `String`
@@ -704,7 +691,7 @@
   - Location `String`
   - Tag `Hashtable`
 
-### AzNetworkSecurityRule [Get, New, Remove, Set]
+### AzNetworkSecurityRule [Get, New, Remove, Set] `ISecurityRule, Boolean`
   - NsgName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
@@ -731,11 +718,11 @@
   - SourceApplicationSecurityGroup `IApplicationSecurityGroup[]`
   - SourcePortRange `String`
 
-### AzNetworkUsage [Get]
+### AzNetworkUsage [Get] `IUsage`
   - Location `String`
   - SubscriptionId `String[]`
 
-### AzNetworkWatcher [Get, New, Remove, Set]
+### AzNetworkWatcher [Get, New, Remove, Set] `INetworkWatcher, Boolean`
   - SubscriptionId `String[]`
   - Name `String`
   - ResourceGroupName `String`
@@ -746,7 +733,7 @@
   - Location `String`
   - Tag `Hashtable`
 
-### AzNetworkWatcherAvailableProvider [Get]
+### AzNetworkWatcherAvailableProvider [Get] `IAvailableProvidersListCountry`
   - NetworkWatcherName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
@@ -756,7 +743,7 @@
   - Location `String[]`
   - State `String`
 
-### AzNetworkWatcherConnectionMonitor [Get, New, Remove, Set, Start, Stop]
+### AzNetworkWatcherConnectionMonitor [Get, New, Remove, Set, Start, Stop] `IConnectionMonitorResult, Boolean`
   - NetworkWatcherName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
@@ -773,14 +760,14 @@
   - SourceResourceId `String`
   - Tag `Hashtable`
 
-### AzNetworkWatcherConnectionMonitorState [Get]
+### AzNetworkWatcherConnectionMonitorState [Get] `IConnectionMonitorQueryResult`
   - ConnectionMonitorName `String`
   - NetworkWatcherName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
   - InputObject `INetworkIdentity`
 
-### AzNetworkWatcherConnectivity [Test]
+### AzNetworkWatcherConnectivity [Test] `IConnectivityInformation`
   - NetworkWatcherName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String`
@@ -796,7 +783,7 @@
   - SourcePort `Int32`
   - SourceResourceId `String`
 
-### AzNetworkWatcherFlowLogConfiguration [Set]
+### AzNetworkWatcherFlowLogConfiguration [Set] `IFlowLogInformation`
   - NetworkWatcherName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String`
@@ -814,7 +801,7 @@
   - WorkspaceLocation `String`
   - WorkspaceResourceId `String`
 
-### AzNetworkWatcherFlowLogStatus [Get]
+### AzNetworkWatcherFlowLogStatus [Get] `IFlowLogInformation`
   - NetworkWatcherName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
@@ -822,7 +809,7 @@
   - Parameter `IFlowLogStatusParameters`
   - TargetResourceId `String`
 
-### AzNetworkWatcherIPFlow [Test]
+### AzNetworkWatcherIPFlow [Test] `IVerificationIPFlowResult`
   - NetworkWatcherName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String`
@@ -837,7 +824,7 @@
   - RemotePort `String`
   - TargetResourceId `String`
 
-### AzNetworkWatcherNetworkConfigurationDiagnostic [Get]
+### AzNetworkWatcherNetworkConfigurationDiagnostic [Get] `INetworkConfigurationDiagnosticResult`
   - NetworkWatcherName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
@@ -847,7 +834,7 @@
   - TargetResourceId `String`
   - VerbosityLevel `VerbosityLevel`
 
-### AzNetworkWatcherNextHop [Get]
+### AzNetworkWatcherNextHop [Get] `INextHopResult`
   - NetworkWatcherName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
@@ -858,7 +845,7 @@
   - TargetNicResourceId `String`
   - TargetVMResourceId `String`
 
-### AzNetworkWatcherPacketCapture [Get, New, Remove, Stop]
+### AzNetworkWatcherPacketCapture [Get, New, Remove, Stop] `IPacketCaptureResult, Boolean`
   - NetworkWatcherName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
@@ -874,7 +861,14 @@
   - TimeLimitInSeconds `Int32`
   - TotalBytesPerSession `Int32`
 
-### AzNetworkWatcherReachabilityReport [Get]
+### AzNetworkWatcherPacketCaptureStatus [Get] `IPacketCaptureQueryStatusResult`
+  - Name `String`
+  - NetworkWatcherName `String`
+  - ResourceGroupName `String`
+  - SubscriptionId `String[]`
+  - InputObject `INetworkIdentity`
+
+### AzNetworkWatcherReachabilityReport [Get] `IAzureReachabilityReport`
   - NetworkWatcherName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
@@ -888,7 +882,7 @@
   - ProviderState `String`
   - StartTime `DateTime`
 
-### AzNetworkWatcherTopology [Get]
+### AzNetworkWatcherTopology [Get] `ITopology`
   - NetworkWatcherName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
@@ -898,7 +892,7 @@
   - TargetSubnetId `String`
   - TargetVnetId `String`
 
-### AzNetworkWatcherTroubleshooting [Start]
+### AzNetworkWatcherTroubleshooting [Start] `ITroubleshootingResult`
   - NetworkWatcherName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String`
@@ -908,7 +902,7 @@
   - StoragePath `String`
   - TargetResourceId `String`
 
-### AzNetworkWatcherTroubleshootingResult [Get]
+### AzNetworkWatcherTroubleshootingResult [Get] `ITroubleshootingResult`
   - NetworkWatcherName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
@@ -916,7 +910,7 @@
   - Parameter `IQueryTroubleshootingParameters`
   - TargetResourceId `String`
 
-### AzNetworkWatcherVMSecurityRule [Get]
+### AzNetworkWatcherVMSecurityRule [Get] `ISecurityGroupNetworkInterface`
   - NetworkWatcherName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
@@ -924,7 +918,7 @@
   - Parameter `ISecurityGroupViewParameters`
   - TargetResourceId `String`
 
-### AzNsg [Get, New, Remove, Set]
+### AzNsg [Get, New, Remove, Set] `INetworkSecurityGroup, Boolean`
   - SubscriptionId `String[]`
   - Name `String`
   - ResourceGroupName `String`
@@ -940,7 +934,7 @@
   - SecurityRule `ISecurityRule[]`
   - Tag `Hashtable`
 
-### AzP2SVpnGateway [Get, New, Remove, Set]
+### AzP2SVpnGateway [Get, New, Remove, Set] `IP2SVpnGateway, Boolean`
   - SubscriptionId `String[]`
   - GatewayName `String`
   - ResourceGroupName `String`
@@ -957,7 +951,7 @@
   - VpnClientConnectionHealthVpnClientConnectionsCount `Int32`
   - VpnGatewayScaleUnit `Int32`
 
-### AzP2SVpnGatewayVpnProfile [New]
+### AzP2SVpnGatewayVpnProfile [New] `String`
   - GatewayName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String`
@@ -965,7 +959,7 @@
   - Parameter `IP2SVpnProfileParameters`
   - AuthenticationMethod `AuthenticationMethod`
 
-### AzP2SVpnServerConfiguration [Get, New, Remove, Set]
+### AzP2SVpnServerConfiguration [Get, New, Remove, Set] `IP2SVpnServerConfiguration, Boolean`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
   - VirtualWanName `String`
@@ -985,7 +979,7 @@
   - VpnClientIPsecPolicy `IIpsecPolicy[]`
   - VpnProtocol `VpnGatewayTunnelingProtocol[]`
 
-### AzPeerExpressRouteCircuitConnection [Get]
+### AzPeerExpressRouteCircuitConnection [Get] `IPeerExpressRouteCircuitConnection`
   - CircuitName `String`
   - PeeringName `String`
   - ResourceGroupName `String`
@@ -993,7 +987,7 @@
   - ConnectionName `String`
   - InputObject `INetworkIdentity`
 
-### AzPublicIPAddress [Get, New, Remove, Set]
+### AzPublicIPAddress [Get, New, Remove, Set] `IPublicIPAddress, Boolean`
   - SubscriptionId `String[]`
   - Name `String`
   - ResourceGroupName `String`
@@ -1034,7 +1028,7 @@
   - PublicIPAllocationMethod `IPAllocationMethod`
   - PublicIPPrefixId `String`
 
-### AzPublicIPPrefix [Get, New, Remove, Set]
+### AzPublicIPPrefix [Get, New, Remove, Set] `IPublicIPPrefix, Boolean`
   - SubscriptionId `String[]`
   - Name `String`
   - ResourceGroupName `String`
@@ -1055,7 +1049,7 @@
   - Tag `Hashtable`
   - Zone `String[]`
 
-### AzRouteFilter [Get, New, Remove, Set, Update]
+### AzRouteFilter [Get, New, Remove, Set, Update] `IRouteFilter, Boolean`
   - SubscriptionId `String[]`
   - Name `String`
   - ResourceGroupName `String`
@@ -1068,7 +1062,7 @@
   - Rule `IRouteFilterRule[]`
   - Tag `Hashtable`
 
-### AzRouteFilterRule [Get, New, Remove, Set, Update]
+### AzRouteFilterRule [Get, New, Remove, Set, Update] `IRouteFilterRule, Boolean`
   - ResourceGroupName `String`
   - RouteFilterName `String`
   - SubscriptionId `String[]`
@@ -1081,7 +1075,7 @@
   - Location `String`
   - Name `String`
 
-### AzRouteTable [Get, New, Remove, Set]
+### AzRouteTable [Get, New, Remove, Set] `IRouteTable, Boolean`
   - SubscriptionId `String[]`
   - Name `String`
   - ResourceGroupName `String`
@@ -1096,7 +1090,7 @@
   - Route `IRoute[]`
   - Tag `Hashtable`
 
-### AzRouteTableRoute [Get, New, Remove, Set]
+### AzRouteTableRoute [Get, New, Remove, Set] `IRoute, Boolean`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
   - TableName `String`
@@ -1111,7 +1105,7 @@
   - NextHopType `RouteNextHopType`
   - ProvisioningState `String`
 
-### AzServiceEndpointPolicy [Get, New, Remove, Set, Update]
+### AzServiceEndpointPolicy [Get, New, Remove, Set, Update] `IServiceEndpointPolicy, Boolean`
   - SubscriptionId `String[]`
   - Name `String`
   - ResourceGroupName `String`
@@ -1124,7 +1118,7 @@
   - ServiceEndpointPolicyDefinition `IServiceEndpointPolicyDefinition[]`
   - Tag `Hashtable`
 
-### AzServiceEndpointPolicyDefinition [Get, New, Remove, Set]
+### AzServiceEndpointPolicyDefinition [Get, New, Remove, Set] `IServiceEndpointPolicyDefinition, Boolean`
   - ResourceGroupName `String`
   - ServiceEndpointPolicyName `String`
   - SubscriptionId `String[]`
@@ -1138,7 +1132,7 @@
   - Service `String`
   - ServiceResource `String[]`
 
-### AzVirtualHub [Get, New, Remove, Set]
+### AzVirtualHub [Get, New, Remove, Set] `IVirtualHub, Boolean`
   - SubscriptionId `String[]`
   - Name `String`
   - ResourceGroupName `String`
@@ -1156,14 +1150,14 @@
   - VpnGatewayId `String`
   - RouteTableRoute `IVirtualHubRoute[]`
 
-### AzVirtualHubVnetConnection [Get]
+### AzVirtualHubVnetConnection [Get] `IHubVirtualNetworkConnection`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
   - VirtualHubName `String`
   - Name `String`
   - InputObject `INetworkIdentity`
 
-### AzVirtualWan [Get, New, Remove, Set]
+### AzVirtualWan [Get, New, Remove, Set] `IVirtualWan, Boolean`
   - SubscriptionId `String[]`
   - Name `String`
   - ResourceGroupName `String`
@@ -1178,13 +1172,13 @@
   - SecurityProviderName `String`
   - Tag `Hashtable`
 
-### AzVirtualWanSupportedSecurityProvider [Get]
+### AzVirtualWanSupportedSecurityProvider [Get] `IVirtualWanSecurityProvider`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
   - VirtualWanName `String`
   - InputObject `INetworkIdentity`
 
-### AzVnet [Get, New, Remove, Set]
+### AzVnet [Get, New, Remove, Set] `IVirtualNetwork, Boolean`
   - SubscriptionId `String[]`
   - Name `String`
   - ResourceGroupName `String`
@@ -1207,16 +1201,16 @@
   - AddressSpaceAddressPrefix `String[]`
   - DhcpOptionDnsServer `String[]`
 
-### AzVnetAvailableEndpointService [Get]
+### AzVnetAvailableEndpointService [Get] `IEndpointServiceResult`
   - Location `String`
   - SubscriptionId `String[]`
 
-### AzVnetAvailableSubnetDelegation [Get]
+### AzVnetAvailableSubnetDelegation [Get] `IAvailableDelegation`
   - Location `String`
   - SubscriptionId `String[]`
   - ResourceGroupName `String`
 
-### AzVnetGateway [Get, New, Remove, Reset, Set]
+### AzVnetGateway [Get, New, Remove, Reset, Set] `IVirtualNetworkGateway, Boolean`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
   - Name `String`
@@ -1249,21 +1243,21 @@
   - VpnClientRootCertificate `IVpnClientRootCertificate[]`
   - VpnType `VpnType`
 
-### AzVnetGatewayAdvertisedRoute [Get]
+### AzVnetGatewayAdvertisedRoute [Get] `IGatewayRoute`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
   - VnetGatewayName `String`
   - InputObject `INetworkIdentity`
   - Peer `String`
 
-### AzVnetGatewayBgpPeerStatus [Get]
+### AzVnetGatewayBgpPeerStatus [Get] `IBgpPeerStatus`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
   - VnetGatewayName `String`
   - InputObject `INetworkIdentity`
   - Peer `String`
 
-### AzVnetGatewayConnection [Get, New, Remove, Set]
+### AzVnetGatewayConnection [Get, New, Remove, Set] `IVirtualNetworkGatewayConnection, IVirtualNetworkGatewayConnectionListEntity, Boolean`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
   - Name `String`
@@ -1298,7 +1292,7 @@
   - VnetGateway1 `IVirtualNetworkGateway`
   - VnetGateway2 `IVirtualNetworkGateway`
 
-### AzVnetGatewayConnectionSharedKey [Get, Reset, Set]
+### AzVnetGatewayConnectionSharedKey [Get, Reset, Set] `IConnectionSharedKey, Int32`
   - Name `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
@@ -1308,19 +1302,19 @@
   - Id `String`
   - Value `String`
 
-### AzVnetGatewayLearnedRoute [Get]
+### AzVnetGatewayLearnedRoute [Get] `IGatewayRoute`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
   - VnetGatewayName `String`
   - InputObject `INetworkIdentity`
 
-### AzVnetGatewaySupportedVpnDevice [Get]
+### AzVnetGatewaySupportedVpnDevice [Get] `String`
   - Name `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
   - InputObject `INetworkIdentity`
 
-### AzVnetGatewayVpnClientIPsecParameter [Get, Set]
+### AzVnetGatewayVpnClientIPsecParameter [Get, Set] `IVpnClientIPsecParameters`
   - VnetGatewayName `String`
   - Name `String`
   - ResourceGroupName `String`
@@ -1336,7 +1330,7 @@
   - SaDataSizeKilobyte `Int32`
   - SaLifeTimeSecond `Int32`
 
-### AzVnetGatewayVpnClientPackage [New]
+### AzVnetGatewayVpnClientPackage [New] `String`
   - ResourceGroupName `String`
   - SubscriptionId `String`
   - VnetGatewayName `String`
@@ -1347,13 +1341,13 @@
   - ProcessorArchitecture `ProcessorArchitecture`
   - RadiusServerAuthCertificate `String`
 
-### AzVnetGatewayVpnClientSharedKey [Reset]
+### AzVnetGatewayVpnClientSharedKey [Reset] `Boolean`
   - ResourceGroupName `String`
   - SubscriptionId `String`
   - VnetGatewayName `String`
   - InputObject `INetworkIdentity`
 
-### AzVnetGatewayVpnDeviceConfigurationScript [Get]
+### AzVnetGatewayVpnDeviceConfigurationScript [Get] `String`
   - Name `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
@@ -1363,7 +1357,7 @@
   - FirmwareVersion `String`
   - Vendor `String`
 
-### AzVnetGatewayVpnProfile [New]
+### AzVnetGatewayVpnProfile [New] `String`
   - ResourceGroupName `String`
   - SubscriptionId `String`
   - VnetGatewayName `String`
@@ -1374,20 +1368,20 @@
   - ProcessorArchitecture `ProcessorArchitecture`
   - RadiusServerAuthCertificate `String`
 
-### AzVnetGatewayVpnProfilePackageUrl [Get]
+### AzVnetGatewayVpnProfilePackageUrl [Get] `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
   - VnetGatewayName `String`
   - InputObject `INetworkIdentity`
 
-### AzVnetIPAddressAvailability [Test]
+### AzVnetIPAddressAvailability [Test] `IIPAddressAvailabilityResult`
   - ResourceGroupName `String`
   - SubscriptionId `String`
   - VnetName `String`
   - InputObject `INetworkIdentity`
   - IPAddress `String`
 
-### AzVnetPeering [Get, New, Remove, Set]
+### AzVnetPeering [Get, New, Remove, Set] `IVirtualNetworkPeering, Boolean`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
   - VnetName `String`
@@ -1406,7 +1400,7 @@
   - RemoteVnetId `String`
   - UseRemoteGateway `SwitchParameter`
 
-### AzVnetSubnet [Get, New, Remove, Set]
+### AzVnetSubnet [Get, New, Remove, Set] `ISubnet, Boolean`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
   - VnetName `String`
@@ -1442,7 +1436,7 @@
   - ServiceEndpoint `IServiceEndpointPropertiesFormat[]`
   - ServiceEndpointPolicy `IServiceEndpointPolicy[]`
 
-### AzVnetSubnetNetworkPolicy [Set]
+### AzVnetSubnetNetworkPolicy [Set] `Boolean`
   - ResourceGroupName `String`
   - SubnetName `String`
   - SubscriptionId `String`
@@ -1452,7 +1446,7 @@
   - ResourceGroupName1 `String`
   - ServiceName `String`
 
-### AzVnetTap [Get, New, Remove, Set]
+### AzVnetTap [Get, New, Remove, Set] `IVirtualNetworkTap, Boolean`
   - TapName `String`
   - SubscriptionId `String[]`
   - Name `String`
@@ -1490,12 +1484,12 @@
   - Tag `Hashtable`
   - VnetTap `IVirtualNetworkTap[]`
 
-### AzVnetUsage [Get]
+### AzVnetUsage [Get] `IVirtualNetworkUsage`
   - Name `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
 
-### AzVpnConnection [Get, New, Remove, Set]
+### AzVpnConnection [Get, New, Remove, Set] `IVpnConnection, Boolean`
   - GatewayName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
@@ -1515,7 +1509,7 @@
   - UseLocalAzureIPAddress `SwitchParameter`
   - VpnConnectionProtocolType `VirtualNetworkGatewayConnectionProtocol`
 
-### AzVpnGateway [Get, New, Remove, Set]
+### AzVpnGateway [Get, New, Remove, Set] `IVpnGateway, Boolean`
   - GatewayName `String`
   - SubscriptionId `String[]`
   - Name `String`
@@ -1532,7 +1526,7 @@
   - VirtualHubId `String`
   - VpnGatewayScaleUnit `Int32`
 
-### AzVpnSite [Get, New, Remove, Set]
+### AzVpnSite [Get, New, Remove, Set] `IVpnSite, Boolean`
   - SubscriptionId `String[]`
   - Name `String`
   - ResourceGroupName `String`
@@ -1557,7 +1551,7 @@
   - DevicePropertyDeviceVendor `String`
   - DevicePropertyLinkSpeedInMbps `Int32`
 
-### AzVpnSiteConfiguration [Get]
+### AzVpnSiteConfiguration [Get] `Boolean`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
   - VirtualWanName `String`

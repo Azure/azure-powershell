@@ -15,14 +15,14 @@ Resets the VPN client shared key of the virtual network gateway in the specified
 ### Reset (Default)
 ```
 Reset-AzVnetGatewayVpnClientSharedKey -ResourceGroupName <String> -SubscriptionId <String>
- -VnetGatewayName <String> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ -VnetGatewayName <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### ResetViaIdentity
 ```
-Reset-AzVnetGatewayVpnClientSharedKey -InputObject <INetworkIdentity> [-PassThru] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Reset-AzVnetGatewayVpnClientSharedKey -InputObject <INetworkIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -115,7 +115,7 @@ Dynamic: False
 ```
 
 ### -PassThru
-When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

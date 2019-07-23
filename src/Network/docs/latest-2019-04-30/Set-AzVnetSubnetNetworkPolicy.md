@@ -15,16 +15,16 @@ Prepares a subnet by applying network intent policies.
 ### Prepare (Default)
 ```
 Set-AzVnetSubnetNetworkPolicy -ResourceGroupName <String> -SubnetName <String> -SubscriptionId <String>
- -VnetName <String> [-PassThru] [-PrepareNetworkPoliciesRequestParameter <IPrepareNetworkPoliciesRequest>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -VnetName <String> [-PrepareNetworkPoliciesRequestParameter <IPrepareNetworkPoliciesRequest>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### PrepareExpanded
 ```
 Set-AzVnetSubnetNetworkPolicy -ResourceGroupName <String> -SubnetName <String> -SubscriptionId <String>
- -VnetName <String> [-PassThru] [-NetworkIntentPolicyConfiguration <INetworkIntentPolicyConfiguration[]>]
+ -VnetName <String> [-NetworkIntentPolicyConfiguration <INetworkIntentPolicyConfiguration[]>]
  [-ResourceGroupName1 <String>] [-ServiceName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -118,7 +118,7 @@ Dynamic: False
 ```
 
 ### -PassThru
-When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
