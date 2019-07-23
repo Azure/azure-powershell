@@ -61,7 +61,7 @@ Updates the Peering Address for the first connection in the Peering object in me
 The Bandwidth offered at this location in Mbps.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: Int32
 Parameter Sets: Bandwidth
 Aliases:
 
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 The direct connection Object
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection
+Type: PSDirectConnection
 Parameter Sets: (All)
 Aliases:
 
@@ -106,7 +106,7 @@ Accept wildcard characters: False
 The maximum advertised IPv4
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: Int32
 Parameter Sets: IPv4Prefix
 Aliases:
 
@@ -121,7 +121,7 @@ Accept wildcard characters: False
 The maximum advertised IPv6
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: Int32
 Parameter Sets: IPv6Prefix
 Aliases:
 
@@ -136,7 +136,7 @@ Accept wildcard characters: False
 The MD5 authentication key for session.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: Md5Authentication
 Aliases:
 
@@ -151,7 +151,7 @@ Accept wildcard characters: False
 The peer session IPv4 address
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: IPv4Prefix
 Aliases:
 
@@ -166,7 +166,7 @@ Accept wildcard characters: False
 The peer session IPv6 address
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: IPv6Prefix
 Aliases:
 
@@ -178,7 +178,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
