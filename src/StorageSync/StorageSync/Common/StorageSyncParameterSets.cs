@@ -46,5 +46,35 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// The default parameter set
         /// </summary>
         public const string DefaultParameterSet = "DefaultParameterSet";
+        
+        /// <summary>
+        /// The change detection string and directory parameter set
+        /// </summary>
+        public const string ChangeDetectionStringAndDirectoryParameterSet = "StringAndDirectoryParameterSet";
+        
+        /// <summary>
+        /// The change detection object and directory parameter set
+        /// </summary>
+        public const string ChangeDetectionObjectAndDirectoryParameterSet = "ObjectAndDirectoryParameterSet";
+        
+        /// <summary>
+        /// The change detection resource identifier and directory parameter set
+        /// </summary>
+        public const string ChangeDetectionResourceIdAndDirectoryParameterSet = "ResourceIdAndDirectoryParameterSet";
+        
+        /// <summary>
+        /// The change detection string and path parameter set
+        /// </summary>
+        public const string ChangeDetectionStringAndPathParameterSet = "StringAndPathParameterSet";
+        
+        /// <summary>
+        /// The change detection object and path parameter set
+        /// </summary>
+        public const string ChangeDetectionObjectAndPathParameterSet = "ObjectAndPathParameterSet";
+        
+        /// <summary>
+        /// The change detection resource identifier and path parameter set
+        /// </summary>
+        public const string ChangeDetectionResourceIdAndPathParameterSet = "ResourceIdAndPathParameterSet";
     }
 }
