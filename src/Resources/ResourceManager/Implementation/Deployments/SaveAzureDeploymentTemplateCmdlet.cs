@@ -23,24 +23,44 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Saves the deployment template to a file on disk.
     /// </summary>
     [Cmdlet(VerbsData.Save, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentTemplate", SupportsShouldProcess = true,
-        DefaultParameterSetName = SaveAzureDeploymentTemplateCmdlet.DeploymentNameParameterSet), OutputType(typeof(PSTemplatePath))]
+        DefaultParameterSetName = SaveAzureDeploymentTemplateCmdlet.SubscriptionParameterSetWithDeploymentName), OutputType(typeof(PSTemplatePath))]
     public class SaveAzureDeploymentTemplateCmdlet : ResourceManagerCmdletBase
     {
-        /// <summary>
-        /// The deployment name parameter set.
-        /// </summary>
-        internal const string DeploymentNameParameterSet = "SaveByDeploymentName";
+        internal const string ResourceGroupParameterSetWithDeploymentName = "ResourceGroupWithDeploymentName";
+        internal const string SubscriptionParameterSetWithDeploymentName = "SubscriptionWithDeploymentName";
+        internal const string ManagementGroupParameterSetWithDeploymentName = "ManagementGroupWithDeploymentName";
+        internal const string TenantParameterSetWithDeploymentName = "TenantWithDeploymentName";
 
-        /// <summary>
-        /// The deployment object parameter set.
-        /// </summary>
         internal const string DeploymentObjectParameterSet = "SaveByDeploymentObject";
+
+        [Parameter(ParameterSetName = SaveAzureDeploymentTemplateCmdlet.TenantParameterSetWithDeploymentName, Mandatory = true,
+            HelpMessage = "Get deployment at tenant scope if specified.")]
+        [Parameter(ParameterSetName = SaveAzureDeploymentTemplateCmdlet.DeploymentObjectParameterSet, Mandatory = false,
+            HelpMessage = "Get deployment at tenant scope if specified.")]
+        public SwitchParameter Tenant { get; set; }
+
+        [Parameter(ParameterSetName = SaveAzureDeploymentTemplateCmdlet.ManagementGroupParameterSetWithDeploymentName, Mandatory = true,
+            HelpMessage = "The management group id.")]
+        [ValidateNotNullOrEmpty]
+        public string ManagementGroupId { get; set; }
+
+        [Parameter(ParameterSetName = SaveAzureDeploymentTemplateCmdlet.ResourceGroupParameterSetWithDeploymentName, Mandatory = true,
+            HelpMessage = "The resource group name.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets the deployment name parameter.
         /// </summary>
         [Alias("Name")]
-        [Parameter(ParameterSetName = SaveAzureDeploymentTemplateCmdlet.DeploymentNameParameterSet, Mandatory = true, HelpMessage = "The deployment name.")]
+        [Parameter(ParameterSetName = SaveAzureDeploymentTemplateCmdlet.TenantParameterSetWithDeploymentName, Mandatory = true,
+            HelpMessage = "The name of deployment.")]
+        [Parameter(ParameterSetName = SaveAzureDeploymentTemplateCmdlet.ManagementGroupParameterSetWithDeploymentName, Mandatory = true,
+            HelpMessage = "The name of deployment.")]
+        [Parameter(ParameterSetName = SaveAzureDeploymentTemplateCmdlet.SubscriptionParameterSetWithDeploymentName, Mandatory = true,
+            HelpMessage = "The name of deployment.")]
+        [Parameter(ParameterSetName = SaveAzureDeploymentTemplateCmdlet.ResourceGroupParameterSetWithDeploymentName, Mandatory = true,
+            HelpMessage = "The name of deployment.")]
         [ValidateNotNullOrEmpty]
         public string DeploymentName { get; set; }
 
@@ -68,11 +88,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             base.OnProcessRecord();
 
-            var deploymentName = !string.IsNullOrEmpty(this.DeploymentName) ? this.DeploymentName : this.DeploymentObject.DeploymentName;
+            var deploymentName = this.GetDeploymetName();
+            var managementGroupId = this.GetManagementGroupId();
+            var resourceGroupName = this.GetResourceGroupName();
 
             if (ShouldProcess(deploymentName, VerbsData.Save))
             {
-                var template = ResourceManagerSdkClient.GetDeploymentTemplate(deploymentName);
+                var template = this.GetDeploymentTemplate(this.Tenant, managementGroupId, resourceGroupName, deploymentName);
 
                 string path = FileUtility.SaveTemplateFile(
                     templateName: deploymentName,
@@ -86,6 +108,66 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
                 WriteObject(new PSTemplatePath() { Path = path });
             }
+        }
+
+        private string GetDeploymentTemplate(bool isTenantDeployment, string managementGroupId, string resourceGroupName, string deploymentName)
+        {
+            if (isTenantDeployment)
+            {
+                return ResourceManagerSdkClient.GetDeploymentTemplateAtTenantScope(deploymentName);
+            }
+            else if (!string.IsNullOrEmpty(managementGroupId))
+            {
+                return ResourceManagerSdkClient.GetDeploymentTemplateAtManagementGroup(managementGroupId, deploymentName);
+            }
+            else if (!string.IsNullOrEmpty(resourceGroupName))
+            {
+                return ResourceManagerSdkClient.GetDeploymentTemplateAtResourceGroup(resourceGroupName, deploymentName);
+            }
+            else
+            {
+                return ResourceManagerSdkClient.GetDeploymentTemplateAtSubscrpitionScope(deploymentName);
+            }
+        }
+
+        private string GetDeploymetName()
+        {
+            if (!string.IsNullOrEmpty(this.DeploymentName))
+            {
+                return this.DeploymentName;
+            }
+            else
+            {
+                return this.DeploymentObject.DeploymentName;
+            }
+        }
+
+        private string GetManagementGroupId()
+        {
+            if (!string.IsNullOrEmpty(this.ManagementGroupId))
+            {
+                return this.ManagementGroupId;
+            }
+            else if (this.DeploymentObject != null)
+            {
+                return this.DeploymentObject.ManagementGroupId;
+            }
+
+            return null;
+        }
+
+        private string GetResourceGroupName()
+        {
+            if (!string.IsNullOrEmpty(this.ResourceGroupName))
+            {
+                return this.ResourceGroupName;
+            }
+            else if (this.DeploymentObject != null)
+            {
+                return this.DeploymentObject.ResourceGroupName;
+            }
+
+            return null;
         }
     }
 }

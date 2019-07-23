@@ -23,30 +23,43 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Deletes a deployment.
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Deployment", SupportsShouldProcess = true,
-        DefaultParameterSetName = RemoveAzureDeploymentCmdlet.DeploymentNameParameterSet), OutputType(typeof(bool))]
+        DefaultParameterSetName = RemoveAzureDeploymentCmdlet.SubscriptionParameterSetWithDeploymentName), OutputType(typeof(bool))]
     public class RemoveAzureDeploymentCmdlet : ResourceManagerCmdletBase
     {
-        /// <summary>
-        /// The deployment Id parameter set.
-        /// </summary>
+        internal const string ResourceGroupParameterSetWithDeploymentName = "ResourceGroupWithDeploymentName";
+        internal const string SubscriptionParameterSetWithDeploymentName = "SubscriptionWithDeploymentName";
+        internal const string ManagementGroupParameterSetWithDeploymentName = "ManagementGroupWithDeploymentName";
+        internal const string TenantParameterSetWithDeploymentName = "TenantWithDeploymentName";
+
         internal const string DeploymentIdParameterSet = "RemoveByDeploymentId";
 
-        /// <summary>
-        /// The deployment name parameter set.
-        /// </summary>
-        internal const string DeploymentNameParameterSet = "RemoveByDeploymentName";
-
-        /// <summary>
-        /// The input object parameter set.
-        /// </summary>
         internal const string InputObjectParameterSet = "RemoveByInputObject";
 
-        [Parameter(ParameterSetName = RemoveAzureDeploymentCmdlet.DeploymentNameParameterSet, Mandatory = false, HelpMessage = "The management group.")]
+        [Parameter(Position = 0, ParameterSetName = RemoveAzureDeploymentCmdlet.TenantParameterSetWithDeploymentName, Mandatory = true,
+            HelpMessage = "Remove deployment at tenant scope if specified.")]
+        [Parameter(Position = 0, ParameterSetName = RemoveAzureDeploymentCmdlet.InputObjectParameterSet, Mandatory = false,
+            HelpMessage = "Remove deployment at tenant scope if specified.")]
+        public SwitchParameter Tenant { get; set; }
+
+        [Parameter(Position = 0, ParameterSetName = RemoveAzureDeploymentCmdlet.ManagementGroupParameterSetWithDeploymentName, Mandatory = true,
+            HelpMessage = "The management group id.")]
         [ValidateNotNullOrEmpty]
-        public string ManagementGroup { get; set; }
+        public string ManagementGroupId { get; set; }
+
+        [Parameter(Position = 0, ParameterSetName = RemoveAzureDeploymentCmdlet.ResourceGroupParameterSetWithDeploymentName, Mandatory = true,
+            HelpMessage = "The resource group name.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
 
         [Alias("DeploymentName")]
-        [Parameter(Position = 0, ParameterSetName = RemoveAzureDeploymentCmdlet.DeploymentNameParameterSet, Mandatory = true, HelpMessage = "The name of the deployment.")]
+        [Parameter(Position = 1, ParameterSetName = RemoveAzureDeploymentCmdlet.TenantParameterSetWithDeploymentName, Mandatory = true,
+            HelpMessage = "The name of deployment.")]
+        [Parameter(Position = 1, ParameterSetName = RemoveAzureDeploymentCmdlet.ManagementGroupParameterSetWithDeploymentName, Mandatory = true,
+            HelpMessage = "The name of deployment.")]
+        [Parameter(Position = 0, ParameterSetName = RemoveAzureDeploymentCmdlet.SubscriptionParameterSetWithDeploymentName, Mandatory = true,
+            HelpMessage = "The name of deployment.")]
+        [Parameter(Position = 1, ParameterSetName = RemoveAzureDeploymentCmdlet.ResourceGroupParameterSetWithDeploymentName, Mandatory = true,
+            HelpMessage = "The name of deployment.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -73,28 +86,91 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 Name,
                 () =>
                 {
-                    var managementGroupId = !string.IsNullOrEmpty(this.ManagementGroup)
-                        ? this.ManagementGroup
-                        : !string.IsNullOrEmpty(this.Id) ? ResourceIdUtility.GetManagementGroupId(this.Id) : null;
+                    var deploymentName = this.GetDeploymetName();
 
-                    var deploymentName = !string.IsNullOrEmpty(this.Name)
-                        ? this.Name
-                        : !string.IsNullOrEmpty(this.Id) ? ResourceIdUtility.GetResourceName(this.Id) : this.InputObject.DeploymentName;
+                    var managementGroupId = this.GetManagementGroupId();
+                    var resourceGroupName = this.GetResourceGroupName();
 
-                    if (string.IsNullOrEmpty(managementGroupId))
-                    {
-                        ResourceManagerSdkClient.DeleteDeploymentAtSubscriptionScope(deploymentName);
-                    }
-                    else
-                    {
-                        ResourceManagerSdkClient.DeleteDeploymentAtManagementGroup(managementGroupId, deploymentName);
-                    }
+                    this.DeleteDeployment(managementGroupId, resourceGroupName, deploymentName);
 
                     if (this.PassThru.IsPresent)
                     {
                         WriteObject(true);
                     }
                 });
+        }
+
+        private string GetDeploymetName()
+        {
+            if (!string.IsNullOrEmpty(this.Name))
+            {
+                return this.Name;
+            }
+            else if (!string.IsNullOrEmpty(this.Id))
+            {
+                return ResourceIdUtility.GetResourceName(this.Id);
+            }
+            else
+            {
+                return this.InputObject.DeploymentName;
+            }
+        }
+
+        private string GetManagementGroupId()
+        {
+            if (!string.IsNullOrEmpty(this.ManagementGroupId))
+            {
+                return this.ManagementGroupId;
+            }
+            else if (!string.IsNullOrEmpty(this.Id))
+            {
+                return ResourceIdUtility.GetManagementGroupId(this.Id);
+            }
+            else if (this.InputObject != null)
+            {
+                return this.InputObject.ManagementGroupId;
+            }
+
+            return null;
+        }
+
+        private string GetResourceGroupName()
+        {
+            if (!string.IsNullOrEmpty(this.ResourceGroupName))
+            {
+                return this.ResourceGroupName;
+            }
+            else if (!string.IsNullOrEmpty(this.Id))
+            {
+                return ResourceIdUtility.GetResourceGroupName(this.Id);
+            }
+            else if (this.InputObject != null)
+            {
+                return this.InputObject.ResourceGroupName;
+            }
+
+            return null;
+        }
+
+        private void DeleteDeployment(string managementGroupId, string resourceGroupName, string deploymentName)
+        {
+            if (this.Tenant)
+            {
+                // (tiano): parse Id for tenant deployment too. 
+                ResourceManagerSdkClient.DeleteDeploymentAtTenantScope(deploymentName);
+            }
+            else if (!string.IsNullOrEmpty(managementGroupId))
+            {
+                ResourceManagerSdkClient.DeleteDeploymentAtManagementGroup(managementGroupId, deploymentName);
+            }
+            else if (!string.IsNullOrEmpty(resourceGroupName))
+            {
+                ResourceManagerSdkClient.DeleteDeploymentAtResourceGroup(resourceGroupName, deploymentName);
+            }
+            else
+            {
+                ResourceManagerSdkClient.DeleteDeploymentAtSubscriptionScope(deploymentName);
+            }
         }
     }
 }

@@ -20,6 +20,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
     {
         public string DeploymentName { get; set; }
 
+        public bool IsTenantScope { get; set; }
+
         public string ManagementGroupId { get; set; }
 
         public string ResourceGroupName { get; set; }

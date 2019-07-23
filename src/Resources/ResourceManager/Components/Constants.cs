@@ -30,9 +30,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         public static readonly string MicrosoftAuthorizationNamespace = "Microsoft.Authorization";
 
         /// <summary>
-        /// The <c>Microsoft.Management</c> namespace.
+        /// The management group type.
         /// </summary>
-        public static readonly string MicrosoftManagementNamespace = "Microsoft.Management";
+        public static readonly string ManagementGroupType = "/providers/Microsoft.Management/managementGroups/";
+
+        /// <summary>
+        /// The management group type name.
+        /// </summary>
+        public static readonly string ManagementGroupTypeName = "managementGroups";
 
         /// <summary>
         /// The <c>Microsoft.Solutions</c> namespace.
@@ -147,7 +152,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// <summary>
         /// The management group resource type.
         /// </summary>
-        public static readonly string MicrosoftManagementGroupDefinitionType = Constants.MicrosoftManagementNamespace + "/managementgroups";
+        public static readonly string MicrosoftManagementGroupDefinitionType = Constants.ManagementGroupTypeName + "/managementgroups";
 
         /// <summary>
         /// The application definition resource type.

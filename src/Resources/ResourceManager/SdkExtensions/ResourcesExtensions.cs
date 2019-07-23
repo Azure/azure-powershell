@@ -54,13 +54,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
             return deployment;
         }
 
-        public static PSDeployment ToPSDeployment(this DeploymentExtended result)
+        public static PSDeployment ToPSDeployment(this DeploymentExtended result, string managementGroupId = null, string resourceGroupName = null)
         {
             PSDeployment deployment = new PSDeployment();
 
             if (result != null)
             {
-                deployment = CreatePSDeployment(result.Name, result.Location, result.Properties);
+                deployment = CreatePSDeployment(result.Name, managementGroupId, resourceGroupName, result.Location, result.Properties);
             }
 
             return deployment;
@@ -202,6 +202,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
 
         private static PSDeployment CreatePSDeployment(
             string name,
+            string managementGroupId,
+            string resourceGroup,
             string location,
             DeploymentPropertiesExtended properties)
         {
@@ -209,6 +211,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
 
             deploymentObject.DeploymentName = name;
             deploymentObject.Location = location;
+            deploymentObject.ManagementGroupId = managementGroupId;
+            deploymentObject.ResourceGroupName = resourceGroup;
 
             SetDeploymentProperties(deploymentObject, properties);
 

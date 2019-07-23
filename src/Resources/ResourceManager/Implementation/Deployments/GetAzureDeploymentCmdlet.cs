@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
@@ -22,46 +21,59 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Get deployments.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Deployment", DefaultParameterSetName = GetAzureDeploymentCmdlet.DeploymentNameParameterSet), OutputType(typeof(PSDeployment))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Deployment", DefaultParameterSetName = GetAzureDeploymentCmdlet.SubscriptionParameterSetWithDeploymentName), OutputType(typeof(PSDeployment))]
     public class GetAzureDeploymentCmdlet : ResourceManagerCmdletBase
     {
-        /// <summary>
-        /// The deployment Id parameter set.
-        /// </summary>
+        internal const string ResourceGroupParameterSetWithDeploymentName = "ResourceGroupWithDeploymentName";
+        internal const string SubscriptionParameterSetWithDeploymentName = "SubscriptionWithDeploymentName";
+        internal const string ManagementGroupParameterSetWithDeploymentName = "ManagementGroupWithDeploymentName";
+        internal const string TenantParameterSetWithDeploymentName = "TenantWithDeploymentName";
+
         internal const string DeploymentIdParameterSet = "GetByDeploymentId";
 
-        /// <summary>
-        /// The deployment name parameter set.
-        /// </summary>
-        internal const string DeploymentNameParameterSet = "GetByDeploymentName";
+        [Parameter(Position = 0, ParameterSetName = GetAzureDeploymentCmdlet.TenantParameterSetWithDeploymentName, Mandatory = true,
+            HelpMessage = "Get deployment at tenant scope if specified.")]
+        public SwitchParameter Tenant { get; set; }
+
+        [Parameter(Position = 0, ParameterSetName = GetAzureDeploymentCmdlet.ManagementGroupParameterSetWithDeploymentName, Mandatory = true,
+            HelpMessage = "The management group id.")]
+        [ValidateNotNullOrEmpty]
+        public string ManagementGroupId { get; set; }
+
+        [Parameter(Position = 0, ParameterSetName = GetAzureDeploymentCmdlet.ResourceGroupParameterSetWithDeploymentName, Mandatory = true,
+            HelpMessage = "The resource group name.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
 
         [Alias("DeploymentName")]
-        [Parameter(Position = 0, ParameterSetName = GetAzureDeploymentCmdlet.DeploymentNameParameterSet, Mandatory = false,
+        [Parameter(Position = 1, ParameterSetName = GetAzureDeploymentCmdlet.TenantParameterSetWithDeploymentName, Mandatory = false,
+            HelpMessage = "The name of deployment.")]
+        [Parameter(Position = 1, ParameterSetName = GetAzureDeploymentCmdlet.ManagementGroupParameterSetWithDeploymentName, Mandatory = false,
+            HelpMessage = "The name of deployment.")]
+        [Parameter(Position = 0, ParameterSetName = GetAzureDeploymentCmdlet.SubscriptionParameterSetWithDeploymentName, Mandatory = false,
+            HelpMessage = "The name of deployment.")]
+        [Parameter(Position = 1, ParameterSetName = GetAzureDeploymentCmdlet.ResourceGroupParameterSetWithDeploymentName, Mandatory = false,
             HelpMessage = "The name of deployment.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Alias("DeploymentId", "ResourceId")]
-        [Parameter(ParameterSetName = GetAzureDeploymentCmdlet.DeploymentIdParameterSet, Mandatory = false,
+        [Parameter(ParameterSetName = GetAzureDeploymentCmdlet.DeploymentIdParameterSet, Mandatory = true,
             HelpMessage = "The fully qualified resource Id of the deployment. example: /subscriptions/{subId}/providers/Microsoft.Resources/deployments/{deploymentName}")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
-
-        [Parameter(ParameterSetName = GetAzureDeploymentCmdlet.DeploymentNameParameterSet, Mandatory = false, HelpMessage = "The management group.")]
-        [ValidateNotNullOrEmpty]
-        public string ManagementGroup { get; set; }
 
         public override void ExecuteCmdlet()
         {
             FilterDeploymentOptions options = new FilterDeploymentOptions()
             {
-                DeploymentName = Name ?? (string.IsNullOrEmpty(Id) ? null : ResourceIdUtility.GetResourceName(Id)),
-                ManagementGroupId = ManagementGroup ?? (string.IsNullOrEmpty(Id) ? null : ResourceIdUtility.GetManagementGroupId(Id))
+                IsTenantScope = this.Tenant, // (tiano): get it for Id parameter too.
+                ManagementGroupId = ManagementGroupId ?? (string.IsNullOrEmpty(Id) ? null : ResourceIdUtility.GetManagementGroupId(Id)),
+                ResourceGroupName = ResourceGroupName ?? (string.IsNullOrEmpty(Id) ? null : ResourceIdUtility.GetResourceGroupName(Id)),
+                DeploymentName = Name ?? (string.IsNullOrEmpty(Id) ? null : ResourceIdUtility.GetDeploymentName(Id)),
             };
 
-            var deployments = string.IsNullOrEmpty(options.ManagementGroupId)
-                ? ResourceManagerSdkClient.FilterDeploymentsAtSubscriptionScope(options)
-                : ResourceManagerSdkClient.FilterDeploymentsAtManagementGroup(options);
+            var deployments = ResourceManagerSdkClient.FilterDeployments(options);
 
             WriteObject(deployments, true);
         }

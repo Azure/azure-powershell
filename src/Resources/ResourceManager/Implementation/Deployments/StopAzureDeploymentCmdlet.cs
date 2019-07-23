@@ -23,26 +23,43 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Cancel a running deployment.
     /// </summary>
     [Cmdlet(VerbsLifecycle.Stop, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Deployment", SupportsShouldProcess = true,
-        DefaultParameterSetName = StopAzureDeploymentCmdlet.DeploymentNameParameterSet), OutputType(typeof(bool))]
+        DefaultParameterSetName = StopAzureDeploymentCmdlet.SubscriptionParameterSetWithDeploymentName), OutputType(typeof(bool))]
     public class StopAzureDeploymentCmdlet : ResourceManagerCmdletBase
     {
-        /// <summary>
-        /// The deployment Id parameter set.
-        /// </summary>
+        internal const string ResourceGroupParameterSetWithDeploymentName = "ResourceGroupWithDeploymentName";
+        internal const string SubscriptionParameterSetWithDeploymentName = "SubscriptionWithDeploymentName";
+        internal const string ManagementGroupParameterSetWithDeploymentName = "ManagementGroupWithDeploymentName";
+        internal const string TenantParameterSetWithDeploymentName = "TenantWithDeploymentName";
+
         internal const string DeploymentIdParameterSet = "StopByDeploymentId";
 
-        /// <summary>
-        /// The deployment name parameter set.
-        /// </summary>
-        internal const string DeploymentNameParameterSet = "StopByDeploymentName";
-
-        /// <summary>
-        /// The input object parameter set.
-        /// </summary>
         internal const string InputObjectParameterSet = "StopByInputObject";
 
+        [Parameter(Position = 0, ParameterSetName = StopAzureDeploymentCmdlet.TenantParameterSetWithDeploymentName, Mandatory = true,
+            HelpMessage = "Stop deployment at tenant scope if specified.")]
+        [Parameter(Position = 0, ParameterSetName = StopAzureDeploymentCmdlet.InputObjectParameterSet, Mandatory = false,
+            HelpMessage = "Stop deployment at tenant scope if specified.")]
+        public SwitchParameter Tenant { get; set; }
+
+        [Parameter(Position = 0, ParameterSetName = StopAzureDeploymentCmdlet.ManagementGroupParameterSetWithDeploymentName, Mandatory = true,
+            HelpMessage = "The management group id.")]
+        [ValidateNotNullOrEmpty]
+        public string ManagementGroupId { get; set; }
+
+        [Parameter(Position = 0, ParameterSetName = StopAzureDeploymentCmdlet.ResourceGroupParameterSetWithDeploymentName, Mandatory = true,
+            HelpMessage = "The resource group name.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
+
         [Alias("DeploymentName")]
-        [Parameter(Position = 0, ParameterSetName = StopAzureDeploymentCmdlet.DeploymentNameParameterSet, Mandatory = true, HelpMessage = "The name of the deployment.")]
+        [Parameter(Position = 1, ParameterSetName = StopAzureDeploymentCmdlet.TenantParameterSetWithDeploymentName, Mandatory = true,
+            HelpMessage = "The name of deployment.")]
+        [Parameter(Position = 1, ParameterSetName = StopAzureDeploymentCmdlet.ManagementGroupParameterSetWithDeploymentName, Mandatory = true,
+            HelpMessage = "The name of deployment.")]
+        [Parameter(Position = 0, ParameterSetName = StopAzureDeploymentCmdlet.SubscriptionParameterSetWithDeploymentName, Mandatory = true,
+            HelpMessage = "The name of deployment.")]
+        [Parameter(Position = 1, ParameterSetName = StopAzureDeploymentCmdlet.ResourceGroupParameterSetWithDeploymentName, Mandatory = true,
+            HelpMessage = "The name of deployment.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -61,19 +78,75 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         public override void ExecuteCmdlet()
         {
-            var deploymentName = !string.IsNullOrEmpty(this.Name)
-                ? this.Name
-                : !string.IsNullOrEmpty(this.Id) ? ResourceIdUtility.GetResourceName(this.Id) : this.InputObject.DeploymentName;
+            FilterDeploymentOptions options = new FilterDeploymentOptions()
+            {
+                IsTenantScope = this.Tenant, // (tiano): get it for Id parameter too.
+                ManagementGroupId = this.GetManagementGroupId(),
+                ResourceGroupName = this.GetResourceGroupName(),
+                DeploymentName = this.GetDeploymetName(),
+            };
 
             ConfirmAction(
                 ProjectResources.CancelDeploymentMessage,
                 this.Name,
-                () => ResourceManagerSdkClient.CancelDeploymentAtSubscriptionScope(deploymentName));
+                () => ResourceManagerSdkClient.CancelDeployment(options));
 
             if (this.PassThru.IsPresent)
             {
                 WriteObject(true);
             }
+        }
+
+        private string GetDeploymetName()
+        {
+            if (!string.IsNullOrEmpty(this.Name))
+            {
+                return this.Name;
+            }
+            else if (!string.IsNullOrEmpty(this.Id))
+            {
+                return ResourceIdUtility.GetResourceName(this.Id);
+            }
+            else
+            {
+                return this.InputObject.DeploymentName;
+            }
+        }
+
+        private string GetManagementGroupId()
+        {
+            if (!string.IsNullOrEmpty(this.ManagementGroupId))
+            {
+                return this.ManagementGroupId;
+            }
+            else if (!string.IsNullOrEmpty(this.Id))
+            {
+                return ResourceIdUtility.GetManagementGroupId(this.Id);
+            }
+            else if (this.InputObject != null)
+            {
+                return this.InputObject.ManagementGroupId;
+            }
+
+            return null;
+        }
+
+        private string GetResourceGroupName()
+        {
+            if (!string.IsNullOrEmpty(this.ResourceGroupName))
+            {
+                return this.ResourceGroupName;
+            }
+            else if (!string.IsNullOrEmpty(this.Id))
+            {
+                return ResourceIdUtility.GetResourceGroupName(this.Id);
+            }
+            else if (this.InputObject != null)
+            {
+                return this.InputObject.ResourceGroupName;
+            }
+
+            return null;
         }
     }
 }

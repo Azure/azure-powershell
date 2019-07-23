@@ -331,6 +331,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The &apos;Complete&apos; mode is not supported for a deployment at the current scope. Please use &apos;Incremental&apos; mode instead..
+        /// </summary>
+        internal static string InvalidDeploymentMode {
+            get {
+                return ResourceManager.GetString("InvalidDeploymentMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The provided file {0} doesn&apos;t exist.
         /// </summary>
         internal static string InvalidFilePath {
@@ -574,11 +583,38 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There are no running deployment called &apos;{0}&apos; at the current subscription scope..
+        ///   Looks up a localized string similar to There is no running deployment called &apos;{0}&apos; at management group &apos;{1}&apos;..
+        /// </summary>
+        internal static string NoRunningDeploymentsAtManagementGroup {
+            get {
+                return ResourceManager.GetString("NoRunningDeploymentsAtManagementGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is no running deployment called &apos;{0}&apos; at resource group &apos;{1}&apos;..
+        /// </summary>
+        internal static string NoRunningDeploymentsAtResourceGroup {
+            get {
+                return ResourceManager.GetString("NoRunningDeploymentsAtResourceGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is no running deployment called &apos;{0}&apos; at the current subscription scope..
         /// </summary>
         internal static string NoRunningDeploymentsAtSubscriptionScope {
             get {
                 return ResourceManager.GetString("NoRunningDeploymentsAtSubscriptionScope", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is no running deployment called &apos;{0}&apos; at the current tenant scope..
+        /// </summary>
+        internal static string NoRunningDeploymentsAtTenantScope {
+            get {
+                return ResourceManager.GetString("NoRunningDeploymentsAtTenantScope", resourceCulture);
             }
         }
         

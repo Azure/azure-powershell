@@ -33,14 +33,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SubscriptionLevelDeploymentEndToEnd()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-DeploymentEndToEnd");
+            ResourcesController.NewInstance.RunPsTest(_logger, "Test-DeploymentEndToEnd-SubscriptionScope");
         }
 
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SubscriptionLevelDeploymentAsJob()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-DeploymentAsJob");
+            ResourcesController.NewInstance.RunPsTest(_logger, "Test-DeploymentAsJob-SubscriptionScope");
         }
 
         //[Fact(Skip = "Flaky test. Needs investigation.")]
@@ -53,9 +53,30 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ResourceGroupDeploymentEndToEnd()
+        {
+            ResourcesController.NewInstance.RunPsTest(_logger, "Test-DeploymentEndToEnd-ResourceGroup");
+        }
+
+        [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ResourceGroupDeploymentAsJob()
+        {
+            ResourcesController.NewInstance.RunPsTest(_logger, "Test-DeploymentAsJob-ResourceGroup");
+        }
+
+        [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ManagementGroupLevelDeploymentEndToEnd()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "ManagementGroupLevelDeploymentEndToEnd");
+            ResourcesController.NewInstance.RunPsTest(_logger, "Test-DeploymentEndToEnd-ManagementGroup");
+        }
+
+        [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ManagementGroupLevelDeploymentAsJob()
+        {
+            ResourcesController.NewInstance.RunPsTest(_logger, "Test-DeploymentAsJob-ManagementGroup");
         }
     }
 }

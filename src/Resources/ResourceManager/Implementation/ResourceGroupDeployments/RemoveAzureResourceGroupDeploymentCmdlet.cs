@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         Name = ResourceIdUtility.GetResourceName(Id);
                     }
 
-                    ResourceManagerSdkClient.DeleteDeployment(ResourceGroupName, Name);
+                    ResourceManagerSdkClient.DeleteDeploymentAtResourceGroup(ResourceGroupName, Name);
                     WriteObject(true);
                 });
         }

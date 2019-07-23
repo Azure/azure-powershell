@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 },
                 Timestamp = new DateTime(2014, 2, 13)
             };
-            resourcesClientMock.Setup(f => f.ExecuteDeployment(
+            resourcesClientMock.Setup(f => f.ExecuteResourceGroupDeployment(
                 It.IsAny<PSDeploymentCmdletParameters>()))
                 .Returns(expected)
                 .Callback((PSDeploymentCmdletParameters p) => { actualParameters = p; });
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
                     DeploymentName = lastDeploymentName
                 }
             };
-            resourcesClientMock.Setup(f => f.ExecuteDeployment(
+            resourcesClientMock.Setup(f => f.ExecuteResourceGroupDeployment(
                 It.IsAny<PSDeploymentCmdletParameters>()))
                 .Returns(expected)
                 .Callback((PSDeploymentCmdletParameters p) => { actualParameters = p; });
@@ -225,7 +225,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
                     Type = OnErrorDeploymentType.LastSuccessful,
                 }
             };
-            resourcesClientMock.Setup(f => f.ExecuteDeployment(
+            resourcesClientMock.Setup(f => f.ExecuteResourceGroupDeployment(
                 It.IsAny<PSDeploymentCmdletParameters>()))
                 .Returns(expected)
                 .Callback((PSDeploymentCmdletParameters p) => { actualParameters = p; });

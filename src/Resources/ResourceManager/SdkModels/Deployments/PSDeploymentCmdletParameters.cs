@@ -9,10 +9,12 @@ using Microsoft.Azure.Management.ResourceManager.Models;
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 {
     public class PSDeploymentCmdletParameters
-    {
+    { 
         public string ManagementGroupId { get; set; }
 
         public string ResourceGroupName { get; set; }
+
+        public bool IsTenantScope { get; set; }
 
         public string DeploymentName { get; set; }
 

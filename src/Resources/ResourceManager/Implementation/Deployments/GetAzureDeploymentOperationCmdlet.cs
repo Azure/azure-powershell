@@ -14,47 +14,64 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
+    using System.Collections.Generic;
     using System.Management.Automation;
-    using System.Threading.Tasks;
-    using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
-    using Microsoft.Azure.Commands.ResourceManager.Common;
-    using Newtonsoft.Json.Linq;
 
     /// <summary>
     /// Gets the deployment operation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentOperation", DefaultParameterSetName = GetAzureDeploymentOperationCmdlet.DeploymentNameParameterSet), OutputType(typeof(PSDeploymentOperation))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentOperation", DefaultParameterSetName = GetAzureDeploymentOperationCmdlet.SubscriptionParameterSetWithDeploymentName), OutputType(typeof(PSDeploymentOperation))]
     public class GetAzureDeploymentOperationCmdlet : ResourceManagerCmdletBase
     {
-        /// <summary>
-        /// The deployment name parameter set.
-        /// </summary>
-        internal const string DeploymentNameParameterSet = "GetByDeploymentName";
+        internal const string ResourceGroupParameterSetWithDeploymentName = "ResourceGroupWithDeploymentName";
+        internal const string SubscriptionParameterSetWithDeploymentName = "SubscriptionWithDeploymentName";
+        internal const string ManagementGroupParameterSetWithDeploymentName = "ManagementGroupWithDeploymentName";
+        internal const string TenantParameterSetWithDeploymentName = "TenantWithDeploymentName";
 
-        /// <summary>
-        /// The deployment object parameter set.
-        /// </summary>
         internal const string DeploymentObjectParameterSet = "GetByDeploymentObject";
 
-        [Parameter(ParameterSetName = GetAzureDeploymentOperationCmdlet.DeploymentNameParameterSet, Mandatory = false, HelpMessage = "The management group.")]
-        [Parameter(ParameterSetName = GetAzureDeploymentOperationCmdlet.DeploymentObjectParameterSet, Mandatory = false, HelpMessage = "The management group.")]
+        [Parameter(ParameterSetName = GetAzureDeploymentOperationCmdlet.TenantParameterSetWithDeploymentName, Mandatory = true,
+            HelpMessage = "Get deployment operation at tenant scope if specified.")]
+        [Parameter(ParameterSetName = GetAzureDeploymentOperationCmdlet.DeploymentObjectParameterSet, Mandatory = false,
+            HelpMessage = "Get deployment operation at tenant scope if specified.")]
+        public SwitchParameter Tenant { get; set; }
+
+        [Parameter(ParameterSetName = GetAzureDeploymentOperationCmdlet.ManagementGroupParameterSetWithDeploymentName, Mandatory = true,
+            HelpMessage = "The management group id.")]
         [ValidateNotNullOrEmpty]
-        public string ManagementGroup { get; set; }
+        public string ManagementGroupId { get; set; }
+
+        [Parameter(ParameterSetName = GetAzureDeploymentOperationCmdlet.ResourceGroupParameterSetWithDeploymentName, Mandatory = true,
+            HelpMessage = "The resource group name.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets the deployment name parameter.
         /// </summary>
-        [Parameter(ParameterSetName = GetAzureDeploymentOperationCmdlet.DeploymentNameParameterSet, Mandatory = true, HelpMessage = "The deployment name.")]
+        [Parameter(ParameterSetName = GetAzureDeploymentOperationCmdlet.TenantParameterSetWithDeploymentName, Mandatory = true,
+            HelpMessage = "The name of deployment.")]
+        [Parameter(ParameterSetName = GetAzureDeploymentOperationCmdlet.ManagementGroupParameterSetWithDeploymentName, Mandatory = true,
+            HelpMessage = "The name of deployment.")]
+        [Parameter(ParameterSetName = GetAzureDeploymentOperationCmdlet.SubscriptionParameterSetWithDeploymentName, Mandatory = true,
+            HelpMessage = "The name of deployment.")]
+        [Parameter(ParameterSetName = GetAzureDeploymentOperationCmdlet.ResourceGroupParameterSetWithDeploymentName, Mandatory = true,
+            HelpMessage = "The name of deployment.")]
         [ValidateNotNullOrEmpty]
         public string DeploymentName { get; set; }
 
         /// <summary>
         /// Gets or sets the deployment operation Id.
         /// </summary>
-        [Parameter(ParameterSetName = GetAzureDeploymentOperationCmdlet.DeploymentNameParameterSet, Mandatory = false, HelpMessage = "The deployment operation Id.")]
+        [Parameter(ParameterSetName = GetAzureDeploymentOperationCmdlet.TenantParameterSetWithDeploymentName, Mandatory = false,
+            HelpMessage = "The deployment operation id.")]
+        [Parameter(ParameterSetName = GetAzureDeploymentOperationCmdlet.ManagementGroupParameterSetWithDeploymentName, Mandatory = false,
+            HelpMessage = "The deployment operation id.")]
+        [Parameter(ParameterSetName = GetAzureDeploymentOperationCmdlet.SubscriptionParameterSetWithDeploymentName, Mandatory = false,
+            HelpMessage = "The deployment operation id.")]
+        [Parameter(ParameterSetName = GetAzureDeploymentOperationCmdlet.ResourceGroupParameterSetWithDeploymentName, Mandatory = false,
+            HelpMessage = "The deployment operation id.")]
         public string OperationId { get; set; }
 
         [Parameter(ParameterSetName = GetAzureDeploymentOperationCmdlet.DeploymentObjectParameterSet, Mandatory = true,
@@ -63,13 +80,73 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         public override void ExecuteCmdlet()
         {
-            var deploymentName = !string.IsNullOrEmpty(this.DeploymentName) ? this.DeploymentName : this.DeploymentObject.DeploymentName;
+            var deploymentName = this.GetDeploymetName();
+            var resourceGroupName = this.GetResourceGroupName();
+            var managementGroupId = this.GetManagementGroupId();
 
-            var deploymentOperations = string.IsNullOrEmpty(this.ManagementGroup)
-                ? ResourceManagerSdkClient.GetDeploymentOperations(deploymentName, this.OperationId)
-                : ResourceManagerSdkClient.GetDeploymentOperationsAtManagementGroup(this.ManagementGroup, deploymentName, this.OperationId);
+            var deploymentOperations = this.GetDeploymentOperations(this.Tenant, managementGroupId, resourceGroupName, deploymentName);
 
             WriteObject(deploymentOperations, true);
+        }
+
+        private List<PSDeploymentOperation> GetDeploymentOperations(bool isTenantDeployment, string managementGroupId, string resourceGroupName, string deploymentName)
+        {
+            if (isTenantDeployment)
+            {
+                return ResourceManagerSdkClient.ListDeploymentOperationsAtTenantScope(deploymentName, this.OperationId);
+            }
+            else if (!string.IsNullOrEmpty(managementGroupId))
+            {
+                return ResourceManagerSdkClient.ListDeploymentOperationsAtManagementGroup(managementGroupId, deploymentName, this.OperationId);
+            }
+            else if (!string.IsNullOrEmpty(resourceGroupName))
+            {
+                return ResourceManagerSdkClient.ListDeploymentOperationsAtResourceGroup(resourceGroupName, deploymentName, this.OperationId);
+            }
+            else
+            {
+                return ResourceManagerSdkClient.ListDeploymentOperationsAtSubscriptionScope(deploymentName, this.OperationId);
+            }
+        }
+
+        private string GetDeploymetName()
+        {
+            if (!string.IsNullOrEmpty(this.DeploymentName))
+            {
+                return this.DeploymentName;
+            }
+            else
+            {
+                return this.DeploymentObject.DeploymentName;
+            }
+        }
+
+        private string GetManagementGroupId()
+        {
+            if (!string.IsNullOrEmpty(this.ManagementGroupId))
+            {
+                return this.ManagementGroupId;
+            }
+            else if (this.DeploymentObject != null)
+            {
+                return this.DeploymentObject.ManagementGroupId;
+            }
+
+            return null;
+        }
+
+        private string GetResourceGroupName()
+        {
+            if (!string.IsNullOrEmpty(this.ResourceGroupName))
+            {
+                return this.ResourceGroupName;
+            }
+            else if (this.DeploymentObject != null)
+            {
+                return this.DeploymentObject.ResourceGroupName;
+            }
+
+            return null;
         }
     }
 }
