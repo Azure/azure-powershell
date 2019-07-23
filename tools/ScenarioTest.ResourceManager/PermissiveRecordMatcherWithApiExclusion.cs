@@ -1,16 +1,16 @@
-﻿// ---------------------------------------------------------------------------------- 
-// 
-// Copyright Microsoft Corporation 
-// Licensed under the Apache License, Version 2.0 (the "License"); 
-// you may not use this file except in compliance with the License. 
-// You may obtain a copy of the License at 
-// http://www.apache.org/licenses/LICENSE-2.0 
-// Unless required by applicable law or agreed to in writing, software 
-// distributed under the License is distributed on an "AS IS" BASIS, 
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
-// See the License for the specific language governing permissions and 
-// limitations under the License. 
-// ---------------------------------------------------------------------------------- 
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Test.HttpRecorder;
 using System;
@@ -21,7 +21,7 @@ using System.Text.RegularExpressions;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {
-    // Excludes api version when matching mocked records. 
+    // Excludes api version when matching mocked records.
     // If alternate api version is provided, uses that to match records else removes the api-version matching.
     public class PermissiveRecordMatcherWithApiExclusion : IRecordMatcher
     {
@@ -47,7 +47,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         public virtual string GetMatchingKey(System.Net.Http.HttpRequestMessage request)
         {
-            var path = request.RequestUri.PathAndQuery;
+            var path = Uri.UnescapeDataString(request.RequestUri.PathAndQuery);
             if (path.Contains("?&"))
             {
                 path = path.Replace("?&", "?");
@@ -81,7 +81,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         public virtual string GetMatchingKey(RecordEntry recordEntry)
         {
             var encodedPath = recordEntry.EncodedRequestUri;
-            var path = recordEntry.RequestUri;
+            var path = Uri.UnescapeDataString(recordEntry.RequestUri);
             var changed = false;
             if (path.Contains("?&"))
             {
