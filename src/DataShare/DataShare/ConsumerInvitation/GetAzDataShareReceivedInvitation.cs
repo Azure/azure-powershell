@@ -41,7 +41,6 @@ namespace Microsoft.Azure.Commands.DataShare.ConsumerInvitation
         /// </summary>
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure data share invitation location.",
             ParameterSetName = ParameterSetNames.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -53,7 +52,6 @@ namespace Microsoft.Azure.Commands.DataShare.ConsumerInvitation
         /// </summary>
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure dataShare invitation id.",
             ParameterSetName = ParameterSetNames.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]

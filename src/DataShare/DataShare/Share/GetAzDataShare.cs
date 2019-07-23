@@ -41,7 +41,6 @@ namespace Microsoft.Azure.Commands.DataShare.Share
         /// </summary>
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name of the azure data share account",
             ParameterSetName = ParameterSetNames.FieldsParameterSet)]
         [ResourceGroupCompleter()]
@@ -53,7 +52,6 @@ namespace Microsoft.Azure.Commands.DataShare.Share
         /// </summary>
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure data share account name",
             ParameterSetName = ParameterSetNames.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -65,7 +63,6 @@ namespace Microsoft.Azure.Commands.DataShare.Share
         /// </summary>
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure data share name",
             ParameterSetName = ParameterSetNames.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]

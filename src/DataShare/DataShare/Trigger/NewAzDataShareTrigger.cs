@@ -40,7 +40,6 @@ namespace Microsoft.Azure.Commands.DataShare.Trigger
         /// </summary>
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name of the azure data share account",
             ParameterSetName = ParameterSetNames.FieldsParameterSet)]
         [ResourceGroupCompleter()]
@@ -84,7 +83,6 @@ namespace Microsoft.Azure.Commands.DataShare.Trigger
         /// </summary>
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The recurrence interval for the trigger (Day or Hour)",
             ParameterSetName = ParameterSetNames.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -96,7 +94,6 @@ namespace Microsoft.Azure.Commands.DataShare.Trigger
         /// </summary>
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The start time of the scheduled synchronization for the trigger",
             ParameterSetName = ParameterSetNames.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]

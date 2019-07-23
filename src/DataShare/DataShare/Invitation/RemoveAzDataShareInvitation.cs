@@ -41,7 +41,6 @@ namespace Microsoft.Azure.Commands.DataShare.Invitation
         /// </summary>
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = ParameterSetNames.FieldsParameterSet,
             HelpMessage = "The resource group name of the azure data share account")]
         [ResourceGroupCompleter()]
@@ -53,7 +52,6 @@ namespace Microsoft.Azure.Commands.DataShare.Invitation
         /// </summary>
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = ParameterSetNames.FieldsParameterSet,
             HelpMessage = "Azure data share account name")]
         [ValidateNotNullOrEmpty]
@@ -65,7 +63,6 @@ namespace Microsoft.Azure.Commands.DataShare.Invitation
         /// </summary>
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = ParameterSetNames.FieldsParameterSet,
             HelpMessage = "Azure data share name.")]
         [ValidateNotNullOrEmpty]
@@ -77,7 +74,6 @@ namespace Microsoft.Azure.Commands.DataShare.Invitation
         /// </summary>
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = ParameterSetNames.FieldsParameterSet,
             HelpMessage = "Azure data share invitation name")]
         [ResourceNameCompleter(ResourceTypes.Invitation, "ResourceGroupName", "AccountName", "ShareName")]
@@ -109,7 +105,6 @@ namespace Microsoft.Azure.Commands.DataShare.Invitation
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Return object (if specified).")]
         public SwitchParameter PassThru { get; set; }
 

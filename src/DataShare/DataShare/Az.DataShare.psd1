@@ -145,7 +145,7 @@ PrivateData = @{
         ReleaseNotes = '* Added new Powershell cmdlets for Enable/Disable Custom Domain Https and deprecated the old ones'
 
         # Prerelease string of this module
-        Prerelease = 'preview'
+        # Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update
         # RequireLicenseAcceptance = $false
