@@ -97,6 +97,15 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Updating account {0}..
+        /// </summary>
+        internal static string SetAccount_ProcessMessage {
+            get {
+                return ResourceManager.GetString("SetAccount_ProcessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Updating account {0} with Sku {1}..
         /// </summary>
         internal static string SetAccount_ProcessMessage_UpdateSku {

@@ -27,6 +27,11 @@
         - New-AzNetworkSecurityRuleConfig
         - Set-AzNetworkSecurityRuleConfig
 * Add ConnectionProtocolType (Ikev1/Ikev2) as a configurable parameter for New-AzVirtualNetworkGatewayConnection
+* Add PrivateIpAddressVersion in LoadBalancerFrontendIpConfiguration
+    - Updated cmdlet:
+        - New-AzLoadBalancerFrontendIpConfig
+        - Add-AzLoadBalancerFrontendIpConfig
+        - Set-AzLoadBalancerFrontendIpConfig
 
 ## Version 1.11.0
 * Added `RoutingPreference` to public ip tags

@@ -220,6 +220,10 @@ function EventHubsAuthTests
 	Assert-True {$namespaceListKeys.PrimaryConnectionString -like "*$($updatedAuthRule.PrimaryKey)*"}
 	Assert-True {$namespaceListKeys.SecondaryConnectionString -like "*$($updatedAuthRule.SecondaryKey)*"}
 	
+	$StartTime = Get-Date
+	$EndTime = $StartTime.AddHours(2.0)
+	$SasToken = New-AzEventHubAuthorizationRuleSASToken -ResourceId $updatedAuthRule.Id -KeyType Primary -ExpiryTime $EndTime -StartTime $StartTime
+	
 	# Regentrate the Keys 
 	$policyKey = "PrimaryKey"
 

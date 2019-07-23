@@ -683,18 +683,17 @@ function Test-WindowsContainerCanIssueWebAppPSSession
 
 		# Validating that the client can at least issue the EnterPsSession command.
 		# This will validate that this cmdlet will run succesfully in Cloud Shell.
-		# If the current PsVersion is 5.1 or less (Windows PowerShell) and the current WSMAN settings will not allow the user
+		# If the current Operating System is Windows and the current WSMAN settings will not allow the user
 		# to connect (for example: invalid Trusted Hosts, Basic Auth not enabled) this command will issue a Warning instructing the user
 		# to fix WSMAN settings. It will not attempt to run EnterPsSession.
 		#
-		# If the current version is 6.0 (PowerShell Core) this command will not attempt to validate WSMAN settings and 
-		# just try to run EnterPsSession. EnterPsSession is available in Cloud Shell
+		# If the current is not Windows, this command will not attempt to validate WSMAN settings and 
+		# just try to run EnterPsSession if the current PsCore version is 6.1.0.0 or subsequent. EnterPsSession using WinRM is available in Cloud Shell
 		#
-		# We need an real Windows Container app running to fully validate the returned PsSession object, which is not 
+		# We need a real Windows Container app running to fully validate the returned PsSession object, which is not 
 		# possible in 'Playback' mode.
 		#
-		# This assert at least verifies that the EnterPsSession command is attempted and that the behavior is the expected in
-		# Windows PowerShell and PowerShell Core.
+		# This assert at least verifies that the EnterPsSession command is attempted and that the behavior is the expected
 		New-AzWebAppContainerPSSession -ResourceGroupName $rgname -Name $wname -WarningVariable wv -WarningAction SilentlyContinue -ErrorAction SilentlyContinue -Force
 		
 
@@ -707,12 +706,28 @@ function Test-WindowsContainerCanIssueWebAppPSSession
 		}
 		else
 		{
-			# Two possible messages in Playback mode since the site will not exist.
+			# Three possible error messages in Playback mode.
 			$messageDNS = "Connecting to remote server $wname.azurewebsites.net failed with the following error message : The WinRM client cannot process the request because the server name cannot be resolved"
 			$messageUnavailable = "Connecting to remote server $wname.azurewebsites.net failed with the following error message : The WinRM client sent a request to an HTTP server and got a response saying the requested HTTP URL was not available."
-			$resultError = ($Error[0] -like "*$($messageDNS)*") -or ($Error[0] -like "*$($messageUnavailable)*")
-			Write-Debug "Expected Message 1: $messageDNS"
-			Write-Debug "Expected Message 2: $messageUnavailable"
+			$messagePsVersionNotSupported = "Remote Powershell sessions into Windows Containers on App Service from this version of PowerShell is not supported.";
+
+			# One possible warning message in Playback mode.
+			$messageWSMANNotConfigured = "Your current WSMAN Trusted Hosts settings will prevent you from connecting to your Container Web App";
+
+			$resultError = ($Error[0] -like "*$($messageDNS)*") -or 
+				($Error[0] -like "*$($messageUnavailable)*") -or 
+				($Error[0] -like "*$($messageWSMANNotConfigured)*") -or
+				($Error[0] -like "*$($messagePsVersionNotSupported)*")
+			
+			$resultWarning = ($wv[0] -like "*$($messageWSMANNotConfigured)*")
+
+			Write-Debug "Expected error message 1: $messageDNS"
+			Write-Debug "Expected error message 2: $messageUnavailable"
+			Write-Debug "Expected error message 3: $messagePsVersionNotSupported"
+			
+			Write-Debug "Expected Warning message 1: $messageWSMANNotConfigured"
+
+
 		}
 		
 		Write-Debug "Error: $Error[0]"
@@ -729,12 +744,12 @@ function Test-WindowsContainerCanIssueWebAppPSSession
 		}
 
 		
-		If(!$resultError)
+		If(!$resultError -or !$resultWarning)
 		{
 			Write-Output "expected error $($message), actual error $($Error[0])"
 			Write-Output "Warnings: $wv"
 		}
-		Assert-True {$resultError}
+		Assert-True {$resultError -or $resultWarning}
  	}
 	finally
 	{

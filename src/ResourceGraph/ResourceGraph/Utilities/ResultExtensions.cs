@@ -14,28 +14,21 @@
 
 namespace Microsoft.Azure.Commands.ResourceGraph.Utilities
 {
+    using Newtonsoft.Json.Linq;
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Management.Automation;
 
-    using Microsoft.Azure.Management.ResourceGraph.Models;
-
-    using Newtonsoft.Json.Linq;
-
     /// <summary>
-    /// TableExtensions
+    /// ResultExtensions
     /// </summary>
-    public static class TableExtensions
+    public static class ResultExtensions
     {
         /// <summary>
         /// The identifier column name
         /// </summary>
-        private const string IdColumnName = "Id";
-
-        /// <summary>
-        /// The identifier column type
-        /// </summary>
-        private const ColumnDataType IdColumnType = ColumnDataType.String;
+        private const string IdColumnName = "id";
 
         /// <summary>
         /// The resource identifier column name
@@ -49,41 +42,63 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Utilities
             typeof(PSCustomObject).FullName + "#QueryResponse";
 
         /// <summary>
-        /// Converts table to the PS Objects.
+        /// Converts object to the PS Objects.
         /// </summary>
-        /// <param name="table">The table.</param>
+        /// <param name="data">The data.</param>
         /// <returns></returns>
-        public static IEnumerable<PSObject> ToPsObjects(this Table table)
+        public static IList<PSObject> ToPsObjects(this object data)
         {
-            var idColumnIndex = IndexOf(table.Columns, column =>
-                string.Equals(column.Name, IdColumnName, StringComparison.OrdinalIgnoreCase) &&
-                column.Type == IdColumnType);
+            try
+            {
+                if (data is JArray array)
+                {
+                    return ToPsObjects(array.ToList());
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentOutOfRangeException(ex.Message, ex);
+            }
 
-            foreach (var row in table.Rows)
+            throw new ArgumentOutOfRangeException("Result format is not supported");
+        }
+
+        #region Helpers
+
+        /// <summary>
+        /// Converts List to the PS Objects.
+        /// </summary>
+        /// <param name="rows">The rows.</param>
+        /// <returns></returns>
+        private static IList<PSObject> ToPsObjects(this IList<JToken> rows)
+        {
+            var result = new List<PSObject>(rows.Count);
+            foreach (var jtoken in rows)
             {
                 var rowObject = new PSObject();
                 rowObject.TypeNames.Add(PsCustomObjectType);
-                for (var columnIndex = 0; columnIndex < table.Columns.Count; columnIndex++)
+
+                var row = jtoken.ToObject<Dictionary<string, object>>();
+
+                foreach(var rowEntry in row)
                 {
-                    var value = row[columnIndex];
-                    var normalizedValue =
-                        (value as JToken)?.ToPsObject() ?? value;
-                    
-                    rowObject.Properties.Add(new PSNoteProperty(
-                        name: table.Columns[columnIndex].Name,
-                        value: normalizedValue));
+                    var normalizedValue = (rowEntry.Value as JToken)?.ToPsObject() ?? rowEntry.Value;
+                    rowObject.Properties.Add(
+                        new PSNoteProperty(name: rowEntry.Key, value: normalizedValue));
                 }
 
-                if (idColumnIndex != -1)
+                if (row.TryGetValue(IdColumnName, out var idValue))
                 {
                     // Best effort on resource id piping
                     rowObject.Properties.Add(new PSNoteProperty(
                         name: ResourceIdColumnName,
-                        value: row[idColumnIndex]));
+                        value: idValue));
                 }
 
-                yield return rowObject;
+                result.Add(rowObject);
             }
+
+            return result;
         }
 
         /// <summary>
@@ -107,5 +122,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Utilities
 
             return -1;
         }
+
+        #endregion
     }
 }
