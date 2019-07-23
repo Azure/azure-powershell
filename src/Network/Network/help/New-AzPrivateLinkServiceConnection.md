@@ -12,6 +12,14 @@ Creates a private link service connection configuration.
 
 ## SYNTAX
 
+### SetByResource (Default)
+```
+New-AzPrivateLinkServiceConnection -Name <String> -PrivateLinkService <PSPrivateLinkService>
+ [-GroupId <String[]>] [-RequestMessage <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### SetByResourceId
 ```
 New-AzPrivateLinkServiceConnection -Name <String> -PrivateLinkServiceId <String> [-GroupId <String[]>]
  [-RequestMessage <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -35,7 +43,7 @@ This example create a private link service connection object in memory for using
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -50,7 +58,7 @@ Accept wildcard characters: False
 The list of group id.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -65,7 +73,7 @@ Accept wildcard characters: False
 The name of private link service.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -73,6 +81,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrivateLinkService
+The private link service.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSPrivateLinkService
+Parameter Sets: SetByResource
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -80,14 +103,14 @@ Accept wildcard characters: False
 The id of private link service.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: SetByResourceId
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -95,7 +118,7 @@ Accept wildcard characters: False
 The request message.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
