@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Update 'Get-AzRecoveryServicesBackupJob.md'
+* Update 'Get-AzRecoveryServicesBackupJobDetail.md'
 * Update 'Get-AzRecoveryServicesBackupContainer.md'
 * Update 'Get-AzRecoveryServicesVault.md'
 * Update 'Wait-AzRecoveryServicesBackupJob.md'
