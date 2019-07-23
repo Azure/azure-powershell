@@ -69,8 +69,8 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                 {"Microsoft.Features", null},
                 {"Microsoft.Authorization", null},
                 {"Microsoft.Network", null},
-                {"Microsoft.KeyVault", null}
-
+                {"Microsoft.KeyVault", null},
+                {"Microsoft.Sql", null }
             };
             var providersToIgnore = new Dictionary<string, string>
             {
