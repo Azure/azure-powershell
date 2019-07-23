@@ -25,47 +25,48 @@ using CNM = Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AvailablePrivateEndpointType"), OutputType(typeof(PSAvailablePrivateEndpointType))]
-    public class GetAzureAvailablePrivateEndpointTypeCommand : PrivateEndpointBaseCmdlet
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutoApprovedPrivateLinkService"), OutputType(typeof(PSAutoApprovedPrivateLinkService))]
+    public class GetAzureAutoApprovedPrivateLinkServiceCommand : PrivateLinkServiceBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
             HelpMessage = "The location.",
             ValueFromPipelineByPropertyName = true)]
-        [LocationCompleter("Microsoft.Network/locations/availablePrivateEndpointTypes")]
+        [LocationCompleter("Microsoft.Network/locations/autoApprovedPrivateLinkServices")]
         [ValidateNotNullOrEmpty]
-        public string Location { get; set; }
+        public virtual string Location { get; set; }
 
         [Parameter(
-         Mandatory = false,
-         ValueFromPipelineByPropertyName = true,
-         HelpMessage = "The resource group name.")]
+          Mandatory = false,
+          ValueFromPipelineByPropertyName = true,
+          HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
-        public string ResourceGroupName { get; set; }
+        public virtual string ResourceGroupName { get; set; }
 
         public override void Execute()
         {
             base.Execute();
 
-            IPage<AvailablePrivateEndpointType> availablePrivateEndpointList = null;
+            IPage<AutoApprovedPrivateLinkService> autoApprovedPrivateLinkServiceList = null;
+
             if (!string.IsNullOrEmpty(ResourceGroupName))
             {
-                availablePrivateEndpointList = this.NetworkClient.NetworkManagementClient.AvailablePrivateEndpointTypes.ListByResourceGroup(this.Location, this.ResourceGroupName);
+                autoApprovedPrivateLinkServiceList = this.PrivateLinkServiceClient.ListAutoApprovedPrivateLinkServicesByResourceGroup(this.Location, this.ResourceGroupName);
             }
             else
             {
-                availablePrivateEndpointList = this.NetworkClient.NetworkManagementClient.AvailablePrivateEndpointTypes.List(Location);
+                autoApprovedPrivateLinkServiceList = this.PrivateLinkServiceClient.ListAutoApprovedPrivateLinkServices(this.Location);
             }
 
-            List<PSAvailablePrivateEndpointType> psPrivateEndpoints = new List<PSAvailablePrivateEndpointType>();
-            foreach (var availablePrivateEndpoint in availablePrivateEndpointList)
+            List<PSAutoApprovedPrivateLinkService> psLists = new List<PSAutoApprovedPrivateLinkService>();
+            foreach(var autoApprovedPrivateLinkService in autoApprovedPrivateLinkServiceList)
             {
-                psPrivateEndpoints.Add(NetworkResourceManagerProfile.Mapper.Map<CNM.PSAvailablePrivateEndpointType>(availablePrivateEndpoint));
+                psLists.Add(NetworkResourceManagerProfile.Mapper.Map<PSAutoApprovedPrivateLinkService>(autoApprovedPrivateLinkService));
             }
 
-            WriteObject(psPrivateEndpoints, true);
+            WriteObject(psLists, true);
         }
     }
 }

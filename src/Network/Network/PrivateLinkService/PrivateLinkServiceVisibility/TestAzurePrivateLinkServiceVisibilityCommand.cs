@@ -20,52 +20,56 @@ using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
-using Microsoft.Rest.Azure;
 using CNM = Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AvailablePrivateEndpointType"), OutputType(typeof(PSAvailablePrivateEndpointType))]
-    public class GetAzureAvailablePrivateEndpointTypeCommand : PrivateEndpointBaseCmdlet
+    [Cmdlet("Test", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateLinkServiceVisibility"), OutputType(typeof(bool))]
+    public class TestAzurePrivateLinkServiceVisibilityCommand : PrivateLinkServiceBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
             HelpMessage = "The location.",
             ValueFromPipelineByPropertyName = true)]
-        [LocationCompleter("Microsoft.Network/locations/availablePrivateEndpointTypes")]
+        [LocationCompleter("Microsoft.Network/locations/checkPrivateLinkServiceVisibility")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
         [Parameter(
-         Mandatory = false,
-         ValueFromPipelineByPropertyName = true,
-         HelpMessage = "The resource group name.")]
+          Mandatory = false,
+          ValueFromPipelineByPropertyName = true,
+          HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
-        public string ResourceGroupName { get; set; }
+        public virtual string ResourceGroupName { get; set; }
+
+        [Parameter(
+           Mandatory = true,
+           HelpMessage = "The alias of private link service.",
+           ValueFromPipelineByPropertyName = false)]
+        [ValidateNotNullOrEmpty]
+        public string PrivateLinkServiceAlias { get; set; }
 
         public override void Execute()
         {
             base.Execute();
 
-            IPage<AvailablePrivateEndpointType> availablePrivateEndpointList = null;
-            if (!string.IsNullOrEmpty(ResourceGroupName))
+            var request = new Management.Network.Models.CheckPrivateLinkServiceVisibilityRequest();
+            request.PrivateLinkServiceAlias = PrivateLinkServiceAlias;
+
+            PrivateLinkServiceVisibility ret = null;
+            if(!string.IsNullOrEmpty(ResourceGroupName))
             {
-                availablePrivateEndpointList = this.NetworkClient.NetworkManagementClient.AvailablePrivateEndpointTypes.ListByResourceGroup(this.Location, this.ResourceGroupName);
+                ret = this.PrivateLinkServiceClient.CheckPrivateLinkServiceVisibilityByResourceGroup(this.Location, this.ResourceGroupName, request);
             }
             else
             {
-                availablePrivateEndpointList = this.NetworkClient.NetworkManagementClient.AvailablePrivateEndpointTypes.List(Location);
+                ret = this.PrivateLinkServiceClient.CheckPrivateLinkServiceVisibility(this.Location, request);
             }
 
-            List<PSAvailablePrivateEndpointType> psPrivateEndpoints = new List<PSAvailablePrivateEndpointType>();
-            foreach (var availablePrivateEndpoint in availablePrivateEndpointList)
-            {
-                psPrivateEndpoints.Add(NetworkResourceManagerProfile.Mapper.Map<CNM.PSAvailablePrivateEndpointType>(availablePrivateEndpoint));
-            }
-
-            WriteObject(psPrivateEndpoints, true);
+            WriteObject(ret.Visible);
         }
+
     }
 }

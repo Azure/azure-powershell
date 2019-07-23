@@ -25,7 +25,7 @@ namespace Commands.Network.Test.ScenarioTests
         {
         }
 
-        [Fact (Skip = "Skipping until PR with PrivateLink updates merged")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestPrivateLinkServiceCRUD()
