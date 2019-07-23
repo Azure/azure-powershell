@@ -228,14 +228,11 @@ function Test-LongTermRetentionV2
 {
 
 	# MANUAL INSTRUCTIONS
-	# Playback mode
-	#    Remove skip flag from test
-	# Record mode
-	#    Create a server and database and fill in the appropriate information below
-	#    Set the weekly retention on the database so that the first backup gets picked up, for example:
-	#    Set-AzSqlDatabaseLongTermRetentionPolicy -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $databaseName -WeeklyRetention P1W
-	#    Wait about 18 hours until it gets properly copied and you see the backup when run get backups, for example:
-	#    Get-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $serverName -DatabaeName $databaseName
+	# Create a server and database and fill in the appropriate information below
+	# Set the weekly retention on the database so that the first backup gets picked up, for example:
+	# Set-AzSqlDatabaseLongTermRetentionPolicy -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $databaseName -WeeklyRetention P1W
+	# Wait about 18 hours until it gets properly copied and you see the backup when run get backups, for example:
+	# Get-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $serverName -DatabaeName $databaseName
 	$resourceGroup = "Default-SQL-WestCentralUS"
 	$locationName = "westcentralus"
 	$serverName = "trgrie-ltr-server"
@@ -281,61 +278,6 @@ function Test-LongTermRetentionV2
 
 	# drop the restored db
 	Remove-AzSqlDatabase -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $restoredDatabase
-}
-
-function Test-LongTermRetentionV2ResourceGroupBased
-{
-
-	# MANUAL INSTRUCTIONS
-	# Playback mode
-	#    Remove skip flag from test
-	# Record mode
-	#    Create a server and database and fill in the appropriate information below
-	#    Set the weekly retention on the database so that the first backup gets picked up, for example:
-	#    Set-AzSqlDatabaseLongTermRetentionPolicy -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $databaseName -WeeklyRetention P1W
-	#    Wait about 18 hours until it gets properly copied and you see the backup when run get backups, for example:
-	#    Get-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $serverName -DatabaeName $databaseName -ResourceGroupName $resourceGroup
-	$resourceGroup = "brrg"
-	$locationName = "brazilsouth"
-	$serverName = "ltrtest3"
-	$databaseName = "mydb"
-	$restoredDatabase = "mydb_restore"
-	$databaseWithRemovableBackup = "mydb";
-
-	# Basic Get Tests
-	$backups = Get-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ResourceGroupName $resourceGroup
-	Assert-AreNotEqual $backups.Count 0
-	$backups = Get-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $serverName -ResourceGroupName $resourceGroup
-	Assert-AreNotEqual $backups.Count 0
-	$backups = Get-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $serverName -DatabaseName $databaseName -ResourceGroupName $resourceGroup
-	Assert-AreNotEqual $backups.Count 0
-	$backups = Get-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $serverName -DatabaseName $databaseName -BackupName $backups[0].BackupName -ResourceGroupName $resourceGroup
-	Assert-AreNotEqual $backups.Count 0
-
-	# Test Get Piping
-	$backups = Get-AzSqlDatabase -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $databaseName | Get-AzSqlDatabaseLongTermRetentionBackup
-	Assert-AreNotEqual $backups.Count 0
-	$backups = Get-AzSqlDatabase -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $databaseName | Get-AzSqlDatabaseLongTermRetentionBackup -BackupName $backups[0].BackupName
-	Assert-AreNotEqual $backups.Count 0
-
-	# Test Get Optional Parameters
-	$backups = Get-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $serverName -DatabaseName $databaseName -ResourceGroupName $resourceGroup -OnlyLatestPerDatabase -DatabaseState All
-	Assert-AreNotEqual $backups.Count 0
-
-	# Test Get Piping with Optional Parameters
-	$backups = Get-AzSqlDatabase -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $databaseName | Get-AzSqlDatabaseLongTermRetentionBackup -OnlyLatestPerDatabase
-	Assert-AreNotEqual $backups.Count 0
-
-	# Restore Test
-	$backups = Get-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ResourceGroupName $resourceGroup
-	$db = Restore-AzSqlDatabase -FromLongTermRetentionBackup -ResourceId $backups[0].ResourceId -ResourceGroupName $resourceGroup -ServerName $serverName -TargetDatabaseName $restoredDatabase
-	Assert-AreEqual $db.DatabaseName $restoredDatabase
-
-	# Test Remove with Piping
-	Get-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $serverName -DatabaseName $databaseWithRemovableBackup -BackupName $backups[0].BackupName -ResourceGroupName $resourceGroup | Remove-AzSqlDatabaseLongTermRetentionBackup -Force
-
-	# drop the restored db
-	Remove-AzSqlDatabase -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $restoredDatabase -Force
 }
 
 function Test-DatabaseGeoBackupPolicy
