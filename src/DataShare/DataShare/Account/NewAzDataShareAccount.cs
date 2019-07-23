@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.DataShare.Account
         [Parameter]
         public SwitchParameter AsJob { get; set; }
 
-        private const string ResourceType = "Data Share Account";
+        private const string ResourceType = "DataShare Account";
 
         public override void ExecuteCmdlet()
         {
