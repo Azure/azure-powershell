@@ -20,7 +20,6 @@ using Microsoft.Azure.Management.HealthcareApis.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -37,13 +36,13 @@ namespace Microsoft.Azure.Commands.HealthcareApisFhirService.Common
         protected const string HealthcareApisAccountCorsConfigNounStr = HealthcareApisAccountNounStr + "AuthenticationConfig";
         protected const string HealthcareApisAccountAccessPoliciesConfigNounStr = HealthcareApisAccountNounStr + "AccessPOliciesConfig";
 
-        protected const string HealthcareApisAccountNameAlias = "HealthcareApisAccountName";
+        protected const string HealthcareApisAccountNameAlias = "HealthcareApisName";
         protected const string AccountNameAlias = "AccountName";
 
         protected const string TagsAlias = "Tags";
 
         protected const string ResourceProviderName = "Microsoft.HealthcareApis";
-        protected const string ResourceTypeName = "accounts";
+        protected const string ResourceTypeName = "services";
 
         public IHealthcareApisManagementClient HealthcareApisClient
         {
@@ -63,25 +62,23 @@ namespace Microsoft.Azure.Commands.HealthcareApisFhirService.Common
             set { _healthcareApisManagementClientWrapper = new HealthcareApisManagementClientWrapper(value); }
         }
 
-        public string SubscriptionId
-        {
-            get
-            {
-                return DefaultProfile.DefaultContext.Subscription.Id.ToString();
-            }
-        }
-
         public string AccessPolicyID
         {
             get
             {
-                ActiveDirectoryClient _activeDirectoryClient = new ActiveDirectoryClient(DefaultProfile.DefaultContext);
-                ADObjectFilterOptions _options = new ADObjectFilterOptions()
+                if (!string.IsNullOrEmpty(DefaultProfile.DefaultContext.Account.Id))
                 {
-                    Id = DefaultProfile.DefaultContext.Account.Id
-                };
-
-                return _activeDirectoryClient.GetObjectId(_options).ToString();
+                    ActiveDirectoryClient _activeDirectoryClient = new ActiveDirectoryClient(DefaultProfile.DefaultContext);
+                    ADObjectFilterOptions _options = new ADObjectFilterOptions()
+                    {
+                        Id = DefaultProfile.DefaultContext.Account.Id
+                    };
+                    return _activeDirectoryClient.GetObjectId(_options).ToString();
+                }
+                else
+                {
+                    return Guid.NewGuid().ToString();
+                }
             }
         }
 
@@ -141,68 +138,6 @@ namespace Microsoft.Azure.Commands.HealthcareApisFhirService.Common
             resourceGroupName = null;
             resourceName = null;
             return false;
-        }
-
-        protected static class TagsConversionHelper
-        {
-            public static KeyValuePair<string, string> Create(Hashtable hashtable)
-            {
-                if (hashtable == null ||
-                    !hashtable.ContainsKey("Name"))
-                {
-                    return new KeyValuePair<string, string>();
-                }
-
-
-                return new KeyValuePair<string, string>(
-                    hashtable["Name"].ToString(),
-                    hashtable.ContainsKey("Value") ? hashtable["Value"].ToString() : string.Empty);
-            }
-
-            public static Dictionary<string, string> CreateTagDictionary(Hashtable[] hashtableArray)
-            {
-                Dictionary<string, string> tagDictionary = null;
-                if (hashtableArray != null && hashtableArray.Length > 0)
-                {
-                    tagDictionary = new Dictionary<string, string>();
-                    foreach (var tag in hashtableArray)
-                    {
-                        var tagValuePair = Create(tag);
-                        if (!string.IsNullOrEmpty(tagValuePair.Key))
-                        {
-                            if (tagValuePair.Value != null)
-                            {
-                                tagDictionary[tagValuePair.Key] = tagValuePair.Value;
-                            }
-                            else
-                            {
-                                tagDictionary[tagValuePair.Value] = "";
-                            }
-                        }
-                    }
-                }
-
-                return tagDictionary;
-            }
-
-            public static Hashtable[] CreateTagHashtable(IDictionary<string, string> dictionary)
-            {
-                if (dictionary == null)
-                {
-                    return new Hashtable[0];
-                }
-
-                List<Hashtable> tagHashtable = new List<Hashtable>();
-                foreach (string key in dictionary.Keys)
-                {
-                    tagHashtable.Add(new Hashtable
-                {
-                    {"Name", key},
-                    {"Value", dictionary[key]}
-                });
-                }
-                return tagHashtable.ToArray();
-            }
         }
     }
 }

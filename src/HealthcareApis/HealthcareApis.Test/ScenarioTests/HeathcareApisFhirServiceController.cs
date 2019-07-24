@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.HealthcareApisFhirService.Test.ScenarioTests
     using System.IO;
     using System.Linq;
     using Microsoft.Azure.Commands.Common.Authentication;
+    using Microsoft.Azure.Graph.RBAC.Version1_6;
     using Microsoft.Azure.Management.HealthcareApis;
     using Microsoft.Azure.Test.HttpRecorder;
     using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
@@ -36,6 +37,8 @@ namespace Microsoft.Azure.Commands.HealthcareApisFhirService.Test.ScenarioTests
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
         public HealthcareApisManagementClient HealthcareApisManagementClient { get; set; }
+
+        public GraphRbacManagementClient GraphRbacManagementClient { get; set; }
 
         public static HeathcareApisFhirServiceController NewInstance => new HeathcareApisFhirServiceController();
 
@@ -80,24 +83,23 @@ namespace Microsoft.Azure.Commands.HealthcareApisFhirService.Test.ScenarioTests
             var providersToIgnore = new Dictionary<string, string>
             {
                 {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"},
-                {"Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2017-05-10"},
-                {"Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient", "2016-09-01"}
             };
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
 
             using (var context = MockContext.Start(callingClassType, mockName))
             {
-                _helper.SetupEnvironment(AzureModule.AzureResourceManager);
-
+                
                 SetupManagementClients(context);
+                _helper.SetupEnvironment(AzureModule.AzureResourceManager);
                 var callingClassName = callingClassType.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries).Last();
                 _helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     _helper.RMProfileModule,
-                    _helper.GetRMModulePath(@"AzureRM.HealthcareApisFhirService.psd1"),
-                    "AzureRM.Resources.ps1");
+                    "AzureRM.Resources.ps1",
+                    _helper.GetRMModulePath(@"AzureRM.HealthcareApisFhirService.psd1"));
+
                 try
                 {
                     var psScripts = scriptBuilder?.Invoke();
@@ -117,8 +119,9 @@ namespace Microsoft.Azure.Commands.HealthcareApisFhirService.Test.ScenarioTests
         {
             ResourceManagementClient = GetResourceManagementClient(context);
             HealthcareApisManagementClient = GetHealthcareApisManagementClient(context);
+            GraphRbacManagementClient = GetGraphRBACManagementClient(context);
 
-            _helper.SetupManagementClients(ResourceManagementClient, HealthcareApisManagementClient);
+            _helper.SetupManagementClients(ResourceManagementClient, HealthcareApisManagementClient, GraphRbacManagementClient);
         }
 
         private static ResourceManagementClient GetResourceManagementClient(MockContext context)
@@ -130,5 +133,14 @@ namespace Microsoft.Azure.Commands.HealthcareApisFhirService.Test.ScenarioTests
         {
             return context.GetServiceClient<HealthcareApisManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
+
+        private static GraphRbacManagementClient GetGraphRBACManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<GraphRbacManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+
+
+       
     }
 }

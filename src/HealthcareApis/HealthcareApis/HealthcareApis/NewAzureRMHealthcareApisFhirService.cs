@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.HealthcareApisFhirService.Commands
     /// <summary>
     /// Class that creates a new instance of fhir service.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMStoragePrefix + "HealthcareApisFhirService", DefaultParameterSetName = ServiceNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSFhirAccount))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HealthcareApisFhirService", DefaultParameterSetName = ServiceNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSFhirAccount))]
     public class NewAzureRmHealthcareApisFhirService : HealthcareApisBaseCmdlet
     {
 
@@ -174,7 +174,6 @@ namespace Microsoft.Azure.Commands.HealthcareApisFhirService.Commands
         [ValidateNotNullOrEmpty]
         public string FhirVersion { get; set; }
 
-
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -187,6 +186,7 @@ namespace Microsoft.Azure.Commands.HealthcareApisFhirService.Commands
                         {
                            if(AccessPolicyObjectIds==null || AccessPolicyObjectIds.Length == 0)
                             {
+                                AccessPolicyObjectIds = new string[1];
                                 string objectID = base.AccessPolicyID;
                                 AccessPolicyObjectIds[0] = objectID;
                             }
@@ -196,7 +196,6 @@ namespace Microsoft.Azure.Commands.HealthcareApisFhirService.Commands
                             {
                                 accessPolicies.Add(new ServiceAccessPolicyEntry(objectId));
                             }
-
 
                             ServicesDescription servicesDescription = new ServicesDescription()
                             {
@@ -210,7 +209,7 @@ namespace Microsoft.Azure.Commands.HealthcareApisFhirService.Commands
                                 }
                             };
 
-                            if (ShouldProcess(this.Name, Properties.Resources.createService))
+                            if (ShouldProcess(this.Name, Resources.createService))
                             {
                                 var createAccountResponse = this.HealthcareApisClient.Services.CreateOrUpdate(
                                                this.ResourceGroupName,
@@ -219,13 +218,12 @@ namespace Microsoft.Azure.Commands.HealthcareApisFhirService.Commands
 
                                 var healthcareApisFhirServiceAccount = this.HealthcareApisClient.Services.Get(this.ResourceGroupName, this.Name);
 
-                                WriteObject(healthcareApisFhirServiceAccount);
+                                WriteObject(createAccountResponse);
                             }
                             break;
                         }
                     case ServiceConfigParameterSet:
                         {
-
                             IList<PSAccessPolicyEntry> entries = FhirServiceConfig.AccessPolicies;
                             List<ServiceAccessPolicyEntry> accessPolicies = new List<ServiceAccessPolicyEntry>();
 
