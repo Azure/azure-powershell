@@ -18,6 +18,7 @@ New-AzDeployment [-Name <String>] -Location <String> -TemplateFile <String>
  [-Mode <String>] [-DeploymentDebugLogLevel <String>] [-SkipTemplateParameterPrompt]
  [-AsJob] [-Confirm] [-ApiVersion <String>] [-Pre] [-WhatIf]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
 
 ### SubscriptionParameterSetWithTemplateFileParameterFile
 ```
