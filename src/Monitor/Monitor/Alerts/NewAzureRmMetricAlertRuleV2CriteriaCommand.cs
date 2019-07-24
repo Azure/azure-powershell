@@ -25,11 +25,30 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
     /// <summary>
     /// Create Metric Criteria
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MetricAlertRuleV2Criteria", DefaultParameterSetName = StaticThresholdParameterSet), OutputType(typeof(PSMetricCriteria))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MetricAlertRuleV2Criteria", DefaultParameterSetName = StaticThresholdParameterSet), OutputType(typeof(IPSMultiMetricCriteria))]
     public class NewAzureRmMetricAlertRuleV2CriteriaCommand : MonitorCmdletBase
     {
         const string StaticThresholdParameterSet = "StaticThresholdParameterSet";
         const string DynamicThresholdParameterSet = "DynamicThresholdParameterSet";
+
+        // Create a script for the Operator parameter completer based on the active Parameter Set 
+        // Since Parameter Set isn't accesible - check if one of the dynamic threshold parameters are assigned
+        const string IsDynamicThresholdParameterSetSelectedScript = "$fakeBoundParameters.Dynamic -or $fakeBoundParameters.ThresholdSensitivity -ne $null -or $fakeBoundParameters.NumberOfViolations -ne $null -or $fakeBoundParameters.NumberOfExaminedAggregatedPoints -ne $null -or $fakeBoundParameters.IgnoreDataBefore -ne $null";
+        const string DynamicOperatorValues = "'GreaterThan', 'LessThan', 'GreaterOrLessThan'";
+        const string StaticOperatorValues = "'GreaterThan', 'GreaterThanOrEqual', 'LessThan', 'LessThanOrEqual'";
+        const string OperatorCompleterScript = "param($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameters)\n if (" + IsDynamicThresholdParameterSetSelectedScript + ") {" + DynamicOperatorValues + " } else {" + StaticOperatorValues + "}";
+
+        /// <summary>
+        /// Gets or sets the rule DynamicThreshold
+        /// </summary>
+        [Parameter(ParameterSetName = DynamicThresholdParameterSet, Mandatory = true, HelpMessage = "Dynamic Threshold Type")]
+        public SwitchParameter Dynamic { get; set; }
+
+        /// <summary>
+        /// Gets or sets the rule DynamicThreshold
+        /// </summary>
+        [Parameter(ParameterSetName = StaticThresholdParameterSet, Mandatory = false, HelpMessage = "Static Threshold Type")]
+        public SwitchParameter Static { get; set; }
 
         /// <summary>
         /// Gets or sets the MetricName parameter
@@ -61,7 +80,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// Gets or sets the rule condition operator
         /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "The rule condition operator")]
-        [PSArgumentCompleter("GreaterThan", "GreaterThanOrEqual", "LessThan", "LessThanOrEqual")]
+        [PSArgumentCompleterWithScript(OperatorCompleterScript)]
         public String Operator { get; set; }
 
         /// <summary>
@@ -69,70 +88,77 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// </summary>
         [Parameter(ParameterSetName = StaticThresholdParameterSet, Mandatory = true,  HelpMessage = "The threshold for rule condition")]
         public double Threshold { get; set; }
-
-        /// <summary>
-        /// Gets or sets the rule DynamicThreshold
-        /// </summary>
-        [Parameter(ParameterSetName = DynamicThresholdParameterSet, Mandatory = true, HelpMessage = "The Dynamic Threshold for rule condition")]
-        public string DynamicThreshold { get; set; }
-
+        
         /// <summary>
         /// Gets or sets the rule sensitivity
         /// </summary>
         [Parameter(ParameterSetName = DynamicThresholdParameterSet, Mandatory = false, HelpMessage = "The sensitivity for rule condition")]
         [PSArgumentCompleter("Low", "Medium", "High")]
-        public String Sensitivity { get; set; }
+        public String ThresholdSensitivity { get; set; } = "Medium";
 
         /// <summary>
-        /// Gets or sets the rule FailingPeriod
+        /// Gets or sets the rule Number of violated points
         /// </summary>
-        [Parameter(ParameterSetName = DynamicThresholdParameterSet, Mandatory = false, HelpMessage = "The Failing Period for rule condition")]
-        public int FailingPeriod { get; set; }
+        [Parameter(ParameterSetName = DynamicThresholdParameterSet, Mandatory = false, HelpMessage = "The minimum number of violations required within the selected lookback time window required to raise an alert")]
+        public int NumberOfViolations { get; set; } = 4;
 
         /// <summary>
         /// Gets or sets the rule TotalPeriod
         /// </summary>
-        [Parameter(ParameterSetName = DynamicThresholdParameterSet, Mandatory = false,  HelpMessage = "The Total Period for rule condition")]
-        public int TotalPeriod { get; set; }
+        [Parameter(ParameterSetName = DynamicThresholdParameterSet, Mandatory = false, HelpMessage = "The Total number of examined points")]
+        public int NumberOfExaminedAggregatedPoints { get; set; } = 4;
 
         /// <summary>
         /// Gets or set IgnoreDataBefore  parameter
         /// </summary>
-        [Parameter(ParameterSetName = DynamicThresholdParameterSet, Mandatory = false, HelpMessage = "The IgnoreDataBefore parameter")]
-        public DateTime IgnoreDataBefore { get; set; }
+        [Parameter(ParameterSetName = DynamicThresholdParameterSet, Mandatory = false, HelpMessage = "The date from which to start learning the metric historical data and calculate the dynamic thresholds")]
+        public DateTime? IgnoreDataBefore { get; set; }
 
         protected override void ProcessRecordInternal()
         {
-            if(String.IsNullOrWhiteSpace(this.DynamicThreshold))
-            {
-                List<MetricDimension> metricDimensions = new List<MetricDimension>();
+            List<MetricDimension> metricDimensions = new List<MetricDimension>();
 
-                if (this.DimensionSelection!= null && this.DimensionSelection.Length > 0)
+            if (this.DimensionSelection!= null && this.DimensionSelection.Length > 0)
+            {
+                foreach (var dimension in this.DimensionSelection)
                 {
-                    foreach (var dimension in this.DimensionSelection)
+                    if (dimension.IncludeValues != null && dimension.IncludeValues.Count() > 0)
                     {
-                        if (dimension.IncludeValues != null && dimension.IncludeValues.Count() > 0)
-                        {
-                            metricDimensions.Add(new MetricDimension(dimension.Dimension, "Include", dimension.IncludeValues));
-                        }
-                        if (dimension.ExcludeValues != null && dimension.ExcludeValues.Count() > 0)
-                        {
-                            metricDimensions.Add(new MetricDimension(dimension.Dimension, "Exclude", dimension.ExcludeValues));
-                        }
+                        metricDimensions.Add(new MetricDimension(dimension.Dimension, "Include", dimension.IncludeValues));
+                    }
+                    if (dimension.ExcludeValues != null && dimension.ExcludeValues.Count() > 0)
+                    {
+                        metricDimensions.Add(new MetricDimension(dimension.Dimension, "Exclude", dimension.ExcludeValues));
                     }
                 }
-                else
-                {
-                    metricDimensions = null;
-                }
-                MetricCriteria metricCriteria = new MetricCriteria(name: "metric1", metricName: this.MetricName, operatorProperty: this.Operator, timeAggregation: this.TimeAggregation, threshold: this.Threshold, metricNamespace: this.MetricNamespace, dimensions: metricDimensions);
-                PSMetricCriteria result = new PSMetricCriteria(metricCriteria);
-                WriteObject(sendToPipeline: result);
             }
             else
             {
-                WriteExceptionError(new Exception("Creating criteria for Dynamic Threshold is not yet supported"));
+                metricDimensions = null;
             }
+
+            IPSMultiMetricCriteria result;
+            if (!this.Dynamic.IsPresent)
+            {
+                MetricCriteria metricCriteria = new MetricCriteria(name: "metric1", metricName: this.MetricName, operatorProperty: this.Operator, timeAggregation: this.TimeAggregation, threshold: this.Threshold, metricNamespace: this.MetricNamespace, dimensions: metricDimensions);
+                result = new PSStaticMetricCriteria(metricCriteria);
+            }
+            else
+            {
+                DynamicThresholdFailingPeriods failingPeriods = new DynamicThresholdFailingPeriods(this.NumberOfExaminedAggregatedPoints, this.NumberOfViolations);
+                DynamicMetricCriteria dynamicMetricCriteria = new DynamicMetricCriteria(name: "metric1",
+                    metricName: this.MetricName,
+                    operatorProperty: this.Operator,
+                    timeAggregation: this.TimeAggregation,
+                    metricNamespace: this.MetricNamespace,
+                    dimensions: metricDimensions,
+                    failingPeriods: failingPeriods,
+                    alertSensitivity: this.ThresholdSensitivity,
+                    ignoreDataBefore: this.IgnoreDataBefore);
+                result = new PSDynamicMetricCriteria(dynamicMetricCriteria);
+            }
+
+            WriteObject(sendToPipeline: result);
         }
     }
 }
