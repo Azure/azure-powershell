@@ -18,9 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-- Remove missing cmdlet referenced in `New-AzResourceGroupDeployment` documentation
-- Update policy cmdlets to use new api version 2019-01-01
-- Add support for new api version 2019-05-10
+* Remove missing cmdlet referenced in `New-AzResourceGroupDeployment` documentation
+* Update policy cmdlets to use new api version 2019-01-01
+* Add support for new api version 2019-05-10 for `New-AzResourceGroupDeployment`
+    - Add support for `copy.count = 0` for variables, resources and properties
+    - Resources with `condition = false` or `copy.count = 0` will be deleted in complete mode
 
 ## Version 1.6.0
 - Fix help text for Get-AzPolicyState -Top parameter
