@@ -35,6 +35,11 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         private const int RowsPerPage = 1000;
 
         /// <summary>
+        /// Maximum number of subscriptions for request
+        /// </summary>
+        private const int SubscriptionLimit = 1000;
+
+        /// <summary>
         /// Gets or sets the query.
         /// </summary>s
         [Parameter(Mandatory = true, Position = 0, HelpMessage = "Resource Graph query")]
@@ -97,6 +102,14 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                             ErrorCategory.InvalidArgument, null);
                 this.WriteError(errorRecord);
                 return;
+            }
+
+            if (subscriptions.Count > SubscriptionLimit)
+            {
+                subscriptions = subscriptions.Take(SubscriptionLimit).ToList();
+                this.WriteWarning("The query included more subscriptions than allowed. " +
+                    $"Only the first {SubscriptionLimit} subscriptions were included for the results. " +
+                    $"To use more than {SubscriptionLimit} subscriptions, see the docs for examples: https://aka.ms/arg-error-toomanysubs");
             }
 
             var first = this.MyInvocation.BoundParameters.ContainsKey("First") ? this.First : 100;
