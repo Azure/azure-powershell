@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.HealthcareApisFhirService.Commands
         protected const string ServiceNameParameterSet = "ServiceNameParameterSet";
         protected const string ResourceIdConfigParameterSet = "ResourceIdConfigParameterSet";
         protected const string ResourceIdParameterSet = "ResourceIdParameterSet";
-        protected const string InoutObjectParameterSet = "InoutObjectParameterSet";
+        protected const string InputObjectParameterSet = "InputObjectParameterSet";
 
         [Parameter( Mandatory = true,
         ParameterSetName = ServiceNameParameterSet,
@@ -132,12 +132,12 @@ namespace Microsoft.Azure.Commands.HealthcareApisFhirService.Commands
         [Parameter(Mandatory = false,ParameterSetName = ServiceNameParameterSet,HelpMessage = "Cors Max Age.")]
         [Parameter(Mandatory = false,ParameterSetName = ResourceIdParameterSet,HelpMessage = "Cors Max Age.")]
         [ValidateNotNullOrEmpty]
-        public int CorsMaxAge { get; set; }
+        public int? CorsMaxAge { get; set; }
 
         [Parameter(Mandatory = false,ParameterSetName = ServiceNameParameterSet, HelpMessage = "Cors Allow Credentials.")]
         [Parameter(Mandatory = false, ParameterSetName = ResourceIdParameterSet, HelpMessage = "Cors Allow Credentials.")]
         [ValidateNotNullOrEmpty]
-        public bool CorsAllowCredentials { get; set; }
+        public bool? CorsAllowCredentials { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = ServiceNameParameterSet, HelpMessage = "List of Access Policy Object IDs.")]
         [Parameter(Mandatory = false, ParameterSetName = ResourceIdParameterSet, HelpMessage = "List of Access Policy Object IDs.")]
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Commands.HealthcareApisFhirService.Commands
         [Parameter(Mandatory = false, ParameterSetName = ResourceIdParameterSet, HelpMessage = "List of tags.")]
         [Parameter(Mandatory = false, ParameterSetName = ServiceNameParameterSet, HelpMessage = "List of tags.")]
         [Parameter(Mandatory = false, ParameterSetName = ResourceIdConfigParameterSet, HelpMessage = "List of tags.")]
-        [Parameter(Mandatory = false, ParameterSetName = InoutObjectParameterSet, HelpMessage = "List of tags.")]
+        [Parameter(Mandatory = false, ParameterSetName = InputObjectParameterSet, HelpMessage = "List of tags.")]
         [ValidateNotNullOrEmpty]
         public string[] Tags { get; set; }
 
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Commands.HealthcareApisFhirService.Commands
         public PSServiceConfig FhirServiceConfig { get; set; }
 
 
-        [Parameter(ParameterSetName = InoutObjectParameterSet, HelpMessage = "HealthcareApis fhir service piped from Get-AzHealthcareApisFhirService.", ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = InputObjectParameterSet, HelpMessage = "HealthcareApis fhir service piped from Get-AzHealthcareApisFhirService.", ValueFromPipeline = true)]
         public PSFhirAccount InputObject { get; set; }
 
 
@@ -179,11 +179,10 @@ namespace Microsoft.Azure.Commands.HealthcareApisFhirService.Commands
                 switch (ParameterSetName)
                 {
                     case ServiceNameParameterSet:
-                    {
+                        {
+                            List<ServiceAccessPolicyEntry> accessPolicies = new List<ServiceAccessPolicyEntry>();
                             if (AccessPolicyObjectIds != null && AccessPolicyObjectIds.Length > 0)
                             {
-                                List<ServiceAccessPolicyEntry> accessPolicies = new List<ServiceAccessPolicyEntry>();
-
                                 foreach (string objectId in AccessPolicyObjectIds)
                                 {
                                     accessPolicies.Add(new ServiceAccessPolicyEntry(objectId));
@@ -192,55 +191,40 @@ namespace Microsoft.Azure.Commands.HealthcareApisFhirService.Commands
 
                             var healthcareApisAccount = this.HealthcareApisClient.Services.Get(this.ResourceGroupName, this.Name);
 
-                            ServicesDescription servicesDescription = new ServicesDescription()
+                            foreach (ServiceAccessPolicyEntry objectId in healthcareApisAccount.Properties.AccessPolicies)
                             {
-                                Location = healthcareApisAccount.Location,
-                                Properties = new ServicesProperties()
-                                {
-                                    AuthenticationConfiguration = new ServiceAuthenticationConfigurationInfo() { Authority = Authority, Audience = Audience },
-                                    CosmosDbConfiguration = new ServiceCosmosDbConfigurationInfo() { OfferThroughput = CosmosOfferThroughput },
-                                    CorsConfiguration = new ServiceCorsConfigurationInfo() { Origins = CorsOrigins, Headers = CorsHeaders, Methods = CorsMethods, MaxAge = CorsMaxAge, AllowCredentials = CorsAllowCredentials },
-                                    AccessPolicies = null
-                                }
-                            };
+                                accessPolicies.Add(objectId);
+                            }
 
-                            var createAccountResponse = this.HealthcareApisClient.Services.CreateOrUpdate(
-                                                InputObject.ResourceGroupName,
-                                                InputObject.Name,
-                                                servicesDescription);
+                            ServicesDescription servicesDescription = GenerateServiceDescription(healthcareApisAccount, accessPolicies);
+
+                            var createAccountResponse = this.HealthcareApisClient.Services.CreateOrUpdate(this.ResourceGroupName, this.Name, servicesDescription);
 
                             break;
                         }
                     case ServiceConfigParameterSet:
                     {
+                            IList<PSAccessPolicyEntry> entries = FhirServiceConfig.AccessPolicies;
                             List<ServiceAccessPolicyEntry> accessPolicies = new List<ServiceAccessPolicyEntry>();
-                            if (AccessPolicyObjectIds != null && AccessPolicyObjectIds.Length > 0)
+
+                            if (entries != null && entries.Count > 0)
                             {
-
-
-                                foreach (string objectId in AccessPolicyObjectIds)
+                                foreach (PSAccessPolicyEntry objectId in entries)
                                 {
-                                    accessPolicies.Add(new ServiceAccessPolicyEntry(objectId));
+                                    accessPolicies.Add(new ServiceAccessPolicyEntry(objectId.ToString()));
                                 }
                             }
 
                             var healthcareApisAccount = this.HealthcareApisClient.Services.Get(this.ResourceGroupName, this.Name);
 
-                            ServicesDescription servicesDescription = new ServicesDescription()
+                            foreach (ServiceAccessPolicyEntry objectId in healthcareApisAccount.Properties.AccessPolicies)
                             {
-                                Location = healthcareApisAccount.Location,
-                                Properties = new ServicesProperties()
-                                {
-                                    AuthenticationConfiguration = new ServiceAuthenticationConfigurationInfo() { Authority = FhirServiceConfig.AuthenticationConfiguration.Authority, Audience = FhirServiceConfig.AuthenticationConfiguration.Audience },
-                                    CosmosDbConfiguration = new ServiceCosmosDbConfigurationInfo() { OfferThroughput = FhirServiceConfig.CosmosDbConfiguration.OfferThroughput },
-                                    CorsConfiguration = new ServiceCorsConfigurationInfo() { Origins = FhirServiceConfig.CorsConfiguration.Origins, Headers = FhirServiceConfig.CorsConfiguration.Headers, Methods = FhirServiceConfig.CorsConfiguration.Methods, MaxAge = FhirServiceConfig.CorsConfiguration.MaxAge, AllowCredentials = FhirServiceConfig.CorsConfiguration.AllowCredentials },
-                                    AccessPolicies = accessPolicies
-                                }
-                            };
-                            var createAccountResponse = this.HealthcareApisClient.Services.CreateOrUpdate(
-                                             InputObject.ResourceGroupName,
-                                             InputObject.Name,
-                                             servicesDescription);
+                                accessPolicies.Add(objectId);
+                            }
+
+                            ServicesDescription servicesDescription = ServiceConfigToServiceDescription(healthcareApisAccount, accessPolicies);
+
+                            var createAccountResponse = this.HealthcareApisClient.Services.CreateOrUpdate(this.ResourceGroupName, this.Name, servicesDescription);
                             break;
                         }
                     case ResourceIdConfigParameterSet:
@@ -249,11 +233,44 @@ namespace Microsoft.Azure.Commands.HealthcareApisFhirService.Commands
                         string name = null;
                         ValidateAndExtractName(this.ResourceId, out rgName, out name);
 
+                            IList<PSAccessPolicyEntry> entries = FhirServiceConfig.AccessPolicies;
+                            List<ServiceAccessPolicyEntry> accessPolicies = new List<ServiceAccessPolicyEntry>();
+
+                            if (entries != null && entries.Count > 0)
+                            {
+                                foreach (PSAccessPolicyEntry objectId in entries)
+                                {
+                                    accessPolicies.Add(new ServiceAccessPolicyEntry(objectId.ToString()));
+                                }
+                            }
+
+                            var healthcareApisAccount = this.HealthcareApisClient.Services.Get(rgName, name);
+
+                            foreach (ServiceAccessPolicyEntry objectId in healthcareApisAccount.Properties.AccessPolicies)
+                            {
+                                accessPolicies.Add(objectId);
+                            }
+
+                            if (FhirServiceConfig != null)
+                            {
+                                ServicesDescription servicesDescription = ServiceConfigToServiceDescription(healthcareApisAccount, accessPolicies);
+
+                                healthcareApisAccount = this.HealthcareApisClient.Services.CreateOrUpdate(rgName, name, servicesDescription);
+                            }
+
+                            WriteObject(healthcareApisAccount);
+
+                            break;
+                    }
+                    case ResourceIdParameterSet:
+                        {
+                            string rgName = null;
+                            string name = null;
+                            ValidateAndExtractName(this.ResourceId, out rgName, out name);
+
                             List<ServiceAccessPolicyEntry> accessPolicies = new List<ServiceAccessPolicyEntry>();
                             if (AccessPolicyObjectIds != null && AccessPolicyObjectIds.Length > 0)
                             {
-                                
-
                                 foreach (string objectId in AccessPolicyObjectIds)
                                 {
                                     accessPolicies.Add(new ServiceAccessPolicyEntry(objectId));
@@ -262,60 +279,22 @@ namespace Microsoft.Azure.Commands.HealthcareApisFhirService.Commands
 
                             var healthcareApisAccount = this.HealthcareApisClient.Services.Get(rgName, name);
 
-                            ServicesDescription servicesDescription = new ServicesDescription()
+                            foreach (ServiceAccessPolicyEntry objectId in healthcareApisAccount.Properties.AccessPolicies)
                             {
-                                Location = healthcareApisAccount.Location,
-                                Properties = new ServicesProperties()
-                                {
-                                    AuthenticationConfiguration = new ServiceAuthenticationConfigurationInfo() { Authority = FhirServiceConfig.AuthenticationConfiguration.Authority, Audience = FhirServiceConfig.AuthenticationConfiguration.Audience },
-                                    CosmosDbConfiguration = new ServiceCosmosDbConfigurationInfo() { OfferThroughput = FhirServiceConfig.CosmosDbConfiguration.OfferThroughput },
-                                    CorsConfiguration = new ServiceCorsConfigurationInfo() { Origins = FhirServiceConfig.CorsConfiguration.Origins, Headers = FhirServiceConfig.CorsConfiguration.Headers, Methods = FhirServiceConfig.CorsConfiguration.Methods, MaxAge = FhirServiceConfig.CorsConfiguration.MaxAge, AllowCredentials = FhirServiceConfig.CorsConfiguration.AllowCredentials },
-                                    AccessPolicies = accessPolicies
-                                }
-                            };
-                            var createAccountResponse = this.HealthcareApisClient.Services.CreateOrUpdate(
-                                             InputObject.ResourceGroupName,
-                                             InputObject.Name,
-                                             servicesDescription);
-                            break;
-                    }
-                    case ResourceIdParameterSet:
-                    {
-                        string rgName = null;
-                        string name = null;
-                        ValidateAndExtractName(this.ResourceId, out rgName, out name);
-
-                        if (AccessPolicyObjectIds != null && AccessPolicyObjectIds.Length > 0)
-                        { List<ServiceAccessPolicyEntry> accessPolicies = new List<ServiceAccessPolicyEntry>();
-                           
-                            foreach (string objectId in AccessPolicyObjectIds)
-                            {
-                                accessPolicies.Add(new ServiceAccessPolicyEntry(objectId));
+                                accessPolicies.Add(objectId);
                             }
-                        }
 
-                        var healthcareApisAccount = this.HealthcareApisClient.Services.Get(this.ResourceGroupName, this.Name);
+                            ServicesDescription servicesDescription = GenerateServiceDescription(healthcareApisAccount, accessPolicies);
 
-                        ServicesDescription servicesDescription = new ServicesDescription()
-                        {
-                            Location = healthcareApisAccount.Location,
-                            Properties = new ServicesProperties()
-                            {
-                                AuthenticationConfiguration = new ServiceAuthenticationConfigurationInfo() { Authority = Authority, Audience = Audience },
-                                CosmosDbConfiguration = new ServiceCosmosDbConfigurationInfo() { OfferThroughput = CosmosOfferThroughput },
-                                CorsConfiguration = new ServiceCorsConfigurationInfo() { Origins = CorsOrigins, Headers = CorsHeaders, Methods = CorsMethods, MaxAge = CorsMaxAge, AllowCredentials = CorsAllowCredentials },
-                                AccessPolicies = null
-                            }
-                        };
-
-                        var createAccountResponse = this.HealthcareApisClient.Services.CreateOrUpdate(
-                                            InputObject.ResourceGroupName,
-                                            InputObject.Name,
-                                            servicesDescription);
+                            var healthcareApisFhirServiceUpdateAccount = this.HealthcareApisClient.Services.CreateOrUpdate(
+                                                rgName,
+                                                name,
+                                                servicesDescription);
+                            WriteObject(healthcareApisFhirServiceUpdateAccount);
 
                             break;
                         }
-                    case InoutObjectParameterSet:
+                    case InputObjectParameterSet:
                         {
                             IList<PSAccessPolicyEntry> entries = InputObject.Properties.AccessPolicies;
                             List<ServiceAccessPolicyEntry> accessPolicies = new List<ServiceAccessPolicyEntry>();
@@ -324,25 +303,118 @@ namespace Microsoft.Azure.Commands.HealthcareApisFhirService.Commands
                             {
                                 accessPolicies.Add(new ServiceAccessPolicyEntry(entry.ObjectId));
                             }
-                            ServicesDescription servicesDescription = new ServicesDescription()
+
+                            var healthcareApisAccount = this.HealthcareApisClient.Services.Get(InputObject.ResourceGroupName,
+                                             InputObject.Name);
+
+                            foreach (ServiceAccessPolicyEntry objectId in healthcareApisAccount.Properties.AccessPolicies)
                             {
-                                Location = InputObject.Location,
-                                Properties = new ServicesProperties()
-                                {
-                                    AuthenticationConfiguration = new ServiceAuthenticationConfigurationInfo() { Authority = InputObject.Properties.AuthenticationConfiguration.Authority, Audience = InputObject.Properties.AuthenticationConfiguration.Audience },
-                                    CosmosDbConfiguration = new ServiceCosmosDbConfigurationInfo() { OfferThroughput = InputObject.Properties.CosmosDbConfiguration.OfferThroughput },
-                                    CorsConfiguration = new ServiceCorsConfigurationInfo() { Origins = InputObject.Properties.CorsConfiguration.Origins, Headers = InputObject.Properties.CorsConfiguration.Headers, Methods = InputObject.Properties.CorsConfiguration.Methods, MaxAge = InputObject.Properties.CorsConfiguration.MaxAge, AllowCredentials = InputObject.Properties.CorsConfiguration.AllowCredentials },
-                                    AccessPolicies = accessPolicies
-                                }
-                            };
-                            var createAccountResponse = this.HealthcareApisClient.Services.CreateOrUpdate(
+                                accessPolicies.Add(objectId);
+                            }
+
+                           
+
+                            ServicesDescription servicesDescription = InputObjectToServiceDescription(healthcareApisAccount,accessPolicies);
+                            var healthcareApisFhirServiceUpdateAccount = this.HealthcareApisClient.Services.CreateOrUpdate(
                                              InputObject.ResourceGroupName,
                                              InputObject.Name,
                                              servicesDescription);
+
+                            WriteObject(healthcareApisFhirServiceUpdateAccount);
                             break;
-                    }
+                        }
                 }
             });
+        }
+
+        private ServicesDescription GenerateServiceDescription(ServicesDescription healthcareApisAccount, List<ServiceAccessPolicyEntry> accessPolicies)
+        {
+            return new ServicesDescription()
+            {
+                Location = healthcareApisAccount.Location,
+                Properties = new ServicesProperties()
+                {
+                    AuthenticationConfiguration = new ServiceAuthenticationConfigurationInfo()
+                    {
+                        Authority = Authority ?? healthcareApisAccount.Properties.AuthenticationConfiguration.Authority,
+                        Audience = Audience ?? healthcareApisAccount.Properties.AuthenticationConfiguration.Audience,
+                        SmartProxyEnabled = SmartProxyEnabled != healthcareApisAccount.Properties.AuthenticationConfiguration.SmartProxyEnabled ? healthcareApisAccount.Properties.AuthenticationConfiguration.SmartProxyEnabled : this.SmartProxyEnabled
+                    },
+                    CosmosDbConfiguration = new ServiceCosmosDbConfigurationInfo()
+                    {
+                        OfferThroughput = CosmosOfferThroughput != healthcareApisAccount.Properties.CosmosDbConfiguration.OfferThroughput ? CosmosOfferThroughput : healthcareApisAccount.Properties.CosmosDbConfiguration.OfferThroughput
+                    },
+                    CorsConfiguration = new ServiceCorsConfigurationInfo()
+                    {
+                        Origins = CorsOrigins ?? healthcareApisAccount.Properties.CorsConfiguration.Origins,
+                        Headers = CorsHeaders ?? healthcareApisAccount.Properties.CorsConfiguration.Headers,
+                        Methods = CorsMethods ?? healthcareApisAccount.Properties.CorsConfiguration.Methods,
+                        MaxAge = CorsMaxAge ?? healthcareApisAccount.Properties.CorsConfiguration.MaxAge,
+                        AllowCredentials = CorsAllowCredentials ?? healthcareApisAccount.Properties.CorsConfiguration.AllowCredentials
+                    },
+                    AccessPolicies = accessPolicies
+                }
+            };
+        }
+
+        private ServicesDescription InputObjectToServiceDescription(ServicesDescription healthcareApisAccount, List<ServiceAccessPolicyEntry> accessPolicies)
+        {
+            return new ServicesDescription()
+            {
+                Location = InputObject.Location,
+                Properties = new ServicesProperties()
+                {
+                    AuthenticationConfiguration = new ServiceAuthenticationConfigurationInfo()
+                    {
+                        Authority = InputObject.Properties.AuthenticationConfiguration.Authority?? healthcareApisAccount.Properties.AuthenticationConfiguration.Authority,
+                        Audience = InputObject.Properties.AuthenticationConfiguration.Audience ?? healthcareApisAccount.Properties.AuthenticationConfiguration.Audience,
+                        SmartProxyEnabled = InputObject.Properties.AuthenticationConfiguration.SmartProxyEnabled != healthcareApisAccount.Properties.AuthenticationConfiguration.SmartProxyEnabled ? InputObject.Properties.AuthenticationConfiguration.SmartProxyEnabled : healthcareApisAccount.Properties.AuthenticationConfiguration.SmartProxyEnabled
+                    },
+                    CosmosDbConfiguration = new ServiceCosmosDbConfigurationInfo()
+                    {
+                        OfferThroughput = InputObject.Properties.CosmosDbConfiguration.OfferThroughput != healthcareApisAccount.Properties.CosmosDbConfiguration.OfferThroughput ? InputObject.Properties.CosmosDbConfiguration.OfferThroughput : healthcareApisAccount.Properties.CosmosDbConfiguration.OfferThroughput
+                    },
+                    CorsConfiguration = new ServiceCorsConfigurationInfo()
+                    {
+                        Origins = InputObject.Properties.CorsConfiguration.Origins ?? healthcareApisAccount.Properties.CorsConfiguration.Origins,
+                        Headers = InputObject.Properties.CorsConfiguration.Headers ?? healthcareApisAccount.Properties.CorsConfiguration.Headers,
+                        Methods = InputObject.Properties.CorsConfiguration.Methods ?? healthcareApisAccount.Properties.CorsConfiguration.Methods,
+                        MaxAge = InputObject.Properties.CorsConfiguration.MaxAge ?? healthcareApisAccount.Properties.CorsConfiguration.MaxAge,
+                        AllowCredentials = InputObject.Properties.CorsConfiguration.AllowCredentials ?? healthcareApisAccount.Properties.CorsConfiguration.AllowCredentials
+                    },
+                    AccessPolicies = accessPolicies
+                }
+            };
+        }
+
+        private ServicesDescription ServiceConfigToServiceDescription(ServicesDescription healthcareApisAccount, List<ServiceAccessPolicyEntry> accessPolicies)
+        {
+            return new ServicesDescription()
+            {
+                Location = healthcareApisAccount.Location,
+                Properties = new ServicesProperties()
+                {
+                    AuthenticationConfiguration = new ServiceAuthenticationConfigurationInfo()
+                    {
+                        Authority = FhirServiceConfig?.AuthenticationConfiguration?.Authority ?? healthcareApisAccount.Properties.AuthenticationConfiguration.Authority,
+                        Audience = FhirServiceConfig?.AuthenticationConfiguration?.Audience ?? healthcareApisAccount.Properties.AuthenticationConfiguration.Audience,
+                        SmartProxyEnabled = FhirServiceConfig?.AuthenticationConfiguration?.SmartProxyEnabled != healthcareApisAccount.Properties.AuthenticationConfiguration.SmartProxyEnabled ? healthcareApisAccount.Properties.AuthenticationConfiguration.SmartProxyEnabled : this.SmartProxyEnabled
+                    },
+                    CosmosDbConfiguration = new ServiceCosmosDbConfigurationInfo()
+                    {
+                        OfferThroughput = FhirServiceConfig?.CosmosDbConfiguration?.OfferThroughput != healthcareApisAccount.Properties.CosmosDbConfiguration.OfferThroughput ? FhirServiceConfig.CosmosDbConfiguration.OfferThroughput : healthcareApisAccount.Properties.CosmosDbConfiguration.OfferThroughput
+                    },
+                    CorsConfiguration = new ServiceCorsConfigurationInfo()
+                    {
+                        Origins = FhirServiceConfig?.CorsConfiguration?.Origins ?? healthcareApisAccount.Properties.CorsConfiguration.Origins,
+                        Headers = FhirServiceConfig?.CorsConfiguration?.Headers ?? healthcareApisAccount.Properties.CorsConfiguration.Headers,
+                        Methods = FhirServiceConfig?.CorsConfiguration?.Methods ?? healthcareApisAccount.Properties.CorsConfiguration.Methods,
+                        MaxAge = FhirServiceConfig?.CorsConfiguration?.MaxAge ?? healthcareApisAccount.Properties.CorsConfiguration.MaxAge,
+                        AllowCredentials = FhirServiceConfig?.CorsConfiguration?.AllowCredentials ?? healthcareApisAccount.Properties.CorsConfiguration.AllowCredentials
+                    },
+                    AccessPolicies = healthcareApisAccount.Properties.AccessPolicies
+                }
+            };
         }
     }
 }

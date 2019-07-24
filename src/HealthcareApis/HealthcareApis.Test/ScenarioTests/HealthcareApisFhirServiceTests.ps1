@@ -28,6 +28,8 @@ function Test-AzRmHealthcareApisFhirService{
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
 	$location = "West US"
+	$offerThroughput = 1000
+	$newOfferThroughput = 400
 	
 	try
 	{
@@ -36,18 +38,22 @@ function Test-AzRmHealthcareApisFhirService{
 		New-AzResourceGroup -Name $rgname -Location $location
 
 		# Create App
-		$created = New-AzRmHealthcareApisFhirService -Name $accountname -ResourceGroupName  $rgname -Location $location;
-		$actual = Get-AzRmHealthcareApisFhirService -ResourceGroupName $rgname -Name $rname
-
-		#$list = Get-AzHealthcareApisFhirService -ResourceGroupName $rgname
+		$created = New-AzHealthcareApisFhirService -Name $rname -ResourceGroupName  $rgname -Location $location -CosmosOfferThroughput $offerThroughput;
+		
+		$actual = Get-AzHealthcareApisFhirService -ResourceGroupName $rgname -Name $rname
 	
 		# Assert
 		Assert-AreEqual $actual.Name $rname
-		Assert-AreEqual $actual.Subdomain $subdomain
-		Assert-AreEqual $actual.DisplayName $displayName
-		Assert-AreEqual $actual.Tag.Item($tagkey) $tagvalue
-		Assert-AreEqual 1 @($list).Count
-		Assert-AreEqual $actual.Name $list[0].Name
+		Assert-AreEqual $actual.Properties.CosmosDbConfiguration.OfferThroughput $offerThroughput
+
+		$updated = Set-AzHealthcareApisFhirService -ResourceId $actual.Id -CosmosOfferThroughput $newOfferThroughput;
+
+		$updatedAccount = Get-AzHealthcareApisFhirService -ResourceGroupName $rgname -Name $rname
+		# Assert
+		Assert-AreEqual $updatedAccount.Name $rname
+		Assert-AreEqual $updatedAccount.Properties.CosmosDbConfiguration.OfferThroughput $newOfferThroughput
+
+		Remove-AzHealthcareApisFhirService -ResourceGroupName $rgname -Name $rname		
 	}
 	finally{
 		# Clean up
