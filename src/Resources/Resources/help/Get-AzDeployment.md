@@ -12,20 +12,38 @@ Get deployment
 
 ## SYNTAX
 
-### GetByDeploymentName (Default)
+### SubscriptionParameterSetWithDeploymentName (Default)
 ```
 Get-AzDeployment [[-Name] <String>] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
-### GetByDeploymentId
+### ResourceGroupParameterSetWithDeploymentName
+```
+Get-AzDeployment -ResourceGroupName <String> [[-Name] <String>] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### ManagementGroupParameterSetWithDeploymentName
+```
+Get-AzDeployment -ManagementGroupId <String> [[-Name] <String>] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### TenantParameterSetWithDeploymentName
+```
+Get-AzDeployment -Tenant [[-Name] <String>] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### DeploymentIdParameterSet
 ```
 Get-AzDeployment [-Id <String>] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzDeployment** cmdlet gets the deployments at the current subscription scope.
+The **Get-AzDeployment** cmdlet gets the deployments at a resource group, subscription, management group, or tenant scope.
 Specify the *Name* or *Id* parameter to filter the results.
 By default, **Get-AzDeployment** gets all deployments at the current subscription scope.
 
@@ -46,6 +64,36 @@ PS C:\>Get-AzDeployment -Name "DeployRoles01"
 This command gets the DeployRoles01 deployment at the current subscription scope.
 You can assign a name to a deployment when you create it by using the **New-AzDeployment** cmdlets.
 If you do not assign a name, the cmdlets provide a default name based on the template that is used to create the deployment.
+
+### Example 3: Get a deployment by deployment ID
+```
+PS C:\>Get-AzDeployment -Id "/subscriptions/sub-01/providers/Microsoft.Resources/deployments/DeployRole01"
+```
+
+This command gets the DeployRole01 deployment from subscription sub-01.
+You can assign a name to a deployment when you create it by using the **New-AzDeployment** cmdlets.
+If you do not assign a name, the cmdlets provide a default name based on the template that is used to create the deployment.
+
+### Example 4: Get a deployment at a resource group
+```
+PS C:\>Get-AzDeployment -Name "DeployRoles01" -ResourceGroupName "rg-01"
+```
+
+This command gets the DeployRole01 deployment from resource group rg-01.
+
+### Example 5: Get a deployment at a management group
+```
+PS C:\>Get-AzDeployment -Name "DeployRoles01" -ManagementGroupId "mg-01"
+```
+
+This command gets the DeployRole01 deployment from management group mg-01.
+
+### Example 6: Get a deployment at the tenant scope
+```
+PS C:\>Get-AzDeployment -Name "DeployRoles01" -Tenant
+```
+
+This command gets the DeployRole01 deployment from the tenant scope.
 
 ## PARAMETERS
 
@@ -79,6 +127,50 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+### -Tenant
+When specified, get deployment from tenant scope.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: TenantParameterSetWithDeploymentName
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagementGroupId
+The management group ID.
+
+```yaml
+Type: System.String
+Parameter Sets: ManagementGroupParameterSetWithDeploymentName
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The resource group name.
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceGroupParameterSetWithDeploymentName
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Id
 The fully qualified resource Id of the deployment.
@@ -105,7 +197,7 @@ Parameter Sets: GetByDeploymentName
 Aliases: DeploymentName
 
 Required: False
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
