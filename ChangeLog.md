@@ -30,6 +30,9 @@
 * Fix for Get-AzIntegrationAccountMap to list all map types
 	- Added new MapType parameter for filtering
 
+#### Az.ManagedServices
+* Added support for api version 2019-06-01 (GA)
+
 #### Az.Network
 * Add support for private endpoint and private link service
     - New cmdlets
