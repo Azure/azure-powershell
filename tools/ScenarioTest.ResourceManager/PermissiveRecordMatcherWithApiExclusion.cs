@@ -27,21 +27,37 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
     // If alternate api version is provided, uses that to match records else removes the api-version matching.
     public class PermissiveRecordMatcherWithApiExclusion : IRecordMatcher
     {
-        protected bool _shouldIgnoreGenericResource;
+        protected bool _ignoreGenericResource;
         protected Dictionary<string, string> _providersToIgnore;
         protected Dictionary<string, string> _userAgentsToIgnore;
         protected string[] _resourcesToIgnore;
+
+        public PermissiveRecordMatcherWithApiExclusion(bool ignoreResourcesClient, Dictionary<string, string> providers)
+        {
+            _ignoreGenericResource = ignoreResourcesClient;
+            _providersToIgnore = providers;
+        }
+
+        public PermissiveRecordMatcherWithApiExclusion(
+            bool ignoreResourcesClient,
+            Dictionary<string, string> providers,
+            Dictionary<string, string> userAgents)
+        {
+            _ignoreGenericResource = ignoreResourcesClient;
+            _providersToIgnore = providers;
+            _userAgentsToIgnore = userAgents;
+        }
 
         public PermissiveRecordMatcherWithApiExclusion(
             bool ignoreResourcesClient,
             Dictionary<string, string> providers,
             Dictionary<string, string> userAgents,
-            string[] resourcesToIgnore = null)
+            string[] resourcesToIgnore)
         {
-            _shouldIgnoreGenericResource = ignoreResourcesClient;
+            _ignoreGenericResource = ignoreResourcesClient;
             _providersToIgnore = providers;
             _userAgentsToIgnore = userAgents;
-            _resourcesToIgnore = resourcesToIgnore ?? new string[]{};
+            _resourcesToIgnore = resourcesToIgnore;
         }
 
         public virtual string GetMatchingKey(System.Net.Http.HttpRequestMessage request)
@@ -53,7 +69,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             }
 
             string version;
-            if (ShouldIgnoreApiVersion(requestUri, _shouldIgnoreGenericResource, _providersToIgnore, _resourcesToIgnore, out version))
+            if (ContainsIgnoredProvider(requestUri, out version))
             {
                 requestUri = RemoveOrReplaceApiVersion(requestUri, version);
             }
@@ -89,7 +105,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             }
 
             string version;
-            if (ShouldIgnoreApiVersion(requestUri, _shouldIgnoreGenericResource, _providersToIgnore, _resourcesToIgnore, out version))
+            if (ContainsIgnoredProvider(requestUri, out version))
             {
                 requestUri = RemoveOrReplaceApiVersion(requestUri, version);
                 changed = true;
@@ -103,13 +119,18 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             return string.Format("{0} {1}", recordEntry.RequestMethod, encodedPath);
         }
 
+        public bool ContainsIgnoredProvider(string requestUri, out string version)
+        {
+            return ContainsIgnoredProvider(requestUri, _ignoreGenericResource, _providersToIgnore, _resourcesToIgnore, apiVersion: out version);
+        }
+
         /// <summary>
         /// Helper method to determine whether or not this request api version should be ignored
         /// </summary>
         /// <param name="requestUri">The request uri</param>
         /// <param name="apiVersion">The api verison to use</paraam>
         /// <returns></returns>
-        public static bool ShouldIgnoreApiVersion(
+        public static bool ContainsIgnoredProvider(
             string requestUri,
             bool shouldIgnoreGenericResource,
             Dictionary<string, string> providersToIgnore,
@@ -141,48 +162,52 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 }
             }
 
-            // If we're looking at a specific provider and we have top level resource from this provider to ignore
-            foreach (var resourceToIgnore in resourcesToIgnore)
+            if (resourcesToIgnore != null && resourcesToIgnore.Any())
             {
-                var segments = requestUri.Split('/');
-
-                // /subscriptions/.../resourceGroups/.../providers/Microsoft.X/resourceType...?api-version=Y
-                if (requestUri.Contains("resourceGroups/") && requestUri.Contains("providers/"))
+                // If we're looking at a specific provider and we have top level resource from this provider to ignore
+                foreach (var resourceToIgnore in resourcesToIgnore)
                 {
-                    if (segments.Length > 8)
+                    var segments = requestUri.Split('/');
+
+                    // /subscriptions/.../resourceGroups/.../providers/Microsoft.X/resourceType...?api-version=Y
+                    if (requestUri.Contains("resourceGroups/") && requestUri.Contains("providers/"))
                     {
-                        var resourceIdentifier = new ResourceIdentifier(requestUri);
-                        if (resourceIdentifier.ResourceType == resourceToIgnore)
+                        if (segments.Length > 8)
                         {
-                            apiVersion = String.Empty;
-                            return true;
+                            var resourceIdentifier = new ResourceIdentifier(requestUri);
+                            if (resourceIdentifier.ResourceType == resourceToIgnore)
+                            {
+                                apiVersion = String.Empty;
+                                return true;
+                            }
+                        }
+                        else if (segments.Length == 8)
+                        {
+                            var resourceType = $"{segments[6]}/{segments[7]}";
+                            if (resourceType.Contains(resourceToIgnore))
+                            {
+                                apiVersion = String.Empty;
+                                return true;
+                            }
                         }
                     }
-                    else if (segments.Length == 8)
-                    {
-                        var resourceType = $"{segments[6]}/{segments[7]}";
-                        if (resourceType.Contains(resourceToIgnore))
-                        {
-                            apiVersion = String.Empty;
-                            return true;
-                        }
-                    }
-                }
 
-                // /subscriptions/.../providers/Microsoft.Provider/resourceType
-                if (requestUri.Contains("providers/"))
-                {
-                    if (segments.Length == 6)
+                    // /subscriptions/.../providers/Microsoft.Provider/resourceType
+                    if (requestUri.Contains("providers/"))
                     {
-                        var resourceType = $"{segments[4]}/{segments[5]}";
-                        if (resourceType.Contains(resourceToIgnore))
+                        if (segments.Length == 6)
                         {
-                            apiVersion = String.Empty;
-                            return true;
+                            var resourceType = $"{segments[4]}/{segments[5]}";
+                            if (resourceType.Contains(resourceToIgnore))
+                            {
+                                apiVersion = String.Empty;
+                                return true;
+                            }
                         }
                     }
                 }
             }
+
 
             apiVersion = string.Empty;
             return false;
