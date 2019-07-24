@@ -117,19 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="GrantShareSubscriptionAccess" xml:space="preserve">
+    <value>Granting access to share subscription</value>
+  </data>
   <data name="ResourceArgumentInvalid" xml:space="preserve">
     <value>The resource object provided is invalid. Use Get to retrieve a specific resource, or use New to create a new resource.</value>
   </data>
   <data name="ResourceCreateConfirmation" xml:space="preserve">
-    <value>Are you sure you want to create resource '{0}'?</value>
+    <value>Are you sure you want to create this '{0}'</value>
   </data>
   <data name="ResourceCreateMessage" xml:space="preserve">
-    <value>Creating resource '{0}'</value>
+    <value>Creating '{0}'</value>
   </data>
   <data name="ResourceRemovalConfirmation" xml:space="preserve">
     <value>Are you sure you want to remove resource '{0}'? </value>
   </data>
   <data name="ResourceRemovedMessage" xml:space="preserve">
     <value>Removing resource '{0}'</value>
+  </data>
+  <data name="RevokeShareSubscriptionAccess" xml:space="preserve">
+    <value>Revoking access of share subscription</value>
   </data>
 </root>

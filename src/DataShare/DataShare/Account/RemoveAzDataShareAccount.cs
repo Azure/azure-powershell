@@ -43,7 +43,6 @@ namespace Microsoft.Azure.Commands.DataShare.Account
         /// </summary>
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = ParameterSetNames.FieldsParameterSet,
             HelpMessage = "The resource group name of azure data share account.")]
         [ResourceGroupCompleter()]
@@ -55,7 +54,6 @@ namespace Microsoft.Azure.Commands.DataShare.Account
         /// </summary>
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = ParameterSetNames.FieldsParameterSet,
             HelpMessage = "Azure data share account name.")]
         [ValidateNotNullOrEmpty]
@@ -87,7 +85,6 @@ namespace Microsoft.Azure.Commands.DataShare.Account
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Return object (if specified).")]
         public SwitchParameter PassThru { get; set; }
 

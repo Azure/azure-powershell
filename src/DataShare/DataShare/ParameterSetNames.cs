@@ -10,6 +10,6 @@
         public const string BlobDataSetParameterSet = "ByBlobDataSetParamaterSet";
         public const string AdlsGen2DataSetParameterSet = "ByAdlsGen2DataSetParameterSet";
         public const string AdlsGen1DataSetParameterSet = "ByAdlsGen1DataSetParameterSet";
-        public const string ProviderShareSubscriptionParameterSet = "ByProviderShareSubscriptionParameterSet";
+        public const string ProviderShareSubscriptionIdParameterSet = "ByProviderShareSubscriptionIdParameterSet";
     }
 }

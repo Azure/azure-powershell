@@ -34,7 +34,6 @@ namespace Microsoft.Azure.Commands.DataShare.Share
         /// The resource group name of the azure data share account.
         /// </summary>
         [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = ParameterSetNames.FieldsParameterSet,
             HelpMessage = "The resource group name of the azure data share account")]
         [ResourceGroupCompleter()]
@@ -45,7 +44,6 @@ namespace Microsoft.Azure.Commands.DataShare.Share
         /// Name of azure data share account.
         /// </summary>
         [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = ParameterSetNames.FieldsParameterSet,
             HelpMessage =  "Azure data share account name")]
         [ValidateNotNullOrEmpty]
@@ -56,7 +54,6 @@ namespace Microsoft.Azure.Commands.DataShare.Share
         /// Name of the azure data share.
         /// </summary>
         [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = ParameterSetNames.FieldsParameterSet,
             HelpMessage = "Azure data share name")]
         [ValidateNotNullOrEmpty]
@@ -66,7 +63,6 @@ namespace Microsoft.Azure.Commands.DataShare.Share
         /// Description of the azure data share.
         /// </summary>
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = ParameterSetNames.FieldsParameterSet,
             HelpMessage = "Description of azure data share")]
         public string Description { get; set; }
@@ -75,14 +71,15 @@ namespace Microsoft.Azure.Commands.DataShare.Share
         /// Terms of use of azure data share.
         /// </summary>
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = ParameterSetNames.FieldsParameterSet, 
             HelpMessage = "Terms of use for azure data share")]
         public string TermsOfUse { get; set; }
 
+        private const string ResourceType = "Share";
+
         public override void ExecuteCmdlet()
         {
-            if (this.ShouldProcess(this.Name, $"Creating data share '{this.Name}'"))
+            if (this.ShouldProcess(this.Name, string.Format(Resources.ResourceCreateMessage, NewAzDataShare.ResourceType)))
             {
                 Share dataShare = this.DataShareManagementClient.Shares.Create(
                     this.ResourceGroupName,

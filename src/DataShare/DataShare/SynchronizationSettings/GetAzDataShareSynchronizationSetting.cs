@@ -42,7 +42,6 @@ namespace Microsoft.Azure.Commands.DataShare.SynchronizationSetting
         /// </summary>
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource group name of azure data share account",
             ParameterSetName = ParameterSetNames.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -54,7 +53,6 @@ namespace Microsoft.Azure.Commands.DataShare.SynchronizationSetting
         /// </summary>
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure data share account name",
             ParameterSetName = ParameterSetNames.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -66,7 +64,6 @@ namespace Microsoft.Azure.Commands.DataShare.SynchronizationSetting
         /// </summary>
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure data share name",
             ParameterSetName = ParameterSetNames.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -77,7 +74,6 @@ namespace Microsoft.Azure.Commands.DataShare.SynchronizationSetting
         /// Name of the synchronization setting to get
         /// </summary>
         [Parameter(
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name for Synchronization Setting",
             ParameterSetName = ParameterSetNames.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
