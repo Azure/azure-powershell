@@ -21,10 +21,18 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     public class PSAvailablePrivateEndpointType
     {
+        public string Name { get; set; }
+
         public string Id { get; set; }
 
         public string Type { get; set; }
 
-        public string ServiceName { get; set; }
+        public string ResourceName { get; set; }
+
+        public string ServiceName
+        {
+            get { return ResourceName; }
+            set { ResourceName = value; }
+        }
     }
 }
