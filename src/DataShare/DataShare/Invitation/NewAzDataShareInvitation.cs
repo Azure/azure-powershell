@@ -39,11 +39,9 @@ namespace Microsoft.Azure.Commands.DataShare.Invitation
         /// The resource group name of the azure data share account name.
         /// </summary>
         [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name of the azure data share account",
             ParameterSetName = ParameterSetNames.InvitationEmailParameterSet)]
         [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name of the azure data share account",
             ParameterSetName = ParameterSetNames.InvitationTenantParameterSet)]
         [ResourceGroupCompleter()]
@@ -53,11 +51,9 @@ namespace Microsoft.Azure.Commands.DataShare.Invitation
         /// Name of azure data share account.
         /// </summary>
         [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure data share account name",
             ParameterSetName = ParameterSetNames.InvitationEmailParameterSet)]
         [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure data share account name",
             ParameterSetName = ParameterSetNames.InvitationTenantParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -68,11 +64,9 @@ namespace Microsoft.Azure.Commands.DataShare.Invitation
         /// Name of azure data share.
         /// </summary>
         [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure data share name",
             ParameterSetName = ParameterSetNames.InvitationEmailParameterSet)]
         [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure data share name",
             ParameterSetName = ParameterSetNames.InvitationTenantParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -83,11 +77,9 @@ namespace Microsoft.Azure.Commands.DataShare.Invitation
         /// Name of the azure data share invitation.
         /// </summary>
         [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure data share invitation name",
             ParameterSetName = ParameterSetNames.InvitationEmailParameterSet)]
         [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure data share invitation name",
             ParameterSetName = ParameterSetNames.InvitationTenantParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -97,7 +89,6 @@ namespace Microsoft.Azure.Commands.DataShare.Invitation
         /// Target object id of recipient.
         /// </summary>
         [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Target object id",
             ParameterSetName = ParameterSetNames.InvitationTenantParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -107,7 +98,6 @@ namespace Microsoft.Azure.Commands.DataShare.Invitation
         /// Target tenant id of recipient.
         /// </summary>
         [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true, 
             HelpMessage = "Target tenant id",
             ParameterSetName = ParameterSetNames.InvitationTenantParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -117,17 +107,18 @@ namespace Microsoft.Azure.Commands.DataShare.Invitation
         /// Email id of recipient.
         /// </summary>
         [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Target email id",
             ParameterSetName = ParameterSetNames.InvitationEmailParameterSet)]
         [ValidateNotNullOrEmpty]
         public string TargetEmail { get; set; }
 
+        private const string ResourceType = "Invitation";
+
         public override void ExecuteCmdlet()
         {
             if (this.ParameterSetName.Equals(ParameterSetNames.InvitationEmailParameterSet, StringComparison.OrdinalIgnoreCase))
             {
-                if (this.ShouldProcess(this.Name, $"Creating invitation '{this.Name}'"))
+                if (this.ShouldProcess(this.Name, string.Format(Resources.ResourceCreateMessage, NewAzDataShareInvitation.ResourceType)))
                 {
                     Invitation newInvitation = this.DataShareManagementClient.Invitations.Create(
                         this.ResourceGroupName,
@@ -145,7 +136,7 @@ namespace Microsoft.Azure.Commands.DataShare.Invitation
 
             if (this.ParameterSetName.Equals(ParameterSetNames.InvitationTenantParameterSet, StringComparison.OrdinalIgnoreCase))
             {
-                if (this.ShouldProcess(this.Name, $"Creating invitation '{this.Name}'"))
+                if (this.ShouldProcess(this.Name, string.Format(Resources.ResourceCreateMessage, NewAzDataShareInvitation.ResourceType)))
                 {
                     Invitation newInvitation = this.DataShareManagementClient.Invitations.Create(
                         this.ResourceGroupName,

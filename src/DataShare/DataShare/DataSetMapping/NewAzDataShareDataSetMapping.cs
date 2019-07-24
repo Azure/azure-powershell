@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.DataShare.DataSetMapping
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Extensions;
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models;
+    using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Properties;
 
     /// <summary>
     /// Defines the New-DataShareDataSetMapping cmdlet.
@@ -41,12 +42,10 @@ namespace Microsoft.Azure.Commands.DataShare.DataSetMapping
         /// </summary>
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name of the azure data share account",
             ParameterSetName = ParameterSetNames.BlobDataSetParameterSet)]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name of the azure data share account",
             ParameterSetName = ParameterSetNames.AdlsGen2DataSetParameterSet)]
         [ResourceGroupCompleter()]
@@ -57,12 +56,10 @@ namespace Microsoft.Azure.Commands.DataShare.DataSetMapping
         /// </summary>
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure data share account name",
             ParameterSetName = ParameterSetNames.BlobDataSetParameterSet)]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure data share account name",
             ParameterSetName = ParameterSetNames.AdlsGen2DataSetParameterSet)]
         [ResourceNameCompleter(ResourceTypes.Account, "ResourceGroupName")]
@@ -73,12 +70,10 @@ namespace Microsoft.Azure.Commands.DataShare.DataSetMapping
         /// </summary>
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure data share subscription name",
             ParameterSetName = ParameterSetNames.BlobDataSetParameterSet)]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure data share subscription name",
             ParameterSetName = ParameterSetNames.AdlsGen2DataSetParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -90,12 +85,10 @@ namespace Microsoft.Azure.Commands.DataShare.DataSetMapping
         /// </summary>
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure data set mapping name",
             ParameterSetName = ParameterSetNames.BlobDataSetParameterSet)]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure data set mapping name",
             ParameterSetName = ParameterSetNames.AdlsGen2DataSetParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -115,7 +108,7 @@ namespace Microsoft.Azure.Commands.DataShare.DataSetMapping
             HelpMessage = "Azure Storage Account ResourceId",
             ParameterSetName = ParameterSetNames.AdlsGen2DataSetParameterSet)]
         [ValidateNotNullOrEmpty]
-        [ResourceNameCompleter(ResourceTypes.StorageAccount, "ResourceGroupName")]
+        [ResourceIdCompleter(ResourceTypes.StorageAccount)]
         public string StorageAccountResourceId { get; set; }
 
         /// <summary>
@@ -123,12 +116,10 @@ namespace Microsoft.Azure.Commands.DataShare.DataSetMapping
         /// </summary>
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Consumer data set id",
             ParameterSetName = ParameterSetNames.BlobDataSetParameterSet)]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Consumer data set id",
             ParameterSetName = ParameterSetNames.AdlsGen2DataSetParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -139,7 +130,6 @@ namespace Microsoft.Azure.Commands.DataShare.DataSetMapping
         /// </summary>
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure storage account container name",
             ParameterSetName = ParameterSetNames.BlobDataSetParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -150,7 +140,6 @@ namespace Microsoft.Azure.Commands.DataShare.DataSetMapping
         /// </summary>
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure ADLS gen2 file system name",
             ParameterSetName = ParameterSetNames.AdlsGen2DataSetParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -161,12 +150,10 @@ namespace Microsoft.Azure.Commands.DataShare.DataSetMapping
         /// </summary>
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure storage file path",
             ParameterSetName = ParameterSetNames.BlobDataSetParameterSet)]
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure storage file path",
             ParameterSetName = ParameterSetNames.AdlsGen2DataSetParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -177,15 +164,15 @@ namespace Microsoft.Azure.Commands.DataShare.DataSetMapping
         /// </summary>
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure storage folder path",
             ParameterSetName = ParameterSetNames.BlobDataSetParameterSet)]
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure storage folder path",
             ParameterSetName = ParameterSetNames.AdlsGen2DataSetParameterSet)]
         public string FolderPath { get; set; }
+
+        private const string ResourceType = "DataSetMapping";
 
         public override void ExecuteCmdlet()
         {
@@ -198,7 +185,7 @@ namespace Microsoft.Azure.Commands.DataShare.DataSetMapping
                 ParameterSetNames.BlobDataSetParameterSet,
                 StringComparison.OrdinalIgnoreCase))
             {
-                if (this.ShouldProcess(this.Name, $"Creating data set mapping '{this.Name}'"))
+                if (this.ShouldProcess(this.Name, string.Format(Resources.ResourceCreateMessage, NewAzDataShareDataSetMapping.ResourceType)))
                 {
                     if (this.FilePath != null)
                     {
@@ -269,7 +256,7 @@ namespace Microsoft.Azure.Commands.DataShare.DataSetMapping
                 StringComparison.OrdinalIgnoreCase))
             {
 
-                if (this.ShouldProcess(this.Name, $"Creating data set mapping '{this.Name}'"))
+                if (this.ShouldProcess(this.Name, string.Format(Resources.ResourceCreateMessage, NewAzDataShareDataSetMapping.ResourceType)))
                 {
                     if (this.FilePath != null)
                     {

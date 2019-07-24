@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.DataShare.SynchronizationSetting
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Extensions;
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models;
+    using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Properties;
 
     /// <summary>
     /// Defines the New-AzDataShareSynchronizationSetting cmdlet.
@@ -41,7 +42,6 @@ namespace Microsoft.Azure.Commands.DataShare.SynchronizationSetting
         /// </summary>
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource group name of azure data share account",
             ParameterSetName = ParameterSetNames.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -53,7 +53,6 @@ namespace Microsoft.Azure.Commands.DataShare.SynchronizationSetting
         /// </summary>
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure data share account name",
             ParameterSetName = ParameterSetNames.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -65,7 +64,6 @@ namespace Microsoft.Azure.Commands.DataShare.SynchronizationSetting
         /// </summary>
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure data share name",
             ParameterSetName = ParameterSetNames.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -77,7 +75,6 @@ namespace Microsoft.Azure.Commands.DataShare.SynchronizationSetting
         /// </summary>
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Synchronization setting name",
             ParameterSetName = ParameterSetNames.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -88,7 +85,6 @@ namespace Microsoft.Azure.Commands.DataShare.SynchronizationSetting
         /// </summary>
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The recurrence interval for the synchronization setting (Day or Hour)",
             ParameterSetName = ParameterSetNames.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -100,15 +96,16 @@ namespace Microsoft.Azure.Commands.DataShare.SynchronizationSetting
         /// </summary>
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The start time of the scheduled synchronization setting",
             ParameterSetName = ParameterSetNames.FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
         public DateTime SynchronizationTime { get; set; }
 
+        private const string ResourceType = "SynchronizationSetting";
+
         public override void ExecuteCmdlet()
         {
-            if (this.ShouldProcess(this.Name, $"Creating share synchronization '{this.Name}'"))
+            if (this.ShouldProcess(this.Name, string.Format(Resources.ResourceCreateMessage, NewAzDataShareSynchronizationSetting.ResourceType)))
             {
                 var setting = new ScheduledSynchronizationSetting(
                     recurrenceInterval: this.RecurrenceInterval,
