@@ -39,6 +39,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
     public class SqlTestsBase : RMTestBase
     {
         protected EnvironmentSetupHelper Helper;
+        protected string[] resourceTypesToIgnoreApiVersion;
 
         protected SqlTestsBase(ITestOutputHelper output)
         {
@@ -70,14 +71,14 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                 {"Microsoft.Authorization", null},
                 {"Microsoft.Network", null},
                 {"Microsoft.KeyVault", null},
-                {"Microsoft.Sql", null }
             };
+
             var providersToIgnore = new Dictionary<string, string>
             {
                 {"Microsoft.Azure.Graph.RBAC.Version1_6.GraphRbacManagementClient", "1.42-previewInternal"},
                 {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"}
             };
-            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore, resourceTypesToIgnoreApiVersion);
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
 
             // Enable undo functionality as well as mock recording
