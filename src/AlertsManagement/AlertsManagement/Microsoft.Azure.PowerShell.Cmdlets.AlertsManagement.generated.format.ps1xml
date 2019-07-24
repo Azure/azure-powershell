@@ -140,11 +140,11 @@
             <ListItems>
               <ListItem>
                 <PropertyName>GroupBy</PropertyName>
-                <Label>TotalSmartGroups</Label>
+                <Label>GroupBy</Label>
               </ListItem>
               <ListItem>
                 <PropertyName>TotalAlerts</PropertyName>
-                <Label>TotalSmartGroups</Label>
+                <Label>TotalAlerts</Label>
               </ListItem>
               <ListItem>
                 <PropertyName>TotalSmartGroups</PropertyName>
