@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Test.ScenarioTests
             TestController.NewInstance.RunPowerShellTest(_logger, "Search-AzureRmGraph-Subscriptions");
         }
 
-        [Fact(Skip = "Needs investigation, TestManagementClientHelper class wasn't initialized with the ResourceManagementClient client.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void InlcudeSubscriptionNames()
         {
