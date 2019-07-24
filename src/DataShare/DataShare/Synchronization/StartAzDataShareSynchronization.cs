@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Commands.DataShare.Synchronization
                     this.ShareSubscriptionName,
                     new Synchronize(this.SynchronizationMode));
                 this.WriteObject(synchronization.ToPsObject());
-            } catch (DataShareErrorException ex) when (ex.Response.StatusCode.Equals(HttpStatusCode.NotFound))
+            } catch (DataShareErrorException ex) when (ex.Response.StatusCode.Equals(HttpStatusCode.Conflict))
             {
                 throw new PSArgumentException($"Synchronization already in progress.");
             }
