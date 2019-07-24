@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void PermissiveRecordMatcher_ShouldIgnoreApiVersion()
+        public void PermissiveRecordMatcherWithApiExclusion_ContainsIgnoredProvider()
         {
             var testRequestUris = new string[]
             {
@@ -28,7 +28,12 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
                 "/subscriptions/4cac86b0-1e56-48c2-9df2-669a6d2d87c5/resourceGroups/ps8625/providers/Microsoft.Sql/managedInstances"
             };
 
-            TestShouldIgnoreApiVersion(
+            TestContainsIgnoredProvider(
+                requestUrisToTest: testRequestUris,
+                resourcesToIgnore: null,
+                expectedNumIgnored: 0);
+
+            TestContainsIgnoredProvider(
                 requestUrisToTest: testRequestUris,
                 resourcesToIgnore: new string[1]
                 {
@@ -36,7 +41,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
                 },
                 expectedNumIgnored: 3);
 
-            TestShouldIgnoreApiVersion(
+            TestContainsIgnoredProvider(
                  requestUrisToTest: testRequestUris,
                  resourcesToIgnore: new string[1]
                  {
@@ -45,7 +50,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
                  expectedNumIgnored: 1);
         }
 
-        private void TestShouldIgnoreApiVersion(
+        private void TestContainsIgnoredProvider(
             IEnumerable<string> requestUrisToTest,
             string[] resourcesToIgnore,
             int expectedNumIgnored)
@@ -53,7 +58,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
             var numIgnored = 0;
             foreach (var testUri in requestUrisToTest)
             {
-                var result = PermissiveRecordMatcherWithApiExclusion.ShouldIgnoreApiVersion(
+                var result = PermissiveRecordMatcherWithApiExclusion.ContainsIgnoredProvider(
                     requestUri: testUri,
                     shouldIgnoreGenericResource: false,
                     providersToIgnore: new Dictionary<string, string>(),
