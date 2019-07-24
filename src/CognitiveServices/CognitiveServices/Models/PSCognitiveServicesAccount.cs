@@ -35,6 +35,12 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices.Models
             this.ResourceType = cognitiveServicesAccount.Type;
             this.ProvisioningState = cognitiveServicesAccount.ProvisioningState;
             this.Tags = cognitiveServicesAccount.Tags;
+            this.CustomSubDomainName = cognitiveServicesAccount.CustomSubDomainName;
+
+            if (cognitiveServicesAccount.NetworkAcls != null)
+            {
+                this.NetworkRuleSet = PSNetworkRuleSet.Create(cognitiveServicesAccount.NetworkAcls);
+            }
         }
 
         public string ResourceGroupName { get; private set; }
@@ -56,6 +62,10 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices.Models
         public string Etag { get; private set; }
 
         public string ProvisioningState { get; private set; }
+
+        public string CustomSubDomainName { get; private set; }
+
+        public PSNetworkRuleSet NetworkRuleSet { get; private set; }
 
         public IDictionary<string, string> Tags { get; private set; }
 
