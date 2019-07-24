@@ -223,7 +223,7 @@ function Test-subnetDelegationCRUD
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
         
         # Create a delegation
-        $delegation = New-AzDelegation -Name "sqlDelegation" -ServiceName "Microsoft.Sql/servers"
+        $delegation = New-AzDelegation -Name "sqlDelegation" -ServiceName "Microsoft.Sql/managedInstances"
 
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24 -delegation $delegation
@@ -253,7 +253,7 @@ function Test-subnetDelegationCRUD
         $vnetExpected = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
         Assert-AreEqual 2 @($vnetExpected.Subnets).Count
         Assert-AreEqual 1 @($vnetExpected.Subnets[0].Delegations).Count
-		Assert-AreEqual "Microsoft.Sql/servers" $vnetExpected.Subnets[0].Delegations[0].ServiceName
+		Assert-AreEqual "Microsoft.Sql/managedInstances" $vnetExpected.Subnets[0].Delegations[0].ServiceName
         Assert-AreEqual 1 @($vnetExpected.Subnets[1].Delegations).Count
 		Assert-AreEqual "Microsoft.Netapp/volumes" $vnetExpected.Subnets[1].Delegations[0].ServiceName
 

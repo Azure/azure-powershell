@@ -14,13 +14,13 @@
 
 namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
 {
+    using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+    using Microsoft.Azure.Commands.ResourceGraph.Utilities;
+    using Microsoft.Azure.Management.ResourceGraph.Models;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-    using Microsoft.Azure.Commands.ResourceGraph.Utilities;
-    using Microsoft.Azure.Management.ResourceGraph.Models;
 
     /// <summary>
     /// Search-AzGraph cmdlet
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// The rows per page
         /// </summary>
         private const int RowsPerPage = 1000;
-        
+
         /// <summary>
         /// Gets or sets the query.
         /// </summary>s
@@ -80,13 +80,25 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
             get;
             set;
         }
-        
+
         /// <summary>
         /// Executes the cmdlet.
         /// </summary>
         public override void ExecuteCmdlet()
         {
             var subscriptions = this.GetSubscriptions().ToList();
+            if (subscriptions == null || subscriptions.Count == 0)
+            {
+                var exception = new ArgumentException("No subscriptions were found to run query. " +
+                    "Please try to add them implicitly as param to your request (e.g. Search-AzGraph -Query '' -Subscription '11111111-1111-1111-1111-111111111111')");
+
+                var errorRecord = new ErrorRecord(
+                            exception, "400",
+                            ErrorCategory.InvalidArgument, null);
+                this.WriteError(errorRecord);
+                return;
+            }
+
             var first = this.MyInvocation.BoundParameters.ContainsKey("First") ? this.First : 100;
             var skip = this.MyInvocation.BoundParameters.ContainsKey("Skip") ? this.Skip : 0;
 
@@ -105,15 +117,14 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                     var requestOptions = new QueryRequestOptions(
                         top: requestTop,
                         skip: requestSkip,
-                        skipToken: requestSkipToken);
+                        skipToken: requestSkipToken,
+                        resultFormat: ResultFormat.ObjectArray);
 
-                    var request = new QueryRequest(subscriptions, this.Query, requestOptions);
-
+                    var request = new QueryRequest(subscriptions, this.Query, options: requestOptions);
                     response = this.ResourceGraphClient.ResourcesWithHttpMessagesAsync(request)
                         .Result
                         .Body;
-
-                    var requestResults = response.Data.ToPsObjects().ToList();
+                    var requestResults = response.Data.ToPsObjects();
                     results.AddRange(requestResults);
                     this.WriteVerbose($"Received results: {requestResults.Count}");
                 }
@@ -156,6 +167,16 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
             if (this.Subscription != null)
             {
                 return this.Subscription;
+            }
+
+            // Use selected subscription (for example, by command "Select-AzSubscription {subscriptionId}") 
+            if (this.TryGetDefaultContext(out var context))
+            {
+                var subscriptionId = context.Subscription?.Id;
+                if (subscriptionId != null)
+                {
+                    return new List<string> { subscriptionId };
+                }
             }
 
             var accountSubscriptions = this.DefaultContext.Account.GetSubscriptions();

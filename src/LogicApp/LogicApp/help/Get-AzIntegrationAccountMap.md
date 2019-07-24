@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.LogicApp.dll-Help.xml
 Module Name: Az.LogicApp
 ms.assetid: 4F65A8B3-A250-41C1-9AA5-DBEB3193C401
@@ -15,7 +15,7 @@ Gets an integration account map.
 
 ```
 Get-AzIntegrationAccountMap [-ResourceGroupName <String>] [-Name <String>] [-MapName <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-MapType <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -88,6 +88,22 @@ Specifies the name of an integration account map.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MapType
+The integration account map type.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: Xslt, Xslt20, Xslt30, Liquid
 
 Required: False
 Position: Named

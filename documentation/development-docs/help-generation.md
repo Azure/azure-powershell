@@ -8,7 +8,7 @@ All MAML files containing the help content for cmdlets have been removed from th
 
 In order to use the cmdlets necessary to update the markdown help files (or generate MAML help locally from these markdown files), you must first install the `platyPS` module mentioned previously.  You will need to install a minimum version of 0.11.0.
 
-To do so, you can can follow the below steps (which are outlined in the [**Quick start**](https://github.com/PowerShell/platyPS#quick-start) section of the `platyPS` README):
+To do so, you can follow the below steps (which are outlined in the [**Quick start**](https://github.com/PowerShell/platyPS#quick-start) section of the `platyPS` README):
 
 ```powershell
 Install-Module -Name platyPS -Scope CurrentUser

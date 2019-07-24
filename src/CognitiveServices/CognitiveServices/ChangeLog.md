@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added NetworkRuleSet support.
 
 ## Version 1.1.1
 * Only display Bing disclaimer for Bing Search Services.
