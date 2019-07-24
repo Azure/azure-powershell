@@ -81,6 +81,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '1.6.1'; },
                @{ModuleName = 'Az.KeyVault'; RequiredVersion = '1.3.0'; }, 
                @{ModuleName = 'Az.LogicApp'; RequiredVersion = '1.3.0'; }, 
                @{ModuleName = 'Az.MachineLearning'; RequiredVersion = '1.1.0'; }, 
+               @{ModuleName = 'Az.ManagedServices'; RequiredVersion = '1.0.0'; }, 
                @{ModuleName = 'Az.MarketplaceOrdering'; RequiredVersion = '1.0.0'; }, 
                @{ModuleName = 'Az.Media'; RequiredVersion = '1.1.0'; }, 
                @{ModuleName = 'Az.Monitor'; RequiredVersion = '1.2.1'; }, 
@@ -188,6 +189,9 @@ Az.KeyVault
 Az.LogicApp
 * Fix for Get-AzIntegrationAccountMap to list all map types
 	- Added new MapType parameter for filtering
+
+Az.ManagedServices
+* Added support for api version 2019-06-01 (GA)
 
 Az.Network
 * Add support for private endpoint and private link service
