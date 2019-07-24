@@ -12,19 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Monitor.Models;
+using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.Insights.OutputClasses
+namespace Microsoft.Azure.Commands.Insights
 {
-    public class PSMetricCriteria : MetricCriteria
+    /// <summary>
+    /// Extends the Argument completer attribute to get a script as string
+    /// </summary>
+    class PSArgumentCompleterWithScript: ArgumentCompleterAttribute
     {
-        /// <summary>
-        /// Initializes a new instance of the PSMetricCriteria class.
-        /// </summary>
-        /// <param name="metricCriteria">The input MetricCriteria object</param>
-        public PSMetricCriteria(MetricCriteria metricCriteria)
-            :base(name: metricCriteria.Name, metricName: metricCriteria.MetricName, operatorProperty: metricCriteria.OperatorProperty, timeAggregation: metricCriteria.TimeAggregation, threshold: metricCriteria.Threshold, metricNamespace: metricCriteria.MetricNamespace, dimensions: metricCriteria.Dimensions)
+        public PSArgumentCompleterWithScript(string psScriptAsString) : base(CreateScriptBlock(psScriptAsString))
         {
+        }
+
+        private static ScriptBlock CreateScriptBlock(string psScriptAsString)
+        {
+            return ScriptBlock.Create(psScriptAsString);
         }
     }
 }
