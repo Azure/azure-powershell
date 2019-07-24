@@ -348,6 +348,7 @@ namespace Microsoft.Azure.Commands.DataShare.DataSet
                 StringComparison.OrdinalIgnoreCase))
             {
                 storageAccountName = parsedStorageResourceId.GetAccountName();
+
                 if (this.ShouldProcess(this.Name, string.Format(Resources.ResourceCreateMessage, NewAzDataShareDataSet.ResourceType)))
                 {
                     if (this.FileName != null)

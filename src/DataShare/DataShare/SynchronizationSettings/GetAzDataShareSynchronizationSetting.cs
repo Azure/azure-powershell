@@ -131,13 +131,10 @@ namespace Microsoft.Azure.Commands.DataShare.SynchronizationSetting
                         shareName: this.ShareName,
                         synchronizationSettingName: this.Name) as ScheduledSynchronizationSetting;
                     this.WriteObject(setting.ToPsObject());
-                } catch (DataShareErrorException exception)
+                } catch (DataShareErrorException exception) when (exception.Response.StatusCode.Equals(HttpStatusCode.NotFound))
                 {
-                    if (exception.Response.StatusCode.Equals(HttpStatusCode.NotFound))
-                    {
-                        throw new PSArgumentException(
-                            $"Synchronization setting \"{this.Name}\" not found");
-                    }
+                    throw new PSArgumentException(
+                        $"Synchronization setting \"{this.Name}\" not found");
                 }
             }
         }
