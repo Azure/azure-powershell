@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
 
         // Create a script for the Operator parameter completer based on the active Parameter Set 
         // Since Parameter Set isn't accesible - check if one of the dynamic threshold parameters are assigned
-        const string IsDynamicThresholdParameterSetSelectedScript = "$fakeBoundParameters.Dynamic -or $fakeBoundParameters.ThresholdSensitivity -ne $null -or $fakeBoundParameters.NumberOfViolations -ne $null -or $fakeBoundParameters.NumberOfExaminedAggregatedPoints -ne $null -or $fakeBoundParameters.IgnoreDataBefore -ne $null";
+        const string IsDynamicThresholdParameterSetSelectedScript = "$fakeBoundParameters.DynamicThreshold -or $fakeBoundParameters.ThresholdSensitivity -ne $null -or $fakeBoundParameters.NumberOfViolations -ne $null -or $fakeBoundParameters.NumberOfExaminedAggregatedPoints -ne $null -or $fakeBoundParameters.IgnoreDataBefore -ne $null";
         const string DynamicOperatorValues = "'GreaterThan', 'LessThan', 'GreaterOrLessThan'";
         const string StaticOperatorValues = "'GreaterThan', 'GreaterThanOrEqual', 'LessThan', 'LessThanOrEqual'";
         const string OperatorCompleterScript = "param($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameters)\n if (" + IsDynamicThresholdParameterSetSelectedScript + ") {" + DynamicOperatorValues + " } else {" + StaticOperatorValues + "}";
@@ -42,13 +42,13 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// Gets or sets the rule DynamicThreshold
         /// </summary>
         [Parameter(ParameterSetName = DynamicThresholdParameterSet, Mandatory = true, HelpMessage = "Dynamic Threshold Type")]
-        public SwitchParameter Dynamic { get; set; }
+        public SwitchParameter DynamicThreshold { get; set; }
 
         /// <summary>
         /// Gets or sets the rule DynamicThreshold
         /// </summary>
         [Parameter(ParameterSetName = StaticThresholdParameterSet, Mandatory = false, HelpMessage = "Static Threshold Type")]
-        public SwitchParameter Static { get; set; }
+        public SwitchParameter StaticThreshold { get; set; }
 
         /// <summary>
         /// Gets or sets the MetricName parameter
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
             }
 
             IPSMultiMetricCriteria result;
-            if (!this.Dynamic.IsPresent)
+            if (!this.DynamicThreshold.IsPresent)
             {
                 MetricCriteria metricCriteria = new MetricCriteria(name: "metric1", metricName: this.MetricName, operatorProperty: this.Operator, timeAggregation: this.TimeAggregation, threshold: this.Threshold, metricNamespace: this.MetricNamespace, dimensions: metricDimensions);
                 result = new PSStaticMetricCriteria(metricCriteria);

@@ -14,14 +14,14 @@ Creates a local criteria object that can be used to create a new metric alert
 
 ### StaticThresholdParameterSet (Default)
 ```
-New-AzMetricAlertRuleV2Criteria [-Static] -MetricName <String> [-MetricNamespace <String>]
+New-AzMetricAlertRuleV2Criteria [-StaticThreshold] -MetricName <String> [-MetricNamespace <String>]
  [-DimensionSelection <PSMetricDimension[]>] -TimeAggregation <String> -Operator <String> -Threshold <Double>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### DynamicThresholdParameterSet
 ```
-New-AzMetricAlertRuleV2Criteria [-Dynamic] -MetricName <String> [-MetricNamespace <String>]
+New-AzMetricAlertRuleV2Criteria [-DynamicThreshold] -MetricName <String> [-MetricNamespace <String>]
  [-DimensionSelection <PSMetricDimension[]>] -TimeAggregation <String> -Operator <String>
  [-ThresholdSensitivity <String>] [-NumberOfViolations <Int32>] [-NumberOfExaminedAggregatedPoints <Int32>]
  [-IgnoreDataBefore <DateTime>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -118,7 +118,7 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Dynamic
+### -DynamicThreshold
 Dynamic Threshold Type
 
 ```yaml
@@ -223,7 +223,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Static
+### -StaticThreshold
 Static Threshold Type
 
 ```yaml
