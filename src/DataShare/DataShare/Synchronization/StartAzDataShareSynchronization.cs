@@ -98,6 +98,17 @@ namespace Microsoft.Azure.Commands.DataShare.Synchronization
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
+        /// <summary>
+        /// Data share subscription object
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = ParameterSetNames.ObjectParameterSet,
+            ValueFromPipeline = true,
+            HelpMessage = "Azure data share subscription object")]
+        [ValidateNotNullOrEmpty]
+        public PSDataShareSubscription InputObject { get; set; }
+
         [Parameter]
         public SwitchParameter AsJob { get; set; }
 
@@ -127,11 +138,25 @@ namespace Microsoft.Azure.Commands.DataShare.Synchronization
 
         private void SetParametersIfNeeded()
         {
+            string resourceId = null;
+
             if (this.ParameterSetName.Equals(
                 ParameterSetNames.ResourceIdParameterSet,
                 StringComparison.OrdinalIgnoreCase))
             {
-                var parsedResourceId = new ResourceIdentifier(this.ResourceId);
+                resourceId = this.ResourceId;
+            }
+
+            if (this.ParameterSetName.Equals(
+                ParameterSetNames.ObjectParameterSet,
+                StringComparison.OrdinalIgnoreCase))
+            {
+                resourceId = this.InputObject.Id;
+            }
+
+            if (!string.IsNullOrEmpty(resourceId))
+            {
+                var parsedResourceId = new ResourceIdentifier(resourceId);
                 this.ResourceGroupName = parsedResourceId.ResourceGroupName;
                 this.AccountName = parsedResourceId.GetAccountName();
                 this.ShareSubscriptionName = parsedResourceId.GetShareSubscriptionName();
