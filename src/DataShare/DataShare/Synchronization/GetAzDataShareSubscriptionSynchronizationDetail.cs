@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Commands.DataShare.Synchronization
     using System.Linq;
     using System.Management.Automation;
     using System.Net;
+    using Hyak.Common.Properties;
     using Microsoft.Azure.Commands.DataShare.Common;
     using Microsoft.Azure.Commands.DataShare.Helpers;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -28,6 +29,7 @@ namespace Microsoft.Azure.Commands.DataShare.Synchronization
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Extensions;
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models;
     using Microsoft.Rest.Azure;
+    using Resources = Microsoft.Azure.PowerShell.Cmdlets.DataShare.Properties.Resources;
 
     /// <summary>
     /// Defines Get-AzDataShareSubscriptionSynchronizationDetail cmdlet.
@@ -143,8 +145,7 @@ namespace Microsoft.Azure.Commands.DataShare.Synchronization
             }
             catch (DataShareErrorException ex) when (ex.Response.StatusCode.Equals(HttpStatusCode.NotFound))
             {
-                throw new PSArgumentException(
-                    $"ShareSubscriptionSynchronizationDetails {this.ShareSubscriptionName} not found");
+                throw new PSArgumentException(string.Format(Resources.ResourceNotFoundMessage, this.ShareSubscriptionName));
             }
         }
     }
