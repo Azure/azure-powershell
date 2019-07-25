@@ -143,15 +143,13 @@ namespace Microsoft.Azure.Commands.DataShare.Share
             }
             catch (DataShareErrorException ex) when (ex.Response.StatusCode.Equals(HttpStatusCode.NotFound))
             {
-                throw new PSArgumentException(
-                    string.Format(
-                        $"Share {this.Name} not found"));
+                throw new PSArgumentException(string.Format(Resources.ResourceNotFoundMessage, this.Name));
             }
 
             if (this.Description != null || this.TermsOfUse != null)
             {
                 this.ConfirmAction(
-                    "Update resource",
+                    Resources.ResourceUpdataConfirmation,
                     this.Name,
                     () => this.UpdateShare(existingShare));
 

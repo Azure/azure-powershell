@@ -26,14 +26,16 @@ namespace Microsoft.Azure.Commands.DataShare.SynchronizationSetting
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Extensions;
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models;
+    using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Properties;
 
     /// <summary>
     /// Defines the Get-AzDataShareSynchronizationSetting cmdlet.
     /// </summary>
-    [Cmdlet("Get",
-            ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataShareSynchronizationSetting",
-            DefaultParameterSetName = ParameterSetNames.FieldsParameterSet),
-            OutputType(typeof(PSDataShareSynchronizationSetting))]
+    [Cmdlet(
+         "Get",
+         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataShareSynchronizationSetting",
+         DefaultParameterSetName = ParameterSetNames.FieldsParameterSet),
+     OutputType(typeof(PSDataShareSynchronizationSetting))]
     public class GetAzDataShareSynchronizationSetting : AzureDataShareCmdletBase
     {
 
@@ -94,7 +96,9 @@ namespace Microsoft.Azure.Commands.DataShare.SynchronizationSetting
 
         public override void ExecuteCmdlet()
         {
-            if (this.ParameterSetName.Equals(ParameterSetNames.ResourceIdParameterSet, StringComparison.OrdinalIgnoreCase))
+            if (this.ParameterSetName.Equals(
+                ParameterSetNames.ResourceIdParameterSet,
+                StringComparison.OrdinalIgnoreCase))
             {
                 var resourceId = new ResourceIdentifier(this.ResourceId);
                 this.ResourceGroupName = resourceId.ResourceGroupName;
@@ -110,14 +114,16 @@ namespace Microsoft.Azure.Commands.DataShare.SynchronizationSetting
                     accountName: this.AccountName,
                     shareName: this.ShareName);
                 this.WriteObject(
-                    settingsPage.AsEnumerable().Select(syncSettings => (syncSettings as ScheduledSynchronizationSetting).ToPsObject()),
+                    settingsPage.AsEnumerable().Select(
+                        syncSettings => (syncSettings as ScheduledSynchronizationSetting).ToPsObject()),
                     true);
                 while (settingsPage.NextPageLink != null)
                 {
                     settingsPage = this.DataShareManagementClient.SynchronizationSettings.ListByShareNext(
                         settingsPage.NextPageLink);
                     this.WriteObject(
-                        settingsPage.AsEnumerable().Select(syncSettings => (syncSettings as ScheduledSynchronizationSetting).ToPsObject()), 
+                        settingsPage.AsEnumerable().Select(
+                            syncSettings => (syncSettings as ScheduledSynchronizationSetting).ToPsObject()),
                         true);
                 }
             }
@@ -131,10 +137,11 @@ namespace Microsoft.Azure.Commands.DataShare.SynchronizationSetting
                         shareName: this.ShareName,
                         synchronizationSettingName: this.Name) as ScheduledSynchronizationSetting;
                     this.WriteObject(setting.ToPsObject());
-                } catch (DataShareErrorException exception) when (exception.Response.StatusCode.Equals(HttpStatusCode.NotFound))
+                }
+                catch (DataShareErrorException exception) when (exception.Response.StatusCode.Equals(
+                    HttpStatusCode.NotFound))
                 {
-                    throw new PSArgumentException(
-                        $"Synchronization setting \"{this.Name}\" not found");
+                    throw new PSArgumentException(string.Format(Resources.ResourceNotFoundMessage, this.Name));
                 }
             }
         }

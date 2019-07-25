@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Commands.DataShare.SourceDataSet
     using System.Linq;
     using System.Net;
     using System.Management.Automation;
+    using Hyak.Common.Properties;
     using Microsoft.Azure.Commands.DataShare.Common;
     using Microsoft.Azure.Commands.DataShare.Helpers;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -80,6 +81,7 @@ namespace Microsoft.Azure.Commands.DataShare.SourceDataSet
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure data share subscription resource id",
             ParameterSetName = ParameterSetNames.ResourceIdParameterSet)]
+        [ResourceIdCompleter(ResourceTypes.ShareSubscription)]
         [ValidateNotNullOrEmpty]
         public string ShareSubscriptionResourceId { get; set; }
 
@@ -98,32 +100,23 @@ namespace Microsoft.Azure.Commands.DataShare.SourceDataSet
             string nextPageLink = null;
             var consumerSourceDataSetList = new List<ConsumerSourceDataSet>();
 
-            try
+            do
             {
-                do
-                {
-                    IPage<ConsumerSourceDataSet> sourceDataSets = string.IsNullOrEmpty(nextPageLink)
-                        ? this.DataShareManagementClient.ConsumerSourceDataSets.ListByShareSubscription(
-                            this.ResourceGroupName,
-                            this.AccountName,
-                            this.ShareSubscriptionName)
-                        : this.DataShareManagementClient.ConsumerSourceDataSets.ListByShareSubscriptionNext(
-                            nextPageLink);
+                IPage<ConsumerSourceDataSet> sourceDataSets = string.IsNullOrEmpty(nextPageLink)
+                    ? this.DataShareManagementClient.ConsumerSourceDataSets.ListByShareSubscription(
+                        this.ResourceGroupName,
+                        this.AccountName,
+                        this.ShareSubscriptionName)
+                    : this.DataShareManagementClient.ConsumerSourceDataSets.ListByShareSubscriptionNext(
+                        nextPageLink);
 
-                    consumerSourceDataSetList.AddRange(sourceDataSets.AsEnumerable());
-                    nextPageLink = sourceDataSets.NextPageLink;
-                } while (nextPageLink != null);
+                consumerSourceDataSetList.AddRange(sourceDataSets.AsEnumerable());
+                nextPageLink = sourceDataSets.NextPageLink;
+            } while (nextPageLink != null);
 
-                IEnumerable<PSDataShareSourceDataSet> dataSetsInShareSubscription =
-                    consumerSourceDataSetList.Select(dataSet => dataSet.ToPsObject());
-                this.WriteObject(dataSetsInShareSubscription, true);
-
-            }
-            catch (DataShareErrorException ex) when (ex.Response.StatusCode.Equals(HttpStatusCode.NotFound))
-            {
-                throw new PSArgumentException(
-                    $"Source DataSets not found for {this.ShareSubscriptionName}");
-            }
+            IEnumerable<PSDataShareSourceDataSet> dataSetsInShareSubscription =
+                consumerSourceDataSetList.Select(dataSet => dataSet.ToPsObject());
+            this.WriteObject(dataSetsInShareSubscription, true);
         }
     }
 }

@@ -27,6 +27,7 @@ namespace Microsoft.Azure.Commands.DataShare.Account
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Extensions;
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models;
+    using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Properties;
     using Microsoft.Rest.Azure;
 
     /// <summary>
@@ -134,11 +135,7 @@ namespace Microsoft.Azure.Commands.DataShare.Account
                 }
                 catch (DataShareErrorException ex) when (ex.Response.StatusCode.Equals(HttpStatusCode.NotFound))
                 {
-                    throw new PSArgumentException(
-                        string.Format(
-                            "Account not found",
-                            this.Name,
-                            this.ResourceGroupName));
+                    throw new PSArgumentException(string.Format(Resources.ResourceNotFoundMessage, this.Name));
                 }
             }
         }
