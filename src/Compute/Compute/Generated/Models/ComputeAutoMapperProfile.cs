@@ -63,6 +63,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<FROM.ContainerService, TO.PSContainerServiceList>();
                 cfg.CreateMap<TO.PSContainerServiceList, TO.PSContainerService>();
                 cfg.CreateMap<TO.PSContainerService, TO.PSContainerServiceList>();
+                cfg.CreateMap<FROM.DedicatedHostGroup, TO.PSHostGroupList>();
+                cfg.CreateMap<TO.PSHostGroupList, TO.PSHostGroup>();
+                cfg.CreateMap<TO.PSHostGroup, TO.PSHostGroupList>();
+                cfg.CreateMap<FROM.DedicatedHost, TO.PSHostList>();
+                cfg.CreateMap<TO.PSHostList, TO.PSHost>();
+                cfg.CreateMap<TO.PSHost, TO.PSHostList>();
                 cfg.CreateMap<FROM.Disk, TO.PSDiskList>()
                     .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
                 cfg.CreateMap<TO.PSDiskList, TO.PSDisk>()
@@ -113,6 +119,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<TO.PSSnapshotUpdate, FROM.SnapshotUpdate>();
                 cfg.CreateMap<FROM.ContainerService, TO.PSContainerService>();
                 cfg.CreateMap<TO.PSContainerService, FROM.ContainerService>();
+                cfg.CreateMap<FROM.DedicatedHostGroup, TO.PSHostGroup>();
+                cfg.CreateMap<TO.PSHostGroup, FROM.DedicatedHostGroup>();
+                cfg.CreateMap<FROM.DedicatedHost, TO.PSHost>();
+                cfg.CreateMap<TO.PSHost, FROM.DedicatedHost>();
                 cfg.CreateMap<FROM.Disk, TO.PSDisk>()
                     .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
                 cfg.CreateMap<TO.PSDisk, FROM.Disk>()

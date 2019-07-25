@@ -163,7 +163,11 @@ CmdletsToExport = 'Remove-AzAvailabilitySet', 'Get-AzAvailabilitySet',
                'Remove-AzGalleryImageVersion', 'Add-AzVmssVMDataDisk', 
                'Remove-AzVmssVMDataDisk', 'Invoke-AzVMReimage', 
                'New-AzProximityPlacementGroup', 'Get-AzProximityPlacementGroup', 
-               'Remove-AzProximityPlacementGroup'
+               'Remove-AzProximityPlacementGroup',
+               'New-AzHostGroup',
+               'Get-AzHostGroup', 'Remove-AzHostGroup',
+               'New-AzHost',
+               'Get-AzHost', 'Remove-AzHost'
 
 # Variables to export from this module
 # VariablesToExport = @()
