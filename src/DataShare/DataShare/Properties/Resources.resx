@@ -129,11 +129,17 @@
   <data name="ResourceCreateMessage" xml:space="preserve">
     <value>Creating '{0}'</value>
   </data>
+  <data name="ResourceNotFoundMessage" xml:space="preserve">
+    <value>Resource '{0}' does not exist</value>
+  </data>
   <data name="ResourceRemovalConfirmation" xml:space="preserve">
     <value>Are you sure you want to remove resource '{0}'? </value>
   </data>
   <data name="ResourceRemovedMessage" xml:space="preserve">
     <value>Removing resource '{0}'</value>
+  </data>
+  <data name="ResourceUpdataConfirmation" xml:space="preserve">
+    <value>Are you sure you want to update this resource?</value>
   </data>
   <data name="RevokeShareSubscriptionAccess" xml:space="preserve">
     <value>Revoking access of share subscription</value>

@@ -96,6 +96,17 @@ namespace Microsoft.Azure.Commands.DataShare.SynchronizationSetting
         public string ResourceId { get; set; }
 
         /// <summary>
+        /// Share synchronization setting object.
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = ParameterSetNames.ObjectParameterSet,
+            ValueFromPipeline = true,
+            HelpMessage = "The Azure Data Share Synchronization setting.")]
+        [ValidateNotNullOrEmpty]
+        public PSDataShareSynchronizationSetting InputObject { get; set; }
+
+        /// <summary>
         /// Indicates whether you want to see deleted object or not
         /// </summary>
         [Parameter(
@@ -105,14 +116,6 @@ namespace Microsoft.Azure.Commands.DataShare.SynchronizationSetting
 
         [Parameter]
         public SwitchParameter AsJob { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = ParameterSetNames.ObjectParameterSet,
-            ValueFromPipeline = true,
-            HelpMessage = "The Azure Data Share Synchronization setting.")]
-        [ValidateNotNullOrEmpty]
-        public PSDataShareSynchronizationSetting InputObject { get; set; }
 
         public override void ExecuteCmdlet()
         {

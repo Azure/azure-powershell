@@ -27,6 +27,7 @@ namespace Microsoft.Azure.Commands.DataShare.DataSet
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Extensions;
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models;
+    using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Properties;
     using Microsoft.Rest.Azure;
 
     /// <summary>
@@ -117,8 +118,7 @@ namespace Microsoft.Azure.Commands.DataShare.DataSet
                 }
                 catch (DataShareErrorException ex) when (ex.Response.StatusCode.Equals(HttpStatusCode.NotFound))
                 {
-                    throw new PSArgumentException(
-                        $"DataSet {this.Name} not found");
+                    throw new PSArgumentException(string.Format(Resources.ResourceNotFoundMessage, this.Name));
                 }
             }
             else

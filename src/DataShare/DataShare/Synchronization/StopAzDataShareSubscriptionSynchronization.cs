@@ -121,24 +121,14 @@ namespace Microsoft.Azure.Commands.DataShare.Synchronization
             {
                 SynchronizationId = this.SynchronizationId
             };
-            try
-            {
-                var synchronization = endFunc(
-                    this.ResourceGroupName,
-                    this.AccountName,
-                    this.ShareSubscriptionName,
-                    shareSubscriptionSynchronization
-                );
-                this.WriteObject(synchronization.ToPsObject());
-            } catch (DataShareErrorException ex)
-            {
-                if (ex.Response.StatusCode.Equals(HttpStatusCode.Conflict)) {
-                    throw new PSArgumentException($"Synchronization already in progress.");
-                } else
-                {
-                    throw ex;
-                }
-            }
+
+            var synchronization = endFunc(
+                this.ResourceGroupName,
+                this.AccountName,
+                this.ShareSubscriptionName,
+                shareSubscriptionSynchronization
+            );
+            this.WriteObject(synchronization.ToPsObject());
         }
 
         private void SetParametersIfNeeded()
