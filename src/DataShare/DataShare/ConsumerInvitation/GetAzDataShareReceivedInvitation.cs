@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Commands.DataShare.ConsumerInvitation
     using Microsoft.Azure.Management.DataShare.Models;
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Extensions;
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models;
+    using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Properties;
     using Microsoft.Rest.Azure;
 
     /// <summary>
@@ -70,8 +71,7 @@ namespace Microsoft.Azure.Commands.DataShare.ConsumerInvitation
                 }
                 catch (DataShareErrorException ex) when (ex.Response.StatusCode.Equals(HttpStatusCode.NotFound))
                 {
-                    throw new PSArgumentException(
-                        $"ConsumerInvitation {this.InvitationId} not found");
+                    throw new PSArgumentException(string.Format(Resources.ResourceNotFoundMessage, this.InvitationId));
                 }
             }
             else

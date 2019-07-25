@@ -97,6 +97,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataShare.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Resource &apos;{0}&apos; does not exist.
+        /// </summary>
+        internal static string ResourceNotFoundMessage {
+            get {
+                return ResourceManager.GetString("ResourceNotFoundMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove resource &apos;{0}&apos;? .
         /// </summary>
         internal static string ResourceRemovalConfirmation {
@@ -111,6 +120,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataShare.Properties {
         internal static string ResourceRemovedMessage {
             get {
                 return ResourceManager.GetString("ResourceRemovedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to update this resource?.
+        /// </summary>
+        internal static string ResourceUpdataConfirmation {
+            get {
+                return ResourceManager.GetString("ResourceUpdataConfirmation", resourceCulture);
             }
         }
         
