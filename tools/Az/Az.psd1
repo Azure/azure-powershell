@@ -171,6 +171,9 @@ Az.Automation
 Az.CognitiveServices
 * Added NetworkRuleSet support.
 
+Az.Compute
+* Add missing properties (ComputerName, OsName, OsVersion and HyperVGeneration) of VM instance view object.
+
 Az.ContainerRegistry
 * Fix typo in Remove-AzContainerRegistryReplication for Replication parameter
     - More information here https://github.com/Azure/azure-powershell/issues/9633
