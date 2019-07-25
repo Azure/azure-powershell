@@ -1682,4 +1682,288 @@ directive:
       parameter-name: ResourceGroupName
     set:
       alias: AsJob
+
+# Parameter parameters
+  - where:
+      subject: ApplicationGateway
+      parameter-name: Parameter
+    set:
+      subject: ApplicationGateway
+  - where:
+      subject: ApplicationGatewayWafPolicy
+      parameter-name: Parameter
+    set:
+      subject: WafPolicy
+  - where:
+      subject: ApplicationSecurityGroup
+      parameter-name: Parameter
+    set:
+      subject: SecurityGroup
+  - where:
+      subject: DdosCustomPolicy
+      parameter-name: Parameter
+    set:
+      subject: DdosCustomPolicy
+  - where:
+      subject: DdosProtectionPlan
+      parameter-name: Parameter
+    set:
+      subject: DdosProtectionPlan
+  - where:
+      subject: ExpressRouteCircuit
+      parameter-name: Parameter
+    set:
+      subject: ExpressRouteCircuit
+  - where:
+      subject: ExpressRouteCrossConnection
+      parameter-name: Parameter
+    set:
+      subject: ExpressRouteCrossConnection
+  - where:
+      subject: ExpressRoutePort
+      parameter-name: Parameter
+    set:
+      subject: ExpressRoutePort
+  - where:
+      subject: Firewall
+      parameter-name: Parameter
+    set:
+      subject: Firewall
+  - where:
+      subject: LoadBalancer
+      parameter-name: Parameter
+    set:
+      subject: LoadBalancer
+  - where:
+      subject: LocalNetworkGateway
+      parameter-name: Parameter
+    set:
+      subject: LocalNetworkGateway
+  - where:
+      subject: NatGateway
+      parameter-name: Parameter
+    set:
+      subject: NatGateway
+  - where:
+      subject: NetworkInterface
+      parameter-name: Parameter
+    set:
+      subject: NetworkInterface
+  - where:
+      subject: NetworkProfile
+      parameter-name: Parameter
+    set:
+      subject: NetworkProfile
+  - where:
+      subject: NetworkWatcher
+      parameter-name: Parameter
+    set:
+      subject: NetworkWatcher
+  - where:
+      subject: NetworkWatcherAvailableProvider
+      parameter-name: Parameter
+    set:
+      subject: AvailableProvider
+  - where:
+      subject: NetworkWatcherConnectionMonitor
+      parameter-name: Parameter
+    set:
+      subject: ConnectionMonitor
+  - where:
+      subject: NetworkWatcherConnectivity
+      parameter-name: Parameter
+    set:
+      subject: Connectivity
+  - where:
+      subject: NetworkWatcherFlowLogConfiguration
+      parameter-name: Parameter
+    set:
+      subject: FlowLogConfiguration
+  - where:
+      subject: NetworkWatcherFlowLogStatus
+      parameter-name: Parameter
+    set:
+      subject: FlowLogStatus
+  - where:
+      subject: NetworkWatcherIPFlow
+      parameter-name: Parameter
+    set:
+      subject: IPFlow
+  - where:
+      subject: NetworkWatcherNetworkConfigurationDiagnostic
+      parameter-name: Parameter
+    set:
+      subject: ConfigurationDiagnostic
+  - where:
+      subject: NetworkWatcherNextHop
+      parameter-name: Parameter
+    set:
+      subject: NextHop
+  - where:
+      subject: NetworkWatcherPacketCapture
+      parameter-name: Parameter
+    set:
+      subject: PacketCapture
+  - where:
+      subject: NetworkWatcherReachabilityReport
+      parameter-name: Parameter
+    set:
+      subject: ReachabilityReport
+  - where:
+      subject: NetworkWatcherTopology
+      parameter-name: Parameter
+    set:
+      subject: Topology
+  - where:
+      subject: NetworkWatcherTroubleshooting
+      parameter-name: Parameter
+    set:
+      subject: Troubleshooting
+  - where:
+      subject: NetworkWatcherTroubleshootingResult
+      parameter-name: Parameter
+    set:
+      subject: Troubleshooting
+  - where:
+      subject: NetworkWatcherVMSecurityRule
+      parameter-name: Parameter
+    set:
+      subject: SecurityGroupView
+  - where:
+      subject: Nsg
+      parameter-name: Parameter
+    set:
+      subject: Nsg
+  - where:
+      subject: P2SVpnGatewayVpnProfile
+      parameter-name: Parameter
+    set:
+      subject: VpnProfile
+  - where:
+      subject: PublicIPAddress
+      parameter-name: Parameter
+    set:
+      subject: PublicIPAddress
+  - where:
+      subject: PublicIPPrefix
+      parameter-name: Parameter
+    set:
+      subject: PublicIPPrefix
+  - where:
+      subject: RouteTable
+      parameter-name: Parameter
+    set:
+      subject: RouteTable
+  - where:
+      subject: ServiceEndpointPolicy
+      parameter-name: Parameter
+    set:
+      subject: ServiceEndpointPolicy
+  - where:
+      subject: Vnet
+      parameter-name: Parameter
+    set:
+      subject: Vnet
+  - where:
+      subject: VnetGateway
+      parameter-name: Parameter
+    set:
+      subject: VnetGateway
+  - where:
+      subject: VnetGatewayConnection
+      parameter-name: Parameter
+    set:
+      subject: VnetGatewayConnection
+  - where:
+      subject: VnetGatewayConnectionSharedKey
+      parameter-name: Parameter
+    set:
+      subject: ConnectionSharedKey
+  - where:
+      subject: VnetGatewayVpnClientPackage
+      parameter-name: Parameter
+    set:
+      subject: VpnClientPackage
+  - where:
+      subject: VnetGatewayVpnDeviceConfigurationScript
+      parameter-name: Parameter
+    set:
+      subject: VpnDeviceConfigurationScript
+  - where:
+      subject: VnetGatewayVpnProfile
+      parameter-name: Parameter
+    set:
+      subject: VpnProfile
+  - where:
+      subject: VnetTap
+      parameter-name: Parameter
+    set:
+      subject: VnetTapProperties
+
+# ApplicationGateway Parameters
+  - where:
+      subject: ApplicationGateway
+      parameter-name: (.*)Configuration(.+)
+    set:
+      parameter-name: $1$2
+  - where:
+      subject: ApplicationGateway
+      parameter-name: AutoscaleMaxCapacity
+    set:
+      parameter-name: AutoscaleMaximumCapacity
+  - where:
+      subject: ApplicationGateway
+      parameter-name: AutoscaleMinCapacity
+    set:
+      parameter-name: AutoscaleMinimumCapacity
+  - where:
+      subject: ApplicationGateway
+      parameter-name: BackendHttpSettingsCollection
+    set:
+      parameter-name: BackendHttpSettings
+  - where:
+      subject: ApplicationGateway
+      parameter-name: CustomErrorConfiguration
+    set:
+      parameter-name: CustomError
+  - where:
+      subject: ApplicationGateway
+      parameter-name: EnableFIPs
+    set:
+      parameter-name: EnableFips
+  - where:
+      subject: ApplicationGateway
+      parameter-name: SslPolicyCIPherSuite
+    set:
+      parameter-name: SslCipherSuite
+  - where:
+      subject: ApplicationGateway
+      parameter-name: SslPolicyDisabledSslProtocol
+    set:
+      parameter-name: SslDisabledProtocol
+  - where:
+      subject: ApplicationGateway
+      parameter-name: SslPolicyMinProtocolVersion
+    set:
+      parameter-name: SslMinimumProtocolVersion
+  - where:
+      subject: ApplicationGateway
+      parameter-name: IdentityUserAssignedIdentity
+    set:
+      parameter-name: UserAssignedIdentity
+  - where:
+      subject: ApplicationGateway
+      parameter-name: WafEnabled
+    set:
+      parameter-name: EnableWaf
+  - where:
+      subject: ApplicationGateway
+      parameter-name: WafMaxRequestBodySize(.*)
+    set:
+      parameter-name: WafMaximumRequestBodySize$1
+  - where:
+      subject: ApplicationGateway
+      parameter-name: WafRequestBodyCheck
+    set:
+      parameter-name: CheckWafRequestBody
 ```
