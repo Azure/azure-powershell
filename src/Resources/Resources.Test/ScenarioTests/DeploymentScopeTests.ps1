@@ -88,46 +88,6 @@ function Test-DeploymentAsJob-SubscriptionScope
 
 <#
 .SYNOPSIS
-Tests stopping deployment.
-#>
-function Test-StopDeployment
-{
-    try
-	{
-	    # Setup
-		$rgname = Get-ResourceGroupName
-		$deploymentName = Get-ResourceName
-		$storageAccountName = Get-ResourceName
-		$location = "WestUS"
-
-		#New-AzResourceGroup -Name $rgname -Location $location
-
-		# Test
-		$job = New-AzDeployment -Name $deploymentName -Location $location -TemplateFile subscription_level_template.json -nestedDeploymentRG $rgname -storageAccountName $storageAccountName -AsJob
-		Assert-AreEqual Running $job[0].State
-
-		Start-Sleep -s 2
-
-		Stop-AzDeployment -Name $deploymentName
-
-		$job = $job | Wait-Job
-		Assert-AreEqual Completed $job[0].State
-
-		$deployment = $job | Receive-Job
-		Assert-AreEqual Canceled $deployment.ProvisioningState
-
-		Start-Sleep -s 2
-
-		Remove-AzDeployment -Name $deploymentName
-	}
-	finally
-	{
-	    Clean-ResourceGroup $rgname
-	}
-}
-
-<#
-.SYNOPSIS
 Tests deployment template validation.
 #>
 function Test-DeploymentEndToEnd-ResourceGroup
