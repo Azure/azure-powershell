@@ -19,6 +19,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add missing properties (ComputerName, OsName, OsVersion and HyperVGeneration) of VM instance view object.
 
 ## Version 2.4.0
 * Add HyperVGeneration parameter to New-AzImageConfig
