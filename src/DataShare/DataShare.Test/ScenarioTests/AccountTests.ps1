@@ -40,7 +40,7 @@ function Test-AccountCrud
     $removed = Remove-AzDataShareAccount -Name $AccountName -ResourceGroupName $resourceGroup.ResourceGroupName -PassThru -Force
 
     Assert-True { $removed }
-    Assert-ThrowsContains { Get-AzDataShareAccount -Name $AccountName -ResourceGroupName $resourceGroup.ResourceGroupName } "Account not found"
+    Assert-ThrowsContains { Get-AzDataShareAccount -Name $AccountName -ResourceGroupName $resourceGroup.ResourceGroupName } "Resource 'sdktestingshareaccount9776' does not exist"
 
     Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
