@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.4.1
 * Add missing properties (ComputerName, OsName, OsVersion and HyperVGeneration) of VM instance view object.
 
 ## Version 2.4.0
