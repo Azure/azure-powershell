@@ -50,11 +50,11 @@ Set-AzVMDiskEncryptionExtension [-ResourceGroupName] <String> [-VMName] <String>
 The **Set-AzVMDiskEncryptionExtension** cmdlet enables encryption on a running infrastructure as a service (IaaS) virtual machine in Azure.
 This cmdlet enables encryption by installing the disk encryption extension on the virtual machine. 
 
-For Windows virtual machines, the **VolumeType** parameter may be omitted, in which case the operation defaults to All; if the VolumeType parameter is present for a Windows virtual machine, it must be set to either All or OS.
-
 This cmdlet requires confirmation from the users as one of the steps to enable encryption requires a restart of the virtual machine.
 
 It is advised that you save your work on the virtual machine before you run this cmdlet.
+
+For Windows virtual machines, the **VolumeType** parameter may be omitted, in which case the operation defaults to All; if the VolumeType parameter is present for a Windows virtual machine, it must be set to either All or OS.
 
 ## EXAMPLES
 
@@ -566,9 +566,9 @@ Accept wildcard characters: False
 ```
 
 ### -VolumeType
-Specifies the type of virtual machine volumes (OS or Data) on which to perform encryption operation. This parameter may be omitted, in which case the operation defaults to All. 
+Specifies the type of virtual machine volumes on which to perform encryption operation: OS, Data, or All. If this parameter is omitted, the operation defaults to All.
 
-Windows virtual machines only: this parameter, if present, must be set to either All or OS.
+If this parameter is present for a Windows virtual machine, it must be set to either All or OS.
 
 ```yaml
 Type: System.String

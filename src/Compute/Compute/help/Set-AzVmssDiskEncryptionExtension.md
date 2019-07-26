@@ -274,7 +274,9 @@ Accept wildcard characters: False
 ```
 
 ### -VolumeType
-Specifies the type of virtual machine volumes (OS or Data) on which to perform encryption operation. For Linux virtual machines, the VolumeType parameter must be present and must be set to Data. For Windows virtual machines, the VolumeType parameter may be omitted, in which case the operation defaults to All; if the VolumeType parameter is present for a Windows virtual machine, it must be set to either All or OS.
+Specifies the type of virtual machine volumes on which to perform encryption operation: OS, Data, or All. If this parameter is omitted, the operation defaults to All.
+
+For Linux virtual machines, the VolumeType parameter must be present and must be set to Data. For Windows virtual machines, the VolumeType parameter, if present, must be set to either All or OS.
 
 ```yaml
 Type: System.String
