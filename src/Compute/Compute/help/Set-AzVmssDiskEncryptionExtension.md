@@ -24,7 +24,7 @@ Set-AzVmssDiskEncryptionExtension [-ResourceGroupName] <String> [-VMScaleSetName
 ## DESCRIPTION
 The **Set-AzVmssDiskEncryptionExtension** cmdlet enables encryption on a VM scale set. This cmdlet enables encryption by installing the disk encryption extension on the VM scale set.
 
-The *VolumeType* parameter is required when encrypting Linux virtual machines, and must be set to "Data". It can be omitted when encrypting Windows virtual machines.
+For Linux virtual machines, the *VolumeType* parameter must be present and must be set to "Data"
 
 ## EXAMPLES
 
@@ -274,7 +274,7 @@ Accept wildcard characters: False
 ```
 
 ### -VolumeType
-Type of the volume (OS or Data) on which to perform encryption operation. This parameter is required when encrypting Linux virtual machines, and must be set to a vlue supported by the Linux distribution. This parameter can be omitted when encrypting Windows virtual machines.
+Specifies the type of virtual machine volumes (OS or Data) on which to perform encryption operation. For Linux virtual machines, the VolumeType parameter must be present and must be set to Data. For Windows virtual machines, the VolumeType parameter may be omitted, in which case the operation defaults to All; if the VolumeType parameter is present for a Windows virtual machine, it must be set to either All or OS.
 
 ```yaml
 Type: System.String
