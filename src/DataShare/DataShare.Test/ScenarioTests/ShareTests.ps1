@@ -43,7 +43,7 @@ function Test-ShareCrud
     $removed = Remove-AzDataShare -AccountName $AccountName -ResourceGroupName $resourceGroup -Name $ShareName -PassThru
 
     Assert-True { $removed }
-    Assert-ThrowsContains { Get-AzDataShare -AccountName $AccountName -ResourceGroupName $resourceGroup -Name $ShareName } "Share sdktestingshare1 not found"
+    Assert-ThrowsContains { Get-AzDataShare -AccountName $AccountName -ResourceGroupName $resourceGroup -Name $ShareName } "Resource 'sdktestingshare1' does not exist"
 
     Remove-AzResourceGroup -Name $resourceGroup   
 }
