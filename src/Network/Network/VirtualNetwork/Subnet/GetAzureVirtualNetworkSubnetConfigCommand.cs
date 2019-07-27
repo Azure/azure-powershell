@@ -17,28 +17,51 @@ using System;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.Azure.Commands.Network.Common;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkSubnetConfig"), OutputType(typeof(PSSubnet))]
-    public class GetAzureVirtualNetworkSubnetConfigCommand : NetworkBaseCmdlet
-    {
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkSubnetConfig",DefaultParameterSetName = "GetByVirtualNetwork"), OutputType(typeof(PSSubnet))]
+    public class GetAzureVirtualNetworkSubnetConfigCommand : VirtualNetworkBaseCmdlet
+  {
         [Parameter(
             Mandatory = false,
+            ParameterSetName = "GetByVirtualNetwork",
             HelpMessage = "The name of the subnet")]
         public string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
+            ParameterSetName = "GetByVirtualNetwork",
             HelpMessage = "The virtualNetwork")]
         public PSVirtualNetwork VirtualNetwork { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = "GetByResourceId",
+            HelpMessage = "Resource Id to the subnet"
+        )]
+        public string ResourceId { get; set; }
 
         public override void Execute()
         {
             base.Execute();
-            if (!string.IsNullOrEmpty(this.Name))
-            {
+
+            if (ParameterSetName == "GetByResourceId") {
+              string resourceGroupName = null;
+              string virtualNetworkName = null;
+              string subnetName = null;
+
+              if (ResourceIdHelper.TryParseSubnetMetadataFromResourceId(this.ResourceId, out resourceGroupName, out virtualNetworkName, out subnetName)) {
+                this.Name = subnetName;
+                this.VirtualNetwork = this.GetVirtualNetwork(resourceGroupName, virtualNetworkName);
+              }
+            }
+
+            if (this.VirtualNetwork != null) {
+              if (!string.IsNullOrEmpty(this.Name))
+              {
                 var subnet =
                     this.VirtualNetwork.Subnets.FirstOrDefault(
                         resource =>
@@ -46,15 +69,16 @@ namespace Microsoft.Azure.Commands.Network
 
                 if (subnet == null)
                 {
-                    throw new ArgumentException(string.Format(Properties.Resources.ResourceNotFound, this.Name));
+                  throw new ArgumentException(string.Format(Properties.Resources.ResourceNotFound, this.Name));
                 }
 
                 WriteObject(subnet);
-            }
-            else
-            {
+              }
+              else
+              {
                 var subnets = this.VirtualNetwork.Subnets;
                 WriteObject(subnets, true);
+              }
             }
         }
     }
