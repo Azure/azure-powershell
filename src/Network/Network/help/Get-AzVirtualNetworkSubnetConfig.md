@@ -13,8 +13,15 @@ Gets a subnet in a virtual network.
 
 ## SYNTAX
 
+### GetByVirtualNetwork (Default)
 ```
 Get-AzVirtualNetworkSubnetConfig [-Name <String>] -VirtualNetwork <PSVirtualNetwork>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### GetByResourceId
+```
+ Get-AzVirtualNetworkSubnetConfig -ResourceId <string>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -57,10 +64,24 @@ Specifies the name of the subnet configuration that this cmdlet gets.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: GetByVirtualNetwork
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Specifies the resource id of the subnet that this cmdlet gets.
+```yaml
+Type: System.String
+Parameter Sets: GetByResourceId
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -72,7 +93,7 @@ Specifies the **VirtualNetwork** object that contains the subnet configuration t
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork
-Parameter Sets: (All)
+Parameter Sets: GetByVirtualNetwork
 Aliases:
 
 Required: True
