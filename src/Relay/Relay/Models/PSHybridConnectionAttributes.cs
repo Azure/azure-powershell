@@ -13,12 +13,12 @@ namespace Microsoft.Azure.Commands.Relay.Models
     /// <summary>
     /// Description of HybridConnection Resource.
     /// </summary>
-    public partial class PSHybridConnectionAttibutes : PSResourceAttributes
+    public partial class PSHybridConnectionAttributes : PSResourceAttributes
     {
         /// <summary>
         /// Initializes a new instance of the HybridConnection class.
         /// </summary>
-        public PSHybridConnectionAttibutes() { }
+        public PSHybridConnectionAttributes() { }
 
         /// <summary>
         /// Initializes a new instance of the HybridConnection class.
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Relay.Models
         /// can be used to store  descriptive data, such as list of teams and
         /// their contact information also user-defined configuration settings
         /// can be stored.</param>
-        public PSHybridConnectionAttibutes(string id = default(string), string name = default(string), string type = default(string), System.DateTime? createdAt = default(System.DateTime?), System.DateTime? updatedAt = default(System.DateTime?), int? listenerCount = default(int?), bool? requiresClientAuthorization = default(bool?), string userMetadata = default(string))
+        public PSHybridConnectionAttributes(string id = default(string), string name = default(string), string type = default(string), System.DateTime? createdAt = default(System.DateTime?), System.DateTime? updatedAt = default(System.DateTime?), int? listenerCount = default(int?), bool? requiresClientAuthorization = default(bool?), string userMetadata = default(string))
             : base(id, name, type)
         {
             CreatedAt = createdAt;
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Relay.Models
         }
 
 
-        public PSHybridConnectionAttibutes(HybridConnection hybridConnection)
+        public PSHybridConnectionAttributes(HybridConnection hybridConnection)
         {
             Id = hybridConnection.Id;
             Name = hybridConnection.Name;
