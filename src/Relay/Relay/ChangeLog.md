@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix typo in PSHybridConnectionAttributes model name
 
 ## Version 1.0.1
 * Fix typos in customer-facing messages
