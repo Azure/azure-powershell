@@ -1500,7 +1500,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         {
             if (!ResourceManagementClient.Deployments.CheckExistenceAtManagementGroupScope(managementGroupId, deploymentName))
             {
-                throw new ArgumentException(string.Format(ProjectResources.DeploymentDoesntExistAtManagementGroupScope, deploymentName));
+                throw new ArgumentException(string.Format(ProjectResources.DeploymentDoesntExistAtManagementGroupScope, deploymentName, managementGroupId));
             }
 
             ResourceManagementClient.Deployments.DeleteAtManagementGroupScope(managementGroupId, deploymentName);

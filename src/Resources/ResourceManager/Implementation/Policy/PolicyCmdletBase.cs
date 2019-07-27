@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             // generate resource Id based on management group
             if (!string.IsNullOrEmpty(managementGroupName))
             {
-                return $"/providers/{Constants.MicrosoftManagementGroupDefinitionType}/{managementGroupName}/providers/{fullyQualifiedResourceType}{namePart}";
+                return $"{Constants.ManagementGroupIdPrefix}{managementGroupName}/providers/{fullyQualifiedResourceType}{namePart}";
             }
 
             // generate resource Id based on given subscription

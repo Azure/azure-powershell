@@ -185,8 +185,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// <param name="resourceId">The resource id.</param>
         public static string GetManagementGroupId(string resourceId)
         {
-            return resourceId.StartsWithInsensitively(Constants.ManagementGroupType)
-                ? ResourceIdUtility.GetNextSegmentAfter(resourceId: resourceId, segmentName: Constants.ManagementGroupTypeName)
+            return resourceId.StartsWithInsensitively(Constants.ManagementGroupIdPrefix)
+                ? ResourceIdUtility.GetNextSegmentAfter(resourceId: resourceId, segmentName: Constants.ManagementGroups)
                 : null;
         }
 

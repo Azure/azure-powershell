@@ -142,10 +142,10 @@
     <value>Deployment '{0}' doesn't exist under resource group '{1}'</value>
   </data>
   <data name="DeploymentDoesntExistAtSubscriptionScope" xml:space="preserve">
-    <value>Deployment '{0}' doesn't exist in subscription.</value>
+    <value>Deployment '{0}' doesn't exist in the current subscription.</value>
   </data>
   <data name="DeploymentDoesntExistAtManagementGroupScope" xml:space="preserve">
-    <value>Deployment '{0}' doesn't exist in management group.</value>
+    <value>Deployment '{0}' doesn't exist at management group '{1}'.</value>
   </data>
   <data name="DeploymentWithNameNotFound" xml:space="preserve">
     <value>Cannot find a deployment with name '{0}'.</value>
