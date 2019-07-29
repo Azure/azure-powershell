@@ -1972,7 +1972,8 @@ function Test-VirtualMachineScaleSetVMUpdate
         Assert-AreEqual 1 $vmssVM.StorageProfile.DataDisks.Count;
 
         $vmssVM = Remove-AzVmssVMDataDisk -VirtualMachineScaleSetVM $vmssVM -Lun 0;
-        Assert-Null $vmssVM.StorageProfile.DataDisks;
+        Assert-NotNull $vmssVM.StorageProfile.DataDisks;
+        Assert-AreEqual 0 $vmssVM.StorageProfile.DataDisks.Count;
 
         $result = $vmssVMs[0] `
                   | Add-AzVmssVMDataDisk -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -CreateOption Attach -StorageAccountType Standard_LRS -ManagedDiskId $disk0.Id `
