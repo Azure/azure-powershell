@@ -21,10 +21,10 @@ The location and name of the storage account cannot be changed after creation.
 
 ### UpdateExpanded1 (Default)
 ```
-Update-AzStorageAccount -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -CustomDomainName <String> -NetworkRuleSetDefaultAction <DefaultAction> -SkuName <SkuName> [-AssignIdentity]
- [-AccessTier <AccessTier>] [-EncryptBlobService] [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly]
- [-NoEncryption] [-EncryptFileService] [-Kind <Kind>] [-NetworkRuleSetBypass <Bypass>]
+Update-AzStorageAccount -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -SkuName <SkuName>
+ [-AssignIdentity] [-AccessTier <AccessTier>] [-EncryptBlobService] [-CustomDomainName <String>]
+ [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly] [-NoEncryption] [-EncryptFileService]
+ [-Kind <Kind>] [-NetworkRuleSetBypass <Bypass>] [-NetworkRuleSetDefaultAction <DefaultAction>]
  [-NetworkRuleSetIPRule <IIPRule[]>] [-NetworkRuleSetVirtualNetworkRule <IVirtualNetworkRule[]>]
  [-EncryptQueueService] [-SkuKind <Kind>] [-SkuRestriction <IRestriction[]>] [-EncryptTableService]
  [-Tag <Hashtable>] [-UseSubDomain] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -32,59 +32,61 @@ Update-AzStorageAccount -Name <String> -ResourceGroupName <String> -Subscription
 
 ### UpdateExpanded1StorageEncryption
 ```
-Update-AzStorageAccount -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -CustomDomainName <String> -NetworkRuleSetDefaultAction <DefaultAction> -SkuName <SkuName> [-AssignIdentity]
- [-AccessTier <AccessTier>] [-EncryptBlobService] [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly]
- [-EncryptFileService] [-Kind <Kind>] [-NetworkRuleSetBypass <Bypass>] [-NetworkRuleSetIPRule <IIPRule[]>]
- [-NetworkRuleSetVirtualNetworkRule <IVirtualNetworkRule[]>] [-EncryptQueueService] [-SkuKind <Kind>]
- [-SkuRestriction <IRestriction[]>] [-EncryptTableService] [-Tag <Hashtable>] [-UseSubDomain]
- [-StorageEncryption] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzStorageAccount -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -SkuName <SkuName>
+ [-AssignIdentity] [-AccessTier <AccessTier>] [-EncryptBlobService] [-CustomDomainName <String>]
+ [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly] [-EncryptFileService] [-Kind <Kind>]
+ [-NetworkRuleSetBypass <Bypass>] [-NetworkRuleSetDefaultAction <DefaultAction>]
+ [-NetworkRuleSetIPRule <IIPRule[]>] [-NetworkRuleSetVirtualNetworkRule <IVirtualNetworkRule[]>]
+ [-EncryptQueueService] [-SkuKind <Kind>] [-SkuRestriction <IRestriction[]>] [-EncryptTableService]
+ [-Tag <Hashtable>] [-UseSubDomain] [-StorageEncryption] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateExpanded1KeyVaultEncryption
 ```
-Update-AzStorageAccount -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -CustomDomainName <String> -NetworkRuleSetDefaultAction <DefaultAction> -SkuName <SkuName> [-AssignIdentity]
- [-AccessTier <AccessTier>] [-EncryptBlobService] [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly]
- [-EncryptFileService] [-Kind <Kind>] [-NetworkRuleSetBypass <Bypass>] [-NetworkRuleSetIPRule <IIPRule[]>]
- [-NetworkRuleSetVirtualNetworkRule <IVirtualNetworkRule[]>] [-EncryptQueueService] [-SkuKind <Kind>]
- [-SkuRestriction <IRestriction[]>] [-EncryptTableService] [-Tag <Hashtable>] [-UseSubDomain]
- [-KeyVaultEncryption] [-KeyName <String>] [-KeyVaultUri <String>] [-KeyVersion <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzStorageAccount -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -SkuName <SkuName>
+ [-AssignIdentity] [-AccessTier <AccessTier>] [-EncryptBlobService] [-CustomDomainName <String>]
+ [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly] [-EncryptFileService] [-Kind <Kind>]
+ [-NetworkRuleSetBypass <Bypass>] [-NetworkRuleSetDefaultAction <DefaultAction>]
+ [-NetworkRuleSetIPRule <IIPRule[]>] [-NetworkRuleSetVirtualNetworkRule <IVirtualNetworkRule[]>]
+ [-EncryptQueueService] [-SkuKind <Kind>] [-SkuRestriction <IRestriction[]>] [-EncryptTableService]
+ [-Tag <Hashtable>] [-UseSubDomain] [-KeyVaultEncryption] [-KeyName <String>] [-KeyVaultUri <String>]
+ [-KeyVersion <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded1
 ```
-Update-AzStorageAccount -InputObject <IStorageIdentity> -CustomDomainName <String>
- -NetworkRuleSetDefaultAction <DefaultAction> -SkuName <SkuName> [-AssignIdentity] [-AccessTier <AccessTier>]
- [-EncryptBlobService] [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly] [-NoEncryption]
- [-EncryptFileService] [-Kind <Kind>] [-NetworkRuleSetBypass <Bypass>] [-NetworkRuleSetIPRule <IIPRule[]>]
- [-NetworkRuleSetVirtualNetworkRule <IVirtualNetworkRule[]>] [-EncryptQueueService] [-SkuKind <Kind>]
- [-SkuRestriction <IRestriction[]>] [-EncryptTableService] [-Tag <Hashtable>] [-UseSubDomain]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzStorageAccount -InputObject <IStorageIdentity> -SkuName <SkuName> [-AssignIdentity]
+ [-AccessTier <AccessTier>] [-EncryptBlobService] [-CustomDomainName <String>]
+ [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly] [-NoEncryption] [-EncryptFileService]
+ [-Kind <Kind>] [-NetworkRuleSetBypass <Bypass>] [-NetworkRuleSetDefaultAction <DefaultAction>]
+ [-NetworkRuleSetIPRule <IIPRule[]>] [-NetworkRuleSetVirtualNetworkRule <IVirtualNetworkRule[]>]
+ [-EncryptQueueService] [-SkuKind <Kind>] [-SkuRestriction <IRestriction[]>] [-EncryptTableService]
+ [-Tag <Hashtable>] [-UseSubDomain] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded1StorageEncryption
 ```
-Update-AzStorageAccount -InputObject <IStorageIdentity> -CustomDomainName <String>
- -NetworkRuleSetDefaultAction <DefaultAction> -SkuName <SkuName> [-AssignIdentity] [-AccessTier <AccessTier>]
- [-EncryptBlobService] [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly] [-EncryptFileService]
- [-Kind <Kind>] [-NetworkRuleSetBypass <Bypass>] [-NetworkRuleSetIPRule <IIPRule[]>]
- [-NetworkRuleSetVirtualNetworkRule <IVirtualNetworkRule[]>] [-EncryptQueueService] [-SkuKind <Kind>]
- [-SkuRestriction <IRestriction[]>] [-EncryptTableService] [-Tag <Hashtable>] [-UseSubDomain]
- [-StorageEncryption] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzStorageAccount -InputObject <IStorageIdentity> -SkuName <SkuName> [-AssignIdentity]
+ [-AccessTier <AccessTier>] [-EncryptBlobService] [-CustomDomainName <String>]
+ [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly] [-EncryptFileService] [-Kind <Kind>]
+ [-NetworkRuleSetBypass <Bypass>] [-NetworkRuleSetDefaultAction <DefaultAction>]
+ [-NetworkRuleSetIPRule <IIPRule[]>] [-NetworkRuleSetVirtualNetworkRule <IVirtualNetworkRule[]>]
+ [-EncryptQueueService] [-SkuKind <Kind>] [-SkuRestriction <IRestriction[]>] [-EncryptTableService]
+ [-Tag <Hashtable>] [-UseSubDomain] [-StorageEncryption] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded1KeyVaultEncryption
 ```
-Update-AzStorageAccount -InputObject <IStorageIdentity> -CustomDomainName <String>
- -NetworkRuleSetDefaultAction <DefaultAction> -SkuName <SkuName> [-AssignIdentity] [-AccessTier <AccessTier>]
- [-EncryptBlobService] [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly] [-EncryptFileService]
- [-Kind <Kind>] [-NetworkRuleSetBypass <Bypass>] [-NetworkRuleSetIPRule <IIPRule[]>]
- [-NetworkRuleSetVirtualNetworkRule <IVirtualNetworkRule[]>] [-EncryptQueueService] [-SkuKind <Kind>]
- [-SkuRestriction <IRestriction[]>] [-EncryptTableService] [-Tag <Hashtable>] [-UseSubDomain]
- [-KeyVaultEncryption] [-KeyName <String>] [-KeyVaultUri <String>] [-KeyVersion <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzStorageAccount -InputObject <IStorageIdentity> -SkuName <SkuName> [-AssignIdentity]
+ [-AccessTier <AccessTier>] [-EncryptBlobService] [-CustomDomainName <String>]
+ [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly] [-EncryptFileService] [-Kind <Kind>]
+ [-NetworkRuleSetBypass <Bypass>] [-NetworkRuleSetDefaultAction <DefaultAction>]
+ [-NetworkRuleSetIPRule <IIPRule[]>] [-NetworkRuleSetVirtualNetworkRule <IVirtualNetworkRule[]>]
+ [-EncryptQueueService] [-SkuKind <Kind>] [-SkuRestriction <IRestriction[]>] [-EncryptTableService]
+ [-Tag <Hashtable>] [-UseSubDomain] [-KeyVaultEncryption] [-KeyName <String>] [-KeyVaultUri <String>]
+ [-KeyVersion <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -161,7 +163,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -421,7 +423,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Support.DefaultAction
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

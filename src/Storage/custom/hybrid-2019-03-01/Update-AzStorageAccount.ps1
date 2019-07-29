@@ -86,12 +86,12 @@ function Update-AzStorageAccount {
         # A boolean indicating whether or not the service encrypts the data as it is stored.
         ${EncryptBlobService},
     
-        [Parameter(ParameterSetName='UpdateExpanded', Mandatory, HelpMessage='Gets or sets the custom domain name assigned to the storage account. Name is the CNAME source.')]
-        [Parameter(ParameterSetName='UpdateExpandedStorageEncryption', Mandatory, HelpMessage='Gets or sets the custom domain name assigned to the storage account. Name is the CNAME source.')]
-        [Parameter(ParameterSetName='UpdateExpandedKeyVaultEncryption', Mandatory, HelpMessage='Gets or sets the custom domain name assigned to the storage account. Name is the CNAME source.')]
-        [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, HelpMessage='Gets or sets the custom domain name assigned to the storage account. Name is the CNAME source.')]
-        [Parameter(ParameterSetName='UpdateViaIdentityExpandedStorageEncryption', Mandatory, HelpMessage='Gets or sets the custom domain name assigned to the storage account. Name is the CNAME source.')]
-        [Parameter(ParameterSetName='UpdateViaIdentityExpandedKeyVaultEncryption', Mandatory, HelpMessage='Gets or sets the custom domain name assigned to the storage account. Name is the CNAME source.')]
+        [Parameter(ParameterSetName='UpdateExpanded', HelpMessage='Gets or sets the custom domain name assigned to the storage account. Name is the CNAME source.')]
+        [Parameter(ParameterSetName='UpdateExpandedStorageEncryption', HelpMessage='Gets or sets the custom domain name assigned to the storage account. Name is the CNAME source.')]
+        [Parameter(ParameterSetName='UpdateExpandedKeyVaultEncryption', HelpMessage='Gets or sets the custom domain name assigned to the storage account. Name is the CNAME source.')]
+        [Parameter(ParameterSetName='UpdateViaIdentityExpanded', HelpMessage='Gets or sets the custom domain name assigned to the storage account. Name is the CNAME source.')]
+        [Parameter(ParameterSetName='UpdateViaIdentityExpandedStorageEncryption', HelpMessage='Gets or sets the custom domain name assigned to the storage account. Name is the CNAME source.')]
+        [Parameter(ParameterSetName='UpdateViaIdentityExpandedKeyVaultEncryption', HelpMessage='Gets or sets the custom domain name assigned to the storage account. Name is the CNAME source.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
         [System.String]
         # Gets or sets the custom domain name assigned to the storage account. Name is the CNAME source.
@@ -107,14 +107,6 @@ function Update-AzStorageAccount {
         [System.Management.Automation.SwitchParameter]
         # Allows https traffic only to storage service if sets to true.
         ${EnableHttpsTrafficOnly},
-    
-        #[Parameter(ParameterSetName='UpdateExpanded', Mandatory, HelpMessage='The encryption keySource (provider). Possible values (case-insensitive): Microsoft.Storage, Microsoft.Keyvault')]
-        #[Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, HelpMessage='The encryption keySource (provider). Possible values (case-insensitive): Microsoft.Storage, Microsoft.Keyvault')]
-        #[ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Storage.Support.KeySource])]
-        #[Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
-        #[Microsoft.Azure.PowerShell.Cmdlets.Storage.Support.KeySource]
-        # The encryption keySource (provider). Possible values (case-insensitive): Microsoft.Storage, Microsoft.Keyvault
-        #${EncryptionKeySource},
         
         [Parameter(ParameterSetName='UpdateExpanded')]
         [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
@@ -188,12 +180,12 @@ function Update-AzStorageAccount {
         # Specifies whether traffic is bypassed for Logging/Metrics/AzureServices. Possible values are any combination of Logging|Metrics|AzureServices (For example, "Logging, Metrics"), or None to bypass none of those traffics.
         ${NetworkRuleSetBypass},
     
-        [Parameter(ParameterSetName='UpdateExpanded', Mandatory, HelpMessage='Specifies the default action of allow or deny when no other rules match.')]
-        [Parameter(ParameterSetName='UpdateExpandedStorageEncryption', Mandatory, HelpMessage='Specifies the default action of allow or deny when no other rules match.')]
-        [Parameter(ParameterSetName='UpdateExpandedKeyVaultEncryption', Mandatory, HelpMessage='Specifies the default action of allow or deny when no other rules match.')]
-        [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, HelpMessage='Specifies the default action of allow or deny when no other rules match.')]
-        [Parameter(ParameterSetName='UpdateViaIdentityExpandedStorageEncryption', Mandatory, HelpMessage='Specifies the default action of allow or deny when no other rules match.')]
-        [Parameter(ParameterSetName='UpdateViaIdentityExpandedKeyVaultEncryption', Mandatory, HelpMessage='Specifies the default action of allow or deny when no other rules match.')]
+        [Parameter(ParameterSetName='UpdateExpanded', HelpMessage='Specifies the default action of allow or deny when no other rules match.')]
+        [Parameter(ParameterSetName='UpdateExpandedStorageEncryption', HelpMessage='Specifies the default action of allow or deny when no other rules match.')]
+        [Parameter(ParameterSetName='UpdateExpandedKeyVaultEncryption', HelpMessage='Specifies the default action of allow or deny when no other rules match.')]
+        [Parameter(ParameterSetName='UpdateViaIdentityExpanded', HelpMessage='Specifies the default action of allow or deny when no other rules match.')]
+        [Parameter(ParameterSetName='UpdateViaIdentityExpandedStorageEncryption', HelpMessage='Specifies the default action of allow or deny when no other rules match.')]
+        [Parameter(ParameterSetName='UpdateViaIdentityExpandedKeyVaultEncryption', HelpMessage='Specifies the default action of allow or deny when no other rules match.')]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Storage.Support.DefaultAction])]
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Support.DefaultAction]
