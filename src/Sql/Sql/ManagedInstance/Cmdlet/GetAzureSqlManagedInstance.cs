@@ -113,8 +113,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
             HelpMessage = "The name of the instance pool.")]
         [ValidateNotNullOrEmpty]
         [ResourceNameCompleter("Microsoft.Sql/instancePools", "ResourceGroupName")]
-        [SupportsWildcards]
-
         public string InstancePoolName { get; set; }
 
         /// <summary>
@@ -153,28 +151,25 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         {
             ICollection<AzureSqlManagedInstanceModel> results = new List<AzureSqlManagedInstanceModel>();
 
-            if (string.Equals(this.ParameterSetName, GetByNameAndResourceGroupParameterSet, System.StringComparison.OrdinalIgnoreCase) ||
-                string.Equals(this.ParameterSetName, GetByManagedInstanceResourceIdentifierParameterSet, System.StringComparison.OrdinalIgnoreCase))
+            if (ShouldGetByName(ResourceGroupName, Name))
             {
                 results = new List<AzureSqlManagedInstanceModel>();
                 results.Add(ModelAdapter.GetManagedInstance(this.ResourceGroupName, this.Name));
             }
-            else if (string.Equals(this.ParameterSetName, ListByInstancePoolParameterSet, System.StringComparison.OrdinalIgnoreCase) ||
-                     string.Equals(this.ParameterSetName, ListByInstancePoolObjectParameterSet, System.StringComparison.OrdinalIgnoreCase) ||
-                     string.Equals(this.ParameterSetName, ListByInstancePoolResourceIdentifierParameterSet, System.StringComparison.OrdinalIgnoreCase))
+            else if (ShouldListByResourceGroup(ResourceGroupName, Name))
             {
-                results = ModelAdapter.ListManagedInstancesByInstancePool(this.ResourceGroupName, this.InstancePoolName);
-            }
-            else if (string.Equals(this.ParameterSetName, ListByResourceGroupOrSubParameterSet, System.StringComparison.OrdinalIgnoreCase))
-            {
-                if (MyInvocation.BoundParameters.ContainsKey("ResourceGroupName"))
+                if (this.InstancePoolName != null)
                 {
-                    results = ModelAdapter.ListManagedInstancesByResourceGroup(this.ResourceGroupName);
+                    results = ModelAdapter.ListManagedInstancesByInstancePool(this.ResourceGroupName, this.InstancePoolName);
                 }
                 else
                 {
-                    results = ModelAdapter.ListManagedInstances();
+                    results = ModelAdapter.ListManagedInstancesByResourceGroup(this.ResourceGroupName);
                 }
+            }
+            else
+            {
+                results = ModelAdapter.ListManagedInstances();
             }
 
             return TopLevelWildcardFilter(ResourceGroupName, Name, results);
