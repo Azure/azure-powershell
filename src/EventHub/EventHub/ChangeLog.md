@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix for issue #9658 : Typo VirtualNteworkRule parameter in Set-AzEventHubNetworkRuleSet
 
 ## Version 1.3.0
 * Added new cmmdlet added for generating SAS token : New-AzEventHubAuthorizationRuleSASToken

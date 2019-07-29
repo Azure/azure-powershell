@@ -46,10 +46,11 @@ PS C:\> Get-AzAlert -Severity "Sev2" -MonitorCondition "Fired" -IncludeContext t
 ```
 
 List all alerts with Sev2 severity and Fired monitor condition. Setting IncludeContext to true, include custom payload of alert.
+Use Format-List to get the complete details of each alert in list.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzAlert -AlertId "afbf1b3a-0a6c-4f19-9c9b-644ccd7b1529"
+PS C:\> Get-AzAlert -AlertId "afbf1b3a-0a6c-4f19-9c9b-644ccd7b1529" | Format-List
 ```
 
 Get Alert details by Id (GUID) or Resource Id (Complete ARM Id)
