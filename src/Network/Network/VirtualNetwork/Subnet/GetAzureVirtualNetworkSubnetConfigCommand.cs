@@ -40,6 +40,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ParameterSetName = "GetByResourceId",
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource Id to the subnet"
         )]
         public string ResourceId { get; set; }
