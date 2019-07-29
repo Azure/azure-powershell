@@ -47,6 +47,11 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         private const int RowsPerPage = 1000;
 
         /// <summary>
+        /// Maximum number of subscriptions for request
+        /// </summary>
+        private const int SubscriptionLimit = 1000;
+
+        /// <summary>
         /// Gets or sets the query.
         /// </summary>s
         [Parameter(Mandatory = true, Position = 0, HelpMessage = "Resource Graph query")]
@@ -122,12 +127,21 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                 return;
             }
 
+            if (subscriptions.Count > SubscriptionLimit)
+            {
+                subscriptions = subscriptions.Take(SubscriptionLimit).ToList();
+                this.WriteWarning("The query included more subscriptions than allowed. " +
+                    $"Only the first {SubscriptionLimit} subscriptions were included for the results. " +
+                    $"To use more than {SubscriptionLimit} subscriptions, see the docs for examples: https://aka.ms/arg-error-toomanysubs");
+            }
+
             var first = this.MyInvocation.BoundParameters.ContainsKey("First") ? this.First : 100;
             var skip = this.MyInvocation.BoundParameters.ContainsKey("Skip") ? this.Skip : 0;
 
             var results = new List<PSObject>();
             QueryResponse response = null;
 
+            var resultTruncated = false;
             try
             {
                 do
@@ -151,11 +165,25 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                     response = this.ResourceGraphClient.ResourcesWithHttpMessagesAsync(request)
                         .Result
                         .Body;
+
+                    if (response.ResultTruncated == ResultTruncated.True)
+                    {
+                        resultTruncated = true;
+                    }
+
                     var requestResults = response.Data.ToPsObjects();
                     results.AddRange(requestResults);
                     this.WriteVerbose($"Received results: {requestResults.Count}");
                 }
                 while (results.Count < first && response.SkipToken != null);
+
+                if (resultTruncated && results.Count < first)
+                {
+                    this.WriteWarning("Unable to paginate the results of the query. " +
+                        "Some resources may be missing from the results. " +
+                        "To rewrite the query and enable paging, " +
+                        "see the docs for an example: https://aka.ms/arg-results-truncated");
+                }
             }
             catch (Exception ex)
             {
