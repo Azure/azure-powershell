@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add Azure Sql Instance pools cmdlets
+* Add Azure Sql Instance pool usages cmdlets
+* Update Azure Sql Managed instance cmdlets to support instance pools
 
 ## Version 1.13.1
 * Fix missing examples for Set-AzSqlDatabaseSecondary cmdlet
