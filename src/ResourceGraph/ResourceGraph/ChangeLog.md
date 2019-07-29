@@ -19,7 +19,7 @@
 -->
 ## Upcoming Release
 * Updated package Microsoft.Azure.Management.ResourceGraph to version 2.0
-* Improving logic for customers with more than 1000 subscriptions
+* Showing warnings in cases when too many subscriptions were used or results got truncated.
 
 ## Version 0.7.3
 * Improving logic of getting subscriptions for query to ARG
