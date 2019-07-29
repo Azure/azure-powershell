@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed miscellaneous typos across module
 * Fixed a typo in CDN module conversion helper
 
 ## Version 1.3.0

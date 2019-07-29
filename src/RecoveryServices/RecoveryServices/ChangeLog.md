@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed miscellaneous typos across module
 * Update 'Get-AzRecoveryServicesBackupJobDetail.md'
 
 ## Version 1.4.3

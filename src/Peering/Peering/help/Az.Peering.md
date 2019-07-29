@@ -8,7 +8,7 @@ Locale: e-US
 
 # Az.Peering Module
 ## Description
-Microsoft Peering Service allows customers and Mircosoft to connect to Azure and represent their network resources as ARM objects.
+Microsoft Peering Service allows customers and Microsoft to connect to Azure and represent their network resources as ARM objects.
 
 ## Az.Peering Cmdlets
 ### [Get-AzLegacyPeering](Get-AzLegacyPeering.md)
@@ -18,7 +18,7 @@ Used to Convert Legacy Peering resources to Azure Resource Management (ARM) Reso
 Gets PeerAsn object from ARM.
 
 ### [Get-AzPeering](Get-AzPeering.md)
-Gets the Peering Resources for a subsription
+Gets the Peering Resources for a subscription
 
 ### [Get-AzPeeringLocation](Get-AzPeeringLocation.md)
 Gets the Peering locations offered by Microsoft

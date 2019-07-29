@@ -67,7 +67,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The virtual network gateaway object
+The virtual network gateway object
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway

@@ -25,8 +25,8 @@ function Test-AzureRmIotHubRoutingLifecycle
 {
 	##############################################################
 	# Set these to the proper azure storage account information.
-	$auzreStorageResourceGroupName = 'pshardcodedrg1234'
-	$auzreStorageSubscriptionId = '91d12660-3dec-467a-be2a-213b5544ddc0'
+	$azureStorageResourceGroupName = 'pshardcodedrg1234'
+	$azureStorageSubscriptionId = '91d12660-3dec-467a-be2a-213b5544ddc0'
 	$ascConnectionString = 'DefaultEndpointsProtocol=https;AccountName=pshardcodedstorage1234;AccountKey=W1ujKNLtPmMtaNqZfOCUU5cnYMI8bQeF9ODce4riISyT2RSXiIxcwuwQhzCmIuwPWi82ParLfbq1bOF5ypUnPw==;EndpointSuffix=core.windows.net'
 	$containerName1 = 'container1'
 	$containerName2 = 'container2'
@@ -84,17 +84,17 @@ function Test-AzureRmIotHubRoutingLifecycle
 	Assert-True { $newRoutingEndpoint.Name -eq $endpointName}
 
 	# Add azure storage endpoint with encoding format "json"
-	$newRoutingEndpoint1 = Add-AzureRmIotHubRoutingEndpoint -ResourceGroupName $ResourceGroupName -Name $IotHubName -EndpointName $endpointName1 -EndpointType $EndpointTypeAzureStorage -EndpointResourceGroup $auzreStorageResourceGroupName -EndpointSubscriptionId $auzreStorageSubscriptionId -ConnectionString $ascConnectionString -ContainerName $containerName1 -Encoding json
+	$newRoutingEndpoint1 = Add-AzureRmIotHubRoutingEndpoint -ResourceGroupName $ResourceGroupName -Name $IotHubName -EndpointName $endpointName1 -EndpointType $EndpointTypeAzureStorage -EndpointResourceGroup $azureStorageResourceGroupName -EndpointSubscriptionId $azureStorageSubscriptionId -ConnectionString $ascConnectionString -ContainerName $containerName1 -Encoding json
 	Assert-True { $newRoutingEndpoint1.Name -eq $endpointName1}
-	Assert-True { $newRoutingEndpoint1.ResourceGroup -eq $auzreStorageResourceGroupName}
-	Assert-True { $newRoutingEndpoint1.SubscriptionId -eq $auzreStorageSubscriptionId}
+	Assert-True { $newRoutingEndpoint1.ResourceGroup -eq $azureStorageResourceGroupName}
+	Assert-True { $newRoutingEndpoint1.SubscriptionId -eq $azureStorageSubscriptionId}
 	Assert-True { $newRoutingEndpoint1.Encoding -eq "json"}
 
 	# Add azure storage endpoint with default encoding format
-	$newRoutingEndpoint2 = Add-AzureRmIotHubRoutingEndpoint -ResourceGroupName $ResourceGroupName -Name $IotHubName -EndpointName $endpointName2 -EndpointType $EndpointTypeAzureStorage -EndpointResourceGroup $auzreStorageResourceGroupName -EndpointSubscriptionId $auzreStorageSubscriptionId -ConnectionString $ascConnectionString -ContainerName $containerName2
+	$newRoutingEndpoint2 = Add-AzureRmIotHubRoutingEndpoint -ResourceGroupName $ResourceGroupName -Name $IotHubName -EndpointName $endpointName2 -EndpointType $EndpointTypeAzureStorage -EndpointResourceGroup $azureStorageResourceGroupName -EndpointSubscriptionId $azureStorageSubscriptionId -ConnectionString $ascConnectionString -ContainerName $containerName2
 	Assert-True { $newRoutingEndpoint2.Name -eq $endpointName2}
-	Assert-True { $newRoutingEndpoint2.ResourceGroup -eq $auzreStorageResourceGroupName}
-	Assert-True { $newRoutingEndpoint2.SubscriptionId -eq $auzreStorageSubscriptionId}
+	Assert-True { $newRoutingEndpoint2.ResourceGroup -eq $azureStorageResourceGroupName}
+	Assert-True { $newRoutingEndpoint2.SubscriptionId -eq $azureStorageSubscriptionId}
 	Assert-True { $newRoutingEndpoint2.Encoding -eq "avro"}
 
 	# Get all routing endpoints
