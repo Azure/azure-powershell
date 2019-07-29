@@ -7,7 +7,7 @@
       "RequestBody": "{\r\n  \"shippingAddress\": {\r\n    \"streetAddress1\": \"blah blah\",\r\n    \"city\": \"San Francisco\",\r\n    \"stateOrProvince\": \"CA\",\r\n    \"country\": \"US\",\r\n    \"postalCode\": \"94107\",\r\n    \"addressType\": \"None\"\r\n  },\r\n  \"deviceType\": \"DataBox\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "096b2d6f-a646-4815-8889-0c5681d2b4ad"
+          "e47ef85d-9447-4f16-9b87-51c3508e887d"
         ],
         "Accept-Language": [
           "en-US"
@@ -36,28 +36,28 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "00921acb-5868-46e7-98ce-ce1a7a8ccc70"
+          "b3360aa8-a3c2-4cfe-bfdf-3b829d6b9f9b"
         ],
         "x-ms-client-request-id": [
-          "096b2d6f-a646-4815-8889-0c5681d2b4ad"
+          "e47ef85d-9447-4f16-9b87-51c3508e887d"
         ],
         "X-Powered-By": [
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1194"
         ],
         "x-ms-correlation-request-id": [
-          "0df37c26-6316-46cf-9429-0a6fedfee1cf"
+          "dbf4f3af-644c-432d-840f-33c2dec3b78d"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20190716T113511Z:0df37c26-6316-46cf-9429-0a6fedfee1cf"
+          "SOUTHINDIA:20190718T070253Z:dbf4f3af-644c-432d-840f-33c2dec3b78d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Tue, 16 Jul 2019 11:35:10 GMT"
+          "Thu, 18 Jul 2019 07:02:53 GMT"
         ],
         "Content-Length": [
           "105"
