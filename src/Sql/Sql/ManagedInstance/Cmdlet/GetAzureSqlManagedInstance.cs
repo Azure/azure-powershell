@@ -101,6 +101,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         [Alias("InstanceName")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
         public string Name { get; set; }
 
         /// <summary>
@@ -111,6 +112,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
             Position = 1,
             HelpMessage = "The name of the instance pool.")]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.Sql/instancePools", "ResourceGroupName")]
+        [SupportsWildcards]
 
         public string InstancePoolName { get; set; }
 
