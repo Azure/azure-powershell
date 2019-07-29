@@ -1048,6 +1048,33 @@ function Product-CrudTest {
         Assert-NotNull $newProduct
         Assert-AreEqual $productName $newProduct.Title
 
+		# get the product by apiId
+		$products = Get-AzApiManagementProduct -Context $context -ApiId $apis[0].ApiId
+		Assert-NotNull $products
+
+		# there should be 3 products
+		Assert-AreEqual 3 $products.Count
+		
+		$found = 0
+		for ($i = 0; $i -lt $products.Count; $i++) {
+			Assert-NotNull $products[$i].ProductId
+			Assert-NotNull $products[$i].Description
+			Assert-AreEqual Published $products[$i].State
+
+			if ($products[$i].Title -eq 'Starter') {
+	            $found += 1;
+			}
+
+	        if ($products[$i].Title -eq 'Unlimited') {
+		        $found += 1;
+			}
+
+			if ($products[$i].Title -eq $productName) {
+		        $found += 1;
+			}
+		}
+		Assert-AreEqual 3 $found
+
         #remove api from product
         Get-AzApiManagementApi -Context $context | Remove-AzApiManagementApiFromProduct -Context $context -ProductId $productId
 
