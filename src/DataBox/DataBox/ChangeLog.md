@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 0.1.0
 * General Availability of `Az.Databox` Module
 * Added cmdlet `Get-AzDataBoxJob`
 	- This cmdlet fetches the databox job/jobs of the user based on the filters applied like resource group name etc.
