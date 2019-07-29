@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
             {
                 return new PSDeliveryRuleHeaderAction
                 {
-                    HeaderActionType = "ModifyRequestHeader",
+                    HeaderActionType = "ModifyResponseHeader",
                     Action = responseHeaderAction.Parameters.HeaderAction,
                     HeaderName = responseHeaderAction.Parameters.HeaderName,
                     Value = responseHeaderAction.Parameters.Value
@@ -553,7 +553,7 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
                 }
                 else if (psDeliveryRuleHeaderAction.HeaderActionType == "ModifyResponseHeader")
                 {
-                    return new DeliveryRuleRequestHeaderAction
+                    return new DeliveryRuleResponseHeaderAction
                     {
                         Parameters = new HeaderActionParameters
                         {

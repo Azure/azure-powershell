@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.4.0
 * Fixing a bug where some SiteConfig properties were not returned by Get-AzWebApp and Set-AzWebApp
 * Adds a new Location parameter to Get-AzDeletedWebApp and Restore-AzDeletedWebApp
 * Fixes a bug with cloning web app slots using New-AzWebApp -IncludeSourceWebAppSlots
