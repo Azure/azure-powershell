@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Commands.DataShare.Synchronization
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Extensions;
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models;
+    using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Properties;
 
     /// <summary>
     /// Defines the Start-AzDataShareSubscriptionSynchronization cmdlet.
@@ -117,7 +118,7 @@ namespace Microsoft.Azure.Commands.DataShare.Synchronization
             this.SetParametersIfNeeded();
 
             this.ConfirmAction(
-                "Start Synchronization",
+                Resources.StartSynchronizationConfirmation,
                 this.ShareSubscriptionName,
                 this.StartSynchronization);
         }
