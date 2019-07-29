@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.6.1
 - Remove missing cmdlet referenced in `New-AzResourceGroupDeployment` documentation
 - Updated policy cmdlets to use new api version 2019-01-01
 
