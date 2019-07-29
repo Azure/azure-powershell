@@ -22,6 +22,10 @@ namespace Microsoft.Azure.Commands.Compute.Models
         public string ResourceGroupName { get; set; }
 
         public string Name { get; set; }
+        public string ComputerName { get; set; }
+        public string OsName { get; set; }
+        public string OsVersion { get; set; }
+        public string HyperVGeneration { get; set; }
 
         public BootDiagnosticsInstanceView BootDiagnostics { get; set; }
 
@@ -61,7 +65,11 @@ namespace Microsoft.Azure.Commands.Compute.Models
                 PlatformUpdateDomain = virtualMachineInstanceView.PlatformUpdateDomain,
                 RemoteDesktopThumbprint = virtualMachineInstanceView.RdpThumbPrint,
                 VMAgent = virtualMachineInstanceView.VmAgent,
-                MaintenanceRedeployStatus = virtualMachineInstanceView.MaintenanceRedeployStatus
+                MaintenanceRedeployStatus = virtualMachineInstanceView.MaintenanceRedeployStatus,
+                ComputerName = virtualMachineInstanceView.ComputerName,
+                OsName = virtualMachineInstanceView.OsName,
+                OsVersion = virtualMachineInstanceView.OsVersion,
+                HyperVGeneration = virtualMachineInstanceView.HyperVGeneration
             };
 
             return result;
