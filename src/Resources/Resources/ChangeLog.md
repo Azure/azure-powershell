@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Add support for new api version 2019-05-10 for `New-AzResourceGroupDeployment`
+* Add support for new api version 2019-05-10 for Microsoft.Resource
     - Add support for `copy.count = 0` for variables, resources and properties
     - Resources with `condition = false` or `copy.count = 0` will be deleted in complete mode
 
