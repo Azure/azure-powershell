@@ -15,7 +15,7 @@ Azure PowerShell Module of Mixed Reality Cloud Service
 Get or list Spatial Anchors Account(s) in certain Subscription and Resource Group.
 
 ### [New-AzSpatialAnchorsAccount](New-AzSpatialAnchorsAccount.md)
-Create a new Spatial Inelligence Account in certain Subscription, Resource Group and Region.
+Create a new Spatial Intelligence Account in certain Subscription, Resource Group and Region.
 
 ### [Remove-AzSpatialAnchorsAccount](Remove-AzSpatialAnchorsAccount.md)
 Delete specified Spatial Anchors Account from certain Subscription and Resource Group.

@@ -100,7 +100,7 @@ Accept wildcard characters: False
 Timespan to live value.
 This is the duration after which the message expires, starting from when the message is sent to Service Bus.
 This is the default value used when TimeToLive is not set on a message itself.
-For Standard = Timespan.Max and Basic = 14 dyas
+For Standard = Timespan.Max and Basic = 14 days
 
 ```yaml
 Type: System.String

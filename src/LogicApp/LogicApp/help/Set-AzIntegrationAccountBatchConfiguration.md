@@ -124,7 +124,7 @@ Tags       :
 
 ```
 
-Modify a batch configuration named "sampleBatchConfig" by manually providing all of the nessecary parameters.
+Modify a batch configuration named "sampleBatchConfig" by manually providing all of the necessary parameters.
 
 ## PARAMETERS
 

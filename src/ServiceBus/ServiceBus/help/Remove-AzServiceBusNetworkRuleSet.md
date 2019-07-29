@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzServiceBusNetworkRuleSet
 
 ## SYNOPSIS
-Removes the NetwrokRuleSet for the Given Namespace
+Removes the NetworkRuleSet for the Given Namespace
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Remove-AzServiceBusNetworkRuleSet [-ResourceId] <String> [-PassThru] [-AsJob]
 ```
 
 ## DESCRIPTION
-Removes the NetwrokRuleSet for the Given Namespace
+Removes the NetworkRuleSet for the Given Namespace
 
 ## EXAMPLES
 
@@ -47,7 +47,7 @@ Type                : Microsoft.ServiceBus/Namespaces/NetworkRuleSet
 IpRules             : 
 VirtualNetworkRules : 
 
-Deletes the NetwrokRuleSet for the Given "ServiceBus-Namespace1-1375" namesapce 
+Deletes the NetworkRuleSet for the Given "ServiceBus-Namespace1-1375" namespace 
 
 ### Example 2
 ```powershell
@@ -60,7 +60,7 @@ Type                : Microsoft.EventHub/Namespaces/NetworkRuleSet
 IpRules             : 
 VirtualNetworkRules : 
 
-Deletes the NetwrokRuleSet using InputObject 
+Deletes the NetworkRuleSet using InputObject 
 
 ### Example 3
 ```powershell
@@ -73,7 +73,7 @@ Type                : Microsoft.EventHub/Namespaces/NetworkRuleSet
 IpRules             : 
 VirtualNetworkRules : 
 
-Deletes the NetwrokRuleSet using ResourceId of the Namepsace
+Deletes the NetworkRuleSet using ResourceId of the Namespace
 
 
 ## PARAMETERS

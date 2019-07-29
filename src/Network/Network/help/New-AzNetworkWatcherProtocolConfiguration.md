@@ -19,7 +19,7 @@ New-AzNetworkWatcherProtocolConfiguration -Protocol <String> [-Method <String>] 
 
 ## DESCRIPTION
 The New-AzNetworkWatcherProtocolConfiguration cmdlet creates a new protocol configuration object. 
-This object is used to restrict the protocol confiuration during a connecitivity check session using the specified criteria. 
+This object is used to restrict the protocol configuration during a connectivity check session using the specified criteria. 
 
 ## EXAMPLES
 
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 ```
 
 ### -Protocol
-Procotol type
+Protocol type
 
 ```yaml
 Type: System.String

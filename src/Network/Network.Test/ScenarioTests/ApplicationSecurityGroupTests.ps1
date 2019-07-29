@@ -385,7 +385,7 @@ function Test-ApplicationSecurityGroupInNewNetworkInterface
         $asg3 = New-AzApplicationSecurityGroup -ResourceGroupName $rgName -Name $asgName3 -Location $rgLocation
 
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
 
         $nic = New-AzNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $location -Subnet $vnet.Subnets[0] -ApplicationSecurityGroup $asg1
 
@@ -437,7 +437,7 @@ function Test-ApplicationSecurityGroupInNewNetworkInterfaceIpConfig
         $asg2 = New-AzApplicationSecurityGroup -ResourceGroupName $rgName -Name $asgName2 -Location $rgLocation
 
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
 
         if ($useIds)
         {
@@ -518,7 +518,7 @@ function Test-ApplicationSecurityGroupInAddedNetworkInterfaceIpConfig
         $asg2 = New-AzApplicationSecurityGroup -ResourceGroupName $rgName -Name $asgName2 -Location $rgLocation
 
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
 
         $nic = New-AzNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $location  -Subnet $vnet.Subnets[0]
 

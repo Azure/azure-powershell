@@ -87,7 +87,7 @@ Removes the namespace from the specified resource group.
 Removes the queue from the specified Service Bus namespace.
 
 ### [Remove-AzServiceBusRule](Remove-AzServiceBusRule.md)
-Removes the speficied rule of a given subscription .
+Removes the specified rule of a given subscription .
 
 ### [Remove-AzServiceBusSubscription](Remove-AzServiceBusSubscription.md)
 Removes the subscription to a topic from the specified Service Bus namespace.

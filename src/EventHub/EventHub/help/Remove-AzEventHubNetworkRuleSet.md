@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzEventHubNetworkRuleSet
 
 ## SYNOPSIS
-Removes the NetwrokRuleSet for the Given Namespace
+Removes the NetworkRuleSet for the Given Namespace
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Remove-AzEventHubNetworkRuleSet [-ResourceId] <String> [-PassThru] [-AsJob]
 ```
 
 ## DESCRIPTION
-Removes the NetwrokRuleSet for the Given Namespace
+Removes the NetworkRuleSet for the Given Namespace
 
 ## EXAMPLES
 
@@ -47,14 +47,14 @@ IpRules             :
 VirtualNetworkRules : 
 
 
-Deletes the NetwrokRuleSet for the Given "Eventhub-Namespace1-1375" namesapce 
+Deletes the NetworkRuleSet for the Given "Eventhub-Namespace1-1375" namespace 
 
 ### Example 2
 ```powershell
 PS C:\> Remove-AzEventHubNetworkRuleSet -InputObject $result1375
 ```
 
-Deletes the NetwrokRuleSet using InputObject 
+Deletes the NetworkRuleSet using InputObject 
 
 ### Example 3
 ```powershell
@@ -67,7 +67,7 @@ Type                : Microsoft.EventHub/Namespaces/NetworkRuleSet
 IpRules             : 
 VirtualNetworkRules : 
 
-Deletes the NetwrokRuleSet using ResourceId of the Namepsace
+Deletes the NetworkRuleSet using ResourceId of the Namespace
 
 
 ## PARAMETERS

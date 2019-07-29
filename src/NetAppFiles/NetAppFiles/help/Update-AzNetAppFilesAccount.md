@@ -58,7 +58,7 @@ ActiveDirectories :
 ProvisioningState : Succeeded
 ```
 
-This command performs an upate on the given account modifying the tags to those provided.
+This command performs an update on the given account modifying the tags to those provided.
 
 ## PARAMETERS
 

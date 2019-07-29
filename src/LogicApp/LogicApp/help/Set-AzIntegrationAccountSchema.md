@@ -35,7 +35,7 @@ If you omit a required template parameter, the cmdlet prompts you for the value.
 ### Example 1: Modify an integration account schema
 ```
 PS C:\>Set-AzIntegrationAccountSchema -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31" -SchemaName "IntegrationAccountSchema43" -SchemaFilePath "c:\temp\schema1"
-Id          : /subscriptions/<SusbcriptionId>/resourceGroups/ResourceGroup11/providers/Microsoft.Logic/integrationAccounts/IntegrationAccount31/schemas/IntegrationAccountSchema43
+Id          : /subscriptions/<SubscriptionId>/resourceGroups/ResourceGroup11/providers/Microsoft.Logic/integrationAccounts/IntegrationAccount31/schemas/IntegrationAccountSchema43
 Name        : IntegrationAccountSchema43
 Type        : Microsoft.Logic/integrationAccounts/schemas
 CreatedTime : 3/26/2016 7:21:10 PM
