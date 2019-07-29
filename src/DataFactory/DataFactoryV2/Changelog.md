@@ -19,11 +19,11 @@
 -->
 
 ## Upcoming Release
+* Fixed miscellaneous typos across module
 
 ## Version 1.1.3
 * Updated ADF .Net SDK version to 4.1.0
 * Fix typo in documentation for `Get-AzDataFactoryV2PipelineRun`
-* Fixed miscellaneous typos across module
 
 ## Version 1.1.2
 * Updating the output of get activity runs, get pipeline runs, and get trigger runs ADF cmdlets to support Select-Object pipe.

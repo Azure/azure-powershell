@@ -18,11 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed miscellaneous typos across module
 
 ## Version 1.6.1
 - Remove missing cmdlet referenced in `New-AzResourceGroupDeployment` documentation
 - Updated policy cmdlets to use new api version 2019-01-01
-* Fixed miscellaneous typos across module
 
 ## Version 1.6.0
 - Fix help text for Get-AzPolicyState -Top parameter

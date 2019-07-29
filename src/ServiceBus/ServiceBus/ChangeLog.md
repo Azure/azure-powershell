@@ -19,11 +19,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed miscellaneous typos across module
 
 ## Version 1.3.0
 * Added new cmmdlet added for generating SAS token : New-AzServiceBusAuthorizationRuleSASToken
 * added verification and error message for authorizationrules rights if only 'Manage' is assigned
-* Fixed miscellaneous typos across module
 
 ## Version 1.2.1
 * Fix for issue #4938 - New-AzureRmServiceBusQueue returns BadRequest when setting MaxSizeInMegabytes
