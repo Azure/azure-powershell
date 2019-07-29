@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                 }
                 while (results.Count < first && response.SkipToken != null);
 
-                if (resultTruncated)
+                if (resultTruncated && results.Count < this.First)
                 {
                     this.WriteWarning("Unable to paginate the results of the query. " +
                         "Some resources may be missing from the results. " +
