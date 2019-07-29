@@ -12,7 +12,7 @@ Gets private link service
 
 ## SYNTAX
 
-### NoExpand
+### NoExpand (Default)
 ```
 Get-AzPrivateLinkService [-Name <String>] [-ResourceGroupName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -29,7 +29,7 @@ The **Get-AzPrivateLinkService** cmdlet gets one or more private link services.
 
 ## EXAMPLES
 
-### Example 
+### Example
 ```
 Get-AzPrivateLinkService -Name MyPLS -ResourceGroupName TestResourceGroup
 
@@ -70,7 +70,6 @@ NetworkInterfaces                    : [
                                            "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestResourceGroup/providers/Microsoft.Network/networkInterfaces/mytestinterface"
                                          }
                                        ]
-
 ```
 
 This commandlet gets a private link service in the resource group.
@@ -81,7 +80,7 @@ This commandlet gets a private link service in the resource group.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -96,7 +95,7 @@ Accept wildcard characters: False
 The resource reference to be expanded.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Expand
 Aliases:
 
@@ -111,7 +110,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NoExpand
 Aliases: ResourceName
 
@@ -123,7 +122,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Expand
 Aliases: ResourceName
 
@@ -138,7 +137,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NoExpand
 Aliases:
 
@@ -150,7 +149,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Expand
 Aliases:
 

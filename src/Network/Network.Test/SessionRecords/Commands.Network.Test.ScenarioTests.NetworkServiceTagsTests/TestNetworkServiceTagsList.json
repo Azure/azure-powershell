@@ -1,13 +1,13 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/locations/West%20Central%20US/serviceTags?api-version=2019-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvV2VzdCUyMENlbnRyYWwlMjBVUy9zZXJ2aWNlVGFncz9hcGktdmVyc2lvbj0yMDE5LTA0LTAx",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/locations/West%20Central%20US/serviceTags?api-version=2019-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvV2VzdCUyMENlbnRyYWwlMjBVUy9zZXJ2aWNlVGFncz9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "3a40d797-515d-4e99-8fdd-342dc08856d3"
+          "70b1949a-088d-443d-bdb1-4acac2517b7c"
         ],
         "Accept-Language": [
           "en-US"
@@ -16,7 +16,7 @@
           "FxVersion/4.6.27617.04",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/19.12.0.0"
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.2.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -27,10 +27,13 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "20202c68-12d3-44e2-a127-07692ffbe317"
+          "9f126162-c8db-48ba-8d79-d5d24e67618d"
         ],
         "x-ms-correlation-request-id": [
-          "90feb6e2-32b4-477f-8307-03fd32bb8d0e"
+          "36903514-d913-410b-8d2e-f1425968cfd7"
+        ],
+        "x-ms-arm-service-request-id": [
+          "c8427f61-a345-4797-98e7-a62c3811d3d8"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -40,16 +43,16 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11889"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH2:20190531T072749Z:90feb6e2-32b4-477f-8307-03fd32bb8d0e"
+          "BRAZILUS:20190715T113117Z:36903514-d913-410b-8d2e-f1425968cfd7"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 31 May 2019 07:27:48 GMT"
+          "Mon, 15 Jul 2019 11:31:17 GMT"
         ],
         "Content-Length": [
           "623145"
