@@ -39,6 +39,7 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateSet(
             MNM.SecurityRuleProtocol.Tcp,
             MNM.SecurityRuleProtocol.Udp,
+            MNM.SecurityRuleProtocol.Icmp,
             MNM.SecurityRuleProtocol.Asterisk,
             IgnoreCase = true)]
         [ValidateNotNullOrEmpty]

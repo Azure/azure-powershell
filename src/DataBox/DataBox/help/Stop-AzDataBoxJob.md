@@ -15,19 +15,19 @@ Cancels an ongoing databox job if the job is in cancellable state.
 ### GetByNameParameterSet (Default)
 ```
 Stop-AzDataBoxJob -ResourceGroupName <String> -Name <String> -Reason <String>
- [-DefaultProfile <IAzureContextContainer>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-PassThru] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### GetByResourceIdParameterSet
 ```
 Stop-AzDataBoxJob -Reason <String> -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### GetByInputObjectParameterSet
 ```
 Stop-AzDataBoxJob -Reason <String> -InputObject <PSDataBoxJob> [-DefaultProfile <IAzureContextContainer>]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,18 +37,27 @@ The **Stop-AzDataBoxJob** cmdlet is used to cancel a databox job.
 
 ### Example 1
 ```powershell
-PS C:\> Stop-AzDataBoxJob -ResourceGroupName "irfansrg" -name "test" -Reason "Enter your reason"
+PS C:\> Stop-AzDataBoxJob -ResourceGroupName "TestRg" -name "test" -Reason "Random"
+Confirm
+"Removing Databox Job "test
+[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
 
-Successfully Cancelled the Databox Job
 ```
 
 Cancels the specified databox job
 
 ### Example 2
 ```powershell
-PS C:\> Stop-AzDataBoxJob -ResourceId "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/IrfansRG/providers/Microsoft.DataBox/jobs/Test"
+PS C:\> Stop-AzDataBoxJob -ResourceGroupName "TestRg" -name "test" -Reason "Random" -Force
 
-Successfully Cancelled the Databox Job
+```
+
+Cancels the specified databox job forcefully without confirmation
+
+### Example 3
+```powershell
+PS C:\> Stop-AzDataBoxJob -ResourceId "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/TestRg/providers/Microsoft.DataBox/jobs/test"
+
 ```
 
 Cancels the specified databox job
@@ -62,6 +71,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Force
+Force stop without confirmation
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
