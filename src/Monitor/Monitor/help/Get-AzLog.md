@@ -129,7 +129,7 @@ This command lists at most 100 events associated with the specified resource gro
 PS C:\>Get-AzLog -ResourceGroup "Contoso-Web-CentralUS" -StartTime 2017-05-22T04:30:00
 ```
 
-This command lists at most 1000 evetns associated with the specified resource group that took place on or after 2017-05-22T04:30:00 local time if the start time is not older than 90 days from the current date/time.
+This command lists at most 1000 events associated with the specified resource group that took place on or after 2017-05-22T04:30:00 local time if the start time is not older than 90 days from the current date/time.
 
 ### Example 12: Get an event log for a resource group with a start time and end time
 ```

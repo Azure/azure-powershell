@@ -136,7 +136,7 @@ New-AzVirtualNetworkGateway -Name myNGW -ResourceGroupName vnet-gateway -Locatio
 
 The above will create a resource group, request a Public IP Address, create a Virtual Network and
 subnet and create a Virtual Network Gateway in Azure.
-The gateway will be called "myNGW" within the resource group "vnet-gateway" in the location "UK West" with the previously created IP configurations saved in the variable "ngwIPConfig," the gateway type of "VPN," the vpn type "RouteBased," and the sku "Basic." It also configures AAD authentication configurations: AadTenantUri, AadIssuerUri and AadAudienceId for Vpnclient of virtual network gateway.
+The gateway will be called "myNGW" within the resource group "vnet-gateway" in the location "UK West" with the previously created IP configurations saved in the variable "ngwIPConfig," the gateway type of "VPN," the vpn type "RouteBased," and the sku "Basic." It also configures AAD authentication configurations: AadTenantUri, AadIssuerUri and AadAudienceId for VpnClient of virtual network gateway.
 
 ## PARAMETERS
 

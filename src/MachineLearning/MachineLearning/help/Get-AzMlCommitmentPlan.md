@@ -19,7 +19,7 @@ Get-AzMlCommitmentPlan [-ResourceGroupName <String>] [-Name <String>]
 
 ## DESCRIPTION
 Retrieves commitment plan information.
-Depending on the paramenters passed, the cmdlet returns the a specific commitment plan, a collection of commitment plans for a specified resource group within the current subscription, or a collection of commitment plans within the current subscription.
+Depending on the parameters passed, the cmdlet returns the a specific commitment plan, a collection of commitment plans for a specified resource group within the current subscription, or a collection of commitment plans within the current subscription.
 
 ## EXAMPLES
 

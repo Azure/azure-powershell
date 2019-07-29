@@ -28,7 +28,7 @@ This provides information about the number of total, enabled and disabled device
 PS C:\> Get-AzIotHubRegistryStatistic -ResourceGroupName "myresourcegroup" -Name "myiothub"
 ```
 
-Gets the RegistryStatictics for the IotHub named "myiothub"
+Gets the RegistryStatistics for the IotHub named "myiothub"
 
 ## PARAMETERS
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzCdnSubscriptionResourceUsage
 
 ## SYNOPSIS
-Gets the resource usage for a susbscription.
+Gets the resource usage for a subscription.
 
 ## SYNTAX
 

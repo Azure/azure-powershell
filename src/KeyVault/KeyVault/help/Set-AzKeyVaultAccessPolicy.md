@@ -253,7 +253,7 @@ PS C:\> Set-AzKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -UserPrincipalNam
 
 This command grants get, list, and set permissions for the specified user principal name for access to secrets.
 
-### Example 5: Enable secrets to be retrieved from a key vault vault by the Microsoft.Compute resource provider
+### Example 5: Enable secrets to be retrieved from a key vault by the Microsoft.Compute resource provider
 ```powershell
 PS C:\> Set-AzKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -ResourceGroupName 'Group14' -EnabledForDeployment
 ```

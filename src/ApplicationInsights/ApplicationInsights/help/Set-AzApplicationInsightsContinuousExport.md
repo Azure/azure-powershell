@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzApplicationInsightsContinuousExport
 
 ## SYNOPSIS
-Update a continuous export configuration in an applciation insights resource
+Update a continuous export configuration in an application insights resource
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ Set-AzApplicationInsightsContinuousExport [-ResourceId] <String> -ExportId <Stri
 ```
 
 ## DESCRIPTION
-Update a continuous export configuration in an applciation insights resource
+Update a continuous export configuration in an application insights resource
 
 ## EXAMPLES
 
@@ -59,7 +59,7 @@ ExportStatus                     : Preparing
 LastSuccessTime                  :
 ```
 
-Update continuous export configuration "jlTFEiBg1rkDXOCIeJQ2mB2TxZg=" of resource "test" in resource group "testgroup" to export "Request" and "Trace" documents to storage container "testcontainer" in "teststorageaccount".The SAS token have to be valid and have write permission to the container, otherwise continous export feature won't work. If SAS token expired, the continuous export feature will stop working.
+Update continuous export configuration "jlTFEiBg1rkDXOCIeJQ2mB2TxZg=" of resource "test" in resource group "testgroup" to export "Request" and "Trace" documents to storage container "testcontainer" in "teststorageaccount".The SAS token have to be valid and have write permission to the container, otherwise continuous export feature won't work. If SAS token expired, the continuous export feature will stop working.
 
 ## PARAMETERS
 
