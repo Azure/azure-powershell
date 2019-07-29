@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                         .Result
                         .Body;
 
-                    if(response.ResultTruncated == ResultTruncated.True)
+                    if (response.ResultTruncated == ResultTruncated.True)
                     {
                         resultTruncated = true;
                     }
