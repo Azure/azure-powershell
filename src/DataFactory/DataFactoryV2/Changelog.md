@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.1.3
 * Updated ADF .Net SDK version to 4.1.0
 * Fix typo in documentation for `Get-AzDataFactoryV2PipelineRun`
 * Fixed miscellaneous typos across module

@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.3.0
 * Added new cmmdlet added for generating SAS token : New-AzServiceBusAuthorizationRuleSASToken
 * added verification and error message for authorizationrules rights if only 'Manage' is assigned
 * Fixed miscellaneous typos across module

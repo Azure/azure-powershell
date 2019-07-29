@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.3.2
 * Updated default version for saved searches to be 1. 
 * Fixed custom log null regex handling
 * Fixed miscellaneous typos across module

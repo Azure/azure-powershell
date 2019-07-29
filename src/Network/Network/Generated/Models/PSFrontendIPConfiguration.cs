@@ -41,6 +41,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string PrivateIpAllocationMethod { get; set; }
         [JsonProperty(Order = 1)]
         [Ps1Xml(Target = ViewControl.Table)]
+        public string PrivateIpAddressVersion { get; set; }
+        [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
         [JsonProperty(Order = 1)]
         public List<string> Zones { get; set; }

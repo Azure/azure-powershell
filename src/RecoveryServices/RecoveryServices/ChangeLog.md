@@ -18,14 +18,19 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed miscellaneous typos across module
+
+## Version 1.4.3
 * Update 'Get-AzRecoveryServicesBackupJob.md'
 * Update 'Get-AzRecoveryServicesBackupContainer.md'
 * Update 'Get-AzRecoveryServicesVault.md'
 * Update 'Wait-AzRecoveryServicesBackupJob.md'
 * Update 'Set-AzRecoveryServicesVaultContext.md'
 * Update 'Get-AzRecoveryServicesBackupItem.md'
+* Update 'Get-AzRecoveryServicesBackupRecoveryPoint.md'
+* Update 'Restore-AzRecoveryServicesBackupItem.md'
 * Updated service call for Unregistering container for Azure File Share
-* Fixed miscellaneous typos across module
+* Update 'Set-AzRecoveryServicesAsrAlertSetting.md'
 
 ## Version 1.4.2
 * Fix for get-policy command for IaaSVMs

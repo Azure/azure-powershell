@@ -364,12 +364,13 @@ function Test-VirtualNetworkGatewayConnectionCRUD
       $localnetGateway.Location = $location
 
       # Create & Get VirtualNetworkGatewayConnection
-      $actual = New-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName -location $location -VirtualNetworkGateway1 $vnetGateway -LocalNetworkGateway2 $localnetGateway -ConnectionType IPsec -RoutingWeight 3 -SharedKey abc
+      $actual = New-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName -location $location -VirtualNetworkGateway1 $vnetGateway -LocalNetworkGateway2 $localnetGateway -ConnectionType IPsec -RoutingWeight 3 -SharedKey abc -ConnectionProtocol IKEv1
       $expected = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName
       Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
       Assert-AreEqual $expected.Name $actual.Name	
       Assert-AreEqual "IPsec" $expected.ConnectionType
       Assert-AreEqual "3" $expected.RoutingWeight
+	  Assert-AreEqual "IKEv1" $expected.ConnectionProtocol
       #Assert-AreEqual "abc" $expected.SharedKey
 
       # List VirtualNetworkGatewayConnections

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.6.1
 * Update common code to use latest version of ClientRuntime
 * Fixed miscellaneous typos across module
 

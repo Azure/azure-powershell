@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.3.0
 * Fix for Get-AzIntegrationAccountMap to list all map types
 	- Added new MapType parameter for filtering
 * Fixed miscellaneous typos across module
