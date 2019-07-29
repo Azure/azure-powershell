@@ -18,6 +18,8 @@
         - Additional information about change #1
 --->
 ## Upcoming Release
+
+## Version 1.12.0
 * Add support for private endpoint and private link service
     - New cmdlets
         - Set-AzPrivateEndpoint
