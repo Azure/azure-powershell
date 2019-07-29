@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed typo in help message and documentation to capitalize Windows
 
 ## Version 1.1.0
 * Updated cmdlets with plural nouns to singular, and deprecated plural names.
