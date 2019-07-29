@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Test.ScenarioTests
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Search-AzureRmGraph-Query");
         }
-        
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void PagedQuery()
@@ -50,7 +50,14 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Test.ScenarioTests
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Search-AzureRmGraph-Subscriptions");
         }
-        
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void InlcudeSubscriptionNames()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Search-AzureRmGraph-IncludeSubscriptionNames");
+        }
+
         [Fact(Skip = "Fails on Linux. Equality assertion fails. Investigation needed.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void QueryError()

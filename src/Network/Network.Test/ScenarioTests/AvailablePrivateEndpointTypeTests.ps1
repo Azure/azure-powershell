@@ -33,13 +33,13 @@ function Test-AvailablePrivateEndpointTypeCRUD
     # Setup
     $rgname = Get-ResourceGroupName;
     $rglocation = Get-ProviderLocation ResourceManagement;
-    $location = Get-ProviderLocation "Microsoft.Network/availablePrivateEndpointTypes" "eastus2euap";
+    $location = Get-ProviderLocation "Microsoft.Network/availablePrivateEndpointTypes" "westus";
 
     try
     {
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation;
 
-        $vAvailablePrivateEndpointType = Get-AzAvailablePrivateEndpointType -Location eastus2euap;
+        $vAvailablePrivateEndpointType = Get-AzAvailablePrivateEndpointType -Location $location;
         Assert-True { Check-CmdletReturnType "Get-AzAvailablePrivateEndpointType" $vAvailablePrivateEndpointType };
         Assert-NotNull $vAvailablePrivateEndpointType;
     }
