@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fix typo to capitalize "Windows" in 'New-AzDataFactoryEncryptValue" documentation
 * Updated ADF .Net SDK version to 4.1.0
 * Fix typo in documentation for `Get-AzDataFactoryV2PipelineRun`
 
