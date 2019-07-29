@@ -26,6 +26,8 @@ The **New-AzActivityLogAlertCondition** cmdlet creates new activity log alert co
 ### Example 1: Create a new activity log alert condition object in memory.
 ```
 PS C:\>$condition = New-AzActivityLogAlertCondition -Field "Requests" -Equal "OtherField"
+PS C:\>$condition.Field
+PS C:\>$condition.Equals
 ```
 
 This command creates a new activity log alert condition object in memory.
