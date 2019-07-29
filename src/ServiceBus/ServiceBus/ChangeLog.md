@@ -19,10 +19,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix for issue #9658 : Typo VirtualNetworkRule parameter in Set-AzServiceBusNetworkRuleSet
 
 ## Version 1.3.0
 * Added new cmmdlet added for generating SAS token : New-AzServiceBusAuthorizationRuleSASToken
-* added verification and error message for authorizationrules rights if only 'Manage' is assigned
+* Added verification and error message for authorizationrules rights if only 'Manage' is assigned
 
 ## Version 1.2.1
 * Fix for issue #4938 - New-AzureRmServiceBusQueue returns BadRequest when setting MaxSizeInMegabytes

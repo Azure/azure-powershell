@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update 'Get-AzRecoveryServicesBackupJobDetail.md'
 
 ## Version 1.4.3
 * Update 'Get-AzRecoveryServicesBackupJob.md'
