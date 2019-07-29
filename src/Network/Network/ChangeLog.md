@@ -20,6 +20,7 @@
 ## Upcoming Release
 * Fixed miscellaneous typos across module
 * Adjusted validation logic for Ipv6 IP Prefix to check for correct IPv6 prefix length. 
+* Updated Get-AzVirtualNetworkSubnetConfig: Added parameter set to get by subnet resource id.
 
 ## Version 1.12.0
 * Add support for private endpoint and private link service
@@ -50,7 +51,6 @@
         - Set-AzLoadBalancerFrontendIpConfig
 * Application Gateway New-AzApplicationGatewayProbeConfig command update for supporting custom port in Probe
     - Updated New-AzApplicationGatewayProbeConfig: Added optional parameter Port which is used for probing backend server. This parameter is applicable for Standard_V2 and WAF_V2 SKU.
-* Updated Get-AzVirtualNetworkSubnetConfig: Added parameter set to get by subnet resource id.
 
 ## Version 1.11.0
 * Added `RoutingPreference` to public ip tags
