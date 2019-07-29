@@ -48,12 +48,13 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
+        [Alias("ServiceName")]
         [Parameter(
             Mandatory = true,
             HelpMessage = "The name of the service.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public string ServiceName { get; set; }
+        public string Name { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -73,12 +74,12 @@ namespace Microsoft.Azure.Commands.Network
 
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Properties.Resources.RemovingResource, ServiceName),
+                string.Format(Properties.Resources.RemovingResource, Name),
                 Properties.Resources.RemoveResourceMessage,
-                ServiceName,
+                Name,
                 () =>
                 {
-                    this.PrivateLinkServiceClient.Delete(ResourceGroupName, ServiceName);
+                    this.PrivateLinkServiceClient.Delete(ResourceGroupName, Name);
                     if (PassThru)
                     {
                         WriteObject(true);

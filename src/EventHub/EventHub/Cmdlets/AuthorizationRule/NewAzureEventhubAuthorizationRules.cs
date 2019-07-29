@@ -86,6 +86,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
                     {
                         WriteObject(Client.CreateOrUpdateEventHubAuthorizationRules(ResourceGroupName, Namespace, EventHub, Name, sasRule));
                     }
+                
             }
             catch (Management.EventHub.Models.ErrorResponseException ex)
             {

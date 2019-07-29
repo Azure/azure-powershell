@@ -268,6 +268,7 @@ function Test-LoadBalancerCRUD-InternalDynamic
         Assert-AreEqual $frontendName $expectedLb.FrontendIPConfigurations[0].Name
         Assert-AreEqual $vnet.Subnets[0].Id $expectedLb.FrontendIPConfigurations[0].Subnet.Id
         Assert-NotNull $expectedLb.FrontendIPConfigurations[0].PrivateIpAddress
+        Assert-AreEqual "IPv4" $expectedLb.FrontendIPConfigurations[0].PrivateIpAddressVersion
 
         Assert-AreEqual $backendAddressPoolName $expectedLb.BackendAddressPools[0].Name
 
@@ -340,7 +341,7 @@ function Test-LoadBalancerCRUD-InternalStatic
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
 
         # Create LoadBalancer
-        $frontend = New-AzLoadBalancerFrontendIpConfig -Name $frontendName -Subnet $vnet.Subnets[0] -PrivateIpAddress "10.0.1.5"
+        $frontend = New-AzLoadBalancerFrontendIpConfig -Name $frontendName -Subnet $vnet.Subnets[0] -PrivateIpAddress "10.0.1.5" -PrivateIpAddressVersion "IPv4"
         $backendAddressPool = New-AzLoadBalancerBackendAddressPoolConfig -Name $backendAddressPoolName
         $probe = New-AzLoadBalancerProbeConfig -Name $probeName -RequestPath healthcheck.aspx -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
         $inboundNatRule = New-AzLoadBalancerInboundNatRuleConfig -Name $inboundNatRuleName -FrontendIPConfiguration $frontend -Protocol Tcp -FrontendPort 3389 -BackendPort 3389 -IdleTimeoutInMinutes 15 -EnableFloatingIP
@@ -359,6 +360,7 @@ function Test-LoadBalancerCRUD-InternalStatic
         Assert-AreEqual $frontendName $expectedLb.FrontendIPConfigurations[0].Name
         Assert-AreEqual $vnet.Subnets[0].Id $expectedLb.FrontendIPConfigurations[0].Subnet.Id
         Assert-AreEqual "10.0.1.5" $expectedLb.FrontendIPConfigurations[0].PrivateIpAddress
+        Assert-AreEqual "IPv4" $expectedLb.FrontendIPConfigurations[0].PrivateIpAddressVersion
 
         Assert-AreEqual $backendAddressPoolName $expectedLb.BackendAddressPools[0].Name
 
