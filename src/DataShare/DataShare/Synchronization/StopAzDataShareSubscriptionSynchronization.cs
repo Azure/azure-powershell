@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Commands.DataShare.Synchronization
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Extensions;
     using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Models;
+    using Microsoft.Azure.PowerShell.Cmdlets.DataShare.Properties;
 
     /// <summary>
     /// Defines the Stop-AzDataShareSubscriptionSynchronization cmdlet.
@@ -116,7 +117,7 @@ namespace Microsoft.Azure.Commands.DataShare.Synchronization
             this.SetParametersIfNeeded();
 
             this.ConfirmAction(
-                "Stop synchronization",
+                Resources.StopSynchronizationConfirmation,
                 this.ShareSubscriptionName,
                 this.StopSynchronization);
         }

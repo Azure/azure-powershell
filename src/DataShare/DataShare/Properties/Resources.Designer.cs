@@ -140,5 +140,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataShare.Properties {
                 return ResourceManager.GetString("RevokeShareSubscriptionAccess", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to start synchronization?.
+        /// </summary>
+        internal static string StartSynchronizationConfirmation {
+            get {
+                return ResourceManager.GetString("StartSynchronizationConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to stop this synchronization?.
+        /// </summary>
+        internal static string StopSynchronizationConfirmation {
+            get {
+                return ResourceManager.GetString("StopSynchronizationConfirmation", resourceCulture);
+            }
+        }
     }
 }

@@ -144,4 +144,10 @@
   <data name="RevokeShareSubscriptionAccess" xml:space="preserve">
     <value>Revoking access of share subscription</value>
   </data>
+  <data name="StartSynchronizationConfirmation" xml:space="preserve">
+    <value>Are you sure you want to start synchronization?</value>
+  </data>
+  <data name="StopSynchronizationConfirmation" xml:space="preserve">
+    <value>Are you sure you want to stop this synchronization?</value>
+  </data>
 </root>
