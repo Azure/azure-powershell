@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Adding param to extend query result with subscription and tenant names
 
 ## Version 0.7.4
 * Updated package Microsoft.Azure.Management.ResourceGraph to version 2.0
