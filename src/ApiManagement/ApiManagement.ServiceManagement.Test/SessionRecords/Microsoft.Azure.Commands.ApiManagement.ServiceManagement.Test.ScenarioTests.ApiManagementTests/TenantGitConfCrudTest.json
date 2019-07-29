@@ -63,6 +63,7 @@
           "-1"
         ]
       },
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]
       "ResponseBody": "{\r\n  \"id\": \"git\",\r\n  \"primaryKey\": \"Qf2C+4P7rEhabR08nCUIGjLvlQG7h+Vt6cVmuuuGLdwaPIXDM7cCwvhtqT3IIlYvtcwYD5TSpsGXjtwfhNSXcw==\",\r\n  \"secondaryKey\": \"xhh1evrjy68M1sW3sJ9/qK68N//ba0ZjlOO211N0L2wbvE8IU08c+SzyOgi6vrBvjdbLIoF1+MGk2HM2TDqA7g==\",\r\n  \"enabled\": true\r\n}",
       "StatusCode": 200
     },
