@@ -133,12 +133,12 @@
     { "regex": "AD", "group": "Resources", "alias": "Active Directory" },
     { "regex": "Resources", "group": "Resources", "alias": "Resources" },
 
-    { "regex": "Maps", "alias":  "Maps"  },
+    { "regex": "Maps", "alias": "Maps" },
     { "regex": "Aks", "group": "Aks", "alias": "Aks" },
 
     { "regex": "ManagedServiceIdentity", "group": "Managed Service Identity", "alias": "Managed Service Identity" },
 
-    { "regex":  "ManagementPartner", "alias":  "Management Partner"  },
+    { "regex": "ManagementPartner", "alias": "Management Partner" },
     { "regex": "DevSpaces", "group": "DevSpaces", "alias": "DevSpaces" },
     { "regex": "SignalR", "alias": "SignalR" },
     { "regex": "AzSearch", "alias": "Search" },
@@ -148,11 +148,13 @@
     { "regex": "Advisor", "alias": "Advisor" },
     { "regex": "MixedReality", "group": "Mixed Reality", "alias": "Mixed Reality" },
     { "regex": "SpatialAnchors", "group": "Mixed Reality", "alias": "Mixed Reality" },
-    { "regex": "Blueprint", "alias": "Blueprint" },    
+    { "regex": "Blueprint", "alias": "Blueprint" },
     { "regex": "DeploymentManager", "alias": "Deployment Manager" },
     { "regex": "Peering", "group": "Peering", "alias": "Peering" },
     { "regex": "PeerAsn", "group": "Peering", "alias": "Peer Asn" },
     { "regex": "NetAppFiles", "alias": "NetApp Files" },
     { "regex": "Attestation", "alias": "Attestation" },
-    { "regex": "ManagedServices", "group": "Managed Services", "alias": "Managed Services" }
+    { "regex": "ManagedServices", "group": "Managed Services", "alias": "Managed Services" },
+    { "regex": "DataBox", "alias": "DataBox" },
+    { "regex": "AlertsManagement", "alias": "Alerts Management" }
 ]

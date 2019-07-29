@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.2.0
+* Added NetworkRuleSet support.
+
 ## Version 1.1.1
 * Only display Bing disclaimer for Bing Search Services.
 * Improve error when create account failed.
