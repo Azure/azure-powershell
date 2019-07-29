@@ -15,7 +15,7 @@ Creates or updates the specified ExpressRoutePort resource.
 ### Update (Default)
 ```
 Set-AzExpressRoutePort -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <IExpressRoutePort>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-ExpressRoutePort <IExpressRoutePort>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -116,6 +116,23 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -ExpressRoutePort
+ExpressRoutePort resource definition.
+To construct, see NOTES section for EXPRESSROUTEPORT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRoutePort
+Parameter Sets: Update
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Id
 Resource ID.
 
@@ -197,23 +214,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Parameter
-ExpressRoutePort resource definition.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRoutePort
-Parameter Sets: Update
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -PeeringLocation
 The name of the peering location that the ExpressRoutePort is mapped to physically.
 
@@ -236,7 +236,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: ExpressRoutePort
+Aliases:
 
 Required: True
 Position: Named
@@ -346,12 +346,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### LINK <IExpressRouteLink[]>: The set of physical links of the ExpressRoutePort resource
-  - `[Id <String>]`: Resource ID.
-  - `[AdminState <ExpressRouteLinkAdminState?>]`: Administrative state of the physical port
-  - `[Name <String>]`: Name of child port resource that is unique among child port resources of the parent.
-
-#### PARAMETER <IExpressRoutePort>: ExpressRoutePort resource definition.
+#### EXPRESSROUTEPORT <IExpressRoutePort>: ExpressRoutePort resource definition.
   - `[Id <String>]`: Resource ID.
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.
@@ -364,6 +359,11 @@ To create the parameters described below, construct a hash table containing the 
     - `[Name <String>]`: Name of child port resource that is unique among child port resources of the parent.
   - `[PeeringLocation <String>]`: The name of the peering location that the ExpressRoutePort is mapped to physically.
   - `[ResourceGuid <String>]`: The resource GUID property of the ExpressRoutePort resource.
+
+#### LINK <IExpressRouteLink[]>: The set of physical links of the ExpressRoutePort resource
+  - `[Id <String>]`: Resource ID.
+  - `[AdminState <ExpressRouteLinkAdminState?>]`: Administrative state of the physical port
+  - `[Name <String>]`: Name of child port resource that is unique among child port resources of the parent.
 
 ## RELATED LINKS
 

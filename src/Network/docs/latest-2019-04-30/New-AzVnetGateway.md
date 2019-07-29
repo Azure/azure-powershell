@@ -15,7 +15,7 @@ Creates or updates a virtual network gateway in the specified resource group.
 ### Create (Default)
 ```
 New-AzVnetGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <IVirtualNetworkGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-VnetGateway <IVirtualNetworkGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -51,7 +51,7 @@ New-AzVnetGateway -InputObject <INetworkIdentity> [-BgpAsn <Int64>] [-BgpPeerWei
 
 ### CreateViaIdentity
 ```
-New-AzVnetGateway -InputObject <INetworkIdentity> [-Parameter <IVirtualNetworkGateway>]
+New-AzVnetGateway -InputObject <INetworkIdentity> [-VnetGateway <IVirtualNetworkGateway>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -354,23 +354,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Parameter
-A common class for general resource information
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVirtualNetworkGateway
-Parameter Sets: Create, CreateViaIdentity
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 
@@ -480,6 +463,23 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -VnetGateway
+A common class for general resource information
+To construct, see NOTES section for VNETGATEWAY properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVirtualNetworkGateway
+Parameter Sets: Create, CreateViaIdentity
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -679,7 +679,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[PublicIPAddressId <String>]`: Resource ID.
   - `[SubnetId <String>]`: Resource ID.
 
-#### PARAMETER <IVirtualNetworkGateway>: A common class for general resource information
+#### VNETGATEWAY <IVirtualNetworkGateway>: A common class for general resource information
   - `[Id <String>]`: Resource ID.
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.

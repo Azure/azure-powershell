@@ -15,8 +15,8 @@ Creates or updates a service Endpoint Policies.
 ### Create (Default)
 ```
 New-AzServiceEndpointPolicy -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <IServiceEndpointPolicy>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-ServiceEndpointPolicy <IServiceEndpointPolicy>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpanded
@@ -36,7 +36,7 @@ New-AzServiceEndpointPolicy -InputObject <INetworkIdentity> [-Etag <String>] [-I
 
 ### CreateViaIdentity
 ```
-New-AzServiceEndpointPolicy -InputObject <INetworkIdentity> [-Parameter <IServiceEndpointPolicy>]
+New-AzServiceEndpointPolicy -InputObject <INetworkIdentity> [-ServiceEndpointPolicy <IServiceEndpointPolicy>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -193,23 +193,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Parameter
-Service End point policy resource.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IServiceEndpointPolicy
-Parameter Sets: Create, CreateViaIdentity
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 
@@ -222,6 +205,23 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ServiceEndpointPolicy
+Service End point policy resource.
+To construct, see NOTES section for SERVICEENDPOINTPOLICY properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IServiceEndpointPolicy
+Parameter Sets: Create, CreateViaIdentity
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -329,7 +329,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### PARAMETER <IServiceEndpointPolicy>: Service End point policy resource.
+#### SERVICEENDPOINTPOLICY <IServiceEndpointPolicy>: Service End point policy resource.
   - `[Id <String>]`: Resource ID.
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.

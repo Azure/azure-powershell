@@ -15,8 +15,8 @@ Creates or updates a Virtual Network Tap.
 ### Update (Default)
 ```
 Set-AzVnetTap -ResourceGroupName <String> -SubscriptionId <String> -TapName <String>
- [-Parameter <IVirtualNetworkTap>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-VnetTapProperties <IVirtualNetworkTap>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
@@ -533,23 +533,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Parameter
-Virtual Network Tap resource
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVirtualNetworkTap
-Parameter Sets: Update
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Primary
 Gets whether this is a primary customer address on the network interface.
 
@@ -677,6 +660,23 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -VnetTapProperties
+Virtual Network Tap resource
+To construct, see NOTES section for VNETTAPPROPERTIES properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVirtualNetworkTap
+Parameter Sets: Update
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -1493,7 +1493,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Subnet <ISubnet>]`: Subnet bound to the IP configuration.
   - `[VirtualNetworkTap <IVirtualNetworkTap[]>]`: The reference to Virtual Network Taps.
 
-#### PARAMETER <IVirtualNetworkTap>: Virtual Network Tap resource
+#### VNETTAP <IVirtualNetworkTap[]>: The reference to Virtual Network Taps.
   - `[Id <String>]`: Resource ID.
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.
@@ -1694,7 +1694,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[PropertiesDestinationNetworkInterfaceIPConfigurationPropertiesVirtualNetworkTaps <IVirtualNetworkTap[]>]`: The reference to Virtual Network Taps.
   - `[PublicIPPrefixId <String>]`: Resource ID.
 
-#### VNETTAP <IVirtualNetworkTap[]>: The reference to Virtual Network Taps.
+#### VNETTAPPROPERTIES <IVirtualNetworkTap>: Virtual Network Tap resource
   - `[Id <String>]`: Resource ID.
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.

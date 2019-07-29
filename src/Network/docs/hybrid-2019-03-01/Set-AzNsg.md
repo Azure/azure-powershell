@@ -14,9 +14,8 @@ Creates or updates a network security group in the specified resource group.
 
 ### Update1 (Default)
 ```
-Set-AzNsg -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <INetworkSecurityGroup>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Set-AzNsg -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-Nsg <INetworkSecurityGroup>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded1
@@ -181,9 +180,9 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Parameter
+### -Nsg
 NetworkSecurityGroup resource.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
+To construct, see NOTES section for NSG properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkSecurityGroup
@@ -375,7 +374,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[SourceApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: The application security group specified as source.
   - `[SourcePortRange <String>]`: The source port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
 
-#### PARAMETER <INetworkSecurityGroup>: NetworkSecurityGroup resource.
+#### NSG <INetworkSecurityGroup>: NetworkSecurityGroup resource.
   - `[Id <String>]`: Resource ID.
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.

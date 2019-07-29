@@ -15,7 +15,7 @@ Creates or updates a static or dynamic public IP address.
 ### Create (Default)
 ```
 New-AzPublicIPAddress -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <IPublicIPAddress>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-PublicIPAddress <IPublicIPAddress>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -47,7 +47,7 @@ New-AzPublicIPAddress -InputObject <INetworkIdentity> [-AllocationMethod <IPAllo
 
 ### CreateViaIdentity
 ```
-New-AzPublicIPAddress -InputObject <INetworkIdentity> [-Parameter <IPublicIPAddress>]
+New-AzPublicIPAddress -InputObject <INetworkIdentity> [-PublicIPAddress <IPublicIPAddress>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -418,23 +418,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Parameter
-Public IP address resource.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IPublicIPAddress
-Parameter Sets: Create, CreateViaIdentity
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -PrefixId
 Resource ID.
 
@@ -464,6 +447,23 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -PublicIPAddress
+Public IP address resource.
+To construct, see NOTES section for PUBLICIPADDRESS properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IPublicIPAddress
+Parameter Sets: Create, CreateViaIdentity
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -756,7 +756,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Tag <String>]`: Gets or sets value of the IpTag associated with the public IP. Example SQL, Storage etc
   - `[Type <String>]`: Gets or sets the ipTag type: Example FirstPartyUsage.
 
-#### PARAMETER <IPublicIPAddress>: Public IP address resource.
+#### PUBLICIPADDRESS <IPublicIPAddress>: Public IP address resource.
   - `[Id <String>]`: Resource ID.
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.

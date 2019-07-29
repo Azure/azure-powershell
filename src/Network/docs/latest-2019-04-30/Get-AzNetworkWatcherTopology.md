@@ -15,7 +15,7 @@ Gets the current network topology by resource group.
 ### Get (Default)
 ```
 Get-AzNetworkWatcherTopology -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-Parameter <ITopologyParameters>] [-DefaultProfile <PSObject>] [-Confirm]
+ -SubscriptionId <String[]> [-Topology <ITopologyParameters>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -35,7 +35,7 @@ Get-AzNetworkWatcherTopology -InputObject <INetworkIdentity> [-TargetResourceGro
 
 ### GetViaIdentity
 ```
-Get-AzNetworkWatcherTopology -InputObject <INetworkIdentity> [-Parameter <ITopologyParameters>]
+Get-AzNetworkWatcherTopology -InputObject <INetworkIdentity> [-Topology <ITopologyParameters>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -108,23 +108,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Parameter
-Parameters that define the representation of topology.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ITopologyParameters
-Parameter Sets: Get, GetViaIdentity
-Aliases: NetworkWatcher
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -210,6 +193,23 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Topology
+Parameters that define the representation of topology.
+To construct, see NOTES section for TOPOLOGY properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ITopologyParameters
+Parameter Sets: Get, GetViaIdentity
+Aliases: NetworkWatcher
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -263,7 +263,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### PARAMETER <ITopologyParameters>: Parameters that define the representation of topology.
+#### TOPOLOGY <ITopologyParameters>: Parameters that define the representation of topology.
   - `[TargetResourceGroupName <String>]`: The name of the target resource group to perform topology on.
   - `[TargetSubnetId <String>]`: Resource ID.
   - `[TargetVirtualNetworkId <String>]`: Resource ID.

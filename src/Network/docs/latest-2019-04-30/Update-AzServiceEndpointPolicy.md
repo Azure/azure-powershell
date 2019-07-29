@@ -15,7 +15,7 @@ Updates service Endpoint Policies.
 ### Update (Default)
 ```
 Update-AzServiceEndpointPolicy -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <ITagsObject>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-ServiceEndpointPolicy <ITagsObject>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -33,7 +33,7 @@ Update-AzServiceEndpointPolicy -InputObject <INetworkIdentity> [-Tag <Hashtable>
 
 ### UpdateViaIdentity
 ```
-Update-AzServiceEndpointPolicy -InputObject <INetworkIdentity> [-Parameter <ITagsObject>]
+Update-AzServiceEndpointPolicy -InputObject <INetworkIdentity> [-ServiceEndpointPolicy <ITagsObject>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -142,23 +142,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Parameter
-Tags object for patch operations.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ITagsObject
-Parameter Sets: Update, UpdateViaIdentity
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 
@@ -171,6 +154,23 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ServiceEndpointPolicy
+Tags object for patch operations.
+To construct, see NOTES section for SERVICEENDPOINTPOLICY properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ITagsObject
+Parameter Sets: Update, UpdateViaIdentity
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -261,7 +261,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### PARAMETER <ITagsObject>: Tags object for patch operations.
+#### SERVICEENDPOINTPOLICY <ITagsObject>: Tags object for patch operations.
   - `[Tag <ITagsObjectTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
 

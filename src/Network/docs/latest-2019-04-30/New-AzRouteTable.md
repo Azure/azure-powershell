@@ -15,7 +15,7 @@ Create or updates a route table in a specified resource group.
 ### Create (Default)
 ```
 New-AzRouteTable -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <IRouteTable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-RouteTable <IRouteTable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -36,7 +36,7 @@ New-AzRouteTable -InputObject <INetworkIdentity> [-DisableBgpRoutePropagation] [
 
 ### CreateViaIdentity
 ```
-New-AzRouteTable -InputObject <INetworkIdentity> [-Parameter <IRouteTable>] [-DefaultProfile <PSObject>]
+New-AzRouteTable -InputObject <INetworkIdentity> [-RouteTable <IRouteTable>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -210,23 +210,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Parameter
-Route table resource.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IRouteTable
-Parameter Sets: Create, CreateViaIdentity
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -ProvisioningState
 The provisioning state of the resource.
 Possible values are: 'Updating', 'Deleting', and 'Failed'.
@@ -273,6 +256,23 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -RouteTable
+Route table resource.
+To construct, see NOTES section for ROUTETABLE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IRouteTable
+Parameter Sets: Create, CreateViaIdentity
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -363,7 +363,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### PARAMETER <IRouteTable>: Route table resource.
+#### ROUTE <IRoute[]>: Collection of routes contained within a route table.
+  - `NextHopType <RouteNextHopType>`: The type of Azure hop the packet should be sent to.
+  - `[Id <String>]`: Resource ID.
+  - `[AddressPrefix <String>]`: The destination CIDR to which the route applies.
+  - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+  - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
+  - `[NextHopIPAddress <String>]`: The IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is VirtualAppliance.
+  - `[ProvisioningState <String>]`: The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+
+#### ROUTETABLE <IRouteTable>: Route table resource.
   - `[Id <String>]`: Resource ID.
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.
@@ -379,15 +388,6 @@ To create the parameters described below, construct a hash table containing the 
     - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
     - `[NextHopIPAddress <String>]`: The IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is VirtualAppliance.
     - `[ProvisioningState <String>]`: The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-
-#### ROUTE <IRoute[]>: Collection of routes contained within a route table.
-  - `NextHopType <RouteNextHopType>`: The type of Azure hop the packet should be sent to.
-  - `[Id <String>]`: Resource ID.
-  - `[AddressPrefix <String>]`: The destination CIDR to which the route applies.
-  - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-  - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  - `[NextHopIPAddress <String>]`: The IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is VirtualAppliance.
-  - `[ProvisioningState <String>]`: The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
 
 ## RELATED LINKS
 

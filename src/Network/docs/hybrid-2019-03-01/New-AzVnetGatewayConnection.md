@@ -15,8 +15,8 @@ Creates or updates a virtual network gateway connection in the specified resourc
 ### Create1 (Default)
 ```
 New-AzVnetGatewayConnection -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <IVirtualNetworkGatewayConnection>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-VnetGatewayConnection <IVirtualNetworkGatewayConnection>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpanded1
@@ -51,8 +51,9 @@ New-AzVnetGatewayConnection -InputObject <INetworkIdentity>
 
 ### CreateViaIdentity1
 ```
-New-AzVnetGatewayConnection -InputObject <INetworkIdentity> [-Parameter <IVirtualNetworkGatewayConnection>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzVnetGatewayConnection -InputObject <INetworkIdentity>
+ [-VnetGatewayConnection <IVirtualNetworkGatewayConnection>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -434,23 +435,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Parameter
-A common class for general resource information
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVirtualNetworkGatewayConnection
-Parameter Sets: Create1, CreateViaIdentity1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -PeerId
 Resource ID.
 
@@ -614,6 +598,23 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -VnetGatewayConnection
+A common class for general resource information
+To construct, see NOTES section for VNETGATEWAYCONNECTION properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVirtualNetworkGatewayConnection
+Parameter Sets: Create1, CreateViaIdentity1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -678,79 +679,6 @@ To create the parameters described below, construct a hash table containing the 
   - `PfsGroup <PfsGroup>`: The DH Groups used in IKE Phase 2 for new child SA.
   - `SaDataSizeKilobyte <Int32>`: The IPSec Security Association (also called Quick Mode or Phase 2 SA) payload size in KB for a site to site VPN tunnel.
   - `SaLifeTimeSecond <Int32>`: The IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime in seconds for a site to site VPN tunnel.
-
-#### PARAMETER <IVirtualNetworkGatewayConnection>: A common class for general resource information
-  - `ConnectionType <VirtualNetworkGatewayConnectionType>`: Gateway connection type. Possible values are: 'IPsec','Vnet2Vnet','ExpressRoute', and 'VPNClient.
-  - `VirtualNetworkGateway1 <IVirtualNetworkGateway>`: The reference to virtual network gateway resource.
-    - `[Id <String>]`: Resource ID.
-    - `[Location <String>]`: Resource location.
-    - `[Tag <IResourceTags>]`: Resource tags.
-    - `[Active <Boolean?>]`: ActiveActive flag
-    - `[BgpSettingAsn <Int64?>]`: The BGP speaker's ASN.
-    - `[BgpSettingBgpPeeringAddress <String>]`: The BGP peering address and BGP identifier of this BGP speaker.
-    - `[BgpSettingPeerWeight <Int32?>]`: The weight added to routes learned from this BGP speaker.
-    - `[EnableBgp <Boolean?>]`: Whether BGP is enabled for this virtual network gateway or not.
-    - `[Etag <String>]`: Gets a unique read-only string that changes whenever the resource is updated.
-    - `[GatewayDefaultSiteId <String>]`: Resource ID.
-    - `[GatewayType <VirtualNetworkGatewayType?>]`: The type of this virtual network gateway. Possible values are: 'Vpn' and 'ExpressRoute'.
-    - `[IPConfiguration <IVirtualNetworkGatewayIPConfiguration[]>]`: IP configurations for virtual network gateway.
-      - `[Id <String>]`: Resource ID.
-      - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-      - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-      - `[PrivateIPAllocationMethod <IPAllocationMethod?>]`: The private IP address allocation method.
-      - `[PublicIPAddressId <String>]`: Resource ID.
-      - `[SubnetId <String>]`: Resource ID.
-    - `[ResourceGuid <String>]`: The resource GUID property of the VirtualNetworkGateway resource.
-    - `[SkuCapacity <Int32?>]`: The capacity.
-    - `[SkuName <VirtualNetworkGatewaySkuName?>]`: Gateway SKU name.
-    - `[SkuTier <VirtualNetworkGatewaySkuTier?>]`: Gateway SKU tier.
-    - `[VpnClientAddressPoolAddressPrefix <String[]>]`: A list of address blocks reserved for this virtual network in CIDR notation.
-    - `[VpnClientConfigurationRadiusServerAddress <String>]`: The radius server address property of the VirtualNetworkGateway resource for vpn client connection.
-    - `[VpnClientConfigurationRadiusServerSecret <String>]`: The radius secret property of the VirtualNetworkGateway resource for vpn client connection.
-    - `[VpnClientConfigurationVpnClientProtocol <VpnClientProtocol[]>]`: VpnClientProtocols for Virtual network gateway.
-    - `[VpnClientConfigurationVpnClientRevokedCertificate <IVpnClientRevokedCertificate[]>]`: VpnClientRevokedCertificate for Virtual network gateway.
-      - `[Id <String>]`: Resource ID.
-      - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-      - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-      - `[Thumbprint <String>]`: The revoked VPN client certificate thumbprint.
-    - `[VpnClientConfigurationVpnClientRootCertificate <IVpnClientRootCertificate[]>]`: VpnClientRootCertificate for virtual network gateway.
-      - `PublicCertData <String>`: The certificate public data.
-      - `[Id <String>]`: Resource ID.
-      - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-      - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-    - `[VpnType <VpnType?>]`: The type of this virtual network gateway. Possible values are: 'PolicyBased' and 'RouteBased'.
-  - `[Id <String>]`: Resource ID.
-  - `[Location <String>]`: Resource location.
-  - `[Tag <IResourceTags>]`: Resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[AuthorizationKey <String>]`: The authorizationKey.
-  - `[BgpSettingAsn <Int64?>]`: The BGP speaker's ASN.
-  - `[BgpSettingBgpPeeringAddress <String>]`: The BGP peering address and BGP identifier of this BGP speaker.
-  - `[BgpSettingPeerWeight <Int32?>]`: The weight added to routes learned from this BGP speaker.
-  - `[EnableBgp <Boolean?>]`: EnableBgp flag
-  - `[Etag <String>]`: Gets a unique read-only string that changes whenever the resource is updated.
-  - `[GatewayIPAddress <String>]`: IP address of local network gateway.
-  - `[IpsecPolicy <IIpsecPolicy[]>]`: The IPSec Policies to be considered by this connection.
-    - `DhGroup <DhGroup>`: The DH Groups used in IKE Phase 1 for initial SA.
-    - `IkeEncryption <IkeEncryption>`: The IKE encryption algorithm (IKE phase 2).
-    - `IkeIntegrity <IkeIntegrity>`: The IKE integrity algorithm (IKE phase 2).
-    - `IpsecEncryption <IpsecEncryption>`: The IPSec encryption algorithm (IKE phase 1).
-    - `IpsecIntegrity <IpsecIntegrity>`: The IPSec integrity algorithm (IKE phase 1).
-    - `PfsGroup <PfsGroup>`: The DH Groups used in IKE Phase 2 for new child SA.
-    - `SaDataSizeKilobyte <Int32>`: The IPSec Security Association (also called Quick Mode or Phase 2 SA) payload size in KB for a site to site VPN tunnel.
-    - `SaLifeTimeSecond <Int32>`: The IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime in seconds for a site to site VPN tunnel.
-  - `[LocalNetworkAddressSpaceAddressPrefix <String[]>]`: A list of address blocks reserved for this virtual network in CIDR notation.
-  - `[LocalNetworkGateway2Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-  - `[LocalNetworkGateway2Id <String>]`: Resource ID.
-  - `[LocalNetworkGateway2Location <String>]`: Resource location.
-  - `[LocalNetworkGateway2PropertiesResourceGuid <String>]`: The resource GUID property of the LocalNetworkGateway resource.
-  - `[LocalNetworkGateway2Tag <IResourceTags>]`: Resource tags.
-  - `[PeerId <String>]`: Resource ID.
-  - `[ResourceGuid <String>]`: The resource GUID property of the VirtualNetworkGatewayConnection resource.
-  - `[RoutingWeight <Int32?>]`: The routing weight.
-  - `[SharedKey <String>]`: The IPSec shared key.
-  - `[UsePolicyBasedTrafficSelector <Boolean?>]`: Enable policy-based traffic selectors.
-  - `[VirtualNetworkGateway2 <IVirtualNetworkGateway>]`: The reference to virtual network gateway resource.
 
 #### VNETGATEWAY1 <IVirtualNetworkGateway>: The reference to virtual network gateway resource.
   - `[Id <String>]`: Resource ID.
@@ -831,6 +759,79 @@ To create the parameters described below, construct a hash table containing the 
     - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
     - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
   - `[VpnType <VpnType?>]`: The type of this virtual network gateway. Possible values are: 'PolicyBased' and 'RouteBased'.
+
+#### VNETGATEWAYCONNECTION <IVirtualNetworkGatewayConnection>: A common class for general resource information
+  - `ConnectionType <VirtualNetworkGatewayConnectionType>`: Gateway connection type. Possible values are: 'IPsec','Vnet2Vnet','ExpressRoute', and 'VPNClient.
+  - `VirtualNetworkGateway1 <IVirtualNetworkGateway>`: The reference to virtual network gateway resource.
+    - `[Id <String>]`: Resource ID.
+    - `[Location <String>]`: Resource location.
+    - `[Tag <IResourceTags>]`: Resource tags.
+    - `[Active <Boolean?>]`: ActiveActive flag
+    - `[BgpSettingAsn <Int64?>]`: The BGP speaker's ASN.
+    - `[BgpSettingBgpPeeringAddress <String>]`: The BGP peering address and BGP identifier of this BGP speaker.
+    - `[BgpSettingPeerWeight <Int32?>]`: The weight added to routes learned from this BGP speaker.
+    - `[EnableBgp <Boolean?>]`: Whether BGP is enabled for this virtual network gateway or not.
+    - `[Etag <String>]`: Gets a unique read-only string that changes whenever the resource is updated.
+    - `[GatewayDefaultSiteId <String>]`: Resource ID.
+    - `[GatewayType <VirtualNetworkGatewayType?>]`: The type of this virtual network gateway. Possible values are: 'Vpn' and 'ExpressRoute'.
+    - `[IPConfiguration <IVirtualNetworkGatewayIPConfiguration[]>]`: IP configurations for virtual network gateway.
+      - `[Id <String>]`: Resource ID.
+      - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+      - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
+      - `[PrivateIPAllocationMethod <IPAllocationMethod?>]`: The private IP address allocation method.
+      - `[PublicIPAddressId <String>]`: Resource ID.
+      - `[SubnetId <String>]`: Resource ID.
+    - `[ResourceGuid <String>]`: The resource GUID property of the VirtualNetworkGateway resource.
+    - `[SkuCapacity <Int32?>]`: The capacity.
+    - `[SkuName <VirtualNetworkGatewaySkuName?>]`: Gateway SKU name.
+    - `[SkuTier <VirtualNetworkGatewaySkuTier?>]`: Gateway SKU tier.
+    - `[VpnClientAddressPoolAddressPrefix <String[]>]`: A list of address blocks reserved for this virtual network in CIDR notation.
+    - `[VpnClientConfigurationRadiusServerAddress <String>]`: The radius server address property of the VirtualNetworkGateway resource for vpn client connection.
+    - `[VpnClientConfigurationRadiusServerSecret <String>]`: The radius secret property of the VirtualNetworkGateway resource for vpn client connection.
+    - `[VpnClientConfigurationVpnClientProtocol <VpnClientProtocol[]>]`: VpnClientProtocols for Virtual network gateway.
+    - `[VpnClientConfigurationVpnClientRevokedCertificate <IVpnClientRevokedCertificate[]>]`: VpnClientRevokedCertificate for Virtual network gateway.
+      - `[Id <String>]`: Resource ID.
+      - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+      - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
+      - `[Thumbprint <String>]`: The revoked VPN client certificate thumbprint.
+    - `[VpnClientConfigurationVpnClientRootCertificate <IVpnClientRootCertificate[]>]`: VpnClientRootCertificate for virtual network gateway.
+      - `PublicCertData <String>`: The certificate public data.
+      - `[Id <String>]`: Resource ID.
+      - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+      - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
+    - `[VpnType <VpnType?>]`: The type of this virtual network gateway. Possible values are: 'PolicyBased' and 'RouteBased'.
+  - `[Id <String>]`: Resource ID.
+  - `[Location <String>]`: Resource location.
+  - `[Tag <IResourceTags>]`: Resource tags.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
+  - `[AuthorizationKey <String>]`: The authorizationKey.
+  - `[BgpSettingAsn <Int64?>]`: The BGP speaker's ASN.
+  - `[BgpSettingBgpPeeringAddress <String>]`: The BGP peering address and BGP identifier of this BGP speaker.
+  - `[BgpSettingPeerWeight <Int32?>]`: The weight added to routes learned from this BGP speaker.
+  - `[EnableBgp <Boolean?>]`: EnableBgp flag
+  - `[Etag <String>]`: Gets a unique read-only string that changes whenever the resource is updated.
+  - `[GatewayIPAddress <String>]`: IP address of local network gateway.
+  - `[IpsecPolicy <IIpsecPolicy[]>]`: The IPSec Policies to be considered by this connection.
+    - `DhGroup <DhGroup>`: The DH Groups used in IKE Phase 1 for initial SA.
+    - `IkeEncryption <IkeEncryption>`: The IKE encryption algorithm (IKE phase 2).
+    - `IkeIntegrity <IkeIntegrity>`: The IKE integrity algorithm (IKE phase 2).
+    - `IpsecEncryption <IpsecEncryption>`: The IPSec encryption algorithm (IKE phase 1).
+    - `IpsecIntegrity <IpsecIntegrity>`: The IPSec integrity algorithm (IKE phase 1).
+    - `PfsGroup <PfsGroup>`: The DH Groups used in IKE Phase 2 for new child SA.
+    - `SaDataSizeKilobyte <Int32>`: The IPSec Security Association (also called Quick Mode or Phase 2 SA) payload size in KB for a site to site VPN tunnel.
+    - `SaLifeTimeSecond <Int32>`: The IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime in seconds for a site to site VPN tunnel.
+  - `[LocalNetworkAddressSpaceAddressPrefix <String[]>]`: A list of address blocks reserved for this virtual network in CIDR notation.
+  - `[LocalNetworkGateway2Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+  - `[LocalNetworkGateway2Id <String>]`: Resource ID.
+  - `[LocalNetworkGateway2Location <String>]`: Resource location.
+  - `[LocalNetworkGateway2PropertiesResourceGuid <String>]`: The resource GUID property of the LocalNetworkGateway resource.
+  - `[LocalNetworkGateway2Tag <IResourceTags>]`: Resource tags.
+  - `[PeerId <String>]`: Resource ID.
+  - `[ResourceGuid <String>]`: The resource GUID property of the VirtualNetworkGatewayConnection resource.
+  - `[RoutingWeight <Int32?>]`: The routing weight.
+  - `[SharedKey <String>]`: The IPSec shared key.
+  - `[UsePolicyBasedTrafficSelector <Boolean?>]`: Enable policy-based traffic selectors.
+  - `[VirtualNetworkGateway2 <IVirtualNetworkGateway>]`: The reference to virtual network gateway resource.
 
 ## RELATED LINKS
 

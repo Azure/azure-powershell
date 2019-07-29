@@ -15,8 +15,8 @@ Gets the relative latency score for internet service providers from a specified 
 ### Get (Default)
 ```
 Get-AzNetworkWatcherReachabilityReport -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-Parameter <IAzureReachabilityReportParameters>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -SubscriptionId <String[]> [-ReachabilityReport <IAzureReachabilityReportParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GetExpanded
@@ -38,8 +38,8 @@ Get-AzNetworkWatcherReachabilityReport -InputObject <INetworkIdentity> -EndTime 
 ### GetViaIdentity
 ```
 Get-AzNetworkWatcherReachabilityReport -InputObject <INetworkIdentity>
- [-Parameter <IAzureReachabilityReportParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-ReachabilityReport <IAzureReachabilityReportParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -179,23 +179,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Parameter
-Geographic and time constraints for Azure reachability report.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IAzureReachabilityReportParameters
-Parameter Sets: Get, GetViaIdentity
-Aliases: NetworkWatcher
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Provider
 List of Internet service providers.
 
@@ -256,6 +239,23 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ReachabilityReport
+Geographic and time constraints for Azure reachability report.
+To construct, see NOTES section for REACHABILITYREPORT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IAzureReachabilityReportParameters
+Parameter Sets: Get, GetViaIdentity
+Aliases: NetworkWatcher
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -362,7 +362,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### PARAMETER <IAzureReachabilityReportParameters>: Geographic and time constraints for Azure reachability report.
+#### REACHABILITYREPORT <IAzureReachabilityReportParameters>: Geographic and time constraints for Azure reachability report.
   - `EndTime <DateTime>`: The end time for the Azure reachability report.
   - `ProviderLocationCountry <String>`: The name of the country.
   - `StartTime <DateTime>`: The start time for the Azure reachability report.

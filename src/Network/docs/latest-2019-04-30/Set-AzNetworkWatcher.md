@@ -15,7 +15,7 @@ Creates or updates a network watcher in the specified resource group.
 ### Update (Default)
 ```
 Set-AzNetworkWatcher -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <INetworkWatcher>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NetworkWatcher <INetworkWatcher>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
@@ -130,9 +130,9 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Parameter
+### -NetworkWatcher
 Network watcher in a resource group.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
+To construct, see NOTES section for NETWORKWATCHER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkWatcher
@@ -247,7 +247,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### PARAMETER <INetworkWatcher>: Network watcher in a resource group.
+#### NETWORKWATCHER <INetworkWatcher>: Network watcher in a resource group.
   - `[Id <String>]`: Resource ID.
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.

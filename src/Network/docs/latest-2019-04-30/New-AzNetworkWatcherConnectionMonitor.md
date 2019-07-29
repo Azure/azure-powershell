@@ -15,8 +15,8 @@ Create or update a connection monitor.
 ### Create (Default)
 ```
 New-AzNetworkWatcherConnectionMonitor -Name <String> -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-Parameter <IConnectionMonitor>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -SubscriptionId <String> [-ConnectionMonitor <IConnectionMonitor>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpanded
@@ -38,8 +38,9 @@ New-AzNetworkWatcherConnectionMonitor -InputObject <INetworkIdentity> -SourceRes
 
 ### CreateViaIdentity
 ```
-New-AzNetworkWatcherConnectionMonitor -InputObject <INetworkIdentity> [-Parameter <IConnectionMonitor>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzNetworkWatcherConnectionMonitor -InputObject <INetworkIdentity>
+ [-ConnectionMonitor <IConnectionMonitor>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -95,6 +96,23 @@ Required: False
 Position: Named
 Default value: False
 Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ConnectionMonitor
+Parameters that define the operation to create a connection monitor.
+To construct, see NOTES section for CONNECTIONMONITOR properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IConnectionMonitor
+Parameter Sets: Create, CreateViaIdentity
+Aliases: NetworkWatcher
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -259,23 +277,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Parameter
-Parameters that define the operation to create a connection monitor.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IConnectionMonitor
-Parameter Sets: Create, CreateViaIdentity
-Aliases: NetworkWatcher
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -ResourceGroupName
 The name of the resource group containing Network Watcher.
 
@@ -410,7 +411,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### PARAMETER <IConnectionMonitor>: Parameters that define the operation to create a connection monitor.
+#### CONNECTIONMONITOR <IConnectionMonitor>: Parameters that define the operation to create a connection monitor.
   - `SourceResourceId <String>`: The ID of the resource used as the source by connection monitor.
   - `[AutoStart <Boolean?>]`: Determines if the connection monitor will start automatically once created.
   - `[DestinationAddress <String>]`: Address of the connection monitor destination (IP or domain name).

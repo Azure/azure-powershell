@@ -15,7 +15,7 @@ Gets the next hop from the specified VM.
 ### Get (Default)
 ```
 Get-AzNetworkWatcherNextHop -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-Parameter <INextHopParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -SubscriptionId <String[]> [-NextHop <INextHopParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -36,7 +36,7 @@ Get-AzNetworkWatcherNextHop -InputObject <INetworkIdentity> -DestinationIPAddres
 
 ### GetViaIdentity
 ```
-Get-AzNetworkWatcherNextHop -InputObject <INetworkIdentity> [-Parameter <INextHopParameters>]
+Get-AzNetworkWatcherNextHop -InputObject <INetworkIdentity> [-NextHop <INextHopParameters>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -145,6 +145,23 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NextHop
+Parameters that define the source and destination endpoint.
+To construct, see NOTES section for NEXTHOP properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INextHopParameters
+Parameter Sets: Get, GetViaIdentity
+Aliases: NetworkWatcher
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -157,23 +174,6 @@ Required: False
 Position: Named
 Default value: False
 Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Parameter
-Parameters that define the source and destination endpoint.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INextHopParameters
-Parameter Sets: Get, GetViaIdentity
-Aliases: NetworkWatcher
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -314,7 +314,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### PARAMETER <INextHopParameters>: Parameters that define the source and destination endpoint.
+#### NEXTHOP <INextHopParameters>: Parameters that define the source and destination endpoint.
   - `DestinationIPAddress <String>`: The destination IP address.
   - `SourceIPAddress <String>`: The source IP address.
   - `TargetResourceId <String>`: The resource identifier of the target resource against which the action is to be performed.

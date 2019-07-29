@@ -3,7 +3,7 @@
   - Name `String`
   - ResourceGroupName `String`
   - InputObject `INetworkIdentity`
-  - Parameter `IApplicationGateway`
+  - ApplicationGateway `IApplicationGateway`
   - AuthenticationCertificate `IApplicationGatewayAuthenticationCertificate[]`
   - AutoscaleMaximumCapacity `Int32`
   - AutoscaleMinimumCapacity `Int32`
@@ -95,7 +95,7 @@
   - ResourceGroupName `String`
   - InputObject `INetworkIdentity`
   - PolicyName `String`
-  - Parameter `IWebApplicationFirewallPolicy`
+  - WafPolicy `IWebApplicationFirewallPolicy`
   - CustomRule `IWebApplicationFirewallCustomRule[]`
   - EnabledState `WebApplicationFirewallEnabledState`
   - Etag `String`
@@ -109,7 +109,7 @@
   - Name `String`
   - ResourceGroupName `String`
   - InputObject `INetworkIdentity`
-  - Parameter `IApplicationSecurityGroup`
+  - SecurityGroup `IApplicationSecurityGroup`
   - Id `String`
   - Location `String`
   - Tag `Hashtable`
@@ -122,7 +122,7 @@
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
   - InputObject `INetworkIdentity`
-  - Parameter `IDdosCustomPolicy`
+  - DdosCustomPolicy `IDdosCustomPolicy`
   - Format `IProtocolCustomSettingsFormat[]`
   - Id `String`
   - Location `String`
@@ -133,7 +133,7 @@
   - Name `String`
   - ResourceGroupName `String`
   - InputObject `INetworkIdentity`
-  - Parameter `IDdosProtectionPlan`
+  - DdosProtectionPlan `IDdosProtectionPlan`
   - Location `String`
   - Tag `Hashtable`
 
@@ -155,19 +155,18 @@
   - ApplicationGatewayName `String`
 
 ### AzExpressRouteCircuit [Get, New, Remove, Set] `IExpressRouteCircuit, Boolean`
-  - CircuitName `String`
   - SubscriptionId `String[]`
   - Name `String`
   - ResourceGroupName `String`
   - InputObject `INetworkIdentity`
-  - Parameter `IExpressRouteCircuit`
+  - ExpressRouteCircuit `IExpressRouteCircuit`
   - AllowClassicOperations `SwitchParameter`
   - Authorization `IExpressRouteCircuitAuthorization[]`
   - BandwidthInGbps `Single`
   - CircuitProvisioningState `String`
+  - EnableGlobalReach `SwitchParameter`
   - ExpressRoutePortId `String`
   - GatewayManagerEtag `String`
-  - GlobalReachEnabled `SwitchParameter`
   - Id `String`
   - Location `String`
   - Peering `IExpressRouteCircuitPeering[]`
@@ -182,10 +181,6 @@
   - SkuName `String`
   - SkuTier `ExpressRouteCircuitSkuTier`
   - Tag `Hashtable`
-  - AllowClassicOperation `SwitchParameter`
-  - ServiceProviderPropertyBandwidthInMbps `Int32`
-  - ServiceProviderPropertyPeeringLocation `String`
-  - ServiceProviderPropertyServiceProviderName `String`
 
 ### AzExpressRouteCircuitArpTable [Get] `IExpressRouteCircuitArpTable, IExpressRouteCircuitsArpTableListResult`
   - CircuitName `String`
@@ -200,12 +195,12 @@
   - SubscriptionId `String[]`
   - Name `String`
   - InputObject `INetworkIdentity`
-  - AuthorizationName `String`
-  - AuthorizationParameter `IExpressRouteCircuitAuthorization`
-  - AuthorizationKey `String`
-  - AuthorizationUseStatus `AuthorizationUseStatus`
+  - Authorization `IExpressRouteCircuitAuthorization`
   - Id `String`
+  - Key `String`
   - ProvisioningState `String`
+  - ResourceName `String`
+  - UseStatus `AuthorizationUseStatus`
 
 ### AzExpressRouteCircuitConnection [Get, New, Remove, Set] `IExpressRouteCircuitConnection, Boolean`
   - CircuitName `String`
@@ -308,7 +303,7 @@
   - ResourceGroupName `String`
   - InputObject `INetworkIdentity`
   - CrossConnectionName `String`
-  - Parameter `IExpressRouteCrossConnection`
+  - ExpressRouteCrossConnection `IExpressRouteCrossConnection`
   - BandwidthInMbps `Int32`
   - ExpressRouteCircuitId `String`
   - Id `String`
@@ -397,7 +392,7 @@
   - Name `String`
   - ResourceGroupName `String`
   - InputObject `INetworkIdentity`
-  - Parameter `IExpressRoutePort`
+  - ExpressRoutePort `IExpressRoutePort`
   - BandwidthInGbps `Int32`
   - Encapsulation `ExpressRoutePortsEncapsulation`
   - Id `String`
@@ -428,7 +423,7 @@
   - Name `String`
   - ResourceGroupName `String`
   - InputObject `INetworkIdentity`
-  - Parameter `IAzureFirewall`
+  - Firewall `IAzureFirewall`
   - ApplicationRuleCollection `IAzureFirewallApplicationRuleCollection[]`
   - IPConfiguration `IAzureFirewallIPConfiguration[]`
   - Id `String`
@@ -462,7 +457,7 @@
   - ResourceGroupName `String`
   - InputObject `INetworkIdentity`
   - ExpandResource `String`
-  - Parameter `ILoadBalancer`
+  - LoadBalancer `ILoadBalancer`
   - BackendAddressPool `IBackendAddressPool[]`
   - Etag `String`
   - FrontendIPConfiguration `IFrontendIPConfiguration[]`
@@ -558,7 +553,7 @@
   - SubscriptionId `String[]`
   - Name `String`
   - InputObject `INetworkIdentity`
-  - Parameter `ILocalNetworkGateway`
+  - LocalNetworkGateway `ILocalNetworkGateway`
   - AddressPrefix `String[]`
   - BgpAsn `Int64`
   - BgpPeerWeight `Int32`
@@ -576,7 +571,7 @@
   - ResourceGroupName `String`
   - InputObject `INetworkIdentity`
   - Expand `String`
-  - Parameter `INatGateway`
+  - NatGateway `INatGateway`
   - Etag `String`
   - Id `String`
   - IdleTimeoutInMinutes `Int32`
@@ -596,7 +591,7 @@
   - VmssName `String`
   - InputObject `INetworkIdentity`
   - ExpandResource `String`
-  - Parameter `INetworkInterface`
+  - NetworkInterface `INetworkInterface`
   - AppliedDnsServer `String[]`
   - DefaultSecurityRule `ISecurityRule[]`
   - DnsServer `String[]`
@@ -682,7 +677,7 @@
   - ResourceGroupName `String`
   - InputObject `INetworkIdentity`
   - ExpandResource `String`
-  - Parameter `INetworkProfile`
+  - NetworkProfile `INetworkProfile`
   - ContainerNetworkInterface `IContainerNetworkInterface[]`
   - ContainerNetworkInterfaceConfiguration `IContainerNetworkInterfaceConfiguration[]`
   - Etag `String`
@@ -726,7 +721,7 @@
   - Name `String`
   - ResourceGroupName `String`
   - InputObject `INetworkIdentity`
-  - Parameter `INetworkWatcher`
+  - NetworkWatcher `INetworkWatcher`
   - Etag `String`
   - Id `String`
   - Location `String`
@@ -736,7 +731,7 @@
   - NetworkWatcherName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
-  - Parameter `IAvailableProvidersListParameters`
+  - AvailableProvider `IAvailableProvidersListParameters`
   - City `String`
   - Country `String`
   - Location `String[]`
@@ -748,7 +743,7 @@
   - SubscriptionId `String[]`
   - Name `String`
   - InputObject `INetworkIdentity`
-  - Parameter `IConnectionMonitor`
+  - ConnectionMonitor `IConnectionMonitor`
   - AutoStart `SwitchParameter`
   - DestinationAddress `String`
   - DestinationPort `Int32`
@@ -771,7 +766,7 @@
   - ResourceGroupName `String`
   - SubscriptionId `String`
   - InputObject `INetworkIdentity`
-  - Parameter `IConnectivityParameters`
+  - Connectivity `IConnectivityParameters`
   - DestinationAddress `String`
   - DestinationPort `Int32`
   - DestinationResourceId `String`
@@ -786,7 +781,7 @@
   - NetworkWatcherName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String`
-  - Parameter `IFlowLogInformation`
+  - FlowLogConfiguration `IFlowLogInformation`
   - EnableFlowLog `SwitchParameter`
   - EnableRetention `SwitchParameter`
   - EnableTrafficAnalytics `SwitchParameter`
@@ -805,7 +800,7 @@
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
   - InputObject `INetworkIdentity`
-  - Parameter `IFlowLogStatusParameters`
+  - FlowLogStatus `IFlowLogStatusParameters`
   - TargetResourceId `String`
 
 ### AzNetworkWatcherIPFlow [Test] `IVerificationIPFlowResult`
@@ -813,7 +808,7 @@
   - ResourceGroupName `String`
   - SubscriptionId `String`
   - InputObject `INetworkIdentity`
-  - Parameter `IVerificationIPFlowParameters`
+  - IPFlow `IVerificationIPFlowParameters`
   - Direction `Direction`
   - LocalIPAddress `String`
   - LocalPort `String`
@@ -828,7 +823,7 @@
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
   - InputObject `INetworkIdentity`
-  - Parameter `INetworkConfigurationDiagnosticParameters`
+  - ConfigurationDiagnostic `INetworkConfigurationDiagnosticParameters`
   - Profile `INetworkConfigurationDiagnosticProfile[]`
   - TargetResourceId `String`
   - VerbosityLevel `VerbosityLevel`
@@ -838,7 +833,7 @@
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
   - InputObject `INetworkIdentity`
-  - Parameter `INextHopParameters`
+  - NextHop `INextHopParameters`
   - DestinationIPAddress `String`
   - SourceIPAddress `String`
   - TargetNicResourceId `String`
@@ -850,7 +845,7 @@
   - SubscriptionId `String[]`
   - Name `String`
   - InputObject `INetworkIdentity`
-  - Parameter `IPacketCapture`
+  - PacketCapture `IPacketCapture`
   - BytesToCapturePerPacket `Int32`
   - Filter `IPacketCaptureFilter[]`
   - StorageAccountId `String`
@@ -872,7 +867,7 @@
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
   - InputObject `INetworkIdentity`
-  - Parameter `IAzureReachabilityReportParameters`
+  - ReachabilityReport `IAzureReachabilityReportParameters`
   - EndTime `DateTime`
   - Location `String[]`
   - Provider `String[]`
@@ -886,7 +881,7 @@
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
   - InputObject `INetworkIdentity`
-  - Parameter `ITopologyParameters`
+  - Topology `ITopologyParameters`
   - TargetResourceGroupName `String`
   - TargetSubnetId `String`
   - TargetVnetId `String`
@@ -896,7 +891,7 @@
   - ResourceGroupName `String`
   - SubscriptionId `String`
   - InputObject `INetworkIdentity`
-  - Parameter `ITroubleshootingParameters`
+  - Troubleshooting `ITroubleshootingParameters`
   - StorageId `String`
   - StoragePath `String`
   - TargetResourceId `String`
@@ -906,7 +901,7 @@
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
   - InputObject `INetworkIdentity`
-  - Parameter `IQueryTroubleshootingParameters`
+  - Troubleshooting `IQueryTroubleshootingParameters`
   - TargetResourceId `String`
 
 ### AzNetworkWatcherVMSecurityRule [Get] `ISecurityGroupNetworkInterface`
@@ -914,7 +909,7 @@
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
   - InputObject `INetworkIdentity`
-  - Parameter `ISecurityGroupViewParameters`
+  - SecurityGroupView `ISecurityGroupViewParameters`
   - TargetResourceId `String`
 
 ### AzNsg [Get, New, Remove, Set] `INetworkSecurityGroup, Boolean`
@@ -923,7 +918,7 @@
   - ResourceGroupName `String`
   - InputObject `INetworkIdentity`
   - ExpandResource `String`
-  - Parameter `INetworkSecurityGroup`
+  - Nsg `INetworkSecurityGroup`
   - DefaultSecurityRule `ISecurityRule[]`
   - Etag `String`
   - Id `String`
@@ -955,7 +950,7 @@
   - ResourceGroupName `String`
   - SubscriptionId `String`
   - InputObject `INetworkIdentity`
-  - Parameter `IP2SVpnProfileParameters`
+  - VpnProfile `IP2SVpnProfileParameters`
   - AuthenticationMethod `AuthenticationMethod`
 
 ### AzP2SVpnServerConfiguration [Get, New, Remove, Set] `IP2SVpnServerConfiguration, Boolean`
@@ -996,7 +991,7 @@
   - VmssName `String`
   - InputObject `INetworkIdentity`
   - ExpandResource `String`
-  - Parameter `IPublicIPAddress`
+  - PublicIPAddress `IPublicIPAddress`
   - AllocationMethod `IPAllocationMethod`
   - DdosCustomPolicyId `String`
   - DdosProtectionCoverage `DdosSettingsProtectionCoverage`
@@ -1033,7 +1028,7 @@
   - ResourceGroupName `String`
   - InputObject `INetworkIdentity`
   - Expand `String`
-  - Parameter `IPublicIPPrefix`
+  - PublicIPPrefix `IPublicIPPrefix`
   - Etag `String`
   - IPPrefix `String`
   - IPTag `IIPTag[]`
@@ -1080,7 +1075,7 @@
   - ResourceGroupName `String`
   - InputObject `INetworkIdentity`
   - ExpandResource `String`
-  - Parameter `IRouteTable`
+  - RouteTable `IRouteTable`
   - DisableBgpRoutePropagation `SwitchParameter`
   - Etag `String`
   - Id `String`
@@ -1110,7 +1105,7 @@
   - ResourceGroupName `String`
   - InputObject `INetworkIdentity`
   - Expand `String`
-  - Parameter `IServiceEndpointPolicy`
+  - ServiceEndpointPolicy `IServiceEndpointPolicy`
   - Etag `String`
   - Id `String`
   - Location `String`
@@ -1183,7 +1178,7 @@
   - ResourceGroupName `String`
   - InputObject `INetworkIdentity`
   - ExpandResource `String`
-  - Parameter `IVirtualNetwork`
+  - Vnet `IVirtualNetwork`
   - AddressPrefix `String[]`
   - DdosProtectionPlanId `String`
   - DnsServer `String[]`
@@ -1215,7 +1210,7 @@
   - Name `String`
   - InputObject `INetworkIdentity`
   - GatewayVip `String`
-  - Parameter `IVirtualNetworkGateway`
+  - VnetGateway `IVirtualNetworkGateway`
   - BgpAsn `Int64`
   - BgpPeerWeight `Int32`
   - BgpPeeringAddress `String`
@@ -1262,7 +1257,7 @@
   - Name `String`
   - VnetGatewayName `String`
   - InputObject `INetworkIdentity`
-  - Parameter `IVirtualNetworkGatewayConnection`
+  - VnetGatewayConnection `IVirtualNetworkGatewayConnection`
   - AuthorizationKey `String`
   - BgpSettingAsn `Int64`
   - BgpSettingBgpPeeringAddress `String`
@@ -1296,7 +1291,7 @@
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
   - InputObject `INetworkIdentity`
-  - Parameter `IConnectionResetSharedKey`
+  - ConnectionSharedKey `IConnectionResetSharedKey`
   - KeyLength `Int32`
   - Id `String`
   - Value `String`
@@ -1334,7 +1329,7 @@
   - SubscriptionId `String`
   - VnetGatewayName `String`
   - InputObject `INetworkIdentity`
-  - Parameter `IVpnClientParameters`
+  - VpnClientPackage `IVpnClientParameters`
   - AuthenticationMethod `AuthenticationMethod`
   - ClientRootCertificate `String[]`
   - ProcessorArchitecture `ProcessorArchitecture`
@@ -1351,7 +1346,7 @@
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
   - InputObject `INetworkIdentity`
-  - Parameter `IVpnDeviceScriptParameters`
+  - VpnDeviceConfigurationScript `IVpnDeviceScriptParameters`
   - DeviceFamily `String`
   - FirmwareVersion `String`
   - Vendor `String`
@@ -1361,7 +1356,7 @@
   - SubscriptionId `String`
   - VnetGatewayName `String`
   - InputObject `INetworkIdentity`
-  - Parameter `IVpnClientParameters`
+  - VpnProfile `IVpnClientParameters`
   - AuthenticationMethod `AuthenticationMethod`
   - ClientRootCertificate `String[]`
   - ProcessorArchitecture `ProcessorArchitecture`
@@ -1451,7 +1446,7 @@
   - Name `String`
   - ResourceGroupName `String`
   - InputObject `INetworkIdentity`
-  - Parameter `IVirtualNetworkTap`
+  - VnetTapProperties `IVirtualNetworkTap`
   - ApplicationGatewayBackendAddressPool `IApplicationGatewayBackendAddressPool[]`
   - ApplicationSecurityGroup `IApplicationSecurityGroup[]`
   - DestinationLoadBalancerFrontEndIPConfigurationEtag `String`

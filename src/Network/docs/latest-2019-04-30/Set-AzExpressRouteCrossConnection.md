@@ -15,8 +15,8 @@ Update the specified ExpressRouteCrossConnection.
 ### Update (Default)
 ```
 Set-AzExpressRouteCrossConnection -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <IExpressRouteCrossConnection>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-ExpressRouteCrossConnection <IExpressRouteCrossConnection>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
@@ -117,6 +117,23 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -ExpressRouteCrossConnection
+ExpressRouteCrossConnection resource
+To construct, see NOTES section for EXPRESSROUTECROSSCONNECTION properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRouteCrossConnection
+Parameter Sets: Update
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Id
 Resource ID.
 
@@ -177,23 +194,6 @@ Required: False
 Position: Named
 Default value: False
 Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Parameter
-ExpressRouteCrossConnection resource
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRouteCrossConnection
-Parameter Sets: Update
-Aliases: ExpressRouteCrossConnection
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -363,7 +363,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### PARAMETER <IExpressRouteCrossConnection>: ExpressRouteCrossConnection resource
+#### EXPRESSROUTECROSSCONNECTION <IExpressRouteCrossConnection>: ExpressRouteCrossConnection resource
   - `[Id <String>]`: Resource ID.
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.

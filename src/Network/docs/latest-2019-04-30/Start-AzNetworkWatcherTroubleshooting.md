@@ -15,8 +15,8 @@ Initiate troubleshooting on a specified resource
 ### Get (Default)
 ```
 Start-AzNetworkWatcherTroubleshooting -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-Parameter <ITroubleshootingParameters>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -SubscriptionId <String> [-Troubleshooting <ITroubleshootingParameters>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GetExpanded
@@ -36,7 +36,7 @@ Start-AzNetworkWatcherTroubleshooting -InputObject <INetworkIdentity> -StorageId
 ### GetViaIdentity
 ```
 Start-AzNetworkWatcherTroubleshooting -InputObject <INetworkIdentity>
- [-Parameter <ITroubleshootingParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-Troubleshooting <ITroubleshootingParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -145,23 +145,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Parameter
-Parameters that define the resource to troubleshoot.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ITroubleshootingParameters
-Parameter Sets: Get, GetViaIdentity
-Aliases: NetworkWatcher
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 
@@ -243,6 +226,23 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Troubleshooting
+Parameters that define the resource to troubleshoot.
+To construct, see NOTES section for TROUBLESHOOTING properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ITroubleshootingParameters
+Parameter Sets: Get, GetViaIdentity
+Aliases: NetworkWatcher
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -298,7 +298,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### PARAMETER <ITroubleshootingParameters>: Parameters that define the resource to troubleshoot.
+#### TROUBLESHOOTING <ITroubleshootingParameters>: Parameters that define the resource to troubleshoot.
   - `StorageId <String>`: The ID for the storage account to save the troubleshoot result.
   - `StoragePath <String>`: The path to the blob to save the troubleshoot result in.
   - `TargetResourceId <String>`: The target resource to troubleshoot.

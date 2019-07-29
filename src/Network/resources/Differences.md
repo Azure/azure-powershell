@@ -1,8 +1,5 @@
 ## Incorrect Cmdlets
 
-- New-AzApplicationGateway
-    - BackendHttpSettingsCollection
-    - CustomErrorConfiguration
 
 ## Correct Cmdlets
 
@@ -81,6 +78,7 @@
 - Get-AzVpnConnection
 - Get-AzVpnGateway
 - Get-AzVpnSite
+- New-AzApplicationGateway
 - New-AzApplicationSecurityGroup
 - New-AzDdosProtectionPlan
 - New-AzExpressRouteCircuit

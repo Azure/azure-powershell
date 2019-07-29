@@ -15,8 +15,8 @@ The Put VirtualNetworkGatewayConnectionSharedKey operation sets the virtual netw
 ### Set (Default)
 ```
 Set-AzVnetGatewayConnectionSharedKey -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <IConnectionSharedKey>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-ConnectionSharedKey <IConnectionSharedKey>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### SetExpanded
@@ -63,6 +63,23 @@ Required: False
 Position: Named
 Default value: False
 Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ConnectionSharedKey
+Response for GetConnectionSharedKey API service call
+To construct, see NOTES section for CONNECTIONSHAREDKEY properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IConnectionSharedKey
+Parameter Sets: Set
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -127,23 +144,6 @@ Required: False
 Position: Named
 Default value: False
 Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Parameter
-Response for GetConnectionSharedKey API service call
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IConnectionSharedKey
-Parameter Sets: Set
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -250,7 +250,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### PARAMETER <IConnectionSharedKey>: Response for GetConnectionSharedKey API service call
+#### CONNECTIONSHAREDKEY <IConnectionSharedKey>: Response for GetConnectionSharedKey API service call
   - `Value <String>`: The virtual network connection shared key value.
   - `[Id <String>]`: Resource ID.
 

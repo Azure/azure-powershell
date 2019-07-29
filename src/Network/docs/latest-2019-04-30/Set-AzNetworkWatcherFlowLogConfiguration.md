@@ -15,8 +15,8 @@ Configures flow log  and traffic analytics (optional) on a specified resource.
 ### Set (Default)
 ```
 Set-AzNetworkWatcherFlowLogConfiguration -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-Parameter <IFlowLogInformation>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -SubscriptionId <String> [-FlowLogConfiguration <IFlowLogInformation>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### SetExpanded
@@ -134,6 +134,23 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -FlowLogConfiguration
+Information on the configuration of flow log and traffic analytics (optional) .
+To construct, see NOTES section for FLOWLOGCONFIGURATION properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IFlowLogInformation
+Parameter Sets: Set
+Aliases: NetworkWatcher
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -FormatType
 The file type of flow log.
 
@@ -194,23 +211,6 @@ Required: False
 Position: Named
 Default value: False
 Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Parameter
-Information on the configuration of flow log and traffic analytics (optional) .
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IFlowLogInformation
-Parameter Sets: Set
-Aliases: NetworkWatcher
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -413,7 +413,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### PARAMETER <IFlowLogInformation>: Information on the configuration of flow log and traffic analytics (optional) .
+#### FLOWLOGCONFIGURATION <IFlowLogInformation>: Information on the configuration of flow log and traffic analytics (optional) .
   - `Enabled <Boolean>`: Flag to enable/disable flow logging.
   - `NetworkWatcherFlowAnalyticConfigurationEnabled <Boolean>`: Flag to enable/disable traffic analytics.
   - `NetworkWatcherFlowAnalyticConfigurationWorkspaceId <String>`: The resource guid of the attached workspace

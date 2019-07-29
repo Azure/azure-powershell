@@ -567,14 +567,20 @@ directive:
       parameter-name: Name
       alias: PolicyName
   - where:
-      verb: ^Get$|^New$|^Remove$
+      verb: ^Get$|^New$|^Remove$|^Set$
       subject: ExpressRouteCircuit
       parameter-name: CircuitName
     set:
       parameter-name: Name
       alias: CircuitName
   - where:
-      verb: ^Get$|^Remove$
+      verb: ^New$|^Set$
+      subject: ExpressRouteCircuitAuthorization
+      parameter-name: Name
+    set:
+      parameter-name: ResourceName
+  - where:
+      verb: ^Get$|^New$|^Remove$|^Set$
       subject: ExpressRouteCircuitAuthorization
       parameter-name: AuthorizationName
     set:
@@ -819,12 +825,12 @@ directive:
       alias:
         - ExpressRouteCrossConnection
         - PeerAddressType
-  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-      verb: Set
-      subject: ExpressRouteCrossConnection
-      parameter-name: Parameter
-    set:
-      alias: ExpressRouteCrossConnection
+  # - where: # REMOVE BEFORE RELEASE: In-memory object parameter
+  #     verb: Set
+  #     subject: ExpressRouteCrossConnection
+  #     parameter-name: Parameter
+  #   set:
+  #     alias: ExpressRouteCrossConnection
   - where:
       verb: Set
       subject: ExpressRouteCrossConnection
@@ -856,12 +862,12 @@ directive:
       parameter-name: ResourceGroupName
     set:
       alias: ServiceEndpointPolicy
-  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-      verb: Set
-      subject: ServiceEndpointPolicy
-      parameter-name: ResourceGroupName
-    set:
-      alias: ServiceEndpointPolicy
+  # - where: # REMOVE BEFORE RELEASE: In-memory object parameter
+  #     verb: Set
+  #     subject: ServiceEndpointPolicy
+  #     parameter-name: ResourceGroupName
+  #   set:
+  #     alias: ServiceEndpointPolicy
   - where:
       verb: Get
       subject: VnetGatewayVpnDeviceConfigurationScript
@@ -977,17 +983,17 @@ directive:
     set:
       alias: VirtualNetworkGateway
   - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-      verb: ^Set$|^Start$|^Stop$
+      verb: ^Start$|^Stop$
       subject: ApplicationGateway
       parameter-name: ResourceGroupName
     set:
       alias: ApplicationGateway
-  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-      verb: Set
-      subject: ExpressRouteCircuit
-      parameter-name: ResourceGroupName
-    set:
-      alias: ExpressRouteCircuit
+  # - where: # REMOVE BEFORE RELEASE: In-memory object parameter
+  #     verb: Set
+  #     subject: ExpressRouteCircuit
+  #     parameter-name: ResourceGroupName
+  #   set:
+  #     alias: ExpressRouteCircuit
   - where: # REMOVE BEFORE RELEASE: InputObject removed for all Set cmdlets
       verb: Set
       subject: ^ExpressRouteConnection$|^ExpressRouteGateway$|^NetworkWatcherConnectionMonitor$|^VnetGatewayVpnClientIPsecParameter$
@@ -1008,30 +1014,30 @@ directive:
     set:
       parameter-name: MaximumScaleUnits
       alias: MaxScaleUnits
-  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-      verb: Set
-      subject: ExpressRoutePort
-      parameter-name: ResourceGroupName
-    set:
-      alias: ExpressRoutePort
+  # - where: # REMOVE BEFORE RELEASE: In-memory object parameter
+  #     verb: Set
+  #     subject: ExpressRoutePort
+  #     parameter-name: ResourceGroupName
+  #   set:
+  #     alias: ExpressRoutePort
   - where: # REMOVE BEFORE RELEASE: In-memory object parameter
       verb: Set
       subject: Firewall
       parameter-name: ResourceGroupName
     set:
       alias: AzureFirewall
-  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-      verb: Set
-      subject: LoadBalancer
-      parameter-name: ResourceGroupName
-    set:
-      alias: LoadBalancer
-  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-      verb: Set
-      subject: NetworkInterface
-      parameter-name: ResourceGroupName
-    set:
-      alias: NetworkInterface
+  # - where: # REMOVE BEFORE RELEASE: In-memory object parameter
+  #     verb: Set
+  #     subject: LoadBalancer
+  #     parameter-name: ResourceGroupName
+  #   set:
+  #     alias: LoadBalancer
+  # - where: # REMOVE BEFORE RELEASE: In-memory object parameter
+  #     verb: Set
+  #     subject: NetworkInterface
+  #     parameter-name: ResourceGroupName
+  #   set:
+  #     alias: NetworkInterface
   - where: # REMOVE BEFORE RELEASE: In-memory object parameter
       verb: Set
       subject: NetworkInterfaceTapConfiguration
@@ -1043,9 +1049,7 @@ directive:
       subject: NetworkProfile
       parameter-name: ResourceGroupName
     set:
-      alias:
-        - NetworkProfile
-        - AsJob
+      alias: AsJob
   - where: # REMOVE BEFORE RELEASE: In-memory object parameter
       verb: Set
       subject: NetworkSecurityGroup
@@ -1058,30 +1062,30 @@ directive:
       parameter-name: PublicIPAddress
     set:
       parameter-name: PublicIPAddressParameter
-  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-      verb: Set
-      subject: PublicIPAddress
-      parameter-name: ResourceGroupName
-    set:
-      alias: PublicIpAddress
-  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-      verb: Set
-      subject: PublicIPPrefix
-      parameter-name: ResourceGroupName
-    set:
-      alias: PublicIpPrefix
+  # - where: # REMOVE BEFORE RELEASE: In-memory object parameter
+  #     verb: Set
+  #     subject: PublicIPAddress
+  #     parameter-name: ResourceGroupName
+  #   set:
+  #     alias: PublicIpAddress
+  # - where: # REMOVE BEFORE RELEASE: In-memory object parameter
+  #     verb: Set
+  #     subject: PublicIPPrefix
+  #     parameter-name: ResourceGroupName
+  #   set:
+  #     alias: PublicIpPrefix
   - where: # REMOVE BEFORE RELEASE: In-memory object parameter
       verb: Set
       subject: RouteFilter
       parameter-name: ResourceGroupName
     set:
       alias: RouteFilter
-  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-      verb: Set
-      subject: RouteTable
-      parameter-name: ResourceGroupName
-    set:
-      alias: RouteTable
+  # - where: # REMOVE BEFORE RELEASE: In-memory object parameter
+  #     verb: Set
+  #     subject: RouteTable
+  #     parameter-name: ResourceGroupName
+  #   set:
+  #     alias: RouteTable
   - where:
       verb: Set
       subject: VnetGatewayVpnClientIPsecParameter
@@ -1180,21 +1184,21 @@ directive:
     set:
       parameter-name: UserAssignedIdentity
   - where:
-      verb: New
+      verb: ^New$|^Set$
       subject: ExpressRouteCircuit
       parameter-name: ServiceProviderPropertyBandwidthInMbps
     set:
       parameter-name: ServiceProviderBandwidthInMbps
       alias: BandwidthInMbps
   - where:
-      verb: New
+      verb: ^New$|^Set$
       subject: ExpressRouteCircuit
       parameter-name: ServiceProviderPropertyPeeringLocation
     set:
       parameter-name: ServiceProviderPeeringLocation
       alias: PeeringLocation
   - where:
-      verb: New
+      verb: ^New$|^Set$
       subject: ExpressRouteCircuit
       parameter-name: ServiceProviderPropertyServiceProviderName
     set:
@@ -1206,7 +1210,7 @@ directive:
     set:
       alias: ExpressRoutePort
   - where:
-      verb: New
+      verb: ^New$|^Set$
       subject: ExpressRouteCircuit
       parameter-name: AllowClassicOperation
     set:
@@ -1417,12 +1421,12 @@ directive:
       parameter-name: VnetConnection
     set:
       alias: HubVnetConnection
-  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-      verb: Set
-      subject: LocalNetworkGateway
-      parameter-name: ResourceGroupName
-    set:
-      alias: LocalNetworkGateway
+  # - where: # REMOVE BEFORE RELEASE: In-memory object parameter
+  #     verb: Set
+  #     subject: LocalNetworkGateway
+  #     parameter-name: ResourceGroupName
+  #   set:
+  #     alias: LocalNetworkGateway
   - where:
       verb: New
       subject: VnetGateway
@@ -1688,217 +1692,217 @@ directive:
       subject: ApplicationGateway
       parameter-name: Parameter
     set:
-      subject: ApplicationGateway
+      parameter-name: ApplicationGateway
   - where:
       subject: ApplicationGatewayWafPolicy
       parameter-name: Parameter
     set:
-      subject: WafPolicy
+      parameter-name: WafPolicy
   - where:
       subject: ApplicationSecurityGroup
       parameter-name: Parameter
     set:
-      subject: SecurityGroup
+      parameter-name: SecurityGroup
   - where:
       subject: DdosCustomPolicy
       parameter-name: Parameter
     set:
-      subject: DdosCustomPolicy
+      parameter-name: DdosCustomPolicy
   - where:
       subject: DdosProtectionPlan
       parameter-name: Parameter
     set:
-      subject: DdosProtectionPlan
+      parameter-name: DdosProtectionPlan
   - where:
       subject: ExpressRouteCircuit
       parameter-name: Parameter
     set:
-      subject: ExpressRouteCircuit
+      parameter-name: ExpressRouteCircuit
   - where:
       subject: ExpressRouteCrossConnection
       parameter-name: Parameter
     set:
-      subject: ExpressRouteCrossConnection
+      parameter-name: ExpressRouteCrossConnection
   - where:
       subject: ExpressRoutePort
       parameter-name: Parameter
     set:
-      subject: ExpressRoutePort
+      parameter-name: ExpressRoutePort
   - where:
       subject: Firewall
       parameter-name: Parameter
     set:
-      subject: Firewall
+      parameter-name: Firewall
   - where:
       subject: LoadBalancer
       parameter-name: Parameter
     set:
-      subject: LoadBalancer
+      parameter-name: LoadBalancer
   - where:
       subject: LocalNetworkGateway
       parameter-name: Parameter
     set:
-      subject: LocalNetworkGateway
+      parameter-name: LocalNetworkGateway
   - where:
       subject: NatGateway
       parameter-name: Parameter
     set:
-      subject: NatGateway
+      parameter-name: NatGateway
   - where:
       subject: NetworkInterface
       parameter-name: Parameter
     set:
-      subject: NetworkInterface
+      parameter-name: NetworkInterface
   - where:
       subject: NetworkProfile
       parameter-name: Parameter
     set:
-      subject: NetworkProfile
+      parameter-name: NetworkProfile
   - where:
       subject: NetworkWatcher
       parameter-name: Parameter
     set:
-      subject: NetworkWatcher
+      parameter-name: NetworkWatcher
   - where:
       subject: NetworkWatcherAvailableProvider
       parameter-name: Parameter
     set:
-      subject: AvailableProvider
+      parameter-name: AvailableProvider
   - where:
       subject: NetworkWatcherConnectionMonitor
       parameter-name: Parameter
     set:
-      subject: ConnectionMonitor
+      parameter-name: ConnectionMonitor
   - where:
       subject: NetworkWatcherConnectivity
       parameter-name: Parameter
     set:
-      subject: Connectivity
+      parameter-name: Connectivity
   - where:
       subject: NetworkWatcherFlowLogConfiguration
       parameter-name: Parameter
     set:
-      subject: FlowLogConfiguration
+      parameter-name: FlowLogConfiguration
   - where:
       subject: NetworkWatcherFlowLogStatus
       parameter-name: Parameter
     set:
-      subject: FlowLogStatus
+      parameter-name: FlowLogStatus
   - where:
       subject: NetworkWatcherIPFlow
       parameter-name: Parameter
     set:
-      subject: IPFlow
+      parameter-name: IPFlow
   - where:
       subject: NetworkWatcherNetworkConfigurationDiagnostic
       parameter-name: Parameter
     set:
-      subject: ConfigurationDiagnostic
+      parameter-name: ConfigurationDiagnostic
   - where:
       subject: NetworkWatcherNextHop
       parameter-name: Parameter
     set:
-      subject: NextHop
+      parameter-name: NextHop
   - where:
       subject: NetworkWatcherPacketCapture
       parameter-name: Parameter
     set:
-      subject: PacketCapture
+      parameter-name: PacketCapture
   - where:
       subject: NetworkWatcherReachabilityReport
       parameter-name: Parameter
     set:
-      subject: ReachabilityReport
+      parameter-name: ReachabilityReport
   - where:
       subject: NetworkWatcherTopology
       parameter-name: Parameter
     set:
-      subject: Topology
+      parameter-name: Topology
   - where:
       subject: NetworkWatcherTroubleshooting
       parameter-name: Parameter
     set:
-      subject: Troubleshooting
+      parameter-name: Troubleshooting
   - where:
       subject: NetworkWatcherTroubleshootingResult
       parameter-name: Parameter
     set:
-      subject: Troubleshooting
+      parameter-name: Troubleshooting
   - where:
       subject: NetworkWatcherVMSecurityRule
       parameter-name: Parameter
     set:
-      subject: SecurityGroupView
+      parameter-name: SecurityGroupView
   - where:
       subject: Nsg
       parameter-name: Parameter
     set:
-      subject: Nsg
+      parameter-name: Nsg
   - where:
       subject: P2SVpnGatewayVpnProfile
       parameter-name: Parameter
     set:
-      subject: VpnProfile
+      parameter-name: VpnProfile
   - where:
       subject: PublicIPAddress
       parameter-name: Parameter
     set:
-      subject: PublicIPAddress
+      parameter-name: PublicIPAddress
   - where:
       subject: PublicIPPrefix
       parameter-name: Parameter
     set:
-      subject: PublicIPPrefix
+      parameter-name: PublicIPPrefix
   - where:
       subject: RouteTable
       parameter-name: Parameter
     set:
-      subject: RouteTable
+      parameter-name: RouteTable
   - where:
       subject: ServiceEndpointPolicy
       parameter-name: Parameter
     set:
-      subject: ServiceEndpointPolicy
+      parameter-name: ServiceEndpointPolicy
   - where:
       subject: Vnet
       parameter-name: Parameter
     set:
-      subject: Vnet
+      parameter-name: Vnet
   - where:
       subject: VnetGateway
       parameter-name: Parameter
     set:
-      subject: VnetGateway
+      parameter-name: VnetGateway
   - where:
       subject: VnetGatewayConnection
       parameter-name: Parameter
     set:
-      subject: VnetGatewayConnection
+      parameter-name: VnetGatewayConnection
   - where:
       subject: VnetGatewayConnectionSharedKey
       parameter-name: Parameter
     set:
-      subject: ConnectionSharedKey
+      parameter-name: ConnectionSharedKey
   - where:
       subject: VnetGatewayVpnClientPackage
       parameter-name: Parameter
     set:
-      subject: VpnClientPackage
+      parameter-name: VpnClientPackage
   - where:
       subject: VnetGatewayVpnDeviceConfigurationScript
       parameter-name: Parameter
     set:
-      subject: VpnDeviceConfigurationScript
+      parameter-name: VpnDeviceConfigurationScript
   - where:
       subject: VnetGatewayVpnProfile
       parameter-name: Parameter
     set:
-      subject: VpnProfile
+      parameter-name: VpnProfile
   - where:
       subject: VnetTap
       parameter-name: Parameter
     set:
-      subject: VnetTapProperties
+      parameter-name: VnetTapProperties
 
 # ApplicationGateway Parameters
   - where:
@@ -1990,4 +1994,24 @@ directive:
       parameter-name: ProtocolCustomSetting
     set:
       parameter-name: Format
+  - where:
+      subject: ExpressRouteCircuit
+      parameter-name: GlobalReachEnabled
+    set:
+      parameter-name: EnableGlobalReach
+  - where:
+      subject: ExpressRouteCircuitAuthorization
+      parameter-name: AuthorizationParameter
+    set:
+      parameter-name: Authorization
+  - where:
+      subject: ExpressRouteCircuitAuthorization
+      parameter-name: AuthorizationKey
+    set:
+      parameter-name: Key
+  - where:
+      subject: ExpressRouteCircuitAuthorization
+      parameter-name: AuthorizationUseStatus
+    set:
+      parameter-name: UseStatus
 ```

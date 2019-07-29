@@ -15,7 +15,7 @@ Verifies the possibility of establishing a direct TCP connection from a virtual 
 ### Check (Default)
 ```
 Test-AzNetworkWatcherConnectivity -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-Parameter <IConnectivityParameters>] [-DefaultProfile <PSObject>] [-AsJob]
+ -SubscriptionId <String> [-Connectivity <IConnectivityParameters>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -40,7 +40,7 @@ Test-AzNetworkWatcherConnectivity -InputObject <INetworkIdentity> -SourceResourc
 
 ### CheckViaIdentity
 ```
-Test-AzNetworkWatcherConnectivity -InputObject <INetworkIdentity> [-Parameter <IConnectivityParameters>]
+Test-AzNetworkWatcherConnectivity -InputObject <INetworkIdentity> [-Connectivity <IConnectivityParameters>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -81,6 +81,23 @@ Required: False
 Position: Named
 Default value: False
 Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Connectivity
+Parameters that determine how the connectivity check will be performed.
+To construct, see NOTES section for CONNECTIVITY properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IConnectivityParameters
+Parameter Sets: Check, CheckViaIdentity
+Aliases: NetworkWatcher
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -246,23 +263,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Parameter
-Parameters that determine how the connectivity check will be performed.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IConnectivityParameters
-Parameter Sets: Check, CheckViaIdentity
-Aliases: NetworkWatcher
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Protocol
 Network protocol.
 
@@ -397,11 +397,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### HTTPCONFIGURATIONHEADER <IHttpHeader[]>: List of HTTP headers.
-  - `[Name <String>]`: The name in HTTP header.
-  - `[Value <String>]`: The value in HTTP header.
-
-#### PARAMETER <IConnectivityParameters>: Parameters that determine how the connectivity check will be performed.
+#### CONNECTIVITY <IConnectivityParameters>: Parameters that determine how the connectivity check will be performed.
   - `SourceResourceId <String>`: The ID of the resource from which a connectivity check will be initiated.
   - `[DestinationAddress <String>]`: The IP address or URI the resource to which a connection attempt will be made.
   - `[DestinationPort <Int32?>]`: Port on which check connectivity will be performed.
@@ -413,6 +409,10 @@ To create the parameters described below, construct a hash table containing the 
   - `[HttpConfigurationValidStatusCode <Int32[]>]`: Valid status codes.
   - `[Protocol <Protocol?>]`: Network protocol.
   - `[SourcePort <Int32?>]`: The source port from which a connectivity check will be performed.
+
+#### HTTPCONFIGURATIONHEADER <IHttpHeader[]>: List of HTTP headers.
+  - `[Name <String>]`: The name in HTTP header.
+  - `[Value <String>]`: The value in HTTP header.
 
 ## RELATED LINKS
 

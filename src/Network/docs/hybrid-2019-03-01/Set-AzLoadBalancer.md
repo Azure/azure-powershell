@@ -15,7 +15,7 @@ Creates or updates a load balancer.
 ### Update1 (Default)
 ```
 Set-AzLoadBalancer -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <ILoadBalancer>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-LoadBalancer <ILoadBalancer>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -196,6 +196,23 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -LoadBalancer
+LoadBalancer resource
+To construct, see NOTES section for LOADBALANCER properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ILoadBalancer
+Parameter Sets: Update1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -LoadBalancingRule
 Object collection representing the load balancing rules Gets the provisioning 
 To construct, see NOTES section for LOADBALANCINGRULE properties and create a hash table.
@@ -278,23 +295,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Parameter
-LoadBalancer resource
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ILoadBalancer
-Parameter Sets: Update1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Probe
 Collection of probe objects used in the load balancer
 To construct, see NOTES section for PROBE properties and create a hash table.
@@ -335,7 +335,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: LoadBalancer
+Aliases:
 
 Required: True
 Position: Named
@@ -708,33 +708,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[PublicIPAddress <IPublicIPAddress>]`: Public IP address bound to the IP configuration.
   - `[Subnet <ISubnet>]`: Subnet bound to the IP configuration.
 
-#### LOADBALANCINGRULE <ILoadBalancingRule[]>: Object collection representing the load balancing rules Gets the provisioning 
-  - `FrontendPort <Int32>`: The port for the external endpoint. Port numbers for each rule must be unique within the Load Balancer. Acceptable values are between 0 and 65534. Note that value 0 enables "Any Port"
-  - `Protocol <TransportProtocol>`: The transport protocol for the endpoint. Possible values are 'Udp' or 'Tcp' or 'All'.
-  - `[Id <String>]`: Resource ID.
-  - `[BackendAddressPoolId <String>]`: Resource ID.
-  - `[BackendPort <Int32?>]`: The port used for internal connections on the endpoint. Acceptable values are between 0 and 65535. Note that value 0 enables "Any Port"
-  - `[DisableOutboundSnat <Boolean?>]`: Configures SNAT for the VMs in the backend pool to use the publicIP address specified in the frontend of the load balancing rule.
-  - `[EnableFloatingIP <Boolean?>]`: Configures a virtual machine's endpoint for the floating IP capability required to configure a SQL AlwaysOn Availability Group. This setting is required when using the SQL AlwaysOn Availability Groups in SQL server. This setting can't be changed after you create the endpoint.
-  - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-  - `[FrontendIPConfigurationId <String>]`: Resource ID.
-  - `[IdleTimeoutInMinute <Int32?>]`: The timeout for the TCP idle connection. The value can be set between 4 and 30 minutes. The default value is 4 minutes. This element is only used when the protocol is set to TCP.
-  - `[LoadDistribution <LoadDistribution?>]`: The load distribution policy for this rule. Possible values are 'Default', 'SourceIP', and 'SourceIPProtocol'.
-  - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  - `[ProbeId <String>]`: Resource ID.
-  - `[ProvisioningState <String>]`: Gets the provisioning state of the PublicIP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-
-#### OUTBOUNDNATRULE <IOutboundNatRule[]>: The outbound NAT rules.
-  - `[Id <String>]`: Resource ID.
-  - `[AllocatedOutboundPort <Int32?>]`: The number of outbound ports to be used for NAT.
-  - `[BackendAddressPoolId <String>]`: Resource ID.
-  - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-  - `[FrontendIPConfiguration <ISubResource[]>]`: The Frontend IP addresses of the load balancer.
-    - `[Id <String>]`: Resource ID.
-  - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  - `[ProvisioningState <String>]`: Gets the provisioning state of the PublicIP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-
-#### PARAMETER <ILoadBalancer>: LoadBalancer resource
+#### LOADBALANCER <ILoadBalancer>: LoadBalancer resource
   - `[Id <String>]`: Resource ID.
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.
@@ -803,6 +777,32 @@ To create the parameters described below, construct a hash table containing the 
   - `[ProvisioningState <String>]`: Gets the provisioning state of the PublicIP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
   - `[ResourceGuid <String>]`: The resource GUID property of the load balancer resource.
   - `[SkuName <LoadBalancerSkuName?>]`: Name of a load balancer SKU.
+
+#### LOADBALANCINGRULE <ILoadBalancingRule[]>: Object collection representing the load balancing rules Gets the provisioning 
+  - `FrontendPort <Int32>`: The port for the external endpoint. Port numbers for each rule must be unique within the Load Balancer. Acceptable values are between 0 and 65534. Note that value 0 enables "Any Port"
+  - `Protocol <TransportProtocol>`: The transport protocol for the endpoint. Possible values are 'Udp' or 'Tcp' or 'All'.
+  - `[Id <String>]`: Resource ID.
+  - `[BackendAddressPoolId <String>]`: Resource ID.
+  - `[BackendPort <Int32?>]`: The port used for internal connections on the endpoint. Acceptable values are between 0 and 65535. Note that value 0 enables "Any Port"
+  - `[DisableOutboundSnat <Boolean?>]`: Configures SNAT for the VMs in the backend pool to use the publicIP address specified in the frontend of the load balancing rule.
+  - `[EnableFloatingIP <Boolean?>]`: Configures a virtual machine's endpoint for the floating IP capability required to configure a SQL AlwaysOn Availability Group. This setting is required when using the SQL AlwaysOn Availability Groups in SQL server. This setting can't be changed after you create the endpoint.
+  - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+  - `[FrontendIPConfigurationId <String>]`: Resource ID.
+  - `[IdleTimeoutInMinute <Int32?>]`: The timeout for the TCP idle connection. The value can be set between 4 and 30 minutes. The default value is 4 minutes. This element is only used when the protocol is set to TCP.
+  - `[LoadDistribution <LoadDistribution?>]`: The load distribution policy for this rule. Possible values are 'Default', 'SourceIP', and 'SourceIPProtocol'.
+  - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
+  - `[ProbeId <String>]`: Resource ID.
+  - `[ProvisioningState <String>]`: Gets the provisioning state of the PublicIP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+
+#### OUTBOUNDNATRULE <IOutboundNatRule[]>: The outbound NAT rules.
+  - `[Id <String>]`: Resource ID.
+  - `[AllocatedOutboundPort <Int32?>]`: The number of outbound ports to be used for NAT.
+  - `[BackendAddressPoolId <String>]`: Resource ID.
+  - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+  - `[FrontendIPConfiguration <ISubResource[]>]`: The Frontend IP addresses of the load balancer.
+    - `[Id <String>]`: Resource ID.
+  - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
+  - `[ProvisioningState <String>]`: Gets the provisioning state of the PublicIP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
 
 #### PROBE <IProbe[]>: Collection of probe objects used in the load balancer
   - `Port <Int32>`: The port for communicating the probe. Possible values range from 1 to 65535, inclusive.

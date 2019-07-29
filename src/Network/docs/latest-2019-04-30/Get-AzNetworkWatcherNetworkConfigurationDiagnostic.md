@@ -15,7 +15,7 @@ Get network configuration diagnostic.
 ### Get (Default)
 ```
 Get-AzNetworkWatcherNetworkConfigurationDiagnostic -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-Parameter <INetworkConfigurationDiagnosticParameters>]
+ -SubscriptionId <String[]> [-ConfigurationDiagnostic <INetworkConfigurationDiagnosticParameters>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -38,8 +38,8 @@ Get-AzNetworkWatcherNetworkConfigurationDiagnostic -InputObject <INetworkIdentit
 ### GetViaIdentity
 ```
 Get-AzNetworkWatcherNetworkConfigurationDiagnostic -InputObject <INetworkIdentity>
- [-Parameter <INetworkConfigurationDiagnosticParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ConfigurationDiagnostic <INetworkConfigurationDiagnosticParameters>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -79,6 +79,23 @@ Required: False
 Position: Named
 Default value: False
 Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ConfigurationDiagnostic
+Parameters to get network configuration diagnostic.
+To construct, see NOTES section for CONFIGURATIONDIAGNOSTIC properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkConfigurationDiagnosticParameters
+Parameter Sets: Get, GetViaIdentity
+Aliases: NetworkWatcher
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -143,23 +160,6 @@ Required: False
 Position: Named
 Default value: False
 Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Parameter
-Parameters to get network configuration diagnostic.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkConfigurationDiagnosticParameters
-Parameter Sets: Get, GetViaIdentity
-Aliases: NetworkWatcher
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -303,7 +303,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### PARAMETER <INetworkConfigurationDiagnosticParameters>: Parameters to get network configuration diagnostic.
+#### CONFIGURATIONDIAGNOSTIC <INetworkConfigurationDiagnosticParameters>: Parameters to get network configuration diagnostic.
   - `Profile <INetworkConfigurationDiagnosticProfile[]>`: List of network configuration diagnostic profiles.
     - `Destination <String>`: Traffic destination. Accepted values are: '*', IP Address/CIDR, Service Tag.
     - `DestinationPort <String>`: Traffic destination port. Accepted values are '*', port (for example, 3389) and port range (for example, 80-100).

@@ -14,20 +14,19 @@ Creates or updates an express route circuit.
 
 ### Update (Default)
 ```
-Set-AzExpressRouteCircuit -CircuitName <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <IExpressRouteCircuit>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Set-AzExpressRouteCircuit -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ [-ExpressRouteCircuit <IExpressRouteCircuit>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
 ```
-Set-AzExpressRouteCircuit -CircuitName <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-AllowClassicOperation] [-Authorization <IExpressRouteCircuitAuthorization[]>] [-BandwidthInGbps <Single>]
- [-CircuitProvisioningState <String>] [-ExpressRoutePortId <String>] [-GatewayManagerEtag <String>]
- [-GlobalReachEnabled] [-Id <String>] [-Location <String>] [-Peering <IExpressRouteCircuitPeering[]>]
- [-ProvisioningState <String>] [-ServiceKey <String>] [-ServiceProviderNote <String>]
- [-ServiceProviderPropertyBandwidthInMbps <Int32>] [-ServiceProviderPropertyPeeringLocation <String>]
- [-ServiceProviderPropertyServiceProviderName <String>]
+Set-AzExpressRouteCircuit -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ [-AllowClassicOperations] [-Authorization <IExpressRouteCircuitAuthorization[]>] [-BandwidthInGbps <Single>]
+ [-CircuitProvisioningState <String>] [-EnableGlobalReach] [-ExpressRoutePortId <String>]
+ [-GatewayManagerEtag <String>] [-Id <String>] [-Location <String>] [-Peering <IExpressRouteCircuitPeering[]>]
+ [-ProvisioningState <String>] [-ServiceKey <String>] [-ServiceProviderBandwidthInMbps <Int32>]
+ [-ServiceProviderName <String>] [-ServiceProviderNote <String>] [-ServiceProviderPeeringLocation <String>]
  [-ServiceProviderProvisioningState <ServiceProviderProvisioningState>]
  [-SkuFamily <ExpressRouteCircuitSkuFamily>] [-SkuName <String>] [-SkuTier <ExpressRouteCircuitSkuTier>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -58,7 +57,7 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -AllowClassicOperation
+### -AllowClassicOperations
 Allow classic operations
 
 ```yaml
@@ -123,22 +122,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -CircuitName
-The name of the circuit.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -CircuitProvisioningState
 The CircuitProvisioningState state of the resource.
 
@@ -171,6 +154,39 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -EnableGlobalReach
+Flag denoting Global reach status.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ExpressRouteCircuit
+ExpressRouteCircuit resource
+To construct, see NOTES section for EXPRESSROUTECIRCUIT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRouteCircuit
+Parameter Sets: Update
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -ExpressRoutePortId
 Resource ID.
 
@@ -198,22 +214,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -GlobalReachEnabled
-Flag denoting Global reach status.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -251,6 +251,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Name
+The name of the circuit.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: CircuitName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -263,23 +279,6 @@ Required: False
 Position: Named
 Default value: False
 Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Parameter
-ExpressRouteCircuit resource
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRouteCircuit
-Parameter Sets: Update
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -324,7 +323,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: ExpressRouteCircuit
+Aliases:
 
 Required: True
 Position: Named
@@ -336,6 +335,38 @@ Dynamic: False
 
 ### -ServiceKey
 The ServiceKey.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ServiceProviderBandwidthInMbps
+The BandwidthInMbps.
+
+```yaml
+Type: System.Int32
+Parameter Sets: UpdateExpanded
+Aliases: BandwidthInMbps
+
+Required: False
+Position: Named
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ServiceProviderName
+The serviceProviderName.
 
 ```yaml
 Type: System.String
@@ -366,45 +397,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ServiceProviderPropertyBandwidthInMbps
-The BandwidthInMbps.
-
-```yaml
-Type: System.Int32
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -ServiceProviderPropertyPeeringLocation
+### -ServiceProviderPeeringLocation
 The peering location.
 
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -ServiceProviderPropertyServiceProviderName
-The serviceProviderName.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
+Aliases: PeeringLocation
 
 Required: False
 Position: Named
@@ -571,7 +570,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Name <String>]`: Gets name of the resource that is unique within a resource group. This name can be used to access the resource.
   - `[ProvisioningState <String>]`: Gets the provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
 
-#### PARAMETER <IExpressRouteCircuit>: ExpressRouteCircuit resource
+#### EXPRESSROUTECIRCUIT <IExpressRouteCircuit>: ExpressRouteCircuit resource
   - `[Id <String>]`: Resource ID.
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.

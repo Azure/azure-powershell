@@ -15,7 +15,7 @@ Creates or updates a network interface.
 ### Create1 (Default)
 ```
 New-AzNetworkInterface -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <INetworkInterface>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-NetworkInterface <INetworkInterface>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -46,7 +46,7 @@ New-AzNetworkInterface -InputObject <INetworkIdentity> [-AppliedDnsServer <Strin
 
 ### CreateViaIdentity1
 ```
-New-AzNetworkInterface -InputObject <INetworkIdentity> [-Parameter <INetworkInterface>]
+New-AzNetworkInterface -InputObject <INetworkIdentity> [-NetworkInterface <INetworkInterface>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -353,6 +353,23 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NetworkInterface
+A network interface in a resource group.
+To construct, see NOTES section for NETWORKINTERFACE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterface
+Parameter Sets: Create1, CreateViaIdentity1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -462,23 +479,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Parameter
-A network interface in a resource group.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkInterface
-Parameter Sets: Create1, CreateViaIdentity1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -828,7 +828,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[PublicIPAddress <IPublicIPAddress>]`: Public IP address bound to the IP configuration.
   - `[Subnet <ISubnet>]`: Subnet bound to the IP configuration.
 
-#### PARAMETER <INetworkInterface>: A network interface in a resource group.
+#### NETWORKINTERFACE <INetworkInterface>: A network interface in a resource group.
   - `[Id <String>]`: Resource ID.
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.

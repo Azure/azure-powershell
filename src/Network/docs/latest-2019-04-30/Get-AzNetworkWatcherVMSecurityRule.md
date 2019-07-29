@@ -15,8 +15,8 @@ Gets the configured and effective security group rules on the specified VM.
 ### Get (Default)
 ```
 Get-AzNetworkWatcherVMSecurityRule -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-Parameter <ISecurityGroupViewParameters>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -SubscriptionId <String[]> [-SecurityGroupView <ISecurityGroupViewParameters>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GetExpanded
@@ -34,8 +34,9 @@ Get-AzNetworkWatcherVMSecurityRule -InputObject <INetworkIdentity> -TargetResour
 
 ### GetViaIdentity
 ```
-Get-AzNetworkWatcherVMSecurityRule -InputObject <INetworkIdentity> [-Parameter <ISecurityGroupViewParameters>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzNetworkWatcherVMSecurityRule -InputObject <INetworkIdentity>
+ [-SecurityGroupView <ISecurityGroupViewParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -143,23 +144,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Parameter
-Parameters that define the VM to check security groups for.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ISecurityGroupViewParameters
-Parameter Sets: Get, GetViaIdentity
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 
@@ -172,6 +156,23 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -SecurityGroupView
+Parameters that define the VM to check security groups for.
+To construct, see NOTES section for SECURITYGROUPVIEW properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ISecurityGroupViewParameters
+Parameter Sets: Get, GetViaIdentity
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -262,7 +263,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### PARAMETER <ISecurityGroupViewParameters>: Parameters that define the VM to check security groups for.
+#### SECURITYGROUPVIEW <ISecurityGroupViewParameters>: Parameters that define the VM to check security groups for.
   - `TargetResourceId <String>`: ID of the target VM.
 
 ## RELATED LINKS

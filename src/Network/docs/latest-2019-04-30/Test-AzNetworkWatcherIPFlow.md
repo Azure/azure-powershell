@@ -15,7 +15,7 @@ Verify IP flow from the specified VM to a location given the currently configure
 ### Verify (Default)
 ```
 Test-AzNetworkWatcherIPFlow -NetworkWatcherName <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <IVerificationIPFlowParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-IPFlow <IVerificationIPFlowParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -38,7 +38,7 @@ Test-AzNetworkWatcherIPFlow -InputObject <INetworkIdentity> -Direction <Directio
 
 ### VerifyViaIdentity
 ```
-Test-AzNetworkWatcherIPFlow -InputObject <INetworkIdentity> [-Parameter <IVerificationIPFlowParameters>]
+Test-AzNetworkWatcherIPFlow -InputObject <INetworkIdentity> [-IPFlow <IVerificationIPFlowParameters>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -131,6 +131,23 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -IPFlow
+Parameters that define the IP flow to be verified.
+To construct, see NOTES section for IPFLOW properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVerificationIPFlowParameters
+Parameter Sets: Verify, VerifyViaIdentity
+Aliases: NetworkWatcher
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -LocalIPAddress
 The local IP address.
 Acceptable values are valid IPv4 addresses.
@@ -212,23 +229,6 @@ Required: False
 Position: Named
 Default value: False
 Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Parameter
-Parameters that define the IP flow to be verified.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVerificationIPFlowParameters
-Parameter Sets: Verify, VerifyViaIdentity
-Aliases: NetworkWatcher
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -386,7 +386,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### PARAMETER <IVerificationIPFlowParameters>: Parameters that define the IP flow to be verified.
+#### IPFLOW <IVerificationIPFlowParameters>: Parameters that define the IP flow to be verified.
   - `Direction <Direction>`: The direction of the packet represented as a 5-tuple.
   - `LocalIPAddress <String>`: The local IP address. Acceptable values are valid IPv4 addresses.
   - `LocalPort <String>`: The local port. Acceptable values are a single integer in the range (0-65535). Support for * for the source port, which depends on the direction.

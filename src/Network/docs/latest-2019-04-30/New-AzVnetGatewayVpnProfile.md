@@ -16,7 +16,7 @@ Used for IKEV2 and radius based authentication.
 ### Generate (Default)
 ```
 New-AzVnetGatewayVpnProfile -ResourceGroupName <String> -SubscriptionId <String> -VnetGatewayName <String>
- [-Parameter <IVpnClientParameters>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+ [-VpnProfile <IVpnClientParameters>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -38,7 +38,7 @@ New-AzVnetGatewayVpnProfile -InputObject <INetworkIdentity> [-AuthenticationMeth
 
 ### GenerateViaIdentity
 ```
-New-AzVnetGatewayVpnProfile -InputObject <INetworkIdentity> [-Parameter <IVpnClientParameters>]
+New-AzVnetGatewayVpnProfile -InputObject <INetworkIdentity> [-VpnProfile <IVpnClientParameters>]
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -126,23 +126,6 @@ Parameter Sets: GenerateViaIdentityExpanded, GenerateViaIdentity
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Parameter
-Vpn Client Parameters for package generation
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVpnClientParameters
-Parameter Sets: Generate, GenerateViaIdentity
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -249,6 +232,23 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -VpnProfile
+Vpn Client Parameters for package generation
+To construct, see NOTES section for VPNPROFILE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVpnClientParameters
+Parameter Sets: Generate, GenerateViaIdentity
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -304,7 +304,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### PARAMETER <IVpnClientParameters>: Vpn Client Parameters for package generation
+#### VPNPROFILE <IVpnClientParameters>: Vpn Client Parameters for package generation
   - `[AuthenticationMethod <AuthenticationMethod?>]`: VPN client authentication method.
   - `[ClientRootCertificate <String[]>]`: A list of client root certificates public certificate data encoded as Base-64 strings. Optional parameter for external radius based authentication with EAPTLS.
   - `[ProcessorArchitecture <ProcessorArchitecture?>]`: VPN client Processor Architecture. Possible values are: 'AMD64' and 'X86'.

@@ -15,7 +15,7 @@ Creates or update policy with specified rule set name within a resource group.
 ### Update (Default)
 ```
 Set-AzApplicationGatewayWafPolicy -PolicyName <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <IWebApplicationFirewallPolicy>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [-WafPolicy <IWebApplicationFirewallPolicy>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -165,23 +165,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Parameter
-Defines web application firewall policy.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IWebApplicationFirewallPolicy
-Parameter Sets: Update
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -PolicyName
 The name of the policy.
 
@@ -243,6 +226,23 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -WafPolicy
+Defines web application firewall policy.
+To construct, see NOTES section for WAFPOLICY properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IWebApplicationFirewallPolicy
+Parameter Sets: Update
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -312,7 +312,7 @@ To create the parameters described below, construct a hash table containing the 
   - `RuleType <WebApplicationFirewallRuleType>`: Describes type of rule
   - `[Name <String>]`: Gets name of the resource that is unique within a policy. This name can be used to access the resource.
 
-#### PARAMETER <IWebApplicationFirewallPolicy>: Defines web application firewall policy.
+#### WAFPOLICY <IWebApplicationFirewallPolicy>: Defines web application firewall policy.
   - `[Id <String>]`: Resource ID.
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.

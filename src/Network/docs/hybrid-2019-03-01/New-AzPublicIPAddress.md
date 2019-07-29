@@ -15,7 +15,7 @@ Creates or updates a static or dynamic public IP address.
 ### Create1 (Default)
 ```
 New-AzPublicIPAddress -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <IPublicIPAddress>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-PublicIPAddress <IPublicIPAddress>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -47,7 +47,7 @@ New-AzPublicIPAddress -InputObject <INetworkIdentity> [-Address <IPublicIPAddres
 
 ### CreateViaIdentity1
 ```
-New-AzPublicIPAddress -InputObject <INetworkIdentity> [-Parameter <IPublicIPAddress>]
+New-AzPublicIPAddress -InputObject <INetworkIdentity> [-PublicIPAddress <IPublicIPAddress>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -387,23 +387,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Parameter
-Public IP address resource.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IPublicIPAddress
-Parameter Sets: Create1, CreateViaIdentity1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -PrivateIPAddress
 The private IP address of the IP configuration.
 
@@ -450,6 +433,23 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -PublicIPAddress
+Public IP address resource.
+To construct, see NOTES section for PUBLICIPADDRESS properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IPublicIPAddress
+Parameter Sets: Create1, CreateViaIdentity1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -723,7 +723,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Version <IPVersion?>]`: The public IP address version. Possible values are: 'IPv4' and 'IPv6'.
   - `[Zone <String[]>]`: A list of availability zones denoting the IP allocated for the resource needs to come from.
 
-#### PARAMETER <IPublicIPAddress>: Public IP address resource.
+#### PUBLICIPADDRESS <IPublicIPAddress>: Public IP address resource.
   - `[Id <String>]`: Resource ID.
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.

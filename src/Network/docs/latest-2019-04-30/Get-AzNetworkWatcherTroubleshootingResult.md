@@ -15,7 +15,7 @@ Get the last completed troubleshooting result on a specified resource
 ### Get (Default)
 ```
 Get-AzNetworkWatcherTroubleshootingResult -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-Parameter <IQueryTroubleshootingParameters>] [-DefaultProfile <PSObject>]
+ -SubscriptionId <String[]> [-Troubleshooting <IQueryTroubleshootingParameters>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -35,8 +35,8 @@ Get-AzNetworkWatcherTroubleshootingResult -InputObject <INetworkIdentity> -Targe
 ### GetViaIdentity
 ```
 Get-AzNetworkWatcherTroubleshootingResult -InputObject <INetworkIdentity>
- [-Parameter <IQueryTroubleshootingParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-Troubleshooting <IQueryTroubleshootingParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -144,23 +144,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Parameter
-Parameters that define the resource to query the troubleshooting result.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IQueryTroubleshootingParameters
-Parameter Sets: Get, GetViaIdentity
-Aliases: NetworkWatcher
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 
@@ -206,6 +189,23 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Troubleshooting
+Parameters that define the resource to query the troubleshooting result.
+To construct, see NOTES section for TROUBLESHOOTING properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IQueryTroubleshootingParameters
+Parameter Sets: Get, GetViaIdentity
+Aliases: NetworkWatcher
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -263,7 +263,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### PARAMETER <IQueryTroubleshootingParameters>: Parameters that define the resource to query the troubleshooting result.
+#### TROUBLESHOOTING <IQueryTroubleshootingParameters>: Parameters that define the resource to query the troubleshooting result.
   - `TargetResourceId <String>`: The target resource ID to query the troubleshooting result.
 
 ## RELATED LINKS

@@ -15,8 +15,8 @@ Lists all available internet service providers for a specified Azure region.
 ### List (Default)
 ```
 Get-AzNetworkWatcherAvailableProvider -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-Parameter <IAvailableProvidersListParameters>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -SubscriptionId <String[]> [-AvailableProvider <IAvailableProvidersListParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ListExpanded
@@ -63,6 +63,23 @@ Required: False
 Position: Named
 Default value: False
 Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -AvailableProvider
+Constraints that determine the list of available Internet service providers.
+To construct, see NOTES section for AVAILABLEPROVIDER properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IAvailableProvidersListParameters
+Parameter Sets: List
+Aliases: NetworkWatcher
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -159,23 +176,6 @@ Required: False
 Position: Named
 Default value: False
 Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Parameter
-Constraints that determine the list of available Internet service providers.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IAvailableProvidersListParameters
-Parameter Sets: List
-Aliases: NetworkWatcher
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -282,7 +282,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### PARAMETER <IAvailableProvidersListParameters>: Constraints that determine the list of available Internet service providers.
+#### AVAILABLEPROVIDER <IAvailableProvidersListParameters>: Constraints that determine the list of available Internet service providers.
   - `[AzureLocation <String[]>]`: A list of Azure regions.
   - `[City <String>]`: The city or town for available providers list.
   - `[Country <String>]`: The country for available providers list.

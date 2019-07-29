@@ -14,19 +14,17 @@ Creates or updates an authorization in the specified express route circuit.
 
 ### Update (Default)
 ```
-Set-AzExpressRouteCircuitAuthorization -AuthorizationName <String> -CircuitName <String>
- -ResourceGroupName <String> -SubscriptionId <String>
- [-AuthorizationParameter <IExpressRouteCircuitAuthorization>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzExpressRouteCircuitAuthorization -CircuitName <String> -Name <String> -ResourceGroupName <String>
+ -SubscriptionId <String> [-Authorization <IExpressRouteCircuitAuthorization>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
 ```
-Set-AzExpressRouteCircuitAuthorization -AuthorizationName <String> -CircuitName <String>
- -ResourceGroupName <String> -SubscriptionId <String> [-AuthorizationKey <String>]
- [-AuthorizationUseStatus <AuthorizationUseStatus>] [-Id <String>] [-Name <String>]
- [-ProvisioningState <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Set-AzExpressRouteCircuitAuthorization -CircuitName <String> -Name <String> -ResourceGroupName <String>
+ -SubscriptionId <String> [-Id <String>] [-Key <String>] [-ProvisioningState <String>]
+ [-ResourceName <String>] [-UseStatus <AuthorizationUseStatus>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -70,41 +68,9 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -AuthorizationKey
-The authorization key.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -AuthorizationName
-The name of the authorization.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -AuthorizationParameter
+### -Authorization
 Authorization in an ExpressRouteCircuit resource.
-To construct, see NOTES section for AUTHORIZATIONPARAMETER properties and create a hash table.
+To construct, see NOTES section for AUTHORIZATION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRouteCircuitAuthorization
@@ -115,23 +81,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -AuthorizationUseStatus
-AuthorizationUseStatus.
-Possible values are: 'Available' and 'InUse'.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.AuthorizationUseStatus
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -184,9 +133,8 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Name
-Gets name of the resource that is unique within a resource group.
-This name can be used to access the resource.
+### -Key
+The authorization key.
 
 ```yaml
 Type: System.String
@@ -194,6 +142,22 @@ Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Name
+The name of the authorization.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: AuthorizationName
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -250,6 +214,23 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -ResourceName
+Gets name of the resource that is unique within a resource group.
+This name can be used to access the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -SubscriptionId
 The subscription credentials which uniquely identify the Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
@@ -260,6 +241,23 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -UseStatus
+AuthorizationUseStatus.
+Possible values are: 'Available' and 'InUse'.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.AuthorizationUseStatus
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -318,7 +316,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### AUTHORIZATIONPARAMETER <IExpressRouteCircuitAuthorization>: Authorization in an ExpressRouteCircuit resource.
+#### AUTHORIZATION <IExpressRouteCircuitAuthorization>: Authorization in an ExpressRouteCircuit resource.
   - `[Id <String>]`: Resource ID.
   - `[AuthorizationKey <String>]`: The authorization key.
   - `[AuthorizationUseStatus <AuthorizationUseStatus?>]`: AuthorizationUseStatus. Possible values are: 'Available' and 'InUse'.

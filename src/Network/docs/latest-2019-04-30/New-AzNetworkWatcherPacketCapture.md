@@ -15,7 +15,7 @@ Create and start a packet capture on the specified VM.
 ### Create (Default)
 ```
 New-AzNetworkWatcherPacketCapture -Name <String> -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-Parameter <IPacketCapture>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -SubscriptionId <String> [-PacketCapture <IPacketCapture>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -39,7 +39,7 @@ New-AzNetworkWatcherPacketCapture -InputObject <INetworkIdentity> -TargetResourc
 
 ### CreateViaIdentity
 ```
-New-AzNetworkWatcherPacketCapture -InputObject <INetworkIdentity> [-Parameter <IPacketCapture>]
+New-AzNetworkWatcherPacketCapture -InputObject <INetworkIdentity> [-PacketCapture <IPacketCapture>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -197,9 +197,9 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Parameter
+### -PacketCapture
 Parameters that define the create packet capture operation.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
+To construct, see NOTES section for PACKETCAPTURE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IPacketCapture
@@ -408,7 +408,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[RemoteIPAddress <String>]`: Local IP Address to be filtered on. Notation: "127.0.0.1" for single address entry. "127.0.0.1-127.0.0.255" for range. "127.0.0.1;127.0.0.5;" for multiple entries. Multiple ranges not currently supported. Mixing ranges with multiple entries not currently supported. Default = null.
   - `[RemotePort <String>]`: Remote port to be filtered on. Notation: "80" for single port entry."80-85" for range. "80;443;" for multiple entries. Multiple ranges not currently supported. Mixing ranges with multiple entries not currently supported. Default = null.
 
-#### PARAMETER <IPacketCapture>: Parameters that define the create packet capture operation.
+#### PACKETCAPTURE <IPacketCapture>: Parameters that define the create packet capture operation.
   - `Target <String>`: The ID of the targeted resource, only VM is currently supported.
   - `[BytesToCapturePerPacket <Int32?>]`: Number of bytes captured per packet, the remaining bytes are truncated.
   - `[Filter <IPacketCaptureFilter[]>]`: A list of packet capture filters.

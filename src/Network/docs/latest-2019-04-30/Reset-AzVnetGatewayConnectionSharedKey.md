@@ -15,8 +15,8 @@ The VirtualNetworkGatewayConnectionResetSharedKey operation resets the virtual n
 ### Reset (Default)
 ```
 Reset-AzVnetGatewayConnectionSharedKey -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <IConnectionResetSharedKey>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-ConnectionSharedKey <IConnectionResetSharedKey>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### ResetExpanded
@@ -34,8 +34,8 @@ Reset-AzVnetGatewayConnectionSharedKey -InputObject <INetworkIdentity> -KeyLengt
 ### ResetViaIdentity
 ```
 Reset-AzVnetGatewayConnectionSharedKey -InputObject <INetworkIdentity>
- [-Parameter <IConnectionResetSharedKey>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-ConnectionSharedKey <IConnectionResetSharedKey>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -75,6 +75,23 @@ Required: False
 Position: Named
 Default value: False
 Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ConnectionSharedKey
+The virtual network connection reset shared key
+To construct, see NOTES section for CONNECTIONSHAREDKEY properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IConnectionResetSharedKey
+Parameter Sets: Reset, ResetViaIdentity
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -155,23 +172,6 @@ Required: False
 Position: Named
 Default value: False
 Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Parameter
-The virtual network connection reset shared key
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IConnectionResetSharedKey
-Parameter Sets: Reset, ResetViaIdentity
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -264,7 +264,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### PARAMETER <IConnectionResetSharedKey>: The virtual network connection reset shared key
+#### CONNECTIONSHAREDKEY <IConnectionResetSharedKey>: The virtual network connection reset shared key
   - `KeyLength <Int32>`: The virtual network connection reset shared key length, should between 1 and 128.
 
 ## RELATED LINKS

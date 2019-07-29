@@ -15,7 +15,7 @@ Creates or updates a DDoS custom policy.
 ### Update (Default)
 ```
 Set-AzDdosCustomPolicy -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <IDdosCustomPolicy>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-DdosCustomPolicy <IDdosCustomPolicy>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -63,6 +63,23 @@ Required: False
 Position: Named
 Default value: False
 Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -DdosCustomPolicy
+A DDoS custom policy in a resource group.
+To construct, see NOTES section for DDOSCUSTOMPOLICY properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IDdosCustomPolicy
+Parameter Sets: Update
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -160,23 +177,6 @@ Required: False
 Position: Named
 Default value: False
 Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Parameter
-A DDoS custom policy in a resource group.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IDdosCustomPolicy
-Parameter Sets: Update
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -281,13 +281,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### FORMAT <IProtocolCustomSettingsFormat[]>: The protocol-specific DDoS policy customization parameters.
-  - `[Protocol <DdosCustomPolicyProtocol?>]`: The protocol for which the DDoS protection policy is being customized.
-  - `[SourceRateOverride <String>]`: The customized DDoS protection source rate.
-  - `[TriggerRateOverride <String>]`: The customized DDoS protection trigger rate.
-  - `[TriggerSensitivityOverride <DdosCustomPolicyTriggerSensitivityOverride?>]`: The customized DDoS protection trigger rate sensitivity degrees. High: Trigger rate set with most sensitivity w.r.t. normal traffic. Default: Trigger rate set with moderate sensitivity w.r.t. normal traffic. Low: Trigger rate set with less sensitivity w.r.t. normal traffic. Relaxed: Trigger rate set with least sensitivity w.r.t. normal traffic.
-
-#### PARAMETER <IDdosCustomPolicy>: A DDoS custom policy in a resource group.
+#### DDOSCUSTOMPOLICY <IDdosCustomPolicy>: A DDoS custom policy in a resource group.
   - `[Id <String>]`: Resource ID.
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.
@@ -297,6 +291,12 @@ To create the parameters described below, construct a hash table containing the 
     - `[SourceRateOverride <String>]`: The customized DDoS protection source rate.
     - `[TriggerRateOverride <String>]`: The customized DDoS protection trigger rate.
     - `[TriggerSensitivityOverride <DdosCustomPolicyTriggerSensitivityOverride?>]`: The customized DDoS protection trigger rate sensitivity degrees. High: Trigger rate set with most sensitivity w.r.t. normal traffic. Default: Trigger rate set with moderate sensitivity w.r.t. normal traffic. Low: Trigger rate set with less sensitivity w.r.t. normal traffic. Relaxed: Trigger rate set with least sensitivity w.r.t. normal traffic.
+
+#### FORMAT <IProtocolCustomSettingsFormat[]>: The protocol-specific DDoS policy customization parameters.
+  - `[Protocol <DdosCustomPolicyProtocol?>]`: The protocol for which the DDoS protection policy is being customized.
+  - `[SourceRateOverride <String>]`: The customized DDoS protection source rate.
+  - `[TriggerRateOverride <String>]`: The customized DDoS protection trigger rate.
+  - `[TriggerSensitivityOverride <DdosCustomPolicyTriggerSensitivityOverride?>]`: The customized DDoS protection trigger rate sensitivity degrees. High: Trigger rate set with most sensitivity w.r.t. normal traffic. Default: Trigger rate set with moderate sensitivity w.r.t. normal traffic. Low: Trigger rate set with less sensitivity w.r.t. normal traffic. Relaxed: Trigger rate set with least sensitivity w.r.t. normal traffic.
 
 ## RELATED LINKS
 

@@ -15,8 +15,8 @@ Gets a xml format representation for vpn device configuration script.
 ### Script (Default)
 ```
 Get-AzVnetGatewayVpnDeviceConfigurationScript -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-Parameter <IVpnDeviceScriptParameters>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -SubscriptionId <String[]> [-VpnDeviceConfigurationScript <IVpnDeviceScriptParameters>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ScriptExpanded
@@ -36,8 +36,8 @@ Get-AzVnetGatewayVpnDeviceConfigurationScript -InputObject <INetworkIdentity> [-
 ### ScriptViaIdentity
 ```
 Get-AzVnetGatewayVpnDeviceConfigurationScript -InputObject <INetworkIdentity>
- [-Parameter <IVpnDeviceScriptParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-VpnDeviceConfigurationScript <IVpnDeviceScriptParameters>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -145,23 +145,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Parameter
-Vpn device configuration script generation parameters
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVpnDeviceScriptParameters
-Parameter Sets: Script, ScriptViaIdentity
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 
@@ -207,6 +190,23 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -VpnDeviceConfigurationScript
+Vpn device configuration script generation parameters
+To construct, see NOTES section for VPNDEVICECONFIGURATIONSCRIPT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVpnDeviceScriptParameters
+Parameter Sets: Script, ScriptViaIdentity
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -268,7 +268,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### PARAMETER <IVpnDeviceScriptParameters>: Vpn device configuration script generation parameters
+#### VPNDEVICECONFIGURATIONSCRIPT <IVpnDeviceScriptParameters>: Vpn device configuration script generation parameters
   - `[DeviceFamily <String>]`: The device family for the vpn device.
   - `[FirmwareVersion <String>]`: The firmware version for the vpn device.
   - `[Vendor <String>]`: The vendor for the vpn device.

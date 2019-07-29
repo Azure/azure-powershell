@@ -15,7 +15,7 @@ Creates or updates a network profile.
 ### Update (Default)
 ```
 Set-AzNetworkProfile -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <INetworkProfile>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NetworkProfile <INetworkProfile>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
@@ -166,9 +166,9 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Parameter
+### -NetworkProfile
 Network profile resource.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
+To construct, see NOTES section for NETWORKPROFILE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkProfile
@@ -189,7 +189,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: NetworkProfile, AsJob
+Aliases: AsJob
 
 Required: True
 Position: Named
@@ -481,7 +481,7 @@ To create the parameters described below, construct a hash table containing the 
         - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
   - `[Name <String>]`: The name of the resource. This name can be used to access the resource.
 
-#### PARAMETER <INetworkProfile>: Network profile resource.
+#### NETWORKPROFILE <INetworkProfile>: Network profile resource.
   - `[Id <String>]`: Resource ID.
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.

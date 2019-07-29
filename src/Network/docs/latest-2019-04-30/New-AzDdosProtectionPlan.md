@@ -15,8 +15,8 @@ Creates or updates a DDoS protection plan.
 ### Create (Default)
 ```
 New-AzDdosProtectionPlan -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <IDdosProtectionPlan>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-DdosProtectionPlan <IDdosProtectionPlan>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpanded
@@ -34,7 +34,7 @@ New-AzDdosProtectionPlan -InputObject <INetworkIdentity> [-Location <String>] [-
 
 ### CreateViaIdentity
 ```
-New-AzDdosProtectionPlan -InputObject <INetworkIdentity> [-Parameter <IDdosProtectionPlan>]
+New-AzDdosProtectionPlan -InputObject <INetworkIdentity> [-DdosProtectionPlan <IDdosProtectionPlan>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -75,6 +75,23 @@ Required: False
 Position: Named
 Default value: False
 Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -DdosProtectionPlan
+A DDoS protection plan in a resource group.
+To construct, see NOTES section for DDOSPROTECTIONPLAN properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IDdosProtectionPlan
+Parameter Sets: Create, CreateViaIdentity
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -155,23 +172,6 @@ Required: False
 Position: Named
 Default value: False
 Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Parameter
-A DDoS protection plan in a resource group.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IDdosProtectionPlan
-Parameter Sets: Create, CreateViaIdentity
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -278,7 +278,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### PARAMETER <IDdosProtectionPlan>: A DDoS protection plan in a resource group.
+#### DDOSPROTECTIONPLAN <IDdosProtectionPlan>: A DDoS protection plan in a resource group.
   - `[Location <String>]`: Resource location.
   - `[Tag <IDdosProtectionPlanTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.

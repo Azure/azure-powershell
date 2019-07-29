@@ -15,7 +15,7 @@ Creates or updates a static or dynamic public IP address.
 ### Update (Default)
 ```
 Set-AzPublicIPAddress -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <IPublicIPAddress>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-PublicIPAddress <IPublicIPAddress>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -370,23 +370,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Parameter
-Public IP address resource.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IPublicIPAddress
-Parameter Sets: Update
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -ProvisioningState
 The provisioning state of the PublicIP resource.
 Possible values are: 'Updating', 'Deleting', and 'Failed'.
@@ -400,6 +383,23 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -PublicIPAddress
+Public IP address resource.
+To construct, see NOTES section for PUBLICIPADDRESS properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IPublicIPAddress
+Parameter Sets: Update
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -458,7 +458,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: PublicIpAddress
+Aliases:
 
 Required: True
 Position: Named
@@ -720,7 +720,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Tag <String>]`: Gets or sets value of the IpTag associated with the public IP. Example SQL, Storage etc
   - `[Type <String>]`: Gets or sets the ipTag type: Example FirstPartyUsage.
 
-#### PARAMETER <IPublicIPAddress>: Public IP address resource.
+#### PUBLICIPADDRESS <IPublicIPAddress>: Public IP address resource.
   - `[Id <String>]`: Resource ID.
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.

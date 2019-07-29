@@ -15,7 +15,7 @@ Creates or updates a network interface.
 ### Update (Default)
 ```
 Set-AzNetworkInterface -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <INetworkInterface>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-NetworkInterface <INetworkInterface>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -419,6 +419,23 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NetworkInterface
+A network interface in a resource group.
+To construct, see NOTES section for NETWORKINTERFACE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkInterface
+Parameter Sets: Update
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -532,23 +549,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Parameter
-A network interface in a resource group.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkInterface
-Parameter Sets: Update
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Primary
 Gets whether this is a primary network interface on a virtual machine.
 
@@ -588,7 +588,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: NetworkInterface
+Aliases:
 
 Required: True
 Position: Named
@@ -961,7 +961,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Subnet <ISubnet>]`: Subnet bound to the IP configuration.
   - `[VirtualNetworkTap <IVirtualNetworkTap[]>]`: The reference to Virtual Network Taps.
 
-#### PARAMETER <INetworkInterface>: A network interface in a resource group.
+#### NETWORKINTERFACE <INetworkInterface>: A network interface in a resource group.
   - `[Id <String>]`: Resource ID.
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.

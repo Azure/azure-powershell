@@ -15,7 +15,7 @@ Creates or updates a static or dynamic public IP prefix.
 ### Create (Default)
 ```
 New-AzPublicIPPrefix -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <IPublicIPPrefix>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-PublicIPPrefix <IPublicIPPrefix>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -40,7 +40,7 @@ New-AzPublicIPPrefix -InputObject <INetworkIdentity> [-Etag <String>] [-IPPrefix
 
 ### CreateViaIdentity
 ```
-New-AzPublicIPPrefix -InputObject <INetworkIdentity> [-Parameter <IPublicIPPrefix>]
+New-AzPublicIPPrefix -InputObject <INetworkIdentity> [-PublicIPPrefix <IPublicIPPrefix>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -230,23 +230,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Parameter
-Public IP prefix resource.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IPublicIPPrefix
-Parameter Sets: Create, CreateViaIdentity
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -PrefixLength
 The Length of the Public IP Prefix.
 
@@ -309,6 +292,23 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -PublicIPPrefix
+Public IP prefix resource.
+To construct, see NOTES section for PUBLICIPPREFIX properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IPublicIPPrefix
+Parameter Sets: Create, CreateViaIdentity
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -467,7 +467,10 @@ To create the parameters described below, construct a hash table containing the 
   - `[Tag <String>]`: Gets or sets value of the IpTag associated with the public IP. Example SQL, Storage etc
   - `[Type <String>]`: Gets or sets the ipTag type: Example FirstPartyUsage.
 
-#### PARAMETER <IPublicIPPrefix>: Public IP prefix resource.
+#### PUBLICIPADDRESS <IReferencedPublicIPAddress[]>: The list of all referenced PublicIPAddresses
+  - `[Id <String>]`: The PublicIPAddress Reference
+
+#### PUBLICIPPREFIX <IPublicIPPrefix>: Public IP prefix resource.
   - `[Id <String>]`: Resource ID.
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.
@@ -485,9 +488,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[ResourceGuid <String>]`: The resource GUID property of the public IP prefix resource.
   - `[SkuName <PublicIPPrefixSkuName?>]`: Name of a public IP prefix SKU.
   - `[Zone <String[]>]`: A list of availability zones denoting the IP allocated for the resource needs to come from.
-
-#### PUBLICIPADDRESS <IReferencedPublicIPAddress[]>: The list of all referenced PublicIPAddresses
-  - `[Id <String>]`: The PublicIPAddress Reference
 
 ## RELATED LINKS
 

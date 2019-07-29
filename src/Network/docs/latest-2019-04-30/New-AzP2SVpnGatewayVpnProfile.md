@@ -15,7 +15,7 @@ Generates VPN profile for P2S client of the P2SVpnGateway in the specified resou
 ### Generate (Default)
 ```
 New-AzP2SVpnGatewayVpnProfile -GatewayName <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <IP2SVpnProfileParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-VpnProfile <IP2SVpnProfileParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -34,7 +34,7 @@ New-AzP2SVpnGatewayVpnProfile -InputObject <INetworkIdentity> [-AuthenticationMe
 
 ### GenerateViaIdentity
 ```
-New-AzP2SVpnGatewayVpnProfile -InputObject <INetworkIdentity> [-Parameter <IP2SVpnProfileParameters>]
+New-AzP2SVpnGatewayVpnProfile -InputObject <INetworkIdentity> [-VpnProfile <IP2SVpnProfileParameters>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -159,23 +159,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Parameter
-Vpn Client Parameters for package generation
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IP2SVpnProfileParameters
-Parameter Sets: Generate, GenerateViaIdentity
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 
@@ -205,6 +188,23 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -VpnProfile
+Vpn Client Parameters for package generation
+To construct, see NOTES section for VPNPROFILE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IP2SVpnProfileParameters
+Parameter Sets: Generate, GenerateViaIdentity
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -262,7 +262,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### PARAMETER <IP2SVpnProfileParameters>: Vpn Client Parameters for package generation
+#### VPNPROFILE <IP2SVpnProfileParameters>: Vpn Client Parameters for package generation
   - `[AuthenticationMethod <AuthenticationMethod?>]`: VPN client authentication method.
 
 ## RELATED LINKS
