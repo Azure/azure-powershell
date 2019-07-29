@@ -5,13 +5,15 @@
   - InputObject `INetworkIdentity`
   - Parameter `IApplicationGateway`
   - AuthenticationCertificate `IApplicationGatewayAuthenticationCertificate[]`
-  - AutoscaleConfigurationMaxCapacity `Int32`
-  - AutoscaleConfigurationMinCapacity `Int32`
+  - AutoscaleMaximumCapacity `Int32`
+  - AutoscaleMinimumCapacity `Int32`
   - BackendAddressPool `IApplicationGatewayBackendAddressPool[]`
-  - BackendHttpSettingsCollection `IApplicationGatewayBackendHttpSettings[]`
-  - CustomErrorConfiguration `IApplicationGatewayCustomError[]`
-  - EnableFIPs `SwitchParameter`
+  - BackendHttpSetting `IApplicationGatewayBackendHttpSettings[]`
+  - CheckWafRequestBody `SwitchParameter`
+  - CustomError `IApplicationGatewayCustomError[]`
+  - EnableFips `SwitchParameter`
   - EnableHttp2 `SwitchParameter`
+  - EnableWaf `SwitchParameter`
   - Etag `String`
   - FirewallPolicyId `String`
   - FrontendIPConfiguration `IApplicationGatewayFrontendIPConfiguration[]`
@@ -31,27 +33,24 @@
   - SkuName `ApplicationGatewaySkuName`
   - SkuTier `ApplicationGatewayTier`
   - SslCertificate `IApplicationGatewaySslCertificate[]`
-  - SslPolicyCIPherSuite `ApplicationGatewaySslCipherSuite[]`
-  - SslPolicyDisabledSslProtocol `ApplicationGatewaySslProtocol[]`
-  - SslPolicyMinProtocolVersion `ApplicationGatewaySslProtocol`
+  - SslCipherSuite `ApplicationGatewaySslCipherSuite[]`
+  - SslDisabledProtocol `ApplicationGatewaySslProtocol[]`
+  - SslMinimumProtocolVersion `ApplicationGatewaySslProtocol`
   - SslPolicyName `ApplicationGatewaySslPolicyName`
   - SslPolicyType `ApplicationGatewaySslPolicyType`
   - Tag `Hashtable`
   - TrustedRootCertificate `IApplicationGatewayTrustedRootCertificate[]`
   - UrlPathMap `IApplicationGatewayUrlPathMap[]`
   - UserAssignedIdentity `Hashtable`
-  - WafConfigurationDisabledRuleGroup `IApplicationGatewayFirewallDisabledRuleGroup[]`
-  - WafConfigurationEnabled `SwitchParameter`
-  - WafConfigurationExclusion `IApplicationGatewayFirewallExclusion[]`
-  - WafConfigurationFileUploadLimitInMb `Int32`
-  - WafConfigurationFirewallMode `ApplicationGatewayFirewallMode`
-  - WafConfigurationMaxRequestBodySize `Int32`
-  - WafConfigurationMaxRequestBodySizeInKb `Int32`
-  - WafConfigurationRequestBodyCheck `SwitchParameter`
-  - WafConfigurationRuleSetType `String`
-  - WafConfigurationRuleSetVersion `String`
+  - WafDisabledRuleGroup `IApplicationGatewayFirewallDisabledRuleGroup[]`
+  - WafExclusion `IApplicationGatewayFirewallExclusion[]`
+  - WafFileUploadLimitInMb `Int32`
+  - WafFirewallMode `ApplicationGatewayFirewallMode`
+  - WafMaximumRequestBodySize `Int32`
+  - WafMaximumRequestBodySizeInKb `Int32`
+  - WafRuleSetType `String`
+  - WafRuleSetVersion `String`
   - Zone `String[]`
-  - IdentityUserAssignedIdentity `Hashtable`
 
 ### AzApplicationGatewayAvailableInfo [Get] `ApplicationGatewayAvailableInfo`
   - SubscriptionId `String[]`
@@ -98,11 +97,11 @@
   - PolicyName `String`
   - Parameter `IWebApplicationFirewallPolicy`
   - CustomRule `IWebApplicationFirewallCustomRule[]`
+  - EnabledState `WebApplicationFirewallEnabledState`
   - Etag `String`
   - Id `String`
   - Location `String`
-  - PolicySettingEnabledState `WebApplicationFirewallEnabledState`
-  - PolicySettingMode `WebApplicationFirewallMode`
+  - Mode `WebApplicationFirewallMode`
   - Tag `Hashtable`
 
 ### AzApplicationSecurityGroup [Get, New, Remove, Set] `IApplicationSecurityGroup, Boolean`
@@ -124,9 +123,9 @@
   - SubscriptionId `String[]`
   - InputObject `INetworkIdentity`
   - Parameter `IDdosCustomPolicy`
+  - Format `IProtocolCustomSettingsFormat[]`
   - Id `String`
   - Location `String`
-  - ProtocolCustomSetting `IProtocolCustomSettingsFormat[]`
   - Tag `Hashtable`
 
 ### AzDdosProtectionPlan [Get, New, Remove, Set] `IDdosProtectionPlan, Boolean`

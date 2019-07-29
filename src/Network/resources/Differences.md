@@ -1,7 +1,8 @@
 ## Incorrect Cmdlets
 
-- Get-AzNetworkWatcherPacketCapture
-    - AsJob
+- New-AzApplicationGateway
+    - BackendHttpSettingsCollection
+    - CustomErrorConfiguration
 
 ## Correct Cmdlets
 
@@ -48,6 +49,7 @@
 - Get-AzNetworkWatcherFlowLogStatus
 - Get-AzNetworkWatcherNetworkConfigurationDiagnostic
 - Get-AzNetworkWatcherNextHop
+- Get-AzNetworkWatcherPacketCapture
 - Get-AzNetworkWatcherReachabilityReport
 - Get-AzNetworkWatcherTopology
 - Get-AzNetworkWatcherTroubleshootingResult
@@ -79,7 +81,6 @@
 - Get-AzVpnConnection
 - Get-AzVpnGateway
 - Get-AzVpnSite
-- New-AzApplicationGateway
 - New-AzApplicationSecurityGroup
 - New-AzDdosProtectionPlan
 - New-AzExpressRouteCircuit

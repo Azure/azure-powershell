@@ -125,7 +125,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: List, Get
-Aliases: Location, NetworkWatcher
+Aliases: Location, NetworkWatcher, AsJob
 
 Required: True
 Position: Named

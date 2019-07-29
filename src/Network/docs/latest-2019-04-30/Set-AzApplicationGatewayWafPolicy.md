@@ -22,10 +22,9 @@ Set-AzApplicationGatewayWafPolicy -PolicyName <String> -ResourceGroupName <Strin
 ### UpdateExpanded
 ```
 Set-AzApplicationGatewayWafPolicy -PolicyName <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-CustomRule <IWebApplicationFirewallCustomRule[]>] [-Etag <String>] [-Id <String>] [-Location <String>]
- [-PolicySettingEnabledState <WebApplicationFirewallEnabledState>]
- [-PolicySettingMode <WebApplicationFirewallMode>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-CustomRule <IWebApplicationFirewallCustomRule[]>] [-EnabledState <WebApplicationFirewallEnabledState>]
+ [-Etag <String>] [-Id <String>] [-Location <String>] [-Mode <WebApplicationFirewallMode>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -86,6 +85,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -EnabledState
+Describes if the policy is in enabled state or disabled state
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.WebApplicationFirewallEnabledState
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Etag
 Gets a unique read-only string that changes whenever the resource is updated.
 
@@ -134,6 +149,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Mode
+Describes if it is in detection mode or prevention mode at policy level
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.WebApplicationFirewallMode
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Parameter
 Defines web application firewall policy.
 To construct, see NOTES section for PARAMETER properties and create a hash table.
@@ -160,38 +191,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -PolicySettingEnabledState
-Describes if the policy is in enabled state or disabled state
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.WebApplicationFirewallEnabledState
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -PolicySettingMode
-Describes if it is in detection mode or prevention mode at policy level
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.WebApplicationFirewallMode
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

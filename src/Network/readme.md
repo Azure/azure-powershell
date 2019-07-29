@@ -1920,12 +1920,14 @@ directive:
       subject: ApplicationGateway
       parameter-name: BackendHttpSettingsCollection
     set:
-      parameter-name: BackendHttpSettings
+      parameter-name: BackendHttpSetting
+      alias: BackendHttpSettingsCollection
   - where:
       subject: ApplicationGateway
       parameter-name: CustomErrorConfiguration
     set:
       parameter-name: CustomError
+      alias: CustomErrorConfiguration
   - where:
       subject: ApplicationGateway
       parameter-name: EnableFIPs
@@ -1966,4 +1968,26 @@ directive:
       parameter-name: WafRequestBodyCheck
     set:
       parameter-name: CheckWafRequestBody
+
+# Various Parameters
+  - where:
+      subject: ApplicationGatewayBackendHealth
+      parameter-name: PickHostNameFromBackendHttpSetting
+    set:
+      parameter-name: UseHostNameFromBackendHttpSetting
+  - where:
+      subject: ApplicationGatewayBackendHealth
+      parameter-name: Host
+    set:
+      parameter-name: HostName
+  - where:
+      subject: ApplicationGatewayWafPolicy
+      parameter-name: ^PolicySetting(.*)$
+    set:
+      parameter-name: $1
+  - where:
+      subject: DdosCustomPolicy
+      parameter-name: ProtocolCustomSetting
+    set:
+      parameter-name: Format
 ```

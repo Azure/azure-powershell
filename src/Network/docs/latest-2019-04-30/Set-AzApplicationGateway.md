@@ -23,34 +23,31 @@ Set-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Subscriptio
 ```
 Set-AzApplicationGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-AuthenticationCertificate <IApplicationGatewayAuthenticationCertificate[]>]
- [-AutoscaleConfigurationMaxCapacity <Int32>] [-AutoscaleConfigurationMinCapacity <Int32>]
+ [-AutoscaleMaximumCapacity <Int32>] [-AutoscaleMinimumCapacity <Int32>]
  [-BackendAddressPool <IApplicationGatewayBackendAddressPool[]>]
- [-BackendHttpSettingsCollection <IApplicationGatewayBackendHttpSettings[]>]
- [-CustomErrorConfiguration <IApplicationGatewayCustomError[]>] [-EnableFIPs] [-EnableHttp2] [-Etag <String>]
+ [-BackendHttpSetting <IApplicationGatewayBackendHttpSettings[]>] [-CheckWafRequestBody]
+ [-CustomError <IApplicationGatewayCustomError[]>] [-EnableFips] [-EnableHttp2] [-EnableWaf] [-Etag <String>]
  [-FirewallPolicyId <String>] [-FrontendIPConfiguration <IApplicationGatewayFrontendIPConfiguration[]>]
  [-FrontendPort <IApplicationGatewayFrontendPort[]>]
  [-GatewayIPConfiguration <IApplicationGatewayIPConfiguration[]>]
  [-HttpListener <IApplicationGatewayHttpListener[]>] [-Id <String>] [-IdentityType <ResourceIdentityType>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-Location <String>] [-Probe <IApplicationGatewayProbe[]>]
- [-ProvisioningState <String>] [-RedirectConfiguration <IApplicationGatewayRedirectConfiguration[]>]
+ [-Location <String>] [-Probe <IApplicationGatewayProbe[]>] [-ProvisioningState <String>]
+ [-RedirectConfiguration <IApplicationGatewayRedirectConfiguration[]>]
  [-RequestRoutingRule <IApplicationGatewayRequestRoutingRule[]>] [-ResourceGuid <String>]
  [-RewriteRuleSet <IApplicationGatewayRewriteRuleSet[]>] [-SkuCapacity <Int32>]
  [-SkuName <ApplicationGatewaySkuName>] [-SkuTier <ApplicationGatewayTier>]
  [-SslCertificate <IApplicationGatewaySslCertificate[]>]
- [-SslPolicyCIPherSuite <ApplicationGatewaySslCipherSuite[]>]
- [-SslPolicyDisabledSslProtocol <ApplicationGatewaySslProtocol[]>]
- [-SslPolicyMinProtocolVersion <ApplicationGatewaySslProtocol>]
+ [-SslCipherSuite <ApplicationGatewaySslCipherSuite[]>]
+ [-SslDisabledProtocol <ApplicationGatewaySslProtocol[]>]
+ [-SslMinimumProtocolVersion <ApplicationGatewaySslProtocol>]
  [-SslPolicyName <ApplicationGatewaySslPolicyName>] [-SslPolicyType <ApplicationGatewaySslPolicyType>]
  [-Tag <Hashtable>] [-TrustedRootCertificate <IApplicationGatewayTrustedRootCertificate[]>]
- [-UrlPathMap <IApplicationGatewayUrlPathMap[]>]
- [-WafConfigurationDisabledRuleGroup <IApplicationGatewayFirewallDisabledRuleGroup[]>]
- [-WafConfigurationEnabled] [-WafConfigurationExclusion <IApplicationGatewayFirewallExclusion[]>]
- [-WafConfigurationFileUploadLimitInMb <Int32>]
- [-WafConfigurationFirewallMode <ApplicationGatewayFirewallMode>]
- [-WafConfigurationMaxRequestBodySize <Int32>] [-WafConfigurationMaxRequestBodySizeInKb <Int32>]
- [-WafConfigurationRequestBodyCheck] [-WafConfigurationRuleSetType <String>]
- [-WafConfigurationRuleSetVersion <String>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-UrlPathMap <IApplicationGatewayUrlPathMap[]>] [-UserAssignedIdentity <Hashtable>]
+ [-WafDisabledRuleGroup <IApplicationGatewayFirewallDisabledRuleGroup[]>]
+ [-WafExclusion <IApplicationGatewayFirewallExclusion[]>] [-WafFileUploadLimitInMb <Int32>]
+ [-WafFirewallMode <ApplicationGatewayFirewallMode>] [-WafMaximumRequestBodySize <Int32>]
+ [-WafMaximumRequestBodySizeInKb <Int32>] [-WafRuleSetType <String>] [-WafRuleSetVersion <String>]
+ [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -112,7 +109,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -AutoscaleConfigurationMaxCapacity
+### -AutoscaleMaximumCapacity
 Upper bound on number of Application Gateway capacity
 
 ```yaml
@@ -128,7 +125,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -AutoscaleConfigurationMinCapacity
+### -AutoscaleMinimumCapacity
 Lower bound on number of Application Gateway capacity
 
 ```yaml
@@ -162,10 +159,10 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -BackendHttpSettingsCollection
+### -BackendHttpSetting
 Backend http settings of the application gateway resource.
 For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
-To construct, see NOTES section for BACKENDHTTPSETTINGSCOLLECTION properties and create a hash table.
+To construct, see NOTES section for BACKENDHTTPSETTING properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IApplicationGatewayBackendHttpSettings[]
@@ -180,9 +177,25 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -CustomErrorConfiguration
+### -CheckWafRequestBody
+Whether allow WAF to check request Body.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -CustomError
 Custom error configurations of the application gateway resource.
-To construct, see NOTES section for CUSTOMERRORCONFIGURATION properties and create a hash table.
+To construct, see NOTES section for CUSTOMERROR properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IApplicationGatewayCustomError[]
@@ -213,7 +226,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -EnableFIPs
+### -EnableFips
 Whether FIPS is enabled on the application gateway resource.
 
 ```yaml
@@ -231,6 +244,22 @@ Dynamic: False
 
 ### -EnableHttp2
 Whether HTTP2 is enabled on the application gateway resource.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -EnableWaf
+Whether the web application firewall is enabled or not.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -372,23 +401,6 @@ The type 'None' will remove any identities from the virtual machine.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.ResourceIdentityType
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -IdentityUserAssignedIdentity
-The list of user identities associated with resource.
-The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-
-```yaml
-Type: System.Collections.Hashtable
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -649,7 +661,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -SslPolicyCIPherSuite
+### -SslCipherSuite
 Ssl cipher suites to be enabled in the specified order to application gateway.
 
 ```yaml
@@ -665,7 +677,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -SslPolicyDisabledSslProtocol
+### -SslDisabledProtocol
 Ssl protocols to be disabled on application gateway.
 
 ```yaml
@@ -681,7 +693,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -SslPolicyMinProtocolVersion
+### -SslMinimumProtocolVersion
 Minimum version of Ssl protocol to be supported on application gateway.
 
 ```yaml
@@ -798,9 +810,26 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -WafConfigurationDisabledRuleGroup
+### -UserAssignedIdentity
+The list of user identities associated with resource.
+The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -WafDisabledRuleGroup
 The disabled rule groups.
-To construct, see NOTES section for WAFCONFIGURATIONDISABLEDRULEGROUP properties and create a hash table.
+To construct, see NOTES section for WAFDISABLEDRULEGROUP properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IApplicationGatewayFirewallDisabledRuleGroup[]
@@ -815,25 +844,9 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -WafConfigurationEnabled
-Whether the web application firewall is enabled or not.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -WafConfigurationExclusion
+### -WafExclusion
 The exclusion list.
-To construct, see NOTES section for WAFCONFIGURATIONEXCLUSION properties and create a hash table.
+To construct, see NOTES section for WAFEXCLUSION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IApplicationGatewayFirewallExclusion[]
@@ -848,7 +861,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -WafConfigurationFileUploadLimitInMb
+### -WafFileUploadLimitInMb
 Maximum file upload size in Mb for WAF.
 
 ```yaml
@@ -864,7 +877,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -WafConfigurationFirewallMode
+### -WafFirewallMode
 Web application firewall mode.
 
 ```yaml
@@ -880,7 +893,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -WafConfigurationMaxRequestBodySize
+### -WafMaximumRequestBodySize
 Maximum request body size for WAF.
 
 ```yaml
@@ -896,7 +909,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -WafConfigurationMaxRequestBodySizeInKb
+### -WafMaximumRequestBodySizeInKb
 Maximum request body size in Kb for WAF.
 
 ```yaml
@@ -912,23 +925,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -WafConfigurationRequestBodyCheck
-Whether allow WAF to check request Body.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -WafConfigurationRuleSetType
+### -WafRuleSetType
 The type of the web application firewall rule set.
 Possible values are: 'OWASP'.
 
@@ -945,7 +942,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -WafConfigurationRuleSetVersion
+### -WafRuleSetVersion
 The version of the rule set type.
 
 ```yaml
@@ -1207,7 +1204,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[ProvisioningState <String>]`: Provisioning state of the backend address pool resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
   - `[Type <String>]`: Type of the resource.
 
-#### BACKENDHTTPSETTINGSCOLLECTION <IApplicationGatewayBackendHttpSettings[]>: Backend http settings of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
+#### BACKENDHTTPSETTING <IApplicationGatewayBackendHttpSettings[]>: Backend http settings of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
   - `ConnectionDrainingDrainTimeoutInSec <Int32>`: The number of seconds connection draining is active. Acceptable values are from 1 second to 3600 seconds.
   - `ConnectionDrainingEnabled <Boolean>`: Whether connection draining is enabled or not.
   - `[Id <String>]`: Resource ID.
@@ -1229,7 +1226,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[TrustedRootCertificate <ISubResource[]>]`: Array of references to application gateway trusted root certificates.
   - `[Type <String>]`: Type of the resource.
 
-#### CUSTOMERRORCONFIGURATION <IApplicationGatewayCustomError[]>: Custom error configurations of the application gateway resource.
+#### CUSTOMERROR <IApplicationGatewayCustomError[]>: Custom error configurations of the application gateway resource.
   - `[CustomErrorPageUrl <String>]`: Error page URL of the application gateway customer error.
   - `[StatusCode <ApplicationGatewayCustomErrorStatusCode?>]`: Status code of the application gateway customer error.
 
@@ -1753,11 +1750,11 @@ To create the parameters described below, construct a hash table containing the 
   - `[ProvisioningState <String>]`: Provisioning state of the backend http settings resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
   - `[Type <String>]`: Type of the resource.
 
-#### WAFCONFIGURATIONDISABLEDRULEGROUP <IApplicationGatewayFirewallDisabledRuleGroup[]>: The disabled rule groups.
+#### WAFDISABLEDRULEGROUP <IApplicationGatewayFirewallDisabledRuleGroup[]>: The disabled rule groups.
   - `RuleGroupName <String>`: The name of the rule group that will be disabled.
   - `[Rule <Int32[]>]`: The list of rules that will be disabled. If null, all rules of the rule group will be disabled.
 
-#### WAFCONFIGURATIONEXCLUSION <IApplicationGatewayFirewallExclusion[]>: The exclusion list.
+#### WAFEXCLUSION <IApplicationGatewayFirewallExclusion[]>: The exclusion list.
   - `MatchVariable <String>`: The variable to be excluded.
   - `Selector <String>`: When matchVariable is a collection, operator used to specify which elements in the collection this exclusion applies to.
   - `SelectorMatchOperator <String>`: When matchVariable is a collection, operate on the selector to specify which elements in the collection this exclusion applies to.
