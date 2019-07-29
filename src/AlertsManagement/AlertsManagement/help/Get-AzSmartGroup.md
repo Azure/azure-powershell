@@ -33,11 +33,11 @@ Get-AzSmartGroup -SmartGroupId <String> [-DefaultProfile <IAzureContextContainer
 PS C:\> Get-AzSmartGroup -TimeRange "1h"
 ```
 
-List all smart groups formed in last 1 hour.
+List all smart groups formed in last 1 hour. Use Format-List to get the complete details of each smart group in list.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzSmartGroup -SmartGroupId "afbf1b3a-0a6c-4f19-9c9b-644ccd7b1529"
+PS C:\> Get-AzSmartGroup -SmartGroupId "afbf1b3a-0a6c-4f19-9c9b-644ccd7b1529" | Format-List
 ```
 
 Get Smart Group details by Id (GUID) or Resource Id (Complete ARM Id)
