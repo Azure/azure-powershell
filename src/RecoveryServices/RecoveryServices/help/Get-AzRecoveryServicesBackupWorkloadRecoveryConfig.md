@@ -41,7 +41,7 @@ PS C:\> $SQLRecoveryObject = Get-AzRecoveryServicesBackupRecoveryPoint -Item $SQ
 
 The first cmdlet is used to get the Recovery point object.
 The second cmdlet creates a recovery plan for a original location restore.
-THe third cmdlet crreats a recovery plan for a alternate location restore.
+THe third cmdlet creates a recovery plan for a alternate location restore.
 
 ## PARAMETERS
 

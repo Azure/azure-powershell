@@ -172,7 +172,7 @@ Accept wildcard characters: False
 ```
 
 ### -Definition
-Specifies the definition for your logic app as an object or a string in JavaScript Object Notataion (JSON) format.
+Specifies the definition for your logic app as an object or a string in JavaScript Object Notation (JSON) format.
 
 ```yaml
 Type: System.Object

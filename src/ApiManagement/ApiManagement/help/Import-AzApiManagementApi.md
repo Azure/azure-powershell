@@ -86,9 +86,9 @@ SubscriptionRequired          :
 ApiRevisionDescription        :
 ApiVersionSetDescription      :
 ApiVersionSetId               :
-Id                            : /subscriptions/subid/resourceGroups/Api-Default-West-US/providers/Microsoft.ApiManagement/service/constoso/apis/af3f57bab399455aa875d7050654e9d1     
+Id                            : /subscriptions/subid/resourceGroups/Api-Default-West-US/providers/Microsoft.ApiManagement/service/contoso/apis/af3f57bab399455aa875d7050654e9d1     
 ResourceGroupName             : Api-Default-West-US
-ServiceName                   : constoso
+ServiceName                   : contoso
 ```
 
 This command imports an API from the specified Open 3.0 specification link.
@@ -274,7 +274,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServiceUrl
-A URL of the web service exposing the API. This URL will be used by Azure API Management only, and will not be made public. This parameter is optional. If provided it will override the ServiceUrl specificed in the Specifications document.
+A URL of the web service exposing the API. This URL will be used by Azure API Management only, and will not be made public. This parameter is optional. If provided it will override the ServiceUrl specified in the Specifications document.
 
 ```yaml
 Type: System.String

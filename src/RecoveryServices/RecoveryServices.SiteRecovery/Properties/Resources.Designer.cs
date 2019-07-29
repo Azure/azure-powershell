@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cmdlet &quot;{0}&quot; will be deprecated soon. Please use use cmdlet(s) &quot;{1}&quot; instead..
+        ///   Looks up a localized string similar to Cmdlet &quot;{0}&quot; will be deprecated soon. Please use cmdlet(s) &quot;{1}&quot; instead..
         /// </summary>
         internal static string CmdletWillBeDeprecatedSoon {
             get {
@@ -378,7 +378,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Resource is not associted with the selected Resource group.
+        ///   Looks up a localized string similar to Resource is not associated with the selected Resource group.
         /// </summary>
         internal static string InvalidResource {
             get {
@@ -414,7 +414,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unsupported vault object is passed. Please pass Claasic or ARM vault object..
+        ///   Looks up a localized string similar to Unsupported vault object is passed. Please pass Classic or ARM vault object..
         /// </summary>
         internal static string InvalidVaultObject {
             get {
@@ -441,7 +441,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} will be a mandatory paramter from next release..
+        ///   Looks up a localized string similar to {0} will be a mandatory parameter from next release..
         /// </summary>
         internal static string MandatoryParamFromNextRelease {
             get {
@@ -531,7 +531,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Parameter(s) &quot;{0}&quot; will be deprecated soon. Please use use parameter(s) &quot;{1}&quot; instead..
+        ///   Looks up a localized string similar to Parameter(s) &quot;{0}&quot; will be deprecated soon. Please use parameter(s) &quot;{1}&quot; instead..
         /// </summary>
         internal static string ParameterWillBeDeprecatedSoon {
             get {

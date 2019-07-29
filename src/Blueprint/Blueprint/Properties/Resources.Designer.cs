@@ -241,7 +241,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Blueprint.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An unexpected error occured while checking if blueprint already exists. Try again in a few minutes. &apos;{0}&apos;.
+        ///   Looks up a localized string similar to An unexpected error occurred while checking if blueprint already exists. Try again in a few minutes. &apos;{0}&apos;.
         /// </summary>
         internal static string UnexpectedErrorWhileCheckingIfBlueprintExists {
             get {

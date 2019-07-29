@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzApplicationInsightsContinuousExport
 
 ## SYNOPSIS
-Remove a cotinuous export configuration in an application insights resource
+Remove a continuous export configuration in an application insights resource
 
 ## SYNTAX
 
@@ -33,11 +33,11 @@ Remove-AzApplicationInsightsContinuousExport [-ResourceId] <String> [-ExportId] 
 ```
 
 ## DESCRIPTION
-Remove a cotinuous export configuration in an application insights resource
+Remove a continuous export configuration in an application insights resource
 
 ## EXAMPLES
 
-### Example 1 Remove a cotinuous export configuration in an application insights resource
+### Example 1 Remove a continuous export configuration in an application insights resource
 ```
 PS C:\> Remove-AzApplicationInsightsContinuousExport -ResourceGroupName "testgroup" -Name "test" -ExportId "uGOoki0jQsyEs3IdQ83Q4QsNr4=" -PassThru
 True

@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Common
         public const string CmdletException = nameof(CmdletException);
 
         /// <summary>
-        /// Event indicating creation of an http pieline
+        /// Event indicating creation of an http pipeline
         /// </summary>
         public const string CmdletGetPipeline = nameof(CmdletGetPipeline);
 
