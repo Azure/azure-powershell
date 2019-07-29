@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.5.1
 * Update example in reference documentation for `Get-AzStorageAccount` to use correct parameter name
 
 ## Version 1.5.0
