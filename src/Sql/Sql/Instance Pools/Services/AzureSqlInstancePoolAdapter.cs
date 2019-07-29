@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Commands.Sql.Instance_Pools.Services
                 InstancePoolName = instancePoolResp.Name,
                 Location = instancePoolResp.Location,
                 ResourceGroupName = new ResourceIdentifier(instancePoolResp.Id).ResourceGroupName,
-                ResourceId = instancePoolResp.Id,
+                Id = instancePoolResp.Id,
                 SubnetId = instancePoolResp.SubnetId,
                 Tags = TagsConversionHelper.CreateTagDictionary(TagsConversionHelper.CreateTagHashtable(instancePoolResp.Tags), false),
                 Type = instancePoolResp.Type,

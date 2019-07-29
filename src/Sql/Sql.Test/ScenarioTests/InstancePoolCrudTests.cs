@@ -14,40 +14,67 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
         }
 
-        #region Create Tests
+        #region Instance pool
 
         /// <summary>
         /// Tests creation of an instance pool
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestInstancePoolCreate()
+        public void TestCreateInstancePool()
         {
             RunPowerShellTest("Test-CreateInstancePool");
         }
-
-        /// <summary>
-        /// Tests creation of a managed instance in an instance pool
-        /// </summary>
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestInstancePoolCreateManagedInstance()
-        {
-            RunPowerShellTest("Test-CreateManagedInstanceInInstancePool");
-        }
-
-        #endregion
-
-        #region Update Tests
 
         /// <summary>
         /// Tests updating an instance pool
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestInstancePoolUpdate()
+        public void TestUpdateInstancePool()
         {
             RunPowerShellTest("Test-UpdateInstancePool");
+        }
+
+        /// <summary>
+        /// Tests getting an instance pool
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetInstancePool()
+        {
+            RunPowerShellTest("Test-GetInstancePool");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveInstancePool()
+        {
+            RunPowerShellTest("Test-RemoveInstancePool");
+        }
+
+        #endregion
+
+        #region Managed Instance
+
+        /// <summary>
+        /// Tests creation of a managed instance in an instance pool
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateManagedInstanceInInstancePool()
+        {
+            RunPowerShellTest("Test-CreateManagedInstanceInInstancePool");
+        }
+
+        /// <summary>
+        /// Tests getting all managed instances in an instance pool
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetManagedInstanceInInstancePool()
+        {
+            RunPowerShellTest("Test-GetManagedInstanceInInstancePool");
         }
 
         /// <summary>
@@ -55,34 +82,33 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestInstancePoolUpdateManagedInstance()
+        public void TestUpdateManagedInstanceInInstancePool()
         {
             RunPowerShellTest("Test-UpdateManagedInstanceInInstancePool");
         }
 
-        #endregion
-
-        #region Get Tests
-
         /// <summary>
-        /// Tests getting an instance pool
+        /// Tests updating a managed instance in an instance pool
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestInstancePoolRead()
+        public void TestDeleteManagedInstanceInInstancePool()
         {
-            RunPowerShellTest("Test-GetInstancePool");
+            RunPowerShellTest("Test-DeleteManagedInstanceInInstancePool");
         }
 
         #endregion
 
-        #region Remove Tests
+        #region Instance Pool Usages
 
+        /// <summary>
+        /// Tests getting the instance pool usage
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestInstancePoolRemove()
+        public void TestGetInstancePoolUsage()
         {
-            RunPowerShellTest("Test-RemoveInstancePool");
+            RunPowerShellTest("Test-GetInstancePoolUsage");
         }
 
         #endregion

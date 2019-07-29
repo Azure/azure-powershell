@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Sql.Instance_Pools.Cmdlet
         [Parameter(Mandatory = true,
             Position = 0,
             ParameterSetName = ResourceIdSetInstancePoolParameterSet,
-            HelpMessage = "The instance pool resource identifer.",
+            HelpMessage = "The instance pool resource identifier.",
             ValueFromPipelineByPropertyName = true)]
         public string ResourceId { get; set; }
 
