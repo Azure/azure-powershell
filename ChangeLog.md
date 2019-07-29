@@ -1,3 +1,112 @@
+## 2.5.0 - July 2019
+#### Az.Accounts
+* Update common code to use latest version of ClientRuntime
+
+#### Az.ApplicationInsights
+* Fix example typo in 'Remove-AzApplicationInsightsApiKey' documentation 
+
+#### Az.Automation
+* Fix typo in resource string 
+
+#### Az.CognitiveServices
+* Added NetworkRuleSet support.
+
+#### Az.Compute
+* Add missing properties (ComputerName, OsName, OsVersion and HyperVGeneration) of VM instance view object.
+
+#### Az.ContainerRegistry
+* Fix typo in Remove-AzContainerRegistryReplication for Replication parameter
+    - More information here https://github.com/Azure/azure-powershell/issues/9633
+
+#### Az.DataFactory
+* Updated ADF .Net SDK version to 4.1.0
+* Fix typo in documentation for 'Get-AzDataFactoryV2PipelineRun'
+
+#### Az.EventHub
+* Added new cmmdlet added for generating SAS token : New-AzEventHubAuthorizationRuleSASToken
+* added verification and error message for authorizationrules rights if only 'Manage' is assigned
+
+#### Az.KeyVault
+* Added support to specify the KeySize for Certificate Policies
+
+#### Az.LogicApp
+* Fix for Get-AzIntegrationAccountMap to list all map types
+	- Added new MapType parameter for filtering
+
+#### Az.ManagedServices
+* Added support for api version 2019-06-01 (GA)
+
+#### Az.Network
+* Add support for private endpoint and private link service
+    - New cmdlets
+        - Set-AzPrivateEndpoint
+        - Set-AzPrivateLinkService
+        - Approve-AzPrivateEndpointConnection
+        - Deny-AzPrivateEndpointConnection
+        - Get-AzPrivateEndpointConnection
+        - Remove-AzPrivateEndpointConnection
+        - Test-AzPrivateLinkServiceVisibility
+        - Get-AzAutoApprovedPrivateLinkService
+* Updated below commands for feature: PrivateEndpointNetworkPolicies/PrivateLinkServiceNetworkPolicies flag on Subnet in Virtualnetwork
+    - Updated New-AzVirtualNetworkSubnetConfig/Set-AzVirtualNetworkSubnetConfig/Add-AzVirtualNetworkSubnetConfig
+        - Added optional parameter -PrivateEndpointNetworkPoliciesFlag to indicate that enable or disable apply network policies on pivate endpoint in this subnet.
+        - Added optional parameter -PrivateLinkServiceNetworkPoliciesFlag to indicate that enable or disable apply network policies on private link service in this subnet.
+* AzPrivateLinkService's cmdlet parameter 'ServiceName' was renamed to 'Name' with an alias 'ServiceName' for backward compatibility
+* Enable ICMP protocol for network security rule configurations
+    - Updated cmdlets
+        - Add-AzNetworkSecurityRuleConfig
+        - New-AzNetworkSecurityRuleConfig
+        - Set-AzNetworkSecurityRuleConfig
+* Add ConnectionProtocolType (Ikev1/Ikev2) as a configurable parameter for New-AzVirtualNetworkGatewayConnection
+* Add PrivateIpAddressVersion in LoadBalancerFrontendIpConfiguration
+    - Updated cmdlet:
+        - New-AzLoadBalancerFrontendIpConfig
+        - Add-AzLoadBalancerFrontendIpConfig
+        - Set-AzLoadBalancerFrontendIpConfig
+* Application Gateway New-AzApplicationGatewayProbeConfig command update for supporting custom port in Probe
+    - Updated New-AzApplicationGatewayProbeConfig: Added optional parameter Port which is used for probing backend server. This parameter is applicable for Standard_V2 and WAF_V2 SKU.
+
+#### Az.OperationalInsights
+* Updated default version for saved searches to be 1. 
+* Fixed custom log null regex handling
+
+#### Az.RecoveryServices
+* Update 'Get-AzRecoveryServicesBackupJob.md'
+* Update 'Get-AzRecoveryServicesBackupContainer.md'
+* Update 'Get-AzRecoveryServicesVault.md'
+* Update 'Wait-AzRecoveryServicesBackupJob.md'
+* Update 'Set-AzRecoveryServicesVaultContext.md'
+* Update 'Get-AzRecoveryServicesBackupItem.md'
+* Update 'Get-AzRecoveryServicesBackupRecoveryPoint.md'
+* Update 'Restore-AzRecoveryServicesBackupItem.md'
+* Updated service call for Unregistering container for Azure File Share
+* Update 'Set-AzRecoveryServicesAsrAlertSetting.md'
+
+#### Az.Resources
+- Remove missing cmdlet referenced in 'New-AzResourceGroupDeployment' documentation
+- Updated policy cmdlets to use new api version 2019-01-01
+
+#### Az.ServiceBus
+* Added new cmmdlet added for generating SAS token : New-AzServiceBusAuthorizationRuleSASToken
+* added verification and error message for authorizationrules rights if only 'Manage' is assigned
+
+#### Az.Sql
+* Fix missing examples for Set-AzSqlDatabaseSecondary cmdlet
+* Fix set Vulnerability Assessment recurring scans without providing any email addresses
+* Fix a small typo in a warining message.
+
+#### Az.Storage
+* Update example in reference documentation for 'Get-AzStorageAccount' to use correct parameter name
+
+#### Az.StorageSync
+* Adding Invoke-AzStorageSyncChangeDetection cmdlet.
+* Fix Issue 9551 for honoring TierFilesOlderThanDays
+
+#### Az.Websites
+* Fixing a bug where some SiteConfig properties were not returned by Get-AzWebApp and Set-AzWebApp
+* Adds a new Location parameter to Get-AzDeletedWebApp and Restore-AzDeletedWebApp
+* Fixes a bug with cloning web app slots using New-AzWebApp -IncludeSourceWebAppSlots
+
 ## 2.4.0 - July 2019
 #### Az.Accounts
 * Add support for profile cmdlets
