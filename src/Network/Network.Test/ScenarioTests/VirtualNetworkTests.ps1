@@ -165,7 +165,7 @@ function Test-subnetCRUD
 
         # Get subnet
         $subnet2 = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzVirtualNetworkSubnetConfig -Name $subnet2Name
-        $subnet2ById = Get-AzVirtualNetworkSubnetConfig -ResourceId $$subnet2.Id
+        $subnet2ById = Get-AzVirtualNetworkSubnetConfig -ResourceId $subnet2.Id
         $subnetAll = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzVirtualNetworkSubnetConfig
 
         Assert-AreEqual 2 @($subnetAll).Count
