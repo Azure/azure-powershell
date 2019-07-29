@@ -13,8 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.Sql.Instance_Pools.Model;
 using Microsoft.Azure.Commands.Sql.ManagedInstance.Model;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -28,27 +30,117 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
     public class GetAzureSqlManagedInstance : ManagedInstanceCmdletBase
     {
         /// <summary>
-        /// Gets or sets the name of the instance.
+        /// Parameter sets
         /// </summary>
-        [Parameter(Mandatory = false,
+        protected const string GetByNameAndResourceGroupParameterSet = "GetInstanceByNameAndResourceGroup";
+        protected const string ListByResourceGroupOrSubParameterSet = "ListByResourceGroupOrSubParameterSet";
+        protected const string ListByInstancePoolParameterSet = "ListByInstancePoolParameterSet";
+        protected const string ListByInstancePoolObjectParameterSet = "ListByInstancePoolObjectParameterSet";
+        protected const string ListByInstancePoolResourceIdentifierParameterSet = "ListByInstancePoolResourceIdentiferParameterSet";
+        protected const string GetByManagedInstanceResourceIdentifierParameterSet = "GetByManagedInstanceResourceIdentifierParameterSet";
+
+        /// <summary>
+        /// Gets or sets the instance pool parent object
+        /// </summary>
+        [Parameter(ParameterSetName = ListByInstancePoolObjectParameterSet,
+            Mandatory = true,
             Position = 0,
-            HelpMessage = "The name of the instance.")]
-        [Alias("InstanceName")]
-        [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
-        [ValidateNotNullOrEmpty]
-        [SupportsWildcards]
-        public string Name { get; set; }
+            HelpMessage = "The instance pool parent object.",
+            ValueFromPipeline = true)]
+        [Alias("ParentObject")]
+        public AzureSqlInstancePoolModel InstancePool { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the instance pool resource identifier.
+        /// </summary>
+        [Parameter(ParameterSetName = ListByInstancePoolResourceIdentifierParameterSet,
+            Mandatory = true,
+            Position = 0,
+            HelpMessage = "The instance pool resource identifier.",
+            ValueFromPipelineByPropertyName = true)]
+        [ResourceIdCompleter("Microsoft.Sql/instancePools")]
+        public string InstancePoolResourceId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the managed instance resource id
+        /// </summary>
+        [Parameter(ParameterSetName = GetByManagedInstanceResourceIdentifierParameterSet,
+            Mandatory = true,
+            Position = 0,
+            HelpMessage = "The managed instance resource identifier.",
+            ValueFromPipelineByPropertyName = true)]
+        [ResourceIdCompleter("Microsoft.Sql/managedInstances")]
+        public string ResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the resource group.
         /// </summary>
-        [Parameter(Mandatory = false,
-            Position = 1,
+        [Parameter(ParameterSetName = ListByResourceGroupOrSubParameterSet,
+            Mandatory = false,
+            Position = 0,
+            HelpMessage = "The name of the resource group.")]
+        [Parameter(ParameterSetName = GetByNameAndResourceGroupParameterSet,
+            Mandatory = true,
+            Position = 0,
+            HelpMessage = "The name of the resource group.")]
+        [Parameter(ParameterSetName = ListByInstancePoolParameterSet,
+            Mandatory = true,
+            Position = 0,
             HelpMessage = "The name of the resource group.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
-        [SupportsWildcards]
         public override string ResourceGroupName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the instance.
+        /// </summary>
+        [Parameter(ParameterSetName = GetByNameAndResourceGroupParameterSet,
+            Mandatory = true,
+            Position = 1,
+            HelpMessage = "The name of the instance.")]
+        [Alias("InstanceName")]
+        [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the instance pool.
+        /// </summary>
+        [Parameter(ParameterSetName = ListByInstancePoolParameterSet,
+            Mandatory = true,
+            Position = 1,
+            HelpMessage = "The name of the instance pool.")]
+        [ValidateNotNullOrEmpty]
+
+        public string InstancePoolName { get; set; }
+
+        /// <summary>
+        /// Entry point for the cmdlet
+        /// </summary>
+        public override void ExecuteCmdlet()
+        {
+            if (this.IsParameterBound(c => c.InstancePool))
+            {
+                this.ResourceGroupName = this.InstancePool.ResourceGroupName;
+                this.InstancePoolName = this.InstancePool.InstancePoolName;
+            }
+
+            if (this.IsParameterBound(c => c.InstancePoolResourceId))
+            {
+                var resourceId = new ResourceIdentifier(this.InstancePoolResourceId);
+                this.ResourceGroupName = resourceId.ResourceGroupName;
+                this.InstancePoolName = resourceId.ResourceName;
+            }
+
+            if (this.IsParameterBound(c => c.ResourceId))
+            {
+                var resourceId = new ResourceIdentifier(this.ResourceId);
+                this.ResourceGroupName = resourceId.ResourceGroupName;
+                this.Name = resourceId.ResourceName;
+            }
+
+            base.ExecuteCmdlet();
+        }
 
         /// <summary>
         /// Gets an instance from the service.
@@ -56,20 +148,30 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// <returns>A single server</returns>
         protected override IEnumerable<AzureSqlManagedInstanceModel> GetEntity()
         {
-            ICollection<AzureSqlManagedInstanceModel> results = null;
+            ICollection<AzureSqlManagedInstanceModel> results = new List<AzureSqlManagedInstanceModel>();
 
-            if (ShouldGetByName(ResourceGroupName, Name))
+            if (string.Equals(this.ParameterSetName, GetByNameAndResourceGroupParameterSet, System.StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(this.ParameterSetName, GetByManagedInstanceResourceIdentifierParameterSet, System.StringComparison.OrdinalIgnoreCase))
             {
                 results = new List<AzureSqlManagedInstanceModel>();
                 results.Add(ModelAdapter.GetManagedInstance(this.ResourceGroupName, this.Name));
             }
-            else if (ShouldListByResourceGroup(ResourceGroupName, Name))
+            else if (string.Equals(this.ParameterSetName, ListByInstancePoolParameterSet, System.StringComparison.OrdinalIgnoreCase) ||
+                     string.Equals(this.ParameterSetName, ListByInstancePoolObjectParameterSet, System.StringComparison.OrdinalIgnoreCase) ||
+                     string.Equals(this.ParameterSetName, ListByInstancePoolResourceIdentifierParameterSet, System.StringComparison.OrdinalIgnoreCase))
             {
-                results = ModelAdapter.ListManagedInstancesByResourceGroup(this.ResourceGroupName);
+                results = ModelAdapter.ListManagedInstancesByInstancePool(this.ResourceGroupName, this.InstancePoolName);
             }
-            else
+            else if (string.Equals(this.ParameterSetName, ListByResourceGroupOrSubParameterSet, System.StringComparison.OrdinalIgnoreCase))
             {
-                results = ModelAdapter.ListManagedInstances();
+                if (MyInvocation.BoundParameters.ContainsKey("ResourceGroupName"))
+                {
+                    results = ModelAdapter.ListManagedInstancesByResourceGroup(this.ResourceGroupName);
+                }
+                else
+                {
+                    results = ModelAdapter.ListManagedInstances();
+                }
             }
 
             return TopLevelWildcardFilter(ResourceGroupName, Name, results);

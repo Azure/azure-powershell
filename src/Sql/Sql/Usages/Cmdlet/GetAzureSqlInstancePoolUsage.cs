@@ -40,6 +40,8 @@ namespace Microsoft.Azure.Commands.Sql.Usages
             Position = 0,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The parent resource id.")]
+        [Alias("InstancePoolResourceId")]
+        [ResourceIdCompleter("Microsoft.Sql/instancePools")]
         public string ResourceId { get; set; }
 
         /// <summary>
@@ -50,6 +52,7 @@ namespace Microsoft.Azure.Commands.Sql.Usages
             Mandatory = true,
             Position = 0,
             HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter]
         public override string ResourceGroupName { get; set; }
 
         /// <summary>
@@ -61,7 +64,7 @@ namespace Microsoft.Azure.Commands.Sql.Usages
             Position = 1,
             HelpMessage = "The managed instance pool name.")]
         [Alias("InstancePoolName")]
-        [ResourceNameCompleter("Microsoft.Sql/instancePools", "ResourceGroupName")]
+        [ResourceNameCompleter("Microsoft.Sql/instancePools")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

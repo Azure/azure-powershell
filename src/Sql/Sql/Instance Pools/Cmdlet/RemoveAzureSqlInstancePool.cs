@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.Sql.Instance_Pools.Cmdlet
                 {
                     // The agent doesn't exist
                     throw new PSArgumentException(
-                        string.Format(Properties.Resources.RemoveInstancePoolWarning, this.Name),
+                        string.Format(Properties.Resources.AzureSqlInstancePoolNotExists, this.Name),
                         "InstancePoolName");
                 }
 

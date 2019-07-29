@@ -75,6 +75,7 @@ namespace Microsoft.Azure.Commands.Sql.Instance_Pools.Cmdlet
         [Parameter(Mandatory = true,
             HelpMessage = "Determines how much VCore to associate with instance.")]
         [ValidateNotNullOrEmpty]
+        [Alias("VCores")]
         [PSArgumentCompleter("8", "16", "24", "32", "40", "64", "80")]
         public int VCore { get; set; }
 

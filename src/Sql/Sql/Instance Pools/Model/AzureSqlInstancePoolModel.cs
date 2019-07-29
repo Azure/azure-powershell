@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Sql.Instance_Pools.Model
         /// <summary>
         /// Gets or sets the instance pool's resource id
         /// </summary>
-        public string ResourceId { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
         /// Gets or sets the instance pool name.
