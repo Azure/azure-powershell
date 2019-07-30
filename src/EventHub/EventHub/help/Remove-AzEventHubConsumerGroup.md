@@ -54,7 +54,7 @@ PS C:\> Remove-AzEventHubConsumerGroup -InputObject $inputobject
 PS C:\> Get-AzEventHubConsumerGroup <params> | Remove-AzEventHubConsumerGroup
 ```
 
-### Example 3.1 - ResourceId Using Vairable
+### Example 3.1 - ResourceId Using Variable
 ```
 PS C:\> $resourceid = Get-AzEventHubConsumerGroup <params>
 PS C:\> Remove-AzEventHubConsumerGroup -ResourceId $resourceid.Id

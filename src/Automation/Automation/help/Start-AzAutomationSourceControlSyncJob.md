@@ -19,7 +19,7 @@ Start-AzAutomationSourceControlSyncJob -SourceControlName <String> [-JobId <Guid
 ```
 
 ## DESCRIPTION
-The Start-AzAutomationSourceControlSyncJob cmdlet starts a Azure Automation souce control sync job for the given source control name.
+The Start-AzAutomationSourceControlSyncJob cmdlet starts a Azure Automation source control sync job for the given source control name.
 
 ## EXAMPLES
 

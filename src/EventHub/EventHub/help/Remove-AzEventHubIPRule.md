@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzEventHubIPRule
 
 ## SYNOPSIS
-Remove a single IPrule to the NetworkRuleSet of the given Namespace
+Remove a single IP rule to the NetworkRuleSet of the given Namespace
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ Remove-AzEventHubIPRule [-ResourceGroupName] <String> [-Name] <String>
 ```
 
 ## DESCRIPTION
-Remove a single IPrule to the NetworkRuleSet of the given Namespace
+Remove a single IP rule to the NetworkRuleSet of the given Namespace
 
 ## EXAMPLES
 
