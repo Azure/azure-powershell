@@ -12,13 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
+using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
@@ -26,6 +24,14 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
     {
         public InstancePoolCrudTests(ITestOutputHelper output) : base(output)
         {
+        }
+
+        protected override void SetupManagementClients(RestTestFramework.MockContext context)
+        {
+            var sqlClient = GetSqlClient(context);
+            var newResourcesClient = GetResourcesClient(context);
+            var networkClient = GetNetworkClient(context);
+            Helper.SetupSomeOfManagementClients(sqlClient, newResourcesClient, networkClient);
         }
 
         #region Instance pool
