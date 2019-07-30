@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/set-azsqlinstancepool
 schema: 2.0.0
 ---
 
@@ -11,6 +11,13 @@ schema: 2.0.0
 Sets properties for an Azure SQL Instance pool.
 
 ## SYNTAX
+
+### DefaultSetInstancePoolParameterSet (Default)
+```
+Set-AzSqlInstancePool [-ResourceGroupName] <String> [-Name] <String> [-LicenseType <String>]
+ [-Tags <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
 
 ### InputObjectSetInstancePoolParameterSet
 ```
@@ -22,13 +29,6 @@ Set-AzSqlInstancePool [-InputObject] <AzureSqlInstancePoolModel> [-LicenseType <
 ```
 Set-AzSqlInstancePool [-ResourceId] <String> [-LicenseType <String>] [-Tags <Hashtable>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### DefaultSetInstancePoolParameterSet
-```
-Set-AzSqlInstancePool [-ResourceGroupName] <String> [-Name] <String> [-LicenseType <String>]
- [-Tags <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -94,15 +94,13 @@ LicenseType       : LicenseIncluded
 
 This command sets the license type and/or tags for an instance pool named instancePool0.
 
-
-
 ## PARAMETERS
 
 ### -AsJob
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -117,7 +115,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -132,7 +130,7 @@ Accept wildcard characters: False
 The instance pool input object.
 
 ```yaml
-Type: AzureSqlInstancePoolModel
+Type: Microsoft.Azure.Commands.Sql.Instance_Pools.Model.AzureSqlInstancePoolModel
 Parameter Sets: InputObjectSetInstancePoolParameterSet
 Aliases:
 
@@ -148,7 +146,7 @@ Determines which License Type to use.
 Possible values are BasePrice (with AHB discount) and LicenseIncluded (without AHB discount).
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -163,7 +161,7 @@ Accept wildcard characters: False
 The name of the instance pool.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultSetInstancePoolParameterSet
 Aliases: InstancePoolName
 
@@ -178,7 +176,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultSetInstancePoolParameterSet
 Aliases:
 
@@ -193,7 +191,7 @@ Accept wildcard characters: False
 The instance pool resource identifier.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdSetInstancePoolParameterSet
 Aliases:
 
@@ -208,7 +206,7 @@ Accept wildcard characters: False
 The tags to associate with the instance
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases: Tag
 
@@ -223,7 +221,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -239,7 +237,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

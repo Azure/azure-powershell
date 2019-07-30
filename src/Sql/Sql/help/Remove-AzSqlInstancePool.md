@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/remove-azsqlinstancepool
 schema: 2.0.0
 ---
 
@@ -11,6 +11,12 @@ schema: 2.0.0
 Removes an Azure SQL Instance pool.
 
 ## SYNTAX
+
+### DeleteByNameParameterSet (Default)
+```
+Remove-AzSqlInstancePool [-ResourceGroupName] <String> [-Name] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
 
 ### DeleteByInputObjectParameterSet
 ```
@@ -22,12 +28,6 @@ Remove-AzSqlInstancePool [-InputObject] <AzureSqlInstancePoolModel> [-DefaultPro
 ```
 Remove-AzSqlInstancePool [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
-```
-
-### DeleteByNameParameterSet
-```
-Remove-AzSqlInstancePool [-ResourceGroupName] <String> [-Name] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,7 +59,7 @@ This command removes an instance pool named instancePool0.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -74,7 +74,7 @@ Accept wildcard characters: False
 The instance pool object to remove.
 
 ```yaml
-Type: AzureSqlInstancePoolModel
+Type: Microsoft.Azure.Commands.Sql.Instance_Pools.Model.AzureSqlInstancePoolModel
 Parameter Sets: DeleteByInputObjectParameterSet
 Aliases:
 
@@ -89,7 +89,7 @@ Accept wildcard characters: False
 The name of the instance pool.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DeleteByNameParameterSet
 Aliases: InstancePoolName
 
@@ -104,7 +104,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DeleteByNameParameterSet
 Aliases:
 
@@ -119,7 +119,7 @@ Accept wildcard characters: False
 The instance pool resource id to remove.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DeleteByResourceIdParameterSet
 Aliases:
 
@@ -134,7 +134,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -150,7 +150,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

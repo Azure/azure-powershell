@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlinstancepoolusage
 schema: 2.0.0
 ---
 
@@ -15,19 +15,19 @@ Returns information about an Azure SQL Instance pool's usage.
 ### InstancePoolUsageDefaultParameterSet (Default)
 ```
 Get-AzSqlInstancePoolUsage [-ResourceGroupName] <String> [-Name] <String> [-ExpandChildren]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### InstancePoolUsageParentObjectParameterSet
 ```
 Get-AzSqlInstancePoolUsage [-InstancePool] <AzureSqlInstancePoolModel> [-ExpandChildren]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### InstancePoolUsageResourceIdParameterSet
 ```
 Get-AzSqlInstancePoolUsage [-ResourceId] <String> [-ExpandChildren] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,7 +62,6 @@ RequestedLimit :
 Unit           : Number Of Databases
 Name           : Database utilization
 Type           : Microsoft.Sql/instancePools/usages
-
 ```
 
 Gets the usage for the Azure SQL Instance pool instancepool0.
@@ -95,7 +94,6 @@ RequestedLimit :
 Unit           : Number Of Databases
 Name           : Database utilization
 Type           : Microsoft.Sql/instancePools/usages
-
 ```
 
 Gets the usage for the Azure SQL Instance pool instancepool0 using an instance pool object.
@@ -127,7 +125,6 @@ RequestedLimit :
 Unit           : Number Of Databases
 Name           : Database utilization
 Type           : Microsoft.Sql/instancePools/usages
-
 ```
 
 Gets the usage for the Azure SQL Instance pool instancepool0 using an instance pool resource identifier.
@@ -183,7 +180,6 @@ RequestedLimit :
 Unit           : Number Of Databases
 Name           : Database utilization
 Type           : Microsoft.Sql/instancePools/managedInstances/usages
-
 ```
 
 Gets the usage for the Azure SQL Instance pool instancepool0 along with the usages of the managed instances within instancepool0.
@@ -194,7 +190,7 @@ Gets the usage for the Azure SQL Instance pool instancepool0 along with the usag
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -209,7 +205,7 @@ Accept wildcard characters: False
 Flag indicating whether to expand this instance pool's usage with its children's usage.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -224,7 +220,7 @@ Accept wildcard characters: False
 The parent instance pool object.
 
 ```yaml
-Type: AzureSqlInstancePoolModel
+Type: Microsoft.Azure.Commands.Sql.Instance_Pools.Model.AzureSqlInstancePoolModel
 Parameter Sets: InstancePoolUsageParentObjectParameterSet
 Aliases:
 
@@ -239,7 +235,7 @@ Accept wildcard characters: False
 The managed instance pool name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: InstancePoolUsageDefaultParameterSet
 Aliases: InstancePoolName
 
@@ -254,7 +250,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: InstancePoolUsageDefaultParameterSet
 Aliases:
 
@@ -269,7 +265,7 @@ Accept wildcard characters: False
 The parent resource id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: InstancePoolUsageResourceIdParameterSet
 Aliases: InstancePoolResourceId
 
@@ -277,37 +273,6 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

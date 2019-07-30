@@ -14,7 +14,7 @@ Creates an Azure SQL Database Managed Instance.
 
 ### NewByEditionAndComputeGenerationParameterSet (Default)
 ```
-New-AzSqlInstance [-ResourceGroupName] <String> [-Name] <String> -AdministratorCredential <PSCredential>
+New-AzSqlInstance [-Name] <String> [-ResourceGroupName] <String> -AdministratorCredential <PSCredential>
  -Location <String> -SubnetId <String> [-LicenseType <String>] [-StorageSizeInGB <Int32>] -VCore <Int32>
  -Edition <String> -ComputeGeneration <String> [-Collation <String>] [-PublicDataEndpointEnabled]
  [-ProxyOverride <String>] [-TimezoneId <String>] [-Tag <Hashtable>] [-AssignIdentity]
@@ -42,7 +42,7 @@ New-AzSqlInstance [-InstancePoolResourceId] <String> [-Name] <String> -Administr
 
 ### NewBySkuNameParameterSetParameter
 ```
-New-AzSqlInstance [-ResourceGroupName] <String> [-Name] <String> -AdministratorCredential <PSCredential>
+New-AzSqlInstance [-Name] <String> [-ResourceGroupName] <String> -AdministratorCredential <PSCredential>
  -Location <String> -SubnetId <String> [-LicenseType <String>] [-StorageSizeInGB <Int32>] -VCore <Int32>
  -SkuName <String> [-Collation <String>] [-PublicDataEndpointEnabled] [-ProxyOverride <String>]
  [-TimezoneId <String>] [-Tag <Hashtable>] [-AssignIdentity] [-DnsZonePartner <String>]
@@ -379,7 +379,7 @@ Parameter Sets: (All)
 Aliases: InstanceName
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -424,7 +424,7 @@ Parameter Sets: NewByEditionAndComputeGenerationParameterSet, NewBySkuNameParame
 Aliases:
 
 Required: True
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
