@@ -136,7 +136,7 @@ Accept wildcard characters: False
 ```
 
 ### -ConnectionBandwidthInMbps
-The bandwith that needs to be handled by this connection in mbps.
+The bandwidth that needs to be handled by this connection in mbps.
 
 ```yaml
 Type: System.UInt32
@@ -181,7 +181,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The VpnConenction object to update.
+The VpnConnection object to update.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSVpnConnection
@@ -196,7 +196,7 @@ Accept wildcard characters: False
 ```
 
 ### -IpSecPolicy
-The bandwith that needs to be handled by this connection in mbps.
+The bandwidth that needs to be handled by this connection in mbps.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy
@@ -256,7 +256,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The resource id of the VpnConenction object to delete.
+The resource id of the VpnConnection object to delete.
 
 ```yaml
 Type: System.String

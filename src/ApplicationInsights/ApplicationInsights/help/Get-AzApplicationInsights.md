@@ -59,7 +59,7 @@ SamplingPercentage :
 TenantId           : b90b0dec-9b9a-4778-a84e-4ffb73bb17f7
 ```
 
-Get application insights resource named "test" in resoruce group "testgroup"
+Get application insights resource named "test" in resource group "testgroup"
 
 ### Example 2 Get application insights resource with pricing plan information
 ```
@@ -91,7 +91,7 @@ TenantId           : b90b0dec-9b9a-4778-a84e-4ffb73bb17f7
 PricingPlan        : Basic
 ```
 
-Get application insights resource and include pricing plan information for resource named "test" in resoruce group "testgroup"
+Get application insights resource and include pricing plan information for resource named "test" in resource group "testgroup"
 
 ## PARAMETERS
 

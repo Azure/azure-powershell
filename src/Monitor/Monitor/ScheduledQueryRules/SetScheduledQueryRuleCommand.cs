@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
 
         //
         // Summary:
-        //     Gets or sets schedule (Frequnecy, Time Window) for rule.
+        //     Gets or sets schedule (Frequency, Time Window) for rule.
         [Parameter(ParameterSetName = ByRuleName, Mandatory = false, HelpMessage = "The scheduled query rule schedule")]
         [Parameter(ParameterSetName = ByInputObject, Mandatory = false, HelpMessage = "The scheduled query rule schedule")]
         [Parameter(ParameterSetName = ByResourceId, Mandatory = false, HelpMessage = "The scheduled query rule schedule")]

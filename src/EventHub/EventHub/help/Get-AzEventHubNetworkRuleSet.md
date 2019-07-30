@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzEventHubNetworkRuleSet
 
 ## SYNOPSIS
-Gets the details of an Event Hubs NetwrokruleSet of namespace in the current Azure subscription.
+Gets the details of an Event Hubs NetworkruleSet of namespace in the current Azure subscription.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Get-AzEventHubNetworkRuleSet [-ResourceId] <String> [-DefaultProfile <IAzureCont
 ```
 
 ## DESCRIPTION
-Gets the details of an Event Hubs NetwrokruleSet of namespace in the current Azure subscription.
+Gets the details of an Event Hubs NetworkruleSet of namespace in the current Azure subscription.
 
 ## EXAMPLES
 
@@ -40,21 +40,21 @@ Gets the details of an Event Hubs NetwrokruleSet of namespace in the current Azu
 PS C:\> Get-AzEventHubNetworkRuleSet -ResourceGroupName  v-ajnavtest -Namespace Eventhub-Namespace1-1375
 ```
 
-Get the details of Event Hubs NetwrokruleSet of namespace using ResourceGroup and Namesape parameters. 
+Get the details of Event Hubs NetworkruleSet of namespace using ResourceGroup and Namespace parameters. 
 
 ### Example 2
 ```powershell
 PS C:\> Get-AzEventHubNetworkRuleSet -Namespace Eventhub-Namespace1-2389
 ```
 
-Get the details of Event Hubs NetwrokruleSet of namespace using  Namespace which is in the current subscription.
+Get the details of Event Hubs NetworkruleSet of namespace using  Namespace which is in the current subscription.
 
 ### Example 3
 ```powershell
 PS C:\> Get-AzEventHubNetworkRuleSet -ResourceId /SubscriptionId/resourcegroups/ResourceGroup/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace1-2389
 ```
 
-Get the details of Event Hubs NetwrokruleSet of namespace using Resource Id of other Namespace 
+Get the details of Event Hubs NetworkruleSet of namespace using Resource Id of other Namespace 
 
 ## PARAMETERS
 
