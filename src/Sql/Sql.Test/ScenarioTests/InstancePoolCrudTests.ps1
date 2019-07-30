@@ -266,8 +266,7 @@ function Test-UpdateManagedInstanceInInstancePool
     Assert-InstancePoolProperties $instancePool
 
     # Create instance in pool
-    $serverPassword = "newPassword900!"
-    $securePassword = ($serverPassword | ConvertTo-SecureString -asPlainText -Force)
+    $securePassword = (Get-ServerCredential).Password
     $edition = "GeneralPurpose"
     $instance = Create-ManagedInstanceInInstancePoolForTest $instancePool
     Assert-ManagedInstanceInInstancePoolProperties $instance $instancePool
