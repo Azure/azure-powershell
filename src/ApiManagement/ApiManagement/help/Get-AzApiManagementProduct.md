@@ -33,7 +33,7 @@ Get-AzApiManagementProduct -Context <PsApiManagementContext> [-Title <String>]
 
 ### GetByApiId
 ```
-Get-AzApiManagementProduct -Context <PsApiManagementContext> [-ApiId <String>]
+Get-AzApiManagementProduct -Context <PsApiManagementContext> -ApiId <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -68,7 +68,7 @@ Type: System.String
 Parameter Sets: GetByApiId
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
