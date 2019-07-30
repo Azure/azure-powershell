@@ -40,7 +40,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         public int? RetentionDays { get; set; }
 
         public const string LoggingOperationHelpMessage =
-            "Logging operations. (All, None, combinations of Read, Write, Delete that are seperated by semicolon.)";
+            "Logging operations. (All, None, combinations of Read, Write, Delete that are separated by semicolon.)";
         [Parameter(HelpMessage = LoggingOperationHelpMessage)]
         public StorageClient.LoggingOperations[] LoggingOperations { get; set; }
 

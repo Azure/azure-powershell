@@ -307,7 +307,7 @@
     <value>Access policy is not set. No user or application have access permission to use this vault. Please use Set-AzKeyVaultAccessPolicy to set access policies.</value>
   </data>
   <data name="VmExtensionNotFound" xml:space="preserve">
-    <value>The resource group should have a valid VM extension for Service Fabric.</value>
+    <value>No valid Service Fabric extension found in resource group '{0}' that corresponds to cluster id '{1}'. The resource group should have a valid VM extension for Service Fabric.</value>
   </data>
   <data name="VmssVerbose" xml:space="preserve">
     <value>Virtual machine scale set {0} state is {1}.</value>

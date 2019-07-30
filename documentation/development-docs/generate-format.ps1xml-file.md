@@ -409,7 +409,7 @@ FunctionsToExport = @()
 PS C:\> Import-Module E:\git\azure-powershell\artifacts\Debug\Az.Accounts\Az.Accounts.psd1
 ```
 
-4. Try your cmdlet out. In our example it is Get-AuzreRmSubsription:
+4. Try your cmdlet out. In our example it is Get-AzureRmSubscription:
 ```Powershell
 PS C:\> Get-AzSubscription
 

@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed miscellaneous typos across module
+
+## Version 1.13.1
 * Fix missing examples for Set-AzSqlDatabaseSecondary cmdlet
 * Fix set Vulnerability Assessment recurring scans without providing any email addresses
 * Fix a small typo in a warining message.

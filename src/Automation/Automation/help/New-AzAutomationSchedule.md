@@ -237,7 +237,7 @@ Accept wildcard characters: False
 ```
 
 ### -ExpiryTime
-Specifies the expiry time of a schedule as a **DateTimeOffest** object.
+Specifies the expiry time of a schedule as a **DateTimeOffset** object.
 You can specify a string that can be converted to a valid **DateTimeOffset**.
 
 ```yaml
