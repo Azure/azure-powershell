@@ -449,7 +449,7 @@ Accept wildcard characters: False
 ```
 
 ### -SrcFile
-Specifes a **CloudFile** object from Azure Storage Client library.
+Specifies a **CloudFile** object from Azure Storage Client library.
 You can create it or use Get-AzStorageFile cmdlet.
 
 ```yaml

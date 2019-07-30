@@ -32,7 +32,7 @@ Name        Resource Group  Location  Provisioning State
 devSpaceControllerName   devSpaceResourceGroup     eastus    Succeeded
 ```
 
-Crreate a DevSpaces controller in resourcegroup devSpaceResourceGroup with a name devSpaceName. Use clusterName cluster as a target for this controller.
+Create a DevSpaces controller in resourcegroup devSpaceResourceGroup with a name devSpaceName. Use clusterName cluster as a target for this controller.
 
 ## PARAMETERS
 

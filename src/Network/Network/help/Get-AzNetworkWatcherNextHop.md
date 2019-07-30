@@ -53,7 +53,7 @@ NextHopIpAddress NextHopType RouteTableId
                  Internet    System Route
 ```
 
-Get's the Next Hop for outbound communication from the primary Network Interface on the specified Virtual Vachine to 204.79.197.200 (www.bing.com)
+Gets the Next Hop for outbound communication from the primary Network Interface on the specified Virtual Machine to 204.79.197.200 (www.bing.com)
 
 ## PARAMETERS
 

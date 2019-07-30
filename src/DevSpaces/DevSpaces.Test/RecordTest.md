@@ -2,7 +2,7 @@
 
 - Test Name:	Microsoft.Azure.Commands.DevSpaces.Test.ScenarioTests.DevSpacesTests.TestAzureDevSpaces
 
-In azure subscription create an AKS cluster uisng the following configuration
+In azure subscription create an AKS cluster using the following configuration
 	  - Cluster Name : kubeps5496
 	  - Cluster Resource Group Name :  rgps4504
 	  - Location : East US
@@ -12,7 +12,7 @@ In azure subscription create an AKS cluster uisng the following configuration
 
 - Test Name:	Microsoft.Azure.Commands.DevSpaces.Test.ScenarioTests.DevSpacesTests.TestAzureDevSpacesAsJobParameter
 
-In azure subscription create an AKS cluster uisng the following configuration
+In azure subscription create an AKS cluster using the following configuration
 	  - Cluster Name : kubeps5497
 	  - Cluster Resource Group Name :  rgps4507
 	  - Location : East US

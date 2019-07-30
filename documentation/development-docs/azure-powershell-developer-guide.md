@@ -105,7 +105,7 @@ msbuild build.proj /t:GenerateHelp
 
 ## Running Static Analysis
 
-To keep consistency across our modules, we've implemented a static analysis system. This verifies various aspects (depdencies, breaking changes, etc.) for your module. Run this command to execute static analysis validation for the built modules:
+To keep consistency across our modules, we've implemented a static analysis system. This verifies various aspects (dependencies, breaking changes, etc.) for your module. Run this command to execute static analysis validation for the built modules:
 
 ```
 msbuild build.proj /t:StaticAnalysis
@@ -302,7 +302,7 @@ Once all of your cmdlets have been created and the appropriate tests have been a
 
 ## Change Log
 
-Whenver you make updates to a project, please make sure to update the corresponding service's `ChangeLog.md` file with a snippet of what you changed under the `Upcoming Release` header. This information is later used for the release notes that goes out with each module the next time they are released, and provides users with more information as to what has changed in the module from the previous release. For more information on updating change logs can be found in [`CONTRIBUTING.md`](../../CONTRIBUTING.md#updating-the-change-log)
+Whenever you make updates to a project, please make sure to update the corresponding service's `ChangeLog.md` file with a snippet of what you changed under the `Upcoming Release` header. This information is later used for the release notes that goes out with each module the next time they are released, and provides users with more information as to what has changed in the module from the previous release. For more information on updating change logs can be found in [`CONTRIBUTING.md`](../../CONTRIBUTING.md#updating-the-change-log)
 
 # Misc
 
