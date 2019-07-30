@@ -64,7 +64,7 @@ ResourceGroup01   Server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b
 
 This command provisions an Azure AD administrator group named DBAs for the server named Server01.
 The command specifies an ID for the *ObjectId* parameter.
-This makes sure that that the command succeeds even if the display name of the group is not unique.
+This makes sure that the command succeeds even if the display name of the group is not unique.
 
 ## PARAMETERS
 

@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.NetworkruleSet
 
             if (Toremove != null)
             {
-                if (ShouldProcess(target: Name, action: string.Format("Removing IPrule for NetworkRuleSet of {0} in Resourcegroup {1}", Name, ResourceGroupName)))
+                if (ShouldProcess(target: Name, action: string.Format("Removing IP rule for NetworkRuleSet of {0} in Resourcegroup {1}", Name, ResourceGroupName)))
                 {
                     try
                     {

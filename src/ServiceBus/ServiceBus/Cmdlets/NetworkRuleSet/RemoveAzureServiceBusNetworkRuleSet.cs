@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.NetworkruleSet
             }
 
             // delete a Ip Filter Rule 
-            if (ShouldProcess(target:Name, action:string.Format("Delete NetwrokruleSet for Namespace {0} of ResourceGroup {1}", Name,ResourceGroupName)))
+            if (ShouldProcess(target:Name, action:string.Format("Delete NetworkruleSet for Namespace {0} of ResourceGroup {1}", Name,ResourceGroupName)))
             {
                 try
                 {

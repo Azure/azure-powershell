@@ -53,7 +53,7 @@ Id                                                                              
 /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/myService1/providers/Microsoft.Security/pricings/myService1 myService1 Standard
 ```
 
-Gets the configured pricing tier for the "myService1" resource gorup.
+Gets the configured pricing tier for the "myService1" resource group.
 
 ## PARAMETERS
 

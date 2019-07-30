@@ -849,7 +849,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                     }
                 }
 
-                // If debug is enabled then flush debug messsages 
+                // If debug is enabled then flush debug messages 
                 if (_isDebugEnabled)
                 {
                     if (!token.IsCancellationRequested &&

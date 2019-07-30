@@ -88,7 +88,7 @@ Accept wildcard characters: False
 
 ### -MetricsType
 Specifies a metrics type.
-This cmldet sets the Azure Storage service metrics type to the value that this parameter specifies.
+This cmdlet sets the Azure Storage service metrics type to the value that this parameter specifies.
 The acceptable values for this parameter are: Hour and Minute.
 
 ```yaml
