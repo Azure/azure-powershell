@@ -116,7 +116,7 @@ Accept wildcard characters: False
 ```
 
 ### -ConnectionBandwidthInMbps
-The bandwith that needs to be handled by this connection in mbps.
+The bandwidth that needs to be handled by this connection in mbps.
 
 ```yaml
 Type: System.UInt32
@@ -161,7 +161,7 @@ Accept wildcard characters: False
 ```
 
 ### -IpSecPolicy
-The bandwith that needs to be handled by this connection in mbps.
+The bandwidth that needs to be handled by this connection in mbps.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy

@@ -73,7 +73,7 @@ The following cmdlets were affected this release:
     - Add-AzureKeyVaultKey
     - Backup-AzureKeyVaultKey
     - Backup-AzureKeyVaultSecret
-    - Get-AzureKeyVaultCertficate
+    - Get-AzureKeyVaultCertificate
     - Get-AzureKeyVaultCertificateContact
     - Get-AzureKeyVaultCertificateIssuer
     - Get-AzureKeyVaultCertificateOperation

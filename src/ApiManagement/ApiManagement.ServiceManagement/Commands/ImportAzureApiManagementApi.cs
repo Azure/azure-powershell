@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "A URL of the web service exposing the API. This URL will be used by Azure API Management only, and will not be made public. " +
-            "This parameter is optional. If provided it will override the ServiceUrl specificed in the Specifications document.")]
+            "This parameter is optional. If provided it will override the ServiceUrl specified in the Specifications document.")]
         public String ServiceUrl { get; set; }
 
         [Parameter(

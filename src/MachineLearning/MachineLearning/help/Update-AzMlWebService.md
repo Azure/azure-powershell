@@ -145,7 +145,7 @@ Accept wildcard characters: False
 ```
 
 ### -IsReadOnly
-Specifies that this web serviceis readonly.
+Specifies that this web service is readonly.
 Once set, the web service can longer be updated, including changing the value of this property, and can only be deleted.
 
 ```yaml

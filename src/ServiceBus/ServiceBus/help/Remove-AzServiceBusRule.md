@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzServiceBusRule
 
 ## SYNOPSIS
-Removes the speficied rule of a given subscription .
+Removes the specified rule of a given subscription .
 
 ## SYNTAX
 

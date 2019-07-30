@@ -18,6 +18,7 @@
         - Additional information about change #1
 --->
 ## Upcoming Release
+* Fixed miscellaneous typos across module
 
 ## Version 1.12.0
 * Add support for private endpoint and private link service

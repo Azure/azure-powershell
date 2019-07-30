@@ -9,32 +9,40 @@ schema: 2.0.0
 # Get-AzRecoveryServicesBackupJobDetail
 
 ## SYNOPSIS
+
 Gets details for a Backup job.
 
 ## SYNTAX
 
 ### JobFilterSet (Default)
+
 ```
 Get-AzRecoveryServicesBackupJobDetail [-Job] <JobBase> [-VaultId <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### IdFilterSet
+
 ```
 Get-AzRecoveryServicesBackupJobDetail [-JobId] <String> [-VaultId <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
+
 The **Get-AzRecoveryServicesBackupJobDetail** cmdlet gets Azure Backup job details for a specified job.
-Set the vault context by using the Set-AzRecoveryServicesVaultContext cmdlet before you use the current cmdlet.
+Set the vault context by using the -VaultId parameter.
+
+Warning: **Get-AzRecoveryServicesBackupJobDetails** alias will be removed in a future breaking change release.
 
 ## EXAMPLES
 
 ### Example 1: Get Backup job details for failed jobs
-```
-PS C:\>$Jobs = Get-AzRecoveryServicesBackupJob -Status Failed
-PS C:\> $JobDetails = Get-AzRecoveryServicesBackupJobDetail -Job $Jobs[0]
+
+```powershell
+PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+PS C:\> $Jobs = Get-AzRecoveryServicesBackupJob -Status Failed -VaultId $vault.ID
+PS C:\> $JobDetails = Get-AzRecoveryServicesBackupJobDetail -Job $Jobs[0] -VaultId $vault.ID
 PS C:\> $JobDetails.ErrorDetails
 ```
 
@@ -45,6 +53,7 @@ The final command displays error details for the failed jobs.
 ## PARAMETERS
 
 ### -DefaultProfile
+
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
@@ -60,8 +69,9 @@ Accept wildcard characters: False
 ```
 
 ### -Job
+
 Specifies the job to get.
-To obtain a **BackupJob** object, use the Get-AzRecoveryServicesBackupJob cmdlet.
+To obtain a **BackupJob** object, use the **Get-AzRecoveryServicesBackupJob** cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase
@@ -76,8 +86,9 @@ Accept wildcard characters: False
 ```
 
 ### -JobId
+
 Specifies the ID of a Backup job.
-The ID is the InstanceId property of a **BackupJob** object.
+The ID is the JobId property of a **Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase** object.
 
 ```yaml
 Type: System.String
@@ -92,6 +103,7 @@ Accept wildcard characters: False
 ```
 
 ### -VaultId
+
 ARM ID of the Recovery Services Vault.
 
 ```yaml
@@ -106,8 +118,9 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+### -CommonParameters
+
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -122,5 +135,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [Get-AzRecoveryServicesBackupJob](./Get-AzRecoveryServicesBackupJob.md)
-
-

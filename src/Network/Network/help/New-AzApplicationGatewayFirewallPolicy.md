@@ -28,7 +28,7 @@ The **New-AzApplicationGatewayFirewallPolicy** cmdlet creates a application gate
 PS C:\> $firewallPolicy = New-AzureRmApplicationGatewayFirewallPolicy -Name wafResource1 -ResourceGroupName "rg1"  -Location  "westus" -CustomRules $customRule
 ```
 
-This command ceates a new Azure application gateway firewall policy named "wafResource1" in resource group "rg1" in location "westus" with custom rules defined in the $customRule variable
+This command creates a new Azure application gateway firewall policy named "wafResource1" in resource group "rg1" in location "westus" with custom rules defined in the $customRule variable
 
 ## PARAMETERS
 
