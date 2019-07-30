@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed miscellaneous typos across module
 
 ## Version 1.1.0
 * Updated cmdlets with plural nouns to singular, and deprecated plural names.

@@ -36,7 +36,7 @@ New-AzVmss [[-ResourceGroupName] <String>] [-VMScaleSetName] <String> [-AsJob] [
 
 ## DESCRIPTION
 The **New-AzVmss** cmdlet creates a Virtual Machine Scale Set (VMSS) in Azure.
-Use the simple parameter set (`SimpleParameterSet`) to quickly create a pre-set VMSS and associated resources. Use the default parameter set (`DefaultParameter`) for more advanced scenarios when you need to precisely configure each component of the the VMSS and each associated resource before creation.
+Use the simple parameter set (`SimpleParameterSet`) to quickly create a pre-set VMSS and associated resources. Use the default parameter set (`DefaultParameter`) for more advanced scenarios when you need to precisely configure each component of the VMSS and each associated resource before creation.
 
 ## EXAMPLES
 
@@ -273,7 +273,7 @@ Accept wildcard characters: False
 ```
 
 ### -DomainNameLabel
-The domain name label for the public Fully-Qualified domain name (FQDN) for this Scale Set. This is the first component of the domain name that is automatically assiged to the Scale Set. Automatically assigned Domain names use the form (<DomainNameLabel>.<Location>.cloudapp.azure.com). If no value is supplied, the default domain name label will be the concatenation of <ScaleSetName> and <ResourceGroupName>.
+The domain name label for the public Fully-Qualified domain name (FQDN) for this Scale Set. This is the first component of the domain name that is automatically assigned to the Scale Set. Automatically assigned Domain names use the form (<DomainNameLabel>.<Location>.cloudapp.azure.com). If no value is supplied, the default domain name label will be the concatenation of <ScaleSetName> and <ResourceGroupName>.
 
 ```yaml
 Type: System.String
@@ -303,7 +303,7 @@ Accept wildcard characters: False
 ```
 
 ### -FrontendPoolName
-The name of the frontend address pool to usein the Scale Set locad balancer.  If no value is supplied, a new Frontend Address Pool will be created, with the same name as the scale set.
+The name of the frontend address pool to use in the Scale Set load balancer.  If no value is supplied, a new Frontend Address Pool will be created, with the same name as the scale set.
 
 ```yaml
 Type: System.String
@@ -393,7 +393,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProximityPlacementGroup
-The name or resource id of the Proximity Placment Group to use with this Scale Set.
+The name or resource id of the Proximity Placement Group to use with this Scale Set.
 
 ```yaml
 Type: System.String
@@ -510,7 +510,7 @@ Accept wildcard characters: False
 ```
 
 ### -SystemAssignedIdentity
-If the parameter is present then the VM(s) in the scale set is(are) assingned a managed system identity that is auto generated.
+If the parameter is present then the VM(s) in the scale set is(are) assigned a managed system identity that is auto generated.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

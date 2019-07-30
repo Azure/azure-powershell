@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 // If the file size is more than 1MB, fail the call - this is just to avoid Dos Attacks
                 if (fileStream.Length > 1048576)
                 {
-                    throw new Exception("The Certficate size exceeds 1MB. Please provide a file whose size is utmost 1 MB");
+                    throw new Exception("The Certificate size exceeds 1MB. Please provide a file whose size is utmost 1 MB");
                 }
 
                 var size = (int)fileStream.Length;

@@ -60,7 +60,7 @@ The following cmdlets were affected this release:
 - The 'Remove-AzureRmServiceBusTopicAuthorizationRule' cmdlet has been removed. Please use the 'Remove-AzureRmServiceBusAuthorizationRule' cmdlet.
 
 **Set-AzureRmServiceBusTopicAuthorizationRule**
-- The 'Set-AzureRmServiceBusTopicAuthorizationRule' cmdlet has been removed. Please use the 'Set-AzureRmServiceBusAuthorizationRule'cmdlet.
+- The 'Set-AzureRmServiceBusTopicAuthorizationRule' cmdlet has been removed. Please use the 'Set-AzureRmServiceBusAuthorizationRule' cmdlet.
 
 **New-AzureRmServiceBusNamespaceKey**
 - The 'New-AzureRmServiceBusNamespaceKey' cmdlet has been removed. Please use the 'New-AzureRmServiceBusKey' cmdlet.
@@ -171,7 +171,7 @@ $topic = Get-AzureRmServiceBusTopic <parameters>
 ```powershell
 # Old
 # The $subscription has EntityAvailabilityStatus, EnableSubscriptionPartitioning, IsAnonymousAccessible, IsExpress, Location and FilteringMessagesBeforePublishing properties
-$subscription = Get-AzureRmServiceBussubscription <parameters>
+$subscription = Get-AzureRmServiceBusSubscription <parameters>
 $subscription.EntityAvailabilityStatus
 $subscription.EnableSubscriptionPartitioning
 $subscription.IsAnonymousAccessible
@@ -181,5 +181,5 @@ $subscription.Location
 
 # New
 # The call remains the same, but the returned values Topic object will not have the EntityAvailabilityStatus, EnableBatchedOperations, IsAnonymousAccessible and SupportOrdering properties    
-$subscription = Get-AzureRmServiceBussubscription <parameters>
+$subscription = Get-AzureRmServiceBusSubscription <parameters>
 ```

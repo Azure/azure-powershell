@@ -1023,7 +1023,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                         provisioningState: "Failed",
                         statusMessage: JsonConvert.SerializeObject(
                             value: new ResourceManagementErrorWithDetails(
-                                message: "A really bad error occured")),
+                                message: "A really bad error occurred")),
                         targetResource: new TargetResource()
                         {
                             ResourceType = "Microsoft.Website",
@@ -1060,7 +1060,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             Assert.NotNull(deploymentFromGet.Properties.Template);
 
             errorLoggerMock.Verify(
-                f => f("A really bad error occured"),
+                f => f("A really bad error occurred"),
                 Times.Once());
         }
 

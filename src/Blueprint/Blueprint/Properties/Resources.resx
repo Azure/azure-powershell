@@ -178,7 +178,7 @@
     <value>Could not register the resource provider '{0}'</value>
   </data>
   <data name="UnexpectedErrorWhileCheckingIfBlueprintExists" xml:space="preserve">
-    <value>An unexpected error occured while checking if blueprint already exists. Try again in a few minutes. '{0}'</value>
+    <value>An unexpected error occurred while checking if blueprint already exists. Try again in a few minutes. '{0}'</value>
   </data>
   <data name="UpdateArtifactShouldProcessString" xml:space="preserve">
     <value>Update artifact '{0}'</value>

@@ -40,7 +40,7 @@ Alternatively, you can specify the endpoint name and type by using the *Name* an
 PS C:\> Disable-AzTrafficManagerEndpoint -Name "contoso" -ProfileName "ContosoProfile" -ResourceGroupName ResourceGroup11 -Type ExternalEndpoints
 ```
 
-This command disables the external endpoint named contoso in the profile named ContosoProfile in resource group ResouceGroup11.
+This command disables the external endpoint named contoso in the profile named ContosoProfile in resource group ResourceGroup11.
 The command prompts you for confirmation.
 
 ### Example 2: Disable an endpoint by using the pipeline

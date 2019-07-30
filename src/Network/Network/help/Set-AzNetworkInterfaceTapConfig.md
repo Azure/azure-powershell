@@ -77,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -NetworkInterfaceTapConfig
-The NetworkInterface Tap configurtion
+The NetworkInterface Tap configuration
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSNetworkInterfaceTapConfiguration

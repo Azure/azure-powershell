@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzPeering
 
 ## SYNOPSIS
-Gets the Peering Resources for a subsription
+Gets the Peering Resources for a subscription
 
 ## SYNTAX
 
