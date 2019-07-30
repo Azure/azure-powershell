@@ -15,6 +15,7 @@
     <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.1" />
     <PackageReference Include="Microsoft.Azure.KeyVault.WebKey" Version="3.0.1" />
     <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="2.4.2" />
+    <PackageReference Include="Microsoft.Azure.Management.Sql" Version="1.33.0-preview" />
   </ItemGroup>
 
 </Project>
