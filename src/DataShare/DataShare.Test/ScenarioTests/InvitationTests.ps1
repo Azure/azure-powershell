@@ -10,27 +10,33 @@ Full Invitation CRUD cycle
 function Test-InvitationCrud
 {
     $resourceGroup = getAssetName
-    $AccountName = getAssetName
-    $ShareName = getAssetName
-    $InvitationName = getAssetName
-    $targetEmail = "test@microsoft.com"
-    $createdInvitation = New-AzDataShareInvitation -AccountName $AccountName -ResourceGroupName $resourceGroup -ShareName $ShareName -Name $InvitationName -TargetEmail $targetEmail
 
-    Assert-NotNull $createdInvitation
-    Assert-AreEqual $InvitationName $createdInvitation.Name
-    Assert-AreEqual "test@microsoft.com" $createdInvitation.TargetEmail
-    Assert-AreEqual "Pending" $createdInvitation.InvitationStatus
+	try
+	{
+		$AccountName = getAssetName
+		$ShareName = getAssetName
+		$InvitationName = getAssetName
+		$targetEmail = "test@microsoft.com"
+		$createdInvitation = New-AzDataShareInvitation -AccountName $AccountName -ResourceGroupName $resourceGroup -ShareName $ShareName -Name $InvitationName -TargetEmail $targetEmail
 
-    $retrievedInvitation = Get-AzDataShareInvitation -AccountName $AccountName -ResourceGroupName $resourceGroup -ShareName $ShareName -Name $InvitationName
+		Assert-NotNull $createdInvitation
+		Assert-AreEqual $InvitationName $createdInvitation.Name
+		Assert-AreEqual "test@microsoft.com" $createdInvitation.TargetEmail
+		Assert-AreEqual "Pending" $createdInvitation.InvitationStatus
 
-    Assert-NotNull $retrievedInvitation
-    Assert-AreEqual $InvitationName $retrievedInvitation.Name
-    Assert-AreEqual "Pending" $retrievedInvitation.InvitationStatus
+		$retrievedInvitation = Get-AzDataShareInvitation -AccountName $AccountName -ResourceGroupName $resourceGroup -ShareName $ShareName -Name $InvitationName
 
-    $removed = Remove-AzDataShareInvitation -AccountName $AccountName -ResourceGroupName $resourceGroup -ShareName $ShareName -Name $InvitationName -PassThru
+		Assert-NotNull $retrievedInvitation
+		Assert-AreEqual $InvitationName $retrievedInvitation.Name
+		Assert-AreEqual "Pending" $retrievedInvitation.InvitationStatus
 
-    Assert-True { $removed }
-    Assert-ThrowsContains { Get-AzDataShareInvitation -AccountName $AccountName -ResourceGroupName $resourceGroup -ShareName $ShareName -Name $InvitationName} "Resource 'sdktestinginvitation' does not exist"
+		$removed = Remove-AzDataShareInvitation -AccountName $AccountName -ResourceGroupName $resourceGroup -ShareName $ShareName -Name $InvitationName -PassThru
 
-    Remove-AzResourceGroup -Name $resourceGroup
+		Assert-True { $removed }
+		Assert-ThrowsContains { Get-AzDataShareInvitation -AccountName $AccountName -ResourceGroupName $resourceGroup -ShareName $ShareName -Name $InvitationName} "Resource 'sdktestinginvitation' does not exist"
+	}
+    finally
+	{
+		Remove-AzResourceGroup -Name $resourceGroup -Force
+	}
 }
