@@ -35,7 +35,6 @@ function Test-ProviderShareSubscriptionGrantAndRevoke
 	
 	$reinstated = Grant-AzDataShareSubscriptionAccess -ResourceId $resourceId -ShareSubscriptionId $ShareSubId
 	Assert-NotNull $reinstated
-
 }
 
 function Test-ProviderShareSubscriptionGet

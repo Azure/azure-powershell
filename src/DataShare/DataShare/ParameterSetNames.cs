@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.DataShare
     {
         public const string ObjectParameterSet = "ByObjectParameterSet";
         public const string FieldsParameterSet = "ByFieldsParameterSet";
+        public const string ResourceGroupParameterSet = "ByResourceGroupParameterSet";
         public const string ResourceIdParameterSet = "ByResourceIdParameterSet";
         public const string InvitationEmailParameterSet = "ByInvitationEmailParameterSet";
         public const string InvitationTenantParameterSet = "ByInvitationTenantParameterSet";
