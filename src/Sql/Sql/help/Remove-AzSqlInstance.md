@@ -14,7 +14,7 @@ Removes an Azure SQL Managed Database Instance.
 
 ### RemoveInstanceFromInputParameters (Default)
 ```
-Remove-AzSqlInstance [-Name] <String> [-ResourceGroupName] <String> [-Force]
+Remove-AzSqlInstance [-ResourceGroupName] <String> [-Name] <String> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -98,7 +98,7 @@ Parameter Sets: RemoveInstanceFromInputParameters
 Aliases: InstanceName
 
 Required: True
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -113,7 +113,7 @@ Parameter Sets: RemoveInstanceFromInputParameters
 Aliases:
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
