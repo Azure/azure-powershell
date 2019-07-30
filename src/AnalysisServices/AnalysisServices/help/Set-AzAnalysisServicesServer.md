@@ -161,7 +161,7 @@ Accept wildcard characters: False
 ```
 
 ### -GatewayResourceId
-Gateway resource Id for assocaite to an Analysis server
+Gateway resource Id to associate to an Analysis server
 
 ```yaml
 Type: System.String

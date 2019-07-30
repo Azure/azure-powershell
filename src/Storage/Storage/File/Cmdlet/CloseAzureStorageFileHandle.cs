@@ -158,7 +158,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             HelpMessage = "Azure Storage Context Object")]
         public override IStorageContext Context { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Return whether the specified blob is successfully removed")]
+        [Parameter(Mandatory = false, HelpMessage = "Return the count of closed file handles.")]
         public SwitchParameter PassThru { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]

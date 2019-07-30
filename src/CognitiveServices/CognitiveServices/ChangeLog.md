@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed miscellaneous typos across module
+
+## Version 1.2.0
 * Added NetworkRuleSet support.
 
 ## Version 1.1.1

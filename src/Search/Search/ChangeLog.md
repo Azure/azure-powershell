@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed miscellaneous typos across module
 
 ## Version 0.7.2
 * Added 2 new SKUs (Storage_Optimized_L1 and Storage_Optimized_L2) and appropriate tests

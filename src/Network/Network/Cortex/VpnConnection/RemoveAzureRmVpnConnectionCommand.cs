@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByVpnConnectionResourceId,
-            HelpMessage = "The resource id of the VpnConenction object to delete.")]
+            HelpMessage = "The resource id of the VpnConnection object to delete.")]
         public string ResourceId { get; set; }
 
         [Alias("VpnConnection")]
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipeline = true,
             ParameterSetName = CortexParameterSetNames.ByVpnConnectionObject,
-            HelpMessage = "The VpnConenction object to update.")]
+            HelpMessage = "The VpnConnection object to update.")]
         public PSVpnConnection InputObject { get; set; }
 
         [Parameter(

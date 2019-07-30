@@ -33,7 +33,7 @@ The **Publish-AzCdnEndpointContent** cmdlet loads content from an origin server 
 ## PARAMETERS
 
 ### -CdnEndpoint
-Sepcifies the CDN endpoint.
+Specifies the CDN endpoint.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint
