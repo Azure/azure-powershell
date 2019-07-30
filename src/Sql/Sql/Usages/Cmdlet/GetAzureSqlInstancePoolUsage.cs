@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Commands.Sql.Usages
     /// Defines the Get-AzSqlInstancePoolUsage cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstancePoolUsage",
-         DefaultParameterSetName = InstancePoolUsageDefaultParameterSet, SupportsShouldProcess = true)]
+         DefaultParameterSetName = InstancePoolUsageDefaultParameterSet)]
     [OutputType(typeof(AzureSqlUsageModel))]
     public class GetAzureSqlInstancePoolUsage : UsageCmdletBase
     {
