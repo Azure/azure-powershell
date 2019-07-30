@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Fixed miscellaneous typos across module
+* Updated ADF .Net SDK version to 4.1.1 
 
 ## Version 1.1.3
 * Updated ADF .Net SDK version to 4.1.0

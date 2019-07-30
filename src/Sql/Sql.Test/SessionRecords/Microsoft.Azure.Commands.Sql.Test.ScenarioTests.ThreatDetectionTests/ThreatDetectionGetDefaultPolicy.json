@@ -2000,7 +2000,7 @@
     }
   ],
   "Names": {
-    "Test-ThreatDetectionGetDefualtPolicy": [
+    "Test-ThreatDetectionGetDefaultPolicy": [
       "ps7372"
     ]
   },
