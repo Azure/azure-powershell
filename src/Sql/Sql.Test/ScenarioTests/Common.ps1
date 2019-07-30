@@ -763,7 +763,8 @@ function Get-InstancePoolTestProperties()
     $instancePoolTestProperties = @{
         resourceGroup = "instancePoolCSSdemo"
         name = "cssinstancepool0"
-        subnetId = "/subscriptions/2e7fe4bd-90c7-454e-8bb6-dc44649f27b2/resourceGroups/instancePoolCSSdemo/providers/Microsoft.Network/virtualNetworks/vnet-cssinstancepool0/subnets/InstancePool"
+        subnetName = "InstancePool"
+        vnetName = "vnet-cssinstancepool0"
         tags = $tags
         computeGen = "Gen5"
         edition = "GeneralPurpose"
@@ -781,8 +782,10 @@ function Get-InstancePoolTestProperties()
 function Create-InstancePoolForTest()
 {
     $props = Get-InstancePoolTestProperties
+    $virtualNetwork = CreateAndGetVirtualNetworkForManagedInstance $props.vnetName $props.subnetName $props.location $props.resourceGroup
+    $subnetId = $virtualNetwork.Subnets.where({ $_.Name -eq $props.subnetName })[0].Id
     $instancePool = New-AzSqlInstancePool -ResourceGroupName $props.resourceGroup -Name $props.name `
-                -Location $props.location -SubnetId $props.subnetId -VCore $props.vCores `
+                -Location $props.location -SubnetId $subnetId -VCore $props.vCores `
                 -Edition $props.Edition -ComputeGeneration $props.computeGen `
                 -LicenseType $props.licenseType -Tag $props.tags
     return $instancePool
