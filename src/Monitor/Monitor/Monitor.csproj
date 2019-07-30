@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.Monitor" Version="0.22.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Sql" Version="1.33.0-preview" />
   </ItemGroup>
 
 </Project>

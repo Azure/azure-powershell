@@ -265,7 +265,9 @@ AliasesToExport = 'Get-AzSqlDatabaseServerAuditingPolicy',
                'Get-AzSqlDatabaseThreatDetectionPolicy', 
                'Set-AzSqlDatabaseThreatDetectionPolicy', 
                'Remove-AzSqlDatabaseThreatDetectionPolicy', 
-               'Set-AzSqlInstanceTDEProtector', 'Get-AzSqlInstanceTDEProtector'
+               'Set-AzSqlInstanceTDEProtector', 'Get-AzSqlInstanceTDEProtector',
+			   'Invoke-AzureSqlDatabaseFailover',
+               'Invoke-AzureSqlElasticPoolFailover'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
