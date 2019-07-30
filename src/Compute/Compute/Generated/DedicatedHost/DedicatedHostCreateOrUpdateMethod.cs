@@ -107,7 +107,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string Location { get; set; }
 
         [Parameter(
-            Position = 4,
             Mandatory = true)]
         public string Sku { get; set; }
 
