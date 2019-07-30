@@ -10,42 +10,50 @@ Full DataSetMapping CRUD cycle
 function Test-BlobDataSetMappingCrud
 {
 	$resourceGroup = getAssetName
-    $AccountName = getAssetName
-	$ShareSubscriptionName = getAssetName
-    $DataSetMappingName = getAssetName
-	$StorageAccountId = getAssetName
-	$DataSetId = getAssetName
-	$ContainerName = getAssetName
-	$createdContainerDatasetMapping = New-AzDataShareDataSetMapping -ResourceGroupName $resourceGroup -AccountName $AccountName -ShareSubscriptionName $ShareSubscriptionName -Name $DataSetMappingName -StorageAccountResourceId $StorageAccountId -DataSetId $DataSetId -Container $ContainerName
 
-	Assert-NotNull $createdContainerDatasetMapping
-	Assert-AreEqual $DataSetMappingName $createdContainerDatasetMapping.Name
-	Assert-AreEqual "ok" $createdContainerDatasetMapping.DataSetMappingStatus
+	try
+	{
+		$AccountName = getAssetName
+		$ShareSubscriptionName = getAssetName
+		$DataSetMappingName = getAssetName
+		$StorageAccountId = getAssetName
+		$DataSetId = getAssetName
+		$ContainerName = getAssetName
+		$createdContainerDatasetMapping = New-AzDataShareDataSetMapping -ResourceGroupName $resourceGroup -AccountName $AccountName -ShareSubscriptionName $ShareSubscriptionName -Name $DataSetMappingName -StorageAccountResourceId $StorageAccountId -DataSetId $DataSetId -Container $ContainerName
 
-	$Prefix = getAssetName
-	$createdBlobFolderMapping = New-AzDataShareDataSetMapping -ResourceGroupName $resourceGroup -AccountName $AccountName -ShareSubscriptionName $ShareSubscriptionName -Name $DataSetMappingName -StorageAccountResourceId $StorageAccountId -DataSetId $DataSetId -Container $ContainerName -FolderPath $Prefix
+		Assert-NotNull $createdContainerDatasetMapping
+		Assert-AreEqual $DataSetMappingName $createdContainerDatasetMapping.Name
+		Assert-AreEqual "ok" $createdContainerDatasetMapping.DataSetMappingStatus
 
-	Assert-NotNull $createdBlobFolderMapping
-	Assert-AreEqual $DataSetMappingName $createdBlobFolderMapping.Name
-	Assert-AreEqual "ok" $createdBlobFolderMapping.DataSetMappingStatus
+		$Prefix = getAssetName
+		$createdBlobFolderMapping = New-AzDataShareDataSetMapping -ResourceGroupName $resourceGroup -AccountName $AccountName -ShareSubscriptionName $ShareSubscriptionName -Name $DataSetMappingName -StorageAccountResourceId $StorageAccountId -DataSetId $DataSetId -Container $ContainerName -FolderPath $Prefix
 
-	$FilePath = getAssetName
-	$createdBlobMapping = New-AzDataShareDataSetMapping -ResourceGroupName $resourceGroup -AccountName $AccountName -ShareSubscriptionName $ShareSubscriptionName -Name $DataSetMappingName -StorageAccountResourceId $StorageAccountId -DataSetId $DataSetId -Container $ContainerName -FilePath $FilePath
+		Assert-NotNull $createdBlobFolderMapping
+		Assert-AreEqual $DataSetMappingName $createdBlobFolderMapping.Name
+		Assert-AreEqual "ok" $createdBlobFolderMapping.DataSetMappingStatus
 
-	Assert-NotNull $createdBlobMapping
-	Assert-AreEqual $DataSetMappingName $createdBlobMapping.Name
-	Assert-AreEqual "ok" $createdBlobMapping.DataSetMappingStatus
+		$FilePath = getAssetName
+		$createdBlobMapping = New-AzDataShareDataSetMapping -ResourceGroupName $resourceGroup -AccountName $AccountName -ShareSubscriptionName $ShareSubscriptionName -Name $DataSetMappingName -StorageAccountResourceId $StorageAccountId -DataSetId $DataSetId -Container $ContainerName -FilePath $FilePath
 
-	$retreivedDatasetMapping = Get-AzDataShareDataSetMapping -ResourceGroupName $resourceGroup -AccountName $AccountName -ShareSubscriptionName $ShareSubscriptionName -Name $DataSetMappingName
+		Assert-NotNull $createdBlobMapping
+		Assert-AreEqual $DataSetMappingName $createdBlobMapping.Name
+		Assert-AreEqual "ok" $createdBlobMapping.DataSetMappingStatus
+
+		$retreivedDatasetMapping = Get-AzDataShareDataSetMapping -ResourceGroupName $resourceGroup -AccountName $AccountName -ShareSubscriptionName $ShareSubscriptionName -Name $DataSetMappingName
 	
-	Assert-NotNull $retreivedDatasetMapping
-	Assert-AreEqual $DataSetMappingName $retreivedDatasetMapping.Name
+		Assert-NotNull $retreivedDatasetMapping
+		Assert-AreEqual $DataSetMappingName $retreivedDatasetMapping.Name
 
-	$ResourceId = getAssetName
-	$retreivedDatasetMapping = Get-AzDataShareDataSetMapping -ResourceId $ResourceId
+		$ResourceId = getAssetName
+		$retreivedDatasetMapping = Get-AzDataShareDataSetMapping -ResourceId $ResourceId
 
-	Assert-NotNull $retreivedDatasetMapping
-	Assert-AreEqual $DataSetMappingName $retreivedDatasetMapping.Name
+		Assert-NotNull $retreivedDatasetMapping
+		Assert-AreEqual $DataSetMappingName $retreivedDatasetMapping.Name
+	}
+	finally
+	{
+		Remove-AzResourceGroup -Name $resourceGroup -Force
+	}
 }
 
 function Test-AdlsGen2DataSetMappingCrud

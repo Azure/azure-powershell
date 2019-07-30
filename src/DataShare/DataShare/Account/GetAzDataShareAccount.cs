@@ -46,9 +46,9 @@ namespace Microsoft.Azure.Commands.DataShare.Account
         /// The resource group name of the azure data share account.
         /// </summary>
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "The resource group name of the azure data share account.",
-            ParameterSetName = ParameterSetNames.FieldsParameterSet)]
+            ParameterSetName = ParameterSetNames.ResourceGroupParameterSet)]
         [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.DataShare.Account
         [Parameter(
             Mandatory = false,
             HelpMessage = "Azure data share account name.",
-            ParameterSetName = ParameterSetNames.FieldsParameterSet)]
+            ParameterSetName = ParameterSetNames.ResourceGroupParameterSet)]
         [ResourceNameCompleter(ResourceTypes.Account, "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.DataShare.Account
                 this.Name = parsedResourceId.GetAccountName();
             }
 
-            if (this.Name == null && this.ResourceGroupName == null)
+            if (this.ResourceGroupName == null)
             {
                 string nextPageLink = null;
                 List<Account> accountList = new List<Account>();
@@ -106,36 +106,40 @@ namespace Microsoft.Azure.Commands.DataShare.Account
                 IEnumerable<PSDataShareAccount> accountsInSubscription = accountList.Select(account => account.ToPsObject());
                 this.WriteObject(accountsInSubscription, true);
             }
-            else if (this.Name == null && this.ResourceGroupName != null)
-            {
-                // List by Resource Group name.
-                string nextPageLink = null;
-                List<Account> accountList = new List<Account>();
-
-                do
-                {
-                    IPage<Account> accounts = string.IsNullOrEmpty(nextPageLink)
-                        ? this.DataShareManagementClient.Accounts.ListByResourceGroup(this.ResourceGroupName)
-                        : this.DataShareManagementClient.Accounts.ListByResourceGroupNext(nextPageLink);
-
-                    accountList.AddRange(accounts.AsEnumerable());
-                    nextPageLink = accounts.NextPageLink;
-                } while (nextPageLink != null);
-
-                IEnumerable<PSDataShareAccount> accountsInResourceGroup = accountList.Select(account => account.ToPsObject());
-                this.WriteObject(accountsInResourceGroup, true);
-            }
             else
             {
-                try
+                if (this.Name == null)
                 {
-                    // Get by both Profile Name and Resource Group Name.
-                    var account = this.DataShareManagementClient.Accounts.Get(this.ResourceGroupName, this.Name);
-                    this.WriteObject(account.ToPsObject());
+                    // List by Resource Group name.
+                    string nextPageLink = null;
+                    List<Account> accountList = new List<Account>();
+
+                    do
+                    {
+                        IPage<Account> accounts = string.IsNullOrEmpty(nextPageLink)
+                            ? this.DataShareManagementClient.Accounts.ListByResourceGroup(this.ResourceGroupName)
+                            : this.DataShareManagementClient.Accounts.ListByResourceGroupNext(nextPageLink);
+
+                        accountList.AddRange(accounts.AsEnumerable());
+                        nextPageLink = accounts.NextPageLink;
+                    } while (nextPageLink != null);
+
+                    IEnumerable<PSDataShareAccount> accountsInResourceGroup =
+                        accountList.Select(account => account.ToPsObject());
+                    this.WriteObject(accountsInResourceGroup, true);
                 }
-                catch (DataShareErrorException ex) when (ex.Response.StatusCode.Equals(HttpStatusCode.NotFound))
+                else
                 {
-                    throw new PSArgumentException(string.Format(Resources.ResourceNotFoundMessage, this.Name));
+                    try
+                    {
+                        // Get by both Profile Name and Resource Group Name.
+                        var account = this.DataShareManagementClient.Accounts.Get(this.ResourceGroupName, this.Name);
+                        this.WriteObject(account.ToPsObject());
+                    }
+                    catch (DataShareErrorException ex) when (ex.Response.StatusCode.Equals(HttpStatusCode.NotFound))
+                    {
+                        throw new PSArgumentException(string.Format(Resources.ResourceNotFoundMessage, this.Name));
+                    }
                 }
             }
         }
