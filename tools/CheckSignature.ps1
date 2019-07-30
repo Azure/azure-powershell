@@ -71,7 +71,7 @@ function Check-All {
 
     # -------------------------------------
 
-    $files = Get-ChildItem $path\* -Include *.dll, *.ps1, *.psm1 -Recurse | Where-Object { $_.FullName -like "*Azure*" }
+    $files = Get-ChildItem $path\* -Include *.dll, *.ps1, *.psm1, *.psd1 -Recurse | Where-Object { $_.FullName -like "*Azure*" }
     $files = $files | Where-Object { ($_.FullName -notlike "*Newtonsoft.Json*") -and `
                                      ($_.FullName -notlike "*AutoMapper*") -and `
                                      ($_.FullName -notlike "*Security.Cryptography*") -and `
@@ -79,7 +79,7 @@ function Check-All {
                                      ($_.FullName -notlike "*YamlDotNet*") -and `
                                      ($_.FullName -notlike "*BouncyCastle.Crypto*") -and `
                                      ($_.FullName -notlike "*System.Management.Automation*")}
-    Write-Host "Checking the authenticode signature of $($files.Count) files (.dll, .ps1, .psm1)" -ForegroundColor Yellow
+    Write-Host "Checking the authenticode signature of $($files.Count) files (.dll, .ps1, .psm1, .psd1)" -ForegroundColor Yellow
 
     $invalidAuthenticodeList = @()
 
@@ -94,7 +94,7 @@ function Check-All {
         Write-Host "Found $($invalidAuthenticodeList.Count) files with an invalid authenticode signature." -ForegroundColor Red
     }
     else {
-        Write-Host "All files (.dll, .ps1, .psd1) have a valid authenticode signature." -ForegroundColor Green
+        Write-Host "All files (.dll, .ps1, .psm1, .psd1) have a valid authenticode signature." -ForegroundColor Green
     }
 
     if ($invalidList.Length -gt 0) {
