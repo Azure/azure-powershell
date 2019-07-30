@@ -29,7 +29,6 @@ namespace Microsoft.Azure.Commands.DataShare.DataSetMapping
     /// <summary>
     /// Defines the New-DataShareDataSetMapping cmdlet.
     /// </summary>
-    ///     [Cmdlet(
     [Cmdlet(
          "New",
          ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataShareDataSetMapping",
