@@ -76,30 +76,43 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         public string InstancePoolResourceId { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the resource group to use.
+        /// Gets or sets the name of the instance.
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 0,
-            HelpMessage = "The name of the resource group.",
+            HelpMessage = "The name of the instance.",
             ParameterSetName = NewBySkuNameParameterSet)]
         [Parameter(Mandatory = true,
             Position = 0,
+            HelpMessage = "The name of the instance.",
+            ParameterSetName = NewByEditionAndComputeGenerationParameterSet)]
+        [Parameter(Mandatory = true,
+            Position = 1,
+            HelpMessage = "The name of the instance.",
+            ParameterSetName = NewByInstancePoolParentObjectParameterSet)]
+        [Parameter(Mandatory = true,
+            Position = 1,
+            HelpMessage = "The name of the instance.",
+            ParameterSetName = NewByInstancePoolResourceIdParameterSet)]
+        [Alias("InstanceName")]
+        [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the resource group to use.
+        /// </summary>
+        [Parameter(Mandatory = true,
+            Position = 1,
+            HelpMessage = "The name of the resource group.",
+            ParameterSetName = NewBySkuNameParameterSet)]
+        [Parameter(Mandatory = true,
+            Position = 1,
             HelpMessage = "The name of the resource group.",
             ParameterSetName = NewByEditionAndComputeGenerationParameterSet)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public override string ResourceGroupName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name of the instance.
-        /// </summary>
-        [Parameter(Mandatory = true,
-            Position = 1,
-            HelpMessage = "The name of the instance.")]
-        [Alias("InstanceName")]
-        [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the admin credential of the instance
