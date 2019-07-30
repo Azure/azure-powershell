@@ -39,16 +39,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         protected const string RemoveByResourceIdParameterSet =
             "RemoveInstanceFromAzureResourceId";
 
-        /// <summary>
-        /// Gets or sets the name of the resource group to use.
-        /// </summary>
-        [Parameter(ParameterSetName = RemoveByNameAndResourceGroupParameterSet,
-            Mandatory = true,
-            Position = 0,
-            HelpMessage = "The name of the resource group.")]
-        [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty]
-        public override string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the instance to use.
@@ -56,12 +46,23 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         [Parameter(
             ParameterSetName = RemoveByNameAndResourceGroupParameterSet,
             Mandatory = true,
-            Position = 1,
+            Position = 0,
             HelpMessage = "The name of the instance.")]
         [Alias("InstanceName")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the resource group to use.
+        /// </summary>
+        [Parameter(ParameterSetName = RemoveByNameAndResourceGroupParameterSet,
+            Mandatory = true,
+            Position = 1,
+            HelpMessage = "The name of the resource group.")]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
+        public override string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Instance object to remove
