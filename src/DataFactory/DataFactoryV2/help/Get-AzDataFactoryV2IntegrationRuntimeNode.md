@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzDataFactoryV2IntegrationRuntimeNode
 
 ## SYNOPSIS
-Gets an integration runtime node infomation.
+Gets an integration runtime node information.
 
 ## SYNTAX
 

@@ -14,8 +14,10 @@
 
 namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
 {
+    using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
     using Microsoft.Azure.Commands.ResourceGraph.Utilities;
+    using Microsoft.Azure.Internal.Subscriptions.Version2018_06_01;
     using Microsoft.Azure.Management.ResourceGraph.Models;
     using System;
     using System.Collections.Generic;
@@ -30,9 +32,24 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
     public class SearchAzureRmGraph : ResourceGraphBaseCmdlet
     {
         /// <summary>
+        /// The synchronize root
+        /// </summary>
+        private static readonly object SyncRoot = new object();
+
+        /// <summary>
+        /// Query extension with subscription names
+        /// </summary>
+        private static string queryExtensionToIncludeNames = null;
+
+        /// <summary>
         /// The rows per page
         /// </summary>
         private const int RowsPerPage = 1000;
+
+        /// <summary>
+        /// Maximum number of subscriptions for request
+        /// </summary>
+        private const int SubscriptionLimit = 1000;
 
         /// <summary>
         /// Gets or sets the query.
@@ -82,6 +99,17 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         }
 
         /// <summary>
+        /// Gets or sets if result should be extended with subcription and tenant names.
+        /// </summary>s
+        [Parameter(Mandatory = false, HelpMessage = "Indicates if result should be extended with subcription and tenants names")]
+        [PSDefaultValue(Value = IncludeOptionsEnum.None)]
+        public IncludeOptionsEnum Include
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// Executes the cmdlet.
         /// </summary>
         public override void ExecuteCmdlet()
@@ -99,12 +127,21 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                 return;
             }
 
+            if (subscriptions.Count > SubscriptionLimit)
+            {
+                subscriptions = subscriptions.Take(SubscriptionLimit).ToList();
+                this.WriteWarning("The query included more subscriptions than allowed. " +
+                    $"Only the first {SubscriptionLimit} subscriptions were included for the results. " +
+                    $"To use more than {SubscriptionLimit} subscriptions, see the docs for examples: https://aka.ms/arg-error-toomanysubs");
+            }
+
             var first = this.MyInvocation.BoundParameters.ContainsKey("First") ? this.First : 100;
             var skip = this.MyInvocation.BoundParameters.ContainsKey("Skip") ? this.Skip : 0;
 
             var results = new List<PSObject>();
             QueryResponse response = null;
 
+            var resultTruncated = false;
             try
             {
                 do
@@ -120,15 +157,33 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                         skipToken: requestSkipToken,
                         resultFormat: ResultFormat.ObjectArray);
 
-                    var request = new QueryRequest(subscriptions, this.Query, options: requestOptions);
+                    var queryExtenstion = (this.Include == IncludeOptionsEnum.DisplayNames && this.QueryExtensionInitizalized()) ?
+                        (queryExtensionToIncludeNames + (this.Query.Length != 0 ? "| " : string.Empty)) :
+                        string.Empty;
+
+                    var request = new QueryRequest(subscriptions, queryExtenstion + this.Query, options: requestOptions);
                     response = this.ResourceGraphClient.ResourcesWithHttpMessagesAsync(request)
                         .Result
                         .Body;
+
+                    if (response.ResultTruncated == ResultTruncated.True)
+                    {
+                        resultTruncated = true;
+                    }
+
                     var requestResults = response.Data.ToPsObjects();
                     results.AddRange(requestResults);
                     this.WriteVerbose($"Received results: {requestResults.Count}");
                 }
                 while (results.Count < first && response.SkipToken != null);
+
+                if (resultTruncated && results.Count < first)
+                {
+                    this.WriteWarning("Unable to paginate the results of the query. " +
+                        "Some resources may be missing from the results. " +
+                        "To rewrite the query and enable paging, " +
+                        "see the docs for an example: https://aka.ms/arg-results-truncated");
+                }
             }
             catch (Exception ex)
             {
@@ -186,6 +241,60 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
             }
 
             return SubscriptionCache.GetSubscriptions(this.DefaultContext);
+        }
+
+        /// <summary>
+        /// Ensure that this.queryExtensionToIncludeNames is initialized
+        /// </summary>
+        /// <returns></returns>
+        private bool QueryExtensionInitizalized()
+        {
+            if (queryExtensionToIncludeNames == null)
+            {
+                lock (SyncRoot)
+                {
+                    if (queryExtensionToIncludeNames == null)
+                    {
+                        this.InitializeQueryExtension();
+                    }
+                }
+            }
+
+            return queryExtensionToIncludeNames != null && queryExtensionToIncludeNames.Length > 0;
+        }
+
+        /// <summary>
+        /// Initialize this.queryExtensionToIncludeNames 
+        /// </summary>
+        private void InitializeQueryExtension()
+        {
+            queryExtensionToIncludeNames = string.Empty;
+
+            // Query extension with subscription names 
+            var subscriptionList = this.DefaultContext.Account.GetSubscriptions(this.DefaultProfile);
+            if (subscriptionList != null && subscriptionList.Count != 0)
+            {
+                queryExtensionToIncludeNames =
+                    $"extend subscriptionDisplayName=case({string.Join(",", subscriptionList.Select(sub => $"subscriptionId=='{sub.Id}', '{sub.Name}'"))},'')";
+            }
+
+            // Query extension with tenant names
+            using (var subscriptionsClient =
+                AzureSession.Instance.ClientFactory.CreateArmClient<SubscriptionClient>(
+                    this.DefaultContext, AzureEnvironment.Endpoint.ResourceManager))
+            {
+                var tenantList = subscriptionsClient.Tenants.List().ToList();
+                if (tenantList != null && tenantList.Count != 0)
+                {
+                    if (queryExtensionToIncludeNames.Length > 0)
+                    {
+                        queryExtensionToIncludeNames += "| ";
+                    }
+
+                    queryExtensionToIncludeNames +=
+                        $"extend tenantDisplayName=case({string.Join(",", tenantList.Select(tenant => $"tenantId=='{tenant.TenantId}', '{tenant.DisplayName}'"))},'')";
+                }
+            }
         }
     }
 }

@@ -325,7 +325,7 @@ function Api-ImportExportWadlTest {
 
         # commented as powershell test framework on running test in playback mode, throws 403, as the exported link of file
         # gets expired
-        # export api to pipline
+        # export api to pipeline
         # $result = Export-AzApiManagementApi -Context $context -ApiId $wadlApiId -SpecificationFormat Wadl
 
         # Assert-True {$result -like '*<doc title="Yahoo News Search">Yahoo News Search API</doc>*'}

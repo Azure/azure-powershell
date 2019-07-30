@@ -36,14 +36,14 @@ Remove an application insights resource
 Remove an application insights api key for an application insights resource
 
 ### [Remove-AzApplicationInsightsContinuousExport](Remove-AzApplicationInsightsContinuousExport.md)
-Remove a cotinuous export configuration in an application insights resource
+Remove a continuous export configuration in an application insights resource
 
 ### [Set-AzApplicationInsightsContinuousExport](Set-AzApplicationInsightsContinuousExport.md)
-Update a continuous export configuration in an applciation insights resource
+Update a continuous export configuration in an application insights resource
 
 ### [Set-AzApplicationInsightsDailyCap](Set-AzApplicationInsightsDailyCap.md)
 Set daily data volume cap for an application insights resource
 
 ### [Set-AzApplicationInsightsPricingPlan](Set-AzApplicationInsightsPricingPlan.md)
-Set pricing plan and daily data volume information for an applicaiton insights resource
+Set pricing plan and daily data volume information for an application insights resource
 

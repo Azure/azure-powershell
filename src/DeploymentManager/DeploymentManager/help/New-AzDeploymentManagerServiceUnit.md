@@ -252,7 +252,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServiceTopologyName
-The name of the serivce topology this service unit is a part of.
+The name of the service topology this service unit is a part of.
 
 ```yaml
 Type: System.String

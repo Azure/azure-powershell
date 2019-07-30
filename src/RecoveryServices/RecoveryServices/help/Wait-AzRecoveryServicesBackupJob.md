@@ -60,7 +60,7 @@ Accept wildcard characters: False
 ### -Job
 
 Specifies the job to wait for.
-To obtain a **BackupJob** object, use the Get-AzRecoveryServicesBackupJob cmdlet.
+To obtain a **BackupJob** object, use the **Get-AzRecoveryServicesBackupJob** cmdlet.
 
 ```yaml
 Type: System.Object

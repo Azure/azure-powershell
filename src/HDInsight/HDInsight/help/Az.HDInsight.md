@@ -27,7 +27,7 @@ Adds a SQL Database to serve as a Hive or Oozie metastore to a cluster configura
 Adds a script action to a cluster configuration object.
 
 ### [Add-AzHDInsightSecurityProfile](Add-AzHDInsightSecurityProfile.md)
-Adds a security profileto a cluster configuration object.
+Adds a security profile to a cluster configuration object.
 
 ### [Add-AzHDInsightStorage](Add-AzHDInsightStorage.md)
 Adds an Azure Storage key to a cluster configuration object.
