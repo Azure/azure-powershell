@@ -29,22 +29,21 @@ Get-AzSqlInstance [-InstancePoolResourceId] <String> [-DefaultProfile <IAzureCon
 Get-AzSqlInstance [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ListByResourceGroupOrSubParameterSet
-```
-Get-AzSqlInstance [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
 ### GetInstanceByNameAndResourceGroup
 ```
-Get-AzSqlInstance [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzSqlInstance [-Name] <String> -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ListByInstancePoolParameterSet
 ```
-Get-AzSqlInstance [-ResourceGroupName] <String> [-InstancePoolName] <String>
+Get-AzSqlInstance [-InstancePoolName] <String> -ResourceGroupName <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ListByResourceGroupOrSubParameterSet
+```
+Get-AzSqlInstance [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -335,7 +334,7 @@ Parameter Sets: ListByInstancePoolParameterSet
 Aliases:
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -365,7 +364,7 @@ Parameter Sets: GetInstanceByNameAndResourceGroup
 Aliases: InstanceName
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -376,11 +375,11 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListByResourceGroupOrSubParameterSet
+Parameter Sets: GetInstanceByNameAndResourceGroup, ListByInstancePoolParameterSet
 Aliases:
 
-Required: False
-Position: 0
+Required: True
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -388,11 +387,11 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: GetInstanceByNameAndResourceGroup, ListByInstancePoolParameterSet
+Parameter Sets: ListByResourceGroupOrSubParameterSet
 Aliases:
 
-Required: True
-Position: 0
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

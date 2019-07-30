@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/get-azsqlinstancepool
 schema: 2.0.0
 ---
 
@@ -12,15 +12,15 @@ Returns information about the Azure SQL Instance pool.
 
 ## SYNTAX
 
-### ListBySubOrResourceGroupParameterSet
+### ListBySubOrResourceGroupParameterSet (Default)
 ```
-Get-AzSqlInstancePool [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzSqlInstancePool [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ListByInstancePoolDefaultsParameterSet
 ```
-Get-AzSqlInstancePool [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzSqlInstancePool -ResourceGroupName <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -130,7 +130,7 @@ This command gets information about the instance pool with its resource identifi
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -145,7 +145,7 @@ Accept wildcard characters: False
 The instance pool name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ListByInstancePoolDefaultsParameterSet
 Aliases: InstancePoolName
 
@@ -160,24 +160,24 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ListBySubOrResourceGroupParameterSet
 Aliases:
 
 Required: False
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ListByInstancePoolDefaultsParameterSet
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -187,14 +187,14 @@ Accept wildcard characters: False
 The instance pool resource identifier.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetInstancePoolByInstancePoolResourceIdentifierParameterSet
 Aliases:
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

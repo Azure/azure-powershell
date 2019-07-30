@@ -14,7 +14,7 @@ Sets properties for an Azure SQL Database Managed Instance.
 
 ### SetInstanceFromInputParameters (Default)
 ```
-Set-AzSqlInstance [-ResourceGroupName] <String> [-Name] <String> [-AdministratorPassword <SecureString>]
+Set-AzSqlInstance [-Name] <String> [-ResourceGroupName] <String> [-AdministratorPassword <SecureString>]
  [-Edition <String>] [-LicenseType <String>] [-StorageSizeInGB <Int32>] [-VCore <Int32>]
  [-PublicDataEndpointEnabled <Boolean>] [-ProxyOverride <String>] [-Tag <Hashtable>] [-AssignIdentity]
  [-InstancePoolName <String>] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
@@ -224,7 +224,7 @@ Parameter Sets: SetInstanceFromInputParameters
 Aliases: InstanceName
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -269,7 +269,7 @@ Parameter Sets: SetInstanceFromInputParameters
 Aliases:
 
 Required: True
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
