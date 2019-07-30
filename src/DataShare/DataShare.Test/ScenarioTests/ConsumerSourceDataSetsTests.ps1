@@ -9,7 +9,6 @@ Full Consumer Source DataSets CRUD cycle
 #>
 function Test-SourceDataSetsCrud
 {
-	
     $resourceGroup = getAssetName
     $AccountName = getAssetName
     $ShareSubscriptionName = getAssetName

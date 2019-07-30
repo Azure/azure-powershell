@@ -10,40 +10,46 @@ Full Share CRUD cycle
 function Test-ShareCrud
 {
     $resourceGroup = getAssetName
-    $AccountName = getAssetName
-    $ShareName = getAssetName
-    $description = "Test Share"
-    $terms = "Test terms"
-    $shareKind = "CopyBased"
-    $createdShare = New-AzDataShare -AccountName $AccountName -ResourceGroupName $resourceGroup -Name $ShareName -Description $description -Terms $terms
 
-    Assert-NotNull $createdShare
-    Assert-AreEqual $ShareName $createdShare.Name
-    Assert-AreEqual "CopyBased" $createdShare.ShareKind
-    Assert-AreEqual $description $createdShare.Description
-    Assert-AreEqual $terms $createdShare.Terms
-    Assert-AreEqual "Succeeded" $createdShare.ProvisioningState
+	try
+	{
+		$AccountName = getAssetName
+		$ShareName = getAssetName
+		$description = "Test Share"
+		$terms = "Test terms"
+		$shareKind = "CopyBased"
+		$createdShare = New-AzDataShare -AccountName $AccountName -ResourceGroupName $resourceGroup -Name $ShareName -Description $description -Terms $terms
 
-    $retrievedShare = Get-AzDataShare -AccountName $AccountName -ResourceGroupName $resourceGroup -Name $ShareName
+		Assert-NotNull $createdShare
+		Assert-AreEqual $ShareName $createdShare.Name
+		Assert-AreEqual "CopyBased" $createdShare.ShareKind
+		Assert-AreEqual $description $createdShare.Description
+		Assert-AreEqual $terms $createdShare.Terms
+		Assert-AreEqual "Succeeded" $createdShare.ProvisioningState
 
-    Assert-NotNull $retrievedShare
-    Assert-AreEqual $ShareName $retrievedShare.Name
-    Assert-AreEqual "Succeeded" $retrievedShare.ProvisioningState
+		$retrievedShare = Get-AzDataShare -AccountName $AccountName -ResourceGroupName $resourceGroup -Name $ShareName
 
-    $newDescription = "SDK Description"
-    $newTerms = "SDK Terms of Use"
-    $updateShare = Set-AzDataShare -AccountName $AccountName -ResourceGroupName $resourceGroup -Name $ShareName -Description $newDescription -Terms $newTerms 
+		Assert-NotNull $retrievedShare
+		Assert-AreEqual $ShareName $retrievedShare.Name
+		Assert-AreEqual "Succeeded" $retrievedShare.ProvisioningState
 
-    Assert-NotNull $updateShare
-    Assert-AreEqual $ShareName $updateShare.Name
-    Assert-AreEqual $newDescription $updateShare.Description
-    Assert-AreEqual $newTerms $updateShare.Terms
-    Assert-AreEqual "Succeeded" $updateShare.ProvisioningState
+		$newDescription = "SDK Description"
+		$newTerms = "SDK Terms of Use"
+		$updateShare = Set-AzDataShare -AccountName $AccountName -ResourceGroupName $resourceGroup -Name $ShareName -Description $newDescription -Terms $newTerms 
 
-    $removed = Remove-AzDataShare -AccountName $AccountName -ResourceGroupName $resourceGroup -Name $ShareName -PassThru
+		Assert-NotNull $updateShare
+		Assert-AreEqual $ShareName $updateShare.Name
+		Assert-AreEqual $newDescription $updateShare.Description
+		Assert-AreEqual $newTerms $updateShare.Terms
+		Assert-AreEqual "Succeeded" $updateShare.ProvisioningState
 
-    Assert-True { $removed }
-    Assert-ThrowsContains { Get-AzDataShare -AccountName $AccountName -ResourceGroupName $resourceGroup -Name $ShareName } "Resource 'sdktestingshare1' does not exist"
+		$removed = Remove-AzDataShare -AccountName $AccountName -ResourceGroupName $resourceGroup -Name $ShareName -PassThru
 
-    Remove-AzResourceGroup -Name $resourceGroup   
+		Assert-True { $removed }
+		Assert-ThrowsContains { Get-AzDataShare -AccountName $AccountName -ResourceGroupName $resourceGroup -Name $ShareName } "Resource 'sdktestingshare1' does not exist"
+	}
+    finally
+	{
+		Remove-AzResourceGroup -Name $resourceGroup -Force
+	}
 }
