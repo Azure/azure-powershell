@@ -73,30 +73,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         public string ResourceId { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the resource group.
-        /// </summary>
-        [Parameter(ParameterSetName = ListByResourceGroupOrSubParameterSet,
-            Mandatory = false,
-            Position = 0,
-            HelpMessage = "The name of the resource group.")]
-        [Parameter(ParameterSetName = GetByNameAndResourceGroupParameterSet,
-            Mandatory = true,
-            Position = 0,
-            HelpMessage = "The name of the resource group.")]
-        [Parameter(ParameterSetName = ListByInstancePoolParameterSet,
-            Mandatory = true,
-            Position = 0,
-            HelpMessage = "The name of the resource group.")]
-        [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty]
-        public override string ResourceGroupName { get; set; }
-
-        /// <summary>
         /// Gets or sets the name of the instance.
         /// </summary>
         [Parameter(ParameterSetName = GetByNameAndResourceGroupParameterSet,
             Mandatory = true,
-            Position = 1,
+            Position = 0,
             HelpMessage = "The name of the instance.")]
         [Alias("InstanceName")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
@@ -109,11 +90,29 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// </summary>
         [Parameter(ParameterSetName = ListByInstancePoolParameterSet,
             Mandatory = true,
-            Position = 1,
+            Position = 0,
             HelpMessage = "The name of the instance pool.")]
         [ValidateNotNullOrEmpty]
         [ResourceNameCompleter("Microsoft.Sql/instancePools", "ResourceGroupName")]
         public string InstancePoolName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the resource group.
+        /// </summary>
+        [Parameter(ParameterSetName = ListByResourceGroupOrSubParameterSet,
+            Mandatory = false,
+            HelpMessage = "The name of the resource group.")]
+        [Parameter(ParameterSetName = GetByNameAndResourceGroupParameterSet,
+            Mandatory = true,
+            Position = 1,
+            HelpMessage = "The name of the resource group.")]
+        [Parameter(ParameterSetName = ListByInstancePoolParameterSet,
+            Mandatory = true,
+            Position = 1,
+            HelpMessage = "The name of the resource group.")]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
+        public override string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Entry point for the cmdlet

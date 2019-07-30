@@ -70,27 +70,27 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         public string ResourceId { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the resource group to use.
-        /// </summary>
-        [Parameter(ParameterSetName = SetByNameAndResourceGroupParameterSet,
-            Mandatory = true,
-            Position = 0,
-            HelpMessage = "The name of the resource group.")]
-        [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty]
-        public override string ResourceGroupName { get; set; }
-
-        /// <summary>
         /// Gets or sets the name of the instance to use.
         /// </summary>
         [Parameter(ParameterSetName = SetByNameAndResourceGroupParameterSet,
             Mandatory = true,
-            Position = 1,
+            Position = 0,
             HelpMessage = "The name of the instance.")]
         [Alias("InstanceName")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the resource group to use.
+        /// </summary>
+        [Parameter(ParameterSetName = SetByNameAndResourceGroupParameterSet,
+            Mandatory = true,
+            Position = 1,
+            HelpMessage = "The name of the resource group.")]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
+        public override string ResourceGroupName { get; set; }
 
         /// <summary>
         /// The new SQL administrator password for the instance.
