@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Sql.Instance_Pools.Cmdlet
     /// Defines the Set-AzSqlInstancePool cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstancePool",
-            SupportsShouldProcess = true)]
+            SupportsShouldProcess = true, DefaultParameterSetName = DefaultSetInstancePoolParameterSet)]
     public class SetAzureSqlInstancePool : InstancePoolCmdletBase
     {
         /// <summary>
