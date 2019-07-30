@@ -15,7 +15,7 @@ Creates a VirtualHub resource if it doesn't exist else updates the existing Virt
 ### Create (Default)
 ```
 New-AzVirtualHub -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-VirtualHubParameter <IVirtualHub>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-VirtualHub <IVirtualHub>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -39,8 +39,8 @@ New-AzVirtualHub -InputObject <INetworkIdentity> [-AddressPrefix <String>] [-Exp
 
 ### CreateViaIdentity
 ```
-New-AzVirtualHub -InputObject <INetworkIdentity> [-VirtualHubParameter <IVirtualHub>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzVirtualHub -InputObject <INetworkIdentity> [-VirtualHub <IVirtualHub>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -294,9 +294,9 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VirtualHubParameter
+### -VirtualHub
 VirtualHub Resource.
-To construct, see NOTES section for VIRTUALHUBPARAMETER properties and create a hash table.
+To construct, see NOTES section for VIRTUALHUB properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVirtualHub
@@ -417,7 +417,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[AddressPrefix <String[]>]`: List of all addressPrefixes.
   - `[NextHopIPAddress <String>]`: NextHop ip address.
 
-#### VIRTUALHUBPARAMETER <IVirtualHub>: VirtualHub Resource.
+#### VIRTUALHUB <IVirtualHub>: VirtualHub Resource.
   - `[Id <String>]`: Resource ID.
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.

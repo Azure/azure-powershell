@@ -15,7 +15,7 @@ Creates a VirtualWAN resource if it doesn't exist else updates the existing Virt
 ### Update (Default)
 ```
 Set-AzVirtualWan -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-WanParameter <IVirtualWan>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-VirtualWan <IVirtualWan>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -279,9 +279,9 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -WanParameter
+### -VirtualWan
 VirtualWAN Resource.
-To construct, see NOTES section for WANPARAMETER properties and create a hash table.
+To construct, see NOTES section for VIRTUALWAN properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVirtualWan
@@ -385,7 +385,7 @@ To create the parameters described below, construct a hash table containing the 
     - `SaLifeTimeSecond <Int32>`: The IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime in seconds for a site to site VPN tunnel.
   - `[VpnProtocol <VpnGatewayTunnelingProtocol[]>]`: VPN protocols for the P2SVpnServerConfiguration.
 
-#### WANPARAMETER <IVirtualWan>: VirtualWAN Resource.
+#### VIRTUALWAN <IVirtualWan>: VirtualWAN Resource.
   - `[Id <String>]`: Resource ID.
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.

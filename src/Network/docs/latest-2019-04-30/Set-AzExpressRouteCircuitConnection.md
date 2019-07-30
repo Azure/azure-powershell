@@ -16,8 +16,8 @@ Creates or updates a Express Route Circuit Connection in the specified express r
 ```
 Set-AzExpressRouteCircuitConnection -CircuitName <String> -ConnectionName <String> -PeeringName <String>
  -ResourceGroupName <String> -SubscriptionId <String>
- [-ExpressRouteCircuitConnectionParameter <IExpressRouteCircuitConnection>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ExpressRouteCircuitConnection <IExpressRouteCircuitConnection>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
@@ -150,9 +150,9 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ExpressRouteCircuitConnectionParameter
+### -ExpressRouteCircuitConnection
 Express Route Circuit Connection in an ExpressRouteCircuitPeering resource.
-To construct, see NOTES section for EXPRESSROUTECIRCUITCONNECTIONPARAMETER properties and create a hash table.
+To construct, see NOTES section for EXPRESSROUTECIRCUITCONNECTION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRouteCircuitConnection
@@ -348,7 +348,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### EXPRESSROUTECIRCUITCONNECTIONPARAMETER <IExpressRouteCircuitConnection>: Express Route Circuit Connection in an ExpressRouteCircuitPeering resource.
+#### EXPRESSROUTECIRCUITCONNECTION <IExpressRouteCircuitConnection>: Express Route Circuit Connection in an ExpressRouteCircuitPeering resource.
   - `[Id <String>]`: Resource ID.
   - `[AddressPrefix <String>]`: /29 IP address space to carve out Customer addresses for tunnels.
   - `[AuthorizationKey <String>]`: The authorization key.

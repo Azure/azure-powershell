@@ -15,8 +15,8 @@ Creates a vpn connection to a scalable vpn gateway if it doesn't exist else upda
 ### Update (Default)
 ```
 Set-AzVpnConnection -ConnectionName <String> -GatewayName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-VpnConnectionParameter <IVpnConnection>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -SubscriptionId <String> [-VpnConnection <IVpnConnection>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
@@ -345,9 +345,9 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VpnConnectionParameter
+### -VpnConnection
 VpnConnection Resource.
-To construct, see NOTES section for VPNCONNECTIONPARAMETER properties and create a hash table.
+To construct, see NOTES section for VPNCONNECTION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVpnConnection
@@ -439,7 +439,7 @@ To create the parameters described below, construct a hash table containing the 
   - `SaDataSizeKilobyte <Int32>`: The IPSec Security Association (also called Quick Mode or Phase 2 SA) payload size in KB for a site to site VPN tunnel.
   - `SaLifeTimeSecond <Int32>`: The IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime in seconds for a site to site VPN tunnel.
 
-#### VPNCONNECTIONPARAMETER <IVpnConnection>: VpnConnection Resource.
+#### VPNCONNECTION <IVpnConnection>: VpnConnection Resource.
   - `[Id <String>]`: Resource ID.
   - `[ConnectionBandwidth <Int32?>]`: Expected bandwidth in MBPS.
   - `[EnableBgp <Boolean?>]`: EnableBgp flag

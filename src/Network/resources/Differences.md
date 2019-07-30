@@ -1,5 +1,7 @@
 ## Incorrect Cmdlets
 
+- Set-AzVnetGatewayVpnClientIPsecPolicy
+    - VpnClientIPsecParameter
 
 ## Correct Cmdlets
 
@@ -70,7 +72,7 @@
 - Get-AzVnetGatewayConnectionSharedKey
 - Get-AzVnetGatewayLearnedRoute
 - Get-AzVnetGatewaySupportedVpnDevice
-- Get-AzVnetGatewayVpnClientIPsecParameter
+- Get-AzVnetGatewayVpnClientIPsecPolicy
 - Get-AzVnetGatewayVpnDeviceConfigurationScript
 - Get-AzVnetPeering
 - Get-AzVnetTap
@@ -173,7 +175,6 @@
 - Set-AzVnetGateway
 - Set-AzVnetGatewayConnection
 - Set-AzVnetGatewayConnectionSharedKey
-- Set-AzVnetGatewayVpnClientIPsecParameter
 - Set-AzVnetPeering
 - Set-AzVnetTap
 - Start-AzApplicationGateway

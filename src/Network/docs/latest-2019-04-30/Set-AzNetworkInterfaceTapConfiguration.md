@@ -16,8 +16,8 @@ Creates or updates a Tap configuration in the specified NetworkInterface.
 ```
 Set-AzNetworkInterfaceTapConfiguration -NetworkInterfaceName <String> -ResourceGroupName <String>
  -SubscriptionId <String> -TapConfigurationName <String>
- [-TapConfigurationParameter <INetworkInterfaceTapConfiguration>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-TapConfiguration <INetworkInterfaceTapConfiguration>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
@@ -199,6 +199,23 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -TapConfiguration
+Tap configuration in a Network Interface
+To construct, see NOTES section for TAPCONFIGURATION properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkInterfaceTapConfiguration
+Parameter Sets: Update
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -TapConfigurationName
 The name of the tap configuration.
 
@@ -211,23 +228,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -TapConfigurationParameter
-Tap configuration in a Network Interface
-To construct, see NOTES section for TAPCONFIGURATIONPARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkInterfaceTapConfiguration
-Parameter Sets: Update
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -302,7 +302,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### TAPCONFIGURATIONPARAMETER <INetworkInterfaceTapConfiguration>: Tap configuration in a Network Interface
+#### TAPCONFIGURATION <INetworkInterfaceTapConfiguration>: Tap configuration in a Network Interface
   - `[Id <String>]`: Resource ID.
   - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
   - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.

@@ -15,8 +15,8 @@ Updates a route filter in a specified resource group.
 ### Update (Default)
 ```
 Update-AzRouteFilter -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-RouteFilterParameter <IPatchRouteFilter>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-RouteFilter <IPatchRouteFilter>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateExpanded
@@ -35,7 +35,7 @@ Update-AzRouteFilter -InputObject <INetworkIdentity> [-Id <String>] [-Peering <I
 
 ### UpdateViaIdentity
 ```
-Update-AzRouteFilter -InputObject <INetworkIdentity> [-RouteFilterParameter <IPatchRouteFilter>]
+Update-AzRouteFilter -InputObject <INetworkIdentity> [-RouteFilter <IPatchRouteFilter>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -193,9 +193,9 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -RouteFilterParameter
+### -RouteFilter
 Route Filter Resource.
-To construct, see NOTES section for ROUTEFILTERPARAMETER properties and create a hash table.
+To construct, see NOTES section for ROUTEFILTER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IPatchRouteFilter
@@ -372,7 +372,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Tag <IResourceTags>]`: Resource tags.
   - `[VlanId <Int32?>]`: The VLAN ID.
 
-#### ROUTEFILTERPARAMETER <IPatchRouteFilter>: Route Filter Resource.
+#### ROUTEFILTER <IPatchRouteFilter>: Route Filter Resource.
   - `[Id <String>]`: Resource ID.
   - `[Peering <IExpressRouteCircuitPeering[]>]`: A collection of references to express route circuit peerings.
     - `[Id <String>]`: Resource ID.

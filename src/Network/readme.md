@@ -1074,12 +1074,12 @@ directive:
   #     parameter-name: ResourceGroupName
   #   set:
   #     alias: PublicIpPrefix
-  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-      verb: Set
-      subject: RouteFilter
-      parameter-name: ResourceGroupName
-    set:
-      alias: RouteFilter
+  # - where: # REMOVE BEFORE RELEASE: In-memory object parameter
+  #     verb: Set
+  #     subject: RouteFilter
+  #     parameter-name: ResourceGroupName
+  #   set:
+  #     alias: RouteFilter
   # - where: # REMOVE BEFORE RELEASE: In-memory object parameter
   #     verb: Set
   #     subject: RouteTable
@@ -1734,6 +1734,11 @@ directive:
     set:
       parameter-name: Firewall
   - where:
+      subject: InterfaceEndpoint
+      parameter-name: Parameter
+    set:
+      parameter-name: InterfaceEndpoint
+  - where:
       subject: LoadBalancer
       parameter-name: Parameter
     set:
@@ -1904,6 +1909,128 @@ directive:
     set:
       parameter-name: VnetTapProperties
 
+# Parameter (ending) parameters
+  - where:
+      subject: ExpressRouteCircuitAuthorization
+      parameter-name: AuthorizationParameter
+    set:
+      parameter-name: Authorization
+  - where:
+      subject: ExpressRouteCircuitConnection
+      parameter-name: ExpressRouteCircuitConnectionParameter
+    set:
+      parameter-name: ExpressRouteCircuitConnection
+  - where:
+      subject: ExpressRouteCircuitPeering
+      parameter-name: PeeringParameter
+    set:
+      parameter-name: Peering
+  - where:
+      subject: ExpressRouteConnection
+      parameter-name: PutExpressRouteConnectionParameter
+    set:
+      parameter-name: ExpressRouteConnection
+  - where:
+      subject: ExpressRouteCrossConnectionPeering
+      parameter-name: PeeringParameter
+    set:
+      parameter-name: CrossConnectionPeering
+  - where:
+      subject: ExpressRouteGateway
+      parameter-name: PutExpressRouteGatewayParameter
+    set:
+      parameter-name: ExpressRouteGateway
+  - where:
+      subject: LoadBalancerInboundNatRule
+      parameter-name: InboundNatRuleParameter
+    set:
+      parameter-name: InboundNatRule
+  - where:
+      subject: NetworkInterfaceTapConfiguration
+      parameter-name: TapConfigurationParameter
+    set:
+      parameter-name: TapConfiguration
+  - where:
+      subject: NetworkSecurityRule
+      parameter-name: SecurityRuleParameter
+    set:
+      parameter-name: SecurityRule
+  - where:
+      subject: P2SVpnGateway
+      parameter-name: P2SVpnGatewayParameter
+    set:
+      parameter-name: P2SVpnGateway
+  - where:
+      subject: P2SVpnServerConfiguration
+      parameter-name: P2SVpnServerConfigurationParameter
+    set:
+      parameter-name: P2SVpnServerConfiguration
+  - where:
+      subject: RouteFilter
+      parameter-name: RouteFilterParameter
+    set:
+      parameter-name: RouteFilter
+  - where:
+      subject: RouteFilterRule
+      parameter-name: RouteFilterRuleParameter
+    set:
+      parameter-name: RouteFilterRule
+  - where:
+      subject: RouteTableRoute
+      parameter-name: RouteParameter
+    set:
+      parameter-name: Route
+  - where:
+      subject: VirtualHub
+      parameter-name: VirtualHubParameter
+    set:
+      parameter-name: VirtualHub
+  - where:
+      subject: VirtualWan
+      parameter-name: WanParameter
+    set:
+      parameter-name: VirtualWan
+  - where:
+      subject: VnetGatewayVpnClientIPsecParameter
+      parameter-name: VpnClientIPsecParameter
+    set:
+      parameter-name: VpnClientIPsecPolicy
+      alias: VpnClientIPsecParameter
+  - where:
+      subject: VnetGatewayVpnClientIPsecParameter
+    set:
+      subject: VnetGatewayVpnClientIPsecPolicy
+  - where:
+      subject: VnetPeering
+      parameter-name: VnetPeeringParameter
+    set:
+      parameter-name: VnetPeering
+  - where:
+      subject: VnetSubnet
+      parameter-name: SubnetParameter
+    set:
+      parameter-name: Subnet
+  - where:
+      subject: VnetSubnetNetworkPolicy
+      parameter-name: PrepareNetworkPoliciesRequestParameter
+    set:
+      parameter-name: NetworkPoliciesRequest
+  - where:
+      subject: VpnConnection
+      parameter-name: VpnConnectionParameter
+    set:
+      parameter-name: VpnConnection
+  - where:
+      subject: VpnGateway
+      parameter-name: VpnGatewayParameter
+    set:
+      parameter-name: VpnGateway
+  - where:
+      subject: VpnSite
+      parameter-name: VpnSiteParameter
+    set:
+      parameter-name: VpnSite
+
 # ApplicationGateway Parameters
   - where:
       subject: ApplicationGateway
@@ -1999,11 +2126,6 @@ directive:
       parameter-name: GlobalReachEnabled
     set:
       parameter-name: EnableGlobalReach
-  - where:
-      subject: ExpressRouteCircuitAuthorization
-      parameter-name: AuthorizationParameter
-    set:
-      parameter-name: Authorization
   - where:
       subject: ExpressRouteCircuitAuthorization
       parameter-name: AuthorizationKey

@@ -15,8 +15,8 @@ Creates or updates a security rule in the specified network security group.
 ### Create (Default)
 ```
 New-AzNetworkSecurityRule -NsgName <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Name <String>] [-SecurityRuleParameter <ISecurityRule>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Name <String>] [-SecurityRule <ISecurityRule>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -48,7 +48,7 @@ New-AzNetworkSecurityRule -NsgName <String> -ResourceGroupName <String> -Subscri
 
 ### CreateViaIdentity
 ```
-New-AzNetworkSecurityRule -InputObject <INetworkIdentity> [-SecurityRuleParameter <ISecurityRule>]
+New-AzNetworkSecurityRule -InputObject <INetworkIdentity> [-SecurityRule <ISecurityRule>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -443,6 +443,23 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -SecurityRule
+Network security rule.
+To construct, see NOTES section for SECURITYRULE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ISecurityRule
+Parameter Sets: Create, CreateViaIdentity
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -SecurityRuleName
 The name of the security rule.
 
@@ -455,23 +472,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -SecurityRuleParameter
-Network security rule.
-To construct, see NOTES section for SECURITYRULEPARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ISecurityRule
-Parameter Sets: Create, CreateViaIdentity
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -606,7 +606,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Tag <IResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
 
-#### SECURITYRULEPARAMETER <ISecurityRule>: Network security rule.
+#### SECURITYRULE <ISecurityRule>: Network security rule.
   - `Access <SecurityRuleAccess>`: The network traffic is allowed or denied.
   - `Direction <SecurityRuleDirection>`: The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic.
   - `Protocol <SecurityRuleProtocol>`: Network protocol this rule applies to. Possible values are 'Tcp', 'Udp', 'Icmp', 'Esp', and '*'.

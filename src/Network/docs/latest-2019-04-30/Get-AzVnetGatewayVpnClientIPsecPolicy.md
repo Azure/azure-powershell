@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azvnetgatewayvpnclientipsecparameter
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azvnetgatewayvpnclientipsecpolicy
 schema: 2.0.0
 ---
 
-# Get-AzVnetGatewayVpnClientIPsecParameter
+# Get-AzVnetGatewayVpnClientIPsecPolicy
 
 ## SYNOPSIS
 The Get VpnclientIpsecParameters operation retrieves information about the vpnclient ipsec policy for P2S client of virtual network gateway in the specified resource group through Network resource provider.
@@ -14,13 +14,13 @@ The Get VpnclientIpsecParameters operation retrieves information about the vpncl
 
 ### Get (Default)
 ```
-Get-AzVnetGatewayVpnClientIPsecParameter -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzVnetGatewayVpnClientIPsecPolicy -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzVnetGatewayVpnClientIPsecParameter -InputObject <INetworkIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+Get-AzVnetGatewayVpnClientIPsecPolicy -InputObject <INetworkIdentity> [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 

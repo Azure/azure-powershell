@@ -15,8 +15,7 @@ Creates or updates a subnet in the specified virtual network.
 ### Create1 (Default)
 ```
 New-AzVnetSubnet -ResourceGroupName <String> -SubscriptionId <String> -VnetName <String> [-Name <String>]
- [-SubnetParameter <ISubnet>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-Subnet <ISubnet>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded1
@@ -47,8 +46,8 @@ New-AzVnetSubnet -ResourceGroupName <String> -SubscriptionId <String> -VnetName 
 
 ### CreateViaIdentity1
 ```
-New-AzVnetSubnet -InputObject <INetworkIdentity> [-SubnetParameter <ISubnet>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzVnetSubnet -InputObject <INetworkIdentity> [-Subnet <ISubnet>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -516,6 +515,23 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Subnet
+Subnet in a virtual network resource.
+To construct, see NOTES section for SUBNET properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ISubnet
+Parameter Sets: Create1, CreateViaIdentity1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -SubnetName
 The name of the subnet.
 
@@ -528,23 +544,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -SubnetParameter
-Subnet in a virtual network resource.
-To construct, see NOTES section for SUBNETPARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ISubnet
-Parameter Sets: Create1, CreateViaIdentity1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -707,7 +706,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[ProvisioningState <String>]`: The provisioning state of the resource.
   - `[Service <String>]`: The type of the endpoint service.
 
-#### SUBNETPARAMETER <ISubnet>: Subnet in a virtual network resource.
+#### SUBNET <ISubnet>: Subnet in a virtual network resource.
   - `[Id <String>]`: Resource ID.
   - `[AddressPrefix <String>]`: The address prefix for the subnet.
   - `[DefaultSecurityRule <ISecurityRule[]>]`: The default security rules of network security group.

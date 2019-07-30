@@ -15,7 +15,7 @@ Creates a virtual wan vpn gateway if it doesn't exist else updates the existing 
 ### Update (Default)
 ```
 Set-AzVpnGateway -GatewayName <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-VpnGatewayParameter <IVpnGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-VpnGateway <IVpnGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -279,9 +279,9 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VpnGatewayParameter
+### -VpnGateway
 VpnGateway Resource.
-To construct, see NOTES section for VPNGATEWAYPARAMETER properties and create a hash table.
+To construct, see NOTES section for VPNGATEWAY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVpnGateway
@@ -385,7 +385,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[SharedKey <String>]`: SharedKey for the vpn connection.
   - `[UseLocalAzureIPAddress <Boolean?>]`: Use local azure ip to initiate connection
 
-#### VPNGATEWAYPARAMETER <IVpnGateway>: VpnGateway Resource.
+#### VPNGATEWAY <IVpnGateway>: VpnGateway Resource.
   - `[Id <String>]`: Resource ID.
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.

@@ -15,8 +15,8 @@ Creates a virtual wan p2s vpn gateway if it doesn't exist else updates the exist
 ### Update (Default)
 ```
 Set-AzP2SVpnGateway -GatewayName <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-P2SVpnGatewayParameter <IP2SVpnGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-P2SVpnGateway <IP2SVpnGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateExpanded
@@ -166,9 +166,9 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -P2SVpnGatewayParameter
+### -P2SVpnGateway
 P2SVpnGateway Resource.
-To construct, see NOTES section for P2SVPNGATEWAYPARAMETER properties and create a hash table.
+To construct, see NOTES section for P2SVPNGATEWAY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IP2SVpnGateway
@@ -379,7 +379,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### P2SVPNGATEWAYPARAMETER <IP2SVpnGateway>: P2SVpnGateway Resource.
+#### P2SVPNGATEWAY <IP2SVpnGateway>: P2SVpnGateway Resource.
   - `[Id <String>]`: Resource ID.
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.

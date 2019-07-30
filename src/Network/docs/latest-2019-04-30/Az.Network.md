@@ -287,7 +287,7 @@ This operation retrieves a list of routes the virtual network gateway has learne
 ### [Get-AzVnetGatewaySupportedVpnDevice](Get-AzVnetGatewaySupportedVpnDevice.md)
 Gets a xml format representation for supported vpn devices.
 
-### [Get-AzVnetGatewayVpnClientIPsecParameter](Get-AzVnetGatewayVpnClientIPsecParameter.md)
+### [Get-AzVnetGatewayVpnClientIPsecPolicy](Get-AzVnetGatewayVpnClientIPsecPolicy.md)
 The Get VpnclientIpsecParameters operation retrieves information about the vpnclient ipsec policy for P2S client of virtual network gateway in the specified resource group through Network resource provider.
 
 ### [Get-AzVnetGatewayVpnDeviceConfigurationScript](Get-AzVnetGatewayVpnDeviceConfigurationScript.md)
@@ -764,7 +764,7 @@ Creates or updates a virtual network gateway connection in the specified resourc
 ### [Set-AzVnetGatewayConnectionSharedKey](Set-AzVnetGatewayConnectionSharedKey.md)
 The Put VirtualNetworkGatewayConnectionSharedKey operation sets the virtual network gateway connection shared key for passed virtual network gateway connection in the specified resource group through Network resource provider.
 
-### [Set-AzVnetGatewayVpnClientIPsecParameter](Set-AzVnetGatewayVpnClientIPsecParameter.md)
+### [Set-AzVnetGatewayVpnClientIPsecPolicy](Set-AzVnetGatewayVpnClientIPsecPolicy.md)
 The Set VpnclientIpsecParameters operation sets the vpnclient ipsec policy for P2S client of virtual network gateway in the specified resource group through Network resource provider.
 
 ### [Set-AzVnetPeering](Set-AzVnetPeering.md)

@@ -15,7 +15,7 @@ Creates or updates a route filter in a specified resource group.
 ### Create (Default)
 ```
 New-AzRouteFilter -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-RouteFilterParameter <IRouteFilter>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-RouteFilter <IRouteFilter>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -35,8 +35,8 @@ New-AzRouteFilter -InputObject <INetworkIdentity> [-Id <String>] [-Location <Str
 
 ### CreateViaIdentity
 ```
-New-AzRouteFilter -InputObject <INetworkIdentity> [-RouteFilterParameter <IRouteFilter>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzRouteFilter -InputObject <INetworkIdentity> [-RouteFilter <IRouteFilter>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -209,9 +209,9 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -RouteFilterParameter
+### -RouteFilter
 Route Filter Resource.
-To construct, see NOTES section for ROUTEFILTERPARAMETER properties and create a hash table.
+To construct, see NOTES section for ROUTEFILTER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IRouteFilter
@@ -388,7 +388,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Tag <IResourceTags>]`: Resource tags.
   - `[VlanId <Int32?>]`: The VLAN ID.
 
-#### ROUTEFILTERPARAMETER <IRouteFilter>: Route Filter Resource.
+#### ROUTEFILTER <IRouteFilter>: Route Filter Resource.
   - `[Id <String>]`: Resource ID.
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.

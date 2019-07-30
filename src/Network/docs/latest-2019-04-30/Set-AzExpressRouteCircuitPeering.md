@@ -15,8 +15,8 @@ Creates or updates a peering in the specified express route circuits.
 ### Update (Default)
 ```
 Set-AzExpressRouteCircuitPeering -CircuitName <String> -PeeringName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-PeeringParameter <IExpressRouteCircuitPeering>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -SubscriptionId <String> [-Peering <IExpressRouteCircuitPeering>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
@@ -578,6 +578,23 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Peering
+Peering in an ExpressRouteCircuit resource.
+To construct, see NOTES section for PEERING properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRouteCircuitPeering
+Parameter Sets: Update
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -PeeringName
 The name of the peering.
 
@@ -590,23 +607,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -PeeringParameter
-Peering in an ExpressRouteCircuit resource.
-To construct, see NOTES section for PEERINGPARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRouteCircuitPeering
-Parameter Sets: Update
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -1060,7 +1060,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Location <String>]`: Resource location.
   - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
 
-#### PEERINGPARAMETER <IExpressRouteCircuitPeering>: Peering in an ExpressRouteCircuit resource.
+#### PEERING <IExpressRouteCircuitPeering>: Peering in an ExpressRouteCircuit resource.
   - `[Id <String>]`: Resource ID.
   - `[AdvertisedCommunity <String[]>]`: The communities of bgp peering. Specified for microsoft peering
   - `[AdvertisedPublicPrefix <String[]>]`: The reference of AdvertisedPublicPrefixes.

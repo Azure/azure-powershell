@@ -15,9 +15,8 @@ Creates a connection between an ExpressRoute gateway and an ExpressRoute circuit
 ### Create (Default)
 ```
 New-AzExpressRouteConnection -ConnectionName <String> -ExpressRouteGatewayName <String>
- -ResourceGroupName <String> -SubscriptionId <String>
- [-PutExpressRouteConnectionParameter <IExpressRouteConnection>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ResourceGroupName <String> -SubscriptionId <String> [-ExpressRouteConnection <IExpressRouteConnection>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpanded
@@ -38,8 +37,8 @@ New-AzExpressRouteConnection -InputObject <INetworkIdentity> -Name <String> [-Au
 ### CreateViaIdentity
 ```
 New-AzExpressRouteConnection -InputObject <INetworkIdentity>
- [-PutExpressRouteConnectionParameter <IExpressRouteConnection>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ExpressRouteConnection <IExpressRouteConnection>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -147,6 +146,23 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -ExpressRouteConnection
+ExpressRouteConnection resource.
+To construct, see NOTES section for EXPRESSROUTECONNECTION properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRouteConnection
+Parameter Sets: Create, CreateViaIdentity
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -ExpressRouteGatewayName
 The name of the ExpressRoute gateway.
 
@@ -223,23 +239,6 @@ Required: False
 Position: Named
 Default value: False
 Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -PutExpressRouteConnectionParameter
-ExpressRouteConnection resource.
-To construct, see NOTES section for PUTEXPRESSROUTECONNECTIONPARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRouteConnection
-Parameter Sets: Create, CreateViaIdentity
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -346,7 +345,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### PUTEXPRESSROUTECONNECTIONPARAMETER <IExpressRouteConnection>: ExpressRouteConnection resource.
+#### EXPRESSROUTECONNECTION <IExpressRouteConnection>: ExpressRouteConnection resource.
   - `Name <String>`: The name of the resource.
   - `[Id <String>]`: Resource ID.
   - `[AuthorizationKey <String>]`: Authorization key to establish the connection.

@@ -15,7 +15,7 @@ Creates a P2SVpnServerConfiguration to associate with a VirtualWan if it doesn't
 ### Update (Default)
 ```
 Set-AzP2SVpnServerConfiguration -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -VirtualWanName <String> [-P2SVpnServerConfigurationParameter <IP2SVpnServerConfiguration>]
+ -VirtualWanName <String> [-P2SVpnServerConfiguration <IP2SVpnServerConfiguration>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -172,6 +172,23 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -P2SVpnServerConfiguration
+P2SVpnServerConfiguration Resource.
+To construct, see NOTES section for P2SVPNSERVERCONFIGURATION properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IP2SVpnServerConfiguration
+Parameter Sets: Update
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -P2SVpnServerConfigurationName
 The name of the P2SVpnServerConfiguration.
 
@@ -184,23 +201,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -P2SVpnServerConfigurationParameter
-P2SVpnServerConfiguration Resource.
-To construct, see NOTES section for P2SVPNSERVERCONFIGURATIONPARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IP2SVpnServerConfiguration
-Parameter Sets: Update
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -449,7 +449,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
   - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
 
-#### P2SVPNSERVERCONFIGURATIONPARAMETER <IP2SVpnServerConfiguration>: P2SVpnServerConfiguration Resource.
+#### P2SVPNSERVERCONFIGURATION <IP2SVpnServerConfiguration>: P2SVpnServerConfiguration Resource.
   - `[Id <String>]`: Resource ID.
   - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
   - `[P2SVpnServerConfigRadiusClientRootCertificate <IP2SVpnServerConfigRadiusClientRootCertificate[]>]`: Radius client root certificate of P2SVpnServerConfiguration.

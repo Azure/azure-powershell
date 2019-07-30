@@ -15,8 +15,7 @@ Creates or updates a route in the specified route table.
 ### Update (Default)
 ```
 Set-AzRouteTableRoute -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -TableName <String>
- [-RouteParameter <IRoute>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-Route <IRoute>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
@@ -230,6 +229,23 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Route
+Route resource
+To construct, see NOTES section for ROUTE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRoute
+Parameter Sets: Update
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -RouteName
 The name of the route.
 
@@ -242,23 +258,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -RouteParameter
-Route resource
-To construct, see NOTES section for ROUTEPARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRoute
-Parameter Sets: Update
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -347,7 +346,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### ROUTEPARAMETER <IRoute>: Route resource
+#### ROUTE <IRoute>: Route resource
   - `NextHopType <RouteNextHopType>`: The type of Azure hop the packet should be sent to.
   - `[Id <String>]`: Resource ID.
   - `[AddressPrefix <String>]`: The destination CIDR to which the route applies.

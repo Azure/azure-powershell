@@ -209,7 +209,7 @@
   - SubscriptionId `String[]`
   - ConnectionName `String`
   - InputObject `INetworkIdentity`
-  - ExpressRouteCircuitConnectionParameter `IExpressRouteCircuitConnection`
+  - ExpressRouteCircuitConnection `IExpressRouteCircuitConnection`
   - AddressPrefix `String`
   - AuthorizationKey `String`
   - ExpressRouteCircuitPeeringId `String`
@@ -223,7 +223,7 @@
   - SubscriptionId `String[]`
   - PeeringName `String`
   - InputObject `INetworkIdentity`
-  - PeeringParameter `IExpressRouteCircuitPeering`
+  - Peering `IExpressRouteCircuitPeering`
   - AdvertisedCommunity `String[]`
   - AdvertisedPublicPrefix `String[]`
   - AdvertisedPublicPrefixesState `ExpressRouteCircuitPeeringAdvertisedPublicPrefixState`
@@ -291,7 +291,7 @@
   - Name `String`
   - InputObject `INetworkIdentity`
   - ConnectionName `String`
-  - PutExpressRouteConnectionParameter `IExpressRouteConnection`
+  - ExpressRouteConnection `IExpressRouteConnection`
   - AuthorizationKey `String`
   - ExpressRouteCircuitPeeringId `String`
   - Id `String`
@@ -328,7 +328,7 @@
   - Name `String`
   - InputObject `INetworkIdentity`
   - PeeringName `String`
-  - PeeringParameter `IExpressRouteCrossConnectionPeering`
+  - CrossConnectionPeering `IExpressRouteCrossConnectionPeering`
   - AdvertisedCommunity `String[]`
   - AdvertisedPublicPrefix `String[]`
   - AdvertisedPublicPrefixesState `ExpressRouteCircuitPeeringAdvertisedPublicPrefixState`
@@ -372,7 +372,7 @@
   - Name `String`
   - ResourceGroupName `String`
   - InputObject `INetworkIdentity`
-  - PutExpressRouteGatewayParameter `IExpressRouteGateway`
+  - ExpressRouteGateway `IExpressRouteGateway`
   - Id `String`
   - Location `String`
   - MaximumScaleUnits `Int32`
@@ -442,7 +442,7 @@
   - ResourceGroupName `String`
   - InputObject `INetworkIdentity`
   - Expand `String`
-  - Parameter `IInterfaceEndpoint`
+  - InterfaceEndpoint `IInterfaceEndpoint`
   - EndpointServiceId `String`
   - Etag `String`
   - Fqdn `String`
@@ -495,7 +495,7 @@
   - InputObject `INetworkIdentity`
   - InboundNatRuleName `String`
   - Expand `String`
-  - InboundNatRuleParameter `IInboundNatRule`
+  - InboundNatRule `IInboundNatRule`
   - ApplicationGatewayBackendAddressPool `IApplicationGatewayBackendAddressPool[]`
   - ApplicationSecurityGroup `IApplicationSecurityGroup[]`
   - BackendIPConfigurationEtag `String`
@@ -666,7 +666,7 @@
   - Name `String`
   - InputObject `INetworkIdentity`
   - TapConfigurationName `String`
-  - TapConfigurationParameter `INetworkInterfaceTapConfiguration`
+  - TapConfiguration `INetworkInterfaceTapConfiguration`
   - Etag `String`
   - Id `String`
   - VnetTap `IVirtualNetworkTap`
@@ -692,7 +692,7 @@
   - Name `String`
   - InputObject `INetworkIdentity`
   - SecurityRuleName `String`
-  - SecurityRuleParameter `ISecurityRule`
+  - SecurityRule `ISecurityRule`
   - Access `SecurityRuleAccess`
   - Description `String`
   - DestinationAddressPrefix `String`
@@ -933,7 +933,7 @@
   - GatewayName `String`
   - ResourceGroupName `String`
   - InputObject `INetworkIdentity`
-  - P2SVpnGatewayParameter `IP2SVpnGateway`
+  - P2SVpnGateway `IP2SVpnGateway`
   - CustomRouteAddressPrefix `String[]`
   - Id `String`
   - Location `String`
@@ -960,7 +960,7 @@
   - Name `String`
   - InputObject `INetworkIdentity`
   - P2SVpnServerConfigurationName `String`
-  - P2SVpnServerConfigurationParameter `IP2SVpnServerConfiguration`
+  - P2SVpnServerConfiguration `IP2SVpnServerConfiguration`
   - Id `String`
   - P2SVpnServerConfigRadiusClientRootCertificate `IP2SVpnServerConfigRadiusClientRootCertificate[]`
   - P2SVpnServerConfigRadiusServerRootCertificate `IP2SVpnServerConfigRadiusServerRootCertificate[]`
@@ -1049,7 +1049,7 @@
   - ResourceGroupName `String`
   - InputObject `INetworkIdentity`
   - ExpandResource `String`
-  - RouteFilterParameter `IRouteFilter`
+  - RouteFilter `IRouteFilter`
   - Id `String`
   - Location `String`
   - Peering `IExpressRouteCircuitPeering[]`
@@ -1062,7 +1062,7 @@
   - SubscriptionId `String[]`
   - RuleName `String`
   - InputObject `INetworkIdentity`
-  - RouteFilterRuleParameter `IRouteFilterRule`
+  - RouteFilterRule `IRouteFilterRule`
   - Access `Access`
   - Community `String[]`
   - Id `String`
@@ -1091,7 +1091,7 @@
   - Name `String`
   - InputObject `INetworkIdentity`
   - RouteName `String`
-  - RouteParameter `IRoute`
+  - Route `IRoute`
   - AddressPrefix `String`
   - Etag `String`
   - Id `String`
@@ -1131,7 +1131,7 @@
   - Name `String`
   - ResourceGroupName `String`
   - InputObject `INetworkIdentity`
-  - VirtualHubParameter `IVirtualHub`
+  - VirtualHub `IVirtualHub`
   - AddressPrefix `String`
   - ExpressRouteGatewayId `String`
   - Id `String`
@@ -1156,7 +1156,7 @@
   - Name `String`
   - ResourceGroupName `String`
   - InputObject `INetworkIdentity`
-  - WanParameter `IVirtualWan`
+  - VirtualWan `IVirtualWan`
   - AllowBranchToBranchTraffic `SwitchParameter`
   - AllowVnetToVnetTraffic `SwitchParameter`
   - DisableVpnEncryption `SwitchParameter`
@@ -1308,13 +1308,13 @@
   - SubscriptionId `String[]`
   - InputObject `INetworkIdentity`
 
-### AzVnetGatewayVpnClientIPsecParameter [Get, Set] `IVpnClientIPsecParameters`
+### AzVnetGatewayVpnClientIPsecPolicy [Get, Set] `IVpnClientIPsecParameters`
   - VnetGatewayName `String`
   - Name `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
   - InputObject `INetworkIdentity`
-  - VpnClientIPsecParameter `IVpnClientIPsecParameters`
+  - VpnClientIPsecPolicy `IVpnClientIPsecParameters`
   - DhGroup `DhGroup`
   - IPsecEncryption `IpsecEncryption`
   - IPsecIntegrity `IpsecIntegrity`
@@ -1382,7 +1382,7 @@
   - Name `String`
   - InputObject `INetworkIdentity`
   - VnetPeeringName `String`
-  - VnetPeeringParameter `IVirtualNetworkPeering`
+  - VnetPeering `IVirtualNetworkPeering`
   - AllowForwardedTraffic `SwitchParameter`
   - AllowGatewayTransit `SwitchParameter`
   - AllowVnetAccess `SwitchParameter`
@@ -1402,7 +1402,7 @@
   - InputObject `INetworkIdentity`
   - SubnetName `String`
   - Expand `String`
-  - SubnetParameter `ISubnet`
+  - Subnet `ISubnet`
   - AddressPrefix `String`
   - DefaultSecurityRule `ISecurityRule[]`
   - Delegation `IDelegation[]`
@@ -1435,7 +1435,7 @@
   - SubnetName `String`
   - SubscriptionId `String`
   - VnetName `String`
-  - PrepareNetworkPoliciesRequestParameter `IPrepareNetworkPoliciesRequest`
+  - NetworkPoliciesRequest `IPrepareNetworkPoliciesRequest`
   - NetworkIntentPolicyConfiguration `INetworkIntentPolicyConfiguration[]`
   - ResourceGroupName1 `String`
   - ServiceName `String`
@@ -1490,7 +1490,7 @@
   - Name `String`
   - InputObject `INetworkIdentity`
   - ConnectionName `String`
-  - VpnConnectionParameter `IVpnConnection`
+  - VpnConnection `IVpnConnection`
   - ConnectionBandwidth `Int32`
   - EnableBgp `SwitchParameter`
   - EnableInternetSecurity `SwitchParameter`
@@ -1509,7 +1509,7 @@
   - Name `String`
   - ResourceGroupName `String`
   - InputObject `INetworkIdentity`
-  - VpnGatewayParameter `IVpnGateway`
+  - VpnGateway `IVpnGateway`
   - BgpSettingAsn `Int64`
   - BgpSettingBgpPeeringAddress `String`
   - BgpSettingPeerWeight `Int32`
@@ -1525,7 +1525,7 @@
   - Name `String`
   - ResourceGroupName `String`
   - InputObject `INetworkIdentity`
-  - VpnSiteParameter `IVpnSite`
+  - VpnSite `IVpnSite`
   - AddressPrefix `String[]`
   - BgpAsn `Int64`
   - BgpPeerWeight `Int32`

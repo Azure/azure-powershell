@@ -15,8 +15,8 @@ Creates or updates a load balancer inbound nat rule.
 ### Update (Default)
 ```
 Set-AzLoadBalancerInboundNatRule -LoadBalancerName <String> -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-InboundNatRuleParameter <IInboundNatRule>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -SubscriptionId <String> [-InboundNatRule <IInboundNatRule>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
@@ -330,6 +330,23 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -InboundNatRule
+Inbound NAT rule of the load balancer.
+To construct, see NOTES section for INBOUNDNATRULE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IInboundNatRule
+Parameter Sets: Update
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -InboundNatRuleName
 The name of the inbound nat rule.
 
@@ -342,23 +359,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -InboundNatRuleParameter
-Inbound NAT rule of the load balancer.
-To construct, see NOTES section for INBOUNDNATRULEPARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IInboundNatRule
-Parameter Sets: Update
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -855,7 +855,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Tag <IResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
 
-#### INBOUNDNATRULEPARAMETER <IInboundNatRule>: Inbound NAT rule of the load balancer.
+#### INBOUNDNATRULE <IInboundNatRule>: Inbound NAT rule of the load balancer.
   - `[Id <String>]`: Resource ID.
   - `[ApplicationGatewayBackendAddressPool <IApplicationGatewayBackendAddressPool[]>]`: The reference of ApplicationGatewayBackendAddressPool resource.
     - `[Id <String>]`: Resource ID.

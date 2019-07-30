@@ -15,8 +15,8 @@ Creates or updates a peering in the specified virtual network.
 ### Update (Default)
 ```
 Set-AzVnetPeering -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -VnetName <String>
- [-VnetPeeringParameter <IVirtualNetworkPeering>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-VnetPeering <IVirtualNetworkPeering>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateExpanded
@@ -330,6 +330,23 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -VnetPeering
+Peerings in a virtual network resource.
+To construct, see NOTES section for VNETPEERING properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVirtualNetworkPeering
+Parameter Sets: Update
+Aliases: VirtualNetworkPeeringParameter
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -VnetPeeringName
 The name of the peering.
 
@@ -342,23 +359,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -VnetPeeringParameter
-Peerings in a virtual network resource.
-To construct, see NOTES section for VNETPEERINGPARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVirtualNetworkPeering
-Parameter Sets: Update
-Aliases: VirtualNetworkPeeringParameter
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -416,7 +416,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### VNETPEERINGPARAMETER <IVirtualNetworkPeering>: Peerings in a virtual network resource.
+#### VNETPEERING <IVirtualNetworkPeering>: Peerings in a virtual network resource.
   - `[Id <String>]`: Resource ID.
   - `[AllowForwardedTraffic <Boolean?>]`: Whether the forwarded traffic from the VMs in the local virtual network will be allowed/disallowed in remote virtual network.
   - `[AllowGatewayTransit <Boolean?>]`: If gateway links can be used in remote virtual networking to link to this virtual network.

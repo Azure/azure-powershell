@@ -15,8 +15,8 @@ Prepares a subnet by applying network intent policies.
 ### Prepare (Default)
 ```
 Set-AzVnetSubnetNetworkPolicy -ResourceGroupName <String> -SubnetName <String> -SubscriptionId <String>
- -VnetName <String> [-PrepareNetworkPoliciesRequestParameter <IPrepareNetworkPoliciesRequest>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -VnetName <String> [-NetworkPoliciesRequest <IPrepareNetworkPoliciesRequest>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### PrepareExpanded
@@ -101,6 +101,23 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NetworkPoliciesRequest
+Details of PrepareNetworkPolicies for Subnet.
+To construct, see NOTES section for NETWORKPOLICIESREQUEST properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IPrepareNetworkPoliciesRequest
+Parameter Sets: Prepare
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -129,23 +146,6 @@ Required: False
 Position: Named
 Default value: False
 Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -PrepareNetworkPoliciesRequestParameter
-Details of PrepareNetworkPolicies for Subnet.
-To construct, see NOTES section for PREPARENETWORKPOLICIESREQUESTPARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IPrepareNetworkPoliciesRequest
-Parameter Sets: Prepare
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -308,7 +308,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[SourceNetworkIntentPolicyTag <IResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
 
-#### PREPARENETWORKPOLICIESREQUESTPARAMETER <IPrepareNetworkPoliciesRequest>: Details of PrepareNetworkPolicies for Subnet.
+#### NETWORKPOLICIESREQUEST <IPrepareNetworkPoliciesRequest>: Details of PrepareNetworkPolicies for Subnet.
   - `[NetworkIntentPolicyConfiguration <INetworkIntentPolicyConfiguration[]>]`: A list of NetworkIntentPolicyConfiguration.
     - `[NetworkIntentPolicyName <String>]`: The name of the Network Intent Policy for storing in target subscription.
     - `[SourceNetworkIntentPolicyEtag <String>]`: Gets a unique read-only string that changes whenever the resource is updated.
