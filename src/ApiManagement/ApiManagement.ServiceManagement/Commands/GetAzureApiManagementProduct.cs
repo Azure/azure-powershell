@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ParameterSetName = GetByApiId,
             ValueFromPipelineByPropertyName = true,
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "ApiId of the Api to find the correlated products. This parameter is optional.")]
         public String ApiId { get; set; }
 
