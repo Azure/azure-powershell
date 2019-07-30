@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed documentation typo where "Azure" was all lowercase letters
 * Fixed miscellaneous typos across module
 
 ## Version 1.0.0
