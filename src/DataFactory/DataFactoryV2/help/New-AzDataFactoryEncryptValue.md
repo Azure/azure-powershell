@@ -65,7 +65,7 @@ PS C:\> New-AzDataFactoryEncryptValue -DataFactoryName "WikiADF" -GatewayName "W
 ```
 
 The first command uses **ConvertTo-SecureString** to convert the specified string to a secure string, and then stores that object in the $Value variable.
-The second command uses **Get-Credential** to collect the windows authentication (user name and password), and then stores that **PSCredential** object in the $Credential variable.
+The second command uses **Get-Credential** to collect the Windows authentication (user name and password), and then stores that **PSCredential** object in the $Credential variable.
 The third command creates an encrypted value for the object stored in $Value and $Credential for the specified data factory, gateway, resource group, and linked service type.
 
 ### Example 4: Encrypt credentials for HDFS linked service
@@ -78,7 +78,7 @@ New-AzDataFactoryEncryptValue -DataFactoryName "MyDataFactory" -ResourceGroupNam
 
 The **ConvertTo-SecureString** command converts the specified string to a secure string.
 The **New-Object** command creates a PSCredential object using the secure username and password strings.
-Instead, you could use the **Get-Credential** command to collect windows authentication (user name and password), and then store the returned **PSCredential** object in the $credential variable as shown in previous examples.
+Instead, you could use the **Get-Credential** command to collect Windows authentication (user name and password), and then store the returned **PSCredential** object in the $credential variable as shown in previous examples.
 The **New-AzDataFactoryEncryptValue** command creates an encrypted value for the object stored in $Credential for the specified data factory, gateway, resource group, and linked service type.
 
 ### Example 5: Encrypt credentials for ODBC linked service
