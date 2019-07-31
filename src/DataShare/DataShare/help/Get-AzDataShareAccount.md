@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataShare.dll-Help.xml
+Module Name: Az.DataShare
 online version: https://docs.microsoft.com/en-us/powershell/module/az.datashare/get-azdatashareaccount
 schema: 2.0.0
 ---
@@ -13,20 +14,18 @@ Gets information about DataShare Accounts
 
 ### ByFieldsParameterSet (Default)
 ```
-Get-AzDataShareAccount [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount] [-Skip <UInt64>]
- [-First <UInt64>] [<CommonParameters>]
+Get-AzDataShareAccount [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceGroupParameterSet
 ```
 Get-AzDataShareAccount -ResourceGroupName <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
- [-IncludeTotalCount] [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
-Get-AzDataShareAccount -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
- [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
+Get-AzDataShareAccount -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -65,39 +64,9 @@ This command displays information about all datashare accounts in the Azure subs
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -First
-{{Fill First Description}}
-
-```yaml
-Type: UInt64
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IncludeTotalCount
-{{Fill IncludeTotalCount Description}}
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
 
 Required: False
 Position: Named
@@ -110,9 +79,9 @@ Accept wildcard characters: False
 Azure data share account name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceGroupParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -125,9 +94,9 @@ Accept wildcard characters: False
 The resource group name of the azure data share account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceGroupParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -140,29 +109,14 @@ Accept wildcard characters: False
 The resource id of the azure data share account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceIdParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Skip
-{{Fill Skip Description}}
-
-```yaml
-Type: UInt64
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -180,4 +134,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
