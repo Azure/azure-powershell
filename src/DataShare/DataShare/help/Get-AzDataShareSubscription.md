@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataShare.dll-Help.xml
+Module Name: Az.DataShare
 online version: https://docs.microsoft.com/en-us/powershell/module/az.datashare/get-azdatasharesubscription
 schema: 2.0.0
 ---
@@ -56,9 +57,9 @@ This command provides information about share subscription AdsShareSubscription 
 Azure data share account name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -71,7 +72,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -86,9 +87,9 @@ Accept wildcard characters: False
 Azure data share subscription name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -101,9 +102,9 @@ Accept wildcard characters: False
 The resource group name of the azure data share account
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -116,9 +117,9 @@ Accept wildcard characters: False
 The resource id of the azure data share subscription
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceIdParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -141,4 +142,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
