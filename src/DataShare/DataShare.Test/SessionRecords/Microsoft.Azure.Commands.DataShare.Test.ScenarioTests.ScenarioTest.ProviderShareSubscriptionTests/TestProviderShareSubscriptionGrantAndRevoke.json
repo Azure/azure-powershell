@@ -1,0 +1,292 @@
+﻿{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/sdktestingadsrg4712/providers/Microsoft.DataShare/accounts/sdktestingshareaccount9776/shares/sdktestingshare1/providerShareSubscriptions/1e6ed61f-382e-40e5-82ae-c8346db08f3a/revoke?api-version=2018-11-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzM5ZGNlMTgtY2VhZC00MDY1LThmYjEtM2FmNzY4M2E1MDM4L3Jlc291cmNlR3JvdXBzL3Nka3Rlc3RpbmdhZHNyZzQ3MTIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhU2hhcmUvYWNjb3VudHMvc2RrdGVzdGluZ3NoYXJlYWNjb3VudDk3NzYvc2hhcmVzL3Nka3Rlc3RpbmdzaGFyZTEvcHJvdmlkZXJTaGFyZVN1YnNjcmlwdGlvbnMvMWU2ZWQ2MWYtMzgyZS00MGU1LTgyYWUtYzgzNDZkYjA4ZjNhL3Jldm9rZT9hcGktdmVyc2lvbj0yMDE4LTExLTAxLXByZXZpZXc=",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "29"
+        ],
+        "x-ms-client-request-id": [
+          "fe3b4974-ca93-4e1e-b51e-752cf0cd13e3"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26201.01"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"shareSubscriptionObjectId\": \"1e6ed61f-382e-40e5-82ae-c8346db08f3a\",\r\n    \"createdBy\": \"yaalkaya@microsoft.com\",\r\n    \"createdAt\": \"2019-06-24T22:50:00.5344147Z\",\r\n    \"sharedBy\": \"yaalkaya@microsoft.com\",\r\n    \"sharedAt\": \"2019-06-24T22:49:21.2900136Z\",\r\n    \"company\": \"ADS Prod Cross Tenant\",\r\n    \"shareSubscriptionStatus\": \"Active\"\r\n  },\r\n  \"id\": \"/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/sdktestingadsrg4712/providers/Microsoft.DataShare/accounts/sdktestingshareaccount9776/shares/sdktestingshare1/providerShareSubscriptions/1e6ed61f-382e-40e5-82ae-c8346db08f3a\",\r\n  \"name\": \"sdktestingshare1\",\r\n  \"type\": \"Microsoft.DataShare/ShareSubscriptions\"\r\n}\r\n",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "191"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 22 Jun 2018 03:42:20 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14992"
+        ],
+        "x-ms-request-id": [
+          "ed9d09c8-ddd8-4cdf-ae78-19aa4caec1e8"
+        ],
+        "x-ms-correlation-request-id": [
+          "ed9d09c8-ddd8-4cdf-ae78-19aa4caec1e8"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20180622T034220Z:ed9d09c8-ddd8-4cdf-ae78-19aa4caec1e8"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/sdktestingadsrg4712/providers/Microsoft.DataShare/accounts/sdktestingshareaccount9776/shares/sdktestingshare1/providerShareSubscriptions/1e6ed61f-382e-40e5-82ae-c8346db08f3a/revoke?api-version=2018-11-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzM5ZGNlMTgtY2VhZC00MDY1LThmYjEtM2FmNzY4M2E1MDM4L3Jlc291cmNlR3JvdXBzL3Nka3Rlc3RpbmdhZHNyZzQ3MTIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhU2hhcmUvYWNjb3VudHMvc2RrdGVzdGluZ3NoYXJlYWNjb3VudDk3NzYvc2hhcmVzL3Nka3Rlc3RpbmdzaGFyZTEvcHJvdmlkZXJTaGFyZVN1YnNjcmlwdGlvbnMvMWU2ZWQ2MWYtMzgyZS00MGU1LTgyYWUtYzgzNDZkYjA4ZjNhL3Jldm9rZT9hcGktdmVyc2lvbj0yMDE4LTExLTAxLXByZXZpZXc=",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "29"
+        ],
+        "x-ms-client-request-id": [
+          "fe3b4974-ca93-4e1e-b51e-752cf0cd13e3"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26201.01"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"shareSubscriptionObjectId\": \"1e6ed61f-382e-40e5-82ae-c8346db08f3a\",\r\n    \"createdBy\": \"yaalkaya@microsoft.com\",\r\n    \"createdAt\": \"2019-06-24T22:50:00.5344147Z\",\r\n    \"sharedBy\": \"yaalkaya@microsoft.com\",\r\n    \"sharedAt\": \"2019-06-24T22:49:21.2900136Z\",\r\n    \"company\": \"ADS Prod Cross Tenant\",\r\n    \"shareSubscriptionStatus\": \"Active\"\r\n  },\r\n  \"id\": \"/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/sdktestingadsrg4712/providers/Microsoft.DataShare/accounts/sdktestingshareaccount9776/shares/sdktestingshare1/providerShareSubscriptions/1e6ed61f-382e-40e5-82ae-c8346db08f3a\",\r\n  \"name\": \"sdktestingshare1\",\r\n  \"type\": \"Microsoft.DataShare/ShareSubscriptions\"\r\n}\r\n",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "191"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 22 Jun 2018 03:42:20 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14992"
+        ],
+        "x-ms-request-id": [
+          "ed9d09c8-ddd8-4cdf-ae78-19aa4caec1e8"
+        ],
+        "x-ms-correlation-request-id": [
+          "ed9d09c8-ddd8-4cdf-ae78-19aa4caec1e8"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20180622T034220Z:ed9d09c8-ddd8-4cdf-ae78-19aa4caec1e8"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/sdktestingadsrg4712/providers/Microsoft.DataShare/accounts/sdktestingshareaccount9776/shares/sdktestingshare1/providerShareSubscriptions/1e6ed61f-382e-40e5-82ae-c8346db08f3a/reinstate?api-version=2018-11-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzM5ZGNlMTgtY2VhZC00MDY1LThmYjEtM2FmNzY4M2E1MDM4L3Jlc291cmNlR3JvdXBzL3Nka3Rlc3RpbmdhZHNyZzQ3MTIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhU2hhcmUvYWNjb3VudHMvc2RrdGVzdGluZ3NoYXJlYWNjb3VudDk3NzYvc2hhcmVzL3Nka3Rlc3RpbmdzaGFyZTEvcHJvdmlkZXJTaGFyZVN1YnNjcmlwdGlvbnMvMWU2ZWQ2MWYtMzgyZS00MGU1LTgyYWUtYzgzNDZkYjA4ZjNhL3JlaW5zdGF0ZT9hcGktdmVyc2lvbj0yMDE4LTExLTAxLXByZXZpZXc=",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "29"
+        ],
+        "x-ms-client-request-id": [
+          "fe3b4974-ca93-4e1e-b51e-752cf0cd13e3"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26201.01"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"shareSubscriptionObjectId\": \"1e6ed61f-382e-40e5-82ae-c8346db08f3a\",\r\n    \"createdBy\": \"yaalkaya@microsoft.com\",\r\n    \"createdAt\": \"2019-06-24T22:50:00.5344147Z\",\r\n    \"sharedBy\": \"yaalkaya@microsoft.com\",\r\n    \"sharedAt\": \"2019-06-24T22:49:21.2900136Z\",\r\n    \"company\": \"ADS Prod Cross Tenant\",\r\n    \"shareSubscriptionStatus\": \"Active\"\r\n  },\r\n  \"id\": \"/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/sdktestingadsrg4712/providers/Microsoft.DataShare/accounts/sdktestingshareaccount9776/shares/sdktestingshare1/providerShareSubscriptions/1e6ed61f-382e-40e5-82ae-c8346db08f3a\",\r\n  \"name\": \"sdktestingshare1\",\r\n  \"type\": \"Microsoft.DataShare/ShareSubscriptions\"\r\n}\r\n",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "191"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 22 Jun 2018 03:42:20 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14992"
+        ],
+        "x-ms-request-id": [
+          "ed9d09c8-ddd8-4cdf-ae78-19aa4caec1e8"
+        ],
+        "x-ms-correlation-request-id": [
+          "ed9d09c8-ddd8-4cdf-ae78-19aa4caec1e8"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20180622T034220Z:ed9d09c8-ddd8-4cdf-ae78-19aa4caec1e8"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/sdktestingadsrg4712/providers/Microsoft.DataShare/accounts/sdktestingshareaccount9776/shares/sdktestingshare1/providerShareSubscriptions/1e6ed61f-382e-40e5-82ae-c8346db08f3a/reinstate?api-version=2018-11-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzM5ZGNlMTgtY2VhZC00MDY1LThmYjEtM2FmNzY4M2E1MDM4L3Jlc291cmNlR3JvdXBzL3Nka3Rlc3RpbmdhZHNyZzQ3MTIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhU2hhcmUvYWNjb3VudHMvc2RrdGVzdGluZ3NoYXJlYWNjb3VudDk3NzYvc2hhcmVzL3Nka3Rlc3RpbmdzaGFyZTEvcHJvdmlkZXJTaGFyZVN1YnNjcmlwdGlvbnMvMWU2ZWQ2MWYtMzgyZS00MGU1LTgyYWUtYzgzNDZkYjA4ZjNhL3JlaW5zdGF0ZT9hcGktdmVyc2lvbj0yMDE4LTExLTAxLXByZXZpZXc=",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "29"
+        ],
+        "x-ms-client-request-id": [
+          "fe3b4974-ca93-4e1e-b51e-752cf0cd13e3"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26201.01"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"shareSubscriptionObjectId\": \"1e6ed61f-382e-40e5-82ae-c8346db08f3a\",\r\n    \"createdBy\": \"yaalkaya@microsoft.com\",\r\n    \"createdAt\": \"2019-06-24T22:50:00.5344147Z\",\r\n    \"sharedBy\": \"yaalkaya@microsoft.com\",\r\n    \"sharedAt\": \"2019-06-24T22:49:21.2900136Z\",\r\n    \"company\": \"ADS Prod Cross Tenant\",\r\n    \"shareSubscriptionStatus\": \"Active\"\r\n  },\r\n  \"id\": \"/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/sdktestingadsrg4712/providers/Microsoft.DataShare/accounts/sdktestingshareaccount9776/shares/sdktestingshare1/providerShareSubscriptions/1e6ed61f-382e-40e5-82ae-c8346db08f3a\",\r\n  \"name\": \"sdktestingshare1\",\r\n  \"type\": \"Microsoft.DataShare/ShareSubscriptions\"\r\n}\r\n",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "191"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 22 Jun 2018 03:42:20 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14992"
+        ],
+        "x-ms-request-id": [
+          "ed9d09c8-ddd8-4cdf-ae78-19aa4caec1e8"
+        ],
+        "x-ms-correlation-request-id": [
+          "ed9d09c8-ddd8-4cdf-ae78-19aa4caec1e8"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20180622T034220Z:ed9d09c8-ddd8-4cdf-ae78-19aa4caec1e8"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {
+    "Test-ProviderShareSubscriptionGrantAndRevoke": [
+      "sdktestingadsrg4712",
+      "sdktestingshareaccount9776",
+      "sdktestingshare1",
+      "1e6ed61f-382e-40e5-82ae-c8346db08f3a",
+      "/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/sdktestingadsrg4712/providers/Microsoft.DataShare/accounts/sdktestingshareaccount9776/shares/sdktestingshare1"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "c39dce18-cead-4065-8fb1-3af7683a5038"
+  }
+}
