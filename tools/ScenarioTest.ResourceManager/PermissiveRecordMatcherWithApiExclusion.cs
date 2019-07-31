@@ -167,12 +167,13 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 // If we're looking at a specific provider and we have top level resource from this provider to ignore
                 foreach (var resourceToIgnore in resourcesToIgnore)
                 {
-                    var segments = requestUri.Split('/');
+                    string[] segments = requestUri.Split(new char[] { '/' }, options: StringSplitOptions.RemoveEmptyEntries);
 
                     // /subscriptions/.../resourceGroups/.../providers/Microsoft.X/resourceType...?api-version=Y
-                    if (requestUri.Contains("resourceGroups/") && requestUri.Contains("providers/"))
+                    var regex = new Regex(@"\/subscriptions\/[0-9A-Fa-f-]*\/resourceGroups\/[a-zA-Z0-9_-]*\/providers\/[a-zA-Z0-9_-]*.[a-zA-Z0-9_-]*\/.*[?api-version=[0-9-]*]?");
+                    if (regex.IsMatch(requestUri))
                     {
-                        if (segments.Length > 8)
+                        if (segments.Length > 7)
                         {
                             var resourceIdentifier = new ResourceIdentifier(requestUri);
                             if (resourceIdentifier.ResourceType == resourceToIgnore)
@@ -181,9 +182,9 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                                 return true;
                             }
                         }
-                        else if (segments.Length == 8)
+                        else if (segments.Length == 7)
                         {
-                            var resourceType = $"{segments[6]}/{segments[7]}";
+                            var resourceType = $"{segments[5]}/{segments[6]}";
                             if (resourceType.Contains(resourceToIgnore))
                             {
                                 apiVersion = String.Empty;
@@ -193,16 +194,14 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                     }
 
                     // /subscriptions/.../providers/Microsoft.Provider/resourceType
-                    if (requestUri.Contains("providers/"))
+                    regex = new Regex(@"\/subscriptions\/[0-9A-Fa-f-]*\/providers\/[a-zA-Z0-9_-]*.[a-zA-Z0-9_-]*\/.*?[api-version=[0-9-]*]?");
+                    if (regex.IsMatch(requestUri))
                     {
-                        if (segments.Length == 6)
+                        var resourceType = $"{segments[3]}/{segments[4]}";
+                        if (resourceType.Contains(resourceToIgnore))
                         {
-                            var resourceType = $"{segments[4]}/{segments[5]}";
-                            if (resourceType.Contains(resourceToIgnore))
-                            {
-                                apiVersion = String.Empty;
-                                return true;
-                            }
+                            apiVersion = String.Empty;
+                            return true;
                         }
                     }
                 }
