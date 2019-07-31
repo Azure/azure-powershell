@@ -75,20 +75,20 @@ function maxAdvertisedIpv6
 function getHash
 {
 $hash = getPeeringVariable "Hash" $ipGenerator.BuildHash()
-Write-Debug("The hash $hash");
+Write-Debug "The hash $hash";
 return "$hash"
 }
 
 function getBandwidth
 {
 $bandwidth = getPeeringVariable "bandwidth" $ipGenerator.GetBandwidth()
-Write-Debug("The bandwidth $bandwidth");
+Write-Debug "The bandwidth $bandwidth";
 	return $bandwidth
 }
 
 function getRandomNumber {
 	$num = Get-Random -Maximum 65010 -Minimum 1
-	Write-Debug("The random $num");
+	Write-Debug "The random $num";
 	return $num
 }
 
@@ -96,18 +96,18 @@ function makePeerAsn($asn)
 {
 	$asnId = $asn
 	$asnPeerName = getAssetName "$asn-Global"
-	Write-Debug("PeerName $asnPeerName")
+	Write-Debug "PeerName $asnPeerName"
 	$asnPeer = getAssetName "AS$asn-Global"
-	Write-Debug("PeerName $asnPeer")
+	Write-Debug "PeerName $asnPeer" 
 	[string[]]$emails = "noc@$asnPeer.com","noc@$asnPeerName.com"
 	$phone = getAssetName "2342432433"
-	Write-Debug("Email: $emails; Phone $phone")
+	Write-Debug "Email: $emails; Phone $phone" 
 	$created = New-AzPeerAsn -Name $asnPeerName -PeerName $asnPeer -PeerAsn $asnId -Email $emails -Phone $phone
-	Write-Debug("PeerName " + $created.Name)
+	Write-Debug "PeerName " + $created.Name
 	$created.ValidationState = "Approved";
-	Write-Debug("ValidationState: " + $created.ValidationState)
-	Write-Debug("Sleep 2 seconds...")
-	Sleep(2)
+	Write-Debug "ValidationState: $created" 
+	Write-Debug "Sleep 2 seconds..." 
+	Wait-Seconds 2
 	$created = $created | Set-AzPeerAsn
 	return $created
 }

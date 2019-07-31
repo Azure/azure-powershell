@@ -95,7 +95,7 @@ function Test-UpdateExchangeIPv4OnInputObject
 	$peering.Tags = $tags;
 	$peering.Connections[0] = $peering.Connections[0] |  Set-AzPeeringExchangeConnectionObject -PeerSessionIPv4Address $newipv4
 	$peering.Connections[1] = $peering.Connections[1] |  Set-AzPeeringExchangeConnectionObject -PeerSessionIPv4Address $newipv42
-	Write-Debug("ResourceId:"+$peering.Id)
+	Write-Debug "ResourceId: $peering.Id" 
 	$update =  $peering | Update-AzPeering 
 	Assert-AreEqual $newipv4 $update.Connections[0].BgpSession.PeerSessionIPv4Address 
 	Assert-AreEqual $newipv42 $update.Connections[1].BgpSession.PeerSessionIPv4Address 
@@ -118,7 +118,7 @@ function Test-UpdateExchangeIPv6OnResourceId
 	$oldpeering = $peering
 	$peering.Connections[0] = $peering.Connections[0] |  Set-AzPeeringExchangeConnectionObject -PeerSessionIPv6Address $newipv6 
 	$peering.Connections[1] = $peering.Connections[1] |  Set-AzPeeringExchangeConnectionObject -PeerSessionIPv6Address $newipv62
-	Write-Debug($peering.Name)
+	Write-Debug $peering.Name
 	$update = Update-AzPeering -ResourceId $peering.Id $peering.Connections 
 	Assert-NotNull $update
 	Assert-AreEqual $newipv6 $update.Connections[0].BgpSession.PeerSessionIPv6Address 

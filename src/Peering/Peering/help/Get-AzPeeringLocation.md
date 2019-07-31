@@ -92,7 +92,7 @@ Gets the exchange peering location for peering facility id 71.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -107,7 +107,7 @@ Accept wildcard characters: False
 Shows all Peering resource by Kind.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -122,7 +122,7 @@ Accept wildcard characters: False
 The PeeringDB.com Facility ID
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: LocationByFacilityId
 Aliases:
 
@@ -137,7 +137,7 @@ Accept wildcard characters: False
 The location of the resource.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PeeringByKind
 Aliases:
 
