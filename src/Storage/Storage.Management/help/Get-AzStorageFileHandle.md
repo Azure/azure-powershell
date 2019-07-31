@@ -48,18 +48,21 @@ The **Get-AzStorageFileHandle** cmdlet lists file handles of a  file share, or f
 
 ## EXAMPLES
 
-### Example 1: List all file handles on a file share recursively 
+### Example 1: List all file handles on a file share recursively, and sort by ClientIp and OpenTime
 ```
-PS C:\>Get-AzStorageFileHandle -ShareName "mysharename" -Recursive
+PS C:\>Get-AzStorageFileHandle -ShareName "mysharename" -Recursive | Sort-Object ClientIP,OpenTime 
 
-HandleId    Path      ClientIp       ClientPort OpenTime             LastReconnectTime FileId               ParentId             SessionId          
---------    ----      --------       ---------- --------             ----------------- ------               --------             ---------          
-24057151761           104.46.105.229 50861      2019-06-18 07:36:38Z                   0                    0                    9549812641162070049
-24057151781 dir1      104.46.105.229 50861      2019-06-18 07:39:23Z                   11529285414812647424 0                    9549812641162070049
-24057151782 dir1      104.46.105.229 50861      2019-06-18 07:39:23Z                   11529285414812647424 0                    9549812641162070049
+HandleId    Path                  ClientIp       ClientPort OpenTime             LastReconnectTime FileId               ParentId             SessionId          
+--------    ----                  --------       ---------- --------             ----------------- ------               --------             ---------          
+28506980357                       104.46.105.229 49805      2019-07-29 08:37:36Z                   0                    0                    9297571480349046273
+28506980537 dir1                  104.46.105.229 49805      2019-07-30 09:28:48Z                   10376363910205800448 0                    9297571480349046273
+28506980538 dir1                  104.46.105.229 49805      2019-07-30 09:28:48Z                   10376363910205800448 0                    9297571480349046273
+28582543365                       104.46.119.170 51675      2019-07-30 09:29:32Z                   0                    0                    9477733061320772929
+28582543375 dir1                  104.46.119.170 51675      2019-07-30 09:29:38Z                   10376363910205800448 0                    9477733061320772929
+28582543376 dir1                  104.46.119.170 51675      2019-07-30 09:29:38Z                   10376363910205800448 0                    9477733061320772929
 ```
 
-This command lists file handles on a file share.
+This command lists file handles on a file share, and sort the output by ClientIp, then by OpenTime.
 
 ### Example 2: List first 2 file handles on a file directory recursively 
 ```

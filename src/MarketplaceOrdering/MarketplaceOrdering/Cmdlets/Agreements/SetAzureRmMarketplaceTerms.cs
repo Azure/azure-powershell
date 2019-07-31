@@ -52,8 +52,8 @@ namespace Microsoft.Azure.Commands.MarketplaceOrdering.Cmdlets.Agreements
         [ValidateNotNullOrEmpty]
         public PSAgreementTerms Terms { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, Position = 0, HelpMessage = "Terms object returned in Get-AzMarketplaceTerms cmdlet. This is a mandatory parameter if Accept paramter is true.", ParameterSetName = Constants.ParameterSetNames.InputObjectAcceptParametrSet)]
-        [Parameter(Mandatory = true, ValueFromPipeline = true, Position = 0, HelpMessage = "Terms object returned in Get-AzMarketplaceTerms cmdlet. This is a mandatory parameter if Accept paramter is true.", ParameterSetName = Constants.ParameterSetNames.InputObjectRejectParametrSet)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, Position = 0, HelpMessage = "Terms object returned in Get-AzMarketplaceTerms cmdlet. This is a mandatory parameter if Accept parameter is true.", ParameterSetName = Constants.ParameterSetNames.InputObjectAcceptParametrSet)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, Position = 0, HelpMessage = "Terms object returned in Get-AzMarketplaceTerms cmdlet. This is a mandatory parameter if Accept parameter is true.", ParameterSetName = Constants.ParameterSetNames.InputObjectRejectParametrSet)]
         [ValidateNotNullOrEmpty]
         public PSAgreementTerms InputObject { get; set; }
 

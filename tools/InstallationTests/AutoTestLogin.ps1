@@ -78,7 +78,7 @@ Function Check-LoggedInContext()
 {
     if($gLoggedInCtx -eq $null)
     {
-        Write-Error "'$global:gPsAutoTestSubscriptionName' subcription does not exist in the list of available subscriptions. Make sure to have it to run the tests"
+        Write-Error "'$global:gPsAutoTestSubscriptionName' subscription does not exist in the list of available subscriptions. Make sure to have it to run the tests"
         Exit
     }
 }

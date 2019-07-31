@@ -65,7 +65,7 @@ Create a new blueprint assignment of the blueprint definition `$blueprintObject`
 PS C:\> New-AzBlueprintAssignment -Name "myAssignment" -Blueprint $blueprintObject -SubscriptionId 00000000-1111-0000-1111-000000000000 -Location "West US" -Parameter @{P1="v1"; P2="v2"} -UserAssignedIdentity "/subscriptions/00000000-1111-0000-1111-000000000000/resourceGroups/my-resource-group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/my-user-defined-identity"
 ```
 
-Create a new blueprint assignment of the blueprint definition `$blueprintObject` within the specified subscription using the defined defined parameter and resource group dictionary using the specified user-assigned identity id.
+Create a new blueprint assignment of the blueprint definition `$blueprintObject` within the specified subscription using the defined parameter and resource group dictionary using the specified user-assigned identity id.
 
 ### Example 4
 ```powershell
