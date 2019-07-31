@@ -18,8 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 0.2.0
 * Bug fix in set connection
 * Added Connection Identifier to Connection object.
 * Updated to SDK 0.10.0-review

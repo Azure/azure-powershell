@@ -58,7 +58,7 @@ New local connection
 The Bandwidth offered at this location in Mbps.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -73,7 +73,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -88,7 +88,7 @@ Accept wildcard characters: False
 The maximum advertised IPv4
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: IPv4Prefix, IPv4PrefixIPv6Prefix
 Aliases:
 
@@ -103,7 +103,7 @@ Accept wildcard characters: False
 The maximum advertised IPv6
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: IPv6Prefix, IPv4PrefixIPv6Prefix
 Aliases:
 
@@ -118,7 +118,7 @@ Accept wildcard characters: False
 The MD5 authentication key for session.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -133,7 +133,7 @@ Accept wildcard characters: False
 The peering facility Id found on https://peeringdb.com
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -148,7 +148,7 @@ Accept wildcard characters: False
 The peer session IPv4 address
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: IPv4Prefix, IPv4PrefixIPv6Prefix
 Aliases:
 
@@ -163,7 +163,7 @@ Accept wildcard characters: False
 The peer session IPv6 address
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: IPv6Prefix, IPv4PrefixIPv6Prefix
 Aliases:
 

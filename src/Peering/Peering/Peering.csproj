@@ -12,7 +12,6 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.2.2" />
-    <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.3.20" />
     <PackageReference Include="Microsoft.Azure.Management.Peering" Version="0.10.0-preview" />
   </ItemGroup>
 
