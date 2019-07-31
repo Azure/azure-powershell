@@ -14,13 +14,19 @@ Stops ongoing synchronization for a share subscription. A share subscription can
 ### ByFieldsParameterSet (Default)
 ```
 Stop-AzDataShareSubscriptionSynchronization -ResourceGroupName <String> -AccountName <String>
- -ShareSubscriptionName <String> -SynchronizationId <String> [-Force] [-AsJob]
+ -ShareSubscriptionName <String> -SynchronizationId <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
-Stop-AzDataShareSubscriptionSynchronization -SynchronizationId <String> -ResourceId <String> [-Force] [-AsJob]
+Stop-AzDataShareSubscriptionSynchronization -SynchronizationId <String> -ResourceId <String> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByObjectParameterSet
+```
+Stop-AzDataShareSubscriptionSynchronization -InputObject <PSDataShareSubscription> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -60,7 +66,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -94,18 +100,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-{{Fill Force Description}}
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
+### -InputObject
+Azure data share subscription object```yaml
+Type: PSDataShareSubscription
+Parameter Sets: ByObjectParameterSet
 Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -120,7 +124,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -150,7 +154,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -159,13 +163,13 @@ Synchronization id that needs to be stopped
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByFieldsParameterSet, ByResourceIdParameterSet
 Aliases: 
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

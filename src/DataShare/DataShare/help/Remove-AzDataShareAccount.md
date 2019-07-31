@@ -25,7 +25,7 @@ Remove-AzDataShareAccount -ResourceId <String> [-PassThru] [-Force] [-AsJob]
 
 ### ByObjectParameterSet
 ```
-Remove-AzDataShareAccount -Account <PSDataShareAccount> [-PassThru] [-Force] [-AsJob]
+Remove-AzDataShareAccount -InputObject <PSDataShareAccount> [-PassThru] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -47,21 +47,6 @@ This command removes the datashare account named WikiADS from the resource group
 This command returns a value of $True.
 
 ## PARAMETERS
-
-### -Account
-The azure data share account object.
-
-```yaml
-Type: PSDataShareAccount
-Parameter Sets: ByObjectParameterSet
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
 
 ### -AsJob
 {{Fill AsJob Description}}
@@ -108,6 +93,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+The azure data share account object.```yaml
+Type: PSDataShareAccount
+Parameter Sets: ByObjectParameterSet
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 Azure data share account name.
 
@@ -119,7 +117,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -134,7 +132,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -149,7 +147,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

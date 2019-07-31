@@ -14,21 +14,20 @@ removes a synchronization setting
 ### ByFieldsParameterSet (Default)
 ```
 Remove-AzDataShareSynchronizationSetting -ResourceGroupName <String> -AccountName <String> -ShareName <String>
- -Name <String> [-PassThru] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ -Name <String> [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
-Remove-AzDataShareSynchronizationSetting -ResourceId <String> [-PassThru] [-Force] [-AsJob]
+Remove-AzDataShareSynchronizationSetting -ResourceId <String> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Remove-AzDataShareSynchronizationSetting [-PassThru] [-Force] [-AsJob]
- -SynchronizationSetting <PSSynchronizationSetting> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzDataShareSynchronizationSetting -InputObject <PSDataShareSynchronizationSetting> [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,7 +58,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -93,18 +92,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-{{Fill Force Description}}
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
+### -InputObject
+The Azure Data Share Synchronization setting.```yaml
+Type: PSDataShareSynchronizationSetting
+Parameter Sets: ByObjectParameterSet
 Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -119,7 +116,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -134,7 +131,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -149,7 +146,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -179,22 +176,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -SynchronizationSetting
-The Azure Data Share Account.
-
-```yaml
-Type: PSSynchronizationSetting
-Parameter Sets: ByObjectParameterSet
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

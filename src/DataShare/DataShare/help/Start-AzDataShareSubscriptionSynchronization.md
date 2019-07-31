@@ -14,14 +14,20 @@ Initiates synchronization for a share subscription. A share subscription can be 
 ### ByFieldsParameterSet (Default)
 ```
 Start-AzDataShareSubscriptionSynchronization -ResourceGroupName <String> -AccountName <String>
- -ShareSubscriptionName <String> -SynchronizationMode <String> [-Force] [-AsJob]
+ -ShareSubscriptionName <String> -SynchronizationMode <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
-Start-AzDataShareSubscriptionSynchronization -SynchronizationMode <String> -ResourceId <String> [-Force]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Start-AzDataShareSubscriptionSynchronization -SynchronizationMode <String> -ResourceId <String> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByObjectParameterSet
+```
+Start-AzDataShareSubscriptionSynchronization -InputObject <PSDataShareSubscription> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,7 +66,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -94,18 +100,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-{{Fill Force Description}}
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
+### -InputObject
+Azure data share subscription object```yaml
+Type: PSDataShareSubscription
+Parameter Sets: ByObjectParameterSet
 Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -120,7 +124,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -150,7 +154,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -159,13 +163,13 @@ Synchronization mode (FullSync or Incremental)
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByFieldsParameterSet, ByResourceIdParameterSet
 Aliases: 
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
