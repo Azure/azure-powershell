@@ -17,15 +17,21 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
             {
                 "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/providers/Microsoft.Sql?api-version=2016-09-01",
                 "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourcegroups/ps8625?api-version=2016-09-01",
+
+                // - The above uris should be ignored
                 "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/providers/Microsoft.Sql/virtualClusters?api-version=2015-05-01-preview",
-                "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ps8625/providers/Microsoft.Network/virtualNetworks/cl_initial?api-version=2018-12-01",
-                "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ps8625/providers/Microsoft.Sql/managedInstances/ps8807?api-version=2015-05-01-preview",
-                "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ps8625/providers/Microsoft.Sql/servers/ps8807?api-version=2015-05-01-preview",
                 "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ps8625/providers/Microsoft.Sql/virtualClusters?api-version=2015-05-01-preview",
-                "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ps8625/providers/Microsoft.Sql/managedInstances/ps8807/managedDatabases/db1?api-version=2017-03-01-preview",
-                "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ps8625/providers/Microsoft.Sql/servers/ps8807/databases/testdb?api-version=2017-03-01-preview",
+
+                "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ps8625/providers/Microsoft.Network/virtualNetworks/cl_initial?api-version=2018-12-01",
+
                 "/subscriptions/4cac86b0-1e56-48c2-9df2-669a6d2d87c5/providers/Microsoft.Sql/managedInstances",
-                "/subscriptions/4cac86b0-1e56-48c2-9df2-669a6d2d87c5/resourceGroups/ps8625/providers/Microsoft.Sql/managedInstances"
+                "/subscriptions/4cac86b0-1e56-48c2-9df2-669a6d2d87c5/resourceGroups/ps8625/providers/Microsoft.Sql/managedInstances",
+                "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ps8625/providers/Microsoft.Sql/managedInstances/ps8807?api-version=2015-05-01-preview",
+                "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/cl_one/providers/Microsoft.Sql/managedInstances/dc-cmdlet-serverps8052?api-version=2018-06-01-preview",
+
+                "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ps8625/providers/Microsoft.Sql/managedInstances/ps8807/managedDatabases/db1?api-version=2017-03-01-preview",
+                "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ps8625/providers/Microsoft.Sql/servers/ps8807?api-version=2015-05-01-preview",
+                "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/ps8625/providers/Microsoft.Sql/servers/ps8807/databases/testdb?api-version=2017-03-01-preview",
             };
 
             TestContainsIgnoredProvider(
@@ -39,15 +45,21 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
                 {
                     "Microsoft.Sql/managedInstances",
                 },
-                expectedNumIgnored: 3);
+                expectedNumIgnored: 4);
 
+            var len = testRequestUris.Count();
             TestContainsIgnoredProvider(
                  requestUrisToTest: testRequestUris,
-                 resourcesToIgnore: new string[1]
+                 resourcesToIgnore: new string[6]
                  {
-                     "Microsoft.Sql/managedInstances/managedDatabases"
+                     "Microsoft.Network/virtualNetworks",
+                     "Microsoft.Sql/virtualClusters",
+                     "Microsoft.Sql/managedInstances",
+                     "Microsoft.Sql/managedInstances/managedDatabases",
+                     "Microsoft.Sql/servers",
+                     "Microsoft.Sql/servers/databases"
                  },
-                 expectedNumIgnored: 1);
+                 expectedNumIgnored: 10);
         }
 
         private void TestContainsIgnoredProvider(
