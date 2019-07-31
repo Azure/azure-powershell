@@ -32,7 +32,7 @@ Gets information about consumer share subscriptions on provider side.
 ### [Get-AzDataShareReceivedInvitation](Get-AzDataShareReceivedInvitation.md)
 Gets information about consumer invitations.
 
-### [Get-AzDataShareSourceDataSets](Get-AzDataShareSourceDataSets.md)
+### [Get-AzDataShareSourceDataSet](Get-AzDataShareSourceDataSet.md)
 Gets information about source data sets in share subscription.
 
 ### [Get-AzDataShareSubscription](Get-AzDataShareSubscription.md)
@@ -41,13 +41,13 @@ Gets information about share subscription in data share account.
 ### [Get-AzDataShareSubscriptionSynchronization](Get-AzDataShareSubscriptionSynchronization.md)
 Gets information about synchronization runs in share subscription.
 
-### [Get-AzDataShareSubscriptionSynchronizationDetails](Get-AzDataShareSubscriptionSynchronizationDetails.md)
+### [Get-AzDataShareSubscriptionSynchronizationDetail](Get-AzDataShareSubscriptionSynchronizationDetail.md)
 Gets information about synchonization details for share subscription.
 
 ### [Get-AzDataShareSynchronization](Get-AzDataShareSynchronization.md)
 Gets information about synchronization setting for a share.
 
-### [Get-AzDataShareSynchronizationDetails](Get-AzDataShareSynchronizationDetails.md)
+### [Get-AzDataShareSynchronizationDetail](Get-AzDataShareSynchronizationDetail.md)
 Gets information about synchronization details for a share.
 
 ### [Get-AzDataShareSynchronizationSetting](Get-AzDataShareSynchronizationSetting.md)
@@ -61,6 +61,9 @@ Grants a revoked share subscription access to source share
 
 ### [New-AzDataShare](New-AzDataShare.md)
 Creates a azure data share.
+
+### [New-AzDataShareAccount](New-AzDataShareAccount.md)
+Creates new data share account
 
 ### [New-AzDataShareDataSet](New-AzDataShareDataSet.md)
 Adds data sets to azure data share.

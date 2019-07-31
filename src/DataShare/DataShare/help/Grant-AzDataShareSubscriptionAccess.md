@@ -18,7 +18,7 @@ Grant-AzDataShareSubscriptionAccess -ResourceGroupName <String> -AccountName <St
  [<CommonParameters>]
 ```
 
-### ByResourceIdParameterSet
+### ByProviderShareSubscriptionIdParameterSet
 ```
 Grant-AzDataShareSubscriptionAccess -ShareSubscriptionId <String> -ResourceId <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -60,7 +60,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -90,7 +90,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -99,7 +99,7 @@ The resource id of the azure data share
 
 ```yaml
 Type: String
-Parameter Sets: ByResourceIdParameterSet
+Parameter Sets: ByProviderShareSubscriptionIdParameterSet
 Aliases: 
 
 Required: True
@@ -120,7 +120,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -135,7 +135,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
