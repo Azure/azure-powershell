@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
             catch
             {
-                // Error occured. Don't get the friendly name
+                // Error occurred. Don't get the friendly name
             }
 
             return displayName + (!string.IsNullOrWhiteSpace(upnOrSpn) ? (" (" + upnOrSpn + ")") : "");

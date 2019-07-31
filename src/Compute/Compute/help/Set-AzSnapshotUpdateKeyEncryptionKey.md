@@ -57,7 +57,7 @@ Accept wildcard characters: False
 ```
 
 ### -KeyUrl
-Specifes the key Url.
+Specifies the key Url.
 
 ```yaml
 Type: System.String

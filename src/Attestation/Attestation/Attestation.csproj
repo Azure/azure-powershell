@@ -12,7 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.Attestation" Version="0.9.5-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Attestation" Version="0.9.6-preview" />
   </ItemGroup>
 
   <ItemGroup>

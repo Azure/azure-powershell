@@ -13,8 +13,8 @@ Return available private end point types in the location
 ## SYNTAX
 
 ```
-Get-AzAvailablePrivateEndpointType -Location <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzAvailablePrivateEndpointType -Location <String> [-ResourceGroupName <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,17 +30,17 @@ Get-AzAvailablePrivateEndpointType -Location eastus
   {
     "id": "subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/availablePrivateEndpointTypes/typename1",
     "type": "Microsoft.Network/availablePrivateEndpointType",
-    "serviceName": "Microsot.Sql/servers"
+    "resourceName": "Microsot.Sql/servers"
   },
   {
     "id": "subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/availablePrivateEndpointTypes/typename2",
     "type": "Microsoft.Network/availablePrivateEndpointType",
-    "serviceName": "Microsot.Storage/accounts"
+    "resourceName": "Microsot.Storage/accounts"
   },
   {
     "id": "subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/availablePrivateEndpointTypes/typename3",
     "type": "Microsoft.Network/availablePrivateEndpointType",
-    "serviceName": "Microsot.Cosmos/cosmosDbAccounts"
+    "resourceName": "Microsot.Cosmos/cosmosDbAccounts"
   }
 ]
 ```
@@ -73,6 +73,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The resource group name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

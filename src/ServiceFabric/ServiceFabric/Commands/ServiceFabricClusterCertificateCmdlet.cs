@@ -460,7 +460,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 foreach (var vmss in vmssPages)
                 {
                     VirtualMachineScaleSetExtension sfExt;
-                    if (TryGetFabricVmExt(vmss.VirtualMachineProfile.ExtensionProfile.Extensions, out sfExt))
+                    if (TryGetFabricVmExt(vmss.VirtualMachineProfile.ExtensionProfile?.Extensions, out sfExt))
                     {
                         if (!string.Equals(GetClusterIdFromExtension(sfExt), clusterId, StringComparison.OrdinalIgnoreCase))
                         {

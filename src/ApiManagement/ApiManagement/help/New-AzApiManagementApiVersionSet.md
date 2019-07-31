@@ -108,7 +108,7 @@ Accept wildcard characters: False
 
 ### -HeaderName
 The Header value which will contain the versioning information.
-If versioning Scheme HEADER is choosen, then this value must be specified.
+If versioning Scheme HEADER is chosen, then this value must be specified.
 
 ```yaml
 Type: System.String
@@ -140,7 +140,7 @@ Accept wildcard characters: False
 
 ### -QueryName
 The Query value which will contain the versioning information.
-If versioning Scheme Query is choosen, then this value must be specified.
+If versioning Scheme Query is chosen, then this value must be specified.
 
 ```yaml
 Type: System.String
