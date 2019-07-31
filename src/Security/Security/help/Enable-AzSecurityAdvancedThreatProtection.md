@@ -18,7 +18,7 @@ Enable-AzSecurityAdvancedThreatProtection -ResourceId <String> [-DefaultProfile 
 ```
 
 ## DESCRIPTION
-The `Enable-AzSecurityAdvancedThreatProtection` cmdlet enables the threat protetion policy for a storage account.
+The `Enable-AzSecurityAdvancedThreatProtection` cmdlet enables the threat protection policy for a storage account.
 To use this cmdlet, specify the *ResourceId* parameter.
 
 ## EXAMPLES

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Start-AzRecoveryServicesAsrUnplannedFailoverJob
 
 ## SYNOPSIS
-Starts a unplanned failover operation.
+Starts an unplanned failover operation.
 
 ## SYNTAX
 
@@ -37,17 +37,17 @@ Start-AzRecoveryServicesAsrUnplannedFailoverJob -ReplicationProtectedItem <ASRRe
 ```
 
 ## DESCRIPTION
-The **Start-AzRecoveryServicesAsrTestFailoverJob** cmdlet starts test failover of an Azure Site Recovery replication protected item or recovery plan.
+The **Start-AzRecoveryServicesAsrUnplannedFailoverJob** cmdlet starts unplanned failover of an Azure Site Recovery replication protected item or recovery plan.
 You can check whether the job succeeded by using the Get-AzRecoveryServicesAsrJob cmdlet.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> $currentJob = Start-AzRecoveryServicesAsrTestFailoverJob -RecoveryPlan $RP -Direction PrimaryToRecovery -VMNetwork $TestRecoveryNetwork
+PS C:\> $currentJob = Start-AzRecoveryServicesAsrUnplannedFailoverJob -RecoveryPlan $RP -Direction PrimaryToRecovery -VMNetwork $RecoveryNetwork
 ```
 
-Starts the test failover operation for the recovery plan with the specified parameters and returns the ASR job used to track the operation.
+Starts the unplanned failover operation for the recovery plan with the specified parameters and returns the ASR job used to track the operation.
 
 ## PARAMETERS
 

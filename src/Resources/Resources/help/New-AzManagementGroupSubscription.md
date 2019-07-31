@@ -75,7 +75,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Subscription Id of the subscription associated witht the management
+Subscription Id of the subscription associated with the management
 
 ```yaml
 Type: System.Guid
