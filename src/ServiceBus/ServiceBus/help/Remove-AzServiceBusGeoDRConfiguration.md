@@ -37,7 +37,7 @@ The **Remove-AzServiceBusGeoDRConfiguration** cmdlet deletes an Alias(Disaster R
 
 ### Example 1
 ```
-PS C:\> Remove-AzServiceBusGeoDRConfiguration -ResourceGroupName "SampleResourceGroup" -Namespace "SampleNamespace_Secondary" -Name "SampleDRCongifName"
+PS C:\> Remove-AzServiceBusGeoDRConfiguration -ResourceGroupName "SampleResourceGroup" -Namespace "SampleNamespace_Secondary" -Name "SampleDRConfigName"
 ```
 
 Deletes an Alias(Disaster Recovery configuration)

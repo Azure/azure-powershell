@@ -45,7 +45,7 @@ The first command creates a public IP address named MyPublicIP in the resource g
 The second command creates a front-end IP configuration named FrontendIpConfig01 using the public IP address in $publicip, and then stores it in the $frontend variable.
 The third command creates an inbound NAT rule configuration named MyInboundNatRule using the front-end object in $frontend.
 The TCP protocol is specified and the front-end port is 3389, the same as the backend port in this case.
-The *FrontendIpConfiguration*, *Procotol*, *FrontendPort*, and *BackendPort* parameters are all required to create an inbound NAT rule configuration.
+The *FrontendIpConfiguration*, *Protocol*, *FrontendPort*, and *BackendPort* parameters are all required to create an inbound NAT rule configuration.
 
 ## PARAMETERS
 

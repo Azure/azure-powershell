@@ -50,7 +50,7 @@ Exclude              : True
 LowCpuThreshold      : null
 
 ```
-Retrieves a list of Azure Advisor Configration(s).
+Retrieves a list of Azure Advisor Configuration(s).
 
 ## PARAMETERS
 

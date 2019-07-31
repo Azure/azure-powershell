@@ -60,7 +60,7 @@ Gets keys for a self-hosted integration runtime.
 Gets metric data for an integration runtime. 
 
 ### [Get-AzDataFactoryV2IntegrationRuntimeNode](Get-AzDataFactoryV2IntegrationRuntimeNode.md)
-Gets an integration runtime node infomation.
+Gets an integration runtime node information.
 
 ### [Get-AzDataFactoryV2LinkedService](Get-AzDataFactoryV2LinkedService.md)
 Gets information about linked services in Data Factory.
@@ -195,7 +195,7 @@ Starts a trigger in a data factory.
 Stops a managed dedicated integration runtime.
 
 ### [Stop-AzDataFactoryV2PipelineRun](Stop-AzDataFactoryV2PipelineRun.md)
-Stops a pieline run in a data factory.
+Stops a pipeline run in a data factory.
 
 ### [Stop-AzDataFactoryV2Trigger](Stop-AzDataFactoryV2Trigger.md)
 Stops a trigger in a data factory.

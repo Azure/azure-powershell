@@ -151,7 +151,7 @@ Accept wildcard characters: False
 ### -JobId
 
 Specifies the ID of a job that this cmdlet gets.
-The ID is the JobId property of an **Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase** object.
+The ID is the JobId property of a **Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase** object.
 
 ```yaml
 Type: System.String

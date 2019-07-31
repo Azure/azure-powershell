@@ -207,7 +207,7 @@ Scope identifier. The Scope of the Subscription, whether it is Api Scope /apis/{
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByApiId
+Parameter Sets: GetByScope
 Aliases:
 
 Required: True

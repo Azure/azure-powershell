@@ -295,7 +295,7 @@ Then, modify the properties that you wish to change.
 Finally, save the role definition using this command.
 
 ### [Stop-AzDeployment](Stop-AzDeployment.md)
-Cancal a running deployment
+Cancel a running deployment
 
 ### [Stop-AzResourceGroupDeployment](Stop-AzResourceGroupDeployment.md)
 Cancels a resource group deployment.

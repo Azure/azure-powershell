@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.Advisor.Cmdlets
 
             WriteVerbose(Resources.SuppressionCreate);
 
-            // This list contains all the response for the auzre-operation
+            // This list contains all the response for the azure-operation
             List<AzureOperationResponse<SuppressionContract>> azureOperationResponseSuppression = new List<AzureOperationResponse<SuppressionContract>>();
             var returnSuppressionContract = new List<PsAzureAdvisorSuppressionContract>();
 
