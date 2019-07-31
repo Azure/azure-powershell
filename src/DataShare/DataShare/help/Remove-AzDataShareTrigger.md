@@ -93,7 +93,8 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Azure data share trigger object```yaml
+Azure data share trigger object
+```yaml
 Type: PSDataShareTrigger
 Parameter Sets: ByObjectParameterSet
 Aliases: 

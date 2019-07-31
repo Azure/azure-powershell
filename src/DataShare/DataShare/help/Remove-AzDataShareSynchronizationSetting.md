@@ -93,7 +93,8 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The Azure Data Share Synchronization setting.```yaml
+The Azure Data Share Synchronization setting.
+```yaml
 Type: PSDataShareSynchronizationSetting
 Parameter Sets: ByObjectParameterSet
 Aliases: 
