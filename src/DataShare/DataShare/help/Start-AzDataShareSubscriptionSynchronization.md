@@ -101,7 +101,8 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Azure data share subscription object```yaml
+Azure data share subscription object
+```yaml
 Type: PSDataShareSubscription
 Parameter Sets: ByObjectParameterSet
 Aliases: 
