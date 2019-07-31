@@ -19,6 +19,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed miscellaneous typos across module
+
+## Version 2.4.2-preview
 * Added Host and HostGroup features
     - New cmdlets:
         New-AzHostGroup
@@ -28,7 +31,6 @@
         Remove-AzHostGroup
         Remove-AzHost
     - HostId parameter is added to New-AzVMConfig and New-AzVM
-* Fixed miscellaneous typos across module
 
 ## Version 2.4.1
 * Add missing properties (ComputerName, OsName, OsVersion and HyperVGeneration) of VM instance view object.
