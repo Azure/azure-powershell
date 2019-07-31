@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Commands.Sql.Instance_Pools.Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstancePool",
         SupportsShouldProcess = true, DefaultParameterSetName = DeleteByNameParameterSet)]
+    [OutputType(typeof(AzureSqlInstancePoolModel))]
     public class RemoveAzureSqlInstancePool : InstancePoolCmdletBase
     {
         /// <summary>

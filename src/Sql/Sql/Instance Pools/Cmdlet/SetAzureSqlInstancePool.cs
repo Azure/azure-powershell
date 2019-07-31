@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.Sql.Instance_Pools.Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstancePool",
             SupportsShouldProcess = true, DefaultParameterSetName = DefaultSetInstancePoolParameterSet)]
+    [OutputType(typeof(AzureSqlInstancePoolModel))]
     public class SetAzureSqlInstancePool : InstancePoolCmdletBase
     {
         /// <summary>
@@ -96,8 +97,8 @@ namespace Microsoft.Azure.Commands.Sql.Instance_Pools.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The tags to associate with the instance")]
-        [Alias("Tag")]
-        public Hashtable Tags { get; set; }
+        [Alias("Tags")]
+        public Hashtable Tag { get; set; }
 
         /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
@@ -165,7 +166,7 @@ namespace Microsoft.Azure.Commands.Sql.Instance_Pools.Cmdlet
                 Location = existingEntity.Location,
                 ResourceGroupName = this.ResourceGroupName,
                 InstancePoolName = this.Name,
-                Tags = TagsConversionHelper.ReadOrFetchTags(this, existingEntity.Tags),
+                Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true),
                 Sku = existingEntity.Sku,
                 SubnetId = existingEntity.SubnetId,
                 VCores = existingEntity.VCores,
