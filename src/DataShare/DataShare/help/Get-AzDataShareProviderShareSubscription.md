@@ -17,7 +17,7 @@ Get-AzDataShareProviderShareSubscription -ResourceGroupName <String> -AccountNam
  [-ShareSubscriptionId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ByResourceIdParameterSet
+### ByProviderShareSubscriptionIdParameterSet
 ```
 Get-AzDataShareProviderShareSubscription [-ShareSubscriptionId <String>] -ResourceId <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -59,7 +59,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -89,7 +89,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -98,7 +98,7 @@ The resource id of the share
 
 ```yaml
 Type: String
-Parameter Sets: ByResourceIdParameterSet
+Parameter Sets: ByProviderShareSubscriptionIdParameterSet
 Aliases: 
 
 Required: True
@@ -119,7 +119,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -134,7 +134,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
