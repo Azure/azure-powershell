@@ -77,7 +77,8 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Azure data share invitation object```yaml
+Azure data share invitation object
+```yaml
 Type: PSDataShareInvitation
 Parameter Sets: ByObjectParameterSet
 Aliases: 
