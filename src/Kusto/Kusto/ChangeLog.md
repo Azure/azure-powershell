@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed miscellaneous typos across module
 
 ## Version 0.1.1
 * Capacity is a new and optional parameter for Create and Update Cluster.

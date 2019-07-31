@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public PSComputeNode ComputeNode { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The name of the local windows account created.")]
+        [Parameter(Mandatory = true, HelpMessage = "The name of the local Windows account created.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

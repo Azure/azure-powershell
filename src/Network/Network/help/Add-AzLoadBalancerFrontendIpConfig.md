@@ -42,7 +42,7 @@ Add-AzLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String>
 ```
 
 ## DESCRIPTION
-The **Add-AzLoadBalancerFrontendIpConifg** cmdlet adds a front-end IP configuration to an Azure load balancer.
+The **Add-AzLoadBalancerFrontendIpConfig** cmdlet adds a front-end IP configuration to an Azure load balancer.
 
 ## EXAMPLES
 
@@ -170,7 +170,7 @@ Accept wildcard characters: False
 ```
 
 ### -PublicIpAddressId
-Specifes the ID of the public IP address in which to add a front-end IP configuration.
+Specifies the ID of the public IP address in which to add a front-end IP configuration.
 
 ```yaml
 Type: System.String

@@ -19,7 +19,7 @@ Get-AzMlCommitmentAssociation -ResourceGroupName <String> -CommitmentPlanName <S
 
 ## DESCRIPTION
 Retrieves commitment association information.
-Depending on the paramenters passed, the cmdlet returns a specific commitment association or a collection of commitment associations for the specified commitment plan.
+Depending on the parameters passed, the cmdlet returns a specific commitment association or a collection of commitment associations for the specified commitment plan.
 
 ## EXAMPLES
 
