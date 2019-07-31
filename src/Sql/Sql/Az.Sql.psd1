@@ -230,7 +230,9 @@ CmdletsToExport = 'Get-AzSqlDatabaseTransparentDataEncryption',
                'Set-AzSqlInstanceTransparentDataEncryptionProtector', 
                'Get-AzSqlServerAudit', 'Get-AzSqlDatabaseAudit', 
                'Set-AzSqlServerAudit', 'Set-AzSqlDatabaseAudit', 
-               'Remove-AzSqlServerAudit', 'Remove-AzSqlDatabaseAudit'
+               'Remove-AzSqlServerAudit', 'Remove-AzSqlDatabaseAudit',
+               'Invoke-AzureSqlDatabaseFailover',
+               'Invoke-AzureSqlElasticPoolFailover'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -265,9 +267,7 @@ AliasesToExport = 'Get-AzSqlDatabaseServerAuditingPolicy',
                'Get-AzSqlDatabaseThreatDetectionPolicy', 
                'Set-AzSqlDatabaseThreatDetectionPolicy', 
                'Remove-AzSqlDatabaseThreatDetectionPolicy', 
-               'Set-AzSqlInstanceTDEProtector', 'Get-AzSqlInstanceTDEProtector',
-			   'Invoke-AzureSqlDatabaseFailover',
-               'Invoke-AzureSqlElasticPoolFailover'
+               'Set-AzSqlInstanceTDEProtector', 'Get-AzSqlInstanceTDEProtector'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
