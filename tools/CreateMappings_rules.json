@@ -154,5 +154,6 @@
     { "regex": "PeerAsn", "group": "Peering", "alias": "Peer Asn" },
     { "regex": "NetAppFiles", "alias": "NetApp Files" },
     { "regex": "Attestation", "alias": "Attestation" },
-    { "regex": "ManagedServices", "group": "Managed Services", "alias": "Managed Services" }
+    { "regex": "ManagedServices", "group": "Managed Services", "alias": "Managed Services" },
+    { "regex": "DataShare", "group": "Data Share", "alias": "Data Share" }
 ]
