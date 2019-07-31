@@ -85,6 +85,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Position = 2,
             Mandatory = true)]
+        [LocationCompleter("Microsoft.Compute/hostGroups/hosts")]
         public string Location { get; set; }
 
         [Parameter(

@@ -68,7 +68,7 @@ function Test-DedicatedHost
         Assert-AreEqual 1 $hostGroup.Hosts.Count;
         Assert-AreEqual 1 $hostGroup.Count;
 
-        Remove-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName -Force;
+        Remove-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName;
 
         Assert-ThrowsContains {
             Get-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName; } `
@@ -80,7 +80,7 @@ function Test-DedicatedHost
         $hostGroup = Get-AzHostGroup -ResourceGroupName $rgname -HostGroupName $hostGroupName;
         Assert-AreEqual 0 $hostGroup.Hosts.Count;
 
-        Remove-AzHostGroup -ResourceGroupName $rgname -HostGroupName $hostGroupName -Force;
+        Remove-AzHostGroup -ResourceGroupName $rgname -HostGroupName $hostGroupName;
 
         Assert-ThrowsContains {
             Get-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName; } `
@@ -190,8 +190,8 @@ function Test-DedicatedHostVirtualMachine
         Assert-AreEqual $dedicatedHostId $dedicatedHostGroup.Hosts[0].Id;
 
         Remove-AzVM -ResourceGroupName $rgname -Name $vmname0 -Force;
-        Remove-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName -Force;
-        Remove-AzHostGroup -ResourceGroupName $rgname -HostGroupName $hostGroupName -Force;
+        Remove-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName;
+        Remove-AzHostGroup -ResourceGroupName $rgname -HostGroupName $hostGroupName;
     }
     finally
     {

@@ -33,6 +33,23 @@ This cmdlet also lists all hosts in a host group if a host name is not given.
 ### Example 1
 ```
 PS C:\> Get-AzHost -ResourceGroupName $resourceGroupName -HostGroupName $hostGroupName -Name $hostName
+
+ResourceGroupName    : myrg01
+PlatformFaultDomain  : 1
+AutoReplaceOnFailure : True
+HostId               : 00000000-0000-0000-0000-000000000000
+VirtualMachines[0]   : 
+  Id                 : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg01/providers/Microsoft.Compute/virtualMachines/myvm01
+VirtualMachines[1]   : 
+  Id                 : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg01/providers/Microsoft.Compute/virtualMachines/myvm02
+ProvisioningTime     : 7/27/2019 3:22:59 AM
+ProvisioningState    : Succeeded
+Sku                  : 
+  Name               : ESv3-Type1
+Id                   : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg01/providers/Microsoft.Compute/hostGroups/myhostgroup01/hosts/myhost01
+Name                 : myhost01
+Location             : eastus
+Tags                 : {"key1":"val2"}
 ```
 
 This command returns a host.

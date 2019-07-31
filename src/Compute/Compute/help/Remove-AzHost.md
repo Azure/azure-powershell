@@ -14,7 +14,7 @@ Removes a host.
 
 ### DefaultParameter (Default)
 ```
-Remove-AzHost [-ResourceGroupName] <String> [-HostGroupName] <String> [-Name] <String> [-Force] [-AsJob]
+Remove-AzHost [-ResourceGroupName] <String> [-HostGroupName] <String> [-Name] <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -73,21 +73,6 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Force
-Forces the command to run without asking for user confirmation.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: DefaultParameter
-Aliases:
 
 Required: False
 Position: Named

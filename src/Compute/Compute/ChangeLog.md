@@ -19,6 +19,17 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added Host and HostGroup features
+    - New cmdlets:
+	    New-AzHostGroup
+		New-AzHost
+		Get-AzHostGroup
+		Get-AzHost
+		Remove-AzHostGroup
+		Remove-AzHost
+	- HostId parameter is added to New-AzVMConfig and New-AzVM
+
+## Version 2.4.1
 * Add missing properties (ComputerName, OsName, OsVersion and HyperVGeneration) of VM instance view object.
 
 ## Version 2.4.0

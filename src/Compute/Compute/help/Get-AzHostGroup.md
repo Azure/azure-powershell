@@ -33,6 +33,16 @@ This cmdlet also lists all host groups in a subscription if neither host group n
 ### Example 1
 ```
 PS C:\> Get-AzHostGroup -ResourceGroupName $resourceGroupName -HostGroupName $hostGroupName
+
+ResourceGroupName        : myrg01
+PlatformFaultDomainCount : 2
+Hosts                    : {/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg01/providers/Microsoft.Compute/hostGroups/myhostgroup01/hosts/myhost01}
+Zones                    : {1}
+Id                       : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg01/providers/Microsoft.Compute/hostGroups/myhostgroup01
+Name                     : myhostgroup01
+Type                     : 
+Location                 : eastus
+Tags                     : {[key1, val1]}
 ```
 
 This command returns a host group.

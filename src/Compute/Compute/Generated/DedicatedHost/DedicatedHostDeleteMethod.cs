@@ -40,10 +40,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
-                if (ShouldProcess(this.Name, VerbsCommon.Remove)
-                    && (this.Force.IsPresent ||
-                        this.ShouldContinue(Properties.Resources.ResourceRemovalConfirmation,
-                                            "Remove-AzDedicatedHost operation")))
+                if (ShouldProcess(this.Name, VerbsCommon.Remove))
                 {
                     string resourceGroupName;
                     string hostGroupName;
@@ -107,11 +104,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         [ResourceNameCompleter("Microsoft.Compute/dedicatedHosts", "ResourceGroupName")]
         public string Name { get; set; }
-
-        [Parameter(
-            ParameterSetName = "DefaultParameter",
-            Mandatory = false)]
-        public SwitchParameter Force { get; set; }
 
         [Parameter(
             ParameterSetName = "ResourceIdParameter",
