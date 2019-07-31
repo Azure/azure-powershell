@@ -94,7 +94,8 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The azure data share account object.```yaml
+The azure data share account object.
+```yaml
 Type: PSDataShareAccount
 Parameter Sets: ByObjectParameterSet
 Aliases: 

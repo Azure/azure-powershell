@@ -77,7 +77,8 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The azure data set mapping object```yaml
+The azure data set mapping object
+```yaml
 Type: PSDataShareDataSetMapping
 Parameter Sets: ByObjectParameterSet
 Aliases: 
