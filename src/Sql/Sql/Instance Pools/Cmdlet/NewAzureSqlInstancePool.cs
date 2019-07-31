@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Commands.Sql.Instance_Pools.Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstancePool",
         SupportsShouldProcess = true)]
+    [OutputType(typeof(AzureSqlInstancePoolModel))]
     public class NewAzureSqlInstancePool : InstancePoolCmdletBase
     {
         /// <summary>
