@@ -12,6 +12,12 @@ Returns information about Azure SQL Managed Database Instance.
 
 ## SYNTAX
 
+### DefaultParameterSet (Default)
+```
+Get-AzSqlInstance [-Name <String>] [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
 ### ListByInstancePoolObjectParameterSet
 ```
 Get-AzSqlInstance [-InstancePool] <AzureSqlInstancePoolModel> [-DefaultProfile <IAzureContextContainer>]
@@ -29,21 +35,10 @@ Get-AzSqlInstance [-InstancePoolResourceId] <String> [-DefaultProfile <IAzureCon
 Get-AzSqlInstance [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### GetInstanceByNameAndResourceGroup
-```
-Get-AzSqlInstance [-Name] <String> -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
 ### ListByInstancePoolParameterSet
 ```
 Get-AzSqlInstance [-InstancePoolName] <String> -ResourceGroupName <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ListByResourceGroupOrSubParameterSet
-```
-Get-AzSqlInstance [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -334,7 +329,7 @@ Parameter Sets: ListByInstancePoolParameterSet
 Aliases:
 
 Required: True
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -360,11 +355,11 @@ SQL instance name.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetInstanceByNameAndResourceGroup
+Parameter Sets: DefaultParameterSet
 Aliases: InstanceName
 
-Required: True
-Position: 0
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -375,10 +370,10 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetInstanceByNameAndResourceGroup, ListByInstancePoolParameterSet
+Parameter Sets: DefaultParameterSet
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -387,10 +382,10 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: ListByResourceGroupOrSubParameterSet
+Parameter Sets: ListByInstancePoolParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

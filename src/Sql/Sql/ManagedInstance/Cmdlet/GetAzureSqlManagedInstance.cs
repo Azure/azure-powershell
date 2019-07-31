@@ -25,15 +25,15 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
     /// <summary>
     /// Defines the Get-AzSqlInstance cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstance"),
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstance",
+        DefaultParameterSetName = DefaultParameterSet),
         OutputType(typeof(AzureSqlManagedInstanceModel))]
     public class GetAzureSqlManagedInstance : ManagedInstanceCmdletBase
     {
         /// <summary>
         /// Parameter sets
         /// </summary>
-        protected const string GetByNameAndResourceGroupParameterSet = "GetInstanceByNameAndResourceGroup";
-        protected const string ListByResourceGroupOrSubParameterSet = "ListByResourceGroupOrSubParameterSet";
+        protected const string DefaultParameterSet = "DefaultParameterSet";
         protected const string ListByInstancePoolParameterSet = "ListByInstancePoolParameterSet";
         protected const string ListByInstancePoolObjectParameterSet = "ListByInstancePoolObjectParameterSet";
         protected const string ListByInstancePoolResourceIdentifierParameterSet = "ListByInstancePoolResourceIdentiferParameterSet";
@@ -75,9 +75,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// <summary>
         /// Gets or sets the name of the instance.
         /// </summary>
-        [Parameter(ParameterSetName = GetByNameAndResourceGroupParameterSet,
-            Mandatory = true,
-            Position = 0,
+        [Parameter(
+            ParameterSetName = DefaultParameterSet,
+            Mandatory = false,
             HelpMessage = "The name of the instance.")]
         [Alias("InstanceName")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
@@ -88,27 +88,25 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// <summary>
         /// Gets or sets the name of the instance pool.
         /// </summary>
-        [Parameter(ParameterSetName = ListByInstancePoolParameterSet,
+        [Parameter(
+            ParameterSetName = ListByInstancePoolParameterSet,
+            Position = 1,
             Mandatory = true,
-            Position = 0,
             HelpMessage = "The name of the instance pool.")]
         [ValidateNotNullOrEmpty]
         [ResourceNameCompleter("Microsoft.Sql/instancePools", "ResourceGroupName")]
+        [SupportsWildcards]
         public string InstancePoolName { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the resource group.
         /// </summary>
-        [Parameter(ParameterSetName = ListByResourceGroupOrSubParameterSet,
+        [Parameter(ParameterSetName = DefaultParameterSet,
             Mandatory = false,
-            HelpMessage = "The name of the resource group.")]
-        [Parameter(ParameterSetName = GetByNameAndResourceGroupParameterSet,
-            Mandatory = true,
-            Position = 1,
             HelpMessage = "The name of the resource group.")]
         [Parameter(ParameterSetName = ListByInstancePoolParameterSet,
             Mandatory = true,
-            Position = 1,
+            Position = 0,
             HelpMessage = "The name of the resource group.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
