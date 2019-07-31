@@ -30,7 +30,7 @@ PS C:\> $gw = Set-AzApplicationGateway -ApplicationGateway $gw
 ```
 
 The first command gets the application gateway and stores it in $gw variable.
-The second command updates the autoscale configuration from the applicationg gateway.
+The second command updates the autoscale configuration from the application gateway.
 The third command updates the application gateway on Azure.
 
 ## PARAMETERS
@@ -66,7 +66,7 @@ Accept wildcard characters: False
 ```
 
 ### -MaxCapacity
-Maximum capcity for application gateway.
+Maximum capacity for application gateway.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 ```
 
 ### -MinCapacity
-Minimum capcity for application gateway.
+Minimum capacity for application gateway.
 
 ```yaml
 Type: System.Int32

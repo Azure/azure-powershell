@@ -7,16 +7,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ad7d52b0-74ad-464d-a744-60496ad88240"
+          "8c393691-e2d2-4875-a95f-6feb1bc85e8e"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.10.0.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.11.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -30,25 +30,25 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "1ab7533e-2171-4e78-91a8-450b141e1e65"
+          "96f17db3-f924-4275-80fc-62ab1af5afa0"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11995"
+          "11999"
         ],
         "x-ms-correlation-request-id": [
-          "fceb5441-e93a-486d-b5b4-bf6a69966ca6"
+          "8c446a62-87f5-4727-9ab6-9d154073f7e4"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190513T212510Z:fceb5441-e93a-486d-b5b4-bf6a69966ca6"
+          "WESTUS:20190729T162918Z:8c446a62-87f5-4727-9ab6-9d154073f7e4"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 13 May 2019 21:25:10 GMT"
+          "Mon, 29 Jul 2019 16:29:17 GMT"
         ],
         "Content-Length": [
           "675"
@@ -70,16 +70,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "768a9c33-cdc0-47a5-827b-c25526f9fda3"
+          "99f67d7b-38a1-4054-8b2d-55df0a698222"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.10.0.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.11.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -93,25 +93,25 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "95bbc553-0aa8-4147-91d8-ef58c7a797c6"
+          "b61c7d09-7666-46bc-8a9b-4b9b648791a4"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11994"
+          "11998"
         ],
         "x-ms-correlation-request-id": [
-          "d940afdf-7d00-4ca6-a5b7-594a2cf818ee"
+          "e363840e-0e65-4d92-9c47-fd74ebad90bb"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190513T212510Z:d940afdf-7d00-4ca6-a5b7-594a2cf818ee"
+          "WESTUS:20190729T162918Z:e363840e-0e65-4d92-9c47-fd74ebad90bb"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 13 May 2019 21:25:10 GMT"
+          "Mon, 29 Jul 2019 16:29:18 GMT"
         ],
         "Content-Length": [
           "7408"
@@ -133,16 +133,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "50ba68a0-a4bd-41fb-a87a-d549b1a61f72"
+          "8ee98f69-ae7d-4aa1-a4ab-0436c54c76a4"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.10.0.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.11.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -153,31 +153,31 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAAFPk=\""
+          "\"AAAAAAAAFRo=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "2416c0f7-dc91-4b31-bceb-ba2c1f2fb187"
+          "5841e6f2-dcb1-409e-81b4-607648a390f6"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11993"
+          "11997"
         ],
         "x-ms-correlation-request-id": [
-          "e08a3adc-beda-4f94-8a7d-af2cda0f20c7"
+          "f405dfc9-8cd9-4902-a621-56bed099be40"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190513T212510Z:e08a3adc-beda-4f94-8a7d-af2cda0f20c7"
+          "WESTUS:20190729T162919Z:f405dfc9-8cd9-4902-a621-56bed099be40"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 13 May 2019 21:25:10 GMT"
+          "Mon, 29 Jul 2019 16:29:18 GMT"
         ],
         "Content-Length": [
           "1269"
@@ -199,16 +199,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "67c488e9-7bfd-47d5-b051-6ce6c4ce5a4c"
+          "295560ca-bc29-45fc-8010-296a74eb4a9d"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.10.0.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.11.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -219,31 +219,31 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAACdY=\""
+          "\"AAAAAAAAFNY=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "048aa46c-b05b-4c1d-ad2a-5219fba0f413"
+          "71f91210-8841-4b59-a383-2b3367b1aa13"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11992"
+          "11996"
         ],
         "x-ms-correlation-request-id": [
-          "3f727b08-1810-4b46-9ec3-839a3d259ec7"
+          "2c32dd38-f649-4cfd-9cb0-da2599e693d0"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190513T212511Z:3f727b08-1810-4b46-9ec3-839a3d259ec7"
+          "WESTUS:20190729T162919Z:2c32dd38-f649-4cfd-9cb0-da2599e693d0"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 13 May 2019 21:25:10 GMT"
+          "Mon, 29 Jul 2019 16:29:18 GMT"
         ],
         "Content-Length": [
           "892"
@@ -265,16 +265,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "172217fb-a338-422a-ba5e-d1c3bf7ba6ab"
+          "1da68007-9737-46ea-b0d7-95f7268edca1"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.10.0.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.11.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -285,31 +285,31 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAACdg=\""
+          "\"AAAAAAAAFNg=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "70da5cb2-48ac-423e-bf40-2d4b8e643909"
+          "44aee747-e360-4770-9fd4-e9b928a433db"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11991"
+          "11995"
         ],
         "x-ms-correlation-request-id": [
-          "38764972-cabe-484f-a6a6-05e1c4093494"
+          "6d007568-736d-45cb-8d96-d5d6c4ca878f"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190513T212511Z:38764972-cabe-484f-a6a6-05e1c4093494"
+          "WESTUS:20190729T162919Z:6d007568-736d-45cb-8d96-d5d6c4ca878f"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 13 May 2019 21:25:11 GMT"
+          "Mon, 29 Jul 2019 16:29:18 GMT"
         ],
         "Content-Length": [
           "902"
@@ -331,16 +331,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "470ec592-0fc3-4300-a749-831efaa56deb"
+          "dfe5e073-5976-4deb-a9cc-06e7720e9032"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.10.0.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.11.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -351,31 +351,31 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAACdk=\""
+          "\"AAAAAAAAFNk=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "e1ff2648-5fab-4f59-8d37-3e287cb22913"
+          "5c1e078c-35e1-4bfb-bb91-0819945ee54c"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11990"
+          "11994"
         ],
         "x-ms-correlation-request-id": [
-          "1014aa8f-14bf-45ed-b176-ba71b82c18cd"
+          "aeb94714-9f2f-4c5b-8e4a-a9baaf989a3f"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190513T212511Z:1014aa8f-14bf-45ed-b176-ba71b82c18cd"
+          "WESTUS:20190729T162919Z:aeb94714-9f2f-4c5b-8e4a-a9baaf989a3f"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 13 May 2019 21:25:11 GMT"
+          "Mon, 29 Jul 2019 16:29:18 GMT"
         ],
         "Content-Length": [
           "897"
@@ -397,16 +397,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "be107c09-affb-4ebc-a3db-f49a99204fca"
+          "b9371403-7822-49a2-a519-14fc2f0a97d3"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.10.0.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.11.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -417,31 +417,31 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAACdQ=\""
+          "\"AAAAAAAAFNQ=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "b0e666eb-db54-4941-9690-c499b006cb55"
+          "4de2d7b7-368a-48ac-afdb-56bca28e7398"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11989"
+          "11993"
         ],
         "x-ms-correlation-request-id": [
-          "a8aeb2d8-b985-4967-8813-49af48520452"
+          "8b0786a5-f836-4143-a855-30ac988a34ff"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190513T212511Z:a8aeb2d8-b985-4967-8813-49af48520452"
+          "WESTUS:20190729T162919Z:8b0786a5-f836-4143-a855-30ac988a34ff"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 13 May 2019 21:25:11 GMT"
+          "Mon, 29 Jul 2019 16:29:18 GMT"
         ],
         "Content-Length": [
           "1476"
@@ -463,16 +463,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "3bd9421b-c4fb-40e6-96e4-efb462c917f2"
+          "a837606f-1cca-4224-9ac2-95e6b40f8d09"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.10.0.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.11.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -483,31 +483,31 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAACdU=\""
+          "\"AAAAAAAAFNU=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "3c041b27-18db-4af6-9fff-5edca6304cc3"
+          "01435bcd-fc56-4a3c-aa74-d1b6e816f0bf"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11988"
+          "11992"
         ],
         "x-ms-correlation-request-id": [
-          "96989302-3779-4a29-9965-4cd2a467596e"
+          "0722fa80-2dfe-4539-ac2e-38552f292529"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190513T212511Z:96989302-3779-4a29-9965-4cd2a467596e"
+          "WESTUS:20190729T162919Z:0722fa80-2dfe-4539-ac2e-38552f292529"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 13 May 2019 21:25:11 GMT"
+          "Mon, 29 Jul 2019 16:29:19 GMT"
         ],
         "Content-Length": [
           "1553"
@@ -523,22 +523,22 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/echo-api/operations/ps8048?api-version=2019-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvZWNoby1hcGkvb3BlcmF0aW9ucy9wczgwNDg/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/echo-api/operations/ps3048?api-version=2019-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvZWNoby1hcGkvb3BlcmF0aW9ucy9wczMwNDg/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"templateParameters\": [\r\n      {\r\n        \"name\": \"rid\",\r\n        \"description\": \"Resource identifier\",\r\n        \"type\": \"string\",\r\n        \"required\": false,\r\n        \"values\": []\r\n      },\r\n      {\r\n        \"name\": \"query\",\r\n        \"description\": \"Query string\",\r\n        \"type\": \"string\",\r\n        \"required\": false,\r\n        \"values\": []\r\n      }\r\n    ],\r\n    \"description\": \"ps1194\",\r\n    \"request\": {\r\n      \"description\": \"Create/update resource request\",\r\n      \"queryParameters\": [\r\n        {\r\n          \"name\": \"ps3829\",\r\n          \"description\": \"ps2393\",\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"ps8536\",\r\n          \"required\": true,\r\n          \"values\": [\r\n            \"ps8536\"\r\n          ]\r\n        }\r\n      ],\r\n      \"headers\": [\r\n        {\r\n          \"name\": \"ps9283\",\r\n          \"description\": \"ps4548\",\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"ps7160\",\r\n          \"required\": true,\r\n          \"values\": [\r\n            \"ps7160\"\r\n          ]\r\n        }\r\n      ],\r\n      \"representations\": [\r\n        {\r\n          \"contentType\": \"application/json\",\r\n          \"sample\": \"ps8990\"\r\n        }\r\n      ]\r\n    },\r\n    \"responses\": [\r\n      {\r\n        \"statusCode\": 1980785443,\r\n        \"description\": \"ps4119\",\r\n        \"representations\": [\r\n          {\r\n            \"contentType\": \"ps4700\",\r\n            \"sample\": \"ps1498\"\r\n          }\r\n        ],\r\n        \"headers\": []\r\n      }\r\n    ],\r\n    \"displayName\": \"ps8570\",\r\n    \"method\": \"PATCH\",\r\n    \"urlTemplate\": \"/resource/{rid}?q={query}\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"templateParameters\": [\r\n      {\r\n        \"name\": \"rid\",\r\n        \"description\": \"Resource identifier\",\r\n        \"type\": \"string\",\r\n        \"required\": false,\r\n        \"values\": []\r\n      },\r\n      {\r\n        \"name\": \"query\",\r\n        \"description\": \"Query string\",\r\n        \"type\": \"string\",\r\n        \"required\": false,\r\n        \"values\": []\r\n      }\r\n    ],\r\n    \"description\": \"ps7588\",\r\n    \"request\": {\r\n      \"description\": \"Create/update resource request\",\r\n      \"queryParameters\": [\r\n        {\r\n          \"name\": \"ps1577\",\r\n          \"description\": \"ps5374\",\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"ps7721\",\r\n          \"required\": true,\r\n          \"values\": [\r\n            \"ps7721\"\r\n          ]\r\n        }\r\n      ],\r\n      \"headers\": [\r\n        {\r\n          \"name\": \"ps6013\",\r\n          \"description\": \"ps7141\",\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"ps8740\",\r\n          \"required\": true,\r\n          \"values\": [\r\n            \"ps8740\"\r\n          ]\r\n        }\r\n      ],\r\n      \"representations\": [\r\n        {\r\n          \"contentType\": \"application/json\",\r\n          \"sample\": \"ps1114\"\r\n        }\r\n      ]\r\n    },\r\n    \"responses\": [\r\n      {\r\n        \"statusCode\": 1980785443,\r\n        \"description\": \"ps6330\",\r\n        \"representations\": [\r\n          {\r\n            \"contentType\": \"ps7386\",\r\n            \"sample\": \"ps6132\"\r\n          }\r\n        ],\r\n        \"headers\": []\r\n      }\r\n    ],\r\n    \"displayName\": \"ps9095\",\r\n    \"method\": \"PATCH\",\r\n    \"urlTemplate\": \"/resource/{rid}?q={query}\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "89cc8daa-7d7f-47fc-8b1f-7e13bec78910"
+          "3e3a0496-225a-4019-9393-96d76316f575"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.10.0.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.11.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -555,13 +555,13 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAAFak=\""
+          "\"AAAAAAAAFdE=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "a317f49c-bc2d-4100-a9a4-f1c882cfcac8"
+          "3ea584e6-c88e-464e-a893-56ed62d47282"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -570,16 +570,16 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "f98b0b21-7726-459b-a959-f1f1b594886b"
+          "79a9ea04-b26f-4692-a5a0-d1ba1af6d859"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190513T212512Z:f98b0b21-7726-459b-a959-f1f1b594886b"
+          "WESTUS:20190729T162921Z:79a9ea04-b26f-4692-a5a0-d1ba1af6d859"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 13 May 2019 21:25:12 GMT"
+          "Mon, 29 Jul 2019 16:29:20 GMT"
         ],
         "Content-Length": [
           "1805"
@@ -591,17 +591,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/echo-api/operations/ps8048\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n  \"name\": \"ps8048\",\r\n  \"properties\": {\r\n    \"displayName\": \"ps8570\",\r\n    \"method\": \"PATCH\",\r\n    \"urlTemplate\": \"/resource/{rid}?q={query}\",\r\n    \"templateParameters\": [\r\n      {\r\n        \"name\": \"rid\",\r\n        \"description\": \"Resource identifier\",\r\n        \"type\": \"string\",\r\n        \"values\": []\r\n      },\r\n      {\r\n        \"name\": \"query\",\r\n        \"description\": \"Query string\",\r\n        \"type\": \"string\",\r\n        \"values\": []\r\n      }\r\n    ],\r\n    \"description\": \"ps1194\",\r\n    \"request\": {\r\n      \"description\": \"Create/update resource request\",\r\n      \"queryParameters\": [\r\n        {\r\n          \"name\": \"ps3829\",\r\n          \"description\": \"ps2393\",\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"ps8536\",\r\n          \"required\": true,\r\n          \"values\": [\r\n            \"ps8536\"\r\n          ]\r\n        }\r\n      ],\r\n      \"headers\": [\r\n        {\r\n          \"name\": \"ps9283\",\r\n          \"description\": \"ps4548\",\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"ps7160\",\r\n          \"required\": true,\r\n          \"values\": [\r\n            \"ps7160\"\r\n          ]\r\n        }\r\n      ],\r\n      \"representations\": [\r\n        {\r\n          \"contentType\": \"application/json\",\r\n          \"sample\": \"ps8990\"\r\n        }\r\n      ]\r\n    },\r\n    \"responses\": [\r\n      {\r\n        \"statusCode\": 1980785443,\r\n        \"description\": \"ps4119\",\r\n        \"representations\": [\r\n          {\r\n            \"contentType\": \"ps4700\",\r\n            \"sample\": \"ps1498\"\r\n          }\r\n        ],\r\n        \"headers\": []\r\n      }\r\n    ],\r\n    \"policies\": null\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/echo-api/operations/ps3048\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n  \"name\": \"ps3048\",\r\n  \"properties\": {\r\n    \"displayName\": \"ps9095\",\r\n    \"method\": \"PATCH\",\r\n    \"urlTemplate\": \"/resource/{rid}?q={query}\",\r\n    \"templateParameters\": [\r\n      {\r\n        \"name\": \"rid\",\r\n        \"description\": \"Resource identifier\",\r\n        \"type\": \"string\",\r\n        \"values\": []\r\n      },\r\n      {\r\n        \"name\": \"query\",\r\n        \"description\": \"Query string\",\r\n        \"type\": \"string\",\r\n        \"values\": []\r\n      }\r\n    ],\r\n    \"description\": \"ps7588\",\r\n    \"request\": {\r\n      \"description\": \"Create/update resource request\",\r\n      \"queryParameters\": [\r\n        {\r\n          \"name\": \"ps1577\",\r\n          \"description\": \"ps5374\",\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"ps7721\",\r\n          \"required\": true,\r\n          \"values\": [\r\n            \"ps7721\"\r\n          ]\r\n        }\r\n      ],\r\n      \"headers\": [\r\n        {\r\n          \"name\": \"ps6013\",\r\n          \"description\": \"ps7141\",\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"ps8740\",\r\n          \"required\": true,\r\n          \"values\": [\r\n            \"ps8740\"\r\n          ]\r\n        }\r\n      ],\r\n      \"representations\": [\r\n        {\r\n          \"contentType\": \"application/json\",\r\n          \"sample\": \"ps1114\"\r\n        }\r\n      ]\r\n    },\r\n    \"responses\": [\r\n      {\r\n        \"statusCode\": 1980785443,\r\n        \"description\": \"ps6330\",\r\n        \"representations\": [\r\n          {\r\n            \"contentType\": \"ps7386\",\r\n            \"sample\": \"ps6132\"\r\n          }\r\n        ],\r\n        \"headers\": []\r\n      }\r\n    ],\r\n    \"policies\": null\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/echo-api/operations/ps8048?api-version=2019-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvZWNoby1hcGkvb3BlcmF0aW9ucy9wczgwNDg/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/echo-api/operations/ps3048?api-version=2019-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvZWNoby1hcGkvb3BlcmF0aW9ucy9wczMwNDg/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
       "RequestMethod": "PATCH",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"templateParameters\": [\r\n      {\r\n        \"name\": \"xrid\",\r\n        \"description\": \"Resource identifier modified\",\r\n        \"type\": \"string\",\r\n        \"required\": false,\r\n        \"values\": []\r\n      },\r\n      {\r\n        \"name\": \"xquery\",\r\n        \"description\": \"Query string modified\",\r\n        \"type\": \"string\",\r\n        \"required\": false,\r\n        \"values\": []\r\n      }\r\n    ],\r\n    \"description\": \"ps9047\",\r\n    \"request\": {\r\n      \"description\": \"Create/update resource request modified\",\r\n      \"queryParameters\": [\r\n        {\r\n          \"name\": \"ps4809\",\r\n          \"description\": \"ps2937\",\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"ps3283\",\r\n          \"required\": true,\r\n          \"values\": [\r\n            \"ps3283\"\r\n          ]\r\n        }\r\n      ],\r\n      \"headers\": [\r\n        {\r\n          \"name\": \"ps8892\",\r\n          \"description\": \"ps8708\",\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"ps3153\",\r\n          \"required\": true,\r\n          \"values\": [\r\n            \"ps3153\"\r\n          ]\r\n        }\r\n      ],\r\n      \"representations\": [\r\n        {\r\n          \"contentType\": \"application/json\",\r\n          \"sample\": \"ps3199\"\r\n        }\r\n      ]\r\n    },\r\n    \"responses\": [\r\n      {\r\n        \"statusCode\": 1980785443,\r\n        \"description\": \"ps117\",\r\n        \"representations\": [\r\n          {\r\n            \"contentType\": \"ps8494\",\r\n            \"sample\": \"ps3965\"\r\n          }\r\n        ],\r\n        \"headers\": []\r\n      }\r\n    ],\r\n    \"displayName\": \"ps5660\",\r\n    \"method\": \"PUT\",\r\n    \"urlTemplate\": \"/resource/{xrid}?q={xquery}\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"templateParameters\": [\r\n      {\r\n        \"name\": \"xrid\",\r\n        \"description\": \"Resource identifier modified\",\r\n        \"type\": \"string\",\r\n        \"required\": false,\r\n        \"values\": []\r\n      },\r\n      {\r\n        \"name\": \"xquery\",\r\n        \"description\": \"Query string modified\",\r\n        \"type\": \"string\",\r\n        \"required\": false,\r\n        \"values\": []\r\n      }\r\n    ],\r\n    \"description\": \"ps5747\",\r\n    \"request\": {\r\n      \"description\": \"Create/update resource request modified\",\r\n      \"queryParameters\": [\r\n        {\r\n          \"name\": \"ps4831\",\r\n          \"description\": \"ps186\",\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"ps4874\",\r\n          \"required\": true,\r\n          \"values\": [\r\n            \"ps4874\"\r\n          ]\r\n        }\r\n      ],\r\n      \"headers\": [\r\n        {\r\n          \"name\": \"ps5428\",\r\n          \"description\": \"ps7755\",\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"ps1316\",\r\n          \"required\": true,\r\n          \"values\": [\r\n            \"ps1316\"\r\n          ]\r\n        }\r\n      ],\r\n      \"representations\": [\r\n        {\r\n          \"contentType\": \"application/json\",\r\n          \"sample\": \"ps4422\"\r\n        }\r\n      ]\r\n    },\r\n    \"responses\": [\r\n      {\r\n        \"statusCode\": 1980785443,\r\n        \"description\": \"ps9629\",\r\n        \"representations\": [\r\n          {\r\n            \"contentType\": \"ps8300\",\r\n            \"sample\": \"ps2520\"\r\n          }\r\n        ],\r\n        \"headers\": []\r\n      }\r\n    ],\r\n    \"displayName\": \"ps9203\",\r\n    \"method\": \"PUT\",\r\n    \"urlTemplate\": \"/resource/{xrid}?q={xquery}\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b38df54a-ee0c-485d-83ed-926906bcce87"
+          "1ca1f62d-584a-43ec-9250-3faa5b878fb6"
         ],
         "If-Match": [
           "*"
@@ -610,10 +610,10 @@
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.10.0.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.11.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -633,7 +633,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "16a70dd4-a31c-42f3-8969-7624d09987f0"
+          "9f61c034-f32b-49d6-8393-ea0d94bc14d6"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -642,16 +642,16 @@
           "1198"
         ],
         "x-ms-correlation-request-id": [
-          "0325081e-96d3-487c-974c-8c0d8b0b3925"
+          "7dff2625-029e-459e-b673-852c7127b76e"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190513T212513Z:0325081e-96d3-487c-974c-8c0d8b0b3925"
+          "WESTUS:20190729T162922Z:7dff2625-029e-459e-b673-852c7127b76e"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 13 May 2019 21:25:13 GMT"
+          "Mon, 29 Jul 2019 16:29:22 GMT"
         ],
         "Expires": [
           "-1"
@@ -661,22 +661,22 @@
       "StatusCode": 204
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/echo-api/operations/ps8048?api-version=2019-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvZWNoby1hcGkvb3BlcmF0aW9ucy9wczgwNDg/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/echo-api/operations/ps3048?api-version=2019-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvZWNoby1hcGkvb3BlcmF0aW9ucy9wczMwNDg/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "5074a543-b553-43de-8fef-244489bb27fe"
+          "7896e698-f37c-4556-8447-4985320678cb"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.10.0.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.11.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -687,31 +687,31 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAAFas=\""
+          "\"AAAAAAAAFdM=\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "d4e0af3b-f205-40e2-bb61-3b4a1652a0d9"
+          "8b1451bd-d68b-40e6-9366-0d64444777ad"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11987"
+          "11991"
         ],
         "x-ms-correlation-request-id": [
-          "042331dc-853c-4dee-9d3f-b65abb03b604"
+          "653ebe9d-3727-40b5-a474-92443045f6ea"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190513T212513Z:042331dc-853c-4dee-9d3f-b65abb03b604"
+          "WESTUS:20190729T162923Z:653ebe9d-3727-40b5-a474-92443045f6ea"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 13 May 2019 21:25:13 GMT"
+          "Mon, 29 Jul 2019 16:29:22 GMT"
         ],
         "Content-Length": [
           "1887"
@@ -723,26 +723,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/echo-api/operations/ps8048\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n  \"name\": \"ps8048\",\r\n  \"properties\": {\r\n    \"displayName\": \"ps5660\",\r\n    \"method\": \"PUT\",\r\n    \"urlTemplate\": \"/resource/{xrid}?q={xquery}\",\r\n    \"templateParameters\": [\r\n      {\r\n        \"name\": \"xrid\",\r\n        \"description\": \"Resource identifier modified\",\r\n        \"type\": \"string\",\r\n        \"required\": true,\r\n        \"values\": []\r\n      },\r\n      {\r\n        \"name\": \"xquery\",\r\n        \"description\": \"Query string modified\",\r\n        \"type\": \"string\",\r\n        \"required\": true,\r\n        \"values\": []\r\n      }\r\n    ],\r\n    \"description\": \"ps9047\",\r\n    \"request\": {\r\n      \"description\": \"Create/update resource request modified\",\r\n      \"queryParameters\": [\r\n        {\r\n          \"name\": \"ps4809\",\r\n          \"description\": \"ps2937\",\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"ps3283\",\r\n          \"required\": true,\r\n          \"values\": [\r\n            \"ps3283\"\r\n          ]\r\n        }\r\n      ],\r\n      \"headers\": [\r\n        {\r\n          \"name\": \"ps8892\",\r\n          \"description\": \"ps8708\",\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"ps3153\",\r\n          \"required\": true,\r\n          \"values\": [\r\n            \"ps3153\"\r\n          ]\r\n        }\r\n      ],\r\n      \"representations\": [\r\n        {\r\n          \"contentType\": \"application/json\",\r\n          \"sample\": \"ps3199\"\r\n        }\r\n      ]\r\n    },\r\n    \"responses\": [\r\n      {\r\n        \"statusCode\": 1980785443,\r\n        \"description\": \"ps117\",\r\n        \"representations\": [\r\n          {\r\n            \"contentType\": \"ps8494\",\r\n            \"sample\": \"ps3965\"\r\n          }\r\n        ],\r\n        \"headers\": []\r\n      }\r\n    ],\r\n    \"policies\": null\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/echo-api/operations/ps3048\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis/operations\",\r\n  \"name\": \"ps3048\",\r\n  \"properties\": {\r\n    \"displayName\": \"ps9203\",\r\n    \"method\": \"PUT\",\r\n    \"urlTemplate\": \"/resource/{xrid}?q={xquery}\",\r\n    \"templateParameters\": [\r\n      {\r\n        \"name\": \"xrid\",\r\n        \"description\": \"Resource identifier modified\",\r\n        \"type\": \"string\",\r\n        \"required\": true,\r\n        \"values\": []\r\n      },\r\n      {\r\n        \"name\": \"xquery\",\r\n        \"description\": \"Query string modified\",\r\n        \"type\": \"string\",\r\n        \"required\": true,\r\n        \"values\": []\r\n      }\r\n    ],\r\n    \"description\": \"ps5747\",\r\n    \"request\": {\r\n      \"description\": \"Create/update resource request modified\",\r\n      \"queryParameters\": [\r\n        {\r\n          \"name\": \"ps4831\",\r\n          \"description\": \"ps186\",\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"ps4874\",\r\n          \"required\": true,\r\n          \"values\": [\r\n            \"ps4874\"\r\n          ]\r\n        }\r\n      ],\r\n      \"headers\": [\r\n        {\r\n          \"name\": \"ps5428\",\r\n          \"description\": \"ps7755\",\r\n          \"type\": \"string\",\r\n          \"defaultValue\": \"ps1316\",\r\n          \"required\": true,\r\n          \"values\": [\r\n            \"ps1316\"\r\n          ]\r\n        }\r\n      ],\r\n      \"representations\": [\r\n        {\r\n          \"contentType\": \"application/json\",\r\n          \"sample\": \"ps4422\"\r\n        }\r\n      ]\r\n    },\r\n    \"responses\": [\r\n      {\r\n        \"statusCode\": 1980785443,\r\n        \"description\": \"ps9629\",\r\n        \"representations\": [\r\n          {\r\n            \"contentType\": \"ps8300\",\r\n            \"sample\": \"ps2520\"\r\n          }\r\n        ],\r\n        \"headers\": []\r\n      }\r\n    ],\r\n    \"policies\": null\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/echo-api/operations/ps8048?api-version=2019-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvZWNoby1hcGkvb3BlcmF0aW9ucy9wczgwNDg/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/echo-api/operations/ps3048?api-version=2019-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvZWNoby1hcGkvb3BlcmF0aW9ucy9wczMwNDg/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "8ff6fd0f-acb5-43bb-ada0-acca8c776d37"
+          "b965902a-f879-42c2-9ff9-2c37af60eb2d"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.10.0.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.11.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -756,25 +756,25 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "20aa5550-da28-4093-9141-9e409dac2e6c"
+          "48ce360c-b497-4e30-ba11-ee51c78ba2e4"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11986"
+          "11990"
         ],
         "x-ms-correlation-request-id": [
-          "073d74a2-4c4f-4af0-9e99-78f8574bbcef"
+          "4648020d-bb0f-4770-a61c-f8aca8b27cc7"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190513T212514Z:073d74a2-4c4f-4af0-9e99-78f8574bbcef"
+          "WESTUS:20190729T162924Z:4648020d-bb0f-4770-a61c-f8aca8b27cc7"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 13 May 2019 21:25:13 GMT"
+          "Mon, 29 Jul 2019 16:29:23 GMT"
         ],
         "Content-Length": [
           "85"
@@ -790,13 +790,13 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/echo-api/operations/ps8048?api-version=2019-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvZWNoby1hcGkvb3BlcmF0aW9ucy9wczgwNDg/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/echo-api/operations/ps3048?api-version=2019-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvZWNoby1hcGkvb3BlcmF0aW9ucy9wczMwNDg/YXBpLXZlcnNpb249MjAxOS0wMS0wMQ==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e24c38b3-60ef-4eb5-b1e7-9c31d7f5718e"
+          "dc5ebe8e-f1ff-476b-9e58-8adabbf7efe2"
         ],
         "If-Match": [
           "*"
@@ -805,10 +805,10 @@
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.10.0.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.11.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -822,7 +822,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "bbb40ef4-4460-4df1-82f6-ea1caf7cb4cb"
+          "1d0da1ba-de97-409f-ab30-c690201d5ecb"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -831,16 +831,16 @@
           "14999"
         ],
         "x-ms-correlation-request-id": [
-          "0e910aa4-bedc-4ca3-84f5-fbe666afa5b8"
+          "b7dfaa95-e4ae-4fe4-8876-bae0e569cf9a"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190513T212514Z:0e910aa4-bedc-4ca3-84f5-fbe666afa5b8"
+          "WESTUS:20190729T162924Z:b7dfaa95-e4ae-4fe4-8876-bae0e569cf9a"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 13 May 2019 21:25:13 GMT"
+          "Mon, 29 Jul 2019 16:29:23 GMT"
         ],
         "Expires": [
           "-1"
@@ -855,33 +855,33 @@
   ],
   "Names": {
     "": [
-      "ps8048",
-      "ps8570",
-      "ps1194",
-      "ps5391",
-      "ps9283",
-      "ps4548",
-      "ps7160",
-      "ps3829",
-      "ps2393",
-      "ps8536",
-      "ps8990",
-      "ps4119",
-      "ps4700",
-      "ps1498",
-      "ps5660",
-      "ps9047",
-      "ps1509",
-      "ps8892",
-      "ps8708",
-      "ps3153",
-      "ps4809",
-      "ps2937",
-      "ps3283",
-      "ps3199",
-      "ps117",
-      "ps8494",
-      "ps3965"
+      "ps3048",
+      "ps9095",
+      "ps7588",
+      "ps8246",
+      "ps6013",
+      "ps7141",
+      "ps8740",
+      "ps1577",
+      "ps5374",
+      "ps7721",
+      "ps1114",
+      "ps6330",
+      "ps7386",
+      "ps6132",
+      "ps9203",
+      "ps5747",
+      "ps4546",
+      "ps5428",
+      "ps7755",
+      "ps1316",
+      "ps4831",
+      "ps186",
+      "ps4874",
+      "ps4422",
+      "ps9629",
+      "ps8300",
+      "ps2520"
     ]
   },
   "Variables": {

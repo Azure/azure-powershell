@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzImage
 
 ## SYNOPSIS
-Creats an image.
+Creates an image.
 
 ## SYNTAX
 

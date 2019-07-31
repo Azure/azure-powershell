@@ -19,12 +19,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementProduct", DefaultParameterSetName = GetAllProducts)]
-    [OutputType(typeof(PsApiManagementProduct))]
+    [OutputType(typeof(PsApiManagementProduct), ParameterSetName = new[] { GetAllProducts, GetByTitle, GetById, GetByApiId })]
     public class GetAzureApiManagementProduct : AzureApiManagementCmdletBase
     {
         private const string GetAllProducts = "GetAllProducts";
         private const string GetById = "GetByProductId";
         private const string GetByTitle = "GetByTitle";
+        private const string GetByApiId = "GetByApiId";
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -49,6 +50,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             HelpMessage = "Title of the Product to look for. If specified will try to get the Product by title. This parameter is optional.")]
         public String Title { get; set; }
 
+        [Parameter(
+            ParameterSetName = GetByApiId,
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
+            HelpMessage = "ApiId of the Api to find the correlated products. This parameter is optional.")]
+        public String ApiId { get; set; }
+
         public override void ExecuteApiManagementCmdlet()
         {
             if (ParameterSetName.Equals(GetAllProducts))
@@ -64,6 +72,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             else if (ParameterSetName.Equals(GetByTitle))
             {
                 var products = Client.ProductList(Context, Title);
+                WriteObject(products, true);
+            }
+            else if (ParameterSetName.Equals(GetByApiId))
+            {
+                var products = Client.ProductListByApi(Context, ApiId);
                 WriteObject(products, true);
             }
             else
