@@ -213,17 +213,6 @@ directive:
       subject: ^PacketCapture(.*)
     set:
       subject: NetworkWatcherPacketCapture$1
-  # - where:
-  #     verb: Get
-  #     subject: NetworkWatcherPacketCaptureStatus
-  #     variant: Get
-  #   set:
-  #     variant: GetStatus
-  # - where:
-  #     verb: Get
-  #     subject: NetworkWatcherPacketCaptureStatus
-  #     variant: GetViaIdentity
-  #   remove: true
   - where:
       verb: Get
       subject: NetworkWatcherPacketCaptureStatus
@@ -231,15 +220,6 @@ directive:
     set:
       parameter-name: Name
       alias: PacketCaptureName
-  # - where:
-  #     verb: Get
-  #     subject: NetworkWatcherPacketCaptureStatus
-  #   hide: true
-  # - where:
-  #     verb: Get
-  #     subject: NetworkWatcherPacketCaptureStatus
-  #   set:
-  #     subject: NetworkWatcherPacketCapture
   - where:
       subject: ^ConnectionMonitor$
     set:
@@ -277,13 +257,6 @@ directive:
     set:
       verb: Start
       alias: Start-AzNetworkWatcherResourceTroubleshooting
-  # - where:
-  #     verb: Get
-  #     subject: NetworkWatcherReachabilityReport
-  #     parameter-name: ProviderLocation(.*)
-  #   set:
-  #     parameter-name: Provider$1
-  #     alias: $1
   - where:
       verb: Get
       subject: NetworkWatcherReachabilityReport
@@ -560,48 +533,54 @@ directive:
       parameter-name: Name
       alias: PredefinedPolicyName
   - where:
-      verb: Get
       subject: ApplicationGatewayWafPolicy
       parameter-name: PolicyName
     set:
       parameter-name: Name
       alias: PolicyName
   - where:
-      verb: ^Get$|^New$|^Remove$|^Set$
       subject: ExpressRouteCircuit
       parameter-name: CircuitName
     set:
       parameter-name: Name
       alias: CircuitName
-  - where:
+  - where: # This parameter needs removed
       verb: ^New$|^Set$
       subject: ExpressRouteCircuitAuthorization
       parameter-name: Name
     set:
       parameter-name: ResourceName
   - where:
-      verb: ^Get$|^New$|^Remove$|^Set$
       subject: ExpressRouteCircuitAuthorization
       parameter-name: AuthorizationName
     set:
       parameter-name: Name
       alias: AuthorizationName
+  - where: # This parameter needs removed
+      verb: ^New$|^Set$
+      subject: ExpressRouteConnection
+      parameter-name: Name
+    set:
+      parameter-name: ResourceName
   - where:
-      verb: ^Get$|^Remove$
       subject: ExpressRouteConnection
       parameter-name: ConnectionName
     set:
       parameter-name: Name
       alias: ConnectionName
   - where:
-      verb: ^Get$|^Set$
       subject: ExpressRouteCrossConnection
       parameter-name: CrossConnectionName
     set:
       parameter-name: Name
       alias: CrossConnectionName
+  - where: # This parameter needs removed
+      verb: ^New$|^Set$
+      subject: ExpressRouteCrossConnectionPeering
+      parameter-name: Name
+    set:
+      parameter-name: ResourceName
   - where:
-      verb: ^Get$|^Remove$
       subject: ExpressRouteCrossConnectionPeering
       parameter-name: PeeringName
     set:
@@ -825,12 +804,6 @@ directive:
       alias:
         - ExpressRouteCrossConnection
         - PeerAddressType
-  # - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-  #     verb: Set
-  #     subject: ExpressRouteCrossConnection
-  #     parameter-name: Parameter
-  #   set:
-  #     alias: ExpressRouteCrossConnection
   - where:
       verb: Set
       subject: ExpressRouteCrossConnection
@@ -862,12 +835,6 @@ directive:
       parameter-name: ResourceGroupName
     set:
       alias: ServiceEndpointPolicy
-  # - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-  #     verb: Set
-  #     subject: ServiceEndpointPolicy
-  #     parameter-name: ResourceGroupName
-  #   set:
-  #     alias: ServiceEndpointPolicy
   - where:
       verb: Get
       subject: VnetGatewayVpnDeviceConfigurationScript
@@ -988,12 +955,6 @@ directive:
       parameter-name: ResourceGroupName
     set:
       alias: ApplicationGateway
-  # - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-  #     verb: Set
-  #     subject: ExpressRouteCircuit
-  #     parameter-name: ResourceGroupName
-  #   set:
-  #     alias: ExpressRouteCircuit
   - where: # REMOVE BEFORE RELEASE: InputObject removed for all Set cmdlets
       verb: Set
       subject: ^ExpressRouteConnection$|^ExpressRouteGateway$|^NetworkWatcherConnectionMonitor$|^VnetGatewayVpnClientIPsecParameter$
@@ -1014,30 +975,12 @@ directive:
     set:
       parameter-name: MaximumScaleUnits
       alias: MaxScaleUnits
-  # - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-  #     verb: Set
-  #     subject: ExpressRoutePort
-  #     parameter-name: ResourceGroupName
-  #   set:
-  #     alias: ExpressRoutePort
   - where: # REMOVE BEFORE RELEASE: In-memory object parameter
       verb: Set
       subject: Firewall
       parameter-name: ResourceGroupName
     set:
       alias: AzureFirewall
-  # - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-  #     verb: Set
-  #     subject: LoadBalancer
-  #     parameter-name: ResourceGroupName
-  #   set:
-  #     alias: LoadBalancer
-  # - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-  #     verb: Set
-  #     subject: NetworkInterface
-  #     parameter-name: ResourceGroupName
-  #   set:
-  #     alias: NetworkInterface
   - where: # REMOVE BEFORE RELEASE: In-memory object parameter
       verb: Set
       subject: NetworkInterfaceTapConfiguration
@@ -1062,30 +1005,6 @@ directive:
       parameter-name: PublicIPAddress
     set:
       parameter-name: PublicIPAddressParameter
-  # - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-  #     verb: Set
-  #     subject: PublicIPAddress
-  #     parameter-name: ResourceGroupName
-  #   set:
-  #     alias: PublicIpAddress
-  # - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-  #     verb: Set
-  #     subject: PublicIPPrefix
-  #     parameter-name: ResourceGroupName
-  #   set:
-  #     alias: PublicIpPrefix
-  # - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-  #     verb: Set
-  #     subject: RouteFilter
-  #     parameter-name: ResourceGroupName
-  #   set:
-  #     alias: RouteFilter
-  # - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-  #     verb: Set
-  #     subject: RouteTable
-  #     parameter-name: ResourceGroupName
-  #   set:
-  #     alias: RouteTable
   - where:
       verb: Set
       subject: VnetGatewayVpnClientIPsecParameter
@@ -1421,12 +1340,6 @@ directive:
       parameter-name: VnetConnection
     set:
       alias: HubVnetConnection
-  # - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-  #     verb: Set
-  #     subject: LocalNetworkGateway
-  #     parameter-name: ResourceGroupName
-  #   set:
-  #     alias: LocalNetworkGateway
   - where:
       verb: New
       subject: VnetGateway
@@ -2100,6 +2013,45 @@ directive:
     set:
       parameter-name: CheckWafRequestBody
 
+# ExpressRouteCircuitPeering Parameters
+  - where: # This parameter needs removed
+      verb: ^New$|^Set$
+      subject: ExpressRouteCircuitPeering
+      parameter-name: Name
+    set:
+      parameter-name: ResourceName
+  - where:
+      subject: ExpressRouteCircuitPeering
+      parameter-name: PeeringName
+    set:
+      parameter-name: Name
+      alias: PeeringName
+  - where:
+      subject: ExpressRouteCircuitPeering
+      parameter-name: ^IPv6PeeringConfigMicrosoftPeeringConfig(.*)$
+    set:
+      parameter-name: IPv6$1
+  - where:
+      subject: ExpressRouteCircuitPeering
+      parameter-name: ^IPv6PeeringConfig(.*)$
+    set:
+      parameter-name: IPv6$1
+  - where:
+      subject: ExpressRouteCircuitPeering
+      parameter-name: (.*)Properties(.*)
+    set:
+      parameter-name: $1$2
+  - where:
+      subject: ExpressRouteCircuitPeering
+      parameter-name: ^StatPrimarybytes(.*)$
+    set:
+      parameter-name: PrimaryBytes$1
+  - where:
+      subject: ExpressRouteCircuitPeering
+      parameter-name: ^StatSecondarybytes(.*)$
+    set:
+      parameter-name: SecondaryBytes$1
+
 # Various Parameters
   - where:
       subject: ApplicationGatewayBackendHealth
@@ -2136,4 +2088,21 @@ directive:
       parameter-name: AuthorizationUseStatus
     set:
       parameter-name: UseStatus
+  - where:
+      subject: ExpressRouteCircuitConnection
+      parameter-name: ^ExpressRouteCircuitPeeringId$|^PeerExpressRouteCircuitPeeringId$
+    set:
+      parameter-name: CircuitPeeringId
+  - where: # This parameter needs removed
+      verb: ^New$|^Set$
+      subject: ExpressRouteCircuitConnection
+      parameter-name: Name
+    set:
+      parameter-name: ResourceName
+  - where:
+      subject: ExpressRouteCircuitConnection
+      parameter-name: ConnectionName
+    set:
+      parameter-name: Name
+      alias: ConnectionName
 ```
