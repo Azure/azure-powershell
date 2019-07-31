@@ -36,8 +36,7 @@ namespace Microsoft.Azure.Commands.DataShare.Account
     [Cmdlet(
          "Get",
          ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataShareAccount",
-         DefaultParameterSetName = ParameterSetNames.FieldsParameterSet,
-         SupportsPaging = true),
+         DefaultParameterSetName = ParameterSetNames.FieldsParameterSet),
      OutputType(typeof(PSDataShareAccount))]
 
     public class GetAzDataShareAccount : AzureDataShareCmdletBase
