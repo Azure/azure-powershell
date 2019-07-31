@@ -103,7 +103,7 @@ function makePeerAsn($asn)
 	$phone = getAssetName "2342432433"
 	Write-Debug "Email: $emails; Phone $phone" 
 	$created = New-AzPeerAsn -Name $asnPeerName -PeerName $asnPeer -PeerAsn $asnId -Email $emails -Phone $phone
-	Write-Debug "PeerName " + $created.Name
+	Write-Debug "PeerName $asnPeerName"
 	$created.ValidationState = "Approved";
 	Write-Debug "ValidationState: $created" 
 	Write-Debug "Sleep 2 seconds..." 
