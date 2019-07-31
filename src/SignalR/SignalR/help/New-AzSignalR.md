@@ -27,7 +27,7 @@ The following values will be used for the parameters if not specified:
 
 ## EXAMPLES
 
-### Create a SignalR serivce
+### Create a SignalR service
 ```powershell
 PS C:\> New-AzSignalR -ResourceGroupName myResourceGroup1 -Name mysignalr1 -Location eastus -Sku Standard_S1
 

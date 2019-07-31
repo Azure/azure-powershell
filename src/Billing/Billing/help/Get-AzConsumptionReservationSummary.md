@@ -18,7 +18,7 @@ Get-AzConsumptionReservationSummary -Grain <String> -ReservationOrderId <String>
 ```
 
 ## DESCRIPTION
-The **Get-AzConsumptionReservationSummay** cmdlet gets reservation summaries for daily or monthly grain.
+The **Get-AzConsumptionReservationSummary** cmdlet gets reservation summaries for daily or monthly grain.
 
 ## EXAMPLES
 
@@ -123,7 +123,7 @@ Accept wildcard characters: False
 ```
 
 ### -Grain
-The time grain of the reservation summaryy, can be daily or monthly.
+The time grain of the reservation summary, can be daily or monthly.
 
 ```yaml
 Type: System.String

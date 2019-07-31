@@ -755,7 +755,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                     .Returns(Task.Factory.StartNew(() =>
                     new AzureOperationResponse<ResourceGroup>()
                     {
-                        Body = new ResourceGroup(name: resourceGroupParameters.ResourceGroupName, location: resourceGroupParameters.Location)
+                        Body = new ResourceGroup(location: resourceGroupParameters.Location, name: resourceGroupParameters.ResourceGroupName)
                     }));
 
             resourceGroupMock.Setup(f => f.GetWithHttpMessagesAsync(resourceGroupName, null, new CancellationToken()))
@@ -782,8 +782,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                         properties: new DeploymentPropertiesExtended(
                             mode: DeploymentMode.Incremental,
                             correlationId: "123",
-                            provisioningState: "Succeeded")
-                    )
+                            provisioningState: "Succeeded"))
                 }));
 
             deploymentsMock.Setup(f => f.ValidateWithHttpMessagesAsync(resourceGroupName, It.IsAny<string>(), It.IsAny<Deployment>(), null, new CancellationToken()))
@@ -872,8 +871,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                     name: deploymentName,
                     properties: new DeploymentPropertiesExtended(
                         mode: DeploymentMode.Incremental,
-                        provisioningState: "Succeeded")))
-                ));
+                        provisioningState: "Succeeded")))));
             deploymentsMock.Setup(f => f.ValidateWithHttpMessagesAsync(resourceGroupName, It.IsAny<string>(), It.IsAny<Deployment>(), null, new CancellationToken()))
                 .Returns(Task.Factory.StartNew(() => CreateAzureOperationResponse(new DeploymentValidateResult
                 {
@@ -983,8 +981,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                         name: deploymentName,
                         properties: new DeploymentPropertiesExtended(
                             mode: DeploymentMode.Incremental,
-                            provisioningState: "Succeeded")
-                    )
+                            provisioningState: "Succeeded"))
                 }
             ));
             deploymentsMock.Setup(f => f.ValidateWithHttpMessagesAsync(
@@ -1016,7 +1013,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                         provisioningState: "Failed",
                         statusMessage: JsonConvert.SerializeObject(
                             value: new ResourceManagementErrorWithDetails(
-                                message: "A really bad error occured")),
+                                message: "A really bad error occurred")),
                         targetResource: new TargetResource()
                         {
                             ResourceType = "Microsoft.Website",
@@ -1053,7 +1050,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             Assert.NotNull(deploymentFromGet.Properties.Template);
 
             errorLoggerMock.Verify(
-                f => f("A really bad error occured"),
+                f => f("A really bad error occurred"),
                 Times.Once());
         }
 
@@ -1071,10 +1068,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 "/subscriptions/abc123/resourceGroups/group1/providers/Microsoft.Test/servers/r12345sql/db/r45678db",
                 resourceName + "2");
             ResourceGroup resourceGroup = new ResourceGroup(
-                name: name,
                 location: resourceGroupLocation,
-                properties: new ResourceGroupProperties("Succeeded")
-            );
+                name: name,
+                properties: new ResourceGroupProperties("Succeeded"));
             resourceGroupMock.Setup(f => f.GetWithHttpMessagesAsync(name, null, new CancellationToken()))
                              .Returns(Task.Factory.StartNew(() =>
                                 new AzureOperationResponse<ResourceGroup>()
@@ -1095,10 +1091,10 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetsAllResourceGroups()
         {
-            ResourceGroup resourceGroup1 = new ResourceGroup(name: resourceGroupName + 1, location: resourceGroupLocation);
-            ResourceGroup resourceGroup2 = new ResourceGroup(name: resourceGroupName + 2, location: resourceGroupLocation);
-            ResourceGroup resourceGroup3 = new ResourceGroup(name: resourceGroupName + 3, location: resourceGroupLocation);
-            ResourceGroup resourceGroup4 = new ResourceGroup(name: resourceGroupName + 4, location: resourceGroupLocation);
+            ResourceGroup resourceGroup1 = new ResourceGroup(location: resourceGroupLocation, name: resourceGroupName + 1);
+            ResourceGroup resourceGroup2 = new ResourceGroup(location: resourceGroupLocation, name: resourceGroupName + 2);
+            ResourceGroup resourceGroup3 = new ResourceGroup(location: resourceGroupLocation, name: resourceGroupName + 3);
+            ResourceGroup resourceGroup4 = new ResourceGroup(location: resourceGroupLocation, name: resourceGroupName + 4);
             var listResult = new List<ResourceGroup>() { resourceGroup1, resourceGroup2, resourceGroup3, resourceGroup4 };
             var pagableResult = new Page<ResourceGroup>();
             pagableResult.SetItemValue(listResult);
@@ -1125,10 +1121,10 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetsAllResourceGroupsWithDetails()
         {
-            ResourceGroup resourceGroup1 = new ResourceGroup(name: resourceGroupName + 1, location: resourceGroupLocation);
-            ResourceGroup resourceGroup2 = new ResourceGroup(name: resourceGroupName + 2, location: resourceGroupLocation);
-            ResourceGroup resourceGroup3 = new ResourceGroup(name: resourceGroupName + 3, location: resourceGroupLocation);
-            ResourceGroup resourceGroup4 = new ResourceGroup(name: resourceGroupName + 4, location: resourceGroupLocation);
+            ResourceGroup resourceGroup1 = new ResourceGroup(location: resourceGroupLocation, name: resourceGroupName + 1);
+            ResourceGroup resourceGroup2 = new ResourceGroup(location: resourceGroupLocation, name: resourceGroupName + 2);
+            ResourceGroup resourceGroup3 = new ResourceGroup(location: resourceGroupLocation, name: resourceGroupName + 3);
+            ResourceGroup resourceGroup4 = new ResourceGroup(location: resourceGroupLocation, name: resourceGroupName + 4);
             var listResult = new List<ResourceGroup>() { resourceGroup1, resourceGroup2, resourceGroup3, resourceGroup4 };
             var pagableResult = new Page<ResourceGroup>();
             pagableResult.SetItemValue(listResult);
@@ -1159,10 +1155,10 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             Dictionary<string, string> tag2 = new Dictionary<string, string> { { "tag1", "valx" } };
             Dictionary<string, string> tag3 = new Dictionary<string, string> { { "tag2", "" } };
 
-            ResourceGroup resourceGroup1 = new ResourceGroup(name: resourceGroupName + 1, location: resourceGroupLocation, tags: tag1);
-            ResourceGroup resourceGroup2 = new ResourceGroup(name: resourceGroupName + 2, location: resourceGroupLocation, tags: tag2);
-            ResourceGroup resourceGroup3 = new ResourceGroup(name: resourceGroupName + 3, location: resourceGroupLocation, tags: tag3);
-            ResourceGroup resourceGroup4 = new ResourceGroup(name: resourceGroupName + 4, location: resourceGroupLocation);
+            ResourceGroup resourceGroup1 = new ResourceGroup(location: resourceGroupLocation, name: resourceGroupName + 1, tags: tag1);
+            ResourceGroup resourceGroup2 = new ResourceGroup(location: resourceGroupLocation, name: resourceGroupName + 2, tags: tag2);
+            ResourceGroup resourceGroup3 = new ResourceGroup(location: resourceGroupLocation, name: resourceGroupName + 3, tags: tag3);
+            ResourceGroup resourceGroup4 = new ResourceGroup(location: resourceGroupLocation, name: resourceGroupName + 4);
             var listResult = new List<ResourceGroup>() { resourceGroup1, resourceGroup2, resourceGroup3, resourceGroup4 };
             var pagableResult = new Page<ResourceGroup>();
             pagableResult.SetItemValue(listResult);
@@ -1210,10 +1206,10 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             Dictionary<string, string> tag2 = new Dictionary<string, string> { { "tag1", "valx" } };
             Dictionary<string, string> tag3 = new Dictionary<string, string> { { "tag2", "" } };
 
-            ResourceGroup resourceGroup1 = new ResourceGroup(name: resourceGroupName + 1, location: resourceGroupLocation, tags: tag1);
-            ResourceGroup resourceGroup2 = new ResourceGroup(name: resourceGroupName + 2, location: resourceGroupLocation, tags: tag2);
-            ResourceGroup resourceGroup3 = new ResourceGroup(name: resourceGroupName + 3, location: resourceGroupLocation, tags: tag3);
-            ResourceGroup resourceGroup4 = new ResourceGroup(name: resourceGroupName + 4, location: resourceGroupLocation);
+            ResourceGroup resourceGroup1 = new ResourceGroup(location: resourceGroupLocation, name: resourceGroupName + 1, tags: tag1);
+            ResourceGroup resourceGroup2 = new ResourceGroup(location: resourceGroupLocation, name: resourceGroupName + 2, tags: tag2);
+            ResourceGroup resourceGroup3 = new ResourceGroup(location: resourceGroupLocation, name: resourceGroupName + 3, tags: tag3);
+            ResourceGroup resourceGroup4 = new ResourceGroup(location: resourceGroupLocation, name: resourceGroupName + 4);
             var listResult = new List<ResourceGroup>() { resourceGroup1, resourceGroup2, resourceGroup3, resourceGroup4 };
             var pagableResult = new Page<ResourceGroup>();
             pagableResult.SetItemValue(listResult);
@@ -1292,8 +1288,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                         templateLink: new TemplateLink()
                         {
                             Uri = "http://microsoft.com/"
-                        })
-                )
+                        }))
             }));
 
             List<Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroupDeployment> result = resourcesClient.FilterResourceGroupDeployments(options);
@@ -1321,8 +1316,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                         {
                             Uri = "http://microsoft1.com"
                         },
-                        provisioningState: "Succeeded")
-                ),
+                        provisioningState: "Succeeded")),
                 new DeploymentExtended(
                     name: deploymentName + 2,
                     properties: new DeploymentPropertiesExtended(
@@ -1331,8 +1325,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                         {
                             Uri = "http://microsoft1.com"
                         },
-                        provisioningState: "Failed")
-                ),
+                        provisioningState: "Failed")),
                 new DeploymentExtended(
                     name: deploymentName + 3,
                     properties: new DeploymentPropertiesExtended(
@@ -1341,8 +1334,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                         {
                             Uri = "http://microsoft1.com"
                         },
-                        provisioningState: "Running")
-                )
+                        provisioningState: "Running"))
             };
             var pagableResult = new Page<DeploymentExtended>();
             pagableResult.SetItemValue<DeploymentExtended>(listResult);

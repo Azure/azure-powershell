@@ -441,7 +441,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProximityPlacementGroup
-The name or resource id of the Proximity Placment Group to use with this VM.
+The name or resource id of the Proximity Placement Group to use with this VM.
 
 ```yaml
 Type: System.String

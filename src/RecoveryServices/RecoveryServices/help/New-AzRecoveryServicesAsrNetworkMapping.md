@@ -117,7 +117,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrimaryFabric
-Specifes the ASR fabric where mapping should be created.
+Specifies the ASR fabric where mapping should be created.
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRFabric
