@@ -21,25 +21,17 @@
 
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
-    public partial class PSVirtualMachineInstanceView
+    public partial class PSHostList : PSHost
     {
-        public int? PlatformUpdateDomain { get; set; }
-        public int? PlatformFaultDomain { get; set; }
-        public string ComputerName { get; set; }
-        public string OsName { get; set; }
-        public string OsVersion { get; set; }
-        public string HyperVGeneration { get; set; }
-        public string RdpThumbPrint { get; set; }
-        public VirtualMachineAgentInstanceView VmAgent { get; set; }
-        public MaintenanceRedeployStatus MaintenanceRedeployStatus { get; set; }
-        public IList<DiskInstanceView> Disks { get; set; }
-        public IList<VirtualMachineExtensionInstanceView> Extensions { get; set; }
-        public BootDiagnosticsInstanceView BootDiagnostics { get; set; }
-        public IList<InstanceViewStatus> Statuses { get; set; }
+        public PSHost ToPSHost()
+        {
+            return ComputeAutomationAutoMapperProfile.Mapper.Map<PSHost>(this);
+        }
 
     }
 }
