@@ -22,6 +22,7 @@
 * Fix typo to capitalize "Windows" in 'New-AzDataFactoryEncryptValue" documentation
 * Fixed miscellaneous typos across module
 * Updated ADF .Net SDK version to 4.1.1 
+* Add parameter "DataProxyIntegrationRuntimeName", "DataProxyStagingLinkedServiceName" and "DataProxyStagingPath" for "Set-AzureRmDataFactoryV2IntegrationRuntime" cmd to enable set up Self-Hosted Integration Runtime as a proxy for SSIS Integration Runtime
 
 ## Version 1.1.3
 * Updated ADF .Net SDK version to 4.1.0
