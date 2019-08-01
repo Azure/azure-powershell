@@ -71,7 +71,7 @@ function Check-All {
 
     # -------------------------------------
 
-    $files = Get-ChildItem $path\* -Include *.dll, *.ps1, *.psm1, *.psd1 -Recurse | Where-Object { $_.FullName -like "*Azure*" }
+    $files = Get-ChildItem $path\* -Include *.dll, *.ps1, *.psm1, *.psd1 -Recurse | Where-Object { $_.FullName -like "*Azure*" -or $_.FullName -like "*Az*" }
     $files = $files | Where-Object { ($_.FullName -notlike "*Newtonsoft.Json*") -and `
                                      ($_.FullName -notlike "*AutoMapper*") -and `
                                      ($_.FullName -notlike "*Security.Cryptography*") -and `
