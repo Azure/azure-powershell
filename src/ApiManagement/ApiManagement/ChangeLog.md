@@ -25,6 +25,11 @@
 * Added support for querying products using Api
   https://github.com/Azure/azure-powershell/issues/9482
 
+* Fix for issue ApiRevisionDescription not being set when creating new api revision
+https://github.com/Azure/azure-powershell/issues/9752
+
+* Fixed typo in model `PsApiManagementOAuth2AuthorizationServer` to `PsApiManagementOAuth2AuthorizationServer`
+
 ## Version 1.2.0
 
 * Fix for issue https://github.com/Azure/azure-powershell/issues/8671
