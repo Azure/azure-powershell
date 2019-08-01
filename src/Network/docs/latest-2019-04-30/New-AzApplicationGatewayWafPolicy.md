@@ -14,14 +14,14 @@ Creates or update policy with specified rule set name within a resource group.
 
 ### Create (Default)
 ```
-New-AzApplicationGatewayWafPolicy -PolicyName <String> -ResourceGroupName <String> -SubscriptionId <String>
+New-AzApplicationGatewayWafPolicy -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-WafPolicy <IWebApplicationFirewallPolicy>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### CreateExpanded
 ```
-New-AzApplicationGatewayWafPolicy -PolicyName <String> -ResourceGroupName <String> -SubscriptionId <String>
+New-AzApplicationGatewayWafPolicy -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-CustomRule <IWebApplicationFirewallCustomRule[]>] [-EnabledState <WebApplicationFirewallEnabledState>]
  [-Etag <String>] [-Id <String>] [-Location <String>] [-Mode <WebApplicationFirewallMode>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -195,13 +195,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -PolicyName
+### -Name
 The name of the policy.
 
 ```yaml
 Type: System.String
 Parameter Sets: Create, CreateExpanded
-Aliases:
+Aliases: PolicyName
 
 Required: True
 Position: Named

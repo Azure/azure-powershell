@@ -20,7 +20,7 @@ Get-AzLoadBalancerFrontendIPConfiguration -LoadBalancerName <String> -ResourceGr
 
 ### Get
 ```
-Get-AzLoadBalancerFrontendIPConfiguration -FrontendIPConfigurationName <String> -LoadBalancerName <String>
+Get-AzLoadBalancerFrontendIPConfiguration -LoadBalancerName <String> -Name <String>
  -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -71,22 +71,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -FrontendIPConfigurationName
-The name of the frontend IP configuration.
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -InputObject
 Identity Parameter
 
@@ -109,6 +93,22 @@ The name of the load balancer.
 ```yaml
 Type: System.String
 Parameter Sets: List, Get
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Name
+The name of the frontend IP configuration.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
 Aliases:
 
 Required: True

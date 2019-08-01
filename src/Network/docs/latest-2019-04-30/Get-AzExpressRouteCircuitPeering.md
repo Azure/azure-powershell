@@ -20,7 +20,7 @@ Get-AzExpressRouteCircuitPeering -CircuitName <String> -ResourceGroupName <Strin
 
 ### Get
 ```
-Get-AzExpressRouteCircuitPeering -CircuitName <String> -PeeringName <String> -ResourceGroupName <String>
+Get-AzExpressRouteCircuitPeering -CircuitName <String> -Name <String> -ResourceGroupName <String>
  -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -103,13 +103,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -PeeringName
+### -Name
 The name of the peering.
 
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases:
+Aliases: PeeringName
 
 Required: True
 Position: Named

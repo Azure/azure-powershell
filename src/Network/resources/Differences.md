@@ -1,7 +1,10 @@
 ## Incorrect Cmdlets
 
-- Set-AzVnetGatewayVpnClientIPsecPolicy
-    - VpnClientIPsecParameter
+- New-AzFirewall
+    - ApplicationRuleCollection
+    - NatRuleCollection
+    - NetworkRuleCollection
+    - ThreatIntelMode
 
 ## Correct Cmdlets
 
@@ -88,7 +91,6 @@
 - New-AzExpressRouteConnection
 - New-AzExpressRouteGateway
 - New-AzExpressRoutePort
-- New-AzFirewall
 - New-AzLoadBalancer
 - New-AzLocalNetworkGateway
 - New-AzNetworkInterface
@@ -175,6 +177,7 @@
 - Set-AzVnetGateway
 - Set-AzVnetGatewayConnection
 - Set-AzVnetGatewayConnectionSharedKey
+- Set-AzVnetGatewayVpnClientIPsecPolicy
 - Set-AzVnetPeering
 - Set-AzVnetTap
 - Start-AzApplicationGateway

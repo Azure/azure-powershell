@@ -14,7 +14,7 @@ Creates or updates a peering in the specified ExpressRouteCrossConnection.
 
 ### Update (Default)
 ```
-Set-AzExpressRouteCrossConnectionPeering -CrossConnectionName <String> -PeeringName <String>
+Set-AzExpressRouteCrossConnectionPeering -CrossConnectionName <String> -Name <String>
  -ResourceGroupName <String> -SubscriptionId <String>
  [-CrossConnectionPeering <IExpressRouteCrossConnectionPeering>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -22,25 +22,22 @@ Set-AzExpressRouteCrossConnectionPeering -CrossConnectionName <String> -PeeringN
 
 ### UpdateExpanded
 ```
-Set-AzExpressRouteCrossConnectionPeering -CrossConnectionName <String> -PeeringName <String>
+Set-AzExpressRouteCrossConnectionPeering -CrossConnectionName <String> -Name <String>
  -ResourceGroupName <String> -SubscriptionId <String> [-AdvertisedCommunity <String[]>]
  [-AdvertisedPublicPrefix <String[]>]
  [-AdvertisedPublicPrefixesState <ExpressRouteCircuitPeeringAdvertisedPublicPrefixState>]
- [-CustomerAsn <Int32>] [-GatewayManagerEtag <String>]
- [-IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedCommunity <String[]>]
- [-IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefix <String[]>]
- [-IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefixesState <ExpressRouteCircuitPeeringAdvertisedPublicPrefixState>]
- [-IPv6PeeringConfigMicrosoftPeeringConfigCustomerAsn <Int32>]
- [-IPv6PeeringConfigMicrosoftPeeringConfigLegacyMode <Int32>]
- [-IPv6PeeringConfigMicrosoftPeeringConfigRoutingRegistryName <String>]
- [-IPv6PeeringConfigPrimaryPeerAddressPrefix <String>] [-IPv6PeeringConfigSecondaryPeerAddressPrefix <String>]
- [-IPv6PeeringConfigState <ExpressRouteCircuitPeeringState>] [-Id <String>] [-LastModifiedBy <String>]
- [-LegacyMode <Int32>] [-Name <String>] [-PeerAsn <Int64>] [-Peering <IExpressRouteCircuitPeering[]>]
- [-PeeringType <ExpressRoutePeeringType>] [-PrimaryPeerAddressPrefix <String>] [-RouteFilterId <String>]
- [-RouteFilterLocation <String>] [-RouteFilterTag <Hashtable>] [-RoutingRegistryName <String>]
- [-Rule <IRouteFilterRule[]>] [-SecondaryPeerAddressPrefix <String>] [-SharedKey <String>]
- [-State <ExpressRoutePeeringState>] [-VlanId <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-CustomerAsn <Int32>] [-GatewayManagerEtag <String>] [-IPv6AdvertisedCommunity <String[]>]
+ [-IPv6AdvertisedPublicPrefix <String[]>]
+ [-IPv6AdvertisedPublicPrefixesState <ExpressRouteCircuitPeeringAdvertisedPublicPrefixState>]
+ [-IPv6CustomerAsn <Int32>] [-IPv6LegacyMode <Int32>] [-IPv6PrimaryPeerAddressPrefix <String>]
+ [-IPv6RoutingRegistryName <String>] [-IPv6SecondaryPeerAddressPrefix <String>]
+ [-IPv6State <ExpressRouteCircuitPeeringState>] [-Id <String>] [-LastModifiedBy <String>]
+ [-LegacyMode <Int32>] [-PeerAsn <Int64>] [-Peering <IExpressRouteCircuitPeering[]>]
+ [-PeeringType <ExpressRoutePeeringType>] [-PrimaryPeerAddressPrefix <String>] [-ResourceName <String>]
+ [-RouteFilterId <String>] [-RouteFilterLocation <String>] [-RouteFilterTag <Hashtable>]
+ [-RoutingRegistryName <String>] [-Rule <IRouteFilterRule[]>] [-SecondaryPeerAddressPrefix <String>]
+ [-SharedKey <String>] [-State <ExpressRoutePeeringState>] [-VlanId <Int32>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -231,7 +228,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedCommunity
+### -IPv6AdvertisedCommunity
 The communities of bgp peering.
 Specified for microsoft peering
 
@@ -248,7 +245,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefix
+### -IPv6AdvertisedPublicPrefix
 The reference of AdvertisedPublicPrefixes.
 
 ```yaml
@@ -264,7 +261,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefixesState
+### -IPv6AdvertisedPublicPrefixesState
 AdvertisedPublicPrefixState of the Peering resource.
 Possible values are 'NotConfigured', 'Configuring', 'Configured', and 'ValidationNeeded'.
 
@@ -281,7 +278,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IPv6PeeringConfigMicrosoftPeeringConfigCustomerAsn
+### -IPv6CustomerAsn
 The CustomerASN of the peering.
 
 ```yaml
@@ -297,7 +294,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IPv6PeeringConfigMicrosoftPeeringConfigLegacyMode
+### -IPv6LegacyMode
 The legacy mode of the peering.
 
 ```yaml
@@ -313,23 +310,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IPv6PeeringConfigMicrosoftPeeringConfigRoutingRegistryName
-The RoutingRegistryName of the configuration.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -IPv6PeeringConfigPrimaryPeerAddressPrefix
+### -IPv6PrimaryPeerAddressPrefix
 The primary address prefix.
 
 ```yaml
@@ -345,7 +326,23 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IPv6PeeringConfigSecondaryPeerAddressPrefix
+### -IPv6RoutingRegistryName
+The RoutingRegistryName of the configuration.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -IPv6SecondaryPeerAddressPrefix
 The secondary address prefix.
 
 ```yaml
@@ -361,7 +358,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IPv6PeeringConfigState
+### -IPv6State
 The state of peering.
 Possible values are: 'Disabled' and 'Enabled'
 
@@ -411,15 +408,14 @@ Dynamic: False
 ```
 
 ### -Name
-Gets name of the resource that is unique within a resource group.
-This name can be used to access the resource.
+The name of the peering.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
+Parameter Sets: (All)
+Aliases: PeeringName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -476,22 +472,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -PeeringName
-The name of the peering.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -PeeringType
 The peering type.
 
@@ -533,6 +513,23 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ResourceName
+Gets name of the resource that is unique within a resource group.
+This name can be used to access the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

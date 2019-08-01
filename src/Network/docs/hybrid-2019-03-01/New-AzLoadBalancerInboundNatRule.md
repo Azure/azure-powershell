@@ -15,18 +15,18 @@ Creates or updates a load balancer inbound nat rule.
 ### Create1 (Default)
 ```
 New-AzLoadBalancerInboundNatRule -LoadBalancerName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-Name <String>] [-InboundNatRule <IInboundNatRule>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -SubscriptionId <String> [-ResourceName <String>] [-InboundNatRule <IInboundNatRule>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpanded1
 ```
 New-AzLoadBalancerInboundNatRule -LoadBalancerName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -InboundNatRuleName <String> [-Name <String>]
+ -SubscriptionId <String> -Name <String> [-ResourceName <String>]
  [-ApplicationGatewayBackendAddressPool <IApplicationGatewayBackendAddressPool[]>]
  [-ApplicationSecurityGroup <IApplicationSecurityGroup[]>] [-BackendIPConfigurationEtag <String>]
  [-BackendIPConfigurationId <String>] [-BackendIPConfigurationName <String>]
- [-BackendIPConfigurationPropertiesProvisioningState <String>] [-BackendPort <Int32>] [-EnableFloatingIP]
+ [-BackendIPConfigurationProvisioningState <String>] [-BackendPort <Int32>] [-EnableFloatingIP]
  [-Etag <String>] [-FrontendIPConfigurationId <String>] [-FrontendPort <Int32>] [-Id <String>]
  [-IdleTimeoutInMinutes <Int32>] [-LoadBalancerBackendAddressPool <IBackendAddressPool[]>]
  [-LoadBalancerInboundNatRule <IInboundNatRule[]>] [-Primary] [-PrivateIPAddress <String>]
@@ -37,11 +37,11 @@ New-AzLoadBalancerInboundNatRule -LoadBalancerName <String> -ResourceGroupName <
 
 ### CreateViaIdentityExpanded1
 ```
-New-AzLoadBalancerInboundNatRule -InputObject <INetworkIdentity> [-Name <String>]
+New-AzLoadBalancerInboundNatRule -InputObject <INetworkIdentity> [-ResourceName <String>]
  [-ApplicationGatewayBackendAddressPool <IApplicationGatewayBackendAddressPool[]>]
  [-ApplicationSecurityGroup <IApplicationSecurityGroup[]>] [-BackendIPConfigurationEtag <String>]
  [-BackendIPConfigurationId <String>] [-BackendIPConfigurationName <String>]
- [-BackendIPConfigurationPropertiesProvisioningState <String>] [-BackendPort <Int32>] [-EnableFloatingIP]
+ [-BackendIPConfigurationProvisioningState <String>] [-BackendPort <Int32>] [-EnableFloatingIP]
  [-Etag <String>] [-FrontendIPConfigurationId <String>] [-FrontendPort <Int32>] [-Id <String>]
  [-IdleTimeoutInMinutes <Int32>] [-LoadBalancerBackendAddressPool <IBackendAddressPool[]>]
  [-LoadBalancerInboundNatRule <IInboundNatRule[]>] [-Primary] [-PrivateIPAddress <String>]
@@ -180,7 +180,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -BackendIPConfigurationPropertiesProvisioningState
+### -BackendIPConfigurationProvisioningState
 The provisioning state of the network interface IP configuration.
 Possible values are: 'Updating', 'Deleting', and 'Failed'.
 
@@ -350,22 +350,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InboundNatRuleName
-The name of the inbound nat rule.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -InputObject
 Identity Parameter
 
@@ -437,8 +421,8 @@ The name of the inbound nat rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1, CreateViaIdentityExpanded1
-Aliases:
+Parameter Sets: CreateExpanded1
+Aliases: InboundNatRuleName
 
 Required: True
 Position: Named
@@ -588,6 +572,22 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: Create1, CreateExpanded1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ResourceName
+The name of the inbound nat rule.
+
+```yaml
+Type: System.String
+Parameter Sets: Create1, CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: True

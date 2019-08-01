@@ -20,7 +20,7 @@ Get-AzLoadBalancerProbe -LoadBalancerName <String> -ResourceGroupName <String> -
 
 ### Get
 ```
-Get-AzLoadBalancerProbe -LoadBalancerName <String> -ProbeName <String> -ResourceGroupName <String>
+Get-AzLoadBalancerProbe -LoadBalancerName <String> -Name <String> -ResourceGroupName <String>
  -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ProbeName
+### -Name
 The name of the probe.
 
 ```yaml

@@ -22,23 +22,20 @@ New-AzFirewall -Name <String> -ResourceGroupName <String> -SubscriptionId <Strin
 ### CreateExpanded
 ```
 New-AzFirewall -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-ApplicationRuleCollection <IAzureFirewallApplicationRuleCollection[]>]
+ [-ApplicationRule <IAzureFirewallApplicationRuleCollection[]>]
  [-IPConfiguration <IAzureFirewallIPConfiguration[]>] [-Id <String>] [-Location <String>]
- [-NatRuleCollection <IAzureFirewallNatRuleCollection[]>]
- [-NetworkRuleCollection <IAzureFirewallNetworkRuleCollection[]>] [-Tag <Hashtable>]
- [-ThreatIntelMode <AzureFirewallThreatIntelMode>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-NatRule <IAzureFirewallNatRuleCollection[]>] [-NetworkRule <IAzureFirewallNetworkRuleCollection[]>]
+ [-Tag <Hashtable>] [-ThreatIntelligenceMode <AzureFirewallThreatIntelMode>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzFirewall -InputObject <INetworkIdentity>
- [-ApplicationRuleCollection <IAzureFirewallApplicationRuleCollection[]>]
+New-AzFirewall -InputObject <INetworkIdentity> [-ApplicationRule <IAzureFirewallApplicationRuleCollection[]>]
  [-IPConfiguration <IAzureFirewallIPConfiguration[]>] [-Id <String>] [-Location <String>]
- [-NatRuleCollection <IAzureFirewallNatRuleCollection[]>]
- [-NetworkRuleCollection <IAzureFirewallNetworkRuleCollection[]>] [-Tag <Hashtable>]
- [-ThreatIntelMode <AzureFirewallThreatIntelMode>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-NatRule <IAzureFirewallNatRuleCollection[]>] [-NetworkRule <IAzureFirewallNetworkRuleCollection[]>]
+ [-Tag <Hashtable>] [-ThreatIntelligenceMode <AzureFirewallThreatIntelMode>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -72,9 +69,9 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -ApplicationRuleCollection
+### -ApplicationRule
 Collection of application rule collections used by Azure Firewall.
-To construct, see NOTES section for APPLICATIONRULECOLLECTION properties and create a hash table.
+To construct, see NOTES section for APPLICATIONRULE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IAzureFirewallApplicationRuleCollection[]
@@ -219,9 +216,9 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -NatRuleCollection
+### -NatRule
 Collection of NAT rule collections used by Azure Firewall.
-To construct, see NOTES section for NATRULECOLLECTION properties and create a hash table.
+To construct, see NOTES section for NATRULE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IAzureFirewallNatRuleCollection[]
@@ -236,9 +233,9 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -NetworkRuleCollection
+### -NetworkRule
 Collection of network rule collections used by Azure Firewall.
-To construct, see NOTES section for NETWORKRULECOLLECTION properties and create a hash table.
+To construct, see NOTES section for NETWORKRULE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IAzureFirewallNetworkRuleCollection[]
@@ -318,7 +315,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ThreatIntelMode
+### -ThreatIntelligenceMode
 The operation mode for Threat Intelligence.
 
 ```yaml
@@ -387,7 +384,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### APPLICATIONRULECOLLECTION <IAzureFirewallApplicationRuleCollection[]>: Collection of application rule collections used by Azure Firewall.
+#### APPLICATIONRULE <IAzureFirewallApplicationRuleCollection[]>: Collection of application rule collections used by Azure Firewall.
   - `[Id <String>]`: Resource ID.
   - `[ActionType <AzureFirewallRcActionType?>]`: The type of action.
   - `[Name <String>]`: Gets name of the resource that is unique within a resource group. This name can be used to access the resource.
@@ -460,7 +457,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[PublicIPAddressId <String>]`: Resource ID.
   - `[SubnetId <String>]`: Resource ID.
 
-#### NATRULECOLLECTION <IAzureFirewallNatRuleCollection[]>: Collection of NAT rule collections used by Azure Firewall.
+#### NATRULE <IAzureFirewallNatRuleCollection[]>: Collection of NAT rule collections used by Azure Firewall.
   - `[Id <String>]`: Resource ID.
   - `[ActionType <AzureFirewallNatRcActionType?>]`: The type of action.
   - `[Name <String>]`: Gets name of the resource that is unique within a resource group. This name can be used to access the resource.
@@ -475,7 +472,7 @@ To create the parameters described below, construct a hash table containing the 
     - `[TranslatedAddress <String>]`: The translated address for this NAT rule.
     - `[TranslatedPort <String>]`: The translated port for this NAT rule.
 
-#### NETWORKRULECOLLECTION <IAzureFirewallNetworkRuleCollection[]>: Collection of network rule collections used by Azure Firewall.
+#### NETWORKRULE <IAzureFirewallNetworkRuleCollection[]>: Collection of network rule collections used by Azure Firewall.
   - `[Id <String>]`: Resource ID.
   - `[ActionType <AzureFirewallRcActionType?>]`: The type of action.
   - `[Name <String>]`: Gets name of the resource that is unique within a resource group. This name can be used to access the resource.

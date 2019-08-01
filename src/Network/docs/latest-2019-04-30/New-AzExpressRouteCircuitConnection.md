@@ -14,7 +14,7 @@ Creates or updates a Express Route Circuit Connection in the specified express r
 
 ### Create (Default)
 ```
-New-AzExpressRouteCircuitConnection -CircuitName <String> -ConnectionName <String> -PeeringName <String>
+New-AzExpressRouteCircuitConnection -CircuitName <String> -Name <String> -PeeringName <String>
  -ResourceGroupName <String> -SubscriptionId <String>
  [-ExpressRouteCircuitConnection <IExpressRouteCircuitConnection>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -22,19 +22,18 @@ New-AzExpressRouteCircuitConnection -CircuitName <String> -ConnectionName <Strin
 
 ### CreateExpanded
 ```
-New-AzExpressRouteCircuitConnection -CircuitName <String> -ConnectionName <String> -PeeringName <String>
+New-AzExpressRouteCircuitConnection -CircuitName <String> -Name <String> -PeeringName <String>
  -ResourceGroupName <String> -SubscriptionId <String> [-AddressPrefix <String>] [-AuthorizationKey <String>]
- [-ExpressRouteCircuitPeeringId <String>] [-Id <String>] [-Name <String>]
- [-PeerExpressRouteCircuitPeeringId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-CircuitPeeringId <String>] [-Id <String>] [-PeerCircuitPeeringId <String>] [-ResourceName <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzExpressRouteCircuitConnection -InputObject <INetworkIdentity> [-AddressPrefix <String>]
- [-AuthorizationKey <String>] [-ExpressRouteCircuitPeeringId <String>] [-Id <String>] [-Name <String>]
- [-PeerExpressRouteCircuitPeeringId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-AuthorizationKey <String>] [-CircuitPeeringId <String>] [-Id <String>] [-PeerCircuitPeeringId <String>]
+ [-ResourceName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -133,15 +132,15 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ConnectionName
-The name of the express route circuit connection.
+### -CircuitPeeringId
+Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -182,22 +181,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ExpressRouteCircuitPeeringId
-Resource ID.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Id
 Resource ID.
 
@@ -231,15 +214,14 @@ Dynamic: False
 ```
 
 ### -Name
-Gets name of the resource that is unique within a resource group.
-This name can be used to access the resource.
+The name of the express route circuit connection.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Parameter Sets: Create, CreateExpanded
+Aliases: ConnectionName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -263,7 +245,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -PeerExpressRouteCircuitPeeringId
+### -PeerCircuitPeeringId
 Resource ID.
 
 ```yaml
@@ -304,6 +286,23 @@ Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ResourceName
+Gets name of the resource that is unique within a resource group.
+This name can be used to access the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

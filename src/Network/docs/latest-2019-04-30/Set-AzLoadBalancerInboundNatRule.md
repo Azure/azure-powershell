@@ -14,19 +14,19 @@ Creates or updates a load balancer inbound nat rule.
 
 ### Update (Default)
 ```
-Set-AzLoadBalancerInboundNatRule -LoadBalancerName <String> -Name <String> -ResourceGroupName <String>
+Set-AzLoadBalancerInboundNatRule -LoadBalancerName <String> -ResourceGroupName <String> -ResourceName <String>
  -SubscriptionId <String> [-InboundNatRule <IInboundNatRule>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
 ```
-Set-AzLoadBalancerInboundNatRule -LoadBalancerName <String> -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String> -InboundNatRuleName <String>
+Set-AzLoadBalancerInboundNatRule -LoadBalancerName <String> -ResourceGroupName <String> -ResourceName <String>
+ -SubscriptionId <String> -Name <String>
  [-ApplicationGatewayBackendAddressPool <IApplicationGatewayBackendAddressPool[]>]
  [-ApplicationSecurityGroup <IApplicationSecurityGroup[]>] [-BackendIPConfigurationEtag <String>]
  [-BackendIPConfigurationId <String>] [-BackendIPConfigurationName <String>]
- [-BackendIPConfigurationPropertiesProvisioningState <String>] [-BackendPort <Int32>] [-EnableFloatingIP]
+ [-BackendIPConfigurationProvisioningState <String>] [-BackendPort <Int32>] [-EnableFloatingIP]
  [-EnableTcpReset] [-Etag <String>] [-FrontendIPConfigurationId <String>] [-FrontendPort <Int32>]
  [-Id <String>] [-IdleTimeoutInMinutes <Int32>] [-LoadBalancerBackendAddressPool <IBackendAddressPool[]>]
  [-LoadBalancerInboundNatRule <IInboundNatRule[]>] [-Primary] [-PrivateIPAddress <String>]
@@ -160,7 +160,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -BackendIPConfigurationPropertiesProvisioningState
+### -BackendIPConfigurationProvisioningState
 The provisioning state of the network interface IP configuration.
 Possible values are: 'Updating', 'Deleting', and 'Failed'.
 
@@ -347,22 +347,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InboundNatRuleName
-The name of the inbound nat rule.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -LoadBalancerBackendAddressPool
 The reference of LoadBalancerBackendAddressPool resource.
 To construct, see NOTES section for LOADBALANCERBACKENDADDRESSPOOL properties and create a hash table.
@@ -418,8 +402,8 @@ The name of the inbound nat rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
+Parameter Sets: UpdateExpanded
+Aliases: InboundNatRuleName
 
 Required: True
 Position: Named
@@ -562,6 +546,22 @@ Dynamic: False
 
 ### -ResourceGroupName
 The name of the resource group.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ResourceName
+The name of the inbound nat rule.
 
 ```yaml
 Type: System.String

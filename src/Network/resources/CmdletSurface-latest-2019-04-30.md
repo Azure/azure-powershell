@@ -94,7 +94,6 @@
   - Name `String`
   - ResourceGroupName `String`
   - InputObject `INetworkIdentity`
-  - PolicyName `String`
   - WafPolicy `IWebApplicationFirewallPolicy`
   - CustomRule `IWebApplicationFirewallCustomRule[]`
   - EnabledState `WebApplicationFirewallEnabledState`
@@ -207,21 +206,21 @@
   - PeeringName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
-  - ConnectionName `String`
+  - Name `String`
   - InputObject `INetworkIdentity`
   - ExpressRouteCircuitConnection `IExpressRouteCircuitConnection`
   - AddressPrefix `String`
   - AuthorizationKey `String`
-  - ExpressRouteCircuitPeeringId `String`
+  - CircuitPeeringId `String`
   - Id `String`
-  - Name `String`
-  - PeerExpressRouteCircuitPeeringId `String`
+  - PeerCircuitPeeringId `String`
+  - ResourceName `String`
 
 ### AzExpressRouteCircuitPeering [Get, New, Remove, Set] `IExpressRouteCircuitPeering, Boolean`
   - CircuitName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
-  - PeeringName `String`
+  - Name `String`
   - InputObject `INetworkIdentity`
   - Peering `IExpressRouteCircuitPeering`
   - AdvertisedCommunity `String[]`
@@ -231,41 +230,41 @@
   - Connection `IExpressRouteCircuitConnection[]`
   - CustomerAsn `Int32`
   - GatewayManagerEtag `String`
-  - IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedCommunity `String[]`
-  - IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefix `String[]`
-  - IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefixesState `ExpressRouteCircuitPeeringAdvertisedPublicPrefixState`
-  - IPv6PeeringConfigMicrosoftPeeringConfigCustomerAsn `Int32`
-  - IPv6PeeringConfigMicrosoftPeeringConfigLegacyMode `Int32`
-  - IPv6PeeringConfigMicrosoftPeeringConfigRoutingRegistryName `String`
-  - IPv6PeeringConfigPrimaryPeerAddressPrefix `String`
-  - IPv6PeeringConfigRouteFilterId `String`
-  - IPv6PeeringConfigRouteFilterLocation `String`
-  - IPv6PeeringConfigRouteFilterPropertiesPeering `IExpressRouteCircuitPeering[]`
-  - IPv6PeeringConfigRouteFilterPropertiesRule `IRouteFilterRule[]`
-  - IPv6PeeringConfigRouteFilterTag `Hashtable`
-  - IPv6PeeringConfigSecondaryPeerAddressPrefix `String`
-  - IPv6PeeringConfigState `ExpressRouteCircuitPeeringState`
+  - IPv6AdvertisedCommunity `String[]`
+  - IPv6AdvertisedPublicPrefix `String[]`
+  - IPv6AdvertisedPublicPrefixesState `ExpressRouteCircuitPeeringAdvertisedPublicPrefixState`
+  - IPv6CustomerAsn `Int32`
+  - IPv6LegacyMode `Int32`
+  - IPv6PrimaryPeerAddressPrefix `String`
+  - IPv6RouteFilterId `String`
+  - IPv6RouteFilterLocation `String`
+  - IPv6RouteFilterPeering `IExpressRouteCircuitPeering[]`
+  - IPv6RouteFilterRule `IRouteFilterRule[]`
+  - IPv6RouteFilterTag `Hashtable`
+  - IPv6RoutingRegistryName `String`
+  - IPv6SecondaryPeerAddressPrefix `String`
+  - IPv6State `ExpressRouteCircuitPeeringState`
   - Id `String`
   - LastModifiedBy `String`
   - LegacyMode `Int32`
   - Location `String`
-  - Name `String`
   - PeerAsn `Int64`
   - PeeringType `ExpressRoutePeeringType`
   - PrimaryAzurePort `String`
+  - PrimaryBytesIn `Int64`
+  - PrimaryBytesOut `Int64`
   - PrimaryPeerAddressPrefix `String`
-  - PropertiesRouteFilterId `String`
   - ProvisioningState `String`
-  - RouteFilterPropertiesPeering `IExpressRouteCircuitPeering[]`
-  - RouteFilterPropertiesRule `IRouteFilterRule[]`
+  - ResourceName `String`
+  - RouteFilterId `String`
+  - RouteFilterPeering `IExpressRouteCircuitPeering[]`
+  - RouteFilterRule `IRouteFilterRule[]`
   - RoutingRegistryName `String`
   - SecondaryAzurePort `String`
+  - SecondaryBytesIn `Int64`
+  - SecondaryBytesOut `Int64`
   - SecondaryPeerAddressPrefix `String`
   - SharedKey `String`
-  - StatPrimarybytesIn `Int64`
-  - StatPrimarybytesOut `Int64`
-  - StatSecondarybytesIn `Int64`
-  - StatSecondarybytesOut `Int64`
   - State `ExpressRoutePeeringState`
   - Tag `Hashtable`
   - VlanId `Int32`
@@ -290,11 +289,11 @@
   - SubscriptionId `String[]`
   - Name `String`
   - InputObject `INetworkIdentity`
-  - ConnectionName `String`
   - ExpressRouteConnection `IExpressRouteConnection`
   - AuthorizationKey `String`
   - ExpressRouteCircuitPeeringId `String`
   - Id `String`
+  - ResourceName `String`
   - RoutingWeight `Int32`
 
 ### AzExpressRouteCrossConnection [Get, New, Set] `IExpressRouteCrossConnection`
@@ -302,7 +301,6 @@
   - Name `String`
   - ResourceGroupName `String`
   - InputObject `INetworkIdentity`
-  - CrossConnectionName `String`
   - ExpressRouteCrossConnection `IExpressRouteCrossConnection`
   - BandwidthInMbps `Int32`
   - ExpressRouteCircuitId `String`
@@ -327,22 +325,21 @@
   - SubscriptionId `String[]`
   - Name `String`
   - InputObject `INetworkIdentity`
-  - PeeringName `String`
   - CrossConnectionPeering `IExpressRouteCrossConnectionPeering`
   - AdvertisedCommunity `String[]`
   - AdvertisedPublicPrefix `String[]`
   - AdvertisedPublicPrefixesState `ExpressRouteCircuitPeeringAdvertisedPublicPrefixState`
   - CustomerAsn `Int32`
   - GatewayManagerEtag `String`
-  - IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedCommunity `String[]`
-  - IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefix `String[]`
-  - IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefixesState `ExpressRouteCircuitPeeringAdvertisedPublicPrefixState`
-  - IPv6PeeringConfigMicrosoftPeeringConfigCustomerAsn `Int32`
-  - IPv6PeeringConfigMicrosoftPeeringConfigLegacyMode `Int32`
-  - IPv6PeeringConfigMicrosoftPeeringConfigRoutingRegistryName `String`
-  - IPv6PeeringConfigPrimaryPeerAddressPrefix `String`
-  - IPv6PeeringConfigSecondaryPeerAddressPrefix `String`
-  - IPv6PeeringConfigState `ExpressRouteCircuitPeeringState`
+  - IPv6AdvertisedCommunity `String[]`
+  - IPv6AdvertisedPublicPrefix `String[]`
+  - IPv6AdvertisedPublicPrefixesState `ExpressRouteCircuitPeeringAdvertisedPublicPrefixState`
+  - IPv6CustomerAsn `Int32`
+  - IPv6LegacyMode `Int32`
+  - IPv6PrimaryPeerAddressPrefix `String`
+  - IPv6RoutingRegistryName `String`
+  - IPv6SecondaryPeerAddressPrefix `String`
+  - IPv6State `ExpressRouteCircuitPeeringState`
   - Id `String`
   - LastModifiedBy `String`
   - LegacyMode `Int32`
@@ -350,6 +347,7 @@
   - Peering `IExpressRouteCircuitPeering[]`
   - PeeringType `ExpressRoutePeeringType`
   - PrimaryPeerAddressPrefix `String`
+  - ResourceName `String`
   - RouteFilterId `String`
   - RouteFilterLocation `String`
   - RouteFilterTag `Hashtable`
@@ -424,14 +422,14 @@
   - ResourceGroupName `String`
   - InputObject `INetworkIdentity`
   - Firewall `IAzureFirewall`
-  - ApplicationRuleCollection `IAzureFirewallApplicationRuleCollection[]`
+  - ApplicationRule `IAzureFirewallApplicationRuleCollection[]`
   - IPConfiguration `IAzureFirewallIPConfiguration[]`
   - Id `String`
   - Location `String`
-  - NatRuleCollection `IAzureFirewallNatRuleCollection[]`
-  - NetworkRuleCollection `IAzureFirewallNetworkRuleCollection[]`
+  - NatRule `IAzureFirewallNatRuleCollection[]`
+  - NetworkRule `IAzureFirewallNetworkRuleCollection[]`
   - Tag `Hashtable`
-  - ThreatIntelMode `AzureFirewallThreatIntelMode`
+  - ThreatIntelligenceMode `AzureFirewallThreatIntelMode`
 
 ### AzFirewallFqdnTag [Get] `IAzureFirewallFqdnTag`
   - SubscriptionId `String[]`
@@ -477,14 +475,14 @@
   - LoadBalancerName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
-  - BackendAddressPoolName `String`
+  - Name `String`
   - InputObject `INetworkIdentity`
 
 ### AzLoadBalancerFrontendIPConfiguration [Get] `IFrontendIPConfiguration`
   - LoadBalancerName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
-  - FrontendIPConfigurationName `String`
+  - Name `String`
   - InputObject `INetworkIdentity`
 
 ### AzLoadBalancerInboundNatRule [Get, New, Remove, Set] `IInboundNatRule, Boolean`
@@ -493,7 +491,7 @@
   - SubscriptionId `String[]`
   - Name `String`
   - InputObject `INetworkIdentity`
-  - InboundNatRuleName `String`
+  - ResourceName `String`
   - Expand `String`
   - InboundNatRule `IInboundNatRule`
   - ApplicationGatewayBackendAddressPool `IApplicationGatewayBackendAddressPool[]`
@@ -501,7 +499,7 @@
   - BackendIPConfigurationEtag `String`
   - BackendIPConfigurationId `String`
   - BackendIPConfigurationName `String`
-  - BackendIPConfigurationPropertiesProvisioningState `String`
+  - BackendIPConfigurationProvisioningState `String`
   - BackendPort `Int32`
   - EnableFloatingIP `SwitchParameter`
   - EnableTcpReset `SwitchParameter`
@@ -526,7 +524,7 @@
   - LoadBalancerName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
-  - LoadBalancingRuleName `String`
+  - Name `String`
   - InputObject `INetworkIdentity`
 
 ### AzLoadBalancerNetworkInterface [Get] `INetworkInterface`
@@ -538,14 +536,14 @@
   - LoadBalancerName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
-  - OutboundRuleName `String`
+  - Name `String`
   - InputObject `INetworkIdentity`
 
 ### AzLoadBalancerProbe [Get] `IProbe`
   - LoadBalancerName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
-  - ProbeName `String`
+  - Name `String`
   - InputObject `INetworkIdentity`
 
 ### AzLocalNetworkGateway [Get, New, Remove, Set] `ILocalNetworkGateway, Boolean`
@@ -625,13 +623,13 @@
   - Tag `Hashtable`
   - TapConfiguration `INetworkInterfaceTapConfiguration[]`
   - VMId `String`
-  - DnsSettingAppliedDnsServer `String[]`
-  - DnsSettingDnsServer `String[]`
-  - DnsSettingInternalDnsNameLabel `String`
-  - DnsSettingInternalDomainNameSuffix `String`
-  - DnsSettingInternalFqdn `String`
-  - NsgPropertiesProvisioningState `String`
-  - NsgPropertiesResourceGuid `String`
+  - DnsAppliedDnsServer `String[]`
+  - DnsDnsServer `String[]`
+  - DnsInternalDnsNameLabel `String`
+  - DnsInternalDomainNameSuffix `String`
+  - DnsInternalFqdn `String`
+  - NsgNsgProvisioningState `String`
+  - NsgNsgResourceGuid `String`
 
 ### AzNetworkInterfaceEffectiveNsg [Get] `IEffectiveNetworkSecurityGroupListResult`
   - NetworkInterfaceName `String`
@@ -648,7 +646,7 @@
   - NetworkInterfaceName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
-  - IPConfigurationName `String`
+  - Name `String`
   - VMIndex `String`
   - VmssName `String`
   - InputObject `INetworkIdentity`

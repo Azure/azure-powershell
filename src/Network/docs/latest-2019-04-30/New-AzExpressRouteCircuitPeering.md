@@ -14,37 +14,31 @@ Creates or updates a peering in the specified express route circuits.
 
 ### Create (Default)
 ```
-New-AzExpressRouteCircuitPeering -CircuitName <String> -PeeringName <String> -ResourceGroupName <String>
+New-AzExpressRouteCircuitPeering -CircuitName <String> -Name <String> -ResourceGroupName <String>
  -SubscriptionId <String> [-Peering <IExpressRouteCircuitPeering>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpanded
 ```
-New-AzExpressRouteCircuitPeering -CircuitName <String> -PeeringName <String> -ResourceGroupName <String>
+New-AzExpressRouteCircuitPeering -CircuitName <String> -Name <String> -ResourceGroupName <String>
  -SubscriptionId <String> [-AdvertisedCommunity <String[]>] [-AdvertisedPublicPrefix <String[]>]
  [-AdvertisedPublicPrefixesState <ExpressRouteCircuitPeeringAdvertisedPublicPrefixState>] [-AzureAsn <Int32>]
  [-Connection <IExpressRouteCircuitConnection[]>] [-CustomerAsn <Int32>] [-GatewayManagerEtag <String>]
- [-IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedCommunity <String[]>]
- [-IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefix <String[]>]
- [-IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefixesState <ExpressRouteCircuitPeeringAdvertisedPublicPrefixState>]
- [-IPv6PeeringConfigMicrosoftPeeringConfigCustomerAsn <Int32>]
- [-IPv6PeeringConfigMicrosoftPeeringConfigLegacyMode <Int32>]
- [-IPv6PeeringConfigMicrosoftPeeringConfigRoutingRegistryName <String>]
- [-IPv6PeeringConfigPrimaryPeerAddressPrefix <String>] [-IPv6PeeringConfigRouteFilterId <String>]
- [-IPv6PeeringConfigRouteFilterLocation <String>]
- [-IPv6PeeringConfigRouteFilterPropertiesPeering <IExpressRouteCircuitPeering[]>]
- [-IPv6PeeringConfigRouteFilterPropertiesRule <IRouteFilterRule[]>]
- [-IPv6PeeringConfigRouteFilterTag <Hashtable>] [-IPv6PeeringConfigSecondaryPeerAddressPrefix <String>]
- [-IPv6PeeringConfigState <ExpressRouteCircuitPeeringState>] [-Id <String>] [-LastModifiedBy <String>]
- [-LegacyMode <Int32>] [-Location <String>] [-Name <String>] [-PeerAsn <Int64>]
- [-PeeringType <ExpressRoutePeeringType>] [-PrimaryAzurePort <String>] [-PrimaryPeerAddressPrefix <String>]
- [-PropertiesRouteFilterId <String>] [-ProvisioningState <String>]
- [-RouteFilterPropertiesPeering <IExpressRouteCircuitPeering[]>]
- [-RouteFilterPropertiesRule <IRouteFilterRule[]>] [-RoutingRegistryName <String>]
- [-SecondaryAzurePort <String>] [-SecondaryPeerAddressPrefix <String>] [-SharedKey <String>]
- [-StatPrimarybytesIn <Int64>] [-StatPrimarybytesOut <Int64>] [-StatSecondarybytesIn <Int64>]
- [-StatSecondarybytesOut <Int64>] [-State <ExpressRoutePeeringState>] [-Tag <Hashtable>] [-VlanId <Int32>]
+ [-IPv6AdvertisedCommunity <String[]>] [-IPv6AdvertisedPublicPrefix <String[]>]
+ [-IPv6AdvertisedPublicPrefixesState <ExpressRouteCircuitPeeringAdvertisedPublicPrefixState>]
+ [-IPv6CustomerAsn <Int32>] [-IPv6LegacyMode <Int32>] [-IPv6PrimaryPeerAddressPrefix <String>]
+ [-IPv6RouteFilterId <String>] [-IPv6RouteFilterLocation <String>]
+ [-IPv6RouteFilterPeering <IExpressRouteCircuitPeering[]>] [-IPv6RouteFilterRule <IRouteFilterRule[]>]
+ [-IPv6RouteFilterTag <Hashtable>] [-IPv6RoutingRegistryName <String>]
+ [-IPv6SecondaryPeerAddressPrefix <String>] [-IPv6State <ExpressRouteCircuitPeeringState>] [-Id <String>]
+ [-LastModifiedBy <String>] [-LegacyMode <Int32>] [-Location <String>] [-PeerAsn <Int64>]
+ [-PeeringType <ExpressRoutePeeringType>] [-PrimaryAzurePort <String>] [-PrimaryBytesIn <Int64>]
+ [-PrimaryBytesOut <Int64>] [-PrimaryPeerAddressPrefix <String>] [-ProvisioningState <String>]
+ [-ResourceName <String>] [-RouteFilterId <String>] [-RouteFilterPeering <IExpressRouteCircuitPeering[]>]
+ [-RouteFilterRule <IRouteFilterRule[]>] [-RoutingRegistryName <String>] [-SecondaryAzurePort <String>]
+ [-SecondaryBytesIn <Int64>] [-SecondaryBytesOut <Int64>] [-SecondaryPeerAddressPrefix <String>]
+ [-SharedKey <String>] [-State <ExpressRoutePeeringState>] [-Tag <Hashtable>] [-VlanId <Int32>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -54,26 +48,20 @@ New-AzExpressRouteCircuitPeering -InputObject <INetworkIdentity> [-AdvertisedCom
  [-AdvertisedPublicPrefix <String[]>]
  [-AdvertisedPublicPrefixesState <ExpressRouteCircuitPeeringAdvertisedPublicPrefixState>] [-AzureAsn <Int32>]
  [-Connection <IExpressRouteCircuitConnection[]>] [-CustomerAsn <Int32>] [-GatewayManagerEtag <String>]
- [-IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedCommunity <String[]>]
- [-IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefix <String[]>]
- [-IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefixesState <ExpressRouteCircuitPeeringAdvertisedPublicPrefixState>]
- [-IPv6PeeringConfigMicrosoftPeeringConfigCustomerAsn <Int32>]
- [-IPv6PeeringConfigMicrosoftPeeringConfigLegacyMode <Int32>]
- [-IPv6PeeringConfigMicrosoftPeeringConfigRoutingRegistryName <String>]
- [-IPv6PeeringConfigPrimaryPeerAddressPrefix <String>] [-IPv6PeeringConfigRouteFilterId <String>]
- [-IPv6PeeringConfigRouteFilterLocation <String>]
- [-IPv6PeeringConfigRouteFilterPropertiesPeering <IExpressRouteCircuitPeering[]>]
- [-IPv6PeeringConfigRouteFilterPropertiesRule <IRouteFilterRule[]>]
- [-IPv6PeeringConfigRouteFilterTag <Hashtable>] [-IPv6PeeringConfigSecondaryPeerAddressPrefix <String>]
- [-IPv6PeeringConfigState <ExpressRouteCircuitPeeringState>] [-Id <String>] [-LastModifiedBy <String>]
- [-LegacyMode <Int32>] [-Location <String>] [-Name <String>] [-PeerAsn <Int64>]
- [-PeeringType <ExpressRoutePeeringType>] [-PrimaryAzurePort <String>] [-PrimaryPeerAddressPrefix <String>]
- [-PropertiesRouteFilterId <String>] [-ProvisioningState <String>]
- [-RouteFilterPropertiesPeering <IExpressRouteCircuitPeering[]>]
- [-RouteFilterPropertiesRule <IRouteFilterRule[]>] [-RoutingRegistryName <String>]
- [-SecondaryAzurePort <String>] [-SecondaryPeerAddressPrefix <String>] [-SharedKey <String>]
- [-StatPrimarybytesIn <Int64>] [-StatPrimarybytesOut <Int64>] [-StatSecondarybytesIn <Int64>]
- [-StatSecondarybytesOut <Int64>] [-State <ExpressRoutePeeringState>] [-Tag <Hashtable>] [-VlanId <Int32>]
+ [-IPv6AdvertisedCommunity <String[]>] [-IPv6AdvertisedPublicPrefix <String[]>]
+ [-IPv6AdvertisedPublicPrefixesState <ExpressRouteCircuitPeeringAdvertisedPublicPrefixState>]
+ [-IPv6CustomerAsn <Int32>] [-IPv6LegacyMode <Int32>] [-IPv6PrimaryPeerAddressPrefix <String>]
+ [-IPv6RouteFilterId <String>] [-IPv6RouteFilterLocation <String>]
+ [-IPv6RouteFilterPeering <IExpressRouteCircuitPeering[]>] [-IPv6RouteFilterRule <IRouteFilterRule[]>]
+ [-IPv6RouteFilterTag <Hashtable>] [-IPv6RoutingRegistryName <String>]
+ [-IPv6SecondaryPeerAddressPrefix <String>] [-IPv6State <ExpressRouteCircuitPeeringState>] [-Id <String>]
+ [-LastModifiedBy <String>] [-LegacyMode <Int32>] [-Location <String>] [-PeerAsn <Int64>]
+ [-PeeringType <ExpressRoutePeeringType>] [-PrimaryAzurePort <String>] [-PrimaryBytesIn <Int64>]
+ [-PrimaryBytesOut <Int64>] [-PrimaryPeerAddressPrefix <String>] [-ProvisioningState <String>]
+ [-ResourceName <String>] [-RouteFilterId <String>] [-RouteFilterPeering <IExpressRouteCircuitPeering[]>]
+ [-RouteFilterRule <IRouteFilterRule[]>] [-RoutingRegistryName <String>] [-SecondaryAzurePort <String>]
+ [-SecondaryBytesIn <Int64>] [-SecondaryBytesOut <Int64>] [-SecondaryPeerAddressPrefix <String>]
+ [-SharedKey <String>] [-State <ExpressRoutePeeringState>] [-Tag <Hashtable>] [-VlanId <Int32>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -303,7 +291,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedCommunity
+### -IPv6AdvertisedCommunity
 The communities of bgp peering.
 Specified for microsoft peering
 
@@ -320,7 +308,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefix
+### -IPv6AdvertisedPublicPrefix
 The reference of AdvertisedPublicPrefixes.
 
 ```yaml
@@ -336,7 +324,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IPv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefixesState
+### -IPv6AdvertisedPublicPrefixesState
 AdvertisedPublicPrefixState of the Peering resource.
 Possible values are 'NotConfigured', 'Configuring', 'Configured', and 'ValidationNeeded'.
 
@@ -353,7 +341,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IPv6PeeringConfigMicrosoftPeeringConfigCustomerAsn
+### -IPv6CustomerAsn
 The CustomerASN of the peering.
 
 ```yaml
@@ -369,7 +357,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IPv6PeeringConfigMicrosoftPeeringConfigLegacyMode
+### -IPv6LegacyMode
 The legacy mode of the peering.
 
 ```yaml
@@ -385,23 +373,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IPv6PeeringConfigMicrosoftPeeringConfigRoutingRegistryName
-The RoutingRegistryName of the configuration.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -IPv6PeeringConfigPrimaryPeerAddressPrefix
+### -IPv6PrimaryPeerAddressPrefix
 The primary address prefix.
 
 ```yaml
@@ -417,7 +389,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IPv6PeeringConfigRouteFilterId
+### -IPv6RouteFilterId
 Resource ID.
 
 ```yaml
@@ -433,7 +405,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IPv6PeeringConfigRouteFilterLocation
+### -IPv6RouteFilterLocation
 Resource location.
 
 ```yaml
@@ -449,9 +421,9 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IPv6PeeringConfigRouteFilterPropertiesPeering
+### -IPv6RouteFilterPeering
 A collection of references to express route circuit peerings.
-To construct, see NOTES section for IPV6PEERINGCONFIGROUTEFILTERPROPERTIESPEERING properties and create a hash table.
+To construct, see NOTES section for IPV6ROUTEFILTERPEERING properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRouteCircuitPeering[]
@@ -466,9 +438,9 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IPv6PeeringConfigRouteFilterPropertiesRule
+### -IPv6RouteFilterRule
 Collection of RouteFilterRules contained within a route filter.
-To construct, see NOTES section for IPV6PEERINGCONFIGROUTEFILTERPROPERTIESRULE properties and create a hash table.
+To construct, see NOTES section for IPV6ROUTEFILTERRULE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IRouteFilterRule[]
@@ -483,7 +455,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IPv6PeeringConfigRouteFilterTag
+### -IPv6RouteFilterTag
 Resource tags.
 
 ```yaml
@@ -499,7 +471,23 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IPv6PeeringConfigSecondaryPeerAddressPrefix
+### -IPv6RoutingRegistryName
+The RoutingRegistryName of the configuration.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -IPv6SecondaryPeerAddressPrefix
 The secondary address prefix.
 
 ```yaml
@@ -515,7 +503,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IPv6PeeringConfigState
+### -IPv6State
 The state of peering.
 Possible values are: 'Disabled' and 'Enabled'
 
@@ -581,15 +569,14 @@ Dynamic: False
 ```
 
 ### -Name
-Gets name of the resource that is unique within a resource group.
-This name can be used to access the resource.
+The name of the peering.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Parameter Sets: Create, CreateExpanded
+Aliases: PeeringName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -646,22 +633,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -PeeringName
-The name of the peering.
-
-```yaml
-Type: System.String
-Parameter Sets: Create, CreateExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -PeeringType
 The peering type.
 
@@ -694,24 +665,40 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -PrimaryPeerAddressPrefix
-The primary address prefix.
+### -PrimaryBytesIn
+Gets BytesIn of the peering.
 
 ```yaml
-Type: System.String
+Type: System.Int64
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -PropertiesRouteFilterId
-Resource ID.
+### -PrimaryBytesOut
+Gets BytesOut of the peering.
+
+```yaml
+Type: System.Int64
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -PrimaryPeerAddressPrefix
+The primary address prefix.
 
 ```yaml
 Type: System.String
@@ -759,9 +746,42 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -RouteFilterPropertiesPeering
+### -ResourceName
+Gets name of the resource that is unique within a resource group.
+This name can be used to access the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -RouteFilterId
+Resource ID.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -RouteFilterPeering
 A collection of references to express route circuit peerings.
-To construct, see NOTES section for ROUTEFILTERPROPERTIESPEERING properties and create a hash table.
+To construct, see NOTES section for ROUTEFILTERPEERING properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRouteCircuitPeering[]
@@ -776,9 +796,9 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -RouteFilterPropertiesRule
+### -RouteFilterRule
 Collection of RouteFilterRules contained within a route filter.
-To construct, see NOTES section for ROUTEFILTERPROPERTIESRULE properties and create a hash table.
+To construct, see NOTES section for ROUTEFILTERRULE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IRouteFilterRule[]
@@ -820,6 +840,38 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -SecondaryBytesIn
+Gets BytesIn of the peering.
+
+```yaml
+Type: System.Int64
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -SecondaryBytesOut
+Gets BytesOut of the peering.
+
+```yaml
+Type: System.Int64
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -868,70 +920,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -StatPrimarybytesIn
-Gets BytesIn of the peering.
-
-```yaml
-Type: System.Int64
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -StatPrimarybytesOut
-Gets BytesOut of the peering.
-
-```yaml
-Type: System.Int64
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -StatSecondarybytesIn
-Gets BytesIn of the peering.
-
-```yaml
-Type: System.Int64
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -StatSecondarybytesOut
-Gets BytesOut of the peering.
-
-```yaml
-Type: System.Int64
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -1047,7 +1035,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Name <String>]`: Gets name of the resource that is unique within a resource group. This name can be used to access the resource.
   - `[PeerExpressRouteCircuitPeeringId <String>]`: Resource ID.
 
-#### IPV6PEERINGCONFIGROUTEFILTERPROPERTIESPEERING <IExpressRouteCircuitPeering[]>: A collection of references to express route circuit peerings.
+#### IPV6ROUTEFILTERPEERING <IExpressRouteCircuitPeering[]>: A collection of references to express route circuit peerings.
   - `[Id <String>]`: Resource ID.
   - `[AdvertisedCommunity <String[]>]`: The communities of bgp peering. Specified for microsoft peering
   - `[AdvertisedPublicPrefix <String[]>]`: The reference of AdvertisedPublicPrefixes.
@@ -1106,7 +1094,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Tag <IResourceTags>]`: Resource tags.
   - `[VlanId <Int32?>]`: The VLAN ID.
 
-#### IPV6PEERINGCONFIGROUTEFILTERPROPERTIESRULE <IRouteFilterRule[]>: Collection of RouteFilterRules contained within a route filter.
+#### IPV6ROUTEFILTERRULE <IRouteFilterRule[]>: Collection of RouteFilterRules contained within a route filter.
   - `Access <Access>`: The access type of the rule.
   - `Community <String[]>`: The collection for bgp community values to filter on. e.g. ['12076:5010','12076:5020']
   - `[Id <String>]`: Resource ID.
@@ -1172,7 +1160,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Tag <IResourceTags>]`: Resource tags.
   - `[VlanId <Int32?>]`: The VLAN ID.
 
-#### ROUTEFILTERPROPERTIESPEERING <IExpressRouteCircuitPeering[]>: A collection of references to express route circuit peerings.
+#### ROUTEFILTERPEERING <IExpressRouteCircuitPeering[]>: A collection of references to express route circuit peerings.
   - `[Id <String>]`: Resource ID.
   - `[AdvertisedCommunity <String[]>]`: The communities of bgp peering. Specified for microsoft peering
   - `[AdvertisedPublicPrefix <String[]>]`: The reference of AdvertisedPublicPrefixes.
@@ -1231,7 +1219,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Tag <IResourceTags>]`: Resource tags.
   - `[VlanId <Int32?>]`: The VLAN ID.
 
-#### ROUTEFILTERPROPERTIESRULE <IRouteFilterRule[]>: Collection of RouteFilterRules contained within a route filter.
+#### ROUTEFILTERRULE <IRouteFilterRule[]>: Collection of RouteFilterRules contained within a route filter.
   - `Access <Access>`: The access type of the rule.
   - `Community <String[]>`: The collection for bgp community values to filter on. e.g. ['12076:5010','12076:5020']
   - `[Id <String>]`: Resource ID.

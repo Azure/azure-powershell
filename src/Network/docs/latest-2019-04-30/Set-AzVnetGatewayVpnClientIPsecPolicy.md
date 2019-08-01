@@ -285,7 +285,7 @@ To construct, see NOTES section for VPNCLIENTIPSECPOLICY properties and create a
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVpnClientIPsecParameters
 Parameter Sets: Set
-Aliases:
+Aliases: VpnClientIPsecParameter
 
 Required: False
 Position: Named

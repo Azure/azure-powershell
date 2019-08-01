@@ -22,16 +22,15 @@ Set-AzNetworkInterface -Name <String> -ResourceGroupName <String> -SubscriptionI
 ### UpdateExpanded
 ```
 Set-AzNetworkInterface -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-DefaultSecurityRule <ISecurityRule[]>] [-DnsSettingAppliedDnsServer <String[]>]
- [-DnsSettingDnsServer <String[]>] [-DnsSettingInternalDnsNameLabel <String>]
- [-DnsSettingInternalDomainNameSuffix <String>] [-DnsSettingInternalFqdn <String>]
+ [-DefaultSecurityRule <ISecurityRule[]>] [-DnsAppliedDnsServer <String[]>] [-DnsDnsServer <String[]>]
+ [-DnsInternalDnsNameLabel <String>] [-DnsInternalDomainNameSuffix <String>] [-DnsInternalFqdn <String>]
  [-EnableAcceleratedNetworking] [-EnableIPForwarding] [-EndpointServiceId <String>] [-Etag <String>]
  [-Fqdn <String>] [-IPConfiguration <INetworkInterfaceIPConfiguration[]>] [-Id <String>]
  [-InterfaceEndpointEtag <String>] [-InterfaceEndpointId <String>] [-InterfaceEndpointLocation <String>]
  [-InterfaceEndpointTag <Hashtable>] [-Location <String>] [-MacAddress <String>] [-NsgEtag <String>]
- [-NsgId <String>] [-NsgLocation <String>] [-NsgPropertiesProvisioningState <String>]
- [-NsgPropertiesResourceGuid <String>] [-NsgTag <Hashtable>] [-Primary] [-ProvisioningState <String>]
- [-ResourceGuid <String>] [-SecurityRule <ISecurityRule[]>] [-Subnet <ISubnet>] [-Tag <Hashtable>]
+ [-NsgId <String>] [-NsgLocation <String>] [-NsgNsgProvisioningState <String>] [-NsgNsgResourceGuid <String>]
+ [-NsgTag <Hashtable>] [-Primary] [-ProvisioningState <String>] [-ResourceGuid <String>]
+ [-SecurityRule <ISecurityRule[]>] [-Subnet <ISubnet>] [-Tag <Hashtable>]
  [-TapConfiguration <INetworkInterfaceTapConfiguration[]>] [-VMId <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -110,7 +109,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -DnsSettingAppliedDnsServer
+### -DnsAppliedDnsServer
 If the VM that uses this NIC is part of an Availability Set, then this list will have the union of all DNS servers from all NICs that are part of the Availability Set.
 This property is what is configured on each of those VMs.
 
@@ -127,7 +126,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -DnsSettingDnsServer
+### -DnsDnsServer
 List of DNS servers IP addresses.
 Use 'AzureProvidedDNS' to switch to azure provided DNS resolution.
 'AzureProvidedDNS' value cannot be combined with other IPs, it must be the only value in dnsServers collection.
@@ -145,7 +144,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -DnsSettingInternalDnsNameLabel
+### -DnsInternalDnsNameLabel
 Relative DNS name for this NIC used for internal communications between VMs in the same virtual network.
 
 ```yaml
@@ -161,7 +160,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -DnsSettingInternalDomainNameSuffix
+### -DnsInternalDomainNameSuffix
 Even if internalDnsNameLabel is not specified, a DNS entry is created for the primary NIC of the VM.
 This DNS name can be constructed by concatenating the VM name with the value of internalDomainNameSuffix.
 
@@ -178,7 +177,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -DnsSettingInternalFqdn
+### -DnsInternalFqdn
 Fully qualified DNS name supporting internal communications between VMs in the same virtual network.
 
 ```yaml
@@ -500,7 +499,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -NsgPropertiesProvisioningState
+### -NsgNsgProvisioningState
 The provisioning state of the public IP resource.
 Possible values are: 'Updating', 'Deleting', and 'Failed'.
 
@@ -517,7 +516,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -NsgPropertiesResourceGuid
+### -NsgNsgResourceGuid
 The resource GUID property of the network security group resource.
 
 ```yaml

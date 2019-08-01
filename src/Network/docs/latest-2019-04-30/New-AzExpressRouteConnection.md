@@ -14,24 +14,24 @@ Creates a connection between an ExpressRoute gateway and an ExpressRoute circuit
 
 ### Create (Default)
 ```
-New-AzExpressRouteConnection -ConnectionName <String> -ExpressRouteGatewayName <String>
- -ResourceGroupName <String> -SubscriptionId <String> [-ExpressRouteConnection <IExpressRouteConnection>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzExpressRouteConnection -ExpressRouteGatewayName <String> -Name <String> -ResourceGroupName <String>
+ -SubscriptionId <String> [-ExpressRouteConnection <IExpressRouteConnection>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpanded
 ```
-New-AzExpressRouteConnection -ConnectionName <String> -ExpressRouteGatewayName <String>
- -ResourceGroupName <String> -SubscriptionId <String> -Name <String> [-AuthorizationKey <String>]
+New-AzExpressRouteConnection -ExpressRouteGatewayName <String> -Name <String> -ResourceGroupName <String>
+ -SubscriptionId <String> -ResourceName <String> [-AuthorizationKey <String>]
  [-ExpressRouteCircuitPeeringId <String>] [-Id <String>] [-RoutingWeight <Int32>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzExpressRouteConnection -InputObject <INetworkIdentity> -Name <String> [-AuthorizationKey <String>]
- [-ExpressRouteCircuitPeeringId <String>] [-Id <String>] [-RoutingWeight <Int32>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzExpressRouteConnection -InputObject <INetworkIdentity> -ResourceName <String>
+ [-AuthorizationKey <String>] [-ExpressRouteCircuitPeeringId <String>] [-Id <String>] [-RoutingWeight <Int32>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -91,22 +91,6 @@ Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -ConnectionName
-The name of the connection subresource.
-
-```yaml
-Type: System.String
-Parameter Sets: Create, CreateExpanded
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -212,12 +196,12 @@ Dynamic: False
 ```
 
 ### -Name
-The name of the resource.
+The name of the connection subresource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Parameter Sets: Create, CreateExpanded
+Aliases: ConnectionName
 
 Required: True
 Position: Named
@@ -250,6 +234,22 @@ The name of the resource group.
 Type: System.String
 Parameter Sets: Create, CreateExpanded
 Aliases: ExpressRouteGatewayObject, ParentResourceId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ResourceName
+The name of the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
 
 Required: True
 Position: Named

@@ -14,15 +14,15 @@ Creates a connection between an ExpressRoute gateway and an ExpressRoute circuit
 
 ### Update (Default)
 ```
-Set-AzExpressRouteConnection -ConnectionName <String> -ExpressRouteGatewayName <String>
- -ResourceGroupName <String> -SubscriptionId <String> [-ExpressRouteConnection <IExpressRouteConnection>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzExpressRouteConnection -ExpressRouteGatewayName <String> -Name <String> -ResourceGroupName <String>
+ -SubscriptionId <String> [-ExpressRouteConnection <IExpressRouteConnection>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
 ```
-Set-AzExpressRouteConnection -ConnectionName <String> -ExpressRouteGatewayName <String>
- -ResourceGroupName <String> -SubscriptionId <String> -Name <String> [-AuthorizationKey <String>]
+Set-AzExpressRouteConnection -ExpressRouteGatewayName <String> -Name <String> -ResourceGroupName <String>
+ -SubscriptionId <String> -ResourceName <String> [-AuthorizationKey <String>]
  [-ExpressRouteCircuitPeeringId <String>] [-Id <String>] [-RoutingWeight <Int32>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -77,22 +77,6 @@ Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -ConnectionName
-The name of the connection subresource.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -182,12 +166,12 @@ Dynamic: False
 ```
 
 ### -Name
-The name of the resource.
+The name of the connection subresource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
+Parameter Sets: (All)
+Aliases: ConnectionName
 
 Required: True
 Position: Named
@@ -220,6 +204,22 @@ The name of the resource group.
 Type: System.String
 Parameter Sets: (All)
 Aliases: InputObject
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ResourceName
+The name of the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
 
 Required: True
 Position: Named
