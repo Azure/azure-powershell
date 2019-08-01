@@ -2090,9 +2090,14 @@ directive:
       parameter-name: UseStatus
   - where:
       subject: ExpressRouteCircuitConnection
-      parameter-name: ^ExpressRouteCircuitPeeringId$|^PeerExpressRouteCircuitPeeringId$
+      parameter-name: ExpressRouteCircuitPeeringId
     set:
       parameter-name: CircuitPeeringId
+  - where:
+      subject: ExpressRouteCircuitConnection
+      parameter-name: PeerExpressRouteCircuitPeeringId
+    set:
+      parameter-name: PeerCircuitPeeringId
   - where: # This parameter needs removed
       verb: ^New$|^Set$
       subject: ExpressRouteCircuitConnection
@@ -2105,4 +2110,81 @@ directive:
     set:
       parameter-name: Name
       alias: ConnectionName
+  - where:
+      subject: ExpressRouteCrossConnectionPeering
+      parameter-name: ^IPv6PeeringConfigMicrosoftPeeringConfig(.*)$
+    set:
+      parameter-name: IPv6$1
+  - where:
+      subject: ExpressRouteCrossConnectionPeering
+      parameter-name: ^IPv6PeeringConfig(.*)$
+    set:
+      parameter-name: IPv6$1
+  - where:
+      subject: Firewall
+      parameter-name: ThreatIntelMode
+    set:
+      parameter-name: ThreatIntelligenceMode
+  - where:
+      subject: Firewall
+      parameter-name: ^(.*)Collection$
+    set:
+      parameter-name: $1
+  - where:
+      subject: LoadBalancerBackendAddressPool
+      parameter-name: BackendAddressPoolName
+    set:
+      parameter-name: Name
+  - where:
+      subject: LoadBalancerFrontendIPConfiguration
+      parameter-name: FrontendIPConfigurationName
+    set:
+      parameter-name: Name
+  - where: # This parameter needs removed
+      verb: ^New$|^Set$
+      subject: LoadBalancerInboundNatRule
+      parameter-name: Name
+    set:
+      parameter-name: ResourceName
+  - where:
+      subject: LoadBalancerInboundNatRule
+      parameter-name: InboundNatRuleName
+    set:
+      parameter-name: Name
+      alias: InboundNatRuleName
+  - where:
+      subject: LoadBalancerInboundNatRule
+      parameter-name: BackendIPConfigurationPropertiesProvisioningState
+    set:
+      parameter-name: BackendIPConfigurationProvisioningState
+  - where:
+      subject: LoadBalancerLoadBalancingRule
+      parameter-name: LoadBalancingRuleName
+    set:
+      parameter-name: Name
+  - where:
+      subject: LoadBalancerOutboundRule
+      parameter-name: OutboundRuleName
+    set:
+      parameter-name: Name
+  - where:
+      subject: LoadBalancerProbe
+      parameter-name: ProbeName
+    set:
+      parameter-name: Name
+  - where:
+      subject: NetworkInterface
+      parameter-name: ^DnsSetting(.*)$
+    set:
+      parameter-name: Dns$1
+  - where:
+      subject: NetworkInterface
+      parameter-name: ^NsgProperties(.*)$
+    set:
+      parameter-name: NsgNsg$1
+  - where:
+      subject: NetworkInterfaceIPConfiguration
+      parameter-name: IPConfigurationName
+    set:
+      parameter-name: Name
 ```
