@@ -3083,7 +3083,8 @@ function ApiRevision-CrudTest {
         $apiRevision = New-AzApiManagementApiRevision -Context $context -ApiId $swaggerApiId1 -ApiRevision $apiRevisionId -SourceApiRevision "1" -ApiRevisionDescription $apiRevisionDescription
         Assert-AreEqual $expectedApiId $apiRevision.ApiId
         Assert-AreEqual $apiRevisionId $apiRevision.ApiRevision
-		Assert-NotNull $apiRevision.ApiRevisionDescription
+        Assert-NotNull $apiRevision.ApiRevisionDescription
+        Assert-AreEqual $apiRevisionDescription $apiRevision.ApiRevisionDescription
         Assert-AreEqual $path1 $apiRevision.Path        
         Assert-False { $apiRevision.IsCurrent }
 
