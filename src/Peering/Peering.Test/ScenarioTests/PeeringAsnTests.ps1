@@ -94,6 +94,8 @@ function makePeerAsn($asn)
 	[string[]]$emails = "noc@$asnPeer.com","noc@$asnPeerName.com"
 	$phone = getAssetName
 	$created = New-AzPeerAsn -Name $asnPeerName -PeerName $asnPeer -PeerAsn $asnId -Email $emails -Phone $phone
+	$created.ValidationState = "Approved";
+	$created = $created | Set-AzPeerAsn
 	return $created
 }
 
