@@ -12,19 +12,19 @@ Generates VPN client package for P2S client of the virtual network gateway in th
 
 ## SYNTAX
 
-### Generatevpnclientpackage1 (Default)
-```
-New-AzVnetGatewayVpnClientPackage -ResourceGroupName <String> -SubscriptionId <String>
- -VnetGatewayName <String> [-VpnClientPackage <IVpnClientParameters>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### GeneratevpnclientpackageExpanded1
+### GeneratevpnclientpackageExpanded1 (Default)
 ```
 New-AzVnetGatewayVpnClientPackage -ResourceGroupName <String> -SubscriptionId <String>
  -VnetGatewayName <String> [-AuthenticationMethod <AuthenticationMethod>] [-ClientRootCertificate <String[]>]
  [-ProcessorArchitecture <ProcessorArchitecture>] [-RadiusServerAuthCertificate <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Generatevpnclientpackage1
+```
+New-AzVnetGatewayVpnClientPackage -ResourceGroupName <String> -SubscriptionId <String>
+ -VnetGatewayName <String> -VpnClientPackage <IVpnClientParameters> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GeneratevpnclientpackageViaIdentityExpanded1
@@ -37,7 +37,7 @@ New-AzVnetGatewayVpnClientPackage -InputObject <INetworkIdentity>
 
 ### GeneratevpnclientpackageViaIdentity1
 ```
-New-AzVnetGatewayVpnClientPackage -InputObject <INetworkIdentity> [-VpnClientPackage <IVpnClientParameters>]
+New-AzVnetGatewayVpnClientPackage -InputObject <INetworkIdentity> -VpnClientPackage <IVpnClientParameters>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -202,7 +202,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Generatevpnclientpackage1, GeneratevpnclientpackageExpanded1
+Parameter Sets: GeneratevpnclientpackageExpanded1, Generatevpnclientpackage1
 Aliases:
 
 Required: True
@@ -219,7 +219,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Generatevpnclientpackage1, GeneratevpnclientpackageExpanded1
+Parameter Sets: GeneratevpnclientpackageExpanded1, Generatevpnclientpackage1
 Aliases:
 
 Required: True
@@ -235,7 +235,7 @@ The name of the virtual network gateway.
 
 ```yaml
 Type: System.String
-Parameter Sets: Generatevpnclientpackage1, GeneratevpnclientpackageExpanded1
+Parameter Sets: GeneratevpnclientpackageExpanded1, Generatevpnclientpackage1
 Aliases: VirtualNetworkGatewayName
 
 Required: True
@@ -255,7 +255,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVpnClientPa
 Parameter Sets: Generatevpnclientpackage1, GeneratevpnclientpackageViaIdentity1
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

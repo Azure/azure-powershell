@@ -12,14 +12,7 @@ Creates or updates a load balancer inbound nat rule.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzLoadBalancerInboundNatRule -LoadBalancerName <String> -ResourceGroupName <String> -ResourceName <String>
- -SubscriptionId <String> [-InboundNatRule <IInboundNatRule>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzLoadBalancerInboundNatRule -LoadBalancerName <String> -ResourceGroupName <String> -ResourceName <String>
  -SubscriptionId <String> -Name <String>
@@ -33,6 +26,13 @@ Set-AzLoadBalancerInboundNatRule -LoadBalancerName <String> -ResourceGroupName <
  [-PrivateIPAddressVersion <IPVersion>] [-PrivateIPAllocationMethod <IPAllocationMethod>]
  [-Protocol <TransportProtocol>] [-ProvisioningState <String>] [-PublicIPAddress <IPublicIPAddress>]
  [-Subnet <ISubnet>] [-VnetTap <IVirtualNetworkTap[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzLoadBalancerInboundNatRule -LoadBalancerName <String> -ResourceGroupName <String> -ResourceName <String>
+ -SubscriptionId <String> -InboundNatRule <IInboundNatRule> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -339,7 +339,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IInboundNatR
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

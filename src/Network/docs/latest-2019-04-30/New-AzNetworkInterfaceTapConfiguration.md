@@ -12,33 +12,32 @@ Creates or updates a Tap configuration in the specified NetworkInterface.
 
 ## SYNTAX
 
-### Create (Default)
+### CreateExpanded (Default)
 ```
-New-AzNetworkInterfaceTapConfiguration -NetworkInterfaceName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -TapConfigurationName <String>
- [-TapConfiguration <INetworkInterfaceTapConfiguration>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded
-```
-New-AzNetworkInterfaceTapConfiguration -NetworkInterfaceName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -TapConfigurationName <String> [-Etag <String>] [-Id <String>] [-Name <String>]
+New-AzNetworkInterfaceTapConfiguration -Name <String> -NetworkInterfaceName <String>
+ -ResourceGroupName <String> -SubscriptionId <String> [-Etag <String>] [-Id <String>] [-ResourceName <String>]
  [-VnetTap <IVirtualNetworkTap>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
+```
+
+### Create
+```
+New-AzNetworkInterfaceTapConfiguration -Name <String> -NetworkInterfaceName <String>
+ -ResourceGroupName <String> -SubscriptionId <String> -TapConfiguration <INetworkInterfaceTapConfiguration>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzNetworkInterfaceTapConfiguration -InputObject <INetworkIdentity> [-Etag <String>] [-Id <String>]
- [-Name <String>] [-VnetTap <IVirtualNetworkTap>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-ResourceName <String>] [-VnetTap <IVirtualNetworkTap>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
 New-AzNetworkInterfaceTapConfiguration -InputObject <INetworkIdentity>
- [-TapConfiguration <INetworkInterfaceTapConfiguration>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -TapConfiguration <INetworkInterfaceTapConfiguration> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -148,15 +147,14 @@ Dynamic: False
 ```
 
 ### -Name
-The name of the resource that is unique within a resource group.
-This name can be used to access the resource.
+The name of the tap configuration.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Parameter Sets: CreateExpanded, Create
+Aliases: TapConfigurationName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -169,7 +167,7 @@ The name of the network interface.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -201,10 +199,27 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ResourceName
+The name of the resource that is unique within a resource group.
+This name can be used to access the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -218,7 +233,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -238,26 +253,10 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkInte
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -TapConfigurationName
-The name of the tap configuration.
-
-```yaml
-Type: System.String
-Parameter Sets: Create, CreateExpanded
-Aliases:
-
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```

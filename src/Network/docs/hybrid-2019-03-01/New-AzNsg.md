@@ -12,17 +12,17 @@ Creates or updates a network security group in the specified resource group.
 
 ## SYNTAX
 
-### Create1 (Default)
-```
-New-AzNsg -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-Nsg <INetworkSecurityGroup>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded1
+### CreateExpanded1 (Default)
 ```
 New-AzNsg -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-DefaultSecurityRule <ISecurityRule[]>] [-Etag <String>] [-Id <String>] [-Location <String>]
  [-ProvisioningState <String>] [-ResourceGuid <String>] [-SecurityRule <ISecurityRule[]>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create1
+```
+New-AzNsg -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Nsg <INetworkSecurityGroup>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -36,7 +36,7 @@ New-AzNsg -InputObject <INetworkIdentity> [-DefaultSecurityRule <ISecurityRule[]
 
 ### CreateViaIdentity1
 ```
-New-AzNsg -InputObject <INetworkIdentity> [-Nsg <INetworkSecurityGroup>] [-DefaultProfile <PSObject>] [-AsJob]
+New-AzNsg -InputObject <INetworkIdentity> -Nsg <INetworkSecurityGroup> [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -183,7 +183,7 @@ The name of the network security group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1
+Parameter Sets: CreateExpanded1, Create1
 Aliases: NetworkSecurityGroupName
 
 Required: True
@@ -219,7 +219,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkSecu
 Parameter Sets: Create1, CreateViaIdentity1
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -249,7 +249,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1
+Parameter Sets: CreateExpanded1, Create1
 Aliases:
 
 Required: True
@@ -299,7 +299,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1
+Parameter Sets: CreateExpanded1, Create1
 Aliases:
 
 Required: True

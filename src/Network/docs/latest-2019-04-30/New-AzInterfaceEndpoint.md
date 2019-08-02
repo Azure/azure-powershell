@@ -12,18 +12,18 @@ Creates or updates an interface endpoint in the specified resource group.
 
 ## SYNTAX
 
-### Create (Default)
-```
-New-AzInterfaceEndpoint -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-InterfaceEndpoint <IInterfaceEndpoint>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded
+### CreateExpanded (Default)
 ```
 New-AzInterfaceEndpoint -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-EndpointServiceId <String>] [-Etag <String>] [-Fqdn <String>] [-Id <String>] [-Location <String>]
  [-Subnet <ISubnet>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### Create
+```
+New-AzInterfaceEndpoint -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -InterfaceEndpoint <IInterfaceEndpoint> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -36,7 +36,7 @@ New-AzInterfaceEndpoint -InputObject <INetworkIdentity> [-EndpointServiceId <Str
 
 ### CreateViaIdentity
 ```
-New-AzInterfaceEndpoint -InputObject <INetworkIdentity> [-InterfaceEndpoint <IInterfaceEndpoint>]
+New-AzInterfaceEndpoint -InputObject <INetworkIdentity> -InterfaceEndpoint <IInterfaceEndpoint>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -186,7 +186,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IInterfaceEn
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -215,7 +215,7 @@ The name of the interface endpoint.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: InterfaceEndpointName
 
 Required: True
@@ -247,7 +247,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -281,7 +281,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True

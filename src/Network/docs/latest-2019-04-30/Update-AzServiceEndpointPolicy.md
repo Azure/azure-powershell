@@ -12,17 +12,17 @@ Updates service Endpoint Policies.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Update-AzServiceEndpointPolicy -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-ServiceEndpointPolicy <ITagsObject>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Update-AzServiceEndpointPolicy -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Update-AzServiceEndpointPolicy -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -ServiceEndpointPolicy <ITagsObject> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -33,7 +33,7 @@ Update-AzServiceEndpointPolicy -InputObject <INetworkIdentity> [-Tag <Hashtable>
 
 ### UpdateViaIdentity
 ```
-Update-AzServiceEndpointPolicy -InputObject <INetworkIdentity> [-ServiceEndpointPolicy <ITagsObject>]
+Update-AzServiceEndpointPolicy -InputObject <INetworkIdentity> -ServiceEndpointPolicy <ITagsObject>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -115,7 +115,7 @@ The name of the service endpoint policy.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded, Update
 Aliases: ServiceEndpointPolicyName
 
 Required: True
@@ -147,7 +147,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded, Update
 Aliases:
 
 Required: True
@@ -167,7 +167,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ITagsObject
 Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -181,7 +181,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded, Update
 Aliases:
 
 Required: True

@@ -12,19 +12,19 @@ Creates or updates a ExpressRoute gateway in a specified resource group.
 
 ## SYNTAX
 
-### Create (Default)
-```
-New-AzExpressRouteGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-ExpressRouteGateway <IExpressRouteGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded
+### CreateExpanded (Default)
 ```
 New-AzExpressRouteGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-Id <String>]
  [-Location <String>] [-MaximumScaleUnits <Int32>] [-MinimumScaleUnits <Int32>] [-Tag <Hashtable>]
  [-VirtualHubId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
+```
+
+### Create
+```
+New-AzExpressRouteGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -ExpressRouteGateway <IExpressRouteGateway> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -36,7 +36,7 @@ New-AzExpressRouteGateway -InputObject <INetworkIdentity> [-Id <String>] [-Locat
 
 ### CreateViaIdentity
 ```
-New-AzExpressRouteGateway -InputObject <INetworkIdentity> [-ExpressRouteGateway <IExpressRouteGateway>]
+New-AzExpressRouteGateway -InputObject <INetworkIdentity> -ExpressRouteGateway <IExpressRouteGateway>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -106,7 +106,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRout
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -199,7 +199,7 @@ The name of the ExpressRoute gateway.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: ExpressRouteGatewayName
 
 Required: True
@@ -231,7 +231,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: VirtualHub, VirtualHubName
 
 Required: True
@@ -248,7 +248,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True

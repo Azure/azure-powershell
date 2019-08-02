@@ -12,10 +12,17 @@ Creates or updates a subnet in the specified virtual network.
 
 ## SYNTAX
 
-### Create1 (Default)
+### CreateExpanded1 (Default)
 ```
-New-AzVnetSubnet -ResourceGroupName <String> -SubscriptionId <String> -VnetName <String> [-Name <String>]
- [-Subnet <ISubnet>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzVnetSubnet -ResourceGroupName <String> -SubscriptionId <String> -VnetName <String> -SubnetName <String>
+ [-Name <String>] [-AddressPrefix <String>] [-DefaultSecurityRule <ISecurityRule[]>]
+ [-DisableBgpRoutePropagation] [-Etag <String>] [-Id <String>] [-NsgEtag <String>] [-NsgId <String>]
+ [-NsgLocation <String>] [-NsgPropertiesProvisioningState <String>] [-NsgTag <Hashtable>]
+ [-ProvisioningState <String>] [-ResourceGuid <String>] [-ResourceNavigationLink <IResourceNavigationLink[]>]
+ [-Route <IRoute[]>] [-RouteTableEtag <String>] [-RouteTableId <String>] [-RouteTableLocation <String>]
+ [-RouteTablePropertiesProvisioningState <String>] [-RouteTableTag <Hashtable>]
+ [-SecurityRule <ISecurityRule[]>] [-ServiceEndpoint <IServiceEndpointPropertiesFormat[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded1
@@ -31,22 +38,15 @@ New-AzVnetSubnet -InputObject <INetworkIdentity> [-Name <String>] [-AddressPrefi
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateExpanded1
+### Create1
 ```
-New-AzVnetSubnet -ResourceGroupName <String> -SubscriptionId <String> -VnetName <String> -SubnetName <String>
- [-Name <String>] [-AddressPrefix <String>] [-DefaultSecurityRule <ISecurityRule[]>]
- [-DisableBgpRoutePropagation] [-Etag <String>] [-Id <String>] [-NsgEtag <String>] [-NsgId <String>]
- [-NsgLocation <String>] [-NsgPropertiesProvisioningState <String>] [-NsgTag <Hashtable>]
- [-ProvisioningState <String>] [-ResourceGuid <String>] [-ResourceNavigationLink <IResourceNavigationLink[]>]
- [-Route <IRoute[]>] [-RouteTableEtag <String>] [-RouteTableId <String>] [-RouteTableLocation <String>]
- [-RouteTablePropertiesProvisioningState <String>] [-RouteTableTag <Hashtable>]
- [-SecurityRule <ISecurityRule[]>] [-ServiceEndpoint <IServiceEndpointPropertiesFormat[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzVnetSubnet -ResourceGroupName <String> -SubscriptionId <String> -VnetName <String> -Subnet <ISubnet>
+ [-Name <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity1
 ```
-New-AzVnetSubnet -InputObject <INetworkIdentity> [-Subnet <ISubnet>] [-DefaultProfile <PSObject>] [-AsJob]
+New-AzVnetSubnet -InputObject <INetworkIdentity> -Subnet <ISubnet> [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -80,7 +80,7 @@ The address prefix for the subnet.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -129,7 +129,7 @@ To construct, see NOTES section for DEFAULTSECURITYRULE properties and create a 
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ISecurityRule[]
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -146,7 +146,7 @@ True means disable.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -162,7 +162,7 @@ A unique read-only string that changes whenever the resource is updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -178,7 +178,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -210,10 +210,10 @@ The name of the subnet.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1, Create1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -242,7 +242,7 @@ A unique read-only string that changes whenever the resource is updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases: NetworkSecurityGroupEtag
 
 Required: False
@@ -258,7 +258,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases: NetworkSecurityGroupId
 
 Required: False
@@ -274,7 +274,7 @@ Resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases: NetworkSecurityGroupLocation
 
 Required: False
@@ -291,7 +291,7 @@ Possible values are: 'Updating', 'Deleting', and 'Failed'.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases: NetworkSecurityGroupPropertiesProvisioningState
 
 Required: False
@@ -307,7 +307,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases: NetworkSecurityGroupTag
 
 Required: False
@@ -323,7 +323,7 @@ The provisioning state of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -339,7 +339,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1
+Parameter Sets: CreateExpanded1, Create1
 Aliases:
 
 Required: True
@@ -355,7 +355,7 @@ The resource GUID property of the network security group resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -372,7 +372,7 @@ To construct, see NOTES section for RESOURCENAVIGATIONLINK properties and create
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IResourceNavigationLink[]
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -389,7 +389,7 @@ To construct, see NOTES section for ROUTE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRoute[]
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -405,7 +405,7 @@ Gets a unique read-only string that changes whenever the resource is updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -421,7 +421,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -437,7 +437,7 @@ Resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -454,7 +454,7 @@ Possible values are: 'Updating', 'Deleting', and 'Failed'.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -470,7 +470,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -487,7 +487,7 @@ To construct, see NOTES section for SECURITYRULE properties and create a hash ta
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ISecurityRule[]
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -504,7 +504,7 @@ To construct, see NOTES section for SERVICEENDPOINT properties and create a hash
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IServiceEndpointPropertiesFormat[]
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -524,7 +524,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ISubnet
 Parameter Sets: Create1, CreateViaIdentity1
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -554,7 +554,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1
+Parameter Sets: CreateExpanded1, Create1
 Aliases:
 
 Required: True
@@ -570,7 +570,7 @@ The name of the virtual network.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1
+Parameter Sets: CreateExpanded1, Create1
 Aliases: VirtualNetworkName
 
 Required: True

@@ -12,14 +12,7 @@ Creates or updates a static or dynamic public IP address.
 
 ## SYNTAX
 
-### Create (Default)
-```
-New-AzPublicIPAddress -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-PublicIPAddress <IPublicIPAddress>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateExpanded
+### CreateExpanded (Default)
 ```
 New-AzPublicIPAddress -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-AllocationMethod <IPAllocationMethod>] [-DdosCustomPolicyId <String>]
@@ -30,6 +23,13 @@ New-AzPublicIPAddress -Name <String> -ResourceGroupName <String> -SubscriptionId
  [-Location <String>] [-PrefixId <String>] [-ProvisioningState <String>] [-ResourceGuid <String>]
  [-ReverseFqdn <String>] [-SkuName <PublicIPAddressSkuName>] [-Tag <Hashtable>] [-Zone <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create
+```
+New-AzPublicIPAddress -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -PublicIPAddress <IPublicIPAddress> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -47,7 +47,7 @@ New-AzPublicIPAddress -InputObject <INetworkIdentity> [-AllocationMethod <IPAllo
 
 ### CreateViaIdentity
 ```
-New-AzPublicIPAddress -InputObject <INetworkIdentity> [-PublicIPAddress <IPublicIPAddress>]
+New-AzPublicIPAddress -InputObject <INetworkIdentity> -PublicIPAddress <IPublicIPAddress>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -391,7 +391,7 @@ The name of the public IP address.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: PublicIPAddressName
 
 Required: True
@@ -460,7 +460,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IPublicIPAdd
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -473,7 +473,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: PublicIpPrefix
 
 Required: True
@@ -540,7 +540,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True

@@ -12,20 +12,20 @@ Creates or updates a service endpoint policy definition in the specified service
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzServiceEndpointPolicyDefinition -Name <String> -ResourceGroupName <String>
- -ServiceEndpointPolicyName <String> -SubscriptionId <String>
- [-ServiceEndpointPolicyDefinition <IServiceEndpointPolicyDefinition>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzServiceEndpointPolicyDefinition -Name <String> -ResourceGroupName <String>
  -ServiceEndpointPolicyName <String> -SubscriptionId <String> -ServiceEndpointPolicyDefinitionName <String>
  [-Description <String>] [-Etag <String>] [-Id <String>] [-Service <String>] [-ServiceResource <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzServiceEndpointPolicyDefinition -Name <String> -ResourceGroupName <String>
+ -ServiceEndpointPolicyName <String> -SubscriptionId <String>
+ -ServiceEndpointPolicyDefinition <IServiceEndpointPolicyDefinition> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -207,7 +207,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IServiceEndp
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

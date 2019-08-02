@@ -12,19 +12,18 @@ Create or updates a route table in a specified resource group.
 
 ## SYNTAX
 
-### Update1 (Default)
-```
-Set-AzRouteTable -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-RouteTable <IRouteTable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateExpanded1
+### UpdateExpanded1 (Default)
 ```
 Set-AzRouteTable -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-DisableBgpRoutePropagation] [-Etag <String>] [-Id <String>] [-Location <String>]
  [-ProvisioningState <String>] [-Route <IRoute[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update1
+```
+Set-AzRouteTable -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -RouteTable <IRouteTable>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -240,7 +239,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRouteTable
 Parameter Sets: Update1
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

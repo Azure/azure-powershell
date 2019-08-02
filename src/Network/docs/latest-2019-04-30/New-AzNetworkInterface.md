@@ -12,14 +12,7 @@ Creates or updates a network interface.
 
 ## SYNTAX
 
-### Create (Default)
-```
-New-AzNetworkInterface -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-NetworkInterface <INetworkInterface>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateExpanded
+### CreateExpanded (Default)
 ```
 New-AzNetworkInterface -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-AppliedDnsServer <String[]>] [-DefaultSecurityRule <ISecurityRule[]>] [-DnsServer <String[]>]
@@ -32,6 +25,13 @@ New-AzNetworkInterface -Name <String> -ResourceGroupName <String> -SubscriptionI
  [-Primary] [-ProvisioningState <String>] [-ResourceGuid <String>] [-SecurityRule <ISecurityRule[]>]
  [-Subnet <ISubnet>] [-Tag <Hashtable>] [-TapConfiguration <INetworkInterfaceTapConfiguration[]>]
  [-VMId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create
+```
+New-AzNetworkInterface -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -NetworkInterface <INetworkInterface> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -51,7 +51,7 @@ New-AzNetworkInterface -InputObject <INetworkIdentity> [-AppliedDnsServer <Strin
 
 ### CreateViaIdentity
 ```
-New-AzNetworkInterface -InputObject <INetworkIdentity> [-NetworkInterface <INetworkInterface>]
+New-AzNetworkInterface -InputObject <INetworkIdentity> -NetworkInterface <INetworkInterface>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -443,7 +443,7 @@ The name of the network interface.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: NetworkInterfaceName
 
 Required: True
@@ -463,7 +463,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkInte
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -622,7 +622,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: SubnetId, PublicIpAddressId, PublicIpAddress, LoadBalancerBackendAddressPoolId, LoadBalancerBackendAddressPool, LoadBalancerInboundNatRuleId, LoadBalancerInboundNatRule, ApplicationGatewayBackendAddressPoolId, ApplicationGatewayBackendAddressPool, ApplicationSecurityGroupId, ApplicationSecurityGroup, PrivateIpAddress, IpConfigurationName, NetworkSecurityGroup
 
 Required: True
@@ -689,7 +689,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True

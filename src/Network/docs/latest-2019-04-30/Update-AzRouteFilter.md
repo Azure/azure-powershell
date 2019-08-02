@@ -12,18 +12,18 @@ Updates a route filter in a specified resource group.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Update-AzRouteFilter -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-RouteFilter <IPatchRouteFilter>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Update-AzRouteFilter -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-Id <String>]
  [-Peering <IExpressRouteCircuitPeering[]>] [-Rule <IRouteFilterRule[]>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Update-AzRouteFilter -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -RouteFilter <IPatchRouteFilter> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -35,7 +35,7 @@ Update-AzRouteFilter -InputObject <INetworkIdentity> [-Id <String>] [-Peering <I
 
 ### UpdateViaIdentity
 ```
-Update-AzRouteFilter -InputObject <INetworkIdentity> [-RouteFilter <IPatchRouteFilter>]
+Update-AzRouteFilter -InputObject <INetworkIdentity> -RouteFilter <IPatchRouteFilter>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -133,7 +133,7 @@ The name of the route filter.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded, Update
 Aliases: RouteFilterName
 
 Required: True
@@ -182,7 +182,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded, Update
 Aliases:
 
 Required: True
@@ -202,7 +202,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IPatchRouteF
 Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -233,7 +233,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded, Update
 Aliases:
 
 Required: True

@@ -12,19 +12,19 @@ Creates or updates a network profile.
 
 ## SYNTAX
 
-### Create (Default)
-```
-New-AzNetworkProfile -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-NetworkProfile <INetworkProfile>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded
+### CreateExpanded (Default)
 ```
 New-AzNetworkProfile -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-ContainerNetworkInterface <IContainerNetworkInterface[]>]
  [-ContainerNetworkInterfaceConfiguration <IContainerNetworkInterfaceConfiguration[]>] [-Etag <String>]
  [-Id <String>] [-Location <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
+```
+
+### Create
+```
+New-AzNetworkProfile -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -NetworkProfile <INetworkProfile> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -38,7 +38,7 @@ New-AzNetworkProfile -InputObject <INetworkIdentity>
 
 ### CreateViaIdentity
 ```
-New-AzNetworkProfile -InputObject <INetworkIdentity> [-NetworkProfile <INetworkProfile>]
+New-AzNetworkProfile -InputObject <INetworkIdentity> -NetworkProfile <INetworkProfile>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -186,7 +186,7 @@ The name of the network profile.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: NetworkProfileName
 
 Required: True
@@ -206,7 +206,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkProf
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -219,7 +219,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: AsJob
 
 Required: True
@@ -236,7 +236,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True

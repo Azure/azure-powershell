@@ -12,19 +12,19 @@ Creates or updates an authorization in the specified express route circuit.
 
 ## SYNTAX
 
-### Create (Default)
-```
-New-AzExpressRouteCircuitAuthorization -CircuitName <String> -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-Authorization <IExpressRouteCircuitAuthorization>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded
+### CreateExpanded (Default)
 ```
 New-AzExpressRouteCircuitAuthorization -CircuitName <String> -Name <String> -ResourceGroupName <String>
  -SubscriptionId <String> [-Id <String>] [-Key <String>] [-ProvisioningState <String>]
  [-ResourceName <String>] [-UseStatus <AuthorizationUseStatus>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create
+```
+New-AzExpressRouteCircuitAuthorization -CircuitName <String> -Name <String> -ResourceGroupName <String>
+ -SubscriptionId <String> -Authorization <IExpressRouteCircuitAuthorization> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -37,8 +37,8 @@ New-AzExpressRouteCircuitAuthorization -InputObject <INetworkIdentity> [-Id <Str
 ### CreateViaIdentity
 ```
 New-AzExpressRouteCircuitAuthorization -InputObject <INetworkIdentity>
- [-Authorization <IExpressRouteCircuitAuthorization>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Authorization <IExpressRouteCircuitAuthorization> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -91,7 +91,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IExpressRout
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -104,7 +104,7 @@ The name of the express route circuit.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -184,7 +184,7 @@ The name of the authorization.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: AuthorizationName
 
 Required: True
@@ -233,7 +233,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: ExpressRouteCircuit
 
 Required: True
@@ -267,7 +267,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True

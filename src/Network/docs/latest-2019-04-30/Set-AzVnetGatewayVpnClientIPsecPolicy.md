@@ -12,19 +12,19 @@ The Set VpnclientIpsecParameters operation sets the vpnclient ipsec policy for P
 
 ## SYNTAX
 
-### Set (Default)
-```
-Set-AzVnetGatewayVpnClientIPsecPolicy -ResourceGroupName <String> -SubscriptionId <String>
- -VnetGatewayName <String> [-VpnClientIPsecPolicy <IVpnClientIPsecParameters>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### SetExpanded
+### SetExpanded (Default)
 ```
 Set-AzVnetGatewayVpnClientIPsecPolicy -ResourceGroupName <String> -SubscriptionId <String>
  -VnetGatewayName <String> -DhGroup <DhGroup> -IPsecEncryption <IpsecEncryption>
  -IPsecIntegrity <IpsecIntegrity> -IkeEncryption <IkeEncryption> -IkeIntegrity <IkeIntegrity>
  -PfsGroup <PfsGroup> -SaDataSizeKilobyte <Int32> -SaLifeTimeSecond <Int32> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Set
+```
+Set-AzVnetGatewayVpnClientIPsecPolicy -ResourceGroupName <String> -SubscriptionId <String>
+ -VnetGatewayName <String> -VpnClientIPsecPolicy <IVpnClientIPsecParameters> [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -287,7 +287,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVpnClientIP
 Parameter Sets: Set
 Aliases: VpnClientIPsecParameter
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

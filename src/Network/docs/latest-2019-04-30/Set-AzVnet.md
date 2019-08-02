@@ -12,13 +12,7 @@ Creates or updates a virtual network in the specified resource group.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzVnet -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-Vnet <IVirtualNetwork>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzVnet -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-AddressSpaceAddressPrefix <String[]>] [-DdosProtectionPlanId <String>] [-DhcpOptionDnsServer <String[]>]
@@ -26,6 +20,12 @@ Set-AzVnet -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-ProvisioningState <String>] [-ResourceGuid <String>] [-Subnet <ISubnet[]>] [-Tag <Hashtable>]
  [-VnetPeering <IVirtualNetworkPeering[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzVnet -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Vnet <IVirtualNetwork>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -354,7 +354,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVirtualNetw
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

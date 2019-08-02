@@ -12,18 +12,18 @@ Gets the current network topology by resource group.
 
 ## SYNTAX
 
-### Get (Default)
-```
-Get-AzNetworkWatcherTopology -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-Topology <ITopologyParameters>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### GetExpanded
+### GetExpanded (Default)
 ```
 Get-AzNetworkWatcherTopology -NetworkWatcherName <String> -ResourceGroupName <String>
  -SubscriptionId <String[]> [-TargetResourceGroupName <String>] [-TargetSubnetId <String>]
  [-TargetVnetId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzNetworkWatcherTopology -NetworkWatcherName <String> -ResourceGroupName <String>
+ -SubscriptionId <String[]> -Topology <ITopologyParameters> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentityExpanded
@@ -35,7 +35,7 @@ Get-AzNetworkWatcherTopology -InputObject <INetworkIdentity> [-TargetResourceGro
 
 ### GetViaIdentity
 ```
-Get-AzNetworkWatcherTopology -InputObject <INetworkIdentity> [-Topology <ITopologyParameters>]
+Get-AzNetworkWatcherTopology -InputObject <INetworkIdentity> -Topology <ITopologyParameters>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -101,7 +101,7 @@ The name of the network watcher.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetExpanded
+Parameter Sets: GetExpanded, Get
 Aliases:
 
 Required: True
@@ -117,7 +117,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetExpanded
+Parameter Sets: GetExpanded, Get
 Aliases: Location
 
 Required: True
@@ -134,7 +134,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, GetExpanded
+Parameter Sets: GetExpanded, Get
 Aliases:
 
 Required: True
@@ -202,7 +202,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ITopologyPar
 Parameter Sets: Get, GetViaIdentity
 Aliases: NetworkWatcher
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

@@ -12,11 +12,11 @@ Get network configuration diagnostic.
 
 ## SYNTAX
 
-### Get (Default)
+### GetViaIdentity (Default)
 ```
-Get-AzNetworkWatcherNetworkConfigurationDiagnostic -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-ConfigurationDiagnostic <INetworkConfigurationDiagnosticParameters>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzNetworkWatcherNetworkConfigurationDiagnostic -InputObject <INetworkIdentity>
+ -NetworkConfigurationDiagnostic <INetworkConfigurationDiagnosticParameters> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GetExpanded
@@ -27,19 +27,19 @@ Get-AzNetworkWatcherNetworkConfigurationDiagnostic -NetworkWatcherName <String> 
  [<CommonParameters>]
 ```
 
+### Get
+```
+Get-AzNetworkWatcherNetworkConfigurationDiagnostic -NetworkWatcherName <String> -ResourceGroupName <String>
+ -SubscriptionId <String[]> -NetworkConfigurationDiagnostic <INetworkConfigurationDiagnosticParameters>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### GetViaIdentityExpanded
 ```
 Get-AzNetworkWatcherNetworkConfigurationDiagnostic -InputObject <INetworkIdentity>
  -Profile <INetworkConfigurationDiagnosticProfile[]> -TargetResourceId <String>
  [-VerbosityLevel <VerbosityLevel>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzNetworkWatcherNetworkConfigurationDiagnostic -InputObject <INetworkIdentity>
- [-ConfigurationDiagnostic <INetworkConfigurationDiagnosticParameters>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -83,23 +83,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ConfigurationDiagnostic
-Parameters to get network configuration diagnostic.
-To construct, see NOTES section for CONFIGURATIONDIAGNOSTIC properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkConfigurationDiagnosticParameters
-Parameter Sets: Get, GetViaIdentity
-Aliases: NetworkWatcher
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -121,8 +104,25 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
-Parameter Sets: GetViaIdentityExpanded, GetViaIdentity
+Parameter Sets: GetViaIdentity, GetViaIdentityExpanded
 Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NetworkConfigurationDiagnostic
+Parameters to get network configuration diagnostic.
+To construct, see NOTES section for NETWORKCONFIGURATIONDIAGNOSTIC properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkConfigurationDiagnosticParameters
+Parameter Sets: GetViaIdentity, Get
+Aliases: NetworkWatcher
 
 Required: True
 Position: Named
@@ -137,7 +137,7 @@ The name of the network watcher.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetExpanded
+Parameter Sets: GetExpanded, Get
 Aliases:
 
 Required: True
@@ -186,7 +186,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetExpanded
+Parameter Sets: GetExpanded, Get
 Aliases: Location
 
 Required: True
@@ -203,7 +203,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, GetExpanded
+Parameter Sets: GetExpanded, Get
 Aliases:
 
 Required: True
@@ -303,7 +303,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### CONFIGURATIONDIAGNOSTIC <INetworkConfigurationDiagnosticParameters>: Parameters to get network configuration diagnostic.
+#### NETWORKCONFIGURATIONDIAGNOSTIC <INetworkConfigurationDiagnosticParameters>: Parameters to get network configuration diagnostic.
   - `Profile <INetworkConfigurationDiagnosticProfile[]>`: List of network configuration diagnostic profiles.
     - `Destination <String>`: Traffic destination. Accepted values are: '*', IP Address/CIDR, Service Tag.
     - `DestinationPort <String>`: Traffic destination port. Accepted values are '*', port (for example, 3389) and port range (for example, 80-100).

@@ -12,19 +12,19 @@ Creates or updates a service Endpoint Policies.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzServiceEndpointPolicy -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-ServiceEndpointPolicy <IServiceEndpointPolicy>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzServiceEndpointPolicy -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-Etag <String>] [-Id <String>] [-Location <String>]
  [-ServiceEndpointPolicyDefinition <IServiceEndpointPolicyDefinition[]>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzServiceEndpointPolicy -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -ServiceEndpointPolicy <IServiceEndpointPolicy> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -189,7 +189,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IServiceEndp
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

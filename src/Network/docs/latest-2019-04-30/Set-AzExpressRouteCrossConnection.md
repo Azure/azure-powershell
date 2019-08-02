@@ -12,20 +12,20 @@ Update the specified ExpressRouteCrossConnection.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzExpressRouteCrossConnection -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-ExpressRouteCrossConnection <IExpressRouteCrossConnection>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzExpressRouteCrossConnection -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-BandwidthInMbps <Int32>] [-ExpressRouteCircuitId <String>] [-Id <String>] [-Location <String>]
  [-Peering <IExpressRouteCrossConnectionPeering[]>] [-PeeringLocation <String>]
  [-ServiceProviderNote <String>] [-ServiceProviderProvisioningState <ServiceProviderProvisioningState>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzExpressRouteCrossConnection -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -ExpressRouteCrossConnection <IExpressRouteCrossConnection> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -126,7 +126,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRout
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

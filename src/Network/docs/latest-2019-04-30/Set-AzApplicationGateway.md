@@ -12,14 +12,7 @@ Creates or updates the specified application gateway.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzApplicationGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-ApplicationGateway <IApplicationGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzApplicationGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-AuthenticationCertificate <IApplicationGatewayAuthenticationCertificate[]>]
@@ -48,6 +41,13 @@ Set-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Subscriptio
  [-WafFirewallMode <ApplicationGatewayFirewallMode>] [-WafMaximumRequestBodySize <Int32>]
  [-WafMaximumRequestBodySizeInKb <Int32>] [-WafRuleSetType <String>] [-WafRuleSetVersion <String>]
  [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzApplicationGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -ApplicationGateway <IApplicationGateway> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,7 +84,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IApplication
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

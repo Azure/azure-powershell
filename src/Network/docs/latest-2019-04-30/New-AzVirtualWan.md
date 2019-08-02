@@ -12,20 +12,19 @@ Creates a VirtualWAN resource if it doesn't exist else updates the existing Virt
 
 ## SYNTAX
 
-### Create (Default)
-```
-New-AzVirtualWan -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-VirtualWan <IVirtualWan>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateExpanded
+### CreateExpanded (Default)
 ```
 New-AzVirtualWan -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-AllowBranchToBranchTraffic] [-AllowVnetToVnetTraffic] [-DisableVpnEncryption] [-Id <String>]
  [-Location <String>] [-P2SVpnServerConfiguration <IP2SVpnServerConfiguration[]>]
  [-SecurityProviderName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create
+```
+New-AzVirtualWan -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -VirtualWan <IVirtualWan>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -38,7 +37,7 @@ New-AzVirtualWan -InputObject <INetworkIdentity> [-AllowBranchToBranchTraffic] [
 
 ### CreateViaIdentity
 ```
-New-AzVirtualWan -InputObject <INetworkIdentity> [-VirtualWan <IVirtualWan>] [-DefaultProfile <PSObject>]
+New-AzVirtualWan -InputObject <INetworkIdentity> -VirtualWan <IVirtualWan> [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -200,7 +199,7 @@ The name of the VirtualWAN being created or updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: VirtualWanName
 
 Required: True
@@ -249,7 +248,7 @@ The resource group name of the VirtualWan.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -282,7 +281,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -318,7 +317,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVirtualWan
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

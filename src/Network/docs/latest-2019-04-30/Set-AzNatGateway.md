@@ -12,20 +12,19 @@ Creates or updates a nat gateway.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzNatGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-NatGateway <INatGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzNatGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-Etag <String>]
  [-Id <String>] [-IdleTimeoutInMinutes <Int32>] [-Location <String>] [-ProvisioningState <String>]
  [-PublicIPAddress <ISubResource[]>] [-PublicIPPrefix <ISubResource[]>] [-ResourceGuid <String>]
  [-SkuName <NatGatewaySkuName>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzNatGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -NatGateway <INatGateway>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -174,7 +173,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INatGateway
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

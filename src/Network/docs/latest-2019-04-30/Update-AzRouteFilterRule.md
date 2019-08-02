@@ -12,18 +12,18 @@ Updates a route in the specified route filter.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Update-AzRouteFilterRule -ResourceGroupName <String> -RouteFilterName <String> -RuleName <String>
- -SubscriptionId <String> [-RouteFilterRule <IPatchRouteFilterRule>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Update-AzRouteFilterRule -ResourceGroupName <String> -RouteFilterName <String> -RuleName <String>
  -SubscriptionId <String> [-Access <Access>] [-Community <String[]>] [-Id <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Update-AzRouteFilterRule -ResourceGroupName <String> -RouteFilterName <String> -RuleName <String>
+ -SubscriptionId <String> -RouteFilterRule <IPatchRouteFilterRule> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -34,7 +34,7 @@ Update-AzRouteFilterRule -InputObject <INetworkIdentity> [-Access <Access>] [-Co
 
 ### UpdateViaIdentity
 ```
-Update-AzRouteFilterRule -InputObject <INetworkIdentity> [-RouteFilterRule <IPatchRouteFilterRule>]
+Update-AzRouteFilterRule -InputObject <INetworkIdentity> -RouteFilterRule <IPatchRouteFilterRule>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -182,7 +182,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded, Update
 Aliases:
 
 Required: True
@@ -198,7 +198,7 @@ The name of the route filter.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded, Update
 Aliases:
 
 Required: True
@@ -218,7 +218,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IPatchRouteF
 Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -231,7 +231,7 @@ The name of the route filter rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded, Update
 Aliases:
 
 Required: True
@@ -248,7 +248,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded, Update
 Aliases:
 
 Required: True

@@ -586,8 +586,13 @@ directive:
     set:
       parameter-name: Name
       alias: PeeringName
+  - where: # This parameter needs removed
+      verb: ^New$|^Set$
+      subject: NetworkInterfaceTapConfiguration
+      parameter-name: Name
+    set:
+      parameter-name: ResourceName
   - where:
-      verb: ^Get$|^Remove$
       subject: NetworkInterfaceTapConfiguration
       parameter-name: TapConfigurationName
     set:
@@ -1715,7 +1720,7 @@ directive:
       subject: NetworkWatcherNetworkConfigurationDiagnostic
       parameter-name: Parameter
     set:
-      parameter-name: ConfigurationDiagnostic
+      parameter-name: NetworkConfigurationDiagnostic
   - where:
       subject: NetworkWatcherNextHop
       parameter-name: Parameter
@@ -2125,11 +2130,13 @@ directive:
       parameter-name: ThreatIntelMode
     set:
       parameter-name: ThreatIntelligenceMode
+      alias: ThreatIntelMode
   - where:
       subject: Firewall
       parameter-name: ^(.*)Collection$
     set:
       parameter-name: $1
+      alias: $1Collection
   - where:
       subject: LoadBalancerBackendAddressPool
       parameter-name: BackendAddressPoolName
@@ -2185,6 +2192,123 @@ directive:
   - where:
       subject: NetworkInterfaceIPConfiguration
       parameter-name: IPConfigurationName
+    set:
+      parameter-name: Name
+  - where: # This parameter needs removed
+      verb: ^New$|^Set$
+      subject: NetworkSecurityRule
+      parameter-name: Name
+    set:
+      parameter-name: ResourceName
+  - where:
+      subject: NetworkSecurityRule
+      parameter-name: SecurityRuleName
+    set:
+      parameter-name: Name
+      alias: SecurityRuleName
+  - where:
+      subject: NetworkSecurityRule
+      parameter-name: PropertiesDestinationAddressPrefixes
+    set:
+      parameter-name: AdditionalDestinationAddressPrefix
+  - where:
+      subject: NetworkSecurityRule
+      parameter-name: PropertiesDestinationPortRanges
+    set:
+      parameter-name: AdditionalDestinationPortRange
+  - where:
+      subject: NetworkSecurityRule
+      parameter-name: PropertiesSourceAddressPrefixes
+    set:
+      parameter-name: AdditionalSourceAddressPrefix
+  - where:
+      subject: NetworkSecurityRule
+      parameter-name: PropertiesSourcePortRanges
+    set:
+      parameter-name: AdditionalSourcePortRange
+  - where:
+      subject: NetworkWatcherConnectivity
+      parameter-name: ^(.*)Configuration(.*)$
+    set:
+      parameter-name: $1$2
+  - where:
+      subject: NetworkWatcherFlowLogConfiguration
+    set:
+      subject: NetworkWatcherFlowLogInformation
+  - where:
+      verb: Get
+      subject: NetworkWatcherFlowLogStatus
+    set:
+      subject: NetworkWatcherFlowLogInformation
+      alias: Get-NetworkWatcherFlowLogStatus
+  - where:
+      subject: NetworkWatcherNextHop
+      parameter-name: TargetNicResourceId
+    set:
+      parameter-name: TargetNetworkInterfaceResourceId
+  - where:
+      verb: Get
+      subject: NetworkWatcherTroubleshootingResult
+    set:
+      subject: NetworkWatcherTroubleshooting
+      alias: Get-NetworkWatcherTroubleshootingResult
+  - where:
+      subject: P2SVpnGateway
+      parameter-name: GatewayName
+    set:
+      parameter-name: Name
+      alias: GatewayName
+  - where:
+      subject: P2SVpnGateway
+      parameter-name: VpnClientAddressPoolAddressPrefix
+    set:
+      parameter-name: VpnClientAddressPrefix
+  - where:
+      subject: P2SVpnGateway
+      parameter-name: VpnClientConnectionHealthAllocatedIPAddress
+    set:
+      parameter-name: VpnClientAllocatedIPAddress
+  - where:
+      subject: P2SVpnGateway
+      parameter-name: VpnClientConnectionHealthVpnClientConnectionsCount
+    set:
+      parameter-name: VpnClientConnectionCount
+  - where: # This parameter needs removed
+      verb: ^New$|^Set$
+      subject: P2SVpnServerConfiguration
+      parameter-name: Name
+    set:
+      parameter-name: ResourceName
+  - where: # This parameter needs removed
+      verb: ^New$|^Set$
+      subject: P2SVpnServerConfiguration
+      parameter-name: PropertiesName
+    set:
+      parameter-name: ResourceName2
+  - where:
+      subject: P2SVpnServerConfiguration
+      parameter-name: P2SVpnServerConfigurationName
+    set:
+      parameter-name: Name
+      alias: P2SVpnServerConfigurationName
+  - where:
+      subject: P2SVpnServerConfiguration
+      parameter-name: PropertiesEtag
+    set:
+      parameter-name: Etag
+  - where:
+      subject: P2SVpnServerConfiguration
+      parameter-name: ^P2SVpnServerConfigRadius(.*)$
+    set:
+      parameter-name: Radius$1
+  - where:
+      subject: P2SVpnServerConfiguration
+      parameter-name: ^P2SVpnServerConfigVpn(.*)$
+    set:
+      parameter-name: Vpn$1
+  - where:
+      subject: PeerExpressRouteCircuitConnection
+      parameter-name: ConnectionName
     set:
       parameter-name: Name
 ```

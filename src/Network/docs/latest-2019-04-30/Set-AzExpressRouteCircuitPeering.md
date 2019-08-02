@@ -12,14 +12,7 @@ Creates or updates a peering in the specified express route circuits.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzExpressRouteCircuitPeering -CircuitName <String> -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-Peering <IExpressRouteCircuitPeering>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzExpressRouteCircuitPeering -CircuitName <String> -Name <String> -ResourceGroupName <String>
  -SubscriptionId <String> [-AdvertisedCommunity <String[]>] [-AdvertisedPublicPrefix <String[]>]
@@ -40,6 +33,13 @@ Set-AzExpressRouteCircuitPeering -CircuitName <String> -Name <String> -ResourceG
  [-SecondaryBytesIn <Int64>] [-SecondaryBytesOut <Int64>] [-SecondaryPeerAddressPrefix <String>]
  [-SharedKey <String>] [-State <ExpressRoutePeeringState>] [-Tag <Hashtable>] [-VlanId <Int32>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzExpressRouteCircuitPeering -CircuitName <String> -Name <String> -ResourceGroupName <String>
+ -SubscriptionId <String> -Peering <IExpressRouteCircuitPeering> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -580,7 +580,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRout
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

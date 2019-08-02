@@ -12,21 +12,21 @@ Creates a virtual wan p2s vpn gateway if it doesn't exist else updates the exist
 
 ## SYNTAX
 
-### Update (Default)
+### UpdateExpanded (Default)
 ```
-Set-AzP2SVpnGateway -GatewayName <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-P2SVpnGateway <IP2SVpnGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateExpanded
-```
-Set-AzP2SVpnGateway -GatewayName <String> -ResourceGroupName <String> -SubscriptionId <String>
+Set-AzP2SVpnGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-CustomRouteAddressPrefix <String[]>] [-Id <String>] [-Location <String>]
  [-P2SVpnServerConfigurationId <String>] [-Tag <Hashtable>] [-VirtualHubId <String>]
- [-VpnClientAddressPoolAddressPrefix <String[]>] [-VpnClientConnectionHealthAllocatedIPAddress <String[]>]
- [-VpnClientConnectionHealthVpnClientConnectionsCount <Int32>] [-VpnGatewayScaleUnit <Int32>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-VpnClientAddressPrefix <String[]>] [-VpnClientAllocatedIPAddress <String[]>]
+ [-VpnClientConnectionCount <Int32>] [-VpnGatewayScaleUnit <Int32>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzP2SVpnGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -P2SVpnGateway <IP2SVpnGateway> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -102,22 +102,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -GatewayName
-The name of the gateway.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Id
 Resource ID.
 
@@ -150,6 +134,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Name
+The name of the gateway.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: GatewayName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -175,7 +175,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IP2SVpnGatew
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -264,7 +264,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VpnClientAddressPoolAddressPrefix
+### -VpnClientAddressPrefix
 A list of address blocks reserved for this virtual network in CIDR notation.
 
 ```yaml
@@ -280,7 +280,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VpnClientConnectionHealthAllocatedIPAddress
+### -VpnClientAllocatedIPAddress
 List of allocated ip addresses to the connected p2s vpn clients.
 
 ```yaml
@@ -296,7 +296,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VpnClientConnectionHealthVpnClientConnectionsCount
+### -VpnClientConnectionCount
 The total of p2s vpn clients connected at this time to this P2SVpnGateway.
 
 ```yaml

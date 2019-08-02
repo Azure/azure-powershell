@@ -1,32 +1,32 @@
 ---
 external help file:
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-aznetworkwatcherflowlogconfiguration
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-aznetworkwatcherflowloginformation
 schema: 2.0.0
 ---
 
-# Set-AzNetworkWatcherFlowLogConfiguration
+# Set-AzNetworkWatcherFlowLogInformation
 
 ## SYNOPSIS
 Configures flow log  and traffic analytics (optional) on a specified resource.
 
 ## SYNTAX
 
-### Set (Default)
+### SetExpanded (Default)
 ```
-Set-AzNetworkWatcherFlowLogConfiguration -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-FlowLogConfiguration <IFlowLogInformation>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### SetExpanded
-```
-Set-AzNetworkWatcherFlowLogConfiguration -NetworkWatcherName <String> -ResourceGroupName <String>
+Set-AzNetworkWatcherFlowLogInformation -NetworkWatcherName <String> -ResourceGroupName <String>
  -SubscriptionId <String> -EnableFlowLog -StorageAccountId <String> -TargetResourceId <String>
  [-EnableRetention] [-EnableTrafficAnalytics] [-FormatType <FlowLogFormatType>] [-FormatVersion <Int32>]
  [-RetentionInDays <Int32>] [-TrafficAnalyticsInterval <Int32>] [-WorkspaceGuid <String>]
  [-WorkspaceLocation <String>] [-WorkspaceResourceId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Set
+```
+Set-AzNetworkWatcherFlowLogInformation -NetworkWatcherName <String> -ResourceGroupName <String>
+ -SubscriptionId <String> -FlowLogConfiguration <IFlowLogInformation> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -143,7 +143,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IFlowLogInfo
 Parameter Sets: Set
 Aliases: NetworkWatcher
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

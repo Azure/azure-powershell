@@ -12,14 +12,7 @@ Creates a vpn connection to a scalable vpn gateway if it doesn't exist else upda
 
 ## SYNTAX
 
-### Create (Default)
-```
-New-AzVpnConnection -ConnectionName <String> -GatewayName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-VpnConnection <IVpnConnection>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded
+### CreateExpanded (Default)
 ```
 New-AzVpnConnection -ConnectionName <String> -GatewayName <String> -ResourceGroupName <String>
  -SubscriptionId <String> [-ConnectionBandwidth <Int32>] [-EnableBgp] [-EnableInternetSecurity]
@@ -27,6 +20,13 @@ New-AzVpnConnection -ConnectionName <String> -GatewayName <String> -ResourceGrou
  [-RemoteVpnSiteId <String>] [-RoutingWeight <Int32>] [-SharedKey <String>] [-UseLocalAzureIPAddress]
  [-VpnConnectionProtocolType <VirtualNetworkGatewayConnectionProtocol>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create
+```
+New-AzVpnConnection -ConnectionName <String> -GatewayName <String> -ResourceGroupName <String>
+ -SubscriptionId <String> -VpnConnection <IVpnConnection> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -40,7 +40,7 @@ New-AzVpnConnection -InputObject <INetworkIdentity> [-ConnectionBandwidth <Int32
 
 ### CreateViaIdentity
 ```
-New-AzVpnConnection -InputObject <INetworkIdentity> [-VpnConnection <IVpnConnection>]
+New-AzVpnConnection -InputObject <INetworkIdentity> -VpnConnection <IVpnConnection>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -106,7 +106,7 @@ The name of the connection.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -186,7 +186,7 @@ The name of the gateway.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: ParentResourceName
 
 Required: True
@@ -300,7 +300,7 @@ The resource group name of the VpnGateway.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: ParentObject, ParentResourceId, VpnSite
 
 Required: True
@@ -349,7 +349,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -385,7 +385,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVpnConnecti
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

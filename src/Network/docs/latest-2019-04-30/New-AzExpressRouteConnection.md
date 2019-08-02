@@ -12,18 +12,18 @@ Creates a connection between an ExpressRoute gateway and an ExpressRoute circuit
 
 ## SYNTAX
 
-### Create (Default)
-```
-New-AzExpressRouteConnection -ExpressRouteGatewayName <String> -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-ExpressRouteConnection <IExpressRouteConnection>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded
+### CreateExpanded (Default)
 ```
 New-AzExpressRouteConnection -ExpressRouteGatewayName <String> -Name <String> -ResourceGroupName <String>
  -SubscriptionId <String> -ResourceName <String> [-AuthorizationKey <String>]
  [-ExpressRouteCircuitPeeringId <String>] [-Id <String>] [-RoutingWeight <Int32>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create
+```
+New-AzExpressRouteConnection -ExpressRouteGatewayName <String> -Name <String> -ResourceGroupName <String>
+ -SubscriptionId <String> -ExpressRouteConnection <IExpressRouteConnection> [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -36,9 +36,8 @@ New-AzExpressRouteConnection -InputObject <INetworkIdentity> -ResourceName <Stri
 
 ### CreateViaIdentity
 ```
-New-AzExpressRouteConnection -InputObject <INetworkIdentity>
- [-ExpressRouteConnection <IExpressRouteConnection>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzExpressRouteConnection -InputObject <INetworkIdentity> -ExpressRouteConnection <IExpressRouteConnection>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -139,7 +138,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRout
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -152,7 +151,7 @@ The name of the ExpressRoute gateway.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -200,7 +199,7 @@ The name of the connection subresource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: ConnectionName
 
 Required: True
@@ -232,7 +231,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: ExpressRouteGatewayObject, ParentResourceId
 
 Required: True
@@ -281,7 +280,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True

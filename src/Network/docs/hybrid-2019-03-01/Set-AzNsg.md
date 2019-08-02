@@ -12,17 +12,17 @@ Creates or updates a network security group in the specified resource group.
 
 ## SYNTAX
 
-### Update1 (Default)
-```
-Set-AzNsg -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-Nsg <INetworkSecurityGroup>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded1
+### UpdateExpanded1 (Default)
 ```
 Set-AzNsg -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-DefaultSecurityRule <ISecurityRule[]>] [-Etag <String>] [-Id <String>] [-Location <String>]
  [-ProvisioningState <String>] [-ResourceGuid <String>] [-SecurityRule <ISecurityRule[]>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update1
+```
+Set-AzNsg -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Nsg <INetworkSecurityGroup>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -189,7 +189,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkSecu
 Parameter Sets: Update1
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

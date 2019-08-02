@@ -12,14 +12,7 @@ Creates or updates a static or dynamic public IP address.
 
 ## SYNTAX
 
-### Update1 (Default)
-```
-Set-AzPublicIPAddress -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-PublicIPAddress <IPublicIPAddress>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateExpanded1
+### UpdateExpanded1 (Default)
 ```
 Set-AzPublicIPAddress -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-DnsSettingDomainNameLabel <String>] [-DnsSettingFqdn <String>] [-DnsSettingReverseFqdn <String>]
@@ -31,6 +24,13 @@ Set-AzPublicIPAddress -Name <String> -ResourceGroupName <String> -SubscriptionId
  [-PublicIPAllocationMethod <IPAllocationMethod>] [-ResourceGuid <String>] [-SkuName <PublicIPAddressSkuName>]
  [-Subnet <ISubnet>] [-Tag <Hashtable>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update1
+```
+Set-AzPublicIPAddress -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -PublicIPAddress <IPublicIPAddress> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -379,7 +379,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IPublicIPAdd
 Parameter Sets: Update1
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

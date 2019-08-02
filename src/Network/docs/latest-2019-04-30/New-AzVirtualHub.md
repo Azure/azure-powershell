@@ -12,20 +12,19 @@ Creates a VirtualHub resource if it doesn't exist else updates the existing Virt
 
 ## SYNTAX
 
-### Create (Default)
-```
-New-AzVirtualHub -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-VirtualHub <IVirtualHub>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateExpanded
+### CreateExpanded (Default)
 ```
 New-AzVirtualHub -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-AddressPrefix <String>]
  [-ExpressRouteGatewayId <String>] [-Id <String>] [-Location <String>] [-P2SVpnGatewayId <String>]
  [-Route <IVirtualHubRoute[]>] [-Tag <Hashtable>] [-VirtualWanId <String>]
  [-VnetConnection <IHubVirtualNetworkConnection[]>] [-VpnGatewayId <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create
+```
+New-AzVirtualHub -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -VirtualHub <IVirtualHub>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -39,7 +38,7 @@ New-AzVirtualHub -InputObject <INetworkIdentity> [-AddressPrefix <String>] [-Exp
 
 ### CreateViaIdentity
 ```
-New-AzVirtualHub -InputObject <INetworkIdentity> [-VirtualHub <IVirtualHub>] [-DefaultProfile <PSObject>]
+New-AzVirtualHub -InputObject <INetworkIdentity> -VirtualHub <IVirtualHub> [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -185,7 +184,7 @@ The name of the VirtualHub.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: VirtualHubName
 
 Required: True
@@ -233,7 +232,7 @@ The resource group name of the VirtualHub.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: VirtualWan
 
 Required: True
@@ -267,7 +266,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -303,7 +302,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVirtualHub
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

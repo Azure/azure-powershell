@@ -12,10 +12,10 @@ Creates or updates a virtual network gateway connection in the specified resourc
 
 ## SYNTAX
 
-### Create1 (Default)
+### CreateViaIdentity1 (Default)
 ```
-New-AzVnetGatewayConnection -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-VnetGatewayConnection <IVirtualNetworkGatewayConnection>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+New-AzVnetGatewayConnection -InputObject <INetworkIdentity>
+ -VnetGatewayConnection <IVirtualNetworkGatewayConnection> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -34,6 +34,13 @@ New-AzVnetGatewayConnection -Name <String> -ResourceGroupName <String> -Subscrip
  [<CommonParameters>]
 ```
 
+### Create1
+```
+New-AzVnetGatewayConnection -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -VnetGatewayConnection <IVirtualNetworkGatewayConnection> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### CreateViaIdentityExpanded1
 ```
 New-AzVnetGatewayConnection -InputObject <INetworkIdentity>
@@ -47,13 +54,6 @@ New-AzVnetGatewayConnection -InputObject <INetworkIdentity>
  [-RoutingWeight <Int32>] [-SharedKey <String>] [-Tag <Hashtable>] [-UsePolicyBasedTrafficSelectors]
  [-VnetGateway2 <IVirtualNetworkGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
-```
-
-### CreateViaIdentity1
-```
-New-AzVnetGatewayConnection -InputObject <INetworkIdentity>
- [-VnetGatewayConnection <IVirtualNetworkGatewayConnection>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -263,7 +263,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
-Parameter Sets: CreateViaIdentityExpanded1, CreateViaIdentity1
+Parameter Sets: CreateViaIdentity1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -408,7 +408,7 @@ The name of the virtual network gateway connection.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1
+Parameter Sets: CreateExpanded1, Create1
 Aliases: VirtualNetworkGatewayConnectionName
 
 Required: True
@@ -456,7 +456,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1
+Parameter Sets: CreateExpanded1, Create1
 Aliases: LocalNetworkGateway2, Peer
 
 Required: True
@@ -521,7 +521,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1
+Parameter Sets: CreateExpanded1, Create1
 Aliases:
 
 Required: True
@@ -604,10 +604,10 @@ To construct, see NOTES section for VNETGATEWAYCONNECTION properties and create 
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVirtualNetworkGatewayConnection
-Parameter Sets: Create1, CreateViaIdentity1
+Parameter Sets: CreateViaIdentity1, Create1
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

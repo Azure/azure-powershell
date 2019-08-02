@@ -12,14 +12,7 @@ Creates or updates a load balancer.
 
 ## SYNTAX
 
-### Update1 (Default)
-```
-Set-AzLoadBalancer -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-LoadBalancer <ILoadBalancer>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateExpanded1
+### UpdateExpanded1 (Default)
 ```
 Set-AzLoadBalancer -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-BackendAddressPool <IBackendAddressPool[]>] [-Etag <String>]
@@ -28,6 +21,13 @@ Set-AzLoadBalancer -Name <String> -ResourceGroupName <String> -SubscriptionId <S
  [-OutboundNatRule <IOutboundNatRule[]>] [-Probe <IProbe[]>] [-ProvisioningState <String>]
  [-ResourceGuid <String>] [-SkuName <LoadBalancerSkuName>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update1
+```
+Set-AzLoadBalancer -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -LoadBalancer <ILoadBalancer> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -205,7 +205,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ILoadBalance
 Parameter Sets: Update1
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

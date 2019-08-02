@@ -12,19 +12,18 @@ Create or updates a route table in a specified resource group.
 
 ## SYNTAX
 
-### Create1 (Default)
-```
-New-AzRouteTable -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-RouteTable <IRouteTable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateExpanded1
+### CreateExpanded1 (Default)
 ```
 New-AzRouteTable -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-DisableBgpRoutePropagation] [-Etag <String>] [-Id <String>] [-Location <String>]
  [-ProvisioningState <String>] [-Route <IRoute[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create1
+```
+New-AzRouteTable -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -RouteTable <IRouteTable>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded1
@@ -36,7 +35,7 @@ New-AzRouteTable -InputObject <INetworkIdentity> [-DisableBgpRoutePropagation] [
 
 ### CreateViaIdentity1
 ```
-New-AzRouteTable -InputObject <INetworkIdentity> [-RouteTable <IRouteTable>] [-DefaultProfile <PSObject>]
+New-AzRouteTable -InputObject <INetworkIdentity> -RouteTable <IRouteTable> [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -183,7 +182,7 @@ The name of the route table.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1
+Parameter Sets: CreateExpanded1, Create1
 Aliases: RouteTableName
 
 Required: True
@@ -232,7 +231,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1
+Parameter Sets: CreateExpanded1, Create1
 Aliases:
 
 Required: True
@@ -269,7 +268,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRouteTable
 Parameter Sets: Create1, CreateViaIdentity1
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -283,7 +282,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1
+Parameter Sets: CreateExpanded1, Create1
 Aliases:
 
 Required: True

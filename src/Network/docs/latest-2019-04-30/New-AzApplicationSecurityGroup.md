@@ -12,18 +12,18 @@ Creates or updates an application security group.
 
 ## SYNTAX
 
-### Create (Default)
-```
-New-AzApplicationSecurityGroup -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-SecurityGroup <IApplicationSecurityGroup>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded
+### CreateExpanded (Default)
 ```
 New-AzApplicationSecurityGroup -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-Id <String>] [-Location <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create
+```
+New-AzApplicationSecurityGroup -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -SecurityGroup <IApplicationSecurityGroup> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -34,7 +34,7 @@ New-AzApplicationSecurityGroup -InputObject <INetworkIdentity> [-Id <String>] [-
 
 ### CreateViaIdentity
 ```
-New-AzApplicationSecurityGroup -InputObject <INetworkIdentity> [-SecurityGroup <IApplicationSecurityGroup>]
+New-AzApplicationSecurityGroup -InputObject <INetworkIdentity> -SecurityGroup <IApplicationSecurityGroup>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -148,7 +148,7 @@ The name of the application security group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: ApplicationSecurityGroupName
 
 Required: True
@@ -180,7 +180,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -200,7 +200,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IApplication
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -214,7 +214,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True

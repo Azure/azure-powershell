@@ -12,25 +12,25 @@ Creates or updates a security rule in the specified network security group.
 
 ## SYNTAX
 
-### Update1 (Default)
+### UpdateExpanded1 (Default)
 ```
-Set-AzNetworkSecurityRule -Name <String> -NsgName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-SecurityRule <ISecurityRule>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded1
-```
-Set-AzNetworkSecurityRule -Name <String> -NsgName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -SecurityRuleName <String> [-Access <SecurityRuleAccess>] [-Description <String>]
+Set-AzNetworkSecurityRule -NsgName <String> -ResourceGroupName <String> -ResourceName <String>
+ -SubscriptionId <String> -Name <String> [-Access <SecurityRuleAccess>]
+ [-AdditionalDestinationAddressPrefix <String[]>] [-AdditionalDestinationPortRange <String[]>]
+ [-AdditionalSourceAddressPrefix <String[]>] [-AdditionalSourcePortRange <String[]>] [-Description <String>]
  [-DestinationAddressPrefix <String>] [-DestinationApplicationSecurityGroup <IApplicationSecurityGroup[]>]
  [-DestinationPortRange <String>] [-Direction <SecurityRuleDirection>] [-Etag <String>] [-Id <String>]
- [-Priority <Int32>] [-PropertiesDestinationAddressPrefixes <String[]>]
- [-PropertiesDestinationPortRanges <String[]>] [-PropertiesSourceAddressPrefixes <String[]>]
- [-PropertiesSourcePortRanges <String[]>] [-Protocol <SecurityRuleProtocol>] [-ProvisioningState <String>]
+ [-Priority <Int32>] [-Protocol <SecurityRuleProtocol>] [-ProvisioningState <String>]
  [-SourceAddressPrefix <String>] [-SourceApplicationSecurityGroup <IApplicationSecurityGroup[]>]
  [-SourcePortRange <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
+```
+
+### Update1
+```
+Set-AzNetworkSecurityRule -NsgName <String> -ResourceGroupName <String> -ResourceName <String>
+ -SubscriptionId <String> -SecurityRule <ISecurityRule> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -64,6 +64,71 @@ Possible values are: 'Allow' and 'Deny'.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.SecurityRuleAccess
+Parameter Sets: UpdateExpanded1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -AdditionalDestinationAddressPrefix
+The destination address prefixes.
+CIDR or destination IP ranges.
+
+```yaml
+Type: System.String[]
+Parameter Sets: UpdateExpanded1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -AdditionalDestinationPortRange
+The destination port ranges.
+
+```yaml
+Type: System.String[]
+Parameter Sets: UpdateExpanded1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -AdditionalSourceAddressPrefix
+The CIDR or source IP ranges.
+
+```yaml
+Type: System.String[]
+Parameter Sets: UpdateExpanded1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -AdditionalSourcePortRange
+The source port ranges.
+
+```yaml
+Type: System.String[]
 Parameter Sets: UpdateExpanded1
 Aliases:
 
@@ -233,8 +298,8 @@ The name of the security rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
+Parameter Sets: UpdateExpanded1
+Aliases: SecurityRuleName
 
 Required: True
 Position: Named
@@ -295,71 +360,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -PropertiesDestinationAddressPrefixes
-The destination address prefixes.
-CIDR or destination IP ranges.
-
-```yaml
-Type: System.String[]
-Parameter Sets: UpdateExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -PropertiesDestinationPortRanges
-The destination port ranges.
-
-```yaml
-Type: System.String[]
-Parameter Sets: UpdateExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -PropertiesSourceAddressPrefixes
-The CIDR or source IP ranges.
-
-```yaml
-Type: System.String[]
-Parameter Sets: UpdateExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -PropertiesSourcePortRanges
-The source port ranges.
-
-```yaml
-Type: System.String[]
-Parameter Sets: UpdateExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Protocol
 Network protocol this rule applies to.
 Possible values are 'Tcp', 'Udp', and '*'.
@@ -410,6 +410,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -ResourceName
+The name of the security rule.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -SecurityRule
 Network security rule.
 To construct, see NOTES section for SECURITYRULE properties and create a hash table.
@@ -419,26 +435,10 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ISecurityRul
 Parameter Sets: Update1
 Aliases:
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -SecurityRuleName
-The name of the security rule.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded1
-Aliases:
-
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```

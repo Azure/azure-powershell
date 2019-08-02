@@ -12,20 +12,20 @@ Creates or updates a peering in the specified virtual network.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzVnetPeering -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -VnetName <String>
- [-VnetPeering <IVirtualNetworkPeering>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzVnetPeering -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -VnetName <String>
  -VnetPeeringName <String> [-AllowForwardedTraffic] [-AllowGatewayTransit] [-AllowVnetAccess] [-Etag <String>]
  [-Id <String>] [-PeeringState <VirtualNetworkPeeringState>] [-ProvisioningState <String>]
  [-RemoteAddressSpaceAddressPrefix <String[]>] [-RemoteVnetId <String>] [-UseRemoteGateway]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzVnetPeering -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -VnetName <String>
+ -VnetPeering <IVirtualNetworkPeering> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -339,7 +339,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVirtualNetw
 Parameter Sets: Update
 Aliases: VirtualNetworkPeeringParameter
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

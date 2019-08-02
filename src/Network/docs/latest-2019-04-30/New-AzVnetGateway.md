@@ -12,14 +12,7 @@ Creates or updates a virtual network gateway in the specified resource group.
 
 ## SYNTAX
 
-### Create (Default)
-```
-New-AzVnetGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-VnetGateway <IVirtualNetworkGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateExpanded
+### CreateExpanded (Default)
 ```
 New-AzVnetGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-BgpAsn <Int64>]
  [-BgpPeerWeight <Int32>] [-BgpPeeringAddress <String>] [-CustomRouteAddressPrefix <String[]>]
@@ -32,6 +25,13 @@ New-AzVnetGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <St
  [-VpnClientRadiusServerSecret <String>] [-VpnClientRevokedCertificate <IVpnClientRevokedCertificate[]>]
  [-VpnClientRootCertificate <IVpnClientRootCertificate[]>] [-VpnType <VpnType>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create
+```
+New-AzVnetGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -VnetGateway <IVirtualNetworkGateway> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -51,7 +51,7 @@ New-AzVnetGateway -InputObject <INetworkIdentity> [-BgpAsn <Int64>] [-BgpPeerWei
 
 ### CreateViaIdentity
 ```
-New-AzVnetGateway -InputObject <INetworkIdentity> [-VnetGateway <IVirtualNetworkGateway>]
+New-AzVnetGateway -InputObject <INetworkIdentity> -VnetGateway <IVirtualNetworkGateway>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -327,7 +327,7 @@ The name of the virtual network gateway.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: VirtualNetworkGatewayName
 
 Required: True
@@ -359,7 +359,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: GatewaySku, GatewayDefaultSite
 
 Required: True
@@ -440,7 +440,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -476,7 +476,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVirtualNetw
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

@@ -12,20 +12,19 @@ Creates a virtual wan vpn gateway if it doesn't exist else updates the existing 
 
 ## SYNTAX
 
-### Create (Default)
-```
-New-AzVpnGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-VpnGateway <IVpnGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateExpanded
+### CreateExpanded (Default)
 ```
 New-AzVpnGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-BgpSettingAsn <Int64>]
  [-BgpSettingBgpPeeringAddress <String>] [-BgpSettingPeerWeight <Int32>] [-Connection <IVpnConnection[]>]
  [-Id <String>] [-Location <String>] [-Tag <Hashtable>] [-VirtualHubId <String>]
  [-VpnGatewayScaleUnit <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
+```
+
+### Create
+```
+New-AzVpnGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -VpnGateway <IVpnGateway>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -39,7 +38,7 @@ New-AzVpnGateway -InputObject <INetworkIdentity> [-BgpSettingAsn <Int64>]
 
 ### CreateViaIdentity
 ```
-New-AzVpnGateway -InputObject <INetworkIdentity> [-VpnGateway <IVpnGateway>] [-DefaultProfile <PSObject>]
+New-AzVpnGateway -InputObject <INetworkIdentity> -VpnGateway <IVpnGateway> [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -218,7 +217,7 @@ The name of the gateway.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: GatewayName
 
 Required: True
@@ -250,7 +249,7 @@ The resource group name of the VpnGateway.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: VirtualHub, VirtualHubName
 
 Required: True
@@ -267,7 +266,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -319,7 +318,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVpnGateway
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

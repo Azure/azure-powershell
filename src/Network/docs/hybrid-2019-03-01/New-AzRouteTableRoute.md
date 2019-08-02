@@ -12,11 +12,12 @@ Creates or updates a route in the specified route table.
 
 ## SYNTAX
 
-### Create1 (Default)
+### CreateExpanded1 (Default)
 ```
 New-AzRouteTableRoute -ResourceGroupName <String> -SubscriptionId <String> -TableName <String>
- [-Name <String>] [-Route <IRoute>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -RouteName <String> [-Name <String>] [-AddressPrefix <String>] [-Etag <String>] [-Id <String>]
+ [-NextHopIPAddress <String>] [-NextHopType <RouteNextHopType>] [-ProvisioningState <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded1
@@ -27,17 +28,15 @@ New-AzRouteTableRoute -InputObject <INetworkIdentity> [-Name <String>] [-Address
  [<CommonParameters>]
 ```
 
-### CreateExpanded1
+### Create1
 ```
-New-AzRouteTableRoute -ResourceGroupName <String> -SubscriptionId <String> -TableName <String>
- -RouteName <String> [-Name <String>] [-AddressPrefix <String>] [-Etag <String>] [-Id <String>]
- [-NextHopIPAddress <String>] [-NextHopType <RouteNextHopType>] [-ProvisioningState <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzRouteTableRoute -ResourceGroupName <String> -SubscriptionId <String> -TableName <String> -Route <IRoute>
+ [-Name <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity1
 ```
-New-AzRouteTableRoute -InputObject <INetworkIdentity> [-Route <IRoute>] [-DefaultProfile <PSObject>] [-AsJob]
+New-AzRouteTableRoute -InputObject <INetworkIdentity> -Route <IRoute> [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -71,7 +70,7 @@ The destination CIDR to which the route applies.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -119,7 +118,7 @@ A unique read-only string that changes whenever the resource is updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -135,7 +134,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -167,10 +166,10 @@ The name of the route.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1, Create1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -184,7 +183,7 @@ Next hop values are only allowed in routes where the next hop type is VirtualApp
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -200,7 +199,7 @@ The type of Azure hop the packet should be sent to.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.RouteNextHopType
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -233,7 +232,7 @@ Possible values are: 'Updating', 'Deleting', and 'Failed'.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -249,7 +248,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1
+Parameter Sets: CreateExpanded1, Create1
 Aliases:
 
 Required: True
@@ -269,7 +268,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRoute
 Parameter Sets: Create1, CreateViaIdentity1
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -299,7 +298,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1
+Parameter Sets: CreateExpanded1, Create1
 Aliases:
 
 Required: True
@@ -315,7 +314,7 @@ The name of the route table.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1
+Parameter Sets: CreateExpanded1, Create1
 Aliases: RouteTableName
 
 Required: True

@@ -12,19 +12,19 @@ Prepares a subnet by applying network intent policies.
 
 ## SYNTAX
 
-### Prepare (Default)
-```
-Set-AzVnetSubnetNetworkPolicy -ResourceGroupName <String> -SubnetName <String> -SubscriptionId <String>
- -VnetName <String> [-NetworkPoliciesRequest <IPrepareNetworkPoliciesRequest>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### PrepareExpanded
+### PrepareExpanded (Default)
 ```
 Set-AzVnetSubnetNetworkPolicy -ResourceGroupName <String> -SubnetName <String> -SubscriptionId <String>
  -VnetName <String> [-NetworkIntentPolicyConfiguration <INetworkIntentPolicyConfiguration[]>]
  [-ResourceGroupName1 <String>] [-ServiceName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Prepare
+```
+Set-AzVnetSubnetNetworkPolicy -ResourceGroupName <String> -SubnetName <String> -SubscriptionId <String>
+ -VnetName <String> -NetworkPoliciesRequest <IPrepareNetworkPoliciesRequest> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -110,7 +110,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IPrepareNetw
 Parameter Sets: Prepare
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

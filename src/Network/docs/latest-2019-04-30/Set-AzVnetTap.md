@@ -12,14 +12,7 @@ Creates or updates a Virtual Network Tap.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzVnetTap -ResourceGroupName <String> -SubscriptionId <String> -TapName <String>
- [-VnetTapProperties <IVirtualNetworkTap>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzVnetTap -ResourceGroupName <String> -SubscriptionId <String> -TapName <String>
  [-ApplicationGatewayBackendAddressPool <IApplicationGatewayBackendAddressPool[]>]
@@ -45,6 +38,13 @@ Set-AzVnetTap -ResourceGroupName <String> -SubscriptionId <String> -TapName <Str
  [-LoadBalancerInboundNatRule <IInboundNatRule[]>] [-Location <String>] [-Primary]
  [-PrivateIPAddressVersion <IPVersion>] [-PublicIPPrefixId <String>] [-Tag <Hashtable>]
  [-VnetTap <IVirtualNetworkTap[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzVnetTap -ResourceGroupName <String> -SubscriptionId <String> -TapName <String>
+ -VnetTapProperties <IVirtualNetworkTap> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -673,7 +673,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVirtualNetw
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

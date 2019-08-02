@@ -12,15 +12,7 @@ Creates or updates a peering in the specified ExpressRouteCrossConnection.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzExpressRouteCrossConnectionPeering -CrossConnectionName <String> -Name <String>
- -ResourceGroupName <String> -SubscriptionId <String>
- [-CrossConnectionPeering <IExpressRouteCrossConnectionPeering>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzExpressRouteCrossConnectionPeering -CrossConnectionName <String> -Name <String>
  -ResourceGroupName <String> -SubscriptionId <String> [-AdvertisedCommunity <String[]>]
@@ -38,6 +30,14 @@ Set-AzExpressRouteCrossConnectionPeering -CrossConnectionName <String> -Name <St
  [-RoutingRegistryName <String>] [-Rule <IRouteFilterRule[]>] [-SecondaryPeerAddressPrefix <String>]
  [-SharedKey <String>] [-State <ExpressRoutePeeringState>] [-VlanId <Int32>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzExpressRouteCrossConnectionPeering -CrossConnectionName <String> -Name <String>
+ -ResourceGroupName <String> -SubscriptionId <String>
+ -CrossConnectionPeering <IExpressRouteCrossConnectionPeering> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -156,7 +156,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRout
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

@@ -12,14 +12,7 @@ Creates or updates a network interface.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzNetworkInterface -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-NetworkInterface <INetworkInterface>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzNetworkInterface -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-DefaultSecurityRule <ISecurityRule[]>] [-DnsAppliedDnsServer <String[]>] [-DnsDnsServer <String[]>]
@@ -33,6 +26,13 @@ Set-AzNetworkInterface -Name <String> -ResourceGroupName <String> -SubscriptionI
  [-SecurityRule <ISecurityRule[]>] [-Subnet <ISubnet>] [-Tag <Hashtable>]
  [-TapConfiguration <INetworkInterfaceTapConfiguration[]>] [-VMId <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzNetworkInterface -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -NetworkInterface <INetworkInterface> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -427,7 +427,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkInte
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

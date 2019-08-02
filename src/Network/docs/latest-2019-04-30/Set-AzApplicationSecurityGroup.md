@@ -12,18 +12,18 @@ Creates or updates an application security group.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzApplicationSecurityGroup -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-SecurityGroup <IApplicationSecurityGroup>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzApplicationSecurityGroup -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-Id <String>] [-Location <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzApplicationSecurityGroup -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -SecurityGroup <IApplicationSecurityGroup> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -172,7 +172,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IApplication
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

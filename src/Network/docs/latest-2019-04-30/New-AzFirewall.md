@@ -12,14 +12,7 @@ Creates or updates the specified Azure Firewall.
 
 ## SYNTAX
 
-### Create (Default)
-```
-New-AzFirewall -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Firewall <IAzureFirewall>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateExpanded
+### CreateExpanded (Default)
 ```
 New-AzFirewall -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-ApplicationRule <IAzureFirewallApplicationRuleCollection[]>]
@@ -27,6 +20,12 @@ New-AzFirewall -Name <String> -ResourceGroupName <String> -SubscriptionId <Strin
  [-NatRule <IAzureFirewallNatRuleCollection[]>] [-NetworkRule <IAzureFirewallNetworkRuleCollection[]>]
  [-Tag <Hashtable>] [-ThreatIntelligenceMode <AzureFirewallThreatIntelMode>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create
+```
+New-AzFirewall -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Firewall <IAzureFirewall>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -40,7 +39,7 @@ New-AzFirewall -InputObject <INetworkIdentity> [-ApplicationRule <IAzureFirewall
 
 ### CreateViaIdentity
 ```
-New-AzFirewall -InputObject <INetworkIdentity> [-Firewall <IAzureFirewall>] [-DefaultProfile <PSObject>]
+New-AzFirewall -InputObject <INetworkIdentity> -Firewall <IAzureFirewall> [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -76,7 +75,7 @@ To construct, see NOTES section for APPLICATIONRULE properties and create a hash
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IAzureFirewallApplicationRuleCollection[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Aliases: ApplicationRuleCollection
 
 Required: False
 Position: Named
@@ -127,7 +126,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IAzureFirewa
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -205,7 +204,7 @@ The name of the Azure Firewall.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: AzureFirewallName
 
 Required: True
@@ -223,7 +222,7 @@ To construct, see NOTES section for NATRULE properties and create a hash table.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IAzureFirewallNatRuleCollection[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Aliases: NatRuleCollection
 
 Required: False
 Position: Named
@@ -240,7 +239,7 @@ To construct, see NOTES section for NETWORKRULE properties and create a hash tab
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IAzureFirewallNetworkRuleCollection[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Aliases: NetworkRuleCollection
 
 Required: False
 Position: Named
@@ -271,7 +270,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: VirtualNetworkName, PublicIpName
 
 Required: True
@@ -288,7 +287,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -321,7 +320,7 @@ The operation mode for Threat Intelligence.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.AzureFirewallThreatIntelMode
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Aliases: ThreatIntelMode
 
 Required: False
 Position: Named

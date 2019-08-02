@@ -12,11 +12,13 @@ Creates or updates a peering in the specified virtual network.
 
 ## SYNTAX
 
-### Create1 (Default)
+### CreateExpanded1 (Default)
 ```
-New-AzVnetPeering -ResourceGroupName <String> -SubscriptionId <String> -VnetName <String> [-Name <String>]
- [-VnetPeering <IVirtualNetworkPeering>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzVnetPeering -ResourceGroupName <String> -SubscriptionId <String> -VnetName <String>
+ -VnetPeeringName <String> [-Name <String>] [-AllowForwardedTraffic] [-AllowGatewayTransit] [-AllowVnetAccess]
+ [-Etag <String>] [-Id <String>] [-PeeringState <VirtualNetworkPeeringState>] [-ProvisioningState <String>]
+ [-RemoteAddressSpaceAddressPrefix <String[]>] [-RemoteVnetId <String>] [-UseRemoteGateway]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded1
@@ -28,18 +30,16 @@ New-AzVnetPeering -InputObject <INetworkIdentity> [-Name <String>] [-AllowForwar
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateExpanded1
+### Create1
 ```
 New-AzVnetPeering -ResourceGroupName <String> -SubscriptionId <String> -VnetName <String>
- -VnetPeeringName <String> [-Name <String>] [-AllowForwardedTraffic] [-AllowGatewayTransit] [-AllowVnetAccess]
- [-Etag <String>] [-Id <String>] [-PeeringState <VirtualNetworkPeeringState>] [-ProvisioningState <String>]
- [-RemoteAddressSpaceAddressPrefix <String[]>] [-RemoteVnetId <String>] [-UseRemoteGateway]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -VnetPeering <IVirtualNetworkPeering> [-Name <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity1
 ```
-New-AzVnetPeering -InputObject <INetworkIdentity> [-VnetPeering <IVirtualNetworkPeering>]
+New-AzVnetPeering -InputObject <INetworkIdentity> -VnetPeering <IVirtualNetworkPeering>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -73,7 +73,7 @@ Whether the forwarded traffic from the VMs in the local virtual network will be 
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -89,7 +89,7 @@ If gateway links can be used in remote virtual networking to link to this virtua
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -105,7 +105,7 @@ Whether the VMs in the local virtual network space would be able to access the V
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases: AllowVirtualNetworkAccess
 
 Required: False
@@ -153,7 +153,7 @@ A unique read-only string that changes whenever the resource is updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -169,7 +169,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -201,10 +201,10 @@ The name of the peering.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1, Create1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -234,7 +234,7 @@ Possible values are 'Initiated', 'Connected', and 'Disconnected'.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.VirtualNetworkPeeringState
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -250,7 +250,7 @@ The provisioning state of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -266,7 +266,7 @@ A list of address blocks reserved for this virtual network in CIDR notation.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -282,7 +282,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases: RemoteVirtualNetworkId
 
 Required: False
@@ -298,7 +298,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1
+Parameter Sets: CreateExpanded1, Create1
 Aliases:
 
 Required: True
@@ -315,7 +315,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1
+Parameter Sets: CreateExpanded1, Create1
 Aliases:
 
 Required: True
@@ -334,7 +334,7 @@ This flag cannot be set if virtual network already has a gateway.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -350,7 +350,7 @@ The name of the virtual network.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1
+Parameter Sets: CreateExpanded1, Create1
 Aliases: VirtualNetworkName
 
 Required: True
@@ -370,7 +370,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVirtualNetw
 Parameter Sets: Create1, CreateViaIdentity1
 Aliases: VirtualNetworkPeeringParameter
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

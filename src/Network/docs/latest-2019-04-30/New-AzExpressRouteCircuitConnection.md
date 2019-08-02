@@ -12,20 +12,20 @@ Creates or updates a Express Route Circuit Connection in the specified express r
 
 ## SYNTAX
 
-### Create (Default)
-```
-New-AzExpressRouteCircuitConnection -CircuitName <String> -Name <String> -PeeringName <String>
- -ResourceGroupName <String> -SubscriptionId <String>
- [-ExpressRouteCircuitConnection <IExpressRouteCircuitConnection>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded
+### CreateExpanded (Default)
 ```
 New-AzExpressRouteCircuitConnection -CircuitName <String> -Name <String> -PeeringName <String>
  -ResourceGroupName <String> -SubscriptionId <String> [-AddressPrefix <String>] [-AuthorizationKey <String>]
  [-CircuitPeeringId <String>] [-Id <String>] [-PeerCircuitPeeringId <String>] [-ResourceName <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create
+```
+New-AzExpressRouteCircuitConnection -CircuitName <String> -Name <String> -PeeringName <String>
+ -ResourceGroupName <String> -SubscriptionId <String>
+ -ExpressRouteCircuitConnection <IExpressRouteCircuitConnection> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -39,7 +39,7 @@ New-AzExpressRouteCircuitConnection -InputObject <INetworkIdentity> [-AddressPre
 ### CreateViaIdentity
 ```
 New-AzExpressRouteCircuitConnection -InputObject <INetworkIdentity>
- [-ExpressRouteCircuitConnection <IExpressRouteCircuitConnection>] [-DefaultProfile <PSObject>] [-AsJob]
+ -ExpressRouteCircuitConnection <IExpressRouteCircuitConnection> [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -121,7 +121,7 @@ The name of the express route circuit.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -173,7 +173,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRout
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -218,7 +218,7 @@ The name of the express route circuit connection.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: ConnectionName
 
 Required: True
@@ -266,7 +266,7 @@ The name of the peering.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -282,7 +282,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -316,7 +316,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True

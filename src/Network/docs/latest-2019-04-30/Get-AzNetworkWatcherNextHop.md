@@ -12,31 +12,31 @@ Gets the next hop from the specified VM.
 
 ## SYNTAX
 
-### Get (Default)
-```
-Get-AzNetworkWatcherNextHop -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-NextHop <INextHopParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### GetExpanded
+### GetExpanded (Default)
 ```
 Get-AzNetworkWatcherNextHop -NetworkWatcherName <String> -ResourceGroupName <String>
  -SubscriptionId <String[]> -DestinationIPAddress <String> -SourceIPAddress <String>
- -TargetVMResourceId <String> [-TargetNicResourceId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -TargetVMResourceId <String> [-TargetNetworkInterfaceResourceId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzNetworkWatcherNextHop -NetworkWatcherName <String> -ResourceGroupName <String>
+ -SubscriptionId <String[]> -NextHop <INextHopParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GetViaIdentityExpanded
 ```
 Get-AzNetworkWatcherNextHop -InputObject <INetworkIdentity> -DestinationIPAddress <String>
- -SourceIPAddress <String> -TargetVMResourceId <String> [-TargetNicResourceId <String>]
+ -SourceIPAddress <String> -TargetVMResourceId <String> [-TargetNetworkInterfaceResourceId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzNetworkWatcherNextHop -InputObject <INetworkIdentity> [-NextHop <INextHopParameters>]
+Get-AzNetworkWatcherNextHop -InputObject <INetworkIdentity> -NextHop <INextHopParameters>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -134,7 +134,7 @@ The name of the network watcher.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetExpanded
+Parameter Sets: GetExpanded, Get
 Aliases:
 
 Required: True
@@ -154,7 +154,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INextHopPara
 Parameter Sets: Get, GetViaIdentity
 Aliases: NetworkWatcher
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -183,7 +183,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetExpanded
+Parameter Sets: GetExpanded, Get
 Aliases: Location
 
 Required: True
@@ -216,7 +216,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, GetExpanded
+Parameter Sets: GetExpanded, Get
 Aliases:
 
 Required: True
@@ -227,7 +227,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -TargetNicResourceId
+### -TargetNetworkInterfaceResourceId
 The NIC ID.
 (If VM has multiple NICs and IP forwarding is enabled on any of the nics, then this parameter must be specified.
 Otherwise optional).

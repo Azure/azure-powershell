@@ -182,7 +182,7 @@ Gets a connection monitor by name.
 ### [Get-AzNetworkWatcherConnectionMonitorState](Get-AzNetworkWatcherConnectionMonitorState.md)
 Query a snapshot of the most recent connection states.
 
-### [Get-AzNetworkWatcherFlowLogStatus](Get-AzNetworkWatcherFlowLogStatus.md)
+### [Get-AzNetworkWatcherFlowLogInformation](Get-AzNetworkWatcherFlowLogInformation.md)
 Queries status of flow log and traffic analytics (optional) on a specified resource.
 
 ### [Get-AzNetworkWatcherNetworkConfigurationDiagnostic](Get-AzNetworkWatcherNetworkConfigurationDiagnostic.md)
@@ -203,7 +203,7 @@ Gets the relative latency score for internet service providers from a specified 
 ### [Get-AzNetworkWatcherTopology](Get-AzNetworkWatcherTopology.md)
 Gets the current network topology by resource group.
 
-### [Get-AzNetworkWatcherTroubleshootingResult](Get-AzNetworkWatcherTroubleshootingResult.md)
+### [Get-AzNetworkWatcherTroubleshooting](Get-AzNetworkWatcherTroubleshooting.md)
 Get the last completed troubleshooting result on a specified resource
 
 ### [Get-AzNetworkWatcherVMSecurityRule](Get-AzNetworkWatcherVMSecurityRule.md)
@@ -710,7 +710,7 @@ Creates or updates a network watcher in the specified resource group.
 ### [Set-AzNetworkWatcherConnectionMonitor](Set-AzNetworkWatcherConnectionMonitor.md)
 Create or update a connection monitor.
 
-### [Set-AzNetworkWatcherFlowLogConfiguration](Set-AzNetworkWatcherFlowLogConfiguration.md)
+### [Set-AzNetworkWatcherFlowLogInformation](Set-AzNetworkWatcherFlowLogInformation.md)
 Configures flow log  and traffic analytics (optional) on a specified resource.
 
 ### [Set-AzNsg](Set-AzNsg.md)

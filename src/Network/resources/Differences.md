@@ -1,10 +1,5 @@
 ## Incorrect Cmdlets
 
-- New-AzFirewall
-    - ApplicationRuleCollection
-    - NatRuleCollection
-    - NetworkRuleCollection
-    - ThreatIntelMode
 
 ## Correct Cmdlets
 
@@ -48,13 +43,11 @@
 - Get-AzNetworkWatcherAvailableProvider
 - Get-AzNetworkWatcherConnectionMonitor
 - Get-AzNetworkWatcherConnectionMonitorState
-- Get-AzNetworkWatcherFlowLogStatus
 - Get-AzNetworkWatcherNetworkConfigurationDiagnostic
 - Get-AzNetworkWatcherNextHop
 - Get-AzNetworkWatcherPacketCapture
 - Get-AzNetworkWatcherReachabilityReport
 - Get-AzNetworkWatcherTopology
-- Get-AzNetworkWatcherTroubleshootingResult
 - Get-AzNsg
 - Get-AzPublicIPAddress
 - Get-AzPublicIPPrefix
@@ -91,6 +84,7 @@
 - New-AzExpressRouteConnection
 - New-AzExpressRouteGateway
 - New-AzExpressRoutePort
+- New-AzFirewall
 - New-AzLoadBalancer
 - New-AzLocalNetworkGateway
 - New-AzNetworkInterface
@@ -165,7 +159,7 @@
 - Set-AzNetworkInterfaceTapConfiguration
 - Set-AzNetworkProfile
 - Set-AzNetworkWatcherConnectionMonitor
-- Set-AzNetworkWatcherFlowLogConfiguration
+- Set-AzNetworkWatcherFlowLogInformation
 - Set-AzNsg
 - Set-AzPublicIPAddress
 - Set-AzPublicIPPrefix
@@ -211,7 +205,9 @@
 - Get-AzNetworkInterfaceIPConfiguration
 - Get-AzNetworkInterfaceLoadBalancer
 - Get-AzNetworkSecurityRule
+- Get-AzNetworkWatcherFlowLogInformation
 - Get-AzNetworkWatcherPacketCaptureStatus
+- Get-AzNetworkWatcherTroubleshooting
 - Get-AzNetworkWatcherVMSecurityRule
 - Get-AzP2SVpnGateway
 - Get-AzP2SVpnServerConfiguration
@@ -285,7 +281,9 @@
 
 ## Missing Cmdlets
 
+- Get-AzNetworkWatcherFlowLogStatus
 - Get-AzNetworkWatcherSecurityGroupView
+- Get-AzNetworkWatcherTroubleshootingResult
 - Update-AzVirtualHub
 - Update-AzVirtualWan
 - Update-AzVpnGateway

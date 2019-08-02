@@ -12,14 +12,7 @@ Creates or updates a Virtual Network Tap.
 
 ## SYNTAX
 
-### Create (Default)
-```
-New-AzVnetTap -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-VnetTapProperties <IVirtualNetworkTap>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded
+### CreateExpanded (Default)
 ```
 New-AzVnetTap -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-ApplicationGatewayBackendAddressPool <IApplicationGatewayBackendAddressPool[]>]
@@ -45,6 +38,13 @@ New-AzVnetTap -Name <String> -ResourceGroupName <String> -SubscriptionId <String
  [-LoadBalancerInboundNatRule <IInboundNatRule[]>] [-Location <String>] [-Primary]
  [-PrivateIPAddressVersion <IPVersion>] [-PublicIPPrefixId <String>] [-Tag <Hashtable>]
  [-VnetTap <IVirtualNetworkTap[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### Create
+```
+New-AzVnetTap -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -VnetTapProperties <IVirtualNetworkTap> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -79,7 +79,7 @@ New-AzVnetTap -InputObject <INetworkIdentity>
 
 ### CreateViaIdentity
 ```
-New-AzVnetTap -InputObject <INetworkIdentity> [-VnetTapProperties <IVirtualNetworkTap>]
+New-AzVnetTap -InputObject <INetworkIdentity> -VnetTapProperties <IVirtualNetworkTap>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -573,7 +573,7 @@ The name of the virtual network tap.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: TapName
 
 Required: True
@@ -654,7 +654,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: DestinationNetworkInterfaceIPConfiguration, DestinationLoadBalancerFrontEndIPConfiguration
 
 Required: True
@@ -671,7 +671,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -724,7 +724,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVirtualNetw
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

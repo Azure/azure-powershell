@@ -12,14 +12,7 @@ Creates or updates a load balancer inbound nat rule.
 
 ## SYNTAX
 
-### Create1 (Default)
-```
-New-AzLoadBalancerInboundNatRule -LoadBalancerName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-ResourceName <String>] [-InboundNatRule <IInboundNatRule>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded1
+### CreateExpanded1 (Default)
 ```
 New-AzLoadBalancerInboundNatRule -LoadBalancerName <String> -ResourceGroupName <String>
  -SubscriptionId <String> -Name <String> [-ResourceName <String>]
@@ -33,6 +26,13 @@ New-AzLoadBalancerInboundNatRule -LoadBalancerName <String> -ResourceGroupName <
  [-PrivateIPAddressVersion <IPVersion>] [-PrivateIPAllocationMethod <IPAllocationMethod>]
  [-Protocol <TransportProtocol>] [-ProvisioningState <String>] [-PublicIPAddress <IPublicIPAddress>]
  [-Subnet <ISubnet>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create1
+```
+New-AzLoadBalancerInboundNatRule -LoadBalancerName <String> -ResourceGroupName <String>
+ -SubscriptionId <String> -InboundNatRule <IInboundNatRule> [-ResourceName <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded1
@@ -52,7 +52,7 @@ New-AzLoadBalancerInboundNatRule -InputObject <INetworkIdentity> [-ResourceName 
 
 ### CreateViaIdentity1
 ```
-New-AzLoadBalancerInboundNatRule -InputObject <INetworkIdentity> [-InboundNatRule <IInboundNatRule>]
+New-AzLoadBalancerInboundNatRule -InputObject <INetworkIdentity> -InboundNatRule <IInboundNatRule>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -342,7 +342,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IInboundNatR
 Parameter Sets: Create1, CreateViaIdentity1
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -405,7 +405,7 @@ The name of the load balancer.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1
+Parameter Sets: CreateExpanded1, Create1
 Aliases:
 
 Required: True
@@ -571,7 +571,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1
+Parameter Sets: CreateExpanded1, Create1
 Aliases:
 
 Required: True
@@ -587,10 +587,10 @@ The name of the inbound nat rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1, CreateViaIdentityExpanded1
+Parameter Sets: CreateExpanded1, Create1, CreateViaIdentityExpanded1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -621,7 +621,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1
+Parameter Sets: CreateExpanded1, Create1
 Aliases:
 
 Required: True

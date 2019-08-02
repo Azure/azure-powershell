@@ -15,7 +15,7 @@ Creates or updates a virtual network gateway connection in the specified resourc
 ### Update (Default)
 ```
 Set-AzVnetGatewayConnection -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-VnetGatewayConnection <IVirtualNetworkGatewayConnection>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -VnetGatewayConnection <IVirtualNetworkGatewayConnection> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -601,7 +601,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVirtualNetw
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

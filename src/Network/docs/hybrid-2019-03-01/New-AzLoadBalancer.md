@@ -12,14 +12,7 @@ Creates or updates a load balancer.
 
 ## SYNTAX
 
-### Create1 (Default)
-```
-New-AzLoadBalancer -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-LoadBalancer <ILoadBalancer>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateExpanded1
+### CreateExpanded1 (Default)
 ```
 New-AzLoadBalancer -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-BackendAddressPool <IBackendAddressPool[]>] [-Etag <String>]
@@ -28,6 +21,13 @@ New-AzLoadBalancer -Name <String> -ResourceGroupName <String> -SubscriptionId <S
  [-OutboundNatRule <IOutboundNatRule[]>] [-Probe <IProbe[]>] [-ProvisioningState <String>]
  [-ResourceGuid <String>] [-SkuName <LoadBalancerSkuName>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create1
+```
+New-AzLoadBalancer -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -LoadBalancer <ILoadBalancer> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded1
@@ -42,8 +42,8 @@ New-AzLoadBalancer -InputObject <INetworkIdentity> [-BackendAddressPool <IBacken
 
 ### CreateViaIdentity1
 ```
-New-AzLoadBalancer -InputObject <INetworkIdentity> [-LoadBalancer <ILoadBalancer>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzLoadBalancer -InputObject <INetworkIdentity> -LoadBalancer <ILoadBalancer> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -237,7 +237,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ILoadBalance
 Parameter Sets: Create1, CreateViaIdentity1
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -283,7 +283,7 @@ The name of the load balancer.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1
+Parameter Sets: CreateExpanded1, Create1
 Aliases: LoadBalancerName
 
 Required: True
@@ -366,7 +366,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1
+Parameter Sets: CreateExpanded1, Create1
 Aliases:
 
 Required: True
@@ -415,7 +415,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1
+Parameter Sets: CreateExpanded1, Create1
 Aliases:
 
 Required: True

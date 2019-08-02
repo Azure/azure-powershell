@@ -12,17 +12,17 @@ Lists all available internet service providers for a specified Azure region.
 
 ## SYNTAX
 
-### List (Default)
-```
-Get-AzNetworkWatcherAvailableProvider -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-AvailableProvider <IAvailableProvidersListParameters>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ListExpanded
+### ListExpanded (Default)
 ```
 Get-AzNetworkWatcherAvailableProvider -NetworkWatcherName <String> -ResourceGroupName <String>
  -SubscriptionId <String[]> [-City <String>] [-Country <String>] [-Location <String[]>] [-State <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### List
+```
+Get-AzNetworkWatcherAvailableProvider -NetworkWatcherName <String> -ResourceGroupName <String>
+ -SubscriptionId <String[]> -AvailableProvider <IAvailableProvidersListParameters>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -76,7 +76,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IAvailablePr
 Parameter Sets: List
 Aliases: NetworkWatcher
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

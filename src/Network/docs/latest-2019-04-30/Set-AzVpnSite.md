@@ -12,19 +12,19 @@ Creates a VpnSite resource if it doesn't exist else updates the existing VpnSite
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzVpnSite -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-VpnSite <IVpnSite>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzVpnSite -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-AddressSpaceAddressPrefix <String[]>] [-BgpAsn <Int64>] [-BgpPeerWeight <Int32>]
  [-BgpPeeringAddress <String>] [-DevicePropertyDeviceModel <String>] [-DevicePropertyDeviceVendor <String>]
  [-DevicePropertyLinkSpeedInMbps <Int32>] [-IPAddress <String>] [-Id <String>] [-IsSecuritySite]
  [-Location <String>] [-SiteKey <String>] [-Tag <Hashtable>] [-VirtualWanId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzVpnSite -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -VpnSite <IVpnSite>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -383,7 +383,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVpnSite
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

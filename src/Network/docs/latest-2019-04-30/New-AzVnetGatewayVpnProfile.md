@@ -13,19 +13,19 @@ Used for IKEV2 and radius based authentication.
 
 ## SYNTAX
 
-### Generate (Default)
-```
-New-AzVnetGatewayVpnProfile -ResourceGroupName <String> -SubscriptionId <String> -VnetGatewayName <String>
- [-VpnProfile <IVpnClientParameters>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### GenerateExpanded
+### GenerateExpanded (Default)
 ```
 New-AzVnetGatewayVpnProfile -ResourceGroupName <String> -SubscriptionId <String> -VnetGatewayName <String>
  [-AuthenticationMethod <AuthenticationMethod>] [-ClientRootCertificate <String[]>]
  [-ProcessorArchitecture <ProcessorArchitecture>] [-RadiusServerAuthCertificate <String>]
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Generate
+```
+New-AzVnetGatewayVpnProfile -ResourceGroupName <String> -SubscriptionId <String> -VnetGatewayName <String>
+ -VpnProfile <IVpnClientParameters> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### GenerateViaIdentityExpanded
@@ -38,7 +38,7 @@ New-AzVnetGatewayVpnProfile -InputObject <INetworkIdentity> [-AuthenticationMeth
 
 ### GenerateViaIdentity
 ```
-New-AzVnetGatewayVpnProfile -InputObject <INetworkIdentity> [-VpnProfile <IVpnClientParameters>]
+New-AzVnetGatewayVpnProfile -InputObject <INetworkIdentity> -VpnProfile <IVpnClientParameters>
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -188,7 +188,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Generate, GenerateExpanded
+Parameter Sets: GenerateExpanded, Generate
 Aliases:
 
 Required: True
@@ -205,7 +205,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Generate, GenerateExpanded
+Parameter Sets: GenerateExpanded, Generate
 Aliases:
 
 Required: True
@@ -221,7 +221,7 @@ The name of the virtual network gateway.
 
 ```yaml
 Type: System.String
-Parameter Sets: Generate, GenerateExpanded
+Parameter Sets: GenerateExpanded, Generate
 Aliases: VirtualNetworkGatewayName
 
 Required: True
@@ -241,7 +241,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVpnClientPa
 Parameter Sets: Generate, GenerateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

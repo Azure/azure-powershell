@@ -12,19 +12,19 @@ Creates or updates the specified ExpressRoutePort resource.
 
 ## SYNTAX
 
-### Create (Default)
-```
-New-AzExpressRoutePort -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-ExpressRoutePort <IExpressRoutePort>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateExpanded
+### CreateExpanded (Default)
 ```
 New-AzExpressRoutePort -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-BandwidthInGbps <Int32>] [-Encapsulation <ExpressRoutePortsEncapsulation>] [-Id <String>]
  [-Link <IExpressRouteLink[]>] [-Location <String>] [-PeeringLocation <String>] [-ResourceGuid <String>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create
+```
+New-AzExpressRoutePort -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -ExpressRoutePort <IExpressRoutePort> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -37,7 +37,7 @@ New-AzExpressRoutePort -InputObject <INetworkIdentity> [-BandwidthInGbps <Int32>
 
 ### CreateViaIdentity
 ```
-New-AzExpressRoutePort -InputObject <INetworkIdentity> [-ExpressRoutePort <IExpressRoutePort>]
+New-AzExpressRoutePort -InputObject <INetworkIdentity> -ExpressRoutePort <IExpressRoutePort>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -139,7 +139,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRout
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -217,7 +217,7 @@ The name of the ExpressRoutePort resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: ExpressRoutePortName
 
 Required: True
@@ -265,7 +265,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -298,7 +298,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True

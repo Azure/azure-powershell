@@ -12,19 +12,19 @@ Verify IP flow from the specified VM to a location given the currently configure
 
 ## SYNTAX
 
-### Verify (Default)
-```
-Test-AzNetworkWatcherIPFlow -NetworkWatcherName <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-IPFlow <IVerificationIPFlowParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### VerifyExpanded
+### VerifyExpanded (Default)
 ```
 Test-AzNetworkWatcherIPFlow -NetworkWatcherName <String> -ResourceGroupName <String> -SubscriptionId <String>
  -Direction <Direction> -LocalIPAddress <String> -LocalPort <String> -Protocol <IPFlowProtocol>
  -RemoteIPAddress <String> -RemotePort <String> -TargetResourceId <String>
  [-NetworkInterfaceResourceId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### Verify
+```
+Test-AzNetworkWatcherIPFlow -NetworkWatcherName <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -IPFlow <IVerificationIPFlowParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -38,7 +38,7 @@ Test-AzNetworkWatcherIPFlow -InputObject <INetworkIdentity> -Direction <Directio
 
 ### VerifyViaIdentity
 ```
-Test-AzNetworkWatcherIPFlow -InputObject <INetworkIdentity> [-IPFlow <IVerificationIPFlowParameters>]
+Test-AzNetworkWatcherIPFlow -InputObject <INetworkIdentity> -IPFlow <IVerificationIPFlowParameters>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -140,7 +140,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVerificatio
 Parameter Sets: Verify, VerifyViaIdentity
 Aliases: NetworkWatcher
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -206,7 +206,7 @@ The name of the network watcher.
 
 ```yaml
 Type: System.String
-Parameter Sets: Verify, VerifyExpanded
+Parameter Sets: VerifyExpanded, Verify
 Aliases:
 
 Required: True
@@ -289,7 +289,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Verify, VerifyExpanded
+Parameter Sets: VerifyExpanded, Verify
 Aliases: Location
 
 Required: True
@@ -306,7 +306,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Verify, VerifyExpanded
+Parameter Sets: VerifyExpanded, Verify
 Aliases:
 
 Required: True

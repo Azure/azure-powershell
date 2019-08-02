@@ -12,15 +12,7 @@ Creates or updates a peering in the specified ExpressRouteCrossConnection.
 
 ## SYNTAX
 
-### Create (Default)
-```
-New-AzExpressRouteCrossConnectionPeering -CrossConnectionName <String> -Name <String>
- -ResourceGroupName <String> -SubscriptionId <String>
- [-CrossConnectionPeering <IExpressRouteCrossConnectionPeering>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded
+### CreateExpanded (Default)
 ```
 New-AzExpressRouteCrossConnectionPeering -CrossConnectionName <String> -Name <String>
  -ResourceGroupName <String> -SubscriptionId <String> [-AdvertisedCommunity <String[]>]
@@ -38,6 +30,14 @@ New-AzExpressRouteCrossConnectionPeering -CrossConnectionName <String> -Name <St
  [-RoutingRegistryName <String>] [-Rule <IRouteFilterRule[]>] [-SecondaryPeerAddressPrefix <String>]
  [-SharedKey <String>] [-State <ExpressRoutePeeringState>] [-VlanId <Int32>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create
+```
+New-AzExpressRouteCrossConnectionPeering -CrossConnectionName <String> -Name <String>
+ -ResourceGroupName <String> -SubscriptionId <String>
+ -CrossConnectionPeering <IExpressRouteCrossConnectionPeering> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -62,8 +62,8 @@ New-AzExpressRouteCrossConnectionPeering -InputObject <INetworkIdentity> [-Adver
 ### CreateViaIdentity
 ```
 New-AzExpressRouteCrossConnectionPeering -InputObject <INetworkIdentity>
- [-CrossConnectionPeering <IExpressRouteCrossConnectionPeering>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -CrossConnectionPeering <IExpressRouteCrossConnectionPeering> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -162,7 +162,7 @@ The name of the ExpressRouteCrossConnection.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -182,7 +182,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRout
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -454,7 +454,7 @@ The name of the peering.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: PeeringName
 
 Required: True
@@ -551,7 +551,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -714,7 +714,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True

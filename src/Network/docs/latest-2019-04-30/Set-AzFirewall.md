@@ -12,14 +12,7 @@ Creates or updates the specified Azure Firewall.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzFirewall -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Firewall <IAzureFirewall>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzFirewall -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-ApplicationRule <IAzureFirewallApplicationRuleCollection[]>]
@@ -27,6 +20,12 @@ Set-AzFirewall -Name <String> -ResourceGroupName <String> -SubscriptionId <Strin
  [-NatRule <IAzureFirewallNatRuleCollection[]>] [-NetworkRule <IAzureFirewallNetworkRuleCollection[]>]
  [-Tag <Hashtable>] [-ThreatIntelligenceMode <AzureFirewallThreatIntelMode>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzFirewall -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Firewall <IAzureFirewall>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -61,7 +60,7 @@ To construct, see NOTES section for APPLICATIONRULE properties and create a hash
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IAzureFirewallApplicationRuleCollection[]
 Parameter Sets: UpdateExpanded
-Aliases:
+Aliases: ApplicationRuleCollection
 
 Required: False
 Position: Named
@@ -112,7 +111,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IAzureFirewa
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -192,7 +191,7 @@ To construct, see NOTES section for NATRULE properties and create a hash table.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IAzureFirewallNatRuleCollection[]
 Parameter Sets: UpdateExpanded
-Aliases:
+Aliases: NatRuleCollection
 
 Required: False
 Position: Named
@@ -209,7 +208,7 @@ To construct, see NOTES section for NETWORKRULE properties and create a hash tab
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IAzureFirewallNetworkRuleCollection[]
 Parameter Sets: UpdateExpanded
-Aliases:
+Aliases: NetworkRuleCollection
 
 Required: False
 Position: Named
@@ -290,7 +289,7 @@ The operation mode for Threat Intelligence.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.AzureFirewallThreatIntelMode
 Parameter Sets: UpdateExpanded
-Aliases:
+Aliases: ThreatIntelMode
 
 Required: False
 Position: Named

@@ -12,35 +12,35 @@ Creates a virtual wan p2s vpn gateway if it doesn't exist else updates the exist
 
 ## SYNTAX
 
-### Create (Default)
+### CreateExpanded (Default)
 ```
-New-AzP2SVpnGateway -GatewayName <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-P2SVpnGateway <IP2SVpnGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateExpanded
-```
-New-AzP2SVpnGateway -GatewayName <String> -ResourceGroupName <String> -SubscriptionId <String>
+New-AzP2SVpnGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-CustomRouteAddressPrefix <String[]>] [-Id <String>] [-Location <String>]
  [-P2SVpnServerConfigurationId <String>] [-Tag <Hashtable>] [-VirtualHubId <String>]
- [-VpnClientAddressPoolAddressPrefix <String[]>] [-VpnClientConnectionHealthAllocatedIPAddress <String[]>]
- [-VpnClientConnectionHealthVpnClientConnectionsCount <Int32>] [-VpnGatewayScaleUnit <Int32>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-VpnClientAddressPrefix <String[]>] [-VpnClientAllocatedIPAddress <String[]>]
+ [-VpnClientConnectionCount <Int32>] [-VpnGatewayScaleUnit <Int32>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create
+```
+New-AzP2SVpnGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -P2SVpnGateway <IP2SVpnGateway> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzP2SVpnGateway -InputObject <INetworkIdentity> [-CustomRouteAddressPrefix <String[]>] [-Id <String>]
  [-Location <String>] [-P2SVpnServerConfigurationId <String>] [-Tag <Hashtable>] [-VirtualHubId <String>]
- [-VpnClientAddressPoolAddressPrefix <String[]>] [-VpnClientConnectionHealthAllocatedIPAddress <String[]>]
- [-VpnClientConnectionHealthVpnClientConnectionsCount <Int32>] [-VpnGatewayScaleUnit <Int32>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-VpnClientAddressPrefix <String[]>] [-VpnClientAllocatedIPAddress <String[]>]
+ [-VpnClientConnectionCount <Int32>] [-VpnGatewayScaleUnit <Int32>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
-New-AzP2SVpnGateway -InputObject <INetworkIdentity> [-P2SVpnGateway <IP2SVpnGateway>]
+New-AzP2SVpnGateway -InputObject <INetworkIdentity> -P2SVpnGateway <IP2SVpnGateway>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -117,22 +117,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -GatewayName
-The name of the gateway.
-
-```yaml
-Type: System.String
-Parameter Sets: Create, CreateExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Id
 Resource ID.
 
@@ -181,6 +165,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Name
+The name of the gateway.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, Create
+Aliases: GatewayName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -206,7 +206,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IP2SVpnGatew
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -235,7 +235,7 @@ The resource group name of the P2SVpnGateway.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -252,7 +252,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -295,7 +295,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VpnClientAddressPoolAddressPrefix
+### -VpnClientAddressPrefix
 A list of address blocks reserved for this virtual network in CIDR notation.
 
 ```yaml
@@ -311,7 +311,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VpnClientConnectionHealthAllocatedIPAddress
+### -VpnClientAllocatedIPAddress
 List of allocated ip addresses to the connected p2s vpn clients.
 
 ```yaml
@@ -327,7 +327,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VpnClientConnectionHealthVpnClientConnectionsCount
+### -VpnClientConnectionCount
 The total of p2s vpn clients connected at this time to this P2SVpnGateway.
 
 ```yaml

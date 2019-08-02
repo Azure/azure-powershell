@@ -12,12 +12,12 @@ Creates or updates a service endpoint policy definition in the specified service
 
 ## SYNTAX
 
-### Create (Default)
+### CreateExpanded (Default)
 ```
 New-AzServiceEndpointPolicyDefinition -ResourceGroupName <String> -ServiceEndpointPolicyName <String>
- -SubscriptionId <String> [-Name <String>]
- [-ServiceEndpointPolicyDefinition <IServiceEndpointPolicyDefinition>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -SubscriptionId <String> -ServiceEndpointPolicyDefinitionName <String> [-Name <String>]
+ [-Description <String>] [-Etag <String>] [-Id <String>] [-Service <String>] [-ServiceResource <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -27,18 +27,17 @@ New-AzServiceEndpointPolicyDefinition -InputObject <INetworkIdentity> [-Name <St
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateExpanded
+### Create
 ```
 New-AzServiceEndpointPolicyDefinition -ResourceGroupName <String> -ServiceEndpointPolicyName <String>
- -SubscriptionId <String> -ServiceEndpointPolicyDefinitionName <String> [-Name <String>]
- [-Description <String>] [-Etag <String>] [-Id <String>] [-Service <String>] [-ServiceResource <String[]>]
+ -SubscriptionId <String> -ServiceEndpointPolicyDefinition <IServiceEndpointPolicyDefinition> [-Name <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
 New-AzServiceEndpointPolicyDefinition -InputObject <INetworkIdentity>
- [-ServiceEndpointPolicyDefinition <IServiceEndpointPolicyDefinition>] [-DefaultProfile <PSObject>] [-AsJob]
+ -ServiceEndpointPolicyDefinition <IServiceEndpointPolicyDefinition> [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -105,7 +104,7 @@ Restricted to 140 chars.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -121,7 +120,7 @@ A unique read-only string that changes whenever the resource is updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -137,7 +136,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -169,10 +168,10 @@ The name of the service endpoint policy definition name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, Create
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -201,7 +200,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -217,7 +216,7 @@ Service endpoint name.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -237,7 +236,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IServiceEndp
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -266,7 +265,7 @@ The name of the service endpoint policy.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -282,7 +281,7 @@ A list of service resources.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -299,7 +298,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True

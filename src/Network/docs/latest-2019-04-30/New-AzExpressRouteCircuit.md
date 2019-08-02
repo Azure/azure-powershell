@@ -12,14 +12,7 @@ Creates or updates an express route circuit.
 
 ## SYNTAX
 
-### Create (Default)
-```
-New-AzExpressRouteCircuit -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-ExpressRouteCircuit <IExpressRouteCircuit>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded
+### CreateExpanded (Default)
 ```
 New-AzExpressRouteCircuit -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-AllowClassicOperations] [-Authorization <IExpressRouteCircuitAuthorization[]>] [-BandwidthInGbps <Single>]
@@ -30,6 +23,13 @@ New-AzExpressRouteCircuit -Name <String> -ResourceGroupName <String> -Subscripti
  [-ServiceProviderProvisioningState <ServiceProviderProvisioningState>]
  [-SkuFamily <ExpressRouteCircuitSkuFamily>] [-SkuName <String>] [-SkuTier <ExpressRouteCircuitSkuTier>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create
+```
+New-AzExpressRouteCircuit -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -ExpressRouteCircuit <IExpressRouteCircuit> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -47,7 +47,7 @@ New-AzExpressRouteCircuit -InputObject <INetworkIdentity> [-AllowClassicOperatio
 
 ### CreateViaIdentity
 ```
-New-AzExpressRouteCircuit -InputObject <INetworkIdentity> [-ExpressRouteCircuit <IExpressRouteCircuit>]
+New-AzExpressRouteCircuit -InputObject <INetworkIdentity> -ExpressRouteCircuit <IExpressRouteCircuit>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -198,7 +198,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRout
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -291,7 +291,7 @@ The name of the circuit.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: CircuitName
 
 Required: True
@@ -357,7 +357,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: ExpressRoutePort
 
 Required: True
@@ -520,7 +520,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True

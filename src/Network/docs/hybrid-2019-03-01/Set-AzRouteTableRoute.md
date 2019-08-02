@@ -12,18 +12,18 @@ Creates or updates a route in the specified route table.
 
 ## SYNTAX
 
-### Update1 (Default)
-```
-Set-AzRouteTableRoute -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -TableName <String>
- [-Route <IRoute>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded1
+### UpdateExpanded1 (Default)
 ```
 Set-AzRouteTableRoute -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -TableName <String>
  -RouteName <String> [-AddressPrefix <String>] [-Etag <String>] [-Id <String>] [-NextHopIPAddress <String>]
  [-NextHopType <RouteNextHopType>] [-ProvisioningState <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update1
+```
+Set-AzRouteTableRoute -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -TableName <String>
+ -Route <IRoute> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -238,7 +238,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRoute
 Parameter Sets: Update1
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

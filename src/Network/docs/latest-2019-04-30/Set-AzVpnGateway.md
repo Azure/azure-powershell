@@ -12,20 +12,20 @@ Creates a virtual wan vpn gateway if it doesn't exist else updates the existing 
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzVpnGateway -GatewayName <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-VpnGateway <IVpnGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzVpnGateway -GatewayName <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-BgpSettingAsn <Int64>] [-BgpSettingBgpPeeringAddress <String>] [-BgpSettingPeerWeight <Int32>]
  [-Connection <IVpnConnection[]>] [-Id <String>] [-Location <String>] [-Tag <Hashtable>]
  [-VirtualHubId <String>] [-VpnGatewayScaleUnit <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzVpnGateway -GatewayName <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -VpnGateway <IVpnGateway> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -288,7 +288,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVpnGateway
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

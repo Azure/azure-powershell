@@ -12,19 +12,19 @@ Creates or updates a network profile.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzNetworkProfile -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-NetworkProfile <INetworkProfile>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzNetworkProfile -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-ContainerNetworkInterface <IContainerNetworkInterface[]>]
  [-ContainerNetworkInterfaceConfiguration <IContainerNetworkInterfaceConfiguration[]>] [-Etag <String>]
  [-Id <String>] [-Location <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzNetworkProfile -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -NetworkProfile <INetworkProfile> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -175,7 +175,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkProf
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

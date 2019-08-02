@@ -1,46 +1,46 @@
 ---
 external help file:
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-aznetworkwatchertroubleshootingresult
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-aznetworkwatcherflowloginformation
 schema: 2.0.0
 ---
 
-# Get-AzNetworkWatcherTroubleshootingResult
+# Get-AzNetworkWatcherFlowLogInformation
 
 ## SYNOPSIS
-Get the last completed troubleshooting result on a specified resource
+Queries status of flow log and traffic analytics (optional) on a specified resource.
 
 ## SYNTAX
 
-### Get (Default)
+### GetExpanded (Default)
 ```
-Get-AzNetworkWatcherTroubleshootingResult -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-Troubleshooting <IQueryTroubleshootingParameters>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### GetExpanded
-```
-Get-AzNetworkWatcherTroubleshootingResult -NetworkWatcherName <String> -ResourceGroupName <String>
+Get-AzNetworkWatcherFlowLogInformation -NetworkWatcherName <String> -ResourceGroupName <String>
  -SubscriptionId <String[]> -TargetResourceId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### Get
+```
+Get-AzNetworkWatcherFlowLogInformation -NetworkWatcherName <String> -ResourceGroupName <String>
+ -SubscriptionId <String[]> -FlowLogStatus <IFlowLogStatusParameters> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### GetViaIdentityExpanded
 ```
-Get-AzNetworkWatcherTroubleshootingResult -InputObject <INetworkIdentity> -TargetResourceId <String>
+Get-AzNetworkWatcherFlowLogInformation -InputObject <INetworkIdentity> -TargetResourceId <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzNetworkWatcherTroubleshootingResult -InputObject <INetworkIdentity>
- [-Troubleshooting <IQueryTroubleshootingParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzNetworkWatcherFlowLogInformation -InputObject <INetworkIdentity>
+ -FlowLogStatus <IFlowLogStatusParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get the last completed troubleshooting result on a specified resource
+Queries status of flow log and traffic analytics (optional) on a specified resource.
 
 ## EXAMPLES
 
@@ -96,6 +96,23 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -FlowLogStatus
+Parameters that define a resource to query flow log and traffic analytics (optional) status.
+To construct, see NOTES section for FLOWLOGSTATUS properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IFlowLogStatusParameters
+Parameter Sets: Get, GetViaIdentity
+Aliases: NetworkWatcher
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -InputObject
 Identity Parameter
 
@@ -117,7 +134,7 @@ The name of the network watcher resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetExpanded
+Parameter Sets: GetExpanded, Get
 Aliases:
 
 Required: True
@@ -145,11 +162,11 @@ Dynamic: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
+The name of the network watcher resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetExpanded
+Parameter Sets: GetExpanded, Get
 Aliases: Location
 
 Required: True
@@ -166,7 +183,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, GetExpanded
+Parameter Sets: GetExpanded, Get
 Aliases:
 
 Required: True
@@ -178,7 +195,7 @@ Dynamic: False
 ```
 
 ### -TargetResourceId
-The target resource ID to query the troubleshooting result.
+The target resource where getting the flow log and traffic analytics (optional) status.
 
 ```yaml
 Type: System.String
@@ -189,23 +206,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Troubleshooting
-Parameters that define the resource to query the troubleshooting result.
-To construct, see NOTES section for TROUBLESHOOTING properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IQueryTroubleshootingParameters
-Parameter Sets: Get, GetViaIdentity
-Aliases: NetworkWatcher
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -250,11 +250,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IQueryTroubleshootingParameters
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IFlowLogStatusParameters
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ITroubleshootingResult
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IFlowLogInformation
 
 ## ALIASES
 
@@ -263,8 +263,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### TROUBLESHOOTING <IQueryTroubleshootingParameters>: Parameters that define the resource to query the troubleshooting result.
-  - `TargetResourceId <String>`: The target resource ID to query the troubleshooting result.
+#### FLOWLOGSTATUS <IFlowLogStatusParameters>: Parameters that define a resource to query flow log and traffic analytics (optional) status.
+  - `TargetResourceId <String>`: The target resource where getting the flow log and traffic analytics (optional) status.
 
 ## RELATED LINKS
 

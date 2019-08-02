@@ -12,19 +12,19 @@ Creates or update policy with specified rule set name within a resource group.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzApplicationGatewayWafPolicy -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-WafPolicy <IWebApplicationFirewallPolicy>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzApplicationGatewayWafPolicy -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-CustomRule <IWebApplicationFirewallCustomRule[]>] [-EnabledState <WebApplicationFirewallEnabledState>]
  [-Etag <String>] [-Id <String>] [-Location <String>] [-Mode <WebApplicationFirewallMode>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzApplicationGatewayWafPolicy -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -WafPolicy <IWebApplicationFirewallPolicy> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -239,7 +239,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IWebApplicat
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

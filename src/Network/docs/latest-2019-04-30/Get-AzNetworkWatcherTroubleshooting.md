@@ -1,45 +1,46 @@
 ---
 external help file:
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-aznetworkwatcherflowlogstatus
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-aznetworkwatchertroubleshooting
 schema: 2.0.0
 ---
 
-# Get-AzNetworkWatcherFlowLogStatus
+# Get-AzNetworkWatcherTroubleshooting
 
 ## SYNOPSIS
-Queries status of flow log and traffic analytics (optional) on a specified resource.
+Get the last completed troubleshooting result on a specified resource
 
 ## SYNTAX
 
-### Get (Default)
+### GetExpanded (Default)
 ```
-Get-AzNetworkWatcherFlowLogStatus -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-FlowLogStatus <IFlowLogStatusParameters>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### GetExpanded
-```
-Get-AzNetworkWatcherFlowLogStatus -NetworkWatcherName <String> -ResourceGroupName <String>
+Get-AzNetworkWatcherTroubleshooting -NetworkWatcherName <String> -ResourceGroupName <String>
  -SubscriptionId <String[]> -TargetResourceId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### Get
+```
+Get-AzNetworkWatcherTroubleshooting -NetworkWatcherName <String> -ResourceGroupName <String>
+ -SubscriptionId <String[]> -Troubleshooting <IQueryTroubleshootingParameters> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### GetViaIdentityExpanded
 ```
-Get-AzNetworkWatcherFlowLogStatus -InputObject <INetworkIdentity> -TargetResourceId <String>
+Get-AzNetworkWatcherTroubleshooting -InputObject <INetworkIdentity> -TargetResourceId <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzNetworkWatcherFlowLogStatus -InputObject <INetworkIdentity> [-FlowLogStatus <IFlowLogStatusParameters>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzNetworkWatcherTroubleshooting -InputObject <INetworkIdentity>
+ -Troubleshooting <IQueryTroubleshootingParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Queries status of flow log and traffic analytics (optional) on a specified resource.
+Get the last completed troubleshooting result on a specified resource
 
 ## EXAMPLES
 
@@ -95,23 +96,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -FlowLogStatus
-Parameters that define a resource to query flow log and traffic analytics (optional) status.
-To construct, see NOTES section for FLOWLOGSTATUS properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IFlowLogStatusParameters
-Parameter Sets: Get, GetViaIdentity
-Aliases: NetworkWatcher
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -InputObject
 Identity Parameter
 
@@ -133,7 +117,7 @@ The name of the network watcher resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetExpanded
+Parameter Sets: GetExpanded, Get
 Aliases:
 
 Required: True
@@ -161,11 +145,11 @@ Dynamic: False
 ```
 
 ### -ResourceGroupName
-The name of the network watcher resource group.
+The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetExpanded
+Parameter Sets: GetExpanded, Get
 Aliases: Location
 
 Required: True
@@ -182,7 +166,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, GetExpanded
+Parameter Sets: GetExpanded, Get
 Aliases:
 
 Required: True
@@ -194,7 +178,7 @@ Dynamic: False
 ```
 
 ### -TargetResourceId
-The target resource where getting the flow log and traffic analytics (optional) status.
+The target resource ID to query the troubleshooting result.
 
 ```yaml
 Type: System.String
@@ -205,6 +189,23 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Troubleshooting
+Parameters that define the resource to query the troubleshooting result.
+To construct, see NOTES section for TROUBLESHOOTING properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IQueryTroubleshootingParameters
+Parameter Sets: Get, GetViaIdentity
+Aliases: NetworkWatcher
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -249,11 +250,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IFlowLogStatusParameters
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IQueryTroubleshootingParameters
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IFlowLogInformation
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ITroubleshootingResult
 
 ## ALIASES
 
@@ -262,8 +263,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### FLOWLOGSTATUS <IFlowLogStatusParameters>: Parameters that define a resource to query flow log and traffic analytics (optional) status.
-  - `TargetResourceId <String>`: The target resource where getting the flow log and traffic analytics (optional) status.
+#### TROUBLESHOOTING <IQueryTroubleshootingParameters>: Parameters that define the resource to query the troubleshooting result.
+  - `TargetResourceId <String>`: The target resource ID to query the troubleshooting result.
 
 ## RELATED LINKS
 

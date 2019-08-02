@@ -12,14 +12,7 @@ Creates or updates the specified application gateway.
 
 ## SYNTAX
 
-### Create (Default)
-```
-New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-ApplicationGateway <IApplicationGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded
+### CreateExpanded (Default)
 ```
 New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-AuthenticationCertificate <IApplicationGatewayAuthenticationCertificate[]>]
@@ -48,6 +41,13 @@ New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Subscriptio
  [-WafFirewallMode <ApplicationGatewayFirewallMode>] [-WafMaximumRequestBodySize <Int32>]
  [-WafMaximumRequestBodySizeInKb <Int32>] [-WafRuleSetType <String>] [-WafRuleSetVersion <String>]
  [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create
+```
+New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -ApplicationGateway <IApplicationGateway> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -83,7 +83,7 @@ New-AzApplicationGateway -InputObject <INetworkIdentity>
 
 ### CreateViaIdentity
 ```
-New-AzApplicationGateway -InputObject <INetworkIdentity> [-ApplicationGateway <IApplicationGateway>]
+New-AzApplicationGateway -InputObject <INetworkIdentity> -ApplicationGateway <IApplicationGateway>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -121,7 +121,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IApplication
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -503,7 +503,7 @@ The name of the application gateway.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: ApplicationGatewayName
 
 Required: True
@@ -604,7 +604,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: Sku, SslPolicy, WebApplicationFirewallConfiguration, FirewallPolicy, AutoscaleConfiguration, UserAssignedIdentityId, Identity
 
 Required: True
@@ -800,7 +800,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True

@@ -12,25 +12,25 @@ Creates a P2SVpnServerConfiguration to associate with a VirtualWan if it doesn't
 
 ## SYNTAX
 
-### Update (Default)
+### UpdateExpanded (Default)
 ```
-Set-AzP2SVpnServerConfiguration -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -VirtualWanName <String> [-P2SVpnServerConfiguration <IP2SVpnServerConfiguration>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
-```
-Set-AzP2SVpnServerConfiguration -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -VirtualWanName <String> -P2SVpnServerConfigurationName <String> [-Id <String>]
- [-P2SVpnServerConfigRadiusClientRootCertificate <IP2SVpnServerConfigRadiusClientRootCertificate[]>]
- [-P2SVpnServerConfigRadiusServerRootCertificate <IP2SVpnServerConfigRadiusServerRootCertificate[]>]
- [-P2SVpnServerConfigVpnClientRevokedCertificate <IP2SVpnServerConfigVpnClientRevokedCertificate[]>]
- [-P2SVpnServerConfigVpnClientRootCertificate <IP2SVpnServerConfigVpnClientRootCertificate[]>]
- [-PropertiesEtag <String>] [-PropertiesName <String>] [-RadiusServerAddress <String>]
- [-RadiusServerSecret <String>] [-VpnClientIPsecPolicy <IIpsecPolicy[]>]
+Set-AzP2SVpnServerConfiguration -ResourceGroupName <String> -ResourceName <String> -SubscriptionId <String>
+ -VirtualWanName <String> -Name <String> [-Etag <String>] [-Id <String>]
+ [-RadiusClientRootCertificate <IP2SVpnServerConfigRadiusClientRootCertificate[]>]
+ [-RadiusServerAddress <String>]
+ [-RadiusServerRootCertificate <IP2SVpnServerConfigRadiusServerRootCertificate[]>]
+ [-RadiusServerSecret <String>] [-ResourceName2 <String>] [-VpnClientIPsecPolicy <IIpsecPolicy[]>]
+ [-VpnClientRevokedCertificate <IP2SVpnServerConfigVpnClientRevokedCertificate[]>]
+ [-VpnClientRootCertificate <IP2SVpnServerConfigVpnClientRootCertificate[]>]
  [-VpnProtocol <VpnGatewayTunnelingProtocol[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzP2SVpnServerConfiguration -ResourceGroupName <String> -ResourceName <String> -SubscriptionId <String>
+ -VirtualWanName <String> -P2SVpnServerConfiguration <IP2SVpnServerConfiguration> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -90,6 +90,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Etag
+A unique read-only string that changes whenever the resource is updated.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Id
 Resource ID.
 
@@ -111,8 +127,8 @@ The name of the P2SVpnServerConfiguration.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
+Parameter Sets: UpdateExpanded
+Aliases: P2SVpnServerConfigurationName
 
 Required: True
 Position: Named
@@ -138,40 +154,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -P2SVpnServerConfigRadiusClientRootCertificate
-Radius client root certificate of P2SVpnServerConfiguration.
-To construct, see NOTES section for P2SVPNSERVERCONFIGRADIUSCLIENTROOTCERTIFICATE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IP2SVpnServerConfigRadiusClientRootCertificate[]
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -P2SVpnServerConfigRadiusServerRootCertificate
-Radius Server root certificate of P2SVpnServerConfiguration.
-To construct, see NOTES section for P2SVPNSERVERCONFIGRADIUSSERVERROOTCERTIFICATE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IP2SVpnServerConfigRadiusServerRootCertificate[]
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -P2SVpnServerConfiguration
 P2SVpnServerConfiguration Resource.
 To construct, see NOTES section for P2SVPNSERVERCONFIGURATION properties and create a hash table.
@@ -181,7 +163,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IP2SVpnServe
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -189,78 +171,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -P2SVpnServerConfigurationName
-The name of the P2SVpnServerConfiguration.
+### -RadiusClientRootCertificate
+Radius client root certificate of P2SVpnServerConfiguration.
+To construct, see NOTES section for RADIUSCLIENTROOTCERTIFICATE properties and create a hash table.
 
 ```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -P2SVpnServerConfigVpnClientRevokedCertificate
-VPN client revoked certificate of P2SVpnServerConfiguration.
-To construct, see NOTES section for P2SVPNSERVERCONFIGVPNCLIENTREVOKEDCERTIFICATE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IP2SVpnServerConfigVpnClientRevokedCertificate[]
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -P2SVpnServerConfigVpnClientRootCertificate
-VPN client root certificate of P2SVpnServerConfiguration.
-To construct, see NOTES section for P2SVPNSERVERCONFIGVPNCLIENTROOTCERTIFICATE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IP2SVpnServerConfigVpnClientRootCertificate[]
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -PropertiesEtag
-A unique read-only string that changes whenever the resource is updated.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -PropertiesName
-The name of the P2SVpnServerConfiguration that is unique within a VirtualWan in a resource group.
-This name can be used to access the resource along with Paren VirtualWan resource name.
-
-```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IP2SVpnServerConfigRadiusClientRootCertificate[]
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -277,6 +193,23 @@ The radius server address property of the P2SVpnServerConfiguration resource for
 
 ```yaml
 Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -RadiusServerRootCertificate
+Radius Server root certificate of P2SVpnServerConfiguration.
+To construct, see NOTES section for RADIUSSERVERROOTCERTIFICATE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IP2SVpnServerConfigRadiusServerRootCertificate[]
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -313,6 +246,39 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ResourceName
+The name of the P2SVpnServerConfiguration.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ResourceName2
+The name of the P2SVpnServerConfiguration that is unique within a VirtualWan in a resource group.
+This name can be used to access the resource along with Paren VirtualWan resource name.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -359,6 +325,40 @@ To construct, see NOTES section for VPNCLIENTIPSECPOLICY properties and create a
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IIpsecPolicy[]
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -VpnClientRevokedCertificate
+VPN client revoked certificate of P2SVpnServerConfiguration.
+To construct, see NOTES section for VPNCLIENTREVOKEDCERTIFICATE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IP2SVpnServerConfigVpnClientRevokedCertificate[]
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -VpnClientRootCertificate
+VPN client root certificate of P2SVpnServerConfiguration.
+To construct, see NOTES section for VPNCLIENTROOTCERTIFICATE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IP2SVpnServerConfigVpnClientRootCertificate[]
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -437,18 +437,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### P2SVPNSERVERCONFIGRADIUSCLIENTROOTCERTIFICATE <IP2SVpnServerConfigRadiusClientRootCertificate[]>: Radius client root certificate of P2SVpnServerConfiguration.
-  - `[Id <String>]`: Resource ID.
-  - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-  - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  - `[Thumbprint <String>]`: The Radius client root certificate thumbprint.
-
-#### P2SVPNSERVERCONFIGRADIUSSERVERROOTCERTIFICATE <IP2SVpnServerConfigRadiusServerRootCertificate[]>: Radius Server root certificate of P2SVpnServerConfiguration.
-  - `PublicCertData <String>`: The certificate public data.
-  - `[Id <String>]`: Resource ID.
-  - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-  - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-
 #### P2SVPNSERVERCONFIGURATION <IP2SVpnServerConfiguration>: P2SVpnServerConfiguration Resource.
   - `[Id <String>]`: Resource ID.
   - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
@@ -487,13 +475,13 @@ To create the parameters described below, construct a hash table containing the 
     - `SaLifeTimeSecond <Int32>`: The IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime in seconds for a site to site VPN tunnel.
   - `[VpnProtocol <VpnGatewayTunnelingProtocol[]>]`: VPN protocols for the P2SVpnServerConfiguration.
 
-#### P2SVPNSERVERCONFIGVPNCLIENTREVOKEDCERTIFICATE <IP2SVpnServerConfigVpnClientRevokedCertificate[]>: VPN client revoked certificate of P2SVpnServerConfiguration.
+#### RADIUSCLIENTROOTCERTIFICATE <IP2SVpnServerConfigRadiusClientRootCertificate[]>: Radius client root certificate of P2SVpnServerConfiguration.
   - `[Id <String>]`: Resource ID.
   - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
   - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  - `[Thumbprint <String>]`: The revoked VPN client certificate thumbprint.
+  - `[Thumbprint <String>]`: The Radius client root certificate thumbprint.
 
-#### P2SVPNSERVERCONFIGVPNCLIENTROOTCERTIFICATE <IP2SVpnServerConfigVpnClientRootCertificate[]>: VPN client root certificate of P2SVpnServerConfiguration.
+#### RADIUSSERVERROOTCERTIFICATE <IP2SVpnServerConfigRadiusServerRootCertificate[]>: Radius Server root certificate of P2SVpnServerConfiguration.
   - `PublicCertData <String>`: The certificate public data.
   - `[Id <String>]`: Resource ID.
   - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
@@ -508,6 +496,18 @@ To create the parameters described below, construct a hash table containing the 
   - `PfsGroup <PfsGroup>`: The Pfs Group used in IKE Phase 2 for new child SA.
   - `SaDataSizeKilobyte <Int32>`: The IPSec Security Association (also called Quick Mode or Phase 2 SA) payload size in KB for a site to site VPN tunnel.
   - `SaLifeTimeSecond <Int32>`: The IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime in seconds for a site to site VPN tunnel.
+
+#### VPNCLIENTREVOKEDCERTIFICATE <IP2SVpnServerConfigVpnClientRevokedCertificate[]>: VPN client revoked certificate of P2SVpnServerConfiguration.
+  - `[Id <String>]`: Resource ID.
+  - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+  - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
+  - `[Thumbprint <String>]`: The revoked VPN client certificate thumbprint.
+
+#### VPNCLIENTROOTCERTIFICATE <IP2SVpnServerConfigVpnClientRootCertificate[]>: VPN client root certificate of P2SVpnServerConfiguration.
+  - `PublicCertData <String>`: The certificate public data.
+  - `[Id <String>]`: Resource ID.
+  - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+  - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
 
 ## RELATED LINKS
 

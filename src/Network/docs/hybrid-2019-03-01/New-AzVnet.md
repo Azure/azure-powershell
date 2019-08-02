@@ -12,19 +12,19 @@ Creates or updates a virtual network in the specified resource group.
 
 ## SYNTAX
 
-### Create1 (Default)
-```
-New-AzVnet -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-Vnet <IVirtualNetwork>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded1
+### CreateExpanded1 (Default)
 ```
 New-AzVnet -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-AddressPrefix <String[]>]
  [-DnsServer <String[]>] [-EnableDdosProtection] [-EnableVMProtection] [-Etag <String>] [-Id <String>]
  [-Location <String>] [-ProvisioningState <String>] [-ResourceGuid <String>] [-Subnet <ISubnet[]>]
  [-Tag <Hashtable>] [-VnetPeering <IVirtualNetworkPeering[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create1
+```
+New-AzVnet -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Vnet <IVirtualNetwork>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded1
@@ -38,7 +38,7 @@ New-AzVnet -InputObject <INetworkIdentity> [-AddressPrefix <String[]>] [-DnsServ
 
 ### CreateViaIdentity1
 ```
-New-AzVnet -InputObject <INetworkIdentity> [-Vnet <IVirtualNetwork>] [-DefaultProfile <PSObject>] [-AsJob]
+New-AzVnet -InputObject <INetworkIdentity> -Vnet <IVirtualNetwork> [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -232,7 +232,7 @@ The name of the virtual network.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1
+Parameter Sets: CreateExpanded1, Create1
 Aliases: VirtualNetworkName
 
 Required: True
@@ -281,7 +281,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1
+Parameter Sets: CreateExpanded1, Create1
 Aliases:
 
 Required: True
@@ -331,7 +331,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1
+Parameter Sets: CreateExpanded1, Create1
 Aliases:
 
 Required: True
@@ -367,7 +367,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVirtualNetw
 Parameter Sets: Create1, CreateViaIdentity1
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

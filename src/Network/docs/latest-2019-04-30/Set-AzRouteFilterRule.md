@@ -12,18 +12,18 @@ Creates or updates a route in the specified route filter.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzRouteFilterRule -ResourceGroupName <String> -RouteFilterName <String> -RuleName <String>
- -SubscriptionId <String> [-RouteFilterRule <IRouteFilterRule>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzRouteFilterRule -ResourceGroupName <String> -RouteFilterName <String> -RuleName <String>
  -SubscriptionId <String> [-Access <Access>] [-Community <String[]>] [-Id <String>] [-Location <String>]
  [-Name <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzRouteFilterRule -ResourceGroupName <String> -RouteFilterName <String> -RuleName <String>
+ -SubscriptionId <String> -RouteFilterRule <IRouteFilterRule> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -223,7 +223,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IRouteFilter
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

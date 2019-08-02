@@ -12,19 +12,19 @@ Creates or updates a service Endpoint Policies.
 
 ## SYNTAX
 
-### Create (Default)
-```
-New-AzServiceEndpointPolicy -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-ServiceEndpointPolicy <IServiceEndpointPolicy>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded
+### CreateExpanded (Default)
 ```
 New-AzServiceEndpointPolicy -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-Etag <String>] [-Id <String>] [-Location <String>]
  [-ServiceEndpointPolicyDefinition <IServiceEndpointPolicyDefinition[]>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create
+```
+New-AzServiceEndpointPolicy -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -ServiceEndpointPolicy <IServiceEndpointPolicy> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -36,7 +36,7 @@ New-AzServiceEndpointPolicy -InputObject <INetworkIdentity> [-Etag <String>] [-I
 
 ### CreateViaIdentity
 ```
-New-AzServiceEndpointPolicy -InputObject <INetworkIdentity> [-ServiceEndpointPolicy <IServiceEndpointPolicy>]
+New-AzServiceEndpointPolicy -InputObject <INetworkIdentity> -ServiceEndpointPolicy <IServiceEndpointPolicy>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -166,7 +166,7 @@ The name of the service endpoint policy.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: ServiceEndpointPolicyName
 
 Required: True
@@ -198,7 +198,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -218,7 +218,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IServiceEndp
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -249,7 +249,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True

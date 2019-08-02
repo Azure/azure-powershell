@@ -12,17 +12,17 @@ Gives the sas-url to download the configurations for vpn-sites in a resource gro
 
 ## SYNTAX
 
-### Download (Default)
-```
-Get-AzVpnSiteConfiguration -ResourceGroupName <String> -SubscriptionId <String[]> -VirtualWanName <String>
- [-Request <IGetVpnSitesConfigurationRequest>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DownloadExpanded
+### DownloadExpanded (Default)
 ```
 Get-AzVpnSiteConfiguration -ResourceGroupName <String> -SubscriptionId <String[]> -VirtualWanName <String>
  -OutputBlobSasUrl <String> [-VpnSite <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Download
+```
+Get-AzVpnSiteConfiguration -ResourceGroupName <String> -SubscriptionId <String[]> -VirtualWanName <String>
+ -Request <IGetVpnSitesConfigurationRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -34,7 +34,7 @@ Get-AzVpnSiteConfiguration -InputObject <INetworkIdentity> -OutputBlobSasUrl <St
 
 ### DownloadViaIdentity
 ```
-Get-AzVpnSiteConfiguration -InputObject <INetworkIdentity> [-Request <IGetVpnSitesConfigurationRequest>]
+Get-AzVpnSiteConfiguration -InputObject <INetworkIdentity> -Request <IGetVpnSitesConfigurationRequest>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -168,7 +168,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IGetVpnSites
 Parameter Sets: Download, DownloadViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -181,7 +181,7 @@ The resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Download, DownloadExpanded
+Parameter Sets: DownloadExpanded, Download
 Aliases:
 
 Required: True
@@ -198,7 +198,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Download, DownloadExpanded
+Parameter Sets: DownloadExpanded, Download
 Aliases:
 
 Required: True
@@ -214,7 +214,7 @@ The name of the VirtualWAN for which configuration of all vpn-sites is needed.
 
 ```yaml
 Type: System.String
-Parameter Sets: Download, DownloadExpanded
+Parameter Sets: DownloadExpanded, Download
 Aliases:
 
 Required: True

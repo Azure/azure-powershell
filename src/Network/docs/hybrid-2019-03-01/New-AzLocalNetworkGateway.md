@@ -12,19 +12,19 @@ Creates or updates a local network gateway in the specified resource group.
 
 ## SYNTAX
 
-### Create1 (Default)
-```
-New-AzLocalNetworkGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-LocalNetworkGateway <ILocalNetworkGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded1
+### CreateExpanded1 (Default)
 ```
 New-AzLocalNetworkGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-AddressPrefix <String[]>] [-BgpAsn <Int64>] [-BgpPeerWeight <Int32>] [-BgpPeeringAddress <String>]
  [-Etag <String>] [-GatewayIPAddress <String>] [-Id <String>] [-Location <String>] [-ResourceGuid <String>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create1
+```
+New-AzLocalNetworkGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -LocalNetworkGateway <ILocalNetworkGateway> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded1
@@ -37,7 +37,7 @@ New-AzLocalNetworkGateway -InputObject <INetworkIdentity> [-AddressPrefix <Strin
 
 ### CreateViaIdentity1
 ```
-New-AzLocalNetworkGateway -InputObject <INetworkIdentity> [-LocalNetworkGateway <ILocalNetworkGateway>]
+New-AzLocalNetworkGateway -InputObject <INetworkIdentity> -LocalNetworkGateway <ILocalNetworkGateway>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -235,7 +235,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ILocalNetwor
 Parameter Sets: Create1, CreateViaIdentity1
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -264,7 +264,7 @@ The name of the local network gateway.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1
+Parameter Sets: CreateExpanded1, Create1
 Aliases: LocalNetworkGatewayName
 
 Required: True
@@ -296,7 +296,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1
+Parameter Sets: CreateExpanded1, Create1
 Aliases:
 
 Required: True
@@ -329,7 +329,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1
+Parameter Sets: CreateExpanded1, Create1
 Aliases:
 
 Required: True

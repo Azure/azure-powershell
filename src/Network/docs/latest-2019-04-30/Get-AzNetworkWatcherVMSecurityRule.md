@@ -12,18 +12,18 @@ Gets the configured and effective security group rules on the specified VM.
 
 ## SYNTAX
 
-### Get (Default)
-```
-Get-AzNetworkWatcherVMSecurityRule -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-SecurityGroupView <ISecurityGroupViewParameters>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### GetExpanded
+### GetExpanded (Default)
 ```
 Get-AzNetworkWatcherVMSecurityRule -NetworkWatcherName <String> -ResourceGroupName <String>
  -SubscriptionId <String[]> -TargetResourceId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzNetworkWatcherVMSecurityRule -NetworkWatcherName <String> -ResourceGroupName <String>
+ -SubscriptionId <String[]> -SecurityGroupView <ISecurityGroupViewParameters> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GetViaIdentityExpanded
@@ -35,8 +35,8 @@ Get-AzNetworkWatcherVMSecurityRule -InputObject <INetworkIdentity> -TargetResour
 ### GetViaIdentity
 ```
 Get-AzNetworkWatcherVMSecurityRule -InputObject <INetworkIdentity>
- [-SecurityGroupView <ISecurityGroupViewParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -SecurityGroupView <ISecurityGroupViewParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -117,7 +117,7 @@ The name of the network watcher.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetExpanded
+Parameter Sets: GetExpanded, Get
 Aliases:
 
 Required: True
@@ -149,7 +149,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetExpanded
+Parameter Sets: GetExpanded, Get
 Aliases: Location
 
 Required: True
@@ -169,7 +169,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ISecurityGro
 Parameter Sets: Get, GetViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -183,7 +183,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, GetExpanded
+Parameter Sets: GetExpanded, Get
 Aliases:
 
 Required: True

@@ -12,20 +12,20 @@ Creates or updates a Express Route Circuit Connection in the specified express r
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzExpressRouteCircuitConnection -CircuitName <String> -Name <String> -PeeringName <String>
- -ResourceGroupName <String> -SubscriptionId <String>
- [-ExpressRouteCircuitConnection <IExpressRouteCircuitConnection>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzExpressRouteCircuitConnection -CircuitName <String> -Name <String> -PeeringName <String>
  -ResourceGroupName <String> -SubscriptionId <String> [-AddressPrefix <String>] [-AuthorizationKey <String>]
  [-CircuitPeeringId <String>] [-Id <String>] [-PeerCircuitPeeringId <String>] [-ResourceName <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzExpressRouteCircuitConnection -CircuitName <String> -Name <String> -PeeringName <String>
+ -ResourceGroupName <String> -SubscriptionId <String>
+ -ExpressRouteCircuitConnection <IExpressRouteCircuitConnection> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -158,7 +158,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRout
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

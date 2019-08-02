@@ -12,14 +12,7 @@ Creates a vpn connection to a scalable vpn gateway if it doesn't exist else upda
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzVpnConnection -ConnectionName <String> -GatewayName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-VpnConnection <IVpnConnection>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzVpnConnection -ConnectionName <String> -GatewayName <String> -ResourceGroupName <String>
  -SubscriptionId <String> [-ConnectionBandwidth <Int32>] [-EnableBgp] [-EnableInternetSecurity]
@@ -27,6 +20,13 @@ Set-AzVpnConnection -ConnectionName <String> -GatewayName <String> -ResourceGrou
  [-RemoteVpnSiteId <String>] [-RoutingWeight <Int32>] [-SharedKey <String>] [-UseLocalAzureIPAddress]
  [-VpnConnectionProtocolType <VirtualNetworkGatewayConnectionProtocol>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzVpnConnection -ConnectionName <String> -GatewayName <String> -ResourceGroupName <String>
+ -SubscriptionId <String> -VpnConnection <IVpnConnection> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -354,7 +354,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVpnConnecti
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

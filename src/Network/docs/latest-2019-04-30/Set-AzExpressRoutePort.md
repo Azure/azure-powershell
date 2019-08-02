@@ -12,19 +12,19 @@ Creates or updates the specified ExpressRoutePort resource.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzExpressRoutePort -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-ExpressRoutePort <IExpressRoutePort>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzExpressRoutePort -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-BandwidthInGbps <Int32>] [-Encapsulation <ExpressRoutePortsEncapsulation>] [-Id <String>]
  [-Link <IExpressRouteLink[]>] [-Location <String>] [-PeeringLocation <String>] [-ResourceGuid <String>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzExpressRoutePort -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -ExpressRoutePort <IExpressRoutePort> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -125,7 +125,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRout
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

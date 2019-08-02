@@ -12,14 +12,7 @@ Creates or updates an express route circuit.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzExpressRouteCircuit -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-ExpressRouteCircuit <IExpressRouteCircuit>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzExpressRouteCircuit -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-AllowClassicOperations] [-Authorization <IExpressRouteCircuitAuthorization[]>] [-BandwidthInGbps <Single>]
@@ -30,6 +23,13 @@ Set-AzExpressRouteCircuit -Name <String> -ResourceGroupName <String> -Subscripti
  [-ServiceProviderProvisioningState <ServiceProviderProvisioningState>]
  [-SkuFamily <ExpressRouteCircuitSkuFamily>] [-SkuName <String>] [-SkuTier <ExpressRouteCircuitSkuTier>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzExpressRouteCircuit -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -ExpressRouteCircuit <IExpressRouteCircuit> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -179,7 +179,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRout
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
