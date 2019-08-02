@@ -15,7 +15,7 @@
 using System.Diagnostics;
 using Microsoft.Azure.Management.Internal.Resources;
 
-namespace Microsoft.Azure.Commands.HealthcareApisFhirService.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.HealthcareApisService.Test.ScenarioTests
 {
     using System;
     using System.Collections.Generic;
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.HealthcareApisFhirService.Test.ScenarioTests
     using ServiceManagement.Common.Models;
     using TestEnvironmentFactory = Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 
-    public sealed class HeathcareApisFhirServiceController
+    public sealed class HeathcareApisServiceController
     {
         private readonly EnvironmentSetupHelper _helper;
 
@@ -40,9 +40,9 @@ namespace Microsoft.Azure.Commands.HealthcareApisFhirService.Test.ScenarioTests
 
         public GraphRbacManagementClient GraphRbacManagementClient { get; set; }
 
-        public static HeathcareApisFhirServiceController NewInstance => new HeathcareApisFhirServiceController();
+        public static HeathcareApisServiceController NewInstance => new HeathcareApisServiceController();
 
-        public HeathcareApisFhirServiceController()
+        public HeathcareApisServiceController()
         {
             _helper = new EnvironmentSetupHelper();
         }
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.HealthcareApisFhirService.Test.ScenarioTests
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     _helper.RMProfileModule,
                     "AzureRM.Resources.ps1",
-                    _helper.GetRMModulePath(@"AzureRM.HealthcareApisFhirService.psd1"));
+                    _helper.GetRMModulePath(@"AzureRM.HealthcareApisService.psd1"));
 
                 try
                 {
