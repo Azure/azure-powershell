@@ -23,32 +23,30 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightOperationsManagementSuite",SupportsShouldProcess = true)]
-    [Alias("Enable-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightOMS")]
-    [OutputType(typeof(OperationResource))]
-    public class EnableAzureHDInsightOMSCommand : HDInsightCmdletBase
+    [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightMonitoring",SupportsShouldProcess = true)]
+    [OutputType(typeof(bool))]
+    public class EnableAzureHDInsightMonitoringCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
 
         [Parameter(
             Position = 0,
             Mandatory = true,
-            HelpMessage = "Gets or sets the name of the cluster to enable Operations Management Suite(OMS).",
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = true)]
+            HelpMessage = "Gets or sets the name of the cluster to enable monitoring.",
+            ValueFromPipelineByPropertyName = true)]
         [Alias("ClusterName")]
         public string Name { get; set; }
 
         [Parameter(
             Position = 1,
             Mandatory = true,
-            HelpMessage = "Gets or sets the ID of the Operations Management Suite(OMS) workspace.")]
+            HelpMessage = "Gets or sets the ID of the Log Analytics workspace.")]
         public string WorkspaceId { get; set; }
 
         [Parameter(
             Position = 2,
             Mandatory = true,
-            HelpMessage = "Gets to sets the primary key of the Operations Management Suite(OMS) workspace.")]
+            HelpMessage = "Gets to sets the primary key of the Log Analytics workspace.")]
         public string PrimaryKey { get; set; }
 
         [Parameter(
@@ -72,10 +70,10 @@ namespace Microsoft.Azure.Commands.HDInsight
                 PrimaryKey = PrimaryKey
             };
 
-            if (ShouldProcess("Enable Operations Management Suite"))
+            if (ShouldProcess("Enable Monitoring"))
             {
-                var operationResource = HDInsightManagementClient.EnableOMS(ResourceGroupName, Name, monitoringParams);
-                WriteObject(operationResource);
+                HDInsightManagementClient.EnableMonitoring(ResourceGroupName, Name, monitoringParams);
+                WriteObject(true);
             }
         }
     }

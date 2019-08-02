@@ -19,7 +19,6 @@ using Moq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.HDInsight.Test
@@ -34,53 +33,54 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagement.Common.Models.XunitTracingInterceptor(output));
             base.SetupTestsForManagement();
 
+
             scriptActionDetail = new RuntimeScriptActionDetail
-            {
-                ApplicationName = "AppName",
-                DebugInformation = "DebugInfo",
-                EndTime = new DateTime(2016, 1, 1),
-                ExecutionSummary =
+            (
+                applicationName: "AppName",
+                debugInformation: "DebugInfo",
+                endTime: new DateTime(2016, 1, 1).ToString(),
+                executionSummary:
                     new List<Microsoft.Azure.Management.HDInsight.Models.ScriptActionExecutionSummary>
                     {
                         new Microsoft.Azure.Management.HDInsight.Models.ScriptActionExecutionSummary
-                        {
-                            Status = "Succeeded",
-                            InstanceCount = 4
-                        }
+                        (
+                            status: "Succeeded",
+                            instanceCount: 4
+                        )
                     },
-                Name = "ScriptName",
-                Operation = "PostCreation",
-                Parameters = "Parameters",
-                Roles = new List<string> { "HeadNode", "WorkerNode" },
-                ScriptExecutionId = DateTime.UtcNow.Ticks,
-                StartTime = new DateTime(2016, 1, 2),
-                Status = "Succeeded",
-                Uri = new Uri("http://bing.com")
-            };
+                name: "ScriptName",
+                operation: "PostCreation",
+                parameters: "Parameters",
+                roles: new List<string> { "HeadNode", "WorkerNode" },
+                scriptExecutionId: DateTime.UtcNow.Ticks,
+                startTime: new DateTime(2016, 1, 2).ToString(),
+                status: "Succeeded",
+                uri: "http://bing.com"
+            );
 
             scriptActionDetailWithApplicationName = new RuntimeScriptActionDetail
-            {
-                ApplicationName = "AppName",
-                DebugInformation = "DebugInfo",
-                EndTime = new DateTime(2016, 1, 1),
-                ExecutionSummary =
+            (
+                applicationName: "AppName",
+                debugInformation: "DebugInfo",
+                endTime: new DateTime(2016, 1, 1).ToString(),
+                executionSummary:
                     new List<Microsoft.Azure.Management.HDInsight.Models.ScriptActionExecutionSummary>
                     {
                         new Microsoft.Azure.Management.HDInsight.Models.ScriptActionExecutionSummary
-                        {
-                            Status = "Succeeded",
-                            InstanceCount = 1
-                        }
+                        (
+                            status: "Succeeded",
+                            instanceCount: 1
+                        )
                     },
-                Name = "ScriptNameWithApp",
-                Operation = "PostCreation",
-                Parameters = "Parameters",
-                Roles = new List<string> { "EdgeNode" },
-                ScriptExecutionId = DateTime.UtcNow.Ticks,
-                StartTime = new DateTime(2016, 1, 2),
-                Status = "Succeeded",
-                Uri = new Uri("http://bing.com")
-            };
+                name: "ScriptNameWithApp",
+                operation: "PostCreation",
+                parameters: "Parameters",
+                roles: new List<string> { "EdgeNode" },
+                scriptExecutionId: DateTime.UtcNow.Ticks,
+                startTime: new DateTime(2016, 1, 2).ToString(),
+                status: "Succeeded",
+                uri: "http://bing.com"
+            );
         }
 
         [Fact]
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                 ClusterName = ClusterName,
                 ResourceGroupName = ResourceGroupName,
                 Name = scriptActionDetail.Name,
-                Uri = scriptActionDetail.Uri,
+                Uri = new Uri(scriptActionDetail.Uri),
                 Parameters = scriptActionDetail.Parameters,
                 NodeTypes = scriptActionDetail.Roles.Select(r => (RuntimeScriptActionClusterNodeType)Enum.Parse(typeof(RuntimeScriptActionClusterNodeType), r, true)).ToArray(),
                 PersistOnSuccess = true
@@ -102,12 +102,6 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
 
             hdinsightManagementMock.Setup(c => c.ExecuteScriptActions(ResourceGroupName, ClusterName,
                 It.Is<ExecuteScriptActionParameters>(param => CompareScriptActions(param.ScriptActions.First(), scriptActionDetail) && param.PersistOnSuccess == true)))
-                .Returns(new OperationResource
-                {
-                    ErrorInfo = null,
-                    StatusCode = HttpStatusCode.OK,
-                    State = AsyncOperationState.Succeeded
-                })
                 .Verifiable();
 
             submitCmdlet.ExecuteCmdlet();
@@ -116,8 +110,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             commandRuntimeMock.Verify(f => f.WriteObject(
                 It.Is<AzureHDInsightRuntimeScriptActionOperationResource>(
                     scriptOperationResource =>
-                        CompareScriptActions(scriptOperationResource, new AzureHDInsightRuntimeScriptAction(scriptActionDetail)) &&
-                            scriptOperationResource.OperationState == AsyncOperationState.Succeeded.ToString())));
+                        CompareScriptActions(scriptOperationResource, new AzureHDInsightRuntimeScriptAction(scriptActionDetail)))));
             hdinsightManagementMock.VerifyAll();
             hdinsightManagementMock.Verify(c => c.ExecuteScriptActions(ResourceGroupName, ClusterName, It.IsAny<ExecuteScriptActionParameters>()),
                 Times.Once);
@@ -135,7 +128,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                 ClusterName = ClusterName,
                 ResourceGroupName = ResourceGroupName,
                 Name = scriptActionDetailWithApplicationName.Name,
-                Uri = scriptActionDetailWithApplicationName.Uri,
+                Uri = new Uri(scriptActionDetailWithApplicationName.Uri),
                 Parameters = scriptActionDetailWithApplicationName.Parameters,
                 ApplicationName = scriptActionDetailWithApplicationName.ApplicationName,
                 NodeTypes = scriptActionDetailWithApplicationName.Roles.Select(r => (RuntimeScriptActionClusterNodeType)Enum.Parse(typeof(RuntimeScriptActionClusterNodeType), r, true)).ToArray(),
@@ -144,12 +137,6 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
 
             hdinsightManagementMock.Setup(c => c.ExecuteScriptActions(ResourceGroupName, ClusterName,
                 It.Is<ExecuteScriptActionParameters>(param => CompareScriptActions(param.ScriptActions.First(), scriptActionDetailWithApplicationName) && param.PersistOnSuccess == false)))
-                .Returns(new OperationResource
-                {
-                    ErrorInfo = null,
-                    StatusCode = HttpStatusCode.OK,
-                    State = AsyncOperationState.Succeeded
-                })
                 .Verifiable();
 
             submitCmdlet.ExecuteCmdlet();
@@ -179,12 +166,6 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             };
 
             hdinsightManagementMock.Setup(c => c.DeletePersistedScript(ResourceGroupName, ClusterName, scriptActionDetail.Name))
-                .Returns(new OperationResource
-                {
-                    ErrorInfo = null,
-                    StatusCode = HttpStatusCode.OK,
-                    State = AsyncOperationState.Succeeded
-                })
                 .Verifiable();
 
             demoteCmdlet.ExecuteCmdlet();
@@ -205,23 +186,17 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                 HDInsightManagementClient = hdinsightManagementMock.Object,
                 ClusterName = ClusterName,
                 ResourceGroupName = ResourceGroupName,
-                ScriptExecutionId = scriptActionDetail.ScriptExecutionId
+                ScriptExecutionId = scriptActionDetail.ScriptExecutionId.Value
             };
 
-            hdinsightManagementMock.Setup(c => c.PromoteScript(ResourceGroupName, ClusterName, scriptActionDetail.ScriptExecutionId))
-                .Returns(new OperationResource
-                {
-                    ErrorInfo = null,
-                    StatusCode = HttpStatusCode.OK,
-                    State = AsyncOperationState.Succeeded
-                })
+            hdinsightManagementMock.Setup(c => c.PromoteScript(ResourceGroupName, ClusterName, scriptActionDetail.ScriptExecutionId.Value))
                 .Verifiable();
 
             promoteCmdlet.ExecuteCmdlet();
 
             commandRuntimeMock.VerifyAll();
             hdinsightManagementMock.VerifyAll();
-            hdinsightManagementMock.Verify(c => c.PromoteScript(ResourceGroupName, ClusterName, scriptActionDetail.ScriptExecutionId),
+            hdinsightManagementMock.Verify(c => c.PromoteScript(ResourceGroupName, ClusterName, scriptActionDetail.ScriptExecutionId.Value),
                 Times.Once);
         }
 
@@ -229,7 +204,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetPersistedScriptActions()
         {
-            var persistedScripts = new List<RuntimeScriptAction> { scriptActionDetail };
+            var persistedScripts = new List<RuntimeScriptActionDetail> { scriptActionDetail };
             var getCmdlet = new GetAzureHDInsightPersistedScriptAction
             {
                 CommandRuntime = commandRuntimeMock.Object,
@@ -239,12 +214,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             };
 
             hdinsightManagementMock.Setup(c => c.ListPersistedScripts(ResourceGroupName, ClusterName))
-                .Returns(new ClusterListPersistedScriptActionsResponse
-                {
-                    PersistedScriptActions = persistedScripts,
-                    StatusCode = HttpStatusCode.OK,
-                    RequestId = null
-                })
+                .Returns(persistedScripts)
                 .Verifiable();
 
             getCmdlet.ExecuteCmdlet();
@@ -263,7 +233,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetPersistedScriptAction()
         {
-            var persistedScripts = new List<RuntimeScriptAction> { scriptActionDetail };
+            var persistedScripts = new List<RuntimeScriptActionDetail> { scriptActionDetail };
             var getCmdlet = new GetAzureHDInsightPersistedScriptAction
             {
                 CommandRuntime = commandRuntimeMock.Object,
@@ -274,12 +244,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             };
 
             hdinsightManagementMock.Setup(c => c.ListPersistedScripts(ResourceGroupName, ClusterName))
-                .Returns(new ClusterListPersistedScriptActionsResponse
-                {
-                    PersistedScriptActions = persistedScripts,
-                    StatusCode = HttpStatusCode.OK,
-                    RequestId = null
-                })
+                .Returns(persistedScripts)
                 .Verifiable();
 
             getCmdlet.ExecuteCmdlet();
@@ -308,12 +273,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             };
 
             hdinsightManagementMock.Setup(c => c.ListScriptExecutionHistory(ResourceGroupName, ClusterName))
-                .Returns(new ClusterListRuntimeScriptActionDetailResponse
-                {
-                    RuntimeScriptActionDetail = history,
-                    StatusCode = HttpStatusCode.OK,
-                    RequestId = null
-                })
+                .Returns(history)
                 .Verifiable();
 
             getCmdlet.ExecuteCmdlet();
@@ -341,13 +301,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                 ScriptExecutionId = scriptActionDetail.ScriptExecutionId
             };
 
-            hdinsightManagementMock.Setup(c => c.GetScriptExecutionDetail(ResourceGroupName, ClusterName, scriptActionDetail.ScriptExecutionId))
-                .Returns(new ClusterRuntimeScriptActionDetailResponse
-                {
-                    RuntimeScriptActionDetail = scriptActionDetail,
-                    StatusCode = HttpStatusCode.OK,
-                    RequestId = null
-                })
+            hdinsightManagementMock.Setup(c => c.GetScriptExecutionDetail(ResourceGroupName, ClusterName, scriptActionDetail.ScriptExecutionId.Value))
+                .Returns(scriptActionDetail)
                 .Verifiable();
 
             getCmdlet.ExecuteCmdlet();
@@ -358,7 +313,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     scripts =>
                         CompareScriptActionDetails(scripts.Single(), new AzureHDInsightRuntimeScriptActionDetail(scriptActionDetail))), true));
             hdinsightManagementMock.VerifyAll();
-            hdinsightManagementMock.Verify(c => c.GetScriptExecutionDetail(ResourceGroupName, ClusterName, scriptActionDetail.ScriptExecutionId),
+            hdinsightManagementMock.Verify(c => c.GetScriptExecutionDetail(ResourceGroupName, ClusterName, scriptActionDetail.ScriptExecutionId.Value),
                 Times.Once);
         }
 

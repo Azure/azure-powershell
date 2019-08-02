@@ -16,14 +16,13 @@ using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.Azure.Commands.HDInsight.Models.Management;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
-using System.Net;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.HDInsight.Test
 {
-    public class OMSTests : HDInsightTestBase
+    public class MonitoringTests : HDInsightTestBase
     {
-        public OMSTests(Xunit.Abstractions.ITestOutputHelper output)
+        public MonitoringTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagement.Common.Models.XunitTracingInterceptor(output));
             base.SetupTestsForManagement();
@@ -31,11 +30,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void EnableOMS()
+        public void EnableMonitoring()
         {
             SetupConfirmation(commandRuntimeMock);
 
-            var enableOMScmdlet = new EnableAzureHDInsightOMSCommand
+            var enableMonitoringcmdlet = new EnableAzureHDInsightMonitoringCommand
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 HDInsightManagementClient = hdinsightManagementMock.Object,
@@ -52,34 +51,22 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             };
 
             hdinsightManagementMock.Setup(
-                c => c.EnableOMS(ResourceGroupName, ClusterName,
+                c => c.EnableMonitoring(ResourceGroupName, ClusterName,
                 It.Is<ClusterMonitoringRequest>(
                     param => param.WorkspaceId == clusterMonitoringParams.WorkspaceId &&
                                 param.PrimaryKey == clusterMonitoringParams.PrimaryKey)))
-                .Returns(new OperationResource
-                {
-                    ErrorInfo = null,
-                    StatusCode = HttpStatusCode.OK,
-                    State = AsyncOperationState.Succeeded
-                })
                 .Verifiable();
 
-            enableOMScmdlet.ExecuteCmdlet();
+            enableMonitoringcmdlet.ExecuteCmdlet();
 
-            commandRuntimeMock.Verify(f => f.WriteObject(It.Is<OperationResource>(
-                omsout =>
-                    omsout.ErrorInfo == null &&
-                    omsout.StatusCode == HttpStatusCode.OK &&
-                    omsout.State == AsyncOperationState.Succeeded)),
-                    Times.Once);
-
+            commandRuntimeMock.Verify(f => f.WriteObject(It.Is<bool>(omsout => omsout == true)), Times.Once);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetOMS()
+        public void GetMonitoring()
         {
-            var getOMScmdlet = new GetAzureHDInsightOMSCommand
+            var getMonitoringcmdlet = new GetAzureHDInsightMonitoringCommand
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 HDInsightManagementClient = hdinsightManagementMock.Object,
@@ -87,28 +74,30 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                 ResourceGroupName = ResourceGroupName
             };
 
-            hdinsightManagementMock.Setup(c => c.GetOMS(ResourceGroupName, ClusterName))
+            hdinsightManagementMock.Setup(c => c.GetMonitoring(ResourceGroupName, ClusterName))
                 .Returns(new ClusterMonitoringResponse
                 {
-                    ClusterMonitoringEnabled = "{ 'ClusterMonitoringEnabled':'true', 'workspaceId':'1d364e89-bb71-4503-aa3d-a23535aea7bd' }"
+                    ClusterMonitoringEnabled = true,
+                    WorkspaceId = "1d364e89-bb71-4503-aa3d-a23535aea7bd"
                 })
                 .Verifiable();
 
-            getOMScmdlet.ExecuteCmdlet();
+            getMonitoringcmdlet.ExecuteCmdlet();
 
-            commandRuntimeMock.Verify(f => f.WriteObject(It.Is<AzureHDInsightOMS>(
+            commandRuntimeMock.Verify(f => f.WriteObject(It.Is<AzureHDInsightMonitoring>(
                 omsout =>
-                    omsout.ClusterMonitoringEnabled.Contains("1d364e89-bb71-4503-aa3d-a23535aea7bd"))),
+                    omsout.ClusterMonitoringEnabled == true &&
+                    omsout.WorkspaceId == "1d364e89-bb71-4503-aa3d-a23535aea7bd")),
                     Times.Once);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void DisableOMS()
+        public void DisableMonitoring()
         {
             SetupConfirmation(commandRuntimeMock);
 
-            var disableOMScmdlet = new DisableAzureHDInsightOMSCommand
+            var disableMonitoringcmdlet = new DisableAzureHDInsightMonitoringCommand
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 HDInsightManagementClient = hdinsightManagementMock.Object,
@@ -116,23 +105,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                 ResourceGroupName = ResourceGroupName
             };
 
-            hdinsightManagementMock.Setup(c => c.DisableOMS(ResourceGroupName, ClusterName))
-                .Returns(new OperationResource
-                {
-                    ErrorInfo = null,
-                    StatusCode = HttpStatusCode.OK,
-                    State = AsyncOperationState.Succeeded
-                })
-                .Verifiable();
+            hdinsightManagementMock.Setup(c => c.DisableMonitoring(ResourceGroupName, ClusterName)).Verifiable();
 
-            disableOMScmdlet.ExecuteCmdlet();
+            disableMonitoringcmdlet.ExecuteCmdlet();
 
-            commandRuntimeMock.Verify(f => f.WriteObject(It.Is<OperationResource>(
-                omsout =>
-                    omsout.ErrorInfo == null &&
-                    omsout.StatusCode == HttpStatusCode.OK &&
-                    omsout.State == AsyncOperationState.Succeeded)),
-                    Times.Once);
+            commandRuntimeMock.Verify(f => f.WriteObject(It.Is<bool>(omsout => omsout == true)), Times.Once);
 
         }
     }
