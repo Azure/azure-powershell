@@ -211,9 +211,10 @@ function Test-InitializeSubnetPolicy
     $rgname = Get-ResourceGroupName
     $vnetName = Get-ResourceName
     $subnetName = Get-ResourceName
-    $rglocation = Get-ProviderLocation ResourceManagement
+    $nsgName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement "eastus"
     $resourceTypeParent = "Microsoft.Network/virtualNetworks"
-    $location = Get-ProviderLocation $resourceTypeParent
+    $location = Get-ProviderLocation $resourceTypeParent "eastus"
     $serviceName = "Microsoft.Databricks/workspaces"
     
     try 
@@ -221,9 +222,11 @@ function Test-InitializeSubnetPolicy
         # Create the resource group
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
 
-        # Create the Virtual Network
+        # Create the nsg, subnet and vNet
+        $nsg = New-AzNetworkSecurityGroup -Name $nsgName -ResourceGroupName $rgname -Location $location
         $delegation = New-AzDelegation -Name adbDelegation -ServiceName "Microsoft.Databricks/workspaces"
-        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24 -Delegation $delegation
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24 -Delegation $delegation -NetworkSecurityGroup $nsg
+
         New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         $vNet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname 
         # Initialize subnet for delegated service
