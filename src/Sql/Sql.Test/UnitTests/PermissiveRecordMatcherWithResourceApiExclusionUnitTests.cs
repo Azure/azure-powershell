@@ -7,11 +7,11 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
 {
-    public class PermissiveRecordMatcherUnitTests
+    public class PermissiveRecordMatcherWithResourceApiExclusionUnitTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void PermissiveRecordMatcherWithApiExclusion_ContainsIgnoredProvider()
+        public void PermissiveRecordMatcherWithResourceApiExclusion_ContainsIgnoredProvider()
         {
             var testRequestUris = new string[]
             {
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
             var numIgnored = 0;
             foreach (var testUri in requestUrisToTest)
             {
-                var result = PermissiveRecordMatcherWithApiExclusion.ContainsIgnoredProvider(
+                var result = PermissiveRecordMatcherWithResourceApiExclusion.ContainsIgnoredProvider(
                     requestUri: testUri,
                     shouldIgnoreGenericResource: false,
                     providersToIgnore: new Dictionary<string, string>(),
