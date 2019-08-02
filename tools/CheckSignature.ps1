@@ -71,7 +71,7 @@ function Check-All {
 
     # -------------------------------------
 
-    $exts = "*.ps1", "*.psm1, *.ps1xml"
+    $exts = "*.ps1", "*.psm1", "*.ps1xml"
     if ($Env:CheckPsd1 -ieq "True") {
         $exts += "*.psd1"
     }
