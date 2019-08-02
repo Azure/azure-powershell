@@ -369,7 +369,7 @@ Accept wildcard characters: False
 ```
 
 ### -RebootSetting
-Reboot Seeting.
+Reboot Setting.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Automation.Model.UpdateManagement.RebootSetting

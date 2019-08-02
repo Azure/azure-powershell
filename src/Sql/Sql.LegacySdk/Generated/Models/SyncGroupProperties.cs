@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.Sql.LegacySdk.Models
         private Microsoft.Azure.Management.Sql.LegacySdk.Models.ConflictResolutionPolicyType? _conflictResolutionPolicy;
         
         /// <summary>
-        /// Optional. The policy of resolving confliction between hub and
+        /// Optional. The policy of resolving conflicts between hub and
         /// member database in the sync group.The possible values: 'HubWin'
         /// and 'MemberWin'.
         /// </summary>
