@@ -18,13 +18,13 @@ using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace Microsoft.Azure.Commands.HealthcareApisFhirService.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.HealthcareApisService.Test.ScenarioTests
 {
-    public class HealthcareApisFhirServiceTests : RMTestBase
+    public class HealthcareApisServiceTests : RMTestBase
     {
         public XunitTracingInterceptor _logger;
 
-        public HealthcareApisFhirServiceTests(ITestOutputHelper output)
+        public HealthcareApisServiceTests(ITestOutputHelper output)
         {
             _logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(_logger);
@@ -32,9 +32,9 @@ namespace Microsoft.Azure.Commands.HealthcareApisFhirService.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAzRmHealthcareApisFhirService()
+        public void TestAzRmHealthcareApisService()
         {
-            HeathcareApisFhirServiceController.NewInstance.RunPsTest(_logger, "Test-AzRmHealthcareApisFhirService");
+            HeathcareApisServiceController.NewInstance.RunPsTest(_logger, "Test-AzRmHealthcareApisService");
         }
     }
 }

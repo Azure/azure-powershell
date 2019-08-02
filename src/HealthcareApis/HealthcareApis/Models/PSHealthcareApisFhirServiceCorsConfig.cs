@@ -15,24 +15,27 @@
 using Microsoft.Azure.Management.HealthcareApis.Models;
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.HealthcareApisFhirService.Models
+namespace Microsoft.Azure.Commands.HealthcareApisService.Models
 {
-    public class PSServiceConfig
+    public class PSHealthcareApisFhirServiceCorsConfig
     {
-
-        public PSServiceConfig(ServicesProperties servicesProperties)
+        public PSHealthcareApisFhirServiceCorsConfig(ServiceCorsConfigurationInfo serviceCorsConfigurationInfo)
         {
-            this.AuthenticationConfiguration = new PSAuthenticationConfig(servicesProperties.AuthenticationConfiguration);
-            this.CosmosDbConfiguration = new PSCosmosDbConfig(servicesProperties.CosmosDbConfiguration);
-            this.CorsConfiguration = new PSCorsConfig(servicesProperties.CorsConfiguration);
+            this.Origins = serviceCorsConfigurationInfo.Origins;
+            this.Headers = serviceCorsConfigurationInfo.Headers;
+            this.Methods = serviceCorsConfigurationInfo.Methods;
+            this.MaxAge = serviceCorsConfigurationInfo.MaxAge;
+            this.AllowCredentials = serviceCorsConfigurationInfo.AllowCredentials;
         }
 
-        public IList<PSAccessPolicyEntry> AccessPolicies { get; private set; }
+        public IList<string> Origins { get; private set; }
 
-        public PSCosmosDbConfig CosmosDbConfiguration { get; private set; }
+        public IList<string> Headers { get; private set; }
 
-        public PSAuthenticationConfig AuthenticationConfiguration { get; private set; }
+        public IList<string> Methods { get; private set; }
 
-        public PSCorsConfig CorsConfiguration { get; private set; }
+        public int? MaxAge { get; private set; }
+
+        public bool? AllowCredentials { get; private set; }
     }
 }

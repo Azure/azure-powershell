@@ -16,11 +16,11 @@ using Microsoft.Azure.Management.HealthcareApis.Models;
 using System;
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.HealthcareApisFhirService.Models
+namespace Microsoft.Azure.Commands.HealthcareApisService.Models
 {
-    public class PSFhirAccount
+    public class PSHealthcareApisService
     {
-        public PSFhirAccount(ServicesDescription serviceDescription)
+        public PSHealthcareApisService(ServicesDescription serviceDescription)
         {
             this.ResourceGroupName = ParseResourceGroupFromId(serviceDescription.Id);
             this.Name = serviceDescription.Name;
@@ -28,7 +28,8 @@ namespace Microsoft.Azure.Commands.HealthcareApisFhirService.Models
             this.Location = serviceDescription.Location;
             this.ResourceType = serviceDescription.Type;
             this.Tags = serviceDescription.Tags;
-            this.Properties = new PSServiceConfig(serviceDescription.Properties);
+            this.Properties = new PSHealthcareApisServiceConfig(serviceDescription.Properties);
+            this.Etag = serviceDescription.Etag;
         }
         public string ResourceGroupName { get; private set; }
 
@@ -42,12 +43,13 @@ namespace Microsoft.Azure.Commands.HealthcareApisFhirService.Models
 
         public IDictionary<string, string> Tags { get; private set; }
 
-        public PSServiceConfig Properties { get; private set; }
+        public PSHealthcareApisServiceConfig Properties { get; private set; }
 
-        public static PSFhirAccount Create(ServicesDescription healthcareApisAccount)
+        public string Etag { get; private set; }
+
+        public static PSHealthcareApisService Create(ServicesDescription healthcareApisAccount)
         {
-            var result = new PSFhirAccount(healthcareApisAccount);
-            return result;
+            return new PSHealthcareApisService(healthcareApisAccount);
         }
 
         private static string ParseResourceGroupFromId(string idFromServer)
@@ -61,5 +63,7 @@ namespace Microsoft.Azure.Commands.HealthcareApisFhirService.Models
 
             return null;
         }
+
+
     }
 }

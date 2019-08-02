@@ -3,7 +3,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Management.HealthcareApis;
 using System;
 
-namespace Microsoft.Azure.Commands.HealthcareApisFhirService.Common
+namespace Microsoft.Azure.Commands.HealthcareApisService.Common
 {
     public partial class HealthcareApisManagementClientWrapper
     {

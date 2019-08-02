@@ -12,32 +12,26 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.HealthcareApisFhirService.Models;
+using Microsoft.Azure.Commands.HealthcareApisService.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Management.HealthcareApis;
 using Microsoft.Azure.Management.HealthcareApis.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.HealthcareApisFhirService.Common
+namespace Microsoft.Azure.Commands.HealthcareApisService.Common
 {
     public abstract class HealthcareApisBaseCmdlet : AzureRMCmdlet
     {
         private HealthcareApisManagementClientWrapper _healthcareApisManagementClientWrapper;
 
-        protected const string HealthcareApisAccountNounStr = "AzHealthcareApisAccount";
-        protected const string HealthcareApisAccountConfigNounStr = HealthcareApisAccountNounStr + "Config";
-        protected const string HealthcareApisAccountAuthenticationConfigNounStr = HealthcareApisAccountNounStr + "AuthenticationConfig";
-        protected const string HealthcareApisAccountCosmosDbConfigNounStr = HealthcareApisAccountNounStr + "AuthenticationConfig";
-        protected const string HealthcareApisAccountCorsConfigNounStr = HealthcareApisAccountNounStr + "AuthenticationConfig";
-        protected const string HealthcareApisAccountAccessPoliciesConfigNounStr = HealthcareApisAccountNounStr + "AccessPOliciesConfig";
-
         protected const string HealthcareApisAccountNameAlias = "HealthcareApisName";
-        protected const string AccountNameAlias = "AccountName";
+        protected const string FhirServiceNameAlias = "FhirServiceName";
 
         protected const string TagsAlias = "Tags";
 
@@ -82,6 +76,18 @@ namespace Microsoft.Azure.Commands.HealthcareApisFhirService.Common
             }
         }
 
+        public string TenantID()
+        {
+            if (!string.IsNullOrEmpty(DefaultProfile.DefaultContext.Account.Id))
+            {
+                return DefaultProfile.DefaultContext.Tenant.Id;
+            }
+            else
+            {
+                return Guid.NewGuid().ToString();
+            }
+        }
+
         /// <summary>
         /// Run Cmdlet with Error Handling (report error correctly)
         /// </summary>
@@ -102,18 +108,18 @@ namespace Microsoft.Azure.Commands.HealthcareApisFhirService.Common
         {
             if (healthcareApisAccount != null)
             {
-                WriteObject(HealthcareApisFhirService.Models.PSFhirAccount.Create(healthcareApisAccount));
+                WriteObject(HealthcareApisService.Models.PSHealthcareApisService.Create(healthcareApisAccount));
             }
         }
 
         protected void WriteHealthcareApisAccountList(
           IEnumerable<ServicesDescription> healthcareApisAccounts)
         {
-            List<PSFhirAccount> output = new List<PSFhirAccount>();
+            List<PSHealthcareApisService> output = new List<PSHealthcareApisService>();
             if (healthcareApisAccounts != null)
             {
                 healthcareApisAccounts.ForEach(
-                    healthcareApisAccount => output.Add(PSFhirAccount.Create(healthcareApisAccount)));
+                    healthcareApisAccount => output.Add(PSHealthcareApisService.Create(healthcareApisAccount)));
             }
 
             WriteObject(output, true);
@@ -138,6 +144,26 @@ namespace Microsoft.Azure.Commands.HealthcareApisFhirService.Common
             resourceGroupName = null;
             resourceName = null;
             return false;
+        }
+
+        public static PSHealthcareApisService ToPSFhirService(ServicesDescription serviceDescription)
+        {
+            return new PSHealthcareApisService(serviceDescription);
+        }
+
+        public static List<PSHealthcareApisService> ToPSFhirServices(IPage<ServicesDescription> fhirServiceApps)
+        {
+            using (IEnumerator<ServicesDescription> sdenumerator = fhirServiceApps.GetEnumerator())
+            {
+                var newpne = new List<PSHealthcareApisService>();
+                while (sdenumerator.MoveNext())
+                {
+                    PSHealthcareApisService psHealthCareFhirService = ToPSFhirService(sdenumerator.Current);
+                    newpne.Add(psHealthCareFhirService);
+                }
+
+                return newpne;
+            }
         }
     }
 }

@@ -12,38 +12,46 @@
 // limitations under the License.
 // 
 
-using Microsoft.Azure.Commands.HealthcareApisFhirService.Common;
-using Microsoft.Azure.Commands.HealthcareApisFhirService.Models;
+using Microsoft.Azure.Commands.HealthcareApisService.Common;
+using Microsoft.Azure.Commands.HealthcareApisService.Models;
 using Microsoft.Azure.Management.HealthcareApis;
+using Microsoft.Azure.Management.HealthcareApis.Models;
+using Microsoft.Rest.Azure;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.HealthcareApisFhirService.Commands
+namespace Microsoft.Azure.Commands.HealthcareApisService.Commands
 {
 
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HealthcareApisFhirService", DefaultParameterSetName = ServiceNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSFhirAccount))]
-    public class GetAzureRmHealthcareApisFhirService : HealthcareApisBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HealthcareApisService", DefaultParameterSetName = ListParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSHealthcareApisService))]
+    public class GetAzureRmHealthcareApisService : HealthcareApisBaseCmdlet
     {
         protected const string ServiceNameParameterSet = "ServiceNameParameterSet";
         protected const string ResourceIdParameterSet = "ResourceIdParameterSet";
-
-        [Parameter(
-          Mandatory = true,
-          ParameterSetName = ServiceNameParameterSet,
-          ValueFromPipelineByPropertyName = true,
-          HelpMessage = "HealthcareApiFhirService Name.")]
-        [Alias(HealthcareApisAccountNameAlias, AccountNameAlias)]
-        [ValidateNotNullOrEmpty]
-        [ValidatePattern("^[a-zA-Z0-9][a-zA-Z0-9_.-]*$")]
-        [ValidateLength(2, 64)]
-        public string Name { get; set; }
+        protected const string ListParameterSet = "ListParameterSet";
 
         [Parameter(
            Mandatory = true,
            ParameterSetName = ServiceNameParameterSet,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "Resource Group Name.")]
+        [Parameter(
+           Mandatory = false,
+           ParameterSetName = ListParameterSet,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "Resource Group Name.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
+
+        [Parameter(
+          Mandatory = true,
+          ParameterSetName = ServiceNameParameterSet,
+          ValueFromPipelineByPropertyName = true,
+           HelpMessage = "HealthcareApis Service Name.")]
+        [Alias(HealthcareApisAccountNameAlias, FhirServiceNameAlias)]
+        [ValidateNotNullOrEmpty]
+        [ValidatePattern("^[a-zA-Z0-9][a-zA-Z0-9_.-]*$")]
+        [ValidateLength(2, 64)]
+        public string Name { get; set; }
 
 
         [Parameter(
@@ -70,7 +78,6 @@ namespace Microsoft.Azure.Commands.HealthcareApisFhirService.Commands
                         }
                     case ResourceIdParameterSet:
                         {
-
                             string resourceGroupName;
                             string resourceName;
 
@@ -80,12 +87,24 @@ namespace Microsoft.Azure.Commands.HealthcareApisFhirService.Commands
                                 WriteHealthcareApisAccount(healthcareApisAccount);
                             }
                             break;
-
+                        }
+                    case ListParameterSet:
+                        {
+                            if (string.IsNullOrEmpty(this.ResourceGroupName))
+                            {
+                                IPage<ServicesDescription> healthcareApisServicesBySubscription = this.HealthcareApisClient.Services.List();
+                                this.WriteObject(ToPSFhirServices(healthcareApisServicesBySubscription), enumerateCollection: true);
+                                break;
+                            }
+                            else
+                            {
+                                IPage<ServicesDescription> healthcareApisServicesResourceGroup = this.HealthcareApisClient.Services.ListByResourceGroup(this.ResourceGroupName);
+                                this.WriteObject(ToPSFhirServices(healthcareApisServicesResourceGroup), enumerateCollection: true);
+                                break;
+                            }
                         }
                 }
-
             });
-
         }
     }
 }

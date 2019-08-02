@@ -14,15 +14,16 @@
 
 using Microsoft.Azure.Management.HealthcareApis.Models;
 
-namespace Microsoft.Azure.Commands.HealthcareApisFhirService.Models
+namespace Microsoft.Azure.Commands.HealthcareApisService.Models
 {
-    public class PSAccessPolicyEntry
+    public class PSHealthcareApisFhirServiceCosmosDbConfig
     {
-        public PSAccessPolicyEntry(ServiceAccessPolicyEntry serviceAccessPolicyEntry)
+        internal static readonly int defaultOfferThroughput = 400;
+        public PSHealthcareApisFhirServiceCosmosDbConfig(ServiceCosmosDbConfigurationInfo serviceCosmosDbConfigurationInfo)
         {
-
-            this.ObjectId = serviceAccessPolicyEntry.ObjectId;
+            this.OfferThroughput = serviceCosmosDbConfigurationInfo.OfferThroughput;
         }
-        public string ObjectId { get; private set; }
+
+        public int? OfferThroughput { get; private set; }
     }
 }

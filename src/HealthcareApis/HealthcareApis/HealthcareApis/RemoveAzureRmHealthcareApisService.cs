@@ -12,55 +12,60 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.HealthcareApisFhirService.Common;
-using Microsoft.Azure.Commands.HealthcareApisFhirService.Models;
-using Microsoft.Azure.Commands.HealthcareApisFhirService.Properties;
+using Microsoft.Azure.Commands.HealthcareApisService.Properties;
+using Microsoft.Azure.Commands.HealthcareApisService.Common;
+using Microsoft.Azure.Commands.HealthcareApisService.Models;
 using Microsoft.Azure.Management.HealthcareApis;
 using System.Globalization;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.HealthcareApisFhirService.Commands
+namespace Microsoft.Azure.Commands.HealthcareApisService.Commands
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HealthcareApisFhirService", DefaultParameterSetName = ServiceNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class RemoveAzureRmHealthcareApisFhirService : HealthcareApisBaseCmdlet
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HealthcareApisService", DefaultParameterSetName = ServiceNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    public class RemoveAzureRmHealthcareApisService : HealthcareApisBaseCmdlet
     {
         protected const string ServiceNameParameterSet = "ServiceNameParameterSet";
         protected const string ResourceIdParameterSet = "ResourceIdParameterSet";
         protected const string InputObjectParameterSet = "InputObjectParameterSet";
 
         [Parameter(
-            Position = 0,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = ServiceNameParameterSet,
-            HelpMessage = "Maps Account Name.")]
+          ParameterSetName = ServiceNameParameterSet,
+          Mandatory = true,
+          ValueFromPipelineByPropertyName = true,
+          HelpMessage = "HealthcareApis Service Name.")]
+        [Alias(HealthcareApisAccountNameAlias, FhirServiceNameAlias)]
         [ValidateNotNullOrEmpty]
+        [ValidatePattern("^[a-zA-Z0-9][a-zA-Z0-9_.-]*$")]
+        [ValidateLength(2, 64)]
         public string Name { get; set; }
 
         [Parameter(
-           Position = 1,
+           ParameterSetName = ServiceNameParameterSet,
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
-           ParameterSetName = ServiceNameParameterSet,
            HelpMessage = "Resource Group Name.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
           ParameterSetName = InputObjectParameterSet,
-          HelpMessage = "HealthcareApis fhir service piped from Get-AzHealthcareApisFhirService.",
+          HelpMessage = "HealthcareApis service object",
           ValueFromPipeline = true)]
-        public PSFhirAccount InputObject { get; set; }
-
+        public PSHealthcareApisService InputObject { get; set; }
 
         [Parameter(
             Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = ResourceIdParameterSet,
-            HelpMessage = "HealthcareApis Fhir Service ResourceId.")]
+            HelpMessage = "HealthcareApis Service ResourceId.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Run cmdlet as a job in the background.")]
+        public SwitchParameter AsJob { get; set; }
 
         public override void ExecuteCmdlet()
         {

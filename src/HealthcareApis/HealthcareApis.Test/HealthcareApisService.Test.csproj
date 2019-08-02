@@ -12,12 +12,12 @@
 
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.HealthcareApis">
-      <HintPath>..\..\..\..\poojaforkhealthcareapis\artifacts\bin\Microsoft.Azure.Management.HealthcareApis\Debug\netstandard2.0\Microsoft.Azure.Management.HealthcareApis.dll</HintPath>
+      <HintPath>..\..\..\..\Azure-SDK\artifacts\bin\Microsoft.Azure.Management.HealthcareApis\Debug\netstandard2.0\Microsoft.Azure.Management.HealthcareApis.dll</HintPath>
     </Reference>
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="SessionRecords\Microsoft.Azure.Commands.HealthcareApisFhirService.Test.ScenarioTests.HealthcareApisFhirServiceTests\TestAzRmHealthcareApisFhirService.json">
+    <None Update="SessionRecords\Microsoft.Azure.Commands.HealthcareApisService.Test.ScenarioTests.HealthcareApisServiceTests\TestAzRmHealthcareApisService.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

@@ -14,11 +14,13 @@
 
 using Microsoft.Azure.Management.HealthcareApis.Models;
 
-namespace Microsoft.Azure.Commands.HealthcareApisFhirService.Models
+namespace Microsoft.Azure.Commands.HealthcareApisService.Models
 {
-    public class PSAuthenticationConfig
+    public class PSHealthcareApisFhirServiceAuthenticationConfig
     {
-        public PSAuthenticationConfig(ServiceAuthenticationConfigurationInfo serviceAuthenticationConfigurationInfo)
+        internal static readonly string defaultAudience = "https://azurehealthcareapis.com";
+        internal static readonly string defaultAuthorityPrefix = "https://login.microsoftonline.com/";
+        public PSHealthcareApisFhirServiceAuthenticationConfig(ServiceAuthenticationConfigurationInfo serviceAuthenticationConfigurationInfo)
         {
             this.Authority = serviceAuthenticationConfigurationInfo.Authority;
             this.Audience = serviceAuthenticationConfigurationInfo.Audience;

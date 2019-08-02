@@ -21,9 +21,9 @@ $global:resourceType = "Microsoft.HealthcareApis/services"
 
 <#
 .SYNOPSIS
-Tests CRUD Operations for HealthcareApisFhirService.
+Tests CRUD Operations for HealthcareApis Fhir Service.
 #>
-function Test-AzRmHealthcareApisFhirService{
+function Test-AzRmHealthcareApisService{
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
@@ -37,23 +37,46 @@ function Test-AzRmHealthcareApisFhirService{
 		# Create Resource Group
 		New-AzResourceGroup -Name $rgname -Location $location
 
-		# Create App
-		$created = New-AzHealthcareApisFhirService -Name $rname -ResourceGroupName  $rgname -Location $location -CosmosOfferThroughput $offerThroughput;
-		
-		$actual = Get-AzHealthcareApisFhirService -ResourceGroupName $rgname -Name $rname
+	# Create App
+		$created = New-AzHealthcareApisService -Name $rname -ResourceGroupName  $rgname -Location $location -CosmosOfferThroughput $offerThroughput;
 	
+	    $actual = Get-AzHealthcareApisService -ResourceGroupName $rgname -Name $rname
+
 		# Assert
 		Assert-AreEqual $actual.Name $rname
 		Assert-AreEqual $actual.Properties.CosmosDbConfiguration.OfferThroughput $offerThroughput
+		#Update using parameters
+		$updated = Set-AzHealthcareApisService -ResourceId $actual.Id -CosmosOfferThroughput $newOfferThroughput;
 
-		$updated = Set-AzHealthcareApisFhirService -ResourceId $actual.Id -CosmosOfferThroughput $newOfferThroughput;
-
-		$updatedAccount = Get-AzHealthcareApisFhirService -ResourceGroupName $rgname -Name $rname
-		# Assert
+		$updatedAccount = Get-AzHealthcareApisService -ResourceGroupName $rgname -Name $rname
+		# Assert the update
 		Assert-AreEqual $updatedAccount.Name $rname
 		Assert-AreEqual $updatedAccount.Properties.CosmosDbConfiguration.OfferThroughput $newOfferThroughput
 
-		Remove-AzHealthcareApisFhirService -ResourceGroupName $rgname -Name $rname		
+		$rname1 = "pstestrn9091"
+
+		$created1 = New-AzHealthcareApisService -Name $rname1 -ResourceGroupName  $rgname -Location $location -CosmosOfferThroughput $offerThroughput;
+		
+		$actual1 = Get-AzHealthcareApisService -ResourceGroupName $rgname -Name $rname1
+
+		# Assert
+		Assert-AreEqual $actual1.Name $rname1
+		Assert-AreEqual $actual1.Properties.CosmosDbConfiguration.OfferThroughput $offerThroughput
+
+		$list = Get-AzHealthcareApisService -ResourceGroupName $rgname
+
+		$app1 = $list | where {$_.Name -eq $rname} | Select-Object -First 1
+		$app2 = $list | where {$_.Name -eq $rname1} | Select-Object -First 1
+
+		Assert-AreEqual 2 @($list).Count
+		Assert-AreEqual $rname $app1.Name
+		Assert-AreEqual $rname1 $app2.Name
+
+		$list | Remove-AzHealthcareApisService
+
+		$list = Get-AzHealthcareApisService -ResourceGroupName $rgname
+		
+		Assert-AreEqual 0 @($list).Count
 	}
 	finally{
 		# Clean up
