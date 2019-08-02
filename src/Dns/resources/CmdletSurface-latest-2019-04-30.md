@@ -1,4 +1,4 @@
-### AzDnsRecordSet [Get, New, Remove, Set, Update]
+### AzDnsRecordSet [Get, New, Remove, Set, Update] `IRecordSet, Boolean`
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
   - ZoneName `String`
@@ -31,13 +31,13 @@
   - TimeToLive `Int64`
   - TxtRecord `ITxtRecord[]`
 
-### AzDnsResourceReference [Get]
+### AzDnsResourceReference [Get] `IDnsResourceReferenceResultProperties`
   - SubscriptionId `String[]`
   - InputObject `IDnsIdentity`
   - Parameter `IDnsResourceReferenceRequest`
   - TargetResource `ISubResource[]`
 
-### AzDnsZone [Get, New, Remove, Set, Update]
+### AzDnsZone [Get, New, Remove, Set, Update] `IZone, Boolean`
   - SubscriptionId `String[]`
   - Name `String`
   - ResourceGroupName `String`
