@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 {
@@ -83,7 +84,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             Mandatory = true,
             HelpMessage = "The maximum storage quota allowed for a file system in bytes")]
         [ValidateNotNullOrEmpty]
-        public long? UsageThreshold { get; set; }
+        public long UsageThreshold { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -114,6 +115,18 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             HelpMessage = "A hashtable array which represents the export policy")]
         [ValidateNotNullOrEmpty]
         public PSNetAppFilesVolumeExportPolicy ExportPolicy { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "A hashtable array which represents the protocol types")]
+        [ValidateNotNullOrEmpty]
+        public List<string> ProtocolTypes { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "A hashtable which represents mount targets of the volume")]
+        [ValidateNotNullOrEmpty]
+        public Hashtable MountTargets { get; }
 
         [Parameter(
             Mandatory = false,
@@ -149,6 +162,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 SubnetId = SubnetId,
                 Location = Location,
                 ExportPolicy = (ExportPolicy != null) ? ModelExtensions.ConvertExportPolicyFromPs(ExportPolicy) : null,
+                ProtocolTypes = ProtocolTypes,
                 Tags = Tag
             };
 

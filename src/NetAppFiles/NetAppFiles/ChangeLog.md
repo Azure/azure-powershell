@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.1.2
+* Addition of ProtocolType and MountTarget to volume
+* Pool size and Volume usageThreshold required on creation
+
 * Fixed miscellaneous typos across module
 
 ## Version 0.1.1
