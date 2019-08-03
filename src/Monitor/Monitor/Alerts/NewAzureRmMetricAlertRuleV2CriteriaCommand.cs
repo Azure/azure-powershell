@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// <summary>
         /// Gets or sets the rule DynamicThreshold
         /// </summary>
-        [Parameter(ParameterSetName = DynamicThresholdParameterSet, Mandatory = true, HelpMessage = "Dynamic Threshold Type")]
+        [Parameter(ParameterSetName = DynamicThresholdParameterSet, Mandatory = true, HelpMessage = "Switch parameter for using Dynamic Threshold Type")]
         public SwitchParameter DynamicThreshold { get; set; }
 
         /// <summary>
