@@ -17,9 +17,9 @@ Creates or updates a static or dynamic public IP address.
 New-AzPublicIPAddress -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-AllocationMethod <IPAllocationMethod>] [-DdosCustomPolicyId <String>]
  [-DdosProtectionCoverage <DdosSettingsProtectionCoverage>] [-DomainNameLabel <String>] [-Etag <String>]
- [-Fqdn <String>] [-IPAddress <String>] [-IPConfigurationEtag <String>] [-IPConfigurationId <String>]
- [-IPConfigurationName <String>] [-IPConfigurationProperty <IIPConfigurationPropertiesFormat>]
- [-IPTag <IIPTag[]>] [-Id <String>] [-IdleTimeoutInMinutes <Int32>] [-IpAddressVersion <IPVersion>]
+ [-Fqdn <String>] [-IPAddress <String>] [-IPAddressVersion <IPVersion>] [-IPConfigurationEtag <String>]
+ [-IPConfigurationFormat <IIPConfigurationPropertiesFormat>] [-IPConfigurationId <String>]
+ [-IPConfigurationName <String>] [-IPTag <IIPTag[]>] [-Id <String>] [-IdleTimeoutInMinutes <Int32>]
  [-Location <String>] [-PrefixId <String>] [-ProvisioningState <String>] [-ResourceGuid <String>]
  [-ReverseFqdn <String>] [-SkuName <PublicIPAddressSkuName>] [-Tag <Hashtable>] [-Zone <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -37,12 +37,12 @@ New-AzPublicIPAddress -Name <String> -ResourceGroupName <String> -SubscriptionId
 New-AzPublicIPAddress -InputObject <INetworkIdentity> [-AllocationMethod <IPAllocationMethod>]
  [-DdosCustomPolicyId <String>] [-DdosProtectionCoverage <DdosSettingsProtectionCoverage>]
  [-DomainNameLabel <String>] [-Etag <String>] [-Fqdn <String>] [-IPAddress <String>]
- [-IPConfigurationEtag <String>] [-IPConfigurationId <String>] [-IPConfigurationName <String>]
- [-IPConfigurationProperty <IIPConfigurationPropertiesFormat>] [-IPTag <IIPTag[]>] [-Id <String>]
- [-IdleTimeoutInMinutes <Int32>] [-IpAddressVersion <IPVersion>] [-Location <String>] [-PrefixId <String>]
- [-ProvisioningState <String>] [-ResourceGuid <String>] [-ReverseFqdn <String>]
- [-SkuName <PublicIPAddressSkuName>] [-Tag <Hashtable>] [-Zone <String[]>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-IPAddressVersion <IPVersion>] [-IPConfigurationEtag <String>]
+ [-IPConfigurationFormat <IIPConfigurationPropertiesFormat>] [-IPConfigurationId <String>]
+ [-IPConfigurationName <String>] [-IPTag <IIPTag[]>] [-Id <String>] [-IdleTimeoutInMinutes <Int32>]
+ [-Location <String>] [-PrefixId <String>] [-ProvisioningState <String>] [-ResourceGuid <String>]
+ [-ReverseFqdn <String>] [-SkuName <PublicIPAddressSkuName>] [-Tag <Hashtable>] [-Zone <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -271,7 +271,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IpAddressVersion
+### -IPAddressVersion
 The public IP address version.
 
 ```yaml
@@ -292,6 +292,23 @@ A unique read-only string that changes whenever the resource is updated.
 
 ```yaml
 Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -IPConfigurationFormat
+Properties of the IP configuration
+To construct, see NOTES section for IPCONFIGURATIONFORMAT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IIPConfigurationPropertiesFormat
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -325,23 +342,6 @@ This name can be used to access the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -IPConfigurationProperty
-Properties of the IP configuration
-To construct, see NOTES section for IPCONFIGURATIONPROPERTY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IIPConfigurationPropertiesFormat
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -636,7 +636,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### IPCONFIGURATIONPROPERTY <IIPConfigurationPropertiesFormat>: Properties of the IP configuration
+#### IPCONFIGURATIONFORMAT <IIPConfigurationPropertiesFormat>: Properties of the IP configuration
   - `[PrivateIPAddress <String>]`: The private IP address of the IP configuration.
   - `[PrivateIPAllocationMethod <IPAllocationMethod?>]`: The private IP address allocation method.
   - `[ProvisioningState <String>]`: Gets the provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.

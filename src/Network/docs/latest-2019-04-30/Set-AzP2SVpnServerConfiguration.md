@@ -14,12 +14,13 @@ Creates a P2SVpnServerConfiguration to associate with a VirtualWan if it doesn't
 
 ### UpdateExpanded (Default)
 ```
-Set-AzP2SVpnServerConfiguration -ResourceGroupName <String> -ResourceName <String> -SubscriptionId <String>
- -VirtualWanName <String> -Name <String> [-Etag <String>] [-Id <String>]
+Set-AzP2SVpnServerConfiguration -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -VirtualWanName <String> [-Etag <String>] [-Id <String>]
  [-RadiusClientRootCertificate <IP2SVpnServerConfigRadiusClientRootCertificate[]>]
  [-RadiusServerAddress <String>]
  [-RadiusServerRootCertificate <IP2SVpnServerConfigRadiusServerRootCertificate[]>]
- [-RadiusServerSecret <String>] [-ResourceName2 <String>] [-VpnClientIPsecPolicy <IIpsecPolicy[]>]
+ [-RadiusServerSecret <String>] [-ResourceName <String>] [-ResourceName2 <String>]
+ [-VpnClientIPsecPolicy <IIpsecPolicy[]>]
  [-VpnClientRevokedCertificate <IP2SVpnServerConfigVpnClientRevokedCertificate[]>]
  [-VpnClientRootCertificate <IP2SVpnServerConfigVpnClientRootCertificate[]>]
  [-VpnProtocol <VpnGatewayTunnelingProtocol[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
@@ -28,7 +29,7 @@ Set-AzP2SVpnServerConfiguration -ResourceGroupName <String> -ResourceName <Strin
 
 ### Update
 ```
-Set-AzP2SVpnServerConfiguration -ResourceGroupName <String> -ResourceName <String> -SubscriptionId <String>
+Set-AzP2SVpnServerConfiguration -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  -VirtualWanName <String> -P2SVpnServerConfiguration <IP2SVpnServerConfiguration> [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -127,7 +128,7 @@ The name of the P2SVpnServerConfiguration.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases: P2SVpnServerConfigurationName
 
 Required: True
@@ -254,14 +255,15 @@ Dynamic: False
 ```
 
 ### -ResourceName
-The name of the P2SVpnServerConfiguration.
+The name of the resource that is unique within a resource group.
+This name can be used to access the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

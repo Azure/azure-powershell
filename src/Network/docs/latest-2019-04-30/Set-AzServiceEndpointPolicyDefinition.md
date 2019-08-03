@@ -15,8 +15,8 @@ Creates or updates a service endpoint policy definition in the specified service
 ### UpdateExpanded (Default)
 ```
 Set-AzServiceEndpointPolicyDefinition -Name <String> -ResourceGroupName <String>
- -ServiceEndpointPolicyName <String> -SubscriptionId <String> -ServiceEndpointPolicyDefinitionName <String>
- [-Description <String>] [-Etag <String>] [-Id <String>] [-Service <String>] [-ServiceResource <String[]>]
+ -ServiceEndpointPolicyName <String> -SubscriptionId <String> [-Description <String>] [-Etag <String>]
+ [-Id <String>] [-ResourceName <String>] [-Service <String>] [-ServiceResource <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -140,7 +140,7 @@ The name of the service endpoint policy definition name.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: ServiceEndpointPolicyDefinitionName
 
 Required: True
 Position: Named
@@ -182,6 +182,23 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -ResourceName
+The name of the resource that is unique within a resource group.
+This name can be used to access the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Service
 Service endpoint name.
 
@@ -211,22 +228,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -ServiceEndpointPolicyDefinitionName
-The name of the service endpoint policy definition name.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```

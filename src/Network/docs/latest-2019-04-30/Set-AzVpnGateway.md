@@ -14,18 +14,16 @@ Creates a virtual wan vpn gateway if it doesn't exist else updates the existing 
 
 ### UpdateExpanded (Default)
 ```
-Set-AzVpnGateway -GatewayName <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-BgpSettingAsn <Int64>] [-BgpSettingBgpPeeringAddress <String>] [-BgpSettingPeerWeight <Int32>]
- [-Connection <IVpnConnection[]>] [-Id <String>] [-Location <String>] [-Tag <Hashtable>]
- [-VirtualHubId <String>] [-VpnGatewayScaleUnit <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzVpnGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-BgpAsn <Int64>]
+ [-BgpPeerWeight <Int32>] [-BgpPeeringAddress <String>] [-Connection <IVpnConnection[]>] [-Id <String>]
+ [-Location <String>] [-ScaleUnit <Int32>] [-Tag <Hashtable>] [-VirtualHubId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
 ```
-Set-AzVpnGateway -GatewayName <String> -ResourceGroupName <String> -SubscriptionId <String>
- -VpnGateway <IVpnGateway> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Set-AzVpnGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -VpnGateway <IVpnGateway>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -69,7 +67,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -BgpSettingAsn
+### -BgpAsn
 The BGP speaker's ASN.
 
 ```yaml
@@ -85,7 +83,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -BgpSettingBgpPeeringAddress
+### -BgpPeeringAddress
 The BGP peering address and BGP identifier of this BGP speaker.
 
 ```yaml
@@ -101,7 +99,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -BgpSettingPeerWeight
+### -BgpPeerWeight
 The weight added to routes learned from this BGP speaker.
 
 ```yaml
@@ -150,22 +148,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -GatewayName
-The name of the gateway.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Id
 Resource ID.
 
@@ -191,6 +173,22 @@ Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Name
+The name of the gateway.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: GatewayName
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -225,6 +223,22 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ScaleUnit
+The scale unit for this vpn gateway.
+
+```yaml
+Type: System.Int32
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -292,22 +306,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -VpnGatewayScaleUnit
-The scale unit for this vpn gateway.
-
-```yaml
-Type: System.Int32
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
-Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```

@@ -15,10 +15,10 @@ Creates or updates a peering in the specified virtual network.
 ### UpdateExpanded (Default)
 ```
 Set-AzVnetPeering -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -VnetName <String>
- -VnetPeeringName <String> [-AllowForwardedTraffic] [-AllowGatewayTransit] [-AllowVnetAccess] [-Etag <String>]
- [-Id <String>] [-PeeringState <VirtualNetworkPeeringState>] [-ProvisioningState <String>]
- [-RemoteAddressSpaceAddressPrefix <String[]>] [-RemoteVnetId <String>] [-UseRemoteGateway]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AllowForwardedTraffic] [-AllowGatewayTransit] [-AllowVnetAccess] [-Etag <String>] [-Id <String>]
+ [-PeeringState <VirtualNetworkPeeringState>] [-ProvisioningState <String>] [-RemoteAddressPrefix <String[]>]
+ [-RemoteVnetId <String>] [-ResourceName <String>] [-UseRemoteGateway] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
@@ -171,7 +171,7 @@ The name of the peering.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: VirtualNetworkPeeringName, VnetPeeringName
 
 Required: True
 Position: Named
@@ -230,7 +230,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -RemoteAddressSpaceAddressPrefix
+### -RemoteAddressPrefix
 A list of address blocks reserved for this virtual network in CIDR notation.
 
 ```yaml
@@ -271,6 +271,23 @@ Parameter Sets: (All)
 Aliases: VirtualNetworkPeering
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ResourceName
+The name of the resource that is unique within a resource group.
+This name can be used to access the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -343,22 +360,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -VnetPeeringName
-The name of the peering.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases: VirtualNetworkPeeringName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```

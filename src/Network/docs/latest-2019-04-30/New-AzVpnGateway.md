@@ -14,11 +14,10 @@ Creates a virtual wan vpn gateway if it doesn't exist else updates the existing 
 
 ### CreateExpanded (Default)
 ```
-New-AzVpnGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-BgpSettingAsn <Int64>]
- [-BgpSettingBgpPeeringAddress <String>] [-BgpSettingPeerWeight <Int32>] [-Connection <IVpnConnection[]>]
- [-Id <String>] [-Location <String>] [-Tag <Hashtable>] [-VirtualHubId <String>]
- [-VpnGatewayScaleUnit <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzVpnGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-BgpAsn <Int64>]
+ [-BgpPeerWeight <Int32>] [-BgpPeeringAddress <String>] [-Connection <IVpnConnection[]>] [-Id <String>]
+ [-Location <String>] [-ScaleUnit <Int32>] [-Tag <Hashtable>] [-VirtualHubId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create
@@ -29,11 +28,10 @@ New-AzVpnGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <Str
 
 ### CreateViaIdentityExpanded
 ```
-New-AzVpnGateway -InputObject <INetworkIdentity> [-BgpSettingAsn <Int64>]
- [-BgpSettingBgpPeeringAddress <String>] [-BgpSettingPeerWeight <Int32>] [-Connection <IVpnConnection[]>]
- [-Id <String>] [-Location <String>] [-Tag <Hashtable>] [-VirtualHubId <String>]
- [-VpnGatewayScaleUnit <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzVpnGateway -InputObject <INetworkIdentity> [-BgpAsn <Int64>] [-BgpPeerWeight <Int32>]
+ [-BgpPeeringAddress <String>] [-Connection <IVpnConnection[]>] [-Id <String>] [-Location <String>]
+ [-ScaleUnit <Int32>] [-Tag <Hashtable>] [-VirtualHubId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -83,7 +81,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -BgpSettingAsn
+### -BgpAsn
 The BGP speaker's ASN.
 
 ```yaml
@@ -99,7 +97,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -BgpSettingBgpPeeringAddress
+### -BgpPeeringAddress
 The BGP peering address and BGP identifier of this BGP speaker.
 
 ```yaml
@@ -115,7 +113,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -BgpSettingPeerWeight
+### -BgpPeerWeight
 The weight added to routes learned from this BGP speaker.
 
 ```yaml
@@ -260,6 +258,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -ScaleUnit
+The scale unit for this vpn gateway.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -SubscriptionId
 The subscription credentials which uniquely identify the Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
@@ -322,22 +336,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -VpnGatewayScaleUnit
-The scale unit for this vpn gateway.
-
-```yaml
-Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
-Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```

@@ -258,6 +258,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## ALIASES
 
+### Get-NetworkWatcherTroubleshootingResult
+
 ## NOTES
 
 ### COMPLEX PARAMETER PROPERTIES

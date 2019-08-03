@@ -15,15 +15,15 @@ Prepares a subnet by applying network intent policies.
 ### PrepareExpanded (Default)
 ```
 Set-AzVnetSubnetNetworkPolicy -ResourceGroupName <String> -SubnetName <String> -SubscriptionId <String>
- -VnetName <String> [-NetworkIntentPolicyConfiguration <INetworkIntentPolicyConfiguration[]>]
- [-ResourceGroupName1 <String>] [-ServiceName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -VnetName <String> [-IntentPolicyResourceGroupName <String>]
+ [-NetworkIntentPolicyConfiguration <INetworkIntentPolicyConfiguration[]>] [-ServiceName <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Prepare
 ```
 Set-AzVnetSubnetNetworkPolicy -ResourceGroupName <String> -SubnetName <String> -SubscriptionId <String>
- -VnetName <String> -NetworkPoliciesRequest <IPrepareNetworkPoliciesRequest> [-DefaultProfile <PSObject>]
+ -VnetName <String> -NetworkPolicyRequest <IPrepareNetworkPoliciesRequest> [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -84,6 +84,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -IntentPolicyResourceGroupName
+The name of the resource group where the Network Intent Policy will be stored.
+
+```yaml
+Type: System.String
+Parameter Sets: PrepareExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -NetworkIntentPolicyConfiguration
 A list of NetworkIntentPolicyConfiguration.
 To construct, see NOTES section for NETWORKINTENTPOLICYCONFIGURATION properties and create a hash table.
@@ -101,9 +117,9 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -NetworkPoliciesRequest
+### -NetworkPolicyRequest
 Details of PrepareNetworkPolicies for Subnet.
-To construct, see NOTES section for NETWORKPOLICIESREQUEST properties and create a hash table.
+To construct, see NOTES section for NETWORKPOLICYREQUEST properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IPrepareNetworkPoliciesRequest
@@ -159,22 +175,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -ResourceGroupName1
-The name of the resource group where the Network Intent Policy will be stored.
-
-```yaml
-Type: System.String
-Parameter Sets: PrepareExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -308,7 +308,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[SourceNetworkIntentPolicyTag <IResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
 
-#### NETWORKPOLICIESREQUEST <IPrepareNetworkPoliciesRequest>: Details of PrepareNetworkPolicies for Subnet.
+#### NETWORKPOLICYREQUEST <IPrepareNetworkPoliciesRequest>: Details of PrepareNetworkPolicies for Subnet.
   - `[NetworkIntentPolicyConfiguration <INetworkIntentPolicyConfiguration[]>]`: A list of NetworkIntentPolicyConfiguration.
     - `[NetworkIntentPolicyName <String>]`: The name of the Network Intent Policy for storing in target subscription.
     - `[SourceNetworkIntentPolicyEtag <String>]`: Gets a unique read-only string that changes whenever the resource is updated.

@@ -14,27 +14,27 @@ Creates or updates a peering in the specified virtual network.
 
 ### CreateExpanded (Default)
 ```
-New-AzVnetPeering -ResourceGroupName <String> -SubscriptionId <String> -VnetName <String>
- -VnetPeeringName <String> [-Name <String>] [-AllowForwardedTraffic] [-AllowGatewayTransit] [-AllowVnetAccess]
- [-Etag <String>] [-Id <String>] [-PeeringState <VirtualNetworkPeeringState>] [-ProvisioningState <String>]
- [-RemoteAddressSpaceAddressPrefix <String[]>] [-RemoteVnetId <String>] [-UseRemoteGateway]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzVnetPeering -InputObject <INetworkIdentity> [-Name <String>] [-AllowForwardedTraffic]
- [-AllowGatewayTransit] [-AllowVnetAccess] [-Etag <String>] [-Id <String>]
- [-PeeringState <VirtualNetworkPeeringState>] [-ProvisioningState <String>]
- [-RemoteAddressSpaceAddressPrefix <String[]>] [-RemoteVnetId <String>] [-UseRemoteGateway]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzVnetPeering -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -VnetName <String>
+ [-AllowForwardedTraffic] [-AllowGatewayTransit] [-AllowVnetAccess] [-Etag <String>] [-Id <String>]
+ [-PeeringState <VirtualNetworkPeeringState>] [-ProvisioningState <String>] [-RemoteAddressPrefix <String[]>]
+ [-RemoteVnetId <String>] [-ResourceName <String>] [-UseRemoteGateway] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create
 ```
-New-AzVnetPeering -ResourceGroupName <String> -SubscriptionId <String> -VnetName <String>
- -VnetPeering <IVirtualNetworkPeering> [-Name <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzVnetPeering -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -VnetName <String>
+ -VnetPeering <IVirtualNetworkPeering> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded
+```
+New-AzVnetPeering -InputObject <INetworkIdentity> [-AllowForwardedTraffic] [-AllowGatewayTransit]
+ [-AllowVnetAccess] [-Etag <String>] [-Id <String>] [-PeeringState <VirtualNetworkPeeringState>]
+ [-ProvisioningState <String>] [-RemoteAddressPrefix <String[]>] [-RemoteVnetId <String>]
+ [-ResourceName <String>] [-UseRemoteGateway] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -201,10 +201,10 @@ The name of the peering.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, Create
-Aliases:
+Parameter Sets: CreateExpanded, Create
+Aliases: VirtualNetworkPeeringName, VnetPeeringName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -261,7 +261,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -RemoteAddressSpaceAddressPrefix
+### -RemoteAddressPrefix
 A list of address blocks reserved for this virtual network in CIDR notation.
 
 ```yaml
@@ -302,6 +302,23 @@ Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ResourceName
+The name of the resource that is unique within a resource group.
+This name can be used to access the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -374,22 +391,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -VnetPeeringName
-The name of the peering.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases: VirtualNetworkPeeringName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```

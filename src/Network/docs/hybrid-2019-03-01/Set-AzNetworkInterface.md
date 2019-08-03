@@ -20,7 +20,7 @@ Set-AzNetworkInterface -Name <String> -ResourceGroupName <String> -SubscriptionI
  [-EnableAcceleratedNetworking] [-EnableIPForwarding] [-Etag <String>]
  [-IPConfiguration <INetworkInterfaceIPConfiguration[]>] [-Id <String>] [-Location <String>]
  [-MacAddress <String>] [-NsgEtag <String>] [-NsgId <String>] [-NsgLocation <String>]
- [-NsgNsgProvisioningState <String>] [-NsgNsgResourceGuid <String>] [-NsgTag <Hashtable>] [-Primary]
+ [-NsgProvisioningState <String>] [-NsgResourceGuid <String>] [-NsgTag <Hashtable>] [-Primary]
  [-ProvisioningState <String>] [-ResourceGuid <String>] [-SecurityRule <ISecurityRule[]>] [-Tag <Hashtable>]
  [-VMId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -400,7 +400,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -NsgNsgProvisioningState
+### -NsgProvisioningState
 The provisioning state of the public IP resource.
 Possible values are: 'Updating', 'Deleting', and 'Failed'.
 
@@ -417,7 +417,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -NsgNsgResourceGuid
+### -NsgResourceGuid
 The resource GUID property of the network security group resource.
 
 ```yaml

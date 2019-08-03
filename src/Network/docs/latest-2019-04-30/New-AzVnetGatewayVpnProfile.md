@@ -17,7 +17,7 @@ Used for IKEV2 and radius based authentication.
 ```
 New-AzVnetGatewayVpnProfile -ResourceGroupName <String> -SubscriptionId <String> -VnetGatewayName <String>
  [-AuthenticationMethod <AuthenticationMethod>] [-ClientRootCertificate <String[]>]
- [-ProcessorArchitecture <ProcessorArchitecture>] [-RadiusServerAuthCertificate <String>]
+ [-ProcessorArchitecture <ProcessorArchitecture>] [-RadiusServerAuthenticationCertificate <String>]
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -32,8 +32,8 @@ New-AzVnetGatewayVpnProfile -ResourceGroupName <String> -SubscriptionId <String>
 ```
 New-AzVnetGatewayVpnProfile -InputObject <INetworkIdentity> [-AuthenticationMethod <AuthenticationMethod>]
  [-ClientRootCertificate <String[]>] [-ProcessorArchitecture <ProcessorArchitecture>]
- [-RadiusServerAuthCertificate <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-RadiusServerAuthenticationCertificate <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### GenerateViaIdentity
@@ -166,7 +166,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -RadiusServerAuthCertificate
+### -RadiusServerAuthenticationCertificate
 The public certificate data for the radius server authentication certificate as a Base-64 encoded string.
 Required only if external radius authentication has been configured with EAPTLS authentication.
 

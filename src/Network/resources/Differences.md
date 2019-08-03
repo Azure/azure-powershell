@@ -1,5 +1,22 @@
 ## Incorrect Cmdlets
 
+- New-AzServiceEndpointPolicy
+    - ServiceEndpointPolicyDefinition
+- New-AzVnetGateway
+    - VpnClientProtocol
+    - VpnClientIpsecPolicy
+- New-AzVnetGatewayConnection
+    - ExpressRouteGatewayBypass
+- New-AzVnetTap
+    - DestinationNetworkInterfaceIPConfigurationId
+    - DestinationLoadBalancerFrontEndIPConfigurationId
+- New-AzVpnConnection
+    - VpnConnectionProtocolType
+- New-AzVpnGateway
+    - VpnGatewayScaleUnit
+- Set-AzVnetGateway
+    - VpnClientProtocol
+    - VpnClientIpsecPolicy
 
 ## Correct Cmdlets
 
@@ -97,17 +114,11 @@
 - New-AzPublicIPPrefix
 - New-AzRouteFilter
 - New-AzRouteTable
-- New-AzServiceEndpointPolicy
 - New-AzServiceEndpointPolicyDefinition
 - New-AzVirtualHub
 - New-AzVirtualWan
 - New-AzVnet
-- New-AzVnetGateway
-- New-AzVnetGatewayConnection
 - New-AzVnetGatewayVpnClientPackage
-- New-AzVnetTap
-- New-AzVpnConnection
-- New-AzVpnGateway
 - New-AzVpnSite
 - Remove-AzApplicationGateway
 - Remove-AzApplicationSecurityGroup
@@ -168,7 +179,6 @@
 - Set-AzServiceEndpointPolicy
 - Set-AzServiceEndpointPolicyDefinition
 - Set-AzVnet
-- Set-AzVnetGateway
 - Set-AzVnetGatewayConnection
 - Set-AzVnetGatewayConnectionSharedKey
 - Set-AzVnetGatewayVpnClientIPsecPolicy

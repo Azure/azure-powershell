@@ -16,7 +16,7 @@ Creates a VirtualHub resource if it doesn't exist else updates the existing Virt
 ```
 Set-AzVirtualHub -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-AddressPrefix <String>]
  [-ExpressRouteGatewayId <String>] [-Id <String>] [-Location <String>] [-P2SVpnGatewayId <String>]
- [-RouteTableRoute <IVirtualHubRoute[]>] [-Tag <Hashtable>] [-VirtualWanId <String>]
+ [-Route <IVirtualHubRoute[]>] [-Tag <Hashtable>] [-VirtualWanId <String>]
  [-VnetConnection <IHubVirtualNetworkConnection[]>] [-VpnGatewayId <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -212,9 +212,9 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -RouteTableRoute
+### -Route
 List of all routes.
-To construct, see NOTES section for ROUTETABLEROUTE properties and create a hash table.
+To construct, see NOTES section for ROUTE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVirtualHubRoute[]
@@ -379,7 +379,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### ROUTETABLEROUTE <IVirtualHubRoute[]>: List of all routes.
+#### ROUTE <IVirtualHubRoute[]>: List of all routes.
   - `[AddressPrefix <String[]>]`: List of all addressPrefixes.
   - `[NextHopIPAddress <String>]`: NextHop ip address.
 

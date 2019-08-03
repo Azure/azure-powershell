@@ -20,7 +20,7 @@ Get-AzRouteFilterRule -ResourceGroupName <String> -RouteFilterName <String> -Sub
 
 ### Get
 ```
-Get-AzRouteFilterRule -ResourceGroupName <String> -RouteFilterName <String> -RuleName <String>
+Get-AzRouteFilterRule -Name <String> -ResourceGroupName <String> -RouteFilterName <String>
  -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -86,6 +86,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Name
+The name of the rule.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases: RuleName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
@@ -108,22 +124,6 @@ The name of the route filter.
 ```yaml
 Type: System.String
 Parameter Sets: List, Get
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -RuleName
-The name of the rule.
-
-```yaml
-Type: System.String
-Parameter Sets: Get
 Aliases:
 
 Required: True

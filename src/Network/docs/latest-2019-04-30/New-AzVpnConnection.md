@@ -14,27 +14,27 @@ Creates a vpn connection to a scalable vpn gateway if it doesn't exist else upda
 
 ### CreateExpanded (Default)
 ```
-New-AzVpnConnection -ConnectionName <String> -GatewayName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-ConnectionBandwidth <Int32>] [-EnableBgp] [-EnableInternetSecurity]
- [-EnableRateLimiting] [-IPsecPolicy <IIpsecPolicy[]>] [-Id <String>] [-Name <String>]
- [-RemoteVpnSiteId <String>] [-RoutingWeight <Int32>] [-SharedKey <String>] [-UseLocalAzureIPAddress]
- [-VpnConnectionProtocolType <VirtualNetworkGatewayConnectionProtocol>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzVpnConnection -GatewayName <String> -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ [-ConnectionBandwidth <Int32>] [-EnableBgp] [-EnableInternetSecurity] [-EnableRateLimiting]
+ [-IPsecPolicy <IIpsecPolicy[]>] [-Id <String>] [-ProtocolType <VirtualNetworkGatewayConnectionProtocol>]
+ [-RemoteVpnSiteId <String>] [-ResourceName <String>] [-RoutingWeight <Int32>] [-SharedKey <String>]
+ [-UseLocalAzureIPAddress] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Create
 ```
-New-AzVpnConnection -ConnectionName <String> -GatewayName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -VpnConnection <IVpnConnection> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzVpnConnection -GatewayName <String> -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -VpnConnection <IVpnConnection> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzVpnConnection -InputObject <INetworkIdentity> [-ConnectionBandwidth <Int32>] [-EnableBgp]
  [-EnableInternetSecurity] [-EnableRateLimiting] [-IPsecPolicy <IIpsecPolicy[]>] [-Id <String>]
- [-Name <String>] [-RemoteVpnSiteId <String>] [-RoutingWeight <Int32>] [-SharedKey <String>]
- [-UseLocalAzureIPAddress] [-VpnConnectionProtocolType <VirtualNetworkGatewayConnectionProtocol>]
+ [-ProtocolType <VirtualNetworkGatewayConnectionProtocol>] [-RemoteVpnSiteId <String>]
+ [-ResourceName <String>] [-RoutingWeight <Int32>] [-SharedKey <String>] [-UseLocalAzureIPAddress]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -96,22 +96,6 @@ Aliases: ConnectionBandwidthInMbps
 Required: False
 Position: Named
 Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -ConnectionName
-The name of the connection.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, Create
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -247,15 +231,14 @@ Dynamic: False
 ```
 
 ### -Name
-The name of the resource that is unique within a resource group.
-This name can be used to access the resource.
+The name of the connection.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Parameter Sets: CreateExpanded, Create
+Aliases: ConnectionName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -274,6 +257,22 @@ Aliases:
 Required: False
 Position: Named
 Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ProtocolType
+Connection protocol used for this connection
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.VirtualNetworkGatewayConnectionProtocol
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -304,6 +303,23 @@ Parameter Sets: CreateExpanded, Create
 Aliases: ParentObject, ParentResourceId, VpnSite
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ResourceName
+The name of the resource that is unique within a resource group.
+This name can be used to access the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -389,22 +405,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -VpnConnectionProtocolType
-Connection protocol used for this connection
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.VirtualNetworkGatewayConnectionProtocol
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```

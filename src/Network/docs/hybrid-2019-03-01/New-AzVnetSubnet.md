@@ -14,34 +14,34 @@ Creates or updates a subnet in the specified virtual network.
 
 ### CreateExpanded1 (Default)
 ```
-New-AzVnetSubnet -ResourceGroupName <String> -SubscriptionId <String> -VnetName <String> -SubnetName <String>
- [-Name <String>] [-AddressPrefix <String>] [-DefaultSecurityRule <ISecurityRule[]>]
- [-DisableBgpRoutePropagation] [-Etag <String>] [-Id <String>] [-NsgEtag <String>] [-NsgId <String>]
- [-NsgLocation <String>] [-NsgPropertiesProvisioningState <String>] [-NsgTag <Hashtable>]
- [-ProvisioningState <String>] [-ResourceGuid <String>] [-ResourceNavigationLink <IResourceNavigationLink[]>]
- [-Route <IRoute[]>] [-RouteTableEtag <String>] [-RouteTableId <String>] [-RouteTableLocation <String>]
- [-RouteTablePropertiesProvisioningState <String>] [-RouteTableTag <Hashtable>]
- [-SecurityRule <ISecurityRule[]>] [-ServiceEndpoint <IServiceEndpointPropertiesFormat[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded1
-```
-New-AzVnetSubnet -InputObject <INetworkIdentity> [-Name <String>] [-AddressPrefix <String>]
- [-DefaultSecurityRule <ISecurityRule[]>] [-DisableBgpRoutePropagation] [-Etag <String>] [-Id <String>]
- [-NsgEtag <String>] [-NsgId <String>] [-NsgLocation <String>] [-NsgPropertiesProvisioningState <String>]
- [-NsgTag <Hashtable>] [-ProvisioningState <String>] [-ResourceGuid <String>]
- [-ResourceNavigationLink <IResourceNavigationLink[]>] [-Route <IRoute[]>] [-RouteTableEtag <String>]
- [-RouteTableId <String>] [-RouteTableLocation <String>] [-RouteTablePropertiesProvisioningState <String>]
- [-RouteTableTag <Hashtable>] [-SecurityRule <ISecurityRule[]>]
+New-AzVnetSubnet -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -VnetName <String>
+ [-AddressPrefix <String>] [-DefaultSecurityRule <ISecurityRule[]>] [-DisableBgpRoutePropagation]
+ [-Etag <String>] [-Id <String>] [-NsgEtag <String>] [-NsgId <String>] [-NsgLocation <String>]
+ [-NsgProvisioningState <String>] [-NsgTag <Hashtable>] [-ProvisioningState <String>] [-ResourceGuid <String>]
+ [-ResourceName <String>] [-ResourceNavigationLink <IResourceNavigationLink[]>] [-Route <IRoute[]>]
+ [-RouteTableEtag <String>] [-RouteTableId <String>] [-RouteTableLocation <String>]
+ [-RouteTableProvisioningState <String>] [-RouteTableTag <Hashtable>] [-SecurityRule <ISecurityRule[]>]
  [-ServiceEndpoint <IServiceEndpointPropertiesFormat[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create1
 ```
-New-AzVnetSubnet -ResourceGroupName <String> -SubscriptionId <String> -VnetName <String> -Subnet <ISubnet>
- [-Name <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzVnetSubnet -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -VnetName <String>
+ -Subnet <ISubnet> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded1
+```
+New-AzVnetSubnet -InputObject <INetworkIdentity> [-AddressPrefix <String>]
+ [-DefaultSecurityRule <ISecurityRule[]>] [-DisableBgpRoutePropagation] [-Etag <String>] [-Id <String>]
+ [-NsgEtag <String>] [-NsgId <String>] [-NsgLocation <String>] [-NsgProvisioningState <String>]
+ [-NsgTag <Hashtable>] [-ProvisioningState <String>] [-ResourceGuid <String>] [-ResourceName <String>]
+ [-ResourceNavigationLink <IResourceNavigationLink[]>] [-Route <IRoute[]>] [-RouteTableEtag <String>]
+ [-RouteTableId <String>] [-RouteTableLocation <String>] [-RouteTableProvisioningState <String>]
+ [-RouteTableTag <Hashtable>] [-SecurityRule <ISecurityRule[]>]
+ [-ServiceEndpoint <IServiceEndpointPropertiesFormat[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity1
@@ -210,10 +210,10 @@ The name of the subnet.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1, Create1
-Aliases:
+Parameter Sets: CreateExpanded1, Create1
+Aliases: SubnetName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -285,7 +285,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -NsgPropertiesProvisioningState
+### -NsgProvisioningState
 The provisioning state of the public IP resource.
 Possible values are: 'Updating', 'Deleting', and 'Failed'.
 
@@ -352,6 +352,23 @@ Dynamic: False
 
 ### -ResourceGuid
 The resource GUID property of the network security group resource.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ResourceName
+The name of the resource that is unique within a resource group.
+This name can be used to access the resource.
 
 ```yaml
 Type: System.String
@@ -448,7 +465,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -RouteTablePropertiesProvisioningState
+### -RouteTableProvisioningState
 The provisioning state of the resource.
 Possible values are: 'Updating', 'Deleting', and 'Failed'.
 
@@ -528,22 +545,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -SubnetName
-The name of the subnet.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```

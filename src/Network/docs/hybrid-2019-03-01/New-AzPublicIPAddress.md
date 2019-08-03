@@ -16,13 +16,13 @@ Creates or updates a static or dynamic public IP address.
 ```
 New-AzPublicIPAddress -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-Address <IPublicIPAddress>] [-AllocationMethod <IPAllocationMethod>] [-DomainNameLabel <String>]
- [-Etag <String>] [-Fqdn <String>] [-IPAddress <String>] [-IPConfigurationEtag <String>]
- [-IPConfigurationId <String>] [-IPConfigurationName <String>]
+ [-Etag <String>] [-Fqdn <String>] [-IPAddress <String>] [-IPAddressVersion <IPVersion>]
+ [-IPConfigurationEtag <String>] [-IPConfigurationId <String>] [-IPConfigurationName <String>]
  [-IPConfigurationPropertiesProvisioningState <String>] [-Id <String>] [-IdleTimeoutInMinutes <Int32>]
- [-IpAddressVersion <IPVersion>] [-Location <String>] [-PrivateIPAddress <String>]
- [-PrivateIPAllocationMethod <IPAllocationMethod>] [-ProvisioningState <String>] [-ResourceGuid <String>]
- [-ReverseFqdn <String>] [-SkuName <PublicIPAddressSkuName>] [-Subnet <ISubnet>] [-Tag <Hashtable>]
- [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Location <String>] [-PrivateIPAddress <String>] [-PrivateIPAllocationMethod <IPAllocationMethod>]
+ [-ProvisioningState <String>] [-ResourceGuid <String>] [-ReverseFqdn <String>]
+ [-SkuName <PublicIPAddressSkuName>] [-Subnet <ISubnet>] [-Tag <Hashtable>] [-Zone <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create1
@@ -36,13 +36,13 @@ New-AzPublicIPAddress -Name <String> -ResourceGroupName <String> -SubscriptionId
 ```
 New-AzPublicIPAddress -InputObject <INetworkIdentity> [-Address <IPublicIPAddress>]
  [-AllocationMethod <IPAllocationMethod>] [-DomainNameLabel <String>] [-Etag <String>] [-Fqdn <String>]
- [-IPAddress <String>] [-IPConfigurationEtag <String>] [-IPConfigurationId <String>]
- [-IPConfigurationName <String>] [-IPConfigurationPropertiesProvisioningState <String>] [-Id <String>]
- [-IdleTimeoutInMinutes <Int32>] [-IpAddressVersion <IPVersion>] [-Location <String>]
- [-PrivateIPAddress <String>] [-PrivateIPAllocationMethod <IPAllocationMethod>] [-ProvisioningState <String>]
- [-ResourceGuid <String>] [-ReverseFqdn <String>] [-SkuName <PublicIPAddressSkuName>] [-Subnet <ISubnet>]
- [-Tag <Hashtable>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-IPAddress <String>] [-IPAddressVersion <IPVersion>] [-IPConfigurationEtag <String>]
+ [-IPConfigurationId <String>] [-IPConfigurationName <String>]
+ [-IPConfigurationPropertiesProvisioningState <String>] [-Id <String>] [-IdleTimeoutInMinutes <Int32>]
+ [-Location <String>] [-PrivateIPAddress <String>] [-PrivateIPAllocationMethod <IPAllocationMethod>]
+ [-ProvisioningState <String>] [-ResourceGuid <String>] [-ReverseFqdn <String>]
+ [-SkuName <PublicIPAddressSkuName>] [-Subnet <ISubnet>] [-Tag <Hashtable>] [-Zone <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity1
@@ -256,7 +256,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IpAddressVersion
+### -IPAddressVersion
 The public IP address version.
 Possible values are: 'IPv4' and 'IPv6'.
 

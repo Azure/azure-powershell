@@ -16,7 +16,7 @@ Generates VPN client package for P2S client of the virtual network gateway in th
 ```
 New-AzVnetGatewayVpnClientPackage -ResourceGroupName <String> -SubscriptionId <String>
  -VnetGatewayName <String> [-AuthenticationMethod <AuthenticationMethod>] [-ClientRootCertificate <String[]>]
- [-ProcessorArchitecture <ProcessorArchitecture>] [-RadiusServerAuthCertificate <String>]
+ [-ProcessorArchitecture <ProcessorArchitecture>] [-RadiusServerAuthenticationCertificate <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ New-AzVnetGatewayVpnClientPackage -ResourceGroupName <String> -SubscriptionId <S
 ```
 New-AzVnetGatewayVpnClientPackage -InputObject <INetworkIdentity>
  [-AuthenticationMethod <AuthenticationMethod>] [-ClientRootCertificate <String[]>]
- [-ProcessorArchitecture <ProcessorArchitecture>] [-RadiusServerAuthCertificate <String>]
+ [-ProcessorArchitecture <ProcessorArchitecture>] [-RadiusServerAuthenticationCertificate <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -180,7 +180,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -RadiusServerAuthCertificate
+### -RadiusServerAuthenticationCertificate
 The public certificate data for the radius server authentication certificate as a Base-64 encoded string.
 Required only if external radius authentication has been configured with EAPTLS authentication.
 

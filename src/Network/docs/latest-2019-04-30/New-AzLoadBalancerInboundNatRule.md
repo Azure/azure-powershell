@@ -14,9 +14,8 @@ Creates or updates a load balancer inbound nat rule.
 
 ### CreateExpanded (Default)
 ```
-New-AzLoadBalancerInboundNatRule -LoadBalancerName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -Name <String> [-ResourceName <String>]
- [-ApplicationGatewayBackendAddressPool <IApplicationGatewayBackendAddressPool[]>]
+New-AzLoadBalancerInboundNatRule -LoadBalancerName <String> -Name <String> -ResourceGroupName <String>
+ -SubscriptionId <String> [-ApplicationGatewayBackendAddressPool <IApplicationGatewayBackendAddressPool[]>]
  [-ApplicationSecurityGroup <IApplicationSecurityGroup[]>] [-BackendIPConfigurationEtag <String>]
  [-BackendIPConfigurationId <String>] [-BackendIPConfigurationName <String>]
  [-BackendIPConfigurationProvisioningState <String>] [-BackendPort <Int32>] [-EnableFloatingIP]
@@ -25,20 +24,20 @@ New-AzLoadBalancerInboundNatRule -LoadBalancerName <String> -ResourceGroupName <
  [-LoadBalancerInboundNatRule <IInboundNatRule[]>] [-Primary] [-PrivateIPAddress <String>]
  [-PrivateIPAddressVersion <IPVersion>] [-PrivateIPAllocationMethod <IPAllocationMethod>]
  [-Protocol <TransportProtocol>] [-ProvisioningState <String>] [-PublicIPAddress <IPublicIPAddress>]
- [-Subnet <ISubnet>] [-VnetTap <IVirtualNetworkTap[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ResourceName <String>] [-Subnet <ISubnet>] [-VnetTap <IVirtualNetworkTap[]>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create
 ```
-New-AzLoadBalancerInboundNatRule -LoadBalancerName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -InboundNatRule <IInboundNatRule> [-ResourceName <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzLoadBalancerInboundNatRule -LoadBalancerName <String> -Name <String> -ResourceGroupName <String>
+ -SubscriptionId <String> -InboundNatRule <IInboundNatRule> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzLoadBalancerInboundNatRule -InputObject <INetworkIdentity> [-ResourceName <String>]
+New-AzLoadBalancerInboundNatRule -InputObject <INetworkIdentity>
  [-ApplicationGatewayBackendAddressPool <IApplicationGatewayBackendAddressPool[]>]
  [-ApplicationSecurityGroup <IApplicationSecurityGroup[]>] [-BackendIPConfigurationEtag <String>]
  [-BackendIPConfigurationId <String>] [-BackendIPConfigurationName <String>]
@@ -48,8 +47,8 @@ New-AzLoadBalancerInboundNatRule -InputObject <INetworkIdentity> [-ResourceName 
  [-LoadBalancerInboundNatRule <IInboundNatRule[]>] [-Primary] [-PrivateIPAddress <String>]
  [-PrivateIPAddressVersion <IPVersion>] [-PrivateIPAllocationMethod <IPAllocationMethod>]
  [-Protocol <TransportProtocol>] [-ProvisioningState <String>] [-PublicIPAddress <IPublicIPAddress>]
- [-Subnet <ISubnet>] [-VnetTap <IVirtualNetworkTap[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ResourceName <String>] [-Subnet <ISubnet>] [-VnetTap <IVirtualNetworkTap[]>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -440,7 +439,7 @@ The name of the inbound nat rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: InboundNatRuleName
 
 Required: True
@@ -599,11 +598,12 @@ Dynamic: False
 ```
 
 ### -ResourceName
-The name of the inbound nat rule.
+Gets name of the resource that is unique within a resource group.
+This name can be used to access the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, Create, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False

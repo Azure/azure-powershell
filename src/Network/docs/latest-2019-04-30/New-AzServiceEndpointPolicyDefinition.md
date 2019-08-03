@@ -14,23 +14,24 @@ Creates or updates a service endpoint policy definition in the specified service
 
 ### CreateExpanded (Default)
 ```
-New-AzServiceEndpointPolicyDefinition -ResourceGroupName <String> -ServiceEndpointPolicyName <String>
- -SubscriptionId <String> -ServiceEndpointPolicyDefinitionName <String> [-Name <String>]
- [-Description <String>] [-Etag <String>] [-Id <String>] [-Service <String>] [-ServiceResource <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzServiceEndpointPolicyDefinition -InputObject <INetworkIdentity> [-Name <String>] [-Description <String>]
- [-Etag <String>] [-Id <String>] [-Service <String>] [-ServiceResource <String[]>]
+New-AzServiceEndpointPolicyDefinition -Name <String> -ResourceGroupName <String>
+ -ServiceEndpointPolicyName <String> -SubscriptionId <String> [-Description <String>] [-Etag <String>]
+ [-Id <String>] [-ResourceName <String>] [-Service <String>] [-ServiceResource <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create
 ```
-New-AzServiceEndpointPolicyDefinition -ResourceGroupName <String> -ServiceEndpointPolicyName <String>
- -SubscriptionId <String> -ServiceEndpointPolicyDefinition <IServiceEndpointPolicyDefinition> [-Name <String>]
+New-AzServiceEndpointPolicyDefinition -Name <String> -ResourceGroupName <String>
+ -ServiceEndpointPolicyName <String> -SubscriptionId <String>
+ -ServiceEndpointPolicyDefinition <IServiceEndpointPolicyDefinition> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded
+```
+New-AzServiceEndpointPolicyDefinition -InputObject <INetworkIdentity> [-Description <String>] [-Etag <String>]
+ [-Id <String>] [-ResourceName <String>] [-Service <String>] [-ServiceResource <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -168,10 +169,10 @@ The name of the service endpoint policy definition name.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, Create
-Aliases:
+Parameter Sets: CreateExpanded, Create
+Aliases: ServiceEndpointPolicyDefinitionName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -211,6 +212,23 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -ResourceName
+The name of the resource that is unique within a resource group.
+This name can be used to access the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Service
 Service endpoint name.
 
@@ -240,22 +258,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -ServiceEndpointPolicyDefinitionName
-The name of the service endpoint policy definition name.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```

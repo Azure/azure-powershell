@@ -14,19 +14,19 @@ Creates a vpn connection to a scalable vpn gateway if it doesn't exist else upda
 
 ### UpdateExpanded (Default)
 ```
-Set-AzVpnConnection -ConnectionName <String> -GatewayName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-ConnectionBandwidth <Int32>] [-EnableBgp] [-EnableInternetSecurity]
- [-EnableRateLimiting] [-IPsecPolicy <IIpsecPolicy[]>] [-Id <String>] [-Name <String>]
- [-RemoteVpnSiteId <String>] [-RoutingWeight <Int32>] [-SharedKey <String>] [-UseLocalAzureIPAddress]
- [-VpnConnectionProtocolType <VirtualNetworkGatewayConnectionProtocol>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzVpnConnection -GatewayName <String> -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ [-ConnectionBandwidth <Int32>] [-EnableBgp] [-EnableInternetSecurity] [-EnableRateLimiting]
+ [-IPsecPolicy <IIpsecPolicy[]>] [-Id <String>] [-ProtocolType <VirtualNetworkGatewayConnectionProtocol>]
+ [-RemoteVpnSiteId <String>] [-ResourceName <String>] [-RoutingWeight <Int32>] [-SharedKey <String>]
+ [-UseLocalAzureIPAddress] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Update
 ```
-Set-AzVpnConnection -ConnectionName <String> -GatewayName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -VpnConnection <IVpnConnection> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzVpnConnection -GatewayName <String> -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -VpnConnection <IVpnConnection> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -81,22 +81,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -ConnectionName
-The name of the connection.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -216,15 +200,14 @@ Dynamic: False
 ```
 
 ### -Name
-The name of the resource that is unique within a resource group.
-This name can be used to access the resource.
+The name of the connection.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
+Parameter Sets: (All)
+Aliases: ConnectionName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -243,6 +226,22 @@ Aliases:
 Required: False
 Position: Named
 Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ProtocolType
+Connection protocol used for this connection
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.VirtualNetworkGatewayConnectionProtocol
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -273,6 +272,23 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ResourceName
+The name of the resource that is unique within a resource group.
+This name can be used to access the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -358,22 +374,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -VpnConnectionProtocolType
-Connection protocol used for this connection
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.VirtualNetworkGatewayConnectionProtocol
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```

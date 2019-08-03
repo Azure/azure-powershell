@@ -59,7 +59,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(SerializedName='$expand', PossibleTypes=([System.String]), Description='Expands BackendAddressPool and BackendHttpSettings referenced in backend health.')]
     [System.String]
     # Expands BackendAddressPool and BackendHttpSettings referenced in backend health.
-    ${ExpandResource},
+    ${Expand},
 
     [Parameter(ParameterSetName='DemandExpanded', HelpMessage='Name of backend http setting of application gateway to be used for test probe')]
     [Parameter(ParameterSetName='DemandViaIdentityExpanded', HelpMessage='Name of backend http setting of application gateway to be used for test probe')]

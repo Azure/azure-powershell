@@ -14,14 +14,15 @@ Creates or updates a route in the specified route filter.
 
 ### CreateExpanded (Default)
 ```
-New-AzRouteFilterRule -ResourceGroupName <String> -RouteFilterName <String> -RuleName <String>
+New-AzRouteFilterRule -Name <String> -ResourceGroupName <String> -RouteFilterName <String>
  -SubscriptionId <String> [-Access <Access>] [-Community <String[]>] [-Id <String>] [-Location <String>]
- [-Name <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ResourceName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Create
 ```
-New-AzRouteFilterRule -ResourceGroupName <String> -RouteFilterName <String> -RuleName <String>
+New-AzRouteFilterRule -Name <String> -ResourceGroupName <String> -RouteFilterName <String>
  -SubscriptionId <String> -RouteFilterRule <IRouteFilterRule> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -29,7 +30,7 @@ New-AzRouteFilterRule -ResourceGroupName <String> -RouteFilterName <String> -Rul
 ### CreateViaIdentityExpanded
 ```
 New-AzRouteFilterRule -InputObject <INetworkIdentity> [-Access <Access>] [-Community <String[]>]
- [-Id <String>] [-Location <String>] [-Name <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Id <String>] [-Location <String>] [-ResourceName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -179,15 +180,14 @@ Dynamic: False
 ```
 
 ### -Name
-The name of the resource that is unique within a resource group.
-This name can be used to access the resource.
+The name of the route filter rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Parameter Sets: CreateExpanded, Create
+Aliases: RuleName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -227,6 +227,23 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -ResourceName
+The name of the resource that is unique within a resource group.
+This name can be used to access the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -RouteFilterName
 The name of the route filter.
 
@@ -256,22 +273,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -RuleName
-The name of the route filter rule.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, Create
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```

@@ -15,9 +15,9 @@ The Set VpnclientIpsecParameters operation sets the vpnclient ipsec policy for P
 ### SetExpanded (Default)
 ```
 Set-AzVnetGatewayVpnClientIPsecPolicy -ResourceGroupName <String> -SubscriptionId <String>
- -VnetGatewayName <String> -DhGroup <DhGroup> -IPsecEncryption <IpsecEncryption>
+ -VnetGatewayName <String> -DHGroup <DhGroup> -IPsecEncryption <IpsecEncryption>
  -IPsecIntegrity <IpsecIntegrity> -IkeEncryption <IkeEncryption> -IkeIntegrity <IkeIntegrity>
- -PfsGroup <PfsGroup> -SaDataSizeKilobyte <Int32> -SaLifeTimeSecond <Int32> [-DefaultProfile <PSObject>]
+ -PfsGroup <PfsGroup> -SADataSizeInKilobytes <Int32> -SALifetimeInSeconds <Int32> [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -85,7 +85,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -DhGroup
+### -DHGroup
 The DH Group used in IKE Phase 1 for initial SA.
 
 ```yaml
@@ -213,7 +213,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -SaDataSizeKilobyte
+### -SADataSizeInKilobytes
 The IPSec Security Association (also called Quick Mode or Phase 2 SA) payload size in KB for P2S client..
 
 ```yaml
@@ -229,7 +229,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -SaLifeTimeSecond
+### -SALifetimeInSeconds
 The IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime in seconds for P2S client.
 
 ```yaml

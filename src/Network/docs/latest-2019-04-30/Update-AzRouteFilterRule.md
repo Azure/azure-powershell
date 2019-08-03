@@ -14,14 +14,14 @@ Updates a route in the specified route filter.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzRouteFilterRule -ResourceGroupName <String> -RouteFilterName <String> -RuleName <String>
+Update-AzRouteFilterRule -Name <String> -ResourceGroupName <String> -RouteFilterName <String>
  -SubscriptionId <String> [-Access <Access>] [-Community <String[]>] [-Id <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
 ```
-Update-AzRouteFilterRule -ResourceGroupName <String> -RouteFilterName <String> -RuleName <String>
+Update-AzRouteFilterRule -Name <String> -ResourceGroupName <String> -RouteFilterName <String>
  -SubscriptionId <String> -RouteFilterRule <IPatchRouteFilterRule> [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -161,6 +161,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Name
+The name of the route filter rule.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, Update
+Aliases: RuleName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -222,22 +238,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -RuleName
-The name of the route filter rule.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, Update
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```

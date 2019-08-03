@@ -627,7 +627,6 @@ directive:
       parameter-name: Name
       alias: VnetGatewayConnectionName
   - where:
-      verb: ^Get$|^New$|^Remove$
       subject: VnetTap
       parameter-name: TapName
     set:
@@ -648,7 +647,6 @@ directive:
       parameter-name: Name
       alias: ConnectionName
   - where:
-      verb: ^Get$|^New$|^Remove$
       subject: VpnGateway
       parameter-name: GatewayName
     set:
@@ -660,7 +658,7 @@ directive:
       subject: ^ApplicationGatewayBackendHealth$|^ApplicationGatewayBackendHealthOnDemand$|^LoadBalancer$|^NetworkInterface$|^NetworkProfile$|^NetworkSecurityGroup$|^PublicIPAddress$|^RouteFilter$|^RouteTable$|^Vnet$
       parameter-name: Expand
     set:
-      parameter-name: ExpandResource
+      alias: ExpandResource
   - where:
       verb: Get
       subject: ExpressRouteCircuitPeeringStat
@@ -971,14 +969,14 @@ directive:
       subject: ExpressRouteGateway
       parameter-name: BoundMin
     set:
-      parameter-name: MinimumScaleUnits
+      parameter-name: MinimumScaleUnit
       alias: MinScaleUnits
   - where:
       verb: ^Set$|^New$
       subject: ExpressRouteGateway
       parameter-name: BoundMax
     set:
-      parameter-name: MaximumScaleUnits
+      parameter-name: MaximumScaleUnit
       alias: MaxScaleUnits
   - where: # REMOVE BEFORE RELEASE: In-memory object parameter
       verb: Set
@@ -1386,7 +1384,6 @@ directive:
       parameter-name: ^VpnClientConfiguration(.*)$
     set:
       parameter-name: VpnClient$1
-      alias: $1
   - where:
       verb: ^New$|^Set$
       subject: VnetGateway
@@ -1823,9 +1820,14 @@ directive:
       parameter-name: VpnProfile
   - where:
       subject: VnetTap
+      parameter-name: VnetTap
+    set:
+      parameter-name: AdditionalVnetTap
+  - where:
+      subject: VnetTap
       parameter-name: Parameter
     set:
-      parameter-name: VnetTapProperties
+      parameter-name: VnetTap
 
 # Parameter (ending) parameters
   - where:
@@ -1932,7 +1934,7 @@ directive:
       subject: VnetSubnetNetworkPolicy
       parameter-name: PrepareNetworkPoliciesRequestParameter
     set:
-      parameter-name: NetworkPoliciesRequest
+      parameter-name: NetworkPolicyRequest
   - where:
       subject: VpnConnection
       parameter-name: VpnConnectionParameter
@@ -2150,6 +2152,7 @@ directive:
   - where: # This parameter needs removed
       verb: ^New$|^Set$
       subject: LoadBalancerInboundNatRule
+      variant: ^CreateExpanded$|^CreateExpanded1$|^CreateViaIdentityExpanded$|^CreateViaIdentityExpanded1$|^UpdateExpanded$|^UpdateExpanded1$
       parameter-name: Name
     set:
       parameter-name: ResourceName
@@ -2188,7 +2191,7 @@ directive:
       subject: NetworkInterface
       parameter-name: ^NsgProperties(.*)$
     set:
-      parameter-name: NsgNsg$1
+      parameter-name: Nsg$1
   - where:
       subject: NetworkInterfaceIPConfiguration
       parameter-name: IPConfigurationName
@@ -2197,6 +2200,7 @@ directive:
   - where: # This parameter needs removed
       verb: ^New$|^Set$
       subject: NetworkSecurityRule
+      variant: ^CreateExpanded$|^CreateExpanded1$|^CreateViaIdentityExpanded$|^CreateViaIdentityExpanded1$|^UpdateExpanded$|^UpdateExpanded1$
       parameter-name: Name
     set:
       parameter-name: ResourceName
@@ -2273,15 +2277,22 @@ directive:
       parameter-name: VpnClientConnectionHealthVpnClientConnectionsCount
     set:
       parameter-name: VpnClientConnectionCount
+  - where:
+      subject: P2SVpnGateway
+      parameter-name: VpnGatewayScaleUnit
+    set:
+      parameter-name: ScaleUnit
   - where: # This parameter needs removed
       verb: ^New$|^Set$
       subject: P2SVpnServerConfiguration
+      variant: ^CreateExpanded$|^CreateViaIdentityExpanded$|^UpdateExpanded$
       parameter-name: Name
     set:
       parameter-name: ResourceName
   - where: # This parameter needs removed
       verb: ^New$|^Set$
       subject: P2SVpnServerConfiguration
+      variant: ^CreateExpanded$|^CreateViaIdentityExpanded$|^UpdateExpanded$
       parameter-name: PropertiesName
     set:
       parameter-name: ResourceName2
@@ -2311,4 +2322,295 @@ directive:
       parameter-name: ConnectionName
     set:
       parameter-name: Name
+  - where:
+      subject: PublicIPAddress
+      parameter-name: IPConfigurationProperty
+    set:
+      parameter-name: IPConfigurationFormat
+  - where:
+      subject: PublicIPAddress
+      parameter-name: IpAddressVersion
+    set:
+      parameter-name: IPAddressVersion
+  - where:
+      subject: PublicIPAddress
+      parameter-name: DdosSettingProtectionCoverage
+    set:
+      parameter-name: DdosProtectionCoverage
+  - where:
+      subject: PublicIPAddress
+      parameter-name: ^DnsSetting(.*)$
+    set:
+      parameter-name: $1
+  - where:
+      subject: PublicIPAddress
+      parameter-name: PublicIPAddressVersion
+    set:
+      parameter-name: IPAddressVersion
+  - where:
+      subject: PublicIPAddress
+      parameter-name: PublicIPAllocationMethod
+    set:
+      parameter-name: AllocationMethod
+  - where:
+      subject: PublicIPAddress
+      parameter-name: PublicIPPrefixId
+    set:
+      parameter-name: PrefixId
+  - where: # This parameter needs removed
+      verb: ^New$|^Set$
+      subject: RouteFilterRule
+      parameter-name: Name
+    set:
+      parameter-name: ResourceName
+  - where:
+      subject: RouteFilterRule
+      parameter-name: RuleName
+    set:
+      parameter-name: Name
+      alias: RuleName
+  - where: # This parameter needs removed
+      verb: ^New$|^Set$
+      subject: RouteTableRoute
+      variant: ^CreateExpanded$|^CreateExpanded1$|^CreateViaIdentityExpanded$|^CreateViaIdentityExpanded1$|^UpdateExpanded$|^UpdateExpanded1$
+      parameter-name: Name
+    set:
+      parameter-name: ResourceName
+  - where:
+      subject: RouteTableRoute
+      parameter-name: RouteName
+    set:
+      parameter-name: Name
+      alias: RouteName
+  - where:
+      subject: ServiceEndpointPolicy
+      parameter-name: ServiceEndpointPolicyDefinition
+    set:
+      parameter-name: Definition
+  - where: # This parameter needs removed
+      verb: ^New$|^Set$
+      subject: ServiceEndpointPolicyDefinition
+      variant: ^CreateExpanded$|^CreateViaIdentityExpanded$|^UpdateExpanded$
+      parameter-name: Name
+    set:
+      parameter-name: ResourceName
+  - where:
+      subject: ServiceEndpointPolicyDefinition
+      parameter-name: ServiceEndpointPolicyDefinitionName
+    set:
+      parameter-name: Name
+      alias: ServiceEndpointPolicyDefinitionName
+  - where:
+      subject: VirtualHub
+      parameter-name: RouteTableRoute
+    set:
+      parameter-name: Route
+  - where:
+      subject: Vnet
+      parameter-name: AddressSpaceAddressPrefix
+    set:
+      parameter-name: AddressPrefix
+  - where:
+      subject: Vnet
+      parameter-name: DhcpOptionDnsServer
+    set:
+      parameter-name: DnsServer
+  - where:
+      subject: VnetGateway
+      parameter-name: ^VpnClient(.*)$
+    set:
+      parameter-name: $1
+  - where:
+      subject: VnetGatewayConnection
+      parameter-name: BgpSettingAsn
+    set:
+      parameter-name: BgpAsn
+  - where:
+      subject: VnetGatewayConnection
+      parameter-name: BgpSettingBgpPeeringAddress
+    set:
+      parameter-name: BgpPeeringAddress
+  - where:
+      subject: VnetGatewayConnection
+      parameter-name: BgpSettingPeerWeight
+    set:
+      parameter-name: BgpPeerWeight
+  - where:
+      subject: VnetGatewayConnection
+      parameter-name: ExpressRouteGatewayBypass
+    set:
+      parameter-name: BypassExpressRouteGateway
+  - where:
+      subject: VnetGatewayConnection
+      parameter-name: LocalNetworkGateway2Etag
+    set:
+      parameter-name: Etag2
+  - where:
+      subject: VnetGatewayConnection
+      parameter-name: LocalNetworkGateway2Id
+    set:
+      parameter-name: Id2
+  - where:
+      subject: VnetGatewayConnection
+      parameter-name: LocalNetworkGateway2Location
+    set:
+      parameter-name: Location2
+  - where:
+      subject: VnetGatewayConnection
+      parameter-name: LocalNetworkGateway2PropertiesResourceGuid
+    set:
+      parameter-name: ResourceGuid2
+  - where:
+      subject: VnetGatewayConnection
+      parameter-name: LocalNetworkGateway2Tag
+    set:
+      parameter-name: Tag2
+  - where:
+      subject: VnetGatewayVpnClientIPsecPolicy
+      parameter-name: DhGroup
+    set:
+      parameter-name: DHGroup
+  - where:
+      subject: VnetGatewayVpnClientIPsecPolicy
+      parameter-name: SaDataSizeKilobyte
+    set:
+      parameter-name: SADataSizeInKilobytes
+  - where:
+      subject: VnetGatewayVpnClientIPsecPolicy
+      parameter-name: SaLifeTimeSecond
+    set:
+      parameter-name: SALifetimeInSeconds
+  - where:
+      subject: ^VnetGatewayVpnClientPackage$|^VnetGatewayVpnProfile$
+      parameter-name: RadiusServerAuthCertificate
+    set:
+      parameter-name: RadiusServerAuthenticationCertificate
+  - where: # This parameter needs removed
+      verb: ^New$|^Set$
+      subject: VnetPeering
+      variant: ^CreateExpanded$|^CreateExpanded1$|^CreateViaIdentityExpanded$|^CreateViaIdentityExpanded1$|^UpdateExpanded$|^UpdateExpanded1$
+      parameter-name: Name
+    set:
+      parameter-name: ResourceName
+  - where:
+      subject: VnetPeering
+      parameter-name: VnetPeeringName
+    set:
+      parameter-name: Name
+      alias: VnetPeeringName
+  - where:
+      subject: VnetPeering
+      parameter-name: RemoteAddressSpaceAddressPrefix
+    set:
+      parameter-name: RemoteAddressPrefix
+  - where: # This parameter needs removed
+      verb: ^New$|^Set$
+      subject: VnetSubnet
+      variant: ^CreateExpanded$|^CreateExpanded1$|^CreateViaIdentityExpanded$|^CreateViaIdentityExpanded1$|^UpdateExpanded$|^UpdateExpanded1$
+      parameter-name: Name
+    set:
+      parameter-name: ResourceName
+  - where:
+      subject: VnetSubnet
+      parameter-name: SubnetName
+    set:
+      parameter-name: Name
+      alias: SubnetName
+  - where:
+      subject: VnetSubnet
+      parameter-name: PropertiesAddressPrefixes
+    set:
+      parameter-name: AdditionalAddressPrefix
+  - where:
+      subject: VnetSubnet
+      parameter-name: ^(.*)Properties(.*)$
+    set:
+      parameter-name: $1$2
+  - where:
+      subject: VnetSubnetNetworkPolicy
+      parameter-name: ResourceGroupName1
+    set:
+      parameter-name: IntentPolicyResourceGroupName
+  - where:
+      subject: VnetTap
+      parameter-name: ^(.*)FrontEndIPConfigurationProperties(.*)$
+    set:
+      parameter-name: $1$2
+  - where:
+      subject: VnetTap
+      parameter-name: ^(.*)FrontEndIPConfiguration(.*)$
+    set:
+      parameter-name: $1$2
+  - where:
+      subject: VnetTap
+      parameter-name: ^(.*)IPConfigurationProperties(.*)$
+    set:
+      parameter-name: $1$2
+  - where:
+      subject: VnetTap
+      parameter-name: ^(.*)IPConfiguration(.*)$
+    set:
+      parameter-name: $1$2
+  - where: # This parameter needs removed
+      verb: ^New$|^Set$
+      subject: VpnConnection
+      parameter-name: Name
+    set:
+      parameter-name: ResourceName
+  - where:
+      subject: VpnConnection
+      parameter-name: ConnectionName
+    set:
+      parameter-name: Name
+      alias: ConnectionName
+  - where:
+      subject: VpnConnection
+      parameter-name: VpnConnectionProtocolType
+    set:
+      parameter-name: ProtocolType
+  - where:
+      subject: VpnGateway
+      parameter-name: BgpSettingAsn
+    set:
+      parameter-name: BgpAsn
+  - where:
+      subject: VpnGateway
+      parameter-name: BgpSettingBgpPeeringAddress
+    set:
+      parameter-name: BgpPeeringAddress
+  - where:
+      subject: VpnGateway
+      parameter-name: BgpSettingPeerWeight
+    set:
+      parameter-name: BgpPeerWeight
+  - where:
+      subject: VpnGateway
+      parameter-name: VpnGatewayScaleUnit
+    set:
+      parameter-name: ScaleUnit
+  - where:
+      subject: VpnSite
+      parameter-name: IsSecuritySite
+    set:
+      parameter-name: SecuritySite
+  - where:
+      subject: VpnSite
+      parameter-name: AddressSpaceAddressPrefix
+    set:
+      parameter-name: AddressPrefix
+  - where:
+      subject: VpnSite
+      parameter-name: DevicePropertyDeviceModel
+    set:
+      parameter-name: DeviceModel
+  - where:
+      subject: VpnSite
+      parameter-name: DevicePropertyDeviceVendor
+    set:
+      parameter-name: DeviceVendor
+  - where:
+      subject: VpnSite
+      parameter-name: DevicePropertyLinkSpeedInMbps
+    set:
+      parameter-name: LinkSpeedInMbps
 ```

@@ -14,7 +14,7 @@ Deletes the specified rule from a route filter.
 
 ### Delete (Default)
 ```
-Remove-AzRouteFilterRule -ResourceGroupName <String> -RouteFilterName <String> -RuleName <String>
+Remove-AzRouteFilterRule -Name <String> -ResourceGroupName <String> -RouteFilterName <String>
  -SubscriptionId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -98,6 +98,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Name
+The name of the rule.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases: RuleName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -148,22 +164,6 @@ Dynamic: False
 
 ### -RouteFilterName
 The name of the route filter.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -RuleName
-The name of the rule.
 
 ```yaml
 Type: System.String

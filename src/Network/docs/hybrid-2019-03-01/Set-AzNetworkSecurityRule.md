@@ -14,13 +14,13 @@ Creates or updates a security rule in the specified network security group.
 
 ### UpdateExpanded1 (Default)
 ```
-Set-AzNetworkSecurityRule -NsgName <String> -ResourceGroupName <String> -ResourceName <String>
- -SubscriptionId <String> -Name <String> [-Access <SecurityRuleAccess>]
- [-AdditionalDestinationAddressPrefix <String[]>] [-AdditionalDestinationPortRange <String[]>]
- [-AdditionalSourceAddressPrefix <String[]>] [-AdditionalSourcePortRange <String[]>] [-Description <String>]
- [-DestinationAddressPrefix <String>] [-DestinationApplicationSecurityGroup <IApplicationSecurityGroup[]>]
- [-DestinationPortRange <String>] [-Direction <SecurityRuleDirection>] [-Etag <String>] [-Id <String>]
- [-Priority <Int32>] [-Protocol <SecurityRuleProtocol>] [-ProvisioningState <String>]
+Set-AzNetworkSecurityRule -Name <String> -NsgName <String> -ResourceGroupName <String>
+ -SubscriptionId <String> [-Access <SecurityRuleAccess>] [-AdditionalDestinationAddressPrefix <String[]>]
+ [-AdditionalDestinationPortRange <String[]>] [-AdditionalSourceAddressPrefix <String[]>]
+ [-AdditionalSourcePortRange <String[]>] [-Description <String>] [-DestinationAddressPrefix <String>]
+ [-DestinationApplicationSecurityGroup <IApplicationSecurityGroup[]>] [-DestinationPortRange <String>]
+ [-Direction <SecurityRuleDirection>] [-Etag <String>] [-Id <String>] [-Priority <Int32>]
+ [-Protocol <SecurityRuleProtocol>] [-ProvisioningState <String>] [-ResourceName <String>]
  [-SourceAddressPrefix <String>] [-SourceApplicationSecurityGroup <IApplicationSecurityGroup[]>]
  [-SourcePortRange <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -28,7 +28,7 @@ Set-AzNetworkSecurityRule -NsgName <String> -ResourceGroupName <String> -Resourc
 
 ### Update1
 ```
-Set-AzNetworkSecurityRule -NsgName <String> -ResourceGroupName <String> -ResourceName <String>
+Set-AzNetworkSecurityRule -Name <String> -NsgName <String> -ResourceGroupName <String>
  -SubscriptionId <String> -SecurityRule <ISecurityRule> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -298,7 +298,7 @@ The name of the security rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1
+Parameter Sets: (All)
 Aliases: SecurityRuleName
 
 Required: True
@@ -411,14 +411,15 @@ Dynamic: False
 ```
 
 ### -ResourceName
-The name of the security rule.
+The name of the resource that is unique within a resource group.
+This name can be used to access the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

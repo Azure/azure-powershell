@@ -14,12 +14,11 @@ Creates a VpnSite resource if it doesn't exist else updates the existing VpnSite
 
 ### UpdateExpanded (Default)
 ```
-Set-AzVpnSite -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-AddressSpaceAddressPrefix <String[]>] [-BgpAsn <Int64>] [-BgpPeerWeight <Int32>]
- [-BgpPeeringAddress <String>] [-DevicePropertyDeviceModel <String>] [-DevicePropertyDeviceVendor <String>]
- [-DevicePropertyLinkSpeedInMbps <Int32>] [-IPAddress <String>] [-Id <String>] [-IsSecuritySite]
- [-Location <String>] [-SiteKey <String>] [-Tag <Hashtable>] [-VirtualWanId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzVpnSite -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-AddressPrefix <String[]>]
+ [-BgpAsn <Int64>] [-BgpPeerWeight <Int32>] [-BgpPeeringAddress <String>] [-DeviceModel <String>]
+ [-DeviceVendor <String>] [-IPAddress <String>] [-Id <String>] [-LinkSpeedInMbps <Int32>] [-Location <String>]
+ [-SecuritySite] [-SiteKey <String>] [-Tag <Hashtable>] [-VirtualWanId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
@@ -53,7 +52,7 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -AddressSpaceAddressPrefix
+### -AddressPrefix
 A list of address blocks reserved for this virtual network in CIDR notation.
 
 ```yaml
@@ -149,7 +148,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -DevicePropertyDeviceModel
+### -DeviceModel
 Model of the device.
 
 ```yaml
@@ -165,7 +164,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -DevicePropertyDeviceVendor
+### -DeviceVendor
 Name of the device Vendor.
 
 ```yaml
@@ -176,22 +175,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -DevicePropertyLinkSpeedInMbps
-Link speed.
-
-```yaml
-Type: System.Int32
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -229,17 +212,17 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IsSecuritySite
-IsSecuritySite flag
+### -LinkSpeedInMbps
+Link speed.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.Int32
 Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -304,6 +287,22 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -SecuritySite
+IsSecuritySite flag
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

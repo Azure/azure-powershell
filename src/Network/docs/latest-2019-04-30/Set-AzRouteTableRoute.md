@@ -15,9 +15,9 @@ Creates or updates a route in the specified route table.
 ### UpdateExpanded (Default)
 ```
 Set-AzRouteTableRoute -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -TableName <String>
- -RouteName <String> [-AddressPrefix <String>] [-Etag <String>] [-Id <String>] [-NextHopIPAddress <String>]
- [-NextHopType <RouteNextHopType>] [-ProvisioningState <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AddressPrefix <String>] [-Etag <String>] [-Id <String>] [-NextHopIPAddress <String>]
+ [-NextHopType <RouteNextHopType>] [-ProvisioningState <String>] [-ResourceName <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
@@ -137,7 +137,7 @@ The name of the route.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: RouteName
 
 Required: True
 Position: Named
@@ -229,6 +229,23 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -ResourceName
+The name of the resource that is unique within a resource group.
+This name can be used to access the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Route
 Route resource
 To construct, see NOTES section for ROUTE properties and create a hash table.
@@ -242,22 +259,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -RouteName
-The name of the route.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```

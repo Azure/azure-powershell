@@ -14,12 +14,13 @@ Creates a P2SVpnServerConfiguration to associate with a VirtualWan if it doesn't
 
 ### CreateExpanded (Default)
 ```
-New-AzP2SVpnServerConfiguration -ResourceGroupName <String> -SubscriptionId <String> -VirtualWanName <String>
- -Name <String> [-ResourceName <String>] [-Etag <String>] [-Id <String>]
+New-AzP2SVpnServerConfiguration -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -VirtualWanName <String> [-Etag <String>] [-Id <String>]
  [-RadiusClientRootCertificate <IP2SVpnServerConfigRadiusClientRootCertificate[]>]
  [-RadiusServerAddress <String>]
  [-RadiusServerRootCertificate <IP2SVpnServerConfigRadiusServerRootCertificate[]>]
- [-RadiusServerSecret <String>] [-ResourceName2 <String>] [-VpnClientIPsecPolicy <IIpsecPolicy[]>]
+ [-RadiusServerSecret <String>] [-ResourceName <String>] [-ResourceName2 <String>]
+ [-VpnClientIPsecPolicy <IIpsecPolicy[]>]
  [-VpnClientRevokedCertificate <IP2SVpnServerConfigVpnClientRevokedCertificate[]>]
  [-VpnClientRootCertificate <IP2SVpnServerConfigVpnClientRootCertificate[]>]
  [-VpnProtocol <VpnGatewayTunnelingProtocol[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
@@ -28,18 +29,19 @@ New-AzP2SVpnServerConfiguration -ResourceGroupName <String> -SubscriptionId <Str
 
 ### Create
 ```
-New-AzP2SVpnServerConfiguration -ResourceGroupName <String> -SubscriptionId <String> -VirtualWanName <String>
- -P2SVpnServerConfiguration <IP2SVpnServerConfiguration> [-ResourceName <String>] [-DefaultProfile <PSObject>]
+New-AzP2SVpnServerConfiguration -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -VirtualWanName <String> -P2SVpnServerConfiguration <IP2SVpnServerConfiguration> [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzP2SVpnServerConfiguration -InputObject <INetworkIdentity> [-ResourceName <String>] [-Etag <String>]
- [-Id <String>] [-RadiusClientRootCertificate <IP2SVpnServerConfigRadiusClientRootCertificate[]>]
+New-AzP2SVpnServerConfiguration -InputObject <INetworkIdentity> [-Etag <String>] [-Id <String>]
+ [-RadiusClientRootCertificate <IP2SVpnServerConfigRadiusClientRootCertificate[]>]
  [-RadiusServerAddress <String>]
  [-RadiusServerRootCertificate <IP2SVpnServerConfigRadiusServerRootCertificate[]>]
- [-RadiusServerSecret <String>] [-ResourceName2 <String>] [-VpnClientIPsecPolicy <IIpsecPolicy[]>]
+ [-RadiusServerSecret <String>] [-ResourceName <String>] [-ResourceName2 <String>]
+ [-VpnClientIPsecPolicy <IIpsecPolicy[]>]
  [-VpnClientRevokedCertificate <IP2SVpnServerConfigVpnClientRevokedCertificate[]>]
  [-VpnClientRootCertificate <IP2SVpnServerConfigVpnClientRootCertificate[]>]
  [-VpnProtocol <VpnGatewayTunnelingProtocol[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
@@ -163,7 +165,7 @@ The name of the P2SVpnServerConfiguration.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: P2SVpnServerConfigurationName
 
 Required: True
@@ -290,11 +292,12 @@ Dynamic: False
 ```
 
 ### -ResourceName
-The name of the P2SVpnServerConfiguration.
+The name of the resource that is unique within a resource group.
+This name can be used to access the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, Create, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False

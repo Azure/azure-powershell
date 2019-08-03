@@ -14,14 +14,15 @@ Creates or updates a route in the specified route filter.
 
 ### UpdateExpanded (Default)
 ```
-Set-AzRouteFilterRule -ResourceGroupName <String> -RouteFilterName <String> -RuleName <String>
+Set-AzRouteFilterRule -Name <String> -ResourceGroupName <String> -RouteFilterName <String>
  -SubscriptionId <String> [-Access <Access>] [-Community <String[]>] [-Id <String>] [-Location <String>]
- [-Name <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ResourceName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Update
 ```
-Set-AzRouteFilterRule -ResourceGroupName <String> -RouteFilterName <String> -RuleName <String>
+Set-AzRouteFilterRule -Name <String> -ResourceGroupName <String> -RouteFilterName <String>
  -SubscriptionId <String> -RouteFilterRule <IRouteFilterRule> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -150,15 +151,14 @@ Dynamic: False
 ```
 
 ### -Name
-The name of the resource that is unique within a resource group.
-This name can be used to access the resource.
+The name of the route filter rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
+Parameter Sets: (All)
+Aliases: RuleName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -198,6 +198,23 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -ResourceName
+The name of the resource that is unique within a resource group.
+This name can be used to access the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -RouteFilterName
 The name of the route filter.
 
@@ -227,22 +244,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -RuleName
-The name of the route filter rule.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```

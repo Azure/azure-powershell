@@ -21,13 +21,13 @@ Get-AzPublicIPAddress -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<
 ```
 Get-AzPublicIPAddress -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
  -IPConfigurationName <String> -NetworkInterfaceName <String> -VMIndex <String> -VmssName <String>
- [-ExpandResource <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzPublicIPAddress -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- [-ExpandResource <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPublicIPAddress -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]> [-Expand <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ListVmssVM
@@ -51,7 +51,7 @@ Get-AzPublicIPAddress -ResourceGroupName <String> -SubscriptionId <String[]> [-D
 
 ### GetViaIdentity
 ```
-Get-AzPublicIPAddress -InputObject <INetworkIdentity> [-ExpandResource <String>] [-DefaultProfile <PSObject>]
+Get-AzPublicIPAddress -InputObject <INetworkIdentity> [-Expand <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -96,13 +96,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ExpandResource
+### -Expand
 Expands referenced resources.
 
 ```yaml
 Type: System.String
 Parameter Sets: GetVmss, Get, GetViaIdentity
-Aliases:
+Aliases: ExpandResource
 
 Required: False
 Position: Named

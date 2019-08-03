@@ -14,9 +14,8 @@ Creates or updates a load balancer inbound nat rule.
 
 ### UpdateExpanded (Default)
 ```
-Set-AzLoadBalancerInboundNatRule -LoadBalancerName <String> -ResourceGroupName <String> -ResourceName <String>
- -SubscriptionId <String> -Name <String>
- [-ApplicationGatewayBackendAddressPool <IApplicationGatewayBackendAddressPool[]>]
+Set-AzLoadBalancerInboundNatRule -LoadBalancerName <String> -Name <String> -ResourceGroupName <String>
+ -SubscriptionId <String> [-ApplicationGatewayBackendAddressPool <IApplicationGatewayBackendAddressPool[]>]
  [-ApplicationSecurityGroup <IApplicationSecurityGroup[]>] [-BackendIPConfigurationEtag <String>]
  [-BackendIPConfigurationId <String>] [-BackendIPConfigurationName <String>]
  [-BackendIPConfigurationProvisioningState <String>] [-BackendPort <Int32>] [-EnableFloatingIP]
@@ -25,13 +24,13 @@ Set-AzLoadBalancerInboundNatRule -LoadBalancerName <String> -ResourceGroupName <
  [-LoadBalancerInboundNatRule <IInboundNatRule[]>] [-Primary] [-PrivateIPAddress <String>]
  [-PrivateIPAddressVersion <IPVersion>] [-PrivateIPAllocationMethod <IPAllocationMethod>]
  [-Protocol <TransportProtocol>] [-ProvisioningState <String>] [-PublicIPAddress <IPublicIPAddress>]
- [-Subnet <ISubnet>] [-VnetTap <IVirtualNetworkTap[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ResourceName <String>] [-Subnet <ISubnet>] [-VnetTap <IVirtualNetworkTap[]>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
 ```
-Set-AzLoadBalancerInboundNatRule -LoadBalancerName <String> -ResourceGroupName <String> -ResourceName <String>
+Set-AzLoadBalancerInboundNatRule -LoadBalancerName <String> -Name <String> -ResourceGroupName <String>
  -SubscriptionId <String> -InboundNatRule <IInboundNatRule> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -402,7 +401,7 @@ The name of the inbound nat rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases: InboundNatRuleName
 
 Required: True
@@ -561,14 +560,15 @@ Dynamic: False
 ```
 
 ### -ResourceName
-The name of the inbound nat rule.
+Gets name of the resource that is unique within a resource group.
+This name can be used to access the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

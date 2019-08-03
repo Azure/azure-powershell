@@ -15,7 +15,7 @@ Creates or updates a ExpressRoute gateway in a specified resource group.
 ### CreateExpanded (Default)
 ```
 New-AzExpressRouteGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-Id <String>]
- [-Location <String>] [-MaximumScaleUnits <Int32>] [-MinimumScaleUnits <Int32>] [-Tag <Hashtable>]
+ [-Location <String>] [-MaximumScaleUnit <Int32>] [-MinimumScaleUnit <Int32>] [-Tag <Hashtable>]
  [-VirtualHubId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -30,7 +30,7 @@ New-AzExpressRouteGateway -Name <String> -ResourceGroupName <String> -Subscripti
 ### CreateViaIdentityExpanded
 ```
 New-AzExpressRouteGateway -InputObject <INetworkIdentity> [-Id <String>] [-Location <String>]
- [-MaximumScaleUnits <Int32>] [-MinimumScaleUnits <Int32>] [-Tag <Hashtable>] [-VirtualHubId <String>]
+ [-MaximumScaleUnit <Int32>] [-MinimumScaleUnit <Int32>] [-Tag <Hashtable>] [-VirtualHubId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -162,7 +162,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -MaximumScaleUnits
+### -MaximumScaleUnit
 Maximum number of scale units deployed for ExpressRoute gateway.
 
 ```yaml
@@ -178,7 +178,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -MinimumScaleUnits
+### -MinimumScaleUnit
 Minimum number of scale units deployed for ExpressRoute gateway.
 
 ```yaml

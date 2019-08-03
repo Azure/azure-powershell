@@ -14,12 +14,11 @@ Creates or updates a virtual network in the specified resource group.
 
 ### UpdateExpanded (Default)
 ```
-Set-AzVnet -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-AddressSpaceAddressPrefix <String[]>] [-DdosProtectionPlanId <String>] [-DhcpOptionDnsServer <String[]>]
- [-EnableDdosProtection] [-EnableVMProtection] [-Etag <String>] [-Id <String>] [-Location <String>]
- [-ProvisioningState <String>] [-ResourceGuid <String>] [-Subnet <ISubnet[]>] [-Tag <Hashtable>]
- [-VnetPeering <IVirtualNetworkPeering[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Set-AzVnet -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-AddressPrefix <String[]>]
+ [-DdosProtectionPlanId <String>] [-DnsServer <String[]>] [-EnableDdosProtection] [-EnableVMProtection]
+ [-Etag <String>] [-Id <String>] [-Location <String>] [-ProvisioningState <String>] [-ResourceGuid <String>]
+ [-Subnet <ISubnet[]>] [-Tag <Hashtable>] [-VnetPeering <IVirtualNetworkPeering[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
@@ -53,7 +52,7 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -AddressSpaceAddressPrefix
+### -AddressPrefix
 A list of address blocks reserved for this virtual network in CIDR notation.
 
 ```yaml
@@ -117,7 +116,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -DhcpOptionDnsServer
+### -DnsServer
 The list of DNS servers IP addresses.
 
 ```yaml

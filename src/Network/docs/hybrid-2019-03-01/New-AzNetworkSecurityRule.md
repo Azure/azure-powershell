@@ -14,13 +14,13 @@ Creates or updates a security rule in the specified network security group.
 
 ### CreateExpanded1 (Default)
 ```
-New-AzNetworkSecurityRule -NsgName <String> -ResourceGroupName <String> -SubscriptionId <String>
- -Name <String> [-ResourceName <String>] [-Access <SecurityRuleAccess>]
- [-AdditionalDestinationAddressPrefix <String[]>] [-AdditionalDestinationPortRange <String[]>]
- [-AdditionalSourceAddressPrefix <String[]>] [-AdditionalSourcePortRange <String[]>] [-Description <String>]
- [-DestinationAddressPrefix <String>] [-DestinationApplicationSecurityGroup <IApplicationSecurityGroup[]>]
- [-DestinationPortRange <String>] [-Direction <SecurityRuleDirection>] [-Etag <String>] [-Id <String>]
- [-Priority <Int32>] [-Protocol <SecurityRuleProtocol>] [-ProvisioningState <String>]
+New-AzNetworkSecurityRule -Name <String> -NsgName <String> -ResourceGroupName <String>
+ -SubscriptionId <String> [-Access <SecurityRuleAccess>] [-AdditionalDestinationAddressPrefix <String[]>]
+ [-AdditionalDestinationPortRange <String[]>] [-AdditionalSourceAddressPrefix <String[]>]
+ [-AdditionalSourcePortRange <String[]>] [-Description <String>] [-DestinationAddressPrefix <String>]
+ [-DestinationApplicationSecurityGroup <IApplicationSecurityGroup[]>] [-DestinationPortRange <String>]
+ [-Direction <SecurityRuleDirection>] [-Etag <String>] [-Id <String>] [-Priority <Int32>]
+ [-Protocol <SecurityRuleProtocol>] [-ProvisioningState <String>] [-ResourceName <String>]
  [-SourceAddressPrefix <String>] [-SourceApplicationSecurityGroup <IApplicationSecurityGroup[]>]
  [-SourcePortRange <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -28,22 +28,22 @@ New-AzNetworkSecurityRule -NsgName <String> -ResourceGroupName <String> -Subscri
 
 ### Create1
 ```
-New-AzNetworkSecurityRule -NsgName <String> -ResourceGroupName <String> -SubscriptionId <String>
- -SecurityRule <ISecurityRule> [-ResourceName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+New-AzNetworkSecurityRule -Name <String> -NsgName <String> -ResourceGroupName <String>
+ -SubscriptionId <String> -SecurityRule <ISecurityRule> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded1
 ```
-New-AzNetworkSecurityRule -InputObject <INetworkIdentity> [-ResourceName <String>]
- [-Access <SecurityRuleAccess>] [-AdditionalDestinationAddressPrefix <String[]>]
- [-AdditionalDestinationPortRange <String[]>] [-AdditionalSourceAddressPrefix <String[]>]
- [-AdditionalSourcePortRange <String[]>] [-Description <String>] [-DestinationAddressPrefix <String>]
- [-DestinationApplicationSecurityGroup <IApplicationSecurityGroup[]>] [-DestinationPortRange <String>]
- [-Direction <SecurityRuleDirection>] [-Etag <String>] [-Id <String>] [-Priority <Int32>]
- [-Protocol <SecurityRuleProtocol>] [-ProvisioningState <String>] [-SourceAddressPrefix <String>]
- [-SourceApplicationSecurityGroup <IApplicationSecurityGroup[]>] [-SourcePortRange <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzNetworkSecurityRule -InputObject <INetworkIdentity> [-Access <SecurityRuleAccess>]
+ [-AdditionalDestinationAddressPrefix <String[]>] [-AdditionalDestinationPortRange <String[]>]
+ [-AdditionalSourceAddressPrefix <String[]>] [-AdditionalSourcePortRange <String[]>] [-Description <String>]
+ [-DestinationAddressPrefix <String>] [-DestinationApplicationSecurityGroup <IApplicationSecurityGroup[]>]
+ [-DestinationPortRange <String>] [-Direction <SecurityRuleDirection>] [-Etag <String>] [-Id <String>]
+ [-Priority <Int32>] [-Protocol <SecurityRuleProtocol>] [-ProvisioningState <String>] [-ResourceName <String>]
+ [-SourceAddressPrefix <String>] [-SourceApplicationSecurityGroup <IApplicationSecurityGroup[]>]
+ [-SourcePortRange <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentity1
@@ -333,7 +333,7 @@ The name of the security rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded1
+Parameter Sets: CreateExpanded1, Create1
 Aliases: SecurityRuleName
 
 Required: True
@@ -446,11 +446,12 @@ Dynamic: False
 ```
 
 ### -ResourceName
-The name of the security rule.
+The name of the resource that is unique within a resource group.
+This name can be used to access the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded1, Create1, CreateViaIdentityExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False

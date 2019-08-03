@@ -23,15 +23,13 @@ New-AzVnetGatewayConnection -InputObject <INetworkIdentity>
 ```
 New-AzVnetGatewayConnection -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  -ConnectionType <VirtualNetworkGatewayConnectionType> -VnetGateway1 <IVirtualNetworkGateway>
- [-AuthorizationKey <String>] [-BgpSettingAsn <Int64>] [-BgpSettingBgpPeeringAddress <String>]
- [-BgpSettingPeerWeight <Int32>] [-EnableBgp] [-Etag <String>] [-GatewayIPAddress <String>]
- [-IPsecPolicy <IIpsecPolicy[]>] [-Id <String>] [-LocalNetworkAddressPrefix <String[]>]
- [-LocalNetworkGateway2Etag <String>] [-LocalNetworkGateway2Id <String>]
- [-LocalNetworkGateway2Location <String>] [-LocalNetworkGateway2PropertiesResourceGuid <String>]
- [-LocalNetworkGateway2Tag <Hashtable>] [-Location <String>] [-PeerId <String>] [-ResourceGuid <String>]
- [-RoutingWeight <Int32>] [-SharedKey <String>] [-Tag <Hashtable>] [-UsePolicyBasedTrafficSelectors]
- [-VnetGateway2 <IVirtualNetworkGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-AuthorizationKey <String>] [-BgpAsn <Int64>] [-BgpPeerWeight <Int32>] [-BgpPeeringAddress <String>]
+ [-EnableBgp] [-Etag <String>] [-Etag2 <String>] [-GatewayIPAddress <String>] [-IPsecPolicy <IIpsecPolicy[]>]
+ [-Id <String>] [-Id2 <String>] [-LocalNetworkAddressPrefix <String[]>] [-Location <String>]
+ [-Location2 <String>] [-PeerId <String>] [-ResourceGuid <String>] [-ResourceGuid2 <String>]
+ [-RoutingWeight <Int32>] [-SharedKey <String>] [-Tag <Hashtable>] [-Tag2 <Hashtable>]
+ [-UsePolicyBasedTrafficSelectors] [-VnetGateway2 <IVirtualNetworkGateway>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create1
@@ -45,15 +43,13 @@ New-AzVnetGatewayConnection -Name <String> -ResourceGroupName <String> -Subscrip
 ```
 New-AzVnetGatewayConnection -InputObject <INetworkIdentity>
  -ConnectionType <VirtualNetworkGatewayConnectionType> -VnetGateway1 <IVirtualNetworkGateway>
- [-AuthorizationKey <String>] [-BgpSettingAsn <Int64>] [-BgpSettingBgpPeeringAddress <String>]
- [-BgpSettingPeerWeight <Int32>] [-EnableBgp] [-Etag <String>] [-GatewayIPAddress <String>]
- [-IPsecPolicy <IIpsecPolicy[]>] [-Id <String>] [-LocalNetworkAddressPrefix <String[]>]
- [-LocalNetworkGateway2Etag <String>] [-LocalNetworkGateway2Id <String>]
- [-LocalNetworkGateway2Location <String>] [-LocalNetworkGateway2PropertiesResourceGuid <String>]
- [-LocalNetworkGateway2Tag <Hashtable>] [-Location <String>] [-PeerId <String>] [-ResourceGuid <String>]
- [-RoutingWeight <Int32>] [-SharedKey <String>] [-Tag <Hashtable>] [-UsePolicyBasedTrafficSelectors]
- [-VnetGateway2 <IVirtualNetworkGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-AuthorizationKey <String>] [-BgpAsn <Int64>] [-BgpPeerWeight <Int32>] [-BgpPeeringAddress <String>]
+ [-EnableBgp] [-Etag <String>] [-Etag2 <String>] [-GatewayIPAddress <String>] [-IPsecPolicy <IIpsecPolicy[]>]
+ [-Id <String>] [-Id2 <String>] [-LocalNetworkAddressPrefix <String[]>] [-Location <String>]
+ [-Location2 <String>] [-PeerId <String>] [-ResourceGuid <String>] [-ResourceGuid2 <String>]
+ [-RoutingWeight <Int32>] [-SharedKey <String>] [-Tag <Hashtable>] [-Tag2 <Hashtable>]
+ [-UsePolicyBasedTrafficSelectors] [-VnetGateway2 <IVirtualNetworkGateway>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -113,7 +109,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -BgpSettingAsn
+### -BgpAsn
 The BGP speaker's ASN.
 
 ```yaml
@@ -129,7 +125,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -BgpSettingBgpPeeringAddress
+### -BgpPeeringAddress
 The BGP peering address and BGP identifier of this BGP speaker.
 
 ```yaml
@@ -145,7 +141,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -BgpSettingPeerWeight
+### -BgpPeerWeight
 The weight added to routes learned from this BGP speaker.
 
 ```yaml
@@ -226,6 +222,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Etag2
+A unique read-only string that changes whenever the resource is updated.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -GatewayIPAddress
 IP address of local network gateway.
 
@@ -243,6 +255,22 @@ Dynamic: False
 ```
 
 ### -Id
+Resource ID.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Id2
 Resource ID.
 
 ```yaml
@@ -307,39 +335,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -LocalNetworkGateway2Etag
-A unique read-only string that changes whenever the resource is updated.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -LocalNetworkGateway2Id
-Resource ID.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -LocalNetworkGateway2Location
+### -Location
 Resource location.
 
 ```yaml
@@ -355,39 +351,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -LocalNetworkGateway2PropertiesResourceGuid
-The resource GUID property of the LocalNetworkGateway resource.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -LocalNetworkGateway2Tag
-Resource tags.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Location
+### -Location2
 Resource location.
 
 ```yaml
@@ -483,6 +447,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -ResourceGuid2
+The resource GUID property of the LocalNetworkGateway resource.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -RoutingWeight
 The routing weight.
 
@@ -533,6 +513,22 @@ Dynamic: False
 ```
 
 ### -Tag
+Resource tags.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Tag2
 Resource tags.
 
 ```yaml

@@ -19,8 +19,8 @@ Get-AzRouteTable -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<Commo
 
 ### Get1
 ```
-Get-AzRouteTable -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- [-ExpandResource <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzRouteTable -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]> [-Expand <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List2
@@ -31,7 +31,7 @@ Get-AzRouteTable -ResourceGroupName <String> -SubscriptionId <String[]> [-Defaul
 
 ### GetViaIdentity1
 ```
-Get-AzRouteTable -InputObject <INetworkIdentity> [-ExpandResource <String>] [-DefaultProfile <PSObject>]
+Get-AzRouteTable -InputObject <INetworkIdentity> [-Expand <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -76,13 +76,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ExpandResource
+### -Expand
 Expands referenced resources.
 
 ```yaml
 Type: System.String
 Parameter Sets: Get1, GetViaIdentity1
-Aliases:
+Aliases: ExpandResource
 
 Required: False
 Position: Named

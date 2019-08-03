@@ -16,10 +16,10 @@ Creates a virtual wan p2s vpn gateway if it doesn't exist else updates the exist
 ```
 New-AzP2SVpnGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-CustomRouteAddressPrefix <String[]>] [-Id <String>] [-Location <String>]
- [-P2SVpnServerConfigurationId <String>] [-Tag <Hashtable>] [-VirtualHubId <String>]
+ [-P2SVpnServerConfigurationId <String>] [-ScaleUnit <Int32>] [-Tag <Hashtable>] [-VirtualHubId <String>]
  [-VpnClientAddressPrefix <String[]>] [-VpnClientAllocatedIPAddress <String[]>]
- [-VpnClientConnectionCount <Int32>] [-VpnGatewayScaleUnit <Int32>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-VpnClientConnectionCount <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Create
@@ -32,10 +32,10 @@ New-AzP2SVpnGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <
 ### CreateViaIdentityExpanded
 ```
 New-AzP2SVpnGateway -InputObject <INetworkIdentity> [-CustomRouteAddressPrefix <String[]>] [-Id <String>]
- [-Location <String>] [-P2SVpnServerConfigurationId <String>] [-Tag <Hashtable>] [-VirtualHubId <String>]
- [-VpnClientAddressPrefix <String[]>] [-VpnClientAllocatedIPAddress <String[]>]
- [-VpnClientConnectionCount <Int32>] [-VpnGatewayScaleUnit <Int32>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Location <String>] [-P2SVpnServerConfigurationId <String>] [-ScaleUnit <Int32>] [-Tag <Hashtable>]
+ [-VirtualHubId <String>] [-VpnClientAddressPrefix <String[]>] [-VpnClientAllocatedIPAddress <String[]>]
+ [-VpnClientConnectionCount <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -246,6 +246,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -ScaleUnit
+The scale unit for this p2s vpn gateway.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -SubscriptionId
 The subscription credentials which uniquely identify the Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
@@ -329,22 +345,6 @@ Dynamic: False
 
 ### -VpnClientConnectionCount
 The total of p2s vpn clients connected at this time to this P2SVpnGateway.
-
-```yaml
-Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -VpnGatewayScaleUnit
-The scale unit for this p2s vpn gateway.
 
 ```yaml
 Type: System.Int32

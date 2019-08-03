@@ -15,14 +15,13 @@ Gets the backend health of the specified application gateway in a resource group
 ### Backend (Default)
 ```
 Get-AzApplicationGatewayBackendHealth -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- [-ExpandResource <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-Expand <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DemandExpanded
 ```
 Get-AzApplicationGatewayBackendHealth -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- -AsOnDemand [-ExpandResource <String>] [-BackendHttpSettingName <String>] [-BackendPoolName <String>]
+ -AsOnDemand [-Expand <String>] [-BackendHttpSettingName <String>] [-BackendPoolName <String>]
  [-Host <String>] [-MatchBody <String>] [-MatchStatusCode <String[]>] [-Path <String>]
  [-PickHostNameFromBackendHttpSetting] [-Protocol <ApplicationGatewayProtocol>] [-Timeout <Int32>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -30,7 +29,7 @@ Get-AzApplicationGatewayBackendHealth -Name <String> -ResourceGroupName <String>
 
 ### DemandViaIdentityExpanded
 ```
-Get-AzApplicationGatewayBackendHealth -InputObject <INetworkIdentity> -AsOnDemand [-ExpandResource <String>]
+Get-AzApplicationGatewayBackendHealth -InputObject <INetworkIdentity> -AsOnDemand [-Expand <String>]
  [-BackendHttpSettingName <String>] [-BackendPoolName <String>] [-Host <String>] [-MatchBody <String>]
  [-MatchStatusCode <String[]>] [-Path <String>] [-PickHostNameFromBackendHttpSetting]
  [-Protocol <ApplicationGatewayProtocol>] [-Timeout <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
@@ -39,7 +38,7 @@ Get-AzApplicationGatewayBackendHealth -InputObject <INetworkIdentity> -AsOnDeman
 
 ### BackendViaIdentity
 ```
-Get-AzApplicationGatewayBackendHealth -InputObject <INetworkIdentity> [-ExpandResource <String>]
+Get-AzApplicationGatewayBackendHealth -InputObject <INetworkIdentity> [-Expand <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -148,13 +147,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ExpandResource
+### -Expand
 Expands BackendAddressPool and BackendHttpSettings referenced in backend health.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: ExpandResource
 
 Required: False
 Position: Named
