@@ -17,7 +17,7 @@ Creates a new Azure NetApp Files (ANF) volume.
 New-AzNetAppFilesVolume -ResourceGroupName <String> -Location <String> -AccountName <String> -PoolName <String>
  -Name <String> -UsageThreshold <Int64> -SubnetId <String> -CreationToken <String> -ServiceLevel <String>
  [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>]
- [-ProtocolTypes <List[String]>] [-MountTargets <Hashtable>]
+ [-ProtocolType <List[String]>]
  [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -25,7 +25,7 @@ New-AzNetAppFilesVolume -ResourceGroupName <String> -Location <String> -AccountN
 ```
 New-AzNetAppFilesVolume -Name <String> -UsageThreshold <Int64> -SubnetId <String> -CreationToken <String>
  -ServiceLevel <String> [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>]
- [-ProtocolTypes <List[String]>] [-MountTargets <Hashtable>]
+ [-ProtocolType <List[String]>]
  [-Tag <Hashtable>] -PoolObject <PSNetAppFilesPool> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -193,7 +193,7 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ProtocolTypes
+### -ProtocolType
 A hashtable array which represents the export policy
 
 ```yaml
