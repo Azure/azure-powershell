@@ -14,7 +14,7 @@ Creates a local criteria object that can be used to create a new metric alert
 
 ### StaticThresholdParameterSet (Default)
 ```
-New-AzMetricAlertRuleV2Criteria [-StaticThreshold] -MetricName <String> [-MetricNamespace <String>]
+New-AzMetricAlertRuleV2Criteria -MetricName <String> [-MetricNamespace <String>]
  [-DimensionSelection <PSMetricDimension[]>] -TimeAggregation <String> -Operator <String> -Threshold <Double>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -119,7 +119,7 @@ Accept wildcard characters: False
 ```
 
 ### -DynamicThreshold
-Dynamic Threshold Type
+Switch parameter for using Dynamic Threshold Type
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -217,21 +217,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -StaticThreshold
-Static Threshold Type
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: StaticThresholdParameterSet
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

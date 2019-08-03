@@ -45,12 +45,6 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         public SwitchParameter DynamicThreshold { get; set; }
 
         /// <summary>
-        /// Gets or sets the rule DynamicThreshold
-        /// </summary>
-        [Parameter(ParameterSetName = StaticThresholdParameterSet, Mandatory = false, HelpMessage = "Static Threshold Type")]
-        public SwitchParameter StaticThreshold { get; set; }
-
-        /// <summary>
         /// Gets or sets the MetricName parameter
         /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "The metric name for rule")]
