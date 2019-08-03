@@ -104,7 +104,7 @@ function Test-VolumeCrud
         # create first volume and check
         $newTagName = "tag1"
         $newTagValue = "tagValue1"
-        $retrievedVolume = New-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName1 -CreationToken $volName1 -UsageThreshold $usageThreshold -ServiceLevel $serviceLevel -SubnetId $subnetId -Tag @{$newTagName = $newTagValue} -ExportPolicy $exportPolicy -ProtocolTypes $protocolTypes
+        $retrievedVolume = New-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName1 -CreationToken $volName1 -UsageThreshold $usageThreshold -ServiceLevel $serviceLevel -SubnetId $subnetId -Tag @{$newTagName = $newTagValue} -ExportPolicy $exportPolicy -ProtocolType $protocolTypes
         Assert-AreEqual "$accName/$poolName/$volName1" $retrievedVolume.Name
         Assert-AreEqual $serviceLevel $retrievedVolume.ServiceLevel
         Assert-AreEqual True $retrievedVolume.Tags.ContainsKey($newTagName)
@@ -151,21 +151,21 @@ function Test-VolumeCrud
         Assert-AreEqual $retrievedVolume.ExportPolicy.Rules[0].AllowedClients '0.0.0.0/0'
         Assert-AreEqual $retrievedVolume.ExportPolicy.Rules[1].AllowedClients '1.2.3.0/24'
 
-		$rule3 = @{
-			RuleIndex = 3
-			UnixReadOnly = 'false'
-			UnixReadWrite = 'true'
-			Cifs = 'false'
-			Nfsv3 = 'true'
-			Nfsv4 = 'false'
-			AllowedClients = '1.2.3.0/24'
-		}
+        $rule4 = @{
+            RuleIndex = 3
+            UnixReadOnly = 'false'
+            UnixReadWrite = 'true'
+            Cifs = 'false'
+            Nfsv3 = 'true'
+            Nfsv4 = 'false'
+            AllowedClients = '1.2.3.0/24'
+        }
 
-		$exportPolicyUpdate = @{
-			Rules = (
-				$rule2, $rule3
-			)
-		}
+        $exportPolicyUpdate = @{
+            Rules = (
+                $rule2, $rule4
+            )
+        }
 
         # now patch the policy
         $retrievedVolume = Update-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName1 -ExportPolicy $exportPolicyUpdate
@@ -190,7 +190,7 @@ function Test-VolumeCrud
         # create the volume and check
         $newTagName = "tag1"
         $newTagValue = "tagValue1"
-        $retrievedVolume = New-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName2 -VolumeName $volName4 -CreationToken $volName4 -UsageThreshold $doubleUsage -ServiceLevel "Standard" -SubnetId $subnetId -Tag @{$newTagName = $newTagValue} -ExportPolicy $exportPolicy -ProtocolTypes $protocolTypes
+        $retrievedVolume = New-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName2 -VolumeName $volName4 -CreationToken $volName4 -UsageThreshold $doubleUsage -ServiceLevel "Standard" -SubnetId $subnetId -Tag @{$newTagName = $newTagValue} -ExportPolicy $exportPolicy -ProtocolType $protocolTypes
         Assert-AreEqual "$accName/$poolName2/$volName4" $retrievedVolume.Name
         Assert-AreEqual "Standard" $retrievedVolume.ServiceLevel
         Assert-AreEqual True $retrievedVolume.Tags.ContainsKey($newTagName)

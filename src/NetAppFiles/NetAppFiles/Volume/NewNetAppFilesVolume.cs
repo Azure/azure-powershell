@@ -120,13 +120,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             Mandatory = false,
             HelpMessage = "A hashtable array which represents the protocol types")]
         [ValidateNotNullOrEmpty]
-        public List<string> ProtocolTypes { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "A hashtable which represents mount targets of the volume")]
-        [ValidateNotNullOrEmpty]
-        public Hashtable MountTargets { get; }
+        public List<string> ProtocolType { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -162,7 +156,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 SubnetId = SubnetId,
                 Location = Location,
                 ExportPolicy = (ExportPolicy != null) ? ModelExtensions.ConvertExportPolicyFromPs(ExportPolicy) : null,
-                ProtocolTypes = ProtocolTypes,
+                ProtocolTypes = ProtocolType,
                 Tags = Tag
             };
 
