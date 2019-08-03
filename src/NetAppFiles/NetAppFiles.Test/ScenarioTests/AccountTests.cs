@@ -38,7 +38,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAccountActiveDirectory()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AccountActiveDirectory");
+            // current usage within test subscription prevents this test run
+            // TestController.NewInstance.RunPowerShellTest(_logger, "Test-AccountActiveDirectory");
         }
 
         [Fact]
