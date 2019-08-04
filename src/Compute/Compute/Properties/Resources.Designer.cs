@@ -793,7 +793,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Network disruption occured, retrying..
+        ///   Looks up a localized string similar to Network disruption occurred, retrying..
         /// </summary>
         internal static string PSSyncOutputEventsRetryingAfterANetworkDisruption {
             get {
@@ -1230,7 +1230,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The RDP file cannot be generated because the network interface of the virtual machine does not reference a PublicIP or an InboungNatRule of the load balancer..
+        ///   Looks up a localized string similar to The RDP file cannot be generated because the network interface of the virtual machine does not reference a PublicIP or an InboundNatRule of the load balancer..
         /// </summary>
         internal static string VirtualMachineReferencesInternalNetworkInterface {
             get {

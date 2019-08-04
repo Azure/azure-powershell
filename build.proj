@@ -263,7 +263,7 @@
   </Target>
 
   <Target Name="TestFailureErrorMessage">
-    <Error Text="Test failures occured, check the files in artifacts/TestResults" />
+    <Error Text="Test failures occurred, check the files in artifacts/TestResults" />
   </Target>
 
   <Target Name="CodeSignBinaries" AfterTargets="Build" Condition="'$(CodeSign)' == 'true'">

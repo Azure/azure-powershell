@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Common
         /// Translate the given Uri into the appropriate Uri for the current environment.
         /// </summary>
         /// <param name="environment">The current Azure Environment</param>
-        /// <param name="baseEndpoint">The Uri to tranform</param>
+        /// <param name="baseEndpoint">The Uri to transform</param>
         /// <returns>The Uri, with naseUri appropriately altered for the current Azure environment</returns>
         public static Uri GetUriFromBaseRequestUri(this IAzureEnvironment environment, Uri baseEndpoint)
         {

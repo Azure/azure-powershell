@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.2.0
 * Adding Invoke-AzStorageSyncChangeDetection cmdlet.
 * Fix Issue 9551 for honoring TierFilesOlderThanDays
 

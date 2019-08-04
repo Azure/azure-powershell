@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 
         private static string GetSanitizedPath(string path, string fullPath)
         {
-            // this case is if there is no match, so we just return what we recieved
+            // this case is if there is no match, so we just return what we received
             if (string.IsNullOrEmpty(path))
             {
                 return path;

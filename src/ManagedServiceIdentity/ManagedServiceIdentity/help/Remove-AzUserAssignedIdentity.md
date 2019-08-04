@@ -37,7 +37,7 @@ The **Remove-AzUserAssignedIdentity** deletes the specified User Assigned Identi
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzurRmUserAssignedIdentity -ResourceGroupName PSRG -Name ID1
+PS C:\> Remove-AzUserAssignedIdentity -ResourceGroupName PSRG -Name ID1
 ```
 
 This example cmdlet deletes the identity **ID1** under resource group **PSRG**.
