@@ -130,15 +130,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
         {
             if (this.ParameterSetName.Equals(Constants.ParameterSetNameDefault, StringComparison.OrdinalIgnoreCase))
             {
-                this.PeeringManagementClient.PeerAsns.Delete(this.InputObject.Name);
-                if (this.PassThru) this.WriteObject(true);
+                try
+                {
+                    this.PeeringManagementClient.PeerAsns.Delete(this.InputObject.Name);
+                    if (this.PassThru) this.WriteObject(true);
+                }
+                catch
+                {
+                    if (this.PassThru) { this.WriteObject(false); }
+                    else { throw new ItemNotFoundException(); };
+                }
             }
+
 
             if (this.ParameterSetName.Equals(Constants.ParameterSetNameByName, StringComparison.OrdinalIgnoreCase))
             {
-                this.PeeringManagementClient.PeerAsns.Delete(this.Name);
-                if (this.PassThru) this.WriteObject(true);
+
+                try
+                {
+                    this.PeeringManagementClient.PeerAsns.Delete(this.Name);
+                    if (this.PassThru) this.WriteObject(true);
+                }
+                catch
+                {
+                    if (this.PassThru) { this.WriteObject(false); }
+                    else { throw new ItemNotFoundException(); };
+                }
             }
+
+
         }
     }
 }

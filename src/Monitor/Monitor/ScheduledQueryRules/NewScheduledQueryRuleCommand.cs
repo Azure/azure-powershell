@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
 
         //
         // Summary:
-        //     Gets or sets schedule (Frequnecy, Time Window) for rule.
+        //     Gets or sets schedule (Frequency, Time Window) for rule.
         [Parameter(Mandatory = true, HelpMessage = "The scheduled query rule schedule")]
         [ValidateNotNullOrEmpty]
         public PSScheduledQueryRuleSchedule Schedule { get; set; }
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
             }
             catch (Exception ex)
             {
-                throw new Exception("Error occured while creating Log Alert rule", ex);
+                throw new Exception("Error occurred while creating Log Alert rule", ex);
             }    
         }
     }

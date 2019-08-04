@@ -89,7 +89,7 @@ Children    :
 
 With the `Expand` flag, one can navigate through the `Children` array and get details for each child. For example, `Children[0]` will give details for the group with display name `TestGroup1DisplayName`.
 
-### Example 4: Get specific Management Group and all levels of hiearchy
+### Example 4: Get specific Management Group and all levels of hierarchy
 ```
 PS C:\> $response = Get-AzManagementGroup -GroupName TestGroupParent -Expand -Recurse
 PS C:\> $response

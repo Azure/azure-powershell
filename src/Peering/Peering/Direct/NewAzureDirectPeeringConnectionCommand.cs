@@ -174,6 +174,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
                                      {
                                          BandwidthInMbps = this.BandwidthInMbps,
                                          PeeringDBFacilityId = this.PeeringDBFacilityId,
+                                         ConnectionIdentifier = Guid.NewGuid().ToString(),
                                          BgpSession = new PSBgpSession
                                                           {
                                                               MaxPrefixesAdvertisedV4 = !string.IsNullOrEmpty(this.SessionPrefixV4) ? (this.MaxPrefixesAdvertisedIPv4 ?? 20000) : (int?)null,

@@ -73,7 +73,7 @@ R1        DeviceMessages events        True
 R5        DeviceMessages E1            True
 ```
 
-Test all route with source "DeviceMessges".
+Test all route with source "DeviceMessages".
 
 ### Example 2
 ```
