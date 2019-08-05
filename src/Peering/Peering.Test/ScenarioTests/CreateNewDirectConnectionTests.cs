@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
 {
     using Microsoft.Azure.ServiceManagement.Common.Models;
+    using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
     using Xunit;
@@ -38,8 +39,8 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         /// </param>
         public CreateNewDirectConnectionTests(ITestOutputHelper output)
         {
-            this.logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(this.logger);
+            this.logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(this.logger);
         }
 
         /// <summary>

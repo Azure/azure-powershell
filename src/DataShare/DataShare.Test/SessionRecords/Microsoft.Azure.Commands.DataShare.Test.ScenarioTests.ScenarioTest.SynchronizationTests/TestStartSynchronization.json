@@ -1,0 +1,296 @@
+﻿{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/sdktestingadsrg4712/providers/Microsoft.DataShare/accounts/sdktestingshareaccount9776/shareSubscriptions/sdktestingshare1/Synchronize?api-version=2018-11-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzM5ZGNlMTgtY2VhZC00MDY1LThmYjEtM2FmNzY4M2E1MDM4L3Jlc291cmNlR3JvdXBzL3Nka3Rlc3RpbmdhZHNyZzQ3MTIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhU2hhcmUvYWNjb3VudHMvc2RrdGVzdGluZ3NoYXJlYWNjb3VudDk3NzYvc2hhcmVTdWJzY3JpcHRpb25zL3Nka3Rlc3RpbmdzaGFyZTEvU3luY2hyb25pemU/YXBpLXZlcnNpb249MjAxOC0xMS0wMS1wcmV2aWV3",
+      "RequestMethod": "POST",
+      "RequestBody": "{\r\n    \"synchronizationMode\": \"FullSync\"\r\n  }",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "29"
+        ],
+        "x-ms-client-request-id": [
+          "fe3b4974-ca93-4e1e-b51e-752cf0cd13e3"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26201.01"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "191"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 22 Jun 2018 03:42:20 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14992"
+        ],
+        "x-ms-request-id": [
+          "ed9d09c8-ddd8-4cdf-ae78-19aa4caec1e8"
+        ],
+        "x-ms-correlation-request-id": [
+          "ed9d09c8-ddd8-4cdf-ae78-19aa4caec1e8"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20180622T034220Z:ed9d09c8-ddd8-4cdf-ae78-19aa4caec1e8"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/sdktestingadsrg4712/providers/Microsoft.DataShare/accounts/sdktestingshareaccount9776/shareSubscriptions/sdktestingshare1/operationResults/ab0426f3-6673-408f-9127-5e14ccccc1e7?api-version=2018-11-01-preview"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/sdktestingadsrg4712/providers/Microsoft.DataShare/accounts/sdktestingshareaccount9776/shareSubscriptions/sdktestingshare1/operationResults/ab0426f3-6673-408f-9127-5e14ccccc1e7?api-version=2018-11-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzM5ZGNlMTgtY2VhZC00MDY1LThmYjEtM2FmNzY4M2E1MDM4L3Jlc291cmNlR3JvdXBzL3Nka3Rlc3RpbmdhZHNyZzQ3MTIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhU2hhcmUvYWNjb3VudHMvc2RrdGVzdGluZ3NoYXJlYWNjb3VudDk3NzYvc2hhcmVTdWJzY3JpcHRpb25zL3Nka3Rlc3RpbmdzaGFyZTEvb3BlcmF0aW9uUmVzdWx0cy9hYjA0MjZmMy02NjczLTQwOGYtOTEyNy01ZTE0Y2NjY2MxZTc/YXBpLXZlcnNpb249MjAxOC0xMS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "29"
+        ],
+        "x-ms-client-request-id": [
+          "fe3b4974-ca93-4e1e-b51e-752cf0cd13e3"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26201.01"
+        ]
+      },
+      "ResponseBody": "{\"startTime\":\"Wed, 26 Jun 2019 01:15:47 GMT\",\"endTime\":\"Wed, 26 Jun 2019 01:15:47 GMT\",\"status\":\"Succeeded\",\"error\":null}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 22 Jun 2018 03:42:20 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14992"
+        ],
+        "x-ms-request-id": [
+          "ed9d09c8-ddd8-4cdf-ae78-19aa4caec1e8"
+        ],
+        "x-ms-correlation-request-id": [
+          "ed9d09c8-ddd8-4cdf-ae78-19aa4caec1e8"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20180622T034220Z:ed9d09c8-ddd8-4cdf-ae78-19aa4caec1e8"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/sdktestingadsrg4712/providers/Microsoft.DataShare/accounts/sdktestingshareaccount9776/shareSubscriptions/sdktestingshare1/Synchronize?api-version=2018-11-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzM5ZGNlMTgtY2VhZC00MDY1LThmYjEtM2FmNzY4M2E1MDM4L3Jlc291cmNlR3JvdXBzL3Nka3Rlc3RpbmdhZHNyZzQ3MTIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhU2hhcmUvYWNjb3VudHMvc2RrdGVzdGluZ3NoYXJlYWNjb3VudDk3NzYvc2hhcmVTdWJzY3JpcHRpb25zL3Nka3Rlc3RpbmdzaGFyZTEvU3luY2hyb25pemU/YXBpLXZlcnNpb249MjAxOC0xMS0wMS1wcmV2aWV3",
+      "RequestMethod": "POST",
+      "RequestBody": "{\r\n    \"synchronizationMode\": \"FullSync\"\r\n  }",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "29"
+        ],
+        "x-ms-client-request-id": [
+          "fe3b4974-ca93-4e1e-b51e-752cf0cd13e3"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26201.01"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "191"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 22 Jun 2018 03:42:20 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14992"
+        ],
+        "x-ms-request-id": [
+          "ed9d09c8-ddd8-4cdf-ae78-19aa4caec1e8"
+        ],
+        "x-ms-correlation-request-id": [
+          "ed9d09c8-ddd8-4cdf-ae78-19aa4caec1e8"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20180622T034220Z:ed9d09c8-ddd8-4cdf-ae78-19aa4caec1e8"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/sdktestingadsrg4712/providers/Microsoft.DataShare/accounts/sdktestingshareaccount9776/shareSubscriptions/sdktestingshare1/operationResults/ab0426f3-6673-408f-9127-5e14ccccc1e7?api-version=2018-11-01-preview"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/sdktestingadsrg4712/providers/Microsoft.DataShare/accounts/sdktestingshareaccount9776/shareSubscriptions/sdktestingshare1/operationResults/ab0426f3-6673-408f-9127-5e14ccccc1e7?api-version=2018-11-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzM5ZGNlMTgtY2VhZC00MDY1LThmYjEtM2FmNzY4M2E1MDM4L3Jlc291cmNlR3JvdXBzL3Nka3Rlc3RpbmdhZHNyZzQ3MTIvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhU2hhcmUvYWNjb3VudHMvc2RrdGVzdGluZ3NoYXJlYWNjb3VudDk3NzYvc2hhcmVTdWJzY3JpcHRpb25zL3Nka3Rlc3RpbmdzaGFyZTEvb3BlcmF0aW9uUmVzdWx0cy9hYjA0MjZmMy02NjczLTQwOGYtOTEyNy01ZTE0Y2NjY2MxZTc/YXBpLXZlcnNpb249MjAxOC0xMS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "29"
+        ],
+        "x-ms-client-request-id": [
+          "fe3b4974-ca93-4e1e-b51e-752cf0cd13e3"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26201.01"
+        ]
+      },
+      "ResponseBody": "{\"startTime\":\"Wed, 26 Jun 2019 01:15:47 GMT\",\"endTime\":\"Wed, 26 Jun 2019 01:15:47 GMT\",\"status\":\"Succeeded\",\"error\":null}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 22 Jun 2018 03:42:20 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14992"
+        ],
+        "x-ms-request-id": [
+          "ed9d09c8-ddd8-4cdf-ae78-19aa4caec1e8"
+        ],
+        "x-ms-correlation-request-id": [
+          "ed9d09c8-ddd8-4cdf-ae78-19aa4caec1e8"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20180622T034220Z:ed9d09c8-ddd8-4cdf-ae78-19aa4caec1e8"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {
+    "Test-SynchronizationStart": [
+      "sdktestingadsrg4712",
+      "sdktestingshareaccount9776",
+      "sdktestingshare1"      
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "c39dce18-cead-4065-8fb1-3af7683a5038"
+  }
+}

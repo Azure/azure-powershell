@@ -155,6 +155,7 @@
     { "regex": "NetAppFiles", "alias": "NetApp Files" },
     { "regex": "Attestation", "alias": "Attestation" },
     { "regex": "ManagedServices", "group": "Managed Services", "alias": "Managed Services" },
+    { "regex": "DataShare", "group": "Data Share", "alias": "Data Share" },
     { "regex": "DataBox", "alias": "DataBox" },
     { "regex": "AlertsManagement", "alias": "Alerts Management" }
 ]

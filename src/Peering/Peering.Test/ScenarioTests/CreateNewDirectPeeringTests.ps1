@@ -49,12 +49,16 @@ function Test-NewDirectPeering
 	$resourceName = getAssetName "DirectOneConnection";
 	Write-Debug "Setting $resourceName"
     $peeringLocation = getPeeringLocation $kind $loc;
-	$asn = Get-AzPeerAsn | Where-Object {$_.Name -match "Global"} | Select-Object -First 1
+	Write-Debug "Getting the Asn Information"
+	$randNum = getRandomNumber
+	Write-Debug "Random Number $randNum";
+	$peerAsn = makePeerAsn $randNum
+	$asn = $peerAsn
 	$facilityId = $peeringLocation[0].PeeringDBFacilityId
 	#create Connection
 	$bandwidth = getBandwidth
 	$directConnection = NewDirectConnectionV4V6 $facilityId $bandwidth
-	$tags = @{"tag1" = "value1"; "tag2" = "value2"}
+	$tags = @{"tfs_$randNum" = "value1"; "tag2" = "value2"}
 	$md5 =  $directConnection.BgpSession.Md5AuthenticationKey
 	$sessionv4 = getPeeringVariable "sessionv4" $directConnection.BgpSession.SessionPrefixV4
 	$sessionv6 = getPeeringVariable "sessionv6" $directConnection.BgpSession.SessionPrefixV6
@@ -86,12 +90,16 @@ function Test-NewDirectPeeringWithPipe
 	$resourceName = getAssetName "DirectPipeConnection";
 	Write-Debug "Setting $resourceName"
     $peeringLocation = getPeeringLocation $kind $loc;
-	$asn = Get-AzPeerAsn | Where-Object {$_.Name -match "Global"} | Select-Object -First 1
+	Write-Debug "Getting the Asn Information"
+	$randNum = getRandomNumber
+	Write-Debug "Random Number $randNum";
+	$peerAsn = makePeerAsn $randNum
+	$asn = $peerAsn
 	$facilityId = $peeringLocation[0].PeeringDBFacilityId
 	#create Connection
 	$bandwidth = getBandwidth
 	$directConnection = NewDirectConnectionV4V6 $facilityId $bandwidth
-	$tags = @{"tag1" = "value1"; "tag2" = "value2"}
+	$tags = @{"tfs_$randNum" = "value1"; "tag2" = "value2"}
 	$md5 =  $directConnection.BgpSession.Md5AuthenticationKey
 	$sessionv4 = getPeeringVariable "sessionv4" $directConnection.BgpSession.SessionPrefixV4
 	$sessionv6 = getPeeringVariable "sessionv6" $directConnection.BgpSession.SessionPrefixV6
@@ -122,13 +130,17 @@ function Test-NewDirectPeeringPipeTwoConnections
 	$resourceName = getAssetName "DirectOneConnection";
 	Write-Debug "Setting $resourceName"
     $peeringLocation = getPeeringLocation $kind $loc;
-	$asn = Get-AzPeerAsn | Where-Object {$_.Name -match "Global"} | Select-Object -First 1
+	Write-Debug "Getting the Asn Information"
+	$randNum = getRandomNumber
+	Write-Debug "Random Number $randNum";
+	$peerAsn = makePeerAsn $randNum
+	$asn = $peerAsn
 	$facilityId = $peeringLocation[0].PeeringDBFacilityId
 	#create Connection
 	$bandwidth = getBandwidth
 	$bandwidth2 = getBandwidth
 	$directConnection = NewDirectConnectionV4V6 $facilityId $bandwidth
-	$tags = @{"tag1" = "value1"; "tag2" = "value2"}
+	$tags = @{"tfs_$randNum" = "value1"; "tag2" = "value2"}
 	$md5 =  $directConnection.BgpSession.Md5AuthenticationKey
 	$sessionv4 = getPeeringVariable "sessionv4" $directConnection.BgpSession.SessionPrefixV4
 	$sessionv6 = getPeeringVariable "sessionv6" $directConnection.BgpSession.SessionPrefixV6
