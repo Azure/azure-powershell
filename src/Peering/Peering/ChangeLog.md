@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Bug fix in set connection
+* Added Connection Identifier to Connection object.
+* Updated to SDK 0.10.0-review
+* Supports api-version 06-01-2019-preview for Microsoft.Peering
 * Fixed miscellaneous typos across module
 
 ## Version 0.1.2
