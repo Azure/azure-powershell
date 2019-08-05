@@ -1,22 +1,5 @@
 ## Incorrect Cmdlets
 
-- New-AzServiceEndpointPolicy
-    - ServiceEndpointPolicyDefinition
-- New-AzVnetGateway
-    - VpnClientProtocol
-    - VpnClientIpsecPolicy
-- New-AzVnetGatewayConnection
-    - ExpressRouteGatewayBypass
-- New-AzVnetTap
-    - DestinationNetworkInterfaceIPConfigurationId
-    - DestinationLoadBalancerFrontEndIPConfigurationId
-- New-AzVpnConnection
-    - VpnConnectionProtocolType
-- New-AzVpnGateway
-    - VpnGatewayScaleUnit
-- Set-AzVnetGateway
-    - VpnClientProtocol
-    - VpnClientIpsecPolicy
 
 ## Correct Cmdlets
 
@@ -60,11 +43,13 @@
 - Get-AzNetworkWatcherAvailableProvider
 - Get-AzNetworkWatcherConnectionMonitor
 - Get-AzNetworkWatcherConnectionMonitorState
+- Get-AzNetworkWatcherFlowLogInformation
 - Get-AzNetworkWatcherNetworkConfigurationDiagnostic
 - Get-AzNetworkWatcherNextHop
 - Get-AzNetworkWatcherPacketCapture
 - Get-AzNetworkWatcherReachabilityReport
 - Get-AzNetworkWatcherTopology
+- Get-AzNetworkWatcherTroubleshooting
 - Get-AzNsg
 - Get-AzPublicIPAddress
 - Get-AzPublicIPPrefix
@@ -114,11 +99,17 @@
 - New-AzPublicIPPrefix
 - New-AzRouteFilter
 - New-AzRouteTable
+- New-AzServiceEndpointPolicy
 - New-AzServiceEndpointPolicyDefinition
 - New-AzVirtualHub
 - New-AzVirtualWan
 - New-AzVnet
+- New-AzVnetGateway
+- New-AzVnetGatewayConnection
 - New-AzVnetGatewayVpnClientPackage
+- New-AzVnetTap
+- New-AzVpnConnection
+- New-AzVpnGateway
 - New-AzVpnSite
 - Remove-AzApplicationGateway
 - Remove-AzApplicationSecurityGroup
@@ -179,6 +170,7 @@
 - Set-AzServiceEndpointPolicy
 - Set-AzServiceEndpointPolicyDefinition
 - Set-AzVnet
+- Set-AzVnetGateway
 - Set-AzVnetGatewayConnection
 - Set-AzVnetGatewayConnectionSharedKey
 - Set-AzVnetGatewayVpnClientIPsecPolicy
@@ -215,9 +207,7 @@
 - Get-AzNetworkInterfaceIPConfiguration
 - Get-AzNetworkInterfaceLoadBalancer
 - Get-AzNetworkSecurityRule
-- Get-AzNetworkWatcherFlowLogInformation
 - Get-AzNetworkWatcherPacketCaptureStatus
-- Get-AzNetworkWatcherTroubleshooting
 - Get-AzNetworkWatcherVMSecurityRule
 - Get-AzP2SVpnGateway
 - Get-AzP2SVpnServerConfiguration
@@ -291,9 +281,7 @@
 
 ## Missing Cmdlets
 
-- Get-AzNetworkWatcherFlowLogStatus
 - Get-AzNetworkWatcherSecurityGroupView
-- Get-AzNetworkWatcherTroubleshootingResult
 - Update-AzVirtualHub
 - Update-AzVirtualWan
 - Update-AzVpnGateway

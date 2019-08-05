@@ -103,7 +103,7 @@ To construct, see NOTES section for DEFINITION properties and create a hash tabl
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IServiceEndpointPolicyDefinition[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Aliases: ServiceEndpointPolicyDefinition
 
 Required: False
 Position: Named

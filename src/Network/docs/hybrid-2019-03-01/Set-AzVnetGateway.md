@@ -64,7 +64,7 @@ A list of address blocks reserved for this virtual network in CIDR notation.
 ```yaml
 Type: System.String[]
 Parameter Sets: UpdateExpanded1
-Aliases: VpnClientAddressPool
+Aliases: VpnClientAddressPool, VpnClientAddressPrefix
 
 Required: False
 Position: Named
@@ -322,7 +322,7 @@ VpnClientProtocols for Virtual network gateway.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.VpnClientProtocol[]
 Parameter Sets: UpdateExpanded1
-Aliases:
+Aliases: VpnClientProtocol
 
 Required: False
 Position: Named
@@ -338,7 +338,7 @@ The radius server address property of the VirtualNetworkGateway resource for vpn
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded1
-Aliases:
+Aliases: VpnClientRadiusServerAddress
 
 Required: False
 Position: Named
@@ -354,7 +354,7 @@ The radius secret property of the VirtualNetworkGateway resource for vpn client 
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded1
-Aliases:
+Aliases: VpnClientRadiusServerSecret
 
 Required: False
 Position: Named
@@ -403,7 +403,7 @@ To construct, see NOTES section for REVOKEDCERTIFICATE properties and create a h
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVpnClientRevokedCertificate[]
 Parameter Sets: UpdateExpanded1
-Aliases: VpnClientRevokedCertificates
+Aliases: VpnClientRevokedCertificates, VpnClientRevokedCertificate
 
 Required: False
 Position: Named
@@ -420,7 +420,7 @@ To construct, see NOTES section for ROOTCERTIFICATE properties and create a hash
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVpnClientRootCertificate[]
 Parameter Sets: UpdateExpanded1
-Aliases: VpnClientRootCertificates
+Aliases: VpnClientRootCertificates, VpnClientRootCertificate
 
 Required: False
 Position: Named

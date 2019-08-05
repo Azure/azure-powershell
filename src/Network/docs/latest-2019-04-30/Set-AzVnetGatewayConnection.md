@@ -144,7 +144,7 @@ Bypass ExpressRoute Gateway for data forwarding
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: UpdateExpanded
-Aliases:
+Aliases: ExpressRouteGatewayBypass
 
 Required: False
 Position: Named

@@ -2244,7 +2244,7 @@ directive:
       subject: NetworkWatcherFlowLogStatus
     set:
       subject: NetworkWatcherFlowLogInformation
-      alias: Get-NetworkWatcherFlowLogStatus
+      alias: Get-AzNetworkWatcherFlowLogStatus
   - where:
       subject: NetworkWatcherNextHop
       parameter-name: TargetNicResourceId
@@ -2255,7 +2255,7 @@ directive:
       subject: NetworkWatcherTroubleshootingResult
     set:
       subject: NetworkWatcherTroubleshooting
-      alias: Get-NetworkWatcherTroubleshootingResult
+      alias: Get-AzNetworkWatcherTroubleshootingResult
   - where:
       subject: P2SVpnGateway
       parameter-name: GatewayName
@@ -2387,6 +2387,7 @@ directive:
       parameter-name: ServiceEndpointPolicyDefinition
     set:
       parameter-name: Definition
+      alias: ServiceEndpointPolicyDefinition
   - where: # This parameter needs removed
       verb: ^New$|^Set$
       subject: ServiceEndpointPolicyDefinition
@@ -2420,6 +2421,7 @@ directive:
       parameter-name: ^VpnClient(.*)$
     set:
       parameter-name: $1
+      alias: VpnClient$1
   - where:
       subject: VnetGatewayConnection
       parameter-name: BgpSettingAsn
@@ -2440,6 +2442,7 @@ directive:
       parameter-name: ExpressRouteGatewayBypass
     set:
       parameter-name: BypassExpressRouteGateway
+      alias: ExpressRouteGatewayBypass
   - where:
       subject: VnetGatewayConnection
       parameter-name: LocalNetworkGateway2Etag
@@ -2541,6 +2544,7 @@ directive:
       parameter-name: ^(.*)FrontEndIPConfiguration(.*)$
     set:
       parameter-name: $1$2
+      alias: $1FrontEndIPConfiguration$2
   - where:
       subject: VnetTap
       parameter-name: ^(.*)IPConfigurationProperties(.*)$
@@ -2551,6 +2555,7 @@ directive:
       parameter-name: ^(.*)IPConfiguration(.*)$
     set:
       parameter-name: $1$2
+      alias: $1IPConfiguration$2
   - where: # This parameter needs removed
       verb: ^New$|^Set$
       subject: VpnConnection
@@ -2568,6 +2573,7 @@ directive:
       parameter-name: VpnConnectionProtocolType
     set:
       parameter-name: ProtocolType
+      alias: VpnConnectionProtocolType
   - where:
       subject: VpnGateway
       parameter-name: BgpSettingAsn
@@ -2588,6 +2594,7 @@ directive:
       parameter-name: VpnGatewayScaleUnit
     set:
       parameter-name: ScaleUnit
+      alias: VpnGatewayScaleUnit
   - where:
       subject: VpnSite
       parameter-name: IsSecuritySite

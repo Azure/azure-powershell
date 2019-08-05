@@ -237,7 +237,7 @@ Connection protocol used for this connection
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.VirtualNetworkGatewayConnectionProtocol
 Parameter Sets: UpdateExpanded
-Aliases:
+Aliases: VpnConnectionProtocolType
 
 Required: False
 Position: Named

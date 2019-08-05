@@ -156,7 +156,7 @@ A unique read-only string that changes whenever the resource is updated.
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded
-Aliases:
+Aliases: DestinationLoadBalancerFrontEndIPConfigurationEtag
 
 Required: False
 Position: Named
@@ -172,7 +172,7 @@ Resource ID.
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded
-Aliases:
+Aliases: DestinationLoadBalancerFrontEndIPConfigurationId
 
 Required: False
 Position: Named
@@ -189,7 +189,7 @@ This name can be used to access the resource.
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded
-Aliases:
+Aliases: DestinationLoadBalancerFrontEndIPConfigurationName
 
 Required: False
 Position: Named
@@ -288,7 +288,7 @@ A list of availability zones denoting the IP allocated for the resource needs to
 ```yaml
 Type: System.String[]
 Parameter Sets: UpdateExpanded
-Aliases:
+Aliases: DestinationLoadBalancerFrontEndIPConfigurationZone
 
 Required: False
 Position: Named
@@ -304,7 +304,7 @@ A unique read-only string that changes whenever the resource is updated.
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded
-Aliases:
+Aliases: DestinationNetworkInterfaceIPConfigurationEtag
 
 Required: False
 Position: Named
@@ -320,7 +320,7 @@ Resource ID.
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded
-Aliases:
+Aliases: DestinationNetworkInterfaceIPConfigurationId
 
 Required: False
 Position: Named
@@ -337,7 +337,7 @@ This name can be used to access the resource.
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded
-Aliases:
+Aliases: DestinationNetworkInterfaceIPConfigurationName
 
 Required: False
 Position: Named

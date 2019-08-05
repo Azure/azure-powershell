@@ -234,7 +234,7 @@ The scale unit for this vpn gateway.
 ```yaml
 Type: System.Int32
 Parameter Sets: UpdateExpanded
-Aliases:
+Aliases: VpnGatewayScaleUnit
 
 Required: False
 Position: Named
