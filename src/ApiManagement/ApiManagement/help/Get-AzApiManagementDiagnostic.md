@@ -152,7 +152,7 @@ Accept wildcard characters: False
 ```
 
 ### -DiagnosticId
-Identifier of existing diagnosic.
+Identifier of existing diagnostic.
 If specified will return product-scope policy.
 This parameters is optional.
 

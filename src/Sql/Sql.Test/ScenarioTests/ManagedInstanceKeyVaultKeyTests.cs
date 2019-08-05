@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
     {
         public ManagedInstanceKeyVaultKeyTests(ITestOutputHelper output) : base(output)
         {
+            base.resourceTypesToIgnoreApiVersion = new string[] {
+                "Microsoft.Sql/managedInstances"
+            };
         }
 
         protected override void SetupManagementClients(RestTestFramework.MockContext context)

@@ -42,10 +42,9 @@ PS C:\> Get-AzDataBoxJob
 
 jobResource.Name        jobResource.Sku.Name jobResource.Status  jobResource.StartTime jobResource.Location ResourceGroup
 ----------------        -------------------- ------------------  --------------------- -------------------- -------------
-testtip2                DataBox              Cancelled           10-09-2018 06:34:53   westus               bvttoolrg6
-cleanboxraghav          DataBox              Aborted             04-12-2018 16:07:41   westus               forraghav
-cleanboxraghav-Clone    DataBox              Cancelled           25-04-2019 11:31:36   westus               forraghav
-cleanup-bhaskar2        DataBox              Aborted             15-01-2019 01:11:03   westus               forraghav
+testtip2                DataBox              Cancelled           10-09-2018 06:34:53   westus               TestRg1
+cleanbox                DataBox              Aborted             04-12-2018 16:07:41   westus               TestRg2
+cleanbox-Clone          DataBox              Cancelled           25-04-2019 11:31:36   westus               TestRg2
 .
 .
 .
@@ -55,13 +54,11 @@ Get-AzDataBoxJob without any parameter fetches all the databox jobs under the su
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzDataBoxJob -ResourceGroupName "forraghav"
+PS C:\> Get-AzDataBoxJob -ResourceGroupName TestRg1
 
 jobResource.Name        jobResource.Sku.Name jobResource.Status  jobResource.StartTime jobResource.Location ResourceGroup
 ----------------        -------------------- ------------------  --------------------- -------------------- -------------
-cleanboxraghav          DataBox              Aborted             04-12-2018 16:07:41   westus               forraghav
-cleanboxraghav-Clone    DataBox              Cancelled           25-04-2019 11:31:36   westus               forraghav
-cleanup-bhaskar2        DataBox              Aborted             15-01-2019 01:11:03   westus               forraghav
+testtip2                DataBox              Cancelled           10-09-2018 06:34:53   westus               TestRg1
 .
 .
 .
@@ -71,22 +68,24 @@ Get-AzDataBoxJob with ResourceGroupName parameter fetches all the databox jobs u
 
 ### Example 3
 ```powershell
-PS C:\> Get-AzDataBoxJob -ResourceGroupName "forraghav" -Name "cleanboxraghav"
+PS C:\> Get-AzDataBoxJob -ResourceGroupName TestRg1 -Name testtip2
 
 jobResource.Name        jobResource.Sku.Name jobResource.Status  jobResource.StartTime jobResource.Location ResourceGroup
 ----------------        -------------------- ------------------  --------------------- -------------------- -------------
-cleanboxraghav          DataBox              Aborted             04-12-2018 16:07:41   westus               forraghav
+testtip2                DataBox              Cancelled           10-09-2018 06:34:53   westus               TestRg1
+
 ```
 
 Get-AzDataBoxJob with ResourceGroupName and Name specified will fetch that specific databox job
 
 ### Example 4
 ```powershell
-PS C:\> Get-AzDataBoxJob -ResourceId "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/forraghav/providers/Microsoft.DataBox/jobs/cleanboxraghav"
+PS C:\> Get-AzDataBoxJob -ResourceId "/subscriptions/05b5dd1c-793d-41de-be9f-6f9ed142f695/resourceGroups/TestRg1/providers/Microsoft.DataBox/jobs/testtip2"
 
 jobResource.Name        jobResource.Sku.Name jobResource.Status  jobResource.StartTime jobResource.Location ResourceGroup
 ----------------        -------------------- ------------------  --------------------- -------------------- -------------
-cleanboxraghav          DataBox              Aborted             04-12-2018 16:07:41   westus               forraghav
+testtip2                DataBox              Cancelled           10-09-2018 06:34:53   westus               TestRg1
+
 ```
 
 Get-AzDataBoxJob with ResourceId specified will fetch that specific databox job

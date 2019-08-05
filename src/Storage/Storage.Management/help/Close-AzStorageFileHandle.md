@@ -80,16 +80,16 @@ PS C:\>Close-AzStorageFileHandle -ShareName "mysharename" -Path 'dir1/dir2' -Rec
 
 This command closes all file handles on a file directory and show the closed file handle count.
 
-### Example 3: List first 2 file handles of a file directory, and then close them
+### Example 3: Close all file handles which is opened 1 day ago on a file directory
 ```
-PS C:\>Get-AzStorageFileHandle -ShareName "mysharename" -Path 'dir1/dir2'  -Recursive -First 2 | Close-AzStorageFileHandle -ShareName "mysharename" 
+PS C:\>Get-AzStorageFileHandle -ShareName "mysharename" -Path 'dir1/dir2' -Recursive | ? {$_.OpenTime.DateTime.AddDays(1) -lt (Get-Date)} | Close-AzStorageFileHandle -ShareName "mysharename"
 ```
 
-This command lists first 2 file handles on a file directory recursively, and then close them
+This command lists all file handles on a file directory recursively, filters out the handles which are opened 1 day ago, and then close them.
 
 ### Example 4: Close all file handles on a file 
 ```
-PS C:\>Get-AzStorageFileHandle -ShareName "mysharename" -Path 'dir1/dir2/test.txt' -CloseAll
+PS C:\>Close-AzStorageFileHandle -ShareName "mysharename" -Path 'dir1/dir2/test.txt' -CloseAll
 ```
 
 This command closes all file handles on a file.
@@ -233,7 +233,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Return whether the specified blob is successfully removed
+Return the count of closed file handles.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

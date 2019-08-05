@@ -72,9 +72,9 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         public int RateLimitDurationInMinutes { get; set; }
 
         /// <summary>
-        /// Defines rate limit thresold. Default - no limit
+        /// Defines rate limit threshold. Default - no limit
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Rate limit thresold")]
+        [Parameter(Mandatory = false, HelpMessage = "Rate limit threshold")]
         public int? RateLimitThreshold { get; set; }
 
         public override void ExecuteCmdlet()

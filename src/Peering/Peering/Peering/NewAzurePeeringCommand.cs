@@ -418,6 +418,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                 }
             };
 
+            foreach (var connection in newPeering.Exchange.Connections)
+            {
+                connection.ConnectionIdentifier = Guid.NewGuid().ToString();
+            }
+
             return newPeering;
         }
 
@@ -452,6 +457,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             };
             foreach (var connection in newPeering.Direct.Connections)
             {
+                connection.ConnectionIdentifier = Guid.NewGuid().ToString();
                 connection.BandwidthInMbps = connection.ProvisionedBandwidthInMbps ?? 10000;
             }
 

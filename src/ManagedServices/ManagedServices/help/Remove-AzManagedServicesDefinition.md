@@ -40,7 +40,7 @@ Deletes the registration definition.
 PS C:\> Remove-RegistrationDefinition -Id 0513b566-cab0-4fef-9b53-a285cd33389f
 ```
 
-Removes the registration defintion given it identifier.
+Removes the registration definition given it identifier.
 
 ### Example 2
 ```powershell

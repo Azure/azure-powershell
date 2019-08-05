@@ -8,7 +8,7 @@ schema: 2.0.0
 # Add-AzImageDataDisk
 
 ## SYNOPSIS
-Adds a data disk to an image obejct.
+Adds a data disk to an image object.
 
 ## SYNTAX
 

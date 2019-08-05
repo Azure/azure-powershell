@@ -19,12 +19,14 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Management.Network.Models;
+using Microsoft.Rest.Azure;
 using CNM = Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AvailablePrivateEndpointType"), OutputType(typeof(PSAvailablePrivateEndpointType))]
-    public class GetAzureAvailablePrivateEndpointTypeCommand : NetworkBaseCmdlet
+    public class GetAzureAvailablePrivateEndpointTypeCommand : PrivateEndpointBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
@@ -34,11 +36,29 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
+        [Parameter(
+         Mandatory = false,
+         ValueFromPipelineByPropertyName = true,
+         HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
+        [SupportsWildcards]
+        public string ResourceGroupName { get; set; }
+
         public override void Execute()
         {
             base.Execute();
 
-            var availablePrivateEndpointList = this.NetworkClient.NetworkManagementClient.AvailablePrivateEndpointTypes.List(Location);
+            IPage<AvailablePrivateEndpointType> availablePrivateEndpointList = null;
+            if (!string.IsNullOrEmpty(ResourceGroupName))
+            {
+                availablePrivateEndpointList = this.NetworkClient.NetworkManagementClient.AvailablePrivateEndpointTypes.ListByResourceGroup(this.Location, this.ResourceGroupName);
+            }
+            else
+            {
+                availablePrivateEndpointList = this.NetworkClient.NetworkManagementClient.AvailablePrivateEndpointTypes.List(Location);
+            }
+
             List<PSAvailablePrivateEndpointType> psPrivateEndpoints = new List<PSAvailablePrivateEndpointType>();
             foreach (var availablePrivateEndpoint in availablePrivateEndpointList)
             {
