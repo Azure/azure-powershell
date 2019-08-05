@@ -59,7 +59,7 @@ Location          : centralindia
 Tags              : {[hidden-link:/subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/shrutika-rg/providers/Microsoft.OperationalInsights/workspaces/shrutika-ws, Resource]}
 ```
 
-### Example 2 - Set by Innput Object
+### Example 2 - Set by Input Object
 ```powershell
 PS C:\> Set-AzScheduledQueryRule -InputObject $sqr -Description "change desc"
 

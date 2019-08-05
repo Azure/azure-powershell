@@ -244,7 +244,7 @@ Accept wildcard characters: False
 ```
 
 ### -RoleDefinitionPrincipalId
-List of role definition pricipal ids.
+List of role definition principal ids.
 
 ```yaml
 Type: String[]
@@ -290,7 +290,7 @@ Accept wildcard characters: False
 
 ### -Type
 Type of the artifact.
-There are 3 tpes supported: RoleAssignmentArtifact, PolicyAssignmentArtifact, TemplateArtifact.
+There are 3 types supported: RoleAssignmentArtifact, PolicyAssignmentArtifact, TemplateArtifact.
 
 ```yaml
 Type: PSArtifactKind

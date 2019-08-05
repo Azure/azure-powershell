@@ -31,22 +31,22 @@ The internal properties of the returned credentials object will be different for
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzDataBoxCredential -ResourceGroupName bvttoolrg6 -Name TJ-636646322037905056
+PS C:\> Get-AzDataBoxCredential -ResourceGroupName TestRg1 -Name TestJob1
 
-JobName               JobSecrets
--------               ----------
-TJ-636646322037905056 Microsoft.Azure.Management.DataBox.Models.DataboxJobSecrets
+JobName     JobSecrets
+-------     ----------
+TestJob1    Microsoft.Azure.Management.DataBox.Models.DataboxJobSecrets
 ```
 
 This retuns the JobSecrets of the specified job
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzDataBoxCredential -ResourceId "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/bvttoolrg6/providers/Microsoft.DataBox/jobs/TJ-636646322037905056"
+PS C:\> Get-AzDataBoxCredential -ResourceId "/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/TestRg1/providers/Microsoft.DataBox/jobs/TestJob1"
 
-JobName               JobSecrets
--------               ----------
-TJ-636646322037905056 Microsoft.Azure.Management.DataBox.Models.DataboxJobSecrets
+JobName     JobSecrets
+-------     ----------
+TestJob1    Microsoft.Azure.Management.DataBox.Models.DataboxJobSecrets
 ```
 
 This retuns the JobSecrets of the specified job

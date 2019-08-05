@@ -459,6 +459,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
                 throw new PSArgumentException(
                     string.Format(Resources.Error_InvalidFacilityId, connection.PeeringDBFacilityId));
             }
+            if(connection.ConnectionIdentifier == null || connection.ConnectionIdentifier == string.Empty)
+            {
+                throw new PSArgumentNullException(string.Format(Resources.Error_ConnectionIdentifierNull));
+            }
             if (connection.BgpSession == null)
                 throw new PSArgumentNullException(string.Format(Resources.Error_NullSession));
             return this.ValidBandwidth(connection.BandwidthInMbps);

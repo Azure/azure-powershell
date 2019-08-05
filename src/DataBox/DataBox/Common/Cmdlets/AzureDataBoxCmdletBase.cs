@@ -12,14 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.DataBox;
-using Microsoft.Azure.Management.DataBox.Models;
-using Microsoft.Rest;
 
 namespace Microsoft.Azure.Commands.DataBox.Common
 {
@@ -29,8 +25,6 @@ namespace Microsoft.Azure.Commands.DataBox.Common
     public class AzureDataBoxCmdletBase : AzureRMCmdlet
     {
         private DataBoxManagementClient _dataBoxManagementClient;
-
-        private Dictionary<string, List<string>> _defaultRequestHeaders;
 
         public const string ObjectParameterSet = "ByObjectParameterSet";
         public const string FieldsParameterSet = "ByFieldsParameterSet";
@@ -55,26 +49,6 @@ namespace Microsoft.Azure.Commands.DataBox.Common
             set { _dataBoxManagementClient = value; }
         }
 
-        /// <summary>
-        /// Gets or sets the default headers send with rest requests.
-        /// </summary>
-        public Dictionary<string, List<string>> DefaultRequestHeaders
-        {
-            get
-            {
-                return _defaultRequestHeaders ??
-                       (_defaultRequestHeaders =
-                           new Dictionary<string, List<string>> { { "UserAgent", new List<string> { "PowerShell" } } });
-            }
-            set { _defaultRequestHeaders = value; }
-        }
 
-        public void ConfirmAction(bool force, string actionMessage, Action action)
-        {
-            if (force || ShouldContinue(actionMessage, ""))
-            {
-                action();
-            }
-        }
     }
 }
