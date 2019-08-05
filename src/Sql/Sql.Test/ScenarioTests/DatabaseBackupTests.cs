@@ -116,6 +116,12 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             }
         }
 
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestLongTermRetentionV2ResourceGroupBased()
+        {
+            RunPowerShellTest("Test-LongTermRetentionV2ResourceGroupBased");
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseGeoBackupPolicy()
