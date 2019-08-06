@@ -20,7 +20,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 {
-    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseFailover"), OutputType(typeof(bool))]
+    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseFailover", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class InvokeAzureSqlDatabaseFailover : AzureSqlDatabaseCmdletBase<IEnumerable<AzureSqlDatabaseModel>>
     {
         /// <summary>
@@ -41,8 +41,17 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        /// <summary>
+        ///  Defines whether the cmdlets will output a boolean at the end of its execution
+        /// </summary>
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
+
+        /// <summary>
+        /// Defines whether it is ok to skip the requesting of failover database confirmation
+        /// </summary>
+        [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
+        public SwitchParameter Force { get; set; }
 
         /// <summary>
         /// Get the entities from the service
@@ -76,8 +85,19 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
             return entity;
         }
 
+        /// <summary>
+        /// Entry point for the cmdlet
+        /// </summary>
         public override void ExecuteCmdlet()
         {
+            if (!Force.IsPresent && !ShouldProcess(
+               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.FailoverAzureSqlDatabaseDescription, this.DatabaseName, this.ServerName),
+               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.FailoverAzureSqlDatabaseWarning, this.DatabaseName, this.ServerName),
+               Microsoft.Azure.Commands.Sql.Properties.Resources.ShouldProcessCaption))
+            {
+                return;
+            }
+
             base.ExecuteCmdlet();
 
             if (this.PassThru.IsPresent)
