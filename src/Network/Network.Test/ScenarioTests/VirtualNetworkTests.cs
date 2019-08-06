@@ -61,6 +61,14 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        public void TestInitializeSubnetPolicy()
+        {
+            TestRunner.RunTestScript("Test-InitializeSubnetPolicy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestVirtualNetworkMultiPrefixSubnetCRUD()
         {
             TestRunner.RunTestScript("Test-multiPrefixSubnetCRUD");

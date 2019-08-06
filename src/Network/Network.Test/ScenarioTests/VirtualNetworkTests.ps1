@@ -201,6 +201,53 @@ function Test-subnetCRUD
 
 <#
 .SYNOPSIS
+Tests creating Initialize Subnet Policies on virtualNetwork w/ delegated service name.
+.DESCRIPTION
+SmokeTest
+#>
+function Test-InitializeSubnetPolicy
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $vnetName = Get-ResourceName
+    $subnetName = Get-ResourceName
+    $nsgName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement "eastus"
+    $resourceTypeParent = "Microsoft.Network/virtualNetworks"
+    $location = Get-ProviderLocation $resourceTypeParent "eastus"
+    $serviceName = "Microsoft.Databricks/workspaces"
+    
+    try 
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
+
+        # Create the nsg, subnet and vNet
+        $nsg = New-AzNetworkSecurityGroup -Name $nsgName -ResourceGroupName $rgname -Location $location
+        $delegation = New-AzDelegation -Name adbDelegation -ServiceName "Microsoft.Databricks/workspaces"
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24 -Delegation $delegation -NetworkSecurityGroup $nsg
+
+        New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vNet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname 
+        # Initialize subnet for delegated service
+         Initialize-AzVirtualNetworkSubnetPolicy -Name $subnetName -ServiceName $serviceName -VirtualNetwork $vNet
+        
+        # Get VirtualNetwork
+        $vnetExpected = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+
+        Assert-AreEqual 1 @($vnetExpected.Subnets).Count
+        Assert-AreEqual 1 @($vnetExpected.Subnets[0].Delegations).Count
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+
+<#
+.SYNOPSIS
 Tests creating new virtualNetwork w/ delegated subnets.
 .DESCRIPTION
 SmokeTest
