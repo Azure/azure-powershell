@@ -483,4 +483,16 @@
     <value>Are you sure you want to remove the Azure SQL Instance pool '{0}'?</value>
     <comment>Instance pools</comment>
   </data>
+  <data name="FailoverAzureSqlDatabaseDescription" xml:space="preserve">
+    <value>Failing over Azure Sql Database '{0}' on server '{1}'.</value>
+  </data>
+  <data name="FailoverAzureSqlDatabaseWarning" xml:space="preserve">
+    <value>Are you sure you want to failover the Azure Sql Database '{0}' on server '{1}'?</value>
+  </data>
+  <data name="FailoverAzureSqlElasticPoolDescription" xml:space="preserve">
+    <value>Failing over Azure Sql Elastic Pool '{0}' on server '{1}'.</value>
+  </data>
+  <data name="FailoverAzureSqlElasticPoolWarning" xml:space="preserve">
+    <value>Are you sure you want to failover the Azure Sql Elastic Pool '{0}' on server '{1}'?</value>
+  </data>
 </root>
