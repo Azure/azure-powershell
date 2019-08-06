@@ -1026,11 +1026,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 #### APPLICATIONGATEWAY <IApplicationGateway>: Application gateway resource
-  - `AutoscaleConfigurationMinCapacity <Int32>`: Lower bound on number of Application Gateway capacity
-  - `WebApplicationFirewallConfigurationEnabled <Boolean>`: Whether the web application firewall is enabled or not.
-  - `WebApplicationFirewallConfigurationFirewallMode <ApplicationGatewayFirewallMode>`: Web application firewall mode.
-  - `WebApplicationFirewallConfigurationRuleSetType <String>`: The type of the web application firewall rule set. Possible values are: 'OWASP'.
-  - `WebApplicationFirewallConfigurationRuleSetVersion <String>`: The version of the rule set type.
+  - `AutoscaleMinimumCapacity <Int32>`: Lower bound on number of Application Gateway capacity
+  - `EnableWaf <Boolean>`: Whether the web application firewall is enabled or not.
+  - `WafFirewallMode <ApplicationGatewayFirewallMode>`: Web application firewall mode.
+  - `WafRuleSetType <String>`: The type of the web application firewall rule set. Possible values are: 'OWASP'.
+  - `WafRuleSetVersion <String>`: The version of the rule set type.
   - `[Id <String>]`: Resource ID.
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.
@@ -1042,7 +1042,7 @@ To create the parameters described below, construct a hash table containing the 
     - `[Name <String>]`: Name of the authentication certificate that is unique within an Application Gateway.
     - `[ProvisioningState <String>]`: Provisioning state of the authentication certificate resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
     - `[Type <String>]`: Type of the resource.
-  - `[AutoscaleConfigurationMaxCapacity <Int32?>]`: Upper bound on number of Application Gateway capacity
+  - `[AutoscaleMaximumCapacity <Int32?>]`: Upper bound on number of Application Gateway capacity
   - `[BackendAddressPool <IApplicationGatewayBackendAddressPool[]>]`: Backend address pool of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
     - `[Id <String>]`: Resource ID.
     - `[BackendAddress <IApplicationGatewayBackendAddress[]>]`: Backend addresses
@@ -1212,7 +1212,7 @@ To create the parameters described below, construct a hash table containing the 
     - `[Name <String>]`: Name of the backend address pool that is unique within an Application Gateway.
     - `[ProvisioningState <String>]`: Provisioning state of the backend address pool resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
     - `[Type <String>]`: Type of the resource.
-  - `[BackendHttpSettingsCollection <IApplicationGatewayBackendHttpSettings[]>]`: Backend http settings of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
+  - `[BackendHttpSetting <IApplicationGatewayBackendHttpSettings[]>]`: Backend http settings of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
     - `ConnectionDrainingDrainTimeoutInSec <Int32>`: The number of seconds connection draining is active. Acceptable values are from 1 second to 3600 seconds.
     - `ConnectionDrainingEnabled <Boolean>`: Whether connection draining is enabled or not.
     - `[Id <String>]`: Resource ID.
@@ -1232,7 +1232,8 @@ To create the parameters described below, construct a hash table containing the 
     - `[RequestTimeout <Int32?>]`: Request timeout in seconds. Application Gateway will fail the request if response is not received within RequestTimeout. Acceptable values are from 1 second to 86400 seconds.
     - `[TrustedRootCertificate <ISubResource[]>]`: Array of references to application gateway trusted root certificates.
     - `[Type <String>]`: Type of the resource.
-  - `[CustomErrorConfiguration <IApplicationGatewayCustomError[]>]`: Custom error configurations of the application gateway resource.
+  - `[CheckWafRequestBody <Boolean?>]`: Whether allow WAF to check request Body.
+  - `[CustomError <IApplicationGatewayCustomError[]>]`: Custom error configurations of the application gateway resource.
     - `[CustomErrorPageUrl <String>]`: Error page URL of the application gateway customer error.
     - `[StatusCode <ApplicationGatewayCustomErrorStatusCode?>]`: Status code of the application gateway customer error.
   - `[EnableFips <Boolean?>]`: Whether FIPS is enabled on the application gateway resource.
@@ -1277,8 +1278,6 @@ To create the parameters described below, construct a hash table containing the 
     - `[SslCertificateId <String>]`: Resource ID.
     - `[Type <String>]`: Type of the resource.
   - `[IdentityType <ResourceIdentityType?>]`: The type of identity used for the resource. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the virtual machine.
-  - `[IdentityUserAssignedIdentity <IManagedServiceIdentityUserAssignedIdentities>]`: The list of user identities associated with resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-    - `[(Any) <IComponentsSchemasManagedserviceidentityPropertiesUserassignedidentitiesAdditionalproperties>]`: This indicates any property can be added to this object.
   - `[Probe <IApplicationGatewayProbe[]>]`: Probes of the application gateway resource.
     - `[Id <String>]`: Resource ID.
     - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
@@ -1351,9 +1350,9 @@ To create the parameters described below, construct a hash table containing the 
     - `[ProvisioningState <String>]`: Provisioning state of the SSL certificate resource Possible values are: 'Updating', 'Deleting', and 'Failed'.
     - `[PublicCertData <String>]`: Base-64 encoded Public cert data corresponding to pfx specified in data. Only applicable in GET request.
     - `[Type <String>]`: Type of the resource.
-  - `[SslPolicyCipherSuite <ApplicationGatewaySslCipherSuite[]>]`: Ssl cipher suites to be enabled in the specified order to application gateway.
-  - `[SslPolicyDisabledSslProtocol <ApplicationGatewaySslProtocol[]>]`: Ssl protocols to be disabled on application gateway.
-  - `[SslPolicyMinProtocolVersion <ApplicationGatewaySslProtocol?>]`: Minimum version of Ssl protocol to be supported on application gateway.
+  - `[SslCipherSuite <ApplicationGatewaySslCipherSuite[]>]`: Ssl cipher suites to be enabled in the specified order to application gateway.
+  - `[SslDisabledProtocol <ApplicationGatewaySslProtocol[]>]`: Ssl protocols to be disabled on application gateway.
+  - `[SslMinimumProtocolVersion <ApplicationGatewaySslProtocol?>]`: Minimum version of Ssl protocol to be supported on application gateway.
   - `[SslPolicyName <ApplicationGatewaySslPolicyName?>]`: Name of Ssl predefined policy
   - `[SslPolicyType <ApplicationGatewaySslPolicyType?>]`: Type of Ssl Policy
   - `[TrustedRootCertificate <IApplicationGatewayTrustedRootCertificate[]>]`: Trusted Root certificates of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
@@ -1385,17 +1384,18 @@ To create the parameters described below, construct a hash table containing the 
       - `[Type <String>]`: Type of the resource.
     - `[ProvisioningState <String>]`: Provisioning state of the backend http settings resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
     - `[Type <String>]`: Type of the resource.
-  - `[WebApplicationFirewallConfigurationDisabledRuleGroup <IApplicationGatewayFirewallDisabledRuleGroup[]>]`: The disabled rule groups.
+  - `[UserAssignedIdentity <IManagedServiceIdentityUserAssignedIdentities>]`: The list of user identities associated with resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+    - `[(Any) <IComponentsSchemasManagedserviceidentityPropertiesUserassignedidentitiesAdditionalproperties>]`: This indicates any property can be added to this object.
+  - `[WafDisabledRuleGroup <IApplicationGatewayFirewallDisabledRuleGroup[]>]`: The disabled rule groups.
     - `RuleGroupName <String>`: The name of the rule group that will be disabled.
     - `[Rule <Int32[]>]`: The list of rules that will be disabled. If null, all rules of the rule group will be disabled.
-  - `[WebApplicationFirewallConfigurationExclusion <IApplicationGatewayFirewallExclusion[]>]`: The exclusion list.
+  - `[WafExclusion <IApplicationGatewayFirewallExclusion[]>]`: The exclusion list.
     - `MatchVariable <String>`: The variable to be excluded.
     - `Selector <String>`: When matchVariable is a collection, operator used to specify which elements in the collection this exclusion applies to.
     - `SelectorMatchOperator <String>`: When matchVariable is a collection, operate on the selector to specify which elements in the collection this exclusion applies to.
-  - `[WebApplicationFirewallConfigurationFileUploadLimitInMb <Int32?>]`: Maximum file upload size in Mb for WAF.
-  - `[WebApplicationFirewallConfigurationMaxRequestBodySize <Int32?>]`: Maximum request body size for WAF.
-  - `[WebApplicationFirewallConfigurationMaxRequestBodySizeInKb <Int32?>]`: Maximum request body size in Kb for WAF.
-  - `[WebApplicationFirewallConfigurationRequestBodyCheck <Boolean?>]`: Whether allow WAF to check request Body.
+  - `[WafFileUploadLimitInMb <Int32?>]`: Maximum file upload size in Mb for WAF.
+  - `[WafMaximumRequestBodySize <Int32?>]`: Maximum request body size for WAF.
+  - `[WafMaximumRequestBodySizeInKb <Int32?>]`: Maximum request body size in Kb for WAF.
   - `[Zone <String[]>]`: A list of availability zones denoting where the resource needs to come from.
 
 #### AUTHENTICATIONCERTIFICATE <IApplicationGatewayAuthenticationCertificate[]>: Authentication certificates of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).

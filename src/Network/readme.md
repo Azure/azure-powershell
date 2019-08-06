@@ -312,6 +312,11 @@ directive:
       parameter-name: ^WebApplicationFirewall(.*)
     set:
       parameter-name: Waf$1
+  - where:
+      model-name: ^ApplicationGateway(.*)
+      property-name: ^WebApplicationFirewall(.*)
+    set:
+      property-name: Waf$1
 
 # LoadBalancer
   - where:
@@ -1113,6 +1118,11 @@ directive:
       parameter-name: ServiceProviderBandwidthInMbps
       alias: BandwidthInMbps
   - where:
+      model-name: ExpressRouteCircuit
+      property-name: ServiceProviderPropertyBandwidthInMbps
+    set:
+      property-name: ServiceProviderBandwidthInMbps
+  - where:
       verb: ^New$|^Set$
       subject: ExpressRouteCircuit
       parameter-name: ServiceProviderPropertyPeeringLocation
@@ -1120,11 +1130,21 @@ directive:
       parameter-name: ServiceProviderPeeringLocation
       alias: PeeringLocation
   - where:
+      model-name: ExpressRouteCircuit
+      property-name: ServiceProviderPropertyPeeringLocation
+    set:
+      property-name: ServiceProviderPeeringLocation
+  - where:
       verb: ^New$|^Set$
       subject: ExpressRouteCircuit
       parameter-name: ServiceProviderPropertyServiceProviderName
     set:
       parameter-name: ServiceProviderName
+  - where:
+      model-name: ExpressRouteCircuit
+      property-name: ServiceProviderPropertyServiceProviderName
+    set:
+      property-name: ServiceProviderName
   - where: # REMOVE BEFORE RELEASE: In-memory object parameter
       verb: New
       subject: ExpressRouteCircuit
@@ -1137,6 +1157,11 @@ directive:
       parameter-name: AllowClassicOperation
     set:
       parameter-name: AllowClassicOperations
+  - where:
+      model-name: ExpressRouteCircuit
+      property-name: AllowClassicOperation
+    set:
+      property-name: AllowClassicOperations
   - where:
       verb: ^New$|^Set$
       subject: LocalNetworkGateway
@@ -1958,15 +1983,30 @@ directive:
     set:
       parameter-name: $1$2
   - where:
+      model-name: ApplicationGateway
+      property-name: (.*)Configuration(.+)
+    set:
+      property-name: $1$2
+  - where:
       subject: ApplicationGateway
       parameter-name: AutoscaleMaxCapacity
     set:
       parameter-name: AutoscaleMaximumCapacity
   - where:
+      model-name: ApplicationGateway
+      property-name: AutoscaleMaxCapacity
+    set:
+      property-name: AutoscaleMaximumCapacity
+  - where:
       subject: ApplicationGateway
       parameter-name: AutoscaleMinCapacity
     set:
       parameter-name: AutoscaleMinimumCapacity
+  - where:
+      model-name: ApplicationGateway
+      property-name: AutoscaleMinCapacity
+    set:
+      property-name: AutoscaleMinimumCapacity
   - where:
       subject: ApplicationGateway
       parameter-name: BackendHttpSettingsCollection
@@ -1974,11 +2014,21 @@ directive:
       parameter-name: BackendHttpSetting
       alias: BackendHttpSettingsCollection
   - where:
+      model-name: ApplicationGateway
+      property-name: BackendHttpSettingsCollection
+    set:
+      property-name: BackendHttpSetting
+  - where:
       subject: ApplicationGateway
       parameter-name: CustomErrorConfiguration
     set:
       parameter-name: CustomError
       alias: CustomErrorConfiguration
+  - where:
+      model-name: ApplicationGateway
+      property-name: CustomErrorConfiguration
+    set:
+      property-name: CustomError
   - where:
       subject: ApplicationGateway
       parameter-name: EnableFIPs
@@ -1990,35 +2040,70 @@ directive:
     set:
       parameter-name: SslCipherSuite
   - where:
+      model-name: ApplicationGateway
+      property-name: SslPolicyCipherSuite
+    set:
+      property-name: SslCipherSuite
+  - where:
       subject: ApplicationGateway
       parameter-name: SslPolicyDisabledSslProtocol
     set:
       parameter-name: SslDisabledProtocol
+  - where:
+      model-name: ApplicationGateway
+      property-name: SslPolicyDisabledSslProtocol
+    set:
+      property-name: SslDisabledProtocol
   - where:
       subject: ApplicationGateway
       parameter-name: SslPolicyMinProtocolVersion
     set:
       parameter-name: SslMinimumProtocolVersion
   - where:
+      model-name: ApplicationGateway
+      property-name: SslPolicyMinProtocolVersion
+    set:
+      property-name: SslMinimumProtocolVersion
+  - where:
       subject: ApplicationGateway
       parameter-name: IdentityUserAssignedIdentity
     set:
       parameter-name: UserAssignedIdentity
+  - where:
+      model-name: ApplicationGateway
+      property-name: IdentityUserAssignedIdentity
+    set:
+      property-name: UserAssignedIdentity
   - where:
       subject: ApplicationGateway
       parameter-name: WafEnabled
     set:
       parameter-name: EnableWaf
   - where:
+      model-name: ApplicationGateway
+      property-name: WafEnabled
+    set:
+      property-name: EnableWaf
+  - where:
       subject: ApplicationGateway
       parameter-name: WafMaxRequestBodySize(.*)
     set:
       parameter-name: WafMaximumRequestBodySize$1
   - where:
+      model-name: ApplicationGateway
+      property-name: WafMaxRequestBodySize(.*)
+    set:
+      property-name: WafMaximumRequestBodySize$1
+  - where:
       subject: ApplicationGateway
       parameter-name: WafRequestBodyCheck
     set:
       parameter-name: CheckWafRequestBody
+  - where:
+      model-name: ApplicationGateway
+      property-name: WafRequestBodyCheck
+    set:
+      property-name: CheckWafRequestBody
 
 # ExpressRouteCircuitPeering Parameters
   - where: # This parameter needs removed
@@ -2081,10 +2166,20 @@ directive:
     set:
       parameter-name: Format
   - where:
+      model-name: DdosCustomPolicy
+      property-name: ProtocolCustomSetting
+    set:
+      property-name: Format
+  - where:
       subject: ExpressRouteCircuit
       parameter-name: GlobalReachEnabled
     set:
       parameter-name: EnableGlobalReach
+  - where:
+      model-name: ExpressRouteCircuit
+      property-name: GlobalReachEnabled
+    set:
+      property-name: EnableGlobalReach
   - where:
       subject: ExpressRouteCircuitAuthorization
       parameter-name: AuthorizationKey
@@ -2134,11 +2229,21 @@ directive:
       parameter-name: ThreatIntelligenceMode
       alias: ThreatIntelMode
   - where:
+      model-name: AzureFirewall
+      property-name: ThreatIntelMode
+    set:
+      property-name: ThreatIntelligenceMode
+  - where:
       subject: Firewall
       parameter-name: ^(.*)Collection$
     set:
       parameter-name: $1
       alias: $1Collection
+  - where:
+      model-name: AzureFirewall
+      property-name: ^(.*)Collection$
+    set:
+      property-name: $1
   - where:
       subject: LoadBalancerBackendAddressPool
       parameter-name: BackendAddressPoolName
@@ -2620,4 +2725,74 @@ directive:
       parameter-name: DevicePropertyLinkSpeedInMbps
     set:
       parameter-name: LinkSpeedInMbps
+
+## Formatting
+  - where:
+      model-name: ApplicationGateway
+    set:
+      format-table:
+        properties:
+          - ResourceGuid
+          - Name
+          - Location
+          - SkuName
+          - SslPolicyName
+          - EnableHttp2
+          - EnableFips
+          - OperationalState
+          - ProvisioningState
+        labels:
+          ResourceGuid: Guid
+          SkuName: Sku Name
+          SslPolicyName: Policy Name
+          EnableHttp2: Http2 Enabled
+          EnableFips: FIPS Enabled
+          OperationalState: Operational State
+          ProvisioningState: Provisioning State
+  - where:
+      model-name: ^ApplicationSecurityGroup$|^DdosCustomPolicy$|^DdosProtectionPlan$
+    set:
+      format-table:
+        properties:
+          - ResourceGuid
+          - Name
+          - Location
+          - ProvisioningState
+        labels:
+          ResourceGuid: Guid
+          ProvisioningState: Provisioning State
+  - where:
+      model-name: AzureFirewall
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - ThreatIntelligenceMode
+          - ProvisioningState
+        labels:
+          ThreatIntelligenceMode: Threat Intelligence Mode
+          ProvisioningState: Provisioning State
+  - where:
+      model-name: ExpressRouteCircuit
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - AllowClassicOperations
+          - CircuitProvisioningState
+          - ServiceProviderProvisioningState
+          - ServiceProviderNote
+          - ProvisioningState
+          - SkuName
+          - ServiceProviderName
+        labels:
+          AllowClassicOperations: Allow Classic Operations
+          CircuitProvisioningState: Circuit Provisioning State
+          ServiceProviderProvisioningState: Service Provider Provisioning State
+          ServiceProviderNote: Notes
+          ProvisioningState: Provisioning State
+          SkuName: Sku Name
+          ServiceProviderName: Service Provider Name
 ```

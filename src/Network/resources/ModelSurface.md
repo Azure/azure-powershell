@@ -3,13 +3,15 @@
 
 ### ApplicationGateway [Api20171001, Api20190201]
   - AuthenticationCertificate `IApplicationGatewayAuthenticationCertificate[]`
-  - AutoscaleConfigurationMaxCapacity `Int32?`
-  - AutoscaleConfigurationMinCapacity `Int32`
+  - AutoscaleMaximumCapacity `Int32?`
+  - AutoscaleMinimumCapacity `Int32`
   - BackendAddressPool `IApplicationGatewayBackendAddressPool[]`
-  - BackendHttpSettingsCollection `IApplicationGatewayBackendHttpSettings[]`
-  - CustomErrorConfiguration `IApplicationGatewayCustomError[]`
+  - BackendHttpSetting `IApplicationGatewayBackendHttpSettings[]`
+  - CheckWafRequestBody `Boolean?`
+  - CustomError `IApplicationGatewayCustomError[]`
   - EnableFips `Boolean?`
   - EnableHttp2 `Boolean?`
+  - EnableWaf `Boolean`
   - Etag `String`
   - FirewallPolicyId `String`
   - FrontendIPConfiguration `IApplicationGatewayFrontendIPConfiguration[]`
@@ -20,7 +22,6 @@
   - IdentityPrincipalId `String`
   - IdentityTenantId `String`
   - IdentityType `ResourceIdentityType?`
-  - IdentityUserAssignedIdentity `IManagedServiceIdentityUserAssignedIdentities`
   - Location `String`
   - Name `String`
   - OperationalState `ApplicationGatewayOperationalState?`
@@ -34,25 +35,24 @@
   - SkuName `ApplicationGatewaySkuName?`
   - SkuTier `ApplicationGatewayTier?`
   - SslCertificate `IApplicationGatewaySslCertificate[]`
-  - SslPolicyCipherSuite `ApplicationGatewaySslCipherSuite[]`
-  - SslPolicyDisabledSslProtocol `ApplicationGatewaySslProtocol[]`
-  - SslPolicyMinProtocolVersion `ApplicationGatewaySslProtocol?`
+  - SslCipherSuite `ApplicationGatewaySslCipherSuite[]`
+  - SslDisabledProtocol `ApplicationGatewaySslProtocol[]`
+  - SslMinimumProtocolVersion `ApplicationGatewaySslProtocol?`
   - SslPolicyName `ApplicationGatewaySslPolicyName?`
   - SslPolicyType `ApplicationGatewaySslPolicyType?`
   - Tag `IResourceTags`
   - TrustedRootCertificate `IApplicationGatewayTrustedRootCertificate[]`
   - Type `String`
   - UrlPathMap `IApplicationGatewayUrlPathMap[]`
-  - WebApplicationFirewallConfigurationDisabledRuleGroup `IApplicationGatewayFirewallDisabledRuleGroup[]`
-  - WebApplicationFirewallConfigurationEnabled `Boolean`
-  - WebApplicationFirewallConfigurationExclusion `IApplicationGatewayFirewallExclusion[]`
-  - WebApplicationFirewallConfigurationFileUploadLimitInMb `Int32?`
-  - WebApplicationFirewallConfigurationFirewallMode `ApplicationGatewayFirewallMode`
-  - WebApplicationFirewallConfigurationMaxRequestBodySize `Int32?`
-  - WebApplicationFirewallConfigurationMaxRequestBodySizeInKb `Int32?`
-  - WebApplicationFirewallConfigurationRequestBodyCheck `Boolean?`
-  - WebApplicationFirewallConfigurationRuleSetType `String`
-  - WebApplicationFirewallConfigurationRuleSetVersion `String`
+  - UserAssignedIdentity `IManagedServiceIdentityUserAssignedIdentities`
+  - WafDisabledRuleGroup `IApplicationGatewayFirewallDisabledRuleGroup[]`
+  - WafExclusion `IApplicationGatewayFirewallExclusion[]`
+  - WafFileUploadLimitInMb `Int32?`
+  - WafFirewallMode `ApplicationGatewayFirewallMode`
+  - WafMaximumRequestBodySize `Int32?`
+  - WafMaximumRequestBodySizeInKb `Int32?`
+  - WafRuleSetType `String`
+  - WafRuleSetVersion `String`
   - Zone `String[]`
 
 ### ApplicationGatewayAuthenticationCertificate [Api20171001]
@@ -443,16 +443,16 @@
   - SslPolicyType `ApplicationGatewaySslPolicyType?`
   - TrustedRootCertificate `IApplicationGatewayTrustedRootCertificate[]`
   - UrlPathMap `IApplicationGatewayUrlPathMap[]`
-  - WebApplicationFirewallConfigurationDisabledRuleGroup `IApplicationGatewayFirewallDisabledRuleGroup[]`
-  - WebApplicationFirewallConfigurationEnabled `Boolean`
-  - WebApplicationFirewallConfigurationExclusion `IApplicationGatewayFirewallExclusion[]`
-  - WebApplicationFirewallConfigurationFileUploadLimitInMb `Int32?`
-  - WebApplicationFirewallConfigurationFirewallMode `ApplicationGatewayFirewallMode`
-  - WebApplicationFirewallConfigurationMaxRequestBodySize `Int32?`
-  - WebApplicationFirewallConfigurationMaxRequestBodySizeInKb `Int32?`
-  - WebApplicationFirewallConfigurationRequestBodyCheck `Boolean?`
-  - WebApplicationFirewallConfigurationRuleSetType `String`
-  - WebApplicationFirewallConfigurationRuleSetVersion `String`
+  - WafConfigurationDisabledRuleGroup `IApplicationGatewayFirewallDisabledRuleGroup[]`
+  - WafConfigurationEnabled `Boolean`
+  - WafConfigurationExclusion `IApplicationGatewayFirewallExclusion[]`
+  - WafConfigurationFileUploadLimitInMb `Int32?`
+  - WafConfigurationFirewallMode `ApplicationGatewayFirewallMode`
+  - WafConfigurationMaxRequestBodySize `Int32?`
+  - WafConfigurationMaxRequestBodySizeInKb `Int32?`
+  - WafConfigurationRequestBodyCheck `Boolean?`
+  - WafConfigurationRuleSetType `String`
+  - WafConfigurationRuleSetVersion `String`
 
 ### ApplicationGatewayRedirectConfiguration [Api20171001, Api20190201]
   - Etag `String`
@@ -688,17 +688,17 @@
   - StateName `String`
 
 ### AzureFirewall [Api20190201]
-  - ApplicationRuleCollection `IAzureFirewallApplicationRuleCollection[]`
+  - ApplicationRule `IAzureFirewallApplicationRuleCollection[]`
   - Etag `String`
   - Id `String`
   - IPConfiguration `IAzureFirewallIPConfiguration[]`
   - Location `String`
   - Name `String`
-  - NatRuleCollection `IAzureFirewallNatRuleCollection[]`
-  - NetworkRuleCollection `IAzureFirewallNetworkRuleCollection[]`
+  - NatRule `IAzureFirewallNatRuleCollection[]`
+  - NetworkRule `IAzureFirewallNetworkRuleCollection[]`
   - ProvisioningState `ProvisioningState?`
   - Tag `IResourceTags`
-  - ThreatIntelMode `AzureFirewallThreatIntelMode?`
+  - ThreatIntelligenceMode `AzureFirewallThreatIntelMode?`
   - Type `String`
 
 ### AzureFirewallApplicationRule [Api20190201]
@@ -1125,10 +1125,10 @@
 
 ### DdosCustomPolicy [Api20190201]
   - Etag `String`
+  - Format `IProtocolCustomSettingsFormat[]`
   - Id `String`
   - Location `String`
   - Name `String`
-  - ProtocolCustomSetting `IProtocolCustomSettingsFormat[]`
   - ProvisioningState `String`
   - PublicIPAddress `ISubResource[]`
   - ResourceGuid `String`
@@ -1274,24 +1274,24 @@
   - RulesEvaluationResult `INetworkSecurityRulesEvaluationResult[]`
 
 ### ExpressRouteCircuit [Api20171001, Api20190201]
-  - AllowClassicOperation `Boolean?`
+  - AllowClassicOperations `Boolean?`
   - Authorization `IExpressRouteCircuitAuthorization[]`
   - BandwidthInGbps `Single?`
   - CircuitProvisioningState `String`
+  - EnableGlobalReach `Boolean?`
   - Etag `String`
   - ExpressRoutePortId `String`
   - GatewayManagerEtag `String`
-  - GlobalReachEnabled `Boolean?`
   - Id `String`
   - Location `String`
   - Name `String`
   - Peering `IExpressRouteCircuitPeering[]`
   - ProvisioningState `String`
   - ServiceKey `String`
+  - ServiceProviderBandwidthInMbps `Int32?`
+  - ServiceProviderName `String`
   - ServiceProviderNote `String`
-  - ServiceProviderPropertyBandwidthInMbps `Int32?`
-  - ServiceProviderPropertyPeeringLocation `String`
-  - ServiceProviderPropertyServiceProviderName `String`
+  - ServiceProviderPeeringLocation `String`
   - ServiceProviderProvisioningState `ServiceProviderProvisioningState?`
   - SkuFamily `ExpressRouteCircuitSkuFamily?`
   - SkuName `String`

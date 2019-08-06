@@ -317,7 +317,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[ProtocolCustomSetting <IProtocolCustomSettingsFormat[]>]`: The protocol-specific DDoS policy customization parameters.
+  - `[Format <IProtocolCustomSettingsFormat[]>]`: The protocol-specific DDoS policy customization parameters.
     - `[Protocol <DdosCustomPolicyProtocol?>]`: The protocol for which the DDoS protection policy is being customized.
     - `[SourceRateOverride <String>]`: The customized DDoS protection source rate.
     - `[TriggerRateOverride <String>]`: The customized DDoS protection trigger rate.

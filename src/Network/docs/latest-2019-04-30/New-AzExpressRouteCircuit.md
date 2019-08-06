@@ -612,7 +612,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[AllowClassicOperation <Boolean?>]`: Allow classic operations
+  - `[AllowClassicOperations <Boolean?>]`: Allow classic operations
   - `[Authorization <IExpressRouteCircuitAuthorization[]>]`: The list of authorizations.
     - `[Id <String>]`: Resource ID.
     - `[AuthorizationKey <String>]`: The authorization key.
@@ -621,9 +621,9 @@ To create the parameters described below, construct a hash table containing the 
     - `[ProvisioningState <String>]`: Gets the provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
   - `[BandwidthInGbps <Single?>]`: The bandwidth of the circuit when the circuit is provisioned on an ExpressRoutePort resource.
   - `[CircuitProvisioningState <String>]`: The CircuitProvisioningState state of the resource.
+  - `[EnableGlobalReach <Boolean?>]`: Flag denoting Global reach status.
   - `[ExpressRoutePortId <String>]`: Resource ID.
   - `[GatewayManagerEtag <String>]`: The GatewayManager Etag.
-  - `[GlobalReachEnabled <Boolean?>]`: Flag denoting Global reach status.
   - `[Peering <IExpressRouteCircuitPeering[]>]`: The list of peerings.
     - `[Id <String>]`: Resource ID.
     - `[AdvertisedCommunity <String[]>]`: The communities of bgp peering. Specified for microsoft peering
@@ -683,10 +683,10 @@ To create the parameters described below, construct a hash table containing the 
     - `[VlanId <Int32?>]`: The VLAN ID.
   - `[ProvisioningState <String>]`: Gets the provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
   - `[ServiceKey <String>]`: The ServiceKey.
+  - `[ServiceProviderBandwidthInMbps <Int32?>]`: The BandwidthInMbps.
+  - `[ServiceProviderName <String>]`: The serviceProviderName.
   - `[ServiceProviderNote <String>]`: The ServiceProviderNotes.
-  - `[ServiceProviderPropertyBandwidthInMbps <Int32?>]`: The BandwidthInMbps.
-  - `[ServiceProviderPropertyPeeringLocation <String>]`: The peering location.
-  - `[ServiceProviderPropertyServiceProviderName <String>]`: The serviceProviderName.
+  - `[ServiceProviderPeeringLocation <String>]`: The peering location.
   - `[ServiceProviderProvisioningState <ServiceProviderProvisioningState?>]`: The ServiceProviderProvisioningState state of the resource.
   - `[SkuFamily <ExpressRouteCircuitSkuFamily?>]`: The family of the SKU. Possible values are: 'UnlimitedData' and 'MeteredData'.
   - `[SkuName <String>]`: The name of the SKU.
