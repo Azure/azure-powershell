@@ -737,9 +737,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="accessCondition">Access condition</param>
         /// <param name="options">Blob request options</param>
         /// <param name="operationContext">An object that represents the context for the current operation.</param>
-        public Task SetStandardBlobTierAsync(CloudBlockBlob blob, AccessCondition accessCondition, StandardBlobTier tier, BlobRequestOptions options, XSCL.OperationContext operationContext, CancellationToken cmdletCancellationToken)
+        public Task SetStandardBlobTierAsync(CloudBlockBlob blob, AccessCondition accessCondition, StandardBlobTier tier, RehydratePriority? rehydratePriority, BlobRequestOptions options, XSCL.OperationContext operationContext, CancellationToken cmdletCancellationToken)
         {
-            return blob.SetStandardBlobTierAsync(tier, null, accessCondition, options, operationContext, cmdletCancellationToken);
+            return blob.SetStandardBlobTierAsync(tier, rehydratePriority, accessCondition, options, operationContext, cmdletCancellationToken);
         }
 
         /// <summary>
@@ -835,7 +835,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <summary>
         /// Return a task that asynchronously start copy operation to a CloudBlockBlob with StandardBlobTier.
         /// </summary>
-        /// <param name="blob">CloudBlockBlob object</param>
+        /// <param name="blob">CloudBlob object whcih is a Block blob</param>
         /// <param name="source">Uri to copying source</param>
         /// <param name="premiumPageBlobTier">The StandardBlobTier of Destination blob</param>
         /// <param name="standardBlobTier">Access condition to source if it's file/blob in azure.</param>
@@ -844,9 +844,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="operationContext">Operation context</param>
         /// <param name="cmdletCancellationToken">Cancellation token</param>
         /// <returns>Return copy id if succeeded.</returns>
-        public Task<string> StartCopyAsync(CloudBlockBlob blob, Uri source, StandardBlobTier standardBlobTier, AccessCondition sourceAccessCondition, AccessCondition destAccessCondition, BlobRequestOptions options, XSCL.OperationContext operationContext, CancellationToken cancellationToken)
+        public Task<string> StartCopyAsync(CloudBlob blob, Uri source, StandardBlobTier? standardBlobTier, RehydratePriority? rehydratePriority, AccessCondition sourceAccessCondition, AccessCondition destAccessCondition, BlobRequestOptions options, XSCL.OperationContext operationContext, CancellationToken cancellationToken)
         {
-            return blob.StartCopyAsync(new CloudBlockBlob(source), standardBlobTier, null, sourceAccessCondition, destAccessCondition, options, operationContext, cancellationToken);
+            return blob.StartCopyAsync(source, standardBlobTier, rehydratePriority, sourceAccessCondition, destAccessCondition, options, operationContext, cancellationToken);
         }
 
         /// <summary>
