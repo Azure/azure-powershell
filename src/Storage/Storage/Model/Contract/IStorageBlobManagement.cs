@@ -344,7 +344,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="operationContext">Operation context</param>
         /// <param name="cmdletCancellationToken">Cancellation token</param>
         /// <returns>Return copy id if succeeded.</returns>
-        Task<string> StartCopyAsync(CloudBlockBlob blob, Uri source, StandardBlobTier standardBlobTier, AccessCondition sourceAccessCondition, AccessCondition destAccessCondition, BlobRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken);
+        Task<string> StartCopyAsync(CloudBlob blob, Uri source, StandardBlobTier? standardBlobTier, RehydratePriority? rehydratePriority, AccessCondition sourceAccessCondition, AccessCondition destAccessCondition, BlobRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken);
 
         /// <summary>
         /// Return a task that asynchronously start Incremental copy operation to a page blob.
@@ -427,7 +427,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="accessCondition">Access condition</param>
         /// <param name="options">Blob request options</param>
         /// <param name="operationContext">An object that represents the context for the current operation.</param>
-        Task SetStandardBlobTierAsync(CloudBlockBlob blob, AccessCondition accessCondition, StandardBlobTier tier, BlobRequestOptions options, OperationContext operationContext, CancellationToken cmdletCancellationToken);
+        Task SetStandardBlobTierAsync(CloudBlockBlob blob, AccessCondition accessCondition, StandardBlobTier tier, RehydratePriority? rehydratePriority, BlobRequestOptions options, OperationContext operationContext, CancellationToken cmdletCancellationToken);
 
         /// <summary>
         /// List the blobs segmented in specified containers

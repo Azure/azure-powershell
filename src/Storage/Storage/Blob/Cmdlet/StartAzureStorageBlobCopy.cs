@@ -197,11 +197,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         }
         private PremiumPageBlobTier? pageBlobTier = null;
 
-        [Parameter(HelpMessage = "Block Blob Tier", Mandatory = false, ParameterSetName = ContainerNameParameterSet)]
-        [Parameter(HelpMessage = "Block Blob Tier", Mandatory = false, ParameterSetName = BlobParameterSet)]
-        [Parameter(HelpMessage = "Block Blob Tier", Mandatory = false, ParameterSetName = BlobToBlobParameterSet)]
-        [Parameter(HelpMessage = "Block Blob Tier", Mandatory = false, ParameterSetName = ContainerParameterSet)]
-        [ValidateSet("Hot", "Cool", IgnoreCase = true)]
+        [Parameter(HelpMessage = "Block Blob Tier, valid values are Hot/Cool/Archive. See detail in https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-storage-tiers", Mandatory = false)]
+        [ValidateSet("Hot", "Cool", "Archive", IgnoreCase = true)]
         public StandardBlobTier StandardBlobTier
         {
             get
@@ -215,6 +212,22 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             }
         }
         private StandardBlobTier? standardBlobTier = null;
+
+        [Parameter(HelpMessage = "Block Blob RehydratePriority. Indicates the priority with which to rehydrate an archived blob. Valid values are High/Standard.", Mandatory = false)]
+        [ValidateSet("Standard", "High", IgnoreCase = true)]
+        public RehydratePriority RehydratePriority
+        {
+            get
+            {
+                return rehydratePriority.Value;
+            }
+
+            set
+            {
+                rehydratePriority = value;
+            }
+        }
+        private RehydratePriority? rehydratePriority = null;
 
         [Alias("SrcContext", "SourceContext")]
         [Parameter(HelpMessage = "Source Azure Storage Context Object", ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ContainerNameParameterSet)]
@@ -403,7 +416,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         private void StartCopyBlob(IStorageBlobManagement destChannel, CloudBlob srcCloudBlob, CloudBlob destCloudBlob)
         {
             ValidateBlobType(srcCloudBlob);
-            ValidateBlobTier(srcCloudBlob.BlobType, pageBlobTier, standardBlobTier);
+            ValidateBlobTier(srcCloudBlob.BlobType, pageBlobTier, standardBlobTier, rehydratePriority);
 
             Func<long, Task> taskGenerator = (taskId) => StartCopyAsync(taskId, destChannel, srcCloudBlob, destCloudBlob);
             RunTask(taskGenerator);
@@ -585,6 +598,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 }
             }
 
+            ValidateBlobTier(destBlob.BlobType, pageBlobTier, standardBlobTier, rehydratePriority);
+
             if (!destExist || this.ConfirmOverwrite(srcUri.AbsoluteUri.ToString(), destBlob.Uri.ToString()))
             {
                 string copyId;
@@ -597,9 +612,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 {
                     copyId = await destChannel.StartCopyAsync((CloudPageBlob)destBlob, srcUri, pageBlobTier.Value, null, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken).ConfigureAwait(false);
                 }
-                else if (standardBlobTier != null)
+                else if (standardBlobTier != null || rehydratePriority != null)
                 {
-                    copyId = await destChannel.StartCopyAsync((CloudBlockBlob)destBlob, srcUri, standardBlobTier.Value, null, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken).ConfigureAwait(false);
+                    copyId = await destChannel.StartCopyAsync(destBlob, srcUri, standardBlobTier, rehydratePriority, null, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken).ConfigureAwait(false);
                 }
                 else
                 { 

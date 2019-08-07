@@ -170,7 +170,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 
         private PremiumPageBlobTier? pageBlobTier = null;
 
-        [Parameter(HelpMessage = "Block Blob Tier", Mandatory = false)]
+        [Parameter(HelpMessage = "Block Blob Tier, valid values are Hot/Cool/Archive. See detail in https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-storage-tiers", Mandatory = false)]
+        [ValidateSet("Hot", "Cool", "Archive", IgnoreCase = true)]
         public StandardBlobTier StandardBlobTier
         {
             get
@@ -469,7 +470,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             if (standardBlobTier != null)
             {
                 AccessCondition accessCondition = null;
-                await Channel.SetStandardBlobTierAsync((CloudBlockBlob)blob, accessCondition, standardBlobTier.Value, requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
+                await Channel.SetStandardBlobTierAsync((CloudBlockBlob)blob, accessCondition, standardBlobTier.Value, null, requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
             }
         }
 

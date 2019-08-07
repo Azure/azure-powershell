@@ -37,9 +37,9 @@ Set-AzStorageBlobContent [-File] <String> [-Blob <String>] -CloudBlobContainer <
 ```
 Set-AzStorageBlobContent [-File] <String> -CloudBlob <CloudBlob> [-BlobType <String>] [-Properties <Hashtable>]
  [-Metadata <Hashtable>] [-PremiumPageBlobTier <PremiumPageBlobTier>] [-StandardBlobTier <StandardBlobTier>]
- [-Force] [-AsJob] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Force] [-AsJob] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
+ [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -91,12 +91,12 @@ The first command creates a hash table that contains metadata for a blob, and st
 The second command uploads the file that is named ContosoPlanning to the container named ContosoUploads.
 The blob includes the metadata stored in $Metadata, and has PremiumPageBlobTier as P10.
 
-### Example 6: Upload a file to blob with specified blob properties
+### Example 6: Upload a file to blob with specified blob properties, and set StandardBlobTier as Cool
 ```
-PS C:\> Set-AzStorageBlobContent -File "ContosoPlanning" -Container "ContosoUploads" -Properties @{"ContentType" = "image/jpeg"; "ContentMD5" = "i727sP7HigloQDsqadNLHw=="}
+PS C:\> Set-AzStorageBlobContent -File "ContosoPlanning" -Container "ContosoUploads" -Properties @{"ContentType" = "image/jpeg"; "ContentMD5" = "i727sP7HigloQDsqadNLHw=="} -StandardBlobTier Cool
 ```
 
-This command  uploads the file that is named ContosoPlanning to the container named ContosoUploads with specified blob properties.
+This command  uploads the file that is named ContosoPlanning to the container named ContosoUploads with specified blob properties, and set StandardBlobTier as Cool.
 
 ## PARAMETERS
 
@@ -374,13 +374,13 @@ Accept wildcard characters: False
 ```
 
 ### -StandardBlobTier
-Block Blob Tier
+Block Blob Tier, valid values are Hot/Cool/Archive.
+See detail in https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-storage-tiers
 
 ```yaml
-Type: Microsoft.WindowsAzure.Storage.Blob.StandardBlobTier
+Type: Microsoft.Azure.Storage.Blob.StandardBlobTier
 Parameter Sets: (All)
 Aliases:
-Accepted values: Unknown, Hot, Cool, Archive
 
 Required: False
 Position: Named
