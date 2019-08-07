@@ -127,7 +127,7 @@ Accept wildcard characters: False
 ```
 
 ### -DatabaseVCoreMax
-The maxmium VCore number any SqlAzure Database can consume in the pool.
+The maximum VCore number any SqlAzure Database can consume in the pool.
 
 ```yaml
 Type: System.Double

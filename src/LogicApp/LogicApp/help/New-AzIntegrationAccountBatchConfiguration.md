@@ -126,7 +126,7 @@ Tags       :
 
 ```
 
-Creates a new batch configuration by manually providing all of the nessecary parameters.
+Creates a new batch configuration by manually providing all of the necessary parameters.
 
 ## PARAMETERS
 

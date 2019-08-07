@@ -66,5 +66,10 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Model
         /// Gets or sets the server create time.
         /// </summary>
         public DateTime? ServerCreateTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets the resource group name.
+        /// </summary>
+        public string ResourceGroupName { get; set; }
     }
 }

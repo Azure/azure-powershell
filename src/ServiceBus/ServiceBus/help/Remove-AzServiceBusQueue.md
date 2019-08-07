@@ -63,7 +63,7 @@ PS C:\> Remove-AzServiceBusQueue -ResourceId $resourceid.Id
 
 Removes the Service Bus queue provided in the ARM id in $resourceid/string for -ResourceId parameter
 
-### Example 3.2 - ResourceId - passign as string:
+### Example 3.2 - ResourceId - passing as string:
 ```
 PS C:\> Remove-AzServiceBusQueue -ResourceId "/subscriptions/xxxx-xxxxx-xxxxx-xxxxxx-xxxxxxx/resourceGroups/ResourceGroupName/providers/Microsoft.ServiceBus/namespaces/NamespaceName/queues/QueueName"
 ```

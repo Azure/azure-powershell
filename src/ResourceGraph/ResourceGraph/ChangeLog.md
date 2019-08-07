@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Showing warnings in cases when too many subscriptions were used or results got truncated.
+* Adding param to extend query result with subscription and tenant names
+
+## Version 0.7.4
 * Updated package Microsoft.Azure.Management.ResourceGraph to version 2.0
 
 ## Version 0.7.3
