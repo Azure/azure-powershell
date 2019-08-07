@@ -19,6 +19,7 @@
 --->
 ## Upcoming Release
 * Fixed miscellaneous typos across module
+* Adjusted validation logic for Ipv6 IP Prefix to check for correct IPv6 prefix length. 
 
 ## Version 1.12.0
 * Add support for private endpoint and private link service
