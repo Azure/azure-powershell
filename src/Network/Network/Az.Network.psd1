@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.12.0'
+ModuleVersion = '1.12.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -457,37 +457,12 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Add support for private endpoint and private link service
+        ReleaseNotes = '* Add support for Virtual Network Subnet Initialization
     - New cmdlets
-        - Set-AzPrivateEndpoint
-        - Set-AzPrivateLinkService
-        - Approve-AzPrivateEndpointConnection
-        - Deny-AzPrivateEndpointConnection
-        - Get-AzPrivateEndpointConnection
-        - Remove-AzPrivateEndpointConnection
-        - Test-AzPrivateLinkServiceVisibility
-        - Get-AzAutoApprovedPrivateLinkService
-* Updated below commands for feature: PrivateEndpointNetworkPolicies/PrivateLinkServiceNetworkPolicies flag on Subnet in Virtualnetwork
-    - Updated New-AzVirtualNetworkSubnetConfig/Set-AzVirtualNetworkSubnetConfig/Add-AzVirtualNetworkSubnetConfig
-        - Added optional parameter -PrivateEndpointNetworkPoliciesFlag to indicate that enable or disable apply network policies on pivate endpoint in this subnet.
-        - Added optional parameter -PrivateLinkServiceNetworkPoliciesFlag to indicate that enable or disable apply network policies on private link service in this subnet.
-* AzPrivateLinkService''s cmdlet parameter ''ServiceName'' was renamed to ''Name'' with an alias ''ServiceName'' for backward compatibility
-* Enable ICMP protocol for network security rule configurations
-    - Updated cmdlets
-        - Add-AzNetworkSecurityRuleConfig
-        - New-AzNetworkSecurityRuleConfig
-        - Set-AzNetworkSecurityRuleConfig
-* Add ConnectionProtocolType (Ikev1/Ikev2) as a configurable parameter for New-AzVirtualNetworkGatewayConnection
-* Add PrivateIpAddressVersion in LoadBalancerFrontendIpConfiguration
-    - Updated cmdlet:
-        - New-AzLoadBalancerFrontendIpConfig
-        - Add-AzLoadBalancerFrontendIpConfig
-        - Set-AzLoadBalancerFrontendIpConfig
-* Application Gateway New-AzApplicationGatewayProbeConfig command update for supporting custom port in Probe
-    - Updated New-AzApplicationGatewayProbeConfig: Added optional parameter Port which is used for probing backend server. This parameter is applicable for Standard_V2 and WAF_V2 SKU.'
+        - Initialize-AzVirtualNetworkSubnetPolicy'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update
         # RequireLicenseAcceptance = $false
