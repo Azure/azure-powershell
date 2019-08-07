@@ -94,13 +94,13 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             public const string UserAssignedIdentity = "User assigned identity(MSI) to deploy the artifacts.";
             public const string SecureString = "Secure string parameter for KeyVault resource id, name and version.";
             public const string ArtifactName = "Name of the artifact";
-            public const string ArtifactType = "Type of the artifact. There are 3 tpes supported: RoleAssignmentArtifact, PolicyAssignmentArtifact, TemplateArtifact.";
+            public const string ArtifactType = "Type of the artifact. There are 3 types supported: RoleAssignmentArtifact, PolicyAssignmentArtifact, TemplateArtifact.";
             public const string ArtifactDescription = "Description of the artifact.";
             public const string ArtifactDependsOn = "List of the names of artifacts that needs to be created before current artifact is created.";
             public const string ArtifactPolicyDefinitionId = "Definition Id of the policy definition.";
             public const string ArtifactPolicyDefinitionParameter = "Hashtable of parameters to pass to the policy definition artifact.";
             public const string ArtifactRoleDefinitionId = "List of role definition";
-            public const string ArtifactRoleDefinitionPrincipalId = "List of role definition pricipal ids.";
+            public const string ArtifactRoleDefinitionPrincipalId = "List of role definition principal ids.";
             public const string ArtifactTemplateFile = "Location of the ARM template file on disk.";
             public const string ArtifactTemplateParameterFile = "Location of the ARM template parameter file on disk.";
             public const string ArtifactFile = "Location of the artifact file in JSON format on disk.";
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             public const string ExportOutputFile = "Path to a file on disk where to export the Blueprint definition in JSON format.";
             public const string ForceHelpMessage = "When set to true, execution will not ask for a confirmation.";
             public const string ImportInputPath = "Path to a Blueprint JSON file on disk.";
-
+            public const string ChangeNotes = "Notes to describe the contents of this blueprint version.";
         }
     }
 }

@@ -32,7 +32,7 @@ The **Get-AzStorageAccount** cmdlet gets a specified Storage account or all of t
 
 ### Example 1: Get a specified Storage account
 ```
-PS C:\>Get-AzStorageAccount -ResourceGroupName "RG01" -AccountName "mystorageaccount"
+PS C:\>Get-AzStorageAccount -ResourceGroupName "RG01" -Name "mystorageaccount"
 ```
 
 This command gets the specified Storage account.

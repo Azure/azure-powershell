@@ -19,9 +19,14 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed miscellaneous typos across module
+
+## Version 2.4.1
+* Add missing properties (ComputerName, OsName, OsVersion and HyperVGeneration) of VM instance view object.
 
 ## Version 2.4.0
 * Add HyperVGeneration parameter to New-AzImageConfig
+* Use the extension type instead of the name when disabling vmss disk encryption
 
 ## Version 2.3.0
 * New-AzVm and New-AzVmss simple parameter sets now accept the `ProximityPlacementGroup` parameter.

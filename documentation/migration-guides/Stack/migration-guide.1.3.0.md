@@ -24,7 +24,7 @@ AzureRm.AzureStackStorage module is replaced with Azs.Storage.Admin module
 
 - ```Get-AzureStackToken``` is deprecated. If there is a need to get token, please use the Microsoft.IdentityModel.Clients.ActiveDirectory.dll directly.
 
-- The cmdlets ```*-AzsReourceProviderManifest``` and ```*-AzsUsageConnection``` are deprecated
+- The cmdlets ```*-AzsResourceProviderManifest``` and ```*-AzsUsageConnection``` are deprecated
 For any of these usages, template based resource creation is preferred.  For deletion of these resources, deleting the whole resource group is preferred. If needed, you can also use generic cmdlet *-AzureRmResource
 
 **Parameter Changes**<br>
@@ -40,7 +40,7 @@ Properties field of the objects Plan, Offer, Subscription have been removed and 
 
 **Force Parameter** <br>
 
-Remove-* cmdlets will ask for confirmation before doing the remove action. Please use -Force to avoid the confirmation. The following are the affected cmldets
+Remove-* cmdlets will ask for confirmation before doing the remove action. Please use -Force to avoid the confirmation. The following are the affected cmdlets
 - Remove-AzsOffer
 - Remove-AzsPlan
 - Remove-AzsUserSubscription
@@ -55,7 +55,7 @@ The parameters ```SkipCertificateValidation``` and ```DefaultProfile``` have bee
 
 The parameters ```TimeGrain```, ```StartTimeInUtc```, ```EndTimInUtc```, ```MetricNames```, ```DetailedOutput```  have been removed for Get-Azs*Metric Cmdlets, please replace with Where-Object and Select-Object.
 
-The pareamters ```MetricNames```, ```DetailedOutput```  have been removed for Get-Azs*MetricDefinition Cmdlets, please replace with Where-Object and Select-Object
+The parameters ```MetricNames```, ```DetailedOutput```  have been removed for Get-Azs*MetricDefinition Cmdlets, please replace with Where-Object and Select-Object
 
 **New Parameters**
 - The parameter ```ResourceGroupName``` is now an optional for all cmdlets.
@@ -78,7 +78,7 @@ Affected cmdlets
 - Get-AzsTableServiceMetricDefinition
 - Start-AzsReclaimStorageCapacity
 
- ```ResourceId``` parameter can be used for cmdlets that require ```Name``` . The ReourceId is same as the Id of the resource object that is returned from the Get-* cmdlets. The parameter also has an alias ```Id```. 
+ ```ResourceId``` parameter can be used for cmdlets that require ```Name``` . The ResourceId is same as the Id of the resource object that is returned from the Get-* cmdlets. The parameter also has an alias ```Id```. 
 
 Affected cmdlets<br>
 - Get-AzsStorageQuota

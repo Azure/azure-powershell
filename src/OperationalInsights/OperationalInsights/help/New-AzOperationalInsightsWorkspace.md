@@ -152,18 +152,20 @@ Accept wildcard characters: False
 ```
 
 ### -Sku
-Specifies the service tier of the workspace.
-Valid values are: 
+Specifies the service tier of the workspace. For more information regarding which value to use please check https://docs.microsoft.com/en-us/azure/azure-monitor/platform/manage-cost-storage#legacy-pricing-tiers.
+Valid values are:
 - free
-- standard
-- standalone
+- pergb2018
+- pernode
 - premium
+- standalone
+- standard
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: free, standard, premium, pernode, standalone, pergb2018
+Accepted values: free, pergb2018, pernode, premium, standalone, standard
 
 Required: False
 Position: 3

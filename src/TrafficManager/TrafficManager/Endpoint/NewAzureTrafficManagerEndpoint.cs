@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
         [ValidateCount(1, 350)]
         public List<string> GeoMapping { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The list of address ranges or subnets mapped to this endpoint when using the â€˜Subnetâ€™ traffic routing method.")]
+        [Parameter(Mandatory = false, HelpMessage = "The list of address ranges or subnets mapped to this endpoint when using the 'Subnet' traffic routing method.")]
         public List<TrafficManagerIpAddressRange> SubnetMapping { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "List of custom header name and value pairs for probe requests.")]

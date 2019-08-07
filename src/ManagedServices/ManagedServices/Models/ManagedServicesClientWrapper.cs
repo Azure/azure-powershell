@@ -21,12 +21,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models
     using System;
     using Microsoft.Azure.Management.ManagedServices.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.Properties;
+    using System.Threading.Tasks;
+
     /// <summary>
     /// Low-level API implementation for the ManagedServicesClient service.
     /// </summary>
     public class PSManagedServicesClient
     {
-        protected const string API_VERSION = "2018-06-01-preview";
         public ManagedServicesClient ManagedServicesClient { get; private set; }
 
         public PSManagedServicesClient()
@@ -53,21 +54,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models
             string registrationAssignmentId,
             bool? expandRegistrationDefinition = null)
         {
-            return this.ManagedServicesClient.RegistrationAssignments.Get(
+            return this.ManagedServicesClient.RegistrationAssignments.GetAsync(
                 scope: scope,
-                registratonAssignmentId: registrationAssignmentId,
-                expandRegistrationDefinition: expandRegistrationDefinition,
-                apiVersion: API_VERSION);
+                registrationAssignmentId: registrationAssignmentId,
+                expandRegistrationDefinition: expandRegistrationDefinition)
+                .GetAwaiter()
+                .GetResult();
         }
 
         public IPage<RegistrationAssignment> ListRegistrationAssignments(
             string scope,
             bool? expandRegistrationDefinition = null)
         {
-            return this.ManagedServicesClient.RegistrationAssignments.List(
+            return this.ManagedServicesClient.RegistrationAssignments.ListAsync(
                 scope: scope,
-                apiVersion: API_VERSION,
-                expandRegistrationDefinition: expandRegistrationDefinition);
+                expandRegistrationDefinition: expandRegistrationDefinition)
+                .GetAwaiter()
+                .GetResult();
         }
 
         public RegistrationAssignment CreateOrUpdateRegistrationAssignment(
@@ -83,21 +86,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models
                 }
             };
 
-            return this.ManagedServicesClient.RegistrationAssignments.CreateOrUpdate(
+            return this.ManagedServicesClient.RegistrationAssignments.CreateOrUpdateAsync(
                 scope: scope,
-                registratonAssignmentId: registrationAssignmentId.ToString(),
-                requestBody: registrationAssignment,
-                apiVersion: API_VERSION);
+                registrationAssignmentId: registrationAssignmentId.ToString(),
+                requestBody: registrationAssignment)
+                .GetAwaiter()
+                .GetResult();
         }
 
-        public RegistrationAssignment RemoveRegistrationAssignment(
-            string scope, 
+        public void RemoveRegistrationAssignment(
+            string scope,
             string registrationAssignmentId)
         {
-            return this.ManagedServicesClient.RegistrationAssignments.Delete(
+            this.ManagedServicesClient.RegistrationAssignments.DeleteAsync(
                 scope: scope,
-                registratonAssignmentId: registrationAssignmentId,
-                apiVersion: API_VERSION);
+                registrationAssignmentId: registrationAssignmentId)
+                .GetAwaiter()
+                .GetResult();
         }
 
         #endregion
@@ -109,38 +114,42 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models
             RegistrationDefinition registrationDefinition,
             Guid registratonDefinitionId = default(Guid))
         {
-            return this.ManagedServicesClient.RegistrationDefinitions.CreateOrUpdate(
+            return this.ManagedServicesClient.RegistrationDefinitions.CreateOrUpdateAsync(
                 scope: scope,
-                registratonDefinitionId: registratonDefinitionId.ToString(),
-                requestBody: registrationDefinition,
-                apiVersion: API_VERSION);
+                registrationDefinitionId: registratonDefinitionId.ToString(),
+                requestBody: registrationDefinition)
+                .GetAwaiter()
+                .GetResult();
         }
 
         public IPage<RegistrationDefinition> ListRegistrationDefinitions(string scope)
         {
-            return this.ManagedServicesClient.RegistrationDefinitions.List(
-                scope: scope,
-                apiVersion: API_VERSION);
+            return this.ManagedServicesClient.RegistrationDefinitions.ListAsync(
+                scope: scope)
+                .GetAwaiter()
+                .GetResult();
         }
 
         public RegistrationDefinition GetRegistrationDefinition(
-            string scope, 
+            string scope,
             string registrationDefinitionId)
         {
-            return this.ManagedServicesClient.RegistrationDefinitions.Get(
+            return this.ManagedServicesClient.RegistrationDefinitions.GetAsync(
                 scope: scope,
-                registratonDefinitionId: registrationDefinitionId,
-                apiVersion: API_VERSION);
+                registrationDefinitionId: registrationDefinitionId)
+                .GetAwaiter()
+                .GetResult();
         }
 
-        public RegistrationDefinition RemoveRegistrationDefinition(
-            string scope    , 
+        public void RemoveRegistrationDefinition(
+            string scope,
             string registrationDefinitionId)
         {
-            return this.ManagedServicesClient.RegistrationDefinitions.Delete(
+            this.ManagedServicesClient.RegistrationDefinitions.DeleteAsync(
                     scope: scope,
-                    registratonDefinitionId: registrationDefinitionId,
-                    apiVersion: API_VERSION);
+                    registrationDefinitionId: registrationDefinitionId)
+                    .GetAwaiter()
+                    .GetResult();
         }
 
         #endregion

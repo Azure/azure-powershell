@@ -7,16 +7,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "77ce739a-d57a-4dca-bf9e-b690ea5ada1d"
+          "826c0255-e2dc-4032-8cc8-d70dc3e09d43"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.10.0.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.11.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -27,31 +27,31 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAAEuIAAAAAAAAAAA==\""
+          "\"AAAAAAAACJ8AAAAAAAAAAA==\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "44ca1dbb-5972-4ca6-85e0-e02c6a7dccad"
+          "16d50942-8b21-4c93-a00c-19eea1f0dc22"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11999"
         ],
         "x-ms-correlation-request-id": [
-          "9317ed80-e5f2-401a-83e4-d9cc4be3e9dd"
+          "fce6c84d-7ed1-4189-beac-6c930a8a7d99"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190513T212429Z:9317ed80-e5f2-401a-83e4-d9cc4be3e9dd"
+          "WESTUS:20190729T162841Z:fce6c84d-7ed1-4189-beac-6c930a8a7d99"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 13 May 2019 21:24:28 GMT"
+          "Mon, 29 Jul 2019 16:28:40 GMT"
         ],
         "Content-Length": [
           "246"
@@ -64,7 +64,7 @@
         ]
       },
       //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]
-      "ResponseBody": "{\r\n  \"id\": \"integration\",\r\n  \"primaryKey\": \"m61UkHhCTRbpSdOwKKKt8qOPZZztwCWu/f8OeEqnlP3uYbL1EGPbitOoQZ1ykVESZ7e6QdHr7YlCWES9Pi9ubA==\",\r\n  \"secondaryKey\": \"sDWIh8BJnB2R/5V60mcF0CoCSAtgrKvwh/hvNoh79YVbrlvbcS6emtH5TpzjmtIBJT1hFmG1EybaxICdPe3tLQ==\",\r\n  \"enabled\": false\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"integration\",\r\n  \"primaryKey\": \"px8oHNI+IbcNYtFtsb2bsdM0hy8F/4CwHmofmyADIEGN8Mgx96w3pP8aiIgsxIHejhvwYZnaW4L2J/4fCTUwaQ==\",\r\n  \"secondaryKey\": \"8WIlMP85tsJNwT3yl0ZEgd7Ht+4hThjba63HjqLPKx09TmADUHljdDN9uIuh/wWPDGs30zkQLPe1XsI2xa9LQg==\",\r\n  \"enabled\": false\r\n}",
       "StatusCode": 200
     },
     {
@@ -74,16 +74,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "45b82d6c-0613-40bb-a1dd-0cff8a08aa25"
+          "36361810-cf4d-4630-9c12-8ac8b122f061"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.10.0.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.11.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -94,31 +94,31 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAAFXoAAAAAAAAAAA==\""
+          "\"AAAAAAAAFaIAAAAAAAAAAA==\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "e237cca7-e6fb-4c2d-900e-d49d55eea676"
+          "a4cf1acd-e274-4ee9-8320-b852ed1ab2e9"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
+          "11998"
         ],
         "x-ms-correlation-request-id": [
-          "6ac3d750-7c56-481a-bcac-a73e0b482eca"
+          "f4dbd58f-8767-4249-bf42-18b5207aa5bf"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190513T212430Z:6ac3d750-7c56-481a-bcac-a73e0b482eca"
+          "WESTUS:20190729T162842Z:f4dbd58f-8767-4249-bf42-18b5207aa5bf"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 13 May 2019 21:24:29 GMT"
+          "Mon, 29 Jul 2019 16:28:41 GMT"
         ],
         "Content-Length": [
           "245"
@@ -131,7 +131,7 @@
         ]
       },
       //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]
-      "ResponseBody": "{\r\n  \"id\": \"integration\",\r\n  \"primaryKey\": \"m61UkHhCTRbpSdOwKKKt8qOPZZztwCWu/f8OeEqnlP3uYbL1EGPbitOoQZ1ykVESZ7e6QdHr7YlCWES9Pi9ubA==\",\r\n  \"secondaryKey\": \"sDWIh8BJnB2R/5V60mcF0CoCSAtgrKvwh/hvNoh79YVbrlvbcS6emtH5TpzjmtIBJT1hFmG1EybaxICdPe3tLQ==\",\r\n  \"enabled\": true\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"integration\",\r\n  \"primaryKey\": \"px8oHNI+IbcNYtFtsb2bsdM0hy8F/4CwHmofmyADIEGN8Mgx96w3pP8aiIgsxIHejhvwYZnaW4L2J/4fCTUwaQ==\",\r\n  \"secondaryKey\": \"8WIlMP85tsJNwT3yl0ZEgd7Ht+4hThjba63HjqLPKx09TmADUHljdDN9uIuh/wWPDGs30zkQLPe1XsI2xa9LQg==\",\r\n  \"enabled\": true\r\n}",
       "StatusCode": 200
     },
     {
@@ -141,16 +141,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2a6fe721-9e12-4345-acc1-2b7d1f6e723b"
+          "dbdc74cf-45a6-444b-b550-458629eb19d7"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.10.0.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.11.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -161,31 +161,31 @@
           "no-cache"
         ],
         "ETag": [
-          "\"AAAAAAAAFXsAAAAAAAAAAA==\""
+          "\"AAAAAAAAFaMAAAAAAAAAAA==\""
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "738e565d-236b-41f0-93a8-7d140d24e41a"
+          "68590e86-4c74-486f-aa1d-90e439d0ee12"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11996"
+          "11997"
         ],
         "x-ms-correlation-request-id": [
-          "a36b4055-74e6-4873-a5ba-e75dcd107b57"
+          "01dc21e0-24ed-4b58-ac19-ac10e7e50c5d"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190513T212431Z:a36b4055-74e6-4873-a5ba-e75dcd107b57"
+          "WESTUS:20190729T162842Z:01dc21e0-24ed-4b58-ac19-ac10e7e50c5d"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 13 May 2019 21:24:30 GMT"
+          "Mon, 29 Jul 2019 16:28:41 GMT"
         ],
         "Content-Length": [
           "246"
@@ -198,7 +198,7 @@
         ]
       },
       //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]
-      "ResponseBody": "{\r\n  \"id\": \"integration\",\r\n  \"primaryKey\": \"m61UkHhCTRbpSdOwKKKt8qOPZZztwCWu/f8OeEqnlP3uYbL1EGPbitOoQZ1ykVESZ7e6QdHr7YlCWES9Pi9ubA==\",\r\n  \"secondaryKey\": \"sDWIh8BJnB2R/5V60mcF0CoCSAtgrKvwh/hvNoh79YVbrlvbcS6emtH5TpzjmtIBJT1hFmG1EybaxICdPe3tLQ==\",\r\n  \"enabled\": false\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"integration\",\r\n  \"primaryKey\": \"px8oHNI+IbcNYtFtsb2bsdM0hy8F/4CwHmofmyADIEGN8Mgx96w3pP8aiIgsxIHejhvwYZnaW4L2J/4fCTUwaQ==\",\r\n  \"secondaryKey\": \"8WIlMP85tsJNwT3yl0ZEgd7Ht+4hThjba63HjqLPKx09TmADUHljdDN9uIuh/wWPDGs30zkQLPe1XsI2xa9LQg==\",\r\n  \"enabled\": false\r\n}",
       "StatusCode": 200
     },
     {
@@ -208,7 +208,7 @@
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"enabled\": true\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b8c88fa3-6184-44ec-bf2a-6625350d4314"
+          "53c0d2b1-bae0-474e-aeb7-b14f55dc0d14"
         ],
         "If-Match": [
           "*"
@@ -217,10 +217,10 @@
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.10.0.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.11.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -240,25 +240,25 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "173e5a5c-dd18-454d-96a8-01b483a445d7"
+          "dea4d303-937d-41c5-93c5-8d63bc80fe80"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
+          "1199"
         ],
         "x-ms-correlation-request-id": [
-          "ab7a414f-06a4-4cb0-844c-01323f66cf35"
+          "e559d8b7-7c70-4acf-8980-2f0c8591b19b"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190513T212429Z:ab7a414f-06a4-4cb0-844c-01323f66cf35"
+          "WESTUS:20190729T162842Z:e559d8b7-7c70-4acf-8980-2f0c8591b19b"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 13 May 2019 21:24:29 GMT"
+          "Mon, 29 Jul 2019 16:28:41 GMT"
         ],
         "Expires": [
           "-1"
@@ -274,7 +274,7 @@
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"enabled\": false\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1b1537e2-4f7b-4751-963c-6e6635d846c5"
+          "1a0deedf-b109-4264-8b4a-402f408925c7"
         ],
         "If-Match": [
           "*"
@@ -283,10 +283,10 @@
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.10.0.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.11.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -306,25 +306,25 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "75a223d9-1d7f-4649-a9c1-62e4812cd6fd"
+          "e4c210cd-5526-494c-b7bc-18639285703f"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1197"
+          "1198"
         ],
         "x-ms-correlation-request-id": [
-          "bc5aa953-1b65-4173-9edd-9418a35a54c9"
+          "9c1e92ae-1a76-4645-8a6c-e52f5a7c0a63"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20190513T212430Z:bc5aa953-1b65-4173-9edd-9418a35a54c9"
+          "WESTUS:20190729T162842Z:9c1e92ae-1a76-4645-8a6c-e52f5a7c0a63"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 13 May 2019 21:24:30 GMT"
+          "Mon, 29 Jul 2019 16:28:41 GMT"
         ],
         "Expires": [
           "-1"

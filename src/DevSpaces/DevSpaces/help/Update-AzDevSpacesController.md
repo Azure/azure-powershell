@@ -44,7 +44,7 @@ Name        Resource Group  Location  Provisioning State
 devSpaceControllerName   devSpaceResourceGroup     eastus    Succeeded
 ```
 
-Tag a DevSpaces contoller.
+Tag a DevSpaces controller.
 
 ## PARAMETERS
 

@@ -28,7 +28,7 @@ Start-AzAutomationDscNodeConfigurationDeployment [-NodeConfigurationName] <Strin
 ```
 
 ## DESCRIPTION
-The **Start-AzAutomationDscNodeConfigurationDeployment** cmdlet deployes a Desired State Configuration (DSC) node configuration in Azure Automation.
+The **Start-AzAutomationDscNodeConfigurationDeployment** cmdlet deploys a Desired State Configuration (DSC) node configuration in Azure Automation.
 
 ## EXAMPLES
 

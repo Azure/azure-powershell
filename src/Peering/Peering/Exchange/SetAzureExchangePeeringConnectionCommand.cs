@@ -170,7 +170,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
         {
                 this.InputObject.BgpSession.MaxPrefixesAdvertisedV4 =
                     this.MaxPrefixesAdvertisedIPv4 == null ? (this.InputObject.BgpSession.MaxPrefixesAdvertisedV4 != 0 ? this.InputObject.BgpSession.MaxPrefixesAdvertisedV4 : 2000) : 2000;
-                this.InputObject.BgpSession.PeerSessionIPv6Address = this.ValidatePrefix(this.PeerSessionIPv4Address, Constants.Exchange);
+                this.InputObject.BgpSession.PeerSessionIPv4Address = this.ValidatePrefix(this.PeerSessionIPv4Address, Constants.Exchange);
                 if (this.IsValidConnection(this.InputObject))
                     return this.InputObject;
 

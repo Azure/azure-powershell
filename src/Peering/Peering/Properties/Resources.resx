@@ -141,6 +141,9 @@
   <data name="Error_CloudError" xml:space="preserve">
     <value>ErrorCode: {0} ErrorMessage: {1}</value>
   </data>
+  <data name="Error_ConnectionIdentifierNull" xml:space="preserve">
+    <value>Connection Identifier cannot be null.</value>
+  </data>
   <data name="Error_GenericSyntax" xml:space="preserve">
     <value>Unable to complete the request. Check your syntax for errors.</value>
   </data>

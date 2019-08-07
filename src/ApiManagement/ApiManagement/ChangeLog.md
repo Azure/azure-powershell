@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed miscellaneous typos across module
+* Fix for issue https://github.com/Azure/azure-powershell/issues/9351
+	- Update .net nuget version, which does not enforce restrictions on productId, apiId, groupId and userId
+
+* Added support for querying products using Api
+  https://github.com/Azure/azure-powershell/issues/9482
 
 ## Version 1.2.0
 
