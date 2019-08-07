@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
     using System.Collections;
     using System.Text.RegularExpressions;
 
-    public class PsApiManagementOAuth2AuthrozationServer : PsApiManagementArmResource
+    public class PsApiManagementOAuth2AuthorizationServer : PsApiManagementArmResource
     {
         static readonly Regex AuthorizationServerIdRegex = new Regex(@"(.*?)/providers/microsoft.apimanagement/service/(?<serviceName>[^/]+)/authorizationServers/(?<authorizationServerId>[^/]+)", RegexOptions.IgnoreCase);
 
@@ -57,9 +57,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
 
         public string ResourceOwnerPassword { get; set; }
 
-        public PsApiManagementOAuth2AuthrozationServer() { }
+        public PsApiManagementOAuth2AuthorizationServer() { }
 
-        public PsApiManagementOAuth2AuthrozationServer(string armResourceId)
+        public PsApiManagementOAuth2AuthorizationServer(string armResourceId)
         {
             this.Id = armResourceId;
             var match = AuthorizationServerIdRegex.Match(Id);
