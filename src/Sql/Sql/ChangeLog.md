@@ -22,6 +22,7 @@
 * Add Azure Sql Instance pool usages cmdlets
 * Update Azure Sql Managed instance cmdlets to support instance pools
 * Fixed miscellaneous typos across module
+* Add failover database and elastic pool new cmdlets.
 * Add optional resource group parameter to Get-DatabaseLongTermRetentionBackup and Remove-DatabaseLongTermRetentionBackup cmdlets
 
 ## Version 1.13.1

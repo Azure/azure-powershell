@@ -223,6 +223,42 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failing over Azure Sql Database &apos;{0}&apos; on server &apos;{1}&apos;..
+        /// </summary>
+        internal static string FailoverAzureSqlDatabaseDescription {
+            get {
+                return ResourceManager.GetString("FailoverAzureSqlDatabaseDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to failover the Azure Sql Database &apos;{0}&apos; on server &apos;{1}&apos;?.
+        /// </summary>
+        internal static string FailoverAzureSqlDatabaseWarning {
+            get {
+                return ResourceManager.GetString("FailoverAzureSqlDatabaseWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failing over Azure Sql Elastic Pool &apos;{0}&apos; on server &apos;{1}&apos;..
+        /// </summary>
+        internal static string FailoverAzureSqlElasticPoolDescription {
+            get {
+                return ResourceManager.GetString("FailoverAzureSqlElasticPoolDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to failover the Azure Sql Elastic Pool &apos;{0}&apos; on server &apos;{1}&apos;?.
+        /// </summary>
+        internal static string FailoverAzureSqlElasticPoolWarning {
+            get {
+                return ResourceManager.GetString("FailoverAzureSqlElasticPoolWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Database to be added with id &apos;{0}&apos; already exists in Failover Group with name: &apos;{1}&apos;  in server &apos;{2}&apos;..
         /// </summary>
         internal static string FailoverGroupAddDatabaseAlreadyExists {

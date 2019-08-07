@@ -89,10 +89,10 @@ Gets the advanced threat protection settings for a database.
 ### [Get-AzSqlDatabaseAdvisor](Get-AzSqlDatabaseAdvisor.md)
 Gets one or more Advisors for an Azure SQL Database.
 
-### [Get-AzSqlDatabaseAuditing](Get-AzSqlDatabaseAuditing.md)
+### [Get-AzSqlDatabaseAudit](Get-AzSqlDatabaseAudit.md)
 Gets the auditing settings of an Azure SQL database.
 
-### [Get-AzSqlDatabaseAudit](Get-AzSqlDatabaseAudit.md)
+### [Get-AzSqlDatabaseAuditing](Get-AzSqlDatabaseAuditing.md)
 Gets the auditing settings of an Azure SQL database.
 
 ### [Get-AzSqlDatabaseBackupLongTermRetentionPolicy](Get-AzSqlDatabaseBackupLongTermRetentionPolicy.md)
@@ -119,14 +119,14 @@ Gets a geo-redundant backup of a database.
 ### [Get-AzSqlDatabaseGeoBackupPolicy](Get-AzSqlDatabaseGeoBackupPolicy.md)
 Gets a database geo backup policy.
 
-### [Get-AzSqlDatabaseInstanceFailoverGroup](Get-AzSqlDatabaseInstanceFailoverGroup.md)
-Gets or lists Azure SQL Database Instance Failover Groups.
-
 ### [Get-AzSqlDatabaseImportExportStatus](Get-AzSqlDatabaseImportExportStatus.md)
 Gets the details of an import or export of an Azure SQL Database.
 
 ### [Get-AzSqlDatabaseIndexRecommendation](Get-AzSqlDatabaseIndexRecommendation.md)
 Gets the recommended index operations for a server or database.
+
+### [Get-AzSqlDatabaseInstanceFailoverGroup](Get-AzSqlDatabaseInstanceFailoverGroup.md)
+Gets or lists Instance Failover Groups.
 
 ### [Get-AzSqlDatabaseLongTermRetentionBackup](Get-AzSqlDatabaseLongTermRetentionBackup.md)
 Gets one or more long term retention backups.
@@ -255,10 +255,10 @@ Gets the advanced threat protection settings for a server.
 ### [Get-AzSqlServerAdvisor](Get-AzSqlServerAdvisor.md)
 Gets one or more Advisors for an Azure SQL Server.
 
-### [Get-AzSqlServerAuditing](Get-AzSqlServerAuditing.md)
+### [Get-AzSqlServerAudit](Get-AzSqlServerAudit.md)
 Gets the auditing settings of an Azure SQL server.
 
-### [Get-AzSqlServerAudit](Get-AzSqlServerAudit.md)
+### [Get-AzSqlServerAuditing](Get-AzSqlServerAuditing.md)
 Gets the auditing settings of an Azure SQL server.
 
 ### [Get-AzSqlServerCommunicationLink](Get-AzSqlServerCommunicationLink.md)
@@ -318,6 +318,12 @@ Returns information about the sync schema of a member database or a hub database
 ### [Get-AzSqlVirtualCluster](Get-AzSqlVirtualCluster.md)
 Returns information about Azure SQL Virtual Cluster.
 
+### [Invoke-AzSqlDatabaseFailover](Invoke-AzSqlDatabaseFailover.md)
+Failovers a database.
+
+### [Invoke-AzSqlElasticPoolFailover](Invoke-AzSqlElasticPoolFailover.md)
+Failovers an elastic pool.
+
 ### [New-AzSqlDatabase](New-AzSqlDatabase.md)
 Creates a database or an elastic database.
 
@@ -333,11 +339,11 @@ Exports an Azure SQL Database as a .bacpac file to a storage account.
 ### [New-AzSqlDatabaseFailoverGroup](New-AzSqlDatabaseFailoverGroup.md)
 This command creates a new Azure SQL Database Failover Group.
 
-### [New-AzSqlDatabaseInstanceFailoverGroup](New-AzSqlDatabaseInstanceFailoverGroup.md)
-This command creates a new Azure SQL Database Instance Failover Group.
-
 ### [New-AzSqlDatabaseImport](New-AzSqlDatabaseImport.md)
 Imports a .bacpac file and create a new database on the server.
+
+### [New-AzSqlDatabaseInstanceFailoverGroup](New-AzSqlDatabaseInstanceFailoverGroup.md)
+This command creates a new Azure SQL Database Instance Failover Group.
 
 ### [New-AzSqlDatabaseRestorePoint](New-AzSqlDatabaseRestorePoint.md)
 Creates a new restore point from which a SQL Database can be restored.
@@ -391,7 +397,7 @@ Creates an Azure SQL Database Sync Member.
 Removes an Azure SQL database.
 
 ### [Remove-AzSqlDatabaseAudit](Remove-AzSqlDatabaseAudit.md)
-Removes the audit policy of a SQL Database.
+Removes the auditing settings of an Azure SQL database.
 
 ### [Remove-AzSqlDatabaseDataMaskingRule](Remove-AzSqlDatabaseDataMaskingRule.md)
 Removes a data masking rule from a database.
@@ -399,11 +405,11 @@ Removes a data masking rule from a database.
 ### [Remove-AzSqlDatabaseFailoverGroup](Remove-AzSqlDatabaseFailoverGroup.md)
 Removes an Azure SQL Database Failover Group.
 
-### [Remove-AzSqlDatabaseInstanceFailoverGroup](Remove-AzSqlDatabaseInstanceFailoverGroup.md)
-Removes an Azure SQL Database Instance Failover Group.
-
 ### [Remove-AzSqlDatabaseFromFailoverGroup](Remove-AzSqlDatabaseFromFailoverGroup.md)
 Removes one or more databases from an Azure SQL Database Failover Group.
+
+### [Remove-AzSqlDatabaseInstanceFailoverGroup](Remove-AzSqlDatabaseInstanceFailoverGroup.md)
+Removes an Instance Failover Group.
 
 ### [Remove-AzSqlDatabaseLongTermRetentionBackup](Remove-AzSqlDatabaseLongTermRetentionBackup.md)
 Deletes a long term retention backup.
@@ -442,7 +448,7 @@ Removes an Azure SQL Database server.
 Removes an Azure AD administrator for SQL Server.
 
 ### [Remove-AzSqlServerAudit](Remove-AzSqlServerAudit.md)
-Removes the audit policy of a SQL Server.
+Removes the auditing settings of an Azure SQL server.
 
 ### [Remove-AzSqlServerCommunicationLink](Remove-AzSqlServerCommunicationLink.md)
 Deletes a communication link for elastic database transactions between two servers.
@@ -489,10 +495,10 @@ Sets properties for a database, or moves an existing database into an elastic po
 ### [Set-AzSqlDatabaseAdvisorAutoExecuteStatus](Set-AzSqlDatabaseAdvisorAutoExecuteStatus.md)
 Modifies auto execute status of an Azure SQL Database Advisor.
 
-### [Set-AzSqlDatabaseAuditing](Set-AzSqlDatabaseAuditing.md)
+### [Set-AzSqlDatabaseAudit](Set-AzSqlDatabaseAudit.md)
 Changes the auditing settings for an Azure SQL database.
 
-### [Set-AzSqlDatabaseAudit](Set-AzSqlDatabaseAudit.md)
+### [Set-AzSqlDatabaseAuditing](Set-AzSqlDatabaseAuditing.md)
 Changes the auditing settings for an Azure SQL database.
 
 ### [Set-AzSqlDatabaseBackupLongTermRetentionPolicy](Set-AzSqlDatabaseBackupLongTermRetentionPolicy.md)
@@ -510,11 +516,11 @@ Sets the properties of a data masking rule for a database.
 ### [Set-AzSqlDatabaseFailoverGroup](Set-AzSqlDatabaseFailoverGroup.md)
 Modifies the configuration of an Azure SQL Database Failover Group.
 
-### [Set-AzSqlDatabaseInstanceFailoverGroup](Set-AzSqlDatabaseInstanceFailoverGroup.md)
-Modifies the configuration of an Azure SQL Database Instance Failover Group.
-
 ### [Set-AzSqlDatabaseGeoBackupPolicy](Set-AzSqlDatabaseGeoBackupPolicy.md)
 Sets a database geo backup policy.
+
+### [Set-AzSqlDatabaseInstanceFailoverGroup](Set-AzSqlDatabaseInstanceFailoverGroup.md)
+Modifies the configuration of an Instance Failover Group.
 
 ### [Set-AzSqlDatabaseRecommendedActionState](Set-AzSqlDatabaseRecommendedActionState.md)
 Updates the state of an Azure SQL Database recommended action.
@@ -567,10 +573,10 @@ Provisions an Azure AD administrator for SQL Server.
 ### [Set-AzSqlServerAdvisorAutoExecuteStatus](Set-AzSqlServerAdvisorAutoExecuteStatus.md)
 Updates the auto execute status of an Azure SQL Server Advisor.
 
-### [Set-AzSqlServerAuditing](Set-AzSqlServerAuditing.md)
+### [Set-AzSqlServerAudit](Set-AzSqlServerAudit.md)
 Changes the auditing settings of an Azure SQL server.
 
-### [Set-AzSqlServerAudit](Set-AzSqlServerAudit.md)
+### [Set-AzSqlServerAuditing](Set-AzSqlServerAuditing.md)
 Changes the auditing settings of an Azure SQL server.
 
 ### [Set-AzSqlServerDisasterRecoveryConfiguration](Set-AzSqlServerDisasterRecoveryConfiguration.md)
@@ -622,7 +628,7 @@ Suspends a SQL Data Warehouse database.
 Executes a failover of an Azure SQL Database Failover Group.
 
 ### [Switch-AzSqlDatabaseInstanceFailoverGroup](Switch-AzSqlDatabaseInstanceFailoverGroup.md)
-Executes a failover of an Azure SQL Database Instance Failover Group.
+Executes a failover of an Instance Failover Group.
 
 ### [Update-AzSqlDatabaseAdvancedThreatProtectionSettings](Update-AzSqlDatabaseAdvancedThreatProtectionSettings.md)
 Sets a advanced threat protection settings on a database.
