@@ -233,7 +233,9 @@ CmdletsToExport = 'Get-AzSqlDatabaseTransparentDataEncryption',
                'Remove-AzSqlServerAudit', 'Remove-AzSqlDatabaseAudit',
                'Get-AzSqlInstancePool', 'Set-AzSqlInstancePool',
                'New-AzSqlInstancePool', 'Remove-AzSqlInstancePool',
-               'Get-AzSqlInstancePoolUsage'
+               'Get-AzSqlInstancePoolUsage',
+               'Invoke-AzSqlDatabaseFailover',
+               'Invoke-AzSqlElasticPoolFailover'
 
 # Variables to export from this module
 # VariablesToExport = @()
