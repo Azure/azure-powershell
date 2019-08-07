@@ -349,6 +349,24 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot validate argument on parameter PrefixLength: {0}. Supply an argument that is greater than or equal to 21 and less than or equal to 31 and then try the command again.
+        /// </summary>
+        internal static string InvalidIPv4IPPrefixLength {
+            get {
+                return ResourceManager.GetString("InvalidIPv4IPPrefixLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot validate argument on parameter PrefixLength: {0}. Supply an argument that is greater than or equal to 117 and less than or equal to 127 and then try the command again.
+        /// </summary>
+        internal static string InvalidIPv6IPPrefixLength {
+            get {
+                return ResourceManager.GetString("InvalidIPv6IPPrefixLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to backendAddressPools.
         /// </summary>
         internal static string LoadBalancerBackendAddressPoolName {

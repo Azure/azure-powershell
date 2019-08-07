@@ -140,11 +140,11 @@ namespace Microsoft.Azure.Commands.Network
 
             if (publicIpPrefix.PublicIpAddressVersion == MNM.IPVersion.IPv6 && (this.PrefixLength < 117 || this.PrefixLength > 127))
             {
-                throw new ArgumentException($"Cannot validate argument on parameter 'PrefixLength' {this.PrefixLength}. Supply an argument that is greater than or equal to 117 and less than or equal to 127 and then try the command again");
+                throw new ArgumentException(string.Format(Properties.Resources.InvalidIPv6IPPrefixLength, this.PrefixLength));
             }
             else if (publicIpPrefix.PublicIpAddressVersion == MNM.IPVersion.IPv4 && (this.PrefixLength < 21 || this.PrefixLength > 31))
             {
-                throw new ArgumentException($"Cannot validate argument on parameter 'PrefixLength' {this.PrefixLength}. Supply an argument that is greater than or equal to 21 and less than or equal to 31 and then try the command again");
+                throw new ArgumentException(string.Format(Properties.Resources.InvalidIPv4IPPrefixLength, this.PrefixLength));
             }
 
             publicIpPrefix.Zones = this.Zone?.ToList();
