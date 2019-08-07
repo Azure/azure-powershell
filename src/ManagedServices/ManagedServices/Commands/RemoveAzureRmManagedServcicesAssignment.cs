@@ -26,7 +26,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
         VerbsCommon.Remove,
         Microsoft.Azure.Commands.ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ManagedServicesAssignment",
         DefaultParameterSetName = DefaultParameterSet,
-        SupportsShouldProcess = true), OutputType(typeof(PSRegistrationDefinition))]
+        SupportsShouldProcess = true), OutputType(typeof(void))]
     public class RemoveAzureRmManagedServcicesAssignment : ManagedServicesCmdletBase
     {
         protected const string DefaultParameterSet = "Default";
@@ -83,10 +83,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
                 $"/{scope}/providers/Microsoft.ManagedServices/registrationAssignments/{assignmentId}",
                 () =>
                 {
-                    var result = this.PSManagedServicesClient.RemoveRegistrationAssignment(
+                    this.PSManagedServicesClient.RemoveRegistrationAssignment(
                         scope: scope,
                         registrationAssignmentId: assignmentId);
-                    WriteObject(new PSRegistrationAssignment(result), true);
                 });
         }
     }

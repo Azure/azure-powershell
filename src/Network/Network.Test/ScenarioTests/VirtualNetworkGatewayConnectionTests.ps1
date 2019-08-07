@@ -106,8 +106,8 @@ function Test-VirtualNetworkGatewayConnectionWithBgpCRUD
     
       # Create the Virtual Network
       $subnet = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
-      $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
-      $vnet = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+      $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+      $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
       $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
 
       # Create the publicip
@@ -171,8 +171,8 @@ function Test-VirtualNetworkGatewayConnectionWithIpsecPoliciesCRUD
     
       # Create the Virtual Network
       $subnet = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
-      $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
-      $vnet = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+      $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+      $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
       $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
 
       # Create the publicip
@@ -266,8 +266,8 @@ function Test-VirtualNetworkGatewayConnectionWithActiveActiveGateway
     
         # Create the Virtual Network1
       $subnet1 = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
-      $vnet1 = New-AzvirtualNetwork -Name $vnetName1 -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet1
-      $vnet1 = Get-AzvirtualNetwork -Name $vnetName1 -ResourceGroupName $rgname
+      $vnet1 = New-AzVirtualNetwork -Name $vnetName1 -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet1
+      $vnet1 = Get-AzVirtualNetwork -Name $vnetName1 -ResourceGroupName $rgname
       $subnet1 = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet1
 	  	            
 	  # Create Active-Active feature enabled virtualnetworkgateway1 & Get virtualnetworkgateway1
@@ -282,8 +282,8 @@ function Test-VirtualNetworkGatewayConnectionWithActiveActiveGateway
 
 	  # Create the Virtual Network2
       $subnet2 = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 192.168.200.0/26
-      $vnet2 = New-AzvirtualNetwork -Name $vnetName2 -ResourceGroupName $rgname -Location $location -AddressPrefix 192.168.0.0/16 -Subnet $subnet2
-      $vnet2 = Get-AzvirtualNetwork -Name $vnetName2 -ResourceGroupName $rgname
+      $vnet2 = New-AzVirtualNetwork -Name $vnetName2 -ResourceGroupName $rgname -Location $location -AddressPrefix 192.168.0.0/16 -Subnet $subnet2
+      $vnet2 = Get-AzVirtualNetwork -Name $vnetName2 -ResourceGroupName $rgname
       $subnet2 = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet2
 
       # Create the publicip2
@@ -337,8 +337,8 @@ function Test-VirtualNetworkGatewayConnectionCRUD
     
       # Create the Virtual Network
       $subnet = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
-      $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
-      $vnet = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+      $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+      $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
       $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
 
       # Create the publicip
@@ -364,12 +364,13 @@ function Test-VirtualNetworkGatewayConnectionCRUD
       $localnetGateway.Location = $location
 
       # Create & Get VirtualNetworkGatewayConnection
-      $actual = New-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName -location $location -VirtualNetworkGateway1 $vnetGateway -LocalNetworkGateway2 $localnetGateway -ConnectionType IPsec -RoutingWeight 3 -SharedKey abc
+      $actual = New-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName -location $location -VirtualNetworkGateway1 $vnetGateway -LocalNetworkGateway2 $localnetGateway -ConnectionType IPsec -RoutingWeight 3 -SharedKey abc -ConnectionProtocol IKEv1
       $expected = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName
       Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
       Assert-AreEqual $expected.Name $actual.Name	
       Assert-AreEqual "IPsec" $expected.ConnectionType
       Assert-AreEqual "3" $expected.RoutingWeight
+	  Assert-AreEqual "IKEv1" $expected.ConnectionProtocol
       #Assert-AreEqual "abc" $expected.SharedKey
 
       # List VirtualNetworkGatewayConnections
@@ -435,8 +436,8 @@ function Test-VirtualNetworkGatewayConnectionSharedKeyCRUD
     
       # Create the Virtual Network
       $subnet = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
-      $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
-      $vnet = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+      $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+      $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
       $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
 
       # Create the publicip
@@ -526,8 +527,8 @@ function Test-VirtualNetworkGatewayConnectionVpnDeviceConfigurations
     
       # Create the Virtual Network
       $subnet = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
-      $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
-      $vnet = Get-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+      $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+      $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
       $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
 
       # Create the publicip

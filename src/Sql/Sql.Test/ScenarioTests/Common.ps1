@@ -201,8 +201,8 @@ Creates the basic test environment needed to perform the Sql data security tests
 function Create-BasicManagedTestEnvironmentWithParams ($params, $location)
 {
 	New-AzureRmResourceGroup -Name $params.rgname -Location $location
-	
-	# Setup VNET 
+
+	# Setup VNET
 	$vnetName = "cl_initial"
 	$subnetName = "Cool"
 	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName
@@ -235,7 +235,7 @@ function Create-DataMaskingTestEnvironment ($testSuffix)
     New-AzSqlServer -ResourceGroupName  $params.rgname -ServerName $params.serverName -ServerVersion "12.0" -Location "West Central US" -SqlAdministratorCredentials $credentials
 	New-AzSqlServerFirewallRule -ResourceGroupName  $params.rgname -ServerName $params.serverName -StartIpAddress 0.0.0.0 -EndIpAddress 255.255.255.255 -FirewallRuleName "ddmRule"
 	New-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
-	
+
 	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq "Record")
 	{
 		$fullServerName = $params.serverName + ".database.windows.net"
@@ -358,11 +358,11 @@ function Get-ManagedInstanceForTdeTest ($params)
 	$rg = Create-ResourceGroupForTest
 	$vnetName = "cl_initial"
 	$subnetName = "Cool"
-	
-	# Setup VNET 
+
+	# Setup VNET
 	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location
 	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
-	
+
 	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
 	Set-AzKeyVaultAccessPolicy -VaultName $params.vaultName -ObjectId $managedInstance.Identity.PrincipalId -PermissionsToKeys get, list, wrapKey, unwrapKey
 
@@ -495,7 +495,7 @@ function Get-ProviderLocation($provider)
 			if ($location -eq $null)
 			{
 				return "East US"
-			} 
+			}
             else
 			{
 				return $location.Locations[0]
@@ -539,7 +539,7 @@ function Get-ServerCredential
 	$serverLogin = "testusername"
 	<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
 	$serverPassword = "t357ingP@s5w0rd!"
-	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force)) 
+	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
 	return $credentials
 }
 
@@ -736,6 +736,59 @@ function Create-ManagedInstanceForTest ($resourceGroup, $subnetId)
   			-Vcore $vCore -SkuName $skuName -AssignIdentity
 
 	return $managedInstance
+}
+
+<#
+	.SYNOPSIS
+	Creates a managed instance in an instance pool
+#>
+function Create-ManagedInstanceInInstancePoolForTest ($instancePool)
+{
+    $managedInstanceName = Get-ManagedInstanceName
+    $credentials = Get-ServerCredential
+    $vCore = 2
+    $managedInstance = $instancePool | New-AzSqlInstance -Name $managedInstanceName -VCore $vCore -AdministratorCredential $credentials -StorageSizeInGb 32 -PublicDataEndpointEnabled
+    return $managedInstance
+}
+
+function Remove-ManagedInstancesInInstancePool($instancePool)
+{
+    $instancePool | Get-AzSqlInstance | Remove-AzSqlInstance -Force
+}
+
+
+function Get-InstancePoolTestProperties()
+{
+    $tags = @{ instance="Pools" };
+    $instancePoolTestProperties = @{
+        resourceGroup = "instancePoolCSSdemo"
+        name = "cssinstancepool0"
+        subnetName = "InstancePool"
+        vnetName = "vnet-cssinstancepool0"
+        tags = $tags
+        computeGen = "Gen5"
+        edition = "GeneralPurpose"
+        location = "canadacentral"
+        licenseType = "LicenseIncluded"
+        vCores = 16
+    }
+    return $instancePoolTestProperties
+}
+
+<#
+	.SYNOPSIS
+	Creates an instance pool for Sql instance pool CRUD tests
+#>
+function Create-InstancePoolForTest()
+{
+    $props = Get-InstancePoolTestProperties
+    $virtualNetwork = CreateAndGetVirtualNetworkForManagedInstance $props.vnetName $props.subnetName $props.location $props.resourceGroup
+    $subnetId = $virtualNetwork.Subnets.where({ $_.Name -eq $props.subnetName })[0].Id
+    $instancePool = New-AzSqlInstancePool -ResourceGroupName $props.resourceGroup -Name $props.name `
+                -Location $props.location -SubnetId $subnetId -VCore $props.vCores `
+                -Edition $props.Edition -ComputeGeneration $props.computeGen `
+                -LicenseType $props.licenseType -Tag $props.tags
+    return $instancePool
 }
 
 <#

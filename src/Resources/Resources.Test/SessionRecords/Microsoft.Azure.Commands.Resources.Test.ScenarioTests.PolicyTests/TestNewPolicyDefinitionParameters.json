@@ -1,8 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policydefinitions/someName?api-version=2018-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDA2MTBiMjctOTY2My00YzA1LTg5ZjgtNWI0YmUwMWU4NmE1L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lkZWZpbml0aW9ucy9zb21lTmFtZT9hcGktdmVyc2lvbj0yMDE4LTA1LTAx",
+      "RequestUri": "/subscriptions/e78961ba-36fe-4739-9212-e3031b4c8db7/providers/Microsoft.Authorization/policydefinitions/someName?api-version=2019-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTc4OTYxYmEtMzZmZS00NzM5LTkyMTItZTMwMzFiNGM4ZGI3L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lkZWZpbml0aW9ucy9zb21lTmFtZT9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"name\": \"someName\",\r\n  \"properties\": {\r\n    \"policyRule\": {\r\n      \"someThing\": \"someOtherThing\"\r\n    },\r\n    \"mode\": \"All\"\r\n  }\r\n}",
       "RequestHeaders": {
@@ -31,16 +31,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "westus:09c2371f-b149-40c7-9731-be0314f12565"
+          "westus:8e24e049-c1d2-46d0-b841-2426a73279bd"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "44763d28-1604-411a-b225-f8198e833e10"
+          "c54e36de-808a-490d-8939-f2875e5b7d36"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190615T014934Z:44763d28-1604-411a-b225-f8198e833e10"
+          "WESTUS:20190715T205618Z:c54e36de-808a-490d-8939-f2875e5b7d36"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -49,7 +49,7 @@
           "nosniff"
         ],
         "Date": [
-          "Sat, 15 Jun 2019 01:49:33 GMT"
+          "Mon, 15 Jul 2019 20:56:17 GMT"
         ],
         "Content-Length": [
           "166"
@@ -68,8 +68,8 @@
       "StatusCode": 400
     },
     {
-      "RequestUri": "/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policydefinitions/someName?api-version=2018-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDA2MTBiMjctOTY2My00YzA1LTg5ZjgtNWI0YmUwMWU4NmE1L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lkZWZpbml0aW9ucy9zb21lTmFtZT9hcGktdmVyc2lvbj0yMDE4LTA1LTAx",
+      "RequestUri": "/subscriptions/e78961ba-36fe-4739-9212-e3031b4c8db7/providers/Microsoft.Authorization/policydefinitions/someName?api-version=2019-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTc4OTYxYmEtMzZmZS00NzM5LTkyMTItZTMwMzFiNGM4ZGI3L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lkZWZpbml0aW9ucy9zb21lTmFtZT9hcGktdmVyc2lvbj0yMDE5LTAxLTAx",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"name\": \"someName\",\r\n  \"properties\": {\r\n    \"policyRule\": {\r\n      \"someThing\": \"someOtherThing\"\r\n    },\r\n    \"mode\": \"All\"\r\n  }\r\n}",
       "RequestHeaders": {
@@ -98,16 +98,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "westus:27fc7350-bb02-4568-8d17-5cd8c68006d8"
+          "westus:894d2fb3-a6c6-4169-8c1c-0245c5dd2b64"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1197"
+          "1199"
         ],
         "x-ms-correlation-request-id": [
-          "a89fad85-9873-4de4-ab7c-0d901aeb657d"
+          "17eb9c9b-6c48-428b-9649-70d528d72c0f"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190615T014934Z:a89fad85-9873-4de4-ab7c-0d901aeb657d"
+          "WESTUS:20190715T205619Z:17eb9c9b-6c48-428b-9649-70d528d72c0f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -116,7 +116,7 @@
           "nosniff"
         ],
         "Date": [
-          "Sat, 15 Jun 2019 01:49:34 GMT"
+          "Mon, 15 Jul 2019 20:56:18 GMT"
         ],
         "Content-Length": [
           "166"
@@ -135,8 +135,8 @@
       "StatusCode": 400
     },
     {
-      "RequestUri": "/providers/Microsoft.Management/managementgroups/someManagementGroup/providers/Microsoft.Authorization/policydefinitions/someName?api-version=2018-05-01",
-      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9tYW5hZ2VtZW50Z3JvdXBzL3NvbWVNYW5hZ2VtZW50R3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRob3JpemF0aW9uL3BvbGljeWRlZmluaXRpb25zL3NvbWVOYW1lP2FwaS12ZXJzaW9uPTIwMTgtMDUtMDE=",
+      "RequestUri": "/providers/Microsoft.Management/managementgroups/someManagementGroup/providers/Microsoft.Authorization/policydefinitions/someName?api-version=2019-01-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9tYW5hZ2VtZW50Z3JvdXBzL3NvbWVNYW5hZ2VtZW50R3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRob3JpemF0aW9uL3BvbGljeWRlZmluaXRpb25zL3NvbWVOYW1lP2FwaS12ZXJzaW9uPTIwMTktMDEtMDE=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"name\": \"someName\",\r\n  \"properties\": {\r\n    \"policyRule\": {\r\n      \"someThing\": \"someOtherThing\"\r\n    },\r\n    \"mode\": \"All\"\r\n  }\r\n}",
       "RequestHeaders": {
@@ -168,13 +168,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "547036b6-718f-4484-b2f6-0787d7950082"
+          "2c912c7c-fa3e-4e26-b3d0-e3dd3702f45f"
         ],
         "x-ms-correlation-request-id": [
-          "547036b6-718f-4484-b2f6-0787d7950082"
+          "2c912c7c-fa3e-4e26-b3d0-e3dd3702f45f"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190615T014934Z:547036b6-718f-4484-b2f6-0787d7950082"
+          "WESTUS:20190715T205618Z:2c912c7c-fa3e-4e26-b3d0-e3dd3702f45f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -183,7 +183,7 @@
           "nosniff"
         ],
         "Date": [
-          "Sat, 15 Jun 2019 01:49:34 GMT"
+          "Mon, 15 Jul 2019 20:56:17 GMT"
         ],
         "Connection": [
           "close"
@@ -201,12 +201,12 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"AuthorizationFailed\",\r\n    \"message\": \"The client '094435f3-a5d5-4c38-abfb-238662bec758' with object id '094435f3-a5d5-4c38-abfb-238662bec758' does not have authorization to perform action 'Microsoft.Authorization/policydefinitions/write' over scope '/providers/Microsoft.Management/managementgroups/someManagementGroup/providers/Microsoft.Authorization/policydefinitions/someName'.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"AuthorizationFailed\",\r\n    \"message\": \"The client '5549abd9-7aae-41fa-a276-5060abe448d5' with object id '5549abd9-7aae-41fa-a276-5060abe448d5' does not have authorization to perform action 'Microsoft.Authorization/policydefinitions/write' over scope '/providers/Microsoft.Management/managementgroups/someManagementGroup/providers/Microsoft.Authorization/policydefinitions/someName'.\"\r\n  }\r\n}",
       "StatusCode": 403
     }
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "d0610b27-9663-4c05-89f8-5b4be01e86a5"
+    "SubscriptionId": "e78961ba-36fe-4739-9212-e3031b4c8db7"
   }
 }

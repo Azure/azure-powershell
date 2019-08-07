@@ -291,7 +291,7 @@ Accept wildcard characters: False
 ```
 
 ### -Protocol
-Specfies the protocol that is matched by a load balancer rule.
+Specifies the protocol that is matched by a load balancer rule.
 The acceptable values for this parameter are: Tcp or Udp.
 
 ```yaml

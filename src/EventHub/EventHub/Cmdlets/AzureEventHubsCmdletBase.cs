@@ -103,6 +103,8 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         protected const string AliasEventHubObj = "EventHubObj";
         protected const string AliasAuthorizationRuleName = "AuthorizationRuleName";
         protected const string AliasAuthRuleObj = "AuthRuleObj";
+        protected const string AliasResourceId = "ResourceId";
+        protected const string AliasVirtualNetworkRule = "VirtualNteworkRule";
 
         protected struct SKU
         {
