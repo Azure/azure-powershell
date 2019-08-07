@@ -977,12 +977,22 @@ directive:
       parameter-name: MinimumScaleUnit
       alias: MinScaleUnits
   - where:
+      model-name: ExpressRouteGateway
+      property-name: BoundMin
+    set:
+      property-name: MinimumScaleUnit
+  - where:
       verb: ^Set$|^New$
       subject: ExpressRouteGateway
       parameter-name: BoundMax
     set:
       parameter-name: MaximumScaleUnit
       alias: MaxScaleUnits
+  - where:
+      model-name: ExpressRouteGateway
+      property-name: BoundMax
+    set:
+      property-name: MaximumScaleUnit
   - where: # REMOVE BEFORE RELEASE: In-memory object parameter
       verb: Set
       subject: Firewall
@@ -1169,6 +1179,11 @@ directive:
     set:
       parameter-name: AddressPrefix
   - where:
+      model-name: LocalNetworkGateway
+      property-name: LocalNetworkAddressSpaceAddressPrefix
+    set:
+      property-name: AddressPrefix
+  - where:
       verb: ^New$|^Set$
       subject: ^LocalNetworkGateway$|^VnetGateway$|^VpnSite$
       parameter-name: ^BgpSettingAsn$|^BgpPropertyAsn$
@@ -1176,11 +1191,21 @@ directive:
       parameter-name: BgpAsn
       alias: Asn
   - where:
+      model-name: ^LocalNetworkGateway$|^VirtualNetworkGateway$|^VpnSite$
+      property-name: ^BgpSettingAsn$|^BgpPropertyAsn$
+    set:
+      property-name: BgpAsn
+  - where:
       verb: ^New$|^Set$
       subject: ^LocalNetworkGateway$|^VnetGateway$|^VpnSite$
       parameter-name: ^BgpSettingBgpPeeringAddress$|^BgpPropertyBgpPeeringAddress$
     set:
       parameter-name: BgpPeeringAddress
+  - where:
+      model-name: ^LocalNetworkGateway$|^VirtualNetworkGateway$|^VpnSite$
+      property-name: ^BgpSettingBgpPeeringAddress$|^BgpPropertyBgpPeeringAddress$
+    set:
+      property-name: BgpPeeringAddress
   - where:
       verb: ^New$|^Set$
       subject: ^LocalNetworkGateway$|^VnetGateway$|^VpnSite$
@@ -1190,6 +1215,11 @@ directive:
       alias:
         - PeerWeight
         - BgpPeeringWeight
+  - where:
+      model-name: ^LocalNetworkGateway$|^VirtualNetworkGateway$|^VpnSite$
+      property-name: ^BgpSettingPeerWeight$|^BgpPropertyPeerWeight$
+    set:
+      property-name: BgpPeerWeight
   - where: # REMOVE BEFORE RELEASE: This is used instead of an in-memory object
       verb: New
       subject: NetworkInterface
@@ -1221,23 +1251,35 @@ directive:
     set:
       alias: NetworkSecurityGroup
   - where:
-      verb: New
       subject: NetworkInterface
-      parameter-name: NetworkSecurityGroupPropertiesProvisioningState
+      parameter-name: ^NetworkSecurityGroupProperties(.*)$
     set:
-      parameter-name: NetworkSecurityGroupProvisioningState
+      parameter-name: NetworkSecurityGroup$1
   - where:
-      verb: New
-      subject: NetworkInterface
-      parameter-name: NetworkSecurityGroupPropertiesResourceGuid
+      model-name: NetworkInterface
+      property-name: ^NetworkSecurityGroupProperties(.+)$
     set:
-      parameter-name: NetworkSecurityGroupResourceGuid
+      property-name: NetworkSecurityGroup$1
   - where:
-      verb: New
+      model-name: NetworkInterface
+      property-name: PropertiesNetworkSecurityGroupPropertiesNetworkInterfaces
+    set:
+      property-name: NetworkSecurityGroupAdditionalNetworkInterface
+  - where:
+      model-name: NetworkInterface
+      property-name: PropertiesNetworkSecurityGroupPropertiesSubnets
+    set:
+      property-name: NetworkSecurityGroupSubnet
+  - where:
       subject: NetworkInterface
-      parameter-name: ^DnsSetting(.*)
+      parameter-name: ^DnsSetting(.*)$
     set:
       parameter-name: $1
+  - where:
+      model-name: NetworkInterface
+      property-name: ^DnsSetting(.+)$
+    set:
+      property-name: $1
 
 # Network Security Group
   - where:
@@ -1256,6 +1298,15 @@ directive:
       parameter-name: (.*)NetworkSecurityGroup(.*)
     set:
       parameter-name: $1Nsg$2
+  - where:
+      property-name: (.*)NetworkSecurityGroup(.*)
+    set:
+      property-name: $1Nsg$2
+  - where:
+      model-name: NetworkConfigurationDiagnosticResult
+      property-name: NetworkSecurityGroupResultEvaluatedNsg
+    set:
+      property-name: NsgResultEvaluatedNsg
 
 # Other Fixes
   - where:
@@ -2289,14 +2340,14 @@ directive:
       parameter-name: Name
   - where:
       subject: NetworkInterface
-      parameter-name: ^DnsSetting(.*)$
-    set:
-      parameter-name: Dns$1
-  - where:
-      subject: NetworkInterface
       parameter-name: ^NsgProperties(.*)$
     set:
       parameter-name: Nsg$1
+  - where:
+      model-name: NetworkInterface
+      property-name: ^NsgProperties(.+)$
+    set:
+      property-name: Nsg$1
   - where:
       subject: NetworkInterfaceIPConfiguration
       parameter-name: IPConfigurationName
@@ -2725,6 +2776,11 @@ directive:
       parameter-name: DevicePropertyLinkSpeedInMbps
     set:
       parameter-name: LinkSpeedInMbps
+  - where:
+      model-name: NetworkInterface
+      property-name: ^InterfaceEndpointProperties(.+)$
+    set:
+      property-name: InterfaceEndpoint$1
 
 ## Formatting
   - where:
@@ -2742,10 +2798,10 @@ directive:
           - OperationalState
           - ProvisioningState
         labels:
-          ResourceGuid: Guid
-          SkuName: Sku Name
+          ResourceGuid: GUID
+          SkuName: SKU Name
           SslPolicyName: Policy Name
-          EnableHttp2: Http2 Enabled
+          EnableHttp2: HTTP2 Enabled
           EnableFips: FIPS Enabled
           OperationalState: Operational State
           ProvisioningState: Provisioning State
@@ -2759,7 +2815,7 @@ directive:
           - Location
           - ProvisioningState
         labels:
-          ResourceGuid: Guid
+          ResourceGuid: GUID
           ProvisioningState: Provisioning State
   - where:
       model-name: AzureFirewall
@@ -2793,6 +2849,125 @@ directive:
           ServiceProviderProvisioningState: Service Provider Provisioning State
           ServiceProviderNote: Notes
           ProvisioningState: Provisioning State
-          SkuName: Sku Name
+          SkuName: SKU Name
           ServiceProviderName: Service Provider Name
+  - where:
+      model-name: ExpressRouteCrossConnection
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - PrimaryAzurePort
+          - SecondaryAzurePort
+          - STag
+          - PeeringLocation
+          - BandwidthInMbps
+          - ServiceProviderProvisioningState
+          - ServiceProviderNote
+          - ProvisioningState
+        labels:
+          PrimaryAzurePort: Primary Port
+          SecondaryAzurePort: Secondary Port
+          PeeringLocation: Peering Location
+          BandwidthInMbps: Bandwidth [Mbps]
+          ServiceProviderProvisioningState: Service Provider Provisioning State
+          ServiceProviderNote: Notes
+          ProvisioningState: Provisioning State
+  - where:
+      model-name: ExpressRouteGateway
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - MinimumScaleUnit
+          - MaximumScaleUnit
+          - ProvisioningState
+        labels:
+          MinimumScaleUnit: Min Scale Unit
+          MaximumScaleUnit: Max Scale Unit
+          ProvisioningState: Provisioning State
+  - where:
+      model-name: ExpressRoutePort
+    set:
+      format-table:
+        properties:
+          - ResourceGuid
+          - Name
+          - Location
+          - PeeringLocation
+          - EtherType
+          - Mtu
+          - BandwidthInGbps
+          - ProvisionedBandwidthInGbps
+          - ProvisioningState
+        labels:
+          ResourceGuid: GUID
+          PeeringLocation: Peering Location
+          EtherType: Ether Type
+          Mtu: MTU
+          BandwidthInGbps: Bandwidth [Gbps]
+          ProvisionedBandwidthInGbps: Provisioned Bandwidth [Gbps]
+          ProvisioningState: Provisioning State
+  - where:
+      model-name: InterfaceEndpoint
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - Fqdn
+          - Owner
+          - ProvisioningState
+        labels:
+          Fqdn: Domain Name
+          ProvisioningState: Provisioning State
+  - where:
+      model-name: ^LoadBalancer$|^NatGateway$
+    set:
+      format-table:
+        properties:
+          - ResourceGuid
+          - Name
+          - Location
+          - SkuName
+          - ProvisioningState
+        labels:
+          ResourceGuid: GUID
+          SkuName: SKU Name
+          ProvisioningState: Provisioning State
+  - where:
+      model-name: LocalNetworkGateway
+    set:
+      format-table:
+        properties:
+          - ResourceGuid
+          - Name
+          - Location
+          - GatewayIPAddress
+          - ProvisioningState
+        labels:
+          ResourceGuid: GUID
+          GatewayIPAddress: Gateway IP Address
+          ProvisioningState: Provisioning State
+  - where:
+      model-name: NetworkInterface
+    set:
+      format-table:
+        properties:
+          - ResourceGuid
+          - Name
+          - Location
+          - MacAddress
+          - Primary
+          - EnableAcceleratedNetworking
+          - EnableIPForwarding
+          - ProvisioningState
+        labels:
+          ResourceGuid: GUID
+          MacAddress: MAC Address
+          EnableAcceleratedNetworking: Enable Accelerated Networking
+          EnableIPForwarding: Enable IP Forwarding
+          ProvisioningState: Provisioning State
 ```

@@ -623,11 +623,6 @@
   - TapConfiguration `INetworkInterfaceTapConfiguration[]`
   - VMId `String`
   - NetworkInterface `INetworkInterface`
-  - DnsAppliedDnsServer `String[]`
-  - DnsDnsServer `String[]`
-  - DnsInternalDnsNameLabel `String`
-  - DnsInternalDomainNameSuffix `String`
-  - DnsInternalFqdn `String`
 
 ### AzNetworkInterfaceEffectiveNsg [Get] `IEffectiveNetworkSecurityGroupListResult`
   - NetworkInterfaceName `String`

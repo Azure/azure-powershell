@@ -1195,7 +1195,7 @@
 ### EffectiveNetworkSecurityGroup [Api20171001]
   - EffectiveSecurityRule `IEffectiveNetworkSecurityRule[]`
   - NetworkInterfaceId `String`
-  - NetworkSecurityGroupId `String`
+  - NsgId `String`
   - SubnetId `String`
   - TagMap `String`
 
@@ -1270,7 +1270,7 @@
   - AppliedTo `String`
   - MatchedRuleAction `String`
   - MatchedRuleName `String`
-  - NetworkSecurityGroupId `String`
+  - NsgId `String`
   - RulesEvaluationResult `INetworkSecurityRulesEvaluationResult[]`
 
 ### ExpressRouteCircuit [Api20171001, Api20190201]
@@ -1692,12 +1692,12 @@
   - Value `IExpressRouteCrossConnectionRoutesTableSummary[]`
 
 ### ExpressRouteGateway [Api20190201]
-  - BoundMax `Int32?`
-  - BoundMin `Int32?`
   - Etag `String`
   - ExpressRouteConnection `IExpressRouteConnection[]`
   - Id `String`
   - Location `String`
+  - MaximumScaleUnit `Int32?`
+  - MinimumScaleUnit `Int32?`
   - Name `String`
   - ProvisioningState `ProvisioningState?`
   - Tag `IResourceTags`
@@ -2233,13 +2233,13 @@
   - ProvisioningState `String`
 
 ### LocalNetworkGateway [Api20171001]
-  - BgpSettingAsn `Int64?`
-  - BgpSettingBgpPeeringAddress `String`
-  - BgpSettingPeerWeight `Int32?`
+  - AddressPrefix `String[]`
+  - BgpAsn `Int64?`
+  - BgpPeeringAddress `String`
+  - BgpPeerWeight `Int32?`
   - Etag `String`
   - GatewayIPAddress `String`
   - Id `String`
-  - LocalNetworkAddressSpaceAddressPrefix `String[]`
   - Location `String`
   - Name `String`
   - ProvisioningState `String`
@@ -2351,8 +2351,8 @@
   - Result `INetworkConfigurationDiagnosticResult[]`
 
 ### NetworkConfigurationDiagnosticResult [Api20190201]
-  - NetworkSecurityGroupResultEvaluatedNetworkSecurityGroup `IEvaluatedNetworkSecurityGroup[]`
-  - NetworkSecurityGroupResultSecurityRuleAccessResult `SecurityRuleAccess?`
+  - NetworkSecurityGroupResultEvaluatedNsg `IEvaluatedNetworkSecurityGroup[]`
+  - NsgResultSecurityRuleAccessResult `SecurityRuleAccess?`
   - ProfileDestination `String`
   - ProfileDestinationPort `String`
   - ProfileDirection `Direction`
@@ -2390,8 +2390,8 @@
   - NatGatewayName `String`
   - NetworkInterfaceName `String`
   - NetworkProfileName `String`
-  - NetworkSecurityGroupName `String`
   - NetworkWatcherName `String`
+  - NsgName `String`
   - OutboundRuleName `String`
   - P2SVpnServerConfigurationName `String`
   - PacketCaptureName `String`
@@ -2443,12 +2443,9 @@
   - SourceNetworkIntentPolicyType `String`
 
 ### NetworkInterface [Api20171001, Api20190201]
+  - AppliedDnsServer `String[]`
   - DefaultSecurityRule `ISecurityRule[]`
-  - DnsSettingAppliedDnsServer `String[]`
-  - DnsSettingDnsServer `String[]`
-  - DnsSettingInternalDnsNameLabel `String`
-  - DnsSettingInternalDomainNameSuffix `String`
-  - DnsSettingInternalFqdn `String`
+  - DnsServer `String[]`
   - EnableAcceleratedNetworking `Boolean?`
   - EnableIPForwarding `Boolean?`
   - EndpointServiceId `String`
@@ -2460,27 +2457,30 @@
   - InterfaceEndpointId `String`
   - InterfaceEndpointLocation `String`
   - InterfaceEndpointName `String`
-  - InterfaceEndpointPropertiesNetworkInterface `INetworkInterface[]`
-  - InterfaceEndpointPropertiesProvisioningState `String`
+  - InterfaceEndpointNetworkInterface `INetworkInterface[]`
+  - InterfaceEndpointProvisioningState `String`
   - InterfaceEndpointTag `IResourceTags`
   - InterfaceEndpointType `String`
+  - InternalDnsNameLabel `String`
+  - InternalDomainNameSuffix `String`
+  - InternalFqdn `String`
   - IPConfiguration `INetworkInterfaceIPConfiguration[]`
   - Location `String`
   - MacAddress `String`
   - Name `String`
-  - NetworkSecurityGroupEtag `String`
-  - NetworkSecurityGroupId `String`
-  - NetworkSecurityGroupLocation `String`
-  - NetworkSecurityGroupName `String`
-  - NetworkSecurityGroupPropertiesNetworkInterface `INetworkInterface[]`
-  - NetworkSecurityGroupPropertiesProvisioningState `String`
-  - NetworkSecurityGroupPropertiesResourceGuid `String`
-  - NetworkSecurityGroupTag `IResourceTags`
-  - NetworkSecurityGroupType `String`
+  - NsgAdditionalNetworkInterface `INetworkInterface[]`
+  - NsgEtag `String`
+  - NsgId `String`
+  - NsgLocation `String`
+  - NsgName `String`
+  - NsgNetworkInterface `INetworkInterface[]`
+  - NsgProvisioningState `String`
+  - NsgResourceGuid `String`
+  - NsgSubnet `ISubnet[]`
+  - NsgTag `IResourceTags`
+  - NsgType `String`
   - Owner `String`
   - Primary `Boolean?`
-  - PropertiesNetworkSecurityGroupPropertiesNetworkInterfaces `INetworkInterface[]`
-  - PropertiesNetworkSecurityGroupPropertiesSubnets `ISubnet[]`
   - ProvisioningState `String`
   - ResourceGuid `String`
   - SecurityRule `ISecurityRule[]`
@@ -2567,16 +2567,16 @@
   - IPConfiguration `INetworkInterfaceIPConfiguration[]`
   - MacAddress `String`
   - NetworkInterface `INetworkInterface[]`
-  - NetworkSecurityGroupEtag `String`
-  - NetworkSecurityGroupId `String`
-  - NetworkSecurityGroupLocation `String`
-  - NetworkSecurityGroupName `String`
-  - NetworkSecurityGroupPropertiesNetworkInterface `INetworkInterface[]`
-  - NetworkSecurityGroupPropertiesProvisioningState `String`
-  - NetworkSecurityGroupPropertiesResourceGuid `String`
-  - NetworkSecurityGroupPropertiesSubnets `ISubnet[]`
-  - NetworkSecurityGroupTag `IResourceTags`
-  - NetworkSecurityGroupType `String`
+  - NsgEtag `String`
+  - NsgId `String`
+  - NsgLocation `String`
+  - NsgName `String`
+  - NsgPropertiesNetworkInterface `INetworkInterface[]`
+  - NsgPropertiesProvisioningState `String`
+  - NsgPropertiesResourceGuid `String`
+  - NsgPropertiesSubnets `ISubnet[]`
+  - NsgTag `IResourceTags`
+  - NsgType `String`
   - Owner `String`
   - Primary `Boolean?`
   - ProvisioningState `String`
@@ -2651,7 +2651,7 @@
   - Subnet `ISubnet[]`
 
 ### NetworkSecurityGroupResult [Api20190201]
-  - EvaluatedNetworkSecurityGroup `IEvaluatedNetworkSecurityGroup[]`
+  - EvaluatedNsg `IEvaluatedNetworkSecurityGroup[]`
   - SecurityRuleAccessResult `SecurityRuleAccess?`
 
 ### NetworkSecurityRulesEvaluationResult [Api20190201]
@@ -3385,14 +3385,14 @@
   - Name `String`
   - NatGatewayId `String`
   - NetworkInterface `INetworkInterface[]`
-  - NetworkSecurityGroupEtag `String`
-  - NetworkSecurityGroupId `String`
-  - NetworkSecurityGroupLocation `String`
-  - NetworkSecurityGroupName `String`
-  - NetworkSecurityGroupPropertiesProvisioningState `String`
-  - NetworkSecurityGroupPropertiesSubnet `ISubnet[]`
-  - NetworkSecurityGroupTag `IResourceTags`
-  - NetworkSecurityGroupType `String`
+  - NsgEtag `String`
+  - NsgId `String`
+  - NsgLocation `String`
+  - NsgName `String`
+  - NsgPropertiesProvisioningState `String`
+  - NsgPropertiesSubnet `ISubnet[]`
+  - NsgTag `IResourceTags`
+  - NsgType `String`
   - PropertiesAddressPrefixes `String[]`
   - ProvisioningState `String`
   - Purpose `String`
@@ -3431,14 +3431,14 @@
   - IPConfigurationProfile `IIPConfigurationProfile[]`
   - NatGatewayId `String`
   - NetworkInterface `INetworkInterface[]`
-  - NetworkSecurityGroupEtag `String`
-  - NetworkSecurityGroupId `String`
-  - NetworkSecurityGroupLocation `String`
-  - NetworkSecurityGroupName `String`
-  - NetworkSecurityGroupPropertiesProvisioningState `String`
-  - NetworkSecurityGroupPropertiesSubnet `ISubnet[]`
-  - NetworkSecurityGroupTag `IResourceTags`
-  - NetworkSecurityGroupType `String`
+  - NsgEtag `String`
+  - NsgId `String`
+  - NsgLocation `String`
+  - NsgName `String`
+  - NsgPropertiesProvisioningState `String`
+  - NsgPropertiesSubnet `ISubnet[]`
+  - NsgTag `IResourceTags`
+  - NsgType `String`
   - ProvisioningState `String`
   - Purpose `String`
   - ResourceGuid `String`
@@ -3625,9 +3625,9 @@
 
 ### VirtualNetworkGateway [Api20171001, Api20190201]
   - Active `Boolean?`
-  - BgpSettingAsn `Int64?`
-  - BgpSettingBgpPeeringAddress `String`
-  - BgpSettingPeerWeight `Int32?`
+  - BgpAsn `Int64?`
+  - BgpPeeringAddress `String`
+  - BgpPeerWeight `Int32?`
   - CustomRouteAddressPrefix `String[]`
   - EnableBgp `Boolean?`
   - Etag `String`
@@ -4125,9 +4125,9 @@
 
 ### VpnSite [Api20190201]
   - AddressSpaceAddressPrefix `String[]`
-  - BgpPropertyAsn `Int64?`
-  - BgpPropertyBgpPeeringAddress `String`
-  - BgpPropertyPeerWeight `Int32?`
+  - BgpAsn `Int64?`
+  - BgpPeeringAddress `String`
+  - BgpPeerWeight `Int32?`
   - DevicePropertyDeviceModel `String`
   - DevicePropertyDeviceVendor `String`
   - DevicePropertyLinkSpeedInMbps `Int32?`

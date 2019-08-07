@@ -786,11 +786,11 @@ To create the parameters described below, construct a hash table containing the 
         - `[DisableBgpRoutePropagation <Boolean?>]`: Gets or sets whether to disable the routes learned by BGP on that route table. True means disable.
         - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
         - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-        - `[NetworkSecurityGroupEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
-        - `[NetworkSecurityGroupId <String>]`: Resource ID.
-        - `[NetworkSecurityGroupLocation <String>]`: Resource location.
-        - `[NetworkSecurityGroupPropertiesProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-        - `[NetworkSecurityGroupTag <IResourceTags>]`: Resource tags.
+        - `[NsgEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
+        - `[NsgId <String>]`: Resource ID.
+        - `[NsgLocation <String>]`: Resource location.
+        - `[NsgPropertiesProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+        - `[NsgTag <IResourceTags>]`: Resource tags.
         - `[ProvisioningState <String>]`: The provisioning state of the resource.
         - `[ResourceGuid <String>]`: The resource GUID property of the network security group resource.
         - `[ResourceNavigationLink <IResourceNavigationLink[]>]`: Gets an array of references to the external resources using subnet.
@@ -833,6 +833,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
+  - `[AppliedDnsServer <String[]>]`: If the VM that uses this NIC is part of an Availability Set, then this list will have the union of all DNS servers from all NICs that are part of the Availability Set. This property is what is configured on each of those VMs.
   - `[DefaultSecurityRule <ISecurityRule[]>]`: The default security rules of network security group.
     - `Access <SecurityRuleAccess>`: The network traffic is allowed or denied. Possible values are: 'Allow' and 'Deny'.
     - `Direction <SecurityRuleDirection>`: The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic. Possible values are: 'Inbound' and 'Outbound'.
@@ -856,11 +857,7 @@ To create the parameters described below, construct a hash table containing the 
     - `[SourceAddressPrefix <String>]`: The CIDR or source IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used. If this is an ingress rule, specifies where network traffic originates from. 
     - `[SourceApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: The application security group specified as source.
     - `[SourcePortRange <String>]`: The source port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
-  - `[DnsSettingAppliedDnsServer <String[]>]`: If the VM that uses this NIC is part of an Availability Set, then this list will have the union of all DNS servers from all NICs that are part of the Availability Set. This property is what is configured on each of those VMs.
-  - `[DnsSettingDnsServer <String[]>]`: List of DNS servers IP addresses. Use 'AzureProvidedDNS' to switch to azure provided DNS resolution. 'AzureProvidedDNS' value cannot be combined with other IPs, it must be the only value in dnsServers collection.
-  - `[DnsSettingInternalDnsNameLabel <String>]`: Relative DNS name for this NIC used for internal communications between VMs in the same virtual network.
-  - `[DnsSettingInternalDomainNameSuffix <String>]`: Even if internalDnsNameLabel is not specified, a DNS entry is created for the primary NIC of the VM. This DNS name can be constructed by concatenating the VM name with the value of internalDomainNameSuffix.
-  - `[DnsSettingInternalFqdn <String>]`: Fully qualified DNS name supporting internal communications between VMs in the same virtual network.
+  - `[DnsServer <String[]>]`: List of DNS servers IP addresses. Use 'AzureProvidedDNS' to switch to azure provided DNS resolution. 'AzureProvidedDNS' value cannot be combined with other IPs, it must be the only value in dnsServers collection.
   - `[EnableAcceleratedNetworking <Boolean?>]`: If the network interface is accelerated networking enabled.
   - `[EnableIPForwarding <Boolean?>]`: Indicates whether IP forwarding is enabled on this network interface.
   - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
@@ -935,11 +932,11 @@ To create the parameters described below, construct a hash table containing the 
           - `[DisableBgpRoutePropagation <Boolean?>]`: Gets or sets whether to disable the routes learned by BGP on that route table. True means disable.
           - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
           - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-          - `[NetworkSecurityGroupEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
-          - `[NetworkSecurityGroupId <String>]`: Resource ID.
-          - `[NetworkSecurityGroupLocation <String>]`: Resource location.
-          - `[NetworkSecurityGroupPropertiesProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-          - `[NetworkSecurityGroupTag <IResourceTags>]`: Resource tags.
+          - `[NsgEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
+          - `[NsgId <String>]`: Resource ID.
+          - `[NsgLocation <String>]`: Resource location.
+          - `[NsgPropertiesProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+          - `[NsgTag <IResourceTags>]`: Resource tags.
           - `[ProvisioningState <String>]`: The provisioning state of the resource.
           - `[ResourceGuid <String>]`: The resource GUID property of the network security group resource.
           - `[ResourceNavigationLink <IResourceNavigationLink[]>]`: Gets an array of references to the external resources using subnet.
@@ -976,13 +973,16 @@ To create the parameters described below, construct a hash table containing the 
     - `[ProvisioningState <String>]`: The provisioning state of the network interface IP configuration. Possible values are: 'Updating', 'Deleting', and 'Failed'.
     - `[PublicIPAddress <IPublicIPAddress>]`: Public IP address bound to the IP configuration.
     - `[Subnet <ISubnet>]`: Subnet bound to the IP configuration.
+  - `[InternalDnsNameLabel <String>]`: Relative DNS name for this NIC used for internal communications between VMs in the same virtual network.
+  - `[InternalDomainNameSuffix <String>]`: Even if internalDnsNameLabel is not specified, a DNS entry is created for the primary NIC of the VM. This DNS name can be constructed by concatenating the VM name with the value of internalDomainNameSuffix.
+  - `[InternalFqdn <String>]`: Fully qualified DNS name supporting internal communications between VMs in the same virtual network.
   - `[MacAddress <String>]`: The MAC address of the network interface.
-  - `[NetworkSecurityGroupEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
-  - `[NetworkSecurityGroupId <String>]`: Resource ID.
-  - `[NetworkSecurityGroupLocation <String>]`: Resource location.
-  - `[NetworkSecurityGroupPropertiesProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-  - `[NetworkSecurityGroupPropertiesResourceGuid <String>]`: The resource GUID property of the network security group resource.
-  - `[NetworkSecurityGroupTag <IResourceTags>]`: Resource tags.
+  - `[NsgEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
+  - `[NsgId <String>]`: Resource ID.
+  - `[NsgLocation <String>]`: Resource location.
+  - `[NsgProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+  - `[NsgResourceGuid <String>]`: The resource GUID property of the network security group resource.
+  - `[NsgTag <IResourceTags>]`: Resource tags.
   - `[Primary <Boolean?>]`: Gets whether this is a primary network interface on a virtual machine.
   - `[ProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
   - `[ResourceGuid <String>]`: The resource GUID property of the network interface resource.

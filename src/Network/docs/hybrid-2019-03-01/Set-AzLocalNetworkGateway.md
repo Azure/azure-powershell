@@ -382,12 +382,12 @@ To create the parameters described below, construct a hash table containing the 
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[BgpSettingAsn <Int64?>]`: The BGP speaker's ASN.
-  - `[BgpSettingBgpPeeringAddress <String>]`: The BGP peering address and BGP identifier of this BGP speaker.
-  - `[BgpSettingPeerWeight <Int32?>]`: The weight added to routes learned from this BGP speaker.
+  - `[AddressPrefix <String[]>]`: A list of address blocks reserved for this virtual network in CIDR notation.
+  - `[BgpAsn <Int64?>]`: The BGP speaker's ASN.
+  - `[BgpPeerWeight <Int32?>]`: The weight added to routes learned from this BGP speaker.
+  - `[BgpPeeringAddress <String>]`: The BGP peering address and BGP identifier of this BGP speaker.
   - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
   - `[GatewayIPAddress <String>]`: IP address of local network gateway.
-  - `[LocalNetworkAddressSpaceAddressPrefix <String[]>]`: A list of address blocks reserved for this virtual network in CIDR notation.
   - `[ResourceGuid <String>]`: The resource GUID property of the LocalNetworkGateway resource.
 
 ## RELATED LINKS

@@ -15,17 +15,16 @@ Creates or updates a network interface.
 ### UpdateExpanded (Default)
 ```
 Set-AzNetworkInterface -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-DefaultSecurityRule <ISecurityRule[]>] [-DnsAppliedDnsServer <String[]>] [-DnsDnsServer <String[]>]
- [-DnsInternalDnsNameLabel <String>] [-DnsInternalDomainNameSuffix <String>] [-DnsInternalFqdn <String>]
+ [-AppliedDnsServer <String[]>] [-DefaultSecurityRule <ISecurityRule[]>] [-DnsServer <String[]>]
  [-EnableAcceleratedNetworking] [-EnableIPForwarding] [-EndpointServiceId <String>] [-Etag <String>]
  [-Fqdn <String>] [-IPConfiguration <INetworkInterfaceIPConfiguration[]>] [-Id <String>]
  [-InterfaceEndpointEtag <String>] [-InterfaceEndpointId <String>] [-InterfaceEndpointLocation <String>]
- [-InterfaceEndpointTag <Hashtable>] [-Location <String>] [-MacAddress <String>] [-NsgEtag <String>]
- [-NsgId <String>] [-NsgLocation <String>] [-NsgProvisioningState <String>] [-NsgResourceGuid <String>]
- [-NsgTag <Hashtable>] [-Primary] [-ProvisioningState <String>] [-ResourceGuid <String>]
- [-SecurityRule <ISecurityRule[]>] [-Subnet <ISubnet>] [-Tag <Hashtable>]
- [-TapConfiguration <INetworkInterfaceTapConfiguration[]>] [-VMId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-InterfaceEndpointTag <Hashtable>] [-InternalDnsNameLabel <String>] [-InternalDomainNameSuffix <String>]
+ [-InternalFqdn <String>] [-Location <String>] [-MacAddress <String>] [-NsgEtag <String>] [-NsgId <String>]
+ [-NsgLocation <String>] [-NsgProvisioningState <String>] [-NsgResourceGuid <String>] [-NsgTag <Hashtable>]
+ [-Primary] [-ProvisioningState <String>] [-ResourceGuid <String>] [-SecurityRule <ISecurityRule[]>]
+ [-Subnet <ISubnet>] [-Tag <Hashtable>] [-TapConfiguration <INetworkInterfaceTapConfiguration[]>]
+ [-VMId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
@@ -59,6 +58,23 @@ PS C:\> {{ Add code here }}
 {{ Add description here }}
 
 ## PARAMETERS
+
+### -AppliedDnsServer
+If the VM that uses this NIC is part of an Availability Set, then this list will have the union of all DNS servers from all NICs that are part of the Availability Set.
+This property is what is configured on each of those VMs.
+
+```yaml
+Type: System.String[]
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
 
 ### -AsJob
 Run the command as a job
@@ -109,79 +125,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -DnsAppliedDnsServer
-If the VM that uses this NIC is part of an Availability Set, then this list will have the union of all DNS servers from all NICs that are part of the Availability Set.
-This property is what is configured on each of those VMs.
-
-```yaml
-Type: System.String[]
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -DnsDnsServer
+### -DnsServer
 List of DNS servers IP addresses.
 Use 'AzureProvidedDNS' to switch to azure provided DNS resolution.
 'AzureProvidedDNS' value cannot be combined with other IPs, it must be the only value in dnsServers collection.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -DnsInternalDnsNameLabel
-Relative DNS name for this NIC used for internal communications between VMs in the same virtual network.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -DnsInternalDomainNameSuffix
-Even if internalDnsNameLabel is not specified, a DNS entry is created for the primary NIC of the VM.
-This DNS name can be constructed by concatenating the VM name with the value of internalDomainNameSuffix.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -DnsInternalFqdn
-Fully qualified DNS name supporting internal communications between VMs in the same virtual network.
-
-```yaml
-Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -353,6 +303,55 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -InternalDnsNameLabel
+Relative DNS name for this NIC used for internal communications between VMs in the same virtual network.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -InternalDomainNameSuffix
+Even if internalDnsNameLabel is not specified, a DNS entry is created for the primary NIC of the VM.
+This DNS name can be constructed by concatenating the VM name with the value of internalDomainNameSuffix.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -InternalFqdn
+Fully qualified DNS name supporting internal communications between VMs in the same virtual network.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -IPConfiguration
 A list of IPConfigurations of the network interface.
 To construct, see NOTES section for IPCONFIGURATION properties and create a hash table.
@@ -506,7 +505,7 @@ Possible values are: 'Updating', 'Deleting', and 'Failed'.
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded
-Aliases: NetworkSecurityGroupPropertiesProvisioningState
+Aliases: NetworkSecurityGroupProvisioningState
 
 Required: False
 Position: Named
@@ -522,7 +521,7 @@ The resource GUID property of the network security group resource.
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded
-Aliases: NetworkSecurityGroupPropertiesResourceGuid
+Aliases: NetworkSecurityGroupResourceGuid
 
 Required: False
 Position: Named
@@ -889,11 +888,11 @@ To create the parameters described below, construct a hash table containing the 
           - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
           - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
           - `[NatGatewayId <String>]`: Resource ID.
-          - `[NetworkSecurityGroupEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
-          - `[NetworkSecurityGroupId <String>]`: Resource ID.
-          - `[NetworkSecurityGroupLocation <String>]`: Resource location.
-          - `[NetworkSecurityGroupPropertiesProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-          - `[NetworkSecurityGroupTag <IResourceTags>]`: Resource tags.
+          - `[NsgEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
+          - `[NsgId <String>]`: Resource ID.
+          - `[NsgLocation <String>]`: Resource location.
+          - `[NsgPropertiesProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+          - `[NsgTag <IResourceTags>]`: Resource tags.
           - `[PropertiesAddressPrefixes <String[]>]`: List of  address prefixes for the subnet.
           - `[ProvisioningState <String>]`: The provisioning state of the resource.
           - `[ResourceGuid <String>]`: The resource GUID property of the network security group resource.
@@ -965,6 +964,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
+  - `[AppliedDnsServer <String[]>]`: If the VM that uses this NIC is part of an Availability Set, then this list will have the union of all DNS servers from all NICs that are part of the Availability Set. This property is what is configured on each of those VMs.
   - `[DefaultSecurityRule <ISecurityRule[]>]`: The default security rules of network security group.
     - `Access <SecurityRuleAccess>`: The network traffic is allowed or denied.
     - `Direction <SecurityRuleDirection>`: The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic.
@@ -988,11 +988,7 @@ To create the parameters described below, construct a hash table containing the 
     - `[SourceAddressPrefix <String>]`: The CIDR or source IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used. If this is an ingress rule, specifies where network traffic originates from. 
     - `[SourceApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: The application security group specified as source.
     - `[SourcePortRange <String>]`: The source port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
-  - `[DnsSettingAppliedDnsServer <String[]>]`: If the VM that uses this NIC is part of an Availability Set, then this list will have the union of all DNS servers from all NICs that are part of the Availability Set. This property is what is configured on each of those VMs.
-  - `[DnsSettingDnsServer <String[]>]`: List of DNS servers IP addresses. Use 'AzureProvidedDNS' to switch to azure provided DNS resolution. 'AzureProvidedDNS' value cannot be combined with other IPs, it must be the only value in dnsServers collection.
-  - `[DnsSettingInternalDnsNameLabel <String>]`: Relative DNS name for this NIC used for internal communications between VMs in the same virtual network.
-  - `[DnsSettingInternalDomainNameSuffix <String>]`: Even if internalDnsNameLabel is not specified, a DNS entry is created for the primary NIC of the VM. This DNS name can be constructed by concatenating the VM name with the value of internalDomainNameSuffix.
-  - `[DnsSettingInternalFqdn <String>]`: Fully qualified DNS name supporting internal communications between VMs in the same virtual network.
+  - `[DnsServer <String[]>]`: List of DNS servers IP addresses. Use 'AzureProvidedDNS' to switch to azure provided DNS resolution. 'AzureProvidedDNS' value cannot be combined with other IPs, it must be the only value in dnsServers collection.
   - `[EnableAcceleratedNetworking <Boolean?>]`: If the network interface is accelerated networking enabled.
   - `[EnableIPForwarding <Boolean?>]`: Indicates whether IP forwarding is enabled on this network interface.
   - `[EndpointServiceId <String>]`: A unique identifier of the service being referenced by the interface endpoint.
@@ -1075,11 +1071,11 @@ To create the parameters described below, construct a hash table containing the 
             - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
             - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
             - `[NatGatewayId <String>]`: Resource ID.
-            - `[NetworkSecurityGroupEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
-            - `[NetworkSecurityGroupId <String>]`: Resource ID.
-            - `[NetworkSecurityGroupLocation <String>]`: Resource location.
-            - `[NetworkSecurityGroupPropertiesProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-            - `[NetworkSecurityGroupTag <IResourceTags>]`: Resource tags.
+            - `[NsgEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
+            - `[NsgId <String>]`: Resource ID.
+            - `[NsgLocation <String>]`: Resource location.
+            - `[NsgPropertiesProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+            - `[NsgTag <IResourceTags>]`: Resource tags.
             - `[PropertiesAddressPrefixes <String[]>]`: List of  address prefixes for the subnet.
             - `[ProvisioningState <String>]`: The provisioning state of the resource.
             - `[ResourceGuid <String>]`: The resource GUID property of the network security group resource.
@@ -1179,13 +1175,16 @@ To create the parameters described below, construct a hash table containing the 
   - `[InterfaceEndpointId <String>]`: Resource ID.
   - `[InterfaceEndpointLocation <String>]`: Resource location.
   - `[InterfaceEndpointTag <IResourceTags>]`: Resource tags.
+  - `[InternalDnsNameLabel <String>]`: Relative DNS name for this NIC used for internal communications between VMs in the same virtual network.
+  - `[InternalDomainNameSuffix <String>]`: Even if internalDnsNameLabel is not specified, a DNS entry is created for the primary NIC of the VM. This DNS name can be constructed by concatenating the VM name with the value of internalDomainNameSuffix.
+  - `[InternalFqdn <String>]`: Fully qualified DNS name supporting internal communications between VMs in the same virtual network.
   - `[MacAddress <String>]`: The MAC address of the network interface.
-  - `[NetworkSecurityGroupEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
-  - `[NetworkSecurityGroupId <String>]`: Resource ID.
-  - `[NetworkSecurityGroupLocation <String>]`: Resource location.
-  - `[NetworkSecurityGroupPropertiesProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-  - `[NetworkSecurityGroupPropertiesResourceGuid <String>]`: The resource GUID property of the network security group resource.
-  - `[NetworkSecurityGroupTag <IResourceTags>]`: Resource tags.
+  - `[NsgEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
+  - `[NsgId <String>]`: Resource ID.
+  - `[NsgLocation <String>]`: Resource location.
+  - `[NsgProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+  - `[NsgResourceGuid <String>]`: The resource GUID property of the network security group resource.
+  - `[NsgTag <IResourceTags>]`: Resource tags.
   - `[Primary <Boolean?>]`: Gets whether this is a primary network interface on a virtual machine.
   - `[ProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
   - `[ResourceGuid <String>]`: The resource GUID property of the network interface resource.
@@ -1256,11 +1255,11 @@ To create the parameters described below, construct a hash table containing the 
   - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
   - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
   - `[NatGatewayId <String>]`: Resource ID.
-  - `[NetworkSecurityGroupEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
-  - `[NetworkSecurityGroupId <String>]`: Resource ID.
-  - `[NetworkSecurityGroupLocation <String>]`: Resource location.
-  - `[NetworkSecurityGroupPropertiesProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-  - `[NetworkSecurityGroupTag <IResourceTags>]`: Resource tags.
+  - `[NsgEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
+  - `[NsgId <String>]`: Resource ID.
+  - `[NsgLocation <String>]`: Resource location.
+  - `[NsgPropertiesProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+  - `[NsgTag <IResourceTags>]`: Resource tags.
   - `[PropertiesAddressPrefixes <String[]>]`: List of  address prefixes for the subnet.
   - `[ProvisioningState <String>]`: The provisioning state of the resource.
   - `[ResourceGuid <String>]`: The resource GUID property of the network security group resource.
@@ -1409,11 +1408,11 @@ To create the parameters described below, construct a hash table containing the 
                 - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
                 - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
                 - `[NatGatewayId <String>]`: Resource ID.
-                - `[NetworkSecurityGroupEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
-                - `[NetworkSecurityGroupId <String>]`: Resource ID.
-                - `[NetworkSecurityGroupLocation <String>]`: Resource location.
-                - `[NetworkSecurityGroupPropertiesProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-                - `[NetworkSecurityGroupTag <IResourceTags>]`: Resource tags.
+                - `[NsgEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
+                - `[NsgId <String>]`: Resource ID.
+                - `[NsgLocation <String>]`: Resource location.
+                - `[NsgPropertiesProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+                - `[NsgTag <IResourceTags>]`: Resource tags.
                 - `[PropertiesAddressPrefixes <String[]>]`: List of  address prefixes for the subnet.
                 - `[ProvisioningState <String>]`: The provisioning state of the resource.
                 - `[ResourceGuid <String>]`: The resource GUID property of the network security group resource.

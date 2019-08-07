@@ -774,11 +774,11 @@ To create the parameters described below, construct a hash table containing the 
             - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
             - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
             - `[NatGatewayId <String>]`: Resource ID.
-            - `[NetworkSecurityGroupEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
-            - `[NetworkSecurityGroupId <String>]`: Resource ID.
-            - `[NetworkSecurityGroupLocation <String>]`: Resource location.
-            - `[NetworkSecurityGroupPropertiesProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-            - `[NetworkSecurityGroupTag <IResourceTags>]`: Resource tags.
+            - `[NsgEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
+            - `[NsgId <String>]`: Resource ID.
+            - `[NsgLocation <String>]`: Resource location.
+            - `[NsgPropertiesProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+            - `[NsgTag <IResourceTags>]`: Resource tags.
             - `[PropertiesAddressPrefixes <String[]>]`: List of  address prefixes for the subnet.
             - `[ProvisioningState <String>]`: The provisioning state of the resource.
             - `[ResourceGuid <String>]`: The resource GUID property of the network security group resource.
@@ -936,11 +936,11 @@ To create the parameters described below, construct a hash table containing the 
             - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
             - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
             - `[NatGatewayId <String>]`: Resource ID.
-            - `[NetworkSecurityGroupEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
-            - `[NetworkSecurityGroupId <String>]`: Resource ID.
-            - `[NetworkSecurityGroupLocation <String>]`: Resource location.
-            - `[NetworkSecurityGroupPropertiesProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-            - `[NetworkSecurityGroupTag <IResourceTags>]`: Resource tags.
+            - `[NsgEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
+            - `[NsgId <String>]`: Resource ID.
+            - `[NsgLocation <String>]`: Resource location.
+            - `[NsgPropertiesProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+            - `[NsgTag <IResourceTags>]`: Resource tags.
             - `[PropertiesAddressPrefixes <String[]>]`: List of  address prefixes for the subnet.
             - `[ProvisioningState <String>]`: The provisioning state of the resource.
             - `[ResourceGuid <String>]`: The resource GUID property of the network security group resource.
@@ -1114,11 +1114,11 @@ To create the parameters described below, construct a hash table containing the 
             - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
             - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
             - `[NatGatewayId <String>]`: Resource ID.
-            - `[NetworkSecurityGroupEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
-            - `[NetworkSecurityGroupId <String>]`: Resource ID.
-            - `[NetworkSecurityGroupLocation <String>]`: Resource location.
-            - `[NetworkSecurityGroupPropertiesProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-            - `[NetworkSecurityGroupTag <IResourceTags>]`: Resource tags.
+            - `[NsgEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
+            - `[NsgId <String>]`: Resource ID.
+            - `[NsgLocation <String>]`: Resource location.
+            - `[NsgPropertiesProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+            - `[NsgTag <IResourceTags>]`: Resource tags.
             - `[PropertiesAddressPrefixes <String[]>]`: List of  address prefixes for the subnet.
             - `[ProvisioningState <String>]`: The provisioning state of the resource.
             - `[ResourceGuid <String>]`: The resource GUID property of the network security group resource.
@@ -1260,11 +1260,11 @@ To create the parameters described below, construct a hash table containing the 
       - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
       - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
       - `[NatGatewayId <String>]`: Resource ID.
-      - `[NetworkSecurityGroupEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
-      - `[NetworkSecurityGroupId <String>]`: Resource ID.
-      - `[NetworkSecurityGroupLocation <String>]`: Resource location.
-      - `[NetworkSecurityGroupPropertiesProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-      - `[NetworkSecurityGroupTag <IResourceTags>]`: Resource tags.
+      - `[NsgEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
+      - `[NsgId <String>]`: Resource ID.
+      - `[NsgLocation <String>]`: Resource location.
+      - `[NsgPropertiesProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+      - `[NsgTag <IResourceTags>]`: Resource tags.
       - `[PropertiesAddressPrefixes <String[]>]`: List of  address prefixes for the subnet.
       - `[ProvisioningState <String>]`: The provisioning state of the resource.
       - `[ResourceGuid <String>]`: The resource GUID property of the network security group resource.
@@ -1357,11 +1357,11 @@ To create the parameters described below, construct a hash table containing the 
   - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
   - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
   - `[NatGatewayId <String>]`: Resource ID.
-  - `[NetworkSecurityGroupEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
-  - `[NetworkSecurityGroupId <String>]`: Resource ID.
-  - `[NetworkSecurityGroupLocation <String>]`: Resource location.
-  - `[NetworkSecurityGroupPropertiesProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-  - `[NetworkSecurityGroupTag <IResourceTags>]`: Resource tags.
+  - `[NsgEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
+  - `[NsgId <String>]`: Resource ID.
+  - `[NsgLocation <String>]`: Resource location.
+  - `[NsgPropertiesProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+  - `[NsgTag <IResourceTags>]`: Resource tags.
   - `[PropertiesAddressPrefixes <String[]>]`: List of  address prefixes for the subnet.
   - `[ProvisioningState <String>]`: The provisioning state of the resource.
   - `[ResourceGuid <String>]`: The resource GUID property of the network security group resource.
@@ -1506,11 +1506,11 @@ To create the parameters described below, construct a hash table containing the 
               - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
               - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
               - `[NatGatewayId <String>]`: Resource ID.
-              - `[NetworkSecurityGroupEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
-              - `[NetworkSecurityGroupId <String>]`: Resource ID.
-              - `[NetworkSecurityGroupLocation <String>]`: Resource location.
-              - `[NetworkSecurityGroupPropertiesProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-              - `[NetworkSecurityGroupTag <IResourceTags>]`: Resource tags.
+              - `[NsgEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
+              - `[NsgId <String>]`: Resource ID.
+              - `[NsgLocation <String>]`: Resource location.
+              - `[NsgPropertiesProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+              - `[NsgTag <IResourceTags>]`: Resource tags.
               - `[PropertiesAddressPrefixes <String[]>]`: List of  address prefixes for the subnet.
               - `[ProvisioningState <String>]`: The provisioning state of the resource.
               - `[ResourceGuid <String>]`: The resource GUID property of the network security group resource.

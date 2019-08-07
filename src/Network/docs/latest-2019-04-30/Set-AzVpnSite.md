@@ -447,9 +447,9 @@ To create the parameters described below, construct a hash table containing the 
   - `[Tag <IResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
   - `[AddressSpaceAddressPrefix <String[]>]`: A list of address blocks reserved for this virtual network in CIDR notation.
-  - `[BgpPropertyAsn <Int64?>]`: The BGP speaker's ASN.
-  - `[BgpPropertyBgpPeeringAddress <String>]`: The BGP peering address and BGP identifier of this BGP speaker.
-  - `[BgpPropertyPeerWeight <Int32?>]`: The weight added to routes learned from this BGP speaker.
+  - `[BgpAsn <Int64?>]`: The BGP speaker's ASN.
+  - `[BgpPeerWeight <Int32?>]`: The weight added to routes learned from this BGP speaker.
+  - `[BgpPeeringAddress <String>]`: The BGP peering address and BGP identifier of this BGP speaker.
   - `[DevicePropertyDeviceModel <String>]`: Model of the device.
   - `[DevicePropertyDeviceVendor <String>]`: Name of the device Vendor.
   - `[DevicePropertyLinkSpeedInMbps <Int32?>]`: Link speed.

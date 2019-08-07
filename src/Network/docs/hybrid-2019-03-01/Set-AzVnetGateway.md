@@ -624,9 +624,9 @@ To create the parameters described below, construct a hash table containing the 
   - `[Tag <IResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
   - `[Active <Boolean?>]`: ActiveActive flag
-  - `[BgpSettingAsn <Int64?>]`: The BGP speaker's ASN.
-  - `[BgpSettingBgpPeeringAddress <String>]`: The BGP peering address and BGP identifier of this BGP speaker.
-  - `[BgpSettingPeerWeight <Int32?>]`: The weight added to routes learned from this BGP speaker.
+  - `[BgpAsn <Int64?>]`: The BGP speaker's ASN.
+  - `[BgpPeerWeight <Int32?>]`: The weight added to routes learned from this BGP speaker.
+  - `[BgpPeeringAddress <String>]`: The BGP peering address and BGP identifier of this BGP speaker.
   - `[EnableBgp <Boolean?>]`: Whether BGP is enabled for this virtual network gateway or not.
   - `[Etag <String>]`: Gets a unique read-only string that changes whenever the resource is updated.
   - `[GatewayDefaultSiteId <String>]`: Resource ID.

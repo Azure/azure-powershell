@@ -319,8 +319,8 @@ To create the parameters described below, construct a hash table containing the 
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[BoundMax <Int32?>]`: Maximum number of scale units deployed for ExpressRoute gateway.
-  - `[BoundMin <Int32?>]`: Minimum number of scale units deployed for ExpressRoute gateway.
+  - `[MaximumScaleUnit <Int32?>]`: Maximum number of scale units deployed for ExpressRoute gateway.
+  - `[MinimumScaleUnit <Int32?>]`: Minimum number of scale units deployed for ExpressRoute gateway.
   - `[VirtualHubId <String>]`: The resource URI for the Virtual Hub where the ExpressRoute gateway is or will be deployed. The Virtual Hub resource and the ExpressRoute gateway resource reside in the same subscription.
 
 ## RELATED LINKS

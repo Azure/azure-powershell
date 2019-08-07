@@ -653,11 +653,11 @@ To create the parameters described below, construct a hash table containing the 
     - `[DisableBgpRoutePropagation <Boolean?>]`: Gets or sets whether to disable the routes learned by BGP on that route table. True means disable.
     - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
     - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-    - `[NetworkSecurityGroupEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
-    - `[NetworkSecurityGroupId <String>]`: Resource ID.
-    - `[NetworkSecurityGroupLocation <String>]`: Resource location.
-    - `[NetworkSecurityGroupPropertiesProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-    - `[NetworkSecurityGroupTag <IResourceTags>]`: Resource tags.
+    - `[NsgEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
+    - `[NsgId <String>]`: Resource ID.
+    - `[NsgLocation <String>]`: Resource location.
+    - `[NsgPropertiesProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+    - `[NsgTag <IResourceTags>]`: Resource tags.
     - `[ProvisioningState <String>]`: The provisioning state of the resource.
     - `[ResourceGuid <String>]`: The resource GUID property of the network security group resource.
     - `[ResourceNavigationLink <IResourceNavigationLink[]>]`: Gets an array of references to the external resources using subnet.
@@ -737,11 +737,11 @@ To create the parameters described below, construct a hash table containing the 
     - `[DisableBgpRoutePropagation <Boolean?>]`: Gets or sets whether to disable the routes learned by BGP on that route table. True means disable.
     - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
     - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-    - `[NetworkSecurityGroupEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
-    - `[NetworkSecurityGroupId <String>]`: Resource ID.
-    - `[NetworkSecurityGroupLocation <String>]`: Resource location.
-    - `[NetworkSecurityGroupPropertiesProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-    - `[NetworkSecurityGroupTag <IResourceTags>]`: Resource tags.
+    - `[NsgEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
+    - `[NsgId <String>]`: Resource ID.
+    - `[NsgLocation <String>]`: Resource location.
+    - `[NsgPropertiesProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+    - `[NsgTag <IResourceTags>]`: Resource tags.
     - `[ProvisioningState <String>]`: The provisioning state of the resource.
     - `[ResourceGuid <String>]`: The resource GUID property of the network security group resource.
     - `[ResourceNavigationLink <IResourceNavigationLink[]>]`: Gets an array of references to the external resources using subnet.
@@ -800,11 +800,11 @@ To create the parameters described below, construct a hash table containing the 
   - `[DisableBgpRoutePropagation <Boolean?>]`: Gets or sets whether to disable the routes learned by BGP on that route table. True means disable.
   - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
   - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  - `[NetworkSecurityGroupEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
-  - `[NetworkSecurityGroupId <String>]`: Resource ID.
-  - `[NetworkSecurityGroupLocation <String>]`: Resource location.
-  - `[NetworkSecurityGroupPropertiesProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-  - `[NetworkSecurityGroupTag <IResourceTags>]`: Resource tags.
+  - `[NsgEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
+  - `[NsgId <String>]`: Resource ID.
+  - `[NsgLocation <String>]`: Resource location.
+  - `[NsgPropertiesProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+  - `[NsgTag <IResourceTags>]`: Resource tags.
   - `[ProvisioningState <String>]`: The provisioning state of the resource.
   - `[ResourceGuid <String>]`: The resource GUID property of the network security group resource.
   - `[ResourceNavigationLink <IResourceNavigationLink[]>]`: Gets an array of references to the external resources using subnet.
