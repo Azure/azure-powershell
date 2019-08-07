@@ -195,8 +195,26 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 pageBlobTier = value;
             }
         }
-
         private PremiumPageBlobTier? pageBlobTier = null;
+
+        [Parameter(HelpMessage = "Block Blob Tier", Mandatory = false, ParameterSetName = ContainerNameParameterSet)]
+        [Parameter(HelpMessage = "Block Blob Tier", Mandatory = false, ParameterSetName = BlobParameterSet)]
+        [Parameter(HelpMessage = "Block Blob Tier", Mandatory = false, ParameterSetName = BlobToBlobParameterSet)]
+        [Parameter(HelpMessage = "Block Blob Tier", Mandatory = false, ParameterSetName = ContainerParameterSet)]
+        [ValidateSet("Hot", "Cool", IgnoreCase = true)]
+        public StandardBlobTier StandardBlobTier
+        {
+            get
+            {
+                return standardBlobTier.Value;
+            }
+
+            set
+            {
+                standardBlobTier = value;
+            }
+        }
+        private StandardBlobTier? standardBlobTier = null;
 
         [Alias("SrcContext", "SourceContext")]
         [Parameter(HelpMessage = "Source Azure Storage Context Object", ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ContainerNameParameterSet)]
@@ -385,7 +403,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         private void StartCopyBlob(IStorageBlobManagement destChannel, CloudBlob srcCloudBlob, CloudBlob destCloudBlob)
         {
             ValidateBlobType(srcCloudBlob);
-            ValidateBlobTier(srcCloudBlob.BlobType, pageBlobTier);
+            ValidateBlobTier(srcCloudBlob.BlobType, pageBlobTier, standardBlobTier);
 
             Func<long, Task> taskGenerator = (taskId) => StartCopyAsync(taskId, destChannel, srcCloudBlob, destCloudBlob);
             RunTask(taskGenerator);
@@ -574,14 +592,20 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 //Clean the Metadata of the destination Blob object, or the source metadata won't overwirte the dest blob metadata. See https://docs.microsoft.com/en-us/rest/api/storageservices/copy-blob
                 destBlob.Metadata.Clear();
 
-                if (pageBlobTier == null)
-                {
-                    copyId = await destChannel.StartCopyAsync(destBlob, srcUri, null, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken).ConfigureAwait(false);
-                }
-                else
+                // The Blob Type and Blob Tier must match, since already checked they are match at the begin of ExecuteCmdlet().
+                if (pageBlobTier != null)
                 {
                     copyId = await destChannel.StartCopyAsync((CloudPageBlob)destBlob, srcUri, pageBlobTier.Value, null, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken).ConfigureAwait(false);
                 }
+                else if (standardBlobTier != null)
+                {
+                    copyId = await destChannel.StartCopyAsync((CloudBlockBlob)destBlob, srcUri, standardBlobTier.Value, null, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken).ConfigureAwait(false);
+                }
+                else
+                { 
+                    copyId = await destChannel.StartCopyAsync(destBlob, srcUri, null, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken).ConfigureAwait(false);
+                }
+
                 this.OutputStream.WriteVerbose(taskId, String.Format(Resources.CopyDestinationBlobPending, destBlob.Name, destBlob.Container.Name, copyId));
                 this.WriteCloudBlobObject(taskId, destChannel, destBlob);
             }
