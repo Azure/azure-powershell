@@ -36,6 +36,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         public bool? PickHostNameFromBackendHttpSettings { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
         public int? MinServers { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
+        public int? Port { get; set; }
         public PSApplicationGatewayProbeHealthResponseMatch Match { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }

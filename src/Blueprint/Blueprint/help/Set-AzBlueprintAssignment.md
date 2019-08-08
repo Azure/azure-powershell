@@ -41,7 +41,7 @@ PS C:\> $blueprintObject =  Get-AzBlueprint -SubscriptionId "00000000-1111-0000-
 PS C:\> Set-AzBlueprintAssignment -Name "myAssignment" -Blueprint $blueprintObject -SubscriptionId "00000000-1111-0000-1111-000000000000" -Location "West US" -Parameter $params -ResourceGroupParameter $rg -SystemAssignedIdentity
 
 Name              : myAssignment
-Id                : /subscriptions/00000000-1111-0000-1111-000000000000/providers/Microsoft.Blueprint/blueprintAssignments/Assignment-PS-BlueprintDefinition
+Id                : /subscriptions/00000000-1111-0000-1111-000000000000/providers/Microsoft.Blueprint/blueprintAssignments/myAssignment
 Scope             : /subscriptions/00000000-1111-0000-1111-000000000000
 LastModified      : 2019-01-08
 LockMode          : None
@@ -51,6 +51,23 @@ ResourceGroups    : ResourceGroup
 ```
 
 Update an existing blueprint assignment of the blueprint definition `$blueprintObject` within the specified subscription, updating the parameters. Uses system-assigned identity. The location defines the region for creating the managed identity.
+
+### Example 2
+```powershell
+PS C:\> $blueprintObject =  Get-AzBlueprint -SubscriptionId "00000000-1111-0000-1111-000000000000" -Name "myBlueprintName"
+PS C:\> Set-AzBlueprintAssignment -Name "myAssignment" -Blueprint $blueprintObject -SubscriptionId "00000000-1111-0000-1111-000000000000" -AssignmentFile C:\myAssignmentfile.json
+
+Name              : myAssignment
+Id                : /subscriptions/00000000-1111-0000-1111-000000000000/providers/Microsoft.Blueprint/blueprintAssignments/myAssignment
+Scope             : /subscriptions/00000000-1111-0000-1111-000000000000
+LastModified      : 2019-01-08
+LockMode          : None
+ProvisioningState : Creating
+Parameters        : {applytaganditsdefaultvalue_tagName, applytaganditsdefaultvalue_tagValue}
+ResourceGroups    : ResourceGroup
+```
+
+Update an existing blueprint assignment through an assignment file. The format of the assignment file can be found in the request/response samples at: https://github.com/Azure/azure-rest-api-specs/tree/master/specification/blueprint/resource-manager/Microsoft.Blueprint/preview/2018-11-01-preview/examples
 
 ## PARAMETERS
 

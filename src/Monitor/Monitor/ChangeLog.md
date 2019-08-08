@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 * Support Dynamic Threshold criteria for metric alert V2
+* Fixed miscellaneous typos across module
+* Fixed incorrect parameter name in help documentation
 
 ## Version 1.2.1
 * Fixed incorrect parameter names in help examples

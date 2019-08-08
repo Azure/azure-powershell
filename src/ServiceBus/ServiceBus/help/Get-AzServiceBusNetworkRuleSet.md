@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzServiceBusNetworkRuleSet
 
 ## SYNOPSIS
-Gets the details of an Event Hubs NetwrokruleSet of namespace in the current Azure subscription.
+Gets the details of an Event Hubs NetworkruleSet of namespace in the current Azure subscription.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Get-AzServiceBusNetworkRuleSet [-ResourceId] <String> [-DefaultProfile <IAzureCo
 ```
 
 ## DESCRIPTION
-Gets the details of an Event Hubs NetwrokruleSet of namespace in the current Azure subscription.
+Gets the details of an Event Hubs NetworkruleSet of namespace in the current Azure subscription.
 
 ## EXAMPLES
 
@@ -46,7 +46,7 @@ Type                : Microsoft.ServiceBus/Namespaces/NetworkRuleSet
 IpRules             : {1.1.1.1, Allow}
 VirtualNetworkRules : {/subscriptions/subscriptionId/resourcegroups/v-ajnavtest/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/default, False}
 
-Get the details of Event Hubs NetwrokruleSet of namespace using ResourceGroup and Namesape parameters. 
+Get the details of Event Hubs NetworkruleSet of namespace using ResourceGroup and Namespace parameters. 
 
 ### Example 2
 ```powershell
@@ -59,7 +59,7 @@ Type                : Microsoft.ServiceBus/Namespaces/NetworkRuleSet
 IpRules             : {1.1.1.1, Allow}
 VirtualNetworkRules : {/subscriptions/subscriptionId/resourcegroups/v-ajnavtest/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/default, False}
 
-Get the details of Event Hubs NetwrokruleSet of namespace using  Namespace which is in the current subscription.
+Get the details of Event Hubs NetworkruleSet of namespace using  Namespace which is in the current subscription.
 
 ### Example 3
 ```powershell
@@ -73,7 +73,7 @@ Type                : Microsoft.ServiceBus/Namespaces/NetworkRuleSet
 IpRules             : {1.1.1.1, Allow}
 VirtualNetworkRules : {/subscriptions/subscriptionId/resourcegroups/v-ajnavtest/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/default, False}
 
-Get the details of Event Hubs NetwrokruleSet of namespace using Resource Id of other Namespace 
+Get the details of Event Hubs NetworkruleSet of namespace using Resource Id of other Namespace 
 
 ## PARAMETERS
 

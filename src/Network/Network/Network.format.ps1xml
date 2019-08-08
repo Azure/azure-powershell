@@ -924,6 +924,14 @@
                 <Label>PrivateEndpoints</Label>
                 <PropertyName>PrivateEndpointsText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>PrivateEndpointNetworkPolicies</Label>
+                <PropertyName>PrivateEndpointNetworkPolicies</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>PrivateLinkServiceNetworkPolicies</Label>
+                <PropertyName>PrivateLinkServiceNetworkPolicies</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -4224,8 +4232,8 @@
                 <PropertyName>Type</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>ServiceName</Label>
-                <PropertyName>ServiceName</PropertyName>
+                <Label>ResourceName</Label>
+                <PropertyName>ResourceName</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -4265,6 +4273,24 @@
               <ListItem>
                 <Label>Change Number</Label>
                 <ScriptBlock>$_.Properties.ChangeNumber</ScriptBlock>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSAutoApprovedPrivateLinkService</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSAutoApprovedPrivateLinkService</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>PrivateLinkService</Label>
+                <PropertyName>PrivateLinkService</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

@@ -73,7 +73,7 @@ Gets tenants that are authorized for the current user.
 Loads Azure authentication information from a file.
 
 ### [Register-AzModule](Register-AzModule.md)
-FOR INTERNAL USE ONLY - Provide RUntime Support for AutoRest Generated cmdlets.
+FOR INTERNAL USE ONLY - Provide Runtime Support for AutoRest Generated cmdlets.
 
 ### [Remove-AzContext](Remove-AzContext.md)
 Remove a context from the set of available contexts

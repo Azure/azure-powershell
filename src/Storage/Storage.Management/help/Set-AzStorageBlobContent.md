@@ -238,7 +238,7 @@ Accept wildcard characters: False
 ### -Context
 Specifies an Azure storage context.
 To obtain a storage context, use the New-AzStorageContext cmdlet.
-To use a storage context created from a SAS Token without read permission, need add -Force parameter to skip check blob existance.
+To use a storage context created from a SAS Token without read permission, need add -Force parameter to skip check blob existence.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
