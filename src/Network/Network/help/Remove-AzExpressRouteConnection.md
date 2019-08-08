@@ -108,7 +108,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Do not ask for confirmation if you want to overrite a resource
+Do not ask for confirmation if you want to overwrite a resource
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -123,7 +123,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The ExpressRouteConenction object to update.
+The ExpressRouteConnection object to update.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSExpressRouteConnection
@@ -184,7 +184,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The resource id of the ExpressRouteConenction object to delete.
+The resource id of the ExpressRouteConnection object to delete.
 
 ```yaml
 Type: System.String

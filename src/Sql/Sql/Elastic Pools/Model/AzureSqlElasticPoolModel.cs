@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Model
         public int? Capacity { get; set; }
 
         /// <summary>
-        /// Gets or sets the Minumum capacity of database in the elastic pool
+        /// Gets or sets the Minimum capacity of database in the elastic pool
         ///    For Dtu pool, it is the min Database Dtu of the pool; for Vcore pool, it is the min vcore capacity of the pool
         /// </summary>
         public double? DatabaseCapacityMin { get; set; }
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Model
         public double? DatabaseCapacityMax { get; set; }
 
         /// <summary>
-        /// Gets or sets the the sku family of the elastic pool
+        /// Gets or sets the sku family of the elastic pool
         /// </summary>
         public string Family { get; set; }
 

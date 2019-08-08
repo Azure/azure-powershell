@@ -142,7 +142,7 @@
     <value>No Service Principal found in {0} for this subscription. Creating a new Service Principal.</value>
   </data>
   <data name="CreatedANewServicePrincipalAndAssignedTheContributorRole" xml:space="preserve">
-    <value>Created a new Service Principal and assigned the contributor role for this subcription.</value>
+    <value>Created a new Service Principal and assigned the contributor role for this subscription.</value>
   </data>
   <data name="ServicePrincipalCreate" xml:space="preserve">
     <value>Service Principal Create</value>

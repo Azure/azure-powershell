@@ -54,7 +54,7 @@ Disable notification.
 
 ### Example 2
 ```
-PS C:\> Set-AzRecoveryServicesAsrAlertSetting -CustomEmailAddress "abcxxxx@xxxx.com" -EmailSubscriptionOwner
+PS C:\> Set-AzRecoveryServicesAsrAlertSetting -CustomEmailAddress "abcxxxx@xxxx.com" -EnableEmailSubscriptionOwner
 
 CustomEmailAddress     EmailSubscriptionOwner Locale
 ------------------     ---------------------- ------
@@ -126,7 +126,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnableEmailSubscriptionOwner
-Switch paramter specifies enable notification to subscription owner.
+Switch parameter specifies enable notification to subscription owner.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -141,7 +141,7 @@ Accept wildcard characters: False
 ```
 
 ### -LocaleID
-Email language of alert /notifcation to user(supported culture codes from microsoft). 
+Email language of alert /notification to user(supported culture codes from microsoft). 
 
 ```yaml
 Type: System.String

@@ -21,6 +21,13 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
               </ListItem>
               <ListItem>
                 <ItemSelectionCondition>
+                  <ScriptBlock>$_.ConnectionIdentifier -ne $null</ScriptBlock>
+                </ItemSelectionCondition>
+                <Label>ConnectionIdentifier</Label>
+                <ScriptBlock>$_.ConnectionIdentifier</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <ItemSelectionCondition>
                   <ScriptBlock>$_.BgpSession.PeerSessionIPv4Address -ne $null</ScriptBlock>
                 </ItemSelectionCondition>
                 <Label>PeerSessionIPv4Address</Label>
@@ -113,6 +120,13 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
                 </ItemSelectionCondition>
                 <Label>SessionPrefixV4</Label>
                 <ScriptBlock>$_.BgpSession.SessionPrefixV4</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$_.ConnectionIdentifier -ne $null</ScriptBlock>
+                </ItemSelectionCondition>
+                <Label>ConnectionIdentifier</Label>
+                <ScriptBlock>$_.ConnectionIdentifier</ScriptBlock>
               </ListItem>
               <ListItem>
                 <ItemSelectionCondition>
@@ -516,6 +530,13 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
                 </ItemSelectionCondition>
                 <Label>LocalRegions</Label>
                 <PropertyName>LocalRegions</PropertyName>
+              </ListItem>
+              <ListItem>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$_.Region -ne $null</ScriptBlock>
+                </ItemSelectionCondition>
+                <Label>Azure Region</Label>
+                <PropertyName>Region</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
