@@ -222,6 +222,11 @@ function NamespaceTests
     Write-Debug "Namespace name : $namespaceName2"
     $result = New-AzEventHubNamespace -ResourceGroup $secondResourceGroup -Name $namespaceName2 -Location $location
 
+	### change the Namespace SKU to Basic
+	Write-Debug "Namespace name : $namespaceName2"
+	$result = Set-AzEventHubNamespace -ResourceGroup $secondResourceGroup -Name $namespaceName2 -Location $location -SkuName "Basic"
+	Assert-AreEqual $result.Sku.Name "Basic" "Namespace SKU not changed."
+	   
     Write-Debug "Get all the namespaces created in the resourceGroup"
     $allCreatedNamespace = Get-AzEventHubNamespace -ResourceGroup $secondResourceGroup
 	
