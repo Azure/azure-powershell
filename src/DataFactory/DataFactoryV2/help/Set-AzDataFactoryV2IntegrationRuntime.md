@@ -104,9 +104,9 @@ The cmdlet adds the ADF to use the shared integration runtime. When using `-Shar
 PS C:\> Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName testgroup `
                                            -DataFactoryName testdf `
                                            -Name SSISIRWithDataProxy `
-										   -DataProxyIntegrationRuntimeName proxySelfhostedIR `
-										   -DataProxyStagingLinkedServiceName AzureBlobStorage `
-										   -DataProxyStagingPath teststaging
+                                           -DataProxyIntegrationRuntimeName proxySelfhostedIR `
+                                           -DataProxyStagingLinkedServiceName AzureBlobStorage `
+                                           -DataProxyStagingPath teststaging
 
     Location                          : EastUS
     NodeSize                          : Standard_D8_v3
@@ -130,8 +130,7 @@ PS C:\> Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName testgroup `
     ResourceGroupName                 : testgroup
     DataFactoryName                   : testdf
     Description                       : 
-    Id                                : /subscriptions/cb715d05-3337-4640-8c43-4f943c50d06e/resourceGroups/testgroup/providers/Microsoft.DataFactory/factories/testdf/integration
-                                        runtimes/SSISIRWithDataProxy
+    Id                                : /subscriptions/cb715d05-3337-4640-8c43-4f943c50d06e/resourceGroups/testgroup/providers/Microsoft.DataFactory/factories/testdf/integrationruntimes/SSISIRWithDataProxy
 ```
 
 The cmdlet update Azure-SSIS integration runtime to use Self-hosted integration runtime as a data proxy.

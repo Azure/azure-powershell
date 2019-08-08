@@ -105,7 +105,7 @@ function Test-SsisAzure-IntegrationRuntime
             -Location $dflocation `
             -Force
 
-		# Prepare proxy selfhsoted IR
+        # Prepare proxy selfhsoted IR
         $proxyIrName = "proxy-selfhosted-integrationruntime"   
         $actualProxyIr = Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `
             -DataFactoryName $dfname `
@@ -114,7 +114,7 @@ function Test-SsisAzure-IntegrationRuntime
             -Force
         Assert-AreEqual $actualProxyIr.Name $proxyIrName
 
-		# Prepare proxy linked service
+        # Prepare proxy linked service
         $lsname = "proxy-linkedservice"
         $actualProxyLs = Set-AzDataFactoryV2LinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -Name $lsname -File .\Resources\linkedService.json -Force
         Assert-AreEqual $actualProxyLs.Name $lsname
