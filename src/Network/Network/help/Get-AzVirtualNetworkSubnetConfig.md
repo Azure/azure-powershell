@@ -76,6 +76,7 @@ Accept wildcard characters: False
 
 ### -ResourceId
 Specifies the resource id of the subnet that this cmdlet gets.
+
 ```yaml
 Type: System.String
 Parameter Sets: GetByResourceId
@@ -125,5 +126,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzVirtualNetworkSubnetConfig](./Remove-AzVirtualNetworkSubnetConfig.md)
 
 [Set-AzVirtualNetworkSubnetConfig](./Set-AzVirtualNetworkSubnetConfig.md)
-
-
