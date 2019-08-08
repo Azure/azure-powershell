@@ -1,15 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Management.Automation;
-using System.Text;
-using System.Linq;
-using Microsoft.Azure.Commands.DataBox.Common;
-using Microsoft.Azure.Management.DataBox.Models;
-using Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models;
-using Microsoft.Azure.Management.DataBox;
-using Microsoft.Rest.Azure;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using System.Threading;
+using Microsoft.Azure.Management.DataBox;
+using Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models;
+using System.Management.Automation;
 using Resource = Microsoft.Azure.PowerShell.Cmdlets.DataBox.Resources.Resource;
 
 namespace Microsoft.Azure.Commands.DataBox.Common
@@ -43,6 +49,9 @@ namespace Microsoft.Azure.Commands.DataBox.Common
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru;
 
+        [Parameter(Mandatory = false)]
+        public SwitchParameter Force;
+
         public override void ExecuteCmdlet()
         {
             if (this.ParameterSetName.Equals(GetByResourceIdParameterSet))
@@ -62,13 +71,16 @@ namespace Microsoft.Azure.Commands.DataBox.Common
             // Initiate to delete job
             if (ShouldProcess(this.Name, string.Format(Resource.DeletingDataboxJob + this.Name + Resource.InResourceGroup + this.ResourceGroupName)))
             {
-                JobsOperationsExtensions.Delete(
+                if(this.Force || ShouldContinue(string.Format(Resource.RemoveDataboxJobWarning + this.Name), ""))
+                {
+                    JobsOperationsExtensions.Delete(
                     DataBoxManagementClient.Jobs,
                     ResourceGroupName,
                     Name);
 
-                if (PassThru)
-                    WriteObject(true);
+                    if (PassThru)
+                        WriteObject(true);
+                } 
             }
 
         }

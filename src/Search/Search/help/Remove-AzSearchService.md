@@ -31,7 +31,7 @@ Remove-AzSearchService [-ResourceId] <String> [-Force] [-PassThru] [-DefaultProf
 ```
 
 ## DESCRIPTION
-The **Remove-AzSearchService** cmdlet removes an Azure Search service with specified paramters.
+The **Remove-AzSearchService** cmdlet removes an Azure Search service with specified parameters.
 
 ## EXAMPLES
 

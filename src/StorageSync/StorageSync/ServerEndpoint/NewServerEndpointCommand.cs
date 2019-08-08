@@ -236,6 +236,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     VolumeFreeSpacePercent = VolumeFreeSpacePercent,
                     ServerLocalPath = ServerLocalPath,
                     ServerResourceId = ServerResourceId,
+                    TierFilesOlderThanDays = TierFilesOlderThanDays,
                     OfflineDataTransfer = OfflineDataTransfer.ToBool() ? StorageSyncConstants.OfflineDataTransferOn : StorageSyncConstants.OfflineDataTransferOff,
                     OfflineDataTransferShareName = OfflineDataTransferShareName
                 };

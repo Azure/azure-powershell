@@ -16,7 +16,7 @@
 .SYNOPSIS
 Tests the default values of database's threat detection policy
 #>
-function Test-ThreatDetectionGetDefualtPolicy
+function Test-ThreatDetectionGetDefaultPolicy
 {
 	# Setup
 	$testSuffix = getAssetName

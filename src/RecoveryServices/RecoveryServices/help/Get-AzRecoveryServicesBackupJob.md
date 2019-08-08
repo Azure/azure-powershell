@@ -23,18 +23,16 @@ Get-AzRecoveryServicesBackupJob [[-Status] <JobStatus>] [[-Operation] <JobOperat
 ## DESCRIPTION
 
 The **Get-AzRecoveryServicesBackupJob** cmdlet gets Azure Backup jobs for a specific vault.
-Set the vault context by using the **Set-AzRecoveryServicesVaultContext** cmdlet before you use the current cmdlet.
-
-Warning: **Set-AzRecoveryServicesVaultContext** cmdlet is being deprecated in a future breaking change release. There will be no replacement for it. Please use the -VaultId parameter instead.
+Set the vault context by using the -VaultId parameter.
 
 ## EXAMPLES
 
 ### Example 1: Get all in-progress jobs
 
 ```powershell
-$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
-$Joblist = Get-AzRecoveryServicesBackupJob -Status InProgress -VaultId $vault.ID
-$Joblist[0]
+PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+PS C:\> $Joblist = Get-AzRecoveryServicesBackupJob -Status InProgress -VaultId $vault.ID
+PS C:\> $Joblist[0]
 
 WorkloadName     Operation            Status               StartTime                 EndTime
 ------------     ---------            ------               ---------                 -------
@@ -47,8 +45,8 @@ The second command displays the first item in the $Joblist array.
 ### Example 2: Get all failed jobs in the last 7 days
 
 ```powershell
-$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
-Get-AzRecoveryServicesBackupJob -From (Get-Date).AddDays(-7).ToUniversalTime() -Status Failed -VaultId $vault.ID
+PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+PS C:\> Get-AzRecoveryServicesBackupJob -From (Get-Date).AddDays(-7).ToUniversalTime() -Status Failed -VaultId $vault.ID
 ```
 
 This command gets failed jobs from the last week in the vault.
@@ -153,7 +151,7 @@ Accept wildcard characters: False
 ### -JobId
 
 Specifies the ID of a job that this cmdlet gets.
-The ID is the JobId property of an **Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase** object.
+The ID is the JobId property of a **Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase** object.
 
 ```yaml
 Type: System.String
