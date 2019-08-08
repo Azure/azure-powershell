@@ -1,3 +1,112 @@
+## 2.5.0 - July 2019
+#### Az.Accounts
+* Update common code to use latest version of ClientRuntime
+
+#### Az.ApplicationInsights
+* Fix example typo in 'Remove-AzApplicationInsightsApiKey' documentation 
+
+#### Az.Automation
+* Fix typo in resource string 
+
+#### Az.CognitiveServices
+* Added NetworkRuleSet support.
+
+#### Az.Compute
+* Add missing properties (ComputerName, OsName, OsVersion and HyperVGeneration) of VM instance view object.
+
+#### Az.ContainerRegistry
+* Fix typo in Remove-AzContainerRegistryReplication for Replication parameter
+    - More information here https://github.com/Azure/azure-powershell/issues/9633
+
+#### Az.DataFactory
+* Updated ADF .Net SDK version to 4.1.0
+* Fix typo in documentation for 'Get-AzDataFactoryV2PipelineRun'
+
+#### Az.EventHub
+* Added new cmmdlet added for generating SAS token : New-AzEventHubAuthorizationRuleSASToken
+* added verification and error message for authorizationrules rights if only 'Manage' is assigned
+
+#### Az.KeyVault
+* Added support to specify the KeySize for Certificate Policies
+
+#### Az.LogicApp
+* Fix for Get-AzIntegrationAccountMap to list all map types
+	- Added new MapType parameter for filtering
+
+#### Az.ManagedServices
+* Added support for api version 2019-06-01 (GA)
+
+#### Az.Network
+* Add support for private endpoint and private link service
+    - New cmdlets
+        - Set-AzPrivateEndpoint
+        - Set-AzPrivateLinkService
+        - Approve-AzPrivateEndpointConnection
+        - Deny-AzPrivateEndpointConnection
+        - Get-AzPrivateEndpointConnection
+        - Remove-AzPrivateEndpointConnection
+        - Test-AzPrivateLinkServiceVisibility
+        - Get-AzAutoApprovedPrivateLinkService
+* Updated below commands for feature: PrivateEndpointNetworkPolicies/PrivateLinkServiceNetworkPolicies flag on Subnet in Virtualnetwork
+    - Updated New-AzVirtualNetworkSubnetConfig/Set-AzVirtualNetworkSubnetConfig/Add-AzVirtualNetworkSubnetConfig
+        - Added optional parameter -PrivateEndpointNetworkPoliciesFlag to indicate that enable or disable apply network policies on pivate endpoint in this subnet.
+        - Added optional parameter -PrivateLinkServiceNetworkPoliciesFlag to indicate that enable or disable apply network policies on private link service in this subnet.
+* AzPrivateLinkService's cmdlet parameter 'ServiceName' was renamed to 'Name' with an alias 'ServiceName' for backward compatibility
+* Enable ICMP protocol for network security rule configurations
+    - Updated cmdlets
+        - Add-AzNetworkSecurityRuleConfig
+        - New-AzNetworkSecurityRuleConfig
+        - Set-AzNetworkSecurityRuleConfig
+* Add ConnectionProtocolType (Ikev1/Ikev2) as a configurable parameter for New-AzVirtualNetworkGatewayConnection
+* Add PrivateIpAddressVersion in LoadBalancerFrontendIpConfiguration
+    - Updated cmdlet:
+        - New-AzLoadBalancerFrontendIpConfig
+        - Add-AzLoadBalancerFrontendIpConfig
+        - Set-AzLoadBalancerFrontendIpConfig
+* Application Gateway New-AzApplicationGatewayProbeConfig command update for supporting custom port in Probe
+    - Updated New-AzApplicationGatewayProbeConfig: Added optional parameter Port which is used for probing backend server. This parameter is applicable for Standard_V2 and WAF_V2 SKU.
+
+#### Az.OperationalInsights
+* Updated default version for saved searches to be 1. 
+* Fixed custom log null regex handling
+
+#### Az.RecoveryServices
+* Update 'Get-AzRecoveryServicesBackupJob.md'
+* Update 'Get-AzRecoveryServicesBackupContainer.md'
+* Update 'Get-AzRecoveryServicesVault.md'
+* Update 'Wait-AzRecoveryServicesBackupJob.md'
+* Update 'Set-AzRecoveryServicesVaultContext.md'
+* Update 'Get-AzRecoveryServicesBackupItem.md'
+* Update 'Get-AzRecoveryServicesBackupRecoveryPoint.md'
+* Update 'Restore-AzRecoveryServicesBackupItem.md'
+* Updated service call for Unregistering container for Azure File Share
+* Update 'Set-AzRecoveryServicesAsrAlertSetting.md'
+
+#### Az.Resources
+- Remove missing cmdlet referenced in 'New-AzResourceGroupDeployment' documentation
+- Updated policy cmdlets to use new api version 2019-01-01
+
+#### Az.ServiceBus
+* Added new cmmdlet added for generating SAS token : New-AzServiceBusAuthorizationRuleSASToken
+* added verification and error message for authorizationrules rights if only 'Manage' is assigned
+
+#### Az.Sql
+* Fix missing examples for Set-AzSqlDatabaseSecondary cmdlet
+* Fix set Vulnerability Assessment recurring scans without providing any email addresses
+* Fix a small typo in a warining message.
+
+#### Az.Storage
+* Update example in reference documentation for 'Get-AzStorageAccount' to use correct parameter name
+
+#### Az.StorageSync
+* Adding Invoke-AzStorageSyncChangeDetection cmdlet.
+* Fix Issue 9551 for honoring TierFilesOlderThanDays
+
+#### Az.Websites
+* Fixing a bug where some SiteConfig properties were not returned by Get-AzWebApp and Set-AzWebApp
+* Adds a new Location parameter to Get-AzDeletedWebApp and Restore-AzDeletedWebApp
+* Fixes a bug with cloning web app slots using New-AzWebApp -IncludeSourceWebAppSlots
+
 ## 2.4.0 - July 2019
 #### Az.Accounts
 * Add support for profile cmdlets
@@ -53,7 +162,7 @@
     - Handful of doc and example updates for Policy cmdlets
 
 #### Az.ServiceBus
-* Fix for issue #4938 - New-AzureRmServiceBusQueue returns BadRequest when setting MaxSizeInMegabytes
+* Fix for issue #4938 - New-AzServiceBusQueue returns BadRequest when setting MaxSizeInMegabytes
 
 #### Az.Sql
 * Add Instance Failover Group cmdlets from preview release to public release
@@ -99,24 +208,24 @@
 #### Az.EventGrid
 * Updated to use the 2019-06-01 API version.
 * New cmdlets:
-    - New-AzureRmEventGridDomain
+    - New-AzEventGridDomain
         - Creates a new Azure Event Grid Domain.
-    - Get-AzureRmEventGridDomain
+    - Get-AzEventGridDomain
         - Gets the details of an Event Grid Domain, or gets a list of all Event Grid Domains in the current Azure subscription.
-    - Remove-AzureRmEventGridDomain
+    - Remove-AzEventGridDomain
         - Removes an Azure Event Grid Domain.
-    - New-AzureRmEventGridDomainKey
+    - New-AzEventGridDomainKey
         - Regenerates the shared access key for an Azure Event Grid Domain.
-    - Get-AzureRmEventGridDomainKey
+    - Get-AzEventGridDomainKey
         - Gets the shared access keys used to publish events to an Event Grid Domain.
-    - New-AzureRmEventGridDomainTopic:
+    - New-AzEventGridDomainTopic:
         - Creates a new Azure Event Grid Domain Topic.
-    - Get-AzureRmEventGridDomainTopic
+    - Get-AzEventGridDomainTopic
         - Gets the details of an Event Grid Domain Topic, or gets a list of all Event Grid Domain Topics under specific Event Grid Domain in the current Azure
-    - Remove-AzureRmEventGridDomainTopic:
+    - Remove-AzEventGridDomainTopic:
         - Removes an existing Azure Event Grid Domain Topic.
 * Updated cmdlets:
-    - New-AzureRmEventGridSubscription/Update-AzureRmEventGridSubscription:
+    - New-AzEventGridSubscription/Update-AzEventGridSubscription:
         - Add new mandatory parameters to support piping for the new Event Grid Domain and Event Grid Domain Topic to allow creating new event subscription under these resources.
         - Add new mandatory parameters for specifying the new Event Grid Domain name and/or Event Grid Domain Topic name to allow creating new event subscription under these resources.
         - Add new Parameter sets for domains and domain topics to allow reusing existing parameters (e.g., EndPointType, SubjectBeginsWith, etc).
@@ -127,7 +236,7 @@
         - Disallow usage of 'All' in -IncludedEventType option and replace it with
     - Get-AzEventGridTopic, Get-AzEventGridDomain, Get-AzEventGridDomainTopic, Get-AzEventGridSubscription:
         - Add new optional parameters (Top, ODataQuery and NextLink) to support results pagination and filtering.
-    - Remove-AzureRmEventGridSubscription
+    - Remove-AzEventGridSubscription
         - Add new mandatory parameters to support piping for Event Grid Domain and Event Grid Domain Topic to allow removing existing event subscription under these resources.
         - Add new mandatory parameters for specifying the Event Grid Domain name and/or Event Grid Domain Topic name to allow removing existing event subscription under these resources.
 
@@ -182,7 +291,7 @@
     - Updated Set-AzVirtualNetworkGateway: Added optional switch parameter RemoveAadAuthentication to remove VpnClient AAD authentication options from Gateway.
 
 #### Az.OperationalInsights
-* Enable **pergb2018** pricing tier in 'New-AzureRmOperationalInsightsWorkspace' command
+* Enable **pergb2018** pricing tier in 'New-AzOperationalInsightsWorkspace' command
 
 #### Az.Resources
 * Support for additional Template Export options
@@ -382,7 +491,7 @@
 * Fix double dash in New-AzApplicationGatewayTrustedRootCertificate documentation
 
 #### Az.Resources
-* Add new cmdlet Get-AzureRmDenyAssignment for retrieving deny assignments
+* Add new cmdlet Get-AzDenyAssignment for retrieving deny assignments
 
 #### Az.Sql
 * Rename Advanced Threat Protection cmdlets to Advanced Data Security and enable Vulnerability Assessment by default
@@ -875,7 +984,7 @@ General availability for Az.RecoveryServices module.
 #### Az.Resources
 * Fix tagging for resource groups
     - More information here: https://github.com/Azure/azure-powershell/issues/8166
-* Fix issue where `Get-AzureRmRoleAssignment` doesn't respect -ErrorAction
+* Fix issue where `Get-AzRoleAssignment` doesn't respect -ErrorAction
     - More information here: https://github.com/Azure/azure-powershell/issues/8235
 
 #### Az.Sql
@@ -952,7 +1061,7 @@ General availability for Az.RecoveryServices module.
 #### Az.Resources
 * Fix incorrect examples in 'New-AzADAppCredential' and 'New-AzADSpCredential' reference documentation
 * Fix issue where path for '-TemplateFile' parameter was not being resolved before executing resource group deployment cmdlets
-* Az.Resources: Correct documentation for New-AzureRmPolicyDefinition -Mode default value
+* Az.Resources: Correct documentation for New-AzPolicyDefinition -Mode default value
 * Az.Resources: Fix for issue https://github.com/Azure/azure-powershell/issues/7522
 * Az.Resources: Fix for issue https://github.com/Azure/azure-powershell/issues/5747
 * Fix formatting issue with 'PSResourceGroupDeployment' object
@@ -1008,15 +1117,15 @@ General availability for Az.RecoveryServices module.
 #### Az.EventGrid
 * Updated to use the 2019-01-01 API version.
 * Update the following cmdlets to support new scenario in 2019-01-01 API version
-    - New-AzureRmEventGridSubscription: Add new optional parameters for specifying:
+    - New-AzEventGridSubscription: Add new optional parameters for specifying:
         - Event Time-To-Live,
         - Maximum number of delivery attempts for the events,
         - Dead letter endpoint.
-    - Update-AzureRmEventGridSubscription: Add new optional parameters for specifying:
+    - Update-AzEventGridSubscription: Add new optional parameters for specifying:
         - Event Time-To-Live,
         - Maximum number of delivery attempts for the events,
         - Dead letter endpoint.
-* Add new enum values (namely, storageQueue and hybridConnection) for EndpointType option in New-AzureRmEventGridSubscription and Update-AzureRmEventGridSubscription cmdlets.
+* Add new enum values (namely, storageQueue and hybridConnection) for EndpointType option in New-AzEventGridSubscription and Update-AzEventGridSubscription cmdlets.
 * Show warning message if creating or updating the event subscription is expected to entail manual action from user.
 
 #### Az.IotHub

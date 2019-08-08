@@ -74,7 +74,7 @@ PS C:\> $SecureStringPassword = ConvertTo-SecureString -String "password" -AsPla
 PS C:\> New-AzADAppCredential -ObjectId 1f89cf81-0146-4f4e-beae-2007d0668416 -Password $SecureStringPassword
 ```
 
-A new password credential is added to the existing appplication with object id '1f89cf81-0146-4f4e-beae-2007d0668416'.
+A new password credential is added to the existing application with object id '1f89cf81-0146-4f4e-beae-2007d0668416'.
 
 ### Example 2 - Create a new application credential using a certificate
 

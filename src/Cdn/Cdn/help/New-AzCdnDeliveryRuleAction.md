@@ -114,7 +114,7 @@ Accept wildcard characters: False
 
 ### -CustomHostname
 Host to redirect.
-Leave empty to use use the incoming host as the destination host.
+Leave empty to use the incoming host as the destination host.
 
 ```yaml
 Type: System.String

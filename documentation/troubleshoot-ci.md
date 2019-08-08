@@ -55,7 +55,7 @@ If collected Breaking Changes issues are expected (e.g. cmdlet was really change
 
 ### Message
 
-> **Test failures occured, check the files in artifacts/Test**
+> **Test failures occurred, check the files in artifacts/Test**
 
 ### Reasons
 

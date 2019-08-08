@@ -33,6 +33,9 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         public VirtualClusterCrudScenarioTests(ITestOutputHelper output) : base(output)
         {
+            base.resourceTypesToIgnoreApiVersion = new string[] {
+                "Microsoft.Sql/managedInstances"
+            };
         }
 
         [Fact]
