@@ -126,4 +126,7 @@
   <data name="RemoveService_ProcessMessage" xml:space="preserve">
     <value>Removing service</value>
   </data>
+  <data name="createService_InvalidKindMessage" xml:space="preserve">
+    <value>Invalid service kind. Valid values are fhir, fhir-Stu3 and fhir-R4.</value>
+  </data>
 </root>
