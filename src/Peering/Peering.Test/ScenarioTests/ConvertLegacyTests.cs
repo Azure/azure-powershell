@@ -19,9 +19,9 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
     using Xunit;
 
     /// <summary>
-    /// The set peering tests.
+    /// The get legacy tests.
     /// </summary>
-    public class SetPeeringTests
+    public class ConvertLegacyTests
     {
         /// <summary>
         /// The logger.
@@ -29,66 +29,35 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         private ServiceManagement.Common.Models.XunitTracingInterceptor logger;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SetPeeringTests"/> class.
+        /// Initializes a new instance of the <see cref="GetLegacyTests"/> class.
         /// </summary>
         /// <param name="output">
         /// The output.
         /// </param>
-        public SetPeeringTests(Xunit.Abstractions.ITestOutputHelper output)
+        public ConvertLegacyTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             this.logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
             ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(this.logger);
-            
         }
 
         /// <summary>
-        /// The test get and set use for peering service.
+        /// The test get legacy kind exchange amsterdam.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetAndSetUseForPeeringService()
+        public void TestConvertLegacyKindExchangeAshburn()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-GetAndSetUseForPeeringService");
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-ConvertLegacyKindExchangeAshburn");
         }
 
         /// <summary>
-        /// The test set new bandwidth.
+        /// The test get legacy kind direct amsterdam.
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetNewBandwidth()
+        public void TestConvertLegacyKindDirectAmsterdamWithNewConnection()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-SetNewBandwidth");
-        }
-
-        /// <summary>
-        /// The test set new bandwidth.
-        /// </summary>
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetNewIP()
-        {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-SetNewIP");
-        }
-
-        /// <summary>
-        /// The test set new bandwidth.
-        /// </summary>
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetNewIPv6()
-        {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-SetNewIPv6");
-        }
-
-        /// <summary>
-        /// The test set new bandwidth.
-        /// </summary>
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetNewMd5Hash()
-        {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-SetNewMd5Hash");
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-ConvertLegacyKindDirectAmsterdamWithNewConnection");
         }
     }
 }

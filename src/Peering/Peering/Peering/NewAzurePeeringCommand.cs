@@ -132,6 +132,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             Mandatory = true,
             HelpMessage = Constants.PeeringExchangeConnectionHelp,
             ParameterSetName = Constants.Exchange)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = Constants.PeeringExchangeConnectionHelp,
+            ParameterSetName = Constants.ParameterSetNameConvertLegacyPeering)]
         [ValidateNotNull]
         public PSExchangeConnection[] ExchangeConnection { get; set; }
 
@@ -142,6 +146,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             Mandatory = true,
             HelpMessage = Constants.PeeringDirectConnectionHelp,
             ParameterSetName = Constants.Direct)]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = Constants.ParameterSetNameConvertLegacyPeering,
+            HelpMessage = Constants.PeeringDirectConnectionHelp)]
         [ValidateNotNull]
         public PSDirectConnection[] DirectConnection { get; set; }
 
@@ -402,26 +410,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                 throw new PSArgumentNullException(string.Format(Resources.Error_UnableToConvertLegacy, "LegacyPeering"));
             if (classicPeering.Exchange.Connections == null)
                 throw new PSArgumentNullException(string.Format(Resources.Error_UnableToConvertLegacy, "Connection"));
+
             var connections = classicPeering.Exchange.Connections.ToList();
+            foreach (var connection in classicPeering.Exchange.Connections)
+            {
+                connection.ConnectionIdentifier = Guid.NewGuid().ToString();
+            }
+            if (this.ExchangeConnection != null)
+            {
+                this.ExchangeConnection.ToList().ForEach(x => connections.Add(x));
+            }
 
             var newPeering = new PSPeering
             {
                 Location = this.GetAzureRegion(classicPeering.PeeringLocation, Constants.Exchange),
                 PeeringLocation = classicPeering.PeeringLocation,
                 Kind = classicPeering.Kind ?? Constants.Exchange,
-                Sku =
-                                         classicPeering.Sku ?? new PSPeeringSku { Name = Constants.BasicExchangeFree },
+                Sku = classicPeering.Sku ?? new PSPeeringSku { Name = Constants.BasicExchangeFree },
                 Exchange = new PSPeeringPropertiesExchange
                 {
                     Connections = connections,
                     PeerAsn = new PSSubResource(this.PeerAsnResourceId)
                 }
             };
-
-            foreach (var connection in newPeering.Exchange.Connections)
-            {
-                connection.ConnectionIdentifier = Guid.NewGuid().ToString();
-            }
 
             return newPeering;
         }
@@ -442,6 +453,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             if (classicPeering.Direct.Connections == null)
                 throw new PSArgumentNullException(string.Format(Resources.Error_UnableToConvertLegacy, "Connection"));
             var connections = classicPeering.Direct.Connections.ToList();
+            if (this.DirectConnection != null)
+            {
+                this.DirectConnection.ToList().ForEach(x => connections.Add(x));
+            }
 
             var newPeering = new PSPeering
             {
