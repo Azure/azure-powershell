@@ -91,7 +91,7 @@ LastUpdated      : 5/2/2019 5:04:27 PM
 LastStatusChange : 4/30/2019 11:16:20 PM
 ```
 
-Gets the connectivity status of the different resources on which ApiMAnagement service depends upon.
+Gets the connectivity status of the different resources on which ApiManagement service depends upon.
 
 ## PARAMETERS
 

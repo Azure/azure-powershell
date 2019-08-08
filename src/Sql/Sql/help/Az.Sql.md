@@ -225,6 +225,12 @@ Gets the vulnerability assessment settings of a managed database.
 ### [Get-AzSqlInstanceKeyVaultKey](Get-AzSqlInstanceKeyVaultKey.md)
 Gets a SQL managed instance's Key Vault keys.
 
+### [Get-AzSqlInstancePool](Get-AzSqlInstancePool.md)
+Returns information about the Azure SQL Instance pool.
+
+### [Get-AzSqlInstancePoolUsage](Get-AzSqlInstancePoolUsage.md)
+Returns information about an Azure SQL Instance pool's usage.
+
 ### [Get-AzSqlInstanceTransparentDataEncryptionProtector](Get-AzSqlInstanceTransparentDataEncryptionProtector.md)
 Gets the Transparent Data Encryption (TDE) protector for a SQL managed instance.
 
@@ -348,6 +354,9 @@ Creates an Azure SQL Database Managed Instance.
 ### [New-AzSqlInstanceDatabase](New-AzSqlInstanceDatabase.md)
 Creates an Azure SQL Managed Instance database.
 
+### [New-AzSqlInstancePool](New-AzSqlInstancePool.md)
+Creates an Azure SQL Instance pool.
+
 ### [New-AzSqlServer](New-AzSqlServer.md)
 Creates a SQL Database server.
 
@@ -422,6 +431,9 @@ Removes the information types and sensitivity labels of columns in the Azure SQL
 
 ### [Remove-AzSqlInstanceKeyVaultKey](Remove-AzSqlInstanceKeyVaultKey.md)
 Removes a Key Vault key from a SQL managed instance
+
+### [Remove-AzSqlInstancePool](Remove-AzSqlInstancePool.md)
+Removes an Azure SQL Instance pool.
 
 ### [Remove-AzSqlServer](Remove-AzSqlServer.md)
 Removes an Azure SQL Database server.
@@ -540,6 +552,9 @@ Sets the information types and sensitivity labels of columns in the Azure SQL ma
 ### [Set-AzSqlInstanceDatabaseVulnerabilityAssessmentRuleBaseline](Set-AzSqlInstanceDatabaseVulnerabilityAssessmentRuleBaseline.md)
 Sets the vulnerability assessment rule baseline.
 
+### [Set-AzSqlInstancePool](Set-AzSqlInstancePool.md)
+Sets properties for an Azure SQL Instance pool.
+
 ### [Set-AzSqlInstanceTransparentDataEncryptionProtector](Set-AzSqlInstanceTransparentDataEncryptionProtector.md)
 Sets the Transparent Data Encryption (TDE) protector for a SQL managed instance.
 
@@ -635,6 +650,6 @@ Updates an Azure SQL Database Sync Member.
 
 ### [Update-AzSqlSyncSchema](Update-AzSqlSyncSchema.md)
 Update the sync schema for a sync member database or a sync hub database.
-It will get the the latest database schema from the real database and then use it refresh the schema cached by Sync metadata database.
+It will get the latest database schema from the real database and then use it refresh the schema cached by Sync metadata database.
 If "SyncMemberName" is specified, it will refresh the member database schema; if not, it will refresh the hub database schema.
 

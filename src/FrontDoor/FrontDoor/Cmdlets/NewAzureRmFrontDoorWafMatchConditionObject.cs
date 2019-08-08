@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         public bool NegateCondition { get; set; }
 
         /// <summary>
-        /// Tranforms value.
+        /// Transforms value.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Transforms to apply. Possible values include: 'Lowercase', 'Uppercase', 'Trim', 'UrlDecode', 'UrlEncode', 'RemoveNulls'.")]
         [PSArgumentCompleter("Lowercase", "Uppercase", "Trim", "UrlDecode", "UrlEncode", "RemoveNulls")]

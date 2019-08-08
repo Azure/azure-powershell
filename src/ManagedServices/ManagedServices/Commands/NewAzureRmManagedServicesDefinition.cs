@@ -36,16 +36,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands
         [Parameter(ParameterSetName = ByPlanParameterSet, Mandatory = true, HelpMessage = "The name of the Registration Definition.")]
         public string Name { get; set; }
 
-        [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = true, HelpMessage = "The Managedby Tenant Identifier.")]
-        [Parameter(ParameterSetName = ByPlanParameterSet, Mandatory = true, HelpMessage = "The Managedby Tenant Identifier.")]
+        [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = true, HelpMessage = "The ManagedBy Tenant Identifier.")]
+        [Parameter(ParameterSetName = ByPlanParameterSet, Mandatory = true, HelpMessage = "The ManagedBy Tenant Identifier.")]
         public string ManagedByTenantId { get; set; }
 
-        [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = true, HelpMessage = "The Managedby Principal Identifier.")]
-        [Parameter(ParameterSetName = ByPlanParameterSet, Mandatory = true, HelpMessage = "The Managedby Principal Identifier.")]
+        [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = true, HelpMessage = "The ManagedBy Principal Identifier.")]
+        [Parameter(ParameterSetName = ByPlanParameterSet, Mandatory = true, HelpMessage = "The ManagedBy Principal Identifier.")]
         public string PrincipalId { get; set; }
 
-        [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = true, HelpMessage = "The Managed Service Providers's Role Identifier.")]
-        [Parameter(ParameterSetName = ByPlanParameterSet, Mandatory = true, HelpMessage = "The Managed Service Providers's Role Identifier.")]
+        [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = true, HelpMessage = "The Managed Service Provider's Role Identifier.")]
+        [Parameter(ParameterSetName = ByPlanParameterSet, Mandatory = true, HelpMessage = "The Managed Service Provider's Role Identifier.")]
         public string RoleDefinitionId { get; set; }
 
         [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = false, HelpMessage = "The description of the Registration Definition.")]

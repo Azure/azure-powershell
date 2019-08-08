@@ -142,7 +142,7 @@
     <value>The RDP file cannot be generated because the network interface of the virtual machine does not reference an InboundNatRule of a public load balancer.</value>
   </data>
   <data name="VirtualMachineReferencesInternalNetworkInterface" xml:space="preserve">
-    <value>The RDP file cannot be generated because the network interface of the virtual machine does not reference a PublicIP or an InboungNatRule of the load balancer.</value>
+    <value>The RDP file cannot be generated because the network interface of the virtual machine does not reference a PublicIP or an InboundNatRule of the load balancer.</value>
   </data>
   <data name="VirtualMachineRemovalCaption" xml:space="preserve">
     <value>Virtual machine removal operation</value>
@@ -354,7 +354,7 @@ The file needs to be a PowerShell script (.ps1 or .psm1).</value>
     <value>Found existing page blob. Resuming upload...</value>
   </data>
   <data name="PSSyncOutputEventsRetryingAfterANetworkDisruption" xml:space="preserve">
-    <value>Network disruption occured, retrying.</value>
+    <value>Network disruption occurred, retrying.</value>
   </data>
   <data name="PSSyncOutputEventsUploadFailedWithException" xml:space="preserve">
     <value>Upload failed with exceptions:</value>

@@ -19,6 +19,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 {
     [CmdletDeprecation(ReplacementCmdletName = VerbsCommon.Get +
+        "-" +
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix +
         DefinitionsCommon.ServerAuditCmdletsSuffix)]
     [CmdletOutputBreakingChange(

@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed miscellaneous typos across module
+
+## Version 1.6.1
+* Update common code to use latest version of ClientRuntime
 
 ## Version 1.6.0
 * Add support for profile cmdlets

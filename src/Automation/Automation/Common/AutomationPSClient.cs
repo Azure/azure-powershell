@@ -856,10 +856,10 @@ namespace Microsoft.Azure.Commands.Automation.Common
             string password,
             string description)
         {
-            var exisitngCredential = this.GetCredential(resourceGroupName, automationAccountName, name);
+            var existingCredential = this.GetCredential(resourceGroupName, automationAccountName, name);
             var credentialUpdateParams = new CredentialUpdateParameters();
             credentialUpdateParams.Name = name;
-            credentialUpdateParams.Description = description ?? exisitngCredential.Description;
+            credentialUpdateParams.Description = description ?? existingCredential.Description;
 
             if (!string.IsNullOrWhiteSpace(userName))
             {

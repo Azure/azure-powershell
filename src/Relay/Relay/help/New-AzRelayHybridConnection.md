@@ -15,7 +15,7 @@ Creates a HybridConnection in the specified Relay namespace.
 ### HybridConnectionInputObjectSet
 ```
 New-AzRelayHybridConnection [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
- [-InputObject <PSHybridConnectionAttibutes>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-InputObject <PSHybridConnectionAttributes>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 HybridConnections object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttibutes
+Type: Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttributes
 Parameter Sets: HybridConnectionInputObjectSet
 Aliases:
 
@@ -216,13 +216,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttibutes
+### Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttributes
 
 ### System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttibutes
+### Microsoft.Azure.Commands.Relay.Models.PSHybridConnectionAttributes
 
 ## NOTES
 

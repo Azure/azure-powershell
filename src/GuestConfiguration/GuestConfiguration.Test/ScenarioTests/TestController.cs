@@ -25,6 +25,8 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Test.ScenarioTests
 
     using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Management.GuestConfiguration;
+    using Microsoft.Azure.Management.PolicyInsights_2018_04;
+    using Microsoft.Azure.Management.PolicyInsights_2018_04.Models;
     using Microsoft.Azure.Test.HttpRecorder;
     using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -37,6 +39,8 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Test.ScenarioTests
         public GuestConfigurationClient GuestConfigurationClient { get; private set; }
 
         public PolicyClient PolicyClient { get; private set; }
+
+        public PolicyInsightsClient PolicyInsightsClient { get; private set; }
 
         public static TestController NewInstance => new TestController();
 
@@ -83,7 +87,8 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Test.ScenarioTests
         {
             GuestConfigurationClient = GetGuestConfigurationClient(context);
             PolicyClient = GetPolicyClient(context);
-            _helper.SetupManagementClients(GuestConfigurationClient, PolicyClient);
+            PolicyInsightsClient = GetPolicyInsightsClient(context);
+            _helper.SetupManagementClients(GuestConfigurationClient, PolicyClient, PolicyInsightsClient);
         }
 
         private static GuestConfigurationClient GetGuestConfigurationClient(MockContext context)
@@ -94,6 +99,11 @@ namespace Microsoft.Azure.Commands.GuestConfiguration.Test.ScenarioTests
         private static PolicyClient GetPolicyClient(MockContext context)
         {
             return context.GetServiceClient<PolicyClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private static PolicyInsightsClient GetPolicyInsightsClient(MockContext context)
+        {
+            return context.GetServiceClient<PolicyInsightsClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }

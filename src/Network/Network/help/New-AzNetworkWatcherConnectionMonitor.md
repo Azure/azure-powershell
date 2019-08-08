@@ -39,7 +39,7 @@ New-AzNetworkWatcherConnectionMonitor -Location <String> -Name <String> -SourceR
 ```
 
 ## DESCRIPTION
-The New-AzNetworkWatcherConnectionMonitor cmdlet rcreates a connection monitor for a specified source and destination.
+The New-AzNetworkWatcherConnectionMonitor cmdlet creates a connection monitor for a specified source and destination.
 
 ## EXAMPLES
 
