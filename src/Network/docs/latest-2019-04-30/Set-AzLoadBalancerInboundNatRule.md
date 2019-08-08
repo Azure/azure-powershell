@@ -834,7 +834,7 @@ To create the parameters described below, construct a hash table containing the 
         - `[SkuName <PublicIPAddressSkuName?>]`: Name of a public IP address SKU.
         - `[Zone <String[]>]`: A list of availability zones denoting the IP allocated for the resource needs to come from.
       - `[Subnet <ISubnet>]`: Subnet bound to the IP configuration.
-      - `[VirtualNetworkTap <IVirtualNetworkTap[]>]`: The reference to Virtual Network Taps.
+      - `[VnetTap <IVirtualNetworkTap[]>]`: The reference to Virtual Network Taps.
     - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
     - `[Primary <Boolean?>]`: Gets whether this is a primary customer address on the network interface.
     - `[PrivateIPAddress <String>]`: Private IP address of the IP configuration.
@@ -843,7 +843,7 @@ To create the parameters described below, construct a hash table containing the 
     - `[ProvisioningState <String>]`: The provisioning state of the network interface IP configuration. Possible values are: 'Updating', 'Deleting', and 'Failed'.
     - `[PublicIPAddress <IPublicIPAddress>]`: Public IP address bound to the IP configuration.
     - `[Subnet <ISubnet>]`: Subnet bound to the IP configuration.
-    - `[VirtualNetworkTap <IVirtualNetworkTap[]>]`: The reference to Virtual Network Taps.
+    - `[VnetTap <IVirtualNetworkTap[]>]`: The reference to Virtual Network Taps.
   - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
   - `[Name <String>]`: Name of the backend address pool that is unique within an Application Gateway.
   - `[ProvisioningState <String>]`: Provisioning state of the backend address pool resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
@@ -996,7 +996,7 @@ To create the parameters described below, construct a hash table containing the 
         - `[SkuName <PublicIPAddressSkuName?>]`: Name of a public IP address SKU.
         - `[Zone <String[]>]`: A list of availability zones denoting the IP allocated for the resource needs to come from.
       - `[Subnet <ISubnet>]`: Subnet bound to the IP configuration.
-      - `[VirtualNetworkTap <IVirtualNetworkTap[]>]`: The reference to Virtual Network Taps.
+      - `[VnetTap <IVirtualNetworkTap[]>]`: The reference to Virtual Network Taps.
     - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
     - `[Name <String>]`: Name of the backend address pool that is unique within an Application Gateway.
     - `[ProvisioningState <String>]`: Provisioning state of the backend address pool resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
@@ -1024,7 +1024,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[ProvisioningState <String>]`: Gets the provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
   - `[PublicIPAddress <IPublicIPAddress>]`: Public IP address bound to the IP configuration.
   - `[Subnet <ISubnet>]`: Subnet bound to the IP configuration.
-  - `[VirtualNetworkTap <IVirtualNetworkTap[]>]`: The reference to Virtual Network Taps.
+  - `[VnetTap <IVirtualNetworkTap[]>]`: The reference to Virtual Network Taps.
 
 #### LOADBALANCERBACKENDADDRESSPOOL <IBackendAddressPool[]>: The reference of LoadBalancerBackendAddressPool resource.
   - `[Id <String>]`: Resource ID.
@@ -1174,7 +1174,7 @@ To create the parameters described below, construct a hash table containing the 
         - `[SkuName <PublicIPAddressSkuName?>]`: Name of a public IP address SKU.
         - `[Zone <String[]>]`: A list of availability zones denoting the IP allocated for the resource needs to come from.
       - `[Subnet <ISubnet>]`: Subnet bound to the IP configuration.
-      - `[VirtualNetworkTap <IVirtualNetworkTap[]>]`: The reference to Virtual Network Taps.
+      - `[VnetTap <IVirtualNetworkTap[]>]`: The reference to Virtual Network Taps.
     - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
     - `[Name <String>]`: Name of the backend address pool that is unique within an Application Gateway.
     - `[ProvisioningState <String>]`: Provisioning state of the backend address pool resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
@@ -1202,7 +1202,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[ProvisioningState <String>]`: Gets the provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
   - `[PublicIPAddress <IPublicIPAddress>]`: Public IP address bound to the IP configuration.
   - `[Subnet <ISubnet>]`: Subnet bound to the IP configuration.
-  - `[VirtualNetworkTap <IVirtualNetworkTap[]>]`: The reference to Virtual Network Taps.
+  - `[VnetTap <IVirtualNetworkTap[]>]`: The reference to Virtual Network Taps.
 
 #### PUBLICIPADDRESS <IPublicIPAddress>: Public IP address bound to the IP configuration.
   - `[Id <String>]`: Resource ID.
@@ -1411,6 +1411,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
+  - `[AdditionalVnetTap <IVirtualNetworkTap[]>]`: The reference to Virtual Network Taps.
   - `[ApplicationGatewayBackendAddressPool <IApplicationGatewayBackendAddressPool[]>]`: The reference of ApplicationGatewayBackendAddressPool resource.
     - `[Id <String>]`: Resource ID.
     - `[BackendAddress <IApplicationGatewayBackendAddress[]>]`: Backend addresses
@@ -1566,7 +1567,7 @@ To create the parameters described below, construct a hash table containing the 
           - `[SkuName <PublicIPAddressSkuName?>]`: Name of a public IP address SKU.
           - `[Zone <String[]>]`: A list of availability zones denoting the IP allocated for the resource needs to come from.
         - `[Subnet <ISubnet>]`: Subnet bound to the IP configuration.
-        - `[VirtualNetworkTap <IVirtualNetworkTap[]>]`: The reference to Virtual Network Taps.
+        - `[VnetTap <IVirtualNetworkTap[]>]`: The reference to Virtual Network Taps.
       - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
       - `[Primary <Boolean?>]`: Gets whether this is a primary customer address on the network interface.
       - `[PrivateIPAddress <String>]`: Private IP address of the IP configuration.
@@ -1575,36 +1576,35 @@ To create the parameters described below, construct a hash table containing the 
       - `[ProvisioningState <String>]`: The provisioning state of the network interface IP configuration. Possible values are: 'Updating', 'Deleting', and 'Failed'.
       - `[PublicIPAddress <IPublicIPAddress>]`: Public IP address bound to the IP configuration.
       - `[Subnet <ISubnet>]`: Subnet bound to the IP configuration.
-      - `[VirtualNetworkTap <IVirtualNetworkTap[]>]`: The reference to Virtual Network Taps.
+      - `[VnetTap <IVirtualNetworkTap[]>]`: The reference to Virtual Network Taps.
     - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
     - `[Name <String>]`: Name of the backend address pool that is unique within an Application Gateway.
     - `[ProvisioningState <String>]`: Provisioning state of the backend address pool resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
     - `[Type <String>]`: Type of the resource.
   - `[ApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: Application security groups in which the IP configuration is included.
-  - `[DestinationLoadBalancerFrontEndIPConfigurationEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
-  - `[DestinationLoadBalancerFrontEndIPConfigurationId <String>]`: Resource ID.
-  - `[DestinationLoadBalancerFrontEndIPConfigurationName <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  - `[DestinationLoadBalancerFrontEndIPConfigurationPropertiesPrivateIpaddress <String>]`: The private IP address of the IP configuration.
-  - `[DestinationLoadBalancerFrontEndIPConfigurationPropertiesPrivateIpallocationMethod <IPAllocationMethod?>]`: The Private IP allocation method.
-  - `[DestinationLoadBalancerFrontEndIPConfigurationPropertiesProvisioningState <String>]`: Gets the provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-  - `[DestinationLoadBalancerFrontEndIPConfigurationPropertiesPublicIpaddress <IPublicIPAddress>]`: The reference of the Public IP resource.
-  - `[DestinationLoadBalancerFrontEndIPConfigurationPropertiesSubnet <ISubnet>]`: The reference of the subnet resource.
-  - `[DestinationLoadBalancerFrontEndIPConfigurationZone <String[]>]`: A list of availability zones denoting the IP allocated for the resource needs to come from.
-  - `[DestinationNetworkInterfaceIPConfigurationEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
-  - `[DestinationNetworkInterfaceIPConfigurationId <String>]`: Resource ID.
-  - `[DestinationNetworkInterfaceIPConfigurationName <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  - `[DestinationNetworkInterfaceIPConfigurationPropertiesPrivateIpaddress <String>]`: Private IP address of the IP configuration.
-  - `[DestinationNetworkInterfaceIPConfigurationPropertiesPrivateIpallocationMethod <IPAllocationMethod?>]`: The private IP address allocation method.
-  - `[DestinationNetworkInterfaceIPConfigurationPropertiesProvisioningState <String>]`: The provisioning state of the network interface IP configuration. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-  - `[DestinationNetworkInterfaceIPConfigurationPropertiesPublicIpaddress <IPublicIPAddress>]`: Public IP address bound to the IP configuration.
-  - `[DestinationNetworkInterfaceIPConfigurationPropertiesSubnet <ISubnet>]`: Subnet bound to the IP configuration.
+  - `[DestinationLoadBalancerEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
+  - `[DestinationLoadBalancerId <String>]`: Resource ID.
+  - `[DestinationLoadBalancerName <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
+  - `[DestinationLoadBalancerPrivateIPAddress <String>]`: The private IP address of the IP configuration.
+  - `[DestinationLoadBalancerPrivateIPAllocationMethod <IPAllocationMethod?>]`: The Private IP allocation method.
+  - `[DestinationLoadBalancerProvisioningState <String>]`: Gets the provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+  - `[DestinationLoadBalancerPublicIPAddress <IPublicIPAddress>]`: The reference of the Public IP resource.
+  - `[DestinationLoadBalancerSubnet <ISubnet>]`: The reference of the subnet resource.
+  - `[DestinationLoadBalancerZone <String[]>]`: A list of availability zones denoting the IP allocated for the resource needs to come from.
+  - `[DestinationNetworkInterfaceEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
+  - `[DestinationNetworkInterfaceId <String>]`: Resource ID.
+  - `[DestinationNetworkInterfaceName <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
+  - `[DestinationNetworkInterfacePrivateIPAddress <String>]`: Private IP address of the IP configuration.
+  - `[DestinationNetworkInterfacePrivateIPAllocationMethod <IPAllocationMethod?>]`: The private IP address allocation method.
+  - `[DestinationNetworkInterfaceProvisioningState <String>]`: The provisioning state of the network interface IP configuration. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+  - `[DestinationNetworkInterfacePublicIPAddress <IPublicIPAddress>]`: Public IP address bound to the IP configuration.
+  - `[DestinationNetworkInterfaceSubnet <ISubnet>]`: Subnet bound to the IP configuration.
   - `[DestinationPort <Int32?>]`: The VXLAN destination port that will receive the tapped traffic.
   - `[Etag <String>]`: Gets a unique read-only string that changes whenever the resource is updated.
   - `[LoadBalancerBackendAddressPool <IBackendAddressPool[]>]`: The reference of LoadBalancerBackendAddressPool resource.
   - `[LoadBalancerInboundNatRule <IInboundNatRule[]>]`: A list of references of LoadBalancerInboundNatRules.
   - `[Primary <Boolean?>]`: Gets whether this is a primary customer address on the network interface.
   - `[PrivateIPAddressVersion <IPVersion?>]`: Available from Api-Version 2016-03-30 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.
-  - `[PropertiesDestinationNetworkInterfaceIPConfigurationPropertiesVirtualNetworkTaps <IVirtualNetworkTap[]>]`: The reference to Virtual Network Taps.
   - `[PublicIPPrefixId <String>]`: Resource ID.
 
 ## RELATED LINKS

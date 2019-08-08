@@ -266,7 +266,7 @@ To create the parameters described below, construct a hash table containing the 
 #### TOPOLOGY <ITopologyParameters>: Parameters that define the representation of topology.
   - `[TargetResourceGroupName <String>]`: The name of the target resource group to perform topology on.
   - `[TargetSubnetId <String>]`: Resource ID.
-  - `[TargetVirtualNetworkId <String>]`: Resource ID.
+  - `[TargetVnetId <String>]`: Resource ID.
 
 ## RELATED LINKS
 

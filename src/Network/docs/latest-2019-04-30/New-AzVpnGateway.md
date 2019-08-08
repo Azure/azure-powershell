@@ -87,7 +87,7 @@ The BGP speaker's ASN.
 ```yaml
 Type: System.Int64
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Aliases: Asn
 
 Required: False
 Position: Named
@@ -119,7 +119,7 @@ The weight added to routes learned from this BGP speaker.
 ```yaml
 Type: System.Int32
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Aliases: PeerWeight, BgpPeeringWeight
 
 Required: False
 Position: Named
@@ -420,9 +420,9 @@ To create the parameters described below, construct a hash table containing the 
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[BgpSettingAsn <Int64?>]`: The BGP speaker's ASN.
-  - `[BgpSettingBgpPeeringAddress <String>]`: The BGP peering address and BGP identifier of this BGP speaker.
-  - `[BgpSettingPeerWeight <Int32?>]`: The weight added to routes learned from this BGP speaker.
+  - `[BgpAsn <Int64?>]`: The BGP speaker's ASN.
+  - `[BgpPeerWeight <Int32?>]`: The weight added to routes learned from this BGP speaker.
+  - `[BgpPeeringAddress <String>]`: The BGP peering address and BGP identifier of this BGP speaker.
   - `[Connection <IVpnConnection[]>]`: List of all vpn connections to the gateway.
     - `[Id <String>]`: Resource ID.
     - `[ConnectionBandwidth <Int32?>]`: Expected bandwidth in MBPS.

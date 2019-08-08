@@ -219,7 +219,7 @@ To construct, see NOTES section for ROUTE properties and create a hash table.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVirtualHubRoute[]
 Parameter Sets: UpdateExpanded
-Aliases:
+Aliases: RouteTable
 
 Required: False
 Position: Named
@@ -302,7 +302,7 @@ To construct, see NOTES section for VNETCONNECTION properties and create a hash 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IHubVirtualNetworkConnection[]
 Parameter Sets: UpdateExpanded
-Aliases: VirtualNetworkConnection
+Aliases: VirtualNetworkConnection, HubVnetConnection
 
 Required: False
 Position: Named
@@ -391,17 +391,17 @@ To create the parameters described below, construct a hash table containing the 
   - `[AddressPrefix <String>]`: Address-prefix for this VirtualHub.
   - `[ExpressRouteGatewayId <String>]`: Resource ID.
   - `[P2SVpnGatewayId <String>]`: Resource ID.
-  - `[RouteTableRoute <IVirtualHubRoute[]>]`: List of all routes.
+  - `[Route <IVirtualHubRoute[]>]`: List of all routes.
     - `[AddressPrefix <String[]>]`: List of all addressPrefixes.
     - `[NextHopIPAddress <String>]`: NextHop ip address.
-  - `[VirtualNetworkConnection <IHubVirtualNetworkConnection[]>]`: List of all vnet connections with this VirtualHub.
+  - `[VirtualWanId <String>]`: Resource ID.
+  - `[VnetConnection <IHubVirtualNetworkConnection[]>]`: List of all vnet connections with this VirtualHub.
     - `[Id <String>]`: Resource ID.
     - `[AllowHubToRemoteVnetTransit <Boolean?>]`: VirtualHub to RemoteVnet transit to enabled or not.
     - `[AllowRemoteVnetToUseHubVnetGateway <Boolean?>]`: Allow RemoteVnet to use Virtual Hub's gateways.
     - `[EnableInternetSecurity <Boolean?>]`: Enable internet security
     - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-    - `[RemoteVirtualNetworkId <String>]`: Resource ID.
-  - `[VirtualWanId <String>]`: Resource ID.
+    - `[RemoteVnetId <String>]`: Resource ID.
   - `[VpnGatewayId <String>]`: Resource ID.
 
 #### VNETCONNECTION <IHubVirtualNetworkConnection[]>: List of all vnet connections with this VirtualHub.
@@ -410,7 +410,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[AllowRemoteVnetToUseHubVnetGateway <Boolean?>]`: Allow RemoteVnet to use Virtual Hub's gateways.
   - `[EnableInternetSecurity <Boolean?>]`: Enable internet security
   - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  - `[RemoteVirtualNetworkId <String>]`: Resource ID.
+  - `[RemoteVnetId <String>]`: Resource ID.
 
 ## RELATED LINKS
 

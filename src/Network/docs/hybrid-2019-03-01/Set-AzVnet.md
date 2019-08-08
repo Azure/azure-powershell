@@ -480,8 +480,8 @@ To create the parameters described below, construct a hash table containing the 
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[AddressSpaceAddressPrefix <String[]>]`: A list of address blocks reserved for this virtual network in CIDR notation.
-  - `[DhcpOptionDnsServer <String[]>]`: The list of DNS servers IP addresses.
+  - `[AddressPrefix <String[]>]`: A list of address blocks reserved for this virtual network in CIDR notation.
+  - `[DnsServer <String[]>]`: The list of DNS servers IP addresses.
   - `[EnableDdosProtection <Boolean?>]`: Indicates if DDoS protection is enabled for all the protected resources in a Virtual Network.
   - `[EnableVMProtection <Boolean?>]`: Indicates if Vm protection is enabled for all the subnets in a Virtual Network.
   - `[Etag <String>]`: Gets a unique read-only string that changes whenever the resource is updated.
@@ -489,13 +489,13 @@ To create the parameters described below, construct a hash table containing the 
     - `[Id <String>]`: Resource ID.
     - `[AllowForwardedTraffic <Boolean?>]`: Whether the forwarded traffic from the VMs in the local virtual network will be allowed/disallowed in remote virtual network.
     - `[AllowGatewayTransit <Boolean?>]`: If gateway links can be used in remote virtual networking to link to this virtual network.
-    - `[AllowVirtualNetworkAccess <Boolean?>]`: Whether the VMs in the local virtual network space would be able to access the VMs in remote virtual network space.
+    - `[AllowVnetAccess <Boolean?>]`: Whether the VMs in the local virtual network space would be able to access the VMs in remote virtual network space.
     - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
     - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
     - `[PeeringState <VirtualNetworkPeeringState?>]`: The status of the virtual network peering. Possible values are 'Initiated', 'Connected', and 'Disconnected'.
     - `[ProvisioningState <String>]`: The provisioning state of the resource.
     - `[RemoteAddressSpaceAddressPrefix <String[]>]`: A list of address blocks reserved for this virtual network in CIDR notation.
-    - `[RemoteVirtualNetworkId <String>]`: Resource ID.
+    - `[RemoteVnetId <String>]`: Resource ID.
     - `[UseRemoteGateway <Boolean?>]`: If remote gateways can be used on this virtual network. If the flag is set to true, and allowGatewayTransit on remote peering is also true, virtual network will use gateways of remote virtual network for transit. Only one peering can have this flag set to true. This flag cannot be set if virtual network already has a gateway.
   - `[ProvisioningState <String>]`: The provisioning state of the PublicIP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
   - `[ResourceGuid <String>]`: The resourceGuid property of the Virtual Network resource.
@@ -563,13 +563,13 @@ To create the parameters described below, construct a hash table containing the 
   - `[Id <String>]`: Resource ID.
   - `[AllowForwardedTraffic <Boolean?>]`: Whether the forwarded traffic from the VMs in the local virtual network will be allowed/disallowed in remote virtual network.
   - `[AllowGatewayTransit <Boolean?>]`: If gateway links can be used in remote virtual networking to link to this virtual network.
-  - `[AllowVirtualNetworkAccess <Boolean?>]`: Whether the VMs in the local virtual network space would be able to access the VMs in remote virtual network space.
+  - `[AllowVnetAccess <Boolean?>]`: Whether the VMs in the local virtual network space would be able to access the VMs in remote virtual network space.
   - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
   - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
   - `[PeeringState <VirtualNetworkPeeringState?>]`: The status of the virtual network peering. Possible values are 'Initiated', 'Connected', and 'Disconnected'.
   - `[ProvisioningState <String>]`: The provisioning state of the resource.
   - `[RemoteAddressSpaceAddressPrefix <String[]>]`: A list of address blocks reserved for this virtual network in CIDR notation.
-  - `[RemoteVirtualNetworkId <String>]`: Resource ID.
+  - `[RemoteVnetId <String>]`: Resource ID.
   - `[UseRemoteGateway <Boolean?>]`: If remote gateways can be used on this virtual network. If the flag is set to true, and allowGatewayTransit on remote peering is also true, virtual network will use gateways of remote virtual network for transit. Only one peering can have this flag set to true. This flag cannot be set if virtual network already has a gateway.
 
 ## RELATED LINKS

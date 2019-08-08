@@ -520,6 +520,10 @@ directive:
       parameter-name: (.*)VirtualNetwork(.*)
     set:
       parameter-name: $1Vnet$2
+  - where:
+      property-name: (.*)VirtualNetwork(.*)
+    set:
+      property-name: $1Vnet$2
 
 # Parameter Rename
 ## Name
@@ -894,23 +898,30 @@ directive:
     set:
       alias: ConfigureOnly
   - where:
-      verb: New
       subject: PublicIPPrefix
       parameter-name: PublicIPAddressVersion
     set:
-      alias: IpAddressVersion
+      alias: IPAddressVersion
   - where:
-      verb: New
       subject: Vnet
       parameter-name: AddressSpaceAddressPrefix
     set:
       parameter-name: AddressPrefix
   - where:
-      verb: New
+      model-name: VirtualNetwork
+      property-name: AddressSpaceAddressPrefix
+    set:
+      property-name: AddressPrefix
+  - where:
       subject: Vnet
       parameter-name: DhcpOptionDnsServer
     set:
       parameter-name: DnsServer
+  - where:
+      model-name: VirtualNetwork
+      property-name: DhcpOptionDnsServer
+    set:
+      property-name: DnsServer
   - where: # REMOVE BEFORE RELEASE: These parameters are expanded into their properties as separate parameters
       verb: New
       subject: VnetTap
@@ -1178,31 +1189,28 @@ directive:
     set:
       property-name: AddressPrefix
   - where:
-      verb: ^New$|^Set$
-      subject: ^LocalNetworkGateway$|^VnetGateway$|^VpnSite$
+      subject: ^LocalNetworkGateway$|^VnetGateway$|^VpnSite$|^VnetGatewayConnection$|^VpnGateway$
       parameter-name: ^BgpSettingAsn$|^BgpPropertyAsn$
     set:
       parameter-name: BgpAsn
       alias: Asn
   - where:
-      model-name: ^LocalNetworkGateway$|^VirtualNetworkGateway$|^VpnSite$
+      model-name: ^LocalNetworkGateway$|^VirtualNetworkGateway$|^VpnSite$|^VirtualNetworkGatewayConnection$|^VpnGateway$
       property-name: ^BgpSettingAsn$|^BgpPropertyAsn$
     set:
       property-name: BgpAsn
   - where:
-      verb: ^New$|^Set$
-      subject: ^LocalNetworkGateway$|^VnetGateway$|^VpnSite$
+      subject: ^LocalNetworkGateway$|^VnetGateway$|^VpnSite$|^VnetGatewayConnection$|^VpnGateway$
       parameter-name: ^BgpSettingBgpPeeringAddress$|^BgpPropertyBgpPeeringAddress$
     set:
       parameter-name: BgpPeeringAddress
   - where:
-      model-name: ^LocalNetworkGateway$|^VirtualNetworkGateway$|^VpnSite$
+      model-name: ^LocalNetworkGateway$|^VirtualNetworkGateway$|^VpnSite$|^VirtualNetworkGatewayConnection$|^VpnGateway$
       property-name: ^BgpSettingBgpPeeringAddress$|^BgpPropertyBgpPeeringAddress$
     set:
       property-name: BgpPeeringAddress
   - where:
-      verb: ^New$|^Set$
-      subject: ^LocalNetworkGateway$|^VnetGateway$|^VpnSite$
+      subject: ^LocalNetworkGateway$|^VnetGateway$|^VpnSite$|^VnetGatewayConnection$|^VpnGateway$
       parameter-name: ^BgpSettingPeerWeight$|^BgpPropertyPeerWeight$
     set:
       parameter-name: BgpPeerWeight
@@ -1210,7 +1218,7 @@ directive:
         - PeerWeight
         - BgpPeeringWeight
   - where:
-      model-name: ^LocalNetworkGateway$|^VirtualNetworkGateway$|^VpnSite$
+      model-name: ^LocalNetworkGateway$|^VirtualNetworkGateway$|^VpnSite$|^VirtualNetworkGatewayConnection$|^VpnGateway$
       property-name: ^BgpSettingPeerWeight$|^BgpPropertyPeerWeight$
     set:
       property-name: BgpPeerWeight
@@ -1427,12 +1435,16 @@ directive:
     set:
       alias: PublicIpPrefix
   - where:
-      verb: New
       subject: VirtualHub
       parameter-name: RouteTableRoute
     set:
       parameter-name: Route
       alias: RouteTable
+  - where:
+      model-name: VirtualHub
+      property-name: RouteTableRoute
+    set:
+      property-name: Route
   - where: # REMOVE BEFORE RELEASE: In-memory object parameter
       verb: New
       subject: VirtualHub
@@ -1440,7 +1452,6 @@ directive:
     set:
       alias: VirtualWan
   - where:
-      verb: New
       subject: VirtualHub
       parameter-name: VnetConnection
     set:
@@ -1458,6 +1469,11 @@ directive:
     set:
       parameter-name: EnableActiveActive
       alias: EnableActiveActiveFeature
+  - where:
+      model-name: VirtualNetworkGateway
+      property-name: Active
+    set:
+      property-name: EnableActiveActive
   - where: # REMOVE BEFORE RELEASE: In-memory object parameter
       verb: ^New$|^Set$
       subject: VnetGateway
@@ -1481,11 +1497,21 @@ directive:
     set:
       parameter-name: VpnClient$1
   - where:
+      model-name: VirtualNetworkGateway
+      property-name: ^VpnClientConfigurationVpnClient(.+)$
+    set:
+      property-name: VpnClient$1
+  - where:
       verb: ^New$|^Set$
       subject: VnetGateway
       parameter-name: ^VpnClientConfiguration(.*)$
     set:
       parameter-name: VpnClient$1
+  - where:
+      model-name: VirtualNetworkGateway
+      property-name: ^VpnClientConfiguration(.+)$
+    set:
+      property-name: VpnClient$1
   - where:
       verb: ^New$|^Set$
       subject: VnetGateway
@@ -1505,6 +1531,11 @@ directive:
     set:
       parameter-name: VpnClientAddressPrefix
       alias: VpnClientAddressPool
+  - where:
+      model-name: VirtualNetworkGateway
+      property-name: VpnClientAddressPoolAddressPrefix
+    set:
+      property-name: VpnClientAddressPrefix
   - where: # REMOVE BEFORE RELEASE: In-memory object parameter
       verb: ^New$|^Set$
       subject: VnetGatewayConnection
@@ -1517,6 +1548,11 @@ directive:
       parameter-name: LocalNetworkAddressSpaceAddressPrefix
     set:
       parameter-name: LocalNetworkAddressPrefix
+  - where:
+      model-name: VirtualNetworkGatewayConnection
+      property-name: LocalNetworkAddressSpaceAddressPrefix
+    set:
+      property-name: LocalNetworkAddressPrefix
   - where: # REMOVE BEFORE RELEASE: In-memory object parameter
       verb: Set
       subject: VnetGatewayConnection
@@ -1536,24 +1572,37 @@ directive:
     set:
       parameter-name: UsePolicyBasedTrafficSelectors
   - where:
+      model-name: VirtualNetworkGatewayConnection
+      property-name: UsePolicyBasedTrafficSelector
+    set:
+      property-name: UsePolicyBasedTrafficSelectors
+  - where:
       verb: ^New$|^Set$
       subject: VnetGatewayConnection
       parameter-name: IPsecPolicy
     set:
       alias: IpsecPolicies
   - where:
-      verb: New
       subject: VpnSite
       parameter-name: ^DeviceProperty(.*)$
     set:
       parameter-name: $1
   - where:
-      verb: New
+      model-name: VpnSite
+      property-name: ^DeviceProperty(.+)$
+    set:
+      property-name: $1
+  - where:
       subject: VpnSite
       parameter-name: AddressSpaceAddressPrefix
     set:
       parameter-name: AddressPrefix
       alias: AddressSpace
+  - where:
+      model-name: VpnSite
+      property-name: AddressSpaceAddressPrefix
+    set:
+      property-name: AddressPrefix
   - where: # REMOVE BEFORE RELEASE: In-memory object parameter and Id alternative
       verb: New
       subject: VpnSite
@@ -1925,6 +1974,11 @@ directive:
       parameter-name: VnetTap
     set:
       parameter-name: AdditionalVnetTap
+  - where:
+      model-name: VirtualNetworkTap
+      property-name: PropertiesDestinationNetworkInterfaceIPConfigurationPropertiesVnetTaps
+    set:
+      property-name: AdditionalVnetTap
   - where:
       subject: VnetTap
       parameter-name: Parameter
@@ -2599,41 +2653,21 @@ directive:
       parameter-name: Name
       alias: ServiceEndpointPolicyDefinitionName
   - where:
-      subject: VirtualHub
-      parameter-name: RouteTableRoute
-    set:
-      parameter-name: Route
-  - where:
-      subject: Vnet
-      parameter-name: AddressSpaceAddressPrefix
-    set:
-      parameter-name: AddressPrefix
-  - where:
-      subject: Vnet
-      parameter-name: DhcpOptionDnsServer
-    set:
-      parameter-name: DnsServer
-  - where:
       subject: VnetGateway
       parameter-name: ^VpnClient(.*)$
     set:
       parameter-name: $1
       alias: VpnClient$1
   - where:
-      subject: VnetGatewayConnection
-      parameter-name: BgpSettingAsn
+      model-name: VirtualNetworkGateway
+      property-name: ^VpnClient(.+)$
     set:
-      parameter-name: BgpAsn
+      property-name: $1
   - where:
-      subject: VnetGatewayConnection
-      parameter-name: BgpSettingBgpPeeringAddress
+      model-name: VirtualNetworkGateway
+      property-name: IpsecPolicy
     set:
-      parameter-name: BgpPeeringAddress
-  - where:
-      subject: VnetGatewayConnection
-      parameter-name: BgpSettingPeerWeight
-    set:
-      parameter-name: BgpPeerWeight
+      property-name: IPsecPolicy
   - where:
       subject: VnetGatewayConnection
       parameter-name: ExpressRouteGatewayBypass
@@ -2665,6 +2699,41 @@ directive:
       parameter-name: LocalNetworkGateway2Tag
     set:
       parameter-name: Tag2
+  - where:
+      model-name: VirtualNetworkGatewayConnection
+      property-name: ExpressRouteGatewayBypass
+    set:
+      property-name: BypassExpressRouteGateway
+  - where:
+      model-name: VirtualNetworkGatewayConnection
+      property-name: LocalNetworkGateway2Etag
+    set:
+      property-name: Etag2
+  - where:
+      model-name: VirtualNetworkGatewayConnection
+      property-name: LocalNetworkGateway2Id
+    set:
+      property-name: Id2
+  - where:
+      model-name: VirtualNetworkGatewayConnection
+      property-name: LocalNetworkGateway2Location
+    set:
+      property-name: Location2
+  - where:
+      model-name: VirtualNetworkGatewayConnection
+      property-name: LocalNetworkGateway2PropertiesResourceGuid
+    set:
+      property-name: ResourceGuid2
+  - where:
+      model-name: VirtualNetworkGatewayConnection
+      property-name: LocalNetworkGateway2Tag
+    set:
+      property-name: Tag2
+  - where:
+      model-name: VirtualNetworkGatewayConnection
+      property-name: LocalNetworkGateway2PropertiesProvisioningState
+    set:
+      property-name: ProvisioningState2
   - where:
       subject: VnetGatewayVpnClientIPsecPolicy
       parameter-name: DhGroup
@@ -2753,6 +2822,36 @@ directive:
     set:
       parameter-name: $1$2
       alias: $1IPConfiguration$2
+  - where:
+      model-name: VirtualNetworkTap
+      property-name: ^(.*)FrontEndIPConfigurationProperties(.+)$
+    set:
+      property-name: $1$2
+  - where:
+      model-name: VirtualNetworkTap
+      property-name: ^(.*)FrontEndIPConfiguration(.+)$
+    set:
+      property-name: $1$2
+  - where:
+      model-name: VirtualNetworkTap
+      property-name: ^(.*)IPConfigurationProperties(.+)$
+    set:
+      property-name: $1$2
+  - where:
+      model-name: VirtualNetworkTap
+      property-name: ^(.*)IPConfiguration(.+)$
+    set:
+      property-name: $1$2
+  - where:
+      model-name: VirtualNetworkTap
+      property-name: ^(.+)Ipaddress$
+    set:
+      property-name: $1IPAddress
+  - where:
+      model-name: VirtualNetworkTap
+      property-name: ^(.+)IpallocationMethod$
+    set:
+      property-name: $1IPAllocationMethod
   - where: # This parameter needs removed
       verb: ^New$|^Set$
       subject: VpnConnection
@@ -2773,21 +2872,6 @@ directive:
       alias: VpnConnectionProtocolType
   - where:
       subject: VpnGateway
-      parameter-name: BgpSettingAsn
-    set:
-      parameter-name: BgpAsn
-  - where:
-      subject: VpnGateway
-      parameter-name: BgpSettingBgpPeeringAddress
-    set:
-      parameter-name: BgpPeeringAddress
-  - where:
-      subject: VpnGateway
-      parameter-name: BgpSettingPeerWeight
-    set:
-      parameter-name: BgpPeerWeight
-  - where:
-      subject: VpnGateway
       parameter-name: VpnGatewayScaleUnit
     set:
       parameter-name: ScaleUnit
@@ -2798,25 +2882,10 @@ directive:
     set:
       parameter-name: SecuritySite
   - where:
-      subject: VpnSite
-      parameter-name: AddressSpaceAddressPrefix
+      model-name: VpnSite
+      property-name: IsSecuritySite
     set:
-      parameter-name: AddressPrefix
-  - where:
-      subject: VpnSite
-      parameter-name: DevicePropertyDeviceModel
-    set:
-      parameter-name: DeviceModel
-  - where:
-      subject: VpnSite
-      parameter-name: DevicePropertyDeviceVendor
-    set:
-      parameter-name: DeviceVendor
-  - where:
-      subject: VpnSite
-      parameter-name: DevicePropertyLinkSpeedInMbps
-    set:
-      parameter-name: LinkSpeedInMbps
+      property-name: SecuritySite
   - where:
       model-name: NetworkInterface
       property-name: ^InterfaceEndpointProperties(.+)$
@@ -2825,7 +2894,7 @@ directive:
 
 ## Formatting
   - where:
-      model-name: ^ApplicationSecurityGroup$|^DdosCustomPolicy$|^DdosProtectionPlan$|^NetworkProfile$|^NetworkSecurityGroup$
+      model-name: ^ApplicationSecurityGroup$|^DdosCustomPolicy$|^DdosProtectionPlan$|^NetworkProfile$|^NetworkSecurityGroup$|^ServiceEndpointPolicy$
     set:
       format-table:
         properties:
@@ -2885,7 +2954,7 @@ directive:
           - SkuName
           - ServiceProviderName
         labels:
-          AllowClassicOperations: Allow Classic Operations
+          AllowClassicOperations: Classic Operations Allowed
           CircuitProvisioningState: Circuit Provisioning State
           ServiceProviderProvisioningState: Service Provider Provisioning State
           ServiceProviderNote: Notes
@@ -3008,8 +3077,8 @@ directive:
         labels:
           ResourceGuid: GUID
           MacAddress: MAC Address
-          EnableAcceleratedNetworking: Enable Accelerated Networking
-          EnableIPForwarding: Enable IP Forwarding
+          EnableAcceleratedNetworking: Accelerated Networking Enabled
+          EnableIPForwarding: IP Forwarding Enabled
           ProvisioningState: Provisioning State
   - where:
       model-name: ^NetworkWatcher$|^P2SVpnGateway$|^RouteFilter$
@@ -3057,5 +3126,153 @@ directive:
           ResourceGuid: GUID
           IPPrefix: IP Prefix
           PublicIPAddressVersion: Public IP Address Version
+          ProvisioningState: Provisioning State
+  - where:
+      model-name: RouteTable
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - DisableBgpRoutePropagation
+          - ProvisioningState
+        labels:
+          DisableBgpRoutePropagation: BGP Route Propagation Disabled
+          ProvisioningState: Provisioning State
+  - where:
+      model-name: VirtualHub
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - AddressPrefix
+          - ProvisioningState
+        labels:
+          AddressPrefix: Address Prefix
+          ProvisioningState: Provisioning State
+  - where:
+      model-name: VirtualNetworkGateway
+    set:
+      format-table:
+        properties:
+          - ResourceGuid
+          - Name
+          - Location
+          - GatewayType
+          - VpnType
+          - EnableBgp
+          - EnableActiveActive
+          - SkuName
+          - ProvisioningState
+        labels:
+          ResourceGuid: GUID
+          GatewayType: Gateway Type
+          VpnType: VPN Type
+          EnableBgp: BGP Enabled
+          EnableActiveActive: Active-Active Enabled
+          SkuName: SKU Name
+          ProvisioningState: Provisioning State
+  - where:
+      model-name: VirtualNetworkGatewayConnection
+    set:
+      format-table:
+        properties:
+          - ResourceGuid
+          - Name
+          - Location
+          - ConnectionType
+          - RoutingWeight
+          - EnableBgp
+          - ConnectionStatus
+          - EgressBytesTransferred
+          - IngressBytesTransferred
+          - UsePolicyBasedTrafficSelectors
+          - ProvisioningState
+        labels:
+          ResourceGuid: GUID
+          ConnectionType: Connection Type
+          RoutingWeight: Routing Weight
+          EnableBgp: BGP Enabled
+          ConnectionStatus: Connection Status
+          EgressBytesTransferred: Egress Bytes Transferred
+          IngressBytesTransferred: Ingress Bytes Transferred
+          UsePolicyBasedTrafficSelectors: Policy Based Traffic Selectors Used
+          ProvisioningState: Provisioning State
+  - where:
+      model-name: VirtualNetwork
+    set:
+      format-table:
+        properties:
+          - ResourceGuid
+          - Name
+          - Location
+          - EnableDdosProtection
+          - EnableVMProtection
+          - ProvisioningState
+        labels:
+          ResourceGuid: GUID
+          EnableDdosProtection: DDOS Protection Enabled
+          EnableVMProtection: VM Protection Enabled
+          ProvisioningState: Provisioning State
+  - where:
+      model-name: VirtualNetworkTap
+    set:
+      format-table:
+        properties:
+          - ResourceGuid
+          - Name
+          - Location
+          - DestinationPort
+          - Primary
+          - ProvisioningState
+        labels:
+          ResourceGuid: GUID
+          DestinationPort: Destination Port
+          ProvisioningState: Provisioning State
+  - where:
+      model-name: VirtualWan
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - SecurityProviderName
+          - AllowBranchToBranchTraffic
+          - AllowVnetToVnetTraffic
+          - DisableVpnEncryption
+          - ProvisioningState
+        labels:
+          SecurityProviderName: Security Provider Name
+          AllowBranchToBranchTraffic: Branch-Branch Traffic Allowed
+          AllowVnetToVnetTraffic: Vnet-Vnet Traffic Allowed
+          DisableVpnEncryption: VPN Encryption Disabled
+          ProvisioningState: Provisioning State
+  - where:
+      model-name: VpnGateway
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - Type
+          - ScaleUnit
+          - ProvisioningState
+        labels:
+          ScaleUnit: Scale Unit
+          ProvisioningState: Provisioning State
+  - where:
+      model-name: VpnSite
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - SiteKey
+          - SecuritySite
+          - ProvisioningState
+        labels:
+          SiteKey: Site Key
+          SecuritySite: Security Site
           ProvisioningState: Provisioning State
 ```

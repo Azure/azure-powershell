@@ -749,7 +749,7 @@ To create the parameters described below, construct a hash table containing the 
         - `[SkuName <PublicIPAddressSkuName?>]`: Name of a public IP address SKU.
         - `[Zone <String[]>]`: A list of availability zones denoting the IP allocated for the resource needs to come from.
       - `[Subnet <ISubnet>]`: Subnet bound to the IP configuration.
-      - `[VirtualNetworkTap <IVirtualNetworkTap[]>]`: The reference to Virtual Network Taps.
+      - `[VnetTap <IVirtualNetworkTap[]>]`: The reference to Virtual Network Taps.
     - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
     - `[Name <String>]`: Name of the backend address pool that is unique within an Application Gateway.
     - `[ProvisioningState <String>]`: Provisioning state of the backend address pool resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
@@ -777,7 +777,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[ProvisioningState <String>]`: Gets the provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
   - `[PublicIPAddress <IPublicIPAddress>]`: Public IP address bound to the IP configuration.
   - `[Subnet <ISubnet>]`: Subnet bound to the IP configuration.
-  - `[VirtualNetworkTap <IVirtualNetworkTap[]>]`: The reference to Virtual Network Taps.
+  - `[VnetTap <IVirtualNetworkTap[]>]`: The reference to Virtual Network Taps.
 
 #### LOADBALANCER <ILoadBalancer>: LoadBalancer resource
   - `[Id <String>]`: Resource ID.

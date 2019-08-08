@@ -181,7 +181,7 @@
   - ProvisioningState `String`
   - PublicIPAddress `IPublicIPAddress`
   - Subnet `ISubnet`
-  - VirtualNetworkTap `IVirtualNetworkTap[]`
+  - VnetTap `IVirtualNetworkTap[]`
 
 ### ApplicationGatewayBackendHttpSettings [Api20171001, Api20190201]
   - AffinityCookieName `String`
@@ -1150,7 +1150,7 @@
   - ResourceGuid `String`
   - Tag `IDdosProtectionPlanTags`
   - Type `String`
-  - VirtualNetwork `ISubResource[]`
+  - Vnet `ISubResource[]`
 
 ### DdosProtectionPlanListResult [Api20190201]
   - NextLink `String`
@@ -1159,7 +1159,7 @@
 ### DdosProtectionPlanPropertiesFormat [Api20190201]
   - ProvisioningState `String`
   - ResourceGuid `String`
-  - VirtualNetwork `ISubResource[]`
+  - Vnet `ISubResource[]`
 
 ### DdosProtectionPlanTags [Api20190201]
   - Item `String`
@@ -1923,14 +1923,14 @@
   - Id `String`
   - Name `String`
   - ProvisioningState `ProvisioningState?`
-  - RemoteVirtualNetworkId `String`
+  - RemoteVnetId `String`
 
 ### HubVirtualNetworkConnectionProperties [Api20190201]
   - AllowHubToRemoteVnetTransit `Boolean?`
   - AllowRemoteVnetToUseHubVnetGateway `Boolean?`
   - EnableInternetSecurity `Boolean?`
   - ProvisioningState `ProvisioningState?`
-  - RemoteVirtualNetworkId `String`
+  - RemoteVnetId `String`
 
 ### InboundNatPool [Api20171001, Api20190201]
   - BackendPort `Int32`
@@ -1983,7 +1983,7 @@
   - ProvisioningState `String`
   - PublicIPAddress `IPublicIPAddress`
   - Subnet `ISubnet`
-  - VirtualNetworkTap `IVirtualNetworkTap[]`
+  - VnetTap `IVirtualNetworkTap[]`
 
 ### InboundNatRuleListResult [Api20171001, Api20190201]
   - NextLink `String`
@@ -2012,7 +2012,7 @@
   - ProvisioningState `String`
   - PublicIPAddress `IPublicIPAddress`
   - Subnet `ISubnet`
-  - VirtualNetworkTap `IVirtualNetworkTap[]`
+  - VnetTap `IVirtualNetworkTap[]`
 
 ### InterfaceEndpoint [Api20190201]
   - EndpointServiceId `String`
@@ -2416,13 +2416,13 @@
   - VirtualHubName `String`
   - VirtualmachineIndex `String`
   - VirtualMachineScaleSetName `String`
-  - VirtualNetworkGatewayConnectionName `String`
-  - VirtualNetworkGatewayName `String`
-  - VirtualNetworkName `String`
-  - VirtualNetworkPeeringName `String`
   - VirtualWanName `String`
   - VirtualWanName1 `String`
   - VirtualWanName2 `String`
+  - VnetGatewayConnectionName `String`
+  - VnetGatewayName `String`
+  - VnetName `String`
+  - VnetPeeringName `String`
   - VpnSiteName `String`
 
 ### NetworkIntentPolicy [Api20190201]
@@ -2516,7 +2516,7 @@
   - ProvisioningState `String`
   - PublicIPAddress `IPublicIPAddress`
   - Subnet `ISubnet`
-  - VirtualNetworkTap `IVirtualNetworkTap[]`
+  - VnetTap `IVirtualNetworkTap[]`
 
 ### NetworkInterfaceIPConfigurationListResult [Api20171001, Api20190201]
   - NextLink `String`
@@ -2534,7 +2534,7 @@
   - ProvisioningState `String`
   - PublicIPAddress `IPublicIPAddress`
   - Subnet `ISubnet`
-  - VirtualNetworkTap `IVirtualNetworkTap[]`
+  - VnetTap `IVirtualNetworkTap[]`
 
 ### NetworkInterfaceListResult [Api20171001, Api20190201]
   - NextLink `String`
@@ -2592,7 +2592,7 @@
   - Name `String`
   - ProvisioningState `String`
   - Type `String`
-  - VirtualNetworkTap `IVirtualNetworkTap`
+  - VnetTap `IVirtualNetworkTap`
 
 ### NetworkInterfaceTapConfigurationListResult [Api20190201]
   - NextLink `String`
@@ -2600,7 +2600,7 @@
 
 ### NetworkInterfaceTapConfigurationPropertiesFormat [Api20190201]
   - ProvisioningState `String`
-  - VirtualNetworkTap `IVirtualNetworkTap`
+  - VnetTap `IVirtualNetworkTap`
 
 ### NetworkProfile [Api20190201]
   - ContainerNetworkInterface `IContainerNetworkInterface[]`
@@ -3480,7 +3480,7 @@
 ### TopologyParameters [Api20190201]
   - TargetResourceGroupName `String`
   - TargetSubnetId `String`
-  - TargetVirtualNetworkId `String`
+  - TargetVnetId `String`
 
 ### TopologyResource [Api20190201]
   - Association `ITopologyAssociation[]`
@@ -3576,11 +3576,11 @@
   - Name `String`
   - P2SVpnGatewayId `String`
   - ProvisioningState `ProvisioningState?`
-  - RouteTableRoute `IVirtualHubRoute[]`
+  - Route `IVirtualHubRoute[]`
   - Tag `IResourceTags`
   - Type `String`
-  - VirtualNetworkConnection `IHubVirtualNetworkConnection[]`
   - VirtualWanId `String`
+  - VnetConnection `IHubVirtualNetworkConnection[]`
   - VpnGatewayId `String`
 
 ### VirtualHubId [Api20190201]
@@ -3592,8 +3592,8 @@
   - P2SVpnGatewayId `String`
   - ProvisioningState `ProvisioningState?`
   - RouteTableRoute `IVirtualHubRoute[]`
-  - VirtualNetworkConnection `IHubVirtualNetworkConnection[]`
   - VirtualWanId `String`
+  - VnetConnection `IHubVirtualNetworkConnection[]`
   - VpnGatewayId `String`
 
 ### VirtualHubRoute [Api20190201]
@@ -3604,9 +3604,9 @@
   - Route `IVirtualHubRoute[]`
 
 ### VirtualNetwork [Api20171001, Api20190201]
-  - AddressSpaceAddressPrefix `String[]`
+  - AddressPrefix `String[]`
   - DdosProtectionPlanId `String`
-  - DhcpOptionDnsServer `String[]`
+  - DnsServer `String[]`
   - EnableDdosProtection `Boolean?`
   - EnableVMProtection `Boolean?`
   - Etag `String`
@@ -3624,73 +3624,73 @@
   - Id `String`
 
 ### VirtualNetworkGateway [Api20171001, Api20190201]
-  - Active `Boolean?`
+  - AddressPrefix `String[]`
   - BgpAsn `Int64?`
   - BgpPeeringAddress `String`
   - BgpPeerWeight `Int32?`
   - CustomRouteAddressPrefix `String[]`
+  - EnableActiveActive `Boolean?`
   - EnableBgp `Boolean?`
   - Etag `String`
   - GatewayDefaultSiteId `String`
   - GatewayType `VirtualNetworkGatewayType?`
   - Id `String`
   - IPConfiguration `IVirtualNetworkGatewayIPConfiguration[]`
+  - IPsecPolicy `IIpsecPolicy[]`
   - Location `String`
   - Name `String`
+  - Protocol `VpnClientProtocol[]`
   - ProvisioningState `String`
+  - RadiusServerAddress `String`
+  - RadiusServerSecret `String`
   - ResourceGuid `String`
+  - RevokedCertificate `IVpnClientRevokedCertificate[]`
+  - RootCertificate `IVpnClientRootCertificate[]`
   - SkuCapacity `Int32?`
   - SkuName `VirtualNetworkGatewaySkuName?`
   - SkuTier `VirtualNetworkGatewaySkuTier?`
   - Tag `IResourceTags`
   - Type `String`
-  - VpnClientAddressPoolAddressPrefix `String[]`
-  - VpnClientConfigurationRadiusServerAddress `String`
-  - VpnClientConfigurationRadiusServerSecret `String`
-  - VpnClientConfigurationVpnClientIpsecPolicy `IIpsecPolicy[]`
-  - VpnClientConfigurationVpnClientProtocol `VpnClientProtocol[]`
-  - VpnClientConfigurationVpnClientRevokedCertificate `IVpnClientRevokedCertificate[]`
-  - VpnClientConfigurationVpnClientRootCertificate `IVpnClientRootCertificate[]`
   - VpnType `VpnType?`
 
 ### VirtualNetworkGatewayConnection [Api20171001, Api20190201]
   - AuthorizationKey `String`
-  - BgpSettingAsn `Int64?`
-  - BgpSettingBgpPeeringAddress `String`
-  - BgpSettingPeerWeight `Int32?`
+  - BgpAsn `Int64?`
+  - BgpPeeringAddress `String`
+  - BgpPeerWeight `Int32?`
+  - BypassExpressRouteGateway `Boolean?`
   - ConnectionProtocol `VirtualNetworkGatewayConnectionProtocol?`
   - ConnectionStatus `VirtualNetworkGatewayConnectionStatus?`
   - ConnectionType `VirtualNetworkGatewayConnectionType`
   - EgressBytesTransferred `Int64?`
   - EnableBgp `Boolean?`
   - Etag `String`
-  - ExpressRouteGatewayBypass `Boolean?`
+  - Etag2 `String`
   - GatewayIPAddress `String`
   - Id `String`
+  - Id2 `String`
   - IngressBytesTransferred `Int64?`
   - IpsecPolicy `IIpsecPolicy[]`
-  - LocalNetworkAddressSpaceAddressPrefix `String[]`
-  - LocalNetworkGateway2Etag `String`
-  - LocalNetworkGateway2Id `String`
-  - LocalNetworkGateway2Location `String`
+  - LocalNetworkAddressPrefix `String[]`
   - LocalNetworkGateway2Name `String`
-  - LocalNetworkGateway2PropertiesProvisioningState `String`
-  - LocalNetworkGateway2PropertiesResourceGuid `String`
-  - LocalNetworkGateway2Tag `IResourceTags`
   - LocalNetworkGateway2Type `String`
   - Location `String`
+  - Location2 `String`
   - Name `String`
   - PeerId `String`
   - ProvisioningState `String`
+  - ProvisioningState2 `String`
   - ResourceGuid `String`
+  - ResourceGuid2 `String`
   - RoutingWeight `Int32?`
   - SharedKey `String`
   - Tag `IResourceTags`
+  - Tag2 `IResourceTags`
   - TunnelConnectionStatus `ITunnelConnectionHealth[]`
   - Type `String`
-  - UsePolicyBasedTrafficSelector `Boolean?`
-  - VirtualNetworkGateway1 `IVirtualNetworkGateway`
-  - VirtualNetworkGateway2 `IVirtualNetworkGateway`
+  - UsePolicyBasedTrafficSelectors `Boolean?`
+  - VnetGateway1 `IVirtualNetworkGateway`
+  - VnetGateway2 `IVirtualNetworkGateway`
 
 ### VirtualNetworkGatewayConnectionListEntity [Api20171001, Api20190201]
   - AuthorizationKey `String`
@@ -3716,8 +3716,8 @@
   - TunnelConnectionStatus `ITunnelConnectionHealth[]`
   - Type `String`
   - UsePolicyBasedTrafficSelector `Boolean?`
-  - VirtualNetworkGateway1Id `String`
-  - VirtualNetworkGateway2Id `String`
+  - VnetGateway1Id `String`
+  - VnetGateway2Id `String`
 
 ### VirtualNetworkGatewayConnectionListEntityPropertiesFormat [Api20171001, Api20190201]
   - AuthorizationKey `String`
@@ -3737,8 +3737,8 @@
   - SharedKey `String`
   - TunnelConnectionStatus `ITunnelConnectionHealth[]`
   - UsePolicyBasedTrafficSelector `Boolean?`
-  - VirtualNetworkGateway1Id `String`
-  - VirtualNetworkGateway2Id `String`
+  - VnetGateway1Id `String`
+  - VnetGateway2Id `String`
 
 ### VirtualNetworkGatewayConnectionListResult [Api20171001, Api20190201]
   - NextLink `String`
@@ -3774,8 +3774,8 @@
   - SharedKey `String`
   - TunnelConnectionStatus `ITunnelConnectionHealth[]`
   - UsePolicyBasedTrafficSelector `Boolean?`
-  - VirtualNetworkGateway1 `IVirtualNetworkGateway`
-  - VirtualNetworkGateway2 `IVirtualNetworkGateway`
+  - VnetGateway1 `IVirtualNetworkGateway`
+  - VnetGateway2 `IVirtualNetworkGateway`
 
 ### VirtualNetworkGatewayIPConfiguration [Api20171001]
   - Etag `String`
@@ -3840,14 +3840,14 @@
 ### VirtualNetworkPeering [Api20171001]
   - AllowForwardedTraffic `Boolean?`
   - AllowGatewayTransit `Boolean?`
-  - AllowVirtualNetworkAccess `Boolean?`
+  - AllowVnetAccess `Boolean?`
   - Etag `String`
   - Id `String`
   - Name `String`
   - PeeringState `VirtualNetworkPeeringState?`
   - ProvisioningState `String`
   - RemoteAddressSpaceAddressPrefix `String[]`
-  - RemoteVirtualNetworkId `String`
+  - RemoteVnetId `String`
   - UseRemoteGateway `Boolean?`
 
 ### VirtualNetworkPeeringListResult [Api20171001]
@@ -3857,11 +3857,11 @@
 ### VirtualNetworkPeeringPropertiesFormat [Api20171001]
   - AllowForwardedTraffic `Boolean?`
   - AllowGatewayTransit `Boolean?`
-  - AllowVirtualNetworkAccess `Boolean?`
+  - AllowVnetAccess `Boolean?`
   - PeeringState `VirtualNetworkPeeringState?`
   - ProvisioningState `String`
   - RemoteAddressSpaceAddressPrefix `String[]`
-  - RemoteVirtualNetworkId `String`
+  - RemoteVnetId `String`
   - UseRemoteGateway `Boolean?`
 
 ### VirtualNetworkPropertiesFormat [Api20171001, Api20190201]
@@ -3873,28 +3873,29 @@
   - ProvisioningState `String`
   - ResourceGuid `String`
   - Subnet `ISubnet[]`
-  - VirtualNetworkPeering `IVirtualNetworkPeering[]`
+  - VnetPeering `IVirtualNetworkPeering[]`
 
 ### VirtualNetworkTap [Api20190201]
+  - AdditionalVnetTap `IVirtualNetworkTap[]`
   - ApplicationGatewayBackendAddressPool `IApplicationGatewayBackendAddressPool[]`
   - ApplicationSecurityGroup `IApplicationSecurityGroup[]`
-  - DestinationLoadBalancerFrontEndIPConfigurationEtag `String`
-  - DestinationLoadBalancerFrontEndIPConfigurationId `String`
-  - DestinationLoadBalancerFrontEndIPConfigurationName `String`
-  - DestinationLoadBalancerFrontEndIPConfigurationPropertiesPrivateIpaddress `String`
-  - DestinationLoadBalancerFrontEndIPConfigurationPropertiesPrivateIpallocationMethod `IPAllocationMethod?`
-  - DestinationLoadBalancerFrontEndIPConfigurationPropertiesProvisioningState `String`
-  - DestinationLoadBalancerFrontEndIPConfigurationPropertiesPublicIpaddress `IPublicIPAddress`
-  - DestinationLoadBalancerFrontEndIPConfigurationPropertiesSubnet `ISubnet`
-  - DestinationLoadBalancerFrontEndIPConfigurationZone `String[]`
-  - DestinationNetworkInterfaceIPConfigurationEtag `String`
-  - DestinationNetworkInterfaceIPConfigurationId `String`
-  - DestinationNetworkInterfaceIPConfigurationName `String`
-  - DestinationNetworkInterfaceIPConfigurationPropertiesPrivateIpaddress `String`
-  - DestinationNetworkInterfaceIPConfigurationPropertiesPrivateIpallocationMethod `IPAllocationMethod?`
-  - DestinationNetworkInterfaceIPConfigurationPropertiesProvisioningState `String`
-  - DestinationNetworkInterfaceIPConfigurationPropertiesPublicIpaddress `IPublicIPAddress`
-  - DestinationNetworkInterfaceIPConfigurationPropertiesSubnet `ISubnet`
+  - DestinationLoadBalancerEtag `String`
+  - DestinationLoadBalancerId `String`
+  - DestinationLoadBalancerName `String`
+  - DestinationLoadBalancerPrivateIPAddress `String`
+  - DestinationLoadBalancerPrivateIPAllocationMethod `IPAllocationMethod?`
+  - DestinationLoadBalancerProvisioningState `String`
+  - DestinationLoadBalancerPublicIPAddress `IPublicIPAddress`
+  - DestinationLoadBalancerSubnet `ISubnet`
+  - DestinationLoadBalancerZone `String[]`
+  - DestinationNetworkInterfaceEtag `String`
+  - DestinationNetworkInterfaceId `String`
+  - DestinationNetworkInterfaceName `String`
+  - DestinationNetworkInterfacePrivateIPAddress `String`
+  - DestinationNetworkInterfacePrivateIPAllocationMethod `IPAllocationMethod?`
+  - DestinationNetworkInterfaceProvisioningState `String`
+  - DestinationNetworkInterfacePublicIPAddress `IPublicIPAddress`
+  - DestinationNetworkInterfaceSubnet `ISubnet`
   - DestinationPort `Int32?`
   - Etag `String`
   - Id `String`
@@ -3909,7 +3910,6 @@
   - OutboundRule `ISubResource[]`
   - Primary `Boolean?`
   - PrivateIPAddressVersion `IPVersion?`
-  - PropertiesDestinationNetworkInterfaceIPConfigurationPropertiesVirtualNetworkTaps `IVirtualNetworkTap[]`
   - ProvisioningState `String`
   - PublicIPPrefixId `String`
   - ResourceGuid `String`
@@ -3953,7 +3953,7 @@
   - ProvisioningState `String`
   - PublicIPPrefixId `String`
   - ResourceGuid `String`
-  - VirtualNetworkTap `IVirtualNetworkTap[]`
+  - VnetTap `IVirtualNetworkTap[]`
 
 ### VirtualNetworkUsage [Api20171001]
   - CurrentValue `Double?`
@@ -4097,9 +4097,9 @@
   - Vendor `String`
 
 ### VpnGateway [Api20190201]
-  - BgpSettingAsn `Int64?`
-  - BgpSettingBgpPeeringAddress `String`
-  - BgpSettingPeerWeight `Int32?`
+  - BgpAsn `Int64?`
+  - BgpPeeringAddress `String`
+  - BgpPeerWeight `Int32?`
   - Connection `IVpnConnection[]`
   - Etag `String`
   - Id `String`
@@ -4124,20 +4124,20 @@
   - ProfileUrl `String`
 
 ### VpnSite [Api20190201]
-  - AddressSpaceAddressPrefix `String[]`
+  - AddressPrefix `String[]`
   - BgpAsn `Int64?`
   - BgpPeeringAddress `String`
   - BgpPeerWeight `Int32?`
-  - DevicePropertyDeviceModel `String`
-  - DevicePropertyDeviceVendor `String`
-  - DevicePropertyLinkSpeedInMbps `Int32?`
+  - DeviceModel `String`
+  - DeviceVendor `String`
   - Etag `String`
   - Id `String`
   - IPAddress `String`
-  - IsSecuritySite `Boolean?`
+  - LinkSpeedInMbps `Int32?`
   - Location `String`
   - Name `String`
   - ProvisioningState `ProvisioningState?`
+  - SecuritySite `Boolean?`
   - SiteKey `String`
   - Tag `IResourceTags`
   - Type `String`

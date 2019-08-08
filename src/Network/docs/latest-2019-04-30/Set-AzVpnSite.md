@@ -58,7 +58,7 @@ A list of address blocks reserved for this virtual network in CIDR notation.
 ```yaml
 Type: System.String[]
 Parameter Sets: UpdateExpanded
-Aliases:
+Aliases: AddressSpace
 
 Required: False
 Position: Named
@@ -446,15 +446,15 @@ To create the parameters described below, construct a hash table containing the 
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[AddressSpaceAddressPrefix <String[]>]`: A list of address blocks reserved for this virtual network in CIDR notation.
+  - `[AddressPrefix <String[]>]`: A list of address blocks reserved for this virtual network in CIDR notation.
   - `[BgpAsn <Int64?>]`: The BGP speaker's ASN.
   - `[BgpPeerWeight <Int32?>]`: The weight added to routes learned from this BGP speaker.
   - `[BgpPeeringAddress <String>]`: The BGP peering address and BGP identifier of this BGP speaker.
-  - `[DevicePropertyDeviceModel <String>]`: Model of the device.
-  - `[DevicePropertyDeviceVendor <String>]`: Name of the device Vendor.
-  - `[DevicePropertyLinkSpeedInMbps <Int32?>]`: Link speed.
+  - `[DeviceModel <String>]`: Model of the device.
+  - `[DeviceVendor <String>]`: Name of the device Vendor.
   - `[IPAddress <String>]`: The ip-address for the vpn-site.
-  - `[IsSecuritySite <Boolean?>]`: IsSecuritySite flag
+  - `[LinkSpeedInMbps <Int32?>]`: Link speed.
+  - `[SecuritySite <Boolean?>]`: IsSecuritySite flag
   - `[SiteKey <String>]`: The key for vpn-site that can be used for connections.
   - `[VirtualWanId <String>]`: Resource ID.
 

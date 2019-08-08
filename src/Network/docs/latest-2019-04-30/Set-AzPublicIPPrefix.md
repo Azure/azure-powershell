@@ -255,7 +255,7 @@ The public IP address version.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.IPVersion
 Parameter Sets: UpdateExpanded
-Aliases:
+Aliases: IPAddressVersion
 
 Required: False
 Position: Named
