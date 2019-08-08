@@ -162,6 +162,14 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         }
 
         /// <summary>
+        /// Failovers an Elastic Pool
+        /// </summary>
+        public void Failover(string resourceGroupName, string serverName, string elasticPoolName)
+        {
+            GetCurrentSqlClient().ElasticPools.Failover(resourceGroupName, serverName, elasticPoolName);
+        }
+
+        /// <summary>
         /// Gets Elastic Pool Database Activity
         /// </summary>
         internal IList<Management.Sql.Models.ElasticPoolDatabaseActivity> ListDatabaseActivity(string resourceGroupName, string serverName, string poolName)

@@ -18,7 +18,7 @@ Disable-AzSecurityAdvancedThreatProtection -ResourceId <String> [-DefaultProfile
 ```
 
 ## DESCRIPTION
-The `Disable-AzSecurityAdvancedThreatProtection` cmdlet disables the threat protetion policy for a storage account.
+The `Disable-AzSecurityAdvancedThreatProtection` cmdlet disables the threat protection policy for a storage account.
 To use this cmdlet, specify the *ResourceId* parameter.
 
 ## EXAMPLES

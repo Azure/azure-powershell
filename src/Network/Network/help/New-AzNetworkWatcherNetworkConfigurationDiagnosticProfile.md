@@ -9,7 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Creates a new network configuration diagnostic profile object. 
-This object is used to restrict the network confiuration during a diagnostic session using the specified criteria.
+This object is used to restrict the network configuration during a diagnostic session using the specified criteria.
 
 ## SYNTAX
 
@@ -21,7 +21,7 @@ New-AzNetworkWatcherNetworkConfigurationDiagnosticProfile -Direction <String> -P
 
 ## DESCRIPTION
 The New-AzNetworkWatcherNetworkConfigurationDiagnosticProfile cmdlet creates a new diagnostic profile object. 
-This object is used to restrict the network confiuration during a network configuration diagnostic session using the specified criteria.
+This object is used to restrict the network configuration during a network configuration diagnostic session using the specified criteria.
 
 ## EXAMPLES
 

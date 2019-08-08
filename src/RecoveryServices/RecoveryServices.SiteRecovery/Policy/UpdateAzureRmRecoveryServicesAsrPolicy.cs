@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public class UpdateAzureRmRecoveryServicesAsrPolicy : SiteRecoveryCmdletBase
     {
         /// <summary>
-        ///    Switch parameter indicating that the specfied policy is used to replicate VMware virtual machines to Azure.
+        ///    Switch parameter indicating that the specified policy is used to replicate VMware virtual machines to Azure.
         /// </summary>
         [Parameter(
             Position = 0,
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public SwitchParameter AzureToAzure { get; set; }
 
         /// <summary>
-        ///    Switch parameter indicating that the specfied policy is used to replicate failed over virtual machines 
+        ///    Switch parameter indicating that the specified policy is used to replicate failed over virtual machines 
         ///    running in Azure back to an on-premises VMware site.
         /// </summary>
         [Parameter(Position = 0,
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public SwitchParameter AzureToVMware { get; set; }
 
         /// <summary>
-        ///    Switch parameter indicating that the specfied policy is used to replicate Hyper-V virtual machines to Azure.
+        ///    Switch parameter indicating that the specified policy is used to replicate Hyper-V virtual machines to Azure.
         /// </summary>
         [Parameter(
             Position = 0,
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public SwitchParameter HyperVToAzure { get; set; }
 
         /// <summary>
-        ///    Switch parameter indicating that the specfied policy is used to replicate VMM managed Hyper-V virtual machines
+        ///    Switch parameter indicating that the specified policy is used to replicate VMM managed Hyper-V virtual machines
         ///    between two Hyper-V sites.
         /// </summary>
         [Parameter(

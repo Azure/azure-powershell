@@ -49,7 +49,7 @@ New-AzSpatialAnchorsAccountKey -InputObject <PSSpatialAnchorsAccount> -Secondary
 ```
 
 ## DESCRIPTION
-Renegrate primary key or secondary key of Spatial Anchors Account.
+Regenerate primary key or secondary key of Spatial Anchors Account.
 
 ## EXAMPLES
 

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix hanging of Get-DataLakeStoreDeletedItem for any errors or remote exceptions.
+* Fixed miscellaneous typos across module
 
 ## Version 1.2.1
 * Update the ADLS sdk to use httpclient, integrate dataplane testing with azure framework

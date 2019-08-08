@@ -31,9 +31,9 @@ For more information, see the documentation for the New-AzVirtualNetworkGateway 
 
 ## EXAMPLES
 
-### Example 1: Create aclient root certificate
+### Example 1: Create a client root certificate
 ```
-PS C:\> $Text = Get-Content -Path "C:\Azure\Certificates\ExportedCertficate.cer"
+PS C:\> $Text = Get-Content -Path "C:\Azure\Certificates\ExportedCertificate.cer"
 PS C:\> $CertificateText = for ($i=1; $i -lt $Text.Length -1 ; $i++){$Text[$i]}
 PS C:\> $Certificate = New-AzVpnClientRootCertificate -PublicCertData $CertificateText -Name "ContosoClientRootCertificate"
 ```
@@ -85,7 +85,7 @@ MIIC13FAAXC3671Auij9HHgUNEW8343NMJklo09982CVVFAw8w
 ----- END CERTIFICATE -----
 The PublicCertData is made up of all the lines between the first line (----- BEGIN CERTIFICATE -----) and the last line (----- END CERTIFICATE -----) in the file.
 You can retrieve the PublicCertData by using Windows PowerShell commands similar to this:
-$Text = Get-Content -Path "C:\Azure\Certificates\ExportedCertficate.cer"
+$Text = Get-Content -Path "C:\Azure\Certificates\ExportedCertificate.cer"
 $CertificateText = for ($i=1; $i -lt $Text.Length -1 ; $i++){$Text\[$i\]}
 
 ```yaml

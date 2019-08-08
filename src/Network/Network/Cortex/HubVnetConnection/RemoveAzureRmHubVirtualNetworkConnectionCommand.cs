@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-            //// Resolve the paramters
+            //// Resolve the parameters
             if (ParameterSetName.Equals(CortexParameterSetNames.ByHubVirtualNetworkConnectionObject, StringComparison.OrdinalIgnoreCase))
             {
                 var parsedResourceId = new ResourceIdentifier(this.InputObject.Id);
