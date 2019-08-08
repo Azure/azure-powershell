@@ -168,6 +168,7 @@ namespace Microsoft.Azure.Commands.HealthcareApisService.Commands
 
                 ServicesDescription servicesDescription = new ServicesDescription()
                 {
+                    Kind = GetKind(),
                     Location = Location,
                     Tags = this.GetTags(),
 
@@ -195,6 +196,37 @@ namespace Microsoft.Azure.Commands.HealthcareApisService.Commands
                     WriteObject(healthCareFhirService);
                 }
             });
+        }
+
+        private Kind GetKind()
+        {
+            if(this.Kind == null)
+            {
+                return Management.HealthcareApis.Models.Kind.FhirR4;
+
+            }
+
+            return parseKind(this.Kind);
+        }
+
+        private Kind parseKind(string kind)
+        {
+            if (kind.ToLowerInvariant().Equals("fhir"))
+            {
+                return Management.HealthcareApis.Models.Kind.Fhir;
+            }
+            else if (kind.ToLowerInvariant().Equals("fhir-stu3"))
+            {
+                return Management.HealthcareApis.Models.Kind.FhirStu3;
+            }
+            else if (kind.ToLowerInvariant().Equals("fhir-r4"))
+            {
+                return Management.HealthcareApis.Models.Kind.FhirR4;
+            }
+            else
+            {
+                throw new PSArgumentException(Resources.createService_InvalidKindMessage);
+            }
         }
 
         private int? GetCosmosDBThroughput()

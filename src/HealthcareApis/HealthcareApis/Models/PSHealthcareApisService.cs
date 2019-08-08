@@ -30,7 +30,9 @@ namespace Microsoft.Azure.Commands.HealthcareApisService.Models
             this.Tags = serviceDescription.Tags;
             this.Properties = new PSHealthcareApisServiceConfig(serviceDescription.Properties);
             this.Etag = serviceDescription.Etag;
+            this.Kind = serviceDescription.Kind;
         }
+
         public string ResourceGroupName { get; private set; }
 
         public string Name { get; private set; }
@@ -40,6 +42,8 @@ namespace Microsoft.Azure.Commands.HealthcareApisService.Models
         public string Location { get; private set; }
 
         public string ResourceType { get; private set; }
+
+        public Kind Kind { get; private set; }
 
         public IDictionary<string, string> Tags { get; private set; }
 

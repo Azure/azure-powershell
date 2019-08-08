@@ -13,7 +13,7 @@ Creates the metadata of a service instance.
 
 ###FhirParameterSet
 ```
-New-AzHealthCareApisService -Name <String> -ResourceGroupName <String> -Location <String> [-CosmosOfferThroughput <Integer>][-Authority <String>] [-Audience <String>] [-EnableSmartProxy][-CorsOrigin <String []>] [-CorsHeader <String[]>] [-CorsMethod <String[]>] [-CorsMaxAge <Integer>] [-AllowCorsCredentials][-AccessPolicyObjectId <String[]>][-Tag <Hashtable>] [-FhirVersion <String>] [-DefaultProfile <IAzureContextContainer>][-AsJob] [-NoWait][-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzHealthCareApisService -Name <String> -ResourceGroupName <String> -Location <String> [-Kind <String>][-CosmosOfferThroughput <Integer>][-Authority <String>] [-Audience <String>] [-EnableSmartProxy][-CorsOrigin <String []>] [-CorsHeader <String[]>] [-CorsMethod <String[]>] [-CorsMaxAge <Integer>] [-AllowCorsCredentials][-AccessPolicyObjectId <String[]>][-Tag <Hashtable>] [-FhirVersion <String>] [-DefaultProfile <IAzureContextContainer>][-AsJob] [-NoWait][-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,11 +23,11 @@ Creates or updates the metadata of a service instance.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzHealthCareApisService -Name MyService -ResourceGroupName MyResourceGroup -Location MyLocation -CosmosOfferThroughput  MyOfferThroughput
+PS C:\> New-AzHealthCareApisService -Name MyService -ResourceGroupName MyResourceGroup -Location MyLocation -Kind fhir-r4 -CosmosOfferThroughput  MyOfferThroughput
 
-ResourceGroupName Name Location       CosmosOfferThroughput
+ResourceGroupName Name Location        Kind   CosmosOfferThroughput
 ----------------- ----------- -------------------------------
-MyResourceGroup   MyService   westus2       400
+MyResourceGroup   MyService   westus2    fhir-r4   400
 ```
 
 Creates a new Azure healthcareapis fhir service named MyService in the resource group MyResourceGroup in a location westus2 with cosmosdb offer throughput = 400
@@ -259,7 +259,7 @@ Dynamic: False
 ```
 
 ### -Kind
-Kind of HealthcareApis Service. Valid values are fhir, fhir-Stu3. fhir-R4
+Kind of HealthcareApis Service. Valid values are fhir, fhir-Stu3, fhir-R4
 ```yaml
 Type: system.String
 Parameter Sets: (All)
