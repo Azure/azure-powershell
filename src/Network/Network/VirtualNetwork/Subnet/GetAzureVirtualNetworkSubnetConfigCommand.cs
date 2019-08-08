@@ -22,9 +22,9 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkSubnetConfig",DefaultParameterSetName = "GetByVirtualNetwork"), OutputType(typeof(PSSubnet))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkSubnetConfig", DefaultParameterSetName = "GetByVirtualNetwork"), OutputType(typeof(PSSubnet))]
     public class GetAzureVirtualNetworkSubnetConfigCommand : VirtualNetworkBaseCmdlet
-  {
+    {
         [Parameter(
             Mandatory = false,
             ParameterSetName = "GetByVirtualNetwork",
@@ -50,7 +50,8 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            if (ParameterSetName == "GetByResourceId") {
+            if (ParameterSetName == "GetByResourceId")
+            {
                 string virtualNetworkName = null;
 
                 ResourceIdentifier identifier = new ResourceIdentifier(ResourceId);
@@ -66,25 +67,26 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
-            if (this.VirtualNetwork != null) {
+            if (this.VirtualNetwork != null)
+            {
                 if (!string.IsNullOrEmpty(this.Name))
                 {
-                var subnet =
-                    this.VirtualNetwork.Subnets.FirstOrDefault(
-                        resource =>
-                            string.Equals(resource.Name, this.Name, StringComparison.CurrentCultureIgnoreCase));
+                    var subnet =
+                        this.VirtualNetwork.Subnets.FirstOrDefault(
+                            resource =>
+                                string.Equals(resource.Name, this.Name, StringComparison.CurrentCultureIgnoreCase));
 
-                if (subnet == null)
-                {
-                    throw new ArgumentException(string.Format(Properties.Resources.ResourceNotFound, this.Name));
-                }
+                    if (subnet == null)
+                    {
+                        throw new ArgumentException(string.Format(Properties.Resources.ResourceNotFound, this.Name));
+                    }
 
-                WriteObject(subnet);
+                    WriteObject(subnet);
                 }
                 else
                 {
-                var subnets = this.VirtualNetwork.Subnets;
-                WriteObject(subnets, true);
+                    var subnets = this.VirtualNetwork.Subnets;
+                    WriteObject(subnets, true);
                 }
             }
         }
