@@ -106,7 +106,7 @@ function Test-SsisAzure-IntegrationRuntime
             -Force
 
 		# Prepare proxy selfhsoted IR
-		$proxyIrName = "proxy-selfhosted-integrationruntime"   
+        $proxyIrName = "proxy-selfhosted-integrationruntime"   
         $actualProxyIr = Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `
             -DataFactoryName $dfname `
             -Name $proxyIrName `
@@ -115,7 +115,7 @@ function Test-SsisAzure-IntegrationRuntime
         Assert-AreEqual $actualProxyIr.Name $proxyIrName
 
 		# Prepare proxy linked service
-		$lsname = "proxy-linkedservice"
+        $lsname = "proxy-linkedservice"
         $actualProxyLs = Set-AzDataFactoryV2LinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -Name $lsname -File .\Resources\linkedService.json -Force
         Assert-AreEqual $actualProxyLs.Name $lsname
 
@@ -157,8 +157,8 @@ function Test-SsisAzure-IntegrationRuntime
             -MaxParallelExecutionsPerNode 1 `
             -LicenseType LicenseIncluded `
             -Edition Enterprise `
-			-DataProxyIntegrationRuntimeName $proxyIrName `
-			-DataProxyStagingLinkedServiceName $lsname `
+            -DataProxyIntegrationRuntimeName $proxyIrName `
+            -DataProxyStagingLinkedServiceName $lsname `
             -Force
 
         $expected = Get-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `
@@ -173,9 +173,9 @@ function Test-SsisAzure-IntegrationRuntime
         Wait-Seconds 15
         Remove-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname -DataFactoryName $dfname -Name $irname -Force
 
-		Remove-AzDataFactoryV2LinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -Name $lsname -Force
+        Remove-AzDataFactoryV2LinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -Name $lsname -Force
 
-		Remove-AzDataFactoryV2IntegrationRuntime -ResourceId $actualProxyIr.Id -Force
+        Remove-AzDataFactoryV2IntegrationRuntime -ResourceId $actualProxyIr.Id -Force
     }
     finally
     {
