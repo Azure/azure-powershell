@@ -386,11 +386,11 @@ To create the parameters described below, construct a hash table containing the 
     - `[(Any) <String>]`: This indicates any property can be added to this object.
   - `[CustomRouteAddressPrefix <String[]>]`: A list of address blocks reserved for this virtual network in CIDR notation.
   - `[P2SVpnServerConfigurationId <String>]`: Resource ID.
+  - `[ScaleUnit <Int32?>]`: The scale unit for this p2s vpn gateway.
   - `[VirtualHubId <String>]`: Resource ID.
-  - `[VpnClientAddressPoolAddressPrefix <String[]>]`: A list of address blocks reserved for this virtual network in CIDR notation.
-  - `[VpnClientConnectionHealthAllocatedIPAddress <String[]>]`: List of allocated ip addresses to the connected p2s vpn clients.
-  - `[VpnClientConnectionHealthVpnClientConnectionsCount <Int32?>]`: The total of p2s vpn clients connected at this time to this P2SVpnGateway.
-  - `[VpnGatewayScaleUnit <Int32?>]`: The scale unit for this p2s vpn gateway.
+  - `[VpnClientAddressPrefix <String[]>]`: A list of address blocks reserved for this virtual network in CIDR notation.
+  - `[VpnClientAllocatedIPAddress <String[]>]`: List of allocated ip addresses to the connected p2s vpn clients.
+  - `[VpnClientConnectionCount <Int32?>]`: The total of p2s vpn clients connected at this time to this P2SVpnGateway.
 
 ## RELATED LINKS
 

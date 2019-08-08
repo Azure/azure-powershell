@@ -693,7 +693,7 @@ To create the parameters described below, construct a hash table containing the 
     - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
     - `[FrontendIPConfigurationId <String>]`: Resource ID.
     - `[FrontendPort <Int32?>]`: The port for the external endpoint. Port numbers for each rule must be unique within the Load Balancer. Acceptable values range from 1 to 65534.
-    - `[IdleTimeoutInMinute <Int32?>]`: The timeout for the TCP idle connection. The value can be set between 4 and 30 minutes. The default value is 4 minutes. This element is only used when the protocol is set to TCP.
+    - `[IdleTimeoutInMinutes <Int32?>]`: The timeout for the TCP idle connection. The value can be set between 4 and 30 minutes. The default value is 4 minutes. This element is only used when the protocol is set to TCP.
     - `[LoadBalancerBackendAddressPool <IBackendAddressPool[]>]`: The reference of LoadBalancerBackendAddressPool resource.
     - `[LoadBalancerInboundNatRule <IInboundNatRule[]>]`: A list of references of LoadBalancerInboundNatRules.
     - `[Name <String>]`: Gets name of the resource that is unique within a resource group. This name can be used to access the resource.
@@ -707,21 +707,22 @@ To create the parameters described below, construct a hash table containing the 
       - `[Id <String>]`: Resource ID.
       - `[Location <String>]`: Resource location.
       - `[Tag <IResourceTags>]`: Resource tags.
+      - `[AllocationMethod <IPAllocationMethod?>]`: The public IP allocation method. Possible values are: 'Static' and 'Dynamic'.
       - `[DnsSettingDomainNameLabel <String>]`: Gets or sets the Domain name label.The concatenation of the domain name label and the regionalized DNS zone make up the fully qualified domain name associated with the public IP address. If a domain name label is specified, an A DNS record is created for the public IP in the Microsoft Azure DNS system.
       - `[DnsSettingFqdn <String>]`: Gets the FQDN, Fully qualified domain name of the A DNS record associated with the public IP. This is the concatenation of the domainNameLabel and the regionalized DNS zone.
       - `[DnsSettingReverseFqdn <String>]`: Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name that resolves to this public IP address. If the reverseFqdn is specified, then a PTR DNS record is created pointing from the IP address in the in-addr.arpa domain to the reverse FQDN. 
       - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
       - `[IPAddress <String>]`: The IP address associated with the public IP address resource.
+      - `[IPAddressVersion <IPVersion?>]`: The public IP address version. Possible values are: 'IPv4' and 'IPv6'.
       - `[IPConfigurationEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
       - `[IPConfigurationId <String>]`: Resource ID.
       - `[IPConfigurationName <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-      - `[IPConfigurationPropertiesProvisioningState <String>]`: Gets the provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-      - `[IdleTimeoutInMinute <Int32?>]`: The idle timeout of the public IP address.
+      - `[IPConfigurationProvisioningState <String>]`: Gets the provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+      - `[IdleTimeoutInMinutes <Int32?>]`: The idle timeout of the public IP address.
+      - `[InnerPublicIPAddress <IPublicIPAddress>]`: The reference of the public IP resource.
       - `[PrivateIPAddress <String>]`: The private IP address of the IP configuration.
       - `[PrivateIPAllocationMethod <IPAllocationMethod?>]`: The private IP allocation method. Possible values are 'Static' and 'Dynamic'.
-      - `[PropertiesIpConfigurationPropertiesPublicIPAddress <IPublicIPAddress>]`: The reference of the public IP resource.
       - `[ProvisioningState <String>]`: The provisioning state of the PublicIP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-      - `[PublicIPAllocationMethod <IPAllocationMethod?>]`: The public IP allocation method. Possible values are: 'Static' and 'Dynamic'.
       - `[ResourceGuid <String>]`: The resource GUID property of the public IP resource.
       - `[SkuName <PublicIPAddressSkuName?>]`: Name of a public IP address SKU.
       - `[Subnet <ISubnet>]`: The reference of the subnet resource.
@@ -780,7 +781,6 @@ To create the parameters described below, construct a hash table containing the 
           - `[Location <String[]>]`: A list of locations.
           - `[ProvisioningState <String>]`: The provisioning state of the resource.
           - `[Service <String>]`: The type of the endpoint service.
-      - `[Version <IPVersion?>]`: The public IP address version. Possible values are: 'IPv4' and 'IPv6'.
       - `[Zone <String[]>]`: A list of availability zones denoting the IP allocated for the resource needs to come from.
     - `[Subnet <ISubnet>]`: Subnet bound to the IP configuration.
   - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
@@ -858,7 +858,7 @@ To create the parameters described below, construct a hash table containing the 
       - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
       - `[FrontendIPConfigurationId <String>]`: Resource ID.
       - `[FrontendPort <Int32?>]`: The port for the external endpoint. Port numbers for each rule must be unique within the Load Balancer. Acceptable values range from 1 to 65534.
-      - `[IdleTimeoutInMinute <Int32?>]`: The timeout for the TCP idle connection. The value can be set between 4 and 30 minutes. The default value is 4 minutes. This element is only used when the protocol is set to TCP.
+      - `[IdleTimeoutInMinutes <Int32?>]`: The timeout for the TCP idle connection. The value can be set between 4 and 30 minutes. The default value is 4 minutes. This element is only used when the protocol is set to TCP.
       - `[LoadBalancerBackendAddressPool <IBackendAddressPool[]>]`: The reference of LoadBalancerBackendAddressPool resource.
       - `[LoadBalancerInboundNatRule <IInboundNatRule[]>]`: A list of references of LoadBalancerInboundNatRules.
       - `[Name <String>]`: Gets name of the resource that is unique within a resource group. This name can be used to access the resource.
@@ -872,21 +872,22 @@ To create the parameters described below, construct a hash table containing the 
         - `[Id <String>]`: Resource ID.
         - `[Location <String>]`: Resource location.
         - `[Tag <IResourceTags>]`: Resource tags.
+        - `[AllocationMethod <IPAllocationMethod?>]`: The public IP allocation method. Possible values are: 'Static' and 'Dynamic'.
         - `[DnsSettingDomainNameLabel <String>]`: Gets or sets the Domain name label.The concatenation of the domain name label and the regionalized DNS zone make up the fully qualified domain name associated with the public IP address. If a domain name label is specified, an A DNS record is created for the public IP in the Microsoft Azure DNS system.
         - `[DnsSettingFqdn <String>]`: Gets the FQDN, Fully qualified domain name of the A DNS record associated with the public IP. This is the concatenation of the domainNameLabel and the regionalized DNS zone.
         - `[DnsSettingReverseFqdn <String>]`: Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name that resolves to this public IP address. If the reverseFqdn is specified, then a PTR DNS record is created pointing from the IP address in the in-addr.arpa domain to the reverse FQDN. 
         - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
         - `[IPAddress <String>]`: The IP address associated with the public IP address resource.
+        - `[IPAddressVersion <IPVersion?>]`: The public IP address version. Possible values are: 'IPv4' and 'IPv6'.
         - `[IPConfigurationEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
         - `[IPConfigurationId <String>]`: Resource ID.
         - `[IPConfigurationName <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-        - `[IPConfigurationPropertiesProvisioningState <String>]`: Gets the provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-        - `[IdleTimeoutInMinute <Int32?>]`: The idle timeout of the public IP address.
+        - `[IPConfigurationProvisioningState <String>]`: Gets the provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+        - `[IdleTimeoutInMinutes <Int32?>]`: The idle timeout of the public IP address.
+        - `[InnerPublicIPAddress <IPublicIPAddress>]`: The reference of the public IP resource.
         - `[PrivateIPAddress <String>]`: The private IP address of the IP configuration.
         - `[PrivateIPAllocationMethod <IPAllocationMethod?>]`: The private IP allocation method. Possible values are 'Static' and 'Dynamic'.
-        - `[PropertiesIpConfigurationPropertiesPublicIPAddress <IPublicIPAddress>]`: The reference of the public IP resource.
         - `[ProvisioningState <String>]`: The provisioning state of the PublicIP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-        - `[PublicIPAllocationMethod <IPAllocationMethod?>]`: The public IP allocation method. Possible values are: 'Static' and 'Dynamic'.
         - `[ResourceGuid <String>]`: The resource GUID property of the public IP resource.
         - `[SkuName <PublicIPAddressSkuName?>]`: Name of a public IP address SKU.
         - `[Subnet <ISubnet>]`: The reference of the subnet resource.
@@ -926,7 +927,6 @@ To create the parameters described below, construct a hash table containing the 
             - `[Location <String[]>]`: A list of locations.
             - `[ProvisioningState <String>]`: The provisioning state of the resource.
             - `[Service <String>]`: The type of the endpoint service.
-        - `[Version <IPVersion?>]`: The public IP address version. Possible values are: 'IPv4' and 'IPv6'.
         - `[Zone <String[]>]`: A list of availability zones denoting the IP allocated for the resource needs to come from.
       - `[Subnet <ISubnet>]`: Subnet bound to the IP configuration.
     - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.

@@ -875,8 +875,8 @@ directive:
       parameter-name: SkuName
     set:
       alias: Sku
-  - where: # REMOVE BEFORE RELEASE: Not sure why AsJob was part of the cmdlet before
-      verb: ^New$|^Remove$
+  - where: # REMOVE BEFORE RELEASE: AsJob on non-long-running operation
+      verb: ^New$|^Set$|^Remove$
       subject: NetworkProfile
       parameter-name: ResourceGroupName
     set:
@@ -1005,12 +1005,6 @@ directive:
       parameter-name: ResourceGroupName
     set:
       alias: NetworkInterfaceTapConfig
-  - where: # REMOVE BEFORE RELEASE: In-memory object parameter and AsJob on non-long-running operation
-      verb: Set
-      subject: NetworkProfile
-      parameter-name: ResourceGroupName
-    set:
-      alias: AsJob
   - where: # REMOVE BEFORE RELEASE: In-memory object parameter
       verb: Set
       subject: NetworkSecurityGroup
@@ -1330,6 +1324,22 @@ directive:
     set:
       parameter-name: $1InDays
   - where:
+      property-name: ^(.*)InSecond$
+    set:
+      property-name: $1InSeconds
+  - where:
+      property-name: ^(.*)InMinute$
+    set:
+      property-name: $1InMinutes
+  - where:
+      property-name: ^(.*)InHour$
+    set:
+      property-name: $1InHours
+  - where:
+      property-name: ^(.*)InDay$
+    set:
+      property-name: $1InDays
+  - where:
       parameter-name: ^(.*)IPaddress(.*)$
     set:
       parameter-name: $1IPAddress$2
@@ -1371,27 +1381,43 @@ directive:
       parameter-name: StoragePathUri
       alias: StoragePath
   - where:
-      verb: New
       subject: PublicIPAddress
-      parameter-name: ^PublicIP(.*)
+      parameter-name: ^PublicIP(.*)$
     set:
       parameter-name: $1
   - where:
-      verb: New
+      model-name: PublicIPAddress
+      property-name: ^PublicIP(.+)$
+    set:
+      property-name: $1
+  - where:
       subject: PublicIPAddress
       parameter-name: AddressVersion
     set:
-      parameter-name: IpAddressVersion
+      parameter-name: IPAddressVersion
   - where:
-      verb: New
+      model-name: PublicIPAddress
+      property-name: Version
+    set:
+      property-name: IPAddressVersion
+  - where:
       subject: PublicIPAddress
       parameter-name: DdosSettingProtectionCoverage
     set:
       parameter-name: DdosProtectionCoverage
   - where:
-      verb: New
+      model-name: PublicIPAddress
+      property-name: DdosSettingProtectionCoverage
+    set:
+      property-name: DdosProtectionCoverage
+  - where:
       subject: PublicIPAddress
-      parameter-name: ^DnsSetting(.*)
+      parameter-name: ^DnsSetting(.*)$
+    set:
+      parameter-name: $1
+  - where:
+      subject: PublicIPAddress
+      parameter-name: ^DnsSetting(.+)$
     set:
       parameter-name: $1
   - where: # REMOVE BEFORE RELEASE: In-memory object parameter
@@ -2424,20 +2450,50 @@ directive:
     set:
       parameter-name: VpnClientAddressPrefix
   - where:
+      model-name: P2SVpnGateway
+      property-name: VpnClientAddressPoolAddressPrefix
+    set:
+      property-name: VpnClientAddressPrefix
+  - where:
       subject: P2SVpnGateway
       parameter-name: VpnClientConnectionHealthAllocatedIPAddress
     set:
       parameter-name: VpnClientAllocatedIPAddress
+  - where:
+      model-name: P2SVpnGateway
+      property-name: VpnClientConnectionHealthAllocatedIPAddress
+    set:
+      property-name: VpnClientAllocatedIPAddress
   - where:
       subject: P2SVpnGateway
       parameter-name: VpnClientConnectionHealthVpnClientConnectionsCount
     set:
       parameter-name: VpnClientConnectionCount
   - where:
+      model-name: P2SVpnGateway
+      property-name: VpnClientConnectionHealthVpnClientConnectionsCount
+    set:
+      property-name: VpnClientConnectionCount
+  - where:
       subject: P2SVpnGateway
       parameter-name: VpnGatewayScaleUnit
     set:
       parameter-name: ScaleUnit
+  - where:
+      model-name: P2SVpnGateway
+      property-name: VpnGatewayScaleUnit
+    set:
+      property-name: ScaleUnit
+  - where:
+      model-name: P2SVpnGateway
+      property-name: VpnClientConnectionHealthTotalEgressBytesTransferred
+    set:
+      property-name: VpnClientEgressBytesTransferred
+  - where:
+      model-name: P2SVpnGateway
+      property-name: VpnClientConnectionHealthTotalIngressBytesTransferred
+    set:
+      property-name: VpnClientIngressBytesTransferred
   - where: # This parameter needs removed
       verb: ^New$|^Set$
       subject: P2SVpnServerConfiguration
@@ -2484,35 +2540,20 @@ directive:
     set:
       parameter-name: IPConfigurationFormat
   - where:
-      subject: PublicIPAddress
-      parameter-name: IpAddressVersion
+      model-name: PublicIPAddress
+      property-name: IPConfigurationProperty
     set:
-      parameter-name: IPAddressVersion
+      property-name: IPConfigurationFormat
   - where:
-      subject: PublicIPAddress
-      parameter-name: DdosSettingProtectionCoverage
+      model-name: PublicIPAddress
+      property-name: IPConfigurationPropertiesProvisioningState
     set:
-      parameter-name: DdosProtectionCoverage
+      property-name: IPConfigurationProvisioningState
   - where:
-      subject: PublicIPAddress
-      parameter-name: ^DnsSetting(.*)$
+      model-name: PublicIPAddress
+      property-name: PropertiesIpConfigurationPropertiesPublicIPAddress
     set:
-      parameter-name: $1
-  - where:
-      subject: PublicIPAddress
-      parameter-name: PublicIPAddressVersion
-    set:
-      parameter-name: IPAddressVersion
-  - where:
-      subject: PublicIPAddress
-      parameter-name: PublicIPAllocationMethod
-    set:
-      parameter-name: AllocationMethod
-  - where:
-      subject: PublicIPAddress
-      parameter-name: PublicIPPrefixId
-    set:
-      parameter-name: PrefixId
+      property-name: InnerPublicIPAddress
   - where: # This parameter needs removed
       verb: ^New$|^Set$
       subject: RouteFilterRule
@@ -2784,6 +2825,18 @@ directive:
 
 ## Formatting
   - where:
+      model-name: ^ApplicationSecurityGroup$|^DdosCustomPolicy$|^DdosProtectionPlan$|^NetworkProfile$|^NetworkSecurityGroup$
+    set:
+      format-table:
+        properties:
+          - ResourceGuid
+          - Name
+          - Location
+          - ProvisioningState
+        labels:
+          ResourceGuid: GUID
+          ProvisioningState: Provisioning State
+  - where:
       model-name: ApplicationGateway
     set:
       format-table:
@@ -2804,18 +2857,6 @@ directive:
           EnableHttp2: HTTP2 Enabled
           EnableFips: FIPS Enabled
           OperationalState: Operational State
-          ProvisioningState: Provisioning State
-  - where:
-      model-name: ^ApplicationSecurityGroup$|^DdosCustomPolicy$|^DdosProtectionPlan$
-    set:
-      format-table:
-        properties:
-          - ResourceGuid
-          - Name
-          - Location
-          - ProvisioningState
-        labels:
-          ResourceGuid: GUID
           ProvisioningState: Provisioning State
   - where:
       model-name: AzureFirewall
@@ -2969,5 +3010,52 @@ directive:
           MacAddress: MAC Address
           EnableAcceleratedNetworking: Enable Accelerated Networking
           EnableIPForwarding: Enable IP Forwarding
+          ProvisioningState: Provisioning State
+  - where:
+      model-name: ^NetworkWatcher$|^P2SVpnGateway$|^RouteFilter$
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - Type
+          - ProvisioningState
+        labels:
+          ProvisioningState: Provisioning State
+  - where:
+      model-name: PublicIPAddress
+    set:
+      format-table:
+        properties:
+          - ResourceGuid
+          - Name
+          - Location
+          - AllocationMethod
+          - IPAddress
+          - IPAddressVersion
+          - IdleTimeoutInMinutes
+          - ProvisioningState
+        labels:
+          ResourceGuid: GUID
+          AllocationMethod: Allocation Method
+          IPAddress: IP Address
+          IPAddressVersion: Version
+          IdleTimeoutInMinutes: Idle Timeout [minutes]
+          ProvisioningState: Provisioning State
+  - where:
+      model-name: PublicIPPrefix
+    set:
+      format-table:
+        properties:
+          - ResourceGuid
+          - Name
+          - Location
+          - IPPrefix
+          - PublicIPAddressVersion
+          - ProvisioningState
+        labels:
+          ResourceGuid: GUID
+          IPPrefix: IP Prefix
+          PublicIPAddressVersion: Public IP Address Version
           ProvisioningState: Provisioning State
 ```

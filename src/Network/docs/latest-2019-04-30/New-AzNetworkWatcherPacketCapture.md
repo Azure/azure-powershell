@@ -420,7 +420,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[StorageLocationFilePath <String>]`: A valid local path on the targeting VM. Must include the name of the capture file (*.cap). For linux virtual machine it must start with /var/captures. Required if no storage ID is provided, otherwise optional.
   - `[StorageLocationStorageId <String>]`: The ID of the storage account to save the packet capture session. Required if no local file path is provided.
   - `[StorageLocationStoragePath <String>]`: The URI of the storage path to save the packet capture. Must be a well-formed URI describing the location to save the packet capture.
-  - `[TimeLimitInSecond <Int32?>]`: Maximum duration of the capture session in seconds.
+  - `[TimeLimitInSeconds <Int32?>]`: Maximum duration of the capture session in seconds.
   - `[TotalBytesPerSession <Int32?>]`: Maximum size of the capture output.
 
 ## RELATED LINKS

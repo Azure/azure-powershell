@@ -419,7 +419,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Tag <IResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
   - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-  - `[IdleTimeoutInMinute <Int32?>]`: The idle timeout of the nat gateway.
+  - `[IdleTimeoutInMinutes <Int32?>]`: The idle timeout of the nat gateway.
   - `[ProvisioningState <String>]`: The provisioning state of the NatGateway resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
   - `[PublicIPAddress <ISubResource[]>]`: An array of public ip addresses associated with the nat gateway resource.
     - `[Id <String>]`: Resource ID.

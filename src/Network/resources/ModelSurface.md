@@ -939,7 +939,7 @@
   - DestinationPort `Int32?`
   - DestinationResourceId `String`
   - Location `String`
-  - MonitoringIntervalInSecond `Int32?`
+  - MonitoringIntervalInSeconds `Int32?`
   - SourcePort `Int32?`
   - SourceResourceId `String`
   - Tag `IConnectionMonitorTags`
@@ -957,7 +957,7 @@
   - DestinationAddress `String`
   - DestinationPort `Int32?`
   - DestinationResourceId `String`
-  - MonitoringIntervalInSecond `Int32?`
+  - MonitoringIntervalInSeconds `Int32?`
   - SourcePort `Int32?`
   - SourceResourceId `String`
 
@@ -973,7 +973,7 @@
   - Etag `String`
   - Id `String`
   - Location `String`
-  - MonitoringIntervalInSecond `Int32?`
+  - MonitoringIntervalInSeconds `Int32?`
   - MonitoringStatus `String`
   - Name `String`
   - ProvisioningState `ProvisioningState?`
@@ -989,7 +989,7 @@
   - DestinationAddress `String`
   - DestinationPort `Int32?`
   - DestinationResourceId `String`
-  - MonitoringIntervalInSecond `Int32?`
+  - MonitoringIntervalInSeconds `Int32?`
   - MonitoringStatus `String`
   - ProvisioningState `ProvisioningState?`
   - Source `IConnectionMonitorSource`
@@ -1941,7 +1941,7 @@
   - FrontendPortRangeEnd `Int32`
   - FrontendPortRangeStart `Int32`
   - Id `String`
-  - IdleTimeoutInMinute `Int32?`
+  - IdleTimeoutInMinutes `Int32?`
   - Name `String`
   - Protocol `TransportProtocol`
   - ProvisioningState `String`
@@ -1953,7 +1953,7 @@
   - FrontendIPConfigurationId `String`
   - FrontendPortRangeEnd `Int32`
   - FrontendPortRangeStart `Int32`
-  - IdleTimeoutInMinute `Int32?`
+  - IdleTimeoutInMinutes `Int32?`
   - Protocol `TransportProtocol`
   - ProvisioningState `String`
 
@@ -1971,7 +1971,7 @@
   - FrontendIPConfigurationId `String`
   - FrontendPort `Int32?`
   - Id `String`
-  - IdleTimeoutInMinute `Int32?`
+  - IdleTimeoutInMinutes `Int32?`
   - LoadBalancerBackendAddressPool `IBackendAddressPool[]`
   - LoadBalancerInboundNatRule `IInboundNatRule[]`
   - Name `String`
@@ -2001,7 +2001,7 @@
   - EnableTcpReset `Boolean?`
   - FrontendIPConfigurationId `String`
   - FrontendPort `Int32?`
-  - IdleTimeoutInMinute `Int32?`
+  - IdleTimeoutInMinutes `Int32?`
   - LoadBalancerBackendAddressPool `IBackendAddressPool[]`
   - LoadBalancerInboundNatRule `IInboundNatRule[]`
   - Primary `Boolean?`
@@ -2211,7 +2211,7 @@
   - FrontendIPConfigurationId `String`
   - FrontendPort `Int32`
   - Id `String`
-  - IdleTimeoutInMinute `Int32?`
+  - IdleTimeoutInMinutes `Int32?`
   - LoadDistribution `LoadDistribution?`
   - Name `String`
   - ProbeId `String`
@@ -2226,7 +2226,7 @@
   - EnableTcpReset `Boolean?`
   - FrontendIPConfigurationId `String`
   - FrontendPort `Int32`
-  - IdleTimeoutInMinute `Int32?`
+  - IdleTimeoutInMinutes `Int32?`
   - LoadDistribution `LoadDistribution?`
   - ProbeId `String`
   - Protocol `TransportProtocol`
@@ -2308,7 +2308,7 @@
 ### NatGateway [Api20190201]
   - Etag `String`
   - Id `String`
-  - IdleTimeoutInMinute `Int32?`
+  - IdleTimeoutInMinutes `Int32?`
   - Location `String`
   - Name `String`
   - ProvisioningState `String`
@@ -2325,7 +2325,7 @@
   - Value `INatGateway[]`
 
 ### NatGatewayPropertiesFormat [Api20190201]
-  - IdleTimeoutInMinute `Int32?`
+  - IdleTimeoutInMinutes `Int32?`
   - ProvisioningState `String`
   - PublicIPAddress `ISubResource[]`
   - PublicIPPrefix `ISubResource[]`
@@ -2351,7 +2351,7 @@
   - Result `INetworkConfigurationDiagnosticResult[]`
 
 ### NetworkConfigurationDiagnosticResult [Api20190201]
-  - NetworkSecurityGroupResultEvaluatedNsg `IEvaluatedNetworkSecurityGroup[]`
+  - NsgResultEvaluatedNsg `IEvaluatedNetworkSecurityGroup[]`
   - NsgResultSecurityRuleAccessResult `SecurityRuleAccess?`
   - ProfileDestination `String`
   - ProfileDestinationPort `String`
@@ -2738,7 +2738,7 @@
   - Etag `String`
   - FrontendIPConfiguration `ISubResource[]`
   - Id `String`
-  - IdleTimeoutInMinute `Int32?`
+  - IdleTimeoutInMinutes `Int32?`
   - Name `String`
   - Protocol `LoadBalancerOutboundRuleProtocol`
   - ProvisioningState `String`
@@ -2748,7 +2748,7 @@
   - BackendAddressPoolId `String`
   - EnableTcpReset `Boolean?`
   - FrontendIPConfiguration `ISubResource[]`
-  - IdleTimeoutInMinute `Int32?`
+  - IdleTimeoutInMinutes `Int32?`
   - Protocol `LoadBalancerOutboundRuleProtocol`
   - ProvisioningState `String`
 
@@ -2760,15 +2760,15 @@
   - Name `String`
   - P2SVpnServerConfigurationId `String`
   - ProvisioningState `ProvisioningState?`
+  - ScaleUnit `Int32?`
   - Tag `IResourceTags`
   - Type `String`
   - VirtualHubId `String`
-  - VpnClientAddressPoolAddressPrefix `String[]`
-  - VpnClientConnectionHealthAllocatedIPAddress `String[]`
-  - VpnClientConnectionHealthTotalEgressBytesTransferred `Int64?`
-  - VpnClientConnectionHealthTotalIngressBytesTransferred `Int64?`
-  - VpnClientConnectionHealthVpnClientConnectionsCount `Int32?`
-  - VpnGatewayScaleUnit `Int32?`
+  - VpnClientAddressPrefix `String[]`
+  - VpnClientAllocatedIPAddress `String[]`
+  - VpnClientConnectionCount `Int32?`
+  - VpnClientEgressBytesTransferred `Int64?`
+  - VpnClientIngressBytesTransferred `Int64?`
 
 ### P2SVpnGatewayProperties [Api20190201]
   - CustomRouteAddressPrefix `String[]`
@@ -2867,7 +2867,7 @@
   - StorageLocationStorageId `String`
   - StorageLocationStoragePath `String`
   - Target `String`
-  - TimeLimitInSecond `Int32?`
+  - TimeLimitInSeconds `Int32?`
   - TotalBytesPerSession `Int32?`
 
 ### PacketCaptureFilter [Api20190201]
@@ -2887,7 +2887,7 @@
   - StorageLocationStorageId `String`
   - StorageLocationStoragePath `String`
   - Target `String`
-  - TimeLimitInSecond `Int32?`
+  - TimeLimitInSeconds `Int32?`
   - TotalBytesPerSession `Int32?`
 
 ### PacketCaptureQueryStatusResult [Api20190201]
@@ -2909,7 +2909,7 @@
   - StorageLocationStorageId `String`
   - StorageLocationStoragePath `String`
   - Target `String`
-  - TimeLimitInSecond `Int32?`
+  - TimeLimitInSeconds `Int32?`
   - TotalBytesPerSession `Int32?`
 
 ### PacketCaptureResultProperties [Api20190201]
@@ -2921,7 +2921,7 @@
   - StorageLocationStorageId `String`
   - StorageLocationStoragePath `String`
   - Target `String`
-  - TimeLimitInSecond `Int32?`
+  - TimeLimitInSeconds `Int32?`
   - TotalBytesPerSession `Int32?`
 
 ### PacketCaptureStorageLocation [Api20190201]
@@ -2993,7 +2993,7 @@
 ### Probe [Api20171001, Api20190201]
   - Etag `String`
   - Id `String`
-  - IntervalInSecond `Int32?`
+  - IntervalInSeconds `Int32?`
   - LoadBalancingRule `ISubResource[]`
   - Name `String`
   - NumberOfProbe `Int32?`
@@ -3003,7 +3003,7 @@
   - RequestPath `String`
 
 ### ProbePropertiesFormat [Api20171001, Api20190201]
-  - IntervalInSecond `Int32?`
+  - IntervalInSeconds `Int32?`
   - LoadBalancingRule `ISubResource[]`
   - NumberOfProbe `Int32?`
   - Port `Int32`
@@ -3023,35 +3023,35 @@
   - TriggerSensitivityOverride `DdosCustomPolicyTriggerSensitivityOverride?`
 
 ### PublicIPAddress [Api20171001, Api20190201]
+  - AllocationMethod `IPAllocationMethod?`
   - DdosCustomPolicyId `String`
-  - DdosSettingProtectionCoverage `DdosSettingsProtectionCoverage?`
+  - DdosProtectionCoverage `DdosSettingsProtectionCoverage?`
   - DnsSettingDomainNameLabel `String`
   - DnsSettingFqdn `String`
   - DnsSettingReverseFqdn `String`
   - Etag `String`
   - Id `String`
-  - IdleTimeoutInMinute `Int32?`
+  - IdleTimeoutInMinutes `Int32?`
+  - InnerPublicIPAddress `IPublicIPAddress`
   - IPAddress `String`
+  - IPAddressVersion `IPVersion?`
   - IPConfigurationEtag `String`
+  - IPConfigurationFormat `IIPConfigurationPropertiesFormat`
   - IPConfigurationId `String`
   - IPConfigurationName `String`
-  - IPConfigurationPropertiesProvisioningState `String`
-  - IPConfigurationProperty `IIPConfigurationPropertiesFormat`
+  - IPConfigurationProvisioningState `String`
   - IPTag `IIPTag[]`
   - Location `String`
   - Name `String`
+  - PrefixId `String`
   - PrivateIPAddress `String`
   - PrivateIPAllocationMethod `IPAllocationMethod?`
-  - PropertiesIpConfigurationPropertiesPublicIPAddress `IPublicIPAddress`
   - ProvisioningState `String`
-  - PublicIPAllocationMethod `IPAllocationMethod?`
-  - PublicIPPrefixId `String`
   - ResourceGuid `String`
   - SkuName `PublicIPAddressSkuName?`
   - Subnet `ISubnet`
   - Tag `IResourceTags`
   - Type `String`
-  - Version `IPVersion?`
   - Zone `String[]`
 
 ### PublicIPAddressDnsSettings [Api20171001]
@@ -3069,7 +3069,7 @@
   - DnsSettingDomainNameLabel `String`
   - DnsSettingFqdn `String`
   - DnsSettingReverseFqdn `String`
-  - IdleTimeoutInMinute `Int32?`
+  - IdleTimeoutInMinutes `Int32?`
   - IPAddress `String`
   - IPConfigurationEtag `String`
   - IPConfigurationId `String`

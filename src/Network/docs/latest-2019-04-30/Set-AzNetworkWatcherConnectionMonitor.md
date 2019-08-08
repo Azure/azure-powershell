@@ -385,7 +385,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[DestinationPort <Int32?>]`: The destination port used by connection monitor.
   - `[DestinationResourceId <String>]`: The ID of the resource used as the destination by connection monitor.
   - `[Location <String>]`: Connection monitor location.
-  - `[MonitoringIntervalInSecond <Int32?>]`: Monitoring interval in seconds.
+  - `[MonitoringIntervalInSeconds <Int32?>]`: Monitoring interval in seconds.
   - `[SourcePort <Int32?>]`: The source port used by connection monitor.
   - `[Tag <IConnectionMonitorTags>]`: Connection monitor tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.

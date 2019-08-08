@@ -645,27 +645,27 @@ To create the parameters described below, construct a hash table containing the 
     - `[Location <String>]`: Resource location.
     - `[Tag <IResourceTags>]`: Resource tags.
       - `[(Any) <String>]`: This indicates any property can be added to this object.
+    - `[AllocationMethod <IPAllocationMethod?>]`: The public IP address allocation method.
     - `[DdosCustomPolicyId <String>]`: Resource ID.
-    - `[DdosSettingProtectionCoverage <DdosSettingsProtectionCoverage?>]`: The DDoS protection policy customizability of the public IP. Only standard coverage will have the ability to be customized.
+    - `[DdosProtectionCoverage <DdosSettingsProtectionCoverage?>]`: The DDoS protection policy customizability of the public IP. Only standard coverage will have the ability to be customized.
     - `[DnsSettingDomainNameLabel <String>]`: Gets or sets the Domain name label.The concatenation of the domain name label and the regionalized DNS zone make up the fully qualified domain name associated with the public IP address. If a domain name label is specified, an A DNS record is created for the public IP in the Microsoft Azure DNS system.
     - `[DnsSettingFqdn <String>]`: Gets the FQDN, Fully qualified domain name of the A DNS record associated with the public IP. This is the concatenation of the domainNameLabel and the regionalized DNS zone.
     - `[DnsSettingReverseFqdn <String>]`: Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name that resolves to this public IP address. If the reverseFqdn is specified, then a PTR DNS record is created pointing from the IP address in the in-addr.arpa domain to the reverse FQDN. 
     - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
     - `[IPAddress <String>]`: The IP address associated with the public IP address resource.
+    - `[IPAddressVersion <IPVersion?>]`: The public IP address version.
     - `[IPConfigurationEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
+    - `[IPConfigurationFormat <IIPConfigurationPropertiesFormat>]`: Properties of the IP configuration
     - `[IPConfigurationId <String>]`: Resource ID.
     - `[IPConfigurationName <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-    - `[IPConfigurationProperty <IIPConfigurationPropertiesFormat>]`: Properties of the IP configuration
     - `[IPTag <IIPTag[]>]`: The list of tags associated with the public IP address.
       - `[Tag <String>]`: Gets or sets value of the IpTag associated with the public IP. Example SQL, Storage etc
       - `[Type <String>]`: Gets or sets the ipTag type: Example FirstPartyUsage.
-    - `[IdleTimeoutInMinute <Int32?>]`: The idle timeout of the public IP address.
+    - `[IdleTimeoutInMinutes <Int32?>]`: The idle timeout of the public IP address.
+    - `[PrefixId <String>]`: Resource ID.
     - `[ProvisioningState <String>]`: The provisioning state of the PublicIP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-    - `[PublicIPAllocationMethod <IPAllocationMethod?>]`: The public IP address allocation method.
-    - `[PublicIPPrefixId <String>]`: Resource ID.
     - `[ResourceGuid <String>]`: The resource GUID property of the public IP resource.
     - `[SkuName <PublicIPAddressSkuName?>]`: Name of a public IP address SKU.
-    - `[Version <IPVersion?>]`: The public IP address version.
     - `[Zone <String[]>]`: A list of availability zones denoting the IP allocated for the resource needs to come from.
   - `[Subnet <ISubnet>]`: The reference of the subnet resource.
     - `[Id <String>]`: Resource ID.
@@ -761,17 +761,17 @@ To create the parameters described below, construct a hash table containing the 
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
+  - `[AllocationMethod <IPAllocationMethod?>]`: The public IP address allocation method.
   - `[DdosCustomPolicyId <String>]`: Resource ID.
-  - `[DdosSettingProtectionCoverage <DdosSettingsProtectionCoverage?>]`: The DDoS protection policy customizability of the public IP. Only standard coverage will have the ability to be customized.
+  - `[DdosProtectionCoverage <DdosSettingsProtectionCoverage?>]`: The DDoS protection policy customizability of the public IP. Only standard coverage will have the ability to be customized.
   - `[DnsSettingDomainNameLabel <String>]`: Gets or sets the Domain name label.The concatenation of the domain name label and the regionalized DNS zone make up the fully qualified domain name associated with the public IP address. If a domain name label is specified, an A DNS record is created for the public IP in the Microsoft Azure DNS system.
   - `[DnsSettingFqdn <String>]`: Gets the FQDN, Fully qualified domain name of the A DNS record associated with the public IP. This is the concatenation of the domainNameLabel and the regionalized DNS zone.
   - `[DnsSettingReverseFqdn <String>]`: Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name that resolves to this public IP address. If the reverseFqdn is specified, then a PTR DNS record is created pointing from the IP address in the in-addr.arpa domain to the reverse FQDN. 
   - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
   - `[IPAddress <String>]`: The IP address associated with the public IP address resource.
+  - `[IPAddressVersion <IPVersion?>]`: The public IP address version.
   - `[IPConfigurationEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
-  - `[IPConfigurationId <String>]`: Resource ID.
-  - `[IPConfigurationName <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  - `[IPConfigurationProperty <IIPConfigurationPropertiesFormat>]`: Properties of the IP configuration
+  - `[IPConfigurationFormat <IIPConfigurationPropertiesFormat>]`: Properties of the IP configuration
     - `[PrivateIPAddress <String>]`: The private IP address of the IP configuration.
     - `[PrivateIPAllocationMethod <IPAllocationMethod?>]`: The private IP address allocation method.
     - `[ProvisioningState <String>]`: Gets the provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
@@ -860,16 +860,16 @@ To create the parameters described below, construct a hash table containing the 
           - `[Service <String>]`: Service endpoint name.
           - `[ServiceResource <String[]>]`: A list of service resources.
         - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+  - `[IPConfigurationId <String>]`: Resource ID.
+  - `[IPConfigurationName <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
   - `[IPTag <IIPTag[]>]`: The list of tags associated with the public IP address.
     - `[Tag <String>]`: Gets or sets value of the IpTag associated with the public IP. Example SQL, Storage etc
     - `[Type <String>]`: Gets or sets the ipTag type: Example FirstPartyUsage.
-  - `[IdleTimeoutInMinute <Int32?>]`: The idle timeout of the public IP address.
+  - `[IdleTimeoutInMinutes <Int32?>]`: The idle timeout of the public IP address.
+  - `[PrefixId <String>]`: Resource ID.
   - `[ProvisioningState <String>]`: The provisioning state of the PublicIP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-  - `[PublicIPAllocationMethod <IPAllocationMethod?>]`: The public IP address allocation method.
-  - `[PublicIPPrefixId <String>]`: Resource ID.
   - `[ResourceGuid <String>]`: The resource GUID property of the public IP resource.
   - `[SkuName <PublicIPAddressSkuName?>]`: Name of a public IP address SKU.
-  - `[Version <IPVersion?>]`: The public IP address version.
   - `[Zone <String[]>]`: A list of availability zones denoting the IP allocated for the resource needs to come from.
 
 ## RELATED LINKS
