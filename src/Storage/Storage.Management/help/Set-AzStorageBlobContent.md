@@ -17,17 +17,16 @@ Uploads a local file to an Azure Storage blob.
 ```
 Set-AzStorageBlobContent [-File] <String> [-Container] <String> [-Blob <String>] [-BlobType <String>]
  [-Properties <Hashtable>] [-Metadata <Hashtable>] [-PremiumPageBlobTier <PremiumPageBlobTier>]
- [-StandardBlobTier <StandardBlobTier>] [-Force] [-AsJob] [-Context <IStorageContext>]
- [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-StandardBlobTier <String>] [-Force] [-AsJob] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
+ [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ContainerPipeline
 ```
 Set-AzStorageBlobContent [-File] <String> [-Blob <String>] -CloudBlobContainer <CloudBlobContainer>
  [-BlobType <String>] [-Properties <Hashtable>] [-Metadata <Hashtable>]
- [-PremiumPageBlobTier <PremiumPageBlobTier>] [-StandardBlobTier <StandardBlobTier>] [-Force] [-AsJob]
+ [-PremiumPageBlobTier <PremiumPageBlobTier>] [-StandardBlobTier <String>] [-Force] [-AsJob]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -36,10 +35,10 @@ Set-AzStorageBlobContent [-File] <String> [-Blob <String>] -CloudBlobContainer <
 ### BlobPipeline
 ```
 Set-AzStorageBlobContent [-File] <String> -CloudBlob <CloudBlob> [-BlobType <String>] [-Properties <Hashtable>]
- [-Metadata <Hashtable>] [-PremiumPageBlobTier <PremiumPageBlobTier>] [-StandardBlobTier <StandardBlobTier>]
- [-Force] [-AsJob] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
- [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Metadata <Hashtable>] [-PremiumPageBlobTier <PremiumPageBlobTier>] [-StandardBlobTier <String>] [-Force]
+ [-AsJob] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -378,7 +377,7 @@ Block Blob Tier, valid values are Hot/Cool/Archive.
 See detail in https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-storage-tiers
 
 ```yaml
-Type: Microsoft.Azure.Storage.Blob.StandardBlobTier
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

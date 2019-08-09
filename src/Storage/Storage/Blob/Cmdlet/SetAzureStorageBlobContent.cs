@@ -28,6 +28,7 @@ using System.Threading.Tasks;
 using StorageBlob = Microsoft.Azure.Storage.Blob;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 {
@@ -171,17 +172,25 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         private PremiumPageBlobTier? pageBlobTier = null;
 
         [Parameter(HelpMessage = "Block Blob Tier, valid values are Hot/Cool/Archive. See detail in https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-storage-tiers", Mandatory = false)]
+        [PSArgumentCompleter("Hot", "Cool", "Archive")]
         [ValidateSet("Hot", "Cool", "Archive", IgnoreCase = true)]
-        public StandardBlobTier StandardBlobTier
+        public string StandardBlobTier
         {
             get
             {
-                return standardBlobTier.Value;
+                return standardBlobTier is null ? null : standardBlobTier.Value.ToString();
             }
 
             set
             {
-                standardBlobTier = value;
+                if (value != null)
+                {
+                    standardBlobTier = ((StandardBlobTier)Enum.Parse(typeof(StandardBlobTier), value, true));
+                }
+                else
+                {
+                    standardBlobTier = null;
+                }
             }
         }
         private StandardBlobTier? standardBlobTier = null;
@@ -547,7 +556,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             {
                 DoBeginProcessing();
             }
-
 
             // Validate the Blob Tier matches with blob Type
             StorageBlob.BlobType type = StorageBlob.BlobType.BlockBlob;

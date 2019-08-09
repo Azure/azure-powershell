@@ -33,6 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using System.Reflection;
     using System.Security.Permissions;
     using System.Threading.Tasks;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet("Start", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageBlobCopy", SupportsShouldProcess = true, DefaultParameterSetName = ContainerNameParameterSet),OutputType(typeof(AzureStorageBlob))]
     [Alias("Start-CopyAzureStorageBlob")]
@@ -198,17 +199,25 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         private PremiumPageBlobTier? pageBlobTier = null;
 
         [Parameter(HelpMessage = "Block Blob Tier, valid values are Hot/Cool/Archive. See detail in https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-storage-tiers", Mandatory = false)]
+        [PSArgumentCompleter("Hot", "Cool", "Archive")]
         [ValidateSet("Hot", "Cool", "Archive", IgnoreCase = true)]
-        public StandardBlobTier StandardBlobTier
+        public string StandardBlobTier
         {
             get
             {
-                return standardBlobTier.Value;
+                return standardBlobTier is null ? null : standardBlobTier.Value.ToString();
             }
 
             set
             {
-                standardBlobTier = value;
+                if (value != null)
+                {
+                    standardBlobTier = ((StandardBlobTier)Enum.Parse(typeof(StandardBlobTier), value, true));
+                }
+                else
+                {
+                    standardBlobTier = null;
+                }
             }
         }
         private StandardBlobTier? standardBlobTier = null;
