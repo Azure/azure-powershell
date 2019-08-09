@@ -129,4 +129,7 @@
   <data name="createService_InvalidKindMessage" xml:space="preserve">
     <value>Invalid service kind. Valid values are fhir, fhir-Stu3 and fhir-R4.</value>
   </data>
+  <data name="createService_InvalidFhirVersionMessage" xml:space="preserve">
+    <value>Invalid FhirVersion. Valid values are Stu3 and R4.</value>
+  </data>
 </root>

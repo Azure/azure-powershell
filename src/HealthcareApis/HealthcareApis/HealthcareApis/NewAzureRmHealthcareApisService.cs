@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Commands.HealthcareApisService.Commands
 
                     Properties = new ServicesProperties()
                     {
-                        AuthenticationConfiguration = new ServiceAuthenticationConfigurationInfo() { Authority = GetAuthority(), Audience = GetAudience() },
+                        AuthenticationConfiguration = new ServiceAuthenticationConfigurationInfo() { Authority = GetAuthority(), Audience = GetAudience(), SmartProxyEnabled = EnableSmartProxy.ToBool() },
                         CosmosDbConfiguration = new ServiceCosmosDbConfigurationInfo() { OfferThroughput = GetCosmosDBThroughput()},
                         CorsConfiguration = new ServiceCorsConfigurationInfo() { Origins = CorsOrigin, Headers = CorsHeader, Methods = CorsMethods, MaxAge = CorsMaxAge, AllowCredentials = AllowCorsCredentials },
                         AccessPolicies = accessPolicies
@@ -200,13 +200,37 @@ namespace Microsoft.Azure.Commands.HealthcareApisService.Commands
 
         private Kind GetKind()
         {
-            if(this.Kind == null)
+            if(this.Kind == null && this.FhirVersion!=null)
+            {
+                if (FhirVersion.ToLowerInvariant() == "r4")
+                {
+                    return Management.HealthcareApis.Models.Kind.FhirR4;
+                }
+                else if (FhirVersion.ToLowerInvariant() == "stu3")
+                {
+                    return Management.HealthcareApis.Models.Kind.FhirStu3;
+                }
+                else
+                {
+                    throw new PSArgumentException(Resources.createService_InvalidFhirVersionMessage);
+                }
+            }
+            else if(this.Kind== null && this.FhirVersion == null)
             {
                 return Management.HealthcareApis.Models.Kind.FhirR4;
-
+            }
+            else if(this.FhirVersion != null)
+            {
+                return parseKindFromVersion(this.FhirVersion);
             }
 
             return parseKind(this.Kind);
+        }
+
+
+        private Kind parseKindFromVersion(string fhirVersion)
+        {
+            return parseKind(FhirVersion);
         }
 
         private Kind parseKind(string kind)
@@ -215,11 +239,11 @@ namespace Microsoft.Azure.Commands.HealthcareApisService.Commands
             {
                 return Management.HealthcareApis.Models.Kind.Fhir;
             }
-            else if (kind.ToLowerInvariant().Equals("fhir-stu3"))
+            else if (kind.ToLowerInvariant().Equals("fhir-stu3") || kind.ToLowerInvariant().Equals("stu3"))
             {
                 return Management.HealthcareApis.Models.Kind.FhirStu3;
             }
-            else if (kind.ToLowerInvariant().Equals("fhir-r4"))
+            else if (kind.ToLowerInvariant().Equals("fhir-r4") || kind.ToLowerInvariant().Equals("r4"))
             {
                 return Management.HealthcareApis.Models.Kind.FhirR4;
             }
