@@ -43,7 +43,7 @@ Updates a Log Alert Rule by PUT semantics
 
 ### Example 1 - Set by rule name
 ```powershell
-PS C:\> Set-AzScheduledQueryRule -ResourceGroupName "shrutika-rg" -Name "LogAlertRulePSTest1" -Enabled 1 -Location "centralindia" -Action $alertingAction -Description "log alert example" -Schedule $schedule -Source $source
+PS C:\> Set-AzScheduledQueryRule -ResourceGroupName "shrutika-rg" -Name "LogAlertRulePSTest1" -Enabled $true -Location "centralindia" -Action $alertingAction -Description "log alert example" -Schedule $schedule -Source $source
 
 Description       : log alert example
 Enabled           : true
@@ -79,7 +79,7 @@ Tags              : {[hidden-link:/subscriptions/ad825170-845c-47db-8f00-1197894
 
 ### Example 3 - Set by resource Id
 ```powershell
-PS C:\> Set-AzScheduledQueryRule -ResourceId "/subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/shrutika-rg/providers/microsoft.insights/scheduledqueryrules/LogAlertRulePSTest1" -Enabled 1 -Location "centralindia" -Action $alertingAction -Description "change desc again" -Schedule $schedule -Source $source
+PS C:\> Set-AzScheduledQueryRule -ResourceId "/subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/shrutika-rg/providers/microsoft.insights/scheduledqueryrules/LogAlertRulePSTest1" -Enabled $true -Location "centralindia" -Action $alertingAction -Description "change desc again" -Schedule $schedule -Source $source
 
 Description       : change desc again
 Enabled           : true
@@ -170,7 +170,7 @@ Accept wildcard characters: False
 ```
 
 ### -Enabled
-The azure alert state - valid values - true, false
+The azure alert state - valid values - $true, $false
 
 ```yaml
 Type: System.Boolean
