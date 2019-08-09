@@ -30,6 +30,7 @@ function Test-AzRmHealthcareApisService{
 	$location = "West US"
 	$offerThroughput = 1000
 	$newOfferThroughput = 400
+	$kind "fhir-r4"
 	
 	try
 	{
@@ -38,7 +39,7 @@ function Test-AzRmHealthcareApisService{
 		New-AzResourceGroup -Name $rgname -Location $location
 
 	# Create App
-		$created = New-AzHealthcareApisService -Name $rname -ResourceGroupName  $rgname -Location $location -CosmosOfferThroughput $offerThroughput;
+		$created = New-AzHealthcareApisService -Name $rname -ResourceGroupName  $rgname -Location $location -Kind $kind -CosmosOfferThroughput $offerThroughput;
 	
 	    $actual = Get-AzHealthcareApisService -ResourceGroupName $rgname -Name $rname
 

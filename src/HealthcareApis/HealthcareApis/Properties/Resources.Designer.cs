@@ -79,6 +79,15 @@ namespace Microsoft.Azure.Commands.HealthcareApisService.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid FhirVersion. Valid values are Stu3 and R4..
+        /// </summary>
+        internal static string createService_InvalidFhirVersionMessage {
+            get {
+                return ResourceManager.GetString("createService_InvalidFhirVersionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid service kind. Valid values are fhir, fhir-Stu3 and fhir-R4..
         /// </summary>
         internal static string createService_InvalidKindMessage {
