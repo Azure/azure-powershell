@@ -25,7 +25,9 @@ try{
     $legacy = Get-AzLegacyPeering -Kind Exchange -PeeringLocation Ashburn 
 	Assert-NotNull $legacy
 	Assert-True {$legacy.Count -ge 1}
-	$peering = $legacy | New-AzPeering -ResourceGroupName $rg -Name $name -PeerAsnResourceId $peerAsn.Id
+	$legacy | New-AzPeering -ResourceGroupName $rg -Name $name -PeerAsnResourceId $peerAsn.Id #-Tag @{ tfs_813289="Approved" })
+	$peering = Get-AzPeering -ResourceGroupName $rg -Name $name
+	Assert-NotNull $peering
 	}finally {
 			$isRemoved = Remove-AzPeerAsn -Name $peerAsn.Name -Force -PassThru
 		Assert-True {$isRemoved}
@@ -34,28 +36,28 @@ try{
 
 <#
 .SYNOPSIS
-GetLocationKindDirect
+Convert Legacy Kind Exchange Amsterdam With New Connection
 #>
-function Test-ConvertLegacyKindDirectAmsterdamWithNewConnection
-{
-try{
-#must be hard coded asn because they have legacy items.
-	$peerAsn = makePeerAsn 15224
-	$name = getPeeringVariable "Name" "AS15224_Amsterdam_Exchange"
-	$rg = getPeeringVariable "ResourceGroupName" "Building40"
-    $legacy = Get-AzLegacyPeering -Kind Exchange -PeeringLocation Amsterdam 
-	Assert-NotNull $legacy
-	Assert-True {$legacy.Count -ge 1}
-	#has to be hard coded becuase this ip address isnt used.
-	$ipaddress = getPeeringVariable "ipaddress" " 80.249.208.103"
-	$facilityId = 26
-	$maxv4 = maxAdvertisedIpv4
-	$connection = New-AzPeeringExchangeConnectionObject -PeeringDbFacilityId $facilityId -MaxPrefixesAdvertisedIPv4 $maxv4 -PeerSessionIPv4Address $ipaddress
-	$peering = $legacy | New-AzPeering -ResourceGroupName $rg -Name $name -PeerAsnResourceId $peerAsn.Id -ExchangeConnection $connection
-	}
-	finally {
-		$isRemoved = Remove-AzPeerAsn -Name $peerAsn.Name -Force -PassThru
-		Assert-True {$isRemoved}
-	}
+function Test-ConvertLegacyKindExchangeAmsterdamWithNewConnection {
+    try {
+        #must be hard coded asn because they have legacy items.
+        $peerAsn = makePeerAsn 15224
+        $name = getPeeringVariable "Name" "AS15224_Amsterdam_Exchange"
+        $rg = getPeeringVariable "ResourceGroupName" "Building40"
+        $legacy = Get-AzLegacyPeering -Kind Exchange -PeeringLocation Amsterdam 
+        Assert-NotNull $legacy
+        Assert-True { $legacy.Count -ge 1 }
+        #has to be hard coded becuase this ip address isnt used.
+		#testing trim
+        $ipaddress = getPeeringVariable "ipaddress" " 80.249.211.62 "
+        $facilityId = 26
+        $maxv4 = maxAdvertisedIpv4
+        $connection = New-AzPeeringExchangeConnectionObject -PeeringDbFacilityId $facilityId -MaxPrefixesAdvertisedIPv4 $maxv4 -PeerSessionIPv4Address $ipaddress
+        $peering = $legacy | New-AzPeering -ResourceGroupName $rg -Name $name -PeerAsnResourceId $peerAsn.Id -ExchangeConnection $connection -Tag @{ "tfs_813288" = "Approved" }
+    }
+    finally {
+        $isRemoved = Remove-AzPeerAsn -Name $peerAsn.Name -Force -PassThru
+        Assert-True { $isRemoved }
+    }
 }
 

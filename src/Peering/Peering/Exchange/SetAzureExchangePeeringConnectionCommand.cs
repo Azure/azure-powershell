@@ -170,7 +170,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
         {
                 this.InputObject.BgpSession.MaxPrefixesAdvertisedV4 =
                     this.MaxPrefixesAdvertisedIPv4 == null ? (this.InputObject.BgpSession.MaxPrefixesAdvertisedV4 != 0 ? this.InputObject.BgpSession.MaxPrefixesAdvertisedV4 : 20000) : this.MaxPrefixesAdvertisedIPv4;
-            this.InputObject.BgpSession.PeerSessionIPv4Address = this.PeerSessionIPv4Address;
+            this.InputObject.BgpSession.PeerSessionIPv4Address = this.PeerSessionIPv4Address?.Trim();
                 if (this.IsValidConnection(this.InputObject))
                     return this.InputObject;
 
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
         {
                 this.InputObject.BgpSession.MaxPrefixesAdvertisedV6 =
                     this.MaxPrefixesAdvertisedIPv6 == null ? (this.InputObject.BgpSession.MaxPrefixesAdvertisedV6 != 0 ? this.InputObject.BgpSession.MaxPrefixesAdvertisedV6 : 2000) : this.MaxPrefixesAdvertisedIPv6;
-            this.InputObject.BgpSession.PeerSessionIPv6Address = this.PeerSessionIPv6Address;
+            this.InputObject.BgpSession.PeerSessionIPv6Address = this.PeerSessionIPv6Address?.Trim();
                 if (this.IsValidConnection(this.InputObject))
                     return this.InputObject;
 
