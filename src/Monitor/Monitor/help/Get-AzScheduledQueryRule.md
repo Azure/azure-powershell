@@ -36,38 +36,38 @@ Gets Scheduled Query Resources
 
 ### Example 1 - List by subscription or resource group
 ```powershell
-PS C:\> Get-AzScheduledQueryRule -ResourceGroupName "shrutika-rg"
+PS C:\> Get-AzScheduledQueryRule -ResourceGroupName "MyResourceGroup"
 
-Description       : desc 1
+Description       : description 1
 Enabled           : true
 LastUpdatedTime   : 19-Apr-19 12:29:39 PM
 ProvisioningState : Succeeded
 Source            : Microsoft.Azure.Management.Monitor.Models.Source
 Schedule          : Microsoft.Azure.Management.Monitor.Models.Schedule
 Action            : Microsoft.Azure.Management.Monitor.Models.AlertingAction
-Id                : /subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/shrutika-rg/providers/microsoft.insights/scheduledqueryrules/LogAlertRulePSTest1
-Name              : LogAlertRulePSTest1
+Id                : /subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/MyResourceGroup/providers/microsoft.insights/scheduledqueryrules/LogAlertRule1
+Name              : LogAlertRule1
 Type              : microsoft.insights/scheduledqueryrules
 Location          : centralindia
-Tags              : {[hidden-link:/subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/shrutika-rg/providers/Microsoft.OperationalInsights/workspaces/shrutika-ws, Resource]}
+Tags              : {[hidden-link:/subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/MyResourceGroup/providers/Microsoft.OperationalInsights/workspaces/MyWorkspace, Resource]}
 
-Description       : desc 2
+Description       : description 2
 Enabled           : true
 LastUpdatedTime   : 15-Apr-19 6:57:00 PM
 ProvisioningState : Succeeded
 Source            : Microsoft.Azure.Management.Monitor.Models.Source
-Schedule          :
+Schedule          : Microsoft.Azure.Management.Monitor.Models.Schedule
 Action            : Microsoft.Azure.Management.Monitor.Models.Action
-Id                : /subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/shrutika-rg/providers/microsoft.insights/scheduledqueryrules/LogAlertRulePSTest1
-Name              : LogAlertRulePSTest2
+Id                : /subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/MyResourceGroup/providers/microsoft.insights/scheduledqueryrules/LogAlertRule2
+Name              : LogAlertRule2
 Type              : microsoft.insights/scheduledqueryrules
 Location          : centralindia
-Tags              : {[hidden-link:/subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/shrutika-rg/providers/Microsoft.OperationalInsights/workspaces/shrutika-ws, Resource]}
+Tags              : {[hidden-link:/subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/MyResourceGroup/providers/Microsoft.OperationalInsights/workspaces/MyWorkspace, Resource]}
 ```
 
 ### Example 2 - Get by rule name
 ```powershell
-PS C:\> Get-AzScheduledQueryRule -ResourceGroupName "shrutika-rg" -Name "LogAlertRulePSTest1"
+PS C:\> Get-AzScheduledQueryRule -ResourceGroupName "MyResourceGroup" -Name "LogAlertRule1"
 
 Description       : desc 1
 Enabled           : true
@@ -76,16 +76,16 @@ ProvisioningState : Succeeded
 Source            : Microsoft.Azure.Management.Monitor.Models.Source
 Schedule          : Microsoft.Azure.Management.Monitor.Models.Schedule
 Action            : Microsoft.Azure.Management.Monitor.Models.AlertingAction
-Id                : /subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/shrutika-rg/providers/microsoft.insights/scheduledqueryrules/LogAlertRulePSTest1
-Name              : LogAlertRulePSTest1
+Id                : /subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/MyResourceGroup/providers/microsoft.insights/scheduledqueryrules/LogAlertRule1
+Name              : LogAlertRule1
 Type              : microsoft.insights/scheduledqueryrules
 Location          : centralindia
-Tags              : {[hidden-link:/subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/shrutika-rg/providers/Microsoft.OperationalInsights/workspaces/shrutika-ws, Resource]}
+Tags              : {[hidden-link:/subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/MyResourceGroup/providers/Microsoft.OperationalInsights/workspaces/MyWorkspace, Resource]}
 ```
 
 ### Example 3 - Get by resource Id
 ```powershell
-PS C:\> Get-AzScheduledQueryRule -ResourceId "/subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/shrutika-rg/providers/microsoft.insights/scheduledqueryrules/LogAlertRulePSTest1"
+PS C:\> Get-AzScheduledQueryRule -ResourceId "/subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/MyResourceGroup/providers/microsoft.insights/scheduledqueryrules/LogAlertRule1"
 
 Description       : desc 1
 Enabled           : true
@@ -94,11 +94,11 @@ ProvisioningState : Succeeded
 Source            : Microsoft.Azure.Management.Monitor.Models.Source
 Schedule          : Microsoft.Azure.Management.Monitor.Models.Schedule
 Action            : Microsoft.Azure.Management.Monitor.Models.AlertingAction
-Id                : /subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/shrutika-rg/providers/microsoft.insights/scheduledqueryrules/LogAlertRulePSTest1
-Name              : LogAlertRulePSTest1
+Id                : /subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/MyResourceGroup/providers/microsoft.insights/scheduledqueryrules/LogAlertRule1
+Name              : LogAlertRule1
 Type              : microsoft.insights/scheduledqueryrules
 Location          : centralindia
-Tags              : {[hidden-link:/subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/shrutika-rg/providers/Microsoft.OperationalInsights/workspaces/shrutika-ws, Resource]}
+Tags              : {[hidden-link:/subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/MyResourceGroup/providers/Microsoft.OperationalInsights/workspaces/MyWorkspace, Resource]}
 ```
 
 ## PARAMETERS
