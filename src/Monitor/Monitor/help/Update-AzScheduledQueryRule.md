@@ -38,7 +38,7 @@ To update other properties, see "Set-AzScheduledQueryRule" command.
 
 ### Example 1 - Update by rule name
 ```powershell
-PS C:\> Update-AzScheduledQueryRule -ResourceGroupName "shrutika-rg" -Name "LogAlertRulePSTest1" -Enabled 0
+PS C:\> Update-AzScheduledQueryRule -ResourceGroupName "shrutika-rg" -Name "LogAlertRulePSTest1" -Enabled $false
 
 Description       : desc
 Enabled           : false
@@ -56,7 +56,7 @@ Tags              : {[hidden-link:/subscriptions/ad825170-845c-47db-8f00-1197894
 
 ### Example 2 - Update by input object
 ```powershell
-PS C:\> Update-AzScheduledQueryRule -InputObject $sqr -Enabled 0
+PS C:\> Update-AzScheduledQueryRule -InputObject $sqr -Enabled $false
 
 Description       : desc
 Enabled           : false
@@ -74,7 +74,7 @@ Tags              : {[hidden-link:/subscriptions/ad825170-845c-47db-8f00-1197894
 
 ### Example 3 - Update by resource Id
 ```powershell
-PS C:\> Update-AzScheduledQueryRule -ResourceId /subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/shrutika-rg/providers/microsoft.insights/scheduledqueryrules/LogAlertRulePSTest1 -Enabled 1
+PS C:\> Update-AzScheduledQueryRule -ResourceId /subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/shrutika-rg/providers/microsoft.insights/scheduledqueryrules/LogAlertRulePSTest1 -Enabled $true
 
 Description       : desc
 Enabled           : true
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 ```
 
 ### -Enabled
-The azure alert state - valid values - true, false
+The azure alert state - valid values - $true, $false
 
 ```yaml
 Type: System.Boolean
