@@ -21,7 +21,7 @@ New-AzPeering [-ResourceGroupName] <String> [-Name] <String> [-PeeringLocation] 
 
 ### ConvertLegacyPeering
 ```
-New-AzPeering -LegacyPeering <PSPeering> [-ResourceGroupName] <String> [-Name] <String>
+New-AzPeering -InputObject <PSPeering> [-ResourceGroupName] <String> [-Name] <String>
  [-PeerAsnResourceId] <String> [-ExchangeConnection <PSExchangeConnection[]>]
  [-DirectConnection <PSDirectConnection[]>] [-Tag <Hashtable>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -195,8 +195,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LegacyPeering
-The legacy peering object. Use Get-AzLegacyPeering to view current objects.
+### -InputObject
+Use Get-AzLegacyPeering to retrieve this object.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering
