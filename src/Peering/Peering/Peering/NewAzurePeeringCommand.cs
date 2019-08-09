@@ -149,8 +149,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             ParameterSetName = Constants.Direct)]
         [Parameter(
             Mandatory = false,
-            ParameterSetName = Constants.ParameterSetNameConvertLegacyPeering,
-            HelpMessage = Constants.PeeringDirectConnectionHelp)]
+            HelpMessage = Constants.PeeringDirectConnectionHelp,
+            ParameterSetName = Constants.ParameterSetNameConvertLegacyPeering)]
         [ValidateNotNull]
         public PSDirectConnection[] DirectConnection { get; set; }
 
