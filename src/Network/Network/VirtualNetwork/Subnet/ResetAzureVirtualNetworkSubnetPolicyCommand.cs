@@ -23,8 +23,8 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsData.Initialize, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkSubnetPolicy", SupportsShouldProcess = true, DefaultParameterSetName = "SetByResourceId"), OutputType(typeof(PSSubnet))]
-    public class InitializeAzureVirtualNetworkSubnetPolicyCommand : VirtualNetworkBaseCmdlet
+    [Cmdlet(VerbsCommon.Reset, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkSubnetPolicy", SupportsShouldProcess = true, DefaultParameterSetName = "SetByResourceId"), OutputType(typeof(PSSubnet))]
+    public class ResetAzureVirtualNetworkSubnetPolicyCommand : VirtualNetworkBaseCmdlet
     {
 
         [Parameter(
@@ -88,13 +88,13 @@ namespace Microsoft.Azure.Commands.Network
             {
                 throw new ArgumentException("ServiceName should be like Microsoft.Sql/managedInstances");
             }
-
-            if (ShouldProcess($"Subnet {this.Name}", "Initialize"))
+            
+            if (ShouldProcess($"Subnet {this.Name}", "Reset"))
             {
                 // call prepareNetworkPolicies API
-                var prepareRequestParams = new PrepareNetworkPoliciesRequest(this.ServiceName);
-                this.NetworkClient.NetworkManagementClient.Subnets.PrepareNetworkPolicies(this.VirtualNetwork.ResourceGroupName,
-                                this.VirtualNetwork.Name, this.Name, prepareRequestParams);
+                var unPrepareRequestParams = new UnprepareNetworkPoliciesRequest(this.ServiceName);
+                this.NetworkClient.NetworkManagementClient.Subnets.UnprepareNetworkPolicies(this.VirtualNetwork.ResourceGroupName,
+                                this.VirtualNetwork.Name, this.Name, unPrepareRequestParams);
 
                 var getVirtualNetwork = GetVirtualNetwork(this.VirtualNetwork.ResourceGroupName, this.VirtualNetwork.Name);
                 var getSubnet = getVirtualNetwork.Subnets.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, StringComparison.CurrentCultureIgnoreCase));

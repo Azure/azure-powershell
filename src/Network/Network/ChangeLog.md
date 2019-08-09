@@ -4,6 +4,9 @@
     Changes for the upcoming release should go under the section titled "Upcoming Release", and should adhere to the following format:
 
     ## Upcoming Release
+    * Add support for Reset Network Intent Policy configuration of Subnet
+        - New cmdlets
+            Reset-AzVirtualNetworkSubnetPolicy
     * Overview of change #1
         - Additional information about change #1
     * Overview of change #2

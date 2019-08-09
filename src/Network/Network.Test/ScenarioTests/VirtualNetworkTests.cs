@@ -61,9 +61,17 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
-        public void TestInitializeSubnetPolicy()
+        public void TestInitializeAzVirtualNetworkSubnetPolicy()
         {
-            TestRunner.RunTestScript("Test-InitializeSubnetPolicy");
+            TestRunner.RunTestScript("Test-InitializeAzVirtualNetworkSubnetPolicy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        public void TestResetAzVirtualNetworkSubnetPolicy()
+        {
+            TestRunner.RunTestScript("Test-ResetAzVirtualNetworkSubnetPolicy");
         }
 
         [Fact]
