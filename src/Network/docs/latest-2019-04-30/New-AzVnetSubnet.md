@@ -15,7 +15,7 @@ Creates or updates a subnet in the specified virtual network.
 ### CreateExpanded (Default)
 ```
 New-AzVnetSubnet -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -VnetName <String>
- [-AdditionalAddressPrefix <String>] [-AddressPrefix <String[]>] [-Delegation <IDelegation[]>]
+ [-AdditionalAddressPrefix <String[]>] [-AddressPrefix <String>] [-Delegation <IDelegation[]>]
  [-Etag <String>] [-Id <String>] [-NatGatewayId <String>] [-Nsg <INetworkSecurityGroup_Reference>]
  [-ProvisioningState <String>] [-ResourceName <String>] [-ResourceNavigationLink <IResourceNavigationLink[]>]
  [-RouteTable <IRouteTable_Reference>] [-ServiceAssociationLink <IServiceAssociationLink[]>]
@@ -32,8 +32,8 @@ New-AzVnetSubnet -Name <String> -ResourceGroupName <String> -SubscriptionId <Str
 
 ### CreateViaIdentityExpanded
 ```
-New-AzVnetSubnet -InputObject <INetworkIdentity> [-AdditionalAddressPrefix <String>]
- [-AddressPrefix <String[]>] [-Delegation <IDelegation[]>] [-Etag <String>] [-Id <String>]
+New-AzVnetSubnet -InputObject <INetworkIdentity> [-AdditionalAddressPrefix <String[]>]
+ [-AddressPrefix <String>] [-Delegation <IDelegation[]>] [-Etag <String>] [-Id <String>]
  [-NatGatewayId <String>] [-Nsg <INetworkSecurityGroup_Reference>] [-ProvisioningState <String>]
  [-ResourceName <String>] [-ResourceNavigationLink <IResourceNavigationLink[]>]
  [-RouteTable <IRouteTable_Reference>] [-ServiceAssociationLink <IServiceAssociationLink[]>]
@@ -74,10 +74,10 @@ PS C:\> {{ Add code here }}
 ## PARAMETERS
 
 ### -AdditionalAddressPrefix
-The address prefix for the subnet.
+List of address prefixes for the subnet.
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -90,10 +90,10 @@ Dynamic: False
 ```
 
 ### -AddressPrefix
-List of address prefixes for the subnet.
+The address prefix for the subnet.
 
 ```yaml
-Type: System.String[]
+Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 

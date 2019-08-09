@@ -1247,12 +1247,14 @@ directive:
         - ApplicationSecurityGroup
         - PrivateIpAddress
         - IpConfigurationName
-  # - where: # REMOVE BEFORE RELEASE: This is expanded into separate parameters
-  #     verb: New
-  #     subject: NetworkInterface
-  #     parameter-name: ResourceGroupName
-  #   set:
-  #     alias: NetworkSecurityGroup
+  - where: # REMOVE BEFORE RELEASE: These were expanded from Nsg
+      verb: New
+      subject: NetworkInterface
+      parameter-name: ResourceGroupName
+    set:
+      alias:
+        - Subnet
+        - NetworkSecurityGroupId
   - where:
       subject: NetworkInterface
       parameter-name: ^NetworkSecurityGroupProperties(.*)$
@@ -1537,12 +1539,6 @@ directive:
       property-name: VpnClientAddressPoolAddressPrefix
     set:
       property-name: VpnClientAddressPrefix
-  # - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-  #     verb: ^New$|^Set$
-  #     subject: VnetGatewayConnection
-  #     parameter-name: ResourceGroupName
-  #   set:
-  #     alias: LocalNetworkGateway2
   - where:
       verb: ^New$|^Set$
       subject: VnetGatewayConnection
@@ -2788,9 +2784,14 @@ directive:
       alias: SubnetName
   - where:
       subject: VnetSubnet
-      parameter-name: ^PropertiesAddressPrefix$|^PropertiesAddressPrefixes$
+      parameter-name: AddressPrefix
     set:
       parameter-name: AdditionalAddressPrefix
+  - where:
+      subject: VnetSubnet
+      parameter-name: PropertiesAddressPrefix
+    set:
+      parameter-name: AddressPrefix
   - where:
       subject: VnetSubnet
       parameter-name: ^(.*)Properties(.*)$

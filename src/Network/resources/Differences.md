@@ -1,8 +1,5 @@
 ## Incorrect Cmdlets
 
-- New-AzNetworkInterface
-    - Subnet
-    - NetworkSecurityGroupId
 
 ## Correct Cmdlets
 
@@ -92,6 +89,7 @@
 - New-AzFirewall
 - New-AzLoadBalancer
 - New-AzLocalNetworkGateway
+- New-AzNetworkInterface
 - New-AzNetworkProfile
 - New-AzNetworkWatcher
 - New-AzNetworkWatcherConnectionMonitor

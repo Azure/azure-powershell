@@ -1333,8 +1333,8 @@
   - Name `String`
   - InputObject `INetworkIdentity`
   - Expand `String`
-  - AdditionalAddressPrefix `String`
-  - AddressPrefix `String[]`
+  - AdditionalAddressPrefix `String[]`
+  - AddressPrefix `String`
   - Delegation `IDelegation[]`
   - Etag `String`
   - Id `String`

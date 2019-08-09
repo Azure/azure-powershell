@@ -15,7 +15,7 @@ Creates or updates a subnet in the specified virtual network.
 ### CreateExpanded1 (Default)
 ```
 New-AzVnetSubnet -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -VnetName <String>
- [-AddressPrefix <String>] [-Etag <String>] [-Id <String>] [-Nsg <INetworkSecurityGroup_Reference>]
+ [-AdditionalAddressPrefix <String>] [-Etag <String>] [-Id <String>] [-Nsg <INetworkSecurityGroup_Reference>]
  [-ProvisioningState <String>] [-ResourceName <String>] [-ResourceNavigationLink <IResourceNavigationLink[]>]
  [-RouteTable <IRouteTable_Reference>] [-ServiceEndpoint <IServiceEndpointPropertiesFormat[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -29,11 +29,11 @@ New-AzVnetSubnet -Name <String> -ResourceGroupName <String> -SubscriptionId <Str
 
 ### CreateViaIdentityExpanded1
 ```
-New-AzVnetSubnet -InputObject <INetworkIdentity> [-AddressPrefix <String>] [-Etag <String>] [-Id <String>]
- [-Nsg <INetworkSecurityGroup_Reference>] [-ProvisioningState <String>] [-ResourceName <String>]
- [-ResourceNavigationLink <IResourceNavigationLink[]>] [-RouteTable <IRouteTable_Reference>]
- [-ServiceEndpoint <IServiceEndpointPropertiesFormat[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzVnetSubnet -InputObject <INetworkIdentity> [-AdditionalAddressPrefix <String>] [-Etag <String>]
+ [-Id <String>] [-Nsg <INetworkSecurityGroup_Reference>] [-ProvisioningState <String>]
+ [-ResourceName <String>] [-ResourceNavigationLink <IResourceNavigationLink[]>]
+ [-RouteTable <IRouteTable_Reference>] [-ServiceEndpoint <IServiceEndpointPropertiesFormat[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity1
@@ -67,7 +67,7 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -AddressPrefix
+### -AdditionalAddressPrefix
 The address prefix for the subnet.
 
 ```yaml

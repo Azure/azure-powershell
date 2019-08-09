@@ -422,7 +422,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: CreateExpanded1, Create1
-Aliases: SubnetId, PublicIpAddressId, PublicIpAddress, LoadBalancerBackendAddressPoolId, LoadBalancerBackendAddressPool, LoadBalancerInboundNatRuleId, LoadBalancerInboundNatRule, ApplicationGatewayBackendAddressPoolId, ApplicationGatewayBackendAddressPool, ApplicationSecurityGroupId, ApplicationSecurityGroup, PrivateIpAddress, IpConfigurationName
+Aliases: SubnetId, PublicIpAddressId, PublicIpAddress, LoadBalancerBackendAddressPoolId, LoadBalancerBackendAddressPool, LoadBalancerInboundNatRuleId, LoadBalancerInboundNatRule, ApplicationGatewayBackendAddressPoolId, ApplicationGatewayBackendAddressPool, ApplicationSecurityGroupId, ApplicationSecurityGroup, PrivateIpAddress, IpConfigurationName, Subnet, NetworkSecurityGroupId
 
 Required: True
 Position: Named
