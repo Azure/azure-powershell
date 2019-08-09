@@ -211,7 +211,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
         {
                 this.InputObject.BgpSession.MaxPrefixesAdvertisedV4 =
                     this.MaxPrefixesAdvertisedIPv4 == null ? this.InputObject.BgpSession.MaxPrefixesAdvertisedV4 : this.MaxPrefixesAdvertisedIPv4;
-                this.InputObject.BgpSession.SessionPrefixV4 = this.ValidatePrefix(this.SessionPrefixV4);
+                this.InputObject.BgpSession.SessionPrefixV4 = this.ValidatePrefix(this.SessionPrefixV4?.Trim());
                 if (this.IsValidConnection(this.InputObject))
                     return this.InputObject;
 
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
         {
                 this.InputObject.BgpSession.MaxPrefixesAdvertisedV6 =
                     this.MaxPrefixesAdvertisedIPv6 == null ? this.InputObject.BgpSession.MaxPrefixesAdvertisedV6 : this.MaxPrefixesAdvertisedIPv6;
-                this.InputObject.BgpSession.SessionPrefixV6 = this.ValidatePrefix(this.SessionPrefixV6);
+                this.InputObject.BgpSession.SessionPrefixV6 = this.ValidatePrefix(this.SessionPrefixV6?.Trim());
                 if (this.IsValidConnection(this.InputObject))
                     return this.InputObject;
 

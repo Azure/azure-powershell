@@ -181,10 +181,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
                                                               MaxPrefixesAdvertisedV6 = !string.IsNullOrEmpty(this.SessionPrefixV6) ? (this.MaxPrefixesAdvertisedIPv6 ?? 2000) : (int?)null,
                                              SessionPrefixV4 =
                                                                   this.ValidatePrefix(
-                                                                      this.SessionPrefixV4),
+                                                                      this.SessionPrefixV4?.Trim()),
                                                               SessionPrefixV6 =
                                                                   this.ValidatePrefix(
-                                                                      this.SessionPrefixV6),
+                                                                      this.SessionPrefixV6?.Trim()),
                                                               Md5AuthenticationKey = this.MD5AuthenticationKey
                                                           }
                                      };
