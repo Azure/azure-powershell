@@ -16,7 +16,7 @@ Creates a VirtualWAN resource if it doesn't exist else updates the existing Virt
 ```
 New-AzVirtualWan -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-AllowBranchToBranchTraffic] [-AllowVnetToVnetTraffic] [-DisableVpnEncryption] [-Id <String>]
- [-Location <String>] [-P2SVpnServerConfiguration <IP2SVpnServerConfiguration[]>]
+ [-Location <String>] [-P2SVpnServerConfiguration <IP2SVpnServerConfiguration_Reference[]>]
  [-SecurityProviderName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -31,7 +31,7 @@ New-AzVirtualWan -Name <String> -ResourceGroupName <String> -SubscriptionId <Str
 ```
 New-AzVirtualWan -InputObject <INetworkIdentity> [-AllowBranchToBranchTraffic] [-AllowVnetToVnetTraffic]
  [-DisableVpnEncryption] [-Id <String>] [-Location <String>]
- [-P2SVpnServerConfiguration <IP2SVpnServerConfiguration[]>] [-SecurityProviderName <String>]
+ [-P2SVpnServerConfiguration <IP2SVpnServerConfiguration_Reference[]>] [-SecurityProviderName <String>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -231,7 +231,7 @@ List of all P2SVpnServerConfigurations associated with the virtual wan.
 To construct, see NOTES section for P2SVPNSERVERCONFIGURATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IP2SVpnServerConfiguration[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IP2SVpnServerConfiguration_Reference[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -378,8 +378,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### P2SVPNSERVERCONFIGURATION <IP2SVpnServerConfiguration[]>: List of all P2SVpnServerConfigurations associated with the virtual wan.
-  - `[Id <String>]`: Resource ID.
+#### P2SVPNSERVERCONFIGURATION <IP2SVpnServerConfiguration_Reference[]>: List of all P2SVpnServerConfigurations associated with the virtual wan.
   - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
   - `[P2SVpnServerConfigRadiusClientRootCertificate <IP2SVpnServerConfigRadiusClientRootCertificate[]>]`: Radius client root certificate of P2SVpnServerConfiguration.
     - `[Id <String>]`: Resource ID.

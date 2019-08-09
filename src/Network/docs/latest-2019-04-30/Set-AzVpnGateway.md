@@ -15,8 +15,8 @@ Creates a virtual wan vpn gateway if it doesn't exist else updates the existing 
 ### UpdateExpanded (Default)
 ```
 Set-AzVpnGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-BgpAsn <Int64>]
- [-BgpPeerWeight <Int32>] [-BgpPeeringAddress <String>] [-Connection <IVpnConnection[]>] [-Id <String>]
- [-Location <String>] [-ScaleUnit <Int32>] [-Tag <Hashtable>] [-VirtualHubId <String>]
+ [-BgpPeerWeight <Int32>] [-BgpPeeringAddress <String>] [-Connection <IVpnConnection_Reference[]>]
+ [-Id <String>] [-Location <String>] [-ScaleUnit <Int32>] [-Tag <Hashtable>] [-VirtualHubId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -120,7 +120,7 @@ List of all vpn connections to the gateway.
 To construct, see NOTES section for CONNECTION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVpnConnection[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVpnConnection_Reference[]
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -361,8 +361,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### CONNECTION <IVpnConnection[]>: List of all vpn connections to the gateway.
-  - `[Id <String>]`: Resource ID.
+#### CONNECTION <IVpnConnection_Reference[]>: List of all vpn connections to the gateway.
   - `[ConnectionBandwidth <Int32?>]`: Expected bandwidth in MBPS.
   - `[EnableBgp <Boolean?>]`: EnableBgp flag
   - `[EnableInternetSecurity <Boolean?>]`: Enable internet security

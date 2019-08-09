@@ -55,6 +55,7 @@ require:
 
 subject-prefix: ''
 module-version: 0.0.1
+make-sub-resources-byreference: true
 
 directive:
 # General
@@ -1246,12 +1247,12 @@ directive:
         - ApplicationSecurityGroup
         - PrivateIpAddress
         - IpConfigurationName
-  - where: # REMOVE BEFORE RELEASE: This is expanded into separate parameters
-      verb: New
-      subject: NetworkInterface
-      parameter-name: ResourceGroupName
-    set:
-      alias: NetworkSecurityGroup
+  # - where: # REMOVE BEFORE RELEASE: This is expanded into separate parameters
+  #     verb: New
+  #     subject: NetworkInterface
+  #     parameter-name: ResourceGroupName
+  #   set:
+  #     alias: NetworkSecurityGroup
   - where:
       subject: NetworkInterface
       parameter-name: ^NetworkSecurityGroupProperties(.*)$
@@ -1536,12 +1537,12 @@ directive:
       property-name: VpnClientAddressPoolAddressPrefix
     set:
       property-name: VpnClientAddressPrefix
-  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-      verb: ^New$|^Set$
-      subject: VnetGatewayConnection
-      parameter-name: ResourceGroupName
-    set:
-      alias: LocalNetworkGateway2
+  # - where: # REMOVE BEFORE RELEASE: In-memory object parameter
+  #     verb: ^New$|^Set$
+  #     subject: VnetGatewayConnection
+  #     parameter-name: ResourceGroupName
+  #   set:
+  #     alias: LocalNetworkGateway2
   - where:
       verb: ^New$|^Set$
       subject: VnetGatewayConnection
@@ -2787,7 +2788,7 @@ directive:
       alias: SubnetName
   - where:
       subject: VnetSubnet
-      parameter-name: PropertiesAddressPrefixes
+      parameter-name: ^PropertiesAddressPrefix$|^PropertiesAddressPrefixes$
     set:
       parameter-name: AdditionalAddressPrefix
   - where:

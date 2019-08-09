@@ -18,10 +18,10 @@ Set-AzNetworkSecurityRule -Name <String> -NsgName <String> -ResourceGroupName <S
  -SubscriptionId <String> [-Access <SecurityRuleAccess>] [-AdditionalDestinationAddressPrefix <String[]>]
  [-AdditionalDestinationPortRange <String[]>] [-AdditionalSourceAddressPrefix <String[]>]
  [-AdditionalSourcePortRange <String[]>] [-Description <String>] [-DestinationAddressPrefix <String>]
- [-DestinationApplicationSecurityGroup <IApplicationSecurityGroup[]>] [-DestinationPortRange <String>]
- [-Direction <SecurityRuleDirection>] [-Etag <String>] [-Id <String>] [-Priority <Int32>]
- [-Protocol <SecurityRuleProtocol>] [-ProvisioningState <String>] [-ResourceName <String>]
- [-SourceAddressPrefix <String>] [-SourceApplicationSecurityGroup <IApplicationSecurityGroup[]>]
+ [-DestinationApplicationSecurityGroup <IApplicationSecurityGroup_Reference[]>]
+ [-DestinationPortRange <String>] [-Direction <SecurityRuleDirection>] [-Etag <String>] [-Id <String>]
+ [-Priority <Int32>] [-Protocol <SecurityRuleProtocol>] [-ProvisioningState <String>] [-ResourceName <String>]
+ [-SourceAddressPrefix <String>] [-SourceApplicationSecurityGroup <IApplicationSecurityGroup_Reference[]>]
  [-SourcePortRange <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -209,10 +209,9 @@ Dynamic: False
 
 ### -DestinationApplicationSecurityGroup
 The application security group specified as destination.
-To construct, see NOTES section for DESTINATIONAPPLICATIONSECURITYGROUP properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IApplicationSecurityGroup[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IApplicationSecurityGroup_Reference[]
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -463,10 +462,9 @@ Dynamic: False
 
 ### -SourceApplicationSecurityGroup
 The application security group specified as source.
-To construct, see NOTES section for SOURCEAPPLICATIONSECURITYGROUP properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IApplicationSecurityGroup[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IApplicationSecurityGroup_Reference[]
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -564,12 +562,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### DESTINATIONAPPLICATIONSECURITYGROUP <IApplicationSecurityGroup[]>: The application security group specified as destination.
-  - `[Id <String>]`: Resource ID.
-  - `[Location <String>]`: Resource location.
-  - `[Tag <IResourceTags>]`: Resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-
 #### SECURITYRULE <ISecurityRule>: Network security rule.
   - `Access <SecurityRuleAccess>`: The network traffic is allowed or denied.
   - `Direction <SecurityRuleDirection>`: The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic.
@@ -594,12 +586,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[SourceAddressPrefix <String>]`: The CIDR or source IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used. If this is an ingress rule, specifies where network traffic originates from. 
   - `[SourceApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: The application security group specified as source.
   - `[SourcePortRange <String>]`: The source port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
-
-#### SOURCEAPPLICATIONSECURITYGROUP <IApplicationSecurityGroup[]>: The application security group specified as source.
-  - `[Id <String>]`: Resource ID.
-  - `[Location <String>]`: Resource location.
-  - `[Tag <IResourceTags>]`: Resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
 

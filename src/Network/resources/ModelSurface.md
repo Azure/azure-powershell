@@ -1359,6 +1359,7 @@
   - Ipv6PeeringConfigMicrosoftPeeringConfigLegacyMode `Int32?`
   - Ipv6PeeringConfigMicrosoftPeeringConfigRoutingRegistryName `String`
   - Ipv6PeeringConfigPrimaryPeerAddressPrefix `String`
+  - Ipv6PeeringConfigRouteFilter `IRouteFilter`
   - Ipv6PeeringConfigRouteFilterEtag `String`
   - Ipv6PeeringConfigRouteFilterId `String`
   - Ipv6PeeringConfigRouteFilterLocation `String`
@@ -1383,6 +1384,7 @@
   - PropertiesRouteFilterId `String`
   - PropertiesRouteFilterName `String`
   - ProvisioningState `String`
+  - RouteFilter `IRouteFilter`
   - RouteFilterPropertiesPeering `IExpressRouteCircuitPeering[]`
   - RouteFilterPropertiesProvisioningState `String`
   - RouteFilterPropertiesRule `IRouteFilterRule[]`
@@ -1432,6 +1434,7 @@
   - Ipv6PeeringConfigMicrosoftPeeringConfigLegacyMode `Int32?`
   - Ipv6PeeringConfigMicrosoftPeeringConfigRoutingRegistryName `String`
   - Ipv6PeeringConfigPrimaryPeerAddressPrefix `String`
+  - Ipv6PeeringConfigRouteFilter `IRouteFilter`
   - Ipv6PeeringConfigRouteFilterEtag `String`
   - Ipv6PeeringConfigRouteFilterId `String`
   - Ipv6PeeringConfigRouteFilterLocation `String`
@@ -1453,6 +1456,7 @@
   - PrimaryAzurePort `String`
   - PrimaryPeerAddressPrefix `String`
   - ProvisioningState `String`
+  - RouteFilter `IRouteFilter`
   - RouteFilterPropertiesPeering `IExpressRouteCircuitPeering[]`
   - RouteFilterPropertiesProvisioningState `String`
   - RouteFilterPropertiesRule `IRouteFilterRule[]`
@@ -1600,26 +1604,18 @@
   - Ipv6PeeringConfigMicrosoftPeeringConfigLegacyMode `Int32?`
   - Ipv6PeeringConfigMicrosoftPeeringConfigRoutingRegistryName `String`
   - Ipv6PeeringConfigPrimaryPeerAddressPrefix `String`
-  - Ipv6PeeringConfigRouteFilterPropertiesProvisioningState `String`
+  - Ipv6PeeringConfigRouteFilter `IRouteFilter`
   - Ipv6PeeringConfigSecondaryPeerAddressPrefix `String`
   - Ipv6PeeringConfigState `ExpressRouteCircuitPeeringState?`
   - LastModifiedBy `String`
   - LegacyMode `Int32?`
   - Name `String`
   - PeerAsn `Int64?`
-  - Peering `IExpressRouteCircuitPeering[]`
   - PeeringType `ExpressRoutePeeringType?`
   - PrimaryAzurePort `String`
   - PrimaryPeerAddressPrefix `String`
   - ProvisioningState `String`
-  - RouteFilterEtag `String`
-  - RouteFilterId `String`
-  - RouteFilterLocation `String`
-  - RouteFilterName `String`
-  - RouteFilterTag `IResourceTags`
-  - RouteFilterType `String`
   - RoutingRegistryName `String`
-  - Rule `IRouteFilterRule[]`
   - SecondaryAzurePort `String`
   - SecondaryPeerAddressPrefix `String`
   - SharedKey `String`
@@ -1644,25 +1640,17 @@
   - Ipv6PeeringConfigMicrosoftPeeringConfigLegacyMode `Int32?`
   - Ipv6PeeringConfigMicrosoftPeeringConfigRoutingRegistryName `String`
   - Ipv6PeeringConfigPrimaryPeerAddressPrefix `String`
-  - Ipv6PeeringConfigRouteFilterPropertiesProvisioningState `String`
+  - Ipv6PeeringConfigRouteFilter `IRouteFilter`
   - Ipv6PeeringConfigSecondaryPeerAddressPrefix `String`
   - Ipv6PeeringConfigState `ExpressRouteCircuitPeeringState?`
   - LastModifiedBy `String`
   - LegacyMode `Int32?`
   - PeerAsn `Int64?`
-  - Peering `IExpressRouteCircuitPeering[]`
   - PeeringType `ExpressRoutePeeringType?`
   - PrimaryAzurePort `String`
   - PrimaryPeerAddressPrefix `String`
   - ProvisioningState `String`
-  - RouteFilterEtag `String`
-  - RouteFilterId `String`
-  - RouteFilterLocation `String`
-  - RouteFilterName `String`
-  - RouteFilterTag `IResourceTags`
-  - RouteFilterType `String`
   - RoutingRegistryName `String`
-  - Rule `IRouteFilterRule[]`
   - SecondaryAzurePort `String`
   - SecondaryPeerAddressPrefix `String`
   - SharedKey `String`
@@ -2098,6 +2086,7 @@
   - Peering `IExpressRouteCircuitPeering[]`
   - PrimaryPeerAddressPrefix `String`
   - ProvisioningState `String`
+  - RouteFilter `IRouteFilter`
   - RouteFilterEtag `String`
   - RouteFilterId `String`
   - RouteFilterLocation `String`
@@ -2444,23 +2433,13 @@
 
 ### NetworkInterface [Api20171001, Api20190201]
   - AppliedDnsServer `String[]`
-  - DefaultSecurityRule `ISecurityRule[]`
   - DnsServer `String[]`
   - EnableAcceleratedNetworking `Boolean?`
   - EnableIPForwarding `Boolean?`
-  - EndpointServiceId `String`
   - Etag `String`
-  - Fqdn `String`
   - HostedWorkload `String[]`
   - Id `String`
-  - InterfaceEndpointEtag `String`
-  - InterfaceEndpointId `String`
-  - InterfaceEndpointLocation `String`
-  - InterfaceEndpointName `String`
-  - InterfaceEndpointNetworkInterface `INetworkInterface[]`
-  - InterfaceEndpointProvisioningState `String`
-  - InterfaceEndpointTag `IResourceTags`
-  - InterfaceEndpointType `String`
+  - InterfaceEndpoint `IInterfaceEndpoint`
   - InternalDnsNameLabel `String`
   - InternalDomainNameSuffix `String`
   - InternalFqdn `String`
@@ -2468,23 +2447,10 @@
   - Location `String`
   - MacAddress `String`
   - Name `String`
-  - NsgAdditionalNetworkInterface `INetworkInterface[]`
-  - NsgEtag `String`
-  - NsgId `String`
-  - NsgLocation `String`
-  - NsgName `String`
-  - NsgNetworkInterface `INetworkInterface[]`
-  - NsgProvisioningState `String`
-  - NsgResourceGuid `String`
-  - NsgSubnet `ISubnet[]`
-  - NsgTag `IResourceTags`
-  - NsgType `String`
-  - Owner `String`
+  - Nsg `INetworkSecurityGroup`
   - Primary `Boolean?`
   - ProvisioningState `String`
   - ResourceGuid `String`
-  - SecurityRule `ISecurityRule[]`
-  - Subnet `ISubnet`
   - Tag `IResourceTags`
   - TapConfiguration `INetworkInterfaceTapConfiguration[]`
   - Type `String`
@@ -2545,7 +2511,6 @@
   - Value `ILoadBalancer[]`
 
 ### NetworkInterfacePropertiesFormat [Api20171001, Api20190201]
-  - DefaultSecurityRule `ISecurityRule[]`
   - DnsSettingAppliedDnsServer `String[]`
   - DnsSettingDnsServer `String[]`
   - DnsSettingInternalDnsNameLabel `String`
@@ -2553,36 +2518,14 @@
   - DnsSettingInternalFqdn `String`
   - EnableAcceleratedNetworking `Boolean?`
   - EnableIPForwarding `Boolean?`
-  - EndpointServiceId `String`
-  - Fqdn `String`
   - HostedWorkload `String[]`
-  - InterfaceEndpointEtag `String`
-  - InterfaceEndpointId `String`
-  - InterfaceEndpointLocation `String`
-  - InterfaceEndpointName `String`
-  - InterfaceEndpointPropertiesNetworkInterface `INetworkInterface[]`
-  - InterfaceEndpointPropertiesProvisioningState `String`
-  - InterfaceEndpointTag `IResourceTags`
-  - InterfaceEndpointType `String`
+  - InterfaceEndpoint `IInterfaceEndpoint`
   - IPConfiguration `INetworkInterfaceIPConfiguration[]`
   - MacAddress `String`
-  - NetworkInterface `INetworkInterface[]`
-  - NsgEtag `String`
-  - NsgId `String`
-  - NsgLocation `String`
-  - NsgName `String`
-  - NsgPropertiesNetworkInterface `INetworkInterface[]`
-  - NsgPropertiesProvisioningState `String`
-  - NsgPropertiesResourceGuid `String`
-  - NsgPropertiesSubnets `ISubnet[]`
-  - NsgTag `IResourceTags`
-  - NsgType `String`
-  - Owner `String`
+  - Nsg `INetworkSecurityGroup`
   - Primary `Boolean?`
   - ProvisioningState `String`
   - ResourceGuid `String`
-  - SecurityRule `ISecurityRule[]`
-  - Subnet `ISubnet`
   - TapConfiguration `INetworkInterfaceTapConfiguration[]`
   - VirtualMachineId `String`
 
@@ -3373,10 +3316,8 @@
   - Service `String`
 
 ### Subnet [Api20171001, Api20190201]
-  - AddressPrefix `String`
-  - DefaultSecurityRule `ISecurityRule[]`
+  - AddressPrefix `String[]`
   - Delegation `IDelegation[]`
-  - DisableBgpRoutePropagation `Boolean?`
   - Etag `String`
   - Id `String`
   - InterfaceEndpoint `IInterfaceEndpoint[]`
@@ -3384,30 +3325,12 @@
   - IPConfigurationProfile `IIPConfigurationProfile[]`
   - Name `String`
   - NatGatewayId `String`
-  - NetworkInterface `INetworkInterface[]`
-  - NsgEtag `String`
-  - NsgId `String`
-  - NsgLocation `String`
-  - NsgName `String`
-  - NsgPropertiesProvisioningState `String`
-  - NsgPropertiesSubnet `ISubnet[]`
-  - NsgTag `IResourceTags`
-  - NsgType `String`
-  - PropertiesAddressPrefixes `String[]`
+  - Nsg `INetworkSecurityGroup`
+  - PropertiesAddressPrefix `String`
   - ProvisioningState `String`
   - Purpose `String`
-  - ResourceGuid `String`
   - ResourceNavigationLink `IResourceNavigationLink[]`
-  - Route `IRoute[]`
-  - RouteTableEtag `String`
-  - RouteTableId `String`
-  - RouteTableLocation `String`
-  - RouteTableName `String`
-  - RouteTablePropertiesProvisioningState `String`
-  - RouteTablePropertiesSubnet `ISubnet[]`
-  - RouteTableTag `IResourceTags`
-  - RouteTableType `String`
-  - SecurityRule `ISecurityRule[]`
+  - RouteTable `IRouteTable`
   - ServiceAssociationLink `IServiceAssociationLink[]`
   - ServiceEndpoint `IServiceEndpointPropertiesFormat[]`
   - ServiceEndpointPolicy `IServiceEndpointPolicy[]`
@@ -3423,36 +3346,16 @@
 ### SubnetPropertiesFormat [Api20171001, Api20190201]
   - AddressPrefix `String`
   - AddressPrefixes `String[]`
-  - DefaultSecurityRule `ISecurityRule[]`
   - Delegation `IDelegation[]`
-  - DisableBgpRoutePropagation `Boolean?`
   - InterfaceEndpoint `IInterfaceEndpoint[]`
   - IPConfiguration `IIPConfiguration[]`
   - IPConfigurationProfile `IIPConfigurationProfile[]`
   - NatGatewayId `String`
-  - NetworkInterface `INetworkInterface[]`
-  - NsgEtag `String`
-  - NsgId `String`
-  - NsgLocation `String`
-  - NsgName `String`
-  - NsgPropertiesProvisioningState `String`
-  - NsgPropertiesSubnet `ISubnet[]`
-  - NsgTag `IResourceTags`
-  - NsgType `String`
+  - Nsg `INetworkSecurityGroup`
   - ProvisioningState `String`
   - Purpose `String`
-  - ResourceGuid `String`
   - ResourceNavigationLink `IResourceNavigationLink[]`
-  - Route `IRoute[]`
-  - RouteTableEtag `String`
-  - RouteTableId `String`
-  - RouteTableLocation `String`
-  - RouteTableName `String`
-  - RouteTablePropertiesProvisioningState `String`
-  - RouteTablePropertiesSubnet `ISubnet[]`
-  - RouteTableTag `IResourceTags`
-  - RouteTableType `String`
-  - SecurityRule `ISecurityRule[]`
+  - RouteTable `IRouteTable`
   - ServiceAssociationLink `IServiceAssociationLink[]`
   - ServiceEndpoint `IServiceEndpointPropertiesFormat[]`
   - ServiceEndpointPolicy `IServiceEndpointPolicy[]`
@@ -3655,9 +3558,6 @@
 
 ### VirtualNetworkGatewayConnection [Api20171001, Api20190201]
   - AuthorizationKey `String`
-  - BgpAsn `Int64?`
-  - BgpPeeringAddress `String`
-  - BgpPeerWeight `Int32?`
   - BypassExpressRouteGateway `Boolean?`
   - ConnectionProtocol `VirtualNetworkGatewayConnectionProtocol?`
   - ConnectionStatus `VirtualNetworkGatewayConnectionStatus?`
@@ -3665,27 +3565,18 @@
   - EgressBytesTransferred `Int64?`
   - EnableBgp `Boolean?`
   - Etag `String`
-  - Etag2 `String`
-  - GatewayIPAddress `String`
   - Id `String`
-  - Id2 `String`
   - IngressBytesTransferred `Int64?`
   - IpsecPolicy `IIpsecPolicy[]`
-  - LocalNetworkAddressPrefix `String[]`
-  - LocalNetworkGateway2Name `String`
-  - LocalNetworkGateway2Type `String`
+  - LocalNetworkGateway2 `ILocalNetworkGateway`
   - Location `String`
-  - Location2 `String`
   - Name `String`
   - PeerId `String`
   - ProvisioningState `String`
-  - ProvisioningState2 `String`
   - ResourceGuid `String`
-  - ResourceGuid2 `String`
   - RoutingWeight `Int32?`
   - SharedKey `String`
   - Tag `IResourceTags`
-  - Tag2 `IResourceTags`
   - TunnelConnectionStatus `ITunnelConnectionHealth[]`
   - Type `String`
   - UsePolicyBasedTrafficSelectors `Boolean?`
@@ -3746,27 +3637,15 @@
 
 ### VirtualNetworkGatewayConnectionPropertiesFormat [Api20171001, Api20190201]
   - AuthorizationKey `String`
-  - BgpSettingAsn `Int64?`
-  - BgpSettingBgpPeeringAddress `String`
-  - BgpSettingPeerWeight `Int32?`
   - ConnectionProtocol `VirtualNetworkGatewayConnectionProtocol?`
   - ConnectionStatus `VirtualNetworkGatewayConnectionStatus?`
   - ConnectionType `VirtualNetworkGatewayConnectionType`
   - EgressBytesTransferred `Int64?`
   - EnableBgp `Boolean?`
   - ExpressRouteGatewayBypass `Boolean?`
-  - GatewayIPAddress `String`
   - IngressBytesTransferred `Int64?`
   - IpsecPolicy `IIpsecPolicy[]`
-  - LocalNetworkAddressSpaceAddressPrefix `String[]`
-  - LocalNetworkGateway2Etag `String`
-  - LocalNetworkGateway2Id `String`
-  - LocalNetworkGateway2Location `String`
-  - LocalNetworkGateway2Name `String`
-  - LocalNetworkGateway2PropertiesProvisioningState `String`
-  - LocalNetworkGateway2PropertiesResourceGuid `String`
-  - LocalNetworkGateway2Tag `IResourceTags`
-  - LocalNetworkGateway2Type `String`
+  - LocalNetworkGateway2 `ILocalNetworkGateway`
   - PeerId `String`
   - ProvisioningState `String`
   - ResourceGuid `String`

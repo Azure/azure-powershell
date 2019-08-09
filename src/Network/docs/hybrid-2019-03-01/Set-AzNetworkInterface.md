@@ -15,13 +15,11 @@ Creates or updates a network interface.
 ### UpdateExpanded1 (Default)
 ```
 Set-AzNetworkInterface -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-AppliedDnsServer <String[]>] [-DefaultSecurityRule <ISecurityRule[]>] [-DnsServer <String[]>]
- [-EnableAcceleratedNetworking] [-EnableIPForwarding] [-Etag <String>]
- [-IPConfiguration <INetworkInterfaceIPConfiguration[]>] [-Id <String>] [-InternalDnsNameLabel <String>]
- [-InternalDomainNameSuffix <String>] [-InternalFqdn <String>] [-Location <String>] [-MacAddress <String>]
- [-NsgEtag <String>] [-NsgId <String>] [-NsgLocation <String>] [-NsgProvisioningState <String>]
- [-NsgResourceGuid <String>] [-NsgTag <Hashtable>] [-Primary] [-ProvisioningState <String>]
- [-ResourceGuid <String>] [-SecurityRule <ISecurityRule[]>] [-Tag <Hashtable>] [-VMId <String>]
+ [-AppliedDnsServer <String[]>] [-DnsServer <String[]>] [-EnableAcceleratedNetworking] [-EnableIPForwarding]
+ [-Etag <String>] [-IPConfiguration <INetworkInterfaceIPConfiguration[]>] [-Id <String>]
+ [-InternalDnsNameLabel <String>] [-InternalDomainNameSuffix <String>] [-InternalFqdn <String>]
+ [-Location <String>] [-MacAddress <String>] [-Nsg <INetworkSecurityGroup_Reference>] [-Primary]
+ [-ProvisioningState <String>] [-ResourceGuid <String>] [-Tag <Hashtable>] [-VMId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -97,23 +95,6 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -DefaultSecurityRule
-The default security rules of network security group.
-To construct, see NOTES section for DEFAULTSECURITYRULE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ISecurityRule[]
-Parameter Sets: UpdateExpanded1
-Aliases:
 
 Required: False
 Position: Named
@@ -352,94 +333,14 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -NsgEtag
-A unique read-only string that changes whenever the resource is updated.
+### -Nsg
+The reference of the NetworkSecurityGroup resource.
+To construct, see NOTES section for NSG properties and create a hash table.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkSecurityGroup_Reference
 Parameter Sets: UpdateExpanded1
-Aliases: NetworkSecurityGroupEtag
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -NsgId
-Resource ID.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded1
-Aliases: NetworkSecurityGroupId
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -NsgLocation
-Resource location.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded1
-Aliases: NetworkSecurityGroupLocation
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -NsgProvisioningState
-The provisioning state of the public IP resource.
-Possible values are: 'Updating', 'Deleting', and 'Failed'.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded1
-Aliases: NetworkSecurityGroupProvisioningState
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -NsgResourceGuid
-The resource GUID property of the network security group resource.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded1
-Aliases: NetworkSecurityGroupResourceGuid
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -NsgTag
-Resource tags.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded1
-Aliases: NetworkSecurityGroupTag
+Aliases: NetworkSecurityGroup
 
 Required: False
 Position: Named
@@ -503,23 +404,6 @@ The resource GUID property of the network interface resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -SecurityRule
-A collection of security rules of the network security group.
-To construct, see NOTES section for SECURITYRULE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ISecurityRule[]
 Parameter Sets: UpdateExpanded1
 Aliases:
 
@@ -631,31 +515,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### DEFAULTSECURITYRULE <ISecurityRule[]>: The default security rules of network security group.
-  - `Access <SecurityRuleAccess>`: The network traffic is allowed or denied. Possible values are: 'Allow' and 'Deny'.
-  - `Direction <SecurityRuleDirection>`: The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic. Possible values are: 'Inbound' and 'Outbound'.
-  - `Protocol <SecurityRuleProtocol>`: Network protocol this rule applies to. Possible values are 'Tcp', 'Udp', and '*'.
-  - `[Id <String>]`: Resource ID.
-  - `[Description <String>]`: A description for this rule. Restricted to 140 chars.
-  - `[DestinationAddressPrefix <String>]`: The destination address prefix. CIDR or destination IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used.
-  - `[DestinationApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: The application security group specified as destination.
-    - `[Id <String>]`: Resource ID.
-    - `[Location <String>]`: Resource location.
-    - `[Tag <IResourceTags>]`: Resource tags.
-      - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[DestinationPortRange <String>]`: The destination port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
-  - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-  - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  - `[Priority <Int32?>]`: The priority of the rule. The value can be between 100 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
-  - `[PropertiesDestinationAddressPrefixes <String[]>]`: The destination address prefixes. CIDR or destination IP ranges.
-  - `[PropertiesDestinationPortRanges <String[]>]`: The destination port ranges.
-  - `[PropertiesSourceAddressPrefixes <String[]>]`: The CIDR or source IP ranges.
-  - `[PropertiesSourcePortRanges <String[]>]`: The source port ranges.
-  - `[ProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-  - `[SourceAddressPrefix <String>]`: The CIDR or source IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used. If this is an ingress rule, specifies where network traffic originates from. 
-  - `[SourceApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: The application security group specified as source.
-  - `[SourcePortRange <String>]`: The source port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
-
 #### IPCONFIGURATION <INetworkInterfaceIPConfiguration[]>: A list of IPConfigurations of the network interface.
   - `[Id <String>]`: Resource ID.
   - `[ApplicationGatewayBackendAddressPool <IApplicationGatewayBackendAddressPool[]>]`: The reference of ApplicationGatewayBackendAddressPool resource.
@@ -728,55 +587,57 @@ To create the parameters described below, construct a hash table containing the 
       - `[Subnet <ISubnet>]`: The reference of the subnet resource.
         - `[Id <String>]`: Resource ID.
         - `[AddressPrefix <String>]`: The address prefix for the subnet.
-        - `[DefaultSecurityRule <ISecurityRule[]>]`: The default security rules of network security group.
-          - `Access <SecurityRuleAccess>`: The network traffic is allowed or denied. Possible values are: 'Allow' and 'Deny'.
-          - `Direction <SecurityRuleDirection>`: The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic. Possible values are: 'Inbound' and 'Outbound'.
-          - `Protocol <SecurityRuleProtocol>`: Network protocol this rule applies to. Possible values are 'Tcp', 'Udp', and '*'.
-          - `[Id <String>]`: Resource ID.
-          - `[Description <String>]`: A description for this rule. Restricted to 140 chars.
-          - `[DestinationAddressPrefix <String>]`: The destination address prefix. CIDR or destination IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used.
-          - `[DestinationApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: The application security group specified as destination.
-          - `[DestinationPortRange <String>]`: The destination port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
-          - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-          - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-          - `[Priority <Int32?>]`: The priority of the rule. The value can be between 100 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
-          - `[PropertiesDestinationAddressPrefixes <String[]>]`: The destination address prefixes. CIDR or destination IP ranges.
-          - `[PropertiesDestinationPortRanges <String[]>]`: The destination port ranges.
-          - `[PropertiesSourceAddressPrefixes <String[]>]`: The CIDR or source IP ranges.
-          - `[PropertiesSourcePortRanges <String[]>]`: The source port ranges.
-          - `[ProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-          - `[SourceAddressPrefix <String>]`: The CIDR or source IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used. If this is an ingress rule, specifies where network traffic originates from. 
-          - `[SourceApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: The application security group specified as source.
-          - `[SourcePortRange <String>]`: The source port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
-        - `[DisableBgpRoutePropagation <Boolean?>]`: Gets or sets whether to disable the routes learned by BGP on that route table. True means disable.
         - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
         - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-        - `[NsgEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
-        - `[NsgId <String>]`: Resource ID.
-        - `[NsgLocation <String>]`: Resource location.
-        - `[NsgPropertiesProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-        - `[NsgTag <IResourceTags>]`: Resource tags.
+        - `[Nsg <INetworkSecurityGroup>]`: The reference of the NetworkSecurityGroup resource.
+          - `[Id <String>]`: Resource ID.
+          - `[Location <String>]`: Resource location.
+          - `[Tag <IResourceTags>]`: Resource tags.
+          - `[DefaultSecurityRule <ISecurityRule[]>]`: The default security rules of network security group.
+            - `Access <SecurityRuleAccess>`: The network traffic is allowed or denied. Possible values are: 'Allow' and 'Deny'.
+            - `Direction <SecurityRuleDirection>`: The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic. Possible values are: 'Inbound' and 'Outbound'.
+            - `Protocol <SecurityRuleProtocol>`: Network protocol this rule applies to. Possible values are 'Tcp', 'Udp', and '*'.
+            - `[Id <String>]`: Resource ID.
+            - `[Description <String>]`: A description for this rule. Restricted to 140 chars.
+            - `[DestinationAddressPrefix <String>]`: The destination address prefix. CIDR or destination IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used.
+            - `[DestinationApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: The application security group specified as destination.
+            - `[DestinationPortRange <String>]`: The destination port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
+            - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+            - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
+            - `[Priority <Int32?>]`: The priority of the rule. The value can be between 100 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
+            - `[PropertiesDestinationAddressPrefixes <String[]>]`: The destination address prefixes. CIDR or destination IP ranges.
+            - `[PropertiesDestinationPortRanges <String[]>]`: The destination port ranges.
+            - `[PropertiesSourceAddressPrefixes <String[]>]`: The CIDR or source IP ranges.
+            - `[PropertiesSourcePortRanges <String[]>]`: The source port ranges.
+            - `[ProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+            - `[SourceAddressPrefix <String>]`: The CIDR or source IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used. If this is an ingress rule, specifies where network traffic originates from. 
+            - `[SourceApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: The application security group specified as source.
+            - `[SourcePortRange <String>]`: The source port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
+          - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+          - `[ProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+          - `[ResourceGuid <String>]`: The resource GUID property of the network security group resource.
+          - `[SecurityRule <ISecurityRule[]>]`: A collection of security rules of the network security group.
         - `[ProvisioningState <String>]`: The provisioning state of the resource.
-        - `[ResourceGuid <String>]`: The resource GUID property of the network security group resource.
         - `[ResourceNavigationLink <IResourceNavigationLink[]>]`: Gets an array of references to the external resources using subnet.
           - `[Id <String>]`: Resource ID.
           - `[Link <String>]`: Link to the external resource
           - `[LinkedResourceType <String>]`: Resource type of the linked resource.
           - `[Name <String>]`: Name of the resource that is unique within a resource group. This name can be used to access the resource.
-        - `[Route <IRoute[]>]`: Collection of routes contained within a route table.
-          - `NextHopType <RouteNextHopType>`: The type of Azure hop the packet should be sent to.
+        - `[RouteTable <IRouteTable>]`: The reference of the RouteTable resource.
           - `[Id <String>]`: Resource ID.
-          - `[AddressPrefix <String>]`: The destination CIDR to which the route applies.
-          - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-          - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-          - `[NextHopIPAddress <String>]`: The IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is VirtualAppliance.
+          - `[Location <String>]`: Resource location.
+          - `[Tag <IResourceTags>]`: Resource tags.
+          - `[DisableBgpRoutePropagation <Boolean?>]`: Gets or sets whether to disable the routes learned by BGP on that route table. True means disable.
+          - `[Etag <String>]`: Gets a unique read-only string that changes whenever the resource is updated.
           - `[ProvisioningState <String>]`: The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-        - `[RouteTableEtag <String>]`: Gets a unique read-only string that changes whenever the resource is updated.
-        - `[RouteTableId <String>]`: Resource ID.
-        - `[RouteTableLocation <String>]`: Resource location.
-        - `[RouteTablePropertiesProvisioningState <String>]`: The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-        - `[RouteTableTag <IResourceTags>]`: Resource tags.
-        - `[SecurityRule <ISecurityRule[]>]`: A collection of security rules of the network security group.
+          - `[Route <IRoute[]>]`: Collection of routes contained within a route table.
+            - `NextHopType <RouteNextHopType>`: The type of Azure hop the packet should be sent to.
+            - `[Id <String>]`: Resource ID.
+            - `[AddressPrefix <String>]`: The destination CIDR to which the route applies.
+            - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+            - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
+            - `[NextHopIPAddress <String>]`: The IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is VirtualAppliance.
+            - `[ProvisioningState <String>]`: The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
         - `[ServiceEndpoint <IServiceEndpointPropertiesFormat[]>]`: An array of service endpoints.
           - `[Location <String[]>]`: A list of locations.
           - `[ProvisioningState <String>]`: The provisioning state of the resource.
@@ -798,29 +659,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[Tag <IResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
   - `[AppliedDnsServer <String[]>]`: If the VM that uses this NIC is part of an Availability Set, then this list will have the union of all DNS servers from all NICs that are part of the Availability Set. This property is what is configured on each of those VMs.
-  - `[DefaultSecurityRule <ISecurityRule[]>]`: The default security rules of network security group.
-    - `Access <SecurityRuleAccess>`: The network traffic is allowed or denied. Possible values are: 'Allow' and 'Deny'.
-    - `Direction <SecurityRuleDirection>`: The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic. Possible values are: 'Inbound' and 'Outbound'.
-    - `Protocol <SecurityRuleProtocol>`: Network protocol this rule applies to. Possible values are 'Tcp', 'Udp', and '*'.
-    - `[Id <String>]`: Resource ID.
-    - `[Description <String>]`: A description for this rule. Restricted to 140 chars.
-    - `[DestinationAddressPrefix <String>]`: The destination address prefix. CIDR or destination IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used.
-    - `[DestinationApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: The application security group specified as destination.
-      - `[Id <String>]`: Resource ID.
-      - `[Location <String>]`: Resource location.
-      - `[Tag <IResourceTags>]`: Resource tags.
-    - `[DestinationPortRange <String>]`: The destination port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
-    - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-    - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-    - `[Priority <Int32?>]`: The priority of the rule. The value can be between 100 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
-    - `[PropertiesDestinationAddressPrefixes <String[]>]`: The destination address prefixes. CIDR or destination IP ranges.
-    - `[PropertiesDestinationPortRanges <String[]>]`: The destination port ranges.
-    - `[PropertiesSourceAddressPrefixes <String[]>]`: The CIDR or source IP ranges.
-    - `[PropertiesSourcePortRanges <String[]>]`: The source port ranges.
-    - `[ProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-    - `[SourceAddressPrefix <String>]`: The CIDR or source IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used. If this is an ingress rule, specifies where network traffic originates from. 
-    - `[SourceApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: The application security group specified as source.
-    - `[SourcePortRange <String>]`: The source port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
   - `[DnsServer <String[]>]`: List of DNS servers IP addresses. Use 'AzureProvidedDNS' to switch to azure provided DNS resolution. 'AzureProvidedDNS' value cannot be combined with other IPs, it must be the only value in dnsServers collection.
   - `[EnableAcceleratedNetworking <Boolean?>]`: If the network interface is accelerated networking enabled.
   - `[EnableIPForwarding <Boolean?>]`: Indicates whether IP forwarding is enabled on this network interface.
@@ -838,6 +676,9 @@ To create the parameters described below, construct a hash table containing the 
       - `[ProvisioningState <String>]`: Provisioning state of the backend address pool resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
       - `[Type <String>]`: Type of the resource.
     - `[ApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: Application security groups in which the IP configuration is included.
+      - `[Id <String>]`: Resource ID.
+      - `[Location <String>]`: Resource location.
+      - `[Tag <IResourceTags>]`: Resource tags.
     - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
     - `[LoadBalancerBackendAddressPool <IBackendAddressPool[]>]`: The reference of LoadBalancerBackendAddressPool resource.
       - `[Id <String>]`: Resource ID.
@@ -893,36 +734,57 @@ To create the parameters described below, construct a hash table containing the 
         - `[Subnet <ISubnet>]`: The reference of the subnet resource.
           - `[Id <String>]`: Resource ID.
           - `[AddressPrefix <String>]`: The address prefix for the subnet.
-          - `[DefaultSecurityRule <ISecurityRule[]>]`: The default security rules of network security group.
-          - `[DisableBgpRoutePropagation <Boolean?>]`: Gets or sets whether to disable the routes learned by BGP on that route table. True means disable.
           - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
           - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-          - `[NsgEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
-          - `[NsgId <String>]`: Resource ID.
-          - `[NsgLocation <String>]`: Resource location.
-          - `[NsgPropertiesProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-          - `[NsgTag <IResourceTags>]`: Resource tags.
+          - `[Nsg <INetworkSecurityGroup>]`: The reference of the NetworkSecurityGroup resource.
+            - `[Id <String>]`: Resource ID.
+            - `[Location <String>]`: Resource location.
+            - `[Tag <IResourceTags>]`: Resource tags.
+            - `[DefaultSecurityRule <ISecurityRule[]>]`: The default security rules of network security group.
+              - `Access <SecurityRuleAccess>`: The network traffic is allowed or denied. Possible values are: 'Allow' and 'Deny'.
+              - `Direction <SecurityRuleDirection>`: The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic. Possible values are: 'Inbound' and 'Outbound'.
+              - `Protocol <SecurityRuleProtocol>`: Network protocol this rule applies to. Possible values are 'Tcp', 'Udp', and '*'.
+              - `[Id <String>]`: Resource ID.
+              - `[Description <String>]`: A description for this rule. Restricted to 140 chars.
+              - `[DestinationAddressPrefix <String>]`: The destination address prefix. CIDR or destination IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used.
+              - `[DestinationApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: The application security group specified as destination.
+              - `[DestinationPortRange <String>]`: The destination port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
+              - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+              - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
+              - `[Priority <Int32?>]`: The priority of the rule. The value can be between 100 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
+              - `[PropertiesDestinationAddressPrefixes <String[]>]`: The destination address prefixes. CIDR or destination IP ranges.
+              - `[PropertiesDestinationPortRanges <String[]>]`: The destination port ranges.
+              - `[PropertiesSourceAddressPrefixes <String[]>]`: The CIDR or source IP ranges.
+              - `[PropertiesSourcePortRanges <String[]>]`: The source port ranges.
+              - `[ProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+              - `[SourceAddressPrefix <String>]`: The CIDR or source IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used. If this is an ingress rule, specifies where network traffic originates from. 
+              - `[SourceApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: The application security group specified as source.
+              - `[SourcePortRange <String>]`: The source port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
+            - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+            - `[ProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+            - `[ResourceGuid <String>]`: The resource GUID property of the network security group resource.
+            - `[SecurityRule <ISecurityRule[]>]`: A collection of security rules of the network security group.
           - `[ProvisioningState <String>]`: The provisioning state of the resource.
-          - `[ResourceGuid <String>]`: The resource GUID property of the network security group resource.
           - `[ResourceNavigationLink <IResourceNavigationLink[]>]`: Gets an array of references to the external resources using subnet.
             - `[Id <String>]`: Resource ID.
             - `[Link <String>]`: Link to the external resource
             - `[LinkedResourceType <String>]`: Resource type of the linked resource.
             - `[Name <String>]`: Name of the resource that is unique within a resource group. This name can be used to access the resource.
-          - `[Route <IRoute[]>]`: Collection of routes contained within a route table.
-            - `NextHopType <RouteNextHopType>`: The type of Azure hop the packet should be sent to.
+          - `[RouteTable <IRouteTable>]`: The reference of the RouteTable resource.
             - `[Id <String>]`: Resource ID.
-            - `[AddressPrefix <String>]`: The destination CIDR to which the route applies.
-            - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-            - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-            - `[NextHopIPAddress <String>]`: The IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is VirtualAppliance.
+            - `[Location <String>]`: Resource location.
+            - `[Tag <IResourceTags>]`: Resource tags.
+            - `[DisableBgpRoutePropagation <Boolean?>]`: Gets or sets whether to disable the routes learned by BGP on that route table. True means disable.
+            - `[Etag <String>]`: Gets a unique read-only string that changes whenever the resource is updated.
             - `[ProvisioningState <String>]`: The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-          - `[RouteTableEtag <String>]`: Gets a unique read-only string that changes whenever the resource is updated.
-          - `[RouteTableId <String>]`: Resource ID.
-          - `[RouteTableLocation <String>]`: Resource location.
-          - `[RouteTablePropertiesProvisioningState <String>]`: The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-          - `[RouteTableTag <IResourceTags>]`: Resource tags.
-          - `[SecurityRule <ISecurityRule[]>]`: A collection of security rules of the network security group.
+            - `[Route <IRoute[]>]`: Collection of routes contained within a route table.
+              - `NextHopType <RouteNextHopType>`: The type of Azure hop the packet should be sent to.
+              - `[Id <String>]`: Resource ID.
+              - `[AddressPrefix <String>]`: The destination CIDR to which the route applies.
+              - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+              - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
+              - `[NextHopIPAddress <String>]`: The IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is VirtualAppliance.
+              - `[ProvisioningState <String>]`: The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
           - `[ServiceEndpoint <IServiceEndpointPropertiesFormat[]>]`: An array of service endpoints.
             - `[Location <String[]>]`: A list of locations.
             - `[ProvisioningState <String>]`: The provisioning state of the resource.
@@ -941,42 +803,41 @@ To create the parameters described below, construct a hash table containing the 
   - `[InternalDomainNameSuffix <String>]`: Even if internalDnsNameLabel is not specified, a DNS entry is created for the primary NIC of the VM. This DNS name can be constructed by concatenating the VM name with the value of internalDomainNameSuffix.
   - `[InternalFqdn <String>]`: Fully qualified DNS name supporting internal communications between VMs in the same virtual network.
   - `[MacAddress <String>]`: The MAC address of the network interface.
-  - `[NsgEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
-  - `[NsgId <String>]`: Resource ID.
-  - `[NsgLocation <String>]`: Resource location.
-  - `[NsgProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-  - `[NsgResourceGuid <String>]`: The resource GUID property of the network security group resource.
-  - `[NsgTag <IResourceTags>]`: Resource tags.
+  - `[Nsg <INetworkSecurityGroup>]`: The reference of the NetworkSecurityGroup resource.
   - `[Primary <Boolean?>]`: Gets whether this is a primary network interface on a virtual machine.
   - `[ProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
   - `[ResourceGuid <String>]`: The resource GUID property of the network interface resource.
-  - `[SecurityRule <ISecurityRule[]>]`: A collection of security rules of the network security group.
   - `[VirtualMachineId <String>]`: Resource ID.
 
-#### SECURITYRULE <ISecurityRule[]>: A collection of security rules of the network security group.
-  - `Access <SecurityRuleAccess>`: The network traffic is allowed or denied. Possible values are: 'Allow' and 'Deny'.
-  - `Direction <SecurityRuleDirection>`: The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic. Possible values are: 'Inbound' and 'Outbound'.
-  - `Protocol <SecurityRuleProtocol>`: Network protocol this rule applies to. Possible values are 'Tcp', 'Udp', and '*'.
-  - `[Id <String>]`: Resource ID.
-  - `[Description <String>]`: A description for this rule. Restricted to 140 chars.
-  - `[DestinationAddressPrefix <String>]`: The destination address prefix. CIDR or destination IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used.
-  - `[DestinationApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: The application security group specified as destination.
+#### NSG <INetworkSecurityGroup_Reference>: The reference of the NetworkSecurityGroup resource.
+  - `[DefaultSecurityRule <ISecurityRule[]>]`: The default security rules of network security group.
+    - `Access <SecurityRuleAccess>`: The network traffic is allowed or denied. Possible values are: 'Allow' and 'Deny'.
+    - `Direction <SecurityRuleDirection>`: The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic. Possible values are: 'Inbound' and 'Outbound'.
+    - `Protocol <SecurityRuleProtocol>`: Network protocol this rule applies to. Possible values are 'Tcp', 'Udp', and '*'.
     - `[Id <String>]`: Resource ID.
-    - `[Location <String>]`: Resource location.
-    - `[Tag <IResourceTags>]`: Resource tags.
-      - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[DestinationPortRange <String>]`: The destination port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
+    - `[Description <String>]`: A description for this rule. Restricted to 140 chars.
+    - `[DestinationAddressPrefix <String>]`: The destination address prefix. CIDR or destination IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used.
+    - `[DestinationApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: The application security group specified as destination.
+      - `[Id <String>]`: Resource ID.
+      - `[Location <String>]`: Resource location.
+      - `[Tag <IResourceTags>]`: Resource tags.
+        - `[(Any) <String>]`: This indicates any property can be added to this object.
+    - `[DestinationPortRange <String>]`: The destination port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
+    - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+    - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
+    - `[Priority <Int32?>]`: The priority of the rule. The value can be between 100 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
+    - `[PropertiesDestinationAddressPrefixes <String[]>]`: The destination address prefixes. CIDR or destination IP ranges.
+    - `[PropertiesDestinationPortRanges <String[]>]`: The destination port ranges.
+    - `[PropertiesSourceAddressPrefixes <String[]>]`: The CIDR or source IP ranges.
+    - `[PropertiesSourcePortRanges <String[]>]`: The source port ranges.
+    - `[ProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+    - `[SourceAddressPrefix <String>]`: The CIDR or source IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used. If this is an ingress rule, specifies where network traffic originates from. 
+    - `[SourceApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: The application security group specified as source.
+    - `[SourcePortRange <String>]`: The source port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
   - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-  - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  - `[Priority <Int32?>]`: The priority of the rule. The value can be between 100 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
-  - `[PropertiesDestinationAddressPrefixes <String[]>]`: The destination address prefixes. CIDR or destination IP ranges.
-  - `[PropertiesDestinationPortRanges <String[]>]`: The destination port ranges.
-  - `[PropertiesSourceAddressPrefixes <String[]>]`: The CIDR or source IP ranges.
-  - `[PropertiesSourcePortRanges <String[]>]`: The source port ranges.
   - `[ProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-  - `[SourceAddressPrefix <String>]`: The CIDR or source IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used. If this is an ingress rule, specifies where network traffic originates from. 
-  - `[SourceApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: The application security group specified as source.
-  - `[SourcePortRange <String>]`: The source port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
+  - `[ResourceGuid <String>]`: The resource GUID property of the network security group resource.
+  - `[SecurityRule <ISecurityRule[]>]`: A collection of security rules of the network security group.
 
 ## RELATED LINKS
 
