@@ -12,15 +12,15 @@ Returns the DNS records specified by the referencing targetResourceIds.
 
 ## SYNTAX
 
-### Get (Default)
+### GetExpanded (Default)
 ```
-Get-AzDnsResourceReference -SubscriptionId <String[]> [-Parameter <IDnsResourceReferenceRequest>]
+Get-AzDnsResourceReference -SubscriptionId <String[]> [-TargetResource <ISubResource[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### GetExpanded
+### Get
 ```
-Get-AzDnsResourceReference -SubscriptionId <String[]> [-TargetResource <ISubResource[]>]
+Get-AzDnsResourceReference -SubscriptionId <String[]> -ResourceReference <IDnsResourceReferenceRequest>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Get-AzDnsResourceReference -InputObject <IDnsIdentity> [-TargetResource <ISubRes
 
 ### GetViaIdentity
 ```
-Get-AzDnsResourceReference -InputObject <IDnsIdentity> [-Parameter <IDnsResourceReferenceRequest>]
+Get-AzDnsResourceReference -InputObject <IDnsIdentity> -ResourceReference <IDnsResourceReferenceRequest>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -93,16 +93,16 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Parameter
+### -ResourceReference
 Represents the properties of the Dns Resource Reference Request.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
+To construct, see NOTES section for RESOURCEREFERENCE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20180501.IDnsResourceReferenceRequest
 Parameter Sets: Get, GetViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -115,7 +115,7 @@ Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azu
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, GetExpanded
+Parameter Sets: GetExpanded, Get
 Aliases:
 
 Required: True
@@ -196,7 +196,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### PARAMETER <IDnsResourceReferenceRequest>: Represents the properties of the Dns Resource Reference Request.
+#### RESOURCEREFERENCE <IDnsResourceReferenceRequest>: Represents the properties of the Dns Resource Reference Request.
   - `[TargetResource <ISubResource[]>]`: A list of references to azure resources for which referencing dns records need to be queried.
     - `[Id <String>]`: Resource Id.
 

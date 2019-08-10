@@ -11,8 +11,8 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Dns.private.dll'
   FormatsToProcess = './Az.Dns.format.ps1xml'
-  CmdletsToExport = 'Get-AzDnsRecordSet', 'Get-AzDnsResourceReference', 'Get-AzDnsZone', 'New-AzDnsRecordSet', 'New-AzDnsZone', 'Remove-AzDnsRecordSet', 'Remove-AzDnsZone', 'Set-AzDnsRecordSet', 'Set-AzDnsZone', 'Update-AzDnsRecordSet', 'Update-AzDnsZone', '*'
-  AliasesToExport = '*'
+  CmdletsToExport = 'Get-AzDnsRecordSet', 'Get-AzDnsResourceReference', 'Get-AzDnsZone', 'New-AzDnsRecordSet', 'New-AzDnsZone', 'Remove-AzDnsRecordSet', 'Remove-AzDnsZone', 'Set-AzDnsRecordSet', 'Set-AzDnsZone', 'Test-AzDummy', 'Update-AzDnsRecordSet', '*'
+  AliasesToExport = 'Add-AzDnsRecordConfig', 'New-AzDnsRecordConfig', 'Remove-AzDnsRecordConfig', '*'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'Dns'

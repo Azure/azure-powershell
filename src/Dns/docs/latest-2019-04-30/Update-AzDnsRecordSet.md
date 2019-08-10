@@ -12,19 +12,12 @@ Updates a record set within a DNS zone.
 
 ## SYNTAX
 
-### Update (Default)
+### UpdateExpanded (Default)
 ```
-Update-AzDnsRecordSet -RecordType <RecordType> -RelativeRecordSetName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -ZoneName <String> [-IfMatch <String>] [-Parameter <IRecordSet>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
-```
-Update-AzDnsRecordSet -RecordType <RecordType> -RelativeRecordSetName <String> -ResourceGroupName <String>
+Update-AzDnsRecordSet -Name <String> -RecordType <RecordType> -ResourceGroupName <String>
  -SubscriptionId <String> -ZoneName <String> [-IfMatch <String>] [-ARecord <IARecord[]>]
- [-AaaaRecord <IAaaaRecord[]>] [-CaaRecord <ICaaRecord[]>] [-CnameRecordCname <String>] [-Etag <String>]
- [-Metadata <Hashtable>] [-MxRecord <IMxRecord[]>] [-NsRecord <INsRecord[]>] [-PtrRecord <IPtrRecord[]>]
+ [-AaaaRecord <IAaaaRecord[]>] [-CaaRecord <ICaaRecord[]>] [-CnameRecordName <String>] [-Etag <String>]
+ [-MXRecord <IMxRecord[]>] [-Metadata <Hashtable>] [-NSRecord <INsRecord[]>] [-PtrRecord <IPtrRecord[]>]
  [-SoaRecordEmail <String>] [-SoaRecordExpireTime <Int64>] [-SoaRecordHost <String>]
  [-SoaRecordMinimumTtl <Int64>] [-SoaRecordRefreshTime <Int64>] [-SoaRecordRetryTime <Int64>]
  [-SoaRecordSerialNumber <Int64>] [-SrvRecord <ISrvRecord[]>] [-TargetResourceId <String>]
@@ -32,11 +25,18 @@ Update-AzDnsRecordSet -RecordType <RecordType> -RelativeRecordSetName <String> -
  [<CommonParameters>]
 ```
 
+### Update
+```
+Update-AzDnsRecordSet -Name <String> -RecordType <RecordType> -ResourceGroupName <String>
+ -SubscriptionId <String> -ZoneName <String> -RecordSet <IRecordSet> [-IfMatch <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### UpdateViaIdentityExpanded
 ```
 Update-AzDnsRecordSet -InputObject <IDnsIdentity> [-IfMatch <String>] [-ARecord <IARecord[]>]
- [-AaaaRecord <IAaaaRecord[]>] [-CaaRecord <ICaaRecord[]>] [-CnameRecordCname <String>] [-Etag <String>]
- [-Metadata <Hashtable>] [-MxRecord <IMxRecord[]>] [-NsRecord <INsRecord[]>] [-PtrRecord <IPtrRecord[]>]
+ [-AaaaRecord <IAaaaRecord[]>] [-CaaRecord <ICaaRecord[]>] [-CnameRecordName <String>] [-Etag <String>]
+ [-MXRecord <IMxRecord[]>] [-Metadata <Hashtable>] [-NSRecord <INsRecord[]>] [-PtrRecord <IPtrRecord[]>]
  [-SoaRecordEmail <String>] [-SoaRecordExpireTime <Int64>] [-SoaRecordHost <String>]
  [-SoaRecordMinimumTtl <Int64>] [-SoaRecordRefreshTime <Int64>] [-SoaRecordRetryTime <Int64>]
  [-SoaRecordSerialNumber <Int64>] [-SrvRecord <ISrvRecord[]>] [-TargetResourceId <String>]
@@ -46,7 +46,7 @@ Update-AzDnsRecordSet -InputObject <IDnsIdentity> [-IfMatch <String>] [-ARecord 
 
 ### UpdateViaIdentity
 ```
-Update-AzDnsRecordSet -InputObject <IDnsIdentity> [-IfMatch <String>] [-Parameter <IRecordSet>]
+Update-AzDnsRecordSet -InputObject <IDnsIdentity> -RecordSet <IRecordSet> [-IfMatch <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -126,7 +126,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -CnameRecordCname
+### -CnameRecordName
 The canonical name for this CNAME record.
 
 ```yaml
@@ -224,7 +224,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -MxRecord
+### -MXRecord
 The list of MX records in the record set.
 To construct, see NOTES section for MXRECORD properties and create a hash table.
 
@@ -241,7 +241,23 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -NsRecord
+### -Name
+The name of the record set, relative to the name of the zone.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, Update
+Aliases: RelativeRecordSetName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NSRecord
 The list of NS records in the record set.
 To construct, see NOTES section for NSRECORD properties and create a hash table.
 
@@ -254,23 +270,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Parameter
-Describes a DNS record set (a collection of DNS records with the same name and type).
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20180501.IRecordSet
-Parameter Sets: Update, UpdateViaIdentity
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -292,28 +291,29 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -RecordType
-The type of DNS record in this record set.
+### -RecordSet
+Describes a DNS record set (a collection of DNS records with the same name and type).
+To construct, see NOTES section for RECORDSET properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.RecordType
-Parameter Sets: Update, UpdateExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20180501.IRecordSet
+Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -RelativeRecordSetName
-The name of the record set, relative to the name of the zone.
+### -RecordType
+The type of DNS record in this record set.
 
 ```yaml
-Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.RecordType
+Parameter Sets: UpdateExpanded, Update
 Aliases:
 
 Required: True
@@ -329,8 +329,8 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
-Aliases:
+Parameter Sets: UpdateExpanded, Update
+Aliases: Zone
 
 Required: True
 Position: Named
@@ -475,7 +475,7 @@ Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azu
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded, Update
 Aliases:
 
 Required: True
@@ -540,7 +540,7 @@ The name of the DNS zone (without a terminating dot).
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded, Update
 Aliases:
 
 Required: True
@@ -622,7 +622,10 @@ To create the parameters described below, construct a hash table containing the 
 #### NSRECORD <INsRecord[]>: The list of NS records in the record set.
   - `[Nsdname <String>]`: The name server name for this NS record.
 
-#### PARAMETER <IRecordSet>: Describes a DNS record set (a collection of DNS records with the same name and type).
+#### PTRRECORD <IPtrRecord[]>: The list of PTR records in the record set.
+  - `[Ptrdname <String>]`: The PTR target domain name for this PTR record.
+
+#### RECORDSET <IRecordSet>: Describes a DNS record set (a collection of DNS records with the same name and type).
   - `[ARecord <IARecord[]>]`: The list of A records in the record set.
     - `[Ipv4Address <String>]`: The IPv4 address of this A record.
   - `[AaaaRecord <IAaaaRecord[]>]`: The list of AAAA records in the record set.
@@ -658,9 +661,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[Ttl <Int64?>]`: The TTL (time-to-live) of the records in the record set.
   - `[TxtRecord <ITxtRecord[]>]`: The list of TXT records in the record set.
     - `[Value <String[]>]`: The text value of this TXT record.
-
-#### PTRRECORD <IPtrRecord[]>: The list of PTR records in the record set.
-  - `[Ptrdname <String>]`: The PTR target domain name for this PTR record.
 
 #### SRVRECORD <ISrvRecord[]>: The list of SRV records in the record set.
   - `[Port <Int32?>]`: The port value for this SRV record.

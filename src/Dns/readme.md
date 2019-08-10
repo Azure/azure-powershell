@@ -56,10 +56,75 @@ title: Dns
 module-version: 0.0.1
 
 directive:
+# RecordSet
+  - where:
+      subject: RecordSet
+      parameter-name: Parameter
+    set:
+      parameter-name: RecordSet
+  - where: # This parameter needs removed
+      subject: RecordSet
+      parameter-name: Name
+    set:
+      parameter-name: ResourceName
+  - where:
+      subject: RecordSet
+      parameter-name: RelativeRecordSetName
+    set:
+      parameter-name: Name
+      alias: RelativeRecordSetName
   - where:
       subject: RecordSet
       parameter-name: Ttl
     set:
       parameter-name: TimeToLive
       alias: Ttl
+  - where:
+      subject: RecordSet
+      parameter-name: Recordsetnamesuffix
+    set:
+      parameter-name: NameSuffix
+  - where:
+      subject: RecordSet
+      parameter-name: MxRecord
+    set:
+      parameter-name: MXRecord
+  - where:
+      subject: RecordSet
+      parameter-name: NsRecord
+    set:
+      parameter-name: NSRecord
+  - where:
+      subject: RecordSet
+      parameter-name: CnameRecordCname
+    set:
+      parameter-name: CnameRecordName
+  - where: # REMOVE BEFORE RELEASE: In-memory object parameter, only got ZoneName and Zone's resource group out of Zone
+      subject: RecordSet
+      parameter-name: ResourceGroupName
+    set:
+      alias: Zone
+
+# ResourceReference
+  - where:
+      subject: DnsResourceReference
+      parameter-name: Parameter
+    set:
+      parameter-name: ResourceReference
+
+# Zone
+  - where: # Only updates Tags
+      verb: Update
+      subject: Zone
+    remove: true
+  - where:
+      subject: Zone
+      parameter-name: Parameter
+    set:
+      parameter-name: Zone
+  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
+      subject: RecordSet
+      parameter-name: ResourceGroupName
+    set:
+      alias: Zone
 ```

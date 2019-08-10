@@ -4,10 +4,10 @@ Dummy alias cmdlet
 .Description
 Dummy alias cmdlet
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.network/get-azoperation
+https://docs.microsoft.com/en-us/powershell/module/az.network/test-azdummy
 #>
 function Test-AzDummy {
-[OutputType('Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IOperation')]
+[OutputType('Boolean')]
 [CmdletBinding(PositionalBinding=$false)]
 [Alias(
     'Get-AzApplicationGatewayAuthenticationCertificate'

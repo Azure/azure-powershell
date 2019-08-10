@@ -15,26 +15,25 @@ Gets a record set.
 ### List3 (Default)
 ```
 Get-AzDnsRecordSet -ResourceGroupName <String> -SubscriptionId <String[]> -ZoneName <String>
- [-Recordsetnamesuffix <String>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-NameSuffix <String>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get1
+```
+Get-AzDnsRecordSet -Name <String> -RecordType <RecordType> -ResourceGroupName <String>
+ -SubscriptionId <String[]> -ZoneName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List2
 ```
 Get-AzDnsRecordSet -RecordType <RecordType> -ResourceGroupName <String> -SubscriptionId <String[]>
- -ZoneName <String> [-Recordsetnamesuffix <String>] [-Top <Int32>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### Get1
-```
-Get-AzDnsRecordSet -RecordType <RecordType> -RelativeRecordSetName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> -ZoneName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -ZoneName <String> [-NameSuffix <String>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List4
 ```
 Get-AzDnsRecordSet -ResourceGroupName <String> -SubscriptionId <String[]> -ZoneName <String>
- [-Recordsetnamesuffix <String>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-NameSuffix <String>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity1
@@ -99,9 +98,25 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Recordsetnamesuffix
+### -Name
+The name of the record set, relative to the name of the zone.
+
+```yaml
+Type: System.String
+Parameter Sets: Get1
+Aliases: RelativeRecordSetName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NameSuffix
 The suffix label of the record set name that has to be used to filter the record set enumerations.
-If this parameter is specified, Enumeration will return only records that end with .<recordSetNameSuffix>
+If this parameter is specified, Enumeration will return only records that end with .\<recordSetNameSuffix\>
 
 ```yaml
 Type: System.String
@@ -121,23 +136,7 @@ The type of DNS record in this record set.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.RecordType
-Parameter Sets: List2, Get1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -RelativeRecordSetName
-The name of the record set, relative to the name of the zone.
-
-```yaml
-Type: System.String
-Parameter Sets: Get1
+Parameter Sets: Get1, List2
 Aliases:
 
 Required: True
@@ -153,8 +152,8 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: List3, List2, Get1, List4
-Aliases:
+Parameter Sets: List3, Get1, List2, List4
+Aliases: Zone
 
 Required: True
 Position: Named
@@ -169,7 +168,7 @@ Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azu
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List3, List2, Get1, List4
+Parameter Sets: List3, Get1, List2, List4
 Aliases:
 
 Required: True
@@ -202,7 +201,7 @@ The name of the DNS zone (without a terminating dot).
 
 ```yaml
 Type: System.String
-Parameter Sets: List3, List2, Get1, List4
+Parameter Sets: List3, Get1, List2, List4
 Aliases:
 
 Required: True

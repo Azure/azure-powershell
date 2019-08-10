@@ -2,22 +2,21 @@
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
   - ZoneName `String`
+  - Name `String`
   - RecordType `RecordType`
-  - RelativeRecordSetName `String`
   - InputObject `IDnsIdentity`
-  - Recordsetnamesuffix `String`
+  - NameSuffix `String`
   - Top `Int32`
   - IfMatch `String`
   - IfNoneMatch `String`
-  - Parameter `IRecordSet`
   - ARecord `IARecord[]`
   - AaaaRecord `IAaaaRecord[]`
   - CaaRecord `ICaaRecord[]`
-  - CnameRecordCname `String`
+  - CnameRecordName `String`
   - Etag `String`
+  - MXRecord `IMxRecord[]`
   - Metadata `Hashtable`
-  - MxRecord `IMxRecord[]`
-  - NsRecord `INsRecord[]`
+  - NSRecord `INsRecord[]`
   - PtrRecord `IPtrRecord[]`
   - SoaRecordEmail `String`
   - SoaRecordExpireTime `Int64`
@@ -30,14 +29,15 @@
   - TargetResourceId `String`
   - TimeToLive `Int64`
   - TxtRecord `ITxtRecord[]`
+  - RecordSet `IRecordSet`
 
 ### AzDnsResourceReference [Get] `IDnsResourceReferenceResultProperties`
   - SubscriptionId `String[]`
   - InputObject `IDnsIdentity`
-  - Parameter `IDnsResourceReferenceRequest`
   - TargetResource `ISubResource[]`
+  - ResourceReference `IDnsResourceReferenceRequest`
 
-### AzDnsZone [Get, New, Remove, Set, Update] `IZone, Boolean`
+### AzDnsZone [Get, New, Remove, Set] `IZone, Boolean`
   - SubscriptionId `String[]`
   - Name `String`
   - ResourceGroupName `String`
@@ -45,11 +45,14 @@
   - Top `Int32`
   - IfMatch `String`
   - IfNoneMatch `String`
-  - Parameter `IZone`
   - Etag `String`
   - Location `String`
   - RegistrationVirtualNetwork `ISubResource[]`
   - ResolutionVirtualNetwork `ISubResource[]`
   - Tag `Hashtable`
   - ZoneType `ZoneType`
+  - Zone `IZone`
+
+### AzDummy [Test] `Boolean`
+  - Name `String`
 

@@ -13,18 +13,18 @@ Does not modify DNS records within the zone.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzDnsZone -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-IfMatch <String>]
- [-IfNoneMatch <String>] [-Parameter <IZone>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzDnsZone -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Location <String>
  [-IfMatch <String>] [-IfNoneMatch <String>] [-Etag <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzDnsZone -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Zone <IZone>
+ [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -152,23 +152,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Parameter
-Describes a DNS zone.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20160401.IZone
-Parameter Sets: Update
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -214,6 +197,23 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Zone
+Describes a DNS zone.
+To construct, see NOTES section for ZONE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20160401.IZone
+Parameter Sets: Update
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -269,7 +269,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### PARAMETER <IZone>: Describes a DNS zone.
+#### ZONE <IZone>: Describes a DNS zone.
   - `Location <String>`: The geo-location where the resource lives
   - `[Tag <ITrackedResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
