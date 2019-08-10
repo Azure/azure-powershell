@@ -149,7 +149,7 @@
   - InputObject `INetworkIdentity`
   - DomainNameLabel `String`
 
-### AzDummy [Test] `IOperation`
+### AzDummy [Test] `Boolean`
   - Name `String`
   - ApplicationGatewayName `String`
 

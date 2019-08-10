@@ -264,7 +264,7 @@ Dynamic: False
 ### -Path
 Relative path of probe.
 Valid path starts from '/'.
-Probe is sent to <Protocol>://<host>:<port><path>
+Probe is sent to \<Protocol\>://\<host\>:\<port\>\<path\>
 
 ```yaml
 Type: System.String
