@@ -71,16 +71,18 @@ function Check-All {
 
     # -------------------------------------
 
+    $thirdParty = Get-ChildItem $path\* -Include *.dll -Recurse | Where-Object {
+        ($_.Name -ilike "*Newtonsoft.Json*") -or `
+        ($_.Name -ilike "*AutoMapper*") -or `
+        ($_.Name -ilike "*YamlDotNet*")
+    }
     $exts = "*.ps1", "*.psm1", "*.ps1xml"
     if ($Env:CheckPsd1 -ieq "True") {
         $exts += "*.psd1"
     }
-    $files += (Get-ChildItem $path\* -Include $exts -Recurse)
-    $files = $files | Where-Object { ($_.FullName -notlike "*Newtonsoft.Json*") -and `
-                                     ($_.FullName -notlike "*AutoMapper*") -and `
-                                     ($_.FullName -notlike "*Security.Cryptography*") -and `
+    $files += $thirdParty + (Get-ChildItem $path\* -Include $exts -Recurse)
+    $files = $files | Where-Object { ($_.FullName -notlike "*Security.Cryptography*") -and `
                                      ($_.FullName -notlike "*NLog*") -and `
-                                     ($_.FullName -notlike "*YamlDotNet*") -and `
                                      ($_.FullName -notlike "*BouncyCastle.Crypto*") -and `
                                      ($_.FullName -notlike "*System.Management.Automation*")}
     Write-Host "Checking the authenticode signature of $($files.Count) files (*.dll, $($exts -Join ', '))" -ForegroundColor Yellow
