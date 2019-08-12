@@ -14,7 +14,7 @@
 
 
 #################################
-## HealthcareApis Cmdlets			   ##
+## HealthcareApis Cmdlet
 #################################
 
 $global:resourceType = "Microsoft.HealthcareApis/services"
@@ -30,7 +30,7 @@ function Test-AzRmHealthcareApisService{
 	$location = "West US"
 	$offerThroughput = 1000
 	$newOfferThroughput = 400
-	$kind "fhir-r4"
+	$kind = "fhir-r4"
 	
 	try
 	{

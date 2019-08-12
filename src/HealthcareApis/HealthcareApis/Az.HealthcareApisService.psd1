@@ -32,7 +32,7 @@ Copyright = 'Microsoft Corporation. All rights reserved.'
 # Description of the functionality provided by this module
 Description = 'Microsoft Azure PowerShell - HealthcareApis management cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core. Creates and manages HealthcareApis service accounts in Azure Resource Manager.
 
-For more information on Hea, please visit the following: https://docs.microsoft.com/azure/azure-maps/'
+For more information on HealthcareApis Service, please visit the following: https://docs.microsoft.com/en-us/azure/healthcare-apis/'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1'

@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.HealthcareApisService.Commands
           ValueFromPipelineByPropertyName = true,
           HelpMessage = "HealthcareApis Service Name.")]
         [ValidateNotNullOrEmpty]
-        [ValidatePattern("^[a-zA-Z0-9][a-zA-Z0-9_.-]*$")]
+        [ValidatePattern("^[a-z0-9][a-z0-9-]{1,21}[a-z0-9]$")]
         [ValidateLength(2, 64)]
         public string Name { get; set; }
 
@@ -69,6 +69,7 @@ namespace Microsoft.Azure.Commands.HealthcareApisService.Commands
         Mandatory = false,
         HelpMessage = "List of Access Policy Object IDs.")]
         [ValidateNotNullOrEmpty]
+        [ValidatePattern("^(([0-9A-Fa-f]{8}[-]?(?:[0-9A-Fa-f]{4}[-]?){3}[0-9A-Fa-f]{12}){1})+$")]
         public string[] AccessPolicyObjectId { get; set; }
 
         [Parameter(
@@ -81,6 +82,7 @@ namespace Microsoft.Azure.Commands.HealthcareApisService.Commands
             Mandatory = false,
             HelpMessage = "HealthcareApis Fhir Service Audience.")]
         [ValidateNotNullOrEmpty]
+        [ValidatePattern("^((?:[hH][tT][tT][pP](?:[sS]|)\\:\\/\\/.+)|([0-9A-Fa-f]{8}[-]?(?:[0-9A-Fa-f]{4}[-]?){3}[0-9A-Fa-f]{12}))$")]
         public string Audience { get; set; }
 
         [Parameter(
@@ -100,6 +102,7 @@ namespace Microsoft.Azure.Commands.HealthcareApisService.Commands
             Mandatory = false,
             HelpMessage = "HealthcareApis Fhir Service Cors Max Age.")]
         [ValidateNotNullOrEmpty]
+        [ValidateRange(0,99999)]
         public int CorsMaxAge { get; set; }
 
         [Parameter(
@@ -112,12 +115,14 @@ namespace Microsoft.Azure.Commands.HealthcareApisService.Commands
             Mandatory = false,
             HelpMessage = "HealthcareApis Fhir Service List of Cors Origin.")]
         [ValidateNotNullOrEmpty]
+        [ValidatePattern("^(?:(?:(?:[hH][tT][tT][pP](?:[sS]|))\\:\\/\\/(?:[a-zA-Z0-9-]+[.]?)+(?:\\:[0-9]{1,5})?|[*]))$")]
         public string[] CorsOrigin { get; set; }
 
         [Parameter(
            Mandatory = false,
            HelpMessage = "HealthcareApis Fhir Service CosmosOfferThroughput.")]
         [ValidateNotNullOrEmpty]
+        [ValidateRange(400,10000)]
         public int? CosmosOfferThroughput { get; set; }
 
 
@@ -226,7 +231,6 @@ namespace Microsoft.Azure.Commands.HealthcareApisService.Commands
 
             return parseKind(this.Kind);
         }
-
 
         private Kind parseKindFromVersion(string fhirVersion)
         {

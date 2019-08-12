@@ -7,7 +7,7 @@ schema: 2.0.0
 # Set-AzHealthcareApisFhirService
 
 ## SYNOPSIS
-Updates a new healthcareApis fhir service.
+Updates an existing healthcareApis fhir service.
 
 ## SYNTAX
 
@@ -28,7 +28,7 @@ Set-AzHealthcareApisService -InputObject <PSHealthcareApisService> [-Tag <Hashta
 
 
 ## DESCRIPTION
-Updates a new healthcareApis fhir service.
+Updates an existing healthcareApis fhir service.
 ## EXAMPLES
 
 ### Example 1

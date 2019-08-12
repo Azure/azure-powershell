@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.HealthcareApisService.Commands
 
         [Parameter(Mandatory = true, ParameterSetName = ServiceNameParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "HealthcareApis Service Name.")]
         [ValidateNotNullOrEmpty]
-        [ValidatePattern("^[a-zA-Z0-9][a-zA-Z0-9_.-]*$")]
+        [ValidatePattern("^[a-z0-9][a-z0-9-]{1,21}[a-z0-9]$")]
         [ValidateLength(2, 64)]
         public string Name { get; set; }
 
@@ -42,6 +42,7 @@ namespace Microsoft.Azure.Commands.HealthcareApisService.Commands
         [Parameter(Mandatory = false, ParameterSetName = ServiceNameParameterSet, HelpMessage = "HealthcareApis FhirService CosmosOfferThroughput.")]
         [Parameter(Mandatory = false, ParameterSetName = ResourceIdParameterSet, HelpMessage = "HealthcareApis FhirService CosmosOfferThroughput.")]
         [ValidateNotNullOrEmpty]
+        [ValidateRange(400, 10000)]
         public int? CosmosOfferThroughput { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = ServiceNameParameterSet, HelpMessage = "HealthcareApis FhirService Authority.")]
@@ -53,6 +54,7 @@ namespace Microsoft.Azure.Commands.HealthcareApisService.Commands
         [Parameter(Mandatory = false, ParameterSetName = ServiceNameParameterSet, HelpMessage = "HealthcareApis FhirService Audience.")]
         [Parameter(Mandatory = false, ParameterSetName = ResourceIdParameterSet, HelpMessage = "HealthcareApis FhirService Audience.")]
         [ValidateNotNullOrEmpty]
+        [ValidatePattern("^((?:[hH][tT][tT][pP](?:[sS]|)\\:\\/\\/.+)|([0-9A-Fa-f]{8}[-]?(?:[0-9A-Fa-f]{4}[-]?){3}[0-9A-Fa-f]{12}))$")]
         public string Audience { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = ServiceNameParameterSet, HelpMessage = "HealthcareApis FhirService EnableSmartProxy.")]
@@ -63,6 +65,7 @@ namespace Microsoft.Azure.Commands.HealthcareApisService.Commands
         [Parameter(Mandatory = false, ParameterSetName = ServiceNameParameterSet, HelpMessage = "HealthcareApis FhirService List of Cors Origins.")]
         [Parameter(Mandatory = false, ParameterSetName = ResourceIdParameterSet, HelpMessage = "HealthcareApis FhirService List of Cors Origins.")]
         [ValidateNotNullOrEmpty]
+        [ValidatePattern("^(?:(?:(?:[hH][tT][tT][pP](?:[sS]|))\\:\\/\\/(?:[a-zA-Z0-9-]+[.]?)+(?:\\:[0-9]{1,5})?|[*]))$")]
         public string[] CorsOrigin { get; set; }
 
         [Parameter(Mandatory = false,ParameterSetName = ServiceNameParameterSet, HelpMessage = "HealthcareApis FhirService List of Cors Headers.")]
@@ -78,6 +81,7 @@ namespace Microsoft.Azure.Commands.HealthcareApisService.Commands
         [Parameter(Mandatory = false,ParameterSetName = ServiceNameParameterSet,HelpMessage = "HealthcareApis FhirService Cors Max Age.")]
         [Parameter(Mandatory = false,ParameterSetName = ResourceIdParameterSet,HelpMessage = "HealthcareApis FhirService Cors Max Age.")]
         [ValidateNotNullOrEmpty]
+        [ValidateRange(0, 99999)]
         public int? CorsMaxAge { get; set; }
 
         [Parameter(Mandatory = false,ParameterSetName = ServiceNameParameterSet, HelpMessage = "HealthcareApis FhirService AllowCorsCredentials.")]
@@ -88,6 +92,7 @@ namespace Microsoft.Azure.Commands.HealthcareApisService.Commands
         [Parameter(Mandatory = false, ParameterSetName = ServiceNameParameterSet, HelpMessage = "List of Access Policy Object IDs.")]
         [Parameter(Mandatory = false, ParameterSetName = ResourceIdParameterSet, HelpMessage = "List of Access Policy Object IDs.")]
         [ValidateNotNullOrEmpty]
+        [ValidatePattern("^(([0-9A-Fa-f]{8}[-]?(?:[0-9A-Fa-f]{4}[-]?){3}[0-9A-Fa-f]{12}){1})+$")]
         public string[] AccessPolicyObjectIds { get; set; }
 
         [Parameter(
