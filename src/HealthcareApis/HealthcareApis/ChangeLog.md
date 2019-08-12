@@ -19,5 +19,6 @@
 -->
 ## Upcoming Release
 
-## Version 0.7.1
-* Added subdomain parameter to Set-AzureRmIoTCentralApp for updating subdomain
+## Version 1.0.0
+* Added following CRUD operation cmdlets to HealthcareApis service. 
+ ** New-AzHealthcareApisService, Set-AzHealthcareApisService, Get-AzHealthcareApisService, Set-AZHealthcareApisService

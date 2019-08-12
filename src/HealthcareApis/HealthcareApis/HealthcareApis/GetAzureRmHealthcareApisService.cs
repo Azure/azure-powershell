@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.HealthcareApisService.Commands
            HelpMessage = "HealthcareApis Service Name.")]
         [Alias(HealthcareApisAccountNameAlias, FhirServiceNameAlias)]
         [ValidateNotNullOrEmpty]
-        [ValidatePattern("^[a-zA-Z0-9][a-zA-Z0-9_.-]*$")]
+        [ValidatePattern("^[a-z0-9][a-z0-9-]{1,21}[a-z0-9]$")]
         [ValidateLength(2, 64)]
         public string Name { get; set; }
 

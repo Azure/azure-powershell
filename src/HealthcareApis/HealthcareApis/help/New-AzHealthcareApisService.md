@@ -23,11 +23,11 @@ Creates or updates the metadata of a service instance.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzHealthCareApisService -Name MyService -ResourceGroupName MyResourceGroup -Location MyLocation -Kind fhir-r4 -CosmosOfferThroughput  MyOfferThroughput
+PS C:\> New-AzHealthCareApisService -Name MyService -ResourceGroupName MyResourceGroup -Location MyLocation -Kind fhir-R4 -CosmosOfferThroughput  MyOfferThroughput
 
 ResourceGroupName Name Location        Kind   CosmosOfferThroughput
 ----------------- ----------- -------------------------------
-MyResourceGroup   MyService   westus2    fhir-r4   400
+MyResourceGroup   MyService   westus2    fhir-R4   400
 ```
 
 Creates a new Azure healthcareapis fhir service named MyService in the resource group MyResourceGroup in a location westus2 with cosmosdb offer throughput = 400
