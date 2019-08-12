@@ -32,6 +32,10 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     public partial class PSPrivateEndpointConnection : PSChildResource
     {
+
+        [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string ProvisioningState { get; set; }
         [JsonProperty(Order = 1)]
         [Ps1Xml(Label = "PrivateEndpoint", Target = ViewControl.Table, ScriptBlock = "$_.PrivateEndpoint.Name")]
         public PSPrivateEndpoint PrivateEndpoint { get; set; }
