@@ -32,6 +32,33 @@ function Get-ResourceName
 
 <#
 .SYNOPSIS
+Gets valid location name
+#>
+function Get-Location
+{
+    return "West US"
+}
+
+<#
+.SYNOPSIS
+Gets offerThroughput value
+#>
+function Get-OfferThroughput
+{
+    return 1000
+}
+
+<#
+.SYNOPSIS
+Gets offerThroughput value
+#>
+function Get-Kind
+{
+    return "fhir-R4"
+}
+
+<#
+.SYNOPSIS
 Cleans the created resource groups
 #>
 function Clean-ResourceGroup($rgname)
