@@ -234,42 +234,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// <returns>
         /// The <see cref="string"/>.
         /// </returns>
-        public string ValidatePrefix(string routePrefix, string peeringType)
+        public string ValidatePrefix(string routePrefix, string peeringType = Constants.Direct)
         {
             if (routePrefix != null)
             {
                 this.WriteVerbose($"Validating route prefix: {routePrefix} for PeeringType:{peeringType}");
-                if (peeringType.Equals(Constants.Exchange))
-                {
-                    if (routePrefix.Split('/').Length != 2) {
-                        // Prefix if missing
-                        var newRouteWithPrefix = IPAddress.Parse(routePrefix);
-                        if(newRouteWithPrefix.AddressFamily == AddressFamily.InterNetwork)
-                        {
-                            routePrefix += "/32";
-                            this.WriteVerbose($"Validating route prefix: {routePrefix} for PeeringType:{peeringType}");
-                        }
-                        if(newRouteWithPrefix.AddressFamily == AddressFamily.InterNetworkV6)
-                        {
-                            routePrefix += "/128";
-                            this.WriteVerbose($"Validating route prefix: {routePrefix} for PeeringType:{peeringType}");
-                        }
-
-                    }
-                }
                 var prefix = RoutePrefix.GetValidPrefix(routePrefix);
                 switch (prefix.PrefixAddressFamily)
                 {
                     case AddressFamily.InterNetwork:
-                        if (peeringType.Equals(Constants.Exchange, StringComparison.OrdinalIgnoreCase))
-                        {
-                            if (prefix.PrefixMaskWidth != 32)
-                            {
-                                throw new PSArgumentOutOfRangeException(
-                                    string.Format(Resources.Error_InvalidPrefix, routePrefix, "/32"));
-                            }
-                        }
-                        else
+                        if (peeringType.Equals(Constants.Direct, StringComparison.OrdinalIgnoreCase))
                         {
                             if (!(prefix.PrefixMaskWidth == 30 || prefix.PrefixMaskWidth == 31))
                             {
@@ -309,15 +283,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
 
                         return routePrefix;
                     case AddressFamily.InterNetworkV6:
-                        if (peeringType.Equals(Constants.Exchange, StringComparison.OrdinalIgnoreCase))
-                        {
-                            if (prefix.PrefixMaskWidth != 128)
-                            {
-                                throw new PSArgumentOutOfRangeException(
-                                    string.Format(Resources.Error_InvalidPrefix, routePrefix, "/128"));
-                            }
-                        }
-                        else
+                        if (peeringType.Equals(Constants.Direct, StringComparison.OrdinalIgnoreCase))
                         {
                             if (!(prefix.PrefixMaskWidth >= 64 && prefix.PrefixMaskWidth <= 127))
                             {
