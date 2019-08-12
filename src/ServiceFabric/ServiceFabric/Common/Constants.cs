@@ -67,6 +67,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Common
         public const string ParameterFileName = @"parameter.json";
         public const string TemplateFileName = @"template.json";
 
-
+        public static readonly string ServiceTemplateRelativePath = Path.Combine("Template", "Service");
     }
 }
