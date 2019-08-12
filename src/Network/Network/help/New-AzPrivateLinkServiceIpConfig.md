@@ -14,7 +14,8 @@ Create a private link service ip configuration.
 
 ```
 New-AzPrivateLinkServiceIpConfig -Name <String> [-PrivateIpAddressVersion <String>]
- [-PrivateIpAddress <String>] [-Subnet <PSSubnet>] [-Primary]
+ [-PrivateIpAddress <String>] [-PublicIpAddress <PSPublicIpAddress>]
+ [-Subnet <PSSubnet>] [-Primary]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
