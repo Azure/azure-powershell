@@ -26,6 +26,9 @@ using System.Linq;
 
 namespace Microsoft.Azure.Commands.Network
 {
+    [CmdletOutputBreakingChange(typeof(PSPrivateLinkServiceIpConfiguration),
+        DeprecatedOutputProperties = new string[] { "PublicIPAddress" },
+        NewOutputProperties = new string[] { "Primary" })]
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateLinkServiceIpConfig"), OutputType(typeof(PSPrivateLinkServiceIpConfiguration))]
     public class NewAzurePrivateLinkServiceIpConfiguration : NetworkBaseCmdlet
     {
