@@ -458,7 +458,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the Azure Resource Manager resource that represents the extension. If the *Name* parameter is omitted, the installed extension will be named “AzureDiskEncryption” on Windows virtual machines and “AzureDiskEncryptionForLinux” on Linux virtual machines.
+Specifies the name of the Azure Resource Manager resource that represents the extension. If the *Name* parameter is omitted, the installed extension will be named Â“AzureDiskEncryptionÂ” on Windows virtual machines and Â“AzureDiskEncryptionForLinuxÂ” on Linux virtual machines.
 
 
 ```yaml
@@ -567,7 +567,7 @@ Accept wildcard characters: False
 ```
 
 ### -VolumeType
-Specifies the type of virtual machine volumes on which to perform encryption operation: OS, Data, or All. If this parameter is omitted, the operation defaults to All.
+Specifies the type of virtual machine volumes on which to perform encryption operation: OS, Data, or All. 
 
 Linux: The **VolumeType** parameter is required when encrypting Linux virtual machines, and must be set to a value ("Os", "Data", or "All") supported by the Linux distribution. 
 
