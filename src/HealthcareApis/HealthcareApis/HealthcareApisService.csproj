@@ -12,9 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.HealthcareApis">
-      <HintPath>..\..\..\..\Azure-SDK-For-Net\artifacts\bin\Microsoft.Azure.Management.HealthcareApis\Debug\netstandard2.0\Microsoft.Azure.Management.HealthcareApis.dll</HintPath>
-    </Reference>
+    <PackageReference Include="Microsoft.Azure.Management.HealthcareApis" Version="1.0.1-preview" />
   </ItemGroup>
 
   <ItemGroup>
