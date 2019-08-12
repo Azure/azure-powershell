@@ -27,10 +27,9 @@ function Test-AzRmHealthcareApisService{
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
-	$location = "West US"
-	$offerThroughput = 1000
-	$newOfferThroughput = 400
-	$kind = "fhir-r4"
+	$location = Get-Location
+	$offerThroughput =  Get-OfferThroughput
+	$kind = Get-Kind
 	
 	try
 	{
@@ -47,6 +46,7 @@ function Test-AzRmHealthcareApisService{
 		Assert-AreEqual $actual.Name $rname
 		Assert-AreEqual $actual.Properties.CosmosDbConfiguration.OfferThroughput $offerThroughput
 		#Update using parameters
+		$newOfferThroughput = $offerThroughput - 600
 		$updated = Set-AzHealthcareApisService -ResourceId $actual.Id -CosmosOfferThroughput $newOfferThroughput;
 
 		$updatedAccount = Get-AzHealthcareApisService -ResourceGroupName $rgname -Name $rname
@@ -54,7 +54,7 @@ function Test-AzRmHealthcareApisService{
 		Assert-AreEqual $updatedAccount.Name $rname
 		Assert-AreEqual $updatedAccount.Properties.CosmosDbConfiguration.OfferThroughput $newOfferThroughput
 
-		$rname1 = "pstestrn9091"
+		$rname1 = $rname + "1"
 
 		$created1 = New-AzHealthcareApisService -Name $rname1 -ResourceGroupName  $rgname -Location $location -CosmosOfferThroughput $offerThroughput;
 		

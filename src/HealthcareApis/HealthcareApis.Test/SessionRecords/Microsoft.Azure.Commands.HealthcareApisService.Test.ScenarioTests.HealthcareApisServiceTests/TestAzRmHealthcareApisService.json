@@ -989,7 +989,7 @@
       "RequestUri": "/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/providers/Microsoft.HealthcareApis/checkNameAvailability?api-version=2018-08-20-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhOTk2N2EtZThhOS00NjU2LWE3MGItOTZmZjFjNGQwNWEwL3Byb3ZpZGVycy9NaWNyb3NvZnQuSGVhbHRoY2FyZUFwaXMvY2hlY2tOYW1lQXZhaWxhYmlsaXR5P2FwaS12ZXJzaW9uPTIwMTgtMDgtMjAtcHJldmlldw==",
       "RequestMethod": "POST",
-      "RequestBody": "{\"name\":\"/pstestrn9091\",\"type\":\"Microsoft.HealthcareApis/services\"}",
+      "RequestBody": "{\"name\":\"/pstestrn90901\",\"type\":\"Microsoft.HealthcareApis/services\"}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1058,8 +1058,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/pstestrg9090/providers/Microsoft.HealthcareApis/services/pstestrn9091?api-version=2018-08-20-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhOTk2N2EtZThhOS00NjU2LWE3MGItOTZmZjFjNGQwNWEwL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnOTA5MC9wcm92aWRlcnMvTWljcm9zb2Z0LkhlYWx0aGNhcmVBcGlzL3NlcnZpY2VzL3BzdGVzdHJuOTA5MT9hcGktdmVyc2lvbj0yMDE4LTA4LTIwLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/pstestrg9090/providers/Microsoft.HealthcareApis/services/pstestrn90901?api-version=2018-08-20-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhOTk2N2EtZThhOS00NjU2LWE3MGItOTZmZjFjNGQwNWEwL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnOTA5MC9wcm92aWRlcnMvTWljcm9zb2Z0LkhlYWx0aGNhcmVBcGlzL3NlcnZpY2VzL3BzdGVzdHJuOTA5MDE/YXBpLXZlcnNpb249MjAxOC0wOC0yMC1wcmV2aWV3",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"westus\",\r\n  \"properties\": {\"offerthroughput\" : 400}\r\n}",
       "RequestHeaders": {
@@ -1082,7 +1082,7 @@
           "Microsoft.Azure.Management.HealthcareApis.HealthcareApisManagementClient/1.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/pstestrg9090/providers/Microsoft.HealthcareApis/services/pstestrn9091\",\r\n  \"name\": \"pstestrn9091\",\r\n  \"type\": \"Microsoft.HealthcareApis/services\",\r\n  \"location\": \"westus2\" \r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/pstestrg9090/providers/Microsoft.HealthcareApis/services/pstestrn90901\",\r\n  \"name\": \"pstestrn90901\",\r\n  \"type\": \"Microsoft.HealthcareApis/services\",\r\n  \"location\": \"westus2\" \r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "570"
@@ -1127,8 +1127,8 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/pstestrg9090/providers/Microsoft.HealthcareApis/services/pstestrn9091?api-version=2018-08-20-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhOTk2N2EtZThhOS00NjU2LWE3MGItOTZmZjFjNGQwNWEwL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnOTA5MC9wcm92aWRlcnMvTWljcm9zb2Z0LkhlYWx0aGNhcmVBcGlzL3NlcnZpY2VzL3BzdGVzdHJuOTA5MT9hcGktdmVyc2lvbj0yMDE4LTA4LTIwLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/pstestrg9090/providers/Microsoft.HealthcareApis/services/pstestrn90901?api-version=2018-08-20-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhOTk2N2EtZThhOS00NjU2LWE3MGItOTZmZjFjNGQwNWEwL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnOTA5MC9wcm92aWRlcnMvTWljcm9zb2Z0LkhlYWx0aGNhcmVBcGlzL3NlcnZpY2VzL3BzdGVzdHJuOTA5MDE/YXBpLXZlcnNpb249MjAxOC0wOC0yMC1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1143,7 +1143,7 @@
           "Microsoft.Azure.Management.HealthcareApis.HealthcareApisManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/pstestrg9090/providers/Microsoft.HealthcareApis/services/pstestrn9091\",\r\n  \"name\": \"pstestrn9091\",\r\n  \"type\": \"Microsoft.HealthcareApis/accounts\",\r\n \"location\": \"westus\",\r\n  \"sku\": {\r\n    \"name\": \"S1\"\r\n  },\r\n  \"kind\": \"Fhir\",\r\n  \"tags\": {\r\n    \"key3\": \"value3\",\r\n    \"key4\": \"value4\",\r\n    \"key5\": \"value5\"\r\n  },\r\n  \"properties\": {\"offerthroughput\" : 400}\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/pstestrg9090/providers/Microsoft.HealthcareApis/services/pstestrn90901\",\r\n  \"name\": \"pstestrn90901\",\r\n  \"type\": \"Microsoft.HealthcareApis/accounts\",\r\n \"location\": \"westus\",\r\n  \"sku\": {\r\n    \"name\": \"S1\"\r\n  },\r\n  \"kind\": \"Fhir\",\r\n  \"tags\": {\r\n    \"key3\": \"value3\",\r\n    \"key4\": \"value4\",\r\n    \"key5\": \"value5\"\r\n  },\r\n  \"properties\": {\"offerthroughput\" : 400}\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1200,8 +1200,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/pstestrg9090/providers/Microsoft.HealthcareApis/services/pstestrn9091?api-version=2018-08-20-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhOTk2N2EtZThhOS00NjU2LWE3MGItOTZmZjFjNGQwNWEwL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnOTA5MC9wcm92aWRlcnMvTWljcm9zb2Z0LkhlYWx0aGNhcmVBcGlzL3NlcnZpY2VzL3BzdGVzdHJuOTA5MT9hcGktdmVyc2lvbj0yMDE4LTA4LTIwLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/pstestrg9090/providers/Microsoft.HealthcareApis/services/pstestrn90901?api-version=2018-08-20-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhOTk2N2EtZThhOS00NjU2LWE3MGItOTZmZjFjNGQwNWEwL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnOTA5MC9wcm92aWRlcnMvTWljcm9zb2Z0LkhlYWx0aGNhcmVBcGlzL3NlcnZpY2VzL3BzdGVzdHJuOTA5MDE/YXBpLXZlcnNpb249MjAxOC0wOC0yMC1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1216,7 +1216,7 @@
           "Microsoft.Azure.Management.HealthcareApis.HealthcareApisManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": " {\"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/pstestrg9090/providers/Microsoft.HealthcareApis/services/pstestrn9091\",\"name\": \"pstestrn9091\",\"location\": \"West US\",\"type\": \"Microsoft.HealthcareApis/services\",\"kind\": \"fhir\",\"etag\": \"etagvalue\",\"tags\": {},\"properties\": {\"provisioningState\": \"Creating\",\"accessPolicies\": [{\"objectId\": \"c487e7d1-3210-41a3-8ccc-e9372b78da47\"}],\"cosmosDbConfiguration\": {\"offerThroughput\": 1000},\"authenticationConfiguration\": {\"authority\": \"https://login.microsoftonline.com/common\",\"audience\": \"https://azurehealthcareapis.com\",\"smartProxyEnabled\": true},\"corsConfiguration\": {\"origins\": [ \"*\" ],\"headers\": [ \"*\" ],\"methods\": [ \"DELETE\", \"GET\", \"OPTIONS\", \"PATCH\", \"POST\", \"PUT\" ],\"maxAge\": 1440,\"allowCredentials\": false}}}",
+      "ResponseBody": " {\"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/pstestrg9090/providers/Microsoft.HealthcareApis/services/pstestrn90901\",\"name\": \"pstestrn90901\",\"location\": \"West US\",\"type\": \"Microsoft.HealthcareApis/services\",\"kind\": \"fhir\",\"etag\": \"etagvalue\",\"tags\": {},\"properties\": {\"provisioningState\": \"Creating\",\"accessPolicies\": [{\"objectId\": \"c487e7d1-3210-41a3-8ccc-e9372b78da47\"}],\"cosmosDbConfiguration\": {\"offerThroughput\": 1000},\"authenticationConfiguration\": {\"authority\": \"https://login.microsoftonline.com/common\",\"audience\": \"https://azurehealthcareapis.com\",\"smartProxyEnabled\": true},\"corsConfiguration\": {\"origins\": [ \"*\" ],\"headers\": [ \"*\" ],\"methods\": [ \"DELETE\", \"GET\", \"OPTIONS\", \"PATCH\", \"POST\", \"PUT\" ],\"maxAge\": 1440,\"allowCredentials\": false}}}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1273,8 +1273,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/pstestrg9090/providers/Microsoft.HealthcareApis/services/pstestrn9091?api-version=2018-08-20-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhOTk2N2EtZThhOS00NjU2LWE3MGItOTZmZjFjNGQwNWEwL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnOTA5MC9wcm92aWRlcnMvTWljcm9zb2Z0LkhlYWx0aGNhcmVBcGlzL3NlcnZpY2VzL3BzdGVzdHJuOTA5MT9hcGktdmVyc2lvbj0yMDE4LTA4LTIwLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/pstestrg9090/providers/Microsoft.HealthcareApis/services/pstestrn90901?api-version=2018-08-20-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhOTk2N2EtZThhOS00NjU2LWE3MGItOTZmZjFjNGQwNWEwL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnOTA5MC9wcm92aWRlcnMvTWljcm9zb2Z0LkhlYWx0aGNhcmVBcGlzL3NlcnZpY2VzL3BzdGVzdHJuOTA5MDE/YXBpLXZlcnNpb249MjAxOC0wOC0yMC1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1289,7 +1289,7 @@
           "Microsoft.Azure.Management.HealthcareApis.HealthcareApisManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": " {\"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/pstestrg9090/providers/Microsoft.HealthcareApis/services/pstestrn9091\",\"name\": \"pstestrn9091\",\"location\": \"West US\",\"type\": \"Microsoft.HealthcareApis/services\",\"kind\": \"fhir\",\"etag\": \"etagvalue\",\"tags\": {},\"properties\": {\"provisioningState\": \"Creating\",\"accessPolicies\": [{\"objectId\": \"c487e7d1-3210-41a3-8ccc-e9372b78da47\"}],\"cosmosDbConfiguration\": {\"offerThroughput\": 1000},\"authenticationConfiguration\": {\"authority\": \"https://login.microsoftonline.com/common\",\"audience\": \"https://azurehealthcareapis.com\",\"smartProxyEnabled\": true},\"corsConfiguration\": {\"origins\": [ \"*\" ],\"headers\": [ \"*\" ],\"methods\": [ \"DELETE\", \"GET\", \"OPTIONS\", \"PATCH\", \"POST\", \"PUT\" ],\"maxAge\": 1440,\"allowCredentials\": false}}}",
+      "ResponseBody": " {\"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/pstestrg9090/providers/Microsoft.HealthcareApis/services/pstestrn90901\",\"name\": \"pstestrn90901\",\"location\": \"West US\",\"type\": \"Microsoft.HealthcareApis/services\",\"kind\": \"fhir\",\"etag\": \"etagvalue\",\"tags\": {},\"properties\": {\"provisioningState\": \"Creating\",\"accessPolicies\": [{\"objectId\": \"c487e7d1-3210-41a3-8ccc-e9372b78da47\"}],\"cosmosDbConfiguration\": {\"offerThroughput\": 1000},\"authenticationConfiguration\": {\"authority\": \"https://login.microsoftonline.com/common\",\"audience\": \"https://azurehealthcareapis.com\",\"smartProxyEnabled\": true},\"corsConfiguration\": {\"origins\": [ \"*\" ],\"headers\": [ \"*\" ],\"methods\": [ \"DELETE\", \"GET\", \"OPTIONS\", \"PATCH\", \"POST\", \"PUT\" ],\"maxAge\": 1440,\"allowCredentials\": false}}}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1346,8 +1346,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/pstestrg9090/providers/Microsoft.HealthcareApis/services/pstestrn9091?api-version=2018-08-20-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhOTk2N2EtZThhOS00NjU2LWE3MGItOTZmZjFjNGQwNWEwL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnOTA5MC9wcm92aWRlcnMvTWljcm9zb2Z0LkhlYWx0aGNhcmVBcGlzL3NlcnZpY2VzL3BzdGVzdHJuOTA5MT9hcGktdmVyc2lvbj0yMDE4LTA4LTIwLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/pstestrg9090/providers/Microsoft.HealthcareApis/services/pstestrn90901?api-version=2018-08-20-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhOTk2N2EtZThhOS00NjU2LWE3MGItOTZmZjFjNGQwNWEwL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnOTA5MC9wcm92aWRlcnMvTWljcm9zb2Z0LkhlYWx0aGNhcmVBcGlzL3NlcnZpY2VzL3BzdGVzdHJuOTA5MDE/YXBpLXZlcnNpb249MjAxOC0wOC0yMC1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1362,7 +1362,7 @@
           "Microsoft.Azure.Management.HealthcareApis.HealthcareApisManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": " {\"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/pstestrg9090/providers/Microsoft.HealthcareApis/services/pstestrn9091\",\"name\": \"pstestrn9091\",\"location\": \"West US\",\"type\": \"Microsoft.HealthcareApis/services\",\"kind\": \"fhir\",\"etag\": \"etagvalue\",\"tags\": {},\"properties\": {\"provisioningState\": \"Creating\",\"accessPolicies\": [{\"objectId\": \"c487e7d1-3210-41a3-8ccc-e9372b78da47\"}],\"cosmosDbConfiguration\": {\"offerThroughput\": 1000},\"authenticationConfiguration\": {\"authority\": \"https://login.microsoftonline.com/common\",\"audience\": \"https://azurehealthcareapis.com\",\"smartProxyEnabled\": true},\"corsConfiguration\": {\"origins\": [ \"*\" ],\"headers\": [ \"*\" ],\"methods\": [ \"DELETE\", \"GET\", \"OPTIONS\", \"PATCH\", \"POST\", \"PUT\" ],\"maxAge\": 1440,\"allowCredentials\": false}}}",
+      "ResponseBody": " {\"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/pstestrg9090/providers/Microsoft.HealthcareApis/services/pstestrn90901\",\"name\": \"pstestrn90901\",\"location\": \"West US\",\"type\": \"Microsoft.HealthcareApis/services\",\"kind\": \"fhir\",\"etag\": \"etagvalue\",\"tags\": {},\"properties\": {\"provisioningState\": \"Creating\",\"accessPolicies\": [{\"objectId\": \"c487e7d1-3210-41a3-8ccc-e9372b78da47\"}],\"cosmosDbConfiguration\": {\"offerThroughput\": 1000},\"authenticationConfiguration\": {\"authority\": \"https://login.microsoftonline.com/common\",\"audience\": \"https://azurehealthcareapis.com\",\"smartProxyEnabled\": true},\"corsConfiguration\": {\"origins\": [ \"*\" ],\"headers\": [ \"*\" ],\"methods\": [ \"DELETE\", \"GET\", \"OPTIONS\", \"PATCH\", \"POST\", \"PUT\" ],\"maxAge\": 1440,\"allowCredentials\": false}}}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1419,8 +1419,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/pstestrg9090/providers/Microsoft.HealthcareApis/services/pstestrn9091?api-version=2018-08-20-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhOTk2N2EtZThhOS00NjU2LWE3MGItOTZmZjFjNGQwNWEwL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnOTA5MC9wcm92aWRlcnMvTWljcm9zb2Z0LkhlYWx0aGNhcmVBcGlzL3NlcnZpY2VzL3BzdGVzdHJuOTA5MT9hcGktdmVyc2lvbj0yMDE4LTA4LTIwLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/pstestrg9090/providers/Microsoft.HealthcareApis/services/pstestrn90901?api-version=2018-08-20-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhOTk2N2EtZThhOS00NjU2LWE3MGItOTZmZjFjNGQwNWEwL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnOTA5MC9wcm92aWRlcnMvTWljcm9zb2Z0LkhlYWx0aGNhcmVBcGlzL3NlcnZpY2VzL3BzdGVzdHJuOTA5MDE/YXBpLXZlcnNpb249MjAxOC0wOC0yMC1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1435,7 +1435,7 @@
           "Microsoft.Azure.Management.HealthcareApis.HealthcareApisManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": " {\"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/pstestrg9090/providers/Microsoft.HealthcareApis/services/pstestrn9091\",\"name\": \"pstestrn9091\",\"location\": \"West US\",\"type\": \"Microsoft.HealthcareApis/services\",\"kind\": \"fhir\",\"etag\": \"etagvalue\",\"tags\": {},\"properties\": {\"provisioningState\": \"Creating\",\"accessPolicies\": [{\"objectId\": \"c487e7d1-3210-41a3-8ccc-e9372b78da47\"}],\"cosmosDbConfiguration\": {\"offerThroughput\": 400},\"authenticationConfiguration\": {\"authority\": \"https://login.microsoftonline.com/common\",\"audience\": \"https://azurehealthcareapis.com\",\"smartProxyEnabled\": true},\"corsConfiguration\": {\"origins\": [ \"*\" ],\"headers\": [ \"*\" ],\"methods\": [ \"DELETE\", \"GET\", \"OPTIONS\", \"PATCH\", \"POST\", \"PUT\" ],\"maxAge\": 1440,\"allowCredentials\": false}}}",
+      "ResponseBody": " {\"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/pstestrg9090/providers/Microsoft.HealthcareApis/services/pstestrn90901\",\"name\": \"pstestrn90901\",\"location\": \"West US\",\"type\": \"Microsoft.HealthcareApis/services\",\"kind\": \"fhir\",\"etag\": \"etagvalue\",\"tags\": {},\"properties\": {\"provisioningState\": \"Creating\",\"accessPolicies\": [{\"objectId\": \"c487e7d1-3210-41a3-8ccc-e9372b78da47\"}],\"cosmosDbConfiguration\": {\"offerThroughput\": 400},\"authenticationConfiguration\": {\"authority\": \"https://login.microsoftonline.com/common\",\"audience\": \"https://azurehealthcareapis.com\",\"smartProxyEnabled\": true},\"corsConfiguration\": {\"origins\": [ \"*\" ],\"headers\": [ \"*\" ],\"methods\": [ \"DELETE\", \"GET\", \"OPTIONS\", \"PATCH\", \"POST\", \"PUT\" ],\"maxAge\": 1440,\"allowCredentials\": false}}}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1492,8 +1492,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/pstestrg9090/providers/Microsoft.HealthcareApis/services/pstestrn9091?api-version=2018-08-20-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhOTk2N2EtZThhOS00NjU2LWE3MGItOTZmZjFjNGQwNWEwL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnOTA5MC9wcm92aWRlcnMvTWljcm9zb2Z0LkhlYWx0aGNhcmVBcGlzL3NlcnZpY2VzL3BzdGVzdHJuOTA5MT9hcGktdmVyc2lvbj0yMDE4LTA4LTIwLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/pstestrg9090/providers/Microsoft.HealthcareApis/services/pstestrn90901?api-version=2018-08-20-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhOTk2N2EtZThhOS00NjU2LWE3MGItOTZmZjFjNGQwNWEwL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnOTA5MC9wcm92aWRlcnMvTWljcm9zb2Z0LkhlYWx0aGNhcmVBcGlzL3NlcnZpY2VzL3BzdGVzdHJuOTA5MDE/YXBpLXZlcnNpb249MjAxOC0wOC0yMC1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1508,7 +1508,7 @@
           "Microsoft.Azure.Management.HealthcareApis.HealthcareApisManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": " {\"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/pstestrg9090/providers/Microsoft.HealthcareApis/services/pstestrn9091\",\"name\": \"pstestrn9091\",\"location\": \"West US\",\"type\": \"Microsoft.HealthcareApis/services\",\"kind\": \"fhir\",\"etag\": \"etagvalue\",\"tags\": {},\"properties\": {\"provisioningState\": \"Creating\",\"accessPolicies\": [{\"objectId\": \"c487e7d1-3210-41a3-8ccc-e9372b78da47\"}],\"cosmosDbConfiguration\": {\"offerThroughput\": 400},\"authenticationConfiguration\": {\"authority\": \"https://login.microsoftonline.com/common\",\"audience\": \"https://azurehealthcareapis.com\",\"smartProxyEnabled\": true},\"corsConfiguration\": {\"origins\": [ \"*\" ],\"headers\": [ \"*\" ],\"methods\": [ \"DELETE\", \"GET\", \"OPTIONS\", \"PATCH\", \"POST\", \"PUT\" ],\"maxAge\": 1440,\"allowCredentials\": false}}}",
+      "ResponseBody": " {\"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/pstestrg9090/providers/Microsoft.HealthcareApis/services/pstestrn90901\",\"name\": \"pstestrn90901\",\"location\": \"West US\",\"type\": \"Microsoft.HealthcareApis/services\",\"kind\": \"fhir\",\"etag\": \"etagvalue\",\"tags\": {},\"properties\": {\"provisioningState\": \"Creating\",\"accessPolicies\": [{\"objectId\": \"c487e7d1-3210-41a3-8ccc-e9372b78da47\"}],\"cosmosDbConfiguration\": {\"offerThroughput\": 400},\"authenticationConfiguration\": {\"authority\": \"https://login.microsoftonline.com/common\",\"audience\": \"https://azurehealthcareapis.com\",\"smartProxyEnabled\": true},\"corsConfiguration\": {\"origins\": [ \"*\" ],\"headers\": [ \"*\" ],\"methods\": [ \"DELETE\", \"GET\", \"OPTIONS\", \"PATCH\", \"POST\", \"PUT\" ],\"maxAge\": 1440,\"allowCredentials\": false}}}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1565,8 +1565,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/pstestrg9090/providers/Microsoft.HealthcareApis/services/pstestrn9091?api-version=2018-08-20-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhOTk2N2EtZThhOS00NjU2LWE3MGItOTZmZjFjNGQwNWEwL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnOTA5MC9wcm92aWRlcnMvTWljcm9zb2Z0LkhlYWx0aGNhcmVBcGlzL3NlcnZpY2VzL3BzdGVzdHJuOTA5MT9hcGktdmVyc2lvbj0yMDE4LTA4LTIwLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/pstestrg9090/providers/Microsoft.HealthcareApis/services/pstestrn90901?api-version=2018-08-20-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhOTk2N2EtZThhOS00NjU2LWE3MGItOTZmZjFjNGQwNWEwL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnOTA5MC9wcm92aWRlcnMvTWljcm9zb2Z0LkhlYWx0aGNhcmVBcGlzL3NlcnZpY2VzL3BzdGVzdHJuOTA5MDE/YXBpLXZlcnNpb249MjAxOC0wOC0yMC1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1581,7 +1581,7 @@
           "Microsoft.Azure.Management.HealthcareApis.HealthcareApisManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": " {\"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/pstestrg9090/providers/Microsoft.HealthcareApis/services/pstestrn9091\",\"name\": \"pstestrn9091\",\"location\": \"West US\",\"type\": \"Microsoft.HealthcareApis/services\",\"kind\": \"fhir\",\"etag\": \"etagvalue\",\"tags\": {},\"properties\": {\"provisioningState\": \"Creating\",\"accessPolicies\": [{\"objectId\": \"c487e7d1-3210-41a3-8ccc-e9372b78da47\"}],\"cosmosDbConfiguration\": {\"offerThroughput\": 400},\"authenticationConfiguration\": {\"authority\": \"https://login.microsoftonline.com/common\",\"audience\": \"https://azurehealthcareapis.com\",\"smartProxyEnabled\": true},\"corsConfiguration\": {\"origins\": [ \"*\" ],\"headers\": [ \"*\" ],\"methods\": [ \"DELETE\", \"GET\", \"OPTIONS\", \"PATCH\", \"POST\", \"PUT\" ],\"maxAge\": 1440,\"allowCredentials\": false}}}",
+      "ResponseBody": " {\"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/pstestrg9090/providers/Microsoft.HealthcareApis/services/pstestrn90901\",\"name\": \"pstestrn90901\",\"location\": \"West US\",\"type\": \"Microsoft.HealthcareApis/services\",\"kind\": \"fhir\",\"etag\": \"etagvalue\",\"tags\": {},\"properties\": {\"provisioningState\": \"Creating\",\"accessPolicies\": [{\"objectId\": \"c487e7d1-3210-41a3-8ccc-e9372b78da47\"}],\"cosmosDbConfiguration\": {\"offerThroughput\": 400},\"authenticationConfiguration\": {\"authority\": \"https://login.microsoftonline.com/common\",\"audience\": \"https://azurehealthcareapis.com\",\"smartProxyEnabled\": true},\"corsConfiguration\": {\"origins\": [ \"*\" ],\"headers\": [ \"*\" ],\"methods\": [ \"DELETE\", \"GET\", \"OPTIONS\", \"PATCH\", \"POST\", \"PUT\" ],\"maxAge\": 1440,\"allowCredentials\": false}}}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1654,7 +1654,7 @@
           "Microsoft.Azure.Management.HealthcareApis.HealthcareApisManagementClient/3.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/pstestrg9090/providers/Microsoft.HealthcareApis/services/pstestrn9090\",\r\n      \"name\": \"pstestrn9090\",\"etag\": \"0a002ee3-0000-0000-0000-5aa238d80000\",\r\n      \"type\": \"Microsoft.HealthcareApis/services\",\r\n      \"location\": \"westus\",\r\n      \"sku\": {\r\n        \"name\": \"S1\"\r\n      },\r\n      \"kind\": \"Fhir\",\r\n      \"tags\": {\r\n        \"key1\": \"value1\",\r\n        \"key2\": \"value2\"\r\n      },\r\n      \"properties\": {\r\n  \"provisioningState\": \"Succeeded\", \"authenticationConfiguration\": {\"authority\": \"https://login.microsoftonline.com/common\",\"audience\": \"https://azurehealthcareapis.com\",\"smartProxyEnabled\": true },\"cosmosDbConfiguration\": {\"offerThroughput\": 1000},\"accessPolicies\": [{\"objectId\": \"c487e7d1-3210-41a3-8ccc-e9372b78da47\"},{\"objectId\": \"5b307da8-43d4-492b-8b66-b0294ade872f\"}],\"corsConfiguration\": {\"origins\": [\"*\"],\"headers\": [\"*\"],\"methods\": [\"DELETE\", \"GET\", \"OPTIONS\", \"PATCH\", \"POST\", \"PUT\"],\"maxAge\": 1440,\"allowCredentials\": false}}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cc148bf2-42fb-4913-a3fb-2f284a69eb89/resourceGroups/pstestrg9090/providers/Microsoft.HealthcareApis/services/pstestrn9091\",\r\n      \"name\": \"pstestrn9091\",\r\n      \"type\": \"Microsoft.HealthcareApis/services\",\r\n      \"location\": \"westus\",\r\n      \"kind\": \"Fhir\",\"etag\": \"0a002ee3-0000-0000-0000-5aa238d800\",\r\n      \"tags\": {\r\n        \"key1\": \"value1\",\r\n        \"key2\": \"value2\"\r\n      },\r\n      \"etag\": \"W/\\\"datetime'2017-05-26T11%3A20%3A39.9949008Z'\\\"\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\", \"authenticationConfiguration\": {\"authority\": \"https://login.microsoftonline.com/common\",\"audience\": \"https://azurehealthcareapis.com\",\"smartProxyEnabled\": true },\"cosmosDbConfiguration\": {\"offerThroughput\": 1000},\"accessPolicies\": [{\"objectId\": \"c487e7d1-3210-41a3-8ccc-e9372b78da47\"},{\"objectId\": \"5b307da8-43d4-492b-8b66-b0294ade872f\"}],\"corsConfiguration\": {\"origins\": [\"*\"],\"headers\": [\"*\"],\"methods\": [\"DELETE\", \"GET\", \"OPTIONS\", \"PATCH\", \"POST\", \"PUT\"],\"maxAge\": 1440,\"allowCredentials\": false} }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/pstestrg9090/providers/Microsoft.HealthcareApis/services/pstestrn9090\",\r\n      \"name\": \"pstestrn9090\",\"etag\": \"0a002ee3-0000-0000-0000-5aa238d80000\",\r\n      \"type\": \"Microsoft.HealthcareApis/services\",\r\n      \"location\": \"westus\",\r\n      \"sku\": {\r\n        \"name\": \"S1\"\r\n      },\r\n      \"kind\": \"Fhir\",\r\n      \"tags\": {\r\n        \"key1\": \"value1\",\r\n        \"key2\": \"value2\"\r\n      },\r\n      \"properties\": {\r\n  \"provisioningState\": \"Succeeded\", \"authenticationConfiguration\": {\"authority\": \"https://login.microsoftonline.com/common\",\"audience\": \"https://azurehealthcareapis.com\",\"smartProxyEnabled\": true },\"cosmosDbConfiguration\": {\"offerThroughput\": 1000},\"accessPolicies\": [{\"objectId\": \"c487e7d1-3210-41a3-8ccc-e9372b78da47\"},{\"objectId\": \"5b307da8-43d4-492b-8b66-b0294ade872f\"}],\"corsConfiguration\": {\"origins\": [\"*\"],\"headers\": [\"*\"],\"methods\": [\"DELETE\", \"GET\", \"OPTIONS\", \"PATCH\", \"POST\", \"PUT\"],\"maxAge\": 1440,\"allowCredentials\": false}}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/cc148bf2-42fb-4913-a3fb-2f284a69eb89/resourceGroups/pstestrg9090/providers/Microsoft.HealthcareApis/services/pstestrn90901\",\r\n      \"name\": \"pstestrn90901\",\r\n      \"type\": \"Microsoft.HealthcareApis/services\",\r\n      \"location\": \"westus\",\r\n      \"kind\": \"Fhir\",\"etag\": \"0a002ee3-0000-0000-0000-5aa238d800\",\r\n      \"tags\": {\r\n        \"key1\": \"value1\",\r\n        \"key2\": \"value2\"\r\n      },\r\n      \"etag\": \"W/\\\"datetime'2017-05-26T11%3A20%3A39.9949008Z'\\\"\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\", \"authenticationConfiguration\": {\"authority\": \"https://login.microsoftonline.com/common\",\"audience\": \"https://azurehealthcareapis.com\",\"smartProxyEnabled\": true },\"cosmosDbConfiguration\": {\"offerThroughput\": 1000},\"accessPolicies\": [{\"objectId\": \"c487e7d1-3210-41a3-8ccc-e9372b78da47\"},{\"objectId\": \"5b307da8-43d4-492b-8b66-b0294ade872f\"}],\"corsConfiguration\": {\"origins\": [\"*\"],\"headers\": [\"*\"],\"methods\": [\"DELETE\", \"GET\", \"OPTIONS\", \"PATCH\", \"POST\", \"PUT\"],\"maxAge\": 1440,\"allowCredentials\": false} }\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1784,8 +1784,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/pstestrg9090/providers/Microsoft.HealthcareApis/services/pstestrn9091?api-version=2018-08-20-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhOTk2N2EtZThhOS00NjU2LWE3MGItOTZmZjFjNGQwNWEwL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnOTA5MC9wcm92aWRlcnMvTWljcm9zb2Z0LkhlYWx0aGNhcmVBcGlzL3NlcnZpY2VzL3BzdGVzdHJuOTA5MT9hcGktdmVyc2lvbj0yMDE4LTA4LTIwLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/pstestrg9090/providers/Microsoft.HealthcareApis/services/pstestrn90901?api-version=2018-08-20-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjFhOTk2N2EtZThhOS00NjU2LWE3MGItOTZmZjFjNGQwNWEwL3Jlc291cmNlR3JvdXBzL3BzdGVzdHJnOTA5MC9wcm92aWRlcnMvTWljcm9zb2Z0LkhlYWx0aGNhcmVBcGlzL3NlcnZpY2VzL3BzdGVzdHJuOTA5MDE/YXBpLXZlcnNpb249MjAxOC0wOC0yMC1wcmV2aWV3",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
