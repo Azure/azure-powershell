@@ -100,14 +100,7 @@ namespace Microsoft.Azure.Commands.Network
                 ipconfig.PrivateIPAddressVersion = this.PrivateIpAddressVersion;
             }
 
-            if(this.Primary.IsPresent)
-            {
-                ipconfig.Primary = true;
-            }
-            else
-            {
-                ipconfig.Primary = false;
-            }
+            ipconfig.Primary = this.Primary.IsPresent;
 
             WriteObject(ipconfig);
         }

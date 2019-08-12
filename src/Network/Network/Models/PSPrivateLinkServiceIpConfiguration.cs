@@ -53,7 +53,14 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Label = "Subnet", Target = ViewControl.Table, ScriptBlock = "$_.Subnet.Name")]
         public PSSubnet Subnet { get; set; }
 
-        
+        [Ps1Xml(Label = "PublicIPAddress", Target = ViewControl.Table, ScriptBlock = "$_.PublicIPAddress.Name")]
+        public PSPublicIpAddress PublicIPAddress { get; set; }
+        [JsonIgnore]
+        public string PublicIPAddressText
+        {
+            get { return JsonConvert.SerializeObject(PublicIPAddress, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
         [JsonIgnore]
         public string SubnetText
         {
