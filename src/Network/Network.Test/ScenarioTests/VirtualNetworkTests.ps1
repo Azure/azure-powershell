@@ -617,7 +617,7 @@ function Test-MultiTenantVNetPCRUD
     $location = Get-ProviderLocation $resourceTypeParent "East US"
 
 	# The remote VNet in this case lives under a different tenant and hence can is assumed to be created by the time the test is run
-	# Create the remote Virtual Network : This needs to e done ins a seperate subscription that lives under a different tenant
+	# Create the remote Virtual Network : This needs to e done ins a separate subscription that lives under a different tenant
 	# As of now the steps are manual
 
     # $subnet2 = New-AzVirtualNetworkSubnetConfig -Name $subnet2Name -AddressPrefix 10.1.1.0/24
