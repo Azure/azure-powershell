@@ -65,6 +65,12 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
 
         public string SetupScriptContainerSasUri => ManagedIntegrationRuntime.SsisProperties?.CustomSetupScriptProperties?.BlobContainerUri + ManagedIntegrationRuntime.SsisProperties?.CustomSetupScriptProperties?.SasToken?.Value;
 
+        public string DataProxyIntegrationRuntimeName => ManagedIntegrationRuntime.SsisProperties?.DataProxyProperties?.ConnectVia?.ReferenceName;
+
+        public string DataProxyStagingLinkedServiceName => ManagedIntegrationRuntime.SsisProperties?.DataProxyProperties?.StagingLinkedService?.ReferenceName;
+
+        public string DataProxyStagingPath => ManagedIntegrationRuntime.SsisProperties?.DataProxyProperties?.Path;
+
         public string Edition => ManagedIntegrationRuntime.SsisProperties?.Edition;
     }
 }
