@@ -274,11 +274,11 @@ Accept wildcard characters: False
 ```
 
 ### -VolumeType
-Specifies the type of virtual machine volumes on which to perform encryption operation: OS, Data, or All. If this parameter is omitted, the operation defaults to All.
+Specifies the type of virtual machine volumes on which to perform encryption operation: OS, Data, or All. 
 
 Linux: The **VolumeType** parameter must be present and must be set to Data. 
 
-Windows: The **VolumeType** parameter, if present, must be set to either All or OS.
+Windows: The **VolumeType** parameter, if present, must be set to either All or OS. If the **VolumeType** parameter is omitted it defaults to "All".
 
 
 ```yaml
