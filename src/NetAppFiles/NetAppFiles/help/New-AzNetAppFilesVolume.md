@@ -133,21 +133,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MountTargets
-A hashtable which represents mount targets of the volume
-
-```yaml
-Type: Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 The name of the ANF volume
 
