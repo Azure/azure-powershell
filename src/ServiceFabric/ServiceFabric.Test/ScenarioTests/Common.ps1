@@ -181,3 +181,35 @@ function WaitForClusterReadyState($clusterName, $resourceGroupName, $timeoutInSe
     Write-Error "WaitForClusterReadyState timed out"
     return $false
 }
+
+# Application functions
+
+function Get-AppTypeName
+{
+    return "CalcServiceApp"
+}
+
+function Get-AppTypeV1Name
+{
+    return "1.0"
+}
+
+function Get-AppTypeV2Name
+{
+    return "1.1"
+}
+
+function Get-AppPackageV1
+{
+    return "https://azsfapptest.blob.core.windows.net/azsfapptest/CalcApp_1.0.sfpkg"
+}
+
+function Get-AppPackageV2
+{
+    return "https://azsfapptest.blob.core.windows.net/azsfapptest/CalcApp_1.1.sfpkg"
+}
+
+function Get-ServiceTypeName
+{
+    return "CalcServiceType"
+}
