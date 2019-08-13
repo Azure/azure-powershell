@@ -10,6 +10,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Gets the auditing settings of an Azure SQL server.
+This cmdlet is deprecated, please use **Get-AzSqlServerAudit** instead.
 
 ## SYNTAX
 
