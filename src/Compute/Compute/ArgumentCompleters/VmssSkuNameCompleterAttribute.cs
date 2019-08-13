@@ -2,10 +2,12 @@ namespace Microsoft.Azure.Commands.Management.Compute.ArgumentCompleters
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Management.Automation;
     using System.Threading.Tasks;
     using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+    using Microsoft.Azure.Commands.Compute;
     using Microsoft.Azure.Management.Compute;
     using Microsoft.Rest.Azure;
 
@@ -18,11 +20,9 @@ namespace Microsoft.Azure.Commands.Management.Compute.ArgumentCompleters
 
         private static ScriptBlock CreateScriptBlock()
         {
-            string script = "param($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameter)\n" +
-                "$location = $fakeBoundParameter['Location']\n" +
-                "$type = $fakeBoundParameter['Type']\n" +
-                "$skuNames = [Microsoft.Azure.Commands.Management.Compute.ArgumentCompleters.VmssSkuCompleterAttribute]::GetSkuNames()\n" +
-                "$locations | Where-Object { $_ -Like \"*$wordToComplete*\" } | ForEach-Object { [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_) }";
+            string script = new ArgumentCompleterUtility.ScriptBuilder(new[] { "Location", "Type" },
+                "Microsoft.Azure.Commands.Management.Compute.ArgumentCompleters",
+                "VmssSkuCompleterAttribute", "GetSkuNames").ToString();
             return ScriptBlock.Create(script);
         }
 
@@ -35,16 +35,19 @@ namespace Microsoft.Azure.Commands.Management.Compute.ArgumentCompleters
 
                 try
                 {
-                    var client = AzureSession.Instance.ClientFactory.CreateArmClient<ComputeManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
-                    var task = client.ResourceSkus.ListAsync();
-                    ReadAllPages(task, nextPageLink => client.ResourceSkus.ListNextAsync(nextPageLink));
+                    var client = new ComputeClient(context).ComputeManagementClient.VirtualMachineScaleSets;
+                    if (string.IsNullOrEmpty(resourceGroupName) && string.IsNullOrEmpty(vmssName))
+                    {
+                        return new string[] { };
+                    }
+                    var skus = ReadAllPages(client.ListSkusAsync(resourceGroupName, vmssName), nextPageLink => client.ListSkusNextAsync(nextPageLink));
+                    var skuNames = skus.Select(sku => sku.Sku.Name);
+                    return skuNames.ToArray();
                 }
                 catch (Exception ex)
                 {
                     throw ex;
                 }
-
-                return new string[] { };
             }
         }
 
@@ -61,7 +64,8 @@ namespace Microsoft.Azure.Commands.Management.Compute.ArgumentCompleters
             task.Wait();
             var page = task.Result;
             results.AddRange(task.Result);
-            while (!string.IsNullOrEmpty(page.NextPageLink)) {
+            while (!string.IsNullOrEmpty(page.NextPageLink))
+            {
                 task = nextTaskCreator(page.NextPageLink);
                 task.Wait();
                 page = task.Result;
