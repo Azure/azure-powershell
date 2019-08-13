@@ -30,12 +30,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specify the name of the cluster.")]
-        [ResourceGroupCompleter]
+        [ResourceNameCompleter("Microsoft.ServiceFabric/clusters", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty()]
         public override string ClusterName { get; set; }
 
         [Parameter(Mandatory = true, Position = 2, ValueFromPipeline = true,
-                   HelpMessage = "Specify the name of the application type")]
+            HelpMessage = "Specify the name of the application type")]
         [ValidateNotNullOrEmpty()]
         [Alias("ApplicationTypeName")]
         public string Name { get; set; }

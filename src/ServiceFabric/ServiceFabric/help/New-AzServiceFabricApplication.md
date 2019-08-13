@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.servicefabric/new-azservicefabricapplication
 schema: 2.0.0
 ---
 
@@ -15,17 +15,18 @@ Create new service fabric application under the specified resource group and clu
 ### SkipAppTypeVersion (Default)
 ```
 New-AzServiceFabricApplication [-ResourceGroupName] <String> [-ClusterName] <String>
- [-ApplicationTypeName] <String> [-ApplicationTypeVersion] <String> [-Name] <String>
- [[-ApplicationParameter] <Hashtable>] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ApplicationTypeName] <String> [-ApplicationTypeVersion] <String> -Name <String>
+ [-ApplicationParameter <Hashtable>] [-MinimumNodeCount <Int64>] [-MaximumNodeCount <Int64>] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateAppTypeVersion
 ```
 New-AzServiceFabricApplication [-ResourceGroupName] <String> [-ClusterName] <String>
- [-ApplicationTypeName] <String> [-ApplicationTypeVersion] <String> [-Name] <String>
- [[-ApplicationParameter] <Hashtable>] -PackageUrl <String> [-Force] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ApplicationTypeName] <String> [-ApplicationTypeVersion] <String> -Name <String>
+ [-ApplicationParameter <Hashtable>] -PackageUrl <String> [-MinimumNodeCount <Int64>]
+ [-MaximumNodeCount <Int64>] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,9 +60,9 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 5
+Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -76,7 +77,7 @@ Aliases:
 Required: True
 Position: 2
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -91,7 +92,7 @@ Aliases:
 Required: True
 Position: 3
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -140,6 +141,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MaximumNodeCount
+Specifies the maximum number of nodes on which to place an application
+
+```yaml
+Type: System.Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MinimumNodeCount
+Specifies the minimum number of nodes where Service Fabric will reserve capacity for this application
+
+```yaml
+Type: System.Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specify the name of the application
 
@@ -149,9 +180,9 @@ Parameter Sets: (All)
 Aliases: ApplicationName
 
 Required: True
-Position: 4
+Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -166,7 +197,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

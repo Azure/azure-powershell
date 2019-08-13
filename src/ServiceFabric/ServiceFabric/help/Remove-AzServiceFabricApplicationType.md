@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.servicefabric/remove-azservicefabricapplicationtype
 schema: 2.0.0
 ---
 
@@ -12,9 +12,22 @@ Remove Service fabric an application type from the cluster. This will remove all
 
 ## SYNTAX
 
+### ByResourceGroup (Default)
 ```
 Remove-AzServiceFabricApplicationType [-ResourceGroupName] <String> [-ClusterName] <String> [-Name <String>]
  [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByResourceId
+```
+Remove-AzServiceFabricApplicationType -ResourceId <String> [-PassThru] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByInputObject
+```
+Remove-AzServiceFabricApplicationType -InputObject <PSApplicationType> [-PassThru] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,7 +52,7 @@ Specify the name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByResourceGroup
 Aliases:
 
 Required: True
@@ -65,7 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Remove without prompt
+Remove without prompt.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -79,18 +92,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+The application type resource.
+
+```yaml
+Type: Microsoft.Azure.Commands.ServiceFabric.Models.PSApplicationType
+Parameter Sets: ByInputObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
-Specify the name of the application type
+Specify the name of the application type.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByResourceGroup
 Aliases: ApplicationTypeName
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -114,11 +142,26 @@ Specify the name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByResourceGroup
 Aliases:
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Arm ResourceId of the application type.
+
+```yaml
+Type: System.String
+Parameter Sets: ByResourceId
+Aliases:
+
+Required: True
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -162,9 +205,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
+### Microsoft.Azure.Commands.ServiceFabric.Models.PSApplicationType
+
 ## OUTPUTS
 
-### System.Object
+### System.Boolean
+
 ## NOTES
 
 ## RELATED LINKS

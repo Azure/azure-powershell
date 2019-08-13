@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.servicefabric/update-azservicefabricapplication
 schema: 2.0.0
 ---
 
@@ -12,17 +12,38 @@ Update a service fabric application. This allows to update the application param
 
 ## SYNTAX
 
+### ByResourceGroup (Default)
 ```
 Update-AzServiceFabricApplication [-ResourceGroupName] <String> [-ClusterName] <String> [-Name] <String>
- [[-ApplicationTypeVersion] <String>] [[-ApplicationParameter] <Hashtable>] [-MinimumNodes <Int64>]
- [-MaximumNodes <Int64>] [-ForceRestart] [-UpgradeReplicaSetCheckTimeoutSec <Int32>]
+ [[-ApplicationTypeVersion] <String>] [-ApplicationParameter <Hashtable>] [-MinimumNodeCount <Int64>]
+ [-MaximumNodeCount <Int64>] [-ForceRestart] [-UpgradeReplicaSetCheckTimeoutSec <Int32>]
  [-FailureAction <FailureAction>] [-HealthCheckRetryTimeoutSec <Int32>] [-HealthCheckWaitDurationSec <Int32>]
  [-HealthCheckStableDurationSec <Int32>] [-UpgradeDomainTimeoutSec <Int32>] [-UpgradeTimeoutSec <Int32>]
- [-ConsiderWarningAsError <Boolean>] [-DefaultServiceTypeMaxPercentUnhealthyPartitionsPerService <Int32>]
+ [-ConsiderWarningAsError] [-DefaultServiceTypeMaxPercentUnhealthyPartitionsPerService <Int32>]
  [-DefaultServiceTypeMaxPercentUnhealthyReplicasPerPartition <Int32>]
- [-DefaultServiceTypeMaxPercentUnhealthyServices <Int32>] [-MaxPercentUnhealthyDeployedApplications <Int32>]
+ [-DefaultServiceTypeUnhealthyServicesMaxPercent <Int32>] [-UnhealthyDeployedApplicationsMaxPercent <Int32>]
  [-ServiceTypeHealthPolicyMap <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### ByResourceId
+```
+Update-AzServiceFabricApplication [[-ApplicationTypeVersion] <String>] [-ApplicationParameter <Hashtable>]
+ [-MinimumNodeCount <Int64>] [-MaximumNodeCount <Int64>] [-ForceRestart]
+ [-UpgradeReplicaSetCheckTimeoutSec <Int32>] [-FailureAction <FailureAction>]
+ [-HealthCheckRetryTimeoutSec <Int32>] [-HealthCheckWaitDurationSec <Int32>]
+ [-HealthCheckStableDurationSec <Int32>] [-UpgradeDomainTimeoutSec <Int32>] [-UpgradeTimeoutSec <Int32>]
+ [-ConsiderWarningAsError] [-DefaultServiceTypeMaxPercentUnhealthyPartitionsPerService <Int32>]
+ [-DefaultServiceTypeMaxPercentUnhealthyReplicasPerPartition <Int32>]
+ [-DefaultServiceTypeUnhealthyServicesMaxPercent <Int32>] [-UnhealthyDeployedApplicationsMaxPercent <Int32>]
+ [-ServiceTypeHealthPolicyMap <Hashtable>] [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByInputObject
+```
+Update-AzServiceFabricApplication -InputObject <PSApplication> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -81,13 +102,13 @@ These parameters must exist in the application manifest.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: ByResourceGroup, ByResourceId
 Aliases:
 
 Required: False
-Position: 4
+Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -96,13 +117,13 @@ Specify the application type version
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByResourceGroup, ByResourceId
 Aliases:
 
 Required: False
 Position: 3
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -111,7 +132,7 @@ Specify the name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByResourceGroup
 Aliases:
 
 Required: True
@@ -122,11 +143,11 @@ Accept wildcard characters: False
 ```
 
 ### -ConsiderWarningAsError
-{{Fill ConsiderWarningAsError Description}}
+Indicates whether to treat a warning health event as an error event during health evaluation.
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
-Parameter Sets: (All)
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ByResourceGroup, ByResourceId
 Aliases:
 
 Required: False
@@ -152,11 +173,11 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultServiceTypeMaxPercentUnhealthyPartitionsPerService
-{{Fill DefaultServiceTypeMaxPercentUnhealthyPartitionsPerService Description}}
+Specifies the maximum percent of unhelthy partitions per service allowed by the health policy for the default service type to use for the monitored upgrade.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: (All)
+Type: System.Int32
+Parameter Sets: ByResourceGroup, ByResourceId
 Aliases:
 
 Required: False
@@ -167,11 +188,11 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultServiceTypeMaxPercentUnhealthyReplicasPerPartition
-{{Fill DefaultServiceTypeMaxPercentUnhealthyReplicasPerPartition Description}}
+Specifies the maximum percent of unhelthy replicas per service allowed by the health policy for the default service type to use for the monitored upgrade.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: (All)
+Type: System.Int32
+Parameter Sets: ByResourceGroup, ByResourceId
 Aliases:
 
 Required: False
@@ -181,12 +202,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DefaultServiceTypeMaxPercentUnhealthyServices
-{{Fill DefaultServiceTypeMaxPercentUnhealthyServices Description}}
+### -DefaultServiceTypeUnhealthyServicesMaxPercent
+Specifies the maximum percent of unhelthy services allowed by the health policy for the default service type to use for the monitored upgrade.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: (All)
+Type: System.Int32
+Parameter Sets: ByResourceGroup, ByResourceId
 Aliases:
 
 Required: False
@@ -197,11 +218,12 @@ Accept wildcard characters: False
 ```
 
 ### -FailureAction
-{{Fill FailureAction Description}}
+Specifies the action to take if the monitored upgrade fails.
+The acceptable values for this parameter are Rollback or Manual.
 
 ```yaml
-Type: System.Nullable`1[Microsoft.Azure.Commands.ServiceFabric.Models.FailureAction]
-Parameter Sets: (All)
+Type: Microsoft.Azure.Commands.ServiceFabric.Models.FailureAction
+Parameter Sets: ByResourceGroup, ByResourceId
 Aliases:
 Accepted values: Rollback, Manual
 
@@ -213,11 +235,11 @@ Accept wildcard characters: False
 ```
 
 ### -ForceRestart
-{{Fill ForceRestart Description}}
+Indicates that the service host restarts even if the upgrade is a configuration-only change.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: ByResourceGroup, ByResourceId
 Aliases:
 
 Required: False
@@ -228,11 +250,11 @@ Accept wildcard characters: False
 ```
 
 ### -HealthCheckRetryTimeoutSec
-{{Fill HealthCheckRetryTimeoutSec Description}}
+Specifies the duration, in seconds, after which Service Fabric retries the health check if the previous health check fails.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: (All)
+Type: System.Int32
+Parameter Sets: ByResourceGroup, ByResourceId
 Aliases:
 
 Required: False
@@ -243,11 +265,12 @@ Accept wildcard characters: False
 ```
 
 ### -HealthCheckStableDurationSec
-{{Fill HealthCheckStableDurationSec Description}}
+Specifies the duration, in seconds, that Service Fabric waits in order to verify that the application is stable before moving to the next upgrade domain or completing the upgrade.
+This wait duration prevents undetected changes of health right after the health check is performed.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: (All)
+Type: System.Int32
+Parameter Sets: ByResourceGroup, ByResourceId
 Aliases:
 
 Required: False
@@ -258,11 +281,11 @@ Accept wildcard characters: False
 ```
 
 ### -HealthCheckWaitDurationSec
-{{Fill HealthCheckWaitDurationSec Description}}
+Specifies the duration, in seconds, that Service Fabric waits before it performs the initial health check after it finishes the upgrade on the upgrade domain.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: (All)
+Type: System.Int32
+Parameter Sets: ByResourceGroup, ByResourceId
 Aliases:
 
 Required: False
@@ -272,27 +295,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MaximumNodes
+### -InputObject
+The application resource.
+
+```yaml
+Type: Microsoft.Azure.Commands.ServiceFabric.Models.PSApplication
+Parameter Sets: ByInputObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -MaximumNodeCount
 Specifies the maximum number of nodes on which to place an application
 
 ```yaml
-Type: System.Nullable`1[System.Int64]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -MaxPercentUnhealthyDeployedApplications
-{{Fill MaxPercentUnhealthyDeployedApplications Description}}
-
-```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: (All)
+Type: System.Int64
+Parameter Sets: ByResourceGroup, ByResourceId
 Aliases:
 
 Required: False
@@ -302,18 +325,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MinimumNodes
+### -MinimumNodeCount
 Specifies the minimum number of nodes where Service Fabric will reserve capacity for this application
 
 ```yaml
-Type: System.Nullable`1[System.Int64]
-Parameter Sets: (All)
+Type: System.Int64
+Parameter Sets: ByResourceGroup, ByResourceId
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -322,13 +345,13 @@ Specify the name of the application
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByResourceGroup
 Aliases: ApplicationName
 
 Required: True
 Position: 2
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -337,7 +360,22 @@ Specify the name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByResourceGroup
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Arm ResourceId of the application.
+
+```yaml
+Type: System.String
+Parameter Sets: ByResourceId
 Aliases:
 
 Required: True
@@ -348,11 +386,27 @@ Accept wildcard characters: False
 ```
 
 ### -ServiceTypeHealthPolicyMap
-{{Fill ServiceTypeHealthPolicyMap Description}}
+Specifies the map of the health policy to use for different service types as a hash table in the following format: @ {"ServiceTypeName" : "MaxPercentUnhealthyPartitionsPerService,MaxPercentUnhealthyReplicasPerPartition,MaxPercentUnhealthyServices"}.
+For example: @{ "ServiceTypeName01" = "5,10,5"; "ServiceTypeName02" = "5,5,5" }
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: ByResourceGroup, ByResourceId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UnhealthyDeployedApplicationsMaxPercent
+Specifies the maximum percentage of the application instances deployed on the nodes in the cluster that have a health state of error before the application health state for the cluster is error.
+
+```yaml
+Type: System.Int32
+Parameter Sets: ByResourceGroup, ByResourceId
 Aliases:
 
 Required: False
@@ -363,11 +417,12 @@ Accept wildcard characters: False
 ```
 
 ### -UpgradeDomainTimeoutSec
-{{Fill UpgradeDomainTimeoutSec Description}}
+Specifies the maximum time, in seconds, that Service Fabric takes to upgrade a single upgrade domain.
+After this period, the upgrade fails.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: (All)
+Type: System.Int32
+Parameter Sets: ByResourceGroup, ByResourceId
 Aliases:
 
 Required: False
@@ -378,11 +433,11 @@ Accept wildcard characters: False
 ```
 
 ### -UpgradeReplicaSetCheckTimeoutSec
-{{Fill UpgradeReplicaSetCheckTimeoutSec Description}}
+Specifies the maximum time that Service Fabric waits for a service to reconfigure into a safe state, if not already in a safe state, before Service Fabric proceeds with the upgrade.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: (All)
+Type: System.Int32
+Parameter Sets: ByResourceGroup, ByResourceId
 Aliases:
 
 Required: False
@@ -393,11 +448,12 @@ Accept wildcard characters: False
 ```
 
 ### -UpgradeTimeoutSec
-{{Fill UpgradeTimeoutSec Description}}
+Specifies the maximum time, in seconds, that Service Fabric takes for the entire upgrade.
+After this period, the upgrade fails.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: (All)
+Type: System.Int32
+Parameter Sets: ByResourceGroup, ByResourceId
 Aliases:
 
 Required: False
@@ -445,9 +501,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### System.Collections.Hashtable
-
-### System.Nullable`1[[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+### Microsoft.Azure.Commands.ServiceFabric.Models.PSApplication
 
 ## OUTPUTS
 

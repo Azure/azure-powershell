@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
 using Microsoft.Azure.Management.ServiceFabric;
 using Microsoft.Azure.Management.ServiceFabric.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
@@ -37,57 +38,57 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specify the name of the cluster.")]
-        [ResourceGroupCompleter]
+        [ResourceNameCompleter("Microsoft.ServiceFabric/clusters", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty()]
         public override string ClusterName { get; set; }
 
-        [Parameter(Mandatory = true, Position = 2, ValueFromPipeline = true, ParameterSetName = SkipAppTypeVersion,
-                   HelpMessage = "Specify the name of the application type")]
-        [Parameter(Mandatory = true, Position = 2, ValueFromPipeline = true, ParameterSetName = CreateAppTypeVersion,
-                   HelpMessage = "Specify the name of the application type")]
+        [Parameter(Mandatory = true, Position = 2, ParameterSetName = SkipAppTypeVersion,
+            HelpMessage = "Specify the name of the application type")]
+        [Parameter(Mandatory = true, Position = 2, ParameterSetName = CreateAppTypeVersion,
+            HelpMessage = "Specify the name of the application type")]
         [ValidateNotNullOrEmpty()]
         public string ApplicationTypeName { get; set; }
 
-        [Parameter(Mandatory = true, Position = 3, ValueFromPipeline = true, ParameterSetName = SkipAppTypeVersion,
-                   HelpMessage = "Specify the application type version")]
-        [Parameter(Mandatory = true, Position = 3, ValueFromPipeline = true, ParameterSetName = CreateAppTypeVersion,
-                   HelpMessage = "Specify the application type version")]
+        [Parameter(Mandatory = true, Position = 3, ParameterSetName = SkipAppTypeVersion,
+            HelpMessage = "Specify the application type version")]
+        [Parameter(Mandatory = true, Position = 3, ParameterSetName = CreateAppTypeVersion,
+            HelpMessage = "Specify the application type version")]
         [ValidateNotNullOrEmpty()]
         public string ApplicationTypeVersion { get; set; }
 
-        [Parameter(Mandatory = true, Position = 4, ValueFromPipeline = true, ParameterSetName = SkipAppTypeVersion,
-                   HelpMessage = "Specify the name of the application")]
-        [Parameter(Mandatory = true, Position = 4, ValueFromPipeline = true, ParameterSetName = CreateAppTypeVersion,
-                   HelpMessage = "Specify the name of the application")]
+        [Parameter(Mandatory = true, ParameterSetName = SkipAppTypeVersion,
+            HelpMessage = "Specify the name of the application")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateAppTypeVersion,
+            HelpMessage = "Specify the name of the application")]
         [ValidateNotNullOrEmpty()]
         [Alias("ApplicationName")]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, Position = 5, ValueFromPipeline = true, ParameterSetName = SkipAppTypeVersion,
-                   HelpMessage = "Specify the application parameters as key/value pairs. These parameters must exist in the application manifest.")]
-        [Parameter(Mandatory = false, Position = 5, ValueFromPipeline = true, ParameterSetName = CreateAppTypeVersion,
-                   HelpMessage = "Specify the application parameters as key/value pairs. These parameters must exist in the application manifest.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = SkipAppTypeVersion,
+            HelpMessage = "Specify the application parameters as key/value pairs. These parameters must exist in the application manifest.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = CreateAppTypeVersion,
+            HelpMessage = "Specify the application parameters as key/value pairs. These parameters must exist in the application manifest.")]
         [ValidateNotNullOrEmpty()]
         public Hashtable ApplicationParameter { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = CreateAppTypeVersion,
-                   HelpMessage = "Specify the url of the application package sfpkg file")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = CreateAppTypeVersion,
+            HelpMessage = "Specify the url of the application package sfpkg file")]
         [ValidateNotNullOrEmpty()]
         public string PackageUrl { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = SkipAppTypeVersion,
-                   HelpMessage = "Specifies the minimum number of nodes where Service Fabric will reserve capacity for this application")]
-        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = CreateAppTypeVersion,
-                   HelpMessage = "Specifies the minimum number of nodes where Service Fabric will reserve capacity for this application")]
+        [Parameter(Mandatory = false, ParameterSetName = SkipAppTypeVersion,
+            HelpMessage = "Specifies the minimum number of nodes where Service Fabric will reserve capacity for this application")]
+        [Parameter(Mandatory = false, ParameterSetName = CreateAppTypeVersion,
+            HelpMessage = "Specifies the minimum number of nodes where Service Fabric will reserve capacity for this application")]
         [ValidateNotNullOrEmpty()]
-        long? MinimumNodes { get; set; }
+        public long MinimumNodeCount { get; set; }
         
-        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = SkipAppTypeVersion,
-                   HelpMessage = "Specifies the maximum number of nodes on which to place an application")]
-        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = CreateAppTypeVersion,
-                   HelpMessage = "Specifies the maximum number of nodes on which to place an application")]
+        [Parameter(Mandatory = false, ParameterSetName = SkipAppTypeVersion,
+            HelpMessage = "Specifies the maximum number of nodes on which to place an application")]
+        [Parameter(Mandatory = false, ParameterSetName = CreateAppTypeVersion,
+            HelpMessage = "Specifies the maximum number of nodes on which to place an application")]
         [ValidateNotNullOrEmpty()]
-        long? MaximumNodes { get; set; }
+        public long MaximumNodeCount { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Continue without prompts")]
         public SwitchParameter Force { get; set; }
@@ -131,13 +132,25 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
 
             WriteVerbose(string.Format("Creating application '{0}'", this.Name));
+            long? minNodes = null;
+            if (this.IsParameterBound(c => c.MinimumNodeCount))
+            {
+                minNodes = this.MinimumNodeCount;
+            }
+
+            long? maxNodes = null;
+            if (this.IsParameterBound(c => c.MaximumNodeCount))
+            {
+                maxNodes = this.MaximumNodeCount;
+            }
+
             ApplicationResource appParams = new ApplicationResource(
                     name: this.Name,
                     typeName: this.ApplicationTypeName,
                     typeVersion: this.ApplicationTypeVersion,
                     parameters: this.ApplicationParameter?.Cast<DictionaryEntry>().ToDictionary(d => d.Key as string, d => d.Value as string),
-                    minimumNodes: this.MinimumNodes,
-                    maximumNodes: this.MaximumNodes);
+                    minimumNodes: minNodes,
+                    maximumNodes: maxNodes);
 
             return StartRequestAndWait<ApplicationResource>(
                 () => this.SFRPClient.Applications.BeginCreateOrUpdateWithHttpMessagesAsync(

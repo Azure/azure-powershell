@@ -16,7 +16,7 @@ using Microsoft.Azure.Management.ServiceFabric.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Models
 {
-    class PSService : ServiceResource
+    public class PSService : ServiceResource
     {
         public PSService(ServiceResource service)
             : base(

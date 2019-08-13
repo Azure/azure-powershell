@@ -16,7 +16,9 @@ using System;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.ServiceFabric.Common;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.ServiceFabric;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
@@ -26,44 +28,57 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
     {
         private const string ByResourceGroupAndCluster = "ByResourceGroupAndCluster";
         private const string ByName = "ByName";
+        private const string ByResourceId = "ByResourceId";
 
         [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, ParameterSetName = ByResourceGroupAndCluster,
-                   HelpMessage = "Specify the name of the resource group.")]
+            HelpMessage = "Specify the name of the resource group.")]
         [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, ParameterSetName = ByName,
-                   HelpMessage = "Specify the name of the resource group.")]
+            HelpMessage = "Specify the name of the resource group.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty()]
         public override string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, ParameterSetName = ByResourceGroupAndCluster,
-                   HelpMessage = "Specify the name of the cluster.")]
+            HelpMessage = "Specify the name of the cluster.")]
         [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, ParameterSetName = ByName,
-                   HelpMessage = "Specify the name of the cluster.")]
-        [ResourceGroupCompleter]
+            HelpMessage = "Specify the name of the cluster.")]
+        [ResourceNameCompleter("Microsoft.ServiceFabric/clusters", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty()]
         public override string ClusterName { get; set; }
 
         [Parameter(Mandatory = true, Position = 2, ValueFromPipeline = true, ParameterSetName = ByName,
-                   HelpMessage = "Specify the name of the application type")]
+            HelpMessage = "Specify the name of the application type")]
         [Alias("ApplicationTypeName")]
         [ValidateNotNullOrEmpty()]
         public string Name { get; set; }
+
+        [Parameter(Mandatory = true, ParameterSetName = ByResourceId, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Arm ResourceId of the application type.")]
+        [ResourceIdCompleter("Microsoft.ServiceFabric/clusters")]
+        [ValidateNotNullOrEmpty]
+        public String ResourceId { get; set; }
 
         public override void ExecuteCmdlet()
         {
             try
             {
-                if (ParameterSetName == ByName)
+                switch (ParameterSetName)
                 {
-                    var appType = this.SFRPClient.ApplicationTypes.Get(this.ResourceGroupName, this.ClusterName, this.Name);
-                    WriteObject(new PSApplicationType(appType), false);
-                }
-                else
-                {
-                    var appTypeList = this.SFRPClient.ApplicationTypes.
-                        List(this.ResourceGroupName, this.ClusterName).Value.
-                        Select(type => new PSApplicationType(type));
-                    WriteObject(appTypeList, true);
+                    case ByResourceGroupAndCluster:
+                        var appTypeList = this.SFRPClient.ApplicationTypes.
+                            List(this.ResourceGroupName, this.ClusterName).Value.
+                            Select(type => new PSApplicationType(type));
+                        WriteObject(appTypeList, true);
+                        break;
+                    case ByName:
+                        GetByName();
+                        break;
+                    case ByResourceId:
+                        SetParametersByResourceId();
+                        GetByName();
+                        break;
+                    default:
+                        throw new PSArgumentException("Invalid ParameterSetName");
                 }
             }
             catch (Exception ex)
@@ -71,6 +86,28 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 this.PrintSdkExceptionDetail(ex);
                 throw;
             }
+        }
+
+        private void GetByName()
+        {
+            var appType = this.SFRPClient.ApplicationTypes.Get(this.ResourceGroupName, this.ClusterName, this.Name);
+            WriteObject(new PSApplicationType(appType), false);
+        }
+
+        private void SetParametersByResourceId()
+        {
+            ResourceIdentifier appTypeRId = new ResourceIdentifier(this.ResourceId);
+            this.ResourceGroupName = appTypeRId.ResourceGroupName;
+            string subscription = appTypeRId.Subscription;
+            ResourceIdentifier clusterRId = new ResourceIdentifier($"/subscriptions/{subscription}/resourceGroups/{this.ResourceGroupName}/providers/Microsoft.ServiceFabric/{appTypeRId.ParentResource}");
+            if (!appTypeRId.ResourceType.EndsWith(Constants.applicationTypeProvider)
+                || !clusterRId.ResourceType.EndsWith(Constants.clusterProvider))
+            {
+                throw new PSArgumentException(string.Format("invalid resource id {0}", this.ResourceId));
+            }
+
+            this.ClusterName = clusterRId.ResourceName;
+            this.Name = appTypeRId.ResourceName;
         }
     }
 }

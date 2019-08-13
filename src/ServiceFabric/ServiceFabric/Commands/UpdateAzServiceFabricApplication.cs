@@ -18,111 +18,199 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.ServiceFabric.Common;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.ServiceFabric;
 using Microsoft.Azure.Management.ServiceFabric.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzurePrefix + "ServiceFabricApplication", SupportsShouldProcess = true), OutputType(typeof(PSApplication))]
+    [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzurePrefix + "ServiceFabricApplication", DefaultParameterSetName = ByResourceGroup, SupportsShouldProcess = true), OutputType(typeof(PSApplication))]
     public class UpdateAzServiceFabricApplication : ProxyResourceCmdletBase
     {
-        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true,
+        private const string ByResourceGroup = "ByResourceGroup";
+        private const string ByInputObject = "ByInputObject";
+        private const string ByResourceId = "ByResourceId";
+
+        [Parameter(Mandatory = true, Position = 0, ParameterSetName = ByResourceGroup, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specify the name of the resource group.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty()]
         public override string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true, Position = 1, ParameterSetName = ByResourceGroup, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specify the name of the cluster.")]
-        [ResourceGroupCompleter]
+        [ResourceNameCompleter("Microsoft.ServiceFabric/clusters", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty()]
         public override string ClusterName { get; set; }
 
-        [Parameter(Mandatory = true, Position = 2, ValueFromPipeline = true,
-                   HelpMessage = "Specify the name of the application")]
+        [Parameter(Mandatory = true, ParameterSetName = ByResourceGroup, Position = 2,
+            HelpMessage = "Specify the name of the application")]
         [ValidateNotNullOrEmpty()]
         [Alias("ApplicationName")]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, Position = 3, ValueFromPipeline = true,
-                   HelpMessage = "Specify the application type version")]
+        [Parameter(Mandatory = false, Position = 3, ParameterSetName = ByResourceGroup,
+            HelpMessage = "Specify the application type version")]
+        [Parameter(Mandatory = false, Position = 1, ParameterSetName = ByResourceId,
+            HelpMessage = "Specify the application type version")]
         [ValidateNotNullOrEmpty()]
         public string ApplicationTypeVersion { get; set; }
 
-        [Parameter(Mandatory = false, Position = 4, ValueFromPipeline = true,
-                   HelpMessage = "Specify the application parameters as key/value pairs. These parameters must exist in the application manifest.")]
+        [Parameter(Mandatory = false, ParameterSetName = ByResourceGroup,
+            HelpMessage = "Specify the application parameters as key/value pairs. These parameters must exist in the application manifest.")]
+        [Parameter(Mandatory = false, Position = 2, ParameterSetName = ByResourceId,
+            HelpMessage = "Specify the application parameters as key/value pairs. These parameters must exist in the application manifest.")]
         [ValidateNotNullOrEmpty()]
         public Hashtable ApplicationParameter { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipeline = true,
-                   HelpMessage = "Specifies the minimum number of nodes where Service Fabric will reserve capacity for this application")]
-        public long? MinimumNodes { get; set; }
+        [Parameter(Mandatory = false, ParameterSetName = ByResourceGroup,
+            HelpMessage = "Specifies the minimum number of nodes where Service Fabric will reserve capacity for this application")]
+        [Parameter(Mandatory = false, ParameterSetName = ByResourceId,
+            HelpMessage = "Specifies the minimum number of nodes where Service Fabric will reserve capacity for this application")]
+        public long MinimumNodeCount { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipeline = true,
-                   HelpMessage = "Specifies the maximum number of nodes on which to place an application")]
-        public long? MaximumNodes { get; set; }
+        [Parameter(Mandatory = false, ParameterSetName = ByResourceGroup,
+            HelpMessage = "Specifies the maximum number of nodes on which to place an application")]
+        [Parameter(Mandatory = false, ParameterSetName = ByResourceId,
+            HelpMessage = "Specifies the maximum number of nodes on which to place an application")]
+        public long MaximumNodeCount { get; set; }
 
         #region upgrade policy params
 
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = false, ParameterSetName = ByResourceGroup,
+            HelpMessage = "Indicates that the service host restarts even if the upgrade is a configuration-only change.")]
+        [Parameter(Mandatory = false, ParameterSetName = ByResourceId,
+            HelpMessage = "Indicates that the service host restarts even if the upgrade is a configuration-only change.")]
         public SwitchParameter ForceRestart { get; set;}
 
-        [Parameter(Mandatory = false)]
-        public int? UpgradeReplicaSetCheckTimeoutSec { get; set;}
+        [Parameter(Mandatory = false, ParameterSetName = ByResourceGroup,
+            HelpMessage = "Specifies the maximum time that Service Fabric waits for a service to reconfigure into a safe state, if not already in a safe state, before Service Fabric proceeds with the upgrade.")]
+        [Parameter(Mandatory = false, ParameterSetName = ByResourceId,
+            HelpMessage = "Specifies the maximum time that Service Fabric waits for a service to reconfigure into a safe state, if not already in a safe state, before Service Fabric proceeds with the upgrade.")]
+        [ValidateRange(0, int.MaxValue)]
+        public int UpgradeReplicaSetCheckTimeoutSec { get; set;}
 
         #region RollingUpgradeMonitoringPolicy
 
-        [Parameter(Mandatory = false)]
-        public FailureAction? FailureAction { get; set; }
+        [Parameter(Mandatory = false, ParameterSetName = ByResourceGroup,
+            HelpMessage = "Specifies the action to take if the monitored upgrade fails. The acceptable values for this parameter are Rollback or Manual.")]
+        [Parameter(Mandatory = false, ParameterSetName = ByResourceId,
+            HelpMessage = "Specifies the action to take if the monitored upgrade fails. The acceptable values for this parameter are Rollback or Manual.")]
+        public FailureAction FailureAction { get; set; }
 
-        [Parameter(Mandatory = false)]
-        public int? HealthCheckRetryTimeoutSec { get; set; }
+        [Parameter(Mandatory = false, ParameterSetName = ByResourceGroup,
+            HelpMessage = "Specifies the duration, in seconds, after which Service Fabric retries the health check if the previous health check fails.")]
+        [Parameter(Mandatory = false, ParameterSetName = ByResourceId,
+            HelpMessage = "Specifies the duration, in seconds, after which Service Fabric retries the health check if the previous health check fails.")]
+        [ValidateRange(0, int.MaxValue)]
+        public int HealthCheckRetryTimeoutSec { get; set; }
 
-        [Parameter(Mandatory = false)]
-        public int? HealthCheckWaitDurationSec { get; set; }
+        [Parameter(Mandatory = false, ParameterSetName = ByResourceGroup,
+            HelpMessage = "Specifies the duration, in seconds, that Service Fabric waits before it performs the initial health check after it finishes the upgrade on the upgrade domain.")]
+        [Parameter(Mandatory = false, ParameterSetName = ByResourceId,
+            HelpMessage = "Specifies the duration, in seconds, that Service Fabric waits before it performs the initial health check after it finishes the upgrade on the upgrade domain.")]
+        [ValidateRange(0, int.MaxValue)]
+        public int HealthCheckWaitDurationSec { get; set; }
 
-        [Parameter(Mandatory = false)]
-        public int? HealthCheckStableDurationSec { get; set; }
+        [Parameter(Mandatory = false, ParameterSetName = ByResourceGroup,
+            HelpMessage = "Specifies the duration, in seconds, that Service Fabric waits in order to verify that the application is stable before moving to the next upgrade domain or completing the upgrade. This wait duration prevents undetected changes of health right after the health check is performed.")]
+        [Parameter(Mandatory = false, ParameterSetName = ByResourceId,
+            HelpMessage = "Specifies the duration, in seconds, that Service Fabric waits in order to verify that the application is stable before moving to the next upgrade domain or completing the upgrade. This wait duration prevents undetected changes of health right after the health check is performed.")]
+        [ValidateRange(0, int.MaxValue)]
+        public int HealthCheckStableDurationSec { get; set; }
 
-        [Parameter(Mandatory = false)]
-        public int? UpgradeDomainTimeoutSec { get; set; }
+        [Parameter(Mandatory = false, ParameterSetName = ByResourceGroup,
+            HelpMessage = "Specifies the maximum time, in seconds, that Service Fabric takes to upgrade a single upgrade domain. After this period, the upgrade fails.")]
+        [Parameter(Mandatory = false, ParameterSetName = ByResourceId,
+            HelpMessage = "Specifies the maximum time, in seconds, that Service Fabric takes to upgrade a single upgrade domain. After this period, the upgrade fails.")]
+        [ValidateRange(0, int.MaxValue)]
+        public int UpgradeDomainTimeoutSec { get; set; }
 
-        [Parameter(Mandatory = false)]
-        public int? UpgradeTimeoutSec { get; set;}
+        [Parameter(Mandatory = false, ParameterSetName = ByResourceGroup,
+            HelpMessage = "Specifies the maximum time, in seconds, that Service Fabric takes for the entire upgrade. After this period, the upgrade fails.")]
+        [Parameter(Mandatory = false, ParameterSetName = ByResourceId,
+            HelpMessage = "Specifies the maximum time, in seconds, that Service Fabric takes for the entire upgrade. After this period, the upgrade fails.")]
+        [ValidateRange(0, int.MaxValue)]
+        public int UpgradeTimeoutSec { get; set;}
 
         #endregion
 
         #region ApplicationHealthPolicy
 
-        [Parameter(Mandatory = false)]
-        public bool? ConsiderWarningAsError { get; set; }
+        [Parameter(Mandatory = false, ParameterSetName = ByResourceGroup,
+            HelpMessage = "Indicates whether to treat a warning health event as an error event during health evaluation.")]
+        [Parameter(Mandatory = false, ParameterSetName = ByResourceId,
+            HelpMessage = "Indicates whether to treat a warning health event as an error event during health evaluation.")]
+        public SwitchParameter ConsiderWarningAsError { get; set; }
         
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = false, ParameterSetName = ByResourceGroup,
+            HelpMessage = "Specifies the maximum percent of unhelthy partitions per service allowed by the health policy for the default service type to use for the monitored upgrade.")]
+        [Parameter(Mandatory = false, ParameterSetName = ByResourceId,
+            HelpMessage = "Specifies the maximum percent of unhelthy partitions per service allowed by the health policy for the default service type to use for the monitored upgrade.")]
         [ValidateRange(0, 100)]
-        public int? DefaultServiceTypeMaxPercentUnhealthyPartitionsPerService { get; set; }
+        public int DefaultServiceTypeMaxPercentUnhealthyPartitionsPerService { get; set; }
         
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = false, ParameterSetName = ByResourceGroup,
+            HelpMessage = "Specifies the maximum percent of unhelthy replicas per service allowed by the health policy for the default service type to use for the monitored upgrade.")]
+        [Parameter(Mandatory = false, ParameterSetName = ByResourceId,
+            HelpMessage = "Specifies the maximum percent of unhelthy replicas per service allowed by the health policy for the default service type to use for the monitored upgrade.")]
         [ValidateRange(0, 100)]
-        public int? DefaultServiceTypeMaxPercentUnhealthyReplicasPerPartition { get; set; }
+        public int DefaultServiceTypeMaxPercentUnhealthyReplicasPerPartition { get; set; }
         
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = false, ParameterSetName = ByResourceGroup,
+            HelpMessage = "Specifies the maximum percent of unhelthy services allowed by the health policy for the default service type to use for the monitored upgrade.")]
+        [Parameter(Mandatory = false, ParameterSetName = ByResourceId,
+            HelpMessage = "Specifies the maximum percent of unhelthy services allowed by the health policy for the default service type to use for the monitored upgrade.")]
         [ValidateRange(0, 100)]
-        public int? DefaultServiceTypeMaxPercentUnhealthyServices { get; set; }
+        public int DefaultServiceTypeUnhealthyServicesMaxPercent { get; set; }
 
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = false, ParameterSetName = ByResourceGroup,
+            HelpMessage = "Specifies the maximum percentage of the application instances deployed on the nodes in the cluster that have a health state of error before the application health state for the cluster is error.")]
+        [Parameter(Mandatory = false, ParameterSetName = ByResourceId,
+            HelpMessage = "Specifies the maximum percentage of the application instances deployed on the nodes in the cluster that have a health state of error before the application health state for the cluster is error.")]
         [ValidateRange(0, 100)]
-        public int? MaxPercentUnhealthyDeployedApplications { get; set; }
+        public int UnhealthyDeployedApplicationsMaxPercent { get; set; }
 
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = false, ParameterSetName = ByResourceGroup,
+            HelpMessage = "Specifies the map of the health policy to use for different service types as a hash table in the following format: @ {\"ServiceTypeName\" : \"MaxPercentUnhealthyPartitionsPerService,MaxPercentUnhealthyReplicasPerPartition,MaxPercentUnhealthyServices\"}. For example: @{ \"ServiceTypeName01\" = \"5,10,5\"; \"ServiceTypeName02\" = \"5,5,5\" }")]
+        [Parameter(Mandatory = false, ParameterSetName = ByResourceId,
+            HelpMessage = "Specifies the map of the health policy to use for different service types as a hash table in the following format: @ {\"ServiceTypeName\" : \"MaxPercentUnhealthyPartitionsPerService,MaxPercentUnhealthyReplicasPerPartition,MaxPercentUnhealthyServices\"}. For example: @{ \"ServiceTypeName01\" = \"5,10,5\"; \"ServiceTypeName02\" = \"5,5,5\" }")]
         public Hashtable ServiceTypeHealthPolicyMap { get; set; }
 
         #endregion
 
         #endregion
 
+        [Parameter(Mandatory = true, Position = 0, ParameterSetName = ByResourceId, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Arm ResourceId of the application.")]
+        [ResourceIdCompleter("Microsoft.ServiceFabric/clusters")]
+        [ValidateNotNullOrEmpty]
+        public String ResourceId { get; set; }
+
+        [Parameter(Mandatory = true, ParameterSetName = ByInputObject, ValueFromPipeline = true, HelpMessage = "The application resource.")]
+        public PSApplication InputObject { get; set; }
+
         public override void ExecuteCmdlet()
         {
+            switch (ParameterSetName)
+            {
+                case ByInputObject:
+                    this.ResourceId = InputObject.Id;
+                    SetParametersByResourceId();
+                    break;
+                case ByResourceId:
+                    SetParametersByResourceId();
+                    break;
+                case ByResourceGroup:
+                    // intentionally left empty
+                    break;
+                default:
+                    throw new PSArgumentException("Invalid ParameterSetName");
+            }
+
             if (ShouldProcess(target: this.ResourceGroupName, action: string.Format("Update application '{0}'" , this.Name)))
             {
                 try
@@ -168,37 +256,46 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private ApplicationResource UpdateApplication()
         {
-            var currentApp = this.SFRPClient.Applications.Get(this.ResourceGroupName, this.ClusterName, this.Name);
-            var currentUpgradePolicy = currentApp.UpgradePolicy;
-
             WriteVerbose(string.Format("Updating application '{0}'", this.Name));
-            ApplicationResourceUpdate upgradeParams = new ApplicationResourceUpdate();
+            if (ParameterSetName == ByInputObject)
+            {
+                return StartUpdate(this.InputObject);
+            }
+            else
+            {
+                var currentApp = this.SFRPClient.Applications.Get(this.ResourceGroupName, this.ClusterName, this.Name);
+                var currentUpgradePolicy = currentApp.UpgradePolicy;
 
-            if (!string.IsNullOrEmpty(this.ApplicationTypeVersion))
-            {
-                currentApp.TypeVersion = this.ApplicationTypeVersion;
-            }
-            
-            if (this.ApplicationParameter != null)
-            {
-                currentApp.Parameters = this.ApplicationParameter?.Cast<DictionaryEntry>().ToDictionary(d => d.Key as string, d => d.Value as string);
-            }
-            
-            if (this.MinimumNodes.HasValue)
-            {
-                currentApp.MinimumNodes = this.MinimumNodes;
-            }
-            
-            if (this.MaximumNodes.HasValue)
-            {
-                currentApp.MaximumNodes = this.MaximumNodes;
-            }
+                if (!string.IsNullOrEmpty(this.ApplicationTypeVersion))
+                {
+                    currentApp.TypeVersion = this.ApplicationTypeVersion;
+                }
 
-            currentApp.UpgradePolicy = SetUpgradePolicy(currentApp.UpgradePolicy);
+                if (this.ApplicationParameter != null)
+                {
+                    currentApp.Parameters = this.ApplicationParameter?.Cast<DictionaryEntry>().ToDictionary(d => d.Key as string, d => d.Value as string);
+                }
 
+                if (this.IsParameterBound(c => c.MinimumNodeCount))
+                {
+                    currentApp.MinimumNodes = this.MinimumNodeCount;
+                }
+
+                if (this.IsParameterBound(c => c.MaximumNodeCount))
+                {
+                    currentApp.MaximumNodes = this.MaximumNodeCount;
+                }
+
+                currentApp.UpgradePolicy = SetUpgradePolicy(currentApp.UpgradePolicy);
+                return StartUpdate(currentApp);
+            }
+        }
+
+        private ApplicationResource StartUpdate(ApplicationResource appResource)
+        {
             //TODO: use BeginUpdateWithHttpMessagesAsync (Patch) once fix is deployed in SFRP
             return StartRequestAndWait<ApplicationResource>(
-                () => this.SFRPClient.Applications.BeginCreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.ClusterName, this.Name, currentApp),
+                () => this.SFRPClient.Applications.BeginCreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.ClusterName, this.Name, appResource),
                 () => string.Format("Provisioning state: {0}", GetAppProvisioningStatus() ?? "Not found"));
         }
 
@@ -214,9 +311,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 currentPolicy.ForceRestart = true;
             }
 
-            if (UpgradeReplicaSetCheckTimeoutSec.HasValue)
+            if (this.IsParameterBound(c => c.UpgradeReplicaSetCheckTimeoutSec))
             {
-                currentPolicy.UpgradeReplicaSetCheckTimeout = TimeSpan.FromSeconds(UpgradeReplicaSetCheckTimeoutSec.Value).ToString("");
+                currentPolicy.UpgradeReplicaSetCheckTimeout = TimeSpan.FromSeconds(UpgradeReplicaSetCheckTimeoutSec).ToString("");
             }
 
             //RollingUpgradeMonitoringPolicy
@@ -232,34 +329,34 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     upgradeDomainTimeout: TimeSpan.MaxValue.ToString("c"));
             }
 
-            if (FailureAction.HasValue)
+            if (this.IsParameterBound(c => c.FailureAction))
             {
-                currentPolicy.RollingUpgradeMonitoringPolicy.FailureAction = FailureAction.Value.ToString();
+                currentPolicy.RollingUpgradeMonitoringPolicy.FailureAction = FailureAction.ToString();
             }
 
-            if (HealthCheckRetryTimeoutSec.HasValue)
+            if (this.IsParameterBound(c => c.HealthCheckRetryTimeoutSec))
             {
-                currentPolicy.RollingUpgradeMonitoringPolicy.HealthCheckRetryTimeout = TimeSpan.FromSeconds(HealthCheckRetryTimeoutSec.Value).ToString("c");
+                currentPolicy.RollingUpgradeMonitoringPolicy.HealthCheckRetryTimeout = TimeSpan.FromSeconds(HealthCheckRetryTimeoutSec).ToString("c");
             }
 
-            if (HealthCheckWaitDurationSec.HasValue)
+            if (this.IsParameterBound(c => c.HealthCheckWaitDurationSec))
             {
-                currentPolicy.RollingUpgradeMonitoringPolicy.HealthCheckWaitDuration = TimeSpan.FromSeconds(HealthCheckWaitDurationSec.Value).ToString("c");
+                currentPolicy.RollingUpgradeMonitoringPolicy.HealthCheckWaitDuration = TimeSpan.FromSeconds(HealthCheckWaitDurationSec).ToString("c");
             }
 
-            if (HealthCheckStableDurationSec.HasValue)
+            if (this.IsParameterBound(c => c.HealthCheckStableDurationSec))
             {
-                currentPolicy.RollingUpgradeMonitoringPolicy.HealthCheckStableDuration = TimeSpan.FromSeconds(HealthCheckStableDurationSec.Value).ToString("c");
+                currentPolicy.RollingUpgradeMonitoringPolicy.HealthCheckStableDuration = TimeSpan.FromSeconds(HealthCheckStableDurationSec).ToString("c");
             }
 
-            if (UpgradeDomainTimeoutSec.HasValue)
+            if (this.IsParameterBound(c => c.UpgradeDomainTimeoutSec))
             {
-                currentPolicy.RollingUpgradeMonitoringPolicy.UpgradeDomainTimeout = TimeSpan.FromSeconds(UpgradeDomainTimeoutSec.Value).ToString("c");
+                currentPolicy.RollingUpgradeMonitoringPolicy.UpgradeDomainTimeout = TimeSpan.FromSeconds(UpgradeDomainTimeoutSec).ToString("c");
             }
 
-            if (UpgradeTimeoutSec.HasValue)
+            if (this.IsParameterBound(c => c.UpgradeTimeoutSec))
             {
-                currentPolicy.RollingUpgradeMonitoringPolicy.UpgradeTimeout = TimeSpan.FromSeconds(UpgradeTimeoutSec.Value).ToString("c");
+                currentPolicy.RollingUpgradeMonitoringPolicy.UpgradeTimeout = TimeSpan.FromSeconds(UpgradeTimeoutSec).ToString("c");
             }
 
             //ApplicationHealthPolicy
@@ -268,9 +365,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 currentPolicy.ApplicationHealthPolicy = new ArmApplicationHealthPolicy();
             }
 
-            if (ConsiderWarningAsError.HasValue)
+            if (ConsiderWarningAsError.IsPresent)
             {
-                currentPolicy.ApplicationHealthPolicy.ConsiderWarningAsError = ConsiderWarningAsError.Value;
+                currentPolicy.ApplicationHealthPolicy.ConsiderWarningAsError = true;
             }
 
             if (currentPolicy.ApplicationHealthPolicy.DefaultServiceTypeHealthPolicy == null)
@@ -278,28 +375,28 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 currentPolicy.ApplicationHealthPolicy.DefaultServiceTypeHealthPolicy = new ArmServiceTypeHealthPolicy(
                     maxPercentUnhealthyPartitionsPerService: DefaultServiceTypeMaxPercentUnhealthyPartitionsPerService,
                     maxPercentUnhealthyReplicasPerPartition: DefaultServiceTypeMaxPercentUnhealthyReplicasPerPartition,
-                    maxPercentUnhealthyServices: DefaultServiceTypeMaxPercentUnhealthyServices);
+                    maxPercentUnhealthyServices: DefaultServiceTypeUnhealthyServicesMaxPercent);
             }
             else
             {
-                if (DefaultServiceTypeMaxPercentUnhealthyPartitionsPerService.HasValue)
+                if (this.IsParameterBound(c => c.DefaultServiceTypeMaxPercentUnhealthyPartitionsPerService))
                 {
-                    currentPolicy.ApplicationHealthPolicy.DefaultServiceTypeHealthPolicy.MaxPercentUnhealthyPartitionsPerService = DefaultServiceTypeMaxPercentUnhealthyPartitionsPerService.Value;
+                    currentPolicy.ApplicationHealthPolicy.DefaultServiceTypeHealthPolicy.MaxPercentUnhealthyPartitionsPerService = DefaultServiceTypeMaxPercentUnhealthyPartitionsPerService;
                 }
 
-                if (DefaultServiceTypeMaxPercentUnhealthyReplicasPerPartition.HasValue)
+                if (this.IsParameterBound(c => c.DefaultServiceTypeMaxPercentUnhealthyReplicasPerPartition))
                 {
-                    currentPolicy.ApplicationHealthPolicy.DefaultServiceTypeHealthPolicy.MaxPercentUnhealthyReplicasPerPartition = DefaultServiceTypeMaxPercentUnhealthyReplicasPerPartition.Value;
+                    currentPolicy.ApplicationHealthPolicy.DefaultServiceTypeHealthPolicy.MaxPercentUnhealthyReplicasPerPartition = DefaultServiceTypeMaxPercentUnhealthyReplicasPerPartition;
                 }
 
-                if (DefaultServiceTypeMaxPercentUnhealthyServices.HasValue)
+                if (this.IsParameterBound(c => c.DefaultServiceTypeUnhealthyServicesMaxPercent))
                 {
-                    currentPolicy.ApplicationHealthPolicy.DefaultServiceTypeHealthPolicy.MaxPercentUnhealthyServices = DefaultServiceTypeMaxPercentUnhealthyServices.Value;
+                    currentPolicy.ApplicationHealthPolicy.DefaultServiceTypeHealthPolicy.MaxPercentUnhealthyServices = DefaultServiceTypeUnhealthyServicesMaxPercent;
                 }
 
-                if (MaxPercentUnhealthyDeployedApplications.HasValue)
+                if (this.IsParameterBound(c => c.UnhealthyDeployedApplicationsMaxPercent))
                 {
-                    currentPolicy.ApplicationHealthPolicy.MaxPercentUnhealthyDeployedApplications = MaxPercentUnhealthyDeployedApplications.Value;
+                    currentPolicy.ApplicationHealthPolicy.MaxPercentUnhealthyDeployedApplications = UnhealthyDeployedApplicationsMaxPercent;
                 }
             }
 
@@ -351,6 +448,22 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
 
             return null;
+        }
+
+        private void SetParametersByResourceId()
+        {
+            ResourceIdentifier appRId = new ResourceIdentifier(this.ResourceId);
+            this.ResourceGroupName = appRId.ResourceGroupName;
+            string subscription = appRId.Subscription;
+            ResourceIdentifier clusterRId = new ResourceIdentifier($"/subscriptions/{subscription}/resourceGroups/{this.ResourceGroupName}/providers/Microsoft.ServiceFabric/{appRId.ParentResource}");
+            if (!appRId.ResourceType.EndsWith(Constants.applicationProvider)
+                || !clusterRId.ResourceType.EndsWith(Constants.clusterProvider))
+            {
+                throw new PSArgumentException(string.Format("invalid resource id {0}", this.ResourceId));
+            }
+
+            this.ClusterName = clusterRId.ResourceName;
+            this.Name = appRId.ResourceName;
         }
     }
 }

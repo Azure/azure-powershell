@@ -33,9 +33,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         /// <summary>
         /// Cluster name
         /// </summary>
-        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Specify the name of the cluster.")]
-        [ResourceGroupCompleter]
+        [Parameter(Mandatory = true, HelpMessage = "Specify the name of the cluster.")]
         [ValidateNotNullOrEmpty()]
         public virtual string ClusterName { get; set; }
 
