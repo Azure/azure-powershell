@@ -997,6 +997,13 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSPrivateLinkService, MNM.PrivateLinkService>();
                 cfg.CreateMap<MNM.PrivateLinkService, CNM.PSPrivateLinkService>();
 
+                cfg.CreateMap<CNM.PSPrivateLinkServiceIpConfiguration, MNM.PrivateLinkServiceIpConfiguration>();
+                cfg.CreateMap<MNM.PrivateLinkServiceIpConfiguration, CNM.PSPrivateLinkServiceIpConfiguration>().AfterMap((src, dest) =>
+                {
+                    dest.PublicIPAddress = null;
+                });
+
+
                 cfg.CreateMap<CNM.PSPrivateEndpointConnection, MNM.PrivateEndpointConnection>();
                 cfg.CreateMap<MNM.PrivateEndpointConnection, CNM.PSPrivateEndpointConnection>();
 
