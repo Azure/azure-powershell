@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
 online version: https://docs.microsoft.com/en-us/powershell/module/az.servicefabric/add-azservicefabricclustercertificate
@@ -22,7 +22,7 @@ Add-AzServiceFabricClusterCertificate [-ResourceGroupName] <String> [-Name] <Str
 ### ByNewPfxAndVaultName
 ```
 Add-AzServiceFabricClusterCertificate [-ResourceGroupName] <String> [-Name] <String>
- [-KeyVaultResouceGroupName <String>] [-KeyVaultName <String>] [-CertificateOutputFolder <String>]
+ [-KeyVaultResourceGroupName <String>] [-KeyVaultName <String>] [-CertificateOutputFolder <String>]
  [-CertificatePassword <SecureString>] -CertificateSubjectName <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -30,7 +30,7 @@ Add-AzServiceFabricClusterCertificate [-ResourceGroupName] <String> [-Name] <Str
 ### ByExistingPfxAndVaultName
 ```
 Add-AzServiceFabricClusterCertificate [-ResourceGroupName] <String> [-Name] <String>
- [-KeyVaultResouceGroupName <String>] [-KeyVaultName <String>] -CertificateFile <String>
+ [-KeyVaultResourceGroupName <String>] [-KeyVaultName <String>] -CertificateFile <String>
  [-CertificatePassword <SecureString>] [-CertificateCommonName <String>]
  [-CertificateIssuerThumbprint <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -181,13 +181,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -KeyVaultResouceGroupName
-Azure key vault resource group name.
+### -KeyVaultResourceGroupName
+Azure key vault resource group name, if not given it will be defaulted to resource group name
 
 ```yaml
 Type: System.String
 Parameter Sets: ByNewPfxAndVaultName, ByExistingPfxAndVaultName
-Aliases:
+Aliases: KeyVaultResouceGroupName
 
 Required: False
 Position: Named

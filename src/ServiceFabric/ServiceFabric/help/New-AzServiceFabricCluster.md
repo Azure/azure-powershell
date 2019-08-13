@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
 online version: https://docs.microsoft.com/en-us/powershell/module/az.servicefabric/new-azservicefabriccluster
@@ -32,9 +32,10 @@ New-AzServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <String> 
 ### ByNewPfxAndVaultName
 ```
 New-AzServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <String> -ParameterFile <String>
- [-CertificateOutputFolder <String>] [-CertificatePassword <SecureString>] [-KeyVaultResourceGroupName <String>]
- [-KeyVaultName <String>] [-CertificateSubjectName <String>] [-VmPassword <SecureString>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-CertificateOutputFolder <String>] [-CertificatePassword <SecureString>]
+ [-KeyVaultResourceGroupName <String>] [-KeyVaultName <String>] [-CertificateSubjectName <String>]
+ [-VmPassword <SecureString>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByExistingPfxAndVaultName
@@ -255,7 +256,7 @@ Azure key vault resource group name. If not given, it will be defaulted to resou
 ```yaml
 Type: System.String
 Parameter Sets: ByDefaultArmTemplate, ByNewPfxAndVaultName, ByExistingPfxAndVaultName
-Aliases:
+Aliases: KeyVaultResouceGroupName
 
 Required: False
 Position: Named
