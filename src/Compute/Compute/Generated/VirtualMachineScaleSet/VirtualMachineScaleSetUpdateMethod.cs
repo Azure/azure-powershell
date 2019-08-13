@@ -25,6 +25,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.Azure.Commands.Management.Compute.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
@@ -209,6 +210,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
+        [VmssSkuCompleter]
         public string SkuName { get; set; }
 
         [Parameter(
