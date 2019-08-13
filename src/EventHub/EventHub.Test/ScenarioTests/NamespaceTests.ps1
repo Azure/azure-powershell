@@ -26,13 +26,11 @@ function NamespaceAuthTests
 	$namespaceName = getAssetName "Eventhub-Namespace-"
 	$namespaceNameKafka = getAssetName "Eh-NamespaceKafka-"
 	$authRuleName =  getAssetName "Eventhub-Namespace-AuthorizationRule"
+	$authRuleName = getAssetName "authorule-"
+	$authRuleNameListen = getAssetName "authorule-"
+	$authRuleNameSend = getAssetName "authorule-"
+	$authRuleNameAll = getAssetName "authorule-"
     
-
-	$StartTime = Get-Date
-	$EndTime = $StartTime.AddHours(2.0)
-	New-AzEventHubAuthorizationRuleSASToken -ResourceId /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/v-ajnavtest/providers/Microsoft.EventHub/namespaces/Eventhub-Namespace1-1375/eventhubs/testingsastoken/authorizationRules/BaseAuthorizationRule -KeyType Primary -ExpiryTime $EndTime -StartTime $StartTime
-	
-
     Write-Debug " Create resource group"
     Write-Debug "ResourceGroup name : $resourceGroupName"
     New-AzResourceGroup -Name $resourceGroupName -Location $location -Force
@@ -65,6 +63,23 @@ function NamespaceAuthTests
     Assert-AreEqual 2 $result.Rights.Count
     Assert-True { $result.Rights -Contains "Listen" }
     Assert-True { $result.Rights -Contains "Send" }
+
+	$resultListen = New-AzEventHubAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleNameListen -Rights @("Listen")
+	Assert-AreEqual $authRuleNameListen $resultListen.Name
+    Assert-AreEqual 1 $resultListen.Rights.Count
+    Assert-True { $resultListen.Rights -Contains "Listen" }
+
+	$resultSend = New-AzEventHubAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleNameSend -Rights @("Send")
+	Assert-AreEqual $authRuleNameSend $resultSend.Name
+    Assert-AreEqual 1 $resultSend.Rights.Count
+    Assert-True { $resultSend.Rights -Contains "Send" }
+
+	$resultAll3 = New-AzEventHubAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleNameAll -Rights @("Listen","Send","Manage")
+	Assert-AreEqual $authRuleNameAll $resultAll3.Name
+    Assert-AreEqual 3 $resultAll3.Rights.Count
+    Assert-True { $resultAll3.Rights -Contains "Send" }
+	Assert-True { $resultAll3.Rights -Contains "Listen" }
+	Assert-True { $resultAll3.Rights -Contains "Manage" }
 
     Write-Debug "Get created authorizationRule"
     $createdAuthRule = Get-AzEventHubAuthorizationRule -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $authRuleName
