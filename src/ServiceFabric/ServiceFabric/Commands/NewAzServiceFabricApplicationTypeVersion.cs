@@ -15,11 +15,12 @@
 using System.Collections;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.ServiceFabric.Models;
 using Microsoft.Azure.Management.ServiceFabric.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzurePrefix + "ServiceFabricApplicationTypeVersion", SupportsShouldProcess = true), OutputType(typeof(ApplicationTypeVersionResource))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzurePrefix + "ServiceFabricApplicationTypeVersion", SupportsShouldProcess = true), OutputType(typeof(PSApplicationTypeVersion))]
     public class NewAzServiceFabricApplicationTypeVersion : ProxyResourceCmdletBase
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true,
@@ -67,7 +68,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 {
                     CreateApplicationType(this.Name);
                     var appTypeVersion = CreateApplicationTypeVersion(this.Name, this.Version, this.PackageUrl, this.Force.IsPresent, this.DefaultParameter);
-                    WriteObject(appTypeVersion);
+                    WriteObject(new PSApplicationTypeVersion(appTypeVersion), false);
                 }
                 catch (ErrorModelException ex)
                 {

@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         [Parameter(Mandatory = false)]
         [ValidateRange(0, 100)]
-        public byte? MaxPercentUnhealthyDeployedApplications { get; set; }
+        public int? MaxPercentUnhealthyDeployedApplications { get; set; }
 
         [Parameter(Mandatory = false)]
         public Hashtable ServiceTypeHealthPolicyMap { get; set; }

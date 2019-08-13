@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 try
                 {
                     var appType = this.CreateApplicationType(this.Name);
-                    WriteObject(appType);
+                    WriteObject(new PSApplicationType(appType), false);
                 }
                 catch (ErrorModelException ex)
                 {
