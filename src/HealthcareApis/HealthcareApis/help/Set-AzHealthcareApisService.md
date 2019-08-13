@@ -16,8 +16,8 @@ Updates an existing healthcareApis fhir service.
 ```
 Set-AzHealthcareApisService -Name <String> -ResourceGroupName <String> [-CosmosOfferThroughput <Int32>]
  [-Authority <String>] [-Audience <String>] [-EnableSmartProxy] [-CorsOrigin <String[]>]
- [-CorsHeader <String[]>] [-CorsMethod <String[]>] [-CorsMaxAge <Int32>] [-AllowCorsCredentials]
- [-AccessPolicyObjectIds <String[]>] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-CorsHeader <String[]>] [-CorsMethod <String[]>] [-CorsMaxAge <Int32>] [-AllowCorsCredential]
+ [-AccessPolicyObjectId <String[]>] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -25,7 +25,7 @@ Set-AzHealthcareApisService -Name <String> -ResourceGroupName <String> [-CosmosO
 ```
 Set-AzHealthcareApisService [-CosmosOfferThroughput <Int32>] [-Authority <String>] [-Audience <String>]
  [-EnableSmartProxy] [-CorsOrigin <String[]>] [-CorsHeader <String[]>] [-CorsMethod <String[]>]
- [-CorsMaxAge <Int32>] [-AllowCorsCredentials] [-AccessPolicyObjectIds <String[]>] [-Tag <Hashtable>]
+ [-CorsMaxAge <Int32>] [-AllowCorsCredential] [-AccessPolicyObjectId <String[]>] [-Tag <Hashtable>]
  [-ResourceId] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -64,7 +64,7 @@ Updates the existing healthcareapis service named MyService in the resource grou
 
 ## PARAMETERS
 
-### -AccessPolicyObjectIds
+### -AccessPolicyObjectId
 List of Access Policy Object IDs.
 
 ```yaml
@@ -79,8 +79,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AllowCorsCredentials
-HealthcareApis FhirService AllowCorsCredentials.
+### -AllowCorsCredential
+HealthcareApis FhirService AllowCorsCredential.
 
 ```yaml
 Type: SwitchParameter

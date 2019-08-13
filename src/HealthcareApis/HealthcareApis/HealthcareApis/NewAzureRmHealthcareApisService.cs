@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.HealthcareApisService.Commands
             Mandatory = false,
             HelpMessage = "HealthcareApis Fhir Service AllowCorsCredentials.")]
         [ValidateNotNullOrEmpty]
-        public SwitchParameter AllowCorsCredentials { get; set; }
+        public SwitchParameter AllowCorsCredential { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.HealthcareApisService.Commands
         Mandatory = false,
         HelpMessage = "HealthcareApis Fhir Service List of Cors Method.")]
         [ValidateNotNullOrEmpty]
-        public string[] CorsMethods { get; set; }
+        public string[] CorsMethod { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Commands.HealthcareApisService.Commands
                     {
                         AuthenticationConfiguration = new ServiceAuthenticationConfigurationInfo() { Authority = GetAuthority(), Audience = GetAudience(), SmartProxyEnabled = EnableSmartProxy.ToBool() },
                         CosmosDbConfiguration = new ServiceCosmosDbConfigurationInfo() { OfferThroughput = GetCosmosDBThroughput()},
-                        CorsConfiguration = new ServiceCorsConfigurationInfo() { Origins = CorsOrigin, Headers = CorsHeader, Methods = CorsMethods, MaxAge = CorsMaxAge, AllowCredentials = AllowCorsCredentials },
+                        CorsConfiguration = new ServiceCorsConfigurationInfo() { Origins = CorsOrigin, Headers = CorsHeader, Methods = CorsMethod, MaxAge = CorsMaxAge, AllowCredentials = AllowCorsCredential },
                         AccessPolicies = accessPolicies
                     }
                 };
