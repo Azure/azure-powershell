@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                         siteConfig = WebApp.SiteConfig;
                     }
 
-                    //According to current implementation if AppSettings paramter is provided we are overriding existing AppSettings
+                    //According to current implementation if AppSettings parameter is provided we are overriding existing AppSettings
                     if (WebApp.SiteConfig.AppSettings != null && AppSettings == null)
                     {
                         foreach (var setting in WebApp.SiteConfig.AppSettings)

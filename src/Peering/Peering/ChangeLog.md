@@ -19,6 +19,16 @@
 -->
 ## Upcoming Release
 
+## Version 0.1.3
+* Bug fix in set connection for exchange that caused CDIR notation
+* Allowed adding connections during legacy convert
+* Added tests for set Exchange operations
+* Bug fix in set connection
+* Added Connection Identifier to Connection object.
+* Updated to SDK 0.10.0-review
+* Supports api-version 06-01-2019-preview for Microsoft.Peering
+* Fixed miscellaneous typos across module
+
 ## Version 0.1.2
 * Bug fix in IP Prefix validation to allow 0/30 for DirectConnection
 * Bug fix to handle error messages from ARM and ERM

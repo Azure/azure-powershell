@@ -186,7 +186,7 @@ Accept wildcard characters: False
 ### -MonthlyRetention
 The Monthly Retention.
 If just a number is passed instead of an ISO 8601 string, days will be assumed as the units.
-There is a minumum of 7 days and a maximum of 10 years.
+There is a minimum of 7 days and a maximum of 10 years.
 
 ```yaml
 Type: System.String
@@ -260,7 +260,7 @@ Accept wildcard characters: False
 ### -WeeklyRetention
 The Weekly Retention.
 If just a number is passed instead of an ISO 8601 string, days will be assumed as the units.
-There is a minumum of 7 days and a maximum of 10 years.
+There is a minimum of 7 days and a maximum of 10 years.
 
 ```yaml
 Type: System.String
@@ -304,7 +304,7 @@ Accept wildcard characters: False
 ### -YearlyRetention
 The Yearly Retention.
 If just a number is passed instead of an ISO 8601 string, days will be assumed as the units.
-There is a minumum of 7 days and a maximum of 10 years.
+There is a minimum of 7 days and a maximum of 10 years.
 
 ```yaml
 Type: System.String

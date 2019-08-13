@@ -50,7 +50,8 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.NetworkruleSet
 
         [Parameter(Mandatory = true, ParameterSetName = NetwrokruleSetPropertiesParameterSet, Position = 3, HelpMessage = "List of VirtualNetworkRules")]
         [ValidateNotNullOrEmpty]
-        public PSNWRuleSetVirtualNetworkRulesAttributes[] VirtualNteworkRule { get; set; }
+        [Alias(AliasVirtualNetworkRule)]
+        public PSNWRuleSetVirtualNetworkRulesAttributes[] VirtualNetworkRule { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = NetwrokruleSetInputObjectParameterSet, ValueFromPipeline = true, Position = 2, HelpMessage = "NetworkruleSet Configuration Object")]
         [ValidateNotNullOrEmpty]
@@ -76,7 +77,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.NetworkruleSet
                         {
                             DefaultAction = DefaultAction,
                             IpRules = IPRule.OfType<PSNWRuleSetIpRulesAttributes>().ToList(),
-                            VirtualNetworkRules = VirtualNteworkRule.OfType<PSNWRuleSetVirtualNetworkRulesAttributes>().ToList()
+                            VirtualNetworkRules = VirtualNetworkRule.OfType<PSNWRuleSetVirtualNetworkRulesAttributes>().ToList()
                         };
 
                         WriteObject(Client.CreateOrUpdateNetworkRuleSet(ResourceGroupName, Name, networkRuleSetAttributes));

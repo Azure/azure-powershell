@@ -128,6 +128,12 @@ Adds a VPN client-revocation certificate.
 ### [Add-AzVpnClientRootCertificate](Add-AzVpnClientRootCertificate.md)
 Adds a VPN client root certificate.
 
+### [Approve-AzPrivateEndpointConnection](Approve-AzPrivateEndpointConnection.md)
+Approves a private endpoint connection.
+
+### [Deny-AzPrivateEndpointConnection](Deny-AzPrivateEndpointConnection.md)
+Denies a private endpoint connection.
+
 ### [Get-AzApplicationGateway](Get-AzApplicationGateway.md)
 Gets an application gateway.
 
@@ -217,6 +223,9 @@ Gets the WAF configuration of an application gateway.
 
 ### [Get-AzApplicationSecurityGroup](Get-AzApplicationSecurityGroup.md)
 Gets an application security group.
+
+### [Get-AzAutoApprovedPrivateLinkService](Get-AzAutoApprovedPrivateLinkService.md)
+Gets an array of private link service id that can be linked to a private end point with auto approved.
 
 ### [Get-AzAvailablePrivateEndpointType](Get-AzAvailablePrivateEndpointType.md)
 Return available private end point types in the location
@@ -391,6 +400,9 @@ Gets the troubleshooting result from the previously run or currently running tro
 
 ### [Get-AzPrivateEndpoint](Get-AzPrivateEndpoint.md)
 Get a private endpoint
+
+### [Get-AzPrivateEndpointConnection](Get-AzPrivateEndpointConnection.md)
+Get a private endpoint connection
 
 ### [Get-AzPrivateLinkService](Get-AzPrivateLinkService.md)
 Gets private link service
@@ -582,7 +594,7 @@ Creates a request routing rule for an application gateway.
 Creates a rewrite rule for an application gateway.
 
 ### [New-AzApplicationGatewayRewriteRuleActionSet](New-AzApplicationGatewayRewriteRuleActionSet.md)
-Creates a rewrite rule actionset for an application gateway.
+Creates a rewrite rule action set for an application gateway.
 
 ### [New-AzApplicationGatewayRewriteRuleCondition](New-AzApplicationGatewayRewriteRuleCondition.md)
 Adds a condition to the RewriteRule for an application gateway.
@@ -721,7 +733,7 @@ Creates a connection monitor.
 
 ### [New-AzNetworkWatcherNetworkConfigurationDiagnosticProfile](New-AzNetworkWatcherNetworkConfigurationDiagnosticProfile.md)
 Creates a new network configuration diagnostic profile object. 
-This object is used to restrict the network confiuration during a diagnostic session using the specified criteria.
+This object is used to restrict the network configuration during a diagnostic session using the specified criteria.
 
 ### [New-AzNetworkWatcherPacketCapture](New-AzNetworkWatcherPacketCapture.md)
 Creates a new packet capture resource and starts a packet capture session on a VM.
@@ -811,7 +823,7 @@ This command allows the users to create the Vpn profile package based on pre-con
 This command allows the users to create the Vpn ipsec parameters object specifying one or all values such as IpsecEncryption,IpsecIntegrity,IkeEncryption,IkeIntegrity,DhGroup,PfsGroup to set on the existing VPN gateway.
 
 ### [New-AzVpnClientIpsecPolicy](New-AzVpnClientIpsecPolicy.md)
-This command allows the users to create the Vpn ipsec policy object specifying one or all values such as IpsecEncryption,IpsecIntegrity,IkeEncryption,IkeIntegrity,DhGroup,PfsGroup to set on the VPN gateway. This command let output object is used to set vpn ipsec policy for both new / exisitng gateway.
+This command allows the users to create the Vpn ipsec policy object specifying one or all values such as IpsecEncryption,IpsecIntegrity,IkeEncryption,IkeIntegrity,DhGroup,PfsGroup to set on the VPN gateway. This command let output object is used to set vpn ipsec policy for both new / existing gateway.
 
 ### [New-AzVpnClientRevokedCertificate](New-AzVpnClientRevokedCertificate.md)
 Creates a new VPN client-revocation certificate.
@@ -990,6 +1002,9 @@ Removes a packet capture resource.
 
 ### [Remove-AzPrivateEndpoint](Remove-AzPrivateEndpoint.md)
 Removes a private endpoint.
+
+### [Remove-AzPrivateEndpointConnection](Remove-AzPrivateEndpointConnection.md)
+Removes a private endpoint connection.
 
 ### [Remove-AzPrivateLinkService](Remove-AzPrivateLinkService.md)
 Removes a private link service
@@ -1222,8 +1237,14 @@ Configures flow logging for a target resource.
 ### [Set-AzNetworkWatcherConnectionMonitor](Set-AzNetworkWatcherConnectionMonitor.md)
 Update a connection monitor.
 
+### [Set-AzPrivateEndpoint](Set-AzPrivateEndpoint.md)
+Updates a private endpoint.
+
 ### [Set-AzPrivateEndpointConnection](Set-AzPrivateEndpointConnection.md)
 Updates a private endpoint connection state on private link service.
+
+### [Set-AzPrivateLinkService](Set-AzPrivateLinkService.md)
+Updates a private link service.
 
 ### [Set-AzPublicIpAddress](Set-AzPublicIpAddress.md)
 Updates a public IP address.
@@ -1305,6 +1326,9 @@ Returns whether the packet is allowed or denied to or from a particular destinat
 
 ### [Test-AzPrivateIPAddressAvailability](Test-AzPrivateIPAddressAvailability.md)
 Test availability of a private IP address in a virtual network.
+
+### [Test-AzPrivateLinkServiceVisibility](Test-AzPrivateLinkServiceVisibility.md)
+Checks whether a private link service is visible for current use.
 
 ### [Update-AzVirtualHub](Update-AzVirtualHub.md)
 Updates a virtual hub.

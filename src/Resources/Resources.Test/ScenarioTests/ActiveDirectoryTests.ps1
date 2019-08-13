@@ -540,7 +540,7 @@ function Test-NewADServicePrincipal
 
 <#
 .SYNOPSIS
-Tests Creating and deleting service principal without an exisitng application.
+Tests Creating and deleting service principal without an existing application.
 #>
 function Test-NewADServicePrincipalWithoutApp
 {

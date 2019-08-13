@@ -39,7 +39,7 @@ ActiveDirectories : {}
 ProvisioningState : Succeeded
 ```
 
-This command performs an upate on the given account. The absence of the active directory means it will be removed from the account.
+This command performs an update on the given account. The absence of the active directory means it will be removed from the account.
 
 ## PARAMETERS
 

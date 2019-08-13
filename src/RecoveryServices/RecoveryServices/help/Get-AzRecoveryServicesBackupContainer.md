@@ -32,7 +32,7 @@ Set the vault context by using the -VaultId parameter.
 
 ```powershell
 PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
-PS C:\> Get-AzRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered" -Name "V2VM" -VaultId $vault.ID
+PS C:\> Get-AzRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered" -FriendlyName "V2VM" -VaultId $vault.ID
 ```
 
 This command gets the container named V2VM of type AzureVM.

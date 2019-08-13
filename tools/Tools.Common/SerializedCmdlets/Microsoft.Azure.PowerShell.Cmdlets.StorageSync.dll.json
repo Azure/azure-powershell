@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SyncGroupName": "System.String",
               "StorageSyncServiceName": "System.String",
@@ -113,7 +113,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Location": "System.String",
@@ -371,7 +371,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
                   "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Location": "System.String",
@@ -677,7 +677,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SyncGroupName": "System.String",
               "StorageSyncServiceName": "System.String",
@@ -776,7 +776,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Location": "System.String",
@@ -1034,7 +1034,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
                   "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Location": "System.String",
@@ -1359,7 +1359,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SyncGroupName": "System.String",
               "StorageSyncServiceName": "System.String",
@@ -1586,7 +1586,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
                   "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "SyncGroupName": "System.String",
                     "StorageSyncServiceName": "System.String",
@@ -2221,7 +2221,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Location": "System.String",
@@ -2569,7 +2569,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Location": "System.String",
@@ -2956,7 +2956,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Location": "System.String",
@@ -3162,7 +3162,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
                   "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Location": "System.String",
@@ -3770,7 +3770,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSRegisteredServer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSRegisteredServer, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSRegisteredServer, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ServerManagementErrorCode": "System.Nullable`1[System.Int32]",
               "StorageSyncServiceName": "System.String",
@@ -3886,7 +3886,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Location": "System.String",
@@ -4144,7 +4144,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
                   "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Location": "System.String",
@@ -4450,7 +4450,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSRegisteredServer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSRegisteredServer, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSRegisteredServer, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ServerManagementErrorCode": "System.Nullable`1[System.Int32]",
               "StorageSyncServiceName": "System.String",
@@ -4566,7 +4566,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Location": "System.String",
@@ -4820,7 +4820,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
                   "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Location": "System.String",
@@ -5139,7 +5139,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSRegisteredServer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSRegisteredServer, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSRegisteredServer, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ServerManagementErrorCode": "System.Nullable`1[System.Int32]",
               "StorageSyncServiceName": "System.String",
@@ -5383,7 +5383,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
                   "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSRegisteredServer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSRegisteredServer, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSRegisteredServer, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ServerManagementErrorCode": "System.Nullable`1[System.Int32]",
                     "StorageSyncServiceName": "System.String",
@@ -6094,7 +6094,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Location": "System.String",
@@ -6348,7 +6348,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
                   "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSStorageSyncService, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Location": "System.String",
@@ -6648,7 +6648,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SyncStatus": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpointHealth",
               "TierFilesOlderThanDays": "System.Nullable`1[System.Int32]",
@@ -6778,7 +6778,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SyncGroupName": "System.String",
               "StorageSyncServiceName": "System.String",
@@ -7061,7 +7061,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
                   "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "SyncGroupName": "System.String",
                     "StorageSyncServiceName": "System.String",
@@ -7478,12 +7478,13 @@
         {
           "Name": "InputObject",
           "AliasList": [
-            "RegisteredServer"
+            "RegisteredServer",
+            "ServerEndpoint"
           ],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SyncStatus": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpointHealth",
               "TierFilesOlderThanDays": "System.Nullable`1[System.Int32]",
@@ -8066,12 +8067,13 @@
               "ParameterMetadata": {
                 "Name": "InputObject",
                 "AliasList": [
-                  "RegisteredServer"
+                  "RegisteredServer",
+                  "ServerEndpoint"
                 ],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
                   "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "SyncStatus": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpointHealth",
                     "TierFilesOlderThanDays": "System.Nullable`1[System.Int32]",
@@ -8435,7 +8437,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SyncStatus": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpointHealth",
               "TierFilesOlderThanDays": "System.Nullable`1[System.Int32]",
@@ -8565,7 +8567,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SyncGroupName": "System.String",
               "StorageSyncServiceName": "System.String",
@@ -9192,7 +9194,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
                   "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "SyncGroupName": "System.String",
                     "StorageSyncServiceName": "System.String",
@@ -10106,7 +10108,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SyncStatus": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpointHealth",
               "TierFilesOlderThanDays": "System.Nullable`1[System.Int32]",
@@ -10362,7 +10364,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
                   "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "SyncStatus": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpointHealth",
                     "TierFilesOlderThanDays": "System.Nullable`1[System.Int32]",
@@ -11032,7 +11034,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SyncStatus": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpointHealth",
               "TierFilesOlderThanDays": "System.Nullable`1[System.Int32]",
@@ -11195,12 +11197,13 @@
         {
           "Name": "InputObject",
           "AliasList": [
-            "RegisteredServer"
+            "RegisteredServer",
+            "ServerEndpoint"
           ],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SyncStatus": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpointHealth",
               "TierFilesOlderThanDays": "System.Nullable`1[System.Int32]",
@@ -11861,12 +11864,13 @@
               "ParameterMetadata": {
                 "Name": "InputObject",
                 "AliasList": [
-                  "RegisteredServer"
+                  "RegisteredServer",
+                  "ServerEndpoint"
                 ],
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
                   "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "SyncStatus": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpointHealth",
                     "TierFilesOlderThanDays": "System.Nullable`1[System.Int32]",
@@ -12286,7 +12290,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSCloudEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSCloudEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSCloudEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BackupEnabled": "System.Nullable`1[System.Boolean]",
               "SyncGroupName": "System.String",
@@ -12411,7 +12415,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SyncGroupName": "System.String",
               "StorageSyncServiceName": "System.String",
@@ -12694,7 +12698,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
                   "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "SyncGroupName": "System.String",
                     "StorageSyncServiceName": "System.String",
@@ -12988,6 +12992,1585 @@
       "AliasList": []
     },
     {
+      "VerbName": "Invoke",
+      "NounName": "AzStorageSyncChangeDetection",
+      "Name": "Invoke-AzStorageSyncChangeDetection",
+      "ClassName": "Microsoft.Azure.Commands.StorageSync.CloudEndpoint.InvokeChangeDetectionCommand",
+      "SupportsShouldProcess": true,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "StringAndDirectoryParameterSet",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Void",
+            "AssemblyQualifiedName": "System.Void, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "ResourceGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "StorageSyncServiceName",
+          "AliasList": [
+            "ParentName"
+          ],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "SyncGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Name",
+          "AliasList": [
+            "CloudEndpointName"
+          ],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ResourceId",
+          "AliasList": [
+            "CloudEndpointId"
+          ],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "InputObject",
+          "AliasList": [
+            "CloudEndpoint"
+          ],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
+            "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSCloudEndpoint",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSCloudEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "BackupEnabled": "System.Nullable`1[System.Boolean]",
+              "SyncGroupName": "System.String",
+              "StorageSyncServiceName": "System.String",
+              "CloudEndpointName": "System.String",
+              "StorageAccountResourceId": "System.String",
+              "AzureFileShareName": "System.String",
+              "StorageAccountTenantId": "System.String",
+              "FriendlyName": "System.String",
+              "LastWorkflowId": "System.String",
+              "LastOperationName": "System.String",
+              "PartnershipId": "System.String",
+              "ProvisioningState": "System.String",
+              "ResourceId": "System.String",
+              "ResourceGroupName": "System.String",
+              "Type": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              }
+            ]
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "DirectoryPath",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "Recursive",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "Path",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String[]",
+            "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": "System.String",
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "PassThru",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "AsJob",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "DefaultProfile",
+          "AliasList": [
+            "AzContext",
+            "AzureRmContext",
+            "AzureCredential"
+          ],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+              "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+              "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+              "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Clear",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              }
+            ],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "StringAndDirectoryParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "StorageSyncServiceName",
+                "AliasList": [
+                  "ParentName"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "SyncGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [
+                  "CloudEndpointName"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DirectoryPath",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Recursive",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "PassThru",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "StringAndPathParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "StorageSyncServiceName",
+                "AliasList": [
+                  "ParentName"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "SyncGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [
+                  "CloudEndpointName"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Path",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": "System.String",
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "PassThru",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "ResourceIdAndDirectoryParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceId",
+                "AliasList": [
+                  "CloudEndpointId"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DirectoryPath",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Recursive",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "PassThru",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "ResourceIdAndPathParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceId",
+                "AliasList": [
+                  "CloudEndpointId"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Path",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": "System.String",
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "PassThru",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "ObjectAndDirectoryParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "InputObject",
+                "AliasList": [
+                  "CloudEndpoint"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
+                  "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSCloudEndpoint",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSCloudEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "BackupEnabled": "System.Nullable`1[System.Boolean]",
+                    "SyncGroupName": "System.String",
+                    "StorageSyncServiceName": "System.String",
+                    "CloudEndpointName": "System.String",
+                    "StorageAccountResourceId": "System.String",
+                    "AzureFileShareName": "System.String",
+                    "StorageAccountTenantId": "System.String",
+                    "FriendlyName": "System.String",
+                    "LastWorkflowId": "System.String",
+                    "LastOperationName": "System.String",
+                    "PartnershipId": "System.String",
+                    "ProvisioningState": "System.String",
+                    "ResourceId": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Type": "System.String"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": []
+                    }
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": true,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DirectoryPath",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Recursive",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "PassThru",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "ObjectAndPathParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "InputObject",
+                "AliasList": [
+                  "CloudEndpoint"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
+                  "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSCloudEndpoint",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSCloudEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "BackupEnabled": "System.Nullable`1[System.Boolean]",
+                    "SyncGroupName": "System.String",
+                    "StorageSyncServiceName": "System.String",
+                    "CloudEndpointName": "System.String",
+                    "StorageAccountResourceId": "System.String",
+                    "AzureFileShareName": "System.String",
+                    "StorageAccountTenantId": "System.String",
+                    "FriendlyName": "System.String",
+                    "LastWorkflowId": "System.String",
+                    "LastOperationName": "System.String",
+                    "PartnershipId": "System.String",
+                    "ProvisioningState": "System.String",
+                    "ResourceId": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "Type": "System.String"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": []
+                    }
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": true,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Path",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": "System.String",
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "PassThru",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "PassThru",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
       "VerbName": "New",
       "NounName": "AzStorageSyncCloudEndpoint",
       "Name": "New-AzStorageSyncCloudEndpoint",
@@ -13001,7 +14584,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSCloudEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSCloudEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSCloudEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BackupEnabled": "System.Nullable`1[System.Boolean]",
               "SyncGroupName": "System.String",
@@ -13126,7 +14709,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SyncGroupName": "System.String",
               "StorageSyncServiceName": "System.String",
@@ -13581,7 +15164,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
                   "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncGroup, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "SyncGroupName": "System.String",
                     "StorageSyncServiceName": "System.String",
@@ -14201,7 +15784,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSCloudEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSCloudEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSCloudEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BackupEnabled": "System.Nullable`1[System.Boolean]",
               "SyncGroupName": "System.String",
@@ -14452,7 +16035,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
                   "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSCloudEndpoint",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSCloudEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSCloudEndpoint, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "BackupEnabled": "System.Nullable`1[System.Boolean]",
                     "SyncGroupName": "System.String",
@@ -15117,7 +16700,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.StorageSync.Evaluation.Models",
             "Name": "Microsoft.Azure.Commands.StorageSync.Evaluation.Models.PSStorageSyncValidation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Evaluation.Models.PSStorageSyncValidation, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Evaluation.Models.PSStorageSyncValidation, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -15845,7 +17428,7 @@
     "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpointHealth": {
       "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
       "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpointHealth",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpointHealth, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSServerEndpointHealth, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "UploadActivity": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncActivityStatus",
         "DownloadActivity": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncActivityStatus",
@@ -15898,7 +17481,7 @@
     "Microsoft.Azure.Commands.StorageSync.Models.PSSyncActivityStatus": {
       "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
       "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncActivityStatus",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncActivityStatus, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncActivityStatus, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Timestamp": "System.Nullable`1[System.DateTime]",
         "PerItemErrorCount": "System.Nullable`1[System.Int64]",
@@ -15981,7 +17564,7 @@
     "Microsoft.Azure.Commands.StorageSync.Models.PSSyncSessionStatus": {
       "Namespace": "Microsoft.Azure.Commands.StorageSync.Models",
       "Name": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncSessionStatus",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncSessionStatus, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.StorageSync.Models.PSSyncSessionStatus, Microsoft.Azure.PowerShell.Cmdlets.StorageSync, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "LastSyncTimestamp": "System.Nullable`1[System.DateTime]",
         "LastSyncSuccessTimestamp": "System.Nullable`1[System.DateTime]",
