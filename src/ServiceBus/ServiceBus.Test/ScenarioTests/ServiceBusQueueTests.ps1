@@ -87,6 +87,9 @@ function ServiceBusQueueAuthTests
 	$namespaceName = getAssetName "Namespace-"
 	$queueName = getAssetName "Queue-"
     $authRuleName = getAssetName "authorule-"
+	$authRuleNameListen = getAssetName "authorule-"
+	$authRuleNameSend = getAssetName "authorule-"
+	$authRuleNameAll = getAssetName "authorule-"
 
 	# Create ResourceGroup
     Write-Debug " Create resource group"    
@@ -133,6 +136,22 @@ function ServiceBusQueueAuthTests
     Assert-True { $result.Rights -Contains "Listen" }
     Assert-True { $result.Rights -Contains "Send" }
     
+	$resultListen = New-AzServiceBusAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Queue $queueName -Name $authRuleNameListen -Rights @("Listen")
+	Assert-AreEqual $authRuleNameListen $resultListen.Name
+    Assert-AreEqual 1 $resultListen.Rights.Count
+    Assert-True { $resultListen.Rights -Contains "Listen" }
+
+	$resultSend = New-AzServiceBusAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Queue $queueName -Name $authRuleNameSend -Rights @("Send")
+	Assert-AreEqual $authRuleNameSend $resultSend.Name
+    Assert-AreEqual 1 $resultSend.Rights.Count
+    Assert-True { $resultSend.Rights -Contains "Send" }
+
+	$resultAll3 = New-AzServiceBusAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Queue $queueName -Name $authRuleNameAll -Rights @("Listen","Send","Manage")
+	Assert-AreEqual $authRuleNameAll $resultAll3.Name
+    Assert-AreEqual 3 $resultAll3.Rights.Count
+    Assert-True { $resultAll3.Rights -Contains "Send" }
+	Assert-True { $resultAll3.Rights -Contains "Listen" }
+	Assert-True { $resultAll3.Rights -Contains "Manage" }
 
 	# Get Created Queue Authorization Rule
     Write-Debug "Get created authorizationRule"
@@ -148,10 +167,7 @@ function ServiceBusQueueAuthTests
     Write-Debug "Get All Queue AuthorizationRule"
     $result = Get-AzServiceBusAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Queue $queueName
 	# Assert
-	Assert-AreEqual $result.Name $authRuleName
-    Assert-AreEqual 2 $result.Rights.Count
-    Assert-True { $result.Rights -Contains "Listen" }
-    Assert-True { $result.Rights -Contains "Send" }
+	Assert-True {$result.Count -ge 2}
     
 	# Update the Queue Authorization Rule
     Write-Debug "Update Queue AuthorizationRule"

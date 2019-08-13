@@ -79,6 +79,9 @@ function ServiceBusTopicAuthTests
 	$namespaceName = getAssetName "Namespace-"
 	$TopicName = getAssetName "Topic-"
     $authRuleName = getAssetName "authorule-"
+	$authRuleNameListen = getAssetName "authorule-"
+	$authRuleNameSend = getAssetName "authorule-"
+	$authRuleNameAll = getAssetName "authorule-"
 
 	# Create ResourceGroup
     Write-Debug " Create resource group"    
@@ -120,7 +123,24 @@ function ServiceBusTopicAuthTests
     Assert-AreEqual $result.Name $authRuleName "New-AzServiceBusAuthorizationRule: Created Authorizationrule not found"
     Assert-AreEqual 2 $result.Rights.Count "New-AzServiceBusAuthorizationRule: Rights count dont match"
     Assert-True { $result.Rights -Contains "Listen" }
-    Assert-True { $result.Rights -Contains "Send" }     
+    Assert-True { $result.Rights -Contains "Send" }    
+	    
+	$resultListen = New-AzServiceBusAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $TopicName -Name $authRuleNameListen -Rights @("Listen")
+	Assert-AreEqual $authRuleNameListen $resultListen.Name
+    Assert-AreEqual 1 $resultListen.Rights.Count
+    Assert-True { $resultListen.Rights -Contains "Listen" }
+
+	$resultSend = New-AzServiceBusAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $TopicName -Name $authRuleNameSend -Rights @("Send")
+	Assert-AreEqual $authRuleNameSend $resultSend.Name
+    Assert-AreEqual 1 $resultSend.Rights.Count
+    Assert-True { $resultSend.Rights -Contains "Send" }
+
+	$resultAll3 = New-AzServiceBusAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $TopicName -Name $authRuleNameAll -Rights @("Listen","Send","Manage")
+	Assert-AreEqual $authRuleNameAll $resultAll3.Name
+    Assert-AreEqual 3 $resultAll3.Rights.Count
+    Assert-True { $resultAll3.Rights -Contains "Send" }
+	Assert-True { $resultAll3.Rights -Contains "Listen" }
+	Assert-True { $resultAll3.Rights -Contains "Manage" }
 
 	# Get Created Topic Authorization Rule
     Write-Debug "Get created authorizationRule"
@@ -132,16 +152,7 @@ function ServiceBusTopicAuthTests
     Assert-True { $createdAuthRule.Rights -Contains "Listen" }
     Assert-True { $createdAuthRule.Rights -Contains "Send" }
 
-	# Get all Topic Authorization Rules
-    Write-Debug "Get All Topic AuthorizationRule"
-    $result = Get-AzServiceBusAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $TopicName
-	# Assert
-   
-    Assert-AreEqual $result.Name $authRuleName "Topic AuthorizationRule created earlier is not found."
-    Assert-AreEqual 2 $result.Rights.Count
-    Assert-True { $result.Rights -Contains "Listen" }
-    Assert-True { $result.Rights -Contains "Send" } 
-
+	
 	# Update the Topic Authorization Rule
     Write-Debug "Update Topic AuthorizationRule"
 	$createdAuthRule.Rights.Add("Manage")
