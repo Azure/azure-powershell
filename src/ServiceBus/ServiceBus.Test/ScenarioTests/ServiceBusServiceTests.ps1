@@ -80,6 +80,9 @@ function ServiceBusNameSpaceAuthTests
     $resourceGroupName = getAssetName "RGName-"
 	$namespaceName = getAssetName "Namespace-"
 	$authRuleName = getAssetName "authorule-"
+	$authRuleNameListen = getAssetName "authorule-"
+	$authRuleNameSend = getAssetName "authorule-"
+	$authRuleNameAll = getAssetName "authorule-"
 	$defaultNamespaceAuthRule = "RootManageSharedAccessKey"
 	
     Write-Debug " Create resource group"    
@@ -103,6 +106,22 @@ function ServiceBusNameSpaceAuthTests
     Assert-True { $result.Rights -Contains "Listen" }
     Assert-True { $result.Rights -Contains "Send" }
 
+	$resultListen = New-AzServiceBusAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleNameListen -Rights @("Listen")
+	Assert-AreEqual $authRuleNameListen $resultListen.Name
+    Assert-AreEqual 1 $resultListen.Rights.Count
+    Assert-True { $resultListen.Rights -Contains "Listen" }
+
+	$resultSend = New-AzServiceBusAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleNameSend -Rights @("Send")
+	Assert-AreEqual $authRuleNameSend $resultSend.Name
+    Assert-AreEqual 1 $resultSend.Rights.Count
+    Assert-True { $resultSend.Rights -Contains "Send" }
+
+	$resultAll3 = New-AzServiceBusAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleNameAll -Rights @("Listen","Send","Manage")
+	Assert-AreEqual $authRuleNameAll $resultAll3.Name
+    Assert-AreEqual 3 $resultAll3.Rights.Count
+    Assert-True { $resultAll3.Rights -Contains "Send" }
+	Assert-True { $resultAll3.Rights -Contains "Listen" }
+	Assert-True { $resultAll3.Rights -Contains "Manage" }
 
     Write-Debug "Create a Namespace Authorization Rule"    
     Write-Debug "Auth Rule name : $authRuleName"

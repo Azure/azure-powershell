@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
                 PSSharedAccessAuthorizationRuleAttributes sasRule = new PSSharedAccessAuthorizationRuleAttributes();
                 sasRule.Rights = new List<AccessRights?>();
 
-                if (Array.Exists(Rights, element => element == "Manage") && !Array.Exists(Rights, element => element == "Listen") || !Array.Exists(Rights, element => element == "Send"))
+                if (Array.Exists(Rights, element => element == "Manage") && (!Array.Exists(Rights, element => element == "Listen") || !Array.Exists(Rights, element => element == "Send")))
                 {
                     Exception exManage = new Exception("Assigning 'Manage' to rights requires ‘Listen and ‘Send' to be included with. e.g. @(\"Manage\",\"Listen\",\"Send\")");
                     throw exManage;
