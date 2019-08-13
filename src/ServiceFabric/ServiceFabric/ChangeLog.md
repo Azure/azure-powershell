@@ -19,6 +19,20 @@
 -->
 ## Upcoming Release
 * Fixed typo in example for `Update-AzServiceFabricReliability` reference documentation
+* Adding new cmdlets to manage appliaction and services:
+    - New-AzServiceFabricApplication
+    - New-AzServiceFabricApplicationType
+    - New-AzServiceFabricApplicationTypeVersion
+    - New-AzServiceFabricService
+    - Update-AzServiceFabricApplication
+    - Get-AzServiceFabricApplication
+    - Get-AzServiceFabricApplicationType
+    - Get-AzServiceFabricApplicationTypeVersion
+    - Get-AzServiceFabricService
+    - Remove-AzServiceFabricApplication
+    - Remove-AzServiceFabricApplicationType
+    - Remove-AzServiceFabricApplicationTypeVersion
+    - Remove-AzServiceFabricServic
 
 ## Version 1.1.2
 * Fix add node type cmdlet bugs:
