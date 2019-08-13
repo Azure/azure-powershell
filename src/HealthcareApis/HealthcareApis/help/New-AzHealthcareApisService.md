@@ -1,19 +1,23 @@
-﻿---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.dll-Help.xml
-Module Name: Az.HealthcareApis
-online version: https://docs.microsoft.com/en-us/powershell/module/az.healthcareApis/new-azhealthcareapisfhirservice
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApisService.dll-Help.xml
+Module Name: Az.HealthcareApisService
+online version:
 schema: 2.0.0
 ---
-# New-AzHealthCaresFhirService
+
+# New-AzHealthcareApisService
 
 ## SYNOPSIS
 Creates the metadata of a service instance.
 
 ## SYNTAX
 
-###FhirParameterSet
 ```
-New-AzHealthCareApisService -Name <String> -ResourceGroupName <String> -Location <String> [-Kind <String>][-CosmosOfferThroughput <Integer>][-Authority <String>] [-Audience <String>] [-EnableSmartProxy][-CorsOrigin <String []>] [-CorsHeader <String[]>] [-CorsMethod <String[]>] [-CorsMaxAge <Integer>] [-AllowCorsCredentials][-AccessPolicyObjectId <String[]>][-Tag <Hashtable>] [-FhirVersion <String>] [-DefaultProfile <IAzureContextContainer>][-AsJob] [-NoWait][-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzHealthcareApisService -Name <String> -ResourceGroupName <String> -Location <String> [-Kind <String>]
+ [-AccessPolicyObjectId <String[]>] [-AllowCorsCredentials] [-Audience <String>] [-Authority <String>]
+ [-CorsHeader <String[]>] [-CorsMaxAge <Int32>] [-CorsMethods <String[]>] [-CorsOrigin <String[]>]
+ [-CosmosOfferThroughput <Int32>] [-EnableSmartProxy] [-FhirVersion <String>] [-Tag <Hashtable>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,13 +53,12 @@ ResourceGroupName : MyResourceGroupName
 
 ## PARAMETERS
 
-### -AccessPolicy
-The access policies of the service instance.
-To construct, see NOTES section for ACCESSPOLICY properties and create a hash table.
+### -AccessPolicyObjectId
+List of Access Policy Object IDs.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.HealthCare.Models.IServiceAccessPolicyEntry[]
-Parameter Sets:(All)
+Type: String[]
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -63,46 +66,43 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -AllowCorsCredentials
-If credentials are allowed via CORS.
+HealthcareApis Fhir Service AllowCorsCredentials.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -AsJob
-Run the command as a job
+Run cmdlet as a job in the background.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Audience
-The audience url for the service
+HealthcareApis Fhir Service Audience.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -111,14 +111,13 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Authority
-The authority url for the service
+HealthcareApis Fhir Service Authority.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -127,14 +126,13 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -143,14 +141,13 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -CorsHeader
-The headers to be allowed via CORS.
+HealthcareApis Fhir Service List of Cors Header.
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -159,30 +156,13 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -CorsMaxAge
-The max age to be allowed via CORS.
+HealthcareApis Fhir Service Cors Max Age.
 
 ```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -CorsMethod
-The methods to be allowed via CORS.
-
-```yaml
-Type: System.String[]
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -191,14 +171,28 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
+```
+
+### -CorsMethods
+HealthcareApis Fhir Service List of Cors Method.
+
+```yaml
+Type: String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -CorsOrigin
-The origins to be allowed via CORS.
+HealthcareApis Fhir Service List of Cors Origin.
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -207,151 +201,142 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
-### -CosmoDbOfferThroughput
-The provisioned throughput for the backing database.
+### -CosmosOfferThroughput
+HealthcareApis Fhir Service CosmosOfferThroughput.
 
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: System.Management.Automation.PSObject
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRMContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
+### -EnableSmartProxy
+HealthcareApis Fhir Service EnableSmartProxy.
 
-### -Fhir-Version
-Version of HealthcareApis Fhir Service. Valid values are Stu3, R4.
 ```yaml
-Type: system.String
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
+```
+
+### -FhirVersion
+Fhir Version.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -Kind
-Kind of HealthcareApis Service. Valid values are fhir, fhir-Stu3, fhir-R4
+Kind of HealthcareApis Service.
+The default value is Fhir
+
 ```yaml
-Type: system.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
-Dynamic: False
 ```
 
-
 ### -Location
-The resource location.
+HealthcareApis Fhir Service Location.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Name
-The name of the service instance.
+HealthcareApis Service Name.
 
 ```yaml
-Type: System.String
-Parameter Sets: ServiceNameParameterSet
+Type: String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
-Dynamic: False
-```
-
-### -NoWait
-Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group that contains the service instance.
+Resource Group Name.
 
 ```yaml
-Type: System.String
-Parameter Sets: ServiceNameParameterSet
+Type: String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Tag
-The resource tags.
+HealthcareApis Fhir Service Account Tags.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Hashtable
 Parameter Sets: (All)
-Aliases:
+Aliases: Tags
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -WhatIf
@@ -359,7 +344,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -368,21 +353,19 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
-### Microsoft.Azure.PowerShell.Cmdlets.HealthCare.Models.PSHealthcareApisService
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.HealthCare.Models.PSHealthcareApisService
+### Microsoft.Azure.Commands.HealthcareApisService.Models.PSHealthcareApisService
 
 ## NOTES
 
 ## RELATED LINKS
-

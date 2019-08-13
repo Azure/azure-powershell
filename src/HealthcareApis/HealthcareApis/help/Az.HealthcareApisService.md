@@ -1,12 +1,12 @@
 ﻿---
-Module Name: Az.HealthcareApis
+Module Name: Az.HealthcareApisService
 Module Guid: df9fc69a-c019-403a-9013-eefa7eb5e27a
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.healthcareapis
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.healthcareapisservice
 Help Version: 0.1.0.0
 Locale: en-US
 ---
 
-# Az.HealthcareApis Module
+# Az.HealthcareApisService Module
 ## Description
 Provides CRUD Management for HealthcareApis Services
 ## Az.HealthcareApis Cmdlets
