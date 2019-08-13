@@ -1,15 +1,14 @@
 namespace Microsoft.Azure.Commands.Management.Compute.ArgumentCompleters
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Management.Automation;
-    using System.Threading.Tasks;
-    using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
     using Microsoft.Azure.Commands.Compute;
     using Microsoft.Azure.Management.Compute;
-    using Microsoft.Rest.Azure;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Management.Automation;
+    using System.Reflection;
 
     public class VmssSkuCompleterAttribute : ArgumentCompleterAttribute
     {
@@ -20,9 +19,12 @@ namespace Microsoft.Azure.Commands.Management.Compute.ArgumentCompleters
 
         private static ScriptBlock CreateScriptBlock()
         {
-            string script = new ArgumentCompleterUtility.ScriptBuilder(new[] { "Location", "Type" },
-                "Microsoft.Azure.Commands.Management.Compute.ArgumentCompleters",
-                "VmssSkuCompleterAttribute", "GetSkuNames").ToString();
+            string script = new ArgumentCompleterUtility.ScriptBuilder(
+                new[] { "Location", "Type" },
+                typeof(VmssSkuCompleterAttribute).Namespace,
+                typeof(VmssSkuCompleterAttribute).Name,
+                nameof(VmssSkuCompleterAttribute.GetSkuNames)
+            ).ToString();
             return ScriptBlock.Create(script);
         }
 
@@ -30,48 +32,47 @@ namespace Microsoft.Azure.Commands.Management.Compute.ArgumentCompleters
         {
             lock (_lock)
             {
-                IAzureContext context = AzureRmProfileProvider.Instance.Profile.DefaultContext;
-                var contextHash = HashContext(context);
+                var names = new string[] { };
+                if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(vmssName))
+                {
 
-                try
-                {
-                    var client = new ComputeClient(context).ComputeManagementClient.VirtualMachineScaleSets;
-                    if (string.IsNullOrEmpty(resourceGroupName) && string.IsNullOrEmpty(vmssName))
+                    IAzureContext context = AzureRmProfileProvider.Instance.Profile.DefaultContext;
+                    var contextHash = ArgumentCompleterUtility.HashContext(context);
+
+                    if (!_completionHistory.ContainsKey(contextHash))
                     {
-                        return new string[] { };
+                        names = _completionHistory[contextHash];
                     }
-                    var skus = ReadAllPages(client.ListSkusAsync(resourceGroupName, vmssName), nextPageLink => client.ListSkusNextAsync(nextPageLink));
-                    var skuNames = skus.Select(sku => sku.Sku.Name);
-                    return skuNames.ToArray();
+                    else
+                    {
+
+                        try
+                        {
+                            names = GetSkuNamesFromClient(resourceGroupName, vmssName, context);
+                        }
+                        catch (Exception ex)
+                        {
+#if DEBUG
+                            throw ex;
+#endif
+                        }
+                    }
                 }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
+                return names;
             }
         }
 
         private static readonly object _lock = new object();
+        private static readonly IDictionary<int, string[]> _completionHistory = new ConcurrentDictionary<int, string[]>();
 
-        private static int HashContext(IAzureContext context)
+        private static string[] GetSkuNamesFromClient(string resourceGroupName, string vmssName, IAzureContext context)
         {
-            return (context.Account.Id + context.Environment.Name + context.Subscription.Id + context.Tenant.Id).GetHashCode();
-        }
-
-        private static List<TItem> ReadAllPages<TItem>(Task<IPage<TItem>> task, Func<string, Task<IPage<TItem>>> nextTaskCreator)
-        {
-            var results = new List<TItem>();
-            task.Wait();
-            var page = task.Result;
-            results.AddRange(task.Result);
-            while (!string.IsNullOrEmpty(page.NextPageLink))
-            {
-                task = nextTaskCreator(page.NextPageLink);
-                task.Wait();
-                page = task.Result;
-                results.AddRange(page);
-            }
-            return results;
+            string[] output;
+            var client = new ComputeClient(context).ComputeManagementClient.VirtualMachineScaleSets;
+            output = ArgumentCompleterUtility.ReadAllPages(client.ListSkusAsync(resourceGroupName, vmssName), nextPageLink => client.ListSkusNextAsync(nextPageLink))
+                .Select(sku => sku.Sku.Name)
+                .ToArray();
+            return output;
         }
     }
 }
