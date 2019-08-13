@@ -10,7 +10,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Changes the auditing settings for an Azure SQL database.
-This cmdlet is deprecated, please use **Set-AzSqlDatabaseAudit** instead.
+This cmdlet is deprecated, **Set-AzSqlDatabaseAudit** is replacing it.
 
 ## SYNTAX
 
