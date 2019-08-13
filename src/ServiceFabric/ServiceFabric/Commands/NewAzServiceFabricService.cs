@@ -18,6 +18,7 @@ using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
@@ -43,6 +44,77 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         private const string StatefulSingleton = "Stateful Singleton";
         private const string StatefulUniformInt64 = "Stateful UniformInt64Range";
         private const string StatefulNamed = "Stateful Named";
+
+        #region common required params
+
+        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, ParameterSetName = StatelessSingleton,
+            HelpMessage = "Specify the name of the resource group.")]
+        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, ParameterSetName = StatelessUniformInt64,
+            HelpMessage = "Specify the name of the resource group.")]
+        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, ParameterSetName = StatelessNamed,
+            HelpMessage = "Specify the name of the resource group.")]
+        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, ParameterSetName = StatefulSingleton,
+            HelpMessage = "Specify the name of the resource group.")]
+        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, ParameterSetName = StatefulUniformInt64,
+            HelpMessage = "Specify the name of the resource group.")]
+        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, ParameterSetName = StatefulNamed,
+            HelpMessage = "Specify the name of the resource group.")]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty()]
+        public override string ResourceGroupName { get; set; }
+
+        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, ParameterSetName = StatelessSingleton,
+            HelpMessage = "Specify the name of the cluster.")]
+        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, ParameterSetName = StatelessUniformInt64,
+            HelpMessage = "Specify the name of the cluster.")]
+        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, ParameterSetName = StatelessNamed,
+            HelpMessage = "Specify the name of the cluster.")]
+        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, ParameterSetName = StatefulSingleton,
+            HelpMessage = "Specify the name of the cluster.")]
+        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, ParameterSetName = StatefulUniformInt64,
+            HelpMessage = "Specify the name of the cluster.")]
+        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, ParameterSetName = StatefulNamed,
+            HelpMessage = "Specify the name of the cluster.")]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty()]
+        public override string ClusterName { get; set; }
+
+        [Parameter(Mandatory = true, Position = 2, ValueFromPipeline = true, ParameterSetName = StatelessSingleton)]
+        [Parameter(Mandatory = true, Position = 2, ValueFromPipeline = true, ParameterSetName = StatelessUniformInt64)]
+        [Parameter(Mandatory = true, Position = 2, ValueFromPipeline = true, ParameterSetName = StatelessNamed)]
+        [Parameter(Mandatory = true, Position = 2, ValueFromPipeline = true, ParameterSetName = StatefulSingleton)]
+        [Parameter(Mandatory = true, Position = 2, ValueFromPipeline = true, ParameterSetName = StatefulUniformInt64)]
+        [Parameter(Mandatory = true, Position = 2, ValueFromPipeline = true, ParameterSetName = StatefulNamed)]
+        [ValidateNotNullOrEmpty()]
+        public string ApplicationName { get; set; }
+
+        [Parameter(Mandatory = true, Position = 3, ValueFromPipeline = true, ParameterSetName = StatelessSingleton)]
+        [Parameter(Mandatory = true, Position = 3, ValueFromPipeline = true, ParameterSetName = StatelessUniformInt64)]
+        [Parameter(Mandatory = true, Position = 3, ValueFromPipeline = true, ParameterSetName = StatelessNamed)]
+        [Parameter(Mandatory = true, Position = 3, ValueFromPipeline = true, ParameterSetName = StatefulSingleton)]
+        [Parameter(Mandatory = true, Position = 3, ValueFromPipeline = true, ParameterSetName = StatefulUniformInt64)]
+        [Parameter(Mandatory = true, Position = 3, ValueFromPipeline = true, ParameterSetName = StatefulNamed)]
+        [ValidateNotNullOrEmpty()]
+        [Alias("ServiceName")]
+        public string Name { get; set; }
+
+        [Parameter(Mandatory = true, Position = 4, ValueFromPipeline = true, ParameterSetName = StatelessSingleton,
+                   HelpMessage = "Specify the service type name of the application, should exist in the application manifest.")]
+        [Parameter(Mandatory = true, Position = 4, ValueFromPipeline = true, ParameterSetName = StatelessUniformInt64,
+                   HelpMessage = "Specify the service type name of the application, should exist in the application manifest.")]
+        [Parameter(Mandatory = true, Position = 4, ValueFromPipeline = true, ParameterSetName = StatelessNamed,
+                   HelpMessage = "Specify the service type name of the application, should exist in the application manifest.")]
+        [Parameter(Mandatory = true, Position = 4, ValueFromPipeline = true, ParameterSetName = StatefulSingleton,
+                   HelpMessage = "Specify the service type name of the application, should exist in the application manifest.")]
+        [Parameter(Mandatory = true, Position = 4, ValueFromPipeline = true, ParameterSetName = StatefulUniformInt64,
+                   HelpMessage = "Specify the service type name of the application, should exist in the application manifest.")]
+        [Parameter(Mandatory = true, Position = 4, ValueFromPipeline = true, ParameterSetName = StatefulNamed,
+                   HelpMessage = "Specify the service type name of the application, should exist in the application manifest.")]
+        [ValidateNotNullOrEmpty()]
+        [Alias("ServiceType")]
+        public string Type { get; set; }
+
+        #endregion
 
         #region Stateless params
 
@@ -122,54 +194,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         #endregion
 
-        #region common params
-
-        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Specify the name of the resource group.")]
-        [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty()]
-        public override string ResourceGroupName { get; set; }
-
-        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Specify the name of the cluster.")]
-        [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty()]
-        public override string ClusterName { get; set; }
-
-        [Parameter(Mandatory = true, Position = 2, ValueFromPipeline = true, ParameterSetName = StatelessSingleton)]
-        [Parameter(Mandatory = true, Position = 2, ValueFromPipeline = true, ParameterSetName = StatelessUniformInt64)]
-        [Parameter(Mandatory = true, Position = 2, ValueFromPipeline = true, ParameterSetName = StatelessNamed)]
-        [Parameter(Mandatory = true, Position = 2, ValueFromPipeline = true, ParameterSetName = StatefulSingleton)]
-        [Parameter(Mandatory = true, Position = 2, ValueFromPipeline = true, ParameterSetName = StatefulUniformInt64)]
-        [Parameter(Mandatory = true, Position = 2, ValueFromPipeline = true, ParameterSetName = StatefulNamed)]
-        [ValidateNotNullOrEmpty()]
-        public string ApplicationName { get; set; }
-
-        [Parameter(Mandatory = true, Position = 3, ValueFromPipeline = true, ParameterSetName = StatelessSingleton)]
-        [Parameter(Mandatory = true, Position = 3, ValueFromPipeline = true, ParameterSetName = StatelessUniformInt64)]
-        [Parameter(Mandatory = true, Position = 3, ValueFromPipeline = true, ParameterSetName = StatelessNamed)]
-        [Parameter(Mandatory = true, Position = 3, ValueFromPipeline = true, ParameterSetName = StatefulSingleton)]
-        [Parameter(Mandatory = true, Position = 3, ValueFromPipeline = true, ParameterSetName = StatefulUniformInt64)]
-        [Parameter(Mandatory = true, Position = 3, ValueFromPipeline = true, ParameterSetName = StatefulNamed)]
-        [ValidateNotNullOrEmpty()]
-        [Alias("ServiceName")]
-        public string Name { get; set; }
-
-        [Parameter(Mandatory = true, Position = 4, ValueFromPipeline = true, ParameterSetName = StatelessSingleton,
-                   HelpMessage = "Specify the service type name of the application, should exist in the application manifest.")]
-        [Parameter(Mandatory = true, Position = 4, ValueFromPipeline = true, ParameterSetName = StatelessUniformInt64,
-                   HelpMessage = "Specify the service type name of the application, should exist in the application manifest.")]
-        [Parameter(Mandatory = true, Position = 4, ValueFromPipeline = true, ParameterSetName = StatelessNamed,
-                   HelpMessage = "Specify the service type name of the application, should exist in the application manifest.")]
-        [Parameter(Mandatory = true, Position = 4, ValueFromPipeline = true, ParameterSetName = StatefulSingleton,
-                   HelpMessage = "Specify the service type name of the application, should exist in the application manifest.")]
-        [Parameter(Mandatory = true, Position = 4, ValueFromPipeline = true, ParameterSetName = StatefulUniformInt64,
-                   HelpMessage = "Specify the service type name of the application, should exist in the application manifest.")]
-        [Parameter(Mandatory = true, Position = 4, ValueFromPipeline = true, ParameterSetName = StatefulNamed,
-                   HelpMessage = "Specify the service type name of the application, should exist in the application manifest.")]
-        [ValidateNotNullOrEmpty()]
-        [Alias("ServiceType")]
-        public string Type { get; set; }
+        #region common optional params
 
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = StatelessSingleton,
                    HelpMessage = "Specify the PlacementConstraint for the service")]
@@ -281,12 +306,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 {
                     if (!this.Name.StartsWith(this.ApplicationName))
                     {
-                        this.Name = $"{this.ApplicationName}~{this.Name}";
-                        WriteVerbose(string.Format("Application name must be a prefix of service name, using service name: '{0}'", this.Name));
+                        throw new PSInvalidOperationException(string.Format("Invalid service name, the application name must be a prefix of the service name, for example: '{0}'", $"{this.ApplicationName}~{this.Name}"));
                     }
 
                     var service = CreateService();
-                    WriteObject(service);
+                    WriteObject(new PSService(service), false);
                 }
                 catch (ErrorModelException ex)
                 {
@@ -327,7 +351,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             var deployment = CreateBasicDeployment(DeploymentMode.Incremental, serviceTemplateFile, serviceParameterFile);
             SetParameters(deployment.Properties.Template as JObject, deployment.Properties.Parameters as JObject);
 
-            var deploymentName = string.Format("AzurePSDeployment-{0}", DateTime.Now.ToString("MMddHHmmss"));
+            var deploymentName = Regex.Replace(string.Format("AzPSService-{0}", this.Name), @"[^-\w\._\(\)]", "");
             var validateResult = this.ResourceManagerClient.Deployments.Validate(
                 ResourceGroupName,
                 deploymentName,

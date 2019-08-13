@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     }
 
                     var app = CreateApplication();
-                    WriteObject(app);
+                    WriteObject(new PSApplication(app), false);
                 }
                 catch (ErrorModelException ex)
                 {

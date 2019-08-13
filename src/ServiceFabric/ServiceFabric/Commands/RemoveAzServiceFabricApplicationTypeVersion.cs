@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.ServiceFabric;
@@ -55,15 +56,23 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         {
             var resourceMessage = string.Format("ApplicationType '{0}' in resource group '{1}', cluster name {2}", this.Name, this.ResourceGroupName, this.ClusterName);
             ConfirmAction(Force.IsPresent,
-                "Do you want to remove the application type version? This will remove all applications and services under this resource",
+                "Do you want to remove the application type version? Please remove all applications under this resource before running this command.",
                 "Removing application type version.",
                 resourceMessage,
                 () =>
                 {
-                    this.SFRPClient.ApplicationTypeVersions.Delete(this.ResourceGroupName, this.ClusterName, this.Name, this.Version);
-                    if (PassThru)
+                    try
                     {
-                        WriteObject(true);
+                        this.SFRPClient.ApplicationTypeVersions.Delete(this.ResourceGroupName, this.ClusterName, this.Name, this.Version);
+                        if (PassThru)
+                        {
+                            WriteObject(true);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        this.PrintSdkExceptionDetail(ex);
+                        throw;
                     }
                 });
         }
