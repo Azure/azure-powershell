@@ -14,8 +14,8 @@ Creates the metadata of a service instance.
 
 ```
 New-AzHealthcareApisService -Name <String> -ResourceGroupName <String> -Location <String> [-Kind <String>]
- [-AccessPolicyObjectId <String[]>] [-AllowCorsCredentials] [-Audience <String>] [-Authority <String>]
- [-CorsHeader <String[]>] [-CorsMaxAge <Int32>] [-CorsMethods <String[]>] [-CorsOrigin <String[]>]
+ [-AccessPolicyObjectId <String[]>] [-AllowCorsCredential] [-Audience <String>] [-Authority <String>]
+ [-CorsHeader <String[]>] [-CorsMaxAge <Int32>] [-CorsMethod <String[]>] [-CorsOrigin <String[]>]
  [-CosmosOfferThroughput <Int32>] [-EnableSmartProxy] [-FhirVersion <String>] [-Tag <Hashtable>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -68,8 +68,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AllowCorsCredentials
-HealthcareApis Fhir Service AllowCorsCredentials.
+### -AllowCorsCredential
+HealthcareApis Fhir Service AllowCorsCredential.
 
 ```yaml
 Type: SwitchParameter
@@ -173,7 +173,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CorsMethods
+### -CorsMethod
 HealthcareApis Fhir Service List of Cors Method.
 
 ```yaml

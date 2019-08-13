@@ -87,13 +87,13 @@ namespace Microsoft.Azure.Commands.HealthcareApisService.Commands
         [Parameter(Mandatory = false,ParameterSetName = ServiceNameParameterSet, HelpMessage = "HealthcareApis FhirService AllowCorsCredentials.")]
         [Parameter(Mandatory = false, ParameterSetName = ResourceIdParameterSet, HelpMessage = "HealthcareApis FhirService AllowCorsCredentials.")]
         [ValidateNotNullOrEmpty]
-        public SwitchParameter AllowCorsCredentials { get; set; }
+        public SwitchParameter AllowCorsCredential { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = ServiceNameParameterSet, HelpMessage = "List of Access Policy Object IDs.")]
         [Parameter(Mandatory = false, ParameterSetName = ResourceIdParameterSet, HelpMessage = "List of Access Policy Object IDs.")]
         [ValidateNotNullOrEmpty]
         [ValidatePattern("^(([0-9A-Fa-f]{8}[-]?(?:[0-9A-Fa-f]{4}[-]?){3}[0-9A-Fa-f]{12}){1})+$")]
-        public string[] AccessPolicyObjectIds { get; set; }
+        public string[] AccessPolicyObjectId { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -136,9 +136,9 @@ namespace Microsoft.Azure.Commands.HealthcareApisService.Commands
                     case ServiceNameParameterSet:
                         {
                             List<ServiceAccessPolicyEntry> accessPolicies = new List<ServiceAccessPolicyEntry>();
-                            if (AccessPolicyObjectIds != null && AccessPolicyObjectIds.Length > 0)
+                            if (AccessPolicyObjectId != null && AccessPolicyObjectId.Length > 0)
                             {
-                                foreach (string objectId in AccessPolicyObjectIds)
+                                foreach (string objectId in AccessPolicyObjectId)
                                 {
                                     accessPolicies.Add(new ServiceAccessPolicyEntry(objectId));
                                 }
@@ -164,9 +164,9 @@ namespace Microsoft.Azure.Commands.HealthcareApisService.Commands
                             ValidateAndExtractName(this.ResourceId, out rgName, out name);
 
                             List<ServiceAccessPolicyEntry> accessPolicies = new List<ServiceAccessPolicyEntry>();
-                            if (AccessPolicyObjectIds != null && AccessPolicyObjectIds.Length > 0)
+                            if (AccessPolicyObjectId != null && AccessPolicyObjectId.Length > 0)
                             {
-                                foreach (string objectId in AccessPolicyObjectIds)
+                                foreach (string objectId in AccessPolicyObjectId)
                                 {
                                     accessPolicies.Add(new ServiceAccessPolicyEntry(objectId));
                                 }
@@ -245,7 +245,7 @@ namespace Microsoft.Azure.Commands.HealthcareApisService.Commands
                         Headers = CorsHeader ?? healthcareApisAccount.Properties.CorsConfiguration.Headers,
                         Methods = CorsMethod ?? healthcareApisAccount.Properties.CorsConfiguration.Methods,
                         MaxAge = CorsMaxAge ?? healthcareApisAccount.Properties.CorsConfiguration.MaxAge,
-                        AllowCredentials = AllowCorsCredentials != healthcareApisAccount.Properties.CorsConfiguration.AllowCredentials ? healthcareApisAccount.Properties.CorsConfiguration.AllowCredentials : this.AllowCorsCredentials.ToBool()
+                        AllowCredentials = AllowCorsCredential != healthcareApisAccount.Properties.CorsConfiguration.AllowCredentials ? healthcareApisAccount.Properties.CorsConfiguration.AllowCredentials : this.AllowCorsCredential.ToBool()
                     },
                     AccessPolicies = accessPolicies
                 }
