@@ -561,7 +561,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement
             }
             else if (tokens.Length >= 9)
             {
-                return ScopeType.ResourceGroup;
+                return ScopeType.Resource;
             }
             else
             {
