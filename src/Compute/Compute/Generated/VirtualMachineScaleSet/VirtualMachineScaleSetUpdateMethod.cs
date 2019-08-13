@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
-        [VmssSkuCompleter]
+        [AvailableVmScaleSetSkuCompleter(new[] { nameof(ResourceGroupName), nameof(VMScaleSetName) })]
         public string SkuName { get; set; }
 
         [Parameter(

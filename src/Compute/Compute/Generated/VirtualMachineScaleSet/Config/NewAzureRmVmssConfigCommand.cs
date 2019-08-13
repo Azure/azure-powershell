@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 3,
             ValueFromPipelineByPropertyName = true)]
         [Alias("AccountType")]
-        [VmssSkuCompleter]
+        [VmScaleSetSkuCompleter]
         public string SkuName { get; set; }
 
         [Parameter(
