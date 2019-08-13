@@ -26,12 +26,13 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateLinkService", SupportsShouldProcess = true), OutputType(typeof(PSPrivateLinkService))]
     public class NewAzurePrivateLinkService : PrivateLinkServiceBaseCmdlet
     {
+        [Alias("ServiceName")]
         [Parameter(
             Mandatory = true,
             HelpMessage = "The name of the service.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public string ServiceName { get; set; }
+        public string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -64,6 +65,19 @@ namespace Microsoft.Azure.Commands.Network
         public PSPrivateLinkServiceIpConfiguration[] IpConfiguration { get; set; }
 
         [Parameter(
+          Mandatory = false,
+          ValueFromPipelineByPropertyName = true,
+          HelpMessage = "The visibility list of the private link service.")]
+        public string[] Visibility { get; set; }
+
+        [Parameter(
+          Mandatory = false,
+          ValueFromPipelineByPropertyName = true,
+          HelpMessage = "The auto approval list of the private link service.")]
+        public string[] AutoApproval { get; set; }
+
+
+        [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.")]
@@ -83,20 +97,31 @@ namespace Microsoft.Azure.Commands.Network
         {
             var psPrivateLinkService = new PSPrivateLinkService
             {
-                Name = ServiceName,
+                Name = Name,
                 ResourceGroupName = ResourceGroupName,
                 Location = Location
             };
-
-
+            
             psPrivateLinkService.LoadBalancerFrontendIpConfigurations = LoadBalancerFrontendIpConfiguration?.ToList();
             psPrivateLinkService.IpConfigurations = IpConfiguration?.ToList();
+
+            if(Visibility != null)
+            {
+                psPrivateLinkService.Visibility = new PSPrivateLinkServiceResourceSet();
+                psPrivateLinkService.Visibility.Subscriptions = Visibility.ToList();
+            }
+
+            if (AutoApproval != null)
+            {
+                psPrivateLinkService.AutoApproval = new PSPrivateLinkServiceResourceSet();
+                psPrivateLinkService.AutoApproval.Subscriptions = AutoApproval.ToList();
+            }
 
             var plsModel = NetworkResourceManagerProfile.Mapper.Map<MNM.PrivateLinkService>(psPrivateLinkService);
             plsModel.Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
 
-            this.PrivateLinkServiceClient.CreateOrUpdate(ResourceGroupName, ServiceName, plsModel);
-            var getPrivateLinkService = GetPrivateLinkService(ResourceGroupName, ServiceName);
+            this.PrivateLinkServiceClient.CreateOrUpdate(ResourceGroupName, Name, plsModel);
+            var getPrivateLinkService = GetPrivateLinkService(ResourceGroupName, Name);
 
             return getPrivateLinkService;
         }
@@ -104,12 +129,12 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            var present = IsPrivateLinkServicePresent(ResourceGroupName, ServiceName);
+            var present = IsPrivateLinkServicePresent(ResourceGroupName, Name);
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Properties.Resources.OverwritingResource, ServiceName),
+                string.Format(Properties.Resources.OverwritingResource, Name),
                 Properties.Resources.CreatingResourceMessage,
-                ServiceName,
+                Name,
                 () =>
                 {
                     var privateLinkService = CreatePSPrivateLinkService();

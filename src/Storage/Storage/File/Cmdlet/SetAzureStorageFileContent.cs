@@ -194,7 +194,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 if (e.RequestInformation != null &&
                     e.RequestInformation.HttpStatusCode == (int)HttpStatusCode.Forbidden)
                 {
-                    //Forbidden to check directory existance, might caused by a write only SAS
+                    //Forbidden to check directory existence, might caused by a write only SAS
                     //Don't report error here since should not block upload with write only SAS
                     //If the directory not exist, Error will be reported when upload with DMlib later
                     directoryExists = true;

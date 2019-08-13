@@ -176,6 +176,17 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         }
 
         /// <summary>
+        /// Failovers an elastic pool
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group the server is in</param>
+        /// <param name="serverName">The name of the Azure Sql Database Server</param>
+        /// <param name="databaseName">The name of the Azure Sql Database to failover</param>
+        public void FailoverElasticPool(string resourceGroupName, string serverName, string databaseName)
+        {
+            Communicator.Failover(resourceGroupName, serverName, databaseName);
+        }
+
+        /// <summary>
         /// Gets a list of Azure Sql Databases in an ElasticPool.
         /// </summary>
         /// <param name="resourceGroupName">The name of the resource group</param>

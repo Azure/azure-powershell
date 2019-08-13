@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Aks
         public string Name { get; set; }
 
         [Parameter(Mandatory = false,
-            HelpMessage = "Do not pop open a browser after establising the kubectl port-forward.")]
+            HelpMessage = "Do not pop open a browser after establishing the kubectl port-forward.")]
         public SwitchParameter DisableBrowser { get; set; }
 
         [Parameter(Mandatory = false)]

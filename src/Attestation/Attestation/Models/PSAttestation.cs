@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Attestation.Models
             Id = attestation.Id;
             Type = attestation.Type;
             Status = attestation.Status;
-            AttesUri = attestation.AttestUri;
+            AttestUri = attestation.AttestUri;
 
             ResourceIdentifier identifier = new ResourceIdentifier(attestation.Id);
 
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Attestation.Models
 
         public string Status { get; protected set; }
 
-        public string AttesUri { get; protected set; }
+        public string AttestUri { get; protected set; }
     
         public string ResourceGroupName { get; protected set; }
 
