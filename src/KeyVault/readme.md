@@ -49,9 +49,8 @@ In this directory, run AutoRest:
 ``` yaml
 require:
   - $(this-folder)/../readme.azure.md
-  - $(repo)/specification/keyvault/resource-manager/readme.enable-multi-api.md
   - $(repo)/specification/keyvault/resource-manager/readme.md
-  - https://github.com/cormacpayne/azure-rest-api-specs/blob/multiapi-keyvault/specification/keyvault/data-plane/readme.enable-multi-api.md
+  # Cormac -- whats different with this? Something we need to hot-patch with a directive?
   - https://github.com/cormacpayne/azure-rest-api-specs/blob/multiapi-keyvault/specification/keyvault/data-plane/readme.md
 
 title: KeyVault

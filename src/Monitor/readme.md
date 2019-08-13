@@ -49,9 +49,7 @@ In this directory, run AutoRest:
 ``` yaml
 require:
   - $(this-folder)/../readme.azure.md
-  - $(repo)/specification/monitor/resource-manager/readme.enable-multi-api.md
   - $(repo)/specification/monitor/resource-manager/readme.md
-  - $(repo)/specification/monitor/data-plane/readme.enable-multi-api.md
   - $(repo)/specification/monitor/data-plane/readme.md
 
 subject-prefix: ''
