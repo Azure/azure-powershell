@@ -68,5 +68,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Common
         public const string TemplateFileName = @"template.json";
 
         public static readonly string ServiceTemplateRelativePath = Path.Combine("Template", "Service");
+
+        public const string clusterProvider = "clusters";
+        public const string applicationTypeProvider = "applicationTypes";
+        public const string applicationTypeVersionProvider = "versions";
+        public const string applicationProvider = "applications";
+        public const string serviceProvider = "services";
     }
 }

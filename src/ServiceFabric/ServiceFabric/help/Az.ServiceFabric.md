@@ -78,7 +78,7 @@ Remove nodes from the specific node type from a cluster.
 Remove a complete node type from a cluster.
 
 ### [Remove-AzServiceFabricService](Remove-AzServiceFabricService.md)
-Create new service fabric service under the specified application and cluster.
+Remove a service from the cluster.
 
 ### [Remove-AzServiceFabricSetting](Remove-AzServiceFabricSetting.md)
 Remove one or multiple Service Fabric setting from the cluster.
@@ -90,7 +90,7 @@ Add or update one or multiple Service Fabric settings to the cluster.
 Change the Service Fabric upgrade type of the cluster.
 
 ### [Update-AzServiceFabricApplication](Update-AzServiceFabricApplication.md)
-Update a service fabric application. This allows to update the application parameters and/or upgrade the application type version which will trigger an 
+Update a service fabric application. This allows to update the application parameters and/or upgrade the application type version which will trigger an application upgrade.
 
 ### [Update-AzServiceFabricDurability](Update-AzServiceFabricDurability.md)
 Update the durability tier or VmSku of a node type in the cluster.

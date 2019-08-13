@@ -76,7 +76,7 @@ function Test-App
 	Assert-NotNull $appFromGet
 	Assert-AreEqual $app.Id $appFromGet.Id
 
-	$service = New-AzServiceFabricService -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Stateless -InstanceCount -1 -ApplicationName $appName -Name $serviceName -Type $serviceTypeName -PartitionSchemaSingleton -Verbose
+	$service = New-AzServiceFabricService -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Stateless -InstanceCount -1 -ApplicationName $appName -Name $serviceName -Type $serviceTypeName -PartitionSchemeSingleton -Verbose
 	Assert-AreEqual "Succeeded" $service.ProvisioningState
 
 	$appTypeVersion = New-AzServiceFabricApplicationTypeVersion -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appTypeName -Version $v2 -PackageUrl $packageV2 -Verbose
@@ -94,7 +94,7 @@ function Test-App
 	Assert-AreEqual "01:23:20" $app.UpgradePolicy.RollingUpgradeMonitoringPolicy.UpgradeDomainTimeout
 	Assert-AreEqual "Rollback" $app.UpgradePolicy.RollingUpgradeMonitoringPolicy.FailureAction
 
-	$app = Update-AzServiceFabricApplication -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appName -MinimumNodes 1 -MaximumNodes 4 -Verbose
+	$app = Update-AzServiceFabricApplication -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appName -MinimumNodeCount 1 -MaximumNodeCount 4 -Verbose
 	Assert-AreEqual 1 $app.MinimumNodes
 	Assert-AreEqual 4 $app.MaximumNodes
 
@@ -119,7 +119,7 @@ function Test-Service
 	$service = Get-AzServiceFabricService -ResourceGroupName $resourceGroupName -ClusterName $clusterName -ApplicationName $appName
 	Assert-Null $service
 
-	$service = New-AzServiceFabricService -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Stateless -InstanceCount -1 -ApplicationName $appName -Name $serviceName -Type $serviceTypeName -PartitionSchemaSingleton -Verbose
+	$service = New-AzServiceFabricService -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Stateless -InstanceCount -1 -ApplicationName $appName -Name $serviceName -Type $serviceTypeName -PartitionSchemeSingleton -Verbose
 	Assert-AreEqual "Succeeded" $service.ProvisioningState
 
 	$serviceFromGet = Get-AzServiceFabricService -ResourceGroupName $resourceGroupName -ClusterName $clusterName -ApplicationName $appName -Name $serviceName

@@ -16,7 +16,7 @@ using Microsoft.Azure.Management.ServiceFabric.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Models
 {
-    class PSApplicationTypeVersion : ApplicationTypeVersionResource
+    public class PSApplicationTypeVersion : ApplicationTypeVersionResource
     {
         public PSApplicationTypeVersion(ApplicationTypeVersionResource appTypeVersion)
             : base(

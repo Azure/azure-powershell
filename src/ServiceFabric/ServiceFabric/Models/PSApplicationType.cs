@@ -16,7 +16,7 @@ using Microsoft.Azure.Management.ServiceFabric.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Models
 {
-    class PSApplicationType : ApplicationTypeResource
+    public class PSApplicationType : ApplicationTypeResource
     {
         public PSApplicationType(ApplicationTypeResource appType)
             : base(

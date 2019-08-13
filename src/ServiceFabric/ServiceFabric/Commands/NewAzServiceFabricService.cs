@@ -29,6 +29,7 @@ using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.ServiceFabric;
 using Microsoft.Azure.Management.ServiceFabric.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json.Linq;
 
 using ServiceFabricProperties = Microsoft.Azure.Commands.ServiceFabric.Properties;
@@ -38,12 +39,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzurePrefix + "ServiceFabricService", SupportsShouldProcess = true, DefaultParameterSetName = StatelessSingleton), OutputType(typeof(PSService))]
     public class NewAzServiceFabricService : ProxyResourceCmdletBase
     {
-        private const string StatelessSingleton = "Stateless Singleton";
-        private const string StatelessUniformInt64 = "Stateless UniformInt64Range";
-        private const string StatelessNamed = "Stateless Named";
-        private const string StatefulSingleton = "Stateful Singleton";
-        private const string StatefulUniformInt64 = "Stateful UniformInt64Range";
-        private const string StatefulNamed = "Stateful Named";
+        private const string StatelessSingleton = "Stateless-Singleton";
+        private const string StatelessUniformInt64 = "Stateless-UniformInt64Range";
+        private const string StatelessNamed = "Stateless-Named";
+        private const string StatefulSingleton = "Stateful-Singleton";
+        private const string StatefulUniformInt64 = "Stateful-UniformInt64Range";
+        private const string StatefulNamed = "Stateful-Named";
 
         #region common required params
 
@@ -75,41 +76,53 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             HelpMessage = "Specify the name of the cluster.")]
         [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, ParameterSetName = StatefulNamed,
             HelpMessage = "Specify the name of the cluster.")]
-        [ResourceGroupCompleter]
+        [ResourceNameCompleter("Microsoft.ServiceFabric/clusters", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty()]
         public override string ClusterName { get; set; }
 
-        [Parameter(Mandatory = true, Position = 2, ValueFromPipeline = true, ParameterSetName = StatelessSingleton)]
-        [Parameter(Mandatory = true, Position = 2, ValueFromPipeline = true, ParameterSetName = StatelessUniformInt64)]
-        [Parameter(Mandatory = true, Position = 2, ValueFromPipeline = true, ParameterSetName = StatelessNamed)]
-        [Parameter(Mandatory = true, Position = 2, ValueFromPipeline = true, ParameterSetName = StatefulSingleton)]
-        [Parameter(Mandatory = true, Position = 2, ValueFromPipeline = true, ParameterSetName = StatefulUniformInt64)]
-        [Parameter(Mandatory = true, Position = 2, ValueFromPipeline = true, ParameterSetName = StatefulNamed)]
+        [Parameter(Mandatory = true, Position = 2, ParameterSetName = StatelessSingleton,
+            HelpMessage = "Specify the name of the application.")]
+        [Parameter(Mandatory = true, Position = 2, ParameterSetName = StatelessUniformInt64,
+            HelpMessage = "Specify the name of the application.")]
+        [Parameter(Mandatory = true, Position = 2, ParameterSetName = StatelessNamed,
+            HelpMessage = "Specify the name of the application.")]
+        [Parameter(Mandatory = true, Position = 2, ParameterSetName = StatefulSingleton,
+            HelpMessage = "Specify the name of the application.")]
+        [Parameter(Mandatory = true, Position = 2, ParameterSetName = StatefulUniformInt64,
+            HelpMessage = "Specify the name of the application.")]
+        [Parameter(Mandatory = true, Position = 2, ParameterSetName = StatefulNamed,
+            HelpMessage = "Specify the name of the application.")]
         [ValidateNotNullOrEmpty()]
         public string ApplicationName { get; set; }
 
-        [Parameter(Mandatory = true, Position = 3, ValueFromPipeline = true, ParameterSetName = StatelessSingleton)]
-        [Parameter(Mandatory = true, Position = 3, ValueFromPipeline = true, ParameterSetName = StatelessUniformInt64)]
-        [Parameter(Mandatory = true, Position = 3, ValueFromPipeline = true, ParameterSetName = StatelessNamed)]
-        [Parameter(Mandatory = true, Position = 3, ValueFromPipeline = true, ParameterSetName = StatefulSingleton)]
-        [Parameter(Mandatory = true, Position = 3, ValueFromPipeline = true, ParameterSetName = StatefulUniformInt64)]
-        [Parameter(Mandatory = true, Position = 3, ValueFromPipeline = true, ParameterSetName = StatefulNamed)]
+        [Parameter(Mandatory = true, Position = 3, ParameterSetName = StatelessSingleton,
+            HelpMessage = "Specify the name of the service.")]
+        [Parameter(Mandatory = true, Position = 3, ParameterSetName = StatelessUniformInt64,
+            HelpMessage = "Specify the name of the service.")]
+        [Parameter(Mandatory = true, Position = 3, ParameterSetName = StatelessNamed,
+            HelpMessage = "Specify the name of the service.")]
+        [Parameter(Mandatory = true, Position = 3, ParameterSetName = StatefulSingleton,
+            HelpMessage = "Specify the name of the service.")]
+        [Parameter(Mandatory = true, Position = 3, ParameterSetName = StatefulUniformInt64,
+            HelpMessage = "Specify the name of the service.")]
+        [Parameter(Mandatory = true, Position = 3, ParameterSetName = StatefulNamed,
+            HelpMessage = "Specify the name of the service.")]
         [ValidateNotNullOrEmpty()]
         [Alias("ServiceName")]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, Position = 4, ValueFromPipeline = true, ParameterSetName = StatelessSingleton,
-                   HelpMessage = "Specify the service type name of the application, should exist in the application manifest.")]
-        [Parameter(Mandatory = true, Position = 4, ValueFromPipeline = true, ParameterSetName = StatelessUniformInt64,
-                   HelpMessage = "Specify the service type name of the application, should exist in the application manifest.")]
-        [Parameter(Mandatory = true, Position = 4, ValueFromPipeline = true, ParameterSetName = StatelessNamed,
-                   HelpMessage = "Specify the service type name of the application, should exist in the application manifest.")]
-        [Parameter(Mandatory = true, Position = 4, ValueFromPipeline = true, ParameterSetName = StatefulSingleton,
-                   HelpMessage = "Specify the service type name of the application, should exist in the application manifest.")]
-        [Parameter(Mandatory = true, Position = 4, ValueFromPipeline = true, ParameterSetName = StatefulUniformInt64,
-                   HelpMessage = "Specify the service type name of the application, should exist in the application manifest.")]
-        [Parameter(Mandatory = true, Position = 4, ValueFromPipeline = true, ParameterSetName = StatefulNamed,
-                   HelpMessage = "Specify the service type name of the application, should exist in the application manifest.")]
+        [Parameter(Mandatory = true, ParameterSetName = StatelessSingleton,
+            HelpMessage = "Specify the service type name of the application, should exist in the application manifest.")]
+        [Parameter(Mandatory = true, ParameterSetName = StatelessUniformInt64,
+            HelpMessage = "Specify the service type name of the application, should exist in the application manifest.")]
+        [Parameter(Mandatory = true, ParameterSetName = StatelessNamed,
+            HelpMessage = "Specify the service type name of the application, should exist in the application manifest.")]
+        [Parameter(Mandatory = true, ParameterSetName = StatefulSingleton,
+            HelpMessage = "Specify the service type name of the application, should exist in the application manifest.")]
+        [Parameter(Mandatory = true, ParameterSetName = StatefulUniformInt64,
+            HelpMessage = "Specify the service type name of the application, should exist in the application manifest.")]
+        [Parameter(Mandatory = true, ParameterSetName = StatefulNamed,
+            HelpMessage = "Specify the service type name of the application, should exist in the application manifest.")]
         [ValidateNotNullOrEmpty()]
         [Alias("ServiceType")]
         public string Type { get; set; }
@@ -118,77 +131,80 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         #region Stateless params
 
-        [Parameter(Mandatory = true, Position = 5, ValueFromPipeline = true, ParameterSetName = StatelessSingleton,
-                  HelpMessage = "Use for stateless service")]
-        [Parameter(Mandatory = true, Position = 5, ValueFromPipeline = true, ParameterSetName = StatelessUniformInt64,
-                  HelpMessage = "Use for stateless service")]
-        [Parameter(Mandatory = true, Position = 5, ValueFromPipeline = true, ParameterSetName = StatelessNamed,
-                  HelpMessage = "Use for stateless service")]
+        [Parameter(Mandatory = true, ParameterSetName = StatelessSingleton,
+            HelpMessage = "Use for stateless service")]
+        [Parameter(Mandatory = true, ParameterSetName = StatelessUniformInt64,
+            HelpMessage = "Use for stateless service")]
+        [Parameter(Mandatory = true, ParameterSetName = StatelessNamed,
+            HelpMessage = "Use for stateless service")]
         public SwitchParameter Stateless { get; set; }
 
-        [Parameter(Mandatory = true, Position = 6, ValueFromPipeline = true, ParameterSetName = StatelessSingleton,
-                  HelpMessage = "Specify the instance count for the service")]
-        [Parameter(Mandatory = true, Position = 6, ValueFromPipeline = true, ParameterSetName = StatelessUniformInt64,
-                  HelpMessage = "Specify the instance count for the service")]
-        [Parameter(Mandatory = true, Position = 6, ValueFromPipeline = true, ParameterSetName = StatelessNamed,
-                  HelpMessage = "Specify the instance count for the service")]
+        [Parameter(Mandatory = true, ParameterSetName = StatelessSingleton,
+            HelpMessage = "Specify the instance count for the service")]
+        [Parameter(Mandatory = true, ParameterSetName = StatelessUniformInt64,
+            HelpMessage = "Specify the instance count for the service")]
+        [Parameter(Mandatory = true, ParameterSetName = StatelessNamed,
+            HelpMessage = "Specify the instance count for the service")]
         [ValidateNotNullOrEmpty()]
+        [ValidateRange(-1, int.MaxValue)]
         public int InstanceCount { get; set; }
 
         #endregion
 
         #region Stateful params
 
-        [Parameter(Mandatory = true, Position = 5, ValueFromPipeline = true, ParameterSetName = StatefulSingleton,
-                  HelpMessage = "Use for stateful service")]
-        [Parameter(Mandatory = true, Position = 5, ValueFromPipeline = true, ParameterSetName = StatefulUniformInt64,
-                  HelpMessage = "Use for stateful service")]
-        [Parameter(Mandatory = true, Position = 5, ValueFromPipeline = true, ParameterSetName = StatefulNamed,
-                  HelpMessage = "Use for stateful service")]
+        [Parameter(Mandatory = true, ParameterSetName = StatefulSingleton,
+            HelpMessage = "Use for stateful service")]
+        [Parameter(Mandatory = true, ParameterSetName = StatefulUniformInt64,
+            HelpMessage = "Use for stateful service")]
+        [Parameter(Mandatory = true, ParameterSetName = StatefulNamed,
+            HelpMessage = "Use for stateful service")]
         public SwitchParameter Stateful { get; set; }
 
-        [Parameter(Mandatory = true, Position = 6, ValueFromPipeline = true, ParameterSetName = StatefulSingleton,
-                  HelpMessage  = "Specify the target replica set size for the service")]
-        [Parameter(Mandatory = true, Position = 6, ValueFromPipeline = true, ParameterSetName = StatefulUniformInt64,
-                  HelpMessage  = "Specify the target replica set size for the service")]
-        [Parameter(Mandatory = true, Position = 6, ValueFromPipeline = true, ParameterSetName = StatefulNamed,
-                  HelpMessage  = "Specify the target replica set size for the service")]
+        [Parameter(Mandatory = true, ParameterSetName = StatefulSingleton,
+            HelpMessage = "Specify the target replica set size for the service")]
+        [Parameter(Mandatory = true, ParameterSetName = StatefulUniformInt64,
+            HelpMessage = "Specify the target replica set size for the service")]
+        [Parameter(Mandatory = true, ParameterSetName = StatefulNamed,
+            HelpMessage = "Specify the target replica set size for the service")]
         [ValidateNotNullOrEmpty()]
+        [ValidateRange(1, int.MaxValue)]
         public int TargetReplicaSetSize { get; set; }
 
-        [Parameter(Mandatory = true, Position = 7, ValueFromPipeline = true, ParameterSetName = StatefulSingleton,
-                  HelpMessage  = "Specify the min replica set size for the service")]
-        [Parameter(Mandatory = true, Position = 7, ValueFromPipeline = true, ParameterSetName = StatefulUniformInt64,
-                  HelpMessage  = "Specify the min replica set size for the service")]
-        [Parameter(Mandatory = true, Position = 7, ValueFromPipeline = true, ParameterSetName = StatefulNamed,
-                  HelpMessage  = "Specify the min replica set size for the service")]
+        [Parameter(Mandatory = true, ParameterSetName = StatefulSingleton,
+            HelpMessage = "Specify the min replica set size for the service")]
+        [Parameter(Mandatory = true, ParameterSetName = StatefulUniformInt64,
+            HelpMessage = "Specify the min replica set size for the service")]
+        [Parameter(Mandatory = true, ParameterSetName = StatefulNamed,
+            HelpMessage = "Specify the min replica set size for the service")]
         [ValidateNotNullOrEmpty()]
+        [ValidateRange(1, int.MaxValue)]
         public int MinReplicaSetSize { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = StatefulSingleton,
-                  HelpMessage  = "Specify the replica restart wait duration for the service")]
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = StatefulUniformInt64,
-                  HelpMessage  = "Specify the replica restart wait duration for the service")]
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = StatefulNamed,
-                  HelpMessage  = "Specify the replica restart wait duration for the service")]
+        [Parameter(Mandatory = false, ParameterSetName = StatefulSingleton,
+            HelpMessage = "Specify the replica restart wait duration for the service")]
+        [Parameter(Mandatory = false, ParameterSetName = StatefulUniformInt64,
+            HelpMessage = "Specify the replica restart wait duration for the service")]
+        [Parameter(Mandatory = false, ParameterSetName = StatefulNamed,
+            HelpMessage = "Specify the replica restart wait duration for the service")]
         [ValidateNotNullOrEmpty()]
         public TimeSpan ReplicaRestartWaitDuration { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = StatefulSingleton,
-                  HelpMessage  = "Specify the quorum loss wait duration for the service")]
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = StatefulUniformInt64,
-                  HelpMessage  = "Specify the quorum loss wait duration for the service")]
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = StatefulNamed,
-                  HelpMessage  = "Specify the quorum loss wait duration for the service")]
+        [Parameter(Mandatory = false, ParameterSetName = StatefulSingleton,
+            HelpMessage = "Specify the quorum loss wait duration for the service")]
+        [Parameter(Mandatory = false, ParameterSetName = StatefulUniformInt64,
+            HelpMessage = "Specify the quorum loss wait duration for the service")]
+        [Parameter(Mandatory = false, ParameterSetName = StatefulNamed,
+            HelpMessage = "Specify the quorum loss wait duration for the service")]
         [ValidateNotNullOrEmpty()]
         public TimeSpan QuorumLossWaitDuration { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = StatefulSingleton,
-                  HelpMessage  = "Specify the stand by replica duration for the service")]
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = StatefulUniformInt64,
-                  HelpMessage  = "Specify the stand by replica duration for the service")]
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = StatefulNamed,
-                  HelpMessage  = "Specify the stand by replica duration for the service")]
+        [Parameter(Mandatory = false, ParameterSetName = StatefulSingleton,
+            HelpMessage = "Specify the stand by replica duration for the service")]
+        [Parameter(Mandatory = false, ParameterSetName = StatefulUniformInt64,
+            HelpMessage = "Specify the stand by replica duration for the service")]
+        [Parameter(Mandatory = false, ParameterSetName = StatefulNamed,
+            HelpMessage = "Specify the stand by replica duration for the service")]
         [ValidateNotNullOrEmpty()]
         public TimeSpan StandByReplicaKeepDuration { get; set; }
 
@@ -196,102 +212,43 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         #region common optional params
 
-        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = StatelessSingleton,
-                   HelpMessage = "Specify the PlacementConstraint for the service")]
-        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = StatelessUniformInt64,
-                   HelpMessage = "Specify the PlacementConstraint for the service")]
-        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = StatelessNamed,
-                   HelpMessage = "Specify the PlacementConstraint for the service")]
-        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = StatefulSingleton,
-                   HelpMessage = "Specify the PlacementConstraint for the service")]
-        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = StatefulUniformInt64,
-                   HelpMessage = "Specify the PlacementConstraint for the service")]
-        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = StatefulNamed,
-                   HelpMessage = "Specify the PlacementConstraint for the service")]
-        [ValidateNotNullOrEmpty()]
-        public string[] PlacementConstraint { get; set; }
-
-        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = StatelessSingleton,
-                   HelpMessage = "Specify the Metric of for the service")]
-        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = StatelessUniformInt64,
-                   HelpMessage = "Specify the Metric of for the service")]
-        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = StatelessNamed,
-                   HelpMessage = "Specify the Metric of for the service")]
-        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = StatefulSingleton,
-                   HelpMessage = "Specify the Metric of for the service")]
-        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = StatefulUniformInt64,
-                   HelpMessage = "Specify the Metric of for the service")]
-        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = StatefulNamed,
-                   HelpMessage = "Specify the Metric of for the service")]
-        [ValidateNotNullOrEmpty()]
-        public string[] Metric { get; set; }
-
-        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = StatelessSingleton,
-                   HelpMessage = "Specify the Correlation for the service")]
-        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = StatelessUniformInt64,
-                   HelpMessage = "Specify the Correlation for the service")]
-        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = StatelessNamed,
-                   HelpMessage = "Specify the Correlation for the service")]
-        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = StatefulSingleton,
-                   HelpMessage = "Specify the Correlation for the service")]
-        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = StatefulUniformInt64,
-                   HelpMessage = "Specify the Correlation for the service")]
-        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = StatefulNamed,
-                   HelpMessage = "Specify the Correlation for the service")]
-        [ValidateNotNullOrEmpty()]
-        public string[] Correlation { get; set; }
-
-        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = StatelessSingleton,
-                   HelpMessage = "Specify the default cost for a move. Higher costs make it less likely that the Cluster Resource Manager will move the replica when trying to balance the cluster")]
-        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = StatelessUniformInt64,
-                   HelpMessage = "Specify the default cost for a move. Higher costs make it less likely that the Cluster Resource Manager will move the replica when trying to balance the cluster")]
-        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = StatelessNamed,
-                   HelpMessage = "Specify the default cost for a move. Higher costs make it less likely that the Cluster Resource Manager will move the replica when trying to balance the cluster")]
-        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = StatefulSingleton,
-                   HelpMessage = "Specify the default cost for a move. Higher costs make it less likely that the Cluster Resource Manager will move the replica when trying to balance the cluster")]
-        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = StatefulUniformInt64,
-                   HelpMessage = "Specify the default cost for a move. Higher costs make it less likely that the Cluster Resource Manager will move the replica when trying to balance the cluster")]
-        [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = StatefulNamed,
-                   HelpMessage = "Specify the default cost for a move. Higher costs make it less likely that the Cluster Resource Manager will move the replica when trying to balance the cluster")]
+        [Parameter(Mandatory = false, ParameterSetName = StatelessSingleton,
+            HelpMessage = "Specify the default cost for a move. Higher costs make it less likely that the Cluster Resource Manager will move the replica when trying to balance the cluster")]
+        [Parameter(Mandatory = false, ParameterSetName = StatelessUniformInt64,
+            HelpMessage = "Specify the default cost for a move. Higher costs make it less likely that the Cluster Resource Manager will move the replica when trying to balance the cluster")]
+        [Parameter(Mandatory = false, ParameterSetName = StatelessNamed,
+            HelpMessage = "Specify the default cost for a move. Higher costs make it less likely that the Cluster Resource Manager will move the replica when trying to balance the cluster")]
+        [Parameter(Mandatory = false, ParameterSetName = StatefulSingleton,
+            HelpMessage = "Specify the default cost for a move. Higher costs make it less likely that the Cluster Resource Manager will move the replica when trying to balance the cluster")]
+        [Parameter(Mandatory = false, ParameterSetName = StatefulUniformInt64,
+            HelpMessage = "Specify the default cost for a move. Higher costs make it less likely that the Cluster Resource Manager will move the replica when trying to balance the cluster")]
+        [Parameter(Mandatory = false, ParameterSetName = StatefulNamed,
+            HelpMessage = "Specify the default cost for a move. Higher costs make it less likely that the Cluster Resource Manager will move the replica when trying to balance the cluster")]
         [ValidateNotNullOrEmpty()]
         public MoveCostEnum DefaultMoveCost { get; set; }
         
         #region partition params
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = StatelessSingleton)]
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = StatefulSingleton)]
+        [Parameter(Mandatory = true, ParameterSetName = StatelessSingleton,
+            HelpMessage = "Indicates that the service uses the singleton partition scheme. Singleton partitions are typically used when the service does not require any additional routing.")]
+        [Parameter(Mandatory = true, ParameterSetName = StatefulSingleton,
+            HelpMessage = "Indicates that the service uses the singleton partition scheme. Singleton partitions are typically used when the service does not require any additional routing.")]
         [ValidateNotNullOrEmpty()]
-        public SwitchParameter PartitionSchemaSingleton { get; set; }
+        public SwitchParameter PartitionSchemeSingleton { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = StatelessUniformInt64)]
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = StatefulUniformInt64)]
+        [Parameter(Mandatory = true, ParameterSetName = StatelessUniformInt64,
+            HelpMessage = "Indicates that the service uses the UniformInt64 partition scheme. This means that each partition owns a range of int64 keys.")]
+        [Parameter(Mandatory = true, ParameterSetName = StatefulUniformInt64,
+            HelpMessage = "Indicates that the service uses the UniformInt64 partition scheme. This means that each partition owns a range of int64 keys.")]
         [ValidateNotNullOrEmpty()]
         public SwitchParameter PartitionSchemeUniformInt64 { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = StatelessUniformInt64)]
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = StatefulUniformInt64)]
-        [ValidateNotNullOrEmpty()]
-        public long PartitionCount { get; set; }
-
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = StatelessUniformInt64)]
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = StatefulUniformInt64)]
-        [ValidateNotNullOrEmpty()]
-        public long LowKey { get; set; }
-
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = StatelessUniformInt64)]
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = StatefulUniformInt64)]
-        [ValidateNotNullOrEmpty()]
-        public long HighKey { get; set; }
-
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = StatelessNamed)]
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = StatefulNamed)]
+        [Parameter(Mandatory = true, ParameterSetName = StatelessNamed,
+            HelpMessage = "Indicates that the service uses the named partition scheme. Services using this model usually have data that can be bucketed, within a bounded set. Some common examples of data fields used as named partition keys would be regions, postal codes, customer groups, or other business boundaries.")]
+        [Parameter(Mandatory = true, ParameterSetName = StatefulNamed,
+            HelpMessage = "Indicates that the service uses the named partition scheme. Services using this model usually have data that can be bucketed, within a bounded set. Some common examples of data fields used as named partition keys would be regions, postal codes, customer groups, or other business boundaries.")]
         [ValidateNotNullOrEmpty()]
         public SwitchParameter PartitionSchemeNamed { get; set; }
-
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = StatelessNamed)]
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = StatefulNamed)]
-        [ValidateNotNullOrEmpty()]
-        public string[] PartitionNames { get; set; }
 
         #endregion
 
@@ -385,7 +342,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             SetParameter(ref parameters, "serviceName", this.Name);
 
             SetServiceParameter(template, parameters, "serviceTypeName", this.Type);
-            SetServiceParameter(template, parameters, "partitionDescription", JObject.Parse($"{{\"partitionScheme\":\"{ParameterSetName.Split(' ')[1]}\"}}"));
+            SetServiceParameter(template, parameters, "partitionDescription", JObject.Parse($"{{\"partitionScheme\":\"{ParameterSetName.Split('-')[1]}\"}}"));
 
             if (this.Stateless.IsPresent)
             {
@@ -395,6 +352,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             {
                 SetServiceParameter(template, parameters, "targetReplicaSetSize", this.TargetReplicaSetSize);
                 SetServiceParameter(template, parameters, "minReplicaSetSize", this.MinReplicaSetSize);
+            }
+
+            if (this.IsParameterBound(c => c.DefaultMoveCost))
+            {
+                SetServiceParameter(template, parameters, "defaultMoveCost", this.DefaultMoveCost.ToString());
             }
 
             return parameters;

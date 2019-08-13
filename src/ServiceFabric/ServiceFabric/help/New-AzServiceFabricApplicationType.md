@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.servicefabric/new-azservicefabricapplicationtype
 schema: 2.0.0
 ---
 
@@ -29,6 +29,7 @@ PS C:\> $clusterName = "testCluster"
 PS C:\> $appTypeName = "testAppType"
 PS C:\> $appType = New-AzServiceFabricApplicationType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appTypeName -Verbose
 ```
+
 This example will create a new application type "testAppType" under the resource group and cluster specified.
 
 ## PARAMETERS

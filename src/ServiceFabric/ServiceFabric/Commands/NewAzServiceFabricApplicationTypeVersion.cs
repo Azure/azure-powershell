@@ -31,29 +31,29 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specify the name of the cluster.")]
-        [ResourceGroupCompleter]
+        [ResourceNameCompleter("Microsoft.ServiceFabric/clusters", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty()]
         public override string ClusterName { get; set; }
 
-        [Parameter(Mandatory = true, Position = 2, ValueFromPipeline = true,
-                   HelpMessage = "Specify the name of the application type")]
+        [Parameter(Mandatory = true, Position = 2,
+            HelpMessage = "Specify the name of the application type")]
         [ValidateNotNullOrEmpty()]
         [Alias("ApplicationTypeName")]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, Position = 3, ValueFromPipeline = true,
-                   HelpMessage = "Specify the application type version")]
+        [Parameter(Mandatory = true, Position = 3,
+            HelpMessage = "Specify the application type version")]
         [ValidateNotNullOrEmpty()]
         [Alias("ApplicationTypeVersion")]
         public string Version { get; set; }
 
-        [Parameter(Mandatory = true, Position = 4, ValueFromPipeline = true,
-                   HelpMessage = "Specify the url of the application package sfpkg file")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specify the url of the application package sfpkg file")]
         [ValidateNotNullOrEmpty()]
         public string PackageUrl { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipeline = true,
-                   HelpMessage = "Specify the default values of the application parameters as key/value pairs. These parameters must exist in the application manifest.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specify the default values of the application parameters as key/value pairs. These parameters must exist in the application manifest.")]
         [ValidateNotNullOrEmpty()]
         public Hashtable DefaultParameter { get; set; }
 

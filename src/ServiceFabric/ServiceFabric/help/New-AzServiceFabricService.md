@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.servicefabric/new-azservicefabricservice
 schema: 2.0.0
 ---
 
@@ -12,60 +12,53 @@ Create new service fabric service under the specified application and cluster.
 
 ## SYNTAX
 
-### Stateless Singleton (Default)
+### Stateless-Singleton (Default)
 ```
 New-AzServiceFabricService [-ResourceGroupName] <String> [-ClusterName] <String> [-ApplicationName] <String>
- [-Name] <String> [-Type] <String> [-Stateless] [-InstanceCount] <Int32> [-PlacementConstraint <String[]>]
- [-Metric <String[]>] [-Correlation <String[]>] [-DefaultMoveCost <MoveCostEnum>] [-PartitionSchemaSingleton]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Stateless UniformInt64Range
-```
-New-AzServiceFabricService [-ResourceGroupName] <String> [-ClusterName] <String> [-ApplicationName] <String>
- [-Name] <String> [-Type] <String> [-Stateless] [-InstanceCount] <Int32> [-PlacementConstraint <String[]>]
- [-Metric <String[]>] [-Correlation <String[]>] [-DefaultMoveCost <MoveCostEnum>]
- [-PartitionSchemeUniformInt64] -PartitionCount <Int64> -LowKey <Int64> -HighKey <Int64>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Stateless Named
-```
-New-AzServiceFabricService [-ResourceGroupName] <String> [-ClusterName] <String> [-ApplicationName] <String>
- [-Name] <String> [-Type] <String> [-Stateless] [-InstanceCount] <Int32> [-PlacementConstraint <String[]>]
- [-Metric <String[]>] [-Correlation <String[]>] [-DefaultMoveCost <MoveCostEnum>] [-PartitionSchemeNamed]
- -PartitionNames <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-Name] <String> -Type <String> [-Stateless] -InstanceCount <Int32> [-DefaultMoveCost <MoveCostEnum>]
+ [-PartitionSchemeSingleton] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### Stateful Singleton
+### Stateless-UniformInt64Range
 ```
 New-AzServiceFabricService [-ResourceGroupName] <String> [-ClusterName] <String> [-ApplicationName] <String>
- [-Name] <String> [-Type] <String> [-Stateful] [-TargetReplicaSetSize] <Int32> [-MinReplicaSetSize] <Int32>
- -ReplicaRestartWaitDuration <TimeSpan> -QuorumLossWaitDuration <TimeSpan>
- -StandByReplicaKeepDuration <TimeSpan> [-PlacementConstraint <String[]>] [-Metric <String[]>]
- [-Correlation <String[]>] [-DefaultMoveCost <MoveCostEnum>] [-PartitionSchemaSingleton]
+ [-Name] <String> -Type <String> [-Stateless] -InstanceCount <Int32> [-DefaultMoveCost <MoveCostEnum>]
+ [-PartitionSchemeUniformInt64] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### Stateless-Named
+```
+New-AzServiceFabricService [-ResourceGroupName] <String> [-ClusterName] <String> [-ApplicationName] <String>
+ [-Name] <String> -Type <String> [-Stateless] -InstanceCount <Int32> [-DefaultMoveCost <MoveCostEnum>]
+ [-PartitionSchemeNamed] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Stateful-Singleton
+```
+New-AzServiceFabricService [-ResourceGroupName] <String> [-ClusterName] <String> [-ApplicationName] <String>
+ [-Name] <String> -Type <String> [-Stateful] -TargetReplicaSetSize <Int32> -MinReplicaSetSize <Int32>
+ [-ReplicaRestartWaitDuration <TimeSpan>] [-QuorumLossWaitDuration <TimeSpan>]
+ [-StandByReplicaKeepDuration <TimeSpan>] [-DefaultMoveCost <MoveCostEnum>] [-PartitionSchemeSingleton]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Stateful UniformInt64Range
+### Stateful-UniformInt64Range
 ```
 New-AzServiceFabricService [-ResourceGroupName] <String> [-ClusterName] <String> [-ApplicationName] <String>
- [-Name] <String> [-Type] <String> [-Stateful] [-TargetReplicaSetSize] <Int32> [-MinReplicaSetSize] <Int32>
- -ReplicaRestartWaitDuration <TimeSpan> -QuorumLossWaitDuration <TimeSpan>
- -StandByReplicaKeepDuration <TimeSpan> [-PlacementConstraint <String[]>] [-Metric <String[]>]
- [-Correlation <String[]>] [-DefaultMoveCost <MoveCostEnum>] [-PartitionSchemeUniformInt64]
- -PartitionCount <Int64> -LowKey <Int64> -HighKey <Int64> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Name] <String> -Type <String> [-Stateful] -TargetReplicaSetSize <Int32> -MinReplicaSetSize <Int32>
+ [-ReplicaRestartWaitDuration <TimeSpan>] [-QuorumLossWaitDuration <TimeSpan>]
+ [-StandByReplicaKeepDuration <TimeSpan>] [-DefaultMoveCost <MoveCostEnum>] [-PartitionSchemeUniformInt64]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Stateful Named
+### Stateful-Named
 ```
 New-AzServiceFabricService [-ResourceGroupName] <String> [-ClusterName] <String> [-ApplicationName] <String>
- [-Name] <String> [-Type] <String> [-Stateful] [-TargetReplicaSetSize] <Int32> [-MinReplicaSetSize] <Int32>
- -ReplicaRestartWaitDuration <TimeSpan> -QuorumLossWaitDuration <TimeSpan>
- -StandByReplicaKeepDuration <TimeSpan> [-PlacementConstraint <String[]>] [-Metric <String[]>]
- [-Correlation <String[]>] [-DefaultMoveCost <MoveCostEnum>] [-PartitionSchemeNamed] -PartitionNames <String[]>
+ [-Name] <String> -Type <String> [-Stateful] -TargetReplicaSetSize <Int32> -MinReplicaSetSize <Int32>
+ [-ReplicaRestartWaitDuration <TimeSpan>] [-QuorumLossWaitDuration <TimeSpan>]
+ [-StandByReplicaKeepDuration <TimeSpan>] [-DefaultMoveCost <MoveCostEnum>] [-PartitionSchemeNamed]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -101,7 +94,7 @@ This example will create a new stateful service "testApp~testService2" with a ta
 ## PARAMETERS
 
 ### -ApplicationName
-{{Fill ApplicationName Description}}
+Specify the name of the application.
 
 ```yaml
 Type: System.String
@@ -111,7 +104,7 @@ Aliases:
 Required: True
 Position: 2
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -130,21 +123,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Correlation
-Specify the Correlation for the service
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DefaultMoveCost
 Specify the default cost for a move.
 Higher costs make it less likely that the Cluster Resource Manager will move the replica when trying to balance the cluster
@@ -158,7 +136,7 @@ Accepted values: Zero, Low, Medium, High
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -177,63 +155,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HighKey
-{{Fill HighKey Description}}
-
-```yaml
-Type: System.Int64
-Parameter Sets: Stateless UniformInt64Range, Stateful UniformInt64Range
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -InstanceCount
 Specify the instance count for the service
 
 ```yaml
 Type: System.Int32
-Parameter Sets: Stateless Singleton, Stateless UniformInt64Range, Stateless Named
-Aliases:
-
-Required: True
-Position: 6
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -LowKey
-{{Fill LowKey Description}}
-
-```yaml
-Type: System.Int64
-Parameter Sets: Stateless UniformInt64Range, Stateful UniformInt64Range
+Parameter Sets: Stateless-Singleton, Stateless-UniformInt64Range, Stateless-Named
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Metric
-Specify the Metric of for the service
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -242,18 +175,18 @@ Specify the min replica set size for the service
 
 ```yaml
 Type: System.Int32
-Parameter Sets: Stateful Singleton, Stateful UniformInt64Range, Stateful Named
+Parameter Sets: Stateful-Singleton, Stateful-UniformInt64Range, Stateful-Named
 Aliases:
 
 Required: True
-Position: 7
+Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Name
-{{Fill Name Description}}
+Specify the name of the service.
 
 ```yaml
 Type: System.String
@@ -263,97 +196,56 @@ Aliases: ServiceName
 Required: True
 Position: 3
 Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -PartitionCount
-{{Fill PartitionCount Description}}
-
-```yaml
-Type: System.Int64
-Parameter Sets: Stateless UniformInt64Range, Stateful UniformInt64Range
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -PartitionNames
-{{Fill PartitionNames Description}}
-
-```yaml
-Type: System.String[]
-Parameter Sets: Stateless Named, Stateful Named
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -PartitionSchemaSingleton
-{{Fill PartitionSchemaSingleton Description}}
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Stateless Singleton, Stateful Singleton
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -PartitionSchemeNamed
-{{Fill PartitionSchemeNamed Description}}
+Indicates that the service uses the named partition scheme.
+Services using this model usually have data that can be bucketed, within a bounded set.
+Some common examples of data fields used as named partition keys would be regions, postal codes, customer groups, or other business boundaries.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Stateless Named, Stateful Named
+Parameter Sets: Stateless-Named, Stateful-Named
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PartitionSchemeSingleton
+Indicates that the service uses the singleton partition scheme.
+Singleton partitions are typically used when the service does not require any additional routing.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: Stateless-Singleton, Stateful-Singleton
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -PartitionSchemeUniformInt64
-{{Fill PartitionSchemeUniformInt64 Description}}
+Indicates that the service uses the UniformInt64 partition scheme.
+This means that each partition owns a range of int64 keys.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Stateless UniformInt64Range, Stateful UniformInt64Range
+Parameter Sets: Stateless-UniformInt64Range, Stateful-UniformInt64Range
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -PlacementConstraint
-Specify the PlacementConstraint for the service
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -362,13 +254,13 @@ Specify the quorum loss wait duration for the service
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: Stateful Singleton, Stateful UniformInt64Range, Stateful Named
+Parameter Sets: Stateful-Singleton, Stateful-UniformInt64Range, Stateful-Named
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -377,13 +269,13 @@ Specify the replica restart wait duration for the service
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: Stateful Singleton, Stateful UniformInt64Range, Stateful Named
+Parameter Sets: Stateful-Singleton, Stateful-UniformInt64Range, Stateful-Named
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -407,13 +299,13 @@ Specify the stand by replica duration for the service
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: Stateful Singleton, Stateful UniformInt64Range, Stateful Named
+Parameter Sets: Stateful-Singleton, Stateful-UniformInt64Range, Stateful-Named
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -422,13 +314,13 @@ Use for stateful service
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Stateful Singleton, Stateful UniformInt64Range, Stateful Named
+Parameter Sets: Stateful-Singleton, Stateful-UniformInt64Range, Stateful-Named
 Aliases:
 
 Required: True
-Position: 5
+Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -437,13 +329,13 @@ Use for stateless service
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Stateless Singleton, Stateless UniformInt64Range, Stateless Named
+Parameter Sets: Stateless-Singleton, Stateless-UniformInt64Range, Stateless-Named
 Aliases:
 
 Required: True
-Position: 5
+Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -452,13 +344,13 @@ Specify the target replica set size for the service
 
 ```yaml
 Type: System.Int32
-Parameter Sets: Stateful Singleton, Stateful UniformInt64Range, Stateful Named
+Parameter Sets: Stateful-Singleton, Stateful-UniformInt64Range, Stateful-Named
 Aliases:
 
 Required: True
-Position: 6
+Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -471,9 +363,9 @@ Parameter Sets: (All)
 Aliases: ServiceType
 
 Required: True
-Position: 4
+Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -513,19 +405,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Management.Automation.SwitchParameter
-
-### System.Int32
-
-### System.TimeSpan
-
 ### System.String
-
-### System.String[]
-
-### Microsoft.Azure.Commands.ServiceFabric.Models.MoveCostEnum
-
-### System.Int64
 
 ## OUTPUTS
 
