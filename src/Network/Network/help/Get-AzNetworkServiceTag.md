@@ -19,6 +19,12 @@ Get-AzNetworkServiceTag -Location <String> [-DefaultProfile <IAzureContextContai
 ## DESCRIPTION
 The **Get-AzNetworkServiceTag** cmdlet gets the list of service tag information resources.
 
+> [!NOTE]
+> The Azure region information you specify will be used as a reference for version (not as a filter based on location). 
+For example, even if you specify "-Location eastus2" you will get the list of service tags with prefix details across all regions but limited to the cloud that your subscription belongs to (i.e. Public, US government, China or Germany). 
+
+
+
 ## EXAMPLES
 
 ### Example 1
@@ -180,7 +186,8 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The location.
+The Azure region information you specify will be used as a reference for version (not as a filter based on location). 
+For example, even if you specify "-Location eastus2" you will get the list of service tags with prefix details across all regions but limited to the cloud that your subscription belongs to (i.e. Public, US government, China or Germany). 
 
 ```yaml
 Type: System.String
