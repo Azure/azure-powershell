@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScheduledQueryRules
             ScheduledQueryRuleAznsAction aznsAction = new ScheduledQueryRuleAznsAction(new AzNsActionGroup(new string[]{"AG1", "AG2"}, "Email Subject for Log Search Alert", "custom webhook payload"));
             ScheduledQueryRuleLogMetricTrigger logMetricTrigger = new ScheduledQueryRuleLogMetricTrigger(new LogMetricTrigger("GreaterThan", 15, "Total"));
             ScheduledQueryRuleTriggerCondition triggerCondition = new ScheduledQueryRuleTriggerCondition(new TriggerCondition("GreaterThan", 15, logMetricTrigger));
-            ScheduledQueryRuleAlertingAction alertingAction = new ScheduledQueryRuleAlertingAction(new AlertingAction("2", aznsAction, triggerCondition, 5));
+            ScheduledQueryRuleAlertingAction alertingAction = new ScheduledQueryRuleAlertingAction(new AlertingAction("2", triggerCondition, aznsAction, 5));
 
             cmdlet.Action = new PSScheduledQueryRuleAlertingAction(alertingAction);
 

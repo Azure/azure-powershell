@@ -12,45 +12,34 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Insights.TransitionalClasses;
 using Microsoft.Azure.Management.Monitor.Models;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
     /// <summary>
-    /// Wraps the EmailReceiver class.
+    /// Wraps the ArmRoleReceiver class.
     /// </summary>
-    public class PSEmailReceiver : PSActionGroupReceiverBase
+    public class PSArmRoleReceiver : PSActionGroupReceiverBase
     {
-        /// <summary>
-        /// Gets or sets the receiver's address.
-        /// </summary>
-        public string EmailAddress { get; set; }
+        /// <summary>Gets or sets the role id of this receiver.</summary>
+        public string RoleId { get; set; }
 
-        /// <summary>
-        /// Gets or sets the receiver's status.
-        /// </summary>
-        public Management.Monitor.Management.Models.ReceiverStatus? Status { get; set; }
-        
-        /// <summary>
-        /// Gets or set a value indicating whether common alert schema is to be used or not
-        /// </summary>
+        /// <summary>Gets or sets a value indicating whether or not use common alert schema.</summary>
         public bool UseCommonAlertSchema { get; set; }
 
-        /// <summary>Initializes a new instance of the PSEmailReceiver class</summary>
-        public PSEmailReceiver()
+        /// <summary>Initializes a new instance of the PSArmRoleReceiver class</summary>
+        public PSArmRoleReceiver()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the PSEmailReceiver class.
+        /// Initializes a new instance of the PSArmRoleReceiver class.
         /// </summary>
         /// <param name="receiver">The receiver to wrap.</param>
-        public PSEmailReceiver(EmailReceiver receiver)
+        public PSArmRoleReceiver(ArmRoleReceiver receiver)
         {
             this.Name = receiver.Name;
-            this.EmailAddress = receiver.EmailAddress;
-            this.Status = TransitionHelpers.ConvertNamespace(receiver.Status);
+            this.RoleId = receiver.RoleId;
             this.UseCommonAlertSchema = receiver.UseCommonAlertSchema;
         }
     }

@@ -12,45 +12,42 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Insights.TransitionalClasses;
 using Microsoft.Azure.Management.Monitor.Models;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
     /// <summary>
-    /// Wraps the EmailReceiver class.
+    /// Wraps the LogicAppReceiver class.
     /// </summary>
-    public class PSEmailReceiver : PSActionGroupReceiverBase
+    public class PSLogicAppReceiver : PSActionGroupReceiverBase
     {
         /// <summary>
-        /// Gets or sets the receiver's address.
+        /// Gets or sets the resourceId.
         /// </summary>
-        public string EmailAddress { get; set; }
+        public string ResourceId { get; set; }
 
         /// <summary>
-        /// Gets or sets the receiver's status.
+        /// Gets or sets the callbackUrl.
         /// </summary>
-        public Management.Monitor.Management.Models.ReceiverStatus? Status { get; set; }
-        
-        /// <summary>
-        /// Gets or set a value indicating whether common alert schema is to be used or not
-        /// </summary>
+        public string CallbackUrl { get; set; }
+
+        /// <summary>Gets or sets a value indicating whether or not use common alert schema.</summary>
         public bool UseCommonAlertSchema { get; set; }
 
-        /// <summary>Initializes a new instance of the PSEmailReceiver class</summary>
-        public PSEmailReceiver()
+        /// <summary>Initializes a new instance of the PSLogicAppReceiver class</summary>
+        public PSLogicAppReceiver()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the PSEmailReceiver class.
+        /// Initializes a new instance of the PSLogicAppReceiver class.
         /// </summary>
         /// <param name="receiver">The receiver to wrap.</param>
-        public PSEmailReceiver(EmailReceiver receiver)
+        public PSLogicAppReceiver(LogicAppReceiver receiver)
         {
             this.Name = receiver.Name;
-            this.EmailAddress = receiver.EmailAddress;
-            this.Status = TransitionHelpers.ConvertNamespace(receiver.Status);
+            this.ResourceId = receiver.ResourceId;
+            this.CallbackUrl = receiver.CallbackUrl;
             this.UseCommonAlertSchema = receiver.UseCommonAlertSchema;
         }
     }
