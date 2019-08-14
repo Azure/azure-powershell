@@ -39,7 +39,7 @@ The Remove-AzureRmDataFactoryV2IntegrationRuntimeNode cmdlet removes a node in a
 
 ### Example 1: Remove a node from an integration runtime
 ```
-PS C:\> Remove-AzureRmDataFactoryV2IntegrationRuntimeNode -ResourceGroupName 'rg-test-dfv2' -DataFactoryName 'test-df-eu2' -Name 'test-selfhost-ir' -NodeName 'Node_1'
+PS C:\> Remove-AzureRmDataFactoryV2IntegrationRuntimeNode -ResourceGroupName 'rg-test-dfv2' -DataFactoryName 'test-df-eu2' -IntegrationRuntimeName 'test-selfhost-ir' -NodeName 'Node_1'
 ```
 
 This command removes an node named 'Node_1' in the integration runtime named 'test-selfhost-ir' in the subscription for the resource group named 'rg-test-dfv2' and data factory named 'test-df-eu2'.
