@@ -49,9 +49,7 @@ namespace Microsoft.Azure.Commands.Management.Compute.ArgumentCompleters
                     }
                     catch (Exception ex)
                     {
-#if DEBUG
                         throw ex;
-#endif
                     }
                 }
                 return names;

@@ -11,15 +11,15 @@ namespace Microsoft.Azure.Commands.Management.Compute.ArgumentCompleters
 
     public class AvailableVmScaleSetSkuCompleterAttribute : ArgumentCompleterAttribute
     {
-        public AvailableVmScaleSetSkuCompleterAttribute(string[] parentResourceNames)
-               : base(CreateScriptBlock(parentResourceNames))
+        public AvailableVmScaleSetSkuCompleterAttribute(string resourceGroupName, string vmScaleSetName)
+               : base(CreateScriptBlock(resourceGroupName, vmScaleSetName))
         {
         }
 
-        private static ScriptBlock CreateScriptBlock(string[] parentResourceNames)
+        private static ScriptBlock CreateScriptBlock(string resourceGroupName, string vmScaleSetName)
         {
             string script = new ArgumentCompleterUtility.ScriptBuilder(
-                parentResourceNames,
+                new[] { resourceGroupName, vmScaleSetName },
                 typeof(AvailableVmScaleSetSkuCompleterAttribute).Namespace,
                 typeof(AvailableVmScaleSetSkuCompleterAttribute).Name,
                 nameof(AvailableVmScaleSetSkuCompleterAttribute.GetSkuNames)
@@ -51,9 +51,7 @@ namespace Microsoft.Azure.Commands.Management.Compute.ArgumentCompleters
                         }
                         catch (Exception ex)
                         {
-#if DEBUG
                             throw ex;
-#endif
                         }
                     }
                 }
