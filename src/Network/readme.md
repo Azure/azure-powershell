@@ -50,8 +50,11 @@ In this directory, run AutoRest:
 require:
   - $(this-folder)/../readme.azure.md
   - $(this-folder)/resources/specs-used.md
-  - $(repo)/specification/network/resource-manager/readme.md
+  
+  # Including this file would drag in every version, and the filter would take a lot longer. 
+  # - $(repo)/specification/network/resource-manager/readme.md
 
+title: NetworkManagementClient
 subject-prefix: ''
 module-version: 0.0.1
 make-sub-resources-byreference: true
@@ -880,7 +883,7 @@ directive:
     set:
       alias: Sku
   - where: # REMOVE BEFORE RELEASE: AsJob on non-long-running operation
-      verb: ^New$|^Set$|^Remove$
+      verb: ^New$|^Set$
       subject: NetworkProfile
       parameter-name: ResourceGroupName
     set:
