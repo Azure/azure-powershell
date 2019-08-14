@@ -14,7 +14,7 @@
 
 
 $global:SkippedTests = @(
-    'TestForAllFarmsStartGarbageCollection'
+    'TestStartGarbageCollection'
 )
 
 $global:Location = "local"

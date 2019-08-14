@@ -5,45 +5,29 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-AzsStorageAcquisition
+# Get-AzsStorageSettings
 
 ## SYNOPSIS
 
 ## SYNTAX
 
 ```
-Get-AzsStorageAcquisition [-Top <Int32>] [-ResourceGroupName <String>] [-Skip <Int32>] [<CommonParameters>]
+Get-AzsStorageSettings [-ResourceGroupName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Returns a list of blob acquistions.
+Returns the storage resource provider settings.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Get-AzsStorageAcquisition
+Get-AzsStorageSettings
 ```
 
-Get the list of blob acquistions.
+Get the storage settings.
 
 ## PARAMETERS
-
-### -Top
-Return the top N items as specified by the parameter value.
-Applies after the -Skip parameter.
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: -1
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -ResourceGroupName
 Resource group name.
@@ -60,21 +44,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Skip
-Skip the first N items as specified by the parameter value.
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: -1
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -82,7 +51,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.AzureStack.Management.Storage.Admin.Models.Acquisition
+### Microsoft.AzureStack.Management.Storage.Admin.Models.Settings
 ## NOTES
 
 ## RELATED LINKS

@@ -1,25 +1,19 @@
 ---
 external help file: Azs.Storage.Admin-help.xml
 Module Name: Azs.Storage.Admin
-online version: 
+online version:
 schema: 2.0.0
 ---
 
 # Get-AzsStorageQuota
 
 ## SYNOPSIS
-Returns a list of storage quotas at the given location.
 
 ## SYNTAX
 
 ### List (Default)
 ```
-Get-AzsStorageQuota [-Location <String>] [-Skip <Int32>] [-Top <Int32>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzsStorageQuota [-Name] <String> [-Location <String>] [<CommonParameters>]
+Get-AzsStorageQuota [-Skip <Int32>] [-Location <String>] [-Top <Int32>] [<CommonParameters>]
 ```
 
 ### ResourceId
@@ -27,19 +21,29 @@ Get-AzsStorageQuota [-Name] <String> [-Location <String>] [<CommonParameters>]
 Get-AzsStorageQuota -ResourceId <String> [<CommonParameters>]
 ```
 
+### Get
+```
+Get-AzsStorageQuota [-Location <String>] [-Name] <String> [<CommonParameters>]
+```
+
+### InputObject
+```
+Get-AzsStorageQuota -InputObject <StorageQuota> [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Returns a list of storage quotas at the given location.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### EXAMPLE 1
 ```
 Get-AzsStorageQuota
 ```
 
 Get the list of storage quotas.
 
-### -------------------------- EXAMPLE 2 --------------------------
+### EXAMPLE 2
 ```
 Get-AzsStorageQuota -Name "storagequota1"
 ```
@@ -48,32 +52,17 @@ Get details of the specified storage quota by name.
 
 ## PARAMETERS
 
-### -Location
-Resource location.
+### -Skip
+Skip the first N items as specified by the parameter value.
 
 ```yaml
-Type: String
-Parameter Sets: List, Get
-Aliases: 
+Type: Int32
+Parameter Sets: List
+Aliases:
 
 Required: False
 Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the storage quota.
-
-```yaml
-Type: String
-Parameter Sets: Get
-Aliases: 
-
-Required: True
-Position: 1
-Default value: None
+Default value: -1
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -93,18 +82,33 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Skip
-Skip the first N items as specified by the parameter value.
+### -Location
+Resource location.
 
 ```yaml
-Type: Int32
-Parameter Sets: List
-Aliases: 
+Type: String
+Parameter Sets: List, Get
+Aliases:
 
 Required: False
 Position: Named
-Default value: -1
+Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+The input object of type Microsoft.AzureStack.Management.Storage.Admin.Models.StorageQuota.
+
+```yaml
+Type: StorageQuota
+Parameter Sets: InputObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -115,7 +119,7 @@ Applies after the -Skip parameter.
 ```yaml
 Type: Int32
 Parameter Sets: List
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -124,16 +128,29 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Name
+The name of the storage quota.
+
+```yaml
+Type: String
+Parameter Sets: Get
+Aliases: QuotaName
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ## OUTPUTS
 
 ### Microsoft.AzureStack.Management.Storage.Admin.Models.StorageQuota
-
 ## NOTES
 
 ## RELATED LINKS
-

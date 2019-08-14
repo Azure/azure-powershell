@@ -5,37 +5,38 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 <#
 .SYNOPSIS
-    Returns the queue service.
+    
 
 .DESCRIPTION
-    Returns the queue service.
+    Update storge resource provider settings.
+
+.PARAMETER RetentionPeriodForDeletedStorageAccountsInDays
+    Set the retention days for deleted storage accounts.
 
 .PARAMETER ResourceGroupName
     Resource group name.
 
-.PARAMETER FarmName
-    Farm Id.
-
 .EXAMPLE
 
-    PS C:\> Get-AzsQueueService -FarmName f9b8e2e2-e4b4-44e0-9d92-6a848b1a5376
+    PS C:\> Update-AzsStorageSetting -RetentionPeriodForDeletedStorageAccountsInDays 2
 
-    Get the queue service.
+    Update the storage settings
 
 #>
-function Get-AzsQueueService {
-    [OutputType([Microsoft.AzureStack.Management.Storage.Admin.Models.QueueService])]
-    [CmdletBinding()]
-    param(
-        [Parameter(Mandatory = $true, Position = 0)]
+function Update-AzsStorageSettings {
+    [OutputType([Microsoft.AzureStack.Management.Storage.Admin.Models.Settings])]
+    [CmdletBinding(DefaultParameterSetName = 'Update')]
+    param(   
+        [Parameter(Mandatory = $false, ParameterSetName = 'Update')]
+        [ValidateLength(1, 90)]
         [ValidateNotNullOrEmpty()]
         [System.String]
-        $FarmName,
+        $ResourceGroupName,
 
-        [Parameter(Mandatory = $false)]
-        [ValidateLength(1, 90)]
-        [System.String]
-        $ResourceGroupName
+        [Parameter(Mandatory = $true, ParameterSetName = 'Update')]
+        [ValidateRange(0, [int]::MaxValue)]
+        [System.Int32]
+        $RetentionPeriodForDeletedStorageAccountsInDays
     )
 
     Begin {
@@ -50,16 +51,16 @@ function Get-AzsQueueService {
     }
 
     Process {
-
-
+    
+        $ErrorActionPreference = 'Stop'
 
         $NewServiceClient_params = @{
             FullClientTypeName = 'Microsoft.AzureStack.Management.Storage.Admin.StorageAdminClient'
         }
 
-        $GlobalParameterHashtable = @{}
+        $GlobalParameterHashtable = @{ }
         $NewServiceClient_params['GlobalParameterHashtable'] = $GlobalParameterHashtable
-
+     
         $GlobalParameterHashtable['SubscriptionId'] = $null
         if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
             $GlobalParameterHashtable['SubscriptionId'] = $PSBoundParameters['SubscriptionId']
@@ -71,16 +72,22 @@ function Get-AzsQueueService {
             $ResourceGroupName = "System.$((Get-AzureRmLocation).Location)"
         }
 
-        Write-Verbose -Message 'Performing operation GetWithHttpMessagesAsync on $StorageAdminClient.'
-        $TaskResult = $StorageAdminClient.QueueServices.GetWithHttpMessagesAsync($ResourceGroupName, $FarmName)
+        if ('Update' -eq $PsCmdlet.ParameterSetName) {
+            Write-Verbose -Message 'Performing operation UpdateWithHttpMessagesAsync on $StorageAdminClient.'
+            $TaskResult = $StorageAdminClient.StorageSettings.UpdateWithHttpMessagesAsync($ResourceGroupName, $RetentionPeriodForDeletedStorageAccountsInDays)
+        }
+        else {
+            Write-Verbose -Message 'Failed to map parameter set to operation method.'
+            throw 'Module failed to find operation to execute.'
+        }
 
         if ($TaskResult) {
             $GetTaskResult_params = @{
                 TaskResult = $TaskResult
             }
-
+            
             Get-TaskResult @GetTaskResult_params
-
+        
         }
     }
 

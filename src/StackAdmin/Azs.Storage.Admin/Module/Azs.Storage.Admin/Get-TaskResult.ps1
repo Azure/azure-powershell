@@ -7,7 +7,7 @@ Microsoft.PowerShell.Core\Set-StrictMode -Version Latest
 
 <#
 .DESCRIPTION
-   Get zero or more result items from a task. Optionally, skip N items or take only the top N items. If paged, assigns $PageResult.Page
+   Get zero or more result items from a task. Optionally, skip N items or take only the top N items. If paged, assigns $PageResult.Result
    the page item result, and the returned result items are the items within the page.
 
 .PARAMETER  TaskResult
@@ -28,43 +28,29 @@ Microsoft.PowerShell.Core\Set-StrictMode -Version Latest
 function Get-TaskResult {
     [CmdletBinding()]
     param(
-        [Parameter(Mandatory = $true)]
+        [Parameter(Mandatory=$true)]
         [object]
         $TaskResult,
 
-        [Parameter(Mandatory = $false)]
+        [Parameter(Mandatory=$false)]
         [PSCustomObject]
         $SkipInfo,
 
-        [Parameter(Mandatory = $false)]
+        [Parameter(Mandatory=$false)]
         [PSCustomObject]
         $TopInfo,
 
-        [Parameter(Mandatory = $false)]
+        [Parameter(Mandatory=$false)]
         [PSCustomObject]
         $PageResult,
 
-        [Parameter(Mandatory = $false)]
+        [Parameter(Mandatory=$false)]
         [Type]
         $PageType
     )
 
-    function Get-Exception {
-        param(
-            $Exception
-        )
-        try {
-            $cloudException = "Code = $($Exception.Body.Code)`nMessage = $($Exception.Body.Message)"
-            $Exception = $cloudException
-        } catch {
-            # Catch exception so no output.
-        } finally {
-            Write-Error -Exception $Exception
-        }
-    }
-
-
-    $null = $TaskResult.AsyncWaitHandle.WaitOne()
+    $ErrorActionPreference = 'Stop'               
+    $null = $TaskResult.AsyncWaitHandle.WaitOne()               
     Write-Debug -Message "$($TaskResult | Out-String)"
 
     if ((Get-Member -InputObject $TaskResult -Name 'Result') -and
@@ -80,10 +66,12 @@ function Get-TaskResult {
             }
             foreach ($item in $result) {
                 if ($SkipInfo -and ($SkipInfo.Count++ -lt $SkipInfo.Max)) {
-                } else {
+                }
+                else {
                     if ((-not $TopInfo) -or ($TopInfo.Max -eq -1) -or ($TopInfo.Count++ -lt $TopInfo.Max)) {
                         $item
-                    } else {
+                    }
+                    else {
                         break
                     }
                 }
@@ -91,23 +79,31 @@ function Get-TaskResult {
         } else {
             $result
         }
-    } elseif ($TaskResult.IsFaulted) {
+    }
+    elseif ($TaskResult.IsFaulted)
+    {
         Write-Verbose -Message 'Operation failed.'
         if ($TaskResult.Exception) {
             if ((Get-Member -InputObject $TaskResult.Exception -Name 'InnerExceptions') -and $TaskResult.Exception.InnerExceptions) {
                 foreach ($ex in $TaskResult.Exception.InnerExceptions) {
-                    Get-Exception -Exception $ex
+                    Write-Error -Exception $ex
                 }
-            } elseif ((Get-Member -InputObject $TaskResult.Exception -Name 'InnerException') -and $TaskResult.Exception.InnerException) {
-                Get-Exception -Exception $TaskResult.Exception.InnerException
-            } else {
-                Get-Exception -Exception $TaskResult.Exception
+            }
+            elseif ((Get-Member -InputObject $TaskResult.Exception -Name 'InnerException') -and $TaskResult.Exception.InnerException) {
+                Write-Error -Exception $TaskResult.Exception.InnerException
+            }
+            else {
+                Write-Error -Exception $TaskResult.Exception
             }
         }
-    } elseif ($TaskResult.IsCanceled) {
+    } 
+    elseif ($TaskResult.IsCanceled)
+    {
         Write-Verbose -Message 'Operation got cancelled.'
         Throw 'Operation got cancelled.'
-    } else {
+    }
+    else
+    {
         Write-Verbose -Message 'Operation completed successfully.'
     }
 }

@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 0.3.0
+* Support new storage sdk version 2019-08-08-preview
+
 ## Version 0.2.3
 * Module dependencies updated
     * AzureRM.Resources module updated to 6.4.3

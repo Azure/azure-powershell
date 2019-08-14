@@ -1,13 +1,13 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/461f4ede-f131-4f95-9a35-7cefb88a6f77/providers/Microsoft.Storage.Admin/locations/local/quotas?api-version=2019-08-08-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDYxZjRlZGUtZjEzMS00Zjk1LTlhMzUtN2NlZmI4OGE2Zjc3L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvcXVvdGFzP2FwaS12ZXJzaW9uPTIwMTktMDgtMDgtcHJldmlldw==",
+      "RequestUri": "/subscriptions/461f4ede-f131-4f95-9a35-7cefb88a6f77/resourcegroups/System.local/providers/Microsoft.Storage.Admin/settings?api-version=2019-08-08-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDYxZjRlZGUtZjEzMS00Zjk1LTlhMzUtN2NlZmI4OGE2Zjc3L3Jlc291cmNlZ3JvdXBzL1N5c3RlbS5sb2NhbC9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2UuQWRtaW4vc2V0dGluZ3M/YXBpLXZlcnNpb249MjAxOS0wOC0wOC1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "75686616-6cd8-488c-a68e-318daf6cd201"
+          "b3d0ebc4-dfa6-4488-988c-662b4bdbbb0b"
         ],
         "Accept-Language": [
           "en-US"
@@ -27,22 +27,22 @@
           "no-cache"
         ],
         "x-ms-correlation-request-id": [
-          "1afd2181-5531-4d08-b18a-dfa66e0f058a"
+          "4315feb7-47e8-4023-9dfb-92ef2c3ea381"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "WWW-Authenticate": [
-          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvAO58LGaEdtzmXeo4LWVF0SDwCDparuBVLu5X53oRnrlECmoewDeori6tuIcj13V+rq0CUo1kPRItvaX/GOKyf6eI8q4qND+TG1aVSnDHwgNkNWcpTz8WZL4Nhmn4A9G24fmEWwQEHpnnFBm7/19e"
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvfQ4eOOx2kw8cor5Ok8vSmHDLTjJGBqlG4p0DH0gbnuXHi4iYBSq2tlUA8SKloWfOr7qpaXUfy35eHTVzNit3rnaHkrRr/AEi2Oxb3davjgDAw/L/cajLjqPgmXT9G7/qKliH+VT4c9d0DeGIEZ6m"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14994"
+          "14997"
         ],
         "x-ms-request-id": [
-          "1afd2181-5531-4d08-b18a-dfa66e0f058a"
+          "4315feb7-47e8-4023-9dfb-92ef2c3ea381"
         ],
         "x-ms-routing-request-id": [
-          "LOCAL:20190808T015039Z:1afd2181-5531-4d08-b18a-dfa66e0f058a"
+          "LOCAL:20190808T015038Z:4315feb7-47e8-4023-9dfb-92ef2c3ea381"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -54,7 +54,7 @@
           "Thu, 08 Aug 2019 01:50:38 GMT"
         ],
         "Content-Length": [
-          "403"
+          "59"
         ],
         "Content-Type": [
           "application/json"
@@ -63,7 +63,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/461f4ede-f131-4f95-9a35-7cefb88a6f77/providers/Microsoft.Storage.Admin/locations/local/quotas/Default Quota\",\r\n      \"name\": \"local/Default Quota\",\r\n      \"type\": \"Microsoft.Storage.Admin/locations/quotas\",\r\n      \"location\": \"local\",\r\n      \"properties\": {\r\n        \"numberOfStorageAccounts\": 20,\r\n        \"capacityInGb\": 2048\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"retentionPeriodForDeletedStorageAccountsInDays\": 1\r\n}",
       "StatusCode": 200
     }
   ],
