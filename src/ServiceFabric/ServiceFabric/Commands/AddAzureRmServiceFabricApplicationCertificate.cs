@@ -25,7 +25,10 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [CmdletDeprecation("This command will be deprecated. Please use Add-AzVmssSecret to add application certificates going forward.")]
+    [CmdletDeprecation(ReplacementCmdletName = VerbsCommon.Add +
+        "-" +
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix +
+        "VmssSecret")]
     [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceFabricApplicationCertificate", SupportsShouldProcess = true), OutputType(typeof(PSKeyVault))]
     public class AddAzureRmServiceFabricApplicationCertificate : ServiceFabricClusterCertificateCmdlet
     {
