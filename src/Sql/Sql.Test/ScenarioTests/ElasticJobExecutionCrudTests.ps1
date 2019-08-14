@@ -24,9 +24,7 @@ function Test-StartJob
 	# Setup SELECT 1 script on control db
 	$script = "SELECT 1"
 	$s1 = Get-AzSqlServer -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName
-	$serverLogin = $s1.SqlAdministratorLogin
-	$serverPassword = "t357ingP@s5w0rd!"
-	$credential = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
+	$credential = Get-Credential $s1.SqlAdministratorLogin
 	$jc1 = $a1 | New-AzSqlElasticJobCredential -Name (Get-UserName) -Credential $credential
 	$tg1 = $a1 | New-AzSqlElasticJobTargetGroup -Name (Get-TargetGroupName)
 	$tg1 | Add-AzSqlElasticJobTarget -ServerName $a1.ServerName -DatabaseName $a1.DatabaseName
@@ -98,9 +96,7 @@ function Test-StartJobWait
 	# Setup SELECT 1 script on control db
 	$script = "SELECT 1"
 	$s1 = Get-AzSqlServer -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName
-	$serverLogin = $s1.SqlAdministratorLogin
-	$serverPassword = "t357ingP@s5w0rd!"
-	$credential = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
+	$credential = Get-Credential $s1.SqlAdministratorLogin
 	$jc1 = $a1 | New-AzSqlElasticJobCredential -Name (Get-UserName) -Credential $credential
 	$tg1 = $a1 | New-AzSqlElasticJobTargetGroup -Name (Get-TargetGroupName)
 	$tg1 | Add-AzSqlElasticJobTarget -ServerName $a1.ServerName -DatabaseName $a1.DatabaseName
@@ -137,9 +133,7 @@ function Test-StopJob
 
 	$script = "WAITFOR DELAY '00:10:00'"
 	$s1 = Get-AzSqlServer -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName
-	$serverLogin = $s1.SqlAdministratorLogin
-	$serverPassword = "t357ingP@s5w0rd!"
-	$credential = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
+	$credential = Get-Credential $s1.SqlAdministratorLogin
 	$jc1 = $a1 | New-AzSqlElasticJobCredential -Name (Get-UserName) -Credential $credential
 	$tg1 = $a1 | New-AzSqlElasticJobTargetGroup -Name (Get-TargetGroupName)
 	$tg1 | Add-AzSqlElasticJobTarget -ServerName $a1.ServerName -DatabaseName $a1.DatabaseName
@@ -202,9 +196,7 @@ function Test-GetJobExecution
 
 	$script = "SELECT 1"
 	$s1 = Get-AzSqlServer -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName
-	$serverLogin = $s1.SqlAdministratorLogin
-	$serverPassword = "t357ingP@s5w0rd!"
-	$credential = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
+	$credential = Get-Credential $s1.SqlAdministratorLogin
 	$jc1 = $a1 | New-AzSqlElasticJobCredential -Name (Get-UserName) -Credential $credential
 	$tg1 = $a1 | New-AzSqlElasticJobTargetGroup -Name (Get-TargetGroupName)
 	$tg1 | Add-AzSqlElasticJobTarget -ServerName $a1.ServerName -DatabaseName $a1.DatabaseName
@@ -316,9 +308,7 @@ function Test-GetJobStepExecution
 
 	$script = "SELECT 1"
 	$s1 = Get-AzSqlServer -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName
-	$serverLogin = $s1.SqlAdministratorLogin
-	$serverPassword = "t357ingP@s5w0rd!"
-	$credential = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
+	$credential = Get-Credential $s1.SqlAdministratorLogin
 	$jc1 = $a1 | New-AzSqlElasticJobCredential -Name (Get-UserName) -Credential $credential
 	$tg1 = $a1 | New-AzSqlElasticJobTargetGroup -Name (Get-TargetGroupName)
 	$tg1 | Add-AzSqlElasticJobTarget -ServerName $a1.ServerName -DatabaseName $a1.DatabaseName
@@ -399,9 +389,7 @@ function Test-GetJobTargetExecution
 
 	$script = "SELECT 1"
 	$s1 = Get-AzSqlServer -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName
-	$serverLogin = $s1.SqlAdministratorLogin
-	$serverPassword = "t357ingP@s5w0rd!"
-	$credential = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
+	$credential = Get-Credential $s1.SqlAdministratorLogin
 	$jc1 = $a1 | New-AzSqlElasticJobCredential -Name (Get-UserName) -Credential $credential
 	$tg1 = $a1 | New-AzSqlElasticJobTargetGroup -Name (Get-TargetGroupName)
 	$tg1 | Add-AzSqlElasticJobTarget -ServerName $a1.ServerName -DatabaseName $a1.DatabaseName
