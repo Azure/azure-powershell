@@ -51,8 +51,6 @@ require:
   - $(this-folder)/../readme.azure.md
   - $(repo)/specification/keyvault/resource-manager/readme.md
   - $(repo)/specification/keyvault/data-plane/readme.md
-  # Cormac -- whats different with this? Something we need to hot-patch with a directive?
-  # - https://github.com/cormacpayne/azure-rest-api-specs/blob/multiapi-keyvault/specification/keyvault/data-plane/readme.md
 
 title: KeyVault
 module-version: 0.0.1
@@ -65,9 +63,9 @@ This hot-patches the swagger to have a better parameterized host.
 
 directive: 
   - from: swagger-document
-    where: $
+    where: $["x-ms-parameterized-host"]
     transform: >
-      $."x-ms-parameterized-host" = {
+      return {
       "hostTemplate": "https://{vaultName}.{keyVaultDnsSuffix}/",
       "useSchemePrefix": false,
       "positionInOperation": "first",
