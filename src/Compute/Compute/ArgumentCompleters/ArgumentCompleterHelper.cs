@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Management.Compute.ArgumentCompleters
 {
-    public static class ArgumentCompleterUtility
+    public static class ArgumentCompleterHelper
     {
         public class ScriptBuilder
         {
@@ -35,7 +35,7 @@ $candidates = [{libNamespace}.{className}]::{methodName}({parametersAsArguments}
 $candidates | Where-Object {{ $_ -Like ""$wordToComplete*"" }} | Sort-Object | Get-Unique | ForEach-Object {{ [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_) }}";
             }
         }
-        
+
         public static List<TItem> ReadAllPages<TItem>(Task<IPage<TItem>> task, Func<string, Task<IPage<TItem>>> nextTaskCreator)
         {
             var results = new List<TItem>();

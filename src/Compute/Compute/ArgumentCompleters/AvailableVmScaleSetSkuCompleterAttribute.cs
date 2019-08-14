@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.Management.Compute.ArgumentCompleters
 
         private static ScriptBlock CreateScriptBlock(string resourceGroupName, string vmScaleSetName)
         {
-            string script = new ArgumentCompleterUtility.ScriptBuilder(
+            string script = new ArgumentCompleterHelper.ScriptBuilder(
                 new[] { resourceGroupName, vmScaleSetName },
                 typeof(AvailableVmScaleSetSkuCompleterAttribute).Namespace,
                 typeof(AvailableVmScaleSetSkuCompleterAttribute).Name,
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Management.Compute.ArgumentCompleters
             lock (_lock)
             {
                 IAzureContext context = AzureRmProfileProvider.Instance.Profile.DefaultContext;
-                var contextHash = ArgumentCompleterUtility.HashContext(context);
+                var contextHash = ArgumentCompleterHelper.HashContext(context);
 
                 string[] names = new string[] { };
 
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Management.Compute.ArgumentCompleters
         {
             string[] output;
             var client = new ComputeClient(context).ComputeManagementClient.VirtualMachineScaleSets;
-            output = ArgumentCompleterUtility.ReadAllPages(client.ListSkusAsync(resourceGroupName, vmScaleSetName), nextPageLink => client.ListSkusNextAsync(nextPageLink))
+            output = ArgumentCompleterHelper.ReadAllPages(client.ListSkusAsync(resourceGroupName, vmScaleSetName), nextPageLink => client.ListSkusNextAsync(nextPageLink))
                 .Select(sku => sku.Sku.Name)
                 .ToArray();
             return output;
