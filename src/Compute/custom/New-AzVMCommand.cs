@@ -45,6 +45,7 @@ namespace Microsoft.Azure.Commands.Compute
     [OutputType(typeof(VirtualMachine))]
     public class NewAzVMCommand : AzureRMCmdlet, IEventListener
     {
+        string __correlationId = Guid.NewGuid().ToString(), __processRecordId;
         public const string SimpleParameterSet = "SimpleParameterSet";
 
         [Parameter(ParameterSetName=SimpleParameterSet, Mandatory = true)]
@@ -163,6 +164,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
+            __processRecordId = Guid.NewGuid().ToString();
             this.StartAndWait(StrategyExecuteCmdletAsync);
         }
 
@@ -354,7 +356,10 @@ namespace Microsoft.Azure.Commands.Compute
 
         public Task Signal(string id, CancellationToken token, Func<EventData> createMessage)
         {
-            throw new NotImplementedException();
+            return Microsoft.Azure.PowerShell.Cmdlets.Compute.Module.Instance.Signal(id, token, createMessage, 
+                (i, t, m) => this.Signal(i, t, () => EventDataConverter.ConvertFrom(m()) as EventData), 
+                MyInvocation, this.ParameterSetName, __correlationId, __processRecordId, null);
+
         }
     }
 }
