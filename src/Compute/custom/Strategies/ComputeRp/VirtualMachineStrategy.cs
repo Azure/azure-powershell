@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             IEnumerable<int> dataDisks,
             IList<string> zones,
             bool ultraSSDEnabled,
-            Func<IEngine, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.SubResource> proximityPlacementGroup)
+            Func<IEngine, Microsoft.Azure.Management.Internal.Resources.Models.SubResource> proximityPlacementGroup)
         {
               var windowsConfig = imageAndOsType.CreateWindowsConfiguration();
               var linuxConfig = imageAndOsType.CreateLinuxConfiguration();

@@ -39,7 +39,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.PowerShell.Cmdlets.Compute.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.PowerShell.Cmdlets.Compute.custom.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -102,6 +102,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute {
         internal static string NoSubscriptionInContext {
             get {
                 return ResourceManager.GetString("NoSubscriptionInContext", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use &apos;{0}&apos; to connect to the VM..
+        /// </summary>
+        internal static string VirtualMachineUseConnectionString {
+            get {
+                return ResourceManager.GetString("VirtualMachineUseConnectionString", resourceCulture);
             }
         }
     }
