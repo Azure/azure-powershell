@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Management.Compute.ArgumentCompleters
                 IAzureContext context = AzureRmProfileProvider.Instance.Profile.DefaultContext;
                 var contextHash = ArgumentCompleterUtility.HashContext(context);
 
-                if (!_completionHistory.ContainsKey(contextHash))
+                if (_completionHistory.ContainsKey(contextHash))
                 {
                     names = _completionHistory[contextHash];
                 }
@@ -46,6 +46,7 @@ namespace Microsoft.Azure.Commands.Management.Compute.ArgumentCompleters
                     try
                     {
                         names = GetSkuNamesFromClient(context);
+                        _completionHistory.Add(contextHash, names);
                     }
                     catch (Exception ex)
                     {
