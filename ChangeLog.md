@@ -1,3 +1,7 @@
+## Aug 2019 
+#### Get-AzNetworkServiceTag
+* Added details for the "location" parameter to reduce customer confusion.
+
 ## 2.5.0 - July 2019
 #### Az.Accounts
 * Update common code to use latest version of ClientRuntime
