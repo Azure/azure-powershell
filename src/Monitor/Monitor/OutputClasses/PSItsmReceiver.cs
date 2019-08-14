@@ -18,40 +18,38 @@ using Microsoft.Azure.Management.Monitor.Models;
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
     /// <summary>
-    /// Wraps the EmailReceiver class.
+    /// Wraps the ItsmReceiver class.
     /// </summary>
-    public class PSEmailReceiver : PSActionGroupReceiverBase
+    public class PSItsmReceiver : PSActionGroupReceiverBase
     {
-        /// <summary>
-        /// Gets or sets the receiver's address.
-        /// </summary>
-        public string EmailAddress { get; set; }
+        /// <summary>Gets or sets the itsm workspace id of this receiver.</summary>
+        public string WorkspaceId { get; set; }
 
-        /// <summary>
-        /// Gets or sets the receiver's status.
-        /// </summary>
-        public Management.Monitor.Management.Models.ReceiverStatus? Status { get; set; }
-        
-        /// <summary>
-        /// Gets or set a value indicating whether common alert schema is to be used or not
-        /// </summary>
-        public bool UseCommonAlertSchema { get; set; }
+        /// <summary>Gets or sets the itsm connection id of this receiver.</summary>
+        public string ConnectionId { get; set; }
 
-        /// <summary>Initializes a new instance of the PSEmailReceiver class</summary>
-        public PSEmailReceiver()
+        /// <summary>Gets or sets the itsm ticket configuration of this receiver.</summary>
+        public string TicketConfiguration { get; set; }
+
+        /// <summary>Gets or sets the itsm region of this receiver.</summary>
+        public string Region { get; set; }
+
+        /// <summary>Initializes a new instance of the PSItsmReceiver class</summary>
+        public PSItsmReceiver()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the PSEmailReceiver class.
+        /// Initializes a new instance of the PSItsmReceiver class.
         /// </summary>
         /// <param name="receiver">The receiver to wrap.</param>
-        public PSEmailReceiver(EmailReceiver receiver)
+        public PSItsmReceiver(ItsmReceiver receiver)
         {
             this.Name = receiver.Name;
-            this.EmailAddress = receiver.EmailAddress;
-            this.Status = TransitionHelpers.ConvertNamespace(receiver.Status);
-            this.UseCommonAlertSchema = receiver.UseCommonAlertSchema;
+            this.WorkspaceId = receiver.WorkspaceId;
+            this.ConnectionId = receiver.ConnectionId;
+            this.TicketConfiguration = receiver.TicketConfiguration;
+            this.Region = receiver.Region;
         }
     }
 }

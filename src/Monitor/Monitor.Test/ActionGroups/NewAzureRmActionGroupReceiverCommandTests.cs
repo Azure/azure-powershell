@@ -68,8 +68,8 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActionGroups
             Cmdlet.SetParameterSet("NewSmsReceiver");
             Cmdlet.SmsReceiver = true;
             Cmdlet.Name = "sms1";
-            Cmdlet.CountryCode = "1";
-            Cmdlet.PhoneNumber = "4254251234";
+            Cmdlet.SmsCountryCode = "1";
+            Cmdlet.SmsPhoneNumber = "4254251234";
             Cmdlet.ExecuteCmdlet();
 
             Func<PSSmsReceiver, bool> verify = r =>
