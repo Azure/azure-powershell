@@ -366,6 +366,14 @@ namespace Microsoft.Azure.Commands.Network.Properties {
             }
         }
         
+        ///   Looks up a localized string similar to Provided ResourceId isn&apos;t in the right format or doesn&apos;t refer to the right resource type ({0}).
+        /// </summary>
+        internal static string InvalidResourceId {
+            get {
+                return ResourceManager.GetString("InvalidResourceId", resourceCulture);
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to backendAddressPools.
         /// </summary>
