@@ -50,12 +50,50 @@ In this directory, run AutoRest:
 require:
   - $(this-folder)/../readme.azure.md
   - $(repo)/specification/keyvault/resource-manager/readme.md
+  - $(repo)/specification/keyvault/data-plane/readme.md
   # Cormac -- whats different with this? Something we need to hot-patch with a directive?
-  - https://github.com/cormacpayne/azure-rest-api-specs/blob/multiapi-keyvault/specification/keyvault/data-plane/readme.md
+  # - https://github.com/cormacpayne/azure-rest-api-specs/blob/multiapi-keyvault/specification/keyvault/data-plane/readme.md
 
 title: KeyVault
 module-version: 0.0.1
 
+```
+
+This hot-patches the swagger to have a better parameterized host.
+
+``` yaml
+
+directive: 
+  - from: swagger-document
+    where: $
+    transform: >
+      $."x-ms-parameterized-host" = {
+      "hostTemplate": "https://{vaultName}.{keyVaultDnsSuffix}/",
+      "useSchemePrefix": false,
+      "positionInOperation": "first",
+      "parameters": [
+        {
+          "name": "vaultName",
+          "description": "The name of the vault to execute operations on.",
+          "required": true,
+          "type": "string",
+          "in": "path",
+          "x-ms-skip-url-encoding": true
+        },
+        {
+          "name": "keyVaultDnsSuffix",
+          "description": "The URI used as the base for all key vault requests.",
+          "required": true,
+          "type": "string",
+          "in": "path",
+          "x-ms-skip-url-encoding": true,
+          "default": "vault.azure.net",
+          "x-ms-parameter-location": "client"
+        }
+      ]}
+```
+
+``` yaml
 directive:
   - where:
       verb: Clear|Get
