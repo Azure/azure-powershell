@@ -180,6 +180,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 ServiceLevel = volume.ServiceLevel,
                 UsageThreshold = volume.UsageThreshold,
                 ExportPolicy = (volume.ExportPolicy != null) ? ConvertExportPolicyToPs(volume.ExportPolicy) : null,
+                ProtocolTypes = volume.ProtocolTypes,
+                MountTargets = volume.MountTargets,
                 SnapshotId = volume.SnapshotId,
                 BaremetalTenantId = volume.BaremetalTenantId,
                 SubnetId = volume.SubnetId
