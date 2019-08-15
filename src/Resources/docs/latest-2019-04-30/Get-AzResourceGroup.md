@@ -88,7 +88,7 @@ Dynamic: False
 ```
 
 ### -Filter
-The filter to apply on the operation.<br><br>You can filter by tag names and values.
+The filter to apply on the operation.\<br\>\<br\>You can filter by tag names and values.
 For example, to filter for a tag name and value, use $filter=tagName eq 'tag1' and tagValue eq 'Value1'
 
 ```yaml

@@ -12,15 +12,15 @@ Creates a role assignment.
 
 ## SYNTAX
 
-### Create (Default)
+### CreateExpanded (Default)
 ```
-New-AzRoleAssignment -Name <String> -Scope <String> [-Parameter <IRoleAssignmentCreateParameters>]
+New-AzRoleAssignment -Name <String> -Scope <String> -PrincipalId <String> -RoleDefinitionId <String>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateExpanded
+### Create
 ```
-New-AzRoleAssignment -Name <String> -Scope <String> -PrincipalId <String> -RoleDefinitionId <String>
+New-AzRoleAssignment -Name <String> -Scope <String> -Parameter <IRoleAssignmentCreateParameters>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ New-AzRoleAssignment -InputObject <IResourcesIdentity> -PrincipalId <String> -Ro
 
 ### CreateViaIdentity
 ```
-New-AzRoleAssignment -InputObject <IResourcesIdentity> [-Parameter <IRoleAssignmentCreateParameters>]
+New-AzRoleAssignment -InputObject <IResourcesIdentity> -Parameter <IRoleAssignmentCreateParameters>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -99,7 +99,7 @@ It can be any valid GUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: RoleAssignmentName
 
 Required: True
@@ -119,7 +119,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20150701.IRoleAssig
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -168,7 +168,7 @@ For example, use '/subscriptions/{subscription-id}/' for a subscription, '/subsc
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True

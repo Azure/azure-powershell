@@ -20,26 +20,26 @@ If the asynchronous request failed, the URI in the Location header returns an er
 
 ### Delete (Default)
 ```
-Remove-AzDeployment -Name <String> -SubscriptionId <String> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzDeployment -Name <String> -SubscriptionId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Delete1
 ```
-Remove-AzDeployment -Name <String> -SubscriptionId <String> -ResourceGroupName <String> [-PassThru]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzDeployment -Name <String> -SubscriptionId <String> -ResourceGroupName <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity1
 ```
-Remove-AzDeployment -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzDeployment -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzDeployment -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzDeployment -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -154,7 +154,7 @@ Dynamic: False
 ```
 
 ### -PassThru
-When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

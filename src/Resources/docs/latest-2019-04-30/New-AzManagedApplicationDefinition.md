@@ -14,7 +14,7 @@ Creates a new managed application definition.
 
 ### Create1 (Default)
 ```
-New-AzManagedApplicationDefinition -Id <String> [-Parameter <IApplicationDefinition>]
+New-AzManagedApplicationDefinition -Id <String> -Parameter <IApplicationDefinition>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -34,7 +34,7 @@ New-AzManagedApplicationDefinition -Name <String> -ResourceGroupName <String> -S
 ### Create
 ```
 New-AzManagedApplicationDefinition -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <IApplicationDefinition>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ -Parameter <IApplicationDefinition> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -78,13 +78,13 @@ New-AzManagedApplicationDefinition -InputObject <IResourcesIdentity>
 
 ### CreateViaIdentity1
 ```
-New-AzManagedApplicationDefinition -InputObject <IResourcesIdentity> [-Parameter <IApplicationDefinition>]
+New-AzManagedApplicationDefinition -InputObject <IResourcesIdentity> -Parameter <IApplicationDefinition>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
-New-AzManagedApplicationDefinition -InputObject <IResourcesIdentity> [-Parameter <IApplicationDefinition>]
+New-AzManagedApplicationDefinition -InputObject <IResourcesIdentity> -Parameter <IApplicationDefinition>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -417,7 +417,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20170901.IApplicati
 Parameter Sets: Create1, Create, CreateViaIdentity1, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

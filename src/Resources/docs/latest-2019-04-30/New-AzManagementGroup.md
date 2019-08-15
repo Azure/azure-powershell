@@ -13,17 +13,17 @@ If a management group is already created and a subsequent create request is issu
 
 ## SYNTAX
 
-### Create (Default)
-```
-New-AzManagementGroup -GroupId <String> [-CacheControl <String>]
- [-CreateManagementGroupRequest <ICreateManagementGroupRequest>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded
+### CreateExpanded (Default)
 ```
 New-AzManagementGroup -GroupId <String> [-CacheControl <String>] [-DisplayName <String>] [-Name <String>]
  [-ParentId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### Create
+```
+New-AzManagementGroup -GroupId <String> -CreateManagementGroupRequest <ICreateManagementGroupRequest>
+ [-CacheControl <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -36,9 +36,9 @@ New-AzManagementGroup -InputObject <IResourcesIdentity> [-CacheControl <String>]
 
 ### CreateViaIdentity
 ```
-New-AzManagementGroup -InputObject <IResourcesIdentity> [-CacheControl <String>]
- [-CreateManagementGroupRequest <ICreateManagementGroupRequest>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzManagementGroup -InputObject <IResourcesIdentity>
+ -CreateManagementGroupRequest <ICreateManagementGroupRequest> [-CacheControl <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -108,7 +108,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180301Preview.ICr
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -154,7 +154,7 @@ Management Group ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: GroupName
 
 Required: True

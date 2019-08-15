@@ -14,30 +14,30 @@ Create a new user.
 
 ### Create (Default)
 ```
-New-AzADUser -TenantId <String> [-Parameter <IUserCreateParameters>] [-DefaultProfile <PSObject>] [-Confirm]
+New-AzADUser -TenantId <String> -Parameter <IUserCreateParameters> [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpanded
 ```
 New-AzADUser -TenantId <String> -AccountEnabled -DisplayName <String> -MailNickname <String>
- -PasswordProfilePassword <String> -UserPrincipalName <String> [-GivenName <String>] [-ImmutableId <String>]
- [-Mail <String>] [-PasswordProfileForceChangePasswordNextLogin] [-Surname <String>] [-UsageLocation <String>]
- [-UserType <UserType>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -PasswordProfile <IPasswordProfile> -UserPrincipalName <String> [-GivenName <String>] [-ImmutableId <String>]
+ [-Mail <String>] [-Surname <String>] [-UsageLocation <String>] [-UserType <UserType>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzADUser -InputObject <IResourcesIdentity> -AccountEnabled -DisplayName <String> -MailNickname <String>
- -PasswordProfilePassword <String> -UserPrincipalName <String> [-GivenName <String>] [-ImmutableId <String>]
- [-Mail <String>] [-PasswordProfileForceChangePasswordNextLogin] [-Surname <String>] [-UsageLocation <String>]
- [-UserType <UserType>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -PasswordProfile <IPasswordProfile> -UserPrincipalName <String> [-GivenName <String>] [-ImmutableId <String>]
+ [-Mail <String>] [-Surname <String>] [-UsageLocation <String>] [-UserType <UserType>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
-New-AzADUser -InputObject <IResourcesIdentity> [-Parameter <IUserCreateParameters>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzADUser -InputObject <IResourcesIdentity> -Parameter <IUserCreateParameters> [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -203,7 +203,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IUserCreateParam
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -211,27 +211,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -PasswordProfileForceChangePasswordNextLogin
-Whether to force a password change on next login.
+### -PasswordProfile
+Password Profile
+To construct, see NOTES section for PASSWORDPROFILE properties and create a hash table.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -PasswordProfilePassword
-Password
-
-```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IPasswordProfile
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -384,7 +369,10 @@ To create the parameters described below, construct a hash table containing the 
   - `AccountEnabled <Boolean>`: Whether the account is enabled.
   - `DisplayName <String>`: The display name of the user.
   - `MailNickname <String>`: The mail alias for the user.
-  - `PasswordProfilePassword <String>`: Password
+  - `PasswordProfile <IPasswordProfile>`: Password Profile
+    - `[(Any) <Object>]`: This indicates any property can be added to this object.
+    - `Password <String>`: Password
+    - `[ForceChangePasswordNextLogin <Boolean?>]`: Whether to force a password change on next login.
   - `UserPrincipalName <String>`: The user principal name (someuser@contoso.com). It must contain one of the verified domains for the tenant.
   - `[GivenName <String>]`: The given name for the user.
   - `[ImmutableId <String>]`: This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account. It is used to associate an on-premises Active Directory user account with their Azure AD user object.
@@ -392,7 +380,11 @@ To create the parameters described below, construct a hash table containing the 
   - `[UsageLocation <String>]`: A two letter country code (ISO standard 3166). Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. Examples include: "US", "JP", and "GB".
   - `[UserType <UserType?>]`: A string value that can be used to classify user types in your directory, such as 'Member' and 'Guest'.
   - `[Mail <String>]`: The primary email address of the user.
-  - `[PasswordProfileForceChangePasswordNextLogin <Boolean?>]`: Whether to force a password change on next login.
+
+#### PASSWORDPROFILE <IPasswordProfile>: Password Profile
+  - `[(Any) <Object>]`: This indicates any property can be added to this object.
+  - `Password <String>`: Password
+  - `[ForceChangePasswordNextLogin <Boolean?>]`: Whether to force a password change on next login.
 
 ## RELATED LINKS
 

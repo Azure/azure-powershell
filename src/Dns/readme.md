@@ -56,9 +56,6 @@ module-version: 0.0.1
 
 directive:
 # RecordSet
-  # - no-inline:
-  #     - CnameRecord
-  #     - SoaRecord
   - where:
       subject: RecordSet
       parameter-name: Parameter

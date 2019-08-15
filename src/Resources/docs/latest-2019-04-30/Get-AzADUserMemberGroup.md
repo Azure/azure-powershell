@@ -12,16 +12,16 @@ Gets a collection that contains the object IDs of the groups of which the user i
 
 ## SYNTAX
 
-### Get (Default)
-```
-Get-AzADUserMemberGroup -ObjectId <String> -TenantId <String> [-Parameter <IUserGetMemberGroupsParameters>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### GetExpanded
+### GetExpanded (Default)
 ```
 Get-AzADUserMemberGroup -ObjectId <String> -TenantId <String> -SecurityEnabledOnly
  [-AdditionalProperties <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzADUserMemberGroup -ObjectId <String> -TenantId <String> -Parameter <IUserGetMemberGroupsParameters>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GetViaIdentityExpanded
@@ -32,7 +32,7 @@ Get-AzADUserMemberGroup -InputObject <IResourcesIdentity> -SecurityEnabledOnly
 
 ### GetViaIdentity
 ```
-Get-AzADUserMemberGroup -InputObject <IResourcesIdentity> [-Parameter <IUserGetMemberGroupsParameters>]
+Get-AzADUserMemberGroup -InputObject <IResourcesIdentity> -Parameter <IUserGetMemberGroupsParameters>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -114,7 +114,7 @@ The object ID of the user for which to get group membership.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetExpanded
+Parameter Sets: GetExpanded, Get
 Aliases:
 
 Required: True
@@ -134,7 +134,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IUserGetMemberGr
 Parameter Sets: Get, GetViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -164,7 +164,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetExpanded
+Parameter Sets: GetExpanded, Get
 Aliases:
 
 Required: True

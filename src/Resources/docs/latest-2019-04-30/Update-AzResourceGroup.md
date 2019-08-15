@@ -14,10 +14,11 @@ If a field is unspecified, the current value is retained.
 
 ## SYNTAX
 
-### Update (Default)
+### UpdateExpanded (Default)
 ```
-Update-AzResourceGroup -SubscriptionId <String> [-Name <String>] [-Parameter <IResourceGroupPatchable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzResourceGroup -SubscriptionId <String> -ResourceGroupName <String> [-Name <String>]
+ [-ManagedBy <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -26,11 +27,10 @@ Update-AzResourceGroup -InputObject <IResourcesIdentity> [-Name <String>] [-Mana
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateExpanded
+### Update
 ```
-Update-AzResourceGroup -SubscriptionId <String> -ResourceGroupName <String> [-Name <String>]
- [-ManagedBy <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzResourceGroup -SubscriptionId <String> -Parameter <IResourceGroupPatchable> [-Name <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateById
@@ -41,7 +41,7 @@ Update-AzResourceGroup -SubscriptionId <String> -Id <String> [-ManagedBy <String
 
 ### UpdateViaIdentity
 ```
-Update-AzResourceGroup -InputObject <IResourcesIdentity> [-Parameter <IResourceGroupPatchable>]
+Update-AzResourceGroup -InputObject <IResourcesIdentity> -Parameter <IResourceGroupPatchable>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -125,7 +125,7 @@ The ID of the resource that manages this resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded, UpdateById
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateById
 Aliases:
 
 Required: False
@@ -142,10 +142,10 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateViaIdentityExpanded, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, Update
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -162,7 +162,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IResourceG
 Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -192,7 +192,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateById
+Parameter Sets: UpdateExpanded, Update, UpdateById
 Aliases:
 
 Required: True
@@ -208,7 +208,7 @@ The tags attached to the resource group.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateViaIdentityExpanded, UpdateExpanded, UpdateById
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateById
 Aliases:
 
 Required: False

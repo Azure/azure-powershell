@@ -12,16 +12,16 @@ Captures the specified resource group as a template.
 
 ## SYNTAX
 
-### Export (Default)
-```
-Export-AzResourceGroup -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <IExportTemplateRequest>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ExportExpanded
+### ExportExpanded (Default)
 ```
 Export-AzResourceGroup -ResourceGroupName <String> -SubscriptionId <String> [-Option <String>]
  [-Resource <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Export
+```
+Export-AzResourceGroup -ResourceGroupName <String> -SubscriptionId <String>
+ -Parameter <IExportTemplateRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ExportViaIdentityExpanded
@@ -32,7 +32,7 @@ Export-AzResourceGroup -InputObject <IResourcesIdentity> [-Option <String>] [-Re
 
 ### ExportViaIdentity
 ```
-Export-AzResourceGroup -InputObject <IResourcesIdentity> [-Parameter <IExportTemplateRequest>]
+Export-AzResourceGroup -InputObject <IResourcesIdentity> -Parameter <IExportTemplateRequest>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -95,7 +95,7 @@ Dynamic: False
 
 ### -Option
 The export template options.
-Supported values include 'IncludeParameterDefaultValue', 'IncludeComments' or 'IncludeParameterDefaultValue, IncludeComments
+A CSV-formatted list containing zero or more of the following: 'IncludeParameterDefaultValue', 'IncludeComments', 'SkipResourceNameParameterization', 'SkipAllParameterization'
 
 ```yaml
 Type: System.String
@@ -119,7 +119,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IExportTem
 Parameter Sets: Export, ExportViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -128,9 +128,8 @@ Dynamic: False
 ```
 
 ### -Resource
-The IDs of the resources.
-The only supported string currently is '*' (all resources).
-Future updates will support exporting specific resources.
+The IDs of the resources to filter the export by.
+To export all resources, supply an array with single entry '*'.
 
 ```yaml
 Type: System.String[]
@@ -150,7 +149,7 @@ The name of the resource group to export as a template.
 
 ```yaml
 Type: System.String
-Parameter Sets: Export, ExportExpanded
+Parameter Sets: ExportExpanded, Export
 Aliases:
 
 Required: True
@@ -166,7 +165,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Export, ExportExpanded
+Parameter Sets: ExportExpanded, Export
 Aliases:
 
 Required: True
@@ -233,8 +232,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 #### PARAMETER <IExportTemplateRequest>: Export resource group template request parameters.
-  - `[Option <String>]`: The export template options. Supported values include 'IncludeParameterDefaultValue', 'IncludeComments' or 'IncludeParameterDefaultValue, IncludeComments
-  - `[Resource <String[]>]`: The IDs of the resources. The only supported string currently is '*' (all resources). Future updates will support exporting specific resources.
+  - `[Option <String>]`: The export template options. A CSV-formatted list containing zero or more of the following: 'IncludeParameterDefaultValue', 'IncludeComments', 'SkipResourceNameParameterization', 'SkipAllParameterization'
+  - `[Resource <String[]>]`: The IDs of the resources to filter the export by. To export all resources, supply an array with single entry '*'.
 
 ## RELATED LINKS
 

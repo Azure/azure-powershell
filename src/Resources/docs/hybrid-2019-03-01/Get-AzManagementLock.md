@@ -42,6 +42,11 @@ Get-AzManagementLock -LockName <String> -ParentResourcePath <String> -ResourceGr
 Get-AzManagementLock -LockName <String> -Scope <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### List3
+```
+Get-AzManagementLock -Scope <String> [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### List1
 ```
 Get-AzManagementLock -ParentResourcePath <String> -ResourceGroupName <String> -ResourceName <String>
@@ -121,7 +126,7 @@ The filter to apply on the operation.
 
 ```yaml
 Type: System.String
-Parameter Sets: List2, List1, List
+Parameter Sets: List2, List3, List1, List
 Aliases: ODataQuery
 
 Required: False
@@ -249,7 +254,7 @@ The scope for the lock.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, List3
 Aliases:
 
 Required: True

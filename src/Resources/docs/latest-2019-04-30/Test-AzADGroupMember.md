@@ -12,16 +12,16 @@ Checks whether the specified user, group, contact, or service principal is a dir
 
 ## SYNTAX
 
-### Is (Default)
-```
-Test-AzADGroupMember -TenantId <String> [-Parameter <ICheckGroupMembershipParameters>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### IsExpanded
+### IsExpanded (Default)
 ```
 Test-AzADGroupMember -TenantId <String> -GroupId <String> -MemberId <String>
  [-AdditionalProperties <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Is
+```
+Test-AzADGroupMember -TenantId <String> -Parameter <ICheckGroupMembershipParameters>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### IsViaIdentityExpanded
@@ -32,7 +32,7 @@ Test-AzADGroupMember -InputObject <IResourcesIdentity> -GroupId <String> -Member
 
 ### IsViaIdentity
 ```
-Test-AzADGroupMember -InputObject <IResourcesIdentity> [-Parameter <ICheckGroupMembershipParameters>]
+Test-AzADGroupMember -InputObject <IResourcesIdentity> -Parameter <ICheckGroupMembershipParameters>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -150,7 +150,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.ICheckGroupMembe
 Parameter Sets: Is, IsViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -163,7 +163,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Is, IsExpanded
+Parameter Sets: IsExpanded, Is
 Aliases:
 
 Required: True

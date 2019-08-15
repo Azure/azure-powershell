@@ -15,13 +15,13 @@ De-associates subscription from the management group.
 ### Delete (Default)
 ```
 Remove-AzManagementGroupSubscription -GroupId <String> -SubscriptionId <String> [-CacheControl <String>]
- [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzManagementGroupSubscription -InputObject <IResourcesIdentity> [-CacheControl <String>] [-PassThru]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzManagementGroupSubscription -InputObject <IResourcesIdentity> [-CacheControl <String>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -114,7 +114,7 @@ Dynamic: False
 ```
 
 ### -PassThru
-When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

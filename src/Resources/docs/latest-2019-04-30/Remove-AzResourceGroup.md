@@ -15,8 +15,8 @@ Deleting a resource group deletes all of its template deployments and currently 
 
 ### Delete (Default)
 ```
-Remove-AzResourceGroup -Name <String> -SubscriptionId <String> [-PassThru] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzResourceGroup -Name <String> -SubscriptionId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteById
@@ -27,8 +27,8 @@ Remove-AzResourceGroup -SubscriptionId <String> -Id <String> [-DefaultProfile <P
 
 ### DeleteViaIdentity
 ```
-Remove-AzResourceGroup -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzResourceGroup -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -155,7 +155,7 @@ Dynamic: False
 ```
 
 ### -PassThru
-When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

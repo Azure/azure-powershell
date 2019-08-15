@@ -50,11 +50,10 @@ In this directory, run AutoRest:
 require:
   - $(this-folder)/../readme.azure.md
   - $(this-folder)/resources/specs-used.md
-  
   # Including this file would drag in every version, and the filter would take a lot longer. 
   # - $(repo)/specification/network/resource-manager/readme.md
 
-title: NetworkManagementClient
+title: Network
 subject-prefix: ''
 module-version: 0.0.1
 make-sub-resources-byreference: true

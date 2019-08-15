@@ -13,17 +13,17 @@ You can also specify which resource collections (users, groups, etc.) should be 
 
 ## SYNTAX
 
-### Get (Default)
-```
-Get-AzADObject -TenantId <String> [-Parameter <IGetObjectsParameters>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### GetExpanded
+### GetExpanded (Default)
 ```
 Get-AzADObject -TenantId <String> [-AdditionalProperties <Hashtable>] [-IncludeDirectoryObjectReference]
  [-ObjectId <String[]>] [-Type <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzADObject -TenantId <String> -Parameter <IGetObjectsParameters> [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### GetViaIdentityExpanded
@@ -35,7 +35,7 @@ Get-AzADObject -InputObject <IResourcesIdentity> [-AdditionalProperties <Hashtab
 
 ### GetViaIdentity
 ```
-Get-AzADObject -InputObject <IResourcesIdentity> [-Parameter <IGetObjectsParameters>]
+Get-AzADObject -InputObject <IResourcesIdentity> -Parameter <IGetObjectsParameters>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -154,7 +154,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IGetObjectsParam
 Parameter Sets: Get, GetViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -167,7 +167,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetExpanded
+Parameter Sets: GetExpanded, Get
 Aliases:
 
 Required: True

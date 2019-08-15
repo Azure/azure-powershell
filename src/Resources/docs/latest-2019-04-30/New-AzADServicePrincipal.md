@@ -12,23 +12,23 @@ Creates a service principal in the directory.
 
 ## SYNTAX
 
-### Create (Default)
+### CreateExpanded (Default)
 ```
-New-AzADServicePrincipal -TenantId <String> [-Parameter <IServicePrincipalCreateParameters>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzADServicePrincipal -TenantId <String> -AppId <String> [-AccountEnabled] [-AppRoleAssignmentRequired]
+ [-KeyCredentials <IKeyCredential[]>] [-PasswordCredentials <IPasswordCredential[]>]
+ [-ServicePrincipalType <String>] [-Tag <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
-### CreateExpanded
+### Create
 ```
-New-AzADServicePrincipal -TenantId <String> -AppId <String> [-AccountEnabled <String>]
- [-AppRoleAssignmentRequired] [-KeyCredentials <IKeyCredential[]>]
- [-PasswordCredentials <IPasswordCredential[]>] [-ServicePrincipalType <String>] [-Tag <String[]>]
+New-AzADServicePrincipal -TenantId <String> -Parameter <IServicePrincipalCreateParameters>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzADServicePrincipal -InputObject <IResourcesIdentity> -AppId <String> [-AccountEnabled <String>]
+New-AzADServicePrincipal -InputObject <IResourcesIdentity> -AppId <String> [-AccountEnabled]
  [-AppRoleAssignmentRequired] [-KeyCredentials <IKeyCredential[]>]
  [-PasswordCredentials <IPasswordCredential[]>] [-ServicePrincipalType <String>] [-Tag <String[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -36,7 +36,7 @@ New-AzADServicePrincipal -InputObject <IResourcesIdentity> -AppId <String> [-Acc
 
 ### CreateViaIdentity
 ```
-New-AzADServicePrincipal -InputObject <IResourcesIdentity> [-Parameter <IServicePrincipalCreateParameters>]
+New-AzADServicePrincipal -InputObject <IResourcesIdentity> -Parameter <IServicePrincipalCreateParameters>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -69,13 +69,13 @@ PS C:\> {{ Add code here }}
 whether or not the service principal account is enabled
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -171,7 +171,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IServicePrincipa
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -234,7 +234,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -309,7 +309,7 @@ To create the parameters described below, construct a hash table containing the 
 
 #### PARAMETER <IServicePrincipalCreateParameters>: Request parameters for creating a new service principal.
   - `AppId <String>`: The application ID.
-  - `[AccountEnabled <String>]`: whether or not the service principal account is enabled
+  - `[AccountEnabled <Boolean?>]`: whether or not the service principal account is enabled
   - `[AppRoleAssignmentRequired <Boolean?>]`: Specifies whether an AppRoleAssignment to a user or group is required before Azure AD will issue a user or access token to the application.
   - `[KeyCredentials <IKeyCredential[]>]`: The collection of key credentials associated with the service principal.
     - `[CustomKeyIdentifier <String>]`: Custom Key Identifier

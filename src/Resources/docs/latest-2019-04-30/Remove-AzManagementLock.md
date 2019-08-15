@@ -14,19 +14,19 @@ Delete a management lock by scope.
 
 ### Delete (Default)
 ```
-Remove-AzManagementLock -LockName <String> -Scope <String> [-PassThru] [-DefaultProfile <PSObject>] [-Confirm]
+Remove-AzManagementLock -LockName <String> -Scope <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### Delete3
 ```
-Remove-AzManagementLock -LockName <String> -ResourceGroupName <String> -SubscriptionId <String> [-PassThru]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzManagementLock -LockName <String> -ResourceGroupName <String> -SubscriptionId <String>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Delete2
 ```
-Remove-AzManagementLock -LockName <String> -SubscriptionId <String> [-PassThru] [-DefaultProfile <PSObject>]
+Remove-AzManagementLock -LockName <String> -SubscriptionId <String> [-DefaultProfile <PSObject>] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -34,30 +34,30 @@ Remove-AzManagementLock -LockName <String> -SubscriptionId <String> [-PassThru] 
 ```
 Remove-AzManagementLock -LockName <String> -ParentResourcePath <String> -ResourceGroupName <String>
  -ResourceName <String> -ResourceProviderNamespace <String> -ResourceType <String> -SubscriptionId <String>
- [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity3
 ```
-Remove-AzManagementLock -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-Confirm]
+Remove-AzManagementLock -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity2
 ```
-Remove-AzManagementLock -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-Confirm]
+Remove-AzManagementLock -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity1
 ```
-Remove-AzManagementLock -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-Confirm]
+Remove-AzManagementLock -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzManagementLock -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-Confirm]
+Remove-AzManagementLock -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -151,7 +151,7 @@ Dynamic: False
 ```
 
 ### -PassThru
-When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

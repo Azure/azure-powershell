@@ -14,10 +14,10 @@ Of the built-in roles, only Owner and User Access Administrator are granted thos
 
 ## SYNTAX
 
-### Create1 (Default)
+### CreateExpanded1 (Default)
 ```
-New-AzManagementLock -LockName <String> -SubscriptionId <String> [-Parameter <IManagementLockObject>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzManagementLock -LockName <String> -SubscriptionId <String> -Level <LockLevel> [-Note <String>]
+ [-Owner <IManagementLockOwner[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpanded3
@@ -33,12 +33,6 @@ New-AzManagementLock -LockName <String> -ResourceGroupName <String> -Subscriptio
  [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateExpanded1
-```
-New-AzManagementLock -LockName <String> -SubscriptionId <String> -Level <LockLevel> [-Note <String>]
- [-Owner <IManagementLockOwner[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### CreateExpanded
 ```
 New-AzManagementLock -LockName <String> -ParentResourcePath <String> -ResourceGroupName <String>
@@ -49,21 +43,27 @@ New-AzManagementLock -LockName <String> -ParentResourcePath <String> -ResourceGr
 
 ### Create3
 ```
-New-AzManagementLock -LockName <String> -Scope <String> [-Parameter <IManagementLockObject>]
+New-AzManagementLock -LockName <String> -Scope <String> -Parameter <IManagementLockObject>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create2
 ```
 New-AzManagementLock -LockName <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <IManagementLockObject>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Parameter <IManagementLockObject> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create1
+```
+New-AzManagementLock -LockName <String> -SubscriptionId <String> -Parameter <IManagementLockObject>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create
 ```
 New-AzManagementLock -LockName <String> -ParentResourcePath <String> -ResourceGroupName <String>
  -ResourceName <String> -ResourceProviderNamespace <String> -ResourceType <String> -SubscriptionId <String>
- [-Parameter <IManagementLockObject>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Parameter <IManagementLockObject> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded3
@@ -92,25 +92,25 @@ New-AzManagementLock -InputObject <IResourcesIdentity> -Level <LockLevel> [-Note
 
 ### CreateViaIdentity3
 ```
-New-AzManagementLock -InputObject <IResourcesIdentity> [-Parameter <IManagementLockObject>]
+New-AzManagementLock -InputObject <IResourcesIdentity> -Parameter <IManagementLockObject>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity2
 ```
-New-AzManagementLock -InputObject <IResourcesIdentity> [-Parameter <IManagementLockObject>]
+New-AzManagementLock -InputObject <IResourcesIdentity> -Parameter <IManagementLockObject>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity1
 ```
-New-AzManagementLock -InputObject <IResourcesIdentity> [-Parameter <IManagementLockObject>]
+New-AzManagementLock -InputObject <IResourcesIdentity> -Parameter <IManagementLockObject>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
-New-AzManagementLock -InputObject <IResourcesIdentity> [-Parameter <IManagementLockObject>]
+New-AzManagementLock -InputObject <IResourcesIdentity> -Parameter <IManagementLockObject>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -181,7 +181,7 @@ ReadOnly means authorized users can only read from a resource, but they can't mo
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Support.LockLevel
-Parameter Sets: CreateExpanded3, CreateExpanded2, CreateExpanded1, CreateExpanded, CreateViaIdentityExpanded3, CreateViaIdentityExpanded2, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded1, CreateExpanded3, CreateExpanded2, CreateExpanded, CreateViaIdentityExpanded3, CreateViaIdentityExpanded2, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -195,11 +195,11 @@ Dynamic: False
 ### -LockName
 The name of lock.
 The lock name can be a maximum of 260 characters.
-It cannot contain <, > %, &, :, \, ?, /, or any control characters.
+It cannot contain \<, \> %, &, :, \, ?, /, or any control characters.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded3, CreateExpanded2, CreateExpanded1, CreateExpanded, Create3, Create2, Create
+Parameter Sets: CreateExpanded1, CreateExpanded3, CreateExpanded2, CreateExpanded, Create3, Create2, Create1, Create
 Aliases:
 
 Required: True
@@ -216,7 +216,7 @@ Maximum of 512 characters.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded3, CreateExpanded2, CreateExpanded1, CreateExpanded, CreateViaIdentityExpanded3, CreateViaIdentityExpanded2, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded1, CreateExpanded3, CreateExpanded2, CreateExpanded, CreateViaIdentityExpanded3, CreateViaIdentityExpanded2, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -233,7 +233,7 @@ To construct, see NOTES section for OWNER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20160901.IManagementLockOwner[]
-Parameter Sets: CreateExpanded3, CreateExpanded2, CreateExpanded1, CreateExpanded, CreateViaIdentityExpanded3, CreateViaIdentityExpanded2, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded1, CreateExpanded3, CreateExpanded2, CreateExpanded, CreateViaIdentityExpanded3, CreateViaIdentityExpanded2, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -250,10 +250,10 @@ To construct, see NOTES section for PARAMETER properties and create a hash table
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20160901.IManagementLockObject
-Parameter Sets: Create1, Create3, Create2, Create, CreateViaIdentity3, CreateViaIdentity2, CreateViaIdentity1, CreateViaIdentity
+Parameter Sets: Create3, Create2, Create1, Create, CreateViaIdentity3, CreateViaIdentity2, CreateViaIdentity1, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -363,7 +363,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded2, CreateExpanded1, CreateExpanded, Create2, Create
+Parameter Sets: CreateExpanded1, CreateExpanded2, CreateExpanded, Create2, Create1, Create
 Aliases:
 
 Required: True

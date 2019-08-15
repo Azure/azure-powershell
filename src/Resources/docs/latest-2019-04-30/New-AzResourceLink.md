@@ -12,16 +12,16 @@ Creates or updates a resource link between the specified resources.
 
 ## SYNTAX
 
-### Create (Default)
-```
-New-AzResourceLink -ResourceId <String> [-Parameter <IResourceLink>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded
+### CreateExpanded (Default)
 ```
 New-AzResourceLink -ResourceId <String> [-Note <String>] [-TargetId <String>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create
+```
+New-AzResourceLink -ResourceId <String> -Parameter <IResourceLink> [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -32,7 +32,7 @@ New-AzResourceLink -InputObject <IResourcesIdentity> [-Note <String>] [-TargetId
 
 ### CreateViaIdentity
 ```
-New-AzResourceLink -InputObject <IResourcesIdentity> [-Parameter <IResourceLink>] [-DefaultProfile <PSObject>]
+New-AzResourceLink -InputObject <IResourcesIdentity> -Parameter <IResourceLink> [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -118,7 +118,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20160901.IResourceL
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -133,7 +133,7 @@ For example, /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: LinkId
 
 Required: True

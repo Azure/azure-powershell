@@ -12,16 +12,16 @@ Creates or updates a resource link between the specified resources.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzResourceLink -ResourceId <String> [-Parameter <IResourceLink>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzResourceLink -ResourceId <String> [-Note <String>] [-TargetId <String>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzResourceLink -ResourceId <String> -Parameter <IResourceLink> [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -90,7 +90,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20160901.IResourceL
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

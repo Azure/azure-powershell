@@ -12,18 +12,18 @@ Grants OAuth2 permissions for the relevant resource Ids of an app.
 
 ## SYNTAX
 
-### Create (Default)
-```
-New-AzOAuth2PermissionGrant -TenantId <String> [-Body <IOAuth2PermissionGrant>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded
+### CreateExpanded (Default)
 ```
 New-AzOAuth2PermissionGrant -TenantId <String> [-ClientId <String>] [-ConsentType <ConsentType>]
  [-ExpiryTime <String>] [-ObjectId <String>] [-OdataType <String>] [-PrincipalId <String>]
  [-ResourceId <String>] [-Scope <String>] [-StartTime <String>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
+```
+
+### Create
+```
+New-AzOAuth2PermissionGrant -TenantId <String> -Body <IOAuth2PermissionGrant> [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -36,7 +36,7 @@ New-AzOAuth2PermissionGrant -InputObject <IResourcesIdentity> [-ClientId <String
 
 ### CreateViaIdentity
 ```
-New-AzOAuth2PermissionGrant -InputObject <IResourcesIdentity> [-Body <IOAuth2PermissionGrant>]
+New-AzOAuth2PermissionGrant -InputObject <IResourcesIdentity> -Body <IOAuth2PermissionGrant>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -74,7 +74,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IOAuth2Permissio
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -264,7 +264,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True

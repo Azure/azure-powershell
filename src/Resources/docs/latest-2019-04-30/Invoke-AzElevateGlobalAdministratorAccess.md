@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/invoke-azelevateaccess
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/invoke-azelevateglobaladministratoraccess
 schema: 2.0.0
 ---
 
-# Invoke-AzElevateAccess
+# Invoke-AzElevateGlobalAdministratorAccess
 
 ## SYNOPSIS
 Elevates access for a Global Administrator.
@@ -13,7 +13,8 @@ Elevates access for a Global Administrator.
 ## SYNTAX
 
 ```
-Invoke-AzElevateAccess [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzElevateGlobalAdministratorAccess [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,7 +59,7 @@ Dynamic: False
 ```
 
 ### -PassThru
-When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

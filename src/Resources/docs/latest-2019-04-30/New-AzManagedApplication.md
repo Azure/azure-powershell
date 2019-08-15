@@ -12,16 +12,20 @@ Creates a new managed application.
 
 ## SYNTAX
 
-### Create1 (Default)
+### CreateExpanded1 (Default)
 ```
-New-AzManagedApplication -Id <String> [-Parameter <IApplication>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzManagedApplication -Id <String> -Parameter <IApplication> -Kind <String>
+ -ManagedResourceGroupId <String> [-ApplicationDefinitionId <String>] [-IdentityType <ResourceIdentityType>]
+ [-Location <String>] [-ManagedBy <String>] [-PlanName <String>] [-PlanProduct <String>]
+ [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>] [-SkuCapacity <Int32>]
+ [-SkuFamily <String>] [-SkuModel <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpanded
 ```
-New-AzManagedApplication -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Kind <String>
- -ManagedResourceGroupId <String> [-Parameter <IApplication>] [-ApplicationDefinitionId <String>]
+New-AzManagedApplication -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -Parameter <IApplication> -Kind <String> -ManagedResourceGroupId <String> [-ApplicationDefinitionId <String>]
  [-IdentityType <ResourceIdentityType>] [-Location <String>] [-ManagedBy <String>] [-PlanName <String>]
  [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
  [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuModel <String>] [-SkuName <String>] [-SkuSize <String>]
@@ -32,24 +36,20 @@ New-AzManagedApplication -Name <String> -ResourceGroupName <String> -Subscriptio
 ### Create
 ```
 New-AzManagedApplication -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <IApplication>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ -Parameter <IApplication> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### CreateExpanded1
+### Create1
 ```
-New-AzManagedApplication -Id <String> -Kind <String> -ManagedResourceGroupId <String>
- [-Parameter <IApplication>] [-ApplicationDefinitionId <String>] [-IdentityType <ResourceIdentityType>]
- [-Location <String>] [-ManagedBy <String>] [-PlanName <String>] [-PlanProduct <String>]
- [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>] [-SkuCapacity <Int32>]
- [-SkuFamily <String>] [-SkuModel <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzManagedApplication -Id <String> -Parameter <IApplication> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded1
 ```
-New-AzManagedApplication -InputObject <IResourcesIdentity> -Kind <String> -ManagedResourceGroupId <String>
- [-Parameter <IApplication>] [-ApplicationDefinitionId <String>] [-IdentityType <ResourceIdentityType>]
+New-AzManagedApplication -InputObject <IResourcesIdentity> -Parameter <IApplication> -Kind <String>
+ -ManagedResourceGroupId <String> [-ApplicationDefinitionId <String>] [-IdentityType <ResourceIdentityType>]
  [-Location <String>] [-ManagedBy <String>] [-PlanName <String>] [-PlanProduct <String>]
  [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>] [-SkuCapacity <Int32>]
  [-SkuFamily <String>] [-SkuModel <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>]
@@ -58,8 +58,8 @@ New-AzManagedApplication -InputObject <IResourcesIdentity> -Kind <String> -Manag
 
 ### CreateViaIdentityExpanded
 ```
-New-AzManagedApplication -InputObject <IResourcesIdentity> -Kind <String> -ManagedResourceGroupId <String>
- [-Parameter <IApplication>] [-ApplicationDefinitionId <String>] [-IdentityType <ResourceIdentityType>]
+New-AzManagedApplication -InputObject <IResourcesIdentity> -Parameter <IApplication> -Kind <String>
+ -ManagedResourceGroupId <String> [-ApplicationDefinitionId <String>] [-IdentityType <ResourceIdentityType>]
  [-Location <String>] [-ManagedBy <String>] [-PlanName <String>] [-PlanProduct <String>]
  [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>] [-SkuCapacity <Int32>]
  [-SkuFamily <String>] [-SkuModel <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>]
@@ -68,13 +68,13 @@ New-AzManagedApplication -InputObject <IResourcesIdentity> -Kind <String> -Manag
 
 ### CreateViaIdentity1
 ```
-New-AzManagedApplication -InputObject <IResourcesIdentity> [-Parameter <IApplication>]
+New-AzManagedApplication -InputObject <IResourcesIdentity> -Parameter <IApplication>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
-New-AzManagedApplication -InputObject <IResourcesIdentity> [-Parameter <IApplication>]
+New-AzManagedApplication -InputObject <IResourcesIdentity> -Parameter <IApplication>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -108,7 +108,7 @@ The fully qualified path of managed application definition Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded1, CreateExpanded, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases: ManagedApplicationDefinitionId
 
 Required: False
@@ -157,7 +157,7 @@ Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/Micro
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1
+Parameter Sets: CreateExpanded1, Create1
 Aliases: ApplicationId
 
 Required: True
@@ -173,7 +173,7 @@ The identity type.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Support.ResourceIdentityType
-Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded1, CreateExpanded, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -206,7 +206,7 @@ Allowed values are MarketPlace and ServiceCatalog.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded1, CreateExpanded, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -222,7 +222,7 @@ Resource location
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded1, CreateExpanded, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -238,7 +238,7 @@ ID of the resource that manages this resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded1, CreateExpanded, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -254,7 +254,7 @@ The managed resource group Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded1, CreateExpanded, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -306,7 +306,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180601.IApplicati
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -319,7 +319,7 @@ The plan name.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded1, CreateExpanded, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -335,7 +335,7 @@ The product code.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded1, CreateExpanded, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -351,7 +351,7 @@ The promotion code.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded1, CreateExpanded, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -367,7 +367,7 @@ The publisher ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded1, CreateExpanded, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -383,7 +383,7 @@ The plan's version.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded1, CreateExpanded, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -416,7 +416,7 @@ The SKU capacity.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded1, CreateExpanded, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -432,7 +432,7 @@ The SKU family.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded1, CreateExpanded, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -448,7 +448,7 @@ The SKU model.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded1, CreateExpanded, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -464,7 +464,7 @@ The SKU name.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded1, CreateExpanded, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -480,7 +480,7 @@ The SKU size.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded1, CreateExpanded, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -496,7 +496,7 @@ The SKU tier.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded1, CreateExpanded, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -528,7 +528,7 @@ Resource tags
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded1, CreateExpanded, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 
 Required: False

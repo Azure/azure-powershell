@@ -14,26 +14,26 @@ Deletes the managed application definition.
 
 ### Delete1 (Default)
 ```
-Remove-AzManagedApplicationDefinition -Id <String> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Remove-AzManagedApplicationDefinition -Id <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Delete
 ```
 Remove-AzManagedApplicationDefinition -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity1
 ```
-Remove-AzManagedApplicationDefinition -InputObject <IResourcesIdentity> [-PassThru]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzManagedApplicationDefinition -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzManagedApplicationDefinition -InputObject <IResourcesIdentity> [-PassThru]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzManagedApplicationDefinition -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -159,7 +159,7 @@ Dynamic: False
 ```
 
 ### -PassThru
-When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

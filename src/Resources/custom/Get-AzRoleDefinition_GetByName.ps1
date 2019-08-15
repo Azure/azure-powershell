@@ -1,5 +1,5 @@
 function Get-AzRoleDefinition_GetByName {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20150701.IRoleDefinition1', 'Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api201801Preview.IRoleDefinition')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20150701.IRoleDefinition', 'Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api201801Preview.IRoleDefinition')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Profile("latest-2019-04-30")]
     [CmdletBinding(PositionalBinding = $false)]
     param(

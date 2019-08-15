@@ -12,16 +12,16 @@ Add an owner to a group.
 
 ## SYNTAX
 
-### Add (Default)
-```
-Add-AzADGroupOwner -ObjectId <String> -TenantId <String> [-Parameter <IAddOwnerParameters>] [-PassThru]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### AddExpanded
+### AddExpanded (Default)
 ```
 Add-AzADGroupOwner -ObjectId <String> -TenantId <String> -Url <String> [-PassThru]
  [-AdditionalProperties <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Add
+```
+Add-AzADGroupOwner -ObjectId <String> -TenantId <String> -Parameter <IAddOwnerParameters> [-PassThru]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### AddByComponents
@@ -38,7 +38,7 @@ Add-AzADGroupOwner -InputObject <IResourcesIdentity> -Url <String> [-PassThru]
 
 ### AddViaIdentity
 ```
-Add-AzADGroupOwner -InputObject <IResourcesIdentity> [-Parameter <IAddOwnerParameters>] [-PassThru]
+Add-AzADGroupOwner -InputObject <IResourcesIdentity> -Parameter <IAddOwnerParameters> [-PassThru]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -152,7 +152,7 @@ The object ID of the application to which to add the owner.
 
 ```yaml
 Type: System.String
-Parameter Sets: Add, AddExpanded
+Parameter Sets: AddExpanded, Add
 Aliases:
 
 Required: True
@@ -172,7 +172,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IAddOwnerParamet
 Parameter Sets: Add, AddViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -181,7 +181,7 @@ Dynamic: False
 ```
 
 ### -PassThru
-When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -201,7 +201,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Add, AddExpanded, AddByComponents
+Parameter Sets: AddExpanded, Add, AddByComponents
 Aliases:
 
 Required: True

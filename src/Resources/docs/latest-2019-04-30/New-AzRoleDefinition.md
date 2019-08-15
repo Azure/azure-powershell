@@ -153,7 +153,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api201801Preview.IRole
 Parameter Sets: CreateViaIdentity1, Create
 Aliases: Role
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

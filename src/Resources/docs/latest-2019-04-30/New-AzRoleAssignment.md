@@ -12,16 +12,16 @@ Creates a role assignment by ID.
 
 ## SYNTAX
 
-### Create1 (Default)
-```
-New-AzRoleAssignment -Id <String> [-Parameter <IRoleAssignmentCreateParameters>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded1
+### CreateExpanded1 (Default)
 ```
 New-AzRoleAssignment -Id <String> -PrincipalId <String> -RoleDefinitionId <String> [-CanDelegate]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create1
+```
+New-AzRoleAssignment -Id <String> -Parameter <IRoleAssignmentCreateParameters> [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpanded2
@@ -33,7 +33,7 @@ New-AzRoleAssignment -Name <String> -Scope <String> -PrincipalId <String> -RoleD
 
 ### Create2
 ```
-New-AzRoleAssignment -Name <String> -Scope <String> [-Parameter <IRoleAssignmentCreateParameters>]
+New-AzRoleAssignment -Name <String> -Scope <String> -Parameter <IRoleAssignmentCreateParameters>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -45,7 +45,7 @@ New-AzRoleAssignment -RoleId <String> -PrincipalId <String> -RoleDefinitionId <S
 
 ### Create3
 ```
-New-AzRoleAssignment -RoleId <String> [-Parameter <IRoleAssignmentCreateParameters>]
+New-AzRoleAssignment -RoleId <String> -Parameter <IRoleAssignmentCreateParameters>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -71,19 +71,19 @@ New-AzRoleAssignment -InputObject <IResourcesIdentity> -PrincipalId <String> -Ro
 
 ### CreateViaIdentity3
 ```
-New-AzRoleAssignment -InputObject <IResourcesIdentity> [-Parameter <IRoleAssignmentCreateParameters>]
+New-AzRoleAssignment -InputObject <IResourcesIdentity> -Parameter <IRoleAssignmentCreateParameters>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity2
 ```
-New-AzRoleAssignment -InputObject <IResourcesIdentity> [-Parameter <IRoleAssignmentCreateParameters>]
+New-AzRoleAssignment -InputObject <IResourcesIdentity> -Parameter <IRoleAssignmentCreateParameters>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity1
 ```
-New-AzRoleAssignment -InputObject <IResourcesIdentity> [-Parameter <IRoleAssignmentCreateParameters>]
+New-AzRoleAssignment -InputObject <IResourcesIdentity> -Parameter <IRoleAssignmentCreateParameters>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -149,7 +149,7 @@ The ID of the role assignment to create.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1
+Parameter Sets: CreateExpanded1, Create1
 Aliases: RoleAssignmentId
 
 Required: True
@@ -202,7 +202,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20171001Preview.IRo
 Parameter Sets: Create1, Create2, Create3, CreateViaIdentity3, CreateViaIdentity2, CreateViaIdentity1
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

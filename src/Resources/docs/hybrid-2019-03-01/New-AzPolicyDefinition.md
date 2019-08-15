@@ -12,23 +12,17 @@ Creates or updates a policy definition.
 
 ## SYNTAX
 
-### Create2 (Default)
+### CreateExpanded2 (Default)
 ```
-New-AzPolicyDefinition -Name <String> -SubscriptionId <String> [-Parameter <IPolicyDefinition>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded3
-```
-New-AzPolicyDefinition -Name <String> -ManagementGroupName <String> [-Parameter <IPolicyDefinition>]
+New-AzPolicyDefinition -Name <String> -SubscriptionId <String> -Parameter <IPolicyDefinition>
  [-Description <String>] [-DisplayName <String>] [-Metadata <IPolicyDefinitionPropertiesMetadata>]
  [-Mode <PolicyMode>] [-PolicyRule <IPolicyDefinitionPropertiesPolicyRule>] [-PolicyType <PolicyType>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateExpanded2
+### CreateExpanded3
 ```
-New-AzPolicyDefinition -Name <String> -SubscriptionId <String> [-Parameter <IPolicyDefinition>]
+New-AzPolicyDefinition -Name <String> -ManagementGroupName <String> -Parameter <IPolicyDefinition>
  [-Description <String>] [-DisplayName <String>] [-Metadata <IPolicyDefinitionPropertiesMetadata>]
  [-Mode <PolicyMode>] [-PolicyRule <IPolicyDefinitionPropertiesPolicyRule>] [-PolicyType <PolicyType>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -36,13 +30,19 @@ New-AzPolicyDefinition -Name <String> -SubscriptionId <String> [-Parameter <IPol
 
 ### Create3
 ```
-New-AzPolicyDefinition -Name <String> -ManagementGroupName <String> [-Parameter <IPolicyDefinition>]
+New-AzPolicyDefinition -Name <String> -ManagementGroupName <String> -Parameter <IPolicyDefinition>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create2
+```
+New-AzPolicyDefinition -Name <String> -SubscriptionId <String> -Parameter <IPolicyDefinition>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded3
 ```
-New-AzPolicyDefinition -InputObject <IResourcesIdentity> [-Parameter <IPolicyDefinition>]
+New-AzPolicyDefinition -InputObject <IResourcesIdentity> -Parameter <IPolicyDefinition>
  [-Description <String>] [-DisplayName <String>] [-Metadata <IPolicyDefinitionPropertiesMetadata>]
  [-Mode <PolicyMode>] [-PolicyRule <IPolicyDefinitionPropertiesPolicyRule>] [-PolicyType <PolicyType>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -50,7 +50,7 @@ New-AzPolicyDefinition -InputObject <IResourcesIdentity> [-Parameter <IPolicyDef
 
 ### CreateViaIdentityExpanded2
 ```
-New-AzPolicyDefinition -InputObject <IResourcesIdentity> [-Parameter <IPolicyDefinition>]
+New-AzPolicyDefinition -InputObject <IResourcesIdentity> -Parameter <IPolicyDefinition>
  [-Description <String>] [-DisplayName <String>] [-Metadata <IPolicyDefinitionPropertiesMetadata>]
  [-Mode <PolicyMode>] [-PolicyRule <IPolicyDefinitionPropertiesPolicyRule>] [-PolicyType <PolicyType>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -58,13 +58,13 @@ New-AzPolicyDefinition -InputObject <IResourcesIdentity> [-Parameter <IPolicyDef
 
 ### CreateViaIdentity3
 ```
-New-AzPolicyDefinition -InputObject <IResourcesIdentity> [-Parameter <IPolicyDefinition>]
+New-AzPolicyDefinition -InputObject <IResourcesIdentity> -Parameter <IPolicyDefinition>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity2
 ```
-New-AzPolicyDefinition -InputObject <IResourcesIdentity> [-Parameter <IPolicyDefinition>]
+New-AzPolicyDefinition -InputObject <IResourcesIdentity> -Parameter <IPolicyDefinition>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -114,7 +114,7 @@ The policy definition description.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded3, CreateExpanded2, CreateViaIdentityExpanded3, CreateViaIdentityExpanded2
+Parameter Sets: CreateExpanded2, CreateExpanded3, CreateViaIdentityExpanded3, CreateViaIdentityExpanded2
 Aliases:
 
 Required: False
@@ -130,7 +130,7 @@ The display name of the policy definition.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded3, CreateExpanded2, CreateViaIdentityExpanded3, CreateViaIdentityExpanded2
+Parameter Sets: CreateExpanded2, CreateExpanded3, CreateViaIdentityExpanded3, CreateViaIdentityExpanded2
 Aliases:
 
 Required: False
@@ -178,7 +178,7 @@ The policy definition metadata.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20161201.IPolicyDefinitionPropertiesMetadata
-Parameter Sets: CreateExpanded3, CreateExpanded2, CreateViaIdentityExpanded3, CreateViaIdentityExpanded2
+Parameter Sets: CreateExpanded2, CreateExpanded3, CreateViaIdentityExpanded3, CreateViaIdentityExpanded2
 Aliases:
 
 Required: False
@@ -195,7 +195,7 @@ Possible values are NotSpecified, Indexed, and All.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Support.PolicyMode
-Parameter Sets: CreateExpanded3, CreateExpanded2, CreateViaIdentityExpanded3, CreateViaIdentityExpanded2
+Parameter Sets: CreateExpanded2, CreateExpanded3, CreateViaIdentityExpanded3, CreateViaIdentityExpanded2
 Aliases:
 
 Required: False
@@ -211,7 +211,7 @@ The name of the policy definition to create.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create2, CreateExpanded3, CreateExpanded2, Create3
+Parameter Sets: CreateExpanded2, CreateExpanded3, Create3, Create2
 Aliases: PolicyDefinitionName
 
 Required: True
@@ -231,7 +231,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20161201.IPolicyDef
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -244,7 +244,7 @@ The policy rule.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20161201.IPolicyDefinitionPropertiesPolicyRule
-Parameter Sets: CreateExpanded3, CreateExpanded2, CreateViaIdentityExpanded3, CreateViaIdentityExpanded2
+Parameter Sets: CreateExpanded2, CreateExpanded3, CreateViaIdentityExpanded3, CreateViaIdentityExpanded2
 Aliases:
 
 Required: False
@@ -261,7 +261,7 @@ Possible values are NotSpecified, BuiltIn, and Custom.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Support.PolicyType
-Parameter Sets: CreateExpanded3, CreateExpanded2, CreateViaIdentityExpanded3, CreateViaIdentityExpanded2
+Parameter Sets: CreateExpanded2, CreateExpanded3, CreateViaIdentityExpanded3, CreateViaIdentityExpanded2
 Aliases:
 
 Required: False
@@ -277,7 +277,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create2, CreateExpanded2
+Parameter Sets: CreateExpanded2, Create2
 Aliases:
 
 Required: True

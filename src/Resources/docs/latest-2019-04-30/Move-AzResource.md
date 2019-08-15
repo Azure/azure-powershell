@@ -15,10 +15,11 @@ Write and delete operations are blocked on the groups until the move completes.
 
 ## SYNTAX
 
-### Move (Default)
+### MoveExpanded (Default)
 ```
-Move-AzResource -SourceResourceGroupName <String> -SubscriptionId <String> [-Parameter <IResourcesMoveInfo>]
- [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Move-AzResource -SourceResourceGroupName <String> -SubscriptionId <String> [-PassThru] [-Resource <String[]>]
+ [-TargetResourceGroup <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### MoveByComponents
@@ -28,11 +29,10 @@ Move-AzResource -SourceResourceGroupName <String> -SubscriptionId <String> -Targ
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### MoveExpanded
+### Move
 ```
-Move-AzResource -SourceResourceGroupName <String> -SubscriptionId <String> [-PassThru] [-Resource <String[]>]
- [-TargetResourceGroup <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Move-AzResource -SourceResourceGroupName <String> -SubscriptionId <String> -Parameter <IResourcesMoveInfo>
+ [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### MoveViaIdentityExpanded
@@ -44,7 +44,7 @@ Move-AzResource -InputObject <IResourcesIdentity> [-PassThru] [-Resource <String
 
 ### MoveViaIdentity
 ```
-Move-AzResource -InputObject <IResourcesIdentity> [-Parameter <IResourcesMoveInfo>] [-PassThru]
+Move-AzResource -InputObject <IResourcesIdentity> -Parameter <IResourcesMoveInfo> [-PassThru]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -129,7 +129,7 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Move, MoveExpanded, MoveViaIdentityExpanded, MoveViaIdentity
+Parameter Sets: MoveExpanded, Move, MoveViaIdentityExpanded, MoveViaIdentity
 Aliases:
 
 Required: False
@@ -149,7 +149,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IResources
 Parameter Sets: Move, MoveViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -158,7 +158,7 @@ Dynamic: False
 ```
 
 ### -PassThru
-When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -178,7 +178,7 @@ The IDs of the resources.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: MoveByComponents, MoveExpanded, MoveViaIdentityExpanded
+Parameter Sets: MoveExpanded, MoveByComponents, MoveViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -194,7 +194,7 @@ The name of the resource group containing the resources to move.
 
 ```yaml
 Type: System.String
-Parameter Sets: Move, MoveByComponents, MoveExpanded
+Parameter Sets: MoveExpanded, MoveByComponents, Move
 Aliases:
 
 Required: True
@@ -210,7 +210,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Move, MoveByComponents, MoveExpanded
+Parameter Sets: MoveExpanded, MoveByComponents, Move
 Aliases:
 
 Required: True

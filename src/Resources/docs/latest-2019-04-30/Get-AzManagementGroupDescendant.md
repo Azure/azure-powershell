@@ -1,31 +1,31 @@
 ---
 external help file:
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/test-azresourcegroup
+online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/get-azmanagementgroupdescendant
 schema: 2.0.0
 ---
 
-# Test-AzResourceGroup
+# Get-AzManagementGroupDescendant
 
 ## SYNOPSIS
-Checks whether a resource group exists.
+List all entities that descend from a management group.\n
 
 ## SYNTAX
 
-### Check (Default)
+### Get (Default)
 ```
-Test-AzResourceGroup -ResourceGroupName <String> -SubscriptionId <String> [-DefaultProfile <PSObject>]
- [-PassThru] [<CommonParameters>]
+Get-AzManagementGroupDescendant -GroupId <String> [-Skiptoken <String>] [-Top <Int32>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CheckViaIdentity
+### GetViaIdentity
 ```
-Test-AzResourceGroup -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-PassThru]
- [<CommonParameters>]
+Get-AzManagementGroupDescendant -InputObject <IResourcesIdentity> [-Skiptoken <String>] [-Top <Int32>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Checks whether a resource group exists.
+List all entities that descend from a management group.\n
 
 ## EXAMPLES
 
@@ -65,12 +65,28 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -GroupId
+Management Group ID.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases: GroupName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -InputObject
 Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: CheckViaIdentity
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
@@ -81,32 +97,16 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
+### -Skiptoken
+Page continuation token is only used if a previous operation returned a partial result.
+If a previous response contains a nextLink element, the value of the nextLink element will include a token parameter that specifies a starting point to use for subsequent calls.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -ResourceGroupName
-The name of the resource group to check.
-The name is case insensitive.
-
-```yaml
-Type: System.String
-Parameter Sets: Check
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -114,15 +114,49 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -SubscriptionId
-The ID of the target subscription.
+### -Top
+Number of elements to return when retrieving results.
+Passing this in will override $skipToken.
 
 ```yaml
-Type: System.String
-Parameter Sets: Check
+Type: System.Int32
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -139,11 +173,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180301Preview.IDescendantInfo
 
 ## ALIASES
-
-### Test-AzResourceGroupExistence
 
 ## NOTES
 
