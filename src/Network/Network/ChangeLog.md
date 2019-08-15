@@ -21,6 +21,7 @@
 * Fixed miscellaneous typos across module
 * Adjusted validation logic for Ipv6 IP Prefix to check for correct IPv6 prefix length. 
 * Updated Get-AzVirtualNetworkSubnetConfig: Added parameter set to get by subnet resource id.
+* Updated description of Location parameter for AzNetworkServiceTag
 
 ## Version 1.12.0
 * Add support for private endpoint and private link service
