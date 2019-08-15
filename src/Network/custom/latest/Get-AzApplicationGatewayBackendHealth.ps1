@@ -195,7 +195,7 @@ param(
 )
 
 process {
-    $null = $PSBoundParameters.Remove("AsOnDemand")
+    $null = $PSBoundParameters.Remove('AsOnDemand')
     $healthOnDemand = Az.Network.internal\Get-AzApplicationGatewayBackendHealthOnDemand @PSBoundParameters
     $healthPool = New-Object -TypeName 'Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ApplicationGatewayBackendHealthPool'
     Get-Member -InputObject $healthOnDemand | Where-Object { $_.MemberType -eq 'Property' } | ForEach-Object {

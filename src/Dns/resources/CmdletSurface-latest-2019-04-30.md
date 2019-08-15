@@ -7,17 +7,21 @@
   - InputObject `IDnsIdentity`
   - NameSuffix `String`
   - Top `Int32`
+  - DoNotOverwrite `SwitchParameter`
   - IfMatch `String`
-  - IfNoneMatch `String`
+  - Etag `String`
+  - Metadata `Hashtable`
+  - TargetResourceId `String`
+  - TimeToLive `Int64`
+  - CnameRecordName `String`
   - ARecord `IARecord[]`
   - AaaaRecord `IAaaaRecord[]`
   - CaaRecord `ICaaRecord[]`
-  - CnameRecordName `String`
-  - Etag `String`
   - MXRecord `IMxRecord[]`
-  - Metadata `Hashtable`
   - NSRecord `INsRecord[]`
   - PtrRecord `IPtrRecord[]`
+  - SrvRecord `ISrvRecord[]`
+  - TxtRecord `ITxtRecord[]`
   - SoaRecordEmail `String`
   - SoaRecordExpireTime `Int64`
   - SoaRecordHost `String`
@@ -25,17 +29,10 @@
   - SoaRecordRefreshTime `Int64`
   - SoaRecordRetryTime `Int64`
   - SoaRecordSerialNumber `Int64`
-  - SrvRecord `ISrvRecord[]`
-  - TargetResourceId `String`
-  - TimeToLive `Int64`
-  - TxtRecord `ITxtRecord[]`
-  - RecordSet `IRecordSet`
 
 ### AzDnsResourceReference [Get] `IDnsResourceReferenceResultProperties`
   - SubscriptionId `String[]`
-  - InputObject `IDnsIdentity`
-  - TargetResource `ISubResource[]`
-  - ResourceReference `IDnsResourceReferenceRequest`
+  - TargetResourceId `String[]`
 
 ### AzDnsZone [Get, New, Remove, Set] `IZone, Boolean`
   - SubscriptionId `String[]`
@@ -43,15 +40,14 @@
   - ResourceGroupName `String`
   - InputObject `IDnsIdentity`
   - Top `Int32`
+  - DoNotOverwrite `SwitchParameter`
   - IfMatch `String`
-  - IfNoneMatch `String`
-  - Etag `String`
   - Location `String`
-  - RegistrationVirtualNetwork `ISubResource[]`
-  - ResolutionVirtualNetwork `ISubResource[]`
+  - Etag `String`
   - Tag `Hashtable`
-  - ZoneType `ZoneType`
-  - Zone `IZone`
+  - Private `SwitchParameter`
+  - RegistrationVirtualNetworkId `String[]`
+  - ResolutionVirtualNetworkId `String[]`
 
 ### AzDummy [Test] `Boolean`
   - Name `String`

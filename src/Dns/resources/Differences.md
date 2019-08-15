@@ -1,27 +1,34 @@
 ## Incorrect Cmdlets
 
+- Get-AzDnsRecordSet
+    - Zone
 - New-AzDnsRecordSet
+    - Zone
+    - RecordType
     - DnsRecords
     - Overwrite
 - New-AzDnsZone
-    - RegistrationVirtualNetworkId
-    - ResolutionVirtualNetworkId
+    - ZoneType
+    - RegistrationVirtualNetwork
+    - ResolutionVirtualNetwork
 - Remove-AzDnsRecordSet
+    - Zone
     - RecordSet
     - Overwrite
 - Remove-AzDnsZone
     - Zone
     - Overwrite
 - Set-AzDnsRecordSet
+    - RecordSet
     - Overwrite
 - Set-AzDnsZone
-    - RegistrationVirtualNetworkId
-    - ResolutionVirtualNetworkId
+    - RegistrationVirtualNetwork
+    - ResolutionVirtualNetwork
+    - Zone
     - Overwrite
 
 ## Correct Cmdlets
 
-- Get-AzDnsRecordSet
 - Get-AzDnsZone
 - Test-AzDummy
 

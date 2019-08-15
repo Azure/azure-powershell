@@ -158,7 +158,7 @@ The name is case insensitive.
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases: Zone
+Aliases:
 
 Required: True
 Position: Named

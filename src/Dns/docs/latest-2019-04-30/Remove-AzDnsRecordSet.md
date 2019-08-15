@@ -157,7 +157,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: Delete1
-Aliases: Zone
+Aliases:
 
 Required: True
 Position: Named

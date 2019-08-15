@@ -57,6 +57,9 @@ module-version: 0.0.1
 
 directive:
 # RecordSet
+  # - no-inline:
+  #     - CnameRecord
+  #     - SoaRecord
   - where:
       subject: RecordSet
       parameter-name: Parameter
@@ -99,11 +102,10 @@ directive:
       parameter-name: CnameRecordCname
     set:
       parameter-name: CnameRecordName
-  - where: # REMOVE BEFORE RELEASE: In-memory object parameter, only got ZoneName and Zone's resource group out of Zone
+  - where:
+      verb: ^New$|^Set$|^Update$
       subject: RecordSet
-      parameter-name: ResourceGroupName
-    set:
-      alias: Zone
+    hide: true
 
 # ResourceReference
   - where:
@@ -111,6 +113,10 @@ directive:
       parameter-name: Parameter
     set:
       parameter-name: ResourceReference
+  - where:
+      verb: Get
+      subject: DnsResourceReference
+    hide: true
 
 # Zone
   - where: # Only updates Tags
@@ -122,9 +128,8 @@ directive:
       parameter-name: Parameter
     set:
       parameter-name: Zone
-  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-      subject: RecordSet
-      parameter-name: ResourceGroupName
-    set:
-      alias: Zone
+  - where:
+      verb: ^New$|^Set$
+      subject: Zone
+    hide: true
 ```

@@ -148,7 +148,7 @@ The name is case insensitive.
 ```yaml
 Type: System.String
 Parameter Sets: List1, Get, List
-Aliases: Zone
+Aliases:
 
 Required: True
 Position: Named

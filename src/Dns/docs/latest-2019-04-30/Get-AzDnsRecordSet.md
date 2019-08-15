@@ -153,7 +153,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: List3, Get1, List2, List4
-Aliases: Zone
+Aliases:
 
 Required: True
 Position: Named
