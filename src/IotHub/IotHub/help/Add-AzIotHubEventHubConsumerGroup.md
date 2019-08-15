@@ -30,13 +30,6 @@ PS C:\> Add-AzIotHubEventHubConsumerGroup -ResourceGroupName "myresourcegroup" -
 
 Adds a new consumergroup named "myconsumergroup" to the eventhub for telemetry events in the iothub named "myiothub"
 
-### Example 2: Add a consumer group to the operations monitoring eventhub
-```
-PS C:\> Add-AzIotHubEventHubConsumerGroup -ResourceGroupName "myresourcegroup" -Name "myiothub" -EventHubEndpointName "operationsMonitoringEvents" -EventHubConsumerGroupName "myconsumergroup"
-```
-
-Adds a new consumergroup named "myconsumergroup" to the eventhub for operations monitoring events in the iothub named "myiothub"
-
 ## PARAMETERS
 
 ### -DefaultProfile

@@ -88,7 +88,7 @@ CmdletsToExport = 'Add-AzIotHubKey', 'Get-AzIotHubEventHubConsumerGroup',
                'Get-AzIotHubRoutingEndpoint', 'Add-AzIotHubRoutingEndpoint', 
                'Remove-AzIotHubRoutingEndpoint', 'Get-AzIotHubRoute', 
                'Add-AzIotHubRoute', 'Remove-AzIotHubRoute', 'Set-AzIotHubRoute', 
-               'Test-AzIotHubRoute', 'New-AzIotHubKey'
+               'Test-AzIotHubRoute', 'New-AzIotHubKey', 'Invoke-AzIotHubManualFailover'
 
 # Variables to export from this module
 # VariablesToExport = @()

@@ -29,13 +29,6 @@ PS C:\> Get-AzIotHubEventHubConsumerGroup -ResourceGroupName "myresourcegroup" -
 
 Gets all the eventhub consumergroups for the telemetry eventhub for the iothub named myiothub
 
-### Example 2 Gets all the eventhub consumergroups for the operationsmonitoring eventhub
-```
-PS C:\> Get-AzIotHubEventHubConsumerGroup -ResourceGroupName "myresourcegroup" -Name "myiothub" -EventHubEndpointName "operationsMonitoringEvents"
-```
-
-Gets all the eventhub consumergroups for the operationsMonitoringEvents eventhub for the iothub named myiothub
-
 ## PARAMETERS
 
 ### -DefaultProfile
