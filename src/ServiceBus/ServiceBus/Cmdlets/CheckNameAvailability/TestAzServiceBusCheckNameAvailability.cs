@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
     /// <summary>
     /// 'Test-AzureRmCheckNameAvailability' Cmdlet Check Availability of the NameSpace Name
     /// </summary>
-    [Cmdlet("Test", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusNameAvailability", DefaultParameterSetName = QueueCheckNameAvailabilityParameterSet), OutputType(typeof(PSCheckNameQueueTopicResultAttributes))]
+    [Cmdlet("Test", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusNameAvailability", DefaultParameterSetName = QueueCheckNameAvailabilityParameterSet), OutputType(typeof(bool))]
     public class TestAzServiceBusCheckNameAvailability : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = QueueCheckNameAvailabilityParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
@@ -63,9 +63,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
                         PSQueueAttributes getQueueResult = Client.GetQueue(ResourceGroupName, Namespace, Name);
                         if (getQueueResult.Name.Equals(Name))
                         {
-                            checkNameresult.NameAvailable = false;
-                            checkNameresult.Reason = UnavailableReasonAttributes.NameInUse;
-                            WriteObject(checkNameresult);
+                            WriteObject(false);
                         }
                     }
 
@@ -73,10 +71,8 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
                     {
                         PSTopicAttributes getTopicResult = Client.GetTopic(ResourceGroupName, Namespace, Name);
                         if (getTopicResult.Name.Equals(Name))
-                        {
-                            checkNameresult.NameAvailable = false;
-                            checkNameresult.Reason = UnavailableReasonAttributes.NameInUse;
-                            WriteObject(checkNameresult);
+                        {                            
+                            WriteObject(false);
                         }
                     }
 
@@ -85,9 +81,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
                 {
                     if (ex.Message.ToLower().Contains("notfound"))
                     {
-                        checkNameresult.NameAvailable = true;
-                        checkNameresult.Reason = UnavailableReasonAttributes.None;
-                        WriteObject(checkNameresult);
+                        WriteObject(true);
                     }
                 }                
             }

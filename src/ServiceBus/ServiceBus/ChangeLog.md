@@ -21,6 +21,7 @@
 ## Upcoming Release
 * Fixed miscellaneous typos across module
 * Fix for issue #9658 : Typo VirtualNetworkRule parameter in Set-AzServiceBusNetworkRuleSet
+* Added new command 'Test-AzServiceBusNameAvailability' to check the name availability for queue and topic 
 
 ## Version 1.3.0
 * Added new cmmdlet added for generating SAS token : New-AzServiceBusAuthorizationRuleSASToken
