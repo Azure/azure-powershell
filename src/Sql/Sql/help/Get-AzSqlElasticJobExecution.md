@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 online version: https://docs.microsoft.com/en-us/powershell/module/Az.sql/get-Azsqlelasticjobexecution
 schema: 2.0.0
@@ -23,32 +23,32 @@ Get-AzSqlElasticJobExecution [-ResourceGroupName] <String> [-ServerName] <String
 ### WithJobExecutionId
 ```
 Get-AzSqlElasticJobExecution [-ResourceGroupName] <String> [-ServerName] <String> [-AgentName] <String>
- -JobName <String> [-JobExecutionId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -JobName <String> -JobExecutionId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ObjectSet
 ```
-Get-AzSqlElasticJobExecution -ParentObject <AzureSqlElasticJobAgentModel> [-JobName <String>]
+Get-AzSqlElasticJobExecution [-ParentObject] <AzureSqlElasticJobAgentModel> [-JobName <String>]
  [-Count] <Int32> [-CreateTimeMin <DateTime>] [-CreateTimeMax <DateTime>] [-EndTimeMin <DateTime>]
  [-EndTimeMax <DateTime>] [-Active] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### WithJobExecutionIdUsingParentObject
 ```
-Get-AzSqlElasticJobExecution -ParentObject <AzureSqlElasticJobAgentModel> -JobName <String>
- [-JobExecutionId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSqlElasticJobExecution [-ParentObject] <AzureSqlElasticJobAgentModel> -JobName <String>
+ -JobExecutionId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
-Get-AzSqlElasticJobExecution -ParentResourceId <String> [-JobName <String>] [-Count] <Int32>
+Get-AzSqlElasticJobExecution [-ParentResourceId] <String> [-JobName <String>] [-Count] <Int32>
  [-CreateTimeMin <DateTime>] [-CreateTimeMax <DateTime>] [-EndTimeMin <DateTime>] [-EndTimeMax <DateTime>]
  [-Active] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### WithJobExecutionIdUsingParentResourceId
 ```
-Get-AzSqlElasticJobExecution -ParentResourceId <String> -JobName <String> [-JobExecutionId] <String>
+Get-AzSqlElasticJobExecution [-ParentResourceId] <String> -JobName <String> -JobExecutionId <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -87,7 +87,7 @@ Gets one or more job executions
 Filter by create time min
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: DefaultSet, ObjectSet, ResourceIdSet
 Aliases:
 
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 The agent name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultSet, WithJobExecutionId
 Aliases:
 
@@ -117,7 +117,7 @@ Accept wildcard characters: False
 Count returns the top number of executions.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: DefaultSet, ObjectSet, ResourceIdSet
 Aliases:
 
@@ -132,7 +132,7 @@ Accept wildcard characters: False
 Filter by create time min
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: DefaultSet, ObjectSet, ResourceIdSet
 Aliases:
 
@@ -147,7 +147,7 @@ Accept wildcard characters: False
 Filter by create time min
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: DefaultSet, ObjectSet, ResourceIdSet
 Aliases:
 
@@ -162,9 +162,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -177,7 +177,7 @@ Accept wildcard characters: False
 Filter by create time min
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: DefaultSet, ObjectSet, ResourceIdSet
 Aliases:
 
@@ -192,7 +192,7 @@ Accept wildcard characters: False
 Filter by create time min
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: DefaultSet, ObjectSet, ResourceIdSet
 Aliases:
 
@@ -207,12 +207,12 @@ Accept wildcard characters: False
 The job execution id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: WithJobExecutionId, WithJobExecutionIdUsingParentObject, WithJobExecutionIdUsingParentResourceId
 Aliases:
 
 Required: True
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -222,7 +222,7 @@ Accept wildcard characters: False
 The job name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultSet, ObjectSet, ResourceIdSet
 Aliases:
 
@@ -234,7 +234,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: WithJobExecutionId, WithJobExecutionIdUsingParentObject, WithJobExecutionIdUsingParentResourceId
 Aliases:
 
@@ -249,12 +249,12 @@ Accept wildcard characters: False
 The job execution id.
 
 ```yaml
-Type: AzureSqlElasticJobAgentModel
+Type: Microsoft.Azure.Commands.Sql.ElasticJobs.Model.AzureSqlElasticJobAgentModel
 Parameter Sets: ObjectSet, WithJobExecutionIdUsingParentObject
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -264,12 +264,12 @@ Accept wildcard characters: False
 The agent resource id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdSet, WithJobExecutionIdUsingParentResourceId
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -279,7 +279,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultSet, WithJobExecutionId
 Aliases:
 
@@ -294,7 +294,7 @@ Accept wildcard characters: False
 The server name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultSet, WithJobExecutionId
 Aliases:
 
@@ -306,7 +306,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
