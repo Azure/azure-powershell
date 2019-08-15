@@ -1,15 +1,3 @@
-<#
-.Synopsis
-Gets the Activity Logs for the Tenant.<br>Everything that is applicable to the API to get the Activity Logs for the subscription is applicable to this API (the parameters, $filter, etc.).<br>One thing to point out here is that this API does *not* retrieve the logs at the individual subscription of the tenant but only surfaces the logs that were generated at the tenant level.
-.Description
-Gets the Activity Logs for the Tenant.<br>Everything that is applicable to the API to get the Activity Logs for the subscription is applicable to this API (the parameters, $filter, etc.).<br>One thing to point out here is that this API does *not* retrieve the logs at the individual subscription of the tenant but only surfaces the logs that were generated at the tenant level.
-.Example
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.monitor/get-aztenantactivitylog
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20150401.IEventData
-.Link
-https://docs.microsoft.com/en-us/powershell/module/az.monitor/get-aztenantactivitylog
-#>
 function Get-AzTenantActivityLog {
 [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20150401.IEventData')]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]

@@ -1,15 +1,3 @@
-<#
-.Synopsis
-Create or update a log profile in Azure Monitoring REST API.
-.Description
-Create or update a log profile in Azure Monitoring REST API.
-.Example
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.monitor/set-azlogprofile
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20160301.ILogProfileResource
-.Link
-https://docs.microsoft.com/en-us/powershell/module/az.monitor/set-azlogprofile
-#>
 function Set-AzLogProfile {
 [Alias('Add-AzLogProfile')]
 [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20160301.ILogProfileResource')]

@@ -15,19 +15,33 @@ Update an metric alert definition.
 ### UpdateExpanded (Default)
 ```
 Update-AzMetricAlert -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Action <IMetricAlertAction[]>] [-AutoMitigate] [-CriterionOdataType <Odatatype>] [-Description <String>]
- [-Enabled] [-EvaluationFrequency <TimeSpan>] [-Scope <String[]>] [-Severity <Int32>] [-Tag <Hashtable>]
- [-TargetResourceRegion <String>] [-TargetResourceType <String>] [-WindowSize <TimeSpan>]
+ -Condition <MetricCriteria[]> [-Action <IMetricAlertAction[]>] [-AutoMitigate] [-Description <String>]
+ [-Enabled] [-EvaluationFrequency <TimeSpan>] [-Severity <Int32>] [-Tag <Hashtable>] [-WindowSize <TimeSpan>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzMetricAlert -InputObject <IMonitorIdentity> [-Action <IMetricAlertAction[]>] [-AutoMitigate]
- [-CriterionOdataType <Odatatype>] [-Description <String>] [-Enabled] [-EvaluationFrequency <TimeSpan>]
- [-Scope <String[]>] [-Severity <Int32>] [-Tag <Hashtable>] [-TargetResourceRegion <String>]
- [-TargetResourceType <String>] [-WindowSize <TimeSpan>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+Update-AzMetricAlert -InputObject <IMonitorIdentity> -Condition <MetricCriteria[]>
+ [-Action <IMetricAlertAction[]>] [-AutoMitigate] [-Description <String>] [-Enabled]
+ [-EvaluationFrequency <TimeSpan>] [-Severity <Int32>] [-Tag <Hashtable>] [-WindowSize <TimeSpan>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ByResourceId
+```
+Update-AzMetricAlert -Condition <MetricCriteria[]> -TargetResourceId <String> [-Action <IMetricAlertAction[]>]
+ [-AutoMitigate] [-Description <String>] [-Enabled] [-EvaluationFrequency <TimeSpan>] [-Severity <Int32>]
+ [-Tag <Hashtable>] [-WindowSize <TimeSpan>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
+```
+
+### ByScope
+```
+Update-AzMetricAlert -Condition <MetricCriteria[]> -TargetResourceScope <String[]>
+ -TargetResourceRegion <String> -TargetResourceType <String> [-Action <IMetricAlertAction[]>] [-AutoMitigate]
+ [-Description <String>] [-Enabled] [-EvaluationFrequency <TimeSpan>] [-Severity <Int32>] [-Tag <Hashtable>]
+ [-WindowSize <TimeSpan>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,6 +71,7 @@ PS C:\> {{ Add code here }}
 
 ### -Action
 the array of actions that are performed when the alert rule becomes active, and when an alert condition is resolved.
+To construct, see NOTES section for ACTION properties and create a hash table.
 To construct, see NOTES section for ACTION properties and create a hash table.
 
 ```yaml
@@ -88,15 +103,16 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -CriterionOdataType
-specifies the type of the alert criteria.
+### -Condition
+The rule criteria that defines the conditions of the alert rule.
+To construct, see NOTES section for CONDITION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Support.Odatatype
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20180301.MetricCriteria[]
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -216,22 +232,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Scope
-the list of resource id's that this metric alert is scoped to.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Severity
 Alert severity {0, 1, 2, 3, 4}
 
@@ -280,16 +280,47 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -TargetResourceRegion
-the region of the target resource(s) on which the alert is created/updated.
-Mandatory for MultipleResourceMultipleMetricCriteria.
+### -TargetResourceId
+the target resource id for rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByResourceId
 Aliases:
 
-Required: False
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -TargetResourceRegion
+the region of the target resource(s) on which the alert is created/updated.
+
+```yaml
+Type: System.String
+Parameter Sets: ByScope
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -TargetResourceScope
+the list of resource id's that this metric alert is scoped to.
+
+```yaml
+Type: System.String[]
+Parameter Sets: ByScope
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -299,14 +330,13 @@ Dynamic: False
 
 ### -TargetResourceType
 the resource type of the target resource(s) on which the alert is created/updated.
-Mandatory for MultipleResourceMultipleMetricCriteria.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByScope
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -385,6 +415,19 @@ To create the parameters described below, construct a hash table containing the 
   - `[ActionGroupId <String>]`: the id of the action group to use.
   - `[WebhookProperty <IMetricAlertActionWebhookProperties>]`: The properties of a webhook object.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
+
+#### CONDITION <MetricCriteria[]>: The rule criteria that defines the conditions of the alert rule.
+  - `Operator <Operator>`: the criteria operator.
+  - `Threshold <Double>`: the criteria threshold value that activates the alert.
+  - `CriterionType <CriterionType>`: Specifies the type of threshold criteria
+  - `MetricName <String>`: Name of the metric.
+  - `Name <String>`: Name of the criteria.
+  - `TimeAggregation <AggregationType>`: the criteria time aggregation types.
+  - `[Dimension <IMetricDimension[]>]`: List of dimension conditions.
+    - `Name <String>`: Name of the dimension.
+    - `Operator <String>`: the dimension operator. Only 'Include' and 'Exclude' are supported
+    - `Value <String[]>`: list of dimension values.
+  - `[MetricNamespace <String>]`: Namespace of the metric.
 
 ## RELATED LINKS
 

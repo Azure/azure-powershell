@@ -1,6 +1,6 @@
 ---
 Module Name: Az.Monitor
-Module Guid: 8af1772b-37e1-433d-78ad-cafc09b9763e
+Module Guid: 364b2dcf-3b5b-4752-b9e9-a267e94981d7
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.monitor
 Help Version: 1.0.0.0
 Locale: en-US
@@ -45,7 +45,7 @@ Gets the active diagnostic settings for the specified resource.
 Gets the diagnostic settings category for the specified resource.
 
 ### [Get-AzEventCategory](Get-AzEventCategory.md)
-Get the list of available event categories supported in the Activity Logs Service.<br>The current list includes the following: Administrative, Security, ServiceHealth, Alert, Recommendation, Policy.
+Get the list of available event categories supported in the Activity Logs Service.\<br\>The current list includes the following: Administrative, Security, ServiceHealth, Alert, Recommendation, Policy.
 
 ### [Get-AzLogProfile](Get-AzLogProfile.md)
 Gets the log profile.
@@ -138,6 +138,9 @@ Creates or updates diagnostic settings for the specified resource.
 
 ### [Set-AzLogProfile](Set-AzLogProfile.md)
 Create or update a log profile in Azure Monitoring REST API.
+
+### [Set-AzScheduledQueryRule](Set-AzScheduledQueryRule.md)
+Creates or updates an log search rule.
 
 ### [Update-AzActionGroup](Update-AzActionGroup.md)
 Updates an existing action group's tags.

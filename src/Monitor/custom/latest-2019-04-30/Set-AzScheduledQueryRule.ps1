@@ -1,6 +1,6 @@
-function New-AzScheduledQueryRule {
+function Set-AzScheduledQueryRule {
 [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20180416.ILogSearchRuleResource')]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Profile('latest-2019-04-30')]
 [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Description('Creates or updates an log search rule.')]
 param(
@@ -160,7 +160,6 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
-
 process {
     if ($PSBoundParameters.ContainsKey("Enabled") -and ($PSBoundParameters["Enabled"] -eq $true)) {
         $PSBoundParameters["Enabled"] = "true"
@@ -172,7 +171,6 @@ process {
     $PSBoundParameters["Action"] = $PSBoundParameters["AlertingAction"]
     $null = $PSBoundParameters.Remove("AlertingAction")
 
-    Az.Monitor.internal\New-AzScheduledQueryRule @PSBoundParameters
+    Az.Monitor.internal\Set-AzScheduledQueryRule @PSBoundParameters
 }
-
 }

@@ -13,10 +13,11 @@ Creates or updates an alert rule.
 ## SYNTAX
 
 ```
-New-AzAlertRule -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -ConditionOdataType <String> -IsEnabled -Location <String> [-Action <IRuleAction[]>]
- [-DataSourceOdataType <String>] [-DataSourceResourceUri <String>] [-Description <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzAlertRule -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Threshold <Double>
+ -Operator <ConditionOperator> -MetricName <String> -TargetResourceId <String> -IsEnabled -Location <String>
+ [-WindowSize <TimeSpan>] [-TimeAggregationOperator <TimeAggregationOperator>] [-Action <IRuleAction[]>]
+ [-Description <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,57 +52,6 @@ To construct, see NOTES section for ACTION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20160301.IRuleAction[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -ConditionOdataType
-specifies the type of condition.
-This can be one of three types: ManagementEventRuleCondition (occurrences of management events), LocationThresholdRuleCondition (based on the number of failures of a web test), and ThresholdRuleCondition (based on the threshold of a metric).
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -DataSourceOdataType
-specifies the type of data source.
-There are two types of rule data sources: RuleMetricDataSource and RuleManagementEventDataSource
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -DataSourceResourceUri
-the resource identifier of the resource the rule monitors.
-**NOTE**: this property cannot be updated for an existing rule.
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -177,11 +127,43 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -MetricName
+The metric name for rule.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Name
 The name of the rule.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Operator
+The rule condition operator.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Support.ConditionOperator
 Parameter Sets: (All)
 Aliases:
 
@@ -230,6 +212,70 @@ Resource tags
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -TargetResourceId
+The target resource id for rule.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Threshold
+The threshold for rule condition.
+
+```yaml
+Type: System.Double
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -TimeAggregationOperator
+The aggregation operation used to roll up multiple metric values across the window interval.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Support.TimeAggregationOperator
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -WindowSize
+The window size for rule.
+
+```yaml
+Type: System.TimeSpan
 Parameter Sets: (All)
 Aliases:
 

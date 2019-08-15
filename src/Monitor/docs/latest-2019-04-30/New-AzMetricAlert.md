@@ -12,11 +12,20 @@ Create or update an metric alert definition.
 
 ## SYNTAX
 
+### CreateByResourceId (Default)
 ```
 New-AzMetricAlert -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -CriterionOdataType <Odatatype> -Description <String> -Enabled -EvaluationFrequency <TimeSpan>
- -Location <String> -Severity <Int32> -WindowSize <TimeSpan> [-Action <IMetricAlertAction[]>] [-AutoMitigate]
- [-Scope <String[]>] [-Tag <Hashtable>] [-TargetResourceRegion <String>] [-TargetResourceType <String>]
+ -Condition <MetricCriteria[]> -Description <String> -Enabled -EvaluationFrequency <TimeSpan>
+ -Severity <Int32> -WindowSize <TimeSpan> -TargetResourceId <String> [-Action <IMetricAlertAction[]>]
+ [-AutoMitigate] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateByScope
+```
+New-AzMetricAlert -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -Condition <MetricCriteria[]> -Description <String> -Enabled -EvaluationFrequency <TimeSpan>
+ -Severity <Int32> -WindowSize <TimeSpan> -TargetResourceScope <String[]> -TargetResourceRegion <String>
+ -TargetResourceType <String> [-Action <IMetricAlertAction[]>] [-AutoMitigate] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -48,6 +57,7 @@ PS C:\> {{ Add code here }}
 ### -Action
 the array of actions that are performed when the alert rule becomes active, and when an alert condition is resolved.
 To construct, see NOTES section for ACTION properties and create a hash table.
+To construct, see NOTES section for ACTION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20180301.IMetricAlertAction[]
@@ -78,11 +88,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -CriterionOdataType
-specifies the type of the alert criteria.
+### -Condition
+The rule criteria that defines the conditions of the alert rule.
+To construct, see NOTES section for CONDITION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Support.Odatatype
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20180301.MetricCriteria[]
 Parameter Sets: (All)
 Aliases:
 
@@ -158,22 +169,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Location
-Resource location
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Name
 The name of the rule.
 
@@ -199,22 +194,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Scope
-the list of resource id's that this metric alert is scoped to.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -270,16 +249,47 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -TargetResourceRegion
-the region of the target resource(s) on which the alert is created/updated.
-Mandatory for MultipleResourceMultipleMetricCriteria.
+### -TargetResourceId
+the target resource id for rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateByResourceId
 Aliases:
 
-Required: False
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -TargetResourceRegion
+the region of the target resource(s) on which the alert is created/updated.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateByScope
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -TargetResourceScope
+the list of resource id's that this metric alert is scoped to.
+
+```yaml
+Type: System.String[]
+Parameter Sets: CreateByScope
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -289,14 +299,13 @@ Dynamic: False
 
 ### -TargetResourceType
 the resource type of the target resource(s) on which the alert is created/updated.
-Mandatory for MultipleResourceMultipleMetricCriteria.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateByScope
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -375,6 +384,19 @@ To create the parameters described below, construct a hash table containing the 
   - `[ActionGroupId <String>]`: the id of the action group to use.
   - `[WebhookProperty <IMetricAlertActionWebhookProperties>]`: The properties of a webhook object.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
+
+#### CONDITION <MetricCriteria[]>: The rule criteria that defines the conditions of the alert rule.
+  - `Operator <Operator>`: the criteria operator.
+  - `Threshold <Double>`: the criteria threshold value that activates the alert.
+  - `CriterionType <CriterionType>`: Specifies the type of threshold criteria
+  - `MetricName <String>`: Name of the metric.
+  - `Name <String>`: Name of the criteria.
+  - `TimeAggregation <AggregationType>`: the criteria time aggregation types.
+  - `[Dimension <IMetricDimension[]>]`: List of dimension conditions.
+    - `Name <String>`: Name of the dimension.
+    - `Operator <String>`: the dimension operator. Only 'Include' and 'Exclude' are supported
+    - `Value <String[]>`: list of dimension values.
+  - `[MetricNamespace <String>]`: Namespace of the metric.
 
 ## RELATED LINKS
 

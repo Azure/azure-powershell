@@ -1,15 +1,3 @@
-<#
-.Synopsis
-Provides the list of records from the activity logs.
-.Description
-Provides the list of records from the activity logs.
-.Example
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.monitor/get-azactivitylog
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20150401.IEventData
-.Link
-https://docs.microsoft.com/en-us/powershell/module/az.monitor/get-azactivitylog
-#>
 function Get-AzActivityLog {
 [Alias('Get-AzLog')]
 [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20150401.IEventData')]
@@ -137,9 +125,7 @@ process {
 
     $null = $PSBoundParameters.Add("Filter", $filter)
 
-    $filter
-
-    #Az.Monitor.internal\Get-AzActivityLog @PSBoundParameters
+    Az.Monitor.internal\Get-AzActivityLog @PSBoundParameters
 }
 
 }

@@ -1,19 +1,3 @@
-<#
-.Synopsis
-Disable an existing ActivityLogAlert.
-.Description
-Disable an existing ActivityLogAlert.
-.Example
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.monitor/disable-azactivitylogalert
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.IMonitorIdentity
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20170401.IActivityLogAlertPatchBody
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20170401.IActivityLogAlertResource
-.Link
-https://docs.microsoft.com/en-us/powershell/module/az.monitor/disable-azactivitylogalert
-#>
 function Disable-AzActivityLogAlert {
 [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20170401.IActivityLogAlertResource')]
 [CmdletBinding(DefaultParameterSetName='Disable', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]

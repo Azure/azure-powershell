@@ -1,17 +1,3 @@
-<#
-.Synopsis
-Update log search Rule.
-.Description
-Update log search Rule.
-.Example
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.monitor/update-azscheduledqueryrule
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.IMonitorIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20180416.ILogSearchRuleResource
-.Link
-https://docs.microsoft.com/en-us/powershell/module/az.monitor/update-azscheduledqueryrule
-#>
 function Update-AzScheduledQueryRule {
 [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20180416.ILogSearchRuleResource')]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]

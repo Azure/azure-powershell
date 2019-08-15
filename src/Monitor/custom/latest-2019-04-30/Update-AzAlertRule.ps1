@@ -1,23 +1,3 @@
-<#
-.Synopsis
-Updates an existing AlertRuleResource. To update other fields use the CreateOrUpdate method.
-.Description
-Updates an existing AlertRuleResource. To update other fields use the CreateOrUpdate method.
-.Example
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.monitor/update-azalertrule
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.IMonitorIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20160301.IAlertRuleResource
-.Notes
-COMPLEX PARAMETER PROPERTIES
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-ACTION <IRuleAction[]>: the array of actions that are performed when the alert rule becomes active, and when an alert condition is resolved.
-  OdataType <String>: specifies the type of the action. There are two types of actions: RuleEmailAction and RuleWebhookAction.
-.Link
-https://docs.microsoft.com/en-us/powershell/module/az.monitor/update-azalertrule
-#>
 function Update-AzAlertRule {
 [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20160301.IAlertRuleResource')]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
@@ -59,44 +39,47 @@ param(
     # To construct, see NOTES section for ACTION properties and create a hash table.
     ${Action},
 
-    #[Parameter(HelpMessage='specifies the type of condition. This can be one of three types: ManagementEventRuleCondition (occurrences of management events), LocationThresholdRuleCondition (based on the number of failures of a web test), and ThresholdRuleCondition (based on the threshold of a metric).')]
-    #[Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Body')]
-    #[Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.Info(SerializedName='odata.type', PossibleTypes=([System.String]), Description='specifies the type of condition. This can be one of three types: ManagementEventRuleCondition (occurrences of management events), LocationThresholdRuleCondition (based on the number of failures of a web test), and ThresholdRuleCondition (based on the threshold of a metric).')]
-    #[System.String]
-    ## specifies the type of condition. This can be one of three types: ManagementEventRuleCondition (occurrences of management events), LocationThresholdRuleCondition (based on the number of failures of a web test), and ThresholdRuleCondition (based on the threshold of a metric).
-    #${ConditionOdataType},
+    # [Parameter(HelpMessage='the condition that results in the alert rule being activated. To construct, see NOTES section for CONDITION properties and create a hash table.')]
+    # [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Body')]
+    # [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.Info(SerializedName='condition', PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20160301.IRuleCondition]), Description='the condition that results in the alert rule being activated.')]
+    # [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20160301.IRuleCondition]
+    # # the condition that results in the alert rule being activated.
+    # # To construct, see NOTES section for CONDITION properties and create a hash table.
+    # ${Condition},
 
-    [Parameter(HelpMessage='The window size for rule.')]
+    # CUSTOM
+    [Parameter(ParameterSetName='UpdateViaIdentityExpandedCondition', HelpMessage='The window size for rule.')]
+    [Parameter(ParameterSetName='UpdateExpandedCondition', HelpMessage='The window size for rule.')]
     [System.TimeSpan]
     ${WindowSize},
 
-    [Parameter(HelpMessage = "The aggregation operation used to roll up multiple metric values across the window interval.")]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpandedCondition', HelpMessage = "The aggregation operation used to roll up multiple metric values across the window interval.")]
+    [Parameter(ParameterSetName='UpdateExpandedCondition', HelpMessage = "The aggregation operation used to roll up multiple metric values across the window interval.")]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Support.TimeAggregationOperator])]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Support.TimeAggregationOperator]
     ${TimeAggregationOperator},
 
-    [Parameter(Mandatory, HelpMessage = "The threshold for rule condition.")]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpandedCondition', Mandatory, HelpMessage = "The threshold for rule condition.")]
+    [Parameter(ParameterSetName='UpdateExpandedCondition', Mandatory, HelpMessage = "The threshold for rule condition.")]
     [System.Double]
     ${Threshold},
 
-    [Parameter(Mandatory, HelpMessage = "The rule condition operator.")]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpandedCondition', Mandatory, HelpMessage = "The rule condition operator.")]
+    [Parameter(ParameterSetName='UpdateExpandedCondition', Mandatory, HelpMessage = "The rule condition operator.")]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Support.ConditionOperator])]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Support.ConditionOperator]
     ${Operator},
 
-    #[Parameter(HelpMessage='specifies the type of data source. There are two types of rule data sources: RuleMetricDataSource and RuleManagementEventDataSource')]
-    #[Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Body')]
-    #[Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.Info(SerializedName='odata.type', PossibleTypes=([System.String]), Description='specifies the type of data source. There are two types of rule data sources: RuleMetricDataSource and RuleManagementEventDataSource')]
-    #[System.String]
-    ## specifies the type of data source. There are two types of rule data sources: RuleMetricDataSource and RuleManagementEventDataSource
-    #${DataSourceOdataType},
-    #
-    #[Parameter(HelpMessage='the resource identifier of the resource the rule monitors. **NOTE**: this property cannot be updated for an existing rule.')]
-    #[Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Body')]
-    #[Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.Info(SerializedName='resourceUri', PossibleTypes=([System.String]), Description='the resource identifier of the resource the rule monitors. **NOTE**: this property cannot be updated for an existing rule.')]
-    #[System.String]
-    ## the resource identifier of the resource the rule monitors. **NOTE**: this property cannot be updated for an existing rule.
-    #${DataSourceResourceUri},
+    [Parameter(ParameterSetName='UpdateViaIdentityExpandedCondition', Mandatory, HelpMessage = "The metric name for rule.")]
+    [Parameter(ParameterSetName='UpdateExpandedCondition', Mandatory, HelpMessage = "The metric name for rule.")]
+    [System.String]
+    ${MetricName},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityExpandedCondition', Mandatory, HelpMessage = "The target resource id for rule.")]
+    [Parameter(ParameterSetName='UpdateExpandedCondition', Mandatory, HelpMessage = "The target resource id for rule.")]
+    [System.String]
+    ${TargetResourceId},
+    # END CUSTOM
 
     [Parameter(HelpMessage='the description of the alert rule that will be included in the alert email.')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Body')]
@@ -111,6 +94,13 @@ param(
     [System.Management.Automation.SwitchParameter]
     # the flag that indicates whether the alert rule is enabled.
     ${IsEnabled},
+
+    # [Parameter(HelpMessage='the name of the alert rule.')]
+    # [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Body')]
+    # [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.Info(SerializedName='name', PossibleTypes=([System.String]), Description='the name of the alert rule.')]
+    # [System.String]
+    # # the name of the alert rule.
+    # ${PropertiesName},
 
     [Parameter(HelpMessage='Resource tags')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Body')]
@@ -169,10 +159,37 @@ param(
 
 process {
     if ($PSBoundParameters.ContainsKey("InputObject")) {
-        $PSBoundParameters.Add("PropertiesName", $PSBoundParameters["InputObject"].Name)
+        $PSBoundParameters["PropertiesName"] = $PSBoundParameters["InputObject"].Name
     } else {
-        $PSBoundParameters.Add("PropertiesName", $PSBoundParameters["Name"])    
+        $PSBoundParameters["PropertiesName"] = $PSBoundParameters["Name"]
     }
+
+    if ($PSBoundParameters.ContainsKey("Threshold")) {
+        $PSBoundParameters["Condition"] = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20160301.ThresholdRuleCondition]@{
+                                                odatatype="Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition"
+                                                threshold=$PSBoundParameters["Threshold"]
+                                                operator=$PSBoundParameters["Operator"]
+                                                datasource=[Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20160301.RuleMetricDataSource]@{
+                                                        odatatype="Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource"
+                                                        MetricName=$PSBoundParameters["MetricName"]
+                                                        ResourceUri=$PSBoundParameters["TargetResourceId"]
+                                                }
+        }
+        if ($PSBoundParameters.ContainsKey("TimeAggregationOperator")) {
+            $PSBoundParameters["Condition"].TimeAggregation = $PSBoundParameters["TimeAggregationOperator"]
+        }
+
+        if ($PSBoundParameters.ContainsKey("WindowSize")) {
+            $PSBoundParameters["Condition"].WindowSize = $PSBoundParameters["WindowSize"]
+        }
+    }
+
+    $null = $PSBoundParameters.Remove("Threshold")
+    $null = $PSBoundParameters.Remove("Operator")
+    $null = $PSBoundParameters.Remove("WindowSize")
+    $null = $PSBoundParameters.Remove("TimeAggregationOperator")
+    $null = $PSBoundParameters.Remove("MetricName")
+    $null = $PSBoundParameters.Remove("TargetResourceId")
     
     Az.Monitor.internal\Update-AzAlertRule @PSBoundParameters
 }

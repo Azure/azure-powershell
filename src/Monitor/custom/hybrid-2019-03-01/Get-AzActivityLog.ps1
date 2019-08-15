@@ -139,7 +139,7 @@ process {
 
     $filter
 
-    #Az.Monitor.internal\Get-AzActivityLog @PSBoundParameters
+    Az.Monitor.internal\Get-AzActivityLog @PSBoundParameters
 }
 
 }

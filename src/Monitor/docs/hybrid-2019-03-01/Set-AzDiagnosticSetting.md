@@ -14,9 +14,9 @@ Creates or updates diagnostic settings for the specified resource.
 
 ```
 Set-AzDiagnosticSetting -Name <String> -ResourceId <String> [-EventHubAuthorizationRuleId <String>]
- [-EventHubName <String>] [-Log <ILogSettings[]>] [-Metric <IMetricSettings[]>] [-ServiceBusRuleId <String>]
- [-StorageAccountId <String>] [-WorkspaceId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-EventHubName <String>] [-Log <ILogSettings[]>] [-LogAnalyticsDestinationType <String>]
+ [-Metric <IMetricSettings[]>] [-ServiceBusRuleId <String>] [-StorageAccountId <String>]
+ [-WorkspaceId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -94,7 +94,7 @@ Dynamic: False
 ```
 
 ### -Log
-the list of logs settings.
+The list of logs settings.
 To construct, see NOTES section for LOG properties and create a hash table.
 
 ```yaml
@@ -110,8 +110,26 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -LogAnalyticsDestinationType
+A string indicating whether the export to Log Analytics should use the default destination type, i.e.
+AzureDiagnostics, or use a destination type constructed as follows: \<normalized service identity\>_\<normalized category name\>.
+Possible values are: Dedicated and null (null is default.)
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Metric
-the list of metric settings.
+The list of metric settings.
 To construct, see NOTES section for METRIC properties and create a hash table.
 
 ```yaml
@@ -193,7 +211,7 @@ Dynamic: False
 ```
 
 ### -WorkspaceId
-The workspace ID (resource ID of a Log Analytics workspace) for a Log Analytics workspace to which you would like to send Diagnostic Logs.
+The full ARM resource ID of the Log Analytics workspace to which you would like to send Diagnostic Logs.
 Example: /subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2
 
 ```yaml
@@ -258,13 +276,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### LOG <ILogSettings[]>: the list of logs settings.
+#### LOG <ILogSettings[]>: The list of logs settings.
   - `Enabled <Boolean>`: a value indicating whether this log is enabled.
   - `RetentionPolicyDay <Int32>`: the number of days for the retention in days. A value of 0 will retain the events indefinitely.
   - `RetentionPolicyEnabled <Boolean>`: a value indicating whether the retention policy is enabled.
   - `[Category <String>]`: Name of a Diagnostic Log category for a resource type this setting is applied to. To obtain the list of Diagnostic Log categories for a resource, first perform a GET diagnostic settings operation.
 
-#### METRIC <IMetricSettings[]>: the list of metric settings.
+#### METRIC <IMetricSettings[]>: The list of metric settings.
   - `Enabled <Boolean>`: a value indicating whether this category is enabled.
   - `RetentionPolicyDay <Int32>`: the number of days for the retention in days. A value of 0 will retain the events indefinitely.
   - `RetentionPolicyEnabled <Boolean>`: a value indicating whether the retention policy is enabled.

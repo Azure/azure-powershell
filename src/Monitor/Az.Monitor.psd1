@@ -1,5 +1,5 @@
 @{
-  GUID = '8af1772b-37e1-433d-78ad-cafc09b9763e'
+  GUID = '364b2dcf-3b5b-4752-b9e9-a267e94981d7'
   RootModule = './Az.Monitor.psm1'
   ModuleVersion = '0.0.1'
   CompatiblePSEditions = 'Core', 'Desktop'
@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Monitor.private.dll'
   FormatsToProcess = './Az.Monitor.format.ps1xml'
-  CmdletsToExport = 'Disable-AzActivityLogAlert', 'Enable-AzActivityLogAlert', 'Get-AzActionGroup', 'Get-AzActivityLog', 'Get-AzActivityLogAlert', 'Get-AzAlertRule', 'Get-AzAlertRuleIncident', 'Get-AzAutoscaleSetting', 'Get-AzBaseline', 'Get-AzDiagnosticSetting', 'Get-AzDiagnosticSettingsCategory', 'Get-AzEventCategory', 'Get-AzLogProfile', 'Get-AzMetric', 'Get-AzMetricAlert', 'Get-AzMetricAlertsStatus', 'Get-AzMetricAlertStatus', 'Get-AzMetricBaseline', 'Get-AzMetricDefinition', 'Get-AzMetricNamespace', 'Get-AzScheduledQueryRule', 'Get-AzTenantActivityLog', 'Get-AzVMInsightOnboardingStatus', 'Invoke-AzCalculateMetricBaseline', 'New-AzActionGroup', 'New-AzActivityLogAlert', 'New-AzAlertRule', 'New-AzAutoscaleSetting', 'New-AzMetricAlert', 'New-AzScheduledQueryRule', 'Remove-AzActionGroup', 'Remove-AzActivityLogAlert', 'Remove-AzAlertRule', 'Remove-AzAutoscaleSetting', 'Remove-AzDiagnosticSetting', 'Remove-AzLogProfile', 'Remove-AzMetricAlert', 'Remove-AzScheduledQueryRule', 'Set-AzActionGroup', 'Set-AzActivityLogAlert', 'Set-AzDiagnosticSetting', 'Set-AzLogProfile', 'Update-AzActionGroup', 'Update-AzAlertRule', 'Update-AzAutoscaleSetting', 'Update-AzLogProfile', 'Update-AzMetricAlert', 'Update-AzScheduledQueryRule', '*'
+  CmdletsToExport = 'Disable-AzActivityLogAlert', 'Enable-AzActivityLogAlert', 'Get-AzActionGroup', 'Get-AzActivityLog', 'Get-AzActivityLogAlert', 'Get-AzAlertRule', 'Get-AzAlertRuleIncident', 'Get-AzAutoscaleSetting', 'Get-AzBaseline', 'Get-AzDiagnosticSetting', 'Get-AzDiagnosticSettingsCategory', 'Get-AzEventCategory', 'Get-AzLogProfile', 'Get-AzMetric', 'Get-AzMetricAlert', 'Get-AzMetricAlertsStatus', 'Get-AzMetricAlertStatus', 'Get-AzMetricBaseline', 'Get-AzMetricDefinition', 'Get-AzMetricNamespace', 'Get-AzScheduledQueryRule', 'Get-AzTenantActivityLog', 'Get-AzVMInsightOnboardingStatus', 'Invoke-AzCalculateMetricBaseline', 'New-AzActionGroup', 'New-AzActivityLogAlert', 'New-AzAlertRule', 'New-AzAutoscaleSetting', 'New-AzMetricAlert', 'New-AzScheduledQueryRule', 'Remove-AzActionGroup', 'Remove-AzActivityLogAlert', 'Remove-AzAlertRule', 'Remove-AzAutoscaleSetting', 'Remove-AzDiagnosticSetting', 'Remove-AzLogProfile', 'Remove-AzMetricAlert', 'Remove-AzScheduledQueryRule', 'Set-AzActionGroup', 'Set-AzActivityLogAlert', 'Set-AzDiagnosticSetting', 'Set-AzLogProfile', 'Set-AzScheduledQueryRule', 'Update-AzActionGroup', 'Update-AzAlertRule', 'Update-AzAutoscaleSetting', 'Update-AzLogProfile', 'Update-AzMetricAlert', 'Update-AzScheduledQueryRule', '*'
   AliasesToExport = 'Get-AzLog', 'Get-AzMetricAlertRuleV2', 'Add-AzMetricAlertRule', 'Add-AzMetricAlertRuleV2', 'Remove-AzMetricAlertRuleV2', 'Add-AzLogProfile', '*'
   PrivateData = @{
     PSData = @{

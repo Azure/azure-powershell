@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Monitor
-online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/new-azscheduledqueryrule
+online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/set-azscheduledqueryrule
 schema: 2.0.0
 ---
 
-# New-AzScheduledQueryRule
+# Set-AzScheduledQueryRule
 
 ## SYNOPSIS
 Creates or updates an log search rule.
@@ -13,7 +13,7 @@ Creates or updates an log search rule.
 ## SYNTAX
 
 ```
-New-AzScheduledQueryRule -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Set-AzScheduledQueryRule -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  -AlertingAction <AlertingAction> -Location <String> -SourceDataSourceId <String> [-Description <String>]
  [-ScheduleFrequencyInMinute <Int32>] [-ScheduleTimeWindowInMinute <Int32>]
  [-SourceAuthorizedResource <String[]>] [-SourceQuery <String>] [-SourceQueryType <QueryType>]

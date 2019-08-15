@@ -76,6 +76,11 @@ directive:
       enum-value-name: Equals
     set:
       enum-value-name: Equal
+  - where:
+      model-name: ActivityLogAlertLeafCondition
+      property-name: Equals
+    set:
+      property-name: Equal
   # ActivityLogAlert
   - where:
       subject: ActivityLogAlert
@@ -117,11 +122,10 @@ directive:
       parameter-name: RuleName
     set:
       parameter-name: Name
-  #- where:
-  #    subject: MetricAlert
-  #    parameter-name: CriterionOdataType
-  #  set:
-  #    parameter-name: Condition
+  - where:
+      verb: New|Update
+      subject: MetricAlert
+    hide: true
   # AlertRule
   - where:
       verb: New
@@ -221,10 +225,6 @@ directive:
       parameter-name: ResourceUri
     set:
       parameter-name: ResourceId
-  #- where:
-  #    verb: Get
-  #    subject: Metric
-  #  hide: true
   - where:
       verb: New
       subject: Metric
@@ -253,4 +253,23 @@ directive:
       verb: New
       subject: DiagnosticSetting
     hide: true
+```
+
+``` yaml
+declare-directive:
+  no-inline: >-
+    (() => {
+      return {
+       from: "code-model-v3", 
+       where: (Array.isArray($) ? $ : [$]).map( each => `$.schemas[?(/^${each}$/i.exec(@.details.default.name))]`),
+       transform: "$.details.default['skip-inline'] = true;"
+      };
+    })()
+```
+
+``` yaml
+directive:
+  no-inline:  # the name of the model schema in the swagger file
+    - Action
+    - RuleCondition
 ```
