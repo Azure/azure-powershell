@@ -147,7 +147,8 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             HelpMessage = "The recurring schedule interval type - Can be Minute, Hour, Day, Week, Month")]
         [Parameter(Mandatory = true, ParameterSetName = ParentResourceIdRecurringParameterSet, Position = 2,
             HelpMessage = "The recurring schedule interval type - Can be Minute, Hour, Day, Week, Month")]
-        public IntervalTypes? IntervalType { get; set; }
+        [PSArgumentCompleter("Minute", "Hour", "Day", "Week", "Month")]
+        public string IntervalType { get; set; }
 
         /// <summary>
         /// Gets or sets the job schedule interval count
@@ -244,8 +245,8 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
                 StartTime = this.StartTime != null ? this.StartTime : DateTime.Now, // defaults to current date time
                 EndTime = this.EndTime != null ? this.EndTime : null,
                 ScheduleType = this.RunOnce.IsPresent ? JobScheduleType.Once :
-                               this.IntervalType.HasValue ? JobScheduleType.Recurring : (JobScheduleType?) null,
-                Interval = this.IntervalCount.HasValue ? CreateIso8601Duration(this.IntervalType.Value, this.IntervalCount.Value) : null,
+                               this.IntervalType != null ? JobScheduleType.Recurring : (JobScheduleType?) null,
+                Interval = this.IntervalCount.HasValue ? CreateIso8601Duration(this.IntervalType, this.IntervalCount.Value) : null,
                 Enabled = this.Enable.IsPresent
             };
 
