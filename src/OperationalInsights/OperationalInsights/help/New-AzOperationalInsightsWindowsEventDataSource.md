@@ -147,7 +147,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies a name for the data source. The name is not exposed in the Azure Portal and any string can be used.
+Specifies a name for the data source. The name is not exposed in the Azure Portal and any string can be used as long as it is unique.
 
 ```yaml
 Type: System.String
