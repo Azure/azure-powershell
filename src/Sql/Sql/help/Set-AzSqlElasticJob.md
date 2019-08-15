@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 online version: https://docs.microsoft.com/en-us/powershell/module/Az.sql/set-Azsqlelasticjob
 schema: 2.0.0
@@ -14,24 +14,23 @@ Updates a job
 
 ### DefaultSet (Default)
 ```
-Set-AzSqlElasticJob [-ResourceGroupName] <String> [-ServerName] <String> [-AgentName] <String>
- [-Name] <String> [-StartTime <DateTime>] [-EndTime <DateTime>] [-Enable] [-Description <String>]
+Set-AzSqlElasticJob [-ResourceGroupName] <String> [-ServerName] <String> [-AgentName] <String> [-Name] <String>
+ [-StartTime <DateTime>] [-EndTime <DateTime>] [-Enable] [-Description <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RunOnce
 ```
-Set-AzSqlElasticJob [-ResourceGroupName] <String> [-ServerName] <String> [-AgentName] <String>
- [-Name] <String> [-RunOnce] [-StartTime <DateTime>] [-EndTime <DateTime>] [-Enable] [-Description <String>]
+Set-AzSqlElasticJob [-ResourceGroupName] <String> [-ServerName] <String> [-AgentName] <String> [-Name] <String>
+ [-RunOnce] [-StartTime <DateTime>] [-EndTime <DateTime>] [-Enable] [-Description <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Recurring
 ```
-Set-AzSqlElasticJob [-ResourceGroupName] <String> [-ServerName] <String> [-AgentName] <String>
- [-Name] <String> [-IntervalType] <IntervalTypes> [-IntervalCount] <UInt32> [-StartTime <DateTime>]
- [-EndTime <DateTime>] [-Enable] [-Description <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Set-AzSqlElasticJob [-ResourceGroupName] <String> [-ServerName] <String> [-AgentName] <String> [-Name] <String>
+ -IntervalType <String> -IntervalCount <UInt32> [-StartTime <DateTime>] [-EndTime <DateTime>] [-Enable]
+ [-Description <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ObjectSet
@@ -50,8 +49,8 @@ Set-AzSqlElasticJob [-InputObject] <AzureSqlElasticJobModel> [-RunOnce] [-StartT
 
 ### RecurringUsingParentObject
 ```
-Set-AzSqlElasticJob [-InputObject] <AzureSqlElasticJobModel> [-IntervalType] <IntervalTypes>
- [-IntervalCount] <UInt32> [-StartTime <DateTime>] [-EndTime <DateTime>] [-Enable] [-Description <String>]
+Set-AzSqlElasticJob [-InputObject] <AzureSqlElasticJobModel> -IntervalType <String> -IntervalCount <UInt32>
+ [-StartTime <DateTime>] [-EndTime <DateTime>] [-Enable] [-Description <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -63,14 +62,13 @@ Set-AzSqlElasticJob [-ResourceId] <String> [-StartTime <DateTime>] [-EndTime <Da
 
 ### RunOnceUsingParentResourceId
 ```
-Set-AzSqlElasticJob [-ResourceId] <String> [-RunOnce] [-StartTime <DateTime>] [-EndTime <DateTime>]
- [-Enable] [-Description <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-AzSqlElasticJob [-ResourceId] <String> [-RunOnce] [-StartTime <DateTime>] [-EndTime <DateTime>] [-Enable]
+ [-Description <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RecurringUsingParentResourceId
 ```
-Set-AzSqlElasticJob [-ResourceId] <String> [-IntervalType] <IntervalTypes> [-IntervalCount] <UInt32>
+Set-AzSqlElasticJob [-ResourceId] <String> -IntervalType <String> -IntervalCount <UInt32>
  [-StartTime <DateTime>] [-EndTime <DateTime>] [-Enable] [-Description <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -98,7 +96,7 @@ Updates a job
 The agent name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultSet, RunOnce, Recurring
 Aliases:
 
@@ -113,9 +111,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -128,7 +126,7 @@ Accept wildcard characters: False
 The job description
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -143,7 +141,7 @@ Accept wildcard characters: False
 The flag to indicate customer wants this job to be enabled.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -158,7 +156,7 @@ Accept wildcard characters: False
 The job schedule end time
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: (All)
 Aliases:
 
@@ -173,7 +171,7 @@ Accept wildcard characters: False
 The job input object
 
 ```yaml
-Type: AzureSqlElasticJobModel
+Type: Microsoft.Azure.Commands.Sql.ElasticJobs.Model.AzureSqlElasticJobModel
 Parameter Sets: ObjectSet, RunOnceUsingParentObject, RecurringUsingParentObject
 Aliases:
 
@@ -188,12 +186,12 @@ Accept wildcard characters: False
 The recurring schedule interval count
 
 ```yaml
-Type: UInt32
+Type: System.Nullable`1[System.UInt32]
 Parameter Sets: Recurring, RecurringUsingParentObject, RecurringUsingParentResourceId
 Aliases:
 
 Required: True
-Position: 5
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -203,13 +201,12 @@ Accept wildcard characters: False
 The recurring schedule interval type - Can be Minute, Hour, Day, Week, Month
 
 ```yaml
-Type: IntervalTypes
+Type: System.String
 Parameter Sets: Recurring, RecurringUsingParentObject, RecurringUsingParentResourceId
 Aliases:
-Accepted values: Minute, Hour, Day, Week, Month
 
 Required: True
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -219,7 +216,7 @@ Accept wildcard characters: False
 The job name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultSet, RunOnce, Recurring
 Aliases: JobName
 
@@ -234,7 +231,7 @@ Accept wildcard characters: False
 The resource group name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultSet, RunOnce, Recurring
 Aliases:
 
@@ -249,7 +246,7 @@ Accept wildcard characters: False
 The job resource id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdSet, RunOnceUsingParentResourceId, RecurringUsingParentResourceId
 Aliases:
 
@@ -264,12 +261,12 @@ Accept wildcard characters: False
 The flag to indicate job will be run once
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: RunOnce, RunOnceUsingParentObject, RunOnceUsingParentResourceId
 Aliases:
 
 Required: True
-Position: 4
+Position: Named
 Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -279,7 +276,7 @@ Accept wildcard characters: False
 The server name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultSet, RunOnce, Recurring
 Aliases:
 
@@ -294,7 +291,7 @@ Accept wildcard characters: False
 The job schedule start time
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: (All)
 Aliases:
 
@@ -309,7 +306,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -325,7 +322,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -337,7 +334,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

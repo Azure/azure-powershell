@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 online version: https://docs.microsoft.com/en-us/powershell/module/Az.sql/get-Azsqlelasticjobstep
 schema: 2.0.0
@@ -21,31 +21,31 @@ Get-AzSqlElasticJobStep [-ResourceGroupName] <String> [-ServerName] <String> [-A
 ### GetVersion
 ```
 Get-AzSqlElasticJobStep [-ResourceGroupName] <String> [-ServerName] <String> [-AgentName] <String>
- [-JobName] <String> -Name <String> [-Version] <Int32> [-DefaultProfile <IAzureContextContainer>]
+ [-JobName] <String> -Name <String> -Version <Int32> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ObjectSet
 ```
-Get-AzSqlElasticJobStep -ParentObject <AzureSqlElasticJobModel> [-Name <String>]
+Get-AzSqlElasticJobStep [-ParentObject] <AzureSqlElasticJobModel> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetVersionUsingJobObject
 ```
-Get-AzSqlElasticJobStep -ParentObject <AzureSqlElasticJobModel> -Name <String> [-Version] <Int32>
+Get-AzSqlElasticJobStep [-ParentObject] <AzureSqlElasticJobModel> -Name <String> -Version <Int32>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
-Get-AzSqlElasticJobStep -ParentResourceId <String> [-Name <String>]
+Get-AzSqlElasticJobStep [-ParentResourceId] <String> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetVersionUsingParentResourceId
 ```
-Get-AzSqlElasticJobStep -ParentResourceId <String> -Name <String> [-Version] <Int32>
+Get-AzSqlElasticJobStep [-ParentResourceId] <String> -Name <String> -Version <Int32>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -72,7 +72,7 @@ Gets a job step from a job
 The agent name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultSet, GetVersion
 Aliases:
 
@@ -87,9 +87,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 The job name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultSet, GetVersion
 Aliases:
 
@@ -117,7 +117,7 @@ Accept wildcard characters: False
 The job step name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultSet, ObjectSet, ResourceIdSet
 Aliases: StepName
 
@@ -129,7 +129,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetVersion, GetVersionUsingJobObject, GetVersionUsingParentResourceId
 Aliases: StepName
 
@@ -144,12 +144,12 @@ Accept wildcard characters: False
 The job input object
 
 ```yaml
-Type: AzureSqlElasticJobModel
+Type: Microsoft.Azure.Commands.Sql.ElasticJobs.Model.AzureSqlElasticJobModel
 Parameter Sets: ObjectSet, GetVersionUsingJobObject
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -159,12 +159,12 @@ Accept wildcard characters: False
 The job resource id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdSet, GetVersionUsingParentResourceId
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -174,7 +174,7 @@ Accept wildcard characters: False
 The resource group name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultSet, GetVersion
 Aliases:
 
@@ -189,7 +189,7 @@ Accept wildcard characters: False
 The server name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultSet, GetVersion
 Aliases:
 
@@ -204,43 +204,43 @@ Accept wildcard characters: False
 The job step name
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: GetVersion
 Aliases:
 
 Required: True
-Position: 5
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: GetVersionUsingJobObject
 Aliases:
 
 Required: True
-Position: 5
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: GetVersionUsingParentResourceId
 Aliases:
 
 Required: True
-Position: 5
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 online version: https://docs.microsoft.com/en-us/powershell/module/az.sql/add-azsqlelasticjobstep
 schema: 2.0.0
@@ -15,19 +15,18 @@ Adds a job step to a job
 ### DefaultSet (Default)
 ```
 Add-AzSqlElasticJobStep [-ResourceGroupName] <String> [-ServerName] <String> [-AgentName] <String>
- [-JobName] <String> [-TargetGroupName] <String> [-CredentialName] <String> [-CommandText] <String>
- [-Name] <String> [-StepId <Int32>] [-TimeoutSeconds <Int32>] [-RetryAttempts <Int32>]
- [-InitialRetryIntervalSeconds <Int32>] [-MaximumRetryIntervalSeconds <Int32>]
- [-RetryIntervalBackoffMultiplier <Double>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-JobName] <String> -TargetGroupName <String> -CredentialName <String> -CommandText <String> -Name <String>
+ [-StepId <Int32>] [-TimeoutSeconds <Int32>] [-RetryAttempts <Int32>] [-InitialRetryIntervalSeconds <Int32>]
+ [-MaximumRetryIntervalSeconds <Int32>] [-RetryIntervalBackoffMultiplier <Double>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### WithOutputDb
 ```
 Add-AzSqlElasticJobStep [-ResourceGroupName] <String> [-ServerName] <String> [-AgentName] <String>
- [-JobName] <String> [-TargetGroupName] <String> [-CredentialName] <String> [-CommandText] <String>
- [-OutputDatabaseObject] <AzureSqlDatabaseModel> [-OutputCredentialName] <String> [-OutputTableName] <String>
- [-Name] <String> [[-OutputSchemaName] <String>] [-StepId <Int32>] [-TimeoutSeconds <Int32>]
+ [-JobName] <String> -TargetGroupName <String> -CredentialName <String> -CommandText <String>
+ -OutputDatabaseObject <AzureSqlDatabaseModel> -OutputCredentialName <String> -OutputTableName <String>
+ -Name <String> [-OutputSchemaName <String>] [-StepId <Int32>] [-TimeoutSeconds <Int32>]
  [-RetryAttempts <Int32>] [-InitialRetryIntervalSeconds <Int32>] [-MaximumRetryIntervalSeconds <Int32>]
  [-RetryIntervalBackoffMultiplier <Double>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -36,28 +35,28 @@ Add-AzSqlElasticJobStep [-ResourceGroupName] <String> [-ServerName] <String> [-A
 ### WithOutputDbId
 ```
 Add-AzSqlElasticJobStep [-ResourceGroupName] <String> [-ServerName] <String> [-AgentName] <String>
- [-JobName] <String> [-TargetGroupName] <String> [-CredentialName] <String> [-CommandText] <String>
- [-OutputDatabaseResourceId] <String> [-OutputCredentialName] <String> [-OutputTableName] <String>
- [-Name] <String> [[-OutputSchemaName] <String>] [-StepId <Int32>] [-TimeoutSeconds <Int32>]
- [-RetryAttempts <Int32>] [-InitialRetryIntervalSeconds <Int32>] [-MaximumRetryIntervalSeconds <Int32>]
+ [-JobName] <String> -TargetGroupName <String> -CredentialName <String> -CommandText <String>
+ -OutputDatabaseResourceId <String> -OutputCredentialName <String> -OutputTableName <String> -Name <String>
+ [-OutputSchemaName <String>] [-StepId <Int32>] [-TimeoutSeconds <Int32>] [-RetryAttempts <Int32>]
+ [-InitialRetryIntervalSeconds <Int32>] [-MaximumRetryIntervalSeconds <Int32>]
  [-RetryIntervalBackoffMultiplier <Double>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ObjectSet
 ```
-Add-AzSqlElasticJobStep -ParentObject <AzureSqlElasticJobModel> [-TargetGroupName] <String>
- [-CredentialName] <String> [-CommandText] <String> [-Name] <String> [-StepId <Int32>]
- [-TimeoutSeconds <Int32>] [-RetryAttempts <Int32>] [-InitialRetryIntervalSeconds <Int32>]
- [-MaximumRetryIntervalSeconds <Int32>] [-RetryIntervalBackoffMultiplier <Double>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Add-AzSqlElasticJobStep [-ParentObject] <AzureSqlElasticJobModel> -TargetGroupName <String>
+ -CredentialName <String> -CommandText <String> -Name <String> [-StepId <Int32>] [-TimeoutSeconds <Int32>]
+ [-RetryAttempts <Int32>] [-InitialRetryIntervalSeconds <Int32>] [-MaximumRetryIntervalSeconds <Int32>]
+ [-RetryIntervalBackoffMultiplier <Double>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### WithOutputDbUsingParentObject
 ```
-Add-AzSqlElasticJobStep -ParentObject <AzureSqlElasticJobModel> [-TargetGroupName] <String>
- [-CredentialName] <String> [-CommandText] <String> [-OutputDatabaseObject] <AzureSqlDatabaseModel>
- [-OutputCredentialName] <String> [-OutputTableName] <String> [-Name] <String> [[-OutputSchemaName] <String>]
+Add-AzSqlElasticJobStep [-ParentObject] <AzureSqlElasticJobModel> -TargetGroupName <String>
+ -CredentialName <String> -CommandText <String> -OutputDatabaseObject <AzureSqlDatabaseModel>
+ -OutputCredentialName <String> -OutputTableName <String> -Name <String> [-OutputSchemaName <String>]
  [-StepId <Int32>] [-TimeoutSeconds <Int32>] [-RetryAttempts <Int32>] [-InitialRetryIntervalSeconds <Int32>]
  [-MaximumRetryIntervalSeconds <Int32>] [-RetryIntervalBackoffMultiplier <Double>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -65,9 +64,9 @@ Add-AzSqlElasticJobStep -ParentObject <AzureSqlElasticJobModel> [-TargetGroupNam
 
 ### WithOutputDbIdUsingParentObject
 ```
-Add-AzSqlElasticJobStep -ParentObject <AzureSqlElasticJobModel> [-TargetGroupName] <String>
- [-CredentialName] <String> [-CommandText] <String> [-OutputDatabaseResourceId] <String>
- [-OutputCredentialName] <String> [-OutputTableName] <String> [-Name] <String> [[-OutputSchemaName] <String>]
+Add-AzSqlElasticJobStep [-ParentObject] <AzureSqlElasticJobModel> -TargetGroupName <String>
+ -CredentialName <String> -CommandText <String> -OutputDatabaseResourceId <String>
+ -OutputCredentialName <String> -OutputTableName <String> -Name <String> [-OutputSchemaName <String>]
  [-StepId <Int32>] [-TimeoutSeconds <Int32>] [-RetryAttempts <Int32>] [-InitialRetryIntervalSeconds <Int32>]
  [-MaximumRetryIntervalSeconds <Int32>] [-RetryIntervalBackoffMultiplier <Double>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -75,8 +74,8 @@ Add-AzSqlElasticJobStep -ParentObject <AzureSqlElasticJobModel> [-TargetGroupNam
 
 ### ResourceIdSet
 ```
-Add-AzSqlElasticJobStep -ParentResourceId <String> [-TargetGroupName] <String> [-CredentialName] <String>
- [-CommandText] <String> [-Name] <String> [-StepId <Int32>] [-TimeoutSeconds <Int32>] [-RetryAttempts <Int32>]
+Add-AzSqlElasticJobStep [-ParentResourceId] <String> -TargetGroupName <String> -CredentialName <String>
+ -CommandText <String> -Name <String> [-StepId <Int32>] [-TimeoutSeconds <Int32>] [-RetryAttempts <Int32>]
  [-InitialRetryIntervalSeconds <Int32>] [-MaximumRetryIntervalSeconds <Int32>]
  [-RetryIntervalBackoffMultiplier <Double>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -84,9 +83,9 @@ Add-AzSqlElasticJobStep -ParentResourceId <String> [-TargetGroupName] <String> [
 
 ### WithOutputDbUsingParentResourceId
 ```
-Add-AzSqlElasticJobStep -ParentResourceId <String> [-TargetGroupName] <String> [-CredentialName] <String>
- [-CommandText] <String> [-OutputDatabaseObject] <AzureSqlDatabaseModel> [-OutputCredentialName] <String>
- [-OutputTableName] <String> [-Name] <String> [[-OutputSchemaName] <String>] [-StepId <Int32>]
+Add-AzSqlElasticJobStep [-ParentResourceId] <String> -TargetGroupName <String> -CredentialName <String>
+ -CommandText <String> -OutputDatabaseObject <AzureSqlDatabaseModel> -OutputCredentialName <String>
+ -OutputTableName <String> -Name <String> [-OutputSchemaName <String>] [-StepId <Int32>]
  [-TimeoutSeconds <Int32>] [-RetryAttempts <Int32>] [-InitialRetryIntervalSeconds <Int32>]
  [-MaximumRetryIntervalSeconds <Int32>] [-RetryIntervalBackoffMultiplier <Double>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -94,9 +93,9 @@ Add-AzSqlElasticJobStep -ParentResourceId <String> [-TargetGroupName] <String> [
 
 ### WithOutputDbIdUsingParentResourceId
 ```
-Add-AzSqlElasticJobStep -ParentResourceId <String> [-TargetGroupName] <String> [-CredentialName] <String>
- [-CommandText] <String> [-OutputDatabaseResourceId] <String> [-OutputCredentialName] <String>
- [-OutputTableName] <String> [-Name] <String> [[-OutputSchemaName] <String>] [-StepId <Int32>]
+Add-AzSqlElasticJobStep [-ParentResourceId] <String> -TargetGroupName <String> -CredentialName <String>
+ -CommandText <String> -OutputDatabaseResourceId <String> -OutputCredentialName <String>
+ -OutputTableName <String> -Name <String> [-OutputSchemaName <String>] [-StepId <Int32>]
  [-TimeoutSeconds <Int32>] [-RetryAttempts <Int32>] [-InitialRetryIntervalSeconds <Int32>]
  [-MaximumRetryIntervalSeconds <Int32>] [-RetryIntervalBackoffMultiplier <Double>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -125,7 +124,7 @@ Adds a job step to a job
 The agent name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultSet, WithOutputDb, WithOutputDbId
 Aliases:
 
@@ -140,12 +139,12 @@ Accept wildcard characters: False
 The command text
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 7
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -155,12 +154,12 @@ Accept wildcard characters: False
 The credential name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 6
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -170,9 +169,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -185,7 +184,7 @@ Accept wildcard characters: False
 The initial retry interval seconds
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -200,7 +199,7 @@ Accept wildcard characters: False
 The job name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultSet, WithOutputDb, WithOutputDbId
 Aliases:
 
@@ -215,7 +214,7 @@ Accept wildcard characters: False
 The maximum retry interval seconds
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -230,12 +229,12 @@ Accept wildcard characters: False
 The job step name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: StepName
 
 Required: True
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -245,12 +244,12 @@ Accept wildcard characters: False
 The output credential name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: WithOutputDb, WithOutputDbId, WithOutputDbUsingParentObject, WithOutputDbIdUsingParentObject, WithOutputDbUsingParentResourceId, WithOutputDbIdUsingParentResourceId
 Aliases:
 
 Required: True
-Position: 9
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -260,12 +259,12 @@ Accept wildcard characters: False
 The output database object
 
 ```yaml
-Type: AzureSqlDatabaseModel
+Type: Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel
 Parameter Sets: WithOutputDb, WithOutputDbUsingParentObject, WithOutputDbUsingParentResourceId
 Aliases:
 
 Required: True
-Position: 8
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -275,12 +274,12 @@ Accept wildcard characters: False
 The output database resource id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: WithOutputDbId, WithOutputDbIdUsingParentObject, WithOutputDbIdUsingParentResourceId
 Aliases:
 
 Required: True
-Position: 8
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -290,12 +289,12 @@ Accept wildcard characters: False
 The output schema name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: WithOutputDb, WithOutputDbId, WithOutputDbUsingParentObject, WithOutputDbIdUsingParentObject, WithOutputDbUsingParentResourceId, WithOutputDbIdUsingParentResourceId
 Aliases:
 
 Required: False
-Position: 11
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -305,12 +304,12 @@ Accept wildcard characters: False
 The output table name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: WithOutputDb, WithOutputDbId, WithOutputDbUsingParentObject, WithOutputDbIdUsingParentObject, WithOutputDbUsingParentResourceId, WithOutputDbIdUsingParentResourceId
 Aliases:
 
 Required: True
-Position: 10
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -320,12 +319,12 @@ Accept wildcard characters: False
 The job object
 
 ```yaml
-Type: AzureSqlElasticJobModel
+Type: Microsoft.Azure.Commands.Sql.ElasticJobs.Model.AzureSqlElasticJobModel
 Parameter Sets: ObjectSet, WithOutputDbUsingParentObject, WithOutputDbIdUsingParentObject
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -335,12 +334,12 @@ Accept wildcard characters: False
 The job resource id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdSet, WithOutputDbUsingParentResourceId, WithOutputDbIdUsingParentResourceId
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -350,7 +349,7 @@ Accept wildcard characters: False
 The resource group name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultSet, WithOutputDb, WithOutputDbId
 Aliases:
 
@@ -365,7 +364,7 @@ Accept wildcard characters: False
 The retry attempts
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -380,7 +379,7 @@ Accept wildcard characters: False
 The retry interval back off multiplier
 
 ```yaml
-Type: Double
+Type: System.Nullable`1[System.Double]
 Parameter Sets: (All)
 Aliases:
 
@@ -395,7 +394,7 @@ Accept wildcard characters: False
 The server name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultSet, WithOutputDb, WithOutputDbId
 Aliases:
 
@@ -410,7 +409,7 @@ Accept wildcard characters: False
 The step id
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -425,24 +424,24 @@ Accept wildcard characters: False
 The target group name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultSet, WithOutputDb, WithOutputDbId, ObjectSet, WithOutputDbUsingParentObject, WithOutputDbIdUsingParentObject, ResourceIdSet, WithOutputDbIdUsingParentResourceId
 Aliases:
 
 Required: True
-Position: 5
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: WithOutputDbUsingParentResourceId
 Aliases:
 
 Required: True
-Position: 5
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -452,7 +451,7 @@ Accept wildcard characters: False
 The time out seconds
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -467,7 +466,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -483,7 +482,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -495,7 +494,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

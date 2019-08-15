@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 online version: https://docs.microsoft.com/en-us/powershell/module/Az.sql/set-Azsqlelasticjobstep
 schema: 2.0.0
@@ -15,7 +15,7 @@ Updates a job step
 ### DefaultSet (Default)
 ```
 Set-AzSqlElasticJobStep [-ResourceGroupName] <String> [-ServerName] <String> [-AgentName] <String>
- [-JobName] <String> [-Name] <String> [-OutputDatabaseObject <AzureSqlDatabaseModel>]
+ [-JobName] <String> -Name <String> [-OutputDatabaseObject <AzureSqlDatabaseModel>]
  [-OutputCredentialName <String>] [-OutputTableName <String>] [-OutputSchemaName <String>]
  [-TargetGroupName <String>] [-CredentialName <String>] [-CommandText <String>] [-StepId <Int32>]
  [-TimeoutSeconds <Int32>] [-RetryAttempts <Int32>] [-InitialRetryIntervalSeconds <Int32>]
@@ -26,7 +26,7 @@ Set-AzSqlElasticJobStep [-ResourceGroupName] <String> [-ServerName] <String> [-A
 ### WithRemoveOutput
 ```
 Set-AzSqlElasticJobStep [-ResourceGroupName] <String> [-ServerName] <String> [-AgentName] <String>
- [-JobName] <String> [-Name] <String> [-RemoveOutput] [-TargetGroupName <String>] [-CredentialName <String>]
+ [-JobName] <String> -Name <String> [-RemoveOutput] [-TargetGroupName <String>] [-CredentialName <String>]
  [-CommandText <String>] [-StepId <Int32>] [-TimeoutSeconds <Int32>] [-RetryAttempts <Int32>]
  [-InitialRetryIntervalSeconds <Int32>] [-MaximumRetryIntervalSeconds <Int32>]
  [-RetryIntervalBackoffMultiplier <Double>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
@@ -36,7 +36,7 @@ Set-AzSqlElasticJobStep [-ResourceGroupName] <String> [-ServerName] <String> [-A
 ### WithAddOutput
 ```
 Set-AzSqlElasticJobStep [-ResourceGroupName] <String> [-ServerName] <String> [-AgentName] <String>
- [-JobName] <String> [-Name] <String> [-OutputDatabaseResourceId] <String> [-OutputCredentialName <String>]
+ [-JobName] <String> -Name <String> -OutputDatabaseResourceId <String> [-OutputCredentialName <String>]
  [-OutputTableName <String>] [-OutputSchemaName <String>] [-TargetGroupName <String>]
  [-CredentialName <String>] [-CommandText <String>] [-StepId <Int32>] [-TimeoutSeconds <Int32>]
  [-RetryAttempts <Int32>] [-InitialRetryIntervalSeconds <Int32>] [-MaximumRetryIntervalSeconds <Int32>]
@@ -65,7 +65,7 @@ Set-AzSqlElasticJobStep [-InputObject] <AzureSqlElasticJobStepModel> [-RemoveOut
 
 ### WithAddOutputUsingParentObject
 ```
-Set-AzSqlElasticJobStep [-InputObject] <AzureSqlElasticJobStepModel> [-OutputDatabaseResourceId] <String>
+Set-AzSqlElasticJobStep [-InputObject] <AzureSqlElasticJobStepModel> -OutputDatabaseResourceId <String>
  [-OutputCredentialName <String>] [-OutputTableName <String>] [-OutputSchemaName <String>]
  [-TargetGroupName <String>] [-CredentialName <String>] [-CommandText <String>] [-StepId <Int32>]
  [-TimeoutSeconds <Int32>] [-RetryAttempts <Int32>] [-InitialRetryIntervalSeconds <Int32>]
@@ -94,7 +94,7 @@ Set-AzSqlElasticJobStep [-ResourceId] <String> [-RemoveOutput] [-TargetGroupName
 
 ### WithAddOutputUsingParentResourceId
 ```
-Set-AzSqlElasticJobStep [-ResourceId] <String> [-OutputDatabaseResourceId] <String>
+Set-AzSqlElasticJobStep [-ResourceId] <String> -OutputDatabaseResourceId <String>
  [-OutputCredentialName <String>] [-OutputTableName <String>] [-OutputSchemaName <String>]
  [-TargetGroupName <String>] [-CredentialName <String>] [-CommandText <String>] [-StepId <Int32>]
  [-TimeoutSeconds <Int32>] [-RetryAttempts <Int32>] [-InitialRetryIntervalSeconds <Int32>]
@@ -135,7 +135,7 @@ Updates a job step from a job
 The agent name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultSet, WithRemoveOutput, WithAddOutput
 Aliases:
 
@@ -150,7 +150,7 @@ Accept wildcard characters: False
 The command text
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -165,7 +165,7 @@ Accept wildcard characters: False
 The credential name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -180,9 +180,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -195,7 +195,7 @@ Accept wildcard characters: False
 The initial retry interval seconds
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -210,7 +210,7 @@ Accept wildcard characters: False
 The job step object
 
 ```yaml
-Type: AzureSqlElasticJobStepModel
+Type: Microsoft.Azure.Commands.Sql.ElasticJobs.Model.AzureSqlElasticJobStepModel
 Parameter Sets: ObjectSet, WithRemoveOutputUsingParentObject, WithAddOutputUsingParentObject
 Aliases:
 
@@ -225,7 +225,7 @@ Accept wildcard characters: False
 The job name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultSet, WithRemoveOutput, WithAddOutput
 Aliases:
 
@@ -240,7 +240,7 @@ Accept wildcard characters: False
 The maximum retry interval seconds
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -255,12 +255,12 @@ Accept wildcard characters: False
 The step name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultSet, WithRemoveOutput, WithAddOutput
 Aliases: StepName
 
 Required: True
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -270,7 +270,7 @@ Accept wildcard characters: False
 The output credential name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultSet, WithAddOutput, ObjectSet, WithAddOutputUsingParentObject, ResourceIdSet, WithAddOutputUsingParentResourceId
 Aliases:
 
@@ -285,7 +285,7 @@ Accept wildcard characters: False
 The output database object
 
 ```yaml
-Type: AzureSqlDatabaseModel
+Type: Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel
 Parameter Sets: DefaultSet, ObjectSet, ResourceIdSet
 Aliases:
 
@@ -300,12 +300,12 @@ Accept wildcard characters: False
 The output database resource id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: WithAddOutput, WithAddOutputUsingParentObject, WithAddOutputUsingParentResourceId
 Aliases:
 
 Required: True
-Position: 5
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -315,7 +315,7 @@ Accept wildcard characters: False
 The output schema name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultSet, WithAddOutput, ObjectSet, WithAddOutputUsingParentObject, ResourceIdSet, WithAddOutputUsingParentResourceId
 Aliases:
 
@@ -330,7 +330,7 @@ Accept wildcard characters: False
 The output table name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultSet, WithAddOutput, ObjectSet, WithAddOutputUsingParentObject, ResourceIdSet, WithAddOutputUsingParentResourceId
 Aliases:
 
@@ -345,12 +345,12 @@ Accept wildcard characters: False
 The flag to indicate whether to remove output
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: WithRemoveOutput, WithRemoveOutputUsingParentObject, WithRemoveOutputUsingParentResourceId
 Aliases:
 
 Required: True
-Position: 5
+Position: Named
 Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -360,7 +360,7 @@ Accept wildcard characters: False
 The resource group name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultSet, WithRemoveOutput, WithAddOutput
 Aliases:
 
@@ -375,7 +375,7 @@ Accept wildcard characters: False
 The job step resource id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdSet, WithRemoveOutputUsingParentResourceId, WithAddOutputUsingParentResourceId
 Aliases:
 
@@ -390,7 +390,7 @@ Accept wildcard characters: False
 The retry attemps
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -405,7 +405,7 @@ Accept wildcard characters: False
 The retry interval backoff multiplier
 
 ```yaml
-Type: Double
+Type: System.Nullable`1[System.Double]
 Parameter Sets: (All)
 Aliases:
 
@@ -420,7 +420,7 @@ Accept wildcard characters: False
 The server name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultSet, WithRemoveOutput, WithAddOutput
 Aliases:
 
@@ -435,7 +435,7 @@ Accept wildcard characters: False
 The step id text
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -450,7 +450,7 @@ Accept wildcard characters: False
 The target group name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -465,7 +465,7 @@ Accept wildcard characters: False
 The timeout seconds
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -480,7 +480,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -496,7 +496,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -508,7 +508,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
