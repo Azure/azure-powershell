@@ -22,24 +22,12 @@ namespace Microsoft.Azure.Commands.Sql.Common
     public static class Iso8601DurationHelper
     {
         /// <summary>
-        /// Interval types
-        /// </summary>
-        public enum IntervalTypes
-        {
-            Minute,
-            Hour,
-            Day,
-            Week,
-            Month
-        }
-
-        /// <summary>
         /// Creates an Iso8601 duration
         /// </summary>
-        /// <param name="intervalType"></param>
-        /// <param name="intervalCount"></param>
-        /// <returns></returns>
-        public static string CreateIso8601Duration(IntervalTypes intervalType, uint intervalCount)
+        /// <param name="intervalType">The provided interval type</param>
+        /// <param name="intervalCount">The interval count</param>
+        /// <returns>A formatted IS08601 duration to pass to a service endpoint</returns>
+        public static string CreateIso8601Duration(string intervalType, uint intervalCount)
         {
             StringBuilder stringBuilder = new StringBuilder();
 
@@ -47,29 +35,29 @@ namespace Microsoft.Azure.Commands.Sql.Common
             // XmlConvert.ToString(timeSpan) only supports up to days. Weeks and months need to be supported
             stringBuilder.Append("P");
 
-            if (intervalType == IntervalTypes.Hour ||
-                intervalType == IntervalTypes.Minute)
+            if (intervalType == "Hour" ||
+                intervalType == "Minute")
             {
                 stringBuilder.Append("T");
             }
 
-            if (intervalType == IntervalTypes.Month ||
-                intervalType == IntervalTypes.Minute)
+            if (intervalType == "Month" ||
+                intervalType == "Minute")
             {
                 stringBuilder.Append(intervalCount + "M");
             }
 
-            if (intervalType == IntervalTypes.Week)
+            if (intervalType == "Week")
             {
                 stringBuilder.Append(intervalCount + "W");
             }
 
-            if (intervalType == IntervalTypes.Day)
+            if (intervalType == "Day")
             {
                 stringBuilder.Append(intervalCount + "D");
             }
 
-            if (intervalType == IntervalTypes.Hour)
+            if (intervalType == "Hour")
             {
                 stringBuilder.Append(intervalCount + "H");
             }
