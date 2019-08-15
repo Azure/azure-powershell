@@ -40,7 +40,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
             }
         }
 
-        public GalleryImageVersionPublishingProfile PublishingProfile { get; set; }
+        // This is commented out for hiding the breaking change caused by the client library update.
+        //public GalleryImageVersionPublishingProfile PublishingProfile { get; set; }
         public string ProvisioningState { get; set; }
         public GalleryImageVersionStorageProfile StorageProfile { get; set; }
         public ReplicationStatus ReplicationStatus { get; set; }
