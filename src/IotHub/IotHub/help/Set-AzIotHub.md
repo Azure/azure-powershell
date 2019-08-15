@@ -251,7 +251,7 @@ Accept wildcard characters: False
 ```
 
 ### -OperationsMonitoringProperties
-The properties related to operations monitoring. 
+The properties related to operations monitoring.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Management.IotHub.Models.PSOperationsMonitoringProperties
