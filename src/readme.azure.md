@@ -4,8 +4,7 @@
 ``` yaml
 azure: true
 powershell: true
-enable-multi-api: true
-branch: multiapi
+branch: master
 repo: https://github.com/Azure/azure-rest-api-specs/blob/$(branch)
 ```
 

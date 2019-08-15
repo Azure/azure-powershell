@@ -59,7 +59,6 @@ clear-output-folder: true
 output-folder: .
 require:
   - $(repo)/specification/web/resource-manager/readme.md
-enable-multi-api: false
 web: $(repo)/specification/web/resource-manager/Microsoft.Web
 input-file:
 - $(web)/stable/2018-02-01/Certificates.json
