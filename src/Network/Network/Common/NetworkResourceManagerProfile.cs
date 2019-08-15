@@ -56,6 +56,12 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSResourceId, MNM.SubResource>();
                 cfg.CreateMap<MNM.SubResource, CNM.PSResourceId>();
 
+                // Map request error exceptions between SDK and PowerShell
+                cfg.CreateMap<MNM.Error, Rest.Azure.CloudError>();
+                cfg.CreateMap<Rest.Azure.CloudError, MNM.Error>();
+                cfg.CreateMap<MNM.ErrorException, Rest.Azure.CloudException>();
+                cfg.CreateMap<Rest.Azure.CloudException, MNM.ErrorException>();
+
                 // Managed Service Identity
                 cfg.CreateMap<CNM.PSManagedServiceIdentity, MNM.ManagedServiceIdentity>();
                 cfg.CreateMap<MNM.ManagedServiceIdentity, CNM.PSManagedServiceIdentity>();
