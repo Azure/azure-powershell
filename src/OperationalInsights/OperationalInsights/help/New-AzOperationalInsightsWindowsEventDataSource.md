@@ -32,6 +32,28 @@ The **New-AzOperationalInsightsWindowsEventDataSource** cmdlet adds a data sourc
 
 ## EXAMPLES
 
+### Example 1: Create system Windows event data source
+```
+$EventDataSourceName = 'dummy'
+$EventLogName        = 'system'
+$ResourceGroupName   = 'MyResourceGroup'
+$WorkspaceName       = 'MyWorkspaceName'
+
+New-AzOperationalInsightsWindowsEventDataSource `
+    -ResourceGroupName $ResourceGroupName `
+    -WorkspaceName $WorkspaceName `
+    -Name $EventDataSourceName `
+    -EventLogName $EventLogName `
+    -CollectErrors `
+    -CollectWarnings `
+    -CollectInformation
+
+Get-AzOperationalInsightsDataSource `
+   -ResourceGroupName $ResourceGroupName `
+   -WorkspaceName $WorkspaceName `
+   -Kind 'WindowsEvent'
+```
+
 ## PARAMETERS
 
 ### -CollectErrors
@@ -125,7 +147,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies a name for the data source.
+Specifies a name for the data source. The name is not exposed in the Azure Portal and any string can be used.
 
 ```yaml
 Type: System.String
