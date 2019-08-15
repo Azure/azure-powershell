@@ -58,6 +58,8 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, Position = 4, HelpMessage = "The eventhub throughput units.")]
         public int? SkuCapacity { get; set; }
 
+        public const string ChangeDesc = "'State' Parameter is being deprecated without being replaced";
+        [CmdletParameterBreakingChange("State", ChangeDescription = ChangeDesc)]
         [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, ValueFromPipelineByPropertyName = true, Position = 5, HelpMessage = "Disable/Enable Namespace.")]
         [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, Position = 5, HelpMessage = "Disable/Enable Namespace.")]
         public Models.NamespaceState? State { get; set; }
@@ -95,7 +97,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
             {
                 try
                 {                    
-                    WriteObject(Client.BeginCreateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary, EnableAutoInflate.IsPresent, MaximumThroughputUnits, EnableKafka.IsPresent, State));                    
+                    WriteObject(Client.BeginCreateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary, EnableAutoInflate.IsPresent, MaximumThroughputUnits, EnableKafka.IsPresent));                    
                 }
                 catch (Management.EventHub.Models.ErrorResponseException ex)
                 {
