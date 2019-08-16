@@ -19,7 +19,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added Host and HostGroup features
+* Add TerminateScheduledEvents and TerminateScheduledEventNotBeforeTimeoutInMinutes parameters to New-AzVmssConfig and Update-AzVmss
+* Add HyperVGeneration property to VM image object
+* Add Host and HostGroup features
     - New cmdlets:
 	    New-AzHostGroup
 		New-AzHost
