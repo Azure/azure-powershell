@@ -27,14 +27,25 @@ function Test-AddGetListSetRemoveActionGroup
 	
 	try
 	{
-		Write-Verbose " ****** Creating a new email receiver"
+		Write-Verbose " ****** Creating a new email receiver with default UseCommonAlertSchema not explicitly set"
 		$email1 = New-AzActionGroupReceiver -EmailReceiver -Name 'emailreceiver' -EmailAddress 'andyshen@microsoft.com'
 		Assert-NotNull $email1
 		Assert-AreEqual 'emailreceiver' $email1.Name
 		Assert-AreEqual 'andyshen@microsoft.com' $email1.EmailAddress
+		# when UseCommonAlertSchema is not set explicitly , then it is false
+		Assert-AreEqual false $email1.UseCommonAlertSchema
+		
+	
+		Write-Verbose " ****** Creating a new email receiver with  UseCommonAlertSchema  explicitly set to true"
+		[bool]$t = $true
+		$email2 = New-AzActionGroupReceiver -EmailReceiver -Name 'emailreceiver1' -EmailAddress 'some email' -UseCommonAlertSchema $t
+		Assert-NotNull $email2
+		Assert-AreEqual 'emailreceiver1' $email2.Name
+		Assert-AreEqual 'some email' $email2.EmailAddress
+		Assert-AreEqual true $email2.UseCommonAlertSchema
 		
 		Write-Verbose " ****** Creating a new sms receiver"
-		$sms1 = New-AzActionGroupReceiver -SmsReceiver -Name 'smsreceiver' -CountryCode '1' -PhoneNumber '4254251234'
+		$sms1 = New-AzActionGroupReceiver -SmsReceiver -Name 'smsreceiver' -SmsCountryCode '1' -SmsPhoneNumber '4254251234'
 		Assert-NotNull $sms1
 		Assert-AreEqual 'smsreceiver' $sms1.Name
 		Assert-AreEqual '1' $sms1.CountryCode
@@ -47,7 +58,7 @@ function Test-AddGetListSetRemoveActionGroup
 		Assert-AreEqual 'http://test.com' $webhook1.ServiceUri
 		
 		Write-Verbose " ****** Creating a new action group"
-		$actual =  Set-AzActionGroup -Name $actionGroupName -ResourceGroup $resourceGroupName -ShortName $shortName -Receiver $email1,$sms1,$webhook1
+		$actual =  Set-AzActionGroup -Name $actionGroupName -ResourceGroup $resourceGroupName -ShortName $shortName -Receiver $email1,$email2,$sms1,$webhook1
 		Assert-NotNull $actual
 		Assert-AreEqual $actionGroupName $actual.Name
 
