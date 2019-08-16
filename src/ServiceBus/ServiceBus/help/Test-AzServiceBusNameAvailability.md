@@ -35,7 +35,7 @@ PS C:\> Test-AzServiceBusNameAvailability -ResourceGroupName $resourceGroupName 
 PS C:\> True
 ```
 
-Returns True if the Provided $nameTopic name is Availabile or returns False if Provided $nameQueue name in not available
+Returns True if the Provided $nameQueue name is Availabile or returns False if Provided $nameQueue name in not available
 
 ### Example 2
 ```powershell
