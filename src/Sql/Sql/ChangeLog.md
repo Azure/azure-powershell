@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.14.0
 * Add Azure Sql Instance pools cmdlets
 * Add Azure Sql Instance pool usages cmdlets
 * Update Azure Sql Managed instance cmdlets to support instance pools
