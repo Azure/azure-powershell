@@ -24,42 +24,21 @@
 // Please contact wanrpdev@microsoft.com if you need to make changes to this file.
 // </auto-generated>
 
-using Microsoft.Azure.Management.Network.Models;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public partial class PSExpressRouteLink : PSChildResource
+    public partial class PSExpressRouteLinkMacSecConfig
     {
         [JsonProperty(Order = 1)]
         [Ps1Xml(Target = ViewControl.Table)]
-        public string RouterName { get; set; }
+        public string CknSecretIdentifier { get; set; }
         [JsonProperty(Order = 1)]
         [Ps1Xml(Target = ViewControl.Table)]
-        public string InterfaceName { get; set; }
+        public string CakSecretIdentifier { get; set; }
         [JsonProperty(Order = 1)]
         [Ps1Xml(Target = ViewControl.Table)]
-        public string PatchPanelId { get; set; }
-        [JsonProperty(Order = 1)]
-        [Ps1Xml(Target = ViewControl.Table)]
-        public string RackId { get; set; }
-        [JsonProperty(Order = 1)]
-        [Ps1Xml(Target = ViewControl.Table)]
-        public string ConnectorType { get; set; }
-        [JsonProperty(Order = 1)]
-        [Ps1Xml(Target = ViewControl.Table)]
-        public string AdminState { get; set; }
-        [JsonProperty(Order = 1)]
-        [Ps1Xml(Target = ViewControl.Table)]
-        public string ProvisioningState { get; set; }
-        [JsonProperty(Order = 1)]
-        public PSExpressRouteLinkMacSecConfig MacSecConfig { get; set; }
-
-        [JsonIgnore]
-        public string MacSecConfigText
-        {
-            get { return JsonConvert.SerializeObject(MacSecConfig, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-        }
+        public string Cipher { get; set; }
     }
 }
