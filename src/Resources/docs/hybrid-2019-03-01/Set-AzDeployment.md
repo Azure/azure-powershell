@@ -12,16 +12,20 @@ You can provide the template and parameters directly in the request or link to J
 
 ## SYNTAX
 
-### Update (Default)
+### UpdateExpanded (Default)
 ```
-Set-AzDeployment -Name <String> -SubscriptionId <String> [-Parameter <IDeployment>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzDeployment -Name <String> -SubscriptionId <String> -Parameter <IDeployment> -Mode <DeploymentMode>
+ [-DebugSettingDetailLevel <String>] [-Location <String>] [-OnErrorDeploymentName <String>]
+ [-OnErrorDeploymentType <OnErrorDeploymentType>] [-ParameterLinkContentVersion <String>]
+ [-ParameterLinkUri <String>] [-Template <IDeploymentPropertiesTemplate>]
+ [-TemplateLinkContentVersion <String>] [-TemplateLinkUri <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded1
 ```
-Set-AzDeployment -Name <String> -SubscriptionId <String> -ResourceGroupName <String> -Mode <DeploymentMode>
- [-Parameter <IDeployment>] [-DebugSettingDetailLevel <String>] [-Location <String>]
+Set-AzDeployment -Name <String> -SubscriptionId <String> -ResourceGroupName <String> -Parameter <IDeployment>
+ -Mode <DeploymentMode> [-DebugSettingDetailLevel <String>] [-Location <String>]
  [-OnErrorDeploymentName <String>] [-OnErrorDeploymentType <OnErrorDeploymentType>]
  [-ParameterLinkContentVersion <String>] [-ParameterLinkUri <String>]
  [-Template <IDeploymentPropertiesTemplate>] [-TemplateLinkContentVersion <String>]
@@ -31,19 +35,8 @@ Set-AzDeployment -Name <String> -SubscriptionId <String> -ResourceGroupName <Str
 
 ### Update1
 ```
-Set-AzDeployment -Name <String> -SubscriptionId <String> -ResourceGroupName <String>
- [-Parameter <IDeployment>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateExpanded
-```
-Set-AzDeployment -Name <String> -SubscriptionId <String> -Mode <DeploymentMode> [-Parameter <IDeployment>]
- [-DebugSettingDetailLevel <String>] [-Location <String>] [-OnErrorDeploymentName <String>]
- [-OnErrorDeploymentType <OnErrorDeploymentType>] [-ParameterLinkContentVersion <String>]
- [-ParameterLinkUri <String>] [-Template <IDeploymentPropertiesTemplate>]
- [-TemplateLinkContentVersion <String>] [-TemplateLinkUri <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzDeployment -Name <String> -SubscriptionId <String> -ResourceGroupName <String> -Parameter <IDeployment>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -96,7 +89,7 @@ By logging information about the request or response, you could potentially expo
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpanded1
 Aliases:
 
 Required: False
@@ -128,7 +121,7 @@ The location to store the deployment data.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpanded1
 Aliases:
 
 Required: False
@@ -148,7 +141,7 @@ Be careful when using Complete mode as you may unintentionally delete resources.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Support.DeploymentMode
-Parameter Sets: UpdateExpanded1, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpanded1
 Aliases:
 
 Required: True
@@ -196,7 +189,7 @@ The deployment to be used on error case.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpanded1
 Aliases:
 
 Required: False
@@ -213,7 +206,7 @@ Possible values are LastSuccessful and SpecificDeployment.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Support.OnErrorDeploymentType
-Parameter Sets: UpdateExpanded1, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpanded1
 Aliases:
 
 Required: False
@@ -233,7 +226,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IDeploymen
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -246,7 +239,7 @@ If included, must match the ContentVersion in the template.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpanded1
 Aliases:
 
 Required: False
@@ -262,7 +255,7 @@ The URI of the parameters file.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpanded1
 Aliases:
 
 Required: False
@@ -315,7 +308,7 @@ Use either the templateLink property or the template property, but not both.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IDeploymentPropertiesTemplate
-Parameter Sets: UpdateExpanded1, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpanded1
 Aliases:
 
 Required: False
@@ -331,7 +324,7 @@ If included, must match the ContentVersion in the template.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpanded1
 Aliases:
 
 Required: False
@@ -347,7 +340,7 @@ The URI of the template to deploy.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpanded1
 Aliases:
 
 Required: False

@@ -12,19 +12,19 @@ Creates or update policy with specified rule set name within a resource group.
 
 ## SYNTAX
 
-### Create (Default)
+### CreateExpanded (Default)
 ```
-New-AzApplicationGatewayWafPolicy -PolicyName <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-WafPolicy <IWebApplicationFirewallPolicy>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateExpanded
-```
-New-AzApplicationGatewayWafPolicy -PolicyName <String> -ResourceGroupName <String> -SubscriptionId <String>
+New-AzApplicationGatewayWafPolicy -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-CustomRule <IWebApplicationFirewallCustomRule[]>] [-EnabledState <WebApplicationFirewallEnabledState>]
  [-Etag <String>] [-Id <String>] [-Location <String>] [-Mode <WebApplicationFirewallMode>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create
+```
+New-AzApplicationGatewayWafPolicy -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -WafPolicy <IWebApplicationFirewallPolicy> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -37,7 +37,7 @@ New-AzApplicationGatewayWafPolicy -InputObject <INetworkIdentity>
 
 ### CreateViaIdentity
 ```
-New-AzApplicationGatewayWafPolicy -InputObject <INetworkIdentity> [-WafPolicy <IWebApplicationFirewallPolicy>]
+New-AzApplicationGatewayWafPolicy -InputObject <INetworkIdentity> -WafPolicy <IWebApplicationFirewallPolicy>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -195,13 +195,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -PolicyName
+### -Name
 The name of the policy.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
-Aliases:
+Parameter Sets: CreateExpanded, Create
+Aliases: PolicyName
 
 Required: True
 Position: Named
@@ -216,7 +216,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -233,7 +233,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -269,7 +269,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IWebApplicat
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

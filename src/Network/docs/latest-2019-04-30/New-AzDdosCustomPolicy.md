@@ -12,18 +12,18 @@ Creates or updates a DDoS custom policy.
 
 ## SYNTAX
 
-### Create (Default)
-```
-New-AzDdosCustomPolicy -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-DdosCustomPolicy <IDdosCustomPolicy>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateExpanded
+### CreateExpanded (Default)
 ```
 New-AzDdosCustomPolicy -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-Format <IProtocolCustomSettingsFormat[]>] [-Id <String>] [-Location <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create
+```
+New-AzDdosCustomPolicy -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -DdosCustomPolicy <IDdosCustomPolicy> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -35,7 +35,7 @@ New-AzDdosCustomPolicy -InputObject <INetworkIdentity> [-Format <IProtocolCustom
 
 ### CreateViaIdentity
 ```
-New-AzDdosCustomPolicy -InputObject <INetworkIdentity> [-DdosCustomPolicy <IDdosCustomPolicy>]
+New-AzDdosCustomPolicy -InputObject <INetworkIdentity> -DdosCustomPolicy <IDdosCustomPolicy>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -89,7 +89,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IDdosCustomP
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -183,7 +183,7 @@ The name of the DDoS custom policy.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: DdosCustomPolicyName
 
 Required: True
@@ -215,7 +215,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -232,7 +232,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -317,7 +317,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[ProtocolCustomSetting <IProtocolCustomSettingsFormat[]>]`: The protocol-specific DDoS policy customization parameters.
+  - `[Format <IProtocolCustomSettingsFormat[]>]`: The protocol-specific DDoS policy customization parameters.
     - `[Protocol <DdosCustomPolicyProtocol?>]`: The protocol for which the DDoS protection policy is being customized.
     - `[SourceRateOverride <String>]`: The customized DDoS protection source rate.
     - `[TriggerRateOverride <String>]`: The customized DDoS protection trigger rate.

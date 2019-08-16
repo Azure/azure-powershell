@@ -12,20 +12,20 @@ Creates or updates a static or dynamic public IP prefix.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzPublicIPPrefix -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-PublicIPPrefix <IPublicIPPrefix>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzPublicIPPrefix -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-Etag <String>]
  [-IPPrefix <String>] [-IPTag <IIPTag[]>] [-Id <String>] [-Location <String>] [-PrefixLength <Int32>]
  [-ProvisioningState <String>] [-PublicIPAddress <IReferencedPublicIPAddress[]>]
  [-PublicIPAddressVersion <IPVersion>] [-ResourceGuid <String>] [-SkuName <PublicIPPrefixSkuName>]
  [-Tag <Hashtable>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzPublicIPPrefix -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -PublicIPPrefix <IPublicIPPrefix> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -255,7 +255,7 @@ The public IP address version.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.IPVersion
 Parameter Sets: UpdateExpanded
-Aliases:
+Aliases: IPAddressVersion
 
 Required: False
 Position: Named
@@ -274,7 +274,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IPublicIPPre
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

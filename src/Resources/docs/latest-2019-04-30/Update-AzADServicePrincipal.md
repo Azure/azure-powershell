@@ -12,33 +12,33 @@ Updates a service principal in the directory.
 
 ## SYNTAX
 
-### Update (Default)
+### UpdateExpanded (Default)
 ```
-Update-AzADServicePrincipal -ObjectId <String> -TenantId <String>
- [-Parameter <IServicePrincipalUpdateParameters>] [-PassThru] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
-```
-Update-AzADServicePrincipal -ObjectId <String> -TenantId <String> [-PassThru] [-AccountEnabled <String>]
+Update-AzADServicePrincipal -ObjectId <String> -TenantId <String> [-AccountEnabled]
  [-AppRoleAssignmentRequired] [-KeyCredentials <IKeyCredential[]>]
  [-PasswordCredentials <IPasswordCredential[]>] [-ServicePrincipalType <String>] [-Tag <String[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Update-AzADServicePrincipal -ObjectId <String> -TenantId <String>
+ -Parameter <IServicePrincipalUpdateParameters> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzADServicePrincipal -InputObject <IResourcesIdentity> [-PassThru] [-AccountEnabled <String>]
- [-AppRoleAssignmentRequired] [-KeyCredentials <IKeyCredential[]>]
- [-PasswordCredentials <IPasswordCredential[]>] [-ServicePrincipalType <String>] [-Tag <String[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzADServicePrincipal -InputObject <IResourcesIdentity> [-AccountEnabled] [-AppRoleAssignmentRequired]
+ [-KeyCredentials <IKeyCredential[]>] [-PasswordCredentials <IPasswordCredential[]>]
+ [-ServicePrincipalType <String>] [-Tag <String[]>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
 ```
-Update-AzADServicePrincipal -InputObject <IResourcesIdentity> [-Parameter <IServicePrincipalUpdateParameters>]
- [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzADServicePrincipal -InputObject <IResourcesIdentity> -Parameter <IServicePrincipalUpdateParameters>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -70,13 +70,13 @@ PS C:\> {{ Add code here }}
 whether or not the service principal account is enabled
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -152,7 +152,7 @@ The object ID of the service principal to delete.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded, Update
 Aliases:
 
 Required: True
@@ -172,7 +172,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IServicePrincipa
 Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -181,7 +181,7 @@ Dynamic: False
 ```
 
 ### -PassThru
-When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -251,7 +251,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded, Update
 Aliases:
 
 Required: True
@@ -325,7 +325,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Value <String>]`: Key value.
 
 #### PARAMETER <IServicePrincipalUpdateParameters>: Request parameters for update an existing service principal.
-  - `[AccountEnabled <String>]`: whether or not the service principal account is enabled
+  - `[AccountEnabled <Boolean?>]`: whether or not the service principal account is enabled
   - `[AppRoleAssignmentRequired <Boolean?>]`: Specifies whether an AppRoleAssignment to a user or group is required before Azure AD will issue a user or access token to the application.
   - `[KeyCredentials <IKeyCredential[]>]`: The collection of key credentials associated with the service principal.
     - `[CustomKeyIdentifier <String>]`: Custom Key Identifier

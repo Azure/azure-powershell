@@ -20,8 +20,8 @@ Get-AzLoadBalancerLoadBalancingRule -LoadBalancerName <String> -ResourceGroupNam
 
 ### Get
 ```
-Get-AzLoadBalancerLoadBalancingRule -LoadBalancerName <String> -LoadBalancingRuleName <String>
- -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzLoadBalancerLoadBalancingRule -LoadBalancerName <String> -Name <String> -ResourceGroupName <String>
+ -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -103,7 +103,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -LoadBalancingRuleName
+### -Name
 The name of the load balancing rule.
 
 ```yaml

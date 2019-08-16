@@ -12,34 +12,34 @@ Creates or updates a peering in the specified virtual network.
 
 ## SYNTAX
 
-### Create (Default)
+### CreateExpanded (Default)
 ```
-New-AzVnetPeering -ResourceGroupName <String> -SubscriptionId <String> -VnetName <String> [-Name <String>]
- [-VnetPeeringParameter <IVirtualNetworkPeering>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzVnetPeering -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -VnetName <String>
+ [-AllowForwardedTraffic] [-AllowGatewayTransit] [-AllowVnetAccess] [-Etag <String>] [-Id <String>]
+ [-PeeringState <VirtualNetworkPeeringState>] [-ProvisioningState <String>] [-RemoteAddressPrefix <String[]>]
+ [-RemoteVnetId <String>] [-ResourceName <String>] [-UseRemoteGateway] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create
+```
+New-AzVnetPeering -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -VnetName <String>
+ -VnetPeering <IVirtualNetworkPeering> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzVnetPeering -InputObject <INetworkIdentity> [-Name <String>] [-AllowForwardedTraffic]
- [-AllowGatewayTransit] [-AllowVnetAccess] [-Etag <String>] [-Id <String>]
- [-PeeringState <VirtualNetworkPeeringState>] [-ProvisioningState <String>]
- [-RemoteAddressSpaceAddressPrefix <String[]>] [-RemoteVnetId <String>] [-UseRemoteGateway]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded
-```
-New-AzVnetPeering -ResourceGroupName <String> -SubscriptionId <String> -VnetName <String>
- -VnetPeeringName <String> [-Name <String>] [-AllowForwardedTraffic] [-AllowGatewayTransit] [-AllowVnetAccess]
- [-Etag <String>] [-Id <String>] [-PeeringState <VirtualNetworkPeeringState>] [-ProvisioningState <String>]
- [-RemoteAddressSpaceAddressPrefix <String[]>] [-RemoteVnetId <String>] [-UseRemoteGateway]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzVnetPeering -InputObject <INetworkIdentity> [-AllowForwardedTraffic] [-AllowGatewayTransit]
+ [-AllowVnetAccess] [-Etag <String>] [-Id <String>] [-PeeringState <VirtualNetworkPeeringState>]
+ [-ProvisioningState <String>] [-RemoteAddressPrefix <String[]>] [-RemoteVnetId <String>]
+ [-ResourceName <String>] [-UseRemoteGateway] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
-New-AzVnetPeering -InputObject <INetworkIdentity> [-VnetPeeringParameter <IVirtualNetworkPeering>]
+New-AzVnetPeering -InputObject <INetworkIdentity> -VnetPeering <IVirtualNetworkPeering>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -73,7 +73,7 @@ Whether the forwarded traffic from the VMs in the local virtual network will be 
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -89,7 +89,7 @@ If gateway links can be used in remote virtual networking to link to this virtua
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -105,7 +105,7 @@ Whether the VMs in the local virtual network space would be able to access the V
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases: AllowVirtualNetworkAccess
 
 Required: False
@@ -153,7 +153,7 @@ A unique read-only string that changes whenever the resource is updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -169,7 +169,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -201,8 +201,8 @@ The name of the peering.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateViaIdentityExpanded, CreateExpanded
-Aliases:
+Parameter Sets: CreateExpanded, Create
+Aliases: VirtualNetworkPeeringName, VnetPeeringName
 
 Required: True
 Position: Named
@@ -234,7 +234,7 @@ Possible values are 'Initiated', 'Connected', and 'Disconnected'.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.VirtualNetworkPeeringState
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -250,7 +250,7 @@ The provisioning state of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -261,12 +261,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -RemoteAddressSpaceAddressPrefix
+### -RemoteAddressPrefix
 A list of address blocks reserved for this virtual network in CIDR notation.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -282,7 +282,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases: RemoteVirtualNetworkId
 
 Required: False
@@ -298,10 +298,27 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ResourceName
+The name of the resource that is unique within a resource group.
+This name can be used to access the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -315,7 +332,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -334,7 +351,7 @@ This flag cannot be set if virtual network already has a gateway.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -350,7 +367,7 @@ The name of the virtual network.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: VirtualNetworkName
 
 Required: True
@@ -361,32 +378,16 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VnetPeeringName
-The name of the peering.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases: VirtualNetworkPeeringName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -VnetPeeringParameter
+### -VnetPeering
 Peerings in a virtual network resource.
-To construct, see NOTES section for VNETPEERINGPARAMETER properties and create a hash table.
+To construct, see NOTES section for VNETPEERING properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVirtualNetworkPeering
 Parameter Sets: Create, CreateViaIdentity
 Aliases: VirtualNetworkPeeringParameter
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -449,17 +450,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### VNETPEERINGPARAMETER <IVirtualNetworkPeering>: Peerings in a virtual network resource.
+#### VNETPEERING <IVirtualNetworkPeering>: Peerings in a virtual network resource.
   - `[Id <String>]`: Resource ID.
   - `[AllowForwardedTraffic <Boolean?>]`: Whether the forwarded traffic from the VMs in the local virtual network will be allowed/disallowed in remote virtual network.
   - `[AllowGatewayTransit <Boolean?>]`: If gateway links can be used in remote virtual networking to link to this virtual network.
-  - `[AllowVirtualNetworkAccess <Boolean?>]`: Whether the VMs in the local virtual network space would be able to access the VMs in remote virtual network space.
+  - `[AllowVnetAccess <Boolean?>]`: Whether the VMs in the local virtual network space would be able to access the VMs in remote virtual network space.
   - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
   - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
   - `[PeeringState <VirtualNetworkPeeringState?>]`: The status of the virtual network peering. Possible values are 'Initiated', 'Connected', and 'Disconnected'.
   - `[ProvisioningState <String>]`: The provisioning state of the resource.
   - `[RemoteAddressSpaceAddressPrefix <String[]>]`: A list of address blocks reserved for this virtual network in CIDR notation.
-  - `[RemoteVirtualNetworkId <String>]`: Resource ID.
+  - `[RemoteVnetId <String>]`: Resource ID.
   - `[UseRemoteGateway <Boolean?>]`: If remote gateways can be used on this virtual network. If the flag is set to true, and allowGatewayTransit on remote peering is also true, virtual network will use gateways of remote virtual network for transit. Only one peering can have this flag set to true. This flag cannot be set if virtual network already has a gateway.
 
 ## RELATED LINKS

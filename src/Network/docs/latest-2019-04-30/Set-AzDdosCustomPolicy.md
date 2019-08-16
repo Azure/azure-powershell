@@ -12,18 +12,18 @@ Creates or updates a DDoS custom policy.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzDdosCustomPolicy -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-DdosCustomPolicy <IDdosCustomPolicy>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzDdosCustomPolicy -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-Format <IProtocolCustomSettingsFormat[]>] [-Id <String>] [-Location <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzDdosCustomPolicy -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -DdosCustomPolicy <IDdosCustomPolicy> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -76,7 +76,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IDdosCustomP
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -286,7 +286,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[ProtocolCustomSetting <IProtocolCustomSettingsFormat[]>]`: The protocol-specific DDoS policy customization parameters.
+  - `[Format <IProtocolCustomSettingsFormat[]>]`: The protocol-specific DDoS policy customization parameters.
     - `[Protocol <DdosCustomPolicyProtocol?>]`: The protocol for which the DDoS protection policy is being customized.
     - `[SourceRateOverride <String>]`: The customized DDoS protection source rate.
     - `[TriggerRateOverride <String>]`: The customized DDoS protection trigger rate.

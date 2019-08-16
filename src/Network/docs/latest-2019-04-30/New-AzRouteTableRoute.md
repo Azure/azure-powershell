@@ -12,33 +12,32 @@ Creates or updates a route in the specified route table.
 
 ## SYNTAX
 
-### Create (Default)
+### CreateExpanded (Default)
 ```
-New-AzRouteTableRoute -ResourceGroupName <String> -SubscriptionId <String> -TableName <String>
- [-Name <String>] [-RouteParameter <IRoute>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzRouteTableRoute -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -TableName <String>
+ [-AddressPrefix <String>] [-Etag <String>] [-Id <String>] [-NextHopIPAddress <String>]
+ [-NextHopType <RouteNextHopType>] [-ProvisioningState <String>] [-ResourceName <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create
+```
+New-AzRouteTableRoute -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -TableName <String>
+ -Route <IRoute> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzRouteTableRoute -InputObject <INetworkIdentity> [-Name <String>] [-AddressPrefix <String>]
- [-Etag <String>] [-Id <String>] [-NextHopIPAddress <String>] [-NextHopType <RouteNextHopType>]
- [-ProvisioningState <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+New-AzRouteTableRoute -InputObject <INetworkIdentity> [-AddressPrefix <String>] [-Etag <String>]
+ [-Id <String>] [-NextHopIPAddress <String>] [-NextHopType <RouteNextHopType>] [-ProvisioningState <String>]
+ [-ResourceName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
-```
-
-### CreateExpanded
-```
-New-AzRouteTableRoute -ResourceGroupName <String> -SubscriptionId <String> -TableName <String>
- -RouteName <String> [-Name <String>] [-AddressPrefix <String>] [-Etag <String>] [-Id <String>]
- [-NextHopIPAddress <String>] [-NextHopType <RouteNextHopType>] [-ProvisioningState <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
-New-AzRouteTableRoute -InputObject <INetworkIdentity> [-RouteParameter <IRoute>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzRouteTableRoute -InputObject <INetworkIdentity> -Route <IRoute> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,7 +70,7 @@ The destination CIDR to which the route applies.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -119,7 +118,7 @@ A unique read-only string that changes whenever the resource is updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -135,7 +134,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -167,8 +166,8 @@ The name of the route.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateViaIdentityExpanded, CreateExpanded
-Aliases:
+Parameter Sets: CreateExpanded, Create
+Aliases: RouteName
 
 Required: True
 Position: Named
@@ -184,7 +183,7 @@ Next hop values are only allowed in routes where the next hop type is VirtualApp
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -200,7 +199,7 @@ The type of Azure hop the packet should be sent to.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.RouteNextHopType
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -233,7 +232,7 @@ Possible values are: 'Updating', 'Deleting', and 'Failed'.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -249,7 +248,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -260,15 +259,16 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -RouteName
-The name of the route.
+### -ResourceName
+The name of the resource that is unique within a resource group.
+This name can be used to access the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -276,16 +276,16 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -RouteParameter
+### -Route
 Route resource
-To construct, see NOTES section for ROUTEPARAMETER properties and create a hash table.
+To construct, see NOTES section for ROUTE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRoute
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -299,7 +299,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -315,7 +315,7 @@ The name of the route table.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: RouteTableName
 
 Required: True
@@ -379,7 +379,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### ROUTEPARAMETER <IRoute>: Route resource
+#### ROUTE <IRoute>: Route resource
   - `NextHopType <RouteNextHopType>`: The type of Azure hop the packet should be sent to.
   - `[Id <String>]`: Resource ID.
   - `[AddressPrefix <String>]`: The destination CIDR to which the route applies.

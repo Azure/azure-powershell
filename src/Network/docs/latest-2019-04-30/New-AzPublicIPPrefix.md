@@ -12,20 +12,20 @@ Creates or updates a static or dynamic public IP prefix.
 
 ## SYNTAX
 
-### Create (Default)
-```
-New-AzPublicIPPrefix -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-PublicIPPrefix <IPublicIPPrefix>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateExpanded
+### CreateExpanded (Default)
 ```
 New-AzPublicIPPrefix -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-Etag <String>]
  [-IPPrefix <String>] [-IPTag <IIPTag[]>] [-Id <String>] [-Location <String>] [-PrefixLength <Int32>]
  [-ProvisioningState <String>] [-PublicIPAddress <IReferencedPublicIPAddress[]>]
  [-PublicIPAddressVersion <IPVersion>] [-ResourceGuid <String>] [-SkuName <PublicIPPrefixSkuName>]
  [-Tag <Hashtable>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### Create
+```
+New-AzPublicIPPrefix -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -PublicIPPrefix <IPublicIPPrefix> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -40,7 +40,7 @@ New-AzPublicIPPrefix -InputObject <INetworkIdentity> [-Etag <String>] [-IPPrefix
 
 ### CreateViaIdentity
 ```
-New-AzPublicIPPrefix -InputObject <INetworkIdentity> [-PublicIPPrefix <IPublicIPPrefix>]
+New-AzPublicIPPrefix -InputObject <INetworkIdentity> -PublicIPPrefix <IPublicIPPrefix>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -203,7 +203,7 @@ The name of the public IP prefix.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: PublicIPPrefixName
 
 Required: True
@@ -286,7 +286,7 @@ The public IP address version.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.IPVersion
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases: IpAddressVersion
+Aliases: IPAddressVersion
 
 Required: False
 Position: Named
@@ -305,7 +305,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IPublicIPPre
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -318,7 +318,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -367,7 +367,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True

@@ -43,13 +43,13 @@
 - Get-AzNetworkWatcherAvailableProvider
 - Get-AzNetworkWatcherConnectionMonitor
 - Get-AzNetworkWatcherConnectionMonitorState
-- Get-AzNetworkWatcherFlowLogStatus
+- Get-AzNetworkWatcherFlowLogInformation
 - Get-AzNetworkWatcherNetworkConfigurationDiagnostic
 - Get-AzNetworkWatcherNextHop
 - Get-AzNetworkWatcherPacketCapture
 - Get-AzNetworkWatcherReachabilityReport
 - Get-AzNetworkWatcherTopology
-- Get-AzNetworkWatcherTroubleshootingResult
+- Get-AzNetworkWatcherTroubleshooting
 - Get-AzNsg
 - Get-AzPublicIPAddress
 - Get-AzPublicIPPrefix
@@ -70,7 +70,7 @@
 - Get-AzVnetGatewayConnectionSharedKey
 - Get-AzVnetGatewayLearnedRoute
 - Get-AzVnetGatewaySupportedVpnDevice
-- Get-AzVnetGatewayVpnClientIPsecParameter
+- Get-AzVnetGatewayVpnClientIPsecPolicy
 - Get-AzVnetGatewayVpnDeviceConfigurationScript
 - Get-AzVnetPeering
 - Get-AzVnetTap
@@ -161,7 +161,7 @@
 - Set-AzNetworkInterfaceTapConfiguration
 - Set-AzNetworkProfile
 - Set-AzNetworkWatcherConnectionMonitor
-- Set-AzNetworkWatcherFlowLogConfiguration
+- Set-AzNetworkWatcherFlowLogInformation
 - Set-AzNsg
 - Set-AzPublicIPAddress
 - Set-AzPublicIPPrefix
@@ -173,7 +173,7 @@
 - Set-AzVnetGateway
 - Set-AzVnetGatewayConnection
 - Set-AzVnetGatewayConnectionSharedKey
-- Set-AzVnetGatewayVpnClientIPsecParameter
+- Set-AzVnetGatewayVpnClientIPsecPolicy
 - Set-AzVnetPeering
 - Set-AzVnetTap
 - Start-AzApplicationGateway

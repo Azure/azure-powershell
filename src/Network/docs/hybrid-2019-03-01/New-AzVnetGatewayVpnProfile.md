@@ -13,32 +13,32 @@ Used for IKEV2 and radius based authentication.
 
 ## SYNTAX
 
-### Generate1 (Default)
-```
-New-AzVnetGatewayVpnProfile -ResourceGroupName <String> -SubscriptionId <String> -VnetGatewayName <String>
- [-VpnProfile <IVpnClientParameters>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### GenerateExpanded1
+### GenerateExpanded1 (Default)
 ```
 New-AzVnetGatewayVpnProfile -ResourceGroupName <String> -SubscriptionId <String> -VnetGatewayName <String>
  [-AuthenticationMethod <AuthenticationMethod>] [-ClientRootCertificate <String[]>]
- [-ProcessorArchitecture <ProcessorArchitecture>] [-RadiusServerAuthCertificate <String>]
+ [-ProcessorArchitecture <ProcessorArchitecture>] [-RadiusServerAuthenticationCertificate <String>]
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Generate1
+```
+New-AzVnetGatewayVpnProfile -ResourceGroupName <String> -SubscriptionId <String> -VnetGatewayName <String>
+ -VpnProfile <IVpnClientParameters> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### GenerateViaIdentityExpanded1
 ```
 New-AzVnetGatewayVpnProfile -InputObject <INetworkIdentity> [-AuthenticationMethod <AuthenticationMethod>]
  [-ClientRootCertificate <String[]>] [-ProcessorArchitecture <ProcessorArchitecture>]
- [-RadiusServerAuthCertificate <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-RadiusServerAuthenticationCertificate <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### GenerateViaIdentity1
 ```
-New-AzVnetGatewayVpnProfile -InputObject <INetworkIdentity> [-VpnProfile <IVpnClientParameters>]
+New-AzVnetGatewayVpnProfile -InputObject <INetworkIdentity> -VpnProfile <IVpnClientParameters>
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -166,7 +166,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -RadiusServerAuthCertificate
+### -RadiusServerAuthenticationCertificate
 The public certificate data for the radius server authentication certificate as a Base-64 encoded string.
 Required only if external radius authentication has been configured with EAPTLS authentication.
 
@@ -188,7 +188,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Generate1, GenerateExpanded1
+Parameter Sets: GenerateExpanded1, Generate1
 Aliases:
 
 Required: True
@@ -205,7 +205,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Generate1, GenerateExpanded1
+Parameter Sets: GenerateExpanded1, Generate1
 Aliases:
 
 Required: True
@@ -221,7 +221,7 @@ The name of the virtual network gateway.
 
 ```yaml
 Type: System.String
-Parameter Sets: Generate1, GenerateExpanded1
+Parameter Sets: GenerateExpanded1, Generate1
 Aliases: VirtualNetworkGatewayName
 
 Required: True
@@ -241,7 +241,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVpnClientPa
 Parameter Sets: Generate1, GenerateViaIdentity1
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

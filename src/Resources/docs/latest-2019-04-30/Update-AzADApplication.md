@@ -12,13 +12,7 @@ Update an existing application.
 
 ## SYNTAX
 
-### Patch (Default)
-```
-Update-AzADApplication -ObjectId <String> -TenantId <String> [-Parameter <IApplicationUpdateParameters>]
- [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### PatchExpanded
+### PatchExpanded (Default)
 ```
 Update-AzADApplication -ObjectId <String> -TenantId <String> [-PassThru] [-AllowGuestsSignIn]
  [-AllowPassthroughUser] [-AppLogoUrl <String>] [-AppPermission <String[]>] [-AppRole <IAppRole[]>]
@@ -34,6 +28,12 @@ Update-AzADApplication -ObjectId <String> -TenantId <String> [-PassThru] [-Allow
  [-PublicClient] [-PublisherDomain <String>] [-ReplyUrl <String[]>]
  [-RequiredResourceAccess <IRequiredResourceAccess[]>] [-SamlMetadataUrl <String>] [-SignInAudience <String>]
  [-WwwHomepage <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Patch
+```
+Update-AzADApplication -ObjectId <String> -TenantId <String> -Parameter <IApplicationUpdateParameters>
+ [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### PatchByApplicationId
@@ -75,8 +75,8 @@ Update-AzADApplication -InputObject <IResourcesIdentity> [-PassThru] [-AllowGues
 
 ### PatchViaIdentity
 ```
-Update-AzADApplication -InputObject <IResourcesIdentity> [-Parameter <IApplicationUpdateParameters>]
- [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzADApplication -InputObject <IResourcesIdentity> -Parameter <IApplicationUpdateParameters> [-PassThru]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -550,7 +550,7 @@ Application object ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Patch, PatchExpanded
+Parameter Sets: PatchExpanded, Patch
 Aliases: ApplicationObjectId
 
 Required: True
@@ -637,7 +637,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IApplicationUpda
 Parameter Sets: Patch, PatchViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -646,7 +646,7 @@ Dynamic: False
 ```
 
 ### -PassThru
-When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -799,7 +799,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Patch, PatchExpanded, PatchByApplicationId
+Parameter Sets: PatchExpanded, Patch, PatchByApplicationId
 Aliases:
 
 Required: True

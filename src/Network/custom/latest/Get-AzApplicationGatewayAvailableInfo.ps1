@@ -94,31 +94,25 @@ param(
 )
 process {
     $result = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Network.Models.ApplicationGatewayAvailableInfo
-    $hasIncludeRequestHeaders = $PSBoundParameters.ContainsKey("IncludeRequestHeaders")
-    $hasIncludeResponseHeaders = $PSBoundParameters.ContainsKey("IncludeResponseHeaders")
-    $hasIncludeServerVariables = $PSBoundParameters.ContainsKey("IncludeServerVariables")
-    if ($hasIncludeRequestHeaders)
-    {
-        $null = $PSBoundParameters.Remove("IncludeRequestHeaders")
+    $hasIncludeRequestHeaders = $PSBoundParameters.ContainsKey('IncludeRequestHeaders')
+    $hasIncludeResponseHeaders = $PSBoundParameters.ContainsKey('IncludeResponseHeaders')
+    $hasIncludeServerVariables = $PSBoundParameters.ContainsKey('IncludeServerVariables')
+    if ($hasIncludeRequestHeaders) {
+        $null = $PSBoundParameters.Remove('IncludeRequestHeaders')
     }
-    if ($hasIncludeResponseHeaders)
-    {
-        $null = $PSBoundParameters.Remove("IncludeResponseHeaders")
+    if ($hasIncludeResponseHeaders) {
+        $null = $PSBoundParameters.Remove('IncludeResponseHeaders')
     }
-    if ($hasIncludeServerVariables)
-    {
-        $null = $PSBoundParameters.Remove("IncludeServerVariables")
+    if ($hasIncludeServerVariables) {
+        $null = $PSBoundParameters.Remove('IncludeServerVariables')
     }
-    if ($hasIncludeRequestHeaders)
-    {
+    if ($hasIncludeRequestHeaders) {
         $result.AvailableRequestHeaders = Az.Network.internal\Get-AzApplicationGatewayAvailableRequestHeader @PSBoundParameters
     }
-    if ($hasIncludeResponseHeaders)
-    {
+    if ($hasIncludeResponseHeaders) {
         $result.AvailableResponseHeaders = Az.Network.internal\Get-AzApplicationGatewayAvailableResponseHeader @PSBoundParameters
     }
-    if ($hasIncludeServerVariables)
-    {
+    if ($hasIncludeServerVariables) {
         $result.AvailableServerVariables = Az.Network.internal\Get-AzApplicationGatewayAvailableServerVariable @PSBoundParameters
     }
     $result

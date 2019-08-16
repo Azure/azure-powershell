@@ -12,17 +12,17 @@ Gets a xml format representation for vpn device configuration script.
 
 ## SYNTAX
 
-### Script1 (Default)
-```
-Get-AzVnetGatewayVpnDeviceConfigurationScript -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-VpnDeviceConfigurationScript <IVpnDeviceScriptParameters>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ScriptExpanded1
+### ScriptExpanded1 (Default)
 ```
 Get-AzVnetGatewayVpnDeviceConfigurationScript -Name <String> -ResourceGroupName <String>
  -SubscriptionId <String[]> [-DeviceFamily <String>] [-FirmwareVersion <String>] [-Vendor <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Script1
+```
+Get-AzVnetGatewayVpnDeviceConfigurationScript -Name <String> -ResourceGroupName <String>
+ -SubscriptionId <String[]> -VpnDeviceConfigurationScript <IVpnDeviceScriptParameters>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -36,8 +36,8 @@ Get-AzVnetGatewayVpnDeviceConfigurationScript -InputObject <INetworkIdentity> [-
 ### ScriptViaIdentity1
 ```
 Get-AzVnetGatewayVpnDeviceConfigurationScript -InputObject <INetworkIdentity>
- [-VpnDeviceConfigurationScript <IVpnDeviceScriptParameters>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -VpnDeviceConfigurationScript <IVpnDeviceScriptParameters> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -134,7 +134,7 @@ The name of the virtual network gateway connection for which the configuration s
 
 ```yaml
 Type: System.String
-Parameter Sets: Script1, ScriptExpanded1
+Parameter Sets: ScriptExpanded1, Script1
 Aliases: VirtualNetworkGatewayConnectionName, VnetGatewayConnectionName
 
 Required: True
@@ -150,7 +150,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Script1, ScriptExpanded1
+Parameter Sets: ScriptExpanded1, Script1
 Aliases:
 
 Required: True
@@ -167,7 +167,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Script1, ScriptExpanded1
+Parameter Sets: ScriptExpanded1, Script1
 Aliases:
 
 Required: True
@@ -203,7 +203,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IVpnDeviceSc
 Parameter Sets: Script1, ScriptViaIdentity1
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

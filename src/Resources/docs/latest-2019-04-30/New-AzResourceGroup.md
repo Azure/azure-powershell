@@ -12,16 +12,16 @@ Creates or updates a resource group.
 
 ## SYNTAX
 
-### Create (Default)
-```
-New-AzResourceGroup -Name <String> -SubscriptionId <String> [-Parameter <IResourceGroup>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded
+### CreateExpanded (Default)
 ```
 New-AzResourceGroup -Name <String> -SubscriptionId <String> -Location <String> [-ManagedBy <String>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create
+```
+New-AzResourceGroup -Name <String> -SubscriptionId <String> -Parameter <IResourceGroup>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -32,8 +32,8 @@ New-AzResourceGroup -InputObject <IResourcesIdentity> -Location <String> [-Manag
 
 ### CreateViaIdentity
 ```
-New-AzResourceGroup -InputObject <IResourcesIdentity> [-Parameter <IResourceGroup>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzResourceGroup -InputObject <IResourcesIdentity> -Parameter <IResourceGroup> [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -133,7 +133,7 @@ Can include alphanumeric, underscore, parentheses, hyphen, period (except at end
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: ResourceGroupName
 
 Required: True
@@ -153,7 +153,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IResourceG
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -166,7 +166,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True

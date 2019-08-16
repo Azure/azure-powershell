@@ -14,13 +14,13 @@ Deletes a resource link with the specified ID.
 
 ### Delete (Default)
 ```
-Remove-AzResourceLink -ResourceId <String> [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+Remove-AzResourceLink -ResourceId <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzResourceLink -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-Confirm]
+Remove-AzResourceLink -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -82,7 +82,7 @@ Dynamic: False
 ```
 
 ### -PassThru
-When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

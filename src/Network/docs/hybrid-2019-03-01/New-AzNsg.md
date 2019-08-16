@@ -12,31 +12,31 @@ Creates or updates a network security group in the specified resource group.
 
 ## SYNTAX
 
-### Create1 (Default)
-```
-New-AzNsg -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-Nsg <INetworkSecurityGroup>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded1
+### CreateExpanded1 (Default)
 ```
 New-AzNsg -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-DefaultSecurityRule <ISecurityRule[]>] [-Etag <String>] [-Id <String>] [-Location <String>]
- [-ProvisioningState <String>] [-ResourceGuid <String>] [-SecurityRule <ISecurityRule[]>] [-Tag <Hashtable>]
+ [-DefaultSecurityRule <ISecurityRule_Reference[]>] [-Etag <String>] [-Id <String>] [-Location <String>]
+ [-ProvisioningState <String>] [-ResourceGuid <String>] [-SecurityRule <ISecurityRule_Reference[]>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create1
+```
+New-AzNsg -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Nsg <INetworkSecurityGroup>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded1
 ```
-New-AzNsg -InputObject <INetworkIdentity> [-DefaultSecurityRule <ISecurityRule[]>] [-Etag <String>]
+New-AzNsg -InputObject <INetworkIdentity> [-DefaultSecurityRule <ISecurityRule_Reference[]>] [-Etag <String>]
  [-Id <String>] [-Location <String>] [-ProvisioningState <String>] [-ResourceGuid <String>]
- [-SecurityRule <ISecurityRule[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SecurityRule <ISecurityRule_Reference[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity1
 ```
-New-AzNsg -InputObject <INetworkIdentity> [-Nsg <INetworkSecurityGroup>] [-DefaultProfile <PSObject>] [-AsJob]
+New-AzNsg -InputObject <INetworkIdentity> -Nsg <INetworkSecurityGroup> [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -102,7 +102,7 @@ The default security rules of network security group.
 To construct, see NOTES section for DEFAULTSECURITYRULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ISecurityRule[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ISecurityRule_Reference[]
 Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
@@ -183,7 +183,7 @@ The name of the network security group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1
+Parameter Sets: CreateExpanded1, Create1
 Aliases: NetworkSecurityGroupName
 
 Required: True
@@ -219,7 +219,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.INetworkSecu
 Parameter Sets: Create1, CreateViaIdentity1
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -249,7 +249,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1
+Parameter Sets: CreateExpanded1, Create1
 Aliases:
 
 Required: True
@@ -281,7 +281,7 @@ A collection of security rules of the network security group.
 To construct, see NOTES section for SECURITYRULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ISecurityRule[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ISecurityRule_Reference[]
 Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases: SecurityRules
 
@@ -299,7 +299,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1
+Parameter Sets: CreateExpanded1, Create1
 Aliases:
 
 Required: True
@@ -381,11 +381,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### DEFAULTSECURITYRULE <ISecurityRule[]>: The default security rules of network security group.
+#### DEFAULTSECURITYRULE <ISecurityRule_Reference[]>: The default security rules of network security group.
   - `Access <SecurityRuleAccess>`: The network traffic is allowed or denied. Possible values are: 'Allow' and 'Deny'.
   - `Direction <SecurityRuleDirection>`: The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic. Possible values are: 'Inbound' and 'Outbound'.
   - `Protocol <SecurityRuleProtocol>`: Network protocol this rule applies to. Possible values are 'Tcp', 'Udp', and '*'.
-  - `[Id <String>]`: Resource ID.
   - `[Description <String>]`: A description for this rule. Restricted to 140 chars.
   - `[DestinationAddressPrefix <String>]`: The destination address prefix. CIDR or destination IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used.
   - `[DestinationApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: The application security group specified as destination.
@@ -439,11 +438,10 @@ To create the parameters described below, construct a hash table containing the 
   - `[ResourceGuid <String>]`: The resource GUID property of the network security group resource.
   - `[SecurityRule <ISecurityRule[]>]`: A collection of security rules of the network security group.
 
-#### SECURITYRULE <ISecurityRule[]>: A collection of security rules of the network security group.
+#### SECURITYRULE <ISecurityRule_Reference[]>: A collection of security rules of the network security group.
   - `Access <SecurityRuleAccess>`: The network traffic is allowed or denied. Possible values are: 'Allow' and 'Deny'.
   - `Direction <SecurityRuleDirection>`: The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic. Possible values are: 'Inbound' and 'Outbound'.
   - `Protocol <SecurityRuleProtocol>`: Network protocol this rule applies to. Possible values are 'Tcp', 'Udp', and '*'.
-  - `[Id <String>]`: Resource ID.
   - `[Description <String>]`: A description for this rule. Restricted to 140 chars.
   - `[DestinationAddressPrefix <String>]`: The destination address prefix. CIDR or destination IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used.
   - `[DestinationApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: The application security group specified as destination.

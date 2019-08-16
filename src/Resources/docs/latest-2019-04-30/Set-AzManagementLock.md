@@ -14,10 +14,10 @@ Of the built-in roles, only Owner and User Access Administrator are granted thos
 
 ## SYNTAX
 
-### Update1 (Default)
+### UpdateExpanded1 (Default)
 ```
-Set-AzManagementLock -LockName <String> -SubscriptionId <String> [-Parameter <IManagementLockObject>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzManagementLock -LockName <String> -SubscriptionId <String> -Level <LockLevel> [-Note <String>]
+ [-Owner <IManagementLockOwner[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
@@ -32,7 +32,7 @@ Set-AzManagementLock -LockName <String> -ParentResourcePath <String> -ResourceGr
 ```
 Set-AzManagementLock -LockName <String> -ParentResourcePath <String> -ResourceGroupName <String>
  -ResourceName <String> -ResourceProviderNamespace <String> -ResourceType <String> -SubscriptionId <String>
- [-Parameter <IManagementLockObject>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Parameter <IManagementLockObject> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded2
@@ -45,13 +45,13 @@ Set-AzManagementLock -LockName <String> -ResourceGroupName <String> -Subscriptio
 ### Update2
 ```
 Set-AzManagementLock -LockName <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <IManagementLockObject>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Parameter <IManagementLockObject> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateExpanded1
+### Update1
 ```
-Set-AzManagementLock -LockName <String> -SubscriptionId <String> -Level <LockLevel> [-Note <String>]
- [-Owner <IManagementLockOwner[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzManagementLock -LockName <String> -SubscriptionId <String> -Parameter <IManagementLockObject>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded3
@@ -62,7 +62,7 @@ Set-AzManagementLock -LockName <String> -Scope <String> -Level <LockLevel> [-Not
 
 ### Update3
 ```
-Set-AzManagementLock -LockName <String> -Scope <String> [-Parameter <IManagementLockObject>]
+Set-AzManagementLock -LockName <String> -Scope <String> -Parameter <IManagementLockObject>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -117,7 +117,7 @@ ReadOnly means authorized users can only read from a resource, but they can't mo
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Support.LockLevel
-Parameter Sets: UpdateExpanded, UpdateExpanded2, UpdateExpanded1, UpdateExpanded3
+Parameter Sets: UpdateExpanded1, UpdateExpanded, UpdateExpanded2, UpdateExpanded3
 Aliases:
 
 Required: True
@@ -131,7 +131,7 @@ Dynamic: False
 ### -LockName
 The name of lock.
 The lock name can be a maximum of 260 characters.
-It cannot contain <, > %, &, :, \, ?, /, or any control characters.
+It cannot contain \<, \> %, &, :, \, ?, /, or any control characters.
 
 ```yaml
 Type: System.String
@@ -152,7 +152,7 @@ Maximum of 512 characters.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateExpanded2, UpdateExpanded1, UpdateExpanded3
+Parameter Sets: UpdateExpanded1, UpdateExpanded, UpdateExpanded2, UpdateExpanded3
 Aliases:
 
 Required: False
@@ -169,7 +169,7 @@ To construct, see NOTES section for OWNER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20160901.IManagementLockOwner[]
-Parameter Sets: UpdateExpanded, UpdateExpanded2, UpdateExpanded1, UpdateExpanded3
+Parameter Sets: UpdateExpanded1, UpdateExpanded, UpdateExpanded2, UpdateExpanded3
 Aliases:
 
 Required: False
@@ -186,10 +186,10 @@ To construct, see NOTES section for PARAMETER properties and create a hash table
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20160901.IManagementLockObject
-Parameter Sets: Update1, Update, Update2, Update3
+Parameter Sets: Update, Update2, Update1, Update3
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -299,7 +299,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update1, UpdateExpanded, Update, UpdateExpanded2, Update2, UpdateExpanded1
+Parameter Sets: UpdateExpanded1, UpdateExpanded, Update, UpdateExpanded2, Update2, Update1
 Aliases:
 
 Required: True

@@ -13,31 +13,30 @@ For example, when you apply a policy to a resource group that policy is assigned
 
 ## SYNTAX
 
-### Create2 (Default)
+### CreateExpanded2 (Default)
 ```
-New-AzPolicyAssignment [-Name <String>] [-Scope <String>] [-Parameter <IPolicyAssignment>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzPolicyAssignment -PolicyAssignmentName <String> -Parameter <IPolicyAssignment> [-Name <String>]
+ [-Scope <String>] [-Description <String>] [-DisplayName <String>] [-PolicyDefinitionId <String>]
+ [-PropertiesScope <String>] [-Type <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded2
 ```
-New-AzPolicyAssignment -InputObject <IResourcesIdentity> [-Name <String>] [-Scope <String>]
- [-Parameter <IPolicyAssignment>] [-Description <String>] [-DisplayName <String>]
- [-PolicyDefinitionId <String>] [-Type <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzPolicyAssignment -InputObject <IResourcesIdentity> -Parameter <IPolicyAssignment> [-Name <String>]
+ [-Scope <String>] [-Description <String>] [-DisplayName <String>] [-PolicyDefinitionId <String>]
+ [-Type <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateExpanded2
+### Create2
 ```
-New-AzPolicyAssignment -PolicyAssignmentName <String> [-Name <String>] [-Scope <String>]
- [-Parameter <IPolicyAssignment>] [-Description <String>] [-DisplayName <String>]
- [-PolicyDefinitionId <String>] [-PropertiesScope <String>] [-Type <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzPolicyAssignment -Parameter <IPolicyAssignment> [-Name <String>] [-Scope <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity2
 ```
-New-AzPolicyAssignment -InputObject <IResourcesIdentity> [-Parameter <IPolicyAssignment>]
+New-AzPolicyAssignment -InputObject <IResourcesIdentity> -Parameter <IPolicyAssignment>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -88,7 +87,7 @@ This message will be part of response in case of policy violation.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded2, CreateExpanded2
+Parameter Sets: CreateExpanded2, CreateViaIdentityExpanded2
 Aliases:
 
 Required: False
@@ -104,7 +103,7 @@ The display name of the policy assignment.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded2, CreateExpanded2
+Parameter Sets: CreateExpanded2, CreateViaIdentityExpanded2
 Aliases:
 
 Required: False
@@ -136,10 +135,10 @@ The name of the policy assignment.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create2, CreateViaIdentityExpanded2, CreateExpanded2
+Parameter Sets: CreateExpanded2, CreateViaIdentityExpanded2, Create2
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -156,7 +155,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20161201.IPolicyAss
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -185,7 +184,7 @@ The ID of the policy definition or policy set definition being assigned.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded2, CreateExpanded2
+Parameter Sets: CreateExpanded2, CreateViaIdentityExpanded2
 Aliases:
 
 Required: False
@@ -218,7 +217,7 @@ Valid scopes are: management group (format: '/providers/Microsoft.Management/man
 
 ```yaml
 Type: System.String
-Parameter Sets: Create2, CreateViaIdentityExpanded2, CreateExpanded2
+Parameter Sets: CreateExpanded2, CreateViaIdentityExpanded2, Create2
 Aliases:
 
 Required: True
@@ -234,7 +233,7 @@ The type of the policy assignment.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded2, CreateExpanded2
+Parameter Sets: CreateExpanded2, CreateViaIdentityExpanded2
 Aliases:
 
 Required: False

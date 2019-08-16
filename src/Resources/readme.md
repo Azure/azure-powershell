@@ -49,13 +49,9 @@ In this directory, run AutoRest:
 ``` yaml
 require:
   - $(this-folder)/../readme.azure.md
-  - $(repo)/specification/resources/resource-manager/readme.enable-multi-api.md
   - $(repo)/specification/resources/resource-manager/readme.md
-  - $(repo)/specification/graphrbac/data-plane/readme.enable-multi-api.md
   - $(repo)/specification/graphrbac/data-plane/readme.md
-  - $(repo)/specification/managementgroups/resource-manager/readme.enable-multi-api.md
   - $(repo)/specification/managementgroups/resource-manager/readme.md
-  - $(repo)/specification/authorization/resource-manager/readme.enable-multi-api.md
   - $(repo)/specification/authorization/resource-manager/readme.md
 
 subject-prefix: ''

@@ -12,33 +12,32 @@ Creates a VirtualWAN resource if it doesn't exist else updates the existing Virt
 
 ## SYNTAX
 
-### Create (Default)
-```
-New-AzVirtualWan -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-WanParameter <IVirtualWan>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateExpanded
+### CreateExpanded (Default)
 ```
 New-AzVirtualWan -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-AllowBranchToBranchTraffic] [-AllowVnetToVnetTraffic] [-DisableVpnEncryption] [-Id <String>]
- [-Location <String>] [-P2SVpnServerConfiguration <IP2SVpnServerConfiguration[]>]
+ [-Location <String>] [-P2SVpnServerConfiguration <IP2SVpnServerConfiguration_Reference[]>]
  [-SecurityProviderName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create
+```
+New-AzVirtualWan -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -VirtualWan <IVirtualWan>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzVirtualWan -InputObject <INetworkIdentity> [-AllowBranchToBranchTraffic] [-AllowVnetToVnetTraffic]
  [-DisableVpnEncryption] [-Id <String>] [-Location <String>]
- [-P2SVpnServerConfiguration <IP2SVpnServerConfiguration[]>] [-SecurityProviderName <String>]
+ [-P2SVpnServerConfiguration <IP2SVpnServerConfiguration_Reference[]>] [-SecurityProviderName <String>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
-New-AzVirtualWan -InputObject <INetworkIdentity> [-WanParameter <IVirtualWan>] [-DefaultProfile <PSObject>]
+New-AzVirtualWan -InputObject <INetworkIdentity> -VirtualWan <IVirtualWan> [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -200,7 +199,7 @@ The name of the VirtualWAN being created or updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: VirtualWanName
 
 Required: True
@@ -232,7 +231,7 @@ List of all P2SVpnServerConfigurations associated with the virtual wan.
 To construct, see NOTES section for P2SVPNSERVERCONFIGURATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IP2SVpnServerConfiguration[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IP2SVpnServerConfiguration_Reference[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -249,7 +248,7 @@ The resource group name of the VirtualWan.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -282,7 +281,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -309,16 +308,16 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -WanParameter
+### -VirtualWan
 VirtualWAN Resource.
-To construct, see NOTES section for WANPARAMETER properties and create a hash table.
+To construct, see NOTES section for VIRTUALWAN properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVirtualWan
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -379,8 +378,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### P2SVPNSERVERCONFIGURATION <IP2SVpnServerConfiguration[]>: List of all P2SVpnServerConfigurations associated with the virtual wan.
-  - `[Id <String>]`: Resource ID.
+#### P2SVPNSERVERCONFIGURATION <IP2SVpnServerConfiguration_Reference[]>: List of all P2SVpnServerConfigurations associated with the virtual wan.
   - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
   - `[P2SVpnServerConfigRadiusClientRootCertificate <IP2SVpnServerConfigRadiusClientRootCertificate[]>]`: Radius client root certificate of P2SVpnServerConfiguration.
     - `[Id <String>]`: Resource ID.
@@ -417,7 +415,7 @@ To create the parameters described below, construct a hash table containing the 
     - `SaLifeTimeSecond <Int32>`: The IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime in seconds for a site to site VPN tunnel.
   - `[VpnProtocol <VpnGatewayTunnelingProtocol[]>]`: VPN protocols for the P2SVpnServerConfiguration.
 
-#### WANPARAMETER <IVirtualWan>: VirtualWAN Resource.
+#### VIRTUALWAN <IVirtualWan>: VirtualWAN Resource.
   - `[Id <String>]`: Resource ID.
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.

@@ -59,7 +59,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(SerializedName='$expand', PossibleTypes=([System.String]), Description='Expands BackendAddressPool and BackendHttpSettings referenced in backend health.')]
     [System.String]
     # Expands BackendAddressPool and BackendHttpSettings referenced in backend health.
-    ${ExpandResource},
+    ${Expand},
 
     [Parameter(ParameterSetName='DemandExpanded', HelpMessage='Name of backend http setting of application gateway to be used for test probe')]
     [Parameter(ParameterSetName='DemandViaIdentityExpanded', HelpMessage='Name of backend http setting of application gateway to be used for test probe')]
@@ -195,7 +195,7 @@ param(
 )
 
 process {
-    $null = $PSBoundParameters.Remove("AsOnDemand")
+    $null = $PSBoundParameters.Remove('AsOnDemand')
     $healthOnDemand = Az.Network.internal\Get-AzApplicationGatewayBackendHealthOnDemand @PSBoundParameters
     $healthPool = New-Object -TypeName 'Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ApplicationGatewayBackendHealthPool'
     Get-Member -InputObject $healthOnDemand | Where-Object { $_.MemberType -eq 'Property' } | ForEach-Object {

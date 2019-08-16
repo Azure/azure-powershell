@@ -12,16 +12,16 @@ Create a group in the directory.
 
 ## SYNTAX
 
-### Create (Default)
-```
-New-AzADGroup -TenantId <String> [-Parameter <IGroupCreateParameters>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded
+### CreateExpanded (Default)
 ```
 New-AzADGroup -TenantId <String> -DisplayName <String> -MailNickname <String>
  [-AdditionalProperties <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create
+```
+New-AzADGroup -TenantId <String> -Parameter <IGroupCreateParameters> [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -32,7 +32,7 @@ New-AzADGroup -InputObject <IResourcesIdentity> -DisplayName <String> -MailNickn
 
 ### CreateViaIdentity
 ```
-New-AzADGroup -InputObject <IResourcesIdentity> [-Parameter <IGroupCreateParameters>]
+New-AzADGroup -InputObject <IResourcesIdentity> -Parameter <IGroupCreateParameters>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -150,7 +150,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IGroupCreatePara
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -163,7 +163,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True

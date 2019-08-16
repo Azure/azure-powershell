@@ -14,25 +14,25 @@ Checks by ID whether a resource exists.
 
 ### Check (Default)
 ```
-Test-AzResource -ResourceId <String> [-PassThru] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Test-AzResource -ResourceId <String> [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
 ```
 
 ### Check1
 ```
 Test-AzResource -ParentResourcePath <String> -ResourceGroupName <String> -ResourceName <String>
- -ResourceProviderNamespace <String> -ResourceType <String> -SubscriptionId <String> [-PassThru]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -ResourceProviderNamespace <String> -ResourceType <String> -SubscriptionId <String>
+ [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
 ```
 
 ### CheckViaIdentity1
 ```
-Test-AzResource -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>]
+Test-AzResource -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-PassThru]
  [<CommonParameters>]
 ```
 
 ### CheckViaIdentity
 ```
-Test-AzResource -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>]
+Test-AzResource -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-PassThru]
  [<CommonParameters>]
 ```
 
@@ -110,7 +110,7 @@ Dynamic: False
 ```
 
 ### -PassThru
-When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

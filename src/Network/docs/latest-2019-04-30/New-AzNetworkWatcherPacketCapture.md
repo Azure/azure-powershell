@@ -12,20 +12,20 @@ Create and start a packet capture on the specified VM.
 
 ## SYNTAX
 
-### Create (Default)
-```
-New-AzNetworkWatcherPacketCapture -Name <String> -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-PacketCapture <IPacketCapture>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded
+### CreateExpanded (Default)
 ```
 New-AzNetworkWatcherPacketCapture -Name <String> -NetworkWatcherName <String> -ResourceGroupName <String>
  -SubscriptionId <String> -TargetResourceId <String> [-BytesToCapturePerPacket <Int32>]
  [-Filter <IPacketCaptureFilter[]>] [-StorageAccountId <String>] [-StorageFilePath <String>]
  [-StoragePathUri <String>] [-TimeLimitInSeconds <Int32>] [-TotalBytesPerSession <Int32>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create
+```
+New-AzNetworkWatcherPacketCapture -Name <String> -NetworkWatcherName <String> -ResourceGroupName <String>
+ -SubscriptionId <String> -PacketCapture <IPacketCapture> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -39,7 +39,7 @@ New-AzNetworkWatcherPacketCapture -InputObject <INetworkIdentity> -TargetResourc
 
 ### CreateViaIdentity
 ```
-New-AzNetworkWatcherPacketCapture -InputObject <INetworkIdentity> [-PacketCapture <IPacketCapture>]
+New-AzNetworkWatcherPacketCapture -InputObject <INetworkIdentity> -PacketCapture <IPacketCapture>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -154,7 +154,7 @@ The name of the packet capture session.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: PacketCaptureName
 
 Required: True
@@ -170,7 +170,7 @@ The name of the network watcher.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -206,7 +206,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IPacketCaptu
 Parameter Sets: Create, CreateViaIdentity
 Aliases: NetworkWatcher
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -219,7 +219,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: Location
 
 Required: True
@@ -289,7 +289,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -420,7 +420,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[StorageLocationFilePath <String>]`: A valid local path on the targeting VM. Must include the name of the capture file (*.cap). For linux virtual machine it must start with /var/captures. Required if no storage ID is provided, otherwise optional.
   - `[StorageLocationStorageId <String>]`: The ID of the storage account to save the packet capture session. Required if no local file path is provided.
   - `[StorageLocationStoragePath <String>]`: The URI of the storage path to save the packet capture. Must be a well-formed URI describing the location to save the packet capture.
-  - `[TimeLimitInSecond <Int32?>]`: Maximum duration of the capture session in seconds.
+  - `[TimeLimitInSeconds <Int32?>]`: Maximum duration of the capture session in seconds.
   - `[TotalBytesPerSession <Int32?>]`: Maximum size of the capture output.
 
 ## RELATED LINKS

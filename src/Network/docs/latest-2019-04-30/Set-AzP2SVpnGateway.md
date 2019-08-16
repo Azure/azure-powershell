@@ -12,21 +12,21 @@ Creates a virtual wan p2s vpn gateway if it doesn't exist else updates the exist
 
 ## SYNTAX
 
-### Update (Default)
+### UpdateExpanded (Default)
 ```
-Set-AzP2SVpnGateway -GatewayName <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-P2SVpnGatewayParameter <IP2SVpnGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Set-AzP2SVpnGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ [-CustomRouteAddressPrefix <String[]>] [-Id <String>] [-Location <String>]
+ [-P2SVpnServerConfigurationId <String>] [-ScaleUnit <Int32>] [-Tag <Hashtable>] [-VirtualHubId <String>]
+ [-VpnClientAddressPrefix <String[]>] [-VpnClientAllocatedIPAddress <String[]>]
+ [-VpnClientConnectionCount <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
-### UpdateExpanded
+### Update
 ```
-Set-AzP2SVpnGateway -GatewayName <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-CustomRouteAddressPrefix <String[]>] [-Id <String>] [-Location <String>]
- [-P2SVpnServerConfigurationId <String>] [-Tag <Hashtable>] [-VirtualHubId <String>]
- [-VpnClientAddressPoolAddressPrefix <String[]>] [-VpnClientConnectionHealthAllocatedIPAddress <String[]>]
- [-VpnClientConnectionHealthVpnClientConnectionsCount <Int32>] [-VpnGatewayScaleUnit <Int32>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzP2SVpnGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -P2SVpnGateway <IP2SVpnGateway> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -102,22 +102,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -GatewayName
-The name of the gateway.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Id
 Resource ID.
 
@@ -150,6 +134,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Name
+The name of the gateway.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: GatewayName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -166,16 +166,16 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -P2SVpnGatewayParameter
+### -P2SVpnGateway
 P2SVpnGateway Resource.
-To construct, see NOTES section for P2SVPNGATEWAYPARAMETER properties and create a hash table.
+To construct, see NOTES section for P2SVPNGATEWAY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IP2SVpnGateway
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -210,6 +210,22 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ScaleUnit
+The scale unit for this p2s vpn gateway.
+
+```yaml
+Type: System.Int32
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -264,7 +280,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VpnClientAddressPoolAddressPrefix
+### -VpnClientAddressPrefix
 A list of address blocks reserved for this virtual network in CIDR notation.
 
 ```yaml
@@ -280,7 +296,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VpnClientConnectionHealthAllocatedIPAddress
+### -VpnClientAllocatedIPAddress
 List of allocated ip addresses to the connected p2s vpn clients.
 
 ```yaml
@@ -296,24 +312,8 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VpnClientConnectionHealthVpnClientConnectionsCount
+### -VpnClientConnectionCount
 The total of p2s vpn clients connected at this time to this P2SVpnGateway.
-
-```yaml
-Type: System.Int32
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -VpnGatewayScaleUnit
-The scale unit for this p2s vpn gateway.
 
 ```yaml
 Type: System.Int32
@@ -379,18 +379,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### P2SVPNGATEWAYPARAMETER <IP2SVpnGateway>: P2SVpnGateway Resource.
+#### P2SVPNGATEWAY <IP2SVpnGateway>: P2SVpnGateway Resource.
   - `[Id <String>]`: Resource ID.
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
   - `[CustomRouteAddressPrefix <String[]>]`: A list of address blocks reserved for this virtual network in CIDR notation.
   - `[P2SVpnServerConfigurationId <String>]`: Resource ID.
+  - `[ScaleUnit <Int32?>]`: The scale unit for this p2s vpn gateway.
   - `[VirtualHubId <String>]`: Resource ID.
-  - `[VpnClientAddressPoolAddressPrefix <String[]>]`: A list of address blocks reserved for this virtual network in CIDR notation.
-  - `[VpnClientConnectionHealthAllocatedIPAddress <String[]>]`: List of allocated ip addresses to the connected p2s vpn clients.
-  - `[VpnClientConnectionHealthVpnClientConnectionsCount <Int32?>]`: The total of p2s vpn clients connected at this time to this P2SVpnGateway.
-  - `[VpnGatewayScaleUnit <Int32?>]`: The scale unit for this p2s vpn gateway.
+  - `[VpnClientAddressPrefix <String[]>]`: A list of address blocks reserved for this virtual network in CIDR notation.
+  - `[VpnClientAllocatedIPAddress <String[]>]`: List of allocated ip addresses to the connected p2s vpn clients.
+  - `[VpnClientConnectionCount <Int32?>]`: The total of p2s vpn clients connected at this time to this P2SVpnGateway.
 
 ## RELATED LINKS
 

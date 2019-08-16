@@ -15,25 +15,25 @@ The scope of a policy assignment is the part of its ID preceding '/providers/Mic
 
 ### Delete1 (Default)
 ```
-Remove-AzPolicyAssignment -Id <String> [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+Remove-AzPolicyAssignment -Id <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### Delete
 ```
-Remove-AzPolicyAssignment -Name <String> -Scope <String> [-PassThru] [-DefaultProfile <PSObject>] [-Confirm]
+Remove-AzPolicyAssignment -Name <String> -Scope <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity1
 ```
-Remove-AzPolicyAssignment -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>]
+Remove-AzPolicyAssignment -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzPolicyAssignment -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>]
+Remove-AzPolicyAssignment -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -129,7 +129,7 @@ Dynamic: False
 ```
 
 ### -PassThru
-When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

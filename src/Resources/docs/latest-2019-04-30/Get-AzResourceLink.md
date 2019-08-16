@@ -24,8 +24,13 @@ Get-AzResourceLink -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>
 
 ### List
 ```
-Get-AzResourceLink -SubscriptionId <String[]> [-Filter <String>] [-DefaultProfile <PSObject>]
+Get-AzResourceLink -SubscriptionId <String[]> [-FilterById <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
+```
+
+### List1
+```
+Get-AzResourceLink -Scope <String> [-FilterByScope <Filter>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -69,7 +74,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Filter
+### -FilterById
 The filter to apply on the list resource links operation.
 The supported filter for list resource links is targetId.
 For example, $filter=targetId eq {value}
@@ -77,7 +82,24 @@ For example, $filter=targetId eq {value}
 ```yaml
 Type: System.String
 Parameter Sets: List
-Aliases: ODataQuery
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -FilterByScope
+The filter to apply when getting resource links.
+To get links only at the specified scope (not below the scope), use Filter.atScope().
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Support.Filter
+Parameter Sets: List1
+Aliases:
 
 Required: False
 Position: Named
@@ -111,6 +133,23 @@ For example, /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/
 Type: System.String
 Parameter Sets: Get
 Aliases: LinkId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Scope
+The fully qualified ID of the scope for getting the resource links.
+For example, to list resource links at and under a resource group, set the scope to /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myGroup.
+
+```yaml
+Type: System.String
+Parameter Sets: List1
+Aliases:
 
 Required: True
 Position: Named

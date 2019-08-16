@@ -12,13 +12,7 @@ Create a new application.
 
 ## SYNTAX
 
-### Create2 (Default)
-```
-New-AzADApplication -TenantId <String> [-Parameter <IApplicationCreateParameters>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded2
+### CreateExpanded2 (Default)
 ```
 New-AzADApplication -TenantId <String> -DisplayName <String> [-AllowGuestsSignIn] [-AllowPassthroughUser]
  [-AppLogoUrl <String>] [-AppPermission <String[]>] [-AppRole <IAppRole[]>] [-AvailableToOtherTenants]
@@ -34,6 +28,12 @@ New-AzADApplication -TenantId <String> -DisplayName <String> [-AllowGuestsSignIn
  [-ReplyUrl <String[]>] [-RequiredResourceAccess <IRequiredResourceAccess[]>] [-SamlMetadataUrl <String>]
  [-SignInAudience <String>] [-WwwHomepage <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
+```
+
+### Create2
+```
+New-AzADApplication -TenantId <String> -Parameter <IApplicationCreateParameters> [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded2
@@ -56,7 +56,7 @@ New-AzADApplication -InputObject <IResourcesIdentity> -DisplayName <String> [-Al
 
 ### CreateViaIdentity2
 ```
-New-AzADApplication -InputObject <IResourcesIdentity> [-Parameter <IApplicationCreateParameters>]
+New-AzADApplication -InputObject <IResourcesIdentity> -Parameter <IApplicationCreateParameters>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -570,7 +570,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IApplicationCrea
 Parameter Sets: Create2, CreateViaIdentity2
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -716,7 +716,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create2, CreateExpanded2
+Parameter Sets: CreateExpanded2, Create2
 Aliases:
 
 Required: True

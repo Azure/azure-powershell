@@ -12,18 +12,18 @@ Gets the relative latency score for internet service providers from a specified 
 
 ## SYNTAX
 
-### Get (Default)
-```
-Get-AzNetworkWatcherReachabilityReport -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-ReachabilityReport <IAzureReachabilityReportParameters>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### GetExpanded
+### GetExpanded (Default)
 ```
 Get-AzNetworkWatcherReachabilityReport -NetworkWatcherName <String> -ResourceGroupName <String>
  -SubscriptionId <String[]> -EndTime <DateTime> -ProviderCountry <String> -StartTime <DateTime>
  [-Location <String[]>] [-Provider <String[]>] [-ProviderCity <String>] [-ProviderState <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzNetworkWatcherReachabilityReport -NetworkWatcherName <String> -ResourceGroupName <String>
+ -SubscriptionId <String[]> -ReachabilityReport <IAzureReachabilityReportParameters>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -38,7 +38,7 @@ Get-AzNetworkWatcherReachabilityReport -InputObject <INetworkIdentity> -EndTime 
 ### GetViaIdentity
 ```
 Get-AzNetworkWatcherReachabilityReport -InputObject <INetworkIdentity>
- [-ReachabilityReport <IAzureReachabilityReportParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -ReachabilityReport <IAzureReachabilityReportParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -152,7 +152,7 @@ The name of the network watcher resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetExpanded
+Parameter Sets: GetExpanded, Get
 Aliases:
 
 Required: True
@@ -252,7 +252,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IAzureReacha
 Parameter Sets: Get, GetViaIdentity
 Aliases: NetworkWatcher
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -265,7 +265,7 @@ The name of the network watcher resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetExpanded
+Parameter Sets: GetExpanded, Get
 Aliases: NetworkWatcherLocation
 
 Required: True
@@ -298,7 +298,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, GetExpanded
+Parameter Sets: GetExpanded, Get
 Aliases:
 
 Required: True

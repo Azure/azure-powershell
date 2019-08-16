@@ -12,35 +12,32 @@ Creates a virtual wan vpn gateway if it doesn't exist else updates the existing 
 
 ## SYNTAX
 
-### Create (Default)
+### CreateExpanded (Default)
 ```
-New-AzVpnGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-VpnGatewayParameter <IVpnGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzVpnGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-BgpAsn <Int64>]
+ [-BgpPeerWeight <Int32>] [-BgpPeeringAddress <String>] [-Connection <IVpnConnection_Reference[]>]
+ [-Id <String>] [-Location <String>] [-ScaleUnit <Int32>] [-Tag <Hashtable>] [-VirtualHubId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateExpanded
+### Create
 ```
-New-AzVpnGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-BgpSettingAsn <Int64>]
- [-BgpSettingBgpPeeringAddress <String>] [-BgpSettingPeerWeight <Int32>] [-Connection <IVpnConnection[]>]
- [-Id <String>] [-Location <String>] [-Tag <Hashtable>] [-VirtualHubId <String>]
- [-VpnGatewayScaleUnit <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzVpnGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -VpnGateway <IVpnGateway>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzVpnGateway -InputObject <INetworkIdentity> [-BgpSettingAsn <Int64>]
- [-BgpSettingBgpPeeringAddress <String>] [-BgpSettingPeerWeight <Int32>] [-Connection <IVpnConnection[]>]
- [-Id <String>] [-Location <String>] [-Tag <Hashtable>] [-VirtualHubId <String>]
- [-VpnGatewayScaleUnit <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzVpnGateway -InputObject <INetworkIdentity> [-BgpAsn <Int64>] [-BgpPeerWeight <Int32>]
+ [-BgpPeeringAddress <String>] [-Connection <IVpnConnection_Reference[]>] [-Id <String>] [-Location <String>]
+ [-ScaleUnit <Int32>] [-Tag <Hashtable>] [-VirtualHubId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
-New-AzVpnGateway -InputObject <INetworkIdentity> [-VpnGatewayParameter <IVpnGateway>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzVpnGateway -InputObject <INetworkIdentity> -VpnGateway <IVpnGateway> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,13 +81,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -BgpSettingAsn
+### -BgpAsn
 The BGP speaker's ASN.
 
 ```yaml
 Type: System.Int64
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Aliases: Asn
 
 Required: False
 Position: Named
@@ -100,7 +97,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -BgpSettingBgpPeeringAddress
+### -BgpPeeringAddress
 The BGP peering address and BGP identifier of this BGP speaker.
 
 ```yaml
@@ -116,13 +113,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -BgpSettingPeerWeight
+### -BgpPeerWeight
 The weight added to routes learned from this BGP speaker.
 
 ```yaml
 Type: System.Int32
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Aliases: PeerWeight, BgpPeeringWeight
 
 Required: False
 Position: Named
@@ -137,7 +134,7 @@ List of all vpn connections to the gateway.
 To construct, see NOTES section for CONNECTION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVpnConnection[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVpnConnection_Reference[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases: VpnConnection
 
@@ -218,7 +215,7 @@ The name of the gateway.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: GatewayName
 
 Required: True
@@ -250,12 +247,28 @@ The resource group name of the VpnGateway.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: VirtualHub, VirtualHubName
 
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ScaleUnit
+The scale unit for this vpn gateway.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases: VpnGatewayScaleUnit
+
+Required: False
+Position: Named
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -267,7 +280,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -310,35 +323,19 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VpnGatewayParameter
+### -VpnGateway
 VpnGateway Resource.
-To construct, see NOTES section for VPNGATEWAYPARAMETER properties and create a hash table.
+To construct, see NOTES section for VPNGATEWAY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVpnGateway
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -VpnGatewayScaleUnit
-The scale unit for this vpn gateway.
-
-```yaml
-Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
-Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -396,8 +393,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### CONNECTION <IVpnConnection[]>: List of all vpn connections to the gateway.
-  - `[Id <String>]`: Resource ID.
+#### CONNECTION <IVpnConnection_Reference[]>: List of all vpn connections to the gateway.
   - `[ConnectionBandwidth <Int32?>]`: Expected bandwidth in MBPS.
   - `[EnableBgp <Boolean?>]`: EnableBgp flag
   - `[EnableInternetSecurity <Boolean?>]`: Enable internet security
@@ -418,14 +414,14 @@ To create the parameters described below, construct a hash table containing the 
   - `[SharedKey <String>]`: SharedKey for the vpn connection.
   - `[UseLocalAzureIPAddress <Boolean?>]`: Use local azure ip to initiate connection
 
-#### VPNGATEWAYPARAMETER <IVpnGateway>: VpnGateway Resource.
+#### VPNGATEWAY <IVpnGateway>: VpnGateway Resource.
   - `[Id <String>]`: Resource ID.
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[BgpSettingAsn <Int64?>]`: The BGP speaker's ASN.
-  - `[BgpSettingBgpPeeringAddress <String>]`: The BGP peering address and BGP identifier of this BGP speaker.
-  - `[BgpSettingPeerWeight <Int32?>]`: The weight added to routes learned from this BGP speaker.
+  - `[BgpAsn <Int64?>]`: The BGP speaker's ASN.
+  - `[BgpPeerWeight <Int32?>]`: The weight added to routes learned from this BGP speaker.
+  - `[BgpPeeringAddress <String>]`: The BGP peering address and BGP identifier of this BGP speaker.
   - `[Connection <IVpnConnection[]>]`: List of all vpn connections to the gateway.
     - `[Id <String>]`: Resource ID.
     - `[ConnectionBandwidth <Int32?>]`: Expected bandwidth in MBPS.

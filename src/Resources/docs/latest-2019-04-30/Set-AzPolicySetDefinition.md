@@ -12,9 +12,11 @@ This operation creates or updates a policy set definition in the given subscript
 
 ## SYNTAX
 
-### Update (Default)
+### UpdateExpanded (Default)
 ```
-Set-AzPolicySetDefinition -Name <String> [-SubscriptionId <String>] [-Parameter <IPolicySetDefinition>]
+Set-AzPolicySetDefinition -Name <String> -PolicyDefinition <IPolicyDefinitionReference[]>
+ [-SubscriptionId <String>] [-Parameter <IPolicySetDefinition>] [-Description <String>]
+ [-DisplayName <String>] [-Metadata <IPolicySetDefinitionPropertiesMetadata>] [-PolicyType <PolicyType>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -26,17 +28,15 @@ Set-AzPolicySetDefinition -Name <String> -ManagementGroupName <String>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateExpanded
-```
-Set-AzPolicySetDefinition -Name <String> -PolicyDefinition <IPolicyDefinitionReference[]>
- [-SubscriptionId <String>] [-Parameter <IPolicySetDefinition>] [-Description <String>]
- [-DisplayName <String>] [-Metadata <IPolicySetDefinitionPropertiesMetadata>] [-PolicyType <PolicyType>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### Update1
 ```
 Set-AzPolicySetDefinition -Name <String> -ManagementGroupName <String> [-Parameter <IPolicySetDefinition>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzPolicySetDefinition -Name <String> [-SubscriptionId <String>] [-Parameter <IPolicySetDefinition>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -94,7 +94,7 @@ The policy set definition description.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateExpanded, UpdateById
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateById
 Aliases:
 
 Required: False
@@ -110,7 +110,7 @@ The display name of the policy set definition.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateExpanded, UpdateById
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateById
 Aliases:
 
 Required: False
@@ -158,7 +158,7 @@ The policy set definition metadata.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IPolicySetDefinitionPropertiesMetadata
-Parameter Sets: UpdateExpanded1, UpdateExpanded, UpdateById
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateById
 Aliases:
 
 Required: False
@@ -174,7 +174,7 @@ The name of the policy set definition to create.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded1, UpdateExpanded, Update1
+Parameter Sets: UpdateExpanded, UpdateExpanded1, Update1, Update
 Aliases: PolicySetDefinitionName
 
 Required: True
@@ -191,13 +191,13 @@ To construct, see NOTES section for PARAMETER properties and create a hash table
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IPolicySetDefinition
-Parameter Sets: Update, UpdateExpanded1, UpdateExpanded, Update1
+Parameter Sets: UpdateExpanded, UpdateExpanded1, Update1, Update
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -208,7 +208,7 @@ To construct, see NOTES section for POLICYDEFINITION properties and create a has
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IPolicyDefinitionReference[]
-Parameter Sets: UpdateExpanded1, UpdateExpanded, UpdateById
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateById
 Aliases:
 
 Required: False
@@ -225,7 +225,7 @@ Possible values are NotSpecified, BuiltIn, and Custom.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Support.PolicyType
-Parameter Sets: UpdateExpanded1, UpdateExpanded, UpdateById
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateById
 Aliases:
 
 Required: False
@@ -241,7 +241,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded, UpdateById
+Parameter Sets: UpdateExpanded, Update, UpdateById
 Aliases:
 
 Required: True

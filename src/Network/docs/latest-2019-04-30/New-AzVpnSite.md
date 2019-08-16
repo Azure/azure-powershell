@@ -12,19 +12,18 @@ Creates a VpnSite resource if it doesn't exist else updates the existing VpnSite
 
 ## SYNTAX
 
-### Create (Default)
-```
-New-AzVpnSite -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-VpnSiteParameter <IVpnSite>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateExpanded
+### CreateExpanded (Default)
 ```
 New-AzVpnSite -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-AddressPrefix <String[]>]
  [-BgpAsn <Int64>] [-BgpPeerWeight <Int32>] [-BgpPeeringAddress <String>] [-DeviceModel <String>]
- [-DeviceVendor <String>] [-IPAddress <String>] [-Id <String>] [-IsSecuritySite] [-LinkSpeedInMbps <Int32>]
- [-Location <String>] [-SiteKey <String>] [-Tag <Hashtable>] [-VirtualWanId <String>]
+ [-DeviceVendor <String>] [-IPAddress <String>] [-Id <String>] [-LinkSpeedInMbps <Int32>] [-Location <String>]
+ [-SecuritySite] [-SiteKey <String>] [-Tag <Hashtable>] [-VirtualWanId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create
+```
+New-AzVpnSite -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -VpnSite <IVpnSite>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -32,15 +31,15 @@ New-AzVpnSite -Name <String> -ResourceGroupName <String> -SubscriptionId <String
 ```
 New-AzVpnSite -InputObject <INetworkIdentity> [-AddressPrefix <String[]>] [-BgpAsn <Int64>]
  [-BgpPeerWeight <Int32>] [-BgpPeeringAddress <String>] [-DeviceModel <String>] [-DeviceVendor <String>]
- [-IPAddress <String>] [-Id <String>] [-IsSecuritySite] [-LinkSpeedInMbps <Int32>] [-Location <String>]
+ [-IPAddress <String>] [-Id <String>] [-LinkSpeedInMbps <Int32>] [-Location <String>] [-SecuritySite]
  [-SiteKey <String>] [-Tag <Hashtable>] [-VirtualWanId <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
-New-AzVpnSite -InputObject <INetworkIdentity> [-VpnSiteParameter <IVpnSite>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzVpnSite -InputObject <INetworkIdentity> -VpnSite <IVpnSite> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -244,22 +243,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IsSecuritySite
-IsSecuritySite flag
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -LinkSpeedInMbps
 Link speed.
 
@@ -297,7 +280,7 @@ The name of the VpnSite being created or updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: VpnSiteName
 
 Required: True
@@ -329,12 +312,28 @@ The resource group name of the VpnSite.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: VirtualWan, VirtualWanName, VirtualWanResourceGroupName
 
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -SecuritySite
+IsSecuritySite flag
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -362,7 +361,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -405,16 +404,16 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VpnSiteParameter
+### -VpnSite
 VpnSite Resource.
-To construct, see NOTES section for VPNSITEPARAMETER properties and create a hash table.
+To construct, see NOTES section for VPNSITE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVpnSite
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -475,20 +474,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### VPNSITEPARAMETER <IVpnSite>: VpnSite Resource.
+#### VPNSITE <IVpnSite>: VpnSite Resource.
   - `[Id <String>]`: Resource ID.
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[AddressSpaceAddressPrefix <String[]>]`: A list of address blocks reserved for this virtual network in CIDR notation.
-  - `[BgpPropertyAsn <Int64?>]`: The BGP speaker's ASN.
-  - `[BgpPropertyBgpPeeringAddress <String>]`: The BGP peering address and BGP identifier of this BGP speaker.
-  - `[BgpPropertyPeerWeight <Int32?>]`: The weight added to routes learned from this BGP speaker.
-  - `[DevicePropertyDeviceModel <String>]`: Model of the device.
-  - `[DevicePropertyDeviceVendor <String>]`: Name of the device Vendor.
-  - `[DevicePropertyLinkSpeedInMbps <Int32?>]`: Link speed.
+  - `[AddressPrefix <String[]>]`: A list of address blocks reserved for this virtual network in CIDR notation.
+  - `[BgpAsn <Int64?>]`: The BGP speaker's ASN.
+  - `[BgpPeerWeight <Int32?>]`: The weight added to routes learned from this BGP speaker.
+  - `[BgpPeeringAddress <String>]`: The BGP peering address and BGP identifier of this BGP speaker.
+  - `[DeviceModel <String>]`: Model of the device.
+  - `[DeviceVendor <String>]`: Name of the device Vendor.
   - `[IPAddress <String>]`: The ip-address for the vpn-site.
-  - `[IsSecuritySite <Boolean?>]`: IsSecuritySite flag
+  - `[LinkSpeedInMbps <Int32?>]`: Link speed.
+  - `[SecuritySite <Boolean?>]`: IsSecuritySite flag
   - `[SiteKey <String>]`: The key for vpn-site that can be used for connections.
   - `[VirtualWanId <String>]`: Resource ID.
 

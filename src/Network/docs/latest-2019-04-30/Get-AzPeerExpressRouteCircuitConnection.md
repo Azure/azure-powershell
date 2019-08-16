@@ -20,7 +20,7 @@ Get-AzPeerExpressRouteCircuitConnection -CircuitName <String> -PeeringName <Stri
 
 ### Get
 ```
-Get-AzPeerExpressRouteCircuitConnection -CircuitName <String> -ConnectionName <String> -PeeringName <String>
+Get-AzPeerExpressRouteCircuitConnection -CircuitName <String> -Name <String> -PeeringName <String>
  -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -71,22 +71,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ConnectionName
-The name of the peer express route circuit connection.
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -115,6 +99,22 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Name
+The name of the peer express route circuit connection.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```

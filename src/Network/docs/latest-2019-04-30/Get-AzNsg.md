@@ -19,7 +19,7 @@ Get-AzNsg -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParame
 
 ### Get
 ```
-Get-AzNsg -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]> [-ExpandResource <String>]
+Get-AzNsg -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]> [-Expand <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -31,8 +31,7 @@ Get-AzNsg -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfil
 
 ### GetViaIdentity
 ```
-Get-AzNsg -InputObject <INetworkIdentity> [-ExpandResource <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzNsg -InputObject <INetworkIdentity> [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -76,13 +75,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ExpandResource
+### -Expand
 Expands referenced resources.
 
 ```yaml
 Type: System.String
 Parameter Sets: Get, GetViaIdentity
-Aliases:
+Aliases: ExpandResource
 
 Required: False
 Position: Named

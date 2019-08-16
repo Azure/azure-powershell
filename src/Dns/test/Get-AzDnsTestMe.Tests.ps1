@@ -12,18 +12,18 @@ Describe 'Get-AzDnsTestMe' {
         $zoneGet.Id | Should -Be $script:zoneCreate.Id
         [Console]::WriteLine("New-AzDnsZone done")
 
-        { $script:recordSetCreate = New-AzDnsRecordSet -RecordType TXT -RelativeRecordSetName 'miyanni-record-set' -ResourceGroupName 'miyanni-test' -ZoneName 'www.miyanni.zone' -TimeToLive 3600 } | Should -Not -Throw
-        ($recordSetGet = Get-AzDnsRecordSet -ResourceGroupName 'miyanni-test' -ZoneName 'www.miyanni.zone' -RelativeRecordSetName 'miyanni-record-set' -RecordType TXT) | Should -Not -Be $null
+        { $script:recordSetCreate = New-AzDnsRecordSet -TxtRecord @{ Value = '0101','9898','TestMe' } -Name 'miyanni-record-set' -ResourceGroupName 'miyanni-test' -ZoneName 'www.miyanni.zone' -TimeToLive 3600 } | Should -Not -Throw
+        ($recordSetGet = Get-AzDnsRecordSet -ResourceGroupName 'miyanni-test' -ZoneName 'www.miyanni.zone' -Name 'miyanni-record-set' -RecordType TXT) | Should -Not -Be $null
         $recordSetGet.Id | Should -Be $script:recordSetCreate.Id
         [Console]::WriteLine("New-AzDnsRecordSet done")
 
         # Get-AzDnsResourceReference -> The request was invalid.
-        ($resourceReferenceGet = Get-AzDnsResourceReference -TargetResource @{ Id = $recordSetGet.Id }) | Should -Not -Be $null
+        ($resourceReferenceGet = Get-AzDnsResourceReference -TargetResourceId $recordSetGet.Id) | Should -Not -Be $null
         $resourceReferenceGet.TargetResourceId | Should -Be $recordSetGet.Id
         [Console]::WriteLine("Get-AzDnsResourceReference done")
 
-        # Set-AzDnsRecordSet -> Cmdlet should be removed. Doesn't allow the same resource to be overridden.
-        { $script:recordSetUpdate = Update-AzDnsRecordSet -ResourceGroupName 'miyanni-test' -ZoneName 'www.miyanni.zone' -RelativeRecordSetName 'miyanni-record-set' -RecordType TXT -TxtRecord @{ Value = '1234','5678' } } | Should -Not -Throw
+        # Set-AzDnsRecordSet -> Didn't test because didn't understand how to override resources. Overriding is based on the IfMatch/IfNoneMatch logic.
+        { $script:recordSetUpdate = Update-AzDnsRecordSet -ResourceGroupName 'miyanni-test' -ZoneName 'www.miyanni.zone' -Name 'miyanni-record-set' -TxtRecord @{ Value = '1234','5678' } } | Should -Not -Throw
         $script:recordSetUpdate.TxtRecord | Should -Not -Be $recordSetGet.TxtRecord
         [Console]::WriteLine("Update-AzDnsRecordSet done")
 
@@ -32,8 +32,8 @@ Describe 'Get-AzDnsTestMe' {
         $script:zoneSet.Name | Should -Be $zoneGet.Name
         [Console]::WriteLine("Set-AzDnsRecordSet done")
 
-        Remove-AzDnsRecordSet -ResourceGroupName 'miyanni-test' -ZoneName 'www.miyanni.zone' -RelativeRecordSetName 'miyanni-record-set' -RecordType TXT -PassThru | Should -Be $true
-        { Get-AzDnsRecordSet -ResourceGroupName 'miyanni-test' -ZoneName 'www.miyanni.zone' -RelativeRecordSetName 'miyanni-record-set' -RecordType TXT } | Should -Throw
+        Remove-AzDnsRecordSet -ResourceGroupName 'miyanni-test' -ZoneName 'www.miyanni.zone' -Name 'miyanni-record-set' -RecordType TXT -PassThru | Should -Be $true
+        { Get-AzDnsRecordSet -ResourceGroupName 'miyanni-test' -ZoneName 'www.miyanni.zone' -Name 'miyanni-record-set' -RecordType TXT } | Should -Throw
         [Console]::WriteLine("Remove-AzDnsRecordSet done")
 
         Remove-AzDnsZone -Name 'www.miyanni.zone' -ResourceGroupName 'miyanni-test' -PassThru | Should -Be $true

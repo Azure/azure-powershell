@@ -12,34 +12,32 @@ Creates a connection between an ExpressRoute gateway and an ExpressRoute circuit
 
 ## SYNTAX
 
-### Create (Default)
+### CreateExpanded (Default)
 ```
-New-AzExpressRouteConnection -ConnectionName <String> -ExpressRouteGatewayName <String>
- -ResourceGroupName <String> -SubscriptionId <String>
- [-PutExpressRouteConnectionParameter <IExpressRouteConnection>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzExpressRouteConnection -ExpressRouteGatewayName <String> -Name <String> -ResourceGroupName <String>
+ -SubscriptionId <String> -ResourceName <String> [-AuthorizationKey <String>]
+ [-ExpressRouteCircuitPeeringId <String>] [-Id <String>] [-RoutingWeight <Int32>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateExpanded
+### Create
 ```
-New-AzExpressRouteConnection -ConnectionName <String> -ExpressRouteGatewayName <String>
- -ResourceGroupName <String> -SubscriptionId <String> -Name <String> [-AuthorizationKey <String>]
- [-ExpressRouteCircuitPeeringId <String>] [-Id <String>] [-RoutingWeight <Int32>] [-DefaultProfile <PSObject>]
+New-AzExpressRouteConnection -ExpressRouteGatewayName <String> -Name <String> -ResourceGroupName <String>
+ -SubscriptionId <String> -ExpressRouteConnection <IExpressRouteConnection> [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzExpressRouteConnection -InputObject <INetworkIdentity> -Name <String> [-AuthorizationKey <String>]
- [-ExpressRouteCircuitPeeringId <String>] [-Id <String>] [-RoutingWeight <Int32>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzExpressRouteConnection -InputObject <INetworkIdentity> -ResourceName <String>
+ [-AuthorizationKey <String>] [-ExpressRouteCircuitPeeringId <String>] [-Id <String>] [-RoutingWeight <Int32>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
-New-AzExpressRouteConnection -InputObject <INetworkIdentity>
- [-PutExpressRouteConnectionParameter <IExpressRouteConnection>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzExpressRouteConnection -InputObject <INetworkIdentity> -ExpressRouteConnection <IExpressRouteConnection>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -99,22 +97,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ConnectionName
-The name of the connection subresource.
-
-```yaml
-Type: System.String
-Parameter Sets: Create, CreateExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -147,12 +129,29 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -ExpressRouteConnection
+ExpressRouteConnection resource.
+To construct, see NOTES section for EXPRESSROUTECONNECTION properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRouteConnection
+Parameter Sets: Create, CreateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -ExpressRouteGatewayName
 The name of the ExpressRoute gateway.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -196,12 +195,12 @@ Dynamic: False
 ```
 
 ### -Name
-The name of the resource.
+The name of the connection subresource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Parameter Sets: CreateExpanded, Create
+Aliases: ConnectionName
 
 Required: True
 Position: Named
@@ -227,30 +226,29 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -PutExpressRouteConnectionParameter
-ExpressRouteConnection resource.
-To construct, see NOTES section for PUTEXPRESSROUTECONNECTIONPARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRouteConnection
-Parameter Sets: Create, CreateViaIdentity
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: ExpressRouteGatewayObject, ParentResourceId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ResourceName
+The name of the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
 
 Required: True
 Position: Named
@@ -282,7 +280,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -346,7 +344,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### PUTEXPRESSROUTECONNECTIONPARAMETER <IExpressRouteConnection>: ExpressRouteConnection resource.
+#### EXPRESSROUTECONNECTION <IExpressRouteConnection>: ExpressRouteConnection resource.
   - `Name <String>`: The name of the resource.
   - `[Id <String>]`: Resource ID.
   - `[AuthorizationKey <String>]`: Authorization key to establish the connection.

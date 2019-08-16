@@ -12,17 +12,16 @@ Update a management group.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Update-AzManagementGroup -GroupId <String> [-CacheControl <String>]
- [-PatchGroupRequest <IPatchManagementGroupRequest>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Update-AzManagementGroup -GroupId <String> [-CacheControl <String>] [-DisplayName <String>]
  [-ParentId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Update-AzManagementGroup -GroupId <String> -PatchGroupRequest <IPatchManagementGroupRequest>
+ [-CacheControl <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -33,9 +32,8 @@ Update-AzManagementGroup -InputObject <IResourcesIdentity> [-CacheControl <Strin
 
 ### UpdateViaIdentity
 ```
-Update-AzManagementGroup -InputObject <IResourcesIdentity> [-CacheControl <String>]
- [-PatchGroupRequest <IPatchManagementGroupRequest>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzManagementGroup -InputObject <IResourcesIdentity> -PatchGroupRequest <IPatchManagementGroupRequest>
+ [-CacheControl <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -116,7 +114,7 @@ Management Group ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded, Update
 Aliases: GroupName
 
 Required: True
@@ -169,7 +167,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180301Preview.IPa
 Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

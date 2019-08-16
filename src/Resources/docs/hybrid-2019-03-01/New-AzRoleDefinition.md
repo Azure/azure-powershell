@@ -12,29 +12,29 @@ Creates or updates a role definition.
 
 ## SYNTAX
 
-### Create (Default)
-```
-New-AzRoleDefinition -Id <String> -Scope <String> [-RoleDefinition <IRoleDefinition>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded
+### CreateExpanded (Default)
 ```
 New-AzRoleDefinition -Id <String> -Scope <String> [-AssignableScope <String[]>] [-Description <String>]
- [-Permission <IPermission[]>] [-PropertiesType <String>] [-RoleName <String>] [-DefaultProfile <PSObject>]
+ [-Permission <IPermission[]>] [-RoleName <String>] [-RoleType <String>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create
+```
+New-AzRoleDefinition -Id <String> -Scope <String> -RoleDefinition <IRoleDefinition>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzRoleDefinition -InputObject <IResourcesIdentity> [-AssignableScope <String[]>] [-Description <String>]
- [-Permission <IPermission[]>] [-PropertiesType <String>] [-RoleName <String>] [-DefaultProfile <PSObject>]
+ [-Permission <IPermission[]>] [-RoleName <String>] [-RoleType <String>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
-New-AzRoleDefinition -InputObject <IResourcesIdentity> [-RoleDefinition <IRoleDefinition>]
+New-AzRoleDefinition -InputObject <IResourcesIdentity> -RoleDefinition <IRoleDefinition>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -116,7 +116,7 @@ The ID of the role definition.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: RoleDefinitionId
 
 Required: True
@@ -160,22 +160,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -PropertiesType
-The role type.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -RoleDefinition
 Role definition.
 To construct, see NOTES section for ROLEDEFINITION properties and create a hash table.
@@ -185,7 +169,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20150701.IRoleDefin
 Parameter Sets: Create, CreateViaIdentity
 Aliases: Role
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -209,12 +193,28 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -RoleType
+The role type.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Scope
 The scope of the role definition.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -288,8 +288,8 @@ To create the parameters described below, construct a hash table containing the 
   - `[Permission <IPermission[]>]`: Role definition permissions.
     - `[Action <String[]>]`: Allowed actions.
     - `[NotAction <String[]>]`: Denied actions.
-  - `[PropertiesType <String>]`: The role type.
   - `[RoleName <String>]`: The role name.
+  - `[RoleType <String>]`: The role type.
 
 ## RELATED LINKS
 

@@ -12,18 +12,18 @@ Updates a route in the specified route filter.
 
 ## SYNTAX
 
-### Update (Default)
+### UpdateExpanded (Default)
 ```
-Update-AzRouteFilterRule -ResourceGroupName <String> -RouteFilterName <String> -RuleName <String>
- -SubscriptionId <String> [-RouteFilterRuleParameter <IPatchRouteFilterRule>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
-```
-Update-AzRouteFilterRule -ResourceGroupName <String> -RouteFilterName <String> -RuleName <String>
+Update-AzRouteFilterRule -Name <String> -ResourceGroupName <String> -RouteFilterName <String>
  -SubscriptionId <String> [-Access <Access>] [-Community <String[]>] [-Id <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Update-AzRouteFilterRule -Name <String> -ResourceGroupName <String> -RouteFilterName <String>
+ -SubscriptionId <String> -RouteFilterRule <IPatchRouteFilterRule> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -34,7 +34,7 @@ Update-AzRouteFilterRule -InputObject <INetworkIdentity> [-Access <Access>] [-Co
 
 ### UpdateViaIdentity
 ```
-Update-AzRouteFilterRule -InputObject <INetworkIdentity> [-RouteFilterRuleParameter <IPatchRouteFilterRule>]
+Update-AzRouteFilterRule -InputObject <INetworkIdentity> -RouteFilterRule <IPatchRouteFilterRule>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -161,6 +161,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Name
+The name of the route filter rule.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, Update
+Aliases: RuleName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -182,7 +198,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded, Update
 Aliases:
 
 Required: True
@@ -198,7 +214,7 @@ The name of the route filter.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded, Update
 Aliases:
 
 Required: True
@@ -209,35 +225,19 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -RouteFilterRuleParameter
+### -RouteFilterRule
 Route Filter Rule Resource
-To construct, see NOTES section for ROUTEFILTERRULEPARAMETER properties and create a hash table.
+To construct, see NOTES section for ROUTEFILTERRULE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IPatchRouteFilterRule
 Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -RuleName
-The name of the route filter rule.
-
-```yaml
-Type: System.String
-Parameter Sets: Update, UpdateExpanded
-Aliases:
-
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -248,7 +248,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded, Update
 Aliases:
 
 Required: True
@@ -312,7 +312,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### ROUTEFILTERRULEPARAMETER <IPatchRouteFilterRule>: Route Filter Rule Resource
+#### ROUTEFILTERRULE <IPatchRouteFilterRule>: Route Filter Rule Resource
   - `Access <Access>`: The access type of the rule.
   - `Community <String[]>`: The collection for bgp community values to filter on. e.g. ['12076:5010','12076:5020']
   - `[Id <String>]`: Resource ID.

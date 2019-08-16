@@ -12,17 +12,17 @@ Creates or updates a role definition.
 
 ## SYNTAX
 
-### Update1 (Default)
-```
-Set-AzRoleDefinition -Id <String> -Scope <String> [-RoleDefinition <IRoleDefinition>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded1
+### UpdateExpanded1 (Default)
 ```
 Set-AzRoleDefinition -Id <String> -Scope <String> [-AssignableScope <String[]>] [-Description <String>]
  [-Permission <IPermission[]>] [-RoleName <String>] [-RoleType <String>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update1
+```
+Set-AzRoleDefinition -Id <String> -Scope <String> -RoleDefinition <IRoleDefinition>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -140,7 +140,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api201801Preview.IRole
 Parameter Sets: Update1
 Aliases: Role
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

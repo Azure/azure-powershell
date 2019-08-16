@@ -12,18 +12,18 @@ Generates VPN profile for P2S client of the P2SVpnGateway in the specified resou
 
 ## SYNTAX
 
-### Generate (Default)
-```
-New-AzP2SVpnGatewayVpnProfile -GatewayName <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-VpnProfile <IP2SVpnProfileParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### GenerateExpanded
+### GenerateExpanded (Default)
 ```
 New-AzP2SVpnGatewayVpnProfile -GatewayName <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-AuthenticationMethod <AuthenticationMethod>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
+```
+
+### Generate
+```
+New-AzP2SVpnGatewayVpnProfile -GatewayName <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -VpnProfile <IP2SVpnProfileParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### GenerateViaIdentityExpanded
@@ -34,7 +34,7 @@ New-AzP2SVpnGatewayVpnProfile -InputObject <INetworkIdentity> [-AuthenticationMe
 
 ### GenerateViaIdentity
 ```
-New-AzP2SVpnGatewayVpnProfile -InputObject <INetworkIdentity> [-VpnProfile <IP2SVpnProfileParameters>]
+New-AzP2SVpnGatewayVpnProfile -InputObject <INetworkIdentity> -VpnProfile <IP2SVpnProfileParameters>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -116,7 +116,7 @@ The name of the P2SVpnGateway.
 
 ```yaml
 Type: System.String
-Parameter Sets: Generate, GenerateExpanded
+Parameter Sets: GenerateExpanded, Generate
 Aliases:
 
 Required: True
@@ -164,7 +164,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Generate, GenerateExpanded
+Parameter Sets: GenerateExpanded, Generate
 Aliases:
 
 Required: True
@@ -181,7 +181,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Generate, GenerateExpanded
+Parameter Sets: GenerateExpanded, Generate
 Aliases:
 
 Required: True
@@ -201,7 +201,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IP2SVpnProfi
 Parameter Sets: Generate, GenerateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

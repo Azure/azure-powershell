@@ -14,13 +14,13 @@ Delete a OAuth2 permission grant for the relevant resource Ids of an app.
 
 ### Delete (Default)
 ```
-Remove-AzOAuth2PermissionGrant -ObjectId <String> -TenantId <String> [-PassThru] [-DefaultProfile <PSObject>]
+Remove-AzOAuth2PermissionGrant -ObjectId <String> -TenantId <String> [-DefaultProfile <PSObject>] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzOAuth2PermissionGrant -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>]
+Remove-AzOAuth2PermissionGrant -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -98,7 +98,7 @@ Dynamic: False
 ```
 
 ### -PassThru
-When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

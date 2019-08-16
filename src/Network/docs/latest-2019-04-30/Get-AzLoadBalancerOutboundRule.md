@@ -20,8 +20,8 @@ Get-AzLoadBalancerOutboundRule -LoadBalancerName <String> -ResourceGroupName <St
 
 ### Get
 ```
-Get-AzLoadBalancerOutboundRule -LoadBalancerName <String> -OutboundRuleName <String>
- -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzLoadBalancerOutboundRule -LoadBalancerName <String> -Name <String> -ResourceGroupName <String>
+ -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -103,7 +103,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -OutboundRuleName
+### -Name
 The name of the outbound rule.
 
 ```yaml

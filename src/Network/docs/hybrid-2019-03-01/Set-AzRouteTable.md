@@ -12,19 +12,18 @@ Create or updates a route table in a specified resource group.
 
 ## SYNTAX
 
-### Update1 (Default)
-```
-Set-AzRouteTable -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-RouteTable <IRouteTable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateExpanded1
+### UpdateExpanded1 (Default)
 ```
 Set-AzRouteTable -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-DisableBgpRoutePropagation] [-Etag <String>] [-Id <String>] [-Location <String>]
- [-ProvisioningState <String>] [-Route <IRoute[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ProvisioningState <String>] [-Route <IRoute_Reference[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update1
+```
+Set-AzRouteTable -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -RouteTable <IRouteTable>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -219,7 +218,7 @@ Collection of routes contained within a route table.
 To construct, see NOTES section for ROUTE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRoute[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRoute_Reference[]
 Parameter Sets: UpdateExpanded1
 Aliases:
 
@@ -240,7 +239,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IRouteTable
 Parameter Sets: Update1
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -332,9 +331,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### ROUTE <IRoute[]>: Collection of routes contained within a route table.
+#### ROUTE <IRoute_Reference[]>: Collection of routes contained within a route table.
   - `NextHopType <RouteNextHopType>`: The type of Azure hop the packet should be sent to.
-  - `[Id <String>]`: Resource ID.
   - `[AddressPrefix <String>]`: The destination CIDR to which the route applies.
   - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
   - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.

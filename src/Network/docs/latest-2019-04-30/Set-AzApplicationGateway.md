@@ -12,14 +12,7 @@ Creates or updates the specified application gateway.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzApplicationGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-ApplicationGateway <IApplicationGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzApplicationGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-AuthenticationCertificate <IApplicationGatewayAuthenticationCertificate[]>]
@@ -48,6 +41,13 @@ Set-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Subscriptio
  [-WafFirewallMode <ApplicationGatewayFirewallMode>] [-WafMaximumRequestBodySize <Int32>]
  [-WafMaximumRequestBodySizeInKb <Int32>] [-WafRuleSetType <String>] [-WafRuleSetVersion <String>]
  [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzApplicationGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -ApplicationGateway <IApplicationGateway> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,7 +84,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IApplication
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -1026,11 +1026,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 #### APPLICATIONGATEWAY <IApplicationGateway>: Application gateway resource
-  - `AutoscaleConfigurationMinCapacity <Int32>`: Lower bound on number of Application Gateway capacity
-  - `WebApplicationFirewallConfigurationEnabled <Boolean>`: Whether the web application firewall is enabled or not.
-  - `WebApplicationFirewallConfigurationFirewallMode <ApplicationGatewayFirewallMode>`: Web application firewall mode.
-  - `WebApplicationFirewallConfigurationRuleSetType <String>`: The type of the web application firewall rule set. Possible values are: 'OWASP'.
-  - `WebApplicationFirewallConfigurationRuleSetVersion <String>`: The version of the rule set type.
+  - `AutoscaleMinimumCapacity <Int32>`: Lower bound on number of Application Gateway capacity
+  - `EnableWaf <Boolean>`: Whether the web application firewall is enabled or not.
+  - `WafFirewallMode <ApplicationGatewayFirewallMode>`: Web application firewall mode.
+  - `WafRuleSetType <String>`: The type of the web application firewall rule set. Possible values are: 'OWASP'.
+  - `WafRuleSetVersion <String>`: The version of the rule set type.
   - `[Id <String>]`: Resource ID.
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.
@@ -1042,7 +1042,7 @@ To create the parameters described below, construct a hash table containing the 
     - `[Name <String>]`: Name of the authentication certificate that is unique within an Application Gateway.
     - `[ProvisioningState <String>]`: Provisioning state of the authentication certificate resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
     - `[Type <String>]`: Type of the resource.
-  - `[AutoscaleConfigurationMaxCapacity <Int32?>]`: Upper bound on number of Application Gateway capacity
+  - `[AutoscaleMaximumCapacity <Int32?>]`: Upper bound on number of Application Gateway capacity
   - `[BackendAddressPool <IApplicationGatewayBackendAddressPool[]>]`: Backend address pool of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
     - `[Id <String>]`: Resource ID.
     - `[BackendAddress <IApplicationGatewayBackendAddress[]>]`: Backend addresses
@@ -1076,7 +1076,7 @@ To create the parameters described below, construct a hash table containing the 
         - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
         - `[FrontendIPConfigurationId <String>]`: Resource ID.
         - `[FrontendPort <Int32?>]`: The port for the external endpoint. Port numbers for each rule must be unique within the Load Balancer. Acceptable values range from 1 to 65534.
-        - `[IdleTimeoutInMinute <Int32?>]`: The timeout for the TCP idle connection. The value can be set between 4 and 30 minutes. The default value is 4 minutes. This element is only used when the protocol is set to TCP.
+        - `[IdleTimeoutInMinutes <Int32?>]`: The timeout for the TCP idle connection. The value can be set between 4 and 30 minutes. The default value is 4 minutes. This element is only used when the protocol is set to TCP.
         - `[LoadBalancerBackendAddressPool <IBackendAddressPool[]>]`: The reference of LoadBalancerBackendAddressPool resource.
         - `[LoadBalancerInboundNatRule <IInboundNatRule[]>]`: A list of references of LoadBalancerInboundNatRules.
         - `[Name <String>]`: Gets name of the resource that is unique within a resource group. This name can be used to access the resource.
@@ -1090,81 +1090,56 @@ To create the parameters described below, construct a hash table containing the 
           - `[Id <String>]`: Resource ID.
           - `[Location <String>]`: Resource location.
           - `[Tag <IResourceTags>]`: Resource tags.
+          - `[AllocationMethod <IPAllocationMethod?>]`: The public IP address allocation method.
           - `[DdosCustomPolicyId <String>]`: Resource ID.
-          - `[DdosSettingProtectionCoverage <DdosSettingsProtectionCoverage?>]`: The DDoS protection policy customizability of the public IP. Only standard coverage will have the ability to be customized.
+          - `[DdosProtectionCoverage <DdosSettingsProtectionCoverage?>]`: The DDoS protection policy customizability of the public IP. Only standard coverage will have the ability to be customized.
           - `[DnsSettingDomainNameLabel <String>]`: Gets or sets the Domain name label.The concatenation of the domain name label and the regionalized DNS zone make up the fully qualified domain name associated with the public IP address. If a domain name label is specified, an A DNS record is created for the public IP in the Microsoft Azure DNS system.
           - `[DnsSettingFqdn <String>]`: Gets the FQDN, Fully qualified domain name of the A DNS record associated with the public IP. This is the concatenation of the domainNameLabel and the regionalized DNS zone.
           - `[DnsSettingReverseFqdn <String>]`: Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name that resolves to this public IP address. If the reverseFqdn is specified, then a PTR DNS record is created pointing from the IP address in the in-addr.arpa domain to the reverse FQDN. 
           - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
           - `[IPAddress <String>]`: The IP address associated with the public IP address resource.
+          - `[IPAddressVersion <IPVersion?>]`: The public IP address version.
           - `[IPConfigurationEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
-          - `[IPConfigurationId <String>]`: Resource ID.
-          - `[IPConfigurationName <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-          - `[IPConfigurationProperty <IIPConfigurationPropertiesFormat>]`: Properties of the IP configuration
+          - `[IPConfigurationFormat <IIPConfigurationPropertiesFormat>]`: Properties of the IP configuration
             - `[PrivateIPAddress <String>]`: The private IP address of the IP configuration.
             - `[PrivateIPAllocationMethod <IPAllocationMethod?>]`: The private IP address allocation method.
             - `[ProvisioningState <String>]`: Gets the provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
             - `[PublicIPAddress <IPublicIPAddress>]`: The reference of the public IP resource.
             - `[Subnet <ISubnet>]`: The reference of the subnet resource.
               - `[Id <String>]`: Resource ID.
-              - `[AddressPrefix <String>]`: The address prefix for the subnet.
-              - `[DefaultSecurityRule <ISecurityRule[]>]`: The default security rules of network security group.
-                - `Access <SecurityRuleAccess>`: The network traffic is allowed or denied.
-                - `Direction <SecurityRuleDirection>`: The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic.
-                - `Protocol <SecurityRuleProtocol>`: Network protocol this rule applies to. Possible values are 'Tcp', 'Udp', 'Icmp', 'Esp', and '*'.
-                - `[Id <String>]`: Resource ID.
-                - `[Description <String>]`: A description for this rule. Restricted to 140 chars.
-                - `[DestinationAddressPrefix <String>]`: The destination address prefix. CIDR or destination IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used.
-                - `[DestinationApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: The application security group specified as destination.
-                - `[DestinationPortRange <String>]`: The destination port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
-                - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-                - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-                - `[Priority <Int32?>]`: The priority of the rule. The value can be between 100 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
-                - `[PropertiesDestinationAddressPrefixes <String[]>]`: The destination address prefixes. CIDR or destination IP ranges.
-                - `[PropertiesDestinationPortRanges <String[]>]`: The destination port ranges.
-                - `[PropertiesSourceAddressPrefixes <String[]>]`: The CIDR or source IP ranges.
-                - `[PropertiesSourcePortRanges <String[]>]`: The source port ranges.
-                - `[ProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-                - `[SourceAddressPrefix <String>]`: The CIDR or source IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used. If this is an ingress rule, specifies where network traffic originates from. 
-                - `[SourceApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: The application security group specified as source.
-                - `[SourcePortRange <String>]`: The source port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
+              - `[AddressPrefix <String[]>]`: List of  address prefixes for the subnet.
               - `[Delegation <IDelegation[]>]`: Gets an array of references to the delegations on the subnet.
                 - `[Id <String>]`: Resource ID.
                 - `[Action <String[]>]`: Describes the actions permitted to the service upon delegation
                 - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
                 - `[Name <String>]`: The name of the resource that is unique within a subnet. This name can be used to access the resource.
                 - `[ServiceName <String>]`: The name of the service to whom the subnet should be delegated (e.g. Microsoft.Sql/servers)
-              - `[DisableBgpRoutePropagation <Boolean?>]`: Gets or sets whether to disable the routes learned by BGP on that route table. True means disable.
               - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
               - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
               - `[NatGatewayId <String>]`: Resource ID.
-              - `[NetworkSecurityGroupEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
-              - `[NetworkSecurityGroupId <String>]`: Resource ID.
-              - `[NetworkSecurityGroupLocation <String>]`: Resource location.
-              - `[NetworkSecurityGroupPropertiesProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-              - `[NetworkSecurityGroupTag <IResourceTags>]`: Resource tags.
-              - `[PropertiesAddressPrefixes <String[]>]`: List of  address prefixes for the subnet.
+              - `[Nsg <INetworkSecurityGroup>]`: The reference of the NetworkSecurityGroup resource.
+              - `[PropertiesAddressPrefix <String>]`: The address prefix for the subnet.
               - `[ProvisioningState <String>]`: The provisioning state of the resource.
-              - `[ResourceGuid <String>]`: The resource GUID property of the network security group resource.
               - `[ResourceNavigationLink <IResourceNavigationLink[]>]`: Gets an array of references to the external resources using subnet.
                 - `[Id <String>]`: Resource ID.
                 - `[Link <String>]`: Link to the external resource
                 - `[LinkedResourceType <String>]`: Resource type of the linked resource.
                 - `[Name <String>]`: Name of the resource that is unique within a resource group. This name can be used to access the resource.
-              - `[Route <IRoute[]>]`: Collection of routes contained within a route table.
-                - `NextHopType <RouteNextHopType>`: The type of Azure hop the packet should be sent to.
+              - `[RouteTable <IRouteTable>]`: The reference of the RouteTable resource.
                 - `[Id <String>]`: Resource ID.
-                - `[AddressPrefix <String>]`: The destination CIDR to which the route applies.
-                - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-                - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-                - `[NextHopIPAddress <String>]`: The IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is VirtualAppliance.
+                - `[Location <String>]`: Resource location.
+                - `[Tag <IResourceTags>]`: Resource tags.
+                - `[DisableBgpRoutePropagation <Boolean?>]`: Gets or sets whether to disable the routes learned by BGP on that route table. True means disable.
+                - `[Etag <String>]`: Gets a unique read-only string that changes whenever the resource is updated.
                 - `[ProvisioningState <String>]`: The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-              - `[RouteTableEtag <String>]`: Gets a unique read-only string that changes whenever the resource is updated.
-              - `[RouteTableId <String>]`: Resource ID.
-              - `[RouteTableLocation <String>]`: Resource location.
-              - `[RouteTablePropertiesProvisioningState <String>]`: The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-              - `[RouteTableTag <IResourceTags>]`: Resource tags.
-              - `[SecurityRule <ISecurityRule[]>]`: A collection of security rules of the network security group.
+                - `[Route <IRoute[]>]`: Collection of routes contained within a route table.
+                  - `NextHopType <RouteNextHopType>`: The type of Azure hop the packet should be sent to.
+                  - `[Id <String>]`: Resource ID.
+                  - `[AddressPrefix <String>]`: The destination CIDR to which the route applies.
+                  - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+                  - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
+                  - `[NextHopIPAddress <String>]`: The IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is VirtualAppliance.
+                  - `[ProvisioningState <String>]`: The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
               - `[ServiceAssociationLink <IServiceAssociationLink[]>]`: Gets an array of references to services injecting into this subnet.
                 - `[Id <String>]`: Resource ID.
                 - `[Link <String>]`: Link to the external resource.
@@ -1186,19 +1161,19 @@ To create the parameters described below, construct a hash table containing the 
                   - `[Service <String>]`: Service endpoint name.
                   - `[ServiceResource <String[]>]`: A list of service resources.
                 - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+          - `[IPConfigurationId <String>]`: Resource ID.
+          - `[IPConfigurationName <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
           - `[IPTag <IIPTag[]>]`: The list of tags associated with the public IP address.
             - `[Tag <String>]`: Gets or sets value of the IpTag associated with the public IP. Example SQL, Storage etc
             - `[Type <String>]`: Gets or sets the ipTag type: Example FirstPartyUsage.
-          - `[IdleTimeoutInMinute <Int32?>]`: The idle timeout of the public IP address.
+          - `[IdleTimeoutInMinutes <Int32?>]`: The idle timeout of the public IP address.
+          - `[PrefixId <String>]`: Resource ID.
           - `[ProvisioningState <String>]`: The provisioning state of the PublicIP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-          - `[PublicIPAllocationMethod <IPAllocationMethod?>]`: The public IP address allocation method.
-          - `[PublicIPPrefixId <String>]`: Resource ID.
           - `[ResourceGuid <String>]`: The resource GUID property of the public IP resource.
           - `[SkuName <PublicIPAddressSkuName?>]`: Name of a public IP address SKU.
-          - `[Version <IPVersion?>]`: The public IP address version.
           - `[Zone <String[]>]`: A list of availability zones denoting the IP allocated for the resource needs to come from.
         - `[Subnet <ISubnet>]`: Subnet bound to the IP configuration.
-        - `[VirtualNetworkTap <IVirtualNetworkTap[]>]`: The reference to Virtual Network Taps.
+        - `[VnetTap <IVirtualNetworkTap[]>]`: The reference to Virtual Network Taps.
       - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
       - `[Primary <Boolean?>]`: Gets whether this is a primary customer address on the network interface.
       - `[PrivateIPAddress <String>]`: Private IP address of the IP configuration.
@@ -1207,12 +1182,12 @@ To create the parameters described below, construct a hash table containing the 
       - `[ProvisioningState <String>]`: The provisioning state of the network interface IP configuration. Possible values are: 'Updating', 'Deleting', and 'Failed'.
       - `[PublicIPAddress <IPublicIPAddress>]`: Public IP address bound to the IP configuration.
       - `[Subnet <ISubnet>]`: Subnet bound to the IP configuration.
-      - `[VirtualNetworkTap <IVirtualNetworkTap[]>]`: The reference to Virtual Network Taps.
+      - `[VnetTap <IVirtualNetworkTap[]>]`: The reference to Virtual Network Taps.
     - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
     - `[Name <String>]`: Name of the backend address pool that is unique within an Application Gateway.
     - `[ProvisioningState <String>]`: Provisioning state of the backend address pool resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
     - `[Type <String>]`: Type of the resource.
-  - `[BackendHttpSettingsCollection <IApplicationGatewayBackendHttpSettings[]>]`: Backend http settings of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
+  - `[BackendHttpSetting <IApplicationGatewayBackendHttpSettings[]>]`: Backend http settings of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
     - `ConnectionDrainingDrainTimeoutInSec <Int32>`: The number of seconds connection draining is active. Acceptable values are from 1 second to 3600 seconds.
     - `ConnectionDrainingEnabled <Boolean>`: Whether connection draining is enabled or not.
     - `[Id <String>]`: Resource ID.
@@ -1232,7 +1207,8 @@ To create the parameters described below, construct a hash table containing the 
     - `[RequestTimeout <Int32?>]`: Request timeout in seconds. Application Gateway will fail the request if response is not received within RequestTimeout. Acceptable values are from 1 second to 86400 seconds.
     - `[TrustedRootCertificate <ISubResource[]>]`: Array of references to application gateway trusted root certificates.
     - `[Type <String>]`: Type of the resource.
-  - `[CustomErrorConfiguration <IApplicationGatewayCustomError[]>]`: Custom error configurations of the application gateway resource.
+  - `[CheckWafRequestBody <Boolean?>]`: Whether allow WAF to check request Body.
+  - `[CustomError <IApplicationGatewayCustomError[]>]`: Custom error configurations of the application gateway resource.
     - `[CustomErrorPageUrl <String>]`: Error page URL of the application gateway customer error.
     - `[StatusCode <ApplicationGatewayCustomErrorStatusCode?>]`: Status code of the application gateway customer error.
   - `[EnableFips <Boolean?>]`: Whether FIPS is enabled on the application gateway resource.
@@ -1277,8 +1253,6 @@ To create the parameters described below, construct a hash table containing the 
     - `[SslCertificateId <String>]`: Resource ID.
     - `[Type <String>]`: Type of the resource.
   - `[IdentityType <ResourceIdentityType?>]`: The type of identity used for the resource. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the virtual machine.
-  - `[IdentityUserAssignedIdentity <IManagedServiceIdentityUserAssignedIdentities>]`: The list of user identities associated with resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-    - `[(Any) <IComponentsSchemasManagedserviceidentityPropertiesUserassignedidentitiesAdditionalproperties>]`: This indicates any property can be added to this object.
   - `[Probe <IApplicationGatewayProbe[]>]`: Probes of the application gateway resource.
     - `[Id <String>]`: Resource ID.
     - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
@@ -1351,9 +1325,9 @@ To create the parameters described below, construct a hash table containing the 
     - `[ProvisioningState <String>]`: Provisioning state of the SSL certificate resource Possible values are: 'Updating', 'Deleting', and 'Failed'.
     - `[PublicCertData <String>]`: Base-64 encoded Public cert data corresponding to pfx specified in data. Only applicable in GET request.
     - `[Type <String>]`: Type of the resource.
-  - `[SslPolicyCipherSuite <ApplicationGatewaySslCipherSuite[]>]`: Ssl cipher suites to be enabled in the specified order to application gateway.
-  - `[SslPolicyDisabledSslProtocol <ApplicationGatewaySslProtocol[]>]`: Ssl protocols to be disabled on application gateway.
-  - `[SslPolicyMinProtocolVersion <ApplicationGatewaySslProtocol?>]`: Minimum version of Ssl protocol to be supported on application gateway.
+  - `[SslCipherSuite <ApplicationGatewaySslCipherSuite[]>]`: Ssl cipher suites to be enabled in the specified order to application gateway.
+  - `[SslDisabledProtocol <ApplicationGatewaySslProtocol[]>]`: Ssl protocols to be disabled on application gateway.
+  - `[SslMinimumProtocolVersion <ApplicationGatewaySslProtocol?>]`: Minimum version of Ssl protocol to be supported on application gateway.
   - `[SslPolicyName <ApplicationGatewaySslPolicyName?>]`: Name of Ssl predefined policy
   - `[SslPolicyType <ApplicationGatewaySslPolicyType?>]`: Type of Ssl Policy
   - `[TrustedRootCertificate <IApplicationGatewayTrustedRootCertificate[]>]`: Trusted Root certificates of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
@@ -1385,17 +1359,18 @@ To create the parameters described below, construct a hash table containing the 
       - `[Type <String>]`: Type of the resource.
     - `[ProvisioningState <String>]`: Provisioning state of the backend http settings resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
     - `[Type <String>]`: Type of the resource.
-  - `[WebApplicationFirewallConfigurationDisabledRuleGroup <IApplicationGatewayFirewallDisabledRuleGroup[]>]`: The disabled rule groups.
+  - `[UserAssignedIdentity <IManagedServiceIdentityUserAssignedIdentities>]`: The list of user identities associated with resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+    - `[(Any) <IComponentsSchemasManagedserviceidentityPropertiesUserassignedidentitiesAdditionalproperties>]`: This indicates any property can be added to this object.
+  - `[WafDisabledRuleGroup <IApplicationGatewayFirewallDisabledRuleGroup[]>]`: The disabled rule groups.
     - `RuleGroupName <String>`: The name of the rule group that will be disabled.
     - `[Rule <Int32[]>]`: The list of rules that will be disabled. If null, all rules of the rule group will be disabled.
-  - `[WebApplicationFirewallConfigurationExclusion <IApplicationGatewayFirewallExclusion[]>]`: The exclusion list.
+  - `[WafExclusion <IApplicationGatewayFirewallExclusion[]>]`: The exclusion list.
     - `MatchVariable <String>`: The variable to be excluded.
     - `Selector <String>`: When matchVariable is a collection, operator used to specify which elements in the collection this exclusion applies to.
     - `SelectorMatchOperator <String>`: When matchVariable is a collection, operate on the selector to specify which elements in the collection this exclusion applies to.
-  - `[WebApplicationFirewallConfigurationFileUploadLimitInMb <Int32?>]`: Maximum file upload size in Mb for WAF.
-  - `[WebApplicationFirewallConfigurationMaxRequestBodySize <Int32?>]`: Maximum request body size for WAF.
-  - `[WebApplicationFirewallConfigurationMaxRequestBodySizeInKb <Int32?>]`: Maximum request body size in Kb for WAF.
-  - `[WebApplicationFirewallConfigurationRequestBodyCheck <Boolean?>]`: Whether allow WAF to check request Body.
+  - `[WafFileUploadLimitInMb <Int32?>]`: Maximum file upload size in Mb for WAF.
+  - `[WafMaximumRequestBodySize <Int32?>]`: Maximum request body size for WAF.
+  - `[WafMaximumRequestBodySizeInKb <Int32?>]`: Maximum request body size in Kb for WAF.
   - `[Zone <String[]>]`: A list of availability zones denoting where the resource needs to come from.
 
 #### AUTHENTICATIONCERTIFICATE <IApplicationGatewayAuthenticationCertificate[]>: Authentication certificates of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
@@ -1440,7 +1415,7 @@ To create the parameters described below, construct a hash table containing the 
       - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
       - `[FrontendIPConfigurationId <String>]`: Resource ID.
       - `[FrontendPort <Int32?>]`: The port for the external endpoint. Port numbers for each rule must be unique within the Load Balancer. Acceptable values range from 1 to 65534.
-      - `[IdleTimeoutInMinute <Int32?>]`: The timeout for the TCP idle connection. The value can be set between 4 and 30 minutes. The default value is 4 minutes. This element is only used when the protocol is set to TCP.
+      - `[IdleTimeoutInMinutes <Int32?>]`: The timeout for the TCP idle connection. The value can be set between 4 and 30 minutes. The default value is 4 minutes. This element is only used when the protocol is set to TCP.
       - `[LoadBalancerBackendAddressPool <IBackendAddressPool[]>]`: The reference of LoadBalancerBackendAddressPool resource.
       - `[LoadBalancerInboundNatRule <IInboundNatRule[]>]`: A list of references of LoadBalancerInboundNatRules.
       - `[Name <String>]`: Gets name of the resource that is unique within a resource group. This name can be used to access the resource.
@@ -1454,81 +1429,56 @@ To create the parameters described below, construct a hash table containing the 
         - `[Id <String>]`: Resource ID.
         - `[Location <String>]`: Resource location.
         - `[Tag <IResourceTags>]`: Resource tags.
+        - `[AllocationMethod <IPAllocationMethod?>]`: The public IP address allocation method.
         - `[DdosCustomPolicyId <String>]`: Resource ID.
-        - `[DdosSettingProtectionCoverage <DdosSettingsProtectionCoverage?>]`: The DDoS protection policy customizability of the public IP. Only standard coverage will have the ability to be customized.
+        - `[DdosProtectionCoverage <DdosSettingsProtectionCoverage?>]`: The DDoS protection policy customizability of the public IP. Only standard coverage will have the ability to be customized.
         - `[DnsSettingDomainNameLabel <String>]`: Gets or sets the Domain name label.The concatenation of the domain name label and the regionalized DNS zone make up the fully qualified domain name associated with the public IP address. If a domain name label is specified, an A DNS record is created for the public IP in the Microsoft Azure DNS system.
         - `[DnsSettingFqdn <String>]`: Gets the FQDN, Fully qualified domain name of the A DNS record associated with the public IP. This is the concatenation of the domainNameLabel and the regionalized DNS zone.
         - `[DnsSettingReverseFqdn <String>]`: Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name that resolves to this public IP address. If the reverseFqdn is specified, then a PTR DNS record is created pointing from the IP address in the in-addr.arpa domain to the reverse FQDN. 
         - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
         - `[IPAddress <String>]`: The IP address associated with the public IP address resource.
+        - `[IPAddressVersion <IPVersion?>]`: The public IP address version.
         - `[IPConfigurationEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
-        - `[IPConfigurationId <String>]`: Resource ID.
-        - `[IPConfigurationName <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-        - `[IPConfigurationProperty <IIPConfigurationPropertiesFormat>]`: Properties of the IP configuration
+        - `[IPConfigurationFormat <IIPConfigurationPropertiesFormat>]`: Properties of the IP configuration
           - `[PrivateIPAddress <String>]`: The private IP address of the IP configuration.
           - `[PrivateIPAllocationMethod <IPAllocationMethod?>]`: The private IP address allocation method.
           - `[ProvisioningState <String>]`: Gets the provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
           - `[PublicIPAddress <IPublicIPAddress>]`: The reference of the public IP resource.
           - `[Subnet <ISubnet>]`: The reference of the subnet resource.
             - `[Id <String>]`: Resource ID.
-            - `[AddressPrefix <String>]`: The address prefix for the subnet.
-            - `[DefaultSecurityRule <ISecurityRule[]>]`: The default security rules of network security group.
-              - `Access <SecurityRuleAccess>`: The network traffic is allowed or denied.
-              - `Direction <SecurityRuleDirection>`: The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic.
-              - `Protocol <SecurityRuleProtocol>`: Network protocol this rule applies to. Possible values are 'Tcp', 'Udp', 'Icmp', 'Esp', and '*'.
-              - `[Id <String>]`: Resource ID.
-              - `[Description <String>]`: A description for this rule. Restricted to 140 chars.
-              - `[DestinationAddressPrefix <String>]`: The destination address prefix. CIDR or destination IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used.
-              - `[DestinationApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: The application security group specified as destination.
-              - `[DestinationPortRange <String>]`: The destination port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
-              - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-              - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-              - `[Priority <Int32?>]`: The priority of the rule. The value can be between 100 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
-              - `[PropertiesDestinationAddressPrefixes <String[]>]`: The destination address prefixes. CIDR or destination IP ranges.
-              - `[PropertiesDestinationPortRanges <String[]>]`: The destination port ranges.
-              - `[PropertiesSourceAddressPrefixes <String[]>]`: The CIDR or source IP ranges.
-              - `[PropertiesSourcePortRanges <String[]>]`: The source port ranges.
-              - `[ProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-              - `[SourceAddressPrefix <String>]`: The CIDR or source IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used. If this is an ingress rule, specifies where network traffic originates from. 
-              - `[SourceApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: The application security group specified as source.
-              - `[SourcePortRange <String>]`: The source port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
+            - `[AddressPrefix <String[]>]`: List of  address prefixes for the subnet.
             - `[Delegation <IDelegation[]>]`: Gets an array of references to the delegations on the subnet.
               - `[Id <String>]`: Resource ID.
               - `[Action <String[]>]`: Describes the actions permitted to the service upon delegation
               - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
               - `[Name <String>]`: The name of the resource that is unique within a subnet. This name can be used to access the resource.
               - `[ServiceName <String>]`: The name of the service to whom the subnet should be delegated (e.g. Microsoft.Sql/servers)
-            - `[DisableBgpRoutePropagation <Boolean?>]`: Gets or sets whether to disable the routes learned by BGP on that route table. True means disable.
             - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
             - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
             - `[NatGatewayId <String>]`: Resource ID.
-            - `[NetworkSecurityGroupEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
-            - `[NetworkSecurityGroupId <String>]`: Resource ID.
-            - `[NetworkSecurityGroupLocation <String>]`: Resource location.
-            - `[NetworkSecurityGroupPropertiesProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-            - `[NetworkSecurityGroupTag <IResourceTags>]`: Resource tags.
-            - `[PropertiesAddressPrefixes <String[]>]`: List of  address prefixes for the subnet.
+            - `[Nsg <INetworkSecurityGroup>]`: The reference of the NetworkSecurityGroup resource.
+            - `[PropertiesAddressPrefix <String>]`: The address prefix for the subnet.
             - `[ProvisioningState <String>]`: The provisioning state of the resource.
-            - `[ResourceGuid <String>]`: The resource GUID property of the network security group resource.
             - `[ResourceNavigationLink <IResourceNavigationLink[]>]`: Gets an array of references to the external resources using subnet.
               - `[Id <String>]`: Resource ID.
               - `[Link <String>]`: Link to the external resource
               - `[LinkedResourceType <String>]`: Resource type of the linked resource.
               - `[Name <String>]`: Name of the resource that is unique within a resource group. This name can be used to access the resource.
-            - `[Route <IRoute[]>]`: Collection of routes contained within a route table.
-              - `NextHopType <RouteNextHopType>`: The type of Azure hop the packet should be sent to.
+            - `[RouteTable <IRouteTable>]`: The reference of the RouteTable resource.
               - `[Id <String>]`: Resource ID.
-              - `[AddressPrefix <String>]`: The destination CIDR to which the route applies.
-              - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-              - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-              - `[NextHopIPAddress <String>]`: The IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is VirtualAppliance.
+              - `[Location <String>]`: Resource location.
+              - `[Tag <IResourceTags>]`: Resource tags.
+              - `[DisableBgpRoutePropagation <Boolean?>]`: Gets or sets whether to disable the routes learned by BGP on that route table. True means disable.
+              - `[Etag <String>]`: Gets a unique read-only string that changes whenever the resource is updated.
               - `[ProvisioningState <String>]`: The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-            - `[RouteTableEtag <String>]`: Gets a unique read-only string that changes whenever the resource is updated.
-            - `[RouteTableId <String>]`: Resource ID.
-            - `[RouteTableLocation <String>]`: Resource location.
-            - `[RouteTablePropertiesProvisioningState <String>]`: The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-            - `[RouteTableTag <IResourceTags>]`: Resource tags.
-            - `[SecurityRule <ISecurityRule[]>]`: A collection of security rules of the network security group.
+              - `[Route <IRoute[]>]`: Collection of routes contained within a route table.
+                - `NextHopType <RouteNextHopType>`: The type of Azure hop the packet should be sent to.
+                - `[Id <String>]`: Resource ID.
+                - `[AddressPrefix <String>]`: The destination CIDR to which the route applies.
+                - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+                - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
+                - `[NextHopIPAddress <String>]`: The IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is VirtualAppliance.
+                - `[ProvisioningState <String>]`: The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
             - `[ServiceAssociationLink <IServiceAssociationLink[]>]`: Gets an array of references to services injecting into this subnet.
               - `[Id <String>]`: Resource ID.
               - `[Link <String>]`: Link to the external resource.
@@ -1550,19 +1500,19 @@ To create the parameters described below, construct a hash table containing the 
                 - `[Service <String>]`: Service endpoint name.
                 - `[ServiceResource <String[]>]`: A list of service resources.
               - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
+        - `[IPConfigurationId <String>]`: Resource ID.
+        - `[IPConfigurationName <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
         - `[IPTag <IIPTag[]>]`: The list of tags associated with the public IP address.
           - `[Tag <String>]`: Gets or sets value of the IpTag associated with the public IP. Example SQL, Storage etc
           - `[Type <String>]`: Gets or sets the ipTag type: Example FirstPartyUsage.
-        - `[IdleTimeoutInMinute <Int32?>]`: The idle timeout of the public IP address.
+        - `[IdleTimeoutInMinutes <Int32?>]`: The idle timeout of the public IP address.
+        - `[PrefixId <String>]`: Resource ID.
         - `[ProvisioningState <String>]`: The provisioning state of the PublicIP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-        - `[PublicIPAllocationMethod <IPAllocationMethod?>]`: The public IP address allocation method.
-        - `[PublicIPPrefixId <String>]`: Resource ID.
         - `[ResourceGuid <String>]`: The resource GUID property of the public IP resource.
         - `[SkuName <PublicIPAddressSkuName?>]`: Name of a public IP address SKU.
-        - `[Version <IPVersion?>]`: The public IP address version.
         - `[Zone <String[]>]`: A list of availability zones denoting the IP allocated for the resource needs to come from.
       - `[Subnet <ISubnet>]`: Subnet bound to the IP configuration.
-      - `[VirtualNetworkTap <IVirtualNetworkTap[]>]`: The reference to Virtual Network Taps.
+      - `[VnetTap <IVirtualNetworkTap[]>]`: The reference to Virtual Network Taps.
     - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
     - `[Primary <Boolean?>]`: Gets whether this is a primary customer address on the network interface.
     - `[PrivateIPAddress <String>]`: Private IP address of the IP configuration.
@@ -1571,7 +1521,7 @@ To create the parameters described below, construct a hash table containing the 
     - `[ProvisioningState <String>]`: The provisioning state of the network interface IP configuration. Possible values are: 'Updating', 'Deleting', and 'Failed'.
     - `[PublicIPAddress <IPublicIPAddress>]`: Public IP address bound to the IP configuration.
     - `[Subnet <ISubnet>]`: Subnet bound to the IP configuration.
-    - `[VirtualNetworkTap <IVirtualNetworkTap[]>]`: The reference to Virtual Network Taps.
+    - `[VnetTap <IVirtualNetworkTap[]>]`: The reference to Virtual Network Taps.
   - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
   - `[Name <String>]`: Name of the backend address pool that is unique within an Application Gateway.
   - `[ProvisioningState <String>]`: Provisioning state of the backend address pool resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.

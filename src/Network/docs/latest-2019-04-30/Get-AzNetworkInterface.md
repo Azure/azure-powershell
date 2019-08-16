@@ -20,13 +20,13 @@ Get-AzNetworkInterface -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [
 ### GetVmss
 ```
 Get-AzNetworkInterface -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]> -VMIndex <String>
- -VmssName <String> [-ExpandResource <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -VmssName <String> [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzNetworkInterface -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- [-ExpandResource <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ListVmssVM
@@ -49,7 +49,7 @@ Get-AzNetworkInterface -ResourceGroupName <String> -SubscriptionId <String[]> [-
 
 ### GetViaIdentity
 ```
-Get-AzNetworkInterface -InputObject <INetworkIdentity> [-ExpandResource <String>] [-DefaultProfile <PSObject>]
+Get-AzNetworkInterface -InputObject <INetworkIdentity> [-Expand <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -94,13 +94,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ExpandResource
+### -Expand
 Expands referenced resources.
 
 ```yaml
 Type: System.String
 Parameter Sets: GetVmss, Get, GetViaIdentity
-Aliases:
+Aliases: ExpandResource
 
 Required: False
 Position: Named

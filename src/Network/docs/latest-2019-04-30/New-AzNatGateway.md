@@ -12,20 +12,19 @@ Creates or updates a nat gateway.
 
 ## SYNTAX
 
-### Create (Default)
-```
-New-AzNatGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-NatGateway <INatGateway>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateExpanded
+### CreateExpanded (Default)
 ```
 New-AzNatGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-Etag <String>]
  [-Id <String>] [-IdleTimeoutInMinutes <Int32>] [-Location <String>] [-ProvisioningState <String>]
  [-PublicIPAddress <ISubResource[]>] [-PublicIPPrefix <ISubResource[]>] [-ResourceGuid <String>]
  [-SkuName <NatGatewaySkuName>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
+```
+
+### Create
+```
+New-AzNatGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -NatGateway <INatGateway>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -39,7 +38,7 @@ New-AzNatGateway -InputObject <INetworkIdentity> [-Etag <String>] [-Id <String>]
 
 ### CreateViaIdentity
 ```
-New-AzNatGateway -InputObject <INetworkIdentity> [-NatGateway <INatGateway>] [-DefaultProfile <PSObject>]
+New-AzNatGateway -InputObject <INetworkIdentity> -NatGateway <INatGateway> [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -185,7 +184,7 @@ The name of the nat gateway.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: NatGatewayName
 
 Required: True
@@ -205,7 +204,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INatGateway
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -285,7 +284,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -334,7 +333,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -420,7 +419,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Tag <IResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
   - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-  - `[IdleTimeoutInMinute <Int32?>]`: The idle timeout of the nat gateway.
+  - `[IdleTimeoutInMinutes <Int32?>]`: The idle timeout of the nat gateway.
   - `[ProvisioningState <String>]`: The provisioning state of the NatGateway resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
   - `[PublicIPAddress <ISubResource[]>]`: An array of public ip addresses associated with the nat gateway resource.
     - `[Id <String>]`: Resource ID.

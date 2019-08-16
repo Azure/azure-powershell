@@ -12,17 +12,17 @@ Creates or updates a network watcher in the specified resource group.
 
 ## SYNTAX
 
-### Create (Default)
-```
-New-AzNetworkWatcher -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-NetworkWatcher <INetworkWatcher>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded
+### CreateExpanded (Default)
 ```
 New-AzNetworkWatcher -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-Etag <String>]
  [-Id <String>] [-Location <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
+```
+
+### Create
+```
+New-AzNetworkWatcher -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -NetworkWatcher <INetworkWatcher> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -33,7 +33,7 @@ New-AzNetworkWatcher -InputObject <INetworkIdentity> [-Etag <String>] [-Id <Stri
 
 ### CreateViaIdentity
 ```
-New-AzNetworkWatcher -InputObject <INetworkIdentity> [-NetworkWatcher <INetworkWatcher>]
+New-AzNetworkWatcher -InputObject <INetworkIdentity> -NetworkWatcher <INetworkWatcher>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -147,7 +147,7 @@ The name of the network watcher.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: NetworkWatcherName
 
 Required: True
@@ -167,7 +167,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkWatc
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -180,7 +180,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -197,7 +197,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True

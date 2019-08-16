@@ -14,16 +14,19 @@ For example, when you assign a policy at resource group scope, that policy appli
 
 ## SYNTAX
 
-### Create1 (Default)
+### CreateExpanded1 (Default)
 ```
-New-AzPolicyAssignment -Id <String> [-Parameter <IPolicyAssignment>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzPolicyAssignment -Id <String> -Parameter <IPolicyAssignment> [-Scope <String>] [-Description <String>]
+ [-DisplayName <String>] [-IdentityType <ResourceIdentityType>] [-Location <String>]
+ [-Metadata <IPolicyAssignmentPropertiesMetadata>] [-NotScope <String[]>] [-PolicyDefinitionId <String>]
+ [-SkuName <String>] [-SkuTier <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateExpanded
 ```
-New-AzPolicyAssignment -Name <String> [-Scope <String>] [-Parameter <IPolicyAssignment>]
- [-Description <String>] [-DisplayName <String>] [-IdentityType <ResourceIdentityType>] [-Location <String>]
+New-AzPolicyAssignment -Name <String> -Parameter <IPolicyAssignment> [-Scope <String>] [-Description <String>]
+ [-DisplayName <String>] [-IdentityType <ResourceIdentityType>] [-Location <String>]
  [-Metadata <IPolicyAssignmentPropertiesMetadata>] [-NotScope <String[]>] [-PolicyDefinitionId <String>]
  [-PropertiesScope <String>] [-SkuName <String>] [-SkuTier <String>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
@@ -31,13 +34,13 @@ New-AzPolicyAssignment -Name <String> [-Scope <String>] [-Parameter <IPolicyAssi
 
 ### Create
 ```
-New-AzPolicyAssignment -Name <String> [-Scope <String>] [-Parameter <IPolicyAssignment>]
+New-AzPolicyAssignment -Name <String> -Parameter <IPolicyAssignment> [-Scope <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded1
 ```
-New-AzPolicyAssignment -InputObject <IResourcesIdentity> [-Scope <String>] [-Parameter <IPolicyAssignment>]
+New-AzPolicyAssignment -InputObject <IResourcesIdentity> -Parameter <IPolicyAssignment> [-Scope <String>]
  [-Description <String>] [-DisplayName <String>] [-IdentityType <ResourceIdentityType>] [-Location <String>]
  [-Metadata <IPolicyAssignmentPropertiesMetadata>] [-NotScope <String[]>] [-PolicyDefinitionId <String>]
  [-SkuName <String>] [-SkuTier <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
@@ -46,31 +49,28 @@ New-AzPolicyAssignment -InputObject <IResourcesIdentity> [-Scope <String>] [-Par
 
 ### CreateViaIdentityExpanded
 ```
-New-AzPolicyAssignment -InputObject <IResourcesIdentity> [-Scope <String>] [-Parameter <IPolicyAssignment>]
+New-AzPolicyAssignment -InputObject <IResourcesIdentity> -Parameter <IPolicyAssignment> [-Scope <String>]
  [-Description <String>] [-DisplayName <String>] [-IdentityType <ResourceIdentityType>] [-Location <String>]
  [-Metadata <IPolicyAssignmentPropertiesMetadata>] [-NotScope <String[]>] [-PolicyDefinitionId <String>]
  [-SkuName <String>] [-SkuTier <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### CreateExpanded1
+### Create1
 ```
-New-AzPolicyAssignment -Id <String> [-Scope <String>] [-Parameter <IPolicyAssignment>] [-Description <String>]
- [-DisplayName <String>] [-IdentityType <ResourceIdentityType>] [-Location <String>]
- [-Metadata <IPolicyAssignmentPropertiesMetadata>] [-NotScope <String[]>] [-PolicyDefinitionId <String>]
- [-SkuName <String>] [-SkuTier <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzPolicyAssignment -Id <String> -Parameter <IPolicyAssignment> [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity1
 ```
-New-AzPolicyAssignment -InputObject <IResourcesIdentity> [-Parameter <IPolicyAssignment>]
+New-AzPolicyAssignment -InputObject <IResourcesIdentity> -Parameter <IPolicyAssignment>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
-New-AzPolicyAssignment -InputObject <IResourcesIdentity> [-Parameter <IPolicyAssignment>]
+New-AzPolicyAssignment -InputObject <IResourcesIdentity> -Parameter <IPolicyAssignment>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -122,7 +122,7 @@ This message will be part of response in case of policy violation.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded1, CreateViaIdentityExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateExpanded, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -138,7 +138,7 @@ The display name of the policy assignment.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded1, CreateViaIdentityExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateExpanded, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -155,7 +155,7 @@ Use the format '{scope}/providers/Microsoft.Authorization/policyAssignments/{pol
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1
+Parameter Sets: CreateExpanded1, Create1
 Aliases: PolicyAssignmentId
 
 Required: True
@@ -171,7 +171,7 @@ The identity type.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Support.ResourceIdentityType
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded1, CreateViaIdentityExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateExpanded, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -204,7 +204,7 @@ Only required when utilizing managed identity.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded1, CreateViaIdentityExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateExpanded, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -220,7 +220,7 @@ The policy assignment metadata.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IPolicyAssignmentPropertiesMetadata
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded1, CreateViaIdentityExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateExpanded, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -252,7 +252,7 @@ The policy's excluded scopes.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded1, CreateViaIdentityExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateExpanded, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -272,7 +272,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IPolicyAss
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -285,7 +285,7 @@ The ID of the policy definition or policy set definition being assigned.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded1, CreateViaIdentityExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateExpanded, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -318,10 +318,10 @@ Valid scopes are: management group (format: '/providers/Microsoft.Management/man
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, Create, CreateViaIdentityExpanded1, CreateViaIdentityExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateExpanded, Create, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -335,7 +335,7 @@ Possible values are A0 and A1.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded1, CreateViaIdentityExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateExpanded, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -352,7 +352,7 @@ Possible values are Free and Standard.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded1, CreateViaIdentityExpanded, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateExpanded, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
 Aliases:
 
 Required: False

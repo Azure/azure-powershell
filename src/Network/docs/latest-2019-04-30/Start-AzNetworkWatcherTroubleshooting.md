@@ -12,18 +12,18 @@ Initiate troubleshooting on a specified resource
 
 ## SYNTAX
 
-### Get (Default)
-```
-Start-AzNetworkWatcherTroubleshooting -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-Troubleshooting <ITroubleshootingParameters>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### GetExpanded
+### GetExpanded (Default)
 ```
 Start-AzNetworkWatcherTroubleshooting -NetworkWatcherName <String> -ResourceGroupName <String>
  -SubscriptionId <String> -StorageId <String> -StoragePath <String> -TargetResourceId <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Get
+```
+Start-AzNetworkWatcherTroubleshooting -NetworkWatcherName <String> -ResourceGroupName <String>
+ -SubscriptionId <String> -Troubleshooting <ITroubleshootingParameters> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GetViaIdentityExpanded
@@ -36,7 +36,7 @@ Start-AzNetworkWatcherTroubleshooting -InputObject <INetworkIdentity> -StorageId
 ### GetViaIdentity
 ```
 Start-AzNetworkWatcherTroubleshooting -InputObject <INetworkIdentity>
- [-Troubleshooting <ITroubleshootingParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ -Troubleshooting <ITroubleshootingParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -118,7 +118,7 @@ The name of the network watcher resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetExpanded
+Parameter Sets: GetExpanded, Get
 Aliases:
 
 Required: True
@@ -150,7 +150,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetExpanded
+Parameter Sets: GetExpanded, Get
 Aliases: Location
 
 Required: True
@@ -199,7 +199,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetExpanded
+Parameter Sets: GetExpanded, Get
 Aliases:
 
 Required: True
@@ -235,7 +235,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ITroubleshoo
 Parameter Sets: Get, GetViaIdentity
 Aliases: NetworkWatcher
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

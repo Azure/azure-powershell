@@ -14,13 +14,13 @@ Gets the managed application.
 
 ### Get1 (Default)
 ```
-Get-AzManagedApplication -Id <String> [-PassThru] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzManagedApplication -Id <String> [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzManagedApplication -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]> [-PassThru]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzManagedApplication -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+ [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
 ```
 
 ### List
@@ -36,13 +36,13 @@ Get-AzManagedApplication -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
 
 ### GetViaIdentity1
 ```
-Get-AzManagedApplication -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>]
+Get-AzManagedApplication -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-PassThru]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzManagedApplication -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>]
+Get-AzManagedApplication -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-PassThru]
  [<CommonParameters>]
 ```
 
@@ -137,7 +137,7 @@ Dynamic: False
 ```
 
 ### -PassThru
-When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

@@ -12,43 +12,44 @@ Creates or updates a security rule in the specified network security group.
 
 ## SYNTAX
 
-### Create1 (Default)
+### CreateExpanded1 (Default)
 ```
-New-AzNetworkSecurityRule -NsgName <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Name <String>] [-SecurityRuleParameter <ISecurityRule>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+New-AzNetworkSecurityRule -Name <String> -NsgName <String> -ResourceGroupName <String>
+ -SubscriptionId <String> [-Access <SecurityRuleAccess>] [-AdditionalDestinationAddressPrefix <String[]>]
+ [-AdditionalDestinationPortRange <String[]>] [-AdditionalSourceAddressPrefix <String[]>]
+ [-AdditionalSourcePortRange <String[]>] [-Description <String>] [-DestinationAddressPrefix <String>]
+ [-DestinationApplicationSecurityGroup <IApplicationSecurityGroup_Reference[]>]
+ [-DestinationPortRange <String>] [-Direction <SecurityRuleDirection>] [-Etag <String>] [-Id <String>]
+ [-Priority <Int32>] [-Protocol <SecurityRuleProtocol>] [-ProvisioningState <String>] [-ResourceName <String>]
+ [-SourceAddressPrefix <String>] [-SourceApplicationSecurityGroup <IApplicationSecurityGroup_Reference[]>]
+ [-SourcePortRange <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### Create1
+```
+New-AzNetworkSecurityRule -Name <String> -NsgName <String> -ResourceGroupName <String>
+ -SubscriptionId <String> -SecurityRule <ISecurityRule> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded1
 ```
-New-AzNetworkSecurityRule -InputObject <INetworkIdentity> [-Name <String>] [-Access <SecurityRuleAccess>]
- [-Description <String>] [-DestinationAddressPrefix <String>]
- [-DestinationApplicationSecurityGroup <IApplicationSecurityGroup[]>] [-DestinationPortRange <String>]
- [-Direction <SecurityRuleDirection>] [-Etag <String>] [-Id <String>] [-Priority <Int32>]
- [-PropertiesDestinationAddressPrefixes <String[]>] [-PropertiesDestinationPortRanges <String[]>]
- [-PropertiesSourceAddressPrefixes <String[]>] [-PropertiesSourcePortRanges <String[]>]
- [-Protocol <SecurityRuleProtocol>] [-ProvisioningState <String>] [-SourceAddressPrefix <String>]
- [-SourceApplicationSecurityGroup <IApplicationSecurityGroup[]>] [-SourcePortRange <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded1
-```
-New-AzNetworkSecurityRule -NsgName <String> -ResourceGroupName <String> -SubscriptionId <String>
- -SecurityRuleName <String> [-Name <String>] [-Access <SecurityRuleAccess>] [-Description <String>]
- [-DestinationAddressPrefix <String>] [-DestinationApplicationSecurityGroup <IApplicationSecurityGroup[]>]
+New-AzNetworkSecurityRule -InputObject <INetworkIdentity> [-Access <SecurityRuleAccess>]
+ [-AdditionalDestinationAddressPrefix <String[]>] [-AdditionalDestinationPortRange <String[]>]
+ [-AdditionalSourceAddressPrefix <String[]>] [-AdditionalSourcePortRange <String[]>] [-Description <String>]
+ [-DestinationAddressPrefix <String>]
+ [-DestinationApplicationSecurityGroup <IApplicationSecurityGroup_Reference[]>]
  [-DestinationPortRange <String>] [-Direction <SecurityRuleDirection>] [-Etag <String>] [-Id <String>]
- [-Priority <Int32>] [-PropertiesDestinationAddressPrefixes <String[]>]
- [-PropertiesDestinationPortRanges <String[]>] [-PropertiesSourceAddressPrefixes <String[]>]
- [-PropertiesSourcePortRanges <String[]>] [-Protocol <SecurityRuleProtocol>] [-ProvisioningState <String>]
- [-SourceAddressPrefix <String>] [-SourceApplicationSecurityGroup <IApplicationSecurityGroup[]>]
+ [-Priority <Int32>] [-Protocol <SecurityRuleProtocol>] [-ProvisioningState <String>] [-ResourceName <String>]
+ [-SourceAddressPrefix <String>] [-SourceApplicationSecurityGroup <IApplicationSecurityGroup_Reference[]>]
  [-SourcePortRange <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### CreateViaIdentity1
 ```
-New-AzNetworkSecurityRule -InputObject <INetworkIdentity> [-SecurityRuleParameter <ISecurityRule>]
+New-AzNetworkSecurityRule -InputObject <INetworkIdentity> -SecurityRule <ISecurityRule>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -83,7 +84,72 @@ Possible values are: 'Allow' and 'Deny'.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.SecurityRuleAccess
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -AdditionalDestinationAddressPrefix
+The destination address prefixes.
+CIDR or destination IP ranges.
+
+```yaml
+Type: System.String[]
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -AdditionalDestinationPortRange
+The destination port ranges.
+
+```yaml
+Type: System.String[]
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -AdditionalSourceAddressPrefix
+The CIDR or source IP ranges.
+
+```yaml
+Type: System.String[]
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -AdditionalSourcePortRange
+The source port ranges.
+
+```yaml
+Type: System.String[]
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -132,7 +198,7 @@ Restricted to 140 chars.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -151,7 +217,7 @@ Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can al
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -164,11 +230,10 @@ Dynamic: False
 
 ### -DestinationApplicationSecurityGroup
 The application security group specified as destination.
-To construct, see NOTES section for DESTINATIONAPPLICATIONSECURITYGROUP properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IApplicationSecurityGroup[]
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IApplicationSecurityGroup_Reference[]
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -186,7 +251,7 @@ Asterisk '*' can also be used to match all ports.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -204,7 +269,7 @@ Possible values are: 'Inbound' and 'Outbound'.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.SecurityRuleDirection
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -220,7 +285,7 @@ A unique read-only string that changes whenever the resource is updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -236,7 +301,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -268,8 +333,8 @@ The name of the security rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateViaIdentityExpanded1, CreateExpanded1
-Aliases:
+Parameter Sets: CreateExpanded1, Create1
+Aliases: SecurityRuleName
 
 Required: True
 Position: Named
@@ -300,7 +365,7 @@ The name of the network security group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1
+Parameter Sets: CreateExpanded1, Create1
 Aliases: NetworkSecurityGroupName
 
 Required: True
@@ -319,77 +384,12 @@ The lower the priority number, the higher the priority of the rule.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
 Position: Named
 Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -PropertiesDestinationAddressPrefixes
-The destination address prefixes.
-CIDR or destination IP ranges.
-
-```yaml
-Type: System.String[]
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -PropertiesDestinationPortRanges
-The destination port ranges.
-
-```yaml
-Type: System.String[]
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -PropertiesSourceAddressPrefixes
-The CIDR or source IP ranges.
-
-```yaml
-Type: System.String[]
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -PropertiesSourcePortRanges
-The source port ranges.
-
-```yaml
-Type: System.String[]
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -401,7 +401,7 @@ Possible values are 'Tcp', 'Udp', and '*'.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Support.SecurityRuleProtocol
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -418,7 +418,7 @@ Possible values are: 'Updating', 'Deleting', and 'Failed'.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -434,7 +434,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1
+Parameter Sets: CreateExpanded1, Create1
 Aliases:
 
 Required: True
@@ -445,15 +445,16 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -SecurityRuleName
-The name of the security rule.
+### -ResourceName
+The name of the resource that is unique within a resource group.
+This name can be used to access the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -461,16 +462,16 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -SecurityRuleParameter
+### -SecurityRule
 Network security rule.
-To construct, see NOTES section for SECURITYRULEPARAMETER properties and create a hash table.
+To construct, see NOTES section for SECURITYRULE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.ISecurityRule
 Parameter Sets: Create1, CreateViaIdentity1
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -486,7 +487,7 @@ If this is an ingress rule, specifies where network traffic originates from.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -499,11 +500,10 @@ Dynamic: False
 
 ### -SourceApplicationSecurityGroup
 The application security group specified as source.
-To construct, see NOTES section for SOURCEAPPLICATIONSECURITYGROUP properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IApplicationSecurityGroup[]
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IApplicationSecurityGroup_Reference[]
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -521,7 +521,7 @@ Asterisk '*' can also be used to match all ports.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded1, CreateExpanded1
+Parameter Sets: CreateExpanded1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -538,7 +538,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1
+Parameter Sets: CreateExpanded1, Create1
 Aliases:
 
 Required: True
@@ -602,13 +602,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### DESTINATIONAPPLICATIONSECURITYGROUP <IApplicationSecurityGroup[]>: The application security group specified as destination.
-  - `[Id <String>]`: Resource ID.
-  - `[Location <String>]`: Resource location.
-  - `[Tag <IResourceTags>]`: Resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-
-#### SECURITYRULEPARAMETER <ISecurityRule>: Network security rule.
+#### SECURITYRULE <ISecurityRule>: Network security rule.
   - `Access <SecurityRuleAccess>`: The network traffic is allowed or denied. Possible values are: 'Allow' and 'Deny'.
   - `Direction <SecurityRuleDirection>`: The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic. Possible values are: 'Inbound' and 'Outbound'.
   - `Protocol <SecurityRuleProtocol>`: Network protocol this rule applies to. Possible values are 'Tcp', 'Udp', and '*'.
@@ -632,12 +626,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[SourceAddressPrefix <String>]`: The CIDR or source IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used. If this is an ingress rule, specifies where network traffic originates from. 
   - `[SourceApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: The application security group specified as source.
   - `[SourcePortRange <String>]`: The source port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
-
-#### SOURCEAPPLICATIONSECURITYGROUP <IApplicationSecurityGroup[]>: The application security group specified as source.
-  - `[Id <String>]`: Resource ID.
-  - `[Location <String>]`: Resource location.
-  - `[Tag <IResourceTags>]`: Resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
 

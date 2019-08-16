@@ -15,7 +15,7 @@ This operation cannot be undone.
 
 ### Delete1 (Default)
 ```
-Remove-AzDnsRecordSet -RecordType <RecordType> -RelativeRecordSetName <String> -ResourceGroupName <String>
+Remove-AzDnsRecordSet -Name <String> -RecordType <RecordType> -ResourceGroupName <String>
  -SubscriptionId <String> -ZoneName <String> [-IfMatch <String>] [-DefaultProfile <PSObject>] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -102,6 +102,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Name
+The name of the record set, relative to the name of the zone.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete1
+Aliases: RelativeRecordSetName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -PassThru
 Returns true when the command succeeds
 
@@ -124,22 +140,6 @@ Record sets of type SOA cannot be deleted (they are deleted when the DNS zone is
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.RecordType
-Parameter Sets: Delete1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -RelativeRecordSetName
-The name of the record set, relative to the name of the zone.
-
-```yaml
-Type: System.String
 Parameter Sets: Delete1
 Aliases:
 

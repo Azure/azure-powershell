@@ -12,35 +12,34 @@ Verifies the possibility of establishing a direct TCP connection from a virtual 
 
 ## SYNTAX
 
-### Check (Default)
-```
-Test-AzNetworkWatcherConnectivity -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-Connectivity <IConnectivityParameters>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CheckExpanded
+### CheckExpanded (Default)
 ```
 Test-AzNetworkWatcherConnectivity -NetworkWatcherName <String> -ResourceGroupName <String>
  -SubscriptionId <String> -SourceResourceId <String> [-DestinationAddress <String>] [-DestinationPort <Int32>]
- [-DestinationResourceId <String>] [-HttpConfigurationHeader <IHttpHeader[]>]
- [-HttpConfigurationMethod <HttpMethod>] [-HttpConfigurationValidStatusCode <Int32[]>] [-Protocol <Protocol>]
- [-SourcePort <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-DestinationResourceId <String>] [-HttpHeader <IHttpHeader[]>] [-HttpMethod <HttpMethod>]
+ [-HttpValidStatusCode <Int32[]>] [-Protocol <Protocol>] [-SourcePort <Int32>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Check
+```
+Test-AzNetworkWatcherConnectivity -NetworkWatcherName <String> -ResourceGroupName <String>
+ -SubscriptionId <String> -Connectivity <IConnectivityParameters> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CheckViaIdentityExpanded
 ```
 Test-AzNetworkWatcherConnectivity -InputObject <INetworkIdentity> -SourceResourceId <String>
  [-DestinationAddress <String>] [-DestinationPort <Int32>] [-DestinationResourceId <String>]
- [-HttpConfigurationHeader <IHttpHeader[]>] [-HttpConfigurationMethod <HttpMethod>]
- [-HttpConfigurationValidStatusCode <Int32[]>] [-Protocol <Protocol>] [-SourcePort <Int32>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-HttpHeader <IHttpHeader[]>] [-HttpMethod <HttpMethod>] [-HttpValidStatusCode <Int32[]>]
+ [-Protocol <Protocol>] [-SourcePort <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CheckViaIdentity
 ```
-Test-AzNetworkWatcherConnectivity -InputObject <INetworkIdentity> [-Connectivity <IConnectivityParameters>]
+Test-AzNetworkWatcherConnectivity -InputObject <INetworkIdentity> -Connectivity <IConnectivityParameters>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -94,7 +93,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IConnectivit
 Parameter Sets: Check, CheckViaIdentity
 Aliases: NetworkWatcher
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -166,9 +165,9 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -HttpConfigurationHeader
+### -HttpHeader
 List of HTTP headers.
-To construct, see NOTES section for HTTPCONFIGURATIONHEADER properties and create a hash table.
+To construct, see NOTES section for HTTPHEADER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IHttpHeader[]
@@ -183,7 +182,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -HttpConfigurationMethod
+### -HttpMethod
 HTTP method.
 
 ```yaml
@@ -199,7 +198,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -HttpConfigurationValidStatusCode
+### -HttpValidStatusCode
 Valid status codes.
 
 ```yaml
@@ -236,7 +235,7 @@ The name of the network watcher resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Check, CheckExpanded
+Parameter Sets: CheckExpanded, Check
 Aliases:
 
 Required: True
@@ -284,7 +283,7 @@ The name of the network watcher resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Check, CheckExpanded
+Parameter Sets: CheckExpanded, Check
 Aliases: Location
 
 Required: True
@@ -333,7 +332,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Check, CheckExpanded
+Parameter Sets: CheckExpanded, Check
 Aliases:
 
 Required: True
@@ -410,7 +409,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Protocol <Protocol?>]`: Network protocol.
   - `[SourcePort <Int32?>]`: The source port from which a connectivity check will be performed.
 
-#### HTTPCONFIGURATIONHEADER <IHttpHeader[]>: List of HTTP headers.
+#### HTTPHEADER <IHttpHeader[]>: List of HTTP headers.
   - `[Name <String>]`: The name in HTTP header.
   - `[Value <String>]`: The value in HTTP header.
 

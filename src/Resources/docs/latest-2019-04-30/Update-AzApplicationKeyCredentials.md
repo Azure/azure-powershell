@@ -12,30 +12,30 @@ Update the keyCredentials associated with an application.
 
 ## SYNTAX
 
-### Update (Default)
+### UpdateViaIdentity (Default)
 ```
-Update-AzApplicationKeyCredentials -ObjectId <String> -TenantId <String>
- [-Parameter <IKeyCredentialsUpdateParameters>] [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+Update-AzApplicationKeyCredentials -InputObject <IResourcesIdentity>
+ -Parameter <IKeyCredentialsUpdateParameters> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### UpdateExpanded
 ```
-Update-AzApplicationKeyCredentials -ObjectId <String> -TenantId <String> -Value <IKeyCredential[]> [-PassThru]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzApplicationKeyCredentials -ObjectId <String> -TenantId <String> -Value <IKeyCredential[]>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Update-AzApplicationKeyCredentials -ObjectId <String> -TenantId <String>
+ -Parameter <IKeyCredentialsUpdateParameters> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzApplicationKeyCredentials -InputObject <IResourcesIdentity> -Value <IKeyCredential[]> [-PassThru]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzApplicationKeyCredentials -InputObject <IResourcesIdentity>
- [-Parameter <IKeyCredentialsUpdateParameters>] [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzApplicationKeyCredentials -InputObject <IResourcesIdentity> -Value <IKeyCredential[]>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,7 +84,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
+Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -100,7 +100,7 @@ Application object ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded, Update
 Aliases:
 
 Required: True
@@ -117,10 +117,10 @@ To construct, see NOTES section for PARAMETER properties and create a hash table
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IKeyCredentialsUpdateParameters
-Parameter Sets: Update, UpdateViaIdentity
+Parameter Sets: UpdateViaIdentity, Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -129,7 +129,7 @@ Dynamic: False
 ```
 
 ### -PassThru
-When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -149,7 +149,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded, Update
 Aliases:
 
 Required: True

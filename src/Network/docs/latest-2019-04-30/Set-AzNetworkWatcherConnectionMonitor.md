@@ -12,20 +12,20 @@ Create or update a connection monitor.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzNetworkWatcherConnectionMonitor -Name <String> -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-ConnectionMonitor <IConnectionMonitor>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzNetworkWatcherConnectionMonitor -Name <String> -NetworkWatcherName <String> -ResourceGroupName <String>
  -SubscriptionId <String> -SourceResourceId <String> [-AutoStart] [-DestinationAddress <String>]
  [-DestinationPort <Int32>] [-DestinationResourceId <String>] [-Location <String>]
  [-MonitoringIntervalInSeconds <Int32>] [-SourcePort <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzNetworkWatcherConnectionMonitor -Name <String> -NetworkWatcherName <String> -ResourceGroupName <String>
+ -SubscriptionId <String> -ConnectionMonitor <IConnectionMonitor> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -94,7 +94,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IConnectionM
 Parameter Sets: Update
 Aliases: NetworkWatcher
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -385,7 +385,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[DestinationPort <Int32?>]`: The destination port used by connection monitor.
   - `[DestinationResourceId <String>]`: The ID of the resource used as the destination by connection monitor.
   - `[Location <String>]`: Connection monitor location.
-  - `[MonitoringIntervalInSecond <Int32?>]`: Monitoring interval in seconds.
+  - `[MonitoringIntervalInSeconds <Int32?>]`: Monitoring interval in seconds.
   - `[SourcePort <Int32?>]`: The source port used by connection monitor.
   - `[Tag <IConnectionMonitorTags>]`: Connection monitor tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.

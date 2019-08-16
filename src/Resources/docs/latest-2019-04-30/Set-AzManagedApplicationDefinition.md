@@ -14,7 +14,7 @@ Creates a new managed application definition.
 
 ### Update1 (Default)
 ```
-Set-AzManagedApplicationDefinition -Id <String> [-Parameter <IApplicationDefinition>]
+Set-AzManagedApplicationDefinition -Id <String> -Parameter <IApplicationDefinition>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -34,7 +34,7 @@ Set-AzManagedApplicationDefinition -Name <String> -ResourceGroupName <String> -S
 ### Update
 ```
 Set-AzManagedApplicationDefinition -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <IApplicationDefinition>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ -Parameter <IApplicationDefinition> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -363,7 +363,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20170901.IApplicati
 Parameter Sets: Update1, Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

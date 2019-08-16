@@ -12,16 +12,16 @@ Creates or updates a resource group.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzResourceGroup -SubscriptionId <String> -Name <String> [-Parameter <IResourceGroup>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzResourceGroup -SubscriptionId <String> -Name <String> -Location <String> [-ManagedBy <String>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzResourceGroup -SubscriptionId <String> -Name <String> -Parameter <IResourceGroup>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateById
@@ -127,7 +127,7 @@ Can include alphanumeric, underscore, parentheses, hyphen, period (except at end
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded, Update
 Aliases: ResourceGroupName
 
 Required: True
@@ -147,7 +147,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IResourceG
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

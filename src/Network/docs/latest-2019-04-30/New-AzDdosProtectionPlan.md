@@ -12,18 +12,18 @@ Creates or updates a DDoS protection plan.
 
 ## SYNTAX
 
-### Create (Default)
-```
-New-AzDdosProtectionPlan -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-DdosProtectionPlan <IDdosProtectionPlan>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded
+### CreateExpanded (Default)
 ```
 New-AzDdosProtectionPlan -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-Location <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
+```
+
+### Create
+```
+New-AzDdosProtectionPlan -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -DdosProtectionPlan <IDdosProtectionPlan> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -34,7 +34,7 @@ New-AzDdosProtectionPlan -InputObject <INetworkIdentity> [-Location <String>] [-
 
 ### CreateViaIdentity
 ```
-New-AzDdosProtectionPlan -InputObject <INetworkIdentity> [-DdosProtectionPlan <IDdosProtectionPlan>]
+New-AzDdosProtectionPlan -InputObject <INetworkIdentity> -DdosProtectionPlan <IDdosProtectionPlan>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -88,7 +88,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IDdosProtect
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -149,7 +149,7 @@ The name of the DDoS protection plan.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: DdosProtectionPlanName
 
 Required: True
@@ -181,7 +181,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -198,7 +198,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True

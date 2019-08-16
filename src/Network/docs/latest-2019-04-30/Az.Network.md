@@ -182,7 +182,7 @@ Gets a connection monitor by name.
 ### [Get-AzNetworkWatcherConnectionMonitorState](Get-AzNetworkWatcherConnectionMonitorState.md)
 Query a snapshot of the most recent connection states.
 
-### [Get-AzNetworkWatcherFlowLogStatus](Get-AzNetworkWatcherFlowLogStatus.md)
+### [Get-AzNetworkWatcherFlowLogInformation](Get-AzNetworkWatcherFlowLogInformation.md)
 Queries status of flow log and traffic analytics (optional) on a specified resource.
 
 ### [Get-AzNetworkWatcherNetworkConfigurationDiagnostic](Get-AzNetworkWatcherNetworkConfigurationDiagnostic.md)
@@ -203,7 +203,7 @@ Gets the relative latency score for internet service providers from a specified 
 ### [Get-AzNetworkWatcherTopology](Get-AzNetworkWatcherTopology.md)
 Gets the current network topology by resource group.
 
-### [Get-AzNetworkWatcherTroubleshootingResult](Get-AzNetworkWatcherTroubleshootingResult.md)
+### [Get-AzNetworkWatcherTroubleshooting](Get-AzNetworkWatcherTroubleshooting.md)
 Get the last completed troubleshooting result on a specified resource
 
 ### [Get-AzNetworkWatcherVMSecurityRule](Get-AzNetworkWatcherVMSecurityRule.md)
@@ -287,7 +287,7 @@ This operation retrieves a list of routes the virtual network gateway has learne
 ### [Get-AzVnetGatewaySupportedVpnDevice](Get-AzVnetGatewaySupportedVpnDevice.md)
 Gets a xml format representation for supported vpn devices.
 
-### [Get-AzVnetGatewayVpnClientIPsecParameter](Get-AzVnetGatewayVpnClientIPsecParameter.md)
+### [Get-AzVnetGatewayVpnClientIPsecPolicy](Get-AzVnetGatewayVpnClientIPsecPolicy.md)
 The Get VpnclientIpsecParameters operation retrieves information about the vpnclient ipsec policy for P2S client of virtual network gateway in the specified resource group through Network resource provider.
 
 ### [Get-AzVnetGatewayVpnDeviceConfigurationScript](Get-AzVnetGatewayVpnDeviceConfigurationScript.md)
@@ -710,7 +710,7 @@ Creates or updates a network watcher in the specified resource group.
 ### [Set-AzNetworkWatcherConnectionMonitor](Set-AzNetworkWatcherConnectionMonitor.md)
 Create or update a connection monitor.
 
-### [Set-AzNetworkWatcherFlowLogConfiguration](Set-AzNetworkWatcherFlowLogConfiguration.md)
+### [Set-AzNetworkWatcherFlowLogInformation](Set-AzNetworkWatcherFlowLogInformation.md)
 Configures flow log  and traffic analytics (optional) on a specified resource.
 
 ### [Set-AzNsg](Set-AzNsg.md)
@@ -764,7 +764,7 @@ Creates or updates a virtual network gateway connection in the specified resourc
 ### [Set-AzVnetGatewayConnectionSharedKey](Set-AzVnetGatewayConnectionSharedKey.md)
 The Put VirtualNetworkGatewayConnectionSharedKey operation sets the virtual network gateway connection shared key for passed virtual network gateway connection in the specified resource group through Network resource provider.
 
-### [Set-AzVnetGatewayVpnClientIPsecParameter](Set-AzVnetGatewayVpnClientIPsecParameter.md)
+### [Set-AzVnetGatewayVpnClientIPsecPolicy](Set-AzVnetGatewayVpnClientIPsecPolicy.md)
 The Set VpnclientIpsecParameters operation sets the vpnclient ipsec policy for P2S client of virtual network gateway in the specified resource group through Network resource provider.
 
 ### [Set-AzVnetPeering](Set-AzVnetPeering.md)

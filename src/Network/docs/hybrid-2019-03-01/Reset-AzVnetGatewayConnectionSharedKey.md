@@ -12,17 +12,17 @@ The VirtualNetworkGatewayConnectionResetSharedKey operation resets the virtual n
 
 ## SYNTAX
 
-### Reset1 (Default)
-```
-Reset-AzVnetGatewayConnectionSharedKey -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-ConnectionSharedKey <IConnectionResetSharedKey>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### ResetExpanded1
+### ResetExpanded1 (Default)
 ```
 Reset-AzVnetGatewayConnectionSharedKey -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  -KeyLength <Int32> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Reset1
+```
+Reset-AzVnetGatewayConnectionSharedKey -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -ConnectionSharedKey <IConnectionResetSharedKey> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### ResetViaIdentityExpanded1
@@ -34,7 +34,7 @@ Reset-AzVnetGatewayConnectionSharedKey -InputObject <INetworkIdentity> -KeyLengt
 ### ResetViaIdentity1
 ```
 Reset-AzVnetGatewayConnectionSharedKey -InputObject <INetworkIdentity>
- [-ConnectionSharedKey <IConnectionResetSharedKey>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ -ConnectionSharedKey <IConnectionResetSharedKey> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -88,7 +88,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IConnectionR
 Parameter Sets: Reset1, ResetViaIdentity1
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -149,7 +149,7 @@ The virtual network gateway connection reset shared key Name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Reset1, ResetExpanded1
+Parameter Sets: ResetExpanded1, Reset1
 Aliases: VirtualNetworkGatewayConnectionName, VnetGatewayConnectionName
 
 Required: True
@@ -181,7 +181,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Reset1, ResetExpanded1
+Parameter Sets: ResetExpanded1, Reset1
 Aliases:
 
 Required: True
@@ -198,7 +198,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Reset1, ResetExpanded1
+Parameter Sets: ResetExpanded1, Reset1
 Aliases:
 
 Required: True

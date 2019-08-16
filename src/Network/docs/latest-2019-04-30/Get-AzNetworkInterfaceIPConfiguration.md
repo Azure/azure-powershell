@@ -20,14 +20,14 @@ Get-AzNetworkInterfaceIPConfiguration -NetworkInterfaceName <String> -ResourceGr
 
 ### GetVmss
 ```
-Get-AzNetworkInterfaceIPConfiguration -IPConfigurationName <String> -NetworkInterfaceName <String>
+Get-AzNetworkInterfaceIPConfiguration -Name <String> -NetworkInterfaceName <String>
  -ResourceGroupName <String> -SubscriptionId <String[]> -VMIndex <String> -VmssName <String>
  [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzNetworkInterfaceIPConfiguration -IPConfigurationName <String> -NetworkInterfaceName <String>
+Get-AzNetworkInterfaceIPConfiguration -Name <String> -NetworkInterfaceName <String>
  -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -117,7 +117,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IPConfigurationName
+### -Name
 The name of the ip configuration name.
 
 ```yaml

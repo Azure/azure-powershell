@@ -12,17 +12,17 @@ Creates or updates a network watcher in the specified resource group.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzNetworkWatcher -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-NetworkWatcher <INetworkWatcher>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzNetworkWatcher -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-Etag <String>]
  [-Id <String>] [-Location <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzNetworkWatcher -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -NetworkWatcher <INetworkWatcher> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -139,7 +139,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkWatc
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

@@ -12,20 +12,20 @@ Create or update a connection monitor.
 
 ## SYNTAX
 
-### Create (Default)
-```
-New-AzNetworkWatcherConnectionMonitor -Name <String> -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-ConnectionMonitor <IConnectionMonitor>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded
+### CreateExpanded (Default)
 ```
 New-AzNetworkWatcherConnectionMonitor -Name <String> -NetworkWatcherName <String> -ResourceGroupName <String>
  -SubscriptionId <String> -SourceResourceId <String> [-AutoStart] [-DestinationAddress <String>]
  [-DestinationPort <Int32>] [-DestinationResourceId <String>] [-Location <String>]
  [-MonitoringIntervalInSeconds <Int32>] [-SourcePort <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create
+```
+New-AzNetworkWatcherConnectionMonitor -Name <String> -NetworkWatcherName <String> -ResourceGroupName <String>
+ -SubscriptionId <String> -ConnectionMonitor <IConnectionMonitor> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -38,9 +38,8 @@ New-AzNetworkWatcherConnectionMonitor -InputObject <INetworkIdentity> -SourceRes
 
 ### CreateViaIdentity
 ```
-New-AzNetworkWatcherConnectionMonitor -InputObject <INetworkIdentity>
- [-ConnectionMonitor <IConnectionMonitor>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzNetworkWatcherConnectionMonitor -InputObject <INetworkIdentity> -ConnectionMonitor <IConnectionMonitor>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -109,7 +108,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IConnectionM
 Parameter Sets: Create, CreateViaIdentity
 Aliases: NetworkWatcher
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -234,7 +233,7 @@ The name of the connection monitor.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: ConnectionMonitorName
 
 Required: True
@@ -250,7 +249,7 @@ The name of the Network Watcher resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -282,7 +281,7 @@ The name of the resource group containing Network Watcher.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: ConfigureOnly
 
 Required: True
@@ -331,7 +330,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -418,7 +417,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[DestinationPort <Int32?>]`: The destination port used by connection monitor.
   - `[DestinationResourceId <String>]`: The ID of the resource used as the destination by connection monitor.
   - `[Location <String>]`: Connection monitor location.
-  - `[MonitoringIntervalInSecond <Int32?>]`: Monitoring interval in seconds.
+  - `[MonitoringIntervalInSeconds <Int32?>]`: Monitoring interval in seconds.
   - `[SourcePort <Int32?>]`: The source port used by connection monitor.
   - `[Tag <IConnectionMonitorTags>]`: Connection monitor tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.

@@ -20,7 +20,7 @@ Get-AzNetworkInterface -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [
 ### Get1
 ```
 Get-AzNetworkInterface -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- [-ExpandResource <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List3
@@ -31,7 +31,7 @@ Get-AzNetworkInterface -ResourceGroupName <String> -SubscriptionId <String[]> [-
 
 ### GetViaIdentity1
 ```
-Get-AzNetworkInterface -InputObject <INetworkIdentity> [-ExpandResource <String>] [-DefaultProfile <PSObject>]
+Get-AzNetworkInterface -InputObject <INetworkIdentity> [-Expand <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -76,13 +76,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ExpandResource
+### -Expand
 Expands referenced resources.
 
 ```yaml
 Type: System.String
 Parameter Sets: Get1, GetViaIdentity1
-Aliases:
+Aliases: ExpandResource
 
 Required: False
 Position: Named

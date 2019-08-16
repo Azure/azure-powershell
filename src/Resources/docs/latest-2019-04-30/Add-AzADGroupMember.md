@@ -12,10 +12,10 @@ Add a member to a group.
 
 ## SYNTAX
 
-### Add (Default)
+### AddExpanded (Default)
 ```
-Add-AzADGroupMember -GroupObjectId <String> -TenantId <String> [-Parameter <IGroupAddMemberParameters>]
- [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Add-AzADGroupMember -GroupObjectId <String> -TenantId <String> -Url <String> [-PassThru]
+ [-AdditionalProperties <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### AddMemberIdToGroupId
@@ -30,10 +30,10 @@ Add-AzADGroupMember -GroupObjectId <String> -TenantId <String> -MemberUserPrinci
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### AddExpanded
+### Add
 ```
-Add-AzADGroupMember -GroupObjectId <String> -TenantId <String> -Url <String> [-PassThru]
- [-AdditionalProperties <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Add-AzADGroupMember -GroupObjectId <String> -TenantId <String> -Parameter <IGroupAddMemberParameters>
+ [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### AddMemberIdToGroupObject
@@ -68,7 +68,7 @@ Add-AzADGroupMember -InputObject <IResourcesIdentity> -Url <String> [-PassThru]
 
 ### AddViaIdentity
 ```
-Add-AzADGroupMember -InputObject <IResourcesIdentity> [-Parameter <IGroupAddMemberParameters>] [-PassThru]
+Add-AzADGroupMember -InputObject <IResourcesIdentity> -Parameter <IGroupAddMemberParameters> [-PassThru]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -166,7 +166,7 @@ The object ID of the group to which to add the member.
 
 ```yaml
 Type: System.String
-Parameter Sets: Add, AddMemberIdToGroupId, AddMemberUpnToGroupId, AddExpanded
+Parameter Sets: AddExpanded, AddMemberIdToGroupId, AddMemberUpnToGroupId, Add
 Aliases:
 
 Required: True
@@ -234,7 +234,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IGroupAddMemberP
 Parameter Sets: Add, AddViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -243,7 +243,7 @@ Dynamic: False
 ```
 
 ### -PassThru
-When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -263,7 +263,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Add, AddMemberIdToGroupId, AddMemberUpnToGroupId, AddExpanded, AddMemberIdToGroupObject, AddMemberUpnToGroupObject, AddMemberIdToGroupDisplayName, AddMemberUpnToGroupDisplayName
+Parameter Sets: AddExpanded, AddMemberIdToGroupId, AddMemberUpnToGroupId, Add, AddMemberIdToGroupObject, AddMemberUpnToGroupObject, AddMemberIdToGroupDisplayName, AddMemberUpnToGroupDisplayName
 Aliases:
 
 Required: True
