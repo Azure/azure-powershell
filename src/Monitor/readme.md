@@ -143,6 +143,11 @@ directive:
     set:
       parameter-name: Name
   - where:
+      subject: AlertRuleIncident
+      parameter-name: RuleName
+    set:
+      parameter-name: Name
+  - where:
       verb: New|Update
       subject: AlertRule
     hide: true
@@ -162,11 +167,7 @@ directive:
     set:
       parameter-name: RetentionPolicyInDays
   - where:
-      verb: Set
-      subject: LogProfile
-    hide: true
-  - where:
-      verb: New
+      verb: Set|New
       subject: LogProfile
     hide: true
   # Autoscale
@@ -185,10 +186,6 @@ directive:
       parameter-name: TargetResourceUri
     set:
       parameter-name: TargetResourceId
-  - where:
-      verb: Set
-      subject: AutoscaleSetting
-    hide: true
   # Fix Help Generation Bug
   - where:
       verb: Update
@@ -245,14 +242,14 @@ directive:
     hide: true
   # DiagnosticSetting
   - where:
-      subject: DiagnosticSetting
+      subject: ^DiagnosticSettings(.*)
+    set:
+      subject: DiagnosticSetting$1
+  - where:
+      subject: ^DiagnosticSetting(Category)?$
       parameter-name: ResourceUri
     set:
       parameter-name: ResourceId
-  - where:
-      verb: New
-      subject: DiagnosticSetting
-    hide: true
 ```
 
 ``` yaml

@@ -41,7 +41,7 @@ Gets an autoscale setting
 ### [Get-AzDiagnosticSetting](Get-AzDiagnosticSetting.md)
 Gets the active diagnostic settings for the specified resource.
 
-### [Get-AzDiagnosticSettingsCategory](Get-AzDiagnosticSettingsCategory.md)
+### [Get-AzDiagnosticSettingCategory](Get-AzDiagnosticSettingCategory.md)
 Gets the diagnostic settings category for the specified resource.
 
 ### [Get-AzEventCategory](Get-AzEventCategory.md)
@@ -97,6 +97,12 @@ Creates or updates an alert rule.
 ### [New-AzAutoscaleSetting](New-AzAutoscaleSetting.md)
 Creates or updates an autoscale setting.
 
+### [New-AzDiagnosticSetting](New-AzDiagnosticSetting.md)
+Creates or updates diagnostic settings for the specified resource.
+
+### [New-AzLogProfile](New-AzLogProfile.md)
+Create or update a log profile in Azure Monitoring REST API.
+
 ### [New-AzMetricAlert](New-AzMetricAlert.md)
 Create or update an metric alert definition.
 
@@ -132,6 +138,9 @@ Create a new action group or update an existing one.
 
 ### [Set-AzActivityLogAlert](Set-AzActivityLogAlert.md)
 Create a new activity log alert or update an existing one.
+
+### [Set-AzAutoscaleSetting](Set-AzAutoscaleSetting.md)
+Creates or updates an autoscale setting.
 
 ### [Set-AzDiagnosticSetting](Set-AzDiagnosticSetting.md)
 Creates or updates diagnostic settings for the specified resource.

@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Monitor
-online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/get-azdiagnosticsettingscategory
+online version: https://docs.microsoft.com/en-us/powershell/module/az.monitor/get-azdiagnosticsettingcategory
 schema: 2.0.0
 ---
 
-# Get-AzDiagnosticSettingsCategory
+# Get-AzDiagnosticSettingCategory
 
 ## SYNOPSIS
 Gets the diagnostic settings category for the specified resource.
@@ -14,18 +14,18 @@ Gets the diagnostic settings category for the specified resource.
 
 ### List (Default)
 ```
-Get-AzDiagnosticSettingsCategory -ResourceUri <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDiagnosticSettingCategory -ResourceId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzDiagnosticSettingsCategory -Name <String> -ResourceUri <String> [-DefaultProfile <PSObject>]
+Get-AzDiagnosticSettingCategory -Name <String> -ResourceId <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzDiagnosticSettingsCategory -InputObject <IMonitorIdentity> [-DefaultProfile <PSObject>]
+Get-AzDiagnosticSettingCategory -InputObject <IMonitorIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ResourceUri
+### -ResourceId
 The identifier of the resource.
 
 ```yaml

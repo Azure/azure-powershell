@@ -1,7 +1,6 @@
-function Set-AzLogProfile {
-[Alias('Add-AzLogProfile')]
+function New-AzLogProfile {
 [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20160301.ILogProfileResource')]
-[CmdletBinding(DefaultParameterSetName="UpdateExpanded", PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Profile('latest-2019-04-30')]
 [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Description('Create or update a log profile in Azure Monitoring REST API.')]
 param(
@@ -40,6 +39,7 @@ param(
     [System.String[]]
     # List of regions for which Activity Log events should be stored or streamed. It is a comma separated list of valid ARM locations including the 'global' location.
     ${PropertiesLocations},
+
 
     [Parameter(HelpMessage='the number of days for the retention in days. A value of 0 will retain the events indefinitely.')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Body')]
@@ -125,7 +125,7 @@ process {
         $null = $PSBoundParameters.Add("RetentionPolicyEnabled", $false)
     }
 
-    Az.Monitor.internal\Set-AzLogProfile @PSBoundParameters
+    Az.Monitor.internal\New-AzLogProfile @PSBoundParameters
 }
 
 }

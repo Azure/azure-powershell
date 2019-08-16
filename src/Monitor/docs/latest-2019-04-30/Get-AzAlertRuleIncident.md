@@ -14,13 +14,13 @@ Gets an incident associated to an alert rule
 
 ### List (Default)
 ```
-Get-AzAlertRuleIncident -ResourceGroupName <String> -RuleName <String> -SubscriptionId <String[]>
+Get-AzAlertRuleIncident -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzAlertRuleIncident -IncidentName <String> -ResourceGroupName <String> -RuleName <String>
+Get-AzAlertRuleIncident -IncidentName <String> -Name <String> -ResourceGroupName <String>
  -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -102,8 +102,8 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
+### -Name
+The name of the rule.
 
 ```yaml
 Type: System.String
@@ -118,8 +118,8 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -RuleName
-The name of the rule.
+### -ResourceGroupName
+The name of the resource group.
 
 ```yaml
 Type: System.String

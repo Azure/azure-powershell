@@ -20,6 +20,9 @@ Get the list of available event categories supported in the Activity Logs Servic
 ### [Get-AzMetric](Get-AzMetric.md)
 **Lists the metric values for a resource**.
 
+### [New-AzDiagnosticSetting](New-AzDiagnosticSetting.md)
+Creates or updates diagnostic settings for the specified resource.
+
 ### [Remove-AzDiagnosticSetting](Remove-AzDiagnosticSetting.md)
 Deletes existing diagnostic settings for the specified resource.
 
