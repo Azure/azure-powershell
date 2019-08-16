@@ -21,15 +21,18 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     public partial class PSPrivateLinkServiceConnection : PSChildResource
     {
-        [JsonProperty(Order = 1)]
+
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string ProvisioningState { get; set; }
+
         [Ps1Xml(Target = ViewControl.Table)]
         public string PrivateLinkServiceId { get; set; }
-        [JsonProperty(Order = 1)]
+
         public List<string> GroupIds { get; set; }
-        [JsonProperty(Order = 1)]
+
         [Ps1Xml(Target = ViewControl.Table)]
         public string RequestMessage { get; set; }
-        [JsonProperty(Order = 1)]
+
         public PSPrivateLinkServiceConnectionState PrivateLinkServiceConnectionState { get; set; }
 
         [JsonIgnore]
