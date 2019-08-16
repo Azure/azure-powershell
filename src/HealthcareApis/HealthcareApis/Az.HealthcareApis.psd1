@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.0.0'
+ModuleVersion = '0.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -68,7 +68,7 @@ RequiredAssemblies = '.\Microsoft.Azure.Management.HealthcareApis.dll'
 #FormatsToProcess = '.\HealthcareApis.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('.\Microsoft.Azure.PowerShell.Cmdlets.HealthcareApisService.dll')
+NestedModules = @('.\Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @()
@@ -110,7 +110,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Introduced powershell cmdlets for HealthcareApisService'
+        ReleaseNotes = 'Introduced powershell cmdlets for HealthcareApis service'
 
         # Prerelease string of this module
         # Prerelease = ''

@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.HealthcareApisService.Models;
+using Microsoft.Azure.Commands.HealthcareApis.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Management.HealthcareApis;
@@ -24,7 +24,7 @@ using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.HealthcareApisService.Common
+namespace Microsoft.Azure.Commands.HealthcareApis.Common
 {
     public abstract class HealthcareApisBaseCmdlet : AzureRMCmdlet
     {
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.HealthcareApisService.Common
         {
             if (healthcareApisAccount != null)
             {
-                WriteObject(HealthcareApisService.Models.PSHealthcareApisService.Create(healthcareApisAccount));
+                WriteObject(PSHealthcareApisService.Create(healthcareApisAccount));
             }
         }
 
