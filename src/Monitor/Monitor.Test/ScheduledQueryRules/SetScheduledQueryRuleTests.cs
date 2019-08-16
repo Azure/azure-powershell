@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScheduledQueryRules
 
             ScheduledQueryRuleSchedule schedule = new ScheduledQueryRuleSchedule(new Schedule(5, 5));          
 
-            ScheduledQueryRuleSource source = new ScheduledQueryRuleSource(new Source("union *", "dataSourceId", new string[]{ "authResource1", "authResource2" }, "ResultCount"));
+            ScheduledQueryRuleSource source = new ScheduledQueryRuleSource(new Source( query: "union *",  dataSourceId:"dataSourceId", authorizedResources: new string[]{ "authResource1", "authResource2" }, queryType:"ResultCount"));
 
             //testing update of "description" field
             cmdlet = new SetScheduledQueryRuleCommand

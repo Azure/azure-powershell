@@ -55,6 +55,30 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActionGroups
             {
                 Assert.Equal("foo@email.com", r.EmailAddress);
                 Assert.Equal("email1", r.Name);
+                // when not explicitly set . value will be false by default
+                Assert.False(r.UseCommonAlertSchema);
+                return true;
+            };
+
+            this.commandRuntimeMock.Verify(o => o.WriteObject(It.Is<PSEmailReceiver>(r => verify(r))), Times.Once);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewAzureRmReceiverCommandEmailParametersWithExplicitUseCommandAlertSchemaParameterProcessing()
+        {
+            Cmdlet.SetParameterSet("NewEmailReceiver");
+            Cmdlet.EmailReceiver = true;
+            Cmdlet.Name = "email1";
+            Cmdlet.EmailAddress = "foo@email.com";
+            Cmdlet.UseCommonAlertSchema = true;
+            Cmdlet.ExecuteCmdlet();
+
+            Func<PSEmailReceiver, bool> verify = r =>
+            {
+                Assert.Equal("foo@email.com", r.EmailAddress);
+                Assert.Equal("email1", r.Name);
+                Assert.True(r.UseCommonAlertSchema);
                 return true;
             };
 

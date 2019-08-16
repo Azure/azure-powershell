@@ -199,8 +199,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9774/providers/microsoft.insights/actionGroups/ps5768?api-version=2018-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODA0MzAwMTgtMjRlZS00YjI4LWE3YmQtZmIyM2I1YTIyMWQ2L3Jlc291cmNlR3JvdXBzL3BzOTc3NC9wcm92aWRlcnMvbWljcm9zb2Z0Lmluc2lnaHRzL2FjdGlvbkdyb3Vwcy9wczU3Njg/YXBpLXZlcnNpb249MjAxOC0wMy0wMQ==",
+      "RequestUri": "/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9774/providers/microsoft.insights/actionGroups/ps5768?api-version=2019-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODA0MzAwMTgtMjRlZS00YjI4LWE3YmQtZmIyM2I1YTIyMWQ2L3Jlc291cmNlR3JvdXBzL3BzOTc3NC9wcm92aWRlcnMvbWljcm9zb2Z0Lmluc2lnaHRzL2FjdGlvbkdyb3Vwcy9wczU3Njg/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"groupShortName\": \"ASTG\",\r\n    \"enabled\": true,\r\n    \"emailReceivers\": [\r\n      {\r\n        \"name\": \"user1\",\r\n        \"emailAddress\": \"user1@example.com\"\r\n      }\r\n    ],\r\n    \"smsReceivers\": [],\r\n    \"webhookReceivers\": []\r\n  },\r\n  \"location\": \"Global\"\r\n}",
       "RequestHeaders": {
@@ -409,8 +409,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9774/providers/microsoft.insights/actionGroups/ps5768?api-version=2018-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODA0MzAwMTgtMjRlZS00YjI4LWE3YmQtZmIyM2I1YTIyMWQ2L3Jlc291cmNlR3JvdXBzL3BzOTc3NC9wcm92aWRlcnMvbWljcm9zb2Z0Lmluc2lnaHRzL2FjdGlvbkdyb3Vwcy9wczU3Njg/YXBpLXZlcnNpb249MjAxOC0wMy0wMQ==",
+      "RequestUri": "/subscriptions/80430018-24ee-4b28-a7bd-fb23b5a221d6/resourceGroups/ps9774/providers/microsoft.insights/actionGroups/ps5768?api-version=2019-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODA0MzAwMTgtMjRlZS00YjI4LWE3YmQtZmIyM2I1YTIyMWQ2L3Jlc291cmNlR3JvdXBzL3BzOTc3NC9wcm92aWRlcnMvbWljcm9zb2Z0Lmluc2lnaHRzL2FjdGlvbkdyb3Vwcy9wczU3Njg/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
