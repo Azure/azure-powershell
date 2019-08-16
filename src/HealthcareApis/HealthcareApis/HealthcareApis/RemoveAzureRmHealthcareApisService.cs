@@ -12,14 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.HealthcareApisService.Properties;
-using Microsoft.Azure.Commands.HealthcareApisService.Common;
-using Microsoft.Azure.Commands.HealthcareApisService.Models;
+using Microsoft.Azure.Commands.HealthcareApis.Properties;
+using Microsoft.Azure.Commands.HealthcareApis.Common;
+using Microsoft.Azure.Commands.HealthcareApis.Models;
 using Microsoft.Azure.Management.HealthcareApis;
 using System.Globalization;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
-namespace Microsoft.Azure.Commands.HealthcareApisService.Commands
+namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 {
     [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HealthcareApisService", DefaultParameterSetName = ServiceNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureRmHealthcareApisService : HealthcareApisBaseCmdlet
@@ -44,6 +45,7 @@ namespace Microsoft.Azure.Commands.HealthcareApisService.Commands
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "Resource Group Name.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -59,6 +61,7 @@ namespace Microsoft.Azure.Commands.HealthcareApisService.Commands
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = ResourceIdParameterSet,
             HelpMessage = "HealthcareApis Service ResourceId.")]
+        [ResourceIdCompleter("Microsoft.HealthcareApis/services")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 

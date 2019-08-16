@@ -14,7 +14,7 @@
 
 using Microsoft.Azure.Management.HealthcareApis.Models;
 
-namespace Microsoft.Azure.Commands.HealthcareApisService.Models
+namespace Microsoft.Azure.Commands.HealthcareApis.Models
 {
     public class PSHealthcareApisFhirServiceAccessPolicyEntry
     {

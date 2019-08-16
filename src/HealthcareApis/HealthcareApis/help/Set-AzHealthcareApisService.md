@@ -1,6 +1,6 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApisService.dll-Help.xml
-Module Name: Az.HealthcareApisService
+external help file: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.dll-Help.xml
+Module Name: Az.HealthcareApis
 online version: https://docs.microsoft.com/en-us/powershell/module/az.healthcareapisservice/set-azhealthcareapisservice
 schema: 2.0.0
 ---
@@ -60,6 +60,7 @@ ResourceID
 ------------------
 <MyResourceID
 ```
+
 Updates the existing healthcareapis service named MyService in the resource group MyResourceGroup  with the cosmosdb OfferThroughput = 500.
 
 ## PARAMETERS
@@ -68,7 +69,7 @@ Updates the existing healthcareapis service named MyService in the resource grou
 List of Access Policy Object IDs.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: ServiceNameParameterSet, ResourceIdParameterSet
 Aliases:
 
@@ -83,7 +84,7 @@ Accept wildcard characters: False
 HealthcareApis FhirService AllowCorsCredential.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ServiceNameParameterSet, ResourceIdParameterSet
 Aliases:
 
@@ -98,7 +99,7 @@ Accept wildcard characters: False
 Run cmdlet as a job in the background.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -113,7 +114,7 @@ Accept wildcard characters: False
 HealthcareApis FhirService Audience.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ServiceNameParameterSet, ResourceIdParameterSet
 Aliases:
 
@@ -128,24 +129,9 @@ Accept wildcard characters: False
 HealthcareApis FhirService Authority.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ServiceNameParameterSet, ResourceIdParameterSet
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named
@@ -158,7 +144,7 @@ Accept wildcard characters: False
 HealthcareApis FhirService List of Cors Headers.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: ServiceNameParameterSet, ResourceIdParameterSet
 Aliases:
 
@@ -173,7 +159,7 @@ Accept wildcard characters: False
 HealthcareApis FhirService Cors Max Age.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: ServiceNameParameterSet, ResourceIdParameterSet
 Aliases:
 
@@ -188,7 +174,7 @@ Accept wildcard characters: False
 HealthcareApis FhirService List of Cors Methods.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: ServiceNameParameterSet, ResourceIdParameterSet
 Aliases:
 
@@ -203,7 +189,7 @@ Accept wildcard characters: False
 HealthcareApis FhirService List of Cors Origins.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: ServiceNameParameterSet, ResourceIdParameterSet
 Aliases:
 
@@ -218,7 +204,7 @@ Accept wildcard characters: False
 HealthcareApis FhirService CosmosOfferThroughput.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: ServiceNameParameterSet, ResourceIdParameterSet
 Aliases:
 
@@ -233,7 +219,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -248,7 +234,7 @@ Accept wildcard characters: False
 HealthcareApis FhirService EnableSmartProxy.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ServiceNameParameterSet, ResourceIdParameterSet
 Aliases:
 
@@ -263,7 +249,7 @@ Accept wildcard characters: False
 HealthcareApis fhir service piped from Get-AzHealthcareApisFhirService.
 
 ```yaml
-Type: PSHealthcareApisService
+Type: Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService
 Parameter Sets: InputObjectParameterSet
 Aliases:
 
@@ -278,7 +264,7 @@ Accept wildcard characters: False
 HealthcareApis Service Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ServiceNameParameterSet
 Aliases:
 
@@ -293,7 +279,7 @@ Accept wildcard characters: False
 HealthcareApis Service Resource Group Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ServiceNameParameterSet
 Aliases:
 
@@ -308,7 +294,7 @@ Accept wildcard characters: False
 HealthcareApis Fhir Service ResourceId.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
 Aliases:
 
@@ -323,9 +309,24 @@ Accept wildcard characters: False
 HealthcareApis Fhir Service Account Tags.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases: Tags
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named
@@ -339,7 +340,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

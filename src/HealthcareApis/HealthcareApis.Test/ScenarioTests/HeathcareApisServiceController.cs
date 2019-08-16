@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.HealthcareApisService.Test.ScenarioTests
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     _helper.RMProfileModule,
                     "AzureRM.Resources.ps1",
-                    _helper.GetRMModulePath(@"AzureRM.HealthcareApisService.psd1"));
+                    _helper.GetRMModulePath(@"AzureRM.HealthcareApis.psd1"));
 
                 try
                 {

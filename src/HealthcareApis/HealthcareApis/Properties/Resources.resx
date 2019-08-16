@@ -123,13 +123,13 @@
   <data name="createService" xml:space="preserve">
     <value>Creating Service</value>
   </data>
-  <data name="RemoveService_ProcessMessage" xml:space="preserve">
-    <value>Removing service</value>
+  <data name="createService_InvalidFhirVersionMessage" xml:space="preserve">
+    <value>Invalid FhirVersion. Valid values are Stu3 and R4.</value>
   </data>
   <data name="createService_InvalidKindMessage" xml:space="preserve">
     <value>Invalid service kind. Valid values are fhir, fhir-Stu3 and fhir-R4.</value>
   </data>
-  <data name="createService_InvalidFhirVersionMessage" xml:space="preserve">
-    <value>Invalid FhirVersion. Valid values are Stu3 and R4.</value>
+  <data name="RemoveService_ProcessMessage" xml:space="preserve">
+    <value>Removing service</value>
   </data>
 </root>

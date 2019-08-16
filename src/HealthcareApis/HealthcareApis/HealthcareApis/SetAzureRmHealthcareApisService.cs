@@ -12,15 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.HealthcareApisService.Common;
-using Microsoft.Azure.Commands.HealthcareApisService.Models;
+using Microsoft.Azure.Commands.HealthcareApis.Common;
+using Microsoft.Azure.Commands.HealthcareApis.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.HealthcareApis;
 using Microsoft.Azure.Management.HealthcareApis.Models;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.HealthcareApisService.Commands
+namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 {
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HealthcareApisService", DefaultParameterSetName = ServiceNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSHealthcareApisService))]
     public class SetAzureRmHealthcareApisService : HealthcareApisBaseCmdlet
@@ -36,6 +37,7 @@ namespace Microsoft.Azure.Commands.HealthcareApisService.Commands
         public string Name { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = ServiceNameParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "HealthcareApis Service Resource Group Name.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -117,6 +119,7 @@ namespace Microsoft.Azure.Commands.HealthcareApisService.Commands
 
 
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ResourceIdParameterSet, HelpMessage = "HealthcareApis Fhir Service ResourceId.")]
+        [ResourceIdCompleter("Microsoft.HealthcareApis/services")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 

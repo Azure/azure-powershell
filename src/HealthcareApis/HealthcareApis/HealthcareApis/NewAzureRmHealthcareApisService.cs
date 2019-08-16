@@ -18,13 +18,12 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Collections;
 using Microsoft.Azure.Management.HealthcareApis.Models;
 using Microsoft.Azure.Management.HealthcareApis;
-using Microsoft.Azure.Commands.HealthcareApisService.Models;
-using Microsoft.Azure.Commands.HealthcareApisService.Common;
-using Microsoft.Azure.Commands.HealthcareApisService.Properties;
+using Microsoft.Azure.Commands.HealthcareApis.Models;
+using Microsoft.Azure.Commands.HealthcareApis.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using System;
+using Microsoft.Azure.Commands.HealthcareApis.Properties;
 
-namespace Microsoft.Azure.Commands.HealthcareApisService.Commands
+namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 {
 
     /// <summary>
@@ -47,6 +46,7 @@ namespace Microsoft.Azure.Commands.HealthcareApisService.Commands
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "Resource Group Name.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

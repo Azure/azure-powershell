@@ -1,6 +1,6 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApisService.dll-Help.xml
-Module Name: Az.HealthcareApisService
+external help file: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.dll-Help.xml
+Module Name: Az.HealthcareApis
 online version: https://docs.microsoft.com/en-us/powershell/module/az.healthcareapisservice/remove-azhealthcareapisservice
 schema: 2.0.0
 ---
@@ -43,19 +43,21 @@ ResourceGroupName Name
 ----------------- ----------- 
 MyResourceGroup   MyService
 ```
-Deletes the existing HealthcareApis service with the provided name within a provided resourcegroup.
+
+Deletes the existing HealthcareApis service with the provided name within a provided resource group.
 
 ### Example 2
 ```powershell
 PS C:\> Remove-AzHealthcareApisFhirService -ResourceId myResourceId
-
 ```
+
 Deletes the existing HealthcareApis service with the provided ResourceId.
 
 ### Example 3
 ```powershell
 PS C:\> Remove-AzHealthcareApisFhirService -InputObject PSHealthcareApisService
 ```
+
 Deletes the provided HealthcareApis service object.
 
 ## PARAMETERS
@@ -64,24 +66,9 @@ Deletes the provided HealthcareApis service object.
 Run cmdlet as a job in the background.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named
@@ -94,7 +81,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -109,7 +96,7 @@ Accept wildcard characters: False
 HealthcareApis service object
 
 ```yaml
-Type: PSHealthcareApisService
+Type: Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService
 Parameter Sets: InputObjectParameterSet
 Aliases:
 
@@ -124,7 +111,7 @@ Accept wildcard characters: False
 HealthcareApis Service Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ServiceNameParameterSet
 Aliases: HealthcareApisName, FhirServiceName
 
@@ -139,7 +126,7 @@ Accept wildcard characters: False
 Resource Group Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ServiceNameParameterSet
 Aliases:
 
@@ -154,7 +141,7 @@ Accept wildcard characters: False
 HealthcareApis Service ResourceId.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
 Aliases:
 
@@ -165,12 +152,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

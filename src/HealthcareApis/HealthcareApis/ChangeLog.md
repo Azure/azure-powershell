@@ -18,7 +18,5 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 1.0.0
 * Added following CRUD operation cmdlets to HealthcareApis service. 
- ** New-AzHealthcareApisService, Set-AzHealthcareApisService, Get-AzHealthcareApisService, Set-AZHealthcareApisService
+ ** New-AzHealthcareApisService, Set-AzHealthcareApisService, Get-AzHealthcareApisService, Remove-AzHealthcareApisService

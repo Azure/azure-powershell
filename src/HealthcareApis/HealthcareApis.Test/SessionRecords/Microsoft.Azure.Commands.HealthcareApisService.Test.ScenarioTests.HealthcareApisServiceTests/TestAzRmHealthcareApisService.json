@@ -1846,8 +1846,9 @@
     }
   ],
   "Names": {
-    "Test-AzRmHealthcareApisFhirService": [
-      "pstestrg9090"
+    "Test-AzRmHealthcareApisService": [
+      "pstestrg9090",
+      "pstestrn9090"
     ]
   },
   "Variables": {

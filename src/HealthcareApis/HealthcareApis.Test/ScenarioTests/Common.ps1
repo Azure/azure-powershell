@@ -18,7 +18,7 @@ Gets valid resource group name
 #>
 function Get-ResourceGroupName
 {
-    return "pstestrg9090"
+    return getAssetName
 }
 
 <#
@@ -27,7 +27,7 @@ Gets valid resource name
 #>
 function Get-ResourceName
 {
-    return "pstestrn9090"
+    return getAssetName
 }
 
 <#

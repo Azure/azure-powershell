@@ -15,7 +15,7 @@
 using Microsoft.Azure.Management.HealthcareApis.Models;
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.HealthcareApisService.Models
+namespace Microsoft.Azure.Commands.HealthcareApis.Models
 {
     public class PSHealthcareApisServiceConfig
     {

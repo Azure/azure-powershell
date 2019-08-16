@@ -12,14 +12,15 @@
 // limitations under the License.
 // 
 
-using Microsoft.Azure.Commands.HealthcareApisService.Common;
-using Microsoft.Azure.Commands.HealthcareApisService.Models;
+using Microsoft.Azure.Commands.HealthcareApis.Common;
+using Microsoft.Azure.Commands.HealthcareApis.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.HealthcareApis;
 using Microsoft.Azure.Management.HealthcareApis.Models;
 using Microsoft.Rest.Azure;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.HealthcareApisService.Commands
+namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 {
 
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HealthcareApisService", DefaultParameterSetName = ListParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSHealthcareApisService))]
@@ -39,6 +40,7 @@ namespace Microsoft.Azure.Commands.HealthcareApisService.Commands
            ParameterSetName = ListParameterSet,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "Resource Group Name.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -59,6 +61,7 @@ namespace Microsoft.Azure.Commands.HealthcareApisService.Commands
            ParameterSetName = ResourceIdParameterSet,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "Resource Id Name.")]
+        [ResourceIdCompleter("Microsoft.HealthcareApis/services")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
