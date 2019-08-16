@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActionGroups
 {
     using System;
     using System.Collections.Generic;
-
+    using Microsoft.Azure.Commands.Insights.OutputClasses;
     using Microsoft.Azure.Management.Monitor.Models;
 
     public class ActionGroupsUtilities
@@ -208,9 +208,9 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActionGroups
                 webhookReceivers: new List<WebhookReceiver>
                 {
                     CreateWebhookReceiver("webhook", "http://test.com"),
-                    CreateWebhookReceiver("webhook1", "http://test.com", true),
-                    CreateWebhookReceiver("webhook2", "http://test.com", true,false),
-                    CreateWebhookReceiver("webhook3", "http://test.com", true,true,"someObjectId","someIdentifierId", "someTenantId" )
+                    CreateWebhookReceiver("webhook1", "http://test1.com", true),
+                    CreateWebhookReceiver("webhook2", "http://test2.com", true,false),
+                    CreateWebhookReceiver("webhook3", "http://test3.com", true,true,"someObjectId","someIdentifierId", "someTenantId" )
                 },
 
                 itsmReceivers: new List<ItsmReceiver>
@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActionGroups
                 armRoleReceivers: new List<ArmRoleReceiver>
                 {
                     CreateArmRoleReceiver("armRole", "someRoleId"),
-                    CreateArmRoleReceiver("armRole1", "someRoleId", true)
+                    CreateArmRoleReceiver("armRole1", "someRoleId1", true)
                 },
                 
                 azureFunctionReceivers: new List<AzureFunctionReceiver>
@@ -234,7 +234,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActionGroups
                 logicAppReceivers: new List<LogicAppReceiver>
                 {
                     CreateLogicAppReceiver("logicAppReceveir","someresourceId","someCallback"),
-                     CreateLogicAppReceiver("logicAppReceveir1","someresourceId","someCallback",true),
+                     CreateLogicAppReceiver("logicAppReceveir1","someresourceId1","someCallback1",true),
                 },
 
                 automationRunbookReceivers: new List<AutomationRunbookReceiver>
