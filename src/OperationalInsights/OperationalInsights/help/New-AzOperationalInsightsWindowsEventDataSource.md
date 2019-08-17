@@ -34,19 +34,25 @@ The **New-AzOperationalInsightsWindowsEventDataSource** cmdlet adds a data sourc
 
 ### Example 1: Create system Windows event data source
 ```
-$EventDataSourceName = 'dummy'
-$EventLogName        = 'system'
+$EventLogNames       = @()
+$EventLogNames      += 'Directory Service'
+$EventLogNames      += 'Microsoft-Windows-EventCollector/Operational'
+$EventLogNames      += 'System'
 $ResourceGroupName   = 'MyResourceGroup'
 $WorkspaceName       = 'MyWorkspaceName'
 
-New-AzOperationalInsightsWindowsEventDataSource `
+$Count = 0
+foreach ($EventLogName in $EventLogNames) {
+    $Count++
+    $null = New-AzOperationalInsightsWindowsEventDataSource `
     -ResourceGroupName $ResourceGroupName `
     -WorkspaceName $WorkspaceName `
-    -Name $EventDataSourceName `
+    -Name "Windows-event-$($Count)" `
     -EventLogName $EventLogName `
     -CollectErrors `
     -CollectWarnings `
     -CollectInformation
+}
 
 Get-AzOperationalInsightsDataSource `
    -ResourceGroupName $ResourceGroupName `
