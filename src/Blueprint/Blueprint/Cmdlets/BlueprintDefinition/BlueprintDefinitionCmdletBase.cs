@@ -68,7 +68,8 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         /// <returns></returns>
         private async Task<string> GetManagementGroupAncestorsAsync(string subscriptionId)
         {
-            var url = string.Format(BlueprintConstants.MgAncestorsRequestUrlTemplate, subscriptionId);
+            var url = string.Format(BlueprintConstants.MgAncestorsRequestUrlTemplate, DefaultContext.Environment.ResourceManagerUrl, subscriptionId);
+
             var httpRequest = new HttpRequestMessage();
             httpRequest.Method = new HttpMethod("GET");
             httpRequest.RequestUri = new Uri(url);
