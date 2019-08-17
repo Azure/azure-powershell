@@ -392,4 +392,19 @@
   <data name="ApplicationGatewayFirewallPolicy" xml:space="preserve">
     <value>firewallPolicy</value>
   </data>
+  <data name="Initialize" xml:space="preserve">
+    <value>Initialize</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="ServiceNameFormatGuidance" xml:space="preserve">
+    <value>ServiceName should be like Microsoft.Sql/managedInstances</value>
+  </data>
+  <data name="Subnet0" xml:space="preserve">
+    <value>Subnet {0}</value>
+  </data>
+  <data name="SubnetWithTheSpecifiedNameDoesNotExist" xml:space="preserve">
+    <value>Subnet with the specified name does not exist</value>
+  </data>
 </root>

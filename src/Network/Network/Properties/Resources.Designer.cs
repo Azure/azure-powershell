@@ -331,6 +331,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Initialize.
+        /// </summary>
+        internal static string Initialize {
+            get {
+                return ResourceManager.GetString("Initialize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Min {0} cannot be greater than Max {1}..
         /// </summary>
         internal static string InvalidAutoScaleConfiguration {
@@ -547,6 +556,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reset.
+        /// </summary>
+        internal static string Reset {
+            get {
+                return ResourceManager.GetString("Reset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Resetting Resource.
         /// </summary>
         internal static string ResettingResourceMessage {
@@ -597,6 +615,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static string ResourceNotFound {
             get {
                 return ResourceManager.GetString("ResourceNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ServiceName should be like Microsoft.Sql/managedInstances.
+        /// </summary>
+        internal static string ServiceNameFormatGuidance {
+            get {
+                return ResourceManager.GetString("ServiceNameFormatGuidance", resourceCulture);
             }
         }
         
@@ -669,6 +696,24 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static string StaticIpAddressErrorMessage {
             get {
                 return ResourceManager.GetString("StaticIpAddressErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Subnet {0}.
+        /// </summary>
+        internal static string Subnet0 {
+            get {
+                return ResourceManager.GetString("Subnet0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Subnet with the specified name does not exist.
+        /// </summary>
+        internal static string SubnetWithTheSpecifiedNameDoesNotExist {
+            get {
+                return ResourceManager.GetString("SubnetWithTheSpecifiedNameDoesNotExist", resourceCulture);
             }
         }
         

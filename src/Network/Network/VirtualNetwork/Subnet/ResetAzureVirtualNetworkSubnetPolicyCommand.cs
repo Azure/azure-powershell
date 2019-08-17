@@ -12,39 +12,41 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Management.Network.Models;
 using System;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Management.Network.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Reset, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkSubnetPolicy", SupportsShouldProcess = true, DefaultParameterSetName = "SetByResourceId"), OutputType(typeof(PSSubnet))]
+    [Cmdlet(VerbsCommon.Reset, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkSubnetPolicy", SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSet), OutputType(typeof(PSSubnet))]
     public class ResetAzureVirtualNetworkSubnetPolicyCommand : VirtualNetworkBaseCmdlet
     {
+        private const string DefaultParameterSet = "SetByResourceId";
+        private const string VirtualNetworkParameterSet = "VirtualNetworkParameterSet";
 
         [Parameter(
             Mandatory = true,
-            ParameterSetName = "DefaultParameterSet",
+            ParameterSetName = VirtualNetworkParameterSet,
             HelpMessage = "The name of the subnet")]
         [Parameter(
             Mandatory = true,
-            ParameterSetName = "SetByResourceId",
+            ParameterSetName = DefaultParameterSet,
             HelpMessage = "The name of the subnet")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
-            ParameterSetName = "DefaultParameterSet",
+            ParameterSetName = VirtualNetworkParameterSet,
             HelpMessage = "Name of the service deletion. Use Get-AzureRmAvailableServiceDelegation command to list of ServiceName")]
         [Parameter(
             Mandatory = true,
-            ParameterSetName = "SetByResourceId",
+            ParameterSetName = DefaultParameterSet,
             HelpMessage = "Name of the service deletion. Use Get-AzureRmAvailableServiceDelegation command to list of ServiceName")]
         [ValidateNotNullOrEmpty]
         public string ServiceName { get; set; }
@@ -52,13 +54,13 @@ namespace Microsoft.Azure.Commands.Network
         [Alias("InputObject")]
         [Parameter(
             Mandatory = true,
-            ParameterSetName = "DefaultParameterSet",
+            ParameterSetName = VirtualNetworkParameterSet,
             ValueFromPipeline = true,
-            HelpMessage = "The virtualNetwork")]
+            HelpMessage = "The virtualNetwork object")]
         public PSVirtualNetwork VirtualNetwork { get; set; }
 
         [Parameter(
-            ParameterSetName = "SetByResourceId",
+            ParameterSetName = DefaultParameterSet,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource Id of the virtual network resource")]
@@ -81,15 +83,15 @@ namespace Microsoft.Azure.Commands.Network
             var subnet = this.VirtualNetwork.Subnets.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, StringComparison.CurrentCultureIgnoreCase));
             if (subnet == null)
             {
-                throw new ArgumentException("Subnet with the specified name does not exist");
+                throw new ArgumentException(Properties.Resources.SubnetWithTheSpecifiedNameDoesNotExist);
             }
 
             if(!this.ServiceName.Contains("/"))
             {
-                throw new ArgumentException("ServiceName should be like Microsoft.Sql/managedInstances");
+                throw new ArgumentException(Properties.Resources.ServiceNameFormatGuidance);
             }
             
-            if (ShouldProcess($"Subnet {this.Name}", "Reset"))
+            if (ShouldProcess(string.Format(Properties.Resources.Subnet0, this.Name), Properties.Resources.Reset))
             {
                 // call prepareNetworkPolicies API
                 var unPrepareRequestParams = new UnprepareNetworkPoliciesRequest(this.ServiceName);

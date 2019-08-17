@@ -23,28 +23,30 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsData.Initialize, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkSubnetPolicy", SupportsShouldProcess = true, DefaultParameterSetName = "SetByResourceId"), OutputType(typeof(PSSubnet))]
+    [Cmdlet(VerbsData.Initialize, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkSubnetPolicy", SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSet), OutputType(typeof(PSSubnet))]
     public class InitializeAzureVirtualNetworkSubnetPolicyCommand : VirtualNetworkBaseCmdlet
     {
+        private const string DefaultParameterSet = "SetByResourceId";
+        private const string VirtualNetworkParameterSet = "VirtualNetworkParameterSet";
 
         [Parameter(
             Mandatory = true,
-            ParameterSetName = "DefaultParameterSet",
+            ParameterSetName = VirtualNetworkParameterSet,
             HelpMessage = "The name of the subnet")]
         [Parameter(
             Mandatory = true,
-            ParameterSetName = "SetByResourceId",
+            ParameterSetName = DefaultParameterSet,
             HelpMessage = "The name of the subnet")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
-            ParameterSetName = "DefaultParameterSet",
+            ParameterSetName = VirtualNetworkParameterSet,
             HelpMessage = "Name of the service deletion. Use Get-AzureRmAvailableServiceDelegation command to list of ServiceName")]
         [Parameter(
             Mandatory = true,
-            ParameterSetName = "SetByResourceId",
+            ParameterSetName = DefaultParameterSet,
             HelpMessage = "Name of the service deletion. Use Get-AzureRmAvailableServiceDelegation command to list of ServiceName")]
         [ValidateNotNullOrEmpty]
         public string ServiceName { get; set; }
@@ -52,13 +54,13 @@ namespace Microsoft.Azure.Commands.Network
         [Alias("InputObject")]
         [Parameter(
             Mandatory = true,
-            ParameterSetName = "DefaultParameterSet",
+            ParameterSetName = VirtualNetworkParameterSet,
             ValueFromPipeline = true,
-            HelpMessage = "The virtualNetwork")]
+            HelpMessage = "The virtualNetwork containing the subnets trying to initialze")]
         public PSVirtualNetwork VirtualNetwork { get; set; }
 
         [Parameter(
-            ParameterSetName = "SetByResourceId",
+            ParameterSetName = DefaultParameterSet,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource Id of the virtual network resource")]
@@ -81,15 +83,15 @@ namespace Microsoft.Azure.Commands.Network
             var subnet = this.VirtualNetwork.Subnets.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, StringComparison.CurrentCultureIgnoreCase));
             if (subnet == null)
             {
-                throw new ArgumentException("Subnet with the specified name does not exist");
+                throw new ArgumentException(Properties.Resources.SubnetWithTheSpecifiedNameDoesNotExist);
             }
 
             if(!this.ServiceName.Contains("/"))
             {
-                throw new ArgumentException("ServiceName should be like Microsoft.Sql/managedInstances");
+                throw new ArgumentException(Properties.Resources.ServiceNameFormatGuidance);
             }
 
-            if (ShouldProcess($"Subnet {this.Name}", "Initialize"))
+            if (ShouldProcess(string.Format(Properties.Resources.Subnet0, this.Name), Properties.Resources.Initialize))
             {
                 // call prepareNetworkPolicies API
                 var prepareRequestParams = new PrepareNetworkPoliciesRequest(this.ServiceName);

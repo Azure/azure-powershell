@@ -19,7 +19,7 @@ Initialize-AzVirtualNetworkSubnetPolicy -Name <String> -ServiceName <String> -Re
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### DefaultParameterSet
+### VirtualNetworkParameterSet
 ```
 Initialize-AzVirtualNetworkSubnetPolicy -Name <String> -ServiceName <String> -VirtualNetwork <PSVirtualNetwork>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -118,7 +118,7 @@ Specifies a virtual network object which has the subnet to be initialized.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork
-Parameter Sets: DefaultParameterSet
+Parameter Sets: VirtualNetworkParameterSet
 Aliases: InputObject
 
 Required: True
