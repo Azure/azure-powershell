@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using Microsoft.Azure.Management.IotHub.Models;
     using ResourceManager.Common.ArgumentCompleters;
 
-    [Cmdlet(VerbsLifecycle.Invoke, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHubManualFailover", DefaultParameterSetName = ResourceParameterSet)]
+    [Cmdlet(VerbsLifecycle.Invoke, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHubManualFailover", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(void))]
     public class InvokeAzureRmIotHubManualFailover : IotHubBaseCmdlet
     {
@@ -68,11 +68,6 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "The region that the IoT hub fails over to. Must be the paired region to the current IoT hub region.")]
-        public string FailoverRegion { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -90,21 +85,20 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                 this.Name = IotHubUtils.GetIotHubName(this.ResourceId);
             }
 
-            try
+            if (ShouldProcess(this.Name, Properties.Resources.ManualFailoverIotHub))
             {
-                if (string.IsNullOrEmpty(this.FailoverRegion))
+                try
                 {
                     IotHubDescription iotHubDescription = this.IotHubClient.IotHubResource.Get(this.ResourceGroupName, this.Name);
                     PSIotHub psIotHub = IotHubUtils.ToPSIotHub(iotHubDescription);
-                    this.FailoverRegion = psIotHub.Properties.Locations.FirstOrDefault(loc => loc.Role.Equals("secondary", StringComparison.OrdinalIgnoreCase)).Location;
+                    string failoverRegion = psIotHub.Properties.Locations.FirstOrDefault(loc => loc.Role.Equals("secondary", StringComparison.OrdinalIgnoreCase)).Location;
+                    FailoverInput failoverInput = new FailoverInput(failoverRegion);
+                    this.IotHubClient.IotHub.ManualFailover(this.Name, failoverInput, this.ResourceGroupName);
                 }
-
-                FailoverInput failoverInput = new FailoverInput(this.FailoverRegion);
-                this.IotHubClient.IotHub.ManualFailover(this.Name, failoverInput, this.ResourceGroupName);
-            }
-            catch (Exception e)
-            {
-                throw e;
+                catch (Exception e)
+                {
+                    throw e;
+                }
             }
         }
     }

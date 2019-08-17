@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Fixed miscellaneous typos across module
+* Add support to manual-failover IotHub
 
 ## Version 1.2.0
 * Add support to regenerate authorization policy keys.
