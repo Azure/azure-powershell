@@ -14,20 +14,20 @@ Initiate a manual failover for the IoT Hub to the geo-paired disaster recovery r
 
 ### ResourceSet (Default)
 ```
-Invoke-AzIotHubManualFailover [-ResourceGroupName] <String> [-Name] <String> [-FailoverRegion <String>]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Invoke-AzIotHubManualFailover [-ResourceGroupName] <String> [-Name] <String> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectSet
 ```
-Invoke-AzIotHubManualFailover [-InputObject] <PSIotHub> [-FailoverRegion <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Invoke-AzIotHubManualFailover [-InputObject] <PSIotHub> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
-Invoke-AzIotHubManualFailover [-ResourceId] <String> [-FailoverRegion <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Invoke-AzIotHubManualFailover [-ResourceId] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -81,22 +81,6 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FailoverRegion
-The region that the IoT hubfails over to.
-Must be the paired region to the current IoT hub region.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named
@@ -162,6 +146,36 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
