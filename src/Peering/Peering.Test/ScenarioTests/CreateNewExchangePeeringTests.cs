@@ -59,15 +59,5 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         {
             TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewExchangePeeringPipe");
         }
-
-        /// <summary>
-        /// The test new exchange peering pipe two connections.
-        /// </summary>
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewExchangePeeringPipeTwoConnections()
-        {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewExchangePeeringPipeTwoConnections");
-        }
     }
 }

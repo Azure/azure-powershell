@@ -34,6 +34,9 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         public ManagedDatabaseCrudScenarioTests(ITestOutputHelper output) : base(output)
         {
+            base.resourceTypesToIgnoreApiVersion = new string[] {
+                "Microsoft.Sql/managedInstances"
+            };
         }
 
         [Fact]
