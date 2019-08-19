@@ -21,6 +21,7 @@
 ## Upcoming Release
 * Fixed miscellaneous typos across module
 * Fix for issue #9658 : Typo VirtualNetworkRule parameter in Set-AzServiceBusNetworkRuleSet
+* Fix for issue #9786 : cannot create a rule with Listen only rights
 
 ## Version 1.3.0
 * Added new cmmdlet added for generating SAS token : New-AzServiceBusAuthorizationRuleSASToken
