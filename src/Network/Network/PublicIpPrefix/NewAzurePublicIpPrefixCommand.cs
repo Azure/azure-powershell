@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.Network
     using System.Linq;
     using System.Management.Automation;
     using MNM = Microsoft.Azure.Management.Network.Models;
+    using System;
 
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PublicIpPrefix", SupportsShouldProcess = true), OutputType(typeof(PSPublicIpPrefix))]
     public class NewAzurePublicIpPrefixCommand : PublicIpPrefixBaseCmdlet
@@ -67,7 +68,6 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The PublicIPPrefix length")]
         [ValidateNotNullOrEmpty]
-        [ValidateRange((ushort)21, (ushort)31)]
         public ushort PrefixLength { get; set; }
 
         [Parameter(
@@ -138,9 +138,18 @@ namespace Microsoft.Azure.Commands.Network
                 publicIpPrefix.PublicIpAddressVersion = this.IpAddressVersion;
             }
 
+            if (publicIpPrefix.PublicIpAddressVersion == MNM.IPVersion.IPv6 && (this.PrefixLength < 117 || this.PrefixLength > 127))
+            {
+                throw new ArgumentException(string.Format(Properties.Resources.InvalidIPv6IPPrefixLength, this.PrefixLength));
+            }
+            else if (publicIpPrefix.PublicIpAddressVersion == MNM.IPVersion.IPv4 && (this.PrefixLength < 21 || this.PrefixLength > 31))
+            {
+                throw new ArgumentException(string.Format(Properties.Resources.InvalidIPv4IPPrefixLength, this.PrefixLength));
+            }
+
             publicIpPrefix.Zones = this.Zone?.ToList();
             publicIpPrefix.PrefixLength = this.PrefixLength;
-
+            
             publicIpPrefix.Sku = new PSPublicIpPrefixSku();
             publicIpPrefix.Sku.Name = MNM.PublicIPAddressSkuName.Standard;
             if (!string.IsNullOrEmpty(this.Sku))

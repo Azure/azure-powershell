@@ -131,6 +131,11 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string ServicebusStartMigrationConfiguration = "AzureRmServiceBusStartMigration";
         protected const string ServicebusCompleteMigrationConfiguration = "AzureRmServiceBusCompleteMigration";
 
+        //Access Rights 
+        protected const string Manage = "Manage";
+        protected const string Send = "Send";
+        protected const string Listen = "Listen";
+
         protected struct SKU
         {
             internal const string Basic = "Basic";
