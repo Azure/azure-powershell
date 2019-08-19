@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
             if (!this.DynamicThreshold.IsPresent)
             {
                 MetricCriteria metricCriteria = new MetricCriteria(name: "metric1", metricName: this.MetricName, operatorProperty: this.Operator, timeAggregation: this.TimeAggregation, threshold: this.Threshold, metricNamespace: this.MetricNamespace, dimensions: metricDimensions);
-                result = new PSStaticMetricCriteria(metricCriteria);
+                result = new PSMetricCriteria(metricCriteria);
             }
             else
             {

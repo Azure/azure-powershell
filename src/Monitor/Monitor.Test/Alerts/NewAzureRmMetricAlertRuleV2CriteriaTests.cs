@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
 
             Func<IPSMultiMetricCriteria, bool> verify = crit =>
             {
-                var r = crit as PSStaticMetricCriteria;
+                var r = crit as PSMetricCriteria;
                 Assert.Equal("PacketsInDDoS", r.MetricName);
                 Assert.Equal("GreaterThan", r.OperatorProperty);
                 Assert.Equal(2, r.Threshold);
