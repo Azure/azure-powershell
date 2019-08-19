@@ -15,7 +15,7 @@ Create or update an metric alert definition.
 ### CreateByResourceId (Default)
 ```
 New-AzMetricAlert -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -Condition <MetricCriteria[]> -Description <String> -Enabled -EvaluationFrequency <TimeSpan>
+ -Condition <IMetricCriteria[]> -Description <String> -Enabled -EvaluationFrequency <TimeSpan>
  -Severity <Int32> -WindowSize <TimeSpan> -TargetResourceId <String> [-Action <IMetricAlertAction[]>]
  [-AutoMitigate] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -23,7 +23,7 @@ New-AzMetricAlert -Name <String> -ResourceGroupName <String> -SubscriptionId <St
 ### CreateByScope
 ```
 New-AzMetricAlert -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -Condition <MetricCriteria[]> -Description <String> -Enabled -EvaluationFrequency <TimeSpan>
+ -Condition <IMetricCriteria[]> -Description <String> -Enabled -EvaluationFrequency <TimeSpan>
  -Severity <Int32> -WindowSize <TimeSpan> -TargetResourceScope <String[]> -TargetResourceRegion <String>
  -TargetResourceType <String> [-Action <IMetricAlertAction[]>] [-AutoMitigate] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -93,7 +93,7 @@ The rule criteria that defines the conditions of the alert rule.
 To construct, see NOTES section for CONDITION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20180301.MetricCriteria[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20180301.IMetricCriteria[]
 Parameter Sets: (All)
 Aliases:
 
@@ -385,13 +385,13 @@ To create the parameters described below, construct a hash table containing the 
   - `[WebhookProperty <IMetricAlertActionWebhookProperties>]`: The properties of a webhook object.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
 
-#### CONDITION <MetricCriteria[]>: The rule criteria that defines the conditions of the alert rule.
-  - `Operator <Operator>`: the criteria operator.
-  - `Threshold <Double>`: the criteria threshold value that activates the alert.
+#### CONDITION <IMetricCriteria[]>: The rule criteria that defines the conditions of the alert rule.
   - `CriterionType <CriterionType>`: Specifies the type of threshold criteria
   - `MetricName <String>`: Name of the metric.
   - `Name <String>`: Name of the criteria.
   - `TimeAggregation <AggregationType>`: the criteria time aggregation types.
+  - `Operator <Operator>`: the criteria operator.
+  - `Threshold <Double>`: the criteria threshold value that activates the alert.
   - `[Dimension <IMetricDimension[]>]`: List of dimension conditions.
     - `Name <String>`: Name of the dimension.
     - `Operator <String>`: the dimension operator. Only 'Include' and 'Exclude' are supported

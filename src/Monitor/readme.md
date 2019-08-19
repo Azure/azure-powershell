@@ -250,6 +250,11 @@ directive:
       parameter-name: ResourceUri
     set:
       parameter-name: ResourceId
+  # Removing
+  - where:
+      verb: Get
+      subject: Baseline
+    remove: true
 ```
 
 ``` yaml

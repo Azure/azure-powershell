@@ -36,8 +36,8 @@ param(
     
     # CUSTOM
     [Parameter(Mandatory, HelpMessage='The rule criteria that defines the conditions of the alert rule.')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20180301.MetricCriteria[]]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.Info(Required, PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20180301.MetricCriteria]), Description='The rule criteria that defines the conditions of the alert rule.')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.Info(Required, PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20180301.IMetricCriteria]), Description='The rule criteria that defines the conditions of the alert rule.')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20180301.IMetricCriteria[]]
     ${Condition},
     # END CUSTOM
 

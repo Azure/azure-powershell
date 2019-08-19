@@ -35,9 +35,6 @@ Gets an incident associated to an alert rule
 ### [Get-AzAutoscaleSetting](Get-AzAutoscaleSetting.md)
 Gets an autoscale setting
 
-### [Get-AzBaseline](Get-AzBaseline.md)
-**Lists the metric baseline values for a resource**.
-
 ### [Get-AzDiagnosticSetting](Get-AzDiagnosticSetting.md)
 Gets the active diagnostic settings for the specified resource.
 
