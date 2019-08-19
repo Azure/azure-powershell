@@ -87,6 +87,11 @@ namespace Microsoft.Azure.Commands.Compute
         public string ProximityPlacementGroupId { get; set; }
 
         [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Id of Host")]
+        public string HostId { get; set; }
+
+        [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true)]
 		[Alias("Tag")]
@@ -151,6 +156,11 @@ namespace Microsoft.Azure.Commands.Compute
             if (this.IsParameterBound(c => c.ProximityPlacementGroupId))
             {
                 vm.ProximityPlacementGroup = new SubResource(this.ProximityPlacementGroupId);
+            }
+
+            if (this.MyInvocation.BoundParameters.ContainsKey("HostId"))
+            {
+                vm.Host = new SubResource(this.HostId);
             }
 
             WriteObject(vm);
