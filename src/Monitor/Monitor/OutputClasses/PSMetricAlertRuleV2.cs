@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
                 var criteria = metricAlertResource.Criteria as MetricAlertSingleResourceMultipleMetricCriteria;
                 foreach(var condition in criteria.AllOf)
                 {
-                    Criteria.Add(new PSStaticMetricCriteria(condition));
+                    Criteria.Add(new PSMetricCriteria(condition));
                 }
             }
             else if(metricAlertResource.Criteria is MetricAlertMultipleResourceMultipleMetricCriteria)
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
                 {
                     if (condition is MetricCriteria)
                     {
-                        Criteria.Add(new PSStaticMetricCriteria(condition as MetricCriteria));
+                        Criteria.Add(new PSMetricCriteria(condition as MetricCriteria));
                     }
                     else
                     {

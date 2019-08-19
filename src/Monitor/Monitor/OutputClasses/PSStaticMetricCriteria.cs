@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
     /// <summary>
     /// PS object for static metric criteria
     /// </summary>
-    public class PSStaticMetricCriteria : MetricCriteria, IPSMultiMetricCriteria
+    public class PSMetricCriteria : MetricCriteria, IPSMultiMetricCriteria
     {
         /// <summary>
         /// Gets the type of the metric criteria
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// Initiliazes a PS object for static metric criteria
         /// </summary>
         /// <param name="metricCriteria">The original static metric criteria object</param>
-        public PSStaticMetricCriteria(MetricCriteria metricCriteria)
+        public PSMetricCriteria(MetricCriteria metricCriteria)
             : base(name: metricCriteria.Name,
                   metricName: metricCriteria.MetricName,
                   operatorProperty: metricCriteria.OperatorProperty,

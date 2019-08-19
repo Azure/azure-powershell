@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
                 var metricCriteria = new List<MetricCriteria>();
                 foreach (var metricCondition in this.Condition)
                 {
-                    var condition = metricCondition as PSStaticMetricCriteria;
+                    var condition = metricCondition as PSMetricCriteria;
                     metricCriteria.Add(new MetricCriteria(name: condition.Name, metricName: condition.MetricName, operatorProperty: condition.OperatorProperty.ToString(), timeAggregation: condition.TimeAggregation.ToString(), threshold: condition.Threshold, metricNamespace: condition.MetricNamespace, dimensions: condition.Dimensions));
                 }
                 var criteria = new MetricAlertSingleResourceMultipleMetricCriteria(
@@ -174,9 +174,9 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
                 List<MultiMetricCriteria> multiMetricCriteria = new List<MultiMetricCriteria>();
                 foreach (var condition in this.Condition)
                 {
-                    if (condition is PSStaticMetricCriteria)
+                    if (condition is PSMetricCriteria)
                     {
-                        var psStaticMetricCriteria = condition as PSStaticMetricCriteria;
+                        var psStaticMetricCriteria = condition as PSMetricCriteria;
                         multiMetricCriteria.Add(new MetricCriteria(name: psStaticMetricCriteria.Name, metricName: psStaticMetricCriteria.MetricName, operatorProperty: psStaticMetricCriteria.OperatorProperty.ToString(), timeAggregation: psStaticMetricCriteria.TimeAggregation.ToString(), threshold: psStaticMetricCriteria.Threshold, metricNamespace: psStaticMetricCriteria.MetricNamespace, dimensions: psStaticMetricCriteria.Dimensions));
                     }
                     else
