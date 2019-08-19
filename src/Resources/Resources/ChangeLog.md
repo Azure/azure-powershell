@@ -22,6 +22,7 @@
     - Add support for `copy.count = 0` for variables, resources and properties
     - Resources with `condition = false` or `copy.count = 0` will be deleted in complete mode
 * Fixed miscellaneous typos across module
+* Add an example of assigning policy at subscription level to help doc
 
 ## Version 1.6.1
 - Remove missing cmdlet referenced in `New-AzResourceGroupDeployment` documentation

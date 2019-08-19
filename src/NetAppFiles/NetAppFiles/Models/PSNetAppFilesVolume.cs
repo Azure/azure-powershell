@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
+
 namespace Microsoft.Azure.Commands.NetAppFiles.Models
 {
     /// <summary>
@@ -98,6 +100,22 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         public PSNetAppFilesVolumeExportPolicy ExportPolicy { get; set; }
 
         /// <summary>
+        /// Gets or sets the protocol types
+        /// </summary>
+        /// <remarks>
+        /// Protocol types usable by the volume
+        /// </remarks>
+        public IList<string> ProtocolTypes { get; set; }
+
+        /// <summary>
+        /// Gets or sets the mount targets
+        /// </summary>
+        /// <remarks>
+        /// Mount targets associated with the volume
+        /// </remarks>
+        public object MountTargets { get; set;  }
+
+        /// <summary>
         /// Gets or sets snapshot ID
         /// </summary>
         /// <remarks>
@@ -106,7 +124,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         public string SnapshotId { get; set; }
 
         /// <summary>
-        /// Gets or setsbaremetal Tenant ID
+        /// Gets or sets baremetal Tenant ID
         /// </summary>
         /// <remarks>
         /// Unique Baremetal Tenant Identifier.
