@@ -35,7 +35,7 @@ MyResourceGroup   MyService   westus2    fhir-R4   400
 ```
 
 Creates a new Azure healthcareapis fhir service named MyService in the resource group MyResourceGroup in a location westus2 with cosmosdb offer throughput = 400
-
+```
 Example Output:
 
 ResourceId        : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft
@@ -49,7 +49,7 @@ Tags              : {[key, val]}
 Properties        : Microsoft.Azure.Commands.HealthcareApisService.Models.PSHealthcareApisFhirServiceConfig
 SubscriptionId    : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 ResourceGroupName : MyResourceGroupName
-
+```
 ## PARAMETERS
 
 ### -AccessPolicyObjectId

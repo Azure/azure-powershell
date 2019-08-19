@@ -40,8 +40,9 @@ Gets existing healthcareApis fhir service accounts created within the specified 
 PS C:\> Get-AzHealthcareApisFhirService -Name "MyService" -ResourceGroupName "MyResourceGroup"
 ```
 
-Example Output:
 
+Example Output:
+```
 ResourceId        : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft
                     .HealthcareApis/services/MyService
 Name              : MyService
@@ -53,6 +54,7 @@ Tags              : {[key, val]}
 Properties        : Microsoft.Azure.Commands.HealthcareApisService.Models.PSHealthcareApisFhirServiceConfig
 SubscriptionId    : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 ResourceGroupName : MyResourceGroupName
+```
 
 ### Example 2
 
@@ -63,7 +65,7 @@ PS C:\> Get-AzHealthcareApisFhirService -ResourceGroupName "MyResourceGroup"
 ```
 
 Example Output:
-
+```
 ResourceId        : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft
                     .HealthcareApis/services/MyService1
 Name              : MyService1
@@ -87,6 +89,7 @@ Tags              : {[key, val]}
 Properties        : Microsoft.Azure.Commands.HealthcareApisService.Models.PSHealthcareApisFhirServiceConfig
 SubscriptionId    : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 ResourceGroupName : MyResourceGroupName
+```
 
 ### Example 3
 
@@ -97,7 +100,7 @@ PS C:\> Get-AzHealthcareApisFhirService
 ```
 
 Example Output:
-
+```
 ResourceId        : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft
                     .HealthcareApis/services/MyService1
 Name              : MyService1
@@ -121,7 +124,7 @@ Tags              : {[key, val]}
 Properties        : Microsoft.Azure.Commands.HealthcareApisService.Models.PSHealthcareApisFhirServiceConfig
 SubscriptionId    : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 ResourceGroupName : MyResourceGroupName
-
+```
 ## PARAMETERS
 
 ### -DefaultProfile
