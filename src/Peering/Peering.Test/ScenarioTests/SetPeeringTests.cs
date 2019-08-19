@@ -60,5 +60,35 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         {
             TestController.NewInstance.RunPowerShellTest(this.logger, "Test-SetNewBandwidth");
         }
+
+        /// <summary>
+        /// The test set new bandwidth.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetNewIP()
+        {
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-SetNewIP");
+        }
+
+        /// <summary>
+        /// The test set new bandwidth.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetNewIPv6()
+        {
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-SetNewIPv6");
+        }
+
+        /// <summary>
+        /// The test set new bandwidth.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetNewMd5Hash()
+        {
+            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-SetNewMd5Hash");
+        }
     }
 }
