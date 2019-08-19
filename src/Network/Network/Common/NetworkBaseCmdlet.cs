@@ -57,6 +57,11 @@ namespace Microsoft.Azure.Commands.Network
             {
                 throw new NetworkCloudException(ex);
             }
+            catch (Microsoft.Azure.Management.Network.Models.ErrorException ex)
+            {
+                Rest.Azure.CloudException rex = NetworkResourceManagerProfile.Mapper.Map<Rest.Azure.CloudException>(ex);
+                throw new NetworkCloudException(rex);
+            }
         }
         public virtual void Execute()
         {
