@@ -302,6 +302,32 @@ function Create-DataMaskingTestEnvironment ($testSuffix)
 }
 
 <#
+Creates the basic test environment needed to perform the Elastic Job agent tests
+#>
+function Create-ElasticJobAgentTestEnvironment ()
+{
+	$location = Get-Location "Microsoft.Sql" "operations" "West US 2"
+	$rg1 = Create-ResourceGroupForTest
+	$s1 = Create-ServerForTest $rg1 $location
+	$s1fw = $s1 | New-AzSqlServerFirewallRule -AllowAllAzureIPs # allow azure ips
+	$db1 = Create-DatabaseForTest $s1
+	$agent = Create-AgentForTest $db1
+	return $agent
+}
+
+<#
+	.SYNOPSIS
+	Creates the test environment needed to perform the Sql elastic pool CRUD tests
+#>
+function Create-ElasticPoolForTest ($server)
+{
+	$epName = Get-ElasticPoolName
+	$ep = New-AzSqlElasticPool -ResourceGroupName  $server.ResourceGroupName -ServerName $server.ServerName -ElasticPoolName $epName
+	return $ep
+}
+
+
+<#
 .SYNOPSIS
 Gets the values of the parameters used in the Server Key Vault Key tests
 #>
@@ -389,11 +415,92 @@ function Get-ServerName
 
 <#
 .SYNOPSIS
+Gets valid user name
+#>
+function Get-UserName
+{
+	return getAssetName
+}
+
+<#
+.SYNOPSIS
 Gets valid database name
 #>
 function Get-DatabaseName
 {
     return getAssetName
+}
+
+<#
+.SYNOPSIS
+Gets valid shard map name
+#>
+function Get-ShardMapName
+{
+	return getAssetName
+}
+
+<#
+.SYNOPSIS
+Gets valid shard agent name
+#>
+function Get-AgentName
+{
+	return getAssetName
+}
+
+<#
+.SYNOPSIS
+Gets valid target group name
+#>
+function Get-TargetGroupName
+{
+	return getAssetName
+}
+
+<#
+.SYNOPSIS
+Gets valid job credential name
+#>
+function Get-JobCredentialName
+{
+	return getAssetName
+}
+
+<#
+.SYNOPSIS
+Gets valid job name
+#>
+function Get-JobName
+{
+	return getAssetName
+}
+
+<#
+.SYNOPSIS
+Gets valid job step name
+#>
+function Get-JobStepName
+{
+	return getAssetName
+}
+
+<#
+.SYNOPSIS
+Gets valid schema name
+#>
+function Get-SchemaName
+{
+	return getAssetName
+}
+
+<#
+.SYNOPSIS
+Gets valid table name
+#>
+function Get-TableName
+{
+	return getAssetname
 }
 
 <#
@@ -545,6 +652,22 @@ function Get-ServerCredential
 
 <#
 	.SYNOPSIS
+	Gets a random credential
+#>
+function Get-Credential ($serverLogin)
+{
+	if ($serverLogin -eq $null)
+	{
+		$serverLogin = Get-UserName
+	}
+	<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]#>
+	$serverPassword = "t357ingP@s5w0rd!"
+	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
+	return $credentials
+}
+
+<#
+	.SYNOPSIS
 	Creates the test environment needed to perform the Sql server CRUD tests
 #>
 function Create-ServerForTest ($resourceGroup, $location = "Japan East")
@@ -564,6 +687,74 @@ function Remove-ServerForTest ($server)
 {
 	$server | Remove-AzSqlServer -Force
 }
+
+<#
+	.SYNOPSIS
+	Creates a database with test params
+#>
+function Create-DatabaseForTest ($server)
+{
+	$dbName = Get-DatabaseName
+	$db = New-AzSqlDatabase -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dbName -Edition Standard -MaxSizeBytes 250GB -RequestedServiceObjectiveName S0
+	return $db
+}
+
+<#
+	.SYNOPSIS
+	Creates a sql elastic job agent with test params
+#>
+function Create-AgentForTest ($db)
+{
+	$agentName = Get-AgentName
+	return New-AzSqlElasticJobAgent -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName -AgentName $agentName
+}
+
+<#
+	.SYNOPSIS
+	Creates a elastic job credential with test params
+#>
+function Create-JobCredentialForTest ($a)
+{
+	$credentialName = Get-JobCredentialName
+	$credential = Get-ServerCredential
+
+	$jobCredential = New-AzSqlElasticJobCredential -ResourceGroupName $a.ResourceGroupName -ServerName $a.ServerName -AgentName $a.AgentName -CredentialName $credentialName -Credential $credential
+	return $jobCredential
+}
+
+<#
+	.SYNOPSIS
+	Creates a elastic job target group with test params
+#>
+function Create-TargetGroupForTest ($a)
+{
+	$targetGroupName = Get-TargetGroupName
+	$tg = New-AzSqlElasticJobTargetGroup -ResourceGroupName $a.ResourceGroupName -ServerName $a.ServerName -AgentName $a.AgentName -TargetGroupName $targetGroupName
+	return $tg
+}
+
+<#
+	.SYNOPSIS
+	Creates a elastic job with test params
+#>
+function Create-JobForTest ($a, $enabled = $false)
+{
+	$jobName = Get-JobName
+	$job = New-AzSqlElasticJob -ResourceGroupName $a.ResourceGroupName -ServerName $a.ServerName -AgentName $a.AgentName -Name $jobName
+	return $job
+}
+
+<#
+	.SYNOPSIS
+	Creates a elastic job step with test params
+#>
+function Create-JobStepForTest ($j, $tg, $c, $ct)
+{
+	$jobStepName = Get-JobStepName
+	$jobStep = Add-AzSqlElasticJobStep -ResourceGroupName $j.ResourceGroupName -ServerName $j.ServerName -AgentName $j.AgentName -JobName $j.jobName -Name $jobStepName -TargetGroupName $tg.TargetGroupName -CredentialName $c.CredentialName -CommandText $ct
+	return $jobStep
+}
+
 
 <#
 .SYNOPSIS
