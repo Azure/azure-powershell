@@ -27,6 +27,19 @@ This cmdlet will create a Host.
 ### Example 1
 ```
 PS C:\> New-AzHost -ResourceGroupName $resourceGroupName -HostGroupName $hostGroupName -Name $hostName -Location $location -Sku $skuName
+
+ResourceGroupName    : myrg01
+PlatformFaultDomain  : 0
+AutoReplaceOnFailure : True
+HostId               : 00000000-0000-0000-0000-000000000000
+ProvisioningTime     : 7/25/2019 8:34:16 PM
+ProvisioningState    : Succeeded
+Sku                  : 
+  Name               : ESv3-Type1
+Id                   : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg01/providers/Microsoft.Compute/hostGroups/myhostgroup01/hosts/myhost01
+Name                 : myhost01
+Location             : eastus
+Tags                 : {"key1":"val2"}
 ```
 
 This command creates a host of the given Sku in the given host group and the given location.
