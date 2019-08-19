@@ -26,7 +26,7 @@ using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
-    public partial class PSGalleryImageVersion
+    public partial class PSHost
     {
         // Gets or sets the property of 'ResourceGroupName'
         public string ResourceGroupName
@@ -40,9 +40,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
             }
         }
 
+        public int? PlatformFaultDomain { get; set; }
+        public bool? AutoReplaceOnFailure { get; set; }
+        public string HostId { get; set; }
+        public IList<SubResourceReadOnly> VirtualMachines { get; set; }
+        public DedicatedHostLicenseTypes? LicenseType { get; set; }
+        public DateTime? ProvisioningTime { get; set; }
         public string ProvisioningState { get; set; }
-        public GalleryImageVersionStorageProfile StorageProfile { get; set; }
-        public ReplicationStatus ReplicationStatus { get; set; }
+        public DedicatedHostInstanceView InstanceView { get; set; }
+        public Sku Sku { get; set; }
         public string Id { get; set; }
         public string Name { get; set; }
         public string Type { get; set; }

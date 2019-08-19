@@ -26,28 +26,12 @@ using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
-    public partial class PSGalleryImageVersion
+    public partial class PSHostList : PSHost
     {
-        // Gets or sets the property of 'ResourceGroupName'
-        public string ResourceGroupName
+        public PSHost ToPSHost()
         {
-            get
-            {
-                if (string.IsNullOrEmpty(Id)) return null;
-                Regex r = new Regex(@"(.*?)/resourcegroups/(?<rgname>\S+)/providers/(.*?)", RegexOptions.IgnoreCase);
-                Match m = r.Match(Id);
-                return m.Success ? m.Groups["rgname"].Value : null;
-            }
+            return ComputeAutomationAutoMapperProfile.Mapper.Map<PSHost>(this);
         }
-
-        public string ProvisioningState { get; set; }
-        public GalleryImageVersionStorageProfile StorageProfile { get; set; }
-        public ReplicationStatus ReplicationStatus { get; set; }
-        public string Id { get; set; }
-        public string Name { get; set; }
-        public string Type { get; set; }
-        public string Location { get; set; }
-        public IDictionary<string, string> Tags { get; set; }
 
     }
 }
