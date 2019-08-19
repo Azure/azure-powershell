@@ -65,119 +65,123 @@ function Test-AddGetListSetRemoveActionGroup
 		Assert-AreEqual $emptyString $webhook1.TenantId
 
 		Write-Verbose " ****** Creating a new webhook receiver with  UseCommonAlertSchema  explicitly set and use aad auth  set"
-		$webhook1 = New-AzActionGroupReceiver -WebhookReceiver -Name 'webhookreceiver' -ServiceUri 'http://test.com' -UseCommonAlertSchema $t -UseAadAuth $t -ObjectId 'someObjectId' -IdentifierUri 'someIdentifierUri' -TenantId 'someTenantId'
+		$webhook2 = New-AzActionGroupReceiver -WebhookReceiver -Name 'webhookreceiver' -ServiceUri 'http://test.com' -UseCommonAlertSchema $t -UseAadAuth $t -ObjectId 'someObjectId' -IdentifierUri 'someIdentifierUri' -TenantId 'someTenantId'
  		Assert-NotNull $webhook1
-		Assert-AreEqual 'webhookreceiver' $webhook1.Name
-		Assert-AreEqual 'http://test.com' $webhook1.ServiceUri
-		Assert-AreEqual true $webhook1.UseCommonAlertSchema
-		Assert-AreEqual true $webhook1.UseAadAuth
-		Assert-AreEqual 'someObjectId' $webhook1.ObjectId
-		Assert-AreEqual 'someIdentifierUri' $webhook1.IdentifierUri
-		Assert-AreEqual 'someTenantId' $webhook1.TenantId
+		Assert-AreEqual 'webhookreceiver' $webhook2.Name
+		Assert-AreEqual 'http://test.com' $webhook2.ServiceUri
+		Assert-AreEqual true $webhook2.UseCommonAlertSchema
+		Assert-AreEqual true $webhook2.UseAadAuth
+		Assert-AreEqual 'someObjectId' $webhook2.ObjectId
+		Assert-AreEqual 'someIdentifierUri' $webhook2.IdentifierUri
+		Assert-AreEqual 'someTenantId' $webhook2.TenantId
 
 		Write-Verbose " ****** Creating a new itsm receiver "
-		$itsm = New-AzActionGroupReceiver -ItsmReceiver -Name 'itsmReceiver' -WorkspaceId 'someworkspaceId' -ConnectionId 'connectionId'  -TicketConfiguration 'ticketConfiguration' -Region 'someRegion' 
- 		Assert-NotNull $itsm
-		Assert-AreEqual 'itsmReceiver' $itsm.Name
-		Assert-AreEqual 'someworkspaceId' $itsm.WorkspaceId
-		Assert-AreEqual 'connectionId' $itsm.ConnectionId
-		Assert-AreEqual 'ticketConfiguration' $itsm.TicketConfiguration
-		Assert-AreEqual 'someRegion' $itsm.Region
+		$itsm1 = New-AzActionGroupReceiver -ItsmReceiver -Name 'itsmReceiver' -WorkspaceId 'someworkspaceId' -ConnectionId 'connectionId'  -TicketConfiguration 'ticketConfiguration' -Region 'someRegion' 
+ 		Assert-NotNull $itsm1
+		Assert-AreEqual 'itsmReceiver' $itsm1.Name
+		Assert-AreEqual 'someworkspaceId' $itsm1.WorkspaceId
+		Assert-AreEqual 'connectionId' $itsm1.ConnectionId
+		Assert-AreEqual 'ticketConfiguration' $itsm1.TicketConfiguration
+		Assert-AreEqual 'someRegion' $itsm1.Region
 
 		Write-Verbose " ****** Creating a new voice receiver"
-		$voice = New-AzActionGroupReceiver -VoiceReceiver -Name 'VoiceReceiver' -VoiceCountryCode '1' -VoicePhoneNumber '4254251234'
-		Assert-NotNull $voice
-		Assert-AreEqual 'VoiceReceiver' $voice.Name
-		Assert-AreEqual '1' $voice.CountryCode
-		Assert-AreEqual '4254251234' $voice.PhoneNumber
+		$voice1 = New-AzActionGroupReceiver -VoiceReceiver -Name 'VoiceReceiver' -VoiceCountryCode '1' -VoicePhoneNumber '4254251234'
+		Assert-NotNull $voice1
+		Assert-AreEqual 'VoiceReceiver' $voice1.Name
+		Assert-AreEqual '1' $voice1.CountryCode
+		Assert-AreEqual '4254251234' $voice1.PhoneNumber
 
 		Write-Verbose " ****** Creating a new armrole receiver with default use common alert schema"
-		$armrole = New-AzActionGroupReceiver -ArmRoleReceiver -Name 'armroleReceiver' -RoleId 'someRoleId' 
-		Assert-NotNull $armrole
-		Assert-AreEqual 'armroleReceiver' $armrole.Name
-		Assert-AreEqual 'someRoleId' $armrole.RoleId
-		Assert-AreEqual false $armrole.UseCommonAlertSchema
+		$armrole1 = New-AzActionGroupReceiver -ArmRoleReceiver -Name 'armroleReceiver' -RoleId 'someRoleId' 
+		Assert-NotNull $armrole1
+		Assert-AreEqual 'armroleReceiver' $armrole1.Name
+		Assert-AreEqual 'someRoleId' $armrole1.RoleId
+		Assert-AreEqual false $armrole1.UseCommonAlertSchema
 
 		Write-Verbose " ****** Creating a new armrole receiver with use common alert schema explicitly se"
-		$armrole = New-AzActionGroupReceiver -ArmRoleReceiver -Name 'armroleReceiver' -RoleId 'someRoleId'  -UseCommonAlertSchema $t
-		Assert-NotNull $armrole
-		Assert-AreEqual 'armroleReceiver' $armrole.Name
-		Assert-AreEqual 'someRoleId' $armrole.RoleId
-		Assert-AreEqual true $armrole.UseCommonAlertSchema
+		$armrole2 = New-AzActionGroupReceiver -ArmRoleReceiver -Name 'armroleReceiver' -RoleId 'someRoleId'  -UseCommonAlertSchema $t
+		Assert-NotNull $armrole2
+		Assert-AreEqual 'armroleReceiver' $armrole2.Name
+		Assert-AreEqual 'someRoleId' $armrole2.RoleId
+		Assert-AreEqual true $armrole2.UseCommonAlertSchema
 
 		Write-Verbose " ****** Creating a new azure function receiver with  default use common alert schema"
-		$azureFunc = New-AzActionGroupReceiver -AzureFunctionReceiver -Name 'azfunreceiver' -FunctionAppResourceId 'somereosurceid'  -FunctionName 'somefunc' -HttpTriggerUrl 'someHttpTrigUrl'
-		Assert-NotNull $azureFunc
-		Assert-AreEqual 'azfunreceiver' $azureFunc.Name
-		Assert-AreEqual 'somereosurceid' $azureFunc.FunctionAppResourceId
-		Assert-AreEqual 'somefunc' $azureFunc.FunctionName
-		Assert-AreEqual 'someHttpTrigUrl' $azureFunc.HttpTriggerUrl
-		Assert-AreEqual false $azureFunc.UseCommonAlertSchema
+		$azureFunc1 = New-AzActionGroupReceiver -AzureFunctionReceiver -Name 'azfunreceiver' -FunctionAppResourceId 'somereosurceid'  -FunctionName 'somefunc' -HttpTriggerUrl 'someHttpTrigUrl'
+		Assert-NotNull $azureFunc1
+		Assert-AreEqual 'azfunreceiver' $azureFunc1.Name
+		Assert-AreEqual 'somereosurceid' $azureFunc1.FunctionAppResourceId
+		Assert-AreEqual 'somefunc' $azureFunc1.FunctionName
+		Assert-AreEqual 'someHttpTrigUrl' $azureFunc1.HttpTriggerUrl
+		Assert-AreEqual false $azureFunc1.UseCommonAlertSchema
 
 		Write-Verbose " ****** Creating a new azure function receiver with  use common alert schema explicitly set"
-		$azureFunc = New-AzActionGroupReceiver -AzureFunctionReceiver -Name 'azfunreceiver' -FunctionAppResourceId 'somereosurceid' -UseCommonAlertSchema $t -FunctionName 'somefunc' -HttpTriggerUrl 'someHttpTrigUrl'
-		Assert-NotNull $azureFunc
-		Assert-AreEqual 'azfunreceiver' $azureFunc.Name
-		Assert-AreEqual 'somereosurceid' $azureFunc.FunctionAppResourceId
-		Assert-AreEqual 'somefunc' $azureFunc.FunctionName
-		Assert-AreEqual 'someHttpTrigUrl' $azureFunc.HttpTriggerUrl
-		Assert-AreEqual true $azureFunc.UseCommonAlertSchema
+		$azureFunc2 = New-AzActionGroupReceiver -AzureFunctionReceiver -Name 'azfunreceiver' -FunctionAppResourceId 'somereosurceid' -UseCommonAlertSchema $t -FunctionName 'somefunc' -HttpTriggerUrl 'someHttpTrigUrl'
+		Assert-NotNull $azureFunc2
+		Assert-AreEqual 'azfunreceiver' $azureFunc2.Name
+		Assert-AreEqual 'somereosurceid' $azureFunc2.FunctionAppResourceId
+		Assert-AreEqual 'somefunc' $azureFunc2.FunctionName
+		Assert-AreEqual 'someHttpTrigUrl' $azureFunc2.HttpTriggerUrl
+		Assert-AreEqual true $azureFunc2.UseCommonAlertSchema
 
 		Write-Verbose " ****** Creating a new logic app  receiver with  default use common alert schema"
-		$logicapp = New-AzActionGroupReceiver -LogicAppReceiver -Name 'logicapp' -ResourceId 'somereosurceid'  -CallbackUrl 'somecallback' 
-		Assert-NotNull $logicapp
-		Assert-AreEqual 'logicapp' $logicapp.Name
-		Assert-AreEqual 'somereosurceid' $logicapp.ResourceId
-		Assert-AreEqual 'somecallback' $logicapp.CallbackUrl
-		Assert-AreEqual false $logicapp.UseCommonAlertSchema
+		$logicapp1 = New-AzActionGroupReceiver -LogicAppReceiver -Name 'logicapp' -ResourceId 'somereosurceid'  -CallbackUrl 'somecallback' 
+		Assert-NotNull $logicapp1
+		Assert-AreEqual 'logicapp' $logicapp1.Name
+		Assert-AreEqual 'somereosurceid' $logicapp1.ResourceId
+		Assert-AreEqual 'somecallback' $logicapp1.CallbackUrl
+		Assert-AreEqual false $logicapp1.UseCommonAlertSchema
 
 		Write-Verbose " ****** Creating a new logic app  receiver with   use common alert schema explicitly set"
-		$logicapp = New-AzActionGroupReceiver -LogicAppReceiver -Name 'logicapp' -ResourceId 'somereosurceid'  -CallbackUrl 'somecallback' -UseCommonAlertSchema $t
-		Assert-NotNull $logicapp
-		Assert-AreEqual 'logicapp' $logicapp.Name
-		Assert-AreEqual 'somereosurceid' $logicapp.ResourceId
-		Assert-AreEqual 'somecallback' $logicapp.CallbackUrl
-		Assert-AreEqual true $logicapp.UseCommonAlertSchema
+		$logicapp2 = New-AzActionGroupReceiver -LogicAppReceiver -Name 'logicapp' -ResourceId 'somereosurceid'  -CallbackUrl 'somecallback' -UseCommonAlertSchema $t
+		Assert-NotNull $logicapp2
+		Assert-AreEqual 'logicapp' $logicapp2.Name
+		Assert-AreEqual 'somereosurceid' $logicapp2.ResourceId
+		Assert-AreEqual 'somecallback' $logicapp2.CallbackUrl
+		Assert-AreEqual true $logicapp2.UseCommonAlertSchema
 
 		Write-Verbose " ****** Creating a new automation run book receiver with  default use common alert schema"
-		$runbook = New-AzActionGroupReceiver -AutomationRunbookReceiver -Name 'runbook' -AutomationAccountId 'accoutId'  -RunbookName 'runbook' -WebhookResourceId 'webhookresourceid' -IsGlobalRunbook  $t -AutomationRunbookServiceUri 'someserviceUrl'
-		Assert-NotNull $runbook
-		Assert-AreEqual 'runbook' $runbook.Name
-		Assert-AreEqual 'accoutId' $runbook.AutomationAccountId
-		Assert-AreEqual 'runbook' $runbook.RunbookName
-		Assert-AreEqual 'webhookresourceid' $runbook.WebhookResourceId
-		Assert-AreEqual true $runbook.IsGlobalRunbook
-		Assert-AreEqual false $runbook.UseCommonAlertSchema
-		Assert-AreEqual 'someserviceUrl' $runbook.ServiceUri
+		$runbook1 = New-AzActionGroupReceiver -AutomationRunbookReceiver -Name 'runbook' -AutomationAccountId 'accoutId'  -RunbookName 'runbook' -WebhookResourceId 'webhookresourceid' -IsGlobalRunbook  $t -AutomationRunbookServiceUri 'someserviceUrl'
+		Assert-NotNull $runbook1
+		Assert-AreEqual 'runbook' $runbook1.Name
+		Assert-AreEqual 'accoutId' $runbook1.AutomationAccountId
+		Assert-AreEqual 'runbook' $runbook1.RunbookName
+		Assert-AreEqual 'webhookresourceid' $runbook1.WebhookResourceId
+		Assert-AreEqual true $runbook1.IsGlobalRunbook
+		Assert-AreEqual false $runbook1.UseCommonAlertSchema
+		Assert-AreEqual 'someserviceUrl' $runbook1.ServiceUri
 
 		Write-Verbose " ****** Creating a new automation run book receiver with  use common alert schema set explicitly"
-		$runbook = New-AzActionGroupReceiver -AutomationRunbookReceiver -Name 'runbook' -AutomationAccountId 'accoutId'  -RunbookName 'runbook' -WebhookResourceId 'webhookresourceid' -IsGlobalRunbook $t -AutomationRunbookServiceUri 'someserviceUrl' -UseCommonAlertSchema $t
-		Assert-NotNull $runbook
-		Assert-AreEqual 'runbook' $runbook.Name
-		Assert-AreEqual 'accoutId' $runbook.AutomationAccountId
-		Assert-AreEqual 'runbook' $runbook.RunbookName
-		Assert-AreEqual 'webhookresourceid' $runbook.WebhookResourceId
-		Assert-AreEqual true $runbook.IsGlobalRunbook
-		Assert-AreEqual true $runbook.UseCommonAlertSchema
-		Assert-AreEqual 'someserviceUrl' $runbook.ServiceUri
+		$runbook2 = New-AzActionGroupReceiver -AutomationRunbookReceiver -Name 'runbook' -AutomationAccountId 'accoutId'  -RunbookName 'runbook' -WebhookResourceId 'webhookresourceid' -IsGlobalRunbook $t -AutomationRunbookServiceUri 'someserviceUrl' -UseCommonAlertSchema $t
+		Assert-NotNull $runbook2
+		Assert-AreEqual 'runbook' $runbook2.Name
+		Assert-AreEqual 'accoutId' $runbook2.AutomationAccountId
+		Assert-AreEqual 'runbook' $runbook2.RunbookName
+		Assert-AreEqual 'webhookresourceid' $runbook2.WebhookResourceId
+		Assert-AreEqual true $runbook2.IsGlobalRunbook
+		Assert-AreEqual true $runbook2.UseCommonAlertSchema
+		Assert-AreEqual 'someserviceUrl' $runbook2.ServiceUri
 		
 		Write-Verbose " ****** Creating a new app push receiver"
-		$apppush = New-AzActionGroupReceiver -AzureAppPushReceiver -Name 'apppsuh' -AzureAppPushEmailAddress 'someemaild'  
-		Assert-NotNull $apppush
-		Assert-AreEqual 'apppsuh' $apppush.Name
-		Assert-AreEqual 'someemaild' $apppush.EmailAddress
+		$apppush1 = New-AzActionGroupReceiver -AzureAppPushReceiver -Name 'apppsuh' -AzureAppPushEmailAddress 'someemaild'  
+		Assert-NotNull $apppush1
+		Assert-AreEqual 'apppsuh' $apppush1.Name
+		Assert-AreEqual 'someemaild' $apppush1.EmailAddress
 		
 		Write-Verbose " ****** Creating a new action group"
-		$actual =  Set-AzActionGroup -Name $actionGroupName -ResourceGroup $resourceGroupName -ShortName $shortName -Receiver $email1,$email2,$sms1,$webhook1
+		$actual =  Set-AzActionGroup -Name $actionGroupName -ResourceGroup $resourceGroupName -ShortName $shortName -Receiver $email1,$email2,$sms1,$webhook1,$webhook2,$itsm1,$voice1,$armrole1,$armrole2,$azureFunc1,$azureFunc2,$logicapp1,$logicapp2,$runbook1,$runbook2,$apppush1
 		Assert-NotNull $actual
 		Assert-AreEqual $actionGroupName $actual.Name
+		
+		$json = $actual | ConvertTo-Json
+
+		Write-Verbose $json
 
 		Write-Verbose " ****** Getting the action group by name"
 		$retrieved = Get-AzActionGroup -ResourceGroup $resourceGroupName -Name $actionGroupName
 		Assert-NotNull $retrieved
 		Assert-AreEqual 1 $retrieved.Length
 		Assert-AreEqual $actionGroupName $retrieved[0].Name
-		
+
 		Write-Verbose " ****** Getting the action group by subscriptionId"
 		$retrieved = Get-AzActionGroup
 		Assert-NotNull $retrieved
