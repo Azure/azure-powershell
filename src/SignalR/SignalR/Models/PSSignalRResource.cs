@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using Microsoft.Azure.Management.SignalR.Models;
 
 namespace Microsoft.Azure.Commands.SignalR.Models
@@ -32,6 +33,8 @@ namespace Microsoft.Azure.Commands.SignalR.Models
 
         public PSResourceSku Sku { get; }
 
+        public IList<PSSignalRFeature> Features { get; }
+
         public string Version { get; }
 
         public PSSignalRResource(SignalRResource signalRResource)
@@ -44,6 +47,11 @@ namespace Microsoft.Azure.Commands.SignalR.Models
             PublicPort = signalRResource.PublicPort;
             ServerPort = signalRResource.ServerPort;
             Sku = new PSResourceSku(signalRResource.Sku);
+            Features = new List<PSSignalRFeature>();
+            foreach (var feature in signalRResource.Features)
+            {
+                Features.Add(new PSSignalRFeature(feature));
+            }
             Version = signalRResource.Version;
         }
     }
