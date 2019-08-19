@@ -86,14 +86,14 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
         /// </summary>
         [Parameter(ParameterSetName = NewSmsReceiver, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The country code of the sms receiver")]
         [ValidateNotNullOrEmpty]
-        public string SmsCountryCode { get; set; } = "1";
+        public string CountryCode { get; set; } = "1";
 
         /// <summary>
         /// Gets or sets the CountryCode parameter
         /// </summary>
         [Parameter(ParameterSetName = NewSmsReceiver, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The phone number of the sms receiver")]
         [ValidateNotNullOrEmpty]
-        public string SmsPhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
 
         /// <summary>
         /// Gets or sets webhook receiver SwitchParameter
@@ -319,7 +319,7 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
             }
             else if (this.ParameterSetName == NewSmsReceiver)
             {
-                receiverBase = new PSSmsReceiver { Name = Name, CountryCode = SmsCountryCode, PhoneNumber = SmsPhoneNumber };
+                receiverBase = new PSSmsReceiver { Name = Name, CountryCode = CountryCode, PhoneNumber = PhoneNumber };
             }
             else if (this.ParameterSetName == NewWebhookReceiver)
             {
