@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update documentation of old Auditing cmdlets.
 
 ## Version 1.14.0
 * Add Azure Sql Instance pools cmdlets
@@ -27,7 +28,6 @@
 * Add failover database and elastic pool new cmdlets.
 * Add optional resource group parameter to Get-DatabaseLongTermRetentionBackup and Remove-DatabaseLongTermRetentionBackup cmdlets
 * Add Azure Sql Elastic Jobs cmdlets
-* Update documentation of old Auditing cmdlets.
 
 ## Version 1.13.1
 * Fix missing examples for Set-AzSqlDatabaseSecondary cmdlet
