@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 * Fixed miscellaneous typos across module
+* Updated documentation for `New-AzOperationalInsightsLinuxSyslogDataSource`
+    - Added example
+    - Updated description for `-Name` parameter
 
 ## Version 1.3.2
 * Updated default version for saved searches to be 1. 
