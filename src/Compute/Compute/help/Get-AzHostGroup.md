@@ -40,7 +40,6 @@ Hosts                    : {/subscriptions/00000000-0000-0000-0000-000000000000/
 Zones                    : {1}
 Id                       : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg01/providers/Microsoft.Compute/hostGroups/myhostgroup01
 Name                     : myhostgroup01
-Type                     : 
 Location                 : eastus
 Tags                     : {[key1, val1]}
 ```
@@ -50,6 +49,12 @@ This command returns a host group.
 ### Example 2
 ```
 PS C:\> Get-AzHostGroup -ResourceGroupName $resourceGroupName
+
+ResourceGroupName                   Name Location           Tags FDCount
+-----------------                   ---- --------           ---- -------
+myrg01                     myhostgroup01   eastus {[key1, val1]}       1
+myrg01                     myhostgroup02   eastus {[key1, val1]}       2
+
 ```
 
 This command returns all host groups in the given resource group.
@@ -57,6 +62,12 @@ This command returns all host groups in the given resource group.
 ### Example 3
 ```
 PS C:\> Get-AzHostGroup
+
+ResourceGroupName                   Name Location           Tags FDCount
+-----------------                   ---- --------           ---- -------
+myrg01                     myhostgroup01   eastus {[key1, val1]}       1
+myrg01                     myhostgroup02   eastus {[key1, val1]}       2
+myrg02                     myhostgroup03   eastus {[key1, val1]}       2
 ```
 
 This command returns all host groups in the subscription.

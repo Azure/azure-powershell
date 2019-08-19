@@ -60,6 +60,17 @@ function Test-DedicatedHost
         Assert-True { $dedicatedHost.Tags.Keys.Contains("key1") };
         Assert-AreEqual "val2" $dedicatedHost.Tags["key1"];
 
+        $dedicatedHostStatus =Get-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName -Name $hostName -InstanceView;
+        Assert-AreEqual $rgname $dedicatedHostStatus.ResourceGroupName;
+        Assert-AreEqual $hostName $dedicatedHostStatus.Name;
+        Assert-AreEqual $loc $dedicatedHostStatus.Location;
+        Assert-AreEqual "ESv3-Type1" $dedicatedHostStatus.Sku.Name;
+        Assert-True { $dedicatedHostStatus.Tags.Keys.Contains("key1") };
+        Assert-AreEqual "val2" $dedicatedHostStatus.Tags["key1"];
+        Assert-NotNull  $dedicatedHostStatus.InstanceView;
+        Assert-NotNull  $dedicatedHostStatus.InstanceView.AssetId;
+        Assert-NotNull  $dedicatedHostStatus.InstanceView.Statuses;
+
         $dedicatedHosts = Get-AzHost -ResourceGroupName $rgname -HostGroupName $hostGroupName;
         Assert-AreEqual 1 $dedicatedHosts.Count;
         Assert-AreEqual $dedicatedHost.Id $dedicatedHosts[0].Id;
