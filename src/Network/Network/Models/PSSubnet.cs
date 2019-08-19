@@ -129,6 +129,16 @@ namespace Microsoft.Azure.Commands.Network.Models
             return !string.IsNullOrEmpty(this.Name);
         }
 
+        public bool ShouldSerializeDelegations()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
+
+        public bool ShouldSerializeServiceAssociationLinks()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
+
         [JsonIgnore]
         public string ServiceEndpointText
         {
