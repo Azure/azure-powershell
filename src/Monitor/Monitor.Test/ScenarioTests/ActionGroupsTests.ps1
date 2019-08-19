@@ -47,7 +47,7 @@ function Test-AddGetListSetRemoveActionGroup
 		Assert-AreEqual true $email2.UseCommonAlertSchema
 		
 		Write-Verbose " ****** Creating a new sms receiver"
-		$sms1 = New-AzActionGroupReceiver -SmsReceiver -Name 'smsreceiver' -SmsCountryCode '1' -SmsPhoneNumber '4254251234'
+		$sms1 = New-AzActionGroupReceiver -SmsReceiver -Name 'smsreceiver' -CountryCode '1' -PhoneNumber '4254251234'
 		Assert-NotNull $sms1
 		Assert-AreEqual 'smsreceiver' $sms1.Name
 		Assert-AreEqual '1' $sms1.CountryCode
