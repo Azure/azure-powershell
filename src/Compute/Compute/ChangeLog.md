@@ -21,6 +21,7 @@
 ## Upcoming Release
 * Fixed miscellaneous typos across module
 * Update example in `Invoke-AzVMRunCommand` documentation to use correct parameter name
+* Update `-VolumeType` description in `Set-AzVMDiskEncryptionExtension` and `Set-AzVmssDiskEncryptionExtension` reference documentation
 
 ## Version 2.4.1
 * Add missing properties (ComputerName, OsName, OsVersion and HyperVGeneration) of VM instance view object.
