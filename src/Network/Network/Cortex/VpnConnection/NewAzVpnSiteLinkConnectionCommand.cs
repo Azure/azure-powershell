@@ -16,7 +16,7 @@
     {
         [Parameter(
             Mandatory = true,
-            HelpMessage = "Name")]
+            HelpMessage = "VpnSiteLinkConnection Name")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
