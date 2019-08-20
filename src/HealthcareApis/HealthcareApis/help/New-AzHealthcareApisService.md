@@ -45,6 +45,7 @@ Properties        : Microsoft.Azure.Commands.HealthcareApisService.Models.PSHeal
 SubscriptionId    : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 ResourceGroupName : MyResourceGroupName
 ```
+
 ## PARAMETERS
 
 ### -AccessPolicyObjectId
