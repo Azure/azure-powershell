@@ -35,6 +35,46 @@ Azure Operational Insights can collect syslog data.
 
 ## EXAMPLES
 
+### Example 1: Create syslog data sources
+```
+$FacilityNames       = @()
+$FacilityNames      += 'auth'
+$FacilityNames      += 'authpriv'
+$FacilityNames      += 'cron'
+$FacilityNames      += 'daemon'
+$FacilityNames      += 'ftp'
+$FacilityNames      += 'kern'
+$FacilityNames      += 'mail'
+$FacilityNames      += 'syslog'
+$FacilityNames      += 'user'
+$FacilityNames      += 'uucp'
+$ResourceGroupName   = 'MyResourceGroup'
+$WorkspaceName       = 'MyWorkspaceName'
+
+$Count = 0
+foreach ($FacilityName in $FacilityNames) {
+    $Count++
+    $null = New-AzOperationalInsightsLinuxSyslogDataSource `
+    -ResourceGroupName $ResourceGroupName `
+    -WorkspaceName $WorkspaceName `
+    -Name "Linux-syslog-$($Count)" `
+    -Facility $FacilityName `
+    -CollectEmergency `
+    -CollectAlert `
+    -CollectCritical `
+    -CollectError `
+    -CollectWarning `
+    -CollectNotice `
+    -CollectDebug `
+    -CollectInformational
+}
+
+Get-AzOperationalInsightsDataSource `
+   -ResourceGroupName $ResourceGroupName `
+   -WorkspaceName $WorkspaceName `
+   -Kind 'LinuxSyslog'
+```
+
 ## PARAMETERS
 
 ### -CollectAlert
@@ -203,7 +243,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies a name for the data source.
+Specifies a name for the data source. The name is not exposed in the Azure Portal and any string can be used as long as it is unique.
 
 ```yaml
 Type: System.String
