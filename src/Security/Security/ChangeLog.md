@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Fixed miscellaneous typos across module
+* Add CosmosDB ATP to md files
 
 ## Version 0.7.5
 * Use NextLink for return maximum of 1500 security alerts in command Get-AzSecurityAlert
