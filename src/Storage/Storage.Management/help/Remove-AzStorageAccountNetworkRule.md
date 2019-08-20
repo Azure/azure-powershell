@@ -52,7 +52,7 @@ This command remove several IpRules with IPAddressOrRange.
 
 ### Example 2: Remove a VirtualNetworkRule with VirtualNetworkRule Object input with JSON
 ```
-PS C:\>Remove-AzStorageAccountNetworkRule -ResourceGroupName "myResourceGroup" -AccountName "mystorageaccount" -VirtualNetworkRules (@{VirtualNetworkReourceId="/subscriptions/s1/resourceGroups/g1/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1";Action="allow"})
+PS C:\>Remove-AzStorageAccountNetworkRule -ResourceGroupName "myResourceGroup" -AccountName "mystorageaccount" -VirtualNetworkRules (@{VirtualNetworkResourceId="/subscriptions/s1/resourceGroups/g1/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1";Action="allow"})
 ```
 
 This command remove a VirtualNetworkRule with VirtualNetworkRule Object input with JSON.

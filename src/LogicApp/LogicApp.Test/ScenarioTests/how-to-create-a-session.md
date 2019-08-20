@@ -1,4 +1,4 @@
-The session integration account artifact is unique amongst the rest of the artifacts. It is a byproduct of connecting 2 partners with an agreement and sending a message from partner 1 to partner 2. The session is required for the RecievedIcn and GeneratedIcn tests.
+The session integration account artifact is unique amongst the rest of the artifacts. It is a byproduct of connecting 2 partners with an agreement and sending a message from partner 1 to partner 2. The session is required for the ReceivedIcn and GeneratedIcn tests.
 
 ## Regenerate Sessions Using Existing Logic App
 There should be a Logic App already in the location specified by the test constants. If it is still there, all you need to do is trigger the run and it should create everything that is needed. If it isn't there and the sessions don't exist, you'll need to create the Logic App yourself.

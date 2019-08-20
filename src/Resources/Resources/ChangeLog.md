@@ -18,7 +18,15 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add support for new api version 2019-05-10 for Microsoft.Resource
+    - Add support for `copy.count = 0` for variables, resources and properties
+    - Resources with `condition = false` or `copy.count = 0` will be deleted in complete mode
+* Fixed miscellaneous typos across module
+* Add an example of assigning policy at subscription level to help doc
+
+## Version 1.6.1
 - Remove missing cmdlet referenced in `New-AzResourceGroupDeployment` documentation
+- Updated policy cmdlets to use new api version 2019-01-01
 
 ## Version 1.6.0
 - Fix help text for Get-AzPolicyState -Top parameter

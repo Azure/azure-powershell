@@ -141,7 +141,7 @@ Accept wildcard characters: False
 ```
 
 ### -CustomHost
-Host to redirect. Leave empty to use use the incoming host as the destination host.
+Host to redirect. Leave empty to use the incoming host as the destination host.
 
 ```yaml
 Type: System.String
