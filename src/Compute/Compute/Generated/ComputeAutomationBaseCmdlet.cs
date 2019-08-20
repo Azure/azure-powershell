@@ -90,6 +90,22 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
         }
 
+        public IDedicatedHostGroupsOperations DedicatedHostGroupsClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.DedicatedHostGroups;
+            }
+        }
+
+        public IDedicatedHostsOperations DedicatedHostsClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.DedicatedHosts;
+            }
+        }
+
         public IDisksOperations DisksClient
         {
             get

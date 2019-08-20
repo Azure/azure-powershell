@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
             Mandatory = true,
             HelpMessage = "The size of the ANF pool")]
         [ValidateNotNullOrEmpty]
-        public long? PoolSize { get; set; }
+        public long PoolSize { get; set; }
 
         [Parameter(
             Mandatory = true,

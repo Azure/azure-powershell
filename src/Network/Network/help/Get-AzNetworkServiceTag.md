@@ -19,6 +19,9 @@ Get-AzNetworkServiceTag -Location <String> [-DefaultProfile <IAzureContextContai
 ## DESCRIPTION
 The **Get-AzNetworkServiceTag** cmdlet gets the list of service tag information resources.
 
+Please note that the Azure region information you specify will be used as a reference for version (not as a filter based on location). 
+For example, even if you specify `-Location eastus2` you will get the list of service tags with prefix details across all regions but limited to the cloud that your subscription belongs to (i.e. Public, US government, China or Germany).
+
 ## EXAMPLES
 
 ### Example 1
@@ -180,7 +183,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The location.
+The location that will be used as a reference for version (not as a filter based on location, you will get the list of service tags with prefix details across all regions but limited to the cloud that your subscription belongs to).
 
 ```yaml
 Type: System.String
@@ -195,7 +198,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
