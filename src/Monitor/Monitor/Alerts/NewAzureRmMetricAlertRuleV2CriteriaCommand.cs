@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Monitor.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -88,25 +89,28 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// </summary>
         [Parameter(ParameterSetName = DynamicThresholdParameterSet, Mandatory = false, HelpMessage = "The sensitivity for rule condition")]
         [PSArgumentCompleter("Low", "Medium", "High")]
+        [Alias("Sensitivity")]
         public String ThresholdSensitivity { get; set; } = "Medium";
 
         /// <summary>
         /// Gets or sets the rule Number of violated points
         /// </summary>
         [Parameter(ParameterSetName = DynamicThresholdParameterSet, Mandatory = false, HelpMessage = "The minimum number of violations required within the selected lookback time window required to raise an alert")]
+        [Alias("FailingPeriod")]
         public int NumberOfViolations { get; set; } = 4;
 
         /// <summary>
         /// Gets or sets the rule TotalPeriod
         /// </summary>
         [Parameter(ParameterSetName = DynamicThresholdParameterSet, Mandatory = false, HelpMessage = "The Total number of examined points")]
+        [Alias("TotalPeriod")]
         public int NumberOfExaminedAggregatedPoints { get; set; } = 4;
 
         /// <summary>
         /// Gets or set IgnoreDataBefore  parameter
         /// </summary>
         [Parameter(ParameterSetName = DynamicThresholdParameterSet, Mandatory = false, HelpMessage = "The date from which to start learning the metric historical data and calculate the dynamic thresholds")]
-        public DateTime? IgnoreDataBefore { get; set; }
+        public DateTime IgnoreDataBefore { get; set; }
 
         protected override void ProcessRecordInternal()
         {
@@ -148,7 +152,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
                     dimensions: metricDimensions,
                     failingPeriods: failingPeriods,
                     alertSensitivity: this.ThresholdSensitivity,
-                    ignoreDataBefore: this.IgnoreDataBefore);
+                    ignoreDataBefore: this.IsParameterBound(c => c.IgnoreDataBefore) ? (DateTime?) this.IgnoreDataBefore : null);
                 result = new PSDynamicMetricCriteria(dynamicMetricCriteria);
             }
 

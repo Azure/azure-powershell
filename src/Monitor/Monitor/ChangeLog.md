@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 * Support Dynamic Threshold criteria for metric alert V2
+	- New-AzMetricAlertRuleV2Criteria: now creats dynamic threshold criteria also
+	- Add-AzMetricAlertRuleV2: now accept dynamic threshold criteria also
 * Fixed miscellaneous typos across module
 * Fixed incorrect parameter name in help documentation
 
