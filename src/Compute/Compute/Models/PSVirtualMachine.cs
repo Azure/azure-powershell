@@ -109,5 +109,8 @@ namespace Microsoft.Azure.Commands.Compute.Models
 
         // Gets or sets the Host
         public SubResource Host { get; set; }
+
+        // Gets or sets the VirtualMachineScaleSet
+        public SubResource VirtualMachineScaleSet { get; set; }
     }
 }

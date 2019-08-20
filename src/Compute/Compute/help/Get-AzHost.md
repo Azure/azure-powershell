@@ -91,7 +91,6 @@ Id                     : /subscriptions/00000000-0000-0000-0000-000000000000/res
 Name                   : crptestps2264host
 Location               : eastus
 Tags                   : {"key1":"val2"}
-
 ```
 
 This command returns the instance view of a host.
