@@ -534,7 +534,8 @@ namespace Microsoft.Azure.Commands.Compute
                         Identity = ComputeAutoMapperProfile.Mapper.Map<VirtualMachineIdentity>(this.VM.Identity),
                         Zones = this.Zone ?? this.VM.Zones,
                         ProximityPlacementGroup = this.VM.ProximityPlacementGroup,
-                        Host = this.VM.Host
+                        Host = this.VM.Host,
+                        VirtualMachineScaleSet = this.VM.VirtualMachineScaleSet
                     };
 
                     Dictionary<string, List<string>> auxAuthHeader = null;
