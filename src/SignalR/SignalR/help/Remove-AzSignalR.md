@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.SignalR.dll-Help.xml
 Module Name: Az.SignalR
 online version: https://docs.microsoft.com/en-us/powershell/module/az.signalr/remove-azsignalr
@@ -36,14 +36,14 @@ Remove a SignalR service.
 ## EXAMPLES
 
 ### Remove a SignalR service
-```powershell
+```
 PS C:\> Remove-AzSignalR -ResourceGroupName myResourceGroup -Name mysignalr1 -PassThru
 
 True
 ```
 
 ### Remove all SignalR service from pipe
-```powershell
+```
 PS C:\> Get-AzSignalR -ResourceGroupName myResourceGroup | Remove-AzSignalR
 ```
 
@@ -59,7 +59,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -119,7 +119,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -164,7 +164,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -180,24 +180,21 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
-
 ### Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource
-
 ## OUTPUTS
 
 ### System.Boolean
-
 ## NOTES
 
 ## RELATED LINKS

@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.0.2'
+ModuleVersion = '1.0.3'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -74,7 +74,7 @@ NestedModules = @('.\Microsoft.Azure.PowerShell.Cmdlets.SignalR.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'New-AzSignalR', 'Get-AzSignalR', 'Get-AzSignalRKey', 
+CmdletsToExport = 'New-AzSignalR', 'Get-AzSignalR', 'Get-AzSignalRKey',
                'New-AzSignalRKey', 'Remove-AzSignalR', 'Update-AzSignalR',
                'Test-AzSignalR', 'Restart-AzSignalR', 'Get-AzSignalRUsage'
 
@@ -111,7 +111,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Update incorrect online help URLs'
+        ReleaseNotes = '* Add Update, Restart, CheckNameAvailability, GetUsage Cmdlets'
 
         # Prerelease string of this module
         # Prerelease = ''
