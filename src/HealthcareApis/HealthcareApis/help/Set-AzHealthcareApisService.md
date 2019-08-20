@@ -32,7 +32,7 @@ Set-AzHealthcareApisService [-CosmosOfferThroughput <Int32>] [-Authority <String
 
 ### InputObjectParameterSet
 ```
-Set-AzHealthcareApisService [-Tag <Hashtable>] [-InputObject <PSHealthcareApisService>] [-AsJob]
+Set-AzHealthcareApisService [-InputObject <PSHealthcareApisService>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -268,7 +268,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -283,7 +283,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -307,7 +307,7 @@ HealthcareApis Fhir Service Account Tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: ServiceNameParameterSet, ResourceIdParameterSet
 Aliases: Tags
 
 Required: False

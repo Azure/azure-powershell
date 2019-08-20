@@ -283,7 +283,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
         {
             if (string.IsNullOrEmpty(this.Authority))
             {
-                return PSHealthcareApisFhirServiceAuthenticationConfig.defaultAuthorityPrefix + this.TenantID();
+                return PSHealthcareApisFhirServiceAuthenticationConfig.defaultAuthorityPrefix + base.TenantID;
             }
 
             return this.Authority;

@@ -84,15 +84,11 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Common
             }
         }
 
-        public string TenantID()
+        public string TenantID
         {
-            if (!string.IsNullOrEmpty(DefaultProfile.DefaultContext.Account.Id))
+            get
             {
-                return DefaultProfile.DefaultContext.Tenant.Id;
-            }
-            else
-            {
-                return Guid.NewGuid().ToString();
+                    return DefaultProfile.DefaultContext.Tenant.Id;
             }
         }
 
