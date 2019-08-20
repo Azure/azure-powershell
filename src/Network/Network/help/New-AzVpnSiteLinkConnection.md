@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azvpnsitelinkconnection
 schema: 2.0.0
 ---
 
 # New-AzVpnSiteLinkConnection
 
 ## SYNOPSIS
-Creates an Azure VpnSiteLink object.
+Creates an Azure VpnSiteLinkConnection object.
 
 ## SYNTAX
 
