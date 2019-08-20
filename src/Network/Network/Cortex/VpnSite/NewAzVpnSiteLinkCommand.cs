@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Network
     {
         [Parameter(
             Mandatory = true,
-            HelpMessage = "Name")]
+            HelpMessage = "VpnSiteLink Name")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
