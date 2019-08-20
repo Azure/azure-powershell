@@ -60,6 +60,14 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
 
+        [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string PrivateEndpointNetworkPolicies { get; set; }
+
+        [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string PrivateLinkServiceNetworkPolicies { get; set; }
+
         [JsonIgnore]
         public string IpConfigurationsText
         {
@@ -117,6 +125,16 @@ namespace Microsoft.Azure.Commands.Network.Models
         }
 
         public bool ShouldSerializePrivateEndpoints()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
+
+        public bool ShouldSerializeDelegations()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
+
+        public bool ShouldSerializeServiceAssociationLinks()
         {
             return !string.IsNullOrEmpty(this.Name);
         }

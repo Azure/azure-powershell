@@ -133,7 +133,7 @@ Get the blueprint definition with the given name and version within the specifie
 PS> Get-AzBlueprint -ManagementGroupId "myManagementGroupId" -Name "myBlueprintName" -LatestPublished
 ```
 
-Get the lastest published blueprint definition with the given name within the specified management group.
+Get the latest published blueprint definition with the given name within the specified management group.
 
 ## PARAMETERS
 

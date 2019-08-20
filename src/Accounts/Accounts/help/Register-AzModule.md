@@ -8,7 +8,7 @@ schema: 2.0.0
 # Register-AzModule
 
 ## SYNOPSIS
-FOR INTERNAL USE ONLY - Provide RUntime Support for AutoRest Generated cmdlets
+FOR INTERNAL USE ONLY - Provide Runtime Support for AutoRest Generated cmdlets
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ Register-AzModule [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-FOR INTERNAL USE ONLY - Provide RUntime Support for AutoRest Generated cmdlets
+FOR INTERNAL USE ONLY - Provide Runtime Support for AutoRest Generated cmdlets
 
 ## EXAMPLES
 

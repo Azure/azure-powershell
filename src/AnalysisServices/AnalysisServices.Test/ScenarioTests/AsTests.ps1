@@ -622,7 +622,7 @@ function Test-AnalysisServicesServerLoginWithSPN
 <#
 .SYNOPSIS
 Tests Analysis Services server gateway scenarios (associate/dissociate).
-The assocaited gateway is a unified gateway, which required pre-setup.
+The associated gateway is a unified gateway, which required pre-setup.
 1. Install on-premise gateway on target host https://www.microsoft.com/en-us/download/details.aspx?id=53127 
 2. Follow installation instruction to create azure on-premise gateway resource associating to the host.
 Afterward, use the gateway resource to associate with the AAS for testing.

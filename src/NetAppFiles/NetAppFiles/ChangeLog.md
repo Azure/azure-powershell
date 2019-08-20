@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+* Addition of ProtocolTypes and MountTargets to volume properties
+* Addition of ProtocolType parameter for new volume creation
+* Pool size and Volume usageThreshold required on creation
+
+* Fixed miscellaneous typos across module
+
 ## Version 0.1.1
 * Add new cmdlets:
     - `Set-AzNetAppFilesAccount`

@@ -14,7 +14,8 @@ Create a private link service ip configuration.
 
 ```
 New-AzPrivateLinkServiceIpConfig -Name <String> [-PrivateIpAddressVersion <String>]
- [-PrivateIpAddress <String>] [-PublicIpAddress <PSPublicIpAddress>] [-Subnet <PSSubnet>]
+ [-PrivateIpAddress <String>] [-PublicIpAddress <PSPublicIpAddress>]
+ [-Subnet <PSSubnet>] [-Primary]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -25,17 +26,18 @@ The **New-AzPrivateLinkServiceIpConfig** cmdlet creates a private link service i
 
 ### Example 1
 ```
-New-AzPrivateLinkServiceIpConfig -Name $IpConfigurationName -PrivateIpAddress "10.0.0.5"
+New-AzPrivateLinkServiceIpConfig -Name $IpConfigurationName -PrivateIpAddress "10.0.0.5" -Primary
 ```
 
 This example create a private link service ip configuration in memory.
+
 ## PARAMETERS
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -50,7 +52,7 @@ Accept wildcard characters: False
 The name of the IpConfiguration
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -65,7 +67,7 @@ Accept wildcard characters: False
 The private ip address of the ipConfiguration if static allocation is specified.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -80,7 +82,7 @@ Accept wildcard characters: False
 The ip version of the ip configuration
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: IPv4, IPv6
@@ -92,11 +94,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PublicIpAddress
-PublicIpAddress
+### -Primary
+Indicate current ip configuration is primary or not.
 
 ```yaml
-Type: PSPublicIpAddress
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -111,7 +113,7 @@ Accept wildcard characters: False
 Subnet
 
 ```yaml
-Type: PSSubnet
+Type: Microsoft.Azure.Commands.Network.Models.PSSubnet
 Parameter Sets: (All)
 Aliases:
 

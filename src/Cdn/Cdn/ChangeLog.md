@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Fixed miscellaneous typos across module
+* Fixed a typo in CDN module conversion helper
 
 ## Version 1.3.0
 * Updated cmdlets to support rulesEngine feature based on API version 2019-04-15.

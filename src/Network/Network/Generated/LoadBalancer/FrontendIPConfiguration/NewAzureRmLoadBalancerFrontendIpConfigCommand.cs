@@ -31,6 +31,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -53,6 +54,22 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The private IP address of the IP configuration.",
             ValueFromPipelineByPropertyName = true)]
         public string PrivateIpAddress { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = "SetByResourceSubnet",
+            HelpMessage = "The private IP address version of the IP configuration.",
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = "SetByResourceIdSubnet",
+            HelpMessage = "The private IP address version of the IP configuration.",
+            ValueFromPipelineByPropertyName = true)]
+        [ValidateSet(
+            MNM.IPVersion.IPv4,
+            MNM.IPVersion.IPv6,
+            IgnoreCase = true)]
+        public string PrivateIpAddressVersion { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -110,6 +127,7 @@ namespace Microsoft.Azure.Commands.Network
             var vFrontendIpConfigurations = new PSFrontendIPConfiguration();
 
             vFrontendIpConfigurations.PrivateIpAddress = this.PrivateIpAddress;
+            vFrontendIpConfigurations.PrivateIpAddressVersion = this.PrivateIpAddressVersion;
             if(!string.IsNullOrEmpty(vFrontendIpConfigurations.PrivateIpAddress))
             {
                 vFrontendIpConfigurations.PrivateIpAllocationMethod = "Static";

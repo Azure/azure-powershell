@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 
                 switch (ParameterSetName)
                 {
-                    case ParameterSetNames.CreateBlueprintAssignment:
+                    case ParameterSetNames.UpdateBlueprintAssignment:
 
                         if (ShouldProcess(string.Join(",", subscriptionsList),
                             string.Format(Resources.UpdateAssignmentShouldProcessString, Name)))
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                         }
 
                         break;
-                    case ParameterSetNames.CreateBlueprintAssignmentByFile:
+                    case ParameterSetNames.UpdateBlueprintAssignmentByFile:
                         if (ShouldProcess(string.Join(",", subscriptionsList),
                             string.Format(Resources.UpdateAssignmentShouldProcessString, Name)))
                         {
@@ -162,8 +162,9 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                                 WriteObject(BlueprintClient.CreateOrUpdateBlueprintAssignment(scope, Name, assignmentObject));
                             }
                         }
-
                         break;
+                    default:
+                        throw new PSInvalidOperationException();
                 }
             }
             catch (Exception ex)
