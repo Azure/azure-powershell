@@ -31,16 +31,16 @@ The **Test-AzServiceBusNameAvailability** Cmdlet Check Availability of the provi
 
 ### Example 1
 ```powershell
-PS C:\> Test-AzServiceBusNameAvailability -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $nameQueue -Queue
-PS C:\> True
+Test-AzServiceBusNameAvailability -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $nameQueue -Queue
+True
 ```
 
 Returns True if the Provided $nameQueue name is Availabile or returns False if Provided $nameQueue name in not available
 
 ### Example 2
 ```powershell
-PS C:\> Test-AzServiceBusNameAvailability -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $nameTopic -Topic
-PS C:\> True
+Test-AzServiceBusNameAvailability -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $nameTopic -Topic
+True
 ```
 
 Returns True if the Provided $nameTopic name is Availabile or returns False if Provided $nameTopic name in not available
@@ -130,7 +130,7 @@ Type: System.Management.Automation.SwitchParameter
 Parameter Sets: TopicCheckNameAvailabilitySet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

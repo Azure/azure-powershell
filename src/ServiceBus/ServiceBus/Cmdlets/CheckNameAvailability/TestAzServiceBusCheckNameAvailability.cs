@@ -28,26 +28,26 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
     [Cmdlet("Test", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusNameAvailability", DefaultParameterSetName = QueueCheckNameAvailabilityParameterSet), OutputType(typeof(bool))]
     public class TestAzServiceBusCheckNameAvailability : AzureServiceBusCmdletBase
     {
-        [Parameter(Mandatory = true, ParameterSetName = QueueCheckNameAvailabilityParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
-        [Parameter(Mandatory = true, ParameterSetName = TopicCheckNameAvailabilityParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [Alias("ResourceGroup")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]        
         public string ResourceGroupName { get; set; }
 
-        [Parameter( Mandatory = true, ParameterSetName = QueueCheckNameAvailabilityParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Servicebus Namespace Name")]
-        [Parameter(Mandatory = true, ParameterSetName = TopicCheckNameAvailabilityParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Servicebus Namespace Name")]
+        [Parameter( Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Servicebus Namespace Name")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Servicebus Namespace Name")]
         [Alias(AliasNamespaceName)]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = QueueCheckNameAvailabilityParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Queue Name to check the Name Availability")]
-        [Parameter(Mandatory = true, ParameterSetName = TopicCheckNameAvailabilityParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Topic Name to check the Name Availability")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Queue Name to check the Name Availability")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Topic Name to check the Name Availability")]
         public string Name { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = QueueCheckNameAvailabilityParameterSet, HelpMessage = "To Check Name Availability for Queue Name")]
         public SwitchParameter Queue { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = TopicCheckNameAvailabilityParameterSet, HelpMessage = "To Check Name Availability for Topic Name")]
+        [Parameter(Mandatory = true, ParameterSetName = TopicCheckNameAvailabilityParameterSet, HelpMessage = "To Check Name Availability for Topic Name")]
         public SwitchParameter Topic { get; set; }
 
 
