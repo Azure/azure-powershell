@@ -401,4 +401,13 @@
   <data name="InvalidResourceId" xml:space="preserve">
     <value>Provided ResourceId isn't in the right format or doesn't refer to the right resource type ({0})</value>
   </data>
+  <data name="VpnSiteLinkRequiredForVpnSiteLinkConnection" xml:space="preserve">
+    <value>A valid VpnSiteLink attached to a VpnSite is required to create a VpnSiteLinkConnection</value>
+  </data>
+  <data name="VpnConnectionPropertyIsDeprecated" xml:space="preserve">
+    <value>Update request for VpnConnection contains deprecated property. Please use corresponding VpnSiteLinkConnection property instead.</value>
+  </data>
+  <data name="VpnSitePropertyIsDeprecated" xml:space="preserve">
+    <value>Update request for VpnSite contains deprecated property. Please use corresponding VpnSiteLink property instead.</value>
+  </data>
 </root>

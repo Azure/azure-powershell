@@ -3721,6 +3721,10 @@
                 <Label>ProvisioningState</Label>
                 <PropertyName>ProvisioningState</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>Connections</Label>
+                <PropertyName>Connections</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -3774,6 +3778,10 @@
               <ListItem>
                 <Label>ProvisioningState</Label>
                 <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>VpnSiteLinks</Label>
+                <PropertyName>VpnSiteLinks</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
