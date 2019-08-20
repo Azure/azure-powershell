@@ -8,7 +8,7 @@ Locale: en-US
 
 # Az.HealthcareApis Module
 ## Description
-Provides CRUD Management for HealthcareApis Services
+Provides CRUD Management for HealthcareApis Service
 
 ## Az.HealthcareApis Cmdlets
 ### [Get-AzHealthcareApisService](Get-AzHealthcareApisService.md)
