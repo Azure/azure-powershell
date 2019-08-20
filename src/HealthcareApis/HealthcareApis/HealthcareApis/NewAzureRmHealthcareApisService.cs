@@ -22,6 +22,7 @@ using Microsoft.Azure.Commands.HealthcareApis.Models;
 using Microsoft.Azure.Commands.HealthcareApis.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.HealthcareApis.Properties;
+using System;
 
 namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 {
@@ -226,28 +227,28 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
             }
             else if(this.FhirVersion != null)
             {
-                return parseKindFromVersion(this.FhirVersion);
+                return ParseKindFromVersion(this.FhirVersion);
             }
 
-            return parseKind(this.Kind);
+            return ParseKind(this.Kind);
         }
 
-        private Kind parseKindFromVersion(string fhirVersion)
+        private Kind ParseKindFromVersion(string fhirVersion)
         {
-            return parseKind(FhirVersion);
+            return ParseKind(FhirVersion);
         }
 
-        private Kind parseKind(string kind)
+        private Kind ParseKind(string kind)
         {
-            if (kind.ToLowerInvariant().Equals("fhir"))
+            if (kind.Equals("fhir", StringComparison.OrdinalIgnoreCase))
             {
                 return Management.HealthcareApis.Models.Kind.Fhir;
             }
-            else if (kind.ToLowerInvariant().Equals("fhir-stu3") || kind.ToLowerInvariant().Equals("stu3"))
+            else if (kind.Equals("fhir-stu3", StringComparison.OrdinalIgnoreCase) || kind.Equals("stu3", StringComparison.OrdinalIgnoreCase))
             {
                 return Management.HealthcareApis.Models.Kind.FhirStu3;
             }
-            else if (kind.ToLowerInvariant().Equals("fhir-r4") || kind.ToLowerInvariant().Equals("r4"))
+            else if (kind.Equals("fhir-r4", StringComparison.OrdinalIgnoreCase) || kind.Equals("r4", StringComparison.OrdinalIgnoreCase))
             {
                 return Management.HealthcareApis.Models.Kind.FhirR4;
             }

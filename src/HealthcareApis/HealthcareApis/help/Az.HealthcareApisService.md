@@ -6,7 +6,7 @@ Help Version: 0.1.0.0
 Locale: en-US
 ---
 
-# Az.HealthcareApisService Module
+Az.HealthcareApisService Module
 ## Description
 Provides CRUD Management for HealthcareApis Services
 ## Az.HealthcareApis Cmdlets

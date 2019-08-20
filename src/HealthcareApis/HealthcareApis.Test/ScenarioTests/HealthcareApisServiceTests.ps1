@@ -30,6 +30,7 @@ function Test-AzRmHealthcareApisService{
 	$location = Get-Location
 	$offerThroughput =  Get-OfferThroughput
 	$kind = Get-Kind
+	$object_id = Get-AccessPolicyObjectID;
 	
 	try
 	{
@@ -38,7 +39,8 @@ function Test-AzRmHealthcareApisService{
 		New-AzResourceGroup -Name $rgname -Location $location
 
 	# Create App
-		$created = New-AzHealthcareApisService -Name $rname -ResourceGroupName  $rgname -Location $location -Kind $kind -CosmosOfferThroughput $offerThroughput;
+		
+		$created = New-AzHealthcareApisService -Name $rname -ResourceGroupName  $rgname -Location $location -Kind $kind -AccessPolicyObjectId $object_id -CosmosOfferThroughput $offerThroughput;
 	
 	    $actual = Get-AzHealthcareApisService -ResourceGroupName $rgname -Name $rname
 
@@ -55,8 +57,7 @@ function Test-AzRmHealthcareApisService{
 		Assert-AreEqual $updatedAccount.Properties.CosmosDbConfiguration.OfferThroughput $newOfferThroughput
 
 		$rname1 = $rname + "1"
-
-		$created1 = New-AzHealthcareApisService -Name $rname1 -ResourceGroupName  $rgname -Location $location -CosmosOfferThroughput $offerThroughput;
+		$created1 = New-AzHealthcareApisService -Name $rname1 -ResourceGroupName  $rgname -Location $location -AccessPolicyObjectId $object_id -CosmosOfferThroughput $offerThroughput;
 		
 		$actual1 = Get-AzHealthcareApisService -ResourceGroupName $rgname -Name $rname1
 

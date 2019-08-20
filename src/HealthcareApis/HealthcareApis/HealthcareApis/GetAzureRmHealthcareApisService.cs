@@ -23,7 +23,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 {
 
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HealthcareApisService", DefaultParameterSetName = ListParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSHealthcareApisService))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HealthcareApisService", DefaultParameterSetName = ListParameterSet), OutputType(typeof(PSHealthcareApisService))]
     public class GetAzureRmHealthcareApisService : HealthcareApisBaseCmdlet
     {
         protected const string ServiceNameParameterSet = "ServiceNameParameterSet";
@@ -33,7 +33,6 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
         [Parameter(
            Mandatory = true,
            ParameterSetName = ServiceNameParameterSet,
-           ValueFromPipelineByPropertyName = true,
            HelpMessage = "Resource Group Name.")]
         [Parameter(
            Mandatory = false,
@@ -47,8 +46,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
         [Parameter(
           Mandatory = true,
           ParameterSetName = ServiceNameParameterSet,
-          ValueFromPipelineByPropertyName = true,
-           HelpMessage = "HealthcareApis Service Name.")]
+          HelpMessage = "HealthcareApis Service Name.")]
         [Alias(HealthcareApisAccountNameAlias, FhirServiceNameAlias)]
         [ValidateNotNullOrEmpty]
         [ValidatePattern("^[a-z0-9][a-z0-9-]{1,21}[a-z0-9]$")]

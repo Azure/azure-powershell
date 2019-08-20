@@ -37,25 +37,22 @@ Deletes a service instance.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzHealthcareApisFhirService -Name MyService -ResourceGroupName MyResourceGroup
-
-ResourceGroupName Name 
------------------ ----------- 
-MyResourceGroup   MyService
+PS C:\> Remove-AzHealthcareApisService -Name MyService -ResourceGroupName MyResourceGroup
 ```
 
 Deletes the existing HealthcareApis service with the provided name within a provided resource group.
 
 ### Example 2
 ```powershell
-PS C:\> Remove-AzHealthcareApisFhirService -ResourceId myResourceId
+PS C:\> $ResourceId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.HealthcareApis/services/MyService
+PS C:\> Remove-AzHealthcareApisService -ResourceId $ResourceId
 ```
 
 Deletes the existing HealthcareApis service with the provided ResourceId.
 
 ### Example 3
 ```powershell
-PS C:\> Remove-AzHealthcareApisFhirService -InputObject PSHealthcareApisService
+PS C:\> Get-AzHealthcareApisService -ResourceGroupName MyResourceGroup -Name MyService | Remove-AzHealthcareApisService
 ```
 
 Deletes the provided HealthcareApis service object.

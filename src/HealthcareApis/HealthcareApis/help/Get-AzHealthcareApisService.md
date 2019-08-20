@@ -37,7 +37,7 @@ Gets existing healthcareApis fhir service accounts created within the specified 
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzHealthcareApisFhirService -Name "MyService" -ResourceGroupName "MyResourceGroup"
+PS C:\> Get-AzHealthcareApisService -Name "MyService" -ResourceGroupName "MyResourceGroup"
 
 ResourceId        : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft
                     .HealthcareApis/services/MyService
@@ -57,7 +57,7 @@ ResourceGroupName : MyResourceGroupName
 Gets the metadata for all HealthcareApis services in the provided Resource Group.
 
 ```powershell
-PS C:\> Get-AzHealthcareApisFhirService -ResourceGroupName "MyResourceGroup"
+PS C:\> Get-AzHealthcareApisService -ResourceGroupName "MyResourceGroup"
 
 ResourceId        : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft
                     .HealthcareApis/services/MyService1
@@ -89,7 +89,7 @@ ResourceGroupName : MyResourceGroupName
 Gets the metadata for all HealthcareApis services in the given subscription
 
 ```powershell
-PS C:\> Get-AzHealthcareApisFhirService
+PS C:\> Get-AzHealthcareApisService
 
 ResourceId        : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft
                     .HealthcareApis/services/MyService1
