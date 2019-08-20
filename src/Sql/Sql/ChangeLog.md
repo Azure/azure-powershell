@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update documentation of old Auditing cmdlets.
 
 ## Version 1.14.0
 * Add Azure Sql Instance pools cmdlets
