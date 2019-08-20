@@ -137,7 +137,7 @@ Accept wildcard characters: False
 The IgnoreDataBefore parameter
 
 ```yaml
-Type: System.Nullable`1[System.DateTime]
+Type: System.DateTime
 Parameter Sets: DynamicThresholdParameterSet
 Aliases:
 
@@ -184,7 +184,7 @@ The Total number of examined points
 ```yaml
 Type: System.Int32
 Parameter Sets: DynamicThresholdParameterSet
-Aliases:
+Aliases: TotalPeriod
 
 Required: False
 Position: Named
@@ -199,7 +199,7 @@ The minimum number of violations required within the selected lookback time wind
 ```yaml
 Type: System.Int32
 Parameter Sets: DynamicThresholdParameterSet
-Aliases:
+Aliases: FailingPeriod
 
 Required: False
 Position: Named
@@ -244,7 +244,7 @@ The sensitivity for rule condition
 ```yaml
 Type: System.String
 Parameter Sets: DynamicThresholdParameterSet
-Aliases:
+Aliases: Sensitivity
 
 Required: False
 Position: Named
