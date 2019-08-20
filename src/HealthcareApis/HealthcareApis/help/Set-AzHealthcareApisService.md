@@ -43,7 +43,7 @@ Updates an existing healthcareApis fhir service.
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzHealthcareApisFhirService -Name MyService -ResourceGroupName MyResourceGroup -CosmosOfferThroughput 500
+PS C:\> Set-AzHealthcareApisService -Name MyService -ResourceGroupName MyResourceGroup -CosmosOfferThroughput 500
 
 ResourceGroupName Name 
 ----------------- -----------
@@ -54,11 +54,8 @@ Updates the existing healthcareapis service named MyService in the resource grou
 
 ### Example 2
 ```powershell
-PS C:\> Set-AzHealthcareApisFhirService -ResourceId MyResourceID  -CosmosOfferThroughput 500
-
-ResourceID 
-------------------
-<MyResourceID
+PS C:\> $ResourceId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.HealthcareApis/services/MyService
+PS C:\> Set-AzHealthcareApisService -ResourceId $ResourceId  -CosmosOfferThroughput 500
 ```
 
 Updates the existing healthcareapis service named MyService in the resource group MyResourceGroup  with the cosmosdb OfferThroughput = 500.

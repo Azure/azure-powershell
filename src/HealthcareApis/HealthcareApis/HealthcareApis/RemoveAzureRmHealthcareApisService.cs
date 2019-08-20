@@ -32,7 +32,6 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
         [Parameter(
           ParameterSetName = ServiceNameParameterSet,
           Mandatory = true,
-          ValueFromPipelineByPropertyName = true,
           HelpMessage = "HealthcareApis Service Name.")]
         [Alias(HealthcareApisAccountNameAlias, FhirServiceNameAlias)]
         [ValidateNotNullOrEmpty]
@@ -43,7 +42,6 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
         [Parameter(
            ParameterSetName = ServiceNameParameterSet,
            Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
            HelpMessage = "Resource Group Name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -51,6 +49,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 
         [Parameter(
           ParameterSetName = InputObjectParameterSet,
+          Mandatory = true,
           HelpMessage = "HealthcareApis service object",
           ValueFromPipeline = true)]
         public PSHealthcareApisService InputObject { get; set; }
@@ -69,6 +68,9 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
             Mandatory = false,
             HelpMessage = "Run cmdlet as a job in the background.")]
         public SwitchParameter AsJob { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {

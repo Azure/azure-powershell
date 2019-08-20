@@ -30,13 +30,13 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
         protected const string ResourceIdParameterSet = "ResourceIdParameterSet";
         protected const string InputObjectParameterSet = "InputObjectParameterSet";
 
-        [Parameter(Mandatory = true, ParameterSetName = ServiceNameParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "HealthcareApis Service Name.")]
+        [Parameter(Mandatory = true, ParameterSetName = ServiceNameParameterSet, HelpMessage = "HealthcareApis Service Name.")]
         [ValidateNotNullOrEmpty]
         [ValidatePattern("^[a-z0-9][a-z0-9-]{1,21}[a-z0-9]$")]
         [ValidateLength(2, 64)]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = ServiceNameParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "HealthcareApis Service Resource Group Name.")]
+        [Parameter(Mandatory = true, ParameterSetName = ServiceNameParameterSet, HelpMessage = "HealthcareApis Service Resource Group Name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -100,10 +100,6 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
         [Parameter(
             Mandatory = false,
             ParameterSetName = ServiceNameParameterSet,
-            HelpMessage = "HealthcareApis Fhir Service Account Tags.")]
-        [Parameter(
-            Mandatory = false,
-            ParameterSetName = InputObjectParameterSet,
             HelpMessage = "HealthcareApis Fhir Service Account Tags.")]
         [Parameter(
             Mandatory = false,

@@ -50,7 +50,7 @@ function Get-OfferThroughput
 
 <#
 .SYNOPSIS
-Gets offerThroughput value
+Gets kind value
 #>
 function Get-Kind
 {
@@ -64,4 +64,13 @@ Cleans the created resource groups
 function Clean-ResourceGroup($rgname)
 {
 	Remove-AzResourceGroup -Name $rgname -Force
+}
+
+<#
+.SYNOPSIS
+Gets objectID value
+#>
+function Get-AccessPolicyObjectID
+{
+    return "9b52f7aa-85e9-47e2-8f10-af57e63a4ae1"
 }

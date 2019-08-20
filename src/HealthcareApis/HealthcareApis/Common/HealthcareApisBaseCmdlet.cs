@@ -18,6 +18,7 @@ using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Management.HealthcareApis;
 using Microsoft.Azure.Management.HealthcareApis.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Common;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
@@ -29,6 +30,8 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Common
     public abstract class HealthcareApisBaseCmdlet : AzureRMCmdlet
     {
         private HealthcareApisManagementClientWrapper _healthcareApisManagementClientWrapper;
+
+        private ActiveDirectoryClientWrapper _activeDirectoryClientWrapper;
 
         protected const string HealthcareApisAccountNameAlias = "HealthcareApisName";
         protected const string FhirServiceNameAlias = "FhirServiceName";
@@ -56,23 +59,28 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Common
             set { _healthcareApisManagementClientWrapper = new HealthcareApisManagementClientWrapper(value); }
         }
 
+        public ActiveDirectoryClient ActiveDirectoryClient
+        {
+            get
+            {
+                if (_activeDirectoryClientWrapper == null)
+                {
+                    _activeDirectoryClientWrapper = new ActiveDirectoryClientWrapper(DefaultProfile.DefaultContext);
+                }
+
+                return _activeDirectoryClientWrapper.ActiveDirectoryClient;
+            }
+        }
+
         public string AccessPolicyID
         {
             get
             {
-                if (!string.IsNullOrEmpty(DefaultProfile.DefaultContext.Account.Id))
+                ADObjectFilterOptions _options = new ADObjectFilterOptions()
                 {
-                    ActiveDirectoryClient _activeDirectoryClient = new ActiveDirectoryClient(DefaultProfile.DefaultContext);
-                    ADObjectFilterOptions _options = new ADObjectFilterOptions()
-                    {
-                        Id = DefaultProfile.DefaultContext.Account.Id
-                    };
-                    return _activeDirectoryClient.GetObjectId(_options).ToString();
-                }
-                else
-                {
-                    return Guid.NewGuid().ToString();
-                }
+                    Id = DefaultProfile.DefaultContext.Account.Id
+                };
+                return ActiveDirectoryClient.GetObjectId(_options).ToString();
             }
         }
 
