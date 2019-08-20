@@ -92,6 +92,11 @@ namespace Microsoft.Azure.Commands.Compute
         public string HostId { get; set; }
 
         [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Id of virtual machine scale set")]
+        public string VmssId { get; set; }
+
+        [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true)]
 		[Alias("Tag")]
@@ -158,9 +163,14 @@ namespace Microsoft.Azure.Commands.Compute
                 vm.ProximityPlacementGroup = new SubResource(this.ProximityPlacementGroupId);
             }
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("HostId"))
+            if (this.IsParameterBound(c => c.HostId))
             {
                 vm.Host = new SubResource(this.HostId);
+            }
+
+            if (this.IsParameterBound(c => c.VmssId))
+            {
+                vm.VirtualMachineScaleSet = new SubResource(this.VmssId);
             }
 
             WriteObject(vm);

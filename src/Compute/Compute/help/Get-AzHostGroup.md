@@ -54,7 +54,6 @@ ResourceGroupName                   Name Location           Tags FDCount
 -----------------                   ---- --------           ---- -------
 myrg01                     myhostgroup01   eastus {[key1, val1]}       1
 myrg01                     myhostgroup02   eastus {[key1, val1]}       2
-
 ```
 
 This command returns all host groups in the given resource group.
