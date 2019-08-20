@@ -1,23 +1,25 @@
-﻿---
-Module Name: Az.HealthcareApisService
+---
+Module Name: Az.HealthcareApis
 Module Guid: df9fc69a-c019-403a-9013-eefa7eb5e27a
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.healthcareapisservice
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.healthcareapis
 Help Version: 0.1.0.0
 Locale: en-US
 ---
 
-Az.HealthcareApisService Module
+# Az.HealthcareApis Module
 ## Description
 Provides CRUD Management for HealthcareApis Services
+
 ## Az.HealthcareApis Cmdlets
 ### [Get-AzHealthcareApisService](Get-AzHealthcareApisService.md)
-Gets properties for either one or several HealthcareApis services.
+Get the metadata of a service instance.
 
 ### [New-AzHealthcareApisService](New-AzHealthcareApisService.md)
-Creates a HealthcareApis service.
+Creates the metadata of a service instance.
+
 ### [Remove-AzHealthcareApisService](Remove-AzHealthcareApisService.md)
-Deletes an HealthcareApis service.
+Deletes a service instance.
 
 ### [Set-AzHealthcareApisService](Set-AzHealthcareApisService.md)
-Updates the metadata for an HealthcareApis service.
+Updates an existing healthcareApis fhir service.
 
