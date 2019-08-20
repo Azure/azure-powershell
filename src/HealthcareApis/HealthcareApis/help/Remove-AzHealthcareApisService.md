@@ -120,7 +120,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{ Fill PassThru Description }}
+If provided, returns true if the operation was successful
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

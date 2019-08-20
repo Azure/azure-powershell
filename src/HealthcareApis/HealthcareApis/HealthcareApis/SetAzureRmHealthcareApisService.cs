@@ -110,11 +110,11 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
         [AllowEmptyCollection]
         public Hashtable Tag { get; set; }
 
-        [Parameter(ParameterSetName = InputObjectParameterSet, HelpMessage = "HealthcareApis fhir service piped from Get-AzHealthcareApisFhirService.", ValueFromPipeline = true)]
+        [Parameter(Mandatory = true, ParameterSetName = InputObjectParameterSet, HelpMessage = "HealthcareApis fhir service piped from Get-AzHealthcareApisFhirService.", ValueFromPipeline = true)]
         public PSHealthcareApisService InputObject { get; set; }
 
 
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ResourceIdParameterSet, HelpMessage = "HealthcareApis Fhir Service ResourceId.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ResourceIdParameterSet, HelpMessage = "HealthcareApis Fhir Service ResourceId.")]
         [ResourceIdCompleter("Microsoft.HealthcareApis/services")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }

@@ -26,13 +26,13 @@ Set-AzHealthcareApisService -Name <String> -ResourceGroupName <String> [-CosmosO
 Set-AzHealthcareApisService [-CosmosOfferThroughput <Int32>] [-Authority <String>] [-Audience <String>]
  [-EnableSmartProxy] [-CorsOrigin <String[]>] [-CorsHeader <String[]>] [-CorsMethod <String[]>]
  [-CorsMaxAge <Int32>] [-AllowCorsCredential] [-AccessPolicyObjectId <String[]>] [-Tag <Hashtable>]
- [-ResourceId] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ -ResourceId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-Set-AzHealthcareApisService [-InputObject <PSHealthcareApisService>] [-AsJob]
+Set-AzHealthcareApisService -InputObject <PSHealthcareApisService> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -54,7 +54,7 @@ Updates the existing healthcareapis service named MyService in the resource grou
 
 ### Example 2
 ```powershell
-PS C:\> $ResourceId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.HealthcareApis/services/MyService
+PS C:\> $ResourceId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.HealthcareApis/services/MyService"
 PS C:\> Set-AzHealthcareApisService -ResourceId $ResourceId  -CosmosOfferThroughput 500
 ```
 
@@ -250,7 +250,7 @@ Type: Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisService
 Parameter Sets: InputObjectParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -296,7 +296,7 @@ Parameter Sets: ResourceIdParameterSet
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

@@ -107,7 +107,10 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
                     && ShouldProcess(name, string.Format(CultureInfo.CurrentCulture, Resources.RemoveService_ProcessMessage, name)))
                 {
                     this.HealthcareApisClient.Services.Delete(rgName, name);
-                    WriteObject(true);
+                    if (PassThru.IsPresent)
+                    {
+                        WriteObject(true);
+                    }
                 }
             });
         }
