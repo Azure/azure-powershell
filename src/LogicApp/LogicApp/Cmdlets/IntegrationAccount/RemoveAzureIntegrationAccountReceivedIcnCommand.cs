@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IntegrationAccountReceivedIcn", SupportsShouldProcess = true), OutputType(typeof(void))]
     public class RemoveAzureIntegrationAccountReceivedIcnCommand : LogicAppBaseCmdlet
     {
-        #region Input Paramters
+        #region Input Parameters
 
         [Parameter(
             Mandatory = true,

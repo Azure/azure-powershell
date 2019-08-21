@@ -716,6 +716,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Service
             throw new NotImplementedException();
         }
 
+        public Task SetStandardBlobTierAsync(CloudBlockBlob blob, AccessCondition accessCondition, StandardBlobTier tier, RehydratePriority? rehydratePriority, BlobRequestOptions options, OperationContext operationContext, CancellationToken cmdletCancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<string> StartCopyAsync(CloudBlob blob, Uri source, StandardBlobTier? standardBlobTier, RehydratePriority? rehydratePriority, AccessCondition sourceAccessCondition, AccessCondition destAccessCondition, BlobRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// The storage context
         /// </summary>

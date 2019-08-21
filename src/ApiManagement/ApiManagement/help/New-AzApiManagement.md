@@ -130,7 +130,7 @@ EnableClientCertificate               :
 ResourceGroupName                     : Api-Default-CentralUS
 ```
 
-This command creates a Standar SKU Api Management service and Enable TLS 1.0 on Frontend client to ApiManagement Gateway and Backend client between ApiManagement Gateway and Backend.
+This command creates a Standard SKU Api Management service and Enable TLS 1.0 on Frontend client to ApiManagement Gateway and Backend client between ApiManagement Gateway and Backend.
 
 ## PARAMETERS
 

@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "Flag which determines whether Tracing can be enabled at the Subscription Leve. This is optional parameter and default is $null.")]
+            HelpMessage = "Flag which determines whether Tracing can be enabled at the Subscription Level. This is optional parameter and default is $null.")]
         public SwitchParameter AllowTracing { get; set; }
 
         [Parameter(

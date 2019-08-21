@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
 {
+    using System;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
     using Xunit;

@@ -95,6 +95,10 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     this.BackendHttpSettingsId = this.BackendHttpSettings.Id;
                 }
+                if (RewriteRuleSet != null)
+                {
+                    this.RewriteRuleSetId = this.RewriteRuleSet.Id;
+                }
                 if (RedirectConfiguration != null)
                 {
                     this.RedirectConfigurationId = this.RedirectConfiguration.Id;
@@ -119,6 +123,12 @@ namespace Microsoft.Azure.Commands.Network
             {
                 pathRule.BackendHttpSettings = new PSResourceId();
                 pathRule.BackendHttpSettings.Id = this.BackendHttpSettingsId;
+            }
+
+            if (!string.IsNullOrEmpty(this.RewriteRuleSetId))
+            {
+                pathRule.RewriteRuleSet = new PSResourceId();
+                pathRule.RewriteRuleSet.Id = this.RewriteRuleSetId;
             }
 
             if (!string.IsNullOrEmpty(this.RedirectConfigurationId))

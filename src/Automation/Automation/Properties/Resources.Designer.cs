@@ -691,7 +691,7 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Runbook file already exists. Specify the force switch switch overwrite. Runbook file name: {0}.
+        ///   Looks up a localized string similar to Runbook file already exists. Specify the force switch to overwrite. Runbook file name: {0}.
         /// </summary>
         internal static string RunbookFileAlreadyExists {
             get {

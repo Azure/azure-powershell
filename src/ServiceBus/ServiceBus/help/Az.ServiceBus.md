@@ -47,6 +47,9 @@ Returns a description for the specified Service Bus topic.
 ### [New-AzServiceBusAuthorizationRule](New-AzServiceBusAuthorizationRule.md)
 Creates a new authorization rule for the specified Service Bus given Namespace or Queue or Topic.
 
+### [New-AzServiceBusAuthorizationRuleSASToken](New-AzServiceBusAuthorizationRuleSASToken.md)
+Generates a SAS tolen for Azure serviucebus authorization rule of namespace/queue/topic. 
+
 ### [New-AzServiceBusGeoDRConfiguration](New-AzServiceBusGeoDRConfiguration.md)
 Creates an new Alias(Disaster Recovery configuration)
 
@@ -84,7 +87,7 @@ Removes the namespace from the specified resource group.
 Removes the queue from the specified Service Bus namespace.
 
 ### [Remove-AzServiceBusRule](Remove-AzServiceBusRule.md)
-Removes the speficied rule of a given subscription .
+Removes the specified rule of a given subscription .
 
 ### [Remove-AzServiceBusSubscription](Remove-AzServiceBusSubscription.md)
 Removes the subscription to a topic from the specified Service Bus namespace.

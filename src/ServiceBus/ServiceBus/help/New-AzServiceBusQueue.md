@@ -96,7 +96,7 @@ Accept wildcard characters: False
 Timespan to live value.
 This is the duration after which the message expires, starting from when the message is sent to Service Bus.
 This is the default value used when TimeToLive is not set on a message itself.
-For Standard = Timespan.Max and Basic = 14 dyas
+For Standard = Timespan.Max and Basic = 14 days
 
 ```yaml
 Type: System.String
@@ -126,7 +126,7 @@ Accept wildcard characters: False
 ```
 
 ### -DuplicateDetectionHistoryTimeWindow
-Specifies the duplicate detection history time window, a [TimeSpan](https://msdn.microsoft.com/library/system.timespan.aspx) valuethat defines the duration of the duplicate detection history. The default value is 10 minutes.
+Specifies the duplicate detection history time window, a [TimeSpan](https://msdn.microsoft.com/library/system.timespan.aspx) value that defines the duration of the duplicate detection history. The default value is 10 minutes.
 
 ```yaml
 Type: System.String
@@ -250,7 +250,7 @@ Accept wildcard characters: False
 ```
 
 ### -MaxSizeInMegabytes
-MaxSizeInMegabytes - the maximum size of the queue in megabytes, which is the size of memory allocated for the queue.
+MaxSizeInMegabytes - the maximum size of the queue in megabytes, which is the size of memory allocated for the queue.Default is 1024. Max for Standard SKU is 5120 and for Premium SKU is 81920, Allowed values : 1024, 2048, 3072, 4096, 5120, 10240, 20480, 40960, 81920
 
 ```yaml
 Type: System.Nullable`1[System.Int64]
@@ -326,7 +326,7 @@ Accept wildcard characters: False
 ```
 
 ### -RequiresSession
-RequiresSession - the value indicating if this queue requires duplicate detection
+RequiresSession - the value indicating if this queue uses sessions
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]

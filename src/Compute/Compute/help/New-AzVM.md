@@ -20,8 +20,8 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [[-Zone] <String
  [-SubnetAddressPrefix <String>] [-PublicIpAddressName <String>] [-DomainNameLabel <String>]
  [-AllocationMethod <String>] [-SecurityGroupName <String>] [-OpenPorts <Int32[]>] [-Image <String>]
  [-Size <String>] [-AvailabilitySetName <String>] [-SystemAssignedIdentity] [-UserAssignedIdentity <String>]
- [-AsJob] [-DataDiskSizeInGb <Int32[]>] [-EnableUltraSSD] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-AsJob] [-DataDiskSizeInGb <Int32[]>] [-EnableUltraSSD] [-ProximityPlacementGroup <String>]
+ [-HostId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DefaultParameterSet
@@ -38,8 +38,8 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] -Name <String> [
  [-PublicIpAddressName <String>] [-DomainNameLabel <String>] [-AllocationMethod <String>]
  [-SecurityGroupName <String>] [-OpenPorts <Int32[]>] -DiskFile <String> [-Linux] [-Size <String>]
  [-AvailabilitySetName <String>] [-SystemAssignedIdentity] [-UserAssignedIdentity <String>] [-AsJob]
- [-DataDiskSizeInGb <Int32[]>] [-EnableUltraSSD] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-DataDiskSizeInGb <Int32[]>] [-EnableUltraSSD] [-ProximityPlacementGroup <String>] [-HostId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -332,6 +332,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -HostId
+The Id of Host
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet, DiskFileParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Image
 The friendly image name upon which the VM will be built.  These include: Win2016Datacenter, Win2012R2Datacenter, Win2012Datacenter, Win2008R2SP1, UbuntuLTS, CentOS, CoreOS, Debian, openSUSE-Leap, RHEL, SLES.
 
@@ -430,6 +445,21 @@ A list of ports to open on the network security group (NSG) for the created VM. 
 
 ```yaml
 Type: System.Int32[]
+Parameter Sets: SimpleParameterSet, DiskFileParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProximityPlacementGroup
+The name or resource id of the Proximity Placement Group to use with this VM.
+
+```yaml
+Type: System.String
 Parameter Sets: SimpleParameterSet, DiskFileParameterSet
 Aliases:
 

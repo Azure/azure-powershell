@@ -37,6 +37,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string ProvisioningState { get; set; }
 
+        public List<string> Zones { get; set; }
+
         [JsonIgnore]
         public string IpConfigurationsText
         {
@@ -63,16 +65,17 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         #region Ip Configuration Operations
 
-        public void Allocate(PSVirtualNetwork virtualNetwork, PSPublicIpAddress publicIpAddress)
+        public void Allocate(PSVirtualNetwork virtualNetwork, PSPublicIpAddress[] publicIpAddresses)
         {
             if (virtualNetwork == null)
             {
                 throw new ArgumentNullException(nameof(virtualNetwork), "Virtual Network cannot be null!");
             }
 
-            if (publicIpAddress == null)
+            
+            if (publicIpAddresses == null || publicIpAddresses.Count() == 0)
             {
-                throw new ArgumentNullException(nameof(publicIpAddress), "Public IP Address cannot be null!");
+                throw new ArgumentNullException(nameof(publicIpAddresses), "Public IP Addresses cannot be null or empty!");
             }
 
             PSSubnet firewallSubnet = null;
@@ -85,20 +88,79 @@ namespace Microsoft.Azure.Commands.Network.Models
                 throw new ArgumentException($"Virtual Network {virtualNetwork.Name} should contain a Subnet named {AzureFirewallSubnetName}");
             }
 
-            this.IpConfigurations = new List<PSAzureFirewallIpConfiguration>
+            this.IpConfigurations = new List<PSAzureFirewallIpConfiguration>();
+
+            for(var i = 0; i < publicIpAddresses.Count(); i++)
             {
-                new PSAzureFirewallIpConfiguration
-                {
-                    Name = AzureFirewallIpConfigurationName,
-                    Subnet = new PSResourceId { Id = firewallSubnet.Id },
-                    PublicIpAddress = new PSResourceId {Id =  publicIpAddress.Id}
-                }
-            };
+                this.IpConfigurations.Add(
+                    new PSAzureFirewallIpConfiguration
+                    {
+                        Name = $"{AzureFirewallIpConfigurationName}{i}",
+                        PublicIpAddress = new PSResourceId { Id = publicIpAddresses[i].Id }
+                    });
+            }
+
+            this.IpConfigurations[0].Subnet = new PSResourceId { Id = firewallSubnet.Id };
         }
 
         public void Deallocate()
         {
             this.IpConfigurations = new List<PSAzureFirewallIpConfiguration> ();
+        }
+
+        public void AddPublicIpAddress(PSPublicIpAddress publicIpAddress)
+        {
+            if (publicIpAddress == null)
+            {
+                throw new ArgumentNullException(nameof(publicIpAddress), "Public IP Address cannot be null!");
+            }
+
+            if (this.IpConfigurations.Count > 0)
+            {
+                var conflictingIpConfig = this.IpConfigurations.SingleOrDefault
+                    (ipConfig => string.Equals(ipConfig.PublicIpAddress?.Id, publicIpAddress.Id, System.StringComparison.CurrentCultureIgnoreCase));
+
+                if (conflictingIpConfig != null)
+                {
+                    throw new ArgumentException($"Public IP Address {publicIpAddress.Id} is already attached to firewall {this.Name}");
+                }
+            }
+            else
+            {
+                throw new InvalidOperationException($"Please invoke {nameof(Allocate)} to attach the firewall to a Virtual Network");
+            }
+
+            this.IpConfigurations.Add(
+                new PSAzureFirewallIpConfiguration
+                {
+                    Name = $"{AzureFirewallIpConfigurationName}{this.IpConfigurations.Count}",
+                    PublicIpAddress = new PSResourceId { Id = publicIpAddress.Id }
+                });
+        }
+
+        public void RemovePublicIpAddress(PSPublicIpAddress publicIpAddress)
+        {
+            if (publicIpAddress == null)
+            {
+                throw new ArgumentNullException(nameof(publicIpAddress), "Public IP Address cannot be null!");
+            }
+
+            var ipConfigToRemove = this.IpConfigurations.SingleOrDefault
+                (ipConfig => string.Equals(ipConfig.PublicIpAddress?.Id, publicIpAddress.Id, System.StringComparison.CurrentCultureIgnoreCase));
+
+            if (ipConfigToRemove == null)
+            {
+                throw new ArgumentException($"Public IP Address {publicIpAddress.Id} is not attached to firewall {this.Name}");
+            }
+
+            if (this.IpConfigurations.Count == 1)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine($"WARNING: Removing the last Public IP Address, this will deallocate the firewall. You will have to invoke {nameof(Allocate)} to reallocate it.");
+                Console.ResetColor();
+            }
+
+            this.IpConfigurations.Remove(ipConfigToRemove);
         }
 
         #endregion // Ip Configuration Operations

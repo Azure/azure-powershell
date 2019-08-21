@@ -58,26 +58,6 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         }
 
         /// <summary>
-        /// The test update exchange i pv 4 on resource id.
-        /// </summary>
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestUpdateExchangeIPv4OnResourceId()
-        {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-UpdateExchangeIPv4OnResourceId");
-        }
-
-        /// <summary>
-        /// The test update exchange i pv 4 on input object.
-        /// </summary>
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestUpdateExchangeIPv4OnInputObject()
-        {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-UpdateExchangeIPv4OnInputObject");
-        }
-
-        /// <summary>
         /// The test update exchange md 5 on name and resource group.
         /// </summary>
         [Fact]

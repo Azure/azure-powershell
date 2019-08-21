@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             Position = 1,
             Mandatory = true, 
             ParameterSetName = NewServiceUnit.ByTopologyAndServiceNamesParameterSet,
-            HelpMessage = "The name of the serivce topology this service unit is a part of.")]
+            HelpMessage = "The name of the service topology this service unit is a part of.")]
         [ValidateNotNullOrEmpty]
         [ResourceNameCompleter("Microsoft.DeploymentManager/serviceTopologies", nameof(ResourceGroupName))]
         public string ServiceTopologyName { get; set; }

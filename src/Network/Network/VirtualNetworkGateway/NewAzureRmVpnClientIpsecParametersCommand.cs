@@ -24,19 +24,19 @@ namespace Microsoft.Azure.Commands.Network
     {
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The Vpnclient IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime in seconds")]
+            HelpMessage = "The VpnClient IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime in seconds")]
         [ValidateRange(300, 172799)]
         public int SALifeTime { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The Vpnclient IPSec Security Association (also called Quick Mode or Phase 2 SA) payload size in KB")]
+            HelpMessage = "The VpnClient IPSec Security Association (also called Quick Mode or Phase 2 SA) payload size in KB")]
         [ValidateRange(1024, int.MaxValue)]
         public int SADataSize { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The Vpnclient IPSec encryption algorithm (IKE Phase 1)")]
+            HelpMessage = "The VpnClient IPSec encryption algorithm (IKE Phase 1)")]
         [ValidateNotNullOrEmpty]
         [ValidateSet(
             MNM.IpsecEncryption.GCMAES256,
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The Vpnclient IPSec integrity algorithm (IKE Phase 1)")]
+            HelpMessage = "The VpnClient IPSec integrity algorithm (IKE Phase 1)")]
         [ValidateNotNullOrEmpty]
         [ValidateSet(
             MNM.IpsecIntegrity.GCMAES256,
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The Vpnclient IKE encryption algorithm (IKE Phase 2)")]
+            HelpMessage = "The VpnClient IKE encryption algorithm (IKE Phase 2)")]
         [ValidateNotNullOrEmpty]
         [ValidateSet(
             MNM.IkeEncryption.GCMAES256,
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The Vpnclient IKE integrity algorithm (IKE Phase 2)")]
+            HelpMessage = "The VpnClient IKE integrity algorithm (IKE Phase 2)")]
         [ValidateNotNullOrEmpty]
         [ValidateSet(
             MNM.IkeIntegrity.SHA384,
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The Vpnclient DH Groups used in IKE Phase 1 for initial SA")]
+            HelpMessage = "The VpnClient DH Groups used in IKE Phase 1 for initial SA")]
         [ValidateNotNullOrEmpty]
         [ValidateSet(
             MNM.DhGroup.DHGroup24,
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The Vpnclient PFS Groups used in IKE Phase 2 for new child SA")]
+            HelpMessage = "The VpnClient PFS Groups used in IKE Phase 2 for new child SA")]
         [ValidateNotNullOrEmpty]
         [ValidateSet(
             MNM.PfsGroup.PFS24,
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.Network
             if ((vpnclientIPsecParameters.IpsecEncryption.Contains("GCM") || vpnclientIPsecParameters.IpsecIntegrity.Contains("GCM"))
                 && vpnclientIPsecParameters.IpsecEncryption != vpnclientIPsecParameters.IpsecIntegrity)
             {
-                throw new ArgumentException("Vpnclient IpsecEncryption and IpsecIntegrity must use matching GCM algorithms");
+                throw new ArgumentException("VpnClient IpsecEncryption and IpsecIntegrity must use matching GCM algorithms");
             }
 
             vpnclientIPsecParameters.IkeEncryption = (!this.MyInvocation.BoundParameters.ContainsKey("IkeEncryption")) ? MNM.IkeEncryption.AES256 : this.IkeEncryption;

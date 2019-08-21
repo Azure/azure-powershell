@@ -18,7 +18,7 @@ New-AzContainerNicConfig [-Name <String>] [-IpConfiguration <PSIPConfigurationPr
 ```
 
 ## DESCRIPTION
-The **New-AzContainerNicConfig** cmdlet creates a new container network interface configuration object. This object determines the characteristics of container network interfacs created referencing the parent network profile.
+The **New-AzContainerNicConfig** cmdlet creates a new container network interface configuration object. This object determines the characteristics of container network interface created referencing the parent network profile.
 
 ## EXAMPLES
 

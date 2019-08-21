@@ -136,12 +136,12 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The bandwith that needs to be handled by this connection in mbps.")]
+            HelpMessage = "The bandwidth that needs to be handled by this connection in mbps.")]
         public uint ConnectionBandwidthInMbps { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The bandwith that needs to be handled by this connection in mbps.")]
+            HelpMessage = "The bandwidth that needs to be handled by this connection in mbps.")]
         public PSIpsecPolicy IpSecPolicy { get; set; }
 
         [Parameter(
@@ -157,6 +157,11 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "Enable BGP for this connection")]
         public SwitchParameter EnableBgp { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Use local azure ip address as source ip for this connection.")]
+        public SwitchParameter UseLocalAzureIpAddress { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -215,6 +220,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 Name = this.Name,
                 EnableBgp = this.EnableBgp.IsPresent,
+                UseLocalAzureIpAddress = this.UseLocalAzureIpAddress.IsPresent
             };
 
             //// Resolve the VpnSite reference

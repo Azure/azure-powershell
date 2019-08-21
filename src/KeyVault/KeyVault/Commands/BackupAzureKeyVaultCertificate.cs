@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         /// <remarks>
         /// Note that the backup applies to the entire family of a certificate (current and all its versions); 
-        /// since a certficate bundle represents a single version, the intent of this parameter is to allow pipelining.
+        /// since a certificate bundle represents a single version, the intent of this parameter is to allow pipelining.
         /// The backup cmdlet will use the Name and VaultName properties of the CertificateBundle parameter.
         /// </remarks>
         [Parameter(Mandatory = true,

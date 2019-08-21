@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has sucessufuly been completed, use some other mechanism.")]
+        [Parameter(Mandatory = false, HelpMessage = "Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has successfully been completed, use some other mechanism.")]
         public SwitchParameter NoWait { get; set; }
 
         public override void ExecuteCmdlet()
@@ -129,14 +129,17 @@ namespace Microsoft.Azure.Commands.Compute
                         NetworkProfile = this.VM.NetworkProfile,
                         OsProfile = this.VM.OSProfile,
                         Plan = this.VM.Plan,
+                        LicenseType = this.VM.LicenseType,
                         AvailabilitySet = this.VM.AvailabilitySetReference,
                         Location = this.VM.Location,
-                        LicenseType = this.VM.LicenseType,
                         Tags = this.Tag != null ? this.Tag.ToDictionary() : this.VM.Tags,
                         Identity = this.AssignIdentity.IsPresent 
                                    ? new VirtualMachineIdentity(null, null, ResourceIdentityType.SystemAssigned, null)
                                    : ComputeAutoMapperProfile.Mapper.Map<VirtualMachineIdentity>(this.VM.Identity),
-                        Zones = (this.VM.Zones != null && this.VM.Zones.Count > 0) ? this.VM.Zones : null
+                        Zones = (this.VM.Zones != null && this.VM.Zones.Count > 0) ? this.VM.Zones : null,
+                        ProximityPlacementGroup = this.VM.ProximityPlacementGroup,
+                        Host = this.VM.Host,
+                        VirtualMachineScaleSet = this.VM.VirtualMachineScaleSet                    
                     };
 
                     if (this.IsParameterBound(c => c.IdentityType))

@@ -180,7 +180,7 @@ WorkspaceArmId     : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourc
                      -eus
 ```
 
-Gets all the security alerts that were detected on resoruces inside a subscription
+Gets all the security alerts that were detected on resources inside a subscription
 
 ### Example 2
 ```powershell
@@ -308,7 +308,7 @@ WorkspaceArmId     : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourc
                      -eus
 ```
 
-Gets all the security alerts that were detected on resoruces inside the "myService1" resource group
+Gets all the security alerts that were detected on resources inside the "myService1" resource group
 
 ### Example 3
 ```powershell
@@ -346,7 +346,7 @@ WorkspaceArmId     : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourc
                      -eus
 ```
 
-Gets a specific security alert that were detected on resoruces inside the "myService1" resource group
+Gets a specific security alert that were detected on resources inside the "myService1" resource group
 
 ## PARAMETERS
 

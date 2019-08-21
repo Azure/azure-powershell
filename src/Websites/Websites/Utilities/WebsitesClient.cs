@@ -24,6 +24,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Net;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace Microsoft.Azure.Commands.WebApps.Utilities
@@ -311,13 +312,36 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
 
         public void RunWebAppContainerPSSessionScript(PSCmdlet cmdlet, string resourceGroupName, string webSiteName, string slotName = null, bool newPSSession = false)
         {
-            Version psCurrentVersion = GetPsVersion(cmdlet);
-            Version psCore = new Version(6, 0);
+            string operatingSystem = GetPsOperatingSystem(cmdlet);
 
-            if (psCurrentVersion.CompareTo(psCore) < 0)
+            Version minimumVersion = new Version(6, 1, 0, 0);
+
+            WriteVerbose("Operating System: {0}", operatingSystem);
+
+            if (operatingSystem.IndexOf("windows", StringComparison.InvariantCultureIgnoreCase) == -1)
             {
-                // Running on PowerShell 5.1. Assume Windows.
+                // If OS is not Windows, check if Ps supports 6.1.0 which is the first version to depend on NetCoreApp 2.1
 
+                List<Version> compatibleVersions = GetPsCompatibleVersions(cmdlet);
+
+                foreach (Version version in compatibleVersions)
+                {
+                    WriteVerbose("Compatible version: {0}", version.ToString());
+                }
+
+                // if there are no compatible versions subsequent to the minimum versions, we don't continue because the command will fail
+                if (compatibleVersions.Where(v => v.CompareTo(minimumVersion) > 0).Count() == 0)
+                {
+                    WriteError(Properties.Resources.EnterContainerPSSessionPSCoreVersionNotSupported);
+
+                    return;
+                }
+
+            }
+
+            // For Windows, we validate WSMAN trusted hosts settings
+            if (operatingSystem.IndexOf("windows", StringComparison.InvariantCultureIgnoreCase) > 0)
+            {
                 // Validate if WSMAN Basic Authentication is enabled
                 bool isBasicAuthEnabled = ExecuteScriptAndGetVariableAsBool(cmdlet, "${0} = (Get-Item WSMAN:\\LocalHost\\Client\\Auth\\Basic -ErrorAction SilentlyContinue).Value", false);
 
@@ -347,6 +371,8 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 }
             }
 
+
+
             Site site = GetWebApp(resourceGroupName, webSiteName, slotName);
             User user = GetPublishingCredentials(resourceGroupName, webSiteName, slotName);
             const string webAppContainerPSSessionVarPrefix = "webAppPSSession";
@@ -365,12 +391,31 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             cmdlet.ExecuteScript<object>(string.Format("Clear-Variable {0}*", webAppContainerPSSessionVarPrefix)); //Clearing session variable
         }
 
-        private Version GetPsVersion(PSCmdlet cmdlet)
+        private string GetPsOperatingSystem (PSCmdlet cmdlet)
         {
-            string psVersionVariable = ExecuteScriptAndGetVariable(cmdlet, "${0} = $PSVersionTable.PSVersion", string.Empty);
-            Version psEnvironmentVersion = new Version(5, 1);
-            Version.TryParse(psVersionVariable, out psEnvironmentVersion);
-            return psEnvironmentVersion;
+            string psOperatingSystem = "windows";
+
+            psOperatingSystem = ExecuteScriptAndGetVariable(cmdlet, "${0} = $PSVersionTable.OS", "windows");
+
+            return psOperatingSystem;
+        }
+
+        private List<Version> GetPsCompatibleVersions(PSCmdlet cmdlet)
+        {
+            object psVersionsTable = ExecuteScriptAndGetVariable(cmdlet, "${0} = $PSVersionTable.PSCompatibleVersions");
+
+            List<Version> versionResults = new List<Version>();
+
+            if (psVersionsTable != null
+                && psVersionsTable is Version[] versions)
+            {
+                foreach (var version in versions)
+                {
+                    versionResults.Add(version);
+                }
+            }
+
+            return versionResults;
         }
 
         private bool ExecuteScriptAndGetVariableAsBool(PSCmdlet cmdlet, string scriptFormatString, bool defaultValue)
@@ -387,6 +432,14 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             cmdlet.ExecuteScript<object>(string.Format(scriptFormatString, outputVariable));
             var output = cmdlet.GetVariableValue(outputVariable, defaultValue);
             return output.ToString();
+        }
+
+        private object ExecuteScriptAndGetVariable(PSCmdlet cmdlet, string scriptFormatString)
+        {
+            string outputVariable = "outputVariable";
+            List<object> cmdletResults = cmdlet.ExecuteScript<object>(string.Format(scriptFormatString, outputVariable));
+            var output = cmdlet.GetVariableValue(outputVariable);
+            return output;
         }
 
         public IEnumerable<ResourceMetric> GetWebAppUsageMetrics(string resourceGroupName, 
@@ -735,17 +788,33 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             }
         }
 
-        public IList<Snapshot> GetSiteSnapshots(string resourceGroupName, string webSiteName, string slotName)
+        public IList<Snapshot> GetSiteSnapshots(string resourceGroupName, string webSiteName, string slotName, bool useDrSecondary)
         {
             string qualifiedSiteName;
             bool useSlot = CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName);
             if (useSlot)
             {
-                return WrappedWebsitesClient.WebApps.ListSnapshotsSlot(resourceGroupName, webSiteName, slotName).ToList();
+                if (useDrSecondary)
+                {
+                    return WrappedWebsitesClient.WebApps.ListSnapshotsFromDRSecondarySlot(resourceGroupName, webSiteName, slotName).ToList();
+
+                }
+                else
+                {
+                    return WrappedWebsitesClient.WebApps.ListSnapshotsSlot(resourceGroupName, webSiteName, slotName).ToList();
+                }
             }
             else
             {
-                return WrappedWebsitesClient.WebApps.ListSnapshots(resourceGroupName, webSiteName).ToList();
+                if (useDrSecondary)
+                {
+                    return WrappedWebsitesClient.WebApps.ListSnapshotsFromDRSecondary(resourceGroupName, webSiteName).ToList();
+
+                }
+                else
+                {
+                    return WrappedWebsitesClient.WebApps.ListSnapshots(resourceGroupName, webSiteName).ToList();
+                }
             }
         }
 
@@ -764,8 +833,20 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             }
         }
 
-        public IList<DeletedSite> GetDeletedSites()
+        public IList<DeletedSite> GetDeletedSitesFromLocations(IEnumerable<string> locations)
         {
+            List<Task<IPage<DeletedSite>>> tasks = new List<Task<IPage<DeletedSite>>>();
+            foreach (string location in locations)
+            {
+                tasks.Add(WrappedWebsitesClient.DeletedWebApps.ListByLocationAsync(location));
+            }
+
+            List<DeletedSite> deletedSites = new List<DeletedSite>();
+            foreach(var task in tasks)
+            {
+                deletedSites.AddRange(task.Result);
+            }
+
             return WrappedWebsitesClient.DeletedWebApps().List().ToList();
         }
 

@@ -28,6 +28,7 @@ using System.Threading.Tasks;
 using StorageBlob = Microsoft.Azure.Storage.Blob;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 {
@@ -154,7 +155,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 
         private Hashtable BlobMetadata = null;
 
-        [Parameter(HelpMessage = "Page Blob Tier", Mandatory = false)]
+        [Parameter(HelpMessage = "Premium Page Blob Tier", Mandatory = false)]
         public PremiumPageBlobTier PremiumPageBlobTier
         {
             get
@@ -169,6 +170,30 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         }
 
         private PremiumPageBlobTier? pageBlobTier = null;
+
+        [Parameter(HelpMessage = "Block Blob Tier, valid values are Hot/Cool/Archive. See detail in https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-storage-tiers", Mandatory = false)]
+        [PSArgumentCompleter("Hot", "Cool", "Archive")]
+        [ValidateSet("Hot", "Cool", "Archive", IgnoreCase = true)]
+        public string StandardBlobTier
+        {
+            get
+            {
+                return standardBlobTier is null ? null : standardBlobTier.Value.ToString();
+            }
+
+            set
+            {
+                if (value != null)
+                {
+                    standardBlobTier = ((StandardBlobTier)Enum.Parse(typeof(StandardBlobTier), value, true));
+                }
+                else
+                {
+                    standardBlobTier = null;
+                }
+            }
+        }
+        private StandardBlobTier? standardBlobTier = null;
 
         private BlobUploadRequestQueue UploadRequests = new BlobUploadRequestQueue();
         
@@ -223,12 +248,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 data.Record,
                 this.OutputStream).ConfigureAwait(false);
 
-            if (this.BlobProperties != null || this.BlobMetadata != null || this.pageBlobTier != null)
+            if (this.BlobProperties != null || this.BlobMetadata != null || this.pageBlobTier != null || this.standardBlobTier != null)
             {
                 await Task.WhenAll(
                     this.SetBlobProperties(localChannel, blob, this.BlobProperties),
                     this.SetBlobMeta(localChannel, blob, this.BlobMetadata),
-                    this.SetBlobTier(localChannel, blob, pageBlobTier)).ConfigureAwait(false);
+                    this.SetBlobTier(localChannel, blob, pageBlobTier, standardBlobTier)).ConfigureAwait(false);
             }
 
             try
@@ -437,9 +462,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// <param name="azureBlob">CloudBlob object</param>
         /// <param name="blockBlobTier">Block Blob Tier</param>
         /// <param name="pageBlobTier">Page Blob Tier</param>
-        private async Task SetBlobTier(IStorageBlobManagement localChannel, StorageBlob.CloudBlob blob, PremiumPageBlobTier? pageBlobTier)
+        private async Task SetBlobTier(IStorageBlobManagement localChannel, StorageBlob.CloudBlob blob, PremiumPageBlobTier? pageBlobTier = null, StandardBlobTier? standardBlobTier = null)
         {
-            if (pageBlobTier == null)
+            if (pageBlobTier == null && standardBlobTier == null)
             {
                 return;
             }
@@ -450,6 +475,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             if (pageBlobTier != null)
             {
                 await Channel.SetPageBlobTierAsync((CloudPageBlob)blob, pageBlobTier.Value, requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
+            }
+            if (standardBlobTier != null)
+            {
+                AccessCondition accessCondition = null;
+                await Channel.SetStandardBlobTierAsync((CloudBlockBlob)blob, accessCondition, standardBlobTier.Value, null, requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
             }
         }
 
@@ -467,12 +497,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 AccessCondition accessCondition = null;
                 StorageBlob.BlobRequestOptions requestOptions = RequestOptions;
 
-                if (BlobProperties != null || BlobMetadata != null || this.pageBlobTier != null)
+                if (BlobProperties != null || BlobMetadata != null || this.pageBlobTier != null || this.standardBlobTier != null)
                 {
                     Task[] tasks = new Task[3];
                     tasks[0] = SetBlobProperties(localChannel, blob, BlobProperties);
                     tasks[1] = SetBlobMeta(localChannel, blob, BlobMetadata);
-                    tasks[2] = SetBlobTier(localChannel, blob, pageBlobTier);
+                    tasks[2] = SetBlobTier(localChannel, blob, pageBlobTier, standardBlobTier);
                     Task.WaitAll(tasks);
                 }
 
@@ -527,8 +557,21 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 DoBeginProcessing();
             }
 
-            ValidateBlobTier(string.Equals(blobType, PageBlobType, StringComparison.InvariantCultureIgnoreCase)? StorageBlob.BlobType.PageBlob : StorageBlob.BlobType.Unspecified, 
-                pageBlobTier);
+            // Validate the Blob Tier matches with blob Type
+            StorageBlob.BlobType type = StorageBlob.BlobType.BlockBlob;
+            if (string.Equals(blobType, BlockBlobType, StringComparison.InvariantCultureIgnoreCase))
+            {
+                type = StorageBlob.BlobType.BlockBlob;
+            }
+            else if (string.Equals(blobType, PageBlobType, StringComparison.InvariantCultureIgnoreCase))
+            {
+                type = StorageBlob.BlobType.PageBlob;
+            }
+            else 
+            {
+                type = StorageBlob.BlobType.Unspecified;
+            }
+            ValidateBlobTier(type, pageBlobTier, standardBlobTier);
 
             if (BlobProperties != null)
             {

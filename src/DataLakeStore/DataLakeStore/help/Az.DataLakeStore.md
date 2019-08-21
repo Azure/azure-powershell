@@ -27,7 +27,7 @@ Adds a virtual network rule to the specified Data Lake Store account.
 Attempts to enable a user managed Key Vault for encryption of the specified Data Lake Store account.
 
 ### [Export-AzDataLakeStoreChildItemProperty](Export-AzDataLakeStoreChildItemProperty.md)
-Exports the properties (Disk usage and Acl) for the entire tree from the specified path to a ouput path
+Exports the properties (Disk usage and Acl) for the entire tree from the specified path to a output path
 
 ### [Export-AzDataLakeStoreItem](Export-AzDataLakeStoreItem.md)
 Downloads a file from Data Lake Store.
