@@ -79,7 +79,9 @@ CmdletsToExport = 'Get-AzPeering', 'Get-AzPeerAsn', 'New-AzPeerAsn', 'New-AzPeer
                'New-AzPeeringExchangeConnectionObject', 
                'Set-AzPeeringDirectConnectionObject', 
                'New-AzPeeringDirectConnectionObject', 'Get-AzPeeringLocation', 
-               'Get-AzLegacyPeering', 'Set-AzPeerAsn', 'Remove-AzPeerAsn'
+               'Get-AzLegacyPeering', 'Set-AzPeerAsn', 'Remove-AzPeerAsn' , 'Remove-AzPeeringServicePrefix', 
+			   'New-AzPeeringServicePrefix', 'Get-AzPeeringServicePrefix', 'Get-AzPeeringServiceLocation', 
+			   'Get-AzPeeringServiceProvider', 'Get-AzPeeringService', 'New-AzPeeringService'
 
 # Variables to export from this module
 # VariablesToExport = @()
