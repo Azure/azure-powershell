@@ -1,4 +1,4 @@
-function Get-AzADUser_GetByFilter {
+function Get-AzADUser {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IUser')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Profile("latest-2019-04-30")]
     [CmdletBinding(PositionalBinding = $false)]

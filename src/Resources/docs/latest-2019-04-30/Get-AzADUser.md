@@ -22,10 +22,16 @@ Get-AzADUser -TenantId <String> [-Filter <String>] [-DefaultProfile <PSObject>] 
 Get-AzADUser -TenantId <String> -UpnOrObjectId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetByFilter
+### GetByDisplayName
 ```
-Get-AzADUser -StartsWith <String> -TenantId <String> [-DisplayName <String>] [-Mail <String>]
- [-MailNickname <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzADUser -TenantId <String> [-DisplayName <String>] [-Mail <String>] [-MailNickname <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetByDisplayNamePrefix
+```
+Get-AzADUser -StartsWith <String> -TenantId <String> [-Mail <String>] [-MailNickname <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -79,7 +85,7 @@ The display name of the user.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByFilter
+Parameter Sets: GetByDisplayName
 Aliases:
 
 Required: False
@@ -127,7 +133,7 @@ The primary email address of the user.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByFilter
+Parameter Sets: GetByDisplayName, GetByDisplayNamePrefix
 Aliases:
 
 Required: False
@@ -143,7 +149,7 @@ The mail alias for the user.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByFilter
+Parameter Sets: GetByDisplayName, GetByDisplayNamePrefix
 Aliases:
 
 Required: False
@@ -159,7 +165,7 @@ The prefix of the display name of the user.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByFilter
+Parameter Sets: GetByDisplayNamePrefix
 Aliases:
 
 Required: True
@@ -175,7 +181,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetByFilter, List
+Parameter Sets: Get, GetByDisplayName, GetByDisplayNamePrefix, List
 Aliases:
 
 Required: True
