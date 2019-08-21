@@ -21,7 +21,7 @@
 
 ## Version 1.6.2
 * Fixed miscellaneous typos across module
-* Support user-assigned MSI in Azure Functiosn Authentication (#9479)
+* Support user-assigned MSI in Azure Functions Authentication (#9479)
 
 ## Version 1.6.1
 * Update common code to use latest version of ClientRuntime
