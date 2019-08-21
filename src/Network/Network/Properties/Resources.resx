@@ -401,7 +401,6 @@
   <data name="InvalidResourceId" xml:space="preserve">
     <value>Provided ResourceId isn't in the right format or doesn't refer to the right resource type ({0})</value>
   </data>
-</root>
   <data name="Initialize" xml:space="preserve">
     <value>Initialize</value>
   </data>
