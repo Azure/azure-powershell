@@ -320,3 +320,40 @@ function Test-AddAzureRmMetricAlertRuleV2
 		Remove-AzResourceGroup -Name $rgname -Force
     }
 }
+
+	<#
+.SYNOPSIS
+Tests adding a GenV2 dyanmic metric alert rule.
+#>
+function Test-AddAzureRmMetricAlertRuleV2-DynamicThreshold
+{
+	# Setup
+	$sub = Get-AzContext
+    $subscription = $sub.subscription.subscriptionId
+	$rgname = Get-ResourceGroupName
+	$location =Get-ProviderLocation ResourceManagement
+	$resourceName = Get-ResourceName
+	$ruleName = Get-ResourceName
+	$actionGroupName = Get-ResourceName
+	$targetResourceId = '/subscriptions/'+$subscription+'/resourceGroups/'+$rgname+'/providers/Microsoft.Storage/storageAccounts/'+$resourceName
+	New-AzResourceGroup -Name $rgname -Location $location -Force
+	New-AzStorageAccount -ResourceGroupName $rgname -Name $resourceName -Location $location -Type Standard_GRS
+	$email = New-AzActionGroupReceiver -Name 'user1' -EmailReceiver -EmailAddress 'user1@example.com'
+	$NewActionGroup =  Set-AzureRmActionGroup -Name $actionGroupName -ResourceGroup $rgname -ShortName ASTG -Receiver $email
+	$actionGroup = New-AzActionGroup -ActionGroupId $NewActionGroup.Id
+	$condition = New-AzMetricAlertRuleV2Criteria -MetricName "Transactions" -Operator GreaterThan -DynamicThreshold -TimeAggregation Total -Sensitivity High
+    try
+    {
+        # Test
+        $actual = Add-AzMetricAlertRuleV2 -Name $ruleName -ResourceGroupName $rgname -WindowSize 01:00:00 -Frequency 00:05:00 -TargetResourceId $targetResourceId -Condition $condition -ActionGroup $actionGroup -Severity 3 
+		Assert-AreEqual $actual.Name $ruleName
+    }
+    finally
+    {
+        # Cleanup
+        Remove-AzMetricAlertRuleV2 -ResourceGroupName $rgname -Name $ruleName
+		Remove-AzActionGroup -ResourceGroupName $rgname -Name $actionGroupName
+		Remove-AzureRmStorageAccount -ResourceGroupName $rgName -Name $resourceName
+		Remove-AzResourceGroup -Name $rgname -Force
+    }
+}
