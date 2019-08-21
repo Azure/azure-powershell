@@ -20,7 +20,7 @@ New-AzVpnSiteLinkConnection -Name <String> -VpnSiteLink <PSVpnSiteLink> [-Shared
 ```
 
 ## DESCRIPTION
-Creates an Azure VpnSiteLink object.
+Creates an Azure VpnSiteLinkConnection object.
 
 ## EXAMPLES
 
