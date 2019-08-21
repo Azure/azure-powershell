@@ -1,28 +1,28 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourcegroups/ps6732?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlZ3JvdXBzL3BzNjczMj9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourcegroups/ps9212?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlZ3JvdXBzL3BzOTIxMj9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"location\": \"EAST US 2 EUAP\"\r\n}",
+      "RequestBody": "{\r\n  \"location\": \"westcentralus\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "3c9e68e5-4c31-4c61-9eaf-162674ac91fb"
+          "303de496-662a-4c9c-87d5-414f04b89266"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.1.18"
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.1"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "36"
+          "35"
         ]
       },
       "ResponseHeaders": {
@@ -33,16 +33,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1193"
+          "1198"
         ],
         "x-ms-request-id": [
-          "3444817b-3e1b-4bb5-aecc-08faa5b5e24c"
+          "2216f9f9-342b-447e-ae4f-a59e2a8c0b97"
         ],
         "x-ms-correlation-request-id": [
-          "3444817b-3e1b-4bb5-aecc-08faa5b5e24c"
+          "2216f9f9-342b-447e-ae4f-a59e2a8c0b97"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20190408T101745Z:3444817b-3e1b-4bb5-aecc-08faa5b5e24c"
+          "WESTEUROPE:20190712T083300Z:2216f9f9-342b-447e-ae4f-a59e2a8c0b97"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -51,10 +51,10 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 08 Apr 2019 10:17:45 GMT"
+          "Fri, 12 Jul 2019 08:32:59 GMT"
         ],
         "Content-Length": [
-          "170"
+          "172"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -63,23 +63,23 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732\",\r\n  \"name\": \"ps6732\",\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212\",\r\n  \"name\": \"ps9212\",\r\n  \"location\": \"westcentralus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/virtualNetworks/ps130?api-version=2019-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzNjczMi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdmlydHVhbE5ldHdvcmtzL3BzMTMwP2FwaS12ZXJzaW9uPTIwMTktMDItMDE=",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/virtualNetworks/ps4464?api-version=2019-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzOTIxMi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdmlydHVhbE5ldHdvcmtzL3BzNDQ2ND9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2259152c-2922-4538-aff7-c670c9d41f87"
+          "a9e0f956-9a41-4487-bde4-fcda310cc76e"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
           "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
@@ -96,13 +96,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "bb08c488-b0d6-4980-a712-48689160d171"
+          "41a154aa-11db-486c-a9a9-57aa303d5896"
         ],
         "x-ms-correlation-request-id": [
-          "bb08c488-b0d6-4980-a712-48689160d171"
+          "41a154aa-11db-486c-a9a9-57aa303d5896"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20190408T101746Z:bb08c488-b0d6-4980-a712-48689160d171"
+          "WESTEUROPE:20190712T083301Z:41a154aa-11db-486c-a9a9-57aa303d5896"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -111,7 +111,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 08 Apr 2019 10:17:46 GMT"
+          "Fri, 12 Jul 2019 08:33:00 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -120,20 +120,20 @@
           "-1"
         ],
         "Content-Length": [
-          "149"
+          "150"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Network/virtualNetworks/ps130' under resource group 'ps6732' was not found.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Network/virtualNetworks/ps4464' under resource group 'ps9212' was not found.\"\r\n  }\r\n}",
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/virtualNetworks/ps130?api-version=2019-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzNjczMi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdmlydHVhbE5ldHdvcmtzL3BzMTMwP2FwaS12ZXJzaW9uPTIwMTktMDItMDE=",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/virtualNetworks/ps4464?api-version=2019-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzOTIxMi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdmlydHVhbE5ldHdvcmtzL3BzNDQ2ND9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
           "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
@@ -147,13 +147,16 @@
           "no-cache"
         ],
         "ETag": [
-          "W/\"2f7ee606-dddb-43e7-b439-2b4f7be1c150\""
+          "W/\"d30040c1-5eb7-4969-bf72-06e0255c9333\""
         ],
         "x-ms-request-id": [
-          "d057db03-a63d-427c-a132-3c000a7604d0"
+          "3c30ada3-7946-4324-8490-9bab92b5d3c9"
         ],
         "x-ms-correlation-request-id": [
-          "7a75daff-cb18-4989-9e46-2ecb6c11ce2b"
+          "3ec4a3e1-8084-4d42-a58b-15f0b14b6821"
+        ],
+        "x-ms-arm-service-request-id": [
+          "2c41990a-71be-4a96-8f92-297ff4e7cd8d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -163,19 +166,19 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11968"
+          "11994"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20190408T101751Z:7a75daff-cb18-4989-9e46-2ecb6c11ce2b"
+          "WESTEUROPE:20190712T083308Z:3ec4a3e1-8084-4d42-a58b-15f0b14b6821"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 08 Apr 2019 10:17:51 GMT"
+          "Fri, 12 Jul 2019 08:33:07 GMT"
         ],
         "Content-Length": [
-          "1155"
+          "1275"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -184,23 +187,23 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"ps130\",\r\n  \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/virtualNetworks/ps130\",\r\n  \"etag\": \"W/\\\"2f7ee606-dddb-43e7-b439-2b4f7be1c150\\\"\",\r\n  \"type\": \"Microsoft.Network/virtualNetworks\",\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"8cdd4155-f3a8-48f9-8ba0-40d9625652a6\",\r\n    \"addressSpace\": {\r\n      \"addressPrefixes\": [\r\n        \"10.0.0.0/16\"\r\n      ]\r\n    },\r\n    \"subnets\": [\r\n      {\r\n        \"name\": \"ps8567\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/virtualNetworks/ps130/subnets/ps8567\",\r\n        \"etag\": \"W/\\\"2f7ee606-dddb-43e7-b439-2b4f7be1c150\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"10.0.1.0/24\",\r\n          \"serviceEndpoints\": [],\r\n          \"delegations\": []\r\n        },\r\n        \"type\": \"Microsoft.Network/virtualNetworks/subnets\"\r\n      }\r\n    ],\r\n    \"virtualNetworkPeerings\": [],\r\n    \"enableDdosProtection\": false,\r\n    \"enableVmProtection\": false\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"ps4464\",\r\n  \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/virtualNetworks/ps4464\",\r\n  \"etag\": \"W/\\\"d30040c1-5eb7-4969-bf72-06e0255c9333\\\"\",\r\n  \"type\": \"Microsoft.Network/virtualNetworks\",\r\n  \"location\": \"westcentralus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"c08b56eb-e952-4b35-8472-983780ecf1aa\",\r\n    \"addressSpace\": {\r\n      \"addressPrefixes\": [\r\n        \"10.0.0.0/16\"\r\n      ]\r\n    },\r\n    \"subnets\": [\r\n      {\r\n        \"name\": \"ps1949\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/virtualNetworks/ps4464/subnets/ps1949\",\r\n        \"etag\": \"W/\\\"d30040c1-5eb7-4969-bf72-06e0255c9333\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"10.0.1.0/24\",\r\n          \"serviceEndpoints\": [],\r\n          \"delegations\": [],\r\n          \"privateEndpointNetworkPolicies\": \"Enabled\",\r\n          \"privateLinkServiceNetworkPolicies\": \"Enabled\"\r\n        },\r\n        \"type\": \"Microsoft.Network/virtualNetworks/subnets\"\r\n      }\r\n    ],\r\n    \"virtualNetworkPeerings\": [],\r\n    \"enableDdosProtection\": false,\r\n    \"enableVmProtection\": false\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/virtualNetworks/ps130?api-version=2019-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzNjczMi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdmlydHVhbE5ldHdvcmtzL3BzMTMwP2FwaS12ZXJzaW9uPTIwMTktMDItMDE=",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/virtualNetworks/ps4464?api-version=2019-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzOTIxMi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdmlydHVhbE5ldHdvcmtzL3BzNDQ2ND9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e056ffc8-bccf-42b7-8cf7-b334eca57eec"
+          "08fa8b4b-2cb5-41d6-9a57-d894dbfac98b"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
           "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
@@ -214,13 +217,16 @@
           "no-cache"
         ],
         "ETag": [
-          "W/\"2f7ee606-dddb-43e7-b439-2b4f7be1c150\""
+          "W/\"d30040c1-5eb7-4969-bf72-06e0255c9333\""
         ],
         "x-ms-request-id": [
-          "5c53c3de-fac1-4199-ac33-d747eb781ba7"
+          "76e22f23-29b0-47bf-9bd4-546f93379e48"
         ],
         "x-ms-correlation-request-id": [
-          "0d18298b-ebe2-4c22-92c3-aa652098a8f7"
+          "44624ce9-9bfe-460b-99bf-20de13a04f56"
+        ],
+        "x-ms-arm-service-request-id": [
+          "2c7f9888-bdb8-4393-b447-3aae7decd14f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -230,19 +236,19 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11967"
+          "11993"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20190408T101751Z:0d18298b-ebe2-4c22-92c3-aa652098a8f7"
+          "WESTEUROPE:20190712T083308Z:44624ce9-9bfe-460b-99bf-20de13a04f56"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 08 Apr 2019 10:17:51 GMT"
+          "Fri, 12 Jul 2019 08:33:07 GMT"
         ],
         "Content-Length": [
-          "1155"
+          "1275"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -251,23 +257,23 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"ps130\",\r\n  \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/virtualNetworks/ps130\",\r\n  \"etag\": \"W/\\\"2f7ee606-dddb-43e7-b439-2b4f7be1c150\\\"\",\r\n  \"type\": \"Microsoft.Network/virtualNetworks\",\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"8cdd4155-f3a8-48f9-8ba0-40d9625652a6\",\r\n    \"addressSpace\": {\r\n      \"addressPrefixes\": [\r\n        \"10.0.0.0/16\"\r\n      ]\r\n    },\r\n    \"subnets\": [\r\n      {\r\n        \"name\": \"ps8567\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/virtualNetworks/ps130/subnets/ps8567\",\r\n        \"etag\": \"W/\\\"2f7ee606-dddb-43e7-b439-2b4f7be1c150\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"10.0.1.0/24\",\r\n          \"serviceEndpoints\": [],\r\n          \"delegations\": []\r\n        },\r\n        \"type\": \"Microsoft.Network/virtualNetworks/subnets\"\r\n      }\r\n    ],\r\n    \"virtualNetworkPeerings\": [],\r\n    \"enableDdosProtection\": false,\r\n    \"enableVmProtection\": false\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"ps4464\",\r\n  \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/virtualNetworks/ps4464\",\r\n  \"etag\": \"W/\\\"d30040c1-5eb7-4969-bf72-06e0255c9333\\\"\",\r\n  \"type\": \"Microsoft.Network/virtualNetworks\",\r\n  \"location\": \"westcentralus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"c08b56eb-e952-4b35-8472-983780ecf1aa\",\r\n    \"addressSpace\": {\r\n      \"addressPrefixes\": [\r\n        \"10.0.0.0/16\"\r\n      ]\r\n    },\r\n    \"subnets\": [\r\n      {\r\n        \"name\": \"ps1949\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/virtualNetworks/ps4464/subnets/ps1949\",\r\n        \"etag\": \"W/\\\"d30040c1-5eb7-4969-bf72-06e0255c9333\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"10.0.1.0/24\",\r\n          \"serviceEndpoints\": [],\r\n          \"delegations\": [],\r\n          \"privateEndpointNetworkPolicies\": \"Enabled\",\r\n          \"privateLinkServiceNetworkPolicies\": \"Enabled\"\r\n        },\r\n        \"type\": \"Microsoft.Network/virtualNetworks/subnets\"\r\n      }\r\n    ],\r\n    \"virtualNetworkPeerings\": [],\r\n    \"enableDdosProtection\": false,\r\n    \"enableVmProtection\": false\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/virtualNetworks/ps130?api-version=2019-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzNjczMi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdmlydHVhbE5ldHdvcmtzL3BzMTMwP2FwaS12ZXJzaW9uPTIwMTktMDItMDE=",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/virtualNetworks/ps4464?api-version=2019-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzOTIxMi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdmlydHVhbE5ldHdvcmtzL3BzNDQ2ND9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"addressSpace\": {\r\n      \"addressPrefixes\": [\r\n        \"10.0.0.0/16\"\r\n      ]\r\n    },\r\n    \"subnets\": [\r\n      {\r\n        \"properties\": {\r\n          \"addressPrefix\": \"10.0.1.0/24\",\r\n          \"addressPrefixes\": [],\r\n          \"serviceEndpoints\": [],\r\n          \"serviceEndpointPolicies\": [],\r\n          \"resourceNavigationLinks\": [],\r\n          \"serviceAssociationLinks\": [],\r\n          \"delegations\": []\r\n        },\r\n        \"name\": \"ps8567\"\r\n      }\r\n    ],\r\n    \"virtualNetworkPeerings\": [],\r\n    \"enableDdosProtection\": false\r\n  },\r\n  \"location\": \"EAST US 2 EUAP\"\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"addressSpace\": {\r\n      \"addressPrefixes\": [\r\n        \"10.0.0.0/16\"\r\n      ]\r\n    },\r\n    \"subnets\": [\r\n      {\r\n        \"properties\": {\r\n          \"addressPrefix\": \"10.0.1.0/24\",\r\n          \"addressPrefixes\": [],\r\n          \"serviceEndpoints\": [],\r\n          \"serviceEndpointPolicies\": [],\r\n          \"resourceNavigationLinks\": [],\r\n          \"serviceAssociationLinks\": [],\r\n          \"delegations\": []\r\n        },\r\n        \"name\": \"ps1949\"\r\n      }\r\n    ],\r\n    \"virtualNetworkPeerings\": [],\r\n    \"enableDdosProtection\": false\r\n  },\r\n  \"location\": \"westcentralus\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b7913ca8-4fcb-402f-aa4c-5c2c25960b8a"
+          "cf918991-526a-41a7-b6bd-d81382136d39"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
           "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
@@ -276,7 +282,7 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "596"
+          "595"
         ]
       },
       "ResponseHeaders": {
@@ -290,13 +296,16 @@
           "3"
         ],
         "x-ms-request-id": [
-          "f3ef1205-38ce-472f-8e99-71e7d6517d6a"
+          "630604cd-a830-4595-b576-c6a06aa33dea"
         ],
         "Azure-AsyncOperation": [
-          "https://brazilus.management.azure.com/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/locations/eastus2euap/operations/f3ef1205-38ce-472f-8e99-71e7d6517d6a?api-version=2019-02-01"
+          "https://management.azure.com/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/locations/westcentralus/operations/630604cd-a830-4595-b576-c6a06aa33dea?api-version=2019-06-01"
         ],
         "x-ms-correlation-request-id": [
-          "d315bce8-7590-4bee-b2b6-1df3b6e78bea"
+          "e1fbf632-b3bb-4620-8e70-e664f8b589ee"
+        ],
+        "x-ms-arm-service-request-id": [
+          "6ea1a0c0-bc21-465b-9b83-6d3c503d6926"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -306,19 +315,19 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1192"
+          "1198"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20190408T101747Z:d315bce8-7590-4bee-b2b6-1df3b6e78bea"
+          "WESTEUROPE:20190712T083304Z:e1fbf632-b3bb-4620-8e70-e664f8b589ee"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 08 Apr 2019 10:17:47 GMT"
+          "Fri, 12 Jul 2019 08:33:03 GMT"
         ],
         "Content-Length": [
-          "1153"
+          "1273"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -327,17 +336,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"ps130\",\r\n  \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/virtualNetworks/ps130\",\r\n  \"etag\": \"W/\\\"135b36fe-331f-499a-8777-25101040484f\\\"\",\r\n  \"type\": \"Microsoft.Network/virtualNetworks\",\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"8cdd4155-f3a8-48f9-8ba0-40d9625652a6\",\r\n    \"addressSpace\": {\r\n      \"addressPrefixes\": [\r\n        \"10.0.0.0/16\"\r\n      ]\r\n    },\r\n    \"subnets\": [\r\n      {\r\n        \"name\": \"ps8567\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/virtualNetworks/ps130/subnets/ps8567\",\r\n        \"etag\": \"W/\\\"135b36fe-331f-499a-8777-25101040484f\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Updating\",\r\n          \"addressPrefix\": \"10.0.1.0/24\",\r\n          \"serviceEndpoints\": [],\r\n          \"delegations\": []\r\n        },\r\n        \"type\": \"Microsoft.Network/virtualNetworks/subnets\"\r\n      }\r\n    ],\r\n    \"virtualNetworkPeerings\": [],\r\n    \"enableDdosProtection\": false,\r\n    \"enableVmProtection\": false\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"ps4464\",\r\n  \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/virtualNetworks/ps4464\",\r\n  \"etag\": \"W/\\\"c0fc90e7-5e69-4c63-b60b-9d2eb1c1d485\\\"\",\r\n  \"type\": \"Microsoft.Network/virtualNetworks\",\r\n  \"location\": \"westcentralus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"c08b56eb-e952-4b35-8472-983780ecf1aa\",\r\n    \"addressSpace\": {\r\n      \"addressPrefixes\": [\r\n        \"10.0.0.0/16\"\r\n      ]\r\n    },\r\n    \"subnets\": [\r\n      {\r\n        \"name\": \"ps1949\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/virtualNetworks/ps4464/subnets/ps1949\",\r\n        \"etag\": \"W/\\\"c0fc90e7-5e69-4c63-b60b-9d2eb1c1d485\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Updating\",\r\n          \"addressPrefix\": \"10.0.1.0/24\",\r\n          \"serviceEndpoints\": [],\r\n          \"delegations\": [],\r\n          \"privateEndpointNetworkPolicies\": \"Enabled\",\r\n          \"privateLinkServiceNetworkPolicies\": \"Enabled\"\r\n        },\r\n        \"type\": \"Microsoft.Network/virtualNetworks/subnets\"\r\n      }\r\n    ],\r\n    \"virtualNetworkPeerings\": [],\r\n    \"enableDdosProtection\": false,\r\n    \"enableVmProtection\": false\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/locations/eastus2euap/operations/f3ef1205-38ce-472f-8e99-71e7d6517d6a?api-version=2019-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvZWFzdHVzMmV1YXAvb3BlcmF0aW9ucy9mM2VmMTIwNS0zOGNlLTQ3MmYtOGU5OS03MWU3ZDY1MTdkNmE/YXBpLXZlcnNpb249MjAxOS0wMi0wMQ==",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/locations/westcentralus/operations/630604cd-a830-4595-b576-c6a06aa33dea?api-version=2019-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvd2VzdGNlbnRyYWx1cy9vcGVyYXRpb25zLzYzMDYwNGNkLWE4MzAtNDU5NS1iNTc2LWM2YTA2YWEzM2RlYT9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
           "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
@@ -351,10 +360,13 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "6fcccb78-c04d-49ee-a567-dd5cbe83340c"
+          "2c4cb8ba-99d1-42da-a8ae-6e3485a613b4"
         ],
         "x-ms-correlation-request-id": [
-          "55c40ac4-5684-4f60-b56b-22058356a8a5"
+          "f96ff6b7-d551-43c8-ada1-05292de51530"
+        ],
+        "x-ms-arm-service-request-id": [
+          "c0b6dbd2-606e-40b3-8825-8d1847436208"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -364,16 +376,16 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11969"
+          "11995"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20190408T101750Z:55c40ac4-5684-4f60-b56b-22058356a8a5"
+          "WESTEUROPE:20190712T083308Z:f96ff6b7-d551-43c8-ada1-05292de51530"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 08 Apr 2019 10:17:49 GMT"
+          "Fri, 12 Jul 2019 08:33:07 GMT"
         ],
         "Content-Length": [
           "29"
@@ -389,19 +401,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/publicIPAddresses/ps8280?api-version=2019-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzNjczMi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcHVibGljSVBBZGRyZXNzZXMvcHM4MjgwP2FwaS12ZXJzaW9uPTIwMTktMDItMDE=",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/publicIPAddresses/ps9538?api-version=2019-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzOTIxMi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcHVibGljSVBBZGRyZXNzZXMvcHM5NTM4P2FwaS12ZXJzaW9uPTIwMTktMDYtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d06f9659-3c97-48f0-a6fa-a314b0151913"
+          "06371cf9-d070-4c6d-b4e3-a1aee61bc8f6"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
           "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
@@ -418,13 +430,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "dfc0529b-e3c5-450b-a809-fd72fdda763f"
+          "e91b0972-3263-4647-9d77-abad0b367c5c"
         ],
         "x-ms-correlation-request-id": [
-          "dfc0529b-e3c5-450b-a809-fd72fdda763f"
+          "e91b0972-3263-4647-9d77-abad0b367c5c"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20190408T101752Z:dfc0529b-e3c5-450b-a809-fd72fdda763f"
+          "WESTEUROPE:20190712T083310Z:e91b0972-3263-4647-9d77-abad0b367c5c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -433,7 +445,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 08 Apr 2019 10:17:52 GMT"
+          "Fri, 12 Jul 2019 08:33:10 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -445,17 +457,17 @@
           "152"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Network/publicIPAddresses/ps8280' under resource group 'ps6732' was not found.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Network/publicIPAddresses/ps9538' under resource group 'ps9212' was not found.\"\r\n  }\r\n}",
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/publicIPAddresses/ps8280?api-version=2019-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzNjczMi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcHVibGljSVBBZGRyZXNzZXMvcHM4MjgwP2FwaS12ZXJzaW9uPTIwMTktMDItMDE=",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/publicIPAddresses/ps9538?api-version=2019-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzOTIxMi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcHVibGljSVBBZGRyZXNzZXMvcHM5NTM4P2FwaS12ZXJzaW9uPTIwMTktMDYtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
           "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
@@ -469,13 +481,16 @@
           "no-cache"
         ],
         "ETag": [
-          "W/\"ca8b9793-5e07-4ffc-af09-df17de61ec5f\""
+          "W/\"6b7a27c3-7a79-4984-bc85-79e1b5265d9c\""
         ],
         "x-ms-request-id": [
-          "91d20994-88be-4fab-b16f-342a736278cb"
+          "2157a60a-7bae-4b49-98c2-e6ded62313ff"
         ],
         "x-ms-correlation-request-id": [
-          "56f07ce9-5a4f-43fc-9deb-a109e26282ab"
+          "4860b922-edcf-4a90-be21-2ddf4e24957a"
+        ],
+        "x-ms-arm-service-request-id": [
+          "726ff30f-bde6-47db-a0c2-dea54693d1fc"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -485,19 +500,19 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11924"
+          "11989"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20190408T101757Z:56f07ce9-5a4f-43fc-9deb-a109e26282ab"
+          "WESTEUROPE:20190712T083316Z:4860b922-edcf-4a90-be21-2ddf4e24957a"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 08 Apr 2019 10:17:56 GMT"
+          "Fri, 12 Jul 2019 08:33:16 GMT"
         ],
         "Content-Length": [
-          "781"
+          "784"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -506,23 +521,23 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"ps8280\",\r\n  \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/publicIPAddresses/ps8280\",\r\n  \"etag\": \"W/\\\"ca8b9793-5e07-4ffc-af09-df17de61ec5f\\\"\",\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"71f0dad8-ee05-4c53-854a-e71b398510b9\",\r\n    \"ipAddress\": \"52.253.225.175\",\r\n    \"publicIPAddressVersion\": \"IPv4\",\r\n    \"publicIPAllocationMethod\": \"Static\",\r\n    \"idleTimeoutInMinutes\": 4,\r\n    \"dnsSettings\": {\r\n      \"domainNameLabel\": \"ps8711\",\r\n      \"fqdn\": \"ps8711.eastus2euap.cloudapp.azure.com\"\r\n    },\r\n    \"ipTags\": []\r\n  },\r\n  \"type\": \"Microsoft.Network/publicIPAddresses\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\",\r\n    \"tier\": \"Regional\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"ps9538\",\r\n  \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/publicIPAddresses/ps9538\",\r\n  \"etag\": \"W/\\\"6b7a27c3-7a79-4984-bc85-79e1b5265d9c\\\"\",\r\n  \"location\": \"westcentralus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"c91b425e-8dba-46bd-b0f1-9fb7748be708\",\r\n    \"ipAddress\": \"52.159.19.245\",\r\n    \"publicIPAddressVersion\": \"IPv4\",\r\n    \"publicIPAllocationMethod\": \"Static\",\r\n    \"idleTimeoutInMinutes\": 4,\r\n    \"dnsSettings\": {\r\n      \"domainNameLabel\": \"ps5705\",\r\n      \"fqdn\": \"ps5705.westcentralus.cloudapp.azure.com\"\r\n    },\r\n    \"ipTags\": []\r\n  },\r\n  \"type\": \"Microsoft.Network/publicIPAddresses\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\",\r\n    \"tier\": \"Regional\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/publicIPAddresses/ps8280?api-version=2019-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzNjczMi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcHVibGljSVBBZGRyZXNzZXMvcHM4MjgwP2FwaS12ZXJzaW9uPTIwMTktMDItMDE=",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/publicIPAddresses/ps9538?api-version=2019-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzOTIxMi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcHVibGljSVBBZGRyZXNzZXMvcHM5NTM4P2FwaS12ZXJzaW9uPTIwMTktMDYtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "cb59c744-e8ef-4c1b-9a8c-9901bd254629"
+          "88f18f1c-ace3-4e9f-96d3-9d70cb9871f7"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
           "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
@@ -536,13 +551,16 @@
           "no-cache"
         ],
         "ETag": [
-          "W/\"ca8b9793-5e07-4ffc-af09-df17de61ec5f\""
+          "W/\"6b7a27c3-7a79-4984-bc85-79e1b5265d9c\""
         ],
         "x-ms-request-id": [
-          "efe15e41-b0fb-4984-bc19-6b7d11f18b6e"
+          "f56b5213-b239-4fdc-b97e-77499b0bd8bb"
         ],
         "x-ms-correlation-request-id": [
-          "46e71ea5-ac34-4bd9-81c9-c15e30f83476"
+          "b5ce2d43-f645-4953-b58b-051beabaf7c0"
+        ],
+        "x-ms-arm-service-request-id": [
+          "3202ca9d-66f7-4c7b-afc9-04703eefd759"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -552,19 +570,19 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11923"
+          "11988"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20190408T101757Z:46e71ea5-ac34-4bd9-81c9-c15e30f83476"
+          "WESTEUROPE:20190712T083316Z:b5ce2d43-f645-4953-b58b-051beabaf7c0"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 08 Apr 2019 10:17:56 GMT"
+          "Fri, 12 Jul 2019 08:33:16 GMT"
         ],
         "Content-Length": [
-          "781"
+          "784"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -573,23 +591,23 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"ps8280\",\r\n  \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/publicIPAddresses/ps8280\",\r\n  \"etag\": \"W/\\\"ca8b9793-5e07-4ffc-af09-df17de61ec5f\\\"\",\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"71f0dad8-ee05-4c53-854a-e71b398510b9\",\r\n    \"ipAddress\": \"52.253.225.175\",\r\n    \"publicIPAddressVersion\": \"IPv4\",\r\n    \"publicIPAllocationMethod\": \"Static\",\r\n    \"idleTimeoutInMinutes\": 4,\r\n    \"dnsSettings\": {\r\n      \"domainNameLabel\": \"ps8711\",\r\n      \"fqdn\": \"ps8711.eastus2euap.cloudapp.azure.com\"\r\n    },\r\n    \"ipTags\": []\r\n  },\r\n  \"type\": \"Microsoft.Network/publicIPAddresses\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\",\r\n    \"tier\": \"Regional\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"ps9538\",\r\n  \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/publicIPAddresses/ps9538\",\r\n  \"etag\": \"W/\\\"6b7a27c3-7a79-4984-bc85-79e1b5265d9c\\\"\",\r\n  \"location\": \"westcentralus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"c91b425e-8dba-46bd-b0f1-9fb7748be708\",\r\n    \"ipAddress\": \"52.159.19.245\",\r\n    \"publicIPAddressVersion\": \"IPv4\",\r\n    \"publicIPAllocationMethod\": \"Static\",\r\n    \"idleTimeoutInMinutes\": 4,\r\n    \"dnsSettings\": {\r\n      \"domainNameLabel\": \"ps5705\",\r\n      \"fqdn\": \"ps5705.westcentralus.cloudapp.azure.com\"\r\n    },\r\n    \"ipTags\": []\r\n  },\r\n  \"type\": \"Microsoft.Network/publicIPAddresses\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\",\r\n    \"tier\": \"Regional\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/publicIPAddresses/ps8280?api-version=2019-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzNjczMi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcHVibGljSVBBZGRyZXNzZXMvcHM4MjgwP2FwaS12ZXJzaW9uPTIwMTktMDItMDE=",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/publicIPAddresses/ps9538?api-version=2019-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzOTIxMi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvcHVibGljSVBBZGRyZXNzZXMvcHM5NTM4P2FwaS12ZXJzaW9uPTIwMTktMDYtMDE=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"properties\": {\r\n    \"publicIPAllocationMethod\": \"Static\",\r\n    \"dnsSettings\": {\r\n      \"domainNameLabel\": \"ps8711\"\r\n    },\r\n    \"ipTags\": []\r\n  },\r\n  \"zones\": [],\r\n  \"location\": \"EAST US 2 EUAP\"\r\n}",
+      "RequestBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"properties\": {\r\n    \"publicIPAllocationMethod\": \"Static\",\r\n    \"dnsSettings\": {\r\n      \"domainNameLabel\": \"ps5705\"\r\n    },\r\n    \"ipTags\": []\r\n  },\r\n  \"zones\": [],\r\n  \"location\": \"westcentralus\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ac9a4df8-fc0f-4448-a180-b467f791d879"
+          "e87ed6ab-7680-4dc9-b67e-aeec802be53f"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
           "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
@@ -598,7 +616,7 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "245"
+          "244"
         ]
       },
       "ResponseHeaders": {
@@ -612,13 +630,16 @@
           "1"
         ],
         "x-ms-request-id": [
-          "dda59d9f-08db-4d48-939c-4cff96033b20"
+          "45402bb9-73cf-4477-ae0b-f2ebb2169b28"
         ],
         "Azure-AsyncOperation": [
-          "https://brazilus.management.azure.com/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/locations/eastus2euap/operations/dda59d9f-08db-4d48-939c-4cff96033b20?api-version=2019-02-01"
+          "https://management.azure.com/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/locations/westcentralus/operations/45402bb9-73cf-4477-ae0b-f2ebb2169b28?api-version=2019-06-01"
         ],
         "x-ms-correlation-request-id": [
-          "7ca9a0d0-38db-4745-8b63-75d88c6371cc"
+          "4871ec3e-573f-4620-88df-8ea29facd8fc"
+        ],
+        "x-ms-arm-service-request-id": [
+          "1fce1709-5b1f-46e1-bb3d-040c1a714d44"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -628,19 +649,19 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1192"
+          "1199"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20190408T101753Z:7ca9a0d0-38db-4745-8b63-75d88c6371cc"
+          "WESTEUROPE:20190712T083314Z:4871ec3e-573f-4620-88df-8ea29facd8fc"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 08 Apr 2019 10:17:53 GMT"
+          "Fri, 12 Jul 2019 08:33:13 GMT"
         ],
         "Content-Length": [
-          "744"
+          "748"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -649,78 +670,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"ps8280\",\r\n  \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/publicIPAddresses/ps8280\",\r\n  \"etag\": \"W/\\\"d47e6856-805c-4646-98bd-de30ed2e0d39\\\"\",\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"71f0dad8-ee05-4c53-854a-e71b398510b9\",\r\n    \"publicIPAddressVersion\": \"IPv4\",\r\n    \"publicIPAllocationMethod\": \"Static\",\r\n    \"idleTimeoutInMinutes\": 4,\r\n    \"dnsSettings\": {\r\n      \"domainNameLabel\": \"ps8711\",\r\n      \"fqdn\": \"ps8711.eastus2euap.cloudapp.azure.com\"\r\n    },\r\n    \"ipTags\": []\r\n  },\r\n  \"type\": \"Microsoft.Network/publicIPAddresses\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\",\r\n    \"tier\": \"Regional\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"ps9538\",\r\n  \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/publicIPAddresses/ps9538\",\r\n  \"etag\": \"W/\\\"732941a1-6f54-40d0-993e-0eecec8214ad\\\"\",\r\n  \"location\": \"westcentralus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"c91b425e-8dba-46bd-b0f1-9fb7748be708\",\r\n    \"publicIPAddressVersion\": \"IPv4\",\r\n    \"publicIPAllocationMethod\": \"Static\",\r\n    \"idleTimeoutInMinutes\": 4,\r\n    \"dnsSettings\": {\r\n      \"domainNameLabel\": \"ps5705\",\r\n      \"fqdn\": \"ps5705.westcentralus.cloudapp.azure.com\"\r\n    },\r\n    \"ipTags\": []\r\n  },\r\n  \"type\": \"Microsoft.Network/publicIPAddresses\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\",\r\n    \"tier\": \"Regional\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/locations/eastus2euap/operations/dda59d9f-08db-4d48-939c-4cff96033b20?api-version=2019-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvZWFzdHVzMmV1YXAvb3BlcmF0aW9ucy9kZGE1OWQ5Zi0wOGRiLTRkNDgtOTM5Yy00Y2ZmOTYwMzNiMjA/YXBpLXZlcnNpb249MjAxOS0wMi0wMQ==",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/locations/westcentralus/operations/45402bb9-73cf-4477-ae0b-f2ebb2169b28?api-version=2019-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvd2VzdGNlbnRyYWx1cy9vcGVyYXRpb25zLzQ1NDAyYmI5LTczY2YtNDQ3Ny1hZTBiLWYyZWJiMjE2OWIyOD9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Retry-After": [
-          "2"
-        ],
-        "x-ms-request-id": [
-          "a11b96c3-95ed-4f65-ace7-c9a4b29d3cb0"
-        ],
-        "x-ms-correlation-request-id": [
-          "cd35aeda-38a4-4c26-9859-936dd31bb7b3"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11928"
-        ],
-        "x-ms-routing-request-id": [
-          "BRAZILUS:20190408T101754Z:cd35aeda-38a4-4c26-9859-936dd31bb7b3"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Mon, 08 Apr 2019 10:17:54 GMT"
-        ],
-        "Content-Length": [
-          "30"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"status\": \"InProgress\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/locations/eastus2euap/operations/dda59d9f-08db-4d48-939c-4cff96033b20?api-version=2019-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvZWFzdHVzMmV1YXAvb3BlcmF0aW9ucy9kZGE1OWQ5Zi0wOGRiLTRkNDgtOTM5Yy00Y2ZmOTYwMzNiMjA/YXBpLXZlcnNpb249MjAxOS0wMi0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
           "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
@@ -734,10 +694,13 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "53c49a74-625e-4ca2-9bed-3ffef98a91a7"
+          "1083835e-5e22-476c-941c-3cd97f34eae2"
         ],
         "x-ms-correlation-request-id": [
-          "af17e04c-4cc7-4a1b-8ddb-01c629307e79"
+          "c9ffb868-90e9-416b-a21e-a47197a3cd6d"
+        ],
+        "x-ms-arm-service-request-id": [
+          "d7d2a9e7-fcc4-47e4-a6e4-13f2c67060d8"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -747,16 +710,16 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11925"
+          "11990"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20190408T101757Z:af17e04c-4cc7-4a1b-8ddb-01c629307e79"
+          "WESTEUROPE:20190712T083315Z:c9ffb868-90e9-416b-a21e-a47197a3cd6d"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 08 Apr 2019 10:17:56 GMT"
+          "Fri, 12 Jul 2019 08:33:15 GMT"
         ],
         "Content-Length": [
           "29"
@@ -772,19 +735,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476?api-version=2019-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzNjczMi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbG9hZEJhbGFuY2Vycy9wczM0NzY/YXBpLXZlcnNpb249MjAxOS0wMi0wMQ==",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690?api-version=2019-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzOTIxMi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbG9hZEJhbGFuY2Vycy9wczc2OTA/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "0f1cf83c-91ea-4b24-b1e3-90725ec0828a"
+          "395503cc-e71d-411e-9172-2a1d3e6256ad"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
           "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
@@ -801,13 +764,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "1df2fb17-040d-4e2a-bb68-a1001d694bdf"
+          "84add439-8049-4460-be65-68be3b466a24"
         ],
         "x-ms-correlation-request-id": [
-          "1df2fb17-040d-4e2a-bb68-a1001d694bdf"
+          "84add439-8049-4460-be65-68be3b466a24"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20190408T101758Z:1df2fb17-040d-4e2a-bb68-a1001d694bdf"
+          "WESTEUROPE:20190712T083319Z:84add439-8049-4460-be65-68be3b466a24"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -816,7 +779,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 08 Apr 2019 10:17:58 GMT"
+          "Fri, 12 Jul 2019 08:33:18 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -828,17 +791,17 @@
           "148"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Network/loadBalancers/ps3476' under resource group 'ps6732' was not found.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Network/loadBalancers/ps7690' under resource group 'ps9212' was not found.\"\r\n  }\r\n}",
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476?api-version=2019-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzNjczMi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbG9hZEJhbGFuY2Vycy9wczM0NzY/YXBpLXZlcnNpb249MjAxOS0wMi0wMQ==",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690?api-version=2019-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzOTIxMi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbG9hZEJhbGFuY2Vycy9wczc2OTA/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
           "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
@@ -852,13 +815,16 @@
           "no-cache"
         ],
         "ETag": [
-          "W/\"38b9ec90-46fa-4596-9935-c481ffd19df7\""
+          "W/\"59c75f8f-ec42-485a-abf5-44f217760308\""
         ],
         "x-ms-request-id": [
-          "4e8fba54-6fcb-4797-825b-ac646b0d8fd1"
+          "902d2d23-ddbc-4b55-8228-fc6aef3aa9d6"
         ],
         "x-ms-correlation-request-id": [
-          "97464a6d-2630-45c5-9700-b794ca49dd48"
+          "a2a3df62-2549-40d7-a374-32f685fa97e4"
+        ],
+        "x-ms-arm-service-request-id": [
+          "1ef2e4db-ab8f-4e68-9570-3fd5c26d6335"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -868,19 +834,19 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11976"
+          "11996"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20190408T101800Z:97464a6d-2630-45c5-9700-b794ca49dd48"
+          "WESTEUROPE:20190712T083322Z:a2a3df62-2549-40d7-a374-32f685fa97e4"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 08 Apr 2019 10:17:59 GMT"
+          "Fri, 12 Jul 2019 08:33:22 GMT"
         ],
         "Content-Length": [
-          "5806"
+          "5844"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -889,23 +855,23 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"ps3476\",\r\n  \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476\",\r\n  \"etag\": \"W/\\\"38b9ec90-46fa-4596-9935-c481ffd19df7\\\"\",\r\n  \"type\": \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"b9d6004c-fa07-4102-a49a-f2f09b21d288\",\r\n    \"frontendIPConfigurations\": [\r\n      {\r\n        \"name\": \"ps9355\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/frontendIPConfigurations/ps9355\",\r\n        \"etag\": \"W/\\\"38b9ec90-46fa-4596-9935-c481ffd19df7\\\"\",\r\n        \"type\": \"Microsoft.Network/loadBalancers/frontendIPConfigurations\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\": {\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/publicIPAddresses/ps8280\"\r\n          },\r\n          \"loadBalancingRules\": [\r\n            {\r\n              \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/loadBalancingRules/ps5602\"\r\n            }\r\n          ],\r\n          \"inboundNatRules\": [\r\n            {\r\n              \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/inboundNatRules/ps6419\"\r\n            }\r\n          ]\r\n        }\r\n      }\r\n    ],\r\n    \"backendAddressPools\": [\r\n      {\r\n        \"name\": \"ps5627\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/backendAddressPools/ps5627\",\r\n        \"etag\": \"W/\\\"38b9ec90-46fa-4596-9935-c481ffd19df7\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"loadBalancingRules\": [\r\n            {\r\n              \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/loadBalancingRules/ps5602\"\r\n            }\r\n          ]\r\n        },\r\n        \"type\": \"Microsoft.Network/loadBalancers/backendAddressPools\"\r\n      }\r\n    ],\r\n    \"loadBalancingRules\": [\r\n      {\r\n        \"name\": \"ps5602\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/loadBalancingRules/ps5602\",\r\n        \"etag\": \"W/\\\"38b9ec90-46fa-4596-9935-c481ffd19df7\\\"\",\r\n        \"type\": \"Microsoft.Network/loadBalancers/loadBalancingRules\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"frontendIPConfiguration\": {\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/frontendIPConfigurations/ps9355\"\r\n          },\r\n          \"frontendPort\": 80,\r\n          \"backendPort\": 80,\r\n          \"enableFloatingIP\": true,\r\n          \"idleTimeoutInMinutes\": 15,\r\n          \"protocol\": \"Tcp\",\r\n          \"enableDestinationServiceEndpoint\": false,\r\n          \"enableTcpReset\": false,\r\n          \"allowBackendPortConflict\": false,\r\n          \"loadDistribution\": \"SourceIP\",\r\n          \"disableOutboundSnat\": true,\r\n          \"backendAddressPool\": {\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/backendAddressPools/ps5627\"\r\n          },\r\n          \"probe\": {\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/probes/ps9983\"\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"probes\": [\r\n      {\r\n        \"name\": \"ps9983\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/probes/ps9983\",\r\n        \"etag\": \"W/\\\"38b9ec90-46fa-4596-9935-c481ffd19df7\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"protocol\": \"Http\",\r\n          \"port\": 80,\r\n          \"requestPath\": \"healthcheck.aspx\",\r\n          \"intervalInSeconds\": 15,\r\n          \"numberOfProbes\": 2,\r\n          \"loadBalancingRules\": [\r\n            {\r\n              \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/loadBalancingRules/ps5602\"\r\n            }\r\n          ]\r\n        },\r\n        \"type\": \"Microsoft.Network/loadBalancers/probes\"\r\n      }\r\n    ],\r\n    \"inboundNatRules\": [\r\n      {\r\n        \"name\": \"ps6419\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/inboundNatRules/ps6419\",\r\n        \"etag\": \"W/\\\"38b9ec90-46fa-4596-9935-c481ffd19df7\\\"\",\r\n        \"type\": \"Microsoft.Network/loadBalancers/inboundNatRules\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"frontendIPConfiguration\": {\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/frontendIPConfigurations/ps9355\"\r\n          },\r\n          \"frontendPort\": 3389,\r\n          \"backendPort\": 3389,\r\n          \"enableFloatingIP\": true,\r\n          \"idleTimeoutInMinutes\": 15,\r\n          \"protocol\": \"Tcp\",\r\n          \"enableDestinationServiceEndpoint\": false,\r\n          \"enableTcpReset\": false,\r\n          \"allowBackendPortConflict\": false\r\n        }\r\n      }\r\n    ],\r\n    \"outboundRules\": [],\r\n    \"inboundNatPools\": []\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard\",\r\n    \"tier\": \"Regional\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"ps7690\",\r\n  \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690\",\r\n  \"etag\": \"W/\\\"59c75f8f-ec42-485a-abf5-44f217760308\\\"\",\r\n  \"type\": \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"westcentralus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"5ce00b83-6231-4a6f-8f8c-5cef6736cc3b\",\r\n    \"frontendIPConfigurations\": [\r\n      {\r\n        \"name\": \"ps2360\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/frontendIPConfigurations/ps2360\",\r\n        \"etag\": \"W/\\\"59c75f8f-ec42-485a-abf5-44f217760308\\\"\",\r\n        \"type\": \"Microsoft.Network/loadBalancers/frontendIPConfigurations\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\": {\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/publicIPAddresses/ps9538\"\r\n          },\r\n          \"loadBalancingRules\": [\r\n            {\r\n              \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/loadBalancingRules/ps97\"\r\n            }\r\n          ],\r\n          \"inboundNatRules\": [\r\n            {\r\n              \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/inboundNatRules/ps2644\"\r\n            }\r\n          ],\r\n          \"privateIPAddressVersion\": \"IPv4\"\r\n        }\r\n      }\r\n    ],\r\n    \"backendAddressPools\": [\r\n      {\r\n        \"name\": \"ps3546\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/backendAddressPools/ps3546\",\r\n        \"etag\": \"W/\\\"59c75f8f-ec42-485a-abf5-44f217760308\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"loadBalancingRules\": [\r\n            {\r\n              \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/loadBalancingRules/ps97\"\r\n            }\r\n          ]\r\n        },\r\n        \"type\": \"Microsoft.Network/loadBalancers/backendAddressPools\"\r\n      }\r\n    ],\r\n    \"loadBalancingRules\": [\r\n      {\r\n        \"name\": \"ps97\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/loadBalancingRules/ps97\",\r\n        \"etag\": \"W/\\\"59c75f8f-ec42-485a-abf5-44f217760308\\\"\",\r\n        \"type\": \"Microsoft.Network/loadBalancers/loadBalancingRules\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"frontendIPConfiguration\": {\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/frontendIPConfigurations/ps2360\"\r\n          },\r\n          \"frontendPort\": 80,\r\n          \"backendPort\": 80,\r\n          \"enableFloatingIP\": true,\r\n          \"idleTimeoutInMinutes\": 15,\r\n          \"protocol\": \"Tcp\",\r\n          \"enableDestinationServiceEndpoint\": false,\r\n          \"enableTcpReset\": false,\r\n          \"allowBackendPortConflict\": false,\r\n          \"loadDistribution\": \"SourceIP\",\r\n          \"disableOutboundSnat\": true,\r\n          \"backendAddressPool\": {\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/backendAddressPools/ps3546\"\r\n          },\r\n          \"probe\": {\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/probes/ps7580\"\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"probes\": [\r\n      {\r\n        \"name\": \"ps7580\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/probes/ps7580\",\r\n        \"etag\": \"W/\\\"59c75f8f-ec42-485a-abf5-44f217760308\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"protocol\": \"Http\",\r\n          \"port\": 80,\r\n          \"requestPath\": \"healthcheck.aspx\",\r\n          \"intervalInSeconds\": 15,\r\n          \"numberOfProbes\": 2,\r\n          \"loadBalancingRules\": [\r\n            {\r\n              \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/loadBalancingRules/ps97\"\r\n            }\r\n          ]\r\n        },\r\n        \"type\": \"Microsoft.Network/loadBalancers/probes\"\r\n      }\r\n    ],\r\n    \"inboundNatRules\": [\r\n      {\r\n        \"name\": \"ps2644\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/inboundNatRules/ps2644\",\r\n        \"etag\": \"W/\\\"59c75f8f-ec42-485a-abf5-44f217760308\\\"\",\r\n        \"type\": \"Microsoft.Network/loadBalancers/inboundNatRules\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"frontendIPConfiguration\": {\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/frontendIPConfigurations/ps2360\"\r\n          },\r\n          \"frontendPort\": 3389,\r\n          \"backendPort\": 3389,\r\n          \"enableFloatingIP\": true,\r\n          \"idleTimeoutInMinutes\": 15,\r\n          \"protocol\": \"Tcp\",\r\n          \"enableDestinationServiceEndpoint\": false,\r\n          \"enableTcpReset\": false,\r\n          \"allowBackendPortConflict\": false\r\n        }\r\n      }\r\n    ],\r\n    \"outboundRules\": [],\r\n    \"inboundNatPools\": []\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard\",\r\n    \"tier\": \"Regional\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476?api-version=2019-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzNjczMi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbG9hZEJhbGFuY2Vycy9wczM0NzY/YXBpLXZlcnNpb249MjAxOS0wMi0wMQ==",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690?api-version=2019-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzOTIxMi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbG9hZEJhbGFuY2Vycy9wczc2OTA/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "60d6005c-4a91-45d5-9995-20487c076903"
+          "f56ac568-a5be-4666-ad5d-cea14fd004ab"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
           "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
@@ -919,13 +885,16 @@
           "no-cache"
         ],
         "ETag": [
-          "W/\"38b9ec90-46fa-4596-9935-c481ffd19df7\""
+          "W/\"59c75f8f-ec42-485a-abf5-44f217760308\""
         ],
         "x-ms-request-id": [
-          "4f0f4fbf-6250-4d29-8d55-ece96069cd5d"
+          "1c7b959b-831a-4465-94e6-7399a2461442"
         ],
         "x-ms-correlation-request-id": [
-          "070fd6fe-0eb3-403c-8fe8-10d68484d25e"
+          "4ec7c8a8-e76e-44c0-b9fb-22dd5f1d478b"
+        ],
+        "x-ms-arm-service-request-id": [
+          "0f576fde-4a26-4068-8847-7d01315c98a3"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -935,19 +904,19 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11975"
+          "11995"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20190408T101800Z:070fd6fe-0eb3-403c-8fe8-10d68484d25e"
+          "WESTEUROPE:20190712T083322Z:4ec7c8a8-e76e-44c0-b9fb-22dd5f1d478b"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 08 Apr 2019 10:17:59 GMT"
+          "Fri, 12 Jul 2019 08:33:22 GMT"
         ],
         "Content-Length": [
-          "5806"
+          "5844"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -956,23 +925,23 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"ps3476\",\r\n  \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476\",\r\n  \"etag\": \"W/\\\"38b9ec90-46fa-4596-9935-c481ffd19df7\\\"\",\r\n  \"type\": \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"b9d6004c-fa07-4102-a49a-f2f09b21d288\",\r\n    \"frontendIPConfigurations\": [\r\n      {\r\n        \"name\": \"ps9355\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/frontendIPConfigurations/ps9355\",\r\n        \"etag\": \"W/\\\"38b9ec90-46fa-4596-9935-c481ffd19df7\\\"\",\r\n        \"type\": \"Microsoft.Network/loadBalancers/frontendIPConfigurations\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\": {\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/publicIPAddresses/ps8280\"\r\n          },\r\n          \"loadBalancingRules\": [\r\n            {\r\n              \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/loadBalancingRules/ps5602\"\r\n            }\r\n          ],\r\n          \"inboundNatRules\": [\r\n            {\r\n              \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/inboundNatRules/ps6419\"\r\n            }\r\n          ]\r\n        }\r\n      }\r\n    ],\r\n    \"backendAddressPools\": [\r\n      {\r\n        \"name\": \"ps5627\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/backendAddressPools/ps5627\",\r\n        \"etag\": \"W/\\\"38b9ec90-46fa-4596-9935-c481ffd19df7\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"loadBalancingRules\": [\r\n            {\r\n              \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/loadBalancingRules/ps5602\"\r\n            }\r\n          ]\r\n        },\r\n        \"type\": \"Microsoft.Network/loadBalancers/backendAddressPools\"\r\n      }\r\n    ],\r\n    \"loadBalancingRules\": [\r\n      {\r\n        \"name\": \"ps5602\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/loadBalancingRules/ps5602\",\r\n        \"etag\": \"W/\\\"38b9ec90-46fa-4596-9935-c481ffd19df7\\\"\",\r\n        \"type\": \"Microsoft.Network/loadBalancers/loadBalancingRules\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"frontendIPConfiguration\": {\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/frontendIPConfigurations/ps9355\"\r\n          },\r\n          \"frontendPort\": 80,\r\n          \"backendPort\": 80,\r\n          \"enableFloatingIP\": true,\r\n          \"idleTimeoutInMinutes\": 15,\r\n          \"protocol\": \"Tcp\",\r\n          \"enableDestinationServiceEndpoint\": false,\r\n          \"enableTcpReset\": false,\r\n          \"allowBackendPortConflict\": false,\r\n          \"loadDistribution\": \"SourceIP\",\r\n          \"disableOutboundSnat\": true,\r\n          \"backendAddressPool\": {\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/backendAddressPools/ps5627\"\r\n          },\r\n          \"probe\": {\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/probes/ps9983\"\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"probes\": [\r\n      {\r\n        \"name\": \"ps9983\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/probes/ps9983\",\r\n        \"etag\": \"W/\\\"38b9ec90-46fa-4596-9935-c481ffd19df7\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"protocol\": \"Http\",\r\n          \"port\": 80,\r\n          \"requestPath\": \"healthcheck.aspx\",\r\n          \"intervalInSeconds\": 15,\r\n          \"numberOfProbes\": 2,\r\n          \"loadBalancingRules\": [\r\n            {\r\n              \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/loadBalancingRules/ps5602\"\r\n            }\r\n          ]\r\n        },\r\n        \"type\": \"Microsoft.Network/loadBalancers/probes\"\r\n      }\r\n    ],\r\n    \"inboundNatRules\": [\r\n      {\r\n        \"name\": \"ps6419\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/inboundNatRules/ps6419\",\r\n        \"etag\": \"W/\\\"38b9ec90-46fa-4596-9935-c481ffd19df7\\\"\",\r\n        \"type\": \"Microsoft.Network/loadBalancers/inboundNatRules\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"frontendIPConfiguration\": {\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/frontendIPConfigurations/ps9355\"\r\n          },\r\n          \"frontendPort\": 3389,\r\n          \"backendPort\": 3389,\r\n          \"enableFloatingIP\": true,\r\n          \"idleTimeoutInMinutes\": 15,\r\n          \"protocol\": \"Tcp\",\r\n          \"enableDestinationServiceEndpoint\": false,\r\n          \"enableTcpReset\": false,\r\n          \"allowBackendPortConflict\": false\r\n        }\r\n      }\r\n    ],\r\n    \"outboundRules\": [],\r\n    \"inboundNatPools\": []\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard\",\r\n    \"tier\": \"Regional\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"ps7690\",\r\n  \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690\",\r\n  \"etag\": \"W/\\\"59c75f8f-ec42-485a-abf5-44f217760308\\\"\",\r\n  \"type\": \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"westcentralus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"5ce00b83-6231-4a6f-8f8c-5cef6736cc3b\",\r\n    \"frontendIPConfigurations\": [\r\n      {\r\n        \"name\": \"ps2360\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/frontendIPConfigurations/ps2360\",\r\n        \"etag\": \"W/\\\"59c75f8f-ec42-485a-abf5-44f217760308\\\"\",\r\n        \"type\": \"Microsoft.Network/loadBalancers/frontendIPConfigurations\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\": {\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/publicIPAddresses/ps9538\"\r\n          },\r\n          \"loadBalancingRules\": [\r\n            {\r\n              \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/loadBalancingRules/ps97\"\r\n            }\r\n          ],\r\n          \"inboundNatRules\": [\r\n            {\r\n              \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/inboundNatRules/ps2644\"\r\n            }\r\n          ],\r\n          \"privateIPAddressVersion\": \"IPv4\"\r\n        }\r\n      }\r\n    ],\r\n    \"backendAddressPools\": [\r\n      {\r\n        \"name\": \"ps3546\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/backendAddressPools/ps3546\",\r\n        \"etag\": \"W/\\\"59c75f8f-ec42-485a-abf5-44f217760308\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"loadBalancingRules\": [\r\n            {\r\n              \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/loadBalancingRules/ps97\"\r\n            }\r\n          ]\r\n        },\r\n        \"type\": \"Microsoft.Network/loadBalancers/backendAddressPools\"\r\n      }\r\n    ],\r\n    \"loadBalancingRules\": [\r\n      {\r\n        \"name\": \"ps97\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/loadBalancingRules/ps97\",\r\n        \"etag\": \"W/\\\"59c75f8f-ec42-485a-abf5-44f217760308\\\"\",\r\n        \"type\": \"Microsoft.Network/loadBalancers/loadBalancingRules\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"frontendIPConfiguration\": {\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/frontendIPConfigurations/ps2360\"\r\n          },\r\n          \"frontendPort\": 80,\r\n          \"backendPort\": 80,\r\n          \"enableFloatingIP\": true,\r\n          \"idleTimeoutInMinutes\": 15,\r\n          \"protocol\": \"Tcp\",\r\n          \"enableDestinationServiceEndpoint\": false,\r\n          \"enableTcpReset\": false,\r\n          \"allowBackendPortConflict\": false,\r\n          \"loadDistribution\": \"SourceIP\",\r\n          \"disableOutboundSnat\": true,\r\n          \"backendAddressPool\": {\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/backendAddressPools/ps3546\"\r\n          },\r\n          \"probe\": {\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/probes/ps7580\"\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"probes\": [\r\n      {\r\n        \"name\": \"ps7580\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/probes/ps7580\",\r\n        \"etag\": \"W/\\\"59c75f8f-ec42-485a-abf5-44f217760308\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"protocol\": \"Http\",\r\n          \"port\": 80,\r\n          \"requestPath\": \"healthcheck.aspx\",\r\n          \"intervalInSeconds\": 15,\r\n          \"numberOfProbes\": 2,\r\n          \"loadBalancingRules\": [\r\n            {\r\n              \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/loadBalancingRules/ps97\"\r\n            }\r\n          ]\r\n        },\r\n        \"type\": \"Microsoft.Network/loadBalancers/probes\"\r\n      }\r\n    ],\r\n    \"inboundNatRules\": [\r\n      {\r\n        \"name\": \"ps2644\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/inboundNatRules/ps2644\",\r\n        \"etag\": \"W/\\\"59c75f8f-ec42-485a-abf5-44f217760308\\\"\",\r\n        \"type\": \"Microsoft.Network/loadBalancers/inboundNatRules\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"frontendIPConfiguration\": {\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/frontendIPConfigurations/ps2360\"\r\n          },\r\n          \"frontendPort\": 3389,\r\n          \"backendPort\": 3389,\r\n          \"enableFloatingIP\": true,\r\n          \"idleTimeoutInMinutes\": 15,\r\n          \"protocol\": \"Tcp\",\r\n          \"enableDestinationServiceEndpoint\": false,\r\n          \"enableTcpReset\": false,\r\n          \"allowBackendPortConflict\": false\r\n        }\r\n      }\r\n    ],\r\n    \"outboundRules\": [],\r\n    \"inboundNatPools\": []\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard\",\r\n    \"tier\": \"Regional\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476?api-version=2019-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzNjczMi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbG9hZEJhbGFuY2Vycy9wczM0NzY/YXBpLXZlcnNpb249MjAxOS0wMi0wMQ==",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690?api-version=2019-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzOTIxMi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbG9hZEJhbGFuY2Vycy9wczc2OTA/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ed4daa8f-d720-44dd-adf6-05abd5b2a61b"
+          "e6487729-e5d4-41c5-bb5f-9fe80580a814"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
           "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
@@ -986,13 +955,16 @@
           "no-cache"
         ],
         "ETag": [
-          "W/\"38b9ec90-46fa-4596-9935-c481ffd19df7\""
+          "W/\"59c75f8f-ec42-485a-abf5-44f217760308\""
         ],
         "x-ms-request-id": [
-          "cc34dadc-918e-4bbe-9728-c61103c23597"
+          "08c45218-f9c1-4300-9796-57817bc1a0da"
         ],
         "x-ms-correlation-request-id": [
-          "22fedd1f-a7d6-4e2f-b0dc-e0997ba69bb8"
+          "544df2a3-7fbc-434f-ac37-7edeccf9492b"
+        ],
+        "x-ms-arm-service-request-id": [
+          "cfe2ff64-f9fd-42f4-bd83-0421a8f1fbb4"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1002,19 +974,19 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11973"
+          "11998"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20190408T101801Z:22fedd1f-a7d6-4e2f-b0dc-e0997ba69bb8"
+          "WESTEUROPE:20190712T083324Z:544df2a3-7fbc-434f-ac37-7edeccf9492b"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 08 Apr 2019 10:18:01 GMT"
+          "Fri, 12 Jul 2019 08:33:23 GMT"
         ],
         "Content-Length": [
-          "5806"
+          "5844"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1023,23 +995,23 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"ps3476\",\r\n  \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476\",\r\n  \"etag\": \"W/\\\"38b9ec90-46fa-4596-9935-c481ffd19df7\\\"\",\r\n  \"type\": \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"b9d6004c-fa07-4102-a49a-f2f09b21d288\",\r\n    \"frontendIPConfigurations\": [\r\n      {\r\n        \"name\": \"ps9355\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/frontendIPConfigurations/ps9355\",\r\n        \"etag\": \"W/\\\"38b9ec90-46fa-4596-9935-c481ffd19df7\\\"\",\r\n        \"type\": \"Microsoft.Network/loadBalancers/frontendIPConfigurations\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\": {\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/publicIPAddresses/ps8280\"\r\n          },\r\n          \"loadBalancingRules\": [\r\n            {\r\n              \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/loadBalancingRules/ps5602\"\r\n            }\r\n          ],\r\n          \"inboundNatRules\": [\r\n            {\r\n              \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/inboundNatRules/ps6419\"\r\n            }\r\n          ]\r\n        }\r\n      }\r\n    ],\r\n    \"backendAddressPools\": [\r\n      {\r\n        \"name\": \"ps5627\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/backendAddressPools/ps5627\",\r\n        \"etag\": \"W/\\\"38b9ec90-46fa-4596-9935-c481ffd19df7\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"loadBalancingRules\": [\r\n            {\r\n              \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/loadBalancingRules/ps5602\"\r\n            }\r\n          ]\r\n        },\r\n        \"type\": \"Microsoft.Network/loadBalancers/backendAddressPools\"\r\n      }\r\n    ],\r\n    \"loadBalancingRules\": [\r\n      {\r\n        \"name\": \"ps5602\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/loadBalancingRules/ps5602\",\r\n        \"etag\": \"W/\\\"38b9ec90-46fa-4596-9935-c481ffd19df7\\\"\",\r\n        \"type\": \"Microsoft.Network/loadBalancers/loadBalancingRules\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"frontendIPConfiguration\": {\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/frontendIPConfigurations/ps9355\"\r\n          },\r\n          \"frontendPort\": 80,\r\n          \"backendPort\": 80,\r\n          \"enableFloatingIP\": true,\r\n          \"idleTimeoutInMinutes\": 15,\r\n          \"protocol\": \"Tcp\",\r\n          \"enableDestinationServiceEndpoint\": false,\r\n          \"enableTcpReset\": false,\r\n          \"allowBackendPortConflict\": false,\r\n          \"loadDistribution\": \"SourceIP\",\r\n          \"disableOutboundSnat\": true,\r\n          \"backendAddressPool\": {\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/backendAddressPools/ps5627\"\r\n          },\r\n          \"probe\": {\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/probes/ps9983\"\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"probes\": [\r\n      {\r\n        \"name\": \"ps9983\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/probes/ps9983\",\r\n        \"etag\": \"W/\\\"38b9ec90-46fa-4596-9935-c481ffd19df7\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"protocol\": \"Http\",\r\n          \"port\": 80,\r\n          \"requestPath\": \"healthcheck.aspx\",\r\n          \"intervalInSeconds\": 15,\r\n          \"numberOfProbes\": 2,\r\n          \"loadBalancingRules\": [\r\n            {\r\n              \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/loadBalancingRules/ps5602\"\r\n            }\r\n          ]\r\n        },\r\n        \"type\": \"Microsoft.Network/loadBalancers/probes\"\r\n      }\r\n    ],\r\n    \"inboundNatRules\": [\r\n      {\r\n        \"name\": \"ps6419\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/inboundNatRules/ps6419\",\r\n        \"etag\": \"W/\\\"38b9ec90-46fa-4596-9935-c481ffd19df7\\\"\",\r\n        \"type\": \"Microsoft.Network/loadBalancers/inboundNatRules\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"frontendIPConfiguration\": {\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/frontendIPConfigurations/ps9355\"\r\n          },\r\n          \"frontendPort\": 3389,\r\n          \"backendPort\": 3389,\r\n          \"enableFloatingIP\": true,\r\n          \"idleTimeoutInMinutes\": 15,\r\n          \"protocol\": \"Tcp\",\r\n          \"enableDestinationServiceEndpoint\": false,\r\n          \"enableTcpReset\": false,\r\n          \"allowBackendPortConflict\": false\r\n        }\r\n      }\r\n    ],\r\n    \"outboundRules\": [],\r\n    \"inboundNatPools\": []\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard\",\r\n    \"tier\": \"Regional\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"ps7690\",\r\n  \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690\",\r\n  \"etag\": \"W/\\\"59c75f8f-ec42-485a-abf5-44f217760308\\\"\",\r\n  \"type\": \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"westcentralus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"5ce00b83-6231-4a6f-8f8c-5cef6736cc3b\",\r\n    \"frontendIPConfigurations\": [\r\n      {\r\n        \"name\": \"ps2360\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/frontendIPConfigurations/ps2360\",\r\n        \"etag\": \"W/\\\"59c75f8f-ec42-485a-abf5-44f217760308\\\"\",\r\n        \"type\": \"Microsoft.Network/loadBalancers/frontendIPConfigurations\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\": {\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/publicIPAddresses/ps9538\"\r\n          },\r\n          \"loadBalancingRules\": [\r\n            {\r\n              \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/loadBalancingRules/ps97\"\r\n            }\r\n          ],\r\n          \"inboundNatRules\": [\r\n            {\r\n              \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/inboundNatRules/ps2644\"\r\n            }\r\n          ],\r\n          \"privateIPAddressVersion\": \"IPv4\"\r\n        }\r\n      }\r\n    ],\r\n    \"backendAddressPools\": [\r\n      {\r\n        \"name\": \"ps3546\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/backendAddressPools/ps3546\",\r\n        \"etag\": \"W/\\\"59c75f8f-ec42-485a-abf5-44f217760308\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"loadBalancingRules\": [\r\n            {\r\n              \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/loadBalancingRules/ps97\"\r\n            }\r\n          ]\r\n        },\r\n        \"type\": \"Microsoft.Network/loadBalancers/backendAddressPools\"\r\n      }\r\n    ],\r\n    \"loadBalancingRules\": [\r\n      {\r\n        \"name\": \"ps97\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/loadBalancingRules/ps97\",\r\n        \"etag\": \"W/\\\"59c75f8f-ec42-485a-abf5-44f217760308\\\"\",\r\n        \"type\": \"Microsoft.Network/loadBalancers/loadBalancingRules\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"frontendIPConfiguration\": {\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/frontendIPConfigurations/ps2360\"\r\n          },\r\n          \"frontendPort\": 80,\r\n          \"backendPort\": 80,\r\n          \"enableFloatingIP\": true,\r\n          \"idleTimeoutInMinutes\": 15,\r\n          \"protocol\": \"Tcp\",\r\n          \"enableDestinationServiceEndpoint\": false,\r\n          \"enableTcpReset\": false,\r\n          \"allowBackendPortConflict\": false,\r\n          \"loadDistribution\": \"SourceIP\",\r\n          \"disableOutboundSnat\": true,\r\n          \"backendAddressPool\": {\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/backendAddressPools/ps3546\"\r\n          },\r\n          \"probe\": {\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/probes/ps7580\"\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"probes\": [\r\n      {\r\n        \"name\": \"ps7580\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/probes/ps7580\",\r\n        \"etag\": \"W/\\\"59c75f8f-ec42-485a-abf5-44f217760308\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"protocol\": \"Http\",\r\n          \"port\": 80,\r\n          \"requestPath\": \"healthcheck.aspx\",\r\n          \"intervalInSeconds\": 15,\r\n          \"numberOfProbes\": 2,\r\n          \"loadBalancingRules\": [\r\n            {\r\n              \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/loadBalancingRules/ps97\"\r\n            }\r\n          ]\r\n        },\r\n        \"type\": \"Microsoft.Network/loadBalancers/probes\"\r\n      }\r\n    ],\r\n    \"inboundNatRules\": [\r\n      {\r\n        \"name\": \"ps2644\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/inboundNatRules/ps2644\",\r\n        \"etag\": \"W/\\\"59c75f8f-ec42-485a-abf5-44f217760308\\\"\",\r\n        \"type\": \"Microsoft.Network/loadBalancers/inboundNatRules\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"frontendIPConfiguration\": {\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/frontendIPConfigurations/ps2360\"\r\n          },\r\n          \"frontendPort\": 3389,\r\n          \"backendPort\": 3389,\r\n          \"enableFloatingIP\": true,\r\n          \"idleTimeoutInMinutes\": 15,\r\n          \"protocol\": \"Tcp\",\r\n          \"enableDestinationServiceEndpoint\": false,\r\n          \"enableTcpReset\": false,\r\n          \"allowBackendPortConflict\": false\r\n        }\r\n      }\r\n    ],\r\n    \"outboundRules\": [],\r\n    \"inboundNatPools\": []\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard\",\r\n    \"tier\": \"Regional\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476?api-version=2019-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzNjczMi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbG9hZEJhbGFuY2Vycy9wczM0NzY/YXBpLXZlcnNpb249MjAxOS0wMi0wMQ==",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690?api-version=2019-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzOTIxMi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbG9hZEJhbGFuY2Vycy9wczc2OTA/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"properties\": {\r\n    \"frontendIPConfigurations\": [\r\n      {\r\n        \"properties\": {\r\n          \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\": {\r\n            \"properties\": {\r\n              \"ipTags\": []\r\n            },\r\n            \"zones\": [],\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/publicIPAddresses/ps8280\",\r\n            \"tags\": {}\r\n          }\r\n        },\r\n        \"name\": \"ps9355\",\r\n        \"zones\": [],\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/FrontendIpConfigurations/ps9355\"\r\n      }\r\n    ],\r\n    \"backendAddressPools\": [\r\n      {\r\n        \"name\": \"ps5627\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/BackendAddressPools/ps5627\"\r\n      }\r\n    ],\r\n    \"loadBalancingRules\": [\r\n      {\r\n        \"properties\": {\r\n          \"frontendIPConfiguration\": {\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/FrontendIpConfigurations/ps9355\"\r\n          },\r\n          \"backendAddressPool\": {\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/BackendAddressPools/ps5627\"\r\n          },\r\n          \"probe\": {\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/Probes/ps9983\"\r\n          },\r\n          \"protocol\": \"Tcp\",\r\n          \"loadDistribution\": \"SourceIP\",\r\n          \"frontendPort\": 80,\r\n          \"backendPort\": 80,\r\n          \"idleTimeoutInMinutes\": 15,\r\n          \"enableFloatingIP\": true,\r\n          \"enableTcpReset\": false,\r\n          \"disableOutboundSnat\": true\r\n        },\r\n        \"name\": \"ps5602\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/LoadBalancingRules/ps5602\"\r\n      }\r\n    ],\r\n    \"probes\": [\r\n      {\r\n        \"properties\": {\r\n          \"protocol\": \"http\",\r\n          \"port\": 80,\r\n          \"intervalInSeconds\": 15,\r\n          \"numberOfProbes\": 2,\r\n          \"requestPath\": \"healthcheck.aspx\"\r\n        },\r\n        \"name\": \"ps9983\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/Probes/ps9983\"\r\n      }\r\n    ],\r\n    \"inboundNatRules\": [\r\n      {\r\n        \"properties\": {\r\n          \"frontendIPConfiguration\": {\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/FrontendIpConfigurations/ps9355\"\r\n          },\r\n          \"protocol\": \"Tcp\",\r\n          \"frontendPort\": 3389,\r\n          \"backendPort\": 3389,\r\n          \"idleTimeoutInMinutes\": 15,\r\n          \"enableFloatingIP\": true,\r\n          \"enableTcpReset\": false\r\n        },\r\n        \"name\": \"ps6419\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/InboundNatRules/ps6419\"\r\n      }\r\n    ],\r\n    \"inboundNatPools\": [],\r\n    \"outboundRules\": []\r\n  },\r\n  \"location\": \"EAST US 2 EUAP\"\r\n}",
+      "RequestBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"properties\": {\r\n    \"frontendIPConfigurations\": [\r\n      {\r\n        \"properties\": {\r\n          \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\": {\r\n            \"properties\": {\r\n              \"ipTags\": []\r\n            },\r\n            \"zones\": [],\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/publicIPAddresses/ps9538\",\r\n            \"tags\": {}\r\n          }\r\n        },\r\n        \"name\": \"ps2360\",\r\n        \"zones\": [],\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/FrontendIpConfigurations/ps2360\"\r\n      }\r\n    ],\r\n    \"backendAddressPools\": [\r\n      {\r\n        \"name\": \"ps3546\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/BackendAddressPools/ps3546\"\r\n      }\r\n    ],\r\n    \"loadBalancingRules\": [\r\n      {\r\n        \"properties\": {\r\n          \"frontendIPConfiguration\": {\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/FrontendIpConfigurations/ps2360\"\r\n          },\r\n          \"backendAddressPool\": {\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/BackendAddressPools/ps3546\"\r\n          },\r\n          \"probe\": {\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/Probes/ps7580\"\r\n          },\r\n          \"protocol\": \"Tcp\",\r\n          \"loadDistribution\": \"SourceIP\",\r\n          \"frontendPort\": 80,\r\n          \"backendPort\": 80,\r\n          \"idleTimeoutInMinutes\": 15,\r\n          \"enableFloatingIP\": true,\r\n          \"enableTcpReset\": false,\r\n          \"disableOutboundSnat\": true\r\n        },\r\n        \"name\": \"ps97\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/LoadBalancingRules/ps97\"\r\n      }\r\n    ],\r\n    \"probes\": [\r\n      {\r\n        \"properties\": {\r\n          \"protocol\": \"http\",\r\n          \"port\": 80,\r\n          \"intervalInSeconds\": 15,\r\n          \"numberOfProbes\": 2,\r\n          \"requestPath\": \"healthcheck.aspx\"\r\n        },\r\n        \"name\": \"ps7580\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/Probes/ps7580\"\r\n      }\r\n    ],\r\n    \"inboundNatRules\": [\r\n      {\r\n        \"properties\": {\r\n          \"frontendIPConfiguration\": {\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/FrontendIpConfigurations/ps2360\"\r\n          },\r\n          \"protocol\": \"Tcp\",\r\n          \"frontendPort\": 3389,\r\n          \"backendPort\": 3389,\r\n          \"idleTimeoutInMinutes\": 15,\r\n          \"enableFloatingIP\": true,\r\n          \"enableTcpReset\": false\r\n        },\r\n        \"name\": \"ps2644\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/InboundNatRules/ps2644\"\r\n      }\r\n    ],\r\n    \"inboundNatPools\": [],\r\n    \"outboundRules\": []\r\n  },\r\n  \"location\": \"westcentralus\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "999016fb-ae57-40ee-bbe5-e9b881e3931e"
+          "10b7c3cd-ecf0-4d3d-aca2-28743322d95f"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
           "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
@@ -1048,7 +1020,7 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "3450"
+          "3445"
         ]
       },
       "ResponseHeaders": {
@@ -1059,13 +1031,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "c4f991ac-28dd-4983-ab99-75b5e39460f4"
+          "a72bbf59-70fe-4951-95d6-16c071ff2bd5"
         ],
         "Azure-AsyncOperation": [
-          "https://brazilus.management.azure.com/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/locations/eastus2euap/operations/c4f991ac-28dd-4983-ab99-75b5e39460f4?api-version=2019-02-01"
+          "https://management.azure.com/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/locations/westcentralus/operations/a72bbf59-70fe-4951-95d6-16c071ff2bd5?api-version=2019-06-01"
         ],
         "x-ms-correlation-request-id": [
-          "96c3dbdc-d6f7-4117-b2c9-38a059db28ba"
+          "7056b640-fed8-46ab-883c-9c634707058d"
+        ],
+        "x-ms-arm-service-request-id": [
+          "82711ea0-8412-4025-8c34-12c505714d15"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1075,19 +1050,19 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1192"
+          "1199"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20190408T101759Z:96c3dbdc-d6f7-4117-b2c9-38a059db28ba"
+          "WESTEUROPE:20190712T083322Z:7056b640-fed8-46ab-883c-9c634707058d"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 08 Apr 2019 10:17:59 GMT"
+          "Fri, 12 Jul 2019 08:33:22 GMT"
         ],
         "Content-Length": [
-          "5806"
+          "5844"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1096,23 +1071,23 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"ps3476\",\r\n  \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476\",\r\n  \"etag\": \"W/\\\"38b9ec90-46fa-4596-9935-c481ffd19df7\\\"\",\r\n  \"type\": \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"b9d6004c-fa07-4102-a49a-f2f09b21d288\",\r\n    \"frontendIPConfigurations\": [\r\n      {\r\n        \"name\": \"ps9355\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/frontendIPConfigurations/ps9355\",\r\n        \"etag\": \"W/\\\"38b9ec90-46fa-4596-9935-c481ffd19df7\\\"\",\r\n        \"type\": \"Microsoft.Network/loadBalancers/frontendIPConfigurations\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\": {\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/publicIPAddresses/ps8280\"\r\n          },\r\n          \"loadBalancingRules\": [\r\n            {\r\n              \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/loadBalancingRules/ps5602\"\r\n            }\r\n          ],\r\n          \"inboundNatRules\": [\r\n            {\r\n              \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/inboundNatRules/ps6419\"\r\n            }\r\n          ]\r\n        }\r\n      }\r\n    ],\r\n    \"backendAddressPools\": [\r\n      {\r\n        \"name\": \"ps5627\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/backendAddressPools/ps5627\",\r\n        \"etag\": \"W/\\\"38b9ec90-46fa-4596-9935-c481ffd19df7\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"loadBalancingRules\": [\r\n            {\r\n              \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/loadBalancingRules/ps5602\"\r\n            }\r\n          ]\r\n        },\r\n        \"type\": \"Microsoft.Network/loadBalancers/backendAddressPools\"\r\n      }\r\n    ],\r\n    \"loadBalancingRules\": [\r\n      {\r\n        \"name\": \"ps5602\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/loadBalancingRules/ps5602\",\r\n        \"etag\": \"W/\\\"38b9ec90-46fa-4596-9935-c481ffd19df7\\\"\",\r\n        \"type\": \"Microsoft.Network/loadBalancers/loadBalancingRules\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"frontendIPConfiguration\": {\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/frontendIPConfigurations/ps9355\"\r\n          },\r\n          \"frontendPort\": 80,\r\n          \"backendPort\": 80,\r\n          \"enableFloatingIP\": true,\r\n          \"idleTimeoutInMinutes\": 15,\r\n          \"protocol\": \"Tcp\",\r\n          \"enableDestinationServiceEndpoint\": false,\r\n          \"enableTcpReset\": false,\r\n          \"allowBackendPortConflict\": false,\r\n          \"loadDistribution\": \"SourceIP\",\r\n          \"disableOutboundSnat\": true,\r\n          \"backendAddressPool\": {\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/backendAddressPools/ps5627\"\r\n          },\r\n          \"probe\": {\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/probes/ps9983\"\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"probes\": [\r\n      {\r\n        \"name\": \"ps9983\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/probes/ps9983\",\r\n        \"etag\": \"W/\\\"38b9ec90-46fa-4596-9935-c481ffd19df7\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"protocol\": \"Http\",\r\n          \"port\": 80,\r\n          \"requestPath\": \"healthcheck.aspx\",\r\n          \"intervalInSeconds\": 15,\r\n          \"numberOfProbes\": 2,\r\n          \"loadBalancingRules\": [\r\n            {\r\n              \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/loadBalancingRules/ps5602\"\r\n            }\r\n          ]\r\n        },\r\n        \"type\": \"Microsoft.Network/loadBalancers/probes\"\r\n      }\r\n    ],\r\n    \"inboundNatRules\": [\r\n      {\r\n        \"name\": \"ps6419\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/inboundNatRules/ps6419\",\r\n        \"etag\": \"W/\\\"38b9ec90-46fa-4596-9935-c481ffd19df7\\\"\",\r\n        \"type\": \"Microsoft.Network/loadBalancers/inboundNatRules\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"frontendIPConfiguration\": {\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/frontendIPConfigurations/ps9355\"\r\n          },\r\n          \"frontendPort\": 3389,\r\n          \"backendPort\": 3389,\r\n          \"enableFloatingIP\": true,\r\n          \"idleTimeoutInMinutes\": 15,\r\n          \"protocol\": \"Tcp\",\r\n          \"enableDestinationServiceEndpoint\": false,\r\n          \"enableTcpReset\": false,\r\n          \"allowBackendPortConflict\": false\r\n        }\r\n      }\r\n    ],\r\n    \"outboundRules\": [],\r\n    \"inboundNatPools\": []\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard\",\r\n    \"tier\": \"Regional\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"ps7690\",\r\n  \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690\",\r\n  \"etag\": \"W/\\\"59c75f8f-ec42-485a-abf5-44f217760308\\\"\",\r\n  \"type\": \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"westcentralus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"5ce00b83-6231-4a6f-8f8c-5cef6736cc3b\",\r\n    \"frontendIPConfigurations\": [\r\n      {\r\n        \"name\": \"ps2360\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/frontendIPConfigurations/ps2360\",\r\n        \"etag\": \"W/\\\"59c75f8f-ec42-485a-abf5-44f217760308\\\"\",\r\n        \"type\": \"Microsoft.Network/loadBalancers/frontendIPConfigurations\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\": {\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/publicIPAddresses/ps9538\"\r\n          },\r\n          \"loadBalancingRules\": [\r\n            {\r\n              \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/loadBalancingRules/ps97\"\r\n            }\r\n          ],\r\n          \"inboundNatRules\": [\r\n            {\r\n              \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/inboundNatRules/ps2644\"\r\n            }\r\n          ],\r\n          \"privateIPAddressVersion\": \"IPv4\"\r\n        }\r\n      }\r\n    ],\r\n    \"backendAddressPools\": [\r\n      {\r\n        \"name\": \"ps3546\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/backendAddressPools/ps3546\",\r\n        \"etag\": \"W/\\\"59c75f8f-ec42-485a-abf5-44f217760308\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"loadBalancingRules\": [\r\n            {\r\n              \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/loadBalancingRules/ps97\"\r\n            }\r\n          ]\r\n        },\r\n        \"type\": \"Microsoft.Network/loadBalancers/backendAddressPools\"\r\n      }\r\n    ],\r\n    \"loadBalancingRules\": [\r\n      {\r\n        \"name\": \"ps97\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/loadBalancingRules/ps97\",\r\n        \"etag\": \"W/\\\"59c75f8f-ec42-485a-abf5-44f217760308\\\"\",\r\n        \"type\": \"Microsoft.Network/loadBalancers/loadBalancingRules\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"frontendIPConfiguration\": {\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/frontendIPConfigurations/ps2360\"\r\n          },\r\n          \"frontendPort\": 80,\r\n          \"backendPort\": 80,\r\n          \"enableFloatingIP\": true,\r\n          \"idleTimeoutInMinutes\": 15,\r\n          \"protocol\": \"Tcp\",\r\n          \"enableDestinationServiceEndpoint\": false,\r\n          \"enableTcpReset\": false,\r\n          \"allowBackendPortConflict\": false,\r\n          \"loadDistribution\": \"SourceIP\",\r\n          \"disableOutboundSnat\": true,\r\n          \"backendAddressPool\": {\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/backendAddressPools/ps3546\"\r\n          },\r\n          \"probe\": {\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/probes/ps7580\"\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"probes\": [\r\n      {\r\n        \"name\": \"ps7580\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/probes/ps7580\",\r\n        \"etag\": \"W/\\\"59c75f8f-ec42-485a-abf5-44f217760308\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"protocol\": \"Http\",\r\n          \"port\": 80,\r\n          \"requestPath\": \"healthcheck.aspx\",\r\n          \"intervalInSeconds\": 15,\r\n          \"numberOfProbes\": 2,\r\n          \"loadBalancingRules\": [\r\n            {\r\n              \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/loadBalancingRules/ps97\"\r\n            }\r\n          ]\r\n        },\r\n        \"type\": \"Microsoft.Network/loadBalancers/probes\"\r\n      }\r\n    ],\r\n    \"inboundNatRules\": [\r\n      {\r\n        \"name\": \"ps2644\",\r\n        \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/inboundNatRules/ps2644\",\r\n        \"etag\": \"W/\\\"59c75f8f-ec42-485a-abf5-44f217760308\\\"\",\r\n        \"type\": \"Microsoft.Network/loadBalancers/inboundNatRules\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"frontendIPConfiguration\": {\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/frontendIPConfigurations/ps2360\"\r\n          },\r\n          \"frontendPort\": 3389,\r\n          \"backendPort\": 3389,\r\n          \"enableFloatingIP\": true,\r\n          \"idleTimeoutInMinutes\": 15,\r\n          \"protocol\": \"Tcp\",\r\n          \"enableDestinationServiceEndpoint\": false,\r\n          \"enableTcpReset\": false,\r\n          \"allowBackendPortConflict\": false\r\n        }\r\n      }\r\n    ],\r\n    \"outboundRules\": [],\r\n    \"inboundNatPools\": []\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard\",\r\n    \"tier\": \"Regional\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers?api-version=2019-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzNjczMi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbG9hZEJhbGFuY2Vycz9hcGktdmVyc2lvbj0yMDE5LTAyLTAx",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers?api-version=2019-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzOTIxMi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbG9hZEJhbGFuY2Vycz9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ccc990ff-d203-4250-b67c-8f7f8139f78c"
+          "d319e9ed-a62c-46f0-acc0-89cf660e213f"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
           "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
@@ -1126,10 +1101,13 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "b0f532e3-c80a-412b-916a-4bd3bf9ca13a"
+          "8874a8f9-e0d9-42c6-b93d-2bfbec28f23a"
         ],
         "x-ms-correlation-request-id": [
-          "693b8f1e-5e16-42d4-9b38-0f27db976031"
+          "4a7abb32-fa89-43ad-bfc2-1fe1b979dba7"
+        ],
+        "x-ms-arm-service-request-id": [
+          "b744379e-d32d-4793-bc37-d0dd4c50730d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1139,19 +1117,19 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11972"
+          "11995"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20190408T101802Z:693b8f1e-5e16-42d4-9b38-0f27db976031"
+          "WESTEUROPE:20190712T083325Z:4a7abb32-fa89-43ad-bfc2-1fe1b979dba7"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 08 Apr 2019 10:18:01 GMT"
+          "Fri, 12 Jul 2019 08:33:24 GMT"
         ],
         "Content-Length": [
-          "6355"
+          "6397"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1160,23 +1138,23 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"ps3476\",\r\n      \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476\",\r\n      \"etag\": \"W/\\\"38b9ec90-46fa-4596-9935-c481ffd19df7\\\"\",\r\n      \"type\": \"Microsoft.Network/loadBalancers\",\r\n      \"location\": \"eastus2euap\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"resourceGuid\": \"b9d6004c-fa07-4102-a49a-f2f09b21d288\",\r\n        \"frontendIPConfigurations\": [\r\n          {\r\n            \"name\": \"ps9355\",\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/frontendIPConfigurations/ps9355\",\r\n            \"etag\": \"W/\\\"38b9ec90-46fa-4596-9935-c481ffd19df7\\\"\",\r\n            \"type\": \"Microsoft.Network/loadBalancers/frontendIPConfigurations\",\r\n            \"properties\": {\r\n              \"provisioningState\": \"Succeeded\",\r\n              \"privateIPAllocationMethod\": \"Dynamic\",\r\n              \"publicIPAddress\": {\r\n                \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/publicIPAddresses/ps8280\"\r\n              },\r\n              \"loadBalancingRules\": [\r\n                {\r\n                  \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/loadBalancingRules/ps5602\"\r\n                }\r\n              ],\r\n              \"inboundNatRules\": [\r\n                {\r\n                  \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/inboundNatRules/ps6419\"\r\n                }\r\n              ]\r\n            }\r\n          }\r\n        ],\r\n        \"backendAddressPools\": [\r\n          {\r\n            \"name\": \"ps5627\",\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/backendAddressPools/ps5627\",\r\n            \"etag\": \"W/\\\"38b9ec90-46fa-4596-9935-c481ffd19df7\\\"\",\r\n            \"properties\": {\r\n              \"provisioningState\": \"Succeeded\",\r\n              \"loadBalancingRules\": [\r\n                {\r\n                  \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/loadBalancingRules/ps5602\"\r\n                }\r\n              ]\r\n            },\r\n            \"type\": \"Microsoft.Network/loadBalancers/backendAddressPools\"\r\n          }\r\n        ],\r\n        \"loadBalancingRules\": [\r\n          {\r\n            \"name\": \"ps5602\",\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/loadBalancingRules/ps5602\",\r\n            \"etag\": \"W/\\\"38b9ec90-46fa-4596-9935-c481ffd19df7\\\"\",\r\n            \"type\": \"Microsoft.Network/loadBalancers/loadBalancingRules\",\r\n            \"properties\": {\r\n              \"provisioningState\": \"Succeeded\",\r\n              \"frontendIPConfiguration\": {\r\n                \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/frontendIPConfigurations/ps9355\"\r\n              },\r\n              \"frontendPort\": 80,\r\n              \"backendPort\": 80,\r\n              \"enableFloatingIP\": true,\r\n              \"idleTimeoutInMinutes\": 15,\r\n              \"protocol\": \"Tcp\",\r\n              \"enableDestinationServiceEndpoint\": false,\r\n              \"enableTcpReset\": false,\r\n              \"allowBackendPortConflict\": false,\r\n              \"loadDistribution\": \"SourceIP\",\r\n              \"disableOutboundSnat\": true,\r\n              \"backendAddressPool\": {\r\n                \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/backendAddressPools/ps5627\"\r\n              },\r\n              \"probe\": {\r\n                \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/probes/ps9983\"\r\n              }\r\n            }\r\n          }\r\n        ],\r\n        \"probes\": [\r\n          {\r\n            \"name\": \"ps9983\",\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/probes/ps9983\",\r\n            \"etag\": \"W/\\\"38b9ec90-46fa-4596-9935-c481ffd19df7\\\"\",\r\n            \"properties\": {\r\n              \"provisioningState\": \"Succeeded\",\r\n              \"protocol\": \"Http\",\r\n              \"port\": 80,\r\n              \"requestPath\": \"healthcheck.aspx\",\r\n              \"intervalInSeconds\": 15,\r\n              \"numberOfProbes\": 2,\r\n              \"loadBalancingRules\": [\r\n                {\r\n                  \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/loadBalancingRules/ps5602\"\r\n                }\r\n              ]\r\n            },\r\n            \"type\": \"Microsoft.Network/loadBalancers/probes\"\r\n          }\r\n        ],\r\n        \"inboundNatRules\": [\r\n          {\r\n            \"name\": \"ps6419\",\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/inboundNatRules/ps6419\",\r\n            \"etag\": \"W/\\\"38b9ec90-46fa-4596-9935-c481ffd19df7\\\"\",\r\n            \"type\": \"Microsoft.Network/loadBalancers/inboundNatRules\",\r\n            \"properties\": {\r\n              \"provisioningState\": \"Succeeded\",\r\n              \"frontendIPConfiguration\": {\r\n                \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476/frontendIPConfigurations/ps9355\"\r\n              },\r\n              \"frontendPort\": 3389,\r\n              \"backendPort\": 3389,\r\n              \"enableFloatingIP\": true,\r\n              \"idleTimeoutInMinutes\": 15,\r\n              \"protocol\": \"Tcp\",\r\n              \"enableDestinationServiceEndpoint\": false,\r\n              \"enableTcpReset\": false,\r\n              \"allowBackendPortConflict\": false\r\n            }\r\n          }\r\n        ],\r\n        \"outboundRules\": [],\r\n        \"inboundNatPools\": []\r\n      },\r\n      \"sku\": {\r\n        \"name\": \"Standard\",\r\n        \"tier\": \"Regional\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"ps7690\",\r\n      \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690\",\r\n      \"etag\": \"W/\\\"59c75f8f-ec42-485a-abf5-44f217760308\\\"\",\r\n      \"type\": \"Microsoft.Network/loadBalancers\",\r\n      \"location\": \"westcentralus\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"resourceGuid\": \"5ce00b83-6231-4a6f-8f8c-5cef6736cc3b\",\r\n        \"frontendIPConfigurations\": [\r\n          {\r\n            \"name\": \"ps2360\",\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/frontendIPConfigurations/ps2360\",\r\n            \"etag\": \"W/\\\"59c75f8f-ec42-485a-abf5-44f217760308\\\"\",\r\n            \"type\": \"Microsoft.Network/loadBalancers/frontendIPConfigurations\",\r\n            \"properties\": {\r\n              \"provisioningState\": \"Succeeded\",\r\n              \"privateIPAllocationMethod\": \"Dynamic\",\r\n              \"publicIPAddress\": {\r\n                \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/publicIPAddresses/ps9538\"\r\n              },\r\n              \"loadBalancingRules\": [\r\n                {\r\n                  \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/loadBalancingRules/ps97\"\r\n                }\r\n              ],\r\n              \"inboundNatRules\": [\r\n                {\r\n                  \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/inboundNatRules/ps2644\"\r\n                }\r\n              ],\r\n              \"privateIPAddressVersion\": \"IPv4\"\r\n            }\r\n          }\r\n        ],\r\n        \"backendAddressPools\": [\r\n          {\r\n            \"name\": \"ps3546\",\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/backendAddressPools/ps3546\",\r\n            \"etag\": \"W/\\\"59c75f8f-ec42-485a-abf5-44f217760308\\\"\",\r\n            \"properties\": {\r\n              \"provisioningState\": \"Succeeded\",\r\n              \"loadBalancingRules\": [\r\n                {\r\n                  \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/loadBalancingRules/ps97\"\r\n                }\r\n              ]\r\n            },\r\n            \"type\": \"Microsoft.Network/loadBalancers/backendAddressPools\"\r\n          }\r\n        ],\r\n        \"loadBalancingRules\": [\r\n          {\r\n            \"name\": \"ps97\",\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/loadBalancingRules/ps97\",\r\n            \"etag\": \"W/\\\"59c75f8f-ec42-485a-abf5-44f217760308\\\"\",\r\n            \"type\": \"Microsoft.Network/loadBalancers/loadBalancingRules\",\r\n            \"properties\": {\r\n              \"provisioningState\": \"Succeeded\",\r\n              \"frontendIPConfiguration\": {\r\n                \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/frontendIPConfigurations/ps2360\"\r\n              },\r\n              \"frontendPort\": 80,\r\n              \"backendPort\": 80,\r\n              \"enableFloatingIP\": true,\r\n              \"idleTimeoutInMinutes\": 15,\r\n              \"protocol\": \"Tcp\",\r\n              \"enableDestinationServiceEndpoint\": false,\r\n              \"enableTcpReset\": false,\r\n              \"allowBackendPortConflict\": false,\r\n              \"loadDistribution\": \"SourceIP\",\r\n              \"disableOutboundSnat\": true,\r\n              \"backendAddressPool\": {\r\n                \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/backendAddressPools/ps3546\"\r\n              },\r\n              \"probe\": {\r\n                \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/probes/ps7580\"\r\n              }\r\n            }\r\n          }\r\n        ],\r\n        \"probes\": [\r\n          {\r\n            \"name\": \"ps7580\",\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/probes/ps7580\",\r\n            \"etag\": \"W/\\\"59c75f8f-ec42-485a-abf5-44f217760308\\\"\",\r\n            \"properties\": {\r\n              \"provisioningState\": \"Succeeded\",\r\n              \"protocol\": \"Http\",\r\n              \"port\": 80,\r\n              \"requestPath\": \"healthcheck.aspx\",\r\n              \"intervalInSeconds\": 15,\r\n              \"numberOfProbes\": 2,\r\n              \"loadBalancingRules\": [\r\n                {\r\n                  \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/loadBalancingRules/ps97\"\r\n                }\r\n              ]\r\n            },\r\n            \"type\": \"Microsoft.Network/loadBalancers/probes\"\r\n          }\r\n        ],\r\n        \"inboundNatRules\": [\r\n          {\r\n            \"name\": \"ps2644\",\r\n            \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/inboundNatRules/ps2644\",\r\n            \"etag\": \"W/\\\"59c75f8f-ec42-485a-abf5-44f217760308\\\"\",\r\n            \"type\": \"Microsoft.Network/loadBalancers/inboundNatRules\",\r\n            \"properties\": {\r\n              \"provisioningState\": \"Succeeded\",\r\n              \"frontendIPConfiguration\": {\r\n                \"id\": \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690/frontendIPConfigurations/ps2360\"\r\n              },\r\n              \"frontendPort\": 3389,\r\n              \"backendPort\": 3389,\r\n              \"enableFloatingIP\": true,\r\n              \"idleTimeoutInMinutes\": 15,\r\n              \"protocol\": \"Tcp\",\r\n              \"enableDestinationServiceEndpoint\": false,\r\n              \"enableTcpReset\": false,\r\n              \"allowBackendPortConflict\": false\r\n            }\r\n          }\r\n        ],\r\n        \"outboundRules\": [],\r\n        \"inboundNatPools\": []\r\n      },\r\n      \"sku\": {\r\n        \"name\": \"Standard\",\r\n        \"tier\": \"Regional\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers?api-version=2019-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzNjczMi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbG9hZEJhbGFuY2Vycz9hcGktdmVyc2lvbj0yMDE5LTAyLTAx",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers?api-version=2019-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzOTIxMi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbG9hZEJhbGFuY2Vycz9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2b4432b5-603a-43db-81a8-3e99e42a04ce"
+          "6f5b6e95-09b6-4b55-a62c-345e54d762d7"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
           "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
@@ -1190,10 +1168,13 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "74a04ace-b529-4470-9520-568018894b04"
+          "c21c7141-59fa-484e-bda0-e34ad0c17f1a"
         ],
         "x-ms-correlation-request-id": [
-          "a0b8a5e7-7754-4cb5-9a94-01e848ef9d62"
+          "79f47e8d-0723-4b5c-b8ab-d9745327b17e"
+        ],
+        "x-ms-arm-service-request-id": [
+          "17555507-02e6-477f-9eed-9f5f6ba5e02f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1203,16 +1184,16 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11970"
+          "11995"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20190408T101815Z:a0b8a5e7-7754-4cb5-9a94-01e848ef9d62"
+          "WESTEUROPE:20190712T083340Z:79f47e8d-0723-4b5c-b8ab-d9745327b17e"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 08 Apr 2019 10:18:15 GMT"
+          "Fri, 12 Jul 2019 08:33:39 GMT"
         ],
         "Content-Length": [
           "19"
@@ -1228,19 +1209,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps6732/providers/Microsoft.Network/loadBalancers/ps3476?api-version=2019-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzNjczMi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbG9hZEJhbGFuY2Vycy9wczM0NzY/YXBpLXZlcnNpb249MjAxOS0wMi0wMQ==",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps9212/providers/Microsoft.Network/loadBalancers/ps7690?api-version=2019-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzOTIxMi9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvbG9hZEJhbGFuY2Vycy9wczc2OTA/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "05fe1d93-d065-4fc8-9c99-39d595bbe9c0"
+          "e769850e-ad97-4ed9-8024-28657a5d2119"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
           "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
@@ -1254,19 +1235,22 @@
           "no-cache"
         ],
         "Location": [
-          "https://brazilus.management.azure.com/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/locations/eastus2euap/operationResults/154fd95b-a928-4131-8077-9983c0864db8?api-version=2019-02-01"
+          "https://management.azure.com/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/locations/westcentralus/operationResults/7a070aec-1ced-420e-89c8-cae924227f65?api-version=2019-06-01"
         ],
         "Retry-After": [
           "10"
         ],
         "x-ms-request-id": [
-          "154fd95b-a928-4131-8077-9983c0864db8"
+          "7a070aec-1ced-420e-89c8-cae924227f65"
         ],
         "Azure-AsyncOperation": [
-          "https://brazilus.management.azure.com/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/locations/eastus2euap/operations/154fd95b-a928-4131-8077-9983c0864db8?api-version=2019-02-01"
+          "https://management.azure.com/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/locations/westcentralus/operations/7a070aec-1ced-420e-89c8-cae924227f65?api-version=2019-06-01"
         ],
         "x-ms-correlation-request-id": [
-          "a5919aea-cdb6-43cc-b603-8d913f0c9070"
+          "6a81a09a-ce80-47c4-81cb-c68f99f14c87"
+        ],
+        "x-ms-arm-service-request-id": [
+          "bf12ccc4-34d5-426e-ac86-f7fa3852578b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1276,16 +1260,16 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14996"
+          "14998"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20190408T101803Z:a5919aea-cdb6-43cc-b603-8d913f0c9070"
+          "WESTEUROPE:20190712T083327Z:6a81a09a-ce80-47c4-81cb-c68f99f14c87"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 08 Apr 2019 10:18:03 GMT"
+          "Fri, 12 Jul 2019 08:33:26 GMT"
         ],
         "Expires": [
           "-1"
@@ -1298,13 +1282,13 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/locations/eastus2euap/operations/154fd95b-a928-4131-8077-9983c0864db8?api-version=2019-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvZWFzdHVzMmV1YXAvb3BlcmF0aW9ucy8xNTRmZDk1Yi1hOTI4LTQxMzEtODA3Ny05OTgzYzA4NjRkYjg/YXBpLXZlcnNpb249MjAxOS0wMi0wMQ==",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/locations/westcentralus/operations/7a070aec-1ced-420e-89c8-cae924227f65?api-version=2019-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvd2VzdGNlbnRyYWx1cy9vcGVyYXRpb25zLzdhMDcwYWVjLTFjZWQtNDIwZS04OWM4LWNhZTkyNDIyN2Y2NT9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
           "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
@@ -1318,10 +1302,13 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "40c0b572-1eff-4118-8038-e7435522c48e"
+          "ba184c36-7267-44a9-801d-0b42bd942fce"
         ],
         "x-ms-correlation-request-id": [
-          "61d43208-2676-4913-b122-f341032770a6"
+          "d8949a1e-94f1-4f12-b972-de38c5229823"
+        ],
+        "x-ms-arm-service-request-id": [
+          "c692025e-eaac-4084-b43a-bc7f89efb9ad"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1331,16 +1318,16 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11972"
+          "11990"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20190408T101813Z:61d43208-2676-4913-b122-f341032770a6"
+          "WESTEUROPE:20190712T083338Z:d8949a1e-94f1-4f12-b972-de38c5229823"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 08 Apr 2019 10:18:13 GMT"
+          "Fri, 12 Jul 2019 08:33:37 GMT"
         ],
         "Content-Length": [
           "29"
@@ -1356,13 +1343,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/locations/eastus2euap/operationResults/154fd95b-a928-4131-8077-9983c0864db8?api-version=2019-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvZWFzdHVzMmV1YXAvb3BlcmF0aW9uUmVzdWx0cy8xNTRmZDk1Yi1hOTI4LTQxMzEtODA3Ny05OTgzYzA4NjRkYjg/YXBpLXZlcnNpb249MjAxOS0wMi0wMQ==",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/locations/westcentralus/operationResults/7a070aec-1ced-420e-89c8-cae924227f65?api-version=2019-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvd2VzdGNlbnRyYWx1cy9vcGVyYXRpb25SZXN1bHRzLzdhMDcwYWVjLTFjZWQtNDIwZS04OWM4LWNhZTkyNDIyN2Y2NT9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
           "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
@@ -1376,16 +1363,19 @@
           "no-cache"
         ],
         "Location": [
-          "https://brazilus.management.azure.com/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/locations/eastus2euap/operationResults/154fd95b-a928-4131-8077-9983c0864db8?api-version=2019-02-01"
+          "https://management.azure.com/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/locations/westcentralus/operationResults/7a070aec-1ced-420e-89c8-cae924227f65?api-version=2019-06-01"
         ],
         "x-ms-request-id": [
-          "154fd95b-a928-4131-8077-9983c0864db8"
+          "7a070aec-1ced-420e-89c8-cae924227f65"
         ],
         "Azure-AsyncOperation": [
-          "https://brazilus.management.azure.com/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/locations/eastus2euap/operations/154fd95b-a928-4131-8077-9983c0864db8?api-version=2019-02-01"
+          "https://management.azure.com/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/locations/westcentralus/operations/7a070aec-1ced-420e-89c8-cae924227f65?api-version=2019-06-01"
         ],
         "x-ms-correlation-request-id": [
-          "a5919aea-cdb6-43cc-b603-8d913f0c9070"
+          "6a81a09a-ce80-47c4-81cb-c68f99f14c87"
+        ],
+        "x-ms-arm-service-request-id": [
+          "bf12ccc4-34d5-426e-ac86-f7fa3852578b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1395,16 +1385,16 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11971"
+          "11989"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20190408T101814Z:cc36f5f1-ca8b-418e-94d3-68e2a0cb83f5"
+          "WESTEUROPE:20190712T083338Z:6fcd40b6-6f13-4b69-9e1b-e8b1d4dca64a"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 08 Apr 2019 10:18:13 GMT"
+          "Fri, 12 Jul 2019 08:33:37 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1417,22 +1407,22 @@
       "StatusCode": 204
     },
     {
-      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourcegroups/ps6732?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlZ3JvdXBzL3BzNjczMj9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourcegroups/ps9212?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlZ3JvdXBzL3BzOTIxMj9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "332c0394-e968-4e32-a8ed-6e84595949a1"
+          "e31c77c4-fc2f-4cbe-b8b8-567788f48679"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.1.18"
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.1"
         ]
       },
       "ResponseHeaders": {
@@ -1443,22 +1433,22 @@
           "no-cache"
         ],
         "Location": [
-          "https://brazilus.management.azure.com/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY3MzItRUFTVFVTMkVVQVAiLCJqb2JMb2NhdGlvbiI6ImVhc3R1czJldWFwIn0?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzkyMTItV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14988"
+          "14999"
         ],
         "x-ms-request-id": [
-          "74e15978-55b2-4f60-bb36-f58012693448"
+          "fb5b8c1f-9bb1-43c7-b08d-48ef79af830a"
         ],
         "x-ms-correlation-request-id": [
-          "74e15978-55b2-4f60-bb36-f58012693448"
+          "fb5b8c1f-9bb1-43c7-b08d-48ef79af830a"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20190408T101816Z:74e15978-55b2-4f60-bb36-f58012693448"
+          "WESTEUROPE:20190712T083344Z:fb5b8c1f-9bb1-43c7-b08d-48ef79af830a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1467,7 +1457,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 08 Apr 2019 10:18:16 GMT"
+          "Fri, 12 Jul 2019 08:33:43 GMT"
         ],
         "Expires": [
           "-1"
@@ -1480,16 +1470,16 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY3MzItRUFTVFVTMkVVQVAiLCJqb2JMb2NhdGlvbiI6ImVhc3R1czJldWFwIn0?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpZM016SXRSVUZUVkZWVE1rVlZRVkFpTENKcWIySk1iMk5oZEdsdmJpSTZJbVZoYzNSMWN6SmxkV0Z3SW4wP2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzkyMTItV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpreU1USXRWMFZUVkVORlRsUlNRVXhWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pZDJWemRHTmxiblJ5WVd4MWN5Sjk/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.1.18"
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.1"
         ]
       },
       "ResponseHeaders": {
@@ -1500,22 +1490,22 @@
           "no-cache"
         ],
         "Location": [
-          "https://brazilus.management.azure.com/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY3MzItRUFTVFVTMkVVQVAiLCJqb2JMb2NhdGlvbiI6ImVhc3R1czJldWFwIn0?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzkyMTItV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11919"
+          "11998"
         ],
         "x-ms-request-id": [
-          "b8a8ca4a-581d-429a-9e3f-f730675c90e7"
+          "b7fd9766-7d7a-42f8-b60a-b950ee785f21"
         ],
         "x-ms-correlation-request-id": [
-          "b8a8ca4a-581d-429a-9e3f-f730675c90e7"
+          "b7fd9766-7d7a-42f8-b60a-b950ee785f21"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20190408T101832Z:b8a8ca4a-581d-429a-9e3f-f730675c90e7"
+          "WESTEUROPE:20190712T083359Z:b7fd9766-7d7a-42f8-b60a-b950ee785f21"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1524,7 +1514,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 08 Apr 2019 10:18:31 GMT"
+          "Fri, 12 Jul 2019 08:33:58 GMT"
         ],
         "Expires": [
           "-1"
@@ -1537,16 +1527,16 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY3MzItRUFTVFVTMkVVQVAiLCJqb2JMb2NhdGlvbiI6ImVhc3R1czJldWFwIn0?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpZM016SXRSVUZUVkZWVE1rVlZRVkFpTENKcWIySk1iMk5oZEdsdmJpSTZJbVZoYzNSMWN6SmxkV0Z3SW4wP2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzkyMTItV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpreU1USXRWMFZUVkVORlRsUlNRVXhWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pZDJWemRHTmxiblJ5WVd4MWN5Sjk/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.1.18"
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.1"
         ]
       },
       "ResponseHeaders": {
@@ -1557,22 +1547,22 @@
           "no-cache"
         ],
         "Location": [
-          "https://brazilus.management.azure.com/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY3MzItRUFTVFVTMkVVQVAiLCJqb2JMb2NhdGlvbiI6ImVhc3R1czJldWFwIn0?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzkyMTItV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11918"
+          "11997"
         ],
         "x-ms-request-id": [
-          "7f82fac4-92e9-403f-bf56-5780be186962"
+          "747f670a-aebd-4be5-9948-b09e316647b7"
         ],
         "x-ms-correlation-request-id": [
-          "7f82fac4-92e9-403f-bf56-5780be186962"
+          "747f670a-aebd-4be5-9948-b09e316647b7"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20190408T101847Z:7f82fac4-92e9-403f-bf56-5780be186962"
+          "WESTEUROPE:20190712T083415Z:747f670a-aebd-4be5-9948-b09e316647b7"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1581,7 +1571,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 08 Apr 2019 10:18:47 GMT"
+          "Fri, 12 Jul 2019 08:34:14 GMT"
         ],
         "Expires": [
           "-1"
@@ -1594,16 +1584,16 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY3MzItRUFTVFVTMkVVQVAiLCJqb2JMb2NhdGlvbiI6ImVhc3R1czJldWFwIn0?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpZM016SXRSVUZUVkZWVE1rVlZRVkFpTENKcWIySk1iMk5oZEdsdmJpSTZJbVZoYzNSMWN6SmxkV0Z3SW4wP2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzkyMTItV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpreU1USXRWMFZUVkVORlRsUlNRVXhWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pZDJWemRHTmxiblJ5WVd4MWN5Sjk/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.1.18"
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.1"
         ]
       },
       "ResponseHeaders": {
@@ -1614,22 +1604,22 @@
           "no-cache"
         ],
         "Location": [
-          "https://brazilus.management.azure.com/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY3MzItRUFTVFVTMkVVQVAiLCJqb2JMb2NhdGlvbiI6ImVhc3R1czJldWFwIn0?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzkyMTItV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11917"
+          "11996"
         ],
         "x-ms-request-id": [
-          "5a7e0147-d98d-44ed-ad3c-7c4431c21d86"
+          "77764754-e188-4b3f-a292-00f2cc718352"
         ],
         "x-ms-correlation-request-id": [
-          "5a7e0147-d98d-44ed-ad3c-7c4431c21d86"
+          "77764754-e188-4b3f-a292-00f2cc718352"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20190408T101902Z:5a7e0147-d98d-44ed-ad3c-7c4431c21d86"
+          "WESTEUROPE:20190712T083430Z:77764754-e188-4b3f-a292-00f2cc718352"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1638,7 +1628,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 08 Apr 2019 10:19:02 GMT"
+          "Fri, 12 Jul 2019 08:34:30 GMT"
         ],
         "Expires": [
           "-1"
@@ -1651,16 +1641,16 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY3MzItRUFTVFVTMkVVQVAiLCJqb2JMb2NhdGlvbiI6ImVhc3R1czJldWFwIn0?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpZM016SXRSVUZUVkZWVE1rVlZRVkFpTENKcWIySk1iMk5oZEdsdmJpSTZJbVZoYzNSMWN6SmxkV0Z3SW4wP2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzkyMTItV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpreU1USXRWMFZUVkVORlRsUlNRVXhWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pZDJWemRHTmxiblJ5WVd4MWN5Sjk/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.1.18"
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.1"
         ]
       },
       "ResponseHeaders": {
@@ -1671,22 +1661,22 @@
           "no-cache"
         ],
         "Location": [
-          "https://brazilus.management.azure.com/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY3MzItRUFTVFVTMkVVQVAiLCJqb2JMb2NhdGlvbiI6ImVhc3R1czJldWFwIn0?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzkyMTItV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11916"
+          "11995"
         ],
         "x-ms-request-id": [
-          "a1d6f05d-9d53-4691-bf10-6012fee11b7b"
+          "6607dfe3-ba7e-4227-adcb-a2d38dfaaee4"
         ],
         "x-ms-correlation-request-id": [
-          "a1d6f05d-9d53-4691-bf10-6012fee11b7b"
+          "6607dfe3-ba7e-4227-adcb-a2d38dfaaee4"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20190408T101918Z:a1d6f05d-9d53-4691-bf10-6012fee11b7b"
+          "WESTEUROPE:20190712T083445Z:6607dfe3-ba7e-4227-adcb-a2d38dfaaee4"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1695,7 +1685,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 08 Apr 2019 10:19:18 GMT"
+          "Fri, 12 Jul 2019 08:34:45 GMT"
         ],
         "Expires": [
           "-1"
@@ -1708,16 +1698,16 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY3MzItRUFTVFVTMkVVQVAiLCJqb2JMb2NhdGlvbiI6ImVhc3R1czJldWFwIn0?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpZM016SXRSVUZUVkZWVE1rVlZRVkFpTENKcWIySk1iMk5oZEdsdmJpSTZJbVZoYzNSMWN6SmxkV0Z3SW4wP2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzkyMTItV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpreU1USXRWMFZUVkVORlRsUlNRVXhWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pZDJWemRHTmxiblJ5WVd4MWN5Sjk/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.1.18"
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.1"
         ]
       },
       "ResponseHeaders": {
@@ -1728,22 +1718,22 @@
           "no-cache"
         ],
         "Location": [
-          "https://brazilus.management.azure.com/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY3MzItRUFTVFVTMkVVQVAiLCJqb2JMb2NhdGlvbiI6ImVhc3R1czJldWFwIn0?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzkyMTItV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11915"
+          "11994"
         ],
         "x-ms-request-id": [
-          "30656fe3-40a2-4676-8e80-2e8662b13f60"
+          "316bd407-a816-44f4-a16d-76d2f47a5fe2"
         ],
         "x-ms-correlation-request-id": [
-          "30656fe3-40a2-4676-8e80-2e8662b13f60"
+          "316bd407-a816-44f4-a16d-76d2f47a5fe2"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20190408T101933Z:30656fe3-40a2-4676-8e80-2e8662b13f60"
+          "WESTEUROPE:20190712T083501Z:316bd407-a816-44f4-a16d-76d2f47a5fe2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1752,7 +1742,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 08 Apr 2019 10:19:33 GMT"
+          "Fri, 12 Jul 2019 08:35:00 GMT"
         ],
         "Expires": [
           "-1"
@@ -1765,16 +1755,16 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY3MzItRUFTVFVTMkVVQVAiLCJqb2JMb2NhdGlvbiI6ImVhc3R1czJldWFwIn0?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpZM016SXRSVUZUVkZWVE1rVlZRVkFpTENKcWIySk1iMk5oZEdsdmJpSTZJbVZoYzNSMWN6SmxkV0Z3SW4wP2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzkyMTItV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpreU1USXRWMFZUVkVORlRsUlNRVXhWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pZDJWemRHTmxiblJ5WVd4MWN5Sjk/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.1.18"
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.1"
         ]
       },
       "ResponseHeaders": {
@@ -1785,16 +1775,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11914"
+          "11993"
         ],
         "x-ms-request-id": [
-          "55c9da53-d98e-44c2-bc9f-fdaeb7561e72"
+          "c7700d95-75d2-491f-8c36-a68ccef26712"
         ],
         "x-ms-correlation-request-id": [
-          "55c9da53-d98e-44c2-bc9f-fdaeb7561e72"
+          "c7700d95-75d2-491f-8c36-a68ccef26712"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20190408T101948Z:55c9da53-d98e-44c2-bc9f-fdaeb7561e72"
+          "WESTEUROPE:20190712T083516Z:c7700d95-75d2-491f-8c36-a68ccef26712"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1803,7 +1793,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 08 Apr 2019 10:19:48 GMT"
+          "Fri, 12 Jul 2019 08:35:16 GMT"
         ],
         "Expires": [
           "-1"
@@ -1816,16 +1806,16 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY3MzItRUFTVFVTMkVVQVAiLCJqb2JMb2NhdGlvbiI6ImVhc3R1czJldWFwIn0?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpZM016SXRSVUZUVkZWVE1rVlZRVkFpTENKcWIySk1iMk5oZEdsdmJpSTZJbVZoYzNSMWN6SmxkV0Z3SW4wP2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzkyMTItV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpreU1USXRWMFZUVkVORlRsUlNRVXhWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pZDJWemRHTmxiblJ5WVd4MWN5Sjk/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.27817.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.1.18"
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.1"
         ]
       },
       "ResponseHeaders": {
@@ -1836,16 +1826,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11913"
+          "11992"
         ],
         "x-ms-request-id": [
-          "0e829866-d8a1-4118-964b-2d2a90796db3"
+          "e60ba117-9c36-448f-8af6-9051a4b8a9f9"
         ],
         "x-ms-correlation-request-id": [
-          "0e829866-d8a1-4118-964b-2d2a90796db3"
+          "e60ba117-9c36-448f-8af6-9051a4b8a9f9"
         ],
         "x-ms-routing-request-id": [
-          "BRAZILUS:20190408T101949Z:0e829866-d8a1-4118-964b-2d2a90796db3"
+          "WESTEUROPE:20190712T083517Z:e60ba117-9c36-448f-8af6-9051a4b8a9f9"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1854,7 +1844,7 @@
           "nosniff"
         ],
         "Date": [
-          "Mon, 08 Apr 2019 10:19:48 GMT"
+          "Fri, 12 Jul 2019 08:35:16 GMT"
         ],
         "Expires": [
           "-1"
@@ -1869,17 +1859,17 @@
   ],
   "Names": {
     "Test-LoadBalancerCRUD-PublicStandardSku": [
-      "ps6732",
-      "ps130",
-      "ps8567",
-      "ps8280",
-      "ps8711",
-      "ps3476",
-      "ps9355",
-      "ps5627",
-      "ps9983",
-      "ps6419",
-      "ps5602"
+      "ps9212",
+      "ps4464",
+      "ps1949",
+      "ps9538",
+      "ps5705",
+      "ps7690",
+      "ps2360",
+      "ps3546",
+      "ps7580",
+      "ps2644",
+      "ps97"
     ]
   },
   "Variables": {

@@ -116,7 +116,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
            Mandatory = true,
            ValueFromPipeline = true,
            HelpMessage = HelpMessages.SyncGroupObjectParameter)]
-        [Alias(StorageSyncAliases.RegisteredServerAlias)]
+        [CmdletParameterBreakingChange("InputObject", ChangeDescription = "Alias RegisteredServer is invalid and preserved for compatibility. Alias ServerEndpoint should be used instead")]
+        [Alias(StorageSyncAliases.RegisteredServerAlias, StorageSyncAliases.ServerEndpointAlias)]
         public PSServerEndpoint InputObject { get; set; }
 
         /// <summary>
@@ -192,36 +193,55 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                 var storageSyncServiceName = default(string);
                 var parentResourceName = default(string);
 
-                if (this.IsParameterBound(c => c.ResourceId))
-                {
-                    var resourceIdentifier = new ResourceIdentifier(ResourceId);
-                    resourceName = resourceIdentifier.ResourceName;
-                    resourceGroupName = resourceIdentifier.ResourceGroupName;
-                    parentResourceName = resourceIdentifier.GetParentResourceName(StorageSyncConstants.SyncGroupTypeName, 0);
-                    storageSyncServiceName = resourceIdentifier.GetParentResourceName(StorageSyncConstants.StorageSyncServiceTypeName, 1);
-                }
-                else if (this.IsParameterBound(c => c.InputObject))
+                var updateParameters = new ServerEndpointUpdateParameters();
+
+                if (this.IsParameterBound(c => c.InputObject))
                 {
                     resourceName = InputObject.ServerEndpointName;
                     resourceGroupName = InputObject.ResourceGroupName;
                     parentResourceName = InputObject.SyncGroupName;
                     storageSyncServiceName = InputObject.StorageSyncServiceName;
+
+                    updateParameters.CloudTiering = InputObject.CloudTiering;
+                    updateParameters.VolumeFreeSpacePercent = InputObject.VolumeFreeSpacePercent;
+                    updateParameters.TierFilesOlderThanDays = InputObject.TierFilesOlderThanDays;
+                    updateParameters.OfflineDataTransfer = InputObject.OfflineDataTransfer;
                 }
                 else
                 {
-                    resourceName = Name;
-                    resourceGroupName = ResourceGroupName;
-                    parentResourceName = SyncGroupName;
-                    storageSyncServiceName = StorageSyncServiceName;
+                    if (this.IsParameterBound(c => c.ResourceId))
+                    {
+                        var resourceIdentifier = new ResourceIdentifier(ResourceId);
+                        resourceName = resourceIdentifier.ResourceName;
+                        resourceGroupName = resourceIdentifier.ResourceGroupName;
+                        parentResourceName = resourceIdentifier.GetParentResourceName(StorageSyncConstants.SyncGroupTypeName, 0);
+                        storageSyncServiceName = resourceIdentifier.GetParentResourceName(StorageSyncConstants.StorageSyncServiceTypeName, 1);
+                    }
+                    else
+                    {
+                        resourceName = Name;
+                        resourceGroupName = ResourceGroupName;
+                        parentResourceName = SyncGroupName;
+                        storageSyncServiceName = StorageSyncServiceName;
+                    }
                 }
 
-                var updateParameters = new ServerEndpointUpdateParameters()
+                if (this.IsParameterBound(c => c.CloudTiering))
                 {
-                    CloudTiering = CloudTiering.ToBool() ? StorageSyncConstants.CloudTieringOn : StorageSyncConstants.CloudTieringOff,
-                    VolumeFreeSpacePercent = VolumeFreeSpacePercent,
-                    TierFilesOlderThanDays = TierFilesOlderThanDays,
-                    OfflineDataTransfer = OfflineDataTransfer.ToBool() ? StorageSyncConstants.OfflineDataTransferOn : StorageSyncConstants.OfflineDataTransferOff
-                };
+                    updateParameters.CloudTiering = CloudTiering.ToBool() ? StorageSyncConstants.CloudTieringOn : StorageSyncConstants.CloudTieringOff;
+                }
+                if (this.IsParameterBound(c => c.VolumeFreeSpacePercent))
+                {
+                    updateParameters.VolumeFreeSpacePercent = VolumeFreeSpacePercent;
+                }
+                if (this.IsParameterBound(c => c.TierFilesOlderThanDays))
+                {
+                    updateParameters.TierFilesOlderThanDays = TierFilesOlderThanDays;
+                }
+                if (this.IsParameterBound(c => c.OfflineDataTransfer))
+                {
+                    updateParameters.OfflineDataTransfer = OfflineDataTransfer.ToBool() ? StorageSyncConstants.OfflineDataTransferOn : StorageSyncConstants.OfflineDataTransferOff;
+                }
 
                 Target = string.Join("/", resourceGroupName, storageSyncServiceName, parentResourceName, resourceName);
                 if (ShouldProcess(Target, ActionMessage))

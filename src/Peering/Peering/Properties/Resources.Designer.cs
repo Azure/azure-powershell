@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Peering.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -133,6 +133,15 @@ namespace Microsoft.Azure.Commands.Peering.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Connection Identifier cannot be null..
+        /// </summary>
+        internal static string Error_ConnectionIdentifierNull {
+            get {
+                return ResourceManager.GetString("Error_ConnectionIdentifierNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unable to complete the request. Check your syntax for errors..
         /// </summary>
         internal static string Error_GenericSyntax {
@@ -187,7 +196,7 @@ namespace Microsoft.Azure.Commands.Peering.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid Prefix Range: {0} must be at least {1} not greater than {2}.
+        ///   Looks up a localized string similar to Invalid Prefix Range: {0}, the prefix must be {1}.
         /// </summary>
         internal static string Error_InvalidPrefixRange {
             get {

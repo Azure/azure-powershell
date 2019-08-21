@@ -13,10 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Blueprint.Models;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Microsoft.Azure.Management.Blueprint.Models;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Blueprint.Common
 {
@@ -40,6 +38,24 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
 
         PSBlueprintAssignment CreateOrUpdateBlueprintAssignment(string subscriptionId, string assignmentName, Assignment assignment);
 
+        PSBlueprint CreateOrUpdateBlueprint(string scope, string name, BlueprintModel bp);
+
+        PSPublishedBlueprint CreatePublishedBlueprint(string scope, string name, string version, PublishedBlueprint publishedBp);
+
+        PSArtifact CreateArtifact(string scope, string blueprintName, string artifactName, Artifact artifact);
+
+        PSArtifact GetArtifact(string scope, string blueprintName, string artifactName, string version);
+
         PSWhoIsBlueprintContract GetBlueprintSpnObjectId(string scope, string assignmentName);
+
+        string GetBlueprintDefinitionJsonFromObject(PSBlueprintBase blueprint, string version);
+
+        IEnumerable<PSArtifact> ListArtifacts(string scope, string blueprintName, string version);
+
+        string GetBlueprintArtifactJsonFromObject(string scope, string blueprintName, PSArtifact artifact, string version);
+
+        PSArtifact DeleteArtifact(string scope, string blueprintName, string artifactName);
+
+        PSBlueprint DeleteBlueprint(string scope, string blueprintName);
     }
 }

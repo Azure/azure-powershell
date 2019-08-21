@@ -37,7 +37,7 @@ The **Set-AzEventHubGeoDRConfigurationBreakPair** cmdlet disables the Disaster R
 
 ### Example
 ```
-PS C:\> Set-AzEventHubGeoDRConfigurationBreakPair -ResourceGroupName "SampleResourceGroup" -Namespace "SampleNamespace_Primary" -Name "SampleDRCongifName"
+PS C:\> Set-AzEventHubGeoDRConfigurationBreakPair -ResourceGroupName "SampleResourceGroup" -Namespace "SampleNamespace_Primary" -Name "SampleDRConfigName"
 ```
 
 This operation disables the Disaster Recovery and stops replicating changes from primary to secondary namespaces

@@ -18,6 +18,42 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update documentation of old Auditing cmdlets.
+
+## Version 1.14.0
+* Add Azure Sql Instance pools cmdlets
+* Add Azure Sql Instance pool usages cmdlets
+* Update Azure Sql Managed instance cmdlets to support instance pools
+* Fixed miscellaneous typos across module
+* Add failover database and elastic pool new cmdlets.
+* Add optional resource group parameter to Get-DatabaseLongTermRetentionBackup and Remove-DatabaseLongTermRetentionBackup cmdlets
+* Add Azure Sql Elastic Jobs cmdlets
+
+## Version 1.13.1
+* Fix missing examples for Set-AzSqlDatabaseSecondary cmdlet
+* Fix set Vulnerability Assessment recurring scans without providing any email addresses
+* Fix a small typo in a warining message.
+
+## Version 1.13.0
+* Add Instance Failover Group cmdlets from preview release to public release
+* Support Azure SQL Server\Database Auditing with new cmdlets.
+    - Set-AzSqlServerAudit
+    - Get-AzSqlServerAudit
+    - Remove-AzSqlServerAudit
+    - Set-AzSqlDatabaseAudit
+    - Get-AzSqlDatabaseAudit
+    - Remove-AzSqlDatabaseAudit
+* Remove email constraints from Vulnerability Assessment settings
+
+## Version 1.12.0
+* Fix Advanced Threat Protection storage endpoint suffix
+* Fix Advanced Data Security enable overrides Advanced Threat Protection policy
+* New Cmdlets for Management.Sql to allow customers to add TDE keys and set TDE protector for managed instances
+   - Add-AzSqlInstanceKeyVaultKey
+   - Get-AzSqlInstanceKeyVaultKey
+   - Remove-AzSqlInstanceKeyVaultKey
+   - Get-AzSqlInstanceTransparentDataEncryptionProtector
+   - Set-AzSqlInstanceTransparentDataEncryptionProtector
 
 ## Version 1.11.0
 * Add DnsZonePartner Parameter for New-AzureSqlInstance cmdlet to support AutoDr for Managed Instance.

@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         AzureWorkloadProviderHelper AzureWorkloadProviderHelper { get; set; }
 
         /// <summary>
-        /// Initializes the provider with the data recieved from the cmdlet layer
+        /// Initializes the provider with the data received from the cmdlet layer
         /// </summary>
         /// <param name="providerData">Data from the cmdlet layer intended for the provider</param>
         /// <param name="serviceClientAdapter">Service client adapter for communicating with the backend service</param>

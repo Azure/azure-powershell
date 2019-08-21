@@ -160,6 +160,18 @@ function Test-AzureRmIotHubLifecycle
 	$keys = Get-AzIotHubKey -ResourceGroupName $ResourceGroupName -Name $IotHubName 
 	Assert-True { $keys.Count -eq 6 }
 
+	# Get New Key
+	$newkey = Get-AzIotHubKey -ResourceGroupName $ResourceGroupName -Name $IotHubName -KeyName iothubowner1
+	
+	# Swap keys
+	$swappedKey = New-AzIotHubKey -ResourceGroupName $ResourceGroupName -Name $IotHubName -KeyName iothubowner1 -RenewKey Swap
+	Assert-True { $swappedKey.PrimaryKey -eq $newkey.SecondaryKey }
+	Assert-True { $swappedKey.SecondaryKey -eq $newkey.PrimaryKey }
+
+	# Regenerate Primary Key
+	$regeneratedKey = New-AzIotHubKey -ResourceGroupName $ResourceGroupName -Name $IotHubName -KeyName iothubowner1 -RenewKey Primary
+	Assert-True { $regeneratedKey.PrimaryKey -ne $swappedKey.PrimaryKey }
+
 	# Remove Key
 	Remove-AzIotHubKey -ResourceGroupName $ResourceGroupName -Name $IotHubName -KeyName iothubowner1
 

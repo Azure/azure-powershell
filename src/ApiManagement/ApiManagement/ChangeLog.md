@@ -18,6 +18,29 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed miscellaneous typos across module
+
+* Fix for issue https://github.com/Azure/azure-powershell/issues/9351
+	- Update .net nuget version, which does not enforce restrictions on productId, apiId, groupId and userId
+
+* **Get-AzApiManagementProduct** - Added support for querying products using Api. 
+  https://github.com/Azure/azure-powershell/issues/9482
+
+* **New-AzApiManagementApiRevision** - Fix for issue where ApiRevisionDescription was not being set when creating new api revision
+https://github.com/Azure/azure-powershell/issues/9752
+
+* Fixed typo in model `PsApiManagementOAuth2AuthrozationServer` to `PsApiManagementOAuth2AuthorizationServer`
+
+## Version 1.2.0
+
+* Fix for issue https://github.com/Azure/azure-powershell/issues/8671
+    - **Get-AzApiManagementSubscription** 
+        - Added support for querying subscriptions by User and Product
+        - Added support for querying using Scope "/", "/apis", "/apis/echo-api"
+
+* Fix for issue https://github.com/Azure/azure-powershell/issues/9307 and https://github.com/Azure/azure-powershell/issues/8432
+    - **Import-AzApiManagementApi**
+        - Added support for specifiying `ApiVersion` and `ApiVersionSetId` when importing Apis
 
 ## Version 1.1.0
 

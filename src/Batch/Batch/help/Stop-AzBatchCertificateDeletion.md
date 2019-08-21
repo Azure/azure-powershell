@@ -21,7 +21,7 @@ Stop-AzBatchCertificateDeletion [-ThumbprintAlgorithm] <String> [-Thumbprint] <S
 ## DESCRIPTION
 The **Stop-AzBatchCertificateDeletion** cmdlet cancels a failed deletion of a certificate in the Azure Batch service.
 You can stop a deletion only if the certificate is in the **DeleteFailed** state.
-This cmldet restores the certificate to the **Active** state.
+This cmdlet restores the certificate to the **Active** state.
 
 ## EXAMPLES
 

@@ -19,6 +19,31 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add VmssId to New-AzVMConfig cmdlet
+* Add TerminateScheduledEvents and TerminateScheduledEventNotBeforeTimeoutInMinutes parameters to New-AzVmssConfig and Update-AzVmss
+* Add HyperVGeneration property to VM image object
+* Add Host and HostGroup features
+    - New cmdlets:
+	    New-AzHostGroup
+		New-AzHost
+		Get-AzHostGroup
+		Get-AzHost
+		Remove-AzHostGroup
+		Remove-AzHost
+	- HostId parameter is added to New-AzVMConfig and New-AzVM
+* Fixed miscellaneous typos across module
+* Update example in `Invoke-AzVMRunCommand` documentation to use correct parameter name
+* Update `-VolumeType` description in `Set-AzVMDiskEncryptionExtension` and `Set-AzVmssDiskEncryptionExtension` reference documentation
+
+## Version 2.4.1
+* Add missing properties (ComputerName, OsName, OsVersion and HyperVGeneration) of VM instance view object.
+
+## Version 2.4.0
+* Add HyperVGeneration parameter to New-AzImageConfig
+* Use the extension type instead of the name when disabling vmss disk encryption
+
+## Version 2.3.0
+* New-AzVm and New-AzVmss simple parameter sets now accept the `ProximityPlacementGroup` parameter.
 * Fix typo in `New-AzVM` reference documentation
 
 ## Version 2.2.0
@@ -52,7 +77,7 @@
 
 ## Version 2.1.0
 * Add ProtectFromScaleIn and ProtectFromScaleSetAction parameters to Update-AzVmssVM cmdlet.
-* New-AzVM wimple parameter set now uses by default an available location if 'East US' is not supported
+* New-AzVM simple parameter set now uses by default an available location if 'East US' is not supported
 
 ## Version 2.0.0
 * Proximity placement group feature.

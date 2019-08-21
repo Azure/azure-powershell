@@ -14,7 +14,7 @@ Restores a deleted web app to a new or existing web app.
 
 ### FromDeletedResourceName (Default)
 ```
-Restore-AzDeletedWebApp [-ResourceGroupName] <String> [-Name] <String> [[-Slot] <String>]
+Restore-AzDeletedWebApp [-ResourceGroupName] <String> [-Name] <String> [[-Slot] <String>] [-Location <String>]
  [-TargetResourceGroupName <String>] [-TargetName <String>] [-TargetSlot <String>]
  [-TargetAppServicePlanName <String>] [-RestoreContentOnly] [-UseDisasterRecovery] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -106,6 +106,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Location
+The location of the deleted Azure Web App.
+
+```yaml
+Type: System.String
+Parameter Sets: FromDeletedResourceName
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

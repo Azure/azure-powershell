@@ -111,8 +111,20 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "A URL of the web service exposing the API. This URL will be used by Azure API Management only, and will not be made public. " +
-            "This parameter is optional. If provided it will override the ServiceUrl specificed in the Specifications document.")]        
+            "This parameter is optional. If provided it will override the ServiceUrl specified in the Specifications document.")]
         public String ServiceUrl { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "A resource identifier for the related Api Version Set. This parameter is optional.")]
+        public String ApiVersionSetId { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "Api Version of the Api to create. This parameter is optional.")]
+        public String ApiVersion { get; set; }
 
         public override void ExecuteApiManagementCmdlet()
         {
@@ -147,7 +159,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                     WsdlEndpointName,
                     ApiType,
                     Protocol,
-                    ServiceUrl);
+                    ServiceUrl,
+                    ApiVersionSetId,
+                    ApiVersion);
             }
             else if (ParameterSetName.Equals(FromUrl))
             {
@@ -161,7 +175,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                     WsdlEndpointName,
                     ApiType,
                     Protocol,
-                    ServiceUrl);
+                    ServiceUrl,
+                    ApiVersionSetId,
+                    ApiVersion);
             }
             else
             {

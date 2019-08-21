@@ -174,18 +174,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
                                      {
                                          BandwidthInMbps = this.BandwidthInMbps,
                                          PeeringDBFacilityId = this.PeeringDBFacilityId,
+                                         ConnectionIdentifier = Guid.NewGuid().ToString(),
                                          BgpSession = new PSBgpSession
                                                           {
                                                               MaxPrefixesAdvertisedV4 = !string.IsNullOrEmpty(this.SessionPrefixV4) ? (this.MaxPrefixesAdvertisedIPv4 ?? 20000) : (int?)null,
                                                               MaxPrefixesAdvertisedV6 = !string.IsNullOrEmpty(this.SessionPrefixV6) ? (this.MaxPrefixesAdvertisedIPv6 ?? 2000) : (int?)null,
                                              SessionPrefixV4 =
                                                                   this.ValidatePrefix(
-                                                                      this.SessionPrefixV4,
-                                                                      Constants.Direct),
+                                                                      this.SessionPrefixV4?.Trim()),
                                                               SessionPrefixV6 =
                                                                   this.ValidatePrefix(
-                                                                      this.SessionPrefixV6,
-                                                                      Constants.Direct),
+                                                                      this.SessionPrefixV6?.Trim()),
                                                               Md5AuthenticationKey = this.MD5AuthenticationKey
                                                           }
                                      };

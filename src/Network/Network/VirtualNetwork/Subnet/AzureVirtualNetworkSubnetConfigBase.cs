@@ -108,5 +108,19 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Delegations")]
         public PSDelegation[] Delegation { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           HelpMessage = "The flag to control enable/disable network policies on private endpoint",
+           ValueFromPipelineByPropertyName = true)]
+        [PSArgumentCompleter("Enabled", "Disabled")]
+        public string PrivateEndpointNetworkPoliciesFlag { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           HelpMessage = "The flag to control enable/disable network policies on private link service",
+           ValueFromPipelineByPropertyName = true)]
+        [PSArgumentCompleter("Enabled", "Disabled")]
+        public string PrivateLinkServiceNetworkPoliciesFlag { get; set; }
     }
 }

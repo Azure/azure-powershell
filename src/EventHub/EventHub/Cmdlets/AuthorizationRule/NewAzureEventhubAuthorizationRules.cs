@@ -16,6 +16,7 @@ using System.Management.Automation;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.EventHub.Models;
+using System;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands
 {
@@ -49,7 +50,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         [Alias(AliasAuthorizationRuleName)]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Rights, e.g.  \"Listen\",\"Send\",\"Manage\"")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Rights, e.g.  \"" + Manage + "\",\"" + Send + "\",\"" + Listen + "\"")]
         [ValidateNotNullOrEmpty]
         [ValidateSet("Listen", "Send", "Manage", IgnoreCase = true)]
         public string[] Rights { get; set; }
@@ -58,6 +59,12 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         {
             PSSharedAccessAuthorizationRuleAttributes sasRule = new PSSharedAccessAuthorizationRuleAttributes();
             sasRule.Rights = new List<string>();
+
+            if (Array.Exists(Rights, element => element.Equals(Manage) && (!Array.Exists(Rights, element1 => element1.Equals(Listen)) || !Array.Exists(Rights, element1 => element1.Equals(Send)))))
+            {
+                Exception exManage = new Exception("Assigning '" + Manage + "' to rights requires '" + Listen + "' and '" + Send + "' to be included with. e.g. @(\"" + Manage + "\",\"" + Listen + "\",\"" + Send + "\")");
+                throw exManage;
+            }
 
             foreach (string right in Rights)
             {
@@ -79,10 +86,15 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
                     {
                         WriteObject(Client.CreateOrUpdateEventHubAuthorizationRules(ResourceGroupName, Namespace, EventHub, Name, sasRule));
                     }
+                
             }
             catch (Management.EventHub.Models.ErrorResponseException ex)
             {
                 WriteError(Eventhub.EventHubsClient.WriteErrorforBadrequest(ex));
+            }
+            catch (Exception ex)
+            {
+                WriteError(new ErrorRecord(ex, ex.Message, ErrorCategory.OpenError, ex));
             }
         }
     }

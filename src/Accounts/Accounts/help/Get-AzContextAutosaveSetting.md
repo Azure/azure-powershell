@@ -36,7 +36,7 @@ CacheFile        : None
 Settings         : {}
 ```
 
-Get details about whether and wehere the context is saved.  In the above example, the autosave feature has been disabled.
+Get details about whether and where the context is saved.  In the above example, the autosave feature has been disabled.
 
 ### Get context save metadata for the current user
 ```
@@ -50,7 +50,7 @@ CacheFile        : TokenCache.dat
 Settings         : {}
 ```
 
-Get details about whether and wehere the context is saved by default for the current user.  Note that this may be different than 
+Get details about whether and where the context is saved by default for the current user.  Note that this may be different than 
 the settings that are active in the current session. In the above example, the autosave feature has been enabled, and data is saved 
 to the default location.
 

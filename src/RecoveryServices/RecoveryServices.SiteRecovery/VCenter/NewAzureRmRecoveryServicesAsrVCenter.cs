@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string Name { get; set; }
 
         /// <summary>
-        ///     Gets or sets user login creadential Account
+        ///     Gets or sets user login credential Account
         /// </summary>
         [Parameter(Mandatory = true)]
         [ValidateNotNullOrEmpty]

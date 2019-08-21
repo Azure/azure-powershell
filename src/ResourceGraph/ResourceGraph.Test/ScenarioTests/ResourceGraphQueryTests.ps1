@@ -106,6 +106,26 @@ function Search-AzureRmGraph-Subscriptions
 
 <#
 .SYNOPSIS
+Run query with subscriptions explicitly passed
+#>
+function Search-AzureRmGraph-IncludeSubscriptionNames
+{
+	$mockedScopeId = "00000000-0000-0000-0000-000000000000"
+	$mockedSubscriptionName = "Test Subscription"
+	$mockedTenantName = "Test Tenant"
+	$query = "project subscriptionId, tenantId, subscriptionDisplayName, tenantDisplayName"
+
+	$queryResult = Search-AzGraph $query -Include "DisplayNames"
+
+	Assert-IsInstance $queryResult System.Management.Automation.PSCustomObject
+	Assert-AreEqual $queryResult.subscriptionId $mockedScopeId
+	Assert-AreEqual $queryResult.tenantId $mockedScopeId
+	Assert-AreEqual $queryResult.subscriptionDisplayName $mockedSubscriptionName
+	Assert-AreEqual $queryResult.tenantDisplayName $mockedTenantName
+}
+
+<#
+.SYNOPSIS
 Run malformed query
 #>
 function Search-AzureRmGraph-QueryError
@@ -149,5 +169,29 @@ function Search-AzureRmGraph-QueryError
 		Assert-NotNull $PSItem.Exception.Body.Error.Details[0].Message
 		Assert-NotNull $PSItem.Exception.Body.Error.Details[0].AdditionalProperties
 		Assert-AreEqual $PSItem.Exception.Body.Error.Details[0].AdditionalProperties.Count 4
+	}
+}
+
+<#
+.SYNOPSIS
+Run query with no subscriptions
+#>
+function Search-AzureRmGraph-SubscriptionQueryError
+{
+	$expectedErrorId = '400,' + [Microsoft.Azure.Commands.ResourceGraph.Cmdlets.SearchAzureRmGraph].FullName
+	$expectedErrorMessage = 
+	'No subscriptions were found to run query. Please try to add them implicitly as param to your request (e.g. Search-AzGraph -Query '''' -Subscription ''11111111-1111-1111-1111-111111111111'')'
+
+ 	try
+	{
+		Search-AzGraph "project id, type" -Subscription @()
+		Assert-True $false  # Expecting an error
+	}
+	catch [Exception]
+	{
+	    Assert-AreEqual $expectedErrorId $PSItem.FullyQualifiedErrorId
+		Assert-AreEqual $expectedErrorMessage $PSItem.Exception.Message
+
+		Assert-IsInstance $PSItem.Exception System.ArgumentException
 	}
 }

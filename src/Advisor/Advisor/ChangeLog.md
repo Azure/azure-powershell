@@ -19,6 +19,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed miscellaneous typos across module
+
+## Version 1.0.0
+* GA release of Az.Advisor
 
 ## Version 0.1.1
 * Updated utils to be extensible for future changes

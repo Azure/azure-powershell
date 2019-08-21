@@ -29,7 +29,7 @@ PS C:\>$ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Defa
 PS C:\>Remove-AzApiManagementApiFromProduct -Context $ApiMgmtContext -ProductId "0123456789" -ApiId "0001" -PassThru
 ```
 
-This commnd removes the specified API from a product.
+This command removes the specified API from a product.
 
 ## PARAMETERS
 

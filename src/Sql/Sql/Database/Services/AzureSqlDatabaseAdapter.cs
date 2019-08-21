@@ -225,6 +225,17 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
             return new AzureSqlDatabaseModelExpanded(resourceGroup, serverName, database);
         }
 
+        /// <summary>
+        /// Failovers a database
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group the server is in</param>
+        /// <param name="serverName">The name of the Azure Sql Database Server</param>
+        /// <param name="databaseName">The name of the Azure Sql Database to failover</param>
+        public void FailoverDatabase(string resourceGroupName, string serverName, string databaseName)
+        {
+            Communicator.Failover(resourceGroupName, serverName, databaseName);
+        }
+
         internal IEnumerable<AzureSqlDatabaseActivityModel> ListDatabaseActivity(string resourceGroupName, string serverName, string elasticPoolName, string databaseName, Guid? operationId)
         {
             if (!string.IsNullOrEmpty(elasticPoolName))

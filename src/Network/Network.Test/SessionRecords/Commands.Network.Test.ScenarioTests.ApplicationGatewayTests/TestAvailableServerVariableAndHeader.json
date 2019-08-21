@@ -1,55 +1,55 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/applicationGatewayAvailableServerVariables?api-version=2019-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9hcHBsaWNhdGlvbkdhdGV3YXlBdmFpbGFibGVTZXJ2ZXJWYXJpYWJsZXM/YXBpLXZlcnNpb249MjAxOS0wMi0wMQ==",
+      "RequestUri": "/subscriptions/5f1006f9-e71f-4023-bb9e-f1c90262eda0/providers/Microsoft.Network/applicationGatewayAvailableServerVariables?api-version=2019-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWYxMDA2ZjktZTcxZi00MDIzLWJiOWUtZjFjOTAyNjJlZGEwL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9hcHBsaWNhdGlvbkdhdGV3YXlBdmFpbGFibGVTZXJ2ZXJWYXJpYWJsZXM/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ed2ca779-6639-41b4-bbd4-f0c5b5cc5bae"
+          "b78a9b36-a819-4058-902d-ce22b6bb967b"
         ],
-        "Accept-Language": [
+        "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.26614.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.2.0.0"
         ]
       },
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
         ],
+        "Date": [
+          "Mon, 15 Jul 2019 10:34:02 GMT"
+        ],
         "Pragma": [
           "no-cache"
-        ],
-        "x-ms-request-id": [
-          "c8dd8424-a1a7-46f8-bd13-31c72908eb53"
-        ],
-        "x-ms-correlation-request-id": [
-          "6dca7e71-243d-4430-8af7-3255dde437f4"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
           "Microsoft-HTTPAPI/2.0"
         ],
+        "x-ms-request-id": [
+          "751eeb5d-b424-465b-b3ab-d3d5f48c7bf1"
+        ],
+        "x-ms-correlation-request-id": [
+          "c50fb686-4a96-4252-861e-bf8275bc038f"
+        ],
+        "strict-transport-security": [
+          "max-age=31536000; includeSubDomains"
+        ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11995"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH:20190409T090555Z:6dca7e71-243d-4430-8af7-3255dde437f4"
+          "WESTUS:20190715T103403Z:c50fb686-4a96-4252-861e-bf8275bc038f"
         ],
-        "X-Content-Type-Options": [
+        "x-content-type-options": [
           "nosniff"
-        ],
-        "Date": [
-          "Tue, 09 Apr 2019 09:05:54 GMT"
         ],
         "Content-Length": [
           "457"
@@ -65,55 +65,55 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/applicationGatewayAvailableServerVariables?api-version=2019-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9hcHBsaWNhdGlvbkdhdGV3YXlBdmFpbGFibGVTZXJ2ZXJWYXJpYWJsZXM/YXBpLXZlcnNpb249MjAxOS0wMi0wMQ==",
+      "RequestUri": "/subscriptions/5f1006f9-e71f-4023-bb9e-f1c90262eda0/providers/Microsoft.Network/applicationGatewayAvailableServerVariables?api-version=2019-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWYxMDA2ZjktZTcxZi00MDIzLWJiOWUtZjFjOTAyNjJlZGEwL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9hcHBsaWNhdGlvbkdhdGV3YXlBdmFpbGFibGVTZXJ2ZXJWYXJpYWJsZXM/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "3d51481b-3ea0-4066-ac1b-2465946f312c"
+          "b4a12ac2-f4a6-4bc6-893b-eaac6e915430"
         ],
-        "Accept-Language": [
+        "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.26614.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.2.0.0"
         ]
       },
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
         ],
+        "Date": [
+          "Mon, 15 Jul 2019 10:34:04 GMT"
+        ],
         "Pragma": [
           "no-cache"
-        ],
-        "x-ms-request-id": [
-          "35f2444a-b0a8-4ea1-a205-86180e949f7a"
-        ],
-        "x-ms-correlation-request-id": [
-          "9b2d5e61-aa52-4d1f-a4f1-e4ff71e9d6b5"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
           "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-request-id": [
+          "8e02e773-69de-45a3-a552-71f1765d2fed"
+        ],
+        "x-ms-correlation-request-id": [
+          "6978d58c-0853-4420-82c3-f46f6e24e7a1"
+        ],
+        "strict-transport-security": [
+          "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11999"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH:20190409T090557Z:9b2d5e61-aa52-4d1f-a4f1-e4ff71e9d6b5"
+          "WESTUS:20190715T103404Z:6978d58c-0853-4420-82c3-f46f6e24e7a1"
         ],
-        "X-Content-Type-Options": [
+        "x-content-type-options": [
           "nosniff"
-        ],
-        "Date": [
-          "Tue, 09 Apr 2019 09:05:56 GMT"
         ],
         "Content-Length": [
           "457"
@@ -129,55 +129,55 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/applicationGatewayAvailableServerVariables?api-version=2019-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9hcHBsaWNhdGlvbkdhdGV3YXlBdmFpbGFibGVTZXJ2ZXJWYXJpYWJsZXM/YXBpLXZlcnNpb249MjAxOS0wMi0wMQ==",
+      "RequestUri": "/subscriptions/5f1006f9-e71f-4023-bb9e-f1c90262eda0/providers/Microsoft.Network/applicationGatewayAvailableServerVariables?api-version=2019-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWYxMDA2ZjktZTcxZi00MDIzLWJiOWUtZjFjOTAyNjJlZGEwL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9hcHBsaWNhdGlvbkdhdGV3YXlBdmFpbGFibGVTZXJ2ZXJWYXJpYWJsZXM/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "4e5a3209-8d5c-4060-aaa7-7457d7987e9d"
+          "1d2d635c-7163-4683-9331-d1a6e67ee315"
         ],
-        "Accept-Language": [
+        "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.26614.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.2.0.0"
         ]
       },
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
         ],
+        "Date": [
+          "Mon, 15 Jul 2019 10:34:05 GMT"
+        ],
         "Pragma": [
           "no-cache"
-        ],
-        "x-ms-request-id": [
-          "b0b432a0-bcdc-4eef-9abc-c5cde6c2edf3"
-        ],
-        "x-ms-correlation-request-id": [
-          "f308120b-7e9d-480f-b951-06c691d4bd71"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
           "Microsoft-HTTPAPI/2.0"
         ],
+        "x-ms-request-id": [
+          "6acaaefb-ca34-4e7c-9fc3-cd5f02542175"
+        ],
+        "x-ms-correlation-request-id": [
+          "e9bb8e0d-8ece-450e-a55f-5e23eab3c325"
+        ],
+        "strict-transport-security": [
+          "max-age=31536000; includeSubDomains"
+        ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11999"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH:20190409T090559Z:f308120b-7e9d-480f-b951-06c691d4bd71"
+          "WESTUS:20190715T103406Z:e9bb8e0d-8ece-450e-a55f-5e23eab3c325"
         ],
-        "X-Content-Type-Options": [
+        "x-content-type-options": [
           "nosniff"
-        ],
-        "Date": [
-          "Tue, 09 Apr 2019 09:05:58 GMT"
         ],
         "Content-Length": [
           "457"
@@ -193,55 +193,55 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/applicationGatewayAvailableRequestHeaders?api-version=2019-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9hcHBsaWNhdGlvbkdhdGV3YXlBdmFpbGFibGVSZXF1ZXN0SGVhZGVycz9hcGktdmVyc2lvbj0yMDE5LTAyLTAx",
+      "RequestUri": "/subscriptions/5f1006f9-e71f-4023-bb9e-f1c90262eda0/providers/Microsoft.Network/applicationGatewayAvailableRequestHeaders?api-version=2019-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWYxMDA2ZjktZTcxZi00MDIzLWJiOWUtZjFjOTAyNjJlZGEwL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9hcHBsaWNhdGlvbkdhdGV3YXlBdmFpbGFibGVSZXF1ZXN0SGVhZGVycz9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "cbb4b21e-8a5b-467c-ab55-338919654aae"
+          "f2199751-e10c-4f9c-902b-402001856868"
         ],
-        "Accept-Language": [
+        "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.26614.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.2.0.0"
         ]
       },
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
         ],
+        "Date": [
+          "Mon, 15 Jul 2019 10:34:02 GMT"
+        ],
         "Pragma": [
           "no-cache"
-        ],
-        "x-ms-request-id": [
-          "5b90c409-6f4d-4725-83ee-8e47e35b478a"
-        ],
-        "x-ms-correlation-request-id": [
-          "715d0051-d714-4198-96f9-40423a29eac6"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
           "Microsoft-HTTPAPI/2.0"
         ],
+        "x-ms-request-id": [
+          "2dd547a7-0dca-4753-9a89-b661098596e0"
+        ],
+        "x-ms-correlation-request-id": [
+          "5c9438c1-2e0b-41e9-b619-7eb7ee0aad11"
+        ],
+        "strict-transport-security": [
+          "max-age=31536000; includeSubDomains"
+        ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
+          "11994"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH:20190409T090555Z:715d0051-d714-4198-96f9-40423a29eac6"
+          "WESTUS:20190715T103403Z:5c9438c1-2e0b-41e9-b619-7eb7ee0aad11"
         ],
-        "X-Content-Type-Options": [
+        "x-content-type-options": [
           "nosniff"
-        ],
-        "Date": [
-          "Tue, 09 Apr 2019 09:05:54 GMT"
         ],
         "Content-Length": [
           "791"
@@ -257,55 +257,55 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/applicationGatewayAvailableRequestHeaders?api-version=2019-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9hcHBsaWNhdGlvbkdhdGV3YXlBdmFpbGFibGVSZXF1ZXN0SGVhZGVycz9hcGktdmVyc2lvbj0yMDE5LTAyLTAx",
+      "RequestUri": "/subscriptions/5f1006f9-e71f-4023-bb9e-f1c90262eda0/providers/Microsoft.Network/applicationGatewayAvailableRequestHeaders?api-version=2019-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWYxMDA2ZjktZTcxZi00MDIzLWJiOWUtZjFjOTAyNjJlZGEwL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9hcHBsaWNhdGlvbkdhdGV3YXlBdmFpbGFibGVSZXF1ZXN0SGVhZGVycz9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "5fbbb5d4-027b-44cb-bc32-3e14226503d6"
+          "93d48c3d-4efc-4990-a8d0-e1d15e415ed4"
         ],
-        "Accept-Language": [
+        "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.26614.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.2.0.0"
         ]
       },
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
         ],
+        "Date": [
+          "Mon, 15 Jul 2019 10:34:05 GMT"
+        ],
         "Pragma": [
           "no-cache"
-        ],
-        "x-ms-request-id": [
-          "e2f8896a-1125-474f-acaa-d9e786bb3da6"
-        ],
-        "x-ms-correlation-request-id": [
-          "5e349a9e-d8a7-41a7-b8b8-0cd51f42c7b9"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
           "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-request-id": [
+          "79c12487-8ec8-4a5a-ad3a-3c79b71322ec"
+        ],
+        "x-ms-correlation-request-id": [
+          "69ae949a-00bf-4af6-97f2-0f5088dd4e46"
+        ],
+        "strict-transport-security": [
+          "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11998"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH:20190409T090557Z:5e349a9e-d8a7-41a7-b8b8-0cd51f42c7b9"
+          "WESTUS:20190715T103405Z:69ae949a-00bf-4af6-97f2-0f5088dd4e46"
         ],
-        "X-Content-Type-Options": [
+        "x-content-type-options": [
           "nosniff"
-        ],
-        "Date": [
-          "Tue, 09 Apr 2019 09:05:57 GMT"
         ],
         "Content-Length": [
           "791"
@@ -321,55 +321,55 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/applicationGatewayAvailableRequestHeaders?api-version=2019-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9hcHBsaWNhdGlvbkdhdGV3YXlBdmFpbGFibGVSZXF1ZXN0SGVhZGVycz9hcGktdmVyc2lvbj0yMDE5LTAyLTAx",
+      "RequestUri": "/subscriptions/5f1006f9-e71f-4023-bb9e-f1c90262eda0/providers/Microsoft.Network/applicationGatewayAvailableRequestHeaders?api-version=2019-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWYxMDA2ZjktZTcxZi00MDIzLWJiOWUtZjFjOTAyNjJlZGEwL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9hcHBsaWNhdGlvbkdhdGV3YXlBdmFpbGFibGVSZXF1ZXN0SGVhZGVycz9hcGktdmVyc2lvbj0yMDE5LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "dee91081-ff4c-45a6-a5a7-3400d1b36a5b"
+          "ff87e464-2c9f-4efa-8ec3-907b76235b3e"
         ],
-        "Accept-Language": [
+        "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.26614.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.2.0.0"
         ]
       },
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
         ],
+        "Date": [
+          "Mon, 15 Jul 2019 10:34:06 GMT"
+        ],
         "Pragma": [
           "no-cache"
-        ],
-        "x-ms-request-id": [
-          "2efbb702-b862-4901-928c-8688631f11a7"
-        ],
-        "x-ms-correlation-request-id": [
-          "4589dde2-d181-4a94-9033-b06b0c7cc10c"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
           "Microsoft-HTTPAPI/2.0"
         ],
+        "x-ms-request-id": [
+          "4393a1d7-5697-4ca0-9594-1fa0e72112d6"
+        ],
+        "x-ms-correlation-request-id": [
+          "56c5bcd6-03ef-485f-9017-3a187776d08c"
+        ],
+        "strict-transport-security": [
+          "max-age=31536000; includeSubDomains"
+        ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11987"
+          "11999"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH:20190409T090600Z:4589dde2-d181-4a94-9033-b06b0c7cc10c"
+          "WESTUS:20190715T103407Z:56c5bcd6-03ef-485f-9017-3a187776d08c"
         ],
-        "X-Content-Type-Options": [
+        "x-content-type-options": [
           "nosniff"
-        ],
-        "Date": [
-          "Tue, 09 Apr 2019 09:05:59 GMT"
         ],
         "Content-Length": [
           "791"
@@ -385,55 +385,55 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/applicationGatewayAvailableResponseHeaders?api-version=2019-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9hcHBsaWNhdGlvbkdhdGV3YXlBdmFpbGFibGVSZXNwb25zZUhlYWRlcnM/YXBpLXZlcnNpb249MjAxOS0wMi0wMQ==",
+      "RequestUri": "/subscriptions/5f1006f9-e71f-4023-bb9e-f1c90262eda0/providers/Microsoft.Network/applicationGatewayAvailableResponseHeaders?api-version=2019-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWYxMDA2ZjktZTcxZi00MDIzLWJiOWUtZjFjOTAyNjJlZGEwL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9hcHBsaWNhdGlvbkdhdGV3YXlBdmFpbGFibGVSZXNwb25zZUhlYWRlcnM/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "91944b3e-f901-4dba-82f1-9695e94dc588"
+          "fe904800-5221-48f6-a49e-ea57cfe168f5"
         ],
-        "Accept-Language": [
+        "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.26614.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.2.0.0"
         ]
       },
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
         ],
+        "Date": [
+          "Mon, 15 Jul 2019 10:34:02 GMT"
+        ],
         "Pragma": [
           "no-cache"
-        ],
-        "x-ms-request-id": [
-          "feb45feb-fa0e-45e7-9918-2f8d95e01fd0"
-        ],
-        "x-ms-correlation-request-id": [
-          "b47654ce-4184-458b-9580-3a65872c972a"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
           "Microsoft-HTTPAPI/2.0"
         ],
+        "x-ms-request-id": [
+          "d114aa54-5fb4-4753-a9c9-7392b78ba1d8"
+        ],
+        "x-ms-correlation-request-id": [
+          "592468db-afd3-45e4-92be-628dc0d0da47"
+        ],
+        "strict-transport-security": [
+          "max-age=31536000; includeSubDomains"
+        ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11996"
+          "11993"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH:20190409T090555Z:b47654ce-4184-458b-9580-3a65872c972a"
+          "WESTUS:20190715T103403Z:592468db-afd3-45e4-92be-628dc0d0da47"
         ],
-        "X-Content-Type-Options": [
+        "x-content-type-options": [
           "nosniff"
-        ],
-        "Date": [
-          "Tue, 09 Apr 2019 09:05:55 GMT"
         ],
         "Content-Length": [
           "1018"
@@ -449,55 +449,55 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/applicationGatewayAvailableResponseHeaders?api-version=2019-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9hcHBsaWNhdGlvbkdhdGV3YXlBdmFpbGFibGVSZXNwb25zZUhlYWRlcnM/YXBpLXZlcnNpb249MjAxOS0wMi0wMQ==",
+      "RequestUri": "/subscriptions/5f1006f9-e71f-4023-bb9e-f1c90262eda0/providers/Microsoft.Network/applicationGatewayAvailableResponseHeaders?api-version=2019-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWYxMDA2ZjktZTcxZi00MDIzLWJiOWUtZjFjOTAyNjJlZGEwL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9hcHBsaWNhdGlvbkdhdGV3YXlBdmFpbGFibGVSZXNwb25zZUhlYWRlcnM/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a1d5d455-860d-41bb-bab0-d2b03af3a6b5"
+          "95effc8f-0769-42b0-b8f8-e15cb883616e"
         ],
-        "Accept-Language": [
+        "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.26614.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.2.0.0"
         ]
       },
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
         ],
+        "Date": [
+          "Mon, 15 Jul 2019 10:34:05 GMT"
+        ],
         "Pragma": [
           "no-cache"
-        ],
-        "x-ms-request-id": [
-          "21c76d89-7ee7-426d-a086-95660bd1e8b2"
-        ],
-        "x-ms-correlation-request-id": [
-          "fbbd477f-bd64-4bf5-b4da-463c853dfada"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
           "Microsoft-HTTPAPI/2.0"
         ],
+        "x-ms-request-id": [
+          "eb464316-836e-46ff-934c-56027d957cf4"
+        ],
+        "x-ms-correlation-request-id": [
+          "f4771605-bbfe-4fc1-a2c2-11be677707fc"
+        ],
+        "strict-transport-security": [
+          "max-age=31536000; includeSubDomains"
+        ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11997"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH:20190409T090558Z:fbbd477f-bd64-4bf5-b4da-463c853dfada"
+          "WESTUS:20190715T103405Z:f4771605-bbfe-4fc1-a2c2-11be677707fc"
         ],
-        "X-Content-Type-Options": [
+        "x-content-type-options": [
           "nosniff"
-        ],
-        "Date": [
-          "Tue, 09 Apr 2019 09:05:57 GMT"
         ],
         "Content-Length": [
           "1018"
@@ -513,55 +513,58 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/providers/Microsoft.Network/applicationGatewayAvailableResponseHeaders?api-version=2019-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9hcHBsaWNhdGlvbkdhdGV3YXlBdmFpbGFibGVSZXNwb25zZUhlYWRlcnM/YXBpLXZlcnNpb249MjAxOS0wMi0wMQ==",
+      "RequestUri": "/subscriptions/5f1006f9-e71f-4023-bb9e-f1c90262eda0/providers/Microsoft.Network/applicationGatewayAvailableResponseHeaders?api-version=2019-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWYxMDA2ZjktZTcxZi00MDIzLWJiOWUtZjFjOTAyNjJlZGEwL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9hcHBsaWNhdGlvbkdhdGV3YXlBdmFpbGFibGVSZXNwb25zZUhlYWRlcnM/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b95dd08c-65ab-4cd5-ae98-4413b971a3cd"
+          "2bb809f7-2056-49ed-af8d-e040a2e7ba01"
         ],
-        "Accept-Language": [
+        "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27414.06",
+          "FxVersion/4.6.26614.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.2.0.0"
         ]
       },
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
         ],
+        "Date": [
+          "Mon, 15 Jul 2019 10:34:07 GMT"
+        ],
         "Pragma": [
           "no-cache"
-        ],
-        "x-ms-request-id": [
-          "d4c97594-4368-4d78-972c-7b9dc0abe42a"
-        ],
-        "x-ms-correlation-request-id": [
-          "e7c0c527-7240-4030-9787-9d5c6188f9b4"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
           "Microsoft-HTTPAPI/2.0"
         ],
+        "x-ms-request-id": [
+          "1d609f8a-4fea-4365-94ad-470618a0f76c"
+        ],
+        "x-ms-correlation-request-id": [
+          "7ffe35d0-0612-40ff-b087-f98caf8e7a52"
+        ],
+        "x-ms-arm-service-request-id": [
+          "484cfaac-688d-42e9-a16e-2492345e414d"
+        ],
+        "strict-transport-security": [
+          "max-age=31536000; includeSubDomains"
+        ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
+          "11999"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH:20190409T090601Z:e7c0c527-7240-4030-9787-9d5c6188f9b4"
+          "WESTUS:20190715T103408Z:7ffe35d0-0612-40ff-b087-f98caf8e7a52"
         ],
-        "X-Content-Type-Options": [
+        "x-content-type-options": [
           "nosniff"
-        ],
-        "Date": [
-          "Tue, 09 Apr 2019 09:06:00 GMT"
         ],
         "Content-Length": [
           "1018"
@@ -579,6 +582,6 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "947d47b4-7883-4bb9-9d85-c5e8e2f572ce"
+    "SubscriptionId": "5f1006f9-e71f-4023-bb9e-f1c90262eda0"
   }
 }

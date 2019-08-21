@@ -39,11 +39,11 @@ Get-AzDataFactoryV2PipelineRun [-ResourceGroupName] <String> [-DataFactoryName] 
 ```
 
 ## DESCRIPTION
-The **Get-AzDataFactoryV2PipelineRun** command returns information about runs for the specified pipeline. If PipelineRunId is specified, it shows details for the run with that ID. If the PipelineRunId is not specified, then it shows information about all runs for the specified pipeline that happened between the values of LastUpdatedAfter and LastUpdatedBefore.
+The **Get-AzDataFactoryV2PipelineRun** command returns information about runs for the specified pipeline. If PipelineRunId is specified, it shows details for the run with that ID. If the PipelineRunId is not specified, then it shows information about all runs for the pipelines that happened between the values of LastUpdatedAfter and LastUpdatedBefore.
 
 ## EXAMPLES
 
-### Example 1: Get information for a pipline run
+### Example 1: Get information for a pipeline run
 ```
 PS C:\> Get-AzDataFactoryV2PipelineRun -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -PipelineRunId "61eb095a-fe23-4591-8a97-fade6c65ca72"
 

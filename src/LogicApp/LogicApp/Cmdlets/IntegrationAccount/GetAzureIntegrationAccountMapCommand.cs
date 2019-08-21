@@ -21,13 +21,12 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     using ResourceManager.Common.ArgumentCompleters;
 
     /// <summary>
-    /// Gets the integration account map by name 
+    /// Gets the integration account map
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IntegrationAccountMap")]
     [OutputType(typeof(IntegrationAccountMap))]
     public class GetAzureIntegrationAccountMapCommand : LogicAppBaseCmdlet
     {
-
         #region Input Parameters
 
         [Parameter(Mandatory = false, HelpMessage = "The integration account resource group name.",
@@ -45,6 +44,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [ValidateNotNullOrEmpty]
         public string MapName { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The integration account map type.")]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("Xslt", "Xslt20", "Xslt30", "Liquid")]
+        public string MapType { get; set; }
+
         #endregion Input Parameters
 
         /// <summary>
@@ -56,7 +60,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             if (string.IsNullOrEmpty(this.MapName))
             {
-                this.WriteObject(IntegrationAccountClient.ListIntegrationAccountMaps(this.ResourceGroupName,this.Name), true);
+                this.WriteObject(IntegrationAccountClient.ListIntegrationAccountMaps(this.ResourceGroupName,this.Name, this.MapType), true);
             }
             else
             {
