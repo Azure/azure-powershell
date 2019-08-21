@@ -166,11 +166,13 @@ function Test-subnetCRUD
         # Get subnet
         $subnet2 = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzVirtualNetworkSubnetConfig -Name $subnet2Name
         $subnetAll = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzVirtualNetworkSubnetConfig
+        $subnet2ById = Get-AzVirtualNetworkSubnetConfig -ResourceId $subnet2.Id
 
         Assert-AreEqual 2 @($subnetAll).Count
         Assert-AreEqual $subnetName $subnetAll[0].Name
         Assert-AreEqual $subnet2Name $subnetAll[1].Name
         Assert-AreEqual $subnet2Name $subnet2.Name
+        Assert-AreEqual $subnet2Name $subnet2ById.Name
 
         # Get non-existing subnet
         try
