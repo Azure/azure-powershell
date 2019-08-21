@@ -35,12 +35,12 @@
 * MultiLink support in Virtual WAN
     - New cmdlets
         - New-AzVpnSiteLink
-		- New-AzVpnSiteLinkConnection
+        - New-AzVpnSiteLinkConnection
     - Updated cmdlet:
-		- New-VpnSite
-		- Update-VpnSite
-		- New-VpnConnection
-		- Update-VpnConnection
+        - New-VpnSite
+        - Update-VpnSite
+        - New-VpnConnection
+        - Update-VpnConnection
 
 ## Version 1.12.0
 * Add support for private endpoint and private link service
