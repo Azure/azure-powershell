@@ -30,14 +30,16 @@ SetNewIP
 #>
 function Test-SetNewIP
 {
-    $peers = Get-AzPeering -Kind Direct
-	$peer = $peers | Select -First 1
-    $peerIpAddress = $peer.Connections[0].BgpSession.SessionPrefixV4
+	$name = getPeeringVariable "Name" "AS8088_Seattle_Exchange"
+	$rg = getPeeringVariable "ResourceGroupName" "Building40"
+    $peer = Get-AzPeering -ResourceGroupName $rg -Name $name
+    $peerIpAddress = $peer.Connections[1].BgpSession.PeerSessionIPv4Address
 	$offset = getPeeringVariable "offSet" (Get-Random -Maximum 100 -Minimum 1 | % { $_ * 2 } )
-	$newIpAddress = getPeeringVariable "newIpAddress" (changeIp "$peerIpAddress" $false $offset $true )
-	$msip = getPeeringVariable "MicrosoftSessionIPv4Address" $peer.Connections[0].BgpSession.MicrosoftSessionIPv4Address
-	$peer.Connections[0] = $peer.Connections[0] | Set-AzPeeringDirectConnectionObject -SessionPrefixV4 $newIpAddress
-	Assert-ThrowsContains {$peer | Update-AzPeering} "ErrorCode: OperationFailed ErrorMessage: Input prefix $newIpAddress"
+	$newIpAddress = getPeeringVariable "newIpAddress" (changeIp "$peerIpAddress/32" $false $offset $false )
+	$msip = getPeeringVariable "MicrosoftSessionIPv4Address" $peer.Connections[1].BgpSession.MicrosoftSessionIPv4Address
+	$peer.Connections[1] = $peer.Connections[1] | Set-AzPeeringExchangeConnectionObject -PeerSessionIPv4Address $newIpAddress
+	$peering = $peer | Update-AzPeering
+	Assert-True {$newIpAddress -eq $peering.Connections[1].BgpSession.PeerSessionIPv4Address}
 
 }
 <#
@@ -46,14 +48,13 @@ SetNewIPv6
 #>
 function Test-SetNewIPv6
 {
-    $peers = Get-AzPeering -Kind Direct
-	$peer = $peers | Select -First 1
-    $peerIpAddress = $peer.Connections[0].BgpSession.SessionPrefixV6
-	$offset = getPeeringVariable "offSet" (Get-Random -Maximum 100 -Minimum 1 | % { $_ * 2 } )
-	$newIpAddress = getPeeringVariable "newIpAddress" (changeIp "$peerIpAddress" $true $offset $true )
-	$msip = getPeeringVariable "MicrosoftSessionIPv6Address" $peer.Connections[0].BgpSession.MicrosoftSessionIPv6Address
-	$peer.Connections[0] = $peer.Connections[0] | Set-AzPeeringDirectConnectionObject -SessionPrefixV6 $newIpAddress
-	Assert-ThrowsContains {$peer | Update-AzPeering} "ErrorCode: OperationFailed ErrorMessage: Input prefix $newIpAddress"
+	$name = getPeeringVariable "Name" "AS8088_Seattle_Exchange"
+	$rg = getPeeringVariable "ResourceGroupName" "Building40"
+    $peer = Get-AzPeering -ResourceGroupName $rg -Name $name
+    $peerIpAddress = getPeeringVariable "IpAddress" (newIpV6Address $false $false 0 0)
+	$peer.Connections[1] = $peer.Connections[1] | Set-AzPeeringExchangeConnectionObject -PeerSessionIPv6Address $peerIpAddress
+	$peering = $peer | Update-AzPeering
+	Assert-True {$peerIpAddress -eq $peering.Connections[1].BgpSession.PeerSessionIPv6Address}
 }
 <#
 .SYNOPSIS
@@ -76,11 +77,12 @@ SetNewMd5Hash
 #>
 function Test-SetNewMd5Hash
 {
-    $peers = Get-AzPeering -Kind Direct
-	$peer = $peers | Select -First 1
+	$name = getPeeringVariable "Name" "AS8088_Seattle_Exchange"
+	$rg = getPeeringVariable "ResourceGroupName" "Building40"
+    $peer = Get-AzPeering -ResourceGroupName $rg -Name $name
     $hash = getHash
-	$peer.Connections[0] = $peer.Connections[0] | Set-AzPeeringDirectConnectionObject -MD5AuthenticationKey $hash
-	$setPeer = $peer | Update-AzPeering
+	$connection = $peer.Connections[0] | Set-AzPeeringExchangeConnectionObject -MD5AuthenticationKey $hash
+	$setPeer = Update-AzPeering -ResourceId $peer.Id -ExchangeConnection $connection
 	Assert-NotNull $setPeer
 	Assert-AreEqual $hash $setPeer.Connections[0].BgpSession.Md5AuthenticationKey
 }

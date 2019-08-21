@@ -350,7 +350,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                     .ForMember(dest => dest.CertificateId, opt => opt.MapFrom(src => src.Name));
 
                 cfg
-                    .CreateMap<AuthorizationServerContract, PsApiManagementOAuth2AuthrozationServer>()
+                    .CreateMap<AuthorizationServerContract, PsApiManagementOAuth2AuthorizationServer>()
                     .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                     .ForMember(dest => dest.ServerId, opt => opt.MapFrom(src => src.Name))
                     .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.DisplayName))
@@ -1165,7 +1165,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             string apiId,
             string revisionId,
             string sourceRevisionId,
-            string serviceUrl)
+            string serviceUrl,
+            string apiRevisiondescription)
         {
             var api = Client.Api.Get(context.ResourceGroupName, context.ServiceName, apiId);
             ApiCreateOrUpdateParameter apiCreateParams;
@@ -1183,6 +1184,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             if (serviceUrl != null)
             {
                 apiCreateParams.ServiceUrl = serviceUrl;
+            }
+
+            if (!string.IsNullOrEmpty(apiRevisiondescription))
+            {
+                apiCreateParams.ApiRevisionDescription = apiRevisiondescription;
             }
 
             var getResponse = Client.Api.CreateOrUpdate(
@@ -2404,25 +2410,25 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
 
         #region Authorization Servers
 
-        public IList<PsApiManagementOAuth2AuthrozationServer> AuthorizationServerList(string resourceGroupName, string serviceName)
+        public IList<PsApiManagementOAuth2AuthorizationServer> AuthorizationServerList(string resourceGroupName, string serviceName)
         {
-            var results = ListPagedAndMap<PsApiManagementOAuth2AuthrozationServer, AuthorizationServerContract>(
+            var results = ListPagedAndMap<PsApiManagementOAuth2AuthorizationServer, AuthorizationServerContract>(
                 () => Client.AuthorizationServer.ListByService(resourceGroupName, serviceName, null),
                 nextLink => Client.AuthorizationServer.ListByServiceNext(nextLink));
 
             return results;
         }
 
-        public PsApiManagementOAuth2AuthrozationServer AuthorizationServerById(
+        public PsApiManagementOAuth2AuthorizationServer AuthorizationServerById(
             string resourceGroupName, string serviceName, string serverId)
         {
             var response = Client.AuthorizationServer.Get(resourceGroupName, serviceName, serverId);
 
-            var server = Mapper.Map<PsApiManagementOAuth2AuthrozationServer>(response);
+            var server = Mapper.Map<PsApiManagementOAuth2AuthorizationServer>(response);
             return server;
         }
 
-        public PsApiManagementOAuth2AuthrozationServer AuthorizationServerCreate(
+        public PsApiManagementOAuth2AuthorizationServer AuthorizationServerCreate(
             PsApiManagementContext context,
             string serverId,
             string name,
@@ -2481,7 +2487,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 serverId,
                 serverContract);
 
-            var server = Mapper.Map<PsApiManagementOAuth2AuthrozationServer>(response);
+            var server = Mapper.Map<PsApiManagementOAuth2AuthorizationServer>(response);
 
             return server;
         }

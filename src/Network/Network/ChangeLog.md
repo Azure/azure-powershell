@@ -17,9 +17,19 @@
     * Overview of change #1
         - Additional information about change #1
 --->
-## Version 1.12.1
+## Upcoming Release
+* Updated New-AzPrivateLinkServiceIpConfig
+    - Deprecated the paramster 'PublicIpAddress' since this is never used in the server side.
+    - Added one optional parameter 'Primary' that indicate the current ip configuration is primary one or not.
+* Improved handling of request error exception from SDK
+    -Fixes the issue that previously SDK exceptions aren't handled correctly which results in key error details not being displayed
 * Fixed miscellaneous typos across module
+* Adjusted validation logic for Ipv6 IP Prefix to check for correct IPv6 prefix length. 
 * Add support for Virtual Network Subnet Initialization
+* Updated Get-AzVirtualNetworkSubnetConfig: Added parameter set to get by subnet resource id.
+* Updated description of Location parameter for AzNetworkServiceTag
+
+## Version 1.12.1
     - New cmdlets
         - Initialize-AzVirtualNetworkSubnetPolicy
         
