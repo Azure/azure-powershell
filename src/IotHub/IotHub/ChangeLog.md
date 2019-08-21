@@ -19,7 +19,7 @@
 -->
 ## Upcoming Release
 * Fixed miscellaneous typos across module
-* Add support to manual-failover IotHub
+* Add support to invoke failover for an IotHub to the geo-paired disaster recovery region.
 
 ## Version 1.2.0
 * Add support to regenerate authorization policy keys.

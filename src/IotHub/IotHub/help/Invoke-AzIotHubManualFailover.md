@@ -8,7 +8,7 @@ schema: 2.0.0
 # Invoke-AzIotHubManualFailover
 
 ## SYNOPSIS
-Initiate a manual failover for the IoT Hub to the geo-paired disaster recovery region.
+Invoke failover process for the IoT Hub to the geo-paired disaster recovery region.
 
 ## SYNTAX
 
@@ -49,13 +49,6 @@ PS C:\> Invoke-AzIotHubManualFailover -ResourceGroupName "myresourcegroup" -Name
 ```
 
 Initiating failover process of "myiothub" IoT Hub in the background.
-
-### Example 3
-```powershell
-PS C:\> Invoke-AzIotHubManualFailover -ResourceGroupName "myresourcegroup" -Name "myiothub" -FailoverRegion "WestUS2"
-```
-
-Initiating failover process of "myiothub" IoT Hub to the specified geo-paired disaster recovery region.
 
 ## PARAMETERS
 
