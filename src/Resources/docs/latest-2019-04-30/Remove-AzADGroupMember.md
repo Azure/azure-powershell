@@ -14,38 +14,26 @@ Remove a member from a group.
 
 ### Remove (Default)
 ```
-Remove-AzADGroupMember -GroupObjectId <String> -MemberObjectId <String> -TenantId <String> [-PassThru]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzADGroupMember -GroupObjectId <String> -MemberObjectId <String> -TenantId <String>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DeleteByMemberUpnAndGroupId
+### DeleteByMemberIdAndGroupDisplayName
 ```
-Remove-AzADGroupMember -GroupObjectId <String> -TenantId <String> -MemberUserPrincipalName <String>
- [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzADGroupMember -TenantId <String> -GroupDisplayName <String> -MemberObjectId <String> [-PassThru]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteByMemberIdAndGroupId
 ```
-Remove-AzADGroupMember -GroupObjectId <String> -MemberObjectId <String> -TenantId <String> [-PassThru]
+Remove-AzADGroupMember -TenantId <String> -GroupObjectId <String> -MemberObjectId <String> [-PassThru]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteByMemberIdAndGroupObject
 ```
-Remove-AzADGroupMember -MemberObjectId <String> -TenantId <String> -GroupObject <IAdGroup> [-PassThru]
+Remove-AzADGroupMember -TenantId <String> -GroupObject <IAdGroup> -MemberObjectId <String> [-PassThru]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DeleteByMemberIdAndGroupDisplayName
-```
-Remove-AzADGroupMember -MemberObjectId <String> -TenantId <String> -GroupDisplayName <String> [-PassThru]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DeleteByMemberUpnAndGroupObject
-```
-Remove-AzADGroupMember -TenantId <String> -MemberUserPrincipalName <String> -GroupObject <IAdGroup>
- [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteByMemberUpnAndGroupDisplayName
@@ -54,9 +42,21 @@ Remove-AzADGroupMember -TenantId <String> -GroupDisplayName <String> -MemberUser
  [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### DeleteByMemberUpnAndGroupId
+```
+Remove-AzADGroupMember -TenantId <String> -GroupObjectId <String> -MemberUserPrincipalName <String>
+ [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteByMemberUpnAndGroupObject
+```
+Remove-AzADGroupMember -TenantId <String> -GroupObject <IAdGroup> -MemberUserPrincipalName <String>
+ [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### RemoveViaIdentity
 ```
-Remove-AzADGroupMember -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-Confirm]
+Remove-AzADGroupMember -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -138,7 +138,7 @@ The object ID of the group from which to remove the member.
 
 ```yaml
 Type: System.String
-Parameter Sets: Remove, DeleteByMemberUpnAndGroupId, DeleteByMemberIdAndGroupId
+Parameter Sets: DeleteByMemberIdAndGroupId, DeleteByMemberUpnAndGroupId, Remove
 Aliases:
 
 Required: True
@@ -170,7 +170,7 @@ Member object id
 
 ```yaml
 Type: System.String
-Parameter Sets: Remove, DeleteByMemberIdAndGroupId, DeleteByMemberIdAndGroupObject, DeleteByMemberIdAndGroupDisplayName
+Parameter Sets: DeleteByMemberIdAndGroupDisplayName, DeleteByMemberIdAndGroupId, DeleteByMemberIdAndGroupObject, Remove
 Aliases:
 
 Required: True
@@ -186,7 +186,7 @@ The UPN of the member to remove.
 
 ```yaml
 Type: System.String
-Parameter Sets: DeleteByMemberUpnAndGroupId, DeleteByMemberUpnAndGroupObject, DeleteByMemberUpnAndGroupDisplayName
+Parameter Sets: DeleteByMemberUpnAndGroupDisplayName, DeleteByMemberUpnAndGroupId, DeleteByMemberUpnAndGroupObject
 Aliases:
 
 Required: True
@@ -207,7 +207,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -218,7 +218,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Remove, DeleteByMemberUpnAndGroupId, DeleteByMemberIdAndGroupId, DeleteByMemberIdAndGroupObject, DeleteByMemberIdAndGroupDisplayName, DeleteByMemberUpnAndGroupObject, DeleteByMemberUpnAndGroupDisplayName
+Parameter Sets: DeleteByMemberIdAndGroupDisplayName, DeleteByMemberIdAndGroupId, DeleteByMemberIdAndGroupObject, DeleteByMemberUpnAndGroupDisplayName, DeleteByMemberUpnAndGroupId, DeleteByMemberUpnAndGroupObject, Remove
 Aliases:
 
 Required: True

@@ -1,5 +1,4 @@
-$TestRecordingFile = Join-Path $PSScriptRoot 'C:\B\azure-powershell\src\Resources\test' 'Get-AzDeploymentOperation.Recording.json'
-
+$TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzDeploymentOperation.Recording.json'
 . (Join-Path $PSScriptRoot '..\generated\runtime' 'HttpPipelineMocking.ps1')
 
 Describe 'Get-AzDeploymentOperation' {

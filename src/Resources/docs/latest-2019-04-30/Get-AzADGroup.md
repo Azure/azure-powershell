@@ -22,15 +22,15 @@ Get-AzADGroup -TenantId <String> [-Filter <String>] [-DefaultProfile <PSObject>]
 Get-AzADGroup -ObjectId <String> -TenantId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetByDisplayName
+```
+Get-AzADGroup -TenantId <String> -DisplayName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### GetByDisplayNamePrefix
 ```
 Get-AzADGroup -TenantId <String> -DisplayNameStartsWith <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
-```
-
-### GetByDisplayName
-```
-Get-AzADGroup -TenantId <String> -DisplayName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -164,7 +164,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get, GetByDisplayNamePrefix, GetByDisplayName
+Parameter Sets: Get, GetByDisplayName, GetByDisplayNamePrefix, List
 Aliases:
 
 Required: True

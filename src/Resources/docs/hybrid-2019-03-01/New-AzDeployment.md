@@ -14,29 +14,13 @@ You can provide the template and parameters directly in the request or link to J
 
 ### CreateExpanded (Default)
 ```
-New-AzDeployment -Name <String> -SubscriptionId <String> -Parameter <IDeployment> -Mode <DeploymentMode>
+New-AzDeployment -Name <String> -SubscriptionId <String> -Mode <DeploymentMode>
  [-DebugSettingDetailLevel <String>] [-Location <String>] [-OnErrorDeploymentName <String>]
- [-OnErrorDeploymentType <OnErrorDeploymentType>] [-ParameterLinkContentVersion <String>]
- [-ParameterLinkUri <String>] [-Template <IDeploymentPropertiesTemplate>]
- [-TemplateLinkContentVersion <String>] [-TemplateLinkUri <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded1
-```
-New-AzDeployment -Name <String> -SubscriptionId <String> -ResourceGroupName <String> -Parameter <IDeployment>
- -Mode <DeploymentMode> [-DebugSettingDetailLevel <String>] [-Location <String>]
- [-OnErrorDeploymentName <String>] [-OnErrorDeploymentType <OnErrorDeploymentType>]
+ [-OnErrorDeploymentType <OnErrorDeploymentType>] [-Parameter <IDeploymentPropertiesParameters>]
  [-ParameterLinkContentVersion <String>] [-ParameterLinkUri <String>]
  [-Template <IDeploymentPropertiesTemplate>] [-TemplateLinkContentVersion <String>]
  [-TemplateLinkUri <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
-```
-
-### Create1
-```
-New-AzDeployment -Name <String> -SubscriptionId <String> -ResourceGroupName <String> -Parameter <IDeployment>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create
@@ -45,24 +29,27 @@ New-AzDeployment -Name <String> -SubscriptionId <String> -Parameter <IDeployment
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentityExpanded1
+### Create1
 ```
-New-AzDeployment -InputObject <IResourcesIdentity> -Parameter <IDeployment> -Mode <DeploymentMode>
- [-DebugSettingDetailLevel <String>] [-Location <String>] [-OnErrorDeploymentName <String>]
- [-OnErrorDeploymentType <OnErrorDeploymentType>] [-ParameterLinkContentVersion <String>]
- [-ParameterLinkUri <String>] [-Template <IDeploymentPropertiesTemplate>]
- [-TemplateLinkContentVersion <String>] [-TemplateLinkUri <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzDeployment -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Parameter <IDeployment>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentityExpanded
+### CreateExpanded1
 ```
-New-AzDeployment -InputObject <IResourcesIdentity> -Parameter <IDeployment> -Mode <DeploymentMode>
+New-AzDeployment -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Mode <DeploymentMode>
  [-DebugSettingDetailLevel <String>] [-Location <String>] [-OnErrorDeploymentName <String>]
- [-OnErrorDeploymentType <OnErrorDeploymentType>] [-ParameterLinkContentVersion <String>]
- [-ParameterLinkUri <String>] [-Template <IDeploymentPropertiesTemplate>]
- [-TemplateLinkContentVersion <String>] [-TemplateLinkUri <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-OnErrorDeploymentType <OnErrorDeploymentType>] [-Parameter <IDeploymentPropertiesParameters>]
+ [-ParameterLinkContentVersion <String>] [-ParameterLinkUri <String>]
+ [-Template <IDeploymentPropertiesTemplate>] [-TemplateLinkContentVersion <String>]
+ [-TemplateLinkUri <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaIdentity
+```
+New-AzDeployment -InputObject <IResourcesIdentity> -Parameter <IDeployment> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity1
@@ -71,10 +58,24 @@ New-AzDeployment -InputObject <IResourcesIdentity> -Parameter <IDeployment> [-De
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentity
+### CreateViaIdentityExpanded
 ```
-New-AzDeployment -InputObject <IResourcesIdentity> -Parameter <IDeployment> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzDeployment -InputObject <IResourcesIdentity> -Mode <DeploymentMode> [-DebugSettingDetailLevel <String>]
+ [-Location <String>] [-OnErrorDeploymentName <String>] [-OnErrorDeploymentType <OnErrorDeploymentType>]
+ [-Parameter <IDeploymentPropertiesParameters>] [-ParameterLinkContentVersion <String>]
+ [-ParameterLinkUri <String>] [-Template <IDeploymentPropertiesTemplate>]
+ [-TemplateLinkContentVersion <String>] [-TemplateLinkUri <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded1
+```
+New-AzDeployment -InputObject <IResourcesIdentity> -Mode <DeploymentMode> [-DebugSettingDetailLevel <String>]
+ [-Location <String>] [-OnErrorDeploymentName <String>] [-OnErrorDeploymentType <OnErrorDeploymentType>]
+ [-Parameter <IDeploymentPropertiesParameters>] [-ParameterLinkContentVersion <String>]
+ [-ParameterLinkUri <String>] [-Template <IDeploymentPropertiesTemplate>]
+ [-TemplateLinkContentVersion <String>] [-TemplateLinkUri <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -112,7 +113,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -127,7 +128,7 @@ By logging information about the request or response, you could potentially expo
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -159,7 +160,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: CreateViaIdentityExpanded1, CreateViaIdentityExpanded, CreateViaIdentity1, CreateViaIdentity
+Parameter Sets: CreateViaIdentity, CreateViaIdentity1, CreateViaIdentityExpanded, CreateViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -175,7 +176,7 @@ The location to store the deployment data.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -195,7 +196,7 @@ Be careful when using Complete mode as you may unintentionally delete resources.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Support.DeploymentMode
-Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded, CreateViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -211,7 +212,7 @@ The name of the deployment.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1, Create1, Create
+Parameter Sets: Create, Create1, CreateExpanded, CreateExpanded1
 Aliases: DeploymentName
 
 Required: True
@@ -232,7 +233,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -243,7 +244,7 @@ The deployment to be used on error case.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -260,7 +261,7 @@ Possible values are LastSuccessful and SpecificDeployment.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Support.OnErrorDeploymentType
-Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -293,7 +294,7 @@ If included, must match the ContentVersion in the template.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -309,7 +310,7 @@ The URI of the parameters file.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -327,7 +328,7 @@ The resource group must already exist.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded1, Create1
+Parameter Sets: Create1, CreateExpanded1
 Aliases:
 
 Required: True
@@ -343,7 +344,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1, Create1, Create
+Parameter Sets: Create, Create1, CreateExpanded, CreateExpanded1
 Aliases:
 
 Required: True
@@ -362,7 +363,7 @@ Use either the templateLink property or the template property, but not both.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IDeploymentPropertiesTemplate
-Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -378,7 +379,7 @@ If included, must match the ContentVersion in the template.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -394,7 +395,7 @@ The URI of the template to deploy.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded1, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded, CreateViaIdentityExpanded1
 Aliases:
 
 Required: False
@@ -443,9 +444,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IDeployment
+
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
 
 ## OUTPUTS
 

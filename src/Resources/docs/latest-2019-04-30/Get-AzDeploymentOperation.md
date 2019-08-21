@@ -18,22 +18,16 @@ Get-AzDeploymentOperation -DeploymentName <String> -SubscriptionId <String[]> [-
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List1
-```
-Get-AzDeploymentOperation -DeploymentName <String> -SubscriptionId <String[]> -ResourceGroupName <String>
- [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get1
-```
-Get-AzDeploymentOperation -DeploymentName <String> -OperationId <String> -SubscriptionId <String[]>
- -ResourceGroupName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ### Get
 ```
 Get-AzDeploymentOperation -DeploymentName <String> -OperationId <String> -SubscriptionId <String[]>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get1
+```
+Get-AzDeploymentOperation -DeploymentName <String> -OperationId <String> -ResourceGroupName <String>
+ -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetByDeploymentObject
@@ -42,14 +36,20 @@ Get-AzDeploymentOperation -SubscriptionId <String[]> -DeploymentObject <IDeploym
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentity
+```
+Get-AzDeploymentOperation -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### GetViaIdentity1
 ```
 Get-AzDeploymentOperation -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### List1
 ```
-Get-AzDeploymentOperation -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDeploymentOperation -DeploymentName <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+ [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -98,7 +98,7 @@ The name of the deployment.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, List1, Get1, Get
+Parameter Sets: Get, Get1, List, List1
 Aliases:
 
 Required: True
@@ -130,7 +130,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: GetViaIdentity1, GetViaIdentity
+Parameter Sets: GetViaIdentity, GetViaIdentity1
 Aliases:
 
 Required: True
@@ -146,7 +146,7 @@ The ID of the operation to get.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get1, Get
+Parameter Sets: Get, Get1
 Aliases:
 
 Required: True
@@ -163,7 +163,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: List1, Get1
+Parameter Sets: Get1, List1
 Aliases:
 
 Required: True
@@ -179,7 +179,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, List1, Get1, Get, GetByDeploymentObject
+Parameter Sets: Get, Get1, GetByDeploymentObject, List, List1
 Aliases:
 
 Required: True
@@ -195,12 +195,12 @@ The number of results to return.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: List, List1, GetByDeploymentObject
+Parameter Sets: GetByDeploymentObject, List, List1
 Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

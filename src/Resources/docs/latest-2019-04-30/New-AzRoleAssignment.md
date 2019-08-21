@@ -14,7 +14,7 @@ Creates a role assignment by ID.
 
 ### CreateExpanded1 (Default)
 ```
-New-AzRoleAssignment -Id <String> -PrincipalId <String> -RoleDefinitionId <String> [-CanDelegate]
+New-AzRoleAssignment -Id <String> [-CanDelegate] [-PrincipalId <String>] [-RoleDefinitionId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -24,23 +24,10 @@ New-AzRoleAssignment -Id <String> -Parameter <IRoleAssignmentCreateParameters> [
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateExpanded2
-```
-New-AzRoleAssignment -Name <String> -Scope <String> -PrincipalId <String> -RoleDefinitionId <String>
- [-CanDelegate] [-PrincipalType <PrincipalType>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ### Create2
 ```
 New-AzRoleAssignment -Name <String> -Scope <String> -Parameter <IRoleAssignmentCreateParameters>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded3
-```
-New-AzRoleAssignment -RoleId <String> -PrincipalId <String> -RoleDefinitionId <String> [-CanDelegate]
- [-PrincipalType <PrincipalType>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create3
@@ -49,27 +36,20 @@ New-AzRoleAssignment -RoleId <String> -Parameter <IRoleAssignmentCreateParameter
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentityExpanded3
+### CreateExpanded2
 ```
-New-AzRoleAssignment -InputObject <IResourcesIdentity> -PrincipalId <String> -RoleDefinitionId <String>
+New-AzRoleAssignment -Name <String> -Scope <String> -PrincipalId <String> -RoleDefinitionId <String>
  [-CanDelegate] [-PrincipalType <PrincipalType>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### CreateViaIdentityExpanded2
+### CreateExpanded3
 ```
-New-AzRoleAssignment -InputObject <IResourcesIdentity> -PrincipalId <String> -RoleDefinitionId <String>
- [-CanDelegate] [-PrincipalType <PrincipalType>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded1
-```
-New-AzRoleAssignment -InputObject <IResourcesIdentity> -PrincipalId <String> -RoleDefinitionId <String>
- [-CanDelegate] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzRoleAssignment -RoleId <String> -PrincipalId <String> -RoleDefinitionId <String> [-CanDelegate]
+ [-PrincipalType <PrincipalType>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentity3
+### CreateViaIdentity1
 ```
 New-AzRoleAssignment -InputObject <IResourcesIdentity> -Parameter <IRoleAssignmentCreateParameters>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -81,10 +61,30 @@ New-AzRoleAssignment -InputObject <IResourcesIdentity> -Parameter <IRoleAssignme
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentity1
+### CreateViaIdentity3
 ```
 New-AzRoleAssignment -InputObject <IResourcesIdentity> -Parameter <IRoleAssignmentCreateParameters>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded1
+```
+New-AzRoleAssignment -InputObject <IResourcesIdentity> [-CanDelegate] [-PrincipalId <String>]
+ [-RoleDefinitionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded2
+```
+New-AzRoleAssignment -InputObject <IResourcesIdentity> -PrincipalId <String> -RoleDefinitionId <String>
+ [-CanDelegate] [-PrincipalType <PrincipalType>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded3
+```
+New-AzRoleAssignment -InputObject <IResourcesIdentity> -PrincipalId <String> -RoleDefinitionId <String>
+ [-CanDelegate] [-PrincipalType <PrincipalType>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -117,12 +117,12 @@ The delegation flag used for creating a role assignment
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded1, CreateExpanded2, CreateExpanded3, CreateViaIdentityExpanded3, CreateViaIdentityExpanded2, CreateViaIdentityExpanded1
+Parameter Sets: CreateExpanded1, CreateExpanded2, CreateExpanded3, CreateViaIdentityExpanded1, CreateViaIdentityExpanded2, CreateViaIdentityExpanded3
 Aliases: AllowDelegation
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -149,7 +149,7 @@ The ID of the role assignment to create.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded1, Create1
+Parameter Sets: Create1, CreateExpanded1
 Aliases: RoleAssignmentId
 
 Required: True
@@ -165,7 +165,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: CreateViaIdentityExpanded3, CreateViaIdentityExpanded2, CreateViaIdentityExpanded1, CreateViaIdentity3, CreateViaIdentity2, CreateViaIdentity1
+Parameter Sets: CreateViaIdentity1, CreateViaIdentity2, CreateViaIdentity3, CreateViaIdentityExpanded1, CreateViaIdentityExpanded2, CreateViaIdentityExpanded3
 Aliases:
 
 Required: True
@@ -182,7 +182,7 @@ It can be any valid GUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded2, Create2
+Parameter Sets: Create2, CreateExpanded2
 Aliases: RoleAssignmentName
 
 Required: True
@@ -199,7 +199,7 @@ To construct, see NOTES section for PARAMETER properties and create a hash table
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20171001Preview.IRoleAssignmentCreateParameters
-Parameter Sets: Create1, Create2, Create3, CreateViaIdentity3, CreateViaIdentity2, CreateViaIdentity1
+Parameter Sets: Create1, Create2, Create3, CreateViaIdentity1, CreateViaIdentity2, CreateViaIdentity3
 Aliases:
 
 Required: True
@@ -217,10 +217,10 @@ It can point to a user, service principal, or security group.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded1, CreateExpanded2, CreateExpanded3, CreateViaIdentityExpanded3, CreateViaIdentityExpanded2, CreateViaIdentityExpanded1
+Parameter Sets: CreateExpanded1, CreateExpanded2, CreateExpanded3, CreateViaIdentityExpanded1, CreateViaIdentityExpanded2, CreateViaIdentityExpanded3
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -233,7 +233,7 @@ The principal type of the assigned principal ID.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Support.PrincipalType
-Parameter Sets: CreateExpanded2, CreateExpanded3, CreateViaIdentityExpanded3, CreateViaIdentityExpanded2
+Parameter Sets: CreateExpanded2, CreateExpanded3, CreateViaIdentityExpanded2, CreateViaIdentityExpanded3
 Aliases:
 
 Required: False
@@ -249,10 +249,10 @@ The role definition ID used in the role assignment.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded1, CreateExpanded2, CreateExpanded3, CreateViaIdentityExpanded3, CreateViaIdentityExpanded2, CreateViaIdentityExpanded1
+Parameter Sets: CreateExpanded1, CreateExpanded2, CreateExpanded3, CreateViaIdentityExpanded1, CreateViaIdentityExpanded2, CreateViaIdentityExpanded3
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -265,7 +265,7 @@ The ID of the role assignment to create.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded3, Create3
+Parameter Sets: Create3, CreateExpanded3
 Aliases:
 
 Required: True
@@ -283,7 +283,7 @@ For example, use '/subscriptions/{subscription-id}/' for a subscription, '/subsc
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded2, Create2
+Parameter Sets: Create2, CreateExpanded2
 Aliases:
 
 Required: True
@@ -332,9 +332,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20171001Preview.IRoleAssignmentCreateParameters
+
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
 
 ## OUTPUTS
 

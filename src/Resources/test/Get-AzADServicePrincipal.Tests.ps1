@@ -1,3 +1,4 @@
+$TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzADServicePrincipal.Recording.json'
 . (Join-Path $PSScriptRoot '..\generated\runtime' 'HttpPipelineMocking.ps1')
 
 Describe 'Get-AzADServicePrincipal' {
@@ -10,6 +11,14 @@ Describe 'Get-AzADServicePrincipal' {
     }
 
     It 'GetByDisplayName' {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'GetByDisplayNamePrefix' {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'GetBySPN' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

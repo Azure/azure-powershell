@@ -1,3 +1,4 @@
+$TestRecordingFile = Join-Path $PSScriptRoot 'Update-AzResourceGroup.Recording.json'
 . (Join-Path $PSScriptRoot '..\generated\runtime' 'HttpPipelineMocking.ps1')
 
 Describe 'Update-AzResourceGroup' {

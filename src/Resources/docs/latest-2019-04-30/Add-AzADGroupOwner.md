@@ -14,32 +14,32 @@ Add an owner to a group.
 
 ### AddExpanded (Default)
 ```
-Add-AzADGroupOwner -ObjectId <String> -TenantId <String> -Url <String> [-PassThru]
- [-AdditionalProperties <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Add-AzADGroupOwner -ObjectId <String> -TenantId <String> -Url <String> [-AdditionalProperties <Hashtable>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Add
 ```
-Add-AzADGroupOwner -ObjectId <String> -TenantId <String> -Parameter <IAddOwnerParameters> [-PassThru]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Add-AzADGroupOwner -ObjectId <String> -TenantId <String> -Parameter <IAddOwnerParameters>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### AddByComponents
 ```
-Add-AzADGroupOwner -TenantId <String> -GroupObjectId <String> -MemberObjectId <String[]> [-PassThru]
+Add-AzADGroupOwner -GroupObjectId <String> -MemberObjectId <String[]> -TenantId <String> [-PassThru]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### AddViaIdentityExpanded
-```
-Add-AzADGroupOwner -InputObject <IResourcesIdentity> -Url <String> [-PassThru]
- [-AdditionalProperties <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### AddViaIdentity
 ```
-Add-AzADGroupOwner -InputObject <IResourcesIdentity> -Parameter <IAddOwnerParameters> [-PassThru]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Add-AzADGroupOwner -InputObject <IResourcesIdentity> -Parameter <IAddOwnerParameters>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### AddViaIdentityExpanded
+```
+Add-AzADGroupOwner -InputObject <IResourcesIdentity> -Url <String> [-AdditionalProperties <Hashtable>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -120,7 +120,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: AddViaIdentityExpanded, AddViaIdentity
+Parameter Sets: AddViaIdentity, AddViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -152,7 +152,7 @@ The object ID of the application to which to add the owner.
 
 ```yaml
 Type: System.String
-Parameter Sets: AddExpanded, Add
+Parameter Sets: Add, AddExpanded
 Aliases:
 
 Required: True
@@ -190,7 +190,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -201,7 +201,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: AddExpanded, Add, AddByComponents
+Parameter Sets: Add, AddByComponents, AddExpanded
 Aliases:
 
 Required: True
@@ -266,9 +266,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IAddOwnerParameters
+
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
 
 ## OUTPUTS
 

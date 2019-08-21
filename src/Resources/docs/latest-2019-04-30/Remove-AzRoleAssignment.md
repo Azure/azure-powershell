@@ -29,7 +29,7 @@ Remove-AzRoleAssignment -RoleId <String> [-DefaultProfile <PSObject>] [-Confirm]
  [<CommonParameters>]
 ```
 
-### DeleteViaIdentity3
+### DeleteViaIdentity1
 ```
 Remove-AzRoleAssignment -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -41,7 +41,7 @@ Remove-AzRoleAssignment -InputObject <IResourcesIdentity> [-DefaultProfile <PSOb
  [<CommonParameters>]
 ```
 
-### DeleteViaIdentity1
+### DeleteViaIdentity3
 ```
 Remove-AzRoleAssignment -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -109,7 +109,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: DeleteViaIdentity3, DeleteViaIdentity2, DeleteViaIdentity1
+Parameter Sets: DeleteViaIdentity1, DeleteViaIdentity2, DeleteViaIdentity3
 Aliases:
 
 Required: True

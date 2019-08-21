@@ -24,15 +24,15 @@ Export-AzResourceGroup -ResourceGroupName <String> -SubscriptionId <String>
  -Parameter <IExportTemplateRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### ExportViaIdentityExpanded
-```
-Export-AzResourceGroup -InputObject <IResourcesIdentity> [-Option <String>] [-Resource <String[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### ExportViaIdentity
 ```
 Export-AzResourceGroup -InputObject <IResourcesIdentity> -Parameter <IExportTemplateRequest>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ExportViaIdentityExpanded
+```
+Export-AzResourceGroup -InputObject <IResourcesIdentity> [-Option <String>] [-Resource <String[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -82,7 +82,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: ExportViaIdentityExpanded, ExportViaIdentity
+Parameter Sets: ExportViaIdentity, ExportViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -149,7 +149,7 @@ The name of the resource group to export as a template.
 
 ```yaml
 Type: System.String
-Parameter Sets: ExportExpanded, Export
+Parameter Sets: Export, ExportExpanded
 Aliases:
 
 Required: True
@@ -165,7 +165,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: ExportExpanded, Export
+Parameter Sets: Export, ExportExpanded
 Aliases:
 
 Required: True
@@ -214,9 +214,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IExportTemplateRequest
+
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
 
 ## OUTPUTS
 

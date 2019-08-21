@@ -20,17 +20,17 @@ Test-AzDeploymentExistence -DeploymentName <String> -SubscriptionId <String> [-D
 
 ### Check1
 ```
-Test-AzDeploymentExistence -DeploymentName <String> -SubscriptionId <String> -ResourceGroupName <String>
+Test-AzDeploymentExistence -DeploymentName <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
 ```
 
-### CheckViaIdentity1
+### CheckViaIdentity
 ```
 Test-AzDeploymentExistence -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-PassThru]
  [<CommonParameters>]
 ```
 
-### CheckViaIdentity
+### CheckViaIdentity1
 ```
 Test-AzDeploymentExistence -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-PassThru]
  [<CommonParameters>]
@@ -98,7 +98,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: CheckViaIdentity1, CheckViaIdentity
+Parameter Sets: CheckViaIdentity, CheckViaIdentity1
 Aliases:
 
 Required: True
@@ -119,7 +119,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

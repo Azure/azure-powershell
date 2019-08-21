@@ -15,22 +15,15 @@ For example, when you apply a policy to a resource group that policy is assigned
 
 ### CreateExpanded2 (Default)
 ```
-New-AzPolicyAssignment -PolicyAssignmentName <String> -Parameter <IPolicyAssignment> [-Name <String>]
- [-Scope <String>] [-Description <String>] [-DisplayName <String>] [-PolicyDefinitionId <String>]
- [-PropertiesScope <String>] [-Type <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded2
-```
-New-AzPolicyAssignment -InputObject <IResourcesIdentity> -Parameter <IPolicyAssignment> [-Name <String>]
- [-Scope <String>] [-Description <String>] [-DisplayName <String>] [-PolicyDefinitionId <String>]
- [-Type <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzPolicyAssignment -PolicyAssignmentName <String> -Scope <String> [-Description <String>]
+ [-DisplayName <String>] [-Name <String>] [-Parameter <IPolicyAssignmentPropertiesParameters>]
+ [-PolicyDefinitionId <String>] [-PropertiesScope <String>] [-Type <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create2
 ```
-New-AzPolicyAssignment -Parameter <IPolicyAssignment> [-Name <String>] [-Scope <String>]
+New-AzPolicyAssignment -Name <String> -Scope <String> -Parameter <IPolicyAssignment>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -38,6 +31,13 @@ New-AzPolicyAssignment -Parameter <IPolicyAssignment> [-Name <String>] [-Scope <
 ```
 New-AzPolicyAssignment -InputObject <IResourcesIdentity> -Parameter <IPolicyAssignment>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded2
+```
+New-AzPolicyAssignment -InputObject <IResourcesIdentity> [-Description <String>] [-DisplayName <String>]
+ [-Name <String>] [-Parameter <IPolicyAssignmentPropertiesParameters>] [-PolicyDefinitionId <String>]
+ [-Scope <String>] [-Type <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -119,7 +119,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: CreateViaIdentityExpanded2, CreateViaIdentity2
+Parameter Sets: CreateViaIdentity2, CreateViaIdentityExpanded2
 Aliases:
 
 Required: True
@@ -135,10 +135,10 @@ The name of the policy assignment.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded2, CreateViaIdentityExpanded2, Create2
+Parameter Sets: Create2, CreateExpanded2, CreateViaIdentityExpanded2
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -217,7 +217,7 @@ Valid scopes are: management group (format: '/providers/Microsoft.Management/man
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded2, CreateViaIdentityExpanded2, Create2
+Parameter Sets: Create2, CreateExpanded2, CreateViaIdentityExpanded2
 Aliases:
 
 Required: True
@@ -282,9 +282,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20161201.IPolicyAssignment
+
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
 
 ## OUTPUTS
 

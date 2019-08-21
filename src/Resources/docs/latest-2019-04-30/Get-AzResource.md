@@ -19,14 +19,9 @@ Get-AzResource -ResourceId <String> [-DefaultProfile <PSObject>] [<CommonParamet
 
 ### Get
 ```
-Get-AzResource -Name <String> -ParentResourcePath <String> -ProviderNamespace <String> -ResourceType <String>
- -SubscriptionId <String[]> [-ResourceGroupName <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetByTagNameAndValue
-```
-Get-AzResource -SubscriptionId <String[]> -TagName <String> [-ResourceGroupName <String>] [-Expand <String>]
- [-Top <Int32>] [-TagValue <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzResource -Name <String> -ParentResourcePath <String> -ProviderNamespace <String>
+ -ResourceGroupName <String> -ResourceType <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetByTag
@@ -35,16 +30,15 @@ Get-AzResource -SubscriptionId <String[]> -Tag <Hashtable> [-ResourceGroupName <
  [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List
+### GetByTagNameAndValue
 ```
-Get-AzResource -SubscriptionId <String[]> [-ResourceGroupName <String>] [-Expand <String>] [-Filter <String>]
- [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzResource -SubscriptionId <String[]> -TagName <String> [-ResourceGroupName <String>] [-TagValue <String>]
+ [-Expand <String>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List1
+### GetViaIdentity
 ```
-Get-AzResource -SubscriptionId <String[]> [-Expand <String>] [-Filter <String>] [-Top <Int32>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzResource -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity1
@@ -52,9 +46,16 @@ Get-AzResource -SubscriptionId <String[]> [-Expand <String>] [-Filter <String>] 
 Get-AzResource -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### List
 ```
-Get-AzResource -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzResource -ResourceGroupName <String> -SubscriptionId <String[]> [-Expand <String>] [-Filter <String>]
+ [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List1
+```
+Get-AzResource -SubscriptionId <String[]> [-Expand <String>] [-Filter <String>] [-Top <Int32>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -105,7 +106,7 @@ For example, to expand both properties, use $expand=changedTime,createdTime
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByTagNameAndValue, GetByTag, List, List1
+Parameter Sets: GetByTag, GetByTagNameAndValue, List, List1
 Aliases:
 
 Required: False
@@ -140,7 +141,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: GetViaIdentity1, GetViaIdentity
+Parameter Sets: GetViaIdentity, GetViaIdentity1
 Aliases:
 
 Required: True
@@ -205,7 +206,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetByTagNameAndValue, GetByTag, List
+Parameter Sets: Get, GetByTag, GetByTagNameAndValue, List
 Aliases:
 
 Required: True
@@ -254,7 +255,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, GetByTagNameAndValue, GetByTag, List, List1
+Parameter Sets: Get, GetByTag, GetByTagNameAndValue, List, List1
 Aliases:
 
 Required: True
@@ -320,12 +321,12 @@ If null is passed, returns all resources.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: GetByTagNameAndValue, GetByTag, List, List1
+Parameter Sets: GetByTag, GetByTagNameAndValue, List, List1
 Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

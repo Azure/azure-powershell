@@ -28,16 +28,16 @@ Get-AzPolicyAssignment -Name <String> -Scope <String> [-DefaultProfile <PSObject
 Get-AzPolicyAssignment -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List5
-```
-Get-AzPolicyAssignment -ResourceGroupName <String> -SubscriptionId <String[]> -ParentResourcePath <String>
- -ResourceName <String> -ResourceProviderNamespace <String> -ResourceType <String> [-Filter <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ### List4
 ```
 Get-AzPolicyAssignment -ResourceGroupName <String> -SubscriptionId <String[]> [-Filter <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List5
+```
+Get-AzPolicyAssignment -ParentResourcePath <String> -ResourceGroupName <String> -ResourceName <String>
+ -ResourceProviderNamespace <String> -ResourceType <String> -SubscriptionId <String[]> [-Filter <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -89,7 +89,7 @@ If $filter is not provided, no filtering is performed.
 
 ```yaml
 Type: System.String
-Parameter Sets: List6, List5, List4
+Parameter Sets: List4, List5, List6
 Aliases: ODataQuery
 
 Required: False
@@ -154,7 +154,7 @@ The name of the resource group that contains policy assignments.
 
 ```yaml
 Type: System.String
-Parameter Sets: List5, List4
+Parameter Sets: List4, List5
 Aliases:
 
 Required: True
@@ -237,7 +237,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List6, List5, List4
+Parameter Sets: List4, List5, List6
 Aliases:
 
 Required: True

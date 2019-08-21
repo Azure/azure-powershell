@@ -26,17 +26,17 @@ New-AzOAuth2PermissionGrant -TenantId <String> -Body <IOAuth2PermissionGrant> [-
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaIdentity
+```
+New-AzOAuth2PermissionGrant -InputObject <IResourcesIdentity> -Body <IOAuth2PermissionGrant>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### CreateViaIdentityExpanded
 ```
 New-AzOAuth2PermissionGrant -InputObject <IResourcesIdentity> [-ClientId <String>]
  [-ConsentType <ConsentType>] [-ExpiryTime <String>] [-ObjectId <String>] [-OdataType <String>]
  [-PrincipalId <String>] [-ResourceId <String>] [-Scope <String>] [-StartTime <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzOAuth2PermissionGrant -InputObject <IResourcesIdentity> -Body <IOAuth2PermissionGrant>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -151,7 +151,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
+Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -264,7 +264,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, Create
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True
@@ -313,9 +313,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IOAuth2PermissionGrant
+
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
 
 ## OUTPUTS
 
@@ -328,7 +328,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### BODY <IOAuth2PermissionGrant>: 
+#### BODY <IOAuth2PermissionGrant>: HELP MESSAGE MISSING
   - `[ClientId <String>]`: The id of the resource's service principal granted consent to impersonate the user when accessing the resource (represented by the resourceId property).
   - `[ConsentType <ConsentType?>]`: Indicates if consent was provided by the administrator (on behalf of the organization) or by an individual.
   - `[ExpiryTime <String>]`: Expiry time for TTL

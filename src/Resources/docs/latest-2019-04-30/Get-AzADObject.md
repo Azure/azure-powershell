@@ -26,17 +26,17 @@ Get-AzADObject -TenantId <String> -Parameter <IGetObjectsParameters> [-DefaultPr
  [-WhatIf] [<CommonParameters>]
 ```
 
+### GetViaIdentity
+```
+Get-AzADObject -InputObject <IResourcesIdentity> -Parameter <IGetObjectsParameters>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### GetViaIdentityExpanded
 ```
 Get-AzADObject -InputObject <IResourcesIdentity> [-AdditionalProperties <Hashtable>]
  [-IncludeDirectoryObjectReference] [-ObjectId <String[]>] [-Type <String[]>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzADObject -InputObject <IResourcesIdentity> -Parameter <IGetObjectsParameters>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -107,7 +107,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -118,7 +118,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: GetViaIdentityExpanded, GetViaIdentity
+Parameter Sets: GetViaIdentity, GetViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -167,7 +167,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetExpanded, Get
+Parameter Sets: Get, GetExpanded
 Aliases:
 
 Required: True
@@ -232,9 +232,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IGetObjectsParameters
+
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
 
 ## OUTPUTS
 

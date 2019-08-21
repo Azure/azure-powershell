@@ -14,20 +14,20 @@ Creates or updates a resource group.
 
 ### UpdateExpanded (Default)
 ```
-Set-AzResourceGroup -SubscriptionId <String> -Name <String> -Location <String> [-ManagedBy <String>]
+Set-AzResourceGroup -Name <String> -SubscriptionId <String> -Location <String> [-ManagedBy <String>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
 ```
-Set-AzResourceGroup -SubscriptionId <String> -Name <String> -Parameter <IResourceGroup>
+Set-AzResourceGroup -Name <String> -SubscriptionId <String> -Parameter <IResourceGroup>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateById
 ```
 Set-AzResourceGroup -SubscriptionId <String> -Id <String> -Location <String> [-ManagedBy <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tag <IResourceGroupTags>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -94,7 +94,7 @@ It must be one of the supported Azure locations.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateById
+Parameter Sets: UpdateById, UpdateExpanded
 Aliases:
 
 Required: True
@@ -110,7 +110,7 @@ The ID of the resource that manages this resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateById
+Parameter Sets: UpdateById, UpdateExpanded
 Aliases:
 
 Required: False
@@ -127,7 +127,7 @@ Can include alphanumeric, underscore, parentheses, hyphen, period (except at end
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update
+Parameter Sets: Update, UpdateExpanded
 Aliases: ResourceGroupName
 
 Required: True
@@ -176,7 +176,7 @@ The tags attached to the resource group.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateById
+Parameter Sets: UpdateById, UpdateExpanded
 Aliases:
 
 Required: False

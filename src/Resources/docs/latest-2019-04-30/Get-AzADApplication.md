@@ -22,9 +22,20 @@ Get-AzADApplication -TenantId <String> [-Filter <String>] [-DefaultProfile <PSOb
 Get-AzADApplication -ObjectId <String> -TenantId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetDeleted
+### GetByApplicationId
 ```
-Get-AzADApplication -TenantId <String> -IncludeDeleted [-Filter <String>] [-DefaultProfile <PSObject>]
+Get-AzADApplication -TenantId <String> -ApplicationId <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetByDisplayName
+```
+Get-AzADApplication -TenantId <String> -DisplayName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetByDisplayNamePrefix
+```
+Get-AzADApplication -TenantId <String> -DisplayNameStartWith <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -34,20 +45,9 @@ Get-AzADApplication -TenantId <String> -IdentifierUri <String> [-DefaultProfile 
  [<CommonParameters>]
 ```
 
-### GetByDisplayNamePrefix
+### GetDeleted
 ```
-Get-AzADApplication -TenantId <String> -DisplayNameStartWith <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### GetByDisplayName
-```
-Get-AzADApplication -TenantId <String> -DisplayName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetByApplicationId
-```
-Get-AzADApplication -TenantId <String> -ApplicationId <String> [-DefaultProfile <PSObject>]
+Get-AzADApplication -TenantId <String> -IncludeDeleted [-Filter <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -150,7 +150,7 @@ The filters to apply to the operation.
 
 ```yaml
 Type: System.String
-Parameter Sets: List2, GetDeleted
+Parameter Sets: GetDeleted, List2
 Aliases: ODataQuery
 
 Required: False
@@ -187,7 +187,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -230,7 +230,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: List2, Get2, GetDeleted, GetByIdentifierUri, GetByDisplayNamePrefix, GetByDisplayName, GetByApplicationId
+Parameter Sets: Get2, GetByApplicationId, GetByDisplayName, GetByDisplayNamePrefix, GetByIdentifierUri, GetDeleted, List2
 Aliases:
 
 Required: True

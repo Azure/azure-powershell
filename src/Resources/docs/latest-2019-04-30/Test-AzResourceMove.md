@@ -19,9 +19,15 @@ Retrieve the URL in the Location header value to check the result of the long-ru
 
 ### ValidateExpanded (Default)
 ```
-Test-AzResourceMove -SourceResourceGroupName <String> -SubscriptionId <String> [-PassThru]
- [-Resource <String[]>] [-TargetResourceGroup <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-AzResourceMove -SourceResourceGroupName <String> -SubscriptionId <String> [-Resource <String[]>]
+ [-TargetResourceGroup <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### Validate
+```
+Test-AzResourceMove -SourceResourceGroupName <String> -SubscriptionId <String> -Parameter <IResourcesMoveInfo>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ValidateByComponents
@@ -31,23 +37,16 @@ Test-AzResourceMove -SourceResourceGroupName <String> -SubscriptionId <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Validate
+### ValidateViaIdentity
 ```
-Test-AzResourceMove -SourceResourceGroupName <String> -SubscriptionId <String> -Parameter <IResourcesMoveInfo>
- [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-AzResourceMove -InputObject <IResourcesIdentity> -Parameter <IResourcesMoveInfo>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ValidateViaIdentityExpanded
 ```
-Test-AzResourceMove -InputObject <IResourcesIdentity> [-PassThru] [-Resource <String[]>]
- [-TargetResourceGroup <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### ValidateViaIdentity
-```
-Test-AzResourceMove -InputObject <IResourcesIdentity> -Parameter <IResourcesMoveInfo> [-PassThru]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-AzResourceMove -InputObject <IResourcesIdentity> [-Resource <String[]>] [-TargetResourceGroup <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -90,7 +89,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -117,7 +116,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: ValidateViaIdentityExpanded, ValidateViaIdentity
+Parameter Sets: ValidateViaIdentity, ValidateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -133,12 +132,12 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ValidateExpanded, Validate, ValidateViaIdentityExpanded, ValidateViaIdentity
+Parameter Sets: Validate, ValidateExpanded, ValidateViaIdentity, ValidateViaIdentityExpanded
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -171,7 +170,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -182,7 +181,7 @@ The IDs of the resources.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: ValidateExpanded, ValidateByComponents, ValidateViaIdentityExpanded
+Parameter Sets: ValidateByComponents, ValidateExpanded, ValidateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -198,7 +197,7 @@ The name of the resource group containing the resources to validate for move.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded, ValidateByComponents, Validate
+Parameter Sets: Validate, ValidateByComponents, ValidateExpanded
 Aliases:
 
 Required: True
@@ -214,7 +213,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded, ValidateByComponents, Validate
+Parameter Sets: Validate, ValidateByComponents, ValidateExpanded
 Aliases:
 
 Required: True
@@ -312,9 +311,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IResourcesMoveInfo
+
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
 
 ## OUTPUTS
 

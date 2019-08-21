@@ -15,44 +15,49 @@ Query by objectId or pass a filter to query by appId
 
 ### List (Default)
 ```
-Get-AzADServicePrincipal -TenantId <String> -ApplicationObject <IApplication> [-Filter <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzADServicePrincipal -TenantId <String> [-Filter <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### __AllParameterSets
+```
+Get-AzADServicePrincipal -TenantId <String> -ApplicationObject <IApplication> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzADServicePrincipal -ObjectId <String> -TenantId <String> -ApplicationObject <IApplication>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetBySPN
-```
-Get-AzADServicePrincipal -TenantId <String> -ApplicationObject <IApplication> -ServicePrincipalName <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetByDisplayNamePrefix
-```
-Get-AzADServicePrincipal -TenantId <String> -ApplicationObject <IApplication> -DisplayNameBeginsWith <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetByDisplayName
-```
-Get-AzADServicePrincipal -TenantId <String> -ApplicationObject <IApplication> -DisplayName <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzADServicePrincipal -ObjectId <String> -TenantId <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetByApplicationId
 ```
-Get-AzADServicePrincipal -TenantId <String> -ApplicationObject <IApplication> -ApplicationId <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzADServicePrincipal -TenantId <String> -ApplicationId <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetByDisplayName
+```
+Get-AzADServicePrincipal -TenantId <String> -DisplayName <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetByDisplayNamePrefix
+```
+Get-AzADServicePrincipal -TenantId <String> -DisplayNameBeginsWith <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetBySPN
+```
+Get-AzADServicePrincipal -TenantId <String> -ServicePrincipalName <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzADServicePrincipal -TenantId <String> -InputObject <IResourcesIdentity>
- -ApplicationObject <IApplication> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzADServicePrincipal -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

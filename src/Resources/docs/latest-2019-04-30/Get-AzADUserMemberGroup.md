@@ -24,16 +24,16 @@ Get-AzADUserMemberGroup -ObjectId <String> -TenantId <String> -Parameter <IUserG
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### GetViaIdentityExpanded
-```
-Get-AzADUserMemberGroup -InputObject <IResourcesIdentity> -SecurityEnabledOnly
- [-AdditionalProperties <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### GetViaIdentity
 ```
 Get-AzADUserMemberGroup -InputObject <IResourcesIdentity> -Parameter <IUserGetMemberGroupsParameters>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### GetViaIdentityExpanded
+```
+Get-AzADUserMemberGroup -InputObject <IResourcesIdentity> -SecurityEnabledOnly
+ [-AdditionalProperties <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -98,7 +98,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: GetViaIdentityExpanded, GetViaIdentity
+Parameter Sets: GetViaIdentity, GetViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -114,7 +114,7 @@ The object ID of the user for which to get group membership.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetExpanded, Get
+Parameter Sets: Get, GetExpanded
 Aliases:
 
 Required: True
@@ -153,7 +153,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -164,7 +164,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetExpanded, Get
+Parameter Sets: Get, GetExpanded
 Aliases:
 
 Required: True
@@ -213,9 +213,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IUserGetMemberGroupsParameters
+
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
 
 ## OUTPUTS
 

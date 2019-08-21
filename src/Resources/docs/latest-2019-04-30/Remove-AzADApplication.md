@@ -14,13 +14,13 @@ Delete an application.
 
 ### Delete2 (Default)
 ```
-Remove-AzADApplication -ObjectId <String> -TenantId <String> [-PassThru] [-DefaultProfile <PSObject>]
+Remove-AzADApplication -ObjectId <String> -TenantId <String> [-DefaultProfile <PSObject>] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### HardDelete
+### DeleteByApplicationId
 ```
-Remove-AzADApplication -ObjectId <String> -TenantId <String> -HardDelete [-PassThru]
+Remove-AzADApplication -ObjectId <String> -TenantId <String> -ApplicationId <String> [-PassThru]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -30,16 +30,16 @@ Remove-AzADApplication -ObjectId <String> -TenantId <String> -DisplayName <Strin
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DeleteByApplicationId
-```
-Remove-AzADApplication -ObjectId <String> -TenantId <String> -ApplicationId <String> [-PassThru]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### DeleteViaIdentity2
 ```
-Remove-AzADApplication -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-Confirm]
+Remove-AzADApplication -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
  [-WhatIf] [<CommonParameters>]
+```
+
+### HardDelete
+```
+Remove-AzADApplication -ObjectId <String> -TenantId <String> -HardDelete [-PassThru]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -125,7 +125,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -152,7 +152,7 @@ Application object ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete2, HardDelete, DeleteByDisplayName, DeleteByApplicationId
+Parameter Sets: Delete2, DeleteByApplicationId, DeleteByDisplayName, HardDelete
 Aliases: ApplicationObjectId
 
 Required: True
@@ -173,7 +173,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -184,7 +184,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete2, HardDelete, DeleteByDisplayName, DeleteByApplicationId
+Parameter Sets: Delete2, DeleteByApplicationId, DeleteByDisplayName, HardDelete
 Aliases:
 
 Required: True

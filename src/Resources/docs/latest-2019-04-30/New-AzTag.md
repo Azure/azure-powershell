@@ -20,16 +20,16 @@ New-AzTag -Name <String> -SubscriptionId <String> [-DefaultProfile <PSObject>] [
  [<CommonParameters>]
 ```
 
-### CreateWithValue
-```
-New-AzTag -Name <String> -SubscriptionId <String> -Value <String> [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
 ### CreateViaIdentity
 ```
 New-AzTag -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
+```
+
+### CreateWithValue
+```
+New-AzTag -Name <String> -Value <String> -SubscriptionId <String> [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

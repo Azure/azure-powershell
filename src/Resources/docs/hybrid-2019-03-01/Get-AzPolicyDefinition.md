@@ -17,21 +17,21 @@ Gets the policy definition.
 Get-AzPolicyDefinition -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### Get3
-```
-Get-AzPolicyDefinition -Name <String> -ManagementGroupName <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
 ### Get2
 ```
 Get-AzPolicyDefinition -Name <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
-### List3
+### Get3
 ```
-Get-AzPolicyDefinition -ManagementGroupName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPolicyDefinition -ManagementGroupName <String> -Name <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity2
+```
+Get-AzPolicyDefinition -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity3
@@ -39,9 +39,9 @@ Get-AzPolicyDefinition -ManagementGroupName <String> [-DefaultProfile <PSObject>
 Get-AzPolicyDefinition -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity2
+### List3
 ```
-Get-AzPolicyDefinition -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPolicyDefinition -ManagementGroupName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -90,7 +90,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: GetViaIdentity3, GetViaIdentity2
+Parameter Sets: GetViaIdentity2, GetViaIdentity3
 Aliases:
 
 Required: True
@@ -122,7 +122,7 @@ The name of the policy definition to get.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get3, Get2
+Parameter Sets: Get2, Get3
 Aliases: PolicyDefinitionName
 
 Required: True
@@ -138,7 +138,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List2, Get2
+Parameter Sets: Get2, List2
 Aliases:
 
 Required: True

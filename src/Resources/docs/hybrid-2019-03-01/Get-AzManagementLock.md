@@ -18,16 +18,9 @@ Get-AzManagementLock -SubscriptionId <String[]> [-Filter <String>] [-DefaultProf
  [<CommonParameters>]
 ```
 
-### Get3
+### Get
 ```
-Get-AzManagementLock -LockName <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get2
-```
-Get-AzManagementLock -LockName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzManagementLock -LockName <String> -Scope <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get1
@@ -37,35 +30,19 @@ Get-AzManagementLock -LockName <String> -ParentResourcePath <String> -ResourceGr
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### Get
+### Get2
 ```
-Get-AzManagementLock -LockName <String> -Scope <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List3
-```
-Get-AzManagementLock -Scope <String> [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzManagementLock -LockName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
-### List1
+### Get3
 ```
-Get-AzManagementLock -ParentResourcePath <String> -ResourceGroupName <String> -ResourceName <String>
- -ResourceProviderNamespace <String> -ResourceType <String> -SubscriptionId <String[]> [-Filter <String>]
+Get-AzManagementLock -LockName <String> -ResourceGroupName <String> -SubscriptionId <String[]>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List
-```
-Get-AzManagementLock -ResourceGroupName <String> -SubscriptionId <String[]> [-Filter <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity3
-```
-Get-AzManagementLock -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity2
+### GetViaIdentity
 ```
 Get-AzManagementLock -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -75,9 +52,32 @@ Get-AzManagementLock -InputObject <IResourcesIdentity> [-DefaultProfile <PSObjec
 Get-AzManagementLock -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### GetViaIdentity2
 ```
 Get-AzManagementLock -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity3
+```
+Get-AzManagementLock -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List
+```
+Get-AzManagementLock -ResourceGroupName <String> -SubscriptionId <String[]> [-Filter <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List1
+```
+Get-AzManagementLock -ParentResourcePath <String> -ResourceGroupName <String> -ResourceName <String>
+ -ResourceProviderNamespace <String> -ResourceType <String> -SubscriptionId <String[]> [-Filter <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List3
+```
+Get-AzManagementLock -Scope <String> [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -126,7 +126,7 @@ The filter to apply on the operation.
 
 ```yaml
 Type: System.String
-Parameter Sets: List2, List3, List1, List
+Parameter Sets: List, List1, List2, List3
 Aliases: ODataQuery
 
 Required: False
@@ -142,7 +142,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: GetViaIdentity3, GetViaIdentity2, GetViaIdentity1, GetViaIdentity
+Parameter Sets: GetViaIdentity, GetViaIdentity1, GetViaIdentity2, GetViaIdentity3
 Aliases:
 
 Required: True
@@ -158,7 +158,7 @@ The name of lock.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get3, Get2, Get1, Get
+Parameter Sets: Get, Get1, Get2, Get3
 Aliases:
 
 Required: True
@@ -190,7 +190,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get3, Get1, List1, List
+Parameter Sets: Get1, Get3, List, List1
 Aliases:
 
 Required: True
@@ -270,7 +270,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List2, Get3, Get2, Get1, List1, List
+Parameter Sets: Get1, Get2, Get3, List, List1, List2
 Aliases:
 
 Required: True

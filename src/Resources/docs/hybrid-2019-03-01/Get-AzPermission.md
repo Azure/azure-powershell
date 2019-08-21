@@ -20,8 +20,8 @@ Get-AzPermission -ResourceGroupName <String> -SubscriptionId <String[]> [-Defaul
 
 ### List1
 ```
-Get-AzPermission -ResourceGroupName <String> -SubscriptionId <String[]> -ParentResourcePath <String>
- -ResourceName <String> -ResourceProviderNamespace <String> -ResourceType <String>
+Get-AzPermission -ParentResourcePath <String> -ResourceGroupName <String> -ResourceName <String>
+ -ResourceProviderNamespace <String> -ResourceType <String> -SubscriptionId <String[]>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 

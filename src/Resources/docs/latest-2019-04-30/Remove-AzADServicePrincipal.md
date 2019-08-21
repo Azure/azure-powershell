@@ -14,13 +14,19 @@ Deletes a service principal from the directory.
 
 ### Delete (Default)
 ```
-Remove-AzADServicePrincipal -ObjectId <String> -TenantId <String> [-PassThru] [-DefaultProfile <PSObject>]
+Remove-AzADServicePrincipal -ObjectId <String> -TenantId <String> [-DefaultProfile <PSObject>] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DeleteBySPN
+### DeleteByApplicationId
 ```
-Remove-AzADServicePrincipal -TenantId <String> -ServicePrincipalName <String> [-PassThru]
+Remove-AzADServicePrincipal -TenantId <String> -ApplicationId <String> [-PassThru]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteByApplicationObject
+```
+Remove-AzADServicePrincipal -TenantId <String> -ApplicationObject <String> [-PassThru]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -30,21 +36,15 @@ Remove-AzADServicePrincipal -TenantId <String> -DisplayName <String> [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DeleteByApplicationObject
+### DeleteBySPN
 ```
-Remove-AzADServicePrincipal -TenantId <String> -ApplicationObject <String> [-PassThru]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DeleteByApplicationId
-```
-Remove-AzADServicePrincipal -TenantId <String> -ApplicationId <String> [-PassThru]
+Remove-AzADServicePrincipal -TenantId <String> -ServicePrincipalName <String> [-PassThru]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzADServicePrincipal -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>]
+Remove-AzADServicePrincipal -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -179,7 +179,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -206,7 +206,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, DeleteBySPN, DeleteByDisplayName, DeleteByApplicationObject, DeleteByApplicationId
+Parameter Sets: Delete, DeleteByApplicationId, DeleteByApplicationObject, DeleteByDisplayName, DeleteBySPN
 Aliases:
 
 Required: True

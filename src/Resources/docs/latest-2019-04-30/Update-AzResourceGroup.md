@@ -16,26 +16,19 @@ If a field is unspecified, the current value is retained.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzResourceGroup -SubscriptionId <String> -ResourceGroupName <String> [-Name <String>]
- [-ManagedBy <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Update-AzResourceGroup -InputObject <IResourcesIdentity> [-Name <String>] [-ManagedBy <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzResourceGroup -ResourceGroupName <String> -SubscriptionId <String> [-ManagedBy <String>]
+ [-Name <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
 ```
-Update-AzResourceGroup -SubscriptionId <String> -Parameter <IResourceGroupPatchable> [-Name <String>]
+Update-AzResourceGroup -Name <String> -SubscriptionId <String> -Parameter <IResourceGroupPatchable>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateById
 ```
-Update-AzResourceGroup -SubscriptionId <String> -Id <String> [-ManagedBy <String>] [-Tag <Hashtable>]
+Update-AzResourceGroup -SubscriptionId <String> -Id <String> [-ManagedBy <String>] [-Tag <IResourceGroupTags>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -43,6 +36,12 @@ Update-AzResourceGroup -SubscriptionId <String> -Id <String> [-ManagedBy <String
 ```
 Update-AzResourceGroup -InputObject <IResourcesIdentity> -Parameter <IResourceGroupPatchable>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzResourceGroup -InputObject <IResourcesIdentity> [-ManagedBy <String>] [-Name <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -109,7 +108,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
+Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -125,7 +124,7 @@ The ID of the resource that manages this resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateById
+Parameter Sets: UpdateById, UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -142,10 +141,10 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, Update
+Parameter Sets: Update, UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -192,7 +191,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update, UpdateById
+Parameter Sets: Update, UpdateById, UpdateExpanded
 Aliases:
 
 Required: True
@@ -208,7 +207,7 @@ The tags attached to the resource group.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateById
+Parameter Sets: UpdateById, UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -257,9 +256,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IResourceGroupPatchable
+
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
 
 ## OUTPUTS
 

@@ -22,17 +22,17 @@ Stop-AzDeployment -Name <String> -SubscriptionId <String> [-DefaultProfile <PSOb
 
 ### Cancel1
 ```
-Stop-AzDeployment -Name <String> -SubscriptionId <String> -ResourceGroupName <String>
+Stop-AzDeployment -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CancelViaIdentity1
+### CancelViaIdentity
 ```
 Stop-AzDeployment -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
-### CancelViaIdentity
+### CancelViaIdentity1
 ```
 Stop-AzDeployment -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
  [-WhatIf] [<CommonParameters>]
@@ -86,7 +86,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: CancelViaIdentity1, CancelViaIdentity
+Parameter Sets: CancelViaIdentity, CancelViaIdentity1
 Aliases:
 
 Required: True
@@ -123,7 +123,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

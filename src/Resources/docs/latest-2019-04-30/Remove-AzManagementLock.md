@@ -18,9 +18,10 @@ Remove-AzManagementLock -LockName <String> -Scope <String> [-DefaultProfile <PSO
  [-WhatIf] [<CommonParameters>]
 ```
 
-### Delete3
+### Delete1
 ```
-Remove-AzManagementLock -LockName <String> -ResourceGroupName <String> -SubscriptionId <String>
+Remove-AzManagementLock -LockName <String> -ParentResourcePath <String> -ResourceGroupName <String>
+ -ResourceName <String> -ResourceProviderNamespace <String> -ResourceType <String> -SubscriptionId <String>
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -30,20 +31,13 @@ Remove-AzManagementLock -LockName <String> -SubscriptionId <String> [-DefaultPro
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Delete1
+### Delete3
 ```
-Remove-AzManagementLock -LockName <String> -ParentResourcePath <String> -ResourceGroupName <String>
- -ResourceName <String> -ResourceProviderNamespace <String> -ResourceType <String> -SubscriptionId <String>
+Remove-AzManagementLock -LockName <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DeleteViaIdentity3
-```
-Remove-AzManagementLock -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### DeleteViaIdentity2
+### DeleteViaIdentity
 ```
 Remove-AzManagementLock -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
  [-WhatIf] [<CommonParameters>]
@@ -55,7 +49,13 @@ Remove-AzManagementLock -InputObject <IResourcesIdentity> [-DefaultProfile <PSOb
  [-WhatIf] [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### DeleteViaIdentity2
+```
+Remove-AzManagementLock -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteViaIdentity3
 ```
 Remove-AzManagementLock -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
  [-WhatIf] [<CommonParameters>]
@@ -107,7 +107,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: DeleteViaIdentity3, DeleteViaIdentity2, DeleteViaIdentity1, DeleteViaIdentity
+Parameter Sets: DeleteViaIdentity, DeleteViaIdentity1, DeleteViaIdentity2, DeleteViaIdentity3
 Aliases:
 
 Required: True
@@ -123,7 +123,7 @@ The name of lock.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, Delete3, Delete2, Delete1
+Parameter Sets: Delete, Delete1, Delete2, Delete3
 Aliases:
 
 Required: True
@@ -160,7 +160,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -171,7 +171,7 @@ The name of the resource group containing the resource with the lock to delete.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete3, Delete1
+Parameter Sets: Delete1, Delete3
 Aliases:
 
 Required: True
@@ -251,7 +251,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete3, Delete2, Delete1
+Parameter Sets: Delete1, Delete2, Delete3
 Aliases:
 
 Required: True

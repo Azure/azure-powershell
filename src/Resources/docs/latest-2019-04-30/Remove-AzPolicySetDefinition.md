@@ -14,31 +14,31 @@ This operation deletes the policy set definition in the given subscription with 
 
 ### DeleteById (Default)
 ```
-Remove-AzPolicySetDefinition -Id <String> [-SubscriptionId <String>] [-PassThru] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Delete1
-```
-Remove-AzPolicySetDefinition -Name <String> -ManagementGroupName <String> [-PassThru]
+Remove-AzPolicySetDefinition -Id <String> [-SubscriptionId <String[]>] [-PassThru]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Delete
 ```
-Remove-AzPolicySetDefinition -Name <String> [-SubscriptionId <String>] [-PassThru]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzPolicySetDefinition -Name <String> -SubscriptionId <String> [-DefaultProfile <PSObject>] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DeleteViaIdentity1
+### Delete1
 ```
-Remove-AzPolicySetDefinition -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzPolicySetDefinition -ManagementGroupName <String> -Name <String> [-DefaultProfile <PSObject>]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzPolicySetDefinition -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>]
+Remove-AzPolicySetDefinition -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteViaIdentity1
+```
+Remove-AzPolicySetDefinition -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -104,7 +104,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: DeleteViaIdentity1, DeleteViaIdentity
+Parameter Sets: DeleteViaIdentity, DeleteViaIdentity1
 Aliases:
 
 Required: True
@@ -136,7 +136,7 @@ The name of the policy set definition to delete.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete1, Delete
+Parameter Sets: Delete, Delete1
 Aliases: PolicySetDefinitionName
 
 Required: True
@@ -157,7 +157,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -168,10 +168,10 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: DeleteById, Delete
+Parameter Sets: Delete, DeleteById
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

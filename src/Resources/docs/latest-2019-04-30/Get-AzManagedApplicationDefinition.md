@@ -23,10 +23,10 @@ Get-AzManagedApplicationDefinition -Name <String> -ResourceGroupName <String> -S
  [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
 ```
 
-### List
+### GetViaIdentity
 ```
-Get-AzManagedApplicationDefinition -ResourceGroupName <String> -SubscriptionId <String[]>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzManagedApplicationDefinition -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity1
@@ -35,10 +35,10 @@ Get-AzManagedApplicationDefinition -InputObject <IResourcesIdentity> [-DefaultPr
  [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### List
 ```
-Get-AzManagedApplicationDefinition -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-PassThru]
- [<CommonParameters>]
+Get-AzManagedApplicationDefinition -ResourceGroupName <String> -SubscriptionId <String[]>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -104,7 +104,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: GetViaIdentity1, GetViaIdentity
+Parameter Sets: GetViaIdentity, GetViaIdentity1
 Aliases:
 
 Required: True
@@ -136,12 +136,12 @@ Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Get1, Get, GetViaIdentity1, GetViaIdentity
+Parameter Sets: Get, Get1, GetViaIdentity, GetViaIdentity1
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -25,15 +25,15 @@ Add-AzADApplicationOwner -ObjectId <String> -TenantId <String> -Parameter <IAddO
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### AddViaIdentityExpanded
-```
-Add-AzADApplicationOwner -InputObject <IResourcesIdentity> -Url <String> [-AdditionalProperties <Hashtable>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### AddViaIdentity
 ```
 Add-AzADApplicationOwner -InputObject <IResourcesIdentity> -Parameter <IAddOwnerParameters>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### AddViaIdentityExpanded
+```
+Add-AzADApplicationOwner -InputObject <IResourcesIdentity> -Url <String> [-AdditionalProperties <Hashtable>]
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -99,7 +99,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: AddViaIdentityExpanded, AddViaIdentity
+Parameter Sets: AddViaIdentity, AddViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -115,7 +115,7 @@ The object ID of the application to which to add the owner.
 
 ```yaml
 Type: System.String
-Parameter Sets: AddExpanded, Add
+Parameter Sets: Add, AddExpanded
 Aliases:
 
 Required: True
@@ -153,7 +153,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -164,7 +164,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: AddExpanded, Add
+Parameter Sets: Add, AddExpanded
 Aliases:
 
 Required: True
@@ -229,9 +229,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IAddOwnerParameters
+
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
 
 ## OUTPUTS
 

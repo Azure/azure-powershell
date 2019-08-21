@@ -24,16 +24,16 @@ Test-AzADGroupMember -TenantId <String> -Parameter <ICheckGroupMembershipParamet
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### IsViaIdentityExpanded
-```
-Test-AzADGroupMember -InputObject <IResourcesIdentity> -GroupId <String> -MemberId <String>
- [-AdditionalProperties <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### IsViaIdentity
 ```
 Test-AzADGroupMember -InputObject <IResourcesIdentity> -Parameter <ICheckGroupMembershipParameters>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### IsViaIdentityExpanded
+```
+Test-AzADGroupMember -InputObject <IResourcesIdentity> -GroupId <String> -MemberId <String>
+ [-AdditionalProperties <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -114,7 +114,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: IsViaIdentityExpanded, IsViaIdentity
+Parameter Sets: IsViaIdentity, IsViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -163,7 +163,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: IsExpanded, Is
+Parameter Sets: Is, IsExpanded
 Aliases:
 
 Required: True
@@ -212,13 +212,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.ICheckGroupMembershipParameters
+
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
 
 ## OUTPUTS
 
-### System.Boolean
+### System.Management.Automation.SwitchParameter
 
 ## ALIASES
 

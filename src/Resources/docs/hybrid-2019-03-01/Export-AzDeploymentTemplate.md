@@ -20,17 +20,17 @@ Export-AzDeploymentTemplate -DeploymentName <String> -SubscriptionId <String> [-
 
 ### Export1
 ```
-Export-AzDeploymentTemplate -DeploymentName <String> -SubscriptionId <String> -ResourceGroupName <String>
+Export-AzDeploymentTemplate -DeploymentName <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### ExportViaIdentity1
+### ExportViaIdentity
 ```
 Export-AzDeploymentTemplate -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
-### ExportViaIdentity
+### ExportViaIdentity1
 ```
 Export-AzDeploymentTemplate -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
@@ -98,7 +98,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: ExportViaIdentity1, ExportViaIdentity
+Parameter Sets: ExportViaIdentity, ExportViaIdentity1
 Aliases:
 
 Required: True

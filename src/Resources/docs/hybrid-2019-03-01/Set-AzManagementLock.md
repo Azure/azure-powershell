@@ -20,31 +20,10 @@ Set-AzManagementLock -LockName <String> -SubscriptionId <String> -Level <LockLev
  [-Owner <IManagementLockOwner[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateExpanded
-```
-Set-AzManagementLock -LockName <String> -ParentResourcePath <String> -ResourceGroupName <String>
- -ResourceName <String> -ResourceProviderNamespace <String> -ResourceType <String> -SubscriptionId <String>
- -Level <LockLevel> [-Note <String>] [-Owner <IManagementLockOwner[]>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
 ### Update
 ```
 Set-AzManagementLock -LockName <String> -ParentResourcePath <String> -ResourceGroupName <String>
  -ResourceName <String> -ResourceProviderNamespace <String> -ResourceType <String> -SubscriptionId <String>
- -Parameter <IManagementLockObject> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded2
-```
-Set-AzManagementLock -LockName <String> -ResourceGroupName <String> -SubscriptionId <String>
- -Level <LockLevel> [-Note <String>] [-Owner <IManagementLockOwner[]>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### Update2
-```
-Set-AzManagementLock -LockName <String> -ResourceGroupName <String> -SubscriptionId <String>
  -Parameter <IManagementLockObject> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -54,16 +33,37 @@ Set-AzManagementLock -LockName <String> -SubscriptionId <String> -Parameter <IMa
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateExpanded3
+### Update2
 ```
-Set-AzManagementLock -LockName <String> -Scope <String> -Level <LockLevel> [-Note <String>]
- [-Owner <IManagementLockOwner[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzManagementLock -LockName <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -Parameter <IManagementLockObject> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update3
 ```
 Set-AzManagementLock -LockName <String> -Scope <String> -Parameter <IManagementLockObject>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateExpanded
+```
+Set-AzManagementLock -LockName <String> -ParentResourcePath <String> -ResourceGroupName <String>
+ -ResourceName <String> -ResourceProviderNamespace <String> -ResourceType <String> -SubscriptionId <String>
+ -Level <LockLevel> [-Note <String>] [-Owner <IManagementLockOwner[]>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateExpanded2
+```
+Set-AzManagementLock -LockName <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -Level <LockLevel> [-Note <String>] [-Owner <IManagementLockOwner[]>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateExpanded3
+```
+Set-AzManagementLock -LockName <String> -Scope <String> -Level <LockLevel> [-Note <String>]
+ [-Owner <IManagementLockOwner[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -117,7 +117,7 @@ ReadOnly means authorized users can only read from a resource, but they can't mo
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Support.LockLevel
-Parameter Sets: UpdateExpanded1, UpdateExpanded, UpdateExpanded2, UpdateExpanded3
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateExpanded2, UpdateExpanded3
 Aliases:
 
 Required: True
@@ -152,7 +152,7 @@ Maximum of 512 characters.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateExpanded, UpdateExpanded2, UpdateExpanded3
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateExpanded2, UpdateExpanded3
 Aliases:
 
 Required: False
@@ -169,7 +169,7 @@ To construct, see NOTES section for OWNER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20160901.IManagementLockOwner[]
-Parameter Sets: UpdateExpanded1, UpdateExpanded, UpdateExpanded2, UpdateExpanded3
+Parameter Sets: UpdateExpanded, UpdateExpanded1, UpdateExpanded2, UpdateExpanded3
 Aliases:
 
 Required: False
@@ -186,7 +186,7 @@ To construct, see NOTES section for PARAMETER properties and create a hash table
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20160901.IManagementLockObject
-Parameter Sets: Update, Update2, Update1, Update3
+Parameter Sets: Update, Update1, Update2, Update3
 Aliases:
 
 Required: True
@@ -202,7 +202,7 @@ The parent resource identity.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -218,7 +218,7 @@ The name of the resource group containing the resource to lock.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update, UpdateExpanded2, Update2
+Parameter Sets: Update, Update2, UpdateExpanded, UpdateExpanded2
 Aliases:
 
 Required: True
@@ -234,7 +234,7 @@ The name of the resource to lock.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -250,7 +250,7 @@ The resource provider namespace of the resource to lock.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -266,7 +266,7 @@ The resource type of the resource to lock.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -283,7 +283,7 @@ When providing a scope for the assignment, use '/subscriptions/{subscriptionId}'
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded3, Update3
+Parameter Sets: Update3, UpdateExpanded3
 Aliases:
 
 Required: True
@@ -299,7 +299,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateExpanded, Update, UpdateExpanded2, Update2, Update1
+Parameter Sets: Update, Update1, Update2, UpdateExpanded, UpdateExpanded1, UpdateExpanded2
 Aliases:
 
 Required: True

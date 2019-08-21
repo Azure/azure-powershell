@@ -22,19 +22,19 @@ Get-AzRoleDefinition -Id <String> [-DefaultProfile <PSObject>] [<CommonParameter
 Get-AzRoleDefinition -Id <String> -Scope <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetByName
-```
-Get-AzRoleDefinition -Scope <String> -Name <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ### GetByCustom
 ```
 Get-AzRoleDefinition -Scope <String> -Custom [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List1
+### GetByName
 ```
-Get-AzRoleDefinition -Scope <String> [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzRoleDefinition -Scope <String> -Name <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity1
+```
+Get-AzRoleDefinition -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity2
@@ -42,9 +42,9 @@ Get-AzRoleDefinition -Scope <String> [-Filter <String>] [-DefaultProfile <PSObje
 Get-AzRoleDefinition -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity1
+### List1
 ```
-Get-AzRoleDefinition -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzRoleDefinition -Scope <String> [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -82,7 +82,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -143,7 +143,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: GetViaIdentity2, GetViaIdentity1
+Parameter Sets: GetViaIdentity1, GetViaIdentity2
 Aliases:
 
 Required: True
@@ -175,7 +175,7 @@ The scope of the role definition.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get2, GetByName, GetByCustom, List1
+Parameter Sets: Get2, GetByCustom, GetByName, List1
 Aliases:
 
 Required: True

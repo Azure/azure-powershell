@@ -17,10 +17,9 @@ Gets the members of a group.
 Get-AzADGroupMember -ObjectId <String> -TenantId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetByOwner
+### GetByDisplayName
 ```
-Get-AzADGroupMember -ObjectId <String> -TenantId <String> -ShowOwner [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzADGroupMember -TenantId <String> -DisplayName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetByObject
@@ -29,9 +28,10 @@ Get-AzADGroupMember -TenantId <String> -GroupObject <IAdGroup> [-DefaultProfile 
  [<CommonParameters>]
 ```
 
-### GetByDisplayName
+### GetByOwner
 ```
-Get-AzADGroupMember -TenantId <String> -DisplayName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzADGroupMember -ObjectId <String> -ShowOwner -TenantId <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -154,7 +154,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -165,7 +165,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetByOwner, GetByObject, GetByDisplayName
+Parameter Sets: Get, GetByDisplayName, GetByObject, GetByOwner
 Aliases:
 
 Required: True

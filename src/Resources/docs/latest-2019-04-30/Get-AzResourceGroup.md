@@ -24,10 +24,9 @@ Get-AzResourceGroup -Name <String> -SubscriptionId <String[]> [-DefaultProfile <
  [<CommonParameters>]
 ```
 
-### GetByTagNameAndValue
+### GetById
 ```
-Get-AzResourceGroup -SubscriptionId <String[]> -TagName <String> [-Top <Int32>] [-TagValue <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzResourceGroup -SubscriptionId <String[]> -Id <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetByTag
@@ -36,9 +35,10 @@ Get-AzResourceGroup -SubscriptionId <String[]> -Tag <Hashtable> [-Top <Int32>] [
  [<CommonParameters>]
 ```
 
-### GetById
+### GetByTagNameAndValue
 ```
-Get-AzResourceGroup -SubscriptionId <String[]> -Id <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzResourceGroup -SubscriptionId <String[]> -TagName <String> [-TagValue <String>] [-Top <Int32>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -158,7 +158,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get, GetByTagNameAndValue, GetByTag, GetById
+Parameter Sets: Get, GetById, GetByTag, GetByTagNameAndValue, List
 Aliases:
 
 Required: True
@@ -224,12 +224,12 @@ If null is passed, returns all resource groups.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: List, GetByTagNameAndValue, GetByTag
+Parameter Sets: GetByTag, GetByTagNameAndValue, List
 Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

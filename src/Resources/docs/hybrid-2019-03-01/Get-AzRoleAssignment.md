@@ -23,11 +23,6 @@ Get-AzRoleAssignment -SubscriptionId <String[]> [-Filter <String>] [-DefaultProf
 Get-AzRoleAssignment -Name <String> -Scope <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List3
-```
-Get-AzRoleAssignment -Scope <String> [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ### GetViaIdentity
 ```
 Get-AzRoleAssignment -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -44,6 +39,11 @@ Get-AzRoleAssignment -ParentResourceId <String> -ResourceGroupName <String> -Res
 ```
 Get-AzRoleAssignment -ResourceGroupName <String> -SubscriptionId <String[]> [-Filter <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List3
+```
+Get-AzRoleAssignment -Scope <String> [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -94,7 +94,7 @@ Use $filter=principalId eq {id} to return all role assignments at, above or belo
 
 ```yaml
 Type: System.String
-Parameter Sets: List2, List3, List, List1
+Parameter Sets: List, List1, List2, List3
 Aliases: ODataQuery
 
 Required: False
@@ -238,7 +238,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List2, List, List1
+Parameter Sets: List, List1, List2
 Aliases:
 
 Required: True

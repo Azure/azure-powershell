@@ -22,41 +22,26 @@ Get-AzPolicyAssignment -Id <String> [-DefaultProfile <PSObject>] [<CommonParamet
 Get-AzPolicyAssignment -Name <String> -Scope <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity1
-```
-Get-AzPolicyAssignment -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ### GetViaIdentity
 ```
 Get-AzPolicyAssignment -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### ListByPolicyDefinition
+### GetViaIdentity1
 ```
-Get-AzPolicyAssignment -ParentResourcePath <String> -ResourceGroupName <String> -ResourceName <String>
- -ResourceProviderNamespace <String> -ResourceType <String> -SubscriptionId <String[]>
- -PolicyDefinitionId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPolicyAssignment -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### ListByPolicyDefinition2
+### List
 ```
 Get-AzPolicyAssignment -ParentResourcePath <String> -ResourceGroupName <String> -ResourceName <String>
- -ResourceProviderNamespace <String> -ResourceType <String> -SubscriptionId <String[]>
- -PolicyDefinitionId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### ListWithDescendents
-```
-Get-AzPolicyAssignment -ParentResourcePath <String> -ResourceGroupName <String> -ResourceName <String>
- -ResourceProviderNamespace <String> -ResourceType <String> -SubscriptionId <String[]> -IncludeDescendent
+ -ResourceProviderNamespace <String> -ResourceType <String> -SubscriptionId <String[]> [-Filter <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### ListWithDescendents2
+### List1
 ```
-Get-AzPolicyAssignment -ParentResourcePath <String> -ResourceGroupName <String> -ResourceName <String>
- -ResourceProviderNamespace <String> -ResourceType <String> -SubscriptionId <String[]> -IncludeDescendent
+Get-AzPolicyAssignment -ResourceGroupName <String> -SubscriptionId <String[]> [-Filter <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -67,29 +52,30 @@ Get-AzPolicyAssignment -ParentResourcePath <String> -ResourceGroupName <String> 
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List
+### List3
 ```
-Get-AzPolicyAssignment -ParentResourcePath <String> -ResourceGroupName <String> -ResourceName <String>
- -ResourceProviderNamespace <String> -ResourceType <String> -SubscriptionId <String[]> [-Filter <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPolicyAssignment -SubscriptionId <String[]> [-Filter <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### ListByPolicyDefinition
+```
+Get-AzPolicyAssignment -SubscriptionId <String[]> -ParentResourcePath <String> -ResourceGroupName <String>
+ -ResourceName <String> -ResourceProviderNamespace <String> -ResourceType <String>
+ -PolicyDefinitionId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ListByPolicyDefinition1
 ```
-Get-AzPolicyAssignment -ResourceGroupName <String> -SubscriptionId <String[]> -PolicyDefinitionId <String>
+Get-AzPolicyAssignment -SubscriptionId <String[]> -ResourceGroupName <String> -PolicyDefinitionId <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### ListWithDescendents1
+### ListByPolicyDefinition2
 ```
-Get-AzPolicyAssignment -ResourceGroupName <String> -SubscriptionId <String[]> -IncludeDescendent
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List1
-```
-Get-AzPolicyAssignment -ResourceGroupName <String> -SubscriptionId <String[]> [-Filter <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPolicyAssignment -SubscriptionId <String[]> -ParentResourcePath <String> -ResourceGroupName <String>
+ -ResourceName <String> -ResourceProviderNamespace <String> -ResourceType <String>
+ -PolicyDefinitionId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ListByPolicyDefinition3
@@ -98,15 +84,29 @@ Get-AzPolicyAssignment -SubscriptionId <String[]> -PolicyDefinitionId <String> [
  [<CommonParameters>]
 ```
 
+### ListWithDescendents
+```
+Get-AzPolicyAssignment -SubscriptionId <String[]> -ParentResourcePath <String> -ResourceGroupName <String>
+ -ResourceName <String> -ResourceProviderNamespace <String> -ResourceType <String> -IncludeDescendent
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ListWithDescendents1
+```
+Get-AzPolicyAssignment -SubscriptionId <String[]> -ResourceGroupName <String> -IncludeDescendent
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ListWithDescendents2
+```
+Get-AzPolicyAssignment -SubscriptionId <String[]> -ParentResourcePath <String> -ResourceGroupName <String>
+ -ResourceName <String> -ResourceProviderNamespace <String> -ResourceType <String> -IncludeDescendent
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### ListWithDescendents3
 ```
 Get-AzPolicyAssignment -SubscriptionId <String[]> -IncludeDescendent [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### List3
-```
-Get-AzPolicyAssignment -SubscriptionId <String[]> [-Filter <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -156,7 +156,7 @@ The filter to apply on the operation.
 
 ```yaml
 Type: System.String
-Parameter Sets: List2, List, List1, List3
+Parameter Sets: List, List1, List2, List3
 Aliases: ODataQuery
 
 Required: False
@@ -189,12 +189,12 @@ Indicates that the list of returned policy assignments should include all assign
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ListWithDescendents, ListWithDescendents2, ListWithDescendents1, ListWithDescendents3
+Parameter Sets: ListWithDescendents, ListWithDescendents1, ListWithDescendents2, ListWithDescendents3
 Aliases:
 
 Required: True
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -205,7 +205,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: GetViaIdentity1, GetViaIdentity
+Parameter Sets: GetViaIdentity, GetViaIdentity1
 Aliases:
 
 Required: True
@@ -237,7 +237,7 @@ The parent resource path.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListByPolicyDefinition, ListByPolicyDefinition2, ListWithDescendents, ListWithDescendents2, List2, List
+Parameter Sets: List, List2, ListByPolicyDefinition, ListByPolicyDefinition2, ListWithDescendents, ListWithDescendents2
 Aliases:
 
 Required: True
@@ -253,7 +253,7 @@ Limits the list of returned policy assignments to those assigning the policy def
 
 ```yaml
 Type: System.String
-Parameter Sets: ListByPolicyDefinition, ListByPolicyDefinition2, ListByPolicyDefinition1, ListByPolicyDefinition3
+Parameter Sets: ListByPolicyDefinition, ListByPolicyDefinition1, ListByPolicyDefinition2, ListByPolicyDefinition3
 Aliases:
 
 Required: True
@@ -269,7 +269,7 @@ The name of the resource group containing the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListByPolicyDefinition, ListByPolicyDefinition2, ListWithDescendents, ListWithDescendents2, List2, List, ListByPolicyDefinition1, ListWithDescendents1, List1
+Parameter Sets: List, List1, List2, ListByPolicyDefinition, ListByPolicyDefinition1, ListByPolicyDefinition2, ListWithDescendents, ListWithDescendents1, ListWithDescendents2
 Aliases:
 
 Required: True
@@ -285,7 +285,7 @@ The name of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListByPolicyDefinition, ListByPolicyDefinition2, ListWithDescendents, ListWithDescendents2, List2, List
+Parameter Sets: List, List2, ListByPolicyDefinition, ListByPolicyDefinition2, ListWithDescendents, ListWithDescendents2
 Aliases:
 
 Required: True
@@ -302,7 +302,7 @@ For example, the namespace of a virtual machine is Microsoft.Compute (from Micro
 
 ```yaml
 Type: System.String
-Parameter Sets: ListByPolicyDefinition, ListByPolicyDefinition2, ListWithDescendents, ListWithDescendents2, List2, List
+Parameter Sets: List, List2, ListByPolicyDefinition, ListByPolicyDefinition2, ListWithDescendents, ListWithDescendents2
 Aliases:
 
 Required: True
@@ -318,7 +318,7 @@ The resource type.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListByPolicyDefinition, ListByPolicyDefinition2, ListWithDescendents, ListWithDescendents2, List2, List
+Parameter Sets: List, List2, ListByPolicyDefinition, ListByPolicyDefinition2, ListWithDescendents, ListWithDescendents2
 Aliases:
 
 Required: True
@@ -351,7 +351,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: ListByPolicyDefinition, ListByPolicyDefinition2, ListWithDescendents, ListWithDescendents2, List2, List, ListByPolicyDefinition1, ListWithDescendents1, List1, ListByPolicyDefinition3, ListWithDescendents3, List3
+Parameter Sets: List, List1, List2, List3, ListByPolicyDefinition, ListByPolicyDefinition1, ListByPolicyDefinition2, ListByPolicyDefinition3, ListWithDescendents, ListWithDescendents1, ListWithDescendents2, ListWithDescendents3
 Aliases:
 
 Required: True
@@ -371,9 +371,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IPolicyAssignment
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20151101.IPolicyAssignment
+
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IPolicyAssignment
 
 ## ALIASES
 

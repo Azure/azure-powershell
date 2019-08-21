@@ -17,15 +17,15 @@ Gets user information from the directory.
 Get-AzADUser -TenantId <String> [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### Get
+```
+Get-AzADUser -TenantId <String> -UpnOrObjectId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### GetByFilter
 ```
 Get-AzADUser -TenantId <String> -StartsWith <String> [-DisplayName <String>] [-Mail <String>]
  [-MailNickname <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzADUser -TenantId <String> -UpnOrObjectId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -175,7 +175,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, GetByFilter, Get
+Parameter Sets: Get, GetByFilter, List
 Aliases:
 
 Required: True

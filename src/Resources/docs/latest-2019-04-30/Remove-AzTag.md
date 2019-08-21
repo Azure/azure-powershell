@@ -14,19 +14,19 @@ You must remove all values from a resource tag before you can delete it.
 
 ### Delete (Default)
 ```
-Remove-AzTag -Name <String> -SubscriptionId <String> [-PassThru] [-DefaultProfile <PSObject>] [-Confirm]
+Remove-AzTag -Name <String> -SubscriptionId <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteValue
 ```
-Remove-AzTag -Name <String> -SubscriptionId <String> -Value <String> [-PassThru] [-DefaultProfile <PSObject>]
+Remove-AzTag -SubscriptionId <String> -Name <String> -Value <String> [-PassThru] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzTag -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+Remove-AzTag -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -113,7 +113,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

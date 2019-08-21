@@ -22,17 +22,12 @@ Get-AzDenyAssignment -Id <String> [-DefaultProfile <PSObject>] [<CommonParameter
 Get-AzDenyAssignment -Id <String> -Scope <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List3
-```
-Get-AzDenyAssignment -Scope <String> [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity1
+### GetViaIdentity
 ```
 Get-AzDenyAssignment -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### GetViaIdentity1
 ```
 Get-AzDenyAssignment -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -54,6 +49,11 @@ Get-AzDenyAssignment -ResourceGroupName <String> -SubscriptionId <String[]> [-Fi
 ```
 Get-AzDenyAssignment -SubscriptionId <String[]> [-Filter <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
+```
+
+### List3
+```
+Get-AzDenyAssignment -Scope <String> [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -108,7 +108,7 @@ Additionally, when gdprExportPrincipalId filter is used, only the deny assignmen
 
 ```yaml
 Type: System.String
-Parameter Sets: List3, List, List1, List2
+Parameter Sets: List, List1, List2, List3
 Aliases: ODataQuery
 
 Required: False
@@ -124,7 +124,7 @@ The ID of the deny assignment to get.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get1, Get
+Parameter Sets: Get, Get1
 Aliases: DenyAssignmentId
 
 Required: True
@@ -140,7 +140,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: GetViaIdentity1, GetViaIdentity
+Parameter Sets: GetViaIdentity, GetViaIdentity1
 Aliases:
 
 Required: True

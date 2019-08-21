@@ -14,32 +14,8 @@ Update an existing application.
 
 ### PatchExpanded (Default)
 ```
-Update-AzADApplication -ObjectId <String> -TenantId <String> [-PassThru] [-AllowGuestsSignIn]
- [-AllowPassthroughUser] [-AppLogoUrl <String>] [-AppPermission <String[]>] [-AppRole <IAppRole[]>]
- [-AvailableToOtherTenants] [-DisplayName <String>] [-ErrorUrl <String>]
- [-GroupMembershipClaim <GroupMembershipClaimTypes>] [-Homepage <String>] [-IdentifierUri <String[]>]
- [-InformationalUrlMarketing <String>] [-InformationalUrlPrivacy <String>] [-InformationalUrlSupport <String>]
- [-InformationalUrlTermsOfService <String>] [-IsDeviceOnlyAuthSupported] [-KeyCredentials <IKeyCredential[]>]
- [-KnownClientApplication <String[]>] [-LogoutUrl <String>] [-Oauth2AllowImplicitFlow]
- [-Oauth2AllowUrlPathMatching] [-Oauth2Permission <IOAuth2Permission[]>] [-Oauth2RequirePostResponse]
- [-OptionalClaimAccessToken <IOptionalClaim[]>] [-OptionalClaimIdToken <IOptionalClaim[]>]
- [-OptionalClaimSamlToken <IOptionalClaim[]>] [-OrgRestriction <String[]>]
- [-PasswordCredentials <IPasswordCredential[]>] [-PreAuthorizedApplication <IPreAuthorizedApplication[]>]
- [-PublicClient] [-PublisherDomain <String>] [-ReplyUrl <String[]>]
- [-RequiredResourceAccess <IRequiredResourceAccess[]>] [-SamlMetadataUrl <String>] [-SignInAudience <String>]
- [-WwwHomepage <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Patch
-```
-Update-AzADApplication -ObjectId <String> -TenantId <String> -Parameter <IApplicationUpdateParameters>
- [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### PatchByApplicationId
-```
-Update-AzADApplication -TenantId <String> -ApplicationId <String> [-PassThru] [-AllowGuestsSignIn]
- [-AllowPassthroughUser] [-AppLogoUrl <String>] [-AppPermission <String[]>] [-AppRole <IAppRole[]>]
+Update-AzADApplication -ObjectId <String> -TenantId <String> [-AllowGuestsSignIn] [-AllowPassthroughUser]
+ [-AppLogoUrl <String>] [-AppPermission <String[]>] [-AppRole <IAppRole[]>] [-AvailableToOtherTenants]
  [-DisplayName <String>] [-ErrorUrl <String>] [-GroupMembershipClaim <GroupMembershipClaimTypes>]
  [-Homepage <String>] [-IdentifierUri <String[]>] [-InformationalUrlMarketing <String>]
  [-InformationalUrlPrivacy <String>] [-InformationalUrlSupport <String>]
@@ -51,15 +27,20 @@ Update-AzADApplication -TenantId <String> -ApplicationId <String> [-PassThru] [-
  [-PasswordCredentials <IPasswordCredential[]>] [-PreAuthorizedApplication <IPreAuthorizedApplication[]>]
  [-PublicClient] [-PublisherDomain <String>] [-ReplyUrl <String[]>]
  [-RequiredResourceAccess <IRequiredResourceAccess[]>] [-SamlMetadataUrl <String>] [-SignInAudience <String>]
- [-WwwHomepage <String>] [-AvailableToOtherTenant] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-WwwHomepage <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### PatchViaIdentityExpanded
+### Patch
 ```
-Update-AzADApplication -InputObject <IResourcesIdentity> [-PassThru] [-AllowGuestsSignIn]
+Update-AzADApplication -ObjectId <String> -TenantId <String> -Parameter <IApplicationUpdateParameters>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### PatchByApplicationId
+```
+Update-AzADApplication -ApplicationId <String> -TenantId <String> [-PassThru] [-AllowGuestsSignIn]
  [-AllowPassthroughUser] [-AppLogoUrl <String>] [-AppPermission <String[]>] [-AppRole <IAppRole[]>]
- [-AvailableToOtherTenants] [-DisplayName <String>] [-ErrorUrl <String>]
+ [-AvailableToOtherTenant] [-DisplayName <String>] [-ErrorUrl <String>]
  [-GroupMembershipClaim <GroupMembershipClaimTypes>] [-Homepage <String>] [-IdentifierUri <String[]>]
  [-InformationalUrlMarketing <String>] [-InformationalUrlPrivacy <String>] [-InformationalUrlSupport <String>]
  [-InformationalUrlTermsOfService <String>] [-IsDeviceOnlyAuthSupported] [-KeyCredentials <IKeyCredential[]>]
@@ -75,8 +56,26 @@ Update-AzADApplication -InputObject <IResourcesIdentity> [-PassThru] [-AllowGues
 
 ### PatchViaIdentity
 ```
-Update-AzADApplication -InputObject <IResourcesIdentity> -Parameter <IApplicationUpdateParameters> [-PassThru]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzADApplication -InputObject <IResourcesIdentity> -Parameter <IApplicationUpdateParameters>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### PatchViaIdentityExpanded
+```
+Update-AzADApplication -InputObject <IResourcesIdentity> [-AllowGuestsSignIn] [-AllowPassthroughUser]
+ [-AppLogoUrl <String>] [-AppPermission <String[]>] [-AppRole <IAppRole[]>] [-AvailableToOtherTenants]
+ [-DisplayName <String>] [-ErrorUrl <String>] [-GroupMembershipClaim <GroupMembershipClaimTypes>]
+ [-Homepage <String>] [-IdentifierUri <String[]>] [-InformationalUrlMarketing <String>]
+ [-InformationalUrlPrivacy <String>] [-InformationalUrlSupport <String>]
+ [-InformationalUrlTermsOfService <String>] [-IsDeviceOnlyAuthSupported] [-KeyCredentials <IKeyCredential[]>]
+ [-KnownClientApplication <String[]>] [-LogoutUrl <String>] [-Oauth2AllowImplicitFlow]
+ [-Oauth2AllowUrlPathMatching] [-Oauth2Permission <IOAuth2Permission[]>] [-Oauth2RequirePostResponse]
+ [-OptionalClaimAccessToken <IOptionalClaim[]>] [-OptionalClaimIdToken <IOptionalClaim[]>]
+ [-OptionalClaimSamlToken <IOptionalClaim[]>] [-OrgRestriction <String[]>]
+ [-PasswordCredentials <IPasswordCredential[]>] [-PreAuthorizedApplication <IPreAuthorizedApplication[]>]
+ [-PublicClient] [-PublisherDomain <String>] [-ReplyUrl <String[]>]
+ [-RequiredResourceAccess <IRequiredResourceAccess[]>] [-SamlMetadataUrl <String>] [-SignInAudience <String>]
+ [-WwwHomepage <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -109,12 +108,12 @@ A property on the application to indicate if the application accepts other IDPs 
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: PatchExpanded, PatchByApplicationId, PatchViaIdentityExpanded
+Parameter Sets: PatchByApplicationId, PatchExpanded, PatchViaIdentityExpanded
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -125,12 +124,12 @@ Indicates that the application supports pass through users who have no presence 
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: PatchExpanded, PatchByApplicationId, PatchViaIdentityExpanded
+Parameter Sets: PatchByApplicationId, PatchExpanded, PatchViaIdentityExpanded
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -157,7 +156,7 @@ The url for the application logo image stored in a CDN.
 
 ```yaml
 Type: System.String
-Parameter Sets: PatchExpanded, PatchByApplicationId, PatchViaIdentityExpanded
+Parameter Sets: PatchByApplicationId, PatchExpanded, PatchViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -173,7 +172,7 @@ The application permissions.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: PatchExpanded, PatchByApplicationId, PatchViaIdentityExpanded
+Parameter Sets: PatchByApplicationId, PatchExpanded, PatchViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -191,7 +190,7 @@ To construct, see NOTES section for APPROLE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IAppRole[]
-Parameter Sets: PatchExpanded, PatchByApplicationId, PatchViaIdentityExpanded
+Parameter Sets: PatchByApplicationId, PatchExpanded, PatchViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -212,7 +211,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -228,7 +227,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -255,7 +254,7 @@ The display name of the application.
 
 ```yaml
 Type: System.String
-Parameter Sets: PatchExpanded, PatchByApplicationId, PatchViaIdentityExpanded
+Parameter Sets: PatchByApplicationId, PatchExpanded, PatchViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -271,7 +270,7 @@ A URL provided by the author of the application to report errors when using the 
 
 ```yaml
 Type: System.String
-Parameter Sets: PatchExpanded, PatchByApplicationId, PatchViaIdentityExpanded
+Parameter Sets: PatchByApplicationId, PatchExpanded, PatchViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -287,7 +286,7 @@ Configures the groups claim issued in a user or OAuth 2.0 access token that the 
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Support.GroupMembershipClaimTypes
-Parameter Sets: PatchExpanded, PatchByApplicationId, PatchViaIdentityExpanded
+Parameter Sets: PatchByApplicationId, PatchExpanded, PatchViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -303,7 +302,7 @@ The home page of the application.
 
 ```yaml
 Type: System.String
-Parameter Sets: PatchExpanded, PatchByApplicationId, PatchViaIdentityExpanded
+Parameter Sets: PatchByApplicationId, PatchExpanded, PatchViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -319,7 +318,7 @@ A collection of URIs for the application.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: PatchExpanded, PatchByApplicationId, PatchViaIdentityExpanded
+Parameter Sets: PatchByApplicationId, PatchExpanded, PatchViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -335,7 +334,7 @@ The marketing URI
 
 ```yaml
 Type: System.String
-Parameter Sets: PatchExpanded, PatchByApplicationId, PatchViaIdentityExpanded
+Parameter Sets: PatchByApplicationId, PatchExpanded, PatchViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -351,7 +350,7 @@ The privacy policy URI
 
 ```yaml
 Type: System.String
-Parameter Sets: PatchExpanded, PatchByApplicationId, PatchViaIdentityExpanded
+Parameter Sets: PatchByApplicationId, PatchExpanded, PatchViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -367,7 +366,7 @@ The support URI
 
 ```yaml
 Type: System.String
-Parameter Sets: PatchExpanded, PatchByApplicationId, PatchViaIdentityExpanded
+Parameter Sets: PatchByApplicationId, PatchExpanded, PatchViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -383,7 +382,7 @@ The terms of service URI
 
 ```yaml
 Type: System.String
-Parameter Sets: PatchExpanded, PatchByApplicationId, PatchViaIdentityExpanded
+Parameter Sets: PatchByApplicationId, PatchExpanded, PatchViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -399,7 +398,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: PatchViaIdentityExpanded, PatchViaIdentity
+Parameter Sets: PatchViaIdentity, PatchViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -416,12 +415,12 @@ The default is false.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: PatchExpanded, PatchByApplicationId, PatchViaIdentityExpanded
+Parameter Sets: PatchByApplicationId, PatchExpanded, PatchViaIdentityExpanded
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -433,7 +432,7 @@ To construct, see NOTES section for KEYCREDENTIALS properties and create a hash 
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IKeyCredential[]
-Parameter Sets: PatchExpanded, PatchByApplicationId, PatchViaIdentityExpanded
+Parameter Sets: PatchByApplicationId, PatchExpanded, PatchViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -450,7 +449,7 @@ Consent to any of the known client applications will result in implicit consent 
 
 ```yaml
 Type: System.String[]
-Parameter Sets: PatchExpanded, PatchByApplicationId, PatchViaIdentityExpanded
+Parameter Sets: PatchByApplicationId, PatchExpanded, PatchViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -466,7 +465,7 @@ the url of the logout page
 
 ```yaml
 Type: System.String
-Parameter Sets: PatchExpanded, PatchByApplicationId, PatchViaIdentityExpanded
+Parameter Sets: PatchByApplicationId, PatchExpanded, PatchViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -482,12 +481,12 @@ Whether to allow implicit grant flow for OAuth2
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: PatchExpanded, PatchByApplicationId, PatchViaIdentityExpanded
+Parameter Sets: PatchByApplicationId, PatchExpanded, PatchViaIdentityExpanded
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -499,12 +498,12 @@ The default is false.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: PatchExpanded, PatchByApplicationId, PatchViaIdentityExpanded
+Parameter Sets: PatchByApplicationId, PatchExpanded, PatchViaIdentityExpanded
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -517,7 +516,7 @@ To construct, see NOTES section for OAUTH2PERMISSION properties and create a has
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IOAuth2Permission[]
-Parameter Sets: PatchExpanded, PatchByApplicationId, PatchViaIdentityExpanded
+Parameter Sets: PatchByApplicationId, PatchExpanded, PatchViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -534,12 +533,12 @@ The default is false, which specifies that only GET requests will be allowed.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: PatchExpanded, PatchByApplicationId, PatchViaIdentityExpanded
+Parameter Sets: PatchByApplicationId, PatchExpanded, PatchViaIdentityExpanded
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -550,7 +549,7 @@ Application object ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: PatchExpanded, Patch
+Parameter Sets: Patch, PatchExpanded
 Aliases: ApplicationObjectId
 
 Required: True
@@ -567,7 +566,7 @@ To construct, see NOTES section for OPTIONALCLAIMACCESSTOKEN properties and crea
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IOptionalClaim[]
-Parameter Sets: PatchExpanded, PatchByApplicationId, PatchViaIdentityExpanded
+Parameter Sets: PatchByApplicationId, PatchExpanded, PatchViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -584,7 +583,7 @@ To construct, see NOTES section for OPTIONALCLAIMIDTOKEN properties and create a
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IOptionalClaim[]
-Parameter Sets: PatchExpanded, PatchByApplicationId, PatchViaIdentityExpanded
+Parameter Sets: PatchByApplicationId, PatchExpanded, PatchViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -601,7 +600,7 @@ To construct, see NOTES section for OPTIONALCLAIMSAMLTOKEN properties and create
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IOptionalClaim[]
-Parameter Sets: PatchExpanded, PatchByApplicationId, PatchViaIdentityExpanded
+Parameter Sets: PatchByApplicationId, PatchExpanded, PatchViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -617,7 +616,7 @@ A list of tenants allowed to access application.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: PatchExpanded, PatchByApplicationId, PatchViaIdentityExpanded
+Parameter Sets: PatchByApplicationId, PatchExpanded, PatchViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -655,7 +654,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -667,7 +666,7 @@ To construct, see NOTES section for PASSWORDCREDENTIALS properties and create a 
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IPasswordCredential[]
-Parameter Sets: PatchExpanded, PatchByApplicationId, PatchViaIdentityExpanded
+Parameter Sets: PatchByApplicationId, PatchExpanded, PatchViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -684,7 +683,7 @@ To construct, see NOTES section for PREAUTHORIZEDAPPLICATION properties and crea
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IPreAuthorizedApplication[]
-Parameter Sets: PatchExpanded, PatchByApplicationId, PatchViaIdentityExpanded
+Parameter Sets: PatchByApplicationId, PatchExpanded, PatchViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -701,12 +700,12 @@ Default is false.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: PatchExpanded, PatchByApplicationId, PatchViaIdentityExpanded
+Parameter Sets: PatchByApplicationId, PatchExpanded, PatchViaIdentityExpanded
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -717,7 +716,7 @@ Reliable domain which can be used to identify an application.
 
 ```yaml
 Type: System.String
-Parameter Sets: PatchExpanded, PatchByApplicationId, PatchViaIdentityExpanded
+Parameter Sets: PatchByApplicationId, PatchExpanded, PatchViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -733,7 +732,7 @@ A collection of reply URLs for the application.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: PatchExpanded, PatchByApplicationId, PatchViaIdentityExpanded
+Parameter Sets: PatchByApplicationId, PatchExpanded, PatchViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -751,7 +750,7 @@ To construct, see NOTES section for REQUIREDRESOURCEACCESS properties and create
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IRequiredResourceAccess[]
-Parameter Sets: PatchExpanded, PatchByApplicationId, PatchViaIdentityExpanded
+Parameter Sets: PatchByApplicationId, PatchExpanded, PatchViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -767,7 +766,7 @@ The URL to the SAML metadata for the application.
 
 ```yaml
 Type: System.String
-Parameter Sets: PatchExpanded, PatchByApplicationId, PatchViaIdentityExpanded
+Parameter Sets: PatchByApplicationId, PatchExpanded, PatchViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -783,7 +782,7 @@ Audience for signing in to the application (AzureADMyOrganization, AzureADAllOrg
 
 ```yaml
 Type: System.String
-Parameter Sets: PatchExpanded, PatchByApplicationId, PatchViaIdentityExpanded
+Parameter Sets: PatchByApplicationId, PatchExpanded, PatchViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -799,7 +798,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: PatchExpanded, Patch, PatchByApplicationId
+Parameter Sets: Patch, PatchByApplicationId, PatchExpanded
 Aliases:
 
 Required: True
@@ -815,7 +814,7 @@ The primary Web page.
 
 ```yaml
 Type: System.String
-Parameter Sets: PatchExpanded, PatchByApplicationId, PatchViaIdentityExpanded
+Parameter Sets: PatchByApplicationId, PatchExpanded, PatchViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -864,9 +863,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IApplicationUpdateParameters
+
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
 
 ## OUTPUTS
 

@@ -14,23 +14,18 @@ This operation retrieves the policy set definition in the given subscription wit
 
 ### List (Default)
 ```
-Get-AzPolicySetDefinition [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### WithBuiltIn
-```
-Get-AzPolicySetDefinition -BuiltIn [-Name <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get1
-```
-Get-AzPolicySetDefinition -ManagementGroupName <String> [-Name <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzPolicySetDefinition -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzPolicySetDefinition [-Name <String>] [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+Get-AzPolicySetDefinition -Name <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### Get1
+```
+Get-AzPolicySetDefinition -ManagementGroupName <String> -Name <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -40,9 +35,9 @@ Get-AzPolicySetDefinition -Id <String> [-SubscriptionId <String[]>] [-DefaultPro
  [<CommonParameters>]
 ```
 
-### List1
+### GetViaIdentity
 ```
-Get-AzPolicySetDefinition -ManagementGroupName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPolicySetDefinition -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity1
@@ -50,9 +45,14 @@ Get-AzPolicySetDefinition -ManagementGroupName <String> [-DefaultProfile <PSObje
 Get-AzPolicySetDefinition -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### List1
 ```
-Get-AzPolicySetDefinition -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPolicySetDefinition -ManagementGroupName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### WithBuiltIn
+```
+Get-AzPolicySetDefinition -BuiltIn [-Name <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -90,7 +90,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -133,7 +133,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: GetViaIdentity1, GetViaIdentity
+Parameter Sets: GetViaIdentity, GetViaIdentity1
 Aliases:
 
 Required: True
@@ -165,10 +165,10 @@ The name of the policy set definition to get.
 
 ```yaml
 Type: System.String
-Parameter Sets: WithBuiltIn, Get1, Get
+Parameter Sets: Get, Get1, WithBuiltIn
 Aliases: PolicySetDefinitionName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -181,7 +181,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get, GetById
+Parameter Sets: Get, GetById, List
 Aliases:
 
 Required: True

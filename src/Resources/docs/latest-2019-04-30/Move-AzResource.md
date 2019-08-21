@@ -17,9 +17,15 @@ Write and delete operations are blocked on the groups until the move completes.
 
 ### MoveExpanded (Default)
 ```
-Move-AzResource -SourceResourceGroupName <String> -SubscriptionId <String> [-PassThru] [-Resource <String[]>]
- [-TargetResourceGroup <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Move-AzResource -SourceResourceGroupName <String> -SubscriptionId <String> [-Resource <String[]>]
+ [-TargetResourceGroup <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### Move
+```
+Move-AzResource -SourceResourceGroupName <String> -SubscriptionId <String> -Parameter <IResourcesMoveInfo>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### MoveByComponents
@@ -29,23 +35,16 @@ Move-AzResource -SourceResourceGroupName <String> -SubscriptionId <String> -Targ
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Move
+### MoveViaIdentity
 ```
-Move-AzResource -SourceResourceGroupName <String> -SubscriptionId <String> -Parameter <IResourcesMoveInfo>
- [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Move-AzResource -InputObject <IResourcesIdentity> -Parameter <IResourcesMoveInfo> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### MoveViaIdentityExpanded
 ```
-Move-AzResource -InputObject <IResourcesIdentity> [-PassThru] [-Resource <String[]>]
- [-TargetResourceGroup <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### MoveViaIdentity
-```
-Move-AzResource -InputObject <IResourcesIdentity> -Parameter <IResourcesMoveInfo> [-PassThru]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Move-AzResource -InputObject <IResourcesIdentity> [-Resource <String[]>] [-TargetResourceGroup <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -86,7 +85,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -113,7 +112,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: MoveViaIdentityExpanded, MoveViaIdentity
+Parameter Sets: MoveViaIdentity, MoveViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -129,12 +128,12 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: MoveExpanded, Move, MoveViaIdentityExpanded, MoveViaIdentity
+Parameter Sets: Move, MoveExpanded, MoveViaIdentity, MoveViaIdentityExpanded
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -167,7 +166,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -178,7 +177,7 @@ The IDs of the resources.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: MoveExpanded, MoveByComponents, MoveViaIdentityExpanded
+Parameter Sets: MoveByComponents, MoveExpanded, MoveViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -194,7 +193,7 @@ The name of the resource group containing the resources to move.
 
 ```yaml
 Type: System.String
-Parameter Sets: MoveExpanded, MoveByComponents, Move
+Parameter Sets: Move, MoveByComponents, MoveExpanded
 Aliases:
 
 Required: True
@@ -210,7 +209,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: MoveExpanded, MoveByComponents, Move
+Parameter Sets: Move, MoveByComponents, MoveExpanded
 Aliases:
 
 Required: True
@@ -308,9 +307,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IResourcesMoveInfo
+
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
 
 ## OUTPUTS
 

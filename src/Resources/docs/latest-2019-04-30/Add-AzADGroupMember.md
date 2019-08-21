@@ -14,62 +14,63 @@ Add a member to a group.
 
 ### AddExpanded (Default)
 ```
-Add-AzADGroupMember -GroupObjectId <String> -TenantId <String> -Url <String> [-PassThru]
- [-AdditionalProperties <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### AddMemberIdToGroupId
-```
-Add-AzADGroupMember -GroupObjectId <String> -TenantId <String> -MemberObjectId <String[]> [-PassThru]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### AddMemberUpnToGroupId
-```
-Add-AzADGroupMember -GroupObjectId <String> -TenantId <String> -MemberUserPrincipalName <String[]> [-PassThru]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Add-AzADGroupMember -GroupObjectId <String> -TenantId <String> -Url <String>
+ [-AdditionalProperties <Hashtable>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Add
 ```
 Add-AzADGroupMember -GroupObjectId <String> -TenantId <String> -Parameter <IGroupAddMemberParameters>
- [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### AddMemberIdToGroupObject
-```
-Add-AzADGroupMember -TenantId <String> -MemberObjectId <String[]> -GroupObject <IAdGroup> [-PassThru]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### AddMemberUpnToGroupObject
-```
-Add-AzADGroupMember -TenantId <String> -MemberUserPrincipalName <String[]> -GroupObject <IAdGroup> [-PassThru]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### AddMemberIdToGroupDisplayName
 ```
-Add-AzADGroupMember -TenantId <String> -MemberObjectId <String[]> -GroupDisplayName <String> [-PassThru]
+Add-AzADGroupMember -GroupDisplayName <String> -MemberObjectId <String[]> -TenantId <String> [-PassThru]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### AddMemberIdToGroupId
+```
+Add-AzADGroupMember -GroupObjectId <String> -MemberObjectId <String[]> -TenantId <String> [-PassThru]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### AddMemberIdToGroupObject
+```
+Add-AzADGroupMember -GroupObject <IAdGroup> -MemberObjectId <String[]> -TenantId <String> [-PassThru]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### AddMemberUpnToGroupDisplayName
 ```
-Add-AzADGroupMember -TenantId <String> -MemberUserPrincipalName <String[]> -GroupDisplayName <String>
+Add-AzADGroupMember -GroupDisplayName <String> -MemberUserPrincipalName <String[]> -TenantId <String>
  [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### AddViaIdentityExpanded
+### AddMemberUpnToGroupId
 ```
-Add-AzADGroupMember -InputObject <IResourcesIdentity> -Url <String> [-PassThru]
- [-AdditionalProperties <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Add-AzADGroupMember -GroupObjectId <String> -MemberUserPrincipalName <String[]> -TenantId <String> [-PassThru]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### AddMemberUpnToGroupObject
+```
+Add-AzADGroupMember -GroupObject <IAdGroup> -MemberUserPrincipalName <String[]> -TenantId <String> [-PassThru]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### AddViaIdentity
 ```
-Add-AzADGroupMember -InputObject <IResourcesIdentity> -Parameter <IGroupAddMemberParameters> [-PassThru]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Add-AzADGroupMember -InputObject <IResourcesIdentity> -Parameter <IGroupAddMemberParameters>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### AddViaIdentityExpanded
+```
+Add-AzADGroupMember -InputObject <IResourcesIdentity> -Url <String> [-AdditionalProperties <Hashtable>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -166,7 +167,7 @@ The object ID of the group to which to add the member.
 
 ```yaml
 Type: System.String
-Parameter Sets: AddExpanded, AddMemberIdToGroupId, AddMemberUpnToGroupId, Add
+Parameter Sets: Add, AddExpanded, AddMemberIdToGroupId, AddMemberUpnToGroupId
 Aliases:
 
 Required: True
@@ -182,7 +183,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: AddViaIdentityExpanded, AddViaIdentity
+Parameter Sets: AddViaIdentity, AddViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -198,7 +199,7 @@ The object ID of the member(s) to add to the group.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: AddMemberIdToGroupId, AddMemberIdToGroupObject, AddMemberIdToGroupDisplayName
+Parameter Sets: AddMemberIdToGroupDisplayName, AddMemberIdToGroupId, AddMemberIdToGroupObject
 Aliases:
 
 Required: True
@@ -214,7 +215,7 @@ The user principal name (UPN) of the member(s) to add to the group.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: AddMemberUpnToGroupId, AddMemberUpnToGroupObject, AddMemberUpnToGroupDisplayName
+Parameter Sets: AddMemberUpnToGroupDisplayName, AddMemberUpnToGroupId, AddMemberUpnToGroupObject
 Aliases:
 
 Required: True
@@ -252,7 +253,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -263,7 +264,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: AddExpanded, AddMemberIdToGroupId, AddMemberUpnToGroupId, Add, AddMemberIdToGroupObject, AddMemberUpnToGroupObject, AddMemberIdToGroupDisplayName, AddMemberUpnToGroupDisplayName
+Parameter Sets: Add, AddExpanded, AddMemberIdToGroupDisplayName, AddMemberIdToGroupId, AddMemberIdToGroupObject, AddMemberUpnToGroupDisplayName, AddMemberUpnToGroupId, AddMemberUpnToGroupObject
 Aliases:
 
 Required: True
@@ -328,9 +329,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IGroupAddMemberParameters
+
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
 
 ## OUTPUTS
 

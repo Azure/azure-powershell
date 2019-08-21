@@ -19,17 +19,17 @@ Update-AzApplicationKeyCredentials -InputObject <IResourcesIdentity>
  [<CommonParameters>]
 ```
 
-### UpdateExpanded
-```
-Update-AzApplicationKeyCredentials -ObjectId <String> -TenantId <String> -Value <IKeyCredential[]>
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### Update
 ```
 Update-AzApplicationKeyCredentials -ObjectId <String> -TenantId <String>
  -Parameter <IKeyCredentialsUpdateParameters> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
+```
+
+### UpdateExpanded
+```
+Update-AzApplicationKeyCredentials -ObjectId <String> -TenantId <String> -Value <IKeyCredential[]>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -100,7 +100,7 @@ Application object ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -117,7 +117,7 @@ To construct, see NOTES section for PARAMETER properties and create a hash table
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IKeyCredentialsUpdateParameters
-Parameter Sets: UpdateViaIdentity, Update
+Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
 Required: True
@@ -138,7 +138,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -149,7 +149,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -215,9 +215,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IKeyCredentialsUpdateParameters
+
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
 
 ## OUTPUTS
 
