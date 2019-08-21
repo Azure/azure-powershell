@@ -28,7 +28,7 @@ New-AzTag -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-Confi
 
 ### CreateWithValue
 ```
-New-AzTag -Name <String> -Value <String> -SubscriptionId <String> [-DefaultProfile <PSObject>] [-Confirm]
+New-AzTag -Name <String> -SubscriptionId <String> -Value <String> [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 

@@ -38,16 +38,16 @@ Update-AzADApplication -ObjectId <String> -TenantId <String> -Parameter <IApplic
 
 ### PatchByApplicationId
 ```
-Update-AzADApplication -ApplicationId <String> -TenantId <String> [-PassThru] [-AllowGuestsSignIn]
- [-AllowPassthroughUser] [-AppLogoUrl <String>] [-AppPermission <String[]>] [-AppRole <IAppRole[]>]
- [-AvailableToOtherTenant] [-DisplayName <String>] [-ErrorUrl <String>]
- [-GroupMembershipClaim <GroupMembershipClaimTypes>] [-Homepage <String>] [-IdentifierUri <String[]>]
- [-InformationalUrlMarketing <String>] [-InformationalUrlPrivacy <String>] [-InformationalUrlSupport <String>]
+Update-AzADApplication -ApplicationId <String> -TenantId <String> [-AllowGuestsSignIn] [-AllowPassthroughUser]
+ [-AppLogoUrl <String>] [-AppPermission <String[]>] [-AppRole <IAppRole[]>] [-AvailableToOtherTenant]
+ [-DisplayName <String>] [-ErrorUrl <String>] [-GroupMembershipClaim <GroupMembershipClaimTypes>]
+ [-Homepage <String>] [-IdentifierUri <String[]>] [-InformationalUrlMarketing <String>]
+ [-InformationalUrlPrivacy <String>] [-InformationalUrlSupport <String>]
  [-InformationalUrlTermsOfService <String>] [-IsDeviceOnlyAuthSupported] [-KeyCredentials <IKeyCredential[]>]
  [-KnownClientApplication <String[]>] [-LogoutUrl <String>] [-Oauth2AllowImplicitFlow]
  [-Oauth2AllowUrlPathMatching] [-Oauth2Permission <IOAuth2Permission[]>] [-Oauth2RequirePostResponse]
  [-OptionalClaimAccessToken <IOptionalClaim[]>] [-OptionalClaimIdToken <IOptionalClaim[]>]
- [-OptionalClaimSamlToken <IOptionalClaim[]>] [-OrgRestriction <String[]>]
+ [-OptionalClaimSamlToken <IOptionalClaim[]>] [-OrgRestriction <String[]>] [-PassThru]
  [-PasswordCredentials <IPasswordCredential[]>] [-PreAuthorizedApplication <IPreAuthorizedApplication[]>]
  [-PublicClient] [-PublisherDomain <String>] [-ReplyUrl <String[]>]
  [-RequiredResourceAccess <IRequiredResourceAccess[]>] [-SamlMetadataUrl <String>] [-SignInAudience <String>]

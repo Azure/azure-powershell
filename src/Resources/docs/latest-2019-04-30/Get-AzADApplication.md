@@ -24,30 +24,30 @@ Get-AzADApplication -ObjectId <String> -TenantId <String> [-DefaultProfile <PSOb
 
 ### GetByApplicationId
 ```
-Get-AzADApplication -TenantId <String> -ApplicationId <String> [-DefaultProfile <PSObject>]
+Get-AzADApplication -ApplicationId <String> -TenantId <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetByDisplayName
 ```
-Get-AzADApplication -TenantId <String> -DisplayName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzADApplication -DisplayName <String> -TenantId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetByDisplayNamePrefix
 ```
-Get-AzADApplication -TenantId <String> -DisplayNameStartWith <String> [-DefaultProfile <PSObject>]
+Get-AzADApplication -DisplayNameStartWith <String> -TenantId <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetByIdentifierUri
 ```
-Get-AzADApplication -TenantId <String> -IdentifierUri <String> [-DefaultProfile <PSObject>]
+Get-AzADApplication -IdentifierUri <String> -TenantId <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetDeleted
 ```
-Get-AzADApplication -TenantId <String> -IncludeDeleted [-Filter <String>] [-DefaultProfile <PSObject>]
+Get-AzADApplication -IncludeDeleted -TenantId <String> [-Filter <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 

@@ -32,8 +32,8 @@ Get-AzResource -SubscriptionId <String[]> -Tag <Hashtable> [-ResourceGroupName <
 
 ### GetByTagNameAndValue
 ```
-Get-AzResource -SubscriptionId <String[]> -TagName <String> [-ResourceGroupName <String>] [-TagValue <String>]
- [-Expand <String>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzResource -SubscriptionId <String[]> -TagName <String> [-ResourceGroupName <String>] [-Expand <String>]
+ [-TagValue <String>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity

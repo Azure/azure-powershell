@@ -21,7 +21,7 @@ Get-AzADServicePrincipal -TenantId <String> [-Filter <String>] [-DefaultProfile 
 
 ### __AllParameterSets
 ```
-Get-AzADServicePrincipal -TenantId <String> -ApplicationObject <IApplication> [-DefaultProfile <PSObject>]
+Get-AzADServicePrincipal -ApplicationObject <IApplication> -TenantId <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -33,25 +33,25 @@ Get-AzADServicePrincipal -ObjectId <String> -TenantId <String> [-DefaultProfile 
 
 ### GetByApplicationId
 ```
-Get-AzADServicePrincipal -TenantId <String> -ApplicationId <String> [-DefaultProfile <PSObject>]
+Get-AzADServicePrincipal -ApplicationId <String> -TenantId <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetByDisplayName
 ```
-Get-AzADServicePrincipal -TenantId <String> -DisplayName <String> [-DefaultProfile <PSObject>]
+Get-AzADServicePrincipal -DisplayName <String> -TenantId <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetByDisplayNamePrefix
 ```
-Get-AzADServicePrincipal -TenantId <String> -DisplayNameBeginsWith <String> [-DefaultProfile <PSObject>]
+Get-AzADServicePrincipal -DisplayNameBeginsWith <String> -TenantId <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetBySPN
 ```
-Get-AzADServicePrincipal -TenantId <String> -ServicePrincipalName <String> [-DefaultProfile <PSObject>]
+Get-AzADServicePrincipal -ServicePrincipalName <String> -TenantId <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 

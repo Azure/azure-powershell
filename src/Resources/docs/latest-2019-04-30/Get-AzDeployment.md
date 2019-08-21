@@ -31,7 +31,7 @@ Get-AzDeployment -Name <String> -ResourceGroupName <String> -SubscriptionId <Str
 
 ### GetById
 ```
-Get-AzDeployment -SubscriptionId <String[]> -Id <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDeployment -Id <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity

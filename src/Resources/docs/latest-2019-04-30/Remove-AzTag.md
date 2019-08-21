@@ -20,7 +20,7 @@ Remove-AzTag -Name <String> -SubscriptionId <String> [-DefaultProfile <PSObject>
 
 ### DeleteValue
 ```
-Remove-AzTag -SubscriptionId <String> -Name <String> -Value <String> [-PassThru] [-DefaultProfile <PSObject>]
+Remove-AzTag -Name <String> -SubscriptionId <String> -Value <String> [-PassThru] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 

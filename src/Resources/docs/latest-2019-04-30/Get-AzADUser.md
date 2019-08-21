@@ -24,7 +24,7 @@ Get-AzADUser -TenantId <String> -UpnOrObjectId <String> [-DefaultProfile <PSObje
 
 ### GetByFilter
 ```
-Get-AzADUser -TenantId <String> -StartsWith <String> [-DisplayName <String>] [-Mail <String>]
+Get-AzADUser -StartsWith <String> -TenantId <String> [-DisplayName <String>] [-Mail <String>]
  [-MailNickname <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 

@@ -24,12 +24,12 @@ Get-AzADGroup -ObjectId <String> -TenantId <String> [-DefaultProfile <PSObject>]
 
 ### GetByDisplayName
 ```
-Get-AzADGroup -TenantId <String> -DisplayName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzADGroup -DisplayName <String> -TenantId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetByDisplayNamePrefix
 ```
-Get-AzADGroup -TenantId <String> -DisplayNameStartsWith <String> [-DefaultProfile <PSObject>]
+Get-AzADGroup -DisplayNameStartsWith <String> -TenantId <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 

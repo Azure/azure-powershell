@@ -20,13 +20,13 @@ Remove-AzADApplication -ObjectId <String> -TenantId <String> [-DefaultProfile <P
 
 ### DeleteByApplicationId
 ```
-Remove-AzADApplication -ObjectId <String> -TenantId <String> -ApplicationId <String> [-PassThru]
+Remove-AzADApplication -ApplicationId <String> -ObjectId <String> -TenantId <String> [-PassThru]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteByDisplayName
 ```
-Remove-AzADApplication -ObjectId <String> -TenantId <String> -DisplayName <String> [-PassThru]
+Remove-AzADApplication -DisplayName <String> -ObjectId <String> -TenantId <String> [-PassThru]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -38,7 +38,7 @@ Remove-AzADApplication -InputObject <IResourcesIdentity> [-DefaultProfile <PSObj
 
 ### HardDelete
 ```
-Remove-AzADApplication -ObjectId <String> -TenantId <String> -HardDelete [-PassThru]
+Remove-AzADApplication -HardDelete -ObjectId <String> -TenantId <String> [-PassThru]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 

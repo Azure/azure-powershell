@@ -32,7 +32,7 @@ Get-AzDeploymentOperation -DeploymentName <String> -OperationId <String> -Resour
 
 ### GetByDeploymentObject
 ```
-Get-AzDeploymentOperation -SubscriptionId <String[]> -DeploymentObject <IDeploymentExtended> [-Top <Int32>]
+Get-AzDeploymentOperation -DeploymentObject <IDeploymentExtended> -SubscriptionId <String[]> [-Top <Int32>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 

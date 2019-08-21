@@ -26,7 +26,7 @@ Get-AzResourceGroup -Name <String> -SubscriptionId <String[]> [-DefaultProfile <
 
 ### GetById
 ```
-Get-AzResourceGroup -SubscriptionId <String[]> -Id <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzResourceGroup -Id <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetByTag

@@ -21,7 +21,7 @@ Remove-AzResourceGroup -Name <String> -SubscriptionId <String> [-DefaultProfile 
 
 ### DeleteById
 ```
-Remove-AzResourceGroup -SubscriptionId <String> -Id <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+Remove-AzResourceGroup -Id <String> -SubscriptionId <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 

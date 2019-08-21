@@ -20,7 +20,7 @@ Remove-AzRoleDefinition -Id <String> -Scope <String> [-DefaultProfile <PSObject>
 
 ### DeleteByName
 ```
-Remove-AzRoleDefinition -Scope <String> -Name <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+Remove-AzRoleDefinition -Name <String> -Scope <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 

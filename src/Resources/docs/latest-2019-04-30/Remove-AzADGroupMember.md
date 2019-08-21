@@ -20,37 +20,37 @@ Remove-AzADGroupMember -GroupObjectId <String> -MemberObjectId <String> -TenantI
 
 ### DeleteByMemberIdAndGroupDisplayName
 ```
-Remove-AzADGroupMember -TenantId <String> -GroupDisplayName <String> -MemberObjectId <String> [-PassThru]
+Remove-AzADGroupMember -GroupDisplayName <String> -MemberObjectId <String> -TenantId <String> [-PassThru]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteByMemberIdAndGroupId
 ```
-Remove-AzADGroupMember -TenantId <String> -GroupObjectId <String> -MemberObjectId <String> [-PassThru]
+Remove-AzADGroupMember -GroupObjectId <String> -MemberObjectId <String> -TenantId <String> [-PassThru]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteByMemberIdAndGroupObject
 ```
-Remove-AzADGroupMember -TenantId <String> -GroupObject <IAdGroup> -MemberObjectId <String> [-PassThru]
+Remove-AzADGroupMember -GroupObject <IAdGroup> -MemberObjectId <String> -TenantId <String> [-PassThru]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteByMemberUpnAndGroupDisplayName
 ```
-Remove-AzADGroupMember -TenantId <String> -GroupDisplayName <String> -MemberUserPrincipalName <String>
+Remove-AzADGroupMember -GroupDisplayName <String> -MemberUserPrincipalName <String> -TenantId <String>
  [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteByMemberUpnAndGroupId
 ```
-Remove-AzADGroupMember -TenantId <String> -GroupObjectId <String> -MemberUserPrincipalName <String>
+Remove-AzADGroupMember -GroupObjectId <String> -MemberUserPrincipalName <String> -TenantId <String>
  [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteByMemberUpnAndGroupObject
 ```
-Remove-AzADGroupMember -TenantId <String> -GroupObject <IAdGroup> -MemberUserPrincipalName <String>
+Remove-AzADGroupMember -GroupObject <IAdGroup> -MemberUserPrincipalName <String> -TenantId <String>
  [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
