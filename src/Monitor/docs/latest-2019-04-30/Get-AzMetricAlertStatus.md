@@ -12,9 +12,16 @@ Retrieve an alert rule status.
 
 ## SYNTAX
 
+### List (Default)
 ```
-Get-AzMetricAlertStatus -ResourceGroupName <String> -RuleName <String> -StatusName <String>
- -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMetricAlertStatus -ResourceGroupName <String> -RuleName <String> -SubscriptionId <String[]>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List1
+```
+Get-AzMetricAlertStatus -ResourceGroupName <String> -RuleName <String> -SubscriptionId <String[]>
+ -StatusName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -95,7 +102,7 @@ The name of the status.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List1
 Aliases:
 
 Required: True

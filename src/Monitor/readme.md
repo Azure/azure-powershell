@@ -81,6 +81,11 @@ directive:
       property-name: Equals
     set:
       property-name: Equal
+  # Pluralization fix
+  - where:
+      subject: MetricAlertsStatus
+    set:
+      subject: MetricAlertStatus
   # ActivityLogAlert
   - where:
       subject: ActivityLogAlert
