@@ -23,6 +23,7 @@ using Microsoft.Rest;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
 
 namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
 {
@@ -122,9 +123,10 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
         protected void RegisterBlueprintRp(string subscriptionId)
         {
             ResourceManagerClient.SubscriptionId = subscriptionId;
-            var response = ResourceManagerClient.Providers.Register(BlueprintConstants.BlueprintProviderNamespace);
+            var result = ResourceManagerClient.Providers
+                .RegisterWithHttpMessagesAsync(BlueprintConstants.BlueprintProviderNamespace).GetAwaiter().GetResult();
 
-            if (response == null)
+            if (result == null || result.Response.StatusCode != HttpStatusCode.OK)
             {
                 throw new KeyNotFoundException(string.Format(Resources.ResourceProviderRegistrationFailed, BlueprintConstants.BlueprintProviderNamespace));
             }
