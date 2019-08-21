@@ -154,6 +154,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         public const string LegacyItemHelp = "Use Get-AzLegacyPeering to retrieve this object.";
 
         /// <summary>
+        /// The input item help.
+        /// </summary>
+        public const string PrefixInputObjectHelp = "Use a Get-AzPeeringService";
+
+        /// <summary>
         /// The peering object help.
         /// </summary>
         public const string PeeringObjectHelp = "Use Get-AzPeering to retrieve this object.";
@@ -316,6 +321,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// The help max advertised i pv 4.
         /// </summary>
         public const string HelpMaxAdvertisedIPv4 = "The maximum advertised IPv4";
+
+        /// <summary>
+        /// The peering country help
+        /// </summary>
+        public const string PeeringCountryHelp = "The country filter";
+
+        /// <summary>
+        /// The peering service provider help
+        /// </summary>
+        public const string PeeringServiceProviderHelp = "The peering service provider name. Use Get-AzPeeringServiceProvider cmdlet for a list";
+
+        /// <summary>
+        /// The peering service help
+        /// </summary>
+        public const string PeeringServiceHelp = "The peering service name. Use New-AzPeeringService cmdlet for a new peering service or Get-AzPeeringService for a list.";
 
         #endregion
 

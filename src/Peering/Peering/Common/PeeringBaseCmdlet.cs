@@ -139,11 +139,84 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
             }
         }
 
+        /// <summary>
+        /// Converts to powershell model for peering asn
+        /// </summary>
+        /// <param name="peeringAsn"></param>
+        /// <returns>powershell object</returns>
         public object ToPeeringAsnPs(object peeringAsn)
         {
             try
             {
                 return PeeringResourceManagerProfile.Mapper.Map<PSPeerAsn>(peeringAsn);
+            }
+            catch (InvalidOperationException mapException)
+            {
+                throw new InvalidOperationException(String.Format(Resources.Error_Mapping, mapException));
+            }
+        }
+
+        /// <summary>
+        /// Converts to powershell peering service
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public PSPeeringService ToPeeringServicePS(object obj)
+        {
+            try
+            {
+                return PeeringResourceManagerProfile.Mapper.Map<PSPeeringService>(obj);
+            }
+            catch (InvalidOperationException mapException)
+            {
+                throw new InvalidOperationException(String.Format(Resources.Error_Mapping, mapException));
+            }
+        }
+
+        /// <summary>
+        /// Converts to powershell peering service prefix
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public PSPeeringServicePrefix ToPeeringServicePrefixPS(object obj)
+        {
+            try
+            {
+                return PeeringResourceManagerProfile.Mapper.Map<PSPeeringServicePrefix>(obj);
+            }
+            catch (InvalidOperationException mapException)
+            {
+                throw new InvalidOperationException(String.Format(Resources.Error_Mapping, mapException));
+            }
+        }
+
+        /// <summary>
+        /// Converts to powershell peering service provider
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public PSPeeringServiceProvider ToPeeringServiceProviderPS(object obj)
+        {
+            try
+            {
+                return PeeringResourceManagerProfile.Mapper.Map<PSPeeringServiceProvider>(obj);
+            }
+            catch (InvalidOperationException mapException)
+            {
+                throw new InvalidOperationException(String.Format(Resources.Error_Mapping, mapException));
+            }
+        }
+
+        /// <summary>
+        /// Converts to powershell peering service location
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public PSPeeringServiceLocation ToPeeringServiceLocationPS(object obj)
+        {
+            try
+            {
+                return PeeringResourceManagerProfile.Mapper.Map<PSPeeringServiceLocation>(obj);
             }
             catch (InvalidOperationException mapException)
             {
