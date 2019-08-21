@@ -15,9 +15,8 @@
 using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301;
+using Microsoft.Azure.PowerShell.Cmdlets.Compute.Strategies;
 using System;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
@@ -26,19 +25,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
         public static ResourceStrategy<ProximityPlacementGroup> Strategy { get; }
             = ComputeStrategy.Create(
                 provider: "proximityPlacementGroups",
-                getOperations: client => client,
-                getAsync: async (o, p) => {
-                    Task<IProximityPlacementGroup> groupTask = null;
-                    await o.ProximityPlacementGroupsGet("subscriptionId",
-                     p.ResourceGroupName, p.Name, (response, creator) => ComputeApiHelpers.DeserializeEntity(response, creator, out groupTask), null, null);
-                    return (await groupTask) as ProximityPlacementGroup;
-                    },
-                createOrUpdateAsync: async (o, p) => {
-                    Task<IProximityPlacementGroup> groupTask = null;
-                    await o.ProximityPlacementGroupsCreateOrUpdate(
-                        p.ResourceGroupName, p.Name, "subscriptionId", p.Model, (response, creator) => ComputeApiHelpers.DeserializeEntity(response, creator, out groupTask), null, null, null);
-                    return (await groupTask) as ProximityPlacementGroup;
-                },
+                getOperations: client => client.GetProximityPlacementGroupOperations(),
+                getAsync: (o, p) => o.Get(p.ResourceGroupName, p.Name),
+                createOrUpdateAsync: (o, p) => o.CreateOrUpdate(p.ResourceGroupName, p.Name,  p.Model),
                 createTime: _ => 1);
 
         public static ResourceConfig<ProximityPlacementGroup> CreateProximityPlacementGroupConfig(

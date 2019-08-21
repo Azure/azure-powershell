@@ -23,14 +23,100 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
     static class Images
     {
+
         public static Dictionary<string, Dictionary<string, ImageReference>> GenerateImageDictionary()
         {
-            var assembly = Assembly.GetExecutingAssembly();
-            var resourceName = "Microsoft.Azure.Commands.Compute.Strategies.ComputeRp.Images.json";
+            //var assembly = Assembly.GetExecutingAssembly();
+            //var resourceName = "Microsoft.Azure.PowerShell.Cmdlets.Compute.Resources.Image.json";
+            string ImageJson = @"{
+  ""Linux"": {
+    ""CentOS"": {
+      ""publisher"": ""OpenLogic"",
+      ""offer"": ""CentOS"",
+      ""sku"": ""7.5"",
+      ""version"": ""latest""
+    },
+    ""CoreOS"": {
+      ""publisher"": ""CoreOS"",
+      ""offer"": ""CoreOS"",
+      ""sku"": ""Stable"",
+      ""version"": ""latest""
+    },
+    ""Debian"": {
+      ""publisher"": ""Debian"",
+      ""offer"": ""debian-10"",
+      ""sku"": ""10"",
+      ""version"": ""latest""
+    },
+    ""openSUSE-Leap"": {
+      ""publisher"": ""SUSE"",
+      ""offer"": ""openSUSE-Leap"",
+      ""sku"": ""42.3"",
+      ""version"": ""latest""
+    },
+    ""RHEL"": {
+      ""publisher"": ""RedHat"",
+      ""offer"": ""RHEL"",
+      ""sku"": ""7-RAW"",
+      ""version"": ""latest""
+    },
+    ""SLES"": {
+      ""publisher"": ""SUSE"",
+      ""offer"": ""SLES"",
+      ""sku"": ""15"",
+      ""version"": ""latest""
+    },
+    ""UbuntuLTS"": {
+      ""publisher"": ""Canonical"",
+      ""offer"": ""UbuntuServer"",
+      ""sku"": ""18.04-LTS"",
+      ""version"": ""latest""
+    }
+  },
+  ""Windows"": {
+    ""Win2019Datacenter"": {
+      ""publisher"": ""MicrosoftWindowsServer"",
+      ""offer"": ""WindowsServer"",
+      ""sku"": ""2019-Datacenter"",
+      ""version"": ""latest""
+    },
+    ""Win2016Datacenter"": {
+      ""publisher"": ""MicrosoftWindowsServer"",
+      ""offer"": ""WindowsServer"",
+      ""sku"": ""2016-Datacenter"",
+      ""version"": ""latest""
+    },
+    ""Win2012R2Datacenter"": {
+      ""publisher"": ""MicrosoftWindowsServer"",
+      ""offer"": ""WindowsServer"",
+      ""sku"": ""2012-R2-Datacenter"",
+      ""version"": ""latest""
+    },
+    ""Win2012Datacenter"": {
+      ""publisher"": ""MicrosoftWindowsServer"",
+      ""offer"": ""WindowsServer"",
+      ""sku"": ""2012-Datacenter"",
+      ""version"": ""latest""
+    },
+    ""Win2008R2SP1"": {
+      ""publisher"": ""MicrosoftWindowsServer"",
+      ""offer"": ""WindowsServer"",
+      ""sku"": ""2008-R2-SP1"",
+      ""version"": ""latest""
+    },
+    ""Win10"": {
+      ""publisher"": ""MicrosoftVisualStudio"",
+      ""offer"": ""Windows"",
+      ""sku"": ""Windows-10-N-x64"",
+      ""version"": ""latest""
+    }
+  }
+}
+";
 
-            var instanceDict = new Dictionary<string, Dictionary<string, ImageReference>>();
-
-            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+        var instanceDict = new Dictionary<string, Dictionary<string, ImageReference>>();
+            
+            using (Stream stream = new MemoryStream(System.Text.Encoding.ASCII.GetBytes(ImageJson)))
             using (StreamReader reader = new StreamReader(stream))
             {
                 Dictionary<string, object> jsonFile = (Dictionary<string, object>)JsonConvert.DeserializeObject(reader.ReadToEnd(), typeof(Dictionary<string, object>));
@@ -57,6 +143,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             return instanceDict;
         }
 
-        public static Dictionary<string, Dictionary<string, ImageReference>> Instance { get; } = GenerateImageDictionary();   
+        public static Dictionary<string, Dictionary<string, ImageReference>> Instance { get; } = GenerateImageDictionary();
+
     }
 }

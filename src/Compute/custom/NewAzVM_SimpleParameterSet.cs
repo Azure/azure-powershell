@@ -38,145 +38,133 @@ using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Net.Http;
+using Microsoft.Azure.PowerShell.Cmdlets.Compute.Strategies;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VM", SupportsShouldProcess = true, DefaultParameterSetName = "SimpleParameterSet")]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VM_SimpleParameterSet", SupportsShouldProcess = true, DefaultParameterSetName = "SimpleParameterSet")]
     [OutputType(typeof(VirtualMachine))]
-    public class NewAzVMCommand : AzureRMCmdlet, IEventListener
+    [Microsoft.Azure.PowerShell.Cmdlets.Compute.Profile("latest-2019-04-30")]
+    public class NewAzVM_SimpleParameterSet: AzureRMAsyncCmdlet
     {
-        string __correlationId = Guid.NewGuid().ToString(), __processRecordId;
         public const string SimpleParameterSet = "SimpleParameterSet";
 
-        [Parameter(ParameterSetName=SimpleParameterSet, Mandatory = true)]
-        public string SubscriptionId { get; set; }
-
-        [ResourceGroupCompleter]
+        //[ResourceGroupCompleter]
         [Parameter(
-            ParameterSetName = SimpleParameterSet,
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            ParameterSetName = SimpleParameterSet,
             Mandatory = false)]
-        [LocationCompleter("Microsoft.Compute/virtualMachines")]
+        //[LocationCompleter("Microsoft.Compute/virtualMachines")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
 
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string[] Zone { get; set; }
 
 
         [Parameter(
-            ParameterSetName = SimpleParameterSet,
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
+            Mandatory = false)]
         public Hashtable Tag { get; set; }
 
 
         [Parameter(
-            ParameterSetName = SimpleParameterSet,
             Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = true)]
+        [Parameter(Mandatory = true)]
         public PSCredential Credential { get; set; }
 
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(Mandatory = false)]
         public string VirtualNetworkName { get; set; }
 
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(Mandatory = false)]
         public string AddressPrefix { get; set; } = "192.168.0.0/16";
 
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(Mandatory = false)]
         public string SubnetName { get; set; }
 
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(Mandatory = false)]
         public string SubnetAddressPrefix { get; set; } = "192.168.1.0/24";
 
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(Mandatory = false)]
         public string PublicIpAddressName { get; set; }
 
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(Mandatory = false)]
         public string DomainNameLabel { get; set; }
 
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(Mandatory = false)]
         [ValidateSet("Static", "Dynamic")]
         public string AllocationMethod { get; set; } = "Static";
 
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(Mandatory = false)]
         public string SecurityGroupName { get; set; }
 
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(Mandatory = false)]
         public int[] OpenPorts { get; set; }
 
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
-        [PSArgumentCompleter(
-            "CentOS",
-            "CoreOS",
-            "Debian",
-            "openSUSE-Leap",
-            "RHEL",
-            "SLES",
-            "UbuntuLTS",
-            "Win2016Datacenter",
-            "Win2012R2Datacenter",
-            "Win2012Datacenter",
-            "Win2008R2SP1",
-            "Win10")]
+        [Parameter(Mandatory = false)]
+        [System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Compute.ImageName))]
         [Alias("ImageName")]
-        public string Image { get; set; } = "Win2016Datacenter";
+        public Microsoft.Azure.PowerShell.Cmdlets.Compute.ImageName Image { get; set; } = "Win2016Datacenter";
 
 
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(Mandatory = false)]
         public string Size { get; set; } = "Standard_DS1_v2";
 
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(Mandatory = false)]
         public string AvailabilitySetName { get; set; }
 
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false, HelpMessage = "Use this to add system assigned identity (MSI) to the vm")]
+        [Parameter(Mandatory = false, HelpMessage = "Use this to add system assigned identity (MSI) to the vm")]
         public SwitchParameter SystemAssignedIdentity { get; set; }
 
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false, HelpMessage = "Use this to add the assign user specified identity (MSI) to the VM")]
+        [Parameter(Mandatory = false, HelpMessage = "Use this to add the assign user specified identity (MSI) to the VM")]
         [ValidateNotNullOrEmpty]
         public string UserAssignedIdentity { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(Mandatory = false)]
         public int[] DataDiskSizeInGb { get; set; }
 
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(Mandatory = false)]
         public SwitchParameter EnableUltraSSD { get; set; }
 
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(Mandatory = false)]
         public string ProximityPlacementGroup { get; set; }
 
-        public CancellationToken Token => throw new NotImplementedException();
+        public CancellationToken Token => Source.Token;
 
-        public Action Cancel => throw new NotImplementedException();
+        public Action Cancel => Source.Cancel;
+
+        protected override void StopProcessing()
+        {
+            this.Cancel();
+            base.StopProcessing();
+        }
 
         public override void ExecuteCmdlet()
         {
-            __processRecordId = Guid.NewGuid().ToString();
+            base.ExecuteCmdlet();
             this.StartAndWait(StrategyExecuteCmdletAsync);
         }
 
         class Parameters : IParameters<VirtualMachine>
         {
-            readonly NewAzVMCommand _cmdlet;
+            readonly NewAzVM_SimpleParameterSet _cmdlet;
 
             readonly Client _client;
 
             readonly IResourceManagementClient _resourceClient;
 
-            public Parameters(NewAzVMCommand cmdlet, Client client, IResourceManagementClient resourceClient)
+            public Parameters(NewAzVM_SimpleParameterSet cmdlet, Client client, IResourceManagementClient resourceClient)
             {
                 _cmdlet = cmdlet;
                 _client = client;
@@ -197,7 +185,7 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 get
                 {
-                    if(_defaultLocation == null)
+                    if (_defaultLocation == null)
                     {
                         var vmResourceType = _resourceClient.Providers.GetAsync("Microsoft.Compute").ConfigureAwait(false).GetAwaiter().GetResult()
                         .ResourceTypes.Where(a => String.Equals(a.ResourceType, "virtualMachines", StringComparison.OrdinalIgnoreCase))
@@ -263,26 +251,26 @@ namespace Microsoft.Azure.Commands.Compute
                         name: _cmdlet.AvailabilitySetName,
                         proximityPlacementGroup: ppgSubResourceFunc);
 
-                    return resourceGroup.CreateVirtualMachineConfig(
-                        name: _cmdlet.Name,
-                        networkInterface: networkInterface,
-                        imageAndOsType: ImageAndOsType,
-                        adminUsername: _cmdlet.Credential.UserName,
-                        adminPassword:
-                            new NetworkCredential(string.Empty, _cmdlet.Credential.Password).Password,
-                        size: _cmdlet.Size,
-                        availabilitySet: availabilitySet,
-                        dataDisks: _cmdlet.DataDiskSizeInGb,
-                        zones: _cmdlet.Zone,
-                        ultraSSDEnabled: _cmdlet.EnableUltraSSD.IsPresent,
-                        identity: _cmdlet.GetVMIdentityFromArgs(),
-                        proximityPlacementGroup: ppgSubResourceFunc);
+                return resourceGroup.CreateVirtualMachineConfig(
+                    name: _cmdlet.Name,
+                    networkInterface: networkInterface,
+                    imageAndOsType: ImageAndOsType,
+                    adminUsername: _cmdlet.Credential.UserName,
+                    adminPassword:
+                        new NetworkCredential(string.Empty, _cmdlet.Credential.Password).Password,
+                    size: _cmdlet.Size,
+                    availabilitySet: availabilitySet,
+                    dataDisks: _cmdlet.DataDiskSizeInGb,
+                    zones: _cmdlet.Zone,
+                    ultraSSDEnabled: _cmdlet.EnableUltraSSD.IsPresent,
+                    identity: _cmdlet.GetVMIdentityFromArgs(),
+                    proximityPlacementGroup: ppgSubResourceFunc);
             }
         }
 
         async Task StrategyExecuteCmdletAsync(IAsyncCmdlet asyncCmdlet)
         {
-            var client = new Client(DefaultProfile.DefaultContext);
+            var client = new Client(this, asyncCmdlet);
 
             ResourceGroupName = ResourceGroupName ?? Name;
             VirtualNetworkName = VirtualNetworkName ?? Name;
@@ -298,7 +286,7 @@ namespace Microsoft.Azure.Commands.Compute
 
 
 
-            var result = await client.RunAsync(client.SubscriptionId, parameters, asyncCmdlet);
+            var result = await client.RunAsync(SubscriptionId, parameters, asyncCmdlet);
 
             if (result != null)
             {
@@ -329,7 +317,7 @@ namespace Microsoft.Azure.Commands.Compute
         {
             VirtualMachineIdentity identity = null;
 
-            if (this.IsParameterBound( c => c.SystemAssignedIdentity))
+            if (this.IsParameterBound(c => c.SystemAssignedIdentity))
             {
                 identity = new VirtualMachineIdentity();
                 identity.Type = Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.ResourceIdentityType.SystemAssigned;
@@ -354,12 +342,5 @@ namespace Microsoft.Azure.Commands.Compute
             return storageUri.Substring(0, index);
         }
 
-        public Task Signal(string id, CancellationToken token, Func<EventData> createMessage)
-        {
-            return Microsoft.Azure.PowerShell.Cmdlets.Compute.Module.Instance.Signal(id, token, createMessage, 
-                (i, t, m) => this.Signal(i, t, () => EventDataConverter.ConvertFrom(m()) as EventData), 
-                MyInvocation, this.ParameterSetName, __correlationId, __processRecordId, null);
-
-        }
     }
 }

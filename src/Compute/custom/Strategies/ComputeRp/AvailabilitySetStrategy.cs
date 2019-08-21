@@ -15,8 +15,8 @@
 using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using System;
-using System.Threading.Tasks;
 using Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301;
+using Microsoft.Azure.PowerShell.Cmdlets.Compute.Strategies;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
@@ -25,21 +25,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
         public static ResourceStrategy<AvailabilitySet> Strategy { get; }
             = ComputeStrategy.Create(
                 provider: "availabilitySets",
-                getOperations: client => client,
-                getAsync: async (o, p) =>
-                {
-                    Task<IAvailabilitySet> result = null;
-                    await o.AvailabilitySetsGet1(
-                     p.ResourceGroupName, p.Name, "subscriptionId", (response, creator) => ComputeApiHelpers.DeserializeEntity(response, creator, out result), null, null);
-                    return (await result as AvailabilitySet);
-                },
-                createOrUpdateAsync: async (o, p) =>
-                {
-                    Task<IAvailabilitySet> result = null;
-                    await o.AvailabilitySetsCreateOrUpdate(
-                    p.ResourceGroupName, p.Name, "subscriptionId", p.Model as AvailabilitySet, (response, creator) => ComputeApiHelpers.DeserializeEntity(response, creator, out result), null, null);
-                    return (await result as AvailabilitySet);
-                }, createTime: t => -1);
+                getOperations: client => client.GetAvailabilitySetOperations(),
+                getAsync: (o, p) => o.Get(p.ResourceGroupName, p.Name),
+                createOrUpdateAsync: (o, p) => o.CreateOrUpdate(p.ResourceGroupName, p.Name, p.Model as AvailabilitySet), createTime: t => -1);
 
         public static ResourceConfig<AvailabilitySet> CreateAvailabilitySetConfig(
             this ResourceConfig<ResourceGroup> resourceGroup,

@@ -77,7 +77,24 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             where TModel : class
             where TClient : ServiceClient<TClient>
         {
-            Func<IClient, TOperation> toOperations = client => getOperations(client.GetClient<TClient>());
+            return Create(type, c => c.GetClient<TClient>(), getOperations, getAsync, createOrUpdateAsync, getLocation,
+                setLocation, createTime, compulsoryLocation, evaluatePreexistingConfiguration);
+        }
+
+        public static ResourceStrategy<TModel> Create<TModel, TClient, TOperation>(
+        ResourceType type,
+        Func<IClient, TClient> getClient,
+        Func<TClient, TOperation> getOperations,
+        Func<TOperation, GetAsyncParams, Task<TModel>> getAsync,
+        Func<TOperation, CreateOrUpdateAsyncParams<TModel>, Task<TModel>> createOrUpdateAsync,
+        Func<TModel, string> getLocation,
+        Action<TModel, string> setLocation,
+        Func<TModel, int> createTime,
+        bool compulsoryLocation,
+        Func<TModel, bool> evaluatePreexistingConfiguration = null)
+        where TModel : class
+        {
+            Func<IClient, TOperation> toOperations = client => getOperations(getClient(client));
             return new ResourceStrategy<TModel>(
                 type,
                 (client, p) => getAsync(toOperations(client), p),

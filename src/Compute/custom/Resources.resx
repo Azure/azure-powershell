@@ -128,6 +128,10 @@
     <value>Can't find the image '{0}'.</value>
     <comment>{0} = image name</comment>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Image.json" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Strategies\ComputeRp\Images.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="InvalidImageName" xml:space="preserve">
     <value>Invalid ImageName {0}</value>
     <comment>{0} = ImageName</comment>

@@ -88,6 +88,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Image_json {
+            get {
+                object obj = ResourceManager.GetObject("Image.json", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid ImageName {0}.
         /// </summary>
         internal static string InvalidImageName {

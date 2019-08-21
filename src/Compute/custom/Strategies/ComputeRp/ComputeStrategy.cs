@@ -33,6 +33,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             where TModel : class, IResource, new()
             => ResourceStrategy.Create(
                 type: new ResourceType(Namespace, provider),
+                getClient: c => c.GetAutorestClient<ComputeManagementClient>(),
                 getOperations: getOperations,
                 getAsync: getAsync,
                 createOrUpdateAsync: createOrUpdateAsync,

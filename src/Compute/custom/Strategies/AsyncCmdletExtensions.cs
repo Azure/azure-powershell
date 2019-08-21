@@ -13,10 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Strategies;
+using Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime;
+using Microsoft.Azure.PowerShell.Cmdlets.Compute.Strategies;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies
@@ -30,19 +33,21 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
         /// <param name="createAndStartTask"></param>
         public static void StartAndWait<T>(
             this T cmdlet, Func<IAsyncCmdlet, Task> createAndStartTask)
-            where T : PSCmdlet
+            where T : AzureRMAsyncCmdlet
             => new CmdletWrap<T>(cmdlet).CmdletStartAndWait(createAndStartTask);
 
         sealed class CmdletWrap<T> : ICmdlet
-            where T : PSCmdlet
+            where T : AzureRMAsyncCmdlet
         {
             readonly T _Cmdlet;
+            readonly HttpPipeline _pipeline;
 
             public string VerbsNew => VerbsCommon.New;
 
-            public CmdletWrap(T cmdlet)
+            public CmdletWrap(T cmdlet )
             {
                 _Cmdlet = cmdlet;
+                _pipeline = cmdlet.GetPipeline();
             }
 
             public IEnumerable<KeyValuePair<string, object>> Parameters
@@ -60,6 +65,20 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
                         .Select(p => new KeyValuePair<string, object>(p.Name, p.GetValue(_Cmdlet)));
                 }
             }
+
+            public string SubscriptionId => _Cmdlet.SubscriptionId;
+
+            public string CorrelationId => _Cmdlet.CorrelationId;
+
+            public string ProcessRecordId => _Cmdlet.ProcessRecordId;
+
+            public string ParameterSetName => _Cmdlet.ParameterSetName;
+
+            public InvocationInfo Invocation => _Cmdlet.MyInvocation;
+
+            public HttpPipeline Pipeline => _pipeline;
+
+            public CancellationTokenSource Source => _Cmdlet.Source;
 
             public void WriteVerbose(string message)
                 => _Cmdlet.WriteVerbose(message);
@@ -87,6 +106,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
 
             public void WriteWarning(string message)
                 => _Cmdlet.WriteWarning(message);
+
+            public void WriteDebug(string message) 
+                => _Cmdlet.WriteDebug(message);
         }
     }
 }

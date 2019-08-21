@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -21,7 +22,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
     /// <summary>
     /// Asynchronous cmdlet interface.
     /// </summary>
-    public interface IAsyncCmdlet
+    public interface IAsyncCmdlet : IEventListener, ISendAsync
     {
         /// <summary>
         /// Cmdlet parameters.

@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.PowerShell.Cmdlets.Compute;
+using Microsoft.Azure.PowerShell.Cmdlets.Compute.Strategies;
 using Microsoft.Rest;
 using System;
 
@@ -23,24 +24,41 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
 {
     sealed class Client : IClient
     {
+        IAzureContext _context;
         public string SubscriptionId { get; }
 
-        IAzureContext Context { get; }
+        public IAzureContext Context => _context;
 
-        public Client(IAzureContext context)
+        public PowerShell.Cmdlets.Compute.Runtime.ISendAsync Sender { get; }
+
+        public PowerShell.Cmdlets.Compute.Runtime.IEventListener Listener { get; }
+
+
+        public Client(AzureRMAsyncCmdlet adapter, IAsyncCmdlet cmdlet)
         {
-            if (context == null)
+            if (adapter?.SubscriptionId == null || !adapter.TryGetDefaultContext(out _context))
             {
                 throw new ApplicationException(Resources.NoSubscriptionInContext);
             }
 
-            Context = context;
-            SubscriptionId = Context.Subscription.Id;
+            SubscriptionId = adapter.SubscriptionId;
+            _context = new AzureContext(new AzureSubscription { Id = SubscriptionId }, _context.Account, _context.Environment, _context.Tenant, _context.TokenCache?.CacheData);
+            Sender = cmdlet;
+            Listener = cmdlet;
         }
 
         public T GetClient<T>()
             where T : ServiceClient<T>
-            => AzureSession.Instance.ClientFactory.CreateArmClient<T>(
+        {
+            var client = AzureSession.Instance.ClientFactory.CreateArmClient<T>(
                 Context, AzureEnvironment.Endpoint.ResourceManager);
+            return client;
+        }
+
+        public T GetAutorestClient<T>() where T:class, new()
+        {
+            return new T();
+        }
+
     }
 }

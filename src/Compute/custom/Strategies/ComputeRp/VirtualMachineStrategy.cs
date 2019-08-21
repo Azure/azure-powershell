@@ -21,6 +21,7 @@ using Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301;
 using System.Threading.Tasks;
 using Microsoft.Azure.PowerShell.Cmdlets.Compute.Support;
 using System.Linq;
+using Microsoft.Azure.PowerShell.Cmdlets.Compute.Strategies;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
@@ -29,19 +30,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
         public static ResourceStrategy<VirtualMachine> Strategy { get; }
             = ComputeStrategy.Create(
                 provider: "virtualMachines",
-                getOperations: client => client,
-                getAsync: async (o, p) => {
-                    Task<IVirtualMachine> setTask = null;
-                    await o.VirtualMachinesGet1(
-                        p.ResourceGroupName, p.Name, null, "subscriptionId", (response, creator) => ComputeApiHelpers.DeserializeEntity(response, creator, out setTask), null, null);
-                    return (await setTask) as VirtualMachine;
-                },
-                createOrUpdateAsync: async (o, p) => {
-                    Task<IVirtualMachine> setTask = null;
-                    await o.VirtualMachinesCreateOrUpdate1(
-                        p.ResourceGroupName, p.Name, "subcriptionId", p.Model, (response, creator) => ComputeApiHelpers.DeserializeEntity(response, creator, out setTask), null, null);
-                    return (await setTask) as VirtualMachine;
-                },
+                getOperations: client => client.GetVMOperations(),
+                getAsync: (o, p) => o.Get(p.ResourceGroupName, p.Name, null),
+                createOrUpdateAsync: (o, p) => o.CreateOrUpdate(p.ResourceGroupName, p.Name, p.Model),
                 createTime: c => 240);
 
         public static ResourceConfig<VirtualMachine> CreateVirtualMachineConfig(

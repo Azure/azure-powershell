@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Threading;
 
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
@@ -47,6 +48,14 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         /// <param name="message"></param>
         void WriteWarning(string message);
 
+
+
+        /// <summary>
+        /// See also PowerShell `WriteDebug`.
+        /// </summary>
+        /// <param name="message"></param>
+        void WriteDebug(string message);
+
         /// <summary>
         /// See also PowerShell `WriteProgress`.
         /// </summary>
@@ -66,8 +75,39 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         string VerbsNew { get; }
 
         /// <summary>
+        /// The current subscriptionId
+        /// </summary>
+        string SubscriptionId { get; }
+
+        /// <summary>
+        /// The correlationId
+        /// </summary>
+        string CorrelationId { get; }
+
+        /// <summary>
+        /// The Id of the curren tprocess record invocation
+        /// </summary>
+        string ProcessRecordId { get; }
+
+        /// <summary>
+        /// The parameter set name
+        /// </summary>
+        string ParameterSetName { get; }
+
+
+        /// <summary>
+        /// InvocationInfo for the current cmdlet
+        /// </summary>
+        System.Management.Automation.InvocationInfo Invocation { get; }
+
+        /// <summary>
         /// Cmdlet parameters.
         /// </summary>
         IEnumerable<KeyValuePair<string, object>> Parameters { get; }
+
+        PowerShell.Cmdlets.Compute.Runtime.HttpPipeline Pipeline { get; }
+
+        CancellationTokenSource Source { get; }
+
     }
 }

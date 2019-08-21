@@ -16,8 +16,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime;
 
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
@@ -180,8 +182,11 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             public IEnumerable<KeyValuePair<string, object>> Parameters
                 => Cmdlet.Parameters;
 
-            public CancellationToken CancellationToken { get; }
-                = new CancellationToken();
+            public CancellationToken CancellationToken => Cmdlet.Source.Token;
+
+            public CancellationToken Token => CancellationToken;
+
+            public Action Cancel => Cmdlet.Source.Cancel;
 
             public AsyncCmdlet(ICmdlet cmdlet)
             {
@@ -190,6 +195,9 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
             public void WriteVerbose(string message)
                 => Scheduler.BeginInvoke(() => Cmdlet.WriteVerbose(message));
+
+            public void WriteDebug(string message)
+                => Scheduler.BeginInvoke(() => Cmdlet.WriteDebug(message));
 
             public void WriteWarning(string message)
                 => Scheduler.BeginInvoke(() => Cmdlet.WriteWarning(message));
@@ -202,6 +210,47 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
             public void ReportTaskProgress(ITaskProgress taskProgress)
                 => Scheduler.BeginInvoke(() => TaskProgressList.Add(taskProgress));
+
+            public async Task Signal(string id, CancellationToken token, Func<EventData> createMessage)
+            {
+                if (token.IsCancellationRequested)
+                {
+                    return;
+                }
+
+                switch (id)
+                {
+                    case PowerShell.Cmdlets.Compute.Runtime.Events.Verbose:
+                        {
+                            WriteVerbose($"{(createMessage().Message ?? string.Empty)}");
+                            return;
+                        }
+                    case PowerShell.Cmdlets.Compute.Runtime.Events.Warning:
+                        {
+                            WriteWarning($"{(createMessage().Message ?? string.Empty)}");
+                            return;
+                        }
+                    case PowerShell.Cmdlets.Compute.Runtime.Events.Debug:
+                        {
+                            WriteDebug($"{(createMessage().Message ?? string.Empty)}");
+                            return;
+                        }
+                }
+
+                await PowerShell.Cmdlets.Compute.Module.Instance.Signal(id, token,
+                    createMessage, (i, t, m) => Signal(i, t, () => EventDataConverter.ConvertFrom(m()) as EventData),
+                    Cmdlet.Invocation, Cmdlet.ParameterSetName, Cmdlet.CorrelationId, Cmdlet.ProcessRecordId, null).ConfigureAwait(false);
+
+                if (token.IsCancellationRequested)
+                {
+                    return;
+                }
+            }
+
+            public Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, IEventListener callback)
+            {
+                return Cmdlet.Pipeline.SendAsync(request, callback);
+            }
         }
     }
 }

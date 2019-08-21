@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Commands.Common.Strategies.Compute;
 using Microsoft.Azure.PowerShell.Cmdlets.Compute;
 using Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201;
+using Microsoft.Azure.PowerShell.Cmdlets.Compute.Strategies;
 using Microsoft.Azure.PowerShell.Cmdlets.Compute.Support;
 using System;
 using System.Linq;
@@ -46,7 +47,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                 return imageAndOsType;
             }
 
-            var compute = client.GetClient<ComputeManagementClient>();
+            var compute = client.GetAutorestClient<ComputeManagementClient>();
 
             if (imageName.Contains(':'))
             {
@@ -71,11 +72,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 
                 if (image.Version.ToLower() == "latest")
                 {
-                    Task<IVirtualMachineImageResource[]> imagesTask = null;
-                        await compute.VirtualMachineImagesList(
-                        location, image.Publisher, image.Offer, image.Sku, "*", null, "Publisher", null, "subscriptionId", 
-                        (response, creator) => ComputeApiHelpers.DeserializeEntity(response, creator, out imagesTask), null, null);
-                    var images = (await imagesTask).Select(i => i as VirtualMachineImageResource);
+                    var images = await compute.GetImageOperations().List(location, image.Publisher, image.Offer, image.Sku, "*", null, "Publisher", null);
                     // According to Compute API: 
                     // "The allowed formats are Major.Minor.Build or 'latest'. 
                     //  Major, Minor, and Build are decimal numbers."
@@ -84,12 +81,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         .Aggregate((a, b) => a.CompareTo(b) < 0 ? b : a)
                         .ToString();
                 }
-                Task<IVirtualMachineImage> imageTask = null;
-                await compute.VirtualMachineImagesGet(
-                    location, image.Publisher, image.Offer, image.Sku, image.Version, "subscriptionId",
-                    (response, creator) => ComputeApiHelpers.DeserializeEntity(response, creator, out imageTask), null, null);
-                var imageModel = ((await imageTask) as VirtualMachineImage);
-                 return new ImageAndOsType(
+                var imageModel = await compute.GetImageOperations().Get(location, image.Publisher, image.Offer, image.Sku, image.Version);
+                return new ImageAndOsType(
                     imageModel.OSDiskImageOperatingSystem,
                     image,
                     imageModel.DataDiskImage.Where(d => d.Lun.HasValue).Select(d => d.Lun.Value).ToList());
@@ -155,10 +148,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
         static async Task<ImageAndOsType> GetImageAndOsTypeAsync(
             this ComputeManagementClient compute, string resourceGroupName, string name)
         {
-            Task<IImage> imageTask= null;
-            await compute.ImagesGet(resourceGroupName, name, string.Empty, "subscriptionId", 
-                (response, creator) => ComputeApiHelpers.DeserializeEntity(response, creator, out imageTask), null, null);
-            var localImage = await imageTask;
+            var localImage = await compute.GetImageOperations().ImagesGet(resourceGroupName, name, string.Empty);
             return new ImageAndOsType(
                 localImage.OSDiskOstype,
                 new ImageReference { Id = localImage.Id },
@@ -172,19 +162,12 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             var versionPresent = (resourceId.IndexOf(VERSION_STRING, StringComparison.InvariantCultureIgnoreCase) >= 0);
             if (versionPresent)
             {
-                Task<PowerShell.Cmdlets.Compute.Models.Api20190301.IGalleryImageVersion> localVersionTask = null;
-                await compute.GalleryImageVersionsGet("subscriptionId", 
-                    resourceGroupName, GetGaleryName(resourceId), GetImageName(resourceId), GetImageVersion(resourceId), ReplicationStatusTypes.ReplicationStatus, 
-                    (response, creator) => ComputeApiHelpers.DeserializeEntity(response, creator, out localVersionTask),  null, null, null);
-                var localImageVersion = await localVersionTask;
+                var localImageVersion = await compute.GetGalleryImageOperations()
+                    .VersionsGet(resourceGroupName, GetGaleryName(resourceId), GetImageName(resourceId), GetImageVersion(resourceId), ReplicationStatusTypes.ReplicationStatus);
                 imageRef = new ImageReference { Id = localImageVersion.Id };
             }
 
-            Task<PowerShell.Cmdlets.Compute.Models.Api20190301.IGalleryImage> localImageTask = null;
-
-            await compute.GalleryImagesGet("subscriptionId", resourceGroupName, GetGaleryName(resourceId), GetImageName(resourceId), 
-                (response, creator) => ComputeApiHelpers.DeserializeEntity(response, creator, out localImageTask), null, null, null);
-            var localImage = await localImageTask;
+            var localImage = await compute.GetGalleryImageOperations().ImagesGet(resourceGroupName, GetGaleryName(resourceId), GetImageName(resourceId));
             if (imageRef == null)
             {
                 imageRef = new ImageReference { Id = localImage.Id };

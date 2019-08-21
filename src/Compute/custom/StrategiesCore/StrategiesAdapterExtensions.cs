@@ -12,21 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Rest;
+using Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime;
 
-namespace Microsoft.Azure.Commands.Common.Strategies
+namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Strategies
 {
-    public interface IClient
+    public static class StrategiesAdapterExtensions
     {
-        T GetClient<T>()
-            where T : ServiceClient<T>;
-
-        T GetAutorestClient<T>() where T : class, new();
-
-        string SubscriptionId { get; }
-        PowerShell.Cmdlets.Compute.Runtime.ISendAsync Sender { get; }
-
-        PowerShell.Cmdlets.Compute.Runtime.IEventListener Listener { get; }
-
+        /// <summary>
+        /// Get the Http Pipelien for the given cmdlet
+        /// </summary>
+        /// <param name="adapter"></param>
+        /// <returns></returns>
+        public static HttpPipeline GetPipeline(this IStrategiesCmdletAdapter adapter)
+        {
+            return Module.Instance.CreatePipeline(adapter.Invocation, adapter.CorrelationId, adapter.ProcessRecordId);
+        }
     }
 }

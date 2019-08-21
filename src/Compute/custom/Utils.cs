@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
                 var locationToUse = String.IsNullOrWhiteSpace(location)? defaultLocation : location;
                 //Check if the vm has enough cores
                 Task<IVirtualMachineSizeListResult> result = null;
-                client.GetClient<ComputeManagementClient>().VirtualMachineSizesList(locationToUse, "2019-03-01", "subscriptionId", (response, action) => ComputeApiHelpers.DeserializeEntity(response, action, out result), null, null).GetAwaiter().GetResult();
+                client.GetAutorestClient<ComputeManagementClient>().VirtualMachineSizesList(locationToUse, "2019-03-01", client.SubscriptionId, (response, action) => ComputeApiHelpers.DeserializeEntity(response, action, out result), client.Listener, client.Sender).GetAwaiter().GetResult();
                 var sizes = result.GetAwaiter().GetResult();
                 if (sizes == null || sizes.Value == null)
                 {

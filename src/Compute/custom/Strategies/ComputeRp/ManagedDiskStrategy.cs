@@ -15,9 +15,8 @@
 using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20180930;
-using Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301;
+using Microsoft.Azure.PowerShell.Cmdlets.Compute.Strategies;
 using Microsoft.Azure.PowerShell.Cmdlets.Compute.Support;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
@@ -26,20 +25,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
         public static ResourceStrategy<Disk> Strategy { get; }
             = ComputeStrategy.Create(
                 provider: "disks",
-                getOperations: client => client,
-                getAsync: async (o, p) => {
-                    Task<IDisk> diskTask = null;
-                    await o.DisksGet("subscriptionId", p.ResourceGroupName, p.Name,
-                        (response, creator) => ComputeApiHelpers.DeserializeEntity(response, creator, out diskTask), null, null);
-                    return (await diskTask) as Disk;
-                    },
-                createOrUpdateAsync: async (o, p) => {
-                    Task<IDisk> diskTask = null;
-                    await o.DisksCreateOrUpdate(
-                        "subscriptionId", p.ResourceGroupName, p.Name, p.Model,
-                        (response, creator) => ComputeApiHelpers.DeserializeEntity(response, creator, out diskTask), null, null);
-                    return (await diskTask) as Disk;
-                },
+                getOperations: client => client.GetDiskOperations(),
+                getAsync: (o, p) => o.Get(p.ResourceGroupName, p.Name),
+                createOrUpdateAsync: (o, p) => o.CreateOrUpdate(
+                        p.ResourceGroupName, p.Name, p.Model),
                 createTime: d => 120);
 
         public static ResourceConfig<Disk> CreateManagedDiskConfig(
