@@ -63,7 +63,7 @@ Get information on all the endpoints for your IoT Hub
 Gets all valid skus that this IotHub can transition to.
 
 ### [Invoke-AzIotHubManualFailover](Invoke-AzIotHubManualFailover.md)
-Initiate a manual failover for the IoT Hub to the geo-paired disaster recovery region.
+Invoke failover process for the IoT Hub to the geo-paired disaster recovery region.
 
 ### [New-AzIotHub](New-AzIotHub.md)
 Creates a new IotHub.
