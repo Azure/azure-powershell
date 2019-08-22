@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Common
         protected const string TagsAlias = "Tags";
 
         protected const string ResourceProviderName = "Microsoft.HealthcareApis";
-        protected const string ResourceTypeName = "services";
+        protected const string ResourceTypeName = "Microsoft.HealthcareApis/services";
 
         public IHealthcareApisManagementClient HealthcareApisClient
         {
