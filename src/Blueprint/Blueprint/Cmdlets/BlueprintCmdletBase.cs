@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Cmdlets
                 provider = ResourceManagerClient.Providers.Register(BlueprintConstants
                     .BlueprintProviderNamespace); // Instead of Get, do Register call again since GET takes its sweet time to return the status.
 
-                TestMockSupport.Delay(TimeSpan.FromSeconds(2));
+                TestMockSupport.Delay(TimeSpan.FromSeconds(1));
 
                 pollCount++;
 
