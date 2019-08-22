@@ -87,6 +87,11 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "The Cors for the SignalR service.")]
+        public SignalRCorsSettings Cors { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Run the cmdlet in background job.")]
         public SwitchParameter AsJob { get; set; }
 
@@ -119,6 +124,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
                     PromptParameter(nameof(UnitCount), UnitCount, true, DefaultUnitCount);
                     PromptParameter(nameof(Tag), Tag == null ? null : JsonConvert.SerializeObject(Tag));
                     PromptParameter(nameof(Feature), Feature == null ? null : JsonConvert.SerializeObject(Feature));
+                    PromptParameter(nameof(Cors), Cors == null ? null : JsonConvert.SerializeObject(Cors));
 
                     Sku = Sku ?? DefaultSku;
                     UnitCount = UnitCount ?? DefaultUnitCount;
@@ -126,7 +132,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
                     var parameters = new SignalRUpdateParameters(
                         tags: Tag,
                         sku: new ResourceSku(name: Sku, capacity: UnitCount),
-                        properties: new SignalRCreateOrUpdateProperties(features: Feature));
+                        properties: new SignalRCreateOrUpdateProperties(features: Feature, cors: Cors));
 
                     Client.SignalR.Update(ResourceGroupName, Name, parameters);
 

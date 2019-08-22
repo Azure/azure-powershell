@@ -35,6 +35,8 @@ namespace Microsoft.Azure.Commands.SignalR.Models
 
         public IList<PSSignalRFeature> Features { get; }
 
+        public PSSignalRCorsSettings Cors { get; }
+
         public string Version { get; }
 
         public PSSignalRResource(SignalRResource signalRResource)
@@ -52,6 +54,7 @@ namespace Microsoft.Azure.Commands.SignalR.Models
             {
                 Features.Add(new PSSignalRFeature(feature));
             }
+            Cors = new PSSignalRCorsSettings(signalRResource.Cors);
             Version = signalRResource.Version;
         }
     }
