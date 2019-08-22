@@ -37,7 +37,7 @@ Restart a SignalR service.
 
 ### Restart a specific SignalR service
 ```powershell
-PS D:\azure-powershell\artifacts\Debug\Az.SignalR> Restart-AzSignalR -ResourceGroupName myResourceGroup -Name mysignalr1 -PassThru
+PS C:\> Restart-AzSignalR -ResourceGroupName myResourceGroup -Name mysignalr1 -PassThru
 
 True
 ```

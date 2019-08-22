@@ -33,7 +33,7 @@ NameAvailable Reason        Message
 
 ### Check a unexisted name.
 ```powershell
-PS D:\azure-powershell\artifacts\Debug\Az.SignalR> Test-AzSignalR unexistedsignalr eastus
+PS C:\> Test-AzSignalR unexistedsignalr eastus
 
 NameAvailable Reason Message
 ------------- ------ -------
