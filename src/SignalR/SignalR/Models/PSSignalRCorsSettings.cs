@@ -12,32 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using Microsoft.Azure.Management.SignalR.Models;
 
 namespace Microsoft.Azure.Commands.SignalR.Models
 {
-    public class PSSignalRUsage
+    public class PSSignalRCorsSettings
     {
-        public PSSignalRUsage(SignalRUsage signalrUsage)
+        public PSSignalRCorsSettings(SignalRCorsSettings signalrCorsSettings)
         {
-            Id = signalrUsage.Id;
-            CurrentValue = signalrUsage.CurrentValue;
-            Limit = signalrUsage.Limit;
-            Name = signalrUsage.Name.Value;
-            LocalizedName = signalrUsage.Name.LocalizedValue;
-            Unit = signalrUsage.Unit;
+            AllowedOrigins = signalrCorsSettings.AllowedOrigins;
         }
 
-        public string Id { get; }
-
-        public long? CurrentValue { get; }
-
-        public long? Limit { get; }
-
-        public string Name { get; }
-
-        public string LocalizedName { get; }
-
-        public string Unit { get; }
+        public IList<string> AllowedOrigins { get; }
     }
 }

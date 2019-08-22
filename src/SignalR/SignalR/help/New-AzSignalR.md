@@ -16,7 +16,8 @@ Create a SignalR service.
 New-AzSignalR [-ResourceGroupName <String>] [-Name] <String> [-Location <String>] [-Sku <String>]
  [-UnitCount <Int32>] [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>]
  [-Feature <System.Collections.Generic.IList`1[Microsoft.Azure.Management.SignalR.Models.SignalRFeature]>]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Cors <SignalRCorsSettings>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,6 +45,21 @@ Run the cmdlet in background job.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Cors
+The Cors for the SignalR service.
+
+```yaml
+Type: Microsoft.Azure.Management.SignalR.Models.SignalRCorsSettings
 Parameter Sets: (All)
 Aliases:
 
