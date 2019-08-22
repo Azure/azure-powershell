@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.2.2
 * Fixed miscellaneous typos across module
 * Fixed incorrect parameter name in help documentation
 

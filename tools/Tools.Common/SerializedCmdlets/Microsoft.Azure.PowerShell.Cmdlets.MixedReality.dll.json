@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount",
             "Name": "Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount.PSSpatialAnchorsAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount.PSSpatialAnchorsAccount, Microsoft.Azure.PowerShell.Cmdlets.MixedReality, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount.PSSpatialAnchorsAccount, Microsoft.Azure.PowerShell.Cmdlets.MixedReality, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "ResourceGroupName": "System.String",
@@ -472,7 +472,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount",
             "Name": "Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount.PSSpatialAnchorsAccountKeys",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount.PSSpatialAnchorsAccountKeys, Microsoft.Azure.PowerShell.Cmdlets.MixedReality, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount.PSSpatialAnchorsAccountKeys, Microsoft.Azure.PowerShell.Cmdlets.MixedReality, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "PrimaryKey": "System.String",
               "SecondaryKey": "System.String"
@@ -592,7 +592,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount",
             "Name": "Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount.PSSpatialAnchorsAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount.PSSpatialAnchorsAccount, Microsoft.Azure.PowerShell.Cmdlets.MixedReality, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount.PSSpatialAnchorsAccount, Microsoft.Azure.PowerShell.Cmdlets.MixedReality, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "ResourceGroupName": "System.String",
@@ -867,7 +867,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount",
                   "Name": "Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount.PSSpatialAnchorsAccount",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount.PSSpatialAnchorsAccount, Microsoft.Azure.PowerShell.Cmdlets.MixedReality, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount.PSSpatialAnchorsAccount, Microsoft.Azure.PowerShell.Cmdlets.MixedReality, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "ResourceGroupName": "System.String",
@@ -1037,7 +1037,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount",
             "Name": "Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount.PSSpatialAnchorsAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount.PSSpatialAnchorsAccount, Microsoft.Azure.PowerShell.Cmdlets.MixedReality, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount.PSSpatialAnchorsAccount, Microsoft.Azure.PowerShell.Cmdlets.MixedReality, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "ResourceGroupName": "System.String",
@@ -1377,7 +1377,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount",
             "Name": "Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount.PSSpatialAnchorsAccountKeys",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount.PSSpatialAnchorsAccountKeys, Microsoft.Azure.PowerShell.Cmdlets.MixedReality, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount.PSSpatialAnchorsAccountKeys, Microsoft.Azure.PowerShell.Cmdlets.MixedReality, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "PrimaryKey": "System.String",
               "SecondaryKey": "System.String"
@@ -1497,7 +1497,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount",
             "Name": "Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount.PSSpatialAnchorsAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount.PSSpatialAnchorsAccount, Microsoft.Azure.PowerShell.Cmdlets.MixedReality, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount.PSSpatialAnchorsAccount, Microsoft.Azure.PowerShell.Cmdlets.MixedReality, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "ResourceGroupName": "System.String",
@@ -2185,7 +2185,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount",
                   "Name": "Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount.PSSpatialAnchorsAccount",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount.PSSpatialAnchorsAccount, Microsoft.Azure.PowerShell.Cmdlets.MixedReality, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount.PSSpatialAnchorsAccount, Microsoft.Azure.PowerShell.Cmdlets.MixedReality, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "ResourceGroupName": "System.String",
@@ -2352,7 +2352,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount",
                   "Name": "Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount.PSSpatialAnchorsAccount",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount.PSSpatialAnchorsAccount, Microsoft.Azure.PowerShell.Cmdlets.MixedReality, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount.PSSpatialAnchorsAccount, Microsoft.Azure.PowerShell.Cmdlets.MixedReality, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "ResourceGroupName": "System.String",
@@ -2674,7 +2674,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount",
             "Name": "Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount.PSSpatialAnchorsAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount.PSSpatialAnchorsAccount, Microsoft.Azure.PowerShell.Cmdlets.MixedReality, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount.PSSpatialAnchorsAccount, Microsoft.Azure.PowerShell.Cmdlets.MixedReality, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "ResourceGroupName": "System.String",
@@ -3015,7 +3015,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount",
                   "Name": "Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount.PSSpatialAnchorsAccount",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount.PSSpatialAnchorsAccount, Microsoft.Azure.PowerShell.Cmdlets.MixedReality, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.MixedReality.SpatialAnchorsAccount.PSSpatialAnchorsAccount, Microsoft.Azure.PowerShell.Cmdlets.MixedReality, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "ResourceGroupName": "System.String",
