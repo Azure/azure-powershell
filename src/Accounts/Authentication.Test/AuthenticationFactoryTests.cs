@@ -365,11 +365,9 @@ namespace Common.Authentication.Test
         {
             AzureSessionInitializer.InitializeAzureSession();
             var tenant = Guid.NewGuid().ToString();
-            var userId = Guid.NewGuid().ToString();
             var environment = AzureEnvironment.PublicEnvironments["AzureCloud"];
             var account = new AzureAccount
             {
-                Id = userId,
                 Type = AzureAccount.AccountType.ManagedService
             };
             const string resource = @"https://management.azure.com/";
@@ -447,11 +445,9 @@ namespace Common.Authentication.Test
         {
             AzureSessionInitializer.InitializeAzureSession();
             var tenant = Guid.NewGuid().ToString();
-            var userId = Guid.NewGuid().ToString();
             var environment = AzureEnvironment.PublicEnvironments["AzureCloud"];
             var account = new AzureAccount
             {
-                Id = userId,
                 Type = AzureAccount.AccountType.ManagedService
             };
             const string resource = @"https://vault.azure.com/";
@@ -488,11 +484,9 @@ namespace Common.Authentication.Test
         {
             AzureSessionInitializer.InitializeAzureSession();
             var tenant = Guid.NewGuid().ToString();
-            var userId = Guid.NewGuid().ToString();
             var environment = AzureEnvironment.PublicEnvironments["AzureCloud"];
             var account = new AzureAccount
             {
-                Id = userId,
                 Type = AzureAccount.AccountType.ManagedService
             };
             const string resource = @"https://management.azure.com/";
