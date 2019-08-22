@@ -23,6 +23,7 @@
     - Resources with `condition = false` or `copy.count = 0` will be deleted in complete mode
 * Fixed miscellaneous typos across module
 * Add an example of assigning policy at subscription level to help doc
+* Fix null ref exception in Get-AzRoleAssignment commandlet
 
 ## Version 1.6.1
 - Remove missing cmdlet referenced in `New-AzResourceGroupDeployment` documentation
