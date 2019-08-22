@@ -41,24 +41,39 @@ Updates an existing healthcareApis fhir service.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 : Updates the existing healthcareapis service named MyService in the resource group MyResourceGroup  with the cosmosdb OfferThroughput = 500.
+
 ```powershell
 PS C:\> Set-AzHealthcareApisService -Name MyService -ResourceGroupName MyResourceGroup -CosmosOfferThroughput 500
 
-ResourceGroupName Name 
------------------ -----------
-MyResourceGroup   MyService
+Properties        : Microsoft.Azure.Management.HealthcareApis.Models.ServicesProperties
+ResourceId        : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft
+                    .HealthcareApis/services/MyService
+Name              : MyService
+Type              : Microsoft.HealthcareApis/services
+Kind              : FhirR4
+Location          : westus2
+Tags              : {[key, val]}
+Etag              : val
 ```
 
-Updates the existing healthcareapis service named MyService in the resource group MyResourceGroup  with the cosmosdb OfferThroughput = 500.
 
-### Example 2
+### Example 2: Updates the existing healthcareapis service named MyService in the resource group MyResourceGroup  with the cosmosdb OfferThroughput = 500.
+
 ```powershell
 PS C:\> $ResourceId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.HealthcareApis/services/MyService"
 PS C:\> Set-AzHealthcareApisService -ResourceId $ResourceId  -CosmosOfferThroughput 500
-```
 
-Updates the existing healthcareapis service named MyService in the resource group MyResourceGroup  with the cosmosdb OfferThroughput = 500.
+Properties        : Microsoft.Azure.Management.HealthcareApis.Models.ServicesProperties
+ResourceId        : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft
+                    .HealthcareApis/services/MyService
+Name              : MyService
+Type              : Microsoft.HealthcareApis/services
+Kind              : FhirR4
+Location          : westus2
+Tags              : {[key, val]}
+Etag              : val
+```
 
 ## PARAMETERS
 

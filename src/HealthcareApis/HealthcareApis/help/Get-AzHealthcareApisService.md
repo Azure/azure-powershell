@@ -39,17 +39,16 @@ Gets existing healthcareApis fhir service accounts created within the specified 
 ```powershell
 PS C:\> Get-AzHealthcareApisService -Name "MyService" -ResourceGroupName "MyResourceGroup"
 
-ResourceId        : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft
+ResourceGroupName : MyResourceGroup
+Name:             : MyService
+Id                : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft
                     .HealthcareApis/services/MyService
-Name              : MyService
-Location          : westus
-Type              : Microsoft.HealthcareApis/services
-Kind              : fhir-R4
+Location          : westus2
+ResourceType      : Microsoft.HealthcareApis/services
+Kind              : FhirR4
+Tags              : {}
+Properties        : Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisServiceConfig
 Etag              : val
-Tags              : {[key, val]}
-Properties        : Microsoft.Azure.Commands.HealthcareApisService.Models.PSHealthcareApisFhirServiceConfig
-SubscriptionId    : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
-ResourceGroupName : MyResourceGroupName
 ```
 
 ### Example 2
@@ -59,29 +58,27 @@ Gets the metadata for all HealthcareApis services in the provided Resource Group
 ```powershell
 PS C:\> Get-AzHealthcareApisService -ResourceGroupName "MyResourceGroup"
 
-ResourceId        : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft
-                    .HealthcareApis/services/MyService1
-Name              : MyService1
-Location          : westus
-Type              : Microsoft.HealthcareApis/services
-Kind              : fhir-R4
+ResourceGroupName : MyResourceGroup
+Name:             : MyService
+Id                : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft
+                    .HealthcareApis/services/MyService
+Location          : westus2
+ResourceType      : Microsoft.HealthcareApis/services
+Kind              : FhirR4
+Tags              : {}
+Properties        : Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisServiceConfig
 Etag              : val
-Tags              : {[key, val]}
-Properties        : Microsoft.Azure.Commands.HealthcareApisService.Models.PSHealthcareApisFhirServiceConfig
-SubscriptionId    : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
-ResourceGroupName : MyResourceGroupName
 
-ResourceId        : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft
-                    .HealthcareApis/services/MyService2
-Name              : MyService2
-Location          : westus
-Type              : Microsoft.HealthcareApis/services
-Kind              : fhir-R4
+ResourceGroupName : MyResourceGroup
+Name:             : MyService1
+Id                : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft
+                    .HealthcareApis/services/MyService1
+Location          : westus2
+ResourceType      : Microsoft.HealthcareApis/services
+Kind              : FhirR4
+Tags              : {}
+Properties        : Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisServiceConfig
 Etag              : val
-Tags              : {[key, val]}
-Properties        : Microsoft.Azure.Commands.HealthcareApisService.Models.PSHealthcareApisFhirServiceConfig
-SubscriptionId    : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
-ResourceGroupName : MyResourceGroupName
 ```
 
 ### Example 3
@@ -91,29 +88,27 @@ Gets the metadata for all HealthcareApis services in the given subscription
 ```powershell
 PS C:\> Get-AzHealthcareApisService
 
-ResourceId        : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft
-                    .HealthcareApis/services/MyService1
-Name              : MyService1
-Location          : westus
-Type              : Microsoft.HealthcareApis/services
-Kind              : fhir-R4
+ResourceGroupName : MyResourceGroup
+Name:             : MyService
+Id                : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft
+                    .HealthcareApis/services/MyService
+Location          : westus2
+ResourceType      : Microsoft.HealthcareApis/services
+Kind              : FhirR4
+Tags              : {}
+Properties        : Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisServiceConfig
 Etag              : val
-Tags              : {[key, val]}
-Properties        : Microsoft.Azure.Commands.HealthcareApisService.Models.PSHealthcareApisFhirServiceConfig
-SubscriptionId    : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
-ResourceGroupName : MyResourceGroupName
 
-ResourceId        : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft
-                    .HealthcareApis/services/MyService2
-Name              : MyService2
-Location          : westus
-Type              : Microsoft.HealthcareApis/services
-Kind              : fhir-R4
+ResourceGroupName : MyResourceGroup
+Name:             : MyService1
+Id                : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft
+                    .HealthcareApis/services/MyService1
+Location          : westus2
+ResourceType      : Microsoft.HealthcareApis/services
+Kind              : FhirR4
+Tags              : {}
+Properties        : Microsoft.Azure.Commands.HealthcareApis.Models.PSHealthcareApisServiceConfig
 Etag              : val
-Tags              : {[key, val]}
-Properties        : Microsoft.Azure.Commands.HealthcareApisService.Models.PSHealthcareApisFhirServiceConfig
-SubscriptionId    : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
-ResourceGroupName : MyResourceGroupName
 ```
 
 ## PARAMETERS

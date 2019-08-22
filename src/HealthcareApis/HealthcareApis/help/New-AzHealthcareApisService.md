@@ -33,17 +33,15 @@ ResourceGroupName Name Location        Kind   CosmosOfferThroughput
 ----------------- ----------- -------------------------------
 MyResourceGroup   MyService   westus2    fhir-R4   400
 
+Properties        : Microsoft.Azure.Management.HealthcareApis.Models.ServicesProperties
 ResourceId        : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft
                     .HealthcareApis/services/MyService
 Name              : MyService
-Location          : westus
 Type              : Microsoft.HealthcareApis/services
-Kind              : fhir-R4
-Etag              : val
+Kind              : FhirR4
+Location          : westus2
 Tags              : {[key, val]}
-Properties        : Microsoft.Azure.Commands.HealthcareApisService.Models.PSHealthcareApisFhirServiceConfig
-SubscriptionId    : XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
-ResourceGroupName : MyResourceGroupName
+Etag              : val
 ```
 
 ## PARAMETERS

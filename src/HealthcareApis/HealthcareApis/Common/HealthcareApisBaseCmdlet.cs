@@ -40,6 +40,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Common
 
         protected const string ResourceProviderName = "Microsoft.HealthcareApis";
         protected const string ResourceTypeName = "Microsoft.HealthcareApis/services";
+        protected const string ResourceType = "services";
 
         public IHealthcareApisManagementClient HealthcareApisClient
         {
@@ -137,7 +138,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Common
             if (string.Equals(ResourceProviderName,
                               ResourceIdentifier.GetProviderFromResourceType(resourceIdentifier.ResourceType),
                               System.StringComparison.InvariantCultureIgnoreCase)
-                && string.Equals(ResourceTypeName,
+                && string.Equals(ResourceType,
                                  ResourceIdentifier.GetTypeFromResourceType(resourceIdentifier.ResourceType),
                                  System.StringComparison.InvariantCultureIgnoreCase))
             {
