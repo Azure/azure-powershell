@@ -14,8 +14,8 @@ Remove a member from a group.
 
 ### Remove (Default)
 ```
-Remove-AzADGroupMember -GroupObjectId <String> -MemberObjectId <String> -TenantId <String>
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzADGroupMember -GroupObjectId <String> -MemberObjectId <String> -TenantId <String> [-PassThru]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteByMemberIdAndGroupDisplayName
@@ -56,7 +56,7 @@ Remove-AzADGroupMember -GroupObject <IAdGroup> -MemberUserPrincipalName <String>
 
 ### RemoveViaIdentity
 ```
-Remove-AzADGroupMember -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
+Remove-AzADGroupMember -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 

@@ -14,8 +14,8 @@ Creates or updates a resource group.
 
 ### UpdateExpanded (Default)
 ```
-Set-AzResourceGroup -Name <String> -SubscriptionId <String> -Location <String> [-ManagedBy <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzResourceGroup -Name <String> -SubscriptionId <String> -Location <String> [-DefaultProfile <PSObject>]
+ [-ManagedBy <String>] [-Tag <Hashtable>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update

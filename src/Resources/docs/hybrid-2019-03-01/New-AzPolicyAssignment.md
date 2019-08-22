@@ -15,10 +15,10 @@ For example, when you apply a policy to a resource group that policy is assigned
 
 ### CreateExpanded2 (Default)
 ```
-New-AzPolicyAssignment -PolicyAssignmentName <String> -Scope <String>
+New-AzPolicyAssignment -PolicyAssignmentName <String> -Scope <String> [-Name <String>]
  [-AssignmentParameter <IPolicyAssignmentPropertiesParameters>] [-Description <String>]
- [-DisplayName <String>] [-Name <String>] [-PolicyDefinitionId <String>] [-PropertiesScope <String>]
- [-Type <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DisplayName <String>] [-PolicyDefinitionId <String>] [-PropertiesScope <String>] [-Type <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create2
@@ -35,10 +35,10 @@ New-AzPolicyAssignment -InputObject <IResourcesIdentity> -Parameter <IPolicyAssi
 
 ### CreateViaIdentityExpanded2
 ```
-New-AzPolicyAssignment -InputObject <IResourcesIdentity>
+New-AzPolicyAssignment -InputObject <IResourcesIdentity> [-Name <String>] [-Scope <String>]
  [-AssignmentParameter <IPolicyAssignmentPropertiesParameters>] [-Description <String>]
- [-DisplayName <String>] [-Name <String>] [-PolicyDefinitionId <String>] [-Scope <String>] [-Type <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DisplayName <String>] [-PolicyDefinitionId <String>] [-Type <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

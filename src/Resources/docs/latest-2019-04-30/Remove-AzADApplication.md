@@ -14,7 +14,7 @@ Delete an application.
 
 ### Delete2 (Default)
 ```
-Remove-AzADApplication -ObjectId <String> -TenantId <String> [-DefaultProfile <PSObject>] [-PassThru]
+Remove-AzADApplication -ObjectId <String> -TenantId <String> [-PassThru] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Remove-AzADApplication -DisplayName <String> -ObjectId <String> -TenantId <Strin
 
 ### DeleteViaIdentity2
 ```
-Remove-AzADApplication -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
+Remove-AzADApplication -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 

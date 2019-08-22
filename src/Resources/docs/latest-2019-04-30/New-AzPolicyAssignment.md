@@ -16,10 +16,11 @@ For example, when you assign a policy at resource group scope, that policy appli
 
 ### CreateExpanded1 (Default)
 ```
-New-AzPolicyAssignment -Id <String> [-AssignmentParameter <IPolicyAssignmentPropertiesParameters>]
- [-Description <String>] [-DisplayName <String>] [-IdentityType <ResourceIdentityType>] [-Location <String>]
+New-AzPolicyAssignment -Id <String> [-Scope <String>]
+ [-AssignmentParameter <IPolicyAssignmentPropertiesParameters>] [-Description <String>]
+ [-DisplayName <String>] [-IdentityType <ResourceIdentityType>] [-Location <String>]
  [-Metadata <IPolicyAssignmentPropertiesMetadata>] [-NotScope <String[]>] [-PolicyDefinitionId <String>]
- [-Scope <String>] [-SkuName <String>] [-SkuTier <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [-SkuName <String>] [-SkuTier <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -59,21 +60,21 @@ New-AzPolicyAssignment -InputObject <IResourcesIdentity> -Parameter <IPolicyAssi
 
 ### CreateViaIdentityExpanded
 ```
-New-AzPolicyAssignment -InputObject <IResourcesIdentity>
+New-AzPolicyAssignment -InputObject <IResourcesIdentity> [-Scope <String>]
  [-AssignmentParameter <IPolicyAssignmentPropertiesParameters>] [-Description <String>]
  [-DisplayName <String>] [-IdentityType <ResourceIdentityType>] [-Location <String>]
  [-Metadata <IPolicyAssignmentPropertiesMetadata>] [-NotScope <String[]>] [-PolicyDefinitionId <String>]
- [-Scope <String>] [-SkuName <String>] [-SkuTier <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [-SkuName <String>] [-SkuTier <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded1
 ```
-New-AzPolicyAssignment -InputObject <IResourcesIdentity>
+New-AzPolicyAssignment -InputObject <IResourcesIdentity> [-Scope <String>]
  [-AssignmentParameter <IPolicyAssignmentPropertiesParameters>] [-Description <String>]
  [-DisplayName <String>] [-IdentityType <ResourceIdentityType>] [-Location <String>]
  [-Metadata <IPolicyAssignmentPropertiesMetadata>] [-NotScope <String[]>] [-PolicyDefinitionId <String>]
- [-Scope <String>] [-SkuName <String>] [-SkuTier <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [-SkuName <String>] [-SkuTier <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 

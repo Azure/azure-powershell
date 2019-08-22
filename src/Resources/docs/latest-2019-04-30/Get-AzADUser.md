@@ -30,7 +30,7 @@ Get-AzADUser -TenantId <String> [-DisplayName <String>] [-Mail <String>] [-MailN
 
 ### GetByDisplayNamePrefix
 ```
-Get-AzADUser -StartsWith <String> -TenantId <String> [-Mail <String>] [-MailNickname <String>]
+Get-AzADUser -TenantId <String> -StartsWith <String> [-Mail <String>] [-MailNickname <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 

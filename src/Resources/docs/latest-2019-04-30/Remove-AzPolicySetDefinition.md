@@ -20,25 +20,25 @@ Remove-AzPolicySetDefinition -Id <String> [-SubscriptionId <String>] [-PassThru]
 
 ### Delete
 ```
-Remove-AzPolicySetDefinition -Name <String> -SubscriptionId <String> [-DefaultProfile <PSObject>] [-PassThru]
+Remove-AzPolicySetDefinition -Name <String> -SubscriptionId <String> [-PassThru] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Delete1
 ```
-Remove-AzPolicySetDefinition -ManagementGroupName <String> -Name <String> [-DefaultProfile <PSObject>]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzPolicySetDefinition -ManagementGroupName <String> -Name <String> [-PassThru]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzPolicySetDefinition -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+Remove-AzPolicySetDefinition -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity1
 ```
-Remove-AzPolicySetDefinition -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+Remove-AzPolicySetDefinition -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 

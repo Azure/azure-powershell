@@ -23,17 +23,17 @@ Update-AzADApplication -ObjectId <String> -TenantId <String> [-AllowGuestsSignIn
  [-KnownClientApplication <String[]>] [-LogoutUrl <String>] [-Oauth2AllowImplicitFlow]
  [-Oauth2AllowUrlPathMatching] [-Oauth2Permission <IOAuth2Permission[]>] [-Oauth2RequirePostResponse]
  [-OptionalClaimAccessToken <IOptionalClaim[]>] [-OptionalClaimIdToken <IOptionalClaim[]>]
- [-OptionalClaimSamlToken <IOptionalClaim[]>] [-OrgRestriction <String[]>]
+ [-OptionalClaimSamlToken <IOptionalClaim[]>] [-OrgRestriction <String[]>] [-PassThru]
  [-PasswordCredentials <IPasswordCredential[]>] [-PreAuthorizedApplication <IPreAuthorizedApplication[]>]
  [-PublicClient] [-PublisherDomain <String>] [-ReplyUrl <String[]>]
  [-RequiredResourceAccess <IRequiredResourceAccess[]>] [-SamlMetadataUrl <String>] [-SignInAudience <String>]
- [-WwwHomepage <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WwwHomepage <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Patch
 ```
 Update-AzADApplication -ObjectId <String> -TenantId <String> -Parameter <IApplicationUpdateParameters>
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### PatchByApplicationId
@@ -56,8 +56,8 @@ Update-AzADApplication -ApplicationId <String> -TenantId <String> [-AllowGuestsS
 
 ### PatchViaIdentity
 ```
-Update-AzADApplication -InputObject <IResourcesIdentity> -Parameter <IApplicationUpdateParameters>
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzADApplication -InputObject <IResourcesIdentity> -Parameter <IApplicationUpdateParameters> [-PassThru]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### PatchViaIdentityExpanded
@@ -71,11 +71,11 @@ Update-AzADApplication -InputObject <IResourcesIdentity> [-AllowGuestsSignIn] [-
  [-KnownClientApplication <String[]>] [-LogoutUrl <String>] [-Oauth2AllowImplicitFlow]
  [-Oauth2AllowUrlPathMatching] [-Oauth2Permission <IOAuth2Permission[]>] [-Oauth2RequirePostResponse]
  [-OptionalClaimAccessToken <IOptionalClaim[]>] [-OptionalClaimIdToken <IOptionalClaim[]>]
- [-OptionalClaimSamlToken <IOptionalClaim[]>] [-OrgRestriction <String[]>]
+ [-OptionalClaimSamlToken <IOptionalClaim[]>] [-OrgRestriction <String[]>] [-PassThru]
  [-PasswordCredentials <IPasswordCredential[]>] [-PreAuthorizedApplication <IPreAuthorizedApplication[]>]
  [-PublicClient] [-PublisherDomain <String>] [-ReplyUrl <String[]>]
  [-RequiredResourceAccess <IRequiredResourceAccess[]>] [-SamlMetadataUrl <String>] [-SignInAudience <String>]
- [-WwwHomepage <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WwwHomepage <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

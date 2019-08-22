@@ -17,15 +17,15 @@ Write and delete operations are blocked on the groups until the move completes.
 
 ### MoveExpanded (Default)
 ```
-Move-AzResource -SourceResourceGroupName <String> -SubscriptionId <String> [-Resource <String[]>]
- [-TargetResourceGroup <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Move-AzResource -SourceResourceGroupName <String> -SubscriptionId <String> [-PassThru] [-Resource <String[]>]
+ [-TargetResourceGroup <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Move
 ```
 Move-AzResource -SourceResourceGroupName <String> -SubscriptionId <String> -Parameter <IResourcesMoveInfo>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### MoveByComponents
@@ -37,14 +37,15 @@ Move-AzResource -SourceResourceGroupName <String> -SubscriptionId <String> -Targ
 
 ### MoveViaIdentity
 ```
-Move-AzResource -InputObject <IResourcesIdentity> -Parameter <IResourcesMoveInfo> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Move-AzResource -InputObject <IResourcesIdentity> -Parameter <IResourcesMoveInfo> [-PassThru]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### MoveViaIdentityExpanded
 ```
-Move-AzResource -InputObject <IResourcesIdentity> [-Resource <String[]>] [-TargetResourceGroup <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Move-AzResource -InputObject <IResourcesIdentity> [-PassThru] [-Resource <String[]>]
+ [-TargetResourceGroup <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

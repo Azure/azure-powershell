@@ -19,12 +19,6 @@ Get-AzADServicePrincipal -TenantId <String> [-Filter <String>] [-DefaultProfile 
  [<CommonParameters>]
 ```
 
-### __AllParameterSets
-```
-Get-AzADServicePrincipal -ApplicationObject <IApplication> -TenantId <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
 ### Get
 ```
 Get-AzADServicePrincipal -ObjectId <String> -TenantId <String> [-DefaultProfile <PSObject>]
@@ -33,25 +27,31 @@ Get-AzADServicePrincipal -ObjectId <String> -TenantId <String> [-DefaultProfile 
 
 ### GetByApplicationId
 ```
-Get-AzADServicePrincipal -ApplicationId <String> -TenantId <String> [-DefaultProfile <PSObject>]
+Get-AzADServicePrincipal -TenantId <String> -ApplicationId <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetByApplicationObject
+```
+Get-AzADServicePrincipal -TenantId <String> -ApplicationObject <IApplication> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetByDisplayName
 ```
-Get-AzADServicePrincipal -DisplayName <String> -TenantId <String> [-DefaultProfile <PSObject>]
+Get-AzADServicePrincipal -TenantId <String> -DisplayName <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetByDisplayNamePrefix
 ```
-Get-AzADServicePrincipal -DisplayNameBeginsWith <String> -TenantId <String> [-DefaultProfile <PSObject>]
+Get-AzADServicePrincipal -TenantId <String> -DisplayNameBeginsWith <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetBySPN
 ```
-Get-AzADServicePrincipal -ServicePrincipalName <String> -TenantId <String> [-DefaultProfile <PSObject>]
+Get-AzADServicePrincipal -TenantId <String> -ServicePrincipalName <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -107,7 +107,7 @@ The object representation of the application.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IApplication
-Parameter Sets: (All)
+Parameter Sets: GetByApplicationObject
 Aliases:
 
 Required: True
@@ -235,7 +235,7 @@ The tenant ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get, GetByApplicationId, GetByApplicationObject, GetByDisplayName, GetByDisplayNamePrefix, GetBySPN, List
 Aliases:
 
 Required: True

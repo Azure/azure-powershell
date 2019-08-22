@@ -19,15 +19,15 @@ Retrieve the URL in the Location header value to check the result of the long-ru
 
 ### ValidateExpanded (Default)
 ```
-Test-AzResourceMove -SourceResourceGroupName <String> -SubscriptionId <String> [-Resource <String[]>]
- [-TargetResourceGroup <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Test-AzResourceMove -SourceResourceGroupName <String> -SubscriptionId <String> [-PassThru]
+ [-Resource <String[]>] [-TargetResourceGroup <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Validate
 ```
 Test-AzResourceMove -SourceResourceGroupName <String> -SubscriptionId <String> -Parameter <IResourcesMoveInfo>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ValidateByComponents
@@ -39,14 +39,15 @@ Test-AzResourceMove -SourceResourceGroupName <String> -SubscriptionId <String>
 
 ### ValidateViaIdentity
 ```
-Test-AzResourceMove -InputObject <IResourcesIdentity> -Parameter <IResourcesMoveInfo>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-AzResourceMove -InputObject <IResourcesIdentity> -Parameter <IResourcesMoveInfo> [-PassThru]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ValidateViaIdentityExpanded
 ```
-Test-AzResourceMove -InputObject <IResourcesIdentity> [-Resource <String[]>] [-TargetResourceGroup <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-AzResourceMove -InputObject <IResourcesIdentity> [-PassThru] [-Resource <String[]>]
+ [-TargetResourceGroup <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

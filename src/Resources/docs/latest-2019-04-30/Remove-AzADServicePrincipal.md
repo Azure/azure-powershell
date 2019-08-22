@@ -14,7 +14,7 @@ Deletes a service principal from the directory.
 
 ### Delete (Default)
 ```
-Remove-AzADServicePrincipal -ObjectId <String> -TenantId <String> [-DefaultProfile <PSObject>] [-PassThru]
+Remove-AzADServicePrincipal -ObjectId <String> -TenantId <String> [-PassThru] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -44,7 +44,7 @@ Remove-AzADServicePrincipal -TenantId <String> -ServicePrincipalName <String> [-
 
 ### DeleteViaIdentity
 ```
-Remove-AzADServicePrincipal -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+Remove-AzADServicePrincipal -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 

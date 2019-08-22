@@ -24,24 +24,24 @@ Get-AzADApplication -ObjectId <String> -TenantId <String> [-DefaultProfile <PSOb
 
 ### GetByApplicationId
 ```
-Get-AzADApplication -ApplicationId <String> -TenantId <String> [-DefaultProfile <PSObject>]
+Get-AzADApplication -TenantId <String> -ApplicationId <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetByDisplayName
 ```
-Get-AzADApplication -DisplayName <String> -TenantId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzADApplication -TenantId <String> -DisplayName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetByDisplayNamePrefix
 ```
-Get-AzADApplication -DisplayNameStartWith <String> -TenantId <String> [-DefaultProfile <PSObject>]
+Get-AzADApplication -TenantId <String> -DisplayNameStartWith <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetByIdentifierUri
 ```
-Get-AzADApplication -IdentifierUri <String> -TenantId <String> [-DefaultProfile <PSObject>]
+Get-AzADApplication -TenantId <String> -IdentifierUri <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 

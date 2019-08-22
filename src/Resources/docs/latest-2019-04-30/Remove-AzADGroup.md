@@ -14,7 +14,7 @@ Delete a group from the directory.
 
 ### Delete (Default)
 ```
-Remove-AzADGroup -ObjectId <String> -TenantId <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
+Remove-AzADGroup -ObjectId <String> -TenantId <String> [-PassThru] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Remove-AzADGroup -TenantId <String> -DisplayName <String> [-PassThru] [-DefaultP
 
 ### DeleteViaIdentity
 ```
-Remove-AzADGroup -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
+Remove-AzADGroup -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 

@@ -16,8 +16,9 @@ If a field is unspecified, the current value is retained.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzResourceGroup -ResourceGroupName <String> -SubscriptionId <String> [-ManagedBy <String>]
- [-Name <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzResourceGroup -ResourceGroupName <String> -SubscriptionId <String> [-Name <String>]
+ [-DefaultProfile <PSObject>] [-ManagedBy <String>] [-Tag <Hashtable>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Update
@@ -40,8 +41,8 @@ Update-AzResourceGroup -InputObject <IResourcesIdentity> -Parameter <IResourceGr
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzResourceGroup -InputObject <IResourcesIdentity> [-ManagedBy <String>] [-Name <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzResourceGroup -InputObject <IResourcesIdentity> [-Name <String>] [-DefaultProfile <PSObject>]
+ [-ManagedBy <String>] [-Tag <Hashtable>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

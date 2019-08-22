@@ -20,14 +20,14 @@ If the asynchronous request failed, the URI in the Location header returns an er
 
 ### Delete (Default)
 ```
-Remove-AzDeployment -Name <String> -SubscriptionId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzDeployment -Name <String> -SubscriptionId <String> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Delete1
 ```
-Remove-AzDeployment -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzDeployment -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-PassThru]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteById
@@ -38,14 +38,14 @@ Remove-AzDeployment -Id <String> -SubscriptionId <String> [-PassThru] [-DefaultP
 
 ### DeleteViaIdentity
 ```
-Remove-AzDeployment -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzDeployment -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity1
 ```
-Remove-AzDeployment -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzDeployment -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

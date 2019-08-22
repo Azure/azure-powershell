@@ -14,7 +14,7 @@ Delete a user.
 
 ### Delete (Default)
 ```
-Remove-AzADUser -TenantId <String> -UpnOrObjectId <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
+Remove-AzADUser -TenantId <String> -UpnOrObjectId <String> [-PassThru] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Remove-AzADUser -TenantId <String> -DisplayName <String> [-PassThru] [-DefaultPr
 
 ### DeleteViaIdentity
 ```
-Remove-AzADUser -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
+Remove-AzADUser -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 

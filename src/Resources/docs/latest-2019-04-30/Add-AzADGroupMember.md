@@ -15,14 +15,14 @@ Add a member to a group.
 ### AddExpanded (Default)
 ```
 Add-AzADGroupMember -GroupObjectId <String> -TenantId <String> -Url <String>
- [-AdditionalProperties <Hashtable>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+ [-AdditionalProperties <Hashtable>] [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### Add
 ```
 Add-AzADGroupMember -GroupObjectId <String> -TenantId <String> -Parameter <IGroupAddMemberParameters>
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### AddMemberIdToGroupDisplayName
@@ -63,14 +63,14 @@ Add-AzADGroupMember -GroupObject <IAdGroup> -MemberUserPrincipalName <String[]> 
 
 ### AddViaIdentity
 ```
-Add-AzADGroupMember -InputObject <IResourcesIdentity> -Parameter <IGroupAddMemberParameters>
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Add-AzADGroupMember -InputObject <IResourcesIdentity> -Parameter <IGroupAddMemberParameters> [-PassThru]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### AddViaIdentityExpanded
 ```
 Add-AzADGroupMember -InputObject <IResourcesIdentity> -Url <String> [-AdditionalProperties <Hashtable>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

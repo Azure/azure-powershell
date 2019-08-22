@@ -14,7 +14,7 @@ You must remove all values from a resource tag before you can delete it.
 
 ### Delete (Default)
 ```
-Remove-AzTag -Name <String> -SubscriptionId <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
+Remove-AzTag -Name <String> -SubscriptionId <String> [-PassThru] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Remove-AzTag -Name <String> -SubscriptionId <String> -Value <String> [-PassThru]
 
 ### DeleteViaIdentity
 ```
-Remove-AzTag -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+Remove-AzTag -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 

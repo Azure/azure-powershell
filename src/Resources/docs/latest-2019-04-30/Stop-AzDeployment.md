@@ -16,14 +16,14 @@ Canceling a template deployment stops the currently running template deployment 
 
 ### Cancel (Default)
 ```
-Stop-AzDeployment -Name <String> -SubscriptionId <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
+Stop-AzDeployment -Name <String> -SubscriptionId <String> [-PassThru] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### Cancel1
 ```
-Stop-AzDeployment -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Stop-AzDeployment -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-PassThru]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CancelById
@@ -34,13 +34,13 @@ Stop-AzDeployment -Id <String> -SubscriptionId <String> [-PassThru] [-DefaultPro
 
 ### CancelViaIdentity
 ```
-Stop-AzDeployment -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
+Stop-AzDeployment -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### CancelViaIdentity1
 ```
-Stop-AzDeployment -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
+Stop-AzDeployment -InputObject <IResourcesIdentity> [-PassThru] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 

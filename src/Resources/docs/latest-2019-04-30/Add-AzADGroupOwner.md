@@ -15,13 +15,13 @@ Add an owner to a group.
 ### AddExpanded (Default)
 ```
 Add-AzADGroupOwner -ObjectId <String> -TenantId <String> -Url <String> [-AdditionalProperties <Hashtable>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Add
 ```
-Add-AzADGroupOwner -ObjectId <String> -TenantId <String> -Parameter <IAddOwnerParameters>
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Add-AzADGroupOwner -ObjectId <String> -TenantId <String> -Parameter <IAddOwnerParameters> [-PassThru]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### AddByComponents
@@ -32,14 +32,14 @@ Add-AzADGroupOwner -GroupObjectId <String> -MemberObjectId <String[]> -TenantId 
 
 ### AddViaIdentity
 ```
-Add-AzADGroupOwner -InputObject <IResourcesIdentity> -Parameter <IAddOwnerParameters>
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Add-AzADGroupOwner -InputObject <IResourcesIdentity> -Parameter <IAddOwnerParameters> [-PassThru]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### AddViaIdentityExpanded
 ```
 Add-AzADGroupOwner -InputObject <IResourcesIdentity> -Url <String> [-AdditionalProperties <Hashtable>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
