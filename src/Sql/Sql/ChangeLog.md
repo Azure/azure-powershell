@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Update documentation of old Auditing cmdlets.
+* Remove the validation of EmailAddresses and the check that EmailAdmins is not false in case EmailAddresses is empty in Set-AzSqlServerAdvancedThreatProtectionPolicy and Set-AzSqlDatabaseAdvancedThreatProtectionPolicy
 
 ## Version 1.14.0
 * Add Azure Sql Instance pools cmdlets
