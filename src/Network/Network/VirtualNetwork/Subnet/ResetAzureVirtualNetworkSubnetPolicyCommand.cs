@@ -85,11 +85,6 @@ namespace Microsoft.Azure.Commands.Network
             {
                 throw new ArgumentException(Properties.Resources.SubnetWithTheSpecifiedNameDoesNotExist);
             }
-
-            if(!this.ServiceName.Contains("/"))
-            {
-                throw new ArgumentException(Properties.Resources.ServiceNameFormatGuidance);
-            }
             
             if (ShouldProcess(string.Format(Properties.Resources.Subnet0, this.Name), Properties.Resources.Reset))
             {

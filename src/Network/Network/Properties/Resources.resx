@@ -407,9 +407,6 @@
   <data name="Reset" xml:space="preserve">
     <value>Reset</value>
   </data>
-  <data name="ServiceNameFormatGuidance" xml:space="preserve">
-    <value>ServiceName should be like Microsoft.Sql/managedInstances</value>
-  </data>
   <data name="Subnet0" xml:space="preserve">
     <value>Subnet {0}</value>
   </data>
