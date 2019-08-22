@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.7.6
 * Fixed miscellaneous typos across module
 * Add CosmosDB ATP to md files
 

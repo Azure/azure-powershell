@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.6.2
 * Fixed miscellaneous typos across module
 * Support user-assigned MSI in Azure Functiosn Authentication (#9479)
 

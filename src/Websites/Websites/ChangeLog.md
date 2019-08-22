@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.4.1
 * Fixed miscellaneous typos across module
 * Add clarification around -AppSettings parameter in Set-AzWebApp and Set-AzWebAppSlot
 
