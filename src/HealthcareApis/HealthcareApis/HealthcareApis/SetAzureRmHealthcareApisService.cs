@@ -247,7 +247,8 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
                         AllowCredentials = AllowCorsCredential != healthcareApisAccount.Properties.CorsConfiguration.AllowCredentials ? healthcareApisAccount.Properties.CorsConfiguration.AllowCredentials : this.AllowCorsCredential.ToBool()
                     },
                     AccessPolicies = accessPolicies
-                }
+                },
+                Kind = healthcareApisAccount.Kind
             };
         }
 
@@ -277,7 +278,8 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
                         AllowCredentials = InputObject.Properties.CorsConfiguration.AllowCredentials ?? healthcareApisAccount.Properties.CorsConfiguration.AllowCredentials
                     },
                     AccessPolicies = accessPolicies
-                }
+                },
+                Kind = InputObject.Kind
             };
         }
     }
