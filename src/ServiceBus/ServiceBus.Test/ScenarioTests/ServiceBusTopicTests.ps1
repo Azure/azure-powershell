@@ -36,10 +36,16 @@ function ServiceBusTopicTests {
     $createdNamespace = Get-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName
     
     Assert-AreEqual $createdNamespace.Name $namespaceName "Namespace created earlier is not found."
+	
+    $test = Test-AzServiceBusNameAvailability -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $nameTopic -Topic
+    Assert-True { $test }
 
     Write-Debug "Create Topic"
     $result = New-AzServiceBusTopic -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $nameTopic -EnablePartitioning $TRUE
     Assert-AreEqual $result.Name $nameTopic "In CreateTopic response Name not found"
+
+    $test = Test-AzServiceBusNameAvailability -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $nameTopic -Topic
+    Assert-False { $test }
 
     $resultGetTopic = Get-AzServiceBusTopic -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $result.Name
     Assert-AreEqual $resultGetTopic.Name $result.Name "In 'Get-AzServiceBusTopic' response, Topic Name not found"
