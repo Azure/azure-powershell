@@ -27,7 +27,7 @@ Set-AzResourceGroup -Name <String> -SubscriptionId <String> -Parameter <IResourc
 ### UpdateById
 ```
 Set-AzResourceGroup -Id <String> -SubscriptionId <String> -Location <String> [-DefaultProfile <PSObject>]
- [-ManagedBy <String>] [-Tag <IResourceGroupTags>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ManagedBy <String>] [-Tag <Hashtable>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

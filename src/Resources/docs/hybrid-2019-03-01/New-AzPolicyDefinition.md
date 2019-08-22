@@ -14,10 +14,11 @@ Creates or updates a policy definition.
 
 ### CreateExpanded2 (Default)
 ```
-New-AzPolicyDefinition -Name <String> -SubscriptionId <String> [-Description <String>] [-DisplayName <String>]
- [-Metadata <IPolicyDefinitionPropertiesMetadata>] [-Mode <PolicyMode>]
- [-Parameter <IPolicyDefinitionPropertiesParameters>] [-PolicyRule <IPolicyDefinitionPropertiesPolicyRule>]
- [-PolicyType <PolicyType>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzPolicyDefinition -Name <String> -SubscriptionId <String>
+ [-DefinitionParameter <IPolicyDefinitionPropertiesParameters>] [-Description <String>]
+ [-DisplayName <String>] [-Metadata <IPolicyDefinitionPropertiesMetadata>] [-Mode <PolicyMode>]
+ [-PolicyRule <IPolicyDefinitionPropertiesPolicyRule>] [-PolicyType <PolicyType>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create2
@@ -34,10 +35,11 @@ New-AzPolicyDefinition -ManagementGroupName <String> -Name <String> -Parameter <
 
 ### CreateExpanded3
 ```
-New-AzPolicyDefinition -ManagementGroupName <String> -Name <String> [-Description <String>]
+New-AzPolicyDefinition -ManagementGroupName <String> -Name <String>
+ [-DefinitionParameter <IPolicyDefinitionPropertiesParameters>] [-Description <String>]
  [-DisplayName <String>] [-Metadata <IPolicyDefinitionPropertiesMetadata>] [-Mode <PolicyMode>]
- [-Parameter <IPolicyDefinitionPropertiesParameters>] [-PolicyRule <IPolicyDefinitionPropertiesPolicyRule>]
- [-PolicyType <PolicyType>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PolicyRule <IPolicyDefinitionPropertiesPolicyRule>] [-PolicyType <PolicyType>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity2
@@ -54,18 +56,20 @@ New-AzPolicyDefinition -InputObject <IResourcesIdentity> -Parameter <IPolicyDefi
 
 ### CreateViaIdentityExpanded2
 ```
-New-AzPolicyDefinition -InputObject <IResourcesIdentity> [-Description <String>] [-DisplayName <String>]
- [-Metadata <IPolicyDefinitionPropertiesMetadata>] [-Mode <PolicyMode>]
- [-Parameter <IPolicyDefinitionPropertiesParameters>] [-PolicyRule <IPolicyDefinitionPropertiesPolicyRule>]
- [-PolicyType <PolicyType>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzPolicyDefinition -InputObject <IResourcesIdentity>
+ [-DefinitionParameter <IPolicyDefinitionPropertiesParameters>] [-Description <String>]
+ [-DisplayName <String>] [-Metadata <IPolicyDefinitionPropertiesMetadata>] [-Mode <PolicyMode>]
+ [-PolicyRule <IPolicyDefinitionPropertiesPolicyRule>] [-PolicyType <PolicyType>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded3
 ```
-New-AzPolicyDefinition -InputObject <IResourcesIdentity> [-Description <String>] [-DisplayName <String>]
- [-Metadata <IPolicyDefinitionPropertiesMetadata>] [-Mode <PolicyMode>]
- [-Parameter <IPolicyDefinitionPropertiesParameters>] [-PolicyRule <IPolicyDefinitionPropertiesPolicyRule>]
- [-PolicyType <PolicyType>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzPolicyDefinition -InputObject <IResourcesIdentity>
+ [-DefinitionParameter <IPolicyDefinitionPropertiesParameters>] [-Description <String>]
+ [-DisplayName <String>] [-Metadata <IPolicyDefinitionPropertiesMetadata>] [-Mode <PolicyMode>]
+ [-PolicyRule <IPolicyDefinitionPropertiesPolicyRule>] [-PolicyType <PolicyType>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -100,6 +104,22 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -DefinitionParameter
+Required if a parameter is used in policy rule.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20161201.IPolicyDefinitionPropertiesParameters
+Parameter Sets: CreateExpanded2, CreateExpanded3, CreateViaIdentityExpanded2, CreateViaIdentityExpanded3
+Aliases:
 
 Required: False
 Position: Named
@@ -228,7 +248,7 @@ To construct, see NOTES section for PARAMETER properties and create a hash table
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20161201.IPolicyDefinition
-Parameter Sets: (All)
+Parameter Sets: Create2, Create3, CreateViaIdentity2, CreateViaIdentity3
 Aliases:
 
 Required: True

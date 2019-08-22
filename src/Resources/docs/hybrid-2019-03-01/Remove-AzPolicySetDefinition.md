@@ -13,8 +13,8 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-Remove-AzPolicySetDefinition -Id <String> [-SubscriptionId <String[]>] [-PassThru]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzPolicySetDefinition -Id <String> [-SubscriptionId <String>] [-PassThru] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -94,7 +94,7 @@ Dynamic: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String[]
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

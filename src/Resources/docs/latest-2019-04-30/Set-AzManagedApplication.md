@@ -15,8 +15,8 @@ Creates a new managed application.
 ### UpdateExpanded1 (Default)
 ```
 Set-AzManagedApplication -Id <String> -Kind <String> -ManagedResourceGroupId <String>
- [-ApplicationDefinitionId <String>] [-IdentityType <ResourceIdentityType>] [-Location <String>]
- [-ManagedBy <String>] [-Parameter <IApplicationPropertiesParameters>] [-PlanName <String>]
+ [-ApplicationDefinitionId <String>] [-ApplicationParameter <IApplicationPropertiesParameters>]
+ [-IdentityType <ResourceIdentityType>] [-Location <String>] [-ManagedBy <String>] [-PlanName <String>]
  [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
  [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuModel <String>] [-SkuName <String>] [-SkuSize <String>]
  [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
@@ -39,12 +39,12 @@ Set-AzManagedApplication -Id <String> -Parameter <IApplication> [-DefaultProfile
 ### UpdateExpanded
 ```
 Set-AzManagedApplication -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Kind <String>
- -ManagedResourceGroupId <String> [-ApplicationDefinitionId <String>] [-IdentityType <ResourceIdentityType>]
- [-Location <String>] [-ManagedBy <String>] [-Parameter <IApplicationPropertiesParameters>]
- [-PlanName <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>]
- [-PlanVersion <String>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuModel <String>] [-SkuName <String>]
- [-SkuSize <String>] [-SkuTier <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ManagedResourceGroupId <String> [-ApplicationDefinitionId <String>]
+ [-ApplicationParameter <IApplicationPropertiesParameters>] [-IdentityType <ResourceIdentityType>]
+ [-Location <String>] [-ManagedBy <String>] [-PlanName <String>] [-PlanProduct <String>]
+ [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>] [-SkuCapacity <Int32>]
+ [-SkuFamily <String>] [-SkuModel <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -79,6 +79,23 @@ The fully qualified path of managed application definition Id.
 Type: System.String
 Parameter Sets: UpdateExpanded, UpdateExpanded1
 Aliases: ManagedApplicationDefinitionId
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ApplicationParameter
+Name and value pairs that define the managed application parameters.
+It can be a JObject or a well formed JSON string.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20170901.IApplicationPropertiesParameters
+Parameter Sets: UpdateExpanded, UpdateExpanded1
+Aliases:
 
 Required: False
 Position: Named
@@ -256,7 +273,7 @@ To construct, see NOTES section for PARAMETER properties and create a hash table
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180601.IApplication
-Parameter Sets: (All)
+Parameter Sets: Update, Update1
 Aliases:
 
 Required: True

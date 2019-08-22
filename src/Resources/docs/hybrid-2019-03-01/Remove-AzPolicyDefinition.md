@@ -14,7 +14,7 @@ Deletes a policy definition.
 
 ### DeleteById (Default)
 ```
-Remove-AzPolicyDefinition -Id <String> [-SubscriptionId <String[]>] [-PassThru] [-DefaultProfile <PSObject>]
+Remove-AzPolicyDefinition -Id <String> [-SubscriptionId <String>] [-PassThru] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 

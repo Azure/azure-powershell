@@ -15,8 +15,8 @@ Validates whether the specified template is syntactically correct and will be ac
 ### ValidateExpanded (Default)
 ```
 Test-AzDeployment -Name <String> -SubscriptionId <String> -Mode <DeploymentMode>
- [-DebugSettingDetailLevel <String>] [-Location <String>] [-OnErrorDeploymentName <String>]
- [-OnErrorDeploymentType <OnErrorDeploymentType>] [-Parameter <IDeploymentPropertiesParameters>]
+ [-DebugSettingDetailLevel <String>] [-DeploymentParameter <IDeploymentPropertiesParameters>]
+ [-Location <String>] [-OnErrorDeploymentName <String>] [-OnErrorDeploymentType <OnErrorDeploymentType>]
  [-ParameterLinkContentVersion <String>] [-ParameterLinkUri <String>]
  [-Template <IDeploymentPropertiesTemplate>] [-TemplateLinkContentVersion <String>]
  [-TemplateLinkUri <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -37,8 +37,8 @@ Test-AzDeployment -Name <String> -ResourceGroupName <String> -SubscriptionId <St
 ### ValidateExpanded1
 ```
 Test-AzDeployment -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Mode <DeploymentMode>
- [-DebugSettingDetailLevel <String>] [-Location <String>] [-OnErrorDeploymentName <String>]
- [-OnErrorDeploymentType <OnErrorDeploymentType>] [-Parameter <IDeploymentPropertiesParameters>]
+ [-DebugSettingDetailLevel <String>] [-DeploymentParameter <IDeploymentPropertiesParameters>]
+ [-Location <String>] [-OnErrorDeploymentName <String>] [-OnErrorDeploymentType <OnErrorDeploymentType>]
  [-ParameterLinkContentVersion <String>] [-ParameterLinkUri <String>]
  [-Template <IDeploymentPropertiesTemplate>] [-TemplateLinkContentVersion <String>]
  [-TemplateLinkUri <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -59,21 +59,21 @@ Test-AzDeployment -InputObject <IResourcesIdentity> -Parameter <IDeployment> [-D
 ### ValidateViaIdentityExpanded
 ```
 Test-AzDeployment -InputObject <IResourcesIdentity> -Mode <DeploymentMode> [-DebugSettingDetailLevel <String>]
- [-Location <String>] [-OnErrorDeploymentName <String>] [-OnErrorDeploymentType <OnErrorDeploymentType>]
- [-Parameter <IDeploymentPropertiesParameters>] [-ParameterLinkContentVersion <String>]
- [-ParameterLinkUri <String>] [-Template <IDeploymentPropertiesTemplate>]
- [-TemplateLinkContentVersion <String>] [-TemplateLinkUri <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-DeploymentParameter <IDeploymentPropertiesParameters>] [-Location <String>]
+ [-OnErrorDeploymentName <String>] [-OnErrorDeploymentType <OnErrorDeploymentType>]
+ [-ParameterLinkContentVersion <String>] [-ParameterLinkUri <String>]
+ [-Template <IDeploymentPropertiesTemplate>] [-TemplateLinkContentVersion <String>]
+ [-TemplateLinkUri <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ValidateViaIdentityExpanded1
 ```
 Test-AzDeployment -InputObject <IResourcesIdentity> -Mode <DeploymentMode> [-DebugSettingDetailLevel <String>]
- [-Location <String>] [-OnErrorDeploymentName <String>] [-OnErrorDeploymentType <OnErrorDeploymentType>]
- [-Parameter <IDeploymentPropertiesParameters>] [-ParameterLinkContentVersion <String>]
- [-ParameterLinkUri <String>] [-Template <IDeploymentPropertiesTemplate>]
- [-TemplateLinkContentVersion <String>] [-TemplateLinkUri <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-DeploymentParameter <IDeploymentPropertiesParameters>] [-Location <String>]
+ [-OnErrorDeploymentName <String>] [-OnErrorDeploymentType <OnErrorDeploymentType>]
+ [-ParameterLinkContentVersion <String>] [-ParameterLinkUri <String>]
+ [-Template <IDeploymentPropertiesTemplate>] [-TemplateLinkContentVersion <String>]
+ [-TemplateLinkUri <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -128,6 +128,25 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -DeploymentParameter
+Name and value pairs that define the deployment parameters for the template.
+You use this element when you want to provide the parameter values directly in the request rather than link to an existing parameter file.
+Use either the parametersLink property or the parameters property, but not both.
+It can be a JObject or a well formed JSON string.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IDeploymentPropertiesParameters
+Parameter Sets: ValidateExpanded, ValidateExpanded1, ValidateViaIdentityExpanded, ValidateViaIdentityExpanded1
+Aliases:
 
 Required: False
 Position: Named
@@ -244,7 +263,7 @@ To construct, see NOTES section for PARAMETER properties and create a hash table
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IDeployment
-Parameter Sets: (All)
+Parameter Sets: Validate, Validate1, ValidateViaIdentity, ValidateViaIdentity1
 Aliases:
 
 Required: True

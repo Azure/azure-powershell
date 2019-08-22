@@ -32,7 +32,7 @@ Remove-AzDeployment -Name <String> -ResourceGroupName <String> -SubscriptionId <
 
 ### DeleteById
 ```
-Remove-AzDeployment -Id <String> -SubscriptionId <String[]> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob]
+Remove-AzDeployment -Id <String> -SubscriptionId <String> [-PassThru] [-DefaultProfile <PSObject>] [-AsJob]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 

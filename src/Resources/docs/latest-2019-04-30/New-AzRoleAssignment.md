@@ -8,20 +8,14 @@ schema: 2.0.0
 # New-AzRoleAssignment
 
 ## SYNOPSIS
-Creates a role assignment by ID.
+Creates a role assignment.
 
 ## SYNTAX
 
-### CreateExpanded1 (Default)
+### CreateExpanded3 (Default)
 ```
-New-AzRoleAssignment -Id <String> [-CanDelegate] [-PrincipalId <String>] [-RoleDefinitionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Create1
-```
-New-AzRoleAssignment -Id <String> -Parameter <IRoleAssignmentCreateParameters> [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzRoleAssignment -RoleId <String> -PrincipalId <String> -RoleDefinitionId <String> [-CanDelegate]
+ [-PrincipalType <PrincipalType>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create2
@@ -43,18 +37,6 @@ New-AzRoleAssignment -Name <String> -Scope <String> -PrincipalId <String> -RoleD
  [<CommonParameters>]
 ```
 
-### CreateExpanded3
-```
-New-AzRoleAssignment -RoleId <String> -PrincipalId <String> -RoleDefinitionId <String> [-CanDelegate]
- [-PrincipalType <PrincipalType>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity1
-```
-New-AzRoleAssignment -InputObject <IResourcesIdentity> -Parameter <IRoleAssignmentCreateParameters>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### CreateViaIdentity2
 ```
 New-AzRoleAssignment -InputObject <IResourcesIdentity> -Parameter <IRoleAssignmentCreateParameters>
@@ -65,12 +47,6 @@ New-AzRoleAssignment -InputObject <IResourcesIdentity> -Parameter <IRoleAssignme
 ```
 New-AzRoleAssignment -InputObject <IResourcesIdentity> -Parameter <IRoleAssignmentCreateParameters>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded1
-```
-New-AzRoleAssignment -InputObject <IResourcesIdentity> [-CanDelegate] [-PrincipalId <String>]
- [-RoleDefinitionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded2
@@ -88,7 +64,7 @@ New-AzRoleAssignment -InputObject <IResourcesIdentity> -PrincipalId <String> -Ro
 ```
 
 ## DESCRIPTION
-Creates a role assignment by ID.
+Creates a role assignment.
 
 ## EXAMPLES
 
@@ -117,7 +93,7 @@ The delegation flag used for creating a role assignment
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded1, CreateExpanded2, CreateExpanded3, CreateViaIdentityExpanded1, CreateViaIdentityExpanded2, CreateViaIdentityExpanded3
+Parameter Sets: CreateExpanded2, CreateExpanded3, CreateViaIdentityExpanded2, CreateViaIdentityExpanded3
 Aliases: AllowDelegation
 
 Required: False
@@ -144,28 +120,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Id
-The ID of the role assignment to create.
-
-```yaml
-Type: System.String
-Parameter Sets: Create1, CreateExpanded1
-Aliases: RoleAssignmentId
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -InputObject
 Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: CreateViaIdentity1, CreateViaIdentity2, CreateViaIdentity3, CreateViaIdentityExpanded1, CreateViaIdentityExpanded2, CreateViaIdentityExpanded3
+Parameter Sets: CreateViaIdentity2, CreateViaIdentity3, CreateViaIdentityExpanded2, CreateViaIdentityExpanded3
 Aliases:
 
 Required: True
@@ -198,8 +158,8 @@ Role assignment create parameters.
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20171001Preview.IRoleAssignmentCreateParameters
-Parameter Sets: Create1, Create2, Create3, CreateViaIdentity1, CreateViaIdentity2, CreateViaIdentity3
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180901Preview.IRoleAssignmentCreateParameters
+Parameter Sets: Create2, Create3, CreateViaIdentity2, CreateViaIdentity3
 Aliases:
 
 Required: True
@@ -217,7 +177,7 @@ It can point to a user, service principal, or security group.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded1, CreateExpanded2, CreateExpanded3, CreateViaIdentityExpanded1, CreateViaIdentityExpanded2, CreateViaIdentityExpanded3
+Parameter Sets: CreateExpanded2, CreateExpanded3, CreateViaIdentityExpanded2, CreateViaIdentityExpanded3
 Aliases:
 
 Required: True
@@ -249,7 +209,7 @@ The role definition ID used in the role assignment.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded1, CreateExpanded2, CreateExpanded3, CreateViaIdentityExpanded1, CreateViaIdentityExpanded2, CreateViaIdentityExpanded3
+Parameter Sets: CreateExpanded2, CreateExpanded3, CreateViaIdentityExpanded2, CreateViaIdentityExpanded3
 Aliases:
 
 Required: True
@@ -332,13 +292,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20171001Preview.IRoleAssignmentCreateParameters
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180901Preview.IRoleAssignmentCreateParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
 
 ## OUTPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20171001Preview.IRoleAssignment
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180901Preview.IRoleAssignment
 
@@ -353,6 +311,7 @@ To create the parameters described below, construct a hash table containing the 
   - `PrincipalId <String>`: The principal ID assigned to the role. This maps to the ID inside the Active Directory. It can point to a user, service principal, or security group.
   - `RoleDefinitionId <String>`: The role definition ID used in the role assignment.
   - `[CanDelegate <Boolean?>]`: The delegation flag used for creating a role assignment
+  - `[PrincipalType <PrincipalType?>]`: The principal type of the assigned principal ID.
 
 ## RELATED LINKS
 

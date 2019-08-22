@@ -5,7 +5,7 @@ function Remove-AzDeployment_DeleteById {
     param(
         [Parameter(Mandatory, HelpMessage='The ID of the target subscription.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.Category('Path')]
-        [System.String[]]
+        [System.String]
         ${SubscriptionId},
 
         [Parameter(Mandatory, HelpMessage='The ID of the resource group.')]

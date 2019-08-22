@@ -14,8 +14,8 @@ Creates or updates a policy definition.
 
 ### UpdateById (Default)
 ```
-Set-AzPolicyDefinition -Id <String> [-SubscriptionId <String[]>] [-Description <String>]
- [-DisplayName <String>] [-Metadata <IPolicyDefinitionPropertiesMetadata>] [-Mode <PolicyMode>]
+Set-AzPolicyDefinition -Id <String> [-SubscriptionId <String>] [-Description <String>] [-DisplayName <String>]
+ [-Metadata <IPolicyDefinitionPropertiesMetadata>] [-Mode <PolicyMode>]
  [-PolicyRule <IPolicyDefinitionPropertiesPolicyRule>] [-PolicyType <PolicyType>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -34,18 +34,20 @@ Set-AzPolicyDefinition -ManagementGroupName <String> -Name <String> -Parameter <
 
 ### UpdateExpanded2
 ```
-Set-AzPolicyDefinition -Name <String> -SubscriptionId <String> [-Description <String>] [-DisplayName <String>]
- [-Metadata <IPolicyDefinitionPropertiesMetadata>] [-Mode <PolicyMode>]
- [-Parameter <IPolicyDefinitionPropertiesParameters>] [-PolicyRule <IPolicyDefinitionPropertiesPolicyRule>]
- [-PolicyType <PolicyType>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzPolicyDefinition -Name <String> -SubscriptionId <String>
+ [-DefinitionParameter <IPolicyDefinitionPropertiesParameters>] [-Description <String>]
+ [-DisplayName <String>] [-Metadata <IPolicyDefinitionPropertiesMetadata>] [-Mode <PolicyMode>]
+ [-PolicyRule <IPolicyDefinitionPropertiesPolicyRule>] [-PolicyType <PolicyType>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded3
 ```
-Set-AzPolicyDefinition -ManagementGroupName <String> -Name <String> [-Description <String>]
+Set-AzPolicyDefinition -ManagementGroupName <String> -Name <String>
+ [-DefinitionParameter <IPolicyDefinitionPropertiesParameters>] [-Description <String>]
  [-DisplayName <String>] [-Metadata <IPolicyDefinitionPropertiesMetadata>] [-Mode <PolicyMode>]
- [-Parameter <IPolicyDefinitionPropertiesParameters>] [-PolicyRule <IPolicyDefinitionPropertiesPolicyRule>]
- [-PolicyType <PolicyType>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PolicyRule <IPolicyDefinitionPropertiesPolicyRule>] [-PolicyType <PolicyType>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -80,6 +82,22 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -DefinitionParameter
+Required if a parameter is used in policy rule.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20161201.IPolicyDefinitionPropertiesParameters
+Parameter Sets: UpdateExpanded2, UpdateExpanded3
+Aliases:
 
 Required: False
 Position: Named
@@ -208,7 +226,7 @@ To construct, see NOTES section for PARAMETER properties and create a hash table
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20161201.IPolicyDefinition
-Parameter Sets: Update2, Update3, UpdateExpanded2, UpdateExpanded3
+Parameter Sets: Update2, Update3
 Aliases:
 
 Required: True

@@ -16,9 +16,9 @@ For example, when you assign a policy at resource group scope, that policy appli
 
 ### CreateExpanded1 (Default)
 ```
-New-AzPolicyAssignment -Id <String> [-Description <String>] [-DisplayName <String>]
- [-IdentityType <ResourceIdentityType>] [-Location <String>] [-Metadata <IPolicyAssignmentPropertiesMetadata>]
- [-NotScope <String[]>] [-Parameter <IPolicyAssignmentPropertiesParameters>] [-PolicyDefinitionId <String>]
+New-AzPolicyAssignment -Id <String> [-AssignmentParameter <IPolicyAssignmentPropertiesParameters>]
+ [-Description <String>] [-DisplayName <String>] [-IdentityType <ResourceIdentityType>] [-Location <String>]
+ [-Metadata <IPolicyAssignmentPropertiesMetadata>] [-NotScope <String[]>] [-PolicyDefinitionId <String>]
  [-Scope <String>] [-SkuName <String>] [-SkuTier <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -37,9 +37,10 @@ New-AzPolicyAssignment -Id <String> -Parameter <IPolicyAssignment> [-DefaultProf
 
 ### CreateExpanded
 ```
-New-AzPolicyAssignment -Name <String> -Scope <String> [-Description <String>] [-DisplayName <String>]
- [-IdentityType <ResourceIdentityType>] [-Location <String>] [-Metadata <IPolicyAssignmentPropertiesMetadata>]
- [-NotScope <String[]>] [-Parameter <IPolicyAssignmentPropertiesParameters>] [-PolicyDefinitionId <String>]
+New-AzPolicyAssignment -Name <String> -Scope <String>
+ [-AssignmentParameter <IPolicyAssignmentPropertiesParameters>] [-Description <String>]
+ [-DisplayName <String>] [-IdentityType <ResourceIdentityType>] [-Location <String>]
+ [-Metadata <IPolicyAssignmentPropertiesMetadata>] [-NotScope <String[]>] [-PolicyDefinitionId <String>]
  [-PropertiesScope <String>] [-SkuName <String>] [-SkuTier <String>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -58,18 +59,20 @@ New-AzPolicyAssignment -InputObject <IResourcesIdentity> -Parameter <IPolicyAssi
 
 ### CreateViaIdentityExpanded
 ```
-New-AzPolicyAssignment -InputObject <IResourcesIdentity> [-Description <String>] [-DisplayName <String>]
- [-IdentityType <ResourceIdentityType>] [-Location <String>] [-Metadata <IPolicyAssignmentPropertiesMetadata>]
- [-NotScope <String[]>] [-Parameter <IPolicyAssignmentPropertiesParameters>] [-PolicyDefinitionId <String>]
+New-AzPolicyAssignment -InputObject <IResourcesIdentity>
+ [-AssignmentParameter <IPolicyAssignmentPropertiesParameters>] [-Description <String>]
+ [-DisplayName <String>] [-IdentityType <ResourceIdentityType>] [-Location <String>]
+ [-Metadata <IPolicyAssignmentPropertiesMetadata>] [-NotScope <String[]>] [-PolicyDefinitionId <String>]
  [-Scope <String>] [-SkuName <String>] [-SkuTier <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded1
 ```
-New-AzPolicyAssignment -InputObject <IResourcesIdentity> [-Description <String>] [-DisplayName <String>]
- [-IdentityType <ResourceIdentityType>] [-Location <String>] [-Metadata <IPolicyAssignmentPropertiesMetadata>]
- [-NotScope <String[]>] [-Parameter <IPolicyAssignmentPropertiesParameters>] [-PolicyDefinitionId <String>]
+New-AzPolicyAssignment -InputObject <IResourcesIdentity>
+ [-AssignmentParameter <IPolicyAssignmentPropertiesParameters>] [-Description <String>]
+ [-DisplayName <String>] [-IdentityType <ResourceIdentityType>] [-Location <String>]
+ [-Metadata <IPolicyAssignmentPropertiesMetadata>] [-NotScope <String[]>] [-PolicyDefinitionId <String>]
  [-Scope <String>] [-SkuName <String>] [-SkuTier <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -100,6 +103,22 @@ PS C:\> {{ Add code here }}
 {{ Add description here }}
 
 ## PARAMETERS
+
+### -AssignmentParameter
+Required if a parameter is used in policy rule.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20161201.IPolicyAssignmentPropertiesParameters
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded, CreateViaIdentityExpanded1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -269,7 +288,7 @@ To construct, see NOTES section for PARAMETER properties and create a hash table
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IPolicyAssignment
-Parameter Sets: (All)
+Parameter Sets: Create, Create1, CreateViaIdentity, CreateViaIdentity1
 Aliases:
 
 Required: True

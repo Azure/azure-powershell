@@ -29,7 +29,7 @@ Update-AzResourceGroup -Name <String> -SubscriptionId <String> -Parameter <IReso
 ### UpdateById
 ```
 Update-AzResourceGroup -Id <String> -SubscriptionId <String> [-DefaultProfile <PSObject>]
- [-ManagedBy <String>] [-Tag <IResourceGroupTags>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ManagedBy <String>] [-Tag <Hashtable>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity

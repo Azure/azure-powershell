@@ -15,8 +15,8 @@ You can provide the template and parameters directly in the request or link to J
 ### CreateExpanded (Default)
 ```
 New-AzDeployment -Name <String> -SubscriptionId <String> -Mode <DeploymentMode>
- [-DebugSettingDetailLevel <String>] [-Location <String>] [-OnErrorDeploymentName <String>]
- [-OnErrorDeploymentType <OnErrorDeploymentType>] [-Parameter <IDeploymentPropertiesParameters>]
+ [-DebugSettingDetailLevel <String>] [-DeploymentParameter <IDeploymentPropertiesParameters>]
+ [-Location <String>] [-OnErrorDeploymentName <String>] [-OnErrorDeploymentType <OnErrorDeploymentType>]
  [-ParameterLinkContentVersion <String>] [-ParameterLinkUri <String>]
  [-Template <IDeploymentPropertiesTemplate>] [-TemplateLinkContentVersion <String>]
  [-TemplateLinkUri <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
@@ -38,8 +38,8 @@ New-AzDeployment -Name <String> -ResourceGroupName <String> -SubscriptionId <Str
 ### CreateExpanded1
 ```
 New-AzDeployment -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Mode <DeploymentMode>
- [-DebugSettingDetailLevel <String>] [-Location <String>] [-OnErrorDeploymentName <String>]
- [-OnErrorDeploymentType <OnErrorDeploymentType>] [-Parameter <IDeploymentPropertiesParameters>]
+ [-DebugSettingDetailLevel <String>] [-DeploymentParameter <IDeploymentPropertiesParameters>]
+ [-Location <String>] [-OnErrorDeploymentName <String>] [-OnErrorDeploymentType <OnErrorDeploymentType>]
  [-ParameterLinkContentVersion <String>] [-ParameterLinkUri <String>]
  [-Template <IDeploymentPropertiesTemplate>] [-TemplateLinkContentVersion <String>]
  [-TemplateLinkUri <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
@@ -61,21 +61,23 @@ New-AzDeployment -InputObject <IResourcesIdentity> -Parameter <IDeployment> [-De
 ### CreateViaIdentityExpanded
 ```
 New-AzDeployment -InputObject <IResourcesIdentity> -Mode <DeploymentMode> [-DebugSettingDetailLevel <String>]
- [-Location <String>] [-OnErrorDeploymentName <String>] [-OnErrorDeploymentType <OnErrorDeploymentType>]
- [-Parameter <IDeploymentPropertiesParameters>] [-ParameterLinkContentVersion <String>]
- [-ParameterLinkUri <String>] [-Template <IDeploymentPropertiesTemplate>]
- [-TemplateLinkContentVersion <String>] [-TemplateLinkUri <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DeploymentParameter <IDeploymentPropertiesParameters>] [-Location <String>]
+ [-OnErrorDeploymentName <String>] [-OnErrorDeploymentType <OnErrorDeploymentType>]
+ [-ParameterLinkContentVersion <String>] [-ParameterLinkUri <String>]
+ [-Template <IDeploymentPropertiesTemplate>] [-TemplateLinkContentVersion <String>]
+ [-TemplateLinkUri <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded1
 ```
 New-AzDeployment -InputObject <IResourcesIdentity> -Mode <DeploymentMode> [-DebugSettingDetailLevel <String>]
- [-Location <String>] [-OnErrorDeploymentName <String>] [-OnErrorDeploymentType <OnErrorDeploymentType>]
- [-Parameter <IDeploymentPropertiesParameters>] [-ParameterLinkContentVersion <String>]
- [-ParameterLinkUri <String>] [-Template <IDeploymentPropertiesTemplate>]
- [-TemplateLinkContentVersion <String>] [-TemplateLinkUri <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DeploymentParameter <IDeploymentPropertiesParameters>] [-Location <String>]
+ [-OnErrorDeploymentName <String>] [-OnErrorDeploymentType <OnErrorDeploymentType>]
+ [-ParameterLinkContentVersion <String>] [-ParameterLinkUri <String>]
+ [-Template <IDeploymentPropertiesTemplate>] [-TemplateLinkContentVersion <String>]
+ [-TemplateLinkUri <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -146,6 +148,25 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -DeploymentParameter
+Name and value pairs that define the deployment parameters for the template.
+You use this element when you want to provide the parameter values directly in the request rather than link to an existing parameter file.
+Use either the parametersLink property or the parameters property, but not both.
+It can be a JObject or a well formed JSON string.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IDeploymentPropertiesParameters
+Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded, CreateViaIdentityExpanded1
+Aliases:
 
 Required: False
 Position: Named
@@ -278,7 +299,7 @@ To construct, see NOTES section for PARAMETER properties and create a hash table
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IDeployment
-Parameter Sets: (All)
+Parameter Sets: Create, Create1, CreateViaIdentity, CreateViaIdentity1
 Aliases:
 
 Required: True

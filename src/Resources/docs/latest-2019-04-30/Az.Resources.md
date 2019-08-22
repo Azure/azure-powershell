@@ -217,7 +217,7 @@ Creates or updates a resource group.
 Creates or updates a resource link between the specified resources.
 
 ### [New-AzRoleAssignment](New-AzRoleAssignment.md)
-Creates a role assignment by ID.
+Creates a role assignment.
 
 ### [New-AzRoleDefinition](New-AzRoleDefinition.md)
 Creates or updates a role definition.

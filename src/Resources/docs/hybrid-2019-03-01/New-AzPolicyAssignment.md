@@ -15,10 +15,10 @@ For example, when you apply a policy to a resource group that policy is assigned
 
 ### CreateExpanded2 (Default)
 ```
-New-AzPolicyAssignment -PolicyAssignmentName <String> -Scope <String> [-Description <String>]
- [-DisplayName <String>] [-Name <String>] [-Parameter <IPolicyAssignmentPropertiesParameters>]
- [-PolicyDefinitionId <String>] [-PropertiesScope <String>] [-Type <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzPolicyAssignment -PolicyAssignmentName <String> -Scope <String>
+ [-AssignmentParameter <IPolicyAssignmentPropertiesParameters>] [-Description <String>]
+ [-DisplayName <String>] [-Name <String>] [-PolicyDefinitionId <String>] [-PropertiesScope <String>]
+ [-Type <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create2
@@ -35,9 +35,10 @@ New-AzPolicyAssignment -InputObject <IResourcesIdentity> -Parameter <IPolicyAssi
 
 ### CreateViaIdentityExpanded2
 ```
-New-AzPolicyAssignment -InputObject <IResourcesIdentity> [-Description <String>] [-DisplayName <String>]
- [-Name <String>] [-Parameter <IPolicyAssignmentPropertiesParameters>] [-PolicyDefinitionId <String>]
- [-Scope <String>] [-Type <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzPolicyAssignment -InputObject <IResourcesIdentity>
+ [-AssignmentParameter <IPolicyAssignmentPropertiesParameters>] [-Description <String>]
+ [-DisplayName <String>] [-Name <String>] [-PolicyDefinitionId <String>] [-Scope <String>] [-Type <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -65,6 +66,22 @@ PS C:\> {{ Add code here }}
 {{ Add description here }}
 
 ## PARAMETERS
+
+### -AssignmentParameter
+Required if a parameter is used in policy rule.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20161201.IPolicyAssignmentPropertiesParameters
+Parameter Sets: CreateExpanded2, CreateViaIdentityExpanded2
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -152,7 +169,7 @@ To construct, see NOTES section for PARAMETER properties and create a hash table
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20161201.IPolicyAssignment
-Parameter Sets: (All)
+Parameter Sets: Create2, CreateViaIdentity2
 Aliases:
 
 Required: True

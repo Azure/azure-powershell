@@ -16,8 +16,9 @@ This operation creates or updates a policy set definition in the given subscript
 ```
 Set-AzPolicySetDefinition -Name <String> -SubscriptionId <String> [-Description <String>]
  [-DisplayName <String>] [-Metadata <IPolicySetDefinitionPropertiesMetadata>]
- [-Parameter <IPolicySetDefinitionPropertiesParameters>] [-PolicyDefinition <IPolicyDefinitionReference[]>]
- [-PolicyType <PolicyType>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PolicyDefinition <IPolicyDefinitionReference[]>] [-PolicyType <PolicyType>]
+ [-SetDefinitionParameter <IPolicySetDefinitionPropertiesParameters>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
@@ -35,7 +36,7 @@ Set-AzPolicySetDefinition -ManagementGroupName <String> -Name <String> -Paramete
 ### UpdateById
 ```
 Set-AzPolicySetDefinition -Id <String> -PolicyDefinition <IPolicyDefinitionReference[]>
- [-SubscriptionId <String[]>] [-Description <String>] [-DisplayName <String>]
+ [-SubscriptionId <String>] [-Description <String>] [-DisplayName <String>]
  [-Metadata <IPolicySetDefinitionPropertiesMetadata>] [-PolicyType <PolicyType>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -44,8 +45,9 @@ Set-AzPolicySetDefinition -Id <String> -PolicyDefinition <IPolicyDefinitionRefer
 ```
 Set-AzPolicySetDefinition -ManagementGroupName <String> -Name <String> [-Description <String>]
  [-DisplayName <String>] [-Metadata <IPolicySetDefinitionPropertiesMetadata>]
- [-Parameter <IPolicySetDefinitionPropertiesParameters>] [-PolicyDefinition <IPolicyDefinitionReference[]>]
- [-PolicyType <PolicyType>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PolicyDefinition <IPolicyDefinitionReference[]>] [-PolicyType <PolicyType>]
+ [-SetDefinitionParameter <IPolicySetDefinitionPropertiesParameters>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -191,7 +193,7 @@ To construct, see NOTES section for PARAMETER properties and create a hash table
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IPolicySetDefinition
-Parameter Sets: Update, Update1, UpdateExpanded, UpdateExpanded1
+Parameter Sets: Update, Update1
 Aliases:
 
 Required: True
@@ -226,6 +228,22 @@ Possible values are NotSpecified, BuiltIn, and Custom.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Support.PolicyType
 Parameter Sets: UpdateById, UpdateExpanded, UpdateExpanded1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -SetDefinitionParameter
+The policy set definition parameters that can be used in policy definition references.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IPolicySetDefinitionPropertiesParameters
+Parameter Sets: UpdateExpanded, UpdateExpanded1
 Aliases:
 
 Required: False
