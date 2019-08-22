@@ -906,6 +906,10 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSVirtualHubRouteTable, MNM.VirtualHubRouteTable>();
                 cfg.CreateMap<CNM.PSVirtualHubRoute, MNM.VirtualHubRoute>();
                 cfg.CreateMap<CNM.PSVpnGateway, MNM.VpnGateway>();
+                cfg.CreateMap<CNM.PSVpnSiteLinkConnection, MNM.VpnSiteLinkConnection>();
+                cfg.CreateMap<CNM.PSVpnSiteLink, MNM.VpnSiteLink>();
+                cfg.CreateMap<CNM.PSVpnLinkProviderProperties, MNM.VpnLinkProviderProperties>();
+                cfg.CreateMap<CNM.PSVpnLinkBgpSettings, MNM.VpnLinkBgpSettings>();
                 cfg.CreateMap<CNM.PSVpnConnection, MNM.VpnConnection>();
                 cfg.CreateMap<CNM.PSVpnSite, MNM.VpnSite>().AfterMap((src, dest) =>
                 {
@@ -944,6 +948,10 @@ namespace Microsoft.Azure.Commands.Network
                 });
 
                 cfg.CreateMap<MNM.DeviceProperties, CNM.PSVpnSiteDeviceProperties>();
+                cfg.CreateMap<MNM.VpnSiteLinkConnection, CNM.PSVpnSiteLinkConnection>();
+                cfg.CreateMap<MNM.VpnSiteLink, CNM.PSVpnSiteLink>();
+                cfg.CreateMap<MNM.VpnLinkProviderProperties, CNM.PSVpnLinkProviderProperties>();
+                cfg.CreateMap<MNM.VpnLinkBgpSettings, CNM.PSVpnLinkBgpSettings>();
                 cfg.CreateMap<MNM.ExpressRouteGateway, CNM.PSExpressRouteGateway>();
                 cfg.CreateMap<MNM.ExpressRouteConnection, CNM.PSExpressRouteConnection>();
                 cfg.CreateMap<MNM.ExpressRouteGatewayPropertiesAutoScaleConfiguration, CNM.PSExpressRouteGatewayAutoscaleConfiguration>();
