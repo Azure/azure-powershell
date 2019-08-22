@@ -49,11 +49,11 @@ The following values will be used for the parameters if not specified:
 
 ### Update a specific SignalR service.
 ```powershell
-PS D:\azure-powershell\artifacts\Debug\Az.SignalR> Update-AzSignalR -ResourceGroupName ps-dev -Name ps-test-2 -UnitCount 5
+PS C:\> Update-AzSignalR ResourceGroupName myResourceGroup -Name mysignalr1 -UnitCount 5
 
 HostName                                 Location       ExternalIp      Sku         UnitCount ProvisioningState Version
 --------                                 --------       ----------      ---         --------- ----------------- -------
-ps-test-2.service.signalr.net            eastus         52.179.3.5      Standard_S1 5         Succeeded         1.0
+mysignalr1.service.signalr.net           eastus         52.179.3.5      Standard_S1 5         Succeeded         1.0
 ```
 
 ## PARAMETERS

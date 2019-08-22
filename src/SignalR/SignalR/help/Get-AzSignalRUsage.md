@@ -23,7 +23,7 @@ Get the usage quota of a subscription.
 
 ### Get the usage quota by inputting the location
 ```powershell
-PS D:\azure-powershell\artifacts\Debug\Az.SignalR> Get-AzSignalRUsage eastus
+PS C:\> Get-AzSignalRUsage eastus
 
 Name                 CurrentValue Limit
 ----                 ------------ -----
