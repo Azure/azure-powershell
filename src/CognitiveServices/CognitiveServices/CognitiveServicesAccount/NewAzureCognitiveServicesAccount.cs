@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Cognitive Services Account Sku Name.")]
-        [AccountSkuCompleter()]
+        [AccountSkuCompleter(nameof(Location), nameof(Type))]
         public string SkuName { get; set; }
 
         [Parameter(
