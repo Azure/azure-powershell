@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.4.0
 * Fixed miscellaneous typos across module
 * Fix for issue #9658 : Typo VirtualNetworkRule parameter in Set-AzServiceBusNetworkRuleSet
 * Fix for issue #9786 : cannot create a rule with Listen only rights
