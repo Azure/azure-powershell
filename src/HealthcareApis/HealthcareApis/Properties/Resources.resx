@@ -132,4 +132,10 @@
   <data name="RemoveService_ProcessMessage" xml:space="preserve">
     <value>Removing service</value>
   </data>
+  <data name="updatedService_InvalidAllowCorsCredentialsInput" xml:space="preserve">
+    <value>AllowCorsCredentials and DisableCorsCredentials are mutually exclusive parameters. Please specify only one parameter.</value>
+  </data>
+  <data name="updatedService_InvalidSmartOnProxyInput" xml:space="preserve">
+    <value>EnableSmartProxy and DisableSmartProxy are mutually exclusive parameters. Please specify only one</value>
+  </data>
 </root>

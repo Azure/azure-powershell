@@ -104,5 +104,23 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Properties {
                 return ResourceManager.GetString("RemoveService_ProcessMessage", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AllowCorsCredentials and DisableCorsCredentials are mutually exclusive parameters. Please specify only one parameter..
+        /// </summary>
+        internal static string updatedService_InvalidAllowCorsCredentialsInput {
+            get {
+                return ResourceManager.GetString("updatedService_InvalidAllowCorsCredentialsInput", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to EnableSmartProxy and DisableSmartProxy are mutually exclusive parameters. Please specify only one.
+        /// </summary>
+        internal static string updatedService_InvalidSmartOnProxyInput {
+            get {
+                return ResourceManager.GetString("updatedService_InvalidSmartOnProxyInput", resourceCulture);
+            }
+        }
     }
 }

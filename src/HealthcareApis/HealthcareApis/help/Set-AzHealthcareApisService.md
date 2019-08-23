@@ -15,19 +15,19 @@ Updates an existing healthcareApis fhir service.
 ### ServiceNameParameterSet (Default)
 ```
 Set-AzHealthcareApisService -Name <String> -ResourceGroupName <String> [-CosmosOfferThroughput <Int32>]
- [-Authority <String>] [-Audience <String>] [-EnableSmartProxy] [-CorsOrigin <String[]>]
+ [-Authority <String>] [-Audience <String>] [-EnableSmartProxy] [-DisableSmartProxy] [-CorsOrigin <String[]>]
  [-CorsHeader <String[]>] [-CorsMethod <String[]>] [-CorsMaxAge <Int32>] [-AllowCorsCredential]
- [-AccessPolicyObjectId <String[]>] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DisableCorsCredential] [-AccessPolicyObjectId <String[]>] [-Tag <Hashtable>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
 Set-AzHealthcareApisService [-CosmosOfferThroughput <Int32>] [-Authority <String>] [-Audience <String>]
- [-EnableSmartProxy] [-CorsOrigin <String[]>] [-CorsHeader <String[]>] [-CorsMethod <String[]>]
- [-CorsMaxAge <Int32>] [-AllowCorsCredential] [-AccessPolicyObjectId <String[]>] [-Tag <Hashtable>]
- -ResourceId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-EnableSmartProxy] [-DisableSmartProxy] [-CorsOrigin <String[]>] [-CorsHeader <String[]>]
+ [-CorsMethod <String[]>] [-CorsMaxAge <Int32>] [-AllowCorsCredential] [-DisableCorsCredential]
+ [-AccessPolicyObjectId <String[]>] [-Tag <Hashtable>] -ResourceId <String> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
@@ -56,7 +56,6 @@ Location          : westus2
 Tags              : {[key, val]}
 Etag              : val
 ```
-
 
 ### Example 2: Updates the existing healthcareapis service named MyService in the resource group MyResourceGroup  with the cosmosdb OfferThroughput = 500.
 
@@ -153,7 +152,7 @@ Accept wildcard characters: False
 ```
 
 ### -CorsHeader
-HealthcareApis FhirService List of Cors Headers.
+HealthcareApis Fhir Service List of Cors Header. Specify HTTP headers which can be used during the request. Use * for any header.
 
 ```yaml
 Type: System.String[]
@@ -168,7 +167,7 @@ Accept wildcard characters: False
 ```
 
 ### -CorsMaxAge
-HealthcareApis FhirService Cors Max Age.
+HealthcareApis Fhir Service Cors Max Age. Specify how long a result from a request can be cached in seconds. Example: 600 means 10 minutes.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
@@ -189,6 +188,7 @@ HealthcareApis FhirService List of Cors Methods.
 Type: System.String[]
 Parameter Sets: ServiceNameParameterSet, ResourceIdParameterSet
 Aliases:
+Accepted values: DELETE, GET, OPTIONS, PATCH, POST, PUT
 
 Required: False
 Position: Named
@@ -198,7 +198,7 @@ Accept wildcard characters: False
 ```
 
 ### -CorsOrigin
-HealthcareApis FhirService List of Cors Origins.
+HealthcareApis FhirService List of Cors Origins. HealthcareApis Fhir Service List of Cors Origin. Specify URLs of origin sites that can access this API, or use * to allow access from any site.
 
 ```yaml
 Type: System.String[]
@@ -234,6 +234,36 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableCorsCredential
+HealthcareApis FhirService CorsCredentials Not Allowed.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ServiceNameParameterSet, ResourceIdParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableSmartProxy
+HealthcareApis FhirService DisableSmartProxy.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ServiceNameParameterSet, ResourceIdParameterSet
+Aliases:
 
 Required: False
 Position: Named
