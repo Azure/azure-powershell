@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScheduledQueryRules
             ScheduledQueryRuleSchedule schedule = new ScheduledQueryRuleSchedule(new Schedule(5, 5));
             cmdlet.Schedule = new PSScheduledQueryRuleSchedule(schedule);
 
-            ScheduledQueryRuleSource source= new ScheduledQueryRuleSource(new Source("union *", "dataSourceId", new string[]{"authResource1", "authResource2"}, "ResultCount"));
+            ScheduledQueryRuleSource source= new ScheduledQueryRuleSource(new Source(dataSourceId: "dataSourceId", query: "union *", authorizedResources: new string[] {"authResource1", "authResource2"}, queryType: "ResultCount"));
             cmdlet.Source = new PSScheduledQueryRuleSource(source);
 
             cmdlet.ExecuteCmdlet();
