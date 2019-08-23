@@ -122,7 +122,7 @@ Accept wildcard characters: False
 ```
 
 ### -CorsHeader
-HealthcareApis Fhir Service List of Cors Header.
+HealthcareApis Fhir Service List of Cors Header. Specify HTTP headers which can be used during the request. Use * for any header.
 
 ```yaml
 Type: System.String[]
@@ -137,7 +137,7 @@ Accept wildcard characters: False
 ```
 
 ### -CorsMaxAge
-HealthcareApis Fhir Service Cors Max Age.
+HealthcareApis Fhir Service Cors Max Age. Specify how long a result from a request can be cached in seconds. Example: 600 means 10 minutes.
 
 ```yaml
 Type: System.Int32
@@ -158,6 +158,7 @@ HealthcareApis Fhir Service List of Cors Method.
 Type: System.String[]
 Parameter Sets: (All)
 Aliases:
+Accepted values: DELETE, GET, OPTIONS, PATCH, POST, PUT
 
 Required: False
 Position: Named
@@ -167,7 +168,7 @@ Accept wildcard characters: False
 ```
 
 ### -CorsOrigin
-HealthcareApis Fhir Service List of Cors Origin.
+HealthcareApis Fhir Service List of Cors Origin. Specify URLs of origin sites that can access this API, or use * to allow access from any site.
 
 ```yaml
 Type: System.String[]
@@ -258,7 +259,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-HealthcareApis Fhir Service Location.
+HealthcareApis Service Location.
 
 ```yaml
 Type: System.String

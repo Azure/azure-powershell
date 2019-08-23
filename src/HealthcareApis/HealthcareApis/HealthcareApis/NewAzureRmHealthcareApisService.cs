@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
         [Parameter(
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "HealthcareApis Fhir Service Location.")]
+           HelpMessage = "HealthcareApis Service Location.")]
         [ValidateNotNullOrEmpty]
         [LocationCompleter("Microsoft.HealthcareApis/services")]
         public string Location { get; set; }
@@ -94,14 +94,14 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 
         [Parameter(
         Mandatory = false,
-        HelpMessage = "HealthcareApis Fhir Service List of Cors Header.")]
+        HelpMessage = "HealthcareApis Fhir Service List of Cors Header. Specify HTTP headers which can be used during the request. Use \" * \" for any header.")]
         [ValidateNotNullOrEmpty]
         public string[] CorsHeader { get; set; }
 
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "HealthcareApis Fhir Service Cors Max Age.")]
+            HelpMessage = "HealthcareApis Fhir Service Cors Max Age. Specify how long a result from a request can be cached in seconds. Example: 600 means 10 minutes.")]
         [ValidateNotNullOrEmpty]
         [ValidateRange(0,99999)]
         public int CorsMaxAge { get; set; }
@@ -110,11 +110,12 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
         Mandatory = false,
         HelpMessage = "HealthcareApis Fhir Service List of Cors Method.")]
         [ValidateNotNullOrEmpty]
+        [ValidateSet("DELETE", "GET", "OPTIONS", "PATCH", "POST", "PUT")]
         public string[] CorsMethod { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "HealthcareApis Fhir Service List of Cors Origin.")]
+            HelpMessage = "HealthcareApis Fhir Service List of Cors Origin. Specify URLs of origin sites that can access this API, or use \" * \" to allow access from any site.")]
         [ValidateNotNullOrEmpty]
         [ValidatePattern("^(?:(?:(?:[hH][tT][tT][pP](?:[sS]|))\\:\\/\\/(?:[a-zA-Z0-9-]+[.]?)+(?:\\:[0-9]{1,5})?|[*]))$")]
         public string[] CorsOrigin { get; set; }
