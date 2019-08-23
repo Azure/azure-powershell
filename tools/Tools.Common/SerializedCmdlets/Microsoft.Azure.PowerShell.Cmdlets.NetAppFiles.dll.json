@@ -14,21 +14,23 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
             "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ExportPolicy": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy",
+              "ProtocolTypes": "System.Collections.Generic.IList`1[System.String]",
               "UsageThreshold": "System.Nullable`1[System.Int64]",
+              "MountTargets": "System.Object",
               "Tags": "System.Object",
               "ResourceGroupName": "System.String",
-              "Location": "System.String",
-              "Id": "System.String",
-              "Name": "System.String",
-              "Type": "System.String",
-              "ProvisioningState": "System.String",
-              "FileSystemId": "System.String",
-              "CreationToken": "System.String",
-              "ServiceLevel": "System.String",
               "SnapshotId": "System.String",
+              "ServiceLevel": "System.String",
+              "CreationToken": "System.String",
+              "FileSystemId": "System.String",
+              "ProvisioningState": "System.String",
+              "Type": "System.String",
+              "Name": "System.String",
+              "Id": "System.String",
+              "Location": "System.String",
               "BaremetalTenantId": "System.String",
               "SubnetId": "System.String"
             },
@@ -173,7 +175,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
             "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Size": "System.Nullable`1[System.Int64]",
               "Tags": "System.Object",
@@ -483,7 +485,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
                   "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Size": "System.Nullable`1[System.Int64]",
                     "Tags": "System.Object",
@@ -647,21 +649,23 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
             "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ExportPolicy": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy",
+              "ProtocolTypes": "System.Collections.Generic.IList`1[System.String]",
               "UsageThreshold": "System.Nullable`1[System.Int64]",
+              "MountTargets": "System.Object",
               "Tags": "System.Object",
               "ResourceGroupName": "System.String",
-              "Location": "System.String",
-              "Id": "System.String",
-              "Name": "System.String",
-              "Type": "System.String",
-              "ProvisioningState": "System.String",
-              "FileSystemId": "System.String",
-              "CreationToken": "System.String",
-              "ServiceLevel": "System.String",
               "SnapshotId": "System.String",
+              "ServiceLevel": "System.String",
+              "CreationToken": "System.String",
+              "FileSystemId": "System.String",
+              "ProvisioningState": "System.String",
+              "Type": "System.String",
+              "Name": "System.String",
+              "Id": "System.String",
+              "Location": "System.String",
               "BaremetalTenantId": "System.String",
               "SubnetId": "System.String"
             },
@@ -805,13 +809,11 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "System.Nullable`1[System.Int64]",
-            "AssemblyQualifiedName": "System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Name": "System.Int64",
+            "AssemblyQualifiedName": "System.Int64, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": [
-              "System.Int64"
-            ],
+            "GenericTypeArguments": [],
             "Methods": [],
             "Constructors": []
           },
@@ -880,7 +882,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
             "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Rules": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesExportPolicyRule[]"
             },
@@ -927,6 +929,24 @@
           "ValidateNotNullOrEmpty": true
         },
         {
+          "Name": "ProtocolType",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String[]",
+            "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": "System.String",
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
           "Name": "Tag",
           "AliasList": [
             "Tags"
@@ -952,7 +972,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
             "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Size": "System.Nullable`1[System.Int64]",
               "Tags": "System.Object",
@@ -1197,13 +1217,11 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "System.Nullable`1[System.Int64]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Name": "System.Int64",
+                  "AssemblyQualifiedName": "System.Int64, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": [
-                    "System.Int64"
-                  ],
+                  "GenericTypeArguments": [],
                   "Methods": [],
                   "Constructors": []
                 },
@@ -1272,7 +1290,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
                   "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Rules": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesExportPolicyRule[]"
                   },
@@ -1312,6 +1330,30 @@
                       "Parameters": []
                     }
                   ]
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProtocolType",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": "System.String",
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -1425,13 +1467,11 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "System.Nullable`1[System.Int64]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Name": "System.Int64",
+                  "AssemblyQualifiedName": "System.Int64, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": [
-                    "System.Int64"
-                  ],
+                  "GenericTypeArguments": [],
                   "Methods": [],
                   "Constructors": []
                 },
@@ -1500,7 +1540,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
                   "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Rules": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesExportPolicyRule[]"
                   },
@@ -1540,6 +1580,30 @@
                       "Parameters": []
                     }
                   ]
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProtocolType",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": "System.String",
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -1652,7 +1716,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
                   "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Size": "System.Nullable`1[System.Int64]",
                     "Tags": "System.Object",
@@ -1744,13 +1808,11 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "System.Nullable`1[System.Int64]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Name": "System.Int64",
+                  "AssemblyQualifiedName": "System.Int64, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": [
-                    "System.Int64"
-                  ],
+                  "GenericTypeArguments": [],
                   "Methods": [],
                   "Constructors": []
                 },
@@ -1819,7 +1881,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
                   "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Rules": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesExportPolicyRule[]"
                   },
@@ -1859,6 +1921,30 @@
                       "Parameters": []
                     }
                   ]
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ProtocolType",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": "System.String",
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -2067,7 +2153,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
             "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Size": "System.Nullable`1[System.Int64]",
               "Tags": "System.Object",
@@ -2128,21 +2214,23 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
             "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ExportPolicy": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy",
+              "ProtocolTypes": "System.Collections.Generic.IList`1[System.String]",
               "UsageThreshold": "System.Nullable`1[System.Int64]",
+              "MountTargets": "System.Object",
               "Tags": "System.Object",
               "ResourceGroupName": "System.String",
-              "Location": "System.String",
-              "Id": "System.String",
-              "Name": "System.String",
-              "Type": "System.String",
-              "ProvisioningState": "System.String",
-              "FileSystemId": "System.String",
-              "CreationToken": "System.String",
-              "ServiceLevel": "System.String",
               "SnapshotId": "System.String",
+              "ServiceLevel": "System.String",
+              "CreationToken": "System.String",
+              "FileSystemId": "System.String",
+              "ProvisioningState": "System.String",
+              "Type": "System.String",
+              "Name": "System.String",
+              "Id": "System.String",
+              "Location": "System.String",
               "BaremetalTenantId": "System.String",
               "SubnetId": "System.String"
             },
@@ -2443,7 +2531,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
                   "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Size": "System.Nullable`1[System.Int64]",
                     "Tags": "System.Object",
@@ -2670,21 +2758,23 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
                   "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ExportPolicy": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy",
+                    "ProtocolTypes": "System.Collections.Generic.IList`1[System.String]",
                     "UsageThreshold": "System.Nullable`1[System.Int64]",
+                    "MountTargets": "System.Object",
                     "Tags": "System.Object",
                     "ResourceGroupName": "System.String",
-                    "Location": "System.String",
-                    "Id": "System.String",
-                    "Name": "System.String",
-                    "Type": "System.String",
-                    "ProvisioningState": "System.String",
-                    "FileSystemId": "System.String",
-                    "CreationToken": "System.String",
-                    "ServiceLevel": "System.String",
                     "SnapshotId": "System.String",
+                    "ServiceLevel": "System.String",
+                    "CreationToken": "System.String",
+                    "FileSystemId": "System.String",
+                    "ProvisioningState": "System.String",
+                    "Type": "System.String",
+                    "Name": "System.String",
+                    "Id": "System.String",
+                    "Location": "System.String",
                     "BaremetalTenantId": "System.String",
                     "SubnetId": "System.String"
                   },
@@ -2887,21 +2977,23 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
             "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ExportPolicy": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy",
+              "ProtocolTypes": "System.Collections.Generic.IList`1[System.String]",
               "UsageThreshold": "System.Nullable`1[System.Int64]",
+              "MountTargets": "System.Object",
               "Tags": "System.Object",
               "ResourceGroupName": "System.String",
-              "Location": "System.String",
-              "Id": "System.String",
-              "Name": "System.String",
-              "Type": "System.String",
-              "ProvisioningState": "System.String",
-              "FileSystemId": "System.String",
-              "CreationToken": "System.String",
-              "ServiceLevel": "System.String",
               "SnapshotId": "System.String",
+              "ServiceLevel": "System.String",
+              "CreationToken": "System.String",
+              "FileSystemId": "System.String",
+              "ProvisioningState": "System.String",
+              "Type": "System.String",
+              "Name": "System.String",
+              "Id": "System.String",
+              "Location": "System.String",
               "BaremetalTenantId": "System.String",
               "SubnetId": "System.String"
             },
@@ -3084,7 +3176,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
             "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Rules": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesExportPolicyRule[]"
             },
@@ -3174,7 +3266,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
             "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Size": "System.Nullable`1[System.Int64]",
               "Tags": "System.Object",
@@ -3235,21 +3327,23 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
             "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ExportPolicy": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy",
+              "ProtocolTypes": "System.Collections.Generic.IList`1[System.String]",
               "UsageThreshold": "System.Nullable`1[System.Int64]",
+              "MountTargets": "System.Object",
               "Tags": "System.Object",
               "ResourceGroupName": "System.String",
-              "Location": "System.String",
-              "Id": "System.String",
-              "Name": "System.String",
-              "Type": "System.String",
-              "ProvisioningState": "System.String",
-              "FileSystemId": "System.String",
-              "CreationToken": "System.String",
-              "ServiceLevel": "System.String",
               "SnapshotId": "System.String",
+              "ServiceLevel": "System.String",
+              "CreationToken": "System.String",
+              "FileSystemId": "System.String",
+              "ProvisioningState": "System.String",
+              "Type": "System.String",
+              "Name": "System.String",
+              "Id": "System.String",
+              "Location": "System.String",
               "BaremetalTenantId": "System.String",
               "SubnetId": "System.String"
             },
@@ -3512,7 +3606,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
                   "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Rules": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesExportPolicyRule[]"
                   },
@@ -3666,7 +3760,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
                   "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Size": "System.Nullable`1[System.Int64]",
                     "Tags": "System.Object",
@@ -3783,7 +3877,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
                   "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Rules": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesExportPolicyRule[]"
                   },
@@ -3961,7 +4055,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
                   "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Rules": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesExportPolicyRule[]"
                   },
@@ -4163,7 +4257,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
                   "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Rules": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesExportPolicyRule[]"
                   },
@@ -4291,21 +4385,23 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
                   "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ExportPolicy": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy",
+                    "ProtocolTypes": "System.Collections.Generic.IList`1[System.String]",
                     "UsageThreshold": "System.Nullable`1[System.Int64]",
+                    "MountTargets": "System.Object",
                     "Tags": "System.Object",
                     "ResourceGroupName": "System.String",
-                    "Location": "System.String",
-                    "Id": "System.String",
-                    "Name": "System.String",
-                    "Type": "System.String",
-                    "ProvisioningState": "System.String",
-                    "FileSystemId": "System.String",
-                    "CreationToken": "System.String",
-                    "ServiceLevel": "System.String",
                     "SnapshotId": "System.String",
+                    "ServiceLevel": "System.String",
+                    "CreationToken": "System.String",
+                    "FileSystemId": "System.String",
+                    "ProvisioningState": "System.String",
+                    "Type": "System.String",
+                    "Name": "System.String",
+                    "Id": "System.String",
+                    "Location": "System.String",
                     "BaremetalTenantId": "System.String",
                     "SubnetId": "System.String"
                   },
@@ -4413,7 +4509,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
                   "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Rules": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesExportPolicyRule[]"
                   },
@@ -4550,7 +4646,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
             "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesSnapshot",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesSnapshot, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesSnapshot, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CreationDate": "System.Nullable`1[System.DateTime]",
               "Tags": "System.Object",
@@ -4722,21 +4818,23 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
             "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ExportPolicy": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy",
+              "ProtocolTypes": "System.Collections.Generic.IList`1[System.String]",
               "UsageThreshold": "System.Nullable`1[System.Int64]",
+              "MountTargets": "System.Object",
               "Tags": "System.Object",
               "ResourceGroupName": "System.String",
-              "Location": "System.String",
-              "Id": "System.String",
-              "Name": "System.String",
-              "Type": "System.String",
-              "ProvisioningState": "System.String",
-              "FileSystemId": "System.String",
-              "CreationToken": "System.String",
-              "ServiceLevel": "System.String",
               "SnapshotId": "System.String",
+              "ServiceLevel": "System.String",
+              "CreationToken": "System.String",
+              "FileSystemId": "System.String",
+              "ProvisioningState": "System.String",
+              "Type": "System.String",
+              "Name": "System.String",
+              "Id": "System.String",
+              "Location": "System.String",
               "BaremetalTenantId": "System.String",
               "SubnetId": "System.String"
             },
@@ -5157,21 +5255,23 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
                   "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ExportPolicy": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy",
+                    "ProtocolTypes": "System.Collections.Generic.IList`1[System.String]",
                     "UsageThreshold": "System.Nullable`1[System.Int64]",
+                    "MountTargets": "System.Object",
                     "Tags": "System.Object",
                     "ResourceGroupName": "System.String",
-                    "Location": "System.String",
-                    "Id": "System.String",
-                    "Name": "System.String",
-                    "Type": "System.String",
-                    "ProvisioningState": "System.String",
-                    "FileSystemId": "System.String",
-                    "CreationToken": "System.String",
-                    "ServiceLevel": "System.String",
                     "SnapshotId": "System.String",
+                    "ServiceLevel": "System.String",
+                    "CreationToken": "System.String",
+                    "FileSystemId": "System.String",
+                    "ProvisioningState": "System.String",
+                    "Type": "System.String",
+                    "Name": "System.String",
+                    "Id": "System.String",
+                    "Location": "System.String",
                     "BaremetalTenantId": "System.String",
                     "SubnetId": "System.String"
                   },
@@ -5308,7 +5408,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
             "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesSnapshot",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesSnapshot, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesSnapshot, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CreationDate": "System.Nullable`1[System.DateTime]",
               "Tags": "System.Object",
@@ -5518,21 +5618,23 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
             "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ExportPolicy": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy",
+              "ProtocolTypes": "System.Collections.Generic.IList`1[System.String]",
               "UsageThreshold": "System.Nullable`1[System.Int64]",
+              "MountTargets": "System.Object",
               "Tags": "System.Object",
               "ResourceGroupName": "System.String",
-              "Location": "System.String",
-              "Id": "System.String",
-              "Name": "System.String",
-              "Type": "System.String",
-              "ProvisioningState": "System.String",
-              "FileSystemId": "System.String",
-              "CreationToken": "System.String",
-              "ServiceLevel": "System.String",
               "SnapshotId": "System.String",
+              "ServiceLevel": "System.String",
+              "CreationToken": "System.String",
+              "FileSystemId": "System.String",
+              "ProvisioningState": "System.String",
+              "Type": "System.String",
+              "Name": "System.String",
+              "Id": "System.String",
+              "Location": "System.String",
               "BaremetalTenantId": "System.String",
               "SubnetId": "System.String"
             },
@@ -5959,21 +6061,23 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
                   "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ExportPolicy": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy",
+                    "ProtocolTypes": "System.Collections.Generic.IList`1[System.String]",
                     "UsageThreshold": "System.Nullable`1[System.Int64]",
+                    "MountTargets": "System.Object",
                     "Tags": "System.Object",
                     "ResourceGroupName": "System.String",
-                    "Location": "System.String",
-                    "Id": "System.String",
-                    "Name": "System.String",
-                    "Type": "System.String",
-                    "ProvisioningState": "System.String",
-                    "FileSystemId": "System.String",
-                    "CreationToken": "System.String",
-                    "ServiceLevel": "System.String",
                     "SnapshotId": "System.String",
+                    "ServiceLevel": "System.String",
+                    "CreationToken": "System.String",
+                    "FileSystemId": "System.String",
+                    "ProvisioningState": "System.String",
+                    "Type": "System.String",
+                    "Name": "System.String",
+                    "Id": "System.String",
+                    "Location": "System.String",
                     "BaremetalTenantId": "System.String",
                     "SubnetId": "System.String"
                   },
@@ -6265,21 +6369,23 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
             "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ExportPolicy": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy",
+              "ProtocolTypes": "System.Collections.Generic.IList`1[System.String]",
               "UsageThreshold": "System.Nullable`1[System.Int64]",
+              "MountTargets": "System.Object",
               "Tags": "System.Object",
               "ResourceGroupName": "System.String",
-              "Location": "System.String",
-              "Id": "System.String",
-              "Name": "System.String",
-              "Type": "System.String",
-              "ProvisioningState": "System.String",
-              "FileSystemId": "System.String",
-              "CreationToken": "System.String",
-              "ServiceLevel": "System.String",
               "SnapshotId": "System.String",
+              "ServiceLevel": "System.String",
+              "CreationToken": "System.String",
+              "FileSystemId": "System.String",
+              "ProvisioningState": "System.String",
+              "Type": "System.String",
+              "Name": "System.String",
+              "Id": "System.String",
+              "Location": "System.String",
               "BaremetalTenantId": "System.String",
               "SubnetId": "System.String"
             },
@@ -6331,7 +6437,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
             "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesSnapshot",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesSnapshot, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesSnapshot, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CreationDate": "System.Nullable`1[System.DateTime]",
               "Tags": "System.Object",
@@ -6731,21 +6837,23 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
                   "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ExportPolicy": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy",
+                    "ProtocolTypes": "System.Collections.Generic.IList`1[System.String]",
                     "UsageThreshold": "System.Nullable`1[System.Int64]",
+                    "MountTargets": "System.Object",
                     "Tags": "System.Object",
                     "ResourceGroupName": "System.String",
-                    "Location": "System.String",
-                    "Id": "System.String",
-                    "Name": "System.String",
-                    "Type": "System.String",
-                    "ProvisioningState": "System.String",
-                    "FileSystemId": "System.String",
-                    "CreationToken": "System.String",
-                    "ServiceLevel": "System.String",
                     "SnapshotId": "System.String",
+                    "ServiceLevel": "System.String",
+                    "CreationToken": "System.String",
+                    "FileSystemId": "System.String",
+                    "ProvisioningState": "System.String",
+                    "Type": "System.String",
+                    "Name": "System.String",
+                    "Id": "System.String",
+                    "Location": "System.String",
                     "BaremetalTenantId": "System.String",
                     "SubnetId": "System.String"
                   },
@@ -6871,7 +6979,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
                   "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesSnapshot",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesSnapshot, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesSnapshot, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CreationDate": "System.Nullable`1[System.DateTime]",
                     "Tags": "System.Object",
@@ -7083,7 +7191,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
             "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Size": "System.Nullable`1[System.Int64]",
               "Tags": "System.Object",
@@ -7219,7 +7327,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
             "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ActiveDirectories": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory]",
               "Tags": "System.Object",
@@ -7503,7 +7611,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
                   "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ActiveDirectories": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory]",
                     "Tags": "System.Object",
@@ -7665,7 +7773,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
             "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Size": "System.Nullable`1[System.Int64]",
               "Tags": "System.Object",
@@ -7800,13 +7908,11 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "System.Nullable`1[System.Int64]",
-            "AssemblyQualifiedName": "System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Name": "System.Int64",
+            "AssemblyQualifiedName": "System.Int64, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": [
-              "System.Int64"
-            ],
+            "GenericTypeArguments": [],
             "Methods": [],
             "Constructors": []
           },
@@ -7859,7 +7965,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
             "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ActiveDirectories": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory]",
               "Tags": "System.Object",
@@ -8054,13 +8160,11 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "System.Nullable`1[System.Int64]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Name": "System.Int64",
+                  "AssemblyQualifiedName": "System.Int64, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": [
-                    "System.Int64"
-                  ],
+                  "GenericTypeArguments": [],
                   "Methods": [],
                   "Constructors": []
                 },
@@ -8200,13 +8304,11 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "System.Nullable`1[System.Int64]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Name": "System.Int64",
+                  "AssemblyQualifiedName": "System.Int64, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": [
-                    "System.Int64"
-                  ],
+                  "GenericTypeArguments": [],
                   "Methods": [],
                   "Constructors": []
                 },
@@ -8321,7 +8423,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
                   "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ActiveDirectories": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory]",
                     "Tags": "System.Object",
@@ -8411,13 +8513,11 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "System.Nullable`1[System.Int64]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[System.Int64, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Name": "System.Int64",
+                  "AssemblyQualifiedName": "System.Int64, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": [
-                    "System.Int64"
-                  ],
+                  "GenericTypeArguments": [],
                   "Methods": [],
                   "Constructors": []
                 },
@@ -8634,7 +8734,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
             "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ActiveDirectories": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory]",
               "Tags": "System.Object",
@@ -8693,7 +8793,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
             "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Size": "System.Nullable`1[System.Int64]",
               "Tags": "System.Object",
@@ -8979,7 +9079,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
                   "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ActiveDirectories": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory]",
                     "Tags": "System.Object",
@@ -9204,7 +9304,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
                   "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Size": "System.Nullable`1[System.Int64]",
                     "Tags": "System.Object",
@@ -9416,7 +9516,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
             "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Size": "System.Nullable`1[System.Int64]",
               "Tags": "System.Object",
@@ -9628,7 +9728,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
             "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ActiveDirectories": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory]",
               "Tags": "System.Object",
@@ -9687,7 +9787,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
             "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Size": "System.Nullable`1[System.Int64]",
               "Tags": "System.Object",
@@ -10031,7 +10131,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
                   "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ActiveDirectories": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory]",
                     "Tags": "System.Object",
@@ -10480,7 +10580,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
                   "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesPool, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Size": "System.Nullable`1[System.Int64]",
                     "Tags": "System.Object",
@@ -10676,7 +10776,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
             "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ActiveDirectories": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory]",
               "Tags": "System.Object",
@@ -11046,7 +11146,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
             "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ActiveDirectories": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory]",
               "Tags": "System.Object",
@@ -11162,7 +11262,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
             "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory[], Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory[], Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory",
             "GenericTypeArguments": [],
@@ -11313,7 +11413,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
                   "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory[], Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory[], Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory",
                   "GenericTypeArguments": [],
@@ -11457,7 +11557,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
                   "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory[], Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory[], Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory",
                   "GenericTypeArguments": [],
@@ -11635,7 +11735,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
             "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ActiveDirectories": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory]",
               "Tags": "System.Object",
@@ -11961,7 +12061,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
                   "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ActiveDirectories": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory]",
                     "Tags": "System.Object",
@@ -12171,7 +12271,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
             "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ActiveDirectories": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory]",
               "Tags": "System.Object",
@@ -12287,7 +12387,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
             "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory[], Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory[], Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory",
             "GenericTypeArguments": [],
@@ -12628,7 +12728,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
                   "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory[], Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory[], Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory",
                   "GenericTypeArguments": [],
@@ -12781,7 +12881,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
             "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ActiveDirectories": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory]",
               "Tags": "System.Object",
@@ -12915,7 +13015,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
             "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory[], Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory[], Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory",
             "GenericTypeArguments": [],
@@ -12933,7 +13033,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
             "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ActiveDirectories": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory]",
               "Tags": "System.Object",
@@ -13125,7 +13225,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
                   "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory[], Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory[], Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory",
                   "GenericTypeArguments": [],
@@ -13317,7 +13417,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
                   "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory[], Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory[], Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory",
                   "GenericTypeArguments": [],
@@ -13411,7 +13511,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
                   "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ActiveDirectories": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory]",
                     "Tags": "System.Object",
@@ -13550,7 +13650,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
                   "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory[], Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory[], Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory",
                   "GenericTypeArguments": [],
@@ -13788,7 +13888,7 @@
     "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy": {
       "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
       "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolumeExportPolicy, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Rules": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesExportPolicyRule[]"
       },
@@ -13832,7 +13932,7 @@
     "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesExportPolicyRule[]": {
       "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
       "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesExportPolicyRule[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesExportPolicyRule[], Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesExportPolicyRule[], Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesExportPolicyRule",
       "GenericTypeArguments": [],
@@ -13842,7 +13942,7 @@
     "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesExportPolicyRule": {
       "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
       "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesExportPolicyRule",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesExportPolicyRule, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesExportPolicyRule, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "UnixReadOnly": "System.Nullable`1[System.Boolean]",
         "UnixReadWrite": "System.Nullable`1[System.Boolean]",
@@ -13920,6 +14020,18 @@
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
+    },
+    "System.Collections.Generic.IList`1[System.String]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IList`1[System.String]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.String"
+      ],
       "Methods": [],
       "Constructors": []
     },
@@ -14020,18 +14132,6 @@
       },
       "ElementType": null,
       "GenericTypeArguments": [],
-      "Methods": [],
-      "Constructors": []
-    },
-    "System.Collections.Generic.IList`1[System.String]": {
-      "Namespace": "System.Collections.Generic",
-      "Name": "System.Collections.Generic.IList`1[System.String]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "System.String"
-      ],
       "Methods": [],
       "Constructors": []
     },
@@ -14160,7 +14260,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -14172,7 +14272,7 @@
     "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory": {
       "Namespace": "Microsoft.Azure.Commands.NetAppFiles.Models",
       "Name": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesActiveDirectory, Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ActiveDirectoryId": "System.String",
         "Username": "System.String",
