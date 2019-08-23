@@ -14,18 +14,8 @@ Creates a new managed application.
 
 ### UpdateExpanded1 (Default)
 ```
-Set-AzManagedApplication -Id <String> -Parameter <IApplication> -Kind <String>
- -ManagedResourceGroupId <String> [-ApplicationDefinitionId <String>] [-IdentityType <ResourceIdentityType>]
- [-Location <String>] [-ManagedBy <String>] [-PlanName <String>] [-PlanProduct <String>]
- [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>] [-SkuCapacity <Int32>]
- [-SkuFamily <String>] [-SkuModel <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
-```
-Set-AzManagedApplication -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -Parameter <IApplication> -Kind <String> -ManagedResourceGroupId <String> [-ApplicationDefinitionId <String>]
+Set-AzManagedApplication -Id <String> -Kind <String> -ManagedResourceGroupId <String>
+ [-ApplicationDefinitionId <String>] [-ApplicationParameter <IApplicationPropertiesParameters>]
  [-IdentityType <ResourceIdentityType>] [-Location <String>] [-ManagedBy <String>] [-PlanName <String>]
  [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
  [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuModel <String>] [-SkuName <String>] [-SkuSize <String>]
@@ -44,6 +34,17 @@ Set-AzManagedApplication -Name <String> -ResourceGroupName <String> -Subscriptio
 ```
 Set-AzManagedApplication -Id <String> -Parameter <IApplication> [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateExpanded
+```
+Set-AzManagedApplication -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Kind <String>
+ -ManagedResourceGroupId <String> [-ApplicationDefinitionId <String>]
+ [-ApplicationParameter <IApplicationPropertiesParameters>] [-IdentityType <ResourceIdentityType>]
+ [-Location <String>] [-ManagedBy <String>] [-PlanName <String>] [-PlanProduct <String>]
+ [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>] [-SkuCapacity <Int32>]
+ [-SkuFamily <String>] [-SkuModel <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -76,8 +77,25 @@ The fully qualified path of managed application definition Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpanded1
 Aliases: ManagedApplicationDefinitionId
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ApplicationParameter
+Name and value pairs that define the managed application parameters.
+It can be a JObject or a well formed JSON string.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20170901.IApplicationPropertiesParameters
+Parameter Sets: UpdateExpanded, UpdateExpanded1
+Aliases:
 
 Required: False
 Position: Named
@@ -97,7 +115,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -125,7 +143,7 @@ Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/Micro
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, Update1
+Parameter Sets: Update1, UpdateExpanded1
 Aliases: ApplicationId
 
 Required: True
@@ -141,7 +159,7 @@ The identity type.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Support.ResourceIdentityType
-Parameter Sets: UpdateExpanded1, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpanded1
 Aliases:
 
 Required: False
@@ -158,7 +176,7 @@ Allowed values are MarketPlace and ServiceCatalog.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpanded1
 Aliases:
 
 Required: True
@@ -174,7 +192,7 @@ Resource location
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpanded1
 Aliases:
 
 Required: False
@@ -190,7 +208,7 @@ ID of the resource that manages this resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpanded1
 Aliases:
 
 Required: False
@@ -206,7 +224,7 @@ The managed resource group Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpanded1
 Aliases:
 
 Required: True
@@ -222,7 +240,7 @@ The name of the managed application.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update
+Parameter Sets: Update, UpdateExpanded
 Aliases: ApplicationName
 
 Required: True
@@ -243,7 +261,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -255,7 +273,7 @@ To construct, see NOTES section for PARAMETER properties and create a hash table
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180601.IApplication
-Parameter Sets: (All)
+Parameter Sets: Update, Update1
 Aliases:
 
 Required: True
@@ -271,7 +289,7 @@ The plan name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpanded1
 Aliases:
 
 Required: False
@@ -287,7 +305,7 @@ The product code.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpanded1
 Aliases:
 
 Required: False
@@ -303,7 +321,7 @@ The promotion code.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpanded1
 Aliases:
 
 Required: False
@@ -319,7 +337,7 @@ The publisher ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpanded1
 Aliases:
 
 Required: False
@@ -335,7 +353,7 @@ The plan's version.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpanded1
 Aliases:
 
 Required: False
@@ -352,7 +370,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -368,12 +386,12 @@ The SKU capacity.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded1, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpanded1
 Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -384,7 +402,7 @@ The SKU family.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpanded1
 Aliases:
 
 Required: False
@@ -400,7 +418,7 @@ The SKU model.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpanded1
 Aliases:
 
 Required: False
@@ -416,7 +434,7 @@ The SKU name.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpanded1
 Aliases:
 
 Required: False
@@ -432,7 +450,7 @@ The SKU size.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpanded1
 Aliases:
 
 Required: False
@@ -448,7 +466,7 @@ The SKU tier.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpanded1
 Aliases:
 
 Required: False
@@ -464,7 +482,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, Update
+Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
@@ -480,7 +498,7 @@ Resource tags
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded1, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpanded1
 Aliases:
 
 Required: False

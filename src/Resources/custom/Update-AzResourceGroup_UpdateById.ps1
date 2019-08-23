@@ -21,7 +21,7 @@ function Update-AzResourceGroup_UpdateById {
 
         [Parameter(HelpMessage='The tags attached to the resource group.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IResourceGroupTags]
+        [System.Collections.Hashtable]
         ${Tag},
 
         [Parameter()]

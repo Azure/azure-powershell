@@ -14,29 +14,36 @@ You can provide the template and parameters directly in the request or link to J
 
 ### UpdateExpanded (Default)
 ```
-Set-AzDeployment -Name <String> -SubscriptionId <String> -Parameter <IDeployment> -Mode <DeploymentMode>
- [-DebugSettingDetailLevel <String>] [-Location <String>] [-OnErrorDeploymentName <String>]
- [-OnErrorDeploymentType <OnErrorDeploymentType>] [-ParameterLinkContentVersion <String>]
- [-ParameterLinkUri <String>] [-Template <IDeploymentPropertiesTemplate>]
- [-TemplateLinkContentVersion <String>] [-TemplateLinkUri <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded1
-```
-Set-AzDeployment -Name <String> -SubscriptionId <String> -ResourceGroupName <String> -Parameter <IDeployment>
- -Mode <DeploymentMode> [-DebugSettingDetailLevel <String>] [-Location <String>]
- [-OnErrorDeploymentName <String>] [-OnErrorDeploymentType <OnErrorDeploymentType>]
+Set-AzDeployment -Name <String> -SubscriptionId <String> -Mode <DeploymentMode>
+ [-DebugSettingDetailLevel <String>] [-DeploymentParameter <IDeploymentPropertiesParameters>]
+ [-Location <String>] [-OnErrorDeploymentName <String>] [-OnErrorDeploymentType <OnErrorDeploymentType>]
  [-ParameterLinkContentVersion <String>] [-ParameterLinkUri <String>]
  [-Template <IDeploymentPropertiesTemplate>] [-TemplateLinkContentVersion <String>]
  [-TemplateLinkUri <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
+### Update
+```
+Set-AzDeployment -Name <String> -SubscriptionId <String> -Parameter <IDeployment> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### Update1
 ```
-Set-AzDeployment -Name <String> -SubscriptionId <String> -ResourceGroupName <String> -Parameter <IDeployment>
+Set-AzDeployment -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Parameter <IDeployment>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateExpanded1
+```
+Set-AzDeployment -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Mode <DeploymentMode>
+ [-DebugSettingDetailLevel <String>] [-DeploymentParameter <IDeploymentPropertiesParameters>]
+ [-Location <String>] [-OnErrorDeploymentName <String>] [-OnErrorDeploymentType <OnErrorDeploymentType>]
+ [-ParameterLinkContentVersion <String>] [-ParameterLinkUri <String>]
+ [-Template <IDeploymentPropertiesTemplate>] [-TemplateLinkContentVersion <String>]
+ [-TemplateLinkUri <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -74,7 +81,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -107,6 +114,25 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -DeploymentParameter
+Name and value pairs that define the deployment parameters for the template.
+You use this element when you want to provide the parameter values directly in the request rather than link to an existing parameter file.
+Use either the parametersLink property or the parameters property, but not both.
+It can be a JObject or a well formed JSON string.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IDeploymentPropertiesParameters
+Parameter Sets: UpdateExpanded, UpdateExpanded1
+Aliases:
 
 Required: False
 Position: Named
@@ -178,7 +204,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -223,7 +249,7 @@ To construct, see NOTES section for PARAMETER properties and create a hash table
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IDeployment
-Parameter Sets: (All)
+Parameter Sets: Update, Update1
 Aliases:
 
 Required: True
@@ -273,7 +299,7 @@ The resource group must already exist.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1, Update1
+Parameter Sets: Update1, UpdateExpanded1
 Aliases:
 
 Required: True
