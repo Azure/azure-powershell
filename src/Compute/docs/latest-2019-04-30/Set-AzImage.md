@@ -12,25 +12,14 @@ Create or update an image.
 
 ## SYNTAX
 
-### UpdateExpanded1 (Default)
 ```
 Set-AzImage -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Location <String>
- -OSDiskOsstate <OperatingSystemStateTypes> -OSDiskOstype <OperatingSystemTypes>
  [-DataDisk <IImageDataDisk[]>] [-HyperVGeneration <HyperVGenerationTypes>] [-ManagedDiskId <String>]
- [-OSDiskBlobUri <String>] [-OSDiskCaching <CachingTypes>] [-OSDiskSizeInGb <Int32>]
+ [-OSDiskBlobUri <String>] [-OSDiskCaching <CachingTypes>] [-OSDiskOsstate <OperatingSystemStateTypes>]
+ [-OSDiskOstype <OperatingSystemTypes>] [-OSDiskSizeInGb <Int32>]
  [-OSDiskStorageAccountType <StorageAccountTypes>] [-SnapshotId <String>] [-SourceVirtualMachineId <String>]
- [-Tag <IResourceTags>] [-ZoneResilient] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [-Tag <Hashtable>] [-ZoneResilient] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded1
-```
-Set-AzImage -InputObject <IComputeIdentity> -Location <String> -OSDiskOsstate <OperatingSystemStateTypes>
- -OSDiskOstype <OperatingSystemTypes> [-DataDisk <IImageDataDisk[]>]
- [-HyperVGeneration <HyperVGenerationTypes>] [-ManagedDiskId <String>] [-OSDiskBlobUri <String>]
- [-OSDiskCaching <CachingTypes>] [-OSDiskSizeInGb <Int32>] [-OSDiskStorageAccountType <StorageAccountTypes>]
- [-SnapshotId <String>] [-SourceVirtualMachineId <String>] [-Tag <IResourceTags>] [-ZoneResilient]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -68,7 +57,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -76,7 +65,10 @@ Dynamic: False
 
 ### -DataDisk
 Specifies the parameters that are used to add a data disk to a virtual machine.
-  For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhdstoc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+
+
+ For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhdstoc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+To construct, see NOTES section for DATADISK properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301.IImageDataDisk[]
@@ -123,22 +115,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-Parameter Sets: UpdateViaIdentityExpanded1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Location
 Resource location
 
@@ -176,10 +152,26 @@ The name of the image.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1
+Parameter Sets: (All)
 Aliases: ImageName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -205,7 +197,17 @@ Dynamic: False
 
 ### -OSDiskCaching
 Specifies the caching requirements.
-  Possible values are:    **None**    **ReadOnly**    **ReadWrite**    Default: **None for Standard storage.
+
+
+ Possible values are: 
+
+ **None** 
+
+ **ReadOnly** 
+
+ **ReadWrite** 
+
+ Default: **None for Standard storage.
 ReadOnly for Premium storage**
 
 ```yaml
@@ -229,7 +231,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.OperatingSystemStateTyp
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -239,14 +241,20 @@ Dynamic: False
 
 ### -OSDiskOstype
 This property allows you to specify the type of the OS that is included in the disk if creating a VM from a custom image.
-  Possible values are:    **Windows**    **Linux**
+
+
+ Possible values are: 
+
+ **Windows** 
+
+ **Linux**
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.OperatingSystemTypes
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -257,7 +265,9 @@ Dynamic: False
 ### -OSDiskSizeInGb
 Specifies the size of empty data disks in gigabytes.
 This element can be used to overwrite the name of the disk in a virtual machine image.
-  This value cannot be larger than 1023 GB
+
+
+ This value cannot be larger than 1023 GB
 
 ```yaml
 Type: System.Int32
@@ -266,7 +276,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -294,7 +304,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -343,7 +353,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -358,7 +368,7 @@ Dynamic: False
 Resource tags
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20170330.IResourceTags
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -382,7 +392,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -426,13 +436,25 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301.IImage
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### DATADISK <IImageDataDisk[]>: Specifies the parameters that are used to add a data disk to a virtual machine.    For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhdstoc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+  - `Lun <Int32>`: Specifies the logical unit number of the data disk. This value is used to identify data disks within the VM and therefore must be unique for each data disk attached to a VM.
+  - `[BlobUri <String>]`: The Virtual Hard Disk.
+  - `[Caching <CachingTypes?>]`: Specifies the caching requirements.    Possible values are:    **None**    **ReadOnly**    **ReadWrite**    Default: **None for Standard storage. ReadOnly for Premium storage**
+  - `[ManagedId <String>]`: Resource Id
+  - `[SizeInGb <Int32?>]`: Specifies the size of empty data disks in gigabytes. This element can be used to overwrite the name of the disk in a virtual machine image.    This value cannot be larger than 1023 GB
+  - `[SnapshotId <String>]`: Resource Id
+  - `[StorageAccountType <StorageAccountTypes?>]`: Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS can only be used with data disks, it cannot be used with OS Disk.
 
 ## RELATED LINKS
 

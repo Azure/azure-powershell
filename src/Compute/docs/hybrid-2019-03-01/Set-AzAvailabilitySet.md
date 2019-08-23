@@ -12,18 +12,9 @@ Create or update an availability set.
 
 ## SYNTAX
 
-### UpdateExpanded1 (Default)
 ```
 Set-AzAvailabilitySet -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Location <String>
- [-FaultDomainCount <Int32>] [-SkuCapacity <Int64>] [-SkuName <String>] [-SkuTier <String>]
- [-Tag <IResourceTags>] [-UpdateDomainCount <Int32>] [-VirtualMachine <ISubResource[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded1
-```
-Set-AzAvailabilitySet -InputObject <IComputeIdentity> -Location <String> [-FaultDomainCount <Int32>]
- [-SkuCapacity <Int64>] [-SkuName <String>] [-SkuTier <String>] [-Tag <IResourceTags>]
+ [-FaultDomainCount <Int32>] [-SkuCapacity <Int64>] [-SkuName <String>] [-SkuTier <String>] [-Tag <Hashtable>]
  [-UpdateDomainCount <Int32>] [-VirtualMachine <ISubResource[]>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -79,24 +70,8 @@ Aliases: PlatformFaultDomainCount
 
 Required: False
 Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-Parameter Sets: UpdateViaIdentityExpanded1
-Aliases:
-
-Required: True
-Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -122,7 +97,7 @@ The name of the availability set.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1
+Parameter Sets: (All)
 Aliases: AvailabilitySetName
 
 Required: True
@@ -138,7 +113,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -159,7 +134,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -182,7 +157,7 @@ Dynamic: False
 ```
 
 ### -SkuTier
-Specifies the tier of virtual machines in a scale set.<br /><br /> Possible Values:<br /><br /> **Standard**<br /><br /> **Basic**
+Specifies the tier of virtual machines in a scale set.\<br /\>\<br /\> Possible Values:\<br /\>\<br /\> **Standard**\<br /\>\<br /\> **Basic**
 
 ```yaml
 Type: System.String
@@ -203,7 +178,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -218,7 +193,7 @@ Dynamic: False
 Resource tags
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20170330.IResourceTags
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -240,7 +215,7 @@ Aliases: PlatformUpdateDomainCount
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -248,6 +223,7 @@ Dynamic: False
 
 ### -VirtualMachine
 A list of references to all virtual machines in the availability set.
+To construct, see NOTES section for VIRTUALMACHINE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.ISubResource[]
@@ -300,13 +276,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IAvailabilitySet
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### VIRTUALMACHINE <ISubResource[]>: A list of references to all virtual machines in the availability set.
+  - `[Id <String>]`: Resource Id
 
 ## RELATED LINKS
 

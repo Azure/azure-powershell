@@ -12,25 +12,13 @@ Creates or updates a snapshot.
 
 ## SYNTAX
 
-### UpdateExpanded1 (Default)
 ```
-Set-AzSnapshot -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -CreateOption <DiskCreateOption> -EncryptionKeySecretUrl <String> -ImageReferenceId <String>
- -KeyEncryptionKeyUrl <String> -Location <String> [-EncryptionKeySourceVaultId <String>]
- [-EncryptionSettingEnabled] [-ImageReferenceLun <Int32>] [-KeyEncryptionKeySourceVaultId <String>]
- [-OSType <OperatingSystemTypes>] [-SizeInGb <Int32>] [-SkuName <StorageAccountTypes>]
- [-SourceResourceId <String>] [-SourceUri <String>] [-StorageAccountId <String>] [-Tag <IResourceTags>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded1
-```
-Set-AzSnapshot -InputObject <IComputeIdentity> -CreateOption <DiskCreateOption>
- -EncryptionKeySecretUrl <String> -ImageReferenceId <String> -KeyEncryptionKeyUrl <String> -Location <String>
- [-EncryptionKeySourceVaultId <String>] [-EncryptionSettingEnabled] [-ImageReferenceLun <Int32>]
- [-KeyEncryptionKeySourceVaultId <String>] [-OSType <OperatingSystemTypes>] [-SizeInGb <Int32>]
- [-SkuName <StorageAccountTypes>] [-SourceResourceId <String>] [-SourceUri <String>]
- [-StorageAccountId <String>] [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
+Set-AzSnapshot -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Location <String>
+ [-CreateOption <DiskCreateOption>] [-EncryptionKeySecretUrl <String>] [-EncryptionKeySourceVaultId <String>]
+ [-EncryptionSettingEnabled] [-ImageReferenceId <String>] [-ImageReferenceLun <Int32>]
+ [-KeyEncryptionKeySourceVaultId <String>] [-KeyEncryptionKeyUrl <String>] [-OSType <OperatingSystemTypes>]
+ [-SizeInGb <Int32>] [-SkuName <StorageAccountTypes>] [-SourceResourceId <String>] [-SourceUri <String>]
+ [-StorageAccountId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -69,7 +57,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -83,7 +71,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.DiskCreateOption
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -115,7 +103,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -151,7 +139,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -165,7 +153,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -184,24 +172,8 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-Parameter Sets: UpdateViaIdentityExpanded1
-Aliases:
-
-Required: True
-Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -230,7 +202,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -262,10 +234,26 @@ The max name length is 80 characters.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1
+Parameter Sets: (All)
 Aliases: SnapshotName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -294,7 +282,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -317,7 +305,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -394,7 +382,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -409,7 +397,7 @@ Dynamic: False
 Resource tags
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20170330.IResourceTags
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -459,13 +447,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20170330.ISnapshot
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

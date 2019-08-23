@@ -12,26 +12,14 @@ Creates or updates a disk.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
 ```
-Set-AzDisk -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -CreateOption <DiskCreateOption> -EncryptionEnabled -ImageReferenceId <String> -Location <String>
- [-EncryptionSetting <IEncryptionSettingsElement[]>] [-HyperVGeneration <HyperVGeneration>]
- [-ImageReferenceLun <Int32>] [-IopsReadWrite <Int64>] [-MBpsReadWrite <Int32>]
- [-OSType <OperatingSystemTypes>] [-SizeInGb <Int32>] [-SkuName <DiskStorageAccountTypes>]
- [-SourceResourceId <String>] [-SourceUri <String>] [-StorageAccountId <String>] [-Tag <IResourceTags>]
- [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Set-AzDisk -InputObject <IComputeIdentity> -CreateOption <DiskCreateOption> -EncryptionEnabled
- -ImageReferenceId <String> -Location <String> [-EncryptionSetting <IEncryptionSettingsElement[]>]
- [-HyperVGeneration <HyperVGeneration>] [-ImageReferenceLun <Int32>] [-IopsReadWrite <Int64>]
- [-MBpsReadWrite <Int32>] [-OSType <OperatingSystemTypes>] [-SizeInGb <Int32>]
+Set-AzDisk -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Location <String>
+ [-CreateOption <DiskCreateOption>] [-EncryptionEnabled] [-EncryptionSetting <IEncryptionSettingsElement[]>]
+ [-HyperVGeneration <HyperVGeneration>] [-ImageReferenceId <String>] [-ImageReferenceLun <Int32>]
+ [-IopsReadWrite <Int64>] [-MBpsReadWrite <Int32>] [-OSType <OperatingSystemTypes>] [-SizeInGb <Int32>]
  [-SkuName <DiskStorageAccountTypes>] [-SourceResourceId <String>] [-SourceUri <String>]
- [-StorageAccountId <String>] [-Tag <IResourceTags>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-StorageAccountId <String>] [-Tag <Hashtable>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -69,7 +57,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -83,7 +71,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.DiskCreateOption
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -117,9 +105,9 @@ Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -127,6 +115,7 @@ Dynamic: False
 
 ### -EncryptionSetting
 A collection of encryption settings, one for each disk volume.
+To construct, see NOTES section for ENCRYPTIONSETTING properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20180930.IEncryptionSettingsElement[]
@@ -166,7 +155,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -185,24 +174,8 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-Parameter Sets: UpdateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -218,7 +191,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -251,7 +224,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -265,10 +238,26 @@ The maximum name length is 80 characters.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases: DiskName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -297,7 +286,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -320,7 +309,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -397,7 +386,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -412,7 +401,7 @@ Dynamic: False
 Resource tags
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20170330.IResourceTags
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -478,13 +467,22 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20180930.IDisk
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### ENCRYPTIONSETTING <IEncryptionSettingsElement[]>: A collection of encryption settings, one for each disk volume.
+  - `DiskEncryptionKeySecretUrl <String>`: Url pointing to a key or secret in KeyVault
+  - `KeyEncryptionKeyUrl <String>`: Url pointing to a key or secret in KeyVault
+  - `[DiskEncryptionKeySourceVaultId <String>]`: Resource Id
+  - `[KeyEncryptionKeySourceVaultId <String>]`: Resource Id
 
 ## RELATED LINKS
 

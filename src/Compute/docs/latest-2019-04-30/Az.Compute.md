@@ -36,6 +36,12 @@ Gets information about a disk.
 ### [Get-AzGallery](Get-AzGallery.md)
 Retrieves information about a Shared Image Gallery.
 
+### [Get-AzGalleryApplication](Get-AzGalleryApplication.md)
+Retrieves information about a gallery Application Definition.
+
+### [Get-AzGalleryApplicationVersion](Get-AzGalleryApplicationVersion.md)
+Retrieves information about a gallery Application Version.
+
 ### [Get-AzGalleryImageDefinition](Get-AzGalleryImageDefinition.md)
 Retrieves information about a gallery Image Definition.
 
@@ -130,6 +136,12 @@ Creates or updates a disk.
 ### [New-AzGallery](New-AzGallery.md)
 Create or update a Shared Image Gallery.
 
+### [New-AzGalleryApplication](New-AzGalleryApplication.md)
+Create or update a gallery Application Definition.
+
+### [New-AzGalleryApplicationVersion](New-AzGalleryApplicationVersion.md)
+Create or update a gallery Application Version.
+
 ### [New-AzGalleryImageDefinition](New-AzGalleryImageDefinition.md)
 Create or update a gallery Image Definition.
 
@@ -165,6 +177,12 @@ Deletes a disk.
 
 ### [Remove-AzGallery](Remove-AzGallery.md)
 Delete a Shared Image Gallery.
+
+### [Remove-AzGalleryApplication](Remove-AzGalleryApplication.md)
+Delete a gallery Application.
+
+### [Remove-AzGalleryApplicationVersion](Remove-AzGalleryApplicationVersion.md)
+Delete a gallery Application Version.
 
 ### [Remove-AzGalleryImageDefinition](Remove-AzGalleryImageDefinition.md)
 Delete a gallery image.
@@ -225,6 +243,12 @@ Create or update an availability set.
 
 ### [Set-AzDisk](Set-AzDisk.md)
 Creates or updates a disk.
+
+### [Set-AzGalleryApplication](Set-AzGalleryApplication.md)
+Create or update a gallery Application Definition.
+
+### [Set-AzGalleryApplicationVersion](Set-AzGalleryApplicationVersion.md)
+Create or update a gallery Application Version.
 
 ### [Set-AzImage](Set-AzImage.md)
 Create or update an image.

@@ -12,20 +12,12 @@ Create or update a gallery Image Version.
 
 ## SYNTAX
 
-### Create (Default)
 ```
 New-AzGalleryImageVersion -GalleryImageDefinitionName <String> -GalleryName <String> -Name <String>
- -ResourceGroupName <String> -SubscriptionId <String> [-GalleryImageVersion <IGalleryImageVersion>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded
-```
-New-AzGalleryImageVersion -GalleryImageDefinitionName <String> -GalleryName <String> -Name <String>
- -ResourceGroupName <String> -SubscriptionId <String> -Location <String> -ManagedImageId <String>
- [-EndOfLifeDate <DateTime>] [-ExcludeFromLatest] [-ReplicaCount <Int32>]
- [-StorageAccountType <StorageAccountType>] [-Tag <IResourceTags>] [-TargetRegion <ITargetRegion[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ResourceGroupName <String> -SubscriptionId <String> -Location <String> [-EndOfLifeDate <DateTime>]
+ [-ExcludeFromLatest] [-ManagedImageId <String>] [-ReplicaCount <Int32>]
+ [-StorageAccountType <StorageAccountType>] [-Tag <Hashtable>] [-TargetRegion <ITargetRegion[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,7 +55,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -92,7 +84,7 @@ This property is updatable.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases: PublishingProfileEndOfLifeDate
 
 Required: False
@@ -108,12 +100,12 @@ If set to true, Virtual Machines deployed from the latest version of the Image D
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases: PublishingProfileExcludeFromLatest
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -131,22 +123,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -GalleryImageVersion
-Specifies information about the gallery Image Version that you want to create or update.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301.IGalleryImageVersion
-Parameter Sets: Create
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -172,7 +148,7 @@ Resource location
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -188,10 +164,10 @@ The managed artifact id.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases: SourceImageId
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -203,7 +179,7 @@ Dynamic: False
 The name of the gallery Image Version to be created.
 Needs to follow semantic version name pattern: The allowed characters are digit and period.
 Digits must be within the range of a 32-bit integer.
-Format: <MajorVersion>.<MinorVersion>.<Patch>
+Format: \<MajorVersion\>.\<MinorVersion\>.\<Patch\>
 
 ```yaml
 Type: System.String
@@ -218,6 +194,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -ReplicaCount
 The number of replicas of the Image Version to be created per region.
 This property would take effect for a region when regionalReplicaCount is not specified.
@@ -225,12 +217,12 @@ This property is updatable.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -258,7 +250,7 @@ This property is not updatable.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.StorageAccountType
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -290,8 +282,8 @@ Dynamic: False
 Resource tags
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20170330.IResourceTags
-Parameter Sets: CreateExpanded
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -305,10 +297,11 @@ Dynamic: False
 ### -TargetRegion
 The target regions where the Image Version is going to be replicated to.
 This property is updatable.
+To construct, see NOTES section for TARGETREGION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301.ITargetRegion[]
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -357,13 +350,21 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301.IGalleryImageVersion
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301.IGalleryImageVersion
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### TARGETREGION <ITargetRegion[]>: The target regions where the Image Version is going to be replicated to. This property is updatable.
+  - `Name <String>`: The name of the region.
+  - `[RegionalReplicaCount <Int32?>]`: The number of replicas of the Image Version to be created per region. This property is updatable.
+  - `[StorageAccountType <StorageAccountType?>]`: Specifies the storage account type to be used to store the image. This property is not updatable.
 
 ## RELATED LINKS
 
