@@ -25,13 +25,13 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
     sealed class Client : IClient
     {
         IAzureContext _context;
-        public string SubscriptionId { get; }
+        public string SubscriptionId { get; set; }
 
         public IAzureContext Context => _context;
 
-        public PowerShell.Cmdlets.Compute.Runtime.ISendAsync Sender { get; }
+        public PowerShell.Cmdlets.Compute.Runtime.ISendAsync Sender { get; set; }
 
-        public PowerShell.Cmdlets.Compute.Runtime.IEventListener Listener { get; }
+        public PowerShell.Cmdlets.Compute.Runtime.IEventListener Listener { get; set; }
 
 
         public Client(AzureRMAsyncCmdlet adapter, IAsyncCmdlet cmdlet)
@@ -55,9 +55,13 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
             return client;
         }
 
-        public T GetAutorestClient<T>() where T:class, new()
+        public T GetAutorestClient<T>() where T : class, IClient, new()
         {
-            return new T();
+            var client = new T();
+            client.Sender = Sender;
+            client.Listener = Listener;
+            client.SubscriptionId = SubscriptionId;
+            return client;
         }
 
     }

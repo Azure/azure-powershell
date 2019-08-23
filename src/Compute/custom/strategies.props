@@ -1,4 +1,4 @@
-<Project><!-- Start special section for storage dataplane cmdlets -->
+<Project><!-- Start special section for Compute strategy cmdlets -->
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.3.20"/>

@@ -72,7 +72,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Strategies
         {
             var client = new ComputeManagementClient();
             Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301.IVirtualMachine> result1 = null;
-            await client.VirtualMachinesGet1(resourceGroupName, vmName, SubscriptionId, Expand,
+            await client.VirtualMachinesGet1(resourceGroupName, vmName, Expand, SubscriptionId, 
                 (response, creator) => ComputeApiHelpers.DeserializeEntity(response, creator, out result1), Listener, Sender);
             return await result1 as Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301.VirtualMachine;
         }

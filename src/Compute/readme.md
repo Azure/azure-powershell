@@ -847,4 +847,18 @@ directive:
       subject: VMImage
       variant: ^Capture\d?$|^CaptureViaIdentity\d?$
     remove: true
+# Hide creation cmdlets for VMs and ScaleSets
+  - where:
+      verb: New
+      subject: VM
+    hide: true
+  - where:
+      verb: New
+      subject: VMSS
+    hide: true
+# Update csproj for customizations
+  - from: Az.Compute.csproj
+    where: $
+    transform: >
+        return $.replace('</Project>', '  <Import Project=\"custom\\strategies.props\" />\n</Project>' );
 ```

@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
               ImageReferenceSku = imageAndOsType?.Image?.Sku,
               ImageReferenceVersion = imageAndOsType?.Image?.Version,
               StorageProfileDataDisk = DataDiskStrategy.CreateDataDisks(
-                      imageAndOsType?.DataDiskLuns, dataDisks).ToArray(),
+                      imageAndOsType?.DataDiskLuns, dataDisks)?.ToArray(),
               AvailabilitySetId = engine.GetReference(availabilitySet)?.Id,
               Zone = zones?.ToArray(),
               UltraSsdEnabled = ultraSSDEnabled,

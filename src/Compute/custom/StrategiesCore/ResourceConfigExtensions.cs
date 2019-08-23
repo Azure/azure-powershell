@@ -78,6 +78,11 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             {
                 return null;
             }
+            catch (Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.UndeclaredResponseException r) 
+                when (r.StatusCode == HttpStatusCode.NotFound)
+            {
+                return null;
+            }
         }
 
         public static Task<TModel> CreateOrUpdateAsync<TModel>(

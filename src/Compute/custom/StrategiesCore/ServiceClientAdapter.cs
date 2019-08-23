@@ -1,4 +1,5 @@
-﻿using Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime;
+﻿using Microsoft.Azure.Commands.Common.Strategies;
+using Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime;
 using Microsoft.Rest;
 using System;
 using System.Collections.Generic;
@@ -26,7 +27,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
 
         public IEventListener Listener { get; set; }
 
-        public T GetAutorestClient<T>() where T : class, new()
+        public T GetAutorestClient<T>() where T : class, IClient, new()
         {
             return this as T;
         }

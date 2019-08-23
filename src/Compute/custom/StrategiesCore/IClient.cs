@@ -21,12 +21,12 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         T GetClient<T>()
             where T : ServiceClient<T>;
 
-        T GetAutorestClient<T>() where T : class, new();
+        T GetAutorestClient<T>() where T : class, IClient, new();
 
-        string SubscriptionId { get; }
-        PowerShell.Cmdlets.Compute.Runtime.ISendAsync Sender { get; }
+        string SubscriptionId { get; set; }
+        PowerShell.Cmdlets.Compute.Runtime.ISendAsync Sender { get; set; }
 
-        PowerShell.Cmdlets.Compute.Runtime.IEventListener Listener { get; }
+        PowerShell.Cmdlets.Compute.Runtime.IEventListener Listener { get; set; }
 
     }
 }

@@ -235,6 +235,17 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                             WriteDebug($"{(createMessage().Message ?? string.Empty)}");
                             return;
                         }
+                    case PowerShell.Cmdlets.Compute.Runtime.Events.Information:
+                        {
+                            WriteVerbose($"{(createMessage().Message ?? string.Empty)}");
+                            return;
+                        }
+                    case PowerShell.Cmdlets.Compute.Runtime.Events.Error:
+                        {
+                            WriteDebug($"{(createMessage().Message ?? string.Empty)}");
+                            return;
+                        }
+
                 }
 
                 await PowerShell.Cmdlets.Compute.Module.Instance.Signal(id, token,
