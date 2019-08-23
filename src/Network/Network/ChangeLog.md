@@ -28,6 +28,7 @@
         - Update-VpnSite
         - New-VpnConnection
         - Update-VpnConnection
+* Fixed issues with mapping of Security Rule models
 
 ## Version 1.13.0
 * Updated New-AzPrivateLinkServiceIpConfig
