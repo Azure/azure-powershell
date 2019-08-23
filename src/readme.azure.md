@@ -8,10 +8,12 @@ branch: master
 repo: https://github.com/Azure/azure-rest-api-specs/blob/$(branch)
 metadata:
   authors: Microsoft Corporation
+  owners: Microsoft Corporation
   description: 'Microsoft Azure PowerShell: $(service-name) cmdlets'
   copyright: Microsoft Corporation. All rights reserved.
-  tags: "'Azure', 'ResourceManager', 'ARM', '$(service-name)'"
+  tags: Azure ResourceManager ARM PSModule $(service-name)
   companyName: Microsoft Corporation
+  requireLicenseAcceptance: true
   licenseUri: https://aka.ms/azps-license
   projectUri: https://github.com/Azure/azure-powershell
 ```
