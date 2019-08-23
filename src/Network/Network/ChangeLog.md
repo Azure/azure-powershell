@@ -17,10 +17,20 @@
     * Overview of change #1
         - Additional information about change #1
 --->
+
 ## Upcoming Release
 * Fix incorrect example in `New-AzApplicationGateway` reference documentation 
 * Add note in `Get-AzNetworkWatcherPacketCapture` reference documentation about retrieving all properties for a packet capture
 * Fixed example in `Test-AzNetworkWatcherIPFlow` reference documentation to correctly enumerate NICs
+* MultiLink support in Virtual WAN
+    - New cmdlets
+        - New-AzVpnSiteLink
+        - New-AzVpnSiteLinkConnection
+    - Updated cmdlet:
+        - New-VpnSite
+        - Update-VpnSite
+        - New-VpnConnection
+        - Update-VpnConnection
 
 ## Version 1.13.0
 * Updated New-AzPrivateLinkServiceIpConfig
@@ -32,15 +42,6 @@
 * Adjusted validation logic for Ipv6 IP Prefix to check for correct IPv6 prefix length.
 * Updated Get-AzVirtualNetworkSubnetConfig: Added parameter set to get by subnet resource id.
 * Updated description of Location parameter for AzNetworkServiceTag
-* MultiLink support in Virtual WAN
-    - New cmdlets
-        - New-AzVpnSiteLink
-        - New-AzVpnSiteLinkConnection
-    - Updated cmdlet:
-        - New-VpnSite
-        - Update-VpnSite
-        - New-VpnConnection
-        - Update-VpnConnection
 
 ## Version 1.12.0
 * Add support for private endpoint and private link service
