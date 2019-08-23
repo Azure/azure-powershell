@@ -291,6 +291,10 @@
           <ListEntry>
             <ListItems>
               <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>DeploymentName</Label>
                 <PropertyName>DeploymentName</PropertyName>
               </ListItem>

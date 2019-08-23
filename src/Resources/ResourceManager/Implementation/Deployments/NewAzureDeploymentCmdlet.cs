@@ -15,6 +15,7 @@
 using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -34,6 +35,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             HelpMessage = "The name of the deployment it's going to create. Only valid when a template is used. When a template is used, if the user doesn't specify a deployment name, use the current time, like \"20131223140835\".")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The deployment scope type.")]
+        public DeploymentScopeType ScopeType { get; set; }
 
         [Parameter(ParameterSetName = SubscriptionParameterSetWithTemplateObjectParameterObject,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The location to store deployment data.")]
@@ -120,7 +124,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public SwitchParameter Tenant { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The deployment mode.")]
-        public DeploymentMode Mode { get; set; }      
+        public DeploymentMode Mode { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The deployment debug log level.")]
         [ValidateSet("RequestContent", "ResponseContent", "All", "None", IgnoreCase = true)]
@@ -137,18 +141,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         public override void ExecuteCmdlet()
         {
-            if (string.IsNullOrEmpty(this.ResourceGroupName) && this.Mode == DeploymentMode.Complete)
-            {
-                WriteExceptionError(new ArgumentException(ProjectResources.InvalidDeploymentMode));
-            }
-
-            if (this.RollbackToLastDeployment && !string.IsNullOrEmpty(this.RollBackDeploymentName))
-            {
-                WriteExceptionError(new ArgumentException(ProjectResources.InvalidRollbackParameters));
-            }
+            this.ValidateCmdletParameters();
 
             var parameters = new PSDeploymentCmdletParameters()
             {
+                ScopeType = this.ScopeType,
                 Location = this.Location,
                 IsTenantScope = this.Tenant,
                 ManagementGroupId = this.ManagementGroupId,
@@ -177,6 +174,40 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             var deployment = ResourceManagerSdkClient.ExecuteDeployment(parameters);
 
             WriteObject(deployment);
+        }
+
+        private void ValidateCmdletParameters()
+        {
+            this.ValidateScopeTypeMatches();
+
+            if (this.ScopeType != DeploymentScopeType.ResourceGroup && this.Mode == DeploymentMode.Complete)
+            {
+                WriteExceptionError(new ArgumentException(ProjectResources.InvalidDeploymentMode));
+            }
+
+            if (this.RollbackToLastDeployment && !string.IsNullOrEmpty(this.RollBackDeploymentName))
+            {
+                WriteExceptionError(new ArgumentException(ProjectResources.InvalidRollbackParameters));
+            }
+        }
+
+        private void ValidateScopeTypeMatches()
+        {
+            if (this.ScopeType == DeploymentScopeType.ResourceGroup && string.IsNullOrEmpty(this.ResourceGroupName))
+            {
+                WriteExceptionError(new ArgumentException(ProjectResources.InvalidParameterForResourceGroupScope));
+            }
+
+            if (this.ScopeType == DeploymentScopeType.ManagementGroup && string.IsNullOrEmpty(this.ManagementGroupId))
+            {
+                WriteExceptionError(new ArgumentException(ProjectResources.InvalidParameterForManagementGroupScope));
+            }
+
+            if ((this.ScopeType == DeploymentScopeType.Subscription || this.ScopeType == DeploymentScopeType.Tenant)
+                && (!string.IsNullOrEmpty(this.ResourceGroupName) || !string.IsNullOrEmpty(this.ManagementGroupId)))
+            {
+                WriteExceptionError(new ArgumentException(string.Format(ProjectResources.InvalidParameterForTenantAndSubscriptionScope), this.ScopeType.ToString()));
+            }
         }
     }
 }

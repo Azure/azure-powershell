@@ -4,6 +4,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
 using Microsoft.Azure.Management.ResourceManager.Models;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
@@ -13,6 +14,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
         public string ManagementGroupId { get; set; }
 
         public string ResourceGroupName { get; set; }
+
+        public DeploymentScopeType ScopeType { get; set; }
 
         public bool IsTenantScope { get; set; }
 

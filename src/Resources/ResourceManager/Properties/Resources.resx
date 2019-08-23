@@ -366,6 +366,15 @@
   <data name="InvalidDeploymentMode" xml:space="preserve">
     <value>The 'Complete' mode is not supported for a deployment at the current scope. Please use 'Incremental' mode instead.</value>
   </data>
+  <data name="InvalidParameterForResourceGroupScope" xml:space="preserve">
+    <value>The 'ResourceGroupName' parameter is required when 'ScopeType' is 'ResourceGroup'.</value>
+  </data>
+  <data name="InvalidParameterForManagementGroupScope" xml:space="preserve">
+    <value>The 'ManagementGroupId' parameter is required when 'ScopeType' is 'ManagementGroup'.</value>
+  </data>
+  <data name="InvalidParameterForTenantAndSubscriptionScope" xml:space="preserve">
+    <value>The 'ResourceGroupName' or 'ManagementGroupId' parameter is not allowed when 'ScopeType' is '{0}'.</value>
+  </data>
   <data name="CheckingDeploymentStatus" xml:space="preserve">
     <value>Checking deployment status in {0} seconds</value>
   </data>

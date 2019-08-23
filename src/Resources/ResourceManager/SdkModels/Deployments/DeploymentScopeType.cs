@@ -12,20 +12,28 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.ResourceManager.Models;
-
-namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
+namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments
 {
-    public class PSDeployment: PSDeploymentObject
+    public enum DeploymentScopeType
     {
-        public string Id { get; set; }
+        /// <summary>
+        /// The subscription scope type.
+        /// </summary>
+        Subscription,
 
-        public string Location { get; set; }
+        /// <summary>
+        /// The resource group scope type.
+        /// </summary>
+        ResourceGroup,
 
-        public string ManagementGroupId { get; set; }
+        /// <summary>
+        /// The management group scope type.
+        /// </summary>
+        ManagementGroup,
 
-        public string ResourceGroupName { get; set; }
-
-        public OnErrorDeploymentExtended OnErrorDeployment { get; set; }
+        /// <summary>
+        /// The tenant scope type.
+        /// </summary>
+        Tenant,
     }
 }

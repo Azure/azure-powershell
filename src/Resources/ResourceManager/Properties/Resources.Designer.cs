@@ -376,6 +376,33 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The &apos;ManagementGroupId&apos; parameter is required when &apos;ScopeType&apos; is &apos;ManagementGroup&apos;..
+        /// </summary>
+        internal static string InvalidParameterForManagementGroupScope {
+            get {
+                return ResourceManager.GetString("InvalidParameterForManagementGroupScope", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The &apos;ResourceGroupName&apos; parameter is required when &apos;ScopeType&apos; is &apos;ResourceGroup&apos;..
+        /// </summary>
+        internal static string InvalidParameterForResourceGroupScope {
+            get {
+                return ResourceManager.GetString("InvalidParameterForResourceGroupScope", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The &apos;ResourceGroupName&apos; or &apos;ManagementGroupId&apos; parameter is not allowed when &apos;ScopeType&apos; is &apos;{0}&apos;..
+        /// </summary>
+        internal static string InvalidParameterForTenantAndSubscriptionScope {
+            get {
+                return ResourceManager.GetString("InvalidParameterForTenantAndSubscriptionScope", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to RoleDefinition Description is invalid..
         /// </summary>
         internal static string InvalidRoleDefinitionDescription {

@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
 
             if (result != null)
             {
-                deployment = CreatePSDeployment(result.Name, managementGroupId, resourceGroupName, result.Location, result.Properties);
+                deployment = CreatePSDeployment(result, managementGroupId, resourceGroupName);
             }
 
             return deployment;
@@ -201,20 +201,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
         }
 
         private static PSDeployment CreatePSDeployment(
-            string name,
+            DeploymentExtended deployment,
             string managementGroupId,
-            string resourceGroup,
-            string location,
-            DeploymentPropertiesExtended properties)
+            string resourceGroup)
         {
             PSDeployment deploymentObject = new PSDeployment();
 
-            deploymentObject.DeploymentName = name;
-            deploymentObject.Location = location;
+            deploymentObject.Id = deployment.Id;
+            deploymentObject.DeploymentName = deployment.Name;
+            deploymentObject.Location = deployment.Location;
             deploymentObject.ManagementGroupId = managementGroupId;
             deploymentObject.ResourceGroupName = resourceGroup;
 
-            SetDeploymentProperties(deploymentObject, properties);
+            SetDeploymentProperties(deploymentObject, deployment.Properties);
 
             return deploymentObject;
         }

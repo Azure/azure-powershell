@@ -25,6 +25,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.Management.Authorization;
@@ -380,6 +381,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                     Deployment deploymentFromValidate = new Deployment();
                     PSDeploymentCmdletParameters parameters = new PSDeploymentCmdletParameters()
                     {
+                        ScopeType = DeploymentScopeType.ResourceGroup,
                         ResourceGroupName = resourceGroupName,
                         DeploymentName = deploymentName,
                         TemplateFile = "http://path/file.html"
@@ -572,6 +574,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
 
             PSDeploymentCmdletParameters parameters = new PSDeploymentCmdletParameters()
             {
+                ScopeType = DeploymentScopeType.ResourceGroup,
                 ResourceGroupName = resourceGroupName,
                 Location = resourceGroupLocation,
                 DeploymentName = deploymentName,
@@ -740,6 +743,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
 
             PSDeploymentCmdletParameters deploymentParameters = new PSDeploymentCmdletParameters()
             {
+                ScopeType = DeploymentScopeType.ResourceGroup,
                 ResourceGroupName = resourceGroupName,
                 DeploymentName = deploymentName,
                 TemplateFile = templateFile
@@ -932,6 +936,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
 
             PSDeploymentCmdletParameters deploymentParameters = new PSDeploymentCmdletParameters()
             {
+                ScopeType = DeploymentScopeType.ResourceGroup,
                 ResourceGroupName = resourceGroupName,
                 DeploymentName = deploymentName,
                 TemplateFile = templateFile
