@@ -13,16 +13,15 @@ This operation requires the secrets/restore permission.
 
 ## SYNTAX
 
-### Restore (Default)
-```
-Restore-AzKeyVaultSecret [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
- [-Parameter <ISecretRestoreParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### RestoreExpanded
+### RestoreExpanded (Default)
 ```
 Restore-AzKeyVaultSecret -SecretBundleBackupInputFile <String> [-KeyVaultDnsSuffix <String>]
+ [-VaultName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Restore
+```
+Restore-AzKeyVaultSecret -Parameter <ISecretRestoreParameters> [-KeyVaultDnsSuffix <String>]
  [-VaultName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -93,7 +92,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.ISecretRest
 Parameter Sets: Restore
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

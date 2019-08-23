@@ -12,35 +12,35 @@ Create or update a key vault in the specified subscription.
 
 ## SYNTAX
 
-### Create1 (Default)
-```
-New-AzKeyVault -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <IVaultCreateOrUpdateParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateExpanded1
+### CreateExpanded1 (Default)
 ```
 New-AzKeyVault -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Location <String>
  -SkuName <SkuName> -TenantId <String> [-AccessPolicy <IAccessPolicyEntry[]>] [-CreateMode <CreateMode>]
- [-EnablePurgeProtection] [-EnableSoftDelete] [-EnabledForDeployment] [-EnabledForDiskEncryption]
- [-EnabledForTemplateDeployment] [-Tag <Hashtable>] [-VaultUri <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-EnabledForDeployment] [-EnabledForDiskEncryption] [-EnabledForTemplateDeployment] [-EnablePurgeProtection]
+ [-EnableSoftDelete] [-Tag <Hashtable>] [-VaultUri <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
-### CreateViaIdentityExpanded1
+### Create1
 ```
-New-AzKeyVault -InputObject <IKeyVaultIdentity> -Location <String> -SkuName <SkuName> -TenantId <String>
- [-AccessPolicy <IAccessPolicyEntry[]>] [-CreateMode <CreateMode>] [-EnablePurgeProtection]
- [-EnableSoftDelete] [-EnabledForDeployment] [-EnabledForDiskEncryption] [-EnabledForTemplateDeployment]
- [-Tag <Hashtable>] [-VaultUri <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+New-AzKeyVault -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -Parameter <IVaultCreateOrUpdateParameters> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### CreateViaIdentity1
 ```
-New-AzKeyVault -InputObject <IKeyVaultIdentity> [-Parameter <IVaultCreateOrUpdateParameters>]
+New-AzKeyVault -InputObject <IKeyVaultIdentity> -Parameter <IVaultCreateOrUpdateParameters>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded1
+```
+New-AzKeyVault -InputObject <IKeyVaultIdentity> -Location <String> -SkuName <SkuName> -TenantId <String>
+ [-AccessPolicy <IAccessPolicyEntry[]>] [-CreateMode <CreateMode>] [-EnabledForDeployment]
+ [-EnabledForDiskEncryption] [-EnabledForTemplateDeployment] [-EnablePurgeProtection] [-EnableSoftDelete]
+ [-Tag <Hashtable>] [-VaultUri <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -130,7 +130,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -146,7 +146,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -162,7 +162,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -181,7 +181,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -199,7 +199,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -207,10 +207,11 @@ Dynamic: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentity
-Parameter Sets: CreateViaIdentityExpanded1, CreateViaIdentity1
+Parameter Sets: CreateViaIdentity1, CreateViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -262,7 +263,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IVaultCreat
 Parameter Sets: Create1, CreateViaIdentity1
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -405,9 +406,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentity
-
 ### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IVaultCreateOrUpdateParameters
+
+### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentity
 
 ## OUTPUTS
 
@@ -428,6 +429,23 @@ To create the parameters described below, construct a hash table containing the 
   - `[PermissionKey <KeyPermissions[]>]`: Permissions to keys
   - `[PermissionSecret <SecretPermissions[]>]`: Permissions to secrets
   - `[PermissionStorage <StoragePermissions[]>]`: Permissions to storage accounts
+
+#### INPUTOBJECT <IKeyVaultIdentity>: Identity Parameter
+  - `[CertificateName <String>]`: The name of the certificate.
+  - `[CertificateVersion <String>]`: The version of the certificate.
+  - `[Id <String>]`: Resource identity path
+  - `[IssuerName <String>]`: The name of the issuer.
+  - `[KeyName <String>]`: The name for the new key. The system will generate the version name for the new key.
+  - `[KeyVersion <String>]`: The version of the key to update.
+  - `[Location <String>]`: The location of the deleted vault.
+  - `[OperationKind <AccessPolicyUpdateKind?>]`: Name of the operation
+  - `[ResourceGroupName <String>]`: The name of the Resource Group to which the server belongs.
+  - `[SasDefinitionName <String>]`: The name of the SAS definition.
+  - `[SecretName <String>]`: The name of the secret.
+  - `[SecretVersion <String>]`: The version of the secret.
+  - `[StorageAccountName <String>]`: The name of the storage account.
+  - `[SubscriptionId <String>]`: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  - `[VaultName <String>]`: Name of the vault
 
 #### PARAMETER <IVaultCreateOrUpdateParameters>: Parameters for creating or updating a vault
   - `Location <String>`: The supported Azure location where the key vault should be created.

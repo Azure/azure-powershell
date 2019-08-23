@@ -348,4 +348,10 @@ directive:
       parameter-name: Maxresult
     set:
       parameter-name: MaxResult
+  - where:
+      subject: StorageSasDefinition
+      variant: (.*)Expanded(.*)
+      parameter-name: Parameter
+    set:
+      parameter-name: DefinitionMetadata
 ```

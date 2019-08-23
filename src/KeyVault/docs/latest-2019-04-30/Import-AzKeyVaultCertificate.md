@@ -15,18 +15,25 @@ This operation requires the certificates/import permission.
 
 ## SYNTAX
 
-### Import (Default)
-```
-Import-AzKeyVaultCertificate -Name <String> [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
- [-Parameter <ICertificateImportParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### ImportExpanded
+### ImportExpanded (Default)
 ```
 Import-AzKeyVaultCertificate -Name <String> -CertificateString <String> [-KeyVaultDnsSuffix <String>]
  [-VaultName <String>] [-Enabled] [-Expire <DateTime>] [-NotBefore <DateTime>] [-Password <String>]
  [-Policy <ICertificatePolicy>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### Import
+```
+Import-AzKeyVaultCertificate -Name <String> -Parameter <ICertificateImportParameters>
+ [-KeyVaultDnsSuffix <String>] [-VaultName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### ImportViaIdentity
+```
+Import-AzKeyVaultCertificate -InputObject <IKeyVaultIdentity> -Parameter <ICertificateImportParameters>
+ [-KeyVaultDnsSuffix <String>] [-VaultName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -36,13 +43,6 @@ Import-AzKeyVaultCertificate -InputObject <IKeyVaultIdentity> -CertificateString
  [-KeyVaultDnsSuffix <String>] [-VaultName <String>] [-Enabled] [-Expire <DateTime>] [-NotBefore <DateTime>]
  [-Password <String>] [-Policy <ICertificatePolicy>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ImportViaIdentity
-```
-Import-AzKeyVaultCertificate -InputObject <IKeyVaultIdentity> [-KeyVaultDnsSuffix <String>]
- [-VaultName <String>] [-Parameter <ICertificateImportParameters>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -116,7 +116,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -140,10 +140,11 @@ Dynamic: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentity
-Parameter Sets: ImportViaIdentityExpanded, ImportViaIdentity
+Parameter Sets: ImportViaIdentity, ImportViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -211,7 +212,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.ICertificat
 Parameter Sets: Import, ImportViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -322,9 +323,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentity
-
 ### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.ICertificateImportParameters
+
+### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentity
 
 ## OUTPUTS
 
@@ -336,6 +337,23 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### INPUTOBJECT <IKeyVaultIdentity>: Identity Parameter
+  - `[CertificateName <String>]`: The name of the certificate.
+  - `[CertificateVersion <String>]`: The version of the certificate.
+  - `[Id <String>]`: Resource identity path
+  - `[IssuerName <String>]`: The name of the issuer.
+  - `[KeyName <String>]`: The name for the new key. The system will generate the version name for the new key.
+  - `[KeyVersion <String>]`: The version of the key to update.
+  - `[Location <String>]`: The location of the deleted vault.
+  - `[OperationKind <AccessPolicyUpdateKind?>]`: Name of the operation
+  - `[ResourceGroupName <String>]`: The name of the Resource Group to which the server belongs.
+  - `[SasDefinitionName <String>]`: The name of the SAS definition.
+  - `[SecretName <String>]`: The name of the secret.
+  - `[SecretVersion <String>]`: The version of the secret.
+  - `[StorageAccountName <String>]`: The name of the storage account.
+  - `[SubscriptionId <String>]`: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  - `[VaultName <String>]`: Name of the vault
 
 #### PARAMETER <ICertificateImportParameters>: The certificate import parameters.
   - `Base64EncodedCertificate <String>`: Base64 encoded representation of the certificate object to import. This certificate needs to contain the private key.

@@ -12,37 +12,38 @@ Update a key vault in the specified subscription.
 
 ## SYNTAX
 
-### Update (Default)
+### UpdateExpanded (Default)
 ```
 Update-AzKeyVault -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <IVaultPatchParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
-```
-Update-AzKeyVault -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-AccessPolicy <IAccessPolicyEntry[]>] [-CreateMode <CreateMode>] [-EnablePurgeProtection]
- [-EnableSoftDelete] [-EnabledForDeployment] [-EnabledForDiskEncryption] [-EnabledForTemplateDeployment]
+ [-AccessPolicy <IAccessPolicyEntry[]>] [-CreateMode <CreateMode>] [-EnabledForDeployment]
+ [-EnabledForDiskEncryption] [-EnabledForTemplateDeployment] [-EnablePurgeProtection] [-EnableSoftDelete]
  [-NetworkAclsBypass <NetworkRuleBypassOptions>] [-NetworkAclsDefaultAction <NetworkRuleAction>]
  [-NetworkAclsIPRule <IIPRule[]>] [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>]
  [-SkuName <SkuName>] [-Tag <Hashtable>] [-TenantId <String>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
+### Update
 ```
-Update-AzKeyVault -InputObject <IKeyVaultIdentity> [-AccessPolicy <IAccessPolicyEntry[]>]
- [-CreateMode <CreateMode>] [-EnablePurgeProtection] [-EnableSoftDelete] [-EnabledForDeployment]
- [-EnabledForDiskEncryption] [-EnabledForTemplateDeployment] [-NetworkAclsBypass <NetworkRuleBypassOptions>]
- [-NetworkAclsDefaultAction <NetworkRuleAction>] [-NetworkAclsIPRule <IIPRule[]>]
- [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-SkuName <SkuName>] [-Tag <Hashtable>]
- [-TenantId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzKeyVault -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -Parameter <IVaultPatchParameters> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
 ```
-Update-AzKeyVault -InputObject <IKeyVaultIdentity> [-Parameter <IVaultPatchParameters>]
+Update-AzKeyVault -InputObject <IKeyVaultIdentity> -Parameter <IVaultPatchParameters>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzKeyVault -InputObject <IKeyVaultIdentity> [-AccessPolicy <IAccessPolicyEntry[]>]
+ [-CreateMode <CreateMode>] [-EnabledForDeployment] [-EnabledForDiskEncryption]
+ [-EnabledForTemplateDeployment] [-EnablePurgeProtection] [-EnableSoftDelete]
+ [-NetworkAclsBypass <NetworkRuleBypassOptions>] [-NetworkAclsDefaultAction <NetworkRuleAction>]
+ [-NetworkAclsIPRule <IIPRule[]>] [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>]
+ [-SkuName <SkuName>] [-Tag <Hashtable>] [-TenantId <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -130,7 +131,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -146,7 +147,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -162,7 +163,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -181,7 +182,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -198,7 +199,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -206,10 +207,11 @@ Dynamic: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentity
-Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
+Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -314,7 +316,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20180214.IVaultPatch
 Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -441,9 +443,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentity
-
 ### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20180214.IVaultPatchParameters
+
+### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentity
 
 ## OUTPUTS
 
@@ -464,6 +466,23 @@ To create the parameters described below, construct a hash table containing the 
   - `[PermissionKey <KeyPermissions[]>]`: Permissions to keys
   - `[PermissionSecret <SecretPermissions[]>]`: Permissions to secrets
   - `[PermissionStorage <StoragePermissions[]>]`: Permissions to storage accounts
+
+#### INPUTOBJECT <IKeyVaultIdentity>: Identity Parameter
+  - `[CertificateName <String>]`: The name of the certificate.
+  - `[CertificateVersion <String>]`: The version of the certificate.
+  - `[Id <String>]`: Resource identity path
+  - `[IssuerName <String>]`: The name of the issuer.
+  - `[KeyName <String>]`: The name for the new key. The system will generate the version name for the new key.
+  - `[KeyVersion <String>]`: The version of the key to update.
+  - `[Location <String>]`: The location of the deleted vault.
+  - `[OperationKind <AccessPolicyUpdateKind?>]`: Name of the operation
+  - `[ResourceGroupName <String>]`: The name of the Resource Group to which the server belongs.
+  - `[SasDefinitionName <String>]`: The name of the SAS definition.
+  - `[SecretName <String>]`: The name of the secret.
+  - `[SecretVersion <String>]`: The version of the secret.
+  - `[StorageAccountName <String>]`: The name of the storage account.
+  - `[SubscriptionId <String>]`: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  - `[VaultName <String>]`: Name of the vault
 
 #### NETWORKACLSIPRULE <IIPRule[]>: The list of IP address rules.
   - `Value <String>`: An IPv4 address range in CIDR notation, such as '124.56.78.91' (simple IP address) or '124.56.78.0/24' (all addresses that start with 124.56.78).

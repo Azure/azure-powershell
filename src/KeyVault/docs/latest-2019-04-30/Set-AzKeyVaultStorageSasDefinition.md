@@ -13,18 +13,18 @@ This operation requires the storage/setsas permission.
 
 ## SYNTAX
 
-### Set (Default)
+### SetExpanded (Default)
 ```
 Set-AzKeyVaultStorageSasDefinition -SasDefinitionName <String> -StorageAccountName <String>
- [-KeyVaultDnsSuffix <String>] [-VaultName <String>] [-Parameter <ISasDefinitionCreateParameters>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -DefinitionMetadata <Hashtable> [-KeyVaultDnsSuffix <String>] [-VaultName <String>] [-Enabled]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### SetExpanded
+### Set
 ```
 Set-AzKeyVaultStorageSasDefinition -SasDefinitionName <String> -StorageAccountName <String>
- [-KeyVaultDnsSuffix <String>] [-VaultName <String>] [-Parameter <ISasDefinitionCreateParameters>] [-Enabled]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Parameter <ISasDefinitionCreateParameters> [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -69,6 +69,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -DefinitionMetadata
+Sas definition creation metadata in the form of key-value pairs.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: SetExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Enabled
 the enabled state of the object.
 
@@ -79,7 +95,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -107,10 +123,10 @@ To construct, see NOTES section for PARAMETER properties and create a hash table
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.ISasDefinitionCreateParameters
-Parameter Sets: (All)
+Parameter Sets: Set
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

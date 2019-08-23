@@ -1,17 +1,20 @@
-$TestRecordingFile = Join-Path $PSScriptRoot 'C:\B\azure-powershell\src\KeyVault\test' 'Get-AzKeyVaultStorageSasDefinition.Recording.json'
-
+$TestRecordingFile = Join-Path $PSScriptRoot 'New-AzKeyVaultCertificate.Recording.json'
 . (Join-Path $PSScriptRoot '..\generated\runtime' 'HttpPipelineMocking.ps1')
 
-Describe 'Get-AzKeyVaultStorageSasDefinition' {
-    It 'Get' {
+Describe 'New-AzKeyVaultCertificate' {
+    It 'CreateExpanded' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'GetDeleted1' {
+    It 'Create' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'GetDeleted' {
+    It 'CreateViaIdentityExpanded' {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'CreateViaIdentity' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }
