@@ -79,6 +79,9 @@ Gets a deployment.
 ### [Get-AzDeploymentOperation](Get-AzDeploymentOperation.md)
 Gets a deployments operation.
 
+### [Get-AzDomain](Get-AzDomain.md)
+Gets a specific domain in the current tenant.
+
 ### [Get-AzEntity](Get-AzEntity.md)
 List all entities (Management Groups, Subscriptions, etc.) for the authenticated user.
 
