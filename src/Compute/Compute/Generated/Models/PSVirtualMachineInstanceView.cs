@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public string ComputerName { get; set; }
         public string OsName { get; set; }
         public string OsVersion { get; set; }
+        public string HyperVGeneration { get; set; }
         public string RdpThumbPrint { get; set; }
         public VirtualMachineAgentInstanceView VmAgent { get; set; }
         public MaintenanceRedeployStatus MaintenanceRedeployStatus { get; set; }
