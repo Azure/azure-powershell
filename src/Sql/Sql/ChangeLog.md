@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update example in reference documentation for `Get-AzSqlElasticPool`
 
 ## Version 1.14.1
 * Update documentation of old Auditing cmdlets.
