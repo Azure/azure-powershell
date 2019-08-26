@@ -22,6 +22,8 @@
 ## Version 1.4.4
 * Fixed miscellaneous typos across module
 * Update 'Get-AzRecoveryServicesBackupJobDetail.md'
+* Update AzureVMpolicy Object with ProtectedItemsCount Attribute
+* Added Tests for VM policy and Original Storage Account Restore
 
 ## Version 1.4.3
 * Update 'Get-AzRecoveryServicesBackupJob.md'
