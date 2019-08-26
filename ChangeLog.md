@@ -3,114 +3,108 @@
 * Fixed miscellaneous typos across numerous modules
 
 #### Az.Accounts
-* Support user-assigned MSI in Azure Functiosn Authentication (#9479)
+* Added support for user-assigned MSI in Azure Functions authentication (#9479)
 
 #### Az.Aks
-* Fix issue with output for 'Get-AzAks'
-    * More information here: https://github.com/Azure/azure-powershell/issues/9847
+* Fixed issue with output for 'Get-AzAks' ([#9847](https://github.com/Azure/azure-powershell/issues/9847))
 
 #### Az.ApiManagement
-* Fix for issue https://github.com/Azure/azure-powershell/issues/9351
-	- Update .net nuget version, which does not enforce restrictions on productId, apiId, groupId and userId
-* **Get-AzApiManagementProduct** - Added support for querying products using Api.
-  https://github.com/Azure/azure-powershell/issues/9482
-* **New-AzApiManagementApiRevision** - Fix for issue where ApiRevisionDescription was not being set when creating new api revision
-https://github.com/Azure/azure-powershell/issues/9752
-* Fixed typo in model 'PsApiManagementOAuth2AuthrozationServer' to 'PsApiManagementOAuth2AuthorizationServer'
+* Fixed issue with whitespace in `productId`, `apiId`, `groupId`, `userId` ([#9351](https://github.com/Azure/azure-powershell/issues/9351))
+* **Get-AzApiManagementProduct** - Added support for querying products using API ([#9482](https://github.com/Azure/azure-powershell/issues/9482))
+* **New-AzApiManagementApiRevision** - Fixed issue where ApiRevisionDescription was not set when creating new API revision ([#9752](https://github.com/Azure/azure-powershell/issues/9752))
+* Fixed typo in model `PsApiManagementOAuth2AuthrozationServer` to `PsApiManagementOAuth2AuthorizationServer`
 
 #### Az.Batch
-* Fixed typo in help message and documentation to capitalize Windows
+* Fixed typos in help message and documentation
 
 #### Az.Cdn
 * Fixed a typo in CDN module conversion helper
 
 #### Az.Compute
-* Add VmssId to New-AzVMConfig cmdlet
-* Add TerminateScheduledEvents and TerminateScheduledEventNotBeforeTimeoutInMinutes parameters to New-AzVmssConfig and Update-AzVmss
-* Add HyperVGeneration property to VM image object
-* Add Host and HostGroup features
-    - New cmdlets:
-	    New-AzHostGroup
-		New-AzHost
-		Get-AzHostGroup
-		Get-AzHost
-		Remove-AzHostGroup
-		Remove-AzHost
-	- HostId parameter is added to New-AzVMConfig and New-AzVM
-* Update example in 'Invoke-AzVMRunCommand' documentation to use correct parameter name
-* Update '-VolumeType' description in 'Set-AzVMDiskEncryptionExtension' and 'Set-AzVmssDiskEncryptionExtension' reference documentation
+* Added VmssId to **New-AzVMConfig** cmdlet
+* Added `TerminateScheduledEvents` and `TerminateScheduledEventNotBeforeTimeoutInMinutes` parameters to **New-AzVmssConfig** and **Update-AzVmss**
+* Added `HyperVGeneration` property to VM image object
+* Added Host and HostGroup features
+  - New cmdlets:
+    - **New-AzHostGroup**
+    - **New-AzHost**
+    - **Get-AzHostGroup**
+    - **Get-AzHost**
+    - **Remove-AzHostGroup**
+    - **Remove-AzHost**
+  - Added `HostId` parameter to **New-AzVMConfig** and **New-AzVM**
+* Updated example in **Invoke-AzVMRunCommand** documentation to use correct parameter name
+* Updated `-VolumeType` description in **Set-AzVMDiskEncryptionExtension** and **Set-AzVmssDiskEncryptionExtension** reference documentation
 
 #### Az.DataFactory
-* Fix typo to capitalize 'Windows' in 'New-AzDataFactoryEncryptValue' documentation
+* Fixed typos in **New-AzDataFactoryEncryptValue** documentation
 * Updated ADF .Net SDK version to 4.1.2
-* Add parameter 'DataProxyIntegrationRuntimeName', 'DataProxyStagingLinkedServiceName' and 'DataProxyStagingPath' for 'Set-AzureRmDataFactoryV2IntegrationRuntime' cmd to enable set up Self-Hosted Integration Runtime as a proxy for SSIS Integration Runtime
-* Updated PSTriggerRun to show the triggered pipelines, message and properties, and PSActivityRun to show the activity type
+* Added parameters to **Set-AzureRmDataFactoryV2IntegrationRuntime** to enable Self-Hosted Integration Runtime as a proxy for SSIS Integration Runtime:
+  - `DataProxyIntegrationRuntimeName`
+  - `DataProxyStagingLinkedServiceName`
+  - `DataProxyStagingPath` 
+* Updated **PSTriggerRun** to show the triggered pipelines, message and properties, and **PSActivityRun** to show the activity type
 
 #### Az.DataLakeStore
-* Fix hanging of Get-DataLakeStoreDeletedItem for any errors or remote exceptions.
+* Fixed issue where **Get-DataLakeStoreDeletedItem** would hang on errors and remote exceptions
 
 #### Az.EventHub
-* Fix for issue #9658 : Typo VirtualNteworkRule parameter in Set-AzEventHubNetworkRuleSet
-* Fix for issue #9558 : Set-AzEventHubNamespace is using PATCH instead of PUT
-* added EnableKafka parameter to Set-AzEventHubNamespace cmdlet
-* Fix for issue #9786 : cannot create a rule with Listen only rights
+* Fixed typo `VirtualNteworkRule` in Set-AzEventHubNetworkRuleSet ([#9658](https://github.com/azure/azure-powershell/issues/9658))
+* Fixed issue where Set-AzEventHubNamespace used PATCH instead of PUT ([#9558](https://github.com/azure/azure-powershell/issues/9558))
+* Added `EnableKafka` parameter to **Set-AzEventHubNamespace** cmdlet
+* Fixed issue with creating rules with `Listen` rights ([#9786](https://github.com/azure/azure-powershell/issues/9786))
 
 #### Az.MarketplaceOrdering
-* Fixed documentation typo where 'Azure' was all lowercase letters
+* Fixed documentation typos
 
 #### Az.Monitor
 * Fixed incorrect parameter name in help documentation
 
 #### Az.Network
-* Updated New-AzPrivateLinkServiceIpConfig
-    - Deprecated the paramster 'PublicIpAddress' since this is never used in the server side.
-    - Added one optional parameter 'Primary' that indicate the current ip configuration is primary one or not.
+* Updated **New-AzPrivateLinkServiceIpConfig**:
+  - Deprecated the parameter `PublicIpAddress` since this is never used in the server side.
+  - Added optional parameter `Primary` that indicates if the current IP configuration is the primary one
 * Improved handling of request error exception from SDK
-    -Fixes the issue that previously SDK exceptions aren't handled correctly which results in key error details not being displayed
-* Adjusted validation logic for Ipv6 IP Prefix to check for correct IPv6 prefix length. 
-* Updated Get-AzVirtualNetworkSubnetConfig: Added parameter set to get by subnet resource id.
-* Updated description of Location parameter for AzNetworkServiceTag
+* Fixed validation logic for Ipv6 IP Prefix to check for correct IPv6 prefix length
+* Added parameter set to get by subnet resource id to **Get-AzVirtualNetworkSubnetConfig** 
+* Updated description of **Location** parameter for **AzNetworkServiceTag**
 
 #### Az.OperationalInsights
-* Updated documentation for 'New-AzOperationalInsightsLinuxSyslogDataSource'
-    - Added example
-    - Updated description for '-Name' parameter
-* Added an example for New-AzOperationalInsightsWindowsEventDataSource
-* Changed the description of the -Name parameter for New-AzOperationalInsightsWindowsEventDataSource
+* Updated documentation for **New-AzOperationalInsightsLinuxSyslogDataSource**:
+  - Added example
+  - Updated description for `-Name` parameter
+* Added an example for **New-AzOperationalInsightsWindowsEventDataSource**
+* Changed the description of the `-Name` parameter for **New-AzOperationalInsightsWindowsEventDataSource**
 
 #### Az.RecoveryServices
-* Update 'Get-AzRecoveryServicesBackupJobDetail.md'
+* Updated documentation for **Get-AzRecoveryServicesBackupJobDetail**
 
 #### Az.Resources
-* Add support for new api version 2019-05-10 for Microsoft.Resource
-    - Add support for 'copy.count = 0' for variables, resources and properties
-    - Resources with 'condition = false' or 'copy.count = 0' will be deleted in complete mode
-* Add an example of assigning policy at subscription level to help doc
+* Added support for new API version 2019-05-10 for Microsoft.Resource
+  - Add support for 'copy.count = 0' for variables, resources and properties
+  - Resources with 'condition = false' or 'copy.count = 0' will be deleted in complete mode
+* Added an example of assigning policy at the subscription level
 
 #### Az.ServiceBus
-* Fix for issue #9658 : Typo VirtualNetworkRule parameter in Set-AzServiceBusNetworkRuleSet
-* Fix for issue #9786 : cannot create a rule with Listen only rights
-* Added new command 'Test-AzServiceBusNameAvailability' to check the name availability for queue and topic 
+* Fixed typo `VirtualNetworkRule` parameter in **Set-AzServiceBusNetworkRuleSet** Fix for issue #9658 : Typo 
+* Fixed issue with creating `Listen`-only rules ([#9786](https://github.com/azure/azure-powershell/issues/9786))
+* Added new command **Test-AzServiceBusNameAvailability** to check the name availability for queue and topic 
 
 #### Az.ServiceFabric
-* Fix add node type cmdlet bugs:
-    - NullReferenceException bug when resource group had other vmss not related to the service fabric cluster. Fixes issue: https://github.com/Azure/azure-powershell/issues/8681
-    - Fix bug where cmdlet failed if virtualNetwork was in a different resource group that the cluster. fixes issue: https://github.com/Azure/azure-powershell/issues/8407
-    - Deprecating Add-AzServiceFabricApplicationCertificate cmdlet
+* Fixed NullReferenceException when a resource group has a VMSS not related to the service fabric cluster ([#8681](https://github.com/Azure/azure-powershell/issues/8681))
+* Fixed bug where cmdlets failed if virtualNetwork was in a different resource group than the cluster ([#8407](https://github.com/Azure/azure-powershell/issues/8407))
+* Deprecated **Add-AzServiceFabricApplicationCertificate** cmdlet
 
 #### Az.Sql
-* Update documentation of old Auditing cmdlets.
+* Updated documentation for old Auditing cmdlets
 
 #### Az.Storage
-* Update help for Get/Close-AzStorageFileHandle, by add more scenarios to cmdlet examples and update parameter descriptions
-* Support StandardBlobTier in upload blob and copy blob
-    -  Set-AzStorageBlobContent
-    -  Start-AzStorageBlobCopy
-* Support Rehydrate Priority in copy blob
-    -  Start-AzStorageBlobCopy
+* Updated help for **Close-AzStorageFileHandle** and **Get-AzStorageFileHandle**,  added more scenarios to cmdlet examples and updated parameter descriptions
+* Added support for `StandardBlobTier` in blob uploads and copies
+* Added support for `Rehydrate` priority in blob copy
 
 #### Az.Websites
-* Add clarification around -AppSettings parameter in Set-AzWebApp and Set-AzWebAppSlot
+* Added clarification around `-AppSettings` parameter for **Set-AzWebApp** and **Set-AzWebAppSlot**
 
 ## 2.5.0 - July 2019
 #### Az.Accounts
