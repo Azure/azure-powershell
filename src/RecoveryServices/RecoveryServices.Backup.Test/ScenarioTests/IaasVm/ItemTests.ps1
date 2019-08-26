@@ -145,6 +145,12 @@ function Test-AzureVMProtection
 			-Name $vm.Name `
 			-ResourceGroupName $vm.ResourceGroupName;
 
+		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
+			-VaultId $vault.ID `
+			-Name "DefaultPolicy";
+
+		Assert-True {$policy.ProtectedItemsCount -eq 1};
+
 		$container = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
 			-ContainerType AzureVM `
@@ -161,6 +167,13 @@ function Test-AzureVMProtection
 			-Item $item `
 			-RemoveRecoveryPoints `
 			-Force;
+		
+		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
+			-VaultId $vault.ID `
+			-Name "DefaultPolicy";
+
+		Assert-True {$policy.ProtectedItemsCount -eq 0};
+
 	}
 	finally
 	{
@@ -242,22 +255,23 @@ function Test-AzureVMFullRestore
 
 	try
 	{
-		# Setup
 		$saName = Create-SA $resourceGroupName $location
-		$vm = Create-VM $resourceGroupName $location
+		$vm = Create-UnmanagedVM $resourceGroupName $location $saName
 		$vault = Create-RecoveryServicesVault $resourceGroupName $location
-		$item = Enable-Protection $vault $vm
+		$item = Enable-Protection $vault $vm $resourceGroupName
 		$backupJob = Backup-Item $vault $item
 		$rp = Get-RecoveryPoint $vault $item $backupJob
 
-		Assert-ThrowsContains { Restore-AzRecoveryServicesBackupItem `
+
+		$restoreJob = Restore-AzRecoveryServicesBackupItem `
 			-VaultId $vault.ID `
 			-VaultLocation $vault.Location `
 			-RecoveryPoint $rp `
 			-StorageAccountName $saName `
-			-StorageAccountResourceGroupName $resourceGroupName `
-			-UseOriginalStorageAccount } `
-			"This recovery point doesn’t have the capability to restore disks to their original storage account. Re-run the restore command without the UseOriginalStorageAccountForDisks parameter.";
+			-StorageAccountResourceGroupName $resourceGroupName -UseOriginalStorageAccount| `
+				Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
+
+		Assert-True { $restoreJob.Status -eq "Completed" }   
 
 		$restoreJob1 = Restore-AzRecoveryServicesBackupItem `
 			-VaultId $vault.ID `
