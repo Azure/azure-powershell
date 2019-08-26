@@ -56,16 +56,28 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         [Parameter(Mandatory = false, HelpMessage = "The number of seconds between health probes.  Default value is 30")]
         public int IntervalInSeconds { get; set; }
 
+        /// <summary>
+        /// Configures which HTTP method to use to probe the backends defined under backendPools.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Configures which HTTP method to use to probe the backends defined under backendPools.")]
+        public string HealthProbeMethod { get; set; }
 
+        /// <summary>
+        /// Whether to enable health probes to be made against backends defined under backendPools. Health probes can only be disabled if there is a single enabled backend in single enabled backend pool.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Whether to enable health probes to be made against backends defined under backendPools. Health probes can only be disabled if there is a single enabled backend in single enabled backend pool.")]
+        public bool EnabledState { get; set; }
 
         public override void ExecuteCmdlet()
         {
             var HealthProbeSetting = new PSHealthProbeSetting
             {
                 Name = Name,
-                Path = !this.IsParameterBound(c => c.Path)? "/" : Path,
+                Path = !this.IsParameterBound(c => c.Path) ? "/" : Path,
                 Protocol = !this.IsParameterBound(c => c.Protocol) ? PSProtocol.Http : Protocol,
-                IntervalInSeconds = !this.IsParameterBound(c => c.IntervalInSeconds) ? 30 : IntervalInSeconds
+                IntervalInSeconds = !this.IsParameterBound(c => c.IntervalInSeconds) ? 30 : IntervalInSeconds,
+                HealthProbeMethod = !this.IsParameterBound(c => c.HealthProbeMethod) ? "HEAD" : HealthProbeMethod,
+                EnabledState = !this.IsParameterBound(c => c.EnabledState) ? true : EnabledState
             };
             WriteObject(HealthProbeSetting);
         }
