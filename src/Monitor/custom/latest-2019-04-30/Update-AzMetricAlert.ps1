@@ -202,11 +202,11 @@ process {
     if ($PSBoundParameters.ContainsKey("TargetResourceId")) {
         $PSBoundParameters["Scope"] = $PSBoundParameters["TargetResourceId"]
         $null = $PSBoundParameters.Remove("TargetResourceId")
-        $PSBoundParameters["Criteria"] = @{allOf=$PSBoundParameters["Condition"]; odatatype="Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria"}
-    } else {
+        $PSBoundParameters["Criterion"] = @{allOf=$PSBoundParameters["Condition"]; odatatype="Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria"}
+    } elseif ($PSBoundParameters.ContainsKey("TargetResourceScope")) {
         $PSBoundParameters["Scope"] = $PSBoundParameters["TargetResourceScope"]
         $null = $PSBoundParameters.Remove("TargetResourceScope")
-        $PSBoundParameters["Criteria"] = @{allOf=$PSBoundParameters["Condition"]; odatatype="Microsoft.Azure.Monitor.MultipleResourceMultipleMetricCriteria"}
+        $PSBoundParameters["Criterion"] = @{allOf=$PSBoundParameters["Condition"]; odatatype="Microsoft.Azure.Monitor.MultipleResourceMultipleMetricCriteria"}
     }
 
     $null = $PSBoundParameters.Remove("Condition")
