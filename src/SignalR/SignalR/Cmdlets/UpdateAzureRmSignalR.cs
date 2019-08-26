@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
         [Parameter(
             Mandatory = false,
             HelpMessage = "The features for the SignalR service.")]
-        public IList<SignalRFeature> Feature { get; set; }
+        public List<SignalRFeature> Feature { get; set; }
 
         [Parameter(
             Mandatory = false,

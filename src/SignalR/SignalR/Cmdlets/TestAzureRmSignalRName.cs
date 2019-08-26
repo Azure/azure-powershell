@@ -20,9 +20,9 @@ using Microsoft.Azure.Management.SignalR.Models;
 
 namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 {
-    [Cmdlet("Test", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SignalR")]
+    [Cmdlet("Test", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SignalRName")]
     [OutputType(typeof(PSNameAvailability))]
-    public class TestAzureRmSignalR : SignalRCmdletBottom
+    public class TestAzureRmSignalRName : SignalRCmdletBottom
     {
         private const string NameAvailabilityType = "Microsoft.SignalRService/SignalR";
 

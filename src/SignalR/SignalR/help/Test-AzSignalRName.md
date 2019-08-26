@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Test-AzSignalR
+# Test-AzSignalRName
 
 ## SYNOPSIS
 Check the availability of a name.
@@ -13,7 +13,7 @@ Check the availability of a name.
 ## SYNTAX
 
 ```
-Test-AzSignalR [-Name] <String> [-Location] <String> [-DefaultProfile <IAzureContextContainer>]
+Test-AzSignalRName [-Name] <String> [-Location] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Check the availability of a name.
 
 ### Check a existed name.
 ```powershell
-PS D:\azure-powershell\artifacts\Debug\Az.SignalR> Test-AzSignalR -Name existedsignalr -Location eastus
+PS D:\azure-powershell\artifacts\Debug\Az.SignalR> Test-AzSignalRName -Name existedsignalr -Location eastus
 
 NameAvailable Reason        Message
 ------------- ------        -------
@@ -33,7 +33,7 @@ NameAvailable Reason        Message
 
 ### Check a unexisted name.
 ```powershell
-PS C:\> Test-AzSignalR unexistedsignalr eastus
+PS C:\> Test-AzSignalRName unexistedsignalr eastus
 
 NameAvailable Reason Message
 ------------- ------ -------
