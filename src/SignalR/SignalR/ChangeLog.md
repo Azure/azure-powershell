@@ -19,11 +19,11 @@
 -->
 ## Upcoming Release
 
-## Version 1.0.3
-* Fixed miscellaneous typos across module
+## Version 1.0.4
+* Add Update, Restart, CheckNameAvailability, GetUsage Cmdlets
 
 ## Version 1.0.3
-* Add Update, Restart, CheckNameAvailability, GetUsage Cmdlets
+* Fixed miscellaneous typos across module
 
 ## Version 1.0.2
 * Update incorrect online help URLs
