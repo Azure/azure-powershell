@@ -15,33 +15,50 @@ Update an metric alert definition.
 ### UpdateExpanded (Default)
 ```
 Update-AzMetricAlert -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -Condition <MetricCriteria[]> [-Action <IMetricAlertAction[]>] [-AutoMitigate] [-Description <String>]
+ [-Action <IMetricAlertAction[]>] [-AutoMitigate] [-Description <String>] [-Enabled]
+ [-EvaluationFrequency <TimeSpan>] [-Severity <Int32>] [-Tag <Hashtable>] [-WindowSize <TimeSpan>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateExpandedByResourceId
+```
+Update-AzMetricAlert -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -Condition <MetricCriteria[]> -TargetResourceId <String> [-Action <IMetricAlertAction[]>] [-AutoMitigate]
+ [-Description <String>] [-Enabled] [-EvaluationFrequency <TimeSpan>] [-Severity <Int32>] [-Tag <Hashtable>]
+ [-WindowSize <TimeSpan>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateExpandedByScope
+```
+Update-AzMetricAlert -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -Condition <MetricCriteria[]> -TargetResourceScope <String[]> -TargetResourceRegion <String>
+ -TargetResourceType <String> [-Action <IMetricAlertAction[]>] [-AutoMitigate] [-Description <String>]
  [-Enabled] [-EvaluationFrequency <TimeSpan>] [-Severity <Int32>] [-Tag <Hashtable>] [-WindowSize <TimeSpan>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzMetricAlert -InputObject <IMonitorIdentity> -Condition <MetricCriteria[]>
+Update-AzMetricAlert -InputObject <IMonitorIdentity> [-Action <IMetricAlertAction[]>] [-AutoMitigate]
+ [-Description <String>] [-Enabled] [-EvaluationFrequency <TimeSpan>] [-Severity <Int32>] [-Tag <Hashtable>]
+ [-WindowSize <TimeSpan>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpandedByResourceId
+```
+Update-AzMetricAlert -InputObject <IMonitorIdentity> -Condition <MetricCriteria[]> -TargetResourceId <String>
  [-Action <IMetricAlertAction[]>] [-AutoMitigate] [-Description <String>] [-Enabled]
  [-EvaluationFrequency <TimeSpan>] [-Severity <Int32>] [-Tag <Hashtable>] [-WindowSize <TimeSpan>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### ByResourceId
+### UpdateViaIdentityExpandedByScope
 ```
-Update-AzMetricAlert -Condition <MetricCriteria[]> -TargetResourceId <String> [-Action <IMetricAlertAction[]>]
- [-AutoMitigate] [-Description <String>] [-Enabled] [-EvaluationFrequency <TimeSpan>] [-Severity <Int32>]
- [-Tag <Hashtable>] [-WindowSize <TimeSpan>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### ByScope
-```
-Update-AzMetricAlert -Condition <MetricCriteria[]> -TargetResourceScope <String[]>
- -TargetResourceRegion <String> -TargetResourceType <String> [-Action <IMetricAlertAction[]>] [-AutoMitigate]
- [-Description <String>] [-Enabled] [-EvaluationFrequency <TimeSpan>] [-Severity <Int32>] [-Tag <Hashtable>]
- [-WindowSize <TimeSpan>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzMetricAlert -InputObject <IMonitorIdentity> -Condition <MetricCriteria[]>
+ -TargetResourceScope <String[]> -TargetResourceRegion <String> -TargetResourceType <String>
+ [-Action <IMetricAlertAction[]>] [-AutoMitigate] [-Description <String>] [-Enabled]
+ [-EvaluationFrequency <TimeSpan>] [-Severity <Int32>] [-Tag <Hashtable>] [-WindowSize <TimeSpan>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -109,7 +126,7 @@ To construct, see NOTES section for CONDITION properties and create a hash table
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20180301.MetricCriteria[]
-Parameter Sets: (All)
+Parameter Sets: UpdateExpandedByResourceId, UpdateExpandedByScope, UpdateViaIdentityExpandedByResourceId, UpdateViaIdentityExpandedByScope
 Aliases:
 
 Required: True
@@ -189,7 +206,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.IMonitorIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentityExpandedByResourceId, UpdateViaIdentityExpandedByScope
 Aliases:
 
 Required: True
@@ -205,7 +222,7 @@ The name of the rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpandedByResourceId, UpdateExpandedByScope
 Aliases:
 
 Required: True
@@ -221,7 +238,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpandedByResourceId, UpdateExpandedByScope
 Aliases:
 
 Required: True
@@ -253,7 +270,7 @@ The Azure subscription Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpandedByResourceId, UpdateExpandedByScope
 Aliases:
 
 Required: True
@@ -285,7 +302,7 @@ the target resource id for rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceId
+Parameter Sets: UpdateExpandedByResourceId, UpdateViaIdentityExpandedByResourceId
 Aliases:
 
 Required: True
@@ -301,7 +318,7 @@ the region of the target resource(s) on which the alert is created/updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByScope
+Parameter Sets: UpdateExpandedByScope, UpdateViaIdentityExpandedByScope
 Aliases:
 
 Required: True
@@ -317,7 +334,7 @@ the list of resource id's that this metric alert is scoped to.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: ByScope
+Parameter Sets: UpdateExpandedByScope, UpdateViaIdentityExpandedByScope
 Aliases:
 
 Required: True
@@ -333,7 +350,7 @@ the resource type of the target resource(s) on which the alert is created/update
 
 ```yaml
 Type: System.String
-Parameter Sets: ByScope
+Parameter Sets: UpdateExpandedByScope, UpdateViaIdentityExpandedByScope
 Aliases:
 
 Required: True

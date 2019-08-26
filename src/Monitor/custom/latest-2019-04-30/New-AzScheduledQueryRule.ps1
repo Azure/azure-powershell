@@ -62,7 +62,7 @@ param(
     ${Description},
 
     # Customization START
-    [Parameter(HelpMessage='The flag which indicates whether the Log Search rule is enabled or not.')]
+    [Parameter(Mandatory, HelpMessage='The flag which indicates whether the Log Search rule is enabled or not.')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # The flag which indicates whether the Log Search rule is enabled or not.
@@ -160,11 +160,10 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
-
 process {
     if ($PSBoundParameters.ContainsKey("Enabled") -and ($PSBoundParameters["Enabled"] -eq $true)) {
         $PSBoundParameters["Enabled"] = "true"
-    } elseif ($PSBoundParameters.ContainsKey("Enabled")) {
+    } else {
         $PSBoundParameters["Enabled"] = "false"
     }
 

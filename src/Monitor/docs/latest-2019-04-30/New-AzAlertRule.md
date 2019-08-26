@@ -13,9 +13,9 @@ Creates or updates an alert rule.
 ## SYNTAX
 
 ```
-New-AzAlertRule -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Threshold <Double>
- -Operator <ConditionOperator> -MetricName <String> -TargetResourceId <String> -IsEnabled -Location <String>
- [-WindowSize <TimeSpan>] [-TimeAggregationOperator <TimeAggregationOperator>] [-Action <IRuleAction[]>]
+New-AzAlertRule -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -WindowSize <TimeSpan>
+ -Threshold <Double> -Operator <ConditionOperator> -MetricName <String> -TargetResourceId <String> -IsEnabled
+ -Location <String> [-TimeAggregationOperator <TimeAggregationOperator>] [-Action <IRuleAction[]>]
  [-Description <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -279,7 +279,7 @@ Type: System.TimeSpan
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

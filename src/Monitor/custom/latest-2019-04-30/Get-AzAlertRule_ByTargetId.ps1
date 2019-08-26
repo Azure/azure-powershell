@@ -66,7 +66,7 @@ function Get-AzAlertRule_ByTargetId {
         $targetid = $PSBoundParameters["TargetResourceId"]
         $null = $PSBoundParameters.Remove("TargetResourceId")
 
-        Az.Monitor\Get-AzAlertRule @PSBoundParameters | Where-Object -FilterScript { $_.DataSource.ResourceUri -eq $targetid }
+        Az.Monitor\Get-AzAlertRule @PSBoundParameters | Where-Object -FilterScript { $_.Condition.DataSource.ResourceUri -eq $targetid }
     }
     
 }

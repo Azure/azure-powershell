@@ -163,7 +163,7 @@ param(
 process {
     if ($PSBoundParameters.ContainsKey("Enabled") -and ($PSBoundParameters["Enabled"] -eq $true)) {
         $PSBoundParameters["Enabled"] = "true"
-    } elseif ($PSBoundParameters.ContainsKey("Enabled")) {
+    } else {
         $PSBoundParameters["Enabled"] = "false"
     }
 

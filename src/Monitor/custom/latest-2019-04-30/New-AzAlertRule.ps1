@@ -35,7 +35,7 @@ param(
     #${Condition},
 
     # CUSTOM
-    [Parameter(HelpMessage='The window size for rule.')]
+    [Parameter(Mandatory, HelpMessage='The window size for rule.')]
     [System.TimeSpan]
     ${WindowSize},
 
@@ -160,6 +160,7 @@ process {
                                             odatatype="Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition"
                                             threshold=$PSBoundParameters["Threshold"]
                                             operator=$PSBoundParameters["Operator"]
+                                            windowSize=$PSBoundParameters["WindowSize"]
                                             datasource=[Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20160301.RuleMetricDataSource]@{
                                                     odatatype="Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource"
                                                     MetricName=$PSBoundParameters["MetricName"]
@@ -169,10 +170,6 @@ process {
 
     if ($PSBoundParameters.ContainsKey("TimeAggregationOperator")) {
         $PSBoundParameters["Condition"].TimeAggregation = $PSBoundParameters["TimeAggregationOperator"]
-    }
-
-    if ($PSBoundParameters.ContainsKey("WindowSize")) {
-        $PSBoundParameters["Condition"].WindowSize = $PSBoundParameters["WindowSize"]
     }
 
     $null = $PSBoundParameters.Remove("Threshold")

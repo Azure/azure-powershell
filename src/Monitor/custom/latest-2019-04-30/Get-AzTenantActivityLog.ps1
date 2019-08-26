@@ -125,6 +125,6 @@ process {
 
     $null = $PSBoundParameters.Add("Filter", $filter)
 
-    #Az.Monitor.internal\Get-AzTenantActivityLog @PSBoundParameters
+    Az.Monitor.internal\Get-AzTenantActivityLog @PSBoundParameters
 }
 }

@@ -65,14 +65,16 @@ param(
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials},
 
+    # CUSTOM
     [Parameter(HelpMessage="The metric names of the query")]
     [ValidateNotNullOrEmpty()]
     [System.String[]]
     ${MetricName}
+    # END CUSTOM
 )
 
 process {
-    if ($PSBoundParameters.Contains("MetricName")) {
+    if ($PSBoundParameters.ContainsKey("MetricName")) {
         $metricname = $PSBoundParameters["MetricName"]
         $null = $PSBoundParameters.Remove("MetricName")
     }
@@ -80,7 +82,7 @@ process {
     $records = Az.Monitor.internal\Get-AzMetricDefinition @PSBoundParameters
     
     if ($metricname -ne $null) {
-        $records | Where-Object {$_.Name -in $metricname}
+        $records | Where-Object {$_.NameValue -in $metricname}
     } else {
         $records
     }

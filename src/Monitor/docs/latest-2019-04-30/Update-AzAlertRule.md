@@ -20,6 +20,15 @@ Update-AzAlertRule -Name <String> -ResourceGroupName <String> -SubscriptionId <S
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### UpdateExpandedCondition
+```
+Update-AzAlertRule -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -WindowSize <TimeSpan>
+ -Threshold <Double> -Operator <ConditionOperator> -MetricName <String> -TargetResourceId <String>
+ [-Action <IRuleAction[]>] [-Description <String>] [-IsEnabled] [-Tag <Hashtable>]
+ [-TimeAggregationOperator <TimeAggregationOperator>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ### UpdateViaIdentityExpanded
 ```
 Update-AzAlertRule -InputObject <IMonitorIdentity> [-Action <IRuleAction[]>] [-Description <String>]
@@ -28,18 +37,10 @@ Update-AzAlertRule -InputObject <IMonitorIdentity> [-Action <IRuleAction[]>] [-D
 
 ### UpdateViaIdentityExpandedCondition
 ```
-Update-AzAlertRule -Threshold <Double> -Operator <ConditionOperator> -MetricName <String>
- -TargetResourceId <String> [-Action <IRuleAction[]>] [-Description <String>] [-IsEnabled] [-Tag <Hashtable>]
- [-WindowSize <TimeSpan>] [-TimeAggregationOperator <TimeAggregationOperator>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpandedCondition
-```
-Update-AzAlertRule -Threshold <Double> -Operator <ConditionOperator> -MetricName <String>
- -TargetResourceId <String> [-Action <IRuleAction[]>] [-Description <String>] [-IsEnabled] [-Tag <Hashtable>]
- [-WindowSize <TimeSpan>] [-TimeAggregationOperator <TimeAggregationOperator>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzAlertRule -InputObject <IMonitorIdentity> -WindowSize <TimeSpan> -Threshold <Double>
+ -Operator <ConditionOperator> -MetricName <String> -TargetResourceId <String> [-Action <IRuleAction[]>]
+ [-Description <String>] [-IsEnabled] [-Tag <Hashtable>] [-TimeAggregationOperator <TimeAggregationOperator>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -123,7 +124,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.IMonitorIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentityExpandedCondition
 Aliases:
 
 Required: True
@@ -155,7 +156,7 @@ The metric name for rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpandedCondition, UpdateExpandedCondition
+Parameter Sets: UpdateExpandedCondition, UpdateViaIdentityExpandedCondition
 Aliases:
 
 Required: True
@@ -171,7 +172,7 @@ The name of the rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpandedCondition
 Aliases:
 
 Required: True
@@ -187,7 +188,7 @@ The rule condition operator.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Support.ConditionOperator
-Parameter Sets: UpdateViaIdentityExpandedCondition, UpdateExpandedCondition
+Parameter Sets: UpdateExpandedCondition, UpdateViaIdentityExpandedCondition
 Aliases:
 
 Required: True
@@ -203,7 +204,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpandedCondition
 Aliases:
 
 Required: True
@@ -219,7 +220,7 @@ The Azure subscription Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpandedCondition
 Aliases:
 
 Required: True
@@ -251,7 +252,7 @@ The target resource id for rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaIdentityExpandedCondition, UpdateExpandedCondition
+Parameter Sets: UpdateExpandedCondition, UpdateViaIdentityExpandedCondition
 Aliases:
 
 Required: True
@@ -267,7 +268,7 @@ The threshold for rule condition.
 
 ```yaml
 Type: System.Double
-Parameter Sets: UpdateViaIdentityExpandedCondition, UpdateExpandedCondition
+Parameter Sets: UpdateExpandedCondition, UpdateViaIdentityExpandedCondition
 Aliases:
 
 Required: True
@@ -283,7 +284,7 @@ The aggregation operation used to roll up multiple metric values across the wind
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Support.TimeAggregationOperator
-Parameter Sets: UpdateViaIdentityExpandedCondition, UpdateExpandedCondition
+Parameter Sets: UpdateExpandedCondition, UpdateViaIdentityExpandedCondition
 Aliases:
 
 Required: False
@@ -299,10 +300,10 @@ The window size for rule.
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: UpdateViaIdentityExpandedCondition, UpdateExpandedCondition
+Parameter Sets: UpdateExpandedCondition, UpdateViaIdentityExpandedCondition
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

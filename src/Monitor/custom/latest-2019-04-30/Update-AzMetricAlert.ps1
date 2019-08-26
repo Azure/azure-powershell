@@ -5,6 +5,8 @@ function Update-AzMetricAlert {
 [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Description('Update an metric alert definition.')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory, HelpMessage='The name of the rule.')]
+    [Parameter(ParameterSetName='UpdateExpandedByResourceId', Mandatory, HelpMessage='The name of the rule.')]
+    [Parameter(ParameterSetName='UpdateExpandedByScope', Mandatory, HelpMessage='The name of the rule.')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.Info(SerializedName='ruleName', Required, PossibleTypes=([System.String]), Description='The name of the rule.')]
     [System.String]
@@ -12,6 +14,8 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory, HelpMessage='The name of the resource group.')]
+    [Parameter(ParameterSetName='UpdateExpandedByResourceId', Mandatory, HelpMessage='The name of the resource group.')]
+    [Parameter(ParameterSetName='UpdateExpandedByScope', Mandatory, HelpMessage='The name of the resource group.')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.Info(SerializedName='resourceGroupName', Required, PossibleTypes=([System.String]), Description='The name of the resource group.')]
     [System.String]
@@ -19,6 +23,8 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory, HelpMessage='The Azure subscription Id.')]
+    [Parameter(ParameterSetName='UpdateExpandedByResourceId', Mandatory, HelpMessage='The Azure subscription Id.')]
+    [Parameter(ParameterSetName='UpdateExpandedByScope', Mandatory, HelpMessage='The Azure subscription Id.')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.Info(SerializedName='subscriptionId', Required, PossibleTypes=([System.String]), Description='The Azure subscription Id.')]
     [System.String]
@@ -26,6 +32,8 @@ param(
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline, HelpMessage='Identity Parameter')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpandedByResourceId', Mandatory, ValueFromPipeline, HelpMessage='Identity Parameter')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpandedByScope', Mandatory, ValueFromPipeline, HelpMessage='Identity Parameter')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.IMonitorIdentity]
     # Identity Parameter
@@ -55,7 +63,10 @@ param(
     #${Criterion},
 
     # CUSTOM
-    [Parameter(Mandatory, HelpMessage='The rule criteria that defines the conditions of the alert rule.')]
+    [Parameter(ParameterSetName="UpdateExpandedByResourceId", Mandatory, HelpMessage='The rule criteria that defines the conditions of the alert rule.')]
+    [Parameter(ParameterSetName="UpdateExpandedByScope", Mandatory, HelpMessage='The rule criteria that defines the conditions of the alert rule.')]
+    [Parameter(ParameterSetName="UpdateViaIdentityExpandedByResourceId", Mandatory, HelpMessage='The rule criteria that defines the conditions of the alert rule.')]
+    [Parameter(ParameterSetName="UpdateViaIdentityExpandedByScope", Mandatory, HelpMessage='The rule criteria that defines the conditions of the alert rule.')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20180301.MetricCriteria[]]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.Info(Required, PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20180301.MetricCriteria]), Description='The rule criteria that defines the conditions of the alert rule.')]
     ${Condition},
@@ -104,23 +115,27 @@ param(
     ${Tag},
 
     # CUSTOM
-    [Parameter(Mandatory, ParameterSetName='ByResourceId', HelpMessage='the target resource id for rule.')]
+    [Parameter(ParameterSetName='UpdateExpandedByResourceId', Mandatory, HelpMessage='the target resource id for rule.')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpandedByResourceId', Mandatory, HelpMessage='the target resource id for rule.')]
     [System.String]
     ${TargetResourceId},
 
-    [Parameter(Mandatory, ParameterSetName='ByScope', HelpMessage='the list of resource id''s that this metric alert is scoped to.')]
+    [Parameter(ParameterSetName='UpdateExpandedByScope', Mandatory, HelpMessage='the list of resource id''s that this metric alert is scoped to.')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpandedByScope', Mandatory, HelpMessage='the list of resource id''s that this metric alert is scoped to.')]
     [System.String[]]
     # the list of resource id's that this metric alert is scoped to.
     ${TargetResourceScope},
 
-    [Parameter(Mandatory, ParameterSetName='ByScope', HelpMessage='the region of the target resource(s) on which the alert is created/updated.')]
+    [Parameter(ParameterSetName='UpdateExpandedByScope', Mandatory, HelpMessage='the region of the target resource(s) on which the alert is created/updated.')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpandedByScope', Mandatory, HelpMessage='the region of the target resource(s) on which the alert is created/updated.')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.Info(SerializedName='targetResourceRegion', PossibleTypes=([System.String]), Description='the region of the target resource(s) on which the alert is created/updated. Mandatory for MultipleResourceMultipleMetricCriteria.')]
     [System.String]
     # the region of the target resource(s) on which the alert is created/updated. Mandatory for MultipleResourceMultipleMetricCriteria.
     ${TargetResourceRegion},
 
-    [Parameter(Mandatory, ParameterSetName='ByScope', HelpMessage='the resource type of the target resource(s) on which the alert is created/updated.')]
+    [Parameter(ParameterSetName='UpdateExpandedByScope', Mandatory, HelpMessage='the resource type of the target resource(s) on which the alert is created/updated.')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpandedByScope', Mandatory, HelpMessage='the resource type of the target resource(s) on which the alert is created/updated.')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.Info(SerializedName='targetResourceType', PossibleTypes=([System.String]), Description='the resource type of the target resource(s) on which the alert is created/updated. Mandatory for MultipleResourceMultipleMetricCriteria.')]
     [System.String]
