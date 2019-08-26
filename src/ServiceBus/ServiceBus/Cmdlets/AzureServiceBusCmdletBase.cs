@@ -65,6 +65,8 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string AliasAuthoRuleParameterSet = "AliasAuthoRuleSet";
         protected const string AliasCheckNameAvailabilityParameterSet = "AliasCheckNameAvailabilitySet";
         protected const string NamespaceCheckNameAvailabilityParameterSet = "NamespaceCheckNameAvailabilitySet";
+        protected const string QueueCheckNameAvailabilityParameterSet = "QueueCheckNameAvailabilitySet";
+        protected const string TopicCheckNameAvailabilityParameterSet = "TopicCheckNameAvailabilitySet";
 
         //Parameter sets for InputObjects
         protected const string NamespaceInputObjectParameterSet = "NamespaceInputObjectSet";
