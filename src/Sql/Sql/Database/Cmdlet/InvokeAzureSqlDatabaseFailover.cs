@@ -86,6 +86,12 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         }
 
         /// <summary>
+        /// Returns false so the model object that was constructed by this cmdlet is not written out
+        /// </summary>
+        /// <returns>False since the model object should not be written out</returns>
+        protected override bool WriteResult() { return false; }
+
+        /// <summary>
         /// Entry point for the cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
