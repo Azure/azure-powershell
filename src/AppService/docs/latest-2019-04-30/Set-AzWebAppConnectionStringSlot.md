@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.WebSite
-online version: https://docs.microsoft.com/en-us/powershell/module/az.website/set-azwebappconnectionstringslot
+Module Name: Az.AppService
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/set-azwebappconnectionstringslot
 schema: 2.0.0
 ---
 
@@ -12,18 +12,18 @@ Replaces the connection strings of an app.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzWebAppConnectionStringSlot -Name <String> -ResourceGroupName <String> -Slot <String>
- -SubscriptionId <String> [-ConnectionString <IConnectionStringDictionary>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzWebAppConnectionStringSlot -Name <String> -ResourceGroupName <String> -Slot <String>
  -SubscriptionId <String> [-Kind <String>] [-Property <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzWebAppConnectionStringSlot -Name <String> -ResourceGroupName <String> -Slot <String>
+ -SubscriptionId <String> -ConnectionString <IConnectionStringDictionary> [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,11 +56,11 @@ String dictionary resource.
 To construct, see NOTES section for CONNECTIONSTRING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.IConnectionStringDictionary
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20160801.IConnectionStringDictionary
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -221,11 +221,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.IConnectionStringDictionary
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20160801.IConnectionStringDictionary
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.IConnectionStringDictionary
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20160801.IConnectionStringDictionary
 
 ## ALIASES
 

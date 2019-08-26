@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.WebSite
-online version: https://docs.microsoft.com/en-us/powershell/module/az.website/get-azwebappmetric
+Module Name: Az.AppService
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/get-azwebappmetric
 schema: 2.0.0
 ---
 
@@ -20,7 +20,7 @@ Get-AzWebAppMetric -Name <String> -ResourceGroupName <String> -SubscriptionId <S
 
 ### ListSlot
 ```
-Get-AzWebAppMetric -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]> -Slot <String>
+Get-AzWebAppMetric -Name <String> -ResourceGroupName <String> -Slot <String> -SubscriptionId <String[]>
  [-Detail] [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -76,7 +76,7 @@ Aliases: InstanceDetails
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -173,7 +173,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IResourceMetric
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IResourceMetric
 
 ## ALIASES
 

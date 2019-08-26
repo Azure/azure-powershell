@@ -12,15 +12,15 @@ List all apps that are assigned to a hostname.
 
 ## SYNTAX
 
-### List1 (Default)
+### ListExpanded1 (Default)
 ```
-Get-AzWebSiteIdentifierAssignedToHostName -SubscriptionId <String[]> [-NameIdentifier <INameIdentifier>]
+Get-AzWebSiteIdentifierAssignedToHostName -SubscriptionId <String[]> [-Name <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### ListExpanded1
+### List1
 ```
-Get-AzWebSiteIdentifierAssignedToHostName -SubscriptionId <String[]> [-Name <String>]
+Get-AzWebSiteIdentifierAssignedToHostName -SubscriptionId <String[]> -NameIdentifier <INameIdentifier>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -90,7 +90,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160301.INameIdentif
 Parameter Sets: List1
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

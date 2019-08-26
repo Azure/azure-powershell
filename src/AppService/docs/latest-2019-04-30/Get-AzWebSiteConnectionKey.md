@@ -12,17 +12,17 @@ Lists connection keys.
 
 ## SYNTAX
 
-### List (Default)
-```
-Get-AzWebSiteConnectionKey -ConnectionName <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- [-Content <IListConnectionKeysInput>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ListExpanded
+### ListExpanded (Default)
 ```
 Get-AzWebSiteConnectionKey -ConnectionName <String> -ResourceGroupName <String> -SubscriptionId <String[]>
  -Location <String> [-Id <String>] [-Kind <String>] [-Name <String>] [-Tag <Hashtable>] [-Type <String>]
  [-ValidityTimeSpan <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### List
+```
+Get-AzWebSiteConnectionKey -ConnectionName <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+ -Content <IListConnectionKeysInput> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -75,7 +75,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801Preview.IList
 Parameter Sets: List
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

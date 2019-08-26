@@ -378,9 +378,6 @@ Gets the Git/FTP publishing credentials of an app.
 ### [Get-AzWebAppPublishingProfile](Get-AzWebAppPublishingProfile.md)
 Gets the publishing profile for an app (or deployment slot, if specified).
 
-### [Get-AzWebAppPublishingProfile](Get-AzWebAppPublishingProfile.md)
-Gets the publishing profile for an app (or deployment slot, if specified).
-
 ### [Get-AzWebAppRelayServiceConnection](Get-AzWebAppRelayServiceConnection.md)
 Gets a hybrid connection configuration by its name.
 

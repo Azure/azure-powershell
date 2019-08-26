@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.WebSite
-online version: https://docs.microsoft.com/en-us/powershell/module/az.website/set-azwebappprivateaccessvnetslot
+Module Name: Az.AppService
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/set-azwebappprivateaccessvnetslot
 schema: 2.0.0
 ---
 
@@ -12,18 +12,18 @@ Sets data around private site access enablement and authorized Virtual Networks 
 
 ## SYNTAX
 
-### Put (Default)
-```
-Set-AzWebAppPrivateAccessVnetSlot -Name <String> -ResourceGroupName <String> -Slot <String>
- -SubscriptionId <String> [-Access <IPrivateAccess>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### PutExpanded
+### PutExpanded (Default)
 ```
 Set-AzWebAppPrivateAccessVnetSlot -Name <String> -ResourceGroupName <String> -Slot <String>
  -SubscriptionId <String> [-Enabled] [-Kind <String>] [-VirtualNetwork <IPrivateAccessVirtualNetwork[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Put
+```
+Set-AzWebAppPrivateAccessVnetSlot -Name <String> -ResourceGroupName <String> -Slot <String>
+ -SubscriptionId <String> -Access <IPrivateAccess> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,11 +56,11 @@ Description of the parameters of Private Access for a Web Site.
 To construct, see NOTES section for ACCESS properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IPrivateAccess
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IPrivateAccess
 Parameter Sets: Put
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -94,7 +94,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -187,7 +187,7 @@ The Virtual Networks (and subnets) allowed to access the site privately.
 To construct, see NOTES section for VIRTUALNETWORK properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IPrivateAccessVirtualNetwork[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IPrivateAccessVirtualNetwork[]
 Parameter Sets: PutExpanded
 Aliases:
 
@@ -237,11 +237,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IPrivateAccess
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IPrivateAccess
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IPrivateAccess
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IPrivateAccess
 
 ## ALIASES
 

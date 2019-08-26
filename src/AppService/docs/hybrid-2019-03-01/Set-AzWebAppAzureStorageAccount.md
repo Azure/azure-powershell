@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.WebSite
-online version: https://docs.microsoft.com/en-us/powershell/module/az.website/set-azwebappazurestorageaccount
+Module Name: Az.AppService
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/set-azwebappazurestorageaccount
 schema: 2.0.0
 ---
 
@@ -12,18 +12,18 @@ Updates the Azure storage account configurations of an app.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzWebAppAzureStorageAccount -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-AzureStorageAccount <IAzureStoragePropertyDictionaryResource>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzWebAppAzureStorageAccount -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-Kind <String>] [-Property <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzWebAppAzureStorageAccount -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -AzureStorageAccount <IAzureStoragePropertyDictionaryResource> [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,11 +56,11 @@ AzureStorageInfo dictionary resource.
 To construct, see NOTES section for AZURESTORAGEACCOUNT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IAzureStoragePropertyDictionaryResource
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IAzureStoragePropertyDictionaryResource
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -204,11 +204,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IAzureStoragePropertyDictionaryResource
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IAzureStoragePropertyDictionaryResource
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IAzureStoragePropertyDictionaryResource
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IAzureStoragePropertyDictionaryResource
 
 ## ALIASES
 

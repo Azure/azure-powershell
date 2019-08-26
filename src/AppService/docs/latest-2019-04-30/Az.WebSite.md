@@ -177,6 +177,9 @@ Get all apps that use a Hybrid Connection in an App Service Plan.
 ### [Get-AzDeletedWebApp](Get-AzDeletedWebApp.md)
 Get all deleted apps for a subscription.
 
+### [Get-AzDeletedWebAppDeletedWebApp](Get-AzDeletedWebAppDeletedWebApp.md)
+Get deleted app for a subscription at location.
+
 ### [Get-AzWebApp](Get-AzWebApp.md)
 Gets the details of a web, mobile, or API app.
 
@@ -201,24 +204,11 @@ Gets the Azure storage account configurations of an app.
 ### [Get-AzWebAppBackup](Get-AzWebAppBackup.md)
 Gets existing backups of an app.
 
-### [Get-AzWebAppBackup](Get-AzWebAppBackup.md)
-Gets existing backups of an app.
-
-### [Get-AzWebAppBackupConfiguration](Get-AzWebAppBackupConfiguration.md)
-Gets the backup configuration of an app.
-
 ### [Get-AzWebAppBackupConfiguration](Get-AzWebAppBackupConfiguration.md)
 Gets the backup configuration of an app.
 
 ### [Get-AzWebAppBackupStatus](Get-AzWebAppBackupStatus.md)
 Gets a backup of an app by its ID.
-
-### [Get-AzWebAppBackupStatus](Get-AzWebAppBackupStatus.md)
-Gets a backup of an app by its ID.
-
-### [Get-AzWebAppBackupStatusSecret](Get-AzWebAppBackupStatusSecret.md)
-Gets status of a web app backup that may be in progress, including secrets associated with the backup, such as the Azure Storage SAS URL.
-Also can be used to update the SAS URL for the backup if a new URL is passed in the request body.
 
 ### [Get-AzWebAppBackupStatusSecret](Get-AzWebAppBackupStatusSecret.md)
 Gets status of a web app backup that may be in progress, including secrets associated with the backup, such as the Azure Storage SAS URL.
@@ -486,9 +476,6 @@ Get the named public certificate for an app (or deployment slot, if specified).
 
 ### [Get-AzWebAppPublishingCredentials](Get-AzWebAppPublishingCredentials.md)
 Gets the Git/FTP publishing credentials of an app.
-
-### [Get-AzWebAppPublishingProfile](Get-AzWebAppPublishingProfile.md)
-Gets the publishing profile for an app (or deployment slot, if specified).
 
 ### [Get-AzWebAppPublishingProfile](Get-AzWebAppPublishingProfile.md)
 Gets the publishing profile for an app (or deployment slot, if specified).

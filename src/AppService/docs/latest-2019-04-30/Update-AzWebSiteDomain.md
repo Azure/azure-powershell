@@ -12,13 +12,7 @@ Creates or updates a domain.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Update-AzWebSiteDomain -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Domain <IDomainPatchResource>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Update-AzWebSiteDomain -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-AuthCode <String>] [-AutoRenew] [-ConsentAgreedAt <DateTime>] [-ConsentAgreedBy <String>]
@@ -47,6 +41,18 @@ Update-AzWebSiteDomain -Name <String> -ResourceGroupName <String> -SubscriptionI
  [-ContactTechJobTitle <String>] [-ContactTechNameFirst <String>] [-ContactTechNameLast <String>]
  [-ContactTechNameMiddle <String>] [-ContactTechOrganization <String>] [-ContactTechPhone <String>]
  [-DnsType <DnsType>] [-DnsZoneId <String>] [-Kind <String>] [-Privacy] [-TargetDnsType <DnsType>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Update-AzWebSiteDomain -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -Domain <IDomainPatchResource> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentity
+```
+Update-AzWebSiteDomain -InputObject <IWebSiteIdentity> -Domain <IDomainPatchResource>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -79,12 +85,6 @@ Update-AzWebSiteDomain -InputObject <IWebSiteIdentity> [-AuthCode <String>] [-Au
  [-ContactTechJobTitle <String>] [-ContactTechNameFirst <String>] [-ContactTechNameLast <String>]
  [-ContactTechNameMiddle <String>] [-ContactTechOrganization <String>] [-ContactTechPhone <String>]
  [-DnsType <DnsType>] [-DnsZoneId <String>] [-Kind <String>] [-Privacy] [-TargetDnsType <DnsType>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzWebSiteDomain -InputObject <IWebSiteIdentity> [-Domain <IDomainPatchResource>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -130,7 +130,7 @@ Dynamic: False
 ```
 
 ### -AutoRenew
-<code>true</code> if the domain should be automatically renewed; otherwise, <code>false</code>.
+\<code\>true\</code\> if the domain should be automatically renewed; otherwise, \<code\>false\</code\>.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -139,7 +139,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -179,7 +179,7 @@ Dynamic: False
 
 ### -ConsentAgreementKey
 List of applicable legal agreement keys.
-This list can be retrieved using ListLegalAgreements API under <code>TopLevelDomain</code> resource.
+This list can be retrieved using ListLegalAgreements API under \<code\>TopLevelDomain\</code\> resource.
 
 ```yaml
 Type: System.String[]
@@ -1151,7 +1151,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150401.IDomainPatch
 Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -1161,10 +1161,11 @@ Dynamic: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
-Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
+Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -1208,7 +1209,7 @@ Dynamic: False
 ```
 
 ### -Privacy
-<code>true</code> if domain privacy is enabled for this domain; otherwise, <code>false</code>.
+\<code\>true\</code\> if domain privacy is enabled for this domain; otherwise, \<code\>false\</code\>.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -1217,7 +1218,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -1311,9 +1312,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
-
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150401.IDomainPatchResource
+
+### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
 
 ## OUTPUTS
 
@@ -1393,6 +1394,50 @@ To create the parameters described below, construct a hash table containing the 
   - `[DnsZoneId <String>]`: Azure DNS Zone to use
   - `[Privacy <Boolean?>]`: <code>true</code> if domain privacy is enabled for this domain; otherwise, <code>false</code>.
   - `[TargetDnsType <DnsType?>]`: Target DNS type (would be used for migration)
+
+#### INPUTOBJECT <IWebSiteIdentity>: Identity Parameter
+  - `[AnalysisName <String>]`: Analysis Name
+  - `[ApiName <String>]`: The managed API name.
+  - `[BackupId <String>]`: ID of the backup.
+  - `[BaseAddress <String>]`: Module base address.
+  - `[CertificateOrderName <String>]`: Name of the certificate order.
+  - `[ConnectionName <String>]`: The connection name.
+  - `[DeletedSiteId <String>]`: The numeric ID of the deleted app, e.g. 12345
+  - `[DetectorName <String>]`: Detector Resource Name
+  - `[DiagnosticCategory <String>]`: Diagnostic Category
+  - `[DiagnosticsName <String>]`: Name of the diagnostics item.
+  - `[DomainName <String>]`: Name of the domain.
+  - `[DomainOwnershipIdentifierName <String>]`: Name of domain ownership identifier.
+  - `[EntityName <String>]`: Name of the hybrid connection.
+  - `[FunctionName <String>]`: Function name.
+  - `[GatewayName <String>]`: Name of the gateway. Only the 'primary' gateway is supported.
+  - `[HostName <String>]`: Hostname in the hostname binding.
+  - `[HostingEnvironmentName <String>]`: Name of the hosting environment.
+  - `[Id <String>]`: Resource identity path
+  - `[Instance <String>]`: Name of the instance in the multi-role pool.
+  - `[InstanceId <String>]`: ID of web app instance.
+  - `[Location <String>]`: 
+  - `[Name <String>]`: Name of the certificate.
+  - `[NamespaceName <String>]`: Name of the Service Bus namespace.
+  - `[OperationId <String>]`: GUID of the operation.
+  - `[PremierAddOnName <String>]`: Add-on name.
+  - `[ProcessId <String>]`: PID.
+  - `[PublicCertificateName <String>]`: Public certificate name.
+  - `[RelayName <String>]`: Name of the Service Bus relay.
+  - `[ResourceGroupName <String>]`: Name of the resource group to which the resource belongs.
+  - `[RouteName <String>]`: Name of the Virtual Network route.
+  - `[SiteExtensionId <String>]`: Site extension name.
+  - `[SiteName <String>]`: Site Name
+  - `[Slot <String>]`: Name of web app slot. If not specified then will default to production slot.
+  - `[SnapshotId <String>]`: The ID of the snapshot to read.
+  - `[SourceControlType <String>]`: Type of source control
+  - `[SubscriptionId <String>]`: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  - `[ThreadId <String>]`: TID.
+  - `[View <String>]`: The type of view. This can either be "summary" or "detailed".
+  - `[VnetName <String>]`: Name of the Virtual Network.
+  - `[WebJobName <String>]`: Name of Web Job.
+  - `[WorkerName <String>]`: Name of worker machine, which typically starts with RD.
+  - `[WorkerPoolName <String>]`: Name of the worker pool.
 
 ## RELATED LINKS
 

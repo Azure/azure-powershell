@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.WebSite
-online version: https://docs.microsoft.com/en-us/powershell/module/az.website/get-azwebappsitepushsettingslot
+Module Name: Az.AppService
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/get-azwebappsitepushsettingslot
 schema: 2.0.0
 ---
 
@@ -165,7 +165,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160301.IPushSettings
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20160301.IPushSettings
 
 ## ALIASES
 

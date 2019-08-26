@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.WebSite
-online version: https://docs.microsoft.com/en-us/powershell/module/az.website/set-azwebapprelayserviceconnection
+Module Name: Az.AppService
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/set-azwebapprelayserviceconnection
 schema: 2.0.0
 ---
 
@@ -12,19 +12,19 @@ Creates a new hybrid connection configuration (PUT), or updates an existing one 
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzWebAppRelayServiceConnection -EntityName <String> -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-ConnectionEnvelope <IRelayServiceConnectionEntity>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzWebAppRelayServiceConnection -EntityName <String> -Name <String> -ResourceGroupName <String>
  -SubscriptionId <String> [-BiztalkUri <String>] [-EntityConnectionString <String>] [-Hostname <String>]
  [-Kind <String>] [-Port <Int32>] [-PropertiesEntityName <String>] [-ResourceConnectionString <String>]
  [-ResourceType <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzWebAppRelayServiceConnection -EntityName <String> -Name <String> -ResourceGroupName <String>
+ -SubscriptionId <String> -ConnectionEnvelope <IRelayServiceConnectionEntity> [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,11 +73,11 @@ Hybrid Connection for an App Service app.
 To construct, see NOTES section for CONNECTIONENVELOPE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.IRelayServiceConnectionEntity
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20160801.IRelayServiceConnectionEntity
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -191,7 +191,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -317,11 +317,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.IRelayServiceConnectionEntity
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20160801.IRelayServiceConnectionEntity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.IRelayServiceConnectionEntity
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20160801.IRelayServiceConnectionEntity
 
 ## ALIASES
 

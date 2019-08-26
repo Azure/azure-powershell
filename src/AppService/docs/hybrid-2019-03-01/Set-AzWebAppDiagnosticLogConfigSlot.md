@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.WebSite
-online version: https://docs.microsoft.com/en-us/powershell/module/az.website/set-azwebappdiagnosticlogconfigslot
+Module Name: Az.AppService
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/set-azwebappdiagnosticlogconfigslot
 schema: 2.0.0
 ---
 
@@ -12,14 +12,7 @@ Updates the logging configuration of an app.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzWebAppDiagnosticLogConfigSlot -Name <String> -ResourceGroupName <String> -Slot <String>
- -SubscriptionId <String> [-SiteLogsConfig <ISiteLogsConfig>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzWebAppDiagnosticLogConfigSlot -Name <String> -ResourceGroupName <String> -Slot <String>
  -SubscriptionId <String> [-ApplicationLogsAzureBlobStorageRetentionInDay <Int32>]
@@ -29,6 +22,13 @@ Set-AzWebAppDiagnosticLogConfigSlot -Name <String> -ResourceGroupName <String> -
  [-FileSystemLevel <LogLevel>] [-FileSystemRetentionInDay <Int32>] [-FileSystemRetentionInMb <Int32>]
  [-HttpLogsAzureBlobStorageRetentionInDay <Int32>] [-HttpLogsAzureBlobStorageSasUrl <String>] [-Kind <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzWebAppDiagnosticLogConfigSlot -Name <String> -ResourceGroupName <String> -Slot <String>
+ -SubscriptionId <String> -SiteLogsConfig <ISiteLogsConfig> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,7 +66,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -98,7 +98,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -108,7 +108,7 @@ Dynamic: False
 Log level.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.LogLevel
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Support.LogLevel
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -124,7 +124,7 @@ Dynamic: False
 Log level.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.LogLevel
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Support.LogLevel
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -178,7 +178,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -194,7 +194,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -210,7 +210,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -220,7 +220,7 @@ Dynamic: False
 Log level.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.LogLevel
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Support.LogLevel
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -242,7 +242,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -258,7 +258,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -274,7 +274,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -349,11 +349,11 @@ Configuration of App Service site logs.
 To construct, see NOTES section for SITELOGSCONFIG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.ISiteLogsConfig
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20160801.ISiteLogsConfig
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -434,11 +434,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.ISiteLogsConfig
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20160801.ISiteLogsConfig
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.ISiteLogsConfig
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20160801.ISiteLogsConfig
 
 ## ALIASES
 

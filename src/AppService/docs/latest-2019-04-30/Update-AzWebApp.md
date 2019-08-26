@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.WebSite
-online version: https://docs.microsoft.com/en-us/powershell/module/az.website/update-azwebapp
+Module Name: Az.AppService
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/update-azwebapp
 schema: 2.0.0
 ---
 
@@ -12,47 +12,47 @@ Creates a new web, mobile, or API app in an existing resource group, or updates 
 
 ## SYNTAX
 
-### Update (Default)
-```
-Update-AzWebApp -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-SiteEnvelope <ISitePatchResource>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Update-AzWebApp -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-ClientAffinityEnabled]
  [-ClientCertEnabled] [-ClientCertExclusionPath <String>] [-CloningInfoAppSettingsOverride <Hashtable>]
  [-CloningInfoCloneCustomHostName] [-CloningInfoCloneSourceControl] [-CloningInfoConfigureLoadBalancing]
  [-CloningInfoCorrelationId <String>] [-CloningInfoHostingEnvironment <String>] [-CloningInfoOverwrite]
- [-CloningInfoSourceWebAppId <String>] [-CloningInfoTrafficManagerProfileId <String>]
- [-CloningInfoTrafficManagerProfileName <String>] [-ContainerSize <Int32>] [-DailyMemoryTimeQuota <Int32>]
- [-Enabled] [-GeoDistribution <IGeoDistribution[]>] [-HostNameSslState <IHostNameSslState[]>]
- [-HostNamesDisabled] [-HostingEnvironmentProfileId <String>] [-HttpsOnly] [-HyperV]
- [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-IsXenon]
- [-Kind <String>] [-RedundancyMode <RedundancyMode>] [-Reserved] [-ScmSiteAlsoStopped]
- [-ServerFarmId <String>] [-SiteConfig <ISiteConfig>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-CloningInfoSourceWebAppId <String>] [-CloningInfoSourceWebAppLocation <String>]
+ [-CloningInfoTrafficManagerProfileId <String>] [-CloningInfoTrafficManagerProfileName <String>]
+ [-ContainerSize <Int32>] [-DailyMemoryTimeQuota <Int32>] [-Enabled] [-GeoDistribution <IGeoDistribution[]>]
+ [-HostingEnvironmentProfileId <String>] [-HostNamesDisabled] [-HostNameSslState <IHostNameSslState[]>]
+ [-HttpsOnly] [-HyperV] [-IdentityType <ManagedServiceIdentityType>]
+ [-IdentityUserAssignedIdentity <Hashtable>] [-IsXenon] [-Kind <String>] [-RedundancyMode <RedundancyMode>]
+ [-Reserved] [-ScmSiteAlsoStopped] [-ServerFarmId <String>] [-SiteConfig <ISiteConfig>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
+### Update
 ```
-Update-AzWebApp -InputObject <IWebSiteIdentity> [-ClientAffinityEnabled] [-ClientCertEnabled]
- [-ClientCertExclusionPath <String>] [-CloningInfoAppSettingsOverride <Hashtable>]
- [-CloningInfoCloneCustomHostName] [-CloningInfoCloneSourceControl] [-CloningInfoConfigureLoadBalancing]
- [-CloningInfoCorrelationId <String>] [-CloningInfoHostingEnvironment <String>] [-CloningInfoOverwrite]
- [-CloningInfoSourceWebAppId <String>] [-CloningInfoTrafficManagerProfileId <String>]
- [-CloningInfoTrafficManagerProfileName <String>] [-ContainerSize <Int32>] [-DailyMemoryTimeQuota <Int32>]
- [-Enabled] [-GeoDistribution <IGeoDistribution[]>] [-HostNameSslState <IHostNameSslState[]>]
- [-HostNamesDisabled] [-HostingEnvironmentProfileId <String>] [-HttpsOnly] [-HyperV]
- [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-IsXenon]
- [-Kind <String>] [-RedundancyMode <RedundancyMode>] [-Reserved] [-ScmSiteAlsoStopped]
- [-ServerFarmId <String>] [-SiteConfig <ISiteConfig>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzWebApp -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -SiteEnvelope <ISitePatchResource> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
 ```
-Update-AzWebApp -InputObject <IWebSiteIdentity> [-SiteEnvelope <ISitePatchResource>]
+Update-AzWebApp -InputObject <IAppServiceIdentity> -SiteEnvelope <ISitePatchResource>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzWebApp -InputObject <IAppServiceIdentity> [-ClientAffinityEnabled] [-ClientCertEnabled]
+ [-ClientCertExclusionPath <String>] [-CloningInfoAppSettingsOverride <Hashtable>]
+ [-CloningInfoCloneCustomHostName] [-CloningInfoCloneSourceControl] [-CloningInfoConfigureLoadBalancing]
+ [-CloningInfoCorrelationId <String>] [-CloningInfoHostingEnvironment <String>] [-CloningInfoOverwrite]
+ [-CloningInfoSourceWebAppId <String>] [-CloningInfoSourceWebAppLocation <String>]
+ [-CloningInfoTrafficManagerProfileId <String>] [-CloningInfoTrafficManagerProfileName <String>]
+ [-ContainerSize <Int32>] [-DailyMemoryTimeQuota <Int32>] [-Enabled] [-GeoDistribution <IGeoDistribution[]>]
+ [-HostingEnvironmentProfileId <String>] [-HostNamesDisabled] [-HostNameSslState <IHostNameSslState[]>]
+ [-HttpsOnly] [-HyperV] [-IdentityType <ManagedServiceIdentityType>]
+ [-IdentityUserAssignedIdentity <Hashtable>] [-IsXenon] [-Kind <String>] [-RedundancyMode <RedundancyMode>]
+ [-Reserved] [-ScmSiteAlsoStopped] [-ServerFarmId <String>] [-SiteConfig <ISiteConfig>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -82,8 +82,8 @@ PS C:\> {{ Add code here }}
 ## PARAMETERS
 
 ### -ClientAffinityEnabled
-<code>true</code> to enable client affinity; <code>false</code> to stop sending session affinity cookies, which route client requests in the same session to the same instance.
-Default is <code>true</code>.
+\<code\>true\</code\> to enable client affinity; \<code\>false\</code\> to stop sending session affinity cookies, which route client requests in the same session to the same instance.
+Default is \<code\>true\</code\>.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -92,15 +92,15 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
 
 ### -ClientCertEnabled
-<code>true</code> to enable client certificate authentication (TLS mutual authentication); otherwise, <code>false</code>.
-Default is <code>false</code>.
+\<code\>true\</code\> to enable client certificate authentication (TLS mutual authentication); otherwise, \<code\>false\</code\>.
+Default is \<code\>false\</code\>.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -109,7 +109,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -150,7 +150,7 @@ Dynamic: False
 ```
 
 ### -CloningInfoCloneCustomHostName
-<code>true</code> to clone custom hostnames from source app; otherwise, <code>false</code>.
+\<code\>true\</code\> to clone custom hostnames from source app; otherwise, \<code\>false\</code\>.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -159,14 +159,14 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
 
 ### -CloningInfoCloneSourceControl
-<code>true</code> to clone source control from source app; otherwise, <code>false</code>.
+\<code\>true\</code\> to clone source control from source app; otherwise, \<code\>false\</code\>.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -175,14 +175,14 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
 
 ### -CloningInfoConfigureLoadBalancing
-<code>true</code> to configure load balancing for source and destination app.
+\<code\>true\</code\> to configure load balancing for source and destination app.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -191,7 +191,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -231,7 +231,7 @@ Dynamic: False
 ```
 
 ### -CloningInfoOverwrite
-<code>true</code> to overwrite destination app; otherwise, <code>false</code>.
+\<code\>true\</code\> to overwrite destination app; otherwise, \<code\>false\</code\>.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -240,7 +240,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -249,6 +249,22 @@ Dynamic: False
 ### -CloningInfoSourceWebAppId
 ARM resource ID of the source app.
 App resource ID is of the form /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName} for production slots and /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName} for other slots.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -CloningInfoSourceWebAppLocation
+Location of source app ex: West US or North Europe
 
 ```yaml
 Type: System.String
@@ -307,7 +323,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -323,7 +339,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -346,7 +362,7 @@ Dynamic: False
 ```
 
 ### -Enabled
-<code>true</code> if the app is enabled; otherwise, <code>false</code>.
+\<code\>true\</code\> if the app is enabled; otherwise, \<code\>false\</code\>.
 Setting this value to false disables the app (takes the app offline).
 
 ```yaml
@@ -356,7 +372,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -367,7 +383,7 @@ GeoDistributions for this site
 To construct, see NOTES section for GEODISTRIBUTION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IGeoDistribution[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IGeoDistribution[]
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -396,8 +412,8 @@ Dynamic: False
 ```
 
 ### -HostNamesDisabled
-<code>true</code> to disable the public hostnames of the app; otherwise, <code>false</code>.
-If <code>true</code>, the app is only accessible via API management process.
+\<code\>true\</code\> to disable the public hostnames of the app; otherwise, \<code\>false\</code\>.
+If \<code\>true\</code\>, the app is only accessible via API management process.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -406,7 +422,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -417,7 +433,7 @@ Hostname SSL states are used to manage the SSL bindings for app's hostnames.
 To construct, see NOTES section for HOSTNAMESSLSTATE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160301.IHostNameSslState[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20160301.IHostNameSslState[]
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -440,7 +456,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -456,7 +472,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -466,7 +482,7 @@ Dynamic: False
 Type of managed service identity.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.ManagedServiceIdentityType
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Support.ManagedServiceIdentityType
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -497,10 +513,11 @@ Dynamic: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
-Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.IAppServiceIdentity
+Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -521,7 +538,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -564,7 +581,7 @@ Dynamic: False
 Site redundancy mode
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.RedundancyMode
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Support.RedundancyMode
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -577,7 +594,7 @@ Dynamic: False
 ```
 
 ### -Reserved
-<code>true</code> if reserved; otherwise, <code>false</code>.
+\<code\>true\</code\> if reserved; otherwise, \<code\>false\</code\>.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -586,7 +603,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -609,8 +626,8 @@ Dynamic: False
 ```
 
 ### -ScmSiteAlsoStopped
-<code>true</code> to stop SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>.
-The default is <code>false</code>.
+\<code\>true\</code\> to stop SCM (KUDU) site when the app is stopped; otherwise, \<code\>false\</code\>.
+The default is \<code\>false\</code\>.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -619,7 +636,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -646,7 +663,7 @@ Configuration of the app.
 To construct, see NOTES section for SITECONFIG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISiteConfig
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.ISiteConfig
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -663,11 +680,11 @@ ARM resource for a site.
 To construct, see NOTES section for SITEENVELOPE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISitePatchResource
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.ISitePatchResource
 Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -731,13 +748,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.ISitePatchResource
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISitePatchResource
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.IAppServiceIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISite
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.ISite
 
 ## ALIASES
 
@@ -757,6 +774,50 @@ To create the parameters described below, construct a hash table containing the 
   - `[Thumbprint <String>]`: SSL certificate thumbprint.
   - `[ToUpdate <Boolean?>]`: Set to <code>true</code> to update existing hostname.
   - `[VirtualIP <String>]`: Virtual IP address assigned to the hostname if IP based SSL is enabled.
+
+#### INPUTOBJECT <IAppServiceIdentity>: Identity Parameter
+  - `[AnalysisName <String>]`: Analysis Name
+  - `[ApiName <String>]`: The managed API name.
+  - `[BackupId <String>]`: ID of the backup.
+  - `[BaseAddress <String>]`: Module base address.
+  - `[CertificateOrderName <String>]`: Name of the certificate order.
+  - `[ConnectionName <String>]`: The connection name.
+  - `[DeletedSiteId <String>]`: The numeric ID of the deleted app, e.g. 12345
+  - `[DetectorName <String>]`: Detector Resource Name
+  - `[DiagnosticCategory <String>]`: Diagnostic Category
+  - `[DiagnosticsName <String>]`: Name of the diagnostics item.
+  - `[DomainName <String>]`: Name of the domain.
+  - `[DomainOwnershipIdentifierName <String>]`: Name of domain ownership identifier.
+  - `[EntityName <String>]`: Name of the hybrid connection.
+  - `[FunctionName <String>]`: Function name.
+  - `[GatewayName <String>]`: Name of the gateway. Only the 'primary' gateway is supported.
+  - `[HostName <String>]`: Hostname in the hostname binding.
+  - `[HostingEnvironmentName <String>]`: Name of the hosting environment.
+  - `[Id <String>]`: Resource identity path
+  - `[Instance <String>]`: Name of the instance in the multi-role pool.
+  - `[InstanceId <String>]`: ID of web app instance.
+  - `[Location <String>]`: 
+  - `[Name <String>]`: Name of the certificate.
+  - `[NamespaceName <String>]`: Name of the Service Bus namespace.
+  - `[OperationId <String>]`: GUID of the operation.
+  - `[PremierAddOnName <String>]`: Add-on name.
+  - `[ProcessId <String>]`: PID.
+  - `[PublicCertificateName <String>]`: Public certificate name.
+  - `[RelayName <String>]`: Name of the Service Bus relay.
+  - `[ResourceGroupName <String>]`: Name of the resource group to which the resource belongs.
+  - `[RouteName <String>]`: Name of the Virtual Network route.
+  - `[SiteExtensionId <String>]`: Site extension name.
+  - `[SiteName <String>]`: Site Name
+  - `[Slot <String>]`: Name of web app slot. If not specified then will default to production slot.
+  - `[SnapshotId <String>]`: The ID of the snapshot to read.
+  - `[SourceControlType <String>]`: Type of source control
+  - `[SubscriptionId <String>]`: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  - `[ThreadId <String>]`: TID.
+  - `[View <String>]`: The type of view. This can either be "summary" or "detailed".
+  - `[VnetName <String>]`: Name of the Virtual Network.
+  - `[WebJobName <String>]`: Name of Web Job.
+  - `[WorkerName <String>]`: Name of worker machine, which typically starts with RD.
+  - `[WorkerPoolName <String>]`: Name of the worker pool.
 
 #### SITECONFIG <ISiteConfig>: Configuration of the app.
   - `ActionType <AutoHealActionType>`: ActionType - predefined action to be taken
@@ -885,6 +946,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[CloningInfoCorrelationId <String>]`: Correlation ID of cloning operation. This ID ties multiple cloning operations         together to use the same snapshot.
   - `[CloningInfoHostingEnvironment <String>]`: App Service Environment.
   - `[CloningInfoOverwrite <Boolean?>]`: <code>true</code> to overwrite destination app; otherwise, <code>false</code>.
+  - `[CloningInfoSourceWebAppLocation <String>]`: Location of source app ex: West US or North Europe
   - `[CloningInfoTrafficManagerProfileId <String>]`: ARM resource ID of the Traffic Manager profile to use, if it exists. Traffic Manager resource ID is of the form         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{profileName}.
   - `[CloningInfoTrafficManagerProfileName <String>]`: Name of Traffic Manager profile to create. This is only needed if Traffic Manager profile does not already exist.
   - `[ContainerSize <Int32?>]`: Size of the function container.

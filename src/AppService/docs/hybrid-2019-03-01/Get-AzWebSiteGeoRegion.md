@@ -59,7 +59,7 @@ Dynamic: False
 ```
 
 ### -LinuxWorkersEnabled
-Specify <code>true</code> if you want to filter to only regions that support Linux workers.
+Specify \<code\>true\</code\> if you want to filter to only regions that support Linux workers.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -68,7 +68,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

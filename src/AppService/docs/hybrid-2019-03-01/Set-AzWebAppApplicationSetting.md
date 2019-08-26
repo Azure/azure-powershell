@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.WebSite
-online version: https://docs.microsoft.com/en-us/powershell/module/az.website/set-azwebappapplicationsetting
+Module Name: Az.AppService
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/set-azwebappapplicationsetting
 schema: 2.0.0
 ---
 
@@ -12,17 +12,17 @@ Replaces the application settings of an app.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzWebAppApplicationSetting -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-AppSetting <IStringDictionary>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzWebAppApplicationSetting -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-Kind <String>] [-Property <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzWebAppApplicationSetting -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -AppSetting <IStringDictionary> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,11 +55,11 @@ String dictionary resource.
 To construct, see NOTES section for APPSETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.IStringDictionary
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20160801.IStringDictionary
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -203,11 +203,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.IStringDictionary
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20160801.IStringDictionary
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.IStringDictionary
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20160801.IStringDictionary
 
 ## ALIASES
 

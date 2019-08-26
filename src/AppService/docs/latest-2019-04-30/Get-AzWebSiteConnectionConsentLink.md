@@ -12,19 +12,19 @@ Lists consent links of a connection.
 
 ## SYNTAX
 
-### List (Default)
-```
-Get-AzWebSiteConnectionConsentLink -ConnectionName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-Content <IConsentLinkInput>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### ListExpanded
+### ListExpanded (Default)
 ```
 Get-AzWebSiteConnectionConsentLink -ConnectionName <String> -ResourceGroupName <String>
  -SubscriptionId <String[]> -Location <String> [-Id <String>] [-Kind <String>] [-Name <String>]
  [-Parameter <IConsentLinkInputParameter[]>] [-Tag <Hashtable>] [-Type <String>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### List
+```
+Get-AzWebSiteConnectionConsentLink -ConnectionName <String> -ResourceGroupName <String>
+ -SubscriptionId <String[]> -Content <IConsentLinkInput> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -77,7 +77,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801Preview.ICons
 Parameter Sets: List
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
