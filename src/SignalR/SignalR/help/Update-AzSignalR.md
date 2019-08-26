@@ -16,7 +16,7 @@ Update a SignalR service.
 ```
 Update-AzSignalR [-ResourceGroupName <String>] [-Name] <String> [-Sku <String>] [-UnitCount <Int32>]
  [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>]
- [-Feature <System.Collections.Generic.IList`1[Microsoft.Azure.Management.SignalR.Models.SignalRFeature]>]
+ [-Feature <System.Collections.Generic.List`1[Microsoft.Azure.Management.SignalR.Models.SignalRFeature]>]
  [-Cors <SignalRCorsSettings>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -25,7 +25,7 @@ Update-AzSignalR [-ResourceGroupName <String>] [-Name] <String> [-Sku <String>] 
 ```
 Update-AzSignalR -ResourceId <String> [-Sku <String>] [-UnitCount <Int32>]
  [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>]
- [-Feature <System.Collections.Generic.IList`1[Microsoft.Azure.Management.SignalR.Models.SignalRFeature]>]
+ [-Feature <System.Collections.Generic.List`1[Microsoft.Azure.Management.SignalR.Models.SignalRFeature]>]
  [-Cors <SignalRCorsSettings>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -34,7 +34,7 @@ Update-AzSignalR -ResourceId <String> [-Sku <String>] [-UnitCount <Int32>]
 ```
 Update-AzSignalR -InputObject <PSSignalRResource> [-Sku <String>] [-UnitCount <Int32>]
  [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>]
- [-Feature <System.Collections.Generic.IList`1[Microsoft.Azure.Management.SignalR.Models.SignalRFeature]>]
+ [-Feature <System.Collections.Generic.List`1[Microsoft.Azure.Management.SignalR.Models.SignalRFeature]>]
  [-Cors <SignalRCorsSettings>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -49,11 +49,22 @@ The following values will be used for the parameters if not specified:
 
 ### Update a specific SignalR service.
 ```powershell
-PS C:\> Update-AzSignalR ResourceGroupName myResourceGroup -Name mysignalr1 -UnitCount 5
+PS C:\> Update-AzSignalR -ResourceGroupName myResourceGroup -Name mysignalr1 -UnitCount 5
 
 HostName                                 Location       ExternalIp      Sku         UnitCount ProvisioningState Version
 --------                                 --------       ----------      ---         --------- ----------------- -------
 mysignalr1.service.signalr.net           eastus         52.179.3.5      Standard_S1 5         Succeeded         1.0
+```
+
+### How to specify Feature and Cors
+```powershell
+PS C:\> $InputFeature = [System.Collections.Generic.List[Microsoft.Azure.Management.SignalR.Models.SignalRFeature]][Microsoft.Azure.Management.SignalR.Models.SignalRFeature]@{Value="Serverless"}
+PS C:\> $InputCors = [Microsoft.Azure.Management.SignalR.Models.SignalRCorsSettings]@{"AllowedOrigins"=[System.Collections.Generic.List[string]]"*"}
+PS C:\> Update-AzSignalR -ResourceGroupName myResourceGroup1 -Name mysignalr2 -Feature $InputFeature -Cors $InputCors
+
+HostName                                 Location       ExternalIp      Sku         UnitCount ProvisioningState Version
+--------                                 --------       ----------      ---         --------- ----------------- -------
+mysignalr1.service.signalr.net           eastus         52.179.3.5      Standard_S1 1         Succeeded         1.0
 ```
 
 ## PARAMETERS
@@ -107,7 +118,7 @@ Accept wildcard characters: False
 The features for the SignalR service.
 
 ```yaml
-Type: System.Collections.Generic.IList`1[Microsoft.Azure.Management.SignalR.Models.SignalRFeature]
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.SignalR.Models.SignalRFeature]
 Parameter Sets: (All)
 Aliases:
 

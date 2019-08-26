@@ -32,7 +32,7 @@ Remove a SignalR service.
 ### [Restart-AzSignalR](Restart-AzSignalR.md)
 Restart a SignalR service.
 
-### [Test-AzSignalR](Test-AzSignalR.md)
+### [Test-AzSignalRName](Test-AzSignalRName.md)
 Check the availability of a name.
 
 ### [Update-AzSignalR](Update-AzSignalR.md)

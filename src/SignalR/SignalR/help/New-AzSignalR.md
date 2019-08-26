@@ -15,7 +15,7 @@ Create a SignalR service.
 ```
 New-AzSignalR [-ResourceGroupName <String>] [-Name] <String> [-Location <String>] [-Sku <String>]
  [-UnitCount <Int32>] [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>]
- [-Feature <System.Collections.Generic.IList`1[Microsoft.Azure.Management.SignalR.Models.SignalRFeature]>]
+ [-Feature <System.Collections.Generic.List`1[Microsoft.Azure.Management.SignalR.Models.SignalRFeature]>]
  [-Cors <SignalRCorsSettings>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -33,9 +33,20 @@ The following values will be used for the parameters if not specified:
 ```powershell
 PS C:\> New-AzSignalR -ResourceGroupName myResourceGroup1 -Name mysignalr1 -Location eastus -Sku Standard_S1
 
-HostName                                           Location       ServerPort PublicPort ProvisioningState Version
---------                                           --------       ---------- ---------- ----------------- -------
-mysignalr1.service.signalr.net                     eastus         5002       5001       Succeeded         1.0-preview
+HostName                                 Location       ExternalIp      Sku         UnitCount ProvisioningState Version
+--------                                 --------       ----------      ---         --------- ----------------- -------
+mysignalr1.service.signalr.net           eastus         52.179.3.5      Standard_S1 1         Succeeded         1.0
+```
+
+### How to specify Feature and Cors
+```powershell
+PS C:\> $InputFeature = [System.Collections.Generic.List[Microsoft.Azure.Management.SignalR.Models.SignalRFeature]][Microsoft.Azure.Management.SignalR.Models.SignalRFeature]@{Value="Serverless"}
+PS C:\> $InputCors = [Microsoft.Azure.Management.SignalR.Models.SignalRCorsSettings]@{"AllowedOrigins"=[System.Collections.Generic.List[string]]"*"}
+PS C:\> New-AzSignalR -ResourceGroupName myResourceGroup1 -Name mysignalr2 -Location eastus -Feature $InputFeature -Cors $InputCors
+
+HostName                                 Location       ExternalIp      Sku         UnitCount ProvisioningState Version
+--------                                 --------       ----------      ---         --------- ----------------- -------
+mysignalr1.service.signalr.net           eastus         52.179.3.5      Standard_S1 1         Succeeded         1.0
 ```
 
 ## PARAMETERS
@@ -89,7 +100,7 @@ Accept wildcard characters: False
 The features for the SignalR service.
 
 ```yaml
-Type: System.Collections.Generic.IList`1[Microsoft.Azure.Management.SignalR.Models.SignalRFeature]
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.SignalR.Models.SignalRFeature]
 Parameter Sets: (All)
 Aliases:
 
