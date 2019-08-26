@@ -31,10 +31,11 @@
         - Update-VpnSite
         - New-VpnConnection
         - Update-VpnConnection
+* Fixed documents for some PowerShell examples to use Az cmdlets instead of AzureRM cmdlets
 
 ## Version 1.13.0
 * Updated New-AzPrivateLinkServiceIpConfig
-    - Deprecated the paramster 'PublicIpAddress' since this is never used in the server side.
+    - Deprecated the parameter 'PublicIpAddress' since this is never used in the server side.
     - Added one optional parameter 'Primary' that indicate the current ip configuration is primary one or not.
 * Improved handling of request error exception from SDK
     -Fixes the issue that previously SDK exceptions aren't handled correctly which results in key error details not being displayed
