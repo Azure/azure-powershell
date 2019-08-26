@@ -87,8 +87,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             bool isComputeAzureVM = false;
             string sourceResourceId = null;
 
-            AzureVmPolicy policy_object = (AzureVmPolicy)ProviderData[ItemParams.Policy];
-            ValidateProtectedItemCount(policy_object);
+            AzureVmPolicy azureVmPolicy = (AzureVmPolicy)ProviderData[ItemParams.Policy];
+            ValidateProtectedItemCount(azureVmPolicy);
 
             if (itemBase == null)
             {
@@ -839,9 +839,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         #region private
 
 
-        private void ValidateProtectedItemCount(AzureVmPolicy policy_object)
+        private void ValidateProtectedItemCount(AzureVmPolicy azureVmPolicy)
         {
-            if (policy_object.ProtectedItemsCount > 100)
+            if (azureVmPolicy.ProtectedItemsCount > 100)
             {
                 throw new ArgumentException(Resources.ProtectedItemsCountExceededException);
             }
