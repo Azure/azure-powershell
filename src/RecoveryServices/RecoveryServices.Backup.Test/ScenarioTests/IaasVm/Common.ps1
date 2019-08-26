@@ -117,7 +117,7 @@ function Create-UnmanagedVM(
 			-SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id -Force
 
 		$UserName='demouser'
-		$PasswordString = $(Get-RandomSuffix 12)
+		$PasswordString = "Adminpassword123@ms"
 		$Password=$PasswordString| ConvertTo-SecureString -Force -AsPlainText
 		$Credential=New-Object PSCredential($UserName,$Password)
 
@@ -139,14 +139,6 @@ function Create-UnmanagedVM(
 		$vm = Set-AzVMOSDisk -VM $vm -Name $diskName -VhdUri $OSDiskUri -CreateOption fromImage
 
 		New-AzVM -ResourceGroupName $resourceGroupName -Location $location -VM $vm | Out-Null
-
-		#$vmConfig = New-AzVMConfig -VMName $vmName -VMSize Standard_D1 | `
-		#	Set-AzVMOperatingSystem -Windows -ComputerName $vmName -Credential $Credential | `
-		#	Set-AzVMSourceImage -PublisherName MicrosoftWindowsServer -Offer WindowsServer `
-		#	-Skus 2016-Datacenter -Version latest | Add-AzVMNetworkInterface -Id $nic.Id
-
-		#New-AzVM -ResourceGroupName $resourceGroupName -Location $location -VM $vmConfig | Out-Null
-		#$vm = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmName
 	}
 
 	return $vm

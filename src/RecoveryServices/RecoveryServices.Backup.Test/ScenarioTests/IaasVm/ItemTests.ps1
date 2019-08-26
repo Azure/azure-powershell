@@ -255,23 +255,28 @@ function Test-AzureVMFullRestore
 
 	try
 	{
+		# Setup
 		$saName = Create-SA $resourceGroupName $location
-		$vm = Create-UnmanagedVM $resourceGroupName $location $saName
+		$vm = Create-VM $resourceGroupName $location
 		$vault = Create-RecoveryServicesVault $resourceGroupName $location
-		$item = Enable-Protection $vault $vm $resourceGroupName
+		$item = Enable-Protection $vault $vm
 		$backupJob = Backup-Item $vault $item
 		$rp = Get-RecoveryPoint $vault $item $backupJob
 
+		$unmanagedvm = Create-UnmanagedVM $resourceGroupName $location $saName
+		$item2 = Enable-protection $vault $unmanagedvm
+		$backupJob2 = Backup-Item $vault $item2
+		$rp2 = Get-RecoveryPoint $vault $item2 $backupJob2
 
-		$restoreJob = Restore-AzRecoveryServicesBackupItem `
+
+		Assert-ThrowsContains { Restore-AzRecoveryServicesBackupItem `
 			-VaultId $vault.ID `
 			-VaultLocation $vault.Location `
 			-RecoveryPoint $rp `
 			-StorageAccountName $saName `
-			-StorageAccountResourceGroupName $resourceGroupName -UseOriginalStorageAccount| `
-				Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
-
-		Assert-True { $restoreJob.Status -eq "Completed" }   
+			-StorageAccountResourceGroupName $resourceGroupName `
+			-UseOriginalStorageAccount } `
+			"This recovery point doesn’t have the capability to restore disks to their original storage account. Re-run the restore command without the UseOriginalStorageAccountForDisks parameter.";
 
 		$restoreJob1 = Restore-AzRecoveryServicesBackupItem `
 			-VaultId $vault.ID `
@@ -293,6 +298,17 @@ function Test-AzureVMFullRestore
 				Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
 
 		Assert-True { $restoreJob2.Status -eq "Completed" }
+
+		$restoreJob3 = Restore-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-VaultLocation $vault.Location `
+			-RecoveryPoint $rp2 `
+			-StorageAccountName $saName `
+			-StorageAccountResourceGroupName $resourceGroupName `
+			-UseOriginalStorageAccount | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
+		
+		Assert-True { $restoreJob3.Status -eq "Completed" }
+
 	}
 	finally
 	{
