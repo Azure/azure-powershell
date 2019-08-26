@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.5.0
 * Add VmssId to New-AzVMConfig cmdlet
 * Add TerminateScheduledEvents and TerminateScheduledEventNotBeforeTimeoutInMinutes parameters to New-AzVmssConfig and Update-AzVmss
 * Add HyperVGeneration property to VM image object

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.2.2
 * Fix hanging of Get-DataLakeStoreDeletedItem for any errors or remote exceptions.
 * Fixed miscellaneous typos across module
 
