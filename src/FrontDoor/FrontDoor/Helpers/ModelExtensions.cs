@@ -253,8 +253,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 protocol: psHealthProbeSetting.Protocol.ToString(),
                 intervalInSeconds: psHealthProbeSetting.IntervalInSeconds,
                 name: psHealthProbeSetting.Name,
-                healthProbeMethod : psHealthProbeSetting.HealthProbeMethod,
-                enabledState : psHealthProbeSetting.EnabledState ? "Enabled" : "Disabled"
+                healthProbeMethod: psHealthProbeSetting.HealthProbeMethod,
+                enabledState: psHealthProbeSetting.EnabledState.ToString()
             );
         }
 

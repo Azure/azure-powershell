@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// Whether to enable health probes to be made against backends defined under backendPools. Health probes can only be disabled if there is a single enabled backend in single enabled backend pool.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Whether to enable health probes to be made against backends defined under backendPools. Health probes can only be disabled if there is a single enabled backend in single enabled backend pool.")]
-        public bool EnabledState { get; set; }
+        public PSEnabledState EnabledState { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                 Protocol = !this.IsParameterBound(c => c.Protocol) ? PSProtocol.Http : Protocol,
                 IntervalInSeconds = !this.IsParameterBound(c => c.IntervalInSeconds) ? 30 : IntervalInSeconds,
                 HealthProbeMethod = !this.IsParameterBound(c => c.HealthProbeMethod) ? "HEAD" : HealthProbeMethod,
-                EnabledState = !this.IsParameterBound(c => c.EnabledState) ? true : EnabledState
+                EnabledState = !this.IsParameterBound(c => c.EnabledState) ? PSEnabledState.Enabled : EnabledState
             };
             WriteObject(HealthProbeSetting);
         }
