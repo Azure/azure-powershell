@@ -52,6 +52,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         public AzureItemExtendedInfo ExtendedInfo { get; set; }
 
+        /// <summary>
+        /// healthstatus of the item
+        /// </summary>
+        public string HealthStatus { get; set; }
+
         public AzureItem(ProtectedItemResource protectedItemResource,
            string containerName, ContainerType containerType, string policyName)
             : base(protectedItemResource, containerName, containerType)

@@ -263,12 +263,6 @@ function Test-AzureVMFullRestore
 		$backupJob = Backup-Item $vault $item
 		$rp = Get-RecoveryPoint $vault $item $backupJob
 
-		$unmanagedvm = Create-UnmanagedVM $resourceGroupName $location $saName
-		$item2 = Enable-protection $vault $unmanagedvm
-		$backupJob2 = Backup-Item $vault $item2
-		$rp2 = Get-RecoveryPoint $vault $item2 $backupJob2
-
-
 		Assert-ThrowsContains { Restore-AzRecoveryServicesBackupItem `
 			-VaultId $vault.ID `
 			-VaultLocation $vault.Location `
@@ -298,23 +292,42 @@ function Test-AzureVMFullRestore
 				Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
 
 		Assert-True { $restoreJob2.Status -eq "Completed" }
-
-		$restoreJob3 = Restore-AzRecoveryServicesBackupItem `
-			-VaultId $vault.ID `
-			-VaultLocation $vault.Location `
-			-RecoveryPoint $rp2 `
-			-StorageAccountName $saName `
-			-StorageAccountResourceGroupName $resourceGroupName `
-			-UseOriginalStorageAccount | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
-		
-		Assert-True { $restoreJob3.Status -eq "Completed" }
-
 	}
 	finally
 	{
 		# Cleanup
 		Cleanup-ResourceGroup $resourceGroupName
 		Cleanup-ResourceGroup $targetResourceGroupName
+	}
+}
+
+function Test-AzureUnmanagedVMFullRestore
+{
+	$location = Get-ResourceGroupLocation
+	$resourceGroupName = Create-ResourceGroup $location
+	
+	try
+	{
+		$saName = Create-SA $resourceGroupName $location
+		$vm = Create-UnmanagedVM $resourceGroupName $location $saName
+		$vault = Create-RecoveryServicesVault $resourceGroupName $location
+		$item = Enable-Protection $vault $vm $resourceGroupName
+		$backupJob = Backup-Item $vault $item
+		$rp = Get-RecoveryPoint $vault $item $backupJob
+
+		$restoreJob = Restore-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-VaultLocation $vault.Location `
+			-RecoveryPoint $rp `
+			-StorageAccountName $saName `
+			-StorageAccountResourceGroupName $resourceGroupName `
+			-UseOriginalStorageAccount | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
+		
+		Assert-True { $restoreJob.Status -eq "Completed" }
+	}
+	finally
+	{
+		Cleanup-ResourceGroup $resourceGroupName
 	}
 }
 

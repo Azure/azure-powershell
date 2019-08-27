@@ -43,6 +43,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                 EnumUtils.GetEnum<ItemProtectionState>(protectedItem.ProtectionState.ToString());
             ProtectionStatus = EnumUtils.GetEnum<ItemProtectionStatus>(protectedItem.ProtectionStatus);
             VirtualMachineId = protectedItem.VirtualMachineId;
+            HealthStatus = protectedItem.HealthStatus;
         }
     }
 
