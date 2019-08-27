@@ -15,9 +15,8 @@ Create a SignalR service.
 ```
 New-AzSignalR [-ResourceGroupName <String>] [-Name] <String> [-Location <String>] [-Sku <String>]
  [-UnitCount <Int32>] [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>]
- [-Feature <System.Collections.Generic.List`1[Microsoft.Azure.Management.SignalR.Models.SignalRFeature]>]
- [-Cors <SignalRCorsSettings>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ServiceMode <String>] [-AllowedOrigin <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,18 +30,16 @@ The following values will be used for the parameters if not specified:
 
 ### Create a SignalR service
 ```powershell
-PS C:\> New-AzSignalR -ResourceGroupName myResourceGroup1 -Name mysignalr1 -Location eastus -Sku Standard_S1
+PS C:\> New-AzSignalR -ResourceGroupName myResourceGroup1 -Name mysignalr1 -Location eastus -Sku Standard_S1 -UnitCount 5
 
 HostName                                 Location       ExternalIp      Sku         UnitCount ProvisioningState Version
 --------                                 --------       ----------      ---         --------- ----------------- -------
-mysignalr1.service.signalr.net           eastus         52.179.3.5      Standard_S1 1         Succeeded         1.0
+mysignalr1.service.signalr.net           eastus         52.179.3.5      Standard_S1 5         Succeeded         1.0
 ```
 
-### How to specify Feature and Cors
+### Specify ServiceMode and AllowedOrigin
 ```powershell
-PS C:\> $InputFeature = [System.Collections.Generic.List[Microsoft.Azure.Management.SignalR.Models.SignalRFeature]][Microsoft.Azure.Management.SignalR.Models.SignalRFeature]@{Value="Serverless"}
-PS C:\> $InputCors = [Microsoft.Azure.Management.SignalR.Models.SignalRCorsSettings]@{"AllowedOrigins"=[System.Collections.Generic.List[string]]"*"}
-PS C:\> New-AzSignalR -ResourceGroupName myResourceGroup1 -Name mysignalr2 -Location eastus -Feature $InputFeature -Cors $InputCors
+PS C:\> New-AzSignalR -ResourceGroupName myResourceGroup1 -Name mysignalr2 -Location eastus -ServiceMode Serverless -AllowedOrigin "http://example1.com:12345, http://example2.com"
 
 HostName                                 Location       ExternalIp      Sku         UnitCount ProvisioningState Version
 --------                                 --------       ----------      ---         --------- ----------------- -------
@@ -51,11 +48,11 @@ mysignalr1.service.signalr.net           eastus         52.179.3.5      Standard
 
 ## PARAMETERS
 
-### -AsJob
-Run the cmdlet in background job.
+### -AllowedOrigin
+The allowed origins for the SignalR service, splitted by ',', ';' or ' ' (space). To allow all, use "*" and remove all other origins from the list. Slashes are not allowed as part of domain or after TLD
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -66,11 +63,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Cors
-The Cors for the SignalR service.
+### -AsJob
+Run the cmdlet in background job.
 
 ```yaml
-Type: Microsoft.Azure.Management.SignalR.Models.SignalRCorsSettings
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -88,21 +85,6 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Feature
-The features for the SignalR service.
-
-```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.SignalR.Models.SignalRFeature]
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named
@@ -143,6 +125,21 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 The resource group name. The default one will be used if not specified.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServiceMode
+The service mode for the SignalR service.
 
 ```yaml
 Type: System.String

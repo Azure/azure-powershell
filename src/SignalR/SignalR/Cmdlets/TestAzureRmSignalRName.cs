@@ -21,7 +21,8 @@ using Microsoft.Azure.Management.SignalR.Models;
 namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 {
     [Cmdlet("Test", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SignalRName")]
-    [OutputType(typeof(PSNameAvailability))]
+    [Alias("Test-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SignalR")]
+    [OutputType(typeof(bool))]
     public class TestAzureRmSignalRName : SignalRCmdletBottom
     {
         private const string NameAvailabilityType = "Microsoft.SignalRService/SignalR";
@@ -52,7 +53,8 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
                     name: Name);
 
                 var availability = Client.SignalR.CheckNameAvailability(Location, parameters);
-                WriteObject(new PSNameAvailability(availability));
+                bool result = (bool)availability.NameAvailable;
+                WriteObject(result);
             });
         }
     }

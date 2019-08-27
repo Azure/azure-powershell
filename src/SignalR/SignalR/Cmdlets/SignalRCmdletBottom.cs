@@ -14,10 +14,13 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Text.RegularExpressions;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Compute.Version_2018_04;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.SignalR;
 using Microsoft.Rest;
@@ -85,6 +88,30 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
             {
                 WriteVerbose($"{name} = {ToPowerShellString(value)}");
             }
+        }
+
+        protected IList<string> ParseAllowedOrigins(string parameter)
+        {
+            if (parameter == null)
+            {
+                return null;
+            }
+            IList<string> origins = parameter.Split(new char[] { ',', ';', ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            Regex regex = new Regex(@"^(http|https)://[^ *\\/""]+$");
+            foreach (var url in origins)
+            {
+                if (url != "*" && !regex.IsMatch(url))
+                {
+                    string message = $"Invalid origin: \"{url}\"";
+                    ThrowTerminatingError(
+                        new ErrorRecord(
+                            new PSInvalidOperationException(message),
+                            string.Empty,
+                            ErrorCategory.InvalidData,
+                            null));
+                }
+            }
+            return origins;
         }
     }
 }
