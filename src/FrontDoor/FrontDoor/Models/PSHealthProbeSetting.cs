@@ -30,6 +30,6 @@ namespace Microsoft.Azure.Commands.FrontDoor.Models
 
         public string HealthProbeMethod { get; set; }
 
-        public PSEnabledState EnabledState { get; set; }
+        public PSEnabledState? EnabledState { get; set; }
     }
 }
