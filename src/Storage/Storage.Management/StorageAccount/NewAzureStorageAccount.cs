@@ -21,6 +21,7 @@ using StorageModels = Microsoft.Azure.Management.Storage.Models;
 using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System;
+using Microsoft.Azure.Commands.Storage.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
@@ -51,13 +52,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage Account Sku Name.")]
         [Alias(StorageAccountTypeAlias, AccountTypeAlias, Account_TypeAlias)]
-        [ValidateSet(StorageModels.SkuName.StandardLRS,
-            StorageModels.SkuName.StandardZRS,
-            StorageModels.SkuName.StandardGRS,
-            StorageModels.SkuName.StandardRAGRS,
-            StorageModels.SkuName.PremiumLRS,
-            StorageModels.SkuName.PremiumZRS,
-            IgnoreCase = true)]
+        [StorageAccountSkuNameCompleter]
         public string SkuName { get; set; }
 
         [Parameter(
