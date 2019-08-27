@@ -53,6 +53,7 @@ Whenever the public interface for a cmdlet has changed, the corresponding markdo
     - Accept pipeline input
 - Add/change output type
 
+
 #### Updating all markdown files in a module
 
 To update all of the markdown files for a single module, use the [`Update-MarkdownHelpModule`](https://github.com/PowerShell/platyPS/blob/master/docs/Update-MarkdownHelpModule.md) cmdlet:
@@ -71,6 +72,13 @@ This will update all of the markdown files with public interface changes made to
 
 _This seems to work better when run from within the `help` folder itself (For e.g. to generate the help files for the [`Network`](src/Network) module run the cmd from under [`Commands.Network/help`](src/Network/Network/help)). Also, you will have to import the profile module from under <Repo base path>/artifacts/Debug/Az.Accounts/Az.Accounts.psd1_
 
+**Note**: If you are doing for the first time for a new module, it may happen that even after calling Update-MarkdownHelpModule will not create new md files. In this case generate the markdown for a single command by using following command and post executing command Update-MarkDownHelpModule will generate all the other files
+
+```powershell
+# New-AzDataBoxEdgeDevice is one of newly added cmdlets
+ New-MarkdownHelp -Command New-AzDataBoxEdgeDevice -OutputFolder $PathToHelpFolder
+ ```
+ 
 #### Updating a single markdown file
 
 To update a single markdown file with the changes made to the corresponding cmdlet, use the [`Update-MarkdownHelp`](https://github.com/PowerShell/platyPS/blob/master/docs/Update-MarkdownHelp.md) cmdlet:
