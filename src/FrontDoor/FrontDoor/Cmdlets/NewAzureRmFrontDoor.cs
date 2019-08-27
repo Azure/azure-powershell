@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     /// <summary>
     /// Defines the New-AzFrontDoor cmdlet.
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoor", DefaultParameterSetName = ObjectParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSFrontDoor))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoor", DefaultParameterSetName = FieldsWithBackendPoolsSettingsSet, SupportsShouldProcess = true), OutputType(typeof(PSFrontDoor))]
     public class NewAzureRmFrontDoor : AzureFrontDoorCmdletBase
     {
         /// <summary>
@@ -92,14 +92,14 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// <summary>
         /// Whether to enforce certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.
         /// </summary>
-        [Parameter(ParameterSetName = SubfieldsParameterSet,
+        [Parameter(ParameterSetName = FieldsWithCertificateNameCheckSet,
             Mandatory = true, HelpMessage = "Whether to disable certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.")]
         public SwitchParameter DisableCertificateNameCheck { get; set; }
 
         /// <summary>
         /// Settings for all backendPools
         /// </summary>
-        [Parameter(ParameterSetName = FieldsParameterSet,
+        [Parameter(ParameterSetName = FieldsWithBackendPoolsSettingsSet,
             Mandatory = true, HelpMessage = "Settings for all backendPools")]
         public PSBackendPoolsSettings BackendPoolsSettings { get; set; }
 
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
             Management.FrontDoor.Models.BackendPoolsSettings backendPoolsSettings;
             switch (ParameterSetName)
             {
-                case SubfieldsParameterSet:
+                case FieldsWithCertificateNameCheckSet:
                 {
                     backendPoolsSettings = new Management.FrontDoor.Models.BackendPoolsSettings(
                             DisableCertificateNameCheck ? PSEnforceCertificateNameCheck.Disabled.ToString() : PSEnforceCertificateNameCheck.Enabled.ToString());
