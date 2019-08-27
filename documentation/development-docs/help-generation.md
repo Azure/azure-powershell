@@ -12,7 +12,6 @@ To do so, you can follow the below steps (which are outlined in the [**Quick sta
 
 ```powershell
 Install-Module -Name platyPS -Scope CurrentUser
-Import-Module platyPS
 ```
 
 **Note:** this module will need to be installed from the [PowerShell Gallery](http://www.powershellgallery.com/). If, for some reason, this isn't a registered repository when running the `Get-PSRepository` cmdlet, then you will need to register it by running the following command:
@@ -38,6 +37,17 @@ Import-Module -Name $PathToModuleManifest
 
 **Note**: if you do not see all of the changes you made to the cmdlets in your markdown files (_e.g.,_ a cmdlet you deleted is still appearing), you may need to delete any existing Azure PowerShell modules that you have on your machine (installed either through the PowerShell Gallery or by Web Platform Installer) before you import your module.
 
+### Generating help for a new module
+
+For new modules with no existing `help` folder containing the markdown help files, run the following command to do an initial generation:
+
+```powershell
+$PathToHelpFolder = "../../help" # Full path to help folder containing markdown files to be generated (e.g., src/Accounts/Accounts/help)
+New-MarkdownHelp -Module {{moduleName}} -OutputFolder $PathToHelpFolder -AlphabeticParamsOrder -UseFullTypeName -WithModulePage
+```
+
+Once this folder has been generated, follow the steps provided in the below section to update the files with any changes made to the public interface of the cmdlets.
+
 ### Updating help after making cmdlet changes
 
 Whenever the public interface for a cmdlet has changed, the corresponding markdown file for that cmdlet will need to be updated to reflect the changes. Public interface changes include the following:
@@ -52,7 +62,6 @@ Whenever the public interface for a cmdlet has changed, the corresponding markdo
     - Position
     - Accept pipeline input
 - Add/change output type
-
 
 #### Updating all markdown files in a module
 
@@ -71,13 +80,6 @@ If you would like to update the inputs/outputs for a markdown file, please run t
 This will update all of the markdown files with public interface changes made to corresponding cmdlets, add markdown files for any new cmdlets, remove markdown files for any deleted cmdlets, and update the module page (_e.g.,_ `Az.Accounts.md`) with any added or removed cmdlets.
 
 _This seems to work better when run from within the `help` folder itself (For e.g. to generate the help files for the [`Network`](src/Network) module run the cmd from under [`Commands.Network/help`](src/Network/Network/help)). Also, you will have to import the profile module from under <Repo base path>/artifacts/Debug/Az.Accounts/Az.Accounts.psd1_
-
-**Note**: If you are doing for the first time for a new module, it may happen that even after calling Update-MarkdownHelpModule will not create new md files. In this case generate the markdown for a single command by using following command and post executing command Update-MarkDownHelpModule will generate all the other files
-
-```powershell
-# New-AzDataBoxEdgeDevice is one of newly added cmdlets
- New-MarkdownHelp -Command New-AzDataBoxEdgeDevice -OutputFolder $PathToHelpFolder
- ```
  
 #### Updating a single markdown file
 
