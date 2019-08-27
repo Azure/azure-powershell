@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 backendPools: psFrontDoor.BackendPools?.Select(x => x.ToSdkBackendPool()).ToList(),
                 frontendEndpoints: psFrontDoor.FrontendEndpoints?.Select(x => x.ToSdkFrontendEndpoints()).ToList(),
                 enabledState: psFrontDoor.EnabledState.ToString(),
-                backendPoolsSettings: new SdkBackendPoolsSettings(psFrontDoor.EnforceCertificateNameCheck?.ToString())
+                backendPoolsSettings: psFrontDoor.BackendPoolsSettings.ToSdkBackendPoolsSettings()
                 );
         }
         public static PSFrontDoor ToPSFrontDoor(this SdkFrontDoor sdkFrontDoor)
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 EnabledState = sdkFrontDoor.EnabledState == null ? (PSEnabledState?)null : (PSEnabledState)Enum.Parse(typeof(PSEnabledState), sdkFrontDoor.EnabledState),
                 ResourceState = sdkFrontDoor.ResourceState,
                 ProvisioningState = sdkFrontDoor.ProvisioningState,
-                EnforceCertificateNameCheck = (PSEnforceCertificateNameCheck)Enum.Parse(typeof(PSEnforceCertificateNameCheck), sdkFrontDoor.BackendPoolsSettings.EnforceCertificateNameCheck)
+                BackendPoolsSettings = sdkFrontDoor.BackendPoolsSettings.ToPSBackendPoolsSettings()
             };
         }
 
@@ -232,6 +232,22 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 );
         }
 
+        public static PSBackendPoolsSettings ToPSBackendPoolsSettings(this SdkBackendPoolsSettings sdkBackendPoolsSettings)
+        {
+            return new PSBackendPoolsSettings {
+                EnforceCertificateNameCheck = sdkBackendPoolsSettings.EnforceCertificateNameCheck == null ? (PSEnabledState?)null : (PSEnabledState?)Enum.Parse(typeof(PSEnabledState?), sdkBackendPoolsSettings.EnforceCertificateNameCheck),
+                SendRecvTimeoutSeconds = sdkBackendPoolsSettings.SendRecvTimeoutSeconds
+                };
+        }
+
+        public static SdkBackendPoolsSettings ToSdkBackendPoolsSettings(this PSBackendPoolsSettings psBackendPoolsSettings)
+        {
+            return new SdkBackendPoolsSettings(
+                enforceCertificateNameCheck: psBackendPoolsSettings.EnforceCertificateNameCheck?.ToString(),
+                sendRecvTimeoutSeconds: psBackendPoolsSettings.SendRecvTimeoutSeconds
+                );
+        }
+
         public static PSHealthProbeSetting ToPSHealthProbeSetting(this SdkHealthProbeSetting sdkHealthProbeSetting)
         {
             return new PSHealthProbeSetting
@@ -316,7 +332,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 CustomHttpsProvisioningSubstate = sdkFrontendEndpoint.CustomHttpsProvisioningSubstate == null ?
                         (PSCustomHttpsProvisioningSubstate?)null : (PSCustomHttpsProvisioningSubstate)Enum.Parse(typeof(PSCustomHttpsProvisioningSubstate), sdkFrontendEndpoint.CustomHttpsProvisioningSubstate),
                 CertificateSource = sdkFrontendEndpoint.CustomHttpsConfiguration == null ? null : sdkFrontendEndpoint.CustomHttpsConfiguration.CertificateSource,
-                ProtocolType = sdkFrontendEndpoint.CustomHttpsConfiguration == null ? null : sdkFrontendEndpoint.CustomHttpsConfiguration.ProtocolType,
+                ProtocolType = sdkFrontendEndpoint.CustomHttpsConfiguration == null ? null : SdkHttpsConfig.ProtocolType,
                 Vault = sdkFrontendEndpoint.CustomHttpsConfiguration?.Vault?.Id,
                 SecretName = sdkFrontendEndpoint.CustomHttpsConfiguration?.SecretName,
                 SecretVersion = sdkFrontendEndpoint.CustomHttpsConfiguration?.SecretVersion,
