@@ -8,7 +8,7 @@ schema: 2.0.0
 # Test-AzSignalRName
 
 ## SYNOPSIS
-Check the availability of a name.
+Check the availability of a name. Alias: Test-AzSignal.
 
 ## SYNTAX
 
@@ -18,26 +18,21 @@ Test-AzSignalRName [-Name] <String> [-Location] <String> [-DefaultProfile <IAzur
 ```
 
 ## DESCRIPTION
-Check the availability of a name.
+Check the availability of a name. Alias: Test-AzSignal.
 
 ## EXAMPLES
 
-### Check a existed name.
+### Check an existed name.
 ```powershell
-PS D:\azure-powershell\artifacts\Debug\Az.SignalR> Test-AzSignalRName -Name existedsignalr -Location eastus
-
-NameAvailable Reason        Message
-------------- ------        -------
-        False AlreadyExists The name is already taken. Please try a different name.
+PS C:\> Test-AzSignalRName -Name existedsignalr -Location eastus
+False
 ```
 
-### Check a unexisted name.
-```powershell
-PS C:\> Test-AzSignalRName unexistedsignalr eastus
-
-NameAvailable Reason Message
-------------- ------ -------
-         True
+### Check an unexisted name.
+```
+powershell
+PS C:\> Test-AzSignalR unexistedsignalr eastus
+True
 ```
 
 ## PARAMETERS
@@ -92,11 +87,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### System.String
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.SignalR.Models.PSNameAvailability
+### System.Boolean
 
 ## NOTES
 

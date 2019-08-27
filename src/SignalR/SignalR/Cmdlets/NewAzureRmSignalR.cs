@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Strategies;
@@ -20,6 +21,7 @@ using Microsoft.Azure.Commands.SignalR.Models;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.SignalR;
 using Microsoft.Azure.Management.SignalR.Models;
+using Microsoft.WindowsAzure.Commands.Common;
 using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.SignalR.Cmdlets
@@ -70,13 +72,14 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The features for the SignalR service.")]
-        public List<SignalRFeature> Feature { get; set; }
+            HelpMessage = "The service mode for the SignalR service.")]
+        [PSArgumentCompleter("Default", "Serverless", "Classic")]
+        public string ServiceMode { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The Cors for the SignalR service.")]
-        public SignalRCorsSettings Cors { get; set; }
+            HelpMessage = "The allowed origins for the SignalR service, splitted by ',', ';' or ' ' (space). To allow all, use \"*\" and remove all other origins from the list. Slashes are not allowed as part of domain or after TLD")]
+        public string AllowedOrigin { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -110,17 +113,22 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
                     PromptParameter(nameof(Sku), Sku, true, DefaultSku);
                     PromptParameter(nameof(UnitCount), UnitCount, true, DefaultUnitCount);
                     PromptParameter(nameof(Tag), Tag == null ? null : JsonConvert.SerializeObject(Tag));
-                    PromptParameter(nameof(Feature), Feature == null ? null : JsonConvert.SerializeObject(Feature));
-                    PromptParameter(nameof(Cors), Cors == null ? null : JsonConvert.SerializeObject(Cors));
+                    PromptParameter(nameof(ServiceMode), ServiceMode);
+
+                    IList<string> origins = ParseAllowedOrigins(AllowedOrigin);
+                    PromptParameter(nameof(AllowedOrigin), origins == null ? null : JsonConvert.SerializeObject(origins));
 
                     Sku = Sku ?? DefaultSku;
                     UnitCount = UnitCount ?? DefaultUnitCount;
+
+                    IList<SignalRFeature> features = ServiceMode == null ? null : new List<SignalRFeature> { new SignalRFeature(value: ServiceMode) };
+                    SignalRCorsSettings cors = AllowedOrigin == null ? null : new SignalRCorsSettings(allowedOrigins: origins);
 
                     var parameters = new SignalRCreateParameters(
                         location: Location,
                         tags: Tag,
                         sku: new ResourceSku(name: Sku, capacity: UnitCount),
-                        properties: new SignalRCreateOrUpdateProperties(features: Feature, cors: Cors));
+                        properties: new SignalRCreateOrUpdateProperties(features: features, cors: cors));
 
                     Client.SignalR.CreateOrUpdate(ResourceGroupName, Name, parameters);
 

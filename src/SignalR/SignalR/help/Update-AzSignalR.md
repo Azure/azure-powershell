@@ -15,27 +15,24 @@ Update a SignalR service.
 ### ResourceGroupParameterSet (Default)
 ```
 Update-AzSignalR [-ResourceGroupName <String>] [-Name] <String> [-Sku <String>] [-UnitCount <Int32>]
- [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>]
- [-Feature <System.Collections.Generic.List`1[Microsoft.Azure.Management.SignalR.Models.SignalRFeature]>]
- [-Cors <SignalRCorsSettings>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>] [-ServiceMode <String>]
+ [-AllowedOrigin <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
 Update-AzSignalR -ResourceId <String> [-Sku <String>] [-UnitCount <Int32>]
- [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>]
- [-Feature <System.Collections.Generic.List`1[Microsoft.Azure.Management.SignalR.Models.SignalRFeature]>]
- [-Cors <SignalRCorsSettings>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>] [-ServiceMode <String>]
+ [-AllowedOrigin <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
 Update-AzSignalR -InputObject <PSSignalRResource> [-Sku <String>] [-UnitCount <Int32>]
- [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>]
- [-Feature <System.Collections.Generic.List`1[Microsoft.Azure.Management.SignalR.Models.SignalRFeature]>]
- [-Cors <SignalRCorsSettings>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>] [-ServiceMode <String>]
+ [-AllowedOrigin <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -56,11 +53,9 @@ HostName                                 Location       ExternalIp      Sku     
 mysignalr1.service.signalr.net           eastus         52.179.3.5      Standard_S1 5         Succeeded         1.0
 ```
 
-### How to specify Feature and Cors
+### Specify ServiceMode and AllowedOrigin
 ```powershell
-PS C:\> $InputFeature = [System.Collections.Generic.List[Microsoft.Azure.Management.SignalR.Models.SignalRFeature]][Microsoft.Azure.Management.SignalR.Models.SignalRFeature]@{Value="Serverless"}
-PS C:\> $InputCors = [Microsoft.Azure.Management.SignalR.Models.SignalRCorsSettings]@{"AllowedOrigins"=[System.Collections.Generic.List[string]]"*"}
-PS C:\> Update-AzSignalR -ResourceGroupName myResourceGroup1 -Name mysignalr2 -Feature $InputFeature -Cors $InputCors
+PS C:\> Update-AzSignalR -ResourceGroupName myResourceGroup1 -Name mysignalr2 -ServiceMode Serverless -AllowedOrigin "http://example1.com:12345, http://example2.com"
 
 HostName                                 Location       ExternalIp      Sku         UnitCount ProvisioningState Version
 --------                                 --------       ----------      ---         --------- ----------------- -------
@@ -69,11 +64,11 @@ mysignalr1.service.signalr.net           eastus         52.179.3.5      Standard
 
 ## PARAMETERS
 
-### -AsJob
-Run the cmdlet in background job.
+### -AllowedOrigin
+The allowed origins for the SignalR service, splitted by ',', ';' or ' ' (space). To allow all, use "*" and remove all other origins from the list. Slashes are not allowed as part of domain or after TLD
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -84,11 +79,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Cors
-The Cors for the SignalR service.
+### -AsJob
+Run the cmdlet in background job.
 
 ```yaml
-Type: Microsoft.Azure.Management.SignalR.Models.SignalRCorsSettings
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -106,21 +101,6 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Feature
-The features for the SignalR service.
-
-```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.SignalR.Models.SignalRFeature]
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named
@@ -187,6 +167,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ServiceMode
+The service mode for the SignalR service.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
