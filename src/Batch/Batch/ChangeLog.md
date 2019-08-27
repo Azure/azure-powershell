@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.1.1
 * Fixed typo in help message and documentation to capitalize Windows
 * Fixed miscellaneous typos across module
 
