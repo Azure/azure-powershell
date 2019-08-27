@@ -8,5 +8,11 @@ namespace Microsoft.Azure.Commands.Network.Models
     public class PSPrivateLinkServiceResourceSet
     {
         public List<string> Subscriptions { get; set; }
+
+        [JsonIgnore]
+        public string SubscriptionsText
+        {
+            get { return JsonConvert.SerializeObject(Subscriptions, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
     }
 }

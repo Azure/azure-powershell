@@ -64,5 +64,21 @@ namespace Microsoft.Azure.Commands.Network.Models
         {
             get { return JsonConvert.SerializeObject(ManualPrivateLinkServiceConnections, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
+
+        public bool ShouldSerializeNetworkInterfaces()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
+
+        public bool ShouldSerializePrivateLinkServiceConnections()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
+
+        public bool ShouldSerializeManualPrivateLinkServiceConnections()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
+
     }
 }

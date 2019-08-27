@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         protected ManagedServiceAccessTokenBase(IAzureAccount account, IAzureEnvironment environment, string resourceId, string tenant = "Common")
         {
-            if (string.IsNullOrEmpty(account?.Id) || !account.IsPropertySet(AzureAccount.Property.MSILoginUri))
+            if (string.IsNullOrWhiteSpace(account?.Id) || !account.IsPropertySet(AzureAccount.Property.MSILoginUri))
             {
                 throw new ArgumentNullException(nameof(account));
             }
