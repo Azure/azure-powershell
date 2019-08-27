@@ -1,12 +1,12 @@
-$TestRecordingFile = Join-Path 'C:\Users\niassis\source\repos\generating\azure-powershell\src\Monitor\test' 'New-AzMetricAlert.Recording.json'
+$TestRecordingFile = Join-Path $PSScriptRoot 'Remove-AzScheduledQueryRule.Recording.json'
 . (Join-Path $PSScriptRoot '..\generated\runtime' 'HttpPipelineMocking.ps1')
 
-Describe 'New-AzMetricAlert' {
-    It 'CreateByResourceId' {
+Describe 'Remove-AzScheduledQueryRule' {
+    It 'Delete' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'CreateByScope' {
+    It 'DeleteViaIdentity' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

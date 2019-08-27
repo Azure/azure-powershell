@@ -15,7 +15,8 @@ Microsoft Azure PowerShell: Monitor cmdlets
 Gets the active diagnostic settings for the specified resource.
 
 ### [Get-AzEventCategory](Get-AzEventCategory.md)
-Get the list of available event categories supported in the Activity Logs Service.\<br\>The current list includes the following: Administrative, Security, ServiceHealth, Alert, Recommendation, Policy.
+Get the list of available event categories supported in the Activity Logs Service.
+The current list includes the following: Administrative, Security, ServiceHealth, Alert, Recommendation, Policy.
 
 ### [Get-AzMetric](Get-AzMetric.md)
 **Lists the metric values for a resource**.

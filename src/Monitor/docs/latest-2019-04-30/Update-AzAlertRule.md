@@ -15,32 +15,20 @@ To update other fields use the CreateOrUpdate method.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzAlertRule -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Action <IRuleAction[]>] [-Description <String>] [-IsEnabled] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpandedCondition
-```
-Update-AzAlertRule -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -WindowSize <TimeSpan>
- -Threshold <Double> -Operator <ConditionOperator> -MetricName <String> -TargetResourceId <String>
- [-Action <IRuleAction[]>] [-Description <String>] [-IsEnabled] [-Tag <Hashtable>]
- [-TimeAggregationOperator <TimeAggregationOperator>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+Update-AzAlertRule -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -IsEnabled
+ -MetricName <String> -Operator <ConditionOperator> -TargetResourceId <String> -Threshold <Double>
+ -TimeAggregationOperator <TimeAggregationOperator> -WindowSize <TimeSpan> [-Action <IRuleAction[]>]
+ [-Description <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzAlertRule -InputObject <IMonitorIdentity> [-Action <IRuleAction[]>] [-Description <String>]
- [-IsEnabled] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpandedCondition
-```
-Update-AzAlertRule -InputObject <IMonitorIdentity> -WindowSize <TimeSpan> -Threshold <Double>
- -Operator <ConditionOperator> -MetricName <String> -TargetResourceId <String> [-Action <IRuleAction[]>]
- [-Description <String>] [-IsEnabled] [-Tag <Hashtable>] [-TimeAggregationOperator <TimeAggregationOperator>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzAlertRule -InputObject <IMonitorIdentity> -IsEnabled -MetricName <String>
+ -Operator <ConditionOperator> -TargetResourceId <String> -Threshold <Double>
+ -TimeAggregationOperator <TimeAggregationOperator> -WindowSize <TimeSpan> [-Action <IRuleAction[]>]
+ [-Description <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,7 +59,6 @@ PS C:\> {{ Add code here }}
 
 ### -Action
 the array of actions that are performed when the alert rule becomes active, and when an alert condition is resolved.
-To construct, see NOTES section for ACTION properties and create a hash table.
 To construct, see NOTES section for ACTION properties and create a hash table.
 
 ```yaml
@@ -121,10 +108,11 @@ Dynamic: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.IMonitorIdentity
-Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentityExpandedCondition
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -143,9 +131,9 @@ Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -156,7 +144,7 @@ The metric name for rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpandedCondition, UpdateViaIdentityExpandedCondition
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -172,7 +160,7 @@ The name of the rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateExpandedCondition
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -188,7 +176,7 @@ The rule condition operator.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Support.ConditionOperator
-Parameter Sets: UpdateExpandedCondition, UpdateViaIdentityExpandedCondition
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -204,7 +192,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateExpandedCondition
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -220,7 +208,7 @@ The Azure subscription Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateExpandedCondition
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -252,7 +240,7 @@ The target resource id for rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpandedCondition, UpdateViaIdentityExpandedCondition
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -268,12 +256,12 @@ The threshold for rule condition.
 
 ```yaml
 Type: System.Double
-Parameter Sets: UpdateExpandedCondition, UpdateViaIdentityExpandedCondition
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -284,10 +272,10 @@ The aggregation operation used to roll up multiple metric values across the wind
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Support.TimeAggregationOperator
-Parameter Sets: UpdateExpandedCondition, UpdateViaIdentityExpandedCondition
+Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -300,7 +288,7 @@ The window size for rule.
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: UpdateExpandedCondition, UpdateViaIdentityExpandedCondition
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -364,6 +352,24 @@ To create the parameters described below, construct a hash table containing the 
 
 #### ACTION <IRuleAction[]>: the array of actions that are performed when the alert rule becomes active, and when an alert condition is resolved.
   - `OdataType <String>`: specifies the type of the action. There are two types of actions: RuleEmailAction and RuleWebhookAction.
+
+#### INPUTOBJECT <IMonitorIdentity>: Identity Parameter
+  - `[ActionGroupName <String>]`: The name of the action group.
+  - `[ActivityLogAlertName <String>]`: The name of the activity log alert.
+  - `[AutoscaleSettingName <String>]`: The autoscale setting name.
+  - `[Id <String>]`: Resource identity path
+  - `[IncidentName <String>]`: The name of the incident to retrieve.
+  - `[LogProfileName <String>]`: The name of the log profile.
+  - `[MetricName <String>]`: The name of the metric to retrieve the baseline for.
+  - `[Name <String>]`: The name of the diagnostic setting.
+  - `[ResourceGroupName <String>]`: The name of the resource group.
+  - `[ResourceName <String>]`: The ARM resource name
+  - `[ResourceProvider <String>]`: The ARM resource provider name
+  - `[ResourceTypeName <String>]`: The ARM resource type name
+  - `[ResourceUri <String>]`: The identifier of the resource.
+  - `[RuleName <String>]`: The name of the rule.
+  - `[StatusName <String>]`: The name of the status.
+  - `[SubscriptionId <String>]`: The Azure subscription Id.
 
 ## RELATED LINKS
 

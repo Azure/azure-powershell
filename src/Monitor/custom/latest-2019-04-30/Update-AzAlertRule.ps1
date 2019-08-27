@@ -5,7 +5,6 @@ function Update-AzAlertRule {
 [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Description('Updates an existing AlertRuleResource. To update other fields use the CreateOrUpdate method.')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory, HelpMessage='The name of the rule.')]
-    [Parameter(ParameterSetName='UpdateExpandedCondition', Mandatory, HelpMessage='The name of the rule.')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.Info(SerializedName='ruleName', Required, PossibleTypes=([System.String]), Description='The name of the rule.')]
     [System.String]
@@ -13,7 +12,6 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory, HelpMessage='The name of the resource group.')]
-    [Parameter(ParameterSetName='UpdateExpandedCondition', Mandatory, HelpMessage='The name of the resource group.')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.Info(SerializedName='resourceGroupName', Required, PossibleTypes=([System.String]), Description='The name of the resource group.')]
     [System.String]
@@ -21,7 +19,6 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory, HelpMessage='The Azure subscription Id.')]
-    [Parameter(ParameterSetName='UpdateExpandedCondition', Mandatory, HelpMessage='The Azure subscription Id.')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.Info(SerializedName='subscriptionId', Required, PossibleTypes=([System.String]), Description='The Azure subscription Id.')]
     [System.String]
@@ -29,7 +26,6 @@ param(
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline, HelpMessage='Identity Parameter')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpandedCondition', Mandatory, ValueFromPipeline, HelpMessage='Identity Parameter')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.IMonitorIdentity]
     # Identity Parameter
@@ -52,35 +48,29 @@ param(
     # ${Condition},
 
     # CUSTOM
-    [Parameter(ParameterSetName='UpdateViaIdentityExpandedCondition', Mandatory, HelpMessage='The window size for rule.')]
-    [Parameter(ParameterSetName='UpdateExpandedCondition', Mandatory, HelpMessage='The window size for rule.')]
+    [Parameter(Mandatory, HelpMessage='The window size for rule.')]
     [System.TimeSpan]
     ${WindowSize},
 
-    [Parameter(ParameterSetName='UpdateViaIdentityExpandedCondition', HelpMessage = "The aggregation operation used to roll up multiple metric values across the window interval.")]
-    [Parameter(ParameterSetName='UpdateExpandedCondition', HelpMessage = "The aggregation operation used to roll up multiple metric values across the window interval.")]
+    [Parameter(Mandatory, HelpMessage = "The aggregation operation used to roll up multiple metric values across the window interval.")]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Support.TimeAggregationOperator])]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Support.TimeAggregationOperator]
     ${TimeAggregationOperator},
 
-    [Parameter(ParameterSetName='UpdateViaIdentityExpandedCondition', Mandatory, HelpMessage = "The threshold for rule condition.")]
-    [Parameter(ParameterSetName='UpdateExpandedCondition', Mandatory, HelpMessage = "The threshold for rule condition.")]
+    [Parameter(Mandatory, HelpMessage = "The threshold for rule condition.")]
     [System.Double]
     ${Threshold},
 
-    [Parameter(ParameterSetName='UpdateViaIdentityExpandedCondition', Mandatory, HelpMessage = "The rule condition operator.")]
-    [Parameter(ParameterSetName='UpdateExpandedCondition', Mandatory, HelpMessage = "The rule condition operator.")]
+    [Parameter(Mandatory, HelpMessage = "The rule condition operator.")]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Support.ConditionOperator])]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Support.ConditionOperator]
     ${Operator},
 
-    [Parameter(ParameterSetName='UpdateViaIdentityExpandedCondition', Mandatory, HelpMessage = "The metric name for rule.")]
-    [Parameter(ParameterSetName='UpdateExpandedCondition', Mandatory, HelpMessage = "The metric name for rule.")]
+    [Parameter(Mandatory, HelpMessage = "The metric name for rule.")]
     [System.String]
     ${MetricName},
 
-    [Parameter(ParameterSetName='UpdateViaIdentityExpandedCondition', Mandatory, HelpMessage = "The target resource id for rule.")]
-    [Parameter(ParameterSetName='UpdateExpandedCondition', Mandatory, HelpMessage = "The target resource id for rule.")]
+    [Parameter(Mandatory, HelpMessage = "The target resource id for rule.")]
     [System.String]
     ${TargetResourceId},
     # END CUSTOM
@@ -92,7 +82,7 @@ param(
     # the description of the alert rule that will be included in the alert email.
     ${Description},
 
-    [Parameter(HelpMessage='the flag that indicates whether the alert rule is enabled.')]
+    [Parameter(Mandatory, HelpMessage='the flag that indicates whether the alert rule is enabled.')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.Info(SerializedName='isEnabled', PossibleTypes=([System.Management.Automation.SwitchParameter]), Description='the flag that indicates whether the alert rule is enabled.')]
     [System.Management.Automation.SwitchParameter]
@@ -174,14 +164,12 @@ process {
                                                 threshold=$PSBoundParameters["Threshold"]
                                                 operator=$PSBoundParameters["Operator"]
                                                 windowSize=$PSBoundParameters["WindowSize"]
+                                                TimeAggregation=$PSBoundParameters["TimeAggregationOperator"]
                                                 datasource=[Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20160301.RuleMetricDataSource]@{
                                                         odatatype="Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource"
                                                         MetricName=$PSBoundParameters["MetricName"]
                                                         ResourceUri=$PSBoundParameters["TargetResourceId"]
                                                 }
-        }
-        if ($PSBoundParameters.ContainsKey("TimeAggregationOperator")) {
-            $PSBoundParameters["Condition"].TimeAggregation = $PSBoundParameters["TimeAggregationOperator"]
         }
     }
 

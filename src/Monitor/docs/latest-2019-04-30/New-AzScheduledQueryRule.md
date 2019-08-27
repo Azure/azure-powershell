@@ -14,10 +14,10 @@ Creates or updates an log search rule.
 
 ```
 New-AzScheduledQueryRule -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -AlertingAction <AlertingAction> -Location <String> -SourceDataSourceId <String> [-Description <String>]
- [-ScheduleFrequencyInMinute <Int32>] [-ScheduleTimeWindowInMinute <Int32>]
+ -AlertingAction <AlertingAction> -Location <String> -SourceDataSourceId <String> -Enabled
+ [-Description <String>] [-ScheduleFrequencyInMinute <Int32>] [-ScheduleTimeWindowInMinute <Int32>]
  [-SourceAuthorizedResource <String[]>] [-SourceQuery <String>] [-SourceQueryType <QueryType>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Enabled] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -102,9 +102,9 @@ Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -168,7 +168,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -184,7 +184,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

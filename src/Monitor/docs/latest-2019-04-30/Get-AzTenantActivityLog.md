@@ -16,35 +16,35 @@ One thing to point out here is that this API does *not* retrieve the logs at the
 
 ### List (Default)
 ```
-Get-AzTenantActivityLog [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>] [-Caller <String>]
- [-EventChannel <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzTenantActivityLog [-Caller <String>] [-EndTime <DateTime>] [-EventChannel <String>]
+ [-StartTime <DateTime>] [-Status <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### CorrelationId
 ```
-Get-AzTenantActivityLog -CorrelationId <String> [-StartTime <DateTime>] [-EndTime <DateTime>]
- [-Status <String>] [-Caller <String>] [-EventChannel <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### ResourceProvider
-```
-Get-AzTenantActivityLog -ResourceProvider <String> [-StartTime <DateTime>] [-EndTime <DateTime>]
- [-Status <String>] [-Caller <String>] [-EventChannel <String>] [-DefaultProfile <PSObject>]
+Get-AzTenantActivityLog -CorrelationId <String> [-Caller <String>] [-EndTime <DateTime>]
+ [-EventChannel <String>] [-StartTime <DateTime>] [-Status <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### ResourceGroupName
 ```
-Get-AzTenantActivityLog -ResourceGroupName <String> [-StartTime <DateTime>] [-EndTime <DateTime>]
- [-Status <String>] [-Caller <String>] [-EventChannel <String>] [-DefaultProfile <PSObject>]
+Get-AzTenantActivityLog -ResourceGroupName <String> [-Caller <String>] [-EndTime <DateTime>]
+ [-EventChannel <String>] [-StartTime <DateTime>] [-Status <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Get-AzTenantActivityLog -ResourceId <String> [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>]
- [-Caller <String>] [-EventChannel <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzTenantActivityLog -ResourceId <String> [-Caller <String>] [-EndTime <DateTime>] [-EventChannel <String>]
+ [-StartTime <DateTime>] [-Status <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ResourceProvider
+```
+Get-AzTenantActivityLog -ResourceProvider <String> [-Caller <String>] [-EndTime <DateTime>]
+ [-EventChannel <String>] [-StartTime <DateTime>] [-Status <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

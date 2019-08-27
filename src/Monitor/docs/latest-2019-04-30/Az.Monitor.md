@@ -42,7 +42,8 @@ Gets the active diagnostic settings for the specified resource.
 Gets the diagnostic settings category for the specified resource.
 
 ### [Get-AzEventCategory](Get-AzEventCategory.md)
-Get the list of available event categories supported in the Activity Logs Service.\<br\>The current list includes the following: Administrative, Security, ServiceHealth, Alert, Recommendation, Policy.
+Get the list of available event categories supported in the Activity Logs Service.
+The current list includes the following: Administrative, Security, ServiceHealth, Alert, Recommendation, Policy.
 
 ### [Get-AzLogProfile](Get-AzLogProfile.md)
 Gets the log profile.

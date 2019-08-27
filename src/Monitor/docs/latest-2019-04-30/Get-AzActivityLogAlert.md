@@ -23,15 +23,15 @@ Get-AzActivityLogAlert -Name <String> -ResourceGroupName <String> -SubscriptionI
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentity
+```
+Get-AzActivityLogAlert -InputObject <IMonitorIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### List1
 ```
 Get-AzActivityLogAlert -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzActivityLogAlert -InputObject <IMonitorIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -77,6 +77,7 @@ Dynamic: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.IMonitorIdentity
@@ -128,7 +129,7 @@ The Azure subscription Id.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get, List1
+Parameter Sets: Get, List, List1
 Aliases:
 
 Required: True
@@ -153,6 +154,27 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### INPUTOBJECT <IMonitorIdentity>: Identity Parameter
+  - `[ActionGroupName <String>]`: The name of the action group.
+  - `[ActivityLogAlertName <String>]`: The name of the activity log alert.
+  - `[AutoscaleSettingName <String>]`: The autoscale setting name.
+  - `[Id <String>]`: Resource identity path
+  - `[IncidentName <String>]`: The name of the incident to retrieve.
+  - `[LogProfileName <String>]`: The name of the log profile.
+  - `[MetricName <String>]`: The name of the metric to retrieve the baseline for.
+  - `[Name <String>]`: The name of the diagnostic setting.
+  - `[ResourceGroupName <String>]`: The name of the resource group.
+  - `[ResourceName <String>]`: The ARM resource name
+  - `[ResourceProvider <String>]`: The ARM resource provider name
+  - `[ResourceTypeName <String>]`: The ARM resource type name
+  - `[ResourceUri <String>]`: The identifier of the resource.
+  - `[RuleName <String>]`: The name of the rule.
+  - `[StatusName <String>]`: The name of the status.
+  - `[SubscriptionId <String>]`: The Azure subscription Id.
 
 ## RELATED LINKS
 

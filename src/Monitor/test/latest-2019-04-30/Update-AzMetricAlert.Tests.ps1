@@ -1,25 +1,28 @@
-$TestRecordingFile = Join-Path $PSScriptRoot 'C:\Users\niassis\source\repos\generating\azure-powershell\src\Monitor\test' 'Get-AzTenantActivityLog.Recording.json'
-
+$TestRecordingFile = Join-Path $PSScriptRoot 'Update-AzMetricAlert.Recording.json'
 . (Join-Path $PSScriptRoot '..\generated\runtime' 'HttpPipelineMocking.ps1')
 
-Describe 'Get-AzTenantActivityLog' {
-    It 'List' {
+Describe 'Update-AzMetricAlert' {
+    It 'UpdateExpanded' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'CorrelationId' {
+    It 'UpdateExpandedByResourceId' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'ResourceProvider' {
+    It 'UpdateExpandedByScope' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'ResourceGroupName' {
+    It 'UpdateViaIdentityExpanded' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'ResourceId' {
+    It 'UpdateViaIdentityExpandedByResourceId' {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'UpdateViaIdentityExpandedByScope' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

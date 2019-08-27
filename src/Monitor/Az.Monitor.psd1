@@ -15,7 +15,7 @@
   AliasesToExport = 'Get-AzLog', 'Get-AzMetricAlertRuleV2', 'Add-AzMetricAlertRule', 'Add-AzMetricAlertRuleV2', 'Remove-AzMetricAlertRuleV2', 'Add-AzAutoscaleSetting', 'Add-AzLogProfile', '*'
   PrivateData = @{
     PSData = @{
-      Tags = 'Azure', 'ResourceManager', 'ARM', 'Monitor'
+      Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'Monitor'
       LicenseUri = 'https://aka.ms/azps-license'
       ProjectUri = 'https://github.com/Azure/azure-powershell'
       ReleaseNotes = ''

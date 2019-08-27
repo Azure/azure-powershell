@@ -13,11 +13,11 @@ Creates or updates an alert rule.
 ## SYNTAX
 
 ```
-New-AzAlertRule -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -WindowSize <TimeSpan>
- -Threshold <Double> -Operator <ConditionOperator> -MetricName <String> -TargetResourceId <String> -IsEnabled
- -Location <String> [-TimeAggregationOperator <TimeAggregationOperator>] [-Action <IRuleAction[]>]
- [-Description <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzAlertRule -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -IsEnabled
+ -Location <String> -MetricName <String> -Operator <ConditionOperator> -TargetResourceId <String>
+ -Threshold <Double> -WindowSize <TimeSpan> [-Action <IRuleAction[]>] [-Description <String>]
+ [-Tag <Hashtable>] [-TimeAggregationOperator <TimeAggregationOperator>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,7 +47,6 @@ PS C:\> {{ Add code here }}
 
 ### -Action
 the array of actions that are performed when the alert rule becomes active, and when an alert condition is resolved.
-To construct, see NOTES section for ACTION properties and create a hash table.
 To construct, see NOTES section for ACTION properties and create a hash table.
 
 ```yaml
@@ -105,7 +104,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -249,7 +248,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

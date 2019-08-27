@@ -20,8 +20,8 @@ Get-AzMetricAlertStatus -ResourceGroupName <String> -RuleName <String> -Subscrip
 
 ### List1
 ```
-Get-AzMetricAlertStatus -ResourceGroupName <String> -RuleName <String> -SubscriptionId <String[]>
- -StatusName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMetricAlertStatus -ResourceGroupName <String> -RuleName <String> -StatusName <String>
+ -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

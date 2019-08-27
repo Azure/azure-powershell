@@ -24,17 +24,17 @@ Invoke-AzCalculateMetricBaseline -ResourceId <String> -TimeSeriesInformation <IT
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CalculateViaIdentityExpanded
-```
-Invoke-AzCalculateMetricBaseline -InputObject <IMonitorIdentity> -Sensitivity <String[]> -Value <Double[]>
- [-Timestamp <DateTime[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### CalculateViaIdentity
 ```
 Invoke-AzCalculateMetricBaseline -InputObject <IMonitorIdentity>
  -TimeSeriesInformation <ITimeSeriesInformation> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
+```
+
+### CalculateViaIdentityExpanded
+```
+Invoke-AzCalculateMetricBaseline -InputObject <IMonitorIdentity> -Sensitivity <String[]> -Value <Double[]>
+ [-Timestamp <DateTime[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -80,10 +80,11 @@ Dynamic: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.IMonitorIdentity
-Parameter Sets: CalculateViaIdentityExpanded, CalculateViaIdentity
+Parameter Sets: CalculateViaIdentity, CalculateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -101,7 +102,7 @@ For example: subscriptions/b368ca2f-e298-46b7-b0ab-012281956afa/resourceGroups/v
 
 ```yaml
 Type: System.String
-Parameter Sets: CalculateExpanded, Calculate
+Parameter Sets: Calculate, CalculateExpanded
 Aliases:
 
 Required: True
@@ -215,9 +216,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.IMonitorIdentity
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20171101Preview.ITimeSeriesInformation
+
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.IMonitorIdentity
 
 ## OUTPUTS
 
@@ -229,6 +230,24 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### INPUTOBJECT <IMonitorIdentity>: Identity Parameter
+  - `[ActionGroupName <String>]`: The name of the action group.
+  - `[ActivityLogAlertName <String>]`: The name of the activity log alert.
+  - `[AutoscaleSettingName <String>]`: The autoscale setting name.
+  - `[Id <String>]`: Resource identity path
+  - `[IncidentName <String>]`: The name of the incident to retrieve.
+  - `[LogProfileName <String>]`: The name of the log profile.
+  - `[MetricName <String>]`: The name of the metric to retrieve the baseline for.
+  - `[Name <String>]`: The name of the diagnostic setting.
+  - `[ResourceGroupName <String>]`: The name of the resource group.
+  - `[ResourceName <String>]`: The ARM resource name
+  - `[ResourceProvider <String>]`: The ARM resource provider name
+  - `[ResourceTypeName <String>]`: The ARM resource type name
+  - `[ResourceUri <String>]`: The identifier of the resource.
+  - `[RuleName <String>]`: The name of the rule.
+  - `[StatusName <String>]`: The name of the status.
+  - `[SubscriptionId <String>]`: The Azure subscription Id.
 
 #### TIMESERIESINFORMATION <ITimeSeriesInformation>: The time series info needed for calculating the baseline.
   - `Sensitivity <String[]>`: the list of sensitivities for calculating the baseline.

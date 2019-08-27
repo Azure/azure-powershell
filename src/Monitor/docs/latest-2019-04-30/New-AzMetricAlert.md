@@ -16,7 +16,7 @@ Create or update an metric alert definition.
 ```
 New-AzMetricAlert -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  -Condition <IMetricCriteria[]> -Description <String> -Enabled -EvaluationFrequency <TimeSpan>
- -Severity <Int32> -WindowSize <TimeSpan> -TargetResourceId <String> [-Action <IMetricAlertAction[]>]
+ -Severity <Int32> -TargetResourceId <String> -WindowSize <TimeSpan> [-Action <IMetricAlertAction[]>]
  [-AutoMitigate] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -24,8 +24,8 @@ New-AzMetricAlert -Name <String> -ResourceGroupName <String> -SubscriptionId <St
 ```
 New-AzMetricAlert -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  -Condition <IMetricCriteria[]> -Description <String> -Enabled -EvaluationFrequency <TimeSpan>
- -Severity <Int32> -WindowSize <TimeSpan> -TargetResourceScope <String[]> -TargetResourceRegion <String>
- -TargetResourceType <String> [-Action <IMetricAlertAction[]>] [-AutoMitigate] [-Tag <Hashtable>]
+ -Severity <Int32> -TargetResourceRegion <String> -TargetResourceScope <String[]> -TargetResourceType <String>
+ -WindowSize <TimeSpan> [-Action <IMetricAlertAction[]>] [-AutoMitigate] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -57,7 +57,6 @@ PS C:\> {{ Add code here }}
 ### -Action
 the array of actions that are performed when the alert rule becomes active, and when an alert condition is resolved.
 To construct, see NOTES section for ACTION properties and create a hash table.
-To construct, see NOTES section for ACTION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20180301.IMetricAlertAction[]
@@ -82,7 +81,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -147,7 +146,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -211,7 +210,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

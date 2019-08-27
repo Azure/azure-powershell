@@ -14,32 +14,34 @@ Provides the list of records from the activity logs.
 
 ### List (Default)
 ```
-Get-AzActivityLog -SubscriptionId <String[]> [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>]
- [-Caller <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzActivityLog -SubscriptionId <String[]> [-Caller <String>] [-EndTime <DateTime>] [-StartTime <DateTime>]
+ [-Status <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### CorrelationId
 ```
-Get-AzActivityLog -SubscriptionId <String[]> -CorrelationId <String> [-StartTime <DateTime>]
- [-EndTime <DateTime>] [-Status <String>] [-Caller <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### ResourceProvider
-```
-Get-AzActivityLog -SubscriptionId <String[]> -ResourceProvider <String> [-StartTime <DateTime>]
- [-EndTime <DateTime>] [-Status <String>] [-Caller <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzActivityLog -SubscriptionId <String[]> -CorrelationId <String> [-Caller <String>] [-EndTime <DateTime>]
+ [-StartTime <DateTime>] [-Status <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ResourceGroupName
 ```
-Get-AzActivityLog -SubscriptionId <String[]> -ResourceGroupName <String> [-StartTime <DateTime>]
- [-EndTime <DateTime>] [-Status <String>] [-Caller <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzActivityLog -SubscriptionId <String[]> -ResourceGroupName <String> [-Caller <String>]
+ [-EndTime <DateTime>] [-StartTime <DateTime>] [-Status <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Get-AzActivityLog -SubscriptionId <String[]> -ResourceId <String> [-StartTime <DateTime>]
- [-EndTime <DateTime>] [-Status <String>] [-Caller <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzActivityLog -SubscriptionId <String[]> -ResourceId <String> [-Caller <String>] [-EndTime <DateTime>]
+ [-StartTime <DateTime>] [-Status <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ResourceProvider
+```
+Get-AzActivityLog -SubscriptionId <String[]> -ResourceProvider <String> [-Caller <String>]
+ [-EndTime <DateTime>] [-StartTime <DateTime>] [-Status <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

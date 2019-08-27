@@ -1,4 +1,4 @@
-$TestRecordingFile = Join-Path 'C:\Users\niassis\source\repos\generating\azure-powershell\src\Monitor\test' 'New-AzAlertRule.Recording.json'
+$TestRecordingFile = Join-Path $PSScriptRoot 'New-AzAlertRule.Recording.json'
 . (Join-Path $PSScriptRoot '..\generated\runtime' 'HttpPipelineMocking.ps1')
 
 Describe 'New-AzAlertRule' {

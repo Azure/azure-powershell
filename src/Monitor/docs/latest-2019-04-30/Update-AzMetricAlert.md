@@ -31,7 +31,7 @@ Update-AzMetricAlert -Name <String> -ResourceGroupName <String> -SubscriptionId 
 ### UpdateExpandedByScope
 ```
 Update-AzMetricAlert -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -Condition <MetricCriteria[]> -TargetResourceScope <String[]> -TargetResourceRegion <String>
+ -Condition <MetricCriteria[]> -TargetResourceRegion <String> -TargetResourceScope <String[]>
  -TargetResourceType <String> [-Action <IMetricAlertAction[]>] [-AutoMitigate] [-Description <String>]
  [-Enabled] [-EvaluationFrequency <TimeSpan>] [-Severity <Int32>] [-Tag <Hashtable>] [-WindowSize <TimeSpan>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -55,7 +55,7 @@ Update-AzMetricAlert -InputObject <IMonitorIdentity> -Condition <MetricCriteria[
 ### UpdateViaIdentityExpandedByScope
 ```
 Update-AzMetricAlert -InputObject <IMonitorIdentity> -Condition <MetricCriteria[]>
- -TargetResourceScope <String[]> -TargetResourceRegion <String> -TargetResourceType <String>
+ -TargetResourceRegion <String> -TargetResourceScope <String[]> -TargetResourceType <String>
  [-Action <IMetricAlertAction[]>] [-AutoMitigate] [-Description <String>] [-Enabled]
  [-EvaluationFrequency <TimeSpan>] [-Severity <Int32>] [-Tag <Hashtable>] [-WindowSize <TimeSpan>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -89,7 +89,6 @@ PS C:\> {{ Add code here }}
 ### -Action
 the array of actions that are performed when the alert rule becomes active, and when an alert condition is resolved.
 To construct, see NOTES section for ACTION properties and create a hash table.
-To construct, see NOTES section for ACTION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20180301.IMetricAlertAction[]
@@ -114,7 +113,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -179,7 +178,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -203,6 +202,7 @@ Dynamic: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.IMonitorIdentity
@@ -259,7 +259,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -445,6 +445,24 @@ To create the parameters described below, construct a hash table containing the 
     - `Operator <String>`: the dimension operator. Only 'Include' and 'Exclude' are supported
     - `Value <String[]>`: list of dimension values.
   - `[MetricNamespace <String>]`: Namespace of the metric.
+
+#### INPUTOBJECT <IMonitorIdentity>: Identity Parameter
+  - `[ActionGroupName <String>]`: The name of the action group.
+  - `[ActivityLogAlertName <String>]`: The name of the activity log alert.
+  - `[AutoscaleSettingName <String>]`: The autoscale setting name.
+  - `[Id <String>]`: Resource identity path
+  - `[IncidentName <String>]`: The name of the incident to retrieve.
+  - `[LogProfileName <String>]`: The name of the log profile.
+  - `[MetricName <String>]`: The name of the metric to retrieve the baseline for.
+  - `[Name <String>]`: The name of the diagnostic setting.
+  - `[ResourceGroupName <String>]`: The name of the resource group.
+  - `[ResourceName <String>]`: The ARM resource name
+  - `[ResourceProvider <String>]`: The ARM resource provider name
+  - `[ResourceTypeName <String>]`: The ARM resource type name
+  - `[ResourceUri <String>]`: The identifier of the resource.
+  - `[RuleName <String>]`: The name of the rule.
+  - `[StatusName <String>]`: The name of the status.
+  - `[SubscriptionId <String>]`: The Azure subscription Id.
 
 ## RELATED LINKS
 
