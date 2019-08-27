@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Models
 {
     public class PSBackendPoolsSettings : PSResource
     {
-        public PSEnabledState EnforceCertificateNameCheck { get; set; }
+        public PSEnabledState? EnforceCertificateNameCheck { get; set; }
 
         public int? SendRecvTimeoutSeconds { get; set; }
     }
