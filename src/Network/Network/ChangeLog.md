@@ -19,6 +19,7 @@
 --->
 ## Upcoming Release
 * Fixed miscellaneous typos across module
+* Fixed NIC enumeration line in Test-AzNetworkWatcherIPFlow to correctly enumerate NICs - $Nics = Get-AzNetworkInterface | Where-Object { $vm.NetworkProfile.NetworkInterfaces.Id -contains $_.Id } 
 
 ## Version 1.12.0
 * Add support for private endpoint and private link service
