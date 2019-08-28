@@ -123,5 +123,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute {
                 return ResourceManager.GetString("VirtualMachineUseConnectionString", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Where {0} is in the range {1}..
+        /// </summary>
+        internal static string VmssPortRange {
+            get {
+                return ResourceManager.GetString("VmssPortRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use &apos;{0}&apos; to connect to the VMSS instances..
+        /// </summary>
+        internal static string VmssUseConnectionString {
+            get {
+                return ResourceManager.GetString("VmssUseConnectionString", resourceCulture);
+            }
+        }
     }
 }
