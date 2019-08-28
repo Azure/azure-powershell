@@ -112,9 +112,9 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         [Parameter(ParameterSetName = FieldsWithCertificateNameCheckSet,
             Mandatory = false, HelpMessage = "Whether to disable certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.")]
         [Parameter(ParameterSetName = ObjectParameterSet,
-            Mandatory = false, HelpMessage = "Whether to disable certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.")])]
+            Mandatory = false, HelpMessage = "Whether to disable certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.")]
         [Parameter(ParameterSetName = ResourceIdParameterSet,
-            Mandatory = false, HelpMessage = "Whether to disable certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.")])]
+            Mandatory = false, HelpMessage = "Whether to disable certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.")]
         public SwitchParameter DisableCertificateNameCheck { get; set; }
 
         /// <summary>
@@ -200,24 +200,22 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                 updateParameters.EnabledState = EnabledState;
             }
 
-            if (this.IsParameterBound(c => c.DisableCertificateNameCheck))
-            {
-                updateParameters.BackendPoolsSettings.EnforceCertificateNameCheck = DisableCertificateNameCheck ? PSEnabledState.Disabled : PSEnabledState.Enabled;
-            }
-
-            Management.FrontDoor.Models.BackendPoolsSettings backendPoolsSettings;
-
             switch (ParameterSetName)
             {
-                case SubfieldsParameterSet:
+                case FieldsWithCertificateNameCheckSet:
                     {
-                        updateParameters.BackendPoolsSettings = new Management.FrontDoor.Models.BackendPoolsSettings(
-                                DisableCertificateNameCheck ? PSEnforceCertificateNameCheck.Disabled.ToString() : PSEnforceCertificateNameCheck.Enabled.ToString());
+                        if (this.IsParameterBound(c => c.DisableCertificateNameCheck))
+                        {
+                            updateParameters.BackendPoolsSettings.EnforceCertificateNameCheck = DisableCertificateNameCheck ? PSEnabledState.Disabled : PSEnabledState.Enabled;
+                        }
                         break;
                     }
                 default:
                     {
-                        udateParameters.BackendPoolsSettings = BackendPoolsSettings?.ToSdkBackendPoolsSettings();
+                        if (this.IsParameterBound(c => c.BackendPoolsSettings))
+                        {
+                            updateParameters.BackendPoolsSettings = BackendPoolsSettings;
+                        }
                         break;
                     }
             }
