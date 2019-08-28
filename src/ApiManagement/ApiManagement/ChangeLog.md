@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.3.0
 * Fixed miscellaneous typos across module
 
 * Fix for issue https://github.com/Azure/azure-powershell/issues/9351

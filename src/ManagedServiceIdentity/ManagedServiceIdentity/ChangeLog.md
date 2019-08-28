@@ -18,4 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.7.2
 * Fixed miscellaneous typos across module
+
+## Version 0.7.1
+* Update release with latest service features and serialization fixes
