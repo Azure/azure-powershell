@@ -22,7 +22,9 @@
 * Fix incorrect example in `New-AzApplicationGateway` reference documentation 
 * Add note in `Get-AzNetworkWatcherPacketCapture` reference documentation about retrieving all properties for a packet capture
 * Fixed example in `Test-AzNetworkWatcherIPFlow` reference documentation to correctly enumerate NICs
-* Fixed issues with mapping of Security Rule models
+* Improved cloud exception parsing to display additional details if they are present
+* Improved cloud exception parsing to handle additional type of SDK exception
+* Fixed incorrect mapping of Security Rule models
 * MultiLink support in Virtual WAN
     - New cmdlets
         - New-AzVpnSiteLink
@@ -33,7 +35,6 @@
         - New-VpnConnection
         - Update-VpnConnection
 * Fixed documents for some PowerShell examples to use Az cmdlets instead of AzureRM cmdlets
-* Improved cloud exception parsing to display additional details if they are present
 
 ## Version 1.13.0
 * Updated New-AzPrivateLinkServiceIpConfig
