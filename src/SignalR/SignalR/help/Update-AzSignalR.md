@@ -16,7 +16,7 @@ Update a SignalR service.
 ```
 Update-AzSignalR [-ResourceGroupName <String>] [-Name] <String> [-Sku <String>] [-UnitCount <Int32>]
  [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>] [-ServiceMode <String>]
- [-AllowedOrigin <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AllowedOrigin <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Update-AzSignalR [-ResourceGroupName <String>] [-Name] <String> [-Sku <String>] 
 ```
 Update-AzSignalR -ResourceId <String> [-Sku <String>] [-UnitCount <Int32>]
  [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>] [-ServiceMode <String>]
- [-AllowedOrigin <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AllowedOrigin <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Update-AzSignalR -ResourceId <String> [-Sku <String>] [-UnitCount <Int32>]
 ```
 Update-AzSignalR -InputObject <PSSignalRResource> [-Sku <String>] [-UnitCount <Int32>]
  [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>] [-ServiceMode <String>]
- [-AllowedOrigin <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AllowedOrigin <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -55,7 +55,7 @@ mysignalr1.service.signalr.net           eastus         52.179.3.5      Standard
 
 ### Specify ServiceMode and AllowedOrigin
 ```powershell
-PS C:\> Update-AzSignalR -ResourceGroupName myResourceGroup1 -Name mysignalr2 -ServiceMode Serverless -AllowedOrigin "http://example1.com:12345, http://example2.com"
+PS C:\> Update-AzSignalR -ResourceGroupName myResourceGroup1 -Name mysignalr2 -ServiceMode Serverless -AllowedOrigin http://example1.com:12345, https://example2.cn
 
 HostName                                 Location       ExternalIp      Sku         UnitCount ProvisioningState Version
 --------                                 --------       ----------      ---         --------- ----------------- -------
@@ -65,10 +65,10 @@ mysignalr1.service.signalr.net           eastus         52.179.3.5      Standard
 ## PARAMETERS
 
 ### -AllowedOrigin
-The allowed origins for the SignalR service, splitted by ',', ';' or ' ' (space). To allow all, use "*" and remove all other origins from the list. Slashes are not allowed as part of domain or after TLD
+The allowed origins for the SignalR service. To allow all, use "*" and remove all other origins from the list. Slashes are not allowed as part of domain or after TLD
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

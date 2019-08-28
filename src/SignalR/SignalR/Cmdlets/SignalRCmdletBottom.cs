@@ -90,25 +90,20 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
             }
         }
 
-        protected IList<string> ParseAllowedOrigins(string parameter)
+        protected IList<string> ParseAndCheckAllowedOrigins(string[] parameter)
         {
             if (parameter == null)
             {
                 return null;
             }
-            IList<string> origins = parameter.Split(new char[] { ',', ';', ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            IList<string> origins = parameter.ToList();
             Regex regex = new Regex(@"^(http|https)://[^ *\\/""]+$");
             foreach (var url in origins)
             {
                 if (url != "*" && !regex.IsMatch(url))
                 {
                     string message = $"Invalid origin: \"{url}\"";
-                    ThrowTerminatingError(
-                        new ErrorRecord(
-                            new PSInvalidOperationException(message),
-                            string.Empty,
-                            ErrorCategory.InvalidData,
-                            null));
+                    throw new PSInvalidOperationException(message);
                 }
             }
             return origins;

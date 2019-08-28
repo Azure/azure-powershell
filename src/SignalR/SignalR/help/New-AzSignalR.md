@@ -15,7 +15,7 @@ Create a SignalR service.
 ```
 New-AzSignalR [-ResourceGroupName <String>] [-Name] <String> [-Location <String>] [-Sku <String>]
  [-UnitCount <Int32>] [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>]
- [-ServiceMode <String>] [-AllowedOrigin <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-ServiceMode <String>] [-AllowedOrigin <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -39,7 +39,7 @@ mysignalr1.service.signalr.net           eastus         52.179.3.5      Standard
 
 ### Specify ServiceMode and AllowedOrigin
 ```powershell
-PS C:\> New-AzSignalR -ResourceGroupName myResourceGroup1 -Name mysignalr2 -Location eastus -ServiceMode Serverless -AllowedOrigin "http://example1.com:12345, http://example2.com"
+PS C:\> New-AzSignalR -ResourceGroupName myResourceGroup1 -Name mysignalr2 -Location eastus -ServiceMode Serverless -AllowedOrigin http://example1.com:12345, https://example2.cn
 
 HostName                                 Location       ExternalIp      Sku         UnitCount ProvisioningState Version
 --------                                 --------       ----------      ---         --------- ----------------- -------
@@ -49,10 +49,10 @@ mysignalr1.service.signalr.net           eastus         52.179.3.5      Standard
 ## PARAMETERS
 
 ### -AllowedOrigin
-The allowed origins for the SignalR service, splitted by ',', ';' or ' ' (space). To allow all, use "*" and remove all other origins from the list. Slashes are not allowed as part of domain or after TLD
+The allowed origins for the SignalR service. To allow all, use "*" and remove all other origins from the list. Slashes are not allowed as part of domain or after TLD
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -187,7 +187,7 @@ Accept wildcard characters: False
 The SignalR service unit count, from 1 to 10. Default to 1.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -234,10 +234,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### System.String
+
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource
+
 ## NOTES
 
 ## RELATED LINKS
