@@ -46,6 +46,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             ProtectionStatus = EnumUtils.GetEnum<ItemProtectionStatus>(protectedItem.ProtectionStatus);
             VirtualMachineId = protectedItem.VirtualMachineId;
             HealthStatus = protectedItem.HealthStatus;
+            DateOfPurge = null;
+
+            if(protectedItem.IsScheduledForDeferredDelete.HasValue)
+            {
+                IsScheduledForPurge = true;
+                DateOfPurge = protectedItem.DeferredDeleteTimeInUTC.Value.AddDays(14);
+            }
         }
     }
 

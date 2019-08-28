@@ -52,6 +52,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         public AzureItemExtendedInfo ExtendedInfo { get; set; }
 
+        /// <summary>
+        /// Date of purge for the item
+        /// </summary>
+        public DateTime? DateOfPurge { get; set; }
+
+        /// <summary>
+        /// Indicates if the item is in a softdeleted state
+        /// </summary>
+        public bool IsScheduledForPurge { get; set; }
+
         public AzureItem(ProtectedItemResource protectedItemResource,
            string containerName, ContainerType containerType, string policyName)
             : base(protectedItemResource, containerName, containerType)
