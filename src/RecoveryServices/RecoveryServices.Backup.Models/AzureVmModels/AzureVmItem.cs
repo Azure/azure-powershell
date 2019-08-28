@@ -23,7 +23,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     public class AzureVmItem : AzureItem
     {
         public string VirtualMachineId { get; set; }
-        
+
+        public string HealthStatus { get; set; }
+
         /// <summary>
         /// Constructor. Takes the service client object representing the protected item 
         /// and converts it in to the PS protected item model
