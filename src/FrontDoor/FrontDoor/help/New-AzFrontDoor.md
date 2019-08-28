@@ -12,6 +12,16 @@ Create a new Azure Front Door load balancer
 
 ## SYNTAX
 
+### ByFieldsWithBackendPoolsSettingsSet (Default)
+```
+New-AzFrontDoor -ResourceGroupName <String> -Name <String> -RoutingRule <PSRoutingRule[]>
+ -BackendPool <PSBackendPool[]> -FrontendEndpoint <PSFrontendEndpoint[]>
+ -LoadBalancingSetting <PSLoadBalancingSetting[]> -HealthProbeSetting <PSHealthProbeSetting[]>
+ [-Tag <Hashtable>] [-EnabledState <PSEnabledState>] [-BackendPoolsSettings <PSBackendPoolsSettings>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByFieldsWithCertificateNameCheckSet
 ```
 New-AzFrontDoor -ResourceGroupName <String> -Name <String> -RoutingRule <PSRoutingRule[]>
  -BackendPool <PSBackendPool[]> -FrontendEndpoint <PSFrontendEndpoint[]>
@@ -65,6 +75,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -BackendPoolsSettings
+Settings for all backendPools
+
+```yaml
+Type: Microsoft.Azure.Commands.FrontDoor.Models.PSBackendPoolsSettings
+Parameter Sets: ByFieldsWithBackendPoolsSettingsSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -85,7 +110,7 @@ Whether to disable certificate name check on HTTPS requests to all backend pools
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: ByFieldsWithCertificateNameCheckSet
 Aliases:
 
 Required: False
