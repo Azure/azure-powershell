@@ -90,7 +90,6 @@
 			-Name $name `
 			-Location $location `
 			-Type "Standard_LRS"
-		$job | Wait-Job
 		$sa = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $name
 	}
  	return $name
