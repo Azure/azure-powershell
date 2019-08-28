@@ -37,8 +37,7 @@ The Get-AzNetworkWatcherPacketCapture gets the properties and status of a packet
 
 ### Example 1: Create a Packet Capture with multiple filters and retrieve its status
 ```
-$nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
-$networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName 
+$networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
 
 $storageAccount = Get-AzStorageAccount -ResourceGroupName contosoResourceGroup -Name contosostorage123
 
