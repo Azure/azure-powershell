@@ -117,7 +117,7 @@ function Create-UnmanagedVM(
 			-SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id -Force
 
 		$UserName='demouser'
-		$PasswordString = "Adminpassword123@ms"
+		$PasswordString = $(Get-RandomSuffix 12)
 		$Password=$PasswordString| ConvertTo-SecureString -Force -AsPlainText
 		$Credential=New-Object PSCredential($UserName,$Password)
 
