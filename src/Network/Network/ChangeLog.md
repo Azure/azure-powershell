@@ -18,6 +18,8 @@
         - Additional information about change #1
 --->
 ## Upcoming Release
+
+## Version 1.13.0
 * Updated New-AzPrivateLinkServiceIpConfig
     - Deprecated the paramster 'PublicIpAddress' since this is never used in the server side.
     - Added one optional parameter 'Primary' that indicate the current ip configuration is primary one or not.

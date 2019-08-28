@@ -157,5 +157,6 @@
     { "regex": "ManagedServices", "group": "Managed Services", "alias": "Managed Services" },
     { "regex": "DataShare", "group": "Data Share", "alias": "Data Share" },
     { "regex": "DataBox", "alias": "DataBox" },
-    { "regex": "AlertsManagement", "alias": "Alerts Management" }
+    { "regex": "AlertsManagement", "alias": "Alerts Management" },
+    { "regex": "HealthcareApisService", "alias": "HealthcareApis Service" }
 ]

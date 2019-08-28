@@ -26,14 +26,12 @@
 	-LogicAppReceiver
 	-AutomationRunbookReceiver
 	-AzureAppPushReceiver
-
 * Use common alert schema enabled for the receivers. This is not applicable for SMS, Azure App push , ITSM and Voice recievers
 * Webhooks now supports Azure active directory authentication .
+
+## Version 1.2.2
 * Fixed miscellaneous typos across module
 * Fixed incorrect parameter name in help documentation
-
-
-
 
 ## Version 1.2.1
 * Fixed incorrect parameter names in help examples
