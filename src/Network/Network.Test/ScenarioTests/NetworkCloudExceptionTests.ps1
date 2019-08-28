@@ -134,3 +134,42 @@ function Test-IntersectAddressSpace
         Clean-ResourceGroup $rgName
     }
 }
+
+<#
+.SYNOPSIS
+Check processing of ErrorResponse exceptions
+#>
+function Test-ErrorResponseException
+{
+    $rgLocation = Get-ProviderLocation ResourceManagement
+
+    $rgName = Get-ResourceGroupName
+    $nwName = Get-ResourceName
+
+    try
+    {
+        # Create the resource group
+        New-AzResourceGroup -Name $rgName -Location $rgLocation
+
+        # Try to create another NW in a region
+        [array]$nw = Get-AzNetworkWatcher
+        if($nw.Length -gt 0)
+        {
+            $existingLocation = $nw[0].Location
+            Assert-ThrowsLike { New-AzNetworkWatcher -Name $nwName -ResourceGroupName $rgName -Location $existingLocation } "*NetworkWatcherCountLimitReached*"
+        }
+
+        # Try to create NW with invalid name
+        [array]$availableLocations = (Get-AzResourceProvider -ProviderNamespace "Microsoft.Network" | Where-Object { $_.ResourceTypes.ResourceTypeName -eq "networkWatchers" }).Locations
+        if($availableLocations.Length -gt 0)
+        {
+            $location = Normalize-Location $availableLocations[0]
+            Assert-ThrowsLike { New-AzNetworkWatcher -Name "!" -ResourceGroupName $rgName -Location $location } "*InvalidResourceName*"
+        }
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgName
+    }
+}

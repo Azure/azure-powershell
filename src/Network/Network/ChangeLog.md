@@ -30,6 +30,7 @@
         - Update-VpnConnection
 * Fixed documents for some PowerShell examples to use Az cmdlets instead of AzureRM cmdlets
 * Improved cloud exception parsing to display additional details if they are present
+* Improved cloud exception parsing to handle additional type of SDK exception
 * Fixed incorrect mapping of Security Rule models
 
 ## Version 1.13.0
