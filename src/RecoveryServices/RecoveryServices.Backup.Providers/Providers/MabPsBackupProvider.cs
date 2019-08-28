@@ -61,6 +61,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
+        public RestAzureNS.AzureOperationResponse<ProtectedItemResource> UndeleteProtection()
+        {
+            throw new NotImplementedException();
+        }
+
         public RestAzureNS.AzureOperationResponse TriggerBackup()
         {
             throw new NotImplementedException();

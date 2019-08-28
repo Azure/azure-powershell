@@ -102,6 +102,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                                 resourceGroupName: vaultResourceGroupName);
         }
 
+        public RestAzureNS.AzureOperationResponse<ProtectedItemResource> UndeleteProtection()
+        {
+            throw new NotImplementedException();
+        }
+
         public RestAzureNS.AzureOperationResponse<ProtectedItemResource> EnableProtection()
         {
             return EnableOrModifyProtection();

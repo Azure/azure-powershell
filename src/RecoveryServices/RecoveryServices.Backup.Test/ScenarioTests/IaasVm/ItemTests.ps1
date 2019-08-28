@@ -439,3 +439,62 @@ function Test-AzureVMSetVaultContext
 		Cleanup-ResourceGroup $resourceGroupName
 	}
 }
+
+function Test-AzureVMSoftDelete
+{
+	$location = "southeastasia"
+	$resourceGroupName = Create-ResourceGroup $location
+
+	try
+	{	
+		#Setup
+		$vm = Create-VM $resourceGroupName $location
+		$vault = Create-RecoveryServicesVault $resourceGroupName $location
+		Set-AzRecoveryServicesVaultContext -Vault $vault
+
+		$item = Enable-Protection $vault $vm
+		$backupJob = Backup-Item $vault $item
+		
+		#SoftDelete
+		
+		Disable-AzRecoveryServicesBackupProtection `
+			-VaultId $vault.ID `
+			-Item $item `
+			-RemoveRecoveryPoints `
+			-Force;
+
+		#Check if the item is in a softdeleted state
+
+		$container = Get-AzRecoveryServicesBackupContainer `
+			-VaultId $vault.ID `
+			-ContainerType "AzureVM" `
+			-FriendlyName $vm.Name;
+
+		$item = Get-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-Container $container `
+			-WorkloadType "AzureVM";
+
+		Assert-True { $item.IsScheduledForPurge -eq $true }
+
+		#rehydrate the softdeleted item
+
+		Undelete-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-Item $item;
+
+		$item = Get-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-Container $container `
+			-WorkloadType "AzureVM";
+
+		#check if item is in a rehydrated state
+		Assert-True { $item.IsScheduledForPurge -eq $false }
+		Assert-True { $item.ProtectionState -eq "ProtectionStopped" }
+
+	}
+	finally
+	{
+		#write cleanup for softdeleted state
+	}
+}
