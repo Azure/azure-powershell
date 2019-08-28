@@ -29,6 +29,7 @@
         - New-VpnConnection
         - Update-VpnConnection
 * Fixed documents for some PowerShell examples to use Az cmdlets instead of AzureRM cmdlets
+* Fixed incorrect mapping of Security Rule models
 
 ## Version 1.13.0
 * Updated New-AzPrivateLinkServiceIpConfig
