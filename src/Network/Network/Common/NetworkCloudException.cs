@@ -65,24 +65,22 @@ namespace Microsoft.Azure.Commands.Network.Common
                         sb.AppendLine().AppendFormat("Status: {0}", errorReturned.Status);
                     }
 
-                    if (errorReturned.Error == null)
+                    if (errorReturned.Error != null)
                     {
-                        return sb.ToString();
-                    }
+                        if (!string.IsNullOrEmpty(errorReturned.Error.Code))
+                        {
+                            sb.AppendLine().AppendFormat("ErrorCode: {0}", errorReturned.Error.Code);
+                        }
 
-                    if (!string.IsNullOrEmpty(errorReturned.Error.Code))
-                    {
-                        sb.AppendLine().AppendFormat("ErrorCode: {0}", errorReturned.Error.Code);
-                    }
+                        if (!string.IsNullOrEmpty(errorReturned.Error.Target))
+                        {
+                            sb.AppendLine().AppendFormat("Target: {0}", errorReturned.Error.Target);
+                        }
 
-                    if (!string.IsNullOrEmpty(errorReturned.Error.Target))
-                    {
-                        sb.AppendLine().AppendFormat("Target: {0}", errorReturned.Error.Target);
-                    }
-
-                    if (!string.IsNullOrEmpty(errorReturned.Error.Message))
-                    {
-                        sb.AppendLine().AppendFormat("ErrorMessage: {0}", errorReturned.Error.Message);
+                        if (!string.IsNullOrEmpty(errorReturned.Error.Message))
+                        {
+                            sb.AppendLine().AppendFormat("ErrorMessage: {0}", errorReturned.Error.Message);
+                        }
                     }
                 }
             }

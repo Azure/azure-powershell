@@ -136,6 +136,11 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.ErrorException, Rest.Azure.CloudException>();
                 cfg.CreateMap<Rest.Azure.CloudException, MNM.ErrorException>();
 
+                cfg.CreateMap<MNM.ErrorResponse, Rest.Azure.CloudError>();
+                cfg.CreateMap<Rest.Azure.CloudError, MNM.ErrorResponse>();
+                cfg.CreateMap<MNM.ErrorResponseException, Rest.Azure.CloudException>();
+                cfg.CreateMap<Rest.Azure.CloudException, MNM.ErrorResponseException>();
+
                 // Managed Service Identity
                 cfg.CreateMap<CNM.PSManagedServiceIdentity, MNM.ManagedServiceIdentity>();
                 cfg.CreateMap<MNM.ManagedServiceIdentity, CNM.PSManagedServiceIdentity>();
