@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixing the Publish-AzureWebapp to work across Linux and windows
 
 ## Version 1.4.1
 * Fixed miscellaneous typos across module
