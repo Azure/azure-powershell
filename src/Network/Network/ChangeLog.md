@@ -32,6 +32,7 @@
         - New-VpnConnection
         - Update-VpnConnection
 * Fixed documents for some PowerShell examples to use Az cmdlets instead of AzureRM cmdlets
+* Improved cloud exception parsing to display additional details if they are present
 
 ## Version 1.13.0
 * Updated New-AzPrivateLinkServiceIpConfig
