@@ -88,8 +88,8 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The allowed origins for the SignalR service, splitted by ',', ';' or ' ' (space). To allow all, use \"*\" and remove all other origins from the list. Slashes are not allowed as part of domain or after TLD")]
-        public string AllowedOrigin { get; set; }
+            HelpMessage = "The allowed origins for the SignalR service. To allow all, use \"*\" and remove all other origins from the list. Slashes are not allowed as part of domain or after TLD")]
+        public string[] AllowedOrigin { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
                     PromptParameter(nameof(Tag), Tag == null ? null : JsonConvert.SerializeObject(Tag));
                     PromptParameter(nameof(ServiceMode), ServiceMode);
 
-                    IList<string> origins = ParseAllowedOrigins(AllowedOrigin);
+                    IList<string> origins = ParseAndCheckAllowedOrigins(AllowedOrigin);
                     PromptParameter(nameof(AllowedOrigin), origins == null ? null : JsonConvert.SerializeObject(origins));
 
                     Sku = Sku ?? DefaultSku;

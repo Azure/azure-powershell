@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
             Mandatory = false,
             HelpMessage = "The SignalR service unit count, value only from {1, 2, 5, 10, 20, 50, 100}. Default to 1.")]
         [PSArgumentCompleter("1", "2", "5", "10", "20", "50", "100")]
-        public int? UnitCount { get; set; }
+        public int UnitCount { get; set; } = DefaultUnitCount;
 
         [Parameter(
             Mandatory = false,
@@ -78,8 +78,8 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The allowed origins for the SignalR service, splitted by ',', ';' or ' ' (space). To allow all, use \"*\" and remove all other origins from the list. Slashes are not allowed as part of domain or after TLD")]
-        public string AllowedOrigin { get; set; }
+            HelpMessage = "The allowed origins for the SignalR service. To allow all, use \"*\" and remove all other origins from the list. Slashes are not allowed as part of domain or after TLD")]
+        public string[] AllowedOrigin { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -111,15 +111,14 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
                     }
 
                     PromptParameter(nameof(Sku), Sku, true, DefaultSku);
-                    PromptParameter(nameof(UnitCount), UnitCount, true, DefaultUnitCount);
+                    PromptParameter(nameof(UnitCount), UnitCount);
                     PromptParameter(nameof(Tag), Tag == null ? null : JsonConvert.SerializeObject(Tag));
                     PromptParameter(nameof(ServiceMode), ServiceMode);
 
-                    IList<string> origins = ParseAllowedOrigins(AllowedOrigin);
+                    IList<string> origins = ParseAndCheckAllowedOrigins(AllowedOrigin);
                     PromptParameter(nameof(AllowedOrigin), origins == null ? null : JsonConvert.SerializeObject(origins));
 
                     Sku = Sku ?? DefaultSku;
-                    UnitCount = UnitCount ?? DefaultUnitCount;
 
                     IList<SignalRFeature> features = ServiceMode == null ? null : new List<SignalRFeature> { new SignalRFeature(value: ServiceMode) };
                     SignalRCorsSettings cors = AllowedOrigin == null ? null : new SignalRCorsSettings(allowedOrigins: origins);
