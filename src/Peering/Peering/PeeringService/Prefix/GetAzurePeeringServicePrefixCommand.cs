@@ -32,18 +32,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     /// <summary>
     ///     The Get Az InputObject Legacy peering.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzPeeringServicePrefix", SupportsShouldProcess = true, DefaultParameterSetName = Constants.ParameterSetNamePeeringByResource)]
+    [Cmdlet(VerbsCommon.Get, "AzPeeringServicePrefix", SupportsShouldProcess = true, DefaultParameterSetName = Constants.ParameterSetNameDefault)]
     [OutputType(typeof(PSPeeringServicePrefix))]
     public class GetAzurePeeringServicePrefixCommand : PeeringBaseCmdlet
     {
         /// <summary>
-        ///     Gets or sets the ResourceGroupName
+        /// Gets or sets the peering service input object
         /// </summary>
         [Parameter(
             Position = 0,
             Mandatory = true,
-            HelpMessage = Constants.ResourceGroupNameHelp,
-            ParameterSetName = Constants.ParameterSetNamePeeringByResource)]
+            HelpMessage = Constants.PrefixInputObjectHelp,
+            ValueFromPipeline = true,
+            ParameterSetName = Constants.ParameterSetNameDefault)]
+        [ValidateNotNullOrEmpty]
+        public PSPeeringService InputObject { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the ResourceGroupName
+        /// </summary>
         [Parameter(
             Position = 0,
             Mandatory = true,
@@ -60,11 +67,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             Position = 1,
             Mandatory = true,
             HelpMessage = Constants.PeeringServiceHelp,
-            ParameterSetName = Constants.ParameterSetNamePeeringByResource)]
-        [Parameter(
-            Position = 1,
-            Mandatory = true,
-            HelpMessage = Constants.PeeringServiceHelp,
             ParameterSetName = Constants.ParameterSetNamePeeringByResourceAndName)]
         public string PeeringServiceName { get; set; }
 
@@ -75,6 +77,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             Mandatory = false,
             HelpMessage = Constants.PeeringNameHelp,
             ParameterSetName = Constants.ParameterSetNamePeeringByResourceAndName)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = Constants.PeeringNameHelp,
+            ParameterSetName = Constants.ParameterSetNameDefault)]
         public string Name { get; set; }
 
         /// <summary>
@@ -106,6 +112,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                     {
                         var item = this.GetPeeringServicePrefixByResourceAndName();
                         this.WriteObject(item);
+                    }else
+                    {
+                        this.WriteObject(this.ListPeeringService(), true);
                     }
                 }
                 else if (string.Equals(
@@ -116,12 +125,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                     var resourceId = new ResourceIdentifier(this.ResourceId);
                     this.ResourceGroupName = resourceId.ResourceGroupName;
                     this.Name = resourceId.ResourceName;
+                    this.PeeringServiceName = resourceId.ParentResource.Split('/')?[1];
                     var item = this.GetPeeringServicePrefixByResourceAndName();
                     this.WriteObject(item);
                 }
-                else
+                else if (string.Equals(
+                  this.ParameterSetName,
+                  Constants.ParameterSetNameDefault,
+                  StringComparison.OrdinalIgnoreCase))
                 {
-                    this.WriteObject(this.ListPeeringService(), true);
+                    var resourceId = new ResourceIdentifier(this.InputObject.Id);
+                    this.ResourceGroupName = resourceId.ResourceGroupName;
+                    this.PeeringServiceName = resourceId.ResourceName;
+                    if(this.Name != null)
+                    {
+                        var item = this.GetPeeringServicePrefixByResourceAndName();
+                        this.WriteObject(item);
+                    }
+                    else
+                    {
+                        this.WriteObject(this.ListPeeringService(), true);
+                    }
                 }
             }
             catch (InvalidOperationException mapException)

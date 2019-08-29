@@ -15,39 +15,64 @@
 .SYNOPSIS
 GetLocationKindDirect 
 #>
-function Test-GetLocationKindDirect
-{
-    $location = Get-AzPeeringLocation -Kind Direct 
-	Assert-NotNull $location
-	Assert-True { $location.Count -gt 30}
+function Test-GetLocationKindDirect {
+    try {
+        $asn = 65000
+        $asnPeerName = makePeerAsn $asn
+        $location = Get-AzPeeringLocation -Kind Direct 
+        Assert-NotNull $location
+        Assert-True { $location.Count -gt 30 }
+    }
+    finally {
+        Remove-AzPeerAsn -Name $asnPeerName -Force
+    }
 }
 <#
 .SYNOPSIS
 GetLocationKindDirect
 #>
-function Test-GetLocationKindExchange
-{
-    $location = Get-AzPeeringLocation -Kind Exchange 
-	Assert-NotNull $location
-	Assert-True {$location.Count -gt 60}
+function Test-GetLocationKindExchange {
+    try {
+        $asn = 65000
+        $asnPeerName = makePeerAsn $asn
+        $location = Get-AzPeeringLocation -Kind Exchange 
+        Assert-NotNull $location
+        Assert-True { $location.Count -gt 60 }
+    }
+    finally {
+        Remove-AzPeerAsn -Name $asnPeerName -Force
+    }
 }
 <#
 .SYNOPSIS
 GetLocationKindExchangeSeattle
 #>
-function Test-GetLocationKindExchangeSeattle
-{
-    $location = Get-AzPeeringLocation -Kind Exchange -PeeringLocation seattle
-	Assert-NotNull $location
-	Assert-AreEqual 5 $location.Count
+function Test-GetLocationKindExchangeSeattle {
+    try {
+        $asn = 65000
+        $asnPeerName = makePeerAsn $asn
+        $location = Get-AzPeeringLocation -Kind Exchange -PeeringLocation seattle
+        Assert-NotNull $location
+        Assert-AreEqual 5 $location.Count
+    }
+    finally {
+        Remove-AzPeerAsn -Name $asnPeerName -Force
+    }
 }
 <#
 .SYNOPSIS
 GetLocationKindDirectSeattle
 #>
-function Test-GetLocationKindDirectSeattle
-{
-    $location = Get-AzPeeringLocation -Kind Direct -PeeringLocation seattle
-	Assert-NotNull $location
-	Assert-AreEqual 2 $location.Count
+function Test-GetLocationKindDirectSeattle {
+    try {
+        $asn = 65000
+        $asnPeerName = makePeerAsn $asn
+        $location = Get-AzPeeringLocation -Kind Direct -PeeringLocation seattle
+        Assert-NotNull $location
+        Assert-AreEqual 2 $location.Count
+    }
+    finally {
+        Remove-AzPeerAsn -Name $asnPeerName -Force
+    }
 }
+

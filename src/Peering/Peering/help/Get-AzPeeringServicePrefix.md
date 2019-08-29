@@ -12,9 +12,9 @@ Gets a list of peering service prefixes for a subscription.
 
 ## SYNTAX
 
-### PeeringByResource (Default)
+### Default (Default)
 ```
-Get-AzPeeringServicePrefix [-ResourceGroupName] <String> [-PeeringServiceName] <String>
+Get-AzPeeringServicePrefix [-InputObject] <PSPeeringService> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -31,16 +31,75 @@ Get-AzPeeringServicePrefix [-ResourceId] <String> [-DefaultProfile <IAzureContex
 ```
 
 ## DESCRIPTION
-List peering service prefixes
+List peering service prefixes for peering service objects
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzPeeringService -ResourceGroupName $rgName -Name $name | Get-AzPeeringServicePrefix
+
+Prefix                : 200.25.69.0/31
+PrefixValidationState : Pending
+LearnedType           : None
+ProvisioningState     : Succeeded
+Name                  : myPrefix9055
+Id                    : /subscriptions/resourceGroups/Building40/providers/Microsoft.Peering/peeringServices/myPeeringService707/pref
+                        ixes/myPrefix9055
+Type                  : Microsoft.Peering/peeringServices/prefixes
+
+Prefix                : 200.25.71.0/31
+PrefixValidationState : Pending
+LearnedType           : None
+ProvisioningState     : Succeeded
+Name                  : myPrefix3463
+Id                    : /subscriptions/resourceGroups/Building40/providers/Microsoft.Peering/peeringServices/myPeeringService4084/pre
+                        fixes/myPrefix3463
+Type                  : Microsoft.Peering/peeringServices/prefixes
 ```
 
-{{ Add example description here }}
+Gets the prefixes for a peering service based on piping commands.
+
+### Example 2
+```powershell
+PS C:\> Get-AzPeeringServicePrefix -ResourceId $peeringServiceResourceId -Name
+
+Prefix                : 200.25.69.0/31
+PrefixValidationState : Pending
+LearnedType           : None
+ProvisioningState     : Succeeded
+Name                  : myPrefix9055
+Id                    : /subscriptions/resourceGroups/Building40/providers/Microsoft.Peering/peeringServices/myPeeringService707/pref
+                        ixes/myPrefix9055
+Type                  : Microsoft.Peering/peeringServices/prefixes
+
+Prefix                : 200.25.71.0/31
+PrefixValidationState : Pending
+LearnedType           : None
+ProvisioningState     : Succeeded
+Name                  : myPrefix3463
+Id                    : /subscriptions/resourceGroups/Building40/providers/Microsoft.Peering/peeringServices/myPeeringService4084/pre
+                        fixes/myPrefix3463
+Type                  : Microsoft.Peering/peeringServices/prefixes
+```
+
+Gets a specific prefixe for a peering service by resource id.
+
+### Example 3
+```powershell
+PS C:\> Get-AzPeeringServicePrefix -ResourceGroupName $rgName -PeeringServiceName $peeringServiceName -Name $prefixName
+
+Prefix                : 200.25.69.0/31
+PrefixValidationState : Pending
+LearnedType           : None
+ProvisioningState     : Succeeded
+Name                  : myPrefix9055
+Id                    : /subscriptions/resourceGroups/Building40/providers/Microsoft.Peering/peeringServices/myPeeringService707/pref
+                        ixes/myPrefix9055
+Type                  : Microsoft.Peering/peeringServices/prefixes
+```
+
+Gets a specific prefixe for a peering service by resource id.
 
 ## PARAMETERS
 
@@ -59,12 +118,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Use a Get-AzPeeringService
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringService
+Parameter Sets: Default
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The unique name of the PSPeering.
 
 ```yaml
 Type: System.String
-Parameter Sets: PeeringByResourceAndName
+Parameter Sets: Default, PeeringByResourceAndName
 Aliases:
 
 Required: False
@@ -79,7 +153,7 @@ The peering service name. Use New-AzPeeringService cmdlet for a new peering serv
 
 ```yaml
 Type: System.String
-Parameter Sets: PeeringByResource, PeeringByResourceAndName
+Parameter Sets: PeeringByResourceAndName
 Aliases:
 
 Required: True
@@ -94,7 +168,7 @@ The create or use an existing resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: PeeringByResource, PeeringByResourceAndName
+Parameter Sets: PeeringByResourceAndName
 Aliases:
 
 Required: True
@@ -154,7 +228,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringService
 
 ## OUTPUTS
 

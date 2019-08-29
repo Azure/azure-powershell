@@ -25,6 +25,12 @@ New-AzPeeringServicePrefix [-InputObject] <PSPeeringService> [-Name] <String> [-
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### ByResourceId
+```
+New-AzPeeringServicePrefix [-Name] <String> [-Prefix] <String> [-ResourceId] <String> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Creates peering service prefix associated with a peering service object.
 
@@ -32,10 +38,51 @@ Creates peering service prefix associated with a peering service object.
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzPeeringService -ResourceGroupName $rgName -Name $peeringServiceName | New-AzPeeringServicePrefix -Name $prefixName -Prefix "10.0.0.0/24"
+
+Prefix                : 10.0.0.0/24
+PrefixValidationState : Pending
+LearnedType           : None
+ProvisioningState     : Succeeded
+Name                  : myPrefix9055
+Id                    : /subscriptions/resourceGroups/Building40/providers/Microsoft.Peering/peeringServices/myPeeringService707/pref
+                        ixes/myPrefix9055
+Type                  : Microsoft.Peering/peeringServices/prefixes
 ```
 
-{{ Add example description here }}
+Creates a prefix from a peering service object
+
+### Example 2
+```powershell
+PS C:\> New-AzPeeringServicePrefix -ResourceId $peeringServiceResourceId -Name $prefixName -Prefix "10.0.0.0/24"
+
+Prefix                : 10.0.0.0/24
+PrefixValidationState : Pending
+LearnedType           : None
+ProvisioningState     : Succeeded
+Name                  : myPrefix9055
+Id                    : /subscriptions/resourceGroups/Building40/providers/Microsoft.Peering/peeringServices/myPeeringService707/pref
+                        ixes/myPrefix9055
+Type                  : Microsoft.Peering/peeringServices/prefixes
+```
+
+Creates a prefix from a peering service resource id.
+
+### Example 3
+```powershell
+PS C:\> New-AzPeeringServicePrefix -ResourceGroupName $peeringServiceGroup -PeeringServiceName $peeringServiceName -Name $prefixName -Prefix "10.0.0.0/24"
+
+Prefix                : 10.0.0.0/24
+PrefixValidationState : Pending
+LearnedType           : None
+ProvisioningState     : Succeeded
+Name                  : myPrefix9055
+Id                    : /subscriptions/resourceGroups/Building40/providers/Microsoft.Peering/peeringServices/myPeeringService707/pref
+                        ixes/myPrefix9055
+Type                  : Microsoft.Peering/peeringServices/prefixes
+```
+
+Creates a prefix from a peering service resource group name and name
 
 ## PARAMETERS
 
@@ -136,6 +183,21 @@ The create or use an existing resource group name.
 ```yaml
 Type: System.String
 Parameter Sets: Default
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+The resource id string name.
+
+```yaml
+Type: System.String
+Parameter Sets: ByResourceId
 Aliases:
 
 Required: True

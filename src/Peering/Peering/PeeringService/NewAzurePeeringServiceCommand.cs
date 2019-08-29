@@ -122,15 +122,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                     throw new ItemNotFoundException(string.Format(Resources.Error_ProviderNotFound, this.PeeringServiceProvider, this.PeeringLocation, CheckProvider));
                 }
 
-                var result = this.ResourceManagementClient.ResourceGroups.GetWithHttpMessagesAsync(this.ResourceGroupName).GetAwaiter().GetResult();
-                if (!result.Response.IsSuccessStatusCode)
-                {
-                    throw new ItemNotFoundException(string.Format(Resources.Item_NotFound, "ResourceGroupName", this.ResourceGroupName));
-                }
                 var peeringService = new PeeringService
                 {
-                    Location = result.Body.Location,
-                    //location.Select(ToPeeringServiceLocationPS).ToList().Find(x => x.State.Equals(this.PeeringLocation.Trim(), StringComparison.InvariantCultureIgnoreCase)).AzureRegion,
+                    Location = location.Select(ToPeeringServiceLocationPS).ToList().Find(x => x.State.Equals(this.PeeringLocation.Trim(), StringComparison.InvariantCultureIgnoreCase)).AzureRegion,
                     PeeringServiceLocation = this.PeeringLocation.Trim(),
                     PeeringServiceProvider = this.PeeringServiceProvider.Trim(),
                     Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, true)
