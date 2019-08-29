@@ -111,7 +111,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Add Update, Restart, CheckNameAvailability, GetUsage Cmdlets'
+        ReleaseNotes = '* Fixed miscellaneous typos across module'
 
         # Prerelease string of this module
         # Prerelease = ''

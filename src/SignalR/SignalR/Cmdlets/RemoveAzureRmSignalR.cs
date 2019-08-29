@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 
         [Parameter(Mandatory = true,
             ParameterSetName = ResourceIdParameterSet,
-            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The SignalR service resource ID.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
