@@ -477,6 +477,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Classic virtual machines are not supported for network security group, public IP address and load balancer related enhancements..
+        /// </summary>
+        internal static string NetworkingResourcesInDRNotSupportedForClassicVms {
+            get {
+                return ResourceManager.GetString("NetworkingResourcesInDRNotSupportedForClassicVms", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Network mapping details not found..
         /// </summary>
         internal static string NetworkMappingNotFound {

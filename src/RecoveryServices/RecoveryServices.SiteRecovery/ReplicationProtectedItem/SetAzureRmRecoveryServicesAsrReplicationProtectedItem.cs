@@ -275,9 +275,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     RecoveryLBBackendAddressPoolId.Count > 0) &&
                     !(provider is A2AReplicationDetails))
                 {
-                    throw new Exception("Setting RecoveryPublicIPAddressId, " +
-                        "RecoveryNetworkSecurityGroupId and RecoveryLBBackendAddressPoolIds " +
-                        "inputs not allowed for providers other than A2A.");
+                    this.WriteWarning(Resources.NetworkingResourcesInDRNotSupportedForClassicVms);
+                    return;
                 }
 
                 var vmName = this.Name;
