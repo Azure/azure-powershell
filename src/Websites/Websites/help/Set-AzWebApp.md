@@ -71,7 +71,7 @@ Accept wildcard characters: False
 ```
 
 ### -AppSettings
-App Settings HashTable
+App Settings HashTable. Existing App Settings will be replaced, removing any settings that are not provided.
 
 ```yaml
 Type: System.Collections.Hashtable

@@ -78,18 +78,18 @@ namespace Microsoft.Azure.Commands.Aks
                 {
                     case NameParameterSet:
                         var kubeCluster = Client.ManagedClusters.Get(ResourceGroupName, Name);
-                        WriteObject(PSMapper.Instance.Map<PSKubernetesCluster>(kubeCluster));
+                        WriteObject(PSMapper.Instance.Map<PSKubernetesCluster>(kubeCluster), true);
                         break;
                     case IdParameterSet:
                         var resource = new ResourceIdentifier(Id);
                         var idCluster = Client.ManagedClusters.Get(resource.ResourceGroupName, resource.ResourceName);
-                        WriteObject(PSMapper.Instance.Map<PSKubernetesCluster>(idCluster));
+                        WriteObject(PSMapper.Instance.Map<PSKubernetesCluster>(idCluster), true);
                         break;
                     case ResourceGroupParameterSet:
                         var kubeClusters = string.IsNullOrEmpty(ResourceGroupName)
                             ? Client.ManagedClusters.List()
                             : Client.ManagedClusters.ListByResourceGroup(ResourceGroupName);
-                        WriteObject(kubeClusters.Select(PSMapper.Instance.Map<PSKubernetesCluster>));
+                        WriteObject(kubeClusters.Select(PSMapper.Instance.Map<PSKubernetesCluster>), true);
                         break;
                     default:
                         throw new ArgumentException(Resources.ParameterSetError);
