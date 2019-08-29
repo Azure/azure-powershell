@@ -13,8 +13,8 @@ Gets a list of peering service locations offered by Microsoft.
 ## SYNTAX
 
 ```
-Get-AzPeeringServiceLocation [-PeeringLocation] <String> [-PeeringCountry <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzPeeringServiceLocation [-PeeringCountry <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,13 +49,14 @@ Azure Region	:US West 2
 ```
 
 Retrieves the peering locations for washington.
+
 ## PARAMETERS
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -70,28 +71,12 @@ Accept wildcard characters: False
 The country filter
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PeeringLocation
-The Physical Location Different from Azure Region.
-Use Get-AzPeeringLocation -Kind \<kind\> use City name as key.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Peering.dll-Help.xml
 Module Name: Az.Peering
-online version:https://docs.microsoft.com/en-us/powershell/module/az.peering/new-azpeeringserviceprefix
+online version: https://docs.microsoft.com/en-us/powershell/module/az.peering/new-azpeeringserviceprefix
 schema: 2.0.0
 ---
 
@@ -21,7 +21,7 @@ New-AzPeeringServicePrefix [-ResourceGroupName] <String> [-Name] <String> [-Peer
 
 ### PeeringByResource
 ```
-New-AzPeeringServicePrefix [-InputObject] <PSPeeringService> [-Prefix] <String> [-AsJob]
+New-AzPeeringServicePrefix [-InputObject] <PSPeeringService> [-Name] <String> [-Prefix] <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -43,24 +43,9 @@ PS C:\> {{ Add example code here }}
 Run in the background.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named
@@ -73,7 +58,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -88,14 +73,14 @@ Accept wildcard characters: False
 Use a Get-AzPeeringService
 
 ```yaml
-Type: PSPeeringService
+Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringService
 Parameter Sets: PeeringByResource
 Aliases:
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -103,8 +88,8 @@ Accept wildcard characters: False
 The unique name of the PSPeering.
 
 ```yaml
-Type: String
-Parameter Sets: Default
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -119,7 +104,7 @@ The peering service name.
 Use New-AzPeeringService cmdlet for a new peering service or Get-AzPeeringService for a list.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Default
 Aliases:
 
@@ -134,7 +119,7 @@ Accept wildcard characters: False
 The session IPv4 prefix
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -149,7 +134,7 @@ Accept wildcard characters: False
 The create or use an existing resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Default
 Aliases:
 
@@ -160,12 +145,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -181,7 +181,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringService
 
 ## OUTPUTS
 

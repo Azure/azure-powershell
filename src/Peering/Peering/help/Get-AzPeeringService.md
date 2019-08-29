@@ -45,7 +45,7 @@ Gets a peering service for a subscription
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -60,7 +60,7 @@ Accept wildcard characters: False
 The unique name of the PSPeering.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PeeringByResourceAndName
 Aliases:
 
@@ -75,7 +75,7 @@ Accept wildcard characters: False
 The create or use an existing resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PeeringByResourceAndName
 Aliases:
 
@@ -90,7 +90,7 @@ Accept wildcard characters: False
 The resource id string name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceId
 Aliases:
 
