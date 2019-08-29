@@ -41,6 +41,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// </summary>
         public const string Exchange = "Exchange";
 
+        /// <summary>
+        /// The peering service kind
+        /// </summary>
+        public const string PeeringService = "PeeringService";
+
+        /// <summary>
+        /// The avaliable setting
+        /// </summary>
+        public const string Available = "Available";
+
         #endregion
 
         #region Ranges

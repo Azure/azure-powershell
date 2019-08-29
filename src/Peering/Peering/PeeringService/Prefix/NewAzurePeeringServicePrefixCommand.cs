@@ -43,8 +43,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             Position = 0,
             Mandatory = true,
             HelpMessage = Constants.PrefixInputObjectHelp,
+            ValueFromPipeline = true,
             ParameterSetName = Constants.ParameterSetNamePeeringByResource)]
-        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public PSPeeringService InputObject { get; set; }
 
@@ -68,6 +68,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             Mandatory = true,
             HelpMessage = Constants.PeeringNameHelp,
             ParameterSetName = Constants.ParameterSetNameDefault)]
+        [Parameter(
+            Position = 1,
+            Mandatory = true,
+            HelpMessage = Constants.PeeringNameHelp,
+            ParameterSetName = Constants.ParameterSetNamePeeringByResource)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -116,6 +121,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             {
                 throw new InvalidOperationException(string.Format(Resources.Error_Mapping, mapException));
             }
+            catch (ErrorResponseException ex)
+            {
+                var error = this.GetErrorCodeAndMessageFromArmOrErm(ex);
+                throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error?.Code, error?.Message));
+            }
+            catch (PSArgumentOutOfRangeException ex)
+            {
+                throw ex;
+            }
         }
 
         /// <summary>
@@ -124,30 +138,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// <returns>Peering Service</returns>
         private object NewPeeringServicePrefix()
         {
-            var prefix = new PSPeeringServicePrefix
+
+            var prefix = new PeeringServicePrefix
             {
-                Prefix = this.Prefix
+                Prefix = this.ValidatePrefix(this.Prefix, Constants.PeeringService)
             };
 
             if (this.InputObject != null)
             {
                 var resourceId = new ResourceIdentifier(this.InputObject.Id);
                 this.ResourceGroupName = resourceId.ResourceGroupName;
-                this.Name = resourceId.ResourceName;
+                this.PeeringServiceName = resourceId.ResourceName;
             }
 
-            try
-            {
-                var peeringService = this.PeeringClient.Get(this.ResourceGroupName, this.Name);
-                this.PeeringServiceName = peeringService.Name;
-                //TODO fix this by adding the service name
-                return this.PeeringClient.Get(this.ResourceGroupName, this.Name);
-            }
-            catch (ErrorResponseException ex)
-            {
-                var error = this.GetErrorCodeAndMessageFromArmOrErm(ex);
-                throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error?.Code, error?.Message));
-            }
+            var peeringService = this.PeeringServicesClient.Get(this.ResourceGroupName, this.PeeringServiceName);
+            this.PeeringServiceName = peeringService.Name;
+            this.PeeringServicePrefixesClient.CreateOrUpdate(this.ResourceGroupName, this.PeeringServiceName, this.Name, prefix);
+            return this.ToPeeringServicePrefixPS(this.PeeringServicePrefixesClient.Get(this.ResourceGroupName, this.PeeringServiceName, this.Name));
         }
 
     }
