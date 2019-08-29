@@ -33,10 +33,16 @@ function ServiceBusQueueTests {
     $createdNamespace = Get-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName
 	    
     Assert-AreEqual $createdNamespace.Name $namespaceName "Created Namespace not found"
-
+	
+    $test = Test-AzServiceBusNameAvailability -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $nameQueue -Queue
+    Assert-True { $test }
+	
     Write-Debug "Create Queue"	
     $result = New-AzServiceBusQueue -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $nameQueue
     Assert-AreEqual $result.Name $nameQueue "In CreateQueue response Name not found"
+	
+    $test = Test-AzServiceBusNameAvailability -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $nameQueue -Queue
+    Assert-False { $test }
 
     $resultGetQueue = Get-AzServiceBusQueue -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $result.Name
     Assert-AreEqual $resultGetQueue.Name $result.Name "In GetQueue response, QueueName not found"
