@@ -187,11 +187,20 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
             }
         }
 
+        private string NormalizeLocation(string location)
+        {
+            // lowercase and remove whitespace
+            // e.g. "South Central US" => "southcentralus"
+            return location == null
+                ? null
+                : location.Replace(" ", "").ToLower();
+        }
+
         private ScheduledQueryRuleResource UpdateScheduledQueryRuleResource(ScheduledQueryRuleResource requestBody)
         {
             if (this.MyInvocation.BoundParameters.ContainsKey("Location") || this.Location != null)
             {
-                requestBody.Location = this.Location;
+                requestBody.Location = NormalizeLocation(this.Location);
             }
 
             if (this.MyInvocation.BoundParameters.ContainsKey("Action") || this.Action != null)
