@@ -54,35 +54,42 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             IList<string> zones,
             bool ultraSSDEnabled,
             Func<IEngine, Microsoft.Azure.Management.Internal.Resources.Models.SubResource> proximityPlacementGroup)
-            => Strategy.CreateResourceConfig(
-                resourceGroup: resourceGroup,
-                name: name,
-                createModel: engine => new VirtualMachineScaleSet()
-                {
-                    Zone = zones.ToArray(),
-                    UpgradePolicyMode = upgradeMode ?? UpgradeMode.Manual,
-                    SkuCapacity = instanceCount,
-                    SkuName = vmSize,
-                    Identity = identity,
-                    SinglePlacementGroup = singlePlacementGroup,
-                    UltraSsdEnabled = ultraSSDEnabled,
-                    
-                    VirtualMachineProfile = new VirtualMachineScaleSetVMProfile
-                    {
-                        OSProfileComputerNamePrefix = name.Substring(0, Math.Min(name.Length, 9)),
-                        //OSProfileWindowsConfiguration = imageAndOsType.CreateWindowsConfiguration(),
-                           // LinuxConfiguration = imageAndOsType.CreateLinuxConfiguration(),
+        {
+            var windowsConfig = imageAndOsType?.CreateWindowsConfiguration();
+            var linuxConfig = imageAndOsType?.CreateLinuxConfiguration();
+            return Strategy.CreateResourceConfig(
+                 resourceGroup: resourceGroup,
+                 name: name,
+                 createModel: engine => new VirtualMachineScaleSet()
+                 {
+                     Zone = zones?.ToArray(),
+                     UpgradePolicyMode = upgradeMode ?? UpgradeMode.Manual,
+                     SkuCapacity = instanceCount,
+                     SkuName = vmSize,
+                     Identity = identity,
+                     SinglePlacementGroup = singlePlacementGroup,
+                     UltraSsdEnabled = ultraSSDEnabled,
+
+                     VirtualMachineProfile = new VirtualMachineScaleSetVMProfile
+                     {
+                         OSProfileComputerNamePrefix = name.Substring(0, Math.Min(name.Length, 9)),
+                        WindowConfigurationAdditionalUnattendContent = windowsConfig?.AdditionalUnattendContent,
+                        WindowConfigurationEnableAutomaticUpdate = windowsConfig?.EnableAutomaticUpdate,
+                        WindowConfigurationProvisionVMAgent = windowsConfig?.ProvisionVMAgent,
+                        WindowConfigurationTimeZone = windowsConfig?.TimeZone,
+                        LinuxConfigurationDisablePasswordAuthentication = linuxConfig?.DisablePasswordAuthentication,
+                        LinuxConfigurationSshPublicKey = linuxConfig?.SshPublicKey,
                         OSProfileAdminUsername = adminUsername,
                         OSProfileAdminPassword = adminPassword,
                         StorageProfile = new VirtualMachineScaleSetStorageProfile
                         {
                             ImageReference = imageAndOsType?.Image,
                             DataDisk = DataDiskStrategy.CreateVmssDataDisks(
-                                imageAndOsType?.DataDiskLuns, dataDisks).ToArray()
+                                imageAndOsType?.DataDiskLuns, dataDisks)?.ToArray()
                         },
                         NetworkProfile = new VirtualMachineScaleSetNetworkProfile
                         {
-                            
+
                             NetworkInterfaceConfiguration = new[]
                             {
                                 new VirtualMachineScaleSetNetworkConfiguration
@@ -93,15 +100,15 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                                         new VirtualMachineScaleSetIPConfiguration
                                         {
                                             Name = name,
-                                            
-                                            LoadBalancerBackendAddressPool = new [] 
+
+                                            LoadBalancerBackendAddressPool = new []
                                             {
                                                 new Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.SubResource{Id = engine.GetReference(backendAdressPool)?.Id}
                                             },
-                                            
+
                                             SubnetId = engine.GetReference(subnet)?.Id,
                                             LoadBalancerInboundNatPool = inboundNatPools
-                                                ?.Select(p => new Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.SubResource{Id = engine.GetReference(p)?.Id })
+                                                ?.Select(p => new Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.SubResource{Id = engine.GetReference(p)?.Id })?
                                                 .ToArray()
                                         }
                                     },
@@ -111,7 +118,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             }
                         }
                     },
-                    ProximityPlacementGroupId = proximityPlacementGroup(engine).Id,
+                    ProximityPlacementGroupId = proximityPlacementGroup(engine)?.Id,
                 });
+        }
     }
 }
