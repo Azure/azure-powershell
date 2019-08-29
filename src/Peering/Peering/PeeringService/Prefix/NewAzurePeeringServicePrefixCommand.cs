@@ -37,7 +37,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     public class NewAzurePeeringServicePrefixCommand : PeeringBaseCmdlet
     {
         /// <summary>
-        /// Gets or sets The Resource Group Name
+        /// Gets or sets the peering service input object
         /// </summary>
         [Parameter(
             Position = 0,
@@ -73,6 +73,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             Mandatory = true,
             HelpMessage = Constants.PeeringNameHelp,
             ParameterSetName = Constants.ParameterSetNamePeeringByResource)]
+        [Parameter(
+            Position = 1,
+            Mandatory = true,
+            HelpMessage = Constants.PeeringNameHelp,
+            ParameterSetName = Constants.ParameterSetNameByResourceId)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -99,8 +104,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             Mandatory = true,
             HelpMessage = Constants.HelpSessionIPv4Prefix,
             ParameterSetName = Constants.ParameterSetNamePeeringByResource)]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = Constants.HelpSessionIPv4Prefix,
+            ParameterSetName = Constants.ParameterSetNameByResourceId)]
         [ValidateNotNullOrEmpty]
         public string Prefix { get; set; }
+
+        /// <summary>
+        /// The resource  id
+        /// </summary>
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            HelpMessage = Constants.ResourceIdHelp,
+            ParameterSetName = Constants.ParameterSetNameByResourceId)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
 
         /// <summary>
         ///     The AsJob parameter to run in the background.
@@ -145,6 +165,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             };
 
             if (this.InputObject != null)
+            {
+                var resourceId = new ResourceIdentifier(this.InputObject.Id);
+                this.ResourceGroupName = resourceId.ResourceGroupName;
+                this.PeeringServiceName = resourceId.ResourceName;
+            }
+            if(this.ResourceId != null)
             {
                 var resourceId = new ResourceIdentifier(this.InputObject.Id);
                 this.ResourceGroupName = resourceId.ResourceGroupName;

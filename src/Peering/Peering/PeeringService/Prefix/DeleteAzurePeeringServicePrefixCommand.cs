@@ -44,7 +44,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             Mandatory = true,
             ValueFromPipeline = true,
             ParameterSetName = Constants.ParameterSetNameDefault,
-            HelpMessage = Constants.PrefixInputObjectHelp+"Prefix")]
+            HelpMessage = Constants.PrefixInputObjectHelp + "Prefix")]
         [ValidateNotNullOrEmpty]
         public PSPeeringServicePrefix InputObject { get; set; }
 
@@ -104,6 +104,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelp)]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
+
         /// <summary>
         /// The inherited Execute function.
         /// </summary>
@@ -114,33 +118,39 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                 this.ConfirmAction(
                     Force.IsPresent,
                     string.Format(Resources.ProcessMessage, this.Name),
-                    Resources.ContinueMessage, 
-                    this.Name, 
+                    Resources.ContinueMessage,
+                    this.Name,
                     () =>
                     {
-                        if(this.ResourceId != null)
+                        if (this.ResourceId != null)
                         {
                             var resourceId = new ResourceIdentifier(this.ResourceId);
                             this.ResourceGroupName = resourceId.ResourceGroupName;
                             this.Name = resourceId.ResourceName;
-                            this.PeeringServiceName = resourceId.ParentResource;
+                            this.PeeringServiceName = resourceId.ParentResource.Split('/')?[1];
                         }
                         if (this.InputObject != null)
                         {
                             var resourceId = new ResourceIdentifier(this.InputObject.Id);
                             this.ResourceGroupName = resourceId.ResourceGroupName;
                             this.Name = resourceId.ResourceName;
-                            this.PeeringServiceName = resourceId.ParentResource;
+                            this.PeeringServiceName = resourceId.ParentResource.Split('/')?[1];
                         }
                         try
                         {
                             this.PeeringServicePrefixesClient.Delete(this.ResourceGroupName, this.PeeringServiceName, this.Name);
-                            this.WriteObject(true);
+                            if (this.PassThru.IsPresent)
+                            {
+                                WriteObject(true);
+                            }
                         }
                         catch (Exception ex)
                         {
                             this.WriteVerbose(ex.Message);
-                            this.WriteObject(false);
+                            if (this.PassThru.IsPresent)
+                            {
+                                WriteObject(false);
+                            }
                         }
                     }
                     );

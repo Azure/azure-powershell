@@ -12,6 +12,11 @@ Get a list of peering service objects of a single object.
 
 ## SYNTAX
 
+### Default (Default)
+```
+Get-AzPeeringService [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ### PeeringByResourceAndName
 ```
 Get-AzPeeringService [-ResourceGroupName] <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
@@ -30,14 +35,60 @@ Gets peering services for a subscription
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzPeeringService -ResourceGroupName rg1 -Name myPeeringService
+PS C:\> Get-AzPeeringService -ResourceGroupName $rgName
 
-Name			:myPeeringService
-PeeringLocation	:Washington
-PeeringProvider	:Contoso
+PeeringServiceLocation : Washington
+PeeringServiceProvider : TestPeer1
+ProvisioningState      : Succeeded
+Location               : centralus
+Tags                   : {}
+Name                   : myPeeringService312
+Id                     : /subscriptions/resourceGroups/Building40/providers/Microsoft.Peering/peeringServices/myPeeringService312
+Type                   : Microsoft.Peering/peeringServices
+
+PeeringServiceLocation : Washington
+PeeringServiceProvider : TestPeer1
+ProvisioningState      : Succeeded
+Location               : centralus
+Tags                   : {}
+Name                   : myPeeringService3990
+Id                     : /subscriptions/resourceGroups/Building40/providers/Microsoft.Peering/peeringServices/myPeeringService3990
+Type                   : Microsoft.Peering/peeringServices
 ```
 
-Gets a peering service for a subscription
+Gets a peering service for a resource group
+
+### Example 2
+```powershell
+PS C:\> Get-AzPeeringService -ResourceGroupName $rgName -Name $name
+
+PeeringServiceLocation : Washington
+PeeringServiceProvider : TestPeer1
+ProvisioningState      : Succeeded
+Location               : centralus
+Tags                   : {}
+Name                   : myPeeringService312
+Id                     : /subscriptions/resourceGroups/Building40/providers/Microsoft.Peering/peeringServices/myPeeringService312
+Type                   : Microsoft.Peering/peeringServices
+```
+
+Gets a peering service for a resource group and name
+
+### Example 3
+```powershell
+PS C:\> Get-AzPeeringService -ResourceId $rid
+
+PeeringServiceLocation : Washington
+PeeringServiceProvider : TestPeer1
+ProvisioningState      : Succeeded
+Location               : centralus
+Tags                   : {}
+Name                   : myPeeringService312
+Id                     : /subscriptions/resourceGroups/Building40/providers/Microsoft.Peering/peeringServices/myPeeringService312
+Type                   : Microsoft.Peering/peeringServices
+```
+
+Gets a peering service by resource id
 
 ## PARAMETERS
 

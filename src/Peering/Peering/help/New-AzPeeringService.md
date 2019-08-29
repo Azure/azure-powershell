@@ -25,10 +25,19 @@ Creates peering service.
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzPeeringService -ResourceGroupName $resourceGroup -Name $name -PeeringLocation $loc -PeeringServiceProvider $provider
+
+PeeringServiceLocation : Washington
+PeeringServiceProvider : TestPeer1
+ProvisioningState      : Succeeded
+Location               : centralus
+Tags                   : {}
+Name                   : myPeeringService3990
+Id                     : /subscriptions/resourceGroups/Building40/providers/Microsoft.Peering/peeringServices/myPeeringService3990
+Type                   : Microsoft.Peering/peeringServices
 ```
 
-{{ Add example description here }}
+Creates a peering service object with provider and peering location. Use in conjuction with `Get-AzPeeringServiceProvider` and `Get-AzPeeringServiceLocation`
 
 ## PARAMETERS
 

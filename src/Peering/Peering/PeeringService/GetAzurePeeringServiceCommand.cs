@@ -30,7 +30,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     /// <summary>
     ///     The Get Az InputObject Legacy peering.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzPeeringService")]
+    [Cmdlet(VerbsCommon.Get, "AzPeeringService", DefaultParameterSetName = Constants.ParameterSetNameDefault)]
     [OutputType(typeof(PSPeering))]
     public class GetAzurePeeringServiceCommand : PeeringBaseCmdlet
     {

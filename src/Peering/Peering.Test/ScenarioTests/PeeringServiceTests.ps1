@@ -114,8 +114,11 @@ function Test-NewPeeringServicePrefix {
     #Hard Coded locations becuase of limitations in locations
     $name = getAssetName "myPeeringService";
     $prefixName = getAssetName "myPrefix";
+	$loc = "Washington"
+    $provider = "TestPeer1"
     $resourceGroup = "Building40"
     $prefix = newIpV4Address $true $true 0 4
+	$peeringService = New-AzPeeringService -ResourceGroupName $resourceGroup -Name $name -PeeringLocation $loc -PeeringServiceProvider $provider
     $peeringService = Get-AzPeeringService -ResourceGroupName $resourceGroup -Name $name
     $prefixService = $peeringService | New-AzPeeringServicePrefix -Name $prefixName -Prefix $prefix
     Assert-NotNull $prefixService
@@ -130,6 +133,6 @@ function Test-NewPeeringServicePrefix {
 	.SYNOPSIS
 	DeletePeeringServicePrefx 
 	#>
-    $isRemoved = Remove-AzPeeringServicePrefix -ResourceId $getPrefixService.Id
-    Assert-True $isRemoved
+    $isRemoved = Remove-AzPeeringServicePrefix -ResourceId $getPrefixService.Id -Force
+    Assert-AreEqual $isRemoved $true
 }

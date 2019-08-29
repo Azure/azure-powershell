@@ -7,7 +7,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "8eae7f42-3fc3-4357-a278-8cda48ed0da0"
+          "80d9b664-c05e-47ed-a3b4-59f4c6957d6d"
         ],
         "Accept-Language": [
           "en-US"
@@ -27,16 +27,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "71845217-b7fd-455f-bb72-ed5951b4d2c6"
+          "6dca768d-c86e-482f-a7d1-d1d284b821c2"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "599"
         ],
         "x-ms-correlation-request-id": [
-          "b3c5f058-29bd-4f0b-9fc3-ca48056d0fc9"
+          "38de630f-91e2-42d1-8b44-401a059d3634"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20190829T053801Z:b3c5f058-29bd-4f0b-9fc3-ca48056d0fc9"
+          "NORTHEUROPE:20190829T173543Z:38de630f-91e2-42d1-8b44-401a059d3634"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -45,7 +45,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 29 Aug 2019 05:38:01 GMT"
+          "Thu, 29 Aug 2019 17:35:43 GMT"
         ],
         "Content-Length": [
           "458677"
@@ -67,7 +67,7 @@
       "RequestBody": "{\r\n  \"peeringServiceLocation\": \"Washington\",\r\n  \"peeringServiceProvider\": \"TestPeer1\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "8e27568f-a795-4617-a08f-509bf1de8a3f"
+          "39093587-dbbd-4204-a95e-b834c849a3d5"
         ],
         "Accept-Language": [
           "en-US"
@@ -93,16 +93,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "2594dcf7-4d3e-4e43-a2d8-2c709116a1e8"
+          "6efa2718-8883-4124-8a5d-4b2c69286860"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "741286f3-7418-435d-b839-7fcba18790c0"
+          "9fa9d9ce-429f-4f74-9190-1ac16364c5e4"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20190829T053803Z:741286f3-7418-435d-b839-7fcba18790c0"
+          "NORTHEUROPE:20190829T173545Z:9fa9d9ce-429f-4f74-9190-1ac16364c5e4"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -111,7 +111,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 29 Aug 2019 05:38:02 GMT"
+          "Thu, 29 Aug 2019 17:35:45 GMT"
         ],
         "Content-Length": [
           "11"
@@ -125,11 +125,197 @@
       },
       "ResponseBody": "\"Available\"",
       "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/resourceGroups/Building40/providers/Microsoft.Peering/peeringServices/myPeeringService6472?api-version=2019-08-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Jlc291cmNlR3JvdXBzL0J1aWxkaW5nNDAvcHJvdmlkZXJzL01pY3Jvc29mdC5QZWVyaW5nL3BlZXJpbmdTZXJ2aWNlcy9teVBlZXJpbmdTZXJ2aWNlNjQ3Mj9hcGktdmVyc2lvbj0yMDE5LTA4LTAxLXByZXZpZXc=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"peeringServiceLocation\": \"Washington\",\r\n    \"peeringServiceProvider\": \"TestPeer1\"\r\n  },\r\n  \"location\": \"centralus\"\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "4082edfe-1eca-4752-b327-e3902b800f60"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Peering.PeeringManagementClient/0.11.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "144"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "d95d8903-7a7b-41ab-bb13-51104aec740b"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "99"
+        ],
+        "x-ms-correlation-request-id": [
+          "d999a794-acba-4c91-95c3-d4904a0796a9"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20190829T173546Z:d999a794-acba-4c91-95c3-d4904a0796a9"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 29 Aug 2019 17:35:46 GMT"
+        ],
+        "Content-Length": [
+          "472"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"peeringServiceLocation\": \"Washington\",\r\n    \"peeringServiceProvider\": \"TestPeer1\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"location\": \"centralus\",\r\n  \"eTag\": \"026464e8-fe7a-4465-bcdd-1fd74cdecfe0\",\r\n  \"name\": \"myPeeringService6472\",\r\n  \"id\": \"/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/resourceGroups/Building40/providers/Microsoft.Peering/peeringServices/myPeeringService6472\",\r\n  \"type\": \"Microsoft.Peering/peeringServices\"\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/resourceGroups/Building40/providers/Microsoft.Peering/peeringServices/myPeeringService6472?api-version=2019-08-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Jlc291cmNlR3JvdXBzL0J1aWxkaW5nNDAvcHJvdmlkZXJzL01pY3Jvc29mdC5QZWVyaW5nL3BlZXJpbmdTZXJ2aWNlcy9teVBlZXJpbmdTZXJ2aWNlNjQ3Mj9hcGktdmVyc2lvbj0yMDE5LTA4LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b1aaba02-4ba7-4753-8302-38fb57ee2adf"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Peering.PeeringManagementClient/0.11.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "2f9587a8-cb94-4fb9-8ba2-6c9809d8d2f8"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "599"
+        ],
+        "x-ms-correlation-request-id": [
+          "a3a71902-97f3-44bc-9786-60f4fe19213f"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20190829T173547Z:a3a71902-97f3-44bc-9786-60f4fe19213f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 29 Aug 2019 17:35:47 GMT"
+        ],
+        "Content-Length": [
+          "472"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"peeringServiceLocation\": \"Washington\",\r\n    \"peeringServiceProvider\": \"TestPeer1\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"location\": \"centralus\",\r\n  \"eTag\": \"026464e8-fe7a-4465-bcdd-1fd74cdecfe0\",\r\n  \"name\": \"myPeeringService6472\",\r\n  \"id\": \"/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/resourceGroups/Building40/providers/Microsoft.Peering/peeringServices/myPeeringService6472\",\r\n  \"type\": \"Microsoft.Peering/peeringServices\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/resourceGroups/Building40/providers/Microsoft.Peering/peeringServices/myPeeringService6472?api-version=2019-08-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Jlc291cmNlR3JvdXBzL0J1aWxkaW5nNDAvcHJvdmlkZXJzL01pY3Jvc29mdC5QZWVyaW5nL3BlZXJpbmdTZXJ2aWNlcy9teVBlZXJpbmdTZXJ2aWNlNjQ3Mj9hcGktdmVyc2lvbj0yMDE5LTA4LTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d1b6ddf2-8d12-4996-a613-2114a96e8bc9"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.27817.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.18362.",
+          "Microsoft.Azure.Management.Peering.PeeringManagementClient/0.11.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "b87bae7b-4d52-4438-a565-3bf365cabd94"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "598"
+        ],
+        "x-ms-correlation-request-id": [
+          "c54a3ff0-569f-4ea3-9278-64bce50d4890"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20190829T173548Z:c54a3ff0-569f-4ea3-9278-64bce50d4890"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 29 Aug 2019 17:35:48 GMT"
+        ],
+        "Content-Length": [
+          "472"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"peeringServiceLocation\": \"Washington\",\r\n    \"peeringServiceProvider\": \"TestPeer1\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"location\": \"centralus\",\r\n  \"eTag\": \"026464e8-fe7a-4465-bcdd-1fd74cdecfe0\",\r\n  \"name\": \"myPeeringService6472\",\r\n  \"id\": \"/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/resourceGroups/Building40/providers/Microsoft.Peering/peeringServices/myPeeringService6472\",\r\n  \"type\": \"Microsoft.Peering/peeringServices\"\r\n}",
+      "StatusCode": 200
     }
   ],
   "Names": {
     "Test-GetPeeringServiceByResourceGroup": [
-      "myPeeringService4885"
+      "myPeeringService6472"
     ]
   },
   "Variables": {

@@ -86,19 +86,6 @@ function Test-ListPeerAsn
 	Assert-Null $cleaner
 }
 
-function makePeerAsn($asn)
-{
-	$asnId = $asn
-	$asnPeerName = getAssetName "Global"
-	$asnPeer = getAssetName 
-	[string[]]$emails = "noc@$asnPeer.com","noc@$asnPeerName.com"
-	$phone = getAssetName
-	$created = New-AzPeerAsn -Name $asnPeerName -PeerName $asnPeer -PeerAsn $asnId -Email $emails -Phone $phone
-	$created.ValidationState = "Approved";
-	$created = $created | Set-AzPeerAsn
-	return $created
-}
-
 <#
 .SYNOPSIS
 Tests set email 
