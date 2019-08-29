@@ -33,7 +33,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
     [Cmdlet(
         VerbsCommon.Set,
         "AzPeeringExchangeConnectionObject",
-        DefaultParameterSetName = Constants.ParameterSetNameMd5Authentication, SupportsShouldProcess = false)]
+        DefaultParameterSetName = Constants.ParameterSetNameIPv6Address, SupportsShouldProcess = false)]
     [OutputType(typeof(PSExchangeConnection))]
     public class SetAzureExchangePeeringConnectionCommand : PeeringBaseCmdlet
     {
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
         /// Gets or sets the m d 5 authentication key.
         /// </summary>
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = Constants.MD5AuthenticationKeyHelp,
             ParameterSetName = Constants.ParameterSetNameMd5Authentication)]
         public string MD5AuthenticationKey { get; set; }
@@ -169,8 +169,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
         private PSExchangeConnection UpdateIpV4Prefix()
         {
                 this.InputObject.BgpSession.MaxPrefixesAdvertisedV4 =
-                    this.MaxPrefixesAdvertisedIPv4 == null ? (this.InputObject.BgpSession.MaxPrefixesAdvertisedV4 != 0 ? this.InputObject.BgpSession.MaxPrefixesAdvertisedV4 : 2000) : 2000;
-                this.InputObject.BgpSession.PeerSessionIPv4Address = this.ValidatePrefix(this.PeerSessionIPv4Address, Constants.Exchange);
+                    this.MaxPrefixesAdvertisedIPv4 == null ? (this.InputObject.BgpSession.MaxPrefixesAdvertisedV4 != 0 ? this.InputObject.BgpSession.MaxPrefixesAdvertisedV4 : 20000) : this.MaxPrefixesAdvertisedIPv4;
+            this.InputObject.BgpSession.PeerSessionIPv4Address = this.PeerSessionIPv4Address?.Trim();
                 if (this.IsValidConnection(this.InputObject))
                     return this.InputObject;
 
@@ -186,8 +186,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
         private PSExchangeConnection UpdateIpV6Prefix()
         {
                 this.InputObject.BgpSession.MaxPrefixesAdvertisedV6 =
-                    this.MaxPrefixesAdvertisedIPv6 == null ? (this.InputObject.BgpSession.MaxPrefixesAdvertisedV6 != 0 ? this.InputObject.BgpSession.MaxPrefixesAdvertisedV6 : 2000) : 2000;
-                this.InputObject.BgpSession.PeerSessionIPv6Address = this.ValidatePrefix(this.PeerSessionIPv6Address, Constants.Exchange);
+                    this.MaxPrefixesAdvertisedIPv6 == null ? (this.InputObject.BgpSession.MaxPrefixesAdvertisedV6 != 0 ? this.InputObject.BgpSession.MaxPrefixesAdvertisedV6 : 2000) : this.MaxPrefixesAdvertisedIPv6;
+            this.InputObject.BgpSession.PeerSessionIPv6Address = this.PeerSessionIPv6Address?.Trim();
                 if (this.IsValidConnection(this.InputObject))
                     return this.InputObject;
 
