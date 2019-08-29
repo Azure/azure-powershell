@@ -33,7 +33,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     /// <summary>
     /// New Azure InputObject Command-let
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzPeeringServicePrefix", DefaultParameterSetName = Constants.Exchange, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove, "AzPeeringServicePrefix", DefaultParameterSetName = Constants.ParameterSetNameByName, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
     public class DeleteAzurePeeringServicePrefixCommand : PeeringBaseCmdlet
     {
@@ -70,6 +70,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             ParameterSetName = Constants.ParameterSetNameByName)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets The InputObject NameMD5AuthenticationKeyHelp
+        /// </summary>
+        [Parameter(
+            Position = 2,
+            Mandatory = true,
+            HelpMessage = Constants.PeeringNameHelp,
+            ParameterSetName = Constants.ParameterSetNameByName)]
+        [ValidateNotNullOrEmpty]
+        public string PeeringServiceName { get; set; }
 
         /// <summary>
         /// The resource  id
@@ -112,16 +123,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                             var resourceId = new ResourceIdentifier(this.ResourceId);
                             this.ResourceGroupName = resourceId.ResourceGroupName;
                             this.Name = resourceId.ResourceName;
+                            this.PeeringServiceName = resourceId.ParentResource;
                         }
                         if (this.InputObject != null)
                         {
                             var resourceId = new ResourceIdentifier(this.InputObject.Id);
                             this.ResourceGroupName = resourceId.ResourceGroupName;
                             this.Name = resourceId.ResourceName;
+                            this.PeeringServiceName = resourceId.ParentResource;
                         }
                         try
                         {
-                            this.PeeringClient.Delete(this.ResourceGroupName, this.Name);
+                            this.PeeringServicePrefixesClient.Delete(this.ResourceGroupName, this.PeeringServiceName, this.Name);
                             this.WriteObject(true);
                         }
                         catch (Exception ex)
@@ -135,6 +148,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             catch (InvalidOperationException mapException)
             {
                 throw new InvalidOperationException(string.Format(Resources.Error_Mapping, mapException));
+            }
+            catch (ErrorResponseException ex)
+            {
+                var error = GetErrorCodeAndMessageFromArmOrErm(ex);
+                throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
             }
         }
     }

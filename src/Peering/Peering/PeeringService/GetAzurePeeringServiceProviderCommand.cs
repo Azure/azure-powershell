@@ -57,7 +57,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         {
             try
             {
-                var icList = this.PeeringClient.ListBySubscription();
+                var icList = this.PeeringServiceProvidersClient.List();
                 return icList.Select(this.ToPeeringServiceProviderPS).ToList();
             }
             catch (ErrorResponseException ex)

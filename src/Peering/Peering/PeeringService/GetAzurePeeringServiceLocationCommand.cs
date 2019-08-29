@@ -38,13 +38,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// <summary>
         /// Gets or sets the PeeringLocation.
         /// </summary>
-        [Parameter(Mandatory = true, Position = 0, HelpMessage = Constants.PeeringLocationHelp)]
-        [ValidateNotNullOrEmpty]
-        public string PeeringLocation { get; set; }
-
-        /// <summary>
-        /// Gets or sets the PeeringLocation.
-        /// </summary>
         [Parameter(Mandatory = false, HelpMessage = Constants.PeeringCountryHelp)]
         public string PeeringCountry { get; set; }
 
@@ -71,7 +64,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         {
             try
             {
-                var icList = this.PeeringLegacyClient.List(this.PeeringLocation, "");
+                var icList = this.PeeringServiceLocationsClient.List();
                 if(this.PeeringCountry != null)
                 {
                     var t = icList.Select(this.ToPeeringServiceLocationPS).ToList().FindAll(x => x.Country == this.PeeringCountry);

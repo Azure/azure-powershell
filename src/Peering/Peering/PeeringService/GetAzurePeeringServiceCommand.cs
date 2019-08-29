@@ -123,7 +123,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// <returns>List of peering service resources</returns>
         public List<PSPeeringService> ListPeeringService()
         {
-            return this.PeeringClient.ListBySubscription().Select(ToPeeringServicePS).ToList();
+            return this.PeeringServicesClient.ListBySubscription().Select(ToPeeringServicePS).ToList();
         }
 
         /// <summary>
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// <returns>List of InputObject Resources</returns>
         public List<PSPeeringService> GetPeeringByResource()
         {
-            return this.PeeringClient.ListByResourceGroup(this.ResourceGroupName).Select(this.ToPeeringServicePS).ToList();
+            return this.PeeringServicesClient.ListByResourceGroup(this.ResourceGroupName).Select(this.ToPeeringServicePS).ToList();
         }
 
         /// <summary>
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// <returns>InputObject Resource</returns>
         public object GetPeeringByResourceAndName()
         {
-            var ic = this.PeeringClient.Get(this.ResourceGroupName, this.Name);
+            var ic = this.PeeringServicesClient.Get(this.ResourceGroupName, this.Name);
             var peer = this.ToPeeringServicePS(ic);
             if (peer != null)
             {

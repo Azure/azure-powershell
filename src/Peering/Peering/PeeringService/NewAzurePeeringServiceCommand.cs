@@ -21,6 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     using System.Net.Http;
 
     using Microsoft.Azure.Commands.Peering.Properties;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
     using Microsoft.Azure.Management.Peering;
@@ -112,18 +113,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
 
         private PSPeeringService NewPeeringServiceFromResourceGroupAndName()
         {
-            var location = this.PeeringClient.ListBySubscription();
-            var peeringService = new PSPeeringService
-            {
-                Location = location.Select(ToPeeringServiceLocationPS).ToList().Find(x => x.State.Equals(this.PeeringLocation.Trim(), StringComparison.InvariantCultureIgnoreCase)).AzureRegion,
-                PeeringServiceLocation = this.PeeringLocation.Trim(),
-                PeeringServiceProvider = this.PeeringServiceProvider.Trim(),
-                Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, true)
-            };
             try
             {
-                //TODO execute the client
-                return peeringService;
+                var location = this.PeeringServiceLocationsClient.List();
+                var CheckProvider = this.PeeringManagementClient.CheckServiceProviderAvailability(new CheckServiceProviderAvailabilityInput(this.PeeringLocation, this.PeeringServiceProvider));
+                if (!CheckProvider.Equals(Constants.Available, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    throw new ItemNotFoundException(string.Format(Resources.Error_ProviderNotFound, this.PeeringServiceProvider, this.PeeringLocation, CheckProvider));
+                }
+
+                var result = this.ResourceManagementClient.ResourceGroups.GetWithHttpMessagesAsync(this.ResourceGroupName).GetAwaiter().GetResult();
+                if (!result.Response.IsSuccessStatusCode)
+                {
+                    throw new ItemNotFoundException(string.Format(Resources.Item_NotFound, "ResourceGroupName", this.ResourceGroupName));
+                }
+                var peeringService = new PeeringService
+                {
+                    Location = result.Body.Location,
+                    //location.Select(ToPeeringServiceLocationPS).ToList().Find(x => x.State.Equals(this.PeeringLocation.Trim(), StringComparison.InvariantCultureIgnoreCase)).AzureRegion,
+                    PeeringServiceLocation = this.PeeringLocation.Trim(),
+                    PeeringServiceProvider = this.PeeringServiceProvider.Trim(),
+                    Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, true)
+                };
+                this.PeeringServicesClient.CreateOrUpdate(this.ResourceGroupName, this.Name, peeringService);
+                return this.ToPeeringServicePS(this.PeeringServicesClient.Get(this.ResourceGroupName, this.Name));
             }
             catch (ErrorResponseException ex)
             {

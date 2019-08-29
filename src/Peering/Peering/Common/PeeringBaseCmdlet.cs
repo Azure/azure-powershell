@@ -27,6 +27,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
     using Microsoft.Azure.Commands.ResourceManager.Common;
     using Microsoft.Azure.Management.Peering;
     using Microsoft.Azure.Management.Peering.Models;
+    using Microsoft.Azure.Management.ResourceManager;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Models;
 
     using Newtonsoft.Json;
@@ -37,6 +38,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
     public class PeeringBaseCmdlet : AzureRMCmdlet
     {
         private IPeeringManagementClient peeringClient;
+
+        private IResourceManagementClient resourceClient;
 
         /// <summary>
         /// The PeeringClient
@@ -51,6 +54,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
 
             set => this.peeringClient = value;
         }
+
+        public IResourceManagementClient ResourceManagementClient
+        {
+            get =>
+                this.resourceClient ?? (this.resourceClient =
+                                           AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(
+                                               this.DefaultProfile.DefaultContext,
+                                               AzureEnvironment.Endpoint.ResourceManager));
+
+            set => this.resourceClient = value;
+        }
+
+        public IResourceGroupsOperations ResourceGroupOperations => this.ResourceManagementClient.ResourceGroups;
 
         /// <summary>
         ///     The InputObject client.
@@ -68,9 +84,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         public ILegacyPeeringsOperations PeeringLegacyClient => this.PeeringManagementClient.LegacyPeerings;
 
         /// <summary>
-        ///     The internal operations client to be used by JIT flagged users.
+        /// The peering service providers client
         /// </summary>
-        public IOperations InternalOperationsClient => this.PeeringManagementClient.Operations;
+        public IPeeringServiceProvidersOperations PeeringServiceProvidersClient => this.PeeringManagementClient.PeeringServiceProviders;
+
+        /// <summary>
+        /// The Peering Service locations client.
+        /// </summary>
+        public IPeeringServiceLocationsOperations PeeringServiceLocationsClient => this.PeeringManagementClient.PeeringServiceLocations;
+
+        /// <summary>
+        /// The peering service prefix client
+        /// </summary>
+        public IPeeringServicePrefixesOperations PeeringServicePrefixesClient => this.PeeringManagementClient.PeeringServicePrefixes;
+
+        /// <summary>
+        /// the peering service prefix client extended operations.
+        /// </summary>
+        public IPrefixesOperations PrefixesClient => this.PeeringManagementClient.Prefixes;
+
+        /// <summary>
+        /// The peering services client
+        /// </summary>
+        public IPeeringServicesOperations PeeringServicesClient => this.PeeringManagementClient.PeeringServices;
 
         /// <summary>
         /// The to peering.
@@ -351,6 +387,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
 
                                 throw new PSArgumentOutOfRangeException(
                                     string.Format(Resources.Error_InvalidPrefixRange, routePrefix, "/30", "/31"));
+                            }
+                        }
+                        if (peeringType.Equals(Constants.PeeringService, StringComparison.OrdinalIgnoreCase))
+                        {
+                            if (prefix.PrefixMaskWidth <= 23)
+                            {
+                                throw new PSArgumentOutOfRangeException(
+                                    string.Format(Resources.Error_InvalidPrefix, routePrefix, "/24 - or /32"));
+                            }
+                            else
+                            {
+                                var actualPrefixBigInt = prefix.ActualPrefixBigInt;
+                                if (prefix.Length <= 256)
+                                {
+                                    return prefix.StartOfPrefixBigInt == actualPrefixBigInt
+                                               ? routePrefix
+                                               : throw new PSArgumentException(
+                                                     string.Format(
+                                                         Resources.Error_InvalidPrefixRange,
+                                                         routePrefix,
+                                                         (prefix.StartOfPrefixBigInt).ToIpAddress(
+                                                             AddressFamily.InterNetwork)));
+                                }
+                                throw new PSArgumentOutOfRangeException(
+                                    string.Format(Resources.Error_InvalidPrefixRange, routePrefix, "/24", "/31"));
                             }
                         }
 
