@@ -909,7 +909,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("PolicyNotFoundException", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot configure backup for more than 100 VMs per policy
+        /// </summary>
+        public static string ProtectedItemsCountExceededException
+        {
+            get
+            {
+                return ResourceManager.GetString("ProtectedItemsCountExceededException", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Successfully deleted policy.
         /// </summary>
