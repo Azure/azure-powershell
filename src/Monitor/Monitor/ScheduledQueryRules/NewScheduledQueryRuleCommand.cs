@@ -97,6 +97,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
         #endregion
+
         protected override void ProcessRecordInternal()
         {
             try
@@ -104,20 +105,22 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
                 // Convert Tag parameter from Hashtable to Dictionary<string, string>
                 Dictionary<string, string> tags = TagsConversionHelper.CreateTagDictionary(Tag, true);
 
-                var alertingAction = new AlertingAction(severity: Action.Severity, aznsAction: Action.AznsAction, trigger: Action.Trigger, throttlingInMin: Action.ThrottlingInMin);
+                var alertingAction = new AlertingAction(severity: Action.Severity, aznsAction: Action.AznsAction,
+                    trigger: Action.Trigger, throttlingInMin: Action.ThrottlingInMin);
 
-                var parameters = new LogSearchRuleResource(location: Location, source: Source, schedule: Schedule,
-                    action:alertingAction, tags: tags, description: Description, enabled: Enabled? "true" : "false");
+                var parameters = new LogSearchRuleResource(location: NormalizeLocation(Location), source: Source,
+                    schedule: Schedule,
+                    action: alertingAction, tags: tags, description: Description, enabled: Enabled ? "true" : "false");
 
                 parameters.Validate();
                 if (this.ShouldProcess(this.Name,
                     string.Format("Creating Log Alert Rule '{0}' in resource group {0}", this.Name,
-                    this.ResourceGroupName)))
+                        this.ResourceGroupName)))
                 {
 
                     var result = this.MonitorManagementClient.ScheduledQueryRules
-                    .CreateOrUpdateWithHttpMessagesAsync(resourceGroupName: ResourceGroupName, ruleName: Name,
-                        parameters: parameters).Result;
+                        .CreateOrUpdateWithHttpMessagesAsync(resourceGroupName: ResourceGroupName, ruleName: Name,
+                            parameters: parameters).Result;
 
                     WriteObject(new PSScheduledQueryRuleResource(result.Body));
                 }
@@ -125,7 +128,17 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
             catch (Exception ex)
             {
                 throw new Exception("Error occurred while creating Log Alert rule", ex);
-            }    
+            }
+
+        }
+
+        private string NormalizeLocation(string location)
+        {
+            // lowercase and remove whitespace
+            // e.g. "South Central US" => "southcentralus"
+            return location == null
+                ? null
+                : location.Replace(" ", "").ToLower();
         }
     }
 }
