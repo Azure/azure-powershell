@@ -52,6 +52,8 @@ Get-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCapture
 In this example we create a packet capture named "PacketCaptureTest" with multiple filters and a time limit. Once the session is complete, it will be saved to the specified storage account. 
 We then call Get-AzNetworkWatcherPacketCapture to retrieve the status of the capture session. 
 Note: The Azure Network Watcher extension must be installed on the target virtual machine to create packet captures.
+>[!NOTE]
+>If you create a reference to the packetcapture directly from the New-AzNetworkWatcherPacketCapture command, it won't have all the properties. By make a call to Get-AzNetworkWatcherPacketCapture, you will get all the object's properties.
 
 ### Example 2: Create a Packet Capture with multiple filters and retrieve its status
 ```
