@@ -18,7 +18,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
-    using System.Net;
     using System.Net.Sockets;
 
     using Microsoft.Azure.Commands.Common.Authentication;
@@ -416,6 +415,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
                         }
 
                         return routePrefix;
+
                     case AddressFamily.InterNetworkV6:
                         if (peeringType.Equals(Constants.Direct, StringComparison.OrdinalIgnoreCase))
                         {
@@ -436,6 +436,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
                                                          routePrefix,
                                                          (prefix.EndOfPrefixBigInt).ToIpAddress(
                                                              AddressFamily.InterNetworkV6)));
+
                                 default:
                                     return prefix.StartOfPrefixBigInt + 1 <= prefix.ActualPrefixBigInt
                                                ? routePrefix
@@ -472,7 +473,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         {
             base.ExecuteCmdlet();
             this.Execute();
-
         }
 
         /// <summary>
@@ -559,7 +559,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
                 throw new PSArgumentException(
                     string.Format(Resources.Error_InvalidFacilityId, connection.PeeringDBFacilityId));
             }
-            if(connection.ConnectionIdentifier == null || connection.ConnectionIdentifier == string.Empty)
+            if (connection.ConnectionIdentifier == null || connection.ConnectionIdentifier == string.Empty)
             {
                 throw new PSArgumentNullException(string.Format(Resources.Error_ConnectionIdentifierNull));
             }

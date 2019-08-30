@@ -26,8 +26,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Common;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Models;
 
-    using Newtonsoft.Json;
-
     /// <summary>
     ///     The get InputObject locations.
     /// </summary>

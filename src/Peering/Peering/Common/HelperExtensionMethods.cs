@@ -43,7 +43,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
             return new BigInteger(paddedAddressBytes);
         }
 
-
         /// <summary>
         /// The Bit array always stored data like a IPAddress in big-indian format
         /// </summary>
@@ -56,10 +55,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
 
             if (BitConverter.IsLittleEndian)
             {
-                // little-endian machines store multi-byte integers with the 
-                // least significant byte first. this is a problem, as integer 
-                // values are sent over the network in big-endian mode. reversing 
-                // the order of the bytes is a quick way to get the BitConverter 
+                // little-endian machines store multi-byte integers with the
+                // least significant byte first. this is a problem, as integer
+                // values are sent over the network in big-endian mode. reversing
+                // the order of the bytes is a quick way to get the BitConverter
                 // methods to convert the byte arrays in big-endian mode.
                 Array.Reverse(addressBytes);
             }
@@ -81,10 +80,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
 
             if (BitConverter.IsLittleEndian)
             {
-                // little-endian machines store multi-byte integers with the 
-                // least significant byte first. this is a problem, as integer 
-                // values are sent over the network in big-endian mode. reversing 
-                // the order of the bytes is a quick way to get the BitConverter 
+                // little-endian machines store multi-byte integers with the
+                // least significant byte first. this is a problem, as integer
+                // values are sent over the network in big-endian mode. reversing
+                // the order of the bytes is a quick way to get the BitConverter
                 // methods to convert the byte arrays in big-endian mode.
                 Array.Reverse(addressBytes);
             }
@@ -245,10 +244,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         {
             if (BitConverter.IsLittleEndian)
             {
-                // little-endian machines store multi-byte integers with the 
-                // least significant byte first. this is a problem, as integer 
-                // values are sent over the network in big-endian mode. reversing 
-                // the order of the bytes is a quick way to get the BitConverter 
+                // little-endian machines store multi-byte integers with the
+                // least significant byte first. this is a problem, as integer
+                // values are sent over the network in big-endian mode. reversing
+                // the order of the bytes is a quick way to get the BitConverter
                 // methods to convert the byte arrays in big-endian mode.
                 Array.Reverse(addressBytes);
             }

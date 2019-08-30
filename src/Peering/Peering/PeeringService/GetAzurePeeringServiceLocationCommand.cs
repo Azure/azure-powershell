@@ -13,19 +13,14 @@
 // ----------------------------------------------------------------------------------
 namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
 {
-    using System;
-    using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
 
     using Microsoft.Azure.Commands.Peering.Properties;
-    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.Peering;
     using Microsoft.Azure.Management.Peering.Models;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Common;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Models;
-
-    using Newtonsoft.Json;
 
     /// <inheritdoc />
     /// <summary>
@@ -58,14 +53,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// <returns>
         /// The <see cref="object"/>.
         /// </returns>
-        /// <exception cref="ErrorResponseException">Http Response 
+        /// <exception cref="ErrorResponseException">Http Response
         /// </exception>
         private object GetPeeringServiceLocation()
         {
             try
             {
                 var icList = this.PeeringServiceLocationsClient.List();
-                if(this.PeeringCountry != null)
+                if (this.PeeringCountry != null)
                 {
                     var t = icList.Select(this.ToPeeringServiceLocationPS).ToList().FindAll(x => x.Country == this.PeeringCountry);
                     return t;

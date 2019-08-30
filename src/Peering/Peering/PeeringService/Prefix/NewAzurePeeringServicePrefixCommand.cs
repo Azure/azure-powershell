@@ -14,15 +14,10 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
 {
     using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Linq;
     using System.Management.Automation;
-    using System.Net.Http;
 
     using Microsoft.Azure.Commands.Peering.Properties;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-    using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
     using Microsoft.Azure.Management.Peering;
     using Microsoft.Azure.Management.Peering.Models;
@@ -158,7 +153,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// <returns>Peering Service</returns>
         private object NewPeeringServicePrefix()
         {
-
             var prefix = new PeeringServicePrefix
             {
                 Prefix = this.ValidatePrefix(this.Prefix, Constants.PeeringService)
@@ -170,7 +164,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                 this.ResourceGroupName = resourceId.ResourceGroupName;
                 this.PeeringServiceName = resourceId.ResourceName;
             }
-            if(this.ResourceId != null)
+            if (this.ResourceId != null)
             {
                 var resourceId = new ResourceIdentifier(this.InputObject.Id);
                 this.ResourceGroupName = resourceId.ResourceGroupName;
@@ -182,6 +176,5 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             this.PeeringServicePrefixesClient.CreateOrUpdate(this.ResourceGroupName, this.PeeringServiceName, this.Name, prefix);
             return this.ToPeeringServicePrefixPS(this.PeeringServicePrefixesClient.Get(this.ResourceGroupName, this.PeeringServiceName, this.Name));
         }
-
     }
 }
