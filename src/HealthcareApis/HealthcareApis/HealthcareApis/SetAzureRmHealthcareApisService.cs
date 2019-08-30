@@ -33,7 +33,6 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 
         [Parameter(Mandatory = true, ParameterSetName = ServiceNameParameterSet, HelpMessage = "HealthcareApis Service Name.")]
         [ValidateNotNullOrEmpty]
-        [ValidatePattern("^[a-z0-9][a-z0-9-]{1,21}[a-z0-9]$")]
         [ValidateLength(2, 64)]
         public string Name { get; set; }
 
@@ -45,7 +44,6 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
         [Parameter(Mandatory = false, ParameterSetName = ServiceNameParameterSet, HelpMessage = "HealthcareApis FhirService CosmosOfferThroughput.")]
         [Parameter(Mandatory = false, ParameterSetName = ResourceIdParameterSet, HelpMessage = "HealthcareApis FhirService CosmosOfferThroughput.")]
         [ValidateNotNullOrEmpty]
-        [ValidateRange(400, 10000)]
         public int? CosmosOfferThroughput { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = ServiceNameParameterSet, HelpMessage = "HealthcareApis FhirService Authority.")]
@@ -53,11 +51,9 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
         [ValidateNotNullOrEmpty]
         public string Authority { get; set; }
 
-
         [Parameter(Mandatory = false, ParameterSetName = ServiceNameParameterSet, HelpMessage = "HealthcareApis FhirService Audience.")]
         [Parameter(Mandatory = false, ParameterSetName = ResourceIdParameterSet, HelpMessage = "HealthcareApis FhirService Audience.")]
         [ValidateNotNullOrEmpty]
-        [ValidatePattern("^((?:[hH][tT][tT][pP](?:[sS]|)\\:\\/\\/.+)|([0-9A-Fa-f]{8}[-]?(?:[0-9A-Fa-f]{4}[-]?){3}[0-9A-Fa-f]{12}))$")]
         public string Audience { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = ServiceNameParameterSet, HelpMessage = "HealthcareApis FhirService EnableSmartProxy.")]
@@ -73,7 +69,6 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
         [Parameter(Mandatory = false, ParameterSetName = ServiceNameParameterSet, HelpMessage = "HealthcareApis FhirService List of Cors Origins. Specify URLs of origin sites that can access this API, or use \" * \" to allow access from any site.")]
         [Parameter(Mandatory = false, ParameterSetName = ResourceIdParameterSet, HelpMessage = "HealthcareApis FhirService List of Cors Origins. Specify URLs of origin sites that can access this API, or use \" * \" to allow access from any site.")]
         [ValidateNotNullOrEmpty]
-        [ValidatePattern("^(?:(?:(?:[hH][tT][tT][pP](?:[sS]|))\\:\\/\\/(?:[a-zA-Z0-9-]+[.]?)+(?:\\:[0-9]{1,5})?|[*]))$")]
         public string[] CorsOrigin { get; set; }
 
         [Parameter(Mandatory = false,ParameterSetName = ServiceNameParameterSet, HelpMessage = "HealthcareApis FhirService List of Cors Headers. Specify HTTP headers which can be used during the request. Use \" * \" for any header.")]
@@ -84,13 +79,11 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
         [Parameter(Mandatory = false, ParameterSetName = ServiceNameParameterSet,HelpMessage = "HealthcareApis FhirService List of Cors Methods.")]
         [Parameter(Mandatory = false,ParameterSetName = ResourceIdParameterSet,HelpMessage = "HealthcareApis FhirService List of Cors Methods.")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet("DELETE", "GET", "OPTIONS", "PATCH", "POST", "PUT")]
         public string[] CorsMethod { get; set; }
 
         [Parameter(Mandatory = false,ParameterSetName = ServiceNameParameterSet,HelpMessage = "HealthcareApis FhirService Cors Max Age. Specify how long a result from a request can be cached in seconds. Example: 600 means 10 minutes.")]
         [Parameter(Mandatory = false,ParameterSetName = ResourceIdParameterSet,HelpMessage = "HealthcareApis FhirService Cors Max Age. Specify how long a result from a request can be cached in seconds. Example: 600 means 10 minutes.")]
         [ValidateNotNullOrEmpty]
-        [ValidateRange(0, 99999)]
         public int? CorsMaxAge { get; set; }
 
         [Parameter(Mandatory = false,ParameterSetName = ServiceNameParameterSet, HelpMessage = "HealthcareApis FhirService AllowCorsCredentials.")]
@@ -106,7 +99,6 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
         [Parameter(Mandatory = false, ParameterSetName = ServiceNameParameterSet, HelpMessage = "List of Access Policy Object IDs.")]
         [Parameter(Mandatory = false, ParameterSetName = ResourceIdParameterSet, HelpMessage = "List of Access Policy Object IDs.")]
         [ValidateNotNullOrEmpty]
-        [ValidatePattern("^(([0-9A-Fa-f]{8}[-]?(?:[0-9A-Fa-f]{4}[-]?){3}[0-9A-Fa-f]{12}){1})+$")]
         public string[] AccessPolicyObjectId { get; set; }
 
         [Parameter(
@@ -166,7 +158,14 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 
                             ServicesDescription servicesDescription = GenerateServiceDescription(healthcareApisAccount, accessPolicies);
 
-                            var createAccountResponse = this.HealthcareApisClient.Services.CreateOrUpdate(this.ResourceGroupName, this.Name, servicesDescription);
+                            try
+                            {
+                                var createAccountResponse = this.HealthcareApisClient.Services.CreateOrUpdate(this.ResourceGroupName, this.Name, servicesDescription);
+                            }
+                            catch (ErrorDetailsException wex)
+                            {
+                                WriteError(WriteErrorforBadrequest(wex));
+                            }
 
                             break;
                         }
@@ -195,11 +194,18 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 
                             ServicesDescription servicesDescription = GenerateServiceDescription(healthcareApisAccount, accessPolicies);
 
-                            var healthcareApisFhirServiceUpdateAccount = this.HealthcareApisClient.Services.CreateOrUpdate(
+                            try
+                            {
+                                var healthcareApisFhirServiceUpdateAccount = this.HealthcareApisClient.Services.CreateOrUpdate(
                                                 rgName,
                                                 name,
                                                 servicesDescription);
-                            WriteObject(healthcareApisFhirServiceUpdateAccount);
+                                WriteObject(healthcareApisFhirServiceUpdateAccount);
+                            }
+                            catch (ErrorDetailsException wex)
+                            {
+                                WriteError(WriteErrorforBadrequest(wex));
+                            }
 
                             break;
                         }
@@ -218,12 +224,20 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 
 
                             ServicesDescription servicesDescription = InputObjectToServiceDescription(healthcareApisAccount,accessPolicies);
-                            var healthcareApisFhirServiceUpdateAccount = this.HealthcareApisClient.Services.CreateOrUpdate(
-                                             InputObject.ResourceGroupName,
-                                             InputObject.Name,
-                                             servicesDescription);
 
-                            WriteObject(healthcareApisFhirServiceUpdateAccount);
+                            try
+                            {
+                                var healthcareApisFhirServiceUpdateAccount = this.HealthcareApisClient.Services.CreateOrUpdate(
+                                                 InputObject.ResourceGroupName,
+                                                 InputObject.Name,
+                                                 servicesDescription);
+
+                                WriteObject(healthcareApisFhirServiceUpdateAccount);
+                            }
+                            catch (ErrorDetailsException wex)
+                            {
+                                WriteError(WriteErrorforBadrequest(wex));
+                            }
                             break;
                         }
                 }
