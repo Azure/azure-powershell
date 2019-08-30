@@ -27,6 +27,12 @@ New-AzNetworkProfile -Name <String> -ResourceGroupName <String> -SubscriptionId 
  -NetworkProfile <INetworkProfile> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaIdentity
+```
+New-AzNetworkProfile -InputObject <INetworkIdentity> -NetworkProfile <INetworkProfile>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### CreateViaIdentityExpanded
 ```
 New-AzNetworkProfile -InputObject <INetworkIdentity>
@@ -34,12 +40,6 @@ New-AzNetworkProfile -InputObject <INetworkIdentity>
  [-ContainerNetworkInterfaceConfiguration <IContainerNetworkInterfaceConfiguration[]>] [-Etag <String>]
  [-Id <String>] [-Location <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzNetworkProfile -InputObject <INetworkIdentity> -NetworkProfile <INetworkProfile>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -151,10 +151,11 @@ Dynamic: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
-Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
+Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -186,7 +187,7 @@ The name of the network profile.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, Create
+Parameter Sets: Create, CreateExpanded
 Aliases: NetworkProfileName
 
 Required: True
@@ -219,8 +220,8 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, Create
-Aliases: AsJob
+Parameter Sets: Create, CreateExpanded
+Aliases:
 
 Required: True
 Position: Named
@@ -236,7 +237,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, Create
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True
@@ -301,9 +302,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.INetworkProfile
+
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
 
 ## OUTPUTS
 
@@ -327,60 +328,6 @@ To create the parameters described below, construct a hash table containing the 
     - `[Name <String>]`: The name of the resource. This name can be used to access the resource.
     - `[Subnet <ISubnet>]`: The reference of the subnet resource to create a container network interface ip configuration.
       - `[Id <String>]`: Resource ID.
-      - `[AddressPrefix <String[]>]`: List of  address prefixes for the subnet.
-      - `[Delegation <IDelegation[]>]`: Gets an array of references to the delegations on the subnet.
-        - `[Id <String>]`: Resource ID.
-        - `[Action <String[]>]`: Describes the actions permitted to the service upon delegation
-        - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-        - `[Name <String>]`: The name of the resource that is unique within a subnet. This name can be used to access the resource.
-        - `[ServiceName <String>]`: The name of the service to whom the subnet should be delegated (e.g. Microsoft.Sql/servers)
-      - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-      - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-      - `[NatGatewayId <String>]`: Resource ID.
-      - `[Nsg <INetworkSecurityGroup>]`: The reference of the NetworkSecurityGroup resource.
-      - `[PropertiesAddressPrefix <String>]`: The address prefix for the subnet.
-      - `[ProvisioningState <String>]`: The provisioning state of the resource.
-      - `[ResourceNavigationLink <IResourceNavigationLink[]>]`: Gets an array of references to the external resources using subnet.
-        - `[Id <String>]`: Resource ID.
-        - `[Link <String>]`: Link to the external resource
-        - `[LinkedResourceType <String>]`: Resource type of the linked resource.
-        - `[Name <String>]`: Name of the resource that is unique within a resource group. This name can be used to access the resource.
-      - `[RouteTable <IRouteTable>]`: The reference of the RouteTable resource.
-        - `[Id <String>]`: Resource ID.
-        - `[Location <String>]`: Resource location.
-        - `[Tag <IResourceTags>]`: Resource tags.
-        - `[DisableBgpRoutePropagation <Boolean?>]`: Gets or sets whether to disable the routes learned by BGP on that route table. True means disable.
-        - `[Etag <String>]`: Gets a unique read-only string that changes whenever the resource is updated.
-        - `[ProvisioningState <String>]`: The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-        - `[Route <IRoute[]>]`: Collection of routes contained within a route table.
-          - `NextHopType <RouteNextHopType>`: The type of Azure hop the packet should be sent to.
-          - `[Id <String>]`: Resource ID.
-          - `[AddressPrefix <String>]`: The destination CIDR to which the route applies.
-          - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-          - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-          - `[NextHopIPAddress <String>]`: The IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is VirtualAppliance.
-          - `[ProvisioningState <String>]`: The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-      - `[ServiceAssociationLink <IServiceAssociationLink[]>]`: Gets an array of references to services injecting into this subnet.
-        - `[Id <String>]`: Resource ID.
-        - `[Link <String>]`: Link to the external resource.
-        - `[LinkedResourceType <String>]`: Resource type of the linked resource.
-        - `[Name <String>]`: Name of the resource that is unique within a resource group. This name can be used to access the resource.
-      - `[ServiceEndpoint <IServiceEndpointPropertiesFormat[]>]`: An array of service endpoints.
-        - `[Location <String[]>]`: A list of locations.
-        - `[ProvisioningState <String>]`: The provisioning state of the resource.
-        - `[Service <String>]`: The type of the endpoint service.
-      - `[ServiceEndpointPolicy <IServiceEndpointPolicy[]>]`: An array of service endpoint policies.
-        - `[Id <String>]`: Resource ID.
-        - `[Location <String>]`: Resource location.
-        - `[Tag <IResourceTags>]`: Resource tags.
-        - `[Definition <IServiceEndpointPolicyDefinition[]>]`: A collection of service endpoint policy definitions of the service endpoint policy.
-          - `[Id <String>]`: Resource ID.
-          - `[Description <String>]`: A description for this rule. Restricted to 140 chars.
-          - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-          - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-          - `[Service <String>]`: Service endpoint name.
-          - `[ServiceResource <String[]>]`: A list of service resources.
-        - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
   - `[ContainerId <String>]`: Resource ID.
   - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
   - `[IPConfiguration <IContainerNetworkInterfaceIPConfiguration[]>]`: Reference to the ip configuration on this container nic.
@@ -388,6 +335,7 @@ To create the parameters described below, construct a hash table containing the 
     - `[Name <String>]`: The name of the resource. This name can be used to access the resource.
   - `[Name <String>]`: The name of the resource. This name can be used to access the resource.
   - `[PropertiesContainerNetworkInterfaceConfigurationPropertiesContainerNetworkInterfaces <ISubResource[]>]`: A list of container network interfaces created from this container network interface configuration.
+    - `[Id <String>]`: Resource ID.
 
 #### CONTAINERNETWORKINTERFACECONFIGURATION <IContainerNetworkInterfaceConfiguration[]>: List of chid container network interface configurations.
   - `[Id <String>]`: Resource ID.
@@ -400,146 +348,79 @@ To create the parameters described below, construct a hash table containing the 
     - `[Name <String>]`: The name of the resource. This name can be used to access the resource.
     - `[Subnet <ISubnet>]`: The reference of the subnet resource to create a container network interface ip configuration.
       - `[Id <String>]`: Resource ID.
-      - `[AddressPrefix <String[]>]`: List of  address prefixes for the subnet.
-      - `[Delegation <IDelegation[]>]`: Gets an array of references to the delegations on the subnet.
-        - `[Id <String>]`: Resource ID.
-        - `[Action <String[]>]`: Describes the actions permitted to the service upon delegation
-        - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-        - `[Name <String>]`: The name of the resource that is unique within a subnet. This name can be used to access the resource.
-        - `[ServiceName <String>]`: The name of the service to whom the subnet should be delegated (e.g. Microsoft.Sql/servers)
-      - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-      - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-      - `[NatGatewayId <String>]`: Resource ID.
-      - `[Nsg <INetworkSecurityGroup>]`: The reference of the NetworkSecurityGroup resource.
-      - `[PropertiesAddressPrefix <String>]`: The address prefix for the subnet.
-      - `[ProvisioningState <String>]`: The provisioning state of the resource.
-      - `[ResourceNavigationLink <IResourceNavigationLink[]>]`: Gets an array of references to the external resources using subnet.
-        - `[Id <String>]`: Resource ID.
-        - `[Link <String>]`: Link to the external resource
-        - `[LinkedResourceType <String>]`: Resource type of the linked resource.
-        - `[Name <String>]`: Name of the resource that is unique within a resource group. This name can be used to access the resource.
-      - `[RouteTable <IRouteTable>]`: The reference of the RouteTable resource.
-        - `[Id <String>]`: Resource ID.
-        - `[Location <String>]`: Resource location.
-        - `[Tag <IResourceTags>]`: Resource tags.
-        - `[DisableBgpRoutePropagation <Boolean?>]`: Gets or sets whether to disable the routes learned by BGP on that route table. True means disable.
-        - `[Etag <String>]`: Gets a unique read-only string that changes whenever the resource is updated.
-        - `[ProvisioningState <String>]`: The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-        - `[Route <IRoute[]>]`: Collection of routes contained within a route table.
-          - `NextHopType <RouteNextHopType>`: The type of Azure hop the packet should be sent to.
-          - `[Id <String>]`: Resource ID.
-          - `[AddressPrefix <String>]`: The destination CIDR to which the route applies.
-          - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-          - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-          - `[NextHopIPAddress <String>]`: The IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is VirtualAppliance.
-          - `[ProvisioningState <String>]`: The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-      - `[ServiceAssociationLink <IServiceAssociationLink[]>]`: Gets an array of references to services injecting into this subnet.
-        - `[Id <String>]`: Resource ID.
-        - `[Link <String>]`: Link to the external resource.
-        - `[LinkedResourceType <String>]`: Resource type of the linked resource.
-        - `[Name <String>]`: Name of the resource that is unique within a resource group. This name can be used to access the resource.
-      - `[ServiceEndpoint <IServiceEndpointPropertiesFormat[]>]`: An array of service endpoints.
-        - `[Location <String[]>]`: A list of locations.
-        - `[ProvisioningState <String>]`: The provisioning state of the resource.
-        - `[Service <String>]`: The type of the endpoint service.
-      - `[ServiceEndpointPolicy <IServiceEndpointPolicy[]>]`: An array of service endpoint policies.
-        - `[Id <String>]`: Resource ID.
-        - `[Location <String>]`: Resource location.
-        - `[Tag <IResourceTags>]`: Resource tags.
-        - `[Definition <IServiceEndpointPolicyDefinition[]>]`: A collection of service endpoint policy definitions of the service endpoint policy.
-          - `[Id <String>]`: Resource ID.
-          - `[Description <String>]`: A description for this rule. Restricted to 140 chars.
-          - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-          - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-          - `[Service <String>]`: Service endpoint name.
-          - `[ServiceResource <String[]>]`: A list of service resources.
-        - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
   - `[Name <String>]`: The name of the resource. This name can be used to access the resource.
+
+#### INPUTOBJECT <INetworkIdentity>: Identity Parameter
+  - `[ApplicationGatewayName <String>]`: The name of the application gateway.
+  - `[ApplicationSecurityGroupName <String>]`: The name of the application security group.
+  - `[AuthorizationName <String>]`: The name of the authorization.
+  - `[AzureFirewallName <String>]`: The name of the Azure Firewall.
+  - `[BackendAddressPoolName <String>]`: The name of the backend address pool.
+  - `[CircuitName <String>]`: The name of the express route circuit.
+  - `[ConnectionMonitorName <String>]`: The name of the connection monitor.
+  - `[ConnectionName <String>]`: The name of the vpn connection.
+  - `[CrossConnectionName <String>]`: The name of the ExpressRouteCrossConnection (service key of the circuit).
+  - `[DdosCustomPolicyName <String>]`: The name of the DDoS custom policy.
+  - `[DdosProtectionPlanName <String>]`: The name of the DDoS protection plan.
+  - `[DefaultSecurityRuleName <String>]`: The name of the default security rule.
+  - `[DevicePath <String>]`: The path of the device.
+  - `[ExpressRouteGatewayName <String>]`: The name of the ExpressRoute gateway.
+  - `[ExpressRoutePortName <String>]`: The name of the ExpressRoutePort resource.
+  - `[FrontendIPConfigurationName <String>]`: The name of the frontend IP configuration.
+  - `[GatewayName <String>]`: The name of the gateway.
+  - `[IPConfigurationName <String>]`: The name of the ip configuration name.
+  - `[Id <String>]`: Resource identity path
+  - `[InboundNatRuleName <String>]`: The name of the inbound nat rule.
+  - `[InterfaceEndpointName <String>]`: The name of the interface endpoint.
+  - `[LinkName <String>]`: The name of the ExpressRouteLink resource.
+  - `[LoadBalancerName <String>]`: The name of the load balancer.
+  - `[LoadBalancingRuleName <String>]`: The name of the load balancing rule.
+  - `[LocalNetworkGatewayName <String>]`: The name of the local network gateway.
+  - `[Location <String>]`: The location of the subnet.
+  - `[LocationName <String>]`: Name of the requested ExpressRoutePort peering location.
+  - `[NatGatewayName <String>]`: The name of the nat gateway.
+  - `[NetworkInterfaceName <String>]`: The name of the network interface.
+  - `[NetworkProfileName <String>]`: The name of the NetworkProfile.
+  - `[NetworkWatcherName <String>]`: The name of the network watcher.
+  - `[NsgName <String>]`: The name of the network security group.
+  - `[OutboundRuleName <String>]`: The name of the outbound rule.
+  - `[P2SVpnServerConfigurationName <String>]`: The name of the P2SVpnServerConfiguration.
+  - `[PacketCaptureName <String>]`: The name of the packet capture session.
+  - `[PeeringName <String>]`: The name of the peering.
+  - `[PolicyName <String>]`: The name of the policy
+  - `[PredefinedPolicyName <String>]`: Name of Ssl predefined policy.
+  - `[ProbeName <String>]`: The name of the probe.
+  - `[PublicIPAddressName <String>]`: The name of the subnet.
+  - `[PublicIPPrefixName <String>]`: The name of the PublicIpPrefix.
+  - `[ResourceGroupName <String>]`: The name of the resource group.
+  - `[RouteFilterName <String>]`: The name of the route filter.
+  - `[RouteName <String>]`: The name of the route.
+  - `[RouteTableName <String>]`: The name of the route table.
+  - `[RuleName <String>]`: The name of the rule.
+  - `[SecurityRuleName <String>]`: The name of the security rule.
+  - `[ServiceEndpointPolicyDefinitionName <String>]`: The name of the service endpoint policy definition.
+  - `[ServiceEndpointPolicyName <String>]`: The name of the service endpoint policy.
+  - `[SubnetName <String>]`: The name of the subnet.
+  - `[SubscriptionId <String>]`: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  - `[TapConfigurationName <String>]`: The name of the tap configuration.
+  - `[TapName <String>]`: The name of the virtual network tap.
+  - `[VirtualHubName <String>]`: The name of the VirtualHub.
+  - `[VirtualMachineScaleSetName <String>]`: The name of the virtual machine scale set.
+  - `[VirtualWanName <String>]`: The name of the VirtualWAN being retrieved.
+  - `[VirtualWanName1 <String>]`: The name of the VirtualWAN for which configuration of all vpn-sites is needed.
+  - `[VirtualWanName2 <String>]`: The name of the VirtualWan.
+  - `[VirtualmachineIndex <String>]`: The virtual machine index.
+  - `[VnetGatewayConnectionName <String>]`: The name of the virtual network gateway connection for which the configuration script is generated.
+  - `[VnetGatewayName <String>]`: The name of the virtual network gateway.
+  - `[VnetName <String>]`: The name of the virtual network.
+  - `[VnetPeeringName <String>]`: The name of the virtual network peering.
+  - `[VpnSiteName <String>]`: The name of the VpnSite being retrieved.
 
 #### NETWORKPROFILE <INetworkProfile>: Network profile resource.
   - `[Id <String>]`: Resource ID.
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[ContainerNetworkInterface <IContainerNetworkInterface[]>]`: List of child container network interfaces.
-    - `[Id <String>]`: Resource ID.
-    - `[ConfigurationEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
-    - `[ConfigurationId <String>]`: Resource ID.
-    - `[ConfigurationName <String>]`: The name of the resource. This name can be used to access the resource.
-    - `[ConfigurationPropertiesIPConfiguration <IIPConfigurationProfile[]>]`: A list of ip configurations of the container network interface configuration.
-      - `[Id <String>]`: Resource ID.
-      - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-      - `[Name <String>]`: The name of the resource. This name can be used to access the resource.
-      - `[Subnet <ISubnet>]`: The reference of the subnet resource to create a container network interface ip configuration.
-        - `[Id <String>]`: Resource ID.
-        - `[AddressPrefix <String[]>]`: List of  address prefixes for the subnet.
-        - `[Delegation <IDelegation[]>]`: Gets an array of references to the delegations on the subnet.
-          - `[Id <String>]`: Resource ID.
-          - `[Action <String[]>]`: Describes the actions permitted to the service upon delegation
-          - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-          - `[Name <String>]`: The name of the resource that is unique within a subnet. This name can be used to access the resource.
-          - `[ServiceName <String>]`: The name of the service to whom the subnet should be delegated (e.g. Microsoft.Sql/servers)
-        - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-        - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-        - `[NatGatewayId <String>]`: Resource ID.
-        - `[Nsg <INetworkSecurityGroup>]`: The reference of the NetworkSecurityGroup resource.
-        - `[PropertiesAddressPrefix <String>]`: The address prefix for the subnet.
-        - `[ProvisioningState <String>]`: The provisioning state of the resource.
-        - `[ResourceNavigationLink <IResourceNavigationLink[]>]`: Gets an array of references to the external resources using subnet.
-          - `[Id <String>]`: Resource ID.
-          - `[Link <String>]`: Link to the external resource
-          - `[LinkedResourceType <String>]`: Resource type of the linked resource.
-          - `[Name <String>]`: Name of the resource that is unique within a resource group. This name can be used to access the resource.
-        - `[RouteTable <IRouteTable>]`: The reference of the RouteTable resource.
-          - `[Id <String>]`: Resource ID.
-          - `[Location <String>]`: Resource location.
-          - `[Tag <IResourceTags>]`: Resource tags.
-          - `[DisableBgpRoutePropagation <Boolean?>]`: Gets or sets whether to disable the routes learned by BGP on that route table. True means disable.
-          - `[Etag <String>]`: Gets a unique read-only string that changes whenever the resource is updated.
-          - `[ProvisioningState <String>]`: The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-          - `[Route <IRoute[]>]`: Collection of routes contained within a route table.
-            - `NextHopType <RouteNextHopType>`: The type of Azure hop the packet should be sent to.
-            - `[Id <String>]`: Resource ID.
-            - `[AddressPrefix <String>]`: The destination CIDR to which the route applies.
-            - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-            - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-            - `[NextHopIPAddress <String>]`: The IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is VirtualAppliance.
-            - `[ProvisioningState <String>]`: The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-        - `[ServiceAssociationLink <IServiceAssociationLink[]>]`: Gets an array of references to services injecting into this subnet.
-          - `[Id <String>]`: Resource ID.
-          - `[Link <String>]`: Link to the external resource.
-          - `[LinkedResourceType <String>]`: Resource type of the linked resource.
-          - `[Name <String>]`: Name of the resource that is unique within a resource group. This name can be used to access the resource.
-        - `[ServiceEndpoint <IServiceEndpointPropertiesFormat[]>]`: An array of service endpoints.
-          - `[Location <String[]>]`: A list of locations.
-          - `[ProvisioningState <String>]`: The provisioning state of the resource.
-          - `[Service <String>]`: The type of the endpoint service.
-        - `[ServiceEndpointPolicy <IServiceEndpointPolicy[]>]`: An array of service endpoint policies.
-          - `[Id <String>]`: Resource ID.
-          - `[Location <String>]`: Resource location.
-          - `[Tag <IResourceTags>]`: Resource tags.
-          - `[Definition <IServiceEndpointPolicyDefinition[]>]`: A collection of service endpoint policy definitions of the service endpoint policy.
-            - `[Id <String>]`: Resource ID.
-            - `[Description <String>]`: A description for this rule. Restricted to 140 chars.
-            - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-            - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-            - `[Service <String>]`: Service endpoint name.
-            - `[ServiceResource <String[]>]`: A list of service resources.
-          - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-    - `[ContainerId <String>]`: Resource ID.
-    - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-    - `[IPConfiguration <IContainerNetworkInterfaceIPConfiguration[]>]`: Reference to the ip configuration on this container nic.
-      - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-      - `[Name <String>]`: The name of the resource. This name can be used to access the resource.
-    - `[Name <String>]`: The name of the resource. This name can be used to access the resource.
-    - `[PropertiesContainerNetworkInterfaceConfigurationPropertiesContainerNetworkInterfaces <ISubResource[]>]`: A list of container network interfaces created from this container network interface configuration.
-  - `[ContainerNetworkInterfaceConfiguration <IContainerNetworkInterfaceConfiguration[]>]`: List of chid container network interface configurations.
-    - `[Id <String>]`: Resource ID.
-    - `[ContainerNetworkInterface <ISubResource[]>]`: A list of container network interfaces created from this container network interface configuration.
-    - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-    - `[IPConfiguration <IIPConfigurationProfile[]>]`: A list of ip configurations of the container network interface configuration.
-    - `[Name <String>]`: The name of the resource. This name can be used to access the resource.
-  - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
 
 ## RELATED LINKS
 

@@ -252,7 +252,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
 
 ## RELATED LINKS
 

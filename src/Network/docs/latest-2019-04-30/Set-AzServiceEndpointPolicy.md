@@ -62,7 +62,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -86,7 +86,6 @@ Dynamic: False
 
 ### -Definition
 A collection of service endpoint policy definitions of the service endpoint policy.
-To construct, see NOTES section for DEFINITION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IServiceEndpointPolicyDefinition_Reference[]
@@ -175,7 +174,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -298,26 +297,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### DEFINITION <IServiceEndpointPolicyDefinition_Reference[]>: A collection of service endpoint policy definitions of the service endpoint policy.
-  - `[Description <String>]`: A description for this rule. Restricted to 140 chars.
-  - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-  - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  - `[Service <String>]`: Service endpoint name.
-  - `[ServiceResource <String[]>]`: A list of service resources.
-
 #### SERVICEENDPOINTPOLICY <IServiceEndpointPolicy>: Service End point policy resource.
   - `[Id <String>]`: Resource ID.
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[Definition <IServiceEndpointPolicyDefinition[]>]`: A collection of service endpoint policy definitions of the service endpoint policy.
-    - `[Id <String>]`: Resource ID.
-    - `[Description <String>]`: A description for this rule. Restricted to 140 chars.
-    - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-    - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-    - `[Service <String>]`: Service endpoint name.
-    - `[ServiceResource <String[]>]`: A list of service resources.
-  - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
 
 ## RELATED LINKS
 

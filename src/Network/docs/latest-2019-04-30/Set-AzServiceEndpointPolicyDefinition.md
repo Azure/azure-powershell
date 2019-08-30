@@ -63,7 +63,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -160,7 +160,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -172,7 +172,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: ServiceEndpointPolicy
+Aliases:
 
 Required: True
 Position: Named
@@ -334,11 +334,6 @@ To create the parameters described below, construct a hash table containing the 
 
 #### SERVICEENDPOINTPOLICYDEFINITION <IServiceEndpointPolicyDefinition>: Service Endpoint policy definitions.
   - `[Id <String>]`: Resource ID.
-  - `[Description <String>]`: A description for this rule. Restricted to 140 chars.
-  - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-  - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  - `[Service <String>]`: Service endpoint name.
-  - `[ServiceResource <String[]>]`: A list of service resources.
 
 ## RELATED LINKS
 

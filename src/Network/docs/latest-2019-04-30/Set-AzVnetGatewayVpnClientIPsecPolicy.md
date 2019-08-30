@@ -15,10 +15,10 @@ The Set VpnclientIpsecParameters operation sets the vpnclient ipsec policy for P
 ### SetExpanded (Default)
 ```
 Set-AzVnetGatewayVpnClientIPsecPolicy -ResourceGroupName <String> -SubscriptionId <String>
- -VnetGatewayName <String> -DHGroup <DhGroup> -IPsecEncryption <IpsecEncryption>
- -IPsecIntegrity <IpsecIntegrity> -IkeEncryption <IkeEncryption> -IkeIntegrity <IkeIntegrity>
- -PfsGroup <PfsGroup> -SADataSizeInKilobytes <Int32> -SALifetimeInSeconds <Int32> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -VnetGatewayName <String> -DHGroup <DhGroup> -IkeEncryption <IkeEncryption> -IkeIntegrity <IkeIntegrity>
+ -IPsecEncryption <IpsecEncryption> -IPsecIntegrity <IpsecIntegrity> -PfsGroup <PfsGroup>
+ -SADataSizeInKilobytes <Int32> -SALifetimeInSeconds <Int32> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Set
@@ -63,7 +63,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -175,7 +175,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -203,7 +203,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: InputObject
+Aliases:
 
 Required: True
 Position: Named
@@ -223,7 +223,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -239,7 +239,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

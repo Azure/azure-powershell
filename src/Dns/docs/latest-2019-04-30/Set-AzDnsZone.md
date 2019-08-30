@@ -22,9 +22,8 @@ Set-AzDnsZone -Name <String> -ResourceGroupName <String> -SubscriptionId <String
 ### UpdatePrivate
 ```
 Set-AzDnsZone -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Location <String> -Private
- [-Etag <String>] [-Tag <Hashtable>] [-RegistrationVirtualNetworkId <String[]>]
- [-ResolutionVirtualNetworkId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-Etag <String>] [-RegistrationVirtualNetworkId <String[]>] [-ResolutionVirtualNetworkId <String[]>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -127,7 +126,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

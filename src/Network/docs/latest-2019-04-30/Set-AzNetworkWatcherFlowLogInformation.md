@@ -64,7 +64,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -96,7 +96,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -112,7 +112,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -128,7 +128,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -141,7 +141,7 @@ To construct, see NOTES section for FLOWLOGCONFIGURATION properties and create a
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IFlowLogInformation
 Parameter Sets: Set
-Aliases: NetworkWatcher
+Aliases:
 
 Required: True
 Position: Named
@@ -177,7 +177,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -209,7 +209,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -221,7 +221,7 @@ The name of the network watcher resource group.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: Location, Workspace
+Aliases:
 
 Required: True
 Position: Named
@@ -241,7 +241,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -306,7 +306,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

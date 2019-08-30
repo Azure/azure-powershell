@@ -15,7 +15,7 @@ Creates a virtual wan vpn gateway if it doesn't exist else updates the existing 
 ### UpdateExpanded (Default)
 ```
 Set-AzVpnGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-BgpAsn <Int64>]
- [-BgpPeerWeight <Int32>] [-BgpPeeringAddress <String>] [-Connection <IVpnConnection_Reference[]>]
+ [-BgpPeeringAddress <String>] [-BgpPeerWeight <Int32>] [-Connection <IVpnConnection_Reference[]>]
  [-Id <String>] [-Location <String>] [-ScaleUnit <Int32>] [-Tag <Hashtable>] [-VirtualHubId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -61,7 +61,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -77,7 +77,7 @@ Aliases: Asn
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -109,7 +109,7 @@ Aliases: PeerWeight, BgpPeeringWeight
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -117,7 +117,6 @@ Dynamic: False
 
 ### -Connection
 List of all vpn connections to the gateway.
-To construct, see NOTES section for CONNECTION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IVpnConnection_Reference[]
@@ -206,7 +205,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -238,7 +237,7 @@ Aliases: VpnGatewayScaleUnit
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -361,58 +360,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### CONNECTION <IVpnConnection_Reference[]>: List of all vpn connections to the gateway.
-  - `[ConnectionBandwidth <Int32?>]`: Expected bandwidth in MBPS.
-  - `[EnableBgp <Boolean?>]`: EnableBgp flag
-  - `[EnableInternetSecurity <Boolean?>]`: Enable internet security
-  - `[EnableRateLimiting <Boolean?>]`: EnableBgp flag
-  - `[IpsecPolicy <IIpsecPolicy[]>]`: The IPSec Policies to be considered by this connection.
-    - `DhGroup <DhGroup>`: The DH Group used in IKE Phase 1 for initial SA.
-    - `IkeEncryption <IkeEncryption>`: The IKE encryption algorithm (IKE phase 2).
-    - `IkeIntegrity <IkeIntegrity>`: The IKE integrity algorithm (IKE phase 2).
-    - `IpsecEncryption <IpsecEncryption>`: The IPSec encryption algorithm (IKE phase 1).
-    - `IpsecIntegrity <IpsecIntegrity>`: The IPSec integrity algorithm (IKE phase 1).
-    - `PfsGroup <PfsGroup>`: The Pfs Group used in IKE Phase 2 for new child SA.
-    - `SaDataSizeKilobyte <Int32>`: The IPSec Security Association (also called Quick Mode or Phase 2 SA) payload size in KB for a site to site VPN tunnel.
-    - `SaLifeTimeSecond <Int32>`: The IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime in seconds for a site to site VPN tunnel.
-  - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  - `[ProtocolType <VirtualNetworkGatewayConnectionProtocol?>]`: Connection protocol used for this connection
-  - `[RemoteVpnSiteId <String>]`: Resource ID.
-  - `[RoutingWeight <Int32?>]`: Routing weight for vpn connection.
-  - `[SharedKey <String>]`: SharedKey for the vpn connection.
-  - `[UseLocalAzureIPAddress <Boolean?>]`: Use local azure ip to initiate connection
-
 #### VPNGATEWAY <IVpnGateway>: VpnGateway Resource.
   - `[Id <String>]`: Resource ID.
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[BgpAsn <Int64?>]`: The BGP speaker's ASN.
-  - `[BgpPeerWeight <Int32?>]`: The weight added to routes learned from this BGP speaker.
-  - `[BgpPeeringAddress <String>]`: The BGP peering address and BGP identifier of this BGP speaker.
-  - `[Connection <IVpnConnection[]>]`: List of all vpn connections to the gateway.
-    - `[Id <String>]`: Resource ID.
-    - `[ConnectionBandwidth <Int32?>]`: Expected bandwidth in MBPS.
-    - `[EnableBgp <Boolean?>]`: EnableBgp flag
-    - `[EnableInternetSecurity <Boolean?>]`: Enable internet security
-    - `[EnableRateLimiting <Boolean?>]`: EnableBgp flag
-    - `[IpsecPolicy <IIpsecPolicy[]>]`: The IPSec Policies to be considered by this connection.
-      - `DhGroup <DhGroup>`: The DH Group used in IKE Phase 1 for initial SA.
-      - `IkeEncryption <IkeEncryption>`: The IKE encryption algorithm (IKE phase 2).
-      - `IkeIntegrity <IkeIntegrity>`: The IKE integrity algorithm (IKE phase 2).
-      - `IpsecEncryption <IpsecEncryption>`: The IPSec encryption algorithm (IKE phase 1).
-      - `IpsecIntegrity <IpsecIntegrity>`: The IPSec integrity algorithm (IKE phase 1).
-      - `PfsGroup <PfsGroup>`: The Pfs Group used in IKE Phase 2 for new child SA.
-      - `SaDataSizeKilobyte <Int32>`: The IPSec Security Association (also called Quick Mode or Phase 2 SA) payload size in KB for a site to site VPN tunnel.
-      - `SaLifeTimeSecond <Int32>`: The IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime in seconds for a site to site VPN tunnel.
-    - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-    - `[ProtocolType <VirtualNetworkGatewayConnectionProtocol?>]`: Connection protocol used for this connection
-    - `[RemoteVpnSiteId <String>]`: Resource ID.
-    - `[RoutingWeight <Int32?>]`: Routing weight for vpn connection.
-    - `[SharedKey <String>]`: SharedKey for the vpn connection.
-    - `[UseLocalAzureIPAddress <Boolean?>]`: Use local azure ip to initiate connection
-  - `[ScaleUnit <Int32?>]`: The scale unit for this vpn gateway.
-  - `[VirtualHubId <String>]`: Resource ID.
 
 ## RELATED LINKS
 

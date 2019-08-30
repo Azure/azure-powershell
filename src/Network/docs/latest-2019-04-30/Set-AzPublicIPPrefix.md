@@ -15,11 +15,11 @@ Creates or updates a static or dynamic public IP prefix.
 ### UpdateExpanded (Default)
 ```
 Set-AzPublicIPPrefix -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-Etag <String>]
- [-IPPrefix <String>] [-IPTag <IIPTag[]>] [-Id <String>] [-Location <String>] [-PrefixLength <Int32>]
- [-ProvisioningState <String>] [-PublicIPAddress <IReferencedPublicIPAddress[]>]
- [-PublicIPAddressVersion <IPVersion>] [-ResourceGuid <String>] [-SkuName <PublicIPPrefixSkuName>]
- [-Tag <Hashtable>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-Id <String>] [-IPPrefix <String>] [-IPTag <IIPTag[]>] [-LoadBalancerFrontendIPConfigurationId <String>]
+ [-Location <String>] [-PrefixLength <Int32>] [-ProvisioningState <String>]
+ [-PublicIPAddress <IReferencedPublicIPAddress[]>] [-PublicIPAddressVersion <IPVersion>]
+ [-ResourceGuid <String>] [-SkuName <PublicIPPrefixSkuName>] [-Tag <Hashtable>] [-Zone <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
@@ -64,7 +64,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -119,7 +119,7 @@ Dynamic: False
 ```
 
 ### -IPPrefix
-The allocated Prefix
+The allocated Prefix.
 
 ```yaml
 Type: System.String
@@ -140,6 +140,22 @@ To construct, see NOTES section for IPTAG properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IIPTag[]
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -LoadBalancerFrontendIPConfigurationId
+Resource ID.
+
+```yaml
+Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -193,7 +209,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -209,7 +225,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -233,7 +249,7 @@ Dynamic: False
 ```
 
 ### -PublicIPAddress
-The list of all referenced PublicIPAddresses
+The list of all referenced PublicIPAddresses.
 To construct, see NOTES section for PUBLICIPADDRESS properties and create a hash table.
 
 ```yaml
@@ -434,27 +450,14 @@ To create the parameters described below, construct a hash table containing the 
   - `[Tag <String>]`: Gets or sets value of the IpTag associated with the public IP. Example SQL, Storage etc
   - `[Type <String>]`: Gets or sets the ipTag type: Example FirstPartyUsage.
 
-#### PUBLICIPADDRESS <IReferencedPublicIPAddress[]>: The list of all referenced PublicIPAddresses
-  - `[Id <String>]`: The PublicIPAddress Reference
+#### PUBLICIPADDRESS <IReferencedPublicIPAddress[]>: The list of all referenced PublicIPAddresses.
+  - `[Id <String>]`: The PublicIPAddress Reference.
 
 #### PUBLICIPPREFIX <IPublicIPPrefix>: Public IP prefix resource.
   - `[Id <String>]`: Resource ID.
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-  - `[IPPrefix <String>]`: The allocated Prefix
-  - `[IPTag <IIPTag[]>]`: The list of tags associated with the public IP prefix.
-    - `[Tag <String>]`: Gets or sets value of the IpTag associated with the public IP. Example SQL, Storage etc
-    - `[Type <String>]`: Gets or sets the ipTag type: Example FirstPartyUsage.
-  - `[PrefixLength <Int32?>]`: The Length of the Public IP Prefix.
-  - `[ProvisioningState <String>]`: The provisioning state of the Public IP prefix resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-  - `[PublicIPAddress <IReferencedPublicIPAddress[]>]`: The list of all referenced PublicIPAddresses
-    - `[Id <String>]`: The PublicIPAddress Reference
-  - `[PublicIPAddressVersion <IPVersion?>]`: The public IP address version.
-  - `[ResourceGuid <String>]`: The resource GUID property of the public IP prefix resource.
-  - `[SkuName <PublicIPPrefixSkuName?>]`: Name of a public IP prefix SKU.
-  - `[Zone <String[]>]`: A list of availability zones denoting the IP allocated for the resource needs to come from.
 
 ## RELATED LINKS
 

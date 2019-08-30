@@ -317,22 +317,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[CustomRule <IWebApplicationFirewallCustomRule[]>]`: Describes custom rules inside the policy
-    - `Action <WebApplicationFirewallAction>`: Type of Actions
-    - `MatchCondition <IMatchCondition[]>`: List of match conditions
-      - `MatchValue <String[]>`: Match value
-      - `MatchVariable <IMatchVariable[]>`: List of match variables
-        - `VariableName <WebApplicationFirewallMatchVariable>`: Match Variable
-        - `[Selector <String>]`: Describes field of the matchVariable collection
-      - `Operator <WebApplicationFirewallOperator>`: Describes operator to be matched
-      - `[NegationConditon <Boolean?>]`: Describes if this is negate condition or not
-      - `[Transform <WebApplicationFirewallTransform[]>]`: List of transforms
-    - `Priority <Int32>`: Describes priority of the rule. Rules with a lower value will be evaluated before rules with a higher value
-    - `RuleType <WebApplicationFirewallRuleType>`: Describes type of rule
-    - `[Name <String>]`: Gets name of the resource that is unique within a policy. This name can be used to access the resource.
-  - `[Etag <String>]`: Gets a unique read-only string that changes whenever the resource is updated.
-  - `[PolicySettingEnabledState <WebApplicationFirewallEnabledState?>]`: Describes if the policy is in enabled state or disabled state
-  - `[PolicySettingMode <WebApplicationFirewallMode?>]`: Describes if it is in detection mode  or prevention mode at policy level
 
 ## RELATED LINKS
 

@@ -62,7 +62,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -191,7 +191,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -203,7 +203,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: InputObject
+Aliases:
 
 Required: True
 Position: Named
@@ -239,7 +239,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -314,11 +314,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 #### EXPRESSROUTECONNECTION <IExpressRouteConnection>: ExpressRouteConnection resource.
-  - `Name <String>`: The name of the resource.
   - `[Id <String>]`: Resource ID.
-  - `[AuthorizationKey <String>]`: Authorization key to establish the connection.
-  - `[ExpressRouteCircuitPeeringId <String>]`: The ID of the ExpressRoute circuit peering.
-  - `[RoutingWeight <Int32?>]`: The routing weight associated to the connection.
 
 ## RELATED LINKS
 

@@ -62,7 +62,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -126,7 +126,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -191,7 +191,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -385,14 +385,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-  - `[IdleTimeoutInMinutes <Int32?>]`: The idle timeout of the nat gateway.
-  - `[ProvisioningState <String>]`: The provisioning state of the NatGateway resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-  - `[PublicIPAddress <ISubResource[]>]`: An array of public ip addresses associated with the nat gateway resource.
-    - `[Id <String>]`: Resource ID.
-  - `[PublicIPPrefix <ISubResource[]>]`: An array of public ip prefixes associated with the nat gateway resource.
-  - `[ResourceGuid <String>]`: The resource GUID property of the nat gateway resource.
-  - `[SkuName <NatGatewaySkuName?>]`: Name of Nat Gateway SKU.
 
 #### PUBLICIPADDRESS <ISubResource[]>: An array of public ip addresses associated with the nat gateway resource.
   - `[Id <String>]`: Resource ID.

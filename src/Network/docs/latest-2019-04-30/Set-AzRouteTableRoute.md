@@ -77,7 +77,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -190,7 +190,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -348,13 +348,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 #### ROUTE <IRoute>: Route resource
-  - `NextHopType <RouteNextHopType>`: The type of Azure hop the packet should be sent to.
   - `[Id <String>]`: Resource ID.
-  - `[AddressPrefix <String>]`: The destination CIDR to which the route applies.
-  - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-  - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  - `[NextHopIPAddress <String>]`: The IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is VirtualAppliance.
-  - `[ProvisioningState <String>]`: The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
 
 ## RELATED LINKS
 

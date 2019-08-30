@@ -78,7 +78,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -174,7 +174,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -388,21 +388,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[AddressPrefix <String>]`: Address-prefix for this VirtualHub.
-  - `[ExpressRouteGatewayId <String>]`: Resource ID.
-  - `[P2SVpnGatewayId <String>]`: Resource ID.
-  - `[Route <IVirtualHubRoute[]>]`: List of all routes.
-    - `[AddressPrefix <String[]>]`: List of all addressPrefixes.
-    - `[NextHopIPAddress <String>]`: NextHop ip address.
-  - `[VirtualWanId <String>]`: Resource ID.
-  - `[VnetConnection <IHubVirtualNetworkConnection[]>]`: List of all vnet connections with this VirtualHub.
-    - `[Id <String>]`: Resource ID.
-    - `[AllowHubToRemoteVnetTransit <Boolean?>]`: VirtualHub to RemoteVnet transit to enabled or not.
-    - `[AllowRemoteVnetToUseHubVnetGateway <Boolean?>]`: Allow RemoteVnet to use Virtual Hub's gateways.
-    - `[EnableInternetSecurity <Boolean?>]`: Enable internet security
-    - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-    - `[RemoteVnetId <String>]`: Resource ID.
-  - `[VpnGatewayId <String>]`: Resource ID.
 
 #### VNETCONNECTION <IHubVirtualNetworkConnection[]>: List of all vnet connections with this VirtualHub.
   - `[Id <String>]`: Resource ID.

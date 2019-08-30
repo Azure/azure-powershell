@@ -8,12 +8,11 @@
   - NameSuffix `String`
   - Top `Int32`
   - DoNotOverwrite `SwitchParameter`
-  - IfMatch `String`
+  - CnameRecordName `String`
   - Etag `String`
   - Metadata `Hashtable`
   - TargetResourceId `String`
   - TimeToLive `Int64`
-  - CnameRecordName `String`
   - ARecord `IARecord[]`
   - AaaaRecord `IAaaaRecord[]`
   - CaaRecord `ICaaRecord[]`
@@ -22,6 +21,7 @@
   - PtrRecord `IPtrRecord[]`
   - SrvRecord `ISrvRecord[]`
   - TxtRecord `ITxtRecord[]`
+  - IfMatch `String`
   - SoaRecordEmail `String`
   - SoaRecordExpireTime `Int64`
   - SoaRecordHost `String`
@@ -41,14 +41,11 @@
   - InputObject `IDnsIdentity`
   - Top `Int32`
   - DoNotOverwrite `SwitchParameter`
-  - IfMatch `String`
   - Location `String`
   - Etag `String`
   - Tag `Hashtable`
   - Private `SwitchParameter`
   - RegistrationVirtualNetworkId `String[]`
   - ResolutionVirtualNetworkId `String[]`
-
-### AzDummy [Test] `Boolean`
-  - Name `String`
+  - IfMatch `String`
 

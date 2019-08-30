@@ -16,10 +16,10 @@
   - Value `String`
 
 ### CloudError [Api20160401, Api20180501]
-  - ErrorCode `String`
-  - ErrorDetail `ICloudErrorBody[]`
-  - ErrorMessage `String`
-  - ErrorTarget `String`
+  - Code `String`
+  - Detail `ICloudErrorBody[]`
+  - Message `String`
+  - Target `String`
 
 ### CloudErrorBody [Api20160401, Api20180501]
   - Code `String`

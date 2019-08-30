@@ -61,7 +61,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -142,7 +142,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -251,7 +251,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 #### CONNECTIONSHAREDKEY <IConnectionSharedKey>: Response for GetConnectionSharedKey API service call
-  - `Value <String>`: The virtual network connection shared key value.
   - `[Id <String>]`: Resource ID.
 
 ## RELATED LINKS

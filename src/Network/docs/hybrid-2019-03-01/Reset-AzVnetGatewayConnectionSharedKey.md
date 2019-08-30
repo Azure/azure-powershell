@@ -25,17 +25,17 @@ Reset-AzVnetGatewayConnectionSharedKey -Name <String> -ResourceGroupName <String
  [-WhatIf] [<CommonParameters>]
 ```
 
-### ResetViaIdentityExpanded1
-```
-Reset-AzVnetGatewayConnectionSharedKey -InputObject <INetworkIdentity> -KeyLength <Int32>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### ResetViaIdentity1
 ```
 Reset-AzVnetGatewayConnectionSharedKey -InputObject <INetworkIdentity>
  -ConnectionSharedKey <IConnectionResetSharedKey> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
+```
+
+### ResetViaIdentityExpanded1
+```
+Reset-AzVnetGatewayConnectionSharedKey -InputObject <INetworkIdentity> -KeyLength <Int32>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,7 +73,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -114,10 +114,11 @@ Dynamic: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
-Parameter Sets: ResetViaIdentityExpanded1, ResetViaIdentity1
+Parameter Sets: ResetViaIdentity1, ResetViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -138,7 +139,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -149,7 +150,7 @@ The virtual network gateway connection reset shared key Name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResetExpanded1, Reset1
+Parameter Sets: Reset1, ResetExpanded1
 Aliases: VirtualNetworkGatewayConnectionName, VnetGatewayConnectionName
 
 Required: True
@@ -170,7 +171,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -181,7 +182,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResetExpanded1, Reset1
+Parameter Sets: Reset1, ResetExpanded1
 Aliases:
 
 Required: True
@@ -198,7 +199,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResetExpanded1, Reset1
+Parameter Sets: Reset1, ResetExpanded1
 Aliases:
 
 Required: True
@@ -247,9 +248,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20171001.IConnectionResetSharedKey
+
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
 
 ## OUTPUTS
 
@@ -266,6 +267,72 @@ To create the parameters described below, construct a hash table containing the 
 
 #### CONNECTIONSHAREDKEY <IConnectionResetSharedKey>: The virtual network connection reset shared key
   - `KeyLength <Int32>`: The virtual network connection reset shared key length, should between 1 and 128.
+
+#### INPUTOBJECT <INetworkIdentity>: Identity Parameter
+  - `[ApplicationGatewayName <String>]`: The name of the application gateway.
+  - `[ApplicationSecurityGroupName <String>]`: The name of the application security group.
+  - `[AuthorizationName <String>]`: The name of the authorization.
+  - `[AzureFirewallName <String>]`: The name of the Azure Firewall.
+  - `[BackendAddressPoolName <String>]`: The name of the backend address pool.
+  - `[CircuitName <String>]`: The name of the express route circuit.
+  - `[ConnectionMonitorName <String>]`: The name of the connection monitor.
+  - `[ConnectionName <String>]`: The name of the vpn connection.
+  - `[CrossConnectionName <String>]`: The name of the ExpressRouteCrossConnection (service key of the circuit).
+  - `[DdosCustomPolicyName <String>]`: The name of the DDoS custom policy.
+  - `[DdosProtectionPlanName <String>]`: The name of the DDoS protection plan.
+  - `[DefaultSecurityRuleName <String>]`: The name of the default security rule.
+  - `[DevicePath <String>]`: The path of the device.
+  - `[ExpressRouteGatewayName <String>]`: The name of the ExpressRoute gateway.
+  - `[ExpressRoutePortName <String>]`: The name of the ExpressRoutePort resource.
+  - `[FrontendIPConfigurationName <String>]`: The name of the frontend IP configuration.
+  - `[GatewayName <String>]`: The name of the gateway.
+  - `[IPConfigurationName <String>]`: The name of the ip configuration name.
+  - `[Id <String>]`: Resource identity path
+  - `[InboundNatRuleName <String>]`: The name of the inbound nat rule.
+  - `[InterfaceEndpointName <String>]`: The name of the interface endpoint.
+  - `[LinkName <String>]`: The name of the ExpressRouteLink resource.
+  - `[LoadBalancerName <String>]`: The name of the load balancer.
+  - `[LoadBalancingRuleName <String>]`: The name of the load balancing rule.
+  - `[LocalNetworkGatewayName <String>]`: The name of the local network gateway.
+  - `[Location <String>]`: The location of the subnet.
+  - `[LocationName <String>]`: Name of the requested ExpressRoutePort peering location.
+  - `[NatGatewayName <String>]`: The name of the nat gateway.
+  - `[NetworkInterfaceName <String>]`: The name of the network interface.
+  - `[NetworkProfileName <String>]`: The name of the NetworkProfile.
+  - `[NetworkWatcherName <String>]`: The name of the network watcher.
+  - `[NsgName <String>]`: The name of the network security group.
+  - `[OutboundRuleName <String>]`: The name of the outbound rule.
+  - `[P2SVpnServerConfigurationName <String>]`: The name of the P2SVpnServerConfiguration.
+  - `[PacketCaptureName <String>]`: The name of the packet capture session.
+  - `[PeeringName <String>]`: The name of the peering.
+  - `[PolicyName <String>]`: The name of the policy
+  - `[PredefinedPolicyName <String>]`: Name of Ssl predefined policy.
+  - `[ProbeName <String>]`: The name of the probe.
+  - `[PublicIPAddressName <String>]`: The name of the subnet.
+  - `[PublicIPPrefixName <String>]`: The name of the PublicIpPrefix.
+  - `[ResourceGroupName <String>]`: The name of the resource group.
+  - `[RouteFilterName <String>]`: The name of the route filter.
+  - `[RouteName <String>]`: The name of the route.
+  - `[RouteTableName <String>]`: The name of the route table.
+  - `[RuleName <String>]`: The name of the rule.
+  - `[SecurityRuleName <String>]`: The name of the security rule.
+  - `[ServiceEndpointPolicyDefinitionName <String>]`: The name of the service endpoint policy definition.
+  - `[ServiceEndpointPolicyName <String>]`: The name of the service endpoint policy.
+  - `[SubnetName <String>]`: The name of the subnet.
+  - `[SubscriptionId <String>]`: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  - `[TapConfigurationName <String>]`: The name of the tap configuration.
+  - `[TapName <String>]`: The name of the virtual network tap.
+  - `[VirtualHubName <String>]`: The name of the VirtualHub.
+  - `[VirtualMachineScaleSetName <String>]`: The name of the virtual machine scale set.
+  - `[VirtualWanName <String>]`: The name of the VirtualWAN being retrieved.
+  - `[VirtualWanName1 <String>]`: The name of the VirtualWAN for which configuration of all vpn-sites is needed.
+  - `[VirtualWanName2 <String>]`: The name of the VirtualWan.
+  - `[VirtualmachineIndex <String>]`: The virtual machine index.
+  - `[VnetGatewayConnectionName <String>]`: The name of the virtual network gateway connection for which the configuration script is generated.
+  - `[VnetGatewayName <String>]`: The name of the virtual network gateway.
+  - `[VnetName <String>]`: The name of the virtual network.
+  - `[VnetPeeringName <String>]`: The name of the virtual network peering.
+  - `[VpnSiteName <String>]`: The name of the VpnSite being retrieved.
 
 ## RELATED LINKS
 

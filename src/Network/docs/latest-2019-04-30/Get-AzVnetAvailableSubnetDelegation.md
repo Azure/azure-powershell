@@ -20,7 +20,7 @@ Get-AzVnetAvailableSubnetDelegation -Location <String> -SubscriptionId <String[]
 
 ### ResourceGroup
 ```
-Get-AzVnetAvailableSubnetDelegation -Location <String> -SubscriptionId <String[]> -ResourceGroupName <String>
+Get-AzVnetAvailableSubnetDelegation -Location <String> -ResourceGroupName <String> -SubscriptionId <String[]>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 

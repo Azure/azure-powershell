@@ -79,7 +79,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -208,7 +208,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -349,11 +349,6 @@ To create the parameters described below, construct a hash table containing the 
 
 #### EXPRESSROUTECIRCUITCONNECTION <IExpressRouteCircuitConnection>: Express Route Circuit Connection in an ExpressRouteCircuitPeering resource.
   - `[Id <String>]`: Resource ID.
-  - `[AddressPrefix <String>]`: /29 IP address space to carve out Customer addresses for tunnels.
-  - `[AuthorizationKey <String>]`: The authorization key.
-  - `[ExpressRouteCircuitPeeringId <String>]`: Resource ID.
-  - `[Name <String>]`: Gets name of the resource that is unique within a resource group. This name can be used to access the resource.
-  - `[PeerExpressRouteCircuitPeeringId <String>]`: Resource ID.
 
 ## RELATED LINKS
 

@@ -111,7 +111,6 @@ PS C:\> {{ Add code here }}
 ### -AaaaRecord
 The list of AAAA records in the record set.
 To construct, see NOTES section for AAAARECORD properties and create a hash table.
-To construct, see NOTES section for AAAARECORD properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20150504Preview.IAaaaRecord[]
@@ -129,7 +128,6 @@ Dynamic: False
 ### -ARecord
 The list of A records in the record set.
 To construct, see NOTES section for ARECORD properties and create a hash table.
-To construct, see NOTES section for ARECORD properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20150504Preview.IARecord[]
@@ -146,7 +144,6 @@ Dynamic: False
 
 ### -CaaRecord
 The list of CAA records in the record set.
-To construct, see NOTES section for CAARECORD properties and create a hash table.
 To construct, see NOTES section for CAARECORD properties and create a hash table.
 
 ```yaml
@@ -204,7 +201,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -245,7 +242,6 @@ Dynamic: False
 ### -MXRecord
 The list of MX records in the record set.
 To construct, see NOTES section for MXRECORD properties and create a hash table.
-To construct, see NOTES section for MXRECORD properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20150504Preview.IMxRecord[]
@@ -279,7 +275,6 @@ Dynamic: False
 ### -NSRecord
 The list of NS records in the record set.
 To construct, see NOTES section for NSRECORD properties and create a hash table.
-To construct, see NOTES section for NSRECORD properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20150504Preview.INsRecord[]
@@ -296,7 +291,6 @@ Dynamic: False
 
 ### -PtrRecord
 The list of PTR records in the record set.
-To construct, see NOTES section for PTRRECORD properties and create a hash table.
 To construct, see NOTES section for PTRRECORD properties and create a hash table.
 
 ```yaml
@@ -330,7 +324,6 @@ Dynamic: False
 
 ### -SrvRecord
 The list of SRV records in the record set.
-To construct, see NOTES section for SRVRECORD properties and create a hash table.
 To construct, see NOTES section for SRVRECORD properties and create a hash table.
 
 ```yaml
@@ -388,7 +381,7 @@ Aliases: Ttl
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -396,7 +389,6 @@ Dynamic: False
 
 ### -TxtRecord
 The list of TXT records in the record set.
-To construct, see NOTES section for TXTRECORD properties and create a hash table.
 To construct, see NOTES section for TXTRECORD properties and create a hash table.
 
 ```yaml

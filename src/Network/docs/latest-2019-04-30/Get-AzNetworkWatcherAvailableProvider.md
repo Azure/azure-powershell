@@ -61,7 +61,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -74,7 +74,7 @@ To construct, see NOTES section for AVAILABLEPROVIDER properties and create a ha
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IAvailableProvidersListParameters
 Parameter Sets: List
-Aliases: NetworkWatcher
+Aliases:
 
 Required: True
 Position: Named
@@ -174,7 +174,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -186,7 +186,7 @@ The name of the network watcher resource group.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: NetworkWatcherLocation
+Aliases:
 
 Required: True
 Position: Named
