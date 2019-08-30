@@ -16,6 +16,8 @@
 function Test-setup
 {
 	$global:ruleName = Get-ResourceName
+	$global:ruleName2 = Get-ResourceName
+	$global:ruleName3 = Get-ResourceName
 	$global:resourceGroupName = Get-ResourceGroupName
 	$global:location = Get-ProviderLocation("microsoft.insights")
 	$global:description = "SQR log alert rule"
@@ -237,15 +239,14 @@ function Test-PipingRemoveSetUpdateScheduledQueryRule
 		$retrieved = Get-AzScheduledQueryRule -ResourceGroup $resourceGroupName -Name $ruleName | Remove-AzScheduledQueryRule
 		Assert-Null $retrieved
 		
-		$scheduledQueryRule = New-AzScheduledQueryRule -Location $location -Name $ruleName -ResourceGroupName $resourceGroupName -Action $alertingAction -Source $source -Enabled $enabled -Description $description -Schedule $schedule -Tag $tags
-		Verify-ScheduledQueryRule $scheduledQueryRule
+		$scheduledQueryRule = New-AzScheduledQueryRule -Location $location -Name $ruleName2 -ResourceGroupName $resourceGroupName -Action $alertingAction -Source $source -Enabled $enabled -Description $description -Schedule $schedule -Tag $tags
 
 		Write-Debug " ****** Removing Scheduled Query Rule by Resource Id"
-		$retrieved = Get-AzScheduledQueryRule -ResourceId $resourceId | Remove-AzScheduledQueryRule
+		$retrieved = Get-AzScheduledQueryRule -ResourceId $scheduledQueryRule.Id | Remove-AzScheduledQueryRule
 		Assert-Null $retrieved
 
-		$scheduledQueryRule = New-AzScheduledQueryRule -Location $location -Name $ruleName -ResourceGroupName $resourceGroupName -Action $alertingAction -Source $source -Enabled $enabled -Description $description -Schedule $schedule -Tag $tags
-		Verify-ScheduledQueryRule $scheduledQueryRule
+		$scheduledQueryRule = New-AzScheduledQueryRule -Location $location -Name $ruleName3 -ResourceGroupName $resourceGroupName -Action $alertingAction -Source $source -Enabled $enabled -Description $description -Schedule $schedule -Tag $tags
+		
 		Write-Debug " ****** Removing Scheduled Query Rules in ResourceGroup"
 		$retrieved = Get-AzScheduledQueryRule -ResourceGroupName $resourceGroupName | Remove-AzScheduledQueryRule
 		Assert-Null $retrieved
