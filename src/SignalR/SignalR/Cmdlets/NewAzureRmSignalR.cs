@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The allowed origins for the SignalR service. To allow all, use \"*\" and remove all other origins from the list. Slashes are not allowed as part of domain or after TLD")]
+            HelpMessage = "The allowed origins for the SignalR service. To allow all, use \"*\" and remove all other origins from the list. Slashes are not allowed as part of domain or after top-level domain")]
         public string[] AllowedOrigin { get; set; }
 
         [Parameter(
