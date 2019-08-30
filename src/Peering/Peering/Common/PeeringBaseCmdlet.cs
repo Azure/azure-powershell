@@ -26,7 +26,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
     using Microsoft.Azure.Commands.ResourceManager.Common;
     using Microsoft.Azure.Management.Peering;
     using Microsoft.Azure.Management.Peering.Models;
-    using Microsoft.Azure.Management.ResourceManager;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Models;
 
     using Newtonsoft.Json;
@@ -37,8 +36,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
     public class PeeringBaseCmdlet : AzureRMCmdlet
     {
         private IPeeringManagementClient peeringClient;
-
-        private IResourceManagementClient resourceClient;
 
         /// <summary>
         /// The PeeringClient
@@ -53,19 +50,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
 
             set => this.peeringClient = value;
         }
-
-        public IResourceManagementClient ResourceManagementClient
-        {
-            get =>
-                this.resourceClient ?? (this.resourceClient =
-                                           AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(
-                                               this.DefaultProfile.DefaultContext,
-                                               AzureEnvironment.Endpoint.ResourceManager));
-
-            set => this.resourceClient = value;
-        }
-
-        public IResourceGroupsOperations ResourceGroupOperations => this.ResourceManagementClient.ResourceGroups;
 
         /// <summary>
         ///     The InputObject client.
