@@ -19,6 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     using System.Management.Automation;
 
     using Microsoft.Azure.Commands.Peering.Properties;
+    using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.Peering;
     using Microsoft.Azure.Management.Peering.Models;
@@ -64,6 +65,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         [PSArgumentCompleter(Constants.Direct, Constants.Partner, Constants.Exchange)]
         public string Kind { get; set; }
 
+        /// <summary>
+        /// The resource  id
+        /// </summary>
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            HelpMessage = Constants.ResourceIdHelp,
+            ParameterSetName = Constants.ParameterSetNameByResourceId)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
         /// <inheritdoc />
         /// <summary>
         ///     Execute Override for powershell cmdlet
@@ -88,6 +100,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                         var list = this.GetPeeringByResource();
                         this.WriteObject(list, true);
                     }
+                }
+                else if (string.Equals(this.ParameterSetName, Constants.ParameterSetNameByResourceId))
+                {
+                    var resourceId = new ResourceIdentifier(this.ResourceId);
+                    this.ResourceGroupName = resourceId.ResourceGroupName;
+                    this.Name = resourceId.ResourceName;
+                    this.WriteObject(this.GetPeeringByResourceAndName());
                 }
                 else
                 {

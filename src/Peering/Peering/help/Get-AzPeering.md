@@ -23,6 +23,11 @@ Get-AzPeering [-ResourceGroupName] <String> [-Name <String>] [-DefaultProfile <I
  [<CommonParameters>]
 ```
 
+### ByResourceId
+```
+Get-AzPeering [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets the Peerings from a subscription, resource group, or by name.
 
@@ -36,11 +41,11 @@ Name              : myExchangePeering1
 Sku.Name          : Basic_Exchange_Free
 Kind              : Exchange
 Connections       : {99999}
-PeerAsn.Id        : /subscriptions//providers/Microsoft.Peering/peerAsns/Contoso
+PeerAsn.Id        : /subscriptions/providers/Microsoft.Peering/peerAsns/Contoso
 PeeringLocation   : Seattle
 ProvisioningState : Succeeded
 Location          : centralus
-Id                : /subscriptions//resourceGroups/test/providers/Microsoft.Peering/peerings/myExchangePeering1
+Id                : /subscriptions/resourceGroups/test/providers/Microsoft.Peering/peerings/myExchangePeering1
 Type              : Microsoft.Peering/peerings
 Tags              : {}
 
@@ -53,7 +58,7 @@ PeerAsn              : Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSSubRe
 PeeringLocation      : Seattle
 ProvisioningState    : Succeeded
 Location             : centralus
-Id                   : /subscriptions//resourceGroups/testCarrier/providers/Microsoft.Peering/peerings/ContosoSeattlePeering
+Id                   : /subscriptions/resourceGroups/testCarrier/providers/Microsoft.Peering/peerings/ContosoSeattlePeering
 Type                 : Microsoft.Peering/peerings
 Tags                 : {}
 ```
@@ -68,16 +73,35 @@ Name              : myExchangePeering1
 Sku.Name          : Basic_Exchange_Free
 Kind              : Exchange
 Connections       : {99999}
-PeerAsn.Id        : /subscriptions//providers/Microsoft.Peering/peerAsns/Contoso
+PeerAsn.Id        : /subscriptions/providers/Microsoft.Peering/peerAsns/Contoso
 PeeringLocation   : Seattle
 ProvisioningState : Succeeded
 Location          : centralus
-Id                : /subscriptions//resourceGroups/test/providers/Microsoft.Peering/peerings/myExchangePeering1
+Id                : /subscriptions/resourceGroups/test/providers/Microsoft.Peering/peerings/myExchangePeering1
 Type              : Microsoft.Peering/peerings
 Tags              : {}
 ```
 
 Gets the Exchange peering named `myExchangePeering1`
+
+### Example 2
+```powershell
+PS C:> Get-AzPeering -ResourceId $resourceId
+
+Name              : myExchangePeering1
+Sku.Name          : Basic_Exchange_Free
+Kind              : Exchange
+Connections       : {99999}
+PeerAsn.Id        : /subscriptions/providers/Microsoft.Peering/peerAsns/Contoso
+PeeringLocation   : Seattle
+ProvisioningState : Succeeded
+Location          : centralus
+Id                : /subscriptions/resourceGroups/test/providers/Microsoft.Peering/peerings/myExchangePeering1
+Type              : Microsoft.Peering/peerings
+Tags              : {}
+```
+
+Gets the Exchange peering named `myExchangePeering1` based on the resource id.
 
 ## PARAMETERS
 
@@ -132,6 +156,21 @@ The resource group name.
 ```yaml
 Type: System.String
 Parameter Sets: PeeringByResourceAndName
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+The resource id string name.
+
+```yaml
+Type: System.String
+Parameter Sets: ByResourceId
 Aliases:
 
 Required: True
