@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using Microsoft.Azure.Management.DataFactory.Models;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2.Models
@@ -79,6 +80,38 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
             get
             {
                 return this.triggerRun.Status;
+            }
+        }
+
+        public IDictionary<string, string> TriggeredPipelines
+        {
+            get
+            {
+                return this.triggerRun.TriggeredPipelines;
+            }
+        }
+
+        public string Message
+        {
+            get
+            {
+                return this.triggerRun.Message;
+            }
+        }
+
+        public IDictionary<string, string> Properties
+        {
+            get
+            {
+                return this.triggerRun.Properties;
+            }
+        }
+
+        public IDictionary<string, object> AdditionalProperties
+        {
+            get
+            {
+                return this.triggerRun.AdditionalProperties;
             }
         }
     }

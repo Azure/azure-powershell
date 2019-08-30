@@ -21,9 +21,10 @@ New-AzPeering [-ResourceGroupName] <String> [-Name] <String> [-PeeringLocation] 
 
 ### ConvertLegacyPeering
 ```
-New-AzPeering -LegacyPeering <PSPeering> [-ResourceGroupName] <String> [-Name] <String>
- [-PeerAsnResourceId] <String> [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzPeering -InputObject <PSPeering> [-ResourceGroupName] <String> [-Name] <String>
+ [-PeerAsnResourceId] <String> [-ExchangeConnection <PSExchangeConnection[]>]
+ [-DirectConnection <PSDirectConnection[]>] [-Tag <Hashtable>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Direct
@@ -145,6 +146,18 @@ Create a new Direct connections using the New-AzExchangePeeringConnection and pi
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection[]
+Parameter Sets: ConvertLegacyPeering
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection[]
 Parameter Sets: Direct
 Aliases:
 
@@ -170,8 +183,20 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LegacyPeering
-The legacy peering object. Use Get-AzLegacyPeering to view current objects.
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection[]
+Parameter Sets: ConvertLegacyPeering
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Use Get-AzLegacyPeering to retrieve this object.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering
