@@ -254,16 +254,22 @@ function New-AzStorageAccount {
     )
     
     process {
-        if ($PSBoundParameters.ContainsKey("StorageEncryption")) {
-            $null = $PSBoundParameters.Add("EncryptionKeySource", "Microsoft.Storage")
-            $null = $PSBoundParameters.Remove("StorageEncryption")
+        if ($PSBoundParameters.ContainsKey("AsJob")) {
+            $null = $PSBoundParameters.Remove("AsJob")
+            Start-Job -ScriptBlock {param($params) Az.Storage\New-AzStorageAccount @params} -ArgumentList $PSBoundParameters
+        } else {
+            if ($PSBoundParameters.ContainsKey("StorageEncryption")) {
+                $null = $PSBoundParameters.Add("EncryptionKeySource", "Microsoft.Storage")
+                $null = $PSBoundParameters.Remove("StorageEncryption")
+            }
+            if ($PSBoundParameters.ContainsKey("KeyVaultEncryption")) {
+                $null = $PSBoundParameters.Add("EncryptionKeySource", "Microsoft.Keyvault")
+                $null = $PSBoundParameters.Remove("KeyVaultEncryption")
+            }
+            $null = Az.Storage.internal\New-AzStorageAccount @PSBoundParameters
+            $commonParams = Get-CommonParameter -PSCmdlet $PSCmdlet -PSBoundParameter $PSBoundParameters
+            Az.Storage.internal\Get-AzStorageAccountProperty -Name $PSBoundParameters["Name"] -ResourceGroupName $PSBoundParameters["ResourceGroupName"] -SubscriptionId $PSBoundParameters["SubscriptionId"] @commonParams
         }
-        if ($PSBoundParameters.ContainsKey("KeyVaultEncryption")) {
-            $null = $PSBoundParameters.Add("EncryptionKeySource", "Microsoft.Keyvault")
-            $null = $PSBoundParameters.Remove("KeyVaultEncryption")
-        }
-        $null = Az.Storage.internal\New-AzStorageAccount @PSBoundParameters
-        Az.Storage.internal\Get-AzStorageAccountProperty -Name $PSBoundParameters["Name"] -ResourceGroupName $PSBoundParameters["ResourceGroupName"]
     }
 }
     

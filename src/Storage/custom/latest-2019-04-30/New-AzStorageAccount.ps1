@@ -268,19 +268,21 @@ function New-AzStorageAccount {
     )
     
     process {
-        if ($PSBoundParameters.ContainsKey("StorageEncryption")) {
-            $null = $PSBoundParameters.Add("EncryptionKeySource", "Microsoft.Storage")
-            $null = $PSBoundParameters.Remove("StorageEncryption")
-        }
-        if ($PSBoundParameters.ContainsKey("KeyVaultEncryption")) {
-            $null = $PSBoundParameters.Add("EncryptionKeySource", "Microsoft.Keyvault")
-            $null = $PSBoundParameters.Remove("KeyVaultEncryption")
-        }
-        $null = Az.Storage.internal\New-AzStorageAccount @PSBoundParameters
-        if ($PSBoundParameters.ContainsKey("InputObject")) {
-            $PSBoundParameters["InputObject"] | Az.Storage.internal\Get-AzStorageAccountProperty
+        if ($PSBoundParameters.ContainsKey("AsJob")) {
+            $null = $PSBoundParameters.Remove("AsJob")
+            Start-Job -ScriptBlock {param($arg) Az.Storage\New-AzStorageAccount @arg} -InitializationScript {Import-Module "C:\Users\niassis\source\repos\generating\azure-powershell\src\Storage\Az.Storage.psd1"} -ArgumentList $PSBoundParameters
         } else {
-            Az.Storage.internal\Get-AzStorageAccountProperty -Name $PSBoundParameters["Name"] -ResourceGroupName $PSBoundParameters["ResourceGroupName"]
+            if ($PSBoundParameters.ContainsKey("StorageEncryption")) {
+                $null = $PSBoundParameters.Add("EncryptionKeySource", "Microsoft.Storage")
+                $null = $PSBoundParameters.Remove("StorageEncryption")
+            }
+            if ($PSBoundParameters.ContainsKey("KeyVaultEncryption")) {
+                $null = $PSBoundParameters.Add("EncryptionKeySource", "Microsoft.Keyvault")
+                $null = $PSBoundParameters.Remove("KeyVaultEncryption")
+            }
+            $null = Az.Storage.internal\New-AzStorageAccount @PSBoundParameters
+            $commonParams = Get-CommonParameter -PSCmdlet $PSCmdlet -PSBoundParameter $PSBoundParameters
+            Az.Storage.internal\Get-AzStorageAccountProperty -Name $PSBoundParameters["Name"] -ResourceGroupName $PSBoundParameters["ResourceGroupName"] -SubscriptionId $PSBoundParameters["SubscriptionId"] @commonParams
         }
     }
 }

@@ -13,10 +13,9 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-Remove-AzStorageContainer [-Name] <String> [-Force] [-PassThru] [-Context <IStorageContext>]
- [-ServerTimeoutPerRequest <Int32?>] [-ClientTimeoutPerRequest <Int32?>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32?>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-AzStorageContainer [-Name] <String> [-ClientTimeoutPerRequest <Int32?>] [-ConcurrentTaskCount <Int32?>]
+ [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-Force] [-PassThru]
+ [-ServerTimeoutPerRequest <Int32?>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -119,7 +118,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -134,7 +133,7 @@ Parameter Sets: (All)
 Aliases: N, Container
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue, ByPropertyName)
 Accept wildcard characters: False
@@ -151,7 +150,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -211,9 +210,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
 ### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
+
+### System.String
 
 ## OUTPUTS
 

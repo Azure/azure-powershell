@@ -12,18 +12,18 @@ Sets the properties of a storage account’s Blob service, including properties 
 
 ## SYNTAX
 
-### Set (Default)
-```
-Set-AzStorageBlobServiceProperty -AccountName <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <IBlobServiceProperties>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### SetExpanded
+### SetExpanded (Default)
 ```
 Set-AzStorageBlobServiceProperty -AccountName <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-AutomaticSnapshotPolicyEnabled] [-CorCorsRule <ICorsRule[]>] [-DefaultServiceVersion <String>]
  [-DeleteRetentionPolicyDay <Int32>] [-DeleteRetentionPolicyEnabled] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
+```
+
+### Set
+```
+Set-AzStorageBlobServiceProperty -AccountName <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -Parameter <IBlobServiceProperties> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -78,7 +78,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -147,7 +147,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -163,7 +163,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -178,7 +178,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20190401.IBlobService
 Parameter Sets: Set
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -277,7 +277,7 @@ To create the parameters described below, construct a hash table containing the 
   - `ExposedHeader <String[]>`: Required if CorsRule element is present. A list of response headers to expose to CORS clients.
   - `MaxAgeInSecond <Int32>`: Required if CorsRule element is present. The number of seconds that the client/browser should cache a preflight response.
 
-#### PARAMETER <IBlobServiceProperties>: The properties of a storage account's Blob service.
+#### PARAMETER <IBlobServiceProperties>: The properties of a storage account’s Blob service.
   - `[AutomaticSnapshotPolicyEnabled <Boolean?>]`: Automatic Snapshot is enabled if set to true.
   - `[CorCorsRule <ICorsRule[]>]`: The List of CORS rules. You can include up to five CorsRule elements in the request. 
     - `AllowedHeader <String[]>`: Required if CorsRule element is present. A list of headers allowed to be part of the cross-origin request.

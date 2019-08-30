@@ -14,44 +14,44 @@ schema: 2.0.0
 
 ### ContainerInstance (Default)
 ```
-Start-AzStorageBlobIncrementalCopy -CloudBlobContainer <CloudBlobContainer> -SrcBlob <String>
- -SrcBlobSnapshotTime <DateTimeOffset?> -DestContainer <String> -DestBlob <String>
- [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-ServerTimeoutPerRequest <Int32?>]
- [-ClientTimeoutPerRequest <Int32?>] [-DefaultProfile <IAzureContextContainer>]
- [-ConcurrentTaskCount <Int32?>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ContainerName
-```
-Start-AzStorageBlobIncrementalCopy -SrcBlob <String> -SrcBlobSnapshotTime <DateTimeOffset?>
- -DestContainer <String> -DestBlob <String> -SrcContainer <String> [-Context <IStorageContext>]
- [-DestContext <IStorageContext>] [-ServerTimeoutPerRequest <Int32?>] [-ClientTimeoutPerRequest <Int32?>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32?>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UriPipeline
-```
-Start-AzStorageBlobIncrementalCopy -DestContainer <String> -DestBlob <String> -AbsoluteUri <String>
- [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-ServerTimeoutPerRequest <Int32?>]
- [-ClientTimeoutPerRequest <Int32?>] [-DefaultProfile <IAzureContextContainer>]
- [-ConcurrentTaskCount <Int32?>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Start-AzStorageBlobIncrementalCopy -CloudBlobContainer <CloudBlobContainer> -DestContainer <String>
+ -SrcBlob <String> -SrcBlobSnapshotTime <DateTimeOffset?> [-ClientTimeoutPerRequest <Int32?>]
+ [-ConcurrentTaskCount <Int32?>] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+ [-DestBlob <String>] [-DestContext <IStorageContext>] [-ServerTimeoutPerRequest <Int32?>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### BlobInstance
 ```
-Start-AzStorageBlobIncrementalCopy -DestContainer <String> -DestBlob <String> -CloudBlob <CloudPageBlob>
- [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-ServerTimeoutPerRequest <Int32?>]
- [-ClientTimeoutPerRequest <Int32?>] [-DefaultProfile <IAzureContextContainer>]
- [-ConcurrentTaskCount <Int32?>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Start-AzStorageBlobIncrementalCopy -CloudBlob <CloudPageBlob> -DestContainer <String>
+ [-ClientTimeoutPerRequest <Int32?>] [-ConcurrentTaskCount <Int32?>] [-Context <IStorageContext>]
+ [-DefaultProfile <IAzureContextContainer>] [-DestBlob <String>] [-DestContext <IStorageContext>]
+ [-ServerTimeoutPerRequest <Int32?>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### BlobInstanceToBlobInstance
 ```
 Start-AzStorageBlobIncrementalCopy -CloudBlob <CloudPageBlob> -DestCloudBlob <CloudPageBlob>
- [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-ServerTimeoutPerRequest <Int32?>]
- [-ClientTimeoutPerRequest <Int32?>] [-DefaultProfile <IAzureContextContainer>]
- [-ConcurrentTaskCount <Int32?>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ClientTimeoutPerRequest <Int32?>] [-ConcurrentTaskCount <Int32?>] [-Context <IStorageContext>]
+ [-DefaultProfile <IAzureContextContainer>] [-DestContext <IStorageContext>]
+ [-ServerTimeoutPerRequest <Int32?>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ContainerName
+```
+Start-AzStorageBlobIncrementalCopy -DestContainer <String> -SrcBlob <String>
+ -SrcBlobSnapshotTime <DateTimeOffset?> -SrcContainer <String> [-ClientTimeoutPerRequest <Int32?>]
+ [-ConcurrentTaskCount <Int32?>] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+ [-DestBlob <String>] [-DestContext <IStorageContext>] [-ServerTimeoutPerRequest <Int32?>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### UriPipeline
+```
+Start-AzStorageBlobIncrementalCopy -AbsoluteUri <String> -DestBlob <String> -DestContainer <String>
+ [-ClientTimeoutPerRequest <Int32?>] [-ConcurrentTaskCount <Int32?>] [-Context <IStorageContext>]
+ [-DefaultProfile <IAzureContextContainer>] [-DestContext <IStorageContext>]
+ [-ServerTimeoutPerRequest <Int32?>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -197,7 +197,7 @@ Destination blob name
 
 ```yaml
 Type: System.String
-Parameter Sets: ContainerInstance, ContainerName, UriPipeline, BlobInstance
+Parameter Sets: BlobInstance, ContainerInstance, ContainerName, UriPipeline
 Aliases: DestinationBlob
 
 Required: True
@@ -229,7 +229,7 @@ Destination container name
 
 ```yaml
 Type: System.String
-Parameter Sets: ContainerInstance, ContainerName, UriPipeline, BlobInstance
+Parameter Sets: BlobInstance, ContainerInstance, ContainerName, UriPipeline
 Aliases: DestinationContainer
 
 Required: True
@@ -358,9 +358,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.WindowsAzure.Storage.Blob.CloudBlobContainer
-
 ### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
+
+### Microsoft.WindowsAzure.Storage.Blob.CloudBlobContainer
 
 ### Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob
 

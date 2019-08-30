@@ -12,21 +12,21 @@ List service SAS credentials of a specific resource.
 
 ## SYNTAX
 
-### List1 (Default)
-```
-Get-AzStorageAccountServiceSas -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- [-Parameter <IServiceSasParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ListExpanded1
+### ListExpanded1 (Default)
 ```
 Get-AzStorageAccountServiceSas -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
  [-CacheControl <String>] [-CanonicalizedResource <String>] [-ContentDisposition <String>]
- [-ContentEncoding <String>] [-ContentLanguage <String>] [-ContentType <String>] [-IPAddressOrRange <String>]
- [-Identifier <String>] [-KeyToSign <String>] [-PartitionKeyEnd <String>] [-PartitionKeyStart <String>]
+ [-ContentEncoding <String>] [-ContentLanguage <String>] [-ContentType <String>] [-Identifier <String>]
+ [-IPAddressOrRange <String>] [-KeyToSign <String>] [-PartitionKeyEnd <String>] [-PartitionKeyStart <String>]
  [-Permission <Permissions>] [-Protocol <HttpProtocol>] [-Resource <SignedResource>] [-RowKeyEnd <String>]
  [-RowKeyStart <String>] [-SharedAccessExpiryTime <DateTime>] [-SharedAccessStartTime <DateTime>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### List1
+```
+Get-AzStorageAccountServiceSas -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+ -Parameter <IServiceSasParameters> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -240,7 +240,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20171001.IServiceSasP
 Parameter Sets: List1
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

@@ -14,89 +14,84 @@ schema: 2.0.0
 
 ### ContainerName (Default)
 ```
-Start-AzStorageBlobCopy [-SrcBlob] <String> -SrcContainer <String> -DestContainer <String> -DestBlob <String>
- [-PremiumPageBlobTier <PremiumPageBlobTier>] [-Context <IStorageContext>] [-DestContext <IStorageContext>]
- [-Force] [-ServerTimeoutPerRequest <Int32?>] [-ClientTimeoutPerRequest <Int32?>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32?>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### ContainerInstance
-```
-Start-AzStorageBlobCopy [-SrcBlob] <String> -DestContainer <String> -DestBlob <String>
- -CloudBlobContainer <CloudBlobContainer> [-PremiumPageBlobTier <PremiumPageBlobTier>]
- [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32?>]
- [-ClientTimeoutPerRequest <Int32?>] [-DefaultProfile <IAzureContextContainer>]
- [-ConcurrentTaskCount <Int32?>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UriPipeline
-```
-Start-AzStorageBlobCopy -DestContainer <String> -DestBlob <String> -AbsoluteUri <String>
- [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32?>]
- [-ClientTimeoutPerRequest <Int32?>] [-DefaultProfile <IAzureContextContainer>]
- [-ConcurrentTaskCount <Int32?>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### FileInstance
-```
-Start-AzStorageBlobCopy -DestContainer <String> -DestBlob <String> -SrcFile <CloudFile>
- [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32?>]
- [-ClientTimeoutPerRequest <Int32?>] [-DefaultProfile <IAzureContextContainer>]
- [-ConcurrentTaskCount <Int32?>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DirInstance
-```
-Start-AzStorageBlobCopy -DestContainer <String> -DestBlob <String> -SrcFilePath <String>
- -SrcDir <CloudFileDirectory> [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-Force]
- [-ServerTimeoutPerRequest <Int32?>] [-ClientTimeoutPerRequest <Int32?>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32?>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### ShareInstance
-```
-Start-AzStorageBlobCopy -DestContainer <String> -DestBlob <String> -SrcFilePath <String>
- -SrcShare <CloudFileShare> [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-Force]
- [-ServerTimeoutPerRequest <Int32?>] [-ClientTimeoutPerRequest <Int32?>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32?>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### ShareName
-```
-Start-AzStorageBlobCopy -DestContainer <String> -DestBlob <String> -SrcShareName <String>
- -SrcFilePath <String> [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-Force]
- [-ServerTimeoutPerRequest <Int32?>] [-ClientTimeoutPerRequest <Int32?>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32?>] [-Confirm] [-WhatIf]
+Start-AzStorageBlobCopy [-SrcBlob] <String> -DestContainer <String> -SrcContainer <String>
+ [-ClientTimeoutPerRequest <Int32?>] [-ConcurrentTaskCount <Int32?>] [-Context <IStorageContext>]
+ [-DefaultProfile <IAzureContextContainer>] [-DestBlob <String>] [-DestContext <IStorageContext>] [-Force]
+ [-PremiumPageBlobTier <PremiumPageBlobTier>] [-ServerTimeoutPerRequest <Int32?>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### BlobInstance
 ```
-Start-AzStorageBlobCopy -DestContainer <String> -DestBlob <String> -CloudBlob <CloudBlob>
- [-PremiumPageBlobTier <PremiumPageBlobTier>] [-Context <IStorageContext>] [-DestContext <IStorageContext>]
- [-Force] [-ServerTimeoutPerRequest <Int32?>] [-ClientTimeoutPerRequest <Int32?>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32?>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Start-AzStorageBlobCopy -CloudBlob <CloudBlob> -DestContainer <String> [-ClientTimeoutPerRequest <Int32?>]
+ [-ConcurrentTaskCount <Int32?>] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+ [-DestBlob <String>] [-DestContext <IStorageContext>] [-Force] [-PremiumPageBlobTier <PremiumPageBlobTier>]
+ [-ServerTimeoutPerRequest <Int32?>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### BlobInstanceToBlobInstance
 ```
-Start-AzStorageBlobCopy -CloudBlob <CloudBlob> -DestCloudBlob <CloudBlob>
- [-PremiumPageBlobTier <PremiumPageBlobTier>] [-Context <IStorageContext>] [-DestContext <IStorageContext>]
- [-Force] [-ServerTimeoutPerRequest <Int32?>] [-ClientTimeoutPerRequest <Int32?>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32?>] [-Confirm] [-WhatIf]
+Start-AzStorageBlobCopy -CloudBlob <CloudBlob> -DestCloudBlob <CloudBlob> [-ClientTimeoutPerRequest <Int32?>]
+ [-ConcurrentTaskCount <Int32?>] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+ [-DestContext <IStorageContext>] [-Force] [-PremiumPageBlobTier <PremiumPageBlobTier>]
+ [-ServerTimeoutPerRequest <Int32?>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ContainerInstance
+```
+Start-AzStorageBlobCopy [-SrcBlob] <String> -CloudBlobContainer <CloudBlobContainer> -DestContainer <String>
+ [-ClientTimeoutPerRequest <Int32?>] [-ConcurrentTaskCount <Int32?>] [-Context <IStorageContext>]
+ [-DefaultProfile <IAzureContextContainer>] [-DestBlob <String>] [-DestContext <IStorageContext>] [-Force]
+ [-PremiumPageBlobTier <PremiumPageBlobTier>] [-ServerTimeoutPerRequest <Int32?>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
+```
+
+### DirInstance
+```
+Start-AzStorageBlobCopy -DestContainer <String> -SrcDir <CloudFileDirectory> -SrcFilePath <String>
+ [-ClientTimeoutPerRequest <Int32?>] [-ConcurrentTaskCount <Int32?>] [-Context <IStorageContext>]
+ [-DefaultProfile <IAzureContextContainer>] [-DestBlob <String>] [-DestContext <IStorageContext>] [-Force]
+ [-ServerTimeoutPerRequest <Int32?>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### FileInstance
+```
+Start-AzStorageBlobCopy -DestContainer <String> -SrcFile <CloudFile> [-ClientTimeoutPerRequest <Int32?>]
+ [-ConcurrentTaskCount <Int32?>] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+ [-DestBlob <String>] [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32?>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### FileInstanceToBlobInstance
 ```
-Start-AzStorageBlobCopy -DestCloudBlob <CloudBlob> -SrcFile <CloudFile> [-Context <IStorageContext>]
- [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32?>]
- [-ClientTimeoutPerRequest <Int32?>] [-DefaultProfile <IAzureContextContainer>]
- [-ConcurrentTaskCount <Int32?>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Start-AzStorageBlobCopy -DestCloudBlob <CloudBlob> -SrcFile <CloudFile> [-ClientTimeoutPerRequest <Int32?>]
+ [-ConcurrentTaskCount <Int32?>] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+ [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32?>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### ShareInstance
+```
+Start-AzStorageBlobCopy -DestContainer <String> -SrcFilePath <String> -SrcShare <CloudFileShare>
+ [-ClientTimeoutPerRequest <Int32?>] [-ConcurrentTaskCount <Int32?>] [-Context <IStorageContext>]
+ [-DefaultProfile <IAzureContextContainer>] [-DestBlob <String>] [-DestContext <IStorageContext>] [-Force]
+ [-ServerTimeoutPerRequest <Int32?>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ShareName
+```
+Start-AzStorageBlobCopy -DestContainer <String> -SrcFilePath <String> -SrcShareName <String>
+ [-ClientTimeoutPerRequest <Int32?>] [-ConcurrentTaskCount <Int32?>] [-Context <IStorageContext>]
+ [-DefaultProfile <IAzureContextContainer>] [-DestBlob <String>] [-DestContext <IStorageContext>] [-Force]
+ [-ServerTimeoutPerRequest <Int32?>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UriPipeline
+```
+Start-AzStorageBlobCopy -AbsoluteUri <String> -DestBlob <String> -DestContainer <String>
+ [-ClientTimeoutPerRequest <Int32?>] [-ConcurrentTaskCount <Int32?>] [-Context <IStorageContext>]
+ [-DefaultProfile <IAzureContextContainer>] [-DestContext <IStorageContext>] [-Force]
+ [-ServerTimeoutPerRequest <Int32?>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -242,7 +237,7 @@ Destination blob name
 
 ```yaml
 Type: System.String
-Parameter Sets: ContainerName, ContainerInstance, UriPipeline, FileInstance, DirInstance, ShareInstance, ShareName, BlobInstance
+Parameter Sets: BlobInstance, ContainerInstance, ContainerName, DirInstance, FileInstance, ShareInstance, ShareName, UriPipeline
 Aliases: DestinationBlob
 
 Required: True
@@ -274,7 +269,7 @@ Destination container name
 
 ```yaml
 Type: System.String
-Parameter Sets: ContainerName, ContainerInstance, UriPipeline, FileInstance, DirInstance, ShareInstance, ShareName, BlobInstance
+Parameter Sets: BlobInstance, ContainerInstance, ContainerName, DirInstance, FileInstance, ShareInstance, ShareName, UriPipeline
 Aliases: DestinationContainer
 
 Required: True
@@ -311,7 +306,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -322,7 +317,7 @@ Premium Page Blob Tier
 
 ```yaml
 Type: Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier
-Parameter Sets: ContainerName, ContainerInstance, BlobInstance, BlobInstanceToBlobInstance
+Parameter Sets: BlobInstance, BlobInstanceToBlobInstance, ContainerInstance, ContainerName
 Aliases:
 
 Required: False
@@ -354,11 +349,11 @@ Blob name
 
 ```yaml
 Type: System.String
-Parameter Sets: ContainerName, ContainerInstance
+Parameter Sets: ContainerInstance, ContainerName
 Aliases: SourceBlob
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

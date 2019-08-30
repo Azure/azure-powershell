@@ -8,7 +8,7 @@ Locale: en-US
 
 # Az.Storage Module
 ## Description
-Microsoft Azure PowerShell: Storage cmdlets
+
 
 ## Az.Storage Cmdlets
 ### [Clear-AzRmStorageContainerLegalHold](Clear-AzRmStorageContainerLegalHold.md)
@@ -30,6 +30,15 @@ ClearLegalHold clears out only the specified tags in the request.
 
 ### [Enable-AzStorageStaticWebsite](Enable-AzStorageStaticWebsite.md)
 
+
+### [Get-AzFileService](Get-AzFileService.md)
+List all file services in storage accounts
+
+### [Get-AzFileServiceProperty](Get-AzFileServiceProperty.md)
+Gets the properties of file services in storage accounts, including CORS (Cross-Origin Resource Sharing) rules.
+
+### [Get-AzFileShare](Get-AzFileShare.md)
+Gets properties of a specified share.
 
 ### [Get-AzRmStorageContainer](Get-AzRmStorageContainer.md)
 Gets properties of a specified container.
@@ -64,6 +73,10 @@ List service SAS credentials of a specific resource.
 
 ### [Get-AzStorageBlobCopyState](Get-AzStorageBlobCopyState.md)
 
+
+### [Get-AzStorageBlobService](Get-AzStorageBlobService.md)
+List blob services of storage account.
+It returns a collection of one object named default.
 
 ### [Get-AzStorageBlobServiceProperty](Get-AzStorageBlobServiceProperty.md)
 Gets the properties of a storage account’s Blob service, including properties for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules.
@@ -132,6 +145,11 @@ The secondary cluster will become primary after failover.
 Sets the ImmutabilityPolicy to Locked state.
 The only action allowed on a Locked policy is ExtendImmutabilityPolicy action.
 ETag in If-Match is required for this operation.
+
+### [New-AzFileShare](New-AzFileShare.md)
+Creates a new share under the specified account as described by request body.
+The share resource includes metadata and properties for that share.
+It does not include a list of the files contained by the share.
 
 ### [New-AzRmStorageContainer](New-AzRmStorageContainer.md)
 Creates a new container under the specified account as described by request body.
@@ -204,6 +222,9 @@ Sets the managementpolicy to the specified storage account.
 ### [New-AzStorageTableStoredAccessPolicy](New-AzStorageTableStoredAccessPolicy.md)
 
 
+### [Remove-AzFileShare](Remove-AzFileShare.md)
+Deletes specified share under its account.
+
 ### [Remove-AzRmStorageContainer](Remove-AzRmStorageContainer.md)
 Deletes specified container under its account.
 
@@ -257,6 +278,9 @@ Deletes the managementpolicy associated with the specified storage account.
 
 ### [Revoke-AzStorageAccountUserDelegationKey](Revoke-AzStorageAccountUserDelegationKey.md)
 Revoke user delegation keys.
+
+### [Set-AzFileServiceProperty](Set-AzFileServiceProperty.md)
+Sets the properties of file services in storage accounts, including CORS (Cross-Origin Resource Sharing) rules.
 
 ### [Set-AzRmStorageContainerImmutabilityPolicy](Set-AzRmStorageContainerImmutabilityPolicy.md)
 Creates or updates an unlocked immutability policy.
@@ -323,6 +347,11 @@ Sets the properties of a storage account’s Blob service, including properties 
 
 ### [Test-AzStorageAccountNameAvailability](Test-AzStorageAccountNameAvailability.md)
 Checks that the storage account name is valid and is not already in use.
+
+### [Update-AzFileShare](Update-AzFileShare.md)
+Updates share properties as specified in request body.
+Properties not mentioned in the request will not be changed.
+Update fails if the specified share does not already exist.
 
 ### [Update-AzRmStorageContainer](Update-AzRmStorageContainer.md)
 Updates container properties as specified in request body.

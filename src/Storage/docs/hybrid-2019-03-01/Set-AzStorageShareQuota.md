@@ -14,16 +14,16 @@ schema: 2.0.0
 
 ### ShareName (Default)
 ```
-Set-AzStorageShareQuota [-ShareName] <String> [-Quota] <Int32> [-Context <IStorageContext>]
- [-ServerTimeoutPerRequest <Int32?>] [-ClientTimeoutPerRequest <Int32?>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32?>] [<CommonParameters>]
+Set-AzStorageShareQuota [-ShareName] <String> [-Quota] <Int32> [-ClientTimeoutPerRequest <Int32?>]
+ [-ConcurrentTaskCount <Int32?>] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+ [-ServerTimeoutPerRequest <Int32?>] [<CommonParameters>]
 ```
 
 ### Share
 ```
-Set-AzStorageShareQuota [-Share] <CloudFileShare> [-Quota] <Int32> [-ServerTimeoutPerRequest <Int32?>]
- [-ClientTimeoutPerRequest <Int32?>] [-DefaultProfile <IAzureContextContainer>]
- [-ConcurrentTaskCount <Int32?>] [<CommonParameters>]
+Set-AzStorageShareQuota [-Share] <CloudFileShare> [-Quota] <Int32> [-ClientTimeoutPerRequest <Int32?>]
+ [-ConcurrentTaskCount <Int32?>] [-DefaultProfile <IAzureContextContainer>]
+ [-ServerTimeoutPerRequest <Int32?>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -125,8 +125,8 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 2
-Default value: 0
+Position: 1
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -157,7 +157,7 @@ Parameter Sets: Share
 Aliases:
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -173,7 +173,7 @@ Parameter Sets: ShareName
 Aliases: N, Name
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue, ByPropertyName)
 Accept wildcard characters: False
@@ -185,11 +185,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
 ### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 
 ### Microsoft.WindowsAzure.Storage.File.CloudFileShare
+
+### System.String
 
 ## OUTPUTS
 

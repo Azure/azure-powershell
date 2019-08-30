@@ -14,26 +14,26 @@ schema: 2.0.0
 
 ### NamePipeline (Default)
 ```
-Remove-AzStorageBlob [-Blob] <String> [-Container] <String> [-DeleteSnapshot] [-Force] [-PassThru]
- [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32?>] [-ClientTimeoutPerRequest <Int32?>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32?>] [-Confirm] [-WhatIf]
+Remove-AzStorageBlob [-Blob] <String> [-Container] <String> [-ClientTimeoutPerRequest <Int32?>]
+ [-ConcurrentTaskCount <Int32?>] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+ [-DeleteSnapshot] [-Force] [-PassThru] [-ServerTimeoutPerRequest <Int32?>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### BlobPipeline
+```
+Remove-AzStorageBlob -CloudBlob <CloudBlob> [-ClientTimeoutPerRequest <Int32?>]
+ [-ConcurrentTaskCount <Int32?>] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+ [-DeleteSnapshot] [-Force] [-PassThru] [-ServerTimeoutPerRequest <Int32?>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### ContainerPipeline
 ```
-Remove-AzStorageBlob [-Blob] <String> -CloudBlobContainer <CloudBlobContainer> [-DeleteSnapshot] [-Force]
- [-PassThru] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32?>]
- [-ClientTimeoutPerRequest <Int32?>] [-DefaultProfile <IAzureContextContainer>]
- [-ConcurrentTaskCount <Int32?>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### BlobPipeline
-```
-Remove-AzStorageBlob -CloudBlob <CloudBlob> [-DeleteSnapshot] [-Force] [-PassThru]
- [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32?>] [-ClientTimeoutPerRequest <Int32?>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32?>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-AzStorageBlob [-Blob] <String> -CloudBlobContainer <CloudBlobContainer>
+ [-ClientTimeoutPerRequest <Int32?>] [-ConcurrentTaskCount <Int32?>] [-Context <IStorageContext>]
+ [-DefaultProfile <IAzureContextContainer>] [-DeleteSnapshot] [-Force] [-PassThru]
+ [-ServerTimeoutPerRequest <Int32?>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,11 +66,11 @@ Blob name
 
 ```yaml
 Type: System.String
-Parameter Sets: NamePipeline, ContainerPipeline
+Parameter Sets: ContainerPipeline, NamePipeline
 Aliases:
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -151,7 +151,7 @@ Parameter Sets: NamePipeline
 Aliases:
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -200,7 +200,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -216,7 +216,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -232,7 +232,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

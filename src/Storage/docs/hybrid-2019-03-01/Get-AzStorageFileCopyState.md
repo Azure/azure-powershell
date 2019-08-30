@@ -14,16 +14,16 @@ schema: 2.0.0
 
 ### ShareName (Default)
 ```
-Get-AzStorageFileCopyState [-ShareName] <String> [-FilePath] <String> [-WaitForComplete]
- [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32?>] [-ClientTimeoutPerRequest <Int32?>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32?>] [<CommonParameters>]
+Get-AzStorageFileCopyState [-ShareName] <String> [-FilePath] <String> [-ClientTimeoutPerRequest <Int32?>]
+ [-ConcurrentTaskCount <Int32?>] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+ [-ServerTimeoutPerRequest <Int32?>] [-WaitForComplete] [<CommonParameters>]
 ```
 
 ### File
 ```
-Get-AzStorageFileCopyState [-File] <CloudFile> [-WaitForComplete] [-ServerTimeoutPerRequest <Int32?>]
- [-ClientTimeoutPerRequest <Int32?>] [-DefaultProfile <IAzureContextContainer>]
- [-ConcurrentTaskCount <Int32?>] [<CommonParameters>]
+Get-AzStorageFileCopyState [-File] <CloudFile> [-ClientTimeoutPerRequest <Int32?>]
+ [-ConcurrentTaskCount <Int32?>] [-DefaultProfile <IAzureContextContainer>]
+ [-ServerTimeoutPerRequest <Int32?>] [-WaitForComplete] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -125,7 +125,7 @@ Parameter Sets: File
 Aliases:
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -141,7 +141,7 @@ Parameter Sets: ShareName
 Aliases:
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -173,7 +173,7 @@ Parameter Sets: ShareName
 Aliases:
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -190,7 +190,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

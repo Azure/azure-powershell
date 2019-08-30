@@ -14,32 +14,30 @@ schema: 2.0.0
 
 ### NameSasPermission (Default)
 ```
-New-AzStorageFileSASToken [-ShareName] <String> [-Path] <String> [-Permission <String>]
- [-Protocol <SharedAccessProtocol?>] [-IPAddressOrRange <String>] [-StartTime <DateTime?>]
- [-ExpiryTime <DateTime?>] [-FullUri] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### NameSasPolicy
-```
-New-AzStorageFileSASToken [-ShareName] <String> [-Path] <String> -Policy <String>
- [-Protocol <SharedAccessProtocol?>] [-IPAddressOrRange <String>] [-StartTime <DateTime?>]
- [-ExpiryTime <DateTime?>] [-FullUri] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+New-AzStorageFileSASToken [-ShareName] <String> [-Path] <String> [-Context <IStorageContext>]
+ [-DefaultProfile <IAzureContextContainer>] [-ExpiryTime <DateTime?>] [-FullUri] [-IPAddressOrRange <String>]
+ [-Permission <String>] [-Protocol <SharedAccessProtocol?>] [-StartTime <DateTime?>] [<CommonParameters>]
 ```
 
 ### FileSasPermission
 ```
-New-AzStorageFileSASToken -File <CloudFile> [-Permission <String>] [-Protocol <SharedAccessProtocol?>]
- [-IPAddressOrRange <String>] [-StartTime <DateTime?>] [-ExpiryTime <DateTime?>] [-FullUri]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzStorageFileSASToken -File <CloudFile> [-DefaultProfile <IAzureContextContainer>]
+ [-ExpiryTime <DateTime?>] [-FullUri] [-IPAddressOrRange <String>] [-Permission <String>]
+ [-Protocol <SharedAccessProtocol?>] [-StartTime <DateTime?>] [<CommonParameters>]
 ```
 
 ### FileSasPolicy
 ```
-New-AzStorageFileSASToken -Policy <String> -File <CloudFile> [-Protocol <SharedAccessProtocol?>]
- [-IPAddressOrRange <String>] [-StartTime <DateTime?>] [-ExpiryTime <DateTime?>] [-FullUri]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzStorageFileSASToken -File <CloudFile> -Policy <String> [-DefaultProfile <IAzureContextContainer>]
+ [-ExpiryTime <DateTime?>] [-FullUri] [-IPAddressOrRange <String>] [-Protocol <SharedAccessProtocol?>]
+ [-StartTime <DateTime?>] [<CommonParameters>]
+```
+
+### NameSasPolicy
+```
+New-AzStorageFileSASToken [-ShareName] <String> [-Path] <String> -Policy <String> [-Context <IStorageContext>]
+ [-DefaultProfile <IAzureContextContainer>] [-ExpiryTime <DateTime?>] [-FullUri] [-IPAddressOrRange <String>]
+ [-Protocol <SharedAccessProtocol?>] [-StartTime <DateTime?>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -141,7 +139,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -172,7 +170,7 @@ Parameter Sets: NameSasPermission, NameSasPolicy
 Aliases:
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByValue, ByPropertyName)
 Accept wildcard characters: False
@@ -185,7 +183,7 @@ Permissions can be any subset of "rwd".
 
 ```yaml
 Type: System.String
-Parameter Sets: NameSasPermission, FileSasPermission
+Parameter Sets: FileSasPermission, NameSasPermission
 Aliases:
 
 Required: False
@@ -201,7 +199,7 @@ Policy Identifier
 
 ```yaml
 Type: System.String
-Parameter Sets: NameSasPolicy, FileSasPolicy
+Parameter Sets: FileSasPolicy, NameSasPolicy
 Aliases:
 
 Required: True
@@ -237,7 +235,7 @@ Parameter Sets: NameSasPermission, NameSasPolicy
 Aliases:
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue, ByPropertyName)
 Accept wildcard characters: False
@@ -265,13 +263,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### System.String
-
 ### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 
 ### Microsoft.WindowsAzure.Storage.File.CloudFile
+
+### System.String
 
 ## OUTPUTS
 

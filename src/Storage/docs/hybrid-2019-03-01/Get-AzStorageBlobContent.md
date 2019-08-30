@@ -14,26 +14,26 @@ schema: 2.0.0
 
 ### ReceiveManual (Default)
 ```
-Get-AzStorageBlobContent [-Blob] <String> [-Container] <String> [-Destination <String>] [-CheckMd5] [-Force]
- [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32?>] [-ClientTimeoutPerRequest <Int32?>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32?>] [-Confirm] [-WhatIf]
+Get-AzStorageBlobContent [-Blob] <String> [-Container] <String> [-CheckMd5]
+ [-ClientTimeoutPerRequest <Int32?>] [-ConcurrentTaskCount <Int32?>] [-Context <IStorageContext>]
+ [-DefaultProfile <IAzureContextContainer>] [-Destination <String>] [-Force]
+ [-ServerTimeoutPerRequest <Int32?>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### BlobPipeline
+```
+Get-AzStorageBlobContent -CloudBlob <CloudBlob> [-CheckMd5] [-ClientTimeoutPerRequest <Int32?>]
+ [-ConcurrentTaskCount <Int32?>] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+ [-Destination <String>] [-Force] [-ServerTimeoutPerRequest <Int32?>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### ContainerPipeline
 ```
-Get-AzStorageBlobContent [-Blob] <String> -CloudBlobContainer <CloudBlobContainer> [-Destination <String>]
- [-CheckMd5] [-Force] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32?>]
- [-ClientTimeoutPerRequest <Int32?>] [-DefaultProfile <IAzureContextContainer>]
- [-ConcurrentTaskCount <Int32?>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### BlobPipeline
-```
-Get-AzStorageBlobContent -CloudBlob <CloudBlob> [-Destination <String>] [-CheckMd5] [-Force]
- [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32?>] [-ClientTimeoutPerRequest <Int32?>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32?>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Get-AzStorageBlobContent [-Blob] <String> -CloudBlobContainer <CloudBlobContainer> [-CheckMd5]
+ [-ClientTimeoutPerRequest <Int32?>] [-ConcurrentTaskCount <Int32?>] [-Context <IStorageContext>]
+ [-DefaultProfile <IAzureContextContainer>] [-Destination <String>] [-Force]
+ [-ServerTimeoutPerRequest <Int32?>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,11 +66,11 @@ Blob name
 
 ```yaml
 Type: System.String
-Parameter Sets: ReceiveManual, ContainerPipeline
+Parameter Sets: ContainerPipeline, ReceiveManual
 Aliases:
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -87,7 +87,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -167,7 +167,7 @@ Parameter Sets: ReceiveManual
 Aliases:
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -232,7 +232,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

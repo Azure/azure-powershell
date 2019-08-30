@@ -90,10 +90,10 @@ Parameter Sets: TableName
 Aliases: N, Table
 
 Required: False
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue, ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 Dynamic: False
 ```
 
@@ -118,9 +118,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
 ### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
+
+### System.String
 
 ## OUTPUTS
 

@@ -12,30 +12,30 @@ Regenerates one of the access keys for the specified storage account.
 
 ## SYNTAX
 
-### Regenerate1 (Default)
-```
-New-AzStorageAccountKey -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-RegenerateKey <IStorageAccountRegenerateKeyParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### RegenerateExpanded1
+### RegenerateExpanded1 (Default)
 ```
 New-AzStorageAccountKey -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -KeyName <String>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Regenerate1
+```
+New-AzStorageAccountKey -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -RegenerateKey <IStorageAccountRegenerateKeyParameters> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### RegenerateViaIdentity1
+```
+New-AzStorageAccountKey -InputObject <IStorageIdentity>
+ -RegenerateKey <IStorageAccountRegenerateKeyParameters> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### RegenerateViaIdentityExpanded1
 ```
 New-AzStorageAccountKey -InputObject <IStorageIdentity> -KeyName <String> [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### RegenerateViaIdentity1
-```
-New-AzStorageAccountKey -InputObject <IStorageIdentity>
- [-RegenerateKey <IStorageAccountRegenerateKeyParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -81,10 +81,11 @@ Dynamic: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity
-Parameter Sets: RegenerateViaIdentityExpanded1, RegenerateViaIdentity1
+Parameter Sets: RegenerateViaIdentity1, RegenerateViaIdentityExpanded1
 Aliases:
 
 Required: True
@@ -137,7 +138,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20171001.IStorageAcco
 Parameter Sets: Regenerate1, RegenerateViaIdentity1
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -217,9 +218,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20171001.IStorageAccountRegenerateKeyParameters
+
+### Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity
 
 ## OUTPUTS
 
@@ -231,6 +232,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### INPUTOBJECT <IStorageIdentity>: Identity Parameter
+  - `[AccountName <String>]`: The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  - `[BlobServicesName <String>]`: The name of the blob Service within the specified storage account. Blob Service Name must be 'default'
+  - `[ContainerName <String>]`: The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+  - `[FileServicesName <String>]`: The name of the file Service within the specified storage account. File Service Name must be "default"
+  - `[Id <String>]`: Resource identity path
+  - `[ImmutabilityPolicyName <String>]`: The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
+  - `[Location <String>]`: The location of the Azure Storage resource.
+  - `[ManagementPolicyName <ManagementPolicyName?>]`: The name of the Storage Account Management Policy. It should always be 'default'
+  - `[ResourceGroupName <String>]`: The name of the resource group within the user's subscription. The name is case insensitive.
+  - `[ShareName <String>]`: The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 #### REGENERATEKEY <IStorageAccountRegenerateKeyParameters>: The parameters used to regenerate the storage account key.
   - `KeyName <String>`: The name of storage keys that want to be regenerated, possible values are key1, key2.

@@ -14,30 +14,34 @@ schema: 2.0.0
 
 ### ShareName (Default)
 ```
-Get-AzStorageFileHandle [-ShareName] <String> [[-Path] <String>] [-Recursive] [-Context <IStorageContext>]
- [-ServerTimeoutPerRequest <Int32?>] [-ClientTimeoutPerRequest <Int32?>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32?>] [<CommonParameters>]
+Get-AzStorageFileHandle [-ShareName] <String> [[-Path] <String>] [-ClientTimeoutPerRequest <Int32?>]
+ [-ConcurrentTaskCount <Int32?>] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+ [-Recursive] [-ServerTimeoutPerRequest <Int32?>] [-First <UInt64>] [-IncludeTotalCount] [-Skip <UInt64>]
+ [<CommonParameters>]
 ```
 
 ### Directory
 ```
-Get-AzStorageFileHandle [-Directory] <CloudFileDirectory> [[-Path] <String>] [-Recursive]
- [-ServerTimeoutPerRequest <Int32?>] [-ClientTimeoutPerRequest <Int32?>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32?>] [<CommonParameters>]
-```
-
-### Share
-```
-Get-AzStorageFileHandle [-Share] <CloudFileShare> [[-Path] <String>] [-Recursive]
- [-ServerTimeoutPerRequest <Int32?>] [-ClientTimeoutPerRequest <Int32?>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32?>] [<CommonParameters>]
+Get-AzStorageFileHandle [-Directory] <CloudFileDirectory> [[-Path] <String>]
+ [-ClientTimeoutPerRequest <Int32?>] [-ConcurrentTaskCount <Int32?>]
+ [-DefaultProfile <IAzureContextContainer>] [-Recursive] [-ServerTimeoutPerRequest <Int32?>] [-First <UInt64>]
+ [-IncludeTotalCount] [-Skip <UInt64>] [<CommonParameters>]
 ```
 
 ### File
 ```
-Get-AzStorageFileHandle [-File] <CloudFile> [-Recursive] [-ServerTimeoutPerRequest <Int32?>]
- [-ClientTimeoutPerRequest <Int32?>] [-DefaultProfile <IAzureContextContainer>]
- [-ConcurrentTaskCount <Int32?>] [<CommonParameters>]
+Get-AzStorageFileHandle [-File] <CloudFile> [-ClientTimeoutPerRequest <Int32?>]
+ [-ConcurrentTaskCount <Int32?>] [-DefaultProfile <IAzureContextContainer>] [-Recursive]
+ [-ServerTimeoutPerRequest <Int32?>] [-First <UInt64>] [-IncludeTotalCount] [-Skip <UInt64>]
+ [<CommonParameters>]
+```
+
+### Share
+```
+Get-AzStorageFileHandle [-Share] <CloudFileShare> [[-Path] <String>] [-ClientTimeoutPerRequest <Int32?>]
+ [-ConcurrentTaskCount <Int32?>] [-DefaultProfile <IAzureContextContainer>] [-Recursive]
+ [-ServerTimeoutPerRequest <Int32?>] [-First <UInt64>] [-IncludeTotalCount] [-Skip <UInt64>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -139,7 +143,7 @@ Parameter Sets: Directory
 Aliases:
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -155,7 +159,7 @@ Parameter Sets: File
 Aliases:
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -167,11 +171,11 @@ Path to an existing file/directory.
 
 ```yaml
 Type: System.String
-Parameter Sets: ShareName, Directory, Share
+Parameter Sets: Directory, Share, ShareName
 Aliases:
 
 Required: False
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -189,7 +193,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -220,7 +224,7 @@ Parameter Sets: Share
 Aliases:
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -236,7 +240,56 @@ Parameter Sets: ShareName
 Aliases:
 
 Required: True
-Position: 1
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -First
+Gets only the first 'n' objects.
+
+```yaml
+Type: System.UInt64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -IncludeTotalCount
+Reports the number of objects in the data set (an integer) followed by the objects.
+If the cmdlet cannot determine the total count, it returns "Unknown total count".
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Skip
+Ignores the first 'n' objects and then gets the remaining objects.
+
+```yaml
+Type: System.UInt64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -250,11 +303,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 
-### Microsoft.Azure.Storage.File.CloudFileShare
+### Microsoft.Azure.Storage.File.CloudFile
 
 ### Microsoft.Azure.Storage.File.CloudFileDirectory
 
-### Microsoft.Azure.Storage.File.CloudFile
+### Microsoft.Azure.Storage.File.CloudFileShare
 
 ## OUTPUTS
 

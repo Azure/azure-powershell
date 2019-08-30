@@ -13,10 +13,10 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-New-AzStorageAccountSASToken -Service <SharedAccessAccountServices>
- -ResourceType <SharedAccessAccountResourceTypes> [-Permission <String>] [-Protocol <SharedAccessProtocol?>]
- [-IPAddressOrRange <String>] [-StartTime <DateTime?>] [-ExpiryTime <DateTime?>] [-Context <IStorageContext>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzStorageAccountSASToken -ResourceType <SharedAccessAccountResourceTypes>
+ -Service <SharedAccessAccountServices> [-Context <IStorageContext>]
+ [-DefaultProfile <IAzureContextContainer>] [-ExpiryTime <DateTime?>] [-IPAddressOrRange <String>]
+ [-Permission <String>] [-Protocol <SharedAccessProtocol?>] [-StartTime <DateTime?>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

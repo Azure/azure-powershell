@@ -14,30 +14,29 @@ schema: 2.0.0
 
 ### SendManual (Default)
 ```
-Set-AzStorageBlobContent [-File] <String> [-Container] <String> [-Blob <String>] [-BlobType <String>]
- [-Properties <Hashtable>] [-Metadata <Hashtable>] [-PremiumPageBlobTier <PremiumPageBlobTier>] [-Force]
- [-AsJob] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32?>] [-ClientTimeoutPerRequest <Int32?>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32?>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### ContainerPipeline
-```
-Set-AzStorageBlobContent [-File] <String> -CloudBlobContainer <CloudBlobContainer> [-Blob <String>]
- [-BlobType <String>] [-Properties <Hashtable>] [-Metadata <Hashtable>]
- [-PremiumPageBlobTier <PremiumPageBlobTier>] [-Force] [-AsJob] [-Context <IStorageContext>]
- [-ServerTimeoutPerRequest <Int32?>] [-ClientTimeoutPerRequest <Int32?>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32?>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Set-AzStorageBlobContent [-File] <String> [-Container] <String> [-AsJob] [-Blob <String>] [-BlobType <String>]
+ [-ClientTimeoutPerRequest <Int32?>] [-ConcurrentTaskCount <Int32?>] [-Context <IStorageContext>]
+ [-DefaultProfile <IAzureContextContainer>] [-Force] [-Metadata <Hashtable>]
+ [-PremiumPageBlobTier <PremiumPageBlobTier>] [-Properties <Hashtable>] [-ServerTimeoutPerRequest <Int32?>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### BlobPipeline
 ```
-Set-AzStorageBlobContent [-File] <String> -CloudBlob <CloudBlob> [-BlobType <String>]
- [-Properties <Hashtable>] [-Metadata <Hashtable>] [-PremiumPageBlobTier <PremiumPageBlobTier>] [-Force]
- [-AsJob] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32?>] [-ClientTimeoutPerRequest <Int32?>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32?>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Set-AzStorageBlobContent [-File] <String> -CloudBlob <CloudBlob> [-AsJob] [-BlobType <String>]
+ [-ClientTimeoutPerRequest <Int32?>] [-ConcurrentTaskCount <Int32?>] [-Context <IStorageContext>]
+ [-DefaultProfile <IAzureContextContainer>] [-Force] [-Metadata <Hashtable>]
+ [-PremiumPageBlobTier <PremiumPageBlobTier>] [-Properties <Hashtable>] [-ServerTimeoutPerRequest <Int32?>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ContainerPipeline
+```
+Set-AzStorageBlobContent [-File] <String> -CloudBlobContainer <CloudBlobContainer> [-AsJob] [-Blob <String>]
+ [-BlobType <String>] [-ClientTimeoutPerRequest <Int32?>] [-ConcurrentTaskCount <Int32?>]
+ [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-Force] [-Metadata <Hashtable>]
+ [-PremiumPageBlobTier <PremiumPageBlobTier>] [-Properties <Hashtable>] [-ServerTimeoutPerRequest <Int32?>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -75,7 +74,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -86,7 +85,7 @@ Blob name
 
 ```yaml
 Type: System.String
-Parameter Sets: SendManual, ContainerPipeline
+Parameter Sets: ContainerPipeline, SendManual
 Aliases:
 
 Required: False
@@ -187,7 +186,7 @@ Parameter Sets: SendManual
 Aliases:
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -235,7 +234,7 @@ Parameter Sets: (All)
 Aliases: FullName
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -252,7 +251,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -360,13 +359,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
 ### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
+
+### Microsoft.Azure.Storage.Blob.CloudBlob
 
 ### Microsoft.Azure.Storage.Blob.CloudBlobContainer
 
-### Microsoft.Azure.Storage.Blob.CloudBlob
+### System.String
 
 ## OUTPUTS
 

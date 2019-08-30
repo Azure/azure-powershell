@@ -13,8 +13,8 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-Update-AzStorageServiceProperty [-ServiceType] <StorageServiceType> [-DefaultServiceVersion <String>]
- [-PassThru] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-Confirm] [-WhatIf]
+Update-AzStorageServiceProperty [-ServiceType] <StorageServiceType> [-Context <IStorageContext>]
+ [-DefaultProfile <IAzureContextContainer>] [-DefaultServiceVersion <String>] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -101,7 +101,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -116,7 +116,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

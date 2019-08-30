@@ -13,9 +13,9 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-Set-AzStorageServiceLoggingProperty [-ServiceType] <StorageServiceType> [-Version <Double?>]
- [-RetentionDays <Int32?>] [-LoggingOperations <LoggingOperations[]>] [-PassThru] [-Context <IStorageContext>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzStorageServiceLoggingProperty [-ServiceType] <StorageServiceType> [-Context <IStorageContext>]
+ [-DefaultProfile <IAzureContextContainer>] [-LoggingOperations <LoggingOperations[]>] [-PassThru]
+ [-RetentionDays <Int32?>] [-Version <Double?>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -102,7 +102,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -134,7 +134,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

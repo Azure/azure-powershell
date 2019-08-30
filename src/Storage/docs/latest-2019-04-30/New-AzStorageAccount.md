@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzStorageAccount
 
 ## SYNOPSIS
-Creates a new storage account with the specified parameters.
+Asynchronously creates a new storage account with the specified parameters.
 If an account is already created and a subsequent create request is issued with different properties, the account properties will be updated.
 If an account is already created and a subsequent create or update request is issued with the exact same set of properties, the request will succeed.
 
@@ -17,25 +17,25 @@ If an account is already created and a subsequent create or update request is is
 ### CreateExpandedStorageEncryption (Default)
 ```
 New-AzStorageAccount -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Kind <Kind>
- -Location <String> -SkuName <SkuName> [-AssignIdentity] [-AccessTier <AccessTier>] [-EncryptBlobService]
- [-CustomDomainName <String>] [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly] [-StorageEncryption]
- [-EncryptFileService] [-EnableHierarchicalNamespace] [-NetworkRuleSetBypass <Bypass>]
- [-NetworkRuleSetDefaultAction <DefaultAction>] [-NetworkRuleSetIPRule <IIPRule[]>]
- [-NetworkRuleSetVirtualNetworkRule <IVirtualNetworkRule[]>] [-EncryptQueueService] [-SkuKind <Kind>]
- [-SkuRestriction <IRestriction[]>] [-EncryptTableService] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Location <String> -SkuName <SkuName> [-AccessTier <AccessTier>] [-AssignIdentity]
+ [-CustomDomainName <String>] [-EnableAzureFilesAadIntegration] [-EnableHierarchicalNamespace]
+ [-EnableHttpsTrafficOnly] [-EncryptBlobService] [-EncryptFileService] [-EncryptQueueService]
+ [-EncryptTableService] [-NetworkRuleSetBypass <Bypass>] [-NetworkRuleSetDefaultAction <DefaultAction>]
+ [-NetworkRuleSetIPRule <IIPRule[]>] [-NetworkRuleSetVirtualNetworkRule <IVirtualNetworkRule[]>]
+ [-SkuKind <Kind>] [-SkuRestriction <IRestriction[]>] [-StorageEncryption] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpandedKeyVaultEncryption
 ```
 New-AzStorageAccount -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Kind <Kind>
- -Location <String> -SkuName <SkuName> [-AssignIdentity] [-AccessTier <AccessTier>] [-EncryptBlobService]
- [-CustomDomainName <String>] [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly]
- [-EncryptFileService] [-EnableHierarchicalNamespace] [-NetworkRuleSetBypass <Bypass>]
- [-NetworkRuleSetDefaultAction <DefaultAction>] [-NetworkRuleSetIPRule <IIPRule[]>]
- [-NetworkRuleSetVirtualNetworkRule <IVirtualNetworkRule[]>] [-EncryptQueueService] [-SkuKind <Kind>]
- [-SkuRestriction <IRestriction[]>] [-EncryptTableService] [-Tag <Hashtable>] [-KeyVaultEncryption]
- [-KeyName <String>] [-KeyVaultUri <String>] [-KeyVersion <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ -Location <String> -SkuName <SkuName> [-AccessTier <AccessTier>] [-AssignIdentity]
+ [-CustomDomainName <String>] [-EnableAzureFilesAadIntegration] [-EnableHierarchicalNamespace]
+ [-EnableHttpsTrafficOnly] [-EncryptBlobService] [-EncryptFileService] [-EncryptQueueService]
+ [-EncryptTableService] [-KeyName <String>] [-KeyVaultEncryption] [-KeyVaultUri <String>]
+ [-KeyVersion <String>] [-NetworkRuleSetBypass <Bypass>] [-NetworkRuleSetDefaultAction <DefaultAction>]
+ [-NetworkRuleSetIPRule <IIPRule[]>] [-NetworkRuleSetVirtualNetworkRule <IVirtualNetworkRule[]>]
+ [-SkuKind <Kind>] [-SkuRestriction <IRestriction[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -93,7 +93,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -109,7 +109,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -158,7 +158,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -174,7 +174,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -190,7 +190,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -206,7 +206,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -222,7 +222,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -238,7 +238,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -254,7 +254,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -286,7 +286,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -413,6 +413,7 @@ Dynamic: False
 
 ### -NetworkRuleSetIPRule
 Sets the IP ACL rules
+To construct, see NOTES section for NETWORKRULESETIPRULE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20171001.IIPRule[]
@@ -429,6 +430,7 @@ Dynamic: False
 
 ### -NetworkRuleSetVirtualNetworkRule
 Sets the virtual network rules
+To construct, see NOTES section for NETWORKRULESETVIRTUALNETWORKRULE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20171001.IVirtualNetworkRule[]
@@ -497,6 +499,7 @@ Dynamic: False
 ### -SkuRestriction
 The restrictions because of which SKU cannot be used.
 This is empty if there are no restrictions.
+To construct, see NOTES section for SKURESTRICTION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20171001.IRestriction[]
@@ -521,7 +524,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -600,6 +603,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20190401.IStorageAccountCreateParameters
+
+### Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20190401.IStorageAccount
@@ -607,6 +614,21 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### NETWORKRULESETIPRULE <IIPRule[]>: Sets the IP ACL rules
+  - `IPAddressOrRange <String>`: Specifies the IP or IP range in CIDR format. Only IPV4 address is allowed.
+  - `[Action <Action?>]`: The action of IP ACL rule.
+
+#### NETWORKRULESETVIRTUALNETWORKRULE <IVirtualNetworkRule[]>: Sets the virtual network rules
+  - `VirtualNetworkResourceId <String>`: Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}.
+  - `[Action <Action?>]`: The action of virtual network rule.
+  - `[State <State?>]`: Gets the state of virtual network rule.
+
+#### SKURESTRICTION <IRestriction[]>: The restrictions because of which SKU cannot be used. This is empty if there are no restrictions.
+  - `[ReasonCode <ReasonCode?>]`: The reason for the restriction. As of now this can be "QuotaId" or "NotAvailableForSubscription". Quota Id is set when the SKU has requiredQuotas parameter as the subscription does not belong to that quota. The "NotAvailableForSubscription" is related to capacity at DC.
 
 ## RELATED LINKS
 

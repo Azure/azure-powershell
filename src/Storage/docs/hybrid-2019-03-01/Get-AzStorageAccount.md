@@ -20,7 +20,7 @@ Get-AzStorageAccount -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<C
 
 ### List1
 ```
-Get-AzStorageAccount -SubscriptionId <String[]> -ResourceGroupName <String> [-DefaultProfile <PSObject>]
+Get-AzStorageAccount -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 

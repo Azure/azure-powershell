@@ -170,4 +170,11 @@ directive:
     where: $
     transform: >
         return $.replace('</Project>', '  <Import Project=\"custom\\dataplane.props\" />\n</Project>' );
+  # Fix duplicate name
+  - where:
+      subject: StorageAccountNameAvailability
+      variant: ^Check\d?$|^CheckViaIdentity\d?$
+      parameter-name: Name
+    set:
+      parameter-name: Parameter
 ```

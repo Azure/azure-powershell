@@ -16,8 +16,8 @@ ETag in If-Match is honored if given but not required for this operation.
 ### Update (Default)
 ```
 Set-AzRmStorageContainerImmutabilityPolicy -AccountName <String> -ContainerName <String>
- -ResourceGroupName <String> -SubscriptionId <String> [-IfMatch <String>] [-Parameter <IImmutabilityPolicy>]
- [-ExtendPolicy] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ResourceGroupName <String> -SubscriptionId <String> [-IfMatch <String>] [-ExtendPolicy]
+ [-Parameter <IImmutabilityPolicy>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
@@ -115,7 +115,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -149,7 +149,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -157,7 +157,6 @@ Dynamic: False
 
 ### -Parameter
 The ImmutabilityPolicy property of a blob container, including Id, resource name, resource type, Etag.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml

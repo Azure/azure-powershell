@@ -13,9 +13,9 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-Get-AzStorageCORSRule [-ServiceType] <StorageServiceType> [-Context <IStorageContext>]
- [-ServerTimeoutPerRequest <Int32?>] [-ClientTimeoutPerRequest <Int32?>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32?>] [<CommonParameters>]
+Get-AzStorageCORSRule [-ServiceType] <StorageServiceType> [-ClientTimeoutPerRequest <Int32?>]
+ [-ConcurrentTaskCount <Int32?>] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+ [-ServerTimeoutPerRequest <Int32?>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -133,7 +133,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

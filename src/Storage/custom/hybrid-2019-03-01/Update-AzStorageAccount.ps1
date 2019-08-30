@@ -355,10 +355,11 @@ function Update-AzStorageAccount {
             $null = $PSBoundParameters.Remove("NoEncryption")
         }
         $null = Az.Storage.internal\Update-AzStorageAccount @PSBoundParameters
+        $commonParams = Get-CommonParameter -PSCmdlet $PSCmdlet -PSBoundParameter $PSBoundParameters
         if ($PSBoundParameters.ContainsKey("InputObject")) {
-            $PSBoundParameters["InputObject"] | Az.Storage.internal\Get-AzStorageAccountProperty
+            $PSBoundParameters["InputObject"] | Az.Storage.internal\Get-AzStorageAccountProperty @commonParams
         } else {
-            Az.Storage.internal\Get-AzStorageAccountProperty -Name $PSBoundParameters["Name"] -ResourceGroupName $PSBoundParameters["ResourceGroupName"]
+            Az.Storage.internal\Get-AzStorageAccountProperty -Name $PSBoundParameters["Name"] -ResourceGroupName $PSBoundParameters["ResourceGroupName"] -SubscriptionId $PSBoundParameters["SubscriptionId"] @commonParams
         }
     }
 }

@@ -13,10 +13,10 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-New-AzStorageContainerStoredAccessPolicy [-Container] <String> [-Policy] <String> [-Permission <String>]
- [-StartTime <DateTime?>] [-ExpiryTime <DateTime?>] [-Context <IStorageContext>]
- [-ServerTimeoutPerRequest <Int32?>] [-ClientTimeoutPerRequest <Int32?>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32?>] [<CommonParameters>]
+New-AzStorageContainerStoredAccessPolicy [-Container] <String> [-Policy] <String>
+ [-ClientTimeoutPerRequest <Int32?>] [-ConcurrentTaskCount <Int32?>] [-Context <IStorageContext>]
+ [-DefaultProfile <IAzureContextContainer>] [-ExpiryTime <DateTime?>] [-Permission <String>]
+ [-ServerTimeoutPerRequest <Int32?>] [-StartTime <DateTime?>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -86,7 +86,7 @@ Parameter Sets: (All)
 Aliases: N, Name
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue, ByPropertyName)
 Accept wildcard characters: False
@@ -168,7 +168,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -212,9 +212,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
 ### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
+
+### System.String
 
 ## OUTPUTS
 

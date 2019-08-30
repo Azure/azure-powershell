@@ -12,17 +12,17 @@ Sets the managementpolicy to the specified storage account.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzStorageAccountManagementPolicy -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Property <IManagementPolicy>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzStorageAccountManagementPolicy -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-PolicyRule <IManagementPolicyRule[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzStorageAccountManagementPolicy -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -Property <IManagementPolicy> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -89,7 +89,7 @@ See more details in: https://docs.microsoft.com/en-us/azure/storage/common/stora
 To construct, see NOTES section for POLICYRULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20181101.IManagementPolicyRule[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20190401.IManagementPolicyRule[]
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -106,11 +106,11 @@ The Get Storage Account ManagementPolicies operation response.
 To construct, see NOTES section for PROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20181101.IManagementPolicy
+Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20190401.IManagementPolicy
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -189,11 +189,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20181101.IManagementPolicy
+### Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20190401.IManagementPolicy
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20181101.IManagementPolicy
+### Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20190401.IManagementPolicy
 
 ## ALIASES
 
@@ -203,23 +203,23 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 #### POLICYRULE <IManagementPolicyRule[]>: The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
-  - `DeleteDaysAfterCreationGreaterThan <Int32>`: Integer value indicating the age in days after creation
-  - `DeleteDaysAfterModificationGreaterThan <Int32>`: Integer value indicating the age in days after last modification
+  - `DeleteDaysAfterCreationGreaterThan <Single>`: Value indicating the age in days after creation
+  - `DeleteDaysAfterModificationGreaterThan <Single>`: Value indicating the age in days after last modification
   - `FilterBlobType <String[]>`: An array of predefined enum values. Only blockBlob is supported.
   - `Name <String>`: A rule name can contain any combination of alpha numeric characters. Rule name is case-sensitive. It must be unique within a policy.
-  - `TierToArchiveDaysAfterModificationGreaterThan <Int32>`: Integer value indicating the age in days after last modification
-  - `TierToCoolDaysAfterModificationGreaterThan <Int32>`: Integer value indicating the age in days after last modification
+  - `TierToArchiveDaysAfterModificationGreaterThan <Single>`: Value indicating the age in days after last modification
+  - `TierToCoolDaysAfterModificationGreaterThan <Single>`: Value indicating the age in days after last modification
   - `[Enabled <Boolean?>]`: Rule is enabled if set to true.
   - `[FilterPrefixMatch <String[]>]`: An array of strings for prefixes to be match.
 
 #### PROPERTY <IManagementPolicy>: The Get Storage Account ManagementPolicies operation response.
   - `PolicyRule <IManagementPolicyRule[]>`: The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
-    - `DeleteDaysAfterCreationGreaterThan <Int32>`: Integer value indicating the age in days after creation
-    - `DeleteDaysAfterModificationGreaterThan <Int32>`: Integer value indicating the age in days after last modification
+    - `DeleteDaysAfterCreationGreaterThan <Single>`: Value indicating the age in days after creation
+    - `DeleteDaysAfterModificationGreaterThan <Single>`: Value indicating the age in days after last modification
     - `FilterBlobType <String[]>`: An array of predefined enum values. Only blockBlob is supported.
     - `Name <String>`: A rule name can contain any combination of alpha numeric characters. Rule name is case-sensitive. It must be unique within a policy.
-    - `TierToArchiveDaysAfterModificationGreaterThan <Int32>`: Integer value indicating the age in days after last modification
-    - `TierToCoolDaysAfterModificationGreaterThan <Int32>`: Integer value indicating the age in days after last modification
+    - `TierToArchiveDaysAfterModificationGreaterThan <Single>`: Value indicating the age in days after last modification
+    - `TierToCoolDaysAfterModificationGreaterThan <Single>`: Value indicating the age in days after last modification
     - `[Enabled <Boolean?>]`: Rule is enabled if set to true.
     - `[FilterPrefixMatch <String[]>]`: An array of strings for prefixes to be match.
 

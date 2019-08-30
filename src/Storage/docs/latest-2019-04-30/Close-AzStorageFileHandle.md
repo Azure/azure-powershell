@@ -14,50 +14,49 @@ schema: 2.0.0
 
 ### ShareNameCloseAll (Default)
 ```
-Close-AzStorageFileHandle [-ShareName] <String> -CloseAll [[-Path] <String>] [-Recursive]
- [-Context <IStorageContext>] [-PassThru] [-AsJob] [-ServerTimeoutPerRequest <Int32?>]
- [-ClientTimeoutPerRequest <Int32?>] [-DefaultProfile <IAzureContextContainer>]
- [-ConcurrentTaskCount <Int32?>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ShareNameCloseSingle
-```
-Close-AzStorageFileHandle [-ShareName] <String> -FileHandle <PSFileHandle> [-Context <IStorageContext>]
- [-PassThru] [-AsJob] [-ServerTimeoutPerRequest <Int32?>] [-ClientTimeoutPerRequest <Int32?>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32?>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Close-AzStorageFileHandle [-ShareName] <String> -CloseAll [[-Path] <String>] [-AsJob]
+ [-ClientTimeoutPerRequest <Int32?>] [-ConcurrentTaskCount <Int32?>] [-Context <IStorageContext>]
+ [-DefaultProfile <IAzureContextContainer>] [-PassThru] [-Recursive] [-ServerTimeoutPerRequest <Int32?>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DirectoryCloseAll
 ```
-Close-AzStorageFileHandle [-Directory] <CloudFileDirectory> -CloseAll [[-Path] <String>] [-Recursive]
- [-PassThru] [-AsJob] [-ServerTimeoutPerRequest <Int32?>] [-ClientTimeoutPerRequest <Int32?>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32?>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### ShareCloseAll
-```
-Close-AzStorageFileHandle [-Share] <CloudFileShare> -CloseAll [[-Path] <String>] [-Recursive] [-PassThru]
- [-AsJob] [-ServerTimeoutPerRequest <Int32?>] [-ClientTimeoutPerRequest <Int32?>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32?>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Close-AzStorageFileHandle [-Directory] <CloudFileDirectory> -CloseAll [[-Path] <String>] [-AsJob]
+ [-ClientTimeoutPerRequest <Int32?>] [-ConcurrentTaskCount <Int32?>]
+ [-DefaultProfile <IAzureContextContainer>] [-PassThru] [-Recursive] [-ServerTimeoutPerRequest <Int32?>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### FileCloseAll
 ```
-Close-AzStorageFileHandle [-File] <CloudFile> -CloseAll [-PassThru] [-AsJob]
- [-ServerTimeoutPerRequest <Int32?>] [-ClientTimeoutPerRequest <Int32?>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32?>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Close-AzStorageFileHandle [-File] <CloudFile> -CloseAll [-AsJob] [-ClientTimeoutPerRequest <Int32?>]
+ [-ConcurrentTaskCount <Int32?>] [-DefaultProfile <IAzureContextContainer>] [-PassThru]
+ [-ServerTimeoutPerRequest <Int32?>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ShareCloseAll
+```
+Close-AzStorageFileHandle [-Share] <CloudFileShare> -CloseAll [[-Path] <String>] [-AsJob]
+ [-ClientTimeoutPerRequest <Int32?>] [-ConcurrentTaskCount <Int32?>]
+ [-DefaultProfile <IAzureContextContainer>] [-PassThru] [-Recursive] [-ServerTimeoutPerRequest <Int32?>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ShareCloseSingle
 ```
-Close-AzStorageFileHandle [-Share] <CloudFileShare> -FileHandle <PSFileHandle> [-PassThru] [-AsJob]
- [-ServerTimeoutPerRequest <Int32?>] [-ClientTimeoutPerRequest <Int32?>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32?>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Close-AzStorageFileHandle [-Share] <CloudFileShare> -FileHandle <PSFileHandle> [-AsJob]
+ [-ClientTimeoutPerRequest <Int32?>] [-ConcurrentTaskCount <Int32?>]
+ [-DefaultProfile <IAzureContextContainer>] [-PassThru] [-ServerTimeoutPerRequest <Int32?>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### ShareNameCloseSingle
+```
+Close-AzStorageFileHandle [-ShareName] <String> -FileHandle <PSFileHandle> [-AsJob]
+ [-ClientTimeoutPerRequest <Int32?>] [-ConcurrentTaskCount <Int32?>] [-Context <IStorageContext>]
+ [-DefaultProfile <IAzureContextContainer>] [-PassThru] [-ServerTimeoutPerRequest <Int32?>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -95,7 +94,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -122,12 +121,12 @@ Force close all File handles.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ShareNameCloseAll, DirectoryCloseAll, ShareCloseAll, FileCloseAll
+Parameter Sets: DirectoryCloseAll, FileCloseAll, ShareCloseAll, ShareNameCloseAll
 Aliases:
 
 Required: True
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -191,7 +190,7 @@ Parameter Sets: DirectoryCloseAll
 Aliases:
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -207,7 +206,7 @@ Parameter Sets: FileCloseAll
 Aliases:
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -219,7 +218,7 @@ The File Handle to close.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Storage.Model.ResourceModel.PSFileHandle
-Parameter Sets: ShareNameCloseSingle, ShareCloseSingle
+Parameter Sets: ShareCloseSingle, ShareNameCloseSingle
 Aliases:
 
 Required: True
@@ -240,7 +239,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -251,11 +250,11 @@ Path to an existing file/directory.
 
 ```yaml
 Type: System.String
-Parameter Sets: ShareNameCloseAll, DirectoryCloseAll, ShareCloseAll
+Parameter Sets: DirectoryCloseAll, ShareCloseAll, ShareNameCloseAll
 Aliases:
 
 Required: False
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -268,12 +267,12 @@ Only works on File Directory.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ShareNameCloseAll, DirectoryCloseAll, ShareCloseAll
+Parameter Sets: DirectoryCloseAll, ShareCloseAll, ShareNameCloseAll
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -304,7 +303,7 @@ Parameter Sets: ShareCloseAll, ShareCloseSingle
 Aliases:
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -320,7 +319,7 @@ Parameter Sets: ShareNameCloseAll, ShareNameCloseSingle
 Aliases:
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -369,11 +368,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.Storage.Model.ResourceModel.PSFileHandle
 
-### Microsoft.Azure.Storage.File.CloudFileShare
+### Microsoft.Azure.Storage.File.CloudFile
 
 ### Microsoft.Azure.Storage.File.CloudFileDirectory
 
-### Microsoft.Azure.Storage.File.CloudFile
+### Microsoft.Azure.Storage.File.CloudFileShare
 
 ## OUTPUTS
 

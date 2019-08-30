@@ -12,19 +12,19 @@ List SAS credentials of a storage account.
 
 ## SYNTAX
 
-### List1 (Default)
-```
-Get-AzStorageAccountSas -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- [-Parameter <IAccountSasParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ListExpanded1
+### ListExpanded1 (Default)
 ```
 Get-AzStorageAccountSas -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
  -Permission <Permissions> -ResourceType <SignedResourceTypes> -Service <Services>
  -SharedAccessExpiryTime <DateTime> [-IPAddressOrRange <String>] [-KeyToSign <String>]
  [-Protocol <HttpProtocol>] [-SharedAccessStartTime <DateTime>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
+```
+
+### List1
+```
+Get-AzStorageAccountSas -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+ -Parameter <IAccountSasParameters> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -126,7 +126,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20171001.IAccountSasP
 Parameter Sets: List1
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

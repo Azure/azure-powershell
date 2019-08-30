@@ -14,32 +14,30 @@ schema: 2.0.0
 
 ### BlobNameWithPermission (Default)
 ```
-New-AzStorageBlobSASToken [-Container] <String> [-Blob] <String> [-Permission <String>]
- [-Protocol <SharedAccessProtocol?>] [-IPAddressOrRange <String>] [-StartTime <DateTime?>]
- [-ExpiryTime <DateTime?>] [-FullUri] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+New-AzStorageBlobSASToken [-Container] <String> [-Blob] <String> [-Context <IStorageContext>]
+ [-DefaultProfile <IAzureContextContainer>] [-ExpiryTime <DateTime?>] [-FullUri] [-IPAddressOrRange <String>]
+ [-Permission <String>] [-Protocol <SharedAccessProtocol?>] [-StartTime <DateTime?>] [<CommonParameters>]
 ```
 
 ### BlobNameWithPolicy
 ```
-New-AzStorageBlobSASToken [-Container] <String> [-Blob] <String> -Policy <String>
- [-Protocol <SharedAccessProtocol?>] [-IPAddressOrRange <String>] [-StartTime <DateTime?>]
- [-ExpiryTime <DateTime?>] [-FullUri] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+New-AzStorageBlobSASToken [-Container] <String> [-Blob] <String> -Policy <String> [-Context <IStorageContext>]
+ [-DefaultProfile <IAzureContextContainer>] [-ExpiryTime <DateTime?>] [-FullUri] [-IPAddressOrRange <String>]
+ [-Protocol <SharedAccessProtocol?>] [-StartTime <DateTime?>] [<CommonParameters>]
 ```
 
 ### BlobPipelineWithPermission
 ```
-New-AzStorageBlobSASToken -CloudBlob <CloudBlob> [-Permission <String>] [-Protocol <SharedAccessProtocol?>]
- [-IPAddressOrRange <String>] [-StartTime <DateTime?>] [-ExpiryTime <DateTime?>] [-FullUri]
- [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzStorageBlobSASToken -CloudBlob <CloudBlob> [-Context <IStorageContext>]
+ [-DefaultProfile <IAzureContextContainer>] [-ExpiryTime <DateTime?>] [-FullUri] [-IPAddressOrRange <String>]
+ [-Permission <String>] [-Protocol <SharedAccessProtocol?>] [-StartTime <DateTime?>] [<CommonParameters>]
 ```
 
 ### BlobPipelineWithPolicy
 ```
-New-AzStorageBlobSASToken -CloudBlob <CloudBlob> -Policy <String> [-Protocol <SharedAccessProtocol?>]
- [-IPAddressOrRange <String>] [-StartTime <DateTime?>] [-ExpiryTime <DateTime?>] [-FullUri]
- [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzStorageBlobSASToken -CloudBlob <CloudBlob> -Policy <String> [-Context <IStorageContext>]
+ [-DefaultProfile <IAzureContextContainer>] [-ExpiryTime <DateTime?>] [-FullUri] [-IPAddressOrRange <String>]
+ [-Protocol <SharedAccessProtocol?>] [-StartTime <DateTime?>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -76,7 +74,7 @@ Parameter Sets: BlobNameWithPermission, BlobNameWithPolicy
 Aliases:
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -108,7 +106,7 @@ Parameter Sets: BlobNameWithPermission, BlobNameWithPolicy
 Aliases:
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -173,7 +171,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

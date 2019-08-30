@@ -19,7 +19,7 @@ Get-AzStorageUsage -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<Com
 
 ### List
 ```
-Get-AzStorageUsage -SubscriptionId <String[]> -Location <String> [-DefaultProfile <PSObject>]
+Get-AzStorageUsage -Location <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 

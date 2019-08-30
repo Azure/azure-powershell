@@ -14,8 +14,8 @@ schema: 2.0.0
 
 ```
 New-AzStorageContainer [-Name] <String> [[-Permission] <BlobContainerPublicAccessType?>]
- [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32?>] [-ClientTimeoutPerRequest <Int32?>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32?>] [<CommonParameters>]
+ [-ClientTimeoutPerRequest <Int32?>] [-ConcurrentTaskCount <Int32?>] [-Context <IStorageContext>]
+ [-DefaultProfile <IAzureContextContainer>] [-ServerTimeoutPerRequest <Int32?>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -117,7 +117,7 @@ Parameter Sets: (All)
 Aliases: N, Container
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue, ByPropertyName)
 Accept wildcard characters: False
@@ -133,7 +133,7 @@ Parameter Sets: (All)
 Aliases: PublicAccess
 
 Required: False
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -161,9 +161,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
 ### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
+
+### System.String
 
 ## OUTPUTS
 

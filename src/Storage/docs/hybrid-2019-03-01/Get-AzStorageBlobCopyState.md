@@ -14,23 +14,24 @@ schema: 2.0.0
 
 ### NamePipeline (Default)
 ```
-Get-AzStorageBlobCopyState [-Blob] <String> [-Container] <String> [-WaitForComplete]
- [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32?>] [-ClientTimeoutPerRequest <Int32?>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32?>] [<CommonParameters>]
-```
-
-### ContainerPipeline
-```
-Get-AzStorageBlobCopyState [-Blob] <String> -CloudBlobContainer <CloudBlobContainer> [-WaitForComplete]
- [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32?>] [-ClientTimeoutPerRequest <Int32?>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32?>] [<CommonParameters>]
+Get-AzStorageBlobCopyState [-Blob] <String> [-Container] <String> [-ClientTimeoutPerRequest <Int32?>]
+ [-ConcurrentTaskCount <Int32?>] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+ [-ServerTimeoutPerRequest <Int32?>] [-WaitForComplete] [<CommonParameters>]
 ```
 
 ### BlobPipeline
 ```
-Get-AzStorageBlobCopyState -CloudBlob <CloudBlob> [-WaitForComplete] [-Context <IStorageContext>]
- [-ServerTimeoutPerRequest <Int32?>] [-ClientTimeoutPerRequest <Int32?>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32?>] [<CommonParameters>]
+Get-AzStorageBlobCopyState -CloudBlob <CloudBlob> [-ClientTimeoutPerRequest <Int32?>]
+ [-ConcurrentTaskCount <Int32?>] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+ [-ServerTimeoutPerRequest <Int32?>] [-WaitForComplete] [<CommonParameters>]
+```
+
+### ContainerPipeline
+```
+Get-AzStorageBlobCopyState [-Blob] <String> -CloudBlobContainer <CloudBlobContainer>
+ [-ClientTimeoutPerRequest <Int32?>] [-ConcurrentTaskCount <Int32?>] [-Context <IStorageContext>]
+ [-DefaultProfile <IAzureContextContainer>] [-ServerTimeoutPerRequest <Int32?>] [-WaitForComplete]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,11 +64,11 @@ Blob name
 
 ```yaml
 Type: System.String
-Parameter Sets: NamePipeline, ContainerPipeline
+Parameter Sets: ContainerPipeline, NamePipeline
 Aliases:
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -148,7 +149,7 @@ Parameter Sets: NamePipeline
 Aliases:
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -213,7 +214,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

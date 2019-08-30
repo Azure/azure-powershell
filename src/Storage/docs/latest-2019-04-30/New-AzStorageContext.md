@@ -14,38 +14,14 @@ schema: 2.0.0
 
 ### OAuthAccount (Default)
 ```
-New-AzStorageContext [-StorageAccountName] <String> [-UseConnectedAccount] [-Protocol <String>]
- [-Endpoint <String>] [<CommonParameters>]
+New-AzStorageContext [-StorageAccountName] <String> [-Endpoint <String>] [-Protocol <String>]
+ [-UseConnectedAccount] [<CommonParameters>]
 ```
 
-### OAuthAccountEnvironment
+### AccountNameAndKey
 ```
-New-AzStorageContext [-StorageAccountName] <String> -Environment <String> [-UseConnectedAccount]
+New-AzStorageContext [-StorageAccountName] <String> [-StorageAccountKey] <String> [-Endpoint <String>]
  [-Protocol <String>] [<CommonParameters>]
-```
-
-### SasTokenWithAzureEnvironment
-```
-New-AzStorageContext [-StorageAccountName] <String> -Environment <String> -SasToken <String>
- [<CommonParameters>]
-```
-
-### SasToken
-```
-New-AzStorageContext [-StorageAccountName] <String> -SasToken <String> [-Protocol <String>]
- [-Endpoint <String>] [<CommonParameters>]
-```
-
-### AnonymousAccountEnvironment
-```
-New-AzStorageContext [-StorageAccountName] <String> -Environment <String> -Anonymous [-Protocol <String>]
- [<CommonParameters>]
-```
-
-### AnonymousAccount
-```
-New-AzStorageContext [-StorageAccountName] <String> -Anonymous [-Protocol <String>] [-Endpoint <String>]
- [<CommonParameters>]
 ```
 
 ### AccountNameAndKeyEnvironment
@@ -54,10 +30,16 @@ New-AzStorageContext [-StorageAccountName] <String> [-StorageAccountKey] <String
  [-Protocol <String>] [<CommonParameters>]
 ```
 
-### AccountNameAndKey
+### AnonymousAccount
 ```
-New-AzStorageContext [-StorageAccountName] <String> [-StorageAccountKey] <String> [-Protocol <String>]
- [-Endpoint <String>] [<CommonParameters>]
+New-AzStorageContext [-StorageAccountName] <String> -Anonymous [-Endpoint <String>] [-Protocol <String>]
+ [<CommonParameters>]
+```
+
+### AnonymousAccountEnvironment
+```
+New-AzStorageContext [-StorageAccountName] <String> -Anonymous -Environment <String> [-Protocol <String>]
+ [<CommonParameters>]
 ```
 
 ### ConnectionString
@@ -68,6 +50,24 @@ New-AzStorageContext -ConnectionString <String> [<CommonParameters>]
 ### LocalDevelopment
 ```
 New-AzStorageContext -Local [<CommonParameters>]
+```
+
+### OAuthAccountEnvironment
+```
+New-AzStorageContext [-StorageAccountName] <String> -Environment <String> [-Protocol <String>]
+ [-UseConnectedAccount] [<CommonParameters>]
+```
+
+### SasToken
+```
+New-AzStorageContext [-StorageAccountName] <String> -SasToken <String> [-Endpoint <String>]
+ [-Protocol <String>] [<CommonParameters>]
+```
+
+### SasTokenWithAzureEnvironment
+```
+New-AzStorageContext [-StorageAccountName] <String> -Environment <String> -SasToken <String>
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -100,12 +100,12 @@ Use anonymous storage account
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: AnonymousAccountEnvironment, AnonymousAccount
+Parameter Sets: AnonymousAccount, AnonymousAccountEnvironment
 Aliases:
 
 Required: True
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -132,7 +132,7 @@ Azure storage endpoint
 
 ```yaml
 Type: System.String
-Parameter Sets: OAuthAccount, SasToken, AnonymousAccount, AccountNameAndKey
+Parameter Sets: AccountNameAndKey, AnonymousAccount, OAuthAccount, SasToken
 Aliases:
 
 Required: False
@@ -148,7 +148,7 @@ Azure environment name
 
 ```yaml
 Type: System.String
-Parameter Sets: OAuthAccountEnvironment, SasTokenWithAzureEnvironment, AnonymousAccountEnvironment, AccountNameAndKeyEnvironment
+Parameter Sets: AccountNameAndKeyEnvironment, AnonymousAccountEnvironment, OAuthAccountEnvironment, SasTokenWithAzureEnvironment
 Aliases: Name, EnvironmentName
 
 Required: True
@@ -169,7 +169,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -180,7 +180,7 @@ Protocol specification (HTTP or HTTPS), default is HTTPS
 
 ```yaml
 Type: System.String
-Parameter Sets: OAuthAccount, OAuthAccountEnvironment, SasToken, AnonymousAccountEnvironment, AnonymousAccount, AccountNameAndKeyEnvironment, AccountNameAndKey
+Parameter Sets: AccountNameAndKey, AccountNameAndKeyEnvironment, AnonymousAccount, AnonymousAccountEnvironment, OAuthAccount, OAuthAccountEnvironment, SasToken
 Aliases:
 
 Required: False
@@ -196,7 +196,7 @@ Azure Storage SAS Token
 
 ```yaml
 Type: System.String
-Parameter Sets: SasTokenWithAzureEnvironment, SasToken
+Parameter Sets: SasToken, SasTokenWithAzureEnvironment
 Aliases:
 
 Required: True
@@ -212,11 +212,11 @@ Azure Storage Account Key
 
 ```yaml
 Type: System.String
-Parameter Sets: AccountNameAndKeyEnvironment, AccountNameAndKey
+Parameter Sets: AccountNameAndKey, AccountNameAndKeyEnvironment
 Aliases:
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -228,11 +228,11 @@ Azure Storage Account Name
 
 ```yaml
 Type: System.String
-Parameter Sets: OAuthAccount, OAuthAccountEnvironment, SasTokenWithAzureEnvironment, SasToken, AnonymousAccountEnvironment, AnonymousAccount, AccountNameAndKeyEnvironment, AccountNameAndKey
+Parameter Sets: AccountNameAndKey, AccountNameAndKeyEnvironment, AnonymousAccount, AnonymousAccountEnvironment, OAuthAccount, OAuthAccountEnvironment, SasToken, SasTokenWithAzureEnvironment
 Aliases:
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -249,7 +249,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

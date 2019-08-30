@@ -14,17 +14,17 @@ SetLegalHold follows an append pattern and does not clear out the existing tags 
 
 ## SYNTAX
 
-### Set (Default)
-```
-Set-AzRmStorageContainerLegalHold -AccountName <String> -ContainerName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-LegalHold <ILegalHold>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### SetExpanded
+### SetExpanded (Default)
 ```
 Set-AzRmStorageContainerLegalHold -AccountName <String> -ContainerName <String> -ResourceGroupName <String>
  -SubscriptionId <String> -Tag <String[]> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### Set
+```
+Set-AzRmStorageContainerLegalHold -AccountName <String> -ContainerName <String> -ResourceGroupName <String>
+ -SubscriptionId <String> -LegalHold <ILegalHold> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -115,7 +115,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20190401.ILegalHold
 Parameter Sets: Set
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

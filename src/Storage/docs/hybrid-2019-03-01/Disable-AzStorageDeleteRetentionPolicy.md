@@ -13,8 +13,8 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-Disable-AzStorageDeleteRetentionPolicy [-PassThru] [-Context <IStorageContext>]
- [-DefaultProfile <IAzureContextContainer>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Disable-AzStorageDeleteRetentionPolicy [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,7 +84,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

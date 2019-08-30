@@ -14,16 +14,16 @@ schema: 2.0.0
 
 ### MatchingPrefix (Default)
 ```
-Get-AzStorageShare [[-Prefix] <String>] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32?>]
- [-ClientTimeoutPerRequest <Int32?>] [-DefaultProfile <IAzureContextContainer>]
- [-ConcurrentTaskCount <Int32?>] [<CommonParameters>]
+Get-AzStorageShare [[-Prefix] <String>] [-ClientTimeoutPerRequest <Int32?>] [-ConcurrentTaskCount <Int32?>]
+ [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-ServerTimeoutPerRequest <Int32?>]
+ [<CommonParameters>]
 ```
 
 ### Specific
 ```
-Get-AzStorageShare [-Name] <String> [[-SnapshotTime] <DateTimeOffset?>] [-Context <IStorageContext>]
- [-ServerTimeoutPerRequest <Int32?>] [-ClientTimeoutPerRequest <Int32?>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32?>] [<CommonParameters>]
+Get-AzStorageShare [-Name] <String> [[-SnapshotTime] <DateTimeOffset?>] [-ClientTimeoutPerRequest <Int32?>]
+ [-ConcurrentTaskCount <Int32?>] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+ [-ServerTimeoutPerRequest <Int32?>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -125,7 +125,7 @@ Parameter Sets: Specific
 Aliases:
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -141,7 +141,7 @@ Parameter Sets: MatchingPrefix
 Aliases:
 
 Required: False
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -173,7 +173,7 @@ Parameter Sets: Specific
 Aliases:
 
 Required: False
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

@@ -14,16 +14,18 @@ schema: 2.0.0
 
 ### ContainerName (Default)
 ```
-Get-AzStorageContainer [[-Name] <String>] [-MaxCount <Int32?>] [-ContinuationToken <BlobContinuationToken>]
- [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32?>] [-ClientTimeoutPerRequest <Int32?>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32?>] [<CommonParameters>]
+Get-AzStorageContainer [[-Name] <String>] [-ClientTimeoutPerRequest <Int32?>] [-ConcurrentTaskCount <Int32?>]
+ [-Context <IStorageContext>] [-ContinuationToken <BlobContinuationToken>]
+ [-DefaultProfile <IAzureContextContainer>] [-MaxCount <Int32?>] [-ServerTimeoutPerRequest <Int32?>]
+ [<CommonParameters>]
 ```
 
 ### ContainerPrefix
 ```
-Get-AzStorageContainer -Prefix <String> [-MaxCount <Int32?>] [-ContinuationToken <BlobContinuationToken>]
- [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32?>] [-ClientTimeoutPerRequest <Int32?>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32?>] [<CommonParameters>]
+Get-AzStorageContainer -Prefix <String> [-ClientTimeoutPerRequest <Int32?>] [-ConcurrentTaskCount <Int32?>]
+ [-Context <IStorageContext>] [-ContinuationToken <BlobContinuationToken>]
+ [-DefaultProfile <IAzureContextContainer>] [-MaxCount <Int32?>] [-ServerTimeoutPerRequest <Int32?>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -157,10 +159,10 @@ Parameter Sets: ContainerName
 Aliases: N, Container
 
 Required: False
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue, ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 Dynamic: False
 ```
 
@@ -201,9 +203,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
 ### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
+
+### System.String
 
 ## OUTPUTS
 

@@ -14,26 +14,24 @@ schema: 2.0.0
 
 ### ShareName (Default)
 ```
-Remove-AzStorageDirectory [-ShareName] <String> [-Path] <String> [-PassThru] [-Context <IStorageContext>]
- [-ServerTimeoutPerRequest <Int32?>] [-ClientTimeoutPerRequest <Int32?>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32?>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### Share
-```
-Remove-AzStorageDirectory [-Share] <CloudFileShare> [-Path] <String> [-PassThru]
- [-ServerTimeoutPerRequest <Int32?>] [-ClientTimeoutPerRequest <Int32?>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32?>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-AzStorageDirectory [-ShareName] <String> [-Path] <String> [-ClientTimeoutPerRequest <Int32?>]
+ [-ConcurrentTaskCount <Int32?>] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+ [-PassThru] [-ServerTimeoutPerRequest <Int32?>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Directory
 ```
-Remove-AzStorageDirectory [-Directory] <CloudFileDirectory> [-Path] <String> [-PassThru]
- [-ServerTimeoutPerRequest <Int32?>] [-ClientTimeoutPerRequest <Int32?>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32?>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-AzStorageDirectory [-Directory] <CloudFileDirectory> [[-Path] <String>]
+ [-ClientTimeoutPerRequest <Int32?>] [-ConcurrentTaskCount <Int32?>]
+ [-DefaultProfile <IAzureContextContainer>] [-PassThru] [-ServerTimeoutPerRequest <Int32?>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### Share
+```
+Remove-AzStorageDirectory [-Share] <CloudFileShare> [-Path] <String> [-ClientTimeoutPerRequest <Int32?>]
+ [-ConcurrentTaskCount <Int32?>] [-DefaultProfile <IAzureContextContainer>] [-PassThru]
+ [-ServerTimeoutPerRequest <Int32?>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -135,7 +133,7 @@ Parameter Sets: Directory
 Aliases:
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -153,7 +151,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -168,9 +166,9 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue, ByPropertyName)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -200,7 +198,7 @@ Parameter Sets: Share
 Aliases:
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -216,7 +214,7 @@ Parameter Sets: ShareName
 Aliases:
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -263,9 +261,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 
+### Microsoft.WindowsAzure.Storage.File.CloudFileDirectory
+
 ### Microsoft.WindowsAzure.Storage.File.CloudFileShare
 
-### Microsoft.WindowsAzure.Storage.File.CloudFileDirectory
+### System.String
 
 ## OUTPUTS
 
