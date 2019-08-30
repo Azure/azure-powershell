@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.Management.Compute.ArgumentCompleters
     using System.Linq;
     using System.Management.Automation;
 
+    /// <summary>
+    /// A SKU name completer for general VM scale set.
+    /// </summary>
     public class VmScaleSetSkuCompleterAttribute : ArgumentCompleterAttribute
     {
         public VmScaleSetSkuCompleterAttribute()
@@ -48,7 +51,7 @@ namespace Microsoft.Azure.Commands.Management.Compute.ArgumentCompleters
         {
             lock (_lock)
             {
-                var names = new string[] { };
+                string[] names;
 
                 IAzureContext context = AzureRmProfileProvider.Instance.Profile.DefaultContext;
                 var contextHash = ArgumentCompleterHelper.HashContext(context);
@@ -79,12 +82,10 @@ namespace Microsoft.Azure.Commands.Management.Compute.ArgumentCompleters
 
         private static string[] GetSkuNamesFromClient(IAzureContext context)
         {
-            string[] output;
             var client = new ComputeClient(context).ComputeManagementClient.ResourceSkus;
-            output = ArgumentCompleterHelper.ReadAllPages(client.ListAsync(), nextPageLink => client.ListNextAsync(nextPageLink))
+            return ArgumentCompleterHelper.ReadAllPages(client.ListAsync(), nextPageLink => client.ListNextAsync(nextPageLink))
                 .Select(sku => sku.Name)
                 .ToArray();
-            return output;
         }
     }
 }

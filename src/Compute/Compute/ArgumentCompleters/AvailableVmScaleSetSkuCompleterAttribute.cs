@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.Management.Compute.ArgumentCompleters
     using System.Linq;
     using System.Management.Automation;
 
+    /// <summary>
+    /// SKU name completer for a given VM scale set.
+    /// </summary>
     public class AvailableVmScaleSetSkuCompleterAttribute : ArgumentCompleterAttribute
     {
         public AvailableVmScaleSetSkuCompleterAttribute(string resourceGroupName, string vmScaleSetName)
@@ -51,7 +54,7 @@ namespace Microsoft.Azure.Commands.Management.Compute.ArgumentCompleters
                 IAzureContext context = AzureRmProfileProvider.Instance.Profile.DefaultContext;
                 var contextHash = ArgumentCompleterHelper.HashContext(context);
 
-                string[] names = new string[] { };
+                string[] names = { };
 
                 if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(vmScaleSetName))
                 {
@@ -81,12 +84,11 @@ namespace Microsoft.Azure.Commands.Management.Compute.ArgumentCompleters
 
         private static string[] GetSkuNamesFromClient(string resourceGroupName, string vmScaleSetName, IAzureContext context)
         {
-            string[] output;
             var client = new ComputeClient(context).ComputeManagementClient.VirtualMachineScaleSets;
-            output = ArgumentCompleterHelper.ReadAllPages(client.ListSkusAsync(resourceGroupName, vmScaleSetName), nextPageLink => client.ListSkusNextAsync(nextPageLink))
+            // This completer uses a different API to get the skus specifically for one certain vmss.
+            return ArgumentCompleterHelper.ReadAllPages(client.ListSkusAsync(resourceGroupName, vmScaleSetName), nextPageLink => client.ListSkusNextAsync(nextPageLink))
                 .Select(sku => sku.Sku.Name)
                 .ToArray();
-            return output;
         }
     }
 }
