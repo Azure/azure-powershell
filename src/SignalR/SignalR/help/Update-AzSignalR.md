@@ -1,36 +1,52 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.SignalR.dll-Help.xml
 Module Name: Az.SignalR
-online version: https://docs.microsoft.com/en-us/powershell/module/az.signalr/new-azsignalr
+online version: https://docs.microsoft.com/en-us/powershell/module/az.signalr/update-azsignalr
 schema: 2.0.0
 ---
 
-# New-AzSignalR
+# Update-AzSignalR
 
 ## SYNOPSIS
-Create a SignalR service.
+Update a SignalR service.
 
 ## SYNTAX
 
+### ResourceGroupParameterSet (Default)
 ```
-New-AzSignalR [-ResourceGroupName <String>] [-Name] <String> [-Location <String>] [-Sku <String>]
- [-UnitCount <Int32>] [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>]
- [-ServiceMode <String>] [-AllowedOrigin <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzSignalR [-ResourceGroupName <String>] [-Name] <String> [-Sku <String>] [-UnitCount <Int32>]
+ [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>] [-ServiceMode <String>]
+ [-AllowedOrigin <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ResourceIdParameterSet
+```
+Update-AzSignalR -ResourceId <String> [-Sku <String>] [-UnitCount <Int32>]
+ [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>] [-ServiceMode <String>]
+ [-AllowedOrigin <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### InputObjectParameterSet
+```
+Update-AzSignalR -InputObject <PSSignalRResource> [-Sku <String>] [-UnitCount <Int32>]
+ [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>] [-ServiceMode <String>]
+ [-AllowedOrigin <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a SignalR service.
+Update a SignalR service.
 The following values will be used for the parameters if not specified:
 * `ResourceGroupName`: the default resource group set by `Set-AzDefault -ResourceGroupName`.
-* `Location`: the location of the resource group
 * `Sku`: `Standard_S1`
 
 ## EXAMPLES
 
-### Create a SignalR service
+### Update a specific SignalR service.
 ```powershell
-PS C:\> New-AzSignalR -ResourceGroupName myResourceGroup1 -Name mysignalr1 -Location eastus -Sku Standard_S1 -UnitCount 5
+PS C:\> Update-AzSignalR -ResourceGroupName myResourceGroup -Name mysignalr1 -UnitCount 5
 
 HostName                                 Location       ExternalIp      Sku         UnitCount ProvisioningState Version
 --------                                 --------       ----------      ---         --------- ----------------- -------
@@ -39,7 +55,7 @@ mysignalr1.service.signalr.net           eastus         52.179.3.5      Standard
 
 ### Specify ServiceMode and AllowedOrigin
 ```powershell
-PS C:\> New-AzSignalR -ResourceGroupName myResourceGroup1 -Name mysignalr2 -Location eastus -ServiceMode Serverless -AllowedOrigin http://example1.com:12345, https://example2.cn
+PS C:\> Update-AzSignalR -ResourceGroupName myResourceGroup1 -Name mysignalr2 -ServiceMode Serverless -AllowedOrigin http://example1.com:12345, https://example2.cn
 
 HostName                                 Location       ExternalIp      Sku         UnitCount ProvisioningState Version
 --------                                 --------       ----------      ---         --------- ----------------- -------
@@ -93,18 +109,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-The SignalR service location. The resource group location will be used if not specified.
+### -InputObject
+The SignalR resource object.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource
+Parameter Sets: InputObjectParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -113,7 +129,7 @@ The SignalR service name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ResourceGroupParameterSet
 Aliases:
 
 Required: True
@@ -124,17 +140,33 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The resource group name. The default one will be used if not specified.
+The resource group name.
+The default one will be used if not specified.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ResourceGroupParameterSet
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+The SignalR service resource ID.
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceIdParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -155,6 +187,7 @@ Accept wildcard characters: False
 
 ### -Sku
 The SignalR service SKU.
+Default to "Standard_S1".
 
 ```yaml
 Type: System.String
@@ -163,7 +196,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: Standard_S1
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -184,16 +217,17 @@ Accept wildcard characters: False
 ```
 
 ### -UnitCount
-The SignalR service unit count, from 1 to 10. Default to 1.
+The SignalR service unit count, value only from {1, 2, 5, 10, 20, 50, 100}.
+Default to 1.
 
 ```yaml
-Type: System.Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: 1
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -235,6 +269,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+
+### Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource
 
 ## OUTPUTS
 
