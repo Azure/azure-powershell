@@ -1,48 +1,65 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.SignalR.dll-Help.xml
 Module Name: Az.SignalR
-online version: https://docs.microsoft.com/en-us/powershell/module/az.signalr/new-azsignalrkey
+online version: https://docs.microsoft.com/en-us/powershell/module/az.signalr/restart-azsignalr
 schema: 2.0.0
 ---
 
-# New-AzSignalRKey
+# Restart-AzSignalR
 
 ## SYNOPSIS
-Regenerate an access key for a SignalR service.
+Restart a SignalR service.
 
 ## SYNTAX
 
 ### ResourceGroupParameterSet (Default)
 ```
-New-AzSignalRKey [-ResourceGroupName <String>] [-Name] <String> [-KeyType] <String> [-PassThru]
+Restart-AzSignalR [-ResourceGroupName <String>] [-Name] <String> [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-New-AzSignalRKey -ResourceId <String> [-KeyType] <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Restart-AzSignalR -ResourceId <String> [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-New-AzSignalRKey -InputObject <PSSignalRResource> [-KeyType] <String> [-PassThru]
+Restart-AzSignalR -InputObject <PSSignalRResource> [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Regenerate an access key for a SignalR service.
+Restart a SignalR service.
 
 ## EXAMPLES
 
-### Regenerate the primary key
+### Restart a specific SignalR service
 ```powershell
-PS C:\> New-AzSignalRKey -ResourceGroupName myResourceGroup -Name mysignalr1 -KeyType Primary -PassThru
+PS C:\> Restart-AzSignalR -ResourceGroupName myResourceGroup -Name mysignalr1 -PassThru
 
 True
 ```
 
+The default resource group can be set by \`Set-AzDefault -ResourceGroupName myResourceGroup\`.
+
 ## PARAMETERS
+
+### -AsJob
+Run the cmdlet in background job.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -74,24 +91,8 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -KeyType
-The key type, either Primary or Secondary.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-Accepted values: Primary, Secondary
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
-SignalR service name.
+The SignalR service name.
 
 ```yaml
 Type: System.String
@@ -106,7 +107,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Returns true if the regeneration was completed successfully.
+{{ Fill PassThru Description }}
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -121,7 +122,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource group name.
+The resource group name.
+The default one will be used if not specified.
 
 ```yaml
 Type: System.String
@@ -187,10 +189,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+
 ### Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource
+
 ## OUTPUTS
 
 ### System.Boolean
+
 ## NOTES
 
 ## RELATED LINKS
