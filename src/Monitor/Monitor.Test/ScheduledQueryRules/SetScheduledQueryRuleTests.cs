@@ -51,11 +51,11 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScheduledQueryRules
 
             ScheduledQueryRuleAznsAction aznsAction = new ScheduledQueryRuleAznsAction(new AzNsActionGroup());
             ScheduledQueryRuleTriggerCondition triggerCondition = new ScheduledQueryRuleTriggerCondition(new TriggerCondition("GreaterThan", 15));
-            ScheduledQueryRuleAlertingAction alertingAction = new ScheduledQueryRuleAlertingAction(new AlertingAction("2", aznsAction, triggerCondition));
+            ScheduledQueryRuleAlertingAction alertingAction = new ScheduledQueryRuleAlertingAction(new AlertingAction(severity: "2", aznsAction: aznsAction, trigger: triggerCondition));
 
             ScheduledQueryRuleSchedule schedule = new ScheduledQueryRuleSchedule(new Schedule(5, 5));          
 
-            ScheduledQueryRuleSource source = new ScheduledQueryRuleSource(new Source("union *", "dataSourceId", new string[]{ "authResource1", "authResource2" }, "ResultCount"));
+            ScheduledQueryRuleSource source = new ScheduledQueryRuleSource(new Source(query: "union *", dataSourceId: "dataSourceId", authorizedResources: new string[]{ "authResource1", "authResource2" }, queryType: "ResultCount"));
 
             //testing update of "description" field
             cmdlet = new SetScheduledQueryRuleCommand

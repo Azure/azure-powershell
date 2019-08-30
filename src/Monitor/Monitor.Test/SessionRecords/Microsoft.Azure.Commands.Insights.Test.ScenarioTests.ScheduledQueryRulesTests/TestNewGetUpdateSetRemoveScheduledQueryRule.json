@@ -205,8 +205,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/ps9194/providers/microsoft.insights/actionGroups/ps9883?api-version=2018-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYWQ4MjUxNzAtODQ1Yy00N2RiLThmMDAtMTE5Nzg5NDdiMDg5L3Jlc291cmNlR3JvdXBzL3BzOTE5NC9wcm92aWRlcnMvbWljcm9zb2Z0Lmluc2lnaHRzL2FjdGlvbkdyb3Vwcy9wczk4ODM/YXBpLXZlcnNpb249MjAxOC0wMy0wMQ==",
+      "RequestUri": "/subscriptions/ad825170-845c-47db-8f00-11978947b089/resourceGroups/ps9194/providers/microsoft.insights/actionGroups/ps9883?api-version=2019-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYWQ4MjUxNzAtODQ1Yy00N2RiLThmMDAtMTE5Nzg5NDdiMDg5L3Jlc291cmNlR3JvdXBzL3BzOTE5NC9wcm92aWRlcnMvbWljcm9zb2Z0Lmluc2lnaHRzL2FjdGlvbkdyb3Vwcy9wczk4ODM/YXBpLXZlcnNpb249MjAxOS0wNi0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"groupShortName\": \"ASTG\",\r\n    \"enabled\": true,\r\n    \"emailReceivers\": [\r\n      {\r\n        \"name\": \"user1\",\r\n        \"emailAddress\": \"user1@example.com\"\r\n      }\r\n    ],\r\n    \"smsReceivers\": [],\r\n    \"webhookReceivers\": []\r\n  },\r\n  \"location\": \"Global\"\r\n}",
       "RequestHeaders": {
