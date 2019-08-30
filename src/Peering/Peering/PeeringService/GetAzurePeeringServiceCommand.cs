@@ -90,10 +90,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                         var list = this.GetPeeringByResource();
                         this.WriteObject(list, true);
                     }
-                } else if (string.Equals(
-                    this.ParameterSetName,
-                    Constants.ParameterSetNameByResourceId,
-                    StringComparison.OrdinalIgnoreCase))
+                }
+                else if (string.Equals(
+                  this.ParameterSetName,
+                  Constants.ParameterSetNameByResourceId,
+                  StringComparison.OrdinalIgnoreCase))
                 {
                     var resourceId = new ResourceIdentifier(this.ResourceId);
                     this.ResourceGroupName = resourceId.ResourceGroupName;

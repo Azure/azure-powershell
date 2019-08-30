@@ -63,7 +63,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
                 cfg =>
                     {
                         cfg.AddProfile<PeeringResourceManagerProfile>();
-                        // MNM to CNM 
+                        // MNM to CNM
                         cfg.CreateMap<MNM.BgpSession, CNM.PSBgpSession>();
                         cfg.CreateMap<MNM.DirectConnection, CNM.PSDirectConnection>();
                         cfg.CreateMap<MNM.DirectPeeringFacility, CNM.PSDirectPeeringFacility>();

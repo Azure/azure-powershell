@@ -14,7 +14,6 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
 
@@ -25,8 +24,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     using Microsoft.Azure.Management.Peering.Models;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Common;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Models;
-
-    using Newtonsoft.Json;
 
     /// <inheritdoc />
     /// <summary>

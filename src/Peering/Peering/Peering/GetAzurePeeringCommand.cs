@@ -24,11 +24,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     using Microsoft.Azure.Management.Peering.Models;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Common;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Models;
-    using Microsoft.Rest;
-    using Microsoft.Rest.Azure;
-    using Microsoft.WindowsAzure.Commands.Utilities.Common;
-
-    using Newtonsoft.Json;
 
     /// <inheritdoc />
     /// <summary>
@@ -89,7 +84,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                         this.WriteObject(item);
                     }
                     else
-                    { 
+                    {
                         var list = this.GetPeeringByResource();
                         this.WriteObject(list, true);
                     }
@@ -110,7 +105,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                 throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
             }
         }
-        
+
         /// <summary>
         ///     Gets InputObject by its Kind
         /// </summary>

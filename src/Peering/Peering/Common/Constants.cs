@@ -51,7 +51,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// </summary>
         public const string Available = "Available";
 
-        #endregion
+        #endregion Kind
 
         #region Ranges
 
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// </summary>
         public const int MaxRange = 100000;
 
-        #endregion
+        #endregion Ranges
 
         #region ParameterSetName
 
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// </summary>
         public const string ParameterSetNameIPv6Address = "IPv6Address";
 
-        #endregion
+        #endregion ParameterSetName
 
         #region Help
 
@@ -347,7 +347,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// </summary>
         public const string PeeringServiceHelp = "The peering service name. Use New-AzPeeringService cmdlet for a new peering service or Get-AzPeeringService for a list.";
 
-        #endregion
+        #endregion Help
 
         #region SKU
 
@@ -371,6 +371,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// </summary>
         public const string BasicExchangeFree = "Basic_Exchange_Free";
 
-        #endregion
+        #endregion SKU
     }
 }

@@ -133,6 +133,6 @@ function Test-NewPeeringServicePrefix {
 	.SYNOPSIS
 	DeletePeeringServicePrefx 
 	#>
-    $isRemoved = Remove-AzPeeringServicePrefix -ResourceId $getPrefixService.Id -Force
+    $isRemoved = Remove-AzPeeringServicePrefix -ResourceId $getPrefixService.Id -Force -PassThru
     Assert-AreEqual $isRemoved $true
 }

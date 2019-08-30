@@ -14,9 +14,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
 {
     using System;
-    using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
-    using System.Linq;
     using System.Management.Automation;
 
     using Microsoft.Azure.Commands.Peering.Properties;
@@ -24,9 +22,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
     using Microsoft.Azure.Management.Peering.Models;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Common;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Models;
-    using Microsoft.Rest.Azure;
-
-    using Newtonsoft.Json;
 
     /// <inheritdoc />
     /// <summary>
@@ -119,6 +114,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
                 throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
             }
         }
+
         /// <summary>
         /// The remove peer asn.
         /// </summary>
@@ -142,10 +138,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
                 }
             }
 
-
             if (this.ParameterSetName.Equals(Constants.ParameterSetNameByName, StringComparison.OrdinalIgnoreCase))
             {
-
                 try
                 {
                     this.PeeringManagementClient.PeerAsns.Delete(this.Name);
@@ -157,8 +151,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.PeerAsn
                     else { throw new ItemNotFoundException(); };
                 }
             }
-
-
         }
     }
 }

@@ -26,8 +26,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Common;
     using Microsoft.Azure.PowerShell.Cmdlets.Peering.Models;
 
-    using Newtonsoft.Json;
-
     /// <inheritdoc />
     /// <summary>
     ///     The Get Az InputObject Legacy peering.
@@ -112,7 +110,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                     {
                         var item = this.GetPeeringServicePrefixByResourceAndName();
                         this.WriteObject(item);
-                    }else
+                    }
+                    else
                     {
                         this.WriteObject(this.ListPeeringService(), true);
                     }
@@ -137,7 +136,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                     var resourceId = new ResourceIdentifier(this.InputObject.Id);
                     this.ResourceGroupName = resourceId.ResourceGroupName;
                     this.PeeringServiceName = resourceId.ResourceName;
-                    if(this.Name != null)
+                    if (this.Name != null)
                     {
                         var item = this.GetPeeringServicePrefixByResourceAndName();
                         this.WriteObject(item);
@@ -165,7 +164,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// <returns>List of peering service resources</returns>
         public List<PSPeeringServicePrefix> ListPeeringService()
         {
-            return this.PrefixesClient.ListByPeeringService(this.ResourceGroupName,this.PeeringServiceName).Select(ToPeeringServicePrefixPS).ToList();
+            return this.PrefixesClient.ListByPeeringService(this.ResourceGroupName, this.PeeringServiceName).Select(ToPeeringServicePrefixPS).ToList();
         }
 
         /// <summary>
