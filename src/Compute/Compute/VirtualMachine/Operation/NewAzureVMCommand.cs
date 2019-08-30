@@ -535,7 +535,8 @@ namespace Microsoft.Azure.Commands.Compute
                         Zones = this.Zone ?? this.VM.Zones,
                         ProximityPlacementGroup = this.VM.ProximityPlacementGroup,
                         Host = this.VM.Host,
-                        VirtualMachineScaleSet = this.VM.VirtualMachineScaleSet
+                        VirtualMachineScaleSet = this.VM.VirtualMachineScaleSet,
+                        AdditionalCapabilities = this.VM.AdditionalCapabilities
                     };
 
                     Dictionary<string, List<string>> auxAuthHeader = null;
