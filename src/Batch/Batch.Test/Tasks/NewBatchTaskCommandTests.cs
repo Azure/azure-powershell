@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 
             cmdlet.JobId = "job-1";
 
-            Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
+            var e = Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
 
             cmdlet.Id = "testTask";
 
@@ -78,9 +78,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             cmdlet.ExecuteCmdlet();
         }
 
-        [Fact]
+        [Theory]
+        [InlineData("cmd /c echo hello")]
+        [InlineData("")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void NewBatchTaskParametersGetPassedToRequestTest()
+        public void NewBatchTaskParametersGetPassedToRequestTest(string commandline)
         {
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
@@ -90,7 +92,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             cmdlet.AffinityInformation = new PSAffinityInformation("affinityValue");
             cmdlet.DisplayName = "display name";
             cmdlet.Constraints = new PSTaskConstraints(TimeSpan.FromHours(1), TimeSpan.FromDays(2), 5);
-            cmdlet.CommandLine = "cmd /c echo hello";
+            cmdlet.CommandLine = commandline;
             cmdlet.EnvironmentSettings = new Dictionary<string, string>();
             cmdlet.EnvironmentSettings.Add("env1", "value1");
             cmdlet.MultiInstanceSettings = new PSMultiInstanceSettings("cmd /c echo coordinating", 3)
