@@ -14,12 +14,12 @@ Gets information about the specified DDoS protection plan.
 
 ### List (Default)
 ```
-Get-AzDdosProtectionPlan -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDdosProtectionPlan [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzDdosProtectionPlan -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzDdosProtectionPlan -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -30,7 +30,7 @@ Get-AzDdosProtectionPlan -InputObject <INetworkIdentity> [-DefaultProfile <PSObj
 
 ### List1
 ```
-Get-AzDdosProtectionPlan -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
+Get-AzDdosProtectionPlan -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -133,9 +133,9 @@ Type: System.String[]
 Parameter Sets: Get, List, List1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

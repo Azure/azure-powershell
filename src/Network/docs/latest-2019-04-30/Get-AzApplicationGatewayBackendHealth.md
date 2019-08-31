@@ -14,7 +14,7 @@ Gets the backend health of the specified application gateway in a resource group
 
 ### Backend (Default)
 ```
-Get-AzApplicationGatewayBackendHealth -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzApplicationGatewayBackendHealth -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-Expand <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -27,10 +27,10 @@ Get-AzApplicationGatewayBackendHealth -InputObject <INetworkIdentity> [-Expand <
 ### DemandExpanded
 ```
 Get-AzApplicationGatewayBackendHealth -AsOnDemand -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-Expand <String>] [-BackendHttpSettingName <String>] [-BackendPoolName <String>]
- [-Host <String>] [-MatchBody <String>] [-MatchStatusCode <String[]>] [-Path <String>]
- [-PickHostNameFromBackendHttpSetting] [-Protocol <ApplicationGatewayProtocol>] [-Timeout <Int32>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-Expand <String>] [-BackendHttpSettingName <String>]
+ [-BackendPoolName <String>] [-Host <String>] [-MatchBody <String>] [-MatchStatusCode <String[]>]
+ [-Path <String>] [-PickHostNameFromBackendHttpSetting] [-Protocol <ApplicationGatewayProtocol>]
+ [-Timeout <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DemandViaIdentityExpanded
@@ -340,7 +340,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

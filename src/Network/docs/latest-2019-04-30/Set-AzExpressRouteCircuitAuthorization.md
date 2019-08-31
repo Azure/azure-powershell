@@ -15,7 +15,7 @@ Creates or updates an authorization in the specified express route circuit.
 ### UpdateExpanded (Default)
 ```
 Set-AzExpressRouteCircuitAuthorization -CircuitName <String> -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-Id <String>] [-Key <String>] [-ProvisioningState <String>]
+ [-SubscriptionId <String>] [-Id <String>] [-Key <String>] [-ProvisioningState <String>]
  [-ResourceName <String>] [-UseStatus <AuthorizationUseStatus>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -23,7 +23,7 @@ Set-AzExpressRouteCircuitAuthorization -CircuitName <String> -Name <String> -Res
 ### Update
 ```
 Set-AzExpressRouteCircuitAuthorization -CircuitName <String> -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String> -Authorization <IExpressRouteCircuitAuthorization> [-DefaultProfile <PSObject>]
+ -Authorization <IExpressRouteCircuitAuthorization> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -240,9 +240,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -15,15 +15,15 @@ Initiate troubleshooting on a specified resource
 ### GetExpanded (Default)
 ```
 Start-AzNetworkWatcherTroubleshooting -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -StorageId <String> -StoragePath <String> -TargetResourceId <String>
+ -StorageId <String> -StoragePath <String> -TargetResourceId <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Start-AzNetworkWatcherTroubleshooting -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -Troubleshooting <ITroubleshootingParameters> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Troubleshooting <ITroubleshootingParameters> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -203,9 +203,9 @@ Type: System.String
 Parameter Sets: Get, GetExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

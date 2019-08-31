@@ -14,8 +14,9 @@ This operation retrieves a list of routes the virtual network gateway has learne
 
 ### Get1 (Default)
 ```
-Get-AzVnetGatewayLearnedRoute -ResourceGroupName <String> -SubscriptionId <String[]> -VnetGatewayName <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzVnetGatewayLearnedRoute -ResourceGroupName <String> -VnetGatewayName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity1
@@ -139,9 +140,9 @@ Type: System.String[]
 Parameter Sets: Get1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

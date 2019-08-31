@@ -14,17 +14,17 @@ The Set VpnclientIpsecParameters operation sets the vpnclient ipsec policy for P
 
 ### SetExpanded (Default)
 ```
-Set-AzVnetGatewayVpnClientIPsecPolicy -ResourceGroupName <String> -SubscriptionId <String>
- -VnetGatewayName <String> -DHGroup <DhGroup> -IkeEncryption <IkeEncryption> -IkeIntegrity <IkeIntegrity>
- -IPsecEncryption <IpsecEncryption> -IPsecIntegrity <IpsecIntegrity> -PfsGroup <PfsGroup>
- -SADataSizeInKilobytes <Int32> -SALifetimeInSeconds <Int32> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Set-AzVnetGatewayVpnClientIPsecPolicy -ResourceGroupName <String> -VnetGatewayName <String> -DHGroup <DhGroup>
+ -IkeEncryption <IkeEncryption> -IkeIntegrity <IkeIntegrity> -IPsecEncryption <IpsecEncryption>
+ -IPsecIntegrity <IpsecIntegrity> -PfsGroup <PfsGroup> -SADataSizeInKilobytes <Int32>
+ -SALifetimeInSeconds <Int32> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Set
 ```
-Set-AzVnetGatewayVpnClientIPsecPolicy -ResourceGroupName <String> -SubscriptionId <String>
- -VnetGatewayName <String> -VpnClientIPsecPolicy <IVpnClientIPsecParameters> [-DefaultProfile <PSObject>]
+Set-AzVnetGatewayVpnClientIPsecPolicy -ResourceGroupName <String> -VnetGatewayName <String>
+ -VpnClientIPsecPolicy <IVpnClientIPsecParameters> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -254,9 +254,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

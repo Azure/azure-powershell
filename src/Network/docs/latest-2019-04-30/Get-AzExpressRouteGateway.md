@@ -14,12 +14,12 @@ Fetches the details of a ExpressRoute gateway in a resource group.
 
 ### List (Default)
 ```
-Get-AzExpressRouteGateway -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzExpressRouteGateway [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzExpressRouteGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzExpressRouteGateway -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -30,8 +30,8 @@ Get-AzExpressRouteGateway -InputObject <INetworkIdentity> [-DefaultProfile <PSOb
 
 ### List1
 ```
-Get-AzExpressRouteGateway -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzExpressRouteGateway -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -133,9 +133,9 @@ Type: System.String[]
 Parameter Sets: Get, List, List1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

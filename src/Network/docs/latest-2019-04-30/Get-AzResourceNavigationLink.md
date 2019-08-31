@@ -14,8 +14,8 @@ Gets a list of resource navigation links for a subnet.
 
 ### Get (Default)
 ```
-Get-AzResourceNavigationLink -ResourceGroupName <String> -SubnetName <String> -SubscriptionId <String[]>
- -VnetName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzResourceNavigationLink -ResourceGroupName <String> -SubnetName <String> -VnetName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -122,9 +122,9 @@ Type: System.String[]
 Parameter Sets: Get
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

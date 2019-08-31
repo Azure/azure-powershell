@@ -14,16 +14,16 @@ Creates or updates an application security group.
 
 ### CreateExpanded (Default)
 ```
-New-AzApplicationSecurityGroup -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+New-AzApplicationSecurityGroup -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Id <String>] [-Location <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create
 ```
-New-AzApplicationSecurityGroup -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -SecurityGroup <IApplicationSecurityGroup> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzApplicationSecurityGroup -Name <String> -ResourceGroupName <String>
+ -SecurityGroup <IApplicationSecurityGroup> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -218,9 +218,9 @@ Type: System.String
 Parameter Sets: Create, CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

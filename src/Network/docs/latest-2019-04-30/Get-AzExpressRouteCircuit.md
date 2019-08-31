@@ -14,12 +14,12 @@ Gets information about the specified express route circuit.
 
 ### List1 (Default)
 ```
-Get-AzExpressRouteCircuit -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzExpressRouteCircuit [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzExpressRouteCircuit -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzExpressRouteCircuit -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -30,8 +30,8 @@ Get-AzExpressRouteCircuit -InputObject <INetworkIdentity> [-DefaultProfile <PSOb
 
 ### List
 ```
-Get-AzExpressRouteCircuit -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzExpressRouteCircuit -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -133,9 +133,9 @@ Type: System.String[]
 Parameter Sets: Get, List, List1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

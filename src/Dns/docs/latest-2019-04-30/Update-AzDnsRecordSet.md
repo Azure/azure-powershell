@@ -14,7 +14,7 @@ Updates a record set within a DNS zone.
 
 ### UpdateSoa (Default)
 ```
-Update-AzDnsRecordSet -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -ZoneName <String>
+Update-AzDnsRecordSet -Name <String> -ResourceGroupName <String> -ZoneName <String> [-SubscriptionId <String>]
  [-Etag <String>] [-Metadata <Hashtable>] [-SoaRecordEmail <String>] [-SoaRecordExpireTime <Int64>]
  [-SoaRecordHost <String>] [-SoaRecordMinimumTtl <Int64>] [-SoaRecordRefreshTime <Int64>]
  [-SoaRecordRetryTime <Int64>] [-SoaRecordSerialNumber <Int64>] [-TargetResourceId <String>]
@@ -23,64 +23,65 @@ Update-AzDnsRecordSet -Name <String> -ResourceGroupName <String> -SubscriptionId
 
 ### UpdateA
 ```
-Update-AzDnsRecordSet -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -ZoneName <String>
- -ARecord <IARecord[]> [-Etag <String>] [-Metadata <Hashtable>] [-TargetResourceId <String>]
+Update-AzDnsRecordSet -Name <String> -ResourceGroupName <String> -ZoneName <String> -ARecord <IARecord[]>
+ [-SubscriptionId <String>] [-Etag <String>] [-Metadata <Hashtable>] [-TargetResourceId <String>]
  [-TimeToLive <Int64>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateAaaa
 ```
-Update-AzDnsRecordSet -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -ZoneName <String>
- -AaaaRecord <IAaaaRecord[]> [-Etag <String>] [-Metadata <Hashtable>] [-TargetResourceId <String>]
- [-TimeToLive <Int64>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzDnsRecordSet -Name <String> -ResourceGroupName <String> -ZoneName <String>
+ -AaaaRecord <IAaaaRecord[]> [-SubscriptionId <String>] [-Etag <String>] [-Metadata <Hashtable>]
+ [-TargetResourceId <String>] [-TimeToLive <Int64>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateCaa
 ```
-Update-AzDnsRecordSet -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -ZoneName <String>
- -CaaRecord <ICaaRecord[]> [-Etag <String>] [-Metadata <Hashtable>] [-TargetResourceId <String>]
+Update-AzDnsRecordSet -Name <String> -ResourceGroupName <String> -ZoneName <String> -CaaRecord <ICaaRecord[]>
+ [-SubscriptionId <String>] [-Etag <String>] [-Metadata <Hashtable>] [-TargetResourceId <String>]
  [-TimeToLive <Int64>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateCname
 ```
-Update-AzDnsRecordSet -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -ZoneName <String>
- -CnameRecordName <String> [-Etag <String>] [-Metadata <Hashtable>] [-TargetResourceId <String>]
+Update-AzDnsRecordSet -Name <String> -ResourceGroupName <String> -ZoneName <String> -CnameRecordName <String>
+ [-SubscriptionId <String>] [-Etag <String>] [-Metadata <Hashtable>] [-TargetResourceId <String>]
  [-TimeToLive <Int64>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateMX
 ```
-Update-AzDnsRecordSet -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -ZoneName <String>
- -MXRecord <IMxRecord[]> [-Etag <String>] [-Metadata <Hashtable>] [-TargetResourceId <String>]
+Update-AzDnsRecordSet -Name <String> -ResourceGroupName <String> -ZoneName <String> -MXRecord <IMxRecord[]>
+ [-SubscriptionId <String>] [-Etag <String>] [-Metadata <Hashtable>] [-TargetResourceId <String>]
  [-TimeToLive <Int64>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateNS
 ```
-Update-AzDnsRecordSet -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -ZoneName <String>
- -NSRecord <INsRecord[]> [-Etag <String>] [-Metadata <Hashtable>] [-TargetResourceId <String>]
+Update-AzDnsRecordSet -Name <String> -ResourceGroupName <String> -ZoneName <String> -NSRecord <INsRecord[]>
+ [-SubscriptionId <String>] [-Etag <String>] [-Metadata <Hashtable>] [-TargetResourceId <String>]
  [-TimeToLive <Int64>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdatePtr
 ```
-Update-AzDnsRecordSet -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -ZoneName <String>
- -PtrRecord <IPtrRecord[]> [-Etag <String>] [-Metadata <Hashtable>] [-TargetResourceId <String>]
+Update-AzDnsRecordSet -Name <String> -ResourceGroupName <String> -ZoneName <String> -PtrRecord <IPtrRecord[]>
+ [-SubscriptionId <String>] [-Etag <String>] [-Metadata <Hashtable>] [-TargetResourceId <String>]
  [-TimeToLive <Int64>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateSrv
 ```
-Update-AzDnsRecordSet -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -ZoneName <String>
- -SrvRecord <ISrvRecord[]> [-Etag <String>] [-Metadata <Hashtable>] [-TargetResourceId <String>]
+Update-AzDnsRecordSet -Name <String> -ResourceGroupName <String> -ZoneName <String> -SrvRecord <ISrvRecord[]>
+ [-SubscriptionId <String>] [-Etag <String>] [-Metadata <Hashtable>] [-TargetResourceId <String>]
  [-TimeToLive <Int64>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateTxt
 ```
-Update-AzDnsRecordSet -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -ZoneName <String>
- -TxtRecord <ITxtRecord[]> [-Etag <String>] [-Metadata <Hashtable>] [-TargetResourceId <String>]
+Update-AzDnsRecordSet -Name <String> -ResourceGroupName <String> -ZoneName <String> -TxtRecord <ITxtRecord[]>
+ [-SubscriptionId <String>] [-Etag <String>] [-Metadata <Hashtable>] [-TargetResourceId <String>]
  [-TimeToLive <Int64>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -447,7 +448,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

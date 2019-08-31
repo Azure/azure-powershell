@@ -14,12 +14,12 @@ Retrieves the requested ExpressRoutePort resource.
 
 ### List1 (Default)
 ```
-Get-AzExpressRoutePort -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzExpressRoutePort [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzExpressRoutePort -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzExpressRoutePort -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -30,7 +30,7 @@ Get-AzExpressRoutePort -InputObject <INetworkIdentity> [-DefaultProfile <PSObjec
 
 ### List
 ```
-Get-AzExpressRoutePort -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
+Get-AzExpressRoutePort -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -133,9 +133,9 @@ Type: System.String[]
 Parameter Sets: Get, List, List1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

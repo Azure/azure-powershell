@@ -14,8 +14,8 @@ Checks whether a private IP address is available for use.
 
 ### Check (Default)
 ```
-Test-AzVnetIPAddressAvailability -ResourceGroupName <String> -SubscriptionId <String> -VnetName <String>
- -IPAddress <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Test-AzVnetIPAddressAvailability -ResourceGroupName <String> -VnetName <String> -IPAddress <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### CheckViaIdentity
@@ -123,9 +123,9 @@ Type: System.String
 Parameter Sets: Check
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

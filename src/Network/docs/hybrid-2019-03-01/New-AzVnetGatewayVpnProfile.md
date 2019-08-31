@@ -15,7 +15,7 @@ Used for IKEV2 and radius based authentication.
 
 ### GenerateExpanded1 (Default)
 ```
-New-AzVnetGatewayVpnProfile -ResourceGroupName <String> -SubscriptionId <String> -VnetGatewayName <String>
+New-AzVnetGatewayVpnProfile -ResourceGroupName <String> -VnetGatewayName <String> [-SubscriptionId <String>]
  [-AuthenticationMethod <AuthenticationMethod>] [-ClientRootCertificate <String[]>]
  [-ProcessorArchitecture <ProcessorArchitecture>] [-RadiusServerAuthenticationCertificate <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -23,9 +23,9 @@ New-AzVnetGatewayVpnProfile -ResourceGroupName <String> -SubscriptionId <String>
 
 ### Generate1
 ```
-New-AzVnetGatewayVpnProfile -ResourceGroupName <String> -SubscriptionId <String> -VnetGatewayName <String>
- -VpnProfile <IVpnClientParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzVnetGatewayVpnProfile -ResourceGroupName <String> -VnetGatewayName <String>
+ -VpnProfile <IVpnClientParameters> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GenerateViaIdentity1
@@ -225,9 +225,9 @@ Type: System.String
 Parameter Sets: Generate1, GenerateExpanded1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

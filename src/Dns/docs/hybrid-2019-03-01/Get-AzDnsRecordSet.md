@@ -14,14 +14,14 @@ Gets a record set.
 
 ### List1 (Default)
 ```
-Get-AzDnsRecordSet -ResourceGroupName <String> -SubscriptionId <String[]> -ZoneName <String>
+Get-AzDnsRecordSet -ResourceGroupName <String> -ZoneName <String> [-SubscriptionId <String[]>]
  [-NameSuffix <String>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzDnsRecordSet -Name <String> -RecordType <RecordType> -ResourceGroupName <String>
- -SubscriptionId <String[]> -ZoneName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDnsRecordSet -Name <String> -RecordType <RecordType> -ResourceGroupName <String> -ZoneName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -31,8 +31,9 @@ Get-AzDnsRecordSet -InputObject <IDnsIdentity> [-DefaultProfile <PSObject>] [<Co
 
 ### List
 ```
-Get-AzDnsRecordSet -RecordType <RecordType> -ResourceGroupName <String> -SubscriptionId <String[]>
- -ZoneName <String> [-NameSuffix <String>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDnsRecordSet -RecordType <RecordType> -ResourceGroupName <String> -ZoneName <String>
+ [-SubscriptionId <String[]>] [-NameSuffix <String>] [-Top <Int32>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -167,9 +168,9 @@ Type: System.String[]
 Parameter Sets: Get, List, List1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -14,12 +14,12 @@ Retrieves the details of a virtual wan p2s vpn gateway.
 
 ### List1 (Default)
 ```
-Get-AzP2SVpnGateway -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzP2SVpnGateway [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzP2SVpnGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzP2SVpnGateway -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -30,7 +30,7 @@ Get-AzP2SVpnGateway -InputObject <INetworkIdentity> [-DefaultProfile <PSObject>]
 
 ### List
 ```
-Get-AzP2SVpnGateway -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
+Get-AzP2SVpnGateway -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -133,9 +133,9 @@ Type: System.String[]
 Parameter Sets: Get, List, List1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

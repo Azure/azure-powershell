@@ -15,15 +15,15 @@ Creates or updates a Tap configuration in the specified NetworkInterface.
 ### UpdateExpanded (Default)
 ```
 Set-AzNetworkInterfaceTapConfiguration -Name <String> -NetworkInterfaceName <String>
- -ResourceGroupName <String> -SubscriptionId <String> [-Etag <String>] [-Id <String>] [-ResourceName <String>]
- [-VnetTap <IVirtualNetworkTap_Reference>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-Etag <String>] [-Id <String>]
+ [-ResourceName <String>] [-VnetTap <IVirtualNetworkTap_Reference>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
 ```
 Set-AzNetworkInterfaceTapConfiguration -Name <String> -NetworkInterfaceName <String>
- -ResourceGroupName <String> -SubscriptionId <String> -TapConfiguration <INetworkInterfaceTapConfiguration>
+ -ResourceGroupName <String> -TapConfiguration <INetworkInterfaceTapConfiguration> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -206,9 +206,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -14,18 +14,18 @@ Creates or updates a virtual network gateway connection in the specified resourc
 
 ### Update1 (Default)
 ```
-Set-AzVnetGatewayConnection -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -VnetGatewayConnection <IVirtualNetworkGatewayConnection> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzVnetGatewayConnection -Name <String> -ResourceGroupName <String>
+ -VnetGatewayConnection <IVirtualNetworkGatewayConnection> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpanded1
 ```
-Set-AzVnetGatewayConnection -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Set-AzVnetGatewayConnection -Name <String> -ResourceGroupName <String>
  -ConnectionType <VirtualNetworkGatewayConnectionType> -VnetGateway1 <IVirtualNetworkGateway_Reference>
- [-AuthorizationKey <String>] [-EnableBgp] [-Etag <String>] [-Id <String>] [-IPsecPolicy <IIpsecPolicy[]>]
- [-LocalNetworkGateway2 <ILocalNetworkGateway_Reference>] [-Location <String>] [-PeerId <String>]
- [-ResourceGuid <String>] [-RoutingWeight <Int32>] [-SharedKey <String>] [-Tag <Hashtable>]
+ [-SubscriptionId <String>] [-AuthorizationKey <String>] [-EnableBgp] [-Etag <String>] [-Id <String>]
+ [-IPsecPolicy <IIpsecPolicy[]>] [-LocalNetworkGateway2 <ILocalNetworkGateway_Reference>] [-Location <String>]
+ [-PeerId <String>] [-ResourceGuid <String>] [-RoutingWeight <Int32>] [-SharedKey <String>] [-Tag <Hashtable>]
  [-UsePolicyBasedTrafficSelectors] [-VnetGateway2 <IVirtualNetworkGateway_Reference>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -338,9 +338,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

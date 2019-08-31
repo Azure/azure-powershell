@@ -15,12 +15,12 @@ Retrieves the zone properties, but not the record sets within the zone.
 
 ### List3 (Default)
 ```
-Get-AzDnsZone -SubscriptionId <String[]> [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDnsZone [-SubscriptionId <String[]>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzDnsZone -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzDnsZone -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ Get-AzDnsZone -InputObject <IDnsIdentity> [-DefaultProfile <PSObject>] [<CommonP
 
 ### List2
 ```
-Get-AzDnsZone -ResourceGroupName <String> -SubscriptionId <String[]> [-Top <Int32>]
+Get-AzDnsZone -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Top <Int32>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -135,9 +135,9 @@ Type: System.String[]
 Parameter Sets: Get, List2, List3
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

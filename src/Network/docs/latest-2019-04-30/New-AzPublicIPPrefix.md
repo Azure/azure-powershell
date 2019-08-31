@@ -14,7 +14,7 @@ Creates or updates a static or dynamic public IP prefix.
 
 ### CreateExpanded (Default)
 ```
-New-AzPublicIPPrefix -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-Etag <String>]
+New-AzPublicIPPrefix -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Etag <String>]
  [-Id <String>] [-IPPrefix <String>] [-IPTag <IIPTag[]>] [-LoadBalancerFrontendIPConfigurationId <String>]
  [-Location <String>] [-PrefixLength <Int32>] [-ProvisioningState <String>]
  [-PublicIPAddress <IReferencedPublicIPAddress[]>] [-PublicIPAddressVersion <IPVersion>]
@@ -24,8 +24,8 @@ New-AzPublicIPPrefix -Name <String> -ResourceGroupName <String> -SubscriptionId 
 
 ### Create
 ```
-New-AzPublicIPPrefix -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -PublicIPPrefix <IPublicIPPrefix> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+New-AzPublicIPPrefix -Name <String> -ResourceGroupName <String> -PublicIPPrefix <IPublicIPPrefix>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -388,9 +388,9 @@ Type: System.String
 Parameter Sets: Create, CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

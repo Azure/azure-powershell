@@ -14,15 +14,15 @@ Updates a route filter in a specified resource group.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzRouteFilter -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-Id <String>]
+Update-AzRouteFilter -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Id <String>]
  [-Peering <IExpressRouteCircuitPeering_Reference[]>] [-Rule <IRouteFilterRule_Reference[]>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
 ```
-Update-AzRouteFilter -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -RouteFilter <IPatchRouteFilter> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Update-AzRouteFilter -Name <String> -ResourceGroupName <String> -RouteFilter <IPatchRouteFilter>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -235,9 +235,9 @@ Type: System.String
 Parameter Sets: Update, UpdateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

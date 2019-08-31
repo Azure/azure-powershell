@@ -14,7 +14,7 @@ Creates a VirtualWAN resource if it doesn't exist else updates the existing Virt
 
 ### CreateExpanded (Default)
 ```
-New-AzVirtualWan -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+New-AzVirtualWan -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AllowBranchToBranchTraffic] [-AllowVnetToVnetTraffic] [-DisableVpnEncryption] [-Id <String>]
  [-Location <String>] [-P2SVpnServerConfiguration <IP2SVpnServerConfiguration_Reference[]>]
  [-SecurityProviderName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
@@ -23,8 +23,9 @@ New-AzVirtualWan -Name <String> -ResourceGroupName <String> -SubscriptionId <Str
 
 ### Create
 ```
-New-AzVirtualWan -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -VirtualWan <IVirtualWan>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzVirtualWan -Name <String> -ResourceGroupName <String> -VirtualWan <IVirtualWan>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -284,9 +285,9 @@ Type: System.String
 Parameter Sets: Create, CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

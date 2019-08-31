@@ -14,13 +14,13 @@ Gets the specified subnet by virtual network and resource group.
 
 ### List1 (Default)
 ```
-Get-AzVnetSubnet -ResourceGroupName <String> -SubscriptionId <String[]> -VnetName <String>
+Get-AzVnetSubnet -ResourceGroupName <String> -VnetName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get1
 ```
-Get-AzVnetSubnet -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]> -VnetName <String>
+Get-AzVnetSubnet -Name <String> -ResourceGroupName <String> -VnetName <String> [-SubscriptionId <String[]>]
  [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -145,9 +145,9 @@ Type: System.String[]
 Parameter Sets: Get1, List1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

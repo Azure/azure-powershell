@@ -14,8 +14,8 @@ Gives the supported security providers for the virtual wan.
 
 ### Supported (Default)
 ```
-Get-AzVirtualWanSupportedSecurityProvider -ResourceGroupName <String> -SubscriptionId <String[]>
- -VirtualWanName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzVirtualWanSupportedSecurityProvider -ResourceGroupName <String> -VirtualWanName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### SupportedViaIdentity
@@ -107,9 +107,9 @@ Type: System.String[]
 Parameter Sets: Supported
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

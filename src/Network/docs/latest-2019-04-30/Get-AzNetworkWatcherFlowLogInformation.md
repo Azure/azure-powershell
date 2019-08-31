@@ -15,14 +15,14 @@ Queries status of flow log and traffic analytics (optional) on a specified resou
 ### GetExpanded (Default)
 ```
 Get-AzNetworkWatcherFlowLogInformation -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> -TargetResourceId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -TargetResourceId <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzNetworkWatcherFlowLogInformation -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> -FlowLogStatus <IFlowLogStatusParameters> [-DefaultProfile <PSObject>] [-AsJob]
+ -FlowLogStatus <IFlowLogStatusParameters> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -187,9 +187,9 @@ Type: System.String[]
 Parameter Sets: Get, GetExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

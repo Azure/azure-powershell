@@ -15,7 +15,7 @@ Gets the relative latency score for internet service providers from a specified 
 ### GetExpanded (Default)
 ```
 Get-AzNetworkWatcherReachabilityReport -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> -EndTime <DateTime> -ProviderCountry <String> -StartTime <DateTime>
+ -EndTime <DateTime> -ProviderCountry <String> -StartTime <DateTime> [-SubscriptionId <String[]>]
  [-Location <String[]>] [-Provider <String[]>] [-ProviderCity <String>] [-ProviderState <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -23,7 +23,7 @@ Get-AzNetworkWatcherReachabilityReport -NetworkWatcherName <String> -ResourceGro
 ### Get
 ```
 Get-AzNetworkWatcherReachabilityReport -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> -ReachabilityReport <IAzureReachabilityReportParameters>
+ -ReachabilityReport <IAzureReachabilityReportParameters> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -302,9 +302,9 @@ Type: System.String[]
 Parameter Sets: Get, GetExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

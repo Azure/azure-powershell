@@ -15,7 +15,7 @@ Gets all the stats from an express route circuit in a resource group.
 ### Get (Default)
 ```
 Get-AzExpressRouteCircuitStatistic -CircuitName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -27,13 +27,13 @@ Get-AzExpressRouteCircuitStatistic -InputObject <INetworkIdentity> [-DefaultProf
 ### List
 ```
 Get-AzExpressRouteCircuitStatistic -CircuitName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Peering
 ```
 Get-AzExpressRouteCircuitStatistic -CircuitName <String> -PeeringName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -151,9 +151,9 @@ Type: System.String[]
 Parameter Sets: Get, List, Peering
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

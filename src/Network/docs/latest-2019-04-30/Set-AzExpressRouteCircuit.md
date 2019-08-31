@@ -14,7 +14,7 @@ Creates or updates an express route circuit.
 
 ### UpdateExpanded (Default)
 ```
-Set-AzExpressRouteCircuit -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Set-AzExpressRouteCircuit -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AllowClassicOperations] [-Authorization <IExpressRouteCircuitAuthorization_Reference[]>]
  [-BandwidthInGbps <Single>] [-CircuitProvisioningState <String>] [-EnableGlobalReach]
  [-ExpressRoutePortId <String>] [-GatewayManagerEtag <String>] [-Id <String>] [-Location <String>]
@@ -28,9 +28,9 @@ Set-AzExpressRouteCircuit -Name <String> -ResourceGroupName <String> -Subscripti
 
 ### Update
 ```
-Set-AzExpressRouteCircuit -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -ExpressRouteCircuit <IExpressRouteCircuit> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Set-AzExpressRouteCircuit -Name <String> -ResourceGroupName <String>
+ -ExpressRouteCircuit <IExpressRouteCircuit> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -487,9 +487,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

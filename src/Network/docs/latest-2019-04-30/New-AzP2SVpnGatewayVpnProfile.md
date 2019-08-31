@@ -14,16 +14,16 @@ Generates VPN profile for P2S client of the P2SVpnGateway in the specified resou
 
 ### GenerateExpanded (Default)
 ```
-New-AzP2SVpnGatewayVpnProfile -GatewayName <String> -ResourceGroupName <String> -SubscriptionId <String>
+New-AzP2SVpnGatewayVpnProfile -GatewayName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AuthenticationMethod <AuthenticationMethod>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### Generate
 ```
-New-AzP2SVpnGatewayVpnProfile -GatewayName <String> -ResourceGroupName <String> -SubscriptionId <String>
- -VpnProfile <IP2SVpnProfileParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzP2SVpnGatewayVpnProfile -GatewayName <String> -ResourceGroupName <String>
+ -VpnProfile <IP2SVpnProfileParameters> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GenerateViaIdentity
@@ -185,9 +185,9 @@ Type: System.String
 Parameter Sets: Generate, GenerateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

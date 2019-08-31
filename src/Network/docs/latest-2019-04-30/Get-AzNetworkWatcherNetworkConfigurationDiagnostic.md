@@ -22,14 +22,14 @@ Get-AzNetworkWatcherNetworkConfigurationDiagnostic -InputObject <INetworkIdentit
 ### Get
 ```
 Get-AzNetworkWatcherNetworkConfigurationDiagnostic -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> -NetworkConfigurationDiagnostic <INetworkConfigurationDiagnosticParameters>
+ -NetworkConfigurationDiagnostic <INetworkConfigurationDiagnosticParameters> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GetExpanded
 ```
 Get-AzNetworkWatcherNetworkConfigurationDiagnostic -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> -Profile <INetworkConfigurationDiagnosticProfile[]> -TargetResourceId <String>
+ -Profile <INetworkConfigurationDiagnosticProfile[]> -TargetResourceId <String> [-SubscriptionId <String[]>]
  [-VerbosityLevel <VerbosityLevel>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -207,9 +207,9 @@ Type: System.String[]
 Parameter Sets: Get, GetExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

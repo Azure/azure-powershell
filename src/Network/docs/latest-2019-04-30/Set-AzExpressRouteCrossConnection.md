@@ -14,7 +14,7 @@ Update the specified ExpressRouteCrossConnection.
 
 ### UpdateExpanded (Default)
 ```
-Set-AzExpressRouteCrossConnection -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Set-AzExpressRouteCrossConnection -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-BandwidthInMbps <Int32>] [-ExpressRouteCircuitId <String>] [-Id <String>] [-Location <String>]
  [-Peering <IExpressRouteCrossConnectionPeering_Reference[]>] [-PeeringLocation <String>]
  [-ServiceProviderNote <String>] [-ServiceProviderProvisioningState <ServiceProviderProvisioningState>]
@@ -23,9 +23,9 @@ Set-AzExpressRouteCrossConnection -Name <String> -ResourceGroupName <String> -Su
 
 ### Update
 ```
-Set-AzExpressRouteCrossConnection -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -ExpressRouteCrossConnection <IExpressRouteCrossConnection> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzExpressRouteCrossConnection -Name <String> -ResourceGroupName <String>
+ -ExpressRouteCrossConnection <IExpressRouteCrossConnection> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -287,9 +287,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

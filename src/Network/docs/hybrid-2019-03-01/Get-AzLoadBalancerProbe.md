@@ -14,14 +14,14 @@ Gets load balancer probe.
 
 ### List1 (Default)
 ```
-Get-AzLoadBalancerProbe -LoadBalancerName <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzLoadBalancerProbe -LoadBalancerName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get1
 ```
 Get-AzLoadBalancerProbe -LoadBalancerName <String> -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity1
@@ -144,9 +144,9 @@ Type: System.String[]
 Parameter Sets: Get1, List1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

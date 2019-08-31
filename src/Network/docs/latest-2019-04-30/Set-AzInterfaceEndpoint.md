@@ -14,7 +14,7 @@ Creates or updates an interface endpoint in the specified resource group.
 
 ### UpdateExpanded (Default)
 ```
-Set-AzInterfaceEndpoint -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Set-AzInterfaceEndpoint -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-EndpointServiceId <String>] [-Etag <String>] [-Fqdn <String>] [-Id <String>] [-Location <String>]
  [-Subnet <ISubnet_Reference>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
@@ -22,8 +22,8 @@ Set-AzInterfaceEndpoint -Name <String> -ResourceGroupName <String> -Subscription
 
 ### Update
 ```
-Set-AzInterfaceEndpoint -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -InterfaceEndpoint <IInterfaceEndpoint> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Set-AzInterfaceEndpoint -Name <String> -ResourceGroupName <String> -InterfaceEndpoint <IInterfaceEndpoint>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -254,9 +254,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

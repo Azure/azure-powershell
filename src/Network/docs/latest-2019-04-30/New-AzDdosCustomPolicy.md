@@ -14,15 +14,15 @@ Creates or updates a DDoS custom policy.
 
 ### CreateExpanded (Default)
 ```
-New-AzDdosCustomPolicy -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+New-AzDdosCustomPolicy -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Format <IProtocolCustomSettingsFormat[]>] [-Id <String>] [-Location <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create
 ```
-New-AzDdosCustomPolicy -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -DdosCustomPolicy <IDdosCustomPolicy> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+New-AzDdosCustomPolicy -Name <String> -ResourceGroupName <String> -DdosCustomPolicy <IDdosCustomPolicy>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -236,9 +236,9 @@ Type: System.String
 Parameter Sets: Create, CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

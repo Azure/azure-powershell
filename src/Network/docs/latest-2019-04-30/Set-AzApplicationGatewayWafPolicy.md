@@ -14,7 +14,7 @@ Creates or update policy with specified rule set name within a resource group.
 
 ### UpdateExpanded (Default)
 ```
-Set-AzApplicationGatewayWafPolicy -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Set-AzApplicationGatewayWafPolicy -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-CustomRule <IWebApplicationFirewallCustomRule[]>] [-EnabledState <WebApplicationFirewallEnabledState>]
  [-Etag <String>] [-Id <String>] [-Location <String>] [-Mode <WebApplicationFirewallMode>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -22,9 +22,9 @@ Set-AzApplicationGatewayWafPolicy -Name <String> -ResourceGroupName <String> -Su
 
 ### Update
 ```
-Set-AzApplicationGatewayWafPolicy -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -WafPolicy <IWebApplicationFirewallPolicy> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Set-AzApplicationGatewayWafPolicy -Name <String> -ResourceGroupName <String>
+ -WafPolicy <IWebApplicationFirewallPolicy> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -206,9 +206,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

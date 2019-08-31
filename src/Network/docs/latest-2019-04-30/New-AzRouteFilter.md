@@ -14,7 +14,7 @@ Creates or updates a route filter in a specified resource group.
 
 ### CreateExpanded (Default)
 ```
-New-AzRouteFilter -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-Id <String>]
+New-AzRouteFilter -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Id <String>]
  [-Location <String>] [-Peering <IExpressRouteCircuitPeering_Reference[]>]
  [-Rule <IRouteFilterRule_Reference[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -22,8 +22,8 @@ New-AzRouteFilter -Name <String> -ResourceGroupName <String> -SubscriptionId <St
 
 ### Create
 ```
-New-AzRouteFilter -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -RouteFilter <IRouteFilter> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+New-AzRouteFilter -Name <String> -ResourceGroupName <String> -RouteFilter <IRouteFilter>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -252,9 +252,9 @@ Type: System.String
 Parameter Sets: Create, CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

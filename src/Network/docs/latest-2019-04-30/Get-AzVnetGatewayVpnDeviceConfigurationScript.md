@@ -15,14 +15,14 @@ Gets a xml format representation for vpn device configuration script.
 ### ScriptExpanded (Default)
 ```
 Get-AzVnetGatewayVpnDeviceConfigurationScript -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-DeviceFamily <String>] [-FirmwareVersion <String>] [-Vendor <String>]
+ [-SubscriptionId <String[]>] [-DeviceFamily <String>] [-FirmwareVersion <String>] [-Vendor <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Script
 ```
 Get-AzVnetGatewayVpnDeviceConfigurationScript -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> -VpnDeviceConfigurationScript <IVpnDeviceScriptParameters>
+ -VpnDeviceConfigurationScript <IVpnDeviceScriptParameters> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -171,9 +171,9 @@ Type: System.String[]
 Parameter Sets: Script, ScriptExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

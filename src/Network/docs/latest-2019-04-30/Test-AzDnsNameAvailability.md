@@ -14,7 +14,7 @@ Checks whether a domain name in the cloudapp.azure.com zone is available for use
 
 ### Check (Default)
 ```
-Test-AzDnsNameAvailability -Location <String> -SubscriptionId <String> -DomainNameLabel <String>
+Test-AzDnsNameAvailability -Location <String> -DomainNameLabel <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -124,9 +124,9 @@ Type: System.String
 Parameter Sets: Check
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

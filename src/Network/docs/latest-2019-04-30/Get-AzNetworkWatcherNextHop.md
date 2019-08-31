@@ -15,15 +15,15 @@ Gets the next hop from the specified VM.
 ### GetExpanded (Default)
 ```
 Get-AzNetworkWatcherNextHop -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> -DestinationIPAddress <String> -SourceIPAddress <String>
- -TargetVMResourceId <String> [-TargetNetworkInterfaceResourceId <String>] [-DefaultProfile <PSObject>]
+ -DestinationIPAddress <String> -SourceIPAddress <String> -TargetVMResourceId <String>
+ [-SubscriptionId <String[]>] [-TargetNetworkInterfaceResourceId <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzNetworkWatcherNextHop -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> -NextHop <INextHopParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -NextHop <INextHopParameters> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -220,9 +220,9 @@ Type: System.String[]
 Parameter Sets: Get, GetExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

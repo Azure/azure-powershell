@@ -14,7 +14,7 @@ Creates or updates a local network gateway in the specified resource group.
 
 ### CreateExpanded (Default)
 ```
-New-AzLocalNetworkGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+New-AzLocalNetworkGateway -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AddressPrefix <String[]>] [-BgpAsn <Int64>] [-BgpPeeringAddress <String>] [-BgpPeerWeight <Int32>]
  [-Etag <String>] [-GatewayIPAddress <String>] [-Id <String>] [-Location <String>] [-ResourceGuid <String>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -22,9 +22,9 @@ New-AzLocalNetworkGateway -Name <String> -ResourceGroupName <String> -Subscripti
 
 ### Create
 ```
-New-AzLocalNetworkGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -LocalNetworkGateway <ILocalNetworkGateway> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzLocalNetworkGateway -Name <String> -ResourceGroupName <String>
+ -LocalNetworkGateway <ILocalNetworkGateway> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -333,9 +333,9 @@ Type: System.String
 Parameter Sets: Create, CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

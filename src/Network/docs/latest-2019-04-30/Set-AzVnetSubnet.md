@@ -14,7 +14,7 @@ Creates or updates a subnet in the specified virtual network.
 
 ### UpdateExpanded (Default)
 ```
-Set-AzVnetSubnet -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -VnetName <String>
+Set-AzVnetSubnet -Name <String> -ResourceGroupName <String> -VnetName <String> [-SubscriptionId <String>]
  [-AdditionalAddressPrefix <String[]>] [-AddressPrefix <String>] [-Delegation <IDelegation[]>]
  [-Etag <String>] [-Id <String>] [-NatGatewayId <String>] [-Nsg <INetworkSecurityGroup_Reference>]
  [-ProvisioningState <String>] [-ResourceName <String>] [-ResourceNavigationLink <IResourceNavigationLink[]>]
@@ -26,8 +26,9 @@ Set-AzVnetSubnet -Name <String> -ResourceGroupName <String> -SubscriptionId <Str
 
 ### Update
 ```
-Set-AzVnetSubnet -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -VnetName <String>
- -Subnet <ISubnet> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzVnetSubnet -Name <String> -ResourceGroupName <String> -VnetName <String> -Subnet <ISubnet>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -390,9 +391,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

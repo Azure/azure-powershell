@@ -15,7 +15,7 @@ Creates or updates a peering in the specified express route circuits.
 ### UpdateExpanded (Default)
 ```
 Set-AzExpressRouteCircuitPeering -CircuitName <String> -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-AdvertisedCommunity <String[]>] [-AdvertisedPublicPrefix <String[]>]
+ [-SubscriptionId <String>] [-AdvertisedCommunity <String[]>] [-AdvertisedPublicPrefix <String[]>]
  [-AdvertisedPublicPrefixesState <ExpressRouteCircuitPeeringAdvertisedPublicPrefixState>] [-AzureAsn <Int32>]
  [-Connection <IExpressRouteCircuitConnection_Reference[]>] [-CustomerAsn <Int32>]
  [-GatewayManagerEtag <String>] [-Id <String>] [-IPv6AdvertisedCommunity <String[]>]
@@ -36,7 +36,7 @@ Set-AzExpressRouteCircuitPeering -CircuitName <String> -Name <String> -ResourceG
 ### Update
 ```
 Set-AzExpressRouteCircuitPeering -CircuitName <String> -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String> -Peering <IExpressRouteCircuitPeering> [-DefaultProfile <PSObject>] [-AsJob]
+ -Peering <IExpressRouteCircuitPeering> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -770,9 +770,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

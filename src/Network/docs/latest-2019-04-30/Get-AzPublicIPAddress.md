@@ -14,13 +14,13 @@ Gets the specified public IP address in a specified resource group.
 
 ### List (Default)
 ```
-Get-AzPublicIPAddress -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPublicIPAddress [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzPublicIPAddress -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]> [-Expand <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPublicIPAddress -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -32,26 +32,26 @@ Get-AzPublicIPAddress -InputObject <INetworkIdentity> [-Expand <String>] [-Defau
 ### GetVmss
 ```
 Get-AzPublicIPAddress -IPConfigurationName <String> -Name <String> -NetworkInterfaceName <String>
- -ResourceGroupName <String> -SubscriptionId <String[]> -VMIndex <String> -VmssName <String>
+ -ResourceGroupName <String> -VMIndex <String> -VmssName <String> [-SubscriptionId <String[]>]
  [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzPublicIPAddress -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
+Get-AzPublicIPAddress -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### ListVmss
 ```
-Get-AzPublicIPAddress -ResourceGroupName <String> -SubscriptionId <String[]> -VmssName <String>
+Get-AzPublicIPAddress -ResourceGroupName <String> -VmssName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ListVmssVM
 ```
 Get-AzPublicIPAddress -IPConfigurationName <String> -NetworkInterfaceName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> -VMIndex <String> -VmssName <String> [-DefaultProfile <PSObject>]
+ -VMIndex <String> -VmssName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -202,9 +202,9 @@ Type: System.String[]
 Parameter Sets: Get, GetVmss, List, List1, ListVmss, ListVmssVM
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

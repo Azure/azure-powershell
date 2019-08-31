@@ -14,13 +14,13 @@ Gets the specified virtual network gateway connection by resource group.
 
 ### List3 (Default)
 ```
-Get-AzVnetGatewayConnection -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzVnetGatewayConnection -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get1
 ```
-Get-AzVnetGatewayConnection -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzVnetGatewayConnection -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ Get-AzVnetGatewayConnection -InputObject <INetworkIdentity> [-DefaultProfile <PS
 
 ### List2
 ```
-Get-AzVnetGatewayConnection -ResourceGroupName <String> -SubscriptionId <String[]> -VnetGatewayName <String>
+Get-AzVnetGatewayConnection -ResourceGroupName <String> -VnetGatewayName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -134,9 +134,9 @@ Type: System.String[]
 Parameter Sets: Get1, List2, List3
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

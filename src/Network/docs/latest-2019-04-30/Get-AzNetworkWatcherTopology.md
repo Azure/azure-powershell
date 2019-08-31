@@ -15,15 +15,15 @@ Gets the current network topology by resource group.
 ### GetExpanded (Default)
 ```
 Get-AzNetworkWatcherTopology -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-TargetResourceGroupName <String>] [-TargetSubnetId <String>]
+ [-SubscriptionId <String[]>] [-TargetResourceGroupName <String>] [-TargetSubnetId <String>]
  [-TargetVnetId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzNetworkWatcherTopology -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> -Topology <ITopologyParameters> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -Topology <ITopologyParameters> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -138,9 +138,9 @@ Type: System.String[]
 Parameter Sets: Get, GetExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

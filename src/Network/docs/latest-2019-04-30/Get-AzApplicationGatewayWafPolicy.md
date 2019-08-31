@@ -14,12 +14,13 @@ Retrieve protection policy with specified name within a resource group.
 
 ### List1 (Default)
 ```
-Get-AzApplicationGatewayWafPolicy -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzApplicationGatewayWafPolicy [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzApplicationGatewayWafPolicy -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzApplicationGatewayWafPolicy -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -31,7 +32,7 @@ Get-AzApplicationGatewayWafPolicy -InputObject <INetworkIdentity> [-DefaultProfi
 
 ### List
 ```
-Get-AzApplicationGatewayWafPolicy -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzApplicationGatewayWafPolicy -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -134,9 +135,9 @@ Type: System.String[]
 Parameter Sets: Get, List, List1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

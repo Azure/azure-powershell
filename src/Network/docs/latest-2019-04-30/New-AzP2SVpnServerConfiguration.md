@@ -14,8 +14,8 @@ Creates a P2SVpnServerConfiguration to associate with a VirtualWan if it doesn't
 
 ### CreateExpanded (Default)
 ```
-New-AzP2SVpnServerConfiguration -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -VirtualWanName <String> [-Etag <String>] [-Id <String>]
+New-AzP2SVpnServerConfiguration -Name <String> -ResourceGroupName <String> -VirtualWanName <String>
+ [-SubscriptionId <String>] [-Etag <String>] [-Id <String>]
  [-RadiusClientRootCertificate <IP2SVpnServerConfigRadiusClientRootCertificate[]>]
  [-RadiusServerAddress <String>]
  [-RadiusServerRootCertificate <IP2SVpnServerConfigRadiusServerRootCertificate[]>]
@@ -29,9 +29,9 @@ New-AzP2SVpnServerConfiguration -Name <String> -ResourceGroupName <String> -Subs
 
 ### Create
 ```
-New-AzP2SVpnServerConfiguration -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -VirtualWanName <String> -P2SVpnServerConfiguration <IP2SVpnServerConfiguration> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzP2SVpnServerConfiguration -Name <String> -ResourceGroupName <String> -VirtualWanName <String>
+ -P2SVpnServerConfiguration <IP2SVpnServerConfiguration> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -335,9 +335,9 @@ Type: System.String
 Parameter Sets: Create, CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

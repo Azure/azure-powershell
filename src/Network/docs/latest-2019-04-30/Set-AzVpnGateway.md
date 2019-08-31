@@ -14,7 +14,7 @@ Creates a virtual wan vpn gateway if it doesn't exist else updates the existing 
 
 ### UpdateExpanded (Default)
 ```
-Set-AzVpnGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-BgpAsn <Int64>]
+Set-AzVpnGateway -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-BgpAsn <Int64>]
  [-BgpPeeringAddress <String>] [-BgpPeerWeight <Int32>] [-Connection <IVpnConnection_Reference[]>]
  [-Id <String>] [-Location <String>] [-ScaleUnit <Int32>] [-Tag <Hashtable>] [-VirtualHubId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -22,8 +22,9 @@ Set-AzVpnGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <Str
 
 ### Update
 ```
-Set-AzVpnGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -VpnGateway <IVpnGateway>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzVpnGateway -Name <String> -ResourceGroupName <String> -VpnGateway <IVpnGateway>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -252,9 +253,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -14,7 +14,7 @@ Creates or updates a virtual network in the specified resource group.
 
 ### UpdateExpanded (Default)
 ```
-Set-AzVnet -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-AddressPrefix <String[]>]
+Set-AzVnet -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-AddressPrefix <String[]>]
  [-DdosProtectionPlanId <String>] [-DnsServer <String[]>] [-EnableDdosProtection] [-EnableVMProtection]
  [-Etag <String>] [-Id <String>] [-Location <String>] [-ProvisioningState <String>] [-ResourceGuid <String>]
  [-Subnet <ISubnet_Reference[]>] [-Tag <Hashtable>] [-VnetPeering <IVirtualNetworkPeering_Reference[]>]
@@ -23,7 +23,7 @@ Set-AzVnet -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [
 
 ### Update
 ```
-Set-AzVnet -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Vnet <IVirtualNetwork>
+Set-AzVnet -Name <String> -ResourceGroupName <String> -Vnet <IVirtualNetwork> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -319,9 +319,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

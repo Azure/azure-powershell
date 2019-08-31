@@ -14,12 +14,12 @@ Gets the specified service Endpoint Policies in a specified resource group.
 
 ### List (Default)
 ```
-Get-AzServiceEndpointPolicy -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzServiceEndpointPolicy [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzServiceEndpointPolicy -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzServiceEndpointPolicy -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ Get-AzServiceEndpointPolicy -InputObject <INetworkIdentity> [-Expand <String>] [
 
 ### List1
 ```
-Get-AzServiceEndpointPolicy -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzServiceEndpointPolicy -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -150,9 +150,9 @@ Type: System.String[]
 Parameter Sets: Get, List, List1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

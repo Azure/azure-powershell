@@ -14,8 +14,8 @@ Resets the VPN client shared key of the virtual network gateway in the specified
 
 ### Reset (Default)
 ```
-Reset-AzVnetGatewayVpnClientSharedKey -ResourceGroupName <String> -SubscriptionId <String>
- -VnetGatewayName <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+Reset-AzVnetGatewayVpnClientSharedKey -ResourceGroupName <String> -VnetGatewayName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -156,9 +156,9 @@ Type: System.String
 Parameter Sets: Reset
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -14,7 +14,7 @@ Creates or updates a virtual network gateway in the specified resource group.
 
 ### CreateExpanded (Default)
 ```
-New-AzVnetGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+New-AzVnetGateway -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AddressPrefix <String[]>] [-BgpAsn <Int64>] [-BgpPeeringAddress <String>] [-BgpPeerWeight <Int32>]
  [-CustomRouteAddressPrefix <String[]>] [-EnableActiveActive] [-EnableBgp] [-Etag <String>]
  [-GatewayDefaultSiteId <String>] [-GatewayType <VirtualNetworkGatewayType>] [-Id <String>]
@@ -29,8 +29,8 @@ New-AzVnetGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <St
 
 ### Create
 ```
-New-AzVnetGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -VnetGateway <IVirtualNetworkGateway> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+New-AzVnetGateway -Name <String> -ResourceGroupName <String> -VnetGateway <IVirtualNetworkGateway>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -559,9 +559,9 @@ Type: System.String
 Parameter Sets: Create, CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

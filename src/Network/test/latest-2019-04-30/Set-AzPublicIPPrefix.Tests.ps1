@@ -1,5 +1,10 @@
 $TestRecordingFile = Join-Path $PSScriptRoot 'Set-AzPublicIPPrefix.Recording.json'
-. (Join-Path $PSScriptRoot '..\generated\runtime' 'HttpPipelineMocking.ps1')
+$currentPath = $PSScriptRoot
+while(-not $mockingPath) {
+    $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
+    $currentPath = Split-Path -Path $currentPath -Parent
+}
+. ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Set-AzPublicIPPrefix' {
     It 'UpdateExpanded' {

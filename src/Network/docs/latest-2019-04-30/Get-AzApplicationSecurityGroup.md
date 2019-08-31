@@ -14,12 +14,12 @@ Gets information about the specified application security group.
 
 ### List (Default)
 ```
-Get-AzApplicationSecurityGroup -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzApplicationSecurityGroup [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzApplicationSecurityGroup -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzApplicationSecurityGroup -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ Get-AzApplicationSecurityGroup -InputObject <INetworkIdentity> [-DefaultProfile 
 
 ### List1
 ```
-Get-AzApplicationSecurityGroup -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzApplicationSecurityGroup -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -134,9 +134,9 @@ Type: System.String[]
 Parameter Sets: Get, List, List1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

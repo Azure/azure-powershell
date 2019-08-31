@@ -14,12 +14,12 @@ Gets the specified interface endpoint by resource group.
 
 ### List1 (Default)
 ```
-Get-AzInterfaceEndpoint -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzInterfaceEndpoint [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzInterfaceEndpoint -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzInterfaceEndpoint -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ Get-AzInterfaceEndpoint -InputObject <INetworkIdentity> [-Expand <String>] [-Def
 
 ### List
 ```
-Get-AzInterfaceEndpoint -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
+Get-AzInterfaceEndpoint -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -150,9 +150,9 @@ Type: System.String[]
 Parameter Sets: Get, List, List1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

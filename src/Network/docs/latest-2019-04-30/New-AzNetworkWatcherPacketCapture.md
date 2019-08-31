@@ -15,7 +15,7 @@ Create and start a packet capture on the specified VM.
 ### CreateExpanded (Default)
 ```
 New-AzNetworkWatcherPacketCapture -Name <String> -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -TargetResourceId <String> [-BytesToCapturePerPacket <Int32>]
+ -TargetResourceId <String> [-SubscriptionId <String>] [-BytesToCapturePerPacket <Int32>]
  [-Filter <IPacketCaptureFilter[]>] [-StorageAccountId <String>] [-StorageFilePath <String>]
  [-StoragePathUri <String>] [-TimeLimitInSeconds <Int32>] [-TotalBytesPerSession <Int32>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -24,7 +24,7 @@ New-AzNetworkWatcherPacketCapture -Name <String> -NetworkWatcherName <String> -R
 ### Create
 ```
 New-AzNetworkWatcherPacketCapture -Name <String> -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -PacketCapture <IPacketCapture> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -PacketCapture <IPacketCapture> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -293,9 +293,9 @@ Type: System.String
 Parameter Sets: Create, CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

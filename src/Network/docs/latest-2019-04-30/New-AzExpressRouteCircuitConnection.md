@@ -15,7 +15,7 @@ Creates or updates a Express Route Circuit Connection in the specified express r
 ### CreateExpanded (Default)
 ```
 New-AzExpressRouteCircuitConnection -CircuitName <String> -Name <String> -PeeringName <String>
- -ResourceGroupName <String> -SubscriptionId <String> [-AddressPrefix <String>] [-AuthorizationKey <String>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-AddressPrefix <String>] [-AuthorizationKey <String>]
  [-CircuitPeeringId <String>] [-Id <String>] [-PeerCircuitPeeringId <String>] [-ResourceName <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -23,9 +23,9 @@ New-AzExpressRouteCircuitConnection -CircuitName <String> -Name <String> -Peerin
 ### Create
 ```
 New-AzExpressRouteCircuitConnection -CircuitName <String> -Name <String> -PeeringName <String>
- -ResourceGroupName <String> -SubscriptionId <String>
- -ExpressRouteCircuitConnection <IExpressRouteCircuitConnection> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ResourceGroupName <String> -ExpressRouteCircuitConnection <IExpressRouteCircuitConnection>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -320,9 +320,9 @@ Type: System.String
 Parameter Sets: Create, CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

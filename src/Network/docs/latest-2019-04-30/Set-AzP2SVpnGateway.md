@@ -14,7 +14,7 @@ Creates a virtual wan p2s vpn gateway if it doesn't exist else updates the exist
 
 ### UpdateExpanded (Default)
 ```
-Set-AzP2SVpnGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Set-AzP2SVpnGateway -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-CustomRouteAddressPrefix <String[]>] [-Id <String>] [-Location <String>]
  [-P2SVpnServerConfigurationId <String>] [-ScaleUnit <Int32>] [-Tag <Hashtable>] [-VirtualHubId <String>]
  [-VpnClientAddressPrefix <String[]>] [-VpnClientAllocatedIPAddress <String[]>]
@@ -24,8 +24,8 @@ Set-AzP2SVpnGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <
 
 ### Update
 ```
-Set-AzP2SVpnGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -P2SVpnGateway <IP2SVpnGateway> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Set-AzP2SVpnGateway -Name <String> -ResourceGroupName <String> -P2SVpnGateway <IP2SVpnGateway>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -240,9 +240,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

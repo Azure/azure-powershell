@@ -14,7 +14,7 @@ Create or updates a route table in a specified resource group.
 
 ### CreateExpanded (Default)
 ```
-New-AzRouteTable -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+New-AzRouteTable -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DisableBgpRoutePropagation] [-Etag <String>] [-Id <String>] [-Location <String>]
  [-ProvisioningState <String>] [-Route <IRoute_Reference[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -22,8 +22,9 @@ New-AzRouteTable -Name <String> -ResourceGroupName <String> -SubscriptionId <Str
 
 ### Create
 ```
-New-AzRouteTable -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -RouteTable <IRouteTable>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzRouteTable -Name <String> -ResourceGroupName <String> -RouteTable <IRouteTable>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -285,9 +286,9 @@ Type: System.String
 Parameter Sets: Create, CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

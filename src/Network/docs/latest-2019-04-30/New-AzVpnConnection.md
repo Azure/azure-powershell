@@ -14,19 +14,19 @@ Creates a vpn connection to a scalable vpn gateway if it doesn't exist else upda
 
 ### CreateExpanded (Default)
 ```
-New-AzVpnConnection -GatewayName <String> -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-ConnectionBandwidth <Int32>] [-EnableBgp] [-EnableInternetSecurity] [-EnableRateLimiting] [-Id <String>]
- [-IPsecPolicy <IIpsecPolicy[]>] [-ProtocolType <VirtualNetworkGatewayConnectionProtocol>]
- [-RemoteVpnSiteId <String>] [-ResourceName <String>] [-RoutingWeight <Int32>] [-SharedKey <String>]
- [-UseLocalAzureIPAddress] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzVpnConnection -GatewayName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-ConnectionBandwidth <Int32>] [-EnableBgp] [-EnableInternetSecurity]
+ [-EnableRateLimiting] [-Id <String>] [-IPsecPolicy <IIpsecPolicy[]>]
+ [-ProtocolType <VirtualNetworkGatewayConnectionProtocol>] [-RemoteVpnSiteId <String>]
+ [-ResourceName <String>] [-RoutingWeight <Int32>] [-SharedKey <String>] [-UseLocalAzureIPAddress]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create
 ```
-New-AzVpnConnection -GatewayName <String> -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -VpnConnection <IVpnConnection> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzVpnConnection -GatewayName <String> -Name <String> -ResourceGroupName <String>
+ -VpnConnection <IVpnConnection> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -369,9 +369,9 @@ Type: System.String
 Parameter Sets: Create, CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

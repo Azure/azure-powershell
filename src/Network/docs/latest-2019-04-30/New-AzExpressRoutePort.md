@@ -14,7 +14,7 @@ Creates or updates the specified ExpressRoutePort resource.
 
 ### CreateExpanded (Default)
 ```
-New-AzExpressRoutePort -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+New-AzExpressRoutePort -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-BandwidthInGbps <Int32>] [-Encapsulation <ExpressRoutePortsEncapsulation>] [-Id <String>]
  [-Link <IExpressRouteLink[]>] [-Location <String>] [-PeeringLocation <String>] [-ResourceGuid <String>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -22,8 +22,8 @@ New-AzExpressRoutePort -Name <String> -ResourceGroupName <String> -SubscriptionI
 
 ### Create
 ```
-New-AzExpressRoutePort -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -ExpressRoutePort <IExpressRoutePort> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+New-AzExpressRoutePort -Name <String> -ResourceGroupName <String> -ExpressRoutePort <IExpressRoutePort>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -302,9 +302,9 @@ Type: System.String
 Parameter Sets: Create, CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

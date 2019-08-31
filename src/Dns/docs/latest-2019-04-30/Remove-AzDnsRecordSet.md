@@ -15,9 +15,9 @@ This operation cannot be undone.
 
 ### Delete1 (Default)
 ```
-Remove-AzDnsRecordSet -Name <String> -RecordType <RecordType> -ResourceGroupName <String>
- -SubscriptionId <String> -ZoneName <String> [-IfMatch <String>] [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzDnsRecordSet -Name <String> -RecordType <RecordType> -ResourceGroupName <String> -ZoneName <String>
+ [-SubscriptionId <String>] [-IfMatch <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity1
@@ -176,9 +176,9 @@ Type: System.String
 Parameter Sets: Delete1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

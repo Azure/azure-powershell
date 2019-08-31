@@ -15,13 +15,13 @@ Gets the specified network interface ip configuration.
 ### List (Default)
 ```
 Get-AzNetworkInterfaceIPConfiguration -NetworkInterfaceName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzNetworkInterfaceIPConfiguration -Name <String> -NetworkInterfaceName <String>
- -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -33,14 +33,14 @@ Get-AzNetworkInterfaceIPConfiguration -InputObject <INetworkIdentity> [-DefaultP
 ### GetVmss
 ```
 Get-AzNetworkInterfaceIPConfiguration -Name <String> -NetworkInterfaceName <String>
- -ResourceGroupName <String> -SubscriptionId <String[]> -VMIndex <String> -VmssName <String>
+ -ResourceGroupName <String> -VMIndex <String> -VmssName <String> [-SubscriptionId <String[]>]
  [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ListVmss
 ```
 Get-AzNetworkInterfaceIPConfiguration -NetworkInterfaceName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> -VMIndex <String> -VmssName <String> [-Expand <String>]
+ -VMIndex <String> -VmssName <String> [-SubscriptionId <String[]>] [-Expand <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -175,9 +175,9 @@ Type: System.String[]
 Parameter Sets: Get, GetVmss, List, ListVmss
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

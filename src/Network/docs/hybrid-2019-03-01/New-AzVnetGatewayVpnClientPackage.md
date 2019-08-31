@@ -14,16 +14,16 @@ Generates VPN client package for P2S client of the virtual network gateway in th
 
 ### GeneratevpnclientpackageExpanded1 (Default)
 ```
-New-AzVnetGatewayVpnClientPackage -ResourceGroupName <String> -SubscriptionId <String>
- -VnetGatewayName <String> [-AuthenticationMethod <AuthenticationMethod>] [-ClientRootCertificate <String[]>]
+New-AzVnetGatewayVpnClientPackage -ResourceGroupName <String> -VnetGatewayName <String>
+ [-SubscriptionId <String>] [-AuthenticationMethod <AuthenticationMethod>] [-ClientRootCertificate <String[]>]
  [-ProcessorArchitecture <ProcessorArchitecture>] [-RadiusServerAuthenticationCertificate <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Generatevpnclientpackage1
 ```
-New-AzVnetGatewayVpnClientPackage -ResourceGroupName <String> -SubscriptionId <String>
- -VnetGatewayName <String> -VpnClientPackage <IVpnClientParameters> [-DefaultProfile <PSObject>] [-AsJob]
+New-AzVnetGatewayVpnClientPackage -ResourceGroupName <String> -VnetGatewayName <String>
+ -VpnClientPackage <IVpnClientParameters> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -223,9 +223,9 @@ Type: System.String
 Parameter Sets: Generatevpnclientpackage1, GeneratevpnclientpackageExpanded1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

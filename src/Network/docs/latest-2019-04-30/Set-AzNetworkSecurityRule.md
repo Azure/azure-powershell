@@ -15,7 +15,7 @@ Creates or updates a security rule in the specified network security group.
 ### UpdateExpanded (Default)
 ```
 Set-AzNetworkSecurityRule -Name <String> -NsgName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-Access <SecurityRuleAccess>] [-AdditionalDestinationAddressPrefix <String[]>]
+ [-SubscriptionId <String>] [-Access <SecurityRuleAccess>] [-AdditionalDestinationAddressPrefix <String[]>]
  [-AdditionalDestinationPortRange <String[]>] [-AdditionalSourceAddressPrefix <String[]>]
  [-AdditionalSourcePortRange <String[]>] [-Description <String>] [-DestinationAddressPrefix <String>]
  [-DestinationApplicationSecurityGroup <IApplicationSecurityGroup_Reference[]>]
@@ -29,7 +29,7 @@ Set-AzNetworkSecurityRule -Name <String> -NsgName <String> -ResourceGroupName <S
 ### Update
 ```
 Set-AzNetworkSecurityRule -Name <String> -NsgName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -SecurityRule <ISecurityRule> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -SecurityRule <ISecurityRule> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -503,9 +503,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

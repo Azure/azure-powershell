@@ -14,7 +14,7 @@ Creates or updates a network profile.
 
 ### CreateExpanded (Default)
 ```
-New-AzNetworkProfile -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+New-AzNetworkProfile -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-ContainerNetworkInterface <IContainerNetworkInterface[]>]
  [-ContainerNetworkInterfaceConfiguration <IContainerNetworkInterfaceConfiguration[]>] [-Etag <String>]
  [-Id <String>] [-Location <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
@@ -23,8 +23,8 @@ New-AzNetworkProfile -Name <String> -ResourceGroupName <String> -SubscriptionId 
 
 ### Create
 ```
-New-AzNetworkProfile -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -NetworkProfile <INetworkProfile> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzNetworkProfile -Name <String> -ResourceGroupName <String> -NetworkProfile <INetworkProfile>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -240,9 +240,9 @@ Type: System.String
 Parameter Sets: Create, CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

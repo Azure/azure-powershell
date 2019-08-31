@@ -14,8 +14,9 @@ Resets the primary of the virtual network gateway in the specified resource grou
 
 ### Reset (Default)
 ```
-Reset-AzVnetGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-GatewayVip <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Reset-AzVnetGateway -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-GatewayVip <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### ResetViaIdentity
@@ -171,9 +172,9 @@ Type: System.String
 Parameter Sets: Reset
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

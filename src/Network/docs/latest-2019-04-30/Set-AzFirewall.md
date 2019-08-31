@@ -14,7 +14,7 @@ Creates or updates the specified Azure Firewall.
 
 ### UpdateExpanded (Default)
 ```
-Set-AzFirewall -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Set-AzFirewall -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-ApplicationRule <IAzureFirewallApplicationRuleCollection[]>] [-Id <String>]
  [-IPConfiguration <IAzureFirewallIPConfiguration[]>] [-Location <String>]
  [-NatRule <IAzureFirewallNatRuleCollection[]>] [-NetworkRule <IAzureFirewallNetworkRuleCollection[]>]
@@ -24,8 +24,9 @@ Set-AzFirewall -Name <String> -ResourceGroupName <String> -SubscriptionId <Strin
 
 ### Update
 ```
-Set-AzFirewall -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Firewall <IAzureFirewall>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzFirewall -Name <String> -ResourceGroupName <String> -Firewall <IAzureFirewall>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -259,9 +260,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

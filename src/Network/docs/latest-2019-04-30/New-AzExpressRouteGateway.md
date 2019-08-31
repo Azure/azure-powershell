@@ -14,7 +14,7 @@ Creates or updates a ExpressRoute gateway in a specified resource group.
 
 ### CreateExpanded (Default)
 ```
-New-AzExpressRouteGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-Id <String>]
+New-AzExpressRouteGateway -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Id <String>]
  [-Location <String>] [-MaximumScaleUnit <Int32>] [-MinimumScaleUnit <Int32>] [-Tag <Hashtable>]
  [-VirtualHubId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -22,9 +22,9 @@ New-AzExpressRouteGateway -Name <String> -ResourceGroupName <String> -Subscripti
 
 ### Create
 ```
-New-AzExpressRouteGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -ExpressRouteGateway <IExpressRouteGateway> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzExpressRouteGateway -Name <String> -ResourceGroupName <String>
+ -ExpressRouteGateway <IExpressRouteGateway> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -252,9 +252,9 @@ Type: System.String
 Parameter Sets: Create, CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

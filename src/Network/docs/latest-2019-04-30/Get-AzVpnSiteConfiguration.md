@@ -14,16 +14,16 @@ Gives the sas-url to download the configurations for vpn-sites in a resource gro
 
 ### DownloadExpanded (Default)
 ```
-Get-AzVpnSiteConfiguration -ResourceGroupName <String> -SubscriptionId <String[]> -VirtualWanName <String>
- -OutputBlobSasUrl <String> [-VpnSite <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzVpnSiteConfiguration -ResourceGroupName <String> -VirtualWanName <String> -OutputBlobSasUrl <String>
+ [-SubscriptionId <String[]>] [-VpnSite <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Download
 ```
-Get-AzVpnSiteConfiguration -ResourceGroupName <String> -SubscriptionId <String[]> -VirtualWanName <String>
- -Request <IGetVpnSitesConfigurationRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzVpnSiteConfiguration -ResourceGroupName <String> -VirtualWanName <String>
+ -Request <IGetVpnSitesConfigurationRequest> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DownloadViaIdentity
@@ -202,9 +202,9 @@ Type: System.String[]
 Parameter Sets: Download, DownloadExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

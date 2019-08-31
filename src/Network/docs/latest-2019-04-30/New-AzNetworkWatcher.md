@@ -14,15 +14,15 @@ Creates or updates a network watcher in the specified resource group.
 
 ### CreateExpanded (Default)
 ```
-New-AzNetworkWatcher -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-Etag <String>]
+New-AzNetworkWatcher -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Etag <String>]
  [-Id <String>] [-Location <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### Create
 ```
-New-AzNetworkWatcher -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -NetworkWatcher <INetworkWatcher> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzNetworkWatcher -Name <String> -ResourceGroupName <String> -NetworkWatcher <INetworkWatcher>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -201,9 +201,9 @@ Type: System.String
 Parameter Sets: Create, CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

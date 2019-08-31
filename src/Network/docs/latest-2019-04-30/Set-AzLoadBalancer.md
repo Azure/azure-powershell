@@ -14,7 +14,7 @@ Creates or updates a load balancer.
 
 ### UpdateExpanded (Default)
 ```
-Set-AzLoadBalancer -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Set-AzLoadBalancer -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-BackendAddressPool <IBackendAddressPool[]>] [-Etag <String>]
  [-FrontendIPConfiguration <IFrontendIPConfiguration[]>] [-Id <String>] [-InboundNatPool <IInboundNatPool[]>]
  [-InboundNatRule <IInboundNatRule_Reference[]>] [-LoadBalancingRule <ILoadBalancingRule[]>]
@@ -25,8 +25,8 @@ Set-AzLoadBalancer -Name <String> -ResourceGroupName <String> -SubscriptionId <S
 
 ### Update
 ```
-Set-AzLoadBalancer -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -LoadBalancer <ILoadBalancer> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Set-AzLoadBalancer -Name <String> -ResourceGroupName <String> -LoadBalancer <ILoadBalancer>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -385,9 +385,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -15,14 +15,14 @@ Get the last completed troubleshooting result on a specified resource
 ### GetExpanded (Default)
 ```
 Get-AzNetworkWatcherTroubleshooting -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> -TargetResourceId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -TargetResourceId <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzNetworkWatcherTroubleshooting -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> -Troubleshooting <IQueryTroubleshootingParameters> [-DefaultProfile <PSObject>]
+ -Troubleshooting <IQueryTroubleshootingParameters> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -170,9 +170,9 @@ Type: System.String[]
 Parameter Sets: Get, GetExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

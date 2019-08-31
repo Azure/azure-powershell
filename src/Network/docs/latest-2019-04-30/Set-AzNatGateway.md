@@ -14,7 +14,7 @@ Creates or updates a nat gateway.
 
 ### UpdateExpanded (Default)
 ```
-Set-AzNatGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-Etag <String>]
+Set-AzNatGateway -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Etag <String>]
  [-Id <String>] [-IdleTimeoutInMinutes <Int32>] [-Location <String>] [-ProvisioningState <String>]
  [-PublicIPAddress <ISubResource[]>] [-PublicIPPrefix <ISubResource[]>] [-ResourceGuid <String>]
  [-SkuName <NatGatewaySkuName>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
@@ -23,8 +23,9 @@ Set-AzNatGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <Str
 
 ### Update
 ```
-Set-AzNatGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -NatGateway <INatGateway>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzNatGateway -Name <String> -ResourceGroupName <String> -NatGateway <INatGateway>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -305,9 +306,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

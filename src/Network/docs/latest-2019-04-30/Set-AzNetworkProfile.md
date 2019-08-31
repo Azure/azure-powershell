@@ -14,7 +14,7 @@ Creates or updates a network profile.
 
 ### UpdateExpanded (Default)
 ```
-Set-AzNetworkProfile -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Set-AzNetworkProfile -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-ContainerNetworkInterface <IContainerNetworkInterface[]>]
  [-ContainerNetworkInterfaceConfiguration <IContainerNetworkInterfaceConfiguration[]>] [-Etag <String>]
  [-Id <String>] [-Location <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
@@ -23,8 +23,8 @@ Set-AzNetworkProfile -Name <String> -ResourceGroupName <String> -SubscriptionId 
 
 ### Update
 ```
-Set-AzNetworkProfile -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -NetworkProfile <INetworkProfile> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzNetworkProfile -Name <String> -ResourceGroupName <String> -NetworkProfile <INetworkProfile>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -208,9 +208,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

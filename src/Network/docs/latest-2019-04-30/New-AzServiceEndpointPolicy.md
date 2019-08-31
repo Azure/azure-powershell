@@ -14,7 +14,7 @@ Creates or updates a service Endpoint Policies.
 
 ### CreateExpanded (Default)
 ```
-New-AzServiceEndpointPolicy -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+New-AzServiceEndpointPolicy -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Definition <IServiceEndpointPolicyDefinition_Reference[]>] [-Etag <String>] [-Id <String>]
  [-Location <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -22,9 +22,9 @@ New-AzServiceEndpointPolicy -Name <String> -ResourceGroupName <String> -Subscrip
 
 ### Create
 ```
-New-AzServiceEndpointPolicy -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -ServiceEndpointPolicy <IServiceEndpointPolicy> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzServiceEndpointPolicy -Name <String> -ResourceGroupName <String>
+ -ServiceEndpointPolicy <IServiceEndpointPolicy> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -253,9 +253,9 @@ Type: System.String
 Parameter Sets: Create, CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

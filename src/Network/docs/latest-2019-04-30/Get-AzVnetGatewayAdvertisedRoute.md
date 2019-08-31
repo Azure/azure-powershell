@@ -14,8 +14,8 @@ This operation retrieves a list of routes the virtual network gateway is adverti
 
 ### Get (Default)
 ```
-Get-AzVnetGatewayAdvertisedRoute -ResourceGroupName <String> -SubscriptionId <String[]>
- -VnetGatewayName <String> -Peer <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Get-AzVnetGatewayAdvertisedRoute -ResourceGroupName <String> -VnetGatewayName <String> -Peer <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -156,9 +156,9 @@ Type: System.String[]
 Parameter Sets: Get
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -14,9 +14,9 @@ Configures flow log  and traffic analytics (optional) on a specified resource.
 
 ### SetExpanded (Default)
 ```
-Set-AzNetworkWatcherFlowLogInformation -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -EnableFlowLog -StorageAccountId <String> -TargetResourceId <String>
- [-EnableRetention] [-EnableTrafficAnalytics] [-FormatType <FlowLogFormatType>] [-FormatVersion <Int32>]
+Set-AzNetworkWatcherFlowLogInformation -NetworkWatcherName <String> -ResourceGroupName <String> -EnableFlowLog
+ -StorageAccountId <String> -TargetResourceId <String> [-SubscriptionId <String>] [-EnableRetention]
+ [-EnableTrafficAnalytics] [-FormatType <FlowLogFormatType>] [-FormatVersion <Int32>]
  [-RetentionInDays <Int32>] [-TrafficAnalyticsInterval <Int32>] [-WorkspaceGuid <String>]
  [-WorkspaceLocation <String>] [-WorkspaceResourceId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -25,7 +25,7 @@ Set-AzNetworkWatcherFlowLogInformation -NetworkWatcherName <String> -ResourceGro
 ### Set
 ```
 Set-AzNetworkWatcherFlowLogInformation -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -FlowLogConfiguration <IFlowLogInformation> [-DefaultProfile <PSObject>] [-AsJob]
+ -FlowLogConfiguration <IFlowLogInformation> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -272,9 +272,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

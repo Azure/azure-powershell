@@ -15,16 +15,16 @@ Verifies the possibility of establishing a direct TCP connection from a virtual 
 ### CheckExpanded (Default)
 ```
 Test-AzNetworkWatcherConnectivity -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -SourceResourceId <String> [-DestinationAddress <String>] [-DestinationPort <Int32>]
- [-DestinationResourceId <String>] [-HttpHeader <IHttpHeader[]>] [-HttpMethod <HttpMethod>]
- [-HttpValidStatusCode <Int32[]>] [-Protocol <Protocol>] [-SourcePort <Int32>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -SourceResourceId <String> [-SubscriptionId <String>] [-DestinationAddress <String>]
+ [-DestinationPort <Int32>] [-DestinationResourceId <String>] [-HttpHeader <IHttpHeader[]>]
+ [-HttpMethod <HttpMethod>] [-HttpValidStatusCode <Int32[]>] [-Protocol <Protocol>] [-SourcePort <Int32>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Check
 ```
 Test-AzNetworkWatcherConnectivity -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -Connectivity <IConnectivityParameters> [-DefaultProfile <PSObject>] [-AsJob]
+ -Connectivity <IConnectivityParameters> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -336,9 +336,9 @@ Type: System.String
 Parameter Sets: Check, CheckExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -14,16 +14,16 @@ Creates or updates a DDoS protection plan.
 
 ### CreateExpanded (Default)
 ```
-New-AzDdosProtectionPlan -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+New-AzDdosProtectionPlan -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Location <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### Create
 ```
-New-AzDdosProtectionPlan -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -DdosProtectionPlan <IDdosProtectionPlan> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzDdosProtectionPlan -Name <String> -ResourceGroupName <String> -DdosProtectionPlan <IDdosProtectionPlan>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -202,9 +202,9 @@ Type: System.String
 Parameter Sets: Create, CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

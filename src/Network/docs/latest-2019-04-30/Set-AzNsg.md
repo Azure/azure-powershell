@@ -14,7 +14,7 @@ Creates or updates a network security group in the specified resource group.
 
 ### UpdateExpanded (Default)
 ```
-Set-AzNsg -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Set-AzNsg -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultSecurityRule <ISecurityRule_Reference[]>] [-Etag <String>] [-Id <String>] [-Location <String>]
  [-ProvisioningState <String>] [-ResourceGuid <String>] [-SecurityRule <ISecurityRule_Reference[]>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -22,7 +22,7 @@ Set-AzNsg -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
 
 ### Update
 ```
-Set-AzNsg -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Nsg <INetworkSecurityGroup>
+Set-AzNsg -Name <String> -ResourceGroupName <String> -Nsg <INetworkSecurityGroup> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -270,9 +270,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

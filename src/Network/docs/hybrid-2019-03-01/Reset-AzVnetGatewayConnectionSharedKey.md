@@ -14,15 +14,16 @@ The VirtualNetworkGatewayConnectionResetSharedKey operation resets the virtual n
 
 ### ResetExpanded1 (Default)
 ```
-Reset-AzVnetGatewayConnectionSharedKey -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -KeyLength <Int32> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Reset-AzVnetGatewayConnectionSharedKey -Name <String> -ResourceGroupName <String> -KeyLength <Int32>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Reset1
 ```
-Reset-AzVnetGatewayConnectionSharedKey -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -ConnectionSharedKey <IConnectionResetSharedKey> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Reset-AzVnetGatewayConnectionSharedKey -Name <String> -ResourceGroupName <String>
+ -ConnectionSharedKey <IConnectionResetSharedKey> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ResetViaIdentity1
@@ -202,9 +203,9 @@ Type: System.String
 Parameter Sets: Reset1, ResetExpanded1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

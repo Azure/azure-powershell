@@ -14,8 +14,8 @@ The GetBgpPeerStatus operation retrieves the status of all BGP peers.
 
 ### Get (Default)
 ```
-Get-AzVnetGatewayBgpPeerStatus -ResourceGroupName <String> -SubscriptionId <String[]>
- -VnetGatewayName <String> [-Peer <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+Get-AzVnetGatewayBgpPeerStatus -ResourceGroupName <String> -VnetGatewayName <String>
+ [-SubscriptionId <String[]>] [-Peer <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -156,9 +156,9 @@ Type: System.String[]
 Parameter Sets: Get
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

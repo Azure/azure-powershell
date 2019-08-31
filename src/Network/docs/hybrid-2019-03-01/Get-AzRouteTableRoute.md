@@ -14,14 +14,14 @@ Gets the specified route from a route table.
 
 ### List1 (Default)
 ```
-Get-AzRouteTableRoute -ResourceGroupName <String> -SubscriptionId <String[]> -TableName <String>
+Get-AzRouteTableRoute -ResourceGroupName <String> -TableName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get1
 ```
-Get-AzRouteTableRoute -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- -TableName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzRouteTableRoute -Name <String> -ResourceGroupName <String> -TableName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity1
@@ -128,9 +128,9 @@ Type: System.String[]
 Parameter Sets: Get1, List1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

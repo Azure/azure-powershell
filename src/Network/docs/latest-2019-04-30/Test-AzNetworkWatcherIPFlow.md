@@ -14,18 +14,18 @@ Verify IP flow from the specified VM to a location given the currently configure
 
 ### VerifyExpanded (Default)
 ```
-Test-AzNetworkWatcherIPFlow -NetworkWatcherName <String> -ResourceGroupName <String> -SubscriptionId <String>
- -Direction <Direction> -LocalIPAddress <String> -LocalPort <String> -Protocol <IPFlowProtocol>
- -RemoteIPAddress <String> -RemotePort <String> -TargetResourceId <String>
+Test-AzNetworkWatcherIPFlow -NetworkWatcherName <String> -ResourceGroupName <String> -Direction <Direction>
+ -LocalIPAddress <String> -LocalPort <String> -Protocol <IPFlowProtocol> -RemoteIPAddress <String>
+ -RemotePort <String> -TargetResourceId <String> [-SubscriptionId <String>]
  [-NetworkInterfaceResourceId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### Verify
 ```
-Test-AzNetworkWatcherIPFlow -NetworkWatcherName <String> -ResourceGroupName <String> -SubscriptionId <String>
- -IPFlow <IVerificationIPFlowParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Test-AzNetworkWatcherIPFlow -NetworkWatcherName <String> -ResourceGroupName <String>
+ -IPFlow <IVerificationIPFlowParameters> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### VerifyViaIdentity
@@ -310,9 +310,9 @@ Type: System.String
 Parameter Sets: Verify, VerifyExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

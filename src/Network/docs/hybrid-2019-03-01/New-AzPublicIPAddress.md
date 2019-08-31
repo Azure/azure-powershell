@@ -14,7 +14,7 @@ Creates or updates a static or dynamic public IP address.
 
 ### CreateExpanded1 (Default)
 ```
-New-AzPublicIPAddress -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+New-AzPublicIPAddress -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Address <IPublicIPAddress_Reference>] [-AllocationMethod <IPAllocationMethod>] [-DomainNameLabel <String>]
  [-Etag <String>] [-Fqdn <String>] [-Id <String>] [-IdleTimeoutInMinutes <Int32>] [-IPAddress <String>]
  [-IPAddressVersion <IPVersion>] [-IPConfigurationEtag <String>] [-IPConfigurationId <String>]
@@ -27,8 +27,8 @@ New-AzPublicIPAddress -Name <String> -ResourceGroupName <String> -SubscriptionId
 
 ### Create1
 ```
-New-AzPublicIPAddress -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -PublicIPAddress <IPublicIPAddress> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+New-AzPublicIPAddress -Name <String> -ResourceGroupName <String> -PublicIPAddress <IPublicIPAddress>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -544,9 +544,9 @@ Type: System.String
 Parameter Sets: Create1, CreateExpanded1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

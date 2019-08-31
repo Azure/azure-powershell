@@ -15,7 +15,7 @@ Creates or updates a peering in the specified ExpressRouteCrossConnection.
 ### CreateExpanded (Default)
 ```
 New-AzExpressRouteCrossConnectionPeering -CrossConnectionName <String> -Name <String>
- -ResourceGroupName <String> -SubscriptionId <String> [-AdvertisedCommunity <String[]>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-AdvertisedCommunity <String[]>]
  [-AdvertisedPublicPrefix <String[]>]
  [-AdvertisedPublicPrefixesState <ExpressRouteCircuitPeeringAdvertisedPublicPrefixState>]
  [-CustomerAsn <Int32>] [-GatewayManagerEtag <String>] [-Id <String>] [-IPv6AdvertisedCommunity <String[]>]
@@ -33,9 +33,9 @@ New-AzExpressRouteCrossConnectionPeering -CrossConnectionName <String> -Name <St
 ### Create
 ```
 New-AzExpressRouteCrossConnectionPeering -CrossConnectionName <String> -Name <String>
- -ResourceGroupName <String> -SubscriptionId <String>
- -CrossConnectionPeering <IExpressRouteCrossConnectionPeering> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ResourceGroupName <String> -CrossConnectionPeering <IExpressRouteCrossConnectionPeering>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -648,9 +648,9 @@ Type: System.String
 Parameter Sets: Create, CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

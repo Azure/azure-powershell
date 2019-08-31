@@ -14,12 +14,12 @@ Gets information about the specified network interface.
 
 ### List (Default)
 ```
-Get-AzNetworkInterface -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzNetworkInterface [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzNetworkInterface -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzNetworkInterface -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -31,26 +31,26 @@ Get-AzNetworkInterface -InputObject <INetworkIdentity> [-Expand <String>] [-Defa
 
 ### GetVmss
 ```
-Get-AzNetworkInterface -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]> -VMIndex <String>
- -VmssName <String> [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzNetworkInterface -Name <String> -ResourceGroupName <String> -VMIndex <String> -VmssName <String>
+ [-SubscriptionId <String[]>] [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzNetworkInterface -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
+Get-AzNetworkInterface -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### ListVmss
 ```
-Get-AzNetworkInterface -ResourceGroupName <String> -SubscriptionId <String[]> -VmssName <String>
+Get-AzNetworkInterface -ResourceGroupName <String> -VmssName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ListVmssVM
 ```
-Get-AzNetworkInterface -ResourceGroupName <String> -SubscriptionId <String[]> -VMIndex <String>
- -VmssName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzNetworkInterface -ResourceGroupName <String> -VMIndex <String> -VmssName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -168,9 +168,9 @@ Type: System.String[]
 Parameter Sets: Get, GetVmss, List, List1, ListVmss, ListVmssVM
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

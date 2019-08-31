@@ -14,7 +14,7 @@ Creates or updates a peering in the specified virtual network.
 
 ### UpdateExpanded1 (Default)
 ```
-Set-AzVnetPeering -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -VnetName <String>
+Set-AzVnetPeering -Name <String> -ResourceGroupName <String> -VnetName <String> [-SubscriptionId <String>]
  [-AllowForwardedTraffic] [-AllowGatewayTransit] [-AllowVnetAccess] [-Etag <String>] [-Id <String>]
  [-PeeringState <VirtualNetworkPeeringState>] [-ProvisioningState <String>] [-RemoteAddressPrefix <String[]>]
  [-RemoteVnetId <String>] [-ResourceName <String>] [-UseRemoteGateway] [-DefaultProfile <PSObject>] [-AsJob]
@@ -23,9 +23,9 @@ Set-AzVnetPeering -Name <String> -ResourceGroupName <String> -SubscriptionId <St
 
 ### Update1
 ```
-Set-AzVnetPeering -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -VnetName <String>
- -VnetPeering <IVirtualNetworkPeering> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Set-AzVnetPeering -Name <String> -ResourceGroupName <String> -VnetName <String>
+ -VnetPeering <IVirtualNetworkPeering> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -304,9 +304,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -14,14 +14,14 @@ Retrieves the details of a P2SVpnServerConfiguration.
 
 ### List (Default)
 ```
-Get-AzP2SVpnServerConfiguration -ResourceGroupName <String> -SubscriptionId <String[]>
- -VirtualWanName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzP2SVpnServerConfiguration -ResourceGroupName <String> -VirtualWanName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzP2SVpnServerConfiguration -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- -VirtualWanName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzP2SVpnServerConfiguration -Name <String> -ResourceGroupName <String> -VirtualWanName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -129,9 +129,9 @@ Type: System.String[]
 Parameter Sets: Get, List
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

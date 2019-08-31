@@ -14,14 +14,14 @@ Gets the specified rule from a route filter.
 
 ### List (Default)
 ```
-Get-AzRouteFilterRule -ResourceGroupName <String> -RouteFilterName <String> -SubscriptionId <String[]>
+Get-AzRouteFilterRule -ResourceGroupName <String> -RouteFilterName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzRouteFilterRule -Name <String> -ResourceGroupName <String> -RouteFilterName <String>
- -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -144,9 +144,9 @@ Type: System.String[]
 Parameter Sets: Get, List
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

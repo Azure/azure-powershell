@@ -14,14 +14,14 @@ Retrieves the specified ExpressRouteLink resource.
 
 ### List (Default)
 ```
-Get-AzExpressRouteLink -ExpressRoutePortName <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzExpressRouteLink -ExpressRoutePortName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzExpressRouteLink -ExpressRoutePortName <String> -LinkName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -144,9 +144,9 @@ Type: System.String[]
 Parameter Sets: Get, List
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

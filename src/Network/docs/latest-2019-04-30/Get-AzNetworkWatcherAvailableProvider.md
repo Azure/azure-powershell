@@ -15,14 +15,14 @@ Lists all available internet service providers for a specified Azure region.
 ### ListExpanded (Default)
 ```
 Get-AzNetworkWatcherAvailableProvider -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-City <String>] [-Country <String>] [-Location <String[]>] [-State <String>]
+ [-SubscriptionId <String[]>] [-City <String>] [-Country <String>] [-Location <String[]>] [-State <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### List
 ```
 Get-AzNetworkWatcherAvailableProvider -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> -AvailableProvider <IAvailableProvidersListParameters>
+ -AvailableProvider <IAvailableProvidersListParameters> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -221,9 +221,9 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

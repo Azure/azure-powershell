@@ -14,7 +14,7 @@ Gets a xml format representation for supported vpn devices.
 
 ### Supported1 (Default)
 ```
-Get-AzVnetGatewaySupportedVpnDevice -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzVnetGatewaySupportedVpnDevice -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -123,9 +123,9 @@ Type: System.String[]
 Parameter Sets: Supported1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

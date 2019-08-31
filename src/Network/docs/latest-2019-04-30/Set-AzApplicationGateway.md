@@ -14,7 +14,7 @@ Creates or updates the specified application gateway.
 
 ### UpdateExpanded (Default)
 ```
-Set-AzApplicationGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Set-AzApplicationGateway -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AuthenticationCertificate <IApplicationGatewayAuthenticationCertificate[]>]
  [-AutoscaleMaximumCapacity <Int32>] [-AutoscaleMinimumCapacity <Int32>]
  [-BackendAddressPool <IApplicationGatewayBackendAddressPool[]>]
@@ -45,9 +45,9 @@ Set-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Subscriptio
 
 ### Update
 ```
-Set-AzApplicationGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -ApplicationGateway <IApplicationGateway> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Set-AzApplicationGateway -Name <String> -ResourceGroupName <String> -ApplicationGateway <IApplicationGateway>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -750,9 +750,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
