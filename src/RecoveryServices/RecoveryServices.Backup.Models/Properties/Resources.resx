@@ -571,4 +571,7 @@ Please contact Microsoft for further assistance.</value>
   <data name="RetentionDurationCountInDaysInvalidException" xml:space="preserve">
     <value>RetentionDuration in Days should be from 7 - 9999</value>
   </data>
+  <data name="ProtectedItemsCountExceededException" xml:space="preserve">
+    <value>Cannot configure backup for more than 100 VMs per policy</value>
+  </data>
 </root>

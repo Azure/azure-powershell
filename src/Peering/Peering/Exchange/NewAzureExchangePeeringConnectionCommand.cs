@@ -147,8 +147,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Exchange
                     MaxPrefixesAdvertisedV4 = !string.IsNullOrEmpty(this.PeerSessionIPv4Address) ? (this.MaxPrefixesAdvertisedIPv4 ?? 20000) : (int?)null,
                     MaxPrefixesAdvertisedV6 = !string.IsNullOrEmpty(this.PeerSessionIPv6Address) ? (this.MaxPrefixesAdvertisedIPv6 ?? 2000) : (int?)null,
                     Md5AuthenticationKey = this.MD5AuthenticationKey,
-                    PeerSessionIPv4Address = this.PeerSessionIPv4Address,
-                    PeerSessionIPv6Address = this.PeerSessionIPv6Address
+                    PeerSessionIPv4Address = this.PeerSessionIPv4Address?.Trim(),
+                    PeerSessionIPv6Address = this.PeerSessionIPv6Address?.Trim()
                 },
                 PeeringDBFacilityId = this.PeeringDBFacilityId,
             };

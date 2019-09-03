@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                     var byteArray = Encoding.ASCII.GetBytes(user.PublishingUserName + ":" + user.PublishingPassword);
                     client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
                     HttpContent fileContent = new StreamContent(s);
-                    fileContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("multipart/form-data");
+                    fileContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/zip");
                     r = client.PostAsync(deployUrl, fileContent).Result;
 
                     int numChecks = 0;

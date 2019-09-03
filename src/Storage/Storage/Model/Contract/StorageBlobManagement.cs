@@ -717,7 +717,18 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         {
             return blob.SetMetadataAsync(accessCondition, options, operationContext, cmdletCancellationToken);
         }
-
+        
+        /// Return a task that asynchronously set Premium page blob Tier
+        /// </summary>
+        /// <param name="blob">CloudPageBlob object</param>
+        /// <param name="tier">Premium pageblob Tier</param>
+        /// <param name="options">Blob request options</param>
+        /// <param name="operationContext">An object that represents the context for the current operation.</param>
+        public Task SetPageBlobTierAsync(CloudPageBlob blob, PremiumPageBlobTier tier, BlobRequestOptions options, XSCL.OperationContext operationContext, CancellationToken cmdletCancellationToken)
+        {
+            return blob.SetPremiumBlobTierAsync(tier, options, operationContext, cmdletCancellationToken);
+        }
+        
         /// <summary>
         /// Return a task that asynchronously set block blob Tier
         /// </summary>
@@ -726,9 +737,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="accessCondition">Access condition</param>
         /// <param name="options">Blob request options</param>
         /// <param name="operationContext">An object that represents the context for the current operation.</param>
-        public Task SetPageBlobTierAsync(CloudPageBlob blob, PremiumPageBlobTier tier, BlobRequestOptions options, XSCL.OperationContext operationContext, CancellationToken cmdletCancellationToken)
+        public Task SetStandardBlobTierAsync(CloudBlockBlob blob, AccessCondition accessCondition, StandardBlobTier tier, RehydratePriority? rehydratePriority, BlobRequestOptions options, XSCL.OperationContext operationContext, CancellationToken cmdletCancellationToken)
         {
-            return blob.SetPremiumBlobTierAsync(tier, options, operationContext, cmdletCancellationToken);
+            return blob.SetStandardBlobTierAsync(tier, rehydratePriority, accessCondition, options, operationContext, cmdletCancellationToken);
         }
 
         /// <summary>
@@ -819,6 +830,23 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         public Task<string> StartCopyAsync(CloudPageBlob blob, Uri source, PremiumPageBlobTier premiumPageBlobTier, AccessCondition sourceAccessCondition, AccessCondition destAccessCondition, BlobRequestOptions options, XSCL.OperationContext operationContext, CancellationToken cancellationToken)
         {
             return blob.StartCopyAsync(new CloudPageBlob(source), premiumPageBlobTier, sourceAccessCondition, destAccessCondition, options, operationContext, cancellationToken);
+        }
+
+        /// <summary>
+        /// Return a task that asynchronously start copy operation to a CloudBlockBlob with StandardBlobTier.
+        /// </summary>
+        /// <param name="blob">CloudBlob object whcih is a Block blob</param>
+        /// <param name="source">Uri to copying source</param>
+        /// <param name="premiumPageBlobTier">The StandardBlobTier of Destination blob</param>
+        /// <param name="standardBlobTier">Access condition to source if it's file/blob in azure.</param>
+        /// <param name="destAccessCondition">Access condition to Destination blob.</param>
+        /// <param name="options">Blob request options</param>
+        /// <param name="operationContext">Operation context</param>
+        /// <param name="cmdletCancellationToken">Cancellation token</param>
+        /// <returns>Return copy id if succeeded.</returns>
+        public Task<string> StartCopyAsync(CloudBlob blob, Uri source, StandardBlobTier? standardBlobTier, RehydratePriority? rehydratePriority, AccessCondition sourceAccessCondition, AccessCondition destAccessCondition, BlobRequestOptions options, XSCL.OperationContext operationContext, CancellationToken cancellationToken)
+        {
+            return blob.StartCopyAsync(source, standardBlobTier, rehydratePriority, sourceAccessCondition, destAccessCondition, options, operationContext, cancellationToken);
         }
 
         /// <summary>

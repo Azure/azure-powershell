@@ -19,7 +19,26 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix the null exception for Get-AzRemoteDesktopFile.
+* Fix VHD Seek method for end-relative position.
+* Fix UltraSSD issue for New-AzVM and Update-AzVM.
+
+## Version 2.5.0
+* Add VmssId to New-AzVMConfig cmdlet
+* Add TerminateScheduledEvents and TerminateScheduledEventNotBeforeTimeoutInMinutes parameters to New-AzVmssConfig and Update-AzVmss
+* Add HyperVGeneration property to VM image object
+* Add Host and HostGroup features
+    - New cmdlets:
+	    New-AzHostGroup
+		New-AzHost
+		Get-AzHostGroup
+		Get-AzHost
+		Remove-AzHostGroup
+		Remove-AzHost
+	- HostId parameter is added to New-AzVMConfig and New-AzVM
 * Fixed miscellaneous typos across module
+* Update example in `Invoke-AzVMRunCommand` documentation to use correct parameter name
+* Update `-VolumeType` description in `Set-AzVMDiskEncryptionExtension` and `Set-AzVmssDiskEncryptionExtension` reference documentation
 
 ## Version 2.4.1
 * Add missing properties (ComputerName, OsName, OsVersion and HyperVGeneration) of VM instance view object.
