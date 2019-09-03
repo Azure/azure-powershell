@@ -50,10 +50,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     GalleryImageVersion galleryImageVersion = new GalleryImageVersion();
 
                     galleryImageVersion.Location = this.Location;
-                    galleryImageVersion.PublishingProfile = new GalleryImageVersionPublishingProfile();
-                    galleryImageVersion.PublishingProfile.Source = new GalleryArtifactSource();
-                    galleryImageVersion.PublishingProfile.Source.ManagedImage = new ManagedArtifact();
-                    galleryImageVersion.PublishingProfile.Source.ManagedImage.Id = this.SourceImageId;
+                    galleryImageVersion.StorageProfile = new GalleryImageVersionStorageProfile();
+                    galleryImageVersion.StorageProfile.Source = new GalleryArtifactVersionSource();
+                    galleryImageVersion.StorageProfile.Source.Id = this.SourceImageId;
 
                     if (this.IsParameterBound(c => c.Tag))
                     {
@@ -285,6 +284,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             galleryImageVersion.PublishingProfile.TargetRegions.Add(new TargetRegion((string)t["Name"], (int?)t["ReplicaCount"]));
                         }
                     }
+
+                    galleryImageVersion.StorageProfile.DataDiskImages = null;
+                    galleryImageVersion.StorageProfile.OsDiskImage = null;
 
                     var result = GalleryImageVersionsClient.CreateOrUpdate(resourceGroupName, galleryName, galleryImageName, galleryImageVersionName, galleryImageVersion);
                     var psObject = new PSGalleryImageVersion();
