@@ -17,26 +17,26 @@ If an account is already created and a subsequent create or update request is is
 ### CreateExpandedStorageEncryption (Default)
 ```
 New-AzStorageAccount -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Kind <Kind>
- -Location <String> -SkuName <SkuName> [-AccessTier <AccessTier>] [-AssignIdentity]
+ -Location <String> -SkuName <String> [-AccessTier <AccessTier>] [-AssignIdentity]
  [-CustomDomainName <String>] [-EnableAzureFilesAadIntegration] [-EnableHierarchicalNamespace]
  [-EnableHttpsTrafficOnly] [-EncryptBlobService] [-EncryptFileService] [-EncryptQueueService]
  [-EncryptTableService] [-NetworkRuleSetBypass <Bypass>] [-NetworkRuleSetDefaultAction <DefaultAction>]
  [-NetworkRuleSetIPRule <IIPRule[]>] [-NetworkRuleSetVirtualNetworkRule <IVirtualNetworkRule[]>]
- [-SkuKind <Kind>] [-SkuRestriction <IRestriction[]>] [-StorageEncryption] [-Tag <Hashtable>]
+ [-SkuKind <String>] [-SkuRestriction <IRestriction[]>] [-StorageEncryption] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpandedKeyVaultEncryption
 ```
 New-AzStorageAccount -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Kind <Kind>
- -Location <String> -SkuName <SkuName> [-AccessTier <AccessTier>] [-AssignIdentity]
+ -Location <String> -SkuName <String> [-AccessTier <AccessTier>] [-AssignIdentity]
  [-CustomDomainName <String>] [-EnableAzureFilesAadIntegration] [-EnableHierarchicalNamespace]
  [-EnableHttpsTrafficOnly] [-EncryptBlobService] [-EncryptFileService] [-EncryptQueueService]
  [-EncryptTableService] [-KeyName <String>] [-KeyVaultEncryption] [-KeyVaultUri <String>]
  [-KeyVersion <String>] [-NetworkRuleSetBypass <Bypass>] [-NetworkRuleSetDefaultAction <DefaultAction>]
  [-NetworkRuleSetIPRule <IIPRule[]>] [-NetworkRuleSetVirtualNetworkRule <IVirtualNetworkRule[]>]
- [-SkuKind <Kind>] [-SkuRestriction <IRestriction[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SkuKind <String>] [-SkuRestriction <IRestriction[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -466,7 +466,7 @@ Dynamic: False
 Indicates the type of storage account.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Support.Kind
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -484,7 +484,7 @@ Required for account creation; optional for update.
 Note that in older versions, SKU name was called accountType.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Support.SkuName
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

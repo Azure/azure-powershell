@@ -180,7 +180,7 @@ function New-AzStorageAccount {
         [Parameter(ParameterSetName='CreateExpandedKeyVaultEncryption', HelpMessage='Indicates the type of storage account.')]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Storage.Support.Kind])]
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Support.Kind]
+        [string]
         # Indicates the type of storage account.
         ${SkuKind},
     
@@ -188,7 +188,7 @@ function New-AzStorageAccount {
         [Parameter(ParameterSetName='CreateExpandedKeyVaultEncryption', Mandatory, HelpMessage='Gets or sets the SKU name. Required for account creation; optional for update. Note that in older versions, SKU name was called accountType.')]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Storage.Support.SkuName])]
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Support.SkuName]
+        [string]
         # Gets or sets the SKU name. Required for account creation; optional for update. Note that in older versions, SKU name was called accountType.
         ${SkuName},
     
@@ -270,7 +270,10 @@ function New-AzStorageAccount {
     process {
         if ($PSBoundParameters.ContainsKey("AsJob")) {
             $null = $PSBoundParameters.Remove("AsJob")
-            Start-Job -ScriptBlock {param($arg) Az.Storage\New-AzStorageAccount @arg} -InitializationScript {Import-Module "C:\Users\niassis\source\repos\generating\azure-powershell\src\Storage\Az.Storage.psd1"} -ArgumentList $PSBoundParameters
+            Start-Job -ScriptBlock {
+                param($arg, $modulePath) 
+                Import-Module $modulePath
+                Az.Storage\New-AzStorageAccount @arg} -ArgumentList $PSBoundParameters, (Join-Path $PSScriptRoot "..\..\Az.Storage.psd1")
         } else {
             if ($PSBoundParameters.ContainsKey("StorageEncryption")) {
                 $null = $PSBoundParameters.Add("EncryptionKeySource", "Microsoft.Storage")
