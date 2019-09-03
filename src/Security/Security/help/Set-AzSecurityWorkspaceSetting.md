@@ -19,7 +19,7 @@ Set-AzSecurityWorkspaceSetting -Name <String> -Scope <String> -WorkspaceId <Stri
 
 ## DESCRIPTION
 Updates the workspace settings for the subscription.
-The configured workspace will hold the security data that was collected by the security agent that is installed in VMs inside this subscription.
+The configured workspace will hold the security data that was collected by the Azure Log Analytics agent agent that is installed in VMs inside this subscription.
 
 ## EXAMPLES
 
@@ -32,7 +32,7 @@ Id                                                                              
 /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/workspaceSettings/default default /...
 ```
 
-Sets the "myWorkspace" workspace to hold all the security data that was collected by the security agents.
+Sets the "myWorkspace" workspace to hold all the security data that was collected by the Azure Log Analytics agent.
 
 ## PARAMETERS
 

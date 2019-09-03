@@ -54,7 +54,7 @@ Disable notification.
 
 ### Example 2
 ```
-PS C:\> Set-AzRecoveryServicesAsrAlertSetting -CustomEmailAddress "abcxxxx@xxxx.com" -EmailSubscriptionOwner
+PS C:\> Set-AzRecoveryServicesAsrAlertSetting -CustomEmailAddress "abcxxxx@xxxx.com" -EnableEmailSubscriptionOwner
 
 CustomEmailAddress     EmailSubscriptionOwner Locale
 ------------------     ---------------------- ------

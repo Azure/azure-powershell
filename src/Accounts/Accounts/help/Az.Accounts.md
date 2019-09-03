@@ -60,6 +60,9 @@ Get the defaults set by the user in the current context.
 ### [Get-AzEnvironment](Get-AzEnvironment.md)
 Get endpoints and metadata for an instance of Azure services.
 
+### [Get-AzProfile](Get-AzProfile.md)
+Get the service profiles supported by installed modules.
+
 ### [Get-AzSubscription](Get-AzSubscription.md)
 Get subscriptions that the current account can access.
 
@@ -70,7 +73,7 @@ Gets tenants that are authorized for the current user.
 Loads Azure authentication information from a file.
 
 ### [Register-AzModule](Register-AzModule.md)
-Internal-only cmdlet that provides runtime support for AUtoRest generated cmdlets.
+FOR INTERNAL USE ONLY - Provide RUntime Support for AutoRest Generated cmdlets.
 
 ### [Remove-AzContext](Remove-AzContext.md)
 Remove a context from the set of available contexts
@@ -89,6 +92,9 @@ Saves the current authentication information for use in other PowerShell session
 
 ### [Select-AzContext](Select-AzContext.md)
 Select a subscription and account to target in Azure PowerShell cmdlets
+
+### [Select-AzProfile](Select-AzProfile.md)
+For modules that support multiple service profiles - load the cmdlets corresponding with the given service profile.
 
 ### [Send-Feedback](Send-Feedback.md)
 Sends feedback to the Azure PowerShell team via a set of guided prompts.

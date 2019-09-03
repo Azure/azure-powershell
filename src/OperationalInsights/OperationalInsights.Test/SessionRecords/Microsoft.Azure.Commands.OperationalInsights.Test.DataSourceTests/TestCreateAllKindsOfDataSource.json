@@ -1067,6 +1067,144 @@
       "StatusCode": 200
     },
     {
+      "RequestUri": "/subscriptions/a6383be3-f0e8-4968-93d5-10f2625f5bb5/resourcegroups/onesdk9967/providers/Microsoft.OperationalInsights/workspaces/AzTestonesdk5206/dataSources/MyCustomLog1?api-version=2015-11-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTYzODNiZTMtZjBlOC00OTY4LTkzZDUtMTBmMjYyNWY1YmI1L3Jlc291cmNlZ3JvdXBzL29uZXNkazk5NjcvcHJvdmlkZXJzL01pY3Jvc29mdC5PcGVyYXRpb25hbEluc2lnaHRzL3dvcmtzcGFjZXMvQXpUZXN0b25lc2RrNTIwNi9kYXRhU291cmNlcy9NeUN1c3RvbUxvZzE/YXBpLXZlcnNpb249MjAxNS0xMS0wMS1wcmV2aWV3",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"customLogName\": \"Validation_CL1\",\r\n    \"description\": \"test\",\r\n    \"extractions\": [\r\n      {\r\n        \"extractionName\": \"TimeGenerated\",\r\n        \"extractionProperties\": {\r\n          \"dateTimeExtraction\": {}\r\n        },\r\n        \"extractionType\": \"DateTime\"\r\n      }\r\n    ],\r\n    \"inputs\": [\r\n      {\r\n        \"location\": {\r\n          \"fileSystemLocations\": {\r\n            \"windowsFileTypeLogPaths\": [\r\n              \"C:\\\\e2e\\\\Evan\\\\ArubaSECURITY\\\\*.log\"\r\n            ]\r\n          }\r\n        },\r\n        \"recordDelimiter\": {\r\n          \"regexDelimiter\": {\r\n            \"matchIndex\": 0,\r\n            \"pattern\": null\r\n          }\r\n        }\r\n      }\r\n    ]\r\n  },\r\n  \"kind\": \"CustomLog\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "713"
+        ],
+        "x-ms-client-request-id": [
+          "3a712d5e-832f-4dd2-8cfe-b39dc4f3b80b"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2046.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.18.0-preview"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"kind\": \"CustomLog\",\r\n  \"properties\": {\r\n    \"customLogName\": \"Validation_CL1\",\r\n    \"description\": \"test\",\r\n    \"extractions\": [\r\n      {\r\n        \"extractionName\": \"TimeGenerated\",\r\n        \"extractionProperties\": {\r\n          \"dateTimeExtraction\": {}\r\n        },\r\n        \"extractionType\": \"DateTime\"\r\n      }\r\n    ],\r\n    \"inputs\": [\r\n      {\r\n        \"location\": {\r\n          \"fileSystemLocations\": {\r\n            \"linuxFileTypeLogPaths\": null,\r\n            \"windowsFileTypeLogPaths\": [\r\n              \"C:\\\\e2e\\\\Evan\\\\ArubaSECURITY\\\\*.log\"\r\n            ]\r\n          }\r\n        },\r\n        \"recordDelimiter\": {\r\n          \"regexDelimiter\": {\r\n            \"matchIndex\": 0,\r\n            \"numberdGroup\": null,\r\n            \"pattern\": null\r\n          }\r\n        }\r\n      }\r\n    ]\r\n  },\r\n  \"id\": \"/subscriptions/a6383be3-f0e8-4968-93d5-10f2625f5bb5/resourceGroups/onesdk9967/providers/Microsoft.OperationalInsights/workspaces/AzTestonesdk5206/datasources/MyCustomLog1\",\r\n  \"etag\": \"W/\\\"datetime'2017-05-04T00%3A26%3A31.2865595Z'\\\"\",\r\n  \"name\": \"MyCustomLog\",\r\n  \"type\": \"Microsoft.OperationalInsights/workspaces/datasources\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "769"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1193"
+        ],
+        "x-ms-request-id": [
+          "f84325f6-3ea3-4b44-89d8-1fc05971adec"
+        ],
+        "x-ms-correlation-request-id": [
+          "f84325f6-3ea3-4b44-89d8-1fc05971adec"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170504T002713Z:f84325f6-3ea3-4b44-89d8-1fc05971adec"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 04 May 2017 00:27:12 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a6383be3-f0e8-4968-93d5-10f2625f5bb5/resourcegroups/onesdk9967/providers/Microsoft.OperationalInsights/workspaces/AzTestonesdk5206/dataSources/MyCustomLog1?api-version=2015-11-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTYzODNiZTMtZjBlOC00OTY4LTkzZDUtMTBmMjYyNWY1YmI1L3Jlc291cmNlZ3JvdXBzL29uZXNkazk5NjcvcHJvdmlkZXJzL01pY3Jvc29mdC5PcGVyYXRpb25hbEluc2lnaHRzL3dvcmtzcGFjZXMvQXpUZXN0b25lc2RrNTIwNi9kYXRhU291cmNlcy9NeUN1c3RvbUxvZzE/YXBpLXZlcnNpb249MjAxNS0xMS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "02f6042b-0d04-4d64-a7ae-ef13512cabe3"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2046.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.18.0-preview"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"DataSourceNotFound\",\r\n    \"message\": \"DataSource 'MyCustomLog1' could not be found.\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "96"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14823"
+        ],
+        "x-ms-request-id": [
+          "c94b019e-bd8a-4546-b433-ddb5aa7635ef"
+        ],
+        "x-ms-correlation-request-id": [
+          "c94b019e-bd8a-4546-b433-ddb5aa7635ef"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20170504T002631Z:c94b019e-bd8a-4546-b433-ddb5aa7635ef"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 04 May 2017 00:26:30 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 404
+    },
+    {
       "RequestUri": "/subscriptions/a6383be3-f0e8-4968-93d5-10f2625f5bb5/resourcegroups/onesdk9967/providers/Microsoft.OperationalInsights/workspaces/AzTestonesdk5206/dataSources/MyCustomLog2?api-version=2015-11-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTYzODNiZTMtZjBlOC00OTY4LTkzZDUtMTBmMjYyNWY1YmI1L3Jlc291cmNlZ3JvdXBzL29uZXNkazk5NjcvcHJvdmlkZXJzL01pY3Jvc29mdC5PcGVyYXRpb25hbEluc2lnaHRzL3dvcmtzcGFjZXMvQXpUZXN0b25lc2RrNTIwNi9kYXRhU291cmNlcy9NeUN1c3RvbUxvZzI/YXBpLXZlcnNpb249MjAxNS0xMS0wMS1wcmV2aWV3",
       "RequestMethod": "GET",

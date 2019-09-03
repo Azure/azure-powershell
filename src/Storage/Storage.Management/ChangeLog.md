@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update example in reference documentation for `Get-AzStorageAccount` to use correct parameter name
+
+## Version 1.5.0
 * Change 2 parameters "-IndexDocument" and "-ErrorDocument404Path" from required to optional  in cmdlet:
     -  Enable-AzStorageStaticWebsite
 * Update help of Get-AzStorageBlobContent by add an example

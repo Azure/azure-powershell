@@ -29,13 +29,14 @@ New-AzPrivateLinkServiceIpConfig -Name $IpConfigurationName -PrivateIpAddress "1
 ```
 
 This example create a private link service ip configuration in memory.
+
 ## PARAMETERS
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -50,7 +51,7 @@ Accept wildcard characters: False
 The name of the IpConfiguration
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -65,7 +66,7 @@ Accept wildcard characters: False
 The private ip address of the ipConfiguration if static allocation is specified.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -80,7 +81,7 @@ Accept wildcard characters: False
 The ip version of the ip configuration
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: IPv4, IPv6
@@ -96,7 +97,7 @@ Accept wildcard characters: False
 PublicIpAddress
 
 ```yaml
-Type: PSPublicIpAddress
+Type: Microsoft.Azure.Commands.Network.Models.PSPublicIpAddress
 Parameter Sets: (All)
 Aliases:
 
@@ -111,7 +112,7 @@ Accept wildcard characters: False
 Subnet
 
 ```yaml
-Type: PSSubnet
+Type: Microsoft.Azure.Commands.Network.Models.PSSubnet
 Parameter Sets: (All)
 Aliases:
 

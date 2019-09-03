@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Snapshot
                 var NameParts = VolumeObject.Name.Split('/');
                 AccountName = NameParts[0];
                 PoolName = NameParts[1];
-                VolumeName = NameParts[1];
+                VolumeName = NameParts[2];
             }
 
             if (Name != null)

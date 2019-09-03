@@ -18,6 +18,8 @@ using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
 using Microsoft.Azure.Management.NetApp.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using System.Collections;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Pool
 {
@@ -38,7 +40,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ParameterSetName = FieldsParameterSet,
             HelpMessage = "The location of the resource")]
         [ValidateNotNullOrEmpty]
@@ -72,16 +74,31 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
         public string Name { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The size of the ANF pool")]
         [ValidateNotNullOrEmpty]
         public long? PoolSize { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The service level of the ANF pool")]
         [ValidateNotNullOrEmpty]
         public string ServiceLevel { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "A hashtable which represents resource tags")]
+        [ValidateNotNullOrEmpty]
+        [Alias("Tags")]
+        public Hashtable Tag { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource id of the ANF pool",
+            ParameterSetName = ResourceIdParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
 
         [Parameter(
             ParameterSetName = ParentObjectParameterSet,
@@ -101,7 +118,15 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
 
         public override void ExecuteCmdlet()
         {
-            if (ParameterSetName == ObjectParameterSet)
+            if (ParameterSetName == ResourceIdParameterSet)
+            {
+                var resourceIdentifier = new ResourceIdentifier(ResourceId);
+                ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                var parentResource = resourceIdentifier.ParentResource;
+                AccountName = parentResource.Substring(parentResource.LastIndexOf('/') + 1);
+                Name = resourceIdentifier.ResourceName;
+            }
+            else if (ParameterSetName == ObjectParameterSet)
             {
                 ResourceGroupName = InputObject.ResourceGroupName;
                 Location = InputObject.Location;
@@ -116,16 +141,17 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
                 AccountName = AccountObject.Name;
             }
 
-            var capacityPoolBody = new CapacityPool()
+            var capacityPoolBody = new CapacityPoolPatch()
             {
                 ServiceLevel = ServiceLevel,
                 Size = PoolSize,
-                Location = Location
+                Location = Location,
+                Tags = Tag
             };
 
-            if (ShouldProcess(Name, "Update the pool"))
+            if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.UpdateResourceMessage, ResourceGroupName)))
             {
-                var anfPool = AzureNetAppFilesManagementClient.Pools.CreateOrUpdate(capacityPoolBody, ResourceGroupName, AccountName, Name);
+                var anfPool = AzureNetAppFilesManagementClient.Pools.Update(capacityPoolBody, ResourceGroupName, AccountName, Name);
                 WriteObject(anfPool);
             }
         }

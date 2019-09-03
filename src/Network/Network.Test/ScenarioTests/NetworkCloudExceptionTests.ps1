@@ -30,7 +30,7 @@ function Test-NotFound
         New-AzResourceGroup -Name $rgName -Location $location
 
         # Get PublicIpAddress that doesn't exist
-        Assert-ThrowsLike { $ip = Get-AzPublicIpAddress -ResourceGroupName $rgName -Name $resourceName } "*was not found.*StatusCode:*404*ReasonPhrase:*Not Found*OperationID :*";
+        Assert-ThrowsLike { $ip = Get-AzPublicIpAddress -ResourceGroupName $rgName -Name $resourceName } "*was not found.*";
     }
     finally
     {
@@ -57,7 +57,7 @@ function Test-InvalidName
         # Create the resource group
         New-AzResourceGroup -Name $rgName -Location $location
 
-        Assert-ThrowsLike { $ip = New-AzPublicIpAddress -ResourceGroupName $rgName -Name $resourceInvalidName -Location $location -AllocationMethod Dynamic } "*Resource name ! is invalid.*StatusCode: 400*ReasonPhrase: Bad Request*OperationID :*";
+        Assert-ThrowsLike { $ip = New-AzPublicIpAddress -ResourceGroupName $rgName -Name $resourceInvalidName -Location $location -AllocationMethod Dynamic } "*Resource name ! is invalid.*";
     }
     finally
     {
@@ -89,7 +89,7 @@ function Test-DuplicateResource
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $resourceName -AddressPrefix $subnetAddressPrefix
         $vnet = New-AzVirtualNetwork -ResourceGroupName $rgName -Name $resourceName -Location $location -AddressPrefix $vnetAddressPrefix -Subnet $subnet
         $vnet.Subnets.Add($subnet);
-        Assert-ThrowsLike { Set-AzVirtualNetwork -VirtualNetwork $vnet } "*Cannot parse the request.*StatusCode: 400*ReasonPhrase: Bad Request*OperationID*";
+        Assert-ThrowsLike { Set-AzVirtualNetwork -VirtualNetwork $vnet } "*Cannot parse the request.*";
     }
     finally
     {
@@ -121,7 +121,7 @@ function Test-IntersectAddressSpace
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $resourceName -AddressPrefix $subnetAddressPrefix
         $vnet = New-AzVirtualNetwork -ResourceGroupName $rgName -Name $resourceName -Location $location -AddressPrefix $vnetAddressPrefix -Subnet $subnet
         Add-AzVirtualNetworkSubnetConfig -Name "${resourceName}2" -AddressPrefix $subnetAddressPrefix -VirtualNetwork $vnet
-        Assert-ThrowsLike { Set-AzVirtualNetwork -VirtualNetwork $vnet } "*Subnet*is not valid in virtual network*StatusCode: 400*ReasonPhrase: Bad Request*OperationID*";
+        Assert-ThrowsLike { Set-AzVirtualNetwork -VirtualNetwork $vnet } "*Subnet*is not valid in virtual network*";
     }
     finally
     {
