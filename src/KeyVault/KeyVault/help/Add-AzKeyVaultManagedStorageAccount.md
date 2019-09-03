@@ -158,9 +158,9 @@ Accept wildcard characters: False
 ```
 
 ### -DisableAutoRegenerateKey
-Auto regenerate key. If true, then the managed storage account's inactive key gets auto regenerated
-and becomes the new active key after the regeneration period. If false, then the keys of managed
-storage account are not auto regenerated.
+Auto regenerate key. If true, then the keys of the managed storage account are not auto regenerated. 
+If false, then the managed storage account's inactive key gets auto regenerated and becomes the new 
+active key after the regeneration period.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
