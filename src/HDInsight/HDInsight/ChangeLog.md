@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.0.0-preview
 * Changed Microsoft.Azure.Management.HDInsight from 2.1.0 to 5.1.0
 * Removed five cmdlets:
     - Get-AzHDInsightOMS
