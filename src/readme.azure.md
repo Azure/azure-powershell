@@ -46,4 +46,9 @@ directive:
   - where:
       subject: Operation
     hide: true
+  - where:
+      parameter-name: SubscriptionId
+    set:
+      default:
+        script: '(Get-AzContext).Subscription.Id'
 ```

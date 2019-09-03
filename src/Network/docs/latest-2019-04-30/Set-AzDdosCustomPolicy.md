@@ -14,15 +14,15 @@ Creates or updates a DDoS custom policy.
 
 ### UpdateExpanded (Default)
 ```
-Set-AzDdosCustomPolicy -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Set-AzDdosCustomPolicy -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Format <IProtocolCustomSettingsFormat[]>] [-Id <String>] [-Location <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
 ```
-Set-AzDdosCustomPolicy -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -DdosCustomPolicy <IDdosCustomPolicy> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Set-AzDdosCustomPolicy -Name <String> -ResourceGroupName <String> -DdosCustomPolicy <IDdosCustomPolicy>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -61,7 +61,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -175,7 +175,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -206,9 +206,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -286,11 +286,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[Format <IProtocolCustomSettingsFormat[]>]`: The protocol-specific DDoS policy customization parameters.
-    - `[Protocol <DdosCustomPolicyProtocol?>]`: The protocol for which the DDoS protection policy is being customized.
-    - `[SourceRateOverride <String>]`: The customized DDoS protection source rate.
-    - `[TriggerRateOverride <String>]`: The customized DDoS protection trigger rate.
-    - `[TriggerSensitivityOverride <DdosCustomPolicyTriggerSensitivityOverride?>]`: The customized DDoS protection trigger rate sensitivity degrees. High: Trigger rate set with most sensitivity w.r.t. normal traffic. Default: Trigger rate set with moderate sensitivity w.r.t. normal traffic. Low: Trigger rate set with less sensitivity w.r.t. normal traffic. Relaxed: Trigger rate set with least sensitivity w.r.t. normal traffic.
 
 #### FORMAT <IProtocolCustomSettingsFormat[]>: The protocol-specific DDoS policy customization parameters.
   - `[Protocol <DdosCustomPolicyProtocol?>]`: The protocol for which the DDoS protection policy is being customized.

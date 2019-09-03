@@ -34,6 +34,7 @@ param(
     [Parameter(Mandatory, HelpMessage='Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.')]
     [Microsoft.Azure.PowerShell.Cmdlets.Dns.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.Info(SerializedName='subscriptionId', Required, PossibleTypes=([System.String]), Description='Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Dns.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.
     ${SubscriptionId},

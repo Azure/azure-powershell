@@ -227,6 +227,9 @@ Gets the specified public IP address in a specified resource group.
 ### [Get-AzPublicIPPrefix](Get-AzPublicIPPrefix.md)
 Gets the specified public IP prefix in a specified resource group.
 
+### [Get-AzResourceNavigationLink](Get-AzResourceNavigationLink.md)
+Gets a list of resource navigation links for a subnet.
+
 ### [Get-AzRouteFilter](Get-AzRouteFilter.md)
 Gets the specified route filter.
 
@@ -238,6 +241,9 @@ Gets the specified route table.
 
 ### [Get-AzRouteTableRoute](Get-AzRouteTableRoute.md)
 Gets the specified route from a route table.
+
+### [Get-AzServiceAssociationLink](Get-AzServiceAssociationLink.md)
+Gets a list of service association links for a subnet.
 
 ### [Get-AzServiceEndpointPolicy](Get-AzServiceEndpointPolicy.md)
 Gets the specified service Endpoint Policies in a specified resource group.
@@ -808,9 +814,6 @@ Stops a specified packet capture session.
 
 ### [Test-AzDnsNameAvailability](Test-AzDnsNameAvailability.md)
 Checks whether a domain name in the cloudapp.azure.com zone is available for use.
-
-### [Test-AzDummy](Test-AzDummy.md)
-Dummy alias cmdlet
 
 ### [Test-AzNetworkWatcherConnectivity](Test-AzNetworkWatcherConnectivity.md)
 Verifies the possibility of establishing a direct TCP connection from a virtual machine to a given endpoint including another VM or an arbitrary remote server.

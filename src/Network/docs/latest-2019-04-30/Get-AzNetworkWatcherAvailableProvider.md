@@ -15,14 +15,14 @@ Lists all available internet service providers for a specified Azure region.
 ### ListExpanded (Default)
 ```
 Get-AzNetworkWatcherAvailableProvider -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-City <String>] [-Country <String>] [-Location <String[]>] [-State <String>]
+ [-SubscriptionId <String[]>] [-City <String>] [-Country <String>] [-Location <String[]>] [-State <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### List
 ```
 Get-AzNetworkWatcherAvailableProvider -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> -AvailableProvider <IAvailableProvidersListParameters>
+ -AvailableProvider <IAvailableProvidersListParameters> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -61,7 +61,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -74,7 +74,7 @@ To construct, see NOTES section for AVAILABLEPROVIDER properties and create a ha
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IAvailableProvidersListParameters
 Parameter Sets: List
-Aliases: NetworkWatcher
+Aliases:
 
 Required: True
 Position: Named
@@ -174,7 +174,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -186,7 +186,7 @@ The name of the network watcher resource group.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: NetworkWatcherLocation
+Aliases:
 
 Required: True
 Position: Named
@@ -221,9 +221,9 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

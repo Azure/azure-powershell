@@ -14,17 +14,17 @@ Creates or updates a local network gateway in the specified resource group.
 
 ### UpdateExpanded1 (Default)
 ```
-Set-AzLocalNetworkGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-AddressPrefix <String[]>] [-BgpAsn <Int64>] [-BgpPeerWeight <Int32>] [-BgpPeeringAddress <String>]
+Set-AzLocalNetworkGateway -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-AddressPrefix <String[]>] [-BgpAsn <Int64>] [-BgpPeeringAddress <String>] [-BgpPeerWeight <Int32>]
  [-Etag <String>] [-GatewayIPAddress <String>] [-Id <String>] [-Location <String>] [-ResourceGuid <String>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update1
 ```
-Set-AzLocalNetworkGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -LocalNetworkGateway <ILocalNetworkGateway> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Set-AzLocalNetworkGateway -Name <String> -ResourceGroupName <String>
+ -LocalNetworkGateway <ILocalNetworkGateway> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -78,7 +78,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -94,7 +94,7 @@ Aliases: Asn
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -126,7 +126,7 @@ Aliases: PeerWeight, BgpPeeringWeight
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -255,7 +255,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -302,9 +302,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -382,13 +382,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[AddressPrefix <String[]>]`: A list of address blocks reserved for this virtual network in CIDR notation.
-  - `[BgpAsn <Int64?>]`: The BGP speaker's ASN.
-  - `[BgpPeerWeight <Int32?>]`: The weight added to routes learned from this BGP speaker.
-  - `[BgpPeeringAddress <String>]`: The BGP peering address and BGP identifier of this BGP speaker.
-  - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-  - `[GatewayIPAddress <String>]`: IP address of local network gateway.
-  - `[ResourceGuid <String>]`: The resource GUID property of the LocalNetworkGateway resource.
 
 ## RELATED LINKS
 

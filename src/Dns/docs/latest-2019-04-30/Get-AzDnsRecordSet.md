@@ -14,31 +14,32 @@ Gets a record set.
 
 ### List3 (Default)
 ```
-Get-AzDnsRecordSet -ResourceGroupName <String> -SubscriptionId <String[]> -ZoneName <String>
+Get-AzDnsRecordSet -ResourceGroupName <String> -ZoneName <String> [-SubscriptionId <String[]>]
  [-NameSuffix <String>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get1
 ```
-Get-AzDnsRecordSet -Name <String> -RecordType <RecordType> -ResourceGroupName <String>
- -SubscriptionId <String[]> -ZoneName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List2
-```
-Get-AzDnsRecordSet -RecordType <RecordType> -ResourceGroupName <String> -SubscriptionId <String[]>
- -ZoneName <String> [-NameSuffix <String>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List4
-```
-Get-AzDnsRecordSet -ResourceGroupName <String> -SubscriptionId <String[]> -ZoneName <String>
- [-NameSuffix <String>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDnsRecordSet -Name <String> -RecordType <RecordType> -ResourceGroupName <String> -ZoneName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity1
 ```
 Get-AzDnsRecordSet -InputObject <IDnsIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List2
+```
+Get-AzDnsRecordSet -RecordType <RecordType> -ResourceGroupName <String> -ZoneName <String>
+ [-SubscriptionId <String[]>] [-NameSuffix <String>] [-Top <Int32>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### List4
+```
+Get-AzDnsRecordSet -ResourceGroupName <String> -ZoneName <String> [-SubscriptionId <String[]>]
+ [-NameSuffix <String>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,6 +85,7 @@ Dynamic: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentity
@@ -120,7 +122,7 @@ If this parameter is specified, Enumeration will return only records that end wi
 
 ```yaml
 Type: System.String
-Parameter Sets: List3, List2, List4
+Parameter Sets: List2, List3, List4
 Aliases:
 
 Required: False
@@ -152,7 +154,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: List3, Get1, List2, List4
+Parameter Sets: Get1, List2, List3, List4
 Aliases:
 
 Required: True
@@ -168,12 +170,12 @@ Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azu
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List3, Get1, List2, List4
+Parameter Sets: Get1, List2, List3, List4
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -185,12 +187,12 @@ If not specified, returns up to 100 record sets.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: List3, List2, List4
+Parameter Sets: List2, List3, List4
 Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -201,7 +203,7 @@ The name of the DNS zone (without a terminating dot).
 
 ```yaml
 Type: System.String
-Parameter Sets: List3, Get1, List2, List4
+Parameter Sets: Get1, List2, List3, List4
 Aliases:
 
 Required: True
@@ -226,6 +228,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### INPUTOBJECT <IDnsIdentity>: Identity Parameter
+  - `[Id <String>]`: Resource identity path
+  - `[RecordType <RecordType?>]`: The type of DNS record in this record set.
+  - `[RelativeRecordSetName <String>]`: The name of the record set, relative to the name of the zone.
+  - `[ResourceGroupName <String>]`: The name of the resource group.
+  - `[SubscriptionId <String>]`: Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.
+  - `[ZoneName <String>]`: The name of the DNS zone (without a terminating dot).
 
 ## RELATED LINKS
 

@@ -38,6 +38,7 @@ param(
     [Parameter(ParameterSetName='DemandExpanded', Mandatory, HelpMessage='The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.')]
     [Microsoft.Azure.PowerShell.Cmdlets.Network.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.Info(SerializedName='subscriptionId', Required, PossibleTypes=([System.String]), Description='The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Network.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
     ${SubscriptionId},

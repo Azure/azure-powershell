@@ -15,14 +15,15 @@ Creates or updates a peering in the specified express route circuits.
 ### UpdateExpanded (Default)
 ```
 Set-AzExpressRouteCircuitPeering -CircuitName <String> -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-AdvertisedCommunity <String[]>] [-AdvertisedPublicPrefix <String[]>]
+ [-SubscriptionId <String>] [-AdvertisedCommunity <String[]>] [-AdvertisedPublicPrefix <String[]>]
  [-AdvertisedPublicPrefixesState <ExpressRouteCircuitPeeringAdvertisedPublicPrefixState>] [-AzureAsn <Int32>]
  [-Connection <IExpressRouteCircuitConnection_Reference[]>] [-CustomerAsn <Int32>]
- [-GatewayManagerEtag <String>] [-IPv6AdvertisedCommunity <String[]>] [-IPv6AdvertisedPublicPrefix <String[]>]
+ [-GatewayManagerEtag <String>] [-Id <String>] [-IPv6AdvertisedCommunity <String[]>]
+ [-IPv6AdvertisedPublicPrefix <String[]>]
  [-IPv6AdvertisedPublicPrefixesState <ExpressRouteCircuitPeeringAdvertisedPublicPrefixState>]
  [-IPv6CustomerAsn <Int32>] [-IPv6LegacyMode <Int32>] [-IPv6PrimaryPeerAddressPrefix <String>]
  [-IPv6RouteFilter <IRouteFilter_Reference>] [-IPv6RoutingRegistryName <String>]
- [-IPv6SecondaryPeerAddressPrefix <String>] [-IPv6State <ExpressRouteCircuitPeeringState>] [-Id <String>]
+ [-IPv6SecondaryPeerAddressPrefix <String>] [-IPv6State <ExpressRouteCircuitPeeringState>]
  [-LastModifiedBy <String>] [-LegacyMode <Int32>] [-PeerAsn <Int64>] [-PeeringType <ExpressRoutePeeringType>]
  [-PrimaryAzurePort <String>] [-PrimaryBytesIn <Int64>] [-PrimaryBytesOut <Int64>]
  [-PrimaryPeerAddressPrefix <String>] [-ProvisioningState <String>] [-ResourceName <String>]
@@ -35,7 +36,7 @@ Set-AzExpressRouteCircuitPeering -CircuitName <String> -Name <String> -ResourceG
 ### Update
 ```
 Set-AzExpressRouteCircuitPeering -CircuitName <String> -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String> -Peering <IExpressRouteCircuitPeering> [-DefaultProfile <PSObject>] [-AsJob]
+ -Peering <IExpressRouteCircuitPeering> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -124,7 +125,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -140,7 +141,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -164,7 +165,6 @@ Dynamic: False
 
 ### -Connection
 The list of circuit connections associated with Azure Private Peering for this circuit.
-To construct, see NOTES section for CONNECTION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRouteCircuitConnection_Reference[]
@@ -189,7 +189,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -303,7 +303,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -319,7 +319,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -343,7 +343,6 @@ Dynamic: False
 
 ### -IPv6RouteFilter
 The reference of the RouteFilter resource.
-To construct, see NOTES section for IPV6ROUTEFILTER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IRouteFilter_Reference
@@ -433,7 +432,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -465,7 +464,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -481,7 +480,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -546,7 +545,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -562,7 +561,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -636,7 +635,6 @@ Dynamic: False
 
 ### -RouteFilter
 The reference of the RouteFilter resource.
-To construct, see NOTES section for ROUTEFILTER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IRouteFilter_Reference
@@ -693,7 +691,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -709,7 +707,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -772,9 +770,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -790,7 +788,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -847,184 +845,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### CONNECTION <IExpressRouteCircuitConnection_Reference[]>: The list of circuit connections associated with Azure Private Peering for this circuit.
-  - `[AddressPrefix <String>]`: /29 IP address space to carve out Customer addresses for tunnels.
-  - `[AuthorizationKey <String>]`: The authorization key.
-  - `[ExpressRouteCircuitPeeringId <String>]`: Resource ID.
-  - `[Name <String>]`: Gets name of the resource that is unique within a resource group. This name can be used to access the resource.
-  - `[PeerExpressRouteCircuitPeeringId <String>]`: Resource ID.
-
-#### IPV6ROUTEFILTER <IRouteFilter_Reference>: The reference of the RouteFilter resource.
-  - `[Peering <IExpressRouteCircuitPeering[]>]`: A collection of references to express route circuit peerings.
-    - `[Id <String>]`: Resource ID.
-    - `[AdvertisedCommunity <String[]>]`: The communities of bgp peering. Specified for microsoft peering
-    - `[AdvertisedPublicPrefix <String[]>]`: The reference of AdvertisedPublicPrefixes.
-    - `[AdvertisedPublicPrefixesState <ExpressRouteCircuitPeeringAdvertisedPublicPrefixState?>]`: AdvertisedPublicPrefixState of the Peering resource. Possible values are 'NotConfigured', 'Configuring', 'Configured', and 'ValidationNeeded'.
-    - `[AzureAsn <Int32?>]`: The Azure ASN.
-    - `[Connection <IExpressRouteCircuitConnection[]>]`: The list of circuit connections associated with Azure Private Peering for this circuit.
-      - `[Id <String>]`: Resource ID.
-      - `[AddressPrefix <String>]`: /29 IP address space to carve out Customer addresses for tunnels.
-      - `[AuthorizationKey <String>]`: The authorization key.
-      - `[ExpressRouteCircuitPeeringId <String>]`: Resource ID.
-      - `[Name <String>]`: Gets name of the resource that is unique within a resource group. This name can be used to access the resource.
-      - `[PeerExpressRouteCircuitPeeringId <String>]`: Resource ID.
-    - `[CustomerAsn <Int32?>]`: The CustomerASN of the peering.
-    - `[GatewayManagerEtag <String>]`: The GatewayManager Etag.
-    - `[Ipv6PeeringConfigMicrosoftPeeringConfigAdvertisedCommunity <String[]>]`: The communities of bgp peering. Specified for microsoft peering
-    - `[Ipv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefix <String[]>]`: The reference of AdvertisedPublicPrefixes.
-    - `[Ipv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefixesState <ExpressRouteCircuitPeeringAdvertisedPublicPrefixState?>]`: AdvertisedPublicPrefixState of the Peering resource. Possible values are 'NotConfigured', 'Configuring', 'Configured', and 'ValidationNeeded'.
-    - `[Ipv6PeeringConfigMicrosoftPeeringConfigCustomerAsn <Int32?>]`: The CustomerASN of the peering.
-    - `[Ipv6PeeringConfigMicrosoftPeeringConfigLegacyMode <Int32?>]`: The legacy mode of the peering.
-    - `[Ipv6PeeringConfigMicrosoftPeeringConfigRoutingRegistryName <String>]`: The RoutingRegistryName of the configuration.
-    - `[Ipv6PeeringConfigPrimaryPeerAddressPrefix <String>]`: The primary address prefix.
-    - `[Ipv6PeeringConfigRouteFilter <IRouteFilter>]`: The reference of the RouteFilter resource.
-      - `[Id <String>]`: Resource ID.
-      - `[Location <String>]`: Resource location.
-      - `[Tag <IResourceTags>]`: Resource tags.
-        - `[(Any) <String>]`: This indicates any property can be added to this object.
-      - `[Peering <IExpressRouteCircuitPeering[]>]`: A collection of references to express route circuit peerings.
-      - `[Rule <IRouteFilterRule[]>]`: Collection of RouteFilterRules contained within a route filter.
-        - `Access <Access>`: The access type of the rule.
-        - `Community <String[]>`: The collection for bgp community values to filter on. e.g. ['12076:5010','12076:5020']
-        - `[Id <String>]`: Resource ID.
-        - `[Location <String>]`: Resource location.
-        - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-    - `[Ipv6PeeringConfigSecondaryPeerAddressPrefix <String>]`: The secondary address prefix.
-    - `[Ipv6PeeringConfigState <ExpressRouteCircuitPeeringState?>]`: The state of peering. Possible values are: 'Disabled' and 'Enabled'
-    - `[LastModifiedBy <String>]`: Gets whether the provider or the customer last modified the peering.
-    - `[LegacyMode <Int32?>]`: The legacy mode of the peering.
-    - `[Name <String>]`: Gets name of the resource that is unique within a resource group. This name can be used to access the resource.
-    - `[PeerAsn <Int64?>]`: The peer ASN.
-    - `[PeeringType <ExpressRoutePeeringType?>]`: The peering type.
-    - `[PrimaryAzurePort <String>]`: The primary port.
-    - `[PrimaryPeerAddressPrefix <String>]`: The primary address prefix.
-    - `[ProvisioningState <String>]`: Gets the provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-    - `[RouteFilter <IRouteFilter>]`: The reference of the RouteFilter resource.
-    - `[RoutingRegistryName <String>]`: The RoutingRegistryName of the configuration.
-    - `[SecondaryAzurePort <String>]`: The secondary port.
-    - `[SecondaryPeerAddressPrefix <String>]`: The secondary address prefix.
-    - `[SharedKey <String>]`: The shared key.
-    - `[StatPrimarybytesIn <Int64?>]`: Gets BytesIn of the peering.
-    - `[StatPrimarybytesOut <Int64?>]`: Gets BytesOut of the peering.
-    - `[StatSecondarybytesIn <Int64?>]`: Gets BytesIn of the peering.
-    - `[StatSecondarybytesOut <Int64?>]`: Gets BytesOut of the peering.
-    - `[State <ExpressRoutePeeringState?>]`: The peering state.
-    - `[VlanId <Int32?>]`: The VLAN ID.
-  - `[Rule <IRouteFilterRule[]>]`: Collection of RouteFilterRules contained within a route filter.
-
 #### PEERING <IExpressRouteCircuitPeering>: Peering in an ExpressRouteCircuit resource.
   - `[Id <String>]`: Resource ID.
-  - `[AdvertisedCommunity <String[]>]`: The communities of bgp peering. Specified for microsoft peering
-  - `[AdvertisedPublicPrefix <String[]>]`: The reference of AdvertisedPublicPrefixes.
-  - `[AdvertisedPublicPrefixesState <ExpressRouteCircuitPeeringAdvertisedPublicPrefixState?>]`: AdvertisedPublicPrefixState of the Peering resource. Possible values are 'NotConfigured', 'Configuring', 'Configured', and 'ValidationNeeded'.
-  - `[AzureAsn <Int32?>]`: The Azure ASN.
-  - `[Connection <IExpressRouteCircuitConnection[]>]`: The list of circuit connections associated with Azure Private Peering for this circuit.
-    - `[Id <String>]`: Resource ID.
-    - `[AddressPrefix <String>]`: /29 IP address space to carve out Customer addresses for tunnels.
-    - `[AuthorizationKey <String>]`: The authorization key.
-    - `[ExpressRouteCircuitPeeringId <String>]`: Resource ID.
-    - `[Name <String>]`: Gets name of the resource that is unique within a resource group. This name can be used to access the resource.
-    - `[PeerExpressRouteCircuitPeeringId <String>]`: Resource ID.
-  - `[CustomerAsn <Int32?>]`: The CustomerASN of the peering.
-  - `[GatewayManagerEtag <String>]`: The GatewayManager Etag.
-  - `[Ipv6PeeringConfigMicrosoftPeeringConfigAdvertisedCommunity <String[]>]`: The communities of bgp peering. Specified for microsoft peering
-  - `[Ipv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefix <String[]>]`: The reference of AdvertisedPublicPrefixes.
-  - `[Ipv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefixesState <ExpressRouteCircuitPeeringAdvertisedPublicPrefixState?>]`: AdvertisedPublicPrefixState of the Peering resource. Possible values are 'NotConfigured', 'Configuring', 'Configured', and 'ValidationNeeded'.
-  - `[Ipv6PeeringConfigMicrosoftPeeringConfigCustomerAsn <Int32?>]`: The CustomerASN of the peering.
-  - `[Ipv6PeeringConfigMicrosoftPeeringConfigLegacyMode <Int32?>]`: The legacy mode of the peering.
-  - `[Ipv6PeeringConfigMicrosoftPeeringConfigRoutingRegistryName <String>]`: The RoutingRegistryName of the configuration.
-  - `[Ipv6PeeringConfigPrimaryPeerAddressPrefix <String>]`: The primary address prefix.
-  - `[Ipv6PeeringConfigRouteFilter <IRouteFilter>]`: The reference of the RouteFilter resource.
-    - `[Id <String>]`: Resource ID.
-    - `[Location <String>]`: Resource location.
-    - `[Tag <IResourceTags>]`: Resource tags.
-      - `[(Any) <String>]`: This indicates any property can be added to this object.
-    - `[Peering <IExpressRouteCircuitPeering[]>]`: A collection of references to express route circuit peerings.
-    - `[Rule <IRouteFilterRule[]>]`: Collection of RouteFilterRules contained within a route filter.
-      - `Access <Access>`: The access type of the rule.
-      - `Community <String[]>`: The collection for bgp community values to filter on. e.g. ['12076:5010','12076:5020']
-      - `[Id <String>]`: Resource ID.
-      - `[Location <String>]`: Resource location.
-      - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  - `[Ipv6PeeringConfigSecondaryPeerAddressPrefix <String>]`: The secondary address prefix.
-  - `[Ipv6PeeringConfigState <ExpressRouteCircuitPeeringState?>]`: The state of peering. Possible values are: 'Disabled' and 'Enabled'
-  - `[LastModifiedBy <String>]`: Gets whether the provider or the customer last modified the peering.
-  - `[LegacyMode <Int32?>]`: The legacy mode of the peering.
-  - `[Name <String>]`: Gets name of the resource that is unique within a resource group. This name can be used to access the resource.
-  - `[PeerAsn <Int64?>]`: The peer ASN.
-  - `[PeeringType <ExpressRoutePeeringType?>]`: The peering type.
-  - `[PrimaryAzurePort <String>]`: The primary port.
-  - `[PrimaryPeerAddressPrefix <String>]`: The primary address prefix.
-  - `[ProvisioningState <String>]`: Gets the provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-  - `[RouteFilter <IRouteFilter>]`: The reference of the RouteFilter resource.
-  - `[RoutingRegistryName <String>]`: The RoutingRegistryName of the configuration.
-  - `[SecondaryAzurePort <String>]`: The secondary port.
-  - `[SecondaryPeerAddressPrefix <String>]`: The secondary address prefix.
-  - `[SharedKey <String>]`: The shared key.
-  - `[StatPrimarybytesIn <Int64?>]`: Gets BytesIn of the peering.
-  - `[StatPrimarybytesOut <Int64?>]`: Gets BytesOut of the peering.
-  - `[StatSecondarybytesIn <Int64?>]`: Gets BytesIn of the peering.
-  - `[StatSecondarybytesOut <Int64?>]`: Gets BytesOut of the peering.
-  - `[State <ExpressRoutePeeringState?>]`: The peering state.
-  - `[VlanId <Int32?>]`: The VLAN ID.
-
-#### ROUTEFILTER <IRouteFilter_Reference>: The reference of the RouteFilter resource.
-  - `[Peering <IExpressRouteCircuitPeering[]>]`: A collection of references to express route circuit peerings.
-    - `[Id <String>]`: Resource ID.
-    - `[AdvertisedCommunity <String[]>]`: The communities of bgp peering. Specified for microsoft peering
-    - `[AdvertisedPublicPrefix <String[]>]`: The reference of AdvertisedPublicPrefixes.
-    - `[AdvertisedPublicPrefixesState <ExpressRouteCircuitPeeringAdvertisedPublicPrefixState?>]`: AdvertisedPublicPrefixState of the Peering resource. Possible values are 'NotConfigured', 'Configuring', 'Configured', and 'ValidationNeeded'.
-    - `[AzureAsn <Int32?>]`: The Azure ASN.
-    - `[Connection <IExpressRouteCircuitConnection[]>]`: The list of circuit connections associated with Azure Private Peering for this circuit.
-      - `[Id <String>]`: Resource ID.
-      - `[AddressPrefix <String>]`: /29 IP address space to carve out Customer addresses for tunnels.
-      - `[AuthorizationKey <String>]`: The authorization key.
-      - `[ExpressRouteCircuitPeeringId <String>]`: Resource ID.
-      - `[Name <String>]`: Gets name of the resource that is unique within a resource group. This name can be used to access the resource.
-      - `[PeerExpressRouteCircuitPeeringId <String>]`: Resource ID.
-    - `[CustomerAsn <Int32?>]`: The CustomerASN of the peering.
-    - `[GatewayManagerEtag <String>]`: The GatewayManager Etag.
-    - `[Ipv6PeeringConfigMicrosoftPeeringConfigAdvertisedCommunity <String[]>]`: The communities of bgp peering. Specified for microsoft peering
-    - `[Ipv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefix <String[]>]`: The reference of AdvertisedPublicPrefixes.
-    - `[Ipv6PeeringConfigMicrosoftPeeringConfigAdvertisedPublicPrefixesState <ExpressRouteCircuitPeeringAdvertisedPublicPrefixState?>]`: AdvertisedPublicPrefixState of the Peering resource. Possible values are 'NotConfigured', 'Configuring', 'Configured', and 'ValidationNeeded'.
-    - `[Ipv6PeeringConfigMicrosoftPeeringConfigCustomerAsn <Int32?>]`: The CustomerASN of the peering.
-    - `[Ipv6PeeringConfigMicrosoftPeeringConfigLegacyMode <Int32?>]`: The legacy mode of the peering.
-    - `[Ipv6PeeringConfigMicrosoftPeeringConfigRoutingRegistryName <String>]`: The RoutingRegistryName of the configuration.
-    - `[Ipv6PeeringConfigPrimaryPeerAddressPrefix <String>]`: The primary address prefix.
-    - `[Ipv6PeeringConfigRouteFilter <IRouteFilter>]`: The reference of the RouteFilter resource.
-      - `[Id <String>]`: Resource ID.
-      - `[Location <String>]`: Resource location.
-      - `[Tag <IResourceTags>]`: Resource tags.
-        - `[(Any) <String>]`: This indicates any property can be added to this object.
-      - `[Peering <IExpressRouteCircuitPeering[]>]`: A collection of references to express route circuit peerings.
-      - `[Rule <IRouteFilterRule[]>]`: Collection of RouteFilterRules contained within a route filter.
-        - `Access <Access>`: The access type of the rule.
-        - `Community <String[]>`: The collection for bgp community values to filter on. e.g. ['12076:5010','12076:5020']
-        - `[Id <String>]`: Resource ID.
-        - `[Location <String>]`: Resource location.
-        - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-    - `[Ipv6PeeringConfigSecondaryPeerAddressPrefix <String>]`: The secondary address prefix.
-    - `[Ipv6PeeringConfigState <ExpressRouteCircuitPeeringState?>]`: The state of peering. Possible values are: 'Disabled' and 'Enabled'
-    - `[LastModifiedBy <String>]`: Gets whether the provider or the customer last modified the peering.
-    - `[LegacyMode <Int32?>]`: The legacy mode of the peering.
-    - `[Name <String>]`: Gets name of the resource that is unique within a resource group. This name can be used to access the resource.
-    - `[PeerAsn <Int64?>]`: The peer ASN.
-    - `[PeeringType <ExpressRoutePeeringType?>]`: The peering type.
-    - `[PrimaryAzurePort <String>]`: The primary port.
-    - `[PrimaryPeerAddressPrefix <String>]`: The primary address prefix.
-    - `[ProvisioningState <String>]`: Gets the provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-    - `[RouteFilter <IRouteFilter>]`: The reference of the RouteFilter resource.
-    - `[RoutingRegistryName <String>]`: The RoutingRegistryName of the configuration.
-    - `[SecondaryAzurePort <String>]`: The secondary port.
-    - `[SecondaryPeerAddressPrefix <String>]`: The secondary address prefix.
-    - `[SharedKey <String>]`: The shared key.
-    - `[StatPrimarybytesIn <Int64?>]`: Gets BytesIn of the peering.
-    - `[StatPrimarybytesOut <Int64?>]`: Gets BytesOut of the peering.
-    - `[StatSecondarybytesIn <Int64?>]`: Gets BytesIn of the peering.
-    - `[StatSecondarybytesOut <Int64?>]`: Gets BytesOut of the peering.
-    - `[State <ExpressRoutePeeringState?>]`: The peering state.
-    - `[VlanId <Int32?>]`: The VLAN ID.
-  - `[Rule <IRouteFilterRule[]>]`: Collection of RouteFilterRules contained within a route filter.
 
 ## RELATED LINKS
 

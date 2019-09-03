@@ -15,15 +15,15 @@ Does not modify DNS records within the zone.
 
 ### UpdatePublic (Default)
 ```
-Set-AzDnsZone -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Location <String>
+Set-AzDnsZone -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
  [-Etag <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdatePrivate
 ```
-Set-AzDnsZone -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Location <String> -Private
- [-Etag <String>] [-Tag <Hashtable>] [-RegistrationVirtualNetworkId <String[]>]
- [-ResolutionVirtualNetworkId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+Set-AzDnsZone -Name <String> -ResourceGroupName <String> -Location <String> -Private
+ [-SubscriptionId <String>] [-Etag <String>] [-RegistrationVirtualNetworkId <String[]>]
+ [-ResolutionVirtualNetworkId <String[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -127,7 +127,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -191,7 +191,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
