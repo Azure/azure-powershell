@@ -43,7 +43,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             ValueFromPipeline = true,
             ParameterSetName = Constants.ParameterSetNameConvertLegacyPeering,
             HelpMessage = Constants.LegacyItemHelp)]
-        public PSPeering LegacyPeering { get; set; }
+        [ValidateNotNullOrEmpty]
+        public PSPeering InputObject { get; set; }
 
         /// <summary>
         /// Gets or sets The Resource Group Name
@@ -132,6 +133,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             Mandatory = true,
             HelpMessage = Constants.PeeringExchangeConnectionHelp,
             ParameterSetName = Constants.Exchange)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = Constants.PeeringExchangeConnectionHelp,
+            ParameterSetName = Constants.ParameterSetNameConvertLegacyPeering)]
         [ValidateNotNull]
         public PSExchangeConnection[] ExchangeConnection { get; set; }
 
@@ -142,6 +147,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             Mandatory = true,
             HelpMessage = Constants.PeeringDirectConnectionHelp,
             ParameterSetName = Constants.Direct)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = Constants.PeeringDirectConnectionHelp,
+            ParameterSetName = Constants.ParameterSetNameConvertLegacyPeering)]
         [ValidateNotNull]
         public PSDirectConnection[] DirectConnection { get; set; }
 
@@ -166,40 +175,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// <summary>
         /// The inherited Execute function.
         /// </summary>
-        public override void Execute()
+        public override void ExecuteCmdlet()
         {
             try
             {
-                base.Execute();
                 if (this.ParameterSetName.Equals(Constants.Exchange, StringComparison.OrdinalIgnoreCase))
                     this.WriteObject(new PSExchangePeeringModelView(this.CreateExchangePeering()));
                 if (this.ParameterSetName.Equals(Constants.Direct, StringComparison.OrdinalIgnoreCase))
                     this.WriteObject(new PSDirectPeeringModelView(this.CreateDirectPeering()));
                 if (this.ParameterSetName.Equals(Constants.ParameterSetNameConvertLegacyPeering))
                 {
-                    if (this.LegacyPeering != null)
+                    if (this.InputObject.Exchange != null && string.Equals(
+                            this.InputObject.Kind,
+                            Constants.Exchange,
+                            StringComparison.OrdinalIgnoreCase))
                     {
-                        if (this.LegacyPeering.Exchange != null && string.Equals(
-                                this.LegacyPeering.Kind,
-                                Constants.Exchange,
-                                StringComparison.OrdinalIgnoreCase))
-                        {
-                            this.WriteObject(
-                                new PSExchangePeeringModelView(
-                                    (PSPeering)this.PutNewPeering(
-                                        this.ConvertClassicToExchangePeering(this.LegacyPeering))));
-                        }
+                        this.WriteObject(new PSExchangePeeringModelView(this.ConvertClassicToExchangePeering()), true);
+                    }
 
-                        if (this.LegacyPeering.Direct != null && string.Equals(
-                                this.LegacyPeering.Kind,
-                                Constants.Direct,
-                                StringComparison.OrdinalIgnoreCase))
-                        {
-                            this.WriteObject(
-                                new PSDirectPeeringModelView(
-                                    (PSPeering)this.PutNewPeering(
-                                        this.ConvertClassicToDirectPeering(this.LegacyPeering))));
-                        }
+                    if (this.InputObject.Direct != null && string.Equals(
+                            this.InputObject.Kind,
+                            Constants.Direct,
+                            StringComparison.OrdinalIgnoreCase))
+                    {
+                        this.WriteObject(new PSDirectPeeringModelView(this.ConvertClassicToDirectPeering()), true);
                     }
                 }
             }
@@ -273,18 +272,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                     throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error?.Code, error?.Message));
                 }
             }
-            else if (this.ParameterSetName.Equals(Constants.ParameterSetNameConvertLegacyPeering))
-            {
-                try
-                {
-                    return (PSPeering)this.PutNewPeering(this.ConvertClassicToDirectPeering(this.LegacyPeering));
-                }
-                catch (ErrorResponseException ex)
-                {
-                    var error = this.GetErrorCodeAndMessageFromArmOrErm(ex);
-                    throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
-                }
-            }
             else
             {
                 throw new PSInvalidOperationException(string.Format(Resources.Error_GenericSyntax));
@@ -355,18 +342,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                     throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
                 }
             }
-            else if (this.ParameterSetName.Equals(Constants.ParameterSetNameConvertLegacyPeering))
-            {
-                try
-                {
-                    return (PSPeering)this.PutNewPeering(this.ConvertClassicToExchangePeering(this.LegacyPeering));
-                }
-                catch (ErrorResponseException ex)
-                {
-                    var error = this.GetErrorCodeAndMessageFromArmOrErm(ex);
-                    throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
-                }
-            }
             throw new PSInvalidOperationException(string.Format(Resources.Error_GenericSyntax));
         }
 
@@ -382,78 +357,83 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         private object PutNewPeering(PSPeering newPeering)
         {
             var peering = PeeringResourceManagerProfile.Mapper.Map<PeeringModel>(newPeering);
-            this.PeeringClient.CreateOrUpdate(this.ResourceGroupName, this.Name, peering);
-            return PeeringResourceManagerProfile.Mapper.Map<PSPeering>(
-                this.PeeringClient.Get(this.ResourceGroupName, this.Name));
+            return PeeringResourceManagerProfile.Mapper.Map<PSPeering>(this.PeeringClient.CreateOrUpdate(this.ResourceGroupName, this.Name, peering));
         }
 
         /// <summary>
         /// The convert classic to Exchange peering.
         /// </summary>
-        /// <param name="classicPeering">
         /// The classic peering.
         /// </param>
         /// <returns>
         /// The <see cref="object"/>.
         /// </returns>
-        private PSPeering ConvertClassicToExchangePeering(PSPeering classicPeering)
+        private PSPeering ConvertClassicToExchangePeering()
         {
-            if (classicPeering == null)
+            if (this.InputObject == null)
                 throw new PSArgumentNullException(string.Format(Resources.Error_UnableToConvertLegacy, "LegacyPeering"));
-            if (classicPeering.Exchange.Connections == null)
+            if (this.InputObject.Exchange.Connections == null)
                 throw new PSArgumentNullException(string.Format(Resources.Error_UnableToConvertLegacy, "Connection"));
-            var connections = classicPeering.Exchange.Connections.ToList();
+
+            var connections = this.InputObject.Exchange.Connections.ToList();
+            if (this.ExchangeConnection != null)
+            {
+                this.ExchangeConnection.ToList().ForEach(x => connections.Add(x));
+            }
 
             var newPeering = new PSPeering
             {
-                Location = this.GetAzureRegion(classicPeering.PeeringLocation, Constants.Exchange),
-                PeeringLocation = classicPeering.PeeringLocation,
-                Kind = classicPeering.Kind ?? Constants.Exchange,
-                Sku =
-                                         classicPeering.Sku ?? new PSPeeringSku { Name = Constants.BasicExchangeFree },
+                Location = this.GetAzureRegion(this.InputObject.PeeringLocation, Constants.Exchange),
+                PeeringLocation = this.InputObject.PeeringLocation,
+                Kind = this.InputObject.Kind ?? Constants.Exchange,
+                Sku = this.InputObject.Sku ?? new PSPeeringSku { Name = Constants.BasicExchangeFree },
                 Exchange = new PSPeeringPropertiesExchange
                 {
                     Connections = connections,
                     PeerAsn = new PSSubResource(this.PeerAsnResourceId)
-                }
+                },
+                Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, true),
             };
 
-            foreach (var connection in newPeering.Exchange.Connections)
+            try
             {
-                connection.ConnectionIdentifier = Guid.NewGuid().ToString();
+                return (PSPeering)this.PutNewPeering(newPeering);
             }
-
-            return newPeering;
+            catch (ErrorResponseException ex)
+            {
+                var error = this.GetErrorCodeAndMessageFromArmOrErm(ex);
+                throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
+            }
         }
 
         /// <summary>
         /// The convert classic to direct peering.
         /// </summary>
-        /// <param name="classicPeering">
+        /// <param name="this.LegacyPeering">
         /// The classic peering.
         /// </param>
         /// <returns>
         /// The <see cref="object"/>.
         /// </returns>
-        private PSPeering ConvertClassicToDirectPeering(PSPeering classicPeering)
+        private PSPeering ConvertClassicToDirectPeering()
         {
-            if (classicPeering == null)
+            if (this.InputObject == null)
                 throw new PSArgumentNullException(string.Format(Resources.Error_UnableToConvertLegacy, "LegacyPeering"));
-            if (classicPeering.Direct.Connections == null)
+            if (this.InputObject.Direct.Connections == null)
                 throw new PSArgumentNullException(string.Format(Resources.Error_UnableToConvertLegacy, "Connection"));
-            var connections = classicPeering.Direct.Connections.ToList();
-
+            var connections = this.InputObject.Direct.Connections.ToList();
             var newPeering = new PSPeering
             {
-                Location = this.GetAzureRegion(classicPeering.PeeringLocation, Constants.Direct),
-                PeeringLocation = classicPeering.PeeringLocation,
-                Kind = classicPeering.Kind ?? Constants.Direct,
-                Sku = classicPeering.Sku ?? new PSPeeringSku(Constants.BasicDirectFree),
+                Location = this.GetAzureRegion(this.InputObject.PeeringLocation, Constants.Direct),
+                PeeringLocation = this.InputObject.PeeringLocation,
+                Kind = this.InputObject.Kind ?? Constants.Direct,
+                Sku = this.InputObject.Sku ?? new PSPeeringSku(Constants.BasicDirectFree),
                 Direct = new PSPeeringPropertiesDirect
                 {
                     Connections = connections,
                     PeerAsn = new PSSubResource(this.PeerAsnResourceId)
-                }
+                },
+                Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, true),
             };
             foreach (var connection in newPeering.Direct.Connections)
             {
@@ -461,7 +441,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                 connection.BandwidthInMbps = connection.ProvisionedBandwidthInMbps ?? 10000;
             }
 
-            return newPeering;
+            try
+            {
+                return (PSPeering)this.PutNewPeering(newPeering);
+            }
+            catch (ErrorResponseException ex)
+            {
+                var error = this.GetErrorCodeAndMessageFromArmOrErm(ex);
+                throw new ErrorResponseException(string.Format(Resources.Error_CloudError, error.Code, error.Message));
+            }
         }
     }
 }

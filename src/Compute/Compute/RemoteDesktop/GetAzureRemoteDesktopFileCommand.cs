@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.Compute
                     // Get PublicIPAddress resource if present
                     address = this.GetAddressFromPublicIPResource(nic.IpConfigurations.First().PublicIPAddress.Id);
                 }
-                else if (nic.IpConfigurations.First().LoadBalancerInboundNatRules.Any())
+                else if (nic.IpConfigurations.First().LoadBalancerInboundNatRules !=  null && nic.IpConfigurations.First().LoadBalancerInboundNatRules.Any())
                 {
                     address = string.Empty;
 

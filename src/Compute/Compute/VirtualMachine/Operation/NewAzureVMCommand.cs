@@ -229,6 +229,10 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public string ProximityPlacementGroup { get; set; }
 
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
+        public string HostId { get; set; }
+
         public override void ExecuteCmdlet()
         {
             switch (ParameterSetName)
@@ -321,7 +325,7 @@ namespace Microsoft.Azure.Commands.Compute
                     name: _cmdlet.PublicIpAddressName,
                     domainNameLabel: _cmdlet.DomainNameLabel,
                     allocationMethod: _cmdlet.AllocationMethod,
-                    sku: PublicIPAddressStrategy.Sku.Basic,
+                    sku: _cmdlet.Zone == null ? PublicIPAddressStrategy.Sku.Basic : PublicIPAddressStrategy.Sku.Standard,
                     zones: _cmdlet.Zone);
 
                 _cmdlet.OpenPorts = ImageAndOsType.UpdatePorts(_cmdlet.OpenPorts);
@@ -359,7 +363,8 @@ namespace Microsoft.Azure.Commands.Compute
                         zones: _cmdlet.Zone,
                         ultraSSDEnabled: _cmdlet.EnableUltraSSD.IsPresent,
                         identity: _cmdlet.GetVMIdentityFromArgs(),
-                        proximityPlacementGroup: ppgSubResourceFunc);
+                        proximityPlacementGroup: ppgSubResourceFunc,
+                        hostId: _cmdlet.HostId);
                 }
                 else
                 {
@@ -378,7 +383,8 @@ namespace Microsoft.Azure.Commands.Compute
                         zones: _cmdlet.Zone,
                         ultraSSDEnabled: _cmdlet.EnableUltraSSD.IsPresent,
                         identity: _cmdlet.GetVMIdentityFromArgs(),
-                        proximityPlacementGroup: ppgSubResourceFunc);
+                        proximityPlacementGroup: ppgSubResourceFunc,
+                        hostId: _cmdlet.HostId);
                 }
             }
         }
@@ -527,7 +533,10 @@ namespace Microsoft.Azure.Commands.Compute
                         Tags = this.Tag != null ? this.Tag.ToDictionary() : this.VM.Tags,
                         Identity = ComputeAutoMapperProfile.Mapper.Map<VirtualMachineIdentity>(this.VM.Identity),
                         Zones = this.Zone ?? this.VM.Zones,
-                        ProximityPlacementGroup = this.VM.ProximityPlacementGroup
+                        ProximityPlacementGroup = this.VM.ProximityPlacementGroup,
+                        Host = this.VM.Host,
+                        VirtualMachineScaleSet = this.VM.VirtualMachineScaleSet,
+                        AdditionalCapabilities = this.VM.AdditionalCapabilities
                     };
 
                     Dictionary<string, List<string>> auxAuthHeader = null;
