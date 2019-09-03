@@ -54,6 +54,10 @@ StorageMB         : 409600
 Tags              :
 ```
 
+This command creates an elastic pool in the Standard service tier named ElasticPool01. The server
+named server01, assigned to an Azure resource group named ResourceGroup01, hosts the elastic pool
+in. The command specifies DTU property values for the pool and the databases in the pool.
+
 ### Example 2: Create a vCore elastic pool
 
 ```
@@ -80,9 +84,9 @@ Tags                :
 ```
 
 
-This command creates an elastic pool in the Standard service tier named ElasticPool01. The server
+This command creates an elastic pool in the GengeralPurpose service tier named ElasticPool01. The server
 named server01, assigned to an Azure resource group named ResourceGroup01, hosts the elastic pool
-in. The command specifies DTU property values for the pool and the databases in the pool.
+in. The command specifies the vCore property values for the pool and the databases in the pool.
 
 ## PARAMETERS
 
