@@ -235,7 +235,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
         public static PSBackendPoolsSettings ToPSBackendPoolsSettings(this SdkBackendPoolsSettings sdkBackendPoolsSettings)
         {
             return new PSBackendPoolsSettings {
-                EnforceCertificateNameCheck = sdkBackendPoolsSettings.EnforceCertificateNameCheck == null ? (PSEnabledState?)null : (PSEnabledState?)Enum.Parse(typeof(PSEnabledState?), sdkBackendPoolsSettings.EnforceCertificateNameCheck),
+                EnforceCertificateNameCheck = sdkBackendPoolsSettings.EnforceCertificateNameCheck == null ? (PSEnabledState?)null : (PSEnabledState)Enum.Parse(typeof(PSEnabledState), sdkBackendPoolsSettings.EnforceCertificateNameCheck),
                 SendRecvTimeoutSeconds = sdkBackendPoolsSettings.SendRecvTimeoutSeconds
                 };
         }
