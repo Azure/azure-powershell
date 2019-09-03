@@ -17,8 +17,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 
         public DeploymentScopeType ScopeType { get; set; }
 
-        public bool IsTenantScope { get; set; }
-
         public string DeploymentName { get; set; }
 
         public string Location { get; set; }

@@ -14,9 +14,13 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
+    using System;
     using System.Collections.Generic;
     using System.Management.Automation;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
+    using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 
     /// <summary>
     /// Gets the deployment operation.
@@ -31,11 +35,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         internal const string DeploymentObjectParameterSet = "GetByDeploymentObject";
 
+        [Parameter(ParameterSetName = GetAzureDeploymentOperationCmdlet.ResourceGroupParameterSetWithDeploymentName, Mandatory = true,
+            HelpMessage = "The scope type of the deployment.")]
+        [Parameter(ParameterSetName = GetAzureDeploymentOperationCmdlet.SubscriptionParameterSetWithDeploymentName, Mandatory = true,
+            HelpMessage = "The scope type of the deployment.")]
+        [Parameter(ParameterSetName = GetAzureDeploymentOperationCmdlet.ManagementGroupParameterSetWithDeploymentName, Mandatory = true,
+            HelpMessage = "The scope type of the deployment.")]
         [Parameter(ParameterSetName = GetAzureDeploymentOperationCmdlet.TenantParameterSetWithDeploymentName, Mandatory = true,
-            HelpMessage = "Get deployment operation at tenant scope if specified.")]
-        [Parameter(ParameterSetName = GetAzureDeploymentOperationCmdlet.DeploymentObjectParameterSet, Mandatory = false,
-            HelpMessage = "Get deployment operation at tenant scope if specified.")]
-        public SwitchParameter Tenant { get; set; }
+            HelpMessage = "The scope type of the deployment.")]
+        [ValidateNotNullOrEmpty]
+        public DeploymentScopeType? ScopeType { get; set; }
 
         [Parameter(ParameterSetName = GetAzureDeploymentOperationCmdlet.ManagementGroupParameterSetWithDeploymentName, Mandatory = true,
             HelpMessage = "The management group id.")]
@@ -80,73 +89,101 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         public override void ExecuteCmdlet()
         {
-            var deploymentName = this.GetDeploymetName();
-            var resourceGroupName = this.GetResourceGroupName();
-            var managementGroupId = this.GetManagementGroupId();
+            this.ValidateScopeTypeMatches();
 
-            var deploymentOperations = this.GetDeploymentOperations(this.Tenant, managementGroupId, resourceGroupName, deploymentName);
+            var deploymentFilterOptions = this.GetDeploymentFilterOptions();
+            var deploymentOperations = this.GetDeploymentOperations(deploymentFilterOptions, this.OperationId);
 
             WriteObject(deploymentOperations, true);
         }
 
-        private List<PSDeploymentOperation> GetDeploymentOperations(bool isTenantDeployment, string managementGroupId, string resourceGroupName, string deploymentName)
+        private void ValidateScopeTypeMatches()
         {
-            if (isTenantDeployment)
+            if (this.ScopeType.HasValue)
             {
-                return ResourceManagerSdkClient.ListDeploymentOperationsAtTenantScope(deploymentName, this.OperationId);
+                if (this.ScopeType == DeploymentScopeType.ResourceGroup && string.IsNullOrEmpty(this.ResourceGroupName))
+                {
+                    WriteExceptionError(new ArgumentException(ProjectResources.InvalidParameterForResourceGroupScope));
+                }
+
+                if (this.ScopeType == DeploymentScopeType.ManagementGroup && string.IsNullOrEmpty(this.ManagementGroupId))
+                {
+                    WriteExceptionError(new ArgumentException(ProjectResources.InvalidParameterForManagementGroupScope));
+                }
+
+                if ((this.ScopeType == DeploymentScopeType.Subscription || this.ScopeType == DeploymentScopeType.Tenant)
+                    && (!string.IsNullOrEmpty(this.ResourceGroupName) || !string.IsNullOrEmpty(this.ManagementGroupId)))
+                {
+                    WriteExceptionError(new ArgumentException(string.Format(ProjectResources.InvalidParameterForTenantAndSubscriptionScope, this.ScopeType.ToString())));
+                }
             }
-            else if (!string.IsNullOrEmpty(managementGroupId))
+        }
+
+        private FilterDeploymentOptions GetDeploymentFilterOptions()
+        {
+            if (this.ScopeType.HasValue)
             {
-                return ResourceManagerSdkClient.ListDeploymentOperationsAtManagementGroup(managementGroupId, deploymentName, this.OperationId);
-            }
-            else if (!string.IsNullOrEmpty(resourceGroupName))
-            {
-                return ResourceManagerSdkClient.ListDeploymentOperationsAtResourceGroup(resourceGroupName, deploymentName, this.OperationId);
+                return new FilterDeploymentOptions(this.ScopeType.Value)
+                {
+                    ManagementGroupId = this.ManagementGroupId,
+                    ResourceGroupName = this.ResourceGroupName,
+                    DeploymentName = this.DeploymentName
+                };
             }
             else
             {
-                return ResourceManagerSdkClient.ListDeploymentOperationsAtSubscriptionScope(deploymentName, this.OperationId);
+                var options = new FilterDeploymentOptions(DeploymentScopeType.Subscription);
+                options.DeploymentName = ResourceIdUtility.GetDeploymentName(this.DeploymentObject.Id);
+
+                var deploymentId = this.DeploymentObject.Id;
+                var subscriptionId = ResourceIdUtility.GetSubscriptionId(deploymentId);
+
+                if (!string.IsNullOrEmpty(subscriptionId))
+                {
+                    var resourceGroupName = ResourceIdUtility.GetResourceGroupName(deploymentId);
+
+                    if (!string.IsNullOrEmpty(resourceGroupName))
+                    {
+                        options.ScopeType = DeploymentScopeType.ResourceGroup;
+                        options.ResourceGroupName = resourceGroupName;
+                    }
+                }
+                else
+                {
+                    var managementGroupId = ResourceIdUtility.GetManagementGroupId(deploymentId);
+
+                    if (!string.IsNullOrEmpty(managementGroupId))
+                    {
+                        options.ScopeType = DeploymentScopeType.ManagementGroup;
+                        options.ManagementGroupId = managementGroupId;
+                    }
+                    else
+                    {
+                        options.ScopeType = DeploymentScopeType.Tenant;
+                    }
+                }
+
+                return options;
             }
         }
 
-        private string GetDeploymetName()
+        private List<PSDeploymentOperation> GetDeploymentOperations(FilterDeploymentOptions options, string operationId)
         {
-            if (!string.IsNullOrEmpty(this.DeploymentName))
+            switch (options.ScopeType)
             {
-                return this.DeploymentName;
-            }
-            else
-            {
-                return this.DeploymentObject.DeploymentName;
-            }
-        }
+                case DeploymentScopeType.Tenant:
+                    return ResourceManagerSdkClient.ListDeploymentOperationsAtTenantScope(options.DeploymentName, operationId);
 
-        private string GetManagementGroupId()
-        {
-            if (!string.IsNullOrEmpty(this.ManagementGroupId))
-            {
-                return this.ManagementGroupId;
-            }
-            else if (this.DeploymentObject != null)
-            {
-                return this.DeploymentObject.ManagementGroupId;
-            }
+                case DeploymentScopeType.ManagementGroup:
+                    return ResourceManagerSdkClient.ListDeploymentOperationsAtManagementGroup(options.ManagementGroupId, options.DeploymentName, operationId);
 
-            return null;
-        }
+                case DeploymentScopeType.ResourceGroup:
+                    return ResourceManagerSdkClient.ListDeploymentOperationsAtResourceGroup(options.ResourceGroupName, options.DeploymentName, operationId);
 
-        private string GetResourceGroupName()
-        {
-            if (!string.IsNullOrEmpty(this.ResourceGroupName))
-            {
-                return this.ResourceGroupName;
+                case DeploymentScopeType.Subscription:
+                default:
+                    return ResourceManagerSdkClient.ListDeploymentOperationsAtSubscriptionScope(options.DeploymentName, operationId);
             }
-            else if (this.DeploymentObject != null)
-            {
-                return this.DeploymentObject.ResourceGroupName;
-            }
-
-            return null;
         }
     }
 }

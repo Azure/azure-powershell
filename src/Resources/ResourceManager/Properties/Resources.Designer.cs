@@ -205,6 +205,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Deployment &apos;{0}&apos; doesn&apos;t exist in the current tenant..
+        /// </summary>
+        internal static string DeploymentDoesntExistAtTenantScope {
+            get {
+                return ResourceManager.GetString("DeploymentDoesntExistAtTenantScope", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deployment &apos;{0}&apos; doesn&apos;t exist under resource group &apos;{1}&apos;.
         /// </summary>
         internal static string DeploymentDoesntExistInResourceGroup {

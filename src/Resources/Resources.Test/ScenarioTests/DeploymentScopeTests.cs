@@ -70,5 +70,12 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             ResourcesController.NewInstance.RunPsTest(_logger, "Test-DeploymentAsJob-ManagementGroup");
         }
+
+        [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TenantLevelDeploymentEndToEnd()
+        {
+            ResourcesController.NewInstance.RunPsTest(_logger, "Test-DeploymentEndToEnd-TenantScope");
+        }
     }
 }

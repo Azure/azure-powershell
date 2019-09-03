@@ -14,25 +14,25 @@ Get deployment
 
 ### SubscriptionParameterSetWithDeploymentName (Default)
 ```
-Get-AzDeployment [[-Name] <String>] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+Get-AzDeployment -ScopeType <String> [[-Name] <String>] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ResourceGroupParameterSetWithDeploymentName
 ```
-Get-AzDeployment -ResourceGroupName <String> [[-Name] <String>] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+Get-AzDeployment -ScopeType <String> -ResourceGroupName <String> [[-Name] <String>] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ManagementGroupParameterSetWithDeploymentName
 ```
-Get-AzDeployment -ManagementGroupId <String> [[-Name] <String>] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+Get-AzDeployment -ScopeType <String> -ManagementGroupId <String> [[-Name] <String>] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### TenantParameterSetWithDeploymentName
 ```
-Get-AzDeployment -Tenant [[-Name] <String>] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+Get-AzDeployment -ScopeType <String> -Tenant [[-Name] <String>] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -51,14 +51,14 @@ By default, **Get-AzDeployment** gets all deployments at the current subscriptio
 
 ### Example 1: Get all deployments at subscription scope
 ```
-PS C:\>Get-AzDeployment
+PS C:\>Get-AzDeployment -ScopeType Subscription
 ```
 
 This command gets all deployments at the current subscription scope.
 
 ### Example 2: Get a deployment by name
 ```
-PS C:\>Get-AzDeployment -Name "DeployRoles01"
+PS C:\>Get-AzDeployment -ScopeType Subscription -Name "DeployRoles01"
 ```
 
 This command gets the DeployRoles01 deployment at the current subscription scope.
@@ -76,21 +76,21 @@ If you do not assign a name, the cmdlets provide a default name based on the tem
 
 ### Example 4: Get a deployment at a resource group
 ```
-PS C:\>Get-AzDeployment -Name "DeployRoles01" -ResourceGroupName "rg-01"
+PS C:\>Get-AzDeployment -ScopeType ResourceGroup -Name "DeployRoles01" -ResourceGroupName "rg-01"
 ```
 
 This command gets the DeployRole01 deployment from resource group rg-01.
 
 ### Example 5: Get a deployment at a management group
 ```
-PS C:\>Get-AzDeployment -Name "DeployRoles01" -ManagementGroupId "mg-01"
+PS C:\>Get-AzDeployment -ScopeType ManagementGroup -Name "DeployRoles01" -ManagementGroupId "mg-01"
 ```
 
 This command gets the DeployRole01 deployment from management group mg-01.
 
 ### Example 6: Get a deployment at the tenant scope
 ```
-PS C:\>Get-AzDeployment -Name "DeployRoles01" -Tenant
+PS C:\>Get-AzDeployment -ScopeType Tenant -Name "DeployRoles01" -Tenant
 ```
 
 This command gets the DeployRole01 deployment from the tenant scope.
@@ -127,17 +127,23 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
-### -Tenant
-When specified, get deployment from tenant scope.
+
+### -ScopeType
+The scope type of the deployment.
+- Subscription: Get deployment at subscription scope. 
+- ResourceGroup: Get deployment in a resource group.
+- ManagementGroup: Get deployment at management group scope.
+- Tenant: Get deployment at tenant scope.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: TenantParameterSetWithDeploymentName
+Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments.DeploymentScopeType
+Parameter Sets: (All)
 Aliases:
+Accepted values: Subscription, ResourceGroup, ManagementGroup, Tenant
 
 Required: True
-Position: 0
-Default value: None
+Position: Named
+Default value: Subscription
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

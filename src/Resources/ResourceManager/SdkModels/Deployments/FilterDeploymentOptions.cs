@@ -13,6 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
+
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 {
@@ -20,7 +22,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
     {
         public string DeploymentName { get; set; }
 
-        public bool IsTenantScope { get; set; }
+        public DeploymentScopeType ScopeType { get; set; }
 
         public string ManagementGroupId { get; set; }
 
@@ -30,8 +32,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 
         public List<string> ExcludedProvisioningStates { get; set; }
 
-        public FilterDeploymentOptions()
+        public FilterDeploymentOptions(DeploymentScopeType scopeType)
         {
+            ScopeType = scopeType;
             DeploymentName = null;
             ManagementGroupId = null;
             ResourceGroupName = null;

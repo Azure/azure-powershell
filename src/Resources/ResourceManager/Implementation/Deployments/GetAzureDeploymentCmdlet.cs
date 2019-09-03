@@ -12,9 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
+using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
@@ -31,16 +34,23 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         internal const string DeploymentIdParameterSet = "GetByDeploymentId";
 
-        [Parameter(Position = 0, ParameterSetName = GetAzureDeploymentCmdlet.TenantParameterSetWithDeploymentName, Mandatory = true,
-            HelpMessage = "Get deployment at tenant scope if specified.")]
-        public SwitchParameter Tenant { get; set; }
-
+        [Parameter(Position = 0, ParameterSetName = GetAzureDeploymentCmdlet.ResourceGroupParameterSetWithDeploymentName, Mandatory = true,
+            HelpMessage = "The scope type of the deployment.")]
+        [Parameter(Position = 0, ParameterSetName = GetAzureDeploymentCmdlet.SubscriptionParameterSetWithDeploymentName, Mandatory = true,
+            HelpMessage = "The scope type of the deployment.")]
         [Parameter(Position = 0, ParameterSetName = GetAzureDeploymentCmdlet.ManagementGroupParameterSetWithDeploymentName, Mandatory = true,
+            HelpMessage = "The scope type of the deployment.")]
+        [Parameter(Position = 0, ParameterSetName = GetAzureDeploymentCmdlet.TenantParameterSetWithDeploymentName, Mandatory = true,
+            HelpMessage = "The scope type of the deployment.")]
+        [ValidateNotNullOrEmpty]
+        public DeploymentScopeType? ScopeType { get; set; }
+
+        [Parameter(Position = 1, ParameterSetName = GetAzureDeploymentCmdlet.ManagementGroupParameterSetWithDeploymentName, Mandatory = true,
             HelpMessage = "The management group id.")]
         [ValidateNotNullOrEmpty]
         public string ManagementGroupId { get; set; }
 
-        [Parameter(Position = 0, ParameterSetName = GetAzureDeploymentCmdlet.ResourceGroupParameterSetWithDeploymentName, Mandatory = true,
+        [Parameter(Position = 1, ParameterSetName = GetAzureDeploymentCmdlet.ResourceGroupParameterSetWithDeploymentName, Mandatory = true,
             HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -48,11 +58,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Alias("DeploymentName")]
         [Parameter(Position = 1, ParameterSetName = GetAzureDeploymentCmdlet.TenantParameterSetWithDeploymentName, Mandatory = false,
             HelpMessage = "The name of deployment.")]
-        [Parameter(Position = 1, ParameterSetName = GetAzureDeploymentCmdlet.ManagementGroupParameterSetWithDeploymentName, Mandatory = false,
+        [Parameter(Position = 2, ParameterSetName = GetAzureDeploymentCmdlet.ManagementGroupParameterSetWithDeploymentName, Mandatory = false,
             HelpMessage = "The name of deployment.")]
-        [Parameter(Position = 0, ParameterSetName = GetAzureDeploymentCmdlet.SubscriptionParameterSetWithDeploymentName, Mandatory = false,
+        [Parameter(Position = 1, ParameterSetName = GetAzureDeploymentCmdlet.SubscriptionParameterSetWithDeploymentName, Mandatory = false,
             HelpMessage = "The name of deployment.")]
-        [Parameter(Position = 1, ParameterSetName = GetAzureDeploymentCmdlet.ResourceGroupParameterSetWithDeploymentName, Mandatory = false,
+        [Parameter(Position = 2, ParameterSetName = GetAzureDeploymentCmdlet.ResourceGroupParameterSetWithDeploymentName, Mandatory = false,
             HelpMessage = "The name of deployment.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -65,17 +75,81 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         public override void ExecuteCmdlet()
         {
-            FilterDeploymentOptions options = new FilterDeploymentOptions()
-            {
-                IsTenantScope = this.Tenant, // (tiano): get it for Id parameter too.
-                ManagementGroupId = ManagementGroupId ?? (string.IsNullOrEmpty(Id) ? null : ResourceIdUtility.GetManagementGroupId(Id)),
-                ResourceGroupName = ResourceGroupName ?? (string.IsNullOrEmpty(Id) ? null : ResourceIdUtility.GetResourceGroupName(Id)),
-                DeploymentName = Name ?? (string.IsNullOrEmpty(Id) ? null : ResourceIdUtility.GetDeploymentName(Id)),
-            };
+            this.ValidateScopeTypeMatches();
 
-            var deployments = ResourceManagerSdkClient.FilterDeployments(options);
+            var filterOptions = this.GetDeploymentFilterOptions();
+            var deployments = ResourceManagerSdkClient.FilterDeployments(filterOptions);
 
             WriteObject(deployments, true);
+        }
+
+        private void ValidateScopeTypeMatches()
+        {
+            if (this.ScopeType.HasValue)
+            {
+                if (this.ScopeType == DeploymentScopeType.ResourceGroup && string.IsNullOrEmpty(this.ResourceGroupName))
+                {
+                    WriteExceptionError(new ArgumentException(ProjectResources.InvalidParameterForResourceGroupScope));
+                }
+
+                if (this.ScopeType == DeploymentScopeType.ManagementGroup && string.IsNullOrEmpty(this.ManagementGroupId))
+                {
+                    WriteExceptionError(new ArgumentException(ProjectResources.InvalidParameterForManagementGroupScope));
+                }
+
+                if ((this.ScopeType == DeploymentScopeType.Subscription || this.ScopeType == DeploymentScopeType.Tenant)
+                    && (!string.IsNullOrEmpty(this.ResourceGroupName) || !string.IsNullOrEmpty(this.ManagementGroupId)))
+                {
+                    WriteExceptionError(new ArgumentException(string.Format(ProjectResources.InvalidParameterForTenantAndSubscriptionScope, this.ScopeType.ToString())));
+                }
+            }
+        }
+
+        private FilterDeploymentOptions GetDeploymentFilterOptions()
+        {
+            if (this.ScopeType.HasValue)
+            {
+                return new FilterDeploymentOptions(this.ScopeType.Value)
+                {
+                    ManagementGroupId = this.ManagementGroupId,
+                    ResourceGroupName = this.ResourceGroupName,
+                    DeploymentName = this.Name
+                };
+            }
+            else
+            {
+                var options = new FilterDeploymentOptions(DeploymentScopeType.Subscription);
+                options.DeploymentName = ResourceIdUtility.GetDeploymentName(this.Id);
+
+                var subscriptionId = ResourceIdUtility.GetSubscriptionId(this.Id);
+
+                if (!string.IsNullOrEmpty(subscriptionId))
+                {
+                    var resourceGroupName = ResourceIdUtility.GetResourceGroupName(this.Id);
+
+                    if (!string.IsNullOrEmpty(resourceGroupName))
+                    {
+                        options.ScopeType = DeploymentScopeType.ResourceGroup;
+                        options.ResourceGroupName = resourceGroupName;
+                    }
+                }
+                else
+                {
+                    var managementGroupId = ResourceIdUtility.GetManagementGroupId(this.Id);
+
+                    if (!string.IsNullOrEmpty(managementGroupId))
+                    {
+                        options.ScopeType = DeploymentScopeType.ManagementGroup;
+                        options.ManagementGroupId = managementGroupId;
+                    }
+                    else
+                    {
+                        options.ScopeType = DeploymentScopeType.Tenant;
+                    }
+                }
+
+                return options;
+            }
         }
     }
 }

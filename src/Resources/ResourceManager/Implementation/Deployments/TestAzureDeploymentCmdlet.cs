@@ -15,6 +15,7 @@
 using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -29,6 +30,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         DefaultParameterSetName = SubscriptionParameterSetWithParameterlessTemplateFile), OutputType(typeof(PSResourceManagerError))]
     public class TestAzureDeploymentCmdlet : DeploymentCmdletWithParameters, IDynamicParameters
     {
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The deployment scope type.")]
+        public DeploymentScopeType ScopeType { get; set; }
+
         [Parameter(ParameterSetName = SubscriptionParameterSetWithTemplateObjectParameterObject,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The location to store deployment data.")]
         [Parameter(ParameterSetName = SubscriptionParameterSetWithTemplateObjectParameterFile,
@@ -99,20 +103,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(ParameterSetName = TenantParameterSetWithTemplateObjectParameterObject,
-            Mandatory = true, HelpMessage = "Create deployment at tenant scope if specified.")]
-        [Parameter(ParameterSetName = TenantParameterSetWithTemplateObjectParameterFile,
-            Mandatory = true, HelpMessage = "Create deployment at tenant scope if specified.")]
-        [Parameter(ParameterSetName = TenantParameterSetWithTemplateFileParameterObject,
-            Mandatory = true, HelpMessage = "Create deployment at tenant scope if specified.")]
-        [Parameter(ParameterSetName = TenantParameterSetWithTemplateFileParameterFile,
-            Mandatory = true, HelpMessage = "Create deployment at tenant scope if specified.")]
-        [Parameter(ParameterSetName = TenantParameterSetWithParameterlessTemplateObject,
-            Mandatory = true, HelpMessage = "Create deployment at tenant scope if specified.")]
-        [Parameter(ParameterSetName = TenantParameterSetWithParameterlessTemplateFile,
-            Mandatory = true, HelpMessage = "Create deployment at tenant scope if specified.")]
-        public SwitchParameter Tenant { get; set; }
-
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The deployment mode.")]
         public DeploymentMode Mode { get; set; }
 
@@ -124,21 +114,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         public override void ExecuteCmdlet()
         {
-            if (string.IsNullOrEmpty(this.ResourceGroupName) && this.Mode == DeploymentMode.Complete)
-            {
-                WriteExceptionError(new ArgumentException(ProjectResources.InvalidDeploymentMode));
-            }
-
-            if (this.RollbackToLastDeployment && !string.IsNullOrEmpty(this.RollBackDeploymentName))
-            {
-                WriteExceptionError(new ArgumentException(ProjectResources.InvalidRollbackParameters));
-            }
+            this.ValidateCmdletParameters();
 
             var parameters = new PSDeploymentCmdletParameters()
             {
+                ScopeType = this.ScopeType,
                 DeploymentName = Guid.NewGuid().ToString(),
                 Location = this.Location,
-                IsTenantScope = this.Tenant,
                 ManagementGroupId = this.ManagementGroupId,
                 ResourceGroupName = this.ResourceGroupName,
                 DeploymentMode = this.Mode,
@@ -158,6 +140,40 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             var validationResult = ResourceManagerSdkClient.ValidateDeployment(parameters);
 
             WriteObject(validationResult);
+        }
+
+        private void ValidateCmdletParameters()
+        {
+            this.ValidateScopeTypeMatches();
+
+            if (this.ScopeType != DeploymentScopeType.ResourceGroup && this.Mode == DeploymentMode.Complete)
+            {
+                WriteExceptionError(new ArgumentException(ProjectResources.InvalidDeploymentMode));
+            }
+
+            if (this.RollbackToLastDeployment && !string.IsNullOrEmpty(this.RollBackDeploymentName))
+            {
+                WriteExceptionError(new ArgumentException(ProjectResources.InvalidRollbackParameters));
+            }
+        }
+
+        private void ValidateScopeTypeMatches()
+        {
+            if (this.ScopeType == DeploymentScopeType.ResourceGroup && string.IsNullOrEmpty(this.ResourceGroupName))
+            {
+                WriteExceptionError(new ArgumentException(ProjectResources.InvalidParameterForResourceGroupScope));
+            }
+
+            if (this.ScopeType == DeploymentScopeType.ManagementGroup && string.IsNullOrEmpty(this.ManagementGroupId))
+            {
+                WriteExceptionError(new ArgumentException(ProjectResources.InvalidParameterForManagementGroupScope));
+            }
+
+            if ((this.ScopeType == DeploymentScopeType.Subscription || this.ScopeType == DeploymentScopeType.Tenant)
+                && (!string.IsNullOrEmpty(this.ResourceGroupName) || !string.IsNullOrEmpty(this.ManagementGroupId)))
+            {
+                WriteExceptionError(new ArgumentException(string.Format(ProjectResources.InvalidParameterForTenantAndSubscriptionScope, this.ScopeType.ToString())));
+            }
         }
     }
 }

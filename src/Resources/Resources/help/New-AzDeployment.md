@@ -14,7 +14,7 @@ Create a deployment
 
 ### SubscriptionParameterSetWithParameterlessTemplateFile (Default)
 ```
-New-AzDeployment [-Name <String>] -Location <String> -TemplateFile <String> 
+New-AzDeployment -ScopeType <String> [-Name <String>] -Location <String> -TemplateFile <String> 
  [-Mode <String>] [-DeploymentDebugLogLevel <String>] [-SkipTemplateParameterPrompt]
  [-AsJob] [-Confirm] [-ApiVersion <String>] [-Pre] [-WhatIf]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -22,7 +22,7 @@ New-AzDeployment [-Name <String>] -Location <String> -TemplateFile <String>
 
 ### SubscriptionParameterSetWithTemplateFileParameterFile
 ```
-New-AzDeployment [-Name <String>] -Location <String> -TemplateFile <String> -TemplateParameterFile <String>
+New-AzDeployment -ScopeType <String> [-Name <String>] -Location <String> -TemplateFile <String> -TemplateParameterFile <String>
  [-Mode <String>] [-DeploymentDebugLogLevel <String>] [-SkipTemplateParameterPrompt]
  [-AsJob] [-Confirm] [-ApiVersion <String>] [-Pre] [-WhatIf]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -30,7 +30,7 @@ New-AzDeployment [-Name <String>] -Location <String> -TemplateFile <String> -Tem
 
 ### SubscriptionParameterSetWithTemplateFileParameterObject
 ```
-New-AzDeployment [-Name <String>] -Location <String> -TemplateFile <String> -TemplateParameterObject <Hashtable>
+New-AzDeployment -ScopeType <String> [-Name <String>] -Location <String> -TemplateFile <String> -TemplateParameterObject <Hashtable>
  [-Mode <String>] [-DeploymentDebugLogLevel <String>] [-SkipTemplateParameterPrompt]
  [-AsJob] [-Confirm] [-ApiVersion <String>] [-Pre] [-WhatIf]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -38,7 +38,7 @@ New-AzDeployment [-Name <String>] -Location <String> -TemplateFile <String> -Tem
 
 ### SubscriptionParameterSetWithParameterlessTemplateObject
 ```
-New-AzDeployment [-Name <String>] -Location <String> -TemplateObject <Hashtable>
+New-AzDeployment -ScopeType <String> [-Name <String>] -Location <String> -TemplateObject <Hashtable>
  [-Mode <String>] [-DeploymentDebugLogLevel <String>] [-SkipTemplateParameterPrompt]
  [-AsJob] [-Confirm] [-ApiVersion <String>] [-Pre] [-WhatIf]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -46,7 +46,7 @@ New-AzDeployment [-Name <String>] -Location <String> -TemplateObject <Hashtable>
 
 ### SubscriptionParameterSetWithTemplateObjectParameterFile
 ```
-New-AzDeployment [-Name <String>] -Location <String> -TemplateObject <Hashtable> -TemplateParameterFile <String>
+New-AzDeployment -ScopeType <String> [-Name <String>] -Location <String> -TemplateObject <Hashtable> -TemplateParameterFile <String>
  [-Mode <String>] [-DeploymentDebugLogLevel <String>] [-SkipTemplateParameterPrompt]
  [-AsJob] [-Confirm] [-ApiVersion <String>] [-Pre] [-WhatIf]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -54,7 +54,7 @@ New-AzDeployment [-Name <String>] -Location <String> -TemplateObject <Hashtable>
 
 ### SubscriptionParameterSetWithTemplateObjectParameterObject
 ```
-New-AzDeployment [-Name <String>] -Location <String> -TemplateObject <Hashtable> -TemplateParameterObject <Hashtable>
+New-AzDeployment -ScopeType <String> [-Name <String>] -Location <String> -TemplateObject <Hashtable> -TemplateParameterObject <Hashtable>
  [-Mode <String>] [-DeploymentDebugLogLevel <String>] [-SkipTemplateParameterPrompt]
  [-AsJob] [-Confirm] [-ApiVersion <String>] [-Pre] [-WhatIf]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -62,7 +62,7 @@ New-AzDeployment [-Name <String>] -Location <String> -TemplateObject <Hashtable>
 
 ### ResourceGroupParameterSetWithParameterlessTemplateFile
 ```
-New-AzDeployment [-Name <String>] -ResourceGroupName <String> -TemplateFile <String>
+New-AzDeployment -ScopeType <String> [-Name <String>] -ResourceGroupName <String> -TemplateFile <String>
  [-Mode <String>] [-DeploymentDebugLogLevel <String>] [-SkipTemplateParameterPrompt]
  [-AsJob] [-Confirm] [-ApiVersion <String>] [-Pre] [-WhatIf]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -70,7 +70,7 @@ New-AzDeployment [-Name <String>] -ResourceGroupName <String> -TemplateFile <Str
 
 ### ManagementGroupParameterSetWithParameterlessTemplateFile
 ```
-New-AzDeployment [-Name <String>] -ManagementGroupId <String> -Location <String> -TemplateFile <String>
+New-AzDeployment -ScopeType <String> [-Name <String>] -ManagementGroupId <String> -Location <String> -TemplateFile <String>
  [-Mode <String>] [-DeploymentDebugLogLevel <String>] [-SkipTemplateParameterPrompt]
  [-AsJob] [-Confirm] [-ApiVersion <String>] [-Pre] [-WhatIf]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -78,7 +78,7 @@ New-AzDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
 
 ### TenantParameterSetWithParameterlessTemplateFile
 ```
-New-AzDeployment [-Name <String>] -Tenant -Location <String> -TemplateFile <String>
+New-AzDeployment -ScopeType <String> [-Name <String>] -Tenant -Location <String> -TemplateFile <String>
  [-Mode <String>] [-DeploymentDebugLogLevel <String>] [-SkipTemplateParameterPrompt]
  [-AsJob] [-Confirm] [-ApiVersion <String>] [-Pre] [-WhatIf]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -94,10 +94,10 @@ A resource can be a subscription level resource, like role definition, policy de
 A resource can also be at management group scope, like role assignment, policy assignment, etc.
 Or, a resource can be a tenant level resource, like management group, role assignment, etc.
 
-To create a deployment at a resource group, specify the *ResourceGroupName* parameter. 
-To create a deployment at the current subscription scope, specify the *Location* parameter.
-To create a deployment at a management group, specify the *ManagementGroupId* and *Location* parameter.
-To create a deployment at the tenant scope, specify the *Tenant* switch and a *Location* parameter.
+To create a deployment at a resource group, specify *ResourceGroup* for *ScopeType*, and a *ResourceGroupName* parameter. 
+To create a deployment at the current subscription scope, specify *Subscription* for *ScopeType*, and a *Location* parameter.
+To create a deployment at a management group, specify *ManagementGroup* for *ScopeType*, and specify the *ManagementGroupId* and *Location* parameter.
+To create a deployment at the tenant scope, specify *Tenant* for *ScopeType* and a *Location* parameter.
 
 The location tells Azure Resource Manager where to store the deployment data. The template is a JSON string that contains individual resources to be deployed.
 The template includes parameter placeholders for required resources and configurable property values, such as names and sizes.
@@ -113,7 +113,7 @@ Template parameter values that you enter at the command prompt take precedence o
 
 ### Example 1: Create a deployment at subscription scope with a custom template and parameter file
 ```
-PS C:\> New-AzDeployment -DeploymentName "deploy-01" -Location "West US" -TemplateFile "D:\Azure\Templates\ServiceTemplate.json" -TemplateParameterFile "D:\Azure\Templates\ServiceParameters.json"
+PS C:\> New-AzDeployment -ScopeType "Subscription" -DeploymentName "deploy-01" -Location "West US" -TemplateFile "D:\Azure\Templates\ServiceTemplate.json" -TemplateParameterFile "D:\Azure\Templates\ServiceParameters.json"
 ```
 
 This command creates a new deployment at the current subscription scope by using a custom template and a template file on disk.
@@ -122,7 +122,7 @@ The command uses the *TemplateFile* parameter to specify the template and the *T
 
 ### Example 2: Create a deployment at a resource group with a custom template and parameter file
 ```
-PS C:\> New-AzDeployment -DeploymentName "deploy-01" -ResourceGroupName "servicerg" -TemplateFile "D:\Azure\Templates\ServiceTemplate.json" -TemplateParameterFile "D:\Azure\Templates\ServiceParameters.json"
+PS C:\> New-AzDeployment -ScopeType "ResourceGroup" -DeploymentName "deploy-01" -ResourceGroupName "servicerg" -TemplateFile "D:\Azure\Templates\ServiceTemplate.json" -TemplateParameterFile "D:\Azure\Templates\ServiceParameters.json"
 ```
 
 This command creates a new deployment at a resource group by using a custom template and a template file on disk.
@@ -131,7 +131,7 @@ The command uses the *TemplateFile* parameter to specify the template and the *T
 
 ### Example 3: Create a deployment at a management group with a custom template and parameter file
 ```
-PS C:\> New-AzDeployment -DeploymentName "deploy-01" -ManagementGroupId "mg01" -Location "West US" -TemplateFile "D:\Azure\Templates\ServiceTemplate.json" -TemplateParameterFile "D:\Azure\Templates\ServiceParameters.json"
+PS C:\> New-AzDeployment -ScopeType "ManagementGroup" -DeploymentName "deploy-01" -ManagementGroupId "mg01" -Location "West US" -TemplateFile "D:\Azure\Templates\ServiceTemplate.json" -TemplateParameterFile "D:\Azure\Templates\ServiceParameters.json"
 ```
 
 This command creates a new deployment at a management group by using a custom template and a template file on disk.
@@ -140,7 +140,7 @@ The command uses the *TemplateFile* parameter to specify the template and the *T
 
 ### Example 4: Create a deployment at tenant scope with a custom template and parameter file
 ```
-PS C:\> New-AzDeployment -DeploymentName "deploy-01" -Tenant -Location "West US" -TemplateFile "D:\Azure\Templates\ServiceTemplate.json" -TemplateParameterFile "D:\Azure\Templates\ServiceParameters.json"
+PS C:\> New-AzDeployment -ScopeType "Tenant" -DeploymentName "deploy-01" -Tenant -Location "West US" -TemplateFile "D:\Azure\Templates\ServiceTemplate.json" -TemplateParameterFile "D:\Azure\Templates\ServiceParameters.json"
 ```
 
 This command creates a new deployment at tenant scope by using a custom template and a template file on disk.
@@ -151,7 +151,7 @@ The command uses the *TemplateFile* parameter to specify the template and the *T
 ```
 PS C:\> $TemplateFileText = [System.IO.File]::ReadAllText("D:\Azure\Templates\ServiceTemplate.json")
 PS C:\> $TemplateObject = ConvertFrom-Json $TemplateFileText -AsHashtable
-PS C:\> New-AzDeployment -Location "West US" -TemplateObject $TemplateObject -TemplateParameterFile "D:\Azure\Templates\ServiceParameters.json"
+PS C:\> New-AzDeployment -ScopeType "Subscription" -Location "West US" -TemplateObject $TemplateObject -TemplateParameterFile "D:\Azure\Templates\ServiceParameters.json"
 ```
 
 This command creates a new deployment at the current subscription scope by using a template file on disk that has been converted to an in-memory hashtable.
@@ -238,17 +238,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tenant
-Create the deployment at tenant scope.
+### -ScopeType
+The scope type of the deployment.
+- Subscription: Creates deployment at subscription scope. 
+- ResourceGroup: Creates deployment in a resource group.
+- ManagementGroup: Creates deployment at management group scope.
+- Tenant: Creates deployment at tenant scope.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: TenantParameterSetWithTemplateObjectParameterObject, TenantParameterSetWithTemplateObjectParameterFile, TenantParameterSetWithTemplateFileParameterObject, TenantParameterSetWithTemplateFileParameterFile, TenantParameterSetWithParameterlessTemplateObject, TenantParameterSetWithParameterlessTemplateFile
+Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments.DeploymentScopeType
+Parameter Sets: (All)
 Aliases:
+Accepted values: Subscription, ResourceGroup, ManagementGroup, Tenant
 
 Required: True
 Position: Named
-Default value: None
+Default value: Subscription
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

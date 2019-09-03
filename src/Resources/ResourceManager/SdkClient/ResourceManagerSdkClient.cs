@@ -378,13 +378,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
                 if (listDeploymentOperations != null)
                 {
-                    ////listDeploymentOperations(resourceGroup, deploymentName, basicDeployment);
                     listDeploymentOperations();
                 }
-
-                ////var getDeploymentTask = resourceGroup != null
-                ////    ? ResourceManagementClient.Deployments.GetWithHttpMessagesAsync(resourceGroup, deploymentName)
-                ////    : ResourceManagementClient.Deployments.GetAtSubscriptionScopeWithHttpMessagesAsync(deploymentName);
 
                 var getDeploymentTask = getDeployment();
 
@@ -454,32 +449,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                                 newOperations.Add(op);
                             }
                         }
-
-                        ////var subscriptionId = ResourceIdUtility.GetSubscriptionId(operation.Properties.TargetResource.Id);
-
-
-                        ////var resourceGroupName = ResourceIdUtility.GetResourceGroupName(operation.Properties.TargetResource.Id);
-                        ////var deploymentName = operation.Properties.TargetResource.ResourceName;
-
-                        ////// (tiano): specify the subscription id.
-                        ////if (this.CheckDeploymentExistence(subscriptionId, resourceGroupName, deploymentName) == true)
-                        ////{
-                        ////    List<DeploymentOperation> newNestedOperations = new List<DeploymentOperation>();
-
-                        ////    var result = this.ListDeploymentOperations(subscriptionId, resourceGroupName, deploymentName);
-
-                        ////    newNestedOperations = GetNewOperations(operations, result);
-
-                        ////    foreach (DeploymentOperation op in newNestedOperations)
-                        ////    {
-                        ////        DeploymentOperation nestedOperationWithSameIdAndProvisioningState = newOperations.Find(o => o.OperationId.Equals(op.OperationId) && o.Properties.ProvisioningState.Equals(op.Properties.ProvisioningState));
-
-                        ////        if (nestedOperationWithSameIdAndProvisioningState == null)
-                        ////        {
-                        ////            newOperations.Add(op);
-                        ////        }
-                        ////    }
-                        ////}
                     }
                 }
             }
@@ -768,9 +737,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
         public string GetDeploymentTemplateAtTenantScope(string deploymentName)
         {
-            // (tiano): to do.
+            var exportResult = ResourceManagementClient.Deployments.ExportTemplateAtTenantScope(deploymentName);
 
-            return null;
+            return JToken.FromObject(exportResult.Template).ToString();
         }
 
         public string GetDeploymentTemplateAtManagementGroup(string managementGroupId, string deploymentName)
@@ -1022,45 +991,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         }
 
         /// <summary>
-        /// Filters the deployments at subscription scope.
-        /// </summary>
-        /// <param name="options">The filtering options</param>
-        /// <returns>The filtered list of deployments</returns>
-        public virtual List<PSDeployment> FilterDeploymentsAtSubscriptionScope(FilterDeploymentOptions options)
-        {
-            List<PSDeployment> deployments = new List<PSDeployment>();
-            string name = options.DeploymentName;
-            List<string> excludedProvisioningStates = options.ExcludedProvisioningStates ?? new List<string>();
-
-            if (!string.IsNullOrEmpty(name))
-            {
-                deployments.Add(ResourceManagementClient.Deployments.GetAtSubscriptionScope(name).ToPSDeployment());
-            }
-            else
-            {
-                var result = ResourceManagementClient.Deployments.ListAtSubscriptionScope();
-
-                deployments.AddRange(result.Select(d => d.ToPSDeployment()));
-
-                while (!string.IsNullOrEmpty(result.NextPageLink))
-                {
-                    result = ResourceManagementClient.Deployments.ListAtSubscriptionScopeNext(result.NextPageLink);
-                    deployments.AddRange(result.Select(d => d.ToPSDeployment()));
-                }
-            }
-
-            if (excludedProvisioningStates.Count > 0)
-            {
-                return deployments.Where(d => excludedProvisioningStates
-                    .All(s => !s.Equals(d.ProvisioningState, StringComparison.OrdinalIgnoreCase))).ToList();
-            }
-            else
-            {
-                return deployments;
-            }
-        }
-
-        /// <summary>
         /// Filters the resource group deployments with provided options
         /// </summary>
         /// <param name="options">The filtering options</param>
@@ -1106,28 +1036,31 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         }
 
         /// <summary>
-        /// List deployments at tenant scope.
+        /// List deployments with fiter options.
         /// </summary>
         /// <param name="options">The filtering options</param>
         private List<PSDeployment> ListDeployments(FilterDeploymentOptions options)
         {
             List<DeploymentExtended> deployments = null;
 
-            if (options.IsTenantScope)
+            switch (options.ScopeType)
             {
-                deployments = this.ListDeploymentsAtTenantScope(options.DeploymentName);
-            }
-            else if (!string.IsNullOrEmpty(options.ManagementGroupId))
-            {
-                deployments = this.ListDeploymentsAtManagementGroup(options.ManagementGroupId, options.DeploymentName);
-            }
-            else if (!string.IsNullOrEmpty(options.ResourceGroupName))
-            {
-                deployments = this.ListDeploymentsAtResourceGroup(options.ResourceGroupName, options.DeploymentName);
-            }
-            else
-            {
-                deployments = this.ListDeploymentsAtSubscription(options.DeploymentName);
+                case DeploymentScopeType.Tenant:
+                    deployments = this.ListDeploymentsAtTenantScope(options.DeploymentName);
+                    break;
+
+                case DeploymentScopeType.ManagementGroup:
+                    deployments = this.ListDeploymentsAtManagementGroup(options.ManagementGroupId, options.DeploymentName);
+                    break;
+
+                case DeploymentScopeType.ResourceGroup:
+                    deployments = this.ListDeploymentsAtResourceGroup(options.ResourceGroupName, options.DeploymentName);
+                    break;
+
+                case DeploymentScopeType.Subscription:
+                default:
+                    deployments = this.ListDeploymentsAtSubscription(options.DeploymentName);
+                    break;
             }
 
             return deployments.Select(deployment => deployment.ToPSDeployment(managementGroupId: options.ManagementGroupId, resourceGroupName: options.ResourceGroupName)).ToList();
@@ -1141,7 +1074,22 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         {
             List<DeploymentExtended> deployments = new List<DeploymentExtended>();
 
-            // (tiano): to do.
+            if (!string.IsNullOrEmpty(deploymentName))
+            {
+                deployments.Add(ResourceManagementClient.Deployments.GetAtTenantScope(deploymentName));
+            }
+            else
+            {
+                var result = ResourceManagementClient.Deployments.ListAtTenantScope();
+
+                deployments.AddRange(result);
+
+                while (!string.IsNullOrEmpty(result.NextPageLink))
+                {
+                    result = ResourceManagementClient.Deployments.ListAtTenantScopeNext(result.NextPageLink);
+                    deployments.AddRange(result);
+                }
+            }
 
             return deployments;
         }
@@ -1303,7 +1251,22 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         {
             List<PSDeploymentOperation> deploymentOperations = new List<PSDeploymentOperation>();
 
-            // (tiano): to do.
+            if (!string.IsNullOrEmpty(operationId))
+            {
+                deploymentOperations.Add(ResourceManagementClient.DeploymentOperations.GetAtTenantScope(deploymentName, operationId).ToPSDeploymentOperation());
+            }
+            else
+            {
+                var result = ResourceManagementClient.DeploymentOperations.ListAtTenantScope(deploymentName);
+
+                deploymentOperations.AddRange(result.Select(d => d.ToPSDeploymentOperation()));
+
+                while (!string.IsNullOrEmpty(result.NextPageLink))
+                {
+                    result = ResourceManagementClient.DeploymentOperations.ListAtTenantScopeNext(result.NextPageLink);
+                    deploymentOperations.AddRange(result.Select(d => d.ToPSDeploymentOperation()));
+                }
+            }
 
             return deploymentOperations;
         }
@@ -1473,7 +1436,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         /// <param name="deploymentName">Deployment name</param>
         public virtual void DeleteDeploymentAtTenantScope(string deploymentName)
         {
-            // (tiano): to do
+            if (!ResourceManagementClient.Deployments.CheckExistenceAtTenantScope(deploymentName))
+            {
+                throw new ArgumentException(string.Format(ProjectResources.DeploymentDoesntExistAtTenantScope, deploymentName));
+            }
+
+            ResourceManagementClient.Deployments.DeleteAtTenantScope(deploymentName);
         }
 
         /// <summary>
@@ -1527,7 +1495,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         /// <param name="deploymentName">Deployment name</param>
         public virtual void CancelResourceGroupDeployment(string resourceGroupName, string deploymentName)
         {
-            FilterDeploymentOptions options = new FilterDeploymentOptions
+            FilterDeploymentOptions options = new FilterDeploymentOptions(DeploymentScopeType.ResourceGroup)
             {
                 DeploymentName = deploymentName,
                 ResourceGroupName = resourceGroupName
@@ -1584,21 +1552,24 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
             List<PSDeployment> deployments = this.FilterDeployments(options);
 
-            if (options.IsTenantScope)
+            switch (options.ScopeType)
             {
-                this.CancelDeploymentAtTenantScope(deployments, options.DeploymentName);
-            }
-            else if (!string.IsNullOrEmpty(options.ManagementGroupId))
-            {
-                this.CancelDeploymentAtManagementGroup(deployments, options.ManagementGroupId, options.DeploymentName);
-            }
-            else if (!string.IsNullOrEmpty(options.ResourceGroupName))
-            {
-                this.CancelDeploymentAtResourceGroup(deployments, options.ResourceGroupName, options.DeploymentName);
-            }
-            else
-            {
-                this.CancelDeploymentAtSubscriptionScope(deployments, options.DeploymentName);
+                case DeploymentScopeType.Tenant:
+                    this.CancelDeploymentAtTenantScope(deployments, options.DeploymentName);
+                    break;
+
+                case DeploymentScopeType.ManagementGroup:
+                    this.CancelDeploymentAtManagementGroup(deployments, options.ManagementGroupId, options.DeploymentName);
+                    break;
+
+                case DeploymentScopeType.ResourceGroup:
+                    this.CancelDeploymentAtResourceGroup(deployments, options.ResourceGroupName, options.DeploymentName);
+                    break;
+
+                case DeploymentScopeType.Subscription:
+                default:
+                    this.CancelDeploymentAtSubscriptionScope(deployments, options.DeploymentName);
+                    break;
             }
         }
 
@@ -1615,7 +1586,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
             else
             {
-                // (tiano): to do.
+                ResourceManagementClient.Deployments.CancelAtTenantScope(deployments.First().DeploymentName);
             }
         }
 

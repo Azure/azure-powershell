@@ -109,20 +109,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(ParameterSetName = TenantParameterSetWithTemplateObjectParameterObject,
-            Mandatory = true, HelpMessage = "Create deployment at tenant scope if specified.")]
-        [Parameter(ParameterSetName = TenantParameterSetWithTemplateObjectParameterFile,
-            Mandatory = true, HelpMessage = "Create deployment at tenant scope if specified.")]
-        [Parameter(ParameterSetName = TenantParameterSetWithTemplateFileParameterObject,
-            Mandatory = true, HelpMessage = "Create deployment at tenant scope if specified.")]
-        [Parameter(ParameterSetName = TenantParameterSetWithTemplateFileParameterFile,
-            Mandatory = true, HelpMessage = "Create deployment at tenant scope if specified.")]
-        [Parameter(ParameterSetName = TenantParameterSetWithParameterlessTemplateObject,
-            Mandatory = true, HelpMessage = "Create deployment at tenant scope if specified.")]
-        [Parameter(ParameterSetName = TenantParameterSetWithParameterlessTemplateFile,
-            Mandatory = true, HelpMessage = "Create deployment at tenant scope if specified.")]
-        public SwitchParameter Tenant { get; set; }
-
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The deployment mode.")]
         public DeploymentMode Mode { get; set; }
 
@@ -147,7 +133,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             {
                 ScopeType = this.ScopeType,
                 Location = this.Location,
-                IsTenantScope = this.Tenant,
                 ManagementGroupId = this.ManagementGroupId,
                 ResourceGroupName = this.ResourceGroupName,
                 DeploymentName = this.Name,

@@ -298,6 +298,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             Deployment deploymentFromValidate = new Deployment();
             PSDeploymentCmdletParameters parameters = new PSDeploymentCmdletParameters()
             {
+                ScopeType = DeploymentScopeType.ResourceGroup,
                 ResourceGroupName = resourceGroupName,
                 DeploymentMode = DeploymentMode.Incremental,
                 TemplateFile = templateFile,
@@ -339,6 +340,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             Deployment deploymentFromValidate = new Deployment();
             PSDeploymentCmdletParameters parameters = new PSDeploymentCmdletParameters()
             {
+                ScopeType = DeploymentScopeType.ResourceGroup,
                 ResourceGroupName = resourceGroupName,
                 DeploymentMode = DeploymentMode.Incremental,
                 TemplateFile = templateFile,
@@ -1277,7 +1279,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void FiltersOneResourceGroupDeployment()
         {
-            FilterDeploymentOptions options = new FilterDeploymentOptions()
+            FilterDeploymentOptions options = new FilterDeploymentOptions(DeploymentScopeType.ResourceGroup)
             {
                 DeploymentName = deploymentName,
                 ResourceGroupName = resourceGroupName

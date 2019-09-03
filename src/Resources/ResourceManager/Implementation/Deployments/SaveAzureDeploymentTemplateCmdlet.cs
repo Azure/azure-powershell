@@ -14,10 +14,14 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
+    using System;
     using System.Management.Automation;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
+    using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 
     /// <summary>
     /// Saves the deployment template to a file on disk.
@@ -33,11 +37,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         internal const string DeploymentObjectParameterSet = "SaveByDeploymentObject";
 
+        [Parameter(ParameterSetName = SaveAzureDeploymentTemplateCmdlet.ResourceGroupParameterSetWithDeploymentName, Mandatory = true,
+            HelpMessage = "The scope type of the deployment.")]
+        [Parameter(ParameterSetName = SaveAzureDeploymentTemplateCmdlet.SubscriptionParameterSetWithDeploymentName, Mandatory = true,
+            HelpMessage = "The scope type of the deployment.")]
+        [Parameter(ParameterSetName = SaveAzureDeploymentTemplateCmdlet.ManagementGroupParameterSetWithDeploymentName, Mandatory = true,
+            HelpMessage = "The scope type of the deployment.")]
         [Parameter(ParameterSetName = SaveAzureDeploymentTemplateCmdlet.TenantParameterSetWithDeploymentName, Mandatory = true,
-            HelpMessage = "Get deployment at tenant scope if specified.")]
-        [Parameter(ParameterSetName = SaveAzureDeploymentTemplateCmdlet.DeploymentObjectParameterSet, Mandatory = false,
-            HelpMessage = "Get deployment at tenant scope if specified.")]
-        public SwitchParameter Tenant { get; set; }
+            HelpMessage = "The scope type of the deployment.")]
+        [ValidateNotNullOrEmpty]
+        public DeploymentScopeType? ScopeType { get; set; }
 
         [Parameter(ParameterSetName = SaveAzureDeploymentTemplateCmdlet.ManagementGroupParameterSetWithDeploymentName, Mandatory = true,
             HelpMessage = "The management group id.")]
@@ -88,20 +97,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             base.OnProcessRecord();
 
-            var deploymentName = this.GetDeploymetName();
-            var managementGroupId = this.GetManagementGroupId();
-            var resourceGroupName = this.GetResourceGroupName();
+            this.ValidateScopeTypeMatches();
+            var deploymentFilterOptions = this.GetDeploymentFilterOptions();
 
-            if (ShouldProcess(deploymentName, VerbsData.Save))
+            if (ShouldProcess(deploymentFilterOptions.DeploymentName, VerbsData.Save))
             {
-                var template = this.GetDeploymentTemplate(this.Tenant, managementGroupId, resourceGroupName, deploymentName);
+                var template = this.GetDeploymentTemplate(deploymentFilterOptions);
 
                 string path = FileUtility.SaveTemplateFile(
-                    templateName: deploymentName,
+                    templateName: deploymentFilterOptions.DeploymentName,
                     contents: template,
                     outputPath:
                         string.IsNullOrEmpty(this.Path)
-                            ? System.IO.Path.Combine(CurrentPath(), deploymentName)
+                            ? System.IO.Path.Combine(CurrentPath(), deploymentFilterOptions.DeploymentName)
                             : this.TryResolvePath(this.Path),
                     overwrite: this.Force,
                     shouldContinue: ShouldContinue);
@@ -110,64 +118,93 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             }
         }
 
-        private string GetDeploymentTemplate(bool isTenantDeployment, string managementGroupId, string resourceGroupName, string deploymentName)
+        private string GetDeploymentTemplate(FilterDeploymentOptions options)
         {
-            if (isTenantDeployment)
+            switch (options.ScopeType)
             {
-                return ResourceManagerSdkClient.GetDeploymentTemplateAtTenantScope(deploymentName);
+                case DeploymentScopeType.Tenant:
+                    return ResourceManagerSdkClient.GetDeploymentTemplateAtTenantScope(options.DeploymentName);
+
+                case DeploymentScopeType.ManagementGroup:
+                    return ResourceManagerSdkClient.GetDeploymentTemplateAtManagementGroup(options.ManagementGroupId, options.DeploymentName);
+
+                case DeploymentScopeType.ResourceGroup:
+                    return ResourceManagerSdkClient.GetDeploymentTemplateAtResourceGroup(options.ResourceGroupName, options.DeploymentName);
+
+                case DeploymentScopeType.Subscription:
+                default:
+                    return ResourceManagerSdkClient.GetDeploymentTemplateAtSubscrpitionScope(options.DeploymentName);
             }
-            else if (!string.IsNullOrEmpty(managementGroupId))
+        }
+
+        private void ValidateScopeTypeMatches()
+        {
+            if (this.ScopeType.HasValue)
             {
-                return ResourceManagerSdkClient.GetDeploymentTemplateAtManagementGroup(managementGroupId, deploymentName);
+                if (this.ScopeType == DeploymentScopeType.ResourceGroup && string.IsNullOrEmpty(this.ResourceGroupName))
+                {
+                    WriteExceptionError(new ArgumentException(ProjectResources.InvalidParameterForResourceGroupScope));
+                }
+
+                if (this.ScopeType == DeploymentScopeType.ManagementGroup && string.IsNullOrEmpty(this.ManagementGroupId))
+                {
+                    WriteExceptionError(new ArgumentException(ProjectResources.InvalidParameterForManagementGroupScope));
+                }
+
+                if ((this.ScopeType == DeploymentScopeType.Subscription || this.ScopeType == DeploymentScopeType.Tenant)
+                    && (!string.IsNullOrEmpty(this.ResourceGroupName) || !string.IsNullOrEmpty(this.ManagementGroupId)))
+                {
+                    WriteExceptionError(new ArgumentException(string.Format(ProjectResources.InvalidParameterForTenantAndSubscriptionScope, this.ScopeType.ToString())));
+                }
             }
-            else if (!string.IsNullOrEmpty(resourceGroupName))
+        }
+
+        private FilterDeploymentOptions GetDeploymentFilterOptions()
+        {
+            if (this.ScopeType.HasValue)
             {
-                return ResourceManagerSdkClient.GetDeploymentTemplateAtResourceGroup(resourceGroupName, deploymentName);
+                return new FilterDeploymentOptions(this.ScopeType.Value)
+                {
+                    ManagementGroupId = this.ManagementGroupId,
+                    ResourceGroupName = this.ResourceGroupName,
+                    DeploymentName = this.DeploymentName
+                };
             }
             else
             {
-                return ResourceManagerSdkClient.GetDeploymentTemplateAtSubscrpitionScope(deploymentName);
-            }
-        }
+                var options = new FilterDeploymentOptions(DeploymentScopeType.Subscription);
+                options.DeploymentName = ResourceIdUtility.GetDeploymentName(this.DeploymentObject.Id);
 
-        private string GetDeploymetName()
-        {
-            if (!string.IsNullOrEmpty(this.DeploymentName))
-            {
-                return this.DeploymentName;
-            }
-            else
-            {
-                return this.DeploymentObject.DeploymentName;
-            }
-        }
+                var deploymentId = this.DeploymentObject.Id;
+                var subscriptionId = ResourceIdUtility.GetSubscriptionId(deploymentId);
 
-        private string GetManagementGroupId()
-        {
-            if (!string.IsNullOrEmpty(this.ManagementGroupId))
-            {
-                return this.ManagementGroupId;
-            }
-            else if (this.DeploymentObject != null)
-            {
-                return this.DeploymentObject.ManagementGroupId;
-            }
+                if (!string.IsNullOrEmpty(subscriptionId))
+                {
+                    var resourceGroupName = ResourceIdUtility.GetResourceGroupName(deploymentId);
 
-            return null;
-        }
+                    if (!string.IsNullOrEmpty(resourceGroupName))
+                    {
+                        options.ScopeType = DeploymentScopeType.ResourceGroup;
+                        options.ResourceGroupName = resourceGroupName;
+                    }
+                }
+                else
+                {
+                    var managementGroupId = ResourceIdUtility.GetManagementGroupId(deploymentId);
 
-        private string GetResourceGroupName()
-        {
-            if (!string.IsNullOrEmpty(this.ResourceGroupName))
-            {
-                return this.ResourceGroupName;
-            }
-            else if (this.DeploymentObject != null)
-            {
-                return this.DeploymentObject.ResourceGroupName;
-            }
+                    if (!string.IsNullOrEmpty(managementGroupId))
+                    {
+                        options.ScopeType = DeploymentScopeType.ManagementGroup;
+                        options.ManagementGroupId = managementGroupId;
+                    }
+                    else
+                    {
+                        options.ScopeType = DeploymentScopeType.Tenant;
+                    }
+                }
 
-            return null;
+                return options;
+            }
         }
     }
 }

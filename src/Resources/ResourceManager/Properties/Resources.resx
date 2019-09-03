@@ -147,6 +147,9 @@
   <data name="DeploymentDoesntExistAtManagementGroupScope" xml:space="preserve">
     <value>Deployment '{0}' doesn't exist at management group '{1}'.</value>
   </data>
+  <data name="DeploymentDoesntExistAtTenantScope" xml:space="preserve">
+    <value>Deployment '{0}' doesn't exist in the current tenant.</value>
+  </data>
   <data name="DeploymentWithNameNotFound" xml:space="preserve">
     <value>Cannot find a deployment with name '{0}'.</value>
   </data>

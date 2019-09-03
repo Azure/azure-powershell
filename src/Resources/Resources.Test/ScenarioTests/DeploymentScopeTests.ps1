@@ -25,21 +25,21 @@ function Test-DeploymentEndToEnd-SubscriptionScope
 		$location = "WestUS"
 
 		# Test
-		$deployment = New-AzDeployment -Name $deploymentName -Location $location -TemplateFile subscription_level_template.json -TemplateParameterFile subscription_level_parameters.json
+		$deployment = New-AzDeployment -ScopeType Subscription -Name $deploymentName -Location $location -TemplateFile subscription_level_template.json -TemplateParameterFile subscription_level_parameters.json
     
 		# Assert
 		Assert-AreEqual Succeeded $deployment.ProvisioningState
     
-		$getByName = Get-AzDeployment -Name $deploymentName
+		$getByName = Get-AzDeployment -ScopeType Subscription -Name $deploymentName
 		Assert-AreEqual $getByName.DeploymentName $deployment.DeploymentName
 
-		$templatePath = Save-AzDeploymentTemplate -Name $deploymentName -Force
+		$templatePath = Save-AzDeploymentTemplate -ScopeType Subscription -Name $deploymentName -Force
 		Assert-NotNull $templatePath.Path
 
-		$operations = Get-AzDeploymentOperation -DeploymentName $deploymentName
+		$operations = Get-AzDeploymentOperation -ScopeType Subscription -DeploymentName $deploymentName
 		Assert-AreEqual 5 @($operations).Count
 
-		Remove-AzDeployment -Name $deploymentName
+		Remove-AzDeployment -ScopeType Subscription -Name $deploymentName
 	}
 	finally
 	{
@@ -103,21 +103,21 @@ function Test-DeploymentEndToEnd-ResourceGroup
 		New-AzResourceGroup -Name $rgname -Location $location
 
 		# Test
-		$deployment = New-AzDeployment -ResourceGroupName $rgname -Name $deploymentName -TemplateFile sampleDeploymentTemplate.json -TemplateParameterFile sampleDeploymentTemplateParams.json -storageAccountName $storageAccountName
+		$deployment = New-AzDeployment -ScopeType ResourceGroup -ResourceGroupName $rgname -Name $deploymentName -TemplateFile sampleDeploymentTemplate.json -TemplateParameterFile sampleDeploymentTemplateParams.json -storageAccountName $storageAccountName
     
 		# Assert
 		Assert-AreEqual Succeeded $deployment.ProvisioningState
     
-		$getByName = Get-AzDeployment -ResourceGroupName $rgname -Name $deploymentName
+		$getByName = Get-AzDeployment -ScopeType ResourceGroup -ResourceGroupName $rgname -Name $deploymentName
 		Assert-AreEqual $getByName.DeploymentName $deployment.DeploymentName
 
-		$templatePath = Save-AzDeploymentTemplate -ResourceGroupName $rgname -Name $deploymentName -Force
+		$templatePath = Save-AzDeploymentTemplate -ScopeType ResourceGroup -ResourceGroupName $rgname -Name $deploymentName -Force
 		Assert-NotNull $templatePath.Path
 
-		$operations = Get-AzDeploymentOperation -ResourceGroupName $rgname -DeploymentName $deploymentName
+		$operations = Get-AzDeploymentOperation -ScopeType ResourceGroup -ResourceGroupName $rgname -DeploymentName $deploymentName
 		Assert-AreEqual 3 @($operations).Count
 
-		Remove-AzDeployment -ResourceGroupName $rgname -Name $deploymentName
+		Remove-AzDeployment -ScopeType ResourceGroup -ResourceGroupName $rgname -Name $deploymentName
 	}
 	finally
 	{
@@ -180,7 +180,7 @@ function Test-DeploymentEndToEnd-ManagementGroup
 		$location = "EastUS"
 
 		# Test
-		$deployment = New-AzDeployment -ManagementGroupId "tiano-mgtest01" -Name $deploymentName -Location $location -TemplateFile management_group_level_template.json -TemplateParameterFile management_group_level_parameters.json
+		$deployment = New-AzDeployment -ScopeType ManagementGroup -ManagementGroupId "tiano-mgtest01" -Name $deploymentName -Location $location -TemplateFile management_group_level_template.json -TemplateParameterFile management_group_level_parameters.json
     
 		# Assert
 		Assert-AreEqual Succeeded $deployment.ProvisioningState
@@ -190,16 +190,16 @@ function Test-DeploymentEndToEnd-ManagementGroup
 		$getById = Get-AzDeployment -Id $deploymentId
 		Assert-AreEqual $getById.DeploymentName $deployment.DeploymentName
 
-		$getByName = Get-AzDeployment -ManagementGroupId "tiano-mgtest01" -Name $deploymentName
+		$getByName = Get-AzDeployment -ScopeType ManagementGroup -ManagementGroupId "tiano-mgtest01" -Name $deploymentName
 		Assert-AreEqual $getByName.DeploymentName $deployment.DeploymentName
 		
-		$templatePath = Save-AzDeploymentTemplate -ManagementGroupId "tiano-mgtest01" -Name $deploymentName -Force
+		$templatePath = Save-AzDeploymentTemplate -ScopeType ManagementGroup -ManagementGroupId "tiano-mgtest01" -Name $deploymentName -Force
 		Assert-NotNull $templatePath.Path
 		
-		$operations = Get-AzDeploymentOperation -ManagementGroup "tiano-mgtest01" -DeploymentName $deploymentName
+		$operations = Get-AzDeploymentOperation -ScopeType ManagementGroup -ManagementGroup "tiano-mgtest01" -DeploymentName $deploymentName
 		Assert-AreEqual 4 @($operations).Count
 		#
-		Remove-AzDeployment -ManagementGroup "tiano-mgtest01" -Name $deploymentName
+		Remove-AzDeployment -ScopeType ManagementGroup -ManagementGroup "tiano-mgtest01" -Name $deploymentName
 	}
 	finally
 	{
@@ -241,5 +241,45 @@ function Test-DeploymentAsJob-ManagementGroup
 	finally
 	{
 
+	}
+}
+
+<#
+.SYNOPSIS
+Tests tenant level deployment.
+#>
+function Test-DeploymentEndToEnd-TenantScope
+{
+    try
+	{
+        # Setup
+		$deploymentName = Get-ResourceName
+		$location = "EastUS"
+
+		# Test
+		$deployment = New-AzDeployment -ScopeType Tenant -Name $deploymentName -Location $location -TemplateFile tenant_level_template.json
+    
+		# Assert
+		Assert-AreEqual Succeeded $deployment.ProvisioningState
+    
+		$deploymentId = "/providers/Microsoft.Resources/deployments/$deploymentName"
+		
+		$getById = Get-AzDeployment -Id $deploymentId
+		Assert-AreEqual $getById.DeploymentName $deployment.DeploymentName
+
+		$getByName = Get-AzDeployment -ScopeType Tenant -Name $deploymentName
+		Assert-AreEqual $getByName.DeploymentName $deployment.DeploymentName
+		
+		$templatePath = Save-AzDeploymentTemplate -ScopeType Tenant -Name $deploymentName -Force
+		Assert-NotNull $templatePath.Path
+		
+		$operations = Get-AzDeploymentOperation -ScopeType Tenant -DeploymentName $deploymentName
+		Assert-AreEqual 4 @($operations).Count
+		#
+		Remove-AzDeployment -ScopeType Tenant -Name $deploymentName
+	}
+	finally
+	{
+	    
 	}
 }
