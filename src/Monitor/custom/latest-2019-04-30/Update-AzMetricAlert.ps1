@@ -55,14 +55,6 @@ param(
     # the flag that indicates whether the alert should be auto resolved or not.
     ${AutoMitigate},
 
-    #[Parameter(HelpMessage='defines the specific alert criteria information. To construct, see NOTES section for CRITERION properties and create a hash table.')]
-    #[Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Body')]
-    #[Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.Info(SerializedName='criteria', PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20180301.IMetricAlertCriteria]), Description='defines the specific alert criteria information.')]
-    #[Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20180301.IMetricAlertCriteria]
-    ## defines the specific alert criteria information.
-    ## To construct, see NOTES section for CRITERION properties and create a hash table.
-    #${Criterion},
-
     # CUSTOM
     [Parameter(ParameterSetName="UpdateExpandedByResourceId", Mandatory, HelpMessage='The rule criteria that defines the conditions of the alert rule.')]
     [Parameter(ParameterSetName="UpdateExpandedByScope", Mandatory, HelpMessage='The rule criteria that defines the conditions of the alert rule.')]
@@ -93,13 +85,6 @@ param(
     [System.TimeSpan]
     # how often the metric alert is evaluated represented in ISO 8601 duration format.
     ${EvaluationFrequency},
-
-    #[Parameter(HelpMessage='the list of resource id''s that this metric alert is scoped to.')]
-    #[Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Body')]
-    #[Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.Info(SerializedName='scopes', PossibleTypes=([System.String]), Description='the list of resource id''s that this metric alert is scoped to.')]
-    #[System.String[]]
-    ## the list of resource id's that this metric alert is scoped to.
-    #${Scope},
 
     [Parameter(HelpMessage='Alert severity {0, 1, 2, 3, 4}')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Body')]

@@ -27,14 +27,6 @@ param(
     # The Azure subscription Id.
     ${SubscriptionId},
 
-    #[Parameter(Mandatory, HelpMessage='the condition that results in the alert rule being activated. To construct, see NOTES section for CONDITION properties and create a hash table.')]
-    #[Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Body')]
-    #[Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.Info(SerializedName='condition', Required, PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20160301.IRuleCondition]), Description='the condition that results in the alert rule being activated.')]
-    #[Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20160301.IRuleCondition]
-    ## the condition that results in the alert rule being activated.
-    ## To construct, see NOTES section for CONDITION properties and create a hash table.
-    #${Condition},
-
     # CUSTOM
     [Parameter(Mandatory, HelpMessage='The window size for rule.')]
     [System.TimeSpan]
@@ -68,7 +60,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.Info(SerializedName='isEnabled', Required, PossibleTypes=([System.Management.Automation.SwitchParameter]), Description='the flag that indicates whether the alert rule is enabled.')]
     [System.Management.Automation.SwitchParameter]
     # the flag that indicates whether the alert rule is enabled.
-    ${IsEnabled},
+    ${Enabled},
 
     [Parameter(Mandatory, HelpMessage='Resource location')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Body')]
@@ -76,13 +68,6 @@ param(
     [System.String]
     # Resource location
     ${Location},
-
-    #[Parameter(Mandatory, HelpMessage='the name of the alert rule.')]
-    #[Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Body')]
-    #[Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.Info(SerializedName='name', Required, PossibleTypes=([System.String]), Description='the name of the alert rule.')]
-    #[System.String]
-    ## the name of the alert rule.
-    #${PropertiesName},
 
     [Parameter(HelpMessage='the array of actions that are performed when the alert rule becomes active, and when an alert condition is resolved. To construct, see NOTES section for ACTION properties and create a hash table.')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Body')]

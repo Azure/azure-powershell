@@ -26,14 +26,6 @@ param(
     [System.String]
     # The Azure subscription Id.
     ${SubscriptionId},
-
-    #[Parameter(Mandatory, HelpMessage='defines the specific alert criteria information. To construct, see NOTES section for CRITERION properties and create a hash table.')]
-    #[Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Body')]
-    #[Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.Info(SerializedName='criteria', Required, PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20180301.IMetricAlertCriteria]), Description='defines the specific alert criteria information.')]
-    #[Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20180301.IMetricAlertCriteria]
-    ## defines the specific alert criteria information.
-    ## To construct, see NOTES section for CRITERION properties and create a hash table.
-    #${Criterion},
     
     # CUSTOM
     [Parameter(Mandatory, HelpMessage='The rule criteria that defines the conditions of the alert rule.')]
@@ -63,13 +55,6 @@ param(
     # how often the metric alert is evaluated represented in ISO 8601 duration format.
     ${EvaluationFrequency},
 
-    # [Parameter(Mandatory, HelpMessage='Resource location')]
-    # [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Body')]
-    # [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.Info(SerializedName='location', Required, PossibleTypes=([System.String]), Description='Resource location')]
-    # [System.String]
-    # # Resource location
-    # ${Location},
-
     [Parameter(Mandatory, HelpMessage='Alert severity {0, 1, 2, 3, 4}')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.Info(SerializedName='severity', Required, PossibleTypes=([System.Int32]), Description='Alert severity {0, 1, 2, 3, 4}')]
@@ -98,13 +83,6 @@ param(
     [System.Management.Automation.SwitchParameter]
     # the flag that indicates whether the alert should be auto resolved or not.
     ${AutoMitigate},
-
-    #[Parameter(HelpMessage='the list of resource id''s that this metric alert is scoped to.')]
-    #[Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Body')]
-    #[Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.Info(SerializedName='scopes', PossibleTypes=([System.String]), Description='the list of resource id''s that this metric alert is scoped to.')]
-    #[System.String[]]
-    ## the list of resource id's that this metric alert is scoped to.
-    #${Scope},
 
     [Parameter(HelpMessage='Resource tags')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Body')]

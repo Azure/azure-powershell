@@ -40,14 +40,6 @@ param(
     # To construct, see NOTES section for ACTION properties and create a hash table.
     ${Action},
 
-    # [Parameter(HelpMessage='the condition that results in the alert rule being activated. To construct, see NOTES section for CONDITION properties and create a hash table.')]
-    # [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Body')]
-    # [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.Info(SerializedName='condition', PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20160301.IRuleCondition]), Description='the condition that results in the alert rule being activated.')]
-    # [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20160301.IRuleCondition]
-    # # the condition that results in the alert rule being activated.
-    # # To construct, see NOTES section for CONDITION properties and create a hash table.
-    # ${Condition},
-
     # CUSTOM
     [Parameter(Mandatory, HelpMessage='The window size for rule.')]
     [System.TimeSpan]
@@ -88,14 +80,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.Info(SerializedName='isEnabled', PossibleTypes=([System.Management.Automation.SwitchParameter]), Description='the flag that indicates whether the alert rule is enabled.')]
     [System.Management.Automation.SwitchParameter]
     # the flag that indicates whether the alert rule is enabled.
-    ${IsEnabled},
-
-    # [Parameter(HelpMessage='the name of the alert rule.')]
-    # [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Body')]
-    # [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.Info(SerializedName='name', PossibleTypes=([System.String]), Description='the name of the alert rule.')]
-    # [System.String]
-    # # the name of the alert rule.
-    # ${PropertiesName},
+    ${Enabled},
 
     [Parameter(HelpMessage='Resource tags')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Body')]

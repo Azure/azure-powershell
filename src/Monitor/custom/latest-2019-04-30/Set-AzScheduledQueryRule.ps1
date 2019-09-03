@@ -26,14 +26,6 @@ param(
     # The Azure subscription Id.
     ${SubscriptionId},
 
-    # [Parameter(Mandatory, HelpMessage='Action needs to be taken on rule execution. To construct, see NOTES section for ACTION properties and create a hash table.')]
-    # [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Body')]
-    # [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.Info(SerializedName='action', Required, PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20180416.IAction]), Description='Action needs to be taken on rule execution.')]
-    # [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20180416.IAction]
-    # # Action needs to be taken on rule execution.
-    # # To construct, see NOTES section for ACTION properties and create a hash table.
-    # ${Action},
-
     # CUSTOM
     [Parameter(Mandatory, HelpMessage='The scheduled query rule Alerting Action.')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.Info(Required, PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20180416.AlertingAction]), Description='The scheduled query rule Alerting Action.')]

@@ -1,15 +1,3 @@
-<#
-.Synopsis
-Lists the metric definitions for the resource.
-.Description
-Lists the metric definitions for the resource.
-.Example
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.monitor/get-azmetricdefinition
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api201801.IMetricDefinition
-.Link
-https://docs.microsoft.com/en-us/powershell/module/az.monitor/get-azmetricdefinition
-#>
 function Get-AzMetricDefinition {
 [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api201801.IMetricDefinition')]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]

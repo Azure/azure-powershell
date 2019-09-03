@@ -15,7 +15,7 @@ To update other fields use the CreateOrUpdate method.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzAlertRule -Name <String> -ResourceGroupName <String> -IsEnabled -MetricName <String>
+Update-AzAlertRule -Name <String> -ResourceGroupName <String> -Enabled -MetricName <String>
  -Operator <ConditionOperator> -TargetResourceId <String> -Threshold <Double>
  -TimeAggregationOperator <TimeAggregationOperator> -WindowSize <TimeSpan> [-SubscriptionId <String>]
  [-Action <IRuleAction[]>] [-Description <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
@@ -24,11 +24,10 @@ Update-AzAlertRule -Name <String> -ResourceGroupName <String> -IsEnabled -Metric
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzAlertRule -InputObject <IMonitorIdentity> -IsEnabled -MetricName <String>
- -Operator <ConditionOperator> -TargetResourceId <String> -Threshold <Double>
- -TimeAggregationOperator <TimeAggregationOperator> -WindowSize <TimeSpan> [-Action <IRuleAction[]>]
- [-Description <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzAlertRule -InputObject <IMonitorIdentity> -Enabled -MetricName <String> -Operator <ConditionOperator>
+ -TargetResourceId <String> -Threshold <Double> -TimeAggregationOperator <TimeAggregationOperator>
+ -WindowSize <TimeSpan> [-Action <IRuleAction[]>] [-Description <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -106,6 +105,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Enabled
+the flag that indicates whether the alert rule is enabled.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -119,22 +134,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -IsEnabled
-the flag that indicates whether the alert rule is enabled.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```

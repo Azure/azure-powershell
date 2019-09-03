@@ -153,6 +153,11 @@ directive:
     set:
       parameter-name: Name
   - where:
+      subject: AlertRule
+      parameter-name: IsEnabled
+    set:
+      parameter-name: Enabled
+  - where:
       verb: New|Update
       subject: AlertRule
     hide: true

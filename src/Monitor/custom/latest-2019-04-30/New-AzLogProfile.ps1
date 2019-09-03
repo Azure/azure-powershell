@@ -41,7 +41,6 @@ param(
     # List of regions for which Activity Log events should be stored or streamed. It is a comma separated list of valid ARM locations including the 'global' location.
     ${PropertiesLocations},
 
-
     [Parameter(HelpMessage='the number of days for the retention in days. A value of 0 will retain the events indefinitely.')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.Info(SerializedName='days', PossibleTypes=([System.Int32]), Description='the number of days for the retention in days. A value of 0 will retain the events indefinitely.')]

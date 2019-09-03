@@ -13,7 +13,7 @@ Creates or updates an alert rule.
 ## SYNTAX
 
 ```
-New-AzAlertRule -Name <String> -ResourceGroupName <String> -IsEnabled -Location <String> -MetricName <String>
+New-AzAlertRule -Name <String> -ResourceGroupName <String> -Enabled -Location <String> -MetricName <String>
  -Operator <ConditionOperator> -TargetResourceId <String> -Threshold <Double> -WindowSize <TimeSpan>
  [-SubscriptionId <String>] [-Action <IRuleAction[]>] [-Description <String>] [-Tag <Hashtable>]
  [-TimeAggregationOperator <TimeAggregationOperator>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IsEnabled
+### -Enabled
 the flag that indicates whether the alert rule is enabled.
 
 ```yaml
