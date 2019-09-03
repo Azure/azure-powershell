@@ -1,24 +1,3 @@
-<#
-.Synopsis
-Creates or updates an unlocked immutability policy. ETag in If-Match is honored if given but not required for this operation.
-.Description
-Creates or updates an unlocked immutability policy. ETag in If-Match is honored if given but not required for this operation.
-.Example
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.storage/set-azrmstoragecontainerimmutabilitypolicy
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20180201.IImmutabilityPolicy
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20180201.IImmutabilityPolicy
-.Notes
-COMPLEX PARAMETER PROPERTIES
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-PARAMETER <IImmutabilityPolicy>: The ImmutabilityPolicy property of a blob container, including Id, resource name, resource type, Etag.
-  ImmutabilityPeriodSinceCreationInDay <Int32>: The immutability period for the blobs in the container since the policy creation, in days.
-  [ETag <String>]: MISSING DESCRIPTION 03
-.Link
-https://docs.microsoft.com/en-us/powershell/module/az.storage/set-azrmstoragecontainerimmutabilitypolicy
-#>
 function Set-AzRmStorageContainerImmutabilityPolicy {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20180201.IImmutabilityPolicy')]
     [CmdletBinding(DefaultParameterSetName='Update', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]

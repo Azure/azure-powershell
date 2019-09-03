@@ -6,7 +6,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Support
     [System.ComponentModel.TypeConverter(typeof(KindConverter))]
     public partial struct Kind
     {
-        /// <summary>FIXME: Field BlobStorage is MISSING DESCRIPTION</summary>
     }
 
     public class KindConverter : System.Management.Automation.PSTypeConverter

@@ -1,12 +1,14 @@
-﻿using System;
+using System;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Support
 {
-    [System.ComponentModel.TypeConverter(typeof(SkuNameConverter))]
-    public partial struct SkuName
+
+    [System.ComponentModel.TypeConverter(typeof(DefaultActionConverter))]
+    public partial struct DefaultAction
     {
     }
-    public class SkuNameConverter : System.Management.Automation.PSTypeConverter
+
+    public class DefaultActionConverter : System.Management.Automation.PSTypeConverter
     {
         public override bool CanConvertFrom(object sourceValue, Type destinationType)
         {
@@ -20,7 +22,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Support
 
         public override object ConvertFrom(object sourceValue, Type destinationType, IFormatProvider formatProvider, bool ignoreCase)
         {
-            return SkuName.CreateFrom(sourceValue);
+            return Kind.CreateFrom(sourceValue);
         }
 
         public override object ConvertTo(object sourceValue, Type destinationType, IFormatProvider formatProvider, bool ignoreCase)
@@ -28,5 +30,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Support
             return default(object);
         }
     }
-
 }

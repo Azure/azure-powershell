@@ -1,19 +1,3 @@
-<#
-.Synopsis
-Asynchronously creates a new storage account with the specified parameters. If an account is already created and a subsequent create request is issued with different properties, the account properties will be updated. If an account is already created and a subsequent create or update request is issued with the exact same set of properties, the request will succeed.
-.Description
-Asynchronously creates a new storage account with the specified parameters. If an account is already created and a subsequent create request is issued with different properties, the account properties will be updated. If an account is already created and a subsequent create or update request is issued with the exact same set of properties, the request will succeed.
-.Example
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.storage/new-azstorageaccount
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20190401.IStorageAccountCreateParameters
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20190401.IStorageAccount
-.Link
-https://docs.microsoft.com/en-us/powershell/module/az.storage/new-azstorageaccount
-#>
 function New-AzStorageAccount {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20190401.IStorageAccount')]
     [CmdletBinding(DefaultParameterSetName='CreateExpandedStorageEncryption', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]

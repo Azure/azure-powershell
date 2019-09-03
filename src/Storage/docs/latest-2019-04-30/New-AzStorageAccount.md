@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzStorageAccount
 
 ## SYNOPSIS
-Asynchronously creates a new storage account with the specified parameters.
+Creates a new storage account with the specified parameters.
 If an account is already created and a subsequent create request is issued with different properties, the account properties will be updated.
 If an account is already created and a subsequent create or update request is issued with the exact same set of properties, the request will succeed.
 
@@ -602,10 +602,6 @@ Dynamic: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Api20190401.IStorageAccountCreateParameters
-
-### Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity
 
 ## OUTPUTS
 
