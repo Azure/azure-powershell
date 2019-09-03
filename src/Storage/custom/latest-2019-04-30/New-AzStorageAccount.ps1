@@ -270,7 +270,10 @@ function New-AzStorageAccount {
     process {
         if ($PSBoundParameters.ContainsKey("AsJob")) {
             $null = $PSBoundParameters.Remove("AsJob")
-            Start-Job -ScriptBlock {param($arg) Az.Storage\New-AzStorageAccount @arg} -InitializationScript {Import-Module "C:\Users\niassis\source\repos\generating\azure-powershell\src\Storage\Az.Storage.psd1"} -ArgumentList $PSBoundParameters
+            Start-Job -ScriptBlock {
+                param($arg, $modulePath) 
+                Import-Module $modulePath
+                Az.Storage\New-AzStorageAccount @arg} -ArgumentList $PSBoundParameters, (Join-Path $PSScriptRoot "..\..\Az.Storage.psd1")
         } else {
             if ($PSBoundParameters.ContainsKey("StorageEncryption")) {
                 $null = $PSBoundParameters.Add("EncryptionKeySource", "Microsoft.Storage")
