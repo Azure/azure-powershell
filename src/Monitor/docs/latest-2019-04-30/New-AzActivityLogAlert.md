@@ -13,10 +13,10 @@ Create a new activity log alert or update an existing one.
 ## SYNTAX
 
 ```
-New-AzActivityLogAlert -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Location <String>
- [-ActionGroup <IActivityLogAlertActionGroup[]>] [-Condition <IActivityLogAlertLeafCondition[]>]
- [-Description <String>] [-Enabled] [-Scope <String[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzActivityLogAlert -Name <String> -ResourceGroupName <String> -Location <String>
+ [-SubscriptionId <String>] [-ActionGroup <IActivityLogAlertActionGroup[]>]
+ [-Condition <IActivityLogAlertLeafCondition[]>] [-Description <String>] [-Enabled] [-Scope <String[]>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -201,9 +201,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

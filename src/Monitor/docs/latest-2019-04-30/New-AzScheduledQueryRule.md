@@ -13,9 +13,9 @@ Creates or updates an log search rule.
 ## SYNTAX
 
 ```
-New-AzScheduledQueryRule -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -AlertingAction <AlertingAction> -Location <String> -SourceDataSourceId <String> -Enabled
- [-Description <String>] [-ScheduleFrequencyInMinute <Int32>] [-ScheduleTimeWindowInMinute <Int32>]
+New-AzScheduledQueryRule -Name <String> -ResourceGroupName <String> -AlertingAction <AlertingAction>
+ -Location <String> -SourceDataSourceId <String> -Enabled [-SubscriptionId <String>] [-Description <String>]
+ [-ScheduleFrequencyInMinute <Int32>] [-ScheduleTimeWindowInMinute <Int32>]
  [-SourceAuthorizedResource <String[]>] [-SourceQuery <String>] [-SourceQueryType <QueryType>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -263,9 +263,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

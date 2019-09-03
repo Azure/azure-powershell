@@ -14,18 +14,18 @@ Gets an alert rule
 
 ### List1 (Default)
 ```
-Get-AzAlertRule -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzAlertRule [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ByTargetId
 ```
-Get-AzAlertRule -ResourceGroupName <String> -SubscriptionId <String[]> -TargetResourceId <String>
+Get-AzAlertRule -ResourceGroupName <String> -TargetResourceId <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzAlertRule -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzAlertRule -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -36,7 +36,7 @@ Get-AzAlertRule -InputObject <IMonitorIdentity> [-DefaultProfile <PSObject>] [<C
 
 ### List
 ```
-Get-AzAlertRule -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
+Get-AzAlertRule -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -138,9 +138,9 @@ Type: System.String[]
 Parameter Sets: ByTargetId, Get, List, List1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -14,7 +14,7 @@ Update an metric alert definition.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzMetricAlert -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Update-AzMetricAlert -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Action <IMetricAlertAction[]>] [-AutoMitigate] [-Description <String>] [-Enabled]
  [-EvaluationFrequency <TimeSpan>] [-Severity <Int32>] [-Tag <Hashtable>] [-WindowSize <TimeSpan>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -22,17 +22,17 @@ Update-AzMetricAlert -Name <String> -ResourceGroupName <String> -SubscriptionId 
 
 ### UpdateExpandedByResourceId
 ```
-Update-AzMetricAlert -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -Condition <MetricCriteria[]> -TargetResourceId <String> [-Action <IMetricAlertAction[]>] [-AutoMitigate]
+Update-AzMetricAlert -Name <String> -ResourceGroupName <String> -Condition <MetricCriteria[]>
+ -TargetResourceId <String> [-SubscriptionId <String>] [-Action <IMetricAlertAction[]>] [-AutoMitigate]
  [-Description <String>] [-Enabled] [-EvaluationFrequency <TimeSpan>] [-Severity <Int32>] [-Tag <Hashtable>]
  [-WindowSize <TimeSpan>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpandedByScope
 ```
-Update-AzMetricAlert -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -Condition <MetricCriteria[]> -TargetResourceRegion <String> -TargetResourceScope <String[]>
- -TargetResourceType <String> [-Action <IMetricAlertAction[]>] [-AutoMitigate] [-Description <String>]
+Update-AzMetricAlert -Name <String> -ResourceGroupName <String> -Condition <MetricCriteria[]>
+ -TargetResourceRegion <String> -TargetResourceScope <String[]> -TargetResourceType <String>
+ [-SubscriptionId <String>] [-Action <IMetricAlertAction[]>] [-AutoMitigate] [-Description <String>]
  [-Enabled] [-EvaluationFrequency <TimeSpan>] [-Severity <Int32>] [-Tag <Hashtable>] [-WindowSize <TimeSpan>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -273,9 +273,9 @@ Type: System.String
 Parameter Sets: UpdateExpanded, UpdateExpandedByResourceId, UpdateExpandedByScope
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

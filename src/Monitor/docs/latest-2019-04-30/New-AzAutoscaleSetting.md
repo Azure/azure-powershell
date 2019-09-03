@@ -13,10 +13,10 @@ Creates or updates an autoscale setting.
 ## SYNTAX
 
 ```
-New-AzAutoscaleSetting -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Location <String>
- -Profile <IAutoscaleProfile[]> [-Enabled] [-Notification <IAutoscaleNotification[]>]
- [-PropertiesName <String>] [-Tag <Hashtable>] [-TargetResourceId <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzAutoscaleSetting -Name <String> -ResourceGroupName <String> -Location <String>
+ -Profile <IAutoscaleProfile[]> [-SubscriptionId <String>] [-Enabled]
+ [-Notification <IAutoscaleNotification[]>] [-PropertiesName <String>] [-Tag <Hashtable>]
+ [-TargetResourceId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -185,9 +185,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

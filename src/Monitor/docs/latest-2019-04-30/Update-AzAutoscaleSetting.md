@@ -15,10 +15,10 @@ To update other fields use the CreateOrUpdate method.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzAutoscaleSetting -AutoscaleSettingName <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Enabled] [-Name <String>] [-Notification <IAutoscaleNotification[]>] [-Profile <IAutoscaleProfile[]>]
- [-Tag <Hashtable>] [-TargetResourceId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzAutoscaleSetting -AutoscaleSettingName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-Enabled] [-Name <String>] [-Notification <IAutoscaleNotification[]>]
+ [-Profile <IAutoscaleProfile[]>] [-Tag <Hashtable>] [-TargetResourceId <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -196,9 +196,9 @@ Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

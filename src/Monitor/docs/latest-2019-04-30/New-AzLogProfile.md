@@ -13,8 +13,8 @@ Create or update a log profile in Azure Monitoring REST API.
 ## SYNTAX
 
 ```
-New-AzLogProfile -Name <String> -SubscriptionId <String> -Category <String[]> -Location <String>
- -PropertiesLocations <String[]> [-RetentionPolicyInDays <Int32>] [-ServiceBusRuleId <String>]
+New-AzLogProfile -Name <String> -Category <String[]> -Location <String> -PropertiesLocations <String[]>
+ [-SubscriptionId <String>] [-RetentionPolicyInDays <Int32>] [-ServiceBusRuleId <String>]
  [-StorageAccountId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -185,9 +185,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

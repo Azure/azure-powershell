@@ -14,19 +14,19 @@ Create or update an metric alert definition.
 
 ### CreateByResourceId (Default)
 ```
-New-AzMetricAlert -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -Condition <IMetricCriteria[]> -Description <String> -Enabled -EvaluationFrequency <TimeSpan>
- -Severity <Int32> -TargetResourceId <String> -WindowSize <TimeSpan> [-Action <IMetricAlertAction[]>]
- [-AutoMitigate] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzMetricAlert -Name <String> -ResourceGroupName <String> -Condition <IMetricCriteria[]>
+ -Description <String> -Enabled -EvaluationFrequency <TimeSpan> -Severity <Int32> -TargetResourceId <String>
+ -WindowSize <TimeSpan> [-SubscriptionId <String>] [-Action <IMetricAlertAction[]>] [-AutoMitigate]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateByScope
 ```
-New-AzMetricAlert -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -Condition <IMetricCriteria[]> -Description <String> -Enabled -EvaluationFrequency <TimeSpan>
- -Severity <Int32> -TargetResourceRegion <String> -TargetResourceScope <String[]> -TargetResourceType <String>
- -WindowSize <TimeSpan> [-Action <IMetricAlertAction[]>] [-AutoMitigate] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzMetricAlert -Name <String> -ResourceGroupName <String> -Condition <IMetricCriteria[]>
+ -Description <String> -Enabled -EvaluationFrequency <TimeSpan> -Severity <Int32>
+ -TargetResourceRegion <String> -TargetResourceScope <String[]> -TargetResourceType <String>
+ -WindowSize <TimeSpan> [-SubscriptionId <String>] [-Action <IMetricAlertAction[]>] [-AutoMitigate]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -224,9 +224,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

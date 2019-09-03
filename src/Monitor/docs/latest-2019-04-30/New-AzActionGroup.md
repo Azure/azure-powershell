@@ -13,7 +13,7 @@ Create a new action group or update an existing one.
 ## SYNTAX
 
 ```
-New-AzActionGroup -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Location <String>
+New-AzActionGroup -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
  [-ArmRoleReceiver <IArmRoleReceiver[]>] [-AutomationRunbookReceiver <IAutomationRunbookReceiver[]>]
  [-AzureAppPushReceiver <IAzureAppPushReceiver[]>] [-AzureFunctionReceiver <IAzureFunctionReceiver[]>]
  [-EmailReceiver <IEmailReceiver[]>] [-Enabled] [-ItsmReceiver <IItsmReceiver[]>]
@@ -290,9 +290,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

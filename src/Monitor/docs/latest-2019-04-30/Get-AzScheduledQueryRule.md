@@ -14,13 +14,13 @@ Gets an Log Search rule
 
 ### List (Default)
 ```
-Get-AzScheduledQueryRule -SubscriptionId <String[]> [-Filter <String>] [-DefaultProfile <PSObject>]
+Get-AzScheduledQueryRule [-SubscriptionId <String[]>] [-Filter <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzScheduledQueryRule -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzScheduledQueryRule -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ Get-AzScheduledQueryRule -InputObject <IMonitorIdentity> [-DefaultProfile <PSObj
 
 ### List1
 ```
-Get-AzScheduledQueryRule -ResourceGroupName <String> -SubscriptionId <String[]> [-Filter <String>]
+Get-AzScheduledQueryRule -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Filter <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -150,9 +150,9 @@ Type: System.String[]
 Parameter Sets: Get, List, List1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

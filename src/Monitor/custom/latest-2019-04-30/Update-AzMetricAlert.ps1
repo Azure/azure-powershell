@@ -27,6 +27,7 @@ param(
     [Parameter(ParameterSetName='UpdateExpandedByScope', Mandatory, HelpMessage='The Azure subscription Id.')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.Info(SerializedName='subscriptionId', Required, PossibleTypes=([System.String]), Description='The Azure subscription Id.')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The Azure subscription Id.
     ${SubscriptionId},

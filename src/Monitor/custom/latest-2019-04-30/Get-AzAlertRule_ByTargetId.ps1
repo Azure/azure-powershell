@@ -10,6 +10,7 @@ function Get-AzAlertRule_ByTargetId {
         ${ResourceGroupName},
     
         [Parameter(Mandatory, HelpMessage='The Azure subscription Id.')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String[]]
         # The Azure subscription Id.
         ${SubscriptionId},

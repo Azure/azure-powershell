@@ -13,11 +13,11 @@ Creates or updates an alert rule.
 ## SYNTAX
 
 ```
-New-AzAlertRule -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -IsEnabled
- -Location <String> -MetricName <String> -Operator <ConditionOperator> -TargetResourceId <String>
- -Threshold <Double> -WindowSize <TimeSpan> [-Action <IRuleAction[]>] [-Description <String>]
- [-Tag <Hashtable>] [-TimeAggregationOperator <TimeAggregationOperator>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzAlertRule -Name <String> -ResourceGroupName <String> -IsEnabled -Location <String> -MetricName <String>
+ -Operator <ConditionOperator> -TargetResourceId <String> -Threshold <Double> -WindowSize <TimeSpan>
+ [-SubscriptionId <String>] [-Action <IRuleAction[]>] [-Description <String>] [-Tag <Hashtable>]
+ [-TimeAggregationOperator <TimeAggregationOperator>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -198,9 +198,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

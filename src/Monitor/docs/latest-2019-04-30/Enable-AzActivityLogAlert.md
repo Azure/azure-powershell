@@ -14,7 +14,7 @@ Enable an existing ActivityLogAlert.
 
 ### Enable (Default)
 ```
-Enable-AzActivityLogAlert -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Enable-AzActivityLogAlert -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -122,9 +122,9 @@ Type: System.String
 Parameter Sets: Enable
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -14,32 +14,33 @@ Provides the list of records from the activity logs.
 
 ### List (Default)
 ```
-Get-AzActivityLog -SubscriptionId <String[]> [-Caller <String>] [-EndTime <DateTime>] [-StartTime <DateTime>]
- [-Status <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzActivityLog [-SubscriptionId <String[]>] [-Caller <String>] [-EndTime <DateTime>]
+ [-StartTime <DateTime>] [-Status <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### CorrelationId
 ```
-Get-AzActivityLog -SubscriptionId <String[]> -CorrelationId <String> [-Caller <String>] [-EndTime <DateTime>]
- [-StartTime <DateTime>] [-Status <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzActivityLog -CorrelationId <String> [-SubscriptionId <String[]>] [-Caller <String>]
+ [-EndTime <DateTime>] [-StartTime <DateTime>] [-Status <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### ResourceGroupName
 ```
-Get-AzActivityLog -SubscriptionId <String[]> -ResourceGroupName <String> [-Caller <String>]
+Get-AzActivityLog -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Caller <String>]
  [-EndTime <DateTime>] [-StartTime <DateTime>] [-Status <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Get-AzActivityLog -SubscriptionId <String[]> -ResourceId <String> [-Caller <String>] [-EndTime <DateTime>]
+Get-AzActivityLog -ResourceId <String> [-SubscriptionId <String[]>] [-Caller <String>] [-EndTime <DateTime>]
  [-StartTime <DateTime>] [-Status <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ResourceProvider
 ```
-Get-AzActivityLog -SubscriptionId <String[]> -ResourceProvider <String> [-Caller <String>]
+Get-AzActivityLog -ResourceProvider <String> [-SubscriptionId <String[]>] [-Caller <String>]
  [-EndTime <DateTime>] [-StartTime <DateTime>] [-Status <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
@@ -221,9 +222,9 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

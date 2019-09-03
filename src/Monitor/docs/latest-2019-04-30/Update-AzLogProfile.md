@@ -15,7 +15,7 @@ To update other fields use the CreateOrUpdate method.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzLogProfile -Name <String> -SubscriptionId <String> [-Category <String[]>] [-Location <String[]>]
+Update-AzLogProfile -Name <String> [-SubscriptionId <String>] [-Category <String[]>] [-Location <String[]>]
  [-RetentionPolicyEnabled] [-RetentionPolicyInDays <Int32>] [-ServiceBusRuleId <String>]
  [-StorageAccountId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -213,9 +213,9 @@ Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
