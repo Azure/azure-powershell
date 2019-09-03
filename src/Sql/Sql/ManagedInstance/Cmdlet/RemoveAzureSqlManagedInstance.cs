@@ -39,6 +39,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         protected const string RemoveByResourceIdParameterSet =
             "RemoveInstanceFromAzureResourceId";
 
+
         /// <summary>
         /// Gets or sets the name of the instance to use.
         /// </summary>
@@ -73,7 +74,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
             HelpMessage = "The instance object to remove")]
         [ValidateNotNullOrEmpty]
         [Alias("SqlInstance")]
-        public Model.AzureSqlManagedInstanceModel InputObject { get; set; }
+        public AzureSqlManagedInstanceModel InputObject { get; set; }
 
         /// <summary>
         /// Gets or sets the resource id of the instance

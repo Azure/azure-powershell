@@ -21,6 +21,9 @@
 
 ## Upcoming Release
 
+## Version 0.1.2
+* Fixed miscellaneous typos across module
+
 ## Version 0.1.1
 * Fix typo in `PSAttestation` type with property `AttestUri`
 * Update .Net SDK with newer version

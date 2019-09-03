@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.2.2
+* Fixed miscellaneous typos across module
+
 ## Version 1.2.1
 * Fix typo in `New-AzEventGridSubscription` documentation
 

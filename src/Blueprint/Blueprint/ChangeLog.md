@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.2.4
+* Fixed miscellaneous typos across module
+* Bug fix (Get-AzBlueprint should work on national clouds)
+
+## Version 0.2.3
 - Bug fixes and help message improvements
 
 ## Version 0.2.2

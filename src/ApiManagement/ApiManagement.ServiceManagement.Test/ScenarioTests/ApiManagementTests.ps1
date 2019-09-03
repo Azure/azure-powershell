@@ -325,7 +325,7 @@ function Api-ImportExportWadlTest {
 
         # commented as powershell test framework on running test in playback mode, throws 403, as the exported link of file
         # gets expired
-        # export api to pipline
+        # export api to pipeline
         # $result = Export-AzApiManagementApi -Context $context -ApiId $wadlApiId -SpecificationFormat Wadl
 
         # Assert-True {$result -like '*<doc title="Yahoo News Search">Yahoo News Search API</doc>*'}
@@ -1047,6 +1047,33 @@ function Product-CrudTest {
         $newProduct = Get-AzApiManagementProduct -Context $context -Title $productName
         Assert-NotNull $newProduct
         Assert-AreEqual $productName $newProduct.Title
+
+		# get the product by apiId
+		$products = Get-AzApiManagementProduct -Context $context -ApiId $apis[0].ApiId
+		Assert-NotNull $products
+
+		# there should be 3 products
+		Assert-AreEqual 3 $products.Count
+		
+		$found = 0
+		for ($i = 0; $i -lt $products.Count; $i++) {
+			Assert-NotNull $products[$i].ProductId
+			Assert-NotNull $products[$i].Description
+			Assert-AreEqual Published $products[$i].State
+
+			if ($products[$i].Title -eq 'Starter') {
+	            $found += 1;
+			}
+
+	        if ($products[$i].Title -eq 'Unlimited') {
+		        $found += 1;
+			}
+
+			if ($products[$i].Title -eq $productName) {
+		        $found += 1;
+			}
+		}
+		Assert-AreEqual 3 $found
 
         #remove api from product
         Get-AzApiManagementApi -Context $context | Remove-AzApiManagementApiFromProduct -Context $context -ProductId $productId
@@ -3024,6 +3051,7 @@ function ApiRevision-CrudTest {
     $swaggerApiId1 = getAssetName
     $apiRevisionId = "2"
     $apiReleaseId = getAssetName
+	$apiRevisionDescription = getAssetName
 
     try {
         # import api from file
@@ -3052,9 +3080,11 @@ function ApiRevision-CrudTest {
 
         # now lets create an api revision
         $expectedApiId = [string]::Format("{0};rev={1}", $swaggerApiId1, $apiRevisionId) 
-        $apiRevision = New-AzApiManagementApiRevision -Context $context -ApiId $swaggerApiId1 -ApiRevision $apiRevisionId -SourceApiRevision "1"
+        $apiRevision = New-AzApiManagementApiRevision -Context $context -ApiId $swaggerApiId1 -ApiRevision $apiRevisionId -SourceApiRevision "1" -ApiRevisionDescription $apiRevisionDescription
         Assert-AreEqual $expectedApiId $apiRevision.ApiId
         Assert-AreEqual $apiRevisionId $apiRevision.ApiRevision
+        Assert-NotNull $apiRevision.ApiRevisionDescription
+        Assert-AreEqual $apiRevisionDescription $apiRevision.ApiRevisionDescription
         Assert-AreEqual $path1 $apiRevision.Path        
         Assert-False { $apiRevision.IsCurrent }
 

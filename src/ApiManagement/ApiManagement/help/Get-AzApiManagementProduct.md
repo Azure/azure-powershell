@@ -31,6 +31,12 @@ Get-AzApiManagementProduct -Context <PsApiManagementContext> [-Title <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### GetByApiId
+```
+Get-AzApiManagementProduct -Context <PsApiManagementContext> -ApiId <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **Get-AzApiManagementProduct** cmdlet gets a list or a particular product.
 
@@ -53,6 +59,21 @@ PS C:\>Get-AzApiManagementProduct -Context $apimContext -ProductId "0123456789"
 This command get an API Management product by ID.
 
 ## PARAMETERS
+
+### -ApiId
+ApiId of the Api to find the correlated products. This parameter is optional.
+
+```yaml
+Type: System.String
+Parameter Sets: GetByApiId
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -Context
 Specifies an instance of a **PsApiManagementContext** object.

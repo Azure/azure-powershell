@@ -34,7 +34,7 @@ ResoureGroupName    : rg1
 SubscriptionId      : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
 ```
 
-Create a new Attestatopm "example" in current Subscription, Resource Group "rg1"
+Create a new Attestation "example" in current Subscription, Resource Group "rg1"
 
 ## PARAMETERS
 

@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.2
+* Fixed miscellaneous typos across module
+
 ## Version 1.0.1
 * Fix typos in customer-facing messages
 

@@ -1,3 +1,220 @@
+## 2.6.0 - August 2019
+#### General
+* Fixed miscellaneous typos across numerous modules
+
+#### Az.Accounts
+* Added support for user-assigned MSI in Azure Functions authentication (#9479)
+
+#### Az.Aks
+* Fixed issue with output for 'Get-AzAks' ([#9847](https://github.com/Azure/azure-powershell/issues/9847))
+
+#### Az.ApiManagement
+* Fixed issue with whitespace in `productId`, `apiId`, `groupId`, `userId` ([#9351](https://github.com/Azure/azure-powershell/issues/9351))
+* **Get-AzApiManagementProduct** - Added support for querying products using API ([#9482](https://github.com/Azure/azure-powershell/issues/9482))
+* **New-AzApiManagementApiRevision** - Fixed issue where ApiRevisionDescription was not set when creating new API revision ([#9752](https://github.com/Azure/azure-powershell/issues/9752))
+* Fixed typo in model `PsApiManagementOAuth2AuthrozationServer` to `PsApiManagementOAuth2AuthorizationServer`
+
+#### Az.Batch
+* Fixed typos in help message and documentation
+
+#### Az.Cdn
+* Fixed a typo in CDN module conversion helper
+
+#### Az.Compute
+* Added VmssId to **New-AzVMConfig** cmdlet
+* Added `TerminateScheduledEvents` and `TerminateScheduledEventNotBeforeTimeoutInMinutes` parameters to **New-AzVmssConfig** and **Update-AzVmss**
+* Added `HyperVGeneration` property to VM image object
+* Added Host and HostGroup features
+  - New cmdlets:
+    - **New-AzHostGroup**
+    - **New-AzHost**
+    - **Get-AzHostGroup**
+    - **Get-AzHost**
+    - **Remove-AzHostGroup**
+    - **Remove-AzHost**
+  - Added `HostId` parameter to **New-AzVMConfig** and **New-AzVM**
+* Updated example in **Invoke-AzVMRunCommand** documentation to use correct parameter name
+* Updated `-VolumeType` description in **Set-AzVMDiskEncryptionExtension** and **Set-AzVmssDiskEncryptionExtension** reference documentation
+
+#### Az.DataFactory
+* Fixed typos in **New-AzDataFactoryEncryptValue** documentation
+* Updated ADF .Net SDK version to 4.1.2
+* Added parameters to **Set-AzureRmDataFactoryV2IntegrationRuntime** to enable Self-Hosted Integration Runtime as a proxy for SSIS Integration Runtime:
+  - `DataProxyIntegrationRuntimeName`
+  - `DataProxyStagingLinkedServiceName`
+  - `DataProxyStagingPath` 
+* Updated **PSTriggerRun** to show the triggered pipelines, message and properties, and **PSActivityRun** to show the activity type
+
+#### Az.DataLakeStore
+* Fixed issue where **Get-DataLakeStoreDeletedItem** would hang on errors and remote exceptions
+
+#### Az.EventHub
+* Fixed typo `VirtualNteworkRule` in Set-AzEventHubNetworkRuleSet ([#9658](https://github.com/azure/azure-powershell/issues/9658))
+* Fixed issue where Set-AzEventHubNamespace used PATCH instead of PUT ([#9558](https://github.com/azure/azure-powershell/issues/9558))
+* Added `EnableKafka` parameter to **Set-AzEventHubNamespace** cmdlet
+* Fixed issue with creating rules with `Listen` rights ([#9786](https://github.com/azure/azure-powershell/issues/9786))
+
+#### Az.MarketplaceOrdering
+* Fixed documentation typos
+
+#### Az.Monitor
+* Fixed incorrect parameter name in help documentation
+
+#### Az.Network
+* Updated **New-AzPrivateLinkServiceIpConfig**:
+  - Deprecated the parameter `PublicIpAddress` since this is never used in the server side.
+  - Added optional parameter `Primary` that indicates if the current IP configuration is the primary one
+* Improved handling of request error exception from SDK
+* Fixed validation logic for Ipv6 IP Prefix to check for correct IPv6 prefix length
+* Added parameter set to get by subnet resource id to **Get-AzVirtualNetworkSubnetConfig** 
+* Updated description of **Location** parameter for **AzNetworkServiceTag**
+
+#### Az.OperationalInsights
+* Updated documentation for **New-AzOperationalInsightsLinuxSyslogDataSource**:
+  - Added example
+  - Updated description for `-Name` parameter
+* Added an example for **New-AzOperationalInsightsWindowsEventDataSource**
+* Changed the description of the `-Name` parameter for **New-AzOperationalInsightsWindowsEventDataSource**
+
+#### Az.RecoveryServices
+* Updated documentation for **Get-AzRecoveryServicesBackupJobDetail**
+
+#### Az.Resources
+* Added support for new API version 2019-05-10 for Microsoft.Resource
+  - Add support for 'copy.count = 0' for variables, resources and properties
+  - Resources with 'condition = false' or 'copy.count = 0' will be deleted in complete mode
+* Added an example of assigning policy at the subscription level
+
+#### Az.ServiceBus
+* Fixed typo `VirtualNetworkRule` parameter in **Set-AzServiceBusNetworkRuleSet** Fix for issue #9658 : Typo 
+* Fixed issue with creating `Listen`-only rules ([#9786](https://github.com/azure/azure-powershell/issues/9786))
+* Added new command **Test-AzServiceBusNameAvailability** to check the name availability for queue and topic 
+
+#### Az.ServiceFabric
+* Fixed NullReferenceException when a resource group has a VMSS not related to the service fabric cluster ([#8681](https://github.com/Azure/azure-powershell/issues/8681))
+* Fixed bug where cmdlets failed if virtualNetwork was in a different resource group than the cluster ([#8407](https://github.com/Azure/azure-powershell/issues/8407))
+* Deprecated **Add-AzServiceFabricApplicationCertificate** cmdlet
+
+#### Az.Sql
+* Updated documentation for old Auditing cmdlets
+
+#### Az.Storage
+* Updated help for **Close-AzStorageFileHandle** and **Get-AzStorageFileHandle**,  added more scenarios to cmdlet examples and updated parameter descriptions
+* Added support for `StandardBlobTier` in blob uploads and copies
+* Added support for `Rehydrate` priority in blob copy
+
+#### Az.Websites
+* Added clarification around `-AppSettings` parameter for **Set-AzWebApp** and **Set-AzWebAppSlot**
+
+## 2.5.0 - July 2019
+#### Az.Accounts
+* Update common code to use latest version of ClientRuntime
+
+#### Az.ApplicationInsights
+* Fix example typo in 'Remove-AzApplicationInsightsApiKey' documentation
+
+#### Az.Automation
+* Fix typo in resource string
+
+#### Az.CognitiveServices
+* Added NetworkRuleSet support.
+
+#### Az.Compute
+* Add missing properties (ComputerName, OsName, OsVersion and HyperVGeneration) of VM instance view object.
+
+#### Az.ContainerRegistry
+* Fix typo in Remove-AzContainerRegistryReplication for Replication parameter
+    - More information here https://github.com/Azure/azure-powershell/issues/9633
+
+#### Az.DataFactory
+* Updated ADF .Net SDK version to 4.1.0
+* Fix typo in documentation for 'Get-AzDataFactoryV2PipelineRun'
+
+#### Az.EventHub
+* Added new cmmdlet added for generating SAS token : New-AzEventHubAuthorizationRuleSASToken
+* added verification and error message for authorizationrules rights if only 'Manage' is assigned
+
+#### Az.KeyVault
+* Added support to specify the KeySize for Certificate Policies
+
+#### Az.LogicApp
+* Fix for Get-AzIntegrationAccountMap to list all map types
+	- Added new MapType parameter for filtering
+
+#### Az.ManagedServices
+* Added support for api version 2019-06-01 (GA)
+
+#### Az.Network
+* Add support for private endpoint and private link service
+    - New cmdlets
+        - Set-AzPrivateEndpoint
+        - Set-AzPrivateLinkService
+        - Approve-AzPrivateEndpointConnection
+        - Deny-AzPrivateEndpointConnection
+        - Get-AzPrivateEndpointConnection
+        - Remove-AzPrivateEndpointConnection
+        - Test-AzPrivateLinkServiceVisibility
+        - Get-AzAutoApprovedPrivateLinkService
+* Updated below commands for feature: PrivateEndpointNetworkPolicies/PrivateLinkServiceNetworkPolicies flag on Subnet in Virtualnetwork
+    - Updated New-AzVirtualNetworkSubnetConfig/Set-AzVirtualNetworkSubnetConfig/Add-AzVirtualNetworkSubnetConfig
+        - Added optional parameter -PrivateEndpointNetworkPoliciesFlag to indicate that enable or disable apply network policies on pivate endpoint in this subnet.
+        - Added optional parameter -PrivateLinkServiceNetworkPoliciesFlag to indicate that enable or disable apply network policies on private link service in this subnet.
+* AzPrivateLinkService's cmdlet parameter 'ServiceName' was renamed to 'Name' with an alias 'ServiceName' for backward compatibility
+* Enable ICMP protocol for network security rule configurations
+    - Updated cmdlets
+        - Add-AzNetworkSecurityRuleConfig
+        - New-AzNetworkSecurityRuleConfig
+        - Set-AzNetworkSecurityRuleConfig
+* Add ConnectionProtocolType (Ikev1/Ikev2) as a configurable parameter for New-AzVirtualNetworkGatewayConnection
+* Add PrivateIpAddressVersion in LoadBalancerFrontendIpConfiguration
+    - Updated cmdlet:
+        - New-AzLoadBalancerFrontendIpConfig
+        - Add-AzLoadBalancerFrontendIpConfig
+        - Set-AzLoadBalancerFrontendIpConfig
+* Application Gateway New-AzApplicationGatewayProbeConfig command update for supporting custom port in Probe
+    - Updated New-AzApplicationGatewayProbeConfig: Added optional parameter Port which is used for probing backend server. This parameter is applicable for Standard_V2 and WAF_V2 SKU.
+
+#### Az.OperationalInsights
+* Updated default version for saved searches to be 1. 
+* Fixed custom log null regex handling
+
+#### Az.RecoveryServices
+* Update 'Get-AzRecoveryServicesBackupJob.md'
+* Update 'Get-AzRecoveryServicesBackupContainer.md'
+* Update 'Get-AzRecoveryServicesVault.md'
+* Update 'Wait-AzRecoveryServicesBackupJob.md'
+* Update 'Set-AzRecoveryServicesVaultContext.md'
+* Update 'Get-AzRecoveryServicesBackupItem.md'
+* Update 'Get-AzRecoveryServicesBackupRecoveryPoint.md'
+* Update 'Restore-AzRecoveryServicesBackupItem.md'
+* Updated service call for Unregistering container for Azure File Share
+* Update 'Set-AzRecoveryServicesAsrAlertSetting.md'
+
+#### Az.Resources
+- Remove missing cmdlet referenced in 'New-AzResourceGroupDeployment' documentation
+- Updated policy cmdlets to use new api version 2019-01-01
+
+#### Az.ServiceBus
+* Added new cmmdlet added for generating SAS token : New-AzServiceBusAuthorizationRuleSASToken
+* added verification and error message for authorizationrules rights if only 'Manage' is assigned
+
+#### Az.Sql
+* Fix missing examples for Set-AzSqlDatabaseSecondary cmdlet
+* Fix set Vulnerability Assessment recurring scans without providing any email addresses
+* Fix a small typo in a warining message.
+
+#### Az.Storage
+* Update example in reference documentation for 'Get-AzStorageAccount' to use correct parameter name
+
+#### Az.StorageSync
+* Adding Invoke-AzStorageSyncChangeDetection cmdlet.
+* Fix Issue 9551 for honoring TierFilesOlderThanDays
+
+#### Az.Websites
+* Fixing a bug where some SiteConfig properties were not returned by Get-AzWebApp and Set-AzWebApp
+* Adds a new Location parameter to Get-AzDeletedWebApp and Restore-AzDeletedWebApp
+* Fixes a bug with cloning web app slots using New-AzWebApp -IncludeSourceWebAppSlots
+
 ## 2.4.0 - July 2019
 #### Az.Accounts
 * Add support for profile cmdlets

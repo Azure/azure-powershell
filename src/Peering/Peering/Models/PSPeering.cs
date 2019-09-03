@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
     using System.Linq;
 
     /// <summary>
-    /// InputObject is a logical representation of a set of connections to the
+    /// Peering is a logical representation of a set of connections to the
     /// Microsoft Cloud Edge at a location.
     /// </summary>
     [Rest.Serialization.JsonTransformation]

@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Created a new Service Principal and assigned the contributor role for this subcription..
+        ///   Looks up a localized string similar to Created a new Service Principal and assigned the contributor role for this subscription..
         /// </summary>
         internal static string CreatedANewServicePrincipalAndAssignedTheContributorRole {
             get {

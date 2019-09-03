@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [Parameter(ParameterSetName = JobInfoParameterSetName, ValueFromPipelineByPropertyName = true, Position = 0,
             Mandatory = true,
             HelpMessage =
-                "Name of Data Lake Analytics account name under which want to to retrieve the job information.")]
+                "Name of Data Lake Analytics account name under which want to retrieve the job information.")]
         [ValidateNotNullOrEmpty]
         [Alias("AccountName")]
         public string Account { get; set; }

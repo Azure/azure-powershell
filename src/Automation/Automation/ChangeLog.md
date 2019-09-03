@@ -18,7 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Fix typo in resource string 
+* Fixed example typo in reference documentation for `Register-AzAutomationDscNode`
+
+## Version 1.3.2
+* Fixed miscellaneous typos across module
+
+## Version 1.3.1
+* Fix typo in resource string
 
 ## Version 1.3.0
 * Fixed Set-AzAutomationConnectionFieldValue cmdlet bug to handle string value.
