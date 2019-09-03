@@ -171,6 +171,15 @@ namespace Microsoft.Azure.Commands.KeyVault
         [ValidateSet(Constants.RSA, Constants.RSAHSM)]
         public string KeyType { get; set; }
 
+      /// <summary>
+      /// Key size
+      /// </summary>
+      [Parameter(Mandatory = false,
+                 ValueFromPipelineByPropertyName = true,
+                 HelpMessage = "Specifies the key size of the certificate.")]
+      [ValidateSet("2048", "3072", "4096")]
+      public int KeySize { get; set; } = 2048;
+
         /// <summary>
         /// KeyNotExportable
         /// </summary>
@@ -203,22 +212,23 @@ namespace Microsoft.Azure.Commands.KeyVault
 
                 var policy = new PSKeyVaultCertificatePolicy
                 {
-                    DnsNames = DnsName,
-                    KeyUsage = convertedKeyUsage,
-                    Ekus = Ekus,
-                    Enabled = !Disabled.IsPresent,
-                    IssuerName = IssuerName,
-                    CertificateType = CertificateType,
-                    RenewAtNumberOfDaysBeforeExpiry = RenewAtNumberOfDaysBeforeExpiry,
-                    RenewAtPercentageLifetime = RenewAtPercentageLifetime,
-                    EmailAtNumberOfDaysBeforeExpiry = EmailAtNumberOfDaysBeforeExpiry,
-                    EmailAtPercentageLifetime = EmailAtPercentageLifetime,
-                    ReuseKeyOnRenewal = ReuseKeyOnRenewal.IsPresent,
-                    SecretContentType = SecretContentType,
-                    SubjectName = SubjectName,
-                    ValidityInMonths = ValidityInMonths,
-                    Kty = KeyType,
-                    Exportable = KeyNotExportable.IsPresent ? !KeyNotExportable.IsPresent : (bool?)null
+                  DnsNames = DnsName,
+                  KeyUsage = convertedKeyUsage,
+                  Ekus = Ekus,
+                  Enabled = !Disabled.IsPresent,
+                  IssuerName = IssuerName,
+                  CertificateType = CertificateType,
+                  RenewAtNumberOfDaysBeforeExpiry = RenewAtNumberOfDaysBeforeExpiry,
+                  RenewAtPercentageLifetime = RenewAtPercentageLifetime,
+                  EmailAtNumberOfDaysBeforeExpiry = EmailAtNumberOfDaysBeforeExpiry,
+                  EmailAtPercentageLifetime = EmailAtPercentageLifetime,
+                  ReuseKeyOnRenewal = ReuseKeyOnRenewal.IsPresent,
+                  SecretContentType = SecretContentType,
+                  SubjectName = SubjectName,
+                  ValidityInMonths = ValidityInMonths,
+                  Kty = KeyType,
+                  KeySize = KeySize,
+                  Exportable = KeyNotExportable.IsPresent ? !KeyNotExportable.IsPresent : (bool?)null
                 };
 
                 this.WriteObject(policy);

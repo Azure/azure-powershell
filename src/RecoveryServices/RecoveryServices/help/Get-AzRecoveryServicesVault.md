@@ -9,6 +9,7 @@ schema: 2.0.0
 # Get-AzRecoveryServicesVault
 
 ## SYNOPSIS
+
 Gets a list of Recovery Services vaults.
 
 ## SYNTAX
@@ -19,26 +20,30 @@ Get-AzRecoveryServicesVault [-ResourceGroupName <String>] [-Name <String>]
 ```
 
 ## DESCRIPTION
+
 The **Get-AzRecoveryServicesVault** cmdlet gets a list of Recovery Services vaults in the current subscription.
 
 ## EXAMPLES
 
 ### Example 1
-```
+
+```powershell
 PS C:\> Get-AzRecoveryServicesVault
 ```
 
 Get the list of vault in selected subscription.
 
 ### Example 2
-```
+
+```powershell
 PS C:\> Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup"
 ```
 
 Get the list of vault in resource group in selected subscription.
 
 ### Example 3
-```
+
+```powershell
 PS C:\> Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
 ```
 
@@ -47,6 +52,7 @@ Get the vault in resource group with given name.
 ## PARAMETERS
 
 ### -DefaultProfile
+
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
@@ -62,6 +68,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
+
 Specifies the name of the vault to query for.
 
 ```yaml
@@ -77,7 +84,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of the Azure resource group in which to create or from which to retrieve the specified Recovery Services object.
+
+Specifies the name of the Azure resource group from which to retrieve the specified Recovery Services object.
 
 ```yaml
 Type: System.String
@@ -91,8 +99,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+### -CommonParameters
+
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -111,5 +120,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzRecoveryServicesVault](./New-AzRecoveryServicesVault.md)
 
 [Remove-AzRecoveryServicesVault](./Remove-AzRecoveryServicesVault.md)
-
-

@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateDescription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateDescription, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateDescription, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateProperties",
               "ResourceGroupName": "System.String",
@@ -73,7 +73,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateDescription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateDescription, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateDescription, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateProperties",
               "ResourceGroupName": "System.String",
@@ -278,7 +278,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
                   "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateDescription",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateDescription, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateDescription, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateProperties",
                     "ResourceGroupName": "System.String",
@@ -1068,13 +1068,13 @@
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "__AllParameterSets",
+      "DefaultParameterSetName": "ResourceSet",
       "OutputTypes": [
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Rights": "Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights",
               "KeyName": "System.String",
@@ -1124,6 +1124,24 @@
         }
       ],
       "Parameters": [
+        {
+          "Name": "HubId",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
         {
           "Name": "ResourceGroupName",
           "AliasList": [],
@@ -1220,7 +1238,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1353,7 +1371,256 @@
       ],
       "ParameterSets": [
         {
-          "Name": "__AllParameterSets",
+          "Name": "ResourceIdSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "HubId",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "KeyName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "PrimaryKey",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "SecondaryKey",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Rights",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
+                  "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [
+                        {
+                          "Name": "format",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "provider",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "CompareTo",
+                      "Parameters": [
+                        {
+                          "Name": "target",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [
+                        {
+                          "Name": "format",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [
+                        {
+                          "Name": "provider",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "HasFlag",
+                      "Parameters": [
+                        {
+                          "Name": "flag",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetTypeCode",
+                      "Parameters": [],
+                      "ReturnType": "System.TypeCode"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "ResourceSet",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -1482,7 +1749,208 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
                   "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [
+                        {
+                          "Name": "format",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "provider",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "CompareTo",
+                      "Parameters": [
+                        {
+                          "Name": "target",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [
+                        {
+                          "Name": "format",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [
+                        {
+                          "Name": "provider",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "HasFlag",
+                      "Parameters": [
+                        {
+                          "Name": "flag",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetTypeCode",
+                      "Parameters": [],
+                      "ReturnType": "System.TypeCode"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "PrimaryKey",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "SecondaryKey",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Rights",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
+                  "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1642,7 +2110,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubConsumerGroupInfo",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubConsumerGroupInfo, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubConsumerGroupInfo, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Id": "System.String",
@@ -1923,7 +2391,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties",
               "Sku": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo",
@@ -2270,7 +2738,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateDescription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateDescription, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateDescription, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateProperties",
               "ResourceGroupName": "System.String",
@@ -2329,7 +2797,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties",
               "Sku": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo",
@@ -2500,7 +2968,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
                   "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties",
                     "Sku": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo",
@@ -2917,7 +3385,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateWithNonceDescription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateWithNonceDescription, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateWithNonceDescription, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificatePropertiesWithNonce",
               "ResourceGroupName": "System.String",
@@ -2976,7 +3444,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateDescription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateDescription, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateDescription, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateProperties",
               "ResourceGroupName": "System.String",
@@ -3163,7 +3631,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
                   "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateDescription",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateDescription, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateDescription, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateProperties",
                     "ResourceGroupName": "System.String",
@@ -3556,7 +4024,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Rights": "Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights",
               "KeyName": "System.String",
@@ -3828,7 +4296,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobResponse, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobResponse, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Status": "System.Nullable`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobStatus]",
               "StartTimeUtc": "System.Nullable`1[System.DateTime]",
@@ -4097,13 +4565,13 @@
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "__AllParameterSets",
+      "DefaultParameterSetName": "ResourceSet",
       "OutputTypes": [
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Rights": "Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights",
               "KeyName": "System.String",
@@ -4153,6 +4621,24 @@
         }
       ],
       "Parameters": [
+        {
+          "Name": "HubId",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
         {
           "Name": "ResourceGroupName",
           "AliasList": [],
@@ -4243,7 +4729,99 @@
       ],
       "ParameterSets": [
         {
-          "Name": "__AllParameterSets",
+          "Name": "ResourceIdSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "HubId",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "KeyName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "ResourceSet",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -4357,6 +4935,50 @@
               "ValueFromPipelineByPropertyName": false
             }
           ]
+        },
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
         }
       ],
       "AliasList": []
@@ -4375,7 +4997,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubQuotaMetric",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubQuotaMetric, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubQuotaMetric, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Name": "System.String",
               "CurrentValue": "System.String",
@@ -4604,7 +5226,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubRegistryStatistics",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubRegistryStatistics, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubRegistryStatistics, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "TotalDeviceCount": "System.Nullable`1[System.Int64]",
               "EnabledDeviceCount": "System.Nullable`1[System.Int64]",
@@ -4833,7 +5455,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuDescription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuDescription, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuDescription, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Capacity": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubCapacity",
               "Sku": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo",
@@ -5062,7 +5684,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties",
               "Sku": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo",
@@ -5159,7 +5781,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSku",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSku, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSku, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -5298,7 +5920,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubInputProperties",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubInputProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubInputProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Features": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCapabilities",
               "CloudToDevice": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties",
@@ -5446,7 +6068,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
                   "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSku",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSku, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSku, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -5603,7 +6225,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
                   "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubInputProperties",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubInputProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubInputProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Features": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCapabilities",
                     "CloudToDevice": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties",
@@ -5721,7 +6343,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobResponse, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobResponse, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Status": "System.Nullable`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobStatus]",
               "StartTimeUtc": "System.Nullable`1[System.DateTime]",
@@ -6040,7 +6662,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobResponse, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobResponse, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Status": "System.Nullable`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobStatus]",
               "StartTimeUtc": "System.Nullable`1[System.DateTime]",
@@ -6346,6 +6968,498 @@
       ]
     },
     {
+      "VerbName": "New",
+      "NounName": "AzIotHubKey",
+      "Name": "New-AzIotHubKey",
+      "ClassName": "Microsoft.Azure.Commands.Management.IotHub.NewAzureRmIotHubKey",
+      "SupportsShouldProcess": true,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "ResourceSet",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
+            "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Rights": "Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights",
+              "KeyName": "System.String",
+              "PrimaryKey": "System.String",
+              "SecondaryKey": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              }
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "HubId",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ResourceGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Name",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "KeyName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "RenewKey",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "DefaultProfile",
+          "AliasList": [
+            "AzContext",
+            "AzureRmContext",
+            "AzureCredential"
+          ],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+              "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+              "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+              "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Clear",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              }
+            ],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "ResourceIdSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "HubId",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "KeyName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "RenewKey",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "ResourceSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "KeyName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 2,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "RenewKey",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 3,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
       "VerbName": "Remove",
       "NounName": "AzIotHub",
       "Name": "Remove-AzIotHub",
@@ -6571,7 +7685,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateDescription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateDescription, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateDescription, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateProperties",
               "ResourceGroupName": "System.String",
@@ -6776,7 +7890,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
                   "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateDescription",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateDescription, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateDescription, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateProperties",
                     "ResourceGroupName": "System.String",
@@ -7542,13 +8656,13 @@
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "__AllParameterSets",
+      "DefaultParameterSetName": "ResourceSet",
       "OutputTypes": [
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Rights": "Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights",
               "KeyName": "System.String",
@@ -7598,6 +8712,24 @@
         }
       ],
       "Parameters": [
+        {
+          "Name": "HubId",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
         {
           "Name": "ResourceGroupName",
           "AliasList": [],
@@ -7688,7 +8820,99 @@
       ],
       "ParameterSets": [
         {
-          "Name": "__AllParameterSets",
+          "Name": "ResourceIdSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "HubId",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "KeyName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "ResourceSet",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -7802,6 +9026,50 @@
               "ValueFromPipelineByPropertyName": false
             }
           ]
+        },
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
         }
       ],
       "AliasList": []
@@ -7820,7 +9088,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsEnabled": "System.Boolean",
               "EndpointNames": "System.Collections.Generic.IList`1[System.String]",
@@ -7877,7 +9145,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties",
               "Sku": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo",
@@ -8009,7 +9277,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -8205,7 +9473,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
                   "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties",
                     "Sku": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo",
@@ -8295,7 +9563,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
                   "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -8592,7 +9860,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
                   "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -8865,7 +10133,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
                   "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -9189,7 +10457,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingEventHubEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingEventHubEndpoint, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingEventHubEndpoint, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ConnectionString": "System.String",
               "Name": "System.String",
@@ -9241,7 +10509,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingServiceBusQueueEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingServiceBusQueueEndpoint, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingServiceBusQueueEndpoint, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ConnectionString": "System.String",
               "Name": "System.String",
@@ -9293,7 +10561,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingServiceBusTopicEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingServiceBusTopicEndpoint, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingServiceBusTopicEndpoint, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ConnectionString": "System.String",
               "Name": "System.String",
@@ -9345,7 +10613,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingStorageContainerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingStorageContainerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingStorageContainerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BatchFrequencyInSeconds": "System.Nullable`1[System.Int32]",
               "MaxChunkSizeInBytes": "System.Nullable`1[System.Int32]",
@@ -9406,7 +10674,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties",
               "Sku": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo",
@@ -9538,7 +10806,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -9734,7 +11002,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
                   "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties",
                     "Sku": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo",
@@ -9824,7 +11092,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
                   "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -10121,7 +11389,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
                   "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -10394,7 +11662,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
                   "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -10670,7 +11938,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsEnabled": "System.Boolean",
               "EndpointNames": "System.Collections.Generic.IList`1[System.String]",
@@ -10723,7 +11991,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteProperties[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteProperties[], Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteProperties[], Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteProperties",
             "GenericTypeArguments": [],
@@ -10742,7 +12010,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties",
               "Sku": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo",
@@ -10913,7 +12181,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
                   "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties",
                     "Sku": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo",
@@ -11330,7 +12598,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingEventHubEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingEventHubEndpoint, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingEventHubEndpoint, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ConnectionString": "System.String",
               "Name": "System.String",
@@ -11382,7 +12650,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingEventHubProperties]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingEventHubProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingEventHubProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -11399,7 +12667,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingServiceBusQueueEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingServiceBusQueueEndpoint, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingServiceBusQueueEndpoint, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ConnectionString": "System.String",
               "Name": "System.String",
@@ -11451,7 +12719,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingServiceBusQueueEndpointProperties[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingServiceBusQueueEndpointProperties[], Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingServiceBusQueueEndpointProperties[], Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingServiceBusQueueEndpointProperties",
             "GenericTypeArguments": [],
@@ -11466,7 +12734,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingServiceBusTopicEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingServiceBusTopicEndpoint, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingServiceBusTopicEndpoint, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ConnectionString": "System.String",
               "Name": "System.String",
@@ -11518,7 +12786,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingServiceBusTopicEndpointProperties[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingServiceBusTopicEndpointProperties[], Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingServiceBusTopicEndpointProperties[], Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingServiceBusTopicEndpointProperties",
             "GenericTypeArguments": [],
@@ -11533,7 +12801,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingStorageContainerEndpoint",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingStorageContainerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingStorageContainerEndpoint, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "BatchFrequencyInSeconds": "System.Nullable`1[System.Int32]",
               "MaxChunkSizeInBytes": "System.Nullable`1[System.Int32]",
@@ -11590,7 +12858,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingStorageContainerProperties[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingStorageContainerProperties[], Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingStorageContainerProperties[], Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingStorageContainerProperties",
             "GenericTypeArguments": [],
@@ -11605,7 +12873,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingCustomEndpoint[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingCustomEndpoint[], Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingCustomEndpoint[], Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingCustomEndpoint",
             "GenericTypeArguments": [],
@@ -11624,7 +12892,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties",
               "Sku": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo",
@@ -11738,7 +13006,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -11898,7 +13166,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
                   "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties",
                     "Sku": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo",
@@ -11964,7 +13232,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
                   "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -12189,7 +13457,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
                   "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -12390,7 +13658,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
                   "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -12567,7 +13835,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
                   "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -12770,7 +14038,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties",
               "Sku": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo",
@@ -12959,7 +14227,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
                   "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties",
                     "Sku": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo",
@@ -13491,7 +14759,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties",
               "Sku": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo",
@@ -13623,7 +14891,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -13783,7 +15051,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
                   "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties",
                     "Sku": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo",
@@ -13873,7 +15141,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
                   "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -14122,7 +15390,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
                   "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -14347,7 +15615,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
                   "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -14548,7 +15816,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
                   "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -14732,7 +16000,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsEnabled": "System.Boolean",
               "EndpointNames": "System.Collections.Generic.IList`1[System.String]",
@@ -14789,7 +16057,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties",
               "Sku": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo",
@@ -14921,7 +16189,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource]",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -15034,7 +16302,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
                   "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties",
                     "Sku": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo",
@@ -15124,7 +16392,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -15338,7 +16606,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -15528,7 +16796,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -15670,7 +16938,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -15819,7 +17087,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSTestRouteResult",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSTestRouteResult, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSTestRouteResult, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Details": "Microsoft.Azure.Commands.Management.IotHub.Models.PSTestRouteResultDetails",
               "Result": "System.String"
@@ -15869,7 +17137,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteCompilationError",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteCompilationError, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteCompilationError, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Location": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteErrorRange",
               "Severity": "System.String",
@@ -15920,7 +17188,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteProperties[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteProperties[], Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteProperties[], Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteProperties",
             "GenericTypeArguments": [],
@@ -15939,7 +17207,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties",
               "Sku": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo",
@@ -16071,7 +17339,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -16285,7 +17553,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
                   "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties",
                     "Sku": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo",
@@ -16515,7 +17783,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
                   "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties",
                     "Sku": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo",
@@ -16581,7 +17849,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
                   "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -17066,7 +18334,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
                   "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -17503,7 +18771,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
                   "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -17855,7 +19123,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties",
               "Sku": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo",
@@ -17952,7 +19220,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSku",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSku, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSku, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -18201,7 +19469,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Feedback": "Microsoft.Azure.Commands.Management.IotHub.Models.PSFeedbackProperties",
               "MaxDeliveryCount": "System.Nullable`1[System.Int32]",
@@ -18255,7 +19523,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSOperationsMonitoringProperties",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSOperationsMonitoringProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSOperationsMonitoringProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -18305,7 +19573,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingProperties",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Endpoints": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingEndpoints",
               "FallbackRoute": "Microsoft.Azure.Management.IotHub.Models.PSFallbackRouteMetadata",
@@ -18359,7 +19627,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -18379,7 +19647,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Management.IotHub.Models.PSFallbackRouteMetadata",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.IotHub.Models.PSFallbackRouteMetadata, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.IotHub.Models.PSFallbackRouteMetadata, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsEnabled": "System.Boolean",
               "EndpointNames": "System.Collections.Generic.IList`1[System.String]",
@@ -18566,7 +19834,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
                   "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSku",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSku, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSku, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -19145,7 +20413,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
                   "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Feedback": "Microsoft.Azure.Commands.Management.IotHub.Models.PSFeedbackProperties",
                     "MaxDeliveryCount": "System.Nullable`1[System.Int32]",
@@ -19297,7 +20565,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
                   "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSOperationsMonitoringProperties",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSOperationsMonitoringProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSOperationsMonitoringProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -19445,7 +20713,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
                   "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingProperties",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Endpoints": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingEndpoints",
                     "FallbackRoute": "Microsoft.Azure.Management.IotHub.Models.PSFallbackRouteMetadata",
@@ -19597,7 +20865,7 @@
                 "Type": {
                   "Namespace": "System.Collections.Generic",
                   "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata]",
-                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -19715,7 +20983,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.IotHub.Models",
                   "Name": "Microsoft.Azure.Management.IotHub.Models.PSFallbackRouteMetadata",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.IotHub.Models.PSFallbackRouteMetadata, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.IotHub.Models.PSFallbackRouteMetadata, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "IsEnabled": "System.Boolean",
                     "EndpointNames": "System.Collections.Generic.IList`1[System.String]",
@@ -19876,7 +21144,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateDescription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateDescription, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateDescription, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateProperties",
               "ResourceGroupName": "System.String",
@@ -19935,7 +21203,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateDescription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateDescription, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateDescription, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateProperties",
               "ResourceGroupName": "System.String",
@@ -20140,7 +21408,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
                   "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateDescription",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateDescription, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateDescription, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateProperties",
                     "ResourceGroupName": "System.String",
@@ -20605,7 +21873,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
             "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties",
               "Sku": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo",
@@ -21123,7 +22391,7 @@
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateProperties": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
       "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "IsVerified": "System.Nullable`1[System.Boolean]",
         "Expiry": "System.Nullable`1[System.DateTime]",
@@ -21406,7 +22674,7 @@
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
       "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -21511,7 +22779,7 @@
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
       "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Features": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCapabilities",
         "CloudToDevice": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties",
@@ -21566,7 +22834,7 @@
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSCapabilities": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
       "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCapabilities",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCapabilities, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCapabilities, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -21661,7 +22929,7 @@
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
       "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Feedback": "Microsoft.Azure.Commands.Management.IotHub.Models.PSFeedbackProperties",
         "MaxDeliveryCount": "System.Nullable`1[System.Int32]",
@@ -21707,7 +22975,7 @@
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSFeedbackProperties": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
       "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSFeedbackProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSFeedbackProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSFeedbackProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "MaxDeliveryCount": "System.Nullable`1[System.Int32]",
         "TtlAsIso8601": "System.Nullable`1[System.TimeSpan]",
@@ -21787,7 +23055,7 @@
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSOperationsMonitoringProperties": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
       "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSOperationsMonitoringProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSOperationsMonitoringProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSOperationsMonitoringProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -21829,7 +23097,7 @@
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingProperties": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
       "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Endpoints": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingEndpoints",
         "FallbackRoute": "Microsoft.Azure.Management.IotHub.Models.PSFallbackRouteMetadata",
@@ -21875,7 +23143,7 @@
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingEndpoints": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
       "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingEndpoints",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingEndpoints, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingEndpoints, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "EventHubs": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingEventHubProperties]",
         "ServiceBusQueues": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingServiceBusQueueEndpointProperties]",
@@ -21922,7 +23190,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingEventHubProperties]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingEventHubProperties]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingEventHubProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingEventHubProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -21934,7 +23202,7 @@
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingEventHubProperties": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
       "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingEventHubProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingEventHubProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingEventHubProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ConnectionString": "System.String",
         "Name": "System.String",
@@ -21981,7 +23249,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingServiceBusQueueEndpointProperties]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingServiceBusQueueEndpointProperties]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingServiceBusQueueEndpointProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingServiceBusQueueEndpointProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -21993,7 +23261,7 @@
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingServiceBusQueueEndpointProperties": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
       "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingServiceBusQueueEndpointProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingServiceBusQueueEndpointProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingServiceBusQueueEndpointProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ConnectionString": "System.String",
         "Name": "System.String",
@@ -22040,7 +23308,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingServiceBusTopicEndpointProperties]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingServiceBusTopicEndpointProperties]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingServiceBusTopicEndpointProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingServiceBusTopicEndpointProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -22052,7 +23320,7 @@
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingServiceBusTopicEndpointProperties": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
       "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingServiceBusTopicEndpointProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingServiceBusTopicEndpointProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingServiceBusTopicEndpointProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ConnectionString": "System.String",
         "Name": "System.String",
@@ -22099,7 +23367,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingStorageContainerProperties]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingStorageContainerProperties]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingStorageContainerProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingStorageContainerProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -22111,7 +23379,7 @@
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingStorageContainerProperties": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
       "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingStorageContainerProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingStorageContainerProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingStorageContainerProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "BatchFrequencyInSeconds": "System.Nullable`1[System.Int32]",
         "MaxChunkSizeInBytes": "System.Nullable`1[System.Int32]",
@@ -22163,7 +23431,7 @@
     "Microsoft.Azure.Management.IotHub.Models.PSFallbackRouteMetadata": {
       "Namespace": "Microsoft.Azure.Management.IotHub.Models",
       "Name": "Microsoft.Azure.Management.IotHub.Models.PSFallbackRouteMetadata",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.IotHub.Models.PSFallbackRouteMetadata, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.IotHub.Models.PSFallbackRouteMetadata, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "IsEnabled": "System.Boolean",
         "EndpointNames": "System.Collections.Generic.IList`1[System.String]",
@@ -22211,7 +23479,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -22223,7 +23491,7 @@
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
       "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteMetadata, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "IsEnabled": "System.Boolean",
         "EndpointNames": "System.Collections.Generic.IList`1[System.String]",
@@ -22271,7 +23539,7 @@
     "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubProperties]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubProperties]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -22284,7 +23552,7 @@
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubProperties": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
       "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "PartitionIds": "System.Collections.Generic.IList`1[System.String]",
         "PartitionCount": "System.Nullable`1[System.Int32]",
@@ -22344,7 +23612,7 @@
     "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSMessagingEndpointProperties]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSMessagingEndpointProperties]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Microsoft.Azure.Commands.Management.IotHub.Models.PSMessagingEndpointProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Microsoft.Azure.Commands.Management.IotHub.Models.PSMessagingEndpointProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -22357,7 +23625,7 @@
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSMessagingEndpointProperties": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
       "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSMessagingEndpointProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSMessagingEndpointProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSMessagingEndpointProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "MaxDeliveryCount": "System.Nullable`1[System.Int32]",
         "TtlAsIso8601": "System.Nullable`1[System.TimeSpan]",
@@ -22403,7 +23671,7 @@
     "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSStorageEndpointProperties]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSStorageEndpointProperties]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Microsoft.Azure.Commands.Management.IotHub.Models.PSStorageEndpointProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Microsoft.Azure.Commands.Management.IotHub.Models.PSStorageEndpointProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -22416,7 +23684,7 @@
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSStorageEndpointProperties": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
       "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSStorageEndpointProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSStorageEndpointProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSStorageEndpointProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "SasTtlAsIso8601": "System.Nullable`1[System.TimeSpan]",
         "ConnectionString": "System.String",
@@ -22462,7 +23730,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -22474,7 +23742,7 @@
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
       "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSSharedAccessSignatureAuthorizationRule, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Rights": "Microsoft.Azure.Commands.Management.IotHub.Models.PSAccessRights",
         "KeyName": "System.String",
@@ -22521,7 +23789,7 @@
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
       "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSku",
         "Tier": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuTier",
@@ -22567,7 +23835,7 @@
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSku": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
       "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSku",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSku, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSku, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -22662,7 +23930,7 @@
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuTier": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
       "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuTier",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuTier, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuTier, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -22757,7 +24025,7 @@
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificatePropertiesWithNonce": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
       "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificatePropertiesWithNonce",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificatePropertiesWithNonce, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificatePropertiesWithNonce, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "IsVerified": "System.Nullable`1[System.Boolean]",
         "Expiry": "System.Nullable`1[System.DateTime]",
@@ -22807,7 +24075,7 @@
     "System.Nullable`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobStatus]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobStatus]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobStatus, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobStatus, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -22819,7 +24087,7 @@
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobStatus": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
       "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobStatus",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobStatus, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobStatus, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -22914,7 +24182,7 @@
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubCapacity": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
       "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubCapacity",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubCapacity, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubCapacity, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ScaleType": "System.Nullable`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubScaleType]",
         "Minimum": "System.Nullable`1[System.Int64]",
@@ -22961,7 +24229,7 @@
     "System.Nullable`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubScaleType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubScaleType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubScaleType, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubScaleType, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -22973,7 +24241,7 @@
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubScaleType": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
       "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubScaleType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubScaleType, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubScaleType, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -23068,7 +24336,7 @@
     "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubInputProperties]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubInputProperties]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubInputProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubInputProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -23081,7 +24349,7 @@
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubInputProperties": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
       "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubInputProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubInputProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEventHubInputProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "PartitionCount": "System.Nullable`1[System.Int32]",
         "RetentionTimeInDays": "System.Nullable`1[System.Int64]"
@@ -23126,7 +24394,7 @@
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteProperties": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
       "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteProperties, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "IsEnabled": "System.Boolean",
         "EndpointNames": "System.Collections.Generic.IList`1[System.String]",
@@ -23174,7 +24442,7 @@
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingCustomEndpoint": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
       "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingCustomEndpoint",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingCustomEndpoint, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingCustomEndpoint, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "EndpointType": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType",
         "Name": "System.String",
@@ -23222,7 +24490,7 @@
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
       "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -23317,7 +24585,7 @@
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
       "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -23412,7 +24680,7 @@
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSTestRouteResultDetails": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
       "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSTestRouteResultDetails",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSTestRouteResultDetails, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSTestRouteResultDetails, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "CompilationErrors": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteCompilationError]"
       },
@@ -23456,7 +24724,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteCompilationError]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteCompilationError]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteCompilationError, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteCompilationError, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -23468,7 +24736,7 @@
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteCompilationError": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
       "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteCompilationError",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteCompilationError, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteCompilationError, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Location": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteErrorRange",
         "Severity": "System.String",
@@ -23514,7 +24782,7 @@
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteErrorRange": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
       "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteErrorRange",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteErrorRange, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteErrorRange, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Start": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteErrorPosition",
         "End": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteErrorPosition"
@@ -23559,7 +24827,7 @@
     "Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteErrorPosition": {
       "Namespace": "Microsoft.Azure.Commands.Management.IotHub.Models",
       "Name": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteErrorPosition",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteErrorPosition, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteErrorPosition, Microsoft.Azure.PowerShell.Cmdlets.IotHub, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Line": "System.Nullable`1[System.Int32]",
         "Column": "System.Nullable`1[System.Int32]"

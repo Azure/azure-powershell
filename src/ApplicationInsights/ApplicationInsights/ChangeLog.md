@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fix example typo in `Remove-AzApplicationInsightsApiKey` documentation 
 
 ## Version 1.0.0
 * General availability of `Az.ApplicationInsights` module
