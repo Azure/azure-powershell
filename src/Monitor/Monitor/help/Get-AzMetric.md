@@ -164,7 +164,7 @@ This command gets detailed output for the Requests metric.
 ```
 PS C:\> $dimFilter = @((New-AzMetricFilter -Dimension City -Operator eq -Value "Seattle","Toronto"), (New-AzMetricFilter -Dimension AuthenticationType -Operator eq -Value User))
 
-PS C:\> Get-AzMetric -ResourceId <resourcId> -MetricName PageViews -TimeGrain PT5M -MetricFilter $dimFilter -StartTime 2018-02-01T12:00:00Z -EndTime 2018-02-01T12:10:00Z -AggregationType -Average
+PS C:\> Get-AzMetric -ResourceId <resourceId> -MetricName PageViews -TimeGrain PT5M -MetricFilter $dimFilter -StartTime 2018-02-01T12:00:00Z -EndTime 2018-02-01T12:10:00Z -AggregationType -Average
 ResourceId	: [ResourceId]
 MetricNamespace	: Microsoft.Insights/ApplicationInsights
 Metric Name	:
@@ -191,7 +191,7 @@ Timeseries	:
 					Average		: 967
 ```
 
-This command gets summarized output for the PageViews metric with specified dimesion filter and aggregation type.
+This command gets summarized output for the PageViews metric with specified dimension filter and aggregation type.
 
 ## PARAMETERS
 

@@ -12,16 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections;
+using System.Collections.Generic;
+using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.SignalR.Models;
-using Microsoft.Azure.Commands.SignalR.Strategies;
+using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.SignalR;
 using Microsoft.Azure.Management.SignalR.Models;
-using System.Collections.Generic;
-using System.Management.Automation;
-using System.Threading.Tasks;
-using Microsoft.Azure.Commands.SignalR.Strategies.ResourceManager;
-using Microsoft.Azure.Commands.SignalR.Strategies.SignalRRp;
+using Microsoft.WindowsAzure.Commands.Common;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 {
@@ -30,6 +31,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
     public sealed class NewAzureRmSignalR : SignalRCmdletBase
     {
         private const string DefaultSku = "Standard_S1";
+        private const int DefaultUnitCount = 1;
 
         [Parameter(
             Mandatory = false,
@@ -53,16 +55,15 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The SignalR service SKU.")]
+            HelpMessage = "The SignalR service SKU. Default to \"Standard_S1\".")]
         [PSArgumentCompleter("Free_F1", "Standard_S1")]
-        public string Sku { get; set; } = DefaultSku;
+        public string Sku { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The SignalR service unit count, from 1 to 10. Default to 1.")]
-        [PSArgumentCompleter("1", "2", "3", "4", "5", "6", "7", "8", "9", "10")]
-        [ValidateRange(1, 10)]
-        public int UnitCount { get; set; } = 1;
+            HelpMessage = "The SignalR service unit count, value only from {1, 2, 5, 10, 20, 50, 100}. Default to 1.")]
+        [PSArgumentCompleter("1", "2", "5", "10", "20", "50", "100")]
+        public int UnitCount { get; set; } = DefaultUnitCount;
 
         [Parameter(
             Mandatory = false,
@@ -71,70 +72,69 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "The service mode for the SignalR service.")]
+        [PSArgumentCompleter("Default", "Serverless", "Classic")]
+        public string ServiceMode { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The allowed origins for the SignalR service. To allow all, use \"*\" and remove all other origins from the list. Slashes are not allowed as part of domain or after top-level domain")]
+        public string[] AllowedOrigin { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Run the cmdlet in background job.")]
         public SwitchParameter AsJob { get; set; }
 
         public override void ExecuteCmdlet()
-            => this.StartAndWait(SimpleExecuteCmdlet);
-
-        sealed class Parameters : IParameters<SignalRResource>
         {
-            public string Location
+            base.ExecuteCmdlet();
+
+            RunCmdlet(() =>
             {
-                get
+                ResolveResourceGroupName(required: false);
+                ResourceGroupName = ResourceGroupName ?? Name;
+
+                if (ShouldProcess($"SignalR service {ResourceGroupName}/{Name}", "new"))
                 {
-                    return _cmdlet.Location;
+                    PromptParameter(nameof(ResourceGroupName), ResourceGroupName);
+                    PromptParameter(nameof(Name), Name);
+
+                    if (Location == null)
+                    {
+                        Location = GetLocationFromResourceGroup();
+                        PromptParameter(nameof(Location), null, true, Location, "(from resource group location)");
+                    }
+                    else
+                    {
+                        PromptParameter(nameof(Location), Location);
+                    }
+
+                    PromptParameter(nameof(Sku), Sku, true, DefaultSku);
+                    PromptParameter(nameof(UnitCount), UnitCount);
+                    PromptParameter(nameof(Tag), Tag == null ? null : JsonConvert.SerializeObject(Tag));
+                    PromptParameter(nameof(ServiceMode), ServiceMode);
+
+                    IList<string> origins = ParseAndCheckAllowedOrigins(AllowedOrigin);
+                    PromptParameter(nameof(AllowedOrigin), origins == null ? null : JsonConvert.SerializeObject(origins));
+
+                    Sku = Sku ?? DefaultSku;
+
+                    IList<SignalRFeature> features = ServiceMode == null ? null : new List<SignalRFeature> { new SignalRFeature(value: ServiceMode) };
+                    SignalRCorsSettings cors = AllowedOrigin == null ? null : new SignalRCorsSettings(allowedOrigins: origins);
+
+                    var parameters = new SignalRCreateParameters(
+                        location: Location,
+                        tags: Tag,
+                        sku: new ResourceSku(name: Sku, capacity: UnitCount),
+                        properties: new SignalRCreateOrUpdateProperties(features: features, cors: cors));
+
+                    Client.SignalR.CreateOrUpdate(ResourceGroupName, Name, parameters);
+
+                    var signalr = Client.SignalR.Get(ResourceGroupName, Name);
+                    WriteObject(new PSSignalRResource(signalr));
                 }
-
-                set
-                {
-                    _cmdlet.Location = value;
-                }
-            }
-
-            public string DefaultLocation => "eastus";
-
-            readonly NewAzureRmSignalR _cmdlet;
-
-            public Parameters(NewAzureRmSignalR cmdlet)
-            {
-                _cmdlet = cmdlet;
-            }
-
-            public Task<ResourceConfig<SignalRResource>> CreateConfigAsync()
-            {
-                _cmdlet.ResolveResourceGroupName(required: false);
-                _cmdlet.ResourceGroupName = _cmdlet.ResourceGroupName ?? _cmdlet.Name;
-
-                var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(
-                    _cmdlet.ResourceGroupName);
-
-                var result = SignalRStrategy.Strategy.CreateResourceConfig(
-                    resourceGroup: resourceGroup,
-                    name: _cmdlet.Name,
-                    createModel: engine => new SignalRResource(
-                        tags: _cmdlet.Tag,
-                        sku: new ResourceSku(_cmdlet.Sku, capacity: _cmdlet.UnitCount),
-                        hostNamePrefix: null /* _cmdlet.Name*/)); // hostNamePrefix is just a placeholder and ignored in the resource provider.
-
-                return Task.FromResult(result);
-            }
-        }
-
-        async Task SimpleExecuteCmdlet(IAsyncCmdlet asyncCmdlet)
-        {
-            var client = new Client(DefaultProfile.DefaultContext);
-
-            var parameters = new Parameters(this);
-
-            var result = await client.RunAsync(
-                client.SubscriptionId, parameters, asyncCmdlet);
-
-            if (result != null)
-            {
-                var psResult = new PSSignalRResource(result);
-                asyncCmdlet.WriteObject(psResult);
-            }
+            });
         }
     }
 }

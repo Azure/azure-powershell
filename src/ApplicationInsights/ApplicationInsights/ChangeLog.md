@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.0.2
+* Fixed miscellaneous typos across module
+
+## Version 1.0.1
 * Fix example typo in `Remove-AzApplicationInsightsApiKey` documentation 
 
 ## Version 1.0.0

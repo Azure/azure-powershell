@@ -37,10 +37,10 @@ The **Complete-AzServiceBusMigration** cmdlets set the Migration from Standard t
 
 ### Example 1
 ```powershell
-PS C:\> Complete-AzServiceBusMigration -ResourceGroupName ResourceGroup -Name NamespaceStandardMirgation
+PS C:\> Complete-AzServiceBusMigration -ResourceGroupName ResourceGroup -Name NamespaceStandardMigration
 ```
 
-Sets the Migration of 'NamespaceStandardMirgation' namespace as complete.
+Sets the Migration of 'NamespaceStandardMigration' namespace as complete.
 
 ## PARAMETERS
 
@@ -120,7 +120,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Service Bus Migratio - Standard Namespace Resource Id
+Service Bus Migration - Standard Namespace Resource Id
 
 ```yaml
 Type: System.String

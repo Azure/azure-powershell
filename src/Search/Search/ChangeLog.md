@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.7.3
+* Fixed miscellaneous typos across module
+
 ## Version 0.7.2
 * Added 2 new SKUs (Storage_Optimized_L1 and Storage_Optimized_L2) and appropriate tests
     - Updated dependency for Microsoft.Azure.Management.Search from 2.0.1 to 3.0.0

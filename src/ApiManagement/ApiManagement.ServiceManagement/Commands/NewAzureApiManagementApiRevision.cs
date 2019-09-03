@@ -75,7 +75,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                     ApiId,
                     ApiRevision,
                     SourceApiRevision,
-                    ServiceUrl);
+                    ServiceUrl,
+                    ApiRevisionDescription);
                 WriteObject(newApi);
             }
         }

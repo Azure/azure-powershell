@@ -15,7 +15,7 @@ This topic displays the help topics for the Azure Compute Cmdlets.
 Adds a container service agent pool profile.
 
 ### [Add-AzImageDataDisk](Add-AzImageDataDisk.md)
-Adds a data disk to an image obejct.
+Adds a data disk to an image object.
 
 ### [Add-AzVhd](Add-AzVhd.md)
 Uploads a virtual hard disk from an on-premises virtual machine to a blob in a cloud storage account in Azure.
@@ -97,6 +97,12 @@ Get or list gallery image definitions.
 
 ### [Get-AzGalleryImageVersion](Get-AzGalleryImageVersion.md)
 Get or list gallery image versions.
+
+### [Get-AzHost](Get-AzHost.md)
+Get or list hosts.
+
+### [Get-AzHostGroup](Get-AzHostGroup.md)
+Get or list hosts.
 
 ### [Get-AzImage](Get-AzImage.md)
 Gets the properties of an image.
@@ -236,8 +242,14 @@ Create a gallery image definition.
 ### [New-AzGalleryImageVersion](New-AzGalleryImageVersion.md)
 Create a gallery image version.
 
+### [New-AzHost](New-AzHost.md)
+Creates a  host.
+
+### [New-AzHostGroup](New-AzHostGroup.md)
+Creates a host group.
+
 ### [New-AzImage](New-AzImage.md)
-Creats an image.
+Creates an image.
 
 ### [New-AzImageConfig](New-AzImageConfig.md)
 Creates a configurable image object.
@@ -310,6 +322,12 @@ Delete a gallery image definition.
 
 ### [Remove-AzGalleryImageVersion](Remove-AzGalleryImageVersion.md)
 Delete a gallery image version.
+
+### [Remove-AzHost](Remove-AzHost.md)
+Removes a host.
+
+### [Remove-AzHostGroup](Remove-AzHostGroup.md)
+Removes a host group.
 
 ### [Remove-AzImage](Remove-AzImage.md)
 Removes an image.
@@ -414,7 +432,7 @@ Sets the image reference properties on a disk object.
 Sets the key encryption key properties on a disk object.
 
 ### [Set-AzDiskUpdateDiskEncryptionKey](Set-AzDiskUpdateDiskEncryptionKey.md)
-Sets the disk encryption key properties on on a disk update object.
+Sets the disk encryption key properties on a disk update object.
 
 ### [Set-AzDiskUpdateKeyEncryptionKey](Set-AzDiskUpdateKeyEncryptionKey.md)
 Sets the key encryption key properties on a disk update object.

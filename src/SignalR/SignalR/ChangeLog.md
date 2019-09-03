@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add Update, Restart, CheckNameAvailability, GetUsage Cmdlets
+
+## Version 1.0.3
+* Fixed miscellaneous typos across module
 
 ## Version 1.0.2
 * Update incorrect online help URLs

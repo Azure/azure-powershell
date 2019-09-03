@@ -19,5 +19,8 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.1
+* Fixed miscellaneous typos across module
+
 ## Version 1.0.0
 * General availability of `Az.Billing` module

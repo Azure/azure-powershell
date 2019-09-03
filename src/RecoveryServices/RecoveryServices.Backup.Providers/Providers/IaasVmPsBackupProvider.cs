@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         AzureWorkloadProviderHelper AzureWorkloadProviderHelper { get; set; }
 
         /// <summary>
-        /// Initializes the provider with the data recieved from the cmdlet layer
+        /// Initializes the provider with the data received from the cmdlet layer
         /// </summary>
         /// <param name="providerData">Data from the cmdlet layer intended for the provider</param>
         /// <param name="serviceClientAdapter">Service client adapter for communicating with the backend service</param>
@@ -86,6 +86,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string protectedItemUri = "";
             bool isComputeAzureVM = false;
             string sourceResourceId = null;
+
+            AzureVmPolicy azureVmPolicy = (AzureVmPolicy)ProviderData[ItemParams.Policy];
+            ValidateProtectedItemCount(azureVmPolicy);
 
             if (itemBase == null)
             {
@@ -835,6 +838,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         #region private
 
+
+        private void ValidateProtectedItemCount(AzureVmPolicy azureVmPolicy)
+        {
+            if (azureVmPolicy.ProtectedItemsCount > 100)
+            {
+                throw new ArgumentException(Resources.ProtectedItemsCountExceededException);
+            }
+        }
+
         private void ValidateAzureVMWorkloadType(CmdletModel.WorkloadType type)
         {
             if (type != CmdletModel.WorkloadType.AzureVM)
@@ -888,7 +900,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
 
             ValidateAzureVMWorkloadType(policy.WorkloadType);
-
             // call validation
             policy.Validate();
         }

@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.2.1
+* Fixed miscellaneous typos across module
+
 ## Version 1.2.0
 * Add support to regenerate authorization policy keys.
 

@@ -21,9 +21,10 @@ New-AzPeering [-ResourceGroupName] <String> [-Name] <String> [-PeeringLocation] 
 
 ### ConvertLegacyPeering
 ```
-New-AzPeering -LegacyPeering <PSPeering> [-ResourceGroupName] <String> [-Name] <String>
- [-PeerAsnResourceId] <String> [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzPeering -InputObject <PSPeering> [-ResourceGroupName] <String> [-Name] <String>
+ [-PeerAsnResourceId] <String> [-ExchangeConnection <PSExchangeConnection[]>]
+ [-DirectConnection <PSDirectConnection[]>] [-Tag <Hashtable>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Direct
@@ -35,7 +36,7 @@ New-AzPeering [-ResourceGroupName] <String> [-Name] <String> [-PeeringLocation] 
 ```
 
 ## DESCRIPTION
-Creates an ARM Peering for the subscription. See [New-AzPeeringDirectConnectionOject](https://docs.microsoft.com/en-us/powershell/module/az.peering/new-azpeeringdirectconnectionobject) or [New-AzPeeringExchangeConnectionOject](https://docs.microsoft.com/en-us/powershell/module/az.peering/new-azpeeringexchangeconnectionobject) for more information on creating a connection object.
+Creates an ARM Peering for the subscription. See [New-AzPeeringDirectConnectionObject](https://docs.microsoft.com/en-us/powershell/module/az.peering/new-azpeeringdirectconnectionobject) or [New-AzPeeringExchangeConnectionObject](https://docs.microsoft.com/en-us/powershell/module/az.peering/new-azpeeringexchangeconnectionobject) for more information on creating a connection object.
 
 ## EXAMPLES
 
@@ -145,6 +146,18 @@ Create a new Direct connections using the New-AzExchangePeeringConnection and pi
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection[]
+Parameter Sets: ConvertLegacyPeering
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSDirectConnection[]
 Parameter Sets: Direct
 Aliases:
 
@@ -170,8 +183,20 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LegacyPeering
-The legacy peering object. Use Get-AzLegacyPeering to view current objects.
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSExchangeConnection[]
+Parameter Sets: ConvertLegacyPeering
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Use Get-AzLegacyPeering to retrieve this object.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeering
@@ -307,7 +332,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

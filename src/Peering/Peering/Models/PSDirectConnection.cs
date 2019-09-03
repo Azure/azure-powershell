@@ -41,13 +41,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         /// 'ProvisioningCompleted', 'Validating', 'Active'</param>
         /// <param name="bgpSession">The BGP session associated with the
         /// connection.</param>
-        public PSDirectConnection(int? bandwidthInMbps = default(int?), int? provisionedBandwidthInMbps = default(int?), int? peeringDBFacilityId = default(int?), string connectionState = default(string), PSBgpSession bgpSession = default(PSBgpSession))
+        /// <param name="connectionIdentifier">The unique identifier (GUID) for
+        /// the connection.</param>
+        public PSDirectConnection(int? bandwidthInMbps = default(int?), int? provisionedBandwidthInMbps = default(int?), int? peeringDBFacilityId = default(int?), string connectionState = default(string), PSBgpSession bgpSession = default(PSBgpSession), string connectionIdentifier = default(string))
         {
             BandwidthInMbps = bandwidthInMbps;
             ProvisionedBandwidthInMbps = provisionedBandwidthInMbps;
             PeeringDBFacilityId = peeringDBFacilityId;
             ConnectionState = connectionState;
             BgpSession = bgpSession;
+            ConnectionIdentifier = connectionIdentifier;
             CustomInit();
         }
 
@@ -89,6 +92,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Models
         /// </summary>
         [JsonProperty(PropertyName = "bgpSession")]
         public PSBgpSession BgpSession { get; set; }
+
+        /// <summary>
+        /// Gets or sets the unique identifier (GUID) for the connection.
+        /// </summary>
+        [JsonProperty(PropertyName = "connectionIdentifier")]
+        public string ConnectionIdentifier { get; set; }
 
     }
 }

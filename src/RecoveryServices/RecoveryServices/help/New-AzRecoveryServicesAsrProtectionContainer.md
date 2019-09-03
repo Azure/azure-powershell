@@ -48,7 +48,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Creates the replication protection container in specifed input Object (Azure Fabric).
+Creates the replication protection container in specified input Object (Azure Fabric).
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRFabric

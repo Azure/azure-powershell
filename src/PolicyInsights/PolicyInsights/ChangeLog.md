@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.1.3
+* Fixed miscellaneous typos across module
+
 ## Version 1.1.2
 * Fix null reference issue in Get-AzPolicyState
     - More information here: https://github.com/Azure/azure-powershell/issues/9446

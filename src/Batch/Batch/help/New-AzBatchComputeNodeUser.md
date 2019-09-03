@@ -49,7 +49,7 @@ PS C:\>Get-AzBatchComputeNode "MyPool01" -ComputeNodeId "ComputeNode01" -BatchCo
 This command gets the compute node named ComputeNode01 by using the **Get-AzBatchComputeNode** cmdlet.
 That node is in the pool that has the ID MyPool01.
 The command passes that compute node to the current cmdlet by using the pipeline operator.
-The command creates a user account that has the user name TestUserand the password Password.
+The command creates a user account that has the user name TestUser and the password Password.
 
 ## PARAMETERS
 
