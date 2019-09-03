@@ -27,23 +27,23 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Validate a template to see whether it's using the right syntax, resource providers, resource types, etc.
     /// </summary>
     [Cmdlet(VerbsDiagnostic.Test, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Deployment", 
-        DefaultParameterSetName = SubscriptionParameterSetWithParameterlessTemplateFile), OutputType(typeof(PSResourceManagerError))]
+        DefaultParameterSetName = SubscriptionAndTenantParameterSetWithParameterlessTemplateFile), OutputType(typeof(PSResourceManagerError))]
     public class TestAzureDeploymentCmdlet : DeploymentCmdletWithParameters, IDynamicParameters
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The deployment scope type.")]
         public DeploymentScopeType ScopeType { get; set; }
 
-        [Parameter(ParameterSetName = SubscriptionParameterSetWithTemplateObjectParameterObject,
+        [Parameter(ParameterSetName = SubscriptionAndTenantParameterSetWithTemplateObjectParameterObject,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The location to store deployment data.")]
-        [Parameter(ParameterSetName = SubscriptionParameterSetWithTemplateObjectParameterFile,
+        [Parameter(ParameterSetName = SubscriptionAndTenantParameterSetWithTemplateObjectParameterFile,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The location to store deployment data.")]
-        [Parameter(ParameterSetName = SubscriptionParameterSetWithTemplateFileParameterObject,
+        [Parameter(ParameterSetName = SubscriptionAndTenantParameterSetWithTemplateFileParameterObject,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The location to store deployment data.")]
-        [Parameter(ParameterSetName = SubscriptionParameterSetWithTemplateFileParameterFile,
+        [Parameter(ParameterSetName = SubscriptionAndTenantParameterSetWithTemplateFileParameterFile,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The location to store deployment data.")]
-        [Parameter(ParameterSetName = SubscriptionParameterSetWithParameterlessTemplateObject,
+        [Parameter(ParameterSetName = SubscriptionAndTenantParameterSetWithParameterlessTemplateObject,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The location to store deployment data.")]
-        [Parameter(ParameterSetName = SubscriptionParameterSetWithParameterlessTemplateFile,
+        [Parameter(ParameterSetName = SubscriptionAndTenantParameterSetWithParameterlessTemplateFile,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The location to store deployment data.")]
         [Parameter(ParameterSetName = ManagementGroupParameterSetWithTemplateObjectParameterObject,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The location to store deployment data.")]
@@ -56,18 +56,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(ParameterSetName = ManagementGroupParameterSetWithParameterlessTemplateObject,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The location to store deployment data.")]
         [Parameter(ParameterSetName = ManagementGroupParameterSetWithParameterlessTemplateFile,
-            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The location to store deployment data.")]
-        [Parameter(ParameterSetName = TenantParameterSetWithTemplateObjectParameterObject,
-            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The location to store deployment data.")]
-        [Parameter(ParameterSetName = TenantParameterSetWithTemplateObjectParameterFile,
-            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The location to store deployment data.")]
-        [Parameter(ParameterSetName = TenantParameterSetWithTemplateFileParameterObject,
-            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The location to store deployment data.")]
-        [Parameter(ParameterSetName = TenantParameterSetWithTemplateFileParameterFile,
-            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The location to store deployment data.")]
-        [Parameter(ParameterSetName = TenantParameterSetWithParameterlessTemplateObject,
-            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The location to store deployment data.")]
-        [Parameter(ParameterSetName = TenantParameterSetWithParameterlessTemplateFile,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The location to store deployment data.")]
         [LocationCompleter("Microsoft.Resources/resourceGroups")]
         [ValidateNotNullOrEmpty]
