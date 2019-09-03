@@ -180,7 +180,7 @@ function New-AzStorageAccount {
         [Parameter(ParameterSetName='CreateExpandedKeyVaultEncryption', HelpMessage='Indicates the type of storage account.')]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Storage.Support.Kind])]
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
-        [string]
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Support.Kind]
         # Indicates the type of storage account.
         ${SkuKind},
     
@@ -188,7 +188,7 @@ function New-AzStorageAccount {
         [Parameter(ParameterSetName='CreateExpandedKeyVaultEncryption', Mandatory, HelpMessage='Gets or sets the SKU name. Required for account creation; optional for update. Note that in older versions, SKU name was called accountType.')]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Storage.Support.SkuName])]
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Body')]
-        [string]
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Support.SkuName]
         # Gets or sets the SKU name. Required for account creation; optional for update. Note that in older versions, SKU name was called accountType.
         ${SkuName},
     
