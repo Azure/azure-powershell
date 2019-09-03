@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.VirtualNetworkLinks
                         (this.VirtualNetwork != null) ? this.VirtualNetwork.Id : this.VirtualNetworkId,
                         this.EnableRegistration.IsPresent,
                         this.Tag,
-                        customHeaders: auxAuthHeader);
+                        auxAuthHeader);
                     this.WriteVerbose(ProjectResources.Success);
                     this.WriteVerbose(string.Format(ProjectResources.Success_NewVirtualNetworkLink, this.Name, this.ResourceGroupName));
                     this.WriteObject(result);
