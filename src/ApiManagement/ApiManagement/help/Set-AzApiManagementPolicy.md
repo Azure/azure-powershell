@@ -142,10 +142,10 @@ Accept wildcard characters: False
 ```
 
 ### -Format
-Specifies the format of the policy. When using `application/vnd.ms-az-apim.policy+xml`, 
-expressions contained within the policy must be XML-escaped. When using `application/vnd.ms-az-apim.policy.raw+xml` it 
+Specifies the format of the policy. When using `application/vnd.ms-azure-apim.policy+xml`, 
+expressions contained within the policy must be XML-escaped. When using `application/vnd.ms-azure-apim.policy.raw+xml` it 
 is **not** necessary for the policy to be XML-escaped.
-The default value is `application/vnd.ms-az-apim.policy+xml`.
+The default value is `application/vnd.ms-azure-apim.policy+xml`.
 This parameter is optional.
 
 ```yaml
