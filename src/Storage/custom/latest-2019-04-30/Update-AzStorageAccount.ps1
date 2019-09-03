@@ -24,6 +24,7 @@ function Update-AzStorageAccount {
         [Parameter(ParameterSetName='UpdateExpanded1StorageEncryption', Mandatory, HelpMessage='The ID of the target subscription.')]
         [Parameter(ParameterSetName='UpdateExpanded1KeyVaultEncryption', Mandatory, HelpMessage='The ID of the target subscription.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
         # The ID of the target subscription.
         ${SubscriptionId},

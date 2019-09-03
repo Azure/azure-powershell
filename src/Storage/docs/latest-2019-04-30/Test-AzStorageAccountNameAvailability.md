@@ -14,15 +14,14 @@ Checks that the storage account name is valid and is not already in use.
 
 ### CheckExpanded (Default)
 ```
-Test-AzStorageAccountNameAvailability -SubscriptionId <String> -Name <String> [-DefaultProfile <PSObject>]
+Test-AzStorageAccountNameAvailability -Name <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Check
 ```
-Test-AzStorageAccountNameAvailability -SubscriptionId <String>
- -Parameter <IStorageAccountCheckNameAvailabilityParameters> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Test-AzStorageAccountNameAvailability -Parameter <IStorageAccountCheckNameAvailabilityParameters>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CheckViaIdentity
@@ -137,9 +136,9 @@ Type: System.String
 Parameter Sets: Check, CheckExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

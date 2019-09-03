@@ -14,7 +14,7 @@ Sets the properties of a storage account’s Blob service, including properties 
 
 ### SetExpanded (Default)
 ```
-Set-AzStorageBlobServiceProperty -AccountName <String> -ResourceGroupName <String> -SubscriptionId <String>
+Set-AzStorageBlobServiceProperty -AccountName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AutomaticSnapshotPolicyEnabled] [-CorCorsRule <ICorsRule[]>] [-DefaultServiceVersion <String>]
  [-DeleteRetentionPolicyDay <Int32>] [-DeleteRetentionPolicyEnabled] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
@@ -22,8 +22,9 @@ Set-AzStorageBlobServiceProperty -AccountName <String> -ResourceGroupName <Strin
 
 ### Set
 ```
-Set-AzStorageBlobServiceProperty -AccountName <String> -ResourceGroupName <String> -SubscriptionId <String>
- -Parameter <IBlobServiceProperties> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzStorageBlobServiceProperty -AccountName <String> -ResourceGroupName <String>
+ -Parameter <IBlobServiceProperties> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -211,9 +212,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -15,18 +15,18 @@ Note that storage keys are not returned; use the ListKeys operation for this.
 
 ### List2 (Default)
 ```
-Get-AzStorageAccount -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzStorageAccount [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetByName
 ```
-Get-AzStorageAccount -ResourceGroupName <String> -SubscriptionId <String[]> -Name <String>
+Get-AzStorageAccount -ResourceGroupName <String> -Name <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List3
 ```
-Get-AzStorageAccount -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
+Get-AzStorageAccount -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -113,9 +113,9 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

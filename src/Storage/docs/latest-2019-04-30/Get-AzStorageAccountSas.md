@@ -14,17 +14,16 @@ List SAS credentials of a storage account.
 
 ### ListExpanded (Default)
 ```
-Get-AzStorageAccountSas -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- -Permission <Permissions> -ResourceType <SignedResourceTypes> -Service <Services>
- -SharedAccessExpiryTime <DateTime> [-IPAddressOrRange <String>] [-KeyToSign <String>]
- [-Protocol <HttpProtocol>] [-SharedAccessStartTime <DateTime>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Get-AzStorageAccountSas -Name <String> -ResourceGroupName <String> -Permission <Permissions>
+ -ResourceType <SignedResourceTypes> -Service <Services> -SharedAccessExpiryTime <DateTime>
+ [-SubscriptionId <String[]>] [-IPAddressOrRange <String>] [-KeyToSign <String>] [-Protocol <HttpProtocol>]
+ [-SharedAccessStartTime <DateTime>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### List
 ```
-Get-AzStorageAccountSas -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- -Parameter <IAccountSasParameters> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzStorageAccountSas -Name <String> -ResourceGroupName <String> -Parameter <IAccountSasParameters>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -258,9 +257,9 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

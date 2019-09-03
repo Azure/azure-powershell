@@ -8,7 +8,7 @@ Locale: en-US
 
 # Az.Storage Module
 ## Description
-
+Microsoft Azure PowerShell: Storage cmdlets
 
 ## Az.Storage Cmdlets
 ### [Disable-AzStorageDeleteRetentionPolicy](Disable-AzStorageDeleteRetentionPolicy.md)

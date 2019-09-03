@@ -5,6 +5,7 @@ function Get-AzStorageAccount_GetByName {
     param(
         [Parameter(Mandatory, HelpMessage='Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String[]]
         # Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
         ${SubscriptionId},

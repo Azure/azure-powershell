@@ -17,14 +17,14 @@ SetLegalHold follows an append pattern and does not clear out the existing tags 
 ### SetExpanded (Default)
 ```
 Set-AzRmStorageContainerLegalHold -AccountName <String> -ContainerName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -Tag <String[]> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ -Tag <String[]> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### Set
 ```
 Set-AzRmStorageContainerLegalHold -AccountName <String> -ContainerName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -LegalHold <ILegalHold> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ -LegalHold <ILegalHold> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -148,9 +148,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

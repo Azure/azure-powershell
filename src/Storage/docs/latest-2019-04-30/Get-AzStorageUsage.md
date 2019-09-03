@@ -14,12 +14,12 @@ Gets the current usage count and the limit for the resources of the location und
 
 ### List1 (Default)
 ```
-Get-AzStorageUsage -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzStorageUsage [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List
 ```
-Get-AzStorageUsage -Location <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
+Get-AzStorageUsage -Location <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -88,9 +88,9 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -16,8 +16,8 @@ If an account is already created and a subsequent create or update request is is
 
 ### CreateExpandedStorageEncryption (Default)
 ```
-New-AzStorageAccount -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Kind <Kind>
- -Location <String> -SkuName <SkuName> [-AccessTier <AccessTier>] [-AssignIdentity]
+New-AzStorageAccount -Name <String> -ResourceGroupName <String> -Kind <Kind> -Location <String>
+ -SkuName <SkuName> [-SubscriptionId <String>] [-AccessTier <AccessTier>] [-AssignIdentity]
  [-CustomDomainName <String>] [-EnableAzureFilesAadIntegration] [-EnableHierarchicalNamespace]
  [-EnableHttpsTrafficOnly] [-EncryptBlobService] [-EncryptFileService] [-EncryptQueueService]
  [-EncryptTableService] [-NetworkRuleSetBypass <Bypass>] [-NetworkRuleSetDefaultAction <DefaultAction>]
@@ -28,8 +28,8 @@ New-AzStorageAccount -Name <String> -ResourceGroupName <String> -SubscriptionId 
 
 ### CreateExpandedKeyVaultEncryption
 ```
-New-AzStorageAccount -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Kind <Kind>
- -Location <String> -SkuName <SkuName> [-AccessTier <AccessTier>] [-AssignIdentity]
+New-AzStorageAccount -Name <String> -ResourceGroupName <String> -Kind <Kind> -Location <String>
+ -SkuName <SkuName> [-SubscriptionId <String>] [-AccessTier <AccessTier>] [-AssignIdentity]
  [-CustomDomainName <String>] [-EnableAzureFilesAadIntegration] [-EnableHierarchicalNamespace]
  [-EnableHttpsTrafficOnly] [-EncryptBlobService] [-EncryptFileService] [-EncryptQueueService]
  [-EncryptTableService] [-KeyName <String>] [-KeyVaultEncryption] [-KeyVaultUri <String>]
@@ -538,9 +538,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

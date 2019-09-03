@@ -16,14 +16,15 @@ The lock duration can be 15 to 60 seconds, or can be infinite.
 ### LeaseExpanded (Default)
 ```
 Invoke-AzLeaseBlobContainer -AccountName <String> -ContainerName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -Action <String> [-BreakPeriod <Int32>] [-LeaseDuration <Int32>] [-LeaseId <String>]
- [-ProposedLeaseId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Action <String> [-SubscriptionId <String>] [-BreakPeriod <Int32>] [-LeaseDuration <Int32>]
+ [-LeaseId <String>] [-ProposedLeaseId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Lease
 ```
 Invoke-AzLeaseBlobContainer -AccountName <String> -ContainerName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -Parameter <ILeaseContainerRequest> [-DefaultProfile <PSObject>] [-Confirm]
+ -Parameter <ILeaseContainerRequest> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -261,9 +262,9 @@ Type: System.String
 Parameter Sets: Lease, LeaseExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

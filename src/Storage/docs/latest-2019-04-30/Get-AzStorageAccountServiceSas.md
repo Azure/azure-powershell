@@ -14,7 +14,7 @@ List service SAS credentials of a specific resource.
 
 ### ListExpanded (Default)
 ```
-Get-AzStorageAccountServiceSas -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzStorageAccountServiceSas -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-CacheControl <String>] [-CanonicalizedResource <String>] [-ContentDisposition <String>]
  [-ContentEncoding <String>] [-ContentLanguage <String>] [-ContentType <String>] [-Identifier <String>]
  [-IPAddressOrRange <String>] [-KeyToSign <String>] [-PartitionKeyEnd <String>] [-PartitionKeyStart <String>]
@@ -25,8 +25,8 @@ Get-AzStorageAccountServiceSas -Name <String> -ResourceGroupName <String> -Subsc
 
 ### List
 ```
-Get-AzStorageAccountServiceSas -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- -Parameter <IServiceSasParameters> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzStorageAccountServiceSas -Name <String> -ResourceGroupName <String> -Parameter <IServiceSasParameters>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -419,9 +419,9 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

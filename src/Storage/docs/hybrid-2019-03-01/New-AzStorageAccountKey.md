@@ -14,15 +14,15 @@ Regenerates one of the access keys for the specified storage account.
 
 ### RegenerateExpanded1 (Default)
 ```
-New-AzStorageAccountKey -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -KeyName <String>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzStorageAccountKey -Name <String> -ResourceGroupName <String> -KeyName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Regenerate1
 ```
-New-AzStorageAccountKey -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -RegenerateKey <IStorageAccountRegenerateKeyParameters> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzStorageAccountKey -Name <String> -ResourceGroupName <String>
+ -RegenerateKey <IStorageAccountRegenerateKeyParameters> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### RegenerateViaIdentity1
@@ -172,9 +172,9 @@ Type: System.String
 Parameter Sets: Regenerate1, RegenerateExpanded1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

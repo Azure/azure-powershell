@@ -17,7 +17,7 @@ Update fails if the specified container doesn't already exist.
 ### UpdateExpanded (Default)
 ```
 Update-AzRmStorageContainer -AccountName <String> -ContainerName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-ImmutabilityPeriodSinceCreationInDay <Int32>] [-LegalHoldTag <ITagProperty[]>]
+ [-SubscriptionId <String>] [-ImmutabilityPeriodSinceCreationInDay <Int32>] [-LegalHoldTag <ITagProperty[]>]
  [-Metadata <Hashtable>] [-PublicAccess <PublicAccess>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -25,7 +25,7 @@ Update-AzRmStorageContainer -AccountName <String> -ContainerName <String> -Resou
 ### Update
 ```
 Update-AzRmStorageContainer -AccountName <String> -ContainerName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -BlobContainer <IBlobContainer> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ -BlobContainer <IBlobContainer> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -243,9 +243,9 @@ Type: System.String
 Parameter Sets: Update, UpdateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

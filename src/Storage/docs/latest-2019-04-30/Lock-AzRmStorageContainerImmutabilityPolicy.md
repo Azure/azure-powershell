@@ -17,7 +17,7 @@ ETag in If-Match is required for this operation.
 ### Lock (Default)
 ```
 Lock-AzRmStorageContainerImmutabilityPolicy -AccountName <String> -ContainerName <String>
- -ResourceGroupName <String> -SubscriptionId <String> -IfMatch <String> [-DefaultProfile <PSObject>]
+ -ResourceGroupName <String> -IfMatch <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -165,9 +165,9 @@ Type: System.String
 Parameter Sets: Lock
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

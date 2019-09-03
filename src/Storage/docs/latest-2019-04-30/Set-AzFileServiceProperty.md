@@ -14,14 +14,15 @@ Sets the properties of file services in storage accounts, including CORS (Cross-
 
 ### SetExpanded (Default)
 ```
-Set-AzFileServiceProperty -AccountName <String> -ResourceGroupName <String> -SubscriptionId <String>
+Set-AzFileServiceProperty -AccountName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-CorCorsRule <ICorsRule[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Set
 ```
-Set-AzFileServiceProperty -AccountName <String> -ResourceGroupName <String> -SubscriptionId <String>
- -Parameter <IFileServiceProperties> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzFileServiceProperty -AccountName <String> -ResourceGroupName <String>
+ -Parameter <IFileServiceProperties> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -143,9 +144,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

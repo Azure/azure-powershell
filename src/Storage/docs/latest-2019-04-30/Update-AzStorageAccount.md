@@ -21,10 +21,10 @@ The location and name of the storage account cannot be changed after creation.
 
 ### UpdateExpanded1 (Default)
 ```
-Update-AzStorageAccount -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -SkuName <SkuName>
- [-AccessTier <AccessTier>] [-AssignIdentity] [-CustomDomainName <String>] [-EnableAzureFilesAadIntegration]
- [-EnableHttpsTrafficOnly] [-EncryptBlobService] [-EncryptFileService] [-EncryptQueueService]
- [-EncryptTableService] [-Kind <Kind>] [-NetworkRuleSetBypass <Bypass>]
+Update-AzStorageAccount -Name <String> -ResourceGroupName <String> -SkuName <SkuName>
+ [-SubscriptionId <String>] [-AccessTier <AccessTier>] [-AssignIdentity] [-CustomDomainName <String>]
+ [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly] [-EncryptBlobService] [-EncryptFileService]
+ [-EncryptQueueService] [-EncryptTableService] [-Kind <Kind>] [-NetworkRuleSetBypass <Bypass>]
  [-NetworkRuleSetDefaultAction <DefaultAction>] [-NetworkRuleSetIPRule <IIPRule[]>]
  [-NetworkRuleSetVirtualNetworkRule <IVirtualNetworkRule[]>] [-NoEncryption] [-SkuKind <Kind>]
  [-SkuRestriction <IRestriction[]>] [-Tag <Hashtable>] [-UseSubDomain] [-DefaultProfile <PSObject>] [-Confirm]
@@ -33,11 +33,11 @@ Update-AzStorageAccount -Name <String> -ResourceGroupName <String> -Subscription
 
 ### UpdateExpanded1KeyVaultEncryption
 ```
-Update-AzStorageAccount -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -SkuName <SkuName>
- [-AccessTier <AccessTier>] [-AssignIdentity] [-CustomDomainName <String>] [-EnableAzureFilesAadIntegration]
- [-EnableHttpsTrafficOnly] [-EncryptBlobService] [-EncryptFileService] [-EncryptQueueService]
- [-EncryptTableService] [-KeyName <String>] [-KeyVaultEncryption] [-KeyVaultUri <String>]
- [-KeyVersion <String>] [-Kind <Kind>] [-NetworkRuleSetBypass <Bypass>]
+Update-AzStorageAccount -Name <String> -ResourceGroupName <String> -SkuName <SkuName>
+ [-SubscriptionId <String>] [-AccessTier <AccessTier>] [-AssignIdentity] [-CustomDomainName <String>]
+ [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly] [-EncryptBlobService] [-EncryptFileService]
+ [-EncryptQueueService] [-EncryptTableService] [-KeyName <String>] [-KeyVaultEncryption]
+ [-KeyVaultUri <String>] [-KeyVersion <String>] [-Kind <Kind>] [-NetworkRuleSetBypass <Bypass>]
  [-NetworkRuleSetDefaultAction <DefaultAction>] [-NetworkRuleSetIPRule <IIPRule[]>]
  [-NetworkRuleSetVirtualNetworkRule <IVirtualNetworkRule[]>] [-SkuKind <Kind>]
  [-SkuRestriction <IRestriction[]>] [-Tag <Hashtable>] [-UseSubDomain] [-DefaultProfile <PSObject>] [-Confirm]
@@ -46,10 +46,10 @@ Update-AzStorageAccount -Name <String> -ResourceGroupName <String> -Subscription
 
 ### UpdateExpanded1StorageEncryption
 ```
-Update-AzStorageAccount -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -SkuName <SkuName>
- [-AccessTier <AccessTier>] [-AssignIdentity] [-CustomDomainName <String>] [-EnableAzureFilesAadIntegration]
- [-EnableHttpsTrafficOnly] [-EncryptBlobService] [-EncryptFileService] [-EncryptQueueService]
- [-EncryptTableService] [-Kind <Kind>] [-NetworkRuleSetBypass <Bypass>]
+Update-AzStorageAccount -Name <String> -ResourceGroupName <String> -SkuName <SkuName>
+ [-SubscriptionId <String>] [-AccessTier <AccessTier>] [-AssignIdentity] [-CustomDomainName <String>]
+ [-EnableAzureFilesAadIntegration] [-EnableHttpsTrafficOnly] [-EncryptBlobService] [-EncryptFileService]
+ [-EncryptQueueService] [-EncryptTableService] [-Kind <Kind>] [-NetworkRuleSetBypass <Bypass>]
  [-NetworkRuleSetDefaultAction <DefaultAction>] [-NetworkRuleSetIPRule <IIPRule[]>]
  [-NetworkRuleSetVirtualNetworkRule <IVirtualNetworkRule[]>] [-SkuKind <Kind>]
  [-SkuRestriction <IRestriction[]>] [-StorageEncryption] [-Tag <Hashtable>] [-UseSubDomain]
@@ -576,9 +576,9 @@ Type: System.String
 Parameter Sets: UpdateExpanded1, UpdateExpanded1KeyVaultEncryption, UpdateExpanded1StorageEncryption
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

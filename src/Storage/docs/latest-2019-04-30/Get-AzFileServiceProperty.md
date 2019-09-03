@@ -14,7 +14,7 @@ Gets the properties of file services in storage accounts, including CORS (Cross-
 
 ### Get (Default)
 ```
-Get-AzFileServiceProperty -AccountName <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzFileServiceProperty -AccountName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -123,9 +123,9 @@ Type: System.String[]
 Parameter Sets: Get
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

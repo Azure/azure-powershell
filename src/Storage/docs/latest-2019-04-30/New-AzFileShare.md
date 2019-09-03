@@ -16,15 +16,15 @@ It does not include a list of the files contained by the share.
 
 ### CreateExpanded (Default)
 ```
-New-AzFileShare -AccountName <String> -ResourceGroupName <String> -ShareName <String> -SubscriptionId <String>
- [-Metadata <Hashtable>] [-ShareQuota <Int32>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzFileShare -AccountName <String> -ResourceGroupName <String> -ShareName <String>
+ [-SubscriptionId <String>] [-Metadata <Hashtable>] [-ShareQuota <Int32>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create
 ```
-New-AzFileShare -AccountName <String> -ResourceGroupName <String> -ShareName <String> -SubscriptionId <String>
- -FileShare <IFileShare> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzFileShare -AccountName <String> -ResourceGroupName <String> -ShareName <String> -FileShare <IFileShare>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -209,9 +209,9 @@ Type: System.String
 Parameter Sets: Create, CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

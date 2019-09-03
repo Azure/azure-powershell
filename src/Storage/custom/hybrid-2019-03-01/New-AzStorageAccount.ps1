@@ -21,6 +21,7 @@ function New-AzStorageAccount {
         [Parameter(ParameterSetName='CreateExpanded1StorageEncryption', Mandatory, HelpMessage='The ID of the target subscription.')]
         [Parameter(ParameterSetName='CreateExpanded1KeyVaultEncryption', Mandatory, HelpMessage='The ID of the target subscription.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
         # The ID of the target subscription.
         ${SubscriptionId},

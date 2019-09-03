@@ -17,14 +17,14 @@ Update fails if the specified share does not already exist.
 ### UpdateExpanded (Default)
 ```
 Update-AzFileShare -AccountName <String> -ResourceGroupName <String> -ShareName <String>
- -SubscriptionId <String> [-Metadata <Hashtable>] [-ShareQuota <Int32>] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String>] [-Metadata <Hashtable>] [-ShareQuota <Int32>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
 ```
 Update-AzFileShare -AccountName <String> -ResourceGroupName <String> -ShareName <String>
- -SubscriptionId <String> -FileShare <IFileShare> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ -FileShare <IFileShare> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -210,9 +210,9 @@ Type: System.String
 Parameter Sets: Update, UpdateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
