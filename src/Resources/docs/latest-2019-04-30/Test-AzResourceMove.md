@@ -24,6 +24,12 @@ Test-AzResourceMove -SourceResourceGroupName <String> -SubscriptionId <String> [
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### Validate
+```
+Test-AzResourceMove -SourceResourceGroupName <String> -SubscriptionId <String> -Parameter <IResourcesMoveInfo>
+ [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### ValidateByComponents
 ```
 Test-AzResourceMove -SourceResourceGroupName <String> -SubscriptionId <String>
@@ -31,10 +37,10 @@ Test-AzResourceMove -SourceResourceGroupName <String> -SubscriptionId <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Validate
+### ValidateViaIdentity
 ```
-Test-AzResourceMove -SourceResourceGroupName <String> -SubscriptionId <String> -Parameter <IResourcesMoveInfo>
- [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-AzResourceMove -InputObject <IResourcesIdentity> -Parameter <IResourcesMoveInfo> [-PassThru]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ValidateViaIdentityExpanded
@@ -42,12 +48,6 @@ Test-AzResourceMove -SourceResourceGroupName <String> -SubscriptionId <String> -
 Test-AzResourceMove -InputObject <IResourcesIdentity> [-PassThru] [-Resource <String[]>]
  [-TargetResourceGroup <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
-```
-
-### ValidateViaIdentity
-```
-Test-AzResourceMove -InputObject <IResourcesIdentity> -Parameter <IResourcesMoveInfo> [-PassThru]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -90,7 +90,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -114,10 +114,11 @@ Dynamic: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: ValidateViaIdentityExpanded, ValidateViaIdentity
+Parameter Sets: ValidateViaIdentity, ValidateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -133,12 +134,12 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ValidateExpanded, Validate, ValidateViaIdentityExpanded, ValidateViaIdentity
+Parameter Sets: Validate, ValidateExpanded, ValidateViaIdentity, ValidateViaIdentityExpanded
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -171,7 +172,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -182,7 +183,7 @@ The IDs of the resources.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: ValidateExpanded, ValidateByComponents, ValidateViaIdentityExpanded
+Parameter Sets: ValidateByComponents, ValidateExpanded, ValidateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -198,7 +199,7 @@ The name of the resource group containing the resources to validate for move.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded, ValidateByComponents, Validate
+Parameter Sets: Validate, ValidateByComponents, ValidateExpanded
 Aliases:
 
 Required: True
@@ -214,7 +215,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: ValidateExpanded, ValidateByComponents, Validate
+Parameter Sets: Validate, ValidateByComponents, ValidateExpanded
 Aliases:
 
 Required: True
@@ -312,9 +313,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IResourcesMoveInfo
+
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
 
 ## OUTPUTS
 
@@ -326,6 +327,53 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### INPUTOBJECT <IResourcesIdentity>: Identity Parameter
+  - `[ApplianceDefinitionId <String>]`: The fully qualified ID of the appliance definition, including the appliance name and the appliance definition resource type. Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/applianceDefinitions/{applianceDefinition-name}
+  - `[ApplianceDefinitionName <String>]`: The name of the appliance definition.
+  - `[ApplianceId <String>]`: The fully qualified ID of the appliance, including the appliance name and the appliance resource type. Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/appliances/{appliance-name}
+  - `[ApplianceName <String>]`: The name of the appliance.
+  - `[ApplicationDefinitionId <String>]`: The fully qualified ID of the managed application definition, including the managed application name and the managed application definition resource type. Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/applicationDefinitions/{applicationDefinition-name}
+  - `[ApplicationDefinitionName <String>]`: The name of the managed application definition.
+  - `[ApplicationId <String>]`: The application ID.
+  - `[ApplicationId1 <String>]`: The fully qualified ID of the managed application, including the managed application name and the managed application resource type. Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/applications/{application-name}
+  - `[ApplicationName <String>]`: The name of the managed application.
+  - `[ApplicationObjectId <String>]`: Application object ID.
+  - `[DenyAssignmentId <String>]`: The ID of the deny assignment to get.
+  - `[DeploymentName <String>]`: The name of the deployment.
+  - `[DomainName <String>]`: name of the domain.
+  - `[FeatureName <String>]`: The name of the feature to get.
+  - `[GroupId <String>]`: Management Group ID.
+  - `[GroupObjectId <String>]`: The object ID of the group from which to remove the member.
+  - `[Id <String>]`: Resource identity path
+  - `[LinkId <String>]`: The fully qualified ID of the resource link. Use the format, /subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/{provider-namespace}/{resource-type}/{resource-name}/Microsoft.Resources/links/{link-name}. For example, /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myGroup/Microsoft.Web/sites/mySite/Microsoft.Resources/links/myLink
+  - `[LockName <String>]`: The name of lock.
+  - `[ManagementGroupId <String>]`: The ID of the management group.
+  - `[MemberObjectId <String>]`: Member object id
+  - `[ObjectId <String>]`: Application object ID.
+  - `[OperationId <String>]`: The ID of the operation to get.
+  - `[OwnerObjectId <String>]`: Owner object id
+  - `[ParentResourcePath <String>]`: The parent resource identity.
+  - `[PolicyAssignmentId <String>]`: The ID of the policy assignment to delete. Use the format '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
+  - `[PolicyAssignmentName <String>]`: The name of the policy assignment to delete.
+  - `[PolicyDefinitionName <String>]`: The name of the policy definition to create.
+  - `[PolicySetDefinitionName <String>]`: The name of the policy set definition to create.
+  - `[ResourceGroupName <String>]`: The name of the resource group that contains the resource to delete. The name is case insensitive.
+  - `[ResourceId <String>]`: The fully qualified ID of the resource, including the resource name and resource type. Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name}
+  - `[ResourceName <String>]`: The name of the resource to delete.
+  - `[ResourceProviderNamespace <String>]`: The namespace of the resource provider.
+  - `[ResourceType <String>]`: The resource type.
+  - `[RoleAssignmentId <String>]`: The ID of the role assignment to delete.
+  - `[RoleAssignmentName <String>]`: The name of the role assignment to delete.
+  - `[RoleDefinitionId <String>]`: The ID of the role definition to delete.
+  - `[RoleId <String>]`: The ID of the role assignment to delete.
+  - `[Scope <String>]`: The scope for the lock. 
+  - `[SourceResourceGroupName <String>]`: The name of the resource group containing the resources to move.
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
+  - `[TagName <String>]`: The name of the tag.
+  - `[TagValue <String>]`: The value of the tag to delete.
+  - `[TenantId <String>]`: The tenant ID.
+  - `[UpnOrObjectId <String>]`: The object ID or principal name of the user for which to get information.
 
 #### PARAMETER <IResourcesMoveInfo>: Parameters of move resources.
   - `[Resource <String[]>]`: The IDs of the resources.

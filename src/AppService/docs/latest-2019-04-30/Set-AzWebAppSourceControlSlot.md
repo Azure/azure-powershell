@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.WebSite
-online version: https://docs.microsoft.com/en-us/powershell/module/az.website/set-azwebappsourcecontrolslot
+Module Name: Az.AppService
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/set-azwebappsourcecontrolslot
 schema: 2.0.0
 ---
 
@@ -12,19 +12,19 @@ Updates the source control configuration of an app.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzWebAppSourceControlSlot -Name <String> -ResourceGroupName <String> -Slot <String>
- -SubscriptionId <String> [-SiteSourceControl <ISiteSourceControl>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzWebAppSourceControlSlot -Name <String> -ResourceGroupName <String> -Slot <String>
  -SubscriptionId <String> [-Branch <String>] [-DeploymentRollbackEnabled] [-IsManualIntegration]
  [-IsMercurial] [-Kind <String>] [-RepoUrl <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzWebAppSourceControlSlot -Name <String> -ResourceGroupName <String> -Slot <String>
+ -SubscriptionId <String> -SiteSourceControl <ISiteSourceControl> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,7 +62,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -101,7 +101,7 @@ Dynamic: False
 ```
 
 ### -DeploymentRollbackEnabled
-<code>true</code> to enable deployment rollback; otherwise, <code>false</code>.
+\<code\>true\</code\> to enable deployment rollback; otherwise, \<code\>false\</code\>.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -110,14 +110,14 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
 
 ### -IsManualIntegration
-<code>true</code> to limit to manual integration; <code>false</code> to enable continuous integration (which configures webhooks into online repos like GitHub).
+\<code\>true\</code\> to limit to manual integration; \<code\>false\</code\> to enable continuous integration (which configures webhooks into online repos like GitHub).
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -126,14 +126,14 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
 
 ### -IsMercurial
-<code>true</code> for a Mercurial repository; <code>false</code> for a Git repository.
+\<code\>true\</code\> for a Mercurial repository; \<code\>false\</code\> for a Git repository.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -142,7 +142,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -190,7 +190,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -233,11 +233,11 @@ Source control configuration for an app.
 To construct, see NOTES section for SITESOURCECONTROL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.ISiteSourceControl
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20160801.ISiteSourceControl
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -318,11 +318,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.ISiteSourceControl
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20160801.ISiteSourceControl
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.ISiteSourceControl
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20160801.ISiteSourceControl
 
 ## ALIASES
 

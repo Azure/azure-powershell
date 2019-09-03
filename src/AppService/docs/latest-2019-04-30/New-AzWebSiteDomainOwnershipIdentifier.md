@@ -12,31 +12,31 @@ Creates an ownership identifier for a domain or updates identifier details for a
 
 ## SYNTAX
 
-### Create (Default)
-```
-New-AzWebSiteDomainOwnershipIdentifier -DomainName <String> -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-DomainOwnershipIdentifier <IDomainOwnershipIdentifier>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded
+### CreateExpanded (Default)
 ```
 New-AzWebSiteDomainOwnershipIdentifier -DomainName <String> -Name <String> -ResourceGroupName <String>
  -SubscriptionId <String> [-Kind <String>] [-OwnershipId <String>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentityExpanded
+### Create
 ```
-New-AzWebSiteDomainOwnershipIdentifier -InputObject <IWebSiteIdentity> [-Kind <String>]
- [-OwnershipId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzWebSiteDomainOwnershipIdentifier -DomainName <String> -Name <String> -ResourceGroupName <String>
+ -SubscriptionId <String> -DomainOwnershipIdentifier <IDomainOwnershipIdentifier> [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
 New-AzWebSiteDomainOwnershipIdentifier -InputObject <IWebSiteIdentity>
- [-DomainOwnershipIdentifier <IDomainOwnershipIdentifier>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ -DomainOwnershipIdentifier <IDomainOwnershipIdentifier> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded
+```
+New-AzWebSiteDomainOwnershipIdentifier -InputObject <IWebSiteIdentity> [-Kind <String>]
+ [-OwnershipId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -105,7 +105,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150401.IDomainOwner
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -115,10 +115,11 @@ Dynamic: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
-Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
+Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -249,9 +250,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
-
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150401.IDomainOwnershipIdentifier
+
+### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
 
 ## OUTPUTS
 
@@ -267,6 +268,50 @@ To create the parameters described below, construct a hash table containing the 
 #### DOMAINOWNERSHIPIDENTIFIER <IDomainOwnershipIdentifier>: Domain ownership Identifier.
   - `[Kind <String>]`: Kind of resource.
   - `[OwnershipId <String>]`: Ownership Id.
+
+#### INPUTOBJECT <IWebSiteIdentity>: Identity Parameter
+  - `[AnalysisName <String>]`: Analysis Name
+  - `[ApiName <String>]`: The managed API name.
+  - `[BackupId <String>]`: ID of the backup.
+  - `[BaseAddress <String>]`: Module base address.
+  - `[CertificateOrderName <String>]`: Name of the certificate order.
+  - `[ConnectionName <String>]`: The connection name.
+  - `[DeletedSiteId <String>]`: The numeric ID of the deleted app, e.g. 12345
+  - `[DetectorName <String>]`: Detector Resource Name
+  - `[DiagnosticCategory <String>]`: Diagnostic Category
+  - `[DiagnosticsName <String>]`: Name of the diagnostics item.
+  - `[DomainName <String>]`: Name of the domain.
+  - `[DomainOwnershipIdentifierName <String>]`: Name of domain ownership identifier.
+  - `[EntityName <String>]`: Name of the hybrid connection.
+  - `[FunctionName <String>]`: Function name.
+  - `[GatewayName <String>]`: Name of the gateway. Only the 'primary' gateway is supported.
+  - `[HostName <String>]`: Hostname in the hostname binding.
+  - `[HostingEnvironmentName <String>]`: Name of the hosting environment.
+  - `[Id <String>]`: Resource identity path
+  - `[Instance <String>]`: Name of the instance in the multi-role pool.
+  - `[InstanceId <String>]`: ID of web app instance.
+  - `[Location <String>]`: 
+  - `[Name <String>]`: Name of the certificate.
+  - `[NamespaceName <String>]`: Name of the Service Bus namespace.
+  - `[OperationId <String>]`: GUID of the operation.
+  - `[PremierAddOnName <String>]`: Add-on name.
+  - `[ProcessId <String>]`: PID.
+  - `[PublicCertificateName <String>]`: Public certificate name.
+  - `[RelayName <String>]`: Name of the Service Bus relay.
+  - `[ResourceGroupName <String>]`: Name of the resource group to which the resource belongs.
+  - `[RouteName <String>]`: Name of the Virtual Network route.
+  - `[SiteExtensionId <String>]`: Site extension name.
+  - `[SiteName <String>]`: Site Name
+  - `[Slot <String>]`: Name of web app slot. If not specified then will default to production slot.
+  - `[SnapshotId <String>]`: The ID of the snapshot to read.
+  - `[SourceControlType <String>]`: Type of source control
+  - `[SubscriptionId <String>]`: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  - `[ThreadId <String>]`: TID.
+  - `[View <String>]`: The type of view. This can either be "summary" or "detailed".
+  - `[VnetName <String>]`: Name of the Virtual Network.
+  - `[WebJobName <String>]`: Name of Web Job.
+  - `[WorkerName <String>]`: Name of worker machine, which typically starts with RD.
+  - `[WorkerPoolName <String>]`: Name of the worker pool.
 
 ## RELATED LINKS
 

@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.WebSite
-online version: https://docs.microsoft.com/en-us/powershell/module/az.website/set-azwebappcertificatecsr
+Module Name: Az.AppService
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/set-azwebappcertificatecsr
 schema: 2.0.0
 ---
 
@@ -12,19 +12,19 @@ Creates or modifies an existing certificate signing request.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzWebAppCertificateCsr -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-CsrEnvelope <ICsr>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzWebAppCertificateCsr -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  -Location <String> [-CsrString <String>] [-DistinguishedName <String>] [-HostingEnvironment <String>]
  [-Id <String>] [-Kind <String>] [-Name1 <String>] [-Password <String>] [-PfxBlob <String>]
  [-PropertiesName <String>] [-PublicKeyHash <String>] [-Tag <Hashtable>] [-Type <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzWebAppCertificateCsr -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -CsrEnvelope <ICsr> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,11 +57,11 @@ Certificate signing request object
 To construct, see NOTES section for CSRENVELOPE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.ICsr
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20150801.ICsr
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -381,11 +381,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.ICsr
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20150801.ICsr
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.ICsr
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20150801.ICsr
 
 ## ALIASES
 

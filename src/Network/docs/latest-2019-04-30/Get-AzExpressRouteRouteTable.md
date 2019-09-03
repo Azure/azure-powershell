@@ -14,27 +14,27 @@ The ListRoutesTable from ExpressRouteCircuit operation retrieves the currently a
 
 ### CircuitList1Circuit (Default)
 ```
-Get-AzExpressRouteRouteTable -ResourceGroupName <String> -SubscriptionId <String[]> -CircuitName <String>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CircuitList3Circuit
-```
-Get-AzExpressRouteRouteTable -ResourceGroupName <String> -SubscriptionId <String[]> -CircuitName <String>
- -DevicePath <String> -PeeringName <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Get-AzExpressRouteRouteTable -CircuitName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### CircuitList2Circuit
 ```
-Get-AzExpressRouteRouteTable -ResourceGroupName <String> -SubscriptionId <String[]> -CircuitName <String>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzExpressRouteRouteTable -CircuitName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### CircuitList3Circuit
+```
+Get-AzExpressRouteRouteTable -CircuitName <String> -DevicePath <String> -PeeringName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CrossConnectionListCrossConnection
 ```
-Get-AzExpressRouteRouteTable -ResourceGroupName <String> -SubscriptionId <String[]> -DevicePath <String>
- -PeeringName <String> -CrossConnectionName <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Get-AzExpressRouteRouteTable -CrossConnectionName <String> -DevicePath <String> -PeeringName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -73,7 +73,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -84,7 +84,7 @@ The name of the circuit.
 
 ```yaml
 Type: System.String
-Parameter Sets: CircuitList1Circuit, CircuitList3Circuit, CircuitList2Circuit
+Parameter Sets: CircuitList1Circuit, CircuitList2Circuit, CircuitList3Circuit
 Aliases: ExpressRouteCircuitName
 
 Required: True
@@ -153,7 +153,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -181,7 +181,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: ExpressRouteCrossConnection
+Aliases:
 
 Required: True
 Position: Named
@@ -200,9 +200,9 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

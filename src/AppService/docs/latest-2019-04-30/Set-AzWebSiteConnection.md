@@ -12,16 +12,10 @@ Creates or updates a connection.
 
 ## SYNTAX
 
-### Update (Default)
+### UpdateExpanded (Default)
 ```
-Set-AzWebSiteConnection -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Connection <IConnection>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
-```
-Set-AzWebSiteConnection -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -ConnectionName <String> -Location <String> [-ApiId <String>] [-ApiKind <String>] [-ApiLocation <String>]
+Set-AzWebSiteConnection -ConnectionName <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -Location <String> [-Name <String>] [-ApiId <String>] [-ApiKind <String>] [-ApiLocation <String>]
  [-ApiName <String>] [-ApiTag <Hashtable>] [-ApiType <String>] [-ChangedTime <DateTime>]
  [-CreatedTime <DateTime>] [-CustomParameterValue <Hashtable>] [-DisplayName <String>]
  [-Entity <IResponseMessageEnvelopeApiEntity>] [-FirstExpirationTime <DateTime>] [-Id <String>]
@@ -29,6 +23,12 @@ Set-AzWebSiteConnection -Name <String> -ResourceGroupName <String> -Subscription
  [-ParameterValue <Hashtable>] [-PropertiesId <String>] [-PropertiesName <String>]
  [-Statuses <IConnectionStatus[]>] [-Tag <Hashtable>] [-TenantId <String>] [-Type <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzWebSiteConnection -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -Connection <IConnection> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -177,7 +177,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801Preview.IConn
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

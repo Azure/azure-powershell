@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.WebSite
-online version: https://docs.microsoft.com/en-us/powershell/module/az.website/new-azappserviceplan
+Module Name: Az.AppService
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/new-azappserviceplan
 schema: 2.0.0
 ---
 
@@ -12,14 +12,7 @@ Creates or updates an App Service Plan.
 
 ## SYNTAX
 
-### Create (Default)
-```
-New-AzAppServicePlan -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-AppServicePlan <IAppServicePlan>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateExpanded
+### CreateExpanded (Default)
 ```
 New-AzAppServicePlan -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Location <String>
  [-Capacity <Int32>] [-FreeOfferExpirationTime <DateTime>] [-HostingEnvironmentProfileId <String>] [-HyperV]
@@ -32,9 +25,22 @@ New-AzAppServicePlan -Name <String> -ResourceGroupName <String> -SubscriptionId 
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### Create
+```
+New-AzAppServicePlan -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -AppServicePlan <IAppServicePlan> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaIdentity
+```
+New-AzAppServicePlan -InputObject <IAppServiceIdentity> -AppServicePlan <IAppServicePlan>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### CreateViaIdentityExpanded
 ```
-New-AzAppServicePlan -InputObject <IWebSiteIdentity> -Location <String> [-Capacity <Int32>]
+New-AzAppServicePlan -InputObject <IAppServiceIdentity> -Location <String> [-Capacity <Int32>]
  [-FreeOfferExpirationTime <DateTime>] [-HostingEnvironmentProfileId <String>] [-HyperV] [-IsSpot] [-IsXenon]
  [-Kind <String>] [-MaximumElasticWorkerCount <Int32>] [-PerSiteScaling] [-Reserved]
  [-SkuCapability <ICapability[]>] [-SkuCapacityDefault <Int32>] [-SkuCapacityMaximum <Int32>]
@@ -43,12 +49,6 @@ New-AzAppServicePlan -InputObject <IWebSiteIdentity> -Location <String> [-Capaci
  [-SpotExpirationTime <DateTime>] [-Tag <Hashtable>] [-TargetWorkerCount <Int32>]
  [-TargetWorkerSizeId <Int32>] [-WorkerTierName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzAppServicePlan -InputObject <IWebSiteIdentity> [-AppServicePlan <IAppServicePlan>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -81,11 +81,11 @@ App Service plan.
 To construct, see NOTES section for APPSERVICEPLAN properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IAppServicePlan
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IAppServicePlan
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -103,7 +103,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -119,7 +119,7 @@ Aliases: NumberOfWorkers
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -174,7 +174,7 @@ Dynamic: False
 ```
 
 ### -HyperV
-If Hyper-V container app service plan <code>true</code>, <code>false</code> otherwise.
+If Hyper-V container app service plan \<code\>true\</code\>, \<code\>false\</code\> otherwise.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -183,7 +183,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -191,10 +191,11 @@ Dynamic: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
-Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.IAppServiceIdentity
+Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -206,7 +207,7 @@ Dynamic: False
 ```
 
 ### -IsSpot
-If <code>true</code>, this App Service Plan owns spot instances.
+If \<code\>true\</code\>, this App Service Plan owns spot instances.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -215,14 +216,14 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
 
 ### -IsXenon
-Obsolete: If Hyper-V container app service plan <code>true</code>, <code>false</code> otherwise.
+Obsolete: If Hyper-V container app service plan \<code\>true\</code\>, \<code\>false\</code\> otherwise.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -231,7 +232,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -279,7 +280,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -311,14 +312,14 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
 
 ### -PerSiteScaling
-If <code>true</code>, apps assigned to this App Service plan can be scaled independently.If <code>false</code>, apps assigned to this App Service plan will scale to all instances of the plan.
+If \<code\>true\</code\>, apps assigned to this App Service plan can be scaled independently.If \<code\>false\</code\>, apps assigned to this App Service plan will scale to all instances of the plan.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -327,14 +328,14 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
 
 ### -Reserved
-If Linux app service plan <code>true</code>, <code>false</code> otherwise.
+If Linux app service plan \<code\>true\</code\>, \<code\>false\</code\> otherwise.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -343,7 +344,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -370,7 +371,7 @@ Capabilities of the SKU, e.g., is traffic manager enabled
 To construct, see NOTES section for SKUCAPABILITY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160301.ICapability[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20160301.ICapability[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -392,7 +393,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -408,7 +409,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -424,7 +425,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -587,7 +588,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -603,7 +604,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -663,13 +664,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IAppServicePlan
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IAppServicePlan
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.IAppServiceIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IAppServicePlan
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IAppServicePlan
 
 ## ALIASES
 
@@ -709,6 +710,50 @@ To create the parameters described below, construct a hash table containing the 
   - `[TargetWorkerCount <Int32?>]`: Scaling worker count.
   - `[TargetWorkerSizeId <Int32?>]`: Scaling worker size ID.
   - `[WorkerTierName <String>]`: Target worker tier assigned to the App Service plan.
+
+#### INPUTOBJECT <IAppServiceIdentity>: Identity Parameter
+  - `[AnalysisName <String>]`: Analysis Name
+  - `[ApiName <String>]`: The managed API name.
+  - `[BackupId <String>]`: ID of the backup.
+  - `[BaseAddress <String>]`: Module base address.
+  - `[CertificateOrderName <String>]`: Name of the certificate order.
+  - `[ConnectionName <String>]`: The connection name.
+  - `[DeletedSiteId <String>]`: The numeric ID of the deleted app, e.g. 12345
+  - `[DetectorName <String>]`: Detector Resource Name
+  - `[DiagnosticCategory <String>]`: Diagnostic Category
+  - `[DiagnosticsName <String>]`: Name of the diagnostics item.
+  - `[DomainName <String>]`: Name of the domain.
+  - `[DomainOwnershipIdentifierName <String>]`: Name of domain ownership identifier.
+  - `[EntityName <String>]`: Name of the hybrid connection.
+  - `[FunctionName <String>]`: Function name.
+  - `[GatewayName <String>]`: Name of the gateway. Only the 'primary' gateway is supported.
+  - `[HostName <String>]`: Hostname in the hostname binding.
+  - `[HostingEnvironmentName <String>]`: Name of the hosting environment.
+  - `[Id <String>]`: Resource identity path
+  - `[Instance <String>]`: Name of the instance in the multi-role pool.
+  - `[InstanceId <String>]`: ID of web app instance.
+  - `[Location <String>]`: 
+  - `[Name <String>]`: Name of the certificate.
+  - `[NamespaceName <String>]`: Name of the Service Bus namespace.
+  - `[OperationId <String>]`: GUID of the operation.
+  - `[PremierAddOnName <String>]`: Add-on name.
+  - `[ProcessId <String>]`: PID.
+  - `[PublicCertificateName <String>]`: Public certificate name.
+  - `[RelayName <String>]`: Name of the Service Bus relay.
+  - `[ResourceGroupName <String>]`: Name of the resource group to which the resource belongs.
+  - `[RouteName <String>]`: Name of the Virtual Network route.
+  - `[SiteExtensionId <String>]`: Site extension name.
+  - `[SiteName <String>]`: Site Name
+  - `[Slot <String>]`: Name of web app slot. If not specified then will default to production slot.
+  - `[SnapshotId <String>]`: The ID of the snapshot to read.
+  - `[SourceControlType <String>]`: Type of source control
+  - `[SubscriptionId <String>]`: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  - `[ThreadId <String>]`: TID.
+  - `[View <String>]`: The type of view. This can either be "summary" or "detailed".
+  - `[VnetName <String>]`: Name of the Virtual Network.
+  - `[WebJobName <String>]`: Name of Web Job.
+  - `[WorkerName <String>]`: Name of worker machine, which typically starts with RD.
+  - `[WorkerPoolName <String>]`: Name of the worker pool.
 
 #### SKUCAPABILITY <ICapability[]>: Capabilities of the SKU, e.g., is traffic manager enabled
   - `[Name <String>]`: Name of the SKU capability.

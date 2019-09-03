@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.WebSite
-online version: https://docs.microsoft.com/en-us/powershell/module/az.website/add-azwebappslotconfigurationslot
+Module Name: Az.AppService
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/add-azwebappslotconfigurationslot
 schema: 2.0.0
 ---
 
@@ -12,30 +12,30 @@ Applies the configuration settings from the target slot onto the current slot.
 
 ## SYNTAX
 
-### Apply (Default)
+### ApplyExpanded (Default)
 ```
 Add-AzWebAppSlotConfigurationSlot -Name <String> -ResourceGroupName <String> -Slot <String>
- -SubscriptionId <String> [-PassThru] [-SlotSwapEntity <ICsmSlotEntity>] [-DefaultProfile <PSObject>]
+ -SubscriptionId <String> -PreserveVnet -TargetSlot <String> [-DefaultProfile <PSObject>] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### ApplyExpanded
+### Apply
 ```
 Add-AzWebAppSlotConfigurationSlot -Name <String> -ResourceGroupName <String> -Slot <String>
- -SubscriptionId <String> -PreserveVnet -TargetSlot <String> [-PassThru] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ApplyViaIdentityExpanded
-```
-Add-AzWebAppSlotConfigurationSlot -InputObject <IWebSiteIdentity> -PreserveVnet -TargetSlot <String>
- [-PassThru] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -SubscriptionId <String> -SlotSwapEntity <ICsmSlotEntity> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### ApplyViaIdentity
 ```
-Add-AzWebAppSlotConfigurationSlot -InputObject <IWebSiteIdentity> [-PassThru]
- [-SlotSwapEntity <ICsmSlotEntity>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Add-AzWebAppSlotConfigurationSlot -InputObject <IAppServiceIdentity> -SlotSwapEntity <ICsmSlotEntity>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ApplyViaIdentityExpanded
+```
+Add-AzWebAppSlotConfigurationSlot -InputObject <IAppServiceIdentity> -PreserveVnet -TargetSlot <String>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -81,10 +81,11 @@ Dynamic: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
-Parameter Sets: ApplyViaIdentityExpanded, ApplyViaIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.IAppServiceIdentity
+Parameter Sets: ApplyViaIdentity, ApplyViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -112,7 +113,7 @@ Dynamic: False
 ```
 
 ### -PassThru
-When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -121,14 +122,14 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
 
 ### -PreserveVnet
-<code>true</code> to preserve Virtual Network to the slot during swap; otherwise, <code>false</code>.
+\<code\>true\</code\> to preserve Virtual Network to the slot during swap; otherwise, \<code\>false\</code\>.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -137,7 +138,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -181,11 +182,11 @@ Deployment slot parameters.
 To construct, see NOTES section for SLOTSWAPENTITY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ICsmSlotEntity
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.ICsmSlotEntity
 Parameter Sets: Apply, ApplyViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -265,9 +266,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.ICsmSlotEntity
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ICsmSlotEntity
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.IAppServiceIdentity
 
 ## OUTPUTS
 
@@ -279,6 +280,50 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### INPUTOBJECT <IAppServiceIdentity>: Identity Parameter
+  - `[AnalysisName <String>]`: Analysis Name
+  - `[ApiName <String>]`: The managed API name.
+  - `[BackupId <String>]`: ID of the backup.
+  - `[BaseAddress <String>]`: Module base address.
+  - `[CertificateOrderName <String>]`: Name of the certificate order.
+  - `[ConnectionName <String>]`: The connection name.
+  - `[DeletedSiteId <String>]`: The numeric ID of the deleted app, e.g. 12345
+  - `[DetectorName <String>]`: Detector Resource Name
+  - `[DiagnosticCategory <String>]`: Diagnostic Category
+  - `[DiagnosticsName <String>]`: Name of the diagnostics item.
+  - `[DomainName <String>]`: Name of the domain.
+  - `[DomainOwnershipIdentifierName <String>]`: Name of domain ownership identifier.
+  - `[EntityName <String>]`: Name of the hybrid connection.
+  - `[FunctionName <String>]`: Function name.
+  - `[GatewayName <String>]`: Name of the gateway. Only the 'primary' gateway is supported.
+  - `[HostName <String>]`: Hostname in the hostname binding.
+  - `[HostingEnvironmentName <String>]`: Name of the hosting environment.
+  - `[Id <String>]`: Resource identity path
+  - `[Instance <String>]`: Name of the instance in the multi-role pool.
+  - `[InstanceId <String>]`: ID of web app instance.
+  - `[Location <String>]`: 
+  - `[Name <String>]`: Name of the certificate.
+  - `[NamespaceName <String>]`: Name of the Service Bus namespace.
+  - `[OperationId <String>]`: GUID of the operation.
+  - `[PremierAddOnName <String>]`: Add-on name.
+  - `[ProcessId <String>]`: PID.
+  - `[PublicCertificateName <String>]`: Public certificate name.
+  - `[RelayName <String>]`: Name of the Service Bus relay.
+  - `[ResourceGroupName <String>]`: Name of the resource group to which the resource belongs.
+  - `[RouteName <String>]`: Name of the Virtual Network route.
+  - `[SiteExtensionId <String>]`: Site extension name.
+  - `[SiteName <String>]`: Site Name
+  - `[Slot <String>]`: Name of web app slot. If not specified then will default to production slot.
+  - `[SnapshotId <String>]`: The ID of the snapshot to read.
+  - `[SourceControlType <String>]`: Type of source control
+  - `[SubscriptionId <String>]`: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  - `[ThreadId <String>]`: TID.
+  - `[View <String>]`: The type of view. This can either be "summary" or "detailed".
+  - `[VnetName <String>]`: Name of the Virtual Network.
+  - `[WebJobName <String>]`: Name of Web Job.
+  - `[WorkerName <String>]`: Name of worker machine, which typically starts with RD.
+  - `[WorkerPoolName <String>]`: Name of the worker pool.
 
 #### SLOTSWAPENTITY <ICsmSlotEntity>: Deployment slot parameters.
   - `PreserveVnet <Boolean>`: <code>true</code> to preserve Virtual Network to the slot during swap; otherwise, <code>false</code>.

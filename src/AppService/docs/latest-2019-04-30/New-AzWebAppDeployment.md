@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.WebSite
-online version: https://docs.microsoft.com/en-us/powershell/module/az.website/new-azwebappdeployment
+Module Name: Az.AppService
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/new-azwebappdeployment
 schema: 2.0.0
 ---
 
@@ -12,13 +12,7 @@ Create a deployment for an app, or a deployment slot.
 
 ## SYNTAX
 
-### Create (Default)
-```
-New-AzWebAppDeployment -Id <String> -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Deployment <IDeployment>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded
+### CreateExpanded (Default)
 ```
 New-AzWebAppDeployment -Id <String> -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-Active] [-Author <String>] [-AuthorEmail <String>] [-Deployer <String>] [-Detail <String>]
@@ -26,18 +20,24 @@ New-AzWebAppDeployment -Id <String> -Name <String> -ResourceGroupName <String> -
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentityExpanded
+### Create
 ```
-New-AzWebAppDeployment -InputObject <IWebSiteIdentity> [-Active] [-Author <String>] [-AuthorEmail <String>]
- [-Deployer <String>] [-Detail <String>] [-EndTime <DateTime>] [-Kind <String>] [-Message <String>]
- [-StartTime <DateTime>] [-Status <Int32>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzWebAppDeployment -Id <String> -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -Deployment <IDeployment> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
-New-AzWebAppDeployment -InputObject <IWebSiteIdentity> [-Deployment <IDeployment>]
+New-AzWebAppDeployment -InputObject <IAppServiceIdentity> -Deployment <IDeployment>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded
+```
+New-AzWebAppDeployment -InputObject <IAppServiceIdentity> [-Active] [-Author <String>] [-AuthorEmail <String>]
+ [-Deployer <String>] [-Detail <String>] [-EndTime <DateTime>] [-Kind <String>] [-Message <String>]
+ [-StartTime <DateTime>] [-Status <Int32>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -75,7 +75,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -150,11 +150,11 @@ User credentials used for publishing activity.
 To construct, see NOTES section for DEPLOYMENT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IDeployment
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IDeployment
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -212,10 +212,11 @@ Dynamic: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
-Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.IAppServiceIdentity
+Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -316,7 +317,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -378,13 +379,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IDeployment
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IDeployment
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.IAppServiceIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IDeployment
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IDeployment
 
 ## ALIASES
 
@@ -404,6 +405,50 @@ To create the parameters described below, construct a hash table containing the 
   - `[Message <String>]`: Details about deployment status.
   - `[StartTime <DateTime?>]`: Start time.
   - `[Status <Int32?>]`: Deployment status.
+
+#### INPUTOBJECT <IAppServiceIdentity>: Identity Parameter
+  - `[AnalysisName <String>]`: Analysis Name
+  - `[ApiName <String>]`: The managed API name.
+  - `[BackupId <String>]`: ID of the backup.
+  - `[BaseAddress <String>]`: Module base address.
+  - `[CertificateOrderName <String>]`: Name of the certificate order.
+  - `[ConnectionName <String>]`: The connection name.
+  - `[DeletedSiteId <String>]`: The numeric ID of the deleted app, e.g. 12345
+  - `[DetectorName <String>]`: Detector Resource Name
+  - `[DiagnosticCategory <String>]`: Diagnostic Category
+  - `[DiagnosticsName <String>]`: Name of the diagnostics item.
+  - `[DomainName <String>]`: Name of the domain.
+  - `[DomainOwnershipIdentifierName <String>]`: Name of domain ownership identifier.
+  - `[EntityName <String>]`: Name of the hybrid connection.
+  - `[FunctionName <String>]`: Function name.
+  - `[GatewayName <String>]`: Name of the gateway. Only the 'primary' gateway is supported.
+  - `[HostName <String>]`: Hostname in the hostname binding.
+  - `[HostingEnvironmentName <String>]`: Name of the hosting environment.
+  - `[Id <String>]`: Resource identity path
+  - `[Instance <String>]`: Name of the instance in the multi-role pool.
+  - `[InstanceId <String>]`: ID of web app instance.
+  - `[Location <String>]`: 
+  - `[Name <String>]`: Name of the certificate.
+  - `[NamespaceName <String>]`: Name of the Service Bus namespace.
+  - `[OperationId <String>]`: GUID of the operation.
+  - `[PremierAddOnName <String>]`: Add-on name.
+  - `[ProcessId <String>]`: PID.
+  - `[PublicCertificateName <String>]`: Public certificate name.
+  - `[RelayName <String>]`: Name of the Service Bus relay.
+  - `[ResourceGroupName <String>]`: Name of the resource group to which the resource belongs.
+  - `[RouteName <String>]`: Name of the Virtual Network route.
+  - `[SiteExtensionId <String>]`: Site extension name.
+  - `[SiteName <String>]`: Site Name
+  - `[Slot <String>]`: Name of web app slot. If not specified then will default to production slot.
+  - `[SnapshotId <String>]`: The ID of the snapshot to read.
+  - `[SourceControlType <String>]`: Type of source control
+  - `[SubscriptionId <String>]`: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  - `[ThreadId <String>]`: TID.
+  - `[View <String>]`: The type of view. This can either be "summary" or "detailed".
+  - `[VnetName <String>]`: Name of the Virtual Network.
+  - `[WebJobName <String>]`: Name of Web Job.
+  - `[WorkerName <String>]`: Name of worker machine, which typically starts with RD.
+  - `[WorkerPoolName <String>]`: Name of the worker pool.
 
 ## RELATED LINKS
 

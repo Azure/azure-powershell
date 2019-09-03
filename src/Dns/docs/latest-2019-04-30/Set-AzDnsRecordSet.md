@@ -14,73 +14,73 @@ Creates or updates a record set within a DNS zone.
 
 ### UpdateSoa (Default)
 ```
-Set-AzDnsRecordSet -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -ZoneName <String>
- [-Etag <String>] [-Metadata <Hashtable>] [-TargetResourceId <String>] [-TimeToLive <Int64>]
- [-SoaRecordEmail <String>] [-SoaRecordExpireTime <Int64>] [-SoaRecordHost <String>]
- [-SoaRecordMinimumTtl <Int64>] [-SoaRecordRefreshTime <Int64>] [-SoaRecordRetryTime <Int64>]
- [-SoaRecordSerialNumber <Int64>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzDnsRecordSet -Name <String> -ResourceGroupName <String> -ZoneName <String> [-SubscriptionId <String>]
+ [-Etag <String>] [-Metadata <Hashtable>] [-SoaRecordEmail <String>] [-SoaRecordExpireTime <Int64>]
+ [-SoaRecordHost <String>] [-SoaRecordMinimumTtl <Int64>] [-SoaRecordRefreshTime <Int64>]
+ [-SoaRecordRetryTime <Int64>] [-SoaRecordSerialNumber <Int64>] [-TargetResourceId <String>]
+ [-TimeToLive <Int64>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateA
 ```
-Set-AzDnsRecordSet -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -ZoneName <String>
- -ARecord <IARecord[]> [-Etag <String>] [-Metadata <Hashtable>] [-TargetResourceId <String>]
+Set-AzDnsRecordSet -Name <String> -ResourceGroupName <String> -ZoneName <String> -ARecord <IARecord[]>
+ [-SubscriptionId <String>] [-Etag <String>] [-Metadata <Hashtable>] [-TargetResourceId <String>]
  [-TimeToLive <Int64>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateAaaa
 ```
-Set-AzDnsRecordSet -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -ZoneName <String>
- -AaaaRecord <IAaaaRecord[]> [-Etag <String>] [-Metadata <Hashtable>] [-TargetResourceId <String>]
+Set-AzDnsRecordSet -Name <String> -ResourceGroupName <String> -ZoneName <String> -AaaaRecord <IAaaaRecord[]>
+ [-SubscriptionId <String>] [-Etag <String>] [-Metadata <Hashtable>] [-TargetResourceId <String>]
  [-TimeToLive <Int64>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateCaa
 ```
-Set-AzDnsRecordSet -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -ZoneName <String>
- -CaaRecord <ICaaRecord[]> [-Etag <String>] [-Metadata <Hashtable>] [-TargetResourceId <String>]
+Set-AzDnsRecordSet -Name <String> -ResourceGroupName <String> -ZoneName <String> -CaaRecord <ICaaRecord[]>
+ [-SubscriptionId <String>] [-Etag <String>] [-Metadata <Hashtable>] [-TargetResourceId <String>]
  [-TimeToLive <Int64>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateCname
 ```
-Set-AzDnsRecordSet -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -ZoneName <String>
- -CnameRecordName <String> [-Etag <String>] [-Metadata <Hashtable>] [-TargetResourceId <String>]
+Set-AzDnsRecordSet -Name <String> -ResourceGroupName <String> -ZoneName <String> -CnameRecordName <String>
+ [-SubscriptionId <String>] [-Etag <String>] [-Metadata <Hashtable>] [-TargetResourceId <String>]
  [-TimeToLive <Int64>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateMX
 ```
-Set-AzDnsRecordSet -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -ZoneName <String>
- -MXRecord <IMxRecord[]> [-Etag <String>] [-Metadata <Hashtable>] [-TargetResourceId <String>]
+Set-AzDnsRecordSet -Name <String> -ResourceGroupName <String> -ZoneName <String> -MXRecord <IMxRecord[]>
+ [-SubscriptionId <String>] [-Etag <String>] [-Metadata <Hashtable>] [-TargetResourceId <String>]
  [-TimeToLive <Int64>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateNS
 ```
-Set-AzDnsRecordSet -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -ZoneName <String>
- -NSRecord <INsRecord[]> [-Etag <String>] [-Metadata <Hashtable>] [-TargetResourceId <String>]
+Set-AzDnsRecordSet -Name <String> -ResourceGroupName <String> -ZoneName <String> -NSRecord <INsRecord[]>
+ [-SubscriptionId <String>] [-Etag <String>] [-Metadata <Hashtable>] [-TargetResourceId <String>]
  [-TimeToLive <Int64>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdatePtr
 ```
-Set-AzDnsRecordSet -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -ZoneName <String>
- -PtrRecord <IPtrRecord[]> [-Etag <String>] [-Metadata <Hashtable>] [-TargetResourceId <String>]
+Set-AzDnsRecordSet -Name <String> -ResourceGroupName <String> -ZoneName <String> -PtrRecord <IPtrRecord[]>
+ [-SubscriptionId <String>] [-Etag <String>] [-Metadata <Hashtable>] [-TargetResourceId <String>]
  [-TimeToLive <Int64>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateSrv
 ```
-Set-AzDnsRecordSet -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -ZoneName <String>
- -SrvRecord <ISrvRecord[]> [-Etag <String>] [-Metadata <Hashtable>] [-TargetResourceId <String>]
+Set-AzDnsRecordSet -Name <String> -ResourceGroupName <String> -ZoneName <String> -SrvRecord <ISrvRecord[]>
+ [-SubscriptionId <String>] [-Etag <String>] [-Metadata <Hashtable>] [-TargetResourceId <String>]
  [-TimeToLive <Int64>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateTxt
 ```
-Set-AzDnsRecordSet -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -ZoneName <String>
- -TxtRecord <ITxtRecord[]> [-Etag <String>] [-Metadata <Hashtable>] [-TargetResourceId <String>]
+Set-AzDnsRecordSet -Name <String> -ResourceGroupName <String> -ZoneName <String> -TxtRecord <ITxtRecord[]>
+ [-SubscriptionId <String>] [-Etag <String>] [-Metadata <Hashtable>] [-TargetResourceId <String>]
  [-TimeToLive <Int64>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -112,7 +112,6 @@ PS C:\> {{ Add code here }}
 ### -AaaaRecord
 The list of AAAA records in the record set.
 To construct, see NOTES section for AAAARECORD properties and create a hash table.
-To construct, see NOTES section for AAAARECORD properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20150504Preview.IAaaaRecord[]
@@ -130,7 +129,6 @@ Dynamic: False
 ### -ARecord
 The list of A records in the record set.
 To construct, see NOTES section for ARECORD properties and create a hash table.
-To construct, see NOTES section for ARECORD properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20150504Preview.IARecord[]
@@ -147,7 +145,6 @@ Dynamic: False
 
 ### -CaaRecord
 The list of CAA records in the record set.
-To construct, see NOTES section for CAARECORD properties and create a hash table.
 To construct, see NOTES section for CAARECORD properties and create a hash table.
 
 ```yaml
@@ -230,7 +227,6 @@ Dynamic: False
 ### -MXRecord
 The list of MX records in the record set.
 To construct, see NOTES section for MXRECORD properties and create a hash table.
-To construct, see NOTES section for MXRECORD properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20150504Preview.IMxRecord[]
@@ -264,7 +260,6 @@ Dynamic: False
 ### -NSRecord
 The list of NS records in the record set.
 To construct, see NOTES section for NSRECORD properties and create a hash table.
-To construct, see NOTES section for NSRECORD properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20150504Preview.INsRecord[]
@@ -281,7 +276,6 @@ Dynamic: False
 
 ### -PtrRecord
 The list of PTR records in the record set.
-To construct, see NOTES section for PTRRECORD properties and create a hash table.
 To construct, see NOTES section for PTRRECORD properties and create a hash table.
 
 ```yaml
@@ -339,7 +333,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -372,7 +366,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -388,7 +382,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -404,7 +398,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -420,7 +414,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -428,7 +422,6 @@ Dynamic: False
 
 ### -SrvRecord
 The list of SRV records in the record set.
-To construct, see NOTES section for SRVRECORD properties and create a hash table.
 To construct, see NOTES section for SRVRECORD properties and create a hash table.
 
 ```yaml
@@ -454,7 +447,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -486,7 +479,7 @@ Aliases: Ttl
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -494,7 +487,6 @@ Dynamic: False
 
 ### -TxtRecord
 The list of TXT records in the record set.
-To construct, see NOTES section for TXTRECORD properties and create a hash table.
 To construct, see NOTES section for TXTRECORD properties and create a hash table.
 
 ```yaml

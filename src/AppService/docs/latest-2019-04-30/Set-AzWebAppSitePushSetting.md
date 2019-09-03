@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.WebSite
-online version: https://docs.microsoft.com/en-us/powershell/module/az.website/set-azwebappsitepushsetting
+Module Name: Az.AppService
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/set-azwebappsitepushsetting
 schema: 2.0.0
 ---
 
@@ -12,17 +12,17 @@ Updates the Push settings associated with web app.
 
 ## SYNTAX
 
-### Update (Default)
+### UpdateExpanded (Default)
 ```
 Set-AzWebAppSitePushSetting -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-PushSetting <IPushSettings>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DynamicTagsJson <String>] [-IsPushEnabled] [-Kind <String>] [-TagsRequiringAuth <String>]
+ [-TagWhitelistJson <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateExpanded
+### Update
 ```
 Set-AzWebAppSitePushSetting -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-DynamicTagsJson <String>] [-IsPushEnabled] [-Kind <String>] [-TagWhitelistJson <String>]
- [-TagsRequiringAuth <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -PushSetting <IPushSettings> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -92,7 +92,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -135,11 +135,11 @@ Push settings for the App.
 To construct, see NOTES section for PUSHSETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160301.IPushSettings
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20160301.IPushSettings
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -252,11 +252,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160301.IPushSettings
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20160301.IPushSettings
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160301.IPushSettings
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20160301.IPushSettings
 
 ## ALIASES
 

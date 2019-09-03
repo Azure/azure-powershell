@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.WebSite
-online version: https://docs.microsoft.com/en-us/powershell/module/az.website/get-azwebappnetworkfeatureslot
+Module Name: Az.AppService
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/get-azwebappnetworkfeatureslot
 schema: 2.0.0
 ---
 
@@ -14,7 +14,7 @@ Gets all network features used by the app (or deployment slot, if specified).
 
 ```
 Get-AzWebAppNetworkFeatureSlot -Name <String> -ResourceGroupName <String> -Slot <String>
- -SubscriptionId <String[]> -View <String> [-PassThru] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -SubscriptionId <String[]> -View <String> [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -75,7 +75,7 @@ Dynamic: False
 ```
 
 ### -PassThru
-When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -84,7 +84,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -165,7 +165,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.INetworkFeatures
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.INetworkFeatures
 
 ## ALIASES
 

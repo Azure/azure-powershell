@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.WebSite
-online version: https://docs.microsoft.com/en-us/powershell/module/az.website/get-azwebapppublishingprofile
+Module Name: Az.AppService
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/get-azwebapppublishingprofile
 schema: 2.0.0
 ---
 
@@ -12,32 +12,33 @@ Gets the publishing profile for an app (or deployment slot, if specified).
 
 ## SYNTAX
 
-### List (Default)
+### ListExpanded (Default)
 ```
 Get-AzWebAppPublishingProfile -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- -OutFile <String> [-PassThru] [-PublishingProfileOption <ICsmPublishingProfileOptions>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -OutFile <String> [-Format <PublishingProfileFormat>] [-IncludeDisasterRecoveryEndpoints]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### ListExpanded1
+### List
 ```
 Get-AzWebAppPublishingProfile -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- -Slot <String> -OutFile <String> [-PassThru] [-Format <PublishingProfileFormat>]
- [-IncludeDisasterRecoveryEndpoints] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -OutFile <String> -PublishingProfileOption <ICsmPublishingProfileOptions> [-DefaultProfile <PSObject>]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzWebAppPublishingProfile -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- -Slot <String> -OutFile <String> [-PassThru] [-PublishingProfileOption <ICsmPublishingProfileOptions>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzWebAppPublishingProfile -Name <String> -ResourceGroupName <String> -Slot <String>
+ -SubscriptionId <String[]> -OutFile <String> -PublishingProfileOption <ICsmPublishingProfileOptions>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### ListExpanded
+### ListExpanded1
 ```
-Get-AzWebAppPublishingProfile -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- -OutFile <String> [-PassThru] [-Format <PublishingProfileFormat>] [-IncludeDisasterRecoveryEndpoints]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzWebAppPublishingProfile -Name <String> -ResourceGroupName <String> -Slot <String>
+ -SubscriptionId <String[]> -OutFile <String> [-Format <PublishingProfileFormat>]
+ [-IncludeDisasterRecoveryEndpoints] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -86,8 +87,8 @@ Name of the format.
 Valid values are: FileZilla3WebDeploy -- defaultFtp
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.PublishingProfileFormat
-Parameter Sets: ListExpanded1, ListExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Support.PublishingProfileFormat
+Parameter Sets: ListExpanded, ListExpanded1
 Aliases:
 
 Required: False
@@ -103,12 +104,12 @@ Include the DisasterRecover endpoint if true
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ListExpanded1, ListExpanded
+Parameter Sets: ListExpanded, ListExpanded1
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -147,7 +148,7 @@ Dynamic: False
 ```
 
 ### -PassThru
-When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -156,7 +157,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -167,11 +168,11 @@ Publishing options for requested profile.
 To construct, see NOTES section for PUBLISHINGPROFILEOPTION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ICsmPublishingProfileOptions
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.ICsmPublishingProfileOptions
 Parameter Sets: List, List1
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -201,7 +202,7 @@ If a slot is not specified, the API will get the publishing profile for the prod
 
 ```yaml
 Type: System.String
-Parameter Sets: ListExpanded1, List1
+Parameter Sets: List1, ListExpanded1
 Aliases:
 
 Required: True
@@ -268,7 +269,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ICsmPublishingProfileOptions
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.ICsmPublishingProfileOptions
 
 ## OUTPUTS
 

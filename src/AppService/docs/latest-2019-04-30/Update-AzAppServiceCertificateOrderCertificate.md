@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.WebSite
-online version: https://docs.microsoft.com/en-us/powershell/module/az.website/update-azappservicecertificateordercertificate
+Module Name: Az.AppService
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/update-azappservicecertificateordercertificate
 schema: 2.0.0
 ---
 
@@ -12,33 +12,33 @@ Creates or updates a certificate and associates with key vault secret.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Update-AzAppServiceCertificateOrderCertificate -CertificateOrderName <String> -Name <String>
- -ResourceGroupName <String> -SubscriptionId <String>
- [-KeyVaultCertificate <IAppServiceCertificatePatchResource>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Update-AzAppServiceCertificateOrderCertificate -CertificateOrderName <String> -Name <String>
  -ResourceGroupName <String> -SubscriptionId <String> [-KeyVaultId <String>] [-KeyVaultSecretName <String>]
  [-Kind <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
+### Update
 ```
-Update-AzAppServiceCertificateOrderCertificate -InputObject <IWebSiteIdentity> [-KeyVaultId <String>]
- [-KeyVaultSecretName <String>] [-Kind <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+Update-AzAppServiceCertificateOrderCertificate -CertificateOrderName <String> -Name <String>
+ -ResourceGroupName <String> -SubscriptionId <String>
+ -KeyVaultCertificate <IAppServiceCertificatePatchResource> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
 ```
-Update-AzAppServiceCertificateOrderCertificate -InputObject <IWebSiteIdentity>
- [-KeyVaultCertificate <IAppServiceCertificatePatchResource>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-AzAppServiceCertificateOrderCertificate -InputObject <IAppServiceIdentity>
+ -KeyVaultCertificate <IAppServiceCertificatePatchResource> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzAppServiceCertificateOrderCertificate -InputObject <IAppServiceIdentity> [-KeyVaultId <String>]
+ [-KeyVaultSecretName <String>] [-Kind <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -100,10 +100,11 @@ Dynamic: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
-Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.IAppServiceIdentity
+Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -119,11 +120,11 @@ Key Vault container ARM resource for a certificate that is purchased through Azu
 To construct, see NOTES section for KEYVAULTCERTIFICATE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.IAppServiceCertificatePatchResource
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20150801.IAppServiceCertificatePatchResource
 Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -267,13 +268,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20150801.IAppServiceCertificatePatchResource
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.IAppServiceCertificatePatchResource
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.IAppServiceIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IAppServiceCertificateResource
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IAppServiceCertificateResource
 
 ## ALIASES
 
@@ -281,6 +282,50 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### INPUTOBJECT <IAppServiceIdentity>: Identity Parameter
+  - `[AnalysisName <String>]`: Analysis Name
+  - `[ApiName <String>]`: The managed API name.
+  - `[BackupId <String>]`: ID of the backup.
+  - `[BaseAddress <String>]`: Module base address.
+  - `[CertificateOrderName <String>]`: Name of the certificate order.
+  - `[ConnectionName <String>]`: The connection name.
+  - `[DeletedSiteId <String>]`: The numeric ID of the deleted app, e.g. 12345
+  - `[DetectorName <String>]`: Detector Resource Name
+  - `[DiagnosticCategory <String>]`: Diagnostic Category
+  - `[DiagnosticsName <String>]`: Name of the diagnostics item.
+  - `[DomainName <String>]`: Name of the domain.
+  - `[DomainOwnershipIdentifierName <String>]`: Name of domain ownership identifier.
+  - `[EntityName <String>]`: Name of the hybrid connection.
+  - `[FunctionName <String>]`: Function name.
+  - `[GatewayName <String>]`: Name of the gateway. Only the 'primary' gateway is supported.
+  - `[HostName <String>]`: Hostname in the hostname binding.
+  - `[HostingEnvironmentName <String>]`: Name of the hosting environment.
+  - `[Id <String>]`: Resource identity path
+  - `[Instance <String>]`: Name of the instance in the multi-role pool.
+  - `[InstanceId <String>]`: ID of web app instance.
+  - `[Location <String>]`: 
+  - `[Name <String>]`: Name of the certificate.
+  - `[NamespaceName <String>]`: Name of the Service Bus namespace.
+  - `[OperationId <String>]`: GUID of the operation.
+  - `[PremierAddOnName <String>]`: Add-on name.
+  - `[ProcessId <String>]`: PID.
+  - `[PublicCertificateName <String>]`: Public certificate name.
+  - `[RelayName <String>]`: Name of the Service Bus relay.
+  - `[ResourceGroupName <String>]`: Name of the resource group to which the resource belongs.
+  - `[RouteName <String>]`: Name of the Virtual Network route.
+  - `[SiteExtensionId <String>]`: Site extension name.
+  - `[SiteName <String>]`: Site Name
+  - `[Slot <String>]`: Name of web app slot. If not specified then will default to production slot.
+  - `[SnapshotId <String>]`: The ID of the snapshot to read.
+  - `[SourceControlType <String>]`: Type of source control
+  - `[SubscriptionId <String>]`: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  - `[ThreadId <String>]`: TID.
+  - `[View <String>]`: The type of view. This can either be "summary" or "detailed".
+  - `[VnetName <String>]`: Name of the Virtual Network.
+  - `[WebJobName <String>]`: Name of Web Job.
+  - `[WorkerName <String>]`: Name of worker machine, which typically starts with RD.
+  - `[WorkerPoolName <String>]`: Name of the worker pool.
 
 #### KEYVAULTCERTIFICATE <IAppServiceCertificatePatchResource>: Key Vault container ARM resource for a certificate that is purchased through Azure.
   - `[Kind <String>]`: Kind of resource.

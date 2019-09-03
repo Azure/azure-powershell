@@ -13,8 +13,8 @@ Lists all available request headers, response headers, or server variables.
 ## SYNTAX
 
 ```
-Get-AzApplicationGatewayAvailableInfo -SubscriptionId <String[]> [-IncludeRequestHeaders]
- [-IncludeResponseHeaders] [-IncludeServerVariables] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzApplicationGatewayAvailableInfo [-IncludeRequestHeaders] [-IncludeResponseHeaders]
+ [-IncludeServerVariables] [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -68,7 +68,7 @@ Aliases: RequestHeader
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -84,7 +84,7 @@ Aliases: ResponseHeader
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -100,7 +100,7 @@ Aliases: ServerVariable
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -117,7 +117,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

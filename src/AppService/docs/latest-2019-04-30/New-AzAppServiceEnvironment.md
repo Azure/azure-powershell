@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.WebSite
-online version: https://docs.microsoft.com/en-us/powershell/module/az.website/new-azappserviceenvironment
+Module Name: Az.AppService
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/new-azappserviceenvironment
 schema: 2.0.0
 ---
 
@@ -12,17 +12,10 @@ Create or update an App Service Environment.
 
 ## SYNTAX
 
-### Create (Default)
+### CreateExpanded (Default)
 ```
 New-AzAppServiceEnvironment -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-HostingEnvironmentEnvelope <IAppServiceEnvironmentResource>] [-PassThru] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded
-```
-New-AzAppServiceEnvironment -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -Location <String> [-PassThru] [-ApiManagementAccountId <String>] [-ClusterSetting <INameValuePair[]>]
+ -Location <String> [-ApiManagementAccountId <String>] [-ClusterSetting <INameValuePair[]>]
  [-DnsSuffix <String>] [-DynamicCacheEnabled] [-FrontEndScaleFactor <Int32>] [-HasLinuxWorker]
  [-InternalLoadBalancingMode <InternalLoadBalancingMode>] [-IpsslAddressCount <Int32>] [-Kind <String>]
  [-MultiRoleCount <Int32>] [-MultiSize <String>] [-NetworkAccessControlList <INetworkAccessControlEntry[]>]
@@ -30,12 +23,26 @@ New-AzAppServiceEnvironment -Name <String> -ResourceGroupName <String> -Subscrip
  [-SslCertKeyVaultSecretName <String>] [-Suspended] [-Tag <Hashtable>] [-UserWhitelistedIPRange <String[]>]
  [-VirtualNetworkId <String>] [-VirtualNetworkSubnet <String>] [-VnetName <String>]
  [-VnetResourceGroupName <String>] [-VnetSubnetName <String>] [-WorkerPool <IWorkerPool[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create
+```
+New-AzAppServiceEnvironment -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -HostingEnvironmentEnvelope <IAppServiceEnvironmentResource> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentity
+```
+New-AzAppServiceEnvironment -InputObject <IAppServiceIdentity>
+ -HostingEnvironmentEnvelope <IAppServiceEnvironmentResource> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzAppServiceEnvironment -InputObject <IWebSiteIdentity> -Location <String> [-PassThru]
+New-AzAppServiceEnvironment -InputObject <IAppServiceIdentity> -Location <String>
  [-ApiManagementAccountId <String>] [-ClusterSetting <INameValuePair[]>] [-DnsSuffix <String>]
  [-DynamicCacheEnabled] [-FrontEndScaleFactor <Int32>] [-HasLinuxWorker]
  [-InternalLoadBalancingMode <InternalLoadBalancingMode>] [-IpsslAddressCount <Int32>] [-Kind <String>]
@@ -44,14 +51,7 @@ New-AzAppServiceEnvironment -InputObject <IWebSiteIdentity> -Location <String> [
  [-SslCertKeyVaultSecretName <String>] [-Suspended] [-Tag <Hashtable>] [-UserWhitelistedIPRange <String[]>]
  [-VirtualNetworkId <String>] [-VirtualNetworkSubnet <String>] [-VnetName <String>]
  [-VnetResourceGroupName <String>] [-VnetSubnetName <String>] [-WorkerPool <IWorkerPool[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzAppServiceEnvironment -InputObject <IWebSiteIdentity>
- [-HostingEnvironmentEnvelope <IAppServiceEnvironmentResource>] [-PassThru] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -105,7 +105,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -116,7 +116,7 @@ Custom settings for changing the behavior of the App Service Environment.
 To construct, see NOTES section for CLUSTERSETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.INameValuePair[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20150801.INameValuePair[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -172,7 +172,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -188,7 +188,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -204,7 +204,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -215,11 +215,11 @@ App Service Environment ARM resource.
 To construct, see NOTES section for HOSTINGENVIRONMENTENVELOPE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IAppServiceEnvironmentResource
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IAppServiceEnvironmentResource
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -229,10 +229,11 @@ Dynamic: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
-Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.IAppServiceIdentity
+Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -247,7 +248,7 @@ Dynamic: False
 Specifies which endpoints to serve internally in the Virtual Network for the App Service Environment.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.InternalLoadBalancingMode
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Support.InternalLoadBalancingMode
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -269,7 +270,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -317,7 +318,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -361,7 +362,7 @@ Access control list for controlling traffic to the App Service Environment.
 To construct, see NOTES section for NETWORKACCESSCONTROLLIST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.INetworkAccessControlEntry[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20150801.INetworkAccessControlEntry[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -383,14 +384,14 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
 
 ### -PassThru
-When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -399,7 +400,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -505,7 +506,7 @@ Dynamic: False
 ```
 
 ### -Suspended
-<code>true</code> if the App Service Environment is suspended; otherwise, <code>false</code>.
+\<code\>true\</code\> if the App Service Environment is suspended; otherwise, \<code\>false\</code\>.
 The environment can be suspended, e.g.
 when the management endpoint is no longer available (most likely because NSG blocked the incoming traffic).
 
@@ -516,7 +517,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -639,7 +640,7 @@ Description of worker pools with worker size IDs, VM sizes, and number of worker
 To construct, see NOTES section for WORKERPOOL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160301.IWorkerPool[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20160301.IWorkerPool[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -689,13 +690,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IAppServiceEnvironmentResource
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IAppServiceEnvironmentResource
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.IAppServiceIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IAppServiceEnvironmentResource
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IAppServiceEnvironmentResource
 
 ## ALIASES
 
@@ -746,6 +747,50 @@ To create the parameters described below, construct a hash table containing the 
   - `[VnetName <String>]`: Name of the Virtual Network for the App Service Environment.
   - `[VnetResourceGroupName <String>]`: Resource group of the Virtual Network.
   - `[VnetSubnetName <String>]`: Subnet of the Virtual Network.
+
+#### INPUTOBJECT <IAppServiceIdentity>: Identity Parameter
+  - `[AnalysisName <String>]`: Analysis Name
+  - `[ApiName <String>]`: The managed API name.
+  - `[BackupId <String>]`: ID of the backup.
+  - `[BaseAddress <String>]`: Module base address.
+  - `[CertificateOrderName <String>]`: Name of the certificate order.
+  - `[ConnectionName <String>]`: The connection name.
+  - `[DeletedSiteId <String>]`: The numeric ID of the deleted app, e.g. 12345
+  - `[DetectorName <String>]`: Detector Resource Name
+  - `[DiagnosticCategory <String>]`: Diagnostic Category
+  - `[DiagnosticsName <String>]`: Name of the diagnostics item.
+  - `[DomainName <String>]`: Name of the domain.
+  - `[DomainOwnershipIdentifierName <String>]`: Name of domain ownership identifier.
+  - `[EntityName <String>]`: Name of the hybrid connection.
+  - `[FunctionName <String>]`: Function name.
+  - `[GatewayName <String>]`: Name of the gateway. Only the 'primary' gateway is supported.
+  - `[HostName <String>]`: Hostname in the hostname binding.
+  - `[HostingEnvironmentName <String>]`: Name of the hosting environment.
+  - `[Id <String>]`: Resource identity path
+  - `[Instance <String>]`: Name of the instance in the multi-role pool.
+  - `[InstanceId <String>]`: ID of web app instance.
+  - `[Location <String>]`: 
+  - `[Name <String>]`: Name of the certificate.
+  - `[NamespaceName <String>]`: Name of the Service Bus namespace.
+  - `[OperationId <String>]`: GUID of the operation.
+  - `[PremierAddOnName <String>]`: Add-on name.
+  - `[ProcessId <String>]`: PID.
+  - `[PublicCertificateName <String>]`: Public certificate name.
+  - `[RelayName <String>]`: Name of the Service Bus relay.
+  - `[ResourceGroupName <String>]`: Name of the resource group to which the resource belongs.
+  - `[RouteName <String>]`: Name of the Virtual Network route.
+  - `[SiteExtensionId <String>]`: Site extension name.
+  - `[SiteName <String>]`: Site Name
+  - `[Slot <String>]`: Name of web app slot. If not specified then will default to production slot.
+  - `[SnapshotId <String>]`: The ID of the snapshot to read.
+  - `[SourceControlType <String>]`: Type of source control
+  - `[SubscriptionId <String>]`: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  - `[ThreadId <String>]`: TID.
+  - `[View <String>]`: The type of view. This can either be "summary" or "detailed".
+  - `[VnetName <String>]`: Name of the Virtual Network.
+  - `[WebJobName <String>]`: Name of Web Job.
+  - `[WorkerName <String>]`: Name of worker machine, which typically starts with RD.
+  - `[WorkerPoolName <String>]`: Name of the worker pool.
 
 #### NETWORKACCESSCONTROLLIST <INetworkAccessControlEntry[]>: Access control list for controlling traffic to the App Service Environment.
   - `[Action <AccessControlEntryAction?>]`: Action object.

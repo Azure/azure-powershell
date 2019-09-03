@@ -13,7 +13,7 @@ Returns the DNS records specified by the referencing targetResourceIds.
 ## SYNTAX
 
 ```
-Get-AzDnsResourceReference -SubscriptionId <String[]> [-TargetResourceId <String[]>]
+Get-AzDnsResourceReference [-SubscriptionId <String[]>] [-TargetResourceId <String[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -68,7 +68,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

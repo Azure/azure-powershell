@@ -12,18 +12,18 @@ Creates an ownership identifier for a domain or updates identifier details for a
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzWebSiteDomainOwnershipIdentifier -DomainName <String> -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-DomainOwnershipIdentifier <IDomainOwnershipIdentifier>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzWebSiteDomainOwnershipIdentifier -DomainName <String> -Name <String> -ResourceGroupName <String>
  -SubscriptionId <String> [-Kind <String>] [-OwnershipId <String>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzWebSiteDomainOwnershipIdentifier -DomainName <String> -Name <String> -ResourceGroupName <String>
+ -SubscriptionId <String> -DomainOwnershipIdentifier <IDomainOwnershipIdentifier> [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -92,7 +92,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150401.IDomainOwner
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

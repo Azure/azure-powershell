@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.WebSite
-online version: https://docs.microsoft.com/en-us/powershell/module/az.website/get-azdeletedwebapp
+Module Name: Az.AppService
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/get-azdeletedwebapp
 schema: 2.0.0
 ---
 
@@ -12,8 +12,15 @@ Get all deleted apps for a subscription.
 
 ## SYNTAX
 
+### List (Default)
 ```
 Get-AzDeletedWebApp -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List1
+```
+Get-AzDeletedWebApp -Location <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,6 +64,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Location
+HELP MESSAGE MISSING
+
+```yaml
+Type: System.String
+Parameter Sets: List1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -SubscriptionId
 Your Azure subscription ID.
 This is a GUID-formatted string (e.g.
@@ -82,7 +105,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IDeletedSite
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IDeletedSite
 
 ## ALIASES
 

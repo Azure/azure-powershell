@@ -14,7 +14,7 @@ Creates or updates an interface endpoint in the specified resource group.
 
 ### UpdateExpanded (Default)
 ```
-Set-AzInterfaceEndpoint -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Set-AzInterfaceEndpoint -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-EndpointServiceId <String>] [-Etag <String>] [-Fqdn <String>] [-Id <String>] [-Location <String>]
  [-Subnet <ISubnet_Reference>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
@@ -22,8 +22,8 @@ Set-AzInterfaceEndpoint -Name <String> -ResourceGroupName <String> -Subscription
 
 ### Update
 ```
-Set-AzInterfaceEndpoint -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -InterfaceEndpoint <IInterfaceEndpoint> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Set-AzInterfaceEndpoint -Name <String> -ResourceGroupName <String> -InterfaceEndpoint <IInterfaceEndpoint>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -62,7 +62,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -207,7 +207,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -231,7 +231,6 @@ Dynamic: False
 
 ### -Subnet
 The ID of the subnet from which the private IP will be allocated.
-To construct, see NOTES section for SUBNET properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ISubnet_Reference
@@ -255,9 +254,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -335,30 +334,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[EndpointServiceId <String>]`: A unique identifier of the service being referenced by the interface endpoint.
-  - `[Etag <String>]`: Gets a unique read-only string that changes whenever the resource is updated.
-  - `[Fqdn <String>]`: A first-party service's FQDN that is mapped to the private IP allocated via this interface endpoint.
-  - `[Subnet <ISubnet>]`: The ID of the subnet from which the private IP will be allocated.
-
-#### SUBNET <ISubnet_Reference>: The ID of the subnet from which the private IP will be allocated.
-  - `[AddressPrefix <String[]>]`: List of  address prefixes for the subnet.
-  - `[Delegation <IDelegation[]>]`: Gets an array of references to the delegations on the subnet.
-    - `[Id <String>]`: Resource ID.
-    - `[Action <String[]>]`: Describes the actions permitted to the service upon delegation
-    - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-    - `[Name <String>]`: The name of the resource that is unique within a subnet. This name can be used to access the resource.
-    - `[ServiceName <String>]`: The name of the service to whom the subnet should be delegated (e.g. Microsoft.Sql/servers)
-  - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-  - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  - `[NatGatewayId <String>]`: Resource ID.
-  - `[Nsg <INetworkSecurityGroup>]`: The reference of the NetworkSecurityGroup resource.
-  - `[PropertiesAddressPrefix <String>]`: The address prefix for the subnet.
-  - `[ProvisioningState <String>]`: The provisioning state of the resource.
-  - `[ResourceNavigationLink <IResourceNavigationLink[]>]`: Gets an array of references to the external resources using subnet.
-  - `[RouteTable <IRouteTable>]`: The reference of the RouteTable resource.
-  - `[ServiceAssociationLink <IServiceAssociationLink[]>]`: Gets an array of references to services injecting into this subnet.
-  - `[ServiceEndpoint <IServiceEndpointPropertiesFormat[]>]`: An array of service endpoints.
-  - `[ServiceEndpointPolicy <IServiceEndpointPolicy[]>]`: An array of service endpoint policies.
 
 ## RELATED LINKS
 

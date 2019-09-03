@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.WebSite
-online version: https://docs.microsoft.com/en-us/powershell/module/az.website/set-azappservicecertificateorder
+Module Name: Az.AppService
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/set-azappservicecertificateorder
 schema: 2.0.0
 ---
 
@@ -12,20 +12,20 @@ Create or update a certificate purchase order.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzAppServiceCertificateOrder -CertificateOrderName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-CertificateDistinguishedName <IAppServiceCertificateOrder>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzAppServiceCertificateOrder -CertificateOrderName <String> -ResourceGroupName <String>
  -SubscriptionId <String> -Location <String> [-AutoRenew] [-Certificate <Hashtable>] [-Csr <String>]
  [-DistinguishedName <String>] [-KeySize <Int32>] [-Kind <String>] [-ProductType <CertificateProductType>]
  [-Tag <Hashtable>] [-ValidityInYear <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzAppServiceCertificateOrder -CertificateOrderName <String> -ResourceGroupName <String>
+ -SubscriptionId <String> -CertificateDistinguishedName <IAppServiceCertificateOrder>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,14 +63,14 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
 
 ### -AutoRenew
-<code>true</code> if the certificate should be automatically renewed when it expires; otherwise, <code>false</code>.
+\<code\>true\</code\> if the certificate should be automatically renewed when it expires; otherwise, \<code\>false\</code\>.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -79,7 +79,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -106,11 +106,11 @@ SSL certificate purchase order.
 To construct, see NOTES section for CERTIFICATEDISTINGUISHEDNAME properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IAppServiceCertificateOrder
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IAppServiceCertificateOrder
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -192,7 +192,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -240,7 +240,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -250,7 +250,7 @@ Dynamic: False
 Certificate product type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.CertificateProductType
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Support.CertificateProductType
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -322,7 +322,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -366,11 +366,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IAppServiceCertificateOrder
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IAppServiceCertificateOrder
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IAppServiceCertificateOrder
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IAppServiceCertificateOrder
 
 ## ALIASES
 

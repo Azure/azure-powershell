@@ -694,130 +694,17 @@ directive:
       parameter-name: PeeringName
     set:
       alias: PeeringType
-  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-      subject: ExpressRouteCircuitAuthorization
-      parameter-name: ResourceGroupName
-    set:
-      alias: ExpressRouteCircuit
   - where:
       subject: ^NetworkWatcherAvailableProvider$|^NetworkWatcherReachabilityReport$
       parameter-name: AzureLocation
     set:
       parameter-name: Location
-  - where: # REMOVE BEFORE RELEASE: Unnecessary custom client-side Location implementation
-      subject: ^NetworkWatcherAvailableProvider$|^NetworkWatcherReachabilityReport$
-      parameter-name: ResourceGroupName
-    set:
-      alias: NetworkWatcherLocation
-  - where: # REMOVE BEFORE RELEASE: Unnecessary custom client-side Location implementation
-      subject: ^NetworkWatcher(?!(AvailableProvider$|ReachabilityReport$|ConnectionMonitor$))(.+)
-      parameter-name: ResourceGroupName
-    set:
-      alias: Location
-  - where: # REMOVE BEFORE RELEASE: Unnecessary custom client-side Location implementation
-      verb: ^Get$|^Remove$|^Start$|^Stop$
-      subject: ^NetworkWatcher$|^NetworkWatcherConnectionMonitor$
-      parameter-name: ResourceGroupName
-    set:
-      alias: Location
-  - where: # REMOVE BEFORE RELEASE: Not a direct mapping to what NetworkWatcher in-memory object represented
-      verb: Get
-      subject: ^NetworkWatcherAvailableProvider$|^NetworkWatcherFlowLogStatus$|^NetworkWatcherNetworkConfigurationDiagnostic$|^NetworkWatcherNextHop$|^NetworkWatcherReachabilityReport$|^NetworkWatcherTopology$|^NetworkWatcherTroubleshootingResult$
-      parameter-name: Parameter
-    set:
-      alias: NetworkWatcher
-  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-      verb: Get
-      subject: ^NetworkWatcherConnectionMonitor$|^NetworkWatcherConnectionMonitorState$|^NetworkWatcherPacketCapture$
-      parameter-name: ResourceGroupName
-    set:
-      alias: NetworkWatcher
-  - where: # REMOVE BEFORE RELEASE: Not a direct mapping to what NetworkWatcher in-memory object represented
-      verb: New
-      subject: ^NetworkWatcherConnectionMonitor$|^NetworkWatcherPacketCapture$
-      parameter-name: Parameter
-    set:
-      alias: NetworkWatcher
-  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-      verb: Remove
-      subject: ^NetworkWatcher$|^NetworkWatcherConnectionMonitor$|^NetworkWatcherPacketCapture$
-      parameter-name: ResourceGroupName
-    set:
-      alias: NetworkWatcher
-  - where: # REMOVE BEFORE RELEASE: Not a direct mapping to what NetworkWatcher in-memory object represented
-      verb: Set
-      subject: ^NetworkWatcherConnectionMonitor$|^NetworkWatcherFlowLogConfiguration$
-      parameter-name: Parameter
-    set:
-      alias: NetworkWatcher
-  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-      verb: ^Start$|^Stop$
-      subject: NetworkWatcherConnectionMonitor
-      parameter-name: ResourceGroupName
-    set:
-      alias: NetworkWatcher
-  - where: # REMOVE BEFORE RELEASE: Not a direct mapping to what NetworkWatcher in-memory object represented
-      verb: Start
-      subject: NetworkWatcherTroubleshooting
-      parameter-name: Parameter
-    set:
-      alias: NetworkWatcher
-  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-      verb: Stop
-      subject: NetworkWatcherPacketCapture
-      parameter-name: ResourceGroupName
-    set:
-      alias: NetworkWatcher
-  - where: # REMOVE BEFORE RELEASE: Not a direct mapping to what NetworkWatcher in-memory object represented
-      verb: Test
-      subject: ^NetworkWatcherConnectivity$|^NetworkWatcherIPFlow$
-      parameter-name: Parameter
-    set:
-      alias: NetworkWatcher
-  - where: # REMOVE BEFORE RELEASE: In-memory object parameter + resource ID parameter
-      verb: ^Get$|^New$
-      subject: ExpressRouteConnection
-      parameter-name: ResourceGroupName
-    set:
-      alias:
-        - ExpressRouteGatewayObject
-        - ParentResourceId
-  - where: # REMOVE BEFORE RELEASE: In-memory object parameter + resource ID parameter
-      verb: Get
-      subject: VirtualHubVnetConnection
-      parameter-name: ResourceGroupName
-    set:
-      alias:
-        - ParentObject
-        - ParentResourceId
-  - where: # REMOVE BEFORE RELEASE: In-memory object parameter + resource ID parameter
-      verb: ^Get$|^New$
-      subject: VpnConnection
-      parameter-name: ResourceGroupName
-    set:
-      alias:
-        - ParentObject
-        - ParentResourceId
   - where:
       verb: ^Get$|^New$|^Remove$
       subject: VpnConnection
       parameter-name: GatewayName
     set:
       alias: ParentResourceName
-  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-      verb: Get
-      subject: ^ExpressRouteCrossConnectionArpTable$|^ExpressRouteCrossConnectionPeering$|^ExpressRouteCrossConnectionRouteTable$|^ExpressRouteCrossConnectionRouteTableSummary$
-      parameter-name: ResourceGroupName
-    set:
-      alias: ExpressRouteCrossConnection
-  - where: # REMOVE BEFORE RELEASE: In-memory object parameter + PeerAddressType is in-memory object manipulation
-      verb: Remove
-      subject: ExpressRouteCrossConnectionPeering
-      parameter-name: ResourceGroupName
-    set:
-      alias:
-        - ExpressRouteCrossConnection
-        - PeerAddressType
   - where:
       verb: Set
       subject: ExpressRouteCrossConnection
@@ -843,62 +730,24 @@ directive:
       parameter-name: TargetNicResourceId
     set:
       alias: TargetNetworkInterfaceId
-  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-      verb: ^Get$|^Remove$|^Set$
-      subject: ServiceEndpointPolicyDefinition
-      parameter-name: ResourceGroupName
-    set:
-      alias: ServiceEndpointPolicy
   - where:
       verb: Get
       subject: VnetGatewayVpnDeviceConfigurationScript
       parameter-name: Vendor
     set:
       alias: DeviceVendor
-  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-      verb: Set
-      subject: Vnet
-      parameter-name: ResourceGroupName
-    set:
-      alias: VirtualNetwork
-  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-      verb: Test
-      subject: VnetIPAddressAvailability
-      parameter-name: ResourceGroupName
-    set:
-      alias: VirtualNetwork
-  - where: # REMOVE BEFORE RELEASE: Parameters are used to update in-memory objects
-      verb: New
-      subject: Firewall
-      parameter-name: ResourceGroupName
-    set:
-      alias:
-        - VirtualNetworkName
-        - PublicIpName
   - where:
       verb: New
       subject: ^LoadBalancer$|^PublicIPAddress$|^PublicIPPrefix$
       parameter-name: SkuName
     set:
       alias: Sku
-  - where: # REMOVE BEFORE RELEASE: AsJob on non-long-running operation
-      verb: ^New$|^Set$
-      subject: NetworkProfile
-      parameter-name: ResourceGroupName
-    set:
-      alias: AsJob
   - where:
       verb: New
       subject: NetworkSecurityGroup
       parameter-name: SecurityRule
     set:
       alias: SecurityRules
-  - where: # REMOVE BEFORE RELEASE: This is the opposite of AutoStart
-      verb: ^New$|^Set$
-      subject: NetworkWatcherConnectionMonitor
-      parameter-name: ResourceGroupName
-    set:
-      alias: ConfigureOnly
   - where:
       subject: PublicIPPrefix
       parameter-name: PublicIPAddressVersion
@@ -924,20 +773,6 @@ directive:
       property-name: DhcpOptionDnsServer
     set:
       property-name: DnsServer
-  - where: # REMOVE BEFORE RELEASE: These parameters are expanded into their properties as separate parameters
-      verb: New
-      subject: VnetTap
-      parameter-name: ResourceGroupName
-    set:
-      alias:
-        - DestinationNetworkInterfaceIPConfiguration
-        - DestinationLoadBalancerFrontEndIPConfiguration
-  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-      verb: New
-      subject: VpnConnection
-      parameter-name: ResourceGroupName
-    set:
-      alias: VpnSite
   - where:
       verb: New
       subject: VpnConnection
@@ -964,24 +799,6 @@ directive:
       alias:
         - VirtualHub
         - VirtualHubName
-  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-      verb: Reset
-      subject: VnetGateway
-      parameter-name: ResourceGroupName
-    set:
-      alias: VirtualNetworkGateway
-  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-      verb: ^Start$|^Stop$
-      subject: ApplicationGateway
-      parameter-name: ResourceGroupName
-    set:
-      alias: ApplicationGateway
-  - where: # REMOVE BEFORE RELEASE: InputObject removed for all Set cmdlets
-      verb: Set
-      subject: ^ExpressRouteConnection$|^ExpressRouteGateway$|^NetworkWatcherConnectionMonitor$|^VnetGatewayVpnClientIPsecParameter$
-      parameter-name: ResourceGroupName
-    set:
-      alias: InputObject
   - where:
       verb: ^Set$|^New$
       subject: ExpressRouteGateway
@@ -1006,55 +823,12 @@ directive:
       property-name: BoundMax
     set:
       property-name: MaximumScaleUnit
-  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-      verb: Set
-      subject: Firewall
-      parameter-name: ResourceGroupName
-    set:
-      alias: AzureFirewall
-  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-      verb: Set
-      subject: NetworkInterfaceTapConfiguration
-      parameter-name: ResourceGroupName
-    set:
-      alias: NetworkInterfaceTapConfig
-  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-      verb: Set
-      subject: NetworkSecurityGroup
-      parameter-name: ResourceGroupName
-    set:
-      alias: NetworkSecurityGroup
-  - where: # REMOVE BEFORE RELEASE: Conflicts in hybrid profile with next directive
-      verb: Set
-      subject: PublicIPAddress
-      parameter-name: PublicIPAddress
-    set:
-      parameter-name: PublicIPAddressParameter
   - where:
       verb: Set
       subject: VnetGatewayVpnClientIPsecParameter
       parameter-name: VpnclientIPsecParam
     set:
       parameter-name: VpnClientIPsecParameter
-  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-      verb: Set
-      subject: VnetPeering
-      parameter-name: ResourceGroupName
-    set:
-      alias: VirtualNetworkPeering
-  - where: # REMOVE BEFORE RELEASE: In-memory object parameter, UserAssignedIdentityId is used with Identity
-      verb: New
-      subject: ApplicationGateway
-      parameter-name: ResourceGroupName
-    set:
-      alias:
-        - Sku
-        - SslPolicy
-        - WebApplicationFirewallConfiguration
-        - FirewallPolicy
-        - AutoscaleConfiguration
-        - UserAssignedIdentityId
-        - Identity
   - where:
       verb: New
       subject: ApplicationGateway
@@ -1162,12 +936,6 @@ directive:
       property-name: ServiceProviderPropertyServiceProviderName
     set:
       property-name: ServiceProviderName
-  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-      verb: New
-      subject: ExpressRouteCircuit
-      parameter-name: ResourceGroupName
-    set:
-      alias: ExpressRoutePort
   - where:
       verb: ^New$|^Set$
       subject: ExpressRouteCircuit
@@ -1224,38 +992,6 @@ directive:
       property-name: ^BgpSettingPeerWeight$|^BgpPropertyPeerWeight$
     set:
       property-name: BgpPeerWeight
-  - where: # REMOVE BEFORE RELEASE: This is used instead of an in-memory object
-      verb: New
-      subject: NetworkInterface
-      parameter-name: ResourceGroupName
-    set:
-      alias: SubnetId
-  - where: # REMOVE BEFORE RELEASE: These parameters were expanded from the IPConfiguration object
-      verb: New
-      subject: NetworkInterface
-      parameter-name: ResourceGroupName
-    set:
-      alias:
-        - PublicIpAddressId
-        - PublicIpAddress
-        - LoadBalancerBackendAddressPoolId
-        - LoadBalancerBackendAddressPool
-        - LoadBalancerInboundNatRuleId
-        - LoadBalancerInboundNatRule
-        - ApplicationGatewayBackendAddressPoolId
-        - ApplicationGatewayBackendAddressPool
-        - ApplicationSecurityGroupId
-        - ApplicationSecurityGroup
-        - PrivateIpAddress
-        - IpConfigurationName
-  - where: # REMOVE BEFORE RELEASE: These were expanded from Nsg
-      verb: New
-      subject: NetworkInterface
-      parameter-name: ResourceGroupName
-    set:
-      alias:
-        - Subnet
-        - NetworkSecurityGroupId
   - where:
       subject: NetworkInterface
       parameter-name: ^NetworkSecurityGroupProperties(.*)$
@@ -1432,12 +1168,6 @@ directive:
       parameter-name: ^DnsSetting(.+)$
     set:
       parameter-name: $1
-  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-      verb: New
-      subject: PublicIPAddress
-      parameter-name: ResourceGroupName
-    set:
-      alias: PublicIpPrefix
   - where:
       subject: VirtualHub
       parameter-name: RouteTableRoute
@@ -1449,12 +1179,6 @@ directive:
       property-name: RouteTableRoute
     set:
       property-name: Route
-  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-      verb: New
-      subject: VirtualHub
-      parameter-name: ResourceGroupName
-    set:
-      alias: VirtualWan
   - where:
       subject: VirtualHub
       parameter-name: VnetConnection
@@ -1478,22 +1202,6 @@ directive:
       property-name: Active
     set:
       property-name: EnableActiveActive
-  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-      verb: ^New$|^Set$
-      subject: VnetGateway
-      parameter-name: ResourceGroupName
-    set:
-      alias:
-        - GatewaySku
-        - GatewayDefaultSite
-  - where: # REMOVE BEFORE RELEASE: In-memory object parameter, switch for opposite of EnableActiveActive
-      verb: Set
-      subject: VnetGateway
-      parameter-name: ResourceGroupName
-    set:
-      alias:
-        - VirtualNetworkGateway
-        - DisableActiveActiveFeature
   - where:
       verb: ^New$|^Set$
       subject: VnetGateway
@@ -1551,18 +1259,6 @@ directive:
       property-name: LocalNetworkAddressSpaceAddressPrefix
     set:
       property-name: LocalNetworkAddressPrefix
-  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-      verb: Set
-      subject: VnetGatewayConnection
-      parameter-name: ResourceGroupName
-    set:
-      alias: VirtualNetworkGatewayConnection
-  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-      verb: New
-      subject: VnetGatewayConnection
-      parameter-name: ResourceGroupName
-    set:
-      alias: Peer
   - where:
       verb: ^New$|^Set$
       subject: VnetGatewayConnection
@@ -1601,15 +1297,6 @@ directive:
       property-name: AddressSpaceAddressPrefix
     set:
       property-name: AddressPrefix
-  - where: # REMOVE BEFORE RELEASE: In-memory object parameter and Id alternative
-      verb: New
-      subject: VpnSite
-      parameter-name: ResourceGroupName
-    set:
-      alias:
-        - VirtualWan
-        - VirtualWanName
-        - VirtualWanResourceGroupName
   - where:
       verb: Set
       subject: NetworkWatcherFlowLogConfiguration
@@ -1664,12 +1351,6 @@ directive:
       parameter-name: NetworkWatcherFlowAnalyticConfigurationTrafficAnalyticsInterval
     set:
       parameter-name: TrafficAnalyticsInterval
-  - where: # REMOVE BEFORE RELEASE: In-memory object parameter
-      verb: Set
-      subject: NetworkWatcherFlowLogConfiguration
-      parameter-name: ResourceGroupName
-    set:
-      alias: Workspace
   - where:
       verb: Test
       subject: NetworkWatcherConnectivity
@@ -1744,12 +1425,6 @@ directive:
       subject: ApplicationGatewayBackendHealthOnDemand
       variant: ^Demand$|^DemandViaIdentity$
     remove: true
-  - where: # REMOVE BEFORE RELEASE: Previously, this was combined with NetworkWatcherPacketCaptureStatus, which has AsJob.
-      verb: Get
-      subject: NetworkWatcherPacketCapture
-      parameter-name: ResourceGroupName
-    set:
-      alias: AsJob
 
 # Parameter parameters
   - where:

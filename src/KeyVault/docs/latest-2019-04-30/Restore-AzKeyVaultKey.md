@@ -20,15 +20,15 @@ This operation requires the keys/restore permission.
 
 ## SYNTAX
 
-### Restore (Default)
+### RestoreExpanded (Default)
 ```
-Restore-AzKeyVaultKey [-KeyVaultDnsSuffix <String>] [-VaultName <String>] [-Parameter <IKeyRestoreParameters>]
+Restore-AzKeyVaultKey -KeyBundleBackupInputFile <String> [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### RestoreExpanded
+### Restore
 ```
-Restore-AzKeyVaultKey -KeyBundleBackupInputFile <String> [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
+Restore-AzKeyVaultKey -Parameter <IKeyRestoreParameters> [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -122,7 +122,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IKeyRestore
 Parameter Sets: Restore
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

@@ -14,17 +14,18 @@ Creates a VirtualHub resource if it doesn't exist else updates the existing Virt
 
 ### UpdateExpanded (Default)
 ```
-Set-AzVirtualHub -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-AddressPrefix <String>]
- [-ExpressRouteGatewayId <String>] [-Id <String>] [-Location <String>] [-P2SVpnGatewayId <String>]
- [-Route <IVirtualHubRoute[]>] [-Tag <Hashtable>] [-VirtualWanId <String>]
+Set-AzVirtualHub -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-AddressPrefix <String>] [-ExpressRouteGatewayId <String>] [-Id <String>] [-Location <String>]
+ [-P2SVpnGatewayId <String>] [-Route <IVirtualHubRoute[]>] [-Tag <Hashtable>] [-VirtualWanId <String>]
  [-VnetConnection <IHubVirtualNetworkConnection[]>] [-VpnGatewayId <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
 ```
-Set-AzVirtualHub -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -VirtualHub <IVirtualHub>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzVirtualHub -Name <String> -ResourceGroupName <String> -VirtualHub <IVirtualHub>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -78,7 +79,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -174,7 +175,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -238,9 +239,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -388,21 +389,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[AddressPrefix <String>]`: Address-prefix for this VirtualHub.
-  - `[ExpressRouteGatewayId <String>]`: Resource ID.
-  - `[P2SVpnGatewayId <String>]`: Resource ID.
-  - `[Route <IVirtualHubRoute[]>]`: List of all routes.
-    - `[AddressPrefix <String[]>]`: List of all addressPrefixes.
-    - `[NextHopIPAddress <String>]`: NextHop ip address.
-  - `[VirtualWanId <String>]`: Resource ID.
-  - `[VnetConnection <IHubVirtualNetworkConnection[]>]`: List of all vnet connections with this VirtualHub.
-    - `[Id <String>]`: Resource ID.
-    - `[AllowHubToRemoteVnetTransit <Boolean?>]`: VirtualHub to RemoteVnet transit to enabled or not.
-    - `[AllowRemoteVnetToUseHubVnetGateway <Boolean?>]`: Allow RemoteVnet to use Virtual Hub's gateways.
-    - `[EnableInternetSecurity <Boolean?>]`: Enable internet security
-    - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-    - `[RemoteVnetId <String>]`: Resource ID.
-  - `[VpnGatewayId <String>]`: Resource ID.
 
 #### VNETCONNECTION <IHubVirtualNetworkConnection[]>: List of all vnet connections with this VirtualHub.
   - `[Id <String>]`: Resource ID.

@@ -12,23 +12,15 @@ The operation to create or update the extension.
 
 ## SYNTAX
 
-### Create (Default)
-```
-New-AzVMExtension -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -VMName <String>
- [-VMExtension <IVirtualMachineExtension>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateExpanded
 ```
 New-AzVMExtension -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -VMName <String>
  -Location <String> [-AutoUpgradeMinorVersion] [-ExtensionType <String>] [-ForceRerun <String>]
- [-InstanceViewName <String>] [-InstanceViewStatus <IInstanceViewStatus[]>]
+ [-InstanceViewName <String>] [-InstanceViewStatuses <IInstanceViewStatus[]>]
  [-InstanceViewSubstatus <IInstanceViewStatus[]>] [-InstanceViewType <String>]
  [-InstanceViewTypeHandlerVersion <String>]
  [-ProtectedSetting <IVirtualMachineExtensionPropertiesProtectedSettings>] [-Publisher <String>]
- [-Setting <IVirtualMachineExtensionPropertiesSettings>] [-Tag <IResourceTags>] [-TypeHandlerVersion <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Setting <IVirtualMachineExtensionPropertiesSettings>] [-Tag <Hashtable>] [-TypeHandlerVersion <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,7 +58,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -78,12 +70,12 @@ Once deployed, however, the extension will not upgrade minor versions unless red
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -110,7 +102,7 @@ Specifies the type of the extension; an example is "CustomScriptExtension".
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -126,7 +118,7 @@ How the extension handler should be forced to update even if the extension confi
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -142,7 +134,7 @@ The virtual machine extension name.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -153,12 +145,13 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InstanceViewStatus
+### -InstanceViewStatuses
 The resource status information.
+To construct, see NOTES section for INSTANCEVIEWSTATUSES properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IInstanceViewStatus[]
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -171,10 +164,11 @@ Dynamic: False
 
 ### -InstanceViewSubstatus
 The resource status information.
+To construct, see NOTES section for INSTANCEVIEWSUBSTATUS properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IInstanceViewStatus[]
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -190,7 +184,7 @@ Specifies the type of the extension; an example is "CustomScriptExtension".
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -206,7 +200,7 @@ Specifies the version of the script handler.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -222,7 +216,7 @@ Resource location
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -249,12 +243,28 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -ProtectedSetting
 The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IVirtualMachineExtensionPropertiesProtectedSettings
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases: ProtectedSettings
 
 Required: False
@@ -270,7 +280,7 @@ The name of the extension handler publisher.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -302,7 +312,7 @@ Json formatted public settings for the extension.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IVirtualMachineExtensionPropertiesSettings
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases: Settings
 
 Required: False
@@ -334,8 +344,8 @@ Dynamic: False
 Resource tags
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20170330.IResourceTags
-Parameter Sets: CreateExpanded
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -351,29 +361,13 @@ Specifies the version of the script handler.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -VMExtension
-Describes a Virtual Machine Extension.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IVirtualMachineExtension
-Parameter Sets: Create
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -432,13 +426,30 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IVirtualMachineExtension
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IVirtualMachineExtension
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### INSTANCEVIEWSTATUSES <IInstanceViewStatus[]>: The resource status information.
+  - `[Code <String>]`: The status code.
+  - `[DisplayStatus <String>]`: The short localizable label for the status.
+  - `[Level <StatusLevelTypes?>]`: The level code.
+  - `[Message <String>]`: The detailed status message, including for alerts and error messages.
+  - `[Time <DateTime?>]`: The time of the status.
+
+#### INSTANCEVIEWSUBSTATUS <IInstanceViewStatus[]>: The resource status information.
+  - `[Code <String>]`: The status code.
+  - `[DisplayStatus <String>]`: The short localizable label for the status.
+  - `[Level <StatusLevelTypes?>]`: The level code.
+  - `[Message <String>]`: The detailed status message, including for alerts and error messages.
+  - `[Time <DateTime?>]`: The time of the status.
 
 ## RELATED LINKS
 

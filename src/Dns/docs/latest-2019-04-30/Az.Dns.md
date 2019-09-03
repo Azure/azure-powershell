@@ -44,9 +44,6 @@ Creates or updates a record set within a DNS zone.
 Creates or updates a DNS zone.
 Does not modify DNS records within the zone.
 
-### [Test-AzDummy](Test-AzDummy.md)
-Dummy alias cmdlet
-
 ### [Update-AzDnsRecordSet](Update-AzDnsRecordSet.md)
 Updates a record set within a DNS zone.
 

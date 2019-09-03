@@ -13,16 +13,15 @@ This operation requires the certificates/restore permission.
 
 ## SYNTAX
 
-### Restore (Default)
-```
-Restore-AzKeyVaultCertificate [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
- [-Parameter <ICertificateRestoreParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### RestoreExpanded
+### RestoreExpanded (Default)
 ```
 Restore-AzKeyVaultCertificate -CertificateBundleBackupInputFile <String> [-KeyVaultDnsSuffix <String>]
+ [-VaultName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Restore
+```
+Restore-AzKeyVaultCertificate -Parameter <ICertificateRestoreParameters> [-KeyVaultDnsSuffix <String>]
  [-VaultName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -109,7 +108,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api70.ICertificateResto
 Parameter Sets: Restore
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

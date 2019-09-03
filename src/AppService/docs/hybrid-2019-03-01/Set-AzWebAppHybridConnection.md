@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.WebSite
-online version: https://docs.microsoft.com/en-us/powershell/module/az.website/set-azwebapphybridconnection
+Module Name: Az.AppService
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/set-azwebapphybridconnection
 schema: 2.0.0
 ---
 
@@ -12,20 +12,20 @@ Creates a new Hybrid Connection using a Service Bus relay.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzWebAppHybridConnection -Name <String> -NamespaceName <String> -RelayName <String>
- -ResourceGroupName <String> -SubscriptionId <String> [-ConnectionEnvelope <IHybridConnection>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzWebAppHybridConnection -Name <String> -NamespaceName <String> -RelayName <String>
  -ResourceGroupName <String> -SubscriptionId <String> [-Hostname <String>] [-Kind <String>] [-Port <Int32>]
  [-PropertiesRelayName <String>] [-RelayArmUri <String>] [-SendKeyName <String>] [-SendKeyValue <String>]
  [-ServiceBusNamespace <String>] [-ServiceBusSuffix <String>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzWebAppHybridConnection -Name <String> -NamespaceName <String> -RelayName <String>
+ -ResourceGroupName <String> -SubscriptionId <String> -ConnectionEnvelope <IHybridConnection>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,11 +59,11 @@ This is used to configure a Hybrid Connection.
 To construct, see NOTES section for CONNECTIONENVELOPE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160301.IHybridConnection
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20160301.IHybridConnection
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -161,7 +161,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -355,11 +355,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160301.IHybridConnection
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20160301.IHybridConnection
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160301.IHybridConnection
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20160301.IHybridConnection
 
 ## ALIASES
 

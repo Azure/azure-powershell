@@ -15,7 +15,7 @@ Creates a connection between an ExpressRoute gateway and an ExpressRoute circuit
 ### CreateExpanded (Default)
 ```
 New-AzExpressRouteConnection -ExpressRouteGatewayName <String> -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String> -ResourceName <String> [-AuthorizationKey <String>]
+ -ResourceName <String> [-SubscriptionId <String>] [-AuthorizationKey <String>]
  [-ExpressRouteCircuitPeeringId <String>] [-Id <String>] [-RoutingWeight <Int32>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -23,20 +23,20 @@ New-AzExpressRouteConnection -ExpressRouteGatewayName <String> -Name <String> -R
 ### Create
 ```
 New-AzExpressRouteConnection -ExpressRouteGatewayName <String> -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String> -ExpressRouteConnection <IExpressRouteConnection> [-DefaultProfile <PSObject>]
+ -ExpressRouteConnection <IExpressRouteConnection> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentity
+```
+New-AzExpressRouteConnection -InputObject <INetworkIdentity> -ExpressRouteConnection <IExpressRouteConnection>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzExpressRouteConnection -InputObject <INetworkIdentity> -ResourceName <String>
  [-AuthorizationKey <String>] [-ExpressRouteCircuitPeeringId <String>] [-Id <String>] [-RoutingWeight <Int32>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzExpressRouteConnection -InputObject <INetworkIdentity> -ExpressRouteConnection <IExpressRouteConnection>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -75,7 +75,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -151,7 +151,7 @@ The name of the ExpressRoute gateway.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, Create
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True
@@ -180,10 +180,11 @@ Dynamic: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
-Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
+Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -199,7 +200,7 @@ The name of the connection subresource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, Create
+Parameter Sets: Create, CreateExpanded
 Aliases: ConnectionName
 
 Required: True
@@ -220,7 +221,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -231,8 +232,8 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, Create
-Aliases: ExpressRouteGatewayObject, ParentResourceId
+Parameter Sets: Create, CreateExpanded
+Aliases:
 
 Required: True
 Position: Named
@@ -268,7 +269,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -280,12 +281,12 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, Create
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -329,9 +330,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IExpressRouteConnection
+
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
 
 ## OUTPUTS
 
@@ -345,11 +346,73 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 #### EXPRESSROUTECONNECTION <IExpressRouteConnection>: ExpressRouteConnection resource.
-  - `Name <String>`: The name of the resource.
   - `[Id <String>]`: Resource ID.
-  - `[AuthorizationKey <String>]`: Authorization key to establish the connection.
-  - `[ExpressRouteCircuitPeeringId <String>]`: The ID of the ExpressRoute circuit peering.
-  - `[RoutingWeight <Int32?>]`: The routing weight associated to the connection.
+
+#### INPUTOBJECT <INetworkIdentity>: Identity Parameter
+  - `[ApplicationGatewayName <String>]`: The name of the application gateway.
+  - `[ApplicationSecurityGroupName <String>]`: The name of the application security group.
+  - `[AuthorizationName <String>]`: The name of the authorization.
+  - `[AzureFirewallName <String>]`: The name of the Azure Firewall.
+  - `[BackendAddressPoolName <String>]`: The name of the backend address pool.
+  - `[CircuitName <String>]`: The name of the express route circuit.
+  - `[ConnectionMonitorName <String>]`: The name of the connection monitor.
+  - `[ConnectionName <String>]`: The name of the vpn connection.
+  - `[CrossConnectionName <String>]`: The name of the ExpressRouteCrossConnection (service key of the circuit).
+  - `[DdosCustomPolicyName <String>]`: The name of the DDoS custom policy.
+  - `[DdosProtectionPlanName <String>]`: The name of the DDoS protection plan.
+  - `[DefaultSecurityRuleName <String>]`: The name of the default security rule.
+  - `[DevicePath <String>]`: The path of the device.
+  - `[ExpressRouteGatewayName <String>]`: The name of the ExpressRoute gateway.
+  - `[ExpressRoutePortName <String>]`: The name of the ExpressRoutePort resource.
+  - `[FrontendIPConfigurationName <String>]`: The name of the frontend IP configuration.
+  - `[GatewayName <String>]`: The name of the gateway.
+  - `[IPConfigurationName <String>]`: The name of the ip configuration name.
+  - `[Id <String>]`: Resource identity path
+  - `[InboundNatRuleName <String>]`: The name of the inbound nat rule.
+  - `[InterfaceEndpointName <String>]`: The name of the interface endpoint.
+  - `[LinkName <String>]`: The name of the ExpressRouteLink resource.
+  - `[LoadBalancerName <String>]`: The name of the load balancer.
+  - `[LoadBalancingRuleName <String>]`: The name of the load balancing rule.
+  - `[LocalNetworkGatewayName <String>]`: The name of the local network gateway.
+  - `[Location <String>]`: The location of the subnet.
+  - `[LocationName <String>]`: Name of the requested ExpressRoutePort peering location.
+  - `[NatGatewayName <String>]`: The name of the nat gateway.
+  - `[NetworkInterfaceName <String>]`: The name of the network interface.
+  - `[NetworkProfileName <String>]`: The name of the NetworkProfile.
+  - `[NetworkWatcherName <String>]`: The name of the network watcher.
+  - `[NsgName <String>]`: The name of the network security group.
+  - `[OutboundRuleName <String>]`: The name of the outbound rule.
+  - `[P2SVpnServerConfigurationName <String>]`: The name of the P2SVpnServerConfiguration.
+  - `[PacketCaptureName <String>]`: The name of the packet capture session.
+  - `[PeeringName <String>]`: The name of the peering.
+  - `[PolicyName <String>]`: The name of the policy
+  - `[PredefinedPolicyName <String>]`: Name of Ssl predefined policy.
+  - `[ProbeName <String>]`: The name of the probe.
+  - `[PublicIPAddressName <String>]`: The name of the subnet.
+  - `[PublicIPPrefixName <String>]`: The name of the PublicIpPrefix.
+  - `[ResourceGroupName <String>]`: The name of the resource group.
+  - `[RouteFilterName <String>]`: The name of the route filter.
+  - `[RouteName <String>]`: The name of the route.
+  - `[RouteTableName <String>]`: The name of the route table.
+  - `[RuleName <String>]`: The name of the rule.
+  - `[SecurityRuleName <String>]`: The name of the security rule.
+  - `[ServiceEndpointPolicyDefinitionName <String>]`: The name of the service endpoint policy definition.
+  - `[ServiceEndpointPolicyName <String>]`: The name of the service endpoint policy.
+  - `[SubnetName <String>]`: The name of the subnet.
+  - `[SubscriptionId <String>]`: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  - `[TapConfigurationName <String>]`: The name of the tap configuration.
+  - `[TapName <String>]`: The name of the virtual network tap.
+  - `[VirtualHubName <String>]`: The name of the VirtualHub.
+  - `[VirtualMachineScaleSetName <String>]`: The name of the virtual machine scale set.
+  - `[VirtualWanName <String>]`: The name of the VirtualWAN being retrieved.
+  - `[VirtualWanName1 <String>]`: The name of the VirtualWAN for which configuration of all vpn-sites is needed.
+  - `[VirtualWanName2 <String>]`: The name of the VirtualWan.
+  - `[VirtualmachineIndex <String>]`: The virtual machine index.
+  - `[VnetGatewayConnectionName <String>]`: The name of the virtual network gateway connection for which the configuration script is generated.
+  - `[VnetGatewayName <String>]`: The name of the virtual network gateway.
+  - `[VnetName <String>]`: The name of the virtual network.
+  - `[VnetPeeringName <String>]`: The name of the virtual network peering.
+  - `[VpnSiteName <String>]`: The name of the VpnSite being retrieved.
 
 ## RELATED LINKS
 

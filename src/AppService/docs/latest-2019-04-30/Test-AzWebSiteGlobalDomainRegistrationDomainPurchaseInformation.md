@@ -12,14 +12,7 @@ Validates domain registration information
 
 ## SYNTAX
 
-### Validate (Default)
-```
-Test-AzWebSiteGlobalDomainRegistrationDomainPurchaseInformation -SubscriptionId <String>
- [-DomainRegistrationInput <IDomainRegistrationInput>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### ValidateExpanded
+### ValidateExpanded (Default)
 ```
 Test-AzWebSiteGlobalDomainRegistrationDomainPurchaseInformation -SubscriptionId <String> -Location <String>
  [-AutoRenew] [-ConsentAgreedAt <DateTime>] [-ConsentAgreedBy <String>] [-ConsentAgreementKey <String[]>]
@@ -52,6 +45,20 @@ Test-AzWebSiteGlobalDomainRegistrationDomainPurchaseInformation -SubscriptionId 
  [-NameServer <String[]>] [-Privacy] [-PropertiesName <String>] [-ProvisioningState <ProvisioningState>]
  [-ReadyForDnsRecordManagement] [-RegistrationStatus <DomainStatus>] [-Tag <Hashtable>] [-Type <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Validate
+```
+Test-AzWebSiteGlobalDomainRegistrationDomainPurchaseInformation -SubscriptionId <String>
+ -DomainRegistrationInput <IDomainRegistrationInput> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### ValidateViaIdentity
+```
+Test-AzWebSiteGlobalDomainRegistrationDomainPurchaseInformation -InputObject <IWebSiteIdentity>
+ -DomainRegistrationInput <IDomainRegistrationInput> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### ValidateViaIdentityExpanded
@@ -89,13 +96,6 @@ Test-AzWebSiteGlobalDomainRegistrationDomainPurchaseInformation -InputObject <IW
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### ValidateViaIdentity
-```
-Test-AzWebSiteGlobalDomainRegistrationDomainPurchaseInformation -InputObject <IWebSiteIdentity>
- [-DomainRegistrationInput <IDomainRegistrationInput>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Validates domain registration information
 
@@ -131,7 +131,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -171,7 +171,7 @@ Dynamic: False
 
 ### -ConsentAgreementKey
 List of applicable legal agreement keys.
-This list can be retrieved using ListLegalAgreements API under <code>TopLevelDomain</code> resource.
+This list can be retrieved using ListLegalAgreements API under \<code\>TopLevelDomain\</code\> resource.
 
 ```yaml
 Type: System.String[]
@@ -1143,7 +1143,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.IDomainRegis
 Parameter Sets: Validate, ValidateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -1185,10 +1185,11 @@ Dynamic: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
-Parameter Sets: ValidateViaIdentityExpanded, ValidateViaIdentity
+Parameter Sets: ValidateViaIdentity, ValidateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -1306,7 +1307,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -1355,7 +1356,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -1465,9 +1466,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
-
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.IDomainRegistrationInput
+
+### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
 
 ## OUTPUTS
 
@@ -1565,6 +1566,50 @@ To create the parameters described below, construct a hash table containing the 
   - `[ProvisioningState <ProvisioningState?>]`: Domain provisioning state
   - `[ReadyForDnsRecordManagement <Boolean?>]`: If true then Azure can assign this domain to Web Apps. This value will be true if domain registration status is active and it is hosted on name servers Azure has programmatic access to
   - `[RegistrationStatus <DomainStatus?>]`: Domain registration status
+
+#### INPUTOBJECT <IWebSiteIdentity>: Identity Parameter
+  - `[AnalysisName <String>]`: Analysis Name
+  - `[ApiName <String>]`: The managed API name.
+  - `[BackupId <String>]`: ID of the backup.
+  - `[BaseAddress <String>]`: Module base address.
+  - `[CertificateOrderName <String>]`: Name of the certificate order.
+  - `[ConnectionName <String>]`: The connection name.
+  - `[DeletedSiteId <String>]`: The numeric ID of the deleted app, e.g. 12345
+  - `[DetectorName <String>]`: Detector Resource Name
+  - `[DiagnosticCategory <String>]`: Diagnostic Category
+  - `[DiagnosticsName <String>]`: Name of the diagnostics item.
+  - `[DomainName <String>]`: Name of the domain.
+  - `[DomainOwnershipIdentifierName <String>]`: Name of domain ownership identifier.
+  - `[EntityName <String>]`: Name of the hybrid connection.
+  - `[FunctionName <String>]`: Function name.
+  - `[GatewayName <String>]`: Name of the gateway. Only the 'primary' gateway is supported.
+  - `[HostName <String>]`: Hostname in the hostname binding.
+  - `[HostingEnvironmentName <String>]`: Name of the hosting environment.
+  - `[Id <String>]`: Resource identity path
+  - `[Instance <String>]`: Name of the instance in the multi-role pool.
+  - `[InstanceId <String>]`: ID of web app instance.
+  - `[Location <String>]`: 
+  - `[Name <String>]`: Name of the certificate.
+  - `[NamespaceName <String>]`: Name of the Service Bus namespace.
+  - `[OperationId <String>]`: GUID of the operation.
+  - `[PremierAddOnName <String>]`: Add-on name.
+  - `[ProcessId <String>]`: PID.
+  - `[PublicCertificateName <String>]`: Public certificate name.
+  - `[RelayName <String>]`: Name of the Service Bus relay.
+  - `[ResourceGroupName <String>]`: Name of the resource group to which the resource belongs.
+  - `[RouteName <String>]`: Name of the Virtual Network route.
+  - `[SiteExtensionId <String>]`: Site extension name.
+  - `[SiteName <String>]`: Site Name
+  - `[Slot <String>]`: Name of web app slot. If not specified then will default to production slot.
+  - `[SnapshotId <String>]`: The ID of the snapshot to read.
+  - `[SourceControlType <String>]`: Type of source control
+  - `[SubscriptionId <String>]`: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  - `[ThreadId <String>]`: TID.
+  - `[View <String>]`: The type of view. This can either be "summary" or "detailed".
+  - `[VnetName <String>]`: Name of the Virtual Network.
+  - `[WebJobName <String>]`: Name of Web Job.
+  - `[WorkerName <String>]`: Name of worker machine, which typically starts with RD.
+  - `[WorkerPoolName <String>]`: Name of the worker pool.
 
 #### MANAGEDHOSTNAME <IHostName[]>: All hostnames derived from the domain and assigned to Azure resources
   - `[AzureResourceName <String>]`: Name of the Azure resource the hostname is assigned to. If it is assigned to a Traffic Manager then it will be the Traffic Manager name otherwise it will be the app name.

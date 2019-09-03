@@ -846,4 +846,11 @@ directive:
       subject: VMImage
       variant: ^Capture\d?$|^CaptureViaIdentity\d?$
     remove: true
+# Fix conflicting parameters
+  - where:
+      subject: VmssVM
+      variant: List(.*)
+      parameter-name: Expand
+    set:
+      parameter-name: ExpandExpression
 ```

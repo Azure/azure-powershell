@@ -12,21 +12,13 @@ The operation to create or update an extension.
 
 ## SYNTAX
 
-### Create1 (Default)
-```
-New-AzVmssExtension -ExtensionName <String> -ResourceGroupName <String> -SubscriptionId <String>
- -VmssName <String> [-VmssExtension <IVirtualMachineScaleSetExtension>] [-DefaultProfile <PSObject>] [-AsJob]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded1
 ```
 New-AzVmssExtension -ExtensionName <String> -ResourceGroupName <String> -SubscriptionId <String>
  -VmssName <String> [-AutoUpgradeMinorVersion] [-ForceUpdateTag <String>] [-Name <String>]
  [-ProtectedSetting <IVirtualMachineScaleSetExtensionPropertiesProtectedSettings>]
  [-ProvisionAfterExtension <String[]>] [-Publisher <String>]
  [-Setting <IVirtualMachineScaleSetExtensionPropertiesSettings>] [-Type <String>]
- [-TypeHandlerVersion <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [-TypeHandlerVersion <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -65,7 +57,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -77,12 +69,12 @@ Once deployed, however, the extension will not upgrade minor versions unless red
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -125,7 +117,7 @@ If a value is provided and is different from the previous value, the extension h
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -141,7 +133,23 @@ The name of the extension.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded1
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -157,7 +165,7 @@ The extension can contain either protectedSettings or protectedSettingsFromKeyVa
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IVirtualMachineScaleSetExtensionPropertiesProtectedSettings
-Parameter Sets: CreateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -173,7 +181,7 @@ Collection of extension names after which this extension needs to be provisioned
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -189,7 +197,7 @@ The name of the extension handler publisher.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -221,7 +229,7 @@ Json formatted public settings for the extension.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IVirtualMachineScaleSetExtensionPropertiesSettings
-Parameter Sets: CreateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -254,7 +262,7 @@ Specifies the type of the extension; an example is "CustomScriptExtension".
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -270,29 +278,13 @@ Specifies the version of the script handler.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -VmssExtension
-Describes a Virtual Machine Scale Set Extension.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301.IVirtualMachineScaleSetExtension
-Parameter Sets: Create1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -351,13 +343,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301.IVirtualMachineScaleSetExtension
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301.IVirtualMachineScaleSetExtension
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

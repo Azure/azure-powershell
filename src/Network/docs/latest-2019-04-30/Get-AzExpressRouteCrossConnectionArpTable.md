@@ -14,7 +14,7 @@ Gets the currently advertised ARP table associated with the express route cross 
 
 ```
 Get-AzExpressRouteCrossConnectionArpTable -CrossConnectionName <String> -DevicePath <String>
- -PeeringName <String> -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
+ -PeeringName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -53,7 +53,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -117,7 +117,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -145,7 +145,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: ExpressRouteCrossConnection
+Aliases:
 
 Required: True
 Position: Named
@@ -164,9 +164,9 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

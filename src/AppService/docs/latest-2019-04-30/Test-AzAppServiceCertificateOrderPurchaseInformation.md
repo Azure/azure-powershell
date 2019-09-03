@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.WebSite
-online version: https://docs.microsoft.com/en-us/powershell/module/az.website/test-azappservicecertificateorderpurchaseinformation
+Module Name: Az.AppService
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/test-azappservicecertificateorderpurchaseinformation
 schema: 2.0.0
 ---
 
@@ -12,34 +12,34 @@ Validate information for a certificate order.
 
 ## SYNTAX
 
-### Validate (Default)
+### ValidateExpanded (Default)
+```
+Test-AzAppServiceCertificateOrderPurchaseInformation -SubscriptionId <String> -Location <String> [-AutoRenew]
+ [-Certificate <Hashtable>] [-Csr <String>] [-DistinguishedName <String>] [-KeySize <Int32>] [-Kind <String>]
+ [-ProductType <CertificateProductType>] [-Tag <Hashtable>] [-ValidityInYear <Int32>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Validate
 ```
 Test-AzAppServiceCertificateOrderPurchaseInformation -SubscriptionId <String>
- [-AppServiceCertificateOrder <IAppServiceCertificateOrder>] [-PassThru] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ValidateExpanded
-```
-Test-AzAppServiceCertificateOrderPurchaseInformation -SubscriptionId <String> -Location <String> [-PassThru]
- [-AutoRenew] [-Certificate <Hashtable>] [-Csr <String>] [-DistinguishedName <String>] [-KeySize <Int32>]
- [-Kind <String>] [-ProductType <CertificateProductType>] [-Tag <Hashtable>] [-ValidityInYear <Int32>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ValidateViaIdentityExpanded
-```
-Test-AzAppServiceCertificateOrderPurchaseInformation -InputObject <IWebSiteIdentity> -Location <String>
- [-PassThru] [-AutoRenew] [-Certificate <Hashtable>] [-Csr <String>] [-DistinguishedName <String>]
- [-KeySize <Int32>] [-Kind <String>] [-ProductType <CertificateProductType>] [-Tag <Hashtable>]
- [-ValidityInYear <Int32>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -AppServiceCertificateOrder <IAppServiceCertificateOrder> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### ValidateViaIdentity
 ```
-Test-AzAppServiceCertificateOrderPurchaseInformation -InputObject <IWebSiteIdentity>
- [-AppServiceCertificateOrder <IAppServiceCertificateOrder>] [-PassThru] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-AzAppServiceCertificateOrderPurchaseInformation -InputObject <IAppServiceIdentity>
+ -AppServiceCertificateOrder <IAppServiceCertificateOrder> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### ValidateViaIdentityExpanded
+```
+Test-AzAppServiceCertificateOrderPurchaseInformation -InputObject <IAppServiceIdentity> -Location <String>
+ [-AutoRenew] [-Certificate <Hashtable>] [-Csr <String>] [-DistinguishedName <String>] [-KeySize <Int32>]
+ [-Kind <String>] [-ProductType <CertificateProductType>] [-Tag <Hashtable>] [-ValidityInYear <Int32>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -72,11 +72,11 @@ SSL certificate purchase order.
 To construct, see NOTES section for APPSERVICECERTIFICATEORDER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IAppServiceCertificateOrder
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IAppServiceCertificateOrder
 Parameter Sets: Validate, ValidateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -85,7 +85,7 @@ Dynamic: False
 ```
 
 ### -AutoRenew
-<code>true</code> if the certificate should be automatically renewed when it expires; otherwise, <code>false</code>.
+\<code\>true\</code\> if the certificate should be automatically renewed when it expires; otherwise, \<code\>false\</code\>.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -94,7 +94,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -166,10 +166,11 @@ Dynamic: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
-Parameter Sets: ValidateViaIdentityExpanded, ValidateViaIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.IAppServiceIdentity
+Parameter Sets: ValidateViaIdentity, ValidateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -190,7 +191,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -229,7 +230,7 @@ Dynamic: False
 ```
 
 ### -PassThru
-When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -238,7 +239,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -248,7 +249,7 @@ Dynamic: False
 Certificate product type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.CertificateProductType
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Support.CertificateProductType
 Parameter Sets: ValidateExpanded, ValidateViaIdentityExpanded
 Aliases:
 
@@ -304,7 +305,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -348,9 +349,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IAppServiceCertificateOrder
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IAppServiceCertificateOrder
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.IAppServiceIdentity
 
 ## OUTPUTS
 
@@ -376,6 +377,50 @@ To create the parameters described below, construct a hash table containing the 
   - `[DistinguishedName <String>]`: Certificate distinguished name.
   - `[KeySize <Int32?>]`: Certificate key size.
   - `[ValidityInYear <Int32?>]`: Duration in years (must be between 1 and 3).
+
+#### INPUTOBJECT <IAppServiceIdentity>: Identity Parameter
+  - `[AnalysisName <String>]`: Analysis Name
+  - `[ApiName <String>]`: The managed API name.
+  - `[BackupId <String>]`: ID of the backup.
+  - `[BaseAddress <String>]`: Module base address.
+  - `[CertificateOrderName <String>]`: Name of the certificate order.
+  - `[ConnectionName <String>]`: The connection name.
+  - `[DeletedSiteId <String>]`: The numeric ID of the deleted app, e.g. 12345
+  - `[DetectorName <String>]`: Detector Resource Name
+  - `[DiagnosticCategory <String>]`: Diagnostic Category
+  - `[DiagnosticsName <String>]`: Name of the diagnostics item.
+  - `[DomainName <String>]`: Name of the domain.
+  - `[DomainOwnershipIdentifierName <String>]`: Name of domain ownership identifier.
+  - `[EntityName <String>]`: Name of the hybrid connection.
+  - `[FunctionName <String>]`: Function name.
+  - `[GatewayName <String>]`: Name of the gateway. Only the 'primary' gateway is supported.
+  - `[HostName <String>]`: Hostname in the hostname binding.
+  - `[HostingEnvironmentName <String>]`: Name of the hosting environment.
+  - `[Id <String>]`: Resource identity path
+  - `[Instance <String>]`: Name of the instance in the multi-role pool.
+  - `[InstanceId <String>]`: ID of web app instance.
+  - `[Location <String>]`: 
+  - `[Name <String>]`: Name of the certificate.
+  - `[NamespaceName <String>]`: Name of the Service Bus namespace.
+  - `[OperationId <String>]`: GUID of the operation.
+  - `[PremierAddOnName <String>]`: Add-on name.
+  - `[ProcessId <String>]`: PID.
+  - `[PublicCertificateName <String>]`: Public certificate name.
+  - `[RelayName <String>]`: Name of the Service Bus relay.
+  - `[ResourceGroupName <String>]`: Name of the resource group to which the resource belongs.
+  - `[RouteName <String>]`: Name of the Virtual Network route.
+  - `[SiteExtensionId <String>]`: Site extension name.
+  - `[SiteName <String>]`: Site Name
+  - `[Slot <String>]`: Name of web app slot. If not specified then will default to production slot.
+  - `[SnapshotId <String>]`: The ID of the snapshot to read.
+  - `[SourceControlType <String>]`: Type of source control
+  - `[SubscriptionId <String>]`: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  - `[ThreadId <String>]`: TID.
+  - `[View <String>]`: The type of view. This can either be "summary" or "detailed".
+  - `[VnetName <String>]`: Name of the Virtual Network.
+  - `[WebJobName <String>]`: Name of Web Job.
+  - `[WorkerName <String>]`: Name of worker machine, which typically starts with RD.
+  - `[WorkerPoolName <String>]`: Name of the worker pool.
 
 ## RELATED LINKS
 

@@ -15,16 +15,16 @@ Does not modify DNS records within the zone.
 
 ### CreatePublic (Default)
 ```
-New-AzDnsZone -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Location <String>
+New-AzDnsZone -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
  [-DoNotOverwrite] [-Etag <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### CreatePrivate
 ```
-New-AzDnsZone -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Location <String> -Private
- [-DoNotOverwrite] [-Etag <String>] [-Tag <Hashtable>] [-RegistrationVirtualNetworkId <String[]>]
- [-ResolutionVirtualNetworkId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+New-AzDnsZone -Name <String> -ResourceGroupName <String> -Location <String> -Private
+ [-SubscriptionId <String>] [-DoNotOverwrite] [-Etag <String>] [-RegistrationVirtualNetworkId <String[]>]
+ [-ResolutionVirtualNetworkId <String[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -80,7 +80,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -144,7 +144,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -208,7 +208,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

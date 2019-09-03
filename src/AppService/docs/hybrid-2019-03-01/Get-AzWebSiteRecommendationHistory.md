@@ -59,8 +59,8 @@ Dynamic: False
 ```
 
 ### -ExpiredOnly
-Specify <code>false</code> to return all recommendations.
-The default is <code>true</code>, which returns only expired recommendations.
+Specify \<code\>false\</code\> to return all recommendations.
+The default is \<code\>true\</code\>, which returns only expired recommendations.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -69,7 +69,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
