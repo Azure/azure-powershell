@@ -88,8 +88,6 @@ CmdletsToExport = 'Get-AzHDInsightJob', 'New-AzHDInsightSqoopJobDefinition',
                'Set-AzHDInsightDefaultStorage', 'Add-AzHDInsightStorage', 
                'Add-AzHDInsightScriptAction', 'Add-AzHDInsightMetastore', 
                'Add-AzHDInsightConfigValue', 'Get-AzHDInsightProperty', 
-               'Revoke-AzHDInsightRdpServicesAccess', 
-               'Grant-AzHDInsightRdpServicesAccess', 
                'Set-AzHDInsightGatewayCredential', 'New-AzHDInsightClusterConfig', 
                'Remove-AzHDInsightCluster', 'Set-AzHDInsightClusterSize', 
                'Get-AzHDInsightPersistedScriptAction', 
@@ -98,17 +96,15 @@ CmdletsToExport = 'Get-AzHDInsightJob', 'New-AzHDInsightSqoopJobDefinition',
                'Set-AzHDInsightPersistedScriptAction', 
                'Submit-AzHDInsightScriptAction', 'Get-AzHDInsightCluster', 
                'New-AzHDInsightCluster', 'Add-AzHDInsightClusterIdentity', 
-               'Enable-AzHDInsightOperationsManagementSuite', 
-               'Disable-AzHDInsightOperationsManagementSuite', 
-               'Get-AzHDInsightOperationsManagementSuite'
+               'Enable-AzHDInsightMonitoring', 
+               'Disable-AzHDInsightMonitoring', 
+               'Get-AzHDInsightMonitoring'
 
 # Variables to export from this module
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'Enable-AzHDInsightOMS', 'Disable-AzHDInsightOMS', 
-               'Add-AzHDInsightConfigValues', 'Get-AzHDInsightOMS', 
-               'Get-AzHDInsightProperties'
+AliasesToExport = 'Add-AzHDInsightConfigValues'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
@@ -140,7 +136,7 @@ PrivateData = @{
         ReleaseNotes = '* Fixed miscellaneous typos across module'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false

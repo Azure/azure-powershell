@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.HDInsight.Models.Management;
 using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
@@ -45,15 +46,18 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             var versions = new Dictionary<string, VersionsCapability> { { "key", new VersionsCapability() } };
             var vm = new Dictionary<string, VmSizesCapability> { { "key1", new VmSizesCapability() } };
             var regions = new Dictionary<string, RegionsCapability> { { "eastus", new RegionsCapability() } };
-            var propertiesResponse = new CapabilitiesResponse
+            var capabilitiesResult = new CapabilitiesResult
             {
                 Features = features,
                 Versions = versions,
                 VmSizes = vm,
                 Regions = regions
             };
-            hdinsightManagementMock.Setup(c => c.GetCapabilities(Location))
-                .Returns(propertiesResponse)
+
+            var propertiesResponse = new AzureHDInsightCapabilities(capabilitiesResult);
+
+            hdinsightManagementMock.Setup(c => c.GetProperties(Location))
+                .Returns(capabilitiesResult)
                 .Verifiable();
 
             cmdlet.ExecuteCmdlet();
@@ -62,10 +66,12 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             commandRuntimeMock.Verify(
                 f =>
                     f.WriteObject(
-                        It.Is<CapabilitiesResponse>(
+                        It.Is<AzureHDInsightCapabilities>(
                             resp =>
-                                resp.Features == features && resp.Regions == regions &&
-                                resp.Versions == versions && resp.VmSizes == vm)),
+                                resp.Features == propertiesResponse.Features
+                                && resp.Regions["eastus"].Available == propertiesResponse.Regions["eastus"].Available
+                                && resp.Versions.Count == propertiesResponse.Versions.Count 
+                                && resp.VmSizes["key1"].Available == propertiesResponse.VmSizes["key1"].Available), true),
                 Times.Once);
         }
     }

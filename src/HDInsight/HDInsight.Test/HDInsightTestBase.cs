@@ -13,6 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Hyak.Common;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
@@ -44,6 +46,9 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
 
         public virtual void SetupTestsForData()
         {
+            //This is because job test need to use ClientFactory,however scenario test will create a MockClientFactory
+            AzureSession.Instance.ClientFactory = new ClientFactory();
+
             hdinsightManagementMock = new Mock<AzureHdInsightManagementClient>();
             var cred = new BasicAuthenticationCloudCredentials { Username = "username", Password = "Password1!" };
             hdinsightJobManagementMock = new Mock<AzureHdInsightJobManagementClient>(ClusterName, cred);
@@ -53,29 +58,29 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         public virtual void SetupManagementClientForJobTests()
         {
             // Update HDInsight Management properties for Job.
-            var cluster1 = new Cluster
+            var cluster1 = new Cluster(
+                id: $"/subscriptions/{Guid.NewGuid()}/resourceGroups/{ResourceGroupName}/providers/Microsoft.HDInsight/clusters/{ClusterName}",
+                name: ClusterName)
             {
-                Id = "/subscriptions/" + Guid.NewGuid() + "/resourceGroups/" + ResourceGroupName + "/providers/Microsoft.HDInsight/clusters/" + ClusterName,
-                Name = ClusterName,
                 Location = Location,
                 Properties = new ClusterGetProperties
                 {
-                    ClusterVersion = "3.2",
+                    ClusterVersion = "3.6",
                     ClusterState = "Running",
                     ClusterDefinition = new ClusterDefinition
                     {
-                        ClusterType = ClusterType
+                        Kind = ClusterType
                     },
                     QuotaInfo = new QuotaInfo
                     {
                         CoresUsed = 24
                     },
-                    OperatingSystemType = OSType.Windows,
+                    OsType = OSType.Linux,
                     ConnectivityEndpoints = new List<ConnectivityEndpoint> { new ConnectivityEndpoint { Location = ClusterName, Name = "HTTPS" } }
                 }
             };
 
-            var listresponse = new ClusterListResponse { Clusters = new[] { cluster1 } };
+            var listresponse = new[] { cluster1 };
             hdinsightManagementMock.Setup(c => c.ListClusters())
                 .Returns(listresponse)
                 .Verifiable();
@@ -92,15 +97,12 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                 .Returns(configurationResponse)
                 .Verifiable();
 
-            var listConfigurationsResponse = new ClusterListConfigurationsResponse
+            var listConfigurationsResponse = new ClusterConfigurations
             {
-                Configurations = new Dictionary<string, ClusterConfiguration>
+                Configurations = new Dictionary<string, IDictionary<string, string>>
                 {
                     {
-                        "core-site", new ClusterConfiguration
-                        {
-                            Configuration=configurationResponse
-                        }
+                        "core-site", configurationResponse
                     }
                 }
             };

@@ -68,4 +68,32 @@
 		$config = $config | Set-AzHDInsightDefaultStorage -StorageAccountName fakedefaultaccount -StorageAccountKey DEFAULTACCOUNTKEY==
 		Assert-NotNull $config.DefaultStorageAccountName
 		Assert-NotNull $config.DefaultStorageAccountKey
+
+		#test Add-AzHDInsightComponentVersion
+		$componentName="Spark"
+		$componentVersion="2.3"
+		$config=$config | Add-AzHDInsightComponentVersion -ComponentName $componentName -ComponentVersion $componentVersion
+		Assert-AreEqual $config.ComponentVersion[$componentName] $componentVersion
+
+		#test Add-AzHDInsightClusterIdentity
+		$objectId=New-Guid
+		$certificateFilePath="testhost:/testpath/"
+		$certificatePassword="testpassword123@"
+		$aadTenantId=New-Guid
+		$config=$config | Add-AzHDInsightClusterIdentity -ObjectId $objectId -CertificateFilePath $certificateFilePath `
+		-CertificatePassword $certificatePassword -AadTenantId $aadTenantId
+		Assert-AreEqual $config.CertificatePassword $certificatePassword
+
+		#test Add-AzHDInsightSecurityProfile
+		Assert-Null $config.SecurityProfile
+		$domain = "sampledomain.onmicrosoft.com"
+		$domainUser = "sample.user@sampledomain.onmicrosoft.com"
+		$domainPassword = ConvertTo-SecureString "domainPassword" -AsPlainText -Force
+		$domainUserCredential = New-Object System.Management.Automation.PSCredential($domainUser, $domainPassword)
+		$organizationalUnitDN = "ou=testunitdn"
+		$ldapsUrls = ("ldaps://sampledomain.onmicrosoft.com:636","ldaps://sampledomain.onmicrosoft.com:389")
+		$clusterUsersGroupDNs = ("groupdn1","groupdn2")
+		$config = $config | Add-AzHDInsightSecurityProfile -Domain $domain -DomainUserCredential $domainUserCredential -OrganizationalUnitDN $organizationalUnitDN -LdapsUrls $ldapsUrls -ClusterUsersGroupDNs $clusterUsersGroupDNs 
+		Assert-AreEqual $config.SecurityProfile.Domain $domain
+		Assert-NotNull $config.SecurityProfile.LdapsUrls
     }

@@ -12,20 +12,28 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.HDInsight.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
+using Xunit.Abstractions;
 
-namespace Microsoft.Azure.Commands.HDInsight.Models.Management
+namespace Commands.HDInsight.Test.ScenarioTests
 {
-    public class AzureHDInsightOMS
+    public class HDInsightSetGatewayCredentialTest
     {
-        public AzureHDInsightOMS(ClusterMonitoringResponse operationResource)
+        public XunitTracingInterceptor _logger;
+
+        public HDInsightSetGatewayCredentialTest(ITestOutputHelper output)
         {
-            ClusterMonitoringEnabled = operationResource.ClusterMonitoringEnabled;
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
-        /// <summary>
-        /// String containing the status of OMS and the workspace id.
-        /// </summary>
-        public string ClusterMonitoringEnabled { get; set; }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetGatewayCredential()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-SetGatewayCredential");
+        }
     }
 }

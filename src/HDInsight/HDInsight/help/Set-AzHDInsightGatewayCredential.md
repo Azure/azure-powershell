@@ -216,7 +216,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.HDInsight.Models.HttpConnectivitySettings
+### Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightGatewaySettings
 
 ## NOTES
 

@@ -11,8 +11,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.HDInsight" Version="2.1.0" />
+    <PackageReference Include="Microsoft.Azure.Management.HDInsight" Version="5.1.0" />
     <PackageReference Include="Microsoft.Azure.Management.HDInsight.Job" Version="2.0.7" />
+    <PackageReference Include="Microsoft.Azure.Management.OperationalInsights" Version="0.19.0-preview" />
   </ItemGroup>
 
   <ItemGroup>

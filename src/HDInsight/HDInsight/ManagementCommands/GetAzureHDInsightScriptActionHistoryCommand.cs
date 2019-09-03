@@ -53,10 +53,10 @@ namespace Microsoft.Azure.Commands.HDInsight
 
             if (ScriptExecutionId.HasValue)
             {
-                var executionDetailResponse = HDInsightManagementClient.GetScriptExecutionDetail(ResourceGroupName, ClusterName, ScriptExecutionId.Value);
-                if (executionDetailResponse != null && executionDetailResponse.RuntimeScriptActionDetail != null)
+                var executionDetail = HDInsightManagementClient.GetScriptExecutionDetail(ResourceGroupName, ClusterName, ScriptExecutionId.Value);
+                if (executionDetail != null)
                 {
-                    result.Add(new AzureHDInsightRuntimeScriptActionDetail(executionDetailResponse.RuntimeScriptActionDetail));
+                    result.Add(new AzureHDInsightRuntimeScriptActionDetail(executionDetail));
                 }
             }
             else
