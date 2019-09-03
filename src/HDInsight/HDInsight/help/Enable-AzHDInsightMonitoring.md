@@ -27,13 +27,7 @@ The **Enable-AzHDInsightMonitoring** cmdlet enables monitoring in a Azure HDInsi
 ```
 PS C:\> Enable-AzHDInsightMonitoring -Name testcluster -WorkspaceId 1d364e89-bb71-4503-aa3d-a23535aea7bd -PrimaryKey <key for workspace 1d364e89-bb71-4503-aa3d-a23535aea7bd>
 
-ErrorInfo  :
-
-State      : Succeeded
-
-RequestId  : 1417ad86-d055-48cd-9d68-a5c19a212a3a
-
-StatusCode : OK
+True
 ```
 
 Monitoring will be enabled on the HDInsight cluster and relevant logs will be sent to the monitoring workspace with id 1d364e89-bb71-4503-aa3d-a23535aea7bd
@@ -42,13 +36,7 @@ Monitoring will be enabled on the HDInsight cluster and relevant logs will be se
 ```
 PS C:\> Enable-AzHDInsightMonitoring -Name testcluster -ResourceGroupName testrg -WorkspaceId 1d364e89-bb71-4503-aa3d-a23535aea7bd -PrimaryKey <key for workspace 1d364e89-bb71-4503-aa3d-a23535aea7bd>
 
-ErrorInfo  :
-
-State      : Succeeded
-
-RequestId  : 1417ad86-d055-48cd-9d68-a5c19a212a3a
-
-StatusCode : OK
+True
 ```
 
 Monitoring will be enabled on the HDInsight cluster and relevant logs will be sent to the monitoring workspace with id 1d364e89-bb71-4503-aa3d-a23535aea7bd
@@ -169,7 +157,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.HDInsight.Models.OperationResource
+### System.Boolean
 
 ## NOTES
 

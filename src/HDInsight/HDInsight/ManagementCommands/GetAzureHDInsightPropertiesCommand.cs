@@ -22,7 +22,6 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightProperty"),OutputType(typeof(AzureHDInsightCapabilities))]
-    [Alias("Get-AzHDInsightProperties")]
     public class GetAzureHDInsightPropertiesCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions

@@ -26,13 +26,7 @@ The **Disable-AzHDInsightMonitoring** cmdlet disables monitoring in a Azure HDIn
 ```
 PS C:\> Disable-AzHDInsightMonitoring -Name testcluster
 
-ErrorInfo  :
-
-State      : Succeeded
-
-RequestId  : 1417ad86-d055-48cd-9d68-a5c19a212a3a
-
-StatusCode : OK
+True
 ```
 
 Monitoring will be disabled on the HDInsight cluster and relevant logs will stop flowing to the monitoring workspace.
@@ -41,13 +35,7 @@ Monitoring will be disabled on the HDInsight cluster and relevant logs will stop
 ```
 PS C:\> Disable-AzHDInsightMonitoring -Name testcluster -ResourceGroupName testrg
 
-ErrorInfo  :
-
-State      : Succeeded
-
-RequestId  : 1417ad86-d055-48cd-9d68-a5c19a212a3a
-
-StatusCode : OK
+True
 ```
 
 Monitoring will be disabled on the HDInsight cluster and relevant logs will stop flowing to the monitoring workspace.
@@ -138,7 +126,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.HDInsight.Models.OperationResource
+### System.Boolean
 
 ## NOTES
 

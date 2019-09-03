@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.HDInsight.Models.Management;
 using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -69,7 +70,14 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             setcmdlet.ExecuteCmdlet();
 
             commandRuntimeMock.VerifyAll();
-            commandRuntimeMock.Verify(f => f.WriteObject(gatewaySettings), Times.Once);
+            commandRuntimeMock.Verify(
+                f => f.WriteObject(
+                    It.Is<AzureHDInsightGatewaySettings>(
+                        rsp =>
+                            rsp.IsCredentialEnabled == gatewaySettings.IsCredentialEnabled
+                            && rsp.UserName == gatewaySettings.UserName
+                            && rsp.Password == gatewaySettings.Password)),
+                Times.Once);
         }
     }
 }

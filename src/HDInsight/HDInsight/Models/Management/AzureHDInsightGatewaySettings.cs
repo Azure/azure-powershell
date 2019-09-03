@@ -13,20 +13,31 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.HDInsight.Models;
-using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models.Management
 {
-    public class AzureHDInsightRegionsCapability
+    public class AzureHDInsightGatewaySettings
     {
-        public AzureHDInsightRegionsCapability(RegionsCapability regionsCapability)
+        public AzureHDInsightGatewaySettings(GatewaySettings gatewaySettings)
         {
-            this.Available = regionsCapability?.Available;
+            this.IsCredentialEnabled = gatewaySettings.IsCredentialEnabled;
+            this.UserName = gatewaySettings.UserName;
+            this.Password = gatewaySettings.Password;
         }
 
         /// <summary>
-        /// Available region capability.
+        /// indicates whether or not the gateway settings based authorization is enabled.
         /// </summary>
-        public IList<string> Available { get; set; }
+        public string IsCredentialEnabled { get; set; }
+
+        /// <summary>
+        /// the gateway settings user name.
+        /// </summary>
+        public string UserName { get; set; }
+
+        /// <summary>
+        /// the gateway settings user password.
+        /// </summary>
+        public string Password { get; set; }
     }
 }
