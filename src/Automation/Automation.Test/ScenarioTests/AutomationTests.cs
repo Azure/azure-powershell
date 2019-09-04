@@ -79,7 +79,7 @@ namespace Commands.Automation.Test
          * 'PUT /subscriptions/d2b38167-d3ca-4d1f-a020-948eee21b6bc/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/jobs/bf922f22-eafa-4208-a6c7-55b5431a9da4?api-version=2017-05-15-preview'.
          * Calling method Item().
          */
-        [Fact]
+        [Fact(Skip = "Test does not work on playback mode due to a guid being created.")]
         [Trait(Category.Service, Category.Automation)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.AcceptanceType, Category.BVT)]
@@ -103,7 +103,7 @@ namespace Commands.Automation.Test
          * 'PUT /subscriptions/d2b38167-d3ca-4d1f-a020-948eee21b6bc/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/jobs/c326d98d-8f3c-462d-9dc4-7669dfd3fcdb?api-version=2017-05-15-preview'.
          * Calling method Item().
          */
-        [Fact]
+        [Fact(Skip = "Test does not work on playback mode due to a guid being created.")]
         [Trait(Category.Service, Category.Automation)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.AcceptanceType, Category.BVT)]
