@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.HealthcareApis.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.HealthcareApis;
 using Microsoft.Azure.Management.HealthcareApis.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Common;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -138,23 +139,9 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
                 {
                     case ServiceNameParameterSet:
                         {
-                            List<ServiceAccessPolicyEntry> accessPolicies = new List<ServiceAccessPolicyEntry>();
                             var healthcareApisAccount = this.HealthcareApisClient.Services.Get(this.ResourceGroupName, this.Name);
 
-                            if (AccessPolicyObjectId != null && AccessPolicyObjectId.Length > 0)
-                            {
-                                foreach (string objectId in AccessPolicyObjectId)
-                                {
-                                    accessPolicies.Add(new ServiceAccessPolicyEntry(objectId));
-                                }
-                            }
-                            else
-                            {
-                                foreach (ServiceAccessPolicyEntry objectId in healthcareApisAccount.Properties.AccessPolicies)
-                                {
-                                    accessPolicies.Add(objectId);
-                                }
-                            }
+                            IList<ServiceAccessPolicyEntry> accessPolicies = GetAccessPolicies(healthcareApisAccount);
 
                             ServicesDescription servicesDescription = GenerateServiceDescription(healthcareApisAccount, accessPolicies);
 
@@ -174,23 +161,10 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
                             string rgName = null;
                             string name = null;
                             ValidateAndExtractName(this.ResourceId, out rgName, out name);
+
                             var healthcareApisAccount = this.HealthcareApisClient.Services.Get(rgName, name);
 
-                            List<ServiceAccessPolicyEntry> accessPolicies = new List<ServiceAccessPolicyEntry>();
-                            if (AccessPolicyObjectId != null && AccessPolicyObjectId.Length > 0)
-                            {
-                                foreach (string objectId in AccessPolicyObjectId)
-                                {
-                                    accessPolicies.Add(new ServiceAccessPolicyEntry(objectId));
-                                }
-                            }
-                            else
-                            {
-                                foreach (ServiceAccessPolicyEntry objectId in healthcareApisAccount.Properties.AccessPolicies)
-                                {
-                                    accessPolicies.Add(objectId);
-                                }
-                            }
+                            IList<ServiceAccessPolicyEntry> accessPolicies = GetAccessPolicies(healthcareApisAccount);
 
                             ServicesDescription servicesDescription = GenerateServiceDescription(healthcareApisAccount, accessPolicies);
 
@@ -244,7 +218,25 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
             });
         }
 
-        private ServicesDescription GenerateServiceDescription(ServicesDescription healthcareApisAccount, List<ServiceAccessPolicyEntry> accessPolicies)
+        private IList<ServiceAccessPolicyEntry> GetAccessPolicies(ServicesDescription healthcareApisAccount)
+        {
+            List<ServiceAccessPolicyEntry> accessPolicies = new List<ServiceAccessPolicyEntry>();
+            if (AccessPolicyObjectId != null && AccessPolicyObjectId.Length > 0)
+            {
+                foreach (string objectId in AccessPolicyObjectId)
+                {
+                    HealthcareApisArgumentValidator.ValidateObjectId(objectId);
+                    accessPolicies.Add(new ServiceAccessPolicyEntry(objectId));
+                }
+
+                return accessPolicies;
+            }
+
+
+            return healthcareApisAccount.Properties.AccessPolicies;
+        }
+
+        private ServicesDescription GenerateServiceDescription(ServicesDescription healthcareApisAccount, IList<ServiceAccessPolicyEntry> accessPolicies)
         {
             return new ServicesDescription()
             {
@@ -271,8 +263,22 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
                     },
                     AccessPolicies = accessPolicies
                 },
-                Kind = healthcareApisAccount.Kind
+                Kind = healthcareApisAccount.Kind,
+                Tags = GetTags(healthcareApisAccount)
             };
+        }
+
+        private IDictionary<string, string> GetTags(ServicesDescription healthcareApisAccount)
+        {
+            if(this.Tag!=null && this.Tag.Count > 0)
+            {
+                Dictionary<string, string> dict = new Dictionary<string, string>();
+                foreach (DictionaryEntry kvp in this.Tag)
+                    dict.Add((string)kvp.Key, (string)kvp.Value);
+                return dict;
+            }
+
+                return healthcareApisAccount.Tags;
         }
 
         private bool? IsSmartOnFhirEnabled(bool? currentSmartOnFhirValue)
@@ -336,7 +342,8 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
                     },
                     AccessPolicies = accessPolicies
                 },
-                Kind = InputObject.Kind
+                Kind = InputObject.Kind,
+                Tags = InputObject.Tags
             };
         }
     }

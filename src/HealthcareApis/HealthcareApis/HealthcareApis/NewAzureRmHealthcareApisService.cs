@@ -23,6 +23,7 @@ using Microsoft.Azure.Commands.HealthcareApis.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.HealthcareApis.Properties;
 using System;
+using Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Common;
 
 namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 {
@@ -95,7 +96,6 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
         [ValidateNotNullOrEmpty]
         public string[] CorsHeader { get; set; }
 
-
         [Parameter(
             Mandatory = false,
             HelpMessage = "HealthcareApis Fhir Service Cors Max Age. Specify how long a result from a request can be cached in seconds. Example: 600 means 10 minutes.")]
@@ -153,18 +153,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
 
             RunCmdLet(() =>
             {
-                if (AccessPolicyObjectId == null || AccessPolicyObjectId.Length == 0)
-                {
-                    AccessPolicyObjectId = new string[1];
-                    string objectID = base.AccessPolicyID;
-                    AccessPolicyObjectId[0] = objectID;
-                }
-
-                List<ServiceAccessPolicyEntry> accessPolicies = new List<ServiceAccessPolicyEntry>();
-                foreach (string objectId in AccessPolicyObjectId)
-                {
-                    accessPolicies.Add(new ServiceAccessPolicyEntry(objectId));
-                }
+                List<ServiceAccessPolicyEntry> accessPolicies = GetAccessPolicies();
 
                 ServicesDescription servicesDescription = new ServicesDescription()
                 {
@@ -203,6 +192,26 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
                     }
                 }
             });
+        }
+
+        private List<ServiceAccessPolicyEntry> GetAccessPolicies()
+        {
+            List<ServiceAccessPolicyEntry> accessPolicies = new List<ServiceAccessPolicyEntry>();
+
+            if (AccessPolicyObjectId == null || AccessPolicyObjectId.Length == 0)
+            {
+                string objectID = base.AccessPolicyID;
+                accessPolicies.Add(new ServiceAccessPolicyEntry(objectID));
+                return accessPolicies;
+            }
+
+            foreach (var objectID in AccessPolicyObjectId)
+            {
+                HealthcareApisArgumentValidator.ValidateObjectId(objectID);
+                accessPolicies.Add(new ServiceAccessPolicyEntry(objectID));
+            }
+
+            return accessPolicies;
         }
 
         private Kind GetKind()
