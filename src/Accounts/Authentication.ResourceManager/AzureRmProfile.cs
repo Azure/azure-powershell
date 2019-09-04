@@ -58,10 +58,27 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         {
             get
             {
+                if (AzureSession.Instance != null && AzureSession.Instance.ARMContextSaveMode == "CurrentUser")
+                {
+                    // If context autosave is enabled, try reading from the cache, updating the contexts, and writing them out
+                    RefreshContextsFromCache();
+                }
+
                 IAzureContext result = null;
+                if (DefaultContextKey == "Default" && Contexts.Any(c => c.Key != "Default"))
+                {
+                    // If the default context is "Default", but there are other contexts set, remove the "Default" context to throw the below exception
+                    TryRemoveContext("Default");
+                }
+
                 if (!string.IsNullOrEmpty(DefaultContextKey) && Contexts != null && Contexts.ContainsKey(DefaultContextKey))
                 {
                     result = this.Contexts[DefaultContextKey];
+                }
+                else if (DefaultContextKey == null)
+                {
+                    throw new InvalidOperationException("The default context can no longer be found; please run `Get-AzContext -ListAvailable` to see all available contexts, " +
+                                                        "'Select-AzContext' to select a new default context, or 'Connect-AzAccount' to login with a new account.");
                 }
 
                 return result;
@@ -188,7 +205,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                     this.Contexts.Add(context.Key, context.Value);
                 }
 
-                DefaultContextKey = profile.DefaultContextKey ?? "Default";
+                DefaultContextKey = profile.DefaultContextKey ?? (profile.Contexts.Any() ? null : "Default");
             }
         }
 
@@ -424,7 +441,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             bool result = Contexts.Remove(name);
             if (string.Equals(name, DefaultContextKey))
             {
-                DefaultContextKey = Contexts.Keys.FirstOrDefault() ?? "Default";
+                DefaultContextKey = Contexts.Keys.Any() ? null : "Default";
             }
 
             return result;
@@ -630,6 +647,134 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             }
 
             return result;
+        }
+
+        private void WriteWarning(string message)
+        {
+            EventHandler<StreamEventArgs> writeWarningEvent;
+            if (AzureSession.Instance.TryGetComponent(AzureRMCmdlet.WriteWarningKey, out writeWarningEvent))
+            {
+                writeWarningEvent(this, new StreamEventArgs() { Message = message });
+            }
+        }
+
+        private void RefreshContextsFromCache()
+        {
+            var authenticationClientFactory = new SharedTokenCacheClientFactory();
+            var accounts = authenticationClientFactory.ListAccounts();
+            if (!accounts.Any())
+            {
+                if (!Contexts.Any(c => c.Key != "Default" && c.Value.Account.Type == AzureAccount.AccountType.User))
+                {
+                    // If there are no accounts in the cache, but we never had any existing contexts, return
+                    return;
+                }
+
+                WriteWarning($"No accounts found in the shared token cache; removing all user contexts.");
+                var removedContext = false;
+                foreach (var contextName in Contexts.Keys)
+                {
+                    var context = Contexts[contextName];
+                    if (context.Account.Type != AzureAccount.AccountType.User)
+                    {
+                        continue;
+                    }
+
+                    removedContext |= TryRemoveContext(contextName);
+                }
+
+                // If no contexts were removed, return now to avoid writing to file later
+                if (!removedContext)
+                {
+                    return;
+                }
+            }
+            else
+            {
+                var removedUsers = new HashSet<string>();
+                var updatedContext = false;
+                foreach (var contextName in Contexts.Keys)
+                {
+                    var context = Contexts[contextName];
+                    if ((string.Equals(contextName, "Default") && context.Account == null) || context.Account.Type != AzureAccount.AccountType.User)
+                    {
+                        continue;
+                    }
+
+                    if (accounts.Any(a => string.Equals(a.Username, context.Account.Id, StringComparison.OrdinalIgnoreCase)))
+                    {
+                        continue;
+                    }
+
+                    if (!removedUsers.Contains(context.Account.Id))
+                    {
+                        removedUsers.Add(context.Account.Id);
+                        WriteWarning($"User '{context.Account.Id}' was not found in the shared token cache; removing all contexts with this user.");
+                    }
+
+                    updatedContext |= TryRemoveContext(contextName);
+                }
+
+                // Check to see if each account has at least one context
+                foreach (var account in accounts)
+                {
+                    if (Contexts.Values.Where(v => v.Account != null && v.Account.Type == AzureAccount.AccountType.User )
+                                       .Any(v => string.Equals(v.Account.Id, account.Username, StringComparison.OrdinalIgnoreCase)))
+                    {
+                        continue;
+                    }
+
+                    WriteWarning($"Creating context for each subscription accessible by account '{account.Username}'.");
+                    var environment = AzureEnvironment.PublicEnvironments
+                                        .Where(env => env.Value.ActiveDirectoryAuthority.Contains(account.Environment))
+                                        .Select(env => env.Value)
+                                        .FirstOrDefault();
+                    var azureAccount = new AzureAccount()
+                    {
+                        Id = account.Username,
+                        Type = AzureAccount.AccountType.User
+                    };
+
+                    var tokens = authenticationClientFactory.GetTenantTokensForAccount(account, WriteWarning);
+                    foreach (var token in tokens)
+                    {
+                        var azureTenant = new AzureTenant() { Id = token.TenantId };
+                        azureAccount.SetOrAppendProperty(AzureAccount.Property.Tenants, token.TenantId);
+                        var subscriptions = authenticationClientFactory.GetSubscriptionsFromTenantToken(account, token, WriteWarning);
+                        if (!subscriptions.Any())
+                        {
+                            subscriptions.Add(null);
+                        }
+
+                        foreach (var subscription in subscriptions)
+                        {
+                            var context = new AzureContext(subscription, azureAccount, environment, azureTenant);
+                            if (!TryGetContextName(context, out string name))
+                            {
+                                WriteWarning($"Unable to get context name for subscription with id '{subscription.Id}'.");
+                                continue;
+                            }
+
+                            if (!TrySetContext(name, context))
+                            {
+                                WriteWarning($"Cannot create a context for subscription with id '{subscription.Id}'.");
+                            }
+                            else
+                            {
+                                updatedContext = true;
+                            }
+                        }
+                    }
+                }
+
+                // If the context list was not updated, return now to avoid writing to file later
+                if (!updatedContext)
+                {
+                    return;
+                }
+            }
+
+            Save(ProfilePath);
         }
     }
 }
