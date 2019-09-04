@@ -38,19 +38,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
     public class RMProfileClient
     {
         private IProfileOperations _profile;
-        private IAzureTokenCache _cache;
         public Action<string> WarningLog;
 
         public RMProfileClient(IProfileOperations profile)
         {
             _profile = profile;
-            var context = _profile.DefaultContext;
-            _cache = AzureSession.Instance.TokenCache;
-            if (_profile != null && context != null &&
-                context.TokenCache != null)
-            {
-                _cache = context.TokenCache;
-            }
         }
 
         /// <summary>
@@ -110,7 +102,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             bool skipValidation,
             Action<string> promptAction,
             string name = null,
-            bool shouldPopulateContextList = true)
+            bool? shouldPopulateContextList = null)
         {
             IAzureSubscription newSubscription = null;
             IAzureTenant newTenant = null;
@@ -252,7 +244,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 }
             }
 
-            shouldPopulateContextList &= _profile.DefaultContext?.Account == null;
+            var populateContextList = true;
+            try
+            {
+                populateContextList = shouldPopulateContextList ?? _profile.DefaultContext?.Account == null;
+            }
+            catch (InvalidOperationException) { }
+
             if (newSubscription == null)
             {
                 if (subscriptionId != null)
@@ -286,8 +284,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 }
             }
 
-            _profile.DefaultContext.TokenCache = _cache;
-            if (shouldPopulateContextList)
+            if (populateContextList)
             {
                 var defaultContext = _profile.DefaultContext;
                 var subscriptions = ListSubscriptions(tenantId).Take(25);
@@ -299,7 +296,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     };
 
                     var tempContext = new AzureContext(subscription, account, environment, tempTenant);
-                    tempContext.TokenCache = _cache;
                     string tempName = null;
                     if (!_profile.TryGetContextName(tempContext, out tempName))
                     {
@@ -527,8 +523,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 tenantId,
                 password,
                 promptBehavior,
-                promptAction,
-                _cache);
+                promptAction);
         }
 
         private bool TryGetTenantSubscription(IAccessToken accessToken,
@@ -700,7 +695,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 }
                 if (!result.Any())
                 {
-                    throw;
+                    throw new RuntimeException("Error occurred when attempting to acquire the common tenant token. Please run 'Connect-AzAccount` again to authenticate.");
                 }
 
             }

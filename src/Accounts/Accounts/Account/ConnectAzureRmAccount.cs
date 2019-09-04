@@ -27,6 +27,9 @@ using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.PowerShell.Authenticators;
+using System.IO;
+using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -54,6 +57,8 @@ namespace Microsoft.Azure.Commands.Profile
         [ValidateNotNullOrEmpty]
         public string Environment { get; set; }
 
+        [Parameter(ParameterSetName = UserParameterSet,
+                    Mandatory = false, HelpMessage = "Optional credential")]
         [Parameter(ParameterSetName = ServicePrincipalParameterSet,
                     Mandatory = true, HelpMessage = "Service Principal Secret")]
         [Parameter(ParameterSetName = UserWithCredentialParameterSet,
@@ -241,7 +246,7 @@ namespace Microsoft.Azure.Commands.Profile
                         ? builder.Uri.ToString()
                         : envUri;
 
-                    if (!this.IsBound(nameof(ManagedServiceHostName)) && !string.IsNullOrWhiteSpace(envUri) 
+                    if (!this.IsBound(nameof(ManagedServiceHostName)) && !string.IsNullOrWhiteSpace(envUri)
                         && !this.IsBound(nameof(ManagedServiceSecret)) && !string.IsNullOrWhiteSpace(envSecret))
                     {
                         // set flag indicating this is AppService Managed Identity ad hoc mode
@@ -322,6 +327,12 @@ namespace Microsoft.Azure.Commands.Profile
 
                 SetContextWithOverwritePrompt((localProfile, profileClient, name) =>
                {
+                   bool? skipContextPopulationList = null;
+                   if (this.IsParameterBound(c => c.SkipContextPopulation))
+                   {
+                       skipContextPopulationList = false;
+                   }
+
                    WriteObject((PSAzureProfile)profileClient.Login(
                         azureAccount,
                         _environment,
@@ -332,7 +343,7 @@ namespace Microsoft.Azure.Commands.Profile
                         SkipValidation,
                         WriteWarning,
                         name,
-                        !SkipContextPopulation.IsPresent));
+                        skipContextPopulationList));
                });
             }
         }
@@ -388,7 +399,7 @@ namespace Microsoft.Azure.Commands.Profile
                 }
 
                 InitializeProfileProvider(autoSaveEnabled);
-                IServicePrincipalKeyStore keyStore =
+                    IServicePrincipalKeyStore keyStore =
 // TODO: Remove IfDef
 #if NETSTANDARD
                     new AzureRmServicePrincipalKeyStore(AzureRmProfileProvider.Instance.Profile);
@@ -396,6 +407,24 @@ namespace Microsoft.Azure.Commands.Profile
                     new AzureRmServicePrincipalKeyStore();
 #endif
                 AzureSession.Instance.RegisterComponent(ServicePrincipalKeyStore.Name, () => keyStore);
+
+                IAuthenticatorBuilder builder = null;
+                if (!AzureSession.Instance.TryGetComponent(AuthenticatorBuilder.AuthenticatorBuilderKey, out builder))
+                {
+                    builder = new DefaultAuthenticatorBuilder();
+                    AzureSession.Instance.RegisterComponent(AuthenticatorBuilder.AuthenticatorBuilderKey, () => builder);
+                }
+
+                if (autoSaveEnabled)
+                {
+                    AuthenticationClientFactory factory = new SharedTokenCacheClientFactory();
+                    AzureSession.Instance.RegisterComponent(AuthenticationClientFactory.AuthenticationClientFactoryKey, () => factory);
+                }
+                else
+                {
+                    AuthenticationClientFactory factory = new InMemoryTokenCacheClientFactory();
+                    AzureSession.Instance.RegisterComponent(AuthenticationClientFactory.AuthenticationClientFactoryKey, () => factory);
+                }
 #if DEBUG
             }
             catch (Exception) when (TestMockSupport.RunningMocked)

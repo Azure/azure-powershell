@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using Microsoft.Azure.Commands.Profile.Properties;
@@ -43,7 +44,11 @@ namespace Microsoft.Azure.Commands.Profile.Common
         {
             using (var profile = GetDefaultProfile())
             {
-                contextAction(profile.ToProfile(), new RMProfileClient(profile));
+                var client = new RMProfileClient(profile)
+                {
+                    WarningLog = (s) => WriteWarning(s)
+                };
+                contextAction(profile.ToProfile(), client);
             }
         }
 
@@ -194,5 +199,41 @@ namespace Microsoft.Azure.Commands.Profile.Common
             return result;
         }
 
+        protected override void BeginProcessing()
+        {
+            InitializeEventHandlers();
+        }
+
+        private event EventHandler<StreamEventArgs> _writeDebugEvent;
+        private event EventHandler<StreamEventArgs> _writeVerboseEvent;
+        private event EventHandler<StreamEventArgs> _writeWarningEvent;
+
+        private void InitializeEventHandlers()
+        {
+            _writeDebugEvent -= WriteDebugSender;
+            _writeDebugEvent += WriteDebugSender;
+            _writeVerboseEvent -= WriteVerboseSender;
+            _writeVerboseEvent += WriteVerboseSender;
+            _writeWarningEvent -= WriteWarningSender;
+            _writeWarningEvent += WriteWarningSender;
+            AzureSession.Instance.RegisterComponent(WriteDebugKey, () => _writeDebugEvent);
+            AzureSession.Instance.RegisterComponent(WriteVerboseKey, () => _writeVerboseEvent);
+            AzureSession.Instance.RegisterComponent(WriteWarningKey, () => _writeWarningEvent);
+        }
+
+        private void WriteDebugSender(object sender, StreamEventArgs args)
+        {
+            WriteDebug(args.Message);
+        }
+
+        private void WriteVerboseSender(object sender, StreamEventArgs args)
+        {
+            WriteVerbose(args.Message);
+        }
+
+        private void WriteWarningSender(object sender, StreamEventArgs args)
+        {
+            WriteWarning(args.Message);
+        }
     }
 }

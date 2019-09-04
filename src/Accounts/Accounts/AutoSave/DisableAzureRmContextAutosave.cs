@@ -24,6 +24,8 @@ using Microsoft.WindowsAzure.Commands.Common;
 using Newtonsoft.Json;
 using System.IO;
 using System.Management.Automation;
+using Microsoft.Identity.Client;
+using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
 
 namespace Microsoft.Azure.Commands.Profile.Context
 {
@@ -80,14 +82,17 @@ namespace Microsoft.Azure.Commands.Profile.Context
             {
                 var diskCache = session.TokenCache as ProtectedFileTokenCache;
                 memoryCache = new AuthenticationStoreTokenCache(new AzureTokenCache());
-                if (diskCache != null && diskCache.Count > 0)
+                if (diskCache != null)
                 {
-                    memoryCache.Deserialize(diskCache.Serialize());
+                    memoryCache.CacheData = diskCache.CacheData;
                 }
 
                 session.TokenCache = memoryCache;
             }
 
+            AuthenticationClientFactory authenticationClientFactory = new InMemoryTokenCacheClientFactory(cacheToMigratePath: SharedTokenCacheClientFactory.CacheFilePath);
+            AzureSession.Instance.UnregisterComponent<AuthenticationClientFactory>(AuthenticationClientFactory.AuthenticationClientFactoryKey);
+            AzureSession.Instance.RegisterComponent(AuthenticationClientFactory.AuthenticationClientFactoryKey, () => authenticationClientFactory);
             if (writeAutoSaveFile)
             {
                 FileUtilities.EnsureDirectoryExists(session.ProfileDirectory);

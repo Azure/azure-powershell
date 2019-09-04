@@ -25,6 +25,7 @@ using System;
 using System.Linq;
 using System.Collections.ObjectModel;
 using Microsoft.Azure.Commands.Profile.Properties;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -43,7 +44,14 @@ namespace Microsoft.Azure.Commands.Profile
         {
             get
             {
-                if (DefaultProfile == null || DefaultProfile.DefaultContext == null)
+                try
+                {
+                    if (DefaultProfile == null || DefaultProfile.DefaultContext == null)
+                    {
+                        return null;
+                    }
+                }
+                catch (InvalidOperationException)
                 {
                     return null;
                 }
@@ -55,15 +63,20 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(Mandatory =true, ParameterSetName = ListAllParameterSet, HelpMessage ="List all available contexts in the current session.")]
         public SwitchParameter ListAvailable { get; set; }
 
+        protected override void BeginProcessing()
+        {
+            // Skip BeginProcessing()
+        }
+
         public override void ExecuteCmdlet()
         {
             // If no context is found, return
-            if (DefaultContext == null)
+            if (DefaultContext == null && !this.IsParameterBound(c => c.ListAvailable))
             {
                 return;
             }
 
-            if (ListAvailable.IsPresent)
+            if (this.IsParameterBound(c => c.ListAvailable))
             {
                 var profile = DefaultProfile as AzureRmProfile;
                 if (profile != null && profile.Contexts != null)

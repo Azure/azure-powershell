@@ -22,9 +22,9 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System.IO;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
 
 namespace Microsoft.Azure.Commands.Profile.Context
 {
@@ -50,10 +50,10 @@ namespace Microsoft.Azure.Commands.Profile.Context
 
                     break;
                 case ContextModificationScope.CurrentUser:
-                    ConfirmAction(Force.IsPresent, Resources.ClearContextUserContinueMessage, 
-                        Resources.ClearContextUserProcessMessage, Resources.ClearContextUserTarget, 
+                    ConfirmAction(Force.IsPresent, Resources.ClearContextUserContinueMessage,
+                        Resources.ClearContextUserProcessMessage, Resources.ClearContextUserTarget,
                         () => ModifyContext(ClearContext),
-                        () => 
+                        () =>
                         {
                             var session = AzureSession.Instance;
                             var contextFilePath = Path.Combine(session.ARMProfileDirectory, session.ARMProfileFile);
@@ -74,39 +74,18 @@ namespace Microsoft.Azure.Commands.Profile.Context
                     client.TryRemoveContext(context);
                 }
 
-                var defaultContext = new AzureContext();
-                var cache = AzureSession.Instance.TokenCache;
-                if (GetContextModificationScope() == ContextModificationScope.CurrentUser)
+                AuthenticationClientFactory authenticationClientFactory;
+                if (!AzureSession.Instance.TryGetComponent(AuthenticationClientFactory.AuthenticationClientFactoryKey, out authenticationClientFactory))
                 {
-                    var fileCache = cache as ProtectedFileTokenCache;
-                    if (fileCache == null)
-                    {
-                        try
-                        {
-                            var session = AzureSession.Instance;
-                            fileCache = new ProtectedFileTokenCache(Path.Combine(session.TokenCacheDirectory, session.TokenCacheFile), session.DataStore);
-                            fileCache.Clear();
-                        }
-                        catch
-                        {
-                            // ignore exceptions from creating a token cache
-                        }
-                    }
-
-                    cache.Clear();
+                    WriteWarning("No authentication client factory has been registered, unable to clear the cache.");
                 }
                 else
                 {
-                    var localCache = cache as AuthenticationStoreTokenCache;
-                    if (localCache != null)
-                    {
-                        localCache.Clear();
-                    }
+                    authenticationClientFactory.ClearCache();
+                    var defaultContext = new AzureContext();
+                    profile.TrySetDefaultContext(defaultContext);
+                    result = true;
                 }
-
-                defaultContext.TokenCache = cache;
-                profile.TrySetDefaultContext(defaultContext);
-                result = true;
             }
 
             if (PassThru.IsPresent)
