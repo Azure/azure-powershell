@@ -21,6 +21,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Common;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -160,14 +161,36 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Common
         {
             using (IEnumerator<ServicesDescription> sdenumerator = fhirServiceApps.GetEnumerator())
             {
-                var newpne = new List<PSHealthcareApisService>();
+                var fhirServiceList = new List<PSHealthcareApisService>();
                 while (sdenumerator.MoveNext())
                 {
                     PSHealthcareApisService psHealthCareFhirService = ToPSFhirService(sdenumerator.Current);
-                    newpne.Add(psHealthCareFhirService);
+                    fhirServiceList.Add(psHealthCareFhirService);
                 }
 
-                return newpne;
+                return fhirServiceList;
+            }
+        }
+
+        public static ErrorRecord WriteErrorforBadrequest(ErrorDetailsException ex)
+        {
+            if (ex != null && !string.IsNullOrEmpty(ex.Response.Content))
+            {
+                ErrorDetailsInternal errorExtract = new ErrorDetailsInternal();
+                errorExtract = JsonConvert.DeserializeObject<ErrorDetailsInternal>(ex.Response.Content);
+                if (!string.IsNullOrEmpty(errorExtract.Message))
+                {
+                    return new ErrorRecord(ex, errorExtract.Message, ErrorCategory.OpenError, ex);
+                }
+                else
+                {
+                    return new ErrorRecord(ex, ex.Response.Content, ErrorCategory.OpenError, ex);
+                }
+            }
+            else
+            {
+                Exception emptyEx = new Exception("Response object empty");
+                return new ErrorRecord(emptyEx, "Response object was empty", ErrorCategory.OpenError, emptyEx);
             }
         }
     }
