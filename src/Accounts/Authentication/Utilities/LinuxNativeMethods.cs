@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,24 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Runtime.InteropServices;
-using System.Windows.Forms;
 
-namespace Microsoft.Azure.PowerShell.Authenticators
+namespace Microsoft.Azure.Commands.Common.Authentication
 {
-    /// <summary>
-    /// An implementation of <see cref="IWin32Window"/> that gives the
-    /// windows handle for the current console window.
-    /// </summary>
-    public class ConsoleParentWindow : IWin32Window
+    internal static class LinuxNativeMethods
     {
-        public IntPtr Handle { get { return NativeMethods.GetConsoleWindow(); } }
+        public const int RootUserId = 0;
 
-        static class NativeMethods
-        {
-            [DllImport("kernel32.dll")]
-            public static extern IntPtr GetConsoleWindow();
-        }
+        /// <summary>
+        /// Get the real user ID of the calling process.
+        /// </summary>
+        /// <returns>the real user ID of the calling process</returns>
+        [DllImport("libc")]
+        public static extern int getuid();
     }
 }

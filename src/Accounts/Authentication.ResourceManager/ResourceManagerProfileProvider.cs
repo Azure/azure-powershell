@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Core;
 #endif
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.Identity.Client;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
@@ -40,10 +40,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         public override void SetTokenCacheForProfile(IAzureContextContainer profile)
         {
             base.SetTokenCacheForProfile(profile);
-            var cache = new AuthenticationStoreTokenCache(TokenCache.DefaultShared);
+            var cache = new AuthenticationStoreTokenCache(new TokenCache());
             if (profile.HasTokenCache())
             {
-                cache.Deserialize(profile.GetTokenCache().CacheData);
+                cache.CacheData = profile.GetTokenCache().CacheData;
             }
 
             AzureSession.Instance.TokenCache = cache;

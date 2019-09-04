@@ -24,6 +24,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Internal.Subscriptions;
 using Microsoft.Azure.Internal.Subscriptions.Models;
+using Microsoft.Identity.Client;
 using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -152,9 +153,9 @@ namespace Common.Authentication.Test
                         FileUtilities.EnsureDirectoryExists(session.TokenCacheDirectory);
 
                         diskCache = new ProtectedFileTokenCache(tokenPath, store);
-                        if (memoryCache != null && memoryCache.Count > 0)
+                        if (memoryCache != null)
                         {
-                            diskCache.Deserialize(memoryCache.Serialize());
+                            diskCache.CacheData = memoryCache.CacheData;
                         }
 
                         session.TokenCache = diskCache;

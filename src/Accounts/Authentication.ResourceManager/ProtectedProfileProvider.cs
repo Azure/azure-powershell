@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Core;
 #endif
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.Identity.Client;
 using System.IO;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             session.TokenCache = cache;
             if (profile.HasTokenCache())
             {
-                cache.Deserialize(profile.GetTokenCache().CacheData);
+                cache.CacheData = profile.GetTokenCache().CacheData;
             }
 
             profile.SetTokenCache(cache);

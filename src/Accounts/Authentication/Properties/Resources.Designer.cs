@@ -151,6 +151,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No authentication client factory has been registered, please try to re-authenticate using Connect-AzAccount..
+        /// </summary>
+        public static string AuthenticationClientFactoryNotRegistered {
+            get {
+                return ResourceManager.GetString("AuthenticationClientFactoryNotRegistered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to .Azure.
         /// </summary>
         public static string AzureDirectoryName {
@@ -619,7 +628,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [Common.Authentication]: Acquiring token using context with Authority &apos;{0}&apos;, CorrelationId: &apos;{1}&apos;, ValidateAuthority: &apos;{2}&apos;.
+        ///   Looks up a localized string similar to [Common.Authentication]: Acquiring token using context with Authority &apos;{0}&apos;, ClientId: &apos;{1}&apos;.
         /// </summary>
         public static string UPNAcquireTokenContextTrace {
             get {
@@ -664,7 +673,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [Common.Authentication]: User info for token DisplayId: &apos;{0}&apos;, Name: {2} {1}, IdProvider: &apos;{3}&apos;, Uid: &apos;{4}&apos;.
+        ///   Looks up a localized string similar to [Common.Authentication]: User info for token Username: &apos;{0}&apos;, HomeAccountId: {1}, Environment: &apos;{2}&apos;, Uid: &apos;{3}&apos;.
         /// </summary>
         public static string UPNRenewTokenUserInfoTrace {
             get {

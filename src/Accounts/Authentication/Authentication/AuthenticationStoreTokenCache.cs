@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.Identity.Client;
 using System;
 using System.Threading;
 
@@ -24,19 +24,42 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 #endif
 {
     [Serializable]
-    public class AuthenticationStoreTokenCache : TokenCache, IAzureTokenCache, IDisposable
+    public class AuthenticationStoreTokenCache : IAzureTokenCache, IDisposable
     {
+        private object _tokenCache;
+
+        public object GetUserCache()
+        {
+            if (_tokenCache == null)
+            {
+                var tokenCache = new TokenCache();
+                tokenCache.SetBeforeAccess(HandleBeforeAccess);
+                tokenCache.SetAfterAccess(HandleAfterAccess);
+                _tokenCache = tokenCache;
+            }
+
+            return _tokenCache;
+        }
+
+        private TokenCache UserCache
+        {
+            get
+            {
+                return (TokenCache)GetUserCache();
+            }
+        }
+
         IAzureTokenCache _store = new AzureTokenCache();
         public byte[] CacheData
         {
             get
             {
-               return Serialize();
+                return _store.CacheData;
             }
 
             set
             {
-                this.Deserialize(value);
+                _store.CacheData = value;
             }
         }
 
@@ -52,7 +75,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 CacheData = store.CacheData;
             }
 
-            AfterAccess += HandleAfterAccess;
+            UserCache.SetBeforeAccess(HandleBeforeAccess);
+            UserCache.SetAfterAccess(HandleAfterAccess);
         }
 
         /// <summary>
@@ -67,15 +91,20 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 throw new ArgumentNullException("Cache");
             }
 
-            CacheData = cache.Serialize();
-            AfterAccess += HandleAfterAccess;
+            UserCache.SetBeforeAccess(HandleBeforeAccess);
+            UserCache.SetAfterAccess(HandleAfterAccess);
+        }
+
+        public void HandleBeforeAccess(TokenCacheNotificationArgs args)
+        {
+            args.TokenCache.DeserializeMsalV3(_store.CacheData);
         }
 
         public void HandleAfterAccess(TokenCacheNotificationArgs args)
         {
-            if (HasStateChanged)
+            if (args.HasStateChanged)
             {
-                _store.CacheData = Serialize();
+                _store.CacheData = args.TokenCache.SerializeMsalV3();
             }
         }
 
@@ -86,7 +115,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 var cache = Interlocked.Exchange(ref _store, null);
                 if (cache != null)
                 {
-                    cache.CacheData = Serialize();
+                    cache.CacheData = new byte[] { };
                 }
             }
         }
@@ -94,6 +123,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         public void Dispose()
         {
             Dispose(true);
+        }
+
+        public void Clear()
+        {
+            _tokenCache = null;
         }
     }
 }
