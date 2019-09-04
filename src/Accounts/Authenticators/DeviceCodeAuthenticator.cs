@@ -13,34 +13,48 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.IO;
-using System.Security;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Identity.Client;
 
 namespace Microsoft.Azure.PowerShell.Authenticators
 {
-    /// <summary>
-    /// Authenticate username + password scenarios
-    /// </summary>
-    public class UsernamePasswordAuthenticator : DelegatingAuthenticator
+    public class DeviceCodeAuthenticator : DelegatingAuthenticator
     {
         public override Task<IAccessToken> Authenticate(AuthenticationParameters parameters)
         {
-            var upParameters = parameters as UsernamePasswordParameters;
-            var scopes = new string[] { string.Format(AuthenticationHelpers.DefaultScope, upParameters.ResourceEndpoint) };
+            var cancellationTokenSource = new CancellationTokenSource();
+            var scopes = new string[] { string.Format(AuthenticationHelpers.DefaultScope, parameters.ResourceEndpoint) };
             var clientId = AuthenticationHelpers.PowerShellClientId;
             var authority = AuthenticationHelpers.GetAuthority(parameters.Environment, parameters.TenantId);
             var publicClient = _authenticationClientFactory.CreatePublicClient(clientId: clientId, authority: authority);
-            var response = publicClient.AcquireTokenByUsernamePassword(scopes, upParameters.UserId, upParameters.Password).ExecuteAsync();
+            var response = GetResponseAsync(publicClient, scopes, cancellationTokenSource.Token);
             return AuthenticationResultToken.GetAccessTokenAsync(response);
+        }
+
+        public async Task<AuthenticationResult> GetResponseAsync(IPublicClientApplication client, string[] scopes, CancellationToken cancellationToken)
+        {
+            return await client.AcquireTokenWithDeviceCode(scopes, deviceCodeResult =>
+            {
+                WriteWarning(deviceCodeResult?.Message);
+                return Task.FromResult(0);
+            }).ExecuteAsync(cancellationToken);
         }
 
         public override bool CanAuthenticate(AuthenticationParameters parameters)
         {
-            return parameters is UsernamePasswordParameters;
+            return parameters is DeviceCodeParameters;
+        }
+
+        private void WriteWarning(string message)
+        {
+            if (AzureSession.Instance.TryGetComponent(AzureRMCmdlet.WriteWarningKey, out EventHandler<StreamEventArgs> writeWarningEvent))
+            {
+                writeWarningEvent(this, new StreamEventArgs() { Message = message });
+            }
         }
     }
 }

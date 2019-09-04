@@ -13,11 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Security;
+using System.IO;
+using System.Net;
+using System.Net.Sockets;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.Identity.Client;
+using Microsoft.Identity.Client.Extensibility;
 
 namespace Microsoft.Azure.PowerShell.Authenticators
 {
@@ -26,23 +29,56 @@ namespace Microsoft.Azure.PowerShell.Authenticators
     /// </summary>
     public class InteractiveUserAuthenticator : DelegatingAuthenticator
     {
-        public async override Task<IAccessToken> Authenticate(IAzureAccount account, IAzureEnvironment environment, string tenant, SecureString password, string promptBehavior, Task<Action<string>> promptAction, IAzureTokenCache tokenCache, string resourceId)
+        public override Task<IAccessToken> Authenticate(AuthenticationParameters parameters)
         {
-            var auth = new AuthenticationContext(AuthenticationHelpers.GetAuthority(environment, tenant), environment?.OnPremise ?? true, tokenCache as TokenCache ?? TokenCache.DefaultShared);
-            var response = await auth.AcquireTokenAsync(
-                environment.GetEndpoint(resourceId), 
-                AuthenticationHelpers.PowerShellClientId, 
-                new Uri(AuthenticationHelpers.PowerShellRedirectUri), 
-                new PlatformParameters(AuthenticationHelpers.GetPromptBehavior(promptBehavior), new ConsoleParentWindow()), 
-                UserIdentifier.AnyUser, 
-                AuthenticationHelpers.EnableEbdMagicCookie);
-            account.Id = response?.UserInfo?.DisplayableId;
-            return AuthenticationResultToken.GetAccessToken(response);
+            var interactiveParameters = parameters as InteractiveParameters;
+            IPublicClientApplication publicClient = null;
+            var scopes = new string[] { string.Format(AuthenticationHelpers.DefaultScope, parameters.ResourceEndpoint) };
+            TcpListener listener = null;
+            var replyUrl = string.Empty;
+            var port = 8399;
+            try
+            {
+                while (++port < 9000)
+                {
+                    try
+                    {
+                        listener = new TcpListener(IPAddress.Loopback, port);
+                        listener.Start();
+                        replyUrl = string.Format("http://localhost:{0}", port);
+                        listener.Stop();
+                        break;
+                    }
+                    catch (Exception ex)
+                    {
+                        interactiveParameters.PromptAction(string.Format("Port {0} is taken with exception '{1}'; trying to connect to the next port.", port, ex.Message));
+                        listener?.Stop();
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(replyUrl))
+                {
+                    var clientId = AuthenticationHelpers.PowerShellClientId;
+                    var authority = AuthenticationHelpers.GetAuthority(parameters.Environment, parameters.TenantId);
+                    publicClient = _authenticationClientFactory.CreatePublicClient(clientId: clientId, authority: authority, redirectUri: replyUrl);
+
+                    var interactiveResponse = publicClient.AcquireTokenInteractive(scopes)
+                        .WithCustomWebUi(new CustomWebUi(interactiveParameters.PromptAction))
+                        .ExecuteAsync();
+                    return AuthenticationResultToken.GetAccessTokenAsync(interactiveResponse);
+                }
+            }
+            catch
+            {
+                interactiveParameters.PromptAction("Unable to authenticate using interactive login. Defaulting back to device code flow.");
+            }
+
+            return null;
         }
 
-        public override bool CanAuthenticate(IAzureAccount account, IAzureEnvironment environment, string tenant, SecureString password, string promptBehavior, Task<Action<string>> promptAction, IAzureTokenCache tokenCache, string resourceId)
+        public override bool CanAuthenticate(AuthenticationParameters parameters)
         {
-            return (account?.Type == AzureAccount.AccountType.User && environment != null && !string.IsNullOrWhiteSpace(tenant) && password == null && promptBehavior != ShowDialog.Never && tokenCache != null  && account != null && !account.IsPropertySet("UseDeviceAuth"));
+            return parameters is InteractiveParameters;
         }
     }
 }

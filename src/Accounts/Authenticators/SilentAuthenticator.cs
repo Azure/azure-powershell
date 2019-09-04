@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.IO;
+using System.Linq;
 using System.Security;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication;
@@ -22,25 +22,24 @@ using Microsoft.Identity.Client;
 
 namespace Microsoft.Azure.PowerShell.Authenticators
 {
-    /// <summary>
-    /// Authenticate username + password scenarios
-    /// </summary>
-    public class UsernamePasswordAuthenticator : DelegatingAuthenticator
+    public class SilentAuthenticator : DelegatingAuthenticator
     {
         public override Task<IAccessToken> Authenticate(AuthenticationParameters parameters)
         {
-            var upParameters = parameters as UsernamePasswordParameters;
-            var scopes = new string[] { string.Format(AuthenticationHelpers.DefaultScope, upParameters.ResourceEndpoint) };
+            var silentParameters = parameters as SilentParameters;
+            var scopes = new string[] { string.Format(AuthenticationHelpers.DefaultScope, silentParameters.ResourceEndpoint) };
             var clientId = AuthenticationHelpers.PowerShellClientId;
-            var authority = AuthenticationHelpers.GetAuthority(parameters.Environment, parameters.TenantId);
+            var authority = AuthenticationHelpers.GetAuthority(silentParameters.Environment, silentParameters.TenantId);
             var publicClient = _authenticationClientFactory.CreatePublicClient(clientId: clientId, authority: authority);
-            var response = publicClient.AcquireTokenByUsernamePassword(scopes, upParameters.UserId, upParameters.Password).ExecuteAsync();
+            var accounts = publicClient.GetAccountsAsync()
+                .ConfigureAwait(false).GetAwaiter().GetResult();
+            var response = publicClient.AcquireTokenSilent(scopes, accounts.FirstOrDefault(a => a.Username == silentParameters.UserId)).ExecuteAsync();
             return AuthenticationResultToken.GetAccessTokenAsync(response);
         }
 
         public override bool CanAuthenticate(AuthenticationParameters parameters)
         {
-            return parameters is UsernamePasswordParameters;
+            return parameters is SilentParameters;
         }
     }
 }

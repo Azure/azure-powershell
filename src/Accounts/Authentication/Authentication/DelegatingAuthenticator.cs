@@ -18,6 +18,7 @@ using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -26,24 +27,33 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     /// </summary>
     public abstract class DelegatingAuthenticator : IAuthenticator
     {
+        protected AuthenticationClientFactory _authenticationClientFactory;
+
         public IAuthenticator Next { get; set; }
-        public abstract bool CanAuthenticate(IAzureAccount account, IAzureEnvironment environment, string tenant, SecureString password, string promptBehavior, Task<Action<string>> promptAction, IAzureTokenCache tokenCache, string resourceId);
-        public abstract Task<IAccessToken> Authenticate(IAzureAccount account, IAzureEnvironment environment, string tenant, SecureString password, string promptBehavior, Task<Action<string>> promptAction, IAzureTokenCache tokenCache, string resourceId);
-        public bool TryAuthenticate(IAzureAccount account, IAzureEnvironment environment, string tenant, SecureString password, string promptBehavior, Task<Action<string>> promptAction, IAzureTokenCache tokenCache, string resourceId, out Task<IAccessToken> token)
+        public abstract bool CanAuthenticate(AuthenticationParameters parameters);
+        public abstract Task<IAccessToken> Authenticate(AuthenticationParameters parameters);
+
+        public bool TryAuthenticate(AuthenticationParameters parameters, out Task<IAccessToken> token)
         {
             token = null;
-            if (CanAuthenticate(account, environment, tenant, password, promptBehavior, promptAction, tokenCache, resourceId))
+            if (CanAuthenticate(parameters))
             {
-                token = Authenticate(account, environment, tenant, password, promptBehavior, promptAction, tokenCache, resourceId);
+                token = Authenticate(parameters);
                 return true;
             }
 
             if (Next != null)
             {
-                return Next.TryAuthenticate(account, environment, tenant, password, promptBehavior, promptAction, tokenCache, resourceId, out token);
+                return Next.TryAuthenticate(parameters, _authenticationClientFactory, out token);
             }
 
             return false;
+        }
+
+        public bool TryAuthenticate(AuthenticationParameters parameters, AuthenticationClientFactory authenticationClientFactory, out Task<IAccessToken> token)
+        {
+            _authenticationClientFactory = authenticationClientFactory;
+            return TryAuthenticate(parameters, out token);
         }
     }
 }
