@@ -1,84 +1,102 @@
-function Remove-AzDeployment_DeleteById {
+function Remove-AzADServicePrincipalKeyCredential {
     [OutputType('System.Boolean')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Profile("latest-2019-04-30")]
-    [CmdletBinding(SupportsShouldProcess, PositionalBinding = $false)]
+    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Profile('latest-2019-04-30')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.Description('Removes a key credential associated with an service principal.')]
     param(
-        [Parameter(Mandatory, HelpMessage='The ID of the target subscription.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Resources.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Resources.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-        [System.String]
-        ${SubscriptionId},
-
-        [Parameter(Mandatory, HelpMessage='The ID of the resource group.')]
-        [Alias('ResourceId')]
+        [Parameter(Mandatory, HelpMessage='Service principal object ID.')]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.Category('Path')]
         [System.String]
-        ${Id},
+        # Service principal object ID.
+        ${ObjectId},
 
-        [Parameter(HelpMessage='When specified, PassThru will force the cmdlet return a ''bool'' given that there isn''t a return type by default.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Resources.Category('Body')]
-        [System.Management.Automation.SwitchParameter]
-        ${PassThru},
+        [Parameter(Mandatory, HelpMessage='The tenant ID.')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.Category('Path')]
+        [System.String]
+        # The tenant ID.
+        ${TenantId},
+
+        [Parameter(HelpMessage='The key ID of the key credential.')]
+        [System.String]
+        # The key ID of the key credential.
+        ${KeyId},
 
         [Parameter(HelpMessage='The credentials, account, tenant, and subscription used for communication with Azure.')]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.Category('Azure')]
         [System.Management.Automation.PSObject]
+        # The credentials, account, tenant, and subscription used for communication with Azure.
         ${DefaultProfile},
-
-        [Parameter(HelpMessage='Run the command as a job')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Resources.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        ${AsJob},
 
         [Parameter(DontShow, HelpMessage='Wait for .NET debugger to attach')]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
+        # Wait for .NET debugger to attach
         ${Break},
 
         [Parameter(DontShow, HelpMessage='SendAsync Pipeline Steps to be appended to the front of the pipeline')]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.Category('Runtime')]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.Runtime.SendAsyncStep[]]
+        # SendAsync Pipeline Steps to be appended to the front of the pipeline
         ${HttpPipelineAppend},
 
         [Parameter(DontShow, HelpMessage='SendAsync Pipeline Steps to be prepended to the front of the pipeline')]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.Category('Runtime')]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.Runtime.SendAsyncStep[]]
+        # SendAsync Pipeline Steps to be prepended to the front of the pipeline
         ${HttpPipelinePrepend},
+
+        [Parameter(HelpMessage='Returns true when the command succeeds')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Returns true when the command succeeds
+        ${PassThru},
 
         [Parameter(DontShow, HelpMessage='The URI for the proxy server to use')]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.Category('Runtime')]
         [System.Uri]
+        # The URI for the proxy server to use
         ${Proxy},
 
         [Parameter(DontShow, HelpMessage='Credentials for a proxy server to use for the remote call')]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.Category('Runtime')]
         [System.Management.Automation.PSCredential]
+        # Credentials for a proxy server to use for the remote call
         ${ProxyCredential},
 
         [Parameter(DontShow, HelpMessage='Use the default credentials for the proxy')]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
+        # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
     )
 
     process {
-        $Tokens = $Id.Split("/", [System.StringSplitOptions]::RemoveEmptyEntries)
-        if ($Tokens[2] -eq "resourceGroups")
+        $TempKeyId = $KeyId
+        if ($PSBoundParameters.ContainsKey("KeyId"))
         {
-            $null = $PSBoundParameters.Add("ResourceGroupName", $Tokens[3])
-            $null = $PSBoundParameters.Add("Name", $Tokens[7])
-        }
-        else
-        {
-            $null = $PSBoundParameters.Add("Name", $Tokens[5])
+            $null = $PSBoundParameters.Remove("KeyId")
         }
 
-        $null = $PSBoundParameters.Remove("Id")
-        Az.Resources\Remove-AzDeployment @PSBoundParameters
+        $Credentials = Get-AzADServicePrincipalKeyCredential @PSBoundParameters
+        if ($null -ne $Credentials)
+        {
+            if (1 -eq ($Credentials | Measure-Object).Count)
+            {
+                $Credentials = @( $Credentials )
+            }
+
+            if ($null -ne $TempKeyId)
+            {
+                $Credentials = $Credentials | Where-Object { $_.KeyId -ne $TempKeyId }
+            }
+
+            $null = $PSBoundParameters.Add("Value", $Credentials)
+            Az.Resources.internal\Update-AzADServicePrincipalKeyCredential @PSBoundParameters
+        }
     }
 }
