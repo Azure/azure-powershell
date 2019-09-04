@@ -14,5 +14,5 @@
 - [ ] The PR does not introduce [breaking changes](../documentation/breaking-changes/breaking-changes-definition.md)
 - [ ] If applicable, the changes made in the PR have proper test coverage
 - [ ] For public API changes to cmdlets:
-    - [ ] a cmdlet design review was approved for the changes in [this repository](https://github.com/Azure/azure-powershell-cmdlet-review-pr)
+    - [ ] a cmdlet design review was approved for the changes in [this repository](https://github.com/Azure/azure-powershell-cmdlet-review-pr) (_Microsoft internal only_)
     - [ ] the markdown help files have been regenerated using the commands listed [here](../documentation/development-docs/help-generation.md#updating-all-markdown-files-in-a-module)

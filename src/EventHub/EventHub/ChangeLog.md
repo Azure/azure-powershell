@@ -18,8 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.4.0
 * Fixed miscellaneous typos across module
 * Fix for issue #9658 : Typo VirtualNteworkRule parameter in Set-AzEventHubNetworkRuleSet
+* Fix for issue #9558 : Set-AzEventHubNamespace is using PATCH instead of PUT
+* added EnableKafka parameter to Set-AzEventHubNamespace cmdlet
+* Fix for issue #9786 : cannot create a rule with Listen only rights
 
 ## Version 1.3.0
 * Added new cmmdlet added for generating SAS token : New-AzEventHubAuthorizationRuleSASToken
