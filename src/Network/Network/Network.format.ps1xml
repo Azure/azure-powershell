@@ -4122,6 +4122,10 @@
                 <PropertyName>Alias</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>Fqdns</Label>
+                <PropertyName>Fqdns</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>LoadBalancerFrontendIpConfigurations</Label>
                 <PropertyName>LoadBalancerFrontendIpConfigurationsText</PropertyName>
               </ListItem>
@@ -4176,8 +4180,8 @@
                 <PropertyName>SubnetText</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>PublicIPAddress</Label>
-                <PropertyName>PublicIPAddressText</PropertyName>
+                <Label>Primary</Label>
+                <PropertyName>Primary</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

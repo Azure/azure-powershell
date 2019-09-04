@@ -3051,6 +3051,7 @@ function ApiRevision-CrudTest {
     $swaggerApiId1 = getAssetName
     $apiRevisionId = "2"
     $apiReleaseId = getAssetName
+	$apiRevisionDescription = getAssetName
 
     try {
         # import api from file
@@ -3079,9 +3080,11 @@ function ApiRevision-CrudTest {
 
         # now lets create an api revision
         $expectedApiId = [string]::Format("{0};rev={1}", $swaggerApiId1, $apiRevisionId) 
-        $apiRevision = New-AzApiManagementApiRevision -Context $context -ApiId $swaggerApiId1 -ApiRevision $apiRevisionId -SourceApiRevision "1"
+        $apiRevision = New-AzApiManagementApiRevision -Context $context -ApiId $swaggerApiId1 -ApiRevision $apiRevisionId -SourceApiRevision "1" -ApiRevisionDescription $apiRevisionDescription
         Assert-AreEqual $expectedApiId $apiRevision.ApiId
         Assert-AreEqual $apiRevisionId $apiRevision.ApiRevision
+        Assert-NotNull $apiRevision.ApiRevisionDescription
+        Assert-AreEqual $apiRevisionDescription $apiRevision.ApiRevisionDescription
         Assert-AreEqual $path1 $apiRevision.Path        
         Assert-False { $apiRevision.IsCurrent }
 
