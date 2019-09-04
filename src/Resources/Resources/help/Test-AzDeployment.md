@@ -247,7 +247,9 @@ Accept wildcard characters: False
 ```
 
 ### -ManagementGroupId
-The management group id.```yaml
+The management group id.
+
+```yaml
 Type: System.String
 Parameter Sets: ManagementGroupWithTemplateObjectAndParameterObject, ManagementGroupWithTemplateObjectAndParameterFile, ManagementGroupWithTemplateFileAndParameterObject, ManagementGroupWithTemplateFileAndParameterFile, ManagementGroupWithTemplateObjectAndNoParameters, ManagementGroupWithTemplateFileWithAndNoParameters
 Aliases:
@@ -260,7 +262,9 @@ Accept wildcard characters: False
 ```
 
 ### -Mode
-The deployment mode.```yaml
+The deployment mode.
+
+```yaml
 Type: Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode
 Parameter Sets: (All)
 Aliases:
@@ -288,7 +292,9 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The resource group name.```yaml
+The resource group name.
+
+```yaml
 Type: System.String
 Parameter Sets: ResourceGroupWithTemplateObjectAndParameterObject, ResourceGroupWithTemplateObjectAndParameterFile, ResourceGroupWithTemplateFileAndParameterObject, ResourceGroupWithTemplateFileAndParameterFile, ResourceGroupWithTemplateObjectAndNoParameters, ResourceGroupWithTemplateFileWithAndNoParameters
 Aliases:
@@ -301,7 +307,9 @@ Accept wildcard characters: False
 ```
 
 ### -RollBackDeploymentName
-Rollback to the successful deployment with the given name in the resource group, should not be used if -RollbackToLastDeployment is used.```yaml
+Rollback to the successful deployment with the given name in the resource group, should not be used if -RollbackToLastDeployment is used.
+
+```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
@@ -314,7 +322,9 @@ Accept wildcard characters: False
 ```
 
 ### -RollbackToLastDeployment
-Rollback to the last successful deployment in the resource group, should not be present if -RollBackDeploymentName is used.```yaml
+Rollback to the last successful deployment in the resource group, should not be present if -RollBackDeploymentName is used.
+
+```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
@@ -327,7 +337,9 @@ Accept wildcard characters: False
 ```
 
 ### -ScopeType
-The deployment scope type.```yaml
+The deployment scope type.
+
+```yaml
 Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments.DeploymentScopeType
 Parameter Sets: (All)
 Aliases:

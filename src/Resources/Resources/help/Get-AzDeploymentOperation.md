@@ -154,7 +154,9 @@ Accept wildcard characters: False
 ```
 
 ### -ManagementGroupId
-The management group id.```yaml
+The management group id.
+
+```yaml
 Type: System.String
 Parameter Sets: ManagementGroupWithDeploymentName
 Aliases:
@@ -197,7 +199,9 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The resource group name.```yaml
+The resource group name.
+
+```yaml
 Type: System.String
 Parameter Sets: ResourceGroupWithDeploymentName
 Aliases:
@@ -210,7 +214,9 @@ Accept wildcard characters: False
 ```
 
 ### -ScopeType
-The scope type of the deployment.```yaml
+The scope type of the deployment.
+
+```yaml
 Type: System.Nullable`1[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments.DeploymentScopeType]
 Parameter Sets: SubscriptionWithDeploymentName, ResourceGroupWithDeploymentName, ManagementGroupWithDeploymentName, TenantWithDeploymentName
 Aliases:
