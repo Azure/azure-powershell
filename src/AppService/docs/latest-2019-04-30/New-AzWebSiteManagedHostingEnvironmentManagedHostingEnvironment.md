@@ -12,17 +12,44 @@ Create or update a managed hosting environment.
 
 ## SYNTAX
 
-### Create (Default)
+### CreateExpanded (Default)
 ```
-New-AzWebSiteManagedHostingEnvironmentManagedHostingEnvironment -ResourceGroupName <String> [-Name <String>]
- [-SubscriptionId <String>] [-ManagedHostingEnvironmentEnvelope <IHostingEnvironment>] [-PassThru]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzWebSiteManagedHostingEnvironmentManagedHostingEnvironment -Name <String> -ResourceGroupName <String>
+ -SubscriptionId <String> -Location <String> [-AllowedMultiSize <String>] [-AllowedWorkerSize <String>]
+ [-ApiManagementAccountId <String>] [-ClusterSetting <INameValuePair[]>] [-DatabaseEdition <String>]
+ [-DatabaseServiceObjective <String>] [-DnsSuffix <String>] [-EnvironmentCapacity <IStampCapacity[]>]
+ [-EnvironmentIsHealthy] [-EnvironmentStatus <String>] [-Id <String>]
+ [-InternalLoadBalancingMode <InternalLoadBalancingMode>] [-IpsslAddressCount <Int32>] [-Kind <String>]
+ [-LastAction <String>] [-LastActionResult <String>] [-MaximumNumberOfMachine <Int32>]
+ [-MultiRoleCount <Int32>] [-MultiSize <String>] [-Name1 <String>]
+ [-NetworkAccessControlList <INetworkAccessControlEntry[]>] [-PropertiesLocation <String>]
+ [-PropertiesName <String>] [-PropertiesSubscriptionId <String>] [-ProvisioningState <ProvisioningState>]
+ [-ResourceGroup <String>] [-Status <HostingEnvironmentStatus>] [-Suspended] [-Tag <Hashtable>]
+ [-Type <String>] [-UpgradeDomain <Int32>] [-VipMapping <IVirtualIPMapping[]>] [-VirtualNetworkId <String>]
+ [-VirtualNetworkName <String>] [-VirtualNetworkSubnet <String>] [-VirtualNetworkType <String>]
+ [-VnetName <String>] [-VnetResourceGroupName <String>] [-VnetSubnetName <String>]
+ [-WorkerPool <IWorkerPool[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### Create
+```
+New-AzWebSiteManagedHostingEnvironmentManagedHostingEnvironment -Name <String> -ResourceGroupName <String>
+ -SubscriptionId <String> -ManagedHostingEnvironmentEnvelope <IHostingEnvironment>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentity
+```
+New-AzWebSiteManagedHostingEnvironmentManagedHostingEnvironment -InputObject <IWebSiteIdentity>
+ -ManagedHostingEnvironmentEnvelope <IHostingEnvironment> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzWebSiteManagedHostingEnvironmentManagedHostingEnvironment -InputObject <IWebSiteIdentity>
- -Location <String> [-Name <String>] [-SubscriptionId <String>] [-PassThru] [-AllowedMultiSize <String>]
+ -Location <String> [-Name <String>] [-SubscriptionId <String>] [-AllowedMultiSize <String>]
  [-AllowedWorkerSize <String>] [-ApiManagementAccountId <String>] [-ClusterSetting <INameValuePair[]>]
  [-DatabaseEdition <String>] [-DatabaseServiceObjective <String>] [-DnsSuffix <String>]
  [-EnvironmentCapacity <IStampCapacity[]>] [-EnvironmentIsHealthy] [-EnvironmentStatus <String>]
@@ -34,35 +61,8 @@ New-AzWebSiteManagedHostingEnvironmentManagedHostingEnvironment -InputObject <IW
  [-Type <String>] [-UpgradeDomain <Int32>] [-VipMapping <IVirtualIPMapping[]>] [-VirtualNetworkId <String>]
  [-VirtualNetworkName <String>] [-VirtualNetworkSubnet <String>] [-VirtualNetworkType <String>]
  [-VnetName <String>] [-VnetResourceGroupName <String>] [-VnetSubnetName <String>]
- [-WorkerPool <IWorkerPool[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateExpanded
-```
-New-AzWebSiteManagedHostingEnvironmentManagedHostingEnvironment -ResourceGroupName <String> -Location <String>
- [-Name <String>] [-SubscriptionId <String>] [-PassThru] [-AllowedMultiSize <String>]
- [-AllowedWorkerSize <String>] [-ApiManagementAccountId <String>] [-ClusterSetting <INameValuePair[]>]
- [-DatabaseEdition <String>] [-DatabaseServiceObjective <String>] [-DnsSuffix <String>]
- [-EnvironmentCapacity <IStampCapacity[]>] [-EnvironmentIsHealthy] [-EnvironmentStatus <String>]
- [-Id <String>] [-InternalLoadBalancingMode <InternalLoadBalancingMode>] [-IpsslAddressCount <Int32>]
- [-Kind <String>] [-LastAction <String>] [-LastActionResult <String>] [-MaximumNumberOfMachine <Int32>]
- [-MultiRoleCount <Int32>] [-MultiSize <String>] [-Name1 <String>]
- [-NetworkAccessControlList <INetworkAccessControlEntry[]>] [-PropertiesLocation <String>]
- [-PropertiesName <String>] [-PropertiesSubscriptionId <String>] [-ProvisioningState <ProvisioningState>]
- [-ResourceGroup <String>] [-Status <HostingEnvironmentStatus>] [-Suspended] [-Tag <Hashtable>]
- [-Type <String>] [-UpgradeDomain <Int32>] [-VipMapping <IVirtualIPMapping[]>] [-VirtualNetworkId <String>]
- [-VirtualNetworkName <String>] [-VirtualNetworkSubnet <String>] [-VirtualNetworkType <String>]
- [-VnetName <String>] [-VnetResourceGroupName <String>] [-VnetSubnetName <String>]
- [-WorkerPool <IWorkerPool[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzWebSiteManagedHostingEnvironmentManagedHostingEnvironment -InputObject <IWebSiteIdentity>
- [-ManagedHostingEnvironmentEnvelope <IHostingEnvironment>] [-PassThru] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WorkerPool <IWorkerPool[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -95,7 +95,7 @@ List of comma separated strings describing which VM sizes are allowed for front-
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -111,7 +111,7 @@ List of comma separated strings describing which VM sizes are allowed for worker
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -127,7 +127,7 @@ Api Management Account associated with this Hosting Environment
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -148,7 +148,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -160,7 +160,7 @@ To construct, see NOTES section for CLUSTERSETTING properties and create a hash 
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.INameValuePair[]
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -177,7 +177,7 @@ Edition of the metadata database for the hostingEnvironment (App Service Environ
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -194,7 +194,7 @@ Service objective of the metadata database for the hostingEnvironment (App Servi
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -226,7 +226,7 @@ DNS suffix of the hostingEnvironment (App Service Environment)
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -243,7 +243,7 @@ To construct, see NOTES section for ENVIRONMENTCAPACITY properties and create a 
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.IStampCapacity[]
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -259,12 +259,12 @@ True/false indicating whether the hostingEnvironment (App Service Environment) i
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -275,7 +275,7 @@ Detailed message about with results of the last check of the hostingEnvironment 
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -291,7 +291,7 @@ Resource Id
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -304,10 +304,11 @@ Dynamic: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
-Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
+Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -323,7 +324,7 @@ Specifies which endpoints to serve internally in the hostingEnvironment's (App S
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.InternalLoadBalancingMode
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -339,12 +340,12 @@ Number of IP SSL addresses reserved for this hostingEnvironment (App Service Env
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -355,7 +356,7 @@ Kind of resource
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -371,7 +372,7 @@ Last deployment action on this hostingEnvironment (App Service Environment)
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -387,7 +388,7 @@ Result of the last deployment action on this hostingEnvironment (App Service Env
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -403,7 +404,7 @@ Resource Location
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -423,7 +424,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.IHostingEnvi
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -436,12 +437,12 @@ Maximum number of VMs in this hostingEnvironment (App Service Environment)
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -452,12 +453,12 @@ Number of front-end instances
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -469,7 +470,7 @@ Front-end VM size, e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -485,7 +486,7 @@ Name of managed hosting environment
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: Create, CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -518,7 +519,7 @@ To construct, see NOTES section for NETWORKACCESSCONTROLLIST properties and crea
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.INetworkAccessControlEntry[]
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -539,14 +540,14 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
 
 ### -PassThru
-When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -555,7 +556,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -567,7 +568,7 @@ Location of the hostingEnvironment (App Service Environment), e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -583,7 +584,7 @@ Name of the hostingEnvironment (App Service Environment)
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -615,7 +616,7 @@ Provisioning state of the hostingEnvironment (App Service Environment)
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.ProvisioningState
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -631,7 +632,7 @@ Resource group of the hostingEnvironment (App Service Environment)
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -663,7 +664,7 @@ Current status of the hostingEnvironment (App Service Environment)
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.HostingEnvironmentStatus
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -681,7 +682,7 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: Create, CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -699,12 +700,12 @@ when the management endpoint is no longer available (most likely because NSG blo
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -715,7 +716,7 @@ Resource tags
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -731,7 +732,7 @@ Resource type
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -747,12 +748,12 @@ Number of upgrade domains of this hostingEnvironment (App Service Environment)
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -764,7 +765,7 @@ To construct, see NOTES section for VIPMAPPING properties and create a hash tabl
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.IVirtualIPMapping[]
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -780,7 +781,7 @@ Resource id of the virtual network
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -796,7 +797,7 @@ Name of the virtual network (read-only)
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -812,7 +813,7 @@ Subnet within the virtual network
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -828,7 +829,7 @@ Resource type of the virtual network (read-only)
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -844,7 +845,7 @@ Name of the hostingEnvironment's (App Service Environment) virtual network
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -860,7 +861,7 @@ Resource group of the hostingEnvironment's (App Service Environment) virtual net
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -876,7 +877,7 @@ Subnet of the hostingEnvironment's (App Service Environment) virtual network
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -893,7 +894,7 @@ To construct, see NOTES section for WORKERPOOL properties and create a hash tabl
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.IWorkerPool[]
-Parameter Sets: CreateViaIdentityExpanded, CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -942,9 +943,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
-
 ### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.IHostingEnvironment
+
+### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
 
 ## OUTPUTS
 
@@ -972,6 +973,50 @@ To create the parameters described below, construct a hash table containing the 
   - `[Unit <String>]`: Name of the unit.
   - `[WorkerSize <WorkerSizeOptions?>]`: Size of the machines.
   - `[WorkerSizeId <Int32?>]`: Size ID of machines:         0 - Small         1 - Medium         2 - Large
+
+#### INPUTOBJECT <IWebSiteIdentity>: Identity Parameter
+  - `[AnalysisName <String>]`: Analysis Name
+  - `[ApiName <String>]`: The managed API name.
+  - `[BackupId <String>]`: ID of the backup.
+  - `[BaseAddress <String>]`: Module base address.
+  - `[CertificateOrderName <String>]`: Name of the certificate order.
+  - `[ConnectionName <String>]`: The connection name.
+  - `[DeletedSiteId <String>]`: The numeric ID of the deleted app, e.g. 12345
+  - `[DetectorName <String>]`: Detector Resource Name
+  - `[DiagnosticCategory <String>]`: Diagnostic Category
+  - `[DiagnosticsName <String>]`: Name of the diagnostics item.
+  - `[DomainName <String>]`: Name of the domain.
+  - `[DomainOwnershipIdentifierName <String>]`: Name of domain ownership identifier.
+  - `[EntityName <String>]`: Name of the hybrid connection.
+  - `[FunctionName <String>]`: Function name.
+  - `[GatewayName <String>]`: Name of the gateway. Only the 'primary' gateway is supported.
+  - `[HostName <String>]`: Hostname in the hostname binding.
+  - `[HostingEnvironmentName <String>]`: Name of the hosting environment.
+  - `[Id <String>]`: Resource identity path
+  - `[Instance <String>]`: Name of the instance in the multi-role pool.
+  - `[InstanceId <String>]`: ID of web app instance.
+  - `[Location <String>]`: 
+  - `[Name <String>]`: Name of the certificate.
+  - `[NamespaceName <String>]`: Name of the Service Bus namespace.
+  - `[OperationId <String>]`: GUID of the operation.
+  - `[PremierAddOnName <String>]`: Add-on name.
+  - `[ProcessId <String>]`: PID.
+  - `[PublicCertificateName <String>]`: Public certificate name.
+  - `[RelayName <String>]`: Name of the Service Bus relay.
+  - `[ResourceGroupName <String>]`: Name of the resource group to which the resource belongs.
+  - `[RouteName <String>]`: Name of the Virtual Network route.
+  - `[SiteExtensionId <String>]`: Site extension name.
+  - `[SiteName <String>]`: Site Name
+  - `[Slot <String>]`: Name of web app slot. If not specified then will default to production slot.
+  - `[SnapshotId <String>]`: The ID of the snapshot to read.
+  - `[SourceControlType <String>]`: Type of source control
+  - `[SubscriptionId <String>]`: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  - `[ThreadId <String>]`: TID.
+  - `[View <String>]`: The type of view. This can either be "summary" or "detailed".
+  - `[VnetName <String>]`: Name of the Virtual Network.
+  - `[WebJobName <String>]`: Name of Web Job.
+  - `[WorkerName <String>]`: Name of worker machine, which typically starts with RD.
+  - `[WorkerPoolName <String>]`: Name of the worker pool.
 
 #### MANAGEDHOSTINGENVIRONMENTENVELOPE <IHostingEnvironment>: Description of an hostingEnvironment (App Service Environment)
   - `Location <String>`: Resource Location

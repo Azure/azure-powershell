@@ -14,8 +14,8 @@ Creates a P2SVpnServerConfiguration to associate with a VirtualWan if it doesn't
 
 ### UpdateExpanded (Default)
 ```
-Set-AzP2SVpnServerConfiguration -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -VirtualWanName <String> [-Etag <String>] [-Id <String>]
+Set-AzP2SVpnServerConfiguration -Name <String> -ResourceGroupName <String> -VirtualWanName <String>
+ [-SubscriptionId <String>] [-Etag <String>] [-Id <String>]
  [-RadiusClientRootCertificate <IP2SVpnServerConfigRadiusClientRootCertificate[]>]
  [-RadiusServerAddress <String>]
  [-RadiusServerRootCertificate <IP2SVpnServerConfigRadiusServerRootCertificate[]>]
@@ -29,9 +29,9 @@ Set-AzP2SVpnServerConfiguration -Name <String> -ResourceGroupName <String> -Subs
 
 ### Update
 ```
-Set-AzP2SVpnServerConfiguration -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -VirtualWanName <String> -P2SVpnServerConfiguration <IP2SVpnServerConfiguration> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzP2SVpnServerConfiguration -Name <String> -ResourceGroupName <String> -VirtualWanName <String>
+ -P2SVpnServerConfiguration <IP2SVpnServerConfiguration> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -69,7 +69,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -149,7 +149,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -297,9 +297,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -441,41 +441,6 @@ To create the parameters described below, construct a hash table containing the 
 
 #### P2SVPNSERVERCONFIGURATION <IP2SVpnServerConfiguration>: P2SVpnServerConfiguration Resource.
   - `[Id <String>]`: Resource ID.
-  - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  - `[P2SVpnServerConfigRadiusClientRootCertificate <IP2SVpnServerConfigRadiusClientRootCertificate[]>]`: Radius client root certificate of P2SVpnServerConfiguration.
-    - `[Id <String>]`: Resource ID.
-    - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-    - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-    - `[Thumbprint <String>]`: The Radius client root certificate thumbprint.
-  - `[P2SVpnServerConfigRadiusServerRootCertificate <IP2SVpnServerConfigRadiusServerRootCertificate[]>]`: Radius Server root certificate of P2SVpnServerConfiguration.
-    - `PublicCertData <String>`: The certificate public data.
-    - `[Id <String>]`: Resource ID.
-    - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-    - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  - `[P2SVpnServerConfigVpnClientRevokedCertificate <IP2SVpnServerConfigVpnClientRevokedCertificate[]>]`: VPN client revoked certificate of P2SVpnServerConfiguration.
-    - `[Id <String>]`: Resource ID.
-    - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-    - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-    - `[Thumbprint <String>]`: The revoked VPN client certificate thumbprint.
-  - `[P2SVpnServerConfigVpnClientRootCertificate <IP2SVpnServerConfigVpnClientRootCertificate[]>]`: VPN client root certificate of P2SVpnServerConfiguration.
-    - `PublicCertData <String>`: The certificate public data.
-    - `[Id <String>]`: Resource ID.
-    - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-    - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  - `[PropertiesEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
-  - `[PropertiesName <String>]`: The name of the P2SVpnServerConfiguration that is unique within a VirtualWan in a resource group. This name can be used to access the resource along with Paren VirtualWan resource name.
-  - `[RadiusServerAddress <String>]`: The radius server address property of the P2SVpnServerConfiguration resource for point to site client connection.
-  - `[RadiusServerSecret <String>]`: The radius secret property of the P2SVpnServerConfiguration resource for point to site client connection.
-  - `[VpnClientIpsecPolicy <IIpsecPolicy[]>]`: VpnClientIpsecPolicies for P2SVpnServerConfiguration.
-    - `DhGroup <DhGroup>`: The DH Group used in IKE Phase 1 for initial SA.
-    - `IkeEncryption <IkeEncryption>`: The IKE encryption algorithm (IKE phase 2).
-    - `IkeIntegrity <IkeIntegrity>`: The IKE integrity algorithm (IKE phase 2).
-    - `IpsecEncryption <IpsecEncryption>`: The IPSec encryption algorithm (IKE phase 1).
-    - `IpsecIntegrity <IpsecIntegrity>`: The IPSec integrity algorithm (IKE phase 1).
-    - `PfsGroup <PfsGroup>`: The Pfs Group used in IKE Phase 2 for new child SA.
-    - `SaDataSizeKilobyte <Int32>`: The IPSec Security Association (also called Quick Mode or Phase 2 SA) payload size in KB for a site to site VPN tunnel.
-    - `SaLifeTimeSecond <Int32>`: The IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime in seconds for a site to site VPN tunnel.
-  - `[VpnProtocol <VpnGatewayTunnelingProtocol[]>]`: VPN protocols for the P2SVpnServerConfiguration.
 
 #### RADIUSCLIENTROOTCERTIFICATE <IP2SVpnServerConfigRadiusClientRootCertificate[]>: Radius client root certificate of P2SVpnServerConfiguration.
   - `[Id <String>]`: Resource ID.

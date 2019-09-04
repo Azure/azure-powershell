@@ -13,16 +13,15 @@ This operation requires the storage/restore permission.
 
 ## SYNTAX
 
-### Restore (Default)
-```
-Restore-AzKeyVaultStorageAccount [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
- [-Parameter <IStorageRestoreParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### RestoreExpanded
+### RestoreExpanded (Default)
 ```
 Restore-AzKeyVaultStorageAccount -StorageBundleBackupInputFile <String> [-KeyVaultDnsSuffix <String>]
+ [-VaultName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Restore
+```
+Restore-AzKeyVaultStorageAccount -Parameter <IStorageRestoreParameters> [-KeyVaultDnsSuffix <String>]
  [-VaultName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -93,7 +92,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api70.IStorageRestorePa
 Parameter Sets: Restore
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

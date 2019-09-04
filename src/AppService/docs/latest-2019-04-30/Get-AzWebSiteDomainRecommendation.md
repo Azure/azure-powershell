@@ -12,17 +12,17 @@ Get domain name recommendations based on keywords.
 
 ## SYNTAX
 
-### List (Default)
-```
-Get-AzWebSiteDomainRecommendation -SubscriptionId <String[]>
- [-Parameter <IDomainRecommendationSearchParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### ListExpanded
+### ListExpanded (Default)
 ```
 Get-AzWebSiteDomainRecommendation -SubscriptionId <String[]> [-Keyword <String>]
  [-MaxDomainRecommendation <Int32>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### List
+```
+Get-AzWebSiteDomainRecommendation -SubscriptionId <String[]>
+ -Parameter <IDomainRecommendationSearchParameters> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -92,7 +92,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -107,7 +107,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IDomainRecom
 Parameter Sets: List
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

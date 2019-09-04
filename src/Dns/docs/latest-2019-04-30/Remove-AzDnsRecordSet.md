@@ -15,9 +15,9 @@ This operation cannot be undone.
 
 ### Delete1 (Default)
 ```
-Remove-AzDnsRecordSet -RecordType <RecordType> -RelativeRecordSetName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -ZoneName <String> [-IfMatch <String>] [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzDnsRecordSet -Name <String> -RecordType <RecordType> -ResourceGroupName <String> -ZoneName <String>
+ [-SubscriptionId <String>] [-IfMatch <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity1
@@ -88,6 +88,7 @@ Dynamic: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentity
@@ -102,6 +103,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Name
+The name of the record set, relative to the name of the zone.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete1
+Aliases: RelativeRecordSetName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -PassThru
 Returns true when the command succeeds
 
@@ -112,7 +129,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -124,22 +141,6 @@ Record sets of type SOA cannot be deleted (they are deleted when the DNS zone is
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Dns.Support.RecordType
-Parameter Sets: Delete1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -RelativeRecordSetName
-The name of the record set, relative to the name of the zone.
-
-```yaml
-Type: System.String
 Parameter Sets: Delete1
 Aliases:
 
@@ -175,9 +176,9 @@ Type: System.String
 Parameter Sets: Delete1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -246,6 +247,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### INPUTOBJECT <IDnsIdentity>: Identity Parameter
+  - `[Id <String>]`: Resource identity path
+  - `[RecordType <RecordType?>]`: The type of DNS record in this record set.
+  - `[RelativeRecordSetName <String>]`: The name of the record set, relative to the name of the zone.
+  - `[ResourceGroupName <String>]`: The name of the resource group.
+  - `[SubscriptionId <String>]`: Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.
+  - `[ZoneName <String>]`: The name of the DNS zone (without a terminating dot).
 
 ## RELATED LINKS
 

@@ -12,22 +12,22 @@ Create or update a key vault in the specified subscription.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzKeyVault -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Parameter <IVaultCreateOrUpdateParameters>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzKeyVault -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Location <String>
  -SkuName <SkuName> -TenantId <String> [-AccessPolicy <IAccessPolicyEntry[]>] [-CreateMode <CreateMode>]
- [-EnablePurgeProtection] [-EnableSoftDelete] [-EnabledForDeployment] [-EnabledForDiskEncryption]
- [-EnabledForTemplateDeployment] [-NetworkAclsBypass <NetworkRuleBypassOptions>]
+ [-EnabledForDeployment] [-EnabledForDiskEncryption] [-EnabledForTemplateDeployment] [-EnablePurgeProtection]
+ [-EnableSoftDelete] [-NetworkAclsBypass <NetworkRuleBypassOptions>]
  [-NetworkAclsDefaultAction <NetworkRuleAction>] [-NetworkAclsIPRule <IIPRule[]>]
  [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-Tag <Hashtable>] [-VaultUri <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzKeyVault -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -Parameter <IVaultCreateOrUpdateParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -85,7 +85,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -133,7 +133,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -149,7 +149,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -165,7 +165,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -184,7 +184,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -201,7 +201,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -318,7 +318,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -333,7 +333,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20180214.IVaultCreat
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

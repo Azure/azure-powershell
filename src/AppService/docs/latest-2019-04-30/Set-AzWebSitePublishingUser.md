@@ -12,17 +12,17 @@ Updates publishing user
 
 ## SYNTAX
 
-### Update1 (Default)
-```
-Set-AzWebSitePublishingUser [-UserDetail <IUser>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateExpanded1
+### UpdateExpanded1 (Default)
 ```
 Set-AzWebSitePublishingUser [-Kind <String>] [-PublishingPassword <String>] [-PublishingPasswordHash <String>]
  [-PublishingPasswordHashSalt <String>] [-PublishingUserName <String>] [-ScmUri <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update1
+```
+Set-AzWebSitePublishingUser -UserDetail <IUser> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -171,7 +171,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IUser
 Parameter Sets: Update1
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

@@ -636,7 +636,7 @@ Dynamic: False
 ```
 
 ### -WindowConfigurationEnableAutomaticUpdate
-Indicates whether virtual machine is enabled for automatic Windows updates.
+Indicates whether Automatic Updates is enabled for the Windows virtual machine.
 Default value is true.
 
 

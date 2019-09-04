@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the AppConfiguration service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.4.0 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.6.0 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -49,7 +49,6 @@ In this directory, run AutoRest:
 ``` yaml
 require:
   - $(this-folder)/../readme.azure.md
-  - $(repo)/specification/appconfiguration/resource-manager/readme.enable-multi-api.md
   - $(repo)/specification/appconfiguration/resource-manager/readme.md
 
 module-version: 0.1.3

@@ -14,11 +14,11 @@ Creates or updates a virtual network gateway in the specified resource group.
 
 ### UpdateExpanded (Default)
 ```
-Set-AzVnetGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-AddressPrefix <String[]>] [-BgpAsn <Int64>] [-BgpPeerWeight <Int32>] [-BgpPeeringAddress <String>]
+Set-AzVnetGateway -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-AddressPrefix <String[]>] [-BgpAsn <Int64>] [-BgpPeeringAddress <String>] [-BgpPeerWeight <Int32>]
  [-CustomRouteAddressPrefix <String[]>] [-EnableActiveActive] [-EnableBgp] [-Etag <String>]
- [-GatewayDefaultSiteId <String>] [-GatewayType <VirtualNetworkGatewayType>]
- [-IPConfiguration <IVirtualNetworkGatewayIPConfiguration[]>] [-IPsecPolicy <IIpsecPolicy[]>] [-Id <String>]
+ [-GatewayDefaultSiteId <String>] [-GatewayType <VirtualNetworkGatewayType>] [-Id <String>]
+ [-IPConfiguration <IVirtualNetworkGatewayIPConfiguration[]>] [-IPsecPolicy <IIpsecPolicy[]>]
  [-Location <String>] [-Protocol <VpnClientProtocol[]>] [-RadiusServerAddress <String>]
  [-RadiusServerSecret <String>] [-ResourceGuid <String>]
  [-RevokedCertificate <IVpnClientRevokedCertificate[]>] [-RootCertificate <IVpnClientRootCertificate[]>]
@@ -29,8 +29,8 @@ Set-AzVnetGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <St
 
 ### Update
 ```
-Set-AzVnetGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -VnetGateway <IVirtualNetworkGateway> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Set-AzVnetGateway -Name <String> -ResourceGroupName <String> -VnetGateway <IVirtualNetworkGateway>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -85,7 +85,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -101,7 +101,7 @@ Aliases: Asn
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -133,7 +133,7 @@ Aliases: PeerWeight, BgpPeeringWeight
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -181,7 +181,7 @@ Aliases: EnableActiveActiveFeature
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -197,7 +197,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -344,7 +344,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -404,7 +404,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: GatewaySku, GatewayDefaultSite, VirtualNetworkGateway, DisableActiveActiveFeature
+Aliases:
 
 Required: True
 Position: Named
@@ -474,7 +474,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -521,9 +521,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -667,50 +667,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[Active <Boolean?>]`: ActiveActive flag
-  - `[BgpAsn <Int64?>]`: The BGP speaker's ASN.
-  - `[BgpPeerWeight <Int32?>]`: The weight added to routes learned from this BGP speaker.
-  - `[BgpPeeringAddress <String>]`: The BGP peering address and BGP identifier of this BGP speaker.
-  - `[CustomRouteAddressPrefix <String[]>]`: A list of address blocks reserved for this virtual network in CIDR notation.
-  - `[EnableBgp <Boolean?>]`: Whether BGP is enabled for this virtual network gateway or not.
-  - `[Etag <String>]`: Gets a unique read-only string that changes whenever the resource is updated.
-  - `[GatewayDefaultSiteId <String>]`: Resource ID.
-  - `[GatewayType <VirtualNetworkGatewayType?>]`: The type of this virtual network gateway. Possible values are: 'Vpn' and 'ExpressRoute'.
-  - `[IPConfiguration <IVirtualNetworkGatewayIPConfiguration[]>]`: IP configurations for virtual network gateway.
-    - `[Id <String>]`: Resource ID.
-    - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-    - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-    - `[PrivateIPAllocationMethod <IPAllocationMethod?>]`: The private IP address allocation method.
-    - `[PublicIPAddressId <String>]`: Resource ID.
-    - `[SubnetId <String>]`: Resource ID.
-  - `[ResourceGuid <String>]`: The resource GUID property of the VirtualNetworkGateway resource.
-  - `[SkuCapacity <Int32?>]`: The capacity.
-  - `[SkuName <VirtualNetworkGatewaySkuName?>]`: Gateway SKU name.
-  - `[SkuTier <VirtualNetworkGatewaySkuTier?>]`: Gateway SKU tier.
-  - `[VpnClientAddressPoolAddressPrefix <String[]>]`: A list of address blocks reserved for this virtual network in CIDR notation.
-  - `[VpnClientConfigurationRadiusServerAddress <String>]`: The radius server address property of the VirtualNetworkGateway resource for vpn client connection.
-  - `[VpnClientConfigurationRadiusServerSecret <String>]`: The radius secret property of the VirtualNetworkGateway resource for vpn client connection.
-  - `[VpnClientConfigurationVpnClientIpsecPolicy <IIpsecPolicy[]>]`: VpnClientIpsecPolicies for virtual network gateway P2S client.
-    - `DhGroup <DhGroup>`: The DH Group used in IKE Phase 1 for initial SA.
-    - `IkeEncryption <IkeEncryption>`: The IKE encryption algorithm (IKE phase 2).
-    - `IkeIntegrity <IkeIntegrity>`: The IKE integrity algorithm (IKE phase 2).
-    - `IpsecEncryption <IpsecEncryption>`: The IPSec encryption algorithm (IKE phase 1).
-    - `IpsecIntegrity <IpsecIntegrity>`: The IPSec integrity algorithm (IKE phase 1).
-    - `PfsGroup <PfsGroup>`: The Pfs Group used in IKE Phase 2 for new child SA.
-    - `SaDataSizeKilobyte <Int32>`: The IPSec Security Association (also called Quick Mode or Phase 2 SA) payload size in KB for a site to site VPN tunnel.
-    - `SaLifeTimeSecond <Int32>`: The IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime in seconds for a site to site VPN tunnel.
-  - `[VpnClientConfigurationVpnClientProtocol <VpnClientProtocol[]>]`: VpnClientProtocols for Virtual network gateway.
-  - `[VpnClientConfigurationVpnClientRevokedCertificate <IVpnClientRevokedCertificate[]>]`: VpnClientRevokedCertificate for Virtual network gateway.
-    - `[Id <String>]`: Resource ID.
-    - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-    - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-    - `[Thumbprint <String>]`: The revoked VPN client certificate thumbprint.
-  - `[VpnClientConfigurationVpnClientRootCertificate <IVpnClientRootCertificate[]>]`: VpnClientRootCertificate for virtual network gateway.
-    - `PublicCertData <String>`: The certificate public data.
-    - `[Id <String>]`: Resource ID.
-    - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-    - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  - `[VpnType <VpnType?>]`: The type of this virtual network gateway. Possible values are: 'PolicyBased' and 'RouteBased'.
 
 ## RELATED LINKS
 

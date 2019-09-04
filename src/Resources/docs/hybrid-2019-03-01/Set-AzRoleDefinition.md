@@ -12,17 +12,17 @@ Creates or updates a role definition.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzRoleDefinition -Id <String> -Scope <String> [-RoleDefinition <IRoleDefinition>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzRoleDefinition -Id <String> -Scope <String> [-AssignableScope <String[]>] [-Description <String>]
- [-Permission <IPermission[]>] [-PropertiesType <String>] [-RoleName <String>] [-DefaultProfile <PSObject>]
+ [-Permission <IPermission[]>] [-RoleName <String>] [-RoleType <String>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzRoleDefinition -Id <String> -Scope <String> -RoleDefinition <IRoleDefinition>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -131,8 +131,25 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -PropertiesType
-The role type.
+### -RoleDefinition
+Role definition.
+To construct, see NOTES section for ROLEDEFINITION properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20150701.IRoleDefinition
+Parameter Sets: Update
+Aliases: Role
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -RoleName
+The role name.
 
 ```yaml
 Type: System.String
@@ -147,25 +164,8 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -RoleDefinition
-Role definition.
-To construct, see NOTES section for ROLEDEFINITION properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20150701.IRoleDefinition
-Parameter Sets: Update
-Aliases: Role
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -RoleName
-The role name.
+### -RoleType
+The role type.
 
 ```yaml
 Type: System.String
@@ -257,8 +257,8 @@ To create the parameters described below, construct a hash table containing the 
   - `[Permission <IPermission[]>]`: Role definition permissions.
     - `[Action <String[]>]`: Allowed actions.
     - `[NotAction <String[]>]`: Denied actions.
-  - `[PropertiesType <String>]`: The role type.
   - `[RoleName <String>]`: The role name.
+  - `[RoleType <String>]`: The role type.
 
 ## RELATED LINKS
 

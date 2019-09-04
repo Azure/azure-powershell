@@ -16,10 +16,10 @@
   - Value `String`
 
 ### CloudError [Api20160401, Api20180501]
-  - ErrorCode `String`
-  - ErrorDetail `ICloudErrorBody[]`
-  - ErrorMessage `String`
-  - ErrorTarget `String`
+  - Code `String`
+  - Detail `ICloudErrorBody[]`
+  - Message `String`
+  - Target `String`
 
 ### CloudErrorBody [Api20160401, Api20180501]
   - Code `String`
@@ -32,7 +32,7 @@
 
 ### DnsIdentity [Models]
   - Id `String`
-  - RecordType `RecordType?`
+  - RecordType `RecordType?` **{A, Aaaa, Caa, Cname, Mx, Ns, Ptr, Soa, Srv, Txt}**
   - RelativeRecordSetName `String`
   - ResourceGroupName `String`
   - SubscriptionId `String`
@@ -78,7 +78,7 @@
   - Fqdn `String`
   - Id `String`
   - Location `String`
-  - Metadata `IRecordSetPropertiesMetadata`
+  - Metadata `IRecordSetPropertiesMetadata <String>`
   - MxRecord `IMxRecord[]`
   - Name `String`
   - NsRecord `INsRecord[]`
@@ -92,7 +92,7 @@
   - SoaRecordRetryTime `Int64?`
   - SoaRecordSerialNumber `Int64?`
   - SrvRecord `ISrvRecord[]`
-  - Tag `ITrackedResourceTags`
+  - Tag `ITrackedResourceTags <String>`
   - TargetResourceId `String`
   - Ttl `Int64?`
   - TxtRecord `ITxtRecord[]`
@@ -109,7 +109,7 @@
   - CnameRecord `ICnameRecord`
   - CnameRecordCname `String`
   - Fqdn `String`
-  - Metadata `IRecordSetPropertiesMetadata`
+  - Metadata `IRecordSetPropertiesMetadata <String>`
   - MxRecord `IMxRecord[]`
   - NsRecord `INsRecord[]`
   - ProvisioningState `String`
@@ -127,18 +127,12 @@
   - Ttl `Int64?`
   - TxtRecord `ITxtRecord[]`
 
-### RecordSetPropertiesMetadata [Api20160401]
-  - Item `String`
-
 ### Resource [Api10, Api20180501]
   - Id `String`
   - Location `String`
   - Name `String`
-  - Tag `IResourceTags`
+  - Tag `IResourceTags <String>`
   - Type `String`
-
-### ResourceTags [Api20180501]
-  - Item `String`
 
 ### SoaRecord [Api20150504Preview, Api20160401]
   - Email `String`
@@ -162,11 +156,8 @@
   - Id `String`
   - Location `String`
   - Name `String`
-  - Tag `ITrackedResourceTags`
+  - Tag `ITrackedResourceTags <String>`
   - Type `String`
-
-### TrackedResourceTags [Api10]
-  - Item `String`
 
 ### TxtRecord [Api20150504Preview]
   - Value `String[]`
@@ -181,15 +172,15 @@
   - NumberOfRecordSet `Int64?`
   - RegistrationVirtualNetwork `ISubResource[]`
   - ResolutionVirtualNetwork `ISubResource[]`
-  - Tag `IResourceTags`
+  - Tag `IResourceTags <String>`
   - Type `String`
-  - ZoneType `ZoneType?`
+  - ZoneType `ZoneType?` **{Private, Public}**
 
 ### ZoneDeleteResult [Api20160401]
   - AzureAsyncOperation `String`
   - RequestId `String`
-  - Status `OperationStatus?`
-  - StatusCode `HttpStatusCode?`
+  - Status `OperationStatus?` **{Failed, InProgress, Succeeded}**
+  - StatusCode `HttpStatusCode?` **{Accepted, Ambiguous, BadGateway, BadRequest, Conflict, Continue, Created, ExpectationFailed, Forbidden, Found, GatewayTimeout, Gone, HttpVersionNotSupported, InternalServerError, LengthRequired, MethodNotAllowed, Moved, MovedPermanently, MultipleChoices, NoContent, NonAuthoritativeInformation, NotAcceptable, NotFound, NotImplemented, NotModified, Ok, PartialContent, PaymentRequired, PreconditionFailed, ProxyAuthenticationRequired, Redirect, RedirectKeepVerb, RedirectMethod, RequestEntityTooLarge, RequestTimeout, RequestUriTooLong, RequestedRangeNotSatisfiable, ResetContent, SeeOther, ServiceUnavailable, SwitchingProtocols, TemporaryRedirect, Unauthorized, UnsupportedMediaType, Unused, UpgradeRequired, UseProxy}**
 
 ### ZoneListResult [Api20160401, Api20180501]
   - NextLink `String`
@@ -201,11 +192,8 @@
   - NumberOfRecordSet `Int64?`
   - RegistrationVirtualNetwork `ISubResource[]`
   - ResolutionVirtualNetwork `ISubResource[]`
-  - ZoneType `ZoneType?`
+  - ZoneType `ZoneType?` **{Private, Public}**
 
 ### ZoneUpdate [Api20180501]
-  - Tag `IZoneUpdateTags`
-
-### ZoneUpdateTags [Api20180501]
-  - Item `String`
+  - Tag `IZoneUpdateTags <String>`
 

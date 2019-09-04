@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.WebSite
-online version: https://docs.microsoft.com/en-us/powershell/module/az.website/get-azappserviceenvironmentmultirolepoolsku
+Module Name: Az.AppService
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/get-azappserviceenvironmentmultirolepoolsku
 schema: 2.0.0
 ---
 
@@ -115,7 +115,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISkuInfo
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.ISkuInfo
 
 ## ALIASES
 

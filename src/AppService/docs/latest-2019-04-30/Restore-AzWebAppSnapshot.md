@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.WebSite
-online version: https://docs.microsoft.com/en-us/powershell/module/az.website/restore-azwebappsnapshot
+Module Name: Az.AppService
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/restore-azwebappsnapshot
 schema: 2.0.0
 ---
 
@@ -12,57 +12,56 @@ Restores a web app from a snapshot.
 
 ## SYNTAX
 
-### Restore (Default)
+### RestoreExpanded (Default)
 ```
-Restore-AzWebAppSnapshot -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-PassThru]
- [-RestoreRequest <ISnapshotRestoreRequest>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Restore-AzWebAppSnapshot -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ [-IgnoreConflictingHostName] [-Kind <String>] [-Overwrite] [-RecoverConfiguration]
+ [-RecoverySourceId <String>] [-RecoverySourceLocation <String>] [-SnapshotTime <String>] [-UseDrSecondary]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### RestoreSlot
+### Restore
 ```
-Restore-AzWebAppSnapshot -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Slot <String>
- [-PassThru] [-RestoreRequest <ISnapshotRestoreRequest>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Restore-AzWebAppSnapshot -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -RestoreRequest <ISnapshotRestoreRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### RestoreExpandedSlot
 ```
-Restore-AzWebAppSnapshot -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Slot <String>
- [-PassThru] [-IgnoreConflictingHostName] [-Kind <String>] [-Overwrite] [-RecoverConfiguration]
- [-RecoverySourceId <String>] [-RecoverySourceLocation <String>] [-SnapshotTime <String>] [-UseDrSecondary]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### RestoreExpanded
-```
-Restore-AzWebAppSnapshot -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-PassThru]
+Restore-AzWebAppSnapshot -Name <String> -ResourceGroupName <String> -Slot <String> -SubscriptionId <String>
  [-IgnoreConflictingHostName] [-Kind <String>] [-Overwrite] [-RecoverConfiguration]
  [-RecoverySourceId <String>] [-RecoverySourceLocation <String>] [-SnapshotTime <String>] [-UseDrSecondary]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### RestoreViaIdentityExpandedSlot
+### RestoreSlot
 ```
-Restore-AzWebAppSnapshot -InputObject <IWebSiteIdentity> [-PassThru] [-IgnoreConflictingHostName]
- [-Kind <String>] [-Overwrite] [-RecoverConfiguration] [-RecoverySourceId <String>]
- [-RecoverySourceLocation <String>] [-SnapshotTime <String>] [-UseDrSecondary] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### RestoreViaIdentityExpanded
-```
-Restore-AzWebAppSnapshot -InputObject <IWebSiteIdentity> [-PassThru] [-IgnoreConflictingHostName]
- [-Kind <String>] [-Overwrite] [-RecoverConfiguration] [-RecoverySourceId <String>]
- [-RecoverySourceLocation <String>] [-SnapshotTime <String>] [-UseDrSecondary] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Restore-AzWebAppSnapshot -Name <String> -ResourceGroupName <String> -Slot <String> -SubscriptionId <String>
+ -RestoreRequest <ISnapshotRestoreRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### RestoreViaIdentity
 ```
-Restore-AzWebAppSnapshot -InputObject <IWebSiteIdentity> [-PassThru]
- [-RestoreRequest <ISnapshotRestoreRequest>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Restore-AzWebAppSnapshot -InputObject <IAppServiceIdentity> -RestoreRequest <ISnapshotRestoreRequest>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### RestoreViaIdentityExpanded
+```
+Restore-AzWebAppSnapshot -InputObject <IAppServiceIdentity> [-IgnoreConflictingHostName] [-Kind <String>]
+ [-Overwrite] [-RecoverConfiguration] [-RecoverySourceId <String>] [-RecoverySourceLocation <String>]
+ [-SnapshotTime <String>] [-UseDrSecondary] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### RestoreViaIdentityExpandedSlot
+```
+Restore-AzWebAppSnapshot -InputObject <IAppServiceIdentity> [-IgnoreConflictingHostName] [-Kind <String>]
+ [-Overwrite] [-RecoverConfiguration] [-RecoverySourceId <String>] [-RecoverySourceLocation <String>]
+ [-SnapshotTime <String>] [-UseDrSecondary] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -100,7 +99,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -127,12 +126,12 @@ If true, custom hostname conflicts will be ignored when recovering to a target w
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: RestoreExpandedSlot, RestoreExpanded, RestoreViaIdentityExpandedSlot, RestoreViaIdentityExpanded
+Parameter Sets: RestoreExpanded, RestoreExpandedSlot, RestoreViaIdentityExpanded, RestoreViaIdentityExpandedSlot
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -140,10 +139,11 @@ Dynamic: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
-Parameter Sets: RestoreViaIdentityExpandedSlot, RestoreViaIdentityExpanded, RestoreViaIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.IAppServiceIdentity
+Parameter Sets: RestoreViaIdentity, RestoreViaIdentityExpanded, RestoreViaIdentityExpandedSlot
 Aliases:
 
 Required: True
@@ -159,7 +159,7 @@ Kind of resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: RestoreExpandedSlot, RestoreExpanded, RestoreViaIdentityExpandedSlot, RestoreViaIdentityExpanded
+Parameter Sets: RestoreExpanded, RestoreExpandedSlot, RestoreViaIdentityExpanded, RestoreViaIdentityExpandedSlot
 Aliases:
 
 Required: False
@@ -175,7 +175,7 @@ Name of web app.
 
 ```yaml
 Type: System.String
-Parameter Sets: Restore, RestoreSlot, RestoreExpandedSlot, RestoreExpanded
+Parameter Sets: Restore, RestoreExpanded, RestoreExpandedSlot, RestoreSlot
 Aliases:
 
 Required: True
@@ -196,30 +196,30 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
 
 ### -Overwrite
-If <code>true</code> the restore operation can overwrite source app; otherwise, <code>false</code>.
+If \<code\>true\</code\> the restore operation can overwrite source app; otherwise, \<code\>false\</code\>.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: RestoreExpandedSlot, RestoreExpanded, RestoreViaIdentityExpandedSlot, RestoreViaIdentityExpanded
+Parameter Sets: RestoreExpanded, RestoreExpandedSlot, RestoreViaIdentityExpanded, RestoreViaIdentityExpandedSlot
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
 
 ### -PassThru
-When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -228,7 +228,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -239,12 +239,12 @@ If true, site configuration, in addition to content, will be reverted.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: RestoreExpandedSlot, RestoreExpanded, RestoreViaIdentityExpandedSlot, RestoreViaIdentityExpanded
+Parameter Sets: RestoreExpanded, RestoreExpandedSlot, RestoreViaIdentityExpanded, RestoreViaIdentityExpandedSlot
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -256,7 +256,7 @@ ARM resource ID of the source app.
 
 ```yaml
 Type: System.String
-Parameter Sets: RestoreExpandedSlot, RestoreExpanded, RestoreViaIdentityExpandedSlot, RestoreViaIdentityExpanded
+Parameter Sets: RestoreExpanded, RestoreExpandedSlot, RestoreViaIdentityExpanded, RestoreViaIdentityExpandedSlot
 Aliases:
 
 Required: False
@@ -273,7 +273,7 @@ SouthEastAsia, SouthCentralUS
 
 ```yaml
 Type: System.String
-Parameter Sets: RestoreExpandedSlot, RestoreExpanded, RestoreViaIdentityExpandedSlot, RestoreViaIdentityExpanded
+Parameter Sets: RestoreExpanded, RestoreExpandedSlot, RestoreViaIdentityExpanded, RestoreViaIdentityExpandedSlot
 Aliases:
 
 Required: False
@@ -289,7 +289,7 @@ Name of the resource group to which the resource belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Restore, RestoreSlot, RestoreExpandedSlot, RestoreExpanded
+Parameter Sets: Restore, RestoreExpanded, RestoreExpandedSlot, RestoreSlot
 Aliases:
 
 Required: True
@@ -305,11 +305,11 @@ Details about app recovery operation.
 To construct, see NOTES section for RESTOREREQUEST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISnapshotRestoreRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.ISnapshotRestoreRequest
 Parameter Sets: Restore, RestoreSlot, RestoreViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -323,7 +323,7 @@ If not specified then will default to production slot.
 
 ```yaml
 Type: System.String
-Parameter Sets: RestoreSlot, RestoreExpandedSlot
+Parameter Sets: RestoreExpandedSlot, RestoreSlot
 Aliases:
 
 Required: True
@@ -339,7 +339,7 @@ Point in time in which the app restore should be done, formatted as a DateTime s
 
 ```yaml
 Type: System.String
-Parameter Sets: RestoreExpandedSlot, RestoreExpanded, RestoreViaIdentityExpandedSlot, RestoreViaIdentityExpanded
+Parameter Sets: RestoreExpanded, RestoreExpandedSlot, RestoreViaIdentityExpanded, RestoreViaIdentityExpandedSlot
 Aliases:
 
 Required: False
@@ -357,7 +357,7 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: Restore, RestoreSlot, RestoreExpandedSlot, RestoreExpanded
+Parameter Sets: Restore, RestoreExpanded, RestoreExpandedSlot, RestoreSlot
 Aliases:
 
 Required: True
@@ -373,12 +373,12 @@ If true, the snapshot is retrieved from DRSecondary endpoint.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: RestoreExpandedSlot, RestoreExpanded, RestoreViaIdentityExpandedSlot, RestoreViaIdentityExpanded
+Parameter Sets: RestoreExpanded, RestoreExpandedSlot, RestoreViaIdentityExpanded, RestoreViaIdentityExpandedSlot
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -422,9 +422,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.ISnapshotRestoreRequest
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISnapshotRestoreRequest
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.IAppServiceIdentity
 
 ## OUTPUTS
 
@@ -438,6 +438,50 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### INPUTOBJECT <IAppServiceIdentity>: Identity Parameter
+  - `[AnalysisName <String>]`: Analysis Name
+  - `[ApiName <String>]`: The managed API name.
+  - `[BackupId <String>]`: ID of the backup.
+  - `[BaseAddress <String>]`: Module base address.
+  - `[CertificateOrderName <String>]`: Name of the certificate order.
+  - `[ConnectionName <String>]`: The connection name.
+  - `[DeletedSiteId <String>]`: The numeric ID of the deleted app, e.g. 12345
+  - `[DetectorName <String>]`: Detector Resource Name
+  - `[DiagnosticCategory <String>]`: Diagnostic Category
+  - `[DiagnosticsName <String>]`: Name of the diagnostics item.
+  - `[DomainName <String>]`: Name of the domain.
+  - `[DomainOwnershipIdentifierName <String>]`: Name of domain ownership identifier.
+  - `[EntityName <String>]`: Name of the hybrid connection.
+  - `[FunctionName <String>]`: Function name.
+  - `[GatewayName <String>]`: Name of the gateway. Only the 'primary' gateway is supported.
+  - `[HostName <String>]`: Hostname in the hostname binding.
+  - `[HostingEnvironmentName <String>]`: Name of the hosting environment.
+  - `[Id <String>]`: Resource identity path
+  - `[Instance <String>]`: Name of the instance in the multi-role pool.
+  - `[InstanceId <String>]`: ID of web app instance.
+  - `[Location <String>]`: 
+  - `[Name <String>]`: Name of the certificate.
+  - `[NamespaceName <String>]`: Name of the Service Bus namespace.
+  - `[OperationId <String>]`: GUID of the operation.
+  - `[PremierAddOnName <String>]`: Add-on name.
+  - `[ProcessId <String>]`: PID.
+  - `[PublicCertificateName <String>]`: Public certificate name.
+  - `[RelayName <String>]`: Name of the Service Bus relay.
+  - `[ResourceGroupName <String>]`: Name of the resource group to which the resource belongs.
+  - `[RouteName <String>]`: Name of the Virtual Network route.
+  - `[SiteExtensionId <String>]`: Site extension name.
+  - `[SiteName <String>]`: Site Name
+  - `[Slot <String>]`: Name of web app slot. If not specified then will default to production slot.
+  - `[SnapshotId <String>]`: The ID of the snapshot to read.
+  - `[SourceControlType <String>]`: Type of source control
+  - `[SubscriptionId <String>]`: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  - `[ThreadId <String>]`: TID.
+  - `[View <String>]`: The type of view. This can either be "summary" or "detailed".
+  - `[VnetName <String>]`: Name of the Virtual Network.
+  - `[WebJobName <String>]`: Name of Web Job.
+  - `[WorkerName <String>]`: Name of worker machine, which typically starts with RD.
+  - `[WorkerPoolName <String>]`: Name of the worker pool.
 
 #### RESTOREREQUEST <ISnapshotRestoreRequest>: Details about app recovery operation.
   - `Overwrite <Boolean>`: If <code>true</code> the restore operation can overwrite source app; otherwise, <code>false</code>.

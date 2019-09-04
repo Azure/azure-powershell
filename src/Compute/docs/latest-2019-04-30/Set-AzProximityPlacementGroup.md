@@ -97,9 +97,10 @@ Specifies the type of the proximity placement group.
 
  Possible values are: 
 
- **Standard** 
+ **Standard** : Co-locate resources within an Azure region or Availability Zone.
 
- **Ultra**
+
+ **Ultra** : For future use.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.ProximityPlacementGroupType

@@ -12,13 +12,7 @@ Grants OAuth2 permissions for the relevant resource Ids of an app.
 
 ## SYNTAX
 
-### Create (Default)
-```
-New-AzOAuth2PermissionGrant -TenantId <String> [-Body <IOAuth2PermissionGrant>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded
+### CreateExpanded (Default)
 ```
 New-AzOAuth2PermissionGrant -TenantId <String> [-ClientId <String>] [-ConsentType <ConsentType>]
  [-ExpiryTime <String>] [-ObjectId <String>] [-OdataType <String>] [-PrincipalId <String>]
@@ -26,17 +20,23 @@ New-AzOAuth2PermissionGrant -TenantId <String> [-ClientId <String>] [-ConsentTyp
  [-WhatIf] [<CommonParameters>]
 ```
 
+### Create
+```
+New-AzOAuth2PermissionGrant -TenantId <String> -Body <IOAuth2PermissionGrant> [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentity
+```
+New-AzOAuth2PermissionGrant -InputObject <IResourcesIdentity> -Body <IOAuth2PermissionGrant>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### CreateViaIdentityExpanded
 ```
 New-AzOAuth2PermissionGrant -InputObject <IResourcesIdentity> [-ClientId <String>]
  [-ConsentType <ConsentType>] [-ExpiryTime <String>] [-ObjectId <String>] [-OdataType <String>]
  [-PrincipalId <String>] [-ResourceId <String>] [-Scope <String>] [-StartTime <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzOAuth2PermissionGrant -InputObject <IResourcesIdentity> [-Body <IOAuth2PermissionGrant>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -74,7 +74,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IOAuth2Permissio
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -148,10 +148,11 @@ Dynamic: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
+Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -313,9 +314,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api16.IOAuth2PermissionGrant
+
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
 
 ## OUTPUTS
 
@@ -328,7 +329,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### BODY <IOAuth2PermissionGrant>: 
+#### BODY <IOAuth2PermissionGrant>: HELP MESSAGE MISSING
   - `[ClientId <String>]`: The id of the resource's service principal granted consent to impersonate the user when accessing the resource (represented by the resourceId property).
   - `[ConsentType <ConsentType?>]`: Indicates if consent was provided by the administrator (on behalf of the organization) or by an individual.
   - `[ExpiryTime <String>]`: Expiry time for TTL
@@ -338,6 +339,53 @@ To create the parameters described below, construct a hash table containing the 
   - `[ResourceId <String>]`: Object Id of the resource you want to grant
   - `[Scope <String>]`: Specifies the value of the scope claim that the resource application should expect in the OAuth 2.0 access token. For example, User.Read
   - `[StartTime <String>]`: Start time for TTL
+
+#### INPUTOBJECT <IResourcesIdentity>: Identity Parameter
+  - `[ApplianceDefinitionId <String>]`: The fully qualified ID of the appliance definition, including the appliance name and the appliance definition resource type. Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/applianceDefinitions/{applianceDefinition-name}
+  - `[ApplianceDefinitionName <String>]`: The name of the appliance definition.
+  - `[ApplianceId <String>]`: The fully qualified ID of the appliance, including the appliance name and the appliance resource type. Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/appliances/{appliance-name}
+  - `[ApplianceName <String>]`: The name of the appliance.
+  - `[ApplicationDefinitionId <String>]`: The fully qualified ID of the managed application definition, including the managed application name and the managed application definition resource type. Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/applicationDefinitions/{applicationDefinition-name}
+  - `[ApplicationDefinitionName <String>]`: The name of the managed application definition.
+  - `[ApplicationId <String>]`: The application ID.
+  - `[ApplicationId1 <String>]`: The fully qualified ID of the managed application, including the managed application name and the managed application resource type. Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/applications/{application-name}
+  - `[ApplicationName <String>]`: The name of the managed application.
+  - `[ApplicationObjectId <String>]`: Application object ID.
+  - `[DenyAssignmentId <String>]`: The ID of the deny assignment to get.
+  - `[DeploymentName <String>]`: The name of the deployment.
+  - `[DomainName <String>]`: name of the domain.
+  - `[FeatureName <String>]`: The name of the feature to get.
+  - `[GroupId <String>]`: Management Group ID.
+  - `[GroupObjectId <String>]`: The object ID of the group from which to remove the member.
+  - `[Id <String>]`: Resource identity path
+  - `[LinkId <String>]`: The fully qualified ID of the resource link. Use the format, /subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/{provider-namespace}/{resource-type}/{resource-name}/Microsoft.Resources/links/{link-name}. For example, /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myGroup/Microsoft.Web/sites/mySite/Microsoft.Resources/links/myLink
+  - `[LockName <String>]`: The name of lock.
+  - `[ManagementGroupId <String>]`: The ID of the management group.
+  - `[MemberObjectId <String>]`: Member object id
+  - `[ObjectId <String>]`: Application object ID.
+  - `[OperationId <String>]`: The ID of the operation to get.
+  - `[OwnerObjectId <String>]`: Owner object id
+  - `[ParentResourcePath <String>]`: The parent resource identity.
+  - `[PolicyAssignmentId <String>]`: The ID of the policy assignment to delete. Use the format '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
+  - `[PolicyAssignmentName <String>]`: The name of the policy assignment to delete.
+  - `[PolicyDefinitionName <String>]`: The name of the policy definition to create.
+  - `[PolicySetDefinitionName <String>]`: The name of the policy set definition to create.
+  - `[ResourceGroupName <String>]`: The name of the resource group that contains the resource to delete. The name is case insensitive.
+  - `[ResourceId <String>]`: The fully qualified ID of the resource, including the resource name and resource type. Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name}
+  - `[ResourceName <String>]`: The name of the resource to delete.
+  - `[ResourceProviderNamespace <String>]`: The namespace of the resource provider.
+  - `[ResourceType <String>]`: The resource type.
+  - `[RoleAssignmentId <String>]`: The ID of the role assignment to delete.
+  - `[RoleAssignmentName <String>]`: The name of the role assignment to delete.
+  - `[RoleDefinitionId <String>]`: The ID of the role definition to delete.
+  - `[RoleId <String>]`: The ID of the role assignment to delete.
+  - `[Scope <String>]`: The scope for the lock. 
+  - `[SourceResourceGroupName <String>]`: The name of the resource group containing the resources to move.
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
+  - `[TagName <String>]`: The name of the tag.
+  - `[TagValue <String>]`: The value of the tag to delete.
+  - `[TenantId <String>]`: The tenant ID.
+  - `[UpnOrObjectId <String>]`: The object ID or principal name of the user for which to get information.
 
 ## RELATED LINKS
 

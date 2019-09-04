@@ -12,17 +12,17 @@ Updates source control token
 
 ## SYNTAX
 
-### Update1 (Default)
-```
-Set-AzWebSiteSourceControl -Type <String> [-RequestMessage <ISourceControl>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded1
+### UpdateExpanded1 (Default)
 ```
 Set-AzWebSiteSourceControl -Type <String> [-ExpirationTime <DateTime>] [-Kind <String>]
  [-RefreshToken <String>] [-Token <String>] [-TokenSecret <String>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
+```
+
+### Update1
+```
+Set-AzWebSiteSourceControl -Type <String> -RequestMessage <ISourceControl> [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -123,7 +123,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISourceContr
 Parameter Sets: Update1
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

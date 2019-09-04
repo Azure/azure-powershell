@@ -15,7 +15,8 @@ The operation to update a virtual machine.
 ### UpdateExpanded1 (Default)
 ```
 Update-AzVM -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-AvailabilitySetId <String>]
- [-BootDiagnosticEnabled] [-BootDiagnosticStorageUri <String>] [-DataDisk <IDataDisk[]>]
+ [-BillingProfileMaxPrice <Double>] [-BootDiagnosticEnabled] [-BootDiagnosticStorageUri <String>]
+ [-DataDisk <IDataDisk[]>] [-EvictionPolicy <VirtualMachineEvictionPolicyTypes>] [-HostId <String>]
  [-IdentityId <Hashtable>] [-IdentityType <ResourceIdentityType>] [-ImageReferenceId <String>]
  [-ImageReferenceOffer <String>] [-ImageReferencePublisher <String>] [-ImageReferenceSku <String>]
  [-ImageReferenceVersion <String>] [-LicenseType <String>] [-LinuxConfigurationDisablePasswordAuthentication]
@@ -24,7 +25,8 @@ Update-AzVM -Name <String> -ResourceGroupName <String> -SubscriptionId <String> 
  [-OSProfileAdminUsername <String>] [-OSProfileAllowExtensionOperation] [-OSProfileComputerName <String>]
  [-OSProfileCustomData <String>] [-OSProfileSecret <IVaultSecretGroup[]>] [-PlanName <String>]
  [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>]
- [-ProximityPlacementGroupId <String>] [-Size <VirtualMachineSizeTypes>] [-Tag <Hashtable>] [-UltraSsdEnabled]
+ [-Priority <VirtualMachinePriorityTypes>] [-ProximityPlacementGroupId <String>]
+ [-Size <VirtualMachineSizeTypes>] [-Tag <Hashtable>] [-UltraSsdEnabled] [-VirtualMachineScaleSetId <String>]
  [-WindowConfigurationAdditionalUnattendContent <IAdditionalUnattendContent[]>]
  [-WindowConfigurationEnableAutomaticUpdate] [-WindowConfigurationProvisionVMAgent]
  [-WindowConfigurationTimeZone <String>] [-WinRmListener <IWinRmListener[]>] [-Zone <String[]>]
@@ -33,8 +35,9 @@ Update-AzVM -Name <String> -ResourceGroupName <String> -SubscriptionId <String> 
 
 ### UpdateViaIdentityExpanded1
 ```
-Update-AzVM -InputObject <IComputeIdentity> [-AvailabilitySetId <String>] [-BootDiagnosticEnabled]
- [-BootDiagnosticStorageUri <String>] [-DataDisk <IDataDisk[]>] [-IdentityId <Hashtable>]
+Update-AzVM -InputObject <IComputeIdentity> [-AvailabilitySetId <String>] [-BillingProfileMaxPrice <Double>]
+ [-BootDiagnosticEnabled] [-BootDiagnosticStorageUri <String>] [-DataDisk <IDataDisk[]>]
+ [-EvictionPolicy <VirtualMachineEvictionPolicyTypes>] [-HostId <String>] [-IdentityId <Hashtable>]
  [-IdentityType <ResourceIdentityType>] [-ImageReferenceId <String>] [-ImageReferenceOffer <String>]
  [-ImageReferencePublisher <String>] [-ImageReferenceSku <String>] [-ImageReferenceVersion <String>]
  [-LicenseType <String>] [-LinuxConfigurationDisablePasswordAuthentication]
@@ -43,7 +46,8 @@ Update-AzVM -InputObject <IComputeIdentity> [-AvailabilitySetId <String>] [-Boot
  [-OSProfileAdminUsername <String>] [-OSProfileAllowExtensionOperation] [-OSProfileComputerName <String>]
  [-OSProfileCustomData <String>] [-OSProfileSecret <IVaultSecretGroup[]>] [-PlanName <String>]
  [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>]
- [-ProximityPlacementGroupId <String>] [-Size <VirtualMachineSizeTypes>] [-Tag <Hashtable>] [-UltraSsdEnabled]
+ [-Priority <VirtualMachinePriorityTypes>] [-ProximityPlacementGroupId <String>]
+ [-Size <VirtualMachineSizeTypes>] [-Tag <Hashtable>] [-UltraSsdEnabled] [-VirtualMachineScaleSetId <String>]
  [-WindowConfigurationAdditionalUnattendContent <IAdditionalUnattendContent[]>]
  [-WindowConfigurationEnableAutomaticUpdate] [-WindowConfigurationProvisionVMAgent]
  [-WindowConfigurationTimeZone <String>] [-WinRmListener <IWinRmListener[]>] [-Zone <String[]>]
@@ -96,6 +100,45 @@ Resource Id
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -BillingProfileMaxPrice
+Specifies the maximum price you are willing to pay for a low priority VM/VMSS.
+This price is in US Dollars.
+
+
+ This price will be compared with the current low priority price for the VM size.
+Also, the prices are compared at the time of create/update of low priority VM/VMSS and the operation will only succeed if the maxPrice is greater than the current low priority price.
+
+
+ The maxPrice will also be used for evicting a low priority VM/VMSS if the current low priority price goes beyond the maxPrice after creation of VM/VMSS.
+
+
+ Possible values are: 
+
+ - Any decimal value greater than zero.
+Example: $0.01538 
+
+ -1 – indicates default price to be up-to on-demand.
+
+
+ You can set the maxPrice to -1 to indicate that the low priority VM/VMSS should not be evicted for price reasons.
+Also, the default max price is -1 if it is not provided by you.
+
+
+Minimum api-version: 2019-03-01.
+
+```yaml
+Type: System.Double
 Parameter Sets: (All)
 Aliases:
 
@@ -166,6 +209,42 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -EvictionPolicy
+Specifies the eviction policy for the low priority virtual machine.
+Only supported value is 'Deallocate'.
+
+
+Minimum api-version: 2019-03-01
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.VirtualMachineEvictionPolicyTypes
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -HostId
+Resource Id
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -682,6 +761,25 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Priority
+Specifies the priority for the virtual machine.
+
+
+Minimum api-version: 2019-03-01
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.VirtualMachinePriorityTypes
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -ProximityPlacementGroupId
 Resource Id
 
@@ -791,6 +889,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -VirtualMachineScaleSetId
+Resource Id
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -WindowConfigurationAdditionalUnattendContent
 Specifies additional base-64 encoded XML formatted information that can be included in the Unattend.xml file, which is used by Windows Setup.
 To construct, see NOTES section for WINDOWCONFIGURATIONADDITIONALUNATTENDCONTENT properties and create a hash table.
@@ -809,7 +923,7 @@ Dynamic: False
 ```
 
 ### -WindowConfigurationEnableAutomaticUpdate
-Indicates whether virtual machine is enabled for automatic Windows updates.
+Indicates whether Automatic Updates is enabled for the Windows virtual machine.
 Default value is true.
 
 
@@ -959,7 +1073,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[ManagedStorageAccountType <StorageAccountTypes?>]`: Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS can only be used with data disks, it cannot be used with OS Disk.
   - `[Name <String>]`: The disk name.
   - `[SizeInGb <Int32?>]`: Specifies the size of an empty data disk in gigabytes. This element can be used to overwrite the size of the disk in a virtual machine image.    This value cannot be larger than 1023 GB
-  - `[ToBeDetached <Boolean?>]`: Specifies whether the datadisk is in process of detachment from the VirtualMachine/VirtualMachineScaleset
+  - `[ToBeDetached <Boolean?>]`: Specifies whether the data disk is in process of detachment from the VirtualMachine/VirtualMachineScaleset
   - `[VhdUri <String>]`: Specifies the virtual hard disk's uri.
   - `[WriteAcceleratorEnabled <Boolean?>]`: Specifies whether writeAccelerator should be enabled or disabled on the disk.
 
@@ -967,6 +1081,8 @@ To create the parameters described below, construct a hash table containing the 
   - `[AvailabilitySetName <String>]`: The name of the availability set.
   - `[CommandId <String>]`: The command id.
   - `[DiskName <String>]`: The name of the managed disk that is being created. The name can't be changed after the disk is created. Supported characters for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
+  - `[GalleryApplicationName <String>]`: The name of the gallery Application Definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+  - `[GalleryApplicationVersionName <String>]`: The name of the gallery Application Version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
   - `[GalleryImageDefinitionName <String>]`: The name of the gallery Image Definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
   - `[GalleryImageVersionName <String>]`: The name of the gallery Image Version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
   - `[GalleryName <String>]`: The name of the Shared Image Gallery. The allowed characters are alphabets and numbers with dots and periods allowed in the middle. The maximum length is 80 characters.

@@ -13,17 +13,24 @@ This operation requires the storage/regeneratekey permission.
 
 ## SYNTAX
 
-### Regenerate (Default)
-```
-New-AzKeyVaultStorageAccountKey -StorageAccountName <String> [-KeyVaultDnsSuffix <String>]
- [-VaultName <String>] [-Parameter <IStorageAccountRegenerteKeyParameters>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### RegenerateExpanded
+### RegenerateExpanded (Default)
 ```
 New-AzKeyVaultStorageAccountKey -StorageAccountName <String> -KeyName <String> [-KeyVaultDnsSuffix <String>]
  [-VaultName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Regenerate
+```
+New-AzKeyVaultStorageAccountKey -StorageAccountName <String>
+ -Parameter <IStorageAccountRegenerteKeyParameters> [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### RegenerateViaIdentity
+```
+New-AzKeyVaultStorageAccountKey -InputObject <IKeyVaultIdentity>
+ -Parameter <IStorageAccountRegenerteKeyParameters> [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### RegenerateViaIdentityExpanded
@@ -31,13 +38,6 @@ New-AzKeyVaultStorageAccountKey -StorageAccountName <String> -KeyName <String> [
 New-AzKeyVaultStorageAccountKey -InputObject <IKeyVaultIdentity> -KeyName <String>
  [-KeyVaultDnsSuffix <String>] [-VaultName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
-```
-
-### RegenerateViaIdentity
-```
-New-AzKeyVaultStorageAccountKey -InputObject <IKeyVaultIdentity> [-KeyVaultDnsSuffix <String>]
- [-VaultName <String>] [-Parameter <IStorageAccountRegenerteKeyParameters>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,10 +84,11 @@ Dynamic: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentity
-Parameter Sets: RegenerateViaIdentityExpanded, RegenerateViaIdentity
+Parameter Sets: RegenerateViaIdentity, RegenerateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -139,7 +140,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IStorageAcc
 Parameter Sets: Regenerate, RegenerateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -217,9 +218,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentity
-
 ### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IStorageAccountRegenerteKeyParameters
+
+### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentity
 
 ## OUTPUTS
 
@@ -233,6 +234,23 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### INPUTOBJECT <IKeyVaultIdentity>: Identity Parameter
+  - `[CertificateName <String>]`: The name of the certificate.
+  - `[CertificateVersion <String>]`: The version of the certificate.
+  - `[Id <String>]`: Resource identity path
+  - `[IssuerName <String>]`: The name of the issuer.
+  - `[KeyName <String>]`: The name for the new key. The system will generate the version name for the new key.
+  - `[KeyVersion <String>]`: The version of the key to update.
+  - `[Location <String>]`: The location of the deleted vault.
+  - `[OperationKind <AccessPolicyUpdateKind?>]`: Name of the operation
+  - `[ResourceGroupName <String>]`: The name of the Resource Group to which the server belongs.
+  - `[SasDefinitionName <String>]`: The name of the SAS definition.
+  - `[SecretName <String>]`: The name of the secret.
+  - `[SecretVersion <String>]`: The version of the secret.
+  - `[StorageAccountName <String>]`: The name of the storage account.
+  - `[SubscriptionId <String>]`: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  - `[VaultName <String>]`: Name of the vault
 
 #### PARAMETER <IStorageAccountRegenerteKeyParameters>: The storage account key regenerate parameters.
   - `KeyName <String>`: The storage account key name.

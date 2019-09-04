@@ -13,18 +13,18 @@ This operation requires the storage/set permission.
 
 ## SYNTAX
 
-### Set (Default)
-```
-Set-AzKeyVaultStorageAccount -Name <String> [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
- [-Parameter <IStorageAccountCreateParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### SetExpanded
+### SetExpanded (Default)
 ```
 Set-AzKeyVaultStorageAccount -Name <String> -ActiveKeyName <String> -AutoRegenerateKey -ResourceId <String>
  [-KeyVaultDnsSuffix <String>] [-VaultName <String>] [-Enabled] [-RegenerationPeriod <String>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Set
+```
+Set-AzKeyVaultStorageAccount -Name <String> -Parameter <IStorageAccountCreateParameters>
+ [-KeyVaultDnsSuffix <String>] [-VaultName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -79,7 +79,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -111,7 +111,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -158,7 +158,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IStorageAcc
 Parameter Sets: Set
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

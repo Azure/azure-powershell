@@ -47,7 +47,3 @@ Does not modify DNS records within the zone.
 ### [Update-AzDnsRecordSet](Update-AzDnsRecordSet.md)
 Updates a record set within a DNS zone.
 
-### [Update-AzDnsZone](Update-AzDnsZone.md)
-Updates a DNS zone.
-Does not modify DNS records within the zone.
-

@@ -15,7 +15,7 @@ Creates or updates a service endpoint policy definition in the specified service
 ### UpdateExpanded (Default)
 ```
 Set-AzServiceEndpointPolicyDefinition -Name <String> -ResourceGroupName <String>
- -ServiceEndpointPolicyName <String> -SubscriptionId <String> [-Description <String>] [-Etag <String>]
+ -ServiceEndpointPolicyName <String> [-SubscriptionId <String>] [-Description <String>] [-Etag <String>]
  [-Id <String>] [-ResourceName <String>] [-Service <String>] [-ServiceResource <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -23,9 +23,9 @@ Set-AzServiceEndpointPolicyDefinition -Name <String> -ResourceGroupName <String>
 ### Update
 ```
 Set-AzServiceEndpointPolicyDefinition -Name <String> -ResourceGroupName <String>
- -ServiceEndpointPolicyName <String> -SubscriptionId <String>
- -ServiceEndpointPolicyDefinition <IServiceEndpointPolicyDefinition> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ServiceEndpointPolicyName <String> -ServiceEndpointPolicyDefinition <IServiceEndpointPolicyDefinition>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,7 +63,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -160,7 +160,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -172,7 +172,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: ServiceEndpointPolicy
+Aliases:
 
 Required: True
 Position: Named
@@ -273,9 +273,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -334,11 +334,6 @@ To create the parameters described below, construct a hash table containing the 
 
 #### SERVICEENDPOINTPOLICYDEFINITION <IServiceEndpointPolicyDefinition>: Service Endpoint policy definitions.
   - `[Id <String>]`: Resource ID.
-  - `[Description <String>]`: A description for this rule. Restricted to 140 chars.
-  - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-  - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  - `[Service <String>]`: Service endpoint name.
-  - `[ServiceResource <String[]>]`: A list of service resources.
 
 ## RELATED LINKS
 

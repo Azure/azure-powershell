@@ -15,7 +15,7 @@ Creates or updates an authorization in the specified express route circuit.
 ### UpdateExpanded (Default)
 ```
 Set-AzExpressRouteCircuitAuthorization -CircuitName <String> -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-Id <String>] [-Key <String>] [-ProvisioningState <String>]
+ [-SubscriptionId <String>] [-Id <String>] [-Key <String>] [-ProvisioningState <String>]
  [-ResourceName <String>] [-UseStatus <AuthorizationUseStatus>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -23,7 +23,7 @@ Set-AzExpressRouteCircuitAuthorization -CircuitName <String> -Name <String> -Res
 ### Update
 ```
 Set-AzExpressRouteCircuitAuthorization -CircuitName <String> -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String> -Authorization <IExpressRouteCircuitAuthorization> [-DefaultProfile <PSObject>]
+ -Authorization <IExpressRouteCircuitAuthorization> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -62,7 +62,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -175,7 +175,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -204,7 +204,7 @@ The name of the resource group.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: ExpressRouteCircuit
+Aliases:
 
 Required: True
 Position: Named
@@ -240,9 +240,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -318,10 +318,6 @@ To create the parameters described below, construct a hash table containing the 
 
 #### AUTHORIZATION <IExpressRouteCircuitAuthorization>: Authorization in an ExpressRouteCircuit resource.
   - `[Id <String>]`: Resource ID.
-  - `[AuthorizationKey <String>]`: The authorization key.
-  - `[AuthorizationUseStatus <AuthorizationUseStatus?>]`: AuthorizationUseStatus. Possible values are: 'Available' and 'InUse'.
-  - `[Name <String>]`: Gets name of the resource that is unique within a resource group. This name can be used to access the resource.
-  - `[ProvisioningState <String>]`: Gets the provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
 
 ## RELATED LINKS
 

@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.WebSite
-online version: https://docs.microsoft.com/en-us/powershell/module/az.website/set-azwebappconfigurationslot
+Module Name: Az.AppService
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/set-azwebappconfigurationslot
 schema: 2.0.0
 ---
 
@@ -12,14 +12,7 @@ Updates the configuration of an app.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzWebAppConfigurationSlot -Name <String> -ResourceGroupName <String> -Slot <String>
- -SubscriptionId <String> [-SiteConfig <ISiteConfigResource>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzWebAppConfigurationSlot -Name <String> -ResourceGroupName <String> -Slot <String>
  -SubscriptionId <String> [-ActionMinProcessExecutionTime <String>] [-ActionType <AutoHealActionType>]
@@ -43,12 +36,19 @@ Set-AzWebAppConfigurationSlot -Name <String> -ResourceGroupName <String> -Slot <
  [-RequestTracingExpirationTime <DateTime>] [-ReservedInstanceCount <Int32>]
  [-ScmIPSecurityRestriction <IIPSecurityRestriction[]>] [-ScmIPSecurityRestrictionsUseMain]
  [-ScmType <ScmType>] [-SlowRequestCount <Int32>] [-SlowRequestTimeInterval <String>]
- [-SlowRequestTimeTaken <String>] [-TagWhitelistJson <String>] [-TagsRequiringAuth <String>]
+ [-SlowRequestTimeTaken <String>] [-TagsRequiringAuth <String>] [-TagWhitelistJson <String>]
  [-TracingOption <String>] [-TriggerPrivateBytesInKb <Int32>]
  [-TriggerStatusCode <IStatusCodesBasedTrigger[]>] [-Use32BitWorkerProcess]
  [-VirtualApplication <IVirtualApplication[]>] [-VnetName <String>] [-WebSocketsEnabled]
  [-WindowsFxVersion <String>] [-XManagedServiceIdentityId <Int32>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzWebAppConfigurationSlot -Name <String> -ResourceGroupName <String> -Slot <String>
+ -SubscriptionId <String> -SiteConfig <ISiteConfigResource> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -96,7 +96,7 @@ Dynamic: False
 ActionType - predefined action to be taken
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.AutoHealActionType
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Support.AutoHealActionType
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -109,7 +109,7 @@ Dynamic: False
 ```
 
 ### -AlwaysOn
-<code>true</code> if Always On is enabled; otherwise, <code>false</code>.
+\<code\>true\</code\> if Always On is enabled; otherwise, \<code\>false\</code\>.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -118,7 +118,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -161,7 +161,7 @@ Application settings.
 To construct, see NOTES section for APPSETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.INameValuePair[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20150801.INameValuePair[]
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -174,7 +174,7 @@ Dynamic: False
 ```
 
 ### -AutoHealEnabled
-<code>true</code> if Auto Heal is enabled; otherwise, <code>false</code>.
+\<code\>true\</code\> if Auto Heal is enabled; otherwise, \<code\>false\</code\>.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -183,7 +183,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -226,7 +226,7 @@ Connection strings.
 To construct, see NOTES section for CONNECTIONSTRING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160301.IConnStringInfo[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20160301.IConnStringInfo[]
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -266,7 +266,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -337,7 +337,7 @@ Dynamic: False
 ```
 
 ### -DetailedErrorLoggingEnabled
-<code>true</code> if detailed error logging is enabled; otherwise, <code>false</code>.
+\<code\>true\</code\> if detailed error logging is enabled; otherwise, \<code\>false\</code\>.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -346,7 +346,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -389,7 +389,7 @@ List of ramp-up rules.
 To construct, see NOTES section for EXPERIMENTRAMPUPRULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.IRampUpRule[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20150801.IRampUpRule[]
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -405,7 +405,7 @@ Dynamic: False
 State of FTP / FTPS service
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.FtpsState
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Support.FtpsState
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -422,7 +422,7 @@ Handler mappings.
 To construct, see NOTES section for HANDLERMAPPING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.IHandlerMapping[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20150801.IHandlerMapping[]
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -444,14 +444,14 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
 
 ### -HttpLoggingEnabled
-<code>true</code> if HTTP logging is enabled; otherwise, <code>false</code>.
+\<code\>true\</code\> if HTTP logging is enabled; otherwise, \<code\>false\</code\>.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -460,7 +460,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -471,7 +471,7 @@ IP security restrictions for main.
 To construct, see NOTES section for IPSECURITYRESTRICTION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IIPSecurityRestriction[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IIPSecurityRestriction[]
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -493,7 +493,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -573,7 +573,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -589,7 +589,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -605,7 +605,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -631,7 +631,7 @@ Dynamic: False
 Site load balancing.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.SiteLoadBalancing
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Support.SiteLoadBalancing
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -644,7 +644,7 @@ Dynamic: False
 ```
 
 ### -LocalMySqlEnabled
-<code>true</code> to enable local MySQL; otherwise, <code>false</code>.
+\<code\>true\</code\> to enable local MySQL; otherwise, \<code\>false\</code\>.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -653,7 +653,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -669,7 +669,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -743,7 +743,7 @@ Dynamic: False
 Managed pipeline mode.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.ManagedPipelineMode
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Support.ManagedPipelineMode
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -765,7 +765,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -775,7 +775,7 @@ Dynamic: False
 MinTlsVersion: configures the minimum version of TLS required for SSL requests
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.SupportedTlsVersions
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Support.SupportedTlsVersions
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -845,7 +845,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -916,7 +916,7 @@ Dynamic: False
 ```
 
 ### -RemoteDebuggingEnabled
-<code>true</code> if remote debugging is enabled; otherwise, <code>false</code>.
+\<code\>true\</code\> if remote debugging is enabled; otherwise, \<code\>false\</code\>.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -925,7 +925,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -957,7 +957,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -980,7 +980,7 @@ Dynamic: False
 ```
 
 ### -RequestTracingEnabled
-<code>true</code> if request tracing is enabled; otherwise, <code>false</code>.
+\<code\>true\</code\> if request tracing is enabled; otherwise, \<code\>false\</code\>.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -989,7 +989,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -1021,7 +1021,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -1048,7 +1048,7 @@ IP security restrictions for scm.
 To construct, see NOTES section for SCMIPSECURITYRESTRICTION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IIPSecurityRestriction[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IIPSecurityRestriction[]
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -1070,7 +1070,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -1080,7 +1080,7 @@ Dynamic: False
 SCM type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.ScmType
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Support.ScmType
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -1097,11 +1097,11 @@ Web app configuration ARM resource.
 To construct, see NOTES section for SITECONFIG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISiteConfigResource
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.ISiteConfigResource
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -1136,7 +1136,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -1251,7 +1251,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -1262,7 +1262,7 @@ A rule based on status codes.
 To construct, see NOTES section for TRIGGERSTATUSCODE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.IStatusCodesBasedTrigger[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20150801.IStatusCodesBasedTrigger[]
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -1275,7 +1275,7 @@ Dynamic: False
 ```
 
 ### -Use32BitWorkerProcess
-<code>true</code> to use 32-bit worker process; otherwise, <code>false</code>.
+\<code\>true\</code\> to use 32-bit worker process; otherwise, \<code\>false\</code\>.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -1284,7 +1284,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -1295,7 +1295,7 @@ Virtual applications.
 To construct, see NOTES section for VIRTUALAPPLICATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.IVirtualApplication[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20150801.IVirtualApplication[]
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -1324,7 +1324,7 @@ Dynamic: False
 ```
 
 ### -WebSocketsEnabled
-<code>true</code> if WebSocket is enabled; otherwise, <code>false</code>.
+\<code\>true\</code\> if WebSocket is enabled; otherwise, \<code\>false\</code\>.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -1333,7 +1333,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -1365,7 +1365,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -1409,11 +1409,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISiteConfigResource
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.ISiteConfigResource
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISiteConfigResource
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.ISiteConfigResource
 
 ## ALIASES
 

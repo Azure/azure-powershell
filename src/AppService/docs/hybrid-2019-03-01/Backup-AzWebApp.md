@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.WebSite
-online version: https://docs.microsoft.com/en-us/powershell/module/az.website/backup-azwebapp
+Module Name: Az.AppService
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/backup-azwebapp
 schema: 2.0.0
 ---
 
@@ -12,29 +12,7 @@ Creates a backup of an app.
 
 ## SYNTAX
 
-### Backup (Default)
-```
-Backup-AzWebApp -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Request <IBackupRequest>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### BackupSlot
-```
-Backup-AzWebApp -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Slot <String>
- [-Request <IBackupRequest>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### BackupExpandedSlot
-```
-Backup-AzWebApp -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Slot <String>
- [-BackupName <String>] [-BackupScheduleFrequencyInterval <Int32>]
- [-BackupScheduleFrequencyUnit <FrequencyUnit>] [-BackupScheduleKeepAtLeastOneBackup]
- [-BackupScheduleRetentionPeriodInDay <Int32>] [-BackupScheduleStartTime <DateTime>]
- [-Database <IDatabaseBackupSetting[]>] [-Enabled] [-Kind <String>] [-StorageAccountUrl <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### BackupExpanded
+### BackupExpanded (Default)
 ```
 Backup-AzWebApp -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-BackupName <String>]
  [-BackupScheduleFrequencyInterval <Int32>] [-BackupScheduleFrequencyUnit <FrequencyUnit>]
@@ -43,28 +21,50 @@ Backup-AzWebApp -Name <String> -ResourceGroupName <String> -SubscriptionId <Stri
  [-StorageAccountUrl <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### BackupViaIdentityExpandedSlot
+### Backup
 ```
-Backup-AzWebApp -InputObject <IWebSiteIdentity> [-BackupName <String>]
- [-BackupScheduleFrequencyInterval <Int32>] [-BackupScheduleFrequencyUnit <FrequencyUnit>]
- [-BackupScheduleKeepAtLeastOneBackup] [-BackupScheduleRetentionPeriodInDay <Int32>]
- [-BackupScheduleStartTime <DateTime>] [-Database <IDatabaseBackupSetting[]>] [-Enabled] [-Kind <String>]
- [-StorageAccountUrl <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Backup-AzWebApp -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Request <IBackupRequest>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### BackupViaIdentityExpanded
+### BackupExpandedSlot
 ```
-Backup-AzWebApp -InputObject <IWebSiteIdentity> [-BackupName <String>]
- [-BackupScheduleFrequencyInterval <Int32>] [-BackupScheduleFrequencyUnit <FrequencyUnit>]
- [-BackupScheduleKeepAtLeastOneBackup] [-BackupScheduleRetentionPeriodInDay <Int32>]
- [-BackupScheduleStartTime <DateTime>] [-Database <IDatabaseBackupSetting[]>] [-Enabled] [-Kind <String>]
- [-StorageAccountUrl <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Backup-AzWebApp -Name <String> -ResourceGroupName <String> -Slot <String> -SubscriptionId <String>
+ [-BackupName <String>] [-BackupScheduleFrequencyInterval <Int32>]
+ [-BackupScheduleFrequencyUnit <FrequencyUnit>] [-BackupScheduleKeepAtLeastOneBackup]
+ [-BackupScheduleRetentionPeriodInDay <Int32>] [-BackupScheduleStartTime <DateTime>]
+ [-Database <IDatabaseBackupSetting[]>] [-Enabled] [-Kind <String>] [-StorageAccountUrl <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### BackupSlot
+```
+Backup-AzWebApp -Name <String> -ResourceGroupName <String> -Slot <String> -SubscriptionId <String>
+ -Request <IBackupRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### BackupViaIdentity
 ```
-Backup-AzWebApp -InputObject <IWebSiteIdentity> [-Request <IBackupRequest>] [-DefaultProfile <PSObject>]
+Backup-AzWebApp -InputObject <IAppServiceIdentity> -Request <IBackupRequest> [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### BackupViaIdentityExpanded
+```
+Backup-AzWebApp -InputObject <IAppServiceIdentity> [-BackupName <String>]
+ [-BackupScheduleFrequencyInterval <Int32>] [-BackupScheduleFrequencyUnit <FrequencyUnit>]
+ [-BackupScheduleKeepAtLeastOneBackup] [-BackupScheduleRetentionPeriodInDay <Int32>]
+ [-BackupScheduleStartTime <DateTime>] [-Database <IDatabaseBackupSetting[]>] [-Enabled] [-Kind <String>]
+ [-StorageAccountUrl <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### BackupViaIdentityExpandedSlot
+```
+Backup-AzWebApp -InputObject <IAppServiceIdentity> [-BackupName <String>]
+ [-BackupScheduleFrequencyInterval <Int32>] [-BackupScheduleFrequencyUnit <FrequencyUnit>]
+ [-BackupScheduleKeepAtLeastOneBackup] [-BackupScheduleRetentionPeriodInDay <Int32>]
+ [-BackupScheduleStartTime <DateTime>] [-Database <IDatabaseBackupSetting[]>] [-Enabled] [-Kind <String>]
+ [-StorageAccountUrl <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -97,7 +97,7 @@ Name of the backup.
 
 ```yaml
 Type: System.String
-Parameter Sets: BackupExpandedSlot, BackupExpanded, BackupViaIdentityExpandedSlot, BackupViaIdentityExpanded
+Parameter Sets: BackupExpanded, BackupExpandedSlot, BackupViaIdentityExpanded, BackupViaIdentityExpandedSlot
 Aliases:
 
 Required: False
@@ -114,12 +114,12 @@ for weekly backup, this should be set to 7 and FrequencyUnit should be set to Da
 
 ```yaml
 Type: System.Int32
-Parameter Sets: BackupExpandedSlot, BackupExpanded, BackupViaIdentityExpandedSlot, BackupViaIdentityExpanded
+Parameter Sets: BackupExpanded, BackupExpandedSlot, BackupViaIdentityExpanded, BackupViaIdentityExpandedSlot
 Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -130,8 +130,8 @@ The unit of time for how often the backup should be executed (e.g.
 for weekly backup, this should be set to Day and FrequencyInterval should be set to 7)
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.FrequencyUnit
-Parameter Sets: BackupExpandedSlot, BackupExpanded, BackupViaIdentityExpandedSlot, BackupViaIdentityExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Support.FrequencyUnit
+Parameter Sets: BackupExpanded, BackupExpandedSlot, BackupViaIdentityExpanded, BackupViaIdentityExpandedSlot
 Aliases:
 
 Required: False
@@ -147,12 +147,12 @@ True if the retention policy should always keep at least one backup in the stora
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: BackupExpandedSlot, BackupExpanded, BackupViaIdentityExpandedSlot, BackupViaIdentityExpanded
+Parameter Sets: BackupExpanded, BackupExpandedSlot, BackupViaIdentityExpanded, BackupViaIdentityExpandedSlot
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -163,12 +163,12 @@ After how many days backups should be deleted.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: BackupExpandedSlot, BackupExpanded, BackupViaIdentityExpandedSlot, BackupViaIdentityExpanded
+Parameter Sets: BackupExpanded, BackupExpandedSlot, BackupViaIdentityExpanded, BackupViaIdentityExpandedSlot
 Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -179,7 +179,7 @@ When the schedule should start working.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: BackupExpandedSlot, BackupExpanded, BackupViaIdentityExpandedSlot, BackupViaIdentityExpanded
+Parameter Sets: BackupExpanded, BackupExpandedSlot, BackupViaIdentityExpanded, BackupViaIdentityExpandedSlot
 Aliases:
 
 Required: False
@@ -195,8 +195,8 @@ Databases included in the backup.
 To construct, see NOTES section for DATABASE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.IDatabaseBackupSetting[]
-Parameter Sets: BackupExpandedSlot, BackupExpanded, BackupViaIdentityExpandedSlot, BackupViaIdentityExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20160801.IDatabaseBackupSetting[]
+Parameter Sets: BackupExpanded, BackupExpandedSlot, BackupViaIdentityExpanded, BackupViaIdentityExpandedSlot
 Aliases:
 
 Required: False
@@ -228,12 +228,12 @@ True if the backup schedule is enabled (must be included in that case), false if
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: BackupExpandedSlot, BackupExpanded, BackupViaIdentityExpandedSlot, BackupViaIdentityExpanded
+Parameter Sets: BackupExpanded, BackupExpandedSlot, BackupViaIdentityExpanded, BackupViaIdentityExpandedSlot
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -241,10 +241,11 @@ Dynamic: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
-Parameter Sets: BackupViaIdentityExpandedSlot, BackupViaIdentityExpanded, BackupViaIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.IAppServiceIdentity
+Parameter Sets: BackupViaIdentity, BackupViaIdentityExpanded, BackupViaIdentityExpandedSlot
 Aliases:
 
 Required: True
@@ -260,7 +261,7 @@ Kind of resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: BackupExpandedSlot, BackupExpanded, BackupViaIdentityExpandedSlot, BackupViaIdentityExpanded
+Parameter Sets: BackupExpanded, BackupExpandedSlot, BackupViaIdentityExpanded, BackupViaIdentityExpandedSlot
 Aliases:
 
 Required: False
@@ -276,7 +277,7 @@ Name of the app.
 
 ```yaml
 Type: System.String
-Parameter Sets: Backup, BackupSlot, BackupExpandedSlot, BackupExpanded
+Parameter Sets: Backup, BackupExpanded, BackupExpandedSlot, BackupSlot
 Aliases:
 
 Required: True
@@ -292,11 +293,11 @@ Description of a backup which will be performed.
 To construct, see NOTES section for REQUEST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IBackupRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IBackupRequest
 Parameter Sets: Backup, BackupSlot, BackupViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -309,7 +310,7 @@ Name of the resource group to which the resource belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Backup, BackupSlot, BackupExpandedSlot, BackupExpanded
+Parameter Sets: Backup, BackupExpanded, BackupExpandedSlot, BackupSlot
 Aliases:
 
 Required: True
@@ -326,7 +327,7 @@ If a slot is not specified, the API will create a backup for the production slot
 
 ```yaml
 Type: System.String
-Parameter Sets: BackupSlot, BackupExpandedSlot
+Parameter Sets: BackupExpandedSlot, BackupSlot
 Aliases:
 
 Required: True
@@ -342,7 +343,7 @@ SAS URL to the container.
 
 ```yaml
 Type: System.String
-Parameter Sets: BackupExpandedSlot, BackupExpanded, BackupViaIdentityExpandedSlot, BackupViaIdentityExpanded
+Parameter Sets: BackupExpanded, BackupExpandedSlot, BackupViaIdentityExpanded, BackupViaIdentityExpandedSlot
 Aliases:
 
 Required: False
@@ -360,7 +361,7 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: Backup, BackupSlot, BackupExpandedSlot, BackupExpanded
+Parameter Sets: Backup, BackupExpanded, BackupExpandedSlot, BackupSlot
 Aliases:
 
 Required: True
@@ -409,13 +410,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IBackupRequest
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IBackupRequest
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.IAppServiceIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.IBackupItem
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20160801.IBackupItem
 
 ## ALIASES
 
@@ -435,6 +436,50 @@ To create the parameters described below, construct a hash table containing the 
   - `[ConnectionString <String>]`: Contains a connection string to a database which is being backed up or restored. If the restore should happen to a new database, the database name inside is the new one.
   - `[ConnectionStringName <String>]`: Contains a connection string name that is linked to the SiteConfig.ConnectionStrings.         This is used during restore with overwrite connection strings options.
   - `[Name <String>]`: 
+
+#### INPUTOBJECT <IAppServiceIdentity>: Identity Parameter
+  - `[AnalysisName <String>]`: Analysis Name
+  - `[ApiName <String>]`: The managed API name.
+  - `[BackupId <String>]`: ID of the backup.
+  - `[BaseAddress <String>]`: Module base address.
+  - `[CertificateOrderName <String>]`: Name of the certificate order.
+  - `[ConnectionName <String>]`: The connection name.
+  - `[DeletedSiteId <String>]`: The numeric ID of the deleted app, e.g. 12345
+  - `[DetectorName <String>]`: Detector Resource Name
+  - `[DiagnosticCategory <String>]`: Diagnostic Category
+  - `[DiagnosticsName <String>]`: Name of the diagnostics item.
+  - `[DomainName <String>]`: Name of the domain.
+  - `[DomainOwnershipIdentifierName <String>]`: Name of domain ownership identifier.
+  - `[EntityName <String>]`: Name of the hybrid connection.
+  - `[FunctionName <String>]`: Function name.
+  - `[GatewayName <String>]`: Name of the gateway. Only the 'primary' gateway is supported.
+  - `[HostName <String>]`: Hostname in the hostname binding.
+  - `[HostingEnvironmentName <String>]`: Name of the hosting environment.
+  - `[Id <String>]`: Resource identity path
+  - `[Instance <String>]`: Name of the instance in the multi-role pool.
+  - `[InstanceId <String>]`: ID of web app instance.
+  - `[Location <String>]`: 
+  - `[Name <String>]`: Name of the certificate.
+  - `[NamespaceName <String>]`: Name of the Service Bus namespace.
+  - `[OperationId <String>]`: GUID of the operation.
+  - `[PremierAddOnName <String>]`: Add-on name.
+  - `[ProcessId <String>]`: PID.
+  - `[PublicCertificateName <String>]`: Public certificate name.
+  - `[RelayName <String>]`: Name of the Service Bus relay.
+  - `[ResourceGroupName <String>]`: Name of the resource group to which the resource belongs.
+  - `[RouteName <String>]`: Name of the Virtual Network route.
+  - `[SiteExtensionId <String>]`: Site extension name.
+  - `[SiteName <String>]`: Site Name
+  - `[Slot <String>]`: Name of web app slot. If not specified then will default to production slot.
+  - `[SnapshotId <String>]`: The ID of the snapshot to read.
+  - `[SourceControlType <String>]`: Type of source control
+  - `[SubscriptionId <String>]`: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  - `[ThreadId <String>]`: TID.
+  - `[View <String>]`: The type of view. This can either be "summary" or "detailed".
+  - `[VnetName <String>]`: Name of the Virtual Network.
+  - `[WebJobName <String>]`: Name of Web Job.
+  - `[WorkerName <String>]`: Name of worker machine, which typically starts with RD.
+  - `[WorkerPoolName <String>]`: Name of the worker pool.
 
 #### REQUEST <IBackupRequest>: Description of a backup which will be performed.
   - `BackupScheduleFrequencyInterval <Int32>`: How often the backup should be executed (e.g. for weekly backup, this should be set to 7 and FrequencyUnit should be set to Day)

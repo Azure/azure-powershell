@@ -15,18 +15,20 @@ Gets a virtual machine from a VM scale set.
 ### List1 (Default)
 ```
 Get-AzVmssVM -ResourceGroupName <String> -SubscriptionId <String[]> -VirtualMachineScaleSetName <String>
- [-Expand <String>] [-Filter <String>] [-Select <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-ExpandExpression <String>] [-Filter <String>] [-Select <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get1
 ```
 Get-AzVmssVM -InstanceId <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- -VMScaleSetName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -VMScaleSetName <String> [-Expand <InstanceViewTypes>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity1
 ```
-Get-AzVmssVM -InputObject <IComputeIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzVmssVM -InputObject <IComputeIdentity> [-Expand <InstanceViewTypes>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,6 +73,22 @@ Dynamic: False
 ```
 
 ### -Expand
+The expand expression to apply on the operation.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.InstanceViewTypes
+Parameter Sets: Get1, GetViaIdentity1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ExpandExpression
 The expand expression to apply to the operation.
 
 ```yaml
@@ -238,6 +256,8 @@ To create the parameters described below, construct a hash table containing the 
   - `[AvailabilitySetName <String>]`: The name of the availability set.
   - `[CommandId <String>]`: The command id.
   - `[DiskName <String>]`: The name of the managed disk that is being created. The name can't be changed after the disk is created. Supported characters for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
+  - `[GalleryApplicationName <String>]`: The name of the gallery Application Definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+  - `[GalleryApplicationVersionName <String>]`: The name of the gallery Application Version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
   - `[GalleryImageDefinitionName <String>]`: The name of the gallery Image Definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
   - `[GalleryImageVersionName <String>]`: The name of the gallery Image Version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
   - `[GalleryName <String>]`: The name of the Shared Image Gallery. The allowed characters are alphabets and numbers with dots and periods allowed in the middle. The maximum length is 80 characters.

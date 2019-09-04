@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.WebSite
-online version: https://docs.microsoft.com/en-us/powershell/module/az.website/get-azwebappsnapshotfromdrsecondary
+Module Name: Az.AppService
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/get-azwebappsnapshotfromdrsecondary
 schema: 2.0.0
 ---
 
@@ -20,8 +20,8 @@ Get-AzWebAppSnapshotFromDrSecondary -Name <String> -ResourceGroupName <String> -
 
 ### ListSlot
 ```
-Get-AzWebAppSnapshotFromDrSecondary -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- -Slot <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzWebAppSnapshotFromDrSecondary -Name <String> -ResourceGroupName <String> -Slot <String>
+ -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -138,7 +138,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.ISnapshot
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20160801.ISnapshot
 
 ## ALIASES
 

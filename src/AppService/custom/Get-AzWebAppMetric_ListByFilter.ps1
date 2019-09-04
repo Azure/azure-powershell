@@ -1,92 +1,92 @@
 function Get-AzWebAppMetric_ListByFilter {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IResourceMetric')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IResourceMetric')]
     [CmdletBinding(PositionalBinding=$false)]
-    [Microsoft.Azure.PowerShell.Cmdlets.WebSite.Profile('latest-2019-04-30')]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppService.Profile('latest-2019-04-30')]
     param(
         [Parameter(Mandatory, HelpMessage='Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).')]
-        [Microsoft.Azure.PowerShell.Cmdlets.WebSite.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppService.Category('Path')]
         [System.String[]]
         ${SubscriptionId},
 
         [Parameter(Mandatory, HelpMessage='Name of the app.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.WebSite.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppService.Category('Path')]
         [System.String]
         ${Name},
 
         [Parameter(Mandatory, HelpMessage='Name of the resource group to which the resource belongs.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.WebSite.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppService.Category('Path')]
         [System.String]
         ${ResourceGroupName},
 
         [Parameter(HelpMessage='Name of the deployment slot. If a slot is not specified, the API will get metrics of the production slot.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.WebSite.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppService.Category('Path')]
         [System.String]
         ${Slot},
 
         [Parameter(HelpMessage='Specify "true" to include metric details in the response. It is "false" by default.')]
         [Alias('InstanceDetails')]
-        [Microsoft.Azure.PowerShell.Cmdlets.WebSite.Category('Query')]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppService.Category('Query')]
         [System.Management.Automation.SwitchParameter]
         ${Detail},
 
         [Parameter(HelpMessage='Name(s) of the web app metric(s) to filter by.')]
         [Alias('Metrics')]
-        [Microsoft.Azure.PowerShell.Cmdlets.WebSite.Category('Query')]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppService.Category('Query')]
         [System.String[]]
         ${Metric},
 
         [Parameter(HelpMessage='Start time of the metrics to filter by.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.WebSite.Category('Query')]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppService.Category('Query')]
         [System.DateTime]
         ${StartTime},
 
         [Parameter(HelpMessage='End time fo the metrics to filter by.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.WebSite.Category('Query')]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppService.Category('Query')]
         [System.DateTime]
         ${EndTime},
 
         [Parameter(HelpMessage='Granularity of the metrics to filter by. Allow values are PT1M, PT1H, P1D.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.WebSite.Category('Query')]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppService.Category('Query')]
         [System.String]
         ${Granularity},
 
         [Parameter(HelpMessage='The credentials, account, tenant, and subscription used for communication with Azure.')]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.WebSite.Category('Azure')]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppService.Category('Azure')]
         [System.Management.Automation.PSObject]
         ${DefaultProfile},
 
         [Parameter(DontShow, HelpMessage='Wait for .NET debugger to attach')]
-        [Microsoft.Azure.PowerShell.Cmdlets.WebSite.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppService.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         ${Break},
 
         [Parameter(DontShow, HelpMessage='SendAsync Pipeline Steps to be appended to the front of the pipeline')]
         [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.WebSite.Category('Runtime')]
-        [Microsoft.Azure.PowerShell.Cmdlets.WebSite.Runtime.SendAsyncStep[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppService.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppService.Runtime.SendAsyncStep[]]
         ${HttpPipelineAppend},
 
         [Parameter(DontShow, HelpMessage='SendAsync Pipeline Steps to be prepended to the front of the pipeline')]
         [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.WebSite.Category('Runtime')]
-        [Microsoft.Azure.PowerShell.Cmdlets.WebSite.Runtime.SendAsyncStep[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppService.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppService.Runtime.SendAsyncStep[]]
         ${HttpPipelinePrepend},
 
         [Parameter(DontShow, HelpMessage='The URI for the proxy server to use')]
-        [Microsoft.Azure.PowerShell.Cmdlets.WebSite.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppService.Category('Runtime')]
         [System.Uri]
         ${Proxy},
 
         [Parameter(DontShow, HelpMessage='Credentials for a proxy server to use for the remote call')]
         [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.WebSite.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppService.Category('Runtime')]
         [System.Management.Automation.PSCredential]
         ${ProxyCredential},
 
         [Parameter(DontShow, HelpMessage='Use the default credentials for the proxy')]
-        [Microsoft.Azure.PowerShell.Cmdlets.WebSite.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppService.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         ${ProxyUseDefaultCredentials}
     )

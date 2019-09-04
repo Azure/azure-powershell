@@ -1,10 +1,10 @@
 <!-- region Generated -->
-# Az.WebSite
-This directory contains the PowerShell module for the WebSite service.
+# Az.AppService
+This directory contains the PowerShell module for the AppService service.
 
 ---
 ## Status
-[![Az.WebSite](https://img.shields.io/powershellgallery/v/Az.WebSite.svg?style=flat-square&label=Az.WebSite "Az.WebSite")](https://www.powershellgallery.com/packages/Az.WebSite/)
+[![Az.AppService](https://img.shields.io/powershellgallery/v/Az.AppService.svg?style=flat-square&label=Az.AppService "Az.AppService")](https://www.powershellgallery.com/packages/Az.AppService/)
 
 ## Info
 - Modifiable: yes
@@ -23,7 +23,7 @@ This module was primarily generated via [AutoRest](https://github.com/Azure/auto
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
 
 ## Development
-For information on how to develop for `Az.WebSite`, see [how-to.md](how-to.md).
+For information on how to develop for `Az.AppService`, see [how-to.md](how-to.md).
 <!-- endregion -->
 
 ---
@@ -49,9 +49,9 @@ In this directory, run AutoRest:
 ``` yaml
 require:
   - $(this-folder)/../readme.azure.md
-  - $(repo)/specification/web/resource-manager/readme.enable-multi-api.md
   - $(repo)/specification/web/resource-manager/readme.md
 
+title: AppService
 module-version: 0.0.1
 
 directive:

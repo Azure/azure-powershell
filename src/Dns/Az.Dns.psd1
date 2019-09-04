@@ -11,11 +11,11 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Dns.private.dll'
   FormatsToProcess = './Az.Dns.format.ps1xml'
-  CmdletsToExport = 'Get-AzDnsRecordSet', 'Get-AzDnsResourceReference', 'Get-AzDnsZone', 'New-AzDnsRecordSet', 'New-AzDnsZone', 'Remove-AzDnsRecordSet', 'Remove-AzDnsZone', 'Set-AzDnsRecordSet', 'Set-AzDnsZone', 'Update-AzDnsRecordSet', 'Update-AzDnsZone', '*'
+  CmdletsToExport = 'Get-AzDnsRecordSet', 'Get-AzDnsResourceReference', 'Get-AzDnsZone', 'New-AzDnsRecordSet', 'New-AzDnsZone', 'Remove-AzDnsRecordSet', 'Remove-AzDnsZone', 'Set-AzDnsRecordSet', 'Set-AzDnsZone', 'Update-AzDnsRecordSet', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{
-      Tags = 'Azure', 'ResourceManager', 'ARM', 'Dns'
+      Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'Dns'
       LicenseUri = 'https://aka.ms/azps-license'
       ProjectUri = 'https://github.com/Azure/azure-powershell'
       ReleaseNotes = ''

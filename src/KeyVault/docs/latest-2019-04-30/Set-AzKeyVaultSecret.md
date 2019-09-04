@@ -14,17 +14,17 @@ This operation requires the secrets/set permission.
 
 ## SYNTAX
 
-### Set (Default)
-```
-Set-AzKeyVaultSecret -Name <String> [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
- [-Parameter <ISecretSetParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### SetExpanded
+### SetExpanded (Default)
 ```
 Set-AzKeyVaultSecret -Name <String> -SecretValue <String> [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
  [-ContentType <String>] [-Enabled] [-Expire <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Set
+```
+Set-AzKeyVaultSecret -Name <String> -Parameter <ISecretSetParameters> [-KeyVaultDnsSuffix <String>]
+ [-VaultName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -96,7 +96,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -175,7 +175,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.ISecretSetP
 Parameter Sets: Set
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

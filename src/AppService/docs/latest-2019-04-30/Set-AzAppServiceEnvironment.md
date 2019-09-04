@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.WebSite
-online version: https://docs.microsoft.com/en-us/powershell/module/az.website/set-azappserviceenvironment
+Module Name: Az.AppService
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/set-azappserviceenvironment
 schema: 2.0.0
 ---
 
@@ -12,17 +12,10 @@ Create or update an App Service Environment.
 
 ## SYNTAX
 
-### Update (Default)
+### UpdateExpanded (Default)
 ```
 Set-AzAppServiceEnvironment -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-HostingEnvironmentEnvelope <IAppServiceEnvironmentResource>] [-PassThru] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
-```
-Set-AzAppServiceEnvironment -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -Location <String> [-PassThru] [-ApiManagementAccountId <String>] [-ClusterSetting <INameValuePair[]>]
+ -Location <String> [-ApiManagementAccountId <String>] [-ClusterSetting <INameValuePair[]>]
  [-DnsSuffix <String>] [-DynamicCacheEnabled] [-FrontEndScaleFactor <Int32>] [-HasLinuxWorker]
  [-InternalLoadBalancingMode <InternalLoadBalancingMode>] [-IpsslAddressCount <Int32>] [-Kind <String>]
  [-MultiRoleCount <Int32>] [-MultiSize <String>] [-NetworkAccessControlList <INetworkAccessControlEntry[]>]
@@ -30,7 +23,14 @@ Set-AzAppServiceEnvironment -Name <String> -ResourceGroupName <String> -Subscrip
  [-SslCertKeyVaultSecretName <String>] [-Suspended] [-Tag <Hashtable>] [-UserWhitelistedIPRange <String[]>]
  [-VirtualNetworkId <String>] [-VirtualNetworkSubnet <String>] [-VnetName <String>]
  [-VnetResourceGroupName <String>] [-VnetSubnetName <String>] [-WorkerPool <IWorkerPool[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzAppServiceEnvironment -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -HostingEnvironmentEnvelope <IAppServiceEnvironmentResource> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,7 +84,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -95,7 +95,7 @@ Custom settings for changing the behavior of the App Service Environment.
 To construct, see NOTES section for CLUSTERSETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.INameValuePair[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20150801.INameValuePair[]
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -151,7 +151,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -167,7 +167,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -183,7 +183,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -194,11 +194,11 @@ App Service Environment ARM resource.
 To construct, see NOTES section for HOSTINGENVIRONMENTENVELOPE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IAppServiceEnvironmentResource
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IAppServiceEnvironmentResource
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -210,7 +210,7 @@ Dynamic: False
 Specifies which endpoints to serve internally in the Virtual Network for the App Service Environment.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.InternalLoadBalancingMode
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Support.InternalLoadBalancingMode
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -232,7 +232,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -280,7 +280,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -324,7 +324,7 @@ Access control list for controlling traffic to the App Service Environment.
 To construct, see NOTES section for NETWORKACCESSCONTROLLIST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.INetworkAccessControlEntry[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20150801.INetworkAccessControlEntry[]
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -346,14 +346,14 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
 
 ### -PassThru
-When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -362,7 +362,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -468,7 +468,7 @@ Dynamic: False
 ```
 
 ### -Suspended
-<code>true</code> if the App Service Environment is suspended; otherwise, <code>false</code>.
+\<code\>true\</code\> if the App Service Environment is suspended; otherwise, \<code\>false\</code\>.
 The environment can be suspended, e.g.
 when the management endpoint is no longer available (most likely because NSG blocked the incoming traffic).
 
@@ -479,7 +479,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -602,7 +602,7 @@ Description of worker pools with worker size IDs, VM sizes, and number of worker
 To construct, see NOTES section for WORKERPOOL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160301.IWorkerPool[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20160301.IWorkerPool[]
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -652,11 +652,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IAppServiceEnvironmentResource
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IAppServiceEnvironmentResource
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IAppServiceEnvironmentResource
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IAppServiceEnvironmentResource
 
 ## ALIASES
 

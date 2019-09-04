@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.WebSite
-online version: https://docs.microsoft.com/en-us/powershell/module/az.website/set-azappserviceplanvnetroute
+Module Name: Az.AppService
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/set-azappserviceplanvnetroute
 schema: 2.0.0
 ---
 
@@ -12,19 +12,18 @@ Create or update a Virtual Network route in an App Service plan.
 
 ## SYNTAX
 
-### Update (Default)
+### UpdateExpanded (Default)
 ```
 Set-AzAppServicePlanVnetRoute -Name <String> -ResourceGroupName <String> -RouteName <String>
- -SubscriptionId <String> -VnetName <String> [-PassThru] [-Route <IVnetRoute>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -SubscriptionId <String> -VnetName <String> [-EndAddress <String>] [-Kind <String>] [-RouteType <RouteType>]
+ [-StartAddress <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateExpanded
+### Update
 ```
 Set-AzAppServicePlanVnetRoute -Name <String> -ResourceGroupName <String> -RouteName <String>
- -SubscriptionId <String> -VnetName <String> [-PassThru] [-EndAddress <String>] [-Kind <String>]
- [-RouteType <RouteType>] [-StartAddress <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -SubscriptionId <String> -VnetName <String> -Route <IVnetRoute> [-DefaultProfile <PSObject>] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -118,7 +117,7 @@ Dynamic: False
 ```
 
 ### -PassThru
-When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -127,7 +126,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -154,11 +153,11 @@ Virtual Network route contract used to pass routing information for a Virtual Ne
 To construct, see NOTES section for ROUTE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IVnetRoute
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IVnetRoute
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -186,7 +185,7 @@ Dynamic: False
 The type of route this is:DEFAULT - By default, every app has routes to the local address ranges specified by RFC1918INHERITED - Routes inherited from the real Virtual Network routesSTATIC - Static route set on the app onlyThese values will be used for syncing an app's routes with those from a Virtual Network.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.RouteType
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Support.RouteType
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -287,11 +286,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IVnetRoute
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IVnetRoute
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IVnetRoute
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IVnetRoute
 
 ## ALIASES
 

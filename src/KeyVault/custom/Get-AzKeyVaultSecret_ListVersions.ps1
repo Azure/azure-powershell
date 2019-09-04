@@ -9,7 +9,7 @@ function Get-AzKeyVaultSecret_ListVersions {
         # MISSING DESCRIPTION 06
         ${VaultBaseUrl},
 
-        [Parameter(ParameterSetName='Get', Mandatory, HelpMessage='The name of the secret.')]
+        [Parameter(Mandatory, HelpMessage='The name of the secret.')]
         [Alias('SecretName')]
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category('Path')]
         [System.String]

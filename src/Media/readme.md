@@ -49,7 +49,6 @@ In this directory, run AutoRest:
 ``` yaml
 require:
   - $(this-folder)/../readme.azure.md
-  - $(repo)/specification/mediaservices/resource-manager/readme.enable-multi-api.md
   - $(repo)/specification/mediaservices/resource-manager/readme.md
 
 title: Media

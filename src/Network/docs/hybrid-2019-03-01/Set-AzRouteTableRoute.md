@@ -14,16 +14,18 @@ Creates or updates a route in the specified route table.
 
 ### UpdateExpanded1 (Default)
 ```
-Set-AzRouteTableRoute -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -TableName <String>
- [-AddressPrefix <String>] [-Etag <String>] [-Id <String>] [-NextHopIPAddress <String>]
- [-NextHopType <RouteNextHopType>] [-ProvisioningState <String>] [-ResourceName <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzRouteTableRoute -Name <String> -ResourceGroupName <String> -TableName <String>
+ [-SubscriptionId <String>] [-AddressPrefix <String>] [-Etag <String>] [-Id <String>]
+ [-NextHopIPAddress <String>] [-NextHopType <RouteNextHopType>] [-ProvisioningState <String>]
+ [-ResourceName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Update1
 ```
-Set-AzRouteTableRoute -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -TableName <String>
- -Route <IRoute> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzRouteTableRoute -Name <String> -ResourceGroupName <String> -TableName <String> -Route <IRoute>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -77,7 +79,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -190,7 +192,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -272,9 +274,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -348,13 +350,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 #### ROUTE <IRoute>: Route resource
-  - `NextHopType <RouteNextHopType>`: The type of Azure hop the packet should be sent to.
   - `[Id <String>]`: Resource ID.
-  - `[AddressPrefix <String>]`: The destination CIDR to which the route applies.
-  - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-  - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  - `[NextHopIPAddress <String>]`: The IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is VirtualAppliance.
-  - `[ProvisioningState <String>]`: The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
 
 ## RELATED LINKS
 

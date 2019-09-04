@@ -49,13 +49,9 @@ In this directory, run AutoRest:
 ``` yaml
 require:
   - $(this-folder)/../readme.azure.md
-  - $(repo)/specification/resources/resource-manager/readme.enable-multi-api.md
   - $(repo)/specification/resources/resource-manager/readme.md
-  - $(repo)/specification/graphrbac/data-plane/readme.enable-multi-api.md
   - $(repo)/specification/graphrbac/data-plane/readme.md
-  - $(repo)/specification/managementgroups/resource-manager/readme.enable-multi-api.md
   - $(repo)/specification/managementgroups/resource-manager/readme.md
-  - $(repo)/specification/authorization/resource-manager/readme.enable-multi-api.md
   - $(repo)/specification/authorization/resource-manager/readme.md
 
 subject-prefix: ''
@@ -391,4 +387,38 @@ directive:
       parameter-name: AvailableToOtherTenant
     set:
       parameter-name: AvailableToOtherTenants
+  - where:
+      subject: Deployment
+      variant: (.*)Expanded(.*)
+      parameter-name: Parameter
+    set:
+      parameter-name: DeploymentParameter
+  - where:
+      subject: ManagedApplication
+      variant: (.*)Expanded(.*)
+      parameter-name: Parameter
+    set:
+      parameter-name: ApplicationParameter
+  - where:
+      subject: PolicyAssignment
+      variant: (.*)Expanded(.*)
+      parameter-name: Parameter
+    set:
+      parameter-name: AssignmentParameter
+  - where:
+      subject: PolicyDefinition
+      variant: (.*)Expanded(.*)
+      parameter-name: Parameter
+    set:
+      parameter-name: DefinitionParameter
+  - where:
+      subject: PolicySetDefinition
+      variant: (.*)Expanded(.*)
+      parameter-name: Parameter
+    set:
+      parameter-name: SetDefinitionParameter
+  - where:
+      subject: RoleAssignment
+      variant: ^Create1$|^CreateExpanded1$|^CreateViaIdentity1$|^CreateViaIdentityExpanded1$
+    remove: true
 ```

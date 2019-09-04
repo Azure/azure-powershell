@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.WebSite
-online version: https://docs.microsoft.com/en-us/powershell/module/az.website/set-azwebappauthsetting
+Module Name: Az.AppService
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/set-azwebappauthsetting
 schema: 2.0.0
 ---
 
@@ -12,13 +12,7 @@ Updates the Authentication / Authorization settings associated with web app.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzWebAppAuthSetting -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-SiteAuthSetting <ISiteAuthSettings>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzWebAppAuthSetting -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-AdditionalLoginParam <String[]>] [-AllowedAudience <String[]>] [-AllowedExternalRedirectUrl <String[]>]
@@ -31,6 +25,12 @@ Set-AzWebAppAuthSetting -Name <String> -ResourceGroupName <String> -Subscription
  [-TokenStoreEnabled] [-TwitterConsumerKey <String>] [-TwitterConsumerSecret <String>]
  [-UnauthenticatedClientAction <UnauthenticatedClientAction>] [-ValidateIssuer] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzWebAppAuthSetting -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -SiteAuthSetting <ISiteAuthSettings> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -77,7 +77,7 @@ Dynamic: False
 
 ### -AllowedAudience
 Allowed audience values to consider when validating JWTs issued by Azure Active Directory.
-Note that the <code>ClientID</code> value is always considered anallowed audience, regardless of this setting.
+Note that the \<code\>ClientID\</code\> value is always considered anallowed audience, regardless of this setting.
 
 ```yaml
 Type: System.String[]
@@ -180,7 +180,7 @@ Dynamic: False
 The default authentication provider to use when multiple providers are configured.This setting is only needed if multiple providers are configured and the unauthenticated clientaction is set to "RedirectToLoginPage".
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.BuiltInAuthenticationProvider
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Support.BuiltInAuthenticationProvider
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -193,7 +193,7 @@ Dynamic: False
 ```
 
 ### -Enabled
-<code>true</code> if the Authentication / Authorization feature is enabled for the current app; otherwise, <code>false</code>.
+\<code\>true\</code\> if the Authentication / Authorization feature is enabled for the current app; otherwise, \<code\>false\</code\>.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -202,7 +202,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -440,11 +440,11 @@ Configuration settings for the Azure App Service Authentication / Authorization 
 To construct, see NOTES section for SITEAUTHSETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISiteAuthSettings
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.ISiteAuthSettings
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -481,15 +481,15 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
 
 ### -TokenStoreEnabled
-<code>true</code> to durably store platform-specific security tokens that are obtained during login flows; otherwise, <code>false</code>.
-The default is <code>false</code>.
+\<code\>true\</code\> to durably store platform-specific security tokens that are obtained during login flows; otherwise, \<code\>false\</code\>.
+The default is \<code\>false\</code\>.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -498,7 +498,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -540,7 +540,7 @@ Dynamic: False
 The action to take when an unauthenticated client attempts to access the app.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.UnauthenticatedClientAction
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Support.UnauthenticatedClientAction
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -562,7 +562,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -606,11 +606,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISiteAuthSettings
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.ISiteAuthSettings
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISiteAuthSettings
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.ISiteAuthSettings
 
 ## ALIASES
 

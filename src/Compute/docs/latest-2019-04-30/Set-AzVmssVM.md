@@ -853,7 +853,7 @@ Dynamic: False
 ```
 
 ### -WindowConfigurationEnableAutomaticUpdate
-Indicates whether virtual machine is enabled for automatic Windows updates.
+Indicates whether Automatic Updates is enabled for the Windows virtual machine.
 Default value is true.
 
 
@@ -1014,7 +1014,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[ManagedStorageAccountType <StorageAccountTypes?>]`: Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS can only be used with data disks, it cannot be used with OS Disk.
   - `[Name <String>]`: The disk name.
   - `[SizeInGb <Int32?>]`: Specifies the size of an empty data disk in gigabytes. This element can be used to overwrite the size of the disk in a virtual machine image.    This value cannot be larger than 1023 GB
-  - `[ToBeDetached <Boolean?>]`: Specifies whether the datadisk is in process of detachment from the VirtualMachine/VirtualMachineScaleset
+  - `[ToBeDetached <Boolean?>]`: Specifies whether the data disk is in process of detachment from the VirtualMachine/VirtualMachineScaleset
   - `[VhdUri <String>]`: Specifies the virtual hard disk's uri.
   - `[WriteAcceleratorEnabled <Boolean?>]`: Specifies whether writeAccelerator should be enabled or disabled on the disk.
 

@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.WebSite
-online version: https://docs.microsoft.com/en-us/powershell/module/az.website/find-azwebappbackup
+Module Name: Az.AppService
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/find-azwebappbackup
 schema: 2.0.0
 ---
 
@@ -13,21 +13,25 @@ Use this to get information about the databases stored in a backup.
 
 ## SYNTAX
 
-### Discover (Default)
+### DiscoverExpanded (Default)
 ```
 Find-AzWebAppBackup -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Request <IRestoreRequest>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AdjustConnectionString] [-AppServicePlan <String>] [-BlobName <String>]
+ [-Database <IDatabaseBackupSetting[]>] [-HostingEnvironment <String>] [-IgnoreConflictingHostName]
+ [-IgnoreDatabase] [-Kind <String>] [-OperationType <BackupRestoreOperationType>] [-Overwrite]
+ [-SiteName <String>] [-StorageAccountUrl <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
-### DiscoverSlot
+### Discover
 ```
-Find-AzWebAppBackup -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Slot <String>
- [-Request <IRestoreRequest>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Find-AzWebAppBackup -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -Request <IRestoreRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DiscoverExpandedSlot
 ```
-Find-AzWebAppBackup -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Slot <String>
+Find-AzWebAppBackup -Name <String> -ResourceGroupName <String> -Slot <String> -SubscriptionId <String>
  [-AdjustConnectionString] [-AppServicePlan <String>] [-BlobName <String>]
  [-Database <IDatabaseBackupSetting[]>] [-HostingEnvironment <String>] [-IgnoreConflictingHostName]
  [-IgnoreDatabase] [-Kind <String>] [-OperationType <BackupRestoreOperationType>] [-Overwrite]
@@ -35,38 +39,34 @@ Find-AzWebAppBackup -Name <String> -ResourceGroupName <String> -SubscriptionId <
  [<CommonParameters>]
 ```
 
-### DiscoverExpanded
+### DiscoverSlot
 ```
-Find-AzWebAppBackup -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-AdjustConnectionString] [-AppServicePlan <String>] [-BlobName <String>]
- [-Database <IDatabaseBackupSetting[]>] [-HostingEnvironment <String>] [-IgnoreConflictingHostName]
- [-IgnoreDatabase] [-Kind <String>] [-OperationType <BackupRestoreOperationType>] [-Overwrite]
- [-SiteName <String>] [-StorageAccountUrl <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### DiscoverViaIdentityExpandedSlot
-```
-Find-AzWebAppBackup -InputObject <IWebSiteIdentity> [-AdjustConnectionString] [-AppServicePlan <String>]
- [-BlobName <String>] [-Database <IDatabaseBackupSetting[]>] [-HostingEnvironment <String>]
- [-IgnoreConflictingHostName] [-IgnoreDatabase] [-Kind <String>] [-OperationType <BackupRestoreOperationType>]
- [-Overwrite] [-SiteName <String>] [-StorageAccountUrl <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### DiscoverViaIdentityExpanded
-```
-Find-AzWebAppBackup -InputObject <IWebSiteIdentity> [-AdjustConnectionString] [-AppServicePlan <String>]
- [-BlobName <String>] [-Database <IDatabaseBackupSetting[]>] [-HostingEnvironment <String>]
- [-IgnoreConflictingHostName] [-IgnoreDatabase] [-Kind <String>] [-OperationType <BackupRestoreOperationType>]
- [-Overwrite] [-SiteName <String>] [-StorageAccountUrl <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Find-AzWebAppBackup -Name <String> -ResourceGroupName <String> -Slot <String> -SubscriptionId <String>
+ -Request <IRestoreRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DiscoverViaIdentity
 ```
-Find-AzWebAppBackup -InputObject <IWebSiteIdentity> [-Request <IRestoreRequest>] [-DefaultProfile <PSObject>]
+Find-AzWebAppBackup -InputObject <IAppServiceIdentity> -Request <IRestoreRequest> [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DiscoverViaIdentityExpanded
+```
+Find-AzWebAppBackup -InputObject <IAppServiceIdentity> [-AdjustConnectionString] [-AppServicePlan <String>]
+ [-BlobName <String>] [-Database <IDatabaseBackupSetting[]>] [-HostingEnvironment <String>]
+ [-IgnoreConflictingHostName] [-IgnoreDatabase] [-Kind <String>] [-OperationType <BackupRestoreOperationType>]
+ [-Overwrite] [-SiteName <String>] [-StorageAccountUrl <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### DiscoverViaIdentityExpandedSlot
+```
+Find-AzWebAppBackup -InputObject <IAppServiceIdentity> [-AdjustConnectionString] [-AppServicePlan <String>]
+ [-BlobName <String>] [-Database <IDatabaseBackupSetting[]>] [-HostingEnvironment <String>]
+ [-IgnoreConflictingHostName] [-IgnoreDatabase] [-Kind <String>] [-OperationType <BackupRestoreOperationType>]
+ [-Overwrite] [-SiteName <String>] [-StorageAccountUrl <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -96,16 +96,16 @@ PS C:\> {{ Add code here }}
 ## PARAMETERS
 
 ### -AdjustConnectionString
-<code>true</code> if SiteConfig.ConnectionStrings should be set in new app; otherwise, <code>false</code>.
+\<code\>true\</code\> if SiteConfig.ConnectionStrings should be set in new app; otherwise, \<code\>false\</code\>.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: DiscoverExpandedSlot, DiscoverExpanded, DiscoverViaIdentityExpandedSlot, DiscoverViaIdentityExpanded
+Parameter Sets: DiscoverExpanded, DiscoverExpandedSlot, DiscoverViaIdentityExpanded, DiscoverViaIdentityExpandedSlot
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -116,7 +116,7 @@ Specify app service plan that will own restored site.
 
 ```yaml
 Type: System.String
-Parameter Sets: DiscoverExpandedSlot, DiscoverExpanded, DiscoverViaIdentityExpandedSlot, DiscoverViaIdentityExpanded
+Parameter Sets: DiscoverExpanded, DiscoverExpandedSlot, DiscoverViaIdentityExpanded, DiscoverViaIdentityExpandedSlot
 Aliases:
 
 Required: False
@@ -132,7 +132,7 @@ Name of a blob which contains the backup.
 
 ```yaml
 Type: System.String
-Parameter Sets: DiscoverExpandedSlot, DiscoverExpanded, DiscoverViaIdentityExpandedSlot, DiscoverViaIdentityExpanded
+Parameter Sets: DiscoverExpanded, DiscoverExpandedSlot, DiscoverViaIdentityExpanded, DiscoverViaIdentityExpandedSlot
 Aliases:
 
 Required: False
@@ -149,8 +149,8 @@ This list has to match the list of databases included in the backup.
 To construct, see NOTES section for DATABASE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.IDatabaseBackupSetting[]
-Parameter Sets: DiscoverExpandedSlot, DiscoverExpanded, DiscoverViaIdentityExpandedSlot, DiscoverViaIdentityExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20160801.IDatabaseBackupSetting[]
+Parameter Sets: DiscoverExpanded, DiscoverExpandedSlot, DiscoverViaIdentityExpanded, DiscoverViaIdentityExpandedSlot
 Aliases:
 
 Required: False
@@ -182,7 +182,7 @@ App Service Environment name, if needed (only when restoring an app to an App Se
 
 ```yaml
 Type: System.String
-Parameter Sets: DiscoverExpandedSlot, DiscoverExpanded, DiscoverViaIdentityExpandedSlot, DiscoverViaIdentityExpanded
+Parameter Sets: DiscoverExpanded, DiscoverExpandedSlot, DiscoverViaIdentityExpanded, DiscoverViaIdentityExpandedSlot
 Aliases:
 
 Required: False
@@ -195,17 +195,17 @@ Dynamic: False
 
 ### -IgnoreConflictingHostName
 Changes a logic when restoring an app with custom domains.
-<code>true</code> to remove custom domains automatically.
-If <code>false</code>, custom domains are added to the app's object when it is being restored, but that might fail due to conflicts during the operation.
+\<code\>true\</code\> to remove custom domains automatically.
+If \<code\>false\</code\>, custom domains are added to the app's object when it is being restored, but that might fail due to conflicts during the operation.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: DiscoverExpandedSlot, DiscoverExpanded, DiscoverViaIdentityExpandedSlot, DiscoverViaIdentityExpanded
+Parameter Sets: DiscoverExpanded, DiscoverExpandedSlot, DiscoverViaIdentityExpanded, DiscoverViaIdentityExpandedSlot
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -216,12 +216,12 @@ Ignore the databases and only restore the site content
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: DiscoverExpandedSlot, DiscoverExpanded, DiscoverViaIdentityExpandedSlot, DiscoverViaIdentityExpanded
+Parameter Sets: DiscoverExpanded, DiscoverExpandedSlot, DiscoverViaIdentityExpanded, DiscoverViaIdentityExpandedSlot
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -229,10 +229,11 @@ Dynamic: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
-Parameter Sets: DiscoverViaIdentityExpandedSlot, DiscoverViaIdentityExpanded, DiscoverViaIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.IAppServiceIdentity
+Parameter Sets: DiscoverViaIdentity, DiscoverViaIdentityExpanded, DiscoverViaIdentityExpandedSlot
 Aliases:
 
 Required: True
@@ -248,7 +249,7 @@ Kind of resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: DiscoverExpandedSlot, DiscoverExpanded, DiscoverViaIdentityExpandedSlot, DiscoverViaIdentityExpanded
+Parameter Sets: DiscoverExpanded, DiscoverExpandedSlot, DiscoverViaIdentityExpanded, DiscoverViaIdentityExpandedSlot
 Aliases:
 
 Required: False
@@ -264,7 +265,7 @@ Name of the app.
 
 ```yaml
 Type: System.String
-Parameter Sets: Discover, DiscoverSlot, DiscoverExpandedSlot, DiscoverExpanded
+Parameter Sets: Discover, DiscoverExpanded, DiscoverExpandedSlot, DiscoverSlot
 Aliases:
 
 Required: True
@@ -279,8 +280,8 @@ Dynamic: False
 Operation type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.BackupRestoreOperationType
-Parameter Sets: DiscoverExpandedSlot, DiscoverExpanded, DiscoverViaIdentityExpandedSlot, DiscoverViaIdentityExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Support.BackupRestoreOperationType
+Parameter Sets: DiscoverExpanded, DiscoverExpandedSlot, DiscoverViaIdentityExpanded, DiscoverViaIdentityExpandedSlot
 Aliases:
 
 Required: False
@@ -292,17 +293,17 @@ Dynamic: False
 ```
 
 ### -Overwrite
-<code>true</code> if the restore operation can overwrite target app; otherwise, <code>false</code>.
-<code>true</code> is needed if trying to restore over an existing app.
+\<code\>true\</code\> if the restore operation can overwrite target app; otherwise, \<code\>false\</code\>.
+\<code\>true\</code\> is needed if trying to restore over an existing app.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: DiscoverExpandedSlot, DiscoverExpanded, DiscoverViaIdentityExpandedSlot, DiscoverViaIdentityExpanded
+Parameter Sets: DiscoverExpanded, DiscoverExpandedSlot, DiscoverViaIdentityExpanded, DiscoverViaIdentityExpandedSlot
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -313,11 +314,11 @@ Description of a restore request.
 To construct, see NOTES section for REQUEST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IRestoreRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IRestoreRequest
 Parameter Sets: Discover, DiscoverSlot, DiscoverViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -330,7 +331,7 @@ Name of the resource group to which the resource belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Discover, DiscoverSlot, DiscoverExpandedSlot, DiscoverExpanded
+Parameter Sets: Discover, DiscoverExpanded, DiscoverExpandedSlot, DiscoverSlot
 Aliases:
 
 Required: True
@@ -346,7 +347,7 @@ Name of an app.
 
 ```yaml
 Type: System.String
-Parameter Sets: DiscoverExpandedSlot, DiscoverExpanded, DiscoverViaIdentityExpandedSlot, DiscoverViaIdentityExpanded
+Parameter Sets: DiscoverExpanded, DiscoverExpandedSlot, DiscoverViaIdentityExpanded, DiscoverViaIdentityExpandedSlot
 Aliases:
 
 Required: False
@@ -363,7 +364,7 @@ If a slot is not specified, the API will perform discovery for the production sl
 
 ```yaml
 Type: System.String
-Parameter Sets: DiscoverSlot, DiscoverExpandedSlot
+Parameter Sets: DiscoverExpandedSlot, DiscoverSlot
 Aliases:
 
 Required: True
@@ -379,7 +380,7 @@ SAS URL to the container.
 
 ```yaml
 Type: System.String
-Parameter Sets: DiscoverExpandedSlot, DiscoverExpanded, DiscoverViaIdentityExpandedSlot, DiscoverViaIdentityExpanded
+Parameter Sets: DiscoverExpanded, DiscoverExpandedSlot, DiscoverViaIdentityExpanded, DiscoverViaIdentityExpandedSlot
 Aliases:
 
 Required: False
@@ -397,7 +398,7 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: Discover, DiscoverSlot, DiscoverExpandedSlot, DiscoverExpanded
+Parameter Sets: Discover, DiscoverExpanded, DiscoverExpandedSlot, DiscoverSlot
 Aliases:
 
 Required: True
@@ -446,13 +447,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IRestoreRequest
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IRestoreRequest
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.IAppServiceIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IRestoreRequest
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IRestoreRequest
 
 ## ALIASES
 
@@ -468,6 +469,50 @@ To create the parameters described below, construct a hash table containing the 
   - `[ConnectionString <String>]`: Contains a connection string to a database which is being backed up or restored. If the restore should happen to a new database, the database name inside is the new one.
   - `[ConnectionStringName <String>]`: Contains a connection string name that is linked to the SiteConfig.ConnectionStrings.         This is used during restore with overwrite connection strings options.
   - `[Name <String>]`: 
+
+#### INPUTOBJECT <IAppServiceIdentity>: Identity Parameter
+  - `[AnalysisName <String>]`: Analysis Name
+  - `[ApiName <String>]`: The managed API name.
+  - `[BackupId <String>]`: ID of the backup.
+  - `[BaseAddress <String>]`: Module base address.
+  - `[CertificateOrderName <String>]`: Name of the certificate order.
+  - `[ConnectionName <String>]`: The connection name.
+  - `[DeletedSiteId <String>]`: The numeric ID of the deleted app, e.g. 12345
+  - `[DetectorName <String>]`: Detector Resource Name
+  - `[DiagnosticCategory <String>]`: Diagnostic Category
+  - `[DiagnosticsName <String>]`: Name of the diagnostics item.
+  - `[DomainName <String>]`: Name of the domain.
+  - `[DomainOwnershipIdentifierName <String>]`: Name of domain ownership identifier.
+  - `[EntityName <String>]`: Name of the hybrid connection.
+  - `[FunctionName <String>]`: Function name.
+  - `[GatewayName <String>]`: Name of the gateway. Only the 'primary' gateway is supported.
+  - `[HostName <String>]`: Hostname in the hostname binding.
+  - `[HostingEnvironmentName <String>]`: Name of the hosting environment.
+  - `[Id <String>]`: Resource identity path
+  - `[Instance <String>]`: Name of the instance in the multi-role pool.
+  - `[InstanceId <String>]`: ID of web app instance.
+  - `[Location <String>]`: 
+  - `[Name <String>]`: Name of the certificate.
+  - `[NamespaceName <String>]`: Name of the Service Bus namespace.
+  - `[OperationId <String>]`: GUID of the operation.
+  - `[PremierAddOnName <String>]`: Add-on name.
+  - `[ProcessId <String>]`: PID.
+  - `[PublicCertificateName <String>]`: Public certificate name.
+  - `[RelayName <String>]`: Name of the Service Bus relay.
+  - `[ResourceGroupName <String>]`: Name of the resource group to which the resource belongs.
+  - `[RouteName <String>]`: Name of the Virtual Network route.
+  - `[SiteExtensionId <String>]`: Site extension name.
+  - `[SiteName <String>]`: Site Name
+  - `[Slot <String>]`: Name of web app slot. If not specified then will default to production slot.
+  - `[SnapshotId <String>]`: The ID of the snapshot to read.
+  - `[SourceControlType <String>]`: Type of source control
+  - `[SubscriptionId <String>]`: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  - `[ThreadId <String>]`: TID.
+  - `[View <String>]`: The type of view. This can either be "summary" or "detailed".
+  - `[VnetName <String>]`: Name of the Virtual Network.
+  - `[WebJobName <String>]`: Name of Web Job.
+  - `[WorkerName <String>]`: Name of worker machine, which typically starts with RD.
+  - `[WorkerPoolName <String>]`: Name of the worker pool.
 
 #### REQUEST <IRestoreRequest>: Description of a restore request.
   - `Overwrite <Boolean>`: <code>true</code> if the restore operation can overwrite target app; otherwise, <code>false</code>. <code>true</code> is needed if trying to restore over an existing app.

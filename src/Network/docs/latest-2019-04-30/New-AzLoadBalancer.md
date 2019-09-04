@@ -14,36 +14,36 @@ Creates or updates a load balancer.
 
 ### CreateExpanded (Default)
 ```
-New-AzLoadBalancer -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+New-AzLoadBalancer -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-BackendAddressPool <IBackendAddressPool[]>] [-Etag <String>]
  [-FrontendIPConfiguration <IFrontendIPConfiguration[]>] [-Id <String>] [-InboundNatPool <IInboundNatPool[]>]
- [-InboundNatRule <IInboundNatRule[]>] [-LoadBalancingRule <ILoadBalancingRule[]>] [-Location <String>]
- [-OutboundRule <IOutboundRule[]>] [-Probe <IProbe[]>] [-ProvisioningState <String>] [-ResourceGuid <String>]
- [-SkuName <LoadBalancerSkuName>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-InboundNatRule <IInboundNatRule_Reference[]>] [-LoadBalancingRule <ILoadBalancingRule[]>]
+ [-Location <String>] [-OutboundRule <IOutboundRule[]>] [-Probe <IProbe[]>] [-ProvisioningState <String>]
+ [-ResourceGuid <String>] [-SkuName <LoadBalancerSkuName>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create
 ```
-New-AzLoadBalancer -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -LoadBalancer <ILoadBalancer> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+New-AzLoadBalancer -Name <String> -ResourceGroupName <String> -LoadBalancer <ILoadBalancer>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzLoadBalancer -InputObject <INetworkIdentity> [-BackendAddressPool <IBackendAddressPool[]>]
- [-Etag <String>] [-FrontendIPConfiguration <IFrontendIPConfiguration[]>] [-Id <String>]
- [-InboundNatPool <IInboundNatPool[]>] [-InboundNatRule <IInboundNatRule[]>]
- [-LoadBalancingRule <ILoadBalancingRule[]>] [-Location <String>] [-OutboundRule <IOutboundRule[]>]
- [-Probe <IProbe[]>] [-ProvisioningState <String>] [-ResourceGuid <String>] [-SkuName <LoadBalancerSkuName>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
 New-AzLoadBalancer -InputObject <INetworkIdentity> -LoadBalancer <ILoadBalancer> [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded
+```
+New-AzLoadBalancer -InputObject <INetworkIdentity> [-BackendAddressPool <IBackendAddressPool[]>]
+ [-Etag <String>] [-FrontendIPConfiguration <IFrontendIPConfiguration[]>] [-Id <String>]
+ [-InboundNatPool <IInboundNatPool[]>] [-InboundNatRule <IInboundNatRule_Reference[]>]
+ [-LoadBalancingRule <ILoadBalancingRule[]>] [-Location <String>] [-OutboundRule <IOutboundRule[]>]
+ [-Probe <IProbe[]>] [-ProvisioningState <String>] [-ResourceGuid <String>] [-SkuName <LoadBalancerSkuName>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -81,7 +81,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -197,10 +197,9 @@ Defining inbound NAT rules on your load balancer is mutually exclusive with defi
 Inbound NAT pools are referenced from virtual machine scale sets.
 NICs that are associated with individual virtual machines cannot reference an Inbound NAT pool.
 They have to reference individual inbound NAT rules.
-To construct, see NOTES section for INBOUNDNATRULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IInboundNatRule[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IInboundNatRule_Reference[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -214,10 +213,11 @@ Dynamic: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
-Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
+Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -283,7 +283,7 @@ The name of the load balancer.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, Create
+Parameter Sets: Create, CreateExpanded
 Aliases: LoadBalancerName
 
 Required: True
@@ -304,7 +304,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -366,7 +366,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, Create
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True
@@ -415,12 +415,12 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, Create
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -480,9 +480,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.ILoadBalancer
+
+### Microsoft.Azure.PowerShell.Cmdlets.Network.Models.INetworkIdentity
 
 ## OUTPUTS
 
@@ -514,118 +514,9 @@ To create the parameters described below, construct a hash table containing the 
     - `[Location <String>]`: Resource location.
     - `[Tag <IResourceTags>]`: Resource tags.
       - `[(Any) <String>]`: This indicates any property can be added to this object.
-    - `[DdosCustomPolicyId <String>]`: Resource ID.
-    - `[DdosSettingProtectionCoverage <DdosSettingsProtectionCoverage?>]`: The DDoS protection policy customizability of the public IP. Only standard coverage will have the ability to be customized.
-    - `[DnsSettingDomainNameLabel <String>]`: Gets or sets the Domain name label.The concatenation of the domain name label and the regionalized DNS zone make up the fully qualified domain name associated with the public IP address. If a domain name label is specified, an A DNS record is created for the public IP in the Microsoft Azure DNS system.
-    - `[DnsSettingFqdn <String>]`: Gets the FQDN, Fully qualified domain name of the A DNS record associated with the public IP. This is the concatenation of the domainNameLabel and the regionalized DNS zone.
-    - `[DnsSettingReverseFqdn <String>]`: Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name that resolves to this public IP address. If the reverseFqdn is specified, then a PTR DNS record is created pointing from the IP address in the in-addr.arpa domain to the reverse FQDN. 
-    - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-    - `[IPAddress <String>]`: The IP address associated with the public IP address resource.
-    - `[IPConfigurationEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
-    - `[IPConfigurationId <String>]`: Resource ID.
-    - `[IPConfigurationName <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-    - `[IPConfigurationProperty <IIPConfigurationPropertiesFormat>]`: Properties of the IP configuration
-      - `[PrivateIPAddress <String>]`: The private IP address of the IP configuration.
-      - `[PrivateIPAllocationMethod <IPAllocationMethod?>]`: The private IP address allocation method.
-      - `[ProvisioningState <String>]`: Gets the provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-      - `[PublicIPAddress <IPublicIPAddress>]`: The reference of the public IP resource.
-      - `[Subnet <ISubnet>]`: The reference of the subnet resource.
-        - `[Id <String>]`: Resource ID.
-        - `[AddressPrefix <String>]`: The address prefix for the subnet.
-        - `[DefaultSecurityRule <ISecurityRule[]>]`: The default security rules of network security group.
-          - `Access <SecurityRuleAccess>`: The network traffic is allowed or denied.
-          - `Direction <SecurityRuleDirection>`: The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic.
-          - `Protocol <SecurityRuleProtocol>`: Network protocol this rule applies to. Possible values are 'Tcp', 'Udp', 'Icmp', 'Esp', and '*'.
-          - `[Id <String>]`: Resource ID.
-          - `[Description <String>]`: A description for this rule. Restricted to 140 chars.
-          - `[DestinationAddressPrefix <String>]`: The destination address prefix. CIDR or destination IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used.
-          - `[DestinationApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: The application security group specified as destination.
-            - `[Id <String>]`: Resource ID.
-            - `[Location <String>]`: Resource location.
-            - `[Tag <IResourceTags>]`: Resource tags.
-          - `[DestinationPortRange <String>]`: The destination port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
-          - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-          - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-          - `[Priority <Int32?>]`: The priority of the rule. The value can be between 100 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
-          - `[PropertiesDestinationAddressPrefixes <String[]>]`: The destination address prefixes. CIDR or destination IP ranges.
-          - `[PropertiesDestinationPortRanges <String[]>]`: The destination port ranges.
-          - `[PropertiesSourceAddressPrefixes <String[]>]`: The CIDR or source IP ranges.
-          - `[PropertiesSourcePortRanges <String[]>]`: The source port ranges.
-          - `[ProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-          - `[SourceAddressPrefix <String>]`: The CIDR or source IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used. If this is an ingress rule, specifies where network traffic originates from. 
-          - `[SourceApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: The application security group specified as source.
-          - `[SourcePortRange <String>]`: The source port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
-        - `[Delegation <IDelegation[]>]`: Gets an array of references to the delegations on the subnet.
-          - `[Id <String>]`: Resource ID.
-          - `[Action <String[]>]`: Describes the actions permitted to the service upon delegation
-          - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-          - `[Name <String>]`: The name of the resource that is unique within a subnet. This name can be used to access the resource.
-          - `[ServiceName <String>]`: The name of the service to whom the subnet should be delegated (e.g. Microsoft.Sql/servers)
-        - `[DisableBgpRoutePropagation <Boolean?>]`: Gets or sets whether to disable the routes learned by BGP on that route table. True means disable.
-        - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-        - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-        - `[NatGatewayId <String>]`: Resource ID.
-        - `[NsgEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
-        - `[NsgId <String>]`: Resource ID.
-        - `[NsgLocation <String>]`: Resource location.
-        - `[NsgPropertiesProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-        - `[NsgTag <IResourceTags>]`: Resource tags.
-        - `[PropertiesAddressPrefixes <String[]>]`: List of  address prefixes for the subnet.
-        - `[ProvisioningState <String>]`: The provisioning state of the resource.
-        - `[ResourceGuid <String>]`: The resource GUID property of the network security group resource.
-        - `[ResourceNavigationLink <IResourceNavigationLink[]>]`: Gets an array of references to the external resources using subnet.
-          - `[Id <String>]`: Resource ID.
-          - `[Link <String>]`: Link to the external resource
-          - `[LinkedResourceType <String>]`: Resource type of the linked resource.
-          - `[Name <String>]`: Name of the resource that is unique within a resource group. This name can be used to access the resource.
-        - `[Route <IRoute[]>]`: Collection of routes contained within a route table.
-          - `NextHopType <RouteNextHopType>`: The type of Azure hop the packet should be sent to.
-          - `[Id <String>]`: Resource ID.
-          - `[AddressPrefix <String>]`: The destination CIDR to which the route applies.
-          - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-          - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-          - `[NextHopIPAddress <String>]`: The IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is VirtualAppliance.
-          - `[ProvisioningState <String>]`: The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-        - `[RouteTableEtag <String>]`: Gets a unique read-only string that changes whenever the resource is updated.
-        - `[RouteTableId <String>]`: Resource ID.
-        - `[RouteTableLocation <String>]`: Resource location.
-        - `[RouteTablePropertiesProvisioningState <String>]`: The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-        - `[RouteTableTag <IResourceTags>]`: Resource tags.
-        - `[SecurityRule <ISecurityRule[]>]`: A collection of security rules of the network security group.
-        - `[ServiceAssociationLink <IServiceAssociationLink[]>]`: Gets an array of references to services injecting into this subnet.
-          - `[Id <String>]`: Resource ID.
-          - `[Link <String>]`: Link to the external resource.
-          - `[LinkedResourceType <String>]`: Resource type of the linked resource.
-          - `[Name <String>]`: Name of the resource that is unique within a resource group. This name can be used to access the resource.
-        - `[ServiceEndpoint <IServiceEndpointPropertiesFormat[]>]`: An array of service endpoints.
-          - `[Location <String[]>]`: A list of locations.
-          - `[ProvisioningState <String>]`: The provisioning state of the resource.
-          - `[Service <String>]`: The type of the endpoint service.
-        - `[ServiceEndpointPolicy <IServiceEndpointPolicy[]>]`: An array of service endpoint policies.
-          - `[Id <String>]`: Resource ID.
-          - `[Location <String>]`: Resource location.
-          - `[Tag <IResourceTags>]`: Resource tags.
-          - `[Definition <IServiceEndpointPolicyDefinition[]>]`: A collection of service endpoint policy definitions of the service endpoint policy.
-            - `[Id <String>]`: Resource ID.
-            - `[Description <String>]`: A description for this rule. Restricted to 140 chars.
-            - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-            - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-            - `[Service <String>]`: Service endpoint name.
-            - `[ServiceResource <String[]>]`: A list of service resources.
-          - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-    - `[IPTag <IIPTag[]>]`: The list of tags associated with the public IP address.
-      - `[Tag <String>]`: Gets or sets value of the IpTag associated with the public IP. Example SQL, Storage etc
-      - `[Type <String>]`: Gets or sets the ipTag type: Example FirstPartyUsage.
-    - `[IdleTimeoutInMinute <Int32?>]`: The idle timeout of the public IP address.
-    - `[ProvisioningState <String>]`: The provisioning state of the PublicIP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-    - `[PublicIPAllocationMethod <IPAllocationMethod?>]`: The public IP address allocation method.
-    - `[PublicIPPrefixId <String>]`: Resource ID.
-    - `[ResourceGuid <String>]`: The resource GUID property of the public IP resource.
-    - `[SkuName <PublicIPAddressSkuName?>]`: Name of a public IP address SKU.
-    - `[Version <IPVersion?>]`: The public IP address version.
-    - `[Zone <String[]>]`: A list of availability zones denoting the IP allocated for the resource needs to come from.
   - `[PublicIPPrefixId <String>]`: Resource ID.
   - `[Subnet <ISubnet>]`: The reference of the subnet resource.
+    - `[Id <String>]`: Resource ID.
   - `[Zone <String[]>]`: A list of availability zones denoting the IP allocated for the resource needs to come from.
 
 #### INBOUNDNATPOOL <IInboundNatPool[]>: Defines an external port range for inbound NAT to a single backend port on NICs associated with a load balancer. Inbound NAT rules are created automatically for each NIC associated with the Load Balancer using an external port from this range. Defining an Inbound NAT pool on your Load Balancer is mutually exclusive with defining inbound Nat rules. Inbound NAT pools are referenced from virtual machine scale sets. NICs that are associated with individual virtual machines cannot reference an inbound NAT pool. They have to reference individual inbound NAT rules.
@@ -638,258 +529,81 @@ To create the parameters described below, construct a hash table containing the 
   - `[EnableTcpReset <Boolean?>]`: Receive bidirectional TCP Reset on TCP flow idle timeout or unexpected connection termination. This element is only used when the protocol is set to TCP.
   - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
   - `[FrontendIPConfigurationId <String>]`: Resource ID.
-  - `[IdleTimeoutInMinute <Int32?>]`: The timeout for the TCP idle connection. The value can be set between 4 and 30 minutes. The default value is 4 minutes. This element is only used when the protocol is set to TCP.
+  - `[IdleTimeoutInMinutes <Int32?>]`: The timeout for the TCP idle connection. The value can be set between 4 and 30 minutes. The default value is 4 minutes. This element is only used when the protocol is set to TCP.
   - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
   - `[ProvisioningState <String>]`: Gets the provisioning state of the PublicIP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
 
-#### INBOUNDNATRULE <IInboundNatRule[]>: Collection of inbound NAT Rules used by a load balancer. Defining inbound NAT rules on your load balancer is mutually exclusive with defining an inbound NAT pool. Inbound NAT pools are referenced from virtual machine scale sets. NICs that are associated with individual virtual machines cannot reference an Inbound NAT pool. They have to reference individual inbound NAT rules.
-  - `[Id <String>]`: Resource ID.
-  - `[ApplicationGatewayBackendAddressPool <IApplicationGatewayBackendAddressPool[]>]`: The reference of ApplicationGatewayBackendAddressPool resource.
-    - `[Id <String>]`: Resource ID.
-    - `[BackendAddress <IApplicationGatewayBackendAddress[]>]`: Backend addresses
-      - `[Fqdn <String>]`: Fully qualified domain name (FQDN).
-      - `[IPAddress <String>]`: IP address
-    - `[BackendIPConfiguration <INetworkInterfaceIPConfiguration[]>]`: Collection of references to IPs defined in network interfaces.
-      - `[Id <String>]`: Resource ID.
-      - `[ApplicationGatewayBackendAddressPool <IApplicationGatewayBackendAddressPool[]>]`: The reference of ApplicationGatewayBackendAddressPool resource.
-      - `[ApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: Application security groups in which the IP configuration is included.
-        - `[Id <String>]`: Resource ID.
-        - `[Location <String>]`: Resource location.
-        - `[Tag <IResourceTags>]`: Resource tags.
-          - `[(Any) <String>]`: This indicates any property can be added to this object.
-      - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-      - `[LoadBalancerBackendAddressPool <IBackendAddressPool[]>]`: The reference of LoadBalancerBackendAddressPool resource.
-        - `[Id <String>]`: Resource ID.
-        - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-        - `[Name <String>]`: Gets name of the resource that is unique within a resource group. This name can be used to access the resource.
-        - `[OutboundRuleId <String>]`: Resource ID.
-        - `[ProvisioningState <String>]`: Get provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-      - `[LoadBalancerInboundNatRule <IInboundNatRule[]>]`: A list of references of LoadBalancerInboundNatRules.
-      - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-      - `[Primary <Boolean?>]`: Gets whether this is a primary customer address on the network interface.
-      - `[PrivateIPAddress <String>]`: Private IP address of the IP configuration.
-      - `[PrivateIPAddressVersion <IPVersion?>]`: Available from Api-Version 2016-03-30 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.
-      - `[PrivateIPAllocationMethod <IPAllocationMethod?>]`: The private IP address allocation method.
-      - `[ProvisioningState <String>]`: The provisioning state of the network interface IP configuration. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-      - `[PublicIPAddress <IPublicIPAddress>]`: Public IP address bound to the IP configuration.
-        - `[Id <String>]`: Resource ID.
-        - `[Location <String>]`: Resource location.
-        - `[Tag <IResourceTags>]`: Resource tags.
-        - `[DdosCustomPolicyId <String>]`: Resource ID.
-        - `[DdosSettingProtectionCoverage <DdosSettingsProtectionCoverage?>]`: The DDoS protection policy customizability of the public IP. Only standard coverage will have the ability to be customized.
-        - `[DnsSettingDomainNameLabel <String>]`: Gets or sets the Domain name label.The concatenation of the domain name label and the regionalized DNS zone make up the fully qualified domain name associated with the public IP address. If a domain name label is specified, an A DNS record is created for the public IP in the Microsoft Azure DNS system.
-        - `[DnsSettingFqdn <String>]`: Gets the FQDN, Fully qualified domain name of the A DNS record associated with the public IP. This is the concatenation of the domainNameLabel and the regionalized DNS zone.
-        - `[DnsSettingReverseFqdn <String>]`: Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name that resolves to this public IP address. If the reverseFqdn is specified, then a PTR DNS record is created pointing from the IP address in the in-addr.arpa domain to the reverse FQDN. 
-        - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-        - `[IPAddress <String>]`: The IP address associated with the public IP address resource.
-        - `[IPConfigurationEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
-        - `[IPConfigurationId <String>]`: Resource ID.
-        - `[IPConfigurationName <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-        - `[IPConfigurationProperty <IIPConfigurationPropertiesFormat>]`: Properties of the IP configuration
-          - `[PrivateIPAddress <String>]`: The private IP address of the IP configuration.
-          - `[PrivateIPAllocationMethod <IPAllocationMethod?>]`: The private IP address allocation method.
-          - `[ProvisioningState <String>]`: Gets the provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-          - `[PublicIPAddress <IPublicIPAddress>]`: The reference of the public IP resource.
-          - `[Subnet <ISubnet>]`: The reference of the subnet resource.
-            - `[Id <String>]`: Resource ID.
-            - `[AddressPrefix <String>]`: The address prefix for the subnet.
-            - `[DefaultSecurityRule <ISecurityRule[]>]`: The default security rules of network security group.
-              - `Access <SecurityRuleAccess>`: The network traffic is allowed or denied.
-              - `Direction <SecurityRuleDirection>`: The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic.
-              - `Protocol <SecurityRuleProtocol>`: Network protocol this rule applies to. Possible values are 'Tcp', 'Udp', 'Icmp', 'Esp', and '*'.
-              - `[Id <String>]`: Resource ID.
-              - `[Description <String>]`: A description for this rule. Restricted to 140 chars.
-              - `[DestinationAddressPrefix <String>]`: The destination address prefix. CIDR or destination IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used.
-              - `[DestinationApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: The application security group specified as destination.
-              - `[DestinationPortRange <String>]`: The destination port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
-              - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-              - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-              - `[Priority <Int32?>]`: The priority of the rule. The value can be between 100 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
-              - `[PropertiesDestinationAddressPrefixes <String[]>]`: The destination address prefixes. CIDR or destination IP ranges.
-              - `[PropertiesDestinationPortRanges <String[]>]`: The destination port ranges.
-              - `[PropertiesSourceAddressPrefixes <String[]>]`: The CIDR or source IP ranges.
-              - `[PropertiesSourcePortRanges <String[]>]`: The source port ranges.
-              - `[ProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-              - `[SourceAddressPrefix <String>]`: The CIDR or source IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used. If this is an ingress rule, specifies where network traffic originates from. 
-              - `[SourceApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: The application security group specified as source.
-              - `[SourcePortRange <String>]`: The source port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
-            - `[Delegation <IDelegation[]>]`: Gets an array of references to the delegations on the subnet.
-              - `[Id <String>]`: Resource ID.
-              - `[Action <String[]>]`: Describes the actions permitted to the service upon delegation
-              - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-              - `[Name <String>]`: The name of the resource that is unique within a subnet. This name can be used to access the resource.
-              - `[ServiceName <String>]`: The name of the service to whom the subnet should be delegated (e.g. Microsoft.Sql/servers)
-            - `[DisableBgpRoutePropagation <Boolean?>]`: Gets or sets whether to disable the routes learned by BGP on that route table. True means disable.
-            - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-            - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-            - `[NatGatewayId <String>]`: Resource ID.
-            - `[NsgEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
-            - `[NsgId <String>]`: Resource ID.
-            - `[NsgLocation <String>]`: Resource location.
-            - `[NsgPropertiesProvisioningState <String>]`: The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-            - `[NsgTag <IResourceTags>]`: Resource tags.
-            - `[PropertiesAddressPrefixes <String[]>]`: List of  address prefixes for the subnet.
-            - `[ProvisioningState <String>]`: The provisioning state of the resource.
-            - `[ResourceGuid <String>]`: The resource GUID property of the network security group resource.
-            - `[ResourceNavigationLink <IResourceNavigationLink[]>]`: Gets an array of references to the external resources using subnet.
-              - `[Id <String>]`: Resource ID.
-              - `[Link <String>]`: Link to the external resource
-              - `[LinkedResourceType <String>]`: Resource type of the linked resource.
-              - `[Name <String>]`: Name of the resource that is unique within a resource group. This name can be used to access the resource.
-            - `[Route <IRoute[]>]`: Collection of routes contained within a route table.
-              - `NextHopType <RouteNextHopType>`: The type of Azure hop the packet should be sent to.
-              - `[Id <String>]`: Resource ID.
-              - `[AddressPrefix <String>]`: The destination CIDR to which the route applies.
-              - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-              - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-              - `[NextHopIPAddress <String>]`: The IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is VirtualAppliance.
-              - `[ProvisioningState <String>]`: The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-            - `[RouteTableEtag <String>]`: Gets a unique read-only string that changes whenever the resource is updated.
-            - `[RouteTableId <String>]`: Resource ID.
-            - `[RouteTableLocation <String>]`: Resource location.
-            - `[RouteTablePropertiesProvisioningState <String>]`: The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-            - `[RouteTableTag <IResourceTags>]`: Resource tags.
-            - `[SecurityRule <ISecurityRule[]>]`: A collection of security rules of the network security group.
-            - `[ServiceAssociationLink <IServiceAssociationLink[]>]`: Gets an array of references to services injecting into this subnet.
-              - `[Id <String>]`: Resource ID.
-              - `[Link <String>]`: Link to the external resource.
-              - `[LinkedResourceType <String>]`: Resource type of the linked resource.
-              - `[Name <String>]`: Name of the resource that is unique within a resource group. This name can be used to access the resource.
-            - `[ServiceEndpoint <IServiceEndpointPropertiesFormat[]>]`: An array of service endpoints.
-              - `[Location <String[]>]`: A list of locations.
-              - `[ProvisioningState <String>]`: The provisioning state of the resource.
-              - `[Service <String>]`: The type of the endpoint service.
-            - `[ServiceEndpointPolicy <IServiceEndpointPolicy[]>]`: An array of service endpoint policies.
-              - `[Id <String>]`: Resource ID.
-              - `[Location <String>]`: Resource location.
-              - `[Tag <IResourceTags>]`: Resource tags.
-              - `[Definition <IServiceEndpointPolicyDefinition[]>]`: A collection of service endpoint policy definitions of the service endpoint policy.
-                - `[Id <String>]`: Resource ID.
-                - `[Description <String>]`: A description for this rule. Restricted to 140 chars.
-                - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-                - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-                - `[Service <String>]`: Service endpoint name.
-                - `[ServiceResource <String[]>]`: A list of service resources.
-              - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-        - `[IPTag <IIPTag[]>]`: The list of tags associated with the public IP address.
-          - `[Tag <String>]`: Gets or sets value of the IpTag associated with the public IP. Example SQL, Storage etc
-          - `[Type <String>]`: Gets or sets the ipTag type: Example FirstPartyUsage.
-        - `[IdleTimeoutInMinute <Int32?>]`: The idle timeout of the public IP address.
-        - `[ProvisioningState <String>]`: The provisioning state of the PublicIP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-        - `[PublicIPAllocationMethod <IPAllocationMethod?>]`: The public IP address allocation method.
-        - `[PublicIPPrefixId <String>]`: Resource ID.
-        - `[ResourceGuid <String>]`: The resource GUID property of the public IP resource.
-        - `[SkuName <PublicIPAddressSkuName?>]`: Name of a public IP address SKU.
-        - `[Version <IPVersion?>]`: The public IP address version.
-        - `[Zone <String[]>]`: A list of availability zones denoting the IP allocated for the resource needs to come from.
-      - `[Subnet <ISubnet>]`: Subnet bound to the IP configuration.
-      - `[VirtualNetworkTap <IVirtualNetworkTap[]>]`: The reference to Virtual Network Taps.
-    - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-    - `[Name <String>]`: Name of the backend address pool that is unique within an Application Gateway.
-    - `[ProvisioningState <String>]`: Provisioning state of the backend address pool resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-    - `[Type <String>]`: Type of the resource.
-  - `[ApplicationSecurityGroup <IApplicationSecurityGroup[]>]`: Application security groups in which the IP configuration is included.
-  - `[BackendIPConfigurationEtag <String>]`: A unique read-only string that changes whenever the resource is updated.
-  - `[BackendIPConfigurationId <String>]`: Resource ID.
-  - `[BackendIPConfigurationName <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  - `[BackendIPConfigurationPropertiesProvisioningState <String>]`: The provisioning state of the network interface IP configuration. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-  - `[BackendPort <Int32?>]`: The port used for the internal endpoint. Acceptable values range from 1 to 65535.
-  - `[EnableFloatingIP <Boolean?>]`: Configures a virtual machine's endpoint for the floating IP capability required to configure a SQL AlwaysOn Availability Group. This setting is required when using the SQL AlwaysOn Availability Groups in SQL server. This setting can't be changed after you create the endpoint.
-  - `[EnableTcpReset <Boolean?>]`: Receive bidirectional TCP Reset on TCP flow idle timeout or unexpected connection termination. This element is only used when the protocol is set to TCP.
-  - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-  - `[FrontendIPConfigurationId <String>]`: Resource ID.
-  - `[FrontendPort <Int32?>]`: The port for the external endpoint. Port numbers for each rule must be unique within the Load Balancer. Acceptable values range from 1 to 65534.
-  - `[IdleTimeoutInMinute <Int32?>]`: The timeout for the TCP idle connection. The value can be set between 4 and 30 minutes. The default value is 4 minutes. This element is only used when the protocol is set to TCP.
-  - `[LoadBalancerBackendAddressPool <IBackendAddressPool[]>]`: The reference of LoadBalancerBackendAddressPool resource.
-  - `[LoadBalancerInboundNatRule <IInboundNatRule[]>]`: A list of references of LoadBalancerInboundNatRules.
-  - `[Name <String>]`: Gets name of the resource that is unique within a resource group. This name can be used to access the resource.
-  - `[Primary <Boolean?>]`: Gets whether this is a primary customer address on the network interface.
-  - `[PrivateIPAddress <String>]`: Private IP address of the IP configuration.
-  - `[PrivateIPAddressVersion <IPVersion?>]`: Available from Api-Version 2016-03-30 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.
-  - `[PrivateIPAllocationMethod <IPAllocationMethod?>]`: The private IP address allocation method.
-  - `[Protocol <TransportProtocol?>]`: The reference to the transport protocol used by the load balancing rule.
-  - `[ProvisioningState <String>]`: Gets the provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-  - `[PublicIPAddress <IPublicIPAddress>]`: Public IP address bound to the IP configuration.
-  - `[Subnet <ISubnet>]`: Subnet bound to the IP configuration.
-  - `[VirtualNetworkTap <IVirtualNetworkTap[]>]`: The reference to Virtual Network Taps.
+#### INPUTOBJECT <INetworkIdentity>: Identity Parameter
+  - `[ApplicationGatewayName <String>]`: The name of the application gateway.
+  - `[ApplicationSecurityGroupName <String>]`: The name of the application security group.
+  - `[AuthorizationName <String>]`: The name of the authorization.
+  - `[AzureFirewallName <String>]`: The name of the Azure Firewall.
+  - `[BackendAddressPoolName <String>]`: The name of the backend address pool.
+  - `[CircuitName <String>]`: The name of the express route circuit.
+  - `[ConnectionMonitorName <String>]`: The name of the connection monitor.
+  - `[ConnectionName <String>]`: The name of the vpn connection.
+  - `[CrossConnectionName <String>]`: The name of the ExpressRouteCrossConnection (service key of the circuit).
+  - `[DdosCustomPolicyName <String>]`: The name of the DDoS custom policy.
+  - `[DdosProtectionPlanName <String>]`: The name of the DDoS protection plan.
+  - `[DefaultSecurityRuleName <String>]`: The name of the default security rule.
+  - `[DevicePath <String>]`: The path of the device.
+  - `[ExpressRouteGatewayName <String>]`: The name of the ExpressRoute gateway.
+  - `[ExpressRoutePortName <String>]`: The name of the ExpressRoutePort resource.
+  - `[FrontendIPConfigurationName <String>]`: The name of the frontend IP configuration.
+  - `[GatewayName <String>]`: The name of the gateway.
+  - `[IPConfigurationName <String>]`: The name of the ip configuration name.
+  - `[Id <String>]`: Resource identity path
+  - `[InboundNatRuleName <String>]`: The name of the inbound nat rule.
+  - `[InterfaceEndpointName <String>]`: The name of the interface endpoint.
+  - `[LinkName <String>]`: The name of the ExpressRouteLink resource.
+  - `[LoadBalancerName <String>]`: The name of the load balancer.
+  - `[LoadBalancingRuleName <String>]`: The name of the load balancing rule.
+  - `[LocalNetworkGatewayName <String>]`: The name of the local network gateway.
+  - `[Location <String>]`: The location of the subnet.
+  - `[LocationName <String>]`: Name of the requested ExpressRoutePort peering location.
+  - `[NatGatewayName <String>]`: The name of the nat gateway.
+  - `[NetworkInterfaceName <String>]`: The name of the network interface.
+  - `[NetworkProfileName <String>]`: The name of the NetworkProfile.
+  - `[NetworkWatcherName <String>]`: The name of the network watcher.
+  - `[NsgName <String>]`: The name of the network security group.
+  - `[OutboundRuleName <String>]`: The name of the outbound rule.
+  - `[P2SVpnServerConfigurationName <String>]`: The name of the P2SVpnServerConfiguration.
+  - `[PacketCaptureName <String>]`: The name of the packet capture session.
+  - `[PeeringName <String>]`: The name of the peering.
+  - `[PolicyName <String>]`: The name of the policy
+  - `[PredefinedPolicyName <String>]`: Name of Ssl predefined policy.
+  - `[ProbeName <String>]`: The name of the probe.
+  - `[PublicIPAddressName <String>]`: The name of the subnet.
+  - `[PublicIPPrefixName <String>]`: The name of the PublicIpPrefix.
+  - `[ResourceGroupName <String>]`: The name of the resource group.
+  - `[RouteFilterName <String>]`: The name of the route filter.
+  - `[RouteName <String>]`: The name of the route.
+  - `[RouteTableName <String>]`: The name of the route table.
+  - `[RuleName <String>]`: The name of the rule.
+  - `[SecurityRuleName <String>]`: The name of the security rule.
+  - `[ServiceEndpointPolicyDefinitionName <String>]`: The name of the service endpoint policy definition.
+  - `[ServiceEndpointPolicyName <String>]`: The name of the service endpoint policy.
+  - `[SubnetName <String>]`: The name of the subnet.
+  - `[SubscriptionId <String>]`: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  - `[TapConfigurationName <String>]`: The name of the tap configuration.
+  - `[TapName <String>]`: The name of the virtual network tap.
+  - `[VirtualHubName <String>]`: The name of the VirtualHub.
+  - `[VirtualMachineScaleSetName <String>]`: The name of the virtual machine scale set.
+  - `[VirtualWanName <String>]`: The name of the VirtualWAN being retrieved.
+  - `[VirtualWanName1 <String>]`: The name of the VirtualWAN for which configuration of all vpn-sites is needed.
+  - `[VirtualWanName2 <String>]`: The name of the VirtualWan.
+  - `[VirtualmachineIndex <String>]`: The virtual machine index.
+  - `[VnetGatewayConnectionName <String>]`: The name of the virtual network gateway connection for which the configuration script is generated.
+  - `[VnetGatewayName <String>]`: The name of the virtual network gateway.
+  - `[VnetName <String>]`: The name of the virtual network.
+  - `[VnetPeeringName <String>]`: The name of the virtual network peering.
+  - `[VpnSiteName <String>]`: The name of the VpnSite being retrieved.
 
 #### LOADBALANCER <ILoadBalancer>: LoadBalancer resource
   - `[Id <String>]`: Resource ID.
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[BackendAddressPool <IBackendAddressPool[]>]`: Collection of backend address pools used by a load balancer
-    - `[Id <String>]`: Resource ID.
-    - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-    - `[Name <String>]`: Gets name of the resource that is unique within a resource group. This name can be used to access the resource.
-    - `[OutboundRuleId <String>]`: Resource ID.
-    - `[ProvisioningState <String>]`: Get provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-  - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-  - `[FrontendIPConfiguration <IFrontendIPConfiguration[]>]`: Object representing the frontend IPs to be used for the load balancer
-    - `[Id <String>]`: Resource ID.
-    - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-    - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-    - `[PrivateIPAddress <String>]`: The private IP address of the IP configuration.
-    - `[PrivateIPAllocationMethod <IPAllocationMethod?>]`: The Private IP allocation method.
-    - `[ProvisioningState <String>]`: Gets the provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-    - `[PublicIPAddress <IPublicIPAddress>]`: The reference of the Public IP resource.
-    - `[PublicIPPrefixId <String>]`: Resource ID.
-    - `[Subnet <ISubnet>]`: The reference of the subnet resource.
-    - `[Zone <String[]>]`: A list of availability zones denoting the IP allocated for the resource needs to come from.
-  - `[InboundNatPool <IInboundNatPool[]>]`: Defines an external port range for inbound NAT to a single backend port on NICs associated with a load balancer. Inbound NAT rules are created automatically for each NIC associated with the Load Balancer using an external port from this range. Defining an Inbound NAT pool on your Load Balancer is mutually exclusive with defining inbound Nat rules. Inbound NAT pools are referenced from virtual machine scale sets. NICs that are associated with individual virtual machines cannot reference an inbound NAT pool. They have to reference individual inbound NAT rules.
-    - `BackendPort <Int32>`: The port used for internal connections on the endpoint. Acceptable values are between 1 and 65535.
-    - `FrontendPortRangeEnd <Int32>`: The last port number in the range of external ports that will be used to provide Inbound Nat to NICs associated with a load balancer. Acceptable values range between 1 and 65535.
-    - `FrontendPortRangeStart <Int32>`: The first port number in the range of external ports that will be used to provide Inbound Nat to NICs associated with a load balancer. Acceptable values range between 1 and 65534.
-    - `Protocol <TransportProtocol>`: The reference to the transport protocol used by the inbound NAT pool.
-    - `[Id <String>]`: Resource ID.
-    - `[EnableFloatingIP <Boolean?>]`: Configures a virtual machine's endpoint for the floating IP capability required to configure a SQL AlwaysOn Availability Group. This setting is required when using the SQL AlwaysOn Availability Groups in SQL server. This setting can't be changed after you create the endpoint.
-    - `[EnableTcpReset <Boolean?>]`: Receive bidirectional TCP Reset on TCP flow idle timeout or unexpected connection termination. This element is only used when the protocol is set to TCP.
-    - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-    - `[FrontendIPConfigurationId <String>]`: Resource ID.
-    - `[IdleTimeoutInMinute <Int32?>]`: The timeout for the TCP idle connection. The value can be set between 4 and 30 minutes. The default value is 4 minutes. This element is only used when the protocol is set to TCP.
-    - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-    - `[ProvisioningState <String>]`: Gets the provisioning state of the PublicIP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-  - `[InboundNatRule <IInboundNatRule[]>]`: Collection of inbound NAT Rules used by a load balancer. Defining inbound NAT rules on your load balancer is mutually exclusive with defining an inbound NAT pool. Inbound NAT pools are referenced from virtual machine scale sets. NICs that are associated with individual virtual machines cannot reference an Inbound NAT pool. They have to reference individual inbound NAT rules.
-  - `[LoadBalancingRule <ILoadBalancingRule[]>]`: Object collection representing the load balancing rules Gets the provisioning 
-    - `FrontendPort <Int32>`: The port for the external endpoint. Port numbers for each rule must be unique within the Load Balancer. Acceptable values are between 0 and 65534. Note that value 0 enables "Any Port"
-    - `Protocol <TransportProtocol>`: The reference to the transport protocol used by the load balancing rule.
-    - `[Id <String>]`: Resource ID.
-    - `[BackendAddressPoolId <String>]`: Resource ID.
-    - `[BackendPort <Int32?>]`: The port used for internal connections on the endpoint. Acceptable values are between 0 and 65535. Note that value 0 enables "Any Port"
-    - `[DisableOutboundSnat <Boolean?>]`: Configures SNAT for the VMs in the backend pool to use the publicIP address specified in the frontend of the load balancing rule.
-    - `[EnableFloatingIP <Boolean?>]`: Configures a virtual machine's endpoint for the floating IP capability required to configure a SQL AlwaysOn Availability Group. This setting is required when using the SQL AlwaysOn Availability Groups in SQL server. This setting can't be changed after you create the endpoint.
-    - `[EnableTcpReset <Boolean?>]`: Receive bidirectional TCP Reset on TCP flow idle timeout or unexpected connection termination. This element is only used when the protocol is set to TCP.
-    - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-    - `[FrontendIPConfigurationId <String>]`: Resource ID.
-    - `[IdleTimeoutInMinute <Int32?>]`: The timeout for the TCP idle connection. The value can be set between 4 and 30 minutes. The default value is 4 minutes. This element is only used when the protocol is set to TCP.
-    - `[LoadDistribution <LoadDistribution?>]`: The load distribution policy for this rule. Possible values are 'Default', 'SourceIP', and 'SourceIPProtocol'.
-    - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-    - `[ProbeId <String>]`: Resource ID.
-    - `[ProvisioningState <String>]`: Gets the provisioning state of the PublicIP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-  - `[OutboundRule <IOutboundRule[]>]`: The outbound rules.
-    - `FrontendIPConfiguration <ISubResource[]>`: The Frontend IP addresses of the load balancer.
-    - `Protocol <LoadBalancerOutboundRuleProtocol>`: The protocol for the outbound rule in load balancer. Possible values are: 'Tcp', 'Udp', and 'All'.
-    - `[Id <String>]`: Resource ID.
-    - `[AllocatedOutboundPort <Int32?>]`: The number of outbound ports to be used for NAT.
-    - `[BackendAddressPoolId <String>]`: Resource ID.
-    - `[EnableTcpReset <Boolean?>]`: Receive bidirectional TCP Reset on TCP flow idle timeout or unexpected connection termination. This element is only used when the protocol is set to TCP.
-    - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-    - `[IdleTimeoutInMinute <Int32?>]`: The timeout for the TCP idle connection
-    - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-    - `[ProvisioningState <String>]`: Gets the provisioning state of the PublicIP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-  - `[Probe <IProbe[]>]`: Collection of probe objects used in the load balancer
-    - `Port <Int32>`: The port for communicating the probe. Possible values range from 1 to 65535, inclusive.
-    - `Protocol <ProbeProtocol>`: The protocol of the end point. Possible values are: 'Http', 'Tcp', or 'Https'. If 'Tcp' is specified, a received ACK is required for the probe to be successful. If 'Http' or 'Https' is specified, a 200 OK response from the specifies URI is required for the probe to be successful.
-    - `[Id <String>]`: Resource ID.
-    - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-    - `[IntervalInSecond <Int32?>]`: The interval, in seconds, for how frequently to probe the endpoint for health status. Typically, the interval is slightly less than half the allocated timeout period (in seconds) which allows two full probes before taking the instance out of rotation. The default value is 15, the minimum value is 5.
-    - `[Name <String>]`: Gets name of the resource that is unique within a resource group. This name can be used to access the resource.
-    - `[NumberOfProbe <Int32?>]`: The number of probes where if no response, will result in stopping further traffic from being delivered to the endpoint. This values allows endpoints to be taken out of rotation faster or slower than the typical times used in Azure.
-    - `[ProvisioningState <String>]`: Gets the provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-    - `[RequestPath <String>]`: The URI used for requesting health status from the VM. Path is required if a protocol is set to http. Otherwise, it is not allowed. There is no default value.
-  - `[ProvisioningState <String>]`: Gets the provisioning state of the PublicIP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-  - `[ResourceGuid <String>]`: The resource GUID property of the load balancer resource.
-  - `[SkuName <LoadBalancerSkuName?>]`: Name of a load balancer SKU.
 
 #### LOADBALANCINGRULE <ILoadBalancingRule[]>: Object collection representing the load balancing rules Gets the provisioning 
   - `FrontendPort <Int32>`: The port for the external endpoint. Port numbers for each rule must be unique within the Load Balancer. Acceptable values are between 0 and 65534. Note that value 0 enables "Any Port"
@@ -902,7 +616,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[EnableTcpReset <Boolean?>]`: Receive bidirectional TCP Reset on TCP flow idle timeout or unexpected connection termination. This element is only used when the protocol is set to TCP.
   - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
   - `[FrontendIPConfigurationId <String>]`: Resource ID.
-  - `[IdleTimeoutInMinute <Int32?>]`: The timeout for the TCP idle connection. The value can be set between 4 and 30 minutes. The default value is 4 minutes. This element is only used when the protocol is set to TCP.
+  - `[IdleTimeoutInMinutes <Int32?>]`: The timeout for the TCP idle connection. The value can be set between 4 and 30 minutes. The default value is 4 minutes. This element is only used when the protocol is set to TCP.
   - `[LoadDistribution <LoadDistribution?>]`: The load distribution policy for this rule. Possible values are 'Default', 'SourceIP', and 'SourceIPProtocol'.
   - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
   - `[ProbeId <String>]`: Resource ID.
@@ -917,7 +631,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[BackendAddressPoolId <String>]`: Resource ID.
   - `[EnableTcpReset <Boolean?>]`: Receive bidirectional TCP Reset on TCP flow idle timeout or unexpected connection termination. This element is only used when the protocol is set to TCP.
   - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-  - `[IdleTimeoutInMinute <Int32?>]`: The timeout for the TCP idle connection
+  - `[IdleTimeoutInMinutes <Int32?>]`: The timeout for the TCP idle connection
   - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
   - `[ProvisioningState <String>]`: Gets the provisioning state of the PublicIP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
 
@@ -926,7 +640,7 @@ To create the parameters described below, construct a hash table containing the 
   - `Protocol <ProbeProtocol>`: The protocol of the end point. Possible values are: 'Http', 'Tcp', or 'Https'. If 'Tcp' is specified, a received ACK is required for the probe to be successful. If 'Http' or 'Https' is specified, a 200 OK response from the specifies URI is required for the probe to be successful.
   - `[Id <String>]`: Resource ID.
   - `[Etag <String>]`: A unique read-only string that changes whenever the resource is updated.
-  - `[IntervalInSecond <Int32?>]`: The interval, in seconds, for how frequently to probe the endpoint for health status. Typically, the interval is slightly less than half the allocated timeout period (in seconds) which allows two full probes before taking the instance out of rotation. The default value is 15, the minimum value is 5.
+  - `[IntervalInSeconds <Int32?>]`: The interval, in seconds, for how frequently to probe the endpoint for health status. Typically, the interval is slightly less than half the allocated timeout period (in seconds) which allows two full probes before taking the instance out of rotation. The default value is 15, the minimum value is 5.
   - `[Name <String>]`: Gets name of the resource that is unique within a resource group. This name can be used to access the resource.
   - `[NumberOfProbe <Int32?>]`: The number of probes where if no response, will result in stopping further traffic from being delivered to the endpoint. This values allows endpoints to be taken out of rotation faster or slower than the typical times used in Azure.
   - `[ProvisioningState <String>]`: Gets the provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.

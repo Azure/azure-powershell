@@ -14,19 +14,19 @@ Creates a vpn connection to a scalable vpn gateway if it doesn't exist else upda
 
 ### UpdateExpanded (Default)
 ```
-Set-AzVpnConnection -GatewayName <String> -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-ConnectionBandwidth <Int32>] [-EnableBgp] [-EnableInternetSecurity] [-EnableRateLimiting]
- [-IPsecPolicy <IIpsecPolicy[]>] [-Id <String>] [-ProtocolType <VirtualNetworkGatewayConnectionProtocol>]
- [-RemoteVpnSiteId <String>] [-ResourceName <String>] [-RoutingWeight <Int32>] [-SharedKey <String>]
- [-UseLocalAzureIPAddress] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Set-AzVpnConnection -GatewayName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-ConnectionBandwidth <Int32>] [-EnableBgp] [-EnableInternetSecurity]
+ [-EnableRateLimiting] [-Id <String>] [-IPsecPolicy <IIpsecPolicy[]>]
+ [-ProtocolType <VirtualNetworkGatewayConnectionProtocol>] [-RemoteVpnSiteId <String>]
+ [-ResourceName <String>] [-RoutingWeight <Int32>] [-SharedKey <String>] [-UseLocalAzureIPAddress]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
 ```
-Set-AzVpnConnection -GatewayName <String> -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -VpnConnection <IVpnConnection> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Set-AzVpnConnection -GatewayName <String> -Name <String> -ResourceGroupName <String>
+ -VpnConnection <IVpnConnection> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -64,7 +64,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -80,7 +80,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -112,7 +112,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -128,7 +128,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -144,7 +144,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -225,7 +225,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -306,7 +306,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -337,9 +337,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -355,7 +355,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -441,25 +441,6 @@ To create the parameters described below, construct a hash table containing the 
 
 #### VPNCONNECTION <IVpnConnection>: VpnConnection Resource.
   - `[Id <String>]`: Resource ID.
-  - `[ConnectionBandwidth <Int32?>]`: Expected bandwidth in MBPS.
-  - `[EnableBgp <Boolean?>]`: EnableBgp flag
-  - `[EnableInternetSecurity <Boolean?>]`: Enable internet security
-  - `[EnableRateLimiting <Boolean?>]`: EnableBgp flag
-  - `[IpsecPolicy <IIpsecPolicy[]>]`: The IPSec Policies to be considered by this connection.
-    - `DhGroup <DhGroup>`: The DH Group used in IKE Phase 1 for initial SA.
-    - `IkeEncryption <IkeEncryption>`: The IKE encryption algorithm (IKE phase 2).
-    - `IkeIntegrity <IkeIntegrity>`: The IKE integrity algorithm (IKE phase 2).
-    - `IpsecEncryption <IpsecEncryption>`: The IPSec encryption algorithm (IKE phase 1).
-    - `IpsecIntegrity <IpsecIntegrity>`: The IPSec integrity algorithm (IKE phase 1).
-    - `PfsGroup <PfsGroup>`: The Pfs Group used in IKE Phase 2 for new child SA.
-    - `SaDataSizeKilobyte <Int32>`: The IPSec Security Association (also called Quick Mode or Phase 2 SA) payload size in KB for a site to site VPN tunnel.
-    - `SaLifeTimeSecond <Int32>`: The IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime in seconds for a site to site VPN tunnel.
-  - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  - `[ProtocolType <VirtualNetworkGatewayConnectionProtocol?>]`: Connection protocol used for this connection
-  - `[RemoteVpnSiteId <String>]`: Resource ID.
-  - `[RoutingWeight <Int32?>]`: Routing weight for vpn connection.
-  - `[SharedKey <String>]`: SharedKey for the vpn connection.
-  - `[UseLocalAzureIPAddress <Boolean?>]`: Use local azure ip to initiate connection
 
 ## RELATED LINKS
 

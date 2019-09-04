@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.WebSite
-online version: https://docs.microsoft.com/en-us/powershell/module/az.website/get-azappservicecertificateordersiteseal
+Module Name: Az.AppService
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/get-azappservicecertificateordersiteseal
 schema: 2.0.0
 ---
 
@@ -12,29 +12,29 @@ Verify domain ownership for this certificate order.
 
 ## SYNTAX
 
-### Retrieve (Default)
-```
-Get-AzAppServiceCertificateOrderSiteSeal -CertificateOrderName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-SiteSealRequest <ISiteSealRequest>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### RetrieveExpanded
+### RetrieveExpanded (Default)
 ```
 Get-AzAppServiceCertificateOrderSiteSeal -CertificateOrderName <String> -ResourceGroupName <String>
  -SubscriptionId <String[]> [-LightTheme] [-Locale <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### RetrieveViaIdentityExpanded
+### Retrieve
 ```
-Get-AzAppServiceCertificateOrderSiteSeal -InputObject <IWebSiteIdentity> [-LightTheme] [-Locale <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzAppServiceCertificateOrderSiteSeal -CertificateOrderName <String> -ResourceGroupName <String>
+ -SubscriptionId <String[]> -SiteSealRequest <ISiteSealRequest> [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### RetrieveViaIdentity
 ```
-Get-AzAppServiceCertificateOrderSiteSeal -InputObject <IWebSiteIdentity> [-SiteSealRequest <ISiteSealRequest>]
+Get-AzAppServiceCertificateOrderSiteSeal -InputObject <IAppServiceIdentity>
+ -SiteSealRequest <ISiteSealRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### RetrieveViaIdentityExpanded
+```
+Get-AzAppServiceCertificateOrderSiteSeal -InputObject <IAppServiceIdentity> [-LightTheme] [-Locale <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -97,10 +97,11 @@ Dynamic: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
-Parameter Sets: RetrieveViaIdentityExpanded, RetrieveViaIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.IAppServiceIdentity
+Parameter Sets: RetrieveViaIdentity, RetrieveViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -112,7 +113,7 @@ Dynamic: False
 ```
 
 ### -LightTheme
-If <code>true</code> use the light color theme for site seal; otherwise, use the default color theme.
+If \<code\>true\</code\> use the light color theme for site seal; otherwise, use the default color theme.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -121,7 +122,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -164,11 +165,11 @@ Site seal request.
 To construct, see NOTES section for SITESEALREQUEST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISiteSealRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.ISiteSealRequest
 Parameter Sets: Retrieve, RetrieveViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -232,9 +233,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.IWebSiteIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.ISiteSealRequest
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISiteSealRequest
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.IAppServiceIdentity
 
 ## OUTPUTS
 
@@ -246,6 +247,50 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### INPUTOBJECT <IAppServiceIdentity>: Identity Parameter
+  - `[AnalysisName <String>]`: Analysis Name
+  - `[ApiName <String>]`: The managed API name.
+  - `[BackupId <String>]`: ID of the backup.
+  - `[BaseAddress <String>]`: Module base address.
+  - `[CertificateOrderName <String>]`: Name of the certificate order.
+  - `[ConnectionName <String>]`: The connection name.
+  - `[DeletedSiteId <String>]`: The numeric ID of the deleted app, e.g. 12345
+  - `[DetectorName <String>]`: Detector Resource Name
+  - `[DiagnosticCategory <String>]`: Diagnostic Category
+  - `[DiagnosticsName <String>]`: Name of the diagnostics item.
+  - `[DomainName <String>]`: Name of the domain.
+  - `[DomainOwnershipIdentifierName <String>]`: Name of domain ownership identifier.
+  - `[EntityName <String>]`: Name of the hybrid connection.
+  - `[FunctionName <String>]`: Function name.
+  - `[GatewayName <String>]`: Name of the gateway. Only the 'primary' gateway is supported.
+  - `[HostName <String>]`: Hostname in the hostname binding.
+  - `[HostingEnvironmentName <String>]`: Name of the hosting environment.
+  - `[Id <String>]`: Resource identity path
+  - `[Instance <String>]`: Name of the instance in the multi-role pool.
+  - `[InstanceId <String>]`: ID of web app instance.
+  - `[Location <String>]`: 
+  - `[Name <String>]`: Name of the certificate.
+  - `[NamespaceName <String>]`: Name of the Service Bus namespace.
+  - `[OperationId <String>]`: GUID of the operation.
+  - `[PremierAddOnName <String>]`: Add-on name.
+  - `[ProcessId <String>]`: PID.
+  - `[PublicCertificateName <String>]`: Public certificate name.
+  - `[RelayName <String>]`: Name of the Service Bus relay.
+  - `[ResourceGroupName <String>]`: Name of the resource group to which the resource belongs.
+  - `[RouteName <String>]`: Name of the Virtual Network route.
+  - `[SiteExtensionId <String>]`: Site extension name.
+  - `[SiteName <String>]`: Site Name
+  - `[Slot <String>]`: Name of web app slot. If not specified then will default to production slot.
+  - `[SnapshotId <String>]`: The ID of the snapshot to read.
+  - `[SourceControlType <String>]`: Type of source control
+  - `[SubscriptionId <String>]`: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  - `[ThreadId <String>]`: TID.
+  - `[View <String>]`: The type of view. This can either be "summary" or "detailed".
+  - `[VnetName <String>]`: Name of the Virtual Network.
+  - `[WebJobName <String>]`: Name of Web Job.
+  - `[WorkerName <String>]`: Name of worker machine, which typically starts with RD.
+  - `[WorkerPoolName <String>]`: Name of the worker pool.
 
 #### SITESEALREQUEST <ISiteSealRequest>: Site seal request.
   - `[LightTheme <Boolean?>]`: If <code>true</code> use the light color theme for site seal; otherwise, use the default color theme.

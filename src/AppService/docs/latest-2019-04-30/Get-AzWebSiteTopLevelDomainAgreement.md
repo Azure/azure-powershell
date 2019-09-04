@@ -12,17 +12,17 @@ Gets all legal agreements that user needs to accept before purchasing a domain.
 
 ## SYNTAX
 
-### List (Default)
-```
-Get-AzWebSiteTopLevelDomainAgreement -Name <String> -SubscriptionId <String[]>
- [-AgreementOption <ITopLevelDomainAgreementOption>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### ListExpanded
+### ListExpanded (Default)
 ```
 Get-AzWebSiteTopLevelDomainAgreement -Name <String> -SubscriptionId <String[]> [-ForTransfer]
  [-IncludePrivacy] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### List
+```
+Get-AzWebSiteTopLevelDomainAgreement -Name <String> -SubscriptionId <String[]>
+ -AgreementOption <ITopLevelDomainAgreementOption> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,7 +59,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ITopLevelDom
 Parameter Sets: List
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -84,7 +84,7 @@ Dynamic: False
 ```
 
 ### -ForTransfer
-If <code>true</code>, then the list of agreements will include agreements for domain transfer as well; otherwise, <code>false</code>.
+If \<code\>true\</code\>, then the list of agreements will include agreements for domain transfer as well; otherwise, \<code\>false\</code\>.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -93,14 +93,14 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
 
 ### -IncludePrivacy
-If <code>true</code>, then the list of agreements will include agreements for domain privacy as well; otherwise, <code>false</code>.
+If \<code\>true\</code\>, then the list of agreements will include agreements for domain privacy as well; otherwise, \<code\>false\</code\>.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -109,7 +109,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

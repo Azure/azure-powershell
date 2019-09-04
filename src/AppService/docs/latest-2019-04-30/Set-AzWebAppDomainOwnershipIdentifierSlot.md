@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.WebSite
-online version: https://docs.microsoft.com/en-us/powershell/module/az.website/set-azwebappdomainownershipidentifierslot
+Module Name: Az.AppService
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/set-azwebappdomainownershipidentifierslot
 schema: 2.0.0
 ---
 
@@ -12,18 +12,17 @@ Creates a domain ownership identifier for web app, or updates an existing owners
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzWebAppDomainOwnershipIdentifierSlot -DomainOwnershipIdentifierName <String> -Name <String>
- -ResourceGroupName <String> -Slot <String> -SubscriptionId <String>
- [-DomainOwnershipIdentifier <IIdentifier>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzWebAppDomainOwnershipIdentifierSlot -DomainOwnershipIdentifierName <String> -Name <String>
  -ResourceGroupName <String> -Slot <String> -SubscriptionId <String> [-Kind <String>] [-PropertiesId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzWebAppDomainOwnershipIdentifierSlot -DomainOwnershipIdentifierName <String> -Name <String>
+ -ResourceGroupName <String> -Slot <String> -SubscriptionId <String> -DomainOwnershipIdentifier <IIdentifier>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -73,11 +72,11 @@ A domain specific resource identifier.
 To construct, see NOTES section for DOMAINOWNERSHIPIDENTIFIER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160301.IIdentifier
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20160301.IIdentifier
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -238,11 +237,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160301.IIdentifier
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20160301.IIdentifier
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160301.IIdentifier
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20160301.IIdentifier
 
 ## ALIASES
 

@@ -12,22 +12,15 @@ Create or update a managed hosting environment.
 
 ## SYNTAX
 
-### Update (Default)
+### UpdateExpanded (Default)
 ```
 Set-AzWebSiteManagedHostingEnvironmentManagedHostingEnvironment -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-ManagedHostingEnvironmentEnvelope <IHostingEnvironment>] [-PassThru]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
-```
-Set-AzWebSiteManagedHostingEnvironmentManagedHostingEnvironment -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String> -Location <String> [-PassThru] [-AllowedMultiSize <String>]
- [-AllowedWorkerSize <String>] [-ApiManagementAccountId <String>] [-ClusterSetting <INameValuePair[]>]
- [-DatabaseEdition <String>] [-DatabaseServiceObjective <String>] [-DnsSuffix <String>]
- [-EnvironmentCapacity <IStampCapacity[]>] [-EnvironmentIsHealthy] [-EnvironmentStatus <String>]
- [-Id <String>] [-InternalLoadBalancingMode <InternalLoadBalancingMode>] [-IpsslAddressCount <Int32>]
- [-Kind <String>] [-LastAction <String>] [-LastActionResult <String>] [-MaximumNumberOfMachine <Int32>]
+ -SubscriptionId <String> -Location <String> [-AllowedMultiSize <String>] [-AllowedWorkerSize <String>]
+ [-ApiManagementAccountId <String>] [-ClusterSetting <INameValuePair[]>] [-DatabaseEdition <String>]
+ [-DatabaseServiceObjective <String>] [-DnsSuffix <String>] [-EnvironmentCapacity <IStampCapacity[]>]
+ [-EnvironmentIsHealthy] [-EnvironmentStatus <String>] [-Id <String>]
+ [-InternalLoadBalancingMode <InternalLoadBalancingMode>] [-IpsslAddressCount <Int32>] [-Kind <String>]
+ [-LastAction <String>] [-LastActionResult <String>] [-MaximumNumberOfMachine <Int32>]
  [-MultiRoleCount <Int32>] [-MultiSize <String>] [-Name1 <String>]
  [-NetworkAccessControlList <INetworkAccessControlEntry[]>] [-PropertiesLocation <String>]
  [-PropertiesName <String>] [-PropertiesSubscriptionId <String>] [-ProvisioningState <ProvisioningState>]
@@ -35,8 +28,15 @@ Set-AzWebSiteManagedHostingEnvironmentManagedHostingEnvironment -Name <String> -
  [-Type <String>] [-UpgradeDomain <Int32>] [-VipMapping <IVirtualIPMapping[]>] [-VirtualNetworkId <String>]
  [-VirtualNetworkName <String>] [-VirtualNetworkSubnet <String>] [-VirtualNetworkType <String>]
  [-VnetName <String>] [-VnetResourceGroupName <String>] [-VnetSubnetName <String>]
- [-WorkerPool <IWorkerPool[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-WorkerPool <IWorkerPool[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzWebSiteManagedHostingEnvironmentManagedHostingEnvironment -Name <String> -ResourceGroupName <String>
+ -SubscriptionId <String> -ManagedHostingEnvironmentEnvelope <IHostingEnvironment>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -122,7 +122,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -238,7 +238,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -302,7 +302,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -381,7 +381,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.IHostingEnvi
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -399,7 +399,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -415,7 +415,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -497,14 +497,14 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
 
 ### -PassThru
-When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -513,7 +513,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -662,7 +662,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -710,7 +710,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

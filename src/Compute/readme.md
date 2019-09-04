@@ -49,7 +49,6 @@ In this directory, run AutoRest:
 ``` yaml
 require:
   - $(this-folder)/../readme.azure.md
-  - $(repo)/specification/compute/resource-manager/readme.enable-multi-api.md
   - $(repo)/specification/compute/resource-manager/readme.md
 
 #input-file: 
@@ -847,6 +846,13 @@ directive:
       subject: VMImage
       variant: ^Capture\d?$|^CaptureViaIdentity\d?$
     remove: true
+# Fix conflicting parameters
+  - where:
+      subject: VmssVM
+      variant: List(.*)
+      parameter-name: Expand
+    set:
+      parameter-name: ExpandExpression
 # Hide creation cmdlets for VMs and ScaleSets
   - where:
       verb: New

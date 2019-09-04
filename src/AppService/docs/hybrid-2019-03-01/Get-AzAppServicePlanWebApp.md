@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.WebSite
-online version: https://docs.microsoft.com/en-us/powershell/module/az.website/get-azappserviceplanwebapp
+Module Name: Az.AppService
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/get-azappserviceplanwebapp
 schema: 2.0.0
 ---
 
@@ -20,8 +20,8 @@ Get-AzAppServicePlanWebApp -Name <String> -ResourceGroupName <String> -Subscript
 
 ### List
 ```
-Get-AzAppServicePlanWebApp -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- -NamespaceName <String> -RelayName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzAppServicePlanWebApp -Name <String> -NamespaceName <String> -RelayName <String>
+ -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -206,9 +206,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.ISite
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISite
+### System.String
 
 ## ALIASES
 

@@ -15,7 +15,7 @@ Creates or updates a route in the specified route filter.
 ### UpdateExpanded (Default)
 ```
 Set-AzRouteFilterRule -Name <String> -ResourceGroupName <String> -RouteFilterName <String>
- -SubscriptionId <String> [-Access <Access>] [-Community <String[]>] [-Id <String>] [-Location <String>]
+ [-SubscriptionId <String>] [-Access <Access>] [-Community <String[]>] [-Id <String>] [-Location <String>]
  [-ResourceName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -23,8 +23,8 @@ Set-AzRouteFilterRule -Name <String> -ResourceGroupName <String> -RouteFilterNam
 ### Update
 ```
 Set-AzRouteFilterRule -Name <String> -ResourceGroupName <String> -RouteFilterName <String>
- -SubscriptionId <String> -RouteFilterRule <IRouteFilterRule> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -RouteFilterRule <IRouteFilterRule> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -78,7 +78,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -176,7 +176,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -257,9 +257,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -317,11 +317,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 #### ROUTEFILTERRULE <IRouteFilterRule>: Route Filter Rule Resource
-  - `Access <Access>`: The access type of the rule.
-  - `Community <String[]>`: The collection for bgp community values to filter on. e.g. ['12076:5010','12076:5020']
   - `[Id <String>]`: Resource ID.
-  - `[Location <String>]`: Resource location.
-  - `[Name <String>]`: The name of the resource that is unique within a resource group. This name can be used to access the resource.
 
 ## RELATED LINKS
 

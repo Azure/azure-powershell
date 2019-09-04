@@ -12,22 +12,22 @@ Creates or updates a resource group.
 
 ## SYNTAX
 
-### Update (Default)
+### UpdateExpanded (Default)
 ```
-Set-AzResourceGroup -SubscriptionId <String> -Name <String> [-Parameter <IResourceGroup>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzResourceGroup -Name <String> -SubscriptionId <String> -Location <String> [-DefaultProfile <PSObject>]
+ [-ManagedBy <String>] [-Tag <Hashtable>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateExpanded
+### Update
 ```
-Set-AzResourceGroup -SubscriptionId <String> -Name <String> -Location <String> [-ManagedBy <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzResourceGroup -Name <String> -SubscriptionId <String> -Parameter <IResourceGroup>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateById
 ```
-Set-AzResourceGroup -SubscriptionId <String> -Id <String> -Location <String> [-ManagedBy <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzResourceGroup -Id <String> -SubscriptionId <String> -Location <String> [-DefaultProfile <PSObject>]
+ [-ManagedBy <String>] [-Tag <Hashtable>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -94,7 +94,7 @@ It must be one of the supported Azure locations.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateById
+Parameter Sets: UpdateById, UpdateExpanded
 Aliases:
 
 Required: True
@@ -110,7 +110,7 @@ The ID of the resource that manages this resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateById
+Parameter Sets: UpdateById, UpdateExpanded
 Aliases:
 
 Required: False
@@ -147,7 +147,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IResourceG
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -176,7 +176,7 @@ The tags attached to the resource group.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateById
+Parameter Sets: UpdateById, UpdateExpanded
 Aliases:
 
 Required: False

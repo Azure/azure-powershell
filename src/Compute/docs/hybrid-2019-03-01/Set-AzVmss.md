@@ -675,7 +675,7 @@ To create the parameters described below, construct a hash table containing the 
     - `[Content <String>]`: Specifies the XML formatted content that is added to the unattend.xml file for the specified path and component. The XML must be less than 4KB and must include the root element for the setting or feature that is being inserted.
     - `[PassName <PassNames?>]`: The pass name. Currently, the only allowable value is OobeSystem.
     - `[SettingName <SettingNames?>]`: Specifies the name of the setting to which the content applies. Possible values are: FirstLogonCommands and AutoLogon.
-  - `[WindowConfigurationEnableAutomaticUpdate <Boolean?>]`: Indicates whether virtual machine is enabled for automatic Windows updates. Default value is true.    For virtual machine scale sets, this property can be updated and updates will take effect on OS reprovisioning.
+  - `[WindowConfigurationEnableAutomaticUpdate <Boolean?>]`: Indicates whether Automatic Updates is enabled for the Windows virtual machine. Default value is true.    For virtual machine scale sets, this property can be updated and updates will take effect on OS reprovisioning.
   - `[WindowConfigurationProvisionVMAgent <Boolean?>]`: Indicates whether virtual machine agent should be provisioned on the virtual machine.    When this property is not specified in the request body, default behavior is to set it to true.  This will ensure that VM Agent is installed on the VM so that extensions can be added to the VM later.
   - `[WindowConfigurationTimeZone <String>]`: Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time"
 

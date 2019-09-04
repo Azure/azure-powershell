@@ -49,14 +49,49 @@ In this directory, run AutoRest:
 ``` yaml
 require:
   - $(this-folder)/../readme.azure.md
-  - $(repo)/specification/keyvault/resource-manager/readme.enable-multi-api.md
   - $(repo)/specification/keyvault/resource-manager/readme.md
-  - https://github.com/cormacpayne/azure-rest-api-specs/blob/multiapi-keyvault/specification/keyvault/data-plane/readme.enable-multi-api.md
-  - https://github.com/cormacpayne/azure-rest-api-specs/blob/multiapi-keyvault/specification/keyvault/data-plane/readme.md
+  - $(repo)/specification/keyvault/data-plane/readme.md
 
 title: KeyVault
 module-version: 0.0.1
 
+```
+
+This hot-patches the swagger to have a better parameterized host.
+
+``` yaml
+
+directive: 
+  - from: swagger-document
+    where: $["x-ms-parameterized-host"]
+    transform: >
+      return {
+      "hostTemplate": "https://{vaultName}.{keyVaultDnsSuffix}/",
+      "useSchemePrefix": false,
+      "positionInOperation": "first",
+      "parameters": [
+        {
+          "name": "vaultName",
+          "description": "The name of the vault to execute operations on.",
+          "required": true,
+          "type": "string",
+          "in": "path",
+          "x-ms-skip-url-encoding": true
+        },
+        {
+          "name": "keyVaultDnsSuffix",
+          "description": "The URI used as the base for all key vault requests.",
+          "required": true,
+          "type": "string",
+          "in": "path",
+          "x-ms-skip-url-encoding": true,
+          "default": "vault.azure.net",
+          "x-ms-parameter-location": "client"
+        }
+      ]}
+```
+
+``` yaml
 directive:
   - where:
       verb: Clear|Get
@@ -313,4 +348,10 @@ directive:
       parameter-name: Maxresult
     set:
       parameter-name: MaxResult
+  - where:
+      subject: StorageSasDefinition
+      variant: (.*)Expanded(.*)
+      parameter-name: Parameter
+    set:
+      parameter-name: DefinitionMetadata
 ```

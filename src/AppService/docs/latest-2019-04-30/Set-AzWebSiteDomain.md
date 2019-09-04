@@ -12,13 +12,7 @@ Creates or updates a domain.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzWebSiteDomain -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-Domain <IDomain>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzWebSiteDomain -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Location <String>
  [-AuthCode <String>] [-AutoRenew] [-ConsentAgreedAt <DateTime>] [-ConsentAgreedBy <String>]
@@ -49,6 +43,12 @@ Set-AzWebSiteDomain -Name <String> -ResourceGroupName <String> -SubscriptionId <
  [-DnsType <DnsType>] [-DnsZoneId <String>] [-Kind <String>] [-Privacy] [-Tag <Hashtable>]
  [-TargetDnsType <DnsType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzWebSiteDomain -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Domain <IDomain>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -86,7 +86,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -109,7 +109,7 @@ Dynamic: False
 ```
 
 ### -AutoRenew
-<code>true</code> if the domain should be automatically renewed; otherwise, <code>false</code>.
+\<code\>true\</code\> if the domain should be automatically renewed; otherwise, \<code\>false\</code\>.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -118,7 +118,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -158,7 +158,7 @@ Dynamic: False
 
 ### -ConsentAgreementKey
 List of applicable legal agreement keys.
-This list can be retrieved using ListLegalAgreements API under <code>TopLevelDomain</code> resource.
+This list can be retrieved using ListLegalAgreements API under \<code\>TopLevelDomain\</code\> resource.
 
 ```yaml
 Type: System.String[]
@@ -1130,7 +1130,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IDomain
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -1196,14 +1196,14 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
 
 ### -Privacy
-<code>true</code> if domain privacy is enabled for this domain; otherwise, <code>false</code>.
+\<code\>true\</code\> if domain privacy is enabled for this domain; otherwise, \<code\>false\</code\>.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -1212,7 +1212,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

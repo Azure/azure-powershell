@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.WebSite
-online version: https://docs.microsoft.com/en-us/powershell/module/az.website/set-azappserviceplan
+Module Name: Az.AppService
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/set-azappserviceplan
 schema: 2.0.0
 ---
 
@@ -12,14 +12,7 @@ Creates or updates an App Service Plan.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzAppServicePlan -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-AppServicePlan <IAppServicePlan>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzAppServicePlan -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Location <String>
  [-Capacity <Int32>] [-FreeOfferExpirationTime <DateTime>] [-HostingEnvironmentProfileId <String>] [-HyperV]
@@ -30,6 +23,13 @@ Set-AzAppServicePlan -Name <String> -ResourceGroupName <String> -SubscriptionId 
  [-SpotExpirationTime <DateTime>] [-Tag <Hashtable>] [-TargetWorkerCount <Int32>]
  [-TargetWorkerSizeId <Int32>] [-WorkerTierName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzAppServicePlan -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -AppServicePlan <IAppServicePlan> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,11 +62,11 @@ App Service plan.
 To construct, see NOTES section for APPSERVICEPLAN properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IAppServicePlan
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IAppServicePlan
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -84,7 +84,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -100,7 +100,7 @@ Aliases: NumberOfWorkers
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -155,7 +155,7 @@ Dynamic: False
 ```
 
 ### -HyperV
-If Hyper-V container app service plan <code>true</code>, <code>false</code> otherwise.
+If Hyper-V container app service plan \<code\>true\</code\>, \<code\>false\</code\> otherwise.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -164,14 +164,14 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
 
 ### -IsSpot
-If <code>true</code>, this App Service Plan owns spot instances.
+If \<code\>true\</code\>, this App Service Plan owns spot instances.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -180,14 +180,14 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
 
 ### -IsXenon
-Obsolete: If Hyper-V container app service plan <code>true</code>, <code>false</code> otherwise.
+Obsolete: If Hyper-V container app service plan \<code\>true\</code\>, \<code\>false\</code\> otherwise.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -196,7 +196,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -244,7 +244,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -276,14 +276,14 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
 
 ### -PerSiteScaling
-If <code>true</code>, apps assigned to this App Service plan can be scaled independently.If <code>false</code>, apps assigned to this App Service plan will scale to all instances of the plan.
+If \<code\>true\</code\>, apps assigned to this App Service plan can be scaled independently.If \<code\>false\</code\>, apps assigned to this App Service plan will scale to all instances of the plan.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -292,14 +292,14 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
 
 ### -Reserved
-If Linux app service plan <code>true</code>, <code>false</code> otherwise.
+If Linux app service plan \<code\>true\</code\>, \<code\>false\</code\> otherwise.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -308,7 +308,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -335,7 +335,7 @@ Capabilities of the SKU, e.g., is traffic manager enabled
 To construct, see NOTES section for SKUCAPABILITY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160301.ICapability[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20160301.ICapability[]
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -357,7 +357,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -373,7 +373,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -389,7 +389,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -552,7 +552,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -568,7 +568,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -628,11 +628,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IAppServicePlan
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IAppServicePlan
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IAppServicePlan
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IAppServicePlan
 
 ## ALIASES
 

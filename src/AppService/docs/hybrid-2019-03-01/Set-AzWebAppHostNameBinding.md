@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.WebSite
-online version: https://docs.microsoft.com/en-us/powershell/module/az.website/set-azwebapphostnamebinding
+Module Name: Az.AppService
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/set-azwebapphostnamebinding
 schema: 2.0.0
 ---
 
@@ -12,20 +12,20 @@ Creates a hostname binding for an app.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzWebAppHostNameBinding -HostName <String> -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-HostNameBinding <IHostNameBinding>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzWebAppHostNameBinding -HostName <String> -Name <String> -ResourceGroupName <String>
  -SubscriptionId <String> [-AzureResourceName <String>] [-AzureResourceType <AzureResourceType>]
  [-CustomHostNameDnsRecordType <CustomHostNameDnsRecordType>] [-DomainId <String>]
  [-HostNameType <HostNameType>] [-Kind <String>] [-SiteName <String>] [-SslState <SslState>]
  [-Thumbprint <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzWebAppHostNameBinding -HostName <String> -Name <String> -ResourceGroupName <String>
+ -SubscriptionId <String> -HostNameBinding <IHostNameBinding> [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,7 +73,7 @@ Dynamic: False
 Azure resource type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.AzureResourceType
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Support.AzureResourceType
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -89,7 +89,7 @@ Dynamic: False
 Custom DNS record type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.CustomHostNameDnsRecordType
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Support.CustomHostNameDnsRecordType
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -154,11 +154,11 @@ A hostname binding object.
 To construct, see NOTES section for HOSTNAMEBINDING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.IHostNameBinding
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20160801.IHostNameBinding
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -170,7 +170,7 @@ Dynamic: False
 Hostname type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.HostNameType
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Support.HostNameType
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -250,7 +250,7 @@ Dynamic: False
 SSL type
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.SslState
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Support.SslState
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -334,11 +334,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.IHostNameBinding
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20160801.IHostNameBinding
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.IHostNameBinding
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20160801.IHostNameBinding
 
 ## ALIASES
 

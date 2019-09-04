@@ -12,17 +12,17 @@ Updates publishing credentials for the subscription owner
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzWebSiteGlobalSubscriptionPublishingCredentials -SubscriptionId <String> [-RequestMessage <IUser>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzWebSiteGlobalSubscriptionPublishingCredentials -SubscriptionId <String> -Location <String>
  [-Id <String>] [-Kind <String>] [-Name <String>] [-PropertiesName <String>] [-PublishingPassword <String>]
  [-PublishingUserName <String>] [-ScmUri <String>] [-Tag <Hashtable>] [-Type <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzWebSiteGlobalSubscriptionPublishingCredentials -SubscriptionId <String> -RequestMessage <IUser>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -188,7 +188,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20150801.IUser
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

@@ -13,16 +13,16 @@ This operation requires the certificates/managecontacts permission.
 
 ## SYNTAX
 
-### Set (Default)
-```
-Set-AzKeyVaultCertificateContact [-KeyVaultDnsSuffix <String>] [-VaultName <String>] [-Contact <IContacts>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### SetExpanded
+### SetExpanded (Default)
 ```
 Set-AzKeyVaultCertificateContact [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
  [-ContactList <IContact[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Set
+```
+Set-AzKeyVaultCertificateContact -Contact <IContacts> [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,7 +60,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IContacts
 Parameter Sets: Set
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

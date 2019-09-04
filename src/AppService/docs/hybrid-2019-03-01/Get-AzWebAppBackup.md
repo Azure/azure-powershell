@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.WebSite
-online version: https://docs.microsoft.com/en-us/powershell/module/az.website/get-azwebappbackup
+Module Name: Az.AppService
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/get-azwebappbackup
 schema: 2.0.0
 ---
 
@@ -20,7 +20,7 @@ Get-AzWebAppBackup -Name <String> -ResourceGroupName <String> -SubscriptionId <S
 
 ### ListSlot
 ```
-Get-AzWebAppBackup -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]> -Slot <String>
+Get-AzWebAppBackup -Name <String> -ResourceGroupName <String> -Slot <String> -SubscriptionId <String[]>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -139,7 +139,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.IBackupItem
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20160801.IBackupItem
 
 ## ALIASES
 

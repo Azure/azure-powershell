@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.WebSite
-online version: https://docs.microsoft.com/en-us/powershell/module/az.website/set-azappservicecertificateordercertificate
+Module Name: Az.AppService
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/set-azappservicecertificateordercertificate
 schema: 2.0.0
 ---
 
@@ -12,19 +12,19 @@ Creates or updates a certificate and associates with key vault secret.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzAppServiceCertificateOrderCertificate -CertificateOrderName <String> -Name <String>
- -ResourceGroupName <String> -SubscriptionId <String> [-KeyVaultCertificate <IAppServiceCertificateResource>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzAppServiceCertificateOrderCertificate -CertificateOrderName <String> -Name <String>
  -ResourceGroupName <String> -SubscriptionId <String> -Location <String> [-KeyVaultId <String>]
  [-KeyVaultSecretName <String>] [-Kind <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzAppServiceCertificateOrderCertificate -CertificateOrderName <String> -Name <String>
+ -ResourceGroupName <String> -SubscriptionId <String> -KeyVaultCertificate <IAppServiceCertificateResource>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,7 +62,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -105,11 +105,11 @@ Key Vault container ARM resource for a certificate that is purchased through Azu
 To construct, see NOTES section for KEYVAULTCERTIFICATE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IAppServiceCertificateResource
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IAppServiceCertificateResource
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -207,7 +207,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -301,11 +301,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IAppServiceCertificateResource
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IAppServiceCertificateResource
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IAppServiceCertificateResource
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IAppServiceCertificateResource
 
 ## ALIASES
 

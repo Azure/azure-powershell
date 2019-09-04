@@ -15,7 +15,7 @@ Update access policies in a key vault in the specified subscription.
 ### Update1 (Default)
 ```
 Set-AzKeyVaultAccessPolicy -OperationKind <AccessPolicyUpdateKind> -ResourceGroupName <String>
- -SubscriptionId <String> -VaultName <String> [-Parameter <IVaultAccessPolicyParameters>]
+ -SubscriptionId <String> -VaultName <String> -Parameter <IVaultAccessPolicyParameters>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -110,7 +110,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20180214.IVaultAcces
 Parameter Sets: Update1
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

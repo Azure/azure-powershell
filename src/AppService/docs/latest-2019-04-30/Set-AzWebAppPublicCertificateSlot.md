@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.WebSite
-online version: https://docs.microsoft.com/en-us/powershell/module/az.website/set-azwebapppubliccertificateslot
+Module Name: Az.AppService
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/set-azwebapppubliccertificateslot
 schema: 2.0.0
 ---
 
@@ -12,19 +12,19 @@ Creates a hostname binding for an app.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzWebAppPublicCertificateSlot -Name <String> -PublicCertificateName <String> -ResourceGroupName <String>
- -Slot <String> -SubscriptionId <String> [-PublicCertificate <IPublicCertificate>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzWebAppPublicCertificateSlot -Name <String> -PublicCertificateName <String> -ResourceGroupName <String>
  -Slot <String> -SubscriptionId <String> [-BlobInputFile <String>] [-Kind <String>]
  [-PublicCertificateLocation <PublicCertificateLocation>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzWebAppPublicCertificateSlot -Name <String> -PublicCertificateName <String> -ResourceGroupName <String>
+ -Slot <String> -SubscriptionId <String> -PublicCertificate <IPublicCertificate> [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -121,11 +121,11 @@ Public certificate object
 To construct, see NOTES section for PUBLICCERTIFICATE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.IPublicCertificate
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20160801.IPublicCertificate
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -137,7 +137,7 @@ Dynamic: False
 Public Certificate Location
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.PublicCertificateLocation
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Support.PublicCertificateLocation
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -254,11 +254,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.IPublicCertificate
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20160801.IPublicCertificate
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.IPublicCertificate
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20160801.IPublicCertificate
 
 ## ALIASES
 

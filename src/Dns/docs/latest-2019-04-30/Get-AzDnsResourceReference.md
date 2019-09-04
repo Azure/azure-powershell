@@ -12,27 +12,8 @@ Returns the DNS records specified by the referencing targetResourceIds.
 
 ## SYNTAX
 
-### Get (Default)
 ```
-Get-AzDnsResourceReference -SubscriptionId <String[]> [-Parameter <IDnsResourceReferenceRequest>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### GetExpanded
-```
-Get-AzDnsResourceReference -SubscriptionId <String[]> [-TargetResource <ISubResource[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### GetViaIdentityExpanded
-```
-Get-AzDnsResourceReference -InputObject <IDnsIdentity> [-TargetResource <ISubResource[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzDnsResourceReference -InputObject <IDnsIdentity> [-Parameter <IDnsResourceReferenceRequest>]
+Get-AzDnsResourceReference [-SubscriptionId <String[]>] [-TargetResourceId <String[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -77,62 +58,28 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentity
-Parameter Sets: GetViaIdentityExpanded, GetViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Parameter
-Represents the properties of the Dns Resource Reference Request.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20180501.IDnsResourceReferenceRequest
-Parameter Sets: Get, GetViaIdentity
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -SubscriptionId
 Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, GetExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -TargetResource
+### -TargetResourceId
 A list of references to azure resources for which referencing dns records need to be queried.
-To construct, see NOTES section for TARGETRESOURCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20180301Preview.ISubResource[]
-Parameter Sets: GetExpanded, GetViaIdentityExpanded
+Type: System.String[]
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -181,10 +128,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.IDnsIdentity
-
-### Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20180501.IDnsResourceReferenceRequest
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20180501.IDnsResourceReferenceResultProperties
@@ -192,16 +135,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ## NOTES
-
-### COMPLEX PARAMETER PROPERTIES
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-#### PARAMETER <IDnsResourceReferenceRequest>: Represents the properties of the Dns Resource Reference Request.
-  - `[TargetResource <ISubResource[]>]`: A list of references to azure resources for which referencing dns records need to be queried.
-    - `[Id <String>]`: Resource Id.
-
-#### TARGETRESOURCE <ISubResource[]>: A list of references to azure resources for which referencing dns records need to be queried.
-  - `[Id <String>]`: Resource Id.
 
 ## RELATED LINKS
 

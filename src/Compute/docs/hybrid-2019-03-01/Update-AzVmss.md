@@ -567,6 +567,8 @@ To create the parameters described below, construct a hash table containing the 
   - `[AvailabilitySetName <String>]`: The name of the availability set.
   - `[CommandId <String>]`: The command id.
   - `[DiskName <String>]`: The name of the managed disk that is being created. The name can't be changed after the disk is created. Supported characters for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
+  - `[GalleryApplicationName <String>]`: The name of the gallery Application Definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+  - `[GalleryApplicationVersionName <String>]`: The name of the gallery Application Version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
   - `[GalleryImageDefinitionName <String>]`: The name of the gallery Image Definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
   - `[GalleryImageVersionName <String>]`: The name of the gallery Image Version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
   - `[GalleryName <String>]`: The name of the Shared Image Gallery. The allowed characters are alphabets and numbers with dots and periods allowed in the middle. The maximum length is 80 characters.
@@ -659,7 +661,7 @@ To create the parameters described below, construct a hash table containing the 
     - `[Content <String>]`: Specifies the XML formatted content that is added to the unattend.xml file for the specified path and component. The XML must be less than 4KB and must include the root element for the setting or feature that is being inserted.
     - `[PassName <PassNames?>]`: The pass name. Currently, the only allowable value is OobeSystem.
     - `[SettingName <SettingNames?>]`: Specifies the name of the setting to which the content applies. Possible values are: FirstLogonCommands and AutoLogon.
-  - `[WindowConfigurationEnableAutomaticUpdate <Boolean?>]`: Indicates whether virtual machine is enabled for automatic Windows updates. Default value is true.    For virtual machine scale sets, this property can be updated and updates will take effect on OS reprovisioning.
+  - `[WindowConfigurationEnableAutomaticUpdate <Boolean?>]`: Indicates whether Automatic Updates is enabled for the Windows virtual machine. Default value is true.    For virtual machine scale sets, this property can be updated and updates will take effect on OS reprovisioning.
   - `[WindowConfigurationProvisionVMAgent <Boolean?>]`: Indicates whether virtual machine agent should be provisioned on the virtual machine.    When this property is not specified in the request body, default behavior is to set it to true.  This will ensure that VM Agent is installed on the VM so that extensions can be added to the VM later.
   - `[WindowConfigurationTimeZone <String>]`: Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time"
 

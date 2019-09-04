@@ -14,17 +14,17 @@ Prepares a subnet by applying network intent policies.
 
 ### PrepareExpanded (Default)
 ```
-Set-AzVnetSubnetNetworkPolicy -ResourceGroupName <String> -SubnetName <String> -SubscriptionId <String>
- -VnetName <String> [-IntentPolicyResourceGroupName <String>]
+Set-AzVnetSubnetNetworkPolicy -ResourceGroupName <String> -SubnetName <String> -VnetName <String>
+ [-SubscriptionId <String>] [-IntentPolicyResourceGroupName <String>]
  [-NetworkIntentPolicyConfiguration <INetworkIntentPolicyConfiguration[]>] [-ServiceName <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Prepare
 ```
-Set-AzVnetSubnetNetworkPolicy -ResourceGroupName <String> -SubnetName <String> -SubscriptionId <String>
- -VnetName <String> -NetworkPolicyRequest <IPrepareNetworkPoliciesRequest> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzVnetSubnetNetworkPolicy -ResourceGroupName <String> -SubnetName <String> -VnetName <String>
+ -NetworkPolicyRequest <IPrepareNetworkPoliciesRequest> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,7 +62,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -144,7 +144,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -160,7 +160,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -223,9 +223,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -14,14 +14,14 @@ Gets all of the available subnet delegations for this subscription in this regio
 
 ### List (Default)
 ```
-Get-AzVnetAvailableSubnetDelegation -Location <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzVnetAvailableSubnetDelegation -Location <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ResourceGroup
 ```
-Get-AzVnetAvailableSubnetDelegation -Location <String> -SubscriptionId <String[]> -ResourceGroupName <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzVnetAvailableSubnetDelegation -Location <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -106,9 +106,9 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

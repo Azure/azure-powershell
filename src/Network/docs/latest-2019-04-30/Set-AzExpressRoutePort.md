@@ -14,7 +14,7 @@ Creates or updates the specified ExpressRoutePort resource.
 
 ### UpdateExpanded (Default)
 ```
-Set-AzExpressRoutePort -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Set-AzExpressRoutePort -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-BandwidthInGbps <Int32>] [-Encapsulation <ExpressRoutePortsEncapsulation>] [-Id <String>]
  [-Link <IExpressRouteLink[]>] [-Location <String>] [-PeeringLocation <String>] [-ResourceGuid <String>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -22,8 +22,8 @@ Set-AzExpressRoutePort -Name <String> -ResourceGroupName <String> -SubscriptionI
 
 ### Update
 ```
-Set-AzExpressRoutePort -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -ExpressRoutePort <IExpressRoutePort> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Set-AzExpressRoutePort -Name <String> -ResourceGroupName <String> -ExpressRoutePort <IExpressRoutePort>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -62,7 +62,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -78,7 +78,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -208,7 +208,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -271,9 +271,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -351,14 +351,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[BandwidthInGbps <Int32?>]`: Bandwidth of procured ports in Gbps
-  - `[Encapsulation <ExpressRoutePortsEncapsulation?>]`: Encapsulation method on physical ports.
-  - `[Link <IExpressRouteLink[]>]`: The set of physical links of the ExpressRoutePort resource
-    - `[Id <String>]`: Resource ID.
-    - `[AdminState <ExpressRouteLinkAdminState?>]`: Administrative state of the physical port
-    - `[Name <String>]`: Name of child port resource that is unique among child port resources of the parent.
-  - `[PeeringLocation <String>]`: The name of the peering location that the ExpressRoutePort is mapped to physically.
-  - `[ResourceGuid <String>]`: The resource GUID property of the ExpressRoutePort resource.
 
 #### LINK <IExpressRouteLink[]>: The set of physical links of the ExpressRoutePort resource
   - `[Id <String>]`: Resource ID.

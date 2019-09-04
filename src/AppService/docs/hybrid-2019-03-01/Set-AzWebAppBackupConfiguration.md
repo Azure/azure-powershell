@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.WebSite
-online version: https://docs.microsoft.com/en-us/powershell/module/az.website/set-azwebappbackupconfiguration
+Module Name: Az.AppService
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/set-azwebappbackupconfiguration
 schema: 2.0.0
 ---
 
@@ -12,30 +12,7 @@ Updates the backup configuration of an app.
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzWebAppBackupConfiguration -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-Request <IBackupRequest>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateSlot
-```
-Set-AzWebAppBackupConfiguration -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -Slot <String> [-Request <IBackupRequest>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateExpandedSlot
-```
-Set-AzWebAppBackupConfiguration -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -Slot <String> [-BackupName <String>] [-BackupScheduleFrequencyInterval <Int32>]
- [-BackupScheduleFrequencyUnit <FrequencyUnit>] [-BackupScheduleKeepAtLeastOneBackup]
- [-BackupScheduleRetentionPeriodInDay <Int32>] [-BackupScheduleStartTime <DateTime>]
- [-Database <IDatabaseBackupSetting[]>] [-Enabled] [-Kind <String>] [-StorageAccountUrl <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzWebAppBackupConfiguration -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-BackupName <String>] [-BackupScheduleFrequencyInterval <Int32>]
@@ -43,6 +20,29 @@ Set-AzWebAppBackupConfiguration -Name <String> -ResourceGroupName <String> -Subs
  [-BackupScheduleRetentionPeriodInDay <Int32>] [-BackupScheduleStartTime <DateTime>]
  [-Database <IDatabaseBackupSetting[]>] [-Enabled] [-Kind <String>] [-StorageAccountUrl <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzWebAppBackupConfiguration -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -Request <IBackupRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateExpandedSlot
+```
+Set-AzWebAppBackupConfiguration -Name <String> -ResourceGroupName <String> -Slot <String>
+ -SubscriptionId <String> [-BackupName <String>] [-BackupScheduleFrequencyInterval <Int32>]
+ [-BackupScheduleFrequencyUnit <FrequencyUnit>] [-BackupScheduleKeepAtLeastOneBackup]
+ [-BackupScheduleRetentionPeriodInDay <Int32>] [-BackupScheduleStartTime <DateTime>]
+ [-Database <IDatabaseBackupSetting[]>] [-Enabled] [-Kind <String>] [-StorageAccountUrl <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateSlot
+```
+Set-AzWebAppBackupConfiguration -Name <String> -ResourceGroupName <String> -Slot <String>
+ -SubscriptionId <String> -Request <IBackupRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -75,7 +75,7 @@ Name of the backup.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpandedSlot, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpandedSlot
 Aliases:
 
 Required: False
@@ -92,12 +92,12 @@ for weekly backup, this should be set to 7 and FrequencyUnit should be set to Da
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpandedSlot, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpandedSlot
 Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -108,8 +108,8 @@ The unit of time for how often the backup should be executed (e.g.
 for weekly backup, this should be set to Day and FrequencyInterval should be set to 7)
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.FrequencyUnit
-Parameter Sets: UpdateExpandedSlot, UpdateExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Support.FrequencyUnit
+Parameter Sets: UpdateExpanded, UpdateExpandedSlot
 Aliases:
 
 Required: False
@@ -125,12 +125,12 @@ True if the retention policy should always keep at least one backup in the stora
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpandedSlot, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpandedSlot
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -141,12 +141,12 @@ After how many days backups should be deleted.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpandedSlot, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpandedSlot
 Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -157,7 +157,7 @@ When the schedule should start working.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: UpdateExpandedSlot, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpandedSlot
 Aliases:
 
 Required: False
@@ -173,8 +173,8 @@ Databases included in the backup.
 To construct, see NOTES section for DATABASE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160801.IDatabaseBackupSetting[]
-Parameter Sets: UpdateExpandedSlot, UpdateExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20160801.IDatabaseBackupSetting[]
+Parameter Sets: UpdateExpanded, UpdateExpandedSlot
 Aliases:
 
 Required: False
@@ -206,12 +206,12 @@ True if the backup schedule is enabled (must be included in that case), false if
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpandedSlot, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpandedSlot
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -222,7 +222,7 @@ Kind of resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpandedSlot, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpandedSlot
 Aliases:
 
 Required: False
@@ -254,11 +254,11 @@ Description of a backup which will be performed.
 To construct, see NOTES section for REQUEST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IBackupRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IBackupRequest
 Parameter Sets: Update, UpdateSlot
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -288,7 +288,7 @@ If a slot is not specified, the API will update the backup configuration for the
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateSlot, UpdateExpandedSlot
+Parameter Sets: UpdateExpandedSlot, UpdateSlot
 Aliases:
 
 Required: True
@@ -304,7 +304,7 @@ SAS URL to the container.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpandedSlot, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpandedSlot
 Aliases:
 
 Required: False
@@ -371,11 +371,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IBackupRequest
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IBackupRequest
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IBackupRequest
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IBackupRequest
 
 ## ALIASES
 

@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.WebSite
-online version: https://docs.microsoft.com/en-us/powershell/module/az.website/set-azwebapp
+Module Name: Az.AppService
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/set-azwebapp
 schema: 2.0.0
 ---
 
@@ -12,49 +12,51 @@ Creates a new web, mobile, or API app in an existing resource group, or updates 
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzWebApp -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-SiteEnvelope <ISite>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateSlot
-```
-Set-AzWebApp -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Slot <String>
- [-SiteEnvelope <ISite>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateExpandedSlot
-```
-Set-AzWebApp -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Slot <String>
- -Location <String> [-ClientAffinityEnabled] [-ClientCertEnabled] [-ClientCertExclusionPath <String>]
- [-CloningInfoAppSettingsOverride <Hashtable>] [-CloningInfoCloneCustomHostName]
- [-CloningInfoCloneSourceControl] [-CloningInfoConfigureLoadBalancing] [-CloningInfoCorrelationId <String>]
- [-CloningInfoHostingEnvironment <String>] [-CloningInfoOverwrite] [-CloningInfoSourceWebAppId <String>]
- [-CloningInfoTrafficManagerProfileId <String>] [-CloningInfoTrafficManagerProfileName <String>]
- [-ContainerSize <Int32>] [-DailyMemoryTimeQuota <Int32>] [-Enabled] [-GeoDistribution <IGeoDistribution[]>]
- [-HostNameSslState <IHostNameSslState[]>] [-HostNamesDisabled] [-HostingEnvironmentProfileId <String>]
- [-HttpsOnly] [-HyperV] [-IdentityType <ManagedServiceIdentityType>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-IsXenon] [-Kind <String>] [-RedundancyMode <RedundancyMode>]
- [-Reserved] [-ScmSiteAlsoStopped] [-ServerFarmId <String>] [-SiteConfig <ISiteConfig>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzWebApp -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Location <String>
  [-ClientAffinityEnabled] [-ClientCertEnabled] [-ClientCertExclusionPath <String>]
  [-CloningInfoAppSettingsOverride <Hashtable>] [-CloningInfoCloneCustomHostName]
  [-CloningInfoCloneSourceControl] [-CloningInfoConfigureLoadBalancing] [-CloningInfoCorrelationId <String>]
  [-CloningInfoHostingEnvironment <String>] [-CloningInfoOverwrite] [-CloningInfoSourceWebAppId <String>]
- [-CloningInfoTrafficManagerProfileId <String>] [-CloningInfoTrafficManagerProfileName <String>]
- [-ContainerSize <Int32>] [-DailyMemoryTimeQuota <Int32>] [-Enabled] [-GeoDistribution <IGeoDistribution[]>]
- [-HostNameSslState <IHostNameSslState[]>] [-HostNamesDisabled] [-HostingEnvironmentProfileId <String>]
- [-HttpsOnly] [-HyperV] [-IdentityType <ManagedServiceIdentityType>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-IsXenon] [-Kind <String>] [-RedundancyMode <RedundancyMode>]
- [-Reserved] [-ScmSiteAlsoStopped] [-ServerFarmId <String>] [-SiteConfig <ISiteConfig>] [-Tag <Hashtable>]
+ [-CloningInfoSourceWebAppLocation <String>] [-CloningInfoTrafficManagerProfileId <String>]
+ [-CloningInfoTrafficManagerProfileName <String>] [-ContainerSize <Int32>] [-DailyMemoryTimeQuota <Int32>]
+ [-Enabled] [-GeoDistribution <IGeoDistribution[]>] [-HostingEnvironmentProfileId <String>]
+ [-HostNamesDisabled] [-HostNameSslState <IHostNameSslState[]>] [-HttpsOnly] [-HyperV]
+ [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-IsXenon]
+ [-Kind <String>] [-RedundancyMode <RedundancyMode>] [-Reserved] [-ScmSiteAlsoStopped]
+ [-ServerFarmId <String>] [-SiteConfig <ISiteConfig>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzWebApp -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -SiteEnvelope <ISite>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateExpandedSlot
+```
+Set-AzWebApp -Name <String> -ResourceGroupName <String> -Slot <String> -SubscriptionId <String>
+ -Location <String> [-ClientAffinityEnabled] [-ClientCertEnabled] [-ClientCertExclusionPath <String>]
+ [-CloningInfoAppSettingsOverride <Hashtable>] [-CloningInfoCloneCustomHostName]
+ [-CloningInfoCloneSourceControl] [-CloningInfoConfigureLoadBalancing] [-CloningInfoCorrelationId <String>]
+ [-CloningInfoHostingEnvironment <String>] [-CloningInfoOverwrite] [-CloningInfoSourceWebAppId <String>]
+ [-CloningInfoSourceWebAppLocation <String>] [-CloningInfoTrafficManagerProfileId <String>]
+ [-CloningInfoTrafficManagerProfileName <String>] [-ContainerSize <Int32>] [-DailyMemoryTimeQuota <Int32>]
+ [-Enabled] [-GeoDistribution <IGeoDistribution[]>] [-HostingEnvironmentProfileId <String>]
+ [-HostNamesDisabled] [-HostNameSslState <IHostNameSslState[]>] [-HttpsOnly] [-HyperV]
+ [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-IsXenon]
+ [-Kind <String>] [-RedundancyMode <RedundancyMode>] [-Reserved] [-ScmSiteAlsoStopped]
+ [-ServerFarmId <String>] [-SiteConfig <ISiteConfig>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateSlot
+```
+Set-AzWebApp -Name <String> -ResourceGroupName <String> -Slot <String> -SubscriptionId <String>
+ -SiteEnvelope <ISite> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -92,41 +94,41 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
 
 ### -ClientAffinityEnabled
-<code>true</code> to enable client affinity; <code>false</code> to stop sending session affinity cookies, which route client requests in the same session to the same instance.
-Default is <code>true</code>.
+\<code\>true\</code\> to enable client affinity; \<code\>false\</code\> to stop sending session affinity cookies, which route client requests in the same session to the same instance.
+Default is \<code\>true\</code\>.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpandedSlot, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpandedSlot
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
 
 ### -ClientCertEnabled
-<code>true</code> to enable client certificate authentication (TLS mutual authentication); otherwise, <code>false</code>.
-Default is <code>false</code>.
+\<code\>true\</code\> to enable client certificate authentication (TLS mutual authentication); otherwise, \<code\>false\</code\>.
+Default is \<code\>false\</code\>.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpandedSlot, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpandedSlot
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -137,7 +139,7 @@ client certificate authentication comma-separated exclusion paths
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpandedSlot, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpandedSlot
 Aliases:
 
 Required: False
@@ -155,7 +157,7 @@ Otherwise, application settings from source app are retained.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpandedSlot, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpandedSlot
 Aliases:
 
 Required: False
@@ -167,48 +169,48 @@ Dynamic: False
 ```
 
 ### -CloningInfoCloneCustomHostName
-<code>true</code> to clone custom hostnames from source app; otherwise, <code>false</code>.
+\<code\>true\</code\> to clone custom hostnames from source app; otherwise, \<code\>false\</code\>.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpandedSlot, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpandedSlot
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
 
 ### -CloningInfoCloneSourceControl
-<code>true</code> to clone source control from source app; otherwise, <code>false</code>.
+\<code\>true\</code\> to clone source control from source app; otherwise, \<code\>false\</code\>.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpandedSlot, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpandedSlot
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
 
 ### -CloningInfoConfigureLoadBalancing
-<code>true</code> to configure load balancing for source and destination app.
+\<code\>true\</code\> to configure load balancing for source and destination app.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpandedSlot, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpandedSlot
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -220,7 +222,7 @@ This ID ties multiple cloning operationstogether to use the same snapshot.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpandedSlot, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpandedSlot
 Aliases:
 
 Required: False
@@ -236,7 +238,7 @@ App Service Environment.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpandedSlot, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpandedSlot
 Aliases:
 
 Required: False
@@ -248,16 +250,16 @@ Dynamic: False
 ```
 
 ### -CloningInfoOverwrite
-<code>true</code> to overwrite destination app; otherwise, <code>false</code>.
+\<code\>true\</code\> to overwrite destination app; otherwise, \<code\>false\</code\>.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpandedSlot, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpandedSlot
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -269,7 +271,23 @@ App resource ID is of the form /subscriptions/{subId}/resourceGroups/{resourceGr
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpandedSlot, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpandedSlot
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -CloningInfoSourceWebAppLocation
+Location of source app ex: West US or North Europe
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateExpandedSlot
 Aliases:
 
 Required: False
@@ -286,7 +304,7 @@ Traffic Manager resource ID is of the form /subscriptions/{subId}/resourceGroups
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpandedSlot, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpandedSlot
 Aliases:
 
 Required: False
@@ -303,7 +321,7 @@ This is only needed if Traffic Manager profile does not already exist.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpandedSlot, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpandedSlot
 Aliases:
 
 Required: False
@@ -319,12 +337,12 @@ Size of the function container.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpandedSlot, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpandedSlot
 Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -335,12 +353,12 @@ Maximum allowed daily memory-time quota (applicable on dynamic apps only).
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpandedSlot, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpandedSlot
 Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -363,17 +381,17 @@ Dynamic: False
 ```
 
 ### -Enabled
-<code>true</code> if the app is enabled; otherwise, <code>false</code>.
+\<code\>true\</code\> if the app is enabled; otherwise, \<code\>false\</code\>.
 Setting this value to false disables the app (takes the app offline).
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpandedSlot, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpandedSlot
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -384,8 +402,8 @@ GeoDistributions for this site
 To construct, see NOTES section for GEODISTRIBUTION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IGeoDistribution[]
-Parameter Sets: UpdateExpandedSlot, UpdateExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IGeoDistribution[]
+Parameter Sets: UpdateExpanded, UpdateExpandedSlot
 Aliases:
 
 Required: False
@@ -401,7 +419,7 @@ Resource ID of the App Service Environment.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpandedSlot, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpandedSlot
 Aliases:
 
 Required: False
@@ -413,17 +431,17 @@ Dynamic: False
 ```
 
 ### -HostNamesDisabled
-<code>true</code> to disable the public hostnames of the app; otherwise, <code>false</code>.
-If <code>true</code>, the app is only accessible via API management process.
+\<code\>true\</code\> to disable the public hostnames of the app; otherwise, \<code\>false\</code\>.
+If \<code\>true\</code\>, the app is only accessible via API management process.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpandedSlot, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpandedSlot
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -434,8 +452,8 @@ Hostname SSL states are used to manage the SSL bindings for app's hostnames.
 To construct, see NOTES section for HOSTNAMESSLSTATE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20160301.IHostNameSslState[]
-Parameter Sets: UpdateExpandedSlot, UpdateExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20160301.IHostNameSslState[]
+Parameter Sets: UpdateExpanded, UpdateExpandedSlot
 Aliases:
 
 Required: False
@@ -452,12 +470,12 @@ Issues redirect forhttp requests
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpandedSlot, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpandedSlot
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -468,12 +486,12 @@ Hyper-V sandbox.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpandedSlot, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpandedSlot
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -483,8 +501,8 @@ Dynamic: False
 Type of managed service identity.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.ManagedServiceIdentityType
-Parameter Sets: UpdateExpandedSlot, UpdateExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Support.ManagedServiceIdentityType
+Parameter Sets: UpdateExpanded, UpdateExpandedSlot
 Aliases:
 
 Required: False
@@ -501,7 +519,7 @@ The user identity dictionary key references will be ARM resource ids in the form
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpandedSlot, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpandedSlot
 Aliases:
 
 Required: False
@@ -517,12 +535,12 @@ Obsolete: Hyper-V sandbox.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpandedSlot, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpandedSlot
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -533,7 +551,7 @@ Kind of resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpandedSlot, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpandedSlot
 Aliases:
 
 Required: False
@@ -549,7 +567,7 @@ Resource Location.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpandedSlot, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpandedSlot
 Aliases:
 
 Required: True
@@ -587,7 +605,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -597,8 +615,8 @@ Dynamic: False
 Site redundancy mode
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Support.RedundancyMode
-Parameter Sets: UpdateExpandedSlot, UpdateExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Support.RedundancyMode
+Parameter Sets: UpdateExpanded, UpdateExpandedSlot
 Aliases:
 
 Required: False
@@ -610,16 +628,16 @@ Dynamic: False
 ```
 
 ### -Reserved
-<code>true</code> if reserved; otherwise, <code>false</code>.
+\<code\>true\</code\> if reserved; otherwise, \<code\>false\</code\>.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpandedSlot, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpandedSlot
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -642,17 +660,17 @@ Dynamic: False
 ```
 
 ### -ScmSiteAlsoStopped
-<code>true</code> to stop SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>.
-The default is <code>false</code>.
+\<code\>true\</code\> to stop SCM (KUDU) site when the app is stopped; otherwise, \<code\>false\</code\>.
+The default is \<code\>false\</code\>.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpandedSlot, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpandedSlot
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -663,7 +681,7 @@ Resource ID of the associated App Service plan, formatted as: "/subscriptions/{s
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpandedSlot, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpandedSlot
 Aliases:
 
 Required: False
@@ -679,8 +697,8 @@ Configuration of the app.
 To construct, see NOTES section for SITECONFIG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISiteConfig
-Parameter Sets: UpdateExpandedSlot, UpdateExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.ISiteConfig
+Parameter Sets: UpdateExpanded, UpdateExpandedSlot
 Aliases:
 
 Required: False
@@ -696,11 +714,11 @@ A web app, a mobile app backend, or an API app.
 To construct, see NOTES section for SITEENVELOPE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISite
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.ISite
 Parameter Sets: Update, UpdateSlot
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -714,7 +732,7 @@ By default, this API attempts to create or modify the production slot.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateSlot, UpdateExpandedSlot
+Parameter Sets: UpdateExpandedSlot, UpdateSlot
 Aliases:
 
 Required: True
@@ -748,7 +766,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpandedSlot, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateExpandedSlot
 Aliases:
 
 Required: False
@@ -797,11 +815,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISite
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.ISite
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISite
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.ISite
 
 ## ALIASES
 
@@ -954,6 +972,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[CloningInfoCorrelationId <String>]`: Correlation ID of cloning operation. This ID ties multiple cloning operations         together to use the same snapshot.
   - `[CloningInfoHostingEnvironment <String>]`: App Service Environment.
   - `[CloningInfoOverwrite <Boolean?>]`: <code>true</code> to overwrite destination app; otherwise, <code>false</code>.
+  - `[CloningInfoSourceWebAppLocation <String>]`: Location of source app ex: West US or North Europe
   - `[CloningInfoTrafficManagerProfileId <String>]`: ARM resource ID of the Traffic Manager profile to use, if it exists. Traffic Manager resource ID is of the form         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{profileName}.
   - `[CloningInfoTrafficManagerProfileName <String>]`: Name of Traffic Manager profile to create. This is only needed if Traffic Manager profile does not already exist.
   - `[Config <ISiteConfig>]`: Configuration of the app.

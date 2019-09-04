@@ -15,7 +15,7 @@ Create or update a connection monitor.
 ### UpdateExpanded (Default)
 ```
 Set-AzNetworkWatcherConnectionMonitor -Name <String> -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -SourceResourceId <String> [-AutoStart] [-DestinationAddress <String>]
+ -SourceResourceId <String> [-SubscriptionId <String>] [-AutoStart] [-DestinationAddress <String>]
  [-DestinationPort <Int32>] [-DestinationResourceId <String>] [-Location <String>]
  [-MonitoringIntervalInSeconds <Int32>] [-SourcePort <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -24,7 +24,7 @@ Set-AzNetworkWatcherConnectionMonitor -Name <String> -NetworkWatcherName <String
 ### Update
 ```
 Set-AzNetworkWatcherConnectionMonitor -Name <String> -NetworkWatcherName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -ConnectionMonitor <IConnectionMonitor> [-DefaultProfile <PSObject>] [-AsJob]
+ -ConnectionMonitor <IConnectionMonitor> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -63,7 +63,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -79,7 +79,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -92,7 +92,7 @@ To construct, see NOTES section for CONNECTIONMONITOR properties and create a ha
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Network.Models.Api20190201.IConnectionMonitor
 Parameter Sets: Update
-Aliases: NetworkWatcher
+Aliases:
 
 Required: True
 Position: Named
@@ -144,7 +144,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -192,7 +192,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -240,7 +240,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -252,7 +252,7 @@ The name of the resource group containing Network Watcher.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: ConfigureOnly, InputObject
+Aliases:
 
 Required: True
 Position: Named
@@ -272,7 +272,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -303,9 +303,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -385,7 +385,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[DestinationPort <Int32?>]`: The destination port used by connection monitor.
   - `[DestinationResourceId <String>]`: The ID of the resource used as the destination by connection monitor.
   - `[Location <String>]`: Connection monitor location.
-  - `[MonitoringIntervalInSecond <Int32?>]`: Monitoring interval in seconds.
+  - `[MonitoringIntervalInSeconds <Int32?>]`: Monitoring interval in seconds.
   - `[SourcePort <Int32?>]`: The source port used by connection monitor.
   - `[Tag <IConnectionMonitorTags>]`: Connection monitor tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.

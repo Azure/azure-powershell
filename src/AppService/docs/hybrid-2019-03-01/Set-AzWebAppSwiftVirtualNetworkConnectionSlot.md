@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.WebSite
-online version: https://docs.microsoft.com/en-us/powershell/module/az.website/set-azwebappswiftvirtualnetworkconnectionslot
+Module Name: Az.AppService
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/set-azwebappswiftvirtualnetworkconnectionslot
 schema: 2.0.0
 ---
 
@@ -13,18 +13,18 @@ This requires that 1) \"swiftSupported\" is true when doing a GET against this r
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzWebAppSwiftVirtualNetworkConnectionSlot -Name <String> -ResourceGroupName <String> -Slot <String>
- -SubscriptionId <String> [-ConnectionEnvelope <ISwiftVirtualNetwork>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzWebAppSwiftVirtualNetworkConnectionSlot -Name <String> -ResourceGroupName <String> -Slot <String>
  -SubscriptionId <String> [-Kind <String>] [-SubnetResourceId <String>] [-SwiftSupported]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzWebAppSwiftVirtualNetworkConnectionSlot -Name <String> -ResourceGroupName <String> -Slot <String>
+ -SubscriptionId <String> -ConnectionEnvelope <ISwiftVirtualNetwork> [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,11 +59,11 @@ This is used to enable the new Swift way of doing virtual network integration.
 To construct, see NOTES section for CONNECTIONENVELOPE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISwiftVirtualNetwork
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.ISwiftVirtualNetwork
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -198,7 +198,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -242,11 +242,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISwiftVirtualNetwork
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.ISwiftVirtualNetwork
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISwiftVirtualNetwork
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.ISwiftVirtualNetwork
 
 ## ALIASES
 

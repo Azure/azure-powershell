@@ -294,7 +294,7 @@ Dynamic: False
 ```
 
 ### -OSState
-The allowed values for OS State are 'Generalized'.
+This property allows the user to specify whether the virtual machines created under this image are 'Generalized' or 'Specialized'.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.OperatingSystemStateTypes

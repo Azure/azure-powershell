@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.WebSite
-online version: https://docs.microsoft.com/en-us/powershell/module/az.website/get-azwebapppublishingcredentials
+Module Name: Az.AppService
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/get-azwebapppublishingcredentials
 schema: 2.0.0
 ---
 
@@ -20,8 +20,9 @@ Get-AzWebAppPublishingCredentials -Name <String> -ResourceGroupName <String> -Su
 
 ### ListSlot
 ```
-Get-AzWebAppPublishingCredentials -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- -Slot <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzWebAppPublishingCredentials -Name <String> -ResourceGroupName <String> -Slot <String>
+ -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,7 +60,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -107,7 +108,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -204,7 +205,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IUser
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IUser
 
 ## ALIASES
 

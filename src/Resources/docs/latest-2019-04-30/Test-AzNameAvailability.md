@@ -12,16 +12,16 @@ Checks if the specified management group name is valid and unique
 
 ## SYNTAX
 
-### Check (Default)
-```
-Test-AzNameAvailability [-CheckNameAvailabilityRequest <ICheckNameAvailabilityRequest>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CheckExpanded
+### CheckExpanded (Default)
 ```
 Test-AzNameAvailability [-Name <String>] [-Type <Type>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
+```
+
+### Check
+```
+Test-AzNameAvailability -CheckNameAvailabilityRequest <ICheckNameAvailabilityRequest>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,7 +58,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180301Preview.ICh
 Parameter Sets: Check
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

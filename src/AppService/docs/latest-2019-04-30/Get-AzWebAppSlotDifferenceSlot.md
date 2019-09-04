@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.WebSite
-online version: https://docs.microsoft.com/en-us/powershell/module/az.website/get-azwebappslotdifferenceslot
+Module Name: Az.AppService
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/get-azwebappslotdifferenceslot
 schema: 2.0.0
 ---
 
@@ -12,18 +12,18 @@ Get the difference in configuration settings between two web app slots.
 
 ## SYNTAX
 
-### List (Default)
-```
-Get-AzWebAppSlotDifferenceSlot -Name <String> -ResourceGroupName <String> -Slot <String>
- -SubscriptionId <String[]> [-SlotSwapEntity <ICsmSlotEntity>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### ListExpanded
+### ListExpanded (Default)
 ```
 Get-AzWebAppSlotDifferenceSlot -Name <String> -ResourceGroupName <String> -Slot <String>
  -SubscriptionId <String[]> -PreserveVnet -TargetSlot <String> [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
+```
+
+### List
+```
+Get-AzWebAppSlotDifferenceSlot -Name <String> -ResourceGroupName <String> -Slot <String>
+ -SubscriptionId <String[]> -SlotSwapEntity <ICsmSlotEntity> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,7 +84,7 @@ Dynamic: False
 ```
 
 ### -PreserveVnet
-<code>true</code> to preserve Virtual Network to the slot during swap; otherwise, <code>false</code>.
+\<code\>true\</code\> to preserve Virtual Network to the slot during swap; otherwise, \<code\>false\</code\>.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -93,7 +93,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -137,11 +137,11 @@ Deployment slot parameters.
 To construct, see NOTES section for SLOTSWAPENTITY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ICsmSlotEntity
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.ICsmSlotEntity
 Parameter Sets: List
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -221,11 +221,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ICsmSlotEntity
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.ICsmSlotEntity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISlotDifference
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.ISlotDifference
 
 ## ALIASES
 

@@ -91,6 +91,9 @@ Gets the managed application definition.
 ### [Get-AzManagementGroup](Get-AzManagementGroup.md)
 Get the details of the management group.
 
+### [Get-AzManagementGroupDescendant](Get-AzManagementGroupDescendant.md)
+List all entities that descend from a management group.\n
+
 ### [Get-AzManagementLock](Get-AzManagementLock.md)
 Get a management lock by scope.
 
@@ -142,7 +145,7 @@ This operation provides all the locations that are available for resource provid
 ### [Get-AzTag](Get-AzTag.md)
 Gets the names and values of all resource tags that are defined in a subscription.
 
-### [Invoke-AzElevateAccess](Invoke-AzElevateAccess.md)
+### [Invoke-AzElevateGlobalAdministratorAccess](Invoke-AzElevateGlobalAdministratorAccess.md)
 Elevates access for a Global Administrator.
 
 ### [Invoke-AzTenantBackfillStatus](Invoke-AzTenantBackfillStatus.md)
@@ -211,7 +214,7 @@ Creates or updates a resource group.
 Creates or updates a resource link between the specified resources.
 
 ### [New-AzRoleAssignment](New-AzRoleAssignment.md)
-Creates a role assignment by ID.
+Creates a role assignment.
 
 ### [New-AzRoleDefinition](New-AzRoleDefinition.md)
 Creates or updates a role definition.
@@ -287,7 +290,7 @@ This operation deletes the policy definition in the given subscription with the 
 This operation deletes the policy set definition in the given subscription with the given name.
 
 ### [Remove-AzResource](Remove-AzResource.md)
-Deletes a resource by ID.
+Deletes a resource.
 
 ### [Remove-AzResourceGroup](Remove-AzResourceGroup.md)
 When you delete a resource group, all of its resources are also deleted.

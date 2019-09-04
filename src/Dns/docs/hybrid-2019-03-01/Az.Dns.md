@@ -18,13 +18,6 @@ Gets a record set.
 Gets a DNS zone.
 Retrieves the zone properties, but not the record sets within the zone.
 
-### [New-AzDnsRecordSet](New-AzDnsRecordSet.md)
-Creates or updates a record set within a DNS zone.
-
-### [New-AzDnsZone](New-AzDnsZone.md)
-Creates or updates a DNS zone.
-Does not modify DNS records within the zone.
-
 ### [Remove-AzDnsRecordSet](Remove-AzDnsRecordSet.md)
 Deletes a record set from a DNS zone.
 This operation cannot be undone.
@@ -33,14 +26,4 @@ This operation cannot be undone.
 Deletes a DNS zone.
 WARNING: All DNS records in the zone will also be deleted.
 This operation cannot be undone.
-
-### [Set-AzDnsRecordSet](Set-AzDnsRecordSet.md)
-Creates or updates a record set within a DNS zone.
-
-### [Set-AzDnsZone](Set-AzDnsZone.md)
-Creates or updates a DNS zone.
-Does not modify DNS records within the zone.
-
-### [Update-AzDnsRecordSet](Update-AzDnsRecordSet.md)
-Updates a record set within a DNS zone.
 

@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.WebSite
-online version: https://docs.microsoft.com/en-us/powershell/module/az.website/set-azwebappslotconfigurationname
+Module Name: Az.AppService
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/set-azwebappslotconfigurationname
 schema: 2.0.0
 ---
 
@@ -12,18 +12,18 @@ Updates the names of application settings and connection string that remain with
 
 ## SYNTAX
 
-### Update (Default)
-```
-Set-AzWebAppSlotConfigurationName -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-SlotConfigName <ISlotConfigNamesResource>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateExpanded
+### UpdateExpanded (Default)
 ```
 Set-AzWebAppSlotConfigurationName -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
  [-AppSettingName <String[]>] [-AzureStorageConfigName <String[]>] [-ConnectionStringName <String[]>]
  [-Kind <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Update
+```
+Set-AzWebAppSlotConfigurationName -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+ -SlotConfigName <ISlotConfigNamesResource> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -168,11 +168,11 @@ Slot Config names azure resource.
 To construct, see NOTES section for SLOTCONFIGNAME properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISlotConfigNamesResource
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.ISlotConfigNamesResource
 Parameter Sets: Update
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -236,11 +236,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISlotConfigNamesResource
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.ISlotConfigNamesResource
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISlotConfigNamesResource
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.ISlotConfigNamesResource
 
 ## ALIASES
 

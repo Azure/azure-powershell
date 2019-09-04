@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.WebSite
-online version: https://docs.microsoft.com/en-us/powershell/module/az.website/get-azappserviceenvironmentmultirolemetric
+Module Name: Az.AppService
+online version: https://docs.microsoft.com/en-us/powershell/module/az.appservice/get-azappserviceenvironmentmultirolemetric
 schema: 2.0.0
 ---
 
@@ -60,8 +60,8 @@ Dynamic: False
 ```
 
 ### -Detail
-Specify <code>true</code> to include instance details.
-The default is <code>false</code>.
+Specify \<code\>true\</code\> to include instance details.
+The default is \<code\>false\</code\>.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -70,7 +70,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -199,7 +199,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.IResourceMetric
+### Microsoft.Azure.PowerShell.Cmdlets.AppService.Models.Api20180201.IResourceMetric
 
 ## ALIASES
 

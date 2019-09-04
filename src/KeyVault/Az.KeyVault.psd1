@@ -15,7 +15,7 @@
   AliasesToExport = 'Backup-AzKeyVaultManagedStorageAccount', 'Get-AzKeyVaultManagedStorageAccount', 'Get-AzKeyVaultManagedStorageSasDefinition', 'Add-AzKeyVaultKey', 'Add-AzKeyVaultCertificate', 'Update-AzKeyVaultManagedStorageAccountKey', 'Remove-AzKeyVaultManagedStorageAccount', 'Remove-AzKeyVaultManagedStorageSasDefinition', 'Restore-AzKeyVaultManagedStorageAccount', 'Undo-AzKeyVaultManagedStorageAccountRemoval', 'Add-AzKeyVaultCertificateContact', 'Add-AzKeyVaultManagedStorageAccount', 'Set-AzKeyVaultManagedStorageSasDefinition', 'Undo-AzKeyVaultManagedStorageSasDefinitionRemoval', 'Stop-AzKeyVaultCertificateOperation', 'Set-AzKeyVaultCertificatePolicy', 'Update-AzKeyVaultManagedStorageAccount', 'Update-AzKeyVaultManagedStorageSasDefinition', '*'
   PrivateData = @{
     PSData = @{
-      Tags = 'Azure', 'ResourceManager', 'ARM', 'KeyVault'
+      Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'KeyVault'
       LicenseUri = 'https://aka.ms/azps-license'
       ProjectUri = 'https://github.com/Azure/azure-powershell'
       ReleaseNotes = ''

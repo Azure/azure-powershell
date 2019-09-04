@@ -14,7 +14,7 @@ Creates a virtual wan p2s vpn gateway if it doesn't exist else updates the exist
 
 ### UpdateExpanded (Default)
 ```
-Set-AzP2SVpnGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Set-AzP2SVpnGateway -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-CustomRouteAddressPrefix <String[]>] [-Id <String>] [-Location <String>]
  [-P2SVpnServerConfigurationId <String>] [-ScaleUnit <Int32>] [-Tag <Hashtable>] [-VirtualHubId <String>]
  [-VpnClientAddressPrefix <String[]>] [-VpnClientAllocatedIPAddress <String[]>]
@@ -24,8 +24,8 @@ Set-AzP2SVpnGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <
 
 ### Update
 ```
-Set-AzP2SVpnGateway -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -P2SVpnGateway <IP2SVpnGateway> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Set-AzP2SVpnGateway -Name <String> -ResourceGroupName <String> -P2SVpnGateway <IP2SVpnGateway>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -64,7 +64,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -160,7 +160,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -225,7 +225,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -240,9 +240,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -322,7 +322,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -384,13 +384,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[CustomRouteAddressPrefix <String[]>]`: A list of address blocks reserved for this virtual network in CIDR notation.
-  - `[P2SVpnServerConfigurationId <String>]`: Resource ID.
-  - `[VirtualHubId <String>]`: Resource ID.
-  - `[VpnClientAddressPoolAddressPrefix <String[]>]`: A list of address blocks reserved for this virtual network in CIDR notation.
-  - `[VpnClientConnectionHealthAllocatedIPAddress <String[]>]`: List of allocated ip addresses to the connected p2s vpn clients.
-  - `[VpnClientConnectionHealthVpnClientConnectionsCount <Int32?>]`: The total of p2s vpn clients connected at this time to this P2SVpnGateway.
-  - `[VpnGatewayScaleUnit <Int32?>]`: The scale unit for this p2s vpn gateway.
 
 ## RELATED LINKS
 

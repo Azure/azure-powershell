@@ -13,19 +13,19 @@ This operation requires the certificates/setissuers permission.
 
 ## SYNTAX
 
-### Set (Default)
-```
-Set-AzKeyVaultCertificateIssuer -IssuerName <String> [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
- [-Parameter <ICertificateIssuerSetParameters>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### SetExpanded
+### SetExpanded (Default)
 ```
 Set-AzKeyVaultCertificateIssuer -IssuerName <String> -Provider <String> [-KeyVaultDnsSuffix <String>]
  [-VaultName <String>] [-CredentialsAccountId <String>] [-CredentialsPassword <String>] [-Enabled]
  [-OrgDetailAdminDetail <IAdministratorDetails[]>] [-OrgDetailId <String>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Set
+```
+Set-AzKeyVaultCertificateIssuer -IssuerName <String> -Parameter <ICertificateIssuerSetParameters>
+ [-KeyVaultDnsSuffix <String>] [-VaultName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -112,7 +112,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -192,7 +192,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.ICertificat
 Parameter Sets: Set
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)

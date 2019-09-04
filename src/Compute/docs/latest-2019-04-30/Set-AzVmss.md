@@ -69,7 +69,9 @@ Dynamic: False
 ### -AutomaticOSUpgrade
 Indicates whether OS upgrades should automatically be applied to scale set instances in a rolling fashion when a newer version of the OS image becomes available.
 Default value is false.
-If this is set to true for Windows based scale sets, recommendation is to set [enableAutomaticUpdates](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.compute.models.windowsconfiguration.enableautomaticupdatesview=azure-dotnet) to false.
+
+
+ If this is set to true for Windows based scale sets, [enableAutomaticUpdates](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.compute.models.windowsconfiguration.enableautomaticupdatesview=azure-dotnet) is automatically set to false and cannot be set to true.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -650,6 +652,7 @@ To create the parameters described below, construct a hash table containing the 
 
 #### VIRTUALMACHINEPROFILE <IVirtualMachineScaleSetVMProfile>: The virtual machine profile.
   - `OSDiskCreateOption <DiskCreateOptionTypes>`: Specifies how the virtual machines in the scale set should be created.   The only allowed value is: **FromImage** \u2013 This value is used when you are using an image to create the virtual machine. If you are using a platform image, you also use the imageReference element described above. If you are using a marketplace image, you  also use the plan element previously described.
+  - `[BillingProfileMaxPrice <Double?>]`: Specifies the maximum price you are willing to pay for a low priority VM/VMSS. This price is in US Dollars.    This price will be compared with the current low priority price for the VM size. Also, the prices are compared at the time of create/update of low priority VM/VMSS and the operation will only succeed if  the maxPrice is greater than the current low priority price.    The maxPrice will also be used for evicting a low priority VM/VMSS if the current low priority price goes beyond the maxPrice after creation of VM/VMSS.    Possible values are:    - Any decimal value greater than zero. Example: $0.01538    -1 – indicates default price to be up-to on-demand.    You can set the maxPrice to -1 to indicate that the low priority VM/VMSS should not be evicted for price reasons. Also, the default max price is -1 if it is not provided by you.   Minimum api-version: 2019-03-01.
   - `[BootDiagnosticEnabled <Boolean?>]`: Whether boot diagnostics should be enabled on the Virtual Machine.
   - `[BootDiagnosticStorageUri <String>]`: Uri of the storage account to use for placing the console output and screenshot.
   - `[DiffDiskSettingOption <DiffDiskOptions?>]`: Specifies the ephemeral disk settings for operating system disk.
@@ -728,6 +731,8 @@ To create the parameters described below, construct a hash table containing the 
     - `[Name <String>]`: The disk name.
     - `[SizeInGb <Int32?>]`: Specifies the size of an empty data disk in gigabytes. This element can be used to overwrite the size of the disk in a virtual machine image.    This value cannot be larger than 1023 GB
     - `[WriteAcceleratorEnabled <Boolean?>]`: Specifies whether writeAccelerator should be enabled or disabled on the disk.
+  - `[TerminateNotificationProfileEnable <Boolean?>]`: Specifies whether the Terminate Scheduled event is enabled or disabled.
+  - `[TerminateNotificationProfileNotBeforeTimeout <String>]`: Configurable length of time a Virtual Machine being deleted will have to potentially approve the Terminate Scheduled Event before the event is auto approved (timed out). The configuration must be specified in ISO 8601 format, the default value is 5 minutes (PT5M)
   - `[WinRmListener <IWinRmListener[]>]`: The list of Windows Remote Management listeners
     - `[CertificateUrl <String>]`: This is the URL of a certificate that has been uploaded to Key Vault as a secret. For adding a secret to the Key Vault, see [Add a key or secret to the key vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add). In this case, your certificate needs to be It is the Base64 encoding of the following JSON Object which is encoded in UTF-8:    {   "data":"<Base64-encoded-certificate>",   "dataType":"pfx",   "password":"<pfx-file-password>" }
     - `[Protocol <ProtocolTypes?>]`: Specifies the protocol of listener.    Possible values are:  **http**    **https**
@@ -736,7 +741,7 @@ To create the parameters described below, construct a hash table containing the 
     - `[Content <String>]`: Specifies the XML formatted content that is added to the unattend.xml file for the specified path and component. The XML must be less than 4KB and must include the root element for the setting or feature that is being inserted.
     - `[PassName <PassNames?>]`: The pass name. Currently, the only allowable value is OobeSystem.
     - `[SettingName <SettingNames?>]`: Specifies the name of the setting to which the content applies. Possible values are: FirstLogonCommands and AutoLogon.
-  - `[WindowConfigurationEnableAutomaticUpdate <Boolean?>]`: Indicates whether virtual machine is enabled for automatic Windows updates. Default value is true.    For virtual machine scale sets, this property can be updated and updates will take effect on OS reprovisioning.
+  - `[WindowConfigurationEnableAutomaticUpdate <Boolean?>]`: Indicates whether Automatic Updates is enabled for the Windows virtual machine. Default value is true.    For virtual machine scale sets, this property can be updated and updates will take effect on OS reprovisioning.
   - `[WindowConfigurationProvisionVMAgent <Boolean?>]`: Indicates whether virtual machine agent should be provisioned on the virtual machine.    When this property is not specified in the request body, default behavior is to set it to true.  This will ensure that VM Agent is installed on the VM so that extensions can be added to the VM later.
   - `[WindowConfigurationTimeZone <String>]`: Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time"
 

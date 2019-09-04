@@ -2,23 +2,26 @@
   - ResourceGroupName `String`
   - SubscriptionId `String[]`
   - ZoneName `String`
+  - Name `String`
   - RecordType `RecordType`
-  - RelativeRecordSetName `String`
   - InputObject `IDnsIdentity`
-  - Recordsetnamesuffix `String`
+  - NameSuffix `String`
   - Top `Int32`
-  - IfMatch `String`
-  - IfNoneMatch `String`
-  - Parameter `IRecordSet`
+  - DoNotOverwrite `SwitchParameter`
+  - CnameRecordName `String`
+  - Etag `String`
+  - Metadata `Hashtable`
+  - TargetResourceId `String`
+  - TimeToLive `Int64`
   - ARecord `IARecord[]`
   - AaaaRecord `IAaaaRecord[]`
   - CaaRecord `ICaaRecord[]`
-  - CnameRecordCname `String`
-  - Etag `String`
-  - Metadata `Hashtable`
-  - MxRecord `IMxRecord[]`
-  - NsRecord `INsRecord[]`
+  - MXRecord `IMxRecord[]`
+  - NSRecord `INsRecord[]`
   - PtrRecord `IPtrRecord[]`
+  - SrvRecord `ISrvRecord[]`
+  - TxtRecord `ITxtRecord[]`
+  - IfMatch `String`
   - SoaRecordEmail `String`
   - SoaRecordExpireTime `Int64`
   - SoaRecordHost `String`
@@ -26,30 +29,23 @@
   - SoaRecordRefreshTime `Int64`
   - SoaRecordRetryTime `Int64`
   - SoaRecordSerialNumber `Int64`
-  - SrvRecord `ISrvRecord[]`
-  - TargetResourceId `String`
-  - TimeToLive `Int64`
-  - TxtRecord `ITxtRecord[]`
 
 ### AzDnsResourceReference [Get] `IDnsResourceReferenceResultProperties`
   - SubscriptionId `String[]`
-  - InputObject `IDnsIdentity`
-  - Parameter `IDnsResourceReferenceRequest`
-  - TargetResource `ISubResource[]`
+  - TargetResourceId `String[]`
 
-### AzDnsZone [Get, New, Remove, Set, Update] `IZone, Boolean`
+### AzDnsZone [Get, New, Remove, Set] `IZone, Boolean`
   - SubscriptionId `String[]`
   - Name `String`
   - ResourceGroupName `String`
   - InputObject `IDnsIdentity`
   - Top `Int32`
-  - IfMatch `String`
-  - IfNoneMatch `String`
-  - Parameter `IZone`
-  - Etag `String`
+  - DoNotOverwrite `SwitchParameter`
   - Location `String`
-  - RegistrationVirtualNetwork `ISubResource[]`
-  - ResolutionVirtualNetwork `ISubResource[]`
+  - Etag `String`
   - Tag `Hashtable`
-  - ZoneType `ZoneType`
+  - Private `SwitchParameter`
+  - RegistrationVirtualNetworkId `String[]`
+  - ResolutionVirtualNetworkId `String[]`
+  - IfMatch `String`
 

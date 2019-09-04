@@ -59,8 +59,8 @@ Dynamic: False
 ```
 
 ### -Featured
-Specify <code>true</code> to return only the most critical recommendations.
-The default is <code>false</code>, which returns all recommendations.
+Specify \<code\>true\</code\> to return only the most critical recommendations.
+The default is \<code\>false\</code\>, which returns all recommendations.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -69,7 +69,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -14,16 +14,16 @@ Creates or updates a DDoS protection plan.
 
 ### UpdateExpanded (Default)
 ```
-Set-AzDdosProtectionPlan -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Set-AzDdosProtectionPlan -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Location <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### Update
 ```
-Set-AzDdosProtectionPlan -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -DdosProtectionPlan <IDdosProtectionPlan> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Set-AzDdosProtectionPlan -Name <String> -ResourceGroupName <String> -DdosProtectionPlan <IDdosProtectionPlan>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -61,7 +61,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -142,7 +142,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -173,9 +173,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
