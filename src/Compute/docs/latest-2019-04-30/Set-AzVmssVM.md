@@ -13,8 +13,8 @@ Updates a virtual machine of a VM scale set.
 ## SYNTAX
 
 ```
-Set-AzVmssVM -InstanceId <String> -ResourceGroupName <String> -SubscriptionId <String>
- -VMScaleSetName <String> -Location <String> [-AvailabilitySetId <String>] [-BootDiagnosticEnabled]
+Set-AzVmssVM -InstanceId <String> -ResourceGroupName <String> -VMScaleSetName <String> -Location <String>
+ [-SubscriptionId <String>] [-AvailabilitySetId <String>] [-BootDiagnosticEnabled]
  [-BootDiagnosticStorageUri <String>]
  [-ConfigurationNetworkInterfaceConfiguration <IVirtualMachineScaleSetNetworkConfiguration[]>]
  [-DataDisk <IDataDisk[]>] [-HardwareProfileVMSize <VirtualMachineSizeTypes>] [-ImageReferenceId <String>]
@@ -778,9 +778,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

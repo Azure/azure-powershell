@@ -14,7 +14,7 @@ Update a VM scale set.
 
 ### UpdateExpanded1 (Default)
 ```
-Update-AzVmss -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-AutomaticOSUpgrade]
+Update-AzVmss -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-AutomaticOSUpgrade]
  [-DisableAutoRollback] [-IdentityId <Hashtable>] [-IdentityType <ResourceIdentityType>]
  [-MaxBatchInstancePercent <Int32>] [-MaxUnhealthyInstancePercent <Int32>]
  [-MaxUnhealthyUpgradedInstancePercent <Int32>] [-Overprovision] [-PauseTimeBetweenBatches <String>]
@@ -458,9 +458,9 @@ Type: System.String
 Parameter Sets: UpdateExpanded1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

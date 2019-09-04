@@ -14,12 +14,13 @@ Retrieves information about an availability set.
 
 ### List2 (Default)
 ```
-Get-AzAvailabilitySet -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzAvailabilitySet [-SubscriptionId <String[]>] [-Expand <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get1
 ```
-Get-AzAvailabilitySet -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzAvailabilitySet -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -30,7 +31,7 @@ Get-AzAvailabilitySet -InputObject <IComputeIdentity> [-DefaultProfile <PSObject
 
 ### List3
 ```
-Get-AzAvailabilitySet -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
+Get-AzAvailabilitySet -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -66,6 +67,22 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Expand
+The expand expression to apply to the operation.
+
+```yaml
+Type: System.String
+Parameter Sets: List2
+Aliases:
 
 Required: False
 Position: Named
@@ -133,9 +150,9 @@ Type: System.String[]
 Parameter Sets: Get1, List2, List3
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -14,7 +14,7 @@ Starts one or more virtual machines in a VM scale set.
 
 ### StartExpanded1 (Default)
 ```
-Start-AzVmss -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-InstanceId <String[]>]
+Start-AzVmss -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-InstanceId <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -188,9 +188,9 @@ Type: System.String
 Parameter Sets: StartExpanded1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -14,7 +14,7 @@ Create or update a gallery Application Version.
 
 ```
 New-AzGalleryApplicationVersion -GalleryApplicationName <String> -GalleryName <String> -Name <String>
- -ResourceGroupName <String> -SubscriptionId <String> -Location <String>
+ -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
  [-PublishingProfileContentType <String>] [-PublishingProfileEnableHealthCheck]
  [-PublishingProfileEndOfLifeDate <DateTime>] [-PublishingProfileExcludeFromLatest]
  [-PublishingProfileReplicaCount <Int32>] [-PublishingProfileStorageAccountType <StorageAccountType>]
@@ -344,9 +344,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

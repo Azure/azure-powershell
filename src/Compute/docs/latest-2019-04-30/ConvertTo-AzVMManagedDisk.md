@@ -15,7 +15,7 @@ Virtual machine must be stop-deallocated before invoking this operation.
 
 ### Convert1 (Default)
 ```
-ConvertTo-AzVMManagedDisk -ResourceGroupName <String> -SubscriptionId <String> -VMName <String>
+ConvertTo-AzVMManagedDisk -ResourceGroupName <String> -VMName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -157,9 +157,9 @@ Type: System.String
 Parameter Sets: Convert1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

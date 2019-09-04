@@ -14,13 +14,13 @@ Display information about a virtual machine scale set.
 
 ### List3 (Default)
 ```
-Get-AzVmss -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzVmss [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get1
 ```
-Get-AzVmss -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzVmss -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity1
@@ -30,7 +30,7 @@ Get-AzVmss -InputObject <IComputeIdentity> [-DefaultProfile <PSObject>] [<Common
 
 ### List2
 ```
-Get-AzVmss -ResourceGroupName <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
+Get-AzVmss -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -133,9 +133,9 @@ Type: System.String[]
 Parameter Sets: Get1, List2, List3
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

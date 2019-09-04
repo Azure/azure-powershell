@@ -14,9 +14,9 @@ Grants access to a snapshot.
 
 ### GrantExpanded (Default)
 ```
-Grant-AzSnapshotAccess -ResourceGroupName <String> -SnapshotName <String> -SubscriptionId <String>
- -Access <AccessLevel> -DurationInSeconds <Int32> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Grant-AzSnapshotAccess -ResourceGroupName <String> -SnapshotName <String> -Access <AccessLevel>
+ -DurationInSeconds <Int32> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GrantViaIdentityExpanded
@@ -191,9 +191,9 @@ Type: System.String
 Parameter Sets: GrantExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -14,13 +14,13 @@ The operation to get the extension.
 
 ### List (Default)
 ```
-Get-AzVMExtension -ResourceGroupName <String> -SubscriptionId <String[]> -VMName <String> [-Expand <String>]
+Get-AzVMExtension -ResourceGroupName <String> -VMName <String> [-SubscriptionId <String[]>] [-Expand <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get1
 ```
-Get-AzVMExtension -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]> -VMName <String>
+Get-AzVMExtension -Name <String> -ResourceGroupName <String> -VMName <String> [-SubscriptionId <String[]>]
  [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -145,9 +145,9 @@ Type: System.String[]
 Parameter Sets: Get1, List
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

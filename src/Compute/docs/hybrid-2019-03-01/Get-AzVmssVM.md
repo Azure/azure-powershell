@@ -14,15 +14,15 @@ Gets a virtual machine from a VM scale set.
 
 ### List (Default)
 ```
-Get-AzVmssVM -ResourceGroupName <String> -SubscriptionId <String[]> -VirtualMachineScaleSetName <String>
+Get-AzVmssVM -ResourceGroupName <String> -VirtualMachineScaleSetName <String> [-SubscriptionId <String[]>]
  [-ExpandExpression <String>] [-Filter <String>] [-Select <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzVmssVM -InstanceId <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- -VMScaleSetName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzVmssVM -InstanceId <String> -ResourceGroupName <String> -VMScaleSetName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -177,9 +177,9 @@ Type: System.String[]
 Parameter Sets: Get, List
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

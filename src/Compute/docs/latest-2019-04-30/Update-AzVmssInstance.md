@@ -14,8 +14,8 @@ Upgrades one or more virtual machines to the latest SKU set in the VM scale set 
 
 ### UpdateExpanded1 (Default)
 ```
-Update-AzVmssInstance -ResourceGroupName <String> -SubscriptionId <String> -VMScaleSetName <String>
- -InstanceId <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+Update-AzVmssInstance -ResourceGroupName <String> -VMScaleSetName <String> -InstanceId <String[]>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -172,9 +172,9 @@ Type: System.String
 Parameter Sets: UpdateExpanded1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

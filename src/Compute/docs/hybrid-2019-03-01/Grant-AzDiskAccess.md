@@ -14,8 +14,8 @@ Grants access to a disk.
 
 ### GrantExpanded1 (Default)
 ```
-Grant-AzDiskAccess -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Access <AccessLevel>
- -DurationInSeconds <Int32> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+Grant-AzDiskAccess -Name <String> -ResourceGroupName <String> -Access <AccessLevel> -DurationInSeconds <Int32>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -191,9 +191,9 @@ Type: System.String
 Parameter Sets: GrantExpanded1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -13,8 +13,8 @@ The operation to create or update an extension.
 ## SYNTAX
 
 ```
-New-AzVmssExtension -ExtensionName <String> -ResourceGroupName <String> -SubscriptionId <String>
- -VmssName <String> [-AutoUpgradeMinorVersion] [-ForceUpdateTag <String>] [-Name <String>]
+New-AzVmssExtension -ExtensionName <String> -ResourceGroupName <String> -VmssName <String>
+ [-SubscriptionId <String>] [-AutoUpgradeMinorVersion] [-ForceUpdateTag <String>] [-Name <String>]
  [-ProtectedSetting <IVirtualMachineScaleSetExtensionPropertiesProtectedSettings>] [-Publisher <String>]
  [-Setting <IVirtualMachineScaleSetExtensionPropertiesSettings>] [-Type <String>]
  [-TypeHandlerVersion <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
@@ -232,9 +232,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -14,7 +14,7 @@ The operation to redeploy a virtual machine.
 
 ### Redeploy (Default)
 ```
-Invoke-AzVMReimage -ResourceGroupName <String> -SubscriptionId <String> -VMName <String>
+Invoke-AzVMReimage -ResourceGroupName <String> -VMName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -139,9 +139,9 @@ Type: System.String
 Parameter Sets: Redeploy
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

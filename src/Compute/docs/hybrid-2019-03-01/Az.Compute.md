@@ -8,7 +8,7 @@ Locale: en-US
 
 # Az.Compute Module
 ## Description
-
+Microsoft Azure PowerShell: Compute cmdlets
 
 ## Az.Compute Cmdlets
 ### [ConvertTo-AzVMManagedDisk](ConvertTo-AzVMManagedDisk.md)
