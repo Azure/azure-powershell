@@ -138,9 +138,12 @@ function Test-VirtualMachineScaleSetProfile
     Assert-AreEqual 1 $vmss2.VirtualMachineProfile.ExtensionProfile.Extensions[1].ProvisionAfterExtensions.Count;
     Assert-AreEqual $extname $vmss2.VirtualMachineProfile.ExtensionProfile.Extensions[1].ProvisionAfterExtensions[0];
 
-    $vmss3 = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'Automatic' -DisableAutoRollback $true -EnableUltraSSD;
+    $vmss3 = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'Automatic' -DisableAutoRollback $true -EnableUltraSSD `
+                              -TerminateScheduledEvents -TerminateScheduledEventNotBeforeTimeoutInMinutes 15;
     Assert-True { $vmss3.UpgradePolicy.AutomaticOSUpgradePolicy.DisableAutomaticRollback };
     Assert-True { $vmss3.AdditionalCapabilities.UltraSSDEnabled };
+    Assert-True { $vmss3.VirtualMachineProfile.ScheduledEventsProfile.TerminateNotificationProfile.Enable };
+    Assert-AreEqual "PT15M" $vmss3.VirtualMachineProfile.ScheduledEventsProfile.TerminateNotificationProfile.NotBeforeTimeout;
 
     $ppgid = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgname/providers/Microsoft.Compute/proximityPlacementGroups/ppgname"
     $vmss4 = New-AzVmssConfig -Location $loc -SkuCapacity $skuCapacity -SkuName $skuName -UpgradePolicyMode $upgradePolicy -ProximityPlacementGroupId $ppgid;

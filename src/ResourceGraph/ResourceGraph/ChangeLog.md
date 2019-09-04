@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.7.5
 * Showing warnings in cases when too many subscriptions were used or results got truncated.
 * Adding param to extend query result with subscription and tenant names
 

@@ -210,8 +210,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
         private PSDirectConnection UpdateIpV4Prefix()
         {
                 this.InputObject.BgpSession.MaxPrefixesAdvertisedV4 =
-                    this.MaxPrefixesAdvertisedIPv4 == null ? this.InputObject.BgpSession.MaxPrefixesAdvertisedV4 : 20000;
-                this.InputObject.BgpSession.SessionPrefixV4 = this.ValidatePrefix(this.SessionPrefixV4, Constants.Direct);
+                    this.MaxPrefixesAdvertisedIPv4 == null ? this.InputObject.BgpSession.MaxPrefixesAdvertisedV4 : this.MaxPrefixesAdvertisedIPv4;
+                this.InputObject.BgpSession.SessionPrefixV4 = this.ValidatePrefix(this.SessionPrefixV4?.Trim());
                 if (this.IsValidConnection(this.InputObject))
                     return this.InputObject;
 
@@ -227,8 +227,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
         private PSDirectConnection UpdateIpV6Prefix()
         {
                 this.InputObject.BgpSession.MaxPrefixesAdvertisedV6 =
-                    this.MaxPrefixesAdvertisedIPv6 == null ? this.InputObject.BgpSession.MaxPrefixesAdvertisedV6 : 2000;
-                this.InputObject.BgpSession.SessionPrefixV6 = this.ValidatePrefix(this.SessionPrefixV6, Constants.Direct);
+                    this.MaxPrefixesAdvertisedIPv6 == null ? this.InputObject.BgpSession.MaxPrefixesAdvertisedV6 : this.MaxPrefixesAdvertisedIPv6;
+                this.InputObject.BgpSession.SessionPrefixV6 = this.ValidatePrefix(this.SessionPrefixV6?.Trim());
                 if (this.IsValidConnection(this.InputObject))
                     return this.InputObject;
 
