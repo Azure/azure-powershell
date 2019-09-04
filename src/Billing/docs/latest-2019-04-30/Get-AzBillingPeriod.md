@@ -14,15 +14,15 @@ Other subscription types which were not purchased directly through the Azure web
 
 ## SYNTAX
 
-### List (Default)
+### ListExpandedFilter (Default)
 ```
-Get-AzBillingPeriod -SubscriptionId <String[]> [-Filter <String>] [-Skiptoken <String>] [-Top <Int32>]
+Get-AzBillingPeriod [-SubscriptionId <String[]>] [-Top <Int32>] [-EndDate <DateTime>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzBillingPeriod -Name <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
+Get-AzBillingPeriod -Name <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -74,14 +74,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Filter
-May be used to filter billing periods by billingPeriodEndDate.
-The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'.
-It does not currently support 'ne', 'or', or 'not'.
+### -EndDate
+The end date (YYYY-MM-DD) in UTC of the billing period.
 
 ```yaml
-Type: System.String
-Parameter Sets: List
+Type: System.DateTime
+Parameter Sets: ListExpandedFilter
 Aliases:
 
 Required: False
@@ -94,6 +92,7 @@ Dynamic: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Billing.Models.IBillingIdentity
@@ -124,34 +123,17 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Skiptoken
-Skiptoken is only used if a previous operation returned a partial result.
-If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.
-
-```yaml
-Type: System.String
-Parameter Sets: List
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -SubscriptionId
 Azure Subscription ID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, Get
+Parameter Sets: Get, ListExpandedFilter
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -162,12 +144,12 @@ May be used to limit the number of results to the most recent N billing periods.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: List
+Parameter Sets: ListExpandedFilter
 Aliases: MaxCount
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -185,6 +167,38 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Billing.Models.Api20180301Preview.IBillingPeriod
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### INPUTOBJECT <IBillingIdentity>: Identity Parameter
+  - `[AgreementName <String>]`: Agreement Id.
+  - `[BillingAccountId <String>]`: BillingAccount ID
+  - `[BillingAccountName <String>]`: Billing Account Id.
+  - `[BillingPeriodName <String>]`: Billing Period Name.
+  - `[BillingProfileId <String>]`: Billing Profile Id.
+  - `[BillingProfileName <String>]`: Billing Profile Id.
+  - `[BillingRoleAssignmentName <String>]`: role assignment id.
+  - `[BillingRoleDefinitionName <String>]`: role definition id.
+  - `[BillingSubscriptionName <String>]`: Billing Subscription Id.
+  - `[BudgetName <String>]`: Budget Name.
+  - `[CustomerName <String>]`: Customer Id.
+  - `[DepartmentName <String>]`: Department Id.
+  - `[EnrollmentAccountName <String>]`: Enrollment Account Id.
+  - `[Id <String>]`: Resource identity path
+  - `[InvoiceName <String>]`: The name of an invoice resource.
+  - `[InvoiceSectionId <String>]`: Invoice Section Id.
+  - `[InvoiceSectionName <String>]`: InvoiceSection Id.
+  - `[ManagementGroupId <String>]`: Azure Management Group ID.
+  - `[Name <String>]`: Enrollment Account name.
+  - `[ProductName <String>]`: Invoice Id.
+  - `[ReservationId <String>]`: Id of the reservation
+  - `[ReservationOrderId <String>]`: Order Id of the reservation
+  - `[Scope <String>]`: The scope associated with usage details operations. This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, '/providers/Microsoft.Billing/departments/{departmentId}' for Department scope, '/providers/Microsoft.Billing/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope and '/providers/Microsoft.Management/managementGroups/{managementGroupId}' for Management Group scope. For subscription, billing account, department, enrollment account and management group, you can also add billing period to the scope using '/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}'. For e.g. to specify billing period at department scope use '/providers/Microsoft.Billing/departments/{departmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}'
+  - `[SubscriptionId <String>]`: Azure Subscription ID.
+  - `[TransferName <String>]`: Transfer Name.
 
 ## RELATED LINKS
 

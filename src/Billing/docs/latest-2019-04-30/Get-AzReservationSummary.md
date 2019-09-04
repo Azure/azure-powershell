@@ -12,16 +12,9 @@ Lists the reservations summaries for daily or monthly grain.
 
 ## SYNTAX
 
-### List (Default)
 ```
-Get-AzReservationSummary -ReservationOrderId <String> -Grain <Datagrain> [-Filter <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List1
-```
-Get-AzReservationSummary -ReservationOrderId <String> -ReservationId <String> -Grain <Datagrain>
- [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzReservationSummary -ReservationOrderId <String> -Grain <Datagrain> [-ReservationId <String>]
+ [-EndDate <DateTime>] [-StartDate <DateTime>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -65,13 +58,11 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Filter
-Required only for daily grain.
-The properties/UsageDate for start date and end date.
-The filter supports 'le' and 'ge'
+### -EndDate
+The end date (YYYY-MM-DD) in UTC of the reservation summary.
 
 ```yaml
-Type: System.String
+Type: System.DateTime
 Parameter Sets: (All)
 Aliases:
 
@@ -104,10 +95,10 @@ Id of the reservation
 
 ```yaml
 Type: System.String
-Parameter Sets: List1
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -131,6 +122,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -StartDate
+The start date (YYYY-MM-DD) in UTC of the reservation summary.
+
+```yaml
+Type: System.DateTime
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -143,6 +150,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### Get-AzConsumptionReservationSummary
+
+## NOTES
 
 ## RELATED LINKS
 

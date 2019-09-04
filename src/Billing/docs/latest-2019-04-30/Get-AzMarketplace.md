@@ -14,8 +14,9 @@ Marketplaces are available via this API only for May 1, 2014 or later.
 ## SYNTAX
 
 ```
-Get-AzMarketplace -Scope <String> [-Filter <String>] [-Skiptoken <String>] [-Top <Int32>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMarketplace -Scope <String> [-Top <Int32>] [-EndDate <DateTime>] [-InstanceId <String>]
+ [-InstanceName <String>] [-ResourceGroup <String>] [-StartDate <DateTime>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,15 +61,61 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Filter
-May be used to filter marketplaces by properties/usageEnd (Utc time), properties/usageStart (Utc time), properties/resourceGroup, properties/instanceName or properties/instanceId.
-The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'.
-It does not currently support 'ne', 'or', or 'not'.
+### -EndDate
+The end date (in UTC) of the marketplace(s) to filter.
+
+```yaml
+Type: System.DateTime
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -InstanceId
+The instance id of the marketplace(s) to filter.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -InstanceName
+The instance name of the marketplace(s) to filter.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ResourceGroup
+The resource group of the marketplace(s) to filter.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: ResourceGroupName
 
 Required: False
 Position: Named
@@ -98,12 +145,11 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Skiptoken
-Skiptoken is only used if a previous operation returned a partial result.
-If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.
+### -StartDate
+The start date (in UTC) of the marketplace(s) to filter.
 
 ```yaml
-Type: System.String
+Type: System.DateTime
 Parameter Sets: (All)
 Aliases:
 
@@ -125,7 +171,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -143,6 +189,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### Get-AzConsumptionMarketplace
+
+## NOTES
 
 ## RELATED LINKS
 

@@ -12,16 +12,9 @@ Lists the reservations details for provided date range.
 
 ## SYNTAX
 
-### List (Default)
 ```
-Get-AzReservationDetail -ReservationOrderId <String> -Filter <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### List1
-```
-Get-AzReservationDetail -ReservationOrderId <String> -ReservationId <String> -Filter <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzReservationDetail -ReservationOrderId <String> -EndDate <DateTime> -StartDate <DateTime>
+ [-ReservationId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -65,13 +58,11 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Filter
-Filter reservation details by date range.
-The properties/UsageDate for start date and end date.
-The filter supports 'le' and 'ge' 
+### -EndDate
+The end date (YYYY-MM-DD) in UTC of the reservation detail.
 
 ```yaml
-Type: System.String
+Type: System.DateTime
 Parameter Sets: (All)
 Aliases:
 
@@ -88,10 +79,10 @@ Id of the reservation
 
 ```yaml
 Type: System.String
-Parameter Sets: List1
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -115,6 +106,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -StartDate
+The start date (YYYY-MM-DD) in UTC of the reservation detail.
+
+```yaml
+Type: System.DateTime
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -127,6 +134,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### Get-AzConsumptionReservationDetail
+
+## NOTES
 
 ## RELATED LINKS
 

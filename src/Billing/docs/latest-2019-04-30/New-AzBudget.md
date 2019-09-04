@@ -15,33 +15,33 @@ Create operation does not require eTag.
 
 ## SYNTAX
 
-### Create (Default)
+### CreateExpanded (Default)
 ```
-New-AzBudget -Name <String> -Scope <String> [-Parameter <IBudget>] [-DefaultProfile <PSObject>] [-Confirm]
+New-AzBudget -Name <String> -Scope <String> [-Amount <Decimal>] [-Category <CategoryType>] [-ETag <String>]
+ [-FilterMeter <String[]>] [-FilterResource <String[]>] [-FilterResourceGroup <String[]>]
+ [-FilterTag <Hashtable>] [-Notification <Hashtable>] [-TimeGrain <TimeGrainType>]
+ [-TimePeriodEndDate <DateTime>] [-TimePeriodStartDate <DateTime>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateExpanded
+### Create
 ```
-New-AzBudget -Name <String> -Scope <String> -Amount <Decimal> -Category <CategoryType>
- -TimeGrain <TimeGrainType> -TimePeriodStartDate <DateTime> [-ETag <String>] [-FilterMeter <String[]>]
- [-FilterResource <String[]>] [-FilterResourceGroup <String[]>] [-FilterTag <IFiltersTags>]
- [-Notification <IBudgetPropertiesNotifications>] [-TimePeriodEndDate <DateTime>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzBudget -InputObject <IBillingIdentity> -Amount <Decimal> -Category <CategoryType>
- -TimeGrain <TimeGrainType> -TimePeriodStartDate <DateTime> [-ETag <String>] [-FilterMeter <String[]>]
- [-FilterResource <String[]>] [-FilterResourceGroup <String[]>] [-FilterTag <IFiltersTags>]
- [-Notification <IBudgetPropertiesNotifications>] [-TimePeriodEndDate <DateTime>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzBudget -Name <String> -Scope <String> -Parameter <IBudget> [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
-New-AzBudget -InputObject <IBillingIdentity> [-Parameter <IBudget>] [-DefaultProfile <PSObject>] [-Confirm]
+New-AzBudget -InputObject <IBillingIdentity> -Parameter <IBudget> [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded
+```
+New-AzBudget -InputObject <IBillingIdentity> [-Amount <Decimal>] [-Category <CategoryType>] [-ETag <String>]
+ [-FilterMeter <String[]>] [-FilterResource <String[]>] [-FilterResourceGroup <String[]>]
+ [-FilterTag <Hashtable>] [-Notification <Hashtable>] [-TimeGrain <TimeGrainType>]
+ [-TimePeriodEndDate <DateTime>] [-TimePeriodStartDate <DateTime>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -81,9 +81,9 @@ Type: System.Decimal
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -97,7 +97,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Billing.Support.CategoryType
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -140,7 +140,6 @@ Dynamic: False
 
 ### -FilterMeter
 The list of filters on meters (GUID), mandatory for budgets of usage category.
-
 
 ```yaml
 Type: System.String[]
@@ -191,7 +190,7 @@ Dynamic: False
 The dictionary of filters on tags.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Billing.Models.Api20180630.IFiltersTags
+Type: System.Collections.Hashtable
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -205,10 +204,11 @@ Dynamic: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Billing.Models.IBillingIdentity
-Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
+Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -240,7 +240,7 @@ Dictionary of notifications associated with the budget.
 Budget can have up to five notifications.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Billing.Models.Api20180630.IBudgetPropertiesNotifications
+Type: System.Collections.Hashtable
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -254,13 +254,14 @@ Dynamic: False
 
 ### -Parameter
 A budget resource.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Billing.Models.Api201901.IBudget
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -294,7 +295,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Billing.Support.TimeGrainType
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -327,7 +328,7 @@ Type: System.DateTime
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -384,6 +385,53 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### New-AzConsumptionBudget
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### INPUTOBJECT <IBillingIdentity>: Identity Parameter
+  - `[AgreementName <String>]`: Agreement Id.
+  - `[BillingAccountId <String>]`: BillingAccount ID
+  - `[BillingAccountName <String>]`: Billing Account Id.
+  - `[BillingPeriodName <String>]`: Billing Period Name.
+  - `[BillingProfileId <String>]`: Billing Profile Id.
+  - `[BillingProfileName <String>]`: Billing Profile Id.
+  - `[BillingRoleAssignmentName <String>]`: role assignment id.
+  - `[BillingRoleDefinitionName <String>]`: role definition id.
+  - `[BillingSubscriptionName <String>]`: Billing Subscription Id.
+  - `[BudgetName <String>]`: Budget Name.
+  - `[CustomerName <String>]`: Customer Id.
+  - `[DepartmentName <String>]`: Department Id.
+  - `[EnrollmentAccountName <String>]`: Enrollment Account Id.
+  - `[Id <String>]`: Resource identity path
+  - `[InvoiceName <String>]`: The name of an invoice resource.
+  - `[InvoiceSectionId <String>]`: Invoice Section Id.
+  - `[InvoiceSectionName <String>]`: InvoiceSection Id.
+  - `[ManagementGroupId <String>]`: Azure Management Group ID.
+  - `[Name <String>]`: Enrollment Account name.
+  - `[ProductName <String>]`: Invoice Id.
+  - `[ReservationId <String>]`: Id of the reservation
+  - `[ReservationOrderId <String>]`: Order Id of the reservation
+  - `[Scope <String>]`: The scope associated with usage details operations. This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, '/providers/Microsoft.Billing/departments/{departmentId}' for Department scope, '/providers/Microsoft.Billing/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope and '/providers/Microsoft.Management/managementGroups/{managementGroupId}' for Management Group scope. For subscription, billing account, department, enrollment account and management group, you can also add billing period to the scope using '/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}'. For e.g. to specify billing period at department scope use '/providers/Microsoft.Billing/departments/{departmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}'
+  - `[SubscriptionId <String>]`: Azure Subscription ID.
+  - `[TransferName <String>]`: Transfer Name.
+
+#### PARAMETER <IBudget>: A budget resource.
+  - `Amount <Decimal>`: The total amount of cost to track with the budget
+  - `Category <CategoryType>`: The category of the budget, whether the budget tracks cost or usage.
+  - `TimeGrain <TimeGrainType>`: The time covered by a budget. Tracking of the amount will be reset based on the time grain.
+  - `TimePeriodStartDate <DateTime>`: The start date for the budget.
+  - `[ETag <String>]`: eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
+  - `[FilterMeter <String[]>]`: The list of filters on meters (GUID), mandatory for budgets of usage category. 
+  - `[FilterResource <String[]>]`: The list of filters on resources.
+  - `[FilterResourceGroup <String[]>]`: The list of filters on resource groups, allowed at subscription level only.
+  - `[FilterTag <IFiltersTags>]`: The dictionary of filters on tags.
+    - `[(Any) <String[]>]`: This indicates any property can be added to this object.
+  - `[Notification <IBudgetPropertiesNotifications>]`: Dictionary of notifications associated with the budget. Budget can have up to five notifications.
+    - `[(Any) <INotification>]`: This indicates any property can be added to this object.
+  - `[TimePeriodEndDate <DateTime?>]`: The end date for the budget. If not provided, we default this to 10 years from the start date.
 
 ## RELATED LINKS
 
