@@ -6,9 +6,17 @@ function Get-AzKeyVaultStorageSasDefinition {
     param(
         [Parameter(HelpMessage='MISSING DESCRIPTION 06')]
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category('Uri')]
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(SerializedName='keyVaultDnsSuffix', PossibleTypes=([System.String]), Description='MISSING DESCRIPTION 06')]
         [System.String]
         # MISSING DESCRIPTION 06
-        ${VaultBaseUrl},
+        ${KeyVaultDnsSuffix},
+
+        [Parameter(HelpMessage='MISSING DESCRIPTION 06')]
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category('Uri')]
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(SerializedName='vaultName', PossibleTypes=([System.String]), Description='MISSING DESCRIPTION 06')]
+        [System.String]
+        # MISSING DESCRIPTION 06
+        ${VaultName},
 
         [Parameter(ParameterSetName='GetDeleted', Mandatory, HelpMessage='The name of the storage account.')]
         [Parameter(ParameterSetName='GetDeleted1', Mandatory, HelpMessage='The name of the storage account.')]

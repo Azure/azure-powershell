@@ -5,11 +5,19 @@ function Get-AzKeyVaultKey {
     param(
         [Parameter(HelpMessage='MISSING DESCRIPTION 06')]
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category('Uri')]
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(SerializedName='keyVaultDnsSuffix', PossibleTypes=([System.String]), Description='MISSING DESCRIPTION 06')]
         [System.String]
         # MISSING DESCRIPTION 06
-        ${VaultBaseUrl},
+        ${KeyVaultDnsSuffix},
 
-        [Parameter(ParameterSetName='GetDeleted1', Mandatory, HelpMessage='The name of the key.')]
+        [Parameter(HelpMessage='MISSING DESCRIPTION 06')]
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category('Uri')]
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(SerializedName='vaultName', PossibleTypes=([System.String]), Description='MISSING DESCRIPTION 06')]
+        [System.String]
+        # MISSING DESCRIPTION 06
+        ${VaultName},
+
+        [Parameter(ParameterSetName='GetDeleted', Mandatory, HelpMessage='The name of the key.')]
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category('Path')]
         [System.String]
         # The name of the key.
@@ -21,7 +29,7 @@ function Get-AzKeyVaultKey {
         # Signals that deleted key vault key should be returned.
         ${InRemovedState},
 
-        [Parameter(ParameterSetName='GetDeleted', HelpMessage='Maximum number of results to return in a page. If not specified the service will return up to 25 results.')]
+        [Parameter(ParameterSetName='ListDeleted', HelpMessage='Maximum number of results to return in a page. If not specified the service will return up to 25 results.')]
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category('Query')]
         [System.Int32]
         # Maximum number of results to return in a page. If not specified the service will return up to 25 results.

@@ -12,6 +12,7 @@ function Get-AzKeyVault {
         [Parameter(ParameterSetName='GetDeleted', Mandatory, HelpMessage='Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.')]
         [Parameter(ParameterSetName='ListDeleted', Mandatory, HelpMessage='Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.')]
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String[]]
         # Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
         ${SubscriptionId},
@@ -77,8 +78,12 @@ function Get-AzKeyVault {
     )
 
     process {
-        $null = $PSBoundParameters.Add("VaultName", $Name)
-        $null = $PSBoundParameters.Remove("Name")
+        if ($PSBoundParameters.ContainsKey("Name"))
+        {
+            $null = $PSBoundParameters.Add("VaultName", $Name)
+            $null = $PSBoundParameters.Remove("Name")
+        }
+
         $null = $PSBoundParameters.Remove("InRemovedState")
         Az.KeyVault.internal\Get-AzKeyVaultDeleted @PSBoundParameters
     }

@@ -1,26 +1,37 @@
-function Get-AzKeyVaultKey_ListVersions {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IKeyBundle', 'Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IKeyItem')]
-    [CmdletBinding(PositionalBinding=$false)]
+function Add-AzKeyVaultCertificateContact {
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IContact')]
+    [CmdletBinding(DefaultParameterSetName='Add', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Profile('latest-2019-04-30')]
+    [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Description('Sets the certificate contacts for the specified key vault. This operation requires the certificates/managecontacts permission.')]
     param(
         [Parameter(HelpMessage='MISSING DESCRIPTION 06')]
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category('Uri')]
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(SerializedName='keyVaultDnsSuffix', PossibleTypes=([System.String]), Description='MISSING DESCRIPTION 06')]
         [System.String]
         # MISSING DESCRIPTION 06
-        ${VaultBaseUrl},
+        ${KeyVaultDnsSuffix},
 
-        [Parameter(Mandatory, HelpMessage='The name of the key to get.')]
-        [Alias('KeyName')]
-        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category('Path')]
+        [Parameter(HelpMessage='MISSING DESCRIPTION 06')]
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category('Uri')]
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(SerializedName='vaultName', PossibleTypes=([System.String]), Description='MISSING DESCRIPTION 06')]
         [System.String]
-        # The name of the key to get.
+        # MISSING DESCRIPTION 06
+        ${VaultName},
+
+        [Parameter(Mandatory, HelpMessage='The email address of the contact to add.')]
+        [System.String]
+        # The email address of the contact to add.
+        ${EmailAddress},
+
+        [Parameter(HelpMessage='The name of the contact to add.')]
+        [System.String]
+        # The name of the contact to add.
         ${Name},
 
-        [Parameter(Mandatory, HelpMessage='Signals to include versions of the key in the output.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category('Path')]
-        [System.Management.Automation.SwitchParameter]
-        # Signals to include versions of the key in the output.
-        ${IncludeVersions},
+        [Parameter(HelpMessage='The phone number of the contact to add.')]
+        [System.String]
+        # The phone number of the contact to add.
+        ${PhoneNumber},
 
         [Parameter(HelpMessage='The credentials, account, tenant, and subscription used for communication with Azure.')]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -71,8 +82,22 @@ function Get-AzKeyVaultKey_ListVersions {
     )
 
     process {
-        $null = $PSBoundParameters.Add("Version", [string]::Empty)
-        $null = $PSBoundParameters.Remove("IncludeVersions")
-        Az.KeyVault\Get-AzKeyVaultKey @PSBoundParameters
+        $Contact = @{ EmailAddress = $EmailAddress; Name = $Name; PhoneNumber = $PhoneNumber }
+        $null = $PSBoundParameters.Remove("EmailAddress")
+        $null = $PSBoundParameters.Remove("Name")
+        $null = $PSBoundParameters.Remove("PhoneNumber")
+        $Result = Az.KeyVault\Get-AzKeyVaultCertificateContact @PSBoundParameters
+        if ($null -eq $Result)
+        {
+            $Result = @()
+        }
+        elseif (($Result | Measure-Object).Count -eq 1)
+        {
+            $Result = @( $Result )
+        }
+
+        $Result += $Contact
+        $null = $PSBoundParameters.Add("ContactList", $Result)
+        (Az.KeyVault.internal\Set-AzKeyVaultCertificateContact @PSBoundParameters).ContactList
     }
 }

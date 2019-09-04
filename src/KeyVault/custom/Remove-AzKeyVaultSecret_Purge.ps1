@@ -5,9 +5,17 @@ function Remove-AzKeyVaultSecret_Purge {
     param(
         [Parameter(HelpMessage='MISSING DESCRIPTION 06')]
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category('Uri')]
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(SerializedName='keyVaultDnsSuffix', PossibleTypes=([System.String]), Description='MISSING DESCRIPTION 06')]
         [System.String]
         # MISSING DESCRIPTION 06
-        ${VaultBaseUrl},
+        ${KeyVaultDnsSuffix},
+
+        [Parameter(HelpMessage='MISSING DESCRIPTION 06')]
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category('Uri')]
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(SerializedName='vaultName', PossibleTypes=([System.String]), Description='MISSING DESCRIPTION 06')]
+        [System.String]
+        # MISSING DESCRIPTION 06
+        ${VaultName},
 
         [Parameter(Mandatory, HelpMessage='The name of the secret.')]
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category('Path')]
