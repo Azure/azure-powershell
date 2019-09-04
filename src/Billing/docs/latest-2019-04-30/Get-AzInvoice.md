@@ -14,20 +14,14 @@ Get the invoice by name.
 
 ### List2 (Default)
 ```
-Get-AzInvoice -SubscriptionId <String[]> [-Expand <String>] [-Filter <String>] [-Skiptoken <String>]
+Get-AzInvoice [-SubscriptionId <String[]>] [-Expand <String>] [-Filter <String>] [-Skiptoken <String>]
  [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List1
+### GenerateDownloadUrl
 ```
-Get-AzInvoice -BillingAccountName <String> -BillingProfileName <String> -PeriodEndDate <String>
- -PeriodStartDate <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List
-```
-Get-AzInvoice -BillingAccountName <String> -PeriodEndDate <String> -PeriodStartDate <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzInvoice -GenerateDownloadUrl [-SubscriptionId <String[]>] [-Top <Int32>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -38,7 +32,17 @@ Get-AzInvoice -BillingAccountName <String> -BillingProfileName <String> -Name <S
 
 ### Get1
 ```
-Get-AzInvoice -Name <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzInvoice -Name <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetLatest
+```
+Get-AzInvoice -Latest [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzInvoice -InputObject <IBillingIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity1
@@ -46,9 +50,16 @@ Get-AzInvoice -Name <String> -SubscriptionId <String[]> [-DefaultProfile <PSObje
 Get-AzInvoice -InputObject <IBillingIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### List
 ```
-Get-AzInvoice -InputObject <IBillingIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzInvoice -BillingAccountName <String> -PeriodEndDate <String> -PeriodStartDate <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List1
+```
+Get-AzInvoice -BillingAccountName <String> -BillingProfileName <String> -PeriodEndDate <String>
+ -PeriodStartDate <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -77,11 +88,11 @@ PS C:\> {{ Add code here }}
 ## PARAMETERS
 
 ### -BillingAccountName
-billing Account Id.
+Billing Account Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: List1, List, Get
+Parameter Sets: Get, List, List1
 Aliases:
 
 Required: True
@@ -97,7 +108,7 @@ Billing Profile Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: List1, Get
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True
@@ -160,12 +171,29 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -GenerateDownloadUrl
+If set, signals to generate the download URL of the invoice(s).
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: GenerateDownloadUrl
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Billing.Models.IBillingIdentity
-Parameter Sets: GetViaIdentity1, GetViaIdentity
+Parameter Sets: GetViaIdentity, GetViaIdentity1
 Aliases:
 
 Required: True
@@ -176,8 +204,24 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -Latest
+If set, signals that the latest invoice should be returned.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: GetLatest
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Name
-The name of an invoice resource.
+Invoice Id.
 
 ```yaml
 Type: System.String
@@ -197,7 +241,7 @@ Invoice period end date.
 
 ```yaml
 Type: System.String
-Parameter Sets: List1, List
+Parameter Sets: List, List1
 Aliases:
 
 Required: True
@@ -213,7 +257,7 @@ Invoice period start date.
 
 ```yaml
 Type: System.String
-Parameter Sets: List1, List
+Parameter Sets: List, List1
 Aliases:
 
 Required: True
@@ -246,12 +290,12 @@ Azure Subscription ID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List2, Get1
+Parameter Sets: GenerateDownloadUrl, Get1, GetLatest, List2
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -262,12 +306,12 @@ May be used to limit the number of results to the most recent N invoices.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: List2
+Parameter Sets: GenerateDownloadUrl, List2
 Aliases: MaxCount
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -282,15 +326,47 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Billing.Models.Api20181101Preview.IInvoiceSummary
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Billing.Models.Api20180301Preview.IInvoice
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Billing.Models.Api20181101Preview.IInvoiceListResult
 
+### Microsoft.Azure.PowerShell.Cmdlets.Billing.Models.Api20181101Preview.IInvoiceSummary
+
 ## ALIASES
 
 ### Get-AzBillingInvoice
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### INPUTOBJECT <IBillingIdentity>: Identity Parameter
+  - `[AgreementName <String>]`: Agreement Id.
+  - `[BillingAccountId <String>]`: BillingAccount ID
+  - `[BillingAccountName <String>]`: Billing Account Id.
+  - `[BillingPeriodName <String>]`: Billing Period Name.
+  - `[BillingProfileId <String>]`: Billing Profile Id.
+  - `[BillingProfileName <String>]`: Billing Profile Id.
+  - `[BillingRoleAssignmentName <String>]`: role assignment id.
+  - `[BillingRoleDefinitionName <String>]`: role definition id.
+  - `[BillingSubscriptionName <String>]`: Billing Subscription Id.
+  - `[BudgetName <String>]`: Budget Name.
+  - `[CustomerName <String>]`: Customer Id.
+  - `[DepartmentName <String>]`: Department Id.
+  - `[EnrollmentAccountName <String>]`: Enrollment Account Id.
+  - `[Id <String>]`: Resource identity path
+  - `[InvoiceName <String>]`: The name of an invoice resource.
+  - `[InvoiceSectionId <String>]`: Invoice Section Id.
+  - `[InvoiceSectionName <String>]`: InvoiceSection Id.
+  - `[ManagementGroupId <String>]`: Azure Management Group ID.
+  - `[Name <String>]`: Enrollment Account name.
+  - `[ProductName <String>]`: Invoice Id.
+  - `[ReservationId <String>]`: Id of the reservation
+  - `[ReservationOrderId <String>]`: Order Id of the reservation
+  - `[Scope <String>]`: The scope associated with usage details operations. This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, '/providers/Microsoft.Billing/departments/{departmentId}' for Department scope, '/providers/Microsoft.Billing/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope and '/providers/Microsoft.Management/managementGroups/{managementGroupId}' for Management Group scope. For subscription, billing account, department, enrollment account and management group, you can also add billing period to the scope using '/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}'. For e.g. to specify billing period at department scope use '/providers/Microsoft.Billing/departments/{departmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}'
+  - `[SubscriptionId <String>]`: Azure Subscription ID.
+  - `[TransferName <String>]`: Transfer Name.
 
 ## RELATED LINKS
 

@@ -14,8 +14,9 @@ Usage details are available via this API only for May 1, 2014 or later.
 ## SYNTAX
 
 ```
-Get-AzUsageDetail -Scope <String> [-Apply <String>] [-Expand <String>] [-Filter <String>]
- [-Skiptoken <String>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzUsageDetail -Scope <String> [-Top <Int32>] [-EndDate <DateTime>] [-IncludeAdditionalProperties <String>]
+ [-IncludeMeterDetails <String>] [-InstanceId <String>] [-InstanceName <String>] [-ResourceGroup <String>]
+ [-StartDate <DateTime>] [-Tag <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,22 +45,6 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -Apply
-OData apply expression to aggregate usageDetails by tags or (tags and properties/usageStart)
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -76,9 +61,24 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Expand
-May be used to expand the properties/additionalProperties or properties/meterDetails within a list of usage details.
-By default, these fields are not included when listing usage details.
+### -EndDate
+The end date (in UTC) of the usage(s) to filter.
+
+```yaml
+Type: System.DateTime
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -IncludeAdditionalProperties
+If set, signals to include additional properties in the returned usage(s).
 
 ```yaml
 Type: System.String
@@ -93,16 +93,61 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Filter
-May be used to filter usageDetails by properties/usageEnd (Utc time), properties/usageStart (Utc time), properties/resourceGroup, properties/instanceName, properties/instanceId or tags.
-The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'.
-It does not currently support 'ne', 'or', or 'not'.
-Tag filter is a key value pair string where key and value is separated by a colon (:).
+### -IncludeMeterDetails
+If set, signals to include meter details in the returned usage(s).
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -InstanceId
+The instance id of the usage(s) to filter.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -InstanceName
+The instance name of the usage(s) to filter.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -ResourceGroup
+The resource group of the usage(s) to filter.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: ResourceGroupName
 
 Required: False
 Position: Named
@@ -132,9 +177,24 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Skiptoken
-Skiptoken is only used if a previous operation returned a partial result.
-If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.
+### -StartDate
+The start date (in UTC) of the usage(s) to filter.
+
+```yaml
+Type: System.DateTime
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Tag
+The tag of the usage(s) to filter.
 
 ```yaml
 Type: System.String
@@ -159,7 +219,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -177,6 +237,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## ALIASES
 
 ### Get-AzConsumptionUsageDetail
+
+## NOTES
 
 ## RELATED LINKS
 
