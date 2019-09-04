@@ -141,7 +141,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{ Fill PassThru Description }}
+Returns true for success or false for failed.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
