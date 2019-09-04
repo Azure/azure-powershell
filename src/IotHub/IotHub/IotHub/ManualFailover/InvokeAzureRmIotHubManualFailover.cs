@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet(VerbsLifecycle.Invoke, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHubManualFailover", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true)]
-    [OutputType(typeof(void))]
+    [OutputType(typeof(bool))]
     public class InvokeAzureRmIotHubManualFailover : IotHubBaseCmdlet
     {
         private const string ResourceIdParameterSet = "ResourceIdSet";
@@ -44,7 +44,6 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             Position = 0,
             Mandatory = true,
             ParameterSetName = ResourceParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the Resource Group")]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
@@ -63,13 +62,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             Position = 1,
             Mandatory = true,
             ParameterSetName = ResourceParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the Iot Hub")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Allows to return the boolean object. By default, this cmdlet does not generate any output.")]
+        public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -87,17 +88,15 @@ namespace Microsoft.Azure.Commands.Management.IotHub
 
             if (ShouldProcess(this.Name, Properties.Resources.ManualFailoverIotHub))
             {
-                try
+                IotHubDescription iotHubDescription = this.IotHubClient.IotHubResource.Get(this.ResourceGroupName, this.Name);
+                PSIotHub psIotHub = IotHubUtils.ToPSIotHub(iotHubDescription);
+                string failoverRegion = psIotHub.Properties.Locations.FirstOrDefault(loc => loc.Role.Equals("secondary", StringComparison.OrdinalIgnoreCase)).Location;
+                FailoverInput failoverInput = new FailoverInput(failoverRegion);
+                this.IotHubClient.IotHub.ManualFailover(this.Name, failoverInput, this.ResourceGroupName);
+
+                if (this.PassThru.IsPresent)
                 {
-                    IotHubDescription iotHubDescription = this.IotHubClient.IotHubResource.Get(this.ResourceGroupName, this.Name);
-                    PSIotHub psIotHub = IotHubUtils.ToPSIotHub(iotHubDescription);
-                    string failoverRegion = psIotHub.Properties.Locations.FirstOrDefault(loc => loc.Role.Equals("secondary", StringComparison.OrdinalIgnoreCase)).Location;
-                    FailoverInput failoverInput = new FailoverInput(failoverRegion);
-                    this.IotHubClient.IotHub.ManualFailover(this.Name, failoverInput, this.ResourceGroupName);
-                }
-                catch (Exception e)
-                {
-                    throw e;
+                    WriteObject(true);
                 }
             }
         }

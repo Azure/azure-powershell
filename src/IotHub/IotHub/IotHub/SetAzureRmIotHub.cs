@@ -122,8 +122,8 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         [ValidateNotNullOrEmpty]
         public PSCloudToDeviceProperties CloudToDevice { get; set; }
 
-        public const string ChangeDesc = "Parameter is being deprecated without being replaced.";
-        [CmdletParameterBreakingChange("EventHubEndpointName", ChangeDescription = ChangeDesc)]
+        public const string ChangeDesc = "Parameter is being deprecated without being replaced as IotHub is no longer using built-in endpoint(\"operationsMonitoringEvents\").";
+        [CmdletParameterBreakingChange("OperationsMonitoringProperties", ChangeDescription = ChangeDesc)]
         [Parameter(
             ParameterSetName = UpdateOperationsMonitoringPropertiesParameterSet,
             Mandatory = true,

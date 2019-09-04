@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        public const string ChangeDesc = "Parameter is being deprecated without being replaced.";
+        public const string ChangeDesc = "Parameter is being deprecated without being replaced as IotHub comes with only one built-in endpoint(\"events\") which could handle system and device messages.";
         [CmdletParameterBreakingChange("EventHubEndpointName", ChangeDescription = ChangeDesc)]
         [Parameter(
             Position = 2,
