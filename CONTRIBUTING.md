@@ -71,7 +71,7 @@ The following guidelines must be followed in **EVERY** pull request that is open
 - There are a [small number of commits](documentation/development-docs/cleaning-up-commits.md) that each have an informative message
 - All files shipped with a module should contain a proper Microsoft license header
 - For public API changes to cmdlets:
-    - a cmdlet design review was approved for the changes in [this repository](https://github.com/Azure/azure-powershell-cmdlet-review-pr)
+    - a cmdlet design review was approved for the changes in [this repository](https://github.com/Azure/azure-powershell-cmdlet-review-pr) (_Microsoft internal only_)
     - the markdown help files have been regenerated using the commands listed [here](documentation/development-docs/help-generation.md#updating-all-markdown-files-in-a-module)
 
 #### Testing guidelines

@@ -33,7 +33,7 @@ function Test-PrivateLinkServiceCRUD
     # Setup
     $rgname = Get-ResourceGroupName;
     $rname = Get-ResourceName;
-    $location = Get-ProviderLocation "Microsoft.Network/privateLinkServices" "eastus2euap";
+    $location = Get-ProviderLocation "Microsoft.Network/privateLinkServices" "westus";
     # Dependency parameters
     $IpConfigurationName = "IpConfigurationName";
     $vnetName = Get-ResourceName;
@@ -61,7 +61,7 @@ function Test-PrivateLinkServiceCRUD
         # Verfify if load balancer is created successfully
         Assert-NotNull $ilbcreate;
         Assert-AreEqual $ilbName $ilbcreate.Name;
-        Assert-AreEqual $location $ilbcreate.Location;
+        Assert-AreEqual (Normalize-Location $location) $ilbcreate.Location;
         Assert-AreEqual "Succeeded" $ilbcreate.ProvisioningState
 
         # Create required dependencies
