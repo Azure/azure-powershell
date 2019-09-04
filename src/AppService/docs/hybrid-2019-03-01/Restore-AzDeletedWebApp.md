@@ -14,30 +14,30 @@ Restores a deleted web app to this web app.
 
 ### RestoreExpanded (Default)
 ```
-Restore-AzDeletedWebApp -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Restore-AzDeletedWebApp -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DeletedSiteId <String>] [-Kind <String>] [-RecoverConfiguration] [-SnapshotTime <String>] [-UseDrSecondary]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Restore
 ```
-Restore-AzDeletedWebApp -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -RestoreRequest <IDeletedAppRestoreRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Restore-AzDeletedWebApp -Name <String> -ResourceGroupName <String> -RestoreRequest <IDeletedAppRestoreRequest>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### RestoreExpandedSlot
 ```
-Restore-AzDeletedWebApp -Name <String> -ResourceGroupName <String> -Slot <String> -SubscriptionId <String>
+Restore-AzDeletedWebApp -Name <String> -ResourceGroupName <String> -Slot <String> [-SubscriptionId <String>]
  [-DeletedSiteId <String>] [-Kind <String>] [-RecoverConfiguration] [-SnapshotTime <String>] [-UseDrSecondary]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### RestoreSlot
 ```
-Restore-AzDeletedWebApp -Name <String> -ResourceGroupName <String> -Slot <String> -SubscriptionId <String>
- -RestoreRequest <IDeletedAppRestoreRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Restore-AzDeletedWebApp -Name <String> -ResourceGroupName <String> -Slot <String>
+ -RestoreRequest <IDeletedAppRestoreRequest> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### RestoreViaIdentity
@@ -308,9 +308,9 @@ Type: System.String
 Parameter Sets: Restore, RestoreExpanded, RestoreExpandedSlot, RestoreSlot
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

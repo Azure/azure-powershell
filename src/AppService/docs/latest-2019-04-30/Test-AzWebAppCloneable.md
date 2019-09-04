@@ -14,7 +14,7 @@ Shows whether an app can be cloned to another resource group or subscription.
 
 ### Is (Default)
 ```
-Test-AzWebAppCloneable -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Test-AzWebAppCloneable -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -124,9 +124,9 @@ Type: System.String
 Parameter Sets: Is
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

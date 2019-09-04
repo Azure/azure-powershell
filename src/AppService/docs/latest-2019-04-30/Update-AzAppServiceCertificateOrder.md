@@ -15,7 +15,7 @@ Create or update a certificate purchase order.
 ### UpdateExpanded (Default)
 ```
 Update-AzAppServiceCertificateOrder -CertificateOrderName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-AutoRenew] [-Certificate <Hashtable>] [-Csr <String>]
+ [-SubscriptionId <String>] [-AutoRenew] [-Certificate <Hashtable>] [-Csr <String>]
  [-DistinguishedName <String>] [-KeySize <Int32>] [-Kind <String>] [-ProductType <CertificateProductType>]
  [-ValidityInYear <Int32>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -23,7 +23,7 @@ Update-AzAppServiceCertificateOrder -CertificateOrderName <String> -ResourceGrou
 ### Update
 ```
 Update-AzAppServiceCertificateOrder -CertificateOrderName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -CertificateDistinguishedName <IAppServiceCertificateOrderPatchResource>
+ -CertificateDistinguishedName <IAppServiceCertificateOrderPatchResource> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -271,9 +271,9 @@ Type: System.String
 Parameter Sets: Update, UpdateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -14,14 +14,14 @@ Replaces the metadata of an app.
 
 ### UpdateExpanded (Default)
 ```
-Set-AzWebAppMetadata -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-Kind <String>]
+Set-AzWebAppMetadata -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Kind <String>]
  [-Property <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
 ```
-Set-AzWebAppMetadata -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -Metadata <IStringDictionary> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzWebAppMetadata -Name <String> -ResourceGroupName <String> -Metadata <IStringDictionary>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -156,9 +156,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

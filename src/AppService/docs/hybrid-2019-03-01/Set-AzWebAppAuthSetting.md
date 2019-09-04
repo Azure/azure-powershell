@@ -14,7 +14,7 @@ Updates the Authentication / Authorization settings associated with web app.
 
 ### UpdateExpanded (Default)
 ```
-Set-AzWebAppAuthSetting -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Set-AzWebAppAuthSetting -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AdditionalLoginParam <String[]>] [-AllowedAudience <String[]>] [-AllowedExternalRedirectUrl <String[]>]
  [-ClientId <String>] [-ClientSecret <String>] [-ClientSecretCertificateThumbprint <String>]
  [-DefaultProvider <BuiltInAuthenticationProvider>] [-Enabled] [-FacebookAppId <String>]
@@ -29,8 +29,8 @@ Set-AzWebAppAuthSetting -Name <String> -ResourceGroupName <String> -Subscription
 
 ### Update
 ```
-Set-AzWebAppAuthSetting -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -SiteAuthSetting <ISiteAuthSettings> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzWebAppAuthSetting -Name <String> -ResourceGroupName <String> -SiteAuthSetting <ISiteAuthSettings>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -462,9 +462,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

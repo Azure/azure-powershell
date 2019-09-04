@@ -15,7 +15,7 @@ Updates the Push settings associated with web app.
 ### UpdateExpanded (Default)
 ```
 Set-AzWebAppSitePushSettingSlot -Name <String> -ResourceGroupName <String> -Slot <String>
- -SubscriptionId <String> [-DynamicTagsJson <String>] [-IsPushEnabled] [-Kind <String>]
+ [-SubscriptionId <String>] [-DynamicTagsJson <String>] [-IsPushEnabled] [-Kind <String>]
  [-TagsRequiringAuth <String>] [-TagWhitelistJson <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -23,7 +23,7 @@ Set-AzWebAppSitePushSettingSlot -Name <String> -ResourceGroupName <String> -Slot
 ### Update
 ```
 Set-AzWebAppSitePushSettingSlot -Name <String> -ResourceGroupName <String> -Slot <String>
- -SubscriptionId <String> -PushSetting <IPushSettings> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ -PushSetting <IPushSettings> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -192,9 +192,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

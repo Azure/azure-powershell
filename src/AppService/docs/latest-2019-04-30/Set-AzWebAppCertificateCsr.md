@@ -14,8 +14,8 @@ Creates or modifies an existing certificate signing request.
 
 ### UpdateExpanded (Default)
 ```
-Set-AzWebAppCertificateCsr -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -Location <String> [-CsrString <String>] [-DistinguishedName <String>] [-HostingEnvironment <String>]
+Set-AzWebAppCertificateCsr -Name <String> -ResourceGroupName <String> -Location <String>
+ [-SubscriptionId <String>] [-CsrString <String>] [-DistinguishedName <String>] [-HostingEnvironment <String>]
  [-Id <String>] [-Kind <String>] [-Name1 <String>] [-Password <String>] [-PfxBlob <String>]
  [-PropertiesName <String>] [-PublicKeyHash <String>] [-Tag <Hashtable>] [-Type <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -23,8 +23,8 @@ Set-AzWebAppCertificateCsr -Name <String> -ResourceGroupName <String> -Subscript
 
 ### Update
 ```
-Set-AzWebAppCertificateCsr -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -CsrEnvelope <ICsr> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzWebAppCertificateCsr -Name <String> -ResourceGroupName <String> -CsrEnvelope <ICsr>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -303,9 +303,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

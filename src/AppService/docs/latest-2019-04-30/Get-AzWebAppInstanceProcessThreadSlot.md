@@ -15,14 +15,14 @@ Get thread information by Thread ID for a specific process, in a specific scaled
 ### List (Default)
 ```
 Get-AzWebAppInstanceProcessThreadSlot -InstanceId <String> -Name <String> -ProcessId <String>
- -ResourceGroupName <String> -Slot <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
+ -ResourceGroupName <String> -Slot <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [-PassThru] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzWebAppInstanceProcessThreadSlot -InstanceId <String> -Name <String> -ProcessId <String>
- -ResourceGroupName <String> -Slot <String> -SubscriptionId <String[]> -ThreadId <String>
+ -ResourceGroupName <String> -Slot <String> -ThreadId <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
 ```
 
@@ -198,9 +198,9 @@ Type: System.String[]
 Parameter Sets: Get, List
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

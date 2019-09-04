@@ -15,15 +15,15 @@ Creates an ownership identifier for a domain or updates identifier details for a
 ### CreateExpanded (Default)
 ```
 New-AzAppServiceDomainOwnershipIdentifier -DomainName <String> -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-Kind <String>] [-OwnershipId <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-SubscriptionId <String>] [-Kind <String>] [-OwnershipId <String>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create
 ```
 New-AzAppServiceDomainOwnershipIdentifier -DomainName <String> -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String> -DomainOwnershipIdentifier <IDomainOwnershipIdentifier> [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -DomainOwnershipIdentifier <IDomainOwnershipIdentifier> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -204,9 +204,9 @@ Type: System.String
 Parameter Sets: Create, CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

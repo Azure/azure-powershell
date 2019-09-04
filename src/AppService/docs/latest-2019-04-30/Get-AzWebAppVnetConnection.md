@@ -14,14 +14,14 @@ Gets a virtual network the app (or deployment slot) is connected to by name.
 
 ### List (Default)
 ```
-Get-AzWebAppVnetConnection -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzWebAppVnetConnection -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzWebAppVnetConnection -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- -VnetName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzWebAppVnetConnection -Name <String> -ResourceGroupName <String> -VnetName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -130,9 +130,9 @@ Type: System.String[]
 Parameter Sets: Get, List
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

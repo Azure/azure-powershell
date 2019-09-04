@@ -14,16 +14,16 @@ Applies the configuration settings from the target slot onto the current slot.
 
 ### ApplyExpanded (Default)
 ```
-Add-AzWebAppSlotConfigurationSlot -Name <String> -ResourceGroupName <String> -Slot <String>
- -SubscriptionId <String> -PreserveVnet -TargetSlot <String> [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Add-AzWebAppSlotConfigurationSlot -Name <String> -ResourceGroupName <String> -Slot <String> -PreserveVnet
+ -TargetSlot <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Apply
 ```
 Add-AzWebAppSlotConfigurationSlot -Name <String> -ResourceGroupName <String> -Slot <String>
- -SubscriptionId <String> -SlotSwapEntity <ICsmSlotEntity> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -SlotSwapEntity <ICsmSlotEntity> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ApplyViaIdentity
@@ -204,9 +204,9 @@ Type: System.String
 Parameter Sets: Apply, ApplyExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

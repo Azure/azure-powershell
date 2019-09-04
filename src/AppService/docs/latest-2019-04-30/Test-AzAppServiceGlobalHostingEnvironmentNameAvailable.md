@@ -14,7 +14,7 @@ Whether hosting environment name is available
 
 ### Is (Default)
 ```
-Test-AzAppServiceGlobalHostingEnvironmentNameAvailable -SubscriptionId <String> -Name <String>
+Test-AzAppServiceGlobalHostingEnvironmentNameAvailable -Name <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -108,9 +108,9 @@ Type: System.String
 Parameter Sets: Is
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

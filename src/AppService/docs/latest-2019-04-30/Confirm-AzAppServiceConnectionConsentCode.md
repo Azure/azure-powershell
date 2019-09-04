@@ -15,15 +15,15 @@ Confirms consent code of a connection.
 ### ConfirmExpanded (Default)
 ```
 Confirm-AzAppServiceConnectionConsentCode -ConnectionName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -Location <String> [-Code <String>] [-Id <String>] [-Kind <String>] [-Name <String>]
- [-ObjectId <String>] [-PrincipalType <PrincipalType>] [-Tag <Hashtable>] [-TenantId <String>]
- [-Type <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Location <String> [-SubscriptionId <String>] [-Code <String>] [-Id <String>] [-Kind <String>]
+ [-Name <String>] [-ObjectId <String>] [-PrincipalType <PrincipalType>] [-Tag <Hashtable>]
+ [-TenantId <String>] [-Type <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Confirm
 ```
 Confirm-AzAppServiceConnectionConsentCode -ConnectionName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -Content <IConfirmConsentCodeInput> [-DefaultProfile <PSObject>] [-Confirm]
+ -Content <IConfirmConsentCodeInput> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -271,9 +271,9 @@ Type: System.String
 Parameter Sets: Confirm, ConfirmExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

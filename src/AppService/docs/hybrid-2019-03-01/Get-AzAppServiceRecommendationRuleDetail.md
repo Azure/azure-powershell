@@ -15,7 +15,7 @@ Get a recommendation rule for an app.
 ### Get1 (Default)
 ```
 Get-AzAppServiceRecommendationRuleDetail -Name <String> -ResourceGroupName <String> -SiteName <String>
- -SubscriptionId <String[]> [-RecommendationId <String>] [-UpdateSeen] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String[]>] [-RecommendationId <String>] [-UpdateSeen] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -158,9 +158,9 @@ Type: System.String[]
 Parameter Sets: Get1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

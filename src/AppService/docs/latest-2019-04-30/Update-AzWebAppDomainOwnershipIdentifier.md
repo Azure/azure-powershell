@@ -15,14 +15,14 @@ Creates a domain ownership identifier for web app, or updates an existing owners
 ### UpdateExpanded (Default)
 ```
 Update-AzWebAppDomainOwnershipIdentifier -DomainOwnershipIdentifierName <String> -Name <String>
- -ResourceGroupName <String> -SubscriptionId <String> [-Kind <String>] [-PropertiesId <String>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-Kind <String>] [-PropertiesId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
 ```
 Update-AzWebAppDomainOwnershipIdentifier -DomainOwnershipIdentifierName <String> -Name <String>
- -ResourceGroupName <String> -SubscriptionId <String> -DomainOwnershipIdentifier <IIdentifier>
+ -ResourceGroupName <String> -DomainOwnershipIdentifier <IIdentifier> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -204,9 +204,9 @@ Type: System.String
 Parameter Sets: Update, UpdateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

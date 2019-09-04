@@ -15,13 +15,13 @@ Get function information by its ID for web site, or a deployment slot.
 ### List (Default)
 ```
 Get-AzWebAppInstanceFunctionSlot -Name <String> -ResourceGroupName <String> -Slot <String>
- -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzWebAppInstanceFunctionSlot -FunctionName <String> -Name <String> -ResourceGroupName <String>
- -Slot <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
+ -Slot <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -179,9 +179,9 @@ Type: System.String[]
 Parameter Sets: Get, List
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

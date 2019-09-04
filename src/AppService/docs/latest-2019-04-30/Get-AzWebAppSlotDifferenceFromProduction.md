@@ -14,14 +14,16 @@ Get the difference in configuration settings between two web app slots.
 
 ### ListExpanded (Default)
 ```
-Get-AzWebAppSlotDifferenceFromProduction -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- -PreserveVnet -TargetSlot <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzWebAppSlotDifferenceFromProduction -Name <String> -ResourceGroupName <String> -PreserveVnet
+ -TargetSlot <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### List
 ```
-Get-AzWebAppSlotDifferenceFromProduction -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- -SlotSwapEntity <ICsmSlotEntity> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzWebAppSlotDifferenceFromProduction -Name <String> -ResourceGroupName <String>
+ -SlotSwapEntity <ICsmSlotEntity> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -140,9 +142,9 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

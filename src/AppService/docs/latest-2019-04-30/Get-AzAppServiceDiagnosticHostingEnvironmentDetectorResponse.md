@@ -15,13 +15,13 @@ Get Hosting Environment Detector Response
 ### List (Default)
 ```
 Get-AzAppServiceDiagnosticHostingEnvironmentDetectorResponse -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzAppServiceDiagnosticHostingEnvironmentDetectorResponse -DetectorName <String> -Name <String>
- -ResourceGroupName <String> -SubscriptionId <String[]> [-EndTime <DateTime>] [-StartTime <DateTime>]
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] [-EndTime <DateTime>] [-StartTime <DateTime>]
  [-TimeGrain <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -180,9 +180,9 @@ Type: System.String[]
 Parameter Sets: Get, List
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

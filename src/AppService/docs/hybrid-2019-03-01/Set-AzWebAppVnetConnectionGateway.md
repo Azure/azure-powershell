@@ -15,14 +15,14 @@ Adds a gateway to a connected Virtual Network (PUT) or updates it (PATCH).
 ### UpdateExpanded (Default)
 ```
 Set-AzWebAppVnetConnectionGateway -GatewayName <String> -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String> -VnetName <String> [-Kind <String>] [-PropertiesVnetName <String>]
+ -VnetName <String> [-SubscriptionId <String>] [-Kind <String>] [-PropertiesVnetName <String>]
  [-VpnPackageUri <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
 ```
 Set-AzWebAppVnetConnectionGateway -GatewayName <String> -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String> -VnetName <String> -ConnectionEnvelope <IVnetGateway> [-DefaultProfile <PSObject>]
+ -VnetName <String> -ConnectionEnvelope <IVnetGateway> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -176,9 +176,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

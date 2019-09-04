@@ -14,16 +14,16 @@ Updates the Azure storage account configurations of an app.
 
 ### UpdateExpanded (Default)
 ```
-Set-AzWebAppAzureStorageAccount -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Set-AzWebAppAzureStorageAccount -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Kind <String>] [-Property <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### Update
 ```
-Set-AzWebAppAzureStorageAccount -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -AzureStorageAccount <IAzureStoragePropertyDictionaryResource> [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Set-AzWebAppAzureStorageAccount -Name <String> -ResourceGroupName <String>
+ -AzureStorageAccount <IAzureStoragePropertyDictionaryResource> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -158,9 +158,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -14,14 +14,14 @@ Gets the category of ResourceHealthMetadata to use for the given site
 
 ### Get (Default)
 ```
-Get-AzAppServiceResourceHealthMetadata -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzAppServiceResourceHealthMetadata -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get1
 ```
 Get-AzAppServiceResourceHealthMetadata -Name <String> -ResourceGroupName <String> -Slot <String>
- -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -38,14 +38,14 @@ Get-AzAppServiceResourceHealthMetadata -InputObject <IAppServiceIdentity> [-Defa
 
 ### List2
 ```
-Get-AzAppServiceResourceHealthMetadata -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzAppServiceResourceHealthMetadata -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List3
 ```
 Get-AzAppServiceResourceHealthMetadata -Name <String> -ResourceGroupName <String> -Slot <String>
- -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -165,9 +165,9 @@ Type: System.String[]
 Parameter Sets: Get, Get1, List2, List3
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

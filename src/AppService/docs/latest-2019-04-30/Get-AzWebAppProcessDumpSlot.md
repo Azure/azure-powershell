@@ -15,7 +15,7 @@ Get a memory dump of a process by its ID for a specific scaled-out instance in a
 ### Get (Default)
 ```
 Get-AzWebAppProcessDumpSlot -Name <String> -ProcessId <String> -ResourceGroupName <String> -Slot <String>
- -SubscriptionId <String[]> -OutFile <String> [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
+ -OutFile <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -189,9 +189,9 @@ Type: System.String[]
 Parameter Sets: Get
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

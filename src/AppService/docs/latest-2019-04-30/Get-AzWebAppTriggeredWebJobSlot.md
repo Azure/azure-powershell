@@ -15,13 +15,13 @@ Gets a triggered web job by its ID for an app, or a deployment slot.
 ### List (Default)
 ```
 Get-AzWebAppTriggeredWebJobSlot -Name <String> -ResourceGroupName <String> -Slot <String>
- -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzWebAppTriggeredWebJobSlot -Name <String> -ResourceGroupName <String> -Slot <String>
- -SubscriptionId <String[]> -WebJobName <String> [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
+Get-AzWebAppTriggeredWebJobSlot -Name <String> -ResourceGroupName <String> -Slot <String> -WebJobName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -163,9 +163,9 @@ Type: System.String[]
 Parameter Sets: Get, List
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

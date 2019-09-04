@@ -14,7 +14,7 @@ Updates the backup configuration of an app.
 
 ### UpdateExpanded (Default)
 ```
-Set-AzWebAppBackupConfiguration -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Set-AzWebAppBackupConfiguration -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-BackupName <String>] [-BackupScheduleFrequencyInterval <Int32>]
  [-BackupScheduleFrequencyUnit <FrequencyUnit>] [-BackupScheduleKeepAtLeastOneBackup]
  [-BackupScheduleRetentionPeriodInDay <Int32>] [-BackupScheduleStartTime <DateTime>]
@@ -24,14 +24,14 @@ Set-AzWebAppBackupConfiguration -Name <String> -ResourceGroupName <String> -Subs
 
 ### Update
 ```
-Set-AzWebAppBackupConfiguration -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -Request <IBackupRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzWebAppBackupConfiguration -Name <String> -ResourceGroupName <String> -Request <IBackupRequest>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpandedSlot
 ```
 Set-AzWebAppBackupConfiguration -Name <String> -ResourceGroupName <String> -Slot <String>
- -SubscriptionId <String> [-BackupName <String>] [-BackupScheduleFrequencyInterval <Int32>]
+ [-SubscriptionId <String>] [-BackupName <String>] [-BackupScheduleFrequencyInterval <Int32>]
  [-BackupScheduleFrequencyUnit <FrequencyUnit>] [-BackupScheduleKeepAtLeastOneBackup]
  [-BackupScheduleRetentionPeriodInDay <Int32>] [-BackupScheduleStartTime <DateTime>]
  [-Database <IDatabaseBackupSetting[]>] [-Enabled] [-Kind <String>] [-StorageAccountUrl <String>]
@@ -41,7 +41,7 @@ Set-AzWebAppBackupConfiguration -Name <String> -ResourceGroupName <String> -Slot
 ### UpdateSlot
 ```
 Set-AzWebAppBackupConfiguration -Name <String> -ResourceGroupName <String> -Slot <String>
- -SubscriptionId <String> -Request <IBackupRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ -Request <IBackupRequest> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -325,9 +325,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

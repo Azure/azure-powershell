@@ -15,9 +15,9 @@ Execute Detector
 ### Execute (Default)
 ```
 Invoke-AzAppServiceExecuteDiagnosticSiteDetectorSlot -DetectorName <String> -DiagnosticCategory <String>
- -ResourceGroupName <String> -SiteName <String> -Slot <String> -SubscriptionId <String> [-EndTime <DateTime>]
- [-StartTime <DateTime>] [-TimeGrain <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -ResourceGroupName <String> -SiteName <String> -Slot <String> [-SubscriptionId <String>]
+ [-EndTime <DateTime>] [-StartTime <DateTime>] [-TimeGrain <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### ExecuteViaIdentity
@@ -207,9 +207,9 @@ Type: System.String
 Parameter Sets: Execute
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

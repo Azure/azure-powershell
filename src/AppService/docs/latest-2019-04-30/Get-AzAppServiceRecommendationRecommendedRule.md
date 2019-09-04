@@ -15,13 +15,13 @@ Get all recommendations for an app.
 ### List (Default)
 ```
 Get-AzAppServiceRecommendationRecommendedRule -HostingEnvironmentName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-Featured] [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-Featured] [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List1
 ```
 Get-AzAppServiceRecommendationRecommendedRule -ResourceGroupName <String> -SiteName <String>
- -SubscriptionId <String[]> [-Featured] [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-Featured] [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -158,9 +158,9 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

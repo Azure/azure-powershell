@@ -14,14 +14,14 @@ Get the named public certificate for an app (or deployment slot, if specified).
 
 ### List (Default)
 ```
-Get-AzWebAppPublicCertificate -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzWebAppPublicCertificate -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzWebAppPublicCertificate -Name <String> -PublicCertificateName <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -146,9 +146,9 @@ Type: System.String[]
 Parameter Sets: Get, List
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -14,7 +14,7 @@ Create a deployment for an app, or a deployment slot.
 
 ### CreateExpanded (Default)
 ```
-New-AzWebAppDeployment -Id <String> -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+New-AzWebAppDeployment -Id <String> -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Active] [-Author <String>] [-AuthorEmail <String>] [-Deployer <String>] [-Detail <String>]
  [-EndTime <DateTime>] [-Kind <String>] [-Message <String>] [-StartTime <DateTime>] [-Status <Int32>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -22,8 +22,8 @@ New-AzWebAppDeployment -Id <String> -Name <String> -ResourceGroupName <String> -
 
 ### Create
 ```
-New-AzWebAppDeployment -Id <String> -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -Deployment <IDeployment> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzWebAppDeployment -Id <String> -Name <String> -ResourceGroupName <String> -Deployment <IDeployment>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -333,9 +333,9 @@ Type: System.String
 Parameter Sets: Create, CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

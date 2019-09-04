@@ -14,7 +14,7 @@ Get the MSDeploy Log for the last MSDeploy operation.
 
 ### Get (Default)
 ```
-Get-AzWebAppMSDeployLog -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzWebAppMSDeployLog -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
 ```
 
@@ -140,9 +140,9 @@ Type: System.String[]
 Parameter Sets: Get
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
