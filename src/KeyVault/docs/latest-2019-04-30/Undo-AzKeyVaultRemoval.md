@@ -1,31 +1,25 @@
 ---
 external help file:
 Module Name: Az.KeyVault
-online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/remove-azkeyvault
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/undo-azkeyvaultremoval
 schema: 2.0.0
 ---
 
-# Remove-AzKeyVault
+# Undo-AzKeyVaultRemoval
 
 ## SYNOPSIS
-Deletes the specified Azure key vault.
+Create or update a key vault in the specified subscription.
 
 ## SYNTAX
 
-### Delete (Default)
 ```
-Remove-AzKeyVault -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DeleteViaIdentity
-```
-Remove-AzKeyVault -InputObject <IKeyVaultIdentity> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Undo-AzKeyVaultRemoval -Name <String> -ResourceGroupName <String> -Location <String> -SkuName <SkuName>
+ -TenantId <String> [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deletes the specified Azure key vault.
+Create or update a key vault in the specified subscription.
 
 ## EXAMPLES
 
@@ -49,6 +43,22 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -65,29 +75,28 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+### -Location
+Original Azure region of the deleted vault.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentity
-Parameter Sets: DeleteViaIdentity
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
 
 ### -Name
-The name of the vault to delete
+Name of the deleted vault.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: (All)
 Aliases: VaultName
 
 Required: True
@@ -98,8 +107,8 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
+### -NoWait
+Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -115,12 +124,28 @@ Dynamic: False
 ```
 
 ### -ResourceGroupName
-The name of the Resource Group to which the vault belongs.
+Name of the deleted vault resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: (All)
 Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -SkuName
+SKU name to specify whether the key vault is a standard vault or a premium vault.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Support.SkuName
+Parameter Sets: (All)
+Aliases: Sku
 
 Required: True
 Position: Named
@@ -136,12 +161,44 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Tag
+The tags that will be assigned to the key vault.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -TenantId
+The Azure Active Directory tenant ID that should be used for authenticating requests to the key vault.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -185,35 +242,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentity
-
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20180214.IVault
 
 ## ALIASES
 
 ## NOTES
-
-### COMPLEX PARAMETER PROPERTIES
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-#### INPUTOBJECT <IKeyVaultIdentity>: Identity Parameter
-  - `[CertificateName <String>]`: The name of the certificate.
-  - `[CertificateVersion <String>]`: The version of the certificate.
-  - `[Id <String>]`: Resource identity path
-  - `[IssuerName <String>]`: The name of the issuer.
-  - `[KeyName <String>]`: The name for the new key. The system will generate the version name for the new key.
-  - `[KeyVersion <String>]`: The version of the key to update.
-  - `[Location <String>]`: The location of the deleted vault.
-  - `[OperationKind <AccessPolicyUpdateKind?>]`: Name of the operation
-  - `[ResourceGroupName <String>]`: The name of the Resource Group to which the server belongs.
-  - `[SasDefinitionName <String>]`: The name of the SAS definition.
-  - `[SecretName <String>]`: The name of the secret.
-  - `[SecretVersion <String>]`: The version of the secret.
-  - `[StorageAccountName <String>]`: The name of the storage account.
-  - `[SubscriptionId <String>]`: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-  - `[VaultName <String>]`: Name of the vault
 
 ## RELATED LINKS
 

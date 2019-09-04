@@ -99,7 +99,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IContacts
+### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IContact
 
 ## ALIASES
 

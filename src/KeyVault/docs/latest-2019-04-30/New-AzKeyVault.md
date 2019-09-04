@@ -12,22 +12,34 @@ Create or update a key vault in the specified subscription.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### CreateExpandedDefault (Default)
 ```
-New-AzKeyVault -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Location <String>
- -SkuName <SkuName> -TenantId <String> [-AccessPolicy <IAccessPolicyEntry[]>] [-CreateMode <CreateMode>]
- [-EnabledForDeployment] [-EnabledForDiskEncryption] [-EnabledForTemplateDeployment] [-EnablePurgeProtection]
- [-EnableSoftDelete] [-NetworkAclsBypass <NetworkRuleBypassOptions>]
- [-NetworkAclsDefaultAction <NetworkRuleAction>] [-NetworkAclsIPRule <IIPRule[]>]
- [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-Tag <Hashtable>] [-VaultUri <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzKeyVault -Name <String> -ResourceGroupName <String> -Location <String> -SkuName <SkuName>
+ -TenantId <String> [-SubscriptionId <String>] [-CreateMode <CreateMode>] [-EnabledForDeployment]
+ [-EnabledForDiskEncryption] [-EnabledForTemplateDeployment] [-EnablePurgeProtection] [-EnableSoftDelete]
+ [-NetworkAclsBypass <NetworkRuleBypassOptions>] [-NetworkAclsDefaultAction <NetworkRuleAction>]
+ [-NetworkAclsIPRule <IIPRule[]>] [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-Tag <Hashtable>]
+ [-VaultUri <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Create
 ```
-New-AzKeyVault -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -Parameter <IVaultCreateOrUpdateParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzKeyVault -Name <String> -ResourceGroupName <String> -Parameter <IVaultCreateOrUpdateParameters>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateExpanded
+```
+New-AzKeyVault -Name <String> -ResourceGroupName <String> -Location <String> -SkuName <SkuName>
+ -TenantId <String> [-SubscriptionId <String>] [-AccessPolicy <IAccessPolicyEntry[]>]
+ [-CreateMode <CreateMode>] [-EnabledForDeployment] [-EnabledForDiskEncryption]
+ [-EnabledForTemplateDeployment] [-EnablePurgeProtection] [-EnableSoftDelete]
+ [-NetworkAclsBypass <NetworkRuleBypassOptions>] [-NetworkAclsDefaultAction <NetworkRuleAction>]
+ [-NetworkAclsIPRule <IIPRule[]>] [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-Tag <Hashtable>]
+ [-VaultUri <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -113,7 +125,7 @@ The vault's create mode to indicate whether the vault need to be recovered or no
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Support.CreateMode
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateExpandedDefault, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -145,7 +157,7 @@ Property to specify whether Azure Virtual Machines are permitted to retrieve cer
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateExpandedDefault, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -161,7 +173,7 @@ Property to specify whether Azure Disk Encryption is permitted to retrieve secre
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateExpandedDefault, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -177,7 +189,7 @@ Property to specify whether Azure Resource Manager is permitted to retrieve secr
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateExpandedDefault, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -196,7 +208,7 @@ Enabling this functionality is irreversible - that is, the property does not acc
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateExpandedDefault, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -213,7 +225,7 @@ It does not accept false value.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateExpandedDefault, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -246,7 +258,7 @@ The supported Azure location where the key vault should be created.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateExpandedDefault, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -262,7 +274,7 @@ Name of the vault
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: Create, CreateExpanded, CreateExpandedDefault
 Aliases: VaultName
 
 Required: True
@@ -280,7 +292,7 @@ If not specified the default is 'AzureServices'.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Support.NetworkRuleBypassOptions
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateExpandedDefault, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -297,7 +309,7 @@ This is only used after the bypass property has been evaluated.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Support.NetworkRuleAction
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateExpandedDefault, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -314,7 +326,7 @@ To construct, see NOTES section for NETWORKACLSIPRULE properties and create a ha
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20180214.IIPRule[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateExpandedDefault, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -331,7 +343,7 @@ To construct, see NOTES section for NETWORKACLSVIRTUALNETWORKRULE properties and
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20180214.IVirtualNetworkRule[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateExpandedDefault, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -380,7 +392,7 @@ The name of the Resource Group to which the server belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: Create, CreateExpanded, CreateExpandedDefault
 Aliases:
 
 Required: True
@@ -396,7 +408,7 @@ SKU name to specify whether the key vault is a standard vault or a premium vault
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Support.SkuName
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateExpandedDefault, CreateViaIdentityExpanded
 Aliases: Sku
 
 Required: True
@@ -413,12 +425,12 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: Create, CreateExpanded, CreateExpandedDefault
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -429,7 +441,7 @@ The tags that will be assigned to the key vault.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateExpandedDefault, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -445,7 +457,7 @@ The Azure Active Directory tenant ID that should be used for authenticating requ
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateExpandedDefault, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -461,7 +473,7 @@ The URI of the vault for performing operations on keys and secrets.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateExpandedDefault, CreateViaIdentityExpanded
 Aliases:
 
 Required: False

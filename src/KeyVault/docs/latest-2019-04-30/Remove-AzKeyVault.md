@@ -14,7 +14,7 @@ Deletes the specified Azure key vault.
 
 ### Delete (Default)
 ```
-Remove-AzKeyVault -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-PassThru]
+Remove-AzKeyVault -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-PassThru]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Remove-AzKeyVault -InputObject <IKeyVaultIdentity> [-PassThru] [-DefaultProfile 
 
 ### Purge
 ```
-Remove-AzKeyVault -InRemovedState -Location <String> -Name <String> -SubscriptionId <String> [-PassThru]
+Remove-AzKeyVault -InRemovedState -Location <String> -Name <String> [-SubscriptionId <String>] [-PassThru]
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -193,9 +193,9 @@ Type: System.String
 Parameter Sets: Delete, Purge
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

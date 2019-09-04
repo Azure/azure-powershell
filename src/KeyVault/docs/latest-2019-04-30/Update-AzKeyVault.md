@@ -14,7 +14,7 @@ Update a key vault in the specified subscription.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzKeyVault -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Update-AzKeyVault -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AccessPolicy <IAccessPolicyEntry[]>] [-CreateMode <CreateMode>] [-EnabledForDeployment]
  [-EnabledForDiskEncryption] [-EnabledForTemplateDeployment] [-EnablePurgeProtection] [-EnableSoftDelete]
  [-NetworkAclsBypass <NetworkRuleBypassOptions>] [-NetworkAclsDefaultAction <NetworkRuleAction>]
@@ -25,8 +25,8 @@ Update-AzKeyVault -Name <String> -ResourceGroupName <String> -SubscriptionId <St
 
 ### Update
 ```
-Update-AzKeyVault -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -Parameter <IVaultPatchParameters> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzKeyVault -Name <String> -ResourceGroupName <String> -Parameter <IVaultPatchParameters>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
@@ -365,9 +365,9 @@ Type: System.String
 Parameter Sets: Update, UpdateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
