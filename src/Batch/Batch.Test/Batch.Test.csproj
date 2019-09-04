@@ -16,7 +16,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Batch" Version="9.0.1" />
     <PackageReference Include="Microsoft.Azure.Management.Batch" Version="4.2.1" />
-    <PackageReference Include="Microsoft.Extensions.Primitives" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Primitives" Version="2.2.0" />
     <PackageReference Include="WindowsAzure.Storage" Version="9.3.0" />
   </ItemGroup>
 
