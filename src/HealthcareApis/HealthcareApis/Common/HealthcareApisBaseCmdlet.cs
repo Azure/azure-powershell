@@ -161,14 +161,14 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Common
         {
             using (IEnumerator<ServicesDescription> sdenumerator = fhirServiceApps.GetEnumerator())
             {
-                var newpne = new List<PSHealthcareApisService>();
+                var fhirServiceList = new List<PSHealthcareApisService>();
                 while (sdenumerator.MoveNext())
                 {
                     PSHealthcareApisService psHealthCareFhirService = ToPSFhirService(sdenumerator.Current);
-                    newpne.Add(psHealthCareFhirService);
+                    fhirServiceList.Add(psHealthCareFhirService);
                 }
 
-                return newpne;
+                return fhirServiceList;
             }
         }
 
