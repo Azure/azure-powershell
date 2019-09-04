@@ -18,6 +18,7 @@
         - Additional information about change #1
 --->
 ## Upcoming Release
+* Fixed example in `Test-AzNetworkWatcherIPFlow` reference documentation to correctly enumerate NICs
 
 ## Version 1.13.0
 * Updated New-AzPrivateLinkServiceIpConfig
