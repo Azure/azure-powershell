@@ -26,7 +26,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     /// <summary>
     ///     The Get Az InputObject Legacy peering.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzPeeringServiceProvider")]
+    [Cmdlet(VerbsCommon.Get, "AzPeeringServiceProvider", SupportsShouldProcess = true)]
     [OutputType(typeof(PSPeering))]
     public class GetAzurePeeringServiceProviderCommand : PeeringBaseCmdlet
     {
@@ -53,8 +53,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         {
             try
             {
-                var icList = this.PeeringServiceProvidersClient.List();
-                return icList.Select(this.ToPeeringServiceProviderPS).ToList();
+                if (this.ShouldProcess(string.Format(Resources.ShouldProcessMessage, $"a list of peering service providers.")))
+                {
+                    var icList = this.PeeringServiceProvidersClient.List();
+                    return icList.Select(this.ToPeeringServiceProviderPS).ToList();
+                }return null;
             }
             catch (ErrorResponseException ex)
             {

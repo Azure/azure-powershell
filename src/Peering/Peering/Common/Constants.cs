@@ -87,12 +87,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// <summary>
         /// ParameterSetName for GetPeering
         /// </summary>
-        public const string ParameterSetNamePeeringByResource = "PeeringByResource";
+        public const string ParameterSetNameByResourceGroupName = "ByResourceGroupName";
 
         /// <summary>
         /// Parameter set name for PeeringByResourceAndName
         /// </summary>
-        public const string ParameterSetNamePeeringByResourceAndName = "PeeringByResourceAndName";
+        public const string ParameterSetNameByResourceAndName = "ByResourceGroupAndName";
 
         /// <summary>
         /// The parameter set name by name.
@@ -208,6 +208,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         /// </summary>
         public const string PeeringLocationHelp =
             "The Physical Location Different from Azure Region. Use Get-AzPeeringLocation -Kind <kind> use City name as key.";
+
+        /// <summary>
+        /// PeeringLocationHelp
+        /// </summary>
+        public const string PeeringServiceLocationHelp =
+            "The Physical Location Different from Azure Region. Use Get-AzPeeringServiceLocation [-Country <country>]";
 
         /// <summary>
         /// PeeringAsnHelp

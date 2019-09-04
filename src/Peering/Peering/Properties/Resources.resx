@@ -201,4 +201,7 @@
   <data name="Route_PrefixUnrecognized" xml:space="preserve">
     <value>Unrecognized routePrefix {0}</value>
   </data>
+  <data name="ShouldProcessMessage" xml:space="preserve">
+    <value>This should return {0}</value>
+  </data>
 </root>

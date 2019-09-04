@@ -12,15 +12,15 @@ Gets a list of peering service prefixes for a subscription.
 
 ## SYNTAX
 
-### Default (Default)
+### ByResourceGroupAndName (Default)
 ```
-Get-AzPeeringServicePrefix [-InputObject] <PSPeeringService> [-Name <String>]
+Get-AzPeeringServicePrefix [-ResourceGroupName] <String> [-PeeringServiceName] <String> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### PeeringByResourceAndName
+### Default
 ```
-Get-AzPeeringServicePrefix [-ResourceGroupName] <String> [-PeeringServiceName] <String> [-Name <String>]
+Get-AzPeeringServicePrefix [-InputObject] <PSPeeringService> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -62,7 +62,7 @@ Gets the prefixes for a peering service based on piping commands.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzPeeringServicePrefix -ResourceId $peeringServiceResourceId -Name
+PS C:\> Get-AzPeeringServicePrefix -ResourceId $peeringServicePrefixResourceId 
 
 Prefix                : 200.25.69.0/31
 PrefixValidationState : Pending
@@ -73,17 +73,9 @@ Id                    : /subscriptions/resourceGroups/Building40/providers/Micro
                         ixes/myPrefix9055
 Type                  : Microsoft.Peering/peeringServices/prefixes
 
-Prefix                : 200.25.71.0/31
-PrefixValidationState : Pending
-LearnedType           : None
-ProvisioningState     : Succeeded
-Name                  : myPrefix3463
-Id                    : /subscriptions/resourceGroups/Building40/providers/Microsoft.Peering/peeringServices/myPeeringService4084/pre
-                        fixes/myPrefix3463
-Type                  : Microsoft.Peering/peeringServices/prefixes
 ```
 
-Gets a specific prefixe for a peering service by resource id.
+Gets a specific prefix for a peering service by resource id.
 
 ### Example 3
 ```powershell
@@ -99,7 +91,7 @@ Id                    : /subscriptions/resourceGroups/Building40/providers/Micro
 Type                  : Microsoft.Peering/peeringServices/prefixes
 ```
 
-Gets a specific prefixe for a peering service by resource id.
+Gets a specific prefix for a peering service by resource id.
 
 ## PARAMETERS
 
@@ -138,7 +130,7 @@ The unique name of the PSPeering.
 
 ```yaml
 Type: System.String
-Parameter Sets: Default, PeeringByResourceAndName
+Parameter Sets: ByResourceGroupAndName, Default
 Aliases:
 
 Required: False
@@ -153,7 +145,7 @@ The peering service name. Use New-AzPeeringService cmdlet for a new peering serv
 
 ```yaml
 Type: System.String
-Parameter Sets: PeeringByResourceAndName
+Parameter Sets: ByResourceGroupAndName
 Aliases:
 
 Required: True
@@ -168,7 +160,7 @@ The create or use an existing resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: PeeringByResourceAndName
+Parameter Sets: ByResourceGroupAndName
 Aliases:
 
 Required: True

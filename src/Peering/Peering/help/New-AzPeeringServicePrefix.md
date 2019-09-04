@@ -19,7 +19,7 @@ New-AzPeeringServicePrefix [-ResourceGroupName] <String> [-Name] <String> [-Peer
  [<CommonParameters>]
 ```
 
-### PeeringByResource
+### ByResourceGroupName
 ```
 New-AzPeeringServicePrefix [-InputObject] <PSPeeringService> [-Name] <String> [-Prefix] <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -27,7 +27,7 @@ New-AzPeeringServicePrefix [-InputObject] <PSPeeringService> [-Name] <String> [-
 
 ### ByResourceId
 ```
-New-AzPeeringServicePrefix [-Name] <String> [-Prefix] <String> [-ResourceId] <String> [-AsJob]
+New-AzPeeringServicePrefix [-Name] <String> [-Prefix] <String> [-PeeringServiceId] <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -54,7 +54,7 @@ Creates a prefix from a peering service object
 
 ### Example 2
 ```powershell
-PS C:\> New-AzPeeringServicePrefix -ResourceId $peeringServiceResourceId -Name $prefixName -Prefix "10.0.0.0/24"
+PS C:\> New-AzPeeringServicePrefix -PeeringServiceId $peeringServiceResourceId -Name $prefixName -Prefix "10.0.0.0/24"
 
 Prefix                : 10.0.0.0/24
 PrefixValidationState : Pending
@@ -121,7 +121,7 @@ Use a Get-AzPeeringService
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSPeeringService
-Parameter Sets: PeeringByResource
+Parameter Sets: ByResourceGroupName
 Aliases:
 
 Required: True
@@ -141,6 +141,21 @@ Aliases:
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PeeringServiceId
+The resource id string name.
+
+```yaml
+Type: System.String
+Parameter Sets: ByResourceId
+Aliases:
+
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -183,21 +198,6 @@ The create or use an existing resource group name.
 ```yaml
 Type: System.String
 Parameter Sets: Default
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceId
-The resource id string name.
-
-```yaml
-Type: System.String
-Parameter Sets: ByResourceId
 Aliases:
 
 Required: True

@@ -17,7 +17,7 @@ Gets the Peering Resources for a subscription
 Get-AzPeering [-Kind <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### PeeringByResourceAndName
+### ByResourceGroupAndName
 ```
 Get-AzPeering [-ResourceGroupName] <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
@@ -140,7 +140,7 @@ The unique name of the PSPeering.
 
 ```yaml
 Type: System.String
-Parameter Sets: PeeringByResourceAndName
+Parameter Sets: ByResourceGroupAndName
 Aliases:
 
 Required: False
@@ -155,7 +155,7 @@ The resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: PeeringByResourceAndName
+Parameter Sets: ByResourceGroupAndName
 Aliases:
 
 Required: True

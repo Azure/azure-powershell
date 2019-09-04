@@ -41,7 +41,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             Position = 0,
             Mandatory = true,
             HelpMessage = Constants.ResourceGroupNameHelp,
-            ParameterSetName = Constants.ParameterSetNamePeeringByResourceAndName)]
+            ParameterSetName = Constants.ParameterSetNameByResourceAndName)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         [Parameter(
             Mandatory = false,
             HelpMessage = Constants.PeeringNameHelp,
-            ParameterSetName = Constants.ParameterSetNamePeeringByResourceAndName)]
+            ParameterSetName = Constants.ParameterSetNameByResourceAndName)]
         public string Name { get; set; }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             {
                 if (string.Equals(
                     this.ParameterSetName,
-                    Constants.ParameterSetNamePeeringByResourceAndName,
+                    Constants.ParameterSetNameByResourceAndName,
                     StringComparison.OrdinalIgnoreCase))
                 {
                     if (this.Name != null)

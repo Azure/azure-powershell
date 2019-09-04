@@ -30,7 +30,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     /// <summary>
     ///     The Get Az InputObject Legacy peering.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzPeeringService", DefaultParameterSetName = Constants.ParameterSetNameDefault)]
+    [Cmdlet(VerbsCommon.Get, "AzPeeringService", DefaultParameterSetName = Constants.ParameterSetNameDefault, SupportsShouldProcess = true)]
     [OutputType(typeof(PSPeering))]
     public class GetAzurePeeringServiceCommand : PeeringBaseCmdlet
     {
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             Position = 0,
             Mandatory = true,
             HelpMessage = Constants.ResourceGroupNameHelp,
-            ParameterSetName = Constants.ParameterSetNamePeeringByResourceAndName)]
+            ParameterSetName = Constants.ParameterSetNameByResourceAndName)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         [Parameter(
             Mandatory = false,
             HelpMessage = Constants.PeeringNameHelp,
-            ParameterSetName = Constants.ParameterSetNamePeeringByResourceAndName)]
+            ParameterSetName = Constants.ParameterSetNameByResourceAndName)]
         public string Name { get; set; }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             {
                 if (string.Equals(
                     this.ParameterSetName,
-                    Constants.ParameterSetNamePeeringByResourceAndName,
+                    Constants.ParameterSetNameByResourceAndName,
                     StringComparison.OrdinalIgnoreCase))
                 {
                     if (this.Name != null)
@@ -124,7 +124,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// <returns>List of peering service resources</returns>
         public List<PSPeeringService> ListPeeringService()
         {
-            return this.PeeringServicesClient.ListBySubscription().Select(ToPeeringServicePS).ToList();
+            if(this.ShouldProcess(string.Format(Resources.ShouldProcessMessage, "a list of peering services for the subscription."))){
+                return this.PeeringServicesClient.ListBySubscription().Select(ToPeeringServicePS).ToList();
+            }
+            return null;
         }
 
         /// <summary>
@@ -133,7 +136,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// <returns>List of InputObject Resources</returns>
         public List<PSPeeringService> GetPeeringByResource()
         {
-            return this.PeeringServicesClient.ListByResourceGroup(this.ResourceGroupName).Select(this.ToPeeringServicePS).ToList();
+            if (this.ShouldProcess(string.Format(Resources.ShouldProcessMessage, $"a list of peering services for the resource group:{this.ResourceGroupName}.")))
+            {
+                return this.PeeringServicesClient.ListByResourceGroup(this.ResourceGroupName).Select(this.ToPeeringServicePS).ToList();
+            }
+            return null;
         }
 
         /// <summary>
@@ -142,13 +149,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// <returns>InputObject Resource</returns>
         public object GetPeeringByResourceAndName()
         {
-            var ic = this.PeeringServicesClient.Get(this.ResourceGroupName, this.Name);
-            var peer = this.ToPeeringServicePS(ic);
-            if (peer != null)
+            if (this.ShouldProcess(string.Format(Resources.ShouldProcessMessage, $"a peering services for the resource group:{this.ResourceGroupName} and name:{this.Name}.")))
             {
-                return peer;
+                var ic = this.PeeringServicesClient.Get(this.ResourceGroupName, this.Name);
+                var peer = this.ToPeeringServicePS(ic);
+                if (peer != null)
+                {
+                    return peer;
+                }
             }
-
             return null;
         }
     }

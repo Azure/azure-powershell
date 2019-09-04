@@ -311,5 +311,14 @@ namespace Microsoft.Azure.Commands.Peering.Properties {
                 return ResourceManager.GetString("Route_PrefixUnrecognized", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This should return {0}.
+        /// </summary>
+        internal static string ShouldProcessMessage {
+            get {
+                return ResourceManager.GetString("ShouldProcessMessage", resourceCulture);
+            }
+        }
     }
 }

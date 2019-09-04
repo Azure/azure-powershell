@@ -62,10 +62,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         [Parameter(
             Position = 2,
             Mandatory = true,
-            HelpMessage = Constants.PeeringLocationHelp,
+            HelpMessage = Constants.PeeringServiceLocationHelp,
             ParameterSetName = Constants.ParameterSetNameDefault)]
         [ValidateNotNullOrEmpty]
-        public string PeeringLocation { get; set; }
+        public string Location { get; set; }
 
         /// <summary>
         /// Gets or sets The PeerAsn.
@@ -113,21 +113,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             try
             {
                 var location = this.PeeringServiceLocationsClient.List();
-                var CheckProvider = this.PeeringManagementClient.CheckServiceProviderAvailability(new CheckServiceProviderAvailabilityInput(this.PeeringLocation, this.PeeringServiceProvider));
+                var CheckProvider = this.PeeringManagementClient.CheckServiceProviderAvailability(new CheckServiceProviderAvailabilityInput(this.Location, this.PeeringServiceProvider));
                 if (!CheckProvider.Equals(Constants.Available, StringComparison.InvariantCultureIgnoreCase))
                 {
-                    throw new ItemNotFoundException(string.Format(Resources.Error_ProviderNotFound, this.PeeringServiceProvider, this.PeeringLocation, CheckProvider));
+                    throw new ItemNotFoundException(string.Format(Resources.Error_ProviderNotFound, this.PeeringServiceProvider, this.Location, CheckProvider));
                 }
 
                 var peeringService = new PeeringService
                 {
-                    Location = location.Select(ToPeeringServiceLocationPS).ToList().Find(x => x.State.Equals(this.PeeringLocation.Trim(), StringComparison.InvariantCultureIgnoreCase)).AzureRegion,
-                    PeeringServiceLocation = this.PeeringLocation.Trim(),
+                    Location = location.Select(ToPeeringServiceLocationPS).ToList().Find(x => x.State.Equals(this.Location.Trim(), StringComparison.InvariantCultureIgnoreCase)).AzureRegion,
+                    PeeringServiceLocation = this.Location.Trim(),
                     PeeringServiceProvider = this.PeeringServiceProvider.Trim(),
                     Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, true)
                 };
-                this.PeeringServicesClient.CreateOrUpdate(this.ResourceGroupName, this.Name, peeringService);
-                return this.ToPeeringServicePS(this.PeeringServicesClient.Get(this.ResourceGroupName, this.Name));
+                if (this.ShouldProcess(string.Format(Resources.ShouldProcessMessage, $"a peering service with resource group:{this.ResourceGroupName} and name:{this.Name}.")))
+                {
+                    this.PeeringServicesClient.CreateOrUpdate(this.ResourceGroupName, this.Name, peeringService);
+                    return this.ToPeeringServicePS(this.PeeringServicesClient.Get(this.ResourceGroupName, this.Name));
+                }
+                return this.ToPeeringServicePS(peeringService);
             }
             catch (ErrorResponseException ex)
             {
