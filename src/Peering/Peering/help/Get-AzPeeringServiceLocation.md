@@ -13,8 +13,8 @@ Gets a list of peering service locations offered by Microsoft.
 ## SYNTAX
 
 ```
-Get-AzPeeringServiceLocation [-PeeringCountry <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzPeeringServiceLocation [-Country <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +24,7 @@ List peering locations.
 
 ### Example 1
 ```powershell
-PS C:\>Get-AzPeeringServiceLocation -PeeringCountry "United States" | Where-Object { $_.State -match "Washington"}
+PS C:\>Get-AzPeeringServiceLocation -Country "United States" | Where-Object { $_.State -match "Washington"}
 
 Country     : United States
 State       : Washington
@@ -38,7 +38,7 @@ Retrieves the peering locations for washington.
 
 ### Example 2
 ```powershell
-PS C:\>Get-AzPeeringServiceLocation -PeeringCountry "United States"
+PS C:\>Get-AzPeeringServiceLocation -Country "United States"
 
 Country     : United States
 State       : Alabama
@@ -61,6 +61,21 @@ Retrieves the peering locations for washington.
 
 ## PARAMETERS
 
+### -Country
+The country filter
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -76,13 +91,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PeeringCountry
-The country filter
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named

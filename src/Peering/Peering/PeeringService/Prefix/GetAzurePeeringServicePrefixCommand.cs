@@ -30,7 +30,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     /// <summary>
     ///     The Get Az InputObject Legacy peering.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzPeeringServicePrefix", SupportsShouldProcess = true, DefaultParameterSetName = Constants.ParameterSetNameDefault)]
+    [Cmdlet(VerbsCommon.Get, "AzPeeringServicePrefix", SupportsShouldProcess = true, DefaultParameterSetName = Constants.ParameterSetNameByResourceAndName)]
     [OutputType(typeof(PSPeeringServicePrefix))]
     public class GetAzurePeeringServicePrefixCommand : PeeringBaseCmdlet
     {
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             Position = 0,
             Mandatory = true,
             HelpMessage = Constants.ResourceGroupNameHelp,
-            ParameterSetName = Constants.ParameterSetNamePeeringByResourceAndName)]
+            ParameterSetName = Constants.ParameterSetNameByResourceAndName)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             Position = 1,
             Mandatory = true,
             HelpMessage = Constants.PeeringServiceHelp,
-            ParameterSetName = Constants.ParameterSetNamePeeringByResourceAndName)]
+            ParameterSetName = Constants.ParameterSetNameByResourceAndName)]
         public string PeeringServiceName { get; set; }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         [Parameter(
             Mandatory = false,
             HelpMessage = Constants.PeeringNameHelp,
-            ParameterSetName = Constants.ParameterSetNamePeeringByResourceAndName)]
+            ParameterSetName = Constants.ParameterSetNameByResourceAndName)]
         [Parameter(
             Mandatory = false,
             HelpMessage = Constants.PeeringNameHelp,
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
             {
                 if (string.Equals(
                     this.ParameterSetName,
-                    Constants.ParameterSetNamePeeringByResourceAndName,
+                    Constants.ParameterSetNameByResourceAndName,
                     StringComparison.OrdinalIgnoreCase))
                 {
                     if (this.Name != null)
@@ -164,7 +164,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// <returns>List of peering service resources</returns>
         public List<PSPeeringServicePrefix> ListPeeringService()
         {
-            return this.PrefixesClient.ListByPeeringService(this.ResourceGroupName, this.PeeringServiceName).Select(ToPeeringServicePrefixPS).ToList();
+            if (this.ShouldProcess(string.Format(Resources.ShouldProcessMessage, $"a list of peering service prefixes for the resource group name:{this.ResourceGroupName} peering service name:{this.PeeringServiceName}.")))
+            {
+                return this.PrefixesClient.ListByPeeringService(this.ResourceGroupName, this.PeeringServiceName).Select(ToPeeringServicePrefixPS).ToList();
+            }
+            return null;
         }
 
         /// <summary>
@@ -173,12 +177,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// <returns>InputObject Resource</returns>
         public object GetPeeringServicePrefixByResourceAndName()
         {
-            var prefix = this.ToPeeringServicePrefixPS(this.PeeringServicePrefixesClient.Get(this.ResourceGroupName, this.PeeringServiceName, this.Name));
-            if (prefix != null)
+            if (this.ShouldProcess(string.Format(Resources.ShouldProcessMessage, $"a peering service prefix for the resource group name:{this.ResourceGroupName} peering service name:{this.PeeringServiceName} and resource name:{this.Name}.")))
             {
-                return prefix;
+                var prefix = this.ToPeeringServicePrefixPS(this.PeeringServicePrefixesClient.Get(this.ResourceGroupName, this.PeeringServiceName, this.Name));
+                if (prefix != null)
+                {
+                    return prefix;
+                }
             }
-
             return null;
         }
     }

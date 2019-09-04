@@ -14,18 +14,19 @@ Get a list of peering service objects of a single object.
 
 ### Default (Default)
 ```
-Get-AzPeeringService [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzPeeringService [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### PeeringByResourceAndName
+### ByResourceGroupAndName
 ```
 Get-AzPeeringService [-ResourceGroupName] <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Get-AzPeeringService [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzPeeringService [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -112,7 +113,7 @@ The unique name of the PSPeering.
 
 ```yaml
 Type: System.String
-Parameter Sets: PeeringByResourceAndName
+Parameter Sets: ByResourceGroupAndName
 Aliases:
 
 Required: False
@@ -127,7 +128,7 @@ The create or use an existing resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: PeeringByResourceAndName
+Parameter Sets: ByResourceGroupAndName
 Aliases:
 
 Required: True
@@ -147,6 +148,36 @@ Aliases:
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

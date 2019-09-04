@@ -28,11 +28,11 @@ function Test-GetPeeringServiceProviders {
 GetPeeringServiceLocations
 #>
 function Test-GetPeeringServiceLocations {
-    $locations = Get-AzPeeringServiceLocation -PeeringCountry "United States"
+    $locations = Get-AzPeeringServiceLocation -Country "United States"
     Assert-NotNull $locations
     $state = $locations | Where-Object { $_.Name -match "Washington" }
     Assert-NotNull "Washington" $state
-    $locations = Get-AzPeeringServiceLocation -PeeringCountry "United States"
+    $locations = Get-AzPeeringServiceLocation -Country "United States"
     Assert-NotNull $locations
 }
 
@@ -46,7 +46,7 @@ function Test-GetPeeringServiceByResourceGroup {
     $loc = "Washington"
     $provider = "TestPeer1"
     $resourceGroup = "Building40"
-    $peeringService = New-AzPeeringService -ResourceGroupName $resourceGroup -Name $name -PeeringLocation $loc -PeeringServiceProvider $provider
+    $peeringService = New-AzPeeringService -ResourceGroupName $resourceGroup -Name $name -Location $loc -PeeringServiceProvider $provider
     Assert-NotNull $peeringService
     Assert-AreEqual $peeringService.Name $name
     Assert-AreEqual $loc $peeringService.PeeringServiceLocation
@@ -68,7 +68,7 @@ function Test-GetPeeringServiceByResourceId {
     $loc = "Washington"
     $provider = "TestPeer1"
     $resourceGroup = "Building40"
-    $peeringService = New-AzPeeringService -ResourceGroupName $resourceGroup -Name $name -PeeringLocation $loc -PeeringServiceProvider $provider
+    $peeringService = New-AzPeeringService -ResourceGroupName $resourceGroup -Name $name -Location $loc -PeeringServiceProvider $provider
     Assert-NotNull $peeringService
     Assert-AreEqual $peeringService.Name $name
     Assert-AreEqual $loc $peeringService.PeeringServiceLocation
@@ -99,7 +99,7 @@ function Test-NewPeeringService {
     $loc = "Washington"
     $provider = "TestPeer1"
     $resourceGroup = "Building40"
-    $peeringService = New-AzPeeringService -ResourceGroupName $resourceGroup -Name $name -PeeringLocation $loc -PeeringServiceProvider $provider
+    $peeringService = New-AzPeeringService -ResourceGroupName $resourceGroup -Name $name -Location $loc -PeeringServiceProvider $provider
     Assert-NotNull $peeringService
     Assert-AreEqual $peeringService.Name $name
     Assert-AreEqual $loc $peeringService.PeeringServiceLocation
@@ -118,7 +118,7 @@ function Test-NewPeeringServicePrefix {
     $provider = "TestPeer1"
     $resourceGroup = "Building40"
     $prefix = newIpV4Address $true $true 0 4
-	$peeringService = New-AzPeeringService -ResourceGroupName $resourceGroup -Name $name -PeeringLocation $loc -PeeringServiceProvider $provider
+	$peeringService = New-AzPeeringService -ResourceGroupName $resourceGroup -Name $name -Location $loc -PeeringServiceProvider $provider
     $peeringService = Get-AzPeeringService -ResourceGroupName $resourceGroup -Name $name
     $prefixService = $peeringService | New-AzPeeringServicePrefix -Name $prefixName -Prefix $prefix
     Assert-NotNull $prefixService

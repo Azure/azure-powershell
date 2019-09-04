@@ -26,7 +26,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     /// <summary>
     ///     The Get Az InputObject Legacy peering.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzPeeringServiceLocation")]
+    [Cmdlet(VerbsCommon.Get, "AzPeeringServiceLocation", SupportsShouldProcess = true)]
     [OutputType(typeof(PSPeering))]
     public class GetAzurePeeringServiceLocationCommand : PeeringBaseCmdlet
     {
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// Gets or sets the PeeringLocation.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = Constants.PeeringCountryHelp)]
-        public string PeeringCountry { get; set; }
+        public string Country { get; set; }
 
         /// <inheritdoc />
         /// <summary>
@@ -59,13 +59,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         {
             try
             {
-                var icList = this.PeeringServiceLocationsClient.List();
-                if (this.PeeringCountry != null)
+                if (this.ShouldProcess(string.Format(Resources.ShouldProcessMessage, $"a list of peering service locations for the country:{this.Country??null}.")))
                 {
-                    var t = icList.Select(this.ToPeeringServiceLocationPS).ToList().FindAll(x => x.Country == this.PeeringCountry);
-                    return t;
-                }
-                return icList.Select(this.ToPeeringServiceLocationPS).ToList();
+                    var icList = this.PeeringServiceLocationsClient.List();
+                    if (this.Country != null)
+                    {
+                        var t = icList.Select(this.ToPeeringServiceLocationPS).ToList().FindAll(x => x.Country == this.Country);
+                        return t;
+                    }
+                    return icList.Select(this.ToPeeringServiceLocationPS).ToList();
+                }return null;
             }
             catch (ErrorResponseException ex)
             {

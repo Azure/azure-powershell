@@ -13,7 +13,7 @@ Creates a new peering service.
 ## SYNTAX
 
 ```
-New-AzPeeringService [-ResourceGroupName] <String> [-Name] <String> [-PeeringLocation] <String>
+New-AzPeeringService [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
  [-PeeringServiceProvider] <String> [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -25,7 +25,7 @@ Creates peering service.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzPeeringService -ResourceGroupName $resourceGroup -Name $name -PeeringLocation $loc -PeeringServiceProvider $provider
+PS C:\> New-AzPeeringService -ResourceGroupName $resourceGroup -Name $name -Location $loc -PeeringServiceProvider $provider
 
 PeeringServiceLocation : Washington
 PeeringServiceProvider : TestPeer1
@@ -71,6 +71,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Location
+The Physical Location Different from Azure Region. Use Get-AzPeeringServiceLocation [-Country <country>]
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The unique name of the PSPeering.
 
@@ -81,22 +96,6 @@ Aliases:
 
 Required: True
 Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PeeringLocation
-The Physical Location Different from Azure Region.
-Use Get-AzPeeringLocation -Kind \<kind\> use City name as key.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

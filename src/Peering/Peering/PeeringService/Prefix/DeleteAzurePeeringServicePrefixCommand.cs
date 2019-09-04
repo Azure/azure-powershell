@@ -131,10 +131,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
                         }
                         try
                         {
-                            this.PeeringServicePrefixesClient.Delete(this.ResourceGroupName, this.PeeringServiceName, this.Name);
-                            if (this.PassThru.IsPresent)
+                            if (this.ShouldProcess(string.Format(Resources.ShouldProcessMessage, "null. Unless the -PassThru is present which it will return a boolean, true for success of false for failure.")))
                             {
-                                WriteObject(true);
+                                this.PeeringServicePrefixesClient.Delete(this.ResourceGroupName, this.PeeringServiceName, this.Name);
+                                if (this.PassThru.IsPresent)
+                                {
+                                    WriteObject(true);
+                                }
                             }
                         }
                         catch (Exception ex)
