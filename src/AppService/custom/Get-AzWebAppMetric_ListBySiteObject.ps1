@@ -5,6 +5,7 @@ function Get-AzWebAppMetric_ListBySiteObject {
     param(
         [Parameter(Mandatory, HelpMessage='Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).')]
         [Microsoft.Azure.PowerShell.Cmdlets.AppService.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppService.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String[]]
         ${SubscriptionId},
 
