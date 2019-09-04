@@ -16,7 +16,7 @@ You cannot create tags with one of these prefixes.
 
 ### Create (Default)
 ```
-New-AzTag -Name <String> -SubscriptionId <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+New-AzTag -Name <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -28,7 +28,7 @@ New-AzTag -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [-Confi
 
 ### CreateWithValue
 ```
-New-AzTag -Name <String> -SubscriptionId <String> -Value <String> [-DefaultProfile <PSObject>] [-Confirm]
+New-AzTag -Name <String> -Value <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -116,9 +116,9 @@ Type: System.String
 Parameter Sets: Create, CreateWithValue
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

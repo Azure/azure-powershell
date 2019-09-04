@@ -14,13 +14,13 @@ Creates or updates a resource group.
 
 ### CreateExpanded (Default)
 ```
-New-AzResourceGroup -Name <String> -SubscriptionId <String> -Location <String> [-ManagedBy <String>]
+New-AzResourceGroup -Name <String> -Location <String> [-SubscriptionId <String>] [-ManagedBy <String>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create
 ```
-New-AzResourceGroup -Name <String> -SubscriptionId <String> -Parameter <IResourceGroup>
+New-AzResourceGroup -Name <String> -Parameter <IResourceGroup> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -170,9 +170,9 @@ Type: System.String
 Parameter Sets: Create, CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

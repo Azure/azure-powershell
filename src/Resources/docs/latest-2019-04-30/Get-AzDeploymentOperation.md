@@ -14,25 +14,25 @@ Gets a deployments operation.
 
 ### List (Default)
 ```
-Get-AzDeploymentOperation -DeploymentName <String> -SubscriptionId <String[]> [-Top <Int32>]
+Get-AzDeploymentOperation -DeploymentName <String> [-SubscriptionId <String[]>] [-Top <Int32>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzDeploymentOperation -DeploymentName <String> -OperationId <String> -SubscriptionId <String[]>
+Get-AzDeploymentOperation -DeploymentName <String> -OperationId <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get1
 ```
 Get-AzDeploymentOperation -DeploymentName <String> -OperationId <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetByDeploymentObject
 ```
-Get-AzDeploymentOperation -DeploymentObject <IDeploymentExtended> -SubscriptionId <String[]> [-Top <Int32>]
+Get-AzDeploymentOperation -DeploymentObject <IDeploymentExtended> [-SubscriptionId <String[]>] [-Top <Int32>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -48,7 +48,7 @@ Get-AzDeploymentOperation -InputObject <IResourcesIdentity> [-DefaultProfile <PS
 
 ### List1
 ```
-Get-AzDeploymentOperation -DeploymentName <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzDeploymentOperation -DeploymentName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -184,9 +184,9 @@ Type: System.String[]
 Parameter Sets: Get, Get1, GetByDeploymentObject, List, List1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

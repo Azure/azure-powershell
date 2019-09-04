@@ -12,14 +12,20 @@ This operation retrieves a single policy assignment, given its name and the scop
 
 ## SYNTAX
 
-### Get1 (Default)
+### List3 (Default)
 ```
-Get-AzPolicyAssignment -Id <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPolicyAssignment [-SubscriptionId <String[]>] [-Filter <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzPolicyAssignment -Name <String> -Scope <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get1
+```
+Get-AzPolicyAssignment -Id <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -35,78 +41,72 @@ Get-AzPolicyAssignment -InputObject <IResourcesIdentity> [-DefaultProfile <PSObj
 ### List
 ```
 Get-AzPolicyAssignment -ParentResourcePath <String> -ResourceGroupName <String> -ResourceName <String>
- -ResourceProviderNamespace <String> -ResourceType <String> -SubscriptionId <String[]> [-Filter <String>]
+ -ResourceProviderNamespace <String> -ResourceType <String> [-SubscriptionId <String[]>] [-Filter <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzPolicyAssignment -ResourceGroupName <String> -SubscriptionId <String[]> [-Filter <String>]
+Get-AzPolicyAssignment -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Filter <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List2
 ```
 Get-AzPolicyAssignment -ParentResourcePath <String> -ResourceGroupName <String> -ResourceName <String>
- -ResourceProviderNamespace <String> -ResourceType <String> -SubscriptionId <String[]> [-Filter <String>]
+ -ResourceProviderNamespace <String> -ResourceType <String> [-SubscriptionId <String[]>] [-Filter <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List3
-```
-Get-AzPolicyAssignment -SubscriptionId <String[]> [-Filter <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
 ```
 
 ### ListByPolicyDefinition
 ```
 Get-AzPolicyAssignment -ParentResourcePath <String> -ResourceGroupName <String> -ResourceName <String>
- -ResourceProviderNamespace <String> -ResourceType <String> -SubscriptionId <String[]>
- -PolicyDefinitionId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -ResourceProviderNamespace <String> -ResourceType <String> -PolicyDefinitionId <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ListByPolicyDefinition1
 ```
-Get-AzPolicyAssignment -ResourceGroupName <String> -SubscriptionId <String[]> -PolicyDefinitionId <String>
+Get-AzPolicyAssignment -ResourceGroupName <String> -PolicyDefinitionId <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ListByPolicyDefinition2
 ```
 Get-AzPolicyAssignment -ParentResourcePath <String> -ResourceGroupName <String> -ResourceName <String>
- -ResourceProviderNamespace <String> -ResourceType <String> -SubscriptionId <String[]>
- -PolicyDefinitionId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -ResourceProviderNamespace <String> -ResourceType <String> -PolicyDefinitionId <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ListByPolicyDefinition3
 ```
-Get-AzPolicyAssignment -SubscriptionId <String[]> -PolicyDefinitionId <String> [-DefaultProfile <PSObject>]
+Get-AzPolicyAssignment -PolicyDefinitionId <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### ListWithDescendents
 ```
 Get-AzPolicyAssignment -ParentResourcePath <String> -ResourceGroupName <String> -ResourceName <String>
- -ResourceProviderNamespace <String> -ResourceType <String> -SubscriptionId <String[]> -IncludeDescendent
+ -ResourceProviderNamespace <String> -ResourceType <String> -IncludeDescendent [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ListWithDescendents1
 ```
-Get-AzPolicyAssignment -ResourceGroupName <String> -SubscriptionId <String[]> -IncludeDescendent
+Get-AzPolicyAssignment -ResourceGroupName <String> -IncludeDescendent [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ListWithDescendents2
 ```
 Get-AzPolicyAssignment -ParentResourcePath <String> -ResourceGroupName <String> -ResourceName <String>
- -ResourceProviderNamespace <String> -ResourceType <String> -SubscriptionId <String[]> -IncludeDescendent
+ -ResourceProviderNamespace <String> -ResourceType <String> -IncludeDescendent [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ListWithDescendents3
 ```
-Get-AzPolicyAssignment -SubscriptionId <String[]> -IncludeDescendent [-DefaultProfile <PSObject>]
+Get-AzPolicyAssignment -IncludeDescendent [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -153,6 +153,8 @@ Dynamic: False
 
 ### -Filter
 The filter to apply on the operation.
+Valid values for $filter are: 'atScope()' or 'policyDefinitionId eq '{value}''.
+If $filter is not provided, no filtering is performed.
 
 ```yaml
 Type: System.String
@@ -355,9 +357,9 @@ Type: System.String[]
 Parameter Sets: List, List1, List2, List3, ListByPolicyDefinition, ListByPolicyDefinition1, ListByPolicyDefinition2, ListByPolicyDefinition3, ListWithDescendents, ListWithDescendents1, ListWithDescendents2, ListWithDescendents3
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

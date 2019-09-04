@@ -169,7 +169,7 @@ The object ID of the group to which to add the member.
 ```yaml
 Type: System.String
 Parameter Sets: Add, AddExpanded, AddMemberIdToGroupId, AddMemberUpnToGroupId
-Aliases:
+Aliases: TargetGroupObjectId
 
 Required: True
 Position: Named

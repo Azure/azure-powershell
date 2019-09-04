@@ -12,72 +12,139 @@ You can provide the template and parameters directly in the request or link to J
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### CreateWithTemplateFileParameterFile (Default)
 ```
-New-AzDeployment -Name <String> -SubscriptionId <String> -Mode <DeploymentMode>
- [-DebugSettingDetailLevel <String>] [-DeploymentParameter <IDeploymentPropertiesParameters>]
- [-Location <String>] [-OnErrorDeploymentName <String>] [-OnErrorDeploymentType <OnErrorDeploymentType>]
- [-ParameterLinkContentVersion <String>] [-ParameterLinkUri <String>]
- [-Template <IDeploymentPropertiesTemplate>] [-TemplateLinkContentVersion <String>]
- [-TemplateLinkUri <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### Create
-```
-New-AzDeployment -Name <String> -SubscriptionId <String> -Parameter <IDeployment> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Create1
-```
-New-AzDeployment -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Parameter <IDeployment>
+New-AzDeployment -Mode <DeploymentMode> -TemplateFile <String> -TemplateParameterFile <String>
+ [-Name <String>] [-SubscriptionId <String>] [-DeploymentDebugLogLevel <String>] [-Location <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateExpanded1
+### CreateRGWithTemplateFileParameterFile
 ```
-New-AzDeployment -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Mode <DeploymentMode>
- [-DebugSettingDetailLevel <String>] [-DeploymentParameter <IDeploymentPropertiesParameters>]
- [-Location <String>] [-OnErrorDeploymentName <String>] [-OnErrorDeploymentType <OnErrorDeploymentType>]
- [-ParameterLinkContentVersion <String>] [-ParameterLinkUri <String>]
- [-Template <IDeploymentPropertiesTemplate>] [-TemplateLinkContentVersion <String>]
- [-TemplateLinkUri <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzDeployment -ResourceGroupName <String> -Mode <DeploymentMode> -TemplateFile <String>
+ -TemplateParameterFile <String> [-Name <String>] [-SubscriptionId <String>]
+ [-DeploymentDebugLogLevel <String>] [-Location <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentity
+### CreateRGWithTemplateFileParameterJson
 ```
-New-AzDeployment -InputObject <IResourcesIdentity> -Parameter <IDeployment> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity1
-```
-New-AzDeployment -InputObject <IResourcesIdentity> -Parameter <IDeployment> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzDeployment -ResourceGroupName <String> -Mode <DeploymentMode> -TemplateFile <String>
+ -TemplateParameterJson <String> [-Name <String>] [-SubscriptionId <String>]
+ [-DeploymentDebugLogLevel <String>] [-Location <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentityExpanded
+### CreateRGWithTemplateFileParameterObject
 ```
-New-AzDeployment -InputObject <IResourcesIdentity> -Mode <DeploymentMode> [-DebugSettingDetailLevel <String>]
- [-DeploymentParameter <IDeploymentPropertiesParameters>] [-Location <String>]
- [-OnErrorDeploymentName <String>] [-OnErrorDeploymentType <OnErrorDeploymentType>]
- [-ParameterLinkContentVersion <String>] [-ParameterLinkUri <String>]
- [-Template <IDeploymentPropertiesTemplate>] [-TemplateLinkContentVersion <String>]
- [-TemplateLinkUri <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzDeployment -ResourceGroupName <String> -Mode <DeploymentMode> -TemplateFile <String>
+ -TemplateParameterObject <Hashtable> [-Name <String>] [-SubscriptionId <String>]
+ [-DeploymentDebugLogLevel <String>] [-Location <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentityExpanded1
+### CreateRGWithTemplateJsonParameterFile
 ```
-New-AzDeployment -InputObject <IResourcesIdentity> -Mode <DeploymentMode> [-DebugSettingDetailLevel <String>]
- [-DeploymentParameter <IDeploymentPropertiesParameters>] [-Location <String>]
- [-OnErrorDeploymentName <String>] [-OnErrorDeploymentType <OnErrorDeploymentType>]
- [-ParameterLinkContentVersion <String>] [-ParameterLinkUri <String>]
- [-Template <IDeploymentPropertiesTemplate>] [-TemplateLinkContentVersion <String>]
- [-TemplateLinkUri <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzDeployment -ResourceGroupName <String> -Mode <DeploymentMode> -TemplateJson <String>
+ -TemplateParameterFile <String> [-Name <String>] [-SubscriptionId <String>]
+ [-DeploymentDebugLogLevel <String>] [-Location <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateRGWithTemplateJsonParameterJson
+```
+New-AzDeployment -ResourceGroupName <String> -Mode <DeploymentMode> -TemplateJson <String>
+ -TemplateParameterJson <String> [-Name <String>] [-SubscriptionId <String>]
+ [-DeploymentDebugLogLevel <String>] [-Location <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateRGWithTemplateJsonParameterObject
+```
+New-AzDeployment -ResourceGroupName <String> -Mode <DeploymentMode> -TemplateJson <String>
+ -TemplateParameterObject <Hashtable> [-Name <String>] [-SubscriptionId <String>]
+ [-DeploymentDebugLogLevel <String>] [-Location <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateRGWithTemplateObjectParameterFile
+```
+New-AzDeployment -ResourceGroupName <String> -Mode <DeploymentMode> -TemplateObject <Hashtable>
+ -TemplateParameterFile <String> [-Name <String>] [-SubscriptionId <String>]
+ [-DeploymentDebugLogLevel <String>] [-Location <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateRGWithTemplateObjectParameterJson
+```
+New-AzDeployment -ResourceGroupName <String> -Mode <DeploymentMode> -TemplateObject <Hashtable>
+ -TemplateParameterJson <String> [-Name <String>] [-SubscriptionId <String>]
+ [-DeploymentDebugLogLevel <String>] [-Location <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateRGWithTemplateObjectParameterObject
+```
+New-AzDeployment -ResourceGroupName <String> -Mode <DeploymentMode> -TemplateObject <Hashtable>
+ -TemplateParameterObject <Hashtable> [-Name <String>] [-SubscriptionId <String>]
+ [-DeploymentDebugLogLevel <String>] [-Location <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateWithTemplateFileParameterJson
+```
+New-AzDeployment -Mode <DeploymentMode> -TemplateFile <String> -TemplateParameterJson <String>
+ [-Name <String>] [-SubscriptionId <String>] [-DeploymentDebugLogLevel <String>] [-Location <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateWithTemplateFileParameterObject
+```
+New-AzDeployment -Mode <DeploymentMode> -TemplateFile <String> -TemplateParameterObject <Hashtable>
+ [-Name <String>] [-SubscriptionId <String>] [-DeploymentDebugLogLevel <String>] [-Location <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateWithTemplateJsonParameterFile
+```
+New-AzDeployment -Mode <DeploymentMode> -TemplateJson <String> -TemplateParameterFile <String>
+ [-Name <String>] [-SubscriptionId <String>] [-DeploymentDebugLogLevel <String>] [-Location <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateWithTemplateJsonParameterJson
+```
+New-AzDeployment -Mode <DeploymentMode> -TemplateJson <String> -TemplateParameterJson <String>
+ [-Name <String>] [-SubscriptionId <String>] [-DeploymentDebugLogLevel <String>] [-Location <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateWithTemplateJsonParameterObject
+```
+New-AzDeployment -Mode <DeploymentMode> -TemplateJson <String> -TemplateParameterObject <Hashtable>
+ [-Name <String>] [-SubscriptionId <String>] [-DeploymentDebugLogLevel <String>] [-Location <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateWithTemplateObjectParameterFile
+```
+New-AzDeployment -Mode <DeploymentMode> -TemplateObject <Hashtable> -TemplateParameterFile <String>
+ [-Name <String>] [-SubscriptionId <String>] [-DeploymentDebugLogLevel <String>] [-Location <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateWithTemplateObjectParameterJson
+```
+New-AzDeployment -Mode <DeploymentMode> -TemplateObject <Hashtable> -TemplateParameterJson <String>
+ [-Name <String>] [-SubscriptionId <String>] [-DeploymentDebugLogLevel <String>] [-Location <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateWithTemplateObjectParameterObject
+```
+New-AzDeployment -Mode <DeploymentMode> -TemplateObject <Hashtable> -TemplateParameterObject <Hashtable>
+ [-Name <String>] [-SubscriptionId <String>] [-DeploymentDebugLogLevel <String>] [-Location <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -121,26 +188,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -DebugSettingDetailLevel
-Specifies the type of information to log for debugging.
-The permitted values are none, requestContent, responseContent, or both requestContent and responseContent separated by a comma.
-The default is none.
-When setting this value, carefully consider the type of information you are passing in during deployment.
-By logging information about the request or response, you could potentially expose sensitive data that is retrieved through the deployment operations.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded, CreateViaIdentityExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -157,15 +204,16 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -DeploymentParameter
-Name and value pairs that define the deployment parameters for the template.
-You use this element when you want to provide the parameter values directly in the request rather than link to an existing parameter file.
-Use either the parametersLink property or the parameters property, but not both.
-It can be a JObject or a well formed JSON string.
+### -DeploymentDebugLogLevel
+Specifies the type of information to log for debugging.
+The permitted values are none, requestContent, responseContent, or both requestContent and responseContent separated by a comma.
+The default is none.
+When setting this value, carefully consider the type of information you are passing in during deployment.
+By logging information about the request or response, you could potentially expose sensitive data that is retrieved through the deployment operations.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IDeploymentPropertiesParameters
-Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded, CreateViaIdentityExpanded1
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -176,29 +224,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentity1, CreateViaIdentityExpanded, CreateViaIdentityExpanded1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Location
 The location to store the deployment data.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded, CreateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -218,7 +249,7 @@ Be careful when using Complete mode as you may unintentionally delete resources.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Support.DeploymentMode
-Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded, CreateViaIdentityExpanded1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -231,13 +262,15 @@ Dynamic: False
 
 ### -Name
 The name of the deployment.
+If not provided, the name of the template file will be used.
+If a template file is not used, a random GUID will be used for the name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, Create1, CreateExpanded, CreateExpanded1
+Parameter Sets: (All)
 Aliases: DeploymentName
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -261,88 +294,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -OnErrorDeploymentName
-The deployment to be used on error case.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded, CreateViaIdentityExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -OnErrorDeploymentType
-The deployment on error behavior type.
-Possible values are LastSuccessful and SpecificDeployment.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Support.OnErrorDeploymentType
-Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded, CreateViaIdentityExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Parameter
-Deployment operation parameters.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IDeployment
-Parameter Sets: Create, Create1, CreateViaIdentity, CreateViaIdentity1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -ParameterLinkContentVersion
-If included, must match the ContentVersion in the template.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded, CreateViaIdentityExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -ParameterLinkUri
-The URI of the parameters file.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded, CreateViaIdentityExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -ResourceGroupName
 The name of the resource group to deploy the resources to.
 The name is case insensitive.
@@ -350,7 +301,7 @@ The resource group must already exist.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create1, CreateExpanded1
+Parameter Sets: CreateRGWithTemplateFileParameterFile, CreateRGWithTemplateFileParameterJson, CreateRGWithTemplateFileParameterObject, CreateRGWithTemplateJsonParameterFile, CreateRGWithTemplateJsonParameterJson, CreateRGWithTemplateJsonParameterObject, CreateRGWithTemplateObjectParameterFile, CreateRGWithTemplateObjectParameterJson, CreateRGWithTemplateObjectParameterObject
 Aliases:
 
 Required: True
@@ -366,7 +317,23 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, Create1, CreateExpanded, CreateExpanded1
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -TemplateFile
+Local path to the JSON template file.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateRGWithTemplateFileParameterFile, CreateRGWithTemplateFileParameterJson, CreateRGWithTemplateFileParameterObject, CreateWithTemplateFileParameterFile, CreateWithTemplateFileParameterJson, CreateWithTemplateFileParameterObject
 Aliases:
 
 Required: True
@@ -377,18 +344,15 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Template
-The template content.
-You use this element when you want to pass the template syntax directly in the request rather than link to an existing template.
-It can be a JObject or well-formed JSON string.
-Use either the templateLink property or the template property, but not both.
+### -TemplateJson
+The string representation of the JSON template.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IDeploymentPropertiesTemplate
-Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded, CreateViaIdentityExpanded1
+Type: System.String
+Parameter Sets: CreateRGWithTemplateJsonParameterFile, CreateRGWithTemplateJsonParameterJson, CreateRGWithTemplateJsonParameterObject, CreateWithTemplateJsonParameterFile, CreateWithTemplateJsonParameterJson, CreateWithTemplateJsonParameterObject
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -396,15 +360,15 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -TemplateLinkContentVersion
-If included, must match the ContentVersion in the template.
+### -TemplateObject
+The hashtable representation of the JSON template.
 
 ```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded, CreateViaIdentityExpanded1
+Type: System.Collections.Hashtable
+Parameter Sets: CreateRGWithTemplateObjectParameterFile, CreateRGWithTemplateObjectParameterJson, CreateRGWithTemplateObjectParameterObject, CreateWithTemplateObjectParameterFile, CreateWithTemplateObjectParameterJson, CreateWithTemplateObjectParameterObject
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -412,15 +376,47 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -TemplateLinkUri
-The URI of the template to deploy.
+### -TemplateParameterFile
+Local path to the parameter JSON template file.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1, CreateViaIdentityExpanded, CreateViaIdentityExpanded1
+Parameter Sets: CreateRGWithTemplateFileParameterFile, CreateRGWithTemplateJsonParameterFile, CreateRGWithTemplateObjectParameterFile, CreateWithTemplateFileParameterFile, CreateWithTemplateJsonParameterFile, CreateWithTemplateObjectParameterFile
 Aliases:
 
-Required: False
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -TemplateParameterJson
+The string representation of the parameter JSON template.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateRGWithTemplateFileParameterJson, CreateRGWithTemplateJsonParameterJson, CreateRGWithTemplateObjectParameterJson, CreateWithTemplateFileParameterJson, CreateWithTemplateJsonParameterJson, CreateWithTemplateObjectParameterJson
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -TemplateParameterObject
+The hashtable representation of the parameter JSON template.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: CreateRGWithTemplateFileParameterObject, CreateRGWithTemplateJsonParameterObject, CreateRGWithTemplateObjectParameterObject, CreateWithTemplateFileParameterObject, CreateWithTemplateJsonParameterObject, CreateWithTemplateObjectParameterObject
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -466,82 +462,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IDeployment
-
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.IResourcesIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.Models.Api20180501.IDeploymentExtended
 
 ## ALIASES
 
-### New-AzResourceGroupDeployment
-
 ## NOTES
-
-### COMPLEX PARAMETER PROPERTIES
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-#### INPUTOBJECT <IResourcesIdentity>: Identity Parameter
-  - `[ApplianceDefinitionId <String>]`: The fully qualified ID of the appliance definition, including the appliance name and the appliance definition resource type. Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/applianceDefinitions/{applianceDefinition-name}
-  - `[ApplianceDefinitionName <String>]`: The name of the appliance definition.
-  - `[ApplianceId <String>]`: The fully qualified ID of the appliance, including the appliance name and the appliance resource type. Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/appliances/{appliance-name}
-  - `[ApplianceName <String>]`: The name of the appliance.
-  - `[ApplicationDefinitionId <String>]`: The fully qualified ID of the managed application definition, including the managed application name and the managed application definition resource type. Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/applicationDefinitions/{applicationDefinition-name}
-  - `[ApplicationDefinitionName <String>]`: The name of the managed application definition.
-  - `[ApplicationId <String>]`: The application ID.
-  - `[ApplicationId1 <String>]`: The fully qualified ID of the managed application, including the managed application name and the managed application resource type. Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/applications/{application-name}
-  - `[ApplicationName <String>]`: The name of the managed application.
-  - `[ApplicationObjectId <String>]`: Application object ID.
-  - `[DenyAssignmentId <String>]`: The ID of the deny assignment to get.
-  - `[DeploymentName <String>]`: The name of the deployment.
-  - `[DomainName <String>]`: name of the domain.
-  - `[FeatureName <String>]`: The name of the feature to get.
-  - `[GroupId <String>]`: Management Group ID.
-  - `[GroupObjectId <String>]`: The object ID of the group from which to remove the member.
-  - `[Id <String>]`: Resource identity path
-  - `[LinkId <String>]`: The fully qualified ID of the resource link. Use the format, /subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/{provider-namespace}/{resource-type}/{resource-name}/Microsoft.Resources/links/{link-name}. For example, /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myGroup/Microsoft.Web/sites/mySite/Microsoft.Resources/links/myLink
-  - `[LockName <String>]`: The name of lock.
-  - `[ManagementGroupId <String>]`: The ID of the management group.
-  - `[MemberObjectId <String>]`: Member object id
-  - `[ObjectId <String>]`: Application object ID.
-  - `[OperationId <String>]`: The ID of the operation to get.
-  - `[OwnerObjectId <String>]`: Owner object id
-  - `[ParentResourcePath <String>]`: The parent resource identity.
-  - `[PolicyAssignmentId <String>]`: The ID of the policy assignment to delete. Use the format '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
-  - `[PolicyAssignmentName <String>]`: The name of the policy assignment to delete.
-  - `[PolicyDefinitionName <String>]`: The name of the policy definition to create.
-  - `[PolicySetDefinitionName <String>]`: The name of the policy set definition to create.
-  - `[ResourceGroupName <String>]`: The name of the resource group that contains the resource to delete. The name is case insensitive.
-  - `[ResourceId <String>]`: The fully qualified ID of the resource, including the resource name and resource type. Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name}
-  - `[ResourceName <String>]`: The name of the resource to delete.
-  - `[ResourceProviderNamespace <String>]`: The namespace of the resource provider.
-  - `[ResourceType <String>]`: The resource type.
-  - `[RoleAssignmentId <String>]`: The ID of the role assignment to delete.
-  - `[RoleAssignmentName <String>]`: The name of the role assignment to delete.
-  - `[RoleDefinitionId <String>]`: The ID of the role definition to delete.
-  - `[RoleId <String>]`: The ID of the role assignment to delete.
-  - `[Scope <String>]`: The scope for the lock. 
-  - `[SourceResourceGroupName <String>]`: The name of the resource group containing the resources to move.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[TagName <String>]`: The name of the tag.
-  - `[TagValue <String>]`: The value of the tag to delete.
-  - `[TenantId <String>]`: The tenant ID.
-  - `[UpnOrObjectId <String>]`: The object ID or principal name of the user for which to get information.
-
-#### PARAMETER <IDeployment>: Deployment operation parameters.
-  - `Mode <DeploymentMode>`: The mode that is used to deploy resources. This value can be either Incremental or Complete. In Incremental mode, resources are deployed without deleting existing resources that are not included in the template. In Complete mode, resources are deployed and existing resources in the resource group that are not included in the template are deleted. Be careful when using Complete mode as you may unintentionally delete resources.
-  - `ParameterLinkUri <String>`: The URI of the parameters file.
-  - `TemplateLinkUri <String>`: The URI of the template to deploy.
-  - `[DebugSettingDetailLevel <String>]`: Specifies the type of information to log for debugging. The permitted values are none, requestContent, responseContent, or both requestContent and responseContent separated by a comma. The default is none. When setting this value, carefully consider the type of information you are passing in during deployment. By logging information about the request or response, you could potentially expose sensitive data that is retrieved through the deployment operations.
-  - `[Location <String>]`: The location to store the deployment data.
-  - `[OnErrorDeploymentName <String>]`: The deployment to be used on error case.
-  - `[OnErrorDeploymentType <OnErrorDeploymentType?>]`: The deployment on error behavior type. Possible values are LastSuccessful and SpecificDeployment.
-  - `[Parameter <IDeploymentPropertiesParameters>]`: Name and value pairs that define the deployment parameters for the template. You use this element when you want to provide the parameter values directly in the request rather than link to an existing parameter file. Use either the parametersLink property or the parameters property, but not both. It can be a JObject or a well formed JSON string.
-  - `[ParameterLinkContentVersion <String>]`: If included, must match the ContentVersion in the template.
-  - `[Template <IDeploymentPropertiesTemplate>]`: The template content. You use this element when you want to pass the template syntax directly in the request rather than link to an existing template. It can be a JObject or well-formed JSON string. Use either the templateLink property or the template property, but not both.
-  - `[TemplateLinkContentVersion <String>]`: If included, must match the ContentVersion in the template.
 
 ## RELATED LINKS
 

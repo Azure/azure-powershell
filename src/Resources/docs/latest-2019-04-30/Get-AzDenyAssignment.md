@@ -12,14 +12,20 @@ Get the specified deny assignment.
 
 ## SYNTAX
 
-### Get1 (Default)
+### List2 (Default)
 ```
-Get-AzDenyAssignment -Id <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDenyAssignment [-SubscriptionId <String[]>] [-Filter <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzDenyAssignment -Id <String> -Scope <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get1
+```
+Get-AzDenyAssignment -Id <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -35,20 +41,14 @@ Get-AzDenyAssignment -InputObject <IResourcesIdentity> [-DefaultProfile <PSObjec
 ### List
 ```
 Get-AzDenyAssignment -ParentResourcePath <String> -ResourceGroupName <String> -ResourceName <String>
- -ResourceProviderNamespace <String> -ResourceType <String> -SubscriptionId <String[]> [-Filter <String>]
+ -ResourceProviderNamespace <String> -ResourceType <String> [-SubscriptionId <String[]>] [-Filter <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzDenyAssignment -ResourceGroupName <String> -SubscriptionId <String[]> [-Filter <String>]
+Get-AzDenyAssignment -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Filter <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List2
-```
-Get-AzDenyAssignment -SubscriptionId <String[]> [-Filter <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
 ```
 
 ### List3
@@ -256,9 +256,9 @@ Type: System.String[]
 Parameter Sets: List, List1, List2
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

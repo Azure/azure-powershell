@@ -14,12 +14,12 @@ Gets the policy definition.
 
 ### List2 (Default)
 ```
-Get-AzPolicyDefinition -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPolicyDefinition [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get2
 ```
-Get-AzPolicyDefinition -Name <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
+Get-AzPolicyDefinition -Name <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -142,9 +142,9 @@ Type: System.String[]
 Parameter Sets: Get2, List2
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
