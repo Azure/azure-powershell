@@ -13,8 +13,15 @@ This operation requires the certificates/managecontacts permission.
 
 ## SYNTAX
 
+### DeleteContact (Default)
 ```
-Remove-AzKeyVaultCertificateContact [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
+Remove-AzKeyVaultCertificateContact -EmailAddress <String> [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteAllContacts
+```
+Remove-AzKeyVaultCertificateContact -DeleteAll [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -53,6 +60,38 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -DeleteAll
+If set, signals that all contacts should be removed.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: DeleteAllContacts
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -EmailAddress
+The email address of the contact to remove.
+
+```yaml
+Type: System.String
+Parameter Sets: DeleteContact
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -132,7 +171,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IContacts
+### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IContact
 
 ## ALIASES
 

@@ -1,32 +1,27 @@
 ---
 external help file:
-Module Name: Az.WebSite
-online version: https://docs.microsoft.com/en-us/powershell/module/az.website/set-azwebsitesourcecontrol
+Module Name: Az.KeyVault
+online version: https://docs.microsoft.com/en-us/powershell/module/az.keyvault/add-azkeyvaultcertificatecontact
 schema: 2.0.0
 ---
 
-# Set-AzWebSiteSourceControl
+# Add-AzKeyVaultCertificateContact
 
 ## SYNOPSIS
-Updates source control token
+Sets the certificate contacts for the specified key vault.
+This operation requires the certificates/managecontacts permission.
 
 ## SYNTAX
 
-### UpdateExpanded1 (Default)
 ```
-Set-AzWebSiteSourceControl -Type <String> [-ExpirationTime <DateTime>] [-Kind <String>]
- [-RefreshToken <String>] [-Token <String>] [-TokenSecret <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### Update1
-```
-Set-AzWebSiteSourceControl -Type <String> -RequestMessage <ISourceControl> [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Add-AzKeyVaultCertificateContact -EmailAddress <String> [-KeyVaultDnsSuffix <String>] [-VaultName <String>]
+ [-Name <String>] [-PhoneNumber <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates source control token
+Sets the certificate contacts for the specified key vault.
+This operation requires the certificates/managecontacts permission.
 
 ## EXAMPLES
 
@@ -66,112 +61,79 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ExpirationTime
-OAuth token expiration.
-
-```yaml
-Type: System.DateTime
-Parameter Sets: UpdateExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Kind
-Kind of resource.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -RefreshToken
-OAuth refresh token.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -RequestMessage
-The source control OAuth token.
-To construct, see NOTES section for REQUESTMESSAGE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISourceControl
-Parameter Sets: Update1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Token
-OAuth access token.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -TokenSecret
-OAuth access token secret.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Type
-Type of source control
+### -EmailAddress
+The email address of the contact to add.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: SourceControlType
+Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -KeyVaultDnsSuffix
+MISSING DESCRIPTION 06
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Name
+The name of the contact to add.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -PhoneNumber
+The phone number of the contact to add.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -VaultName
+MISSING DESCRIPTION 06
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -217,25 +179,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISourceControl
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebSite.Models.Api20180201.ISourceControl
+### Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IContact
 
 ## ALIASES
 
 ## NOTES
-
-### COMPLEX PARAMETER PROPERTIES
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-#### REQUESTMESSAGE <ISourceControl>: The source control OAuth token.
-  - `[Kind <String>]`: Kind of resource.
-  - `[ExpirationTime <DateTime?>]`: OAuth token expiration.
-  - `[RefreshToken <String>]`: OAuth refresh token.
-  - `[Token <String>]`: OAuth access token.
-  - `[TokenSecret <String>]`: OAuth access token secret.
 
 ## RELATED LINKS
 
