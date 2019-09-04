@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.HealthcareApis.Models;
+using Microsoft.Azure.Commands.HealthcareApis.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Management.HealthcareApis;
@@ -191,6 +192,26 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Common
             {
                 Exception emptyEx = new Exception("Response object empty");
                 return new ErrorRecord(emptyEx, "Response object was empty", ErrorCategory.OpenError, emptyEx);
+            }
+        }
+
+        public static Kind ParseKind(string kind)
+        {
+            if (kind.Equals("fhir", StringComparison.OrdinalIgnoreCase))
+            {
+                return Management.HealthcareApis.Models.Kind.Fhir;
+            }
+            else if (kind.Equals("fhir-stu3", StringComparison.OrdinalIgnoreCase) || kind.Equals("stu3", StringComparison.OrdinalIgnoreCase))
+            {
+                return Management.HealthcareApis.Models.Kind.FhirStu3;
+            }
+            else if (kind.Equals("fhir-r4", StringComparison.OrdinalIgnoreCase) || kind.Equals("r4", StringComparison.OrdinalIgnoreCase))
+            {
+                return Management.HealthcareApis.Models.Kind.FhirR4;
+            }
+            else
+            {
+                throw new PSArgumentException(Resources.createService_InvalidKindMessage);
             }
         }
     }
