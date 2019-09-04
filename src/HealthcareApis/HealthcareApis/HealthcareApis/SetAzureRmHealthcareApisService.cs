@@ -272,13 +272,16 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
         {
             if(this.Tag!=null && this.Tag.Count > 0)
             {
-                Dictionary<string, string> dict = new Dictionary<string, string>();
-                foreach (DictionaryEntry kvp in this.Tag)
-                    dict.Add((string)kvp.Key, (string)kvp.Value);
-                return dict;
+                Dictionary<string, string> tags = new Dictionary<string, string>();
+                foreach (DictionaryEntry tag in this.Tag)
+                {
+                    tags.Add((string)tag.Key, (string)tag.Value);
+                }
+
+                return tags;
             }
 
-                return healthcareApisAccount.Tags;
+            return healthcareApisAccount.Tags;
         }
 
         private bool? IsSmartOnFhirEnabled(bool? currentSmartOnFhirValue)
