@@ -12,50 +12,58 @@ Gets a resource.
 
 ## SYNTAX
 
-### Get1 (Default)
+### List1 (Default)
 ```
-Get-AzResource -ResourceId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzResource [-SubscriptionId <String[]>] [-Expand <String>] [-Filter <String>] [-Top <Int32>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzResource -Name <String> -ParentResourcePath <String> -ProviderNamespace <String>
- -ResourceGroupName <String> -ResourceType <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ -ResourceGroupName <String> -ResourceType <String> -ApiVersion <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get1
+```
+Get-AzResource -ResourceId <String> -ApiVersion <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetByTag
 ```
-Get-AzResource -SubscriptionId <String[]> -Tag <Hashtable> [-ResourceGroupName <String>] [-Expand <String>]
+Get-AzResource -Tag <Hashtable> [-ResourceGroupName <String>] [-SubscriptionId <String[]>] [-Expand <String>]
  [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetByTagNameAndValue
 ```
-Get-AzResource -SubscriptionId <String[]> -TagName <String> [-ResourceGroupName <String>] [-Expand <String>]
+Get-AzResource -TagName <String> [-ResourceGroupName <String>] [-SubscriptionId <String[]>] [-Expand <String>]
  [-TagValue <String>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetTopLevelResource
+```
+Get-AzResource -Name <String> -ProviderNamespace <String> -ResourceGroupName <String> -ResourceType <String>
+ -ApiVersion <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzResource -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzResource -InputObject <IResourcesIdentity> -ApiVersion <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity1
 ```
-Get-AzResource -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzResource -InputObject <IResourcesIdentity> -ApiVersion <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### List
 ```
-Get-AzResource -ResourceGroupName <String> -SubscriptionId <String[]> [-Expand <String>] [-Filter <String>]
+Get-AzResource -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Expand <String>] [-Filter <String>]
  [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List1
-```
-Get-AzResource -SubscriptionId <String[]> [-Expand <String>] [-Filter <String>] [-Top <Int32>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -82,6 +90,22 @@ PS C:\> {{ Add code here }}
 {{ Add description here }}
 
 ## PARAMETERS
+
+### -ApiVersion
+The API version to use for the operation.
+
+```yaml
+Type: System.String
+Parameter Sets: Get, Get1, GetTopLevelResource, GetViaIdentity, GetViaIdentity1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -172,7 +196,7 @@ The name of the resource to get.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetTopLevelResource
 Aliases: ResourceName
 
 Required: True
@@ -204,7 +228,7 @@ The namespace of the resource provider.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetTopLevelResource
 Aliases: ResourceProviderNamespace
 
 Required: True
@@ -221,7 +245,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetByTag, GetByTagNameAndValue, List
+Parameter Sets: Get, GetByTag, GetByTagNameAndValue, GetTopLevelResource, List
 Aliases:
 
 Required: True
@@ -254,7 +278,7 @@ The resource type of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetTopLevelResource
 Aliases:
 
 Required: True
@@ -270,12 +294,12 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, GetByTag, GetByTagNameAndValue, List, List1
+Parameter Sets: Get, GetByTag, GetByTagNameAndValue, GetTopLevelResource, List, List1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

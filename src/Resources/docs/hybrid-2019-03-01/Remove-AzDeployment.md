@@ -20,13 +20,13 @@ If the asynchronous request failed, the URI in the Location header returns an er
 
 ### Delete (Default)
 ```
-Remove-AzDeployment -Name <String> -SubscriptionId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Remove-AzDeployment -Name <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Delete1
 ```
-Remove-AzDeployment -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Remove-AzDeployment -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -195,9 +195,9 @@ Type: System.String
 Parameter Sets: Delete, Delete1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -14,18 +14,18 @@ Gets a deployment.
 
 ### List (Default)
 ```
-Get-AzDeployment -SubscriptionId <String[]> [-Filter <String>] [-Top <Int32>] [-DefaultProfile <PSObject>]
+Get-AzDeployment [-SubscriptionId <String[]>] [-Filter <String>] [-Top <Int32>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzDeployment -Name <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDeployment -Name <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get1
 ```
-Get-AzDeployment -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzDeployment -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -41,7 +41,7 @@ Get-AzDeployment -InputObject <IResourcesIdentity> [-DefaultProfile <PSObject>] 
 
 ### List1
 ```
-Get-AzDeployment -ResourceGroupName <String> -SubscriptionId <String[]> [-Filter <String>] [-Top <Int32>]
+Get-AzDeployment -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Filter <String>] [-Top <Int32>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -161,9 +161,9 @@ Type: System.String[]
 Parameter Sets: Get, Get1, List, List1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

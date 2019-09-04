@@ -19,21 +19,22 @@ Retrieve the URL in the Location header value to check the result of the long-ru
 
 ### ValidateExpanded (Default)
 ```
-Test-AzResourceMove -SourceResourceGroupName <String> -SubscriptionId <String> [-PassThru]
+Test-AzResourceMove -SourceResourceGroupName <String> [-SubscriptionId <String>] [-PassThru]
  [-Resource <String[]>] [-TargetResourceGroup <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Validate
 ```
-Test-AzResourceMove -SourceResourceGroupName <String> -SubscriptionId <String> -Parameter <IResourcesMoveInfo>
- [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-AzResourceMove -SourceResourceGroupName <String> -Parameter <IResourcesMoveInfo>
+ [-SubscriptionId <String>] [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### ValidateByComponents
 ```
-Test-AzResourceMove -SourceResourceGroupName <String> -SubscriptionId <String>
- -TargetResourceGroupName <String> [-PassThru] [-Resource <String[]>] [-TargetSubscriptionId <String>]
+Test-AzResourceMove -SourceResourceGroupName <String> -TargetResourceGroupName <String>
+ [-SubscriptionId <String>] [-PassThru] [-Resource <String[]>] [-TargetSubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -218,9 +219,9 @@ Type: System.String
 Parameter Sets: Validate, ValidateByComponents, ValidateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
