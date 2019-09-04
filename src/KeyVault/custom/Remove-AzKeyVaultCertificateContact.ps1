@@ -1,26 +1,32 @@
-function Get-AzKeyVaultCertificate_ListVersions {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.ICertificateBundle')]
-    [CmdletBinding(PositionalBinding=$false)]
+function Remove-AzKeyVaultCertificateContact {
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.Api20161001.IContact')]
+    [CmdletBinding(DefaultParameterSetName='DeleteContact', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Profile('latest-2019-04-30')]
+    [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Description('Deletes the certificate contacts for a specified key vault certificate. This operation requires the certificates/managecontacts permission.')]
     param(
         [Parameter(HelpMessage='MISSING DESCRIPTION 06')]
         [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category('Uri')]
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(SerializedName='keyVaultDnsSuffix', PossibleTypes=([System.String]), Description='MISSING DESCRIPTION 06')]
         [System.String]
         # MISSING DESCRIPTION 06
-        ${VaultBaseUrl},
+        ${KeyVaultDnsSuffix},
 
-        [Parameter(Mandatory, HelpMessage='The name of the certificate in the given vault.')]
-        [Alias('CertificateName')]
-        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category('Path')]
+        [Parameter(HelpMessage='MISSING DESCRIPTION 06')]
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category('Uri')]
+        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Info(SerializedName='vaultName', PossibleTypes=([System.String]), Description='MISSING DESCRIPTION 06')]
         [System.String]
-        # The name of the certificate in the given vault.
-        ${Name},
+        # MISSING DESCRIPTION 06
+        ${VaultName},
 
-        [Parameter(Mandatory, HelpMessage='Signals to include the versions of the certificate in the output.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category('Path')]
+        [Parameter(ParameterSetName='DeleteContact', Mandatory, HelpMessage='The email address of the contact to remove.')]
+        [System.String]
+        # The email address of the contact to remove.
+        ${EmailAddress},
+
+        [Parameter(ParameterSetName='DeleteAllContacts', Mandatory, HelpMessage='If set, signals that all contacts should be removed.')]
         [System.Management.Automation.SwitchParameter]
-        # Signals to include the versions of the certificate in the output.
-        ${IncludeVersions},
+        # If set, signals that all contacts should be removed.
+        ${DeleteAll},
 
         [Parameter(HelpMessage='The credentials, account, tenant, and subscription used for communication with Azure.')]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -71,8 +77,19 @@ function Get-AzKeyVaultCertificate_ListVersions {
     )
 
     process {
-        $null = $PSBoundParameters.Add("Version", [string]::Empty)
-        $null = $PSBoundParameters.Remove("IncludeVersions")
-        Az.KeyVault\Get-AzKeyVaultCertificate @PSBoundParameters
+        if ($PSBoundParameters.ContainsKey("DeleteAll"))
+        {
+            $null = $PSBoundParameters.Remove("DeleteAll")
+            $null = $PSBoundParameters.Add("ContactList", @())
+        }
+        else
+        {
+            $TempEmailAddress = $EmailAddress
+            $null = $PSBoundParameters.Remove("EmailAddress")
+            $Result = Az.KeyVault\Get-AzKeyVaultCertificateContact @PSBoundParameters | Where-Object { $_.EmailAddress -ne $TempEmailAddress }
+            $null = $PSBoundParameters.Add("ContactList", $Result)
+        }
+
+        (Az.KeyVault.internal\Set-AzKeyVaultCertificateContact @PSBoundParameters).ContactList
     }
 }

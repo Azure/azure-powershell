@@ -94,6 +94,10 @@ directive:
 ``` yaml
 directive:
   - where:
+      parameter-name: OutFile
+    set:
+      alias: OutputFile
+  - where:
       verb: Clear|Get
       subject: VaultDeleted
     hide: true
@@ -118,6 +122,13 @@ directive:
       subject: DeletedStorageDeletedSasDefinition
     hide: true
   - where:
+      subject: CertificateContact
+    hide: true
+  - where:
+      verb: Invoke
+      subject: SignKey|UnwrapKey|WrapKey
+    hide: true
+  - where:
       verb: New
       subject: Certificate
     set:
@@ -127,11 +138,6 @@ directive:
       subject: Key
     set:
       alias: Add-AzKeyVaultKey
-  - where:
-      verb: Set
-      subject: CertificateContact
-    set:
-      alias: Add-AzKeyVaultCertificateContact
   - where:
       verb: Set
       subject: StorageAccount
@@ -354,4 +360,110 @@ directive:
       parameter-name: Parameter
     set:
       parameter-name: DefinitionMetadata
+  - where:
+      verb: Test
+      subject: Vault
+      variant: Check
+    hide: true
+  - where:
+      verb: Set
+      subject: Vault
+    hide: true
+  # Format output
+  - where:
+      model-name: Vault
+    set:
+      format-table:
+        properties:
+          - Name
+          - ResourceGroupName
+          - Location
+          - Uri
+  - where:
+      model-name: DeletedVault
+    set:
+      format-table:
+        properties:
+          - Name
+          - ResourceGroupName
+          - Location
+          - DeletionDate
+          - ScheduledPurgeDate
+  - where:
+      model-name: KeyItem
+    set:
+      format-table:
+        properties:
+          - Name
+          - AttributeEnabled
+          - AttributeCreated
+          - AttributeUpdated
+        labels:
+          AttributeEnabled: Enabled
+          AttributeCreated: Created
+          AttributeUpdated: Updated
+  - where:
+      model-name: SecretItem
+    set:
+      format-table:
+        properties:
+          - Name
+          - AttributeEnabled
+          - AttributeCreated
+          - AttributeUpdated
+        labels:
+          AttributeEnabled: Enabled
+          AttributeCreated: Created
+          AttributeUpdated: Updated
+  - where:
+      model-name: SecretBundle
+    set:
+      format-table:
+        properties:
+          - Name
+          - Version
+          - AttributeEnabled
+          - AttributeCreated
+          - AttributeUpdated
+        labels:
+          AttributeEnabled: Enabled
+          AttributeCreated: Created
+          AttributeUpdated: Updated
+  - where:
+      model-name: CertificateIssuerItem
+    set:
+      format-table:
+        properties:
+          - Name
+          - Provider
+  - where:
+      model-name: IssuerBundle
+    set:
+      format-table:
+        properties:
+          - Name
+          - Provider
+  - where:
+      model-name: CertificateOperation
+    set:
+      format-table:
+        properties:
+          - Name
+          - Id
+          - IssuerName
+          - Status
+  - where:
+      model-name: CertificatePolicy
+    set:
+      format-table:
+        properties:
+          - X509PropSubject
+          - AttributeEnabled
+          - AttributeCreated
+          - AttributeUpdated
+        labels:
+          X509PropSubject: SubjectName
+          AttributeEnabled: Enabled
+          AttributeCreated: Created
+          AttributeUpdated: Updated
 ```
