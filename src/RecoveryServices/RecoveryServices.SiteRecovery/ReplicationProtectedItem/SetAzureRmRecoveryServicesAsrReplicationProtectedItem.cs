@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets or sets the target backend address pools for the NIC.
         /// </summary>
         [Parameter]
-        public List<string> RecoveryLBBackendAddressPoolId { get; set; }
+        public string[] RecoveryLBBackendAddressPoolId { get; set; }
 
         /// <summary>
         ///     ProcessRecord of the command.
@@ -272,7 +272,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 if ((!string.IsNullOrEmpty(RecoveryNetworkSecurityGroupId) ||
                     !string.IsNullOrEmpty(RecoveryPublicIPAddressId) ||
                     RecoveryLBBackendAddressPoolId != null &&
-                    RecoveryLBBackendAddressPoolId.Count > 0) &&
+                    RecoveryLBBackendAddressPoolId.Length > 0) &&
                     !(provider is A2AReplicationDetails))
                 {
                     this.WriteWarning(Resources.NetworkingResourcesInDRNotSupportedForClassicVms);
@@ -576,7 +576,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                             string.IsNullOrEmpty(this.NicSelectionType)
                                 ? Constants.SelectedByUser : this.NicSelectionType;
                         vMNicInputDetails.RecoveryLBBackendAddressPoolIds =
-                            this.RecoveryLBBackendAddressPoolId;
+                            this.RecoveryLBBackendAddressPoolId?.ToList();
                         vMNicInputDetails.RecoveryPublicIpAddressId =
                             this.RecoveryPublicIPAddressId;
                         vMNicInputDetails.RecoveryNetworkSecurityGroupId =
