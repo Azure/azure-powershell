@@ -12,23 +12,15 @@ Create or update a gallery Image Definition.
 
 ## SYNTAX
 
-### Create (Default)
 ```
 New-AzGalleryImageDefinition -GalleryName <String> -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-GalleryImage <IGalleryImage>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded
-```
-New-AzGalleryImageDefinition -GalleryName <String> -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String> -Location <String> -OSState <OperatingSystemStateTypes>
- -OSType <OperatingSystemTypes> -Offer <String> -Publisher <String> -Sku <String> [-Description <String>]
- [-DisallowedDiskType <String[]>] [-EndOfLifeDate <DateTime>] [-Eula <String>] [-MaximumMemory <Int32>]
- [-MaximumVCpu <Int32>] [-MinimumMemory <Int32>] [-MinimumVCpu <Int32>] [-PrivacyStatementUri <String>]
+ -SubscriptionId <String> -Location <String> [-Description <String>] [-DisallowedDiskType <String[]>]
+ [-EndOfLifeDate <DateTime>] [-Eula <String>] [-MaximumMemory <Int32>] [-MaximumVCpu <Int32>]
+ [-MinimumMemory <Int32>] [-MinimumVCpu <Int32>] [-Offer <String>] [-OSState <OperatingSystemStateTypes>]
+ [-OSType <OperatingSystemTypes>] [-PrivacyStatementUri <String>] [-Publisher <String>]
  [-PurchasePlanName <String>] [-PurchasePlanProduct <String>] [-PurchasePlanPublisher <String>]
- [-ReleaseNoteUri <String>] [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-ReleaseNoteUri <String>] [-Sku <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,7 +58,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -94,7 +86,7 @@ This property is updatable.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -110,7 +102,7 @@ A list of disk types.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -128,7 +120,7 @@ This property is updatable.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -144,29 +136,13 @@ The Eula agreement for the gallery Image Definition.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -GalleryImage
-Specifies information about the gallery Image Definition that you want to create or update.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301.IGalleryImage
-Parameter Sets: Create
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -192,7 +168,7 @@ Resource location
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -208,12 +184,12 @@ The maximum number of the resource.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -224,12 +200,12 @@ The maximum number of the resource.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -240,12 +216,12 @@ The minimum number of the resource.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -256,12 +232,12 @@ The minimum number of the resource.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -285,15 +261,31 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -Offer
 The name of the gallery Image Definition offer.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -306,10 +298,10 @@ The allowed values for OS State are 'Generalized'.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.OperatingSystemStateTypes
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -319,14 +311,20 @@ Dynamic: False
 
 ### -OSType
 This property allows you to specify the type of the OS that is included in the disk when creating a VM from a managed image.
-  Possible values are:    **Windows**    **Linux**
+
+
+ Possible values are: 
+
+ **Windows** 
+
+ **Linux**
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.OperatingSystemTypes
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -339,7 +337,7 @@ The privacy statement uri.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -355,10 +353,10 @@ The name of the gallery Image Definition publisher.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -371,7 +369,7 @@ The plan ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -387,7 +385,7 @@ The product ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -403,7 +401,7 @@ The publisher ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -419,7 +417,7 @@ The release note uri.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -451,10 +449,10 @@ The name of the gallery Image Definition SKU.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -483,8 +481,8 @@ Dynamic: False
 Resource tags
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20170330.IResourceTags
-Parameter Sets: CreateExpanded
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -533,13 +531,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301.IGalleryImage
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301.IGalleryImage
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

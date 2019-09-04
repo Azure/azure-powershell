@@ -15,27 +15,27 @@ Reimages (upgrade the operating system) one or more virtual machines in a VM sca
 ### ReimageExpanded2 (Default)
 ```
 Invoke-AzVmssReimage -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-InstanceId <String[]>] [-PassThru] [-TempDisk] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-InstanceId <String[]>] [-TempDisk] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### ReimageExpanded3
 ```
 Invoke-AzVmssReimage -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-InstanceId <String[]>] [-PassThru] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [-InstanceId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
-```
-
-### ReimageViaIdentityExpanded3
-```
-Invoke-AzVmssReimage -InputObject <IComputeIdentity> [-InstanceId <String[]>] [-PassThru]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ReimageViaIdentityExpanded2
 ```
-Invoke-AzVmssReimage -InputObject <IComputeIdentity> [-InstanceId <String[]>] [-PassThru] [-TempDisk]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzVmssReimage -InputObject <IComputeIdentity> [-InstanceId <String[]>] [-TempDisk]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ReimageViaIdentityExpanded3
+```
+Invoke-AzVmssReimage -InputObject <IComputeIdentity> [-InstanceId <String[]>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,7 +73,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -97,10 +97,11 @@ Dynamic: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-Parameter Sets: ReimageViaIdentityExpanded3, ReimageViaIdentityExpanded2
+Parameter Sets: ReimageViaIdentityExpanded2, ReimageViaIdentityExpanded3
 Aliases:
 
 Required: True
@@ -144,8 +145,8 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -PassThru
-When specified, PassThru will force the cmdlet return a 'bool' given that there isn't a return type by default.
+### -NoWait
+Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -154,7 +155,23 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -204,7 +221,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -255,6 +272,37 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### INPUTOBJECT <IComputeIdentity>: Identity Parameter
+  - `[AvailabilitySetName <String>]`: The name of the availability set.
+  - `[CommandId <String>]`: The command id.
+  - `[DiskName <String>]`: The name of the managed disk that is being created. The name can't be changed after the disk is created. Supported characters for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
+  - `[GalleryImageDefinitionName <String>]`: The name of the gallery Image Definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+  - `[GalleryImageVersionName <String>]`: The name of the gallery Image Version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+  - `[GalleryName <String>]`: The name of the Shared Image Gallery. The allowed characters are alphabets and numbers with dots and periods allowed in the middle. The maximum length is 80 characters.
+  - `[Id <String>]`: Resource identity path
+  - `[ImageName <String>]`: The name of the image.
+  - `[InstanceId <String>]`: The instance ID of the virtual machine.
+  - `[Location <String>]`: The name of a supported Azure region.
+  - `[Offer <String>]`: A valid image publisher offer.
+  - `[ProximityPlacementGroupName <String>]`: The name of the proximity placement group.
+  - `[PublisherName <String>]`: 
+  - `[ResourceGroupName <String>]`: The name of the resource group.
+  - `[Sku <String>]`: A valid image SKU.
+  - `[SnapshotName <String>]`: The name of the snapshot that is being created. The name can't be changed after the snapshot is created. Supported characters for the name are a-z, A-Z, 0-9 and _. The max name length is 80 characters.
+  - `[SubscriptionId <String>]`: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  - `[Type <String>]`: 
+  - `[VMExtensionName <String>]`: The name of the virtual machine extension.
+  - `[VMName <String>]`: The name of the virtual machine.
+  - `[VMScaleSetName <String>]`: The name of the VM scale set.
+  - `[Version <String>]`: 
+  - `[VirtualMachineScaleSetName <String>]`: The name of the VM scale set.
+  - `[VmssExtensionName <String>]`: The name of the VM scale set extension.
 
 ## RELATED LINKS
 

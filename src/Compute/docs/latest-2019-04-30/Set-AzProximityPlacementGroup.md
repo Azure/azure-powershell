@@ -12,17 +12,9 @@ Create or update a proximity placement group.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
 ```
 Set-AzProximityPlacementGroup -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -Location <String> [-ProximityPlacementGroupType <ProximityPlacementGroupType>] [-Tag <IResourceTags>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Set-AzProximityPlacementGroup -InputObject <IComputeIdentity> -Location <String>
- [-ProximityPlacementGroupType <ProximityPlacementGroupType>] [-Tag <IResourceTags>]
+ -Location <String> [-ProximityPlacementGroupType <ProximityPlacementGroupType>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -67,22 +59,6 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-Parameter Sets: UpdateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -Location
 Resource location
 
@@ -104,7 +80,7 @@ The name of the proximity placement group.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases: ProximityPlacementGroupName
 
 Required: True
@@ -117,7 +93,13 @@ Dynamic: False
 
 ### -ProximityPlacementGroupType
 Specifies the type of the proximity placement group.
-  Possible values are:    **Standard**    **Ultra**
+
+
+ Possible values are: 
+
+ **Standard** 
+
+ **Ultra**
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.ProximityPlacementGroupType
@@ -137,7 +119,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -154,7 +136,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -169,7 +151,7 @@ Dynamic: False
 Resource tags
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20170330.IResourceTags
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -219,13 +201,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301.IProximityPlacementGroup
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

@@ -12,17 +12,9 @@ Create or update a proximity placement group.
 
 ## SYNTAX
 
-### Create (Default)
 ```
 New-AzProximityPlacementGroup -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-ProximityPlacementGroup <IProximityPlacementGroup>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateExpanded
-```
-New-AzProximityPlacementGroup -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -Location <String> [-ProximityPlacementGroupType <ProximityPlacementGroupType>] [-Tag <IResourceTags>]
+ -Location <String> [-ProximityPlacementGroupType <ProximityPlacementGroupType>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -72,7 +64,7 @@ Resource location
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -99,29 +91,19 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -ProximityPlacementGroup
-Specifies information about the proximity placement group.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301.IProximityPlacementGroup
-Parameter Sets: Create
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-Dynamic: False
-```
-
 ### -ProximityPlacementGroupType
 Specifies the type of the proximity placement group.
-  Possible values are:    **Standard**    **Ultra**
+
+
+ Possible values are: 
+
+ **Standard** 
+
+ **Ultra**
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.ProximityPlacementGroupType
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -169,8 +151,8 @@ Dynamic: False
 Resource tags
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20170330.IResourceTags
-Parameter Sets: CreateExpanded
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -219,13 +201,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301.IProximityPlacementGroup
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301.IProximityPlacementGroup
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

@@ -8,33 +8,32 @@ schema: 2.0.0
 # New-AzVmss
 
 ## SYNOPSIS
-Create or update a VM scale set.
+
 
 ## SYNTAX
 
-### Create (Default)
+### DefaultParameter (Default)
 ```
-New-AzVmss -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- [-VirtualMachineScaleSet <IVirtualMachineScaleSet>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzVmss -SubscriptionId <String> -VMScaleSetName <String> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateExpanded
+### SimpleParameterSet
 ```
-New-AzVmss -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Location <String>
- [-AutoOSUpgradePolicyDisableAutoRollback] [-FaultDomainCount <Int32>] [-IdentityId <String[]>]
- [-IdentityType <ResourceIdentityType>] [-MaxBatchInstancePercent <Int32>]
- [-MaxUnhealthyInstancePercent <Int32>] [-MaxUnhealthyUpgradedInstancePercent <Int32>] [-Overprovision]
- [-PauseTimeBetweenBatches <String>] [-PlanName <String>] [-PlanProduct <String>]
- [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-SinglePlacementGroup] [-SkuCapacity <Int64>]
- [-SkuName <String>] [-SkuTier <String>] [-Tag <IResourceTags>] [-UpgradePolicyAutomaticOSUpgrade]
- [-UpgradePolicyMode <UpgradeMode>] [-VirtualMachineProfile <IVirtualMachineScaleSetVMProfile>]
- [-Zone <String[]>] [-ZoneBalance] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+New-AzVmss -Credential <PSCredential> -SubscriptionId <String> -VMScaleSetName <String>
+ [-AllocationMethod <String>] [-AsJob] [-BackendPoolName <String>] [-BackendPort <Int32[]>]
+ [-DataDiskSizeInGb <Int32[]>] [-DefaultProfile <IAzureContextContainer>] [-DomainNameLabel <String>]
+ [-EnableUltraSSD] [-FrontendPoolName <String>] [-InstanceCount <Int32>] [-LoadBalancerName <String>]
+ [-Location <String>] [-NatBackendPort <Int32[]>] [-ProximityPlacementGroup <String>]
+ [-PublicIpAddressName <String>] [-ResourceGroupName <String>] [-SecurityGroupName <String>]
+ [-SinglePlacementGroup] [-SubnetAddressPrefix <String>] [-SubnetName <String>] [-SystemAssignedIdentity]
+ [-UpgradePolicyMode <UpgradeMode>] [-UserAssignedIdentity <String>] [-VirtualNetworkName <String>]
+ [-VmSize <String>] [-VnetAddressPrefix <String>] [-Zone <List<String>>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create or update a VM scale set.
+
 
 ## EXAMPLES
 
@@ -58,8 +57,24 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
+### -AllocationMethod
+
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -AsJob
-Run the command as a job
+Run cmdlet in the background
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -68,24 +83,71 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -AutoOSUpgradePolicyDisableAutoRollback
-Whether OS image rollback feature should be disabled.
-Default value is false.
+### -BackendPoolName
+
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded
+Type: System.String
+Parameter Sets: SimpleParameterSet
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -BackendPort
+
+
+```yaml
+Type: System.Int32[]
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -Credential
+
+
+```yaml
+Type: System.Management.Automation.PSCredential
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -DataDiskSizeInGb
+
+
+```yaml
+Type: System.Int32[]
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -95,9 +157,9 @@ Dynamic: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: System.Management.Automation.PSObject
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRMContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -107,30 +169,61 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -FaultDomainCount
-Fault Domain count for each placement group.
+### -DomainNameLabel
+
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -EnableUltraSSD
+
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -FrontendPoolName
+
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -InstanceCount
+
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded
-Aliases: PlatformFaultDomainCount
-
-Required: False
-Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -IdentityId
-The list of user identities associated with the virtual machine scale set.
-The user identity references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'.
-
-```yaml
-Type: System.String[]
-Parameter Sets: CreateExpanded
-Aliases: UserAssignedIdentity
+Parameter Sets: SimpleParameterSet
+Aliases:
 
 Required: False
 Position: Named
@@ -140,14 +233,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -IdentityType
-The type of identity used for the virtual machine scale set.
-The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities.
-The type 'None' will remove any identities from the virtual machine scale set.
+### -LoadBalancerName
+
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.ResourceIdentityType
-Parameter Sets: CreateExpanded
+Type: System.String
+Parameter Sets: SimpleParameterSet
 Aliases:
 
 Required: False
@@ -159,116 +250,11 @@ Dynamic: False
 ```
 
 ### -Location
-Resource location
+
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -MaxBatchInstancePercent
-The maximum percent of total virtual machine instances that will be upgraded simultaneously by the rolling upgrade in one batch.
-As this is a maximum, unhealthy instances in previous or future batches can cause the percentage of instances in a batch to decrease to ensure higher reliability.
-The default value for this parameter is 20%.
-
-```yaml
-Type: System.Int32
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -MaxUnhealthyInstancePercent
-The maximum percentage of the total virtual machine instances in the scale set that can be simultaneously unhealthy, either as a result of being upgraded, or by being found in an unhealthy state by the virtual machine health checks before the rolling upgrade aborts.
-This constraint will be checked prior to starting any batch.
-The default value for this parameter is 20%.
-
-```yaml
-Type: System.Int32
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -MaxUnhealthyUpgradedInstancePercent
-The maximum percentage of upgraded virtual machine instances that can be found to be in an unhealthy state.
-This check will happen after each batch is upgraded.
-If this percentage is ever exceeded, the rolling update aborts.
-The default value for this parameter is 20%.
-
-```yaml
-Type: System.Int32
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Name
-The name of the VM scale set to create or update.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: VMScaleSetName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -Overprovision
-Specifies whether the Virtual Machine Scale Set should be overprovisioned.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -PauseTimeBetweenBatches
-The wait time between completing the update for all virtual machines in one batch and starting the next batch.
-The time duration should be specified in ISO 8601 format.
-The default value is 0 seconds (PT0S).
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: SimpleParameterSet
 Aliases:
 
 Required: False
@@ -279,12 +265,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -PlanName
-The plan ID.
+### -NatBackendPort
+
 
 ```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
+Type: System.Int32[]
+Parameter Sets: SimpleParameterSet
 Aliases:
 
 Required: False
@@ -295,13 +281,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -PlanProduct
-Specifies the product of the image from the marketplace.
-This is the same value as Offer under the imageReference element.
+### -ProximityPlacementGroup
+
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: SimpleParameterSet
 Aliases:
 
 Required: False
@@ -312,28 +297,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -PlanPromotionCode
-The promotion code.
+### -PublicIpAddressName
+
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -PlanPublisher
-The publisher ID.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: SimpleParameterSet
 Aliases:
 
 Required: False
@@ -345,14 +314,30 @@ Dynamic: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
+
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SimpleParameterSet
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -SecurityGroupName
+
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -361,43 +346,11 @@ Dynamic: False
 ```
 
 ### -SinglePlacementGroup
-When true this limits the scale set to a single placement group, of max size 100 virtual machines.
+Use this to create the Scale set in a single placement group, default is multiple groups
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -SkuCapacity
-Specifies the number of virtual machines in the scale set.
-
-```yaml
-Type: System.Int64
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -SkuName
-The sku name.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: SimpleParameterSet
 Aliases:
 
 Required: False
@@ -408,12 +361,28 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -SkuTier
-Specifies the tier of virtual machines in a scale set.<br /><br /> Possible Values:<br /><br /> **Standard**<br /><br /> **Basic**
+### -SubnetAddressPrefix
+
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -SubnetName
+
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet
 Aliases:
 
 Required: False
@@ -425,8 +394,7 @@ Dynamic: False
 ```
 
 ### -SubscriptionId
-Subscription credentials which uniquely identify Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+
 
 ```yaml
 Type: System.String
@@ -441,45 +409,28 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -Tag
-Resource tags
+### -SystemAssignedIdentity
+Use this to add system assigned identity (MSI) to the vm
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20170330.IResourceTags
-Parameter Sets: CreateExpanded
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: SimpleParameterSet
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -UpgradePolicyAutomaticOSUpgrade
-Whether OS upgrades should automatically be applied to scale set instances in a rolling fashion when a newer version of the image becomes available.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
 
 ### -UpgradePolicyMode
-Specifies the mode of an upgrade to virtual machines in the scale set.<br /><br /> Possible values are:<br /><br /> **Manual** - You control the application of updates to virtual machines in the scale set.
-You do this by using the manualUpgrade action.<br /><br /> **Automatic** - All virtual machines in the scale set are automatically updated at the same time.
+
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.UpgradeMode
-Parameter Sets: CreateExpanded
+Parameter Sets: SimpleParameterSet
 Aliases:
 
 Required: False
@@ -490,12 +441,12 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VirtualMachineProfile
-The virtual machine profile.
+### -UserAssignedIdentity
+Use this to add the assign user specified identity (MSI) to the VM
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IVirtualMachineScaleSetVMProfile
-Parameter Sets: CreateExpanded
+Type: System.String
+Parameter Sets: SimpleParameterSet
 Aliases:
 
 Required: False
@@ -506,50 +457,82 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
-### -VirtualMachineScaleSet
-Describes a Virtual Machine Scale Set.
+### -VirtualNetworkName
+
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IVirtualMachineScaleSet
-Parameter Sets: Create
+Type: System.String
+Parameter Sets: SimpleParameterSet
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -VMScaleSetName
+
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: Name
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -VmSize
+
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
+### -VnetAddressPrefix
+
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
 ```
 
 ### -Zone
-The virtual machine scale set zones.
+A list of availability zones denoting the IP allocated for the resource needs to come from.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: CreateExpanded
+Type: System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Parameter Sets: SimpleParameterSet
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-Dynamic: False
-```
-
-### -ZoneBalance
-Whether to force strictly even Virtual Machine distribution cross x-zones in case there is zone outage.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 Dynamic: False
 ```
@@ -592,13 +575,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IVirtualMachineScaleSet
+### System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IVirtualMachineScaleSet
+### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301.IVirtualMachineScaleSet
 
 ## ALIASES
+
+## NOTES
 
 ## RELATED LINKS
 

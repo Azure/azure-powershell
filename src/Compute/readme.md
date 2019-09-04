@@ -861,4 +861,25 @@ directive:
     where: $
     transform: >
         return $.replace('</Project>', '  <Import Project=\"custom\\strategies.props\" />\n</Project>' );
+# Update psm1 for module load
+  - from: Az.Compute.psm1
+    where: $
+    transform: >
+        return $.replace('\$null = Import-Module -Name \(Join-Path $PSScriptRoot \'\./bin/Az\.Compute\.private\.dll\'\)', '');
+#
+  - from: Az.Compute.psm1
+    where: $
+    transform: >
+        return $.replace('\$instance = \[Microsoft\.Azure\.PowerShell\.Cmdlets\.Compute\.Module\]::Instance', '' );
+# add back in
+  - from: Az.Compute.psm1
+    where: $
+    transform: >
+        return $.replace('# Ask for the shared functionality table', 'Import-Module -Name (Join-Path $PSScriptRoot \'./bin/Az.Compute.private.dll\')\n# Ask for the shared functionality table' );
+# add again
+  - from: Az.Compute.psm1
+    where: $
+    transform: >
+        return $.replace('# Ask for the shared functionality table', '$instance = [Microsoft.Azure.PowerShell.Cmdlets.Compute.Module]::Instance\n# Ask for the shared functionality table' );
+
 ```

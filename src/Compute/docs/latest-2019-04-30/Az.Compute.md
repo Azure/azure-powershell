@@ -8,7 +8,7 @@ Locale: en-US
 
 # Az.Compute Module
 ## Description
-Microsoft Azure PowerShell: Compute cmdlets
+
 
 ## Az.Compute Cmdlets
 ### [ConvertTo-AzVMManagedDisk](ConvertTo-AzVMManagedDisk.md)
@@ -146,13 +146,13 @@ Create or update a proximity placement group.
 Creates or updates a snapshot.
 
 ### [New-AzVM](New-AzVM.md)
-The operation to create or update a virtual machine.
+
 
 ### [New-AzVMExtension](New-AzVMExtension.md)
 The operation to create or update the extension.
 
 ### [New-AzVmss](New-AzVmss.md)
-Create or update a VM scale set.
+
 
 ### [New-AzVmssExtension](New-AzVmssExtension.md)
 The operation to create or update an extension.

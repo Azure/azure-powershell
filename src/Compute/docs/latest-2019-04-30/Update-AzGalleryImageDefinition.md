@@ -15,24 +15,24 @@ Create or update a gallery Image Definition.
 ### UpdateExpanded (Default)
 ```
 Update-AzGalleryImageDefinition -GalleryName <String> -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String> -IdentifierOffer <String> -IdentifierPublisher <String> -IdentifierSku <String>
- -Location <String> -OSState <OperatingSystemStateTypes> -OSType <OperatingSystemTypes>
- [-Description <String>] [-DisallowedDiskType <String[]>] [-EndOfLifeDate <DateTime>] [-Eula <String>]
- [-MaximumMemory <Int32>] [-MaximumVCpu <Int32>] [-MinimumMemory <Int32>] [-MinimumVCpu <Int32>]
+ -SubscriptionId <String> -Location <String> [-Description <String>] [-DisallowedDiskType <String[]>]
+ [-EndOfLifeDate <DateTime>] [-Eula <String>] [-IdentifierOffer <String>] [-IdentifierPublisher <String>]
+ [-IdentifierSku <String>] [-MaximumMemory <Int32>] [-MaximumVCpu <Int32>] [-MinimumMemory <Int32>]
+ [-MinimumVCpu <Int32>] [-OSState <OperatingSystemStateTypes>] [-OSType <OperatingSystemTypes>]
  [-PrivacyStatementUri <String>] [-PurchasePlanName <String>] [-PurchasePlanProduct <String>]
- [-PurchasePlanPublisher <String>] [-ReleaseNoteUri <String>] [-Tag <IResourceTags>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PurchasePlanPublisher <String>] [-ReleaseNoteUri <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzGalleryImageDefinition -InputObject <IComputeIdentity> -IdentifierOffer <String>
- -IdentifierPublisher <String> -IdentifierSku <String> -Location <String> -OSState <OperatingSystemStateTypes>
- -OSType <OperatingSystemTypes> [-Description <String>] [-DisallowedDiskType <String[]>]
- [-EndOfLifeDate <DateTime>] [-Eula <String>] [-MaximumMemory <Int32>] [-MaximumVCpu <Int32>]
- [-MinimumMemory <Int32>] [-MinimumVCpu <Int32>] [-PrivacyStatementUri <String>] [-PurchasePlanName <String>]
+Update-AzGalleryImageDefinition -InputObject <IComputeIdentity> -Location <String> [-Description <String>]
+ [-DisallowedDiskType <String[]>] [-EndOfLifeDate <DateTime>] [-Eula <String>] [-IdentifierOffer <String>]
+ [-IdentifierPublisher <String>] [-IdentifierSku <String>] [-MaximumMemory <Int32>] [-MaximumVCpu <Int32>]
+ [-MinimumMemory <Int32>] [-MinimumVCpu <Int32>] [-OSState <OperatingSystemStateTypes>]
+ [-OSType <OperatingSystemTypes>] [-PrivacyStatementUri <String>] [-PurchasePlanName <String>]
  [-PurchasePlanProduct <String>] [-PurchasePlanPublisher <String>] [-ReleaseNoteUri <String>]
- [-Tag <IResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -70,7 +70,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -183,7 +183,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -199,7 +199,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -215,7 +215,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -225,6 +225,7 @@ Dynamic: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
@@ -265,7 +266,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -281,7 +282,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -297,7 +298,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -313,7 +314,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -337,6 +338,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -OSState
 The allowed values for OS State are 'Generalized'.
 
@@ -345,7 +362,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.OperatingSystemStateTyp
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -355,14 +372,20 @@ Dynamic: False
 
 ### -OSType
 This property allows you to specify the type of the OS that is included in the disk when creating a VM from a managed image.
-  Possible values are:    **Windows**    **Linux**
+
+
+ Possible values are: 
+
+ **Windows** 
+
+ **Linux**
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.OperatingSystemTypes
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -487,7 +510,7 @@ Dynamic: False
 Resource tags
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20170330.IResourceTags
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -544,6 +567,37 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20190301.IGalleryImage
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### INPUTOBJECT <IComputeIdentity>: Identity Parameter
+  - `[AvailabilitySetName <String>]`: The name of the availability set.
+  - `[CommandId <String>]`: The command id.
+  - `[DiskName <String>]`: The name of the managed disk that is being created. The name can't be changed after the disk is created. Supported characters for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
+  - `[GalleryImageDefinitionName <String>]`: The name of the gallery Image Definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+  - `[GalleryImageVersionName <String>]`: The name of the gallery Image Version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+  - `[GalleryName <String>]`: The name of the Shared Image Gallery. The allowed characters are alphabets and numbers with dots and periods allowed in the middle. The maximum length is 80 characters.
+  - `[Id <String>]`: Resource identity path
+  - `[ImageName <String>]`: The name of the image.
+  - `[InstanceId <String>]`: The instance ID of the virtual machine.
+  - `[Location <String>]`: The name of a supported Azure region.
+  - `[Offer <String>]`: A valid image publisher offer.
+  - `[ProximityPlacementGroupName <String>]`: The name of the proximity placement group.
+  - `[PublisherName <String>]`: 
+  - `[ResourceGroupName <String>]`: The name of the resource group.
+  - `[Sku <String>]`: A valid image SKU.
+  - `[SnapshotName <String>]`: The name of the snapshot that is being created. The name can't be changed after the snapshot is created. Supported characters for the name are a-z, A-Z, 0-9 and _. The max name length is 80 characters.
+  - `[SubscriptionId <String>]`: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  - `[Type <String>]`: 
+  - `[VMExtensionName <String>]`: The name of the virtual machine extension.
+  - `[VMName <String>]`: The name of the virtual machine.
+  - `[VMScaleSetName <String>]`: The name of the VM scale set.
+  - `[Version <String>]`: 
+  - `[VirtualMachineScaleSetName <String>]`: The name of the VM scale set.
+  - `[VmssExtensionName <String>]`: The name of the VM scale set extension.
 
 ## RELATED LINKS
 

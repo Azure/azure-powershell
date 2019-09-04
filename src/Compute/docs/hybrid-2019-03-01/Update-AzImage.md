@@ -15,20 +15,21 @@ Update an image.
 ### UpdateExpanded (Default)
 ```
 Update-AzImage -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -OSDiskOsstate <OperatingSystemStateTypes> -OSDiskOstype <OperatingSystemTypes>
  [-DataDisk <IImageDataDisk[]>] [-ManagedDiskId <String>] [-OSDiskBlobUri <String>]
- [-OSDiskCaching <CachingTypes>] [-OSDiskSizeInGb <Int32>] [-OSDiskStorageAccountType <StorageAccountTypes>]
- [-SnapshotId <String>] [-SourceVirtualMachineId <String>] [-Tag <IUpdateResourceTags>] [-ZoneResilient]
- [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-OSDiskCaching <CachingTypes>] [-OSDiskOsstate <OperatingSystemStateTypes>]
+ [-OSDiskOstype <OperatingSystemTypes>] [-OSDiskSizeInGb <Int32>]
+ [-OSDiskStorageAccountType <StorageAccountTypes>] [-SnapshotId <String>] [-SourceVirtualMachineId <String>]
+ [-Tag <Hashtable>] [-ZoneResilient] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzImage -InputObject <IComputeIdentity> -OSDiskOsstate <OperatingSystemStateTypes>
- -OSDiskOstype <OperatingSystemTypes> [-DataDisk <IImageDataDisk[]>] [-ManagedDiskId <String>]
- [-OSDiskBlobUri <String>] [-OSDiskCaching <CachingTypes>] [-OSDiskSizeInGb <Int32>]
+Update-AzImage -InputObject <IComputeIdentity> [-DataDisk <IImageDataDisk[]>] [-ManagedDiskId <String>]
+ [-OSDiskBlobUri <String>] [-OSDiskCaching <CachingTypes>] [-OSDiskOsstate <OperatingSystemStateTypes>]
+ [-OSDiskOstype <OperatingSystemTypes>] [-OSDiskSizeInGb <Int32>]
  [-OSDiskStorageAccountType <StorageAccountTypes>] [-SnapshotId <String>] [-SourceVirtualMachineId <String>]
- [-Tag <IUpdateResourceTags>] [-ZoneResilient] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf]
+ [-Tag <Hashtable>] [-ZoneResilient] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -67,7 +68,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -75,7 +76,10 @@ Dynamic: False
 
 ### -DataDisk
 Specifies the parameters that are used to add a data disk to a virtual machine.
-  For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhdstoc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+
+
+ For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhdstoc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+To construct, see NOTES section for DATADISK properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IImageDataDisk[]
@@ -108,6 +112,7 @@ Dynamic: False
 
 ### -InputObject
 Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
@@ -154,6 +159,22 @@ Accept wildcard characters: False
 Dynamic: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+Dynamic: False
+```
+
 ### -OSDiskBlobUri
 The Virtual Hard Disk.
 
@@ -172,7 +193,17 @@ Dynamic: False
 
 ### -OSDiskCaching
 Specifies the caching requirements.
-  Possible values are:    **None**    **ReadOnly**    **ReadWrite**    Default: **None for Standard storage.
+
+
+ Possible values are: 
+
+ **None** 
+
+ **ReadOnly** 
+
+ **ReadWrite** 
+
+ Default: **None for Standard storage.
 ReadOnly for Premium storage**
 
 ```yaml
@@ -196,7 +227,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.OperatingSystemStateTyp
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -206,14 +237,20 @@ Dynamic: False
 
 ### -OSDiskOstype
 This property allows you to specify the type of the OS that is included in the disk if creating a VM from a custom image.
-  Possible values are:    **Windows**    **Linux**
+
+
+ Possible values are: 
+
+ **Windows** 
+
+ **Linux**
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.OperatingSystemTypes
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -224,7 +261,9 @@ Dynamic: False
 ### -OSDiskSizeInGb
 Specifies the size of empty data disks in gigabytes.
 This element can be used to overwrite the name of the disk in a virtual machine image.
-  This value cannot be larger than 1023 GB
+
+
+ This value cannot be larger than 1023 GB
 
 ```yaml
 Type: System.Int32
@@ -233,7 +272,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -325,7 +364,7 @@ Dynamic: False
 Resource tags
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IUpdateResourceTags
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -349,7 +388,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
@@ -400,6 +439,46 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20171201.IImage
 
 ## ALIASES
+
+## NOTES
+
+### COMPLEX PARAMETER PROPERTIES
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+#### DATADISK <IImageDataDisk[]>: Specifies the parameters that are used to add a data disk to a virtual machine.    For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhdstoc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+  - `Lun <Int32>`: Specifies the logical unit number of the data disk. This value is used to identify data disks within the VM and therefore must be unique for each data disk attached to a VM.
+  - `[BlobUri <String>]`: The Virtual Hard Disk.
+  - `[Caching <CachingTypes?>]`: Specifies the caching requirements.    Possible values are:    **None**    **ReadOnly**    **ReadWrite**    Default: **None for Standard storage. ReadOnly for Premium storage**
+  - `[ManagedId <String>]`: Resource Id
+  - `[SizeInGb <Int32?>]`: Specifies the size of empty data disks in gigabytes. This element can be used to overwrite the name of the disk in a virtual machine image.    This value cannot be larger than 1023 GB
+  - `[SnapshotId <String>]`: Resource Id
+  - `[StorageAccountType <StorageAccountTypes?>]`: Specifies the storage account type for the managed disk. Possible values are: Standard_LRS or Premium_LRS.
+
+#### INPUTOBJECT <IComputeIdentity>: Identity Parameter
+  - `[AvailabilitySetName <String>]`: The name of the availability set.
+  - `[CommandId <String>]`: The command id.
+  - `[DiskName <String>]`: The name of the managed disk that is being created. The name can't be changed after the disk is created. Supported characters for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters.
+  - `[GalleryImageDefinitionName <String>]`: The name of the gallery Image Definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+  - `[GalleryImageVersionName <String>]`: The name of the gallery Image Version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
+  - `[GalleryName <String>]`: The name of the Shared Image Gallery. The allowed characters are alphabets and numbers with dots and periods allowed in the middle. The maximum length is 80 characters.
+  - `[Id <String>]`: Resource identity path
+  - `[ImageName <String>]`: The name of the image.
+  - `[InstanceId <String>]`: The instance ID of the virtual machine.
+  - `[Location <String>]`: The name of a supported Azure region.
+  - `[Offer <String>]`: A valid image publisher offer.
+  - `[ProximityPlacementGroupName <String>]`: The name of the proximity placement group.
+  - `[PublisherName <String>]`: 
+  - `[ResourceGroupName <String>]`: The name of the resource group.
+  - `[Sku <String>]`: A valid image SKU.
+  - `[SnapshotName <String>]`: The name of the snapshot that is being created. The name can't be changed after the snapshot is created. Supported characters for the name are a-z, A-Z, 0-9 and _. The max name length is 80 characters.
+  - `[SubscriptionId <String>]`: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  - `[Type <String>]`: 
+  - `[VMExtensionName <String>]`: The name of the virtual machine extension.
+  - `[VMName <String>]`: The name of the virtual machine.
+  - `[VMScaleSetName <String>]`: The name of the VM scale set.
+  - `[Version <String>]`: 
+  - `[VirtualMachineScaleSetName <String>]`: The name of the VM scale set.
+  - `[VmssExtensionName <String>]`: The name of the VM scale set extension.
 
 ## RELATED LINKS
 
