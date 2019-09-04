@@ -13,8 +13,8 @@ Get usage metrics for a worker pool of an App Service Environment.
 ## SYNTAX
 
 ```
-Get-AzAppServiceEnvironmentWebWorkerUsage -Name <String> -ResourceGroupName <String>
- -SubscriptionId <String[]> -WorkerPoolName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzAppServiceEnvironmentWebWorkerUsage -Name <String> -ResourceGroupName <String> -WorkerPoolName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -100,9 +100,9 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

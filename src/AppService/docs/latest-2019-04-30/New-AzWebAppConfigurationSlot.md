@@ -15,7 +15,7 @@ Updates the configuration of an app.
 ### CreateExpanded (Default)
 ```
 New-AzWebAppConfigurationSlot -Name <String> -ResourceGroupName <String> -Slot <String>
- -SubscriptionId <String> [-ActionMinProcessExecutionTime <String>] [-ActionType <AutoHealActionType>]
+ [-SubscriptionId <String>] [-ActionMinProcessExecutionTime <String>] [-ActionType <AutoHealActionType>]
  [-AlwaysOn] [-ApiDefinitionUrl <String>] [-AppCommandLine <String>] [-AppSetting <INameValuePair[]>]
  [-AutoHealEnabled] [-AutoSwapSlotName <String>] [-AzureStorageAccount <Hashtable>]
  [-ConnectionString <IConnStringInfo[]>] [-CorAllowedOrigin <String[]>] [-CorSupportCredentials]
@@ -47,8 +47,8 @@ New-AzWebAppConfigurationSlot -Name <String> -ResourceGroupName <String> -Slot <
 ### Create
 ```
 New-AzWebAppConfigurationSlot -Name <String> -ResourceGroupName <String> -Slot <String>
- -SubscriptionId <String> -SiteConfig <ISiteConfigResource> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -SiteConfig <ISiteConfigResource> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
@@ -858,7 +858,7 @@ Dynamic: False
 ```
 
 ### -NetFrameworkVersion
-.NET Framework version.
+
 
 ```yaml
 Type: System.String
@@ -1238,9 +1238,9 @@ Type: System.String
 Parameter Sets: Create, CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

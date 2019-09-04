@@ -14,7 +14,7 @@ Creates or updates an App Service Plan.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzAppServicePlan -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Update-AzAppServicePlan -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-FreeOfferExpirationTime <DateTime>] [-HostingEnvironmentProfileId <String>] [-HyperV] [-IsSpot] [-IsXenon]
  [-Kind <String>] [-MaximumElasticWorkerCount <Int32>] [-PerSiteScaling] [-Reserved]
  [-SpotExpirationTime <DateTime>] [-TargetWorkerCount <Int32>] [-TargetWorkerSizeId <Int32>]
@@ -23,9 +23,9 @@ Update-AzAppServicePlan -Name <String> -ResourceGroupName <String> -Subscription
 
 ### Update
 ```
-Update-AzAppServicePlan -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -AppServicePlan <IAppServicePlanPatchResource> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzAppServicePlan -Name <String> -ResourceGroupName <String>
+ -AppServicePlan <IAppServicePlanPatchResource> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
@@ -321,9 +321,9 @@ Type: System.String
 Parameter Sets: Update, UpdateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

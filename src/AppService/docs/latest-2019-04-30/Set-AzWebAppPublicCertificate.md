@@ -15,7 +15,7 @@ Creates a hostname binding for an app.
 ### UpdateExpanded (Default)
 ```
 Set-AzWebAppPublicCertificate -Name <String> -PublicCertificateName <String> -ResourceGroupName <String>
- -SubscriptionId <String> [-BlobInputFile <String>] [-Kind <String>]
+ [-SubscriptionId <String>] [-BlobInputFile <String>] [-Kind <String>]
  [-PublicCertificateLocation <PublicCertificateLocation>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -23,7 +23,7 @@ Set-AzWebAppPublicCertificate -Name <String> -PublicCertificateName <String> -Re
 ### Update
 ```
 Set-AzWebAppPublicCertificate -Name <String> -PublicCertificateName <String> -ResourceGroupName <String>
- -SubscriptionId <String> -PublicCertificate <IPublicCertificate> [-DefaultProfile <PSObject>] [-Confirm]
+ -PublicCertificate <IPublicCertificate> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -191,9 +191,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

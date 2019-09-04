@@ -14,14 +14,14 @@ Get webjob information for an app, or a deployment slot.
 
 ### List (Default)
 ```
-Get-AzWebAppWebJobSlot -Name <String> -ResourceGroupName <String> -Slot <String> -SubscriptionId <String[]>
+Get-AzWebAppWebJobSlot -Name <String> -ResourceGroupName <String> -Slot <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzWebAppWebJobSlot -Name <String> -ResourceGroupName <String> -Slot <String> -SubscriptionId <String[]>
- -WebJobName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzWebAppWebJobSlot -Name <String> -ResourceGroupName <String> -Slot <String> -WebJobName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -146,9 +146,9 @@ Type: System.String[]
 Parameter Sets: Get, List
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

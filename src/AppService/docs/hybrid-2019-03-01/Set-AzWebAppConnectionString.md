@@ -14,16 +14,16 @@ Replaces the connection strings of an app.
 
 ### UpdateExpanded (Default)
 ```
-Set-AzWebAppConnectionString -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Set-AzWebAppConnectionString -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Kind <String>] [-Property <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### Update
 ```
-Set-AzWebAppConnectionString -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -ConnectionString <IConnectionStringDictionary> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Set-AzWebAppConnectionString -Name <String> -ResourceGroupName <String>
+ -ConnectionString <IConnectionStringDictionary> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -158,9 +158,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -14,17 +14,16 @@ Validate information for a certificate order.
 
 ### ValidateExpanded (Default)
 ```
-Test-AzAppServiceCertificateOrderPurchaseInformation -SubscriptionId <String> -Location <String> [-AutoRenew]
- [-Certificate <Hashtable>] [-Csr <String>] [-DistinguishedName <String>] [-KeySize <Int32>] [-Kind <String>]
- [-ProductType <CertificateProductType>] [-Tag <Hashtable>] [-ValidityInYear <Int32>]
+Test-AzAppServiceCertificateOrderPurchaseInformation -Location <String> [-SubscriptionId <String>]
+ [-AutoRenew] [-Certificate <Hashtable>] [-Csr <String>] [-DistinguishedName <String>] [-KeySize <Int32>]
+ [-Kind <String>] [-ProductType <CertificateProductType>] [-Tag <Hashtable>] [-ValidityInYear <Int32>]
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Validate
 ```
-Test-AzAppServiceCertificateOrderPurchaseInformation -SubscriptionId <String>
- -AppServiceCertificateOrder <IAppServiceCertificateOrder> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Test-AzAppServiceCertificateOrderPurchaseInformation -AppServiceCertificateOrder <IAppServiceCertificateOrder>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ValidateViaIdentity
@@ -271,9 +270,9 @@ Type: System.String
 Parameter Sets: Validate, ValidateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

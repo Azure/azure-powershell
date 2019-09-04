@@ -14,7 +14,7 @@ Restores a web app from a snapshot.
 
 ### RestoreExpanded (Default)
 ```
-Restore-AzWebAppSnapshot -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Restore-AzWebAppSnapshot -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-IgnoreConflictingHostName] [-Kind <String>] [-Overwrite] [-RecoverConfiguration]
  [-RecoverySourceId <String>] [-RecoverySourceLocation <String>] [-SnapshotTime <String>] [-UseDrSecondary]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -22,14 +22,14 @@ Restore-AzWebAppSnapshot -Name <String> -ResourceGroupName <String> -Subscriptio
 
 ### Restore
 ```
-Restore-AzWebAppSnapshot -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -RestoreRequest <ISnapshotRestoreRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Restore-AzWebAppSnapshot -Name <String> -ResourceGroupName <String> -RestoreRequest <ISnapshotRestoreRequest>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### RestoreExpandedSlot
 ```
-Restore-AzWebAppSnapshot -Name <String> -ResourceGroupName <String> -Slot <String> -SubscriptionId <String>
+Restore-AzWebAppSnapshot -Name <String> -ResourceGroupName <String> -Slot <String> [-SubscriptionId <String>]
  [-IgnoreConflictingHostName] [-Kind <String>] [-Overwrite] [-RecoverConfiguration]
  [-RecoverySourceId <String>] [-RecoverySourceLocation <String>] [-SnapshotTime <String>] [-UseDrSecondary]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -37,9 +37,9 @@ Restore-AzWebAppSnapshot -Name <String> -ResourceGroupName <String> -Slot <Strin
 
 ### RestoreSlot
 ```
-Restore-AzWebAppSnapshot -Name <String> -ResourceGroupName <String> -Slot <String> -SubscriptionId <String>
- -RestoreRequest <ISnapshotRestoreRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Restore-AzWebAppSnapshot -Name <String> -ResourceGroupName <String> -Slot <String>
+ -RestoreRequest <ISnapshotRestoreRequest> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### RestoreViaIdentity
@@ -360,9 +360,9 @@ Type: System.String
 Parameter Sets: Restore, RestoreExpanded, RestoreExpandedSlot, RestoreSlot
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

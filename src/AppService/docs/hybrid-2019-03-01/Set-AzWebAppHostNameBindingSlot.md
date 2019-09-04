@@ -15,7 +15,7 @@ Creates a hostname binding for an app.
 ### UpdateExpanded (Default)
 ```
 Set-AzWebAppHostNameBindingSlot -HostName <String> -Name <String> -ResourceGroupName <String> -Slot <String>
- -SubscriptionId <String> [-AzureResourceName <String>] [-AzureResourceType <AzureResourceType>]
+ [-SubscriptionId <String>] [-AzureResourceName <String>] [-AzureResourceType <AzureResourceType>]
  [-CustomHostNameDnsRecordType <CustomHostNameDnsRecordType>] [-DomainId <String>]
  [-HostNameType <HostNameType>] [-Kind <String>] [-SiteName <String>] [-SslState <SslState>]
  [-Thumbprint <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -24,7 +24,7 @@ Set-AzWebAppHostNameBindingSlot -HostName <String> -Name <String> -ResourceGroup
 ### Update
 ```
 Set-AzWebAppHostNameBindingSlot -HostName <String> -Name <String> -ResourceGroupName <String> -Slot <String>
- -SubscriptionId <String> -HostNameBinding <IHostNameBinding> [-DefaultProfile <PSObject>] [-Confirm]
+ -HostNameBinding <IHostNameBinding> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -289,9 +289,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -14,7 +14,7 @@ Generate a single sign-on request for the domain management portal.
 
 ### Get (Default)
 ```
-Get-AzAppServiceDomainControlCenterSsoRequest -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
+Get-AzAppServiceDomainControlCenterSsoRequest [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -92,9 +92,9 @@ Type: System.String[]
 Parameter Sets: Get
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -15,7 +15,7 @@ Gets a snapshot of the configuration of an app at a previous point in time.
 ### Get (Default)
 ```
 Get-AzWebAppConfigurationSnapshotSlot -Name <String> -ResourceGroupName <String> -Slot <String>
- -SnapshotId <String> -SubscriptionId <String[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -SnapshotId <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -157,9 +157,9 @@ Type: System.String[]
 Parameter Sets: Get
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

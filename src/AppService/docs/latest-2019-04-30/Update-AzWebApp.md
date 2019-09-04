@@ -14,7 +14,7 @@ Creates a new web, mobile, or API app in an existing resource group, or updates 
 
 ### UpdateExpanded (Default)
 ```
-Update-AzWebApp -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-ClientAffinityEnabled]
+Update-AzWebApp -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-ClientAffinityEnabled]
  [-ClientCertEnabled] [-ClientCertExclusionPath <String>] [-CloningInfoAppSettingsOverride <Hashtable>]
  [-CloningInfoCloneCustomHostName] [-CloningInfoCloneSourceControl] [-CloningInfoConfigureLoadBalancing]
  [-CloningInfoCorrelationId <String>] [-CloningInfoHostingEnvironment <String>] [-CloningInfoOverwrite]
@@ -30,8 +30,8 @@ Update-AzWebApp -Name <String> -ResourceGroupName <String> -SubscriptionId <Stri
 
 ### Update
 ```
-Update-AzWebApp -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -SiteEnvelope <ISitePatchResource> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzWebApp -Name <String> -ResourceGroupName <String> -SiteEnvelope <ISitePatchResource>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
@@ -702,9 +702,9 @@ Type: System.String
 Parameter Sets: Update, UpdateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

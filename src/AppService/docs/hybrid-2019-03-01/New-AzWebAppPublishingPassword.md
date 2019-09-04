@@ -14,14 +14,14 @@ Generates a new publishing password for an app (or deployment slot, if specified
 
 ### Generate (Default)
 ```
-New-AzWebAppPublishingPassword -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+New-AzWebAppPublishingPassword -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GenerateSlot
 ```
 New-AzWebAppPublishingPassword -Name <String> -ResourceGroupName <String> -Slot <String>
- -SubscriptionId <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GenerateViaIdentity
@@ -163,9 +163,9 @@ Type: System.String
 Parameter Sets: Generate, GenerateSlot
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

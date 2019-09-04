@@ -14,31 +14,30 @@ Gets the publishing profile for an app (or deployment slot, if specified).
 
 ### ListExpanded (Default)
 ```
-Get-AzWebAppPublishingProfile -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- -OutFile <String> [-Format <PublishingProfileFormat>] [-IncludeDisasterRecoveryEndpoints]
+Get-AzWebAppPublishingProfile -Name <String> -ResourceGroupName <String> -OutFile <String>
+ [-SubscriptionId <String[]>] [-Format <PublishingProfileFormat>] [-IncludeDisasterRecoveryEndpoints]
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### List
 ```
-Get-AzWebAppPublishingProfile -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- -OutFile <String> -PublishingProfileOption <ICsmPublishingProfileOptions> [-DefaultProfile <PSObject>]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzWebAppPublishingProfile -Name <String> -ResourceGroupName <String> -OutFile <String>
+ -PublishingProfileOption <ICsmPublishingProfileOptions> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzWebAppPublishingProfile -Name <String> -ResourceGroupName <String> -Slot <String>
- -SubscriptionId <String[]> -OutFile <String> -PublishingProfileOption <ICsmPublishingProfileOptions>
+Get-AzWebAppPublishingProfile -Name <String> -ResourceGroupName <String> -Slot <String> -OutFile <String>
+ -PublishingProfileOption <ICsmPublishingProfileOptions> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ListExpanded1
 ```
-Get-AzWebAppPublishingProfile -Name <String> -ResourceGroupName <String> -Slot <String>
- -SubscriptionId <String[]> -OutFile <String> [-Format <PublishingProfileFormat>]
- [-IncludeDisasterRecoveryEndpoints] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Get-AzWebAppPublishingProfile -Name <String> -ResourceGroupName <String> -Slot <String> -OutFile <String>
+ [-SubscriptionId <String[]>] [-Format <PublishingProfileFormat>] [-IncludeDisasterRecoveryEndpoints]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -223,9 +222,9 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

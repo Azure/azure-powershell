@@ -14,15 +14,15 @@ Replaces the application settings of an app.
 
 ### UpdateExpanded (Default)
 ```
-Set-AzWebAppApplicationSetting -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Set-AzWebAppApplicationSetting -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Kind <String>] [-Property <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### Update
 ```
-Set-AzWebAppApplicationSetting -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -AppSetting <IStringDictionary> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzWebAppApplicationSetting -Name <String> -ResourceGroupName <String> -AppSetting <IStringDictionary>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -157,9 +157,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

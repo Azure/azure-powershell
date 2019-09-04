@@ -14,16 +14,16 @@ Validate if the container settings are correct.
 
 ### ValidateExpanded (Default)
 ```
-Test-AzAppServiceContainerSetting -ResourceGroupName <String> -SubscriptionId <String> [-BaseUrl <String>]
+Test-AzAppServiceContainerSetting -ResourceGroupName <String> [-SubscriptionId <String>] [-BaseUrl <String>]
  [-Password <String>] [-Platform <String>] [-Repository <String>] [-Tag <String>] [-Username <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Validate
 ```
-Test-AzAppServiceContainerSetting -ResourceGroupName <String> -SubscriptionId <String>
- -ValidateContainerSettingsRequest <IValidateContainerSettingsRequest> [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Test-AzAppServiceContainerSetting -ResourceGroupName <String>
+ -ValidateContainerSettingsRequest <IValidateContainerSettingsRequest> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ValidateViaIdentity
@@ -188,9 +188,9 @@ Type: System.String
 Parameter Sets: Validate, ValidateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

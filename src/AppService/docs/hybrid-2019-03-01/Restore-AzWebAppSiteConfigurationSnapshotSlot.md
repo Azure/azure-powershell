@@ -15,7 +15,7 @@ Reverts the configuration of an app to a previous snapshot.
 ### Recover (Default)
 ```
 Restore-AzWebAppSiteConfigurationSnapshotSlot -Name <String> -ResourceGroupName <String> -Slot <String>
- -SnapshotId <String> -SubscriptionId <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+ -SnapshotId <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -174,9 +174,9 @@ Type: System.String
 Parameter Sets: Recover
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

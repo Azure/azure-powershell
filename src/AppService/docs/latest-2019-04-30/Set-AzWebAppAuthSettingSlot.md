@@ -14,13 +14,13 @@ Updates the Authentication / Authorization settings associated with web app.
 
 ### UpdateExpanded (Default)
 ```
-Set-AzWebAppAuthSettingSlot -Name <String> -ResourceGroupName <String> -Slot <String> -SubscriptionId <String>
- [-AdditionalLoginParam <String[]>] [-AllowedAudience <String[]>] [-AllowedExternalRedirectUrl <String[]>]
- [-ClientId <String>] [-ClientSecret <String>] [-ClientSecretCertificateThumbprint <String>]
- [-DefaultProvider <BuiltInAuthenticationProvider>] [-Enabled] [-FacebookAppId <String>]
- [-FacebookAppSecret <String>] [-FacebookOAuthScope <String[]>] [-GoogleClientId <String>]
- [-GoogleClientSecret <String>] [-GoogleOAuthScope <String[]>] [-Issuer <String>] [-Kind <String>]
- [-MicrosoftAccountClientId <String>] [-MicrosoftAccountClientSecret <String>]
+Set-AzWebAppAuthSettingSlot -Name <String> -ResourceGroupName <String> -Slot <String>
+ [-SubscriptionId <String>] [-AdditionalLoginParam <String[]>] [-AllowedAudience <String[]>]
+ [-AllowedExternalRedirectUrl <String[]>] [-ClientId <String>] [-ClientSecret <String>]
+ [-ClientSecretCertificateThumbprint <String>] [-DefaultProvider <BuiltInAuthenticationProvider>] [-Enabled]
+ [-FacebookAppId <String>] [-FacebookAppSecret <String>] [-FacebookOAuthScope <String[]>]
+ [-GoogleClientId <String>] [-GoogleClientSecret <String>] [-GoogleOAuthScope <String[]>] [-Issuer <String>]
+ [-Kind <String>] [-MicrosoftAccountClientId <String>] [-MicrosoftAccountClientSecret <String>]
  [-MicrosoftAccountOAuthScope <String[]>] [-RuntimeVersion <String>] [-TokenRefreshExtensionHour <Double>]
  [-TokenStoreEnabled] [-TwitterConsumerKey <String>] [-TwitterConsumerSecret <String>]
  [-UnauthenticatedClientAction <UnauthenticatedClientAction>] [-ValidateIssuer] [-DefaultProfile <PSObject>]
@@ -29,8 +29,9 @@ Set-AzWebAppAuthSettingSlot -Name <String> -ResourceGroupName <String> -Slot <St
 
 ### Update
 ```
-Set-AzWebAppAuthSettingSlot -Name <String> -ResourceGroupName <String> -Slot <String> -SubscriptionId <String>
- -SiteAuthSetting <ISiteAuthSettings> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzWebAppAuthSettingSlot -Name <String> -ResourceGroupName <String> -Slot <String>
+ -SiteAuthSetting <ISiteAuthSettings> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -479,9 +480,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

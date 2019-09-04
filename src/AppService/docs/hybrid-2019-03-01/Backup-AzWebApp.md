@@ -14,7 +14,7 @@ Creates a backup of an app.
 
 ### BackupExpanded (Default)
 ```
-Backup-AzWebApp -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-BackupName <String>]
+Backup-AzWebApp -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-BackupName <String>]
  [-BackupScheduleFrequencyInterval <Int32>] [-BackupScheduleFrequencyUnit <FrequencyUnit>]
  [-BackupScheduleKeepAtLeastOneBackup] [-BackupScheduleRetentionPeriodInDay <Int32>]
  [-BackupScheduleStartTime <DateTime>] [-Database <IDatabaseBackupSetting[]>] [-Enabled] [-Kind <String>]
@@ -23,13 +23,13 @@ Backup-AzWebApp -Name <String> -ResourceGroupName <String> -SubscriptionId <Stri
 
 ### Backup
 ```
-Backup-AzWebApp -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Request <IBackupRequest>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Backup-AzWebApp -Name <String> -ResourceGroupName <String> -Request <IBackupRequest>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### BackupExpandedSlot
 ```
-Backup-AzWebApp -Name <String> -ResourceGroupName <String> -Slot <String> -SubscriptionId <String>
+Backup-AzWebApp -Name <String> -ResourceGroupName <String> -Slot <String> [-SubscriptionId <String>]
  [-BackupName <String>] [-BackupScheduleFrequencyInterval <Int32>]
  [-BackupScheduleFrequencyUnit <FrequencyUnit>] [-BackupScheduleKeepAtLeastOneBackup]
  [-BackupScheduleRetentionPeriodInDay <Int32>] [-BackupScheduleStartTime <DateTime>]
@@ -39,8 +39,8 @@ Backup-AzWebApp -Name <String> -ResourceGroupName <String> -Slot <String> -Subsc
 
 ### BackupSlot
 ```
-Backup-AzWebApp -Name <String> -ResourceGroupName <String> -Slot <String> -SubscriptionId <String>
- -Request <IBackupRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Backup-AzWebApp -Name <String> -ResourceGroupName <String> -Slot <String> -Request <IBackupRequest>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### BackupViaIdentity
@@ -364,9 +364,9 @@ Type: System.String
 Parameter Sets: Backup, BackupExpanded, BackupExpandedSlot, BackupSlot
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

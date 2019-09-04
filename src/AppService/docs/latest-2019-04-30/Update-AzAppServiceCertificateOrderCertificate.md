@@ -15,16 +15,15 @@ Creates or updates a certificate and associates with key vault secret.
 ### UpdateExpanded (Default)
 ```
 Update-AzAppServiceCertificateOrderCertificate -CertificateOrderName <String> -Name <String>
- -ResourceGroupName <String> -SubscriptionId <String> [-KeyVaultId <String>] [-KeyVaultSecretName <String>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-KeyVaultId <String>] [-KeyVaultSecretName <String>]
  [-Kind <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
 ```
 Update-AzAppServiceCertificateOrderCertificate -CertificateOrderName <String> -Name <String>
- -ResourceGroupName <String> -SubscriptionId <String>
- -KeyVaultCertificate <IAppServiceCertificatePatchResource> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -ResourceGroupName <String> -KeyVaultCertificate <IAppServiceCertificatePatchResource>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
@@ -222,9 +221,9 @@ Type: System.String
 Parameter Sets: Update, UpdateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

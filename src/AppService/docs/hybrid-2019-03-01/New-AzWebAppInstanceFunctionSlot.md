@@ -15,16 +15,16 @@ Create function for web site, or a deployment slot.
 ### CreateExpanded (Default)
 ```
 New-AzWebAppInstanceFunctionSlot -FunctionName <String> -Name <String> -ResourceGroupName <String>
- -Slot <String> -SubscriptionId <String> [-Config <IFunctionEnvelopePropertiesConfig>] [-ConfigHref <String>]
- [-File <Hashtable>] [-FunctionAppId <String>] [-Href <String>] [-Kind <String>] [-ScriptHref <String>]
- [-ScriptRootPathHref <String>] [-SecretsFileHref <String>] [-TestData <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Slot <String> [-SubscriptionId <String>] [-Config <IFunctionEnvelopePropertiesConfig>]
+ [-ConfigHref <String>] [-File <Hashtable>] [-FunctionAppId <String>] [-Href <String>] [-Kind <String>]
+ [-ScriptHref <String>] [-ScriptRootPathHref <String>] [-SecretsFileHref <String>] [-TestData <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create
 ```
 New-AzWebAppInstanceFunctionSlot -FunctionName <String> -Name <String> -ResourceGroupName <String>
- -Slot <String> -SubscriptionId <String> -FunctionEnvelope <IFunctionEnvelope> [-DefaultProfile <PSObject>]
+ -Slot <String> -FunctionEnvelope <IFunctionEnvelope> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -369,9 +369,9 @@ Type: System.String
 Parameter Sets: Create, CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

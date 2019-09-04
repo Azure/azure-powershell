@@ -13,7 +13,7 @@ Gets a list of meters for a given location.
 ## SYNTAX
 
 ```
-Get-AzAppServiceBillingMeter -SubscriptionId <String[]> [-BillingLocation <String>] [-OSType <String>]
+Get-AzAppServiceBillingMeter [-SubscriptionId <String[]>] [-BillingLocation <String>] [-OSType <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -100,9 +100,9 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

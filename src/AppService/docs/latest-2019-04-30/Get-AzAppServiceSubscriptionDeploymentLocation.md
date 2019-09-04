@@ -14,7 +14,7 @@ Gets list of available geo regions plus ministamps
 
 ### Get1 (Default)
 ```
-Get-AzAppServiceSubscriptionDeploymentLocation -SubscriptionId <String[]> [-DefaultProfile <PSObject>]
+Get-AzAppServiceSubscriptionDeploymentLocation [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -92,9 +92,9 @@ Type: System.String[]
 Parameter Sets: Get1
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

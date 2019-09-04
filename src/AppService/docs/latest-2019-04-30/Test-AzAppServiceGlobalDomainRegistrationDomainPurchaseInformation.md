@@ -14,14 +14,14 @@ Validates domain registration information
 
 ### ValidateExpanded (Default)
 ```
-Test-AzAppServiceGlobalDomainRegistrationDomainPurchaseInformation -SubscriptionId <String> -Location <String>
- [-AutoRenew] [-ConsentAgreedAt <DateTime>] [-ConsentAgreedBy <String>] [-ConsentAgreementKey <String[]>]
- [-ContactAdminAddressMailingAddress1 <String>] [-ContactAdminAddressMailingAddress2 <String>]
- [-ContactAdminAddressMailingCity <String>] [-ContactAdminAddressMailingCountry <String>]
- [-ContactAdminAddressMailingPostalCode <String>] [-ContactAdminAddressMailingState <String>]
- [-ContactAdminEmail <String>] [-ContactAdminFax <String>] [-ContactAdminJobTitle <String>]
- [-ContactAdminNameFirst <String>] [-ContactAdminNameLast <String>] [-ContactAdminNameMiddle <String>]
- [-ContactAdminOrganization <String>] [-ContactAdminPhone <String>]
+Test-AzAppServiceGlobalDomainRegistrationDomainPurchaseInformation -Location <String>
+ [-SubscriptionId <String>] [-AutoRenew] [-ConsentAgreedAt <DateTime>] [-ConsentAgreedBy <String>]
+ [-ConsentAgreementKey <String[]>] [-ContactAdminAddressMailingAddress1 <String>]
+ [-ContactAdminAddressMailingAddress2 <String>] [-ContactAdminAddressMailingCity <String>]
+ [-ContactAdminAddressMailingCountry <String>] [-ContactAdminAddressMailingPostalCode <String>]
+ [-ContactAdminAddressMailingState <String>] [-ContactAdminEmail <String>] [-ContactAdminFax <String>]
+ [-ContactAdminJobTitle <String>] [-ContactAdminNameFirst <String>] [-ContactAdminNameLast <String>]
+ [-ContactAdminNameMiddle <String>] [-ContactAdminOrganization <String>] [-ContactAdminPhone <String>]
  [-ContactBillingAddressMailingAddress1 <String>] [-ContactBillingAddressMailingAddress2 <String>]
  [-ContactBillingAddressMailingCity <String>] [-ContactBillingAddressMailingCountry <String>]
  [-ContactBillingAddressMailingPostalCode <String>] [-ContactBillingAddressMailingState <String>]
@@ -49,9 +49,9 @@ Test-AzAppServiceGlobalDomainRegistrationDomainPurchaseInformation -Subscription
 
 ### Validate
 ```
-Test-AzAppServiceGlobalDomainRegistrationDomainPurchaseInformation -SubscriptionId <String>
- -DomainRegistrationInput <IDomainRegistrationInput> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Test-AzAppServiceGlobalDomainRegistrationDomainPurchaseInformation
+ -DomainRegistrationInput <IDomainRegistrationInput> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ValidateViaIdentity
@@ -1388,9 +1388,9 @@ Type: System.String
 Parameter Sets: Validate, ValidateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

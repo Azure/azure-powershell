@@ -14,7 +14,7 @@ Creates a backup of an app.
 
 ### BackupExpanded (Default)
 ```
-Backup-AzWebApp -Name <String> -ResourceGroupName <String> -SubscriptionId <String> [-BackupName <String>]
+Backup-AzWebApp -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-BackupName <String>]
  [-BackupScheduleFrequencyInterval <Int32>] [-BackupScheduleFrequencyUnit <FrequencyUnit>]
  [-BackupScheduleKeepAtLeastOneBackup] [-BackupScheduleRetentionPeriodInDay <Int32>]
  [-BackupScheduleStartTime <DateTime>] [-Database <IDatabaseBackupSetting[]>] [-Enabled] [-Kind <String>]
@@ -23,22 +23,22 @@ Backup-AzWebApp -Name <String> -ResourceGroupName <String> -SubscriptionId <Stri
 
 ### Backup
 ```
-Backup-AzWebApp -Name <String> -ResourceGroupName <String> -SubscriptionId <String> -Request <IBackupRequest>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Backup-AzWebApp -Name <String> -ResourceGroupName <String> -Request <IBackupRequest>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### BackupBySiteObject
 ```
-Backup-AzWebApp [-SubscriptionId] <String> [-SiteObject] <ISite> [-BackupScheduleFrequencyInterval] <Int32>
- [-BackupScheduleFrequencyUnit] <FrequencyUnit> [-BackupScheduleRetentionPeriodInDay] <Int32>
- [-StorageAccountUrl] <String> -BackupScheduleKeepAtLeastOneBackup [[-BackupName] <String>]
- [[-BackupScheduleStartTime] <DateTime>] [[-Database] <IDatabaseBackupSetting[]>] [[-Kind] <String>]
- [[-DefaultProfile] <PSObject>] [-Enabled] [-Confirm] [-WhatIf] [<CommonParameters>]
+Backup-AzWebApp -BackupScheduleFrequencyInterval <Int32> -BackupScheduleFrequencyUnit <FrequencyUnit>
+ -BackupScheduleKeepAtLeastOneBackup -BackupScheduleRetentionPeriodInDay <Int32> -SiteObject <ISite>
+ -StorageAccountUrl <String> [-SubscriptionId <String>] [-BackupName <String>]
+ [-BackupScheduleStartTime <DateTime>] [-Database <IDatabaseBackupSetting[]>] [-Enabled] [-Kind <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### BackupExpandedSlot
 ```
-Backup-AzWebApp -Name <String> -ResourceGroupName <String> -Slot <String> -SubscriptionId <String>
+Backup-AzWebApp -Name <String> -ResourceGroupName <String> -Slot <String> [-SubscriptionId <String>]
  [-BackupName <String>] [-BackupScheduleFrequencyInterval <Int32>]
  [-BackupScheduleFrequencyUnit <FrequencyUnit>] [-BackupScheduleKeepAtLeastOneBackup]
  [-BackupScheduleRetentionPeriodInDay <Int32>] [-BackupScheduleStartTime <DateTime>]
@@ -48,8 +48,8 @@ Backup-AzWebApp -Name <String> -ResourceGroupName <String> -Slot <String> -Subsc
 
 ### BackupSlot
 ```
-Backup-AzWebApp -Name <String> -ResourceGroupName <String> -Slot <String> -SubscriptionId <String>
- -Request <IBackupRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Backup-AzWebApp -Name <String> -ResourceGroupName <String> -Slot <String> -Request <IBackupRequest>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### BackupViaIdentity
@@ -110,7 +110,7 @@ Parameter Sets: BackupBySiteObject, BackupExpanded, BackupExpandedSlot, BackupVi
 Aliases:
 
 Required: False
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -127,7 +127,7 @@ Parameter Sets: BackupBySiteObject, BackupExpanded, BackupExpandedSlot, BackupVi
 Aliases:
 
 Required: True
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -144,7 +144,7 @@ Parameter Sets: BackupBySiteObject, BackupExpanded, BackupExpandedSlot, BackupVi
 Aliases:
 
 Required: True
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -176,7 +176,7 @@ Parameter Sets: BackupBySiteObject, BackupExpanded, BackupExpandedSlot, BackupVi
 Aliases:
 
 Required: True
-Position: 5
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -192,7 +192,7 @@ Parameter Sets: BackupBySiteObject, BackupExpanded, BackupExpandedSlot, BackupVi
 Aliases:
 
 Required: False
-Position: 6
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -209,7 +209,7 @@ Parameter Sets: BackupBySiteObject, BackupExpanded, BackupExpandedSlot, BackupVi
 Aliases:
 
 Required: False
-Position: 7
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -225,7 +225,7 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
-Position: 10
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -274,7 +274,7 @@ Parameter Sets: BackupBySiteObject, BackupExpanded, BackupExpandedSlot, BackupVi
 Aliases:
 
 Required: False
-Position: 8
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -340,7 +340,7 @@ Parameter Sets: BackupBySiteObject
 Aliases: WebApp, WebAppSlot
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -373,7 +373,7 @@ Parameter Sets: BackupBySiteObject, BackupExpanded, BackupExpandedSlot, BackupVi
 Aliases:
 
 Required: True
-Position: 9
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -390,9 +390,9 @@ Type: System.String
 Parameter Sets: Backup, BackupBySiteObject, BackupExpanded, BackupExpandedSlot, BackupSlot
 Aliases:
 
-Required: True
-Position: 0
-Default value: None
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

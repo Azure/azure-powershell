@@ -14,14 +14,14 @@ Get a Virtual Network route in an App Service plan.
 
 ### List (Default)
 ```
-Get-AzAppServicePlanRoute -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- -VnetName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzAppServicePlanRoute -Name <String> -ResourceGroupName <String> -VnetName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzAppServicePlanRoute -Name <String> -ResourceGroupName <String> -RouteName <String>
- -SubscriptionId <String[]> -VnetName <String> [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
+Get-AzAppServicePlanRoute -Name <String> -ResourceGroupName <String> -RouteName <String> -VnetName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -162,9 +162,9 @@ Type: System.String[]
 Parameter Sets: Get, List
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

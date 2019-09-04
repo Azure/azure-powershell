@@ -14,7 +14,7 @@ Renew a domain.
 
 ### Renew (Default)
 ```
-Invoke-AzAppServiceRenewDomain -DomainName <String> -ResourceGroupName <String> -SubscriptionId <String>
+Invoke-AzAppServiceRenewDomain -DomainName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -140,9 +140,9 @@ Type: System.String
 Parameter Sets: Renew
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

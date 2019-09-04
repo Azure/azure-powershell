@@ -15,15 +15,15 @@ Creates a domain ownership identifier for web app, or updates an existing owners
 ### UpdateExpanded (Default)
 ```
 Set-AzWebAppDomainOwnershipIdentifierSlot -DomainOwnershipIdentifierName <String> -Name <String>
- -ResourceGroupName <String> -Slot <String> -SubscriptionId <String> [-Kind <String>] [-PropertiesId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ResourceGroupName <String> -Slot <String> [-SubscriptionId <String>] [-Kind <String>]
+ [-PropertiesId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
 ```
 Set-AzWebAppDomainOwnershipIdentifierSlot -DomainOwnershipIdentifierName <String> -Name <String>
- -ResourceGroupName <String> -Slot <String> -SubscriptionId <String> -DomainOwnershipIdentifier <IIdentifier>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ResourceGroupName <String> -Slot <String> -DomainOwnershipIdentifier <IIdentifier>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -191,9 +191,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

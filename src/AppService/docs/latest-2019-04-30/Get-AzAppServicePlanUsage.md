@@ -13,7 +13,7 @@ Gets server farm usage information
 ## SYNTAX
 
 ```
-Get-AzAppServicePlanUsage -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzAppServicePlanUsage -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -118,9 +118,9 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

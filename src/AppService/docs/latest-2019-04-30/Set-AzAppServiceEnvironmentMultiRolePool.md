@@ -14,7 +14,7 @@ Create or update a multi-role pool.
 
 ### UpdateExpanded (Default)
 ```
-Set-AzAppServiceEnvironmentMultiRolePool -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Set-AzAppServiceEnvironmentMultiRolePool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Capacity <Int32>] [-ComputeMode <ComputeModeOptions>] [-Kind <String>] [-SkuCapability <ICapability[]>]
  [-SkuCapacityDefault <Int32>] [-SkuCapacityMaximum <Int32>] [-SkuCapacityMinimum <Int32>]
  [-SkuCapacityScaleType <String>] [-SkuFamily <String>] [-SkuLocation <String[]>] [-SkuName <String>]
@@ -24,9 +24,9 @@ Set-AzAppServiceEnvironmentMultiRolePool -Name <String> -ResourceGroupName <Stri
 
 ### Update
 ```
-Set-AzAppServiceEnvironmentMultiRolePool -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -MultiRolePoolEnvelope <IWorkerPoolResource> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzAppServiceEnvironmentMultiRolePool -Name <String> -ResourceGroupName <String>
+ -MultiRolePoolEnvelope <IWorkerPoolResource> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -386,9 +386,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

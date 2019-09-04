@@ -14,14 +14,14 @@ Get process information by its ID for a specific scaled-out instance in a web si
 
 ### List (Default)
 ```
-Get-AzWebAppProcess -Name <String> -ResourceGroupName <String> -SubscriptionId <String[]>
+Get-AzWebAppProcess -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzWebAppProcess -Name <String> -ProcessId <String> -ResourceGroupName <String> -SubscriptionId <String[]>
- [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
+Get-AzWebAppProcess -Name <String> -ProcessId <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -162,9 +162,9 @@ Type: System.String[]
 Parameter Sets: Get, List
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -15,7 +15,7 @@ Use this to get information about the databases stored in a backup.
 
 ### DiscoverExpanded (Default)
 ```
-Find-AzWebAppBackup -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Find-AzWebAppBackup -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AdjustConnectionString] [-AppServicePlan <String>] [-BlobName <String>]
  [-Database <IDatabaseBackupSetting[]>] [-HostingEnvironment <String>] [-IgnoreConflictingHostName]
  [-IgnoreDatabase] [-Kind <String>] [-OperationType <BackupRestoreOperationType>] [-Overwrite]
@@ -25,13 +25,13 @@ Find-AzWebAppBackup -Name <String> -ResourceGroupName <String> -SubscriptionId <
 
 ### Discover
 ```
-Find-AzWebAppBackup -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -Request <IRestoreRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Find-AzWebAppBackup -Name <String> -ResourceGroupName <String> -Request <IRestoreRequest>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DiscoverExpandedSlot
 ```
-Find-AzWebAppBackup -Name <String> -ResourceGroupName <String> -Slot <String> -SubscriptionId <String>
+Find-AzWebAppBackup -Name <String> -ResourceGroupName <String> -Slot <String> [-SubscriptionId <String>]
  [-AdjustConnectionString] [-AppServicePlan <String>] [-BlobName <String>]
  [-Database <IDatabaseBackupSetting[]>] [-HostingEnvironment <String>] [-IgnoreConflictingHostName]
  [-IgnoreDatabase] [-Kind <String>] [-OperationType <BackupRestoreOperationType>] [-Overwrite]
@@ -41,8 +41,8 @@ Find-AzWebAppBackup -Name <String> -ResourceGroupName <String> -Slot <String> -S
 
 ### DiscoverSlot
 ```
-Find-AzWebAppBackup -Name <String> -ResourceGroupName <String> -Slot <String> -SubscriptionId <String>
- -Request <IRestoreRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Find-AzWebAppBackup -Name <String> -ResourceGroupName <String> -Slot <String> -Request <IRestoreRequest>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DiscoverViaIdentity
@@ -401,9 +401,9 @@ Type: System.String
 Parameter Sets: Discover, DiscoverExpanded, DiscoverExpandedSlot, DiscoverSlot
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False

@@ -14,15 +14,15 @@ Updates the Push settings associated with web app.
 
 ### UpdateExpanded (Default)
 ```
-Set-AzWebAppSitePushSetting -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
+Set-AzWebAppSitePushSetting -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DynamicTagsJson <String>] [-IsPushEnabled] [-Kind <String>] [-TagsRequiringAuth <String>]
  [-TagWhitelistJson <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
 ```
-Set-AzWebAppSitePushSetting -Name <String> -ResourceGroupName <String> -SubscriptionId <String>
- -PushSetting <IPushSettings> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzWebAppSitePushSetting -Name <String> -ResourceGroupName <String> -PushSetting <IPushSettings>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -173,9 +173,9 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 Dynamic: False
