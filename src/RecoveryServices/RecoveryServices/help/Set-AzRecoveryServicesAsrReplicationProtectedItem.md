@@ -22,7 +22,7 @@ Set-AzRecoveryServicesAsrReplicationProtectedItem -InputObject <ASRReplicationPr
  [-AzureToAzureUpdateReplicationConfiguration <ASRAzuretoAzureDiskReplicationConfig[]>]
  [-DiskEncryptionVaultId <String>] [-DiskEncryptionSecretUrl <String>] [-KeyEncryptionKeyUrl <String>]
  [-KeyEncryptionVaultId <String>] [-UseManagedDisk <String>] [-RecoveryPublicIPAddressId <String>] 
- [-RecoveryNetworkSecurityGroupId <String>] [-RecoveryLBBackendAddressPoolId <System.Collections.Generic.List`1[String]>]
+ [-RecoveryNetworkSecurityGroupId <String>] [-RecoveryLBBackendAddressPoolId <String[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -447,7 +447,7 @@ Accept wildcard characters: False
 Specifies the target backend address pools to be associated with the recovery NIC.
 
 ```yaml
-Type: System.Collections.Generic.List`1[String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
