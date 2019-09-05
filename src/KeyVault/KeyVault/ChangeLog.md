@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Update parameter description in `Add-AzKeyVaultManagedStorageAccount` reference documentation
 
 ## Version 1.3.1
 * Fixed miscellaneous typos across module
