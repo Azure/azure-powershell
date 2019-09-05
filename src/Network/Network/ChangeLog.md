@@ -18,6 +18,7 @@
         - Additional information about change #1
 --->
 ## Upcoming Release
+* Fix incorrect example in `New-AzApplicationGateway` reference documentation 
 
 ## Version 1.13.0
 * Updated New-AzPrivateLinkServiceIpConfig
