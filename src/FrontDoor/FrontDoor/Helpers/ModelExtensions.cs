@@ -301,18 +301,32 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
 
         public static SdkFrontendEndpoint ToSdkFrontendEndpoints(this PSFrontendEndpoint psFrontendEndpoint)
         {
+            //SdkHttpsConfig psCustomHttpsConfiguration = null;
+
+            //if ((psFrontendEndpoint.CertificateSource != null) &&
+            //    //(psFrontendEndpoint.ProtocolType != null) &&
+            //    !String.IsNullOrEmpty(psFrontendEndpoint.MinimumTlsVersion) &&
+            //    !String.IsNullOrEmpty(psFrontendEndpoint.MinimumTlsVersion) &&
+            //    (psFrontendEndpoint.SecretVersion != null) &&
+            //    (psFrontendEndpoint.CertificateType != null) &&
+            //    (psFrontendEndpoint.Vault != null))
+            //{
+            //    psCustomHttpsConfiguration = new SdkHttpsConfig(psFrontendEndpoint.CertificateSource,
+            //                                   psFrontendEndpoint.MinimumTlsVersion,
+            //                                   //psFrontendEndpoint.ProtocolType,
+            //                                   new SdkValut(psFrontendEndpoint.Vault),
+            //                                   psFrontendEndpoint.SecretName,
+            //                                   psFrontendEndpoint.SecretVersion,
+            //                                   psFrontendEndpoint.CertificateType);
+            //}
+
             return new SdkFrontendEndpoint
             (
                 hostName: psFrontendEndpoint.HostName,
                 sessionAffinityEnabledState: psFrontendEndpoint.SessionAffinityEnabledState.ToString(),
                 sessionAffinityTtlSeconds: psFrontendEndpoint.SessionAffinityTtlSeconds,
                 webApplicationFirewallPolicyLink: psFrontendEndpoint.WebApplicationFirewallPolicyLink == null ? null : new SdkFWPolicyLink(psFrontendEndpoint.WebApplicationFirewallPolicyLink),
-                customHttpsConfiguration: new SdkHttpsConfig(psFrontendEndpoint.CertificateSource,
-                                   psFrontendEndpoint.ProtocolType,
-                                   new SdkValut(psFrontendEndpoint.Vault),
-                                   psFrontendEndpoint.SecretName,
-                                   psFrontendEndpoint.SecretVersion,
-                                   psFrontendEndpoint.CertificateType),
+                customHttpsConfiguration: psCustomHttpsConfiguration,
                 name: psFrontendEndpoint.Name
             );
         }

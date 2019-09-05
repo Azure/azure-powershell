@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// <summary>
         /// Whether to enforce certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.
         /// </summary>
-        [Parameter(ParameterSetName = FieldsWithCertificateNameCheckSet,
+        [Parameter(ParameterSetName = FieldsWithCertificateNameCheckParameterSet,
             Mandatory = false, HelpMessage = "Whether to disable certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.")]
         [Parameter(ParameterSetName = ObjectParameterSet,
             Mandatory = false, HelpMessage = "Whether to disable certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.")]
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// <summary>
         /// Settings for all backendPools
         /// </summary>
-        [Parameter(ParameterSetName = FieldsWithBackendPoolsSettingsSet, Mandatory = false, HelpMessage = "Settings for all backendPools")]
+        [Parameter(ParameterSetName = FieldsWithBackendPoolsSettingsParameterSet, Mandatory = false, HelpMessage = "Settings for all backendPools")]
         [Parameter(ParameterSetName = FieldsParameterSet, Mandatory = false, HelpMessage = "Settings for all backendPools")]
         [Parameter(ParameterSetName = ObjectParameterSet, Mandatory = false, HelpMessage = "Settings for all backendPools")]
         [Parameter(ParameterSetName = ResourceIdParameterSet, Mandatory = false, HelpMessage = "Settings for all backendPools")]
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 
             switch (ParameterSetName)
             {
-                case FieldsWithCertificateNameCheckSet:
+                case FieldsWithCertificateNameCheckParameterSet:
                     {
                         if (this.IsParameterBound(c => c.DisableCertificateNameCheck))
                         {

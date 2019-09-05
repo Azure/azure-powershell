@@ -12,31 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
-
 namespace Microsoft.Azure.Commands.FrontDoor.Models
-{    
-    public class PSFrontendEndpoint: PSResource
+{
+    public class PSCustomHttpsConfiguration
     {
+        public string CertificateSource { get; set; }
 
-        public string HostName { get; set; }
+        public string MinimumTlsVersion { get; set; }
 
-        public PSEnabledState? SessionAffinityEnabledState { get; set; }
+        public string Vault { get; set; }
 
-        public int? SessionAffinityTtlSeconds { get; set; }
+        public string SecretName { get; set; }
 
-        public string WebApplicationFirewallPolicyLink { get; set; }
+        public string SecretVersion { get; set; }
 
-        public List<PSBackend> Backends { get; set; }
+        public string CertificateType { get; set; }
 
-        public PSCustomHttpsProvisioningState? CustomHttpsProvisioningState { get; set; }
-
-        public PSCustomHttpsProvisioningSubstate? CustomHttpsProvisioningSubstate { get; set; }
-
-        public PSCustomHttpsConfiguration CustomHttpsConfiguration { get; set; }
-
-        public string ResourceState { get; set; }
+        public const string ProtocolType = "ServerNameIndication";
     }
 }

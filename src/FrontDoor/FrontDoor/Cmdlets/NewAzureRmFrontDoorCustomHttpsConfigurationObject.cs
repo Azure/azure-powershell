@@ -28,45 +28,15 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
     /// <summary>
     /// Defines the New-AzFrontDoorFrontendEndpointObject cmdlet.
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorFrontendEndpointObject", DefaultParameterSetName = ObjectWithCustomHttpsConfigParameterSet), OutputType(typeof(PSFrontendEndpoint))]
-    public class NewAzureRmFrontDoorFrontendEndpointObject : AzureFrontDoorCmdletBase
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorCustomHttpsConfigurationObject"), OutputType(typeof(PSFrontendEndpoint))]
+    public class NewAzureRmFrontDoorCustomHttpsConfigurationObject : AzureFrontDoorCmdletBase
     {
         /// <summary>
         /// Gets or sets the frontend endpoint name.
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "Frontend endpoint name.")]
+        [Parameter(Mandatory = true, HelpMessage = "Custom Https Configuration name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
-
-        /// <summary>
-        /// The host name of the frontendEndpoint. Must be a domain name.
-        /// </summary>
-        [Parameter(Mandatory = true,  HelpMessage = "The host name of the frontendEndpoint.")]
-        public string HostName { get; set; }
-
-        /// <summary>
-        /// Whether to allow session affinity on this host. Valid options are ‘Enabled’ or ‘Disabled’.
-        /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Whether to allow session affinity on this host. Default value is Disabled")]
-        public PSEnabledState SessionAffinityEnabledState { get; set; }
-
-        /// <summary>
-        /// The TTL to use in seconds for session affinity, if applicable.
-        /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "The TTL to use in seconds for session affinity, if applicable. Default value is 0")]
-        public int SessionAffinityTtlInSeconds { get; set; }
-
-        /// <summary>
-        /// The resource id of Web Application Firewall policy for each host (if applicable).
-        /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "The resource id of Web Application Firewall policy for each host (if applicable)")]
-        public string WebApplicationFirewallPolicyLink { get; set; }
-
-        /// <summary>
-        /// The Https settings for a domain.
-        /// </summary>
-        [Parameter(ParameterSetName = ObjectWithCustomHttpsConfigParameterSet, Mandatory = false, HelpMessage = "The Https settings for a domain")]
-        public PSCustomHttpsConfiguration CustomHttpsConfiguration { get; set; }
 
         /// <summary>
         /// The source of the SSL certificate. Part of CustomHttpsConfiguration.
@@ -80,13 +50,6 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         /// </summary>
         [Parameter(ParameterSetName = FieldsWithCustomHttpsConfigParameterSet, Mandatory = true, HelpMessage = "The minimum TLS version required from the clients to establish an SSL handshake with Front Door.")]
         public string MinimumTlsVersion { get; set; }
-
-        /// <summary>
-        /// Defines the TLS extension protocol that is used for secure delivery. Part of CustomHttpsConfiguration.
-        /// </summary>
-        [Parameter(ParameterSetName = FieldsWithCustomHttpsConfigParameterSet, Mandatory = false, HelpMessage = "The TLS extension protocol that is used for secure delivery")]
-        [PSArgumentCompleter("ServerNameIndication", "IPBased")]
-        public string ProtocolType { get; set; }
 
         /// <summary>
         /// Defines the TLS extension protocol that is used for secure delivery. Part of CustomHttpsConfiguration.
@@ -115,41 +78,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            PSCustomHttpsConfiguration customHttpsConfiguration;
- 
-            switch (ParameterSetName)
-            {
-                case FieldsWithCustomHttpsConfigParameterSet:
-                {
-                    customHttpsConfiguration = new PSCustomHttpsConfiguration
-                    {
-                        CertificateSource = CertificateSource,
-                        MinimumTlsVersion = MinimumTlsVersion,
-                        Vault = Vault,
-                        SecretName = SecretName,
-                        SecretVersion = SecretVersion,
-                        CertificateType = CertificateType
-                    };
-                    break;
-                }
-                default:
-                {
-                    customHttpsConfiguration = !this.IsParameterBound(c => c.CustomHttpsConfiguration) ? null : CustomHttpsConfiguration;
-                    break;
-                }
-            }
-
-            var FrontendEndpoint = new PSFrontendEndpoint
-            {
-                Name = Name,
-                HostName = HostName,
-                SessionAffinityEnabledState = !this.IsParameterBound(c => c.SessionAffinityEnabledState) ? PSEnabledState.Disabled : SessionAffinityEnabledState,
-                SessionAffinityTtlSeconds = !this.IsParameterBound(c => c.SessionAffinityTtlInSeconds) ? 0 : SessionAffinityTtlInSeconds,
-                WebApplicationFirewallPolicyLink = WebApplicationFirewallPolicyLink,
-                CustomHttpsConfiguration = customHttpsConfiguration
-            };
-            WriteObject(FrontendEndpoint);
+            base.ExecuteCmdlet();
         }
-
     }
 }

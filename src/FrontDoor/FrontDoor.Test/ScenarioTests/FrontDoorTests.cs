@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Test.ScenarioTests.ScenarioTest
 {
     public class FrontDoorTests
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
+        private readonly ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
 
         public FrontDoorTests(Xunit.Abstractions.ITestOutputHelper output)
         {
