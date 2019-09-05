@@ -19,6 +19,7 @@
 --->
 ## Upcoming Release
 * Fix incorrect example in `New-AzApplicationGateway` reference documentation 
+* Fixed example in `Test-AzNetworkWatcherIPFlow` reference documentation to correctly enumerate NICs
 
 ## Version 1.13.0
 * Updated New-AzPrivateLinkServiceIpConfig
