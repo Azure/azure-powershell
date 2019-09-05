@@ -27,6 +27,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.VirtualNetworkLinks
     {
         private const string IdParameterSetName = "VirtualNetworkId";
         private const string ObjectParameterSetName = "VirtualNetworkObject";
+        private const string RemoteIdParameterSetName = "RemoteVirtualNetworkId";
 
         [Parameter(Mandatory = true, HelpMessage = "The resource group in which to create the virtual network link. Should match resource group of the private DNS zone")]
         [ResourceGroupCompleter]
@@ -50,7 +51,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.VirtualNetworkLinks
         [ValidateNotNullOrEmpty]
         public IVirtualNetwork VirtualNetwork { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "Reference to the remote virtual network.")]
+        [Parameter(Mandatory = true, HelpMessage = "Reference to the remote virtual network.", ParameterSetName = RemoteIdParameterSetName)]
         public string RemoteVirtualNetworkId { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Switch parameter that represents if the virtual network link is registration enabled or not.")]
