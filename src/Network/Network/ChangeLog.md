@@ -18,6 +18,7 @@
         - Additional information about change #1
 --->
 ## Upcoming Release
+* Add note in `Get-AzNetworkWatcherPacketCapture` reference documentation about retrieving all properties for a packet capture
 
 ## Version 1.13.0
 * Updated New-AzPrivateLinkServiceIpConfig
