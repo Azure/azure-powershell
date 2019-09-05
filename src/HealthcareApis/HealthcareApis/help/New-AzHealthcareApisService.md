@@ -27,13 +27,13 @@ Creates or updates the metadata of a service instance.
 
 ### Example 1 : Creates a new Azure healthcareapis fhir service named MyService in the resource group MyResourceGroup in a location westus2 with cosmosdb offer throughput = 400
 ```powershell
-PS C:\> New-AzHealthcareApisService -Name MyService -ResourceGroupName MyResourceGroup -Location MyLocation -Kind fhir-R4 -CosmosOfferThroughput  MyOfferThroughput
+PS C:\> New-AzHealthcareApisService -Name MyService -ResourceGroupName MyResourceGroup -Location MyLocation -Kind fhir-R4 -CosmosOfferThroughput  400
 
 ResourceGroupName Name Location        Kind   CosmosOfferThroughput
 ----------------- ----------- -------------------------------
 MyResourceGroup   MyService   westus2    fhir-R4   400
 
-Properties        : Microsoft.Azure.Management.HealthcareApis.Models.ServicesProperties
+Properties        : Microsoft.Azure.Management.HealthcareApis.Models.PSHealthcareApisServiceConfig
 ResourceId        : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft
                     .HealthcareApis/services/MyService
 Name              : MyService
