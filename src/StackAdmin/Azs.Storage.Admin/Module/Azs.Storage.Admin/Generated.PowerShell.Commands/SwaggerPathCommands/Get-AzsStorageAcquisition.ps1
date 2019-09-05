@@ -13,8 +13,8 @@ Licensed under the MIT License. See License.txt in the project root for license 
 .PARAMETER Top
     Return the top N items as specified by the parameter value. Applies after the -Skip parameter.
 
-.PARAMETER ResourceGroupName
-    Resource group name.
+.PARAMETER Location
+    Resource location.
 
 .PARAMETER Skip
     Skip the first N items as specified by the parameter value.
@@ -35,9 +35,8 @@ function Get-AzsStorageAcquisition {
         $Top = -1,
     
         [Parameter(Mandatory = $false, ParameterSetName = 'List')]
-        [ValidateLength(1, 90)]
         [System.String]
-        $ResourceGroupName,
+        $Location,
     
         [Parameter(Mandatory = $false, ParameterSetName = 'List')]
         [int]
@@ -73,13 +72,13 @@ function Get-AzsStorageAcquisition {
 
         $StorageAdminClient = New-ServiceClient @NewServiceClient_params
 
-        if ([System.String]::IsNullOrEmpty($ResourceGroupName)) {
-            $ResourceGroupName = "System.$((Get-AzureRmLocation).Location)"
+        if ([System.String]::IsNullOrEmpty($Location)) {
+            $Location = (Get-AzureRmLocation).Location
         }
 
         if ('List' -eq $PsCmdlet.ParameterSetName) {
             Write-Verbose -Message 'Performing operation ListWithHttpMessagesAsync on $StorageAdminClient.'
-            $TaskResult = $StorageAdminClient.Acquisitions.ListWithHttpMessagesAsync($ResourceGroupName)
+            $TaskResult = $StorageAdminClient.Acquisitions.ListWithHttpMessagesAsync($Location)
         }
         else {
             Write-Verbose -Message 'Failed to map parameter set to operation method.'

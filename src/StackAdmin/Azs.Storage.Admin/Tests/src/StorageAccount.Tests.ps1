@@ -107,7 +107,7 @@ InModuleScope Azs.Storage.Admin {
         it "TestListAllStorageAccounts" -Skip:$('TestListAllStorageAccounts' -in $global:SkippedTests) {
             $global:TestName = 'TestListAllStorageAccounts'
 
-            $storageAccounts = Get-AzsStorageAccount -ResourceGroupName $global:ResourceGroupName -Summary:$false
+            $storageAccounts = Get-AzsStorageAccount -Location $global:Location -Summary:$false
             foreach ($storageAccount in $storageAccounts) {
                 ValidateStorageAccount -storageAccount $storageAccount
             }
@@ -116,9 +116,9 @@ InModuleScope Azs.Storage.Admin {
         it "TestGetStorageAccount" -Skip:$('TestGetStorageAccount' -in $global:SkippedTests) {
             $global:TestName = 'TestGetStorageAccount'
 
-            $storageAccounts = Get-AzsStorageAccount -ResourceGroupName $global:ResourceGroupName -Summary:$false
+            $storageAccounts = Get-AzsStorageAccount -Location $global:Location -Summary:$false
             foreach ($storageAccount in $storageAccounts) {
-                $result = Get-AzsStorageAccount -ResourceGroupName $global:ResourceGroupName -Name $storageAccount.Name
+                $result = Get-AzsStorageAccount -Location $global:Location -Name $storageAccount.Name
                 ValidateStorageAccount -storageAccount $result
                 AssertAreEqual -expected $storageAccount -found $result
                 return
@@ -128,9 +128,9 @@ InModuleScope Azs.Storage.Admin {
         it "TestGetAllStorageAccounts" -Skip:$('TestGetAllStorageAccounts' -in $global:SkippedTests) {
             $global:TestName = 'TestGetAllStorageAccounts'
 
-            $storageAccounts = Get-AzsStorageAccount -ResourceGroupName $global:ResourceGroupName -Summary:$false
+            $storageAccounts = Get-AzsStorageAccount -Location $global:Location -Summary:$false
             foreach ($storageAccount in $storageAccounts) {
-                $result = Get-AzsStorageAccount -ResourceGroupName $global:ResourceGroupName -Name $storageAccount.Name
+                $result = Get-AzsStorageAccount -Location $global:Location -Name $storageAccount.Name
                 ValidateStorageAccount -storageAccount $result
                 AssertAreEqual -expected $storageAccount -found $result
             }
@@ -140,7 +140,7 @@ InModuleScope Azs.Storage.Admin {
         It "TestStartGarbageCollection" -Skip:$('TestStartGarbageCollection' -in $global:SkippedTests) {
             $global:TestName = 'TestStartGarbageCollection'
 
-            Start-AzsReclaimStorageCapacity -ResourceGroupName $global:ResourceGroupName -Force
+            Start-AzsReclaimStorageCapacity -Location $global:Location -Force
         }
     }
 }

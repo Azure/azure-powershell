@@ -10,8 +10,8 @@ Licensed under the MIT License. See License.txt in the project root for license 
 .DESCRIPTION
     Start garbage collection on deleted storage objects.
 
-.PARAMETER ResourceGroupName
-    Resource group name.
+.PARAMETER Location
+    Resource location.
 
 .PARAMETER AsJob
     Run asynchronous as a job and return the job object.
@@ -27,13 +27,12 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 #>
 function Start-AzsReclaimStorageCapacity {
-    [CmdletBinding(DefaultParameterSetName = 'OnDemandGC', SupportsShouldProcess = $true)]
+    [CmdletBinding(DefaultParameterSetName = 'ReclaimStorageCapacity', SupportsShouldProcess = $true)]
     param(    
-        [Parameter(Mandatory = $false, ParameterSetName = 'OnDemandGC')]
-        [ValidateLength(1, 90)]
+        [Parameter(Mandatory = $false, ParameterSetName = 'ReclaimStorageCapacity')]
         [ValidateNotNullOrEmpty()]
         [System.String]
-        $ResourceGroupName,
+        $Location,
 
         [Parameter(Mandatory = $false)]
         [switch]
@@ -59,8 +58,8 @@ function Start-AzsReclaimStorageCapacity {
     
         $ErrorActionPreference = 'Stop'
 
-        if ($PSCmdlet.ShouldProcess("Storage Accounts" , "Start garbage collection")) {
-            if ($Force.IsPresent -or $PSCmdlet.ShouldContinue("Start garbage collection?", "Performing operation garbage collect for deleted storage accounts.")) {
+        if ($PSCmdlet.ShouldProcess("Storage Accounts" , "Start reclaim storage capacity")) {
+            if ($Force.IsPresent -or $PSCmdlet.ShouldContinue("Start reclaim storage capacity?", "Performing operation garbage collect for deleted storage accounts.")) {
                 $NewServiceClient_params = @{
                     FullClientTypeName = 'Microsoft.AzureStack.Management.Storage.Admin.StorageAdminClient'
                 }
@@ -73,15 +72,16 @@ function Start-AzsReclaimStorageCapacity {
                     $GlobalParameterHashtable['SubscriptionId'] = $PSBoundParameters['SubscriptionId']
                 }
 
-                if ([System.String]::IsNullOrEmpty($ResourceGroupName)) {
-                    $ResourceGroupName = "System.$((Get-AzureRmLocation).Location)"
+                if ([System.String]::IsNullOrEmpty($Location)) {
+                    $Location = (Get-AzureRmLocation).Location
                 }
         
                 $StorageAdminClient = New-ServiceClient @NewServiceClient_params
         
-                if ('OnDemandGC' -eq $PsCmdlet.ParameterSetName) {
-                    Write-Verbose -Message 'Performing operation OnDemandGCWithHttpMessagesAsync on $StorageAdminClient.'
-                    $TaskResult = $StorageAdminClient.StorageAccounts.OnDemandGCWithHttpMessagesAsync($ResourceGroupName)
+        
+                if ('ReclaimStorageCapacity' -eq $PsCmdlet.ParameterSetName) {
+                    Write-Verbose -Message 'Performing operation ReclaimStorageCapacityWithHttpMessagesAsync on $StorageAdminClient.'
+                    $TaskResult = $StorageAdminClient.StorageAccounts.ReclaimStorageCapacityWithHttpMessagesAsync($Location)
                 }
                 else {
                     Write-Verbose -Message 'Failed to map parameter set to operation method.'

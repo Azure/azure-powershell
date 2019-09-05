@@ -13,8 +13,8 @@ Licensed under the MIT License. See License.txt in the project root for license 
 .PARAMETER Name
     Internal storage account ID, which is not visible to tenant.
 
-.PARAMETER ResourceGroupName
-    Resource group name.
+.PARAMETER Location
+    Resource location.
 
 .PARAMETER ResourceId
     The resource id.
@@ -42,9 +42,9 @@ function Restore-AzsStorageAccount {
         $Name,
     
         [Parameter(Mandatory = $false, ParameterSetName = 'Undelete')]
-        [ValidateLength(1, 90)]
+        [ValidateNotNullOrEmpty()]
         [System.String]
-        $ResourceGroupName,
+        $Location,
 
         [Parameter(Mandatory = $true, ValueFromPipelineByPropertyName = $true, ParameterSetName = 'ResourceId')]
         [Alias('id')]
@@ -78,19 +78,19 @@ function Restore-AzsStorageAccount {
 
         if ('ResourceId' -eq $PsCmdlet.ParameterSetName) {
             $GetArmResourceIdParameterValue_params = @{
-                IdTemplate = '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}/providers/Microsoft.Storage.Admin/storageaccounts/{accountId}'
+                IdTemplate = '/subscriptions/{subscriptionId}/providers/Microsoft.Storage.Admin/locations/{location}/storageaccounts/{accountId}'
             }
 
             $GetArmResourceIdParameterValue_params['Id'] = $ResourceId
             $ArmResourceIdParameterValues = Get-ArmResourceIdParameterValue @GetArmResourceIdParameterValue_params
-            $ResourceGroupName = $ArmResourceIdParameterValues['ResourceGroup']
+            $Location = $ArmResourceIdParameterValues['location']
 
             $accountId = $ArmResourceIdParameterValues['accountId']
         }
         else {
             $accountId = $Name
-            if ([System.String]::IsNullOrEmpty($ResourceGroupName)) {
-                $ResourceGroupName = "System.$((Get-AzureRmLocation).Location)"
+            if ([System.String]::IsNullOrEmpty($Location)) {
+                $Location = (Get-AzureRmLocation).Location
             }
         }
 
@@ -114,7 +114,7 @@ function Restore-AzsStorageAccount {
         
                 if ('Undelete' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
                     Write-Verbose -Message 'Performing operation UndeleteWithHttpMessagesAsync on $StorageAdminClient.'
-                    $TaskResult = $StorageAdminClient.StorageAccounts.UndeleteWithHttpMessagesAsync($ResourceGroupName, $accountId)
+                    $TaskResult = $StorageAdminClient.StorageAccounts.UndeleteWithHttpMessagesAsync($Location, $accountId)
                 }
                 else {
                     Write-Verbose -Message 'Failed to map parameter set to operation method.'

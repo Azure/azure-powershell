@@ -22,11 +22,11 @@ Licensed under the MIT License. See License.txt in the project root for license 
 .PARAMETER Skip
     Skip the first N items as specified by the parameter value.
 
-.PARAMETER ResourceGroupName
-    Resource group name.
-
 .PARAMETER ResourceId
     The resource id.
+
+.PARAMETER Location
+    Resource location.
 
 .PARAMETER Name
     Internal storage account ID, which is not visible to tenant.
@@ -36,13 +36,13 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 .EXAMPLE
 
-	PS C:\> Get-AzsStorageAccount -Summary
+	PS C:\> Get-AzsStorageAccount 
 
 	Get a list of storage accounts.
 
 .EXAMPLE
 
-    PS C:\> Get-AzsStorageAccount -Name f8f7ff7335cb4ba284fb855547e48f34
+    PS C:\> Get-AzsStorageAccount -Name f8f7ff7335cb4ba284fb855547e48f34 -Summary
 
     Get details of the specified storage account.
 
@@ -67,16 +67,15 @@ function Get-AzsStorageAccount {
         [int]
         $Skip = -1,
     
-        [Parameter(Mandatory = $false, ParameterSetName = 'Get')]
-        [Parameter(Mandatory = $false, ParameterSetName = 'List')]
-        [ValidateLength(1, 90)]
-        [System.String]
-        $ResourceGroupName,
-    
         [Parameter(Mandatory = $true, ValueFromPipelineByPropertyName = $true, ParameterSetName = 'ResourceId')]
         [Alias('id')]
         [System.String]
         $ResourceId,
+    
+        [Parameter(Mandatory = $false, ParameterSetName = 'Get')]
+        [Parameter(Mandatory = $false, ParameterSetName = 'List')]
+        [System.String]
+        $Location,
     
         [Parameter(Mandatory = $true, ParameterSetName = 'Get')]
         [Alias('AccountId')]
@@ -122,7 +121,7 @@ function Get-AzsStorageAccount {
  
         if ('InputObject' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
             $GetArmResourceIdParameterValue_params = @{
-                IdTemplate = '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage.Admin/storageaccounts/{accountId}'
+                IdTemplate = '/subscriptions/{subscriptionId}/providers/Microsoft.Storage.Admin/locations/{location}/storageaccounts/{accountId}'
             }
 
             if ('ResourceId' -eq $PsCmdlet.ParameterSetName) {
@@ -132,21 +131,21 @@ function Get-AzsStorageAccount {
                 $GetArmResourceIdParameterValue_params['Id'] = $InputObject.Id
             }
             $ArmResourceIdParameterValues = Get-ArmResourceIdParameterValue @GetArmResourceIdParameterValue_params
-            $resourceGroupName = $ArmResourceIdParameterValues['resourceGroupName']
+            $location = $ArmResourceIdParameterValues['location']
 
             $accountId = $ArmResourceIdParameterValues['accountId']
         }
-        elseif ([System.String]::IsNullOrEmpty($ResourceGroupName)) {
-            $ResourceGroupName = "System.$((Get-AzureRmLocation).Location)"
+        elseif ([System.String]::IsNullOrEmpty($Location)) {
+            $Location = (Get-AzureRmLocation).Location
         }
 
         if ('List' -eq $PsCmdlet.ParameterSetName) {
             Write-Verbose -Message 'Performing operation ListWithHttpMessagesAsync on $StorageAdminClient.'
-            $TaskResult = $StorageAdminClient.StorageAccounts.ListWithHttpMessagesAsync($ResourceGroupName, $(if ($PSBoundParameters.ContainsKey('Filter')) { $Filter } else { [NullString]::Value }), $Summary)
+            $TaskResult = $StorageAdminClient.StorageAccounts.ListWithHttpMessagesAsync($Location, $(if ($PSBoundParameters.ContainsKey('Filter')) { $Filter } else { [NullString]::Value }), $Summary)
         }
         elseif ('Get' -eq $PsCmdlet.ParameterSetName -or 'InputObject' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
             Write-Verbose -Message 'Performing operation GetWithHttpMessagesAsync on $StorageAdminClient.'
-            $TaskResult = $StorageAdminClient.StorageAccounts.GetWithHttpMessagesAsync($ResourceGroupName, $AccountId)
+            $TaskResult = $StorageAdminClient.StorageAccounts.GetWithHttpMessagesAsync($Location, $AccountId)
         }
         else {
             Write-Verbose -Message 'Failed to map parameter set to operation method.'

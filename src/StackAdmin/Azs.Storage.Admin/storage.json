@@ -43,7 +43,7 @@
         }
       }
     },
-    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage.Admin/acquisitions": {
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Storage.Admin/locations/{location}/acquisitions": {
       "get": {
         "x-ms-examples": {
           "Returns a list of page blob acquistions.": {
@@ -63,7 +63,7 @@
             "$ref": "#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "#/parameters/ResourceGroupNameParameter"
+            "$ref": "#/parameters/LocationParameter"
           },
           {
             "$ref": "#/parameters/ApiVersionParameter"
@@ -76,8 +76,11 @@
               "$ref": "#/definitions/AcquisitionList"
             }
           },
-          "404": {
-            "description": "NOT FOUND -- The specified farm cannot be found."
+          "default": {
+            "description": "Error Response.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
           }
         },
         "x-ms-pageable": {
@@ -91,10 +94,10 @@
         ]
       }
     },
-    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage.Admin/settings": {
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Storage.Admin/locations/{location}/settings": {
       "post": {
         "x-ms-examples": {
-          "Create a new storage farm.": {
+          "Update storage settings.": {
             "parameters": {},
             "responses": {
               "200": {}
@@ -111,7 +114,7 @@
             "$ref": "#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "#/parameters/ResourceGroupNameParameter"
+            "$ref": "#/parameters/LocationParameter"
           },
           {
             "$ref": "#/parameters/ApiVersionParameter"
@@ -132,6 +135,12 @@
             "description": "OK -- The new storge resource provider setting is updated.",
             "schema": {
               "$ref": "#/definitions/settings"
+            }
+          },
+          "default": {
+            "description": "Error Response.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
             }
           }
         },
@@ -161,7 +170,7 @@
             "$ref": "#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "#/parameters/ResourceGroupNameParameter"
+            "$ref": "#/parameters/LocationParameter"
           },
           {
             "$ref": "#/parameters/ApiVersionParameter"
@@ -171,7 +180,13 @@
           "200": {
             "description": "OK -- The settings has been returned.",
             "schema": {
-              "$ref": "#/definitions/settings"
+              "$ref": "#/definitions/Settings"
+            }
+          },
+          "default": {
+            "description": "Error Response.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
             }
           }
         },
@@ -183,7 +198,7 @@
         ]
       }
     },
-    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage.Admin/storageaccounts/ondemandgc": {
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Storage.Admin/locations/{location}/reclaimStorageCapacity": {
       "post": {
         "x-ms-examples": {
           "Start garbage collection on deleted storage objects.": {
@@ -196,14 +211,14 @@
         "tags": [
           "StorageAccounts"
         ],
-        "operationId": "StorageAccounts_OnDemandGC",
+        "operationId": "StorageAccounts_ReclaimStorageCapacity",
         "description": "Start garbage collection on deleted storage objects.",
         "parameters": [
           {
             "$ref": "#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "#/parameters/ResourceGroupNameParameter"
+            "$ref": "#/parameters/LocationParameter"
           },
           {
             "$ref": "#/parameters/ApiVersionParameter"
@@ -215,6 +230,12 @@
           },
           "202": {
             "description": "ACCEPTED -- Garbage collection has started."
+          },
+          "default": {
+            "description": "Error Response.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
           }
         },
         "x-ms-long-running-operation": true,
@@ -267,6 +288,12 @@
           },
           "404": {
             "description": "NOT FOUND -- The location or quota was not found."
+          },
+          "default": {
+            "description": "Error Response.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
           }
         },
         "produces": [
@@ -278,7 +305,7 @@
       },
       "delete": {
         "x-ms-examples": {
-          "Delete an existing storage quota..": {
+          "Delete an existing storage quota.": {
             "parameters": {},
             "responses": {
               "200": {}
@@ -308,8 +335,11 @@
           "200": {
             "description": "OK -- The storage quota has been deleted."
           },
-          "404": {
-            "description": "NOT FOUND -- The location or storage quota cannot be found."
+          "default": {
+            "description": "Error Response.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
           }
         },
         "produces": [
@@ -354,8 +384,11 @@
               "$ref": "#/definitions/StorageQuota"
             }
           },
-          "404": {
-            "description": "NOT FOUND -- The location or storage quota cannot be found."
+          "default": {
+            "description": "Error Response.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
           }
         },
         "produces": [
@@ -400,6 +433,12 @@
             "schema": {
               "$ref": "#/definitions/StorageQuotaList"
             }
+          },
+          "default": {
+            "description": "Error Response.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
           }
         },
         "x-ms-pageable": {
@@ -413,7 +452,7 @@
         ]
       }
     },
-    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage.Admin/storageaccounts": {
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Storage.Admin/locations/{location}/storageaccounts": {
       "get": {
         "x-ms-examples": {
           "Returns a list of storage accounts.": {
@@ -433,7 +472,7 @@
             "$ref": "#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "#/parameters/ResourceGroupNameParameter"
+            "$ref": "#/parameters/LocationParameter"
           },
           {
             "$ref": "#/parameters/ApiVersionParameter"
@@ -451,6 +490,12 @@
             "schema": {
               "$ref": "#/definitions/StorageAccountList"
             }
+          },
+          "default": {
+            "description": "Error Response.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
           }
         },
         "x-ms-pageable": {
@@ -464,7 +509,7 @@
         ]
       }
     },
-    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage.Admin/storageaccounts/{accountId}": {
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Storage.Admin/locations/{location}/storageaccounts/{accountId}": {
       "get": {
         "x-ms-examples": {
           "Returns the requested storage account.": {
@@ -484,7 +529,7 @@
             "$ref": "#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "#/parameters/ResourceGroupNameParameter"
+            "$ref": "#/parameters/LocationParameter"
           },
           {
             "$ref": "#/parameters/AccountIdParameter"
@@ -500,8 +545,11 @@
               "$ref": "#/definitions/StorageAccount"
             }
           },
-          "404": {
-            "description": "NOT FOUND -- The storage account or farm was not found."
+          "default": {
+            "description": "Error Response.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
           }
         },
         "produces": [
@@ -512,7 +560,7 @@
         ]
       }
     },
-    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage.Admin/storageaccounts/{accountId}/undelete": {
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Storage.Admin/locations/{location}/storageaccounts/{accountId}/undelete": {
       "post": {
         "x-ms-examples": {
           "Undelete a deleted storage account.": {
@@ -532,7 +580,7 @@
             "$ref": "#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref": "#/parameters/ResourceGroupNameParameter"
+            "$ref": "#/parameters/LocationParameter"
           },
           {
             "$ref": "#/parameters/AccountIdParameter"
@@ -550,6 +598,12 @@
           },
           "202": {
             "description": "Accepted -- undelete operation trigged; operation will complete asynchronously."
+          },
+          "default": {
+            "description": "Error Response.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
           }
         },
         "x-ms-long-running-operation": true,
@@ -563,7 +617,63 @@
     }
   },
   "definitions": {
-	"settings": {
+    "ErrorResponse": {
+      "description": "The error response for request which failed.",
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "The error description code.",
+          "type": "string",
+          "readOnly": true
+        },
+        "message": {
+          "description": "The error description message.",
+          "type": "string",
+          "readOnly": true
+        },
+        "target": {
+          "description": "The error target description.",
+          "type": "string",
+          "readOnly": true
+        },
+        "details": {
+          "description": "The error details information.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "readOnly": true
+        }
+      }
+    },
+    "Resource": {
+      "description": "Base resource object.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Resource ID.",
+          "type": "string",
+          "readOnly": true
+        },
+        "name": {
+          "description": "Resource Name.",
+          "type": "string",
+          "readOnly": true
+        },
+        "type": {
+          "description": "Resource Type.",
+          "type": "string",
+          "readOnly": true
+        },
+        "location": {
+          "description": "Resource Location.",
+          "type": "string",
+          "readOnly": true
+        }
+      },
+      "x-ms-azure-resource": true
+    },
+	"Settings": {
       "description": "Storage resource provider settings",
       "type": "object",
       "properties": {
@@ -572,7 +682,12 @@
           "type": "integer",
           "format": "int32"
         }
-      }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Resource"
+        }
+      ]
     },
     "Operation": {
       "description": "Describes the supported REST operation.",
@@ -708,28 +823,13 @@
           "description": "Storage quota properties.",
           "x-ms-client-flatten": true,
           "$ref": "#/definitions/StorageQuotaProperties"
-        },
-        "name": {
-          "description": "quota name",
-          "type": "string",
-          "readOnly": true
-        },
-        "location": {
-          "description": "location for the quota",
-          "type": "string",
-          "readOnly": true
-        },
-        "id": {
-          "description": "id for the storage quota",
-          "type": "string",
-          "readOnly": true
-        },
-        "type": {
-          "description": "resource type for storage quota",
-          "type": "string",
-          "readOnly": true
         }
-      }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Resource"
+        }
+      ]
     },
     "StorageQuotaProperties": {
       "description": "Storage quota properties.",
@@ -746,17 +846,6 @@
           "type": "integer",
           "format": "int32",
           "default": 500
-        }
-      }
-    },
-    "StorageCreationProperties": {
-      "description": "Properties of the storage quota being created or updated.",
-      "type": "object",
-      "properties": {
-        "properties": {
-          "description": "Storage quota properties.",
-          "x-ms-client-flatten": true,
-          "$ref": "#/definitions/StorageQuotaProperties"
         }
       }
     },
@@ -816,23 +905,6 @@
       ],
       "x-ms-enum": {
         "name": "LocationStatus",
-        "modelAsString": true
-      }
-    },
-    "StorageAccountOperation": {
-      "readOnly": true,
-      "description": "The permissions of storage account in WAC.",
-      "type": "string",
-      "enum": [
-        "None",
-        "Create",
-        "Update",
-        "Suspend",
-        "Delete",
-        "Undelete"
-      ],
-      "x-ms-enum": {
-        "name": "StorageAccountOperation",
         "modelAsString": true
       }
     },
@@ -1058,16 +1130,6 @@
           "$ref": "#/definitions/StorageAccountProperties",
           "readOnly": true
         },
-        "name": {
-          "description": "account name, a unique account id",
-          "type": "string",
-          "readOnly": true
-        },
-        "location": {
-          "description": "resource location",
-          "type": "string",
-          "readOnly": true
-        },
         "tags": {
           "description": "Resource tags.",
           "type": "object",
@@ -1075,18 +1137,13 @@
             "type": "string"
           },
           "readOnly": true
-        },
-        "id": {
-          "description": "Resource ID.",
-          "type": "string",
-          "readOnly": true
-        },
-        "type": {
-          "description": "Resource type.",
-          "type": "string",
-          "readOnly": true
         }
-      }
+      },
+      "allOf": [
+        {
+          "$ref": "storage.json#/definitions/Resource"
+        }
+      ]
     },
     "StorageAccountList": {
       "description": "Pageable list of storage accounts.",
@@ -1158,7 +1215,7 @@
       "in": "body",
       "required": true,
       "schema": {
-        "$ref": "#/definitions/StorageCreationProperties"
+        "$ref": "#/definitions/StorageQuotaProperties"
       },
       "x-ms-parameter-location": "method"
     },

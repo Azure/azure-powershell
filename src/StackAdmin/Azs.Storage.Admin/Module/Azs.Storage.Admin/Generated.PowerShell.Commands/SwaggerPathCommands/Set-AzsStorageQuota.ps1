@@ -41,10 +41,9 @@ Licensed under the MIT License. See License.txt in the project root for license 
     Update an existing storage quota by piping.
 
 #>
-function Set-AzsStorageQuota
-{
+function Set-AzsStorageQuota {
     [OutputType([Microsoft.AzureStack.Management.Storage.Admin.Models.StorageQuota])]
-    [CmdletBinding(DefaultParameterSetName='Update')]
+    [CmdletBinding(DefaultParameterSetName = 'Update')]
     param(    
         [Parameter(Mandatory = $false, ParameterSetName = 'Update')]
         [Parameter(Mandatory = $false, ParameterSetName = 'ResourceId')]
@@ -64,6 +63,7 @@ function Set-AzsStorageQuota
         $NumberOfStorageAccounts,
     
         [Parameter(Mandatory = $false, ParameterSetName = 'Update')]
+        [ValidateNotNullOrEmpty()]
         [System.String]
         $Location,
     
@@ -79,91 +79,91 @@ function Set-AzsStorageQuota
         $Name
     )
 
-    Begin 
-    {
-	    Initialize-PSSwaggerDependencies -Azure
+    Begin {
+        Initialize-PSSwaggerDependencies -Azure
         $tracerObject = $null
         if (('continue' -eq $DebugPreference) -or ('inquire' -eq $DebugPreference)) {
             $oldDebugPreference = $global:DebugPreference
-			$global:DebugPreference = "continue"
+            $global:DebugPreference = "continue"
             $tracerObject = New-PSSwaggerClientTracing
             Register-PSSwaggerClientTracing -TracerObject $tracerObject
         }
-	}
+    }
 
     Process {
     
-    $ErrorActionPreference = 'Stop'
+        $ErrorActionPreference = 'Stop'
 
-    $NewServiceClient_params = @{
-        FullClientTypeName = 'Microsoft.AzureStack.Management.Storage.Admin.StorageAdminClient'
-    }
-
-    $GlobalParameterHashtable = @{}
-    $NewServiceClient_params['GlobalParameterHashtable'] = $GlobalParameterHashtable
-     
-    $GlobalParameterHashtable['SubscriptionId'] = $null
-    if($PSBoundParameters.ContainsKey('SubscriptionId')) {
-        $GlobalParameterHashtable['SubscriptionId'] = $PSBoundParameters['SubscriptionId']
-    }
-
-    $StorageAdminClient = New-ServiceClient @NewServiceClient_params
-
-    $QuotaName = $Name
- 
-    if('InputObject' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
-        $GetArmResourceIdParameterValue_params = @{
-            IdTemplate = '/subscriptions/{subscriptionId}/providers/Microsoft.Storage.Admin/locations/{location}/quotas/{quotaName}'
+        $NewServiceClient_params = @{
+            FullClientTypeName = 'Microsoft.AzureStack.Management.Storage.Admin.StorageAdminClient'
         }
 
-        if('ResourceId' -eq $PsCmdlet.ParameterSetName) {
-            $GetArmResourceIdParameterValue_params['Id'] = $ResourceId
+        $GlobalParameterHashtable = @{ }
+        $NewServiceClient_params['GlobalParameterHashtable'] = $GlobalParameterHashtable
+     
+        $GlobalParameterHashtable['SubscriptionId'] = $null
+        if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $GlobalParameterHashtable['SubscriptionId'] = $PSBoundParameters['SubscriptionId']
+        }
+
+        $StorageAdminClient = New-ServiceClient @NewServiceClient_params
+
+        $QuotaName = $Name
+ 
+        if ('InputObject' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
+            $GetArmResourceIdParameterValue_params = @{
+                IdTemplate = '/subscriptions/{subscriptionId}/providers/Microsoft.Storage.Admin/locations/{location}/quotas/{quotaName}'
+            }
+
+            if ('ResourceId' -eq $PsCmdlet.ParameterSetName) {
+                $GetArmResourceIdParameterValue_params['Id'] = $ResourceId
+            }
+            else {
+                $GetArmResourceIdParameterValue_params['Id'] = $InputObject.Id
+                $Quota = $InputObject
+            }
+            $ArmResourceIdParameterValues = Get-ArmResourceIdParameterValue @GetArmResourceIdParameterValue_params
+            $Location = $ArmResourceIdParameterValues['location']
+
+            $QuotaName = $ArmResourceIdParameterValues['quotaName']
+        }
+
+        if ([System.String]::IsNullOrEmpty($Location)) {
+            $Location = (Get-AzureRMLocation).Location
+        }
+
+        if ('Update' -eq $PsCmdlet.ParameterSetName -or 'InputObject' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
+            # Get quota if not set
+            if ($null -eq $Quota) {
+                $Quota = Get-AzsStorageQuota -Location $Location -Name $QuotaName
+            }
+
+            $flattenedParameters = @('NumberOfStorageAccounts', 'CapacityInGb')
+            $utilityCmdParams = @{ }
+            $flattenedParameters | ForEach-Object {
+                if ($PSBoundParameters.ContainsKey($_)) {
+                    $utilityCmdParams[$_] = $PSBoundParameters[$_]
+                }
+            }
+
+            $Parameters = New-StorageQuotaObject @utilityCmdParams
+
+            Write-Verbose -Message 'Performing operation CreateOrUpdateWithHttpMessagesAsync on $StorageAdminClient.'
+            $TaskResult = $StorageAdminClient.StorageQuotas.CreateOrUpdateWithHttpMessagesAsync($Location, $QuotaName, $Parameters)
         }
         else {
-            $GetArmResourceIdParameterValue_params['Id'] = $InputObject.Id
-            $Quota = $InputObject
-        }
-        $ArmResourceIdParameterValues = Get-ArmResourceIdParameterValue @GetArmResourceIdParameterValue_params
-        $Location = $ArmResourceIdParameterValues['location']
-
-        $QuotaName = $ArmResourceIdParameterValues['quotaName']
-    }
-
-    if ([System.String]::IsNullOrEmpty($Location)) {
-        $Location = (Get-AzureRMLocation).Location
-    }
-
-    if ('Update' -eq $PsCmdlet.ParameterSetName -or 'InputObject' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
-        # Get quota if not set
-        if ($null -eq $Quota) {
-            $Quota = Get-AzsStorageQuota -Location $Location -Name $QuotaName
+            Write-Verbose -Message 'Failed to map parameter set to operation method.'
+            throw 'Module failed to find operation to execute.'
         }
 
-        $flattenedParameters = @('NumberOfStorageAccounts', 'CapacityInGb')
-        $utilityCmdParams = @{}
-        $flattenedParameters | ForEach-Object {
-            if($PSBoundParameters.ContainsKey($_)) {
-                $utilityCmdParams[$_] = $PSBoundParameters[$_]
+        if ($TaskResult) {
+            $GetTaskResult_params = @{
+                TaskResult = $TaskResult
             }
-        }
-
-        $Parameters = New-StorageQuotaObject @utilityCmdParams
-
-        Write-Verbose -Message 'Performing operation CreateOrUpdateWithHttpMessagesAsync on $StorageAdminClient.'
-        $TaskResult = $StorageAdminClient.StorageQuotas.CreateOrUpdateWithHttpMessagesAsync($Location, $QuotaName, $Parameters)
-    } else {
-        Write-Verbose -Message 'Failed to map parameter set to operation method.'
-        throw 'Module failed to find operation to execute.'
-    }
-
-    if ($TaskResult) {
-        $GetTaskResult_params = @{
-            TaskResult = $TaskResult
-        }
             
-        Get-TaskResult @GetTaskResult_params
+            Get-TaskResult @GetTaskResult_params
         
-    }
+        }
     }
 
     End {

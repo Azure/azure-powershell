@@ -78,7 +78,7 @@ InModuleScope Azs.Storage.Admin {
         it "TestListAllAcquisitions" -Skip:$('TestListAllAcquisitions' -in $global:SkippedTests) {
             $global:TestName = 'TestListAllAcquisitions'
 
-                $acquisitions = Get-AzsStorageAcquisition -ResourceGroupName $global:ResourceGroupName
+                $acquisitions = Get-AzsStorageAcquisition -Location $global:Location
                 foreach ($acquisition in $acquisitions) {
                     ValidateAcquisition -Acquisition $acquisition
                 }

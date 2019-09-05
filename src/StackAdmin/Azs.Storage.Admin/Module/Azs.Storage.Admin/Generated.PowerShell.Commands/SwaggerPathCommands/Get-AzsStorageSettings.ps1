@@ -10,8 +10,8 @@ Licensed under the MIT License. See License.txt in the project root for license 
 .DESCRIPTION
     Returns the storage resource provider settings.
 
-.PARAMETER ResourceGroupName
-    Resource group name.
+.PARAMETER Location
+    Resource location.
 
 .EXAMPLE
 
@@ -26,7 +26,7 @@ function Get-AzsStorageSettings {
     param(    
         [Parameter(Mandatory = $false, ParameterSetName = 'Get')]
         [System.String]
-        $ResourceGroupName
+        $Location
     )
 
     Begin {
@@ -58,13 +58,13 @@ function Get-AzsStorageSettings {
 
         $StorageAdminClient = New-ServiceClient @NewServiceClient_params
 
-        if ([System.String]::IsNullOrEmpty($ResourceGroupName)) {
-            $ResourceGroupName = "System.$((Get-AzureRmLocation).Location)"
+        if ([System.String]::IsNullOrEmpty($Location)) {
+            $Location = (Get-AzureRmLocation).Location
         }
 
         if ('Get' -eq $PsCmdlet.ParameterSetName) {
             Write-Verbose -Message 'Performing operation GetWithHttpMessagesAsync on $StorageAdminClient.'
-            $TaskResult = $StorageAdminClient.StorageSettings.GetWithHttpMessagesAsync($ResourceGroupName)
+            $TaskResult = $StorageAdminClient.StorageSettings.GetWithHttpMessagesAsync($Location)
         }
         else {
             Write-Verbose -Message 'Failed to map parameter set to operation method.'

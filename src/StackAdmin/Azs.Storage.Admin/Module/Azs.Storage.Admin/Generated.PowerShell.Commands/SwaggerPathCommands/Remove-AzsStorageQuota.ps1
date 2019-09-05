@@ -47,6 +47,7 @@ function Remove-AzsStorageQuota {
         $ResourceId,
     
         [Parameter(Mandatory = $false, ParameterSetName = 'Delete')]
+        [ValidateNotNullOrEmpty()]
         [System.String]
         $Location,
     
@@ -79,9 +80,9 @@ function Remove-AzsStorageQuota {
     Process {
     
         $ErrorActionPreference = 'Stop'
-        
-        $QuotaName = $Name
-        
+
+        $quotaName = $Name
+
         if ('InputObject' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
             $GetArmResourceIdParameterValue_params = @{
                 IdTemplate = '/subscriptions/{subscriptionId}/providers/Microsoft.Storage.Admin/locations/{location}/quotas/{quotaName}'
@@ -96,11 +97,11 @@ function Remove-AzsStorageQuota {
             $ArmResourceIdParameterValues = Get-ArmResourceIdParameterValue @GetArmResourceIdParameterValue_params
             $location = $ArmResourceIdParameterValues['location']
 
-            $QuotaName = $ArmResourceIdParameterValues['quotaName']
+            $quotaName = $ArmResourceIdParameterValues['quotaName']
         }
 
-        if ($PsCmdlet.ShouldProcess("$QuotaName", "Delete the storage quota")) {
-            if (($Force.IsPresent -or $PSCmdlet.ShouldContinue("Delete the storage quota?", "Performing operation delete $QuotaName."))) {
+        if ($PsCmdlet.ShouldProcess("$quotaName", "Delete the storage quota")) {
+            if (($Force.IsPresent -or $PSCmdlet.ShouldContinue("Delete the storage quota?", "Performing operation delete $quotaName."))) {
                 $NewServiceClient_params = @{
                     FullClientTypeName = 'Microsoft.AzureStack.Management.Storage.Admin.StorageAdminClient'
                 }
@@ -112,16 +113,17 @@ function Remove-AzsStorageQuota {
                 if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
                     $GlobalParameterHashtable['SubscriptionId'] = $PSBoundParameters['SubscriptionId']
                 }
-         
+        
                 $StorageAdminClient = New-ServiceClient @NewServiceClient_params
 
-                if ([System.String]::IsNullOrEmpty($Location)) {
-                    $Location = (Get-AzureRMLocation).Location
+                if ([System.String]::IsNullOrEmpty($Location))
+                {
+                    $Location = (Get-AzureRmLocation).Location
                 }
-
+        
                 if ('Delete' -eq $PsCmdlet.ParameterSetName -or 'InputObject' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
                     Write-Verbose -Message 'Performing operation DeleteWithHttpMessagesAsync on $StorageAdminClient.'
-                    $TaskResult = $StorageAdminClient.StorageQuotas.DeleteWithHttpMessagesAsync($Location, $QuotaName)
+                    $TaskResult = $StorageAdminClient.StorageQuotas.DeleteWithHttpMessagesAsync($Location, $quotaName)
                 }
                 else {
                     Write-Verbose -Message 'Failed to map parameter set to operation method.'
@@ -136,7 +138,6 @@ function Remove-AzsStorageQuota {
                     Get-TaskResult @GetTaskResult_params
                 
                 }
-        
             }
         }
     }

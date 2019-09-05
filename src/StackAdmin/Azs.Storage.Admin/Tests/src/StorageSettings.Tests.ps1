@@ -87,7 +87,7 @@ InModuleScope Azs.Storage.Admin {
         It "TestGetStorageSettings" -Skip:$('TestGetStorageSettings' -in $global:SkippedTests) {
             $global:TestName = 'TestGetStorageSettings'
 
-            $result = Get-AzsStorageSettings -ResourceGroupName $global:ResourceGroupName 
+            $result = Get-AzsStorageSettings -Location $global:Location 
             $result  | Should Not Be $null
             ValidateSetting -Setting $result
         }
@@ -95,9 +95,9 @@ InModuleScope Azs.Storage.Admin {
         It "TestUpdateStorageSettings" -Skip:$('TestUpdateStorageSettings' -in $global:SkippedTests) {
             $global:TestName = 'TestUpdateStorageSettings'
 
-            $originalDays = (Get-AzsStorageSettings -ResourceGroupName $global:ResourceGroupName).RetentionPeriodForDeletedStorageAccountsInDays
+            $originalDays = (Get-AzsStorageSettings -Location $global:Location).RetentionPeriodForDeletedStorageAccountsInDays
             $targetDays = $originalDays + 1
-            $result = Update-AzsStorageSettings -ResourceGroupName $global:ResourceGroupName -RetentionPeriodForDeletedStorageAccountsInDays $targetDays
+            $result = Update-AzsStorageSettings -Location $global:Location -RetentionPeriodForDeletedStorageAccountsInDays $targetDays
             $result  | Should Not Be $null
             $result.RetentionPeriodForDeletedStorageAccountsInDays | Should Be $targetDays
         }

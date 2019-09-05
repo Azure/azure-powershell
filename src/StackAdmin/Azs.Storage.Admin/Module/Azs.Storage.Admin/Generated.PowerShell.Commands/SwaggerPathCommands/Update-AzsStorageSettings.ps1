@@ -13,8 +13,8 @@ Licensed under the MIT License. See License.txt in the project root for license 
 .PARAMETER RetentionPeriodForDeletedStorageAccountsInDays
     Set the retention days for deleted storage accounts.
 
-.PARAMETER ResourceGroupName
-    Resource group name.
+.PARAMETER Location
+    Resource location.
 
 .EXAMPLE
 
@@ -28,15 +28,14 @@ function Update-AzsStorageSettings {
     [CmdletBinding(DefaultParameterSetName = 'Update')]
     param(   
         [Parameter(Mandatory = $false, ParameterSetName = 'Update')]
-        [ValidateLength(1, 90)]
-        [ValidateNotNullOrEmpty()]
-        [System.String]
-        $ResourceGroupName,
-
-        [Parameter(Mandatory = $true, ParameterSetName = 'Update')]
         [ValidateRange(0, [int]::MaxValue)]
         [System.Int32]
-        $RetentionPeriodForDeletedStorageAccountsInDays
+        $RetentionPeriodForDeletedStorageAccountsInDays = $null,
+    
+        [Parameter(Mandatory = $false, ParameterSetName = 'Update')]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $Location
     )
 
     Begin {
@@ -68,13 +67,13 @@ function Update-AzsStorageSettings {
 
         $StorageAdminClient = New-ServiceClient @NewServiceClient_params
 
-        if ([System.String]::IsNullOrEmpty($ResourceGroupName)) {
-            $ResourceGroupName = "System.$((Get-AzureRmLocation).Location)"
+        if ([System.String]::IsNullOrEmpty($Location)) {
+            $Location = (Get-AzureRmLocation).Location
         }
 
         if ('Update' -eq $PsCmdlet.ParameterSetName) {
             Write-Verbose -Message 'Performing operation UpdateWithHttpMessagesAsync on $StorageAdminClient.'
-            $TaskResult = $StorageAdminClient.StorageSettings.UpdateWithHttpMessagesAsync($ResourceGroupName, $RetentionPeriodForDeletedStorageAccountsInDays)
+            $TaskResult = $StorageAdminClient.StorageSettings.UpdateWithHttpMessagesAsync($Location, $RetentionPeriodForDeletedStorageAccountsInDays)
         }
         else {
             Write-Verbose -Message 'Failed to map parameter set to operation method.'
@@ -98,4 +97,3 @@ function Update-AzsStorageSettings {
         }
     }
 }
-
