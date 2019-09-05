@@ -248,26 +248,6 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
             return ParseKind(FhirVersion);
         }
 
-        private Kind ParseKind(string kind)
-        {
-            if (kind.Equals("fhir", StringComparison.OrdinalIgnoreCase))
-            {
-                return Management.HealthcareApis.Models.Kind.Fhir;
-            }
-            else if (kind.Equals("fhir-stu3", StringComparison.OrdinalIgnoreCase) || kind.Equals("stu3", StringComparison.OrdinalIgnoreCase))
-            {
-                return Management.HealthcareApis.Models.Kind.FhirStu3;
-            }
-            else if (kind.Equals("fhir-r4", StringComparison.OrdinalIgnoreCase) || kind.Equals("r4", StringComparison.OrdinalIgnoreCase))
-            {
-                return Management.HealthcareApis.Models.Kind.FhirR4;
-            }
-            else
-            {
-                throw new PSArgumentException(Resources.createService_InvalidKindMessage);
-            }
-        }
-
         private int? GetCosmosDBThroughput()
         {
             if (CosmosOfferThroughput == null)
