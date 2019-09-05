@@ -25,6 +25,7 @@ using System.Threading;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Batch
 {
@@ -103,12 +104,22 @@ namespace Microsoft.Azure.Commands.Batch
         /// <summary>
         /// The dedicated core quota for this Batch account.
         /// </summary>
-        public int DedicatedCoreQuota { get; private set; }
+        public int? DedicatedCoreQuota { get; private set; }
 
         /// <summary>
         /// The low priority core quota for this Batch account.
         /// </summary>
-        public int LowPriorityCoreQuota { get; private set; }
+        public int? LowPriorityCoreQuota { get; private set; }
+
+        /// <summary>
+        /// If dedicated core quota is enforced per-family.
+        /// </summary>
+        public bool DedicatedCoreQuotaPerVMFamilyEnforced { get; private set; }
+
+        /// <summary>
+        /// The dedicated core quota per VM family. This value is only enforced if <see cref="DedicatedCoreQuotaPerVMFamilyEnforced"/> is set to true.
+        /// </summary>
+        public Hashtable DedicatedCoreQuotaPerVMFamily { get; private set; }
 
         /// <summary>
         /// The pool quota for this Batch account.
@@ -208,6 +219,8 @@ namespace Microsoft.Azure.Commands.Batch
             this.Tags = TagsConversionHelper.CreateTagHashtable(resource.Tags);
             this.DedicatedCoreQuota = resource.DedicatedCoreQuota;
             this.LowPriorityCoreQuota = resource.LowPriorityCoreQuota;
+            this.DedicatedCoreQuotaPerVMFamilyEnforced = resource.DedicatedCoreQuotaPerVMFamilyEnforced;
+            this.DedicatedCoreQuotaPerVMFamily = CreateQuotaHashTable(resource.DedicatedCoreQuotaPerVMFamily);
             this.PoolQuota = resource.PoolQuota;
             this.ActiveJobAndJobScheduleQuota = resource.ActiveJobAndJobScheduleQuota;
             this.PoolAllocationMode = resource.PoolAllocationMode;
@@ -243,6 +256,23 @@ namespace Microsoft.Azure.Commands.Batch
             this.ResourceGroupName = idParts[4];
         }
 
+
+        private static Hashtable CreateQuotaHashTable(IList<VirtualMachineFamilyCoreQuota> quotas)
+        {
+            Hashtable result = new Hashtable();
+
+            if(quotas == null)
+            {
+                return result;
+            }
+
+            foreach (var quota in quotas)
+            {
+                result.Add(quota.Name, quota.CoreQuota);
+            }
+
+            return result;
+        }
         /// <summary>
         /// Create a new BAC and fill it in
         /// </summary>

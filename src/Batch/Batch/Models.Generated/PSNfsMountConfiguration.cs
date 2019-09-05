@@ -29,19 +29,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public partial class PSNetworkSecurityGroupRule
+    public partial class PSNfsMountConfiguration
     {
         
-        internal Microsoft.Azure.Batch.NetworkSecurityGroupRule omObject;
+        internal Microsoft.Azure.Batch.NfsMountConfiguration omObject;
         
-        private IReadOnlyList<System.String> sourcePortRanges;
-        
-        public PSNetworkSecurityGroupRule(int priority, Microsoft.Azure.Batch.Common.NetworkSecurityGroupRuleAccess access, string sourceAddressPrefix, System.Collections.Generic.IReadOnlyList<string> sourcePortRanges = null)
+        public PSNfsMountConfiguration(string source, string relativeMountPath, string mountOptions = null)
         {
-            this.omObject = new Microsoft.Azure.Batch.NetworkSecurityGroupRule(priority, access, sourceAddressPrefix, sourcePortRanges);
+            this.omObject = new Microsoft.Azure.Batch.NfsMountConfiguration(source, relativeMountPath, mountOptions);
         }
         
-        internal PSNetworkSecurityGroupRule(Microsoft.Azure.Batch.NetworkSecurityGroupRule omObject)
+        internal PSNfsMountConfiguration(Microsoft.Azure.Batch.NfsMountConfiguration omObject)
         {
             if ((omObject == null))
             {
@@ -50,50 +48,27 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public Microsoft.Azure.Batch.Common.NetworkSecurityGroupRuleAccess Access
+        public string MountOptions
         {
             get
             {
-                return this.omObject.Access;
+                return this.omObject.MountOptions;
             }
         }
         
-        public int Priority
+        public string RelativeMountPath
         {
             get
             {
-                return this.omObject.Priority;
+                return this.omObject.RelativeMountPath;
             }
         }
         
-        public string SourceAddressPrefix
+        public string Source
         {
             get
             {
-                return this.omObject.SourceAddressPrefix;
-            }
-        }
-        
-        public IReadOnlyList<System.String> SourcePortRanges
-        {
-            get
-            {
-                if (((this.sourcePortRanges == null) 
-                            && (this.omObject.SourcePortRanges != null)))
-                {
-                    List<System.String> list;
-                    list = new List<System.String>();
-                    IEnumerator<System.String> enumerator;
-                    enumerator = this.omObject.SourcePortRanges.GetEnumerator();
-                    for (
-                    ; enumerator.MoveNext(); 
-                    )
-                    {
-                        list.Add(enumerator.Current);
-                    }
-                    this.sourcePortRanges = list;
-                }
-                return this.sourcePortRanges;
+                return this.omObject.Source;
             }
         }
     }

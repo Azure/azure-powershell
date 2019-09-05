@@ -29,19 +29,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public partial class PSNetworkSecurityGroupRule
+    public partial class PSAzureFileShareConfiguration
     {
         
-        internal Microsoft.Azure.Batch.NetworkSecurityGroupRule omObject;
+        internal Microsoft.Azure.Batch.AzureFileShareConfiguration omObject;
         
-        private IReadOnlyList<System.String> sourcePortRanges;
-        
-        public PSNetworkSecurityGroupRule(int priority, Microsoft.Azure.Batch.Common.NetworkSecurityGroupRuleAccess access, string sourceAddressPrefix, System.Collections.Generic.IReadOnlyList<string> sourcePortRanges = null)
+        public PSAzureFileShareConfiguration(string accountName, string azureFileUrl, string relativeMountPath, string accountKey, string mountOptions = null)
         {
-            this.omObject = new Microsoft.Azure.Batch.NetworkSecurityGroupRule(priority, access, sourceAddressPrefix, sourcePortRanges);
+            this.omObject = new Microsoft.Azure.Batch.AzureFileShareConfiguration(accountName, azureFileUrl, relativeMountPath, accountKey, mountOptions);
         }
         
-        internal PSNetworkSecurityGroupRule(Microsoft.Azure.Batch.NetworkSecurityGroupRule omObject)
+        internal PSAzureFileShareConfiguration(Microsoft.Azure.Batch.AzureFileShareConfiguration omObject)
         {
             if ((omObject == null))
             {
@@ -50,50 +48,43 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public Microsoft.Azure.Batch.Common.NetworkSecurityGroupRuleAccess Access
+        public string AccountKey
         {
             get
             {
-                return this.omObject.Access;
+                return this.omObject.AccountKey;
             }
         }
         
-        public int Priority
+        public string AccountName
         {
             get
             {
-                return this.omObject.Priority;
+                return this.omObject.AccountName;
             }
         }
         
-        public string SourceAddressPrefix
+        public string AzureFileUrl
         {
             get
             {
-                return this.omObject.SourceAddressPrefix;
+                return this.omObject.AzureFileUrl;
             }
         }
         
-        public IReadOnlyList<System.String> SourcePortRanges
+        public string MountOptions
         {
             get
             {
-                if (((this.sourcePortRanges == null) 
-                            && (this.omObject.SourcePortRanges != null)))
-                {
-                    List<System.String> list;
-                    list = new List<System.String>();
-                    IEnumerator<System.String> enumerator;
-                    enumerator = this.omObject.SourcePortRanges.GetEnumerator();
-                    for (
-                    ; enumerator.MoveNext(); 
-                    )
-                    {
-                        list.Add(enumerator.Current);
-                    }
-                    this.sourcePortRanges = list;
-                }
-                return this.sourcePortRanges;
+                return this.omObject.MountOptions;
+            }
+        }
+        
+        public string RelativeMountPath
+        {
+            get
+            {
+                return this.omObject.RelativeMountPath;
             }
         }
     }
