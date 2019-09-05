@@ -158,8 +158,8 @@ Accept wildcard characters: False
 ```
 
 ### -DisableAutoRegenerateKey
-Auto regenerate key. If true, then the keys of the managed storage account are not auto regenerated. 
-If false, then the managed storage account's inactive key gets auto regenerated and becomes the new 
+Auto regenerate key. If provided, then the keys of the managed storage account are not auto regenerated. 
+If not provided, then the managed storage account's inactive key gets auto regenerated and becomes the new 
 active key after the regeneration period.
 
 ```yaml
