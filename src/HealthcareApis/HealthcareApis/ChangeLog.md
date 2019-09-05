@@ -22,6 +22,7 @@
 * Added Error Handling in all cmdlets
 * Fixed few typos
 * Enable Set-AzHealthcareApisService to allow updating tags.
+* Fixed bug around inaccurate kind
 
 ## Version 0.1.0
 
